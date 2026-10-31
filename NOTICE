@@ -1,0 +1,60 @@
+Tegami Mail
+===========
+
+Tegami Mail is free software, licensed under the GNU Affero General Public
+License, version 3 or (at your option) any later version (AGPL-3.0-or-later).
+The full text is in the LICENSE file.
+
+Origin of this work
+-------------------
+
+Tegami Mail is a modified version of Hylki, a GNOME email client:
+
+    Hylki 1.46.0
+    https://github.com/hyprlab/hylki
+    upstream commit c82906d7878eabcef0013b69c357d0bd9695720f
+    Copyright (C) 2026 Hyprlab and the Hylki contributors
+    Licensed under AGPL-3.0-or-later
+
+Tegami Mail was started from that commit on 2026-10-31. The unmodified import
+is the Git commit "Import Hylki 1.46.0 (AGPL-3.0-or-later) as the starting
+point"; every later commit in this repository is a change made by the Tegami
+Mail authors, with its date, and is the record of what was modified.
+
+Copyright
+---------
+
+    Copyright (C) 2026 Hyprlab and the Hylki contributors
+        for the code, translations, documentation and data that come from
+        Hylki.
+    Copyright (C) 2026 the Tegami Mail authors (see the Git history)
+        for the changes made in this repository.
+
+The notices that were already in the files this work comes from are kept.
+Where Hylki lists the people who contributed code and translations
+(data/CONTRIBUTORS, data/TRANSLATORS and docs/CREDITS.md), those lists are kept
+as they are, and the application's About window shows them.
+
+Third-party material
+--------------------
+
+Tegami Mail includes, unchanged from Hylki, material that is not covered by
+the licence above. Their owners, licences and sources are listed in
+docs/LICENSE.md and in the README files next to the data:
+
+  - appearance themes from T3 Code (MIT, Copyright (c) 2026 T3 Tools Inc.);
+  - GNOME alert sounds (GPL-2.0-or-later), data/sounds/;
+  - sender logos from gilbarbara/logos (MIT) and Simple Icons (CC0),
+    data/logos/;
+  - service logos (for example Nextcloud, Dropbox, OneDrive), which remain
+    trademarks of their owners, data/brands/.
+
+The Rust libraries Tegami Mail is built with each keep their own licence;
+see Cargo.lock for the list of libraries and versions.
+
+Names and marks
+---------------
+
+The licence above does not grant the right to use the names, icons or logos of
+Hylki or Hyprlab. Tegami Mail is not Hylki, and is not affiliated with or
+endorsed by Hyprlab or the Hylki project.
