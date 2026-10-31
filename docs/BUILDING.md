@@ -48,24 +48,6 @@ which has to be regenerated whenever `Cargo.lock` changes:
 python3 flatpak-cargo-generator.py Cargo.lock -o cargo-sources.json
 ```
 
-## RPM and Debian packages
-
-`tools/build-packages.sh rpm` and `tools/build-packages.sh deb` produce
-`packaging/out/hylki-<version>-1.fc44.x86_64.rpm` and
-`packaging/out/hylki_<version>-1_amd64.deb`; with no argument it builds both.
-A beta's version is written `1.45.0~beta.1` in both, which sorts before
-`1.45.0`. Each is built for the machine it runs on: the ARM64 ones
-(`.aarch64.rpm`, `_arm64.deb`) come from `.github/workflows/build-arm64.yml`,
-which builds them on GitHub's arm64 runners and installs each in a clean
-Fedora 44 or Debian 13 container to check it.
-
-The RPM wraps a release build from the host, so it is built on Fedora. The
-Debian package is built inside a Debian 13 container (the script starts one
-with podman), because a binary built on Fedora needs a newer C library than
-Debian has, and Debian 13 is the oldest release with libadwaita 1.7. On a
-Debian host with the dependencies above and `dpkg-dev`, it builds in place.
-`dpkg-shlibdeps` works out the package's dependencies from the binary.
-
 ## AppImage
 
 `tools/build-appimage.sh` produces `packaging/out/Hylki-<arch>.AppImage`, or
