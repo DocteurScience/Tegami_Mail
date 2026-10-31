@@ -1,0 +1,298 @@
+name: Build aarch64 Flatpak and packages
+run-name: aarch64 ${{ inputs.ref || github.ref_name }}
+
+# Hylki is developed and released from an x86_64 machine, so the ARM64 builds are
+# made here, natively, on GitHub's arm64 runners (free for public repos): the
+# Flatpak, and the RPM and Debian package (since 1.46.0-beta.5), each package
+# then installed in a clean container to check its dependencies resolve.
+# Emulating the build locally through qemu takes hours; this takes minutes.
+#
+# The job produces an *unsigned* OSTree repo as an artifact. Nothing is
+# published from CI: the maintainer imports that repo into the signed
+# distribution repo with `tools/import-arm64.sh`, which re-commits it under the
+# project's GPG key. The signing key never leaves the maintainer's machine.
+
+on:
+  push:
+    tags:
+      # Stable and beta (vX.Y.Z-beta.N) alike: the beta ships for ARM too.
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: 'Tag, branch or SHA to build'
+        required: false
+        default: 'main'
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: aarch64
+    runs-on: ubuntu-24.04-arm
+    timeout-minutes: 90
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.ref || github.ref }}
+
+      # The manifest script as this workflow knows it. A run started by hand
+      # builds an older tag, whose own copy may not handle the beta yet.
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.workflow_sha }}
+          path: ci
+          sparse-checkout: tools/local-manifest.sh
+          sparse-checkout-cone-mode: false
+
+      - name: Pick the channel
+        id: channel
+        # A beta tag builds the beta app (co.hyprlab.Hylki.Beta, its own
+        # manifest on the beta branch) into the repo's beta branch.
+        run: |
+          ref="${{ github.event.inputs.ref || github.ref_name }}"
+          case "$ref" in
+            *-beta.*) app=co.hyprlab.Hylki.Beta; branch=beta ;;
+            *) app=co.hyprlab.Hylki; branch=stable ;;
+          esac
+          test -f "$app.yml" || { echo "$app.yml is not in $ref" >&2; exit 1; }
+          echo "app=$app" >> "$GITHUB_OUTPUT"
+          echo "branch=$branch" >> "$GITHUB_OUTPUT"
+          echo "building $app for the $branch branch from $ref"
+
+      - name: Install flatpak-builder
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y flatpak flatpak-builder python3-aiohttp python3-tomlkit
+
+      - name: Install the GNOME runtime and Rust SDK extension
+        id: sdk
+        run: |
+          flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+          install_ref() {
+            # `--no-static-deltas`: Flathub occasionally serves a summary listing
+            # a ref whose delta objects 404. Pulling plain objects goes around
+            # that, and the install is retried because it is a CDN and a release
+            # shouldn't hinge on one request.
+            for attempt in 1 2 3; do
+              if flatpak install --user -y --noninteractive --no-static-deltas flathub "$@"; then
+                return 0
+              fi
+              echo "install attempt $attempt failed for $*; retrying"
+              sleep 30
+            done
+            return 1
+          }
+
+          install_ref org.gnome.Platform//50 org.gnome.Sdk//50
+
+          # The stable Rust extension is what releases are built with. During
+          # v1.10.0 its aarch64 objects were missing from Flathub for hours
+          # (rust-nightly was fine), which would otherwise have held the ARM
+          # build indefinitely. Fall back rather than stall — and note which
+          # toolchain was used, because it belongs in the release notes. This
+          # returns to stable by itself once Flathub serves it again.
+          if install_ref org.freedesktop.Sdk.Extension.rust-stable//25.08; then
+            echo "toolchain=rust-stable" >> "$GITHUB_OUTPUT"
+          elif install_ref org.freedesktop.Sdk.Extension.rust-nightly//25.08; then
+            echo "::warning::rust-stable/aarch64 is unavailable on Flathub; built with rust-nightly"
+            echo "toolchain=rust-nightly" >> "$GITHUB_OUTPUT"
+          else
+            echo "no Rust SDK extension could be installed" >&2
+            exit 1
+          fi
+
+      - name: Vendor the crate sources
+        # cargo-sources.json is generated, not committed — it pins every crate
+        # tarball so the build inside the sandbox needs no network. It comes out
+        # of Cargo.lock, which is committed, so this reproduces the file the
+        # maintainer builds x86_64 from.
+        run: |
+          curl -fsSL -o /tmp/gen-cargo-sources.py \
+            https://raw.githubusercontent.com/flatpak/flatpak-builder-tools/master/cargo/flatpak-cargo-generator.py
+          # The generator's dependencies drift (it moved from toml to tomlkit),
+          # and it is fetched from master rather than a tag. Install whatever it
+          # turns out to want instead of guessing: run it, and on a missing
+          # module install that module and try again.
+          for attempt in 1 2 3; do
+            if python3 /tmp/gen-cargo-sources.py Cargo.lock -o cargo-sources.json 2>/tmp/gen.err; then
+              break
+            fi
+            cat /tmp/gen.err
+            module="$(sed -n "s/.*No module named '\([^']*\)'.*/\1/p" /tmp/gen.err | head -1)"
+            if [ -z "$module" ]; then
+              echo "generator failed for a reason other than a missing module" >&2
+              exit 1
+            fi
+            echo "installing missing module: $module"
+            pip install --break-system-packages "$module"
+          done
+          test -s cargo-sources.json
+          echo "vendored $(python3 -c 'import json;print(len(json.load(open("cargo-sources.json"))))') crate sources"
+
+      - name: Build
+        # The manifest's pinned source points at the *previous* release when this
+        # runs on a tag (the pin commit necessarily comes after the tag), so the
+        # build takes the checkout itself. Same recipe otherwise.
+        run: |
+          ci/tools/local-manifest.sh /tmp/hylki-aarch64.yml "$PWD/${{ steps.channel.outputs.app }}.yml"
+          # Point the manifest at whichever extension actually installed.
+          if [ "${{ steps.sdk.outputs.toolchain }}" = "rust-nightly" ]; then
+            sed -i 's/rust-stable/rust-nightly/g' /tmp/hylki-aarch64.yml
+            grep -n "rust-" /tmp/hylki-aarch64.yml
+          fi
+          flatpak-builder --user --force-clean --disable-rofiles-fuse \
+            --repo="$PWD/repo-aarch64" --default-branch=${{ steps.channel.outputs.branch }} \
+            --mirror-screenshots-url=https://dl.flathub.org/media \
+            "$PWD/build-dir" /tmp/hylki-aarch64.yml
+
+      - name: Check the result is actually ARM64
+        run: |
+          file build-dir/files/bin/hylki | tee /dev/stderr | grep -q 'ARM aarch64'
+          # Guard against building the wrong revision: the app's version has to
+          # match the checkout's Cargo.toml.
+          want="$(sed -n 's/^version = "\(.*\)"/\1/p' Cargo.toml | head -1)"
+          grep -q "version=\"$want\"" build-dir/files/share/metainfo/${{ steps.channel.outputs.app }}.metainfo.xml \
+            || { echo "built app is not $want" >&2; exit 1; }
+          echo "built Hylki $want for aarch64 with ${{ steps.sdk.outputs.toolchain }}"
+          flatpak build-update-repo "$PWD/repo-aarch64"
+          ostree --repo="$PWD/repo-aarch64" refs | sort
+
+      - name: Package the repo
+        run: tar czf hylki-aarch64-repo.tar.gz repo-aarch64
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: hylki-aarch64-repo
+          path: hylki-aarch64-repo.tar.gz
+          retention-days: 30
+          if-no-files-found: error
+
+  # The RPM and the Debian package, built as tools/build-packages.sh builds
+  # them on x86_64: the RPM on the Fedora it targets, the deb in the Debian 13
+  # Rust image. Neither is signed here; Flatout signs them when they are
+  # published. The script comes from this workflow's commit, as the manifest
+  # script does above, so a run started by hand on an older tag builds too.
+  rpm:
+    name: aarch64 RPM
+    runs-on: ubuntu-24.04-arm
+    timeout-minutes: 90
+    container: registry.fedoraproject.org/fedora:44
+    steps:
+      - name: Install the build dependencies
+        run: |
+          dnf install -y --setopt=install_weak_deps=False git tar gzip gcc gcc-c++ \
+            gtk4-devel libadwaita-devel webkitgtk6.0-devel poppler-glib-devel \
+            openssl-devel gettext-devel wayland-devel gettext rpm-build
+          # The same rustup stable the x86_64 RPM is built with, not Fedora's
+          # packaged Rust, which can trail the language features in use.
+          curl -fsSL https://sh.rustup.rs | sh -s -- -y --profile minimal
+          echo "$HOME/.cargo/bin" >> "$GITHUB_PATH"
+
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.ref || github.ref }}
+
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.workflow_sha }}
+          path: ci
+          sparse-checkout: tools/build-packages.sh
+          sparse-checkout-cone-mode: false
+
+      - name: Build
+        # bash: the containers' sh is dash on Debian, and the check below
+        # turns the version's dash into a tilde with bash's ${//}.
+        shell: bash
+        run: |
+          cp ci/tools/build-packages.sh tools/build-packages.sh
+          tools/build-packages.sh rpm
+          rpm=$(ls packaging/out/hylki-*.aarch64.rpm)
+          want="$(sed -n 's/^version = "\(.*\)"/\1/p' Cargo.toml | head -1)"
+          test "$(rpm -qp --qf '%{VERSION}' "$rpm")" = "${want//-/\~}" \
+            || { echo "built RPM is not $want" >&2; exit 1; }
+          echo "built $rpm"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: hylki-aarch64-rpm
+          path: packaging/out/hylki-*.aarch64.rpm
+          retention-days: 30
+          if-no-files-found: error
+
+  rpm-check:
+    name: aarch64 RPM installs
+    needs: rpm
+    runs-on: ubuntu-24.04-arm
+    container: registry.fedoraproject.org/fedora:44
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: hylki-aarch64-rpm
+      - name: Install on a clean Fedora and check its libraries
+        run: |
+          dnf install -y ./hylki-*.aarch64.rpm file
+          file /usr/bin/hylki | grep -q 'ARM aarch64'
+          if ldd /usr/bin/hylki | grep 'not found'; then exit 1; fi
+          rpm -q hylki
+
+  deb:
+    name: arm64 Debian package
+    runs-on: ubuntu-24.04-arm
+    timeout-minutes: 90
+    container: docker.io/library/rust:1-trixie
+    env:
+      # build-packages.sh installs the build dependencies itself in its
+      # container, and writes to /out there.
+      HYLKI_DEB_CONTAINER: "1"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.ref || github.ref }}
+
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.workflow_sha }}
+          path: ci
+          sparse-checkout: tools/build-packages.sh
+          sparse-checkout-cone-mode: false
+
+      - name: Build
+        # bash: the containers' sh is dash on Debian, and the check below
+        # turns the version's dash into a tilde with bash's ${//}.
+        shell: bash
+        run: |
+          cp ci/tools/build-packages.sh tools/build-packages.sh
+          tools/build-packages.sh deb
+          deb=$(ls /out/hylki_*_arm64.deb)
+          want="$(sed -n 's/^version = "\(.*\)"/\1/p' Cargo.toml | head -1)"
+          test "$(dpkg-deb -f "$deb" Version)" = "${want//-/\~}-1" \
+            || { echo "built package is not $want" >&2; exit 1; }
+          mkdir -p packaging/out && cp "$deb" packaging/out/
+          echo "built $deb"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: hylki-arm64-deb
+          path: packaging/out/hylki_*_arm64.deb
+          retention-days: 30
+          if-no-files-found: error
+
+  deb-check:
+    name: arm64 Debian package installs
+    needs: deb
+    runs-on: ubuntu-24.04-arm
+    container: docker.io/library/debian:13
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: hylki-arm64-deb
+      - name: Install on a clean Debian 13 and check its libraries
+        run: |
+          apt-get update -qq
+          DEBIAN_FRONTEND=noninteractive apt-get install -y -qq ./hylki_*_arm64.deb file
+          file /usr/bin/hylki | grep -q 'ARM aarch64'
+          if ldd /usr/bin/hylki | grep 'not found'; then exit 1; fi
+          dpkg -s hylki | grep -q '^Status: install ok installed'
