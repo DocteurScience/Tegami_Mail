@@ -5,6 +5,9 @@
   cloud attachments, writing in Markdown or HTML, OpenPGP, the GNOME Files
   entry, and what Tegami Mail keeps on disk.
 - **[KEYBOARD_SHORTCUTS.md](KEYBOARD_SHORTCUTS.md):** the single-key scheme.
+- **[DESIGN.md](DESIGN.md):** how the interface should look and behave, with
+  the screens it refers to; [DESIGN_STRINGS.md](DESIGN_STRINGS.md) lists the
+  text it needs and its French translation.
 - **[BUILDING.md](BUILDING.md):** building from source.
 - **[CONTRIBUTING.md](CONTRIBUTING.md):** how to help.
 - **[CREDITS.md](CREDITS.md):** who has.
