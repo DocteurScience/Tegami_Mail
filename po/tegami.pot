@@ -5767,6 +5767,23 @@ msgstr ""
 msgid "Custom…"
 msgstr ""
 
+msgid "{n} quoted message"
+msgid_plural "{n} quoted messages"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Conversation history"
+msgstr ""
+
+msgid "Hide history"
+msgstr ""
+
+msgid "Show history"
+msgstr ""
+
+msgid "Show previous message"
+msgstr ""
+
 msgid "Sans Serif"
 msgstr ""
 
@@ -7018,10 +7035,12 @@ msgstr ""
 msgid "The standard “-- ” line, which other mail apps recognize."
 msgstr ""
 
-msgid "Fold quoted text"
+msgid "Hide conversation history"
 msgstr ""
 
-msgid "Replies and forwards open with the original behind •••."
+msgid ""
+"Replies and forwards open with the quoted messages hidden. They are sent "
+"either way."
 msgstr ""
 
 msgid "Undo Send"

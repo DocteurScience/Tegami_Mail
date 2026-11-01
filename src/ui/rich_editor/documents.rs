@@ -9,7 +9,7 @@ use super::scripts::{
 };
 use super::signature::{find_src_attr, quoted_value};
 use super::toolbar::js_str;
-use crate::i18n::i18n;
+use crate::i18n::{i18n, ni18n};
 
 /// The contentEditable HTML document, themed for light/dark. Its ground is
 /// the theme's own view background (#148), read through `webview`, so a
@@ -36,17 +36,13 @@ pub(super) fn document(
     let prefs = crate::config::load_privacy();
     let compose_font = js_str(&font_style(&prefs.compose_font, prefs.compose_font_size));
     let fold_quote = prefs.fold_quote;
-    let fold_tips = format!(
-        "[{},{}]",
-        js_str(&i18n("Show quoted text")),
-        js_str(&i18n("Hide quoted text"))
-    );
+    let history = history_words();
     let script = format!(
         "<script>window.__tegamiPasteRich={paste_rich};\
          window.__tegamiComposeFont={compose_font};\
          window.__tegamiReturnParagraph={return_paragraph};\
          window.__tegamiFoldQuote={fold_quote};\
-         window.__tegamiFoldTips={fold_tips};\
+         window.__tegamiHistory={history};\
          window.__tegamiPlain={plain};</script>\
          {LINES_SCRIPT}{PASTE_SCRIPT}{FOLD_SCRIPT}{HISTORY_SCRIPT}{EMOJI_SCRIPT}\
          {GRAMMAR_SCRIPT}"
@@ -117,21 +113,35 @@ pub(super) fn document(
               font: the quoted original keeps the editor's. */\
            body>.tegami-quote-attr,\
            body>.tegami-quote-attr+blockquote{{font:{EDITOR_FONT};}}\
-           /* The folded quote's button (#549), and the \"wrote:\" line and\
-              quote before it, hidden while folded. The `html` outranks\
-              the plain view's reset of every block. */\
-           html body>div[data-tegami-ui=fold]{{display:table;margin:10px 0;\
-             padding:0 7px;border-radius:6px;cursor:pointer;\
-             background:rgba(128,128,128,0.2);-webkit-user-select:none;\
-             user-select:none;}}\
-           html body>div[data-tegami-ui=fold]:hover{{\
-             background:rgba(128,128,128,0.32);}}\
-           html body>div[data-tegami-ui=fold]::before{{\
-             content:'\\2022\\2022\\2022';font:bold 9px/14px sans-serif;\
-             letter-spacing:1px;opacity:0.7;}}\
-           html.tegami-folded body>:has(+div[data-tegami-ui=fold]),\
-           html.tegami-folded body>:has(+*+div[data-tegami-ui=fold]){{\
-             display:none;}}\
+           /* The conversation history's header (fold.js): its name and\
+              size, and Hide or Show at the end, between two hairlines.\
+              The `html` outranks the plain view's reset of every block.\
+              Secondary text at 70 %, which keeps 4.5:1. */\
+           html body>div[data-tegami-ui=fold]{{display:flex;align-items:center;\
+             gap:12px;margin:18px 0 10px;padding:8px 0;cursor:pointer;\
+             border-block:1px solid rgba(128,128,128,0.3);\
+             font:{EDITOR_FONT};-webkit-user-select:none;user-select:none;}}\
+           html body>div[data-tegami-ui=fold] .tegami-hist-names{{flex:1;}}\
+           html body>div[data-tegami-ui=fold] .tegami-hist-title{{font-weight:bold;}}\
+           html body>div[data-tegami-ui=fold] .tegami-hist-count{{font-size:0.85em;\
+             opacity:0.7;}}\
+           html body>div[data-tegami-ui=fold] .tegami-hist-toggle{{padding:4px 8px;\
+             border-radius:6px;}}\
+           html body>div[data-tegami-ui=fold]:hover .tegami-hist-toggle{{\
+             background:rgba(128,128,128,0.2);}}\
+           /* Hidden, the \"wrote:\" line and the quote after the header,\
+              and the button for older messages. */\
+           html.tegami-folded body>div[data-tegami-ui=fold]+*,\
+           html.tegami-folded body>div[data-tegami-ui=fold]+*+*,\
+           html.tegami-folded body>div[data-tegami-ui=deep]{{display:none;}}\
+           /* Older messages than the quote and the one it answers wait\
+              behind Show Previous Message. */\
+           html:not(.tegami-deep) body>div[data-tegami-ui=fold]+.tegami-quote-attr+\
+             blockquote blockquote blockquote{{display:none;}}\
+           html body>div[data-tegami-ui=deep]{{display:table;margin:8px 0;\
+             padding:4px 8px;border-radius:6px;cursor:pointer;font:{EDITOR_FONT};\
+             -webkit-user-select:none;user-select:none;}}\
+           html body>div[data-tegami-ui=deep]:hover{{background:rgba(128,128,128,0.2);}}\
            a{{color:#3584e4;}}\
            {plain_css}\
          </style>{script}\
@@ -321,4 +331,23 @@ pub(super) fn reground(weak: &gtk::glib::WeakRef<webkit6::WebView>, dark: bool) 
         );
     });
     true
+}
+
+/// The words of the conversation history's header (fold.js), translated
+/// here because the script has no gettext: its name, Hide and Show, the
+/// button for older messages, and "{n} quoted messages" in every count up
+/// to 99, so that each language's plural rule picks the form, not the
+/// script. The script fills in `{n}`.
+fn history_words() -> String {
+    let count: Vec<String> = (0..100u32)
+        .map(|n| js_str(&ni18n("{n} quoted message", "{n} quoted messages", n)))
+        .collect();
+    format!(
+        "{{title:{},hide:{},show:{},previous:{},count:[{}]}}",
+        js_str(&i18n("Conversation history")),
+        js_str(&i18n("Hide history")),
+        js_str(&i18n("Show history")),
+        js_str(&i18n("Show previous message")),
+        count.join(","),
+    )
 }

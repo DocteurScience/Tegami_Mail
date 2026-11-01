@@ -6296,6 +6296,28 @@ msgstr "PDF konnte nicht gespeichert werden: {error}"
 msgid "Custom…"
 msgstr "Benutzerdefiniert…"
 
+#, fuzzy
+msgid "{n} quoted message"
+msgid_plural "{n} quoted messages"
+msgstr[0] "{n} ungelesene Nachricht"
+msgstr[1] "{n} ungelesene Nachrichten"
+
+#, fuzzy
+msgid "Conversation history"
+msgstr "Unterhaltungen"
+
+#, fuzzy
+msgid "Hide history"
+msgstr "Ordner ausblenden"
+
+#, fuzzy
+msgid "Show history"
+msgstr "Nur anzeigen"
+
+#, fuzzy
+msgid "Show previous message"
+msgstr "Vorherige Nachricht"
+
 msgid "Sans Serif"
 msgstr "Serifenlos"
 
@@ -7670,10 +7692,13 @@ msgstr ""
 "Standardmäßige Trennzeile “--” zur Kompatibilität mit anderen E-Mail-"
 "Programmen."
 
-msgid "Fold quoted text"
-msgstr ""
+#, fuzzy
+msgid "Hide conversation history"
+msgstr "Unterhaltung auswählen"
 
-msgid "Replies and forwards open with the original behind •••."
+msgid ""
+"Replies and forwards open with the quoted messages hidden. They are sent "
+"either way."
 msgstr ""
 
 msgid "Undo Send"

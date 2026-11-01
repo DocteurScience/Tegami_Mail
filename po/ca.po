@@ -6250,6 +6250,28 @@ msgstr "No s'ha pogut desar el PDF: {error}"
 msgid "Custom…"
 msgstr "Personalitzada…"
 
+#, fuzzy
+msgid "{n} quoted message"
+msgid_plural "{n} quoted messages"
+msgstr[0] "{n} missatge no llegit"
+msgstr[1] "{n} missatges no llegits"
+
+#, fuzzy
+msgid "Conversation history"
+msgstr "Converses"
+
+#, fuzzy
+msgid "Hide history"
+msgstr "Amaga la carpeta"
+
+#, fuzzy
+msgid "Show history"
+msgstr "Mostra només"
+
+#, fuzzy
+msgid "Show previous message"
+msgstr "Missatge anterior"
+
 msgid "Sans Serif"
 msgstr "Sans Serif"
 
@@ -7597,10 +7619,12 @@ msgid "The standard “-- ” line, which other mail apps recognize."
 msgstr "La línia estàndard «-- », que altres aplicacions de correu reconeixen."
 
 #, fuzzy
-msgid "Fold quoted text"
-msgstr "Mostra el text citat"
+msgid "Hide conversation history"
+msgstr "Selecciona primer una conversa."
 
-msgid "Replies and forwards open with the original behind •••."
+msgid ""
+"Replies and forwards open with the quoted messages hidden. They are sent "
+"either way."
 msgstr ""
 
 msgid "Undo Send"
@@ -8071,6 +8095,10 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#, fuzzy
+#~ msgid "Fold quoted text"
+#~ msgstr "Mostra el text citat"
 
 #~ msgid "Save to Templates"
 #~ msgstr "Desa a plantilles"

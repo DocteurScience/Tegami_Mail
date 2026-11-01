@@ -6485,6 +6485,28 @@ msgstr "A PDF nem menthető: {error}"
 msgid "Custom…"
 msgstr "Egyéni szín…"
 
+#, fuzzy
+msgid "{n} quoted message"
+msgid_plural "{n} quoted messages"
+msgstr[0] "{n} olvasatlan üzenet"
+msgstr[1] "{n} olvasatlan üzenet"
+
+#, fuzzy
+msgid "Conversation history"
+msgstr "Beszélgetések"
+
+#, fuzzy
+msgid "Hide history"
+msgstr "Mappa elrejtése"
+
+#, fuzzy
+msgid "Show history"
+msgstr "Csak olvasatlanok megjelenítése"
+
+#, fuzzy
+msgid "Show previous message"
+msgstr "Előző üzenet"
+
 msgid "Sans Serif"
 msgstr ""
 
@@ -7893,10 +7915,12 @@ msgid "The standard “-- ” line, which other mail apps recognize."
 msgstr ""
 
 #, fuzzy
-msgid "Fold quoted text"
-msgstr "Távoli tartalom megjelenítése"
+msgid "Hide conversation history"
+msgstr "Teljes verziótörténet"
 
-msgid "Replies and forwards open with the original behind •••."
+msgid ""
+"Replies and forwards open with the quoted messages hidden. They are sent "
+"either way."
 msgstr ""
 
 #, fuzzy
@@ -8383,6 +8407,10 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#, fuzzy
+#~ msgid "Fold quoted text"
+#~ msgstr "Távoli tartalom megjelenítése"
 
 #, fuzzy
 #~ msgid "Save to Templates"
@@ -9817,9 +9845,6 @@ msgstr "Hyprlab"
 
 #~ msgid "Changelog"
 #~ msgstr "Változásnapló"
-
-#~ msgid "Full version history"
-#~ msgstr "Teljes verziótörténet"
 
 #~ msgid "Contact — hyprlab@proton.me"
 #~ msgstr "Kapcsolat — hyprlab@proton.me"

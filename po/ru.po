@@ -6497,6 +6497,29 @@ msgstr "Не удалось сохранить PDF: {error}"
 msgid "Custom…"
 msgstr "Другой цвет…"
 
+#, fuzzy
+msgid "{n} quoted message"
+msgid_plural "{n} quoted messages"
+msgstr[0] "{n} непрочитанное сообщение"
+msgstr[1] "{n} непрочитанных сообщения"
+msgstr[2] "{n} непрочитанных сообщений"
+
+#, fuzzy
+msgid "Conversation history"
+msgstr "Обсуждения"
+
+#, fuzzy
+msgid "Hide history"
+msgstr "Скрыть папку"
+
+#, fuzzy
+msgid "Show history"
+msgstr "Только непрочитанные"
+
+#, fuzzy
+msgid "Show previous message"
+msgstr "Предыдущее сообщение"
+
 msgid "Sans Serif"
 msgstr "Без засечек"
 
@@ -7888,10 +7911,12 @@ msgid "The standard “-- ” line, which other mail apps recognize."
 msgstr ""
 
 #, fuzzy
-msgid "Fold quoted text"
-msgstr "Показать цитируемый текст"
+msgid "Hide conversation history"
+msgstr "Полная история версий"
 
-msgid "Replies and forwards open with the original behind •••."
+msgid ""
+"Replies and forwards open with the quoted messages hidden. They are sent "
+"either way."
 msgstr ""
 
 #, fuzzy
@@ -8371,6 +8396,10 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#, fuzzy
+#~ msgid "Fold quoted text"
+#~ msgstr "Показать цитируемый текст"
 
 #~ msgid "Save to Templates"
 #~ msgstr "Сохранить в «Шаблоны»"
@@ -9856,9 +9885,6 @@ msgstr "Hyprlab"
 
 #~ msgid "Changelog"
 #~ msgstr "Список изменений"
-
-#~ msgid "Full version history"
-#~ msgstr "Полная история версий"
 
 #~ msgid "Contact — hyprlab@proton.me"
 #~ msgstr "Контакт — hyprlab@proton.me"

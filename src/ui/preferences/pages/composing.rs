@@ -170,8 +170,8 @@ impl ComposingPage {
 
                     #[name = "fold_quote_row"]
                     adw::SwitchRow {
-                        set_title: &i18n("Fold quoted text"),
-                        set_subtitle: &i18n("Replies and forwards open with the original behind •••."),
+                        set_title: &i18n("Hide conversation history"),
+                        set_subtitle: &i18n("Replies and forwards open with the quoted messages hidden. They are sent either way."),
                         connect_active_notify[sender] => move |row| {
                             let _ = sender.output(PrefOutput::SetFoldQuote(row.is_active()));
                         },

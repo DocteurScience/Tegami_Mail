@@ -6288,6 +6288,23 @@ msgstr "Impossible d’enregistrer le PDF : {error}"
 msgid "Custom…"
 msgstr "Personnalisé…"
 
+msgid "{n} quoted message"
+msgid_plural "{n} quoted messages"
+msgstr[0] "{n} message cité"
+msgstr[1] "{n} messages cités"
+
+msgid "Conversation history"
+msgstr "Historique de la conversation"
+
+msgid "Hide history"
+msgstr "Masquer l’historique"
+
+msgid "Show history"
+msgstr "Afficher l’historique"
+
+msgid "Show previous message"
+msgstr "Afficher le message précédent"
+
 msgid "Sans Serif"
 msgstr "Sans Serif"
 
@@ -7653,12 +7670,13 @@ msgstr ""
 "La ligne standard « -- » suivie d’une espace, que reconnaissent les autres "
 "applications de messagerie."
 
-#, fuzzy
-msgid "Fold quoted text"
-msgstr "Afficher le texte cité"
+msgid "Hide conversation history"
+msgstr "Masquer l’historique de la conversation"
 
-msgid "Replies and forwards open with the original behind •••."
-msgstr ""
+msgid ""
+"Replies and forwards open with the quoted messages hidden. They are sent "
+"either way."
+msgstr "Les réponses et les transferts s’ouvrent avec les messages cités masqués. Ils sont envoyés dans tous les cas."
 
 msgid "Undo Send"
 msgstr "Annuler l’envoi"
@@ -8131,6 +8149,10 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#, fuzzy
+#~ msgid "Fold quoted text"
+#~ msgstr "Afficher le texte cité"
 
 #~ msgid "Save to Templates"
 #~ msgstr "Enregistrer dans les modèles"
@@ -9846,9 +9868,6 @@ msgstr "Hyprlab"
 
 #~ msgid "Changelog"
 #~ msgstr "Journal des modifications"
-
-#~ msgid "Full version history"
-#~ msgstr "Historique complet des versions"
 
 #~ msgid "Contact — hyprlab@proton.me"
 #~ msgstr "Contact — hyprlab@proton.me"

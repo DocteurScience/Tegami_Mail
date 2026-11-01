@@ -6339,6 +6339,28 @@ msgstr "Δεν ήταν δυνατή η αποθήκευση του PDF: {error}
 msgid "Custom…"
 msgstr "Προσαρμοσμένο…"
 
+#, fuzzy
+msgid "{n} quoted message"
+msgid_plural "{n} quoted messages"
+msgstr[0] "{n} μη αναγνωσμένο μήνυμα"
+msgstr[1] "{n} μη αναγνωσμένα μηνύματα"
+
+#, fuzzy
+msgid "Conversation history"
+msgstr "Συζητήσεις"
+
+#, fuzzy
+msgid "Hide history"
+msgstr "Απόκρυψη φακέλου"
+
+#, fuzzy
+msgid "Show history"
+msgstr "Εμφάνιση μόνο"
+
+#, fuzzy
+msgid "Show previous message"
+msgstr "Προηγούμενο μήνυμα"
+
 msgid "Sans Serif"
 msgstr "Sans Serif"
 
@@ -7722,10 +7744,12 @@ msgstr ""
 "Η τυπική γραμμή «-- », την οποία αναγνωρίζουν άλλες εφαρμογές αλληλογραφίας."
 
 #, fuzzy
-msgid "Fold quoted text"
-msgstr "Εμφάνιση παρατιθέμενου κειμένου"
+msgid "Hide conversation history"
+msgstr "Πλήρες ιστορικό εκδόσεων"
 
-msgid "Replies and forwards open with the original behind •••."
+msgid ""
+"Replies and forwards open with the quoted messages hidden. They are sent "
+"either way."
 msgstr ""
 
 msgid "Undo Send"
@@ -8203,6 +8227,10 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#, fuzzy
+#~ msgid "Fold quoted text"
+#~ msgstr "Εμφάνιση παρατιθέμενου κειμένου"
 
 #~ msgid "Save to Templates"
 #~ msgstr "Αποθήκευση στα Πρότυπα"
@@ -9804,9 +9832,6 @@ msgstr "Hyprlab"
 
 #~ msgid "Changelog"
 #~ msgstr "Αρχείο αλλαγών"
-
-#~ msgid "Full version history"
-#~ msgstr "Πλήρες ιστορικό εκδόσεων"
 
 #~ msgid "Contact — hyprlab@proton.me"
 #~ msgstr "Επικοινωνία — hyprlab@proton.me"

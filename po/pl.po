@@ -6555,6 +6555,29 @@ msgstr "Nie udało się zapisać pliku PDF: {error}"
 msgid "Custom…"
 msgstr "Własny kolor…"
 
+#, fuzzy
+msgid "{n} quoted message"
+msgid_plural "{n} quoted messages"
+msgstr[0] "{n} nieprzeczytana wiadomość"
+msgstr[1] "{n} nieprzeczytane wiadomości"
+msgstr[2] "{n} nieprzeczytanych wiadomości"
+
+#, fuzzy
+msgid "Conversation history"
+msgstr "Rozmowy"
+
+#, fuzzy
+msgid "Hide history"
+msgstr "Ukryj katalog"
+
+#, fuzzy
+msgid "Show history"
+msgstr "Wyświetl tylko nieprzeczytane"
+
+#, fuzzy
+msgid "Show previous message"
+msgstr "Poprzednia wiadomość"
+
 msgid "Sans Serif"
 msgstr ""
 
@@ -7964,10 +7987,12 @@ msgid "The standard “-- ” line, which other mail apps recognize."
 msgstr ""
 
 #, fuzzy
-msgid "Fold quoted text"
-msgstr "Wyświetl zdalne treści"
+msgid "Hide conversation history"
+msgstr "Usuń rozmowę"
 
-msgid "Replies and forwards open with the original behind •••."
+msgid ""
+"Replies and forwards open with the quoted messages hidden. They are sent "
+"either way."
 msgstr ""
 
 #, fuzzy
@@ -8452,6 +8477,10 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#, fuzzy
+#~ msgid "Fold quoted text"
+#~ msgstr "Wyświetl zdalne treści"
 
 #, fuzzy
 #~ msgid "Save to Templates"

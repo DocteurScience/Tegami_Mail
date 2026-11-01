@@ -6290,6 +6290,28 @@ msgstr "No se pudo guardar el PDF: {error}"
 msgid "Custom…"
 msgstr "Personalizado…"
 
+#, fuzzy
+msgid "{n} quoted message"
+msgid_plural "{n} quoted messages"
+msgstr[0] "{n} mensaje sin leer"
+msgstr[1] "{n} mensajes sin leer"
+
+#, fuzzy
+msgid "Conversation history"
+msgstr "Conversaciones"
+
+#, fuzzy
+msgid "Hide history"
+msgstr "Ocultar carpeta"
+
+#, fuzzy
+msgid "Show history"
+msgstr "Mostrar solo"
+
+#, fuzzy
+msgid "Show previous message"
+msgstr "Mensaje anterior"
+
 msgid "Sans Serif"
 msgstr "Sin remates"
 
@@ -7649,10 +7671,12 @@ msgid "The standard “-- ” line, which other mail apps recognize."
 msgstr "La línea estándar «-- » que reconocen otras aplicaciones de correo."
 
 #, fuzzy
-msgid "Fold quoted text"
-msgstr "Mostrar texto citado"
+msgid "Hide conversation history"
+msgstr "Selecciona primero una conversación."
 
-msgid "Replies and forwards open with the original behind •••."
+msgid ""
+"Replies and forwards open with the quoted messages hidden. They are sent "
+"either way."
 msgstr ""
 
 msgid "Undo Send"
@@ -8127,6 +8151,10 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#, fuzzy
+#~ msgid "Fold quoted text"
+#~ msgstr "Mostrar texto citado"
 
 #~ msgid "Save to Templates"
 #~ msgstr "Guardar en Plantillas"
