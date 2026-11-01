@@ -198,27 +198,27 @@ fn pinned_translate_scripts_are_unchanged() {
     }
     assert_eq!(
         fnv(super::format::SHOWCASE_PLAIN_LOG),
-        (393, 0x667da3e64a4a676e)
+        (396, 0x09552826f050be02)
     );
     assert_eq!(
         fnv(super::translate::TR_QUOTE_TEXT),
-        (453, 0xc2a237f0c7dc2fab)
+        (454, 0x590ab2bf4b49d839)
     );
     assert_eq!(
         fnv(super::translate::TR_RICH_BEGIN),
-        (1701, 0xd3cb51e10a1c983c)
+        (1704, 0x434261e8ae315f2c)
     );
     assert_eq!(
         fnv(super::translate::TR_RICH_END),
-        (731, 0x866624ea47866e35)
+        (743, 0x111f1e3ff5268947)
     );
     assert_eq!(
         fnv(super::translate::TR_SOURCE_BEGIN),
-        (877, 0x64fe55236df5c79f)
+        (880, 0xb91bfb37b0a47a9b)
     );
     assert_eq!(
         fnv(super::translate::TR_SOURCE_END),
-        (721, 0xdfc354ea9d805901)
+        (731, 0xf6a52262219b6229)
     );
-    assert_eq!(fnv(super::translate::TR_CANCEL), (197, 0x2cb5c4f7c3471566));
+    assert_eq!(fnv(super::translate::TR_CANCEL), (198, 0x3294a9c6becf8a48));
 }

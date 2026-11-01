@@ -227,7 +227,9 @@ mod tests {
     fn every_snooze_preset_is_later_than_now() {
         let now = crate::datefmt::now();
         let presets = snooze_presets();
-        assert!(presets.len() >= 3);
+        // Sunday after 17:00 leaves only the two tomorrows: too late for
+        // today, and Monday morning is tomorrow morning.
+        assert!(presets.len() >= 2);
         assert!(presets.iter().all(|p| p.at > now));
         assert!(presets.windows(2).all(|w| w[0].at <= w[1].at));
     }

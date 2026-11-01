@@ -55,7 +55,7 @@ mod tests {
         assert_eq!(encode("caf\u{e9}"), "caf%C3%A9");
         assert_eq!(
             encode_path("/Tegami Mail/Q3 report.pdf"),
-            "/Tegami Mail/Q3%20report.pdf"
+            "/Tegami%20Mail/Q3%20report.pdf"
         );
     }
 

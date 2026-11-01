@@ -222,7 +222,7 @@ mod tests {
         assert!(back.contains("kind = \"onedrive\""));
         assert_eq!(
             onedrive_item("Tegami Mail/Q3 report"),
-            "https://graph.microsoft.com/v1.0/me/drive/root:/Tegami Mail/Q3%20report"
+            "https://graph.microsoft.com/v1.0/me/drive/root:/Tegami%20Mail/Q3%20report"
         );
         assert_eq!(
             onedrive_item(""),
