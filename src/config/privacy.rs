@@ -413,8 +413,10 @@ pub(crate) struct PrivacyFile {
     #[serde(default = "default_on")]
     pub(crate) list_group_by_date: bool,
     /// A card's tags and Gmail labels go on a line of their own under its
-    /// text, instead of at the end of the subject (#374).
-    #[serde(default)]
+    /// text, instead of at the end of the subject (#374). On by default:
+    /// the design puts them below the preview, where a long subject does
+    /// not push them off the card (docs/DESIGN.md, "Message list").
+    #[serde(default = "default_on")]
     pub(crate) list_pills_below: bool,
     /// Grouping by date was turned on once for an install from before it
     /// became the default: every save writes every key, so those files
@@ -774,7 +776,7 @@ impl Default for PrivacyFile {
             list_headings: false,
             list_column_scroll: false,
             list_group_by_date: true,
-            list_pills_below: false,
+            list_pills_below: true,
             date_groups_default_applied: true,
             list_search_open: false,
             contacts_search_open: false,

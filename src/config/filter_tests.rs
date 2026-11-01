@@ -873,3 +873,33 @@ fn forward_start_resets_when_the_destinations_change() {
     assert_eq!(forward_start(Some((0, &old)), &old, 500), 500);
     assert_eq!(forward_start(Some((100, &old)), &[], 500), 0);
 }
+
+#[test]
+fn every_palette_colour_has_a_chip_pair_and_others_have_none() {
+    assert_eq!(CHIP_COLORS.len(), TAG_COLORS.len());
+    assert_eq!(chip_colors("#1C71D8"), Some(("#dce9fb", "#0f3a78")));
+    assert_eq!(chip_colors("#123456"), None);
+}
+
+/// The chip pairs keep the 7.8:1 the design's table promises, so a change
+/// to one of them cannot quietly drop below the 4.5:1 that small bold text
+/// needs.
+#[test]
+fn chip_pairs_keep_their_contrast() {
+    fn luminance(hex: &str) -> f64 {
+        let ch = |i: usize| {
+            let v = f64::from(u8::from_str_radix(&hex[i..i + 2], 16).unwrap()) / 255.0;
+            if v <= 0.04045 {
+                v / 12.92
+            } else {
+                ((v + 0.055) / 1.055).powf(2.4)
+            }
+        };
+        0.2126 * ch(1) + 0.7152 * ch(3) + 0.0722 * ch(5)
+    }
+    for (bg, fg) in CHIP_COLORS {
+        let (a, b) = (luminance(bg), luminance(fg));
+        let ratio = (a.max(b) + 0.05) / (a.min(b) + 0.05);
+        assert!(ratio >= 7.8, "{fg} on {bg} is {ratio:.2}:1");
+    }
+}

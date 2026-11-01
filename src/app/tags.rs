@@ -206,9 +206,9 @@ impl AppModel {
         let mut css = String::new();
         for t in &self.tags {
             let class = t.css_class();
-            let text = crate::color::readable_text(&t.color);
+            let (fill, text) = chip_fill(&t.color);
             css.push_str(&format!(
-                ".{class} {{ background-color: {color}; color: {text}; }} \
+                ".{class} {{ background-color: {fill}; color: {text}; }} \
                  .{class} label {{ color: {text}; }} \
                  .tag-tint.{class} {{ color: {color}; background-color: transparent; }}\n",
                 color = t.color,
@@ -227,11 +227,20 @@ impl AppModel {
         }
         // The colors a Gmail label no tag stands for can wear (#374).
         for (hue, color) in crate::config::TAG_COLORS.iter().enumerate() {
-            let text = crate::color::readable_text(color);
+            let (fill, text) = chip_fill(color);
             css.push_str(&format!(
-                ".tag-chip.label-chip.label-hue-{hue} {{ background-color: {color}; color: {text}; }}\n"
+                ".tag-chip.label-chip.label-hue-{hue} {{ background-color: {fill}; color: {text}; }}\n"
             ));
         }
+        // High contrast: a chip is white with a black border and its name,
+        // so a tag is told by its name alone, never by a tint (docs/DESIGN.md,
+        // "Tags and favourite"). Last, so it wins over the colours above:
+        // GTK's CSS has no !important.
+        css.push_str(
+            "@media (prefers-contrast: more) { \
+               .tag-chip { background-color: white; color: black; border: 1px solid black; } \
+               .tag-chip label { color: black; } }\n",
+        );
         self.tag_provider.load(css);
     }
 
@@ -475,5 +484,18 @@ impl AppModel {
             }
             _ => unreachable!("not routed to on_tags"),
         }
+    }
+}
+
+/// A tag chip's background and text: the design's tint and dark shade for a
+/// palette colour, otherwise the colour itself with whichever of black or
+/// white reads better on it.
+fn chip_fill(color: &str) -> (String, String) {
+    match crate::config::chip_colors(color) {
+        Some((fill, text)) => (fill.to_string(), text.to_string()),
+        None => (
+            color.to_string(),
+            crate::color::readable_text(color).to_string(),
+        ),
     }
 }

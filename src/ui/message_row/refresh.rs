@@ -7,7 +7,7 @@ use super::row::Row;
 use super::shared::{RowLook, RowShared};
 use super::{column_width, RowData, LINE_ICON_PX};
 use crate::config::ListColumn;
-use crate::i18n::{i18n, i18n_f};
+use crate::i18n::{i18n, i18n_f, ni18n_f};
 use crate::models::{Importance, Message};
 use crate::ui::column_bin::ColumnBin;
 use adw::prelude::*;
@@ -522,11 +522,36 @@ impl Row {
             chip.set_max_width_chars(14);
             tags_box.append(&chip);
         }
-        for pill in msg.pills(&shared.tags.borrow()) {
-            let chip = pill_label(&pill);
+        let tags = shared.tags.borrow();
+        let pills = msg.pills(&tags);
+        let (shown, hidden) = split_chips(pills.len());
+        for pill in &pills[..shown] {
+            let chip = pill_label(pill);
             chip.set_valign(gtk::Align::Center);
             chip.set_ellipsize(gtk::pango::EllipsizeMode::End);
             chip.set_max_width_chars(14);
+            tags_box.append(&chip);
+        }
+        if hidden > 0 {
+            // The tags left out are named in the tooltip and the accessible
+            // label, so "+2" is never the only way to learn what they are.
+            let names: Vec<String> = pills[shown..]
+                .iter()
+                .map(|p| pill_label(p).label().to_string())
+                .collect();
+            let n = hidden.to_string();
+            let more = ni18n_f(
+                "{n} more tag: {names}",
+                "{n} more tags: {names}",
+                hidden as u32,
+                &[("n", &n), ("names", &names.join(", "))],
+            );
+            let chip = gtk::Label::new(Some(&format!("+{hidden}")));
+            chip.add_css_class("tag-chip");
+            chip.add_css_class("label-chip");
+            chip.set_valign(gtk::Align::Center);
+            chip.set_tooltip_text(Some(&more));
+            chip.update_property(&[gtk::accessible::Property::Label(&more)]);
             tags_box.append(&chip);
         }
     }
@@ -655,5 +680,35 @@ impl Row {
         } else if self.st.borrow().palette_open {
             self.arm_collapse();
         }
+    }
+}
+
+/// At most this many tag chips on a card, then a `+n` chip for the rest
+/// (docs/DESIGN.md, "Message list"). Two leave the card's width to the
+/// subject and the preview, and still show most messages' tags whole.
+const MAX_TAG_CHIPS: usize = 2;
+
+/// How many of `total` tag chips a card shows, and how many the `+n` chip
+/// stands for.
+fn split_chips(total: usize) -> (usize, usize) {
+    let shown = total.min(MAX_TAG_CHIPS);
+    (shown, total - shown)
+}
+
+#[cfg(test)]
+mod chip_tests {
+    use super::split_chips;
+
+    #[test]
+    fn up_to_two_tags_are_all_shown() {
+        assert_eq!(split_chips(0), (0, 0));
+        assert_eq!(split_chips(1), (1, 0));
+        assert_eq!(split_chips(2), (2, 0));
+    }
+
+    #[test]
+    fn beyond_two_the_rest_are_counted() {
+        assert_eq!(split_chips(3), (2, 1));
+        assert_eq!(split_chips(9), (2, 7));
     }
 }

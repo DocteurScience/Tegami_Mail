@@ -27,6 +27,32 @@ pub(crate) const TAG_COLORS: &[&str] = &[
     "#1c71d8", "#2ec27e", "#f5c211", "#e66100", "#c01c28", "#813d9c", "#865e3c", "#77767b",
 ];
 
+/// A chip's background and text for each palette colour: a light tint of
+/// the colour with a dark shade of it for the name (docs/DESIGN.md, "Tags
+/// and favourite"). A solid fill with white text fell below 4.5:1 on the
+/// yellow, green and orange; these pairs are 7.8:1 or better. In the same
+/// order as [`TAG_COLORS`].
+pub(crate) const CHIP_COLORS: &[(&str, &str)] = &[
+    ("#dce9fb", "#0f3a78"),
+    ("#d5f3e4", "#0e5233"),
+    ("#fcefbd", "#5a4300"),
+    ("#fde0cb", "#6b2d00"),
+    ("#f8d7da", "#7a1119"),
+    ("#ecdcf3", "#4b2159"),
+    ("#eddfd2", "#4d3320"),
+    ("#e6e6e8", "#3d3d40"),
+];
+
+/// The chip background and text for a tag colour, when it is one of the
+/// palette's. A colour picked outside the palette has no tested pair, so
+/// the caller keeps the solid fill and picks a readable text for it.
+pub(crate) fn chip_colors(color: &str) -> Option<(&'static str, &'static str)> {
+    TAG_COLORS
+        .iter()
+        .position(|c| c.eq_ignore_ascii_case(color))
+        .map(|i| CHIP_COLORS[i])
+}
+
 impl Tag {
     /// The characters an IMAP keyword (an atom) may hold.
     fn is_keyword_char(c: char) -> bool {
