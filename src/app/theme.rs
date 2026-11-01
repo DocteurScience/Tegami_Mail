@@ -53,17 +53,8 @@ pub(super) fn install_scheme_css(window: &impl IsA<gtk::Widget>) {
     }
     let window = window.clone().upcast::<gtk::Widget>();
     let apply = move |provider: &gtk::CssProvider, dark: bool| {
-        // The selection is the GNOME accent itself at full saturation, with
-        // high-contrast white text, while the list holds the keyboard. A
-        // click into the reader hands focus straight back to the list, so
-        // that is nearly always; when something else really has it (the
-        // composer, a search entry, or focus lost in a rebuild) the row
-        // turns grey, as a sidebar's does, so it is plain that the list's
-        // keys will not reach it (#274). An inactive window keeps the
-        // accent: focus is not lost, the window is just behind another.
-        // The conversation chip goes back to its grey pill there, and a tag
-        // keeps the text color picked for its fill: the white chip and the
-        // window's text color left the count white on white.
+        // The shield over blocked remote content, in GNOME's warning orange
+        // or yellow: the deeper step on light, the lighter one on dark.
         let shield = if dark { "#ffca28" } else { "#ff7800" };
         // GNOME's orange: its lighter step on dark, its deeper one on light.
         let offline = if dark { "#ffa348" } else { "#e66100" };
@@ -71,23 +62,7 @@ pub(super) fn install_scheme_css(window: &impl IsA<gtk::Widget>) {
         // same shade the threaded cards float on, as the theme defines it.
         let (_, page, _) = crate::ui::message_view::theme_grounds_for(&window, dark);
         provider.load_from_string(&format!(
-            ".message-list > row:selected .message-row, \
-             .message-list > row:selected:hover .message-row, \
-             .message-list > row:selected:active .message-row {{ \
-               background-color: @accent_bg_color; color: white; }}\
-             .message-list:not(:focus-within):not(:backdrop) > row:selected .message-row, \
-             .message-list:not(:focus-within):not(:backdrop) > row:selected:hover .message-row, \
-             .message-list:not(:focus-within):not(:backdrop) > row:selected:active .message-row {{ \
-               background-color: alpha(@window_fg_color, 0.14); color: @window_fg_color; }}\
-             .message-list:not(:focus-within):not(:backdrop) > row:selected .message-row label:not(.tag-chip) {{ \
-               color: @window_fg_color; }}\
-             .message-list:not(:focus-within):not(:backdrop) > row:selected .message-row .unread-dot {{ \
-               background: @accent_bg_color; }}\
-             .message-list:not(:focus-within):not(:backdrop) > row:selected .message-row .thread-chip {{ \
-               background: alpha(@window_fg_color, 0.1); }}\
-             .message-list:not(:focus-within):not(:backdrop) > row:selected .message-row .thread-chip image {{ \
-               color: @window_fg_color; }}\
-             .remote-alert image {{ color: {shield}; }}\
+            ".remote-alert image {{ color: {shield}; }}\
              .refresh-offline {{ color: {offline}; }}\
              .inline-compose-surface, .compose-pane {{ background-color: {page}; }}\
              .reader-split > separator {{ background-color: {page}; }}"

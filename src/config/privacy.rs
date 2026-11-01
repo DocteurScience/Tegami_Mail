@@ -53,8 +53,11 @@ pub(crate) struct PrivacyFile {
     #[serde(default = "default_on")]
     pub(crate) own_mailbox_face: bool,
     /// Whether a tagged message's row in the list is washed with its first
-    /// tag's color (PR #383). On unless switched off.
-    #[serde(default = "default_on")]
+    /// tag's color (PR #383). Off unless switched on: the design's cards
+    /// keep the card's own ground and show a tag as a named chip, so that
+    /// the tag is never told by colour alone (docs/DESIGN.md, "Message
+    /// list").
+    #[serde(default)]
     pub(crate) tag_row_tint: bool,
     /// The address book new contacts go to: an EDS source UID, or the
     /// Tegami Mail book's. Empty picks the first writable EDS book, else Tegami Mail.
@@ -684,7 +687,7 @@ impl Default for PrivacyFile {
             gravatar: false,
             avatars: true,
             own_mailbox_face: true,
-            tag_row_tint: true,
+            tag_row_tint: false,
             contact_book: String::new(),
             sender_logos: false,
             date_style: DateStyle::default(),

@@ -850,7 +850,9 @@ flowbox.attach-flow > flowboxchild {
 }
 
 .list-day-heading {
-  margin: 14px 16px 4px 16px;
+  /* Lined up with the cards' text: their 12px margin, 1px border and 14px
+     padding. */
+  margin: 14px 27px 6px 27px;
 }
 
 .message-list > header:first-child .list-day-heading {
@@ -858,16 +860,17 @@ flowbox.attach-flow > flowboxchild {
 }
 
 .message-list.single-line .list-day-heading {
-  margin: 10px 14px 2px 14px;
+  margin: 10px 27px 2px 27px;
 }
 
 .message-list.single-line > header:first-child .list-day-heading {
   margin-top: 6px;
 }
 
-/* Every state tint lives on the inner .message-row as an inset rounded pill
-   — matching the thread member cards — never on the full-width row, so
-   highlights stop touching the list edges and crossing the separators. */
+/* The list is a column of cards (docs/DESIGN.md, "Message list"). The state
+   is drawn on the inner .message-row, never on the full-width row, so the
+   card keeps its margins and the swipe strip under it still runs edge to
+   edge. */
 .message-list > row:hover,
 .message-list > row:selected,
 .message-list > row:selected:hover,
@@ -875,101 +878,78 @@ flowbox.attach-flow > flowboxchild {
   background: none;
 }
 
-/* Reactive hover highlight (kept below the selection color). Every state
-   tint is suspended on a row mid-swipe (.swiping): the pill vanishes and the
-   content slides bare over the strip, with no card outline to clash with the
-   strip's edge. */
-.message-list > row:hover:not(:selected) > .message-item:not(.swiping) .message-row {
-  background-color: alpha(currentColor, 0.05);
-}
-
-/* Unread state carries no background of its own: the blue dot (lit for an
-   unread message, and on a thread head for any unread reply inside) is the
-   one unread signal. The accent pill is reserved for the selection. */
-
-/* Selected (currently-viewed) message: stronger accent tint than libadwaita's
-   default 25% while the list holds focus, dimming — never vanishing — when
-   focus moves to the reader. The hover/active variants are overridden too so
-   the highlight stays uniform when the cursor passes over the selected row. */
-.message-list > row:selected > .message-item:not(.swiping) .message-row {
-  background-color: alpha(@accent_bg_color, 0.3);
-}
-
-.message-list:focus-within > row:selected > .message-item:not(.swiping) .message-row,
-.message-list > row:selected:hover > .message-item:not(.swiping) .message-row,
-.message-list > row:selected:active > .message-item:not(.swiping) .message-row {
-  background-color: alpha(@accent_bg_color, 0.5);
-}
-
-/* Gmail's j/k cursor (#392): an accent outline inside the pill, while the
-   list has the keyboard. It is a class the list sets for j and k and takes
-   off at a click, not a focus ring, so a click never draws it. On the
-   selected row, whose pill is already the accent, it is white. */
-.message-list:focus-within > row > .message-item.kbd-cursor:not(.swiping) .message-row {
-  box-shadow: inset 0 0 0 2px alpha(@accent_color, 0.85);
-}
-
-.message-list:focus-within > row:not(:selected) > .message-item.kbd-cursor:not(.swiping) .message-row {
-  background-color: alpha(@accent_bg_color, 0.1);
-}
-
-.message-list:focus-within > row:selected > .message-item.kbd-cursor:not(.swiping) .message-row {
-  box-shadow: inset 0 0 0 2px alpha(white, 0.8);
-}
-
+/* A message card: libadwaita's card colours, so dark, high contrast and the
+   theme follow without a rule of their own here. Every state is suspended on
+   a row mid-swipe (.swiping): the card's ground would hide the action strip
+   that the swipe uncovers. */
 .message-row {
-  /* The pill: inset from the list edges, rounded like the thread cards.
-     Vertical padding is symmetric — the Actions Palette floats in an overlay
-     and takes no room, so the text block sits centred in the pill. */
-  margin: 2px 6px;
+  background-color: @card_bg_color;
+  color: @card_fg_color;
+  border: 1px solid alpha(currentColor, 0.18);
   border-radius: 12px;
-  padding: 13px 8px 13px 10px;
-}
-.message-row:dir(rtl) {
-  padding: 13px 10px 13px 8px;
+  margin: 0 12px 8px 12px;
+  padding: 12px 14px;
 }
 
-/* Selected rows: every text element fully white at full strength, in both
-   schemes — the accent ground (see install_scheme_css) carries the
-   contrast, so nothing on it is dimmed. */
-.message-list > row:selected .message-row label {
-  color: white;
-  opacity: 1;
+.message-list > row > .message-item.swiping .message-row {
+  background: none;
+  border-color: transparent;
 }
 
-/* The unread dot inverts on the accent ground too — accent-on-accent would
-   vanish, and a selected thread head must still show its unread mark. */
-.message-list > row:selected .message-row .unread-dot {
-  background: white;
+/* Hover only darkens the border: the card's ground stays the card's, so a
+   tint never stands in for the selection. */
+.message-list > row:hover:not(:selected) > .message-item:not(.swiping) .message-row {
+  border-color: alpha(currentColor, 0.32);
 }
 
-/* The thread chip inverts on the accent ground: white pill, accent text
-   and caret — a grey chip would sink into the highlight. */
-.message-list > row:selected .message-row .thread-chip {
-  background: white;
-  opacity: 1;
+/* Selected: an outline in the system accent, not a different fill. The text
+   keeps its own colours, so contrast is the card's (12.6:1) and not
+   white-on-accent, which fails 4.5:1 on the blue, teal and green accents. */
+.message-list > row:selected > .message-item:not(.swiping) .message-row {
+  border-color: @accent_bg_color;
+  box-shadow: 0 0 0 1px @accent_bg_color;
 }
 
-.message-list > row:selected .message-row .thread-chip label,
-.message-list > row:selected .message-row .thread-chip image {
-  color: @accent_bg_color;
+/* When something other than the list holds the keyboard (the composer, a
+   search entry, focus lost in a rebuild), the outline turns from the accent
+   to the text colour, as a sidebar's selection does, so it is plain that
+   the list's keys will not reach it (#274). An inactive window keeps the
+   accent: focus is not lost there, the window is only behind another. */
+.message-list:not(:focus-within):not(:backdrop) > row:selected > .message-item:not(.swiping) .message-row {
+  border-color: alpha(@window_fg_color, 0.55);
+  box-shadow: 0 0 0 1px alpha(@window_fg_color, 0.55);
+}
+
+/* Gmail's j/k cursor (#392): the list sets it for j and k and takes it off
+   at a click, so a click never draws it. Dashed, because a solid accent line
+   is already the selection and the two must not be confused. */
+.message-list:focus-within > row > .message-item.kbd-cursor:not(.swiping) .message-row {
+  outline: 2px dashed @accent_color;
+  outline-offset: 2px;
+}
+
+/* High contrast: a black frame, thicker than the border, and no reliance on
+   the accent, which the system may have set to a light colour. */
+@media (prefers-contrast: more) {
+  .message-row {
+    border-color: @window_fg_color;
+  }
+
+  .message-list > row:selected > .message-item:not(.swiping) .message-row {
+    border-color: @window_fg_color;
+    box-shadow: 0 0 0 2px @window_fg_color;
+  }
 }
 
 /* Avatars off (#29, #99): read rows collapse the dot's slot entirely (see
-   the row template), so the text block starts here — 8px, matching the
-   pill's right padding for equal margins. Unread rows lead with the dot. */
+   the row template), so the text block starts at the card's own padding.
+   Unread rows lead with the dot. */
 .message-row.no-avatar {
-  padding-left: 8px;
-  /* Text anchors to the pill's top (#99): a tighter top inset reads as
+  /* Text anchors to the card's top (#99): a tighter top inset reads as
      top-aligned, and the freed room stays at the bottom where the floating
      Actions Palette rides. */
   padding-top: 6px;
 }
-.message-row.no-avatar:dir(rtl) {
-  padding-left: 8px;
-  padding-right: 8px;
-}
-
 /* With the palette on, the no-avatar pill grows at the bottom so the
    floating ⋯ clears the text; palette off, the room isn't needed
    (.no-palette rows keep the plain padding). */
@@ -998,15 +978,13 @@ flowbox.attach-flow > flowboxchild {
   min-height: 54px;
 }
 
-/* One line per message (#334): a short pill, everything centred on the
-   line, the columns kept by the row's fixed widths. After the no-avatar
-   rules, which it overrides. */
+/* One line per message (#334): a short card, everything centred on the
+   line, the columns kept by the row's fixed widths. Less space between
+   cards than in the full layout, because a single-line list is chosen for
+   density. After the no-avatar rules, which it overrides. */
 .message-row.single-line {
-  margin: 1px 6px;
-  padding: 5px 10px 5px 8px;
-}
-.message-row.single-line:dir(rtl) {
-  padding: 5px 8px 5px 10px;
+  margin: 0 12px 4px 12px;
+  padding: 5px 14px;
 }
 
 .message-row.single-line .unread-dot,
@@ -1076,13 +1054,6 @@ flowbox.attach-flow > flowboxchild {
   opacity: 1;
 }
 
-/* On the accent ground of a selected row they read in white, as the rest
-   of the row does. */
-.message-list > row:selected .message-row.single-line .message-date.overdue,
-.message-list > row:selected .message-row.single-line .importance-high {
-  color: white;
-}
-
 /* Conversation threading: count chip + compact expand/collapse chevron on the
    thread head, and an indented, accent-edged look for nested replies. */
 /* Thread heads: the conversation's message count and its expand/collapse
@@ -1097,12 +1068,6 @@ flowbox.attach-flow > flowboxchild {
   padding: 1px 7px;
   font-size: 0.72em;
   font-weight: 700;
-}
-
-.message-list > row:selected .message-row .tag-chip {
-  /* Keep the tag's own color on a selected row; the selection paints
-     everything else white. */
-  opacity: 0.95;
 }
 
 /* A Gmail label no tag stands for (#374): the tag pill's shape in a tint of
@@ -1190,29 +1155,23 @@ flowbox.attach-flow > flowboxchild {
 }
 
 
-/* The same 6px right inset as every pill in the list, so an expanded thread
-   never opens a gap along the pane's right side. */
+/* A reply in an expanded thread is a card like any other, indented 10px
+   further onto the thread rail. The end margin is the list's, so an
+   expanded thread never opens a gap along the pane's edge. */
 .message-item.thread-child .message-row {
-  /* Identical geometry to the top-level pills — same padding, same vertical
-     rhythm — the only difference is the 10px indent onto the thread rail. */
-  margin: 2px 6px 2px 10px;
-  border-radius: 12px;
-  padding: 13px 8px 13px 10px;
+  margin: 0 12px 8px 22px;
 }
 .message-item.thread-child .message-row:dir(rtl) {
-  margin: 2px 10px 2px 6px;
-  padding: 13px 10px 13px 8px;
+  margin: 0 22px 8px 12px;
 }
 
 /* A reply on one line (#334) keeps the single-line pill's height, indented
    onto the rail like any reply. */
 .message-item.thread-child .message-row.single-line {
-  margin: 1px 6px 1px 10px;
-  padding: 5px 10px 5px 8px;
+  margin: 0 12px 4px 22px;
 }
 .message-item.thread-child .message-row.single-line:dir(rtl) {
-  margin: 1px 10px 1px 6px;
-  padding: 5px 8px 5px 10px;
+  margin: 0 22px 4px 12px;
 }
 
 /* Node dot where each member meets the rail: an 8px circle whose negative
@@ -1234,17 +1193,6 @@ flowbox.attach-flow > flowboxchild {
   margin-right: -5px;
 }
 
-.message-list > row:hover:not(:selected) > .message-item.thread-child:not(.swiping) .message-row {
-  background-color: alpha(currentColor, 0.05);
-}
-
-.message-list > row:selected > .message-item.thread-child:not(.swiping) .message-row {
-  background-color: alpha(@accent_bg_color, 0.3);
-}
-
-.message-list:focus-within > row:selected > .message-item.thread-child:not(.swiping) .message-row {
-  background-color: alpha(@accent_bg_color, 0.5);
-}
 
 /* The Actions Palette: quick-action buttons that expand rightward out of the
    ⋯. The whole line floats in an overlay over the pill's bottom-left corner,
@@ -1393,13 +1341,16 @@ flowbox.attach-flow > flowboxchild {
 }
 
 .message-preview {
-  opacity: 0.5;
+  /* 70 % of the text colour is about 5:1 on a card; 50 % was 3.2:1, below
+     the 4.5:1 that body-size text needs. */
+  opacity: 0.7;
   font-size: 0.9em;
 }
 
 .message-date {
   font-size: 0.82em;
-  opacity: 0.5;
+  /* 70 %, for the same contrast reason as the preview. */
+  opacity: 0.7;
 }
 
 /* Snoozed mail (#527): when it comes back, in the accent, where the date
@@ -1407,10 +1358,6 @@ flowbox.attach-flow > flowboxchild {
 .message-date.snoozed {
   color: @accent_color;
   opacity: 1;
-}
-
-.message-list > row:selected .message-date.snoozed {
-  color: white;
 }
 
 .dim-icon,
@@ -1433,10 +1380,6 @@ flowbox.attach-flow > flowboxchild {
 .read-receipt.read {
   color: @success_color;
   opacity: 1;
-}
-
-.message-list > row:selected .read-receipt.read {
-  color: white;
 }
 
 /* ---- Reader ---- */
