@@ -106,11 +106,11 @@ impl EditorForm {
         relm4::view! {
             page = adw::PreferencesPage {
                 // GNOME Online Accounts owns this account's servers and
-                // credentials; Hylki only mirrors them. Saying so where
+                // credentials; Tegami Mail only mirrors them. Saying so where
                 // the greyed-out fields are is worth more than leaving
                 // the user to work out why they can't type.
                 // GNOME Online Accounts owns this account's servers and
-                // credentials; Hylki only mirrors them, and can hide it
+                // credentials; Tegami Mail only mirrors them, and can hide it
                 // locally. Both facts belong together, above the fields
                 // they explain.
                 // The provider's mark over the form, following
@@ -132,7 +132,7 @@ impl EditorForm {
 
                     #[name = "goa_enabled_row"]
                     adw::SwitchRow {
-                        set_title: &i18n("Show in Hylki"),
+                        set_title: &i18n("Show in Tegami Mail"),
                         set_subtitle: &i18n("Off returns it to the import list. It stays in GNOME Online Accounts."),
                         connect_active_notify[sender] => move |row| {
                             sender.input_sender().emit(AccountsInput::ToggleCurrentEnabled(row.is_active()));
@@ -272,7 +272,7 @@ impl EditorForm {
                     },
                     // Microsoft's own sign-in, made with another app
                     // registration (#329): one an organization has
-                    // approved, say. Empty rows keep Hylki's.
+                    // approved, say. Empty rows keep Tegami Mail's.
                     #[name = "ms_advanced"]
                     adw::ExpanderRow {
                         set_title: &i18n("Advanced"),
@@ -290,7 +290,7 @@ impl EditorForm {
                         add_row: ms_redirect_row = &adw::EntryRow {
                             set_title: &i18n("Redirect URI"),
                             // A redirect of its own signs in in
-                            // Hylki's window, not the browser.
+                            // Tegami Mail's window, not the browser.
                             connect_changed[signin = oauth_signin_btn.clone()] => move |row| {
                                 signin.set_label(&if row.text().trim().is_empty() {
                                     i18n("Sign In with Browser")
@@ -791,9 +791,9 @@ impl EditorForm {
                         set_subtitle: &i18n(REPLY_COPIES_HINT),
                     },
                     // Gmail files a copy of anything sent through
-                    // its SMTP, so Hylki's append makes a second
+                    // its SMTP, so Tegami Mail's append makes a second
                     // one. Off by default: a server that does not
-                    // do it, paired with a Hylki that has stopped
+                    // do it, paired with a Tegami Mail that has stopped
                     // appending, keeps no sent mail at all.
                     #[name = "server_saves_row"]
                     adw::SwitchRow {
@@ -873,7 +873,7 @@ impl EditorForm {
                 },
 
                 // For a GOA-imported account this removes it from
-                // Hylki only — it stays in GNOME Online Accounts and
+                // Tegami Mail only — it stays in GNOME Online Accounts and
                 // returns to the import list.
                 add = &adw::PreferencesGroup {
                     // Not for a GNOME Online Account: GNOME holds its

@@ -177,7 +177,7 @@ fn reader_style_none_adds_nothing() {
         false,
         100,
     );
-    assert!(!frame.contains(":not(#hylki-a)"), "{frame}");
+    assert!(!frame.contains(":not(#tegami-a)"), "{frame}");
     assert_eq!(inject_reader_style("<p>x</p>", ""), "<p>x</p>");
 }
 
@@ -205,7 +205,7 @@ fn reader_font_lands_after_the_senders_css() {
         100,
     );
     let ours = frame
-        .find(":root :not(#hylki-a):not(#hylki-b):not(#hylki-c)")
+        .find(":root :not(#tegami-a):not(#tegami-b):not(#tegami-c)")
         .expect("override sheet");
     let theirs = frame.find("Comic Sans").expect("sender css kept");
     assert!(ours > theirs, "the reader's sheet must come last: {frame}");
@@ -216,11 +216,11 @@ fn reader_font_lands_after_the_senders_css() {
     );
     assert!(
         frame.contains(
-            "h1:not(#hylki-a):not(#hylki-b):not(#hylki-c){font-size:calc(12pt * 1.6) !important"
+            "h1:not(#tegami-a):not(#tegami-b):not(#tegami-c){font-size:calc(12pt * 1.6) !important"
         ),
         "{frame}"
     );
-    assert!(frame.contains(":is(pre,code,kbd,samp,tt):not(#hylki-a):not(#hylki-b):not(#hylki-c){font-family:monospace !important"), "{frame}");
+    assert!(frame.contains(":is(pre,code,kbd,samp,tt):not(#tegami-a):not(#tegami-b):not(#tegami-c){font-family:monospace !important"), "{frame}");
     // Colors untouched: no color rule was asked for.
     assert!(!frame.contains("-webkit-text-fill-color"), "{frame}");
 }
@@ -248,7 +248,7 @@ fn reader_colors_force_text_and_links() {
         100,
     );
     assert!(light.contains("color:#1a1a1a !important;-webkit-text-fill-color:#1a1a1a !important;background-color:transparent !important;background-image:none !important"), "{light}");
-    assert!(light.contains(":root a:not(#hylki-a):not(#hylki-b):not(#hylki-c),:root a:not(#hylki-a):not(#hylki-b):not(#hylki-c) *{color:#3584e4 !important"), "{light}");
+    assert!(light.contains(":root a:not(#tegami-a):not(#tegami-b):not(#tegami-c),:root a:not(#tegami-a):not(#tegami-b):not(#tegami-c) *{color:#3584e4 !important"), "{light}");
     assert!(
         !light.contains("font-family"),
         "no font rule was asked for: {light}"
@@ -346,13 +346,13 @@ fn sender_style_toggle_escapes_one_card() {
     );
     assert_eq!(doc.matches("data-act=\"senderfmt\"").count(), 2, "{doc}");
     assert_eq!(
-        doc.matches("class=\"hylki-act on\" data-act=\"senderfmt\"")
+        doc.matches("class=\"tegami-act on\" data-act=\"senderfmt\"")
             .count(),
         1,
         "{doc}"
     );
     assert_eq!(
-        doc.matches(":root :not(#hylki-a)").count(),
+        doc.matches(":root :not(#tegami-a)").count(),
         1,
         "only the other card is styled: {doc}"
     );
@@ -375,7 +375,7 @@ fn sender_style_toggle_escapes_one_card() {
         100,
     );
     assert!(!plain.contains("senderfmt"), "{plain}");
-    assert!(!plain.contains(":not(#hylki-a)"), "{plain}");
+    assert!(!plain.contains(":not(#tegami-a)"), "{plain}");
 }
 
 /// The sheet goes in before `</body>` (or `</html>`), and at the very end

@@ -6,18 +6,18 @@ use crate::ui::rich_editor::RichEditor;
 use adw::prelude::*;
 use relm4::prelude::*;
 
-/// Development hooks for the capture scripts (`HYLKI_SHOWCASE_*`, most of
-/// them only with `HYLKI_DEMO`).
+/// Development hooks for the capture scripts (`TEGAMI_SHOWCASE_*`, most of
+/// them only with `TEGAMI_DEMO`).
 pub(super) fn showcase_hooks(
     root: &adw::BreakpointBin,
     editor: &RichEditor,
     sender: &ComponentSender<Compose>,
 ) {
-    // HYLKI_SHOWCASE_CLOUD_DIALOG opens the cloud upload dialog on a
+    // TEGAMI_SHOWCASE_CLOUD_DIALOG opens the cloud upload dialog on a
     // stand-in file two seconds after the composer is up (demo only),
     // for a capture of this upload's terms.
-    if std::env::var_os("HYLKI_SHOWCASE_CLOUD_DIALOG").is_some()
-        && std::env::var_os("HYLKI_DEMO").is_some()
+    if std::env::var_os("TEGAMI_SHOWCASE_CLOUD_DIALOG").is_some()
+        && std::env::var_os("TEGAMI_DEMO").is_some()
     {
         let s = sender.clone();
         gtk::glib::timeout_add_seconds_local_once(2, move || {
@@ -28,13 +28,13 @@ pub(super) fn showcase_hooks(
         });
     }
 
-    // HYLKI_SHOWCASE_EDITOR_JS=<file> runs that script in the body three
+    // TEGAMI_SHOWCASE_EDITOR_JS=<file> runs that script in the body three
     // seconds after the composer opens, and logs the body's HTML a
     // second later (demo only), to drive the format bar's commands
     // without a pointer (#358).
     if let (Some(path), Some(_)) = (
-        std::env::var_os("HYLKI_SHOWCASE_EDITOR_JS"),
-        std::env::var_os("HYLKI_DEMO"),
+        std::env::var_os("TEGAMI_SHOWCASE_EDITOR_JS"),
+        std::env::var_os("TEGAMI_DEMO"),
     ) {
         if let Ok(js) = std::fs::read_to_string(&path) {
             let ed = editor.clone();
@@ -49,13 +49,13 @@ pub(super) fn showcase_hooks(
         }
     }
 
-    // HYLKI_SHOWCASE_ATTACH=<file>[:<file>…] attaches those files a
+    // TEGAMI_SHOWCASE_ATTACH=<file>[:<file>…] attaches those files a
     // second after the composer opens (demo only), for a capture of the
-    // chips (#299); HYLKI_SHOWCASE_ATTACH_SHOT=<png>[:<seconds>]
+    // chips (#299); TEGAMI_SHOWCASE_ATTACH_SHOT=<png>[:<seconds>]
     // captures the composer that long after it opens.
     if let (Some(v), Some(_)) = (
-        std::env::var_os("HYLKI_SHOWCASE_ATTACH"),
-        std::env::var_os("HYLKI_DEMO"),
+        std::env::var_os("TEGAMI_SHOWCASE_ATTACH"),
+        std::env::var_os("TEGAMI_DEMO"),
     ) {
         let paths: Vec<_> = std::env::split_paths(&v).collect();
         // A composer made ahead of time and dropped unused is gone by then.
@@ -63,7 +63,7 @@ pub(super) fn showcase_hooks(
         gtk::glib::timeout_add_seconds_local_once(1, move || {
             let _ = s.send(ComposeInput::AddAttachments(paths));
         });
-        if let Ok(v) = std::env::var("HYLKI_SHOWCASE_ATTACH_SHOT") {
+        if let Ok(v) = std::env::var("TEGAMI_SHOWCASE_ATTACH_SHOT") {
             // <png>[:<seconds>], three seconds unless given.
             let given = v
                 .rsplit_once(':')

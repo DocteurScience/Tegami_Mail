@@ -1,6 +1,6 @@
 # Documentation
 
-How to set up the parts of Hylki that need more than a switch. The
+How to set up the parts of Tegami Mail that need more than a switch. The
 [README](../README.md) covers installing, [FEATURES.md](FEATURES.md) lists
 what the app does, and [KEYBOARD_SHORTCUTS.md](KEYBOARD_SHORTCUTS.md) the
 keyboard.
@@ -19,7 +19,7 @@ keyboard.
 - [Grammar checking](#grammar-checking)
 - [Writing in Markdown or HTML](#writing-in-markdown-or-html)
 - [OpenPGP (encrypted and signed mail)](#openpgp-encrypted-and-signed-mail)
-- [Send with Hylki from GNOME Files](#send-with-hylki-from-gnome-files)
+- [Send with Tegami Mail from GNOME Files](#send-with-tegami-from-gnome-files)
 - [Privacy](#privacy)
 
 ## Configuration
@@ -49,15 +49,15 @@ Any mail account set up in *GNOME Settings → Online Accounts* can be
 imported: Google, Microsoft 365 and plain **IMAP and SMTP** accounts alike.
 They are listed on the first-run wizard's first account page, which can be
 skipped, and under **Settings → Accounts → GNOME Online Accounts**, where a
-switch brings one into Hylki. An account added in GNOME Settings while Hylki
+switch brings one into Tegami Mail. An account added in GNOME Settings while Tegami Mail
 is open joins the list as soon as GNOME announces it; the refresh button
 beside **Add Account…** looks again at once.
 
-GNOME keeps such an account's address, servers and password, and Hylki
+GNOME keeps such an account's address, servers and password, and Tegami Mail
 follows it. The password is read from GNOME Online Accounts each time the
 account connects, and server changes made in GNOME Settings are picked up
-while Hylki runs, so nothing is typed twice. For an IMAP and SMTP account
-Hylki also uses what GNOME records about each server: TLS from the start or
+while Tegami Mail runs, so nothing is typed twice. For an IMAP and SMTP account
+Tegami Mail also uses what GNOME records about each server: TLS from the start or
 a STARTTLS upgrade, whatever the port, and a certificate accepted in GNOME
 Settings although it does not verify, as a home server's self-signed one
 does not. Stored on the account as the `security` table in `accounts.toml`.
@@ -79,7 +79,7 @@ JMAP entries:
   They differ only in the account's mark: Stalwart's logo, or a red JMAP
   tile.
 
-For a host name, Hylki reads the session resource at `/.well-known/jmap`.
+For a host name, Tegami Mail reads the session resource at `/.well-known/jmap`.
 A URL with a path is tried as the session resource itself
 (`https://api.fastmail.com/jmap/session`), then as a prefix with
 `/.well-known/jmap` under it. The API, download, upload and push addresses
@@ -87,7 +87,7 @@ come from the session.
 
 A server names itself in that session, with the host it was set up with.
 When the address is entered as a URL with its scheme (`http://10.0.0.5:8080`,
-say, for a server on a private network or behind a tunnel), Hylki uses that
+say, for a server on a private network or behind a tunnel), Tegami Mail uses that
 origin in place of the one the server advertises for itself; a URL on a
 different host, such as the separate one Fastmail serves attachments from,
 is left as advertised.
@@ -213,7 +213,7 @@ one does. Favorites show with a single account too, and for an account left
 out of All Inboxes.
 
 They are kept on this computer, in `sidebar.toml` as `favorites`. A folder
-renamed or moved in Hylki stays a favorite under its new name; one deleted
+renamed or moved in Tegami Mail stays a favorite under its new name; one deleted
 leaves the list.
 
 ### Smart folders
@@ -253,10 +253,10 @@ smart folders and the tag menus count it.
 
 Tagging a message on a Gmail account puts a label named like the tag on it,
 so Gmail's own apps show the tag too, and keeps the IMAP keyword other mail
-programs read; taking the tag off removes both. A label Hylki has just made
+programs read; taking the tag off removes both. A label Tegami Mail has just made
 appears as a folder after the next folder check, as every Gmail label does.
 Labels are read with each sync of a folder's newest mail; mail synced
-before Hylki read labels gets them once, in the background.
+before Tegami Mail read labels gets them once, in the background.
 
 ### Hiding folders
 
@@ -273,7 +273,7 @@ They are stored on the account as `hidden_folders` in `accounts.toml`.
 
 An Exchange server lists its calendar, contacts, tasks, notes and journal
 folders over IMAP as if they were mail folders, along with Outbox, Sync
-Issues, Conversation History and Scheduled. Hylki hides these the
+Issues, Conversation History and Scheduled. Tegami Mail hides these the
 first time it lists such an account, and only when the listing looks like
 Exchange (at least two of Calendar, Contacts, Tasks and Journal at the top
 level), so a "Notes" folder on any other server is left alone. The look is
@@ -365,7 +365,7 @@ left. What is deleted or moved on the
 server afterwards stays in the copy as it was, and a message moved to
 another folder on the server is not copied again. Switching the setting on
 adds On This Computer when there is none. Which messages are copied is
-listed in `hylki-copied/` beside the folders.
+listed in `tegami-copied/` beside the folders.
 
 #### Importing from another program
 
@@ -388,8 +388,8 @@ and the folders appear when it is done.
 
 #### Where the mail is kept
 
-The folders are a Maildir++ tree in `~/.local/share/hylki/local-mail/`
-(`~/.var/app/co.hyprlab.Hylki/data/hylki/local-mail/` in the Flatpak): the
+The folders are a Maildir++ tree in `~/.local/share/tegami/local-mail/`
+(`~/.var/app/io.github.DocteurScience.TegamiMail/data/tegami/local-mail/` in the Flatpak): the
 Inbox at the top, every other folder a `.Name` directory beside it, a
 sub-folder `.Parent.Child`. Each message is one file, read, starred and
 replied to are letters in its name, and tags are listed in
@@ -403,15 +403,15 @@ the folders where they are, and adding it again finds them.
 drawer, or in the attachment gallery, takes that one file out of the message
 on the server, to save space there. The rest of the message stays: its text,
 its other files, where it is filed, its read, starred and tag state, and its
-date. Hylki asks first, as the change reaches every device that reads the
+date. Tegami Mail asks first, as the change reaches every device that reads the
 account and cannot be undone. Save the file first if you want to keep a copy.
 While the server works, the file shows pale red with "Deleting…" in place of
 its buttons, then fades out; if the server refuses, it comes back as it was.
 
-An IMAP or JMAP server cannot edit a message, so Hylki stores a copy without
+An IMAP or JMAP server cannot edit a message, so Tegami Mail stores a copy without
 the file and then deletes the original; the copy stands where the original
 was. In place of the file the copy carries a short note in the format
-Thunderbird uses, so Thunderbird shows it as a deleted attachment and Hylki
+Thunderbird uses, so Thunderbird shows it as a deleted attachment and Tegami Mail
 leaves it out of the list. A Microsoft account deletes the file from the
 message itself.
 
@@ -426,38 +426,38 @@ It is refused where it would not save space or would break the message:
 
 ### OAuth (Google / Microsoft)
 
-**Microsoft** signs in with Hylki's own app, with or without GNOME Online
+**Microsoft** signs in with Tegami Mail's own app, with or without GNOME Online
 Accounts: pick *Microsoft 365 / Outlook* in the first-run wizard or in
 Settings → Mail Accounts, and sign in in the browser. The account's name and
 address are filled in from the sign-in, and its mail is read and sent through
 Microsoft Graph. This also works where GNOME Online Accounts cannot add the
 account, as with personal accounts on GNOME 46 (Ubuntu 24.04, Linux Mint 22).
 
-Personal accounts (outlook.com, hotmail.com, live.com) approve Hylki
+Personal accounts (outlook.com, hotmail.com, live.com) approve Tegami Mail
 themselves the first time. A work or school account may need its
-organization's administrator to approve Hylki once for everyone, at
+organization's administrator to approve Tegami Mail once for everyone, at
 `https://login.microsoftonline.com/organizations/adminconsent?client_id=01cdc012-c8d8-4d03-822c-76696a01c14e`;
-Hylki shows that link when Microsoft refuses a sign-in for want of approval.
+Tegami Mail shows that link when Microsoft refuses a sign-in for want of approval.
 
 An organization that has approved another mail app's registration, and not
-Hylki's, can sign in with that one instead. The **Advanced** row on the
+Tegami Mail's, can sign in with that one instead. The **Advanced** row on the
 account's page takes its **Client ID**, a **Tenant** (`common`,
 `organizations`, `consumers`, or the organization's directory ID or
 domain), the **Scopes** it was approved for and its **Redirect URI**. Empty
-rows keep Hylki's own. Scopes are Graph's short names, space-separated,
+rows keep Tegami Mail's own. Scopes are Graph's short names, space-separated,
 such as `Mail.ReadWrite Mail.Send User.Read`; `offline_access` is added if
-it is missing. Hylki reads and sends mail, so only the mail scopes are used,
+it is missing. Tegami Mail reads and sends mail, so only the mail scopes are used,
 whatever else the list grants. A redirect URI that is not a `localhost`
 address, such as Evolution's
 `https://login.microsoftonline.com/common/oauth2/nativeclient`, makes the
-sign-in run in a window of Hylki's instead of the browser, so the answer
+sign-in run in a window of Tegami Mail's instead of the browser, so the answer
 can be caught; that window keeps nothing once it closes. Evolution's
 registration is `20460e5d-ce91-49af-a3a5-70b6be7486d1` with that redirect.
 
 An organization whose Conditional Access lets only a managed device sign in
 refuses that window and any browser but its own. On a computer enrolled with
 Microsoft's identity broker (`microsoft-identity-broker` from Intune, or
-Himmelblau), Hylki asks the broker for a device sign-in cookie, as Evolution
+Himmelblau), Tegami Mail asks the broker for a device sign-in cookie, as Evolution
 does, and sends it with the sign-in page and with every token refresh. The
 broker's account is the one with the address on the account's page, so enter
 the address before signing in. Without a broker nothing changes. The
@@ -465,13 +465,13 @@ Flatpak is allowed to talk to the broker on the session bus
 (`com.microsoft.identity.broker1`) for this alone.
 
 **Google** signs in through **GNOME Online Accounts**. Add your Google account in
-*GNOME Settings → Online Accounts*, then import it in Hylki. Official builds don't
+*GNOME Settings → Online Accounts*, then import it in Tegami Mail. Official builds don't
 bundle a Google OAuth client (Google's secret can't live in a public repo), so
 GNOME Online Accounts is the standard path. You can also use your own OAuth client
 (see below).
 
 To use **your own** OAuth client (a fork, a self-hosted build, or to replace the
-bundled ones), put it in `~/.config/hylki/oauth.toml`:
+bundled ones), put it in `~/.config/tegami/oauth.toml`:
 
 ```toml
 [google]
@@ -485,15 +485,15 @@ client_id = "your-azure-application-client-id"  # public client, no secret
 client_id = "your-dropbox-app-key"  # public client, no secret
 ```
 
-or via the `HYLKI_GOOGLE_CLIENT_ID` / `HYLKI_GOOGLE_CLIENT_SECRET`,
-`HYLKI_MICROSOFT_CLIENT_ID` / `HYLKI_MICROSOFT_CLIENT_SECRET` and
-`HYLKI_DROPBOX_CLIENT_ID` environment variables.
+or via the `TEGAMI_GOOGLE_CLIENT_ID` / `TEGAMI_GOOGLE_CLIENT_SECRET`,
+`TEGAMI_MICROSOFT_CLIENT_ID` / `TEGAMI_MICROSOFT_CLIENT_SECRET` and
+`TEGAMI_DROPBOX_CLIENT_ID` environment variables.
 
 **Bundling a Google client at build time** (for maintainers): set the env vars
 during the build and they're compiled in via `option_env!`:
 
 ```sh
-HYLKI_GOOGLE_CLIENT_ID=... HYLKI_GOOGLE_CLIENT_SECRET=... cargo build --release
+TEGAMI_GOOGLE_CLIENT_ID=... TEGAMI_GOOGLE_CLIENT_SECRET=... cargo build --release
 ```
 
 ### Cloud attachments (Nextcloud, OneDrive, Dropbox, Seafile)
@@ -510,7 +510,7 @@ of the generated one.
 
 - **OneDrive:** through GNOME Online Accounts: add your Microsoft 365
   account under Settings → Online Accounts, then pick it in the cloud
-  account's editor. GOA holds the sign-in and refreshes the token, so Hylki
+  account's editor. GOA holds the sign-in and refreshes the token, so Tegami Mail
   stores no password or key. Uploads go into the upload folder (made when
   missing) and are shared with "anyone with the link". **Link expiry and
   download passwords need a Microsoft 365 subscription or OneDrive for
@@ -520,7 +520,7 @@ of the generated one.
   greys out the rows it rules out, with the reason, in the account's
   settings and in the upload dialog. Uploads and plain links work on any
   OneDrive. Google Drive is not offered: GNOME Online Accounts
-  does not ask Google for Drive access on every system, and Hylki carries
+  does not ask Google for Drive access on every system, and Tegami Mail carries
   no Google client of its own.
 - **Nextcloud, ownCloud, OpenCloud:** the server URL, your user name and an
   app password (made under *Security* in the server's personal settings).
@@ -534,20 +534,20 @@ of the generated one.
   as one request as before.
 - **Seafile:** the server URL, your e-mail and your password. If the
   account uses two-step verification, also enter the current code from your
-  authenticator app: Hylki signs in with it once, gets an API token from the
+  authenticator app: Tegami Mail signs in with it once, gets an API token from the
   server and keeps that in the keyring instead of the password (Seafile's
   web interface shows no such token itself; one obtained another way, say
   from the `api2/auth-token/` endpoint, can be pasted in the password
-  field). Uploads go into a library (made when missing, "Hylki" by default)
+  field). Uploads go into a library (made when missing, "Tegami Mail" by default)
   and a folder inside it.
 - **Dropbox:** sign in through your browser. Dropbox only lets a registered
   app sign in, so make one for yourself; it takes a minute and stays private:
   1. Open [dropbox.com/developers/apps](https://www.dropbox.com/developers/apps)
      signed in to your Dropbox and press **Create app**.
   2. Choose **Scoped access**, then the access type: **App folder** gives
-     Hylki its own folder under *Apps* and nothing else, **Full Dropbox** puts
+     Tegami Mail its own folder under *Apps* and nothing else, **Full Dropbox** puts
      uploads in the folder named in the account's settings.
-  3. Give the app a name no one else has used ("Hylki for Jane", say) and
+  3. Give the app a name no one else has used ("Tegami Mail for Jane", say) and
      press **Create app**.
   4. On the **Permissions** tab tick `account_info.read`,
      `files.content.write` and `sharing.write`, then press **Submit**.
@@ -556,52 +556,52 @@ of the generated one.
      Dropbox matches redirect URIs exactly.
   6. Copy the **App key** from the top of the Settings tab.
 
-  In Hylki, add a Dropbox account under Settings → Cloud Storage, paste the
+  In Tegami Mail, add a Dropbox account under Settings → Cloud Storage, paste the
   app key and press **Connect with Dropbox**; the browser opens, you approve
   the app, and the account's e-mail appears in the dialog. The app can stay
   in *Development* status, which allows your own account (Dropbox asks for a
   production review only past a few hundred users). A build can carry an app
   key of its own (the `[dropbox]` entry in `oauth.toml`, or
-  `HYLKI_DROPBOX_CLIENT_ID` at build time), in which case the field can stay
+  `TEGAMI_DROPBOX_CLIENT_ID` at build time), in which case the field can stay
   empty. Link passwords and expiry dates are a paid Dropbox feature; on a
   Basic plan leave both off, or the share step reports it.
 
 ### Address books
 
-**Settings → Contacts** lists every address book Hylki reads contacts from,
-one row each, as Mail Accounts lists mail accounts: the Hylki book, the books
+**Settings → Contacts** lists every address book Tegami Mail reads contacts from,
+one row each, as Mail Accounts lists mail accounts: the Tegami Mail book, the books
 on this computer that GNOME Contacts and Evolution keep, each GNOME Online
 Accounts account that keeps contacts (Google, Microsoft 365, Nextcloud,
 iCloud), each [CardDAV account](#carddav-accounts) and each
 [LDAP directory](#ldap-directories). A row names the account, what it holds,
-and where it was set up: **Hylki**, **GOA** or **Evolution**.
+and where it was set up: **Tegami Mail**, **GOA** or **Evolution**.
 
-A row's switch uses the address book in Hylki or leaves it out: of Contacts,
+A row's switch uses the address book in Tegami Mail or leaves it out: of Contacts,
 the composer's suggestions, sender pictures, the
 [filters on Contacts](#filtering-on-contacts) and syncing. The switch is
-Hylki's own; GNOME Contacts and Evolution go on using the book. An account
+Tegami Mail's own; GNOME Contacts and Evolution go on using the book. An account
 whose Contacts are switched off in GNOME Online Accounts has its switch
 greyed out, and says so.
 
 The arrow at the end of a row opens the address book's page. Its **Name**
-field gives the account a name of its own in Hylki: in this list, and
+field gives the account a name of its own in Tegami Mail: in this list, and
 under its address books in the sidebar's Contacts list, while GNOME
 Contacts and Evolution keep the account's. An account's page lists its
 address books, each with a name that can be changed the same way, as
 **Rename…** in the sidebar does, and a switch of its own, under the
 account's switch. A name left blank, applied, is the account's or the
-book's own again. The Hylki book's page holds its import and export. A
+book's own again. The Tegami Mail book's page holds its import and export. A
 GNOME Online Accounts account's page has **Open Online Accounts**, where its
 sign-in is changed; a CardDAV account's and a directory's page is their form,
 with **Remove**.
 
 **Add Address Book…** offers a CardDAV server, iCloud, Nextcloud, Fastmail,
-Yahoo and an LDAP directory, set up in Hylki, and Google and Microsoft 365,
+Yahoo and an LDAP directory, set up in Tegami Mail, and Google and Microsoft 365,
 which are added in GNOME Online Accounts and then listed here; the refresh
 button beside it looks again for one just added there. Every kind but the
-Hylki book is kept by Evolution Data Server; without it, the page says so.
+Tegami Mail book is kept by Evolution Data Server; without it, the page says so.
 **Save new contacts in**, at the foot of the page, sets the book a contact
-made in Hylki goes to.
+made in Tegami Mail goes to.
 
 **Show names from Contacts**, on the same page, names a sender or recipient
 whose address is in an address book by the name saved there, not the one
@@ -612,9 +612,9 @@ which gives it away. Address books that fill themselves from mail
 (Collected Addresses, Recently Contacted, Other Contacts) are not used for
 this, and a contact saved without a name keeps the message's.
 
-### The Hylki address book
+### The Tegami Mail address book
 
-Hylki keeps an address book of its own, the **Hylki Address Book**, beside
+Tegami Mail keeps an address book of its own, the **Tegami Mail Address Book**, beside
 the address books of GNOME Contacts, which Evolution Data Server (EDS)
 holds. It is there whether EDS is installed or not. Its contacts are
 created, edited and deleted like any other, and their addresses and photos
@@ -635,7 +635,7 @@ filter is on, and **Clear Filters** shows everything again.
 with Contacts off, a dropdown over the list picks **All Address Books** or
 one of them, and a book lists its groups and then its contacts. Above or
 below the accounts, the row opens every contact, and its chevron opens the list beneath:
-the Hylki book first, then each account. An account with one address
+the Tegami Mail book first, then each account. An account with one address
 book is that book's row, with the account or server it is kept by in
 small type under its name; an account with several is a row of its own,
 with how many contacts they hold together, and its books under it.
@@ -649,8 +649,8 @@ group lists the group and then its people, with **Remove from Group** in
 their right-click menu. An LDAP directory, under **Directories**, is
 searched by typing. A book's right-click menu has **New Contact** and
 **New Group**, made in that book, and **Rename…**, which gives the book
-a name of its own in Hylki: in the sidebar, on its contacts' cards and
-wherever Hylki names it, while GNOME Contacts and Evolution keep the
+a name of its own in Tegami Mail: in the sidebar, on its contacts' cards and
+wherever Tegami Mail names it, while GNOME Contacts and Evolution keep the
 book's own. **Use Its Own Name**, in the same window, goes back to it. A
 group's menu has **New Message**, **Edit Group** and **Delete Group…**.
 
@@ -659,7 +659,7 @@ there, and stay where they were. With <kbd>Ctrl</kbd> held as they are
 dropped they move instead, after a question that names both books.
 Dropped onto a group, they join it, copied first into the group's book
 when it needs them (see [Contact groups](#contact-groups)). A drag takes
-every contact selected with the one dragged. A book Hylki cannot write
+every contact selected with the one dragged. A book Tegami Mail cannot write
 to, and a group it cannot change, take no drop.
 
 Several contacts are selected together with <kbd>Ctrl</kbd> or
@@ -670,7 +670,7 @@ to…**, which moves them to another address book, and **Delete…**; a
 right-click on one of them offers the same. A move adds each contact to the
 book picked and removes it from the one it was in, locally and on the
 server, with its photo; a group that names it by its card in the old book
-loses it. Contacts in a book Hylki cannot write to are not moved. With a
+loses it. Contacts in a book Tegami Mail cannot write to are not moved. With a
 group picked in the sidebar, the pane has **Remove from Group** for them
 too.
 
@@ -684,7 +684,7 @@ Address Book** too, and several selected together move with **Move to…**
 (see below). A move takes the contact out of its book and puts it in the
 other, locally and on the server, after a question that names both; a group
 in the old book that held the contact no longer has it. A contact in a book
-Hylki cannot write to stays where it is.
+Tegami Mail cannot write to stays where it is.
 
 The contact form holds the photo, which **Change Photo…** replaces with an
 image file (made at most 512 pixels a side and kept in the card) and
@@ -698,16 +698,16 @@ list also shows under the name when there is no email address. Every card
 in every book is listed, so someone kept in two books shows twice, each
 with its book named.
 
-The Hylki book's page in **Settings → Contacts** shows how many contacts it
+The Tegami Mail book's page in **Settings → Contacts** shows how many contacts it
 holds, and has **Import vCard files**, **Export as a vCard file** (one `.vcf`
 file with every contact, which other apps can import) and **Delete all
 contacts**, which asks first and leaves the other books alone. **Save new
 contacts in**, on the same page as the list, sets the default book for
-contacts made in Hylki, from the Contacts view or with **Add Sender to
+contacts made in Tegami Mail, from the Contacts view or with **Add Sender to
 Contacts**. Until it is set, a new contact goes to the first writable EDS
-book, or to the Hylki book when there is none.
+book, or to the Tegami Mail book when there is none.
 
-Importing reads `.vcf` files into the Hylki book, from Settings or from the
+Importing reads `.vcf` files into the Tegami Mail book, from Settings or from the
 import button in the Contacts view's header. A file can hold many contacts,
 in vCard 2.1, 3.0 or 4.0. A contact with the same ID as one already in the
 book updates it, and one without an ID is matched by its content, so
@@ -717,10 +717,10 @@ nor an address are skipped; truncated or oversized entries
 (over 5 MB) are counted as damaged; a second card with the same ID in one
 file is skipped, so the first is kept. Files over 50 MB are refused, and
 photos are used only when they are inside the file: nothing is fetched from
-the web. A person who is in both an EDS book and the Hylki book appears in
+the web. A person who is in both an EDS book and the Tegami Mail book appears in
 each, with the book named, and once in the composer's suggestions.
 
-The book is the file `local_contacts.db` in Hylki's data folder, kept apart
+The book is the file `local_contacts.db` in Tegami Mail's data folder, kept apart
 from the mail cache, so clearing the cache leaves it alone.
 
 ### Contact groups
@@ -736,10 +736,10 @@ people in Bcc, and opens the Bcc row, so they do not see each other's
 addresses. To still needs at least one address, your own for example.
 
 A group is listed in the sidebar under its address book, and picking it
-lists its people (see [The Hylki address book](#the-hylki-address-book)).
+lists its people (see [The Tegami Mail address book](#the-tegami-address-book)).
 
 **New Group**, under the **+** button in the Contacts view, makes a group in
-the address book picked at the top of the form: the Hylki book, a book on
+the address book picked at the top of the form: the Tegami Mail book, a book on
 this computer, or a CardDAV book such as iCloud's. Google and Microsoft 365
 keep no groups, so their books are not offered. Add people by typing part of a name or address and picking
 from the matches under the field, or by typing or pasting addresses and
@@ -753,16 +753,16 @@ group's pencil, at the top of its card, changes its name, its people and the
 Bcc switch, and its **Address book** moves it to another book: saving makes
 the group there, with its people, and then removes it from the book it was
 in. Moved into a CardDAV book, its people are copied there as contacts when
-the book does not have them yet; moved into the Hylki book or one on this
+the book does not have them yet; moved into the Tegami Mail book or one on this
 computer, whose groups hold addresses, its people with no email address are
 left out. The form says so when another book is picked.
 
 The lists made in Evolution, kept in the books of Evolution Data Server, are
 shown and offered too, and Evolution's **Hide addresses when sending mail to
-this list** is the same as **Send as Bcc**. They can be changed in Hylki as
+this list** is the same as **Send as Bcc**. They can be changed in Tegami Mail as
 well.
 
-A group in the Hylki book or on this computer is saved as an Evolution list,
+A group in the Tegami Mail book or on this computer is saved as an Evolution list,
 so **Export as a vCard file** carries it to Evolution, and back. A group in
 a CardDAV book is saved as Apple Contacts and iCloud save theirs, which
 the Apple apps, Fastmail and DAVx⁵ read as groups too. Such a group holds
@@ -772,7 +772,7 @@ photo and all, and the original stays where it was. Someone the book
 already has, by address (or, with no address, by name), is not copied
 again. Someone added in the group's form by typing an address is added to
 the book as a contact with their name and address. The groups made by Apple
-Contacts and iCloud can be changed in Hylki the same way. Such a group can
+Contacts and iCloud can be changed in Tegami Mail the same way. Such a group can
 hold people with no email address, known by a phone number for example:
 they are listed in it as having none, and mail to the group goes to the
 others. An Evolution list holds addresses, so a contact with none cannot
@@ -788,7 +788,7 @@ filters below.
 A filter condition can be **Sender is in Contacts** or **Sender is not in
 Contacts**, under **Settings → Filters**. They take no text. The sender's
 address is looked up in the address books Evolution Data Server keeps and
-in the Hylki book. Books that fill themselves from mail you exchange are
+in the Tegami Mail book. Books that fill themselves from mail you exchange are
 left out, so writing to someone once does not make them a contact: they are
 recognised by an English name such as "Collected Addresses", "Recently
 contacted" or "Other contacts", and a book named in another language may
@@ -797,7 +797,7 @@ neither condition matches, so mail is not filed as coming from a stranger
 by mistake. The books are read again in the background at most once a
 minute and after a contact changes.
 
-A version of Hylki from before these conditions reads them as a From
+A version of Tegami Mail from before these conditions reads them as a From
 address condition with no text, which matches nothing.
 
 ### CardDAV accounts
@@ -806,18 +806,18 @@ address condition with no text, which matches nothing.
 CardDAV server, such as Nextcloud, iCloud, Fastmail, Radicale or a mail
 provider's, without GNOME Online Accounts or Evolution. Their contacts are listed in Contacts,
 in the book list above them, and suggested in the composer; a contact added
-or changed in Hylki is saved to the server.
+or changed in Tegami Mail is saved to the server.
 
 Pick **CardDAV Server**, or the service by name: iCloud, Fastmail and Yahoo
 fill in their server, and Nextcloud asks for yours. The form asks for:
 
 - **Server**: the server's address is enough for most services, such as
-  `nextcloud.example.org`, and Hylki finds the address books on it. A full
+  `nextcloud.example.org`, and Tegami Mail finds the address books on it. A full
   CardDAV address works too. A name without `https://` is taken as HTTPS;
   write `http://` for a server without TLS, such as one on your own network.
   For iCloud, use `contacts.icloud.com`.
 - **User name** and **Password**. A service that signs in with two steps
-  wants an app password made for Hylki: iCloud, Fastmail, and Nextcloud with
+  wants an app password made for Tegami Mail: iCloud, Fastmail, and Nextcloud with
   two-factor sign-in among them.
 
 Saving looks for the address books and says how many it found, or why it
@@ -833,11 +833,11 @@ CardDAV, and Microsoft 365 has no CardDAV.
 
 An account is kept by Evolution Data Server, the service GNOME Contacts and
 Evolution keep their address books in, as one of Evolution's own collection
-accounts. Hylki adds no CardDAV client of its own, so an account set up in
+accounts. Tegami Mail adds no CardDAV client of its own, so an account set up in
 Evolution's collection accounts is listed here as well, and one added here
 shows in Evolution and GNOME Contacts. Evolution Data Server keeps the
 password in the keyring, signs in with it by itself and syncs the address
-books. While Hylki runs it keeps every address book that syncs with a server
+books. While Tegami Mail runs it keeps every address book that syncs with a server
 open, so they stay up to date on desktops with no GNOME Contacts to do it,
 and opening Contacts fetches what changed if that was more than five minutes
 ago. Away from GNOME, Evolution Data Server has to be installed: it is the
@@ -861,10 +861,10 @@ address starts a message, and **Add to Contacts** copies the person into the
 default address book. Each directory is also in the address book list above
 the contacts, by name after the address books: picking it shows only the
 people the search finds there. A directory switched on in Evolution is searched
-without restarting Hylki.
+without restarting Tegami Mail.
 
 A directory is an address book in Evolution Data Server, the service GNOME
-Contacts and Evolution keep theirs in. Hylki adds no LDAP client of its own,
+Contacts and Evolution keep theirs in. Tegami Mail adds no LDAP client of its own,
 so a directory set up in Evolution is listed here as well, and one added
 here shows in Evolution. Removing one removes it for both.
 
@@ -883,14 +883,14 @@ here shows in Evolution. Removing one removes it for both.
   for a directory that can be searched anonymously. The password is kept in
   the keyring and handed to Evolution Data Server when the directory asks
   for it. A directory set up in Evolution with its password remembered needs
-  none in Hylki: Evolution Data Server signs in with the one Evolution
+  none in Tegami Mail: Evolution Data Server signs in with the one Evolution
   stored.
 
 Saving checks the connection and says whether the directory answered, or
 why not (a password it refused, a server it could not reach or find, TLS
 that could not start). The check gives up after 30 seconds. A directory
 that fails during a search, such as one that needs a password neither
-Hylki nor Evolution has, says why under **In Directories** in Contacts, once
+Tegami Mail nor Evolution has, says why under **In Directories** in Contacts, once
 in the status bar of each composer, and in its row in Settings → Contacts. It is left alone for 30 seconds before it is asked again. The
 console ([the status bar](#the-status-bar) with **Settings → System → Console
 mode** on) records each directory's answer to a search: how many entries it
@@ -900,15 +900,15 @@ the system, as it is with GNOME.
 
 ### The Microsoft 365 directory
 
-A Microsoft 365 account signed in within Hylki can suggest people from the
+A Microsoft 365 account signed in within Tegami Mail can suggest people from the
 organization's directory as a recipient is typed, alongside LDAP
 directories. Turn on **Search the organization directory** under Microsoft
 365 in the account's settings, where the account's other Microsoft Graph
 switches are too. Microsoft then asks to approve access to the directory (the
 People.Read and User.ReadBasic.All permissions). Where an organization lets
-only administrators approve apps, an administrator approves Hylki once, at
+only administrators approve apps, an administrator approves Tegami Mail once, at
 the link shown. Accounts added through GNOME Online Accounts cannot use it,
-since GNOME holds their sign-in; add the account in Hylki with the Microsoft
+since GNOME holds their sign-in; add the account in Tegami Mail with the Microsoft
 365 / Outlook provider instead.
 
 With **Suggest only from this account** on as well, a message written from
@@ -930,7 +930,7 @@ with, under your own key:
 | LibreTranslate | the server's address, and a key if it asks for one | Can run on your own computer or network, so messages never leave it. |
 
 **Check the settings** translates a greeting to show that the service
-answers. **Translate into** is Hylki's own language unless another is chosen.
+answers. **Translate into** is Tegami Mail's own language unless another is chosen.
 
 A message is translated from the A文 button in its card's actions, or from
 Translate in its right-click menu. The card then shows the translation, with a banner naming the service and the language
@@ -995,12 +995,12 @@ picked.
 In a reply or forward the account's signature is placed above the quoted
 message, so it closes what you wrote rather than what the other person did.
 **Settings → Composing → Signature in replies** moves it below the quoted
-message instead, the placement Hylki had before 1.38. The setting applies
+message instead, the placement Tegami Mail had before 1.38. The setting applies
 when a composer opens; a draft keeps its signature wherever it was saved.
 
 The signature follows a blank line and nothing else. **Settings → Composing →
 Separator line above the signature** puts the traditional `-- ` line (two
-dashes and a space) between them, as Hylki did before 1.42. Thunderbird,
+dashes and a space) between them, as Tegami Mail did before 1.42. Thunderbird,
 Evolution and Mutt use that line to show the signature dimmed and to leave it
 out when they quote your message; Gmail, Apple Mail and Outlook ignore it.
 
@@ -1054,7 +1054,7 @@ arrows are kept on the server, so a message answered from another client
 shows them too. The arrow appears as soon as a reply or forward is sent,
 and goes again if the send is undone or fails; a message that waits in the
 Outbox, or is sent later, marks its original when it goes. IMAP keeps them as the `\Answered` flag and the `$Forwarded` keyword,
-JMAP as `$answered` and `$forwarded`, and POP3 in Hylki only. Microsoft 365
+JMAP as `$answered` and `$forwarded`, and POP3 in Tegami Mail only. Microsoft 365
 keeps only the last thing done to a message, as Outlook shows it, so a
 message replied to and then forwarded there shows the forward arrow alone.
 Mail already downloaded shows its arrows once it is fetched again.
@@ -1107,7 +1107,7 @@ be edited or removed in the Outbox until its time.
 
 While it waits and while it is being sent, the message is listed in the
 **Outbox**, where **Edit** and **Delete** bring it back to the composer and
-**Send** sends it without waiting. Quitting Hylki before the wait is over
+**Send** sends it without waiting. Quitting Tegami Mail before the wait is over
 keeps it in the Outbox, and it is sent at the next start.
 
 ### Snoozing mail
@@ -1129,14 +1129,14 @@ A time chosen there replaces the old one, and **Unsnooze** brings the
 message back now. While any account's Snoozed folder holds mail, a
 **Snoozed** row in the unified section lists it all together; **Settings →
 Sidebar → Unified → Snoozed** turns it off. The folders are counted each time
-Hylki checks for new mail, so mail snoozed on another computer brings the row
+Tegami Mail checks for new mail, so mail snoozed on another computer brings the row
 too. A reply that arrives in the conversation brings it back
 early. **Undo** (Ctrl+Z) right after a snooze puts the message back where it
 was.
 
-The times are kept on this computer, in `snoozed.toml`, and Hylki moves the
-mail back itself: snoozed mail comes back while Hylki is running, or as soon
-as it starts after its time. Hylki on another computer does not know the
+The times are kept on this computer, in `snoozed.toml`, and Tegami Mail moves the
+mail back itself: snoozed mail comes back while Tegami Mail is running, or as soon
+as it starts after its time. Tegami Mail on another computer does not know the
 time, and leaves the message in the Snoozed folder; **Unsnooze** there moves
 it to the Inbox.
 
@@ -1333,7 +1333,7 @@ from its GitHub releases, [LanguageTool](https://languagetool.org) from
 languagetool.org, the [Eclipse Temurin](https://adoptium.net) Java runtime
 from Adoptium's GitHub releases), and each is checked against the size and
 SHA-256 the app expects before it is unpacked. They are kept in
-`~/.local/share/hylki/grammar/`; **Remove** deletes them again.
+`~/.local/share/tegami/grammar/`; **Remove** deletes them again.
 
 **LanguageTool server** takes the server's address:
 
@@ -1400,7 +1400,7 @@ its indents. A message with an HTML part is answered in the format chosen in
 **Write messages in**. Drafts, templates and **Edit as New** open as they
 always have, and the format button still switches any one message.
 
-**The Markdown Hylki understands** is the dialect documented at
+**The Markdown Tegami Mail understands** is the dialect documented at
 [markdownguide.org](https://www.markdownguide.org/): all of the basic
 syntax, and all of the extended syntax:
 
@@ -1409,7 +1409,7 @@ syntax, and all of the extended syntax:
 | Basic | headings (both styles), bold, italic, blockquotes, ordered and unordered lists, code, horizontal rules, links (inline, reference and autolinks), images, hard line breaks, backslash escapes |
 | Extended | tables with alignment, fenced code blocks with a language, footnotes, heading IDs (`{#id}`), definition lists, `~~strikethrough~~`, task lists, `:emoji:` shortcodes, `==highlighting==`, `~subscript~` and `^superscript^`, and bare URLs and email addresses turned into links |
 
-Two notes on what that means in mail. The HTML Hylki writes carries its
+Two notes on what that means in mail. The HTML Tegami Mail writes carries its
 styling as `style` attributes on the tags themselves, because a `<style>`
 block is the first thing most webmail clients throw away, so tables really
 do arrive with their borders. And anything you send, in Markdown or in HTML,
@@ -1427,7 +1427,7 @@ a message that started life as Markdown lands very close to what you wrote.
 
 ### OpenPGP (encrypted and signed mail)
 
-Hylki can read OpenPGP-encrypted mail, check signatures, and sign and encrypt
+Tegami Mail can read OpenPGP-encrypted mail, check signatures, and sign and encrypt
 what you send. It does this through **GnuPG** (`gpg`), the same program the
 terminal command and other mail clients use, so your keys live in one place
 (`~/.gnupg`) and every program on the computer sees the same keyring. Nothing
@@ -1437,7 +1437,7 @@ here needs a terminal.
 
 - The Flatpak build carries GnuPG and is set up already. A source or RPM
   install needs the `gnupg2` package (on Fedora it is installed by default).
-- Hylki never stores a decrypted message on disk: an encrypted message is
+- Tegami Mail never stores a decrypted message on disk: an encrypted message is
   decrypted for the reading pane each time you open it, and its body and
   attachments are kept out of the cache.
 
@@ -1445,7 +1445,7 @@ here needs a terminal.
 
 Open *Settings → OpenPGP*. The top row says whether GnuPG was found. Under
 *Your keys*, click **Generate…**, pick the address the key is for, choose how
-long it lasts, and enter a passphrase twice. Hylki hands the passphrase to gpg
+long it lasts, and enter a passphrase twice. Tegami Mail hands the passphrase to gpg
 over a pipe and does not keep it; from then on gpg asks for it when the key is
 used, and remembers it for a while (ten minutes by default, the normal
 gpg-agent behaviour). The key is a signing key with an encryption subkey, so it
@@ -1462,11 +1462,11 @@ never leaves your keyring.
 
 **3. Get other people's keys**
 
-Hylki needs a person's public key to encrypt to them and to check their
+Tegami Mail needs a person's public key to encrypt to them and to check their
 signature. There are four ways to get one, none of which need a terminal:
 
 - A signed message from someone whose key you don't have shows an amber shield
-  beside their name. Click it and choose **Fetch the sender's key**. Hylki
+  beside their name. Click it and choose **Fetch the sender's key**. Tegami Mail
   looks in the message itself first (many clients attach the key in an
   Autocrypt header), then asks the sender's provider (WKD), then the keyservers.
 - A message with a key file attached shows an **Import OpenPGP key** button on
@@ -1485,7 +1485,7 @@ An imported key checks signatures, but until you have vouched for it the
 shield stays amber and says the key is not trusted yet. Compare the key's
 fingerprint with the one its owner gives you in person, on their website or
 over another channel, then click **Trust…** on the key's row (or **Trust this
-key…** in the shield's popover). Hylki signs the key locally with your own,
+key…** in the shield's popover). Tegami Mail signs the key locally with your own,
 which is what turns the shield green. Trusting a key you have not checked
 lets an impostor's signature pass as theirs, so do check.
 
@@ -1495,12 +1495,12 @@ The composer has two buttons beside Send: **Sign** and **Encrypt**. Sign adds
 a signature others can check with your public key. Encrypt scrambles the
 message to every recipient's key and your own, and turns Sign on too. If a
 recipient has no key in your keyring, or your address has no key of its own,
-Hylki says so before anything is sent. Replying to an encrypted message starts
+Tegami Mail says so before anything is sent. Replying to an encrypted message starts
 with Encrypt on.
 
 An encrypted message carries its subject inside, where only the recipients
 can read it, and "..." as the subject anyone else sees, as Thunderbird does.
-Hylki and other mail programs that read subjects from there show the real one
+Tegami Mail and other mail programs that read subjects from there show the real one
 once the message is decrypted. For recipients whose mail program shows only
 "...", turn off **Hide the subject of encrypted mail** under the account's
 *OpenPGP* group; that account's encrypted mail then goes with its subject
@@ -1569,13 +1569,13 @@ to New Message**, **Insert in New Message** and **Share Link in New
 Message**, offered on the same terms (Insert in New Message when new
 messages start as rich text, in **Settings → Composing → Write messages
 in**). Attach to New
-Message asks about files over the size limit the way *Send with Hylki* does
+Message asks about files over the size limit the way *Send with Tegami Mail* does
 (below). While a message is being written in the main window, files dropped
 anywhere else in it go into that message. Folders are skipped.
 
-### Send with Hylki from GNOME Files
+### Send with Tegami Mail from GNOME Files
 
-Select files in GNOME Files (Nautilus), right-click, *Send with Hylki*: a new
+Select files in GNOME Files (Nautilus), right-click, *Send with Tegami Mail*: a new
 message opens with them attached. The entry comes from a small extension that
 Files loads, so it has to live outside the app, in your home folder.
 
@@ -1585,42 +1585,42 @@ Files loads, so it has to live outside the app, in your home folder.
   Python: `sudo dnf install nautilus-python` on Fedora, `sudo apt install
   python3-nautilus` on Debian and Ubuntu, `sudo pacman -S python-nautilus` on
   Arch.
-- Hylki 1.29 or newer, Flatpak or native.
+- Tegami Mail 1.29 or newer, Flatpak or native.
 
 **Installing it**
 
-Open **Settings → System → GNOME Files** and click **Install**. Hylki writes
-the extension to `~/.local/share/nautilus-python/extensions/hylki-nautilus.py`
+Open **Settings → System → GNOME Files** and click **Install**. Tegami Mail writes
+the extension to `~/.local/share/nautilus-python/extensions/tegami-nautilus.py`
 and shows whether the installed copy is this version's. Then click
 **Restart** (or run `nautilus -q`): Files closes its windows, and the next one
 opens with the entry. Once Files has loaded the extension the row says so; if
 it still says "not loaded" after a restart, the `nautilus-python` package is
-the usual reason (a native install of Hylki checks for it and tells you; the
+the usual reason (a native install of Tegami Mail checks for it and tells you; the
 Flatpak cannot see the host's packages). Until Files has loaded the extension,
 the group also shows the install command for your distribution, with a copy
 button. **Remove** takes it out again the same way.
 
 Without the app, the same file is in the repository at
-`data/nautilus/hylki-nautilus.py`:
+`data/nautilus/tegami-nautilus.py`:
 
 ```sh
 mkdir -p ~/.local/share/nautilus-python/extensions
-curl -fsSL -o ~/.local/share/nautilus-python/extensions/hylki-nautilus.py \
-  https://raw.githubusercontent.com/hyprlab/hylki/main/data/nautilus/hylki-nautilus.py
+curl -fsSL -o ~/.local/share/nautilus-python/extensions/tegami-nautilus.py \
+  https://raw.githubusercontent.com/hyprlab/tegami/main/data/nautilus/tegami-nautilus.py
 nautilus -q
 ```
 
-The extension launches Hylki by its desktop id (`co.hyprlab.Hylki`, then the
-beta's), so it works whichever way Hylki is installed. Folders are skipped;
+The extension launches Tegami Mail by its desktop id (`io.github.DocteurScience.TegamiMail`, then the
+beta's), so it works whichever way Tegami Mail is installed. Folders are skipped;
 files on a mounted share reach the app through their mount path.
 
 Files also has its own *Email…* entry, which sends the selection to whatever
-app handles `mailto:` links; if that is Hylki, it does the same thing without
+app handles `mailto:` links; if that is Tegami Mail, it does the same thing without
 the extension.
 
 **What the files go into**
 
-When the files arrive, Hylki asks what they are for: a **new message**, a
+When the files arrive, Tegami Mail asks what they are for: a **new message**, a
 **draft** you pick from a list of every account's drafts, or a **reply** to a
 message you pick (the one you are reading comes first; a search box narrows
 the list by sender, subject or account). Files that together exceed the size
@@ -1635,7 +1635,7 @@ itself.
 
 When a reply ends with the message it answers, the reader folds that part
 away behind a ••• button. It recognises the quotes Gmail, Outlook (web and
-desktop), Apple Mail, Thunderbird, Yahoo and Hylki write, an "On … wrote:"
+desktop), Apple Mail, Thunderbird, Yahoo and Tegami Mail write, an "On … wrote:"
 line before them, an "Original Message" divider, and the `>` lines of
 plain-text mail. Once opened, the button sits where the quote begins and
 folds it again. Nothing is folded when your reply comes after or between
@@ -1692,15 +1692,15 @@ window. Its files are in the attachment drawer under the
 message, and on each message's card when those are switched on, and images
 and PDFs open in the same full-window preview. A conversation's window
 gathers the files of every message in it. Its Reader View switch changes
-that window alone; the main window and the choice Hylki remembers stay as
+that window alone; the main window and the choice Tegami Mail remembers stay as
 they were. **Ctrl+F** finds in the message and **Ctrl+P** prints it.
 
 ### Message files (.eml and .msg)
 
 A message saved whole, as a `.eml` file or Outlook's `.msg`, opens in a
 window of its own:
-double-click it in GNOME Files (Hylki is offered for email files), pass it to
-`hylki` on the command line, or pick **Open Message File…** in the command
+double-click it in GNOME Files (Tegami Mail is offered for email files), pass it to
+`tegami` on the command line, or pick **Open Message File…** in the command
 palette (**Ctrl+K**). It is drawn as mail from a server is, with its
 attachments in the drawer, and **Reply**, **Reply All** and **Forward**
 write from the account in view. It belongs to no folder, so there is nothing
@@ -1721,7 +1721,7 @@ and a message attached to it is left out.
 **Settings → Reading → Message appearance** draws every message light, dark
 or as the system is. The message header has a switch beside Reader View
 that draws the message on screen in the other scheme, for that message
-alone, until Hylki is closed. The switch starts off for every message; on
+alone, until Tegami Mail is closed. The switch starts off for every message; on
 draws the message opposite the theme. A message keeps the scheme chosen for
 it when the theme changes afterwards, and the switch then reads off if the
 message matches the new theme. In a conversation the choice follows the
@@ -1775,7 +1775,7 @@ it or **Off**; <kbd>Ctrl+Alt+1</kbd>, <kbd>Ctrl+Alt+2</kbd> and
 the layout below says, the window's close button moves to the list's header,
 and replies, forwards and new messages open in a window of their own. Below,
 the toolbar stays at the top of the reader; drag the line between the list and
-the reader to set the list's height, which Hylki remembers apart from its width
+the reader to set the list's height, which Tegami Mail remembers apart from its width
 beside the reader, and the attachments start folded.
 
 Off, the list takes the whole window and the toolbar moves to its header, at
@@ -1788,7 +1788,7 @@ double-click, **Enter** or, with Gmail's keys, **o** opens it in a window of
 its own (see [A message in its own window](#a-message-in-its-own-window)),
 which marks it read as **Settings → Reading → Mark as read** says. A
 conversation opens whole, each message marked as its window scrolls through
-it. Hylki remembers the choice.
+it. Tegami Mail remembers the choice.
 
 **Settings → Message List → Layout** sets how the list shows a message.
 **Cards** gives the sender, the subject and the start of the text lines of
@@ -1892,8 +1892,8 @@ started anywhere else looks in that folder, and the button changes it for as
 long as the folder is open. In all folders and everywhere, each result wears
 a pill with the name of the folder it is in, and a Gmail message filed under
 several labels is one result: its Inbox copy, else a label's, else All
-Mail's. Folders not opened since Hylki started are searched from the index
-Hylki keeps of them, which covers mail archived to Gmail's All Mail.
+Mail's. Folders not opened since Tegami Mail started are searched from the index
+Tegami Mail keeps of them, which covers mail archived to Gmail's All Mail.
 
 #### What a search finds
 
@@ -1958,7 +1958,7 @@ and several filters can be set at once; together the filters show only the
 mail that matches all of them. While any is on the button is in the accent
 color and its tooltip names them, with the dates. **Clear Filters** turns
 them all off. They apply to whichever folder or search is shown, and last
-until Hylki is closed. In Focus Mode they are under **Filter** and **Sort**
+until Tegami Mail is closed. In Focus Mode they are under **Filter** and **Sort**
 in the list's ⋯ menu; the dates are set in the popover only.
 
 Clicking the unread dot on a row marks that message read without selecting
@@ -1973,7 +1973,7 @@ of the rows in the middle of the view.
 
 ### Text size
 
-**Settings → Appearance → Text size** makes Hylki's text smaller or larger
+**Settings → Appearance → Text size** makes Tegami Mail's text smaller or larger
 than the desktop's, from 90% to 150%: the sidebar, the message list,
 Settings and the text of messages. Icons keep their size. Default follows
 the desktop's own text scaling. Stored as `text_scale` in `privacy.toml`.
@@ -1983,16 +1983,16 @@ the desktop's own text scaling. Stored as `text_scale` in `privacy.toml`.
 **Settings → Appearance → App icon** puts one of five icons on the app's
 launcher: the default, the same envelope on a blue, navy or yellow square,
 or the classic icon. An icon set on the launcher some other way, with a menu
-editor or by editing its `.desktop` file, is left alone when Hylki starts;
+editor or by editing its `.desktop` file, is left alone when Tegami Mail starts;
 Settings says so above the gallery, and picking an icon there replaces it.
 
 ### Icons
 
-Hylki draws its icons, and those of the buttons, arrows and checkmarks GTK
+Tegami Mail draws its icons, and those of the buttons, arrows and checkmarks GTK
 draws for it, from copies built into the app, so it looks the same on every
 desktop whatever icon theme is set. **Settings → Appearance → Use the
 desktop's icons** draws them from the desktop's icon theme instead, with
-Hylki's copies standing in for any icon the theme lacks. It applies at once
+Tegami Mail's copies standing in for any icon the theme lacks. It applies at once
 and is stored as `desktop_icons` in `privacy.toml`.
 
 ### New and seen unread mail
@@ -2008,7 +2008,7 @@ unread when the setting was turned on counts as seen. The marks are kept in
 
 ### Unread count on the app icon
 
-Hylki puts a number on its icon in the dock or task manager. KDE Plasma's
+Tegami Mail puts a number on its icon in the dock or task manager. KDE Plasma's
 task manager shows it, and so do the Dash to Dock and Dash to Panel
 extensions for GNOME; GNOME's own dash has no badges. **Settings → System →
 Unread count on the app icon** chooses what it counts:
@@ -2021,7 +2021,7 @@ Unread count on the app icon** chooses what it counts:
   inbox, whether or not notifications are on. Reading or deleting one of those messages, from a
   notification's buttons or on another device, takes it off the count, and
   the count goes back to none as soon as the main window is in front. It
-  starts from none each time Hylki starts. The tray icon's dot still counts
+  starts from none each time Tegami Mail starts. The tray icon's dot still counts
   every unread inbox message.
 - **Off**: no number.
 
@@ -2035,17 +2035,17 @@ written for older versions and read when `launcher_badge` is absent.
 **Automatic** (GTK's own choice, Vulkan where it works), **Vulkan**,
 **OpenGL** or **Software**. On older graphics hardware where Vulkan support
 is incomplete (Intel HD 4000 and its generation, for instance), OpenGL or
-Software can draw more reliably. The choice applies the next time Hylki
+Software can draw more reliably. The choice applies the next time Tegami Mail
 starts. A `GSK_RENDERER` set for the session wins over it, so this still
 works:
 
 ```sh
-flatpak override --user --env=GSK_RENDERER=gl co.hyprlab.Hylki
+flatpak override --user --env=GSK_RENDERER=gl io.github.DocteurScience.TegamiMail
 ```
 
-Left on **Automatic** on X11, Hylki checks before GTK starts that the X
+Left on **Automatic** on X11, Tegami Mail checks before GTK starts that the X
 server can attach its shared memory, which Mesa's software driver needs on
-a display without a GPU, such as Xvnc. When it cannot, Hylki draws with
+a display without a GPU, such as Xvnc. When it cannot, Tegami Mail draws with
 Software, and the log says `renderer: cairo, the X server cannot attach
 shared memory`.
 
@@ -2059,7 +2059,7 @@ leaves the label's name out of the message shows the pill as **Labeled**.
 Outlook's older Sensitivity setting (Personal, Private, Confidential) shows
 the same way.
 
-For a Microsoft 365 account signed in within Hylki, **Show sensitivity label
+For a Microsoft 365 account signed in within Tegami Mail, **Show sensitivity label
 names**, under Microsoft 365 in the account's settings, names those labels from the
 organization's own list, with the label's color on the tag icon and the
 organization's description of the label in the pill's tooltip. Turning it
@@ -2069,10 +2069,10 @@ session and again after an hour. It holds the labels published to you, so a
 label from another organization stays **Labeled**. As with the directory,
 an account added through GNOME Online Accounts cannot use it.
 
-Hylki only shows the label: it does not apply the rules the organization
+Tegami Mail only shows the label: it does not apply the rules the organization
 attached to it, and it cannot set a label on a message you write. A message
 protected with encryption is a separate matter the label only names. Mail
-downloaded before Hylki read labels shows its label once it is downloaded
+downloaded before Tegami Mail read labels shows its label once it is downloaded
 again.
 
 ### Newsletters and list mail
@@ -2096,7 +2096,7 @@ with **Send Receipt** and **Ignore**. Either answer is remembered, and on IMAP
 and JMAP accounts the message is marked `$MDNSent`, as Thunderbird and K-9
 Mail mark it, so other mail apps do not ask again. Your own mail, and mail in
 Sent, Drafts, Templates, Junk and Trash, never asks. Neither does mail
-downloaded before Hylki read the request.
+downloaded before Tegami Mail read the request.
 
 **Settings → Privacy → Send read receipts** chooses **Ask each time**,
 **Always** or **Never**. **Always** sends the receipt when the message is
@@ -2117,11 +2117,11 @@ person agrees.
 Sent mail that asked for a receipt shows two grey checkmarks beside its date,
 in the list and in the reader. They turn green when a receipt comes back, and
 pointing at them says who opened the message and when; for mail to several
-people, how many of them did. Hylki learns that a message asked for a receipt
+people, how many of them did. Tegami Mail learns that a message asked for a receipt
 when it reads the copy in Sent, so mail sent from another app shows the marks
 once its Sent copy has been opened or fetched ahead.
 
-A receipt that comes back is a message of its own. Once Hylki has read it, it
+A receipt that comes back is a message of its own. Once Tegami Mail has read it, it
 is marked read and moved out of the Inbox: **Settings → Composing → Returned
 receipts** chooses **Move to Trash**, **Archive** or **Keep in Inbox**. A
 receipt that is open in the reader is left where it is. Who read what is kept
@@ -2141,7 +2141,7 @@ Messages and attachments that have been opened, or fetched ahead for the
 newest mail in each folder, are kept on the computer so they open at once and
 offline. **Settings → System → Storage** shows what they take up.
 **Remove…** clears them all; **Keep downloaded mail** (Always, a year, 90 days
-or 30 days) removes older ones a couple of minutes after Hylki starts and
+or 30 days) removes older ones a couple of minutes after Tegami Mail starts and
 every six hours after. Either way the list of every message stays, so the
 message list and search are unchanged, and a removed message is fetched again
 when it is opened. Nothing on the server changes.
@@ -2165,7 +2165,7 @@ after which it is downloaded again. Stored as `offline_mail` and
 
 ### Offline and metered connections
 
-Hylki follows the desktop's network status (GNetworkMonitor, through the
+Tegami Mail follows the desktop's network status (GNetworkMonitor, through the
 network portal in the Flatpak). While there is no network it makes no
 connections: the timed mail check, the push channels and Send Later wait, the
 Refresh button turns orange, and its tooltip says why. The status bar does not
@@ -2197,21 +2197,21 @@ messages carries none. Stored as `notification_buttons` in `privacy.toml`.
 
 **Settings → General → Sound for new mail** plays a sound with each new-mail
 notification. It is off until switched on. **Sound** picks one of GNOME's four
-alert sounds (Click, Hum, String and Swing, built into Hylki) or **Custom
+alert sounds (Click, Hum, String and Swing, built into Tegami Mail) or **Custom
 File**, which adds a **Choose…** button for a file of your own (any format
 GStreamer can play, such as WAV, MP3, OGG or FLAC). Picking a sound plays it,
 and so does the play button. A custom file is copied to
-`~/.local/share/hylki/notification-sound/`, so the original can be moved or
+`~/.local/share/tegami/notification-sound/`, so the original can be moved or
 deleted; the choice is stored in `sound.toml`. The desktop's own sound theme
 is not offered: the Flatpak cannot read the host's sounds. Several accounts
 receiving mail at once play the sound once. Like the notification, the sound
 comes only while the window is in the background or closed: GNOME shows no
-notification for the app in front. **Also play while Hylki is in front**
+notification for the app in front. **Also play while Tegami Mail is in front**
 plays it then as well, without a notification. GNOME's own Alert Sound
 setting has no say over it, None included. In a native install it is not
 played while Do Not Disturb is on; the Flatpak cannot see Do Not Disturb, which the
 desktop does not share with sandboxed apps. The desktop may play a sound of
-its own for the notification as well; GNOME Settings → Notifications → Hylki →
+its own for the notification as well; GNOME Settings → Notifications → Tegami Mail →
 Sound Alerts turns that one off.
 
 ### The status bar
@@ -2225,23 +2225,23 @@ console is open), the console, and the bar's own toggle. Stored as
 
 ## Privacy
 
-Hylki collects no telemetry and sends no analytics. Remote content in messages is
+Tegami Mail collects no telemetry and sends no analytics. Remote content in messages is
 blocked by default to defeat tracking pixels. Passwords and OAuth refresh tokens
 live in the system keyring (secret-service), never in plain files.
 
-**Where things live.** Settings are TOML files in `~/.config/hylki/`
+**Where things live.** Settings are TOML files in `~/.config/tegami/`
 (`accounts.toml`, `privacy.toml`, `filters.toml`, `tags.toml` and friends), the
-mail index and cached messages in `~/.local/share/hylki/cache.db`, the web
-views' caches in `~/.cache/hylki/`, and account pictures in
+mail index and cached messages in `~/.local/share/tegami/cache.db`, the web
+views' caches in `~/.cache/tegami/`, and account pictures in
 `~/.local/share/avatars/`. A Flatpak install keeps the same layout under
-`~/.var/app/co.hyprlab.Hylki/`. Nothing else on the computer is written to, and
+`~/.var/app/io.github.DocteurScience.TegamiMail/`. Nothing else on the computer is written to, and
 `./uninstall.sh --purge` (or removing those directories) takes it all away.
 
 Passwords and tokens are never in those files: they go to the system keyring
 through the Secret Service. Decrypted OpenPGP messages are never cached at all.
 
-**Remote content**, once allowed for a message, is fetched by Hylki itself, with
-no cookies and no Referer, and kept in `~/.cache/hylki/remote/` for a week, up
+**Remote content**, once allowed for a message, is fetched by Tegami Mail itself, with
+no cookies and no Referer, and kept in `~/.cache/tegami/remote/` for a week, up
 to 2 GB, so a message shown again does not fetch it again. **Settings →
 Privacy → Pre-load remote content for the next messages** fetches it for the next
 three rows in the list, and the one before, while a message is read: only

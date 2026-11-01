@@ -23,6 +23,6 @@ cargo-sources.json
 
 
 # Local-build manifest (tools/local-manifest.sh output)
-co.hyprlab.Hylki.local.yml
+io.github.DocteurScience.TegamiMail.local.yml
 po/.build/
 __pycache__/

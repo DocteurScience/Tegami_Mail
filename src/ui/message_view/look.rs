@@ -41,7 +41,7 @@ impl MessageView {
                 .collect::<String>()
         );
         self.chip_rules.set(vec![(
-            format!(".hylki-account-chip.{class}"),
+            format!(".tegami-account-chip.{class}"),
             format!(
                 "background-color: {}; color: {text};",
                 crate::color::pale(color, 0.18)

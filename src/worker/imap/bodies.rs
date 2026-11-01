@@ -119,12 +119,12 @@ async fn fetch_raw_message(
             .await?;
         if let Some(raw) = fetches.iter().find_map(raw_of) {
             if n > 0 {
-                tracing::info!(target: "hylki::imap", "message {uid}: content came with {items}");
+                tracing::info!(target: "tegami::imap", "message {uid}: content came with {items}");
             }
             return Ok(Some(raw));
         }
         tracing::warn!(
-            target: "hylki::imap",
+            target: "tegami::imap",
             "message {uid}: {} FETCH item(s) came back for {items}, none carrying the message: {}",
             fetches.len(),
             fetches.iter().map(|f| format!("{f:?}")).collect::<Vec<_>>().join(" | ").chars().take(600).collect::<String>()

@@ -76,7 +76,7 @@ fn kind_and_apple_groups_find_their_members_in_their_book() {
         vec![("", "ann@x.org"), ("Pat Doe", "pat@x.org")]
     );
     assert_eq!(people(&book[2]), vec![("Pat Doe", "pat@x.org")]);
-    // Neither has Evolution's Bcc switch; Hylki edits Apple's only.
+    // Neither has Evolution's Bcc switch; Tegami Mail edits Apple's only.
     assert!(!book[1].hide_addresses && !book[1].group_editable());
     assert!(!book[2].hide_addresses && book[2].group_editable());
     assert_eq!(book[2].group, Some(super::GroupFormat::Apple));
@@ -347,7 +347,7 @@ fn live_group() {
         .duration_since(std::time::UNIX_EPOCH)
         .unwrap()
         .as_secs();
-    let name = format!("Hylki group test {stamp} (delete me)");
+    let name = format!("Tegami Mail group test {stamp} (delete me)");
     let member = |n: &str, e: &str| super::Member {
         name: n.into(),
         email: e.into(),
@@ -356,8 +356,8 @@ fn live_group() {
     let edit = super::GroupEdit {
         name: name.clone(),
         members: vec![member(
-            "Hylki Test Member (delete me)",
-            &format!("hylki-test-{stamp}@example.com"),
+            "Tegami Mail Test Member (delete me)",
+            &format!("tegami-test-{stamp}@example.com"),
         )],
         hide_addresses: true,
         kept: Vec::new(),
@@ -372,7 +372,7 @@ fn live_group() {
         .expect("the group");
     let card = super::book_get_contact(&conn, &bus, &path, &group_uid).unwrap();
     println!("=== made:\n{card}");
-    let stub = find(format!("(is \"email\" \"hylki-test-{stamp}@example.com\")"))
+    let stub = find(format!("(is \"email\" \"tegami-test-{stamp}@example.com\")"))
         .pop()
         .expect("the member's card");
     println!(
@@ -394,7 +394,7 @@ fn live_group() {
     });
     // Bcc off and a second member, who already has a card by then.
     let mut members = g.members.clone();
-    members.push(member("Again", &format!("hylki-test-{stamp}@example.com")));
+    members.push(member("Again", &format!("tegami-test-{stamp}@example.com")));
     members.dedup_by(|a, b| a.email == b.email);
     let edit = super::GroupEdit {
         name: name.clone(),
@@ -431,7 +431,7 @@ fn live_move() {
         .collect();
     let (from, to) = (&books[0], &books[1]);
     let card = format!(
-        "BEGIN:VCARD\r\nVERSION:3.0\r\nFN:Hylki Move Test\r\nN:Test;Hylki Move;;;\r\nEMAIL:move-test@example.com\r\n\
+        "BEGIN:VCARD\r\nVERSION:3.0\r\nFN:Tegami Mail Move Test\r\nN:Test;Tegami Mail Move;;;\r\nEMAIL:move-test@example.com\r\n\
          PHOTO;ENCODING=b;TYPE=PNG:{ONE_PIXEL_PNG}\r\nEND:VCARD\r\n"
     );
     super::create_contact(from, &card).unwrap();
@@ -482,7 +482,7 @@ fn live_copy_into_group() {
         .map(|b| b.uid)
         .collect();
     let (from, to) = (&books[0], &books[1]);
-    let card = "BEGIN:VCARD\r\nVERSION:3.0\r\nFN:Hylki Phone Only\r\nN:Only;Hylki Phone;;;\r\n\
+    let card = "BEGIN:VCARD\r\nVERSION:3.0\r\nFN:Tegami Mail Phone Only\r\nN:Only;Tegami Mail Phone;;;\r\n\
                 TEL;TYPE=CELL:+1 555 0199\r\nNOTE:copied whole\r\nEND:VCARD\r\n";
     let dest = super::factory_dest().unwrap();
     let conn = zbus::blocking::Connection::session().unwrap();
@@ -499,10 +499,10 @@ fn live_copy_into_group() {
             })
             .collect::<Vec<_>>()
     };
-    let by_name = "(is \"full_name\" \"Hylki Phone Only\")";
+    let by_name = "(is \"full_name\" \"Tegami Mail Phone Only\")";
     // What an earlier run left.
     for book in [from, to] {
-        for q in [by_name, "(beginswith \"full_name\" \"Hylki copy test\")"] {
+        for q in [by_name, "(beginswith \"full_name\" \"Tegami Mail copy test\")"] {
             for (uid, _) in find(book, q) {
                 super::delete_contact(book, &uid).unwrap();
             }
@@ -518,7 +518,7 @@ fn live_copy_into_group() {
         ..Default::default()
     };
     let edit = super::GroupEdit {
-        name: "Hylki copy test".into(),
+        name: "Tegami Mail copy test".into(),
         members: vec![member],
         ..Default::default()
     };
@@ -526,7 +526,7 @@ fn live_copy_into_group() {
     let (copy_uid, copy) = find(to, by_name).pop().expect("copied to the group's book");
     println!("=== the copy:\n{copy}");
     assert!(copy.contains("+1 555 0199") && copy.contains("copied whole"));
-    let (group_uid, group) = find(to, "(is \"full_name\" \"Hylki copy test\")")
+    let (group_uid, group) = find(to, "(is \"full_name\" \"Tegami Mail copy test\")")
         .pop()
         .expect("the group");
     let refs = super::parse_vcard_fields(&group).unwrap().member_refs;
@@ -541,13 +541,13 @@ fn live_copy_into_group() {
         super::GroupFormat::Apple,
         None,
         super::GroupEdit {
-            name: "Hylki copy test 2".into(),
+            name: "Tegami Mail copy test 2".into(),
             ..edit
         },
     )
     .unwrap();
     assert_eq!(find(to, by_name).len(), 1);
-    let (group2, _) = find(to, "(is \"full_name\" \"Hylki copy test 2\")")
+    let (group2, _) = find(to, "(is \"full_name\" \"Tegami Mail copy test 2\")")
         .pop()
         .unwrap();
     for (book, uid) in [
@@ -590,8 +590,8 @@ fn live_move_group() {
             })
             .collect::<Vec<_>>()
     };
-    let person_q = "(is \"full_name\" \"Hylki Mover\")";
-    let group_q = "(is \"full_name\" \"Hylki moving group\")";
+    let person_q = "(is \"full_name\" \"Tegami Mail Mover\")";
+    let group_q = "(is \"full_name\" \"Tegami Mail moving group\")";
     for book in [from, to] {
         for q in [person_q, group_q] {
             for (uid, _) in find(book, q) {
@@ -601,7 +601,7 @@ fn live_move_group() {
     }
     super::create_contact(
         from,
-        "BEGIN:VCARD\r\nVERSION:3.0\r\nFN:Hylki Mover\r\nTEL:+1 555 0142\r\nEND:VCARD\r\n",
+        "BEGIN:VCARD\r\nVERSION:3.0\r\nFN:Tegami Mail Mover\r\nTEL:+1 555 0142\r\nEND:VCARD\r\n",
     )
     .unwrap();
     let (person_uid, stored) = find(from, person_q).pop().unwrap();
@@ -613,7 +613,7 @@ fn live_move_group() {
         ..Default::default()
     };
     let edit = super::GroupEdit {
-        name: "Hylki moving group".into(),
+        name: "Tegami Mail moving group".into(),
         members: vec![member],
         ..Default::default()
     };
@@ -626,7 +626,7 @@ fn live_move_group() {
         ..Default::default()
     };
     let edit = super::GroupEdit {
-        name: "Hylki moving group".into(),
+        name: "Tegami Mail moving group".into(),
         members: vec![moved],
         ..Default::default()
     };

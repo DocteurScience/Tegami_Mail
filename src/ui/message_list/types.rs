@@ -308,16 +308,16 @@ pub(crate) enum MessageListInput {
     /// the header button while open.
     CloseSearch,
     /// Showcase staging: open row N's actions palette (screenshot hook only —
-    /// see HYLKI_SHOWCASE_PALETTE in app/showcase/list.rs).
+    /// see TEGAMI_SHOWCASE_PALETTE in app/showcase/list.rs).
     DebugOpenPalette(usize),
-    /// Showcase only (HYLKI_SHOWCASE_SWIPE): drive row `index` through a full
+    /// Showcase only (TEGAMI_SHOWCASE_SWIPE): drive row `index` through a full
     /// swipe and release, so the commit exit can be caught in stills — there
     /// is no way to inject a real gesture on this desktop.
     DebugSwipe {
         index: usize,
         left: bool,
     },
-    /// Showcase only (HYLKI_SHOWCASE_ROW_MENU): the first row's menu.
+    /// Showcase only (TEGAMI_SHOWCASE_ROW_MENU): the first row's menu.
     DebugRowMenu,
     /// Expand/collapse a conversation thread.
     ToggleThread((u32, String)),

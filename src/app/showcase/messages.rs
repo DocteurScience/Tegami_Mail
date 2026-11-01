@@ -130,7 +130,7 @@ impl AppModel {
                         node = w.parent();
                     }
                     tracing::info!(
-                        target: "hylki::compose::undo",
+                        target: "tegami::compose::undo",
                         "burger: opened, focus now [{}]",
                         chain.join(" < ")
                     );
@@ -157,13 +157,13 @@ impl AppModel {
                 };
                 let mut copy = p.message.clone();
                 copy.uid = 9_999;
-                copy.message_id = "showcase-copy@hylki.local".into();
-                tracing::info!(target: "hylki::morph", "showcase: the copy of {} arrives", p.message.id);
+                copy.message_id = "showcase-copy@tegami.local".into();
+                tracing::info!(target: "tegami::morph", "showcase: the copy of {} arrives", p.message.id);
                 self.merge_related(current.account_id, current.id, vec![copy]);
                 self.show_thread();
                 // The window once the copy has painted, beside the morph's
                 // own last frame, to hold the two against each other.
-                if let Some(dir) = std::env::var_os("HYLKI_MORPH_FRAMES") {
+                if let Some(dir) = std::env::var_os("TEGAMI_MORPH_FRAMES") {
                     let window: gtk::Widget = self.window.clone().upcast();
                     gtk::glib::timeout_add_local_once(
                         std::time::Duration::from_millis(1200),
@@ -210,7 +210,7 @@ impl AppModel {
         }
     }
 
-    /// Showcase only (HYLKI_SHOWCASE_SEND): write `text` in the split
+    /// Showcase only (TEGAMI_SHOWCASE_SEND): write `text` in the split
     /// reply's editor and send it, to watch the send morph.
     fn showcase_send(&self, text: String) {
         // Every frame interval for a second and a half, to compare
@@ -220,7 +220,7 @@ impl AppModel {
             let id = clock.connect_after_paint(move |c| {
                 let now = c.frame_time();
                 if last.get() > 0 {
-                    tracing::debug!(target: "hylki::frames", "frame {} ms", (now - last.get()) / 1000);
+                    tracing::debug!(target: "tegami::frames", "frame {} ms", (now - last.get()) / 1000);
                 }
                 last.set(now);
             });
@@ -264,7 +264,7 @@ impl AppModel {
         });
         // The whole window every quarter second for six seconds from
         // Send, to see what the reader does while the message goes.
-        if let Some(dir) = std::env::var_os("HYLKI_MORPH_FRAMES") {
+        if let Some(dir) = std::env::var_os("TEGAMI_MORPH_FRAMES") {
             let window: gtk::Widget = self.window.clone().upcast();
             for i in 0..24u64 {
                 let (dir, window) = (dir.clone(), window.clone());

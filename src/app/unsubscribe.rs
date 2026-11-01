@@ -163,7 +163,7 @@ impl AppModel {
             &[("name", &sender_label(&message))],
         );
         let mut body = if info.one_click.is_some() {
-            i18n("Hylki will ask the list to stop sending you mail. A list can take a few days to act on the request.")
+            i18n("Tegami Mail will ask the list to stop sending you mail. A list can take a few days to act on the request.")
         } else if let Some(t) = Self::unsubscribe_mail_target(&info) {
             let (_, from) = self.unsubscribe_from(&message);
             i18n_f(
@@ -178,7 +178,7 @@ impl AppModel {
         if !info.in_headers {
             body.push(' ');
             body.push_str(&i18n(
-                "This message carries no unsubscribe header, so Hylki is going by the link in it.",
+                "This message carries no unsubscribe header, so Tegami Mail is going by the link in it.",
             ));
         }
         let parent = relm4::main_application()
@@ -224,10 +224,10 @@ impl AppModel {
             }
         });
         dialog.present();
-        // HYLKI_SHOWCASE_UNSUB=ask: the dialog is its own surface, so the
+        // TEGAMI_SHOWCASE_UNSUB=ask: the dialog is its own surface, so the
         // main window's capture never shows it — take one of it too.
-        if std::env::var("HYLKI_SHOWCASE_UNSUB").is_ok_and(|v| v == "ask") {
-            if let Ok(path) = std::env::var("HYLKI_SHOWCASE") {
+        if std::env::var("TEGAMI_SHOWCASE_UNSUB").is_ok_and(|v| v == "ask") {
+            if let Ok(path) = std::env::var("TEGAMI_SHOWCASE") {
                 let d = dialog.clone();
                 gtk::glib::timeout_add_seconds_local_once(1, move || {
                     showcase_capture(d.upcast_ref::<gtk::Widget>(), &format!("{path}.dialog.png"));
@@ -250,9 +250,9 @@ impl AppModel {
         let message = Box::new(message);
         if demo_mode() {
             // The demo has no list to ask: the request succeeds after a beat
-            // (or fails, for a look at that banner: HYLKI_SHOWCASE_UNSUB=fail).
+            // (or fails, for a look at that banner: TEGAMI_SHOWCASE_UNSUB=fail).
             let s = sender.clone();
-            let fail = std::env::var("HYLKI_SHOWCASE_UNSUB").is_ok_and(|v| v == "fail");
+            let fail = std::env::var("TEGAMI_SHOWCASE_UNSUB").is_ok_and(|v| v == "fail");
             gtk::glib::timeout_add_local_once(std::time::Duration::from_millis(900), move || {
                 let result = if fail {
                     Err("the list's server answered 503".to_string())
@@ -361,7 +361,7 @@ impl AppModel {
     pub(super) fn on_unsubscribe(&mut self, msg: AppMsg, sender: ComponentSender<Self>) {
         match msg {
             AppMsg::Unsubscribe { message, info } => {
-                if std::env::var("HYLKI_SHOWCASE_UNSUB").is_ok_and(|v| v == "go" || v == "fail") {
+                if std::env::var("TEGAMI_SHOWCASE_UNSUB").is_ok_and(|v| v == "go" || v == "fail") {
                     self.unsubscribe_go(*message, *info, &sender);
                 } else {
                     self.confirm_unsubscribe(*message, *info, &sender);

@@ -221,8 +221,8 @@ mod tests {
         let back = toml::to_string(&CloudFile { accounts: vec![a] }).unwrap();
         assert!(back.contains("kind = \"onedrive\""));
         assert_eq!(
-            onedrive_item("Hylki/Q3 report"),
-            "https://graph.microsoft.com/v1.0/me/drive/root:/Hylki/Q3%20report"
+            onedrive_item("Tegami Mail/Q3 report"),
+            "https://graph.microsoft.com/v1.0/me/drive/root:/Tegami Mail/Q3%20report"
         );
         assert_eq!(
             onedrive_item(""),

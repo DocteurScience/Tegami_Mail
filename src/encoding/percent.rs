@@ -1,5 +1,5 @@
 //! Percent-encoding (RFC 3986) for the URLs, `mailto:` links and `cid:`
-//! references Hylki builds and reads.
+//! references Tegami Mail builds and reads.
 //!
 //! Encoding is GLib's. Decoding is not: `glib::Uri::unescape_string` refuses
 //! the whole string over one malformed escape, and what is decoded here is
@@ -54,8 +54,8 @@ mod tests {
         assert_eq!(encode("a-b_c.d~e"), "a-b_c.d~e");
         assert_eq!(encode("caf\u{e9}"), "caf%C3%A9");
         assert_eq!(
-            encode_path("/Hylki/Q3 report.pdf"),
-            "/Hylki/Q3%20report.pdf"
+            encode_path("/Tegami Mail/Q3 report.pdf"),
+            "/Tegami Mail/Q3%20report.pdf"
         );
     }
 

@@ -191,15 +191,15 @@ where
                 let why = information.as_deref().unwrap_or("");
                 return match status {
                     Status::Ok => {
-                        tracing::debug!(target: "hylki::imap", "< OK ({})", cmd_head(&cmd));
+                        tracing::debug!(target: "tegami::imap", "< OK ({})", cmd_head(&cmd));
                         Ok(Some(out))
                     }
                     Status::Bad => {
-                        tracing::warn!(target: "hylki::imap", "< BAD {why} ({cmd})");
+                        tracing::warn!(target: "tegami::imap", "< BAD {why} ({cmd})");
                         Ok(None)
                     }
                     _ => {
-                        tracing::warn!(target: "hylki::imap", "< {status:?} {why} ({cmd})");
+                        tracing::warn!(target: "tegami::imap", "< {status:?} {why} ({cmd})");
                         Err(async_imap::error::Error::No(why.to_string()))
                     }
                 };
@@ -334,7 +334,7 @@ where
                 let why = information.as_deref().unwrap_or("");
                 return Ok(match status {
                     Status::Ok => {
-                        tracing::debug!(target: "hylki::imap", "< OK ({})", cmd_head(&cmd));
+                        tracing::debug!(target: "tegami::imap", "< OK ({})", cmd_head(&cmd));
                         Some(out)
                     }
                     // A server that does not know the item. Gmail itself
@@ -342,14 +342,14 @@ where
                     // read, and what it did send still holds.
                     Status::Bad => {
                         tracing::warn!(
-                            target: "hylki::imap",
+                            target: "tegami::imap",
                             "< BAD {why} ({cmd}): Gmail labels left off for the session"
                         );
                         refuse_gmail_labels(account_id);
                         None
                     }
                     _ => {
-                        tracing::warn!(target: "hylki::imap", "< {status:?} {why} ({cmd})");
+                        tracing::warn!(target: "tegami::imap", "< {status:?} {why} ({cmd})");
                         Some(out)
                     }
                 });
@@ -406,7 +406,7 @@ const LABEL_FILL_CHUNK: usize = 1_000;
 /// the queue (#374).
 ///
 /// Labels come down with the summaries, and a sync asks again only about its
-/// recent window, so mail indexed before Hylki read labels would never get
+/// recent window, so mail indexed before Tegami Mail read labels would never get
 /// any. This asks about the rest of each folder once, newest first, resuming
 /// from a watermark like [`run_one_refs_repair`].
 pub(super) async fn run_one_label_fill(

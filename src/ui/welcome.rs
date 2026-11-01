@@ -1,4 +1,4 @@
-//! First-run welcome wizard: a guided, five-step setup shown when Hylki starts
+//! First-run welcome wizard: a guided, five-step setup shown when Tegami Mail starts
 //! with no accounts configured.
 //!
 //! The whole window is the theme's own ground, light or dark, with the wordmark as the
@@ -112,7 +112,7 @@ impl Component for Welcome {
         let win = adw::Window::new();
         win.set_default_size(600, 700);
         win.add_css_class("welcome-window");
-        win.set_title(Some(i18n("Welcome to Hylki").as_str()));
+        win.set_title(Some(i18n("Welcome to Tegami Mail").as_str()));
         win
     }
 
@@ -385,16 +385,16 @@ impl Component for Welcome {
             &widgets.wordmark_box,
         );
 
-        // Screenshot hook, mirroring the main window's: HYLKI_SHOWCASE=path
-        // captures the wizard after a beat; HYLKI_SHOWCASE_PAGE=N walks to
+        // Screenshot hook, mirroring the main window's: TEGAMI_SHOWCASE=path
+        // captures the wizard after a beat; TEGAMI_SHOWCASE_PAGE=N walks to
         // that page first.
-        if let Ok(path) = std::env::var("HYLKI_SHOWCASE") {
+        if let Ok(path) = std::env::var("TEGAMI_SHOWCASE") {
             let win = root.clone();
             let s = sender.clone();
             gtk::glib::timeout_add_seconds_local_once(4, move || {
                 // Walk pages via Next so the capture includes everything a
                 // real click drives (the wordmark choreography included).
-                let n = std::env::var("HYLKI_SHOWCASE_PAGE")
+                let n = std::env::var("TEGAMI_SHOWCASE_PAGE")
                     .unwrap_or_default()
                     .parse::<u32>()
                     .unwrap_or(0);

@@ -157,7 +157,7 @@ fn quoted_mail(body: &Handle) -> Vec<Handle> {
         if name == "blockquote" && after_attribution {
             out.push(child.clone());
         }
-        after_attribution = has_class(child, "hylki-quote-attr");
+        after_attribution = has_class(child, "tegami-quote-attr");
     }
     out
 }
@@ -477,11 +477,11 @@ mod tests {
 
     #[test]
     fn a_quote_keeps_the_direction_of_its_text() {
-        let reply = "<div>תודה!</div><p class=\"hylki-quote-attr\">Ann wrote:</p>\
+        let reply = "<div>תודה!</div><p class=\"tegami-quote-attr\">Ann wrote:</p>\
             <blockquote><div>Thanks</div><table><tr><td>A</td><td>B</td></tr></table></blockquote>";
         assert_eq!(
             stamp(reply),
-            "<div dir=\"rtl\"><div>תודה!</div><p class=\"hylki-quote-attr\" dir=\"ltr\">Ann wrote:</p>\
+            "<div dir=\"rtl\"><div>תודה!</div><p class=\"tegami-quote-attr\" dir=\"ltr\">Ann wrote:</p>\
              <blockquote dir=\"ltr\"><div>Thanks</div><table><tbody><tr><td>A</td><td>B</td></tr></tbody></table></blockquote></div>"
         );
     }
@@ -493,23 +493,23 @@ mod tests {
         // <blockquote>.
         let quote = "<blockquote><div>Thanks<br>שלום<br>Bye</div><p>תודה</p></blockquote>";
         assert_eq!(
-            stamp(&format!("<p>שלום</p><p class=\"hylki-quote-attr\">Ann wrote:</p>{quote}")),
+            stamp(&format!("<p>שלום</p><p class=\"tegami-quote-attr\">Ann wrote:</p>{quote}")),
             format!(
-                "<div dir=\"rtl\"><p>שלום</p><p class=\"hylki-quote-attr\" dir=\"ltr\">Ann wrote:</p>\
+                "<div dir=\"rtl\"><p>שלום</p><p class=\"tegami-quote-attr\" dir=\"ltr\">Ann wrote:</p>\
                  <blockquote dir=\"ltr\">{}</div>",
                 &quote["<blockquote>".len()..]
             )
         );
         // An English reply to a Hebrew message has nothing to stamp.
         let reply = format!(
-            "<p>Thanks</p><p class=\"hylki-quote-attr\">Dan wrote:</p>\
+            "<p>Thanks</p><p class=\"tegami-quote-attr\">Dan wrote:</p>\
             <blockquote><div>שלום<br>Hi</div></blockquote>"
         );
         assert_eq!(stamp(&reply), reply);
         // A Hebrew reply over a Hebrew message: the quote goes with it.
         assert_eq!(
-            stamp("<p>תודה</p><p class=\"hylki-quote-attr\">דן כתב:</p><blockquote><div>שלום<br>Hi</div></blockquote>"),
-            "<div dir=\"rtl\"><p>תודה</p><p class=\"hylki-quote-attr\">דן כתב:</p><blockquote><div>שלום<br>Hi</div></blockquote></div>"
+            stamp("<p>תודה</p><p class=\"tegami-quote-attr\">דן כתב:</p><blockquote><div>שלום<br>Hi</div></blockquote>"),
+            "<div dir=\"rtl\"><p>תודה</p><p class=\"tegami-quote-attr\">דן כתב:</p><blockquote><div>שלום<br>Hi</div></blockquote></div>"
         );
         // A quote made with the toolbar is the writer's own text.
         assert_eq!(
@@ -587,13 +587,13 @@ mod tests {
     #[test]
     fn a_line_starting_in_the_other_script_follows_its_first_letter() {
         assert_eq!(
-            stamp("<div>Hylki הוא דוא\"ל</div>"),
-            "<div>Hylki הוא דוא\"ל</div>"
+            stamp("<div>Tegami Mail הוא דוא\"ל</div>"),
+            "<div>Tegami Mail הוא דוא\"ל</div>"
         );
         // A right-to-left mark says otherwise.
         assert_eq!(
-            stamp("<div>\u{200F}Hylki הוא</div>"),
-            "<div dir=\"rtl\"><div>\u{200F}Hylki הוא</div></div>"
+            stamp("<div>\u{200F}Tegami Mail הוא</div>"),
+            "<div dir=\"rtl\"><div>\u{200F}Tegami Mail הוא</div></div>"
         );
     }
 

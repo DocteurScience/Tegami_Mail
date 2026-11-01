@@ -5,7 +5,7 @@ use super::form::display_name;
 use super::providers::{brand_for_account, provider_name};
 use super::*;
 
-/// GNOME Online Accounts mail accounts not (properly) configured in Hylki.
+/// GNOME Online Accounts mail accounts not (properly) configured in Tegami Mail.
 /// A configured entry counts when it has an IMAP host or runs over Graph — an
 /// entry with neither is a broken pre-#36 Microsoft 365 import, so its GOA
 /// account is offered again and re-importing repairs it. Accounts GOA can
@@ -45,7 +45,7 @@ impl AccountsWindow {
         // The provider mark and the source badge each get a column of their
         // own, held to one width down the whole list. Both vary: the marks
         // are logos of different aspect (Gmail's M is wider than an envelope),
-        // and "GOA" is narrower than "Hylki" (and the pair differs again in
+        // and "GOA" is narrower than "Tegami Mail" (and the pair differs again in
         // each language). Left to themselves they pushed each other sideways
         // and neither read as a column.
         let mark_widths = gtk::SizeGroup::new(gtk::SizeGroupMode::Horizontal);
@@ -98,7 +98,7 @@ impl AccountsWindow {
         }
     }
 
-    /// Un-import a GNOME Online Account: drop it from Hylki (the app removes
+    /// Un-import a GNOME Online Account: drop it from Tegami Mail (the app removes
     /// the config entry and its stored copies) and return it to the "GNOME
     /// Online Accounts" import list below. The account stays in GNOME.
     pub(super) fn unimport_goa(
@@ -148,7 +148,7 @@ impl AccountsWindow {
             let toggle = gtk::Switch::new();
             toggle.set_valign(gtk::Align::Center);
             toggle.set_active(false);
-            toggle.set_tooltip_text(Some(i18n("Use this account in Hylki").as_str()));
+            toggle.set_tooltip_text(Some(i18n("Use this account in Tegami Mail").as_str()));
             let ti = sender.input_sender().clone();
             let tpos = pos;
             toggle.connect_state_set(move |_, state| {
@@ -205,7 +205,7 @@ impl AccountsWindow {
         sender: ComponentSender<Self>,
     ) {
         // A GNOME Online Account switched off here isn't paused — it is
-        // un-imported: it drops out of Hylki (the config entry and its
+        // un-imported: it drops out of Tegami Mail (the config entry and its
         // stored copies go) and returns to the "GNOME Online Accounts"
         // list below, ready to import again. The account itself stays
         // in GNOME untouched.
@@ -375,11 +375,11 @@ fn account_titles(acc: &AccountConfig) -> gtk::Box {
 }
 
 /// Source badge: is this account from GNOME Online Accounts, or added
-/// directly in Hylki?
+/// directly in Tegami Mail?
 fn source_badge(acc: &AccountConfig) -> gtk::Label {
     let from_goa = acc.goa_id.is_some();
     let badge = gtk::Label::new(Some(
-        if from_goa { i18n("GOA") } else { i18n("Hylki") }.as_str(),
+        if from_goa { i18n("GOA") } else { i18n("Tegami Mail") }.as_str(),
     ));
     badge.set_valign(gtk::Align::Center);
     badge.add_css_class("account-source-badge");
@@ -387,7 +387,7 @@ fn source_badge(acc: &AccountConfig) -> gtk::Label {
         badge.add_css_class("goa");
         badge.set_tooltip_text(Some(i18n("Imported GNOME Online Account").as_str()));
     } else {
-        badge.set_tooltip_text(Some(i18n("Added directly in Hylki").as_str()));
+        badge.set_tooltip_text(Some(i18n("Added directly in Tegami Mail").as_str()));
     }
     badge
 }

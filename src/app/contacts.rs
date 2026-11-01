@@ -42,7 +42,7 @@ fn spawn_contact_write(
     });
 }
 
-/// Read the contacts, the books new ones can go to and the Hylki book's
+/// Read the contacts, the books new ones can go to and the Tegami Mail book's
 /// size off the main thread, after `delay_ms` (EDS takes a moment to flush
 /// a write to the cache the read goes through).
 pub(super) fn reload_contacts(sender: &ComponentSender<AppModel>, delay_ms: u64) {

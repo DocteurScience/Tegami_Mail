@@ -341,7 +341,7 @@ fn round_trip_through_a_throwaway_keyring() {
         eprintln!("gpg not installed; skipping");
         return;
     }
-    let home = std::env::temp_dir().join(format!("hylki-gpg-test-{}", std::process::id()));
+    let home = std::env::temp_dir().join(format!("tegami-gpg-test-{}", std::process::id()));
     let _ = std::fs::remove_dir_all(&home);
     std::fs::create_dir_all(&home).unwrap();
     #[cfg(unix)]
@@ -360,7 +360,7 @@ fn round_trip_through_a_throwaway_keyring() {
             "--pinentry-mode",
             "loopback",
             "--quick-gen-key",
-            "Test Hylki <test@hylki.invalid>",
+            "Test Tegami Mail <test@tegami.invalid>",
             "default",
             "default",
             "never",
@@ -384,7 +384,7 @@ fn round_trip_through_a_throwaway_keyring() {
             "--passphrase",
             "",
             "--recipient",
-            "test@hylki.invalid",
+            "test@tegami.invalid",
             "--sign",
             "--encrypt",
         ],
@@ -397,7 +397,7 @@ fn round_trip_through_a_throwaway_keyring() {
         enc.status_lines
     );
     let mail = format!(
-        "From: test@hylki.invalid\r\nSubject: s\r\nMIME-Version: 1.0\r\n\
+        "From: test@tegami.invalid\r\nSubject: s\r\nMIME-Version: 1.0\r\n\
          Content-Type: multipart/encrypted; protocol=\"application/pgp-encrypted\"; boundary=\"enc\"\r\n\r\n\
          --enc\r\nContent-Type: application/pgp-encrypted\r\n\r\nVersion: 1\r\n\
          --enc\r\nContent-Type: application/octet-stream\r\n\r\n{armored}\r\n--enc--\r\n"
@@ -426,14 +426,14 @@ fn round_trip_through_a_throwaway_keyring() {
             "--trust-model",
             "always",
             "--recipient",
-            "test@hylki.invalid",
+            "test@tegami.invalid",
             "--encrypt",
         ],
         PROTECTED.as_bytes(),
     );
     let armored = String::from_utf8(enc.stdout.clone()).unwrap();
     let mail = format!(
-        "From: test@hylki.invalid\r\nSubject: ...\r\nMIME-Version: 1.0\r\n\
+        "From: test@tegami.invalid\r\nSubject: ...\r\nMIME-Version: 1.0\r\n\
          Content-Type: multipart/encrypted; protocol=\"application/pgp-encrypted\"; boundary=\"enc\"\r\n\r\n\
          --enc\r\nContent-Type: application/pgp-encrypted\r\n\r\nVersion: 1\r\n\
          --enc\r\nContent-Type: application/octet-stream\r\n\r\n{armored}\r\n--enc--\r\n"
@@ -457,7 +457,7 @@ fn round_trip_through_a_throwaway_keyring() {
     );
     let sig = String::from_utf8(sig.stdout).unwrap();
     let mail = format!(
-        "From: test@hylki.invalid\r\nMIME-Version: 1.0\r\n\
+        "From: test@tegami.invalid\r\nMIME-Version: 1.0\r\n\
          Content-Type: multipart/signed; micalg=pgp-sha256; protocol=\"application/pgp-signature\"; boundary=\"b\"\r\n\r\n\
          --b\r\n{}\r\n--b\r\nContent-Type: application/pgp-signature\r\n\r\n{sig}\r\n--b--\r\n",
         String::from_utf8_lossy(part)
@@ -491,11 +491,11 @@ fn round_trip_through_a_throwaway_keyring() {
     let mine = list_keys(&gpg, true);
     assert_eq!(mine.len(), 1, "{mine:?}");
     assert!(mine[0].can_encrypt && mine[0].secret);
-    assert!(secret_key_for(&gpg, "TEST@hylki.invalid").is_some());
-    assert!(public_key_for(&gpg, "test@hylki.invalid").is_some());
-    assert!(public_key_for(&gpg, "nobody@hylki.invalid").is_none());
+    assert!(secret_key_for(&gpg, "TEST@tegami.invalid").is_some());
+    assert!(public_key_for(&gpg, "test@tegami.invalid").is_some());
+    assert!(public_key_for(&gpg, "nobody@tegami.invalid").is_none());
     let fpr =
-        generate_key(&gpg, "Second Key", "second@hylki.invalid", "1y", "pw").expect("generated");
+        generate_key(&gpg, "Second Key", "second@tegami.invalid", "1y", "pw").expect("generated");
     let second = key_by_fingerprint(&gpg, &fpr).expect("listed");
     assert!(
         second.can_encrypt,
@@ -505,7 +505,7 @@ fn round_trip_through_a_throwaway_keyring() {
     let armored = export_public(&gpg, &fpr).expect("exported");
     assert!(String::from_utf8_lossy(&armored).contains("BEGIN PGP PUBLIC KEY BLOCK"));
     // Into a second, empty keyring: imported, untrusted, then vouched for.
-    let home2 = std::env::temp_dir().join(format!("hylki-gpg-test2-{}", std::process::id()));
+    let home2 = std::env::temp_dir().join(format!("tegami-gpg-test2-{}", std::process::id()));
     let _ = std::fs::remove_dir_all(&home2);
     std::fs::create_dir_all(&home2).unwrap();
     #[cfg(unix)]
@@ -529,18 +529,18 @@ fn round_trip_through_a_throwaway_keyring() {
         trust_key(&gpg2, &fpr, None).is_err(),
         "no key of one's own to sign with"
     );
-    let own = generate_key(&gpg2, "", "me@hylki.invalid", "never", "").expect("own key");
+    let own = generate_key(&gpg2, "", "me@tegami.invalid", "never", "").expect("own key");
     trust_key(&gpg2, &fpr, Some(&own)).expect("signed");
     assert!(key_by_fingerprint(&gpg2, &fpr).unwrap().validity.trusted());
     // Encrypt to the imported key from the second keyring; the first opens it.
     let ct = encrypt(
         &gpg2,
         b"Content-Type: text/plain\r\n\r\nfor second",
-        &["second@hylki.invalid".into()],
+        &["second@tegami.invalid".into()],
         Some(&own),
     )
     .expect("encrypted");
-    let mail = format!("From: me@hylki.invalid\r\nMIME-Version: 1.0\r\nContent-Type: multipart/encrypted; protocol=\"application/pgp-encrypted\"; boundary=\"e\"\r\n\r\n--e\r\nContent-Type: application/pgp-encrypted\r\n\r\nVersion: 1\r\n--e\r\nContent-Type: application/octet-stream\r\n\r\n{}\r\n--e--\r\n", String::from_utf8_lossy(&ct));
+    let mail = format!("From: me@tegami.invalid\r\nMIME-Version: 1.0\r\nContent-Type: multipart/encrypted; protocol=\"application/pgp-encrypted\"; boundary=\"e\"\r\n\r\n--e\r\nContent-Type: application/pgp-encrypted\r\n\r\nVersion: 1\r\n--e\r\nContent-Type: application/octet-stream\r\n\r\n{}\r\n--e--\r\n", String::from_utf8_lossy(&ct));
     // The second key has a passphrase, fed through the loopback for the test.
     let gpg_pw = Gpg {
         home: Some(home.clone()),

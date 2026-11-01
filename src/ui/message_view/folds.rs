@@ -50,7 +50,7 @@ impl MessageView {
     pub(super) fn card_marks_html(&self, m: &Message) -> String {
         let icon = |class: &str, name: &str, title: &str| {
             format!(
-                "<span class=\"hylki-mark{class}\" title=\"{}\">{}</span>",
+                "<span class=\"tegami-mark{class}\" title=\"{}\">{}</span>",
                 attr_escape(title),
                 inline_icon_svg(name)
             )
@@ -60,13 +60,13 @@ impl MessageView {
         let clip = if m.has_attachment {
             icon("", "mail-attachment-symbolic", &i18n("Has attachments"))
         } else {
-            "<span class=\"hylki-mark hylki-mark-none\"></span>".to_string()
+            "<span class=\"tegami-mark tegami-mark-none\"></span>".to_string()
         };
         format!(
-            "<span class=\"hylki-marks\">{}{clip}</span>",
+            "<span class=\"tegami-marks\">{}{clip}</span>",
             icon(
-                " hylki-mark-star",
-                "hylki-non-starred-symbolic",
+                " tegami-mark-star",
+                "tegami-non-starred-symbolic",
                 &i18n("Starred")
             ),
         )
@@ -97,7 +97,7 @@ impl MessageView {
         }
         let preview = crate::models::preview_display(&m.preview);
         format!(
-            "<div class=\"hylki-fbar\" data-key=\"{}:{}\" title=\"{}\" \
+            "<div class=\"tegami-fbar\" data-key=\"{}:{}\" title=\"{}\" \
              style=\"-webkit-line-clamp:{n};height:calc({n} * 1.35em)\">{}</div>",
             m.account_id,
             m.id,
@@ -119,11 +119,11 @@ impl MessageView {
             .map(|(a, i)| format!("{a}:{i}"))
             .collect();
         let js = format!(
-            "(function(k){{var ms=document.querySelectorAll('.hylki-msg');\
+            "(function(k){{var ms=document.querySelectorAll('.tegami-msg');\
              for(var i=0;i<ms.length;i++){{var on=k.indexOf(ms[i].dataset.key)>=0;\
-             if(ms[i].classList.contains('hylki-folded')===on)continue;\
-             ms[i].classList.toggle('hylki-folded',on);\
-             if(!on){{var f=ms[i].querySelector('iframe.hylki-frame');if(f){{f._h=0;s(f);}}}}}}}})({})",
+             if(ms[i].classList.contains('tegami-folded')===on)continue;\
+             ms[i].classList.toggle('tegami-folded',on);\
+             if(!on){{var f=ms[i].querySelector('iframe.tegami-frame');if(f){{f._h=0;s(f);}}}}}}}})({})",
             serde_json::to_string(&keys).unwrap_or_else(|_| "[]".into()),
         );
         self.run_js(&js);

@@ -372,7 +372,7 @@ impl AppModel {
     /// A `mid:` link (RFC 2392) from anywhere on the system (#130): open the
     /// message with that Message-ID.
     fn open_mid(&mut self, uri: String, sender: ComponentSender<Self>) {
-        // The cache first: it holds every message Hylki has listed,
+        // The cache first: it holds every message Tegami Mail has listed,
         // across accounts, and answers at once. Only a miss asks the
         // servers, one HEADER search per folder per account.
         let Some(id) = parse_mid(&uri) else {
@@ -521,8 +521,8 @@ mod tests {
         );
         // Slashes inside the id are part of it; one after the domain is a cid.
         assert_eq!(
-            super::parse_mid("mid:hyprlab/hylki/issues/128/5558573653@github.com/att1"),
-            Some("hyprlab/hylki/issues/128/5558573653@github.com".to_string())
+            super::parse_mid("mid:hyprlab/tegami/issues/128/5558573653@github.com/att1"),
+            Some("hyprlab/tegami/issues/128/5558573653@github.com".to_string())
         );
         assert_eq!(super::parse_mid("mid:"), None);
         assert_eq!(super::parse_mid("mid:not-an-id"), None);

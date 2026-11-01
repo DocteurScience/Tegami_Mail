@@ -5,7 +5,7 @@
 //! Writing goes through the EDS D-Bus API so changes are tracked by EDS and
 //! synced back to CardDAV servers.
 //!
-//! It is also the parent of the other places contacts come from: Hylki's own
+//! It is also the parent of the other places contacts come from: Tegami Mail's own
 //! address book, LDAP directories, CardDAV accounts, the Microsoft 365
 //! directory, and the list of sources the settings show.
 

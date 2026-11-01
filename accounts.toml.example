@@ -1,7 +1,7 @@
-# Hylki account configuration.
+# Tegami Mail account configuration.
 #
-# Copy this file to ~/.config/hylki/accounts.toml and fill in your details.
-# When this file is present and lists at least one account, Hylki connects over
+# Copy this file to ~/.config/tegami/accounts.toml and fill in your details.
+# When this file is present and lists at least one account, Tegami Mail connects over
 # IMAP; otherwise it starts empty with an "Add account" prompt. (Most people just
 # add accounts from the in-app Settings instead of editing this file.)
 #

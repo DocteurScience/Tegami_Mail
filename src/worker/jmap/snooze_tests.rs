@@ -31,9 +31,9 @@ fn live_snoozed_mail_comes_back_unread() {
     };
     let pid = std::process::id();
     let snoozed = format!("Snoozed-{pid}");
-    let mid = format!("hylki-527-{pid}@example.test");
+    let mid = format!("tegami-527-{pid}@example.test");
     let raw = format!(
-        "From: Ann <ann@example.test>\r\nTo: me@example.test\r\nSubject: hylki-527-{pid}\r\n\
+        "From: Ann <ann@example.test>\r\nTo: me@example.test\r\nSubject: tegami-527-{pid}\r\n\
          Message-ID: <{mid}>\r\nDate: Sun, 25 Oct 2026 08:00:00 +0000\r\n\r\nlater\r\n"
     );
     let events = Arc::new(Mutex::new(Vec::<String>::new()));

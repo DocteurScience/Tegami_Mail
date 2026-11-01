@@ -44,10 +44,10 @@ fn live() {
     d.port = port.unwrap_or(d.security.default_port());
     d.base_dn = base;
     d.bind_dn = bind;
-    // LDAP_LIVE_OLD=1: the source as Hylki wrote it before #307's fix,
+    // LDAP_LIVE_OLD=1: the source as Tegami Mail wrote it before #307's fix,
     // encryption under the key EDS never read.
     let uid = if std::env::var_os("LDAP_LIVE_OLD").is_some() {
-        d.uid = "hylkiliveold".into();
+        d.uid = "tegamiliveold".into();
         let old = d
             .to_source()
             .replace("[Security]\nMethod=", "[Old]\nX=")
@@ -55,7 +55,7 @@ fn live() {
                 "[LDAP Backend]\n",
                 &format!("[LDAP Backend]\nSecurityMethod={}\n", d.security.key()),
             );
-        let sources: HashMap<&str, String> = HashMap::from([("hylkiliveold", old)]);
+        let sources: HashMap<&str, String> = HashMap::from([("tegamiliveold", old)]);
         bus()
             .unwrap()
             .call_method(
@@ -66,8 +66,8 @@ fn live() {
                 &(sources,),
             )
             .expect("old source");
-        crate::config::store_cloud_password("ldap:hylkiliveold", &pw).unwrap();
-        "hylkiliveold".to_string()
+        crate::config::store_cloud_password("ldap:tegamiliveold", &pw).unwrap();
+        "tegamiliveold".to_string()
     } else {
         save(&d, Some(&pw)).expect("saved")
     };
@@ -200,7 +200,7 @@ fn query_text_is_quoted_for_eds() {
 }
 
 #[test]
-fn a_source_round_trips_and_keeps_what_hylki_does_not_show() {
+fn a_source_round_trips_and_keeps_what_tegami_does_not_show() {
     let data = "[Data Source]\nDisplayName=Work\nEnabled=true\nParent=ldap-stub\n\n\
                 [Address Book]\nBackendName=ldap\n\n\
                 [Authentication]\nHost=ldap.example.org\nPort=636\nUser=cn=me,dc=example,dc=org\nMethod=ldap/simple-binddn\n\n\
@@ -220,7 +220,7 @@ fn a_source_round_trips_and_keeps_what_hylki_does_not_show() {
     assert!(Directory::from_source("x", "/p", "[Address Book]\nBackendName=carddav\n").is_none());
 }
 
-/// #307: Hylki once wrote the encryption where EDS never looks, so EDS
+/// #307: Tegami Mail once wrote the encryption where EDS never looks, so EDS
 /// ran every such directory unencrypted; reading takes the old key, and
 /// saving moves it to the one EDS reads.
 #[test]

@@ -242,12 +242,12 @@ impl AppModel {
         accounts: &Controller<AccountsWindow>,
         sender: &ComponentSender<Self>,
     ) {
-        // Showcase hook: HYLKI_SHOWCASE_EDIT_FILTER=<index> opens that
+        // Showcase hook: TEGAMI_SHOWCASE_EDIT_FILTER=<index> opens that
         // filter rule's editor once the panel is up, for a capture.
         // Sent through the app so it reaches whichever panel is current
         // when it fires: an open right after the pre-warm may have swapped
         // in a fresh one.
-        if let Some(Ok(i)) = std::env::var("HYLKI_SHOWCASE_EDIT_FILTER")
+        if let Some(Ok(i)) = std::env::var("TEGAMI_SHOWCASE_EDIT_FILTER")
             .ok()
             .map(|v| v.parse::<usize>())
         {
@@ -258,16 +258,16 @@ impl AppModel {
                 });
             }
         }
-        // HYLKI_SHOWCASE_FIND_TAGS=1 runs the tag finder once the panel is
+        // TEGAMI_SHOWCASE_FIND_TAGS=1 runs the tag finder once the panel is
         // up (the demo backend answers with a fixed set); the report dialog
         // captures itself two seconds after it appears.
-        if std::env::var("HYLKI_SHOWCASE_FIND_TAGS").is_ok() && demo_mode() {
+        if std::env::var("TEGAMI_SHOWCASE_FIND_TAGS").is_ok() && demo_mode() {
             let s = sender.clone();
             gtk::glib::timeout_add_seconds_local_once(2, move || s.input(AppMsg::FindTags));
         }
-        // HYLKI_SHOWCASE_EDIT_TAG=<index> likewise opens that tag's editor
+        // TEGAMI_SHOWCASE_EDIT_TAG=<index> likewise opens that tag's editor
         // (#147); an index past the end opens the Add Tag dialog.
-        if let Some(Ok(i)) = std::env::var("HYLKI_SHOWCASE_EDIT_TAG")
+        if let Some(Ok(i)) = std::env::var("TEGAMI_SHOWCASE_EDIT_TAG")
             .ok()
             .map(|v| v.parse::<usize>())
         {
@@ -283,9 +283,9 @@ impl AppModel {
                 });
             }
         }
-        // HYLKI_SHOWCASE_EDIT_SMART=<index> likewise opens that smart
+        // TEGAMI_SHOWCASE_EDIT_SMART=<index> likewise opens that smart
         // folder's editor (#417); an index past the end opens a new one.
-        if let Some(Ok(i)) = std::env::var("HYLKI_SHOWCASE_EDIT_SMART")
+        if let Some(Ok(i)) = std::env::var("TEGAMI_SHOWCASE_EDIT_SMART")
             .ok()
             .map(|v| v.parse::<usize>())
         {
@@ -507,7 +507,7 @@ impl AppModel {
             Some(self.window.upcast_ref()),
             &i18n("Remove Account?"),
             &format!(
-                "Remove {label} from Hylki? Its saved password is deleted. \
+                "Remove {label} from Tegami Mail? Its saved password is deleted. \
                  Mail on the server is not affected."
             ),
             "remove",

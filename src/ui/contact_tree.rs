@@ -36,7 +36,7 @@ fn book_key(uid: &str) -> String {
 }
 
 /// Fill `list`, the Contacts row's list in the sidebar, with `tree`: the
-/// Hylki book first, then each account: one of one book as that book's
+/// Tegami Mail book first, then each account: one of one book as that book's
 /// row, its account under its name; one of several as a row of its own
 /// with its books under it. Each book's groups are under the book, and an
 /// account or book folds as a folder with sub-folders does (`folded` holds
@@ -55,7 +55,7 @@ pub(super) fn fill(
         layout: Vec::new(),
         chevrons: Vec::new(),
     };
-    // The Hylki book heads the list, then the books of no account; the
+    // The Tegami Mail book heads the list, then the books of no account; the
     // accounts keep their order, and the books of one account go together.
     let mut books: Vec<&TreeBook> = tree.books.iter().collect();
     books.sort_by_key(|b| {
@@ -187,7 +187,7 @@ impl Ctx<'_> {
         } else if !book.account.is_empty() {
             book.account.clone()
         } else if book.uid == crate::contacts::local::LOCAL_BOOK_UID {
-            i18n("Hylki, on this computer")
+            i18n("Tegami Mail, on this computer")
         } else {
             String::new()
         };
@@ -307,7 +307,7 @@ impl Ctx<'_> {
 }
 
 /// A book's menu: a new contact or group in it, when it takes them, and
-/// renaming it in Hylki.
+/// renaming it in Tegami Mail.
 fn book_menu(r: &gtk::ListBoxRow, book: &TreeBook, input: &relm4::Sender<SidebarInput>) {
     let (s, uid, writable, groups) = (
         input.clone(),

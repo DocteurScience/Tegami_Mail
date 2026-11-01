@@ -11,7 +11,7 @@ impl AccountsWindow {
     ) {
         if let Some(i) = self.editing {
             // Same un-import semantics as the list toggle; the editor
-            // page closes since its account is no longer in Hylki.
+            // page closes since its account is no longer in Tegami Mail.
             if !enabled && self.accounts.get(i).is_some_and(|a| a.goa_id.is_some()) {
                 self.unimport_goa(i, widgets, &sender);
                 widgets.nav.pop();
@@ -95,7 +95,7 @@ impl AccountsWindow {
         // A GOA account's connection fields were all restored from the
         // original above (GNOME owns them; a Graph account rightly has
         // no IMAP host at all) — validating them would only block the
-        // fields Hylki does own: label, signature, color, aliases.
+        // fields Tegami Mail does own: label, signature, color, aliases.
         // On This Computer (#552) has no connection at all.
         let is_goa_edit = account.goa_id.is_some() || account.is_local();
         if !is_goa_edit
@@ -196,18 +196,18 @@ impl AccountsWindow {
         };
         let body = if account.is_local() {
             i18n_f(
-                "Remove {name} from Hylki? Its folders and the mail in them stay on this computer, in {dir}, and come back if it is added again.",
+                "Remove {name} from Tegami Mail? Its folders and the mail in them stay on this computer, in {dir}, and come back if it is added again.",
                 &[("name", &name), ("dir", &super::local::shown_dir())],
             )
         } else if account.goa_id.is_some() {
             format!(
-                "Remove {name} from Hylki? It stays in GNOME Online Accounts \
+                "Remove {name} from Tegami Mail? It stays in GNOME Online Accounts \
                  and can be imported again from the list below. Mail on the \
                  server is not affected."
             )
         } else {
             format!(
-                "Remove {name} from Hylki? Its saved password is deleted from \
+                "Remove {name} from Tegami Mail? Its saved password is deleted from \
                  the keyring. Mail on the server is not affected."
             )
         };
@@ -263,7 +263,7 @@ fn keep_from_original(account: &mut AccountConfig, orig: &AccountConfig) {
         account.oauth = orig.oauth;
         account.oauth_settings = orig.oauth_settings.clone();
         // GNOME Online Accounts is the source of truth for these;
-        // Hylki keeps only what it owns (display name, signature,
+        // Tegami Mail keeps only what it owns (display name, signature,
         // color, emoji, label).
         account.email = orig.email.clone();
         account.protocol = orig.protocol;

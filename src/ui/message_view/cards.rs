@@ -24,7 +24,7 @@ impl MessageView {
             .map(|(a, i)| format!("'{a}:{i}'"))
             .collect();
         let js = format!(
-            "(function(){{var s=[{}];             var els=document.querySelectorAll('.hylki-msg');             for(var i=0;i<els.length;i++){{var k=els[i].dataset.key;             els[i].classList.toggle('selected', s.indexOf(k)>=0);}}}})()",
+            "(function(){{var s=[{}];             var els=document.querySelectorAll('.tegami-msg');             for(var i=0;i<els.length;i++){{var k=els[i].dataset.key;             els[i].classList.toggle('selected', s.indexOf(k)>=0);}}}})()",
             keys.join(",")
         );
         self.run_js(&js);
@@ -49,7 +49,7 @@ impl MessageView {
                 String::new()
             };
             js.push_str(&format!(
-                "var d=document.querySelector('.hylki-atts[data-key=\"{}:{}\"]');if(d)d.innerHTML={};",
+                "var d=document.querySelector('.tegami-atts[data-key=\"{}:{}\"]');if(d)d.innerHTML={};",
                 key.0,
                 key.1,
                 serde_json::to_string(&html).unwrap_or_else(|_| "''".into()),

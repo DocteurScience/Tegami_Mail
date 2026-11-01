@@ -202,7 +202,7 @@ mod tests {
             ..base
         };
         let pid = std::process::id();
-        let tag = format!("hylki-536-pop3-{pid}");
+        let tag = format!("tegami-536-pop3-{pid}");
         let now = crate::datefmt::now();
         let rt = tokio::runtime::Builder::new_current_thread()
             .enable_all()

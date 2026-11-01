@@ -107,7 +107,7 @@ impl<E: Emit> ImapWorker<E> {
             }
             Ok(false) => {
                 // The mailbox takes no custom keywords: keep the tag
-                // in Hylki, and say so once per session.
+                // in Tegami Mail, and say so once per session.
                 if let Some(c) = cache.as_ref() {
                     if message_id.is_empty() {
                         c.set_keyword(account_id, &path, uid, &keyword, add);
@@ -118,7 +118,7 @@ impl<E: Emit> ImapWorker<E> {
                 if !*local_tags_noticed {
                     *local_tags_noticed = true;
                     emit(WorkerEvent::Notice(i18n(
-                        "This server does not store tags, so Hylki keeps them on this computer only",
+                        "This server does not store tags, so Tegami Mail keeps them on this computer only",
                     )));
                 }
             }
@@ -303,7 +303,7 @@ impl<E: Emit> ImapWorker<E> {
         // label it is shown in: the original would stay there, file
         // and all, beside the copy.
         if has_gmail_labels(account, &folders) {
-            let why = i18n("Gmail keeps a copy of every message in All Mail, so Hylki cannot remove an attachment there");
+            let why = i18n("Gmail keeps a copy of every message in All Mail, so Tegami Mail cannot remove an attachment there");
             strip_refused(emit, why, message_id, name, size);
             return After::Skip;
         }

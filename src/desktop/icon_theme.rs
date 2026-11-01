@@ -1,5 +1,5 @@
 //! Where the app's icons come from: the bundle built into the binary
-//! (Hylki's own icon theme) or, when Settings asks, the desktop's theme.
+//! (Tegami Mail's own icon theme) or, when Settings asks, the desktop's theme.
 //! The app sets it up at start and on that switch; app_icon looks up a
 //! launcher icon in the desktop's folders.
 
@@ -8,7 +8,7 @@ use gtk::prelude::*;
 /// Draw every icon from the copies built into the binary, and register the
 /// app icon so windows and dialogs can find it by name.
 ///
-/// The bundle (tools/gen-icon-gresource.sh) holds every icon Hylki names,
+/// The bundle (tools/gen-icon-gresource.sh) holds every icon Tegami Mail names,
 /// every one GTK and libadwaita draw for their own widgets, as found on the
 /// build machine, and the app's own icon. Icons once followed the user's
 /// theme (#260); a theme that restyled some of them made the app look
@@ -36,11 +36,11 @@ pub(crate) fn register_icons(desktop: bool) {
     gtk::Window::set_default_icon_name(crate::APP_ID);
 }
 
-/// Draw icons from Hylki's own theme, or from the desktop's. Applies at once:
+/// Draw icons from Tegami Mail's own theme, or from the desktop's. Applies at once:
 /// GTK redraws every icon when the name changes.
 ///
-/// Hylki's own way, the folders on disk leave the search altogether but for
-/// the ones only Hylki writes to. Naming a theme that does not exist is not
+/// Tegami Mail's own way, the folders on disk leave the search altogether but for
+/// the ones only Tegami Mail writes to. Naming a theme that does not exist is not
 /// enough by itself: GTK looks through hicolor's folders before the bundle,
 /// and an icon of the same name there, from an icon theme installed in the
 /// home folder or another program, drew a gear for the main menu on one
@@ -89,7 +89,7 @@ pub(crate) fn apply_icon_theme(desktop: bool) {
 }
 
 /// An icon theme over the desktop's own icon folders, for the icons that are
-/// the desktop's business rather than Hylki's: a launcher icon set outside
+/// the desktop's business rather than Tegami Mail's: a launcher icon set outside
 /// the app (#252).
 pub(crate) fn desktop_icon_theme() -> gtk::IconTheme {
     let theme = gtk::IconTheme::new();
@@ -125,7 +125,7 @@ fn check_icon_sources(theme: &gtk::IconTheme) {
         let uri = icon.file().map(|f| f.uri().to_string()).unwrap_or_default();
         if !uri.starts_with(&format!("resource://{ICON_RESOURCE}/")) {
             foreign += 1;
-            tracing::warn!("icon {name} is drawn from {uri}, not from Hylki's own icons");
+            tracing::warn!("icon {name} is drawn from {uri}, not from Tegami Mail's own icons");
         }
     }
     tracing::debug!(
@@ -148,29 +148,29 @@ fn check_icon_sources(theme: &gtk::IconTheme) {
     );
 }
 
-/// Hylki's icon theme: a name no theme on disk carries, so the user's icon
+/// Tegami Mail's icon theme: a name no theme on disk carries, so the user's icon
 /// theme is never consulted and the app looks the same on every desktop.
 /// Lookups fall through to hicolor, which holds the bundle below and GTK's
 /// and libadwaita's built-in icons.
-const ICON_THEME: &str = "Hylki";
+const ICON_THEME: &str = "Tegami Mail";
 
 /// Where the bundled icons sit in the app's GResource (registered in `main`).
-const ICON_RESOURCE: &str = "/co/hyprlab/Hylki/icons";
+const ICON_RESOURCE: &str = "/io/github/DocteurScience/TegamiMail/icons";
 
-/// The icon folders GTK searched before Hylki narrowed them: what "Use the
+/// The icon folders GTK searched before Tegami Mail narrowed them: what "Use the
 /// desktop's icons" gives back.
 static DESKTOP_ICON_PATH: std::sync::OnceLock<Vec<std::path::PathBuf>> = std::sync::OnceLock::new();
 
 #[cfg(test)]
 mod tests {
-    /// Every icon the code names is in the bundle Hylki draws from: with
+    /// Every icon the code names is in the bundle Tegami Mail draws from: with
     /// the icon folders on disk out of the search, one missing from it shows
     /// as a broken image on every system. tools/gen-icon-gresource.sh adds
     /// any the code has come to name.
     #[test]
     fn every_icon_named_in_the_code_is_bundled() {
         let root = std::path::Path::new(env!("CARGO_MANIFEST_DIR"));
-        let manifest = std::fs::read_to_string(root.join("resources/hylki.gresource.xml")).unwrap();
+        let manifest = std::fs::read_to_string(root.join("resources/tegami.gresource.xml")).unwrap();
         fn walk(dir: &std::path::Path, out: &mut Vec<std::path::PathBuf>) {
             for entry in std::fs::read_dir(dir).unwrap().flatten() {
                 let path = entry.path();

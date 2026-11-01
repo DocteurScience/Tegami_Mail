@@ -1,4 +1,4 @@
-//! The vCards Hylki reads and writes, pinned: what a corpus of cards parses
+//! The vCards Tegami Mail reads and writes, pinned: what a corpus of cards parses
 //! to, and the exact text of every card the editors produce.
 
 use super::*;

@@ -79,7 +79,7 @@ pub(super) fn run_restored(webview: &gtk::glib::WeakRef<webkit6::WebView>, js: &
     if let Some(wv) = webview.upgrade() {
         exec(
             &wv,
-            &format!("window.__hylkiRestore&&window.__hylkiRestore();{js}"),
+            &format!("window.__tegamiRestore&&window.__tegamiRestore();{js}"),
         );
         wv.grab_focus();
     }
@@ -104,7 +104,7 @@ pub(super) fn bar_menu(
     let weak = webview.downgrade();
     popover.connect_show(move |_| {
         if let Some(wv) = weak.upgrade() {
-            exec(&wv, "window.__hylkiSave&&window.__hylkiSave()");
+            exec(&wv, "window.__tegamiSave&&window.__tegamiSave()");
         }
     });
     let btn = gtk::MenuButton::new();
@@ -224,7 +224,7 @@ pub(super) fn build_toolbar(
     // The block commands are toggles: the document reports whether the
     // caret is inside one, and each command both opens and leaves its block
     // (the lists through execCommand's own toggling, the quote through
-    // __hylkiQuote). A toggle shows the pressed look while the caret is in
+    // __tegamiQuote). A toggle shows the pressed look while the caret is in
     // its block; the click flips it at once and the document's next state
     // report settles it, so it never sticks wrong.
     let mut toggles = Vec::new();
@@ -255,12 +255,12 @@ pub(super) fn build_toolbar(
             (
                 "format-indent-less-symbolic",
                 i18n_noop("Decrease indent"),
-                "window.__hylkiIndent(false)",
+                "window.__tegamiIndent(false)",
             ),
             (
                 "format-indent-more-symbolic",
                 i18n_noop("Increase indent"),
-                "window.__hylkiIndent(true)",
+                "window.__tegamiIndent(true)",
             ),
         ],
     );
@@ -272,7 +272,7 @@ pub(super) fn build_toolbar(
         webview,
         "format-quote-symbolic",
         i18n_noop("Quote"),
-        "window.__hylkiQuote()",
+        "window.__tegamiQuote()",
         'q',
         &mut toggles,
     ));
@@ -372,7 +372,7 @@ fn style_menus(
                 "pre" => Some("monospace"),
                 _ => None,
             };
-            (i18n(label), format!("window.__hylkiBlock('{tag}')"), class)
+            (i18n(label), format!("window.__tegamiBlock('{tag}')"), class)
         })
         .collect();
     let style_box = gtk::Box::new(gtk::Orientation::Vertical, 0);
@@ -386,7 +386,7 @@ fn style_menus(
         .map(|(_, family, label)| {
             (
                 i18n(label),
-                format!("window.__hylkiStyled('fontName',{})", js_str(family)),
+                format!("window.__tegamiStyled('fontName',{})", js_str(family)),
                 None,
             )
         })
@@ -457,11 +457,11 @@ fn style_menus(
     font.set_label(&font_label(first_family(&prefs.compose_font)));
     font.set_always_show_arrow(true);
     let size_items: Vec<(String, String, Option<&str>)> =
-        std::iter::once((i18n("Default"), "window.__hylkiSize(0)".to_string(), None))
+        std::iter::once((i18n("Default"), "window.__tegamiSize(0)".to_string(), None))
             .chain(
                 SIZES
                     .iter()
-                    .map(|pt| (pt.to_string(), format!("window.__hylkiSize({pt})"), None)),
+                    .map(|pt| (pt.to_string(), format!("window.__tegamiSize({pt})"), None)),
             )
             .collect();
     let size_box = gtk::Box::new(gtk::Orientation::Vertical, 0);
@@ -663,10 +663,10 @@ fn chevron_tools(
     more
 }
 
-/// HYLKI_SHOWCASE_TOOLBAR_TOGGLE=<ms>: press the chevron that long after
+/// TEGAMI_SHOWCASE_TOOLBAR_TOGGLE=<ms>: press the chevron that long after
 /// the bar is built, so frames of the slide can be captured.
 fn showcase_toolbar_toggle(more: &gtk::ToggleButton) {
-    if let Some(ms) = std::env::var("HYLKI_SHOWCASE_TOOLBAR_TOGGLE")
+    if let Some(ms) = std::env::var("TEGAMI_SHOWCASE_TOOLBAR_TOGGLE")
         .ok()
         .and_then(|v| v.parse::<u64>().ok())
     {
@@ -675,9 +675,9 @@ fn showcase_toolbar_toggle(more: &gtk::ToggleButton) {
             if let Some(m) = more.upgrade() {
                 tracing::info!("showcase: chevron pressed");
                 m.set_active(!m.is_active());
-                // HYLKI_SHOWCASE_TOOLBAR_SHOTS=<png prefix>:<ms>,<ms>…
+                // TEGAMI_SHOWCASE_TOOLBAR_SHOTS=<png prefix>:<ms>,<ms>…
                 // captures the window that long after the press.
-                if let Some((prefix, times)) = std::env::var("HYLKI_SHOWCASE_TOOLBAR_SHOTS")
+                if let Some((prefix, times)) = std::env::var("TEGAMI_SHOWCASE_TOOLBAR_SHOTS")
                     .ok()
                     .and_then(|v| {
                         v.rsplit_once(':')
@@ -708,7 +708,7 @@ fn showcase_toolbar_toggle(more: &gtk::ToggleButton) {
 /// drop or a paste puts them there: a file too big to carry in the body,
 /// or not a picture, joins the attachments instead.
 fn pick_pictures(webview: &webkit6::WebView, anchor: &gtk::Button, attach_cb: &AttachCallback) {
-    exec(webview, "window.__hylkiSave&&window.__hylkiSave()");
+    exec(webview, "window.__tegamiSave&&window.__tegamiSave()");
     let filter = gtk::FileFilter::new();
     filter.set_name(Some(&i18n("Pictures")));
     filter.add_mime_type("image/*");
@@ -726,7 +726,7 @@ fn pick_pictures(webview: &webkit6::WebView, anchor: &gtk::Button, attach_cb: &A
         let files: Vec<gtk::gio::File> = (0..list.n_items())
             .filter_map(|i| list.item(i).and_downcast::<gtk::gio::File>())
             .collect();
-        exec(&wv, "window.__hylkiRestore&&window.__hylkiRestore()");
+        exec(&wv, "window.__tegamiRestore&&window.__tegamiRestore()");
         deliver_files(&wv, &files, None, &cb, true);
         wv.grab_focus();
     });

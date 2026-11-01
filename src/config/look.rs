@@ -20,7 +20,7 @@ pub(crate) enum AppTheme {
 #[serde(rename_all = "kebab-case")]
 pub(crate) enum TrayIcon {
     /// The app icon.
-    Hylki,
+    Tegami Mail,
     /// The app's symbolic icon, which the panel draws in its own color, as
     /// it does the icons beside it (#258). It replaced a white and a black
     /// envelope, which read as it.

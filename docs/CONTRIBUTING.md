@@ -1,6 +1,6 @@
 # Contributing
 
-Contributions are welcome, and not only in Rust. If you use Hylki and
+Contributions are welcome, and not only in Rust. If you use Tegami Mail and
 something about it is wrong, awkward or missing, that report is worth as much
 as a patch: most of what has shipped since 1.15 started as somebody's issue.
 Everyone whose work is in the app is named in
@@ -8,7 +8,7 @@ Everyone whose work is in the app is named in
 
 ## Ways in
 
-- **Report a bug:** [open an issue](https://github.com/hyprlab/hylki/issues).
+- **Report a bug:** [open an issue](https://github.com/DocteurScience/Tegami_Mail/issues).
   The version, your distribution and what the server is (Gmail, iCloud, Proton
   Bridge, a self-hosted box) narrow most problems down fast. For anything the
   app did over the network, *Main Menu → Export Log* writes a redacted log of
@@ -46,7 +46,7 @@ or `feat(i18n): add the German translation`. The type is one of `feat`, `fix`,
 `perf`, `refactor`, `docs`, `build`, `ci`, `test`, `style`, `chore` or
 `revert`; the area is the part of the app the change is in. Keep the subject
 to 72 characters, lower case after the colon, with no full stop
-([#277](https://github.com/hyprlab/hylki/issues/277)).
+([#277](https://github.com/hyprlab/tegami/issues/277)).
 
 The body is optional. When there is one, it says in a few lines why the change
 exists, in factual language with no marketing, no emoji and no em dashes, and
@@ -58,7 +58,7 @@ is in the commit, using the `users.noreply.github.com` address that resolves to
 their profile, and not for the tools anyone wrote it with. The README's
 [AI notice](../README.md#ai-notice) covers that for the repository as a whole,
 so the history reads as the maintainer's own
-([#230](https://github.com/hyprlab/hylki/issues/230)).
+([#230](https://github.com/hyprlab/tegami/issues/230)).
 `tools/git-hooks/commit-msg` checks all of this; point a clone at the hooks with
 `git config core.hooksPath tools/git-hooks`.
 
@@ -67,7 +67,7 @@ so the history reads as the maintainer's own
 Documentation lives in `docs/`, one subject per file, and the
 [README](../README.md) is the front door: what the app is, ten or so features,
 how to install it, and links. It reached 667 lines once by taking "just one
-more paragraph" forty times ([#230](https://github.com/hyprlab/hylki/issues/230)),
+more paragraph" forty times ([#230](https://github.com/hyprlab/tegami/issues/230)),
 so a change that documents something goes where that something already lives:
 
 | What you have | Where it goes |
@@ -92,7 +92,7 @@ anchor included, in about a second. Run it after touching any `.md`.
 
 ## AI-assisted contributions
 
-Hylki is built with AI assistance itself (see the
+Tegami Mail is built with AI assistance itself (see the
 [AI notice](../README.md#ai-notice)), so patches written with AI tools are as
 welcome as any other. Everything merged gets the same human review, and the
 same rule applies either way: you are responsible for what your patch does.

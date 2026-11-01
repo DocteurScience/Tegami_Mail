@@ -1,11 +1,11 @@
-# hylki-nautilus.py
+# tegami-nautilus.py
 #
-# GNOME Files (Nautilus) extension that adds "Send with Hylki" to the
-# right-click menu: the selected files open in a new Hylki message, already
-# attached (https://github.com/hyprlab/hylki, issue #188).
+# GNOME Files (Nautilus) extension that adds "Send with Tegami Mail" to the
+# right-click menu: the selected files open in a new Tegami Mail message, already
+# attached (https://github.com/DocteurScience/Tegami_Mail, issue #188).
 #
-# It launches Hylki by its desktop id, so it works whether Hylki is the
-# Flatpak or a native package. Hylki installs this file for you from
+# It launches Tegami Mail by its desktop id, so it works whether Tegami Mail is the
+# Flatpak or a native package. Tegami Mail installs this file for you from
 # Settings -> System -> GNOME Files. By hand, copy it to
 #   ~/.local/share/nautilus-python/extensions/      (per user)
 #   /usr/share/nautilus-python/extensions/          (system wide)
@@ -34,47 +34,47 @@ __version__ = "2"
 
 # The stable build first, the beta after it; whichever is installed answers,
 # unless the other one is the default mail app (see _app_order).
-APP_IDS = ("co.hyprlab.Hylki", "co.hyprlab.Hylki.Beta")
+APP_IDS = ("io.github.DocteurScience.TegamiMail", "io.github.DocteurScience.TegamiMail.Beta")
 
 # Nautilus loads this file outside the app, so its translations live here
-# rather than in Hylki's catalogues.
+# rather than in Tegami Mail's catalogues.
 _STRINGS = {
-    "label": "Send with Hylki",
-    "tip": "Attach the selected files to a new message in Hylki",
+    "label": "Send with Tegami Mail",
+    "tip": "Attach the selected files to a new message in Tegami Mail",
 }
 
 _TRANSLATIONS = {
     "ca": {
-        "label": "Envia amb l'Hylki",
-        "tip": "Adjunta els fitxers seleccionats a un missatge nou a l'Hylki",
+        "label": "Envia amb l'Tegami Mail",
+        "tip": "Adjunta els fitxers seleccionats a un missatge nou a l'Tegami Mail",
     },
     "es": {
-        "label": "Enviar con Hylki",
-        "tip": "Adjuntar los archivos seleccionados a un nuevo mensaje en Hylki",
+        "label": "Enviar con Tegami Mail",
+        "tip": "Adjuntar los archivos seleccionados a un nuevo mensaje en Tegami Mail",
     },
     "fr": {
-        "label": "Envoyer avec Hylki",
-        "tip": "Joindre les fichiers sélectionnés à un nouveau message dans Hylki",
+        "label": "Envoyer avec Tegami Mail",
+        "tip": "Joindre les fichiers sélectionnés à un nouveau message dans Tegami Mail",
     },
     "hu": {
         "label": "Küldés a Vireóval",
         "tip": "A kijelölt fájlok csatolása egy új üzenethez a Vireóban",
     },
     "it": {
-        "label": "Invia con Hylki",
-        "tip": "Allega i file selezionati a un nuovo messaggio in Hylki",
+        "label": "Invia con Tegami Mail",
+        "tip": "Allega i file selezionati a un nuovo messaggio in Tegami Mail",
     },
     "pl": {
-        "label": "Wyślij za pomocą aplikacji Hylki",
-        "tip": "Załącz zaznaczone pliki do nowej wiadomości w aplikacji Hylki",
+        "label": "Wyślij za pomocą aplikacji Tegami Mail",
+        "tip": "Załącz zaznaczone pliki do nowej wiadomości w aplikacji Tegami Mail",
     },
     "pt": {
-        "label": "Enviar com o Hylki",
-        "tip": "Anexar os ficheiros selecionados a uma nova mensagem no Hylki",
+        "label": "Enviar com o Tegami Mail",
+        "tip": "Anexar os ficheiros selecionados a uma nova mensagem no Tegami Mail",
     },
     "ru": {
-        "label": "Отправить через Hylki",
-        "tip": "Прикрепить выбранные файлы к новому сообщению в Hylki",
+        "label": "Отправить через Tegami Mail",
+        "tip": "Прикрепить выбранные файлы к новому сообщению в Tegami Mail",
     },
 }
 
@@ -111,20 +111,20 @@ _S = _strings()
 
 
 def _log(*values):
-    print("Hylki:", *values, file=sys.stderr)
+    print("Tegami Mail:", *values, file=sys.stderr)
 
 
 def _mark_loaded():
-    # Hylki's settings cannot tell from the file alone whether Files has
+    # Tegami Mail's settings cannot tell from the file alone whether Files has
     # actually loaded it (the nautilus-python bindings may be missing), so
     # note here that this copy was loaded: a hidden file next to it holding
-    # the SHA-256 of this file, which Hylki compares with its own copy.
+    # the SHA-256 of this file, which Tegami Mail compares with its own copy.
     try:
         import hashlib
 
         with open(__file__, "rb") as f:
             digest = hashlib.sha256(f.read()).hexdigest()
-        marker = os.path.join(os.path.dirname(__file__), ".hylki-nautilus.loaded")
+        marker = os.path.join(os.path.dirname(__file__), ".tegami-nautilus.loaded")
         with open(marker, "w") as f:
             f.write(digest + "\n")
     except OSError as error:
@@ -136,7 +136,7 @@ _mark_loaded()
 
 def _launch_context():
     # Files' own launch context carries an activation token, which is what
-    # lets Hylki's window come to the front over Files.
+    # lets Tegami Mail's window come to the front over Files.
     try:
         gi.require_version("Gdk", "4.0")
         from gi.repository import Gdk
@@ -161,14 +161,14 @@ def _desktop_app_info(desktop_id):
 
 
 def _appimage_path():
-    """The AppImage Hylki last ran from, which the app records for us.
+    """The AppImage Tegami Mail last ran from, which the app records for us.
 
-    An AppImage installs no `hylki` command and lives wherever the user
+    An AppImage installs no `tegami` command and lives wherever the user
     keeps it, so there is nothing to find on PATH; the app writes the
     bundle's own path where we can read it. Returns None for a bundle that
     has since been moved or deleted.
     """
-    path = os.path.join(GLib.get_user_config_dir(), "hylki", "launcher")
+    path = os.path.join(GLib.get_user_config_dir(), "tegami", "launcher")
     try:
         with open(path, encoding="utf-8") as handle:
             bundle = handle.read().strip()
@@ -178,7 +178,7 @@ def _appimage_path():
 
 
 def _app_order():
-    """Hylki's app ids, the default mail app's first.
+    """Tegami Mail's app ids, the default mail app's first.
 
     With the stable and the beta both installed, the files go to the one
     the user reads mail in, which is the one set to open mailto: links.
@@ -209,22 +209,22 @@ def _launch(uris):
             _log("could not launch", app_id + ":", error)
     # No desktop entry found: the command line, native, AppImage or Flatpak.
     appimage = _appimage_path()
-    if GLib.find_program_in_path("hylki"):
-        argv = ["hylki"] + uris
+    if GLib.find_program_in_path("tegami"):
+        argv = ["tegami"] + uris
     elif appimage:
         argv = [appimage] + uris
     elif GLib.find_program_in_path("flatpak"):
         argv = ["flatpak", "run", "--file-forwarding", APP_IDS[0], "@@u"] + uris + ["@@"]
     else:
-        _log("Hylki is not installed")
+        _log("Tegami Mail is not installed")
         return
     try:
         Gio.Subprocess.new(argv, Gio.SubprocessFlags.NONE)
     except GLib.Error as error:
-        _log("could not start Hylki:", error)
+        _log("could not start Tegami Mail:", error)
 
 
-class HylkiMenuProvider(GObject.GObject, Nautilus.MenuProvider):
+class TegamiMenuProvider(GObject.GObject, Nautilus.MenuProvider):
     def get_file_items(self, *args):
         files = args[-1]
         uris = []
@@ -241,7 +241,7 @@ class HylkiMenuProvider(GObject.GObject, Nautilus.MenuProvider):
         if not uris:
             return []
         item = Nautilus.MenuItem(
-            name="HylkiMenuProvider::send",
+            name="TegamiMenuProvider::send",
             label=_S["label"],
             tip=_S["tip"],
         )

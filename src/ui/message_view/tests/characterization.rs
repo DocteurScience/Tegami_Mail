@@ -3,7 +3,7 @@
 //! the code without changing a byte of what the WebView is handed.
 //!
 //! The golden files in `testdata/` are compared byte for byte (after the
-//! random CSP nonce is normalised). `HYLKI_BLESS_GOLDEN=1 cargo test` writes
+//! random CSP nonce is normalised). `TEGAMI_BLESS_GOLDEN=1 cargo test` writes
 //! them afresh; that is only right when the output is meant to change.
 
 use super::*;
@@ -14,7 +14,7 @@ fn golden(name: &str, actual: &str) {
         "{}/src/ui/message_view/testdata/{name}",
         env!("CARGO_MANIFEST_DIR")
     );
-    if std::env::var_os("HYLKI_BLESS_GOLDEN").is_some() {
+    if std::env::var_os("TEGAMI_BLESS_GOLDEN").is_some() {
         std::fs::write(&path, actual).expect("write golden");
         return;
     }
@@ -296,15 +296,15 @@ fn address_lists_split_outside_quotes_only() {
 fn small_banner_rows_are_stable() {
     assert_eq!(
         template_row_html((7, 9)),
-        "<div class=\"hylki-unsub hylki-tpl\"><span class=\"hylki-unsub-text\">This message is a template.</span><button type=\"button\" class=\"hylki-unsub-btn hylki-tpl-btn\" data-key=\"7:9\" data-tpl=\"edit\" title=\"Change the template itself\">Edit Template</button><button type=\"button\" class=\"hylki-unsub-btn hylki-tpl-btn\" data-key=\"7:9\" data-tpl=\"use\" title=\"Start a new message from a copy of the template\">Use Template</button></div>"
+        "<div class=\"tegami-unsub tegami-tpl\"><span class=\"tegami-unsub-text\">This message is a template.</span><button type=\"button\" class=\"tegami-unsub-btn tegami-tpl-btn\" data-key=\"7:9\" data-tpl=\"edit\" title=\"Change the template itself\">Edit Template</button><button type=\"button\" class=\"tegami-unsub-btn tegami-tpl-btn\" data-key=\"7:9\" data-tpl=\"use\" title=\"Start a new message from a copy of the template\">Use Template</button></div>"
     );
     assert_eq!(
         unsub_row_html((1, 2), "<b>x</b>"),
-        "<div class=\"hylki-unsub\" data-key=\"1:2\"><b>x</b></div>"
+        "<div class=\"tegami-unsub\" data-key=\"1:2\"><b>x</b></div>"
     );
     assert_eq!(
         invite_row_html((1, 2), ""),
-        "<div class=\"hylki-inv\" data-key=\"1:2\"></div>"
+        "<div class=\"tegami-inv\" data-key=\"1:2\"></div>"
     );
     assert_eq!(answer_note("plain".into(), "dated".into(), 0), "plain");
     assert_eq!(answer_note("plain".into(), "dated".into(), -5), "plain");
@@ -320,7 +320,7 @@ fn tag_and_attachment_chips_are_stable() {
     }];
     assert_eq!(
         tag_chips_html(&tags, &["ab".into()], &["Inbox <x>".into()]),
-        "<span class=\"hylki-tag\" style=\"background:#ffffff;color:rgba(0,0,0,0.85)\">A&amp;B</span><span class=\"hylki-tag hylki-label\" style=\"background:#2ec27e;color:#ffffff\" title=\"Inbox &lt;x&gt;\">Inbox &lt;x&gt;</span>"
+        "<span class=\"tegami-tag\" style=\"background:#ffffff;color:rgba(0,0,0,0.85)\">A&amp;B</span><span class=\"tegami-tag tegami-label\" style=\"background:#2ec27e;color:#ffffff\" title=\"Inbox &lt;x&gt;\">Inbox &lt;x&gt;</span>"
     );
     assert_eq!(tag_chips_html(&[], &[], &[]), "");
     let atts = [CardAttachment {
@@ -330,11 +330,11 @@ fn tag_and_attachment_chips_are_stable() {
     // The icons are empty here: the resource bundle is not registered in tests.
     assert_eq!(
         att_chips_html((3, 4), &atts),
-        "<span class=\"hylki-attw\"><button type=\"button\" class=\"hylki-attc ftype-archive\" data-key=\"3:4\" data-idx=\"0\" title=\"Open\"><span class=\"hylki-attn\">a&lt;b&gt;.zip</span><span class=\"hylki-attz\">2.0\u{a0}kB</span></button><button type=\"button\" class=\"hylki-attsave\" data-key=\"3:4\" data-idx=\"0\" title=\"Save…\"></button></span>"
+        "<span class=\"tegami-attw\"><button type=\"button\" class=\"tegami-attc ftype-archive\" data-key=\"3:4\" data-idx=\"0\" title=\"Open\"><span class=\"tegami-attn\">a&lt;b&gt;.zip</span><span class=\"tegami-attz\">2.0\u{a0}kB</span></button><button type=\"button\" class=\"tegami-attsave\" data-key=\"3:4\" data-idx=\"0\" title=\"Save…\"></button></span>"
     );
     assert_eq!(
         att_row_html((3, 4), None),
-        "<div class=\"hylki-atts\" data-key=\"3:4\"></div>"
+        "<div class=\"tegami-atts\" data-key=\"3:4\"></div>"
     );
 }
 

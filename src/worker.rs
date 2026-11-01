@@ -121,13 +121,13 @@ pub(crate) fn spawn(
         let protocol = account.as_ref().map(|a| a.protocol);
         let emit = emit.clone();
         std::thread::Builder::new()
-            .name(format!("hylki-cache-{account_id}"))
+            .name(format!("tegami-cache-{account_id}"))
             .spawn(move || cache_lane(account_id, protocol, lane_rx, tx, emit))
             .expect("failed to spawn cache lane thread");
     }
 
     std::thread::Builder::new()
-        .name(format!("hylki-mail-{account_id}"))
+        .name(format!("tegami-mail-{account_id}"))
         .spawn(move || {
             let rt = match tokio::runtime::Builder::new_current_thread()
                 .enable_all()

@@ -100,13 +100,13 @@ pub(super) fn jmap_err(e: ureq::Error) -> String {
 /// The JMAP conversation for the console: method names in, verdict out (the
 /// credentials travel in a header and are never logged).
 pub(super) fn jmap_wire(what: &str) {
-    tracing::debug!(target: "hylki::jmap", "> {what}");
+    tracing::debug!(target: "tegami::jmap", "> {what}");
 }
 
 pub(super) fn jmap_wired<T>(what: &str, r: &Result<T, String>) {
     match r {
-        Ok(_) => tracing::debug!(target: "hylki::jmap", "< OK ({what})"),
-        Err(e) => tracing::warn!(target: "hylki::jmap", "< {e} ({what})"),
+        Ok(_) => tracing::debug!(target: "tegami::jmap", "< OK ({what})"),
+        Err(e) => tracing::warn!(target: "tegami::jmap", "< {e} ({what})"),
     }
 }
 

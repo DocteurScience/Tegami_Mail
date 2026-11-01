@@ -1,5 +1,5 @@
 //! Reading the address books: the EDS SQLite files, opened read-only,
-//! which books are wanted, and the Hylki book beside them.
+//! which books are wanted, and the Tegami Mail book beside them.
 
 use std::collections::{HashMap, HashSet};
 use std::path::PathBuf;
@@ -272,14 +272,14 @@ pub(super) fn read_contacts_in(
             complete &= read_book_db(&db, &sql, &mut out, &mut seen);
         }
     }
-    // The local Hylki book, last: an address EDS already has keeps EDS's name.
+    // The local Tegami Mail book, last: an address EDS already has keeps EDS's name.
     complete &= add_local_contacts(&mut out, &mut seen);
     (out, complete)
 }
 
 /// Every contact group in the address books the suggestions read, with its
 /// members' addresses: Evolution's lists, vCard 4 and Apple groups, and the
-/// groups of the Hylki book, in the EDS books `active` names. Only the
+/// groups of the Tegami Mail book, in the EDS books `active` names. Only the
 /// groups' cards are read, not the books.
 pub(super) fn read_groups_in(active: &Option<HashMap<String, String>>) -> Vec<ContactDetails> {
     const WHERE: &str = "LIKE '%X-EVOLUTION-LIST%' OR {col} LIKE '%KIND:group%'";
@@ -315,7 +315,7 @@ pub(super) fn read_groups_in(active: &Option<HashMap<String, String>>) -> Vec<Co
             read(&db, layout.cards, layout.vcard, layout.uid);
         }
     }
-    if crate::contacts::local::exists() && crate::contacts::contact_sources::hylki_used() {
+    if crate::contacts::local::exists() && crate::contacts::contact_sources::tegami_used() {
         match crate::contacts::local::group_vcards() {
             Ok(vcards) => {
                 for vcard in vcards {
@@ -344,7 +344,7 @@ pub(super) fn read_groups_in(active: &Option<HashMap<String, String>>) -> Vec<Co
 /// Append the local book's addresses, skipping the ones already in `seen`.
 /// False when the book is there but could not be read.
 fn add_local_contacts(out: &mut Vec<Contact>, seen: &mut HashSet<String>) -> bool {
-    if !crate::contacts::local::exists() || !crate::contacts::contact_sources::hylki_used() {
+    if !crate::contacts::local::exists() || !crate::contacts::contact_sources::tegami_used() {
         return true;
     }
     let rows = match crate::contacts::local::emails() {
@@ -369,18 +369,18 @@ fn add_local_contacts(out: &mut Vec<Contact>, seen: &mut HashSet<String>) -> boo
     true
 }
 
-/// Whether `book_uid` is the local Hylki book rather than an EDS one.
+/// Whether `book_uid` is the local Tegami Mail book rather than an EDS one.
 pub(crate) fn is_local_book(book_uid: &str) -> bool {
     book_uid == crate::contacts::local::LOCAL_BOOK_UID
 }
 
-/// The local Hylki book as a [`Book`].
+/// The local Tegami Mail book as a [`Book`].
 pub(crate) fn local_book() -> Book {
     Book {
         uid: crate::contacts::local::LOCAL_BOOK_UID.to_string(),
         name: crate::contacts::contact_sources::names()
             .remove(crate::contacts::local::LOCAL_BOOK_UID)
-            .unwrap_or_else(|| i18n("Hylki Address Book")),
+            .unwrap_or_else(|| i18n("Tegami Mail Address Book")),
         groups: Some(GroupFormat::Evolution),
     }
 }
@@ -407,7 +407,7 @@ pub(super) fn details_from_local_vcards(
 
 /// The local book's contacts, parsed (empty when it was never written).
 pub(super) fn local_details() -> Vec<ContactDetails> {
-    if !crate::contacts::local::exists() || !crate::contacts::contact_sources::hylki_used() {
+    if !crate::contacts::local::exists() || !crate::contacts::contact_sources::tegami_used() {
         return Vec::new();
     }
     match crate::contacts::local::list_vcards() {
@@ -543,7 +543,7 @@ pub(crate) fn writable_books() -> Vec<Book> {
     }
     // Last: unless chosen in Settings, EDS books keep priority as the
     // default destination.
-    if crate::contacts::contact_sources::hylki_used() {
+    if crate::contacts::contact_sources::tegami_used() {
         books.push(local_book());
     }
     prefer_book(&mut books, &crate::config::load_contact_book());

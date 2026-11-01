@@ -1,8 +1,8 @@
-//! Hylki's own address book, kept in an application SQLite file.
+//! Tegami Mail's own address book, kept in an application SQLite file.
 //!
 //! It sits next to the Evolution Data Server (EDS) books: people who do not
 //! run EDS can still keep contacts, and everyone can import `.vcf` files.
-//! vCards are stored verbatim, so properties Hylki does not edit (PHOTO, ADR,
+//! vCards are stored verbatim, so properties Tegami Mail does not edit (PHOTO, ADR,
 //! X-...) survive a round trip, exactly as with an EDS book. The
 //! `contact_email` table is derived data, rebuilt on every write. A contact
 //! group is stored like a contact, as an Evolution list vCard; its members
@@ -18,7 +18,7 @@ use rusqlite::{params, Connection, OpenFlags, OptionalExtension, Transaction};
 use crate::i18n::{i18n, i18n_f};
 
 /// The reserved `book_uid` of the local book.
-pub(crate) const LOCAL_BOOK_UID: &str = "hylki-local";
+pub(crate) const LOCAL_BOOK_UID: &str = "tegami-local";
 
 /// Largest `.vcf` file read in one go.
 const MAX_FILE_BYTES: u64 = 50 * 1024 * 1024;
@@ -89,7 +89,7 @@ struct Store {
 
 /// Where the book lives, in the application data dir.
 fn db_path() -> Option<PathBuf> {
-    crate::config::data_base().map(|d| d.join("hylki").join("local_contacts.db"))
+    crate::config::data_base().map(|d| d.join("tegami").join("local_contacts.db"))
 }
 
 impl Store {
@@ -283,7 +283,7 @@ fn schema_version(conn: &Connection) -> Result<i64, String> {
         .map_err(|e| e.to_string())?;
     if version > SCHEMA_VERSION {
         return Err(format!(
-            "the local address book is from a newer Hylki (schema {version})"
+            "the local address book is from a newer Tegami Mail (schema {version})"
         ));
     }
     Ok(version)
@@ -361,7 +361,7 @@ fn upsert_tx(
 /// A random UID for a contact created in the editor.
 fn random_uid() -> Result<String, String> {
     Ok(format!(
-        "hylki-{}",
+        "tegami-{}",
         crate::rng::token(24).map_err(|e| e.to_string())?
     ))
 }
@@ -371,7 +371,7 @@ fn content_uid(vcard: &str) -> String {
     use sha2::{Digest, Sha256};
     let digest = Sha256::digest(vcard.replace("\r\n", "\n").trim().as_bytes());
     let hex: String = digest.iter().take(12).map(|b| format!("{b:02x}")).collect();
-    format!("hylki-{hex}")
+    format!("tegami-{hex}")
 }
 
 /// Insert a `UID:` line just before `END:VCARD` (returns the text unchanged
@@ -672,13 +672,13 @@ mod tests {
     #[test]
     fn content_uids_stay_the_same() {
         let card = "BEGIN:VCARD\r\nVERSION:3.0\r\nFN:Ada\r\nEND:VCARD\r\n\r\n";
-        assert_eq!(content_uid(card), "hylki-9f293ea101dd5869a7b8b61d");
+        assert_eq!(content_uid(card), "tegami-9f293ea101dd5869a7b8b61d");
         assert_eq!(content_uid(&card.replace("\r\n", "\n")), content_uid(card));
     }
 
     #[test]
     fn reading_the_book_leaves_the_file_untouched() {
-        let dir = std::env::temp_dir().join(format!("hylki-local-contacts-{}", std::process::id()));
+        let dir = std::env::temp_dir().join(format!("tegami-local-contacts-{}", std::process::id()));
         std::fs::create_dir_all(&dir).unwrap();
         let path = dir.join("local_contacts.db");
         let _ = std::fs::remove_file(&path);
@@ -905,7 +905,7 @@ mod tests {
             .upsert_one(&crate::contacts::new_group_vcard(&edit))
             .unwrap();
         let stored = store.group_vcards().unwrap();
-        assert!(stored[0].contains("\r\nUID:hylki-"));
+        assert!(stored[0].contains("\r\nUID:tegami-"));
         // Ann is in the group, not in the book.
         assert!(store.emails().unwrap().is_empty());
         assert_eq!(store.people(), 0);
@@ -924,7 +924,7 @@ mod tests {
         let mut store = Store::in_memory();
         store.upsert_one(&card("Ann", "a@x.org")).unwrap();
         let stored = store.vcards().unwrap().remove(0);
-        assert!(stored.contains("\r\nUID:hylki-"));
+        assert!(stored.contains("\r\nUID:tegami-"));
     }
 
     #[test]

@@ -36,7 +36,7 @@ impl MessageView {
             entry.set_text("");
             self.return_focus_from_find(&entry);
         }
-        self.eval_find("hylkiFindClear()");
+        self.eval_find("tegamiFindClear()");
     }
 
     /// Esc, Ctrl+F or the close button: the keyboard goes back to where it
@@ -87,12 +87,12 @@ impl MessageView {
         let text = text.trim();
         if text.is_empty() {
             self.find_matches = None;
-            self.eval_find("hylkiFindClear()");
+            self.eval_find("tegamiFindClear()");
             return;
         }
         // Into a JS single-quoted string: backslashes and quotes only.
         let quoted = text.replace('\\', "\\\\").replace('\'', "\\'");
-        self.eval_find(&format!("hylkiFind('{quoted}')"));
+        self.eval_find(&format!("tegamiFind('{quoted}')"));
     }
 }
 

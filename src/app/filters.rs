@@ -102,7 +102,7 @@ impl AppModel {
     /// Apply the mail filter rules (#47) to an inbox sync, Evolution-style:
     /// the first matching rule files the message into its folder; everything
     /// else passes through. On-sight like the blacklist, so mail that arrived
-    /// while Hylki was closed still gets filed on the next sync.
+    /// while Tegami Mail was closed still gets filed on the next sync.
     ///
     /// Returns the messages staying in the inbox, plus the ones filed away on
     /// this sync (paired with their destination path) so the caller can still

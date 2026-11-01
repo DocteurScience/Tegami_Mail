@@ -10,7 +10,7 @@ use super::{config_file, read_toml, save_private_toml};
 /// or a webmail shows — and theirs show here once a tag names their keyword
 /// (Thunderbird's built-in five are `$label1`…`$label5`). Microsoft 365
 /// stores them as categories; POP3 and servers that refuse custom keywords
-/// keep them in Hylki's own cache instead.
+/// keep them in Tegami Mail's own cache instead.
 #[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize)]
 pub(crate) struct Tag {
     /// What the user sees.

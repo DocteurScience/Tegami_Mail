@@ -8,11 +8,11 @@ use super::*;
 fn a_message_takes_its_own_direction() {
     let plain = auto_direction(&body_html("سلام\nHello"));
     assert!(
-        plain.contains("<body dir=\"auto\" class=\"hylki-plain\">"),
+        plain.contains("<body dir=\"auto\" class=\"tegami-plain\">"),
         "{plain}"
     );
     assert!(
-        plain.contains("body,.hylki-plain{unicode-bidi:plaintext;}"),
+        plain.contains("body,.tegami-plain{unicode-bidi:plaintext;}"),
         "{plain}"
     );
 
@@ -20,12 +20,12 @@ fn a_message_takes_its_own_direction() {
     assert!(html.contains("<body dir=\"auto\" class=\"x\">"), "{html}");
     assert!(!html.contains("unicode-bidi"), "{html}");
 
-    let parts = auto_direction("<html><body><div class=\"hylki-plain\">a</div></body></html>");
+    let parts = auto_direction("<html><body><div class=\"tegami-plain\">a</div></body></html>");
     assert!(
-        parts.contains(".hylki-plain{unicode-bidi:plaintext;}"),
+        parts.contains(".tegami-plain{unicode-bidi:plaintext;}"),
         "{parts}"
     );
-    assert!(!parts.contains("body,.hylki-plain"), "{parts}");
+    assert!(!parts.contains("body,.tegami-plain"), "{parts}");
 
     // The sender's own direction stands, on either element.
     for own in [
@@ -74,7 +74,7 @@ fn the_recipients_block_lists_bcc() {
     m.bcc = "hidden@example.com".into();
     let html = recipients_html(&m, true);
     assert!(
-        html.contains("<b>Bcc:</b> <span class=\"hylki-mail\" data-mail=\"hidden@example.com\">"),
+        html.contains("<b>Bcc:</b> <span class=\"tegami-mail\" data-mail=\"hidden@example.com\">"),
         "{html}"
     );
     assert!(html.find("<b>Cc:</b>") < html.find("<b>Bcc:</b>"));
@@ -105,12 +105,12 @@ fn every_card_has_somewhere_to_put_an_invitation() {
         100,
     );
     assert!(
-        doc.contains("<div class=\"hylki-inv\" data-key=\"1:1\"></div>"),
+        doc.contains("<div class=\"tegami-inv\" data-key=\"1:1\"></div>"),
         "{doc}"
     );
     // And above the body, not below it: the meeting is the point of the
     // message, and the calendar's own prose repeats it underneath.
-    let inv = doc.find("<div class=\"hylki-inv\"").expect("the container");
+    let inv = doc.find("<div class=\"tegami-inv\"").expect("the container");
     let body = doc.find("<iframe").expect("the body frame");
     assert!(inv < body, "the banner comes before the body");
 }
@@ -120,7 +120,7 @@ fn every_card_has_somewhere_to_put_an_invitation() {
 fn the_invitation_row_is_keyed_to_its_card() {
     assert_eq!(
         invite_row_html((2, 9), ""),
-        "<div class=\"hylki-inv\" data-key=\"2:9\"></div>"
+        "<div class=\"tegami-inv\" data-key=\"2:9\"></div>"
     );
     assert!(invite_row_html((2, 9), "<b>x</b>").ends_with("<b>x</b></div>"));
 }
@@ -235,20 +235,20 @@ fn a_cards_attachment_row_lists_its_own_files() {
     ];
     let row = att_row_html((1, 7), Some(&atts));
     assert!(
-        row.starts_with("<div class=\"hylki-atts\" data-key=\"1:7\">"),
+        row.starts_with("<div class=\"tegami-atts\" data-key=\"1:7\">"),
         "{row}"
     );
-    assert_eq!(row.matches("class=\"hylki-attc ").count(), 2, "{row}");
+    assert_eq!(row.matches("class=\"tegami-attc ").count(), 2, "{row}");
     assert!(
-        row.contains("class=\"hylki-attc ftype-pdf\" data-key=\"1:7\" data-idx=\"0\""),
-        "{row}"
-    );
-    assert!(
-        row.contains("class=\"hylki-attc ftype-image\" data-key=\"1:7\" data-idx=\"1\""),
+        row.contains("class=\"tegami-attc ftype-pdf\" data-key=\"1:7\" data-idx=\"0\""),
         "{row}"
     );
     assert!(
-        row.contains("class=\"hylki-attsave\" data-key=\"1:7\" data-idx=\"1\""),
+        row.contains("class=\"tegami-attc ftype-image\" data-key=\"1:7\" data-idx=\"1\""),
+        "{row}"
+    );
+    assert!(
+        row.contains("class=\"tegami-attsave\" data-key=\"1:7\" data-idx=\"1\""),
         "{row}"
     );
     assert!(row.contains(&crate::models::human_size(2048)), "{row}");
@@ -257,6 +257,6 @@ fn a_cards_attachment_row_lists_its_own_files() {
     // Nothing attached: the row is there, and empty.
     assert_eq!(
         att_row_html((1, 8), None),
-        "<div class=\"hylki-atts\" data-key=\"1:8\"></div>"
+        "<div class=\"tegami-atts\" data-key=\"1:8\"></div>"
     );
 }

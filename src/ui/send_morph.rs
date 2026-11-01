@@ -38,7 +38,7 @@ const READY_TIMEOUT_MS: u64 = 1500;
 /// stage lands on it as it stands.
 const SETTLE_MS: u64 = 450;
 /// The editor card's corners (libadwaita's `.card`) and the conversation
-/// card's (`.hylki-msg`): the same 12px, kept apart in case either moves.
+/// card's (`.tegami-msg`): the same 12px, kept apart in case either moves.
 const EDITOR_RADIUS: f32 = 12.0;
 const CARD_RADIUS: f32 = 12.0;
 
@@ -156,7 +156,7 @@ mod imp {
 
     #[glib::object_subclass]
     impl ObjectSubclass for SendMorph {
-        const NAME: &'static str = "HylkiSendMorph";
+        const NAME: &'static str = "TegamiSendMorph";
         type Type = super::SendMorph;
         type ParentType = gtk::Widget;
     }
@@ -282,7 +282,7 @@ impl SendMorph {
             None => return,
         };
         let Some(scene) = scene else {
-            tracing::info!(target: "hylki::morph", "send morph: the stills could not be laid out");
+            tracing::info!(target: "tegami::morph", "send morph: the stills could not be laid out");
             self.abort();
             return;
         };

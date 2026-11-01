@@ -93,7 +93,7 @@ pub(super) async fn uid_move(
         // If even CAPABILITY fails, let MOVE produce the real error.
         Err(_) => true,
     };
-    tracing::debug!(target: "hylki::imap", "server {} MOVE", if can_move { "offers" } else { "lacks" });
+    tracing::debug!(target: "tegami::imap", "server {} MOVE", if can_move { "offers" } else { "lacks" });
     if can_move {
         return mv_uids(session, set, dest).await;
     }

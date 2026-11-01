@@ -156,7 +156,7 @@ async fn connect_inner(
     // nothing a user could act on.
     if account.imap_host.trim().is_empty() {
         return Err(i18n(
-            "This account has no IMAP server. Hylki can't use Exchange accounts from Online Accounts: remove it and add it as an IMAP or Microsoft 365 account.",
+            "This account has no IMAP server. Tegami Mail can't use Exchange accounts from Online Accounts: remove it and add it as an IMAP or Microsoft 365 account.",
         )
         .into());
     }
@@ -194,11 +194,11 @@ async fn connect_inner(
     // The sign-in for the console: mechanism and user, never the secret.
     let session = if account.oauth {
         // XOAUTH2 with a fresh access token (from GOA or a native refresh token).
-        tracing::debug!(target: "hylki::imap", "> AUTHENTICATE XOAUTH2 {}", oauth_user(account));
+        tracing::debug!(target: "tegami::imap", "> AUTHENTICATE XOAUTH2 {}", oauth_user(account));
         let token = match fetch_oauth_token(account).await {
             Some(t) => t,
             None => {
-                tracing::warn!(target: "hylki::imap", "< no OAuth token (AUTHENTICATE XOAUTH2)");
+                tracing::warn!(target: "tegami::imap", "< no OAuth token (AUTHENTICATE XOAUTH2)");
                 return Err("could not get an OAuth token".into());
             }
         };
@@ -212,22 +212,22 @@ async fn connect_inner(
             .await
             .map_err(|(e, _client)| e);
         match &r {
-            Ok(_) => tracing::debug!(target: "hylki::imap", "< OK (AUTHENTICATE XOAUTH2)"),
+            Ok(_) => tracing::debug!(target: "tegami::imap", "< OK (AUTHENTICATE XOAUTH2)"),
             Err(e) => {
-                tracing::warn!(target: "hylki::imap", "< {e} (AUTHENTICATE XOAUTH2)");
+                tracing::warn!(target: "tegami::imap", "< {e} (AUTHENTICATE XOAUTH2)");
                 forget_access_token(account);
             }
         }
         r?
     } else {
-        tracing::debug!(target: "hylki::imap", "> LOGIN {} ****", account.username);
+        tracing::debug!(target: "tegami::imap", "> LOGIN {} ****", account.username);
         let r = client
             .login(&account.username, password)
             .await
             .map_err(|(e, _client)| e);
         match &r {
-            Ok(_) => tracing::debug!(target: "hylki::imap", "< OK (LOGIN)"),
-            Err(e) => tracing::warn!(target: "hylki::imap", "< {e} (LOGIN)"),
+            Ok(_) => tracing::debug!(target: "tegami::imap", "< OK (LOGIN)"),
+            Err(e) => tracing::warn!(target: "tegami::imap", "< {e} (LOGIN)"),
         }
         r?
     };

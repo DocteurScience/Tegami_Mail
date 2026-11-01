@@ -35,7 +35,7 @@ pub(super) fn showcase_at(v: &str, default: u32) -> (&str, u32) {
     }
 }
 
-/// A made-up OpenPGP verdict for HYLKI_SHOWCASE_PGP (demo only).
+/// A made-up OpenPGP verdict for TEGAMI_SHOWCASE_PGP (demo only).
 pub(in crate::app) fn showcase_pgp(which: &str) -> Option<crate::models::PgpStatus> {
     use crate::models::{PgpSignature as S, PgpStatus, PgpTrust};
     let good = |trust| S::Good {
@@ -131,7 +131,7 @@ pub(super) fn showcase_log_focus(main: &adw::ApplicationWindow) {
     }
 }
 
-/// HYLKI_SHOWCASE_SETTINGS=accounts|prefs opens the Settings window on
+/// TEGAMI_SHOWCASE_SETTINGS=accounts|prefs opens the Settings window on
 /// that panel at 3 s (about: the About window; any other value names a
 /// sidebar category), so its pages can be checked in stills too.
 pub(super) fn stage_settings_window(sender: &ComponentSender<AppModel>, settings: Option<String>) {
@@ -153,9 +153,9 @@ pub(super) fn stage_settings_window(sender: &ComponentSender<AppModel>, settings
                 });
             }
         });
-        // HYLKI_SHOWCASE_SETTINGS_REOPEN=1 closes the window at
+        // TEGAMI_SHOWCASE_SETTINGS_REOPEN=1 closes the window at
         // 5s and opens it again at 7s, to time a reopen.
-        if std::env::var("HYLKI_SHOWCASE_SETTINGS_REOPEN").is_ok() {
+        if std::env::var("TEGAMI_SHOWCASE_SETTINGS_REOPEN").is_ok() {
             input_after(sender, 5, AppMsg::DebugCloseSettings);
             input_after(sender, 7, AppMsg::OpenAccounts);
         }
@@ -163,8 +163,8 @@ pub(super) fn stage_settings_window(sender: &ComponentSender<AppModel>, settings
 }
 
 /// Captures the window to `shot` at `delay` seconds (or
-/// HYLKI_SHOWCASE_DELAY_MS): the Settings window when `settings` named a
-/// panel, the newest window with HYLKI_SHOWCASE_TOP, else the main one.
+/// TEGAMI_SHOWCASE_DELAY_MS): the Settings window when `settings` named a
+/// panel, the newest window with TEGAMI_SHOWCASE_TOP, else the main one.
 pub(super) fn capture_window(
     root: &adw::ApplicationWindow,
     delay: u32,
@@ -180,18 +180,18 @@ pub(super) fn capture_window(
             // The newest: a dialog over Settings, when one is up.
             .rfind(|w| *w != main && w.is_visible())
     };
-    // With HYLKI_SHOWCASE_SCROLL set, the Settings window is
+    // With TEGAMI_SHOWCASE_SCROLL set, the Settings window is
     // made tall a beat after opening and every scroller in it
     // is run to its end just before the capture, so the lower
     // groups of a panel can be checked.
     // The value is the fraction of the way down (default 1).
-    let scroll: Option<f64> = std::env::var("HYLKI_SHOWCASE_SCROLL")
+    let scroll: Option<f64> = std::env::var("TEGAMI_SHOWCASE_SCROLL")
         .ok()
         .map(|v| v.parse().unwrap_or(1.0));
     if let (Some(_), Some(frac)) = (&settings, scroll) {
-        // HYLKI_SHOWCASE_SCROLL_WIDTH overrides the 720px width,
+        // TEGAMI_SHOWCASE_SCROLL_WIDTH overrides the 720px width,
         // for checking a panel at the window's real width.
-        let width: i32 = std::env::var("HYLKI_SHOWCASE_SCROLL_WIDTH")
+        let width: i32 = std::env::var("TEGAMI_SHOWCASE_SCROLL_WIDTH")
             .ok()
             .and_then(|v| v.parse().ok())
             .unwrap_or(720);
@@ -209,10 +209,10 @@ pub(super) fn capture_window(
         });
     }
     let win = root.clone();
-    let top = std::env::var_os("HYLKI_SHOWCASE_TOP").is_some();
-    // HYLKI_SHOWCASE_DELAY_MS names the moment to the
+    let top = std::env::var_os("TEGAMI_SHOWCASE_TOP").is_some();
+    // TEGAMI_SHOWCASE_DELAY_MS names the moment to the
     // millisecond instead (a frame inside an animation).
-    let delay_ms: u64 = std::env::var("HYLKI_SHOWCASE_DELAY_MS")
+    let delay_ms: u64 = std::env::var("TEGAMI_SHOWCASE_DELAY_MS")
         .ok()
         .and_then(|v| v.parse().ok())
         .unwrap_or(u64::from(delay) * 1000);

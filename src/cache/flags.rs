@@ -148,7 +148,7 @@ impl Cache {
             .unwrap_or_default()
     }
 
-    /// Add or drop a tag kept in Hylki only (#71), for accounts whose server
+    /// Add or drop a tag kept in Tegami Mail only (#71), for accounts whose server
     /// can't hold it: POP3, or IMAP without `\*` in PERMANENTFLAGS. Keyed by
     /// Message-ID so the tag follows the message between folders and
     /// survives a re-sync of the row.

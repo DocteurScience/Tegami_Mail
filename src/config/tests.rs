@@ -372,8 +372,8 @@ fn new_mail_sound_names_a_builtin_or_falls_back() {
         Some(super::SoundSource::Resource(p)) => p,
         _ => panic!("a built-in plays from the bundle"),
     };
-    assert_eq!(resource("hum"), "/co/hyprlab/Hylki/sounds/hum.ogg");
-    assert_eq!(resource("bogus"), "/co/hyprlab/Hylki/sounds/click.ogg");
+    assert_eq!(resource("hum"), "/io/github/DocteurScience/TegamiMail/sounds/hum.ogg");
+    assert_eq!(resource("bogus"), "/io/github/DocteurScience/TegamiMail/sounds/click.ogg");
     // A sound.toml from before the in-front switch (#337) still reads.
     let saved: super::NewMailSound = toml::from_str("enabled = true\nsound = \"swing\"").unwrap();
     assert_eq!(

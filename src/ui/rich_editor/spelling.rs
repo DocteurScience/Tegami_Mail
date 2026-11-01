@@ -62,7 +62,7 @@ pub(super) fn append_spelling_menu(menu: &webkit6::ContextMenu, cb: &SpellLangsC
     for (i, (code, label, on)) in entries.enumerate() {
         // A boolean state is what makes WebKit draw a check item.
         let action = gtk::gio::SimpleAction::new_stateful(
-            &format!("hylki-spell-lang-{i}"),
+            &format!("tegami-spell-lang-{i}"),
             None,
             &on.to_variant(),
         );

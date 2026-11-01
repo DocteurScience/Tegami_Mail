@@ -32,7 +32,7 @@ fn current_release_notes() -> String {
 }
 
 /// Where the whole release history lives.
-const RELEASE_NOTES_URL: &str = "https://github.com/hyprlab/hylki/blob/main/docs/RELEASE_NOTES.md";
+const RELEASE_NOTES_URL: &str = "https://github.com/DocteurScience/Tegami_Mail/blob/main/docs/RELEASE_NOTES.md";
 
 /// The About window's "Release Notes" page: this release's notes, with the
 /// full history a button away on GitHub.

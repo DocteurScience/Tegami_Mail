@@ -662,7 +662,7 @@ fn live() {
     jmap_destroy_all(&s, &[did]).expect("drop draft");
     // Send to ourselves: the Sent copy is the submitted message.
     let me = acc.username.clone();
-    let msg = format!("From: {me}\r\nTo: {me}\r\nSubject: live test\r\nMessage-ID: <live-{}@hylki.test>\r\n\r\nsent over JMAP\r\n", crate::datefmt::now());
+    let msg = format!("From: {me}\r\nTo: {me}\r\nSubject: live test\r\nMessage-ID: <live-{}@tegami.test>\r\n\r\nsent over JMAP\r\n", crate::datefmt::now());
     let sid = jmap_submit(
         &s,
         msg.as_bytes(),
@@ -796,7 +796,7 @@ fn live_signed_send() {
         jmap_token: std::env::var_os("JMAP_LIVE_TOKEN").is_some(),
         ..sample_account()
     };
-    let home = std::env::temp_dir().join(format!("hylki-gpg-jmap-{}", std::process::id()));
+    let home = std::env::temp_dir().join(format!("tegami-gpg-jmap-{}", std::process::id()));
     let _ = std::fs::remove_dir_all(&home);
     std::fs::create_dir_all(&home).unwrap();
     #[cfg(unix)]
@@ -804,7 +804,7 @@ fn live_signed_send() {
         use std::os::unix::fs::PermissionsExt;
         std::fs::set_permissions(&home, std::fs::Permissions::from_mode(0o700)).unwrap();
     }
-    std::env::set_var("HYLKI_GNUPGHOME", &home);
+    std::env::set_var("TEGAMI_GNUPGHOME", &home);
     let me = acc.username.clone();
     let account = AccountConfig {
         email: me.clone(),
@@ -862,7 +862,7 @@ fn live_strip_attachment() {
         .expect("inbox");
     let raw = super::super::strip::MIXED.replace(
         "r1@example.org",
-        &format!("strip-{}@hylki.test", crate::datefmt::now()),
+        &format!("strip-{}@tegami.test", crate::datefmt::now()),
     );
     let id = jmap_import_email(
         &s,

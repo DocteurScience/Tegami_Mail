@@ -93,7 +93,7 @@ pub(crate) struct Settings {
     #[serde(default)]
     pub(crate) service: Service,
     /// The language to translate into, as in [`LANGUAGES`]; empty means the
-    /// language Hylki is shown in.
+    /// language Tegami Mail is shown in.
     #[serde(default)]
     pub(crate) target: String,
     /// Microsoft: the region of the Translator resource ("westeurope");
@@ -113,7 +113,7 @@ impl Settings {
         self.service != Service::Off
     }
 
-    /// The language translations go into: the chosen one, else Hylki's own.
+    /// The language translations go into: the chosen one, else Tegami Mail's own.
     pub(crate) fn target_language(&self) -> String {
         if self.target.is_empty() {
             ui_language()
@@ -143,7 +143,7 @@ pub(crate) fn language_name(code: &str) -> String {
     }
 }
 
-/// The language Hylki's own text is in, as one of [`LANGUAGES`]' codes
+/// The language Tegami Mail's own text is in, as one of [`LANGUAGES`]' codes
 /// where it is one: the language chosen in Settings, else the session's.
 pub(crate) fn ui_language() -> String {
     let chosen = crate::config::load_language();

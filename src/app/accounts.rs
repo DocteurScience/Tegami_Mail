@@ -188,7 +188,7 @@ fn verify_secret_stored(email: String, secret: String, sender: &ComponentSender<
 
 impl AppModel {
     /// Launch (or re-present) the welcome wizard: the first run's greeting,
-    /// the HYLKI_WELCOME review mode, and — on beta builds only — the burger
+    /// the TEGAMI_WELCOME review mode, and — on beta builds only — the burger
     /// menu's Welcome Wizard entry for testers.
     pub(super) fn open_wizard(&mut self, sender: &ComponentSender<Self>) {
         use crate::ui::welcome::{Welcome, WelcomeOutput};
@@ -243,7 +243,7 @@ impl AppModel {
         let mint = crate::desktop::platform::is_mint_cinnamon();
 
         let heading = if problem {
-            i18n("Hylki couldn’t save your password")
+            i18n("Tegami Mail couldn’t save your password")
         } else {
             i18n("Keyring setup on Linux Mint")
         };
@@ -251,13 +251,13 @@ impl AppModel {
         let mut body = String::new();
         if problem {
             body.push_str(
-                "Hylki stores account passwords in the system keyring (the Secret \
+                "Tegami Mail stores account passwords in the system keyring (the Secret \
                  Service), never on disk. The keyring didn’t accept the password, so \
-                 this account won’t stay signed in after you close Hylki.\n\n",
+                 this account won’t stay signed in after you close Tegami Mail.\n\n",
             );
         } else {
             body.push_str(
-                "Hylki keeps your account passwords in the system keyring (the Secret \
+                "Tegami Mail keeps your account passwords in the system keyring (the Secret \
                  Service) rather than on disk. On Linux Mint with Cinnamon the keyring \
                  sometimes needs a one-time setup so passwords persist — and so it \
                  doesn’t ask you to unlock it at every login.\n\n",
@@ -284,7 +284,7 @@ impl AppModel {
             if crate::desktop::platform::is_flatpak() {
                 body.push_str(
                     "\n\nNote: run these steps on the host system (not inside the \
-                     Flatpak) — Hylki uses whatever keyring your desktop provides.",
+                     Flatpak) — Tegami Mail uses whatever keyring your desktop provides.",
                 );
             }
         } else {
@@ -360,7 +360,7 @@ impl AppModel {
             }
 
             AppMsg::ImportGoaAccount(account) => {
-                // Enable a GNOME Online Account in Hylki (or re-enable if already
+                // Enable a GNOME Online Account in Tegami Mail (or re-enable if already
                 // imported). Its password came from GOA and is stored in the keyring.
                 let email = account.email.clone();
                 if let Some(slot) = self.config.iter_mut().find(|c| c.email == email) {
@@ -680,7 +680,7 @@ impl AppModel {
                 crate::desktop::background::request(true);
             }
             sender.input(AppMsg::ShowCarryOverNotice(from));
-        } else if std::env::var_os("HYLKI_SHOWCASE_CARRY_OVER").is_some() {
+        } else if std::env::var_os("TEGAMI_SHOWCASE_CARRY_OVER").is_some() {
             // Opens the notice as if Vireo's data had just come across, for
             // checking it by hand.
             sender.input(AppMsg::ShowCarryOverNotice(
@@ -700,13 +700,13 @@ impl AppModel {
         if wizard_again {
             std::env::remove_var(crate::WIZARD_AGAIN_VAR);
         }
-        if self.config.is_empty() || std::env::var("HYLKI_WELCOME").is_ok() || wizard_again {
+        if self.config.is_empty() || std::env::var("TEGAMI_WELCOME").is_ok() || wizard_again {
             self.rebuild_sidebar();
-            // HYLKI_WELCOME=1 forces the wizard over an existing config, for
+            // TEGAMI_WELCOME=1 forces the wizard over an existing config, for
             // design review and screenshots. A wizard already completed once
             // (Start Reading pressed, even with no account added) doesn't
             // come back on its own — a restart right after it must not loop.
-            if std::env::var("HYLKI_WELCOME").is_ok()
+            if std::env::var("TEGAMI_WELCOME").is_ok()
                 || wizard_again
                 || (!demo_mode() && !config::wizard_completed())
             {

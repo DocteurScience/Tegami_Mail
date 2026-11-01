@@ -8,7 +8,7 @@ The full list. The [README](../README.md) carries a shorter one.
   worker, with a unified *Inboxes* view across all of them.
 - **JMAP:** a Stalwart or Fastmail mailbox over the JSON mail protocol,
   including push. See [Configuration](DOCUMENTATION.md#jmap-stalwart-fastmail).
-- **OAuth 2.0 sign-in:** Microsoft with Hylki's own app (no GNOME Online
+- **OAuth 2.0 sign-in:** Microsoft with Tegami Mail's own app (no GNOME Online
   Accounts needed), Google through GNOME Online Accounts, and custom
   providers over XOAUTH2. See [Configuration](DOCUMENTATION.md#oauth-google--microsoft).
 - **GNOME Online Accounts:** import an account already set up in GNOME
@@ -50,7 +50,7 @@ The full list. The [README](../README.md) carries a shorter one.
   and task folders are hidden from the start.
 - **Filters:** multi-condition rules on sender, recipient, subject, body and
   Reply-To, with comma-separated alternatives, or on whether the sender is in
-  your Contacts (the system address books and the Hylki book, not addresses
+  your Contacts (the system address books and the Tegami Mail book, not addresses
   collected from mail); they tag mail, file it away, or both, and can be run
   over mail that is already in a folder.
 - **Tags:** IMAP keywords, Graph categories, or a local fallback where the
@@ -124,10 +124,10 @@ The full list. The [README](../README.md) carries a shorter one.
 - **Drag files in:** dragged over the composer, files can be attached, put
   in the text or uploaded to cloud storage; dragged over the window, they
   start a new message in any of those three ways.
-- **Send from Files:** a *Send with Hylki* entry in the GNOME Files
+- **Send from Files:** a *Send with Tegami Mail* entry in the GNOME Files
   right-click menu sends the selected files into a new message, a draft or a
   reply of your choosing, with an offer to upload big ones to cloud storage
-  instead. See [Send with Hylki from GNOME Files](DOCUMENTATION.md#send-with-hylki-from-gnome-files).
+  instead. See [Send with Tegami Mail from GNOME Files](DOCUMENTATION.md#send-with-tegami-from-gnome-files).
 
 ## Reading
 
@@ -189,7 +189,7 @@ The full list. The [README](../README.md) carries a shorter one.
 - **Single-key shortcuts:** Gmail-style `j`/`k`, `r`, `a`, `d` and friends,
   without a modifier. See [Keyboard shortcuts](KEYBOARD_SHORTCUTS.md).
 - **Runs in the background** (optional): closing the window keeps mail
-  arriving; Hylki appears under *Background Apps* in the GNOME system menu,
+  arriving; Tegami Mail appears under *Background Apps* in the GNOME system menu,
   and can start at login without opening a window.
 - **Tray icon** (optional): a StatusNotifierItem with a count of the folders
   you choose.
@@ -197,10 +197,10 @@ The full list. The [README](../README.md) carries a shorter one.
   buttons of your choice: Mark as Read, Archive, Delete, Reply, Forward or
   Mark as Spam, and a sound if you want one: built in, or a file of your own.
 - **GNOME Contacts:** names and photos from your address book, optional.
-- **Hylki address book:** a book of your own, beside the ones Evolution Data
+- **Tegami Mail address book:** a book of your own, beside the ones Evolution Data
   Server keeps, with vCard (`.vcf`) import. It works without GNOME.
 - **CardDAV accounts:** the address books of Nextcloud, iCloud, Fastmail or
-  any CardDAV server, set up in Hylki, through Evolution Data Server. See
+  any CardDAV server, set up in Tegami Mail, through Evolution Data Server. See
   [CardDAV accounts](DOCUMENTATION.md#carddav-accounts).
 - **Contact groups:** a name for several people that the composer offers
   like a contact, optionally sent as Bcc; Evolution's contact lists work the

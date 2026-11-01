@@ -80,7 +80,7 @@ fn build_webview(role: &'static str) -> webkit6::WebView {
     // A user-content manager with a script message handler lets the wrapper
     // document notify us (e.g. a double-clicked conversation header).
     let ucm = webkit6::UserContentManager::new();
-    ucm.register_script_message_handler("hylki", None);
+    ucm.register_script_message_handler("tegami", None);
     let webview = webkit6::WebView::builder()
         .web_context(&shared_web_context())
         .user_content_manager(&ucm)
@@ -177,7 +177,7 @@ fn launch_links(webview: &webkit6::WebView) {
             if let Some(nav) = decision.downcast_ref::<webkit6::NavigationPolicyDecision>() {
                 if let Some(mut action) = nav.navigation_action() {
                     // The documents are loaded from strings under a made-up
-                    // `hylki.localhost` base, so a reload has nothing to fetch
+                    // `tegami.localhost` base, so a reload has nothing to fetch
                     // and shows "Connection refused" (#301).
                     if action.navigation_type() == webkit6::NavigationType::Reload {
                         decision.ignore();

@@ -6,7 +6,7 @@ use std::path::PathBuf;
 use super::{config_file, is_false, read_toml, save_private_toml};
 
 /// A mail filter rule (#47): file matching inbox arrivals into a folder,
-/// Evolution-style, applied client-side whenever Hylki syncs the inbox.
+/// Evolution-style, applied client-side whenever Tegami Mail syncs the inbox.
 ///
 /// A rule holds one or more conditions (#192). The first lives at the top
 /// level as `field`/`matcher`/`value`, exactly where versions that knew only
@@ -143,7 +143,7 @@ pub(crate) struct FilterCondition {
 }
 
 /// How `filters.toml` writes a sender-in-Contacts condition (PR #384). An
-/// older Hylki knows no such field and would drop the whole file over one,
+/// older Tegami Mail knows no such field and would drop the whole file over one,
 /// so the condition goes to disk as an empty From address match, which
 /// matches nothing there, with `contacts` beside it saying what it is.
 #[derive(Clone, Copy, Debug, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
@@ -313,7 +313,7 @@ pub(crate) enum FilterField {
     /// too. Always a "contains" match, whatever the matcher says: that is
     /// the only search a server offers.
     Body,
-    /// The sender's address is in the address books: EDS and the local Hylki
+    /// The sender's address is in the address books: EDS and the local Tegami Mail
     /// book. Takes no text and ignores the matcher. Never matches while the
     /// address books are unreadable or empty, so a book that failed to load
     /// cannot make every sender look unknown.

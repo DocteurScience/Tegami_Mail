@@ -9,7 +9,7 @@ use crate::i18n::{i18n, i18n_f};
 
 #[allow(deprecated)] // adw::MessageDialog: AlertDialog would change how it looks
 pub(crate) fn show(parent: &impl IsA<gtk::Window>, from: &'static Predecessor) {
-    let heading = i18n_f("Welcome to Hylki, formerly {old}", &[("old", from.name)]);
+    let heading = i18n_f("Welcome to Tegami Mail, formerly {old}", &[("old", from.name)]);
     let mut body = i18n_f(
         "Your accounts, settings and cached mail were carried over from {old}. \
          There is nothing to set up again, and nothing in {old} was changed or \
@@ -20,7 +20,7 @@ pub(crate) fn show(parent: &impl IsA<gtk::Window>, from: &'static Predecessor) {
         body.push_str("\n\n");
         body.push_str(&i18n_f(
             "{old} is still the app your desktop opens email links with. To hand \
-             that to Hylki, choose it under Default Apps in Settings.",
+             that to Tegami Mail, choose it under Default Apps in Settings.",
             &[("old", from.name)],
         ));
     }

@@ -76,7 +76,7 @@ fn the_remote_detector_sees_past_the_obvious_spellings() {
     // Every row here loaded a tracking pixel with no banner shown, because
     // the old detector matched fixed substrings like `src="http`.
     for html in [
-        // Protocol-relative: resolves against https://hylki.localhost.
+        // Protocol-relative: resolves against https://tegami.localhost.
         r#"<img src="//tracker.example/p.gif">"#,
         // HTML permits whitespace around `=`.
         r#"<img src = "http://tracker.example/p.gif">"#,
@@ -245,7 +245,7 @@ fn the_wrapper_in_a_real_engine_sizes_frames_and_refuses_injected_script() {
     win.set_child(Some(&view));
     win.set_default_size(800, 600);
     win.present();
-    view.load_html(&html, Some("https://hylki.localhost/message/1"));
+    view.load_html(&html, Some("https://tegami.localhost/message/1"));
 
     let answer: Rc<RefCell<Option<String>>> = Rc::new(RefCell::new(None));
     let deadline = std::time::Instant::now() + std::time::Duration::from_secs(20);
@@ -282,13 +282,13 @@ fn the_wrapper_in_a_real_engine_sizes_frames_and_refuses_injected_script() {
     let probe = "JSON.stringify({\
            pwned: typeof window.__pwned !== 'undefined',\
            ours: ['s','init','all'].every(f => typeof window[f] === 'function'),\
-           heights: [...document.querySelectorAll('iframe.hylki-frame')]\
+           heights: [...document.querySelectorAll('iframe.tegami-frame')]\
                       .map(f => f.style.height),\
            readable: (function(){ try { \
-             return document.querySelector('iframe.hylki-frame')\
+             return document.querySelector('iframe.tegami-frame')\
                       .contentDocument.body.innerText.trim(); \
            } catch (e) { return 'blocked'; } })(),\
-           from: document.querySelector('.hylki-from').textContent\
+           from: document.querySelector('.tegami-from').textContent\
          })";
     let mut json = String::new();
     while std::time::Instant::now() < deadline {

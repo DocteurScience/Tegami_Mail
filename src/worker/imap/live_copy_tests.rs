@@ -36,12 +36,12 @@ fn live_copy_to_this_computer() {
     };
     let pid = std::process::id();
     let folder = format!("Copy-{pid}");
-    let root = std::env::temp_dir().join(format!("hylki-live-copy-{pid}"));
+    let root = std::env::temp_dir().join(format!("tegami-live-copy-{pid}"));
     let _ = std::fs::remove_dir_all(&root);
     let mail = |n: u32| {
         format!(
             "From: Ann <ann@example.test>\r\nTo: me@example.test\r\nSubject: copy {n}\r\n\
-             Message-ID: <hylki-552-{pid}-{n}@example.test>\r\n\r\nbody {n}\r\n"
+             Message-ID: <tegami-552-{pid}-{n}@example.test>\r\n\r\nbody {n}\r\n"
         )
     };
     let rt = tokio::runtime::Builder::new_current_thread()
@@ -110,7 +110,7 @@ fn live_copy_to_this_computer() {
             .collect();
         assert!(flags.contains(&"FS") && flags.contains(&""), "{flags:?}");
         assert!(root
-            .join("hylki-copied")
+            .join("tegami-copied")
             .join("me@example.com.txt")
             .is_file());
 

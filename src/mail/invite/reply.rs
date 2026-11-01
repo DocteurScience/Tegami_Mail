@@ -21,7 +21,7 @@ pub(crate) fn reply_ics(invite: &Invite, name: &str, email: &str, status: &str) 
         out.push_str("\r\n");
     };
     line("BEGIN:VCALENDAR".into());
-    line("PRODID:-//Hyprlab//Hylki//EN".into());
+    line("PRODID:-//Hyprlab//Tegami Mail//EN".into());
     line("VERSION:2.0".into());
     line("METHOD:REPLY".into());
     line("BEGIN:VEVENT".into());

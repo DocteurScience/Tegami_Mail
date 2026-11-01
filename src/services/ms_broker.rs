@@ -42,12 +42,12 @@ pub(crate) fn sso_cookie(
     match fetch(settings, user) {
         Ok(cookie) => {
             if cookie.is_some() {
-                tracing::info!(target: "hylki::oauth", "identity broker: device sign-in cookie added");
+                tracing::info!(target: "tegami::oauth", "identity broker: device sign-in cookie added");
             }
             cookie
         }
         Err(e) => {
-            tracing::debug!(target: "hylki::oauth", "identity broker: {e}");
+            tracing::debug!(target: "tegami::oauth", "identity broker: {e}");
             None
         }
     }

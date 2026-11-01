@@ -90,7 +90,7 @@ impl MessageView {
         self.autoscroll_lone = self.thread.len() <= 1;
         let n = self.seq.get().wrapping_add(1);
         self.seq.set(n);
-        self.load_after_paint(html, format!("https://hylki.localhost/message/{n}"), fade);
+        self.load_after_paint(html, format!("https://tegami.localhost/message/{n}"), fade);
     }
 
     /// Everything the rendered document depends on, in one number. Ordered by
@@ -295,10 +295,10 @@ fn body_stamps(s: &BodyStamps) -> String {
             .anchor
             .map(|(a, i, o)| {
                 let g = if s.anchor_gutter { ":g" } else { "" };
-                format!(" data-hylki-anchor=\"{a}:{i}:{o}{g}\"")
+                format!(" data-tegami-anchor=\"{a}:{i}:{o}{g}\"")
             })
             .unwrap_or_default();
-        format!(" data-hylki-noscroll=\"1\"{anchor}")
+        format!(" data-tegami-noscroll=\"1\"{anchor}")
     } else {
         String::new()
     };
@@ -307,22 +307,22 @@ fn body_stamps(s: &BodyStamps) -> String {
     // behind the ⋯, "hover" shows them while the card is hovered, and no
     // stamp means always shown.
     let hover = if s.card_actions_hover {
-        " data-hylki-acts=\"toggle\""
+        " data-tegami-acts=\"toggle\""
     } else if s.card_actions_auto {
-        " data-hylki-acts=\"hover\""
+        " data-tegami-acts=\"hover\""
     } else {
         ""
     };
     // The palette timeout rides along in ms; the script reads it for the
     // toggle mode's collapse timer and the hover mode's fade-out delay.
     let delay = format!(
-        " data-hylki-actsdelay=\"{}\"",
+        " data-tegami-actsdelay=\"{}\"",
         s.palette_collapse_secs.max(1) * 1000
     );
     // With the ⋯ set to open the card's menu there is no palette to
     // slide, so the script hands the click back to the app instead.
     let acts_menu = if s.card_palette_menu {
-        " data-hylki-actsmenu=\"1\""
+        " data-tegami-actsmenu=\"1\""
     } else {
         ""
     };
@@ -330,24 +330,24 @@ fn body_stamps(s: &BodyStamps) -> String {
     let pgp_icons = if s.pgp_labels {
         ""
     } else {
-        " data-hylki-pgpicons"
+        " data-tegami-pgpicons"
     };
     // The newest member, for the open-scroll fallback (#101): with no
     // unread mail the reader lands on the newest message rather than
     // wherever the document happens to start.
     let newest = s
         .newest
-        .map(|(aid, id)| format!(" data-hylki-newest=\"{aid}:{id}\""))
+        .map(|(aid, id)| format!(" data-tegami-newest=\"{aid}:{id}\""))
         .unwrap_or_default();
     // Read-marking policy (#100): the observer marks conversation members
     // as they come into view; "manual" installs no observer at all.
     let readmark = match s.read_mark {
-        crate::config::ReadMark::Shown => " data-hylki-readmark=\"250\"",
-        crate::config::ReadMark::Delay => " data-hylki-readmark=\"2000\"",
+        crate::config::ReadMark::Shown => " data-tegami-readmark=\"250\"",
+        crate::config::ReadMark::Delay => " data-tegami-readmark=\"2000\"",
         crate::config::ReadMark::Manual => "",
     };
     let copied = format!(
-        " data-hylki-copied=\"{}\"",
+        " data-tegami-copied=\"{}\"",
         i18n("Copied").replace('"', "&quot;")
     );
     format!("{noscroll}{hover}{delay}{acts_menu}{pgp_icons}{newest}{readmark}{copied}")
@@ -377,7 +377,7 @@ mod tests {
     fn a_first_render_stamps_little() {
         assert_eq!(
             body_stamps(&stamps()),
-            " data-hylki-actsdelay=\"1000\" data-hylki-copied=\"Copied\""
+            " data-tegami-actsdelay=\"1000\" data-tegami-copied=\"Copied\""
         );
     }
 
@@ -397,10 +397,10 @@ mod tests {
         };
         assert_eq!(
             body_stamps(&s),
-            " data-hylki-noscroll=\"1\" data-hylki-anchor=\"1:2:30:g\" \
-             data-hylki-acts=\"toggle\" data-hylki-actsdelay=\"5000\" \
-             data-hylki-actsmenu=\"1\" data-hylki-pgpicons data-hylki-newest=\"1:9\" \
-             data-hylki-readmark=\"2000\" data-hylki-copied=\"Copied\""
+            " data-tegami-noscroll=\"1\" data-tegami-anchor=\"1:2:30:g\" \
+             data-tegami-acts=\"toggle\" data-tegami-actsdelay=\"5000\" \
+             data-tegami-actsmenu=\"1\" data-tegami-pgpicons data-tegami-newest=\"1:9\" \
+             data-tegami-readmark=\"2000\" data-tegami-copied=\"Copied\""
         );
     }
 
@@ -415,9 +415,9 @@ mod tests {
         };
         assert_eq!(
             body_stamps(&s),
-            " data-hylki-noscroll=\"1\" data-hylki-anchor=\"3:4:0\" \
-             data-hylki-acts=\"hover\" data-hylki-actsdelay=\"1000\" \
-             data-hylki-readmark=\"250\" data-hylki-copied=\"Copied\""
+            " data-tegami-noscroll=\"1\" data-tegami-anchor=\"3:4:0\" \
+             data-tegami-acts=\"hover\" data-tegami-actsdelay=\"1000\" \
+             data-tegami-readmark=\"250\" data-tegami-copied=\"Copied\""
         );
         // Without the open scroll done, a saved anchor is not stamped.
         let s = BodyStamps {

@@ -1,5 +1,5 @@
-//! A provider's sign-in page in a window of Hylki's own (#329), for an OAuth
-//! client registered with a redirect Hylki cannot listen on, such as
+//! A provider's sign-in page in a window of Tegami Mail's own (#329), for an OAuth
+//! client registered with a redirect Tegami Mail cannot listen on, such as
 //! Microsoft's `…/oauth2/nativeclient` that Evolution's client uses. The
 //! page runs in a private session with nothing kept afterwards, and the
 //! redirect is caught as the page navigates to it, so it never loads.
@@ -122,7 +122,7 @@ pub(crate) fn run(
             cookie.set_secure(true);
             cookie.set_http_only(true);
             if let Err(e) = jar.add_cookie_future(&cookie).await {
-                tracing::warn!(target: "hylki::oauth", "identity broker: the cookie was not taken: {e}");
+                tracing::warn!(target: "tegami::oauth", "identity broker: the cookie was not taken: {e}");
             }
         }
         view.load_uri(&url);

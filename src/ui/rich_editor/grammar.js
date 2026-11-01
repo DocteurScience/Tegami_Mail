@@ -5,13 +5,13 @@
      finds come back as offsets into it. They are drawn through the CSS
      Custom Highlight API, so nothing in the document, its undo history or
      the sent message changes. The app turns this on only in the composer:
-     `__hylkiGrammarOn`. */
+     `__tegamiGrammarOn`. */
   if(!(window.Highlight && window.CSS && CSS.highlights)) return;
   var on = false, timer = null, seq = 0, asked = null, shown = null,
     composing = false, ids = 0, issues = [];
   var mistakes = new Highlight(), style = new Highlight();
-  CSS.highlights.set('hylki-grammar', mistakes);
-  CSS.highlights.set('hylki-style', style);
+  CSS.highlights.set('tegami-grammar', mistakes);
+  CSS.highlights.set('tegami-style', style);
   var BLOCK = /^(P|DIV|LI|UL|OL|H[1-6]|BLOCKQUOTE|PRE|TABLE|TR|TD|TH|HR|DL|DT|DD)$/;
   /* WebKit's Indent is a blockquote with no border: the user's own text. */
   function isIndent(b){
@@ -20,7 +20,7 @@
   function skipped(el){
     if(el.tagName === 'BLOCKQUOTE') return !isIndent(el);
     return /^(IMG|SCRIPT|STYLE)$/.test(el.tagName)
-      || el.matches('.hylki-quote-attr,.hylki-sig,[data-hylki-ui]');
+      || el.matches('.tegami-quote-attr,.tegami-sig,[data-tegami-ui]');
   }
   /* The text and, for each text node in it, where it starts. Line breaks
      inside a text node read as spaces, as they show: the same length, so
@@ -43,7 +43,7 @@
         } else if(c.nodeType === 1){
           var block = BLOCK.test(c.tagName);
           /* A line of a paragraph (#524) is one line of it. */
-          var gap = c.hasAttribute('data-hylki-line') ? 1 : 2;
+          var gap = c.hasAttribute('data-tegami-line') ? 1 : 2;
           if(skipped(c)){ if(block) brk(2); continue; }
           if(c.tagName === 'BR'){ text += '\n'; continue; }
           if(block) brk(gap);
@@ -84,7 +84,7 @@
     if(!now.trim()){ clear(); shown = now; asked = null; return; }
     asked = now;
     try{
-      window.webkit.messageHandlers.hylkiGrammar.postMessage(
+      window.webkit.messageHandlers.tegamiGrammar.postMessage(
         JSON.stringify({seq: seq, text: now}));
     }catch(_){}
   }
@@ -92,19 +92,19 @@
     clearTimeout(timer);
     timer = setTimeout(send, ms);
   }
-  window.__hylkiGrammarOn = function(){
+  window.__tegamiGrammarOn = function(){
     on = true;
     schedule(400);
   };
   /* The marks taken away, and any answer on its way dropped: the next
      check starts afresh. */
-  window.__hylkiGrammarClear = function(){
+  window.__tegamiGrammarClear = function(){
     clear();
     shown = asked = null;
   };
   /* The problems found in request `n`, if its text is still the text.
      Otherwise a newer check is on its way. */
-  window.__hylkiGrammarShow = function(n, list){
+  window.__tegamiGrammarShow = function(n, list){
     if(n !== seq) return;
     var now = collect();
     if(now.text !== asked) return;
@@ -162,7 +162,7 @@
       }
     }
     try{
-      window.webkit.messageHandlers.hylkiGrammarHit.postMessage(JSON.stringify(hit));
+      window.webkit.messageHandlers.tegamiGrammarHit.postMessage(JSON.stringify(hit));
     }catch(_){}
   }, true);
   function find(id){
@@ -171,7 +171,7 @@
   }
   /* Put a suggestion in place of the problem, as typing it would: one
      step of the undo history. */
-  window.__hylkiGrammarFix = function(id, replacement){
+  window.__tegamiGrammarFix = function(id, replacement){
     var e = find(id);
     if(!e || !e.r.startContainer.isConnected || e.r.toString() !== e.text) return;
     var s = getSelection();
@@ -181,7 +181,7 @@
     else document.execCommand('insertText', false, replacement);
   };
   /* The problem, and every other like it, left alone. */
-  window.__hylkiGrammarIgnore = function(rule, text){
+  window.__tegamiGrammarIgnore = function(rule, text){
     drop(function(e){ return e.it.rule === rule && e.text === text; });
   };
 })();

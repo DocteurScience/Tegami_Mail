@@ -11,7 +11,7 @@ use super::{config_file, data_base, read_toml, save_plain_toml};
 /// after the file chooser's grant lapses. The file keeps its own name, which
 /// is what Settings shows; there is never more than one.
 fn custom_sound_dir() -> Option<PathBuf> {
-    data_base().map(|d| d.join("hylki").join("notification-sound"))
+    data_base().map(|d| d.join("tegami").join("notification-sound"))
 }
 
 /// The custom new-mail sound file, if one has been chosen.
@@ -146,7 +146,7 @@ impl NewMailSound {
             .find(|n| **n == self.sound)
             .unwrap_or(&BUILTIN_SOUNDS[0]);
         Some(SoundSource::Resource(format!(
-            "/co/hyprlab/Hylki/sounds/{name}.ogg"
+            "/io/github/DocteurScience/TegamiMail/sounds/{name}.ogg"
         )))
     }
 }

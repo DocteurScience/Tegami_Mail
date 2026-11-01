@@ -13,17 +13,17 @@ use crate::ui::message_view::MessageViewInput;
 
 use super::capture::{input_after, showcase_at};
 
-/// HYLKI_SHOWCASE_MEMORY=/path.txt writes the exported log (memory
-/// section included) there after HYLKI_SHOWCASE_MEMORY_AT seconds
+/// TEGAMI_SHOWCASE_MEMORY=/path.txt writes the exported log (memory
+/// section included) there after TEGAMI_SHOWCASE_MEMORY_AT seconds
 /// (default 20), on a real mailbox as much as the demo: a memory
 /// reading is only worth having once the index has loaded. With
-/// HYLKI_SHOWCASE_MEMORY_EVERY=N it is rewritten every N seconds
+/// TEGAMI_SHOWCASE_MEMORY_EVERY=N it is rewritten every N seconds
 /// after that, for watching a session grow.
 pub(super) fn probe_memory(sender: &ComponentSender<AppModel>) {
-    if let Some(path) = std::env::var_os("HYLKI_SHOWCASE_MEMORY") {
+    if let Some(path) = std::env::var_os("TEGAMI_SHOWCASE_MEMORY") {
         let secs = |name: &str| std::env::var(name).ok().and_then(|v| v.parse::<u32>().ok());
-        let at = secs("HYLKI_SHOWCASE_MEMORY_AT").unwrap_or(20);
-        let every = secs("HYLKI_SHOWCASE_MEMORY_EVERY").filter(|n| *n > 0);
+        let at = secs("TEGAMI_SHOWCASE_MEMORY_AT").unwrap_or(20);
+        let every = secs("TEGAMI_SHOWCASE_MEMORY_EVERY").filter(|n| *n > 0);
         let s = sender.clone();
         let path = std::path::PathBuf::from(path);
         gtk::glib::timeout_add_seconds_local_once(at, move || {
@@ -38,10 +38,10 @@ pub(super) fn probe_memory(sender: &ComponentSender<AppModel>) {
     }
 }
 
-/// HYLKI_SHOWCASE_ZOOM=N presses Ctrl+ N times (Ctrl- for a negative
+/// TEGAMI_SHOWCASE_ZOOM=N presses Ctrl+ N times (Ctrl- for a negative
 /// N) at 8 s, so the live zoom path can be captured.
 pub(super) fn probe_zoom(sender: &ComponentSender<AppModel>) {
-    if let Some(n) = std::env::var("HYLKI_SHOWCASE_ZOOM")
+    if let Some(n) = std::env::var("TEGAMI_SHOWCASE_ZOOM")
         .ok()
         .and_then(|v| v.parse::<i8>().ok())
     {
@@ -54,19 +54,19 @@ pub(super) fn probe_zoom(sender: &ComponentSender<AppModel>) {
     }
 }
 
-/// HYLKI_SHOWCASE_DELETE_ATTACHMENT=<name>[:yes] chooses Delete from
+/// TEGAMI_SHOWCASE_DELETE_ATTACHMENT=<name>[:yes] chooses Delete from
 /// Server for that file of the message on screen at 10 s
-/// (HYLKI_SHOWCASE_DELETE_AT overrides the seconds); `:yes` answers
+/// (TEGAMI_SHOWCASE_DELETE_AT overrides the seconds); `:yes` answers
 /// the question as well (#289).
 /// `gallery:<name>` opens the attachments gallery 4 s before and
 /// deletes the file from there.
 pub(super) fn probe_delete_attachment(sender: &ComponentSender<AppModel>) {
-    if let Ok(v) = std::env::var("HYLKI_SHOWCASE_DELETE_ATTACHMENT") {
+    if let Ok(v) = std::env::var("TEGAMI_SHOWCASE_DELETE_ATTACHMENT") {
         let (name, confirmed) = match v.strip_suffix(":yes") {
             Some(name) => (name.to_string(), true),
             None => (v, false),
         };
-        let at: u32 = std::env::var("HYLKI_SHOWCASE_DELETE_AT")
+        let at: u32 = std::env::var("TEGAMI_SHOWCASE_DELETE_AT")
             .ok()
             .and_then(|v| v.parse().ok())
             .unwrap_or(10);
@@ -81,16 +81,16 @@ pub(super) fn probe_delete_attachment(sender: &ComponentSender<AppModel>) {
 }
 
 impl AppModel {
-    /// HYLKI_SHOWCASE_SELECT=<account>:<id> opens that message at 5 s
-    /// (HYLKI_SHOWCASE_SELECT_AT overrides the seconds) through its row,
+    /// TEGAMI_SHOWCASE_SELECT=<account>:<id> opens that message at 5 s
+    /// (TEGAMI_SHOWCASE_SELECT_AT overrides the seconds) through its row,
     /// or the head of its conversation, real accounts included: a way to
     /// open a conversation the reader assembles from the cache without a
     /// pointer, so its log can be read (#236).
     /// Several may be given, comma-separated, each with its own
     /// @<seconds>, to open one message and then another.
     pub(super) fn probe_select(&self) {
-        if let Ok(v) = std::env::var("HYLKI_SHOWCASE_SELECT") {
-            let default_at: u32 = std::env::var("HYLKI_SHOWCASE_SELECT_AT")
+        if let Ok(v) = std::env::var("TEGAMI_SHOWCASE_SELECT") {
+            let default_at: u32 = std::env::var("TEGAMI_SHOWCASE_SELECT_AT")
                 .ok()
                 .and_then(|v| v.parse().ok())
                 .unwrap_or(5);
@@ -110,11 +110,11 @@ impl AppModel {
         }
     }
 
-    /// HYLKI_SHOWCASE_TRANSLATE=<account>:<id>[@<seconds>] translates
+    /// TEGAMI_SHOWCASE_TRANSLATE=<account>:<id>[@<seconds>] translates
     /// that message (open by then) at 8 s, as its A文 button would, so a
     /// translation can be captured (#327).
     pub(super) fn probe_translate(&self) {
-        if let Ok(v) = std::env::var("HYLKI_SHOWCASE_TRANSLATE") {
+        if let Ok(v) = std::env::var("TEGAMI_SHOWCASE_TRANSLATE") {
             let (item, at) = showcase_at(&v, 8);
             if let Some((a, id)) = item
                 .split_once(':')
@@ -128,11 +128,11 @@ impl AppModel {
         }
     }
 
-    /// HYLKI_SHOWCASE_CARD_DELETE=<account>:<id>[@<seconds>] deletes that
+    /// TEGAMI_SHOWCASE_CARD_DELETE=<account>:<id>[@<seconds>] deletes that
     /// card of the open conversation at 8 s, as its Delete would. Several
     /// may be given, comma-separated.
     pub(super) fn probe_card_delete(&self) {
-        if let Ok(v) = std::env::var("HYLKI_SHOWCASE_CARD_DELETE") {
+        if let Ok(v) = std::env::var("TEGAMI_SHOWCASE_CARD_DELETE") {
             for item in v.split(',') {
                 let (item, at) = showcase_at(item, 8);
                 let Some((a, id)) = item
@@ -154,12 +154,12 @@ impl AppModel {
     }
 }
 
-/// HYLKI_SHOWCASE_INBOX=<account>[@<seconds>] switches to that
+/// TEGAMI_SHOWCASE_INBOX=<account>[@<seconds>] switches to that
 /// account's Inbox at 3 s or the time given (the first account's when
 /// it is not a number), real accounts included, for the same probe
 /// from a folder view.
 pub(super) fn probe_inbox(sender: &ComponentSender<AppModel>) {
-    if let Ok(v) = std::env::var("HYLKI_SHOWCASE_INBOX") {
+    if let Ok(v) = std::env::var("TEGAMI_SHOWCASE_INBOX") {
         let (v, at) = showcase_at(&v, 3);
         let account = v.parse::<u32>().ok().filter(|a| *a > 0);
         let s = sender.clone();
@@ -173,11 +173,11 @@ pub(super) fn probe_inbox(sender: &ComponentSender<AppModel>) {
 }
 
 impl AppModel {
-    /// HYLKI_SHOWCASE_LIST_SEARCH=<text>[:<scope>][@<seconds>] searches
+    /// TEGAMI_SHOWCASE_LIST_SEARCH=<text>[:<scope>][@<seconds>] searches
     /// the list at 4 s or the time given, the scope by its place in the
     /// dropdown, real accounts included (#472).
     pub(super) fn probe_list_search(&self) {
-        if let Ok(spec) = std::env::var("HYLKI_SHOWCASE_LIST_SEARCH") {
+        if let Ok(spec) = std::env::var("TEGAMI_SHOWCASE_LIST_SEARCH") {
             let (spec, at) = showcase_at(&spec, 4);
             let (text, scope) = match spec.rsplit_once(':') {
                 Some((t, s)) => (t.to_string(), s.parse().unwrap_or(0)),
@@ -191,11 +191,11 @@ impl AppModel {
     }
 }
 
-/// HYLKI_SHOWCASE_NOTIFY[=<seconds>[,<seconds>...]] posts the new-mail
+/// TEGAMI_SHOWCASE_NOTIFY[=<seconds>[,<seconds>...]] posts the new-mail
 /// notification at 5 s or at each time given (the same second twice
 /// exercises the sound's hold-off), real accounts included.
 pub(super) fn probe_notify(sender: &ComponentSender<AppModel>) {
-    if let Ok(v) = std::env::var("HYLKI_SHOWCASE_NOTIFY") {
+    if let Ok(v) = std::env::var("TEGAMI_SHOWCASE_NOTIFY") {
         let mut times: Vec<u32> = v.split(',').filter_map(|t| t.trim().parse().ok()).collect();
         if times.is_empty() {
             times.push(5);

@@ -323,7 +323,7 @@ impl AttachmentsGallery {
                 .as_ref()
                 .is_some_and(|f| f == entry.upcast_ref::<gtk::Widget>() || f.is_ancestor(&entry));
             tracing::info!(
-                target: "hylki::showcase",
+                target: "tegami::showcase",
                 "gallery search focus: kept={kept} holder={} toolbar_visible={} text={:?}",
                 focus.map(|w| w.type_().name().to_string()).unwrap_or_else(|| "none".into()),
                 entry.parent().is_some_and(|p| p.is_visible()),
@@ -337,7 +337,7 @@ impl AttachmentsGallery {
         // A popover is its own surface, so the window snapshot never
         // has it: capture its contents directly, as the context menu
         // does (see `ui::context_menu`).
-        if let Ok(path) = std::env::var("HYLKI_SHOWCASE") {
+        if let Ok(path) = std::env::var("TEGAMI_SHOWCASE") {
             let content = widgets.folders_box.clone();
             glib::timeout_add_seconds_local_once(1, move || {
                 crate::ui::showcase::showcase_capture(content.upcast_ref(), &path);

@@ -1,4 +1,4 @@
-//! Files handed to the app (Files' Send with Hylki, a mailto with attach=, a
+//! Files handed to the app (Files' Send with Tegami Mail, a mailto with attach=, a
 //! drop on the window): which composer they go to, and how.
 
 use std::collections::HashSet;
@@ -84,8 +84,8 @@ fn window_drop_target(
     drop
 }
 
-/// Files handed in from outside the app (GNOME Files' "Send with Hylki",
-/// "Open With Hylki", a mailto: with attach=), on their way to a composer.
+/// Files handed in from outside the app (GNOME Files' "Send with Tegami Mail",
+/// "Open With Tegami Mail", a mailto: with attach=), on their way to a composer.
 #[derive(Debug, Default)]
 pub(crate) struct FileHandOff {
     /// The composer's other fields (a mailto's recipient, subject, body):
@@ -150,8 +150,8 @@ impl AppModel {
                 })
                 .collect();
             let text = crate::i18n::ni18n_f(
-                "Could not attach {names}: Hylki cannot read the file.",
-                "Could not attach {n} files (Hylki cannot read them): {names}",
+                "Could not attach {names}: Tegami Mail cannot read the file.",
+                "Could not attach {n} files (Tegami Mail cannot read them): {names}",
                 dropped.len() as u32,
                 &[
                     ("n", &dropped.len().to_string()),
@@ -176,7 +176,7 @@ impl AppModel {
         });
     }
 
-    /// Files handed in from outside (Send with Hylki, Open With, Email…):
+    /// Files handed in from outside (Send with Tegami Mail, Open With, Email…):
     /// the first step. Reports the unreadable ones, then goes where
     /// Settings → System → GNOME Files says: straight into a new message, a
     /// draft or a reply, or a dialog offering the three.
@@ -213,8 +213,8 @@ impl AppModel {
             Some(&self.window),
             Some(
                 ni18n_f(
-                    "Send {n} file with Hylki",
-                    "Send {n} files with Hylki",
+                    "Send {n} file with Tegami Mail",
+                    "Send {n} files with Tegami Mail",
                     n,
                     &[("n", &n.to_string())],
                 )
@@ -672,9 +672,9 @@ impl AppModel {
                         .collect(),
                 );
             });
-            // HYLKI_SHOWCASE_WINDOW_DROP=<attach|inline|cloud|none>:<file>[:<file>…]
+            // TEGAMI_SHOWCASE_WINDOW_DROP=<attach|inline|cloud|none>:<file>[:<file>…]
             // raises the window's cards at 3 s, for a capture.
-            if let Ok(v) = std::env::var("HYLKI_SHOWCASE_WINDOW_DROP") {
+            if let Ok(v) = std::env::var("TEGAMI_SHOWCASE_WINDOW_DROP") {
                 let mut parts = std::env::split_paths(&v);
                 let hover = match parts.next().as_deref().and_then(|p| p.to_str()) {
                     Some("attach") => Some(crate::ui::drop_zones::DropChoice::Attach),
@@ -707,7 +707,7 @@ impl AppModel {
         self.message_view
             .widget()
             .add_controller(window_drop_target(sender, gtk::PropagationPhase::Capture));
-        if let Ok(list) = std::env::var("HYLKI_SHOWCASE_DROP") {
+        if let Ok(list) = std::env::var("TEGAMI_SHOWCASE_DROP") {
             let paths: Vec<std::path::PathBuf> = std::env::split_paths(&list).collect();
             let s = sender.clone();
             gtk::glib::timeout_add_seconds_local_once(3, move || s.input(AppMsg::DropFiles(paths)));

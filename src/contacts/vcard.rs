@@ -75,7 +75,7 @@ pub(super) fn vcard_photo(vcard: &str) -> Option<Vec<u8>> {
     vcard_photo_with(vcard, true)
 }
 
-/// [`vcard_photo`], optionally refusing `file://` photos. The local Hylki book
+/// [`vcard_photo`], optionally refusing `file://` photos. The local Tegami Mail book
 /// holds vCards from arbitrary `.vcf` files, which must not be able to point
 /// at files EDS keeps.
 pub(crate) fn vcard_photo_with(vcard: &str, allow_files: bool) -> Option<Vec<u8>> {
@@ -134,7 +134,7 @@ pub(crate) fn vcard_photo_with(vcard: &str, allow_files: bool) -> Option<Vec<u8>
 }
 
 /// Read an EDS-materialized `file://` photo, but only from an address-book data
-/// or cache directory. A CardDAV vCard must not be able to make Hylki read an
+/// or cache directory. A CardDAV vCard must not be able to make Tegami Mail read an
 /// arbitrary local file.
 pub(super) fn read_eds_photo_file(uri: &str, max_bytes: usize) -> Option<Vec<u8>> {
     use std::io::Read;

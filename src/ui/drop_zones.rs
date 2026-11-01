@@ -287,7 +287,7 @@ impl DropZones {
         *self.refresh.borrow_mut() = Some(Box::new(refresh));
     }
 
-    /// HYLKI_SHOWCASE_DROP_ZONES: bring the surfaces up for `paths` as a
+    /// TEGAMI_SHOWCASE_DROP_ZONES: bring the surfaces up for `paths` as a
     /// drag would, with `hover`'s card marked as under the pointer, since
     /// no drag can be made from a script.
     pub(crate) fn showcase(

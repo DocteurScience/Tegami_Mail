@@ -32,7 +32,7 @@
 //! One fetch per domain per session, remembered either way: a miss is cached too,
 //! or every row from the same sender would ask again.
 //!
-//! Icons persist on disk (`~/.local/share/hylki/logos/<domain>.img`) so a
+//! Icons persist on disk (`~/.local/share/tegami/logos/<domain>.img`) so a
 //! restart shows them without touching the network; a `.miss` marker remembers
 //! a domain with nothing to give. Both go stale after a week: the next message
 //! from that sender then re-asks the domain — a changed brand icon appears, a
@@ -101,7 +101,7 @@ fn store_dir() -> Option<PathBuf> {
     // Made once: this is asked for every list row filled.
     static DIR: std::sync::OnceLock<Option<PathBuf>> = std::sync::OnceLock::new();
     DIR.get_or_init(|| {
-        let dir = crate::config::data_base()?.join("hylki").join("logos");
+        let dir = crate::config::data_base()?.join("tegami").join("logos");
         let _ = std::fs::create_dir_all(&dir);
         Some(dir)
     })
@@ -268,7 +268,7 @@ pub(crate) fn fetch(email: &str) -> Option<Vec<u8>> {
 }
 
 /// What [`fetch`] would answer for an address and where from, in words —
-/// for the `HYLKI_LOGO_PROBE` hook.
+/// for the `TEGAMI_LOGO_PROBE` hook.
 pub(crate) fn probe(email: &str) -> String {
     match fetch_from(email) {
         Some((bytes, source)) => format!("{source} ({} bytes)", bytes.len()),

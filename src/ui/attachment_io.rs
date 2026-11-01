@@ -277,7 +277,7 @@ fn create_private(
             use std::os::unix::fs::OpenOptionsExt;
             opts.mode(0o600);
             // Refuse to follow a symlink instead of racing to check for one.
-            // 0o400000 is O_NOFOLLOW on every Linux arch Hylki ships for; the
+            // 0o400000 is O_NOFOLLOW on every Linux arch Tegami Mail ships for; the
             // wrong constant here once passed O_DIRECTORY (0o200000) instead,
             // which made this open() fail and every attachment click a no-op.
             opts.custom_flags(0o400000 /* O_NOFOLLOW */);
@@ -291,7 +291,7 @@ fn create_private(
 
 /// This process's real user ID.
 ///
-/// Hylki has no libc dependency; `getuid` is always available and cannot fail,
+/// Tegami Mail has no libc dependency; `getuid` is always available and cannot fail,
 /// so declaring it directly is cheaper than taking one on.
 #[cfg(unix)]
 fn our_uid() -> u32 {
@@ -306,7 +306,7 @@ fn our_uid() -> u32 {
 /// Opened attachments used to accumulate in `/tmp` for the life of the machine —
 /// decrypted, readable, and long past the point the user considers them gone.
 /// Called once at startup, because the helper application the user opened a file
-/// with may still have it open while Hylki is running.
+/// with may still have it open while Tegami Mail is running.
 pub(crate) fn purge_attachment_dir() {
     let dir = std::env::temp_dir().join("vireo-attachments");
     if !dir.exists() {
@@ -326,7 +326,7 @@ mod tests {
     #[test]
     fn staged_files_are_new_private_and_never_written_through() {
         use std::os::unix::fs::PermissionsExt;
-        let dir = std::env::temp_dir().join(format!("hylki-stage-test-{}", std::process::id()));
+        let dir = std::env::temp_dir().join(format!("tegami-stage-test-{}", std::process::id()));
         let _ = std::fs::remove_dir_all(&dir);
         std::fs::create_dir_all(&dir).unwrap();
         let name = |base: &str| {

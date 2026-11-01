@@ -204,7 +204,7 @@ impl MessageWindow {
                 // read"), matching the menus.
                 ToolbarItem::ReadUnread => {
                     b.set_icon_name(if self.msg.unread {
-                        "hylki-mail-read-symbolic"
+                        "tegami-mail-read-symbolic"
                     } else {
                         "mail-unread-symbolic"
                     });

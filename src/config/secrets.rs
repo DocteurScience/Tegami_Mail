@@ -1,10 +1,10 @@
-//! Every secret Hylki keeps, in the system keyring (Secret Service), and
+//! Every secret Tegami Mail keeps, in the system keyring (Secret Service), and
 //! the one thread all keyring calls run on.
 
 use super::accounts::AccountConfig;
 
 /// Service name used for keyring entries; password items are keyed by email.
-pub(super) const KEYRING_SERVICE: &str = "co.hyprlab.Hylki";
+pub(super) const KEYRING_SERVICE: &str = "io.github.DocteurScience.TegamiMail";
 
 // Every keyring call runs on one thread, in the order it was made. A Secret
 // Service provider may wait on its user before it answers (a security key
@@ -30,7 +30,7 @@ fn keyring_thread() -> Option<&'static std::sync::mpsc::Sender<KeyringJob>> {
         .get_or_init(|| {
             let (tx, rx) = std::sync::mpsc::channel::<KeyringJob>();
             std::thread::Builder::new()
-                .name("hylki-keyring".into())
+                .name("tegami-keyring".into())
                 .spawn(move || {
                     ON_KEYRING_THREAD.with(|on| on.set(true));
                     for job in rx {
@@ -193,10 +193,10 @@ pub(crate) fn delete_cloud_password(key: &str) {
 
 /// A keyring item in the shape Evolution Data Server keeps its own
 /// passwords in, found by the source's UID, so EDS signs in to a source
-/// Hylki set up without asking anyone, also while Hylki is not running
+/// Tegami Mail set up without asking anyone, also while Tegami Mail is not running
 /// (#408).
 fn eds_entry(uid: &str, label: &str) -> keyring::Result<keyring::Entry> {
-    // Hylki's own attributes stay, as the keyring crate finds its items by
+    // Tegami Mail's own attributes stay, as the keyring crate finds its items by
     // them; EDS finds the item by the source UID alone.
     let mut cred = keyring::secret_service::SsCredential::new_with_target(
         None,
@@ -285,7 +285,7 @@ fn load_key(key: &str) -> Option<String> {
 /// Read a keyring entry, telling one that is not there (`Ok(None)`) apart
 /// from a keyring that did not answer (`Err`). At login the keyring can be
 /// locked or still starting, and taking that for "no password" signed the
-/// account in with an empty one until Hylki restarted (#375).
+/// account in with an empty one until Tegami Mail restarted (#375).
 fn read_key(key: &str) -> Result<Option<String>, String> {
     let key = key.to_owned();
     on_keyring_thread(

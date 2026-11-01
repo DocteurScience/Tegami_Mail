@@ -54,7 +54,7 @@ impl Cache {
 
     /// How big the cache is on disk, with its write-ahead log, in bytes.
     pub(crate) fn file_size() -> u64 {
-        let Some(dir) = crate::config::data_base().map(|d| d.join("hylki")) else {
+        let Some(dir) = crate::config::data_base().map(|d| d.join("tegami")) else {
             return 0;
         };
         ["cache.db", "cache.db-wal"]

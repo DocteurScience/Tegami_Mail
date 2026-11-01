@@ -1,4 +1,4 @@
-//! Hylki's settings: the files under `~/.config/hylki/` (accounts, the
+//! Tegami Mail's settings: the files under `~/.config/tegami/` (accounts, the
 //! preferences in privacy.toml, filters, tags, sidebar and window state, and
 //! smaller ones), the secrets kept in the system keyring, and where the
 //! config, cache and data directories are.
@@ -86,21 +86,21 @@ pub(crate) fn write_private(path: &std::path::Path, contents: &str) -> std::io::
 }
 
 /// XDG base directories, with one twist: the beta channel running inside its
-/// own Flatpak sandbox (app ID co.hyprlab.Hylki.Beta) would get an empty
-/// `~/.var/app/co.hyprlab.Hylki.Beta` tree of its own — so it redirects to the
+/// own Flatpak sandbox (app ID io.github.DocteurScience.TegamiMail.Beta) would get an empty
+/// `~/.var/app/io.github.DocteurScience.TegamiMail.Beta` tree of its own — so it redirects to the
 /// STABLE app's tree instead, sharing accounts, settings and the mail cache
 /// with the stable install. The keyring service name is identical across
 /// channels, so credentials are shared through the same redirection-free path.
-/// Outside Flatpak (host builds) both channels already share `~/.config/hylki`
+/// Outside Flatpak (host builds) both channels already share `~/.config/tegami`
 /// et al., so no redirection is needed or done.
 fn shared_base(own: fn() -> Option<PathBuf>, sub: &str) -> Option<PathBuf> {
     if cfg!(feature = "beta")
-        && std::env::var("FLATPAK_ID").is_ok_and(|id| id == "co.hyprlab.Hylki.Beta")
+        && std::env::var("FLATPAK_ID").is_ok_and(|id| id == "io.github.DocteurScience.TegamiMail.Beta")
         && stable_data_present()
     {
         return Some(
             dirs::home_dir()?
-                .join(".var/app/co.hyprlab.Hylki")
+                .join(".var/app/io.github.DocteurScience.TegamiMail")
                 .join(sub),
         );
     }
@@ -109,7 +109,7 @@ fn shared_base(own: fn() -> Option<PathBuf>, sub: &str) -> Option<PathBuf> {
 
 /// Whether the shared flatpak directory is actually reachable. Flatpak
 /// silently SKIPS a `--filesystem` grant whose host path doesn't exist, which
-/// left `~/.var/app/co.hyprlab.Hylki` pointing at the sandbox's throwaway
+/// left `~/.var/app/io.github.DocteurScience.TegamiMail` pointing at the sandbox's throwaway
 /// tmpfs on beta-only installs — accounts "saved" there and vanished on quit
 /// (issue #83). The real fix is the manifest's `:create` suffix, which makes
 /// flatpak create the host directory itself — a beta-first install thereby
@@ -124,7 +124,7 @@ fn stable_data_present() -> bool {
     static PRESENT: OnceLock<bool> = OnceLock::new();
     *PRESENT.get_or_init(|| {
         dirs::home_dir()
-            .map(|h| h.join(".var/app/co.hyprlab.Hylki").is_dir())
+            .map(|h| h.join(".var/app/io.github.DocteurScience.TegamiMail").is_dir())
             .unwrap_or(false)
     })
 }
@@ -147,9 +147,9 @@ pub(crate) fn write_private_file(path: &std::path::Path, contents: &str) -> std:
     write_private(path, contents)
 }
 
-/// A file in Hylki's own config directory, `~/.config/hylki/`.
+/// A file in Tegami Mail's own config directory, `~/.config/tegami/`.
 pub(crate) fn config_file(name: &str) -> Option<PathBuf> {
-    Some(config_base()?.join("hylki").join(name))
+    Some(config_base()?.join("tegami").join(name))
 }
 
 /// A settings file parsed, or `None` when it is missing, unreadable or does

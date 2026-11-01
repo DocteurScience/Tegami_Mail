@@ -148,7 +148,7 @@ pub(super) fn build_hero_page(
     ));
     tag.set_margin_top(16);
     // The interface language, first of all (#179): System, English and
-    // every shipped translation. A pick restarts Hylki into it, so the
+    // every shipped translation. A pick restarts Tegami Mail into it, so the
     // rest of the wizard reads in the chosen language.
     let lang_row = gtk::Box::new(gtk::Orientation::Horizontal, 10);
     lang_row.set_halign(gtk::Align::Center);
@@ -173,7 +173,7 @@ pub(super) fn build_hero_page(
     lang_row.append(&lang);
     // Fair warning: a pick restarts the app.
     let lang_note = gtk::Label::new(Some(
-        i18n("Choosing another language restarts Hylki: it closes for a moment and this wizard comes back in that language.").as_str(),
+        i18n("Choosing another language restarts Tegami Mail: it closes for a moment and this wizard comes back in that language.").as_str(),
     ));
     lang_note.add_css_class("welcome-hint");
     lang_note.add_css_class("caption");
@@ -202,9 +202,9 @@ pub(super) fn build_hero_page(
         lang_note.clone().upcast(),
         start.clone().upcast(),
     ]);
-    // HYLKI_SHOWCASE_WIZARD_LANG=<n> picks choice n on the drop-down
+    // TEGAMI_SHOWCASE_WIZARD_LANG=<n> picks choice n on the drop-down
     // after 4 s, what a click there does (for testing the restart).
-    if let Some(n) = std::env::var("HYLKI_SHOWCASE_WIZARD_LANG")
+    if let Some(n) = std::env::var("TEGAMI_SHOWCASE_WIZARD_LANG")
         .ok()
         .and_then(|v| v.parse::<u32>().ok())
     {
@@ -300,7 +300,7 @@ pub(super) fn build_privacy_page(carousel: &adw::Carousel) -> PrivacyPage {
     let priv_pg = gtk::Box::new(gtk::Orientation::Vertical, 14);
     priv_pg.append(&title(&i18n("Privacy, your way")));
     priv_pg.append(&tagline(&i18n(
-        "Hylki sends no telemetry, ever. These control what leaves your machine while you read.",
+        "Tegami Mail sends no telemetry, ever. These control what leaves your machine while you read.",
     )));
     let priv_card = card();
     let sw_remote = adw::SwitchRow::new();
@@ -378,7 +378,7 @@ pub(super) fn build_personalize_page(carousel: &adw::Carousel) -> PersonalizePag
     icon_hdr.set_halign(gtk::Align::Start);
     icon_hdr.set_margin_top(6);
     pers.append(&icon_hdr);
-    // With an icon set outside Hylki on the launcher (#252), nothing is
+    // With an icon set outside Tegami Mail on the launcher (#252), nothing is
     // preselected, and only an actual pick replaces it.
     let icon_choice = std::rc::Rc::new(std::cell::RefCell::new(
         if crate::desktop::app_icon::custom_icon().is_some() {
@@ -427,7 +427,7 @@ pub(super) fn build_done_page(carousel: &adw::Carousel) {
     done_sub.set_use_markup(true);
     done_sub.set_markup(&i18n_f(
         "Enjoy! If you encounter an issue or have a feature request,\nplease open an issue on our <a href=\"{url}\">Github</a>.",
-        &[("url", "https://github.com/hyprlab/hylki")],
+        &[("url", "https://github.com/DocteurScience/Tegami_Mail")],
     ));
     done.append(&done_sub);
     carousel.append(&scrolled(&page(&done)));

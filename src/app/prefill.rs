@@ -444,7 +444,7 @@ mod tests {
             subject: "S".into(),
             body: "one\r\n\r\ntwo <b>\nthree\n\nfour".into(),
             html: " ".into(),
-            attachments: vec!["/nonexistent/hylki-test-file".into()],
+            attachments: vec!["/nonexistent/tegami-test-file".into()],
             in_reply_to: String::new(),
             references: String::new(),
             forwards: String::new(),

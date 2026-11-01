@@ -83,7 +83,7 @@ pub(super) fn zoom_chip(sender: &ComponentSender<Compose>) -> gtk::Label {
     let chip = gtk::Label::new(None);
     chip.set_valign(gtk::Align::Center);
     chip.add_css_class("caption");
-    chip.add_css_class("hylki-zoom-chip");
+    chip.add_css_class("tegami-zoom-chip");
     chip.set_cursor_from_name(Some("pointer"));
     chip.set_tooltip_text(Some(
         i18n("Zoom of the text on screen, not of the message sent. A click here, or Ctrl+0, puts it back to 100%.")
@@ -104,12 +104,12 @@ pub(super) fn show_zoom(chip: &gtk::Label, zoom: u32) {
     chip.set_visible(zoom != 100);
 }
 
-/// What HYLKI_SHOWCASE_PLAIN_LOG reports about the body (demo only).
-pub(super) const SHOWCASE_PLAIN_LOG: &str = r#"JSON.stringify({plain:!!window.__hylkiPlain,
+/// What TEGAMI_SHOWCASE_PLAIN_LOG reports about the body (demo only).
+pub(super) const SHOWCASE_PLAIN_LOG: &str = r#"JSON.stringify({plain:!!window.__tegamiPlain,
 font:document.body?getComputedStyle(document.body).fontFamily:'',
 bold:document.body&&document.body.querySelector('b,strong')?getComputedStyle(document.body.querySelector('b,strong')).fontWeight:'',
 html:document.body?document.body.innerHTML:document.documentElement.outerHTML.slice(0,400),
-text:window.__hylkiBodyText?window.__hylkiBodyText():''})"#;
+text:window.__tegamiBodyText?window.__tegamiBodyText():''})"#;
 
 impl Compose {
     /// The format chooser's icon and tooltip for the format it is currently
@@ -188,7 +188,7 @@ impl Compose {
         if self.format == ComposeFormat::Rich && to == ComposeFormat::Plain {
             let s = sender.clone();
             self.editor.eval(
-                "String(!!(window.__hylkiPlainLoses&&window.__hylkiPlainLoses()))",
+                "String(!!(window.__tegamiPlainLoses&&window.__tegamiPlainLoses()))",
                 move |loses| {
                     s.input_sender().emit(if loses == "true" {
                         ComposeInput::AskPlain
@@ -224,11 +224,11 @@ impl Compose {
             }
         });
         dialog.present(Some(root));
-        // HYLKI_SHOWCASE_PLAIN_ANSWER=switch|cancel answers it two
+        // TEGAMI_SHOWCASE_PLAIN_ANSWER=switch|cancel answers it two
         // seconds on (demo only), for a check without a pointer.
         if let (Ok(answer), Some(_)) = (
-            std::env::var("HYLKI_SHOWCASE_PLAIN_ANSWER"),
-            std::env::var_os("HYLKI_DEMO"),
+            std::env::var("TEGAMI_SHOWCASE_PLAIN_ANSWER"),
+            std::env::var_os("TEGAMI_DEMO"),
         ) {
             tracing::info!("showcase plain: asked before switching");
             let (d, s) = (dialog.clone(), sender.input_sender().clone());
@@ -287,10 +287,10 @@ impl Compose {
             ComposeFormat::Rich | ComposeFormat::Plain => self.editor.set_html(&html),
         }
         self.editor.grab_focus();
-        // HYLKI_SHOWCASE_PLAIN_LOG logs the reloaded body, its font
+        // TEGAMI_SHOWCASE_PLAIN_LOG logs the reloaded body, its font
         // and the text it sends (demo only).
-        if std::env::var_os("HYLKI_SHOWCASE_PLAIN_LOG").is_some()
-            && std::env::var_os("HYLKI_DEMO").is_some()
+        if std::env::var_os("TEGAMI_SHOWCASE_PLAIN_LOG").is_some()
+            && std::env::var_os("TEGAMI_DEMO").is_some()
         {
             let ed = self.editor.clone();
             gtk::glib::timeout_add_local_once(std::time::Duration::from_millis(1500), move || {

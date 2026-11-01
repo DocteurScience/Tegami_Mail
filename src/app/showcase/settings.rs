@@ -13,11 +13,11 @@ use crate::ui::sidebar::CtxAction;
 
 use super::capture::input_after;
 
-/// HYLKI_SHOWCASE_SHORTCUTS=<height> opens the shortcut list at
+/// TEGAMI_SHOWCASE_SHORTCUTS=<height> opens the shortcut list at
 /// 4 s, that tall, so all of it fits a capture (with
-/// HYLKI_SHOWCASE_TOP).
+/// TEGAMI_SHOWCASE_TOP).
 pub(super) fn stage_shortcuts(sender: &ComponentSender<AppModel>) {
-    if let Some(h) = std::env::var("HYLKI_SHOWCASE_SHORTCUTS")
+    if let Some(h) = std::env::var("TEGAMI_SHOWCASE_SHORTCUTS")
         .ok()
         .and_then(|v| v.parse::<i32>().ok())
     {
@@ -37,11 +37,11 @@ pub(super) fn stage_shortcuts(sender: &ComponentSender<AppModel>) {
     }
 }
 
-/// HYLKI_SHOWCASE_ACCOUNT=new[:<provider label>] opens a blank account
+/// TEGAMI_SHOWCASE_ACCOUNT=new[:<provider label>] opens a blank account
 /// editor a beat after the Settings window (with
-/// HYLKI_SHOWCASE_SETTINGS), so the editor itself can be captured.
+/// TEGAMI_SHOWCASE_SETTINGS), so the editor itself can be captured.
 pub(super) fn stage_new_account(sender: &ComponentSender<AppModel>) {
-    if let Some(rest) = std::env::var("HYLKI_SHOWCASE_ACCOUNT")
+    if let Some(rest) = std::env::var("TEGAMI_SHOWCASE_ACCOUNT")
         .ok()
         .and_then(|v| v.strip_prefix("new").map(str::to_string))
     {
@@ -50,11 +50,11 @@ pub(super) fn stage_new_account(sender: &ComponentSender<AppModel>) {
     }
 }
 
-/// HYLKI_SHOWCASE_ACCOUNT=N opens account N's editor a beat
-/// after the Settings window (with HYLKI_SHOWCASE_SETTINGS),
+/// TEGAMI_SHOWCASE_ACCOUNT=N opens account N's editor a beat
+/// after the Settings window (with TEGAMI_SHOWCASE_SETTINGS),
 /// so the editor itself can be captured.
 pub(super) fn stage_account_settings(sender: &ComponentSender<AppModel>) {
-    if let Some(Ok(n)) = std::env::var("HYLKI_SHOWCASE_ACCOUNT")
+    if let Some(Ok(n)) = std::env::var("TEGAMI_SHOWCASE_ACCOUNT")
         .ok()
         .map(|v| v.parse::<u32>())
     {
@@ -66,29 +66,29 @@ pub(super) fn stage_account_settings(sender: &ComponentSender<AppModel>) {
     }
 }
 
-/// HYLKI_SHOWCASE_EDITOR_DIRTY=1 types into the open account
+/// TEGAMI_SHOWCASE_EDITOR_DIRTY=1 types into the open account
 /// editor's Label field at 7s, so leaving an edited editor can
 /// be exercised without a keyboard.
 pub(super) fn stage_editor_dirty(sender: &ComponentSender<AppModel>) {
-    if std::env::var("HYLKI_SHOWCASE_EDITOR_DIRTY").is_ok() {
+    if std::env::var("TEGAMI_SHOWCASE_EDITOR_DIRTY").is_ok() {
         input_after(sender, 7, AppMsg::ShowcaseDirtyEditor);
     }
 }
 
-/// HYLKI_SHOWCASE_SETTINGS_GO=<category> picks that sidebar
+/// TEGAMI_SHOWCASE_SETTINGS_GO=<category> picks that sidebar
 /// category at 8s, exactly as a click on its row does.
 pub(super) fn stage_settings_go(sender: &ComponentSender<AppModel>) {
-    if let Ok(page) = std::env::var("HYLKI_SHOWCASE_SETTINGS_GO") {
+    if let Ok(page) = std::env::var("TEGAMI_SHOWCASE_SETTINGS_GO") {
         input_after(sender, 8, AppMsg::ShowSettingsPage(page));
     }
 }
 
-/// HYLKI_SHOWCASE_ADD_CONTACT=<address> opens Add to Contacts
+/// TEGAMI_SHOWCASE_ADD_CONTACT=<address> opens Add to Contacts
 /// for it at 6s and captures the dialog at 10s, beside the
-/// HYLKI_SHOWCASE file, so the books it offers can be checked.
+/// TEGAMI_SHOWCASE file, so the books it offers can be checked.
 #[allow(deprecated)] // adw::MessageDialog: AlertDialog would change how it looks
 pub(super) fn stage_add_contact(sender: &ComponentSender<AppModel>) {
-    if let Ok(addr) = std::env::var("HYLKI_SHOWCASE_ADD_CONTACT") {
+    if let Ok(addr) = std::env::var("TEGAMI_SHOWCASE_ADD_CONTACT") {
         input_after(sender, 6, AppMsg::AddContactAddr(addr));
         gtk::glib::timeout_add_seconds_local_once(10, move || {
             let tops = gtk::Window::toplevels();
@@ -96,7 +96,7 @@ pub(super) fn stage_add_contact(sender: &ComponentSender<AppModel>) {
                 .filter_map(|i| tops.item(i))
                 .filter_map(|o| o.downcast::<adw::MessageDialog>().ok())
                 .find(|d| d.is_visible());
-            match (dialog, std::env::var("HYLKI_SHOWCASE")) {
+            match (dialog, std::env::var("TEGAMI_SHOWCASE")) {
                 (Some(d), Ok(path)) => {
                     showcase_capture(d.upcast_ref(), &format!("{path}.contact.png"))
                 }
@@ -106,12 +106,12 @@ pub(super) fn stage_add_contact(sender: &ComponentSender<AppModel>) {
     }
 }
 
-/// HYLKI_SHOWCASE_DIALOG=save|discard|cancel answers whatever
+/// TEGAMI_SHOWCASE_DIALOG=save|discard|cancel answers whatever
 /// message dialog is on screen at 10s, captured first beside
-/// the HYLKI_SHOWCASE file.
+/// the TEGAMI_SHOWCASE file.
 #[allow(deprecated)] // adw::MessageDialog: AlertDialog would change how it looks
 pub(super) fn stage_dialog() {
-    if let Ok(answer) = std::env::var("HYLKI_SHOWCASE_DIALOG") {
+    if let Ok(answer) = std::env::var("TEGAMI_SHOWCASE_DIALOG") {
         gtk::glib::timeout_add_seconds_local_once(10, move || {
             let tops = gtk::Window::toplevels();
             let dialog = (0..tops.n_items())
@@ -120,7 +120,7 @@ pub(super) fn stage_dialog() {
                 .find(|d| d.is_visible());
             match dialog {
                 Some(d) => {
-                    if let Ok(path) = std::env::var("HYLKI_SHOWCASE") {
+                    if let Ok(path) = std::env::var("TEGAMI_SHOWCASE") {
                         showcase_capture(d.upcast_ref(), &format!("{path}.dialog.png"));
                     }
                     // Answering is what a button click emits; the
@@ -136,7 +136,7 @@ pub(super) fn stage_dialog() {
 }
 
 impl AppModel {
-    /// HYLKI_SHOWCASE_CONTACTS=list|new|group|search:<text>[@<n>]|filter:<n>|multi:<n>
+    /// TEGAMI_SHOWCASE_CONTACTS=list|new|group|search:<text>[@<n>]|filter:<n>|multi:<n>
     /// opens Contacts at 3s, and with "new" its editor for a new
     /// contact at 5s ("group": for a new group), or with "search:"
     /// types the text into its search
@@ -145,7 +145,7 @@ impl AppModel {
     /// turns on its nth "Show only" filter at 5s; "multi:"
     /// selects the first n entries at 5s.
     pub(super) fn stage_contacts(&self, sender: &ComponentSender<AppModel>) {
-        if let Ok(which) = std::env::var("HYLKI_SHOWCASE_CONTACTS") {
+        if let Ok(which) = std::env::var("TEGAMI_SHOWCASE_CONTACTS") {
             input_after(sender, 3, AppMsg::OpenContacts);
             let page = self.contacts_page.sender().clone();
             if which == "new" || which == "group" {

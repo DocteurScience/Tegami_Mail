@@ -28,7 +28,7 @@ const REFS_REPAIR_CHUNK: usize = 500;
 /// One step of the one-time References repair for the folder at the head of the
 /// queue (#21, #42).
 ///
-/// Messages indexed before Hylki asked for References hold only In-Reply-To,
+/// Messages indexed before Tegami Mail asked for References hold only In-Reply-To,
 /// which names the immediate parent — and for an incoming reply that parent is
 /// usually your own message in Sent, so the link points outside the folder and
 /// the reply starts a thread of its own. This asks the server for the one header

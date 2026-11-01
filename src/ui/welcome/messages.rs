@@ -15,7 +15,7 @@ pub(crate) struct WelcomePrefs {
     pub(crate) avatars: bool,
     pub(crate) threading: bool,
     /// The app icon picked from the gallery (an `app_icon::catalog` id), or
-    /// empty when nothing was picked over an icon set outside Hylki.
+    /// empty when nothing was picked over an icon set outside Tegami Mail.
     pub(crate) app_icon: String,
 }
 

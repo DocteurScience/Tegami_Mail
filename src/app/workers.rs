@@ -481,7 +481,7 @@ impl AppModel {
         // every account's slot but only spawn a worker for enabled ones — disabled
         // accounts simply have no worker (no sync, no sidebar presence). With no
         // accounts configured, the app is blank — the sample/demo data only appears
-        // when explicitly requested via HYLKI_DEMO (so removing all real accounts
+        // when explicitly requested via TEGAMI_DEMO (so removing all real accounts
         // doesn't fall back to fake content).
         if self.config.is_empty() {
             if demo_mode() {
@@ -759,7 +759,7 @@ impl AppModel {
 }
 
 /// Watch GNOME Online Accounts so a change there (account removed, Mail
-/// toggled) is reflected in Hylki live, no restart needed. The watcher
+/// toggled) is reflected in Tegami Mail live, no restart needed. The watcher
 /// debounces signal bursts and snapshots GOA on its own thread;
 /// reconciliation happens on GoaChanged.
 pub(super) fn watch_system_events(sender: &ComponentSender<AppModel>) {

@@ -1,13 +1,13 @@
 # Service marks
 
-The logos in this folder identify the cloud storage services Hylki can
+The logos in this folder identify the cloud storage services Tegami Mail can
 upload to. They are shown next to a service's name in Settings (the Service
 picker, the Cloud Storage list, the account editor) to say "this works with
 that service", and for nothing else.
 
-**They are not covered by Hylki's licence.** Each is a trademark of its
+**They are not covered by Tegami Mail's licence.** Each is a trademark of its
 owner and is used under that owner's brand guidelines, unmodified apart
-from being rendered to PNG at the size shown. Hylki is not affiliated with
+from being rendered to PNG at the size shown. Tegami Mail is not affiliated with
 or endorsed by any of them. Section 7(e) of the AGPLv3 lets the project
 decline to grant trademark rights, and it does: nothing here may be reused
 as if it were part of the AGPL-licensed work.

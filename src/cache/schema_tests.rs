@@ -19,7 +19,7 @@ impl TempDb {
             .unwrap()
             .as_nanos();
         TempDb(std::env::temp_dir().join(format!(
-            "hylki-schema-{name}-{}-{nanos}.db",
+            "tegami-schema-{name}-{}-{nanos}.db",
             std::process::id()
         )))
     }

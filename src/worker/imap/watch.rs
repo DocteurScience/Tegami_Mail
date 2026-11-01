@@ -256,7 +256,7 @@ async fn watch_session(
                 .as_secs()
                 .clamp(1, WATCH_VERIFY.as_secs())
         });
-        tracing::debug!(target: "hylki::imap", "> IDLE");
+        tracing::debug!(target: "tegami::imap", "> IDLE");
         let mut handle = sess.idle();
         match tokio::time::timeout(IDLE_START_TIMEOUT, handle.init()).await {
             Ok(Ok(())) => {}

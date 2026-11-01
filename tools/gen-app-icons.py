@@ -28,7 +28,7 @@ HICOLOR = ROOT / "data/icons/hicolor"
 # `default`, the beta its `.Devel` twin (GNOME's development-build styling:
 # the hazard stripe). These two are the gallery's "Default" entry, so they
 # get no alt/ PNG of their own; every other source is one gallery entry.
-SHIPPED = {"default": "co.hyprlab.Hylki", "default.Devel": "co.hyprlab.Hylki.Beta"}
+SHIPPED = {"default": "io.github.DocteurScience.TegamiMail", "default.Devel": "io.github.DocteurScience.TegamiMail.Beta"}
 
 
 def render_svg(svg: pathlib.Path, png: pathlib.Path, size: int) -> None:
@@ -72,6 +72,6 @@ for src in sorted(SRC.iterdir()):
             scalable = HICOLOR / f"scalable/apps/{app_id}.svg"
             scalable.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(src, scalable)
-        if app_id == "co.hyprlab.Hylki":
-            shutil.copyfile(HICOLOR / "512x512/apps/co.hyprlab.Hylki.png", ROOT / "data/repo/logo.png")
+        if app_id == "io.github.DocteurScience.TegamiMail":
+            shutil.copyfile(HICOLOR / "512x512/apps/io.github.DocteurScience.TegamiMail.png", ROOT / "data/repo/logo.png")
     print(f"{name:<28} <- {src.name}")

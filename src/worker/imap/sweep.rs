@@ -221,7 +221,7 @@ pub(super) async fn clean_lists_imap(
 /// can put them on the watch list. UIDNEXT (from the EXAMINE response)
 /// catches deliveries of already-read mail that the unseen count alone would
 /// miss. A folder with no baseline yet is recorded, not reported: everything
-/// that happened while Hylki was closed would otherwise look like fresh
+/// that happened while Tegami Mail was closed would otherwise look like fresh
 /// activity.
 pub(super) async fn refresh_unread_counts(
     account_id: u32,

@@ -21,8 +21,8 @@ const UNSENT: &[&str] = &[
 /// The attribute that numbers each run in a piece, and the one that stands
 /// in for an inline element's own attributes while it is away: an `href`
 /// full of tracking, a `style`, cost the user's allowance and say nothing.
-pub(super) const RUN_ATTR: &str = "data-hylki-run";
-pub(super) const ATTRS_ATTR: &str = "data-hylki-a";
+pub(super) const RUN_ATTR: &str = "data-tegami-run";
+pub(super) const ATTRS_ATTR: &str = "data-tegami-a";
 
 /// A message being translated where it stands (#327): its parsed document,
 /// the runs of text in it, and the pieces of HTML they are sent as.

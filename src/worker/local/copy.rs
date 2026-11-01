@@ -92,7 +92,7 @@ pub(in crate::worker) fn register_at(account_id: u32, account: &AccountConfig, r
         set_pending(account_id, 0);
         return;
     }
-    let ledger = root.join("hylki-copied").join(ledger_name(&account.email));
+    let ledger = root.join("tegami-copied").join(ledger_name(&account.email));
     let keys = read_ledger(&ledger);
     if let Ok(c) = Cache::open() {
         if c.local_copy_count(account_id) < keys.len() {

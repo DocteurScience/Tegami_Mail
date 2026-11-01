@@ -102,7 +102,7 @@ impl AppModel {
                 // change is saved and announced.
                 if config::load_renderer() != renderer {
                     config::save_renderer(&renderer);
-                    self.notice(i18n("The renderer applies the next time Hylki starts."));
+                    self.notice(i18n("The renderer applies the next time Tegami Mail starts."));
                 }
             }
 
@@ -111,7 +111,7 @@ impl AppModel {
                 // change is saved and announced.
                 if config::load_language() != code {
                     config::save_language(&code);
-                    self.notice(i18n("The language applies the next time Hylki starts."));
+                    self.notice(i18n("The language applies the next time Tegami Mail starts."));
                 }
             }
 
@@ -212,7 +212,7 @@ impl AppModel {
 
             PrefOutput::SetAppIcon(id) => {
                 // Picking the stored choice again still changes the desktop
-                // when it replaces an icon set outside Hylki (#252).
+                // when it replaces an icon set outside Tegami Mail (#252).
                 let replaces_custom = crate::desktop::app_icon::custom_icon().is_some();
                 let id = crate::desktop::app_icon::set(&id);
                 if self.app_icon != id || replaces_custom {

@@ -192,7 +192,7 @@ impl IndexQueue for GraphState {
 
 /// Per-account state the Graph loop threads through its handlers.
 pub(super) struct GraphState {
-    /// Hylki folder path → (folder id, Graph folder id), from the last listing.
+    /// Tegami Mail folder path → (folder id, Graph folder id), from the last listing.
     pub(super) folders: std::collections::HashMap<String, (u32, String)>,
     /// Message uid (hashed Graph id) → Graph message id.
     pub(super) uids: std::collections::HashMap<u32, String>,

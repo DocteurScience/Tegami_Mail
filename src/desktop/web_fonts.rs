@@ -32,7 +32,7 @@ use webkit6::prelude::*;
 /// The config the Flatpak ships (see the manifest): the runtime's own
 /// fonts and settings, with nothing from the host, not even its font
 /// folders or caches (see the file itself).
-const FALLBACK_CONF: &str = "/app/share/hylki/fontconfig/fallback.conf";
+const FALLBACK_CONF: &str = "/app/share/tegami/fontconfig/fallback.conf";
 
 /// How long a document may take before the fonts are suspected. Well past a
 /// normal render, which is milliseconds; a message waiting on a slow remote
@@ -45,7 +45,7 @@ const PROBE_TIMEOUT: Duration = Duration::from_secs(8);
 /// A page that cannot finish loading without its fonts: the script lays the
 /// text out before the load can complete, whether or not the view is shown.
 const PROBE_HTML: &str = "<!doctype html><html><head><meta charset=\"utf-8\"></head><body>\
-<p style=\"font-family:sans-serif\">Hylki Aa 0123</p>\
+<p style=\"font-family:sans-serif\">Tegami Mail Aa 0123</p>\
 <p style=\"font-family:serif\">Aa</p>\
 <p style=\"font-family:monospace\">Aa</p>\
 <p style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif\">Aa</p>\
@@ -81,11 +81,11 @@ thread_local! {
     static GENERATION: Cell<u64> = const { Cell::new(0) };
 }
 
-/// The fallback config, when this build has one. `HYLKI_FONT_FALLBACK_CONF`
+/// The fallback config, when this build has one. `TEGAMI_FONT_FALLBACK_CONF`
 /// names another file: the AppImage's, which carries its own fonts and sets
 /// it in the bundle's environment, or one for trying the whole path by hand.
 fn fallback_conf() -> Option<String> {
-    if let Ok(path) = std::env::var("HYLKI_FONT_FALLBACK_CONF") {
+    if let Ok(path) = std::env::var("TEGAMI_FONT_FALLBACK_CONF") {
         return std::path::Path::new(&path).is_file().then_some(path);
     }
     (crate::desktop::platform::is_flatpak() && std::path::Path::new(FALLBACK_CONF).is_file())
@@ -107,13 +107,13 @@ fn runtime_key() -> String {
         .unwrap_or_else(|| "host".to_string())
 }
 
-/// Debug hook: `HYLKI_TEST_FONT_HANG=1` makes every watched document and the
+/// Debug hook: `TEGAMI_TEST_FONT_HANG=1` makes every watched document and the
 /// probe hang the way the fonts do, until the fallback is in use, so the
 /// whole detection and recovery can be run on a machine without the fault.
 /// A watched document is simply not loaded (the reader's CSP would refuse a
 /// looping script); the probe runs one, so its process really spins.
 fn simulated_hang() -> bool {
-    std::env::var_os("HYLKI_TEST_FONT_HANG").is_some() && !fallback_active()
+    std::env::var_os("TEGAMI_TEST_FONT_HANG").is_some() && !fallback_active()
 }
 
 fn fallback_active() -> bool {
@@ -319,7 +319,7 @@ fn probe(done: impl FnOnce(bool) + 'static) {
             f(true);
         });
     }
-    view.load_html(&probe_html(), Some("https://hylki-font-probe.localhost/"));
+    view.load_html(&probe_html(), Some("https://tegami-font-probe.localhost/"));
     glib::timeout_add_local_once(PROBE_TIMEOUT, move || {
         let f = done.borrow_mut().take();
         view.terminate_web_process();

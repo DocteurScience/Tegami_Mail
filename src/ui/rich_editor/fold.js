@@ -2,34 +2,34 @@
   /* The quoted original of a reply or forward, folded (#549): the reading
      pane beside the composer already shows it, and it is sent whether it
      is shown or not. The button is furniture, like the resize frame:
-     `data-hylki-ui`, so nothing the document hands back carries it, and
+     `data-tegami-ui`, so nothing the document hands back carries it, and
      contenteditable=false, so the caret passes over it. Folded, it stands
      where the quote was, right after it, and the stylesheet hides the two
      blocks before it (the "wrote:" line and the quote) while <html> has
-     `hylki-folded`, a class outside the body the message is read from.
+     `tegami-folded`, a class outside the body the message is read from.
      Open, it moves above the "wrote:" line, where the reader puts its own
      button, so a long quote folds again from its top. Runs after the plain
      view has flattened the body, where the quote is the block after its
      "wrote:" line. */
-  if(!window.__hylkiFoldQuote) return;
+  if(!window.__tegamiFoldQuote) return;
   document.addEventListener('DOMContentLoaded', function(){
     var b = document.body, attr = null;
     for(var n = b.firstElementChild; n; n = n.nextElementSibling){
-      if(n.classList.contains('hylki-quote-attr')){ attr = n; break; }
+      if(n.classList.contains('tegami-quote-attr')){ attr = n; break; }
     }
     var quote = attr && attr.nextElementSibling;
-    if(!quote || quote.hasAttribute('data-hylki-ui')) return;
+    if(!quote || quote.hasAttribute('data-tegami-ui')) return;
     var root = document.documentElement;
-    var tips = window.__hylkiFoldTips || ['', ''];
+    var tips = window.__tegamiFoldTips || ['', ''];
     var btn = document.createElement('div');
-    btn.setAttribute('data-hylki-ui', 'fold');
+    btn.setAttribute('data-tegami-ui', 'fold');
     btn.setAttribute('contenteditable', 'false');
-    function folded(){ return root.classList.contains('hylki-folded'); }
+    function folded(){ return root.classList.contains('tegami-folded'); }
     /* `move` puts the button where it belongs for `on`. An edit that
        unfolds leaves it be: moving it inside the selection being edited
        shifts the selection. */
     function fold(on, move){
-      root.classList.toggle('hylki-folded', on);
+      root.classList.toggle('tegami-folded', on);
       btn.title = tips[on ? 0 : 1];
       if(move){ if(on) quote.after(btn); else attr.before(btn); }
     }
@@ -64,7 +64,7 @@
        right under its "wrote:" line, there is nothing left to fold. */
     document.addEventListener('input', function(){
       if(btn.isConnected && attr.isConnected && attr.nextElementSibling === quote) return;
-      root.classList.remove('hylki-folded');
+      root.classList.remove('tegami-folded');
       btn.remove();
     });
   });

@@ -31,7 +31,7 @@ pub(super) struct ServerSearch {
 /// of the bodies saved before the index, a batch at a time on another
 /// thread once the first syncs are under way.
 pub(super) fn prepare_text_search() {
-    if std::env::var_os("HYLKI_DEMO").is_some() {
+    if std::env::var_os("TEGAMI_DEMO").is_some() {
         return;
     }
     crate::ui::message_list::load_address_names();

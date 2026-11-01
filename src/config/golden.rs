@@ -1,7 +1,7 @@
 //! Golden-file assertions for tests that pin an on-disk format.
 //!
 //! The expected text lives in a file beside the code (`testdata/`), so a
-//! change to what Hylki writes shows up as a diff of that file. A missing
+//! change to what Tegami Mail writes shows up as a diff of that file. A missing
 //! golden file is written from the actual output and the test fails once,
 //! which is how a new one is made.
 

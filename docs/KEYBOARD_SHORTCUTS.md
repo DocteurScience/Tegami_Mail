@@ -1,6 +1,6 @@
 # Keyboard shortcuts
 
-Hylki can be driven from the keyboard without holding a modifier, in the style
+Tegami Mail can be driven from the keyboard without holding a modifier, in the style
 of Gmail and Geary. The scheme is on for a new install, and **Settings →
 System → Single-key shortcuts** switches it off. An install that had it off
 keeps it off until it is switched on there.
@@ -188,7 +188,7 @@ These work with or without single-key shortcuts too:
 | <kbd>Ctrl+Alt+1</kbd> <kbd>Ctrl+Alt+2</kbd> <kbd>Ctrl+Alt+3</kbd> | Reading pane right of the list, below it, or off |
 | <kbd>Ctrl+,</kbd> | Open Settings |
 | <kbd>Ctrl+W</kbd> | Close the window; mail keeps syncing in the background. In Settings, a message window or a composer window, closes that window |
-| <kbd>Ctrl+Q</kbd> | Quit Hylki |
+| <kbd>Ctrl+Q</kbd> | Quit Tegami Mail |
 
 In the composer, <kbd>Ctrl+Z</kbd> and <kbd>Ctrl+Shift+Z</kbd> undo and redo
 your typing instead, and <kbd>Ctrl+B</kbd>, <kbd>Ctrl+I</kbd> and
@@ -220,7 +220,7 @@ scroll wheel over the message; <kbd>Ctrl+0</kbd> puts it back to
 the default. Only the message scales, not the header or the toolbar; a chip
 beside the Reader View switch shows the percentage while it is away from
 the default, and a click on it goes back there.
-The zoom stays as set from message to message until Hylki is next started,
+The zoom stays as set from message to message until Tegami Mail is next started,
 which begins at the default from **Settings → Reading → Default zoom**.
 
 The same keys, and <kbd>Ctrl</kbd> with the scroll wheel over the body, zoom
@@ -231,7 +231,7 @@ the percentage while it is not 100%. A click on the chip goes back to 100%.
 The first composer opens at **Settings → Composing → Default zoom**, which
 by default is the same as **Settings → Reading → Default zoom**, so text is
 written at the size it is read at. The next one opens at the size the last
-was left at until Hylki is next started or the setting is changed.
+was left at until Tegami Mail is next started or the setting is changed.
 
 Keys never fire while you are typing: whatever has focus gets first refusal, so
 "archive" typed into the search box searches for it.

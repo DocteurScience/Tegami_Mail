@@ -17,7 +17,7 @@ use relm4::prelude::*;
 pub(super) fn sig_html(sig: &str, dashes: bool) -> String {
     let body = rich_editor::signature_to_html(sig);
     let dashes = if dashes { "-- <br>" } else { "" };
-    format!("<div class=\"hylki-sig\"><br>{dashes}{body}</div>")
+    format!("<div class=\"tegami-sig\"><br>{dashes}{body}</div>")
 }
 
 /// The signature as it reads in a source-mode body: Markdown (under its
@@ -83,7 +83,7 @@ impl Compose {
                  var i=o?v.lastIndexOf(o):-1;\
                  if(i<0&&p){{i=v.lastIndexOf(p);if(i>=0)o=p;}}\
                  if(i>=0){{v=v.slice(0,i)+n+v.slice(i+o.length);}}else{{{place}}}\
-                 t.value=v;window.__hylkiDirty=true;}})()",
+                 t.value=v;window.__tegamiDirty=true;}})()",
                 js_escape(&old),
                 js_escape(&old_other),
                 js_escape(&new)
@@ -102,12 +102,12 @@ impl Compose {
             // above the quoted original or at the end (#237).
             let anchor = self.rich_sig_anchor();
             let js = format!(
-                "(function(){{var s=[].filter.call(document.querySelectorAll('.hylki-sig'),\
+                "(function(){{var s=[].filter.call(document.querySelectorAll('.tegami-sig'),\
                  function(x){{return !x.closest('blockquote');}})[0];\
                  var h='{}';\
                  if(s){{if(h){{s.outerHTML=h;}}else{{s.remove();}}}}\
                  else if(h){{{anchor}}}\
-                 window.__hylkiPlainFix&&window.__hylkiPlainFix();}})()",
+                 window.__tegamiPlainFix&&window.__tegamiPlainFix();}})()",
                 rich_editor::js_escape(&replacement)
             );
             self.editor.run_js(&js);
@@ -126,7 +126,7 @@ impl Compose {
         match (self.signature_position, kind) {
             (SignaturePosition::BelowQuote, _) => "v=v+n;",
             (SignaturePosition::AboveQuote, SourceKind::Html) => {
-                "var q=v.search(/<p class=\"hylki-quote-attr\"|<blockquote/);\
+                "var q=v.search(/<p class=\"tegami-quote-attr\"|<blockquote/);\
                  if(q<0){v=v+n;}else{v=v.slice(0,q).replace(/\\s*$/,'')+n+v.slice(q);}"
             }
             (SignaturePosition::AboveQuote, SourceKind::Markdown) => {
@@ -146,7 +146,7 @@ impl Compose {
         match self.signature_position {
             SignaturePosition::AboveQuote => {
                 "var b=document.body;var q=null;\
-                 var cands=b.querySelectorAll('.hylki-quote-attr,blockquote');\
+                 var cands=b.querySelectorAll('.tegami-quote-attr,blockquote');\
                  for(var i=0;i<cands.length;i++){var t=cands[i];\
                  while(t.parentNode&&t.parentNode!==b)t=t.parentNode;\
                  if(t.parentNode===b&&(!q||(t.compareDocumentPosition(q)&Node.DOCUMENT_POSITION_FOLLOWING)))q=t;}\
@@ -183,7 +183,7 @@ if(where==='start'){v=n.replace(/^\s+/,'')+'\n'+v;a=-1;}
 else if(where==='end'){v=v.replace(/\s*$/,'')+n;a=-1;}
 else if(a>=0){v=v.slice(0,a)+n+v.slice(a);}
 else{@PLACE@}
-t.value=v;if(a>=0){t.selectionStart=t.selectionEnd=a;}window.__hylkiDirty=true;})()"#
+t.value=v;if(a>=0){t.selectionStart=t.selectionEnd=a;}window.__tegamiDirty=true;})()"#
                 // The signature text goes in last, so nothing in it is
                 // taken for a placeholder.
                 .replace("@WHERE@", &format!("'{place_js}'"))
@@ -199,7 +199,7 @@ t.value=v;if(a>=0){t.selectionStart=t.selectionEnd=a;}window.__hylkiDirty=true;}
         // stands as a block of its own between the two halves; an empty
         // line gives up its place to it.
         let js = r#"(function(){var b=document.body,h=@SIG@,where=@WHERE@;
-var olds=[].filter.call(b.querySelectorAll('.hylki-sig'),function(s){return !s.closest('blockquote');});
+var olds=[].filter.call(b.querySelectorAll('.tegami-sig'),function(s){return !s.closest('blockquote');});
 var sel=window.getSelection(),r=null;
 if(where==='cursor'&&sel.rangeCount){r=sel.getRangeAt(0).cloneRange();r.collapse(false);if(!b.contains(r.startContainer)||r.startContainer===b&&b.childNodes.length===0)r=null;}
 if(r){for(var k=0;k<olds.length;k++){if(olds[k].contains(r.startContainer)){r.setStartBefore(olds[k]);r.collapse(true);}}}
@@ -219,8 +219,8 @@ if(where==='start'){b.insertBefore(sig,b.firstChild);}
 else if(where==='end'){b.appendChild(sig);}
 else if(r){b.insertBefore(sig,spot);var c=document.createRange();c.setStartBefore(sig);c.collapse(true);sel.removeAllRanges();sel.addRange(c);}
 else{@ANCHOR@}
-window.__hylkiPlainFix&&window.__hylkiPlainFix();
-window.__hylkiDirty=true;})()"#
+window.__tegamiPlainFix&&window.__tegamiPlainFix();
+window.__tegamiDirty=true;})()"#
             .replace("@WHERE@", &format!("'{place_js}'"))
             .replace("@ANCHOR@", self.rich_sig_anchor())
             .replace("@SIG@", &format!("'{}'", rich_editor::js_escape(&sig_html(&sig, self.sig_dashes))));

@@ -78,7 +78,7 @@ impl ToolbarItem {
             ToolbarItem::Reply => "mail-reply-sender-symbolic",
             ToolbarItem::ReplyAll => "mail-reply-all-symbolic",
             ToolbarItem::Forward => "mail-forward-symbolic",
-            ToolbarItem::Star => "hylki-non-starred-symbolic",
+            ToolbarItem::Star => "tegami-non-starred-symbolic",
             ToolbarItem::Archive => "mail-archive-symbolic",
             ToolbarItem::Snooze => "alarm-symbolic",
             ToolbarItem::Delete => "user-trash-symbolic",
@@ -241,7 +241,7 @@ pub(super) struct ToolbarFile {
     pub(super) left: Vec<String>,
     #[serde(default)]
     pub(super) right: Vec<String>,
-    /// Every button the Hylki that wrote the file had, shown or not, so a
+    /// Every button the Tegami Mail that wrote the file had, shown or not, so a
     /// newer one's buttons are told from the ones put away (#527).
     #[serde(default)]
     pub(super) known: Vec<String>,
@@ -330,7 +330,7 @@ fn toolbar_path() -> Option<PathBuf> {
 }
 
 /// The saved reader toolbar layout, or the default when there is none.
-/// Unknown names (a newer Hylki's buttons) are skipped, not fatal.
+/// Unknown names (a newer Tegami Mail's buttons) are skipped, not fatal.
 pub(crate) fn load_reader_toolbar() -> ReaderToolbar {
     match read_toml::<ToolbarFile>(toolbar_path()) {
         Some(file) => file.layout(),

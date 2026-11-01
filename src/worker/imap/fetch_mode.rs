@@ -42,7 +42,7 @@ pub(super) fn seed_fetch_mode(account_id: u32, email: &str) -> bool {
     }
     if !use_envelope || rejected {
         tracing::info!(
-            target: "hylki::imap",
+            target: "tegami::imap",
             "summary fetch: starting with envelope={use_envelope} previews={} (remembered)",
             !rejected
         );
@@ -108,7 +108,7 @@ pub(super) fn step_fetch_mode(account_id: u32, use_envelope: &mut bool) -> bool 
         (false, false) => return false,
     }
     tracing::info!(
-        target: "hylki::imap",
+        target: "tegami::imap",
         "summary fetch: reply unreadable; retrying with envelope={} previews={}",
         *use_envelope,
         inline_previews_wanted(account_id)

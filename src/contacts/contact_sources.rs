@@ -1,9 +1,9 @@
-//! Where Hylki finds contacts, for Settings → Contacts: the Hylki book, the
+//! Where Tegami Mail finds contacts, for Settings → Contacts: the Tegami Mail book, the
 //! Evolution Data Server books on this computer, the GNOME Online Accounts
 //! that keep contacts, CardDAV accounts and LDAP directories, each one row,
 //! grouped by the account its books belong to.
 //!
-//! Each can be switched off for Hylki alone. The switch is Hylki's own,
+//! Each can be switched off for Tegami Mail alone. The switch is Tegami Mail's own,
 //! kept in `contacts.toml`, and leaves GNOME and Evolution as they are: a
 //! book switched off is left out of Contacts, the composer's suggestions,
 //! avatars, the filters and syncing. An account switched off takes all its
@@ -17,18 +17,18 @@ use serde::{Deserialize, Serialize};
 
 use crate::i18n::{i18n, i18n_f, ni18n_f};
 
-/// The ID of the Hylki book in the switches, and its book UID.
-const HYLKI: &str = crate::contacts::local::LOCAL_BOOK_UID;
+/// The ID of the Tegami Mail book in the switches, and its book UID.
+const TEGAMI: &str = crate::contacts::local::LOCAL_BOOK_UID;
 /// The ID that stands for the EDS books on this computer, which no source
 /// of their own groups.
 const THIS_COMPUTER: &str = "eds-local";
 
 #[derive(Debug, Default, Serialize, Deserialize)]
 struct SwitchFile {
-    /// The sources and books switched off for Hylki, by ID.
+    /// The sources and books switched off for Tegami Mail, by ID.
     #[serde(default)]
     off: Vec<String>,
-    /// The names given to address books in Hylki, by book UID, in place of
+    /// The names given to address books in Tegami Mail, by book UID, in place of
     /// the book's own.
     #[serde(default)]
     names: std::collections::BTreeMap<String, String>,
@@ -50,12 +50,12 @@ fn write_file(file: &SwitchFile) -> Result<(), String> {
     crate::config::write_private_file(&path, &text).map_err(|e| e.to_string())
 }
 
-/// The names given to address books in Hylki, by book UID.
+/// The names given to address books in Tegami Mail, by book UID.
 pub(crate) fn names() -> HashMap<String, String> {
     read_file().names.into_iter().collect()
 }
 
-/// Give an address book a name of its own in Hylki, or (`None`, or a
+/// Give an address book a name of its own in Tegami Mail, or (`None`, or a
 /// blank one) go back to the book's own name. GNOME and Evolution keep
 /// theirs.
 pub(crate) fn set_name(uid: &str, name: Option<&str>) -> Result<(), String> {
@@ -70,18 +70,18 @@ pub(crate) fn set_name(uid: &str, name: Option<&str>) -> Result<(), String> {
 fn switch_path() -> Option<PathBuf> {
     Some(
         crate::config::config_base()?
-            .join("hylki")
+            .join("tegami")
             .join("contacts.toml"),
     )
 }
 
-/// The IDs switched off for Hylki: sources (an account, a directory, the
-/// Hylki book, [`THIS_COMPUTER`]) and single books.
+/// The IDs switched off for Tegami Mail: sources (an account, a directory, the
+/// Tegami Mail book, [`THIS_COMPUTER`]) and single books.
 pub(crate) fn off() -> HashSet<String> {
     read_file().off.into_iter().collect()
 }
 
-/// Switch a source or a book on or off for Hylki.
+/// Switch a source or a book on or off for Tegami Mail.
 pub(crate) fn set_off(id: &str, is_off: bool) -> Result<(), String> {
     let mut ids = off();
     if is_off {
@@ -96,9 +96,9 @@ pub(crate) fn set_off(id: &str, is_off: bool) -> Result<(), String> {
     write_file(&file)
 }
 
-/// Whether the Hylki book is used.
-pub(crate) fn hylki_used() -> bool {
-    !off().contains(HYLKI)
+/// Whether the Tegami Mail book is used.
+pub(crate) fn tegami_used() -> bool {
+    !off().contains(TEGAMI)
 }
 
 /// The source an EDS book is grouped under: the collection (account) it
@@ -135,7 +135,7 @@ pub(crate) fn group_of(uid: &str, sources: &HashMap<String, String>) -> String {
     }
 }
 
-/// Whether an EDS book is used by Hylki: neither it nor its account is
+/// Whether an EDS book is used by Tegami Mail: neither it nor its account is
 /// switched off. `sources` is the registry's UID → key file.
 pub(crate) fn book_used(
     uid: &str,
@@ -148,11 +148,11 @@ pub(crate) fn book_used(
 /// What kind of source a row is.
 #[derive(Debug, Clone)]
 pub(crate) enum Kind {
-    Hylki,
+    Tegami Mail,
     ThisComputer,
     /// An account in GNOME Online Accounts: changed in GNOME Settings.
     Online,
-    /// A CardDAV collection made in Hylki or Evolution.
+    /// A CardDAV collection made in Tegami Mail or Evolution.
     CardDav(crate::contacts::carddav::Account),
     Ldap(crate::contacts::directory::Directory),
     /// Any other EDS account or book (Evolution's Exchange, a lone CardDAV
@@ -164,11 +164,11 @@ pub(crate) enum Kind {
 #[derive(Debug, Clone)]
 pub(crate) struct Book {
     pub(crate) uid: String,
-    /// The book's own name; [`Book::shown`] is the one Hylki uses.
+    /// The book's own name; [`Book::shown`] is the one Tegami Mail uses.
     pub(crate) name: String,
-    /// The name given to it in Hylki, if any.
+    /// The name given to it in Tegami Mail, if any.
     given: Option<String>,
-    /// Switched on for Hylki (its own switch; the source's is apart).
+    /// Switched on for Tegami Mail (its own switch; the source's is apart).
     pub(crate) on: bool,
 }
 
@@ -178,17 +178,17 @@ pub(crate) struct Source {
     /// The ID its switch is kept under.
     pub(crate) id: String,
     pub(crate) kind: Kind,
-    /// The name it is listed by: the one given to it in Hylki, else its own.
+    /// The name it is listed by: the one given to it in Tegami Mail, else its own.
     pub(crate) title: String,
     /// Its own name, which the given one stands in for.
     pub(crate) own_title: String,
-    /// The name given to it in Hylki, if any.
+    /// The name given to it in Tegami Mail, if any.
     given: Option<String>,
     /// The second line: what it is and holds.
     pub(crate) detail: String,
     /// The brand mark, or an icon name when there is none.
     pub(crate) mark: &'static str,
-    /// Where it is set up: "Hylki", "GOA" or "Evolution".
+    /// Where it is set up: "Tegami Mail", "GOA" or "Evolution".
     pub(crate) origin: Origin,
     pub(crate) books: Vec<Book>,
     /// The source's switch.
@@ -201,7 +201,7 @@ pub(crate) struct Source {
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub(crate) enum Origin {
-    Hylki,
+    Tegami Mail,
     Online,
     Evolution,
 }
@@ -253,10 +253,10 @@ fn books_line(books: &[Book]) -> String {
     }
 }
 
-/// Every source Hylki can read contacts from, the Hylki book first, then
+/// Every source Tegami Mail can read contacts from, the Tegami Mail book first, then
 /// this computer's books, then the accounts by name, and whether Evolution
 /// Data Server answered. Blocking: it asks EDS, GNOME Online Accounts and
-/// the keyring. Without EDS, only the Hylki book.
+/// the keyring. Without EDS, only the Tegami Mail book.
 pub(crate) fn list_with_eds() -> (Vec<Source>, bool) {
     let sources = list();
     let eds = crate::contacts::registry_sources().is_some();
@@ -264,7 +264,7 @@ pub(crate) fn list_with_eds() -> (Vec<Source>, bool) {
 }
 
 impl Book {
-    /// The name Hylki uses: the one given to it, else its own.
+    /// The name Tegami Mail uses: the one given to it, else its own.
     pub(crate) fn shown(&self) -> &str {
         self.given.as_deref().unwrap_or(if self.name.is_empty() {
             &self.uid
@@ -274,7 +274,7 @@ impl Book {
     }
 }
 
-/// [`list_with_eds`] with the names given in Hylki to the accounts and
+/// [`list_with_eds`] with the names given in Tegami Mail to the accounts and
 /// books in place of their own.
 pub(crate) fn list() -> Vec<Source> {
     let names = names();
@@ -292,11 +292,11 @@ pub(crate) fn list() -> Vec<Source> {
     sources
 }
 
-/// The sources as EDS and GNOME Online Accounts name them: the Hylki book
+/// The sources as EDS and GNOME Online Accounts name them: the Tegami Mail book
 /// first, then every account, book group and directory by name.
 fn list_own() -> Vec<Source> {
     let off = off();
-    let mut out = vec![hylki_source(&off)];
+    let mut out = vec![tegami_source(&off)];
     let Some(registry) = crate::contacts::registry_sources() else {
         return out;
     };
@@ -357,25 +357,25 @@ fn list_own() -> Vec<Source> {
     out
 }
 
-/// The Hylki book's row.
-fn hylki_source(off: &HashSet<String>) -> Source {
+/// The Tegami Mail book's row.
+fn tegami_source(off: &HashSet<String>) -> Source {
     let count = crate::contacts::local::count();
     Source {
         own_title: String::new(),
         given: None,
-        id: HYLKI.to_string(),
-        kind: Kind::Hylki,
-        title: i18n("Hylki Address Book"),
+        id: TEGAMI.to_string(),
+        kind: Kind::Tegami Mail,
+        title: i18n("Tegami Mail Address Book"),
         detail: ni18n_f(
-            "{n} contact, kept by Hylki",
-            "{n} contacts, kept by Hylki",
+            "{n} contact, kept by Tegami Mail",
+            "{n} contacts, kept by Tegami Mail",
             count as u32,
             &[("n", &count.to_string())],
         ),
         mark: "x-office-address-book-symbolic",
-        origin: Origin::Hylki,
+        origin: Origin::Tegami Mail,
         books: Vec::new(),
-        on: !off.contains(HYLKI),
+        on: !off.contains(TEGAMI),
         paused: None,
         status: None,
     }
@@ -530,8 +530,8 @@ fn carddav_source(
         _ if books.is_empty() => i18n("Looking for address books…"),
         _ => format!("CardDAV · {}", books_line(&books)),
     };
-    let origin = if is_hylki_made(data) {
-        Origin::Hylki
+    let origin = if is_tegami_made(data) {
+        Origin::Tegami Mail
     } else {
         Origin::Evolution
     };
@@ -602,8 +602,8 @@ fn ldap_sources(off: &HashSet<String>) -> Vec<Source> {
                 title: dir.title(),
                 detail: failed.unwrap_or(detail),
                 mark: "network-server-symbolic",
-                origin: if is_hylki_made_ldap(&dir) {
-                    Origin::Hylki
+                origin: if is_tegami_made_ldap(&dir) {
+                    Origin::Tegami Mail
                 } else {
                     Origin::Evolution
                 },
@@ -617,22 +617,22 @@ fn ldap_sources(off: &HashSet<String>) -> Vec<Source> {
         .collect()
 }
 
-/// Whether Hylki made this collection: Evolution's carry keys Hylki never
-/// writes, and nothing else tells them apart. Hylki's ask for address books
+/// Whether Tegami Mail made this collection: Evolution's carry keys Tegami Mail never
+/// writes, and nothing else tells them apart. Tegami Mail's ask for address books
 /// only, with no calendar or mail address.
-fn is_hylki_made(data: &str) -> bool {
+fn is_tegami_made(data: &str) -> bool {
     crate::desktop::platform::keyfile(data).is_some_and(|kf| {
         kf.boolean("Collection", "CalendarEnabled").ok() == Some(false)
             && kf.boolean("Collection", "MailEnabled").ok() == Some(false)
     })
 }
 
-/// A directory Hylki set up keeps its password in Hylki's keyring entry.
-fn is_hylki_made_ldap(dir: &crate::contacts::directory::Directory) -> bool {
+/// A directory Tegami Mail set up keeps its password in Tegami Mail's keyring entry.
+fn is_tegami_made_ldap(dir: &crate::contacts::directory::Directory) -> bool {
     crate::contacts::directory::has_password(dir)
 }
 
-/// Switch a source on or off for Hylki. Turning on one EDS itself has off
+/// Switch a source on or off for Tegami Mail. Turning on one EDS itself has off
 /// (a CardDAV account or directory switched off before this page kept its
 /// own switch) switches it on there too. Blocking.
 pub(crate) fn switch_source(source: &Source, on: bool) -> Result<(), String> {

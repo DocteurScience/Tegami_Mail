@@ -36,7 +36,7 @@ pub(crate) struct IconChoice {
 /// The id meaning "whatever this build ships".
 pub(crate) const DEFAULT_ID: &str = "default";
 /// Bumped when a release's new default icon is to replace every existing
-/// choice once (1.23's blue bird envelope was generation 1; the Hylki
+/// choice once (1.23's blue bird envelope was generation 1; the Tegami Mail
 /// envelope of 1.35, the first release under the new name, was 2; the
 /// opened envelope of 1.40 is 3): the first start on such a release resets
 /// the stored choice to the default, and records the generation so a
@@ -46,10 +46,10 @@ const ICON_GENERATION: u32 = 3;
 /// The icon this build installs under its app ID.
 #[cfg(not(feature = "beta"))]
 const DEFAULT_PNG: &[u8] =
-    include_bytes!("../../data/icons/hicolor/512x512/apps/co.hyprlab.Hylki.png");
+    include_bytes!("../../data/icons/hicolor/512x512/apps/io.github.DocteurScience.TegamiMail.png");
 #[cfg(feature = "beta")]
 const DEFAULT_PNG: &[u8] =
-    include_bytes!("../../data/icons/hicolor/512x512/apps/co.hyprlab.Hylki.Beta.png");
+    include_bytes!("../../data/icons/hicolor/512x512/apps/io.github.DocteurScience.TegamiMail.Beta.png");
 
 /// The gallery, in display order: the build's own icon (the opened
 /// envelope, so it has no entry of its own), the same envelope on a blue,
@@ -117,7 +117,7 @@ pub(crate) fn png_for(id: &str) -> &'static [u8] {
 }
 
 /// The image the tray's App icon option draws: the icon the dock shows.
-/// That is the launcher's own icon when somebody set one outside Hylki
+/// That is the launcher's own icon when somebody set one outside Tegami Mail
 /// (#252), a file or a name in the icon theme, and otherwise the gallery
 /// choice. An icon that cannot be read falls back to the choice.
 pub(crate) fn tray_image(id: &str) -> std::borrow::Cow<'static, [u8]> {
@@ -128,7 +128,7 @@ pub(crate) fn tray_image(id: &str) -> std::borrow::Cow<'static, [u8]> {
     let path = if std::path::Path::new(&icon).is_absolute() {
         Some(std::path::PathBuf::from(&icon))
     } else {
-        // In the desktop's icon folders: Hylki's own search leaves them out.
+        // In the desktop's icon folders: Tegami Mail's own search leaves them out.
         crate::desktop::icon_theme::desktop_icon_theme()
             .lookup_icon(
                 &icon,
@@ -151,10 +151,10 @@ pub(crate) fn tray_image(id: &str) -> std::borrow::Cow<'static, [u8]> {
 /// (the default; the wizard lets a fresh install pick). The override on
 /// disk is brought in line either way, so a reinstall (or a changed
 /// default) never silently swaps the icon someone chose, unless the
-/// launcher carries an icon set outside Hylki: that one is left alone
+/// launcher carries an icon set outside Tegami Mail: that one is left alone
 /// until a pick in the app replaces it (#252).
 pub(crate) fn init_on_startup() -> String {
-    if std::env::var("HYLKI_DEMO").is_ok() {
+    if std::env::var("TEGAMI_DEMO").is_ok() {
         return DEFAULT_ID.to_string();
     }
     let id = if crate::config::load_app_icon_generation() < ICON_GENERATION {
@@ -178,28 +178,28 @@ pub(crate) fn init_on_startup() -> String {
 }
 
 /// Persist a choice and put it on the desktop, over an icon set outside
-/// Hylki too: this is the user picking one in the app.
+/// Tegami Mail too: this is the user picking one in the app.
 pub(crate) fn set(id: &str) -> String {
     let id = effective(id).to_string();
     crate::config::save_app_icon(&id);
-    if std::env::var("HYLKI_DEMO").is_err() {
+    if std::env::var("TEGAMI_DEMO").is_err() {
         apply(&id, true);
     }
     id
 }
 
-/// The icon the app's launcher names when somebody other than Hylki put it
-/// there: a menu editor, a hand edit, an icon theme's name (#252). Hylki
+/// The icon the app's launcher names when somebody other than Tegami Mail put it
+/// there: a menu editor, a hand edit, an icon theme's name (#252). Tegami Mail
 /// only ever writes the app's own icon name or the file of a gallery
 /// choice, so anything else was the user's doing.
 pub(crate) fn custom_icon() -> Option<String> {
-    if std::env::var("HYLKI_DEMO").is_ok() {
+    if std::env::var("TEGAMI_DEMO").is_ok() {
         return None;
     }
     Launcher::find().custom_icon()
 }
 
-/// Whether a launcher's `Icon=` value is one Hylki puts there: the name the
+/// Whether a launcher's `Icon=` value is one Tegami Mail puts there: the name the
 /// build installs its icon under, or the file a choice is written to.
 fn icon_is_ours(value: &str) -> bool {
     if value == crate::APP_ID {
@@ -240,11 +240,11 @@ fn hicolor_dir() -> Option<PathBuf> {
     Some(host_data_home()?.join("icons/hicolor"))
 }
 
-/// An icon folder only Hylki writes to, which its own icon lookups search in
+/// An icon folder only Tegami Mail writes to, which its own icon lookups search in
 /// place of the shared ones (`icon_theme::apply_icon_theme`): the chosen app
 /// icon is copied here so the window finds it by name.
 pub(crate) fn private_icons_root() -> Option<PathBuf> {
-    Some(dirs::data_dir()?.join("hylki/icons"))
+    Some(dirs::data_dir()?.join("tegami/icons"))
 }
 
 /// Keep the private folder's copy of the chosen icon, and nothing else of
@@ -297,8 +297,8 @@ fn apply(id: &str, replace_custom: bool) {
     let launcher = Launcher::find();
     if !replace_custom {
         if let Some(icon) = launcher.custom_icon() {
-            tracing::info!("the launcher's icon ({icon}) was set outside Hylki, leaving it");
-            // A theme name serves the windows too, where Hylki's icon search
+            tracing::info!("the launcher's icon ({icon}) was set outside Tegami Mail, leaving it");
+            // A theme name serves the windows too, where Tegami Mail's icon search
             // finds it; a file path cannot.
             let found = !icon.contains('/')
                 && gtk::gdk::Display::default()
@@ -317,7 +317,7 @@ fn apply(id: &str, replace_custom: bool) {
     sync_private_icon(id, &name, own_file);
     let path = hicolor.join("512x512/apps").join(format!("{name}.png"));
     launcher.point_at(&path.to_string_lossy(), is_default && !own_file);
-    // Hylki's own windows (X11, panels that draw window icons).
+    // Tegami Mail's own windows (X11, panels that draw window icons).
     if own_file {
         gtk::Window::set_default_icon_name(&name);
     } else {
@@ -453,7 +453,7 @@ mod tests {
     }
 
     #[test]
-    fn only_icons_hylki_writes_count_as_its_own() {
+    fn only_icons_tegami_writes_count_as_its_own() {
         let id = crate::APP_ID;
         assert!(icon_is_ours(id));
         assert!(icon_is_ours(&format!(
@@ -465,7 +465,7 @@ mod tests {
         // A theme's name, the symbolic, another app's file, a relative path.
         assert!(!icon_is_ours("mail-client"));
         assert!(!icon_is_ours(&format!("{id}-symbolic")));
-        assert!(!icon_is_ours("/home/u/icons/hylki-square.svg"));
+        assert!(!icon_is_ours("/home/u/icons/tegami-square.svg"));
         assert!(!icon_is_ours(&format!("{id}-default.png")));
     }
 }

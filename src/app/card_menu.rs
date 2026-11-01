@@ -96,7 +96,7 @@ fn flag_entries(
             item(
                 RowAction::ToggleStar,
                 i18n("Remove Star"),
-                "hylki-non-starred",
+                "tegami-non-starred",
             )
         } else {
             item(RowAction::ToggleStar, i18n("Star"), "starred")
@@ -105,7 +105,7 @@ fn flag_entries(
             item(
                 RowAction::ToggleRead,
                 i18n("Mark as Read"),
-                "hylki-mail-read",
+                "tegami-mail-read",
             )
         } else {
             item(RowAction::ToggleRead, i18n("Mark as Unread"), "mail-unread")

@@ -34,7 +34,7 @@ impl RichEditor {
         crate::desktop::web_fonts::load_html(
             &webview,
             &document(initial_html, &webview, &image_policy, plain.get()),
-            Some("https://hylki.localhost/editor"),
+            Some("https://tegami.localhost/editor"),
         );
         let theme_handler = follow_theme(&webview);
 
@@ -70,7 +70,7 @@ impl RichEditor {
         // behind the preference; the menu offers both, always, in its place.
         // Over an image the menu leads with image actions — cut, copy, and
         // demoting an inline picture to an ordinary attachment — acting on
-        // the exact node the right-click landed on (`__hylkiCtxImg`).
+        // the exact node the right-click landed on (`__tegamiCtxImg`).
         connect_context_menu(
             &webview,
             attach_cb.clone(),
@@ -106,7 +106,7 @@ impl RichEditor {
         // list), its paragraph style and its font. A set toggle also means a
         // click on it leaves that block instead of opening another (issue
         // #137, EmmanuelP's follow-up).
-        ucm.connect_script_message_received(Some("hylkiFormat"), move |_, value| {
+        ucm.connect_script_message_received(Some("tegamiFormat"), move |_, value| {
             bar_state.update(&value.to_str());
         });
 
@@ -152,10 +152,10 @@ fn editor_view() -> (webkit6::WebView, webkit6::UserContentManager) {
     // The message handler carries the word under the caret out for a
     // mid-word spelling verdict (see the paste script's caretWord).
     let ucm = webkit6::UserContentManager::new();
-    ucm.register_script_message_handler("hylkiSpell", None);
+    ucm.register_script_message_handler("tegamiSpell", None);
     // The block state under the caret (quote, bulleted or numbered list)
     // comes out through this one, to light the matching toolbar button.
-    ucm.register_script_message_handler("hylkiFormat", None);
+    ucm.register_script_message_handler("tegamiFormat", None);
     let webview = webkit6::WebView::builder()
         .web_context(&crate::ui::message_view::shared_web_context())
         .user_content_manager(&ucm)
@@ -170,11 +170,11 @@ fn editor_view() -> (webkit6::WebView, webkit6::UserContentManager) {
     // WebKitWebProcess, for the rest of the session (#221).
     {
         let weak = webview.downgrade();
-        ucm.connect_script_message_received(Some("hylkiSpell"), move |_, value| {
+        ucm.connect_script_message_received(Some("tegamiSpell"), move |_, value| {
             let Some(v) = weak.upgrade() else { return };
             let word = value.to_str().to_string();
             let bad = crate::desktop::spell::word_is_misspelled(&word);
-            exec(&v, &format!("window.__hylkiSpellMark({bad})"));
+            exec(&v, &format!("window.__tegamiSpellMark({bad})"));
         });
     }
     let settings = webkit6::Settings::new();

@@ -239,10 +239,10 @@ pub(super) fn show_context_menu_popover(
     popover.connect_closed(|p| p.unparent());
     popup_after_release(&popover, parent.as_ref());
 
-    // HYLKI_SHOWCASE_MENU=main|<submenu label> captures the popover's page
+    // TEGAMI_SHOWCASE_MENU=main|<submenu label> captures the popover's page
     // a second after it opens (the window snapshot never includes it).
-    if let Ok(which) = std::env::var("HYLKI_SHOWCASE_MENU") {
-        if let Ok(path) = std::env::var("HYLKI_SHOWCASE") {
+    if let Ok(which) = std::env::var("TEGAMI_SHOWCASE_MENU") {
+        if let Ok(path) = std::env::var("TEGAMI_SHOWCASE") {
             let stack = stack.clone();
             gtk::glib::timeout_add_local_once(std::time::Duration::from_millis(400), move || {
                 if which != "main" {

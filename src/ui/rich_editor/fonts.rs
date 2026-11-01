@@ -113,7 +113,7 @@ pub(crate) fn recent_font_css(font: &crate::config::RecentFont) -> String {
 /// The editor command that sets `font`.
 pub(super) fn font_js(font: &crate::config::RecentFont) -> String {
     format!(
-        "window.__hylkiStyled('fontName',{})",
+        "window.__tegamiStyled('fontName',{})",
         js_str(&recent_font_css(font))
     )
 }

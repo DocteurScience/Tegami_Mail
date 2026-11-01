@@ -13,7 +13,7 @@ const WORDMARK_PNG: &[u8] = include_bytes!("../../../data/welcome/wordmark-black
 const WORDMARK_DARK_PNG: &[u8] = include_bytes!("../../../data/welcome/wordmark-white.png");
 
 /// The wordmark with the app icon beside it, for the About window and the
-/// wizard: "Hylki" set in Cantarell, dark or white, as an SVG on a 128x42
+/// wizard: "Tegami Mail" set in Cantarell, dark or white, as an SVG on a 128x42
 /// box (the pixbuf loader tells the formats apart by their bytes). The
 /// wizard always takes the white one, on its blue ground.
 const ABOUT_WORDMARK_SVG: &[u8] = include_bytes!("../../../data/about/wordmark-black.svg");

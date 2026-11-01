@@ -371,8 +371,8 @@ fn assemble(
 ) -> Vec<u8> {
     let mut out = headers;
     out.push_str("MIME-Version: 1.0\r\n");
-    let boundary = "hylki-msg-mixed";
-    let related = "hylki-msg-related";
+    let boundary = "tegami-msg-mixed";
+    let related = "tegami-msg-related";
     out.push_str(&format!(
         "Content-Type: multipart/mixed; boundary=\"{boundary}\"\r\n\r\n"
     ));
@@ -600,7 +600,7 @@ mod tests {
         assert!(parsed.body_html(0).unwrap().contains("Numbers attached."));
     }
 
-    /// Real files: `MSG_DIR=<dir of .msg files> cargo test --bin hylki
+    /// Real files: `MSG_DIR=<dir of .msg files> cargo test --bin tegami
     /// outlook_msg::tests::real_files -- --ignored --nocapture`.
     #[test]
     #[ignore]

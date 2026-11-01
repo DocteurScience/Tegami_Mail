@@ -25,7 +25,7 @@ impl MessageView {
     pub(super) fn on_set_pgp_labels(&mut self, on: bool) {
         self.pgp_labels = on;
         let js = format!(
-            "document.body&&document.body.toggleAttribute('data-hylki-pgpicons',{})",
+            "document.body&&document.body.toggleAttribute('data-tegami-pgpicons',{})",
             !on
         );
         self.run_js(&js);

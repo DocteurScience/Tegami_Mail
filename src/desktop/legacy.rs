@@ -1,6 +1,6 @@
 //! Carrying an earlier install across.
 //!
-//! The app was Veem through 1.5.1 and Vireo through 1.34.0. A Hylki install
+//! The app was Veem through 1.5.1 and Vireo through 1.34.0. A Tegami Mail install
 //! finds whatever those left behind and brings it over on its first start
 //! — accounts, settings, the mail cache, credentials, the GNOME Files
 //! extension — without changing or removing anything of theirs, so the
@@ -8,7 +8,7 @@
 //!
 //! Three shapes of predecessor data:
 //!
-//! * **Under the same base** (`~/.config/vireo` beside `~/.config/hylki`):
+//! * **Under the same base** (`~/.config/vireo` beside `~/.config/tegami`):
 //!   a native install, or a Flatpak that `flatpak update` rebased from the
 //!   old ID (Flatpak renames `~/.var/app/co.hyprlab.Vireo` to the new ID
 //!   and leaves the inner `config/vireo` as it was). Renamed in place.
@@ -79,14 +79,14 @@ fn bases() -> Vec<(&'static str, PathBuf)> {
 }
 
 /// Bring an earlier install's directories across, once: for each base, the
-/// first predecessor with data there fills in `<base>/hylki` when it does
+/// first predecessor with data there fills in `<base>/tegami` when it does
 /// not exist yet. Runs before anything reads its settings.
 pub(crate) fn migrate_dirs() {
     let mut from: Option<&'static Predecessor> = None;
     let in_flatpak = crate::desktop::platform::is_flatpak();
     let home = dirs::home_dir();
     for (sub, base) in bases() {
-        let new = base.join("hylki");
+        let new = base.join("tegami");
         if new.exists() {
             continue;
         }
@@ -318,12 +318,12 @@ pub(crate) fn default_mailer() -> Option<&'static Predecessor> {
 /// took its own name: in drafts, templates and sent mail on the server, and in
 /// bodies cached on disk.
 const OLD_MARKUP_NAMES: &[(&str, &str)] = &[
-    ("vireo-quote-attr", "hylki-quote-attr"),
-    ("vireo-quote-mail", "hylki-quote-mail"),
-    ("vireo-sig", "hylki-sig"),
-    ("vireo-plain", "hylki-plain"),
-    ("vireo-inline", "hylki-inline"),
-    ("data-vireo-fit", "data-hylki-fit"),
+    ("vireo-quote-attr", "tegami-quote-attr"),
+    ("vireo-quote-mail", "tegami-quote-mail"),
+    ("vireo-sig", "tegami-sig"),
+    ("vireo-plain", "tegami-plain"),
+    ("vireo-inline", "tegami-inline"),
+    ("data-vireo-fit", "data-tegami-fit"),
 ];
 
 /// A message body with the markup names an earlier version wrote replaced by
@@ -375,9 +375,9 @@ mod tests {
                    <div class=\"x vireo-sig\">Ann</div><img data-vireo-fit=\"1\">";
         assert_eq!(
             current_markup(old.to_string()),
-            "<style>.hylki-plain{white-space:pre-wrap}</style>\
-             <div class=\"hylki-plain\">diff: .vireo-plain{}</div>\
-             <div class=\"x hylki-sig\">Ann</div><img data-hylki-fit=\"1\">"
+            "<style>.tegami-plain{white-space:pre-wrap}</style>\
+             <div class=\"tegami-plain\">diff: .vireo-plain{}</div>\
+             <div class=\"x tegami-sig\">Ann</div><img data-tegami-fit=\"1\">"
         );
         assert_eq!(current_markup("plain".to_string()), "plain");
         assert_eq!(current_markup("a < vireo-sig".to_string()), "a < vireo-sig");
@@ -387,17 +387,17 @@ mod tests {
 
     #[test]
     fn same_tree_sees_through_a_symlink() {
-        let root = std::env::temp_dir().join(format!("hylki-legacy-test-{}", std::process::id()));
-        let new_base = root.join("co.hyprlab.Hylki/config");
+        let root = std::env::temp_dir().join(format!("tegami-legacy-test-{}", std::process::id()));
+        let new_base = root.join("io.github.DocteurScience.TegamiMail/config");
         std::fs::create_dir_all(&new_base).unwrap();
-        std::os::unix::fs::symlink(root.join("co.hyprlab.Hylki"), root.join("co.hyprlab.Vireo"))
+        std::os::unix::fs::symlink(root.join("io.github.DocteurScience.TegamiMail"), root.join("co.hyprlab.Vireo"))
             .unwrap();
         let old = root.join("co.hyprlab.Vireo/config/vireo");
         std::fs::create_dir_all(&old).unwrap();
-        assert!(same_tree(&old, &new_base.join("hylki")));
+        assert!(same_tree(&old, &new_base.join("tegami")));
         let elsewhere = root.join("other/config/vireo");
         std::fs::create_dir_all(&elsewhere).unwrap();
-        assert!(!same_tree(&elsewhere, &new_base.join("hylki")));
+        assert!(!same_tree(&elsewhere, &new_base.join("tegami")));
         let _ = std::fs::remove_dir_all(&root);
     }
 

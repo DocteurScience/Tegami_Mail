@@ -135,11 +135,11 @@ impl Row {
         action(&forward, RowAction::Forward);
         // A draft is neither read nor unread, so it gets no toggle.
         let read = (!in_drafts).then(|| {
-            let b = button("hylki-mail-read-symbolic", i18n("Mark as read"));
+            let b = button("tegami-mail-read-symbolic", i18n("Mark as read"));
             action(&b, RowAction::ToggleRead);
             b
         });
-        let star = button("hylki-non-starred-symbolic", i18n("Star"));
+        let star = button("tegami-non-starred-symbolic", i18n("Star"));
         action(&star, RowAction::ToggleStar);
         let tag = button("tag-outline-symbolic", i18n("Tags"));
         {
@@ -215,7 +215,7 @@ impl Row {
         // menus and toolbar.
         if let Some(read) = &b.read {
             if data.msg.unread {
-                read.set_icon_name("hylki-mail-read-symbolic");
+                read.set_icon_name("tegami-mail-read-symbolic");
                 read.set_tooltip_text(Some(i18n("Mark as read").as_str()));
             } else {
                 read.set_icon_name("mail-unread-symbolic");

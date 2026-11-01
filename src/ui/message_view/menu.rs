@@ -132,7 +132,7 @@ pub(crate) fn hit_menu_entries(
     out
 }
 
-/// The card key and selected text from `__hylkiMenuAt`'s JSON answer.
+/// The card key and selected text from `__tegamiMenuAt`'s JSON answer.
 pub(super) fn menu_lookup(json: &str) -> (Option<(u32, u32)>, Option<String>) {
     let v: serde_json::Value = serde_json::from_str(json).unwrap_or_default();
     let key = v["key"].as_str().and_then(|k| {
@@ -146,7 +146,7 @@ pub(super) fn menu_lookup(json: &str) -> (Option<(u32, u32)>, Option<String>) {
     (key, sel)
 }
 
-/// Whether `__hylkiMenuAt` said no message menu: the right-click was off
+/// Whether `__tegamiMenuAt` said no message menu: the right-click was off
 /// the cards, or on an address, which has the page's own menu.
 pub(super) fn menu_skipped(json: &str) -> bool {
     serde_json::from_str::<serde_json::Value>(json).is_ok_and(|v| v.get("skip").is_some())

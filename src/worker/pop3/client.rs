@@ -14,7 +14,7 @@ fn pop3_wire(cmd: &str) {
     } else {
         cmd
     };
-    tracing::debug!(target: "hylki::pop3", "> {shown}");
+    tracing::debug!(target: "tegami::pop3", "> {shown}");
 }
 
 fn pop3_wired(cmd: &str, reply: &[u8]) {
@@ -26,9 +26,9 @@ fn pop3_wired(cmd: &str, reply: &[u8]) {
         cmd
     };
     if reply.starts_with(b"+OK") {
-        tracing::debug!(target: "hylki::pop3", "< {} ({shown})", line.chars().take(80).collect::<String>());
+        tracing::debug!(target: "tegami::pop3", "< {} ({shown})", line.chars().take(80).collect::<String>());
     } else {
-        tracing::warn!(target: "hylki::pop3", "< {line} ({shown})");
+        tracing::warn!(target: "tegami::pop3", "< {line} ({shown})");
     }
 }
 

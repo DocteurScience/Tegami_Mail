@@ -157,7 +157,7 @@ impl Compose {
 
     /// Showcase only: walk the history through a round that mixes typing
     /// with attachments, logging the body and the attachment names after
-    /// each step on `hylki::compose::undo`. The keys cannot be injected on
+    /// each step on `tegami::compose::undo`. The keys cannot be injected on
     /// a Wayland desktop, so this is how the interleaving is checked.
     ///
     /// Each step schedules the next a beat later, because both sides of it
@@ -190,10 +190,10 @@ impl Compose {
         } else {
             "document.body.focus();"
         };
-        // HYLKI_SHOWCASE_COMPOSE_UNDO=backspace trims the body with the
+        // TEGAMI_SHOWCASE_COMPOSE_UNDO=backspace trims the body with the
         // Backspace key's own editing command instead of typing into it,
         // which is how a reply is usually cut down to size.
-        let mode = std::env::var("HYLKI_SHOWCASE_COMPOSE_UNDO").unwrap_or_default();
+        let mode = std::env::var("TEGAMI_SHOWCASE_COMPOSE_UNDO").unwrap_or_default();
         let deleting = mode == "backspace";
         // `pause` leaves more than the script's PAUSE_MS between two runs of
         // typing, so each should come back on a press of its own.
@@ -204,7 +204,7 @@ impl Compose {
             ));
         };
         let attach = |sender: &ComponentSender<Self>| {
-            let path = std::env::temp_dir().join("hylki-undo-probe.txt");
+            let path = std::env::temp_dir().join("tegami-undo-probe.txt");
             let _ = std::fs::write(&path, b"probe");
             sender
                 .input_sender()
@@ -267,7 +267,7 @@ impl Compose {
         let gap = if pausing && step == 1 { 7000 } else { 700 };
         gtk::glib::timeout_add_local_once(std::time::Duration::from_millis(gap), move || {
             let report = move |body: String| {
-                tracing::info!(target: "hylki::compose::undo", "step {step}: body {body:?}");
+                tracing::info!(target: "tegami::compose::undo", "step {step}: body {body:?}");
                 s.input_sender()
                     .emit(ComposeInput::ShowcaseHistory(step + 1));
             };
@@ -278,7 +278,7 @@ impl Compose {
             }
         });
         tracing::info!(
-            target: "hylki::compose::undo",
+            target: "tegami::compose::undo",
             "step {step}: undo [{}] redo [{}] text({},{}) attachments [{}]",
             stack(&self.undo_stack),
             stack(&self.redo_stack),

@@ -84,9 +84,9 @@ impl MessageView {
         // lock/shield and color once a verdict exists.
         let pgp = match &check.pgp {
             Some(p) => format!(
-                "var p=document.querySelector('.hylki-pgp[data-key=\"{account_id}:{id}\"]');\
-                 if(p){{p.className='hylki-pgp on{enc}{sig} {cls}';p.title={title:?};\
-                 var t=p.querySelector('.hylki-pgp-text');if(t)t.textContent={label:?};}}",
+                "var p=document.querySelector('.tegami-pgp[data-key=\"{account_id}:{id}\"]');\
+                 if(p){{p.className='tegami-pgp on{enc}{sig} {cls}';p.title={title:?};\
+                 var t=p.querySelector('.tegami-pgp-text');if(t)t.textContent={label:?};}}",
                 enc = if p.encrypted { " enc" } else { "" },
                 sig = if p.signed() { " sig" } else { "" },
                 cls = p.css_class(),
@@ -100,10 +100,10 @@ impl MessageView {
         // organization's list gave one (a checked `#rrggbb`; empty clears).
         let label = match &check.label {
             Some(l) => format!(
-                "var l=document.querySelector('.hylki-sens[data-key=\"{account_id}:{id}\"]');\
-                 if(l){{l.className='hylki-sens on';l.title={title:?};\
-                 l.style.setProperty('--hylki-sens',{color:?});\
-                 var t=l.querySelector('.hylki-sens-text');if(t)t.textContent={text:?};}}",
+                "var l=document.querySelector('.tegami-sens[data-key=\"{account_id}:{id}\"]');\
+                 if(l){{l.className='tegami-sens on';l.title={title:?};\
+                 l.style.setProperty('--tegami-sens',{color:?});\
+                 var t=l.querySelector('.tegami-sens-text');if(t)t.textContent={text:?};}}",
                 title = l.summary(),
                 text = l.short_label(),
                 color = l.color,
@@ -112,8 +112,8 @@ impl MessageView {
         };
         let js = format!(
             "(function(){{{pgp}{label}\
-             var b=document.querySelector('.hylki-verify[data-key=\"{account_id}:{id}\"]');\
-             if(!b)return;b.className='hylki-verify on {cls}';b.title={title:?};}})()",
+             var b=document.querySelector('.tegami-verify[data-key=\"{account_id}:{id}\"]');\
+             if(!b)return;b.className='tegami-verify on {cls}';b.title={title:?};}})()",
             cls = check.trust.css_class(),
             title = check.trust.label(),
         );

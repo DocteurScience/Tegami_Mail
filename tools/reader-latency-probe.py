@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""Time real Hylki body loading against a synthetic TLS IMAP server.
+"""Time real Tegami Mail body loading against a synthetic TLS IMAP server.
 
 Requires a graphical session, Python 3, openssl, bwrap and dbus-run-session.
 Uses a private D-Bus session and synthetic XDG directories; no mail is sent.
 Build both revisions with the same features, then run each with fresh output:
 
-    python3 tools/reader-latency-probe.py --binary target/debug/hylki \
-        --output /tmp/hylki-reader-after
+    python3 tools/reader-latency-probe.py --binary target/debug/tegami \
+        --output /tmp/tegami-reader-after
 
 Default workload: 121 folders, 70 ms per STATUS, an uncached message, an
 inbox refresh at 1 s and a reader selection at 2 s. Output includes command
@@ -74,7 +74,7 @@ async def main():
     binary = args.binary.resolve(strict=True)
     root = args.output.resolve()
     root.mkdir(mode=0o700)  # Refuse to reuse a warmed cache.
-    for directory in ("config/hylki", "data/hylki", "cache", "state", "empty-services"):
+    for directory in ("config/tegami", "data/tegami", "cache", "state", "empty-services"):
         (root / directory).mkdir(parents=True)
     cert, key = root / "cert.pem", root / "key.pem"
     subprocess.run(["openssl", "req", "-x509", "-newkey", "rsa:2048", "-nodes",
@@ -166,7 +166,7 @@ async def main():
 
     server = await asyncio.start_server(peer, "127.0.0.1", 0, ssl=tls)
     port = server.sockets[0].getsockname()[1]
-    (root / "config/hylki/accounts.toml").write_text(f'''[[accounts]]
+    (root / "config/tegami/accounts.toml").write_text(f'''[[accounts]]
 name = "Reader latency fixture"
 email = "test@example.test"
 username = "test"
@@ -181,21 +181,21 @@ push = false
 imap_starttls = false
 imap_accept_invalid_certs = true
 ''')
-    (root / "config/hylki/privacy.toml").write_text(
+    (root / "config/tegami/privacy.toml").write_text(
         'fetch_interval_secs = 3\npush = false\npreview_lines = 0\nnotifications = false\n'
         'autostart = false\ntray = false\nrun_in_background = false\nthreading = false\n'
         'read_mark = "manual"\n')
-    (root / "config/hylki/state.toml").write_text("wizard_completed = true\n")
-    database = root / "data/hylki/cache.db"
+    (root / "config/tegami/state.toml").write_text("wizard_completed = true\n")
+    database = root / "data/tegami/cache.db"
     seed_cache(database)
     env = dict(os.environ, XDG_CONFIG_HOME=str(root / "config"),
                XDG_DATA_HOME=str(root / "data"), XDG_CACHE_HOME=str(root / "cache"),
                XDG_STATE_HOME=str(root / "state"), GSETTINGS_BACKEND="memory",
-               GTK_A11Y="none", RUST_LOG="hylki=debug", GSK_RENDERER="cairo",
-               HYLKI_SHOWCASE_SELECT="1:42@2", HYLKI_SHOWCASE_INBOX="1@1")
+               GTK_A11Y="none", RUST_LOG="tegami=debug", GSK_RENDERER="cairo",
+               TEGAMI_SHOWCASE_SELECT="1:42@2", TEGAMI_SHOWCASE_INBOX="1@1")
     env.pop("FLATPAK_ID", None)
     if args.repeat_select_delay:
-        env.pop("HYLKI_SHOWCASE_INBOX")
+        env.pop("TEGAMI_SHOWCASE_INBOX")
     sandbox = ["bwrap", "--ro-bind", "/", "/"]
     if args.usr_overlay:
         overlay = args.usr_overlay.resolve(strict=True)

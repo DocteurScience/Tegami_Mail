@@ -494,7 +494,7 @@ impl Preferences {
             .system
             .fullscreen_row
             .set_active(init.start_fullscreen);
-        // Starting at login only means anything if Hylki stays running.
+        // Starting at login only means anything if Tegami Mail stays running.
         widgets
             .system
             .autostart_row
@@ -545,7 +545,7 @@ impl Preferences {
             title.set_halign(gtk::Align::Start);
             title.set_xalign(0.0);
             body.append(&title);
-            // An icon set outside Hylki stays until a pick here (#252): say
+            // An icon set outside Tegami Mail stays until a pick here (#252): say
             // so, and ring no tile, since none of them is what shows.
             let custom = crate::desktop::app_icon::custom_icon().is_some();
             let note = gtk::Label::new(Some(

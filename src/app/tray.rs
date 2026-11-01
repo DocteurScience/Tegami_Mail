@@ -98,7 +98,7 @@ impl AppModel {
             unified: self.unified_inboxes_unread(),
             fresh,
         });
-        // The counted total is what GNOME shows beside Hylki in Background
+        // The counted total is what GNOME shows beside Tegami Mail in Background
         // Apps, so a process with no window still says what it is there for.
         if self.run_in_background.get() {
             crate::desktop::background::set_status(&crate::desktop::background::status_text(
@@ -170,9 +170,9 @@ impl AppModel {
     fn show_restarting_dialog(&self) {
         let dialog = adw::MessageDialog::new(
             Some(&self.icon_dialog_parent()),
-            Some(i18n("Restarting Hylki").as_str()),
+            Some(i18n("Restarting Tegami Mail").as_str()),
             Some(
-                i18n("Applying your new app icon. Hylki will close and reopen in a moment.")
+                i18n("Applying your new app icon. Tegami Mail will close and reopen in a moment.")
                     .as_str(),
             ),
         );
@@ -189,7 +189,7 @@ impl AppModel {
     /// new icon, so the app grid shows it — but GNOME Shell keeps a running
     /// app's windows bound to the app object it created for the old
     /// launcher (a changed launcher only replaces the object, it never
-    /// re-tracks the windows), so the dock's running entry, like Hylki's
+    /// re-tracks the windows), so the dock's running entry, like Tegami Mail's
     /// own window icon, only switches once every window has closed: a
     /// restart. Offered, never forced, over whichever window the change
     /// came from.
@@ -199,7 +199,7 @@ impl AppModel {
             Some(&self.icon_dialog_parent()),
             Some(i18n("Restart to finish switching icons?").as_str()),
             Some(
-                i18n("The dock and Hylki's own windows keep the old icon until Hylki restarts.")
+                i18n("The dock and Tegami Mail's own windows keep the old icon until Tegami Mail restarts.")
                     .as_str(),
             ),
         );
@@ -292,7 +292,7 @@ impl AppModel {
         match msg {
             AppMsg::WizardLanguage(code) => {
                 // The drop-down also notifies as it is set up; only a real
-                // change counts. Saved, then Hylki restarts through the same
+                // change counts. Saved, then Tegami Mail restarts through the same
                 // helper the icon change uses, so every window — the wizard
                 // first, since it is not completed yet — comes up in the
                 // chosen language. Should the helper fail, the wizard alone
@@ -353,7 +353,7 @@ impl AppModel {
                     tracing::warn!("restart helper failed: {e}");
                     self.restart_pending = false;
                     self.notice_error(i18n(
-                        "Couldn't restart automatically — quit and reopen Hylki \
+                        "Couldn't restart automatically — quit and reopen Tegami Mail \
                                to finish switching the icon.",
                     ));
                 }

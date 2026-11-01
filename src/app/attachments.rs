@@ -427,9 +427,9 @@ impl AppModel {
                 self.gallery
                     .emit(GalleryInput::SetDeleting(t.gallery_key(), true));
                 self.deleting_attachments.push(t.clone());
-                // HYLKI_SHOWCASE_DELETE_HOLD=<seconds> holds the request back,
+                // TEGAMI_SHOWCASE_DELETE_HOLD=<seconds> holds the request back,
                 // so the file can be captured while it is being deleted.
-                if let Some(secs) = std::env::var("HYLKI_SHOWCASE_DELETE_HOLD")
+                if let Some(secs) = std::env::var("TEGAMI_SHOWCASE_DELETE_HOLD")
                     .ok()
                     .and_then(|v| v.parse().ok())
                 {

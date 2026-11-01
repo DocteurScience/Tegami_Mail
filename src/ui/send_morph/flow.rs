@@ -41,12 +41,12 @@ pub(crate) fn start(stage: &SendMorph, p: Pieces, ready: impl FnOnce(bool) + 'st
         let (Some((still, scale)), (Some(composer), Some(editor), Some(reader), Some(view))) =
             (still, rects)
         else {
-            tracing::info!(target: "hylki::morph", "send morph: the pane could not be captured");
+            tracing::info!(target: "tegami::morph", "send morph: the pane could not be captured");
             ready(false);
             return;
         };
         if editor.height() < 8.0 || view.height() < 8.0 {
-            tracing::info!(target: "hylki::morph", "send morph: the editor or the reader has no height");
+            tracing::info!(target: "tegami::morph", "send morph: the editor or the reader has no height");
             ready(false);
             return;
         }
@@ -233,7 +233,7 @@ fn poll_once(poll: std::rc::Rc<Poll>) {
         return;
     }
     if poll.started.elapsed() > std::time::Duration::from_millis(READY_TIMEOUT_MS) {
-        tracing::info!(target: "hylki::morph", "send morph: the reply's card never settled ({:?})", poll.last.borrow().as_ref().map(|m| (m.live, m.cards.len())));
+        tracing::info!(target: "tegami::morph", "send morph: the reply's card never settled ({:?})", poll.last.borrow().as_ref().map(|m| (m.live, m.cards.len())));
         poll.stage.abort();
         return;
     }
@@ -293,7 +293,7 @@ fn land_on(p: &Poll) {
             stage.abort();
             return;
         };
-        tracing::info!(target: "hylki::morph", "send morph: landing after {:?}", started.elapsed());
+        tracing::info!(target: "tegami::morph", "send morph: landing after {:?}", started.elapsed());
         stage.land(After {
             still,
             reader,

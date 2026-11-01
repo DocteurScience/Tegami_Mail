@@ -63,7 +63,7 @@ mod tests {
 
     #[test]
     fn a_line_file_holds_one_trimmed_line_or_nothing() {
-        let dir = std::env::temp_dir().join(format!("hylki-line-file-{}", std::process::id()));
+        let dir = std::env::temp_dir().join(format!("tegami-line-file-{}", std::process::id()));
         let path = dir.join("sub").join("language");
         write_line_file(Some(path.clone()), "  fr \n");
         assert_eq!(std::fs::read_to_string(&path).unwrap(), "fr\n");

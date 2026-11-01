@@ -31,7 +31,7 @@ mod imp {
 
     #[glib::object_subclass]
     impl ObjectSubclass for FadeLabel {
-        const NAME: &'static str = "HylkiFadeLabel";
+        const NAME: &'static str = "TegamiFadeLabel";
         type Type = super::FadeLabel;
         type ParentType = gtk::Widget;
     }

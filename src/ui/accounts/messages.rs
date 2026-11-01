@@ -18,12 +18,12 @@ pub(crate) enum AccountsInput {
     /// The editor's "Use my Gravatar" switch moved (#189).
     SetOwnGravatar(bool),
     /// The "Server saves its own copy of sent mail" switch: with it on there is
-    /// no copy of Hylki's to file, so the folder row above has nothing to say.
+    /// no copy of Tegami Mail's to file, so the folder row above has nothing to say.
     SetServerSavesSent(bool),
-    /// Showcase only (HYLKI_SHOWCASE_EDITOR_DIRTY): type into the open
+    /// Showcase only (TEGAMI_SHOWCASE_EDITOR_DIRTY): type into the open
     /// editor's Label field, the way a capture cannot.
     DebugEditLabel(String),
-    /// Showcase only (HYLKI_SHOWCASE_ACCOUNT=new:<label>): pick the provider
+    /// Showcase only (TEGAMI_SHOWCASE_ACCOUNT=new:<label>): pick the provider
     /// with that label in the open editor.
     DebugProvider(String),
     /// The settings sidebar wants to show another category while an editor
@@ -72,7 +72,7 @@ pub(crate) enum AccountsInput {
     },
     /// Enable/disable the account currently open in the editor (GOA group toggle).
     ToggleCurrentEnabled(bool),
-    /// Import a GNOME Online Account (by index into `goa`) into Hylki.
+    /// Import a GNOME Online Account (by index into `goa`) into Tegami Mail.
     ImportGoa(usize),
     /// The provider dropdown changed — adapt the form (servers vs. OAuth).
     ProviderChanged,
@@ -248,7 +248,7 @@ pub(crate) enum AccountsOutput {
         email: String,
         enabled: bool,
     },
-    /// Import a GNOME Online Account into Hylki (with its credentials).
+    /// Import a GNOME Online Account into Tegami Mail (with its credentials).
     ImportGoa(Box<AccountConfig>),
     /// An editor subpage opened (the settings page it belongs to: accounts,
     /// filters or tags) or closed (`None`) — the combined settings window

@@ -3,7 +3,7 @@
 //! JMAP (RFC 8620/8621) is JSON over HTTPS: one `POST` carries a batch of
 //! method calls, and a message's raw RFC 5322 bytes come from a blob
 //! download URL, so they feed the exact same parsing pipeline as IMAP and
-//! Graph. Compared with Graph this fits Hylki's model with less bending:
+//! Graph. Compared with Graph this fits Tegami Mail's model with less bending:
 //! mailboxes carry their role (inbox, sent, drafts…), a message keeps its id
 //! when it moves, keywords are the same `$seen` / `$flagged` / user keywords
 //! IMAP has (so tags need no translation), and Message-ID, In-Reply-To and

@@ -212,7 +212,7 @@ impl RichEditor {
         crate::desktop::web_fonts::load_html(
             &self.webview,
             &document(content, &self.webview, &self.image_policy, self.plain.get()),
-            Some("https://hylki.localhost/editor"),
+            Some("https://tegami.localhost/editor"),
         );
     }
 
@@ -225,7 +225,7 @@ impl RichEditor {
         crate::desktop::web_fonts::load_html(
             &self.webview,
             &source_document(text, &self.webview),
-            Some("https://hylki.localhost/editor"),
+            Some("https://tegami.localhost/editor"),
         );
     }
 
@@ -244,7 +244,7 @@ impl RichEditor {
     /// Read the source text back, exactly as typed.
     pub(super) fn extract_source(&self, cb: impl FnOnce(String) + 'static) {
         self.eval(
-            "window.__hylkiSourceText ? window.__hylkiSourceText() : ''",
+            "window.__tegamiSourceText ? window.__tegamiSourceText() : ''",
             cb,
         );
     }
@@ -282,7 +282,7 @@ impl RichEditor {
         crate::desktop::web_fonts::load_html(
             &view,
             &preview_document(html, &view, &self.image_policy),
-            Some("https://hylki.localhost/preview"),
+            Some("https://tegami.localhost/preview"),
         );
         self.stack.set_visible_child_name("preview");
     }
@@ -358,7 +358,7 @@ impl RichEditor {
     /// flag set on the first `input` event). Used to avoid saving a pristine,
     /// quote-only reply to Drafts when the reader navigates away.
     pub(super) fn is_dirty(&self, cb: impl FnOnce(bool) + 'static) {
-        self.eval("String(!!window.__hylkiDirty)", move |v| cb(v == "true"));
+        self.eval("String(!!window.__tegamiDirty)", move |v| cb(v == "true"));
     }
 
     /// Show or hide the formatting commands: hidden while the message is
@@ -395,7 +395,7 @@ impl RichEditor {
 
     /// Read the current body HTML asynchronously.
     pub(super) fn extract_html(&self, cb: impl FnOnce(String) + 'static) {
-        self.eval("window.__hylkiBodyHtml()", cb);
+        self.eval("window.__tegamiBodyHtml()", cb);
     }
 
     /// Read the body for *sending*: any picture armed with "Recompress to
@@ -403,12 +403,12 @@ impl RichEditor {
     /// go through [`RichEditor::extract`], which never touches the pixels —
     /// a save must not cost quality.
     pub(super) fn extract_for_send(&self, cb: impl FnOnce(String, String) + 'static) {
-        self.read_body("window.__hylkiBodyHtmlForSend()", cb);
+        self.read_body("window.__tegamiBodyHtmlForSend()", cb);
     }
 
     /// Read the current body HTML and a plain-text rendering asynchronously.
     pub(crate) fn extract(&self, cb: impl FnOnce(String, String) + 'static) {
-        self.read_body("window.__hylkiBodyHtml()", cb);
+        self.read_body("window.__tegamiBodyHtml()", cb);
     }
 
     fn read_body(&self, reader: &str, cb: impl FnOnce(String, String) + 'static) {
@@ -416,7 +416,7 @@ impl RichEditor {
         // between the halves cut the text off and plain-text mail went out
         // empty (#297).
         self.webview.evaluate_javascript(
-            &format!("JSON.stringify([{reader}, window.__hylkiBodyText()])"),
+            &format!("JSON.stringify([{reader}, window.__tegamiBodyText()])"),
             None,
             None,
             gtk::gio::Cancellable::NONE,
@@ -475,7 +475,7 @@ fn show_emoji_chooser(webview: &webkit6::WebView, anchor: &gtk::Stack) {
     let weak = webview.downgrade();
     let anchor = anchor.downgrade();
     webview.evaluate_javascript(
-        "window.__hylkiEmojiMark ? window.__hylkiEmojiMark() : ''",
+        "window.__tegamiEmojiMark ? window.__tegamiEmojiMark() : ''",
         None,
         None,
         gtk::gio::Cancellable::NONE,
@@ -514,7 +514,7 @@ fn show_emoji_chooser(webview: &webkit6::WebView, anchor: &gtk::Stack) {
                 let text = serde_json::to_string(emoji).unwrap_or_default();
                 exec(
                     &v,
-                    &format!("window.__hylkiEmojiPut && window.__hylkiEmojiPut({text})"),
+                    &format!("window.__tegamiEmojiPut && window.__tegamiEmojiPut({text})"),
                 );
             });
             chooser.connect_closed(|c| {
@@ -549,7 +549,7 @@ fn fade_in(webview: &webkit6::WebView) {
     anim.set_easing(adw::Easing::EaseOutCubic);
     anim.play();
     unsafe {
-        webview.set_data("hylki-fade-anim", anim);
+        webview.set_data("tegami-fade-anim", anim);
     }
 }
 

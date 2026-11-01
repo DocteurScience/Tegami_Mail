@@ -80,7 +80,7 @@ fn spawn_badge_thread(
         let (tx, mut rx) = mpsc::unbounded_channel::<Vec<(String, Vec<String>)>>();
         let emit = emit.clone();
         std::thread::Builder::new()
-            .name(format!("hylki-threads-{account_id}"))
+            .name(format!("tegami-threads-{account_id}"))
             .spawn(move || {
                 while let Some(groups) = rx.blocking_recv() {
                     let start = std::time::Instant::now();

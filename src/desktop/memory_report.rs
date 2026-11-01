@@ -1,6 +1,6 @@
 //! The "Memory" section of an exported log: what the process tree is
 //! resident at, and how much of the main process is the mail index versus the
-//! session caches. Written for the "Hylki is using 2.6 GB" report, where the
+//! session caches. Written for the "Tegami Mail is using 2.6 GB" report, where the
 //! first question is always "is it the index, the caches, or WebKit?" and the
 //! answer used to take a back-and-forth. Nothing here is translated: it goes
 //! into the log file, which is English like every other line in it.
@@ -24,7 +24,7 @@ struct Proc {
 
 /// This process and every descendant, parents first. Inside the Flatpak
 /// sandbox `/proc` shows only the sandbox, so the tree is exactly what a
-/// system monitor lists under "Hylki": the app, WebKit's web and network
+/// system monitor lists under "Tegami Mail": the app, WebKit's web and network
 /// processes and their bwrap wrappers.
 fn process_tree() -> Vec<Proc> {
     let me = std::process::id();
@@ -105,7 +105,7 @@ fn describe(pid: u32) -> Option<Proc> {
 /// The global allocator: the system one, counting what Rust code holds.
 /// GTK, WebKit, SQLite, Mesa and the rest allocate through glibc directly,
 /// so the difference between [`allocator`] and [`rust_heap`] is theirs — the
-/// split that says whether a big heap is Hylki's own data or a library's.
+/// split that says whether a big heap is Tegami Mail's own data or a library's.
 pub(crate) struct CountingAllocator;
 
 static RUST_LIVE: std::sync::atomic::AtomicUsize = std::sync::atomic::AtomicUsize::new(0);
@@ -325,7 +325,7 @@ pub(crate) fn register_web_view(view: &webkit6::WebView, role: &'static str) {
 /// of every handle is NOT enough — WebKitGTK (2.52) keeps references of its
 /// own to an unparented view, so the view is never finalized and its
 /// WebKitWebProcess (170–450 MB each) runs on; a user's session monitor
-/// showed six of them under Hylki (#221). Every owner of a view that is
+/// showed six of them under Tegami Mail (#221). Every owner of a view that is
 /// finished with it calls this: closed composers, the released signature
 /// editor, closed pop-outs, finished prints.
 pub(crate) fn release_web_view(view: &webkit6::WebView) {
@@ -335,7 +335,7 @@ pub(crate) fn release_web_view(view: &webkit6::WebView) {
         v.borrow_mut()
             .retain(|(_, w)| w.upgrade().as_ref() != Some(view))
     });
-    tracing::debug!(target: "hylki::memory", "web view released, its web process ended");
+    tracing::debug!(target: "tegami::memory", "web view released, its web process ended");
 }
 
 /// The views still alive, as (role, count) pairs in first-created order.
@@ -400,7 +400,7 @@ pub(crate) fn uptime() -> Option<std::time::Duration> {
     // in parentheses may hold spaces, so count from after it.
     let after = &stat[stat.rfind(')')? + 1..];
     let ticks: f64 = after.split_whitespace().nth(19)?.parse().ok()?;
-    let ticks_per_second = 100.0; // CLK_TCK on every Linux Hylki builds for
+    let ticks_per_second = 100.0; // CLK_TCK on every Linux Tegami Mail builds for
     let started = ticks / ticks_per_second;
     Some(std::time::Duration::from_secs_f64(
         (system - started).max(0.0),
@@ -502,7 +502,7 @@ pub(crate) fn process_lines() -> Vec<String> {
     }
     let a = allocator();
     lines.push(format!(
-        "  hylki heap as the allocator sees it: {} live, {} freed but held, {} in large mapped blocks",
+        "  tegami heap as the allocator sees it: {} live, {} freed but held, {} in large mapped blocks",
         human_bytes(a.live as u64),
         human_bytes(a.held_free as u64),
         human_bytes(a.mapped as u64)

@@ -3,11 +3,11 @@
 
 use relm4::prelude::*;
 
-/// The HYLKI_SHOWCASE_CLICK_LINK probe: find the first web link in any
+/// The TEGAMI_SHOWCASE_CLICK_LINK probe: find the first web link in any
 /// message frame, say what the top document has at that point (the frame
 /// itself when nothing covers it), and click the link.
 pub(super) const CLICK_LINK_PROBE: &str =
-    "(function(){var fs=document.querySelectorAll('iframe.hylki-frame');\
+    "(function(){var fs=document.querySelectorAll('iframe.tegami-frame');\
 for(var i=0;i<fs.length;i++){var d=fs[i].contentDocument;if(!d)continue;\
 var a=d.querySelector('a[href^=\"http\"]');if(!a)continue;a.scrollIntoView({block:'center'});\
 var fr=fs[i].getBoundingClientRect(),r=a.getBoundingClientRect();\

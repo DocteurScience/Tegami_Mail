@@ -316,7 +316,7 @@ pub(crate) struct OutgoingMessage {
     /// normalized (no angle brackets), as [`crate::models::Message`] stores
     /// them. Empty for a message that starts a conversation. Without these
     /// headers a reply is a new thread to every client that receives it,
-    /// including Hylki.
+    /// including Tegami Mail.
     pub(crate) in_reply_to: String,
     pub(crate) references: String,
     /// The Message-ID of the message this forwards, normalized; empty for

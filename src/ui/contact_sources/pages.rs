@@ -167,8 +167,8 @@ impl ContactSources {
             page.append(&note);
         }
         let form: Option<(gtk::Widget, Rc<dyn Fn() -> bool>)> = match &source.kind {
-            Kind::Hylki => {
-                page.append(&self.hylki_group(sender));
+            Kind::Tegami Mail => {
+                page.append(&self.tegami_group(sender));
                 None
             }
             Kind::CardDav(a) => Some(carddav_form(
@@ -268,15 +268,15 @@ impl ContactSources {
         self.editor_slot.set_child(Some(&page));
     }
 
-    /// The Hylki book's own rows: its size, import, export, emptying.
-    fn hylki_group(&self, sender: &ComponentSender<Self>) -> adw::PreferencesGroup {
+    /// The Tegami Mail book's own rows: its size, import, export, emptying.
+    fn tegami_group(&self, sender: &ComponentSender<Self>) -> adw::PreferencesGroup {
         let group = adw::PreferencesGroup::new();
-        group.set_title(&i18n("Hylki Address Book"));
+        group.set_title(&i18n("Tegami Mail Address Book"));
         group.set_description(Some(&i18n(
-            "Kept in Hylki's own data folder. Works without GNOME.",
+            "Kept in Tegami Mail's own data folder. Works without GNOME.",
         )));
         let count = adw::ActionRow::new();
-        count.set_title(&i18n("Contacts in the Hylki book"));
+        count.set_title(&i18n("Contacts in the Tegami Mail book"));
         let n = gtk::Label::new(Some(&self.local_count.to_string()));
         n.add_css_class("dim-label");
         count.add_suffix(&n);
@@ -303,7 +303,7 @@ impl ContactSources {
         ));
         group.add(&action(
             i18n("Export as a vCard file"),
-            i18n("Saves every contact in the Hylki book in one .vcf file."),
+            i18n("Saves every contact in the Tegami Mail book in one .vcf file."),
             || ContactSourcesInput::ExportLocal,
             self.local_count > 0,
         ));
@@ -361,7 +361,7 @@ impl ContactSources {
             vbox.append(&detail);
             hbox.append(&vbox);
             let (label, tip) = match s.origin {
-                Origin::Hylki => (i18n("Hylki"), i18n("Set up in Hylki")),
+                Origin::Tegami Mail => (i18n("Tegami Mail"), i18n("Set up in Tegami Mail")),
                 Origin::Online => (i18n("GOA"), i18n("From GNOME Online Accounts")),
                 Origin::Evolution => (
                     i18n("Evolution"),
@@ -379,7 +379,7 @@ impl ContactSources {
             toggle.set_valign(gtk::Align::Center);
             toggle.set_active(s.on);
             toggle.set_sensitive(s.paused.is_none());
-            toggle.set_tooltip_text(Some(&i18n("Use in Hylki")));
+            toggle.set_tooltip_text(Some(&i18n("Use in Tegami Mail")));
             let input = sender.input_sender().clone();
             toggle.connect_state_set(move |_, on| {
                 let _ = input.send(ContactSourcesInput::Toggle { index: i, on });

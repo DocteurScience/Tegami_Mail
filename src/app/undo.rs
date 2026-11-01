@@ -347,7 +347,7 @@ impl AppModel {
                     .insert((entry.account_id, message_id.clone()), thread.clone());
             }
             tracing::debug!(
-                target: "hylki::undo",
+                target: "tegami::undo",
                 "carrying {} bodies and {} conversations over the move",
                 entry.rows.iter().filter(|m| !m.body.is_empty()).count(),
                 entry.threads.len(),
@@ -459,7 +459,7 @@ impl AppModel {
                 .push(m);
             added = true;
         }
-        tracing::debug!(target: "hylki::undo", "instant restore: added={added} to folder {folder_id}");
+        tracing::debug!(target: "tegami::undo", "instant restore: added={added} to folder {folder_id}");
         if !added {
             return;
         }
@@ -485,7 +485,7 @@ impl AppModel {
             .iter()
             .max_by_key(|m| m.timestamp)
             .map(|m| (account_id, m.id));
-        tracing::debug!(target: "hylki::undo", "instant restore: selecting {newest:?}");
+        tracing::debug!(target: "tegami::undo", "instant restore: selecting {newest:?}");
         if let Some(key) = newest {
             self.message_list.emit(MessageListInput::SelectAndLoad(key));
         }
@@ -610,7 +610,7 @@ impl AppModel {
             "win.redo",
             "<Control><Shift>z",
         ));
-        if std::env::var_os("HYLKI_SHOWCASE_COMPOSE_UNDO").is_some() {
+        if std::env::var_os("TEGAMI_SHOWCASE_COMPOSE_UNDO").is_some() {
             let mut chain = Vec::new();
             let mut node = gtk::prelude::GtkWindowExt::focus(&self.window);
             while let Some(w) = node {
@@ -618,7 +618,7 @@ impl AppModel {
                 node = w.parent();
             }
             tracing::info!(
-                target: "hylki::compose::undo",
+                target: "tegami::compose::undo",
                 "menu: composing={composing} undo={undo_what:?} redo={redo_what:?} focus=[{}]",
                 chain.join(" < ")
             );

@@ -260,7 +260,7 @@ pub(super) fn matches_query(c: &ContactDetails, q: &str) -> bool {
             .any(|m| m.name.to_lowercase().contains(q) || m.email.to_lowercase().contains(q))
 }
 
-/// Ask for `.vcf` files to import into the Hylki book, and hand their paths
+/// Ask for `.vcf` files to import into the Tegami Mail book, and hand their paths
 /// to `done` (never called for a cancelled dialog or no files).
 pub(crate) fn choose_vcf_files(
     parent: Option<&gtk::Window>,

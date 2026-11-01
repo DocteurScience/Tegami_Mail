@@ -298,7 +298,7 @@ impl AppModel {
 
     /// Tear down a composer by id (from a Close output or a window's close-request).
     pub(super) fn close_compose(&mut self, id: u32) {
-        tracing::debug!(target: "hylki::compose", "composer {id} closed");
+        tracing::debug!(target: "tegami::compose", "composer {id} closed");
         if let Some(pos) = self.composers.iter().position(|h| h.id == id) {
             let host = self.composers.remove(pos);
             host.window.set_content(None::<&gtk::Widget>);
@@ -317,7 +317,7 @@ impl AppModel {
                     match self.arriving.take().filter(|(cid, _, _)| *cid == id) {
                         Some((_, m, animated)) => {
                             if !animated {
-                                tracing::info!(target: "hylki::morph", "no send morph: animations are off");
+                                tracing::info!(target: "tegami::morph", "no send morph: animations are off");
                             }
                             if !(animated
                                 && self.begin_send_morph(

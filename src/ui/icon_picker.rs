@@ -146,7 +146,7 @@ fn build(selected: &str, tile: i32, per_line: u32, on_pick: Rc<dyn Fn(&str)>) ->
         }
     }
     // An empty `selected` rings nothing: the launcher shows an icon set
-    // outside Hylki (#252), and every tile, the default's too, is a pick.
+    // outside Tegami Mail (#252), and every tile, the default's too, is a pick.
     let fallback = || {
         if selected.is_empty() {
             None

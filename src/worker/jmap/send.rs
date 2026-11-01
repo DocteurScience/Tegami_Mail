@@ -50,7 +50,7 @@ pub(super) fn emit_jmap_identities(s: &JmapSession, emit: &impl Fn(WorkerEvent))
                 })
                 .collect(),
         )),
-        Err(e) => tracing::info!(target: "hylki::jmap", "Identity/get: {e}"),
+        Err(e) => tracing::info!(target: "tegami::jmap", "Identity/get: {e}"),
     }
 }
 

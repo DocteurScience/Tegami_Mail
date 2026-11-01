@@ -6,7 +6,7 @@ use super::messages::SignInResult;
 use super::providers::provider_at;
 use super::*;
 
-/// The editor's sign-in: in a window of Hylki's own for a redirect Hylki
+/// The editor's sign-in: in a window of Tegami Mail's own for a redirect Tegami Mail
 /// cannot listen on (#329), otherwise in the browser. `user` is the address
 /// typed, which picks the identity broker's account and, with `hint`, the
 /// account Microsoft signs in (#410). The answer comes back through `wrap`.

@@ -13,10 +13,10 @@ pub(crate) fn seed_demo_cache(cache: &crate::cache::Cache) {
     let mock = MockBackend::new();
     seed_sample_mail(cache, &mock);
     seed_sample_attachments(cache, &mock);
-    // HYLKI_DEMO_ATTACHMENTS=N adds N more attachments per account, spread back
+    // TEGAMI_DEMO_ATTACHMENTS=N adds N more attachments per account, spread back
     // over twenty years — the shape of a real archive, for exercising the
     // gallery's paging and its scroll.
-    if let Some(n) = std::env::var("HYLKI_DEMO_ATTACHMENTS")
+    if let Some(n) = std::env::var("TEGAMI_DEMO_ATTACHMENTS")
         .ok()
         .and_then(|v| v.parse::<u32>().ok())
     {

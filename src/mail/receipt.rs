@@ -193,7 +193,7 @@ pub(crate) fn report_fields(
     message_id: &str,
     automatic: bool,
 ) -> String {
-    let mut out = String::from("Reporting-UA: Hylki\r\n");
+    let mut out = String::from("Reporting-UA: Tegami Mail\r\n");
     if !request.original_recipient.is_empty() {
         out.push_str(&format!(
             "Original-Recipient: {}\r\n",
@@ -284,7 +284,7 @@ mod tests {
         };
         assert_eq!(
             report_fields("me@example.com", &r, "abc@example.org", false),
-            "Reporting-UA: Hylki\r\n\
+            "Reporting-UA: Tegami Mail\r\n\
              Original-Recipient: rfc822;me@example.com\r\n\
              Final-Recipient: rfc822;me@example.com\r\n\
              Original-Message-ID: <abc@example.org>\r\n\
@@ -356,7 +356,7 @@ mod tests {
     }
 
     #[test]
-    fn a_receipt_hylki_sends_reads_back() {
+    fn a_receipt_tegami_sends_reads_back() {
         let request = ReceiptRequest {
             to: "me@example.com".into(),
             ..Default::default()

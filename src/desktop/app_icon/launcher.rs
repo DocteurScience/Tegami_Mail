@@ -1,14 +1,14 @@
 //! The launcher: a copy of the desktop entry in the user's applications
 //! directory pointing at the chosen icon, and the `mimeinfo.cache` beside
-//! it that keeps Hylki the mail handler while the copy exists.
+//! it that keeps Tegami Mail the mail handler while the copy exists.
 
 use std::path::PathBuf;
 
 use super::{host_data_home, icon_is_ours};
 
-/// Marker key in a launcher Hylki wrote, so only its own files are ever
+/// Marker key in a launcher Tegami Mail wrote, so only its own files are ever
 /// removed or regenerated.
-const LAUNCHER_MARK: &str = "X-Hylki-Icon-Launcher";
+const LAUNCHER_MARK: &str = "X-Tegami Mail-Icon-Launcher";
 
 /// When the launcher was last written by this process.
 static LAST_LAUNCHER_WRITE: std::sync::Mutex<Option<std::time::Instant>> =
@@ -136,7 +136,7 @@ impl Launcher {
         Launcher::None
     }
 
-    /// The launcher's `Icon=` value, when Hylki did not write it. A menu
+    /// The launcher's `Icon=` value, when Tegami Mail did not write it. A menu
     /// editor keeps our mark when it edits our copy, so the value is what
     /// is judged, not the mark.
     pub(super) fn custom_icon(&self) -> Option<String> {
@@ -218,9 +218,9 @@ fn flatpak_exec() -> Option<(String, String)> {
         .split_once(&format!("/app/{}/", crate::APP_ID))
         .map(|(root, _)| root.to_string())?;
     // `%U` as in the shipped entry: one launch for every selected file, so
-    // "Send with Hylki" from Files attaches them all to the same message.
+    // "Send with Tegami Mail" from Files attaches them all to the same message.
     let exec = format!(
-        "flatpak run --branch={branch} --arch={arch} --command=hylki --file-forwarding {} @@u %U @@",
+        "flatpak run --branch={branch} --arch={arch} --command=tegami --file-forwarding {} @@u %U @@",
         crate::APP_ID
     );
     Some((exec, format!("{root}/exports/bin/{}", crate::APP_ID)))
@@ -367,7 +367,7 @@ fn action_exec(exec: &str, args: &str) -> String {
 /// own cache, and an entry in the user's directory masks every entry of
 /// the same id in the directories after it. So from the moment the icon
 /// chooser's copy of the launcher exists, the Flatpak export's cache no
-/// longer speaks for `co.hyprlab.Hylki.desktop`: unless the user
+/// longer speaks for `io.github.DocteurScience.TegamiMail.desktop`: unless the user
 /// directory's cache names it too, the desktop has no email client at all
 /// (Settings shows "No Apps Available" for Mail, a browser offers only web
 /// mail for a mailto: link, #242). Nothing on the host rebuilds that cache
@@ -503,10 +503,10 @@ mod tests {
     #[test]
     fn desktop_entries_are_read_from_the_main_group() {
         let entry = "[Desktop Action compose]\nExec=other --compose\n\n\
-                     [Desktop Entry]\nExec=hylki %U\nMimeType=x-scheme-handler/mailto;message/rfc822;\n";
+                     [Desktop Entry]\nExec=tegami %U\nMimeType=x-scheme-handler/mailto;message/rfc822;\n";
         assert_eq!(
             super::desktop_value(entry, "Exec").as_deref(),
-            Some("hylki %U")
+            Some("tegami %U")
         );
         assert_eq!(
             super::desktop_mime_types(entry),
@@ -519,7 +519,7 @@ mod tests {
     /// its output is what the expectation below is copied from.
     fn fixture(name: &str) -> PathBuf {
         let dir =
-            std::env::temp_dir().join(format!("hylki-mime-cache-{name}-{}", std::process::id()));
+            std::env::temp_dir().join(format!("tegami-mime-cache-{name}-{}", std::process::id()));
         let _ = std::fs::remove_dir_all(&dir);
         std::fs::create_dir_all(dir.join("sub")).unwrap();
         std::fs::write(
@@ -573,8 +573,8 @@ mod tests {
     /// adds stay in the main group.
     #[test]
     fn a_launcher_copy_keeps_its_actions() {
-        let base = "[Desktop Entry]\nName=Hylki\nExec=hylki %U\nIcon=co.hyprlab.Hylki\nActions=new-message;\n\n[Desktop Action new-message]\nName=New Message\nExec=hylki mailto:\n";
-        let host = format!("flatpak run --branch=stable --arch=x86_64 --command=hylki --file-forwarding {} @@u %U @@", crate::APP_ID);
+        let base = "[Desktop Entry]\nName=Tegami Mail\nExec=tegami %U\nIcon=io.github.DocteurScience.TegamiMail\nActions=new-message;\n\n[Desktop Action new-message]\nName=New Message\nExec=tegami mailto:\n";
+        let host = format!("flatpak run --branch=stable --arch=x86_64 --command=tegami --file-forwarding {} @@u %U @@", crate::APP_ID);
         let out = shadow_text(base, "/icons/x.png", Some(&host), "/exports/bin/x", true);
         let (main, action) = out.split_once("[Desktop Action new-message]").unwrap();
         assert!(main.contains(&format!("Exec={host}\n")));
@@ -587,19 +587,19 @@ mod tests {
         );
         assert_eq!(
             action,
-            format!("\nName=New Message\nExec=flatpak run --branch=stable --arch=x86_64 --command=hylki {} mailto:\n", crate::APP_ID)
+            format!("\nName=New Message\nExec=flatpak run --branch=stable --arch=x86_64 --command=tegami {} mailto:\n", crate::APP_ID)
         );
         // Outside Flatpak the action is left as it is.
-        let out = shadow_text(base, "/icons/x.png", None, "/usr/bin/hylki", false);
-        assert!(out.contains("Exec=hylki %U\n") && out.contains("Exec=hylki mailto:\n"));
+        let out = shadow_text(base, "/icons/x.png", None, "/usr/bin/tegami", false);
+        assert!(out.contains("Exec=tegami %U\n") && out.contains("Exec=tegami mailto:\n"));
         assert!(out
             .split_once("[Desktop Action")
             .unwrap()
             .0
-            .contains("TryExec=/usr/bin/hylki"));
+            .contains("TryExec=/usr/bin/tegami"));
         // A launcher with no action still ends with the added keys.
         let out = shadow_text(
-            "[Desktop Entry]\nName=Hylki\nExec=hylki %U\n",
+            "[Desktop Entry]\nName=Tegami Mail\nExec=tegami %U\n",
             "i",
             None,
             "",
@@ -609,14 +609,14 @@ mod tests {
     }
 
     #[test]
-    fn a_launcher_edited_outside_hylki_reports_its_icon() {
-        let dir = std::env::temp_dir().join(format!("hylki-custom-icon-{}", std::process::id()));
+    fn a_launcher_edited_outside_tegami_reports_its_icon() {
+        let dir = std::env::temp_dir().join(format!("tegami-custom-icon-{}", std::process::id()));
         std::fs::create_dir_all(&dir).unwrap();
         let path = dir.join("launcher.desktop");
         // A menu editor keeps our mark when it edits our copy.
         std::fs::write(
             &path,
-            format!("[Desktop Entry]\nName=Hylki\nIcon=Papirus-mail\n{LAUNCHER_MARK}=1\n"),
+            format!("[Desktop Entry]\nName=Tegami Mail\nIcon=Papirus-mail\n{LAUNCHER_MARK}=1\n"),
         )
         .unwrap();
         assert_eq!(
@@ -625,7 +625,7 @@ mod tests {
         );
         std::fs::write(
             &path,
-            format!("[Desktop Entry]\nName=Hylki\nIcon={}\n", crate::APP_ID),
+            format!("[Desktop Entry]\nName=Tegami Mail\nIcon={}\n", crate::APP_ID),
         )
         .unwrap();
         assert_eq!(Launcher::Owned(path.clone()).custom_icon(), None);
@@ -633,29 +633,29 @@ mod tests {
         let _ = std::fs::remove_dir_all(&dir);
     }
 
-    /// The whole launcher copy, byte for byte: the keys Hylki adds go at
+    /// The whole launcher copy, byte for byte: the keys Tegami Mail adds go at
     /// the end of the main group, before its blank line, and an action's
     /// command keeps its own arguments.
     #[test]
     fn a_launcher_copy_is_written_exactly() {
-        let base = "[Desktop Entry]\nName=Hylki\nExec=hylki %U\nIcon=co.hyprlab.Hylki\nActions=new-message;\n\n[Desktop Action new-message]\nName=New Message\nExec=hylki mailto:\n";
+        let base = "[Desktop Entry]\nName=Tegami Mail\nExec=tegami %U\nIcon=io.github.DocteurScience.TegamiMail\nActions=new-message;\n\n[Desktop Action new-message]\nName=New Message\nExec=tegami mailto:\n";
         let host = format!(
-            "flatpak run --branch=stable --arch=x86_64 --command=hylki --file-forwarding {} @@u %U @@",
+            "flatpak run --branch=stable --arch=x86_64 --command=tegami --file-forwarding {} @@u %U @@",
             crate::APP_ID
         );
         let id = crate::APP_ID;
         assert_eq!(
             shadow_text(base, "/icons/x.png", Some(&host), "/exports/bin/x", true),
             format!(
-                "[Desktop Entry]\nName=Hylki\nExec={host}\nIcon=/icons/x.png\nActions=new-message;\nTryExec=/exports/bin/x\nX-Flatpak={id}\n{LAUNCHER_MARK}=1\n\n[Desktop Action new-message]\nName=New Message\nExec=flatpak run --branch=stable --arch=x86_64 --command=hylki {id} mailto:\n"
+                "[Desktop Entry]\nName=Tegami Mail\nExec={host}\nIcon=/icons/x.png\nActions=new-message;\nTryExec=/exports/bin/x\nX-Flatpak={id}\n{LAUNCHER_MARK}=1\n\n[Desktop Action new-message]\nName=New Message\nExec=flatpak run --branch=stable --arch=x86_64 --command=tegami {id} mailto:\n"
             )
         );
         // Keys from an earlier copy are dropped and written once; an action
         // group's own Icon and Exec are left alone without a host command.
-        let old = format!("[Desktop Entry]\nTryExec=old\nIcon=a\nX-Flatpak=old\n{LAUNCHER_MARK}=1\nExec=hylki %U\n[Desktop Action x]\nIcon=b\nExec=hylki --x\n");
+        let old = format!("[Desktop Entry]\nTryExec=old\nIcon=a\nX-Flatpak=old\n{LAUNCHER_MARK}=1\nExec=tegami %U\n[Desktop Action x]\nIcon=b\nExec=tegami --x\n");
         assert_eq!(
             shadow_text(&old, "NEW", None, "", false),
-            format!("[Desktop Entry]\nIcon=NEW\nExec=hylki %U\n{LAUNCHER_MARK}=1\n[Desktop Action x]\nIcon=b\nExec=hylki --x\n")
+            format!("[Desktop Entry]\nIcon=NEW\nExec=tegami %U\n{LAUNCHER_MARK}=1\n[Desktop Action x]\nIcon=b\nExec=tegami --x\n")
         );
     }
 
@@ -663,12 +663,12 @@ mod tests {
     fn an_action_runs_the_host_command_with_its_own_arguments() {
         assert_eq!(
             action_exec(
-                "flatpak run --command=hylki --file-forwarding co.x @@u %U @@",
+                "flatpak run --command=tegami --file-forwarding co.x @@u %U @@",
                 "mailto:"
             ),
-            "flatpak run --command=hylki co.x mailto:"
+            "flatpak run --command=tegami co.x mailto:"
         );
-        assert_eq!(action_exec("hylki", ""), "hylki");
+        assert_eq!(action_exec("tegami", ""), "tegami");
         assert_eq!(action_exec("x --file-forwarding y", ""), "x y");
     }
 

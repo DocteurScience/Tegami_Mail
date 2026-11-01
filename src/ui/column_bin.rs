@@ -25,7 +25,7 @@ mod imp {
 
     #[glib::object_subclass]
     impl ObjectSubclass for ColumnBin {
-        const NAME: &'static str = "HylkiColumnBin";
+        const NAME: &'static str = "TegamiColumnBin";
         type Type = super::ColumnBin;
         type ParentType = gtk::Widget;
     }

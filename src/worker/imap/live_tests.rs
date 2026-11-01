@@ -123,7 +123,7 @@ fn live_strip_attachment() {
         }),
         ..sample_account()
     };
-    let msgid = format!("strip-{}@hylki.test", crate::datefmt::now());
+    let msgid = format!("strip-{}@tegami.test", crate::datefmt::now());
     let raw = strip::MIXED.replace("r1@example.org", &msgid);
     let rt = tokio::runtime::Builder::new_current_thread()
         .enable_all()
@@ -225,9 +225,9 @@ fn live_draft_comes_back_whole() {
         }),
         ..sample_account()
     };
-    let file = std::env::temp_dir().join(format!("hylki-350-{}.txt", std::process::id()));
+    let file = std::env::temp_dir().join(format!("tegami-350-{}.txt", std::process::id()));
     std::fs::write(&file, b"notes").expect("write");
-    let subject = format!("hylki-350-{}", std::process::id());
+    let subject = format!("tegami-350-{}", std::process::id());
     let msg = OutgoingMessage {
         from_alias: Some("Work <work@example.com>".into()),
         to: "ada@example.com".into(),
@@ -291,7 +291,7 @@ fn live_template_is_saved_as_read_mail() {
         ..sample_account()
     };
     let folder = format!("Templates-{}", std::process::id());
-    let subject = format!("hylki-360-{}", std::process::id());
+    let subject = format!("tegami-360-{}", std::process::id());
     let msg = OutgoingMessage {
         subject: subject.clone(),
         html: "<p>template text</p>".into(),
@@ -367,7 +367,7 @@ fn live_reply_is_filed_beside_its_original() {
     };
     let pid = std::process::id();
     let folder = format!("Project-{pid}");
-    let parent = format!("hylki-468-{pid}@example.test");
+    let parent = format!("tegami-468-{pid}@example.test");
     let original = format!(
         "From: Ada <ada@example.test>\r\nTo: {}\r\nSubject: Plans {pid}\r\nMessage-ID: <{parent}>\r\n\
          Date: Fri, 16 Oct 2026 10:00:00 +0000\r\n\r\nShall we plan?\r\n",
@@ -496,7 +496,7 @@ fn live_idle_catches_mail_that_landed_between_commands() {
     rt.block_on(async {
         let mut sess = connect(&account).await.expect("connect");
         load_messages(7, &mut sess, 1, "INBOX", true, None).await.expect("load");
-        let subject = format!("hylki-336-{}", std::process::id());
+        let subject = format!("tegami-336-{}", std::process::id());
         let raw = format!(
             "From: a@example.test\r\nTo: b@example.test\r\nSubject: {subject}\r\nMessage-ID: <{subject}@example.test>\r\n\r\nhello\r\n"
         );
@@ -521,7 +521,7 @@ fn live_idle_catches_mail_that_landed_between_commands() {
 
 /// A folder moved with a sub-folder keeps both subscribed at their new
 /// names, so a client showing subscribed folders only still sees them.
-/// `IMAP_LIVE=host,port,user,password cargo test --bin hylki
+/// `IMAP_LIVE=host,port,user,password cargo test --bin tegami
 /// worker::imap::live_tests::live_rename_moves_subscriptions -- --ignored`
 #[test]
 #[ignore]
@@ -549,10 +549,10 @@ fn live_rename_moves_subscriptions() {
     rt.block_on(async {
         let mut sess = connect(&account).await.expect("connect");
         let delim = session_delimiter(&mut sess).await;
-        let (old, sub) = ("Hylki Rig".to_string(), format!("Hylki Rig{delim}Sub one"));
+        let (old, sub) = ("Tegami Mail Rig".to_string(), format!("Tegami Mail Rig{delim}Sub one"));
         let (new, new_sub) = (
-            "Hylki Rig Moved".to_string(),
-            format!("Hylki Rig Moved{delim}Sub one"),
+            "Tegami Mail Rig Moved".to_string(),
+            format!("Tegami Mail Rig Moved{delim}Sub one"),
         );
         for f in [&old, &sub] {
             create_box(&mut sess, f).await.expect("create");
@@ -582,7 +582,7 @@ fn live_rename_moves_subscriptions() {
 /// [SERVERBUG]. The background index leaves it out after one try, on the
 /// same session, instead of asking again in a loop.
 /// `IMAP_LIVE=host,port,user,password IMAP_LIVE_REFUSED=dovecot.sieve
-/// cargo test --bin hylki worker::imap::live_tests::live_backfill_leaves_refused_folder
+/// cargo test --bin tegami worker::imap::live_tests::live_backfill_leaves_refused_folder
 /// -- --ignored`
 #[test]
 #[ignore]
@@ -658,13 +658,13 @@ async fn session_delimiter(sess: &mut ImapSession) -> String {
 
 /// Where the time goes when a message is opened (#259): every step
 /// `render_raw` takes, per message of a directory of saved .eml files.
-/// `HYLKI_OPEN_TIMING=<dir> cargo test --release --bin hylki
+/// `TEGAMI_OPEN_TIMING=<dir> cargo test --release --bin tegami
 /// worker::imap::live_tests::open_timing -- --ignored --nocapture`
 #[test]
 #[ignore]
 fn open_timing() {
     use std::time::{Duration, Instant};
-    let Ok(dir) = std::env::var("HYLKI_OPEN_TIMING") else {
+    let Ok(dir) = std::env::var("TEGAMI_OPEN_TIMING") else {
         return;
     };
     let mut paths: Vec<_> = std::fs::read_dir(&dir)
@@ -759,9 +759,9 @@ fn live_snoozed_mail_comes_back_unread() {
     };
     let pid = std::process::id();
     let snoozed = format!("Snoozed-{pid}");
-    let mid = format!("hylki-527-{pid}@example.test");
+    let mid = format!("tegami-527-{pid}@example.test");
     let raw = format!(
-        "From: Ann <ann@example.test>\r\nTo: me@example.test\r\nSubject: hylki-527-{pid}\r\n\
+        "From: Ann <ann@example.test>\r\nTo: me@example.test\r\nSubject: tegami-527-{pid}\r\n\
          Message-ID: <{mid}>\r\nDate: Sun, 25 Oct 2026 08:00:00 +0000\r\n\r\nlater\r\n"
     );
     let rt = tokio::runtime::Builder::new_current_thread()
@@ -909,7 +909,7 @@ fn live_offline_period_is_kept() {
             .to_rfc2822();
         format!(
             "From: Ann <ann@example.test>\r\nTo: me@example.test\r\nSubject: offline {n}\r\n\
-             Message-ID: <hylki-536-{pid}-{n}@example.test>\r\nDate: {date}\r\n\
+             Message-ID: <tegami-536-{pid}-{n}@example.test>\r\nDate: {date}\r\n\
              MIME-Version: 1.0\r\nContent-Type: multipart/mixed; boundary=b\r\n\r\n\
              --b\r\nContent-Type: text/plain\r\n\r\nbody {n}\r\n\
              --b\r\nContent-Type: application/octet-stream\r\n\

@@ -158,7 +158,7 @@ impl AttachmentDrawer {
     /// Ask the app to show its full-window lightbox over the message's
     /// previewable attachments (images and PDFs), starting at `start`
     /// (attachments order). The overlay lives at the window level so it fills
-    /// Hylki itself — a separate preview window meant double chrome.
+    /// Tegami Mail itself — a separate preview window meant double chrome.
     fn show_lightbox(&self, start: usize, sender: &ComponentSender<Self>) {
         let items: Vec<Attachment> = self
             .items

@@ -219,7 +219,7 @@ mod tests {
             ] {
                 let raw = format!(
                     "From: Ann <ann@example.test>\r\nTo: me@example.test\r\nSubject: note {n}\r\n\
-                     Message-ID: <hylki-509-{pid}-{n}@example.test>\r\n\r\n{body}\r\n"
+                     Message-ID: <tegami-509-{pid}-{n}@example.test>\r\n\r\n{body}\r\n"
                 );
                 append_dated(&mut sess, &folder, None, None, raw.as_bytes())
                     .await
@@ -251,7 +251,7 @@ mod tests {
             assert_eq!(subjects(phrase), ["note 1"]);
             let named = cache.indexed_message_ids(1, &folder, &rossi);
             assert_eq!(named.len(), 2);
-            assert!(named.iter().all(|(_, id)| id.contains("hylki-509")));
+            assert!(named.iter().all(|(_, id)| id.contains("tegami-509")));
             delete_box(&mut sess, &folder).await.expect("clean up");
         });
     }

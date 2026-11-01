@@ -439,7 +439,7 @@ impl Compose {
             self.rebuild_attachments(&widgets.attach_box, sender);
             let parent = widgets.to_row.root().and_downcast::<gtk::Window>();
             alert(parent.as_ref(), &i18n("An attachment is missing"), &i18n_f(
-                "Hylki cannot read {names}. It was moved or deleted after it was attached. Remove it, or attach it again from where it is now.",
+                "Tegami Mail cannot read {names}. It was moved or deleted after it was attached. Remove it, or attach it again from where it is now.",
                 &[("names", &missing.join(", "))],
             ));
             return false;

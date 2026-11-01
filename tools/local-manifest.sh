@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 #
 # Emit a copy of the Flatpak manifest that builds the *working tree* instead of
-# the tagged commit pinned in co.hyprlab.Hylki.yml.
+# the tagged commit pinned in io.github.DocteurScience.TegamiMail.yml.
 #
-#   tools/local-manifest.sh /tmp/hylki-local.yml
-#   tools/local-manifest.sh /tmp/hylki-beta.yml path/to/co.hyprlab.Hylki.Beta.yml
+#   tools/local-manifest.sh /tmp/tegami-local.yml
+#   tools/local-manifest.sh /tmp/tegami-beta.yml path/to/io.github.DocteurScience.TegamiMail.Beta.yml
 #
 # The second argument picks another manifest; the tree it builds is the one
 # that manifest sits in. The beta's lives on the beta branch only, and the
@@ -25,10 +25,10 @@
 set -euo pipefail
 
 HERE="$(cd "$(dirname "$0")/.." && pwd)"
-SRC="${2:-$HERE/co.hyprlab.Hylki.yml}"
+SRC="${2:-$HERE/io.github.DocteurScience.TegamiMail.yml}"
 ROOT="$(cd "$(dirname "$SRC")" && pwd)"
 SRC="$ROOT/$(basename "$SRC")"
-OUT="${1:-$ROOT/co.hyprlab.Hylki.local.yml}"
+OUT="${1:-$ROOT/io.github.DocteurScience.TegamiMail.local.yml}"
 
 python3 - "$SRC" "$OUT" "$ROOT" <<'PY'
 import re, sys
@@ -40,7 +40,7 @@ manifest = open(src).read()
 # output and the signed repo out of the copy flatpak-builder makes.
 pinned = re.compile(
     r"      - type: git\n"
-    r"        url: https://github\.com/hyprlab/hylki\.git\n"
+    r"        url: https://github\.com/hyprlab/tegami\.git\n"
     r"        tag: v[0-9][0-9A-Za-z.-]*\n"
     r"        commit: [0-9a-f]+\n"
 )

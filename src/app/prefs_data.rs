@@ -86,7 +86,7 @@ impl AppModel {
             PrefOutput::ExportLocalContacts => {
                 let dialog = gtk::FileDialog::builder()
                     .title(i18n("Export Contacts"))
-                    .initial_name("hylki-contacts.vcf")
+                    .initial_name("tegami-contacts.vcf")
                     .build();
                 let notif = self.notifications.sender().clone();
                 dialog.save(
@@ -121,8 +121,8 @@ impl AppModel {
                     self.dialog_parent().as_ref(),
                     &i18n("Delete All Contacts?"),
                     &ni18n_f(
-                        "The {n} contact in the Hylki address book is deleted. This cannot be undone; export the book first to keep a copy.",
-                        "The {n} contacts in the Hylki address book are deleted. This cannot be undone; export the book first to keep a copy.",
+                        "The {n} contact in the Tegami Mail address book is deleted. This cannot be undone; export the book first to keep a copy.",
+                        "The {n} contacts in the Tegami Mail address book are deleted. This cannot be undone; export the book first to keep a copy.",
                         n as u32,
                         &[("n", &n.to_string())],
                     ),
@@ -140,7 +140,7 @@ impl AppModel {
 
             PrefOutput::ExportSettings => self.export_to_chosen_file(
                 &i18n("Export Settings"),
-                "hylki-settings.toml",
+                "tegami-settings.toml",
                 |path| {
                     crate::config::export_bundle()
                         .and_then(|t| std::fs::write(path, t).map_err(|e| e.to_string()))
@@ -156,7 +156,7 @@ impl AppModel {
             PrefOutput::ExportLog => {
                 let title = i18n("Export Log");
                 let name = format!(
-                    "hylki-log-{}.txt",
+                    "tegami-log-{}.txt",
                     chrono::Local::now().format("%Y%m%d-%H%M")
                 );
                 // Measured now, while the model is at hand: the chooser's
@@ -242,14 +242,14 @@ impl AppModel {
                     Some(i18n("Settings Imported").as_str()),
                     Some(&i18n_f(
                         "{n} mail account(s), the cloud storage accounts and all \
-                                 preferences were imported. Restart Hylki to apply them. \
+                                 preferences were imported. Restart Tegami Mail to apply them. \
                                  Passwords and sign-ins are not part of a backup; re-enter \
                                  them on first use if this is a new machine.",
                         &[("n", &n.to_string())],
                     )),
                 );
                 alert.add_response("later", &i18n("Later"));
-                alert.add_response("restart", &i18n("Restart Hylki"));
+                alert.add_response("restart", &i18n("Restart Tegami Mail"));
                 alert.set_response_appearance("restart", adw::ResponseAppearance::Suggested);
                 alert.connect_response(None, |_, resp| {
                     if resp == "restart" {

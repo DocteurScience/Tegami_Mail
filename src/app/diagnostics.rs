@@ -48,7 +48,7 @@ impl AppModel {
     /// The memory section of an exported log: the process tree as the
     /// kernel sees it, then what the main process is holding — the mail
     /// index (whose size follows the mailbox, not the session) apart from the
-    /// session caches (which follow use). Written so a "Hylki is using N GB"
+    /// session caches (which follow use). Written so a "Tegami Mail is using N GB"
     /// report answers itself: a big index on a big mailbox is the accepted
     /// cost of keeping everything in RAM; a big cache is something to fix.
     pub(super) fn memory_report(&self) -> String {
@@ -271,7 +271,7 @@ impl AppModel {
 pub(super) fn start_heap_trim() {
     gtk::glib::timeout_add_seconds_local(30, || {
         if let Some(held) = crate::desktop::memory_report::trim_if_worthwhile() {
-            tracing::debug!(target: "hylki::memory", "trimmed the heap: {} was freed but held", crate::desktop::memory_report::human_bytes(held as u64));
+            tracing::debug!(target: "tegami::memory", "trimmed the heap: {} was freed but held", crate::desktop::memory_report::human_bytes(held as u64));
         }
         gtk::glib::ControlFlow::Continue
     });

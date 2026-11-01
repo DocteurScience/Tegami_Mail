@@ -138,11 +138,11 @@ pub(super) fn wire_drawer_edge(
     );
 }
 
-/// HYLKI_SHOWCASE_DRAWER=N clicks the header's count button N times,
+/// TEGAMI_SHOWCASE_DRAWER=N clicks the header's count button N times,
 /// one a second from 6s — the real button press, so the capture proves
 /// the click path and not just the input it sends.
 pub(super) fn showcase_clicks(btn: &gtk::Button) {
-    if let Some(Ok(n)) = std::env::var("HYLKI_SHOWCASE_DRAWER")
+    if let Some(Ok(n)) = std::env::var("TEGAMI_SHOWCASE_DRAWER")
         .ok()
         .map(|v| v.parse::<u32>())
     {

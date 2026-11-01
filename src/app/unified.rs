@@ -319,7 +319,7 @@ impl AppModel {
         // watched over the switch should see the memory go.
         gtk::glib::timeout_add_seconds_local_once(3, || {
             if let Some(held) = crate::desktop::memory_report::trim_if_worthwhile() {
-                tracing::debug!(target: "hylki::memory", "trimmed the heap: {} was freed but held", crate::desktop::memory_report::human_bytes(held as u64));
+                tracing::debug!(target: "tegami::memory", "trimmed the heap: {} was freed but held", crate::desktop::memory_report::human_bytes(held as u64));
             }
         });
     }

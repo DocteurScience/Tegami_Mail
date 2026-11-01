@@ -4,8 +4,8 @@
 //! The reader's web context runs WebKit's document-viewer cache model (#106),
 //! which turns the HTTP cache off, so a message shown a second time fetched all
 //! of its pictures again. Allowed remote URLs are now rewritten to
-//! `hylki-http(s)://` (see `route`), and the handler registered for those
-//! schemes answers from `~/.cache/hylki/remote`, fetching on a miss. That also
+//! `tegami-http(s)://` (see `route`), and the handler registered for those
+//! schemes answers from `~/.cache/tegami/remote`, fetching on a miss. That also
 //! makes fetching ahead possible: with the Privacy switch on, the next
 //! messages in the list have their remote content fetched while the current
 //! one is read.
@@ -24,7 +24,7 @@ use gtk::{gio, glib};
 pub(crate) use store::Entry;
 
 /// The schemes the reader's markup is rewritten to.
-const SCHEMES: [&str; 2] = ["hylki-http", "hylki-https"];
+const SCHEMES: [&str; 2] = ["tegami-http", "tegami-https"];
 
 /// At most this many URLs are fetched ahead for one message, and for one
 /// selection: a newsletter can carry hundreds of spacer images.
@@ -36,11 +36,11 @@ const AHEAD_TOTAL: usize = 200;
 pub(crate) fn route(url: &str) -> Option<String> {
     let lower = url.get(..6).unwrap_or(url).to_ascii_lowercase();
     if url.starts_with("//") {
-        Some(format!("hylki-https:{url}"))
+        Some(format!("tegami-https:{url}"))
     } else if lower.starts_with("https:") {
-        Some(format!("hylki-https:{}", &url[6..]))
+        Some(format!("tegami-https:{}", &url[6..]))
     } else if lower.starts_with("http:") {
-        Some(format!("hylki-http:{}", &url[5..]))
+        Some(format!("tegami-http:{}", &url[5..]))
     } else {
         None
     }
@@ -48,7 +48,7 @@ pub(crate) fn route(url: &str) -> Option<String> {
 
 /// The web URL behind a routed one, as WebKit asks for it.
 fn origin_url(routed: &str) -> Option<String> {
-    let rest = routed.strip_prefix("hylki-")?;
+    let rest = routed.strip_prefix("tegami-")?;
     let lower = rest.get(..6).unwrap_or(rest).to_ascii_lowercase();
     (lower.starts_with("https:") || lower.starts_with("http:")).then(|| canonical(rest))
 }
@@ -131,10 +131,10 @@ pub(crate) fn register(ctx: &webkit6::WebContext) {
 /// Let `view`'s pages load from the cached schemes. WebKitGTK shows a
 /// custom scheme only to a page it may request it from, which by default is
 /// a page on that scheme; the allowlist is what opens it to the reader's
-/// `https://hylki.localhost` documents.
+/// `https://tegami.localhost` documents.
 pub(crate) fn allow_in(view: &webkit6::WebView) {
     use webkit6::prelude::WebViewExt;
-    view.set_cors_allowlist(&["hylki-http://*/*", "hylki-https://*/*"]);
+    view.set_cors_allowlist(&["tegami-http://*/*", "tegami-https://*/*"]);
 }
 
 fn handle(request: &webkit6::URISchemeRequest) {
@@ -207,7 +207,7 @@ fn respond(request: &webkit6::URISchemeRequest, entry: Option<&Arc<Entry>>) {
         response.set_content_type(&entry.content_type);
     }
     let headers = webkit6::soup::MessageHeaders::new(webkit6::soup::MessageHeadersType::Response);
-    // The frame's origin is `hylki.localhost`; a font is only used across
+    // The frame's origin is `tegami.localhost`; a font is only used across
     // origins when the response says it may be.
     headers.append("Access-Control-Allow-Origin", "*");
     response.set_http_headers(headers);
@@ -247,15 +247,15 @@ mod tests {
     fn routes_web_urls_and_keeps_the_rest() {
         assert_eq!(
             route("https://a.example/x.png").as_deref(),
-            Some("hylki-https://a.example/x.png")
+            Some("tegami-https://a.example/x.png")
         );
         assert_eq!(
             route("HTTP://a.example/x.png").as_deref(),
-            Some("hylki-http://a.example/x.png")
+            Some("tegami-http://a.example/x.png")
         );
         assert_eq!(
             route("//a.example/x.png").as_deref(),
-            Some("hylki-https://a.example/x.png")
+            Some("tegami-https://a.example/x.png")
         );
         assert_eq!(route("ftp://a.example/x"), None);
         assert_eq!(route("data:image/png;base64,AA"), None);
@@ -277,7 +277,7 @@ mod tests {
     #[test]
     fn markup_and_webkit_spellings_meet() {
         // What WebKit asks for after parsing the markup.
-        let asked = origin_url("hylki-https://img.example/a/b.png?x=1&y=%C3%A9").unwrap();
+        let asked = origin_url("tegami-https://img.example/a/b.png?x=1&y=%C3%A9").unwrap();
         assert_eq!(
             markup_url("https://IMG.example/a/b.png?x=1&amp;y=é#top").as_deref(),
             Some(asked.as_str())
@@ -289,7 +289,7 @@ mod tests {
         assert_eq!(markup_url("cid:part1"), None);
         // WebKit's spelling of a non-ASCII host on a scheme it doesn't know.
         assert_eq!(
-            origin_url("hylki-https://%C3%A9x.example/a.png").as_deref(),
+            origin_url("tegami-https://%C3%A9x.example/a.png").as_deref(),
             markup_url("https://éx.example/a.png").as_deref()
         );
     }

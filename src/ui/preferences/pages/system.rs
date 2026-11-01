@@ -204,7 +204,7 @@ impl SystemPage {
                 add = &adw::PreferencesGroup {
                     set_title: &i18n("GNOME Files Integration"),
                     set_description: Some(
-                        i18n("Adds “Send with Hylki” to the right-click menu in Files. Needs the nautilus-python package and a restart of Files.").as_str()
+                        i18n("Adds “Send with Tegami Mail” to the right-click menu in Files. Needs the nautilus-python package and a restart of Files.").as_str()
                     ),
 
                     #[name = "nautilus_row"]
@@ -272,7 +272,7 @@ impl SystemPage {
                     // what happens when they are big.
                     #[name = "files_action_row"]
                     adw::ComboRow {
-                        set_title: &i18n("Default Send with Hylki behavior"),
+                        set_title: &i18n("Default Send with Tegami Mail behavior"),
                         connect_selected_notify[sender] => move |row| {
                             sender.input(PrefInput::ChangeFilesAction(row.selected()));
                         },

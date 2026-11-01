@@ -28,7 +28,7 @@ impl Component for MessageView {
                 } else if model.drafts_view {
                     "document-edit-symbolic"
                 } else {
-                    "hylki-mail-read-symbolic"
+                    "tegami-mail-read-symbolic"
                 }),
                 #[watch]
                 set_title: &model.empty_title(),
@@ -224,7 +224,7 @@ impl Component for MessageView {
                                 #[watch]
                                 set_label: model.account_name.as_deref().unwrap_or_default(),
                                 add_css_class: "account-chip",
-                                add_css_class: "hylki-account-chip",
+                                add_css_class: "tegami-account-chip",
                             },
                         },
 
@@ -239,7 +239,7 @@ impl Component for MessageView {
                             set_visible: model.current.is_some() && model.zoom != model.zoom_default,
                             set_valign: gtk::Align::Center,
                             add_css_class: "caption",
-                            add_css_class: "hylki-zoom-chip",
+                            add_css_class: "tegami-zoom-chip",
                             set_cursor_from_name: Some("pointer"),
                             set_tooltip_text: Some(i18n("Message zoom. Ctrl+ and Ctrl-, or Ctrl and the scroll wheel, change it; a click here, or Ctrl+0, puts it back to the default from Settings.").as_str()),
                             add_controller = gtk::GestureClick {
@@ -660,8 +660,8 @@ impl Component for MessageView {
             MessageViewInput::SetFindBottom(on) => self.on_set_find_bottom(on),
             MessageViewInput::DragCard(key) => self.on_drag_card(key),
             MessageViewInput::FindChanged(text) => self.on_find_changed(text),
-            MessageViewInput::FindNext => self.eval_find("hylkiFindStep(1)"),
-            MessageViewInput::FindPrev => self.eval_find("hylkiFindStep(-1)"),
+            MessageViewInput::FindNext => self.eval_find("tegamiFindStep(1)"),
+            MessageViewInput::FindPrev => self.eval_find("tegamiFindStep(-1)"),
             MessageViewInput::FindCounted { current, total } => {
                 self.find_matches = Some((current, total));
             }

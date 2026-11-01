@@ -1,5 +1,5 @@
 //! The page's side of the JS bridge: every message the wrapper document
-//! posts to the `"hylki"` handler, as `verb:account:id[:extra]`, parsed into
+//! posts to the `"tegami"` handler, as `verb:account:id[:extra]`, parsed into
 //! what the reader should do with it. The page only ever posts what this
 //! document put there, but the message is still parsed strictly: a verb it
 //! does not know, a key that is not two numbers, or an `extra` that does not

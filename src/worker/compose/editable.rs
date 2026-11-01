@@ -350,7 +350,7 @@ mod tests {
 
     #[test]
     fn editing_a_queued_message_keeps_its_attachments_and_html() {
-        let dir = std::env::temp_dir().join(format!("hylki-edit-{}", std::process::id()));
+        let dir = std::env::temp_dir().join(format!("tegami-edit-{}", std::process::id()));
         std::fs::create_dir_all(&dir).expect("temp dir");
         let file = dir.join("report.pdf");
         std::fs::write(&file, [0x25, 0x50, 0x44, 0x46, 0x00, 0xff]).expect("write");
@@ -392,7 +392,7 @@ mod tests {
     /// a file beside it.
     #[test]
     fn a_saved_draft_comes_back_whole() {
-        let dir = std::env::temp_dir().join(format!("hylki-draft-{}", std::process::id()));
+        let dir = std::env::temp_dir().join(format!("tegami-draft-{}", std::process::id()));
         std::fs::create_dir_all(&dir).expect("temp dir");
         let file = dir.join("notes.txt");
         std::fs::write(&file, b"notes").expect("write");

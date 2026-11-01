@@ -59,7 +59,7 @@ pub(super) fn inline_body(doc: &str) -> String {
 /// Inlining costs the isolation an iframe gave: with every message in one
 /// document, one sender's `body{font-family:monospace}` would restyle the whole
 /// printout, including the next message in the conversation. Redirecting those
-/// selectors to `.hylki-print-msg` keeps the rule working where it is meant to
+/// selectors to `.tegami-print-msg` keeps the rule working where it is meant to
 /// and nowhere else. Bare type selectors (`p`, `a`) still reach across, which is
 /// the remaining price of printing a thread as one page.
 pub(super) fn scope_styles(doc: &str, block: &str) -> String {
@@ -156,17 +156,17 @@ const PRINT_DOCUMENT_STYLES: &str = "\
     img,table,pre{max-width:100% !important;}\
     img{height:auto !important;}\
     pre{white-space:pre-wrap;}\
-    .hylki-print-msg + .hylki-print-msg{border-top:1pt solid #999;margin-top:12pt;padding-top:12pt;}\
-    .hylki-print-msghdr{font:bold 10pt/1.45 system-ui,sans-serif;color:#000;margin:0 0 8pt;}\
-    .hylki-print-hdr{display:block;padding:0 0 10pt;margin:0 0 12pt;\
+    .tegami-print-msg + .tegami-print-msg{border-top:1pt solid #999;margin-top:12pt;padding-top:12pt;}\
+    .tegami-print-msghdr{font:bold 10pt/1.45 system-ui,sans-serif;color:#000;margin:0 0 8pt;}\
+    .tegami-print-hdr{display:block;padding:0 0 10pt;margin:0 0 12pt;\
       border-bottom:1pt solid #999;font:10pt/1.45 system-ui,sans-serif;color:#000;}\
-    .hylki-print-subject{font-size:14pt;font-weight:700;margin:0 0 8pt;}\
-    .hylki-print-row{margin:0 0 2pt;}\
-    .hylki-print-label{font-weight:700;}";
+    .tegami-print-subject{font-size:14pt;font-weight:700;margin:0 0 8pt;}\
+    .tegami-print-row{margin:0 0 2pt;}\
+    .tegami-print-label{font-weight:700;}";
 
 /// The class naming the `n`th message's block in the printed document.
 fn print_block_class(n: usize) -> String {
-    format!("hylki-print-m{n}")
+    format!("tegami-print-m{n}")
 }
 
 /// Assemble the printed page: the header, then every message inlined into it.
@@ -178,7 +178,7 @@ pub(super) fn print_document(
     let mut body = header.to_string();
     for (n, (head, doc)) in messages.iter().enumerate() {
         let block = print_block_class(n);
-        body.push_str(&format!("<article class=\"hylki-print-msg {block}\">"));
+        body.push_str(&format!("<article class=\"tegami-print-msg {block}\">"));
         body.push_str(head);
         body.push_str(&scope_styles(&inline_body(doc), &format!(".{block}")));
         body.push_str("</article>");
@@ -209,7 +209,7 @@ pub(super) fn print_message_header_html(m: &Message) -> String {
         )
     };
     format!(
-        "<div class=\"hylki-print-msghdr\">{from} — {date}</div>",
+        "<div class=\"tegami-print-msghdr\">{from} — {date}</div>",
         date = escape_html(&m.datetime_full())
     )
 }
@@ -232,7 +232,7 @@ pub(super) fn print_header_html(message: Option<&Message>) -> String {
             return String::new();
         }
         format!(
-            "<div class=\"hylki-print-row\"><span class=\"hylki-print-label\">{}</span> {}</div>",
+            "<div class=\"tegami-print-row\"><span class=\"tegami-print-label\">{}</span> {}</div>",
             escape_html(label),
             escape_html(value)
         )
@@ -250,8 +250,8 @@ pub(super) fn print_header_html(message: Option<&Message>) -> String {
         m.subject.clone()
     };
     format!(
-        "<div class=\"hylki-print-hdr\">\
-           <div class=\"hylki-print-subject\">{subject}</div>{from}{to}{cc}{bcc}{date}\
+        "<div class=\"tegami-print-hdr\">\
+           <div class=\"tegami-print-subject\">{subject}</div>{from}{to}{cc}{bcc}{date}\
          </div>",
         subject = escape_html(&subject),
         from = row(&i18n("From:"), &from),

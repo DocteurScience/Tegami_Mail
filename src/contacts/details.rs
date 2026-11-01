@@ -188,7 +188,7 @@ impl ContactDetails {
     }
 
     /// Whether the group can be changed here: Evolution's lists and
-    /// Apple's groups, the kinds Hylki writes. A vCard 4 group is only read.
+    /// Apple's groups, the kinds Tegami Mail writes. A vCard 4 group is only read.
     pub(crate) fn group_editable(&self) -> bool {
         matches!(
             self.group,
@@ -220,7 +220,7 @@ impl ContactDetails {
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub(crate) enum GroupFormat {
     /// `X-EVOLUTION-LIST:TRUE`, one `EMAIL` per member: what Evolution
-    /// makes, and what Hylki writes, so an exported group imports there.
+    /// makes, and what Tegami Mail writes, so an exported group imports there.
     Evolution,
     /// `X-ADDRESSBOOKSERVER-KIND:group`, one `X-ADDRESSBOOKSERVER-MEMBER`
     /// per member naming a contact of the same book by UID: Apple's, what
@@ -598,7 +598,7 @@ fn finish_group(
             }
         }
     } else {
-        // Other groups have no say of their own; Hylki writes
+        // Other groups have no say of their own; Tegami Mail writes
         // Evolution's line into an Apple group to keep Send as Bcc.
         c.hide_addresses = show_addresses == Some(false);
     }

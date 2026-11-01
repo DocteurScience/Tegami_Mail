@@ -326,7 +326,7 @@ fn extract_data_images(html: &str) -> (String, Vec<InlineImage>) {
         });
         match lifted {
             Some((len, mime, data)) => {
-                let cid = format!("{}.{}@hylki.inline", stamp, parts.len() + 1);
+                let cid = format!("{}.{}@tegami.inline", stamp, parts.len() + 1);
                 let name = alt_of_enclosing_tag(html, start, start + len);
                 out.push_str(&html[i..start]);
                 out.push_str("cid:");
@@ -399,7 +399,7 @@ fn new_message_id(from: &str) -> String {
             .map(|d| d.as_nanos().to_string())
             .unwrap_or_default()
     });
-    format!("<hylki-{unique}@{domain}>")
+    format!("<tegami-{unique}@{domain}>")
 }
 
 /// Wrap each stored (bare) message id back in angle brackets for a header value.
@@ -479,9 +479,9 @@ mod tests {
             .to_string();
         assert!(err.contains("missing destination"), "{err}");
         // With a recipient the draft is built the ordinary way.
-        msg.to = "Peer <peer@hylki.invalid>".into();
+        msg.to = "Peer <peer@tegami.invalid>".into();
         let raw = build_draft(&account, &msg).expect("builds").formatted();
-        assert!(String::from_utf8_lossy(&raw).contains("peer@hylki.invalid"));
+        assert!(String::from_utf8_lossy(&raw).contains("peer@tegami.invalid"));
     }
 
     /// OpenPGP sending (#133), end to end against a real gpg in a throwaway
@@ -495,7 +495,7 @@ mod tests {
             eprintln!("gpg not installed; skipping");
             return;
         }
-        let home = std::env::temp_dir().join(format!("hylki-gpg-send-{}", std::process::id()));
+        let home = std::env::temp_dir().join(format!("tegami-gpg-send-{}", std::process::id()));
         let _ = std::fs::remove_dir_all(&home);
         std::fs::create_dir_all(&home).unwrap();
         #[cfg(unix)]
@@ -504,18 +504,18 @@ mod tests {
             std::fs::set_permissions(&home, std::fs::Permissions::from_mode(0o700)).unwrap();
         }
         // `Gpg::system()` (what build_email uses) honours this override.
-        std::env::set_var("HYLKI_GNUPGHOME", &home);
+        std::env::set_var("TEGAMI_GNUPGHOME", &home);
         let gpg = crate::mail::pgp::Gpg::system();
         let mut account = sample_account();
-        account.email = "sender@hylki.invalid".into();
+        account.email = "sender@tegami.invalid".into();
         let fpr =
-            crate::mail::pgp::generate_key(&gpg, "Sender", "sender@hylki.invalid", "never", "")
+            crate::mail::pgp::generate_key(&gpg, "Sender", "sender@tegami.invalid", "never", "")
                 .expect("own key");
-        crate::mail::pgp::generate_key(&gpg, "Peer", "peer@hylki.invalid", "never", "")
+        crate::mail::pgp::generate_key(&gpg, "Peer", "peer@tegami.invalid", "never", "")
             .expect("peer key");
 
         let mut msg = sample_outgoing();
-        msg.to = "Peer <peer@hylki.invalid>".into();
+        msg.to = "Peer <peer@tegami.invalid>".into();
         msg.body = "signed body text".into();
         msg.sign = true;
         let raw = build_email(&account, &msg).expect("builds").formatted();
@@ -551,7 +551,7 @@ mod tests {
         msg.encrypt = true;
         msg.body = "secret body text".into();
         msg.subject = "Secret plans".into();
-        msg.bcc = "Hidden <sender@hylki.invalid>".into();
+        msg.bcc = "Hidden <sender@tegami.invalid>".into();
         let raw = build_email(&account, &msg).expect("builds").formatted();
         let text = String::from_utf8_lossy(&raw);
         assert!(text.contains("multipart/encrypted"), "{text}");
@@ -578,7 +578,7 @@ mod tests {
         assert!(inner.contains("secret body text"), "{inner}");
         assert!(inner.contains("protected-headers=\"v1\""), "{inner}");
         assert!(
-            inner.contains("peer@hylki.invalid"),
+            inner.contains("peer@tegami.invalid"),
             "the To travels inside: {inner}"
         );
         assert!(
@@ -610,17 +610,17 @@ mod tests {
         account.plain_subject = false;
 
         // A recipient without a key is refused by name; a From without a key too.
-        msg.cc = "nobody@hylki.invalid".into();
+        msg.cc = "nobody@tegami.invalid".into();
         let err = build_email(&account, &msg)
             .expect_err("no key for nobody")
             .to_string();
-        assert!(err.contains("nobody@hylki.invalid"), "{err}");
+        assert!(err.contains("nobody@tegami.invalid"), "{err}");
         msg.cc.clear();
-        account.email = "keyless@hylki.invalid".into();
+        account.email = "keyless@tegami.invalid".into();
         let err = build_email(&account, &msg)
             .expect_err("no own key")
             .to_string();
-        assert!(err.contains("keyless@hylki.invalid"), "{err}");
+        assert!(err.contains("keyless@tegami.invalid"), "{err}");
         // The account's chosen key overrides the address match.
         account.pgp_key = Some(fpr);
         build_email(&account, &msg).expect("chosen key signs");
@@ -634,7 +634,7 @@ mod tests {
         let raw = build_email(&account, &plain).expect("builds").formatted();
         assert!(String::from_utf8_lossy(&raw).contains("secret body text"));
 
-        std::env::remove_var("HYLKI_GNUPGHOME");
+        std::env::remove_var("TEGAMI_GNUPGHOME");
         let _ = std::process::Command::new("gpgconf")
             .env("GNUPGHOME", &home)
             .args(["--kill", "all"])
@@ -643,7 +643,7 @@ mod tests {
     }
 
     /// A reply with no In-Reply-To/References is a new conversation to every
-    /// client that receives it — including Hylki's own threading.
+    /// client that receives it — including Tegami Mail's own threading.
     #[test]
     fn reply_to_header_reaches_the_wire() {
         let mut msg = sample_outgoing();
@@ -752,7 +752,7 @@ mod tests {
         // "Name <addr>" string — which 1.8.x did for From/To and 1.9.0 replaced
         // with mailboxes built from parts. This pins the attachment path itself,
         // including a name that would have needed quoting and a UTF-8 filename.
-        let dir = std::env::temp_dir().join(format!("hylki-test-{}", std::process::id()));
+        let dir = std::env::temp_dir().join(format!("tegami-test-{}", std::process::id()));
         std::fs::create_dir_all(&dir).expect("temp dir");
         let file = dir.join("Meeting notes, final.pdf");
         // Binary, so the encoder has to base64 it — as it would a real PDF.
@@ -831,7 +831,7 @@ mod tests {
     /// bytes arrive unchanged and no lone LF reaches the wire.
     #[test]
     fn a_unix_text_attachment_leaves_no_bare_newline() {
-        let dir = std::env::temp_dir().join(format!("hylki-lf-{}", std::process::id()));
+        let dir = std::env::temp_dir().join(format!("tegami-lf-{}", std::process::id()));
         std::fs::create_dir_all(&dir).unwrap();
         let file = dir.join("notes.txt");
         std::fs::write(&file, b"one\ntwo\n").unwrap();

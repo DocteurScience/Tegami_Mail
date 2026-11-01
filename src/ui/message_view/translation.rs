@@ -38,7 +38,7 @@ impl MessageView {
         let key = (m.account_id, m.id);
         let button = |label: &str| {
             format!(
-                "<button type=\"button\" class=\"hylki-tr-btn\" data-key=\"{}:{}\">{}</button>",
+                "<button type=\"button\" class=\"tegami-tr-btn\" data-key=\"{}:{}\">{}</button>",
                 key.0,
                 key.1,
                 escape_html(label),
@@ -46,7 +46,7 @@ impl MessageView {
         };
         let line = |text: &str, btn: String| {
             format!(
-                "<span class=\"hylki-tr-text\">{}</span>{btn}",
+                "<span class=\"tegami-tr-text\">{}</span>{btn}",
                 escape_html(text)
             )
         };
@@ -145,7 +145,7 @@ impl MessageView {
         };
         let html = self.translate_inner_html(m, &crate::services::translate::load());
         let js = format!(
-            "(function(){{var d=document.querySelector('.hylki-tr[data-key=\"{account_id}:{id}\"]');\
+            "(function(){{var d=document.querySelector('.tegami-tr[data-key=\"{account_id}:{id}\"]');\
              if(d)d.innerHTML={};}})()",
             serde_json::to_string(&html).unwrap_or_else(|_| "''".into()),
         );

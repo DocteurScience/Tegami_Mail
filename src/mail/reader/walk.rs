@@ -11,8 +11,8 @@ const KEPT_CLASSES: [&str; 6] = [
     "gmail_quote",
     "gmail_signature",
     "moz-signature",
-    "hylki-quote-attr",
-    "hylki-plain",
+    "tegami-quote-attr",
+    "tegami-plain",
     "yahoo_quoted",
 ];
 
@@ -92,7 +92,7 @@ pub(super) fn walk(node: &Handle, out: &mut Vec<Out>, pre: bool, in_link: bool) 
                 "dl" => push_elem(out, Elem::new("dl"), pre, in_link),
                 "dt" => push_elem(out, Elem::new("dt"), pre, in_link),
                 "dd" => push_elem(out, Elem::new("dd"), pre, in_link),
-                // The Indent of Hylki's composer (and of other WebKit and
+                // The Indent of Tegami Mail's composer (and of other WebKit and
                 // Blink editors) is a borderless blockquote, not a quote
                 // (#358).
                 "blockquote"
@@ -150,10 +150,10 @@ pub(super) fn walk(node: &Handle, out: &mut Vec<Out>, pre: bool, in_link: bool) 
                 | "center" | "address" | "details" | "summary" | "fieldset" | "legend" | "body"
                 | "html" => {
                     // A plain-text part keeps its line structure (#181): the
-                    // worker wraps it in `.hylki-plain`, and so does this.
+                    // worker wraps it in `.tegami-plain`, and so does this.
                     // (`body_html` puts the class on `<body>` itself for a
                     // plain-text message; that body becomes the div.)
-                    let plain = has_class(&attrs, "hylki-plain");
+                    let plain = has_class(&attrs, "tegami-plain");
                     if (tag == "body" || tag == "html") && !plain {
                         children(out, pre, in_link);
                     } else {

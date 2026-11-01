@@ -145,12 +145,12 @@ impl MessageView {
         // wrong size and then jumping. The page says when its frames have
         // settled; this is only the backstop for a page that never does.
         let ready_sender = sender.clone();
-        // Debug hook: HYLKI_SHOWCASE_CLICK_LINK=1 clicks the first web link
+        // Debug hook: TEGAMI_SHOWCASE_CLICK_LINK=1 clicks the first web link
         // in the first message that has one, once, a few seconds after a
         // conversation is in, and logs what the click landed on. Exercises
         // the whole link path (frame → policy decision → launcher, #202)
         // without a pointer.
-        let click_link = std::env::var("HYLKI_SHOWCASE_CLICK_LINK").is_ok();
+        let click_link = std::env::var("TEGAMI_SHOWCASE_CLICK_LINK").is_ok();
         let clicked = std::rc::Rc::new(std::cell::Cell::new(false));
         let page_fade = self.page_fade.clone();
         self.webview.connect_load_changed(move |view, event| {
@@ -242,7 +242,7 @@ impl MessageView {
                 let width = view.width().max(1);
                 let s = menu_sender.clone();
                 view.evaluate_javascript(
-                    &format!("window.__hylkiMenuAt({x},{y},{width})"),
+                    &format!("window.__tegamiMenuAt({x},{y},{width})"),
                     None,
                     None,
                     None::<&gtk::gio::Cancellable>,
@@ -271,13 +271,13 @@ impl MessageView {
         }
     }
 
-    /// The `hylki` script-message handler.
+    /// The `tegami` script-message handler.
     pub(super) fn watch_bridge(&self, sender: &ComponentSender<Self>) {
-        // Everything the page posts to the `hylki` handler (see bridge.rs).
+        // Everything the page posts to the `tegami` handler (see bridge.rs).
         if let Some(ucm) = self.webview.user_content_manager() {
             let open_sender = sender.clone();
             ucm.connect_script_message_received(
-                Some("hylki"),
+                Some("tegami"),
                 move |_ucm, value| match parse_bridge(&value.to_str()) {
                     Some(Bridge::Input(input)) => open_sender.input_sender().emit(input),
                     Some(Bridge::Clipboard(text)) => {

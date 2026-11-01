@@ -358,9 +358,9 @@ impl Compose {
         );
         zones.set_allow_inline(self.format == ComposeFormat::Rich);
         zones.set_cloud_names(self.cloud_accounts.iter().map(|a| a.name.clone()).collect());
-        // HYLKI_SHOWCASE_DROP_ZONES=<attach|inline|cloud|none>:<file>[:<file>…]
+        // TEGAMI_SHOWCASE_DROP_ZONES=<attach|inline|cloud|none>:<file>[:<file>…]
         // raises the surfaces two seconds after the composer opens.
-        if let Ok(v) = std::env::var("HYLKI_SHOWCASE_DROP_ZONES") {
+        if let Ok(v) = std::env::var("TEGAMI_SHOWCASE_DROP_ZONES") {
             let mut parts = std::env::split_paths(&v);
             let hover = match parts.next().as_deref().and_then(|p| p.to_str()) {
                 Some("attach") => Some(DropChoice::Attach),

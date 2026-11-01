@@ -148,7 +148,7 @@ pub(crate) fn forget_access_token(account: &AccountConfig) {
 /// The password an account signs in with: the one the worker holds or, when
 /// it holds none, the keyring's, read again at every sign-in. The worker reads
 /// the keyring once when it starts, and a keyring locked or still starting at
-/// login then left the account signing in with an empty password until Hylki
+/// login then left the account signing in with an empty password until Tegami Mail
 /// restarted (#375). A keyring that cannot be read is reported as such, and
 /// no sign-in goes out without the password.
 pub(super) fn sign_in_password_blocking(
@@ -172,7 +172,7 @@ pub(super) fn sign_in_password_blocking(
     read.map(Option::unwrap_or_default).map_err(|e| {
         tracing::warn!("could not read the keyring for {}: {e}", account.email);
         i18n_f(
-            "Could not read the password for {email} from the keyring ({e}). Hylki tries again at the next connection.",
+            "Could not read the password for {email} from the keyring ({e}). Tegami Mail tries again at the next connection.",
             &[("email", &account.email), ("e", &e)],
         )
     })

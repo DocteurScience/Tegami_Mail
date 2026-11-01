@@ -4,7 +4,7 @@
 //! Microsoft Purview writes the label into an `msip_labels` header, one
 //! `MSIP_Label_<id>_<key>=<value>` pair per field, so any client can read
 //! it; Outlook's older `Sensitivity:` header (RFC 2156) says Personal,
-//! Private or Company-Confidential. Hylki shows what the label says and
+//! Private or Company-Confidential. Tegami Mail shows what the label says and
 //! enforces nothing: protection that encrypts a message (Rights Management)
 //! is a separate matter the label only names.
 
@@ -61,10 +61,10 @@ impl SensitivityLabel {
             );
         }
         if self.name.is_empty() {
-            return i18n("The sender's organization labeled this message without naming the label in it. For a Microsoft 365 account, turning on “Show sensitivity label names” in its settings shows the name. Hylki shows the label but does not apply its rules.");
+            return i18n("The sender's organization labeled this message without naming the label in it. For a Microsoft 365 account, turning on “Show sensitivity label names” in its settings shows the name. Tegami Mail shows the label but does not apply its rules.");
         }
         let said = i18n_f(
-            "The sender's organization labeled this message “{label}”. Hylki shows the label but does not apply its rules.",
+            "The sender's organization labeled this message “{label}”. Tegami Mail shows the label but does not apply its rules.",
             &[("label", &self.name)],
         );
         // The organization's own words, as Outlook shows them.

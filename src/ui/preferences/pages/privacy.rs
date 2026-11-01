@@ -25,7 +25,7 @@ impl PrivacyPage {
                 add = &adw::PreferencesGroup {
                     set_title: &i18n("Privacy"),
                     set_description: Some(
-                        i18n("Hylki collects no telemetry and sends no analytics.").as_str()
+                        i18n("Tegami Mail collects no telemetry and sends no analytics.").as_str()
                     ),
 
                     #[name = "auto_remote_content_row"]

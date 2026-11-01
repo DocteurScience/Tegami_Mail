@@ -72,7 +72,7 @@ type AppIconPng<'a> = &'a [u8];
 /// The app's symbolic icon (the opened envelope, drawn in black); its
 /// fill is swapped for the chosen color.
 const ENVELOPE_SVG: &str =
-    include_str!("../../../data/icons/hicolor/symbolic/apps/co.hyprlab.Hylki-symbolic.svg");
+    include_str!("../../../data/icons/hicolor/symbolic/apps/io.github.DocteurScience.TegamiMail-symbolic.svg");
 /// Panels ask for different sizes; a set covers them without upscaling blur.
 const SIZES: [i32; 6] = [16, 22, 24, 32, 48, 64];
 /// Symbolic icons, when the file is read as one, are painted mid-grey on no
@@ -89,7 +89,7 @@ const DOT_RGB: (f64, f64, f64) = (
 /// A running tray item. Dropping it does not remove the icon; call
 /// [`TrayHandle::stop`].
 pub(crate) struct TrayHandle {
-    handle: Handle<HylkiTray>,
+    handle: Handle<TegamiTray>,
     last_unread: std::cell::Cell<u32>,
 }
 
@@ -104,7 +104,7 @@ impl TrayHandle {
         unread: u32,
         mail: Option<TrayMailList>,
     ) -> Option<Self> {
-        let tray = HylkiTray {
+        let tray = TegamiTray {
             plain: render_set(icon, app_png, false),
             dotted: render_set(icon, app_png, true),
             unread,
@@ -159,7 +159,7 @@ impl TrayHandle {
     }
 }
 
-struct HylkiTray {
+struct TegamiTray {
     plain: Vec<Icon>,
     dotted: Vec<Icon>,
     unread: u32,
@@ -173,13 +173,13 @@ struct HylkiTray {
 /// The symbolic icon's file names in the theme `symbolic_theme` writes. The
 /// `-symbolic` ending is what makes the panel recolor them; a panel that
 /// looks the name up falls back through its dash-separated prefixes, so the
-/// rest has no prefix an installed icon has (`co.hyprlab.Hylki-tray` found
+/// rest has no prefix an installed icon has (`io.github.DocteurScience.TegamiMail-tray` found
 /// the app icon).
 fn symbolic_name(dotted: bool) -> &'static str {
     if dotted {
-        "hylki_tray_unread-symbolic"
+        "tegami_tray_unread-symbolic"
     } else {
-        "hylki_tray-symbolic"
+        "tegami_tray-symbolic"
     }
 }
 
@@ -210,7 +210,7 @@ fn symbolic_theme(icon: TrayIcon) -> Option<String> {
     if icon != TrayIcon::Symbolic || !panel_recolors_files() {
         return None;
     }
-    let root = crate::config::data_base()?.join("hylki").join("tray-icons");
+    let root = crate::config::data_base()?.join("tegami").join("tray-icons");
     let dir = symbolic_dir(&root);
     let written = std::fs::create_dir_all(&dir)
         .and_then(|_| {
@@ -265,13 +265,13 @@ fn envelope_with_dot() -> String {
     )
 }
 
-impl Tray for HylkiTray {
+impl Tray for TegamiTray {
     fn id(&self) -> String {
         crate::APP_ID.to_string()
     }
 
     fn title(&self) -> String {
-        "Hylki".to_string()
+        "Tegami Mail".to_string()
     }
 
     fn category(&self) -> Category {
@@ -313,7 +313,7 @@ impl Tray for HylkiTray {
 
     fn tool_tip(&self) -> ToolTip {
         ToolTip {
-            title: "Hylki".to_string(),
+            title: "Tegami Mail".to_string(),
             description: inbox_status_text(self.unread),
             ..Default::default()
         }
@@ -325,7 +325,7 @@ impl Tray for HylkiTray {
 
     fn menu(&self) -> Vec<MenuItem<Self>> {
         let mut items: Vec<MenuItem<Self>> = vec![StandardItem {
-            label: i18n("Open Hylki"),
+            label: i18n("Open Tegami Mail"),
             activate: Box::new(|t: &mut Self| {
                 let _ = t.sender.send(AppMsg::PresentWindow);
             }),
@@ -414,7 +414,7 @@ fn inbox_status_text(unread: u32) -> String {
 
 /// One message's row: the card as its label and picture; a click opens it
 /// in the reader, the same path a notification click takes.
-fn mail_item(m: &TrayMail) -> MenuItem<HylkiTray> {
+fn mail_item(m: &TrayMail) -> MenuItem<TegamiTray> {
     let (account_id, folder_id, message_id) = (m.account_id, m.folder_id, m.message_id);
     let mut label = m.heading.clone();
     if !m.subject.is_empty() {
@@ -428,7 +428,7 @@ fn mail_item(m: &TrayMail) -> MenuItem<HylkiTray> {
     StandardItem {
         label: menu_text(&label),
         icon_data: m.icon.clone(),
-        activate: Box::new(move |t: &mut HylkiTray| {
+        activate: Box::new(move |t: &mut TegamiTray| {
             let _ = t.sender.send(AppMsg::PresentWindow);
             let _ = t.sender.send(AppMsg::OpenMessageFromNotification {
                 account_id,
@@ -614,7 +614,7 @@ fn render(icon: TrayIcon, app_png: AppIconPng, dotted: bool, size: i32, fill: f6
 /// symbolic envelope rasterised in mid-grey.
 fn base_pixbuf(icon: TrayIcon, app_png: AppIconPng, size: i32) -> Option<Pixbuf> {
     match icon {
-        TrayIcon::Hylki => {
+        TrayIcon::Tegami Mail => {
             // Sniffed rather than assumed: an icon set on the launcher by
             // hand can be an SVG as well as a PNG.
             let loader = PixbufLoader::new();
@@ -690,7 +690,7 @@ mod tests {
 
     #[test]
     fn every_icon_renders_at_every_size() {
-        for icon in [TrayIcon::Hylki, TrayIcon::Symbolic] {
+        for icon in [TrayIcon::Tegami Mail, TrayIcon::Symbolic] {
             for dotted in [false, true] {
                 let set = render_set(
                     icon,
@@ -736,8 +736,8 @@ mod tests {
             let t: T = toml::from_str(&format!("tray_icon = \"{old}\"")).unwrap();
             assert_eq!(t.tray_icon, TrayIcon::Symbolic, "{old}");
         }
-        let t: T = toml::from_str("tray_icon = \"hylki\"").unwrap();
-        assert_eq!(t.tray_icon, TrayIcon::Hylki);
+        let t: T = toml::from_str("tray_icon = \"tegami\"").unwrap();
+        assert_eq!(t.tray_icon, TrayIcon::Tegami Mail);
         assert_eq!(TrayIcon::default(), TrayIcon::Symbolic);
     }
 
@@ -797,7 +797,7 @@ mod tests {
     fn a_half_fill_leaves_a_clear_margin_and_moves_the_dot() {
         let size = 32usize;
         let icon = render(
-            TrayIcon::Hylki,
+            TrayIcon::Tegami Mail,
             crate::desktop::app_icon::png_for(crate::desktop::app_icon::DEFAULT_ID),
             true,
             size as i32,

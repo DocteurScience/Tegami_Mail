@@ -20,7 +20,7 @@ impl MessageView {
     }
 
     pub(super) fn on_print_preview(&mut self) {
-        // Shown inside Hylki rather than exported to a PDF and handed to
+        // Shown inside Tegami Mail rather than exported to a PDF and handed to
         // whatever the desktop opens PDFs with: that route is a temporary
         // file, a URI, the document portal and an external viewer, each
         // able to fail without saying anything — and it did.

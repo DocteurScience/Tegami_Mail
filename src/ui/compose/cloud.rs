@@ -250,7 +250,7 @@ impl Compose {
         match result {
             Ok(share) => {
                 let id = format!(
-                    "hylki-cloud-{}",
+                    "tegami-cloud-{}",
                     crate::rng::token(8).unwrap_or_else(|_| share.size.to_string())
                 );
                 let mut caption = crate::models::human_size(share.size);
@@ -264,7 +264,7 @@ impl Compose {
                     caption.push_str(&format!(", {}", i18n("password-protected")));
                 }
                 let html = format!(
-                "<p id=\"{id}\" data-hylki-cloud=\"1\">\u{1F4CE} <a href=\"{url}\">{name}</a> ({caption})</p>",
+                "<p id=\"{id}\" data-tegami-cloud=\"1\">\u{1F4CE} <a href=\"{url}\">{name}</a> ({caption})</p>",
                 url = escape_html(&share.url),
                 name = escape_html(&share.name),
                 caption = escape_html(&caption),
@@ -289,7 +289,7 @@ impl Compose {
                      var l='{}';var v=t.value;var i=v.lastIndexOf('\\n-- \\n');\
                      if(i>=0){{v=v.slice(0,i)+'\\n'+l+'\\n'+v.slice(i);}}\
                      else{{v=v.replace(/\\s*$/,'')+'\\n\\n'+l+'\\n';}}\
-                     t.value=v;window.__hylkiDirty=true;}})()",
+                     t.value=v;window.__tegamiDirty=true;}})()",
                         js_escape(&line)
                     ));
                     if let Some(p) = share.password.clone() {
@@ -306,11 +306,11 @@ impl Compose {
                 self.editor.run_js(&format!(
                 "(function(){{var d=document.createElement('div');d.innerHTML='{}';\
                  var p=d.firstChild;var b=document.body;\
-                 var first=null;var cands=b.querySelectorAll('.hylki-sig,.hylki-quote-attr,blockquote');\
+                 var first=null;var cands=b.querySelectorAll('.tegami-sig,.tegami-quote-attr,blockquote');\
                  for(var i=0;i<cands.length;i++){{var t=cands[i];while(t.parentNode&&t.parentNode!==b)t=t.parentNode;\
                  if(t.parentNode===b&&(!first||(t.compareDocumentPosition(first)&Node.DOCUMENT_POSITION_FOLLOWING)))first=t;}}\
                  if(first)b.insertBefore(p,first);else b.appendChild(p);\
-                 window.__hylkiPlainFix&&window.__hylkiPlainFix();\
+                 window.__tegamiPlainFix&&window.__tegamiPlainFix();\
                  document.dispatchEvent(new Event('input'));}})()",
                 js_escape(&html)
             ));
@@ -352,7 +352,7 @@ impl Compose {
                     "(function(){{var t=document.getElementById('src');if(!t)return;\
                  var u='{}';\
                  t.value=t.value.split('\\n').filter(function(l){{return l.indexOf(u)<0;}})\
-                   .join('\\n');window.__hylkiDirty=true;}})()",
+                   .join('\\n');window.__tegamiDirty=true;}})()",
                     js_escape(&link.url)
                 ));
                 self.rebuild_attachments(&widgets.attach_box, sender);

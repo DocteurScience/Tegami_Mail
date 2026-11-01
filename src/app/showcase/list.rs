@@ -15,11 +15,11 @@ use crate::ui::showcase::showcase_capture;
 use crate::ui::sidebar::SidebarInput;
 
 impl AppModel {
-    /// HYLKI_SHOWCASE_HEIGHTS=1 logs the allocated height of the
+    /// TEGAMI_SHOWCASE_HEIGHTS=1 logs the allocated height of the
     /// sidebar's section headings and their rows just before the
     /// capture, for checking pill geometry without a pointer.
     pub(super) fn stage_heights(&self, delay: u32) {
-        if std::env::var("HYLKI_SHOWCASE_HEIGHTS").is_ok() {
+        if std::env::var("TEGAMI_SHOWCASE_HEIGHTS").is_ok() {
             let sidebar = self.sidebar.widget().clone().upcast::<gtk::Widget>();
             gtk::glib::timeout_add_seconds_local_once(delay.saturating_sub(1).max(1), move || {
                 fn walk(w: &gtk::Widget, root: &gtk::Widget) {
@@ -60,15 +60,15 @@ impl AppModel {
         });
     }
 
-    /// HYLKI_SHOWCASE_PALETTE=N opens row N's actions palette
+    /// TEGAMI_SHOWCASE_PALETTE=N opens row N's actions palette
     /// (so a capture can verify the floating palette's look).
     pub(super) fn stage_palette(&self, root: &adw::ApplicationWindow) {
-        if let Some(Ok(idx)) = std::env::var("HYLKI_SHOWCASE_PALETTE")
+        if let Some(Ok(idx)) = std::env::var("TEGAMI_SHOWCASE_PALETTE")
             .ok()
             .map(|v| v.parse())
         {
             let list = self.message_list.sender().clone();
-            let burst = std::env::var("HYLKI_SHOWCASE_BURST").ok();
+            let burst = std::env::var("TEGAMI_SHOWCASE_BURST").ok();
             let win = root.clone();
             {
                 // An occluded window's frame clock is suspended
@@ -112,17 +112,17 @@ impl AppModel {
         });
     }
 
-    /// HYLKI_SHOWCASE_SWIPE=N[:left|right] swipes row N fully and
-    /// releases it at 7s, with HYLKI_SHOWCASE_BURST=<path> writing
+    /// TEGAMI_SHOWCASE_SWIPE=N[:left|right] swipes row N fully and
+    /// releases it at 7s, with TEGAMI_SHOWCASE_BURST=<path> writing
     /// stills through the commit exit — the only way to see the
     /// gesture's animation here (no input injection).
     pub(super) fn stage_swipe(&self, root: &adw::ApplicationWindow) {
-        if let Ok(spec) = std::env::var("HYLKI_SHOWCASE_SWIPE") {
+        if let Ok(spec) = std::env::var("TEGAMI_SHOWCASE_SWIPE") {
             let (idx, side) = spec.split_once(':').unwrap_or((spec.as_str(), "left"));
             let index: usize = idx.trim().parse().unwrap_or(0);
             let left = side != "right";
             let list = self.message_list.sender().clone();
-            let burst = std::env::var("HYLKI_SHOWCASE_BURST").ok();
+            let burst = std::env::var("TEGAMI_SHOWCASE_BURST").ok();
             let win = root.clone();
             {
                 // An occluded window's frame clock is suspended, so
@@ -148,10 +148,10 @@ impl AppModel {
         }
     }
 
-    /// HYLKI_SHOWCASE_ROW=N selects the list's row N at 4s (with
-    /// HYLKI_SHOWCASE_STAGE=0), for capturing or probing one message.
+    /// TEGAMI_SHOWCASE_ROW=N selects the list's row N at 4s (with
+    /// TEGAMI_SHOWCASE_STAGE=0), for capturing or probing one message.
     pub(super) fn stage_row(&self) {
-        if let Some(Ok(n)) = std::env::var("HYLKI_SHOWCASE_ROW")
+        if let Some(Ok(n)) = std::env::var("TEGAMI_SHOWCASE_ROW")
             .ok()
             .map(|v| v.parse::<u32>())
         {
@@ -164,11 +164,11 @@ impl AppModel {
         }
     }
 
-    /// HYLKI_SHOWCASE_UNSUB=ask|go presses the open card's
-    /// Unsubscribe button at 7s (after HYLKI_SHOWCASE_ROW opened
+    /// TEGAMI_SHOWCASE_UNSUB=ask|go presses the open card's
+    /// Unsubscribe button at 7s (after TEGAMI_SHOWCASE_ROW opened
     /// it): `ask` stops at the confirmation, `go` skips it.
     pub(super) fn stage_unsubscribe(&self) {
-        if std::env::var("HYLKI_SHOWCASE_UNSUB").is_ok() {
+        if std::env::var("TEGAMI_SHOWCASE_UNSUB").is_ok() {
             let view = self.message_view.sender().clone();
             gtk::glib::timeout_add_seconds_local_once(7, move || {
                 let _ = view.send(MessageViewInput::Unsubscribe {
@@ -179,11 +179,11 @@ impl AppModel {
         }
     }
 
-    /// HYLKI_SHOWCASE_INVITE=accept|maybe|decline|calendar presses
+    /// TEGAMI_SHOWCASE_INVITE=accept|maybe|decline|calendar presses
     /// that button on the open card's invitation banner at 7s
-    /// (after HYLKI_SHOWCASE_ROW=8 opened the meeting request).
+    /// (after TEGAMI_SHOWCASE_ROW=8 opened the meeting request).
     pub(super) fn stage_invite(&self) {
-        if let Ok(which) = std::env::var("HYLKI_SHOWCASE_INVITE") {
+        if let Ok(which) = std::env::var("TEGAMI_SHOWCASE_INVITE") {
             use crate::models::Rsvp;
             use crate::ui::message_view::InviteAction;
             let action = match which.as_str() {
@@ -203,15 +203,15 @@ impl AppModel {
         }
     }
 
-    /// HYLKI_SHOWCASE_UNIFIED=sent|starred|drafts|archive|junk|trash|snoozed|smart opens that unified
+    /// TEGAMI_SHOWCASE_UNIFIED=sent|starred|drafts|archive|junk|trash|snoozed|smart opens that unified
     /// row at 3s, All Inboxes at 6s and the row again at 9s, so the
     /// timing logs show a cold and a warm open. starred@N picks the
     /// Nth account's row under Starred instead.
-    /// HYLKI_SHOWCASE_UNIFIED_AT=<s> starts that at s seconds rather
+    /// TEGAMI_SHOWCASE_UNIFIED_AT=<s> starts that at s seconds rather
     /// than 3, once a real profile's accounts have loaded.
     pub(super) fn stage_unified(&self) {
-        if let Ok(which) = std::env::var("HYLKI_SHOWCASE_UNIFIED") {
-            let at: u32 = std::env::var("HYLKI_SHOWCASE_UNIFIED_AT")
+        if let Ok(which) = std::env::var("TEGAMI_SHOWCASE_UNIFIED") {
+            let at: u32 = std::env::var("TEGAMI_SHOWCASE_UNIFIED_AT")
                 .ok()
                 .and_then(|v| v.parse().ok())
                 .unwrap_or(3);
@@ -251,10 +251,10 @@ impl AppModel {
         }
     }
 
-    /// HYLKI_SHOWCASE_ROW_MENU=1 opens the first row's context
-    /// menu at 5s (pair with HYLKI_SHOWCASE_MENU to capture it).
+    /// TEGAMI_SHOWCASE_ROW_MENU=1 opens the first row's context
+    /// menu at 5s (pair with TEGAMI_SHOWCASE_MENU to capture it).
     pub(super) fn stage_row_menu(&self) {
-        if std::env::var("HYLKI_SHOWCASE_ROW_MENU").is_ok() {
+        if std::env::var("TEGAMI_SHOWCASE_ROW_MENU").is_ok() {
             let ml = self.message_list.sender().clone();
             gtk::glib::timeout_add_seconds_local_once(5, move || {
                 let _ = ml.send(MessageListInput::DebugRowMenu);
@@ -263,12 +263,12 @@ impl AppModel {
     }
 }
 
-/// HYLKI_SHOWCASE_APPLY_FILTERS=inboxes|<account>:<folder>
+/// TEGAMI_SHOWCASE_APPLY_FILTERS=inboxes|<account>:<folder>
 /// starts a manual filter run at 5s (#198), the way Apply Now
 /// and the folder menu's Apply Filters do, and the run's
 /// report lands in the status bar a beat later.
 pub(super) fn stage_apply_filters(sender: &ComponentSender<AppModel>) {
-    if let Ok(spec) = std::env::var("HYLKI_SHOWCASE_APPLY_FILTERS") {
+    if let Ok(spec) = std::env::var("TEGAMI_SHOWCASE_APPLY_FILTERS") {
         let s = sender.clone();
         gtk::glib::timeout_add_seconds_local_once(5, move || {
             let targets = spec
@@ -280,12 +280,12 @@ pub(super) fn stage_apply_filters(sender: &ComponentSender<AppModel>) {
     }
 }
 
-/// HYLKI_SHOWCASE_TOOLBAR_GAP=<zone>:<index> opens a drop gap
+/// TEGAMI_SHOWCASE_TOOLBAR_GAP=<zone>:<index> opens a drop gap
 /// in the Settings toolbar editor at 6s (pair with
-/// HYLKI_SHOWCASE_SETTINGS=appearance), as a hovering drag
+/// TEGAMI_SHOWCASE_SETTINGS=appearance), as a hovering drag
 /// would.
 pub(super) fn stage_toolbar_gap(sender: &ComponentSender<AppModel>) {
-    if let Ok(spec) = std::env::var("HYLKI_SHOWCASE_TOOLBAR_GAP") {
+    if let Ok(spec) = std::env::var("TEGAMI_SHOWCASE_TOOLBAR_GAP") {
         if let Some((z, i)) = spec.split_once(':') {
             if let (Ok(zone), Ok(index)) = (z.parse::<usize>(), i.parse::<usize>()) {
                 let s = sender.input_sender().clone();
@@ -297,11 +297,11 @@ pub(super) fn stage_toolbar_gap(sender: &ComponentSender<AppModel>) {
     }
 }
 
-/// HYLKI_SHOWCASE_TOOLBAR_MENU=1 opens the header's right-click
+/// TEGAMI_SHOWCASE_TOOLBAR_MENU=1 opens the header's right-click
 /// menu (Customize Toolbar…) at 5s, as a click on its empty
 /// middle would.
 pub(super) fn stage_toolbar_menu(widgets: &AppModelWidgets, sender: &ComponentSender<AppModel>) {
-    if std::env::var("HYLKI_SHOWCASE_TOOLBAR_MENU").is_ok() {
+    if std::env::var("TEGAMI_SHOWCASE_TOOLBAR_MENU").is_ok() {
         let s = sender.input_sender().clone();
         let header: gtk::Widget = widgets.reader_header.clone().upcast();
         gtk::glib::timeout_add_seconds_local_once(5, move || {
@@ -313,11 +313,11 @@ pub(super) fn stage_toolbar_menu(widgets: &AppModelWidgets, sender: &ComponentSe
     }
 }
 
-/// HYLKI_SHOWCASE_READER_MENU=1 opens the reader header's ⋯
-/// overflow menu at 5s (pair with HYLKI_SHOWCASE_MENU to
+/// TEGAMI_SHOWCASE_READER_MENU=1 opens the reader header's ⋯
+/// overflow menu at 5s (pair with TEGAMI_SHOWCASE_MENU to
 /// capture it; the window must be narrow enough to collapse).
 pub(super) fn stage_reader_menu(sender: &ComponentSender<AppModel>) {
-    if std::env::var("HYLKI_SHOWCASE_READER_MENU").is_ok() {
+    if std::env::var("TEGAMI_SHOWCASE_READER_MENU").is_ok() {
         let s = sender.input_sender().clone();
         gtk::glib::timeout_add_seconds_local_once(5, move || {
             let _ = s.send(AppMsg::ReaderOverflowMenu);
@@ -325,10 +325,10 @@ pub(super) fn stage_reader_menu(sender: &ComponentSender<AppModel>) {
     }
 }
 
-/// HYLKI_SHOWCASE_PRINT=1 opens the print preview of the open
-/// message at 6s (#359); HYLKI_SHOWCASE_TOP captures it.
+/// TEGAMI_SHOWCASE_PRINT=1 opens the print preview of the open
+/// message at 6s (#359); TEGAMI_SHOWCASE_TOP captures it.
 pub(super) fn stage_print(sender: &ComponentSender<AppModel>) {
-    if std::env::var("HYLKI_SHOWCASE_PRINT").is_ok() {
+    if std::env::var("TEGAMI_SHOWCASE_PRINT").is_ok() {
         let s = sender.input_sender().clone();
         gtk::glib::timeout_add_seconds_local_once(6, move || {
             let _ = s.send(AppMsg::PrintPreview);
@@ -336,10 +336,10 @@ pub(super) fn stage_print(sender: &ComponentSender<AppModel>) {
     }
 }
 
-/// HYLKI_SHOWCASE_POPOUT=1 opens the open message in a window
-/// of its own at 6s; HYLKI_SHOWCASE_TOP captures it.
+/// TEGAMI_SHOWCASE_POPOUT=1 opens the open message in a window
+/// of its own at 6s; TEGAMI_SHOWCASE_TOP captures it.
 pub(super) fn stage_popout(sender: &ComponentSender<AppModel>) {
-    if std::env::var("HYLKI_SHOWCASE_POPOUT").is_ok() {
+    if std::env::var("TEGAMI_SHOWCASE_POPOUT").is_ok() {
         let s = sender.input_sender().clone();
         gtk::glib::timeout_add_seconds_local_once(6, move || {
             let _ = s.send(AppMsg::ShowcasePopout);
@@ -347,10 +347,10 @@ pub(super) fn stage_popout(sender: &ComponentSender<AppModel>) {
     }
 }
 
-/// HYLKI_SHOWCASE_EDIT_AS_NEW=1 copies the open message into
+/// TEGAMI_SHOWCASE_EDIT_AS_NEW=1 copies the open message into
 /// the composer at 6s (#232), as its menu entry does.
 pub(super) fn stage_edit_as_new(sender: &ComponentSender<AppModel>) {
-    if std::env::var("HYLKI_SHOWCASE_EDIT_AS_NEW").is_ok() {
+    if std::env::var("TEGAMI_SHOWCASE_EDIT_AS_NEW").is_ok() {
         let s = sender.input_sender().clone();
         gtk::glib::timeout_add_seconds_local_once(6, move || {
             let _ = s.send(AppMsg::EditAsNewCurrent);
@@ -358,10 +358,10 @@ pub(super) fn stage_edit_as_new(sender: &ComponentSender<AppModel>) {
     }
 }
 
-/// HYLKI_SHOWCASE_MOVE=1 opens the Move To… picker at 5s
+/// TEGAMI_SHOWCASE_MOVE=1 opens the Move To… picker at 5s
 /// (it captures itself a second later).
 pub(super) fn stage_move(sender: &ComponentSender<AppModel>) {
-    if std::env::var("HYLKI_SHOWCASE_MOVE").is_ok() {
+    if std::env::var("TEGAMI_SHOWCASE_MOVE").is_ok() {
         let s = sender.input_sender().clone();
         gtk::glib::timeout_add_seconds_local_once(5, move || {
             let _ = s.send(AppMsg::MoveToMenu);
@@ -370,26 +370,26 @@ pub(super) fn stage_move(sender: &ComponentSender<AppModel>) {
 }
 
 impl AppModel {
-    /// HYLKI_SHOWCASE_GALLERY=1 opens the attachments gallery at
-    /// 3s; add HYLKI_SHOWCASE_GALLERY_FOLDERS=1 to drop its folder
-    /// popover open a second later, or HYLKI_SHOWCASE_GALLERY_ACCOUNT=<row>
+    /// TEGAMI_SHOWCASE_GALLERY=1 opens the attachments gallery at
+    /// 3s; add TEGAMI_SHOWCASE_GALLERY_FOLDERS=1 to drop its folder
+    /// popover open a second later, or TEGAMI_SHOWCASE_GALLERY_ACCOUNT=<row>
     /// to pick that row of its account filter (0 = all accounts).
     pub(super) fn stage_gallery(&self, sender: &ComponentSender<AppModel>) {
-        if std::env::var("HYLKI_SHOWCASE_GALLERY").is_ok() {
+        if std::env::var("TEGAMI_SHOWCASE_GALLERY").is_ok() {
             let s = sender.input_sender().clone();
             let g = self.gallery.sender().clone();
             gtk::glib::timeout_add_seconds_local_once(3, move || {
                 let _ = s.send(AppMsg::ShowAttachments);
-                let row: Option<u32> = std::env::var("HYLKI_SHOWCASE_GALLERY_ACCOUNT")
+                let row: Option<u32> = std::env::var("TEGAMI_SHOWCASE_GALLERY_ACCOUNT")
                     .ok()
                     .and_then(|v| v.parse().ok());
-                let folders = std::env::var("HYLKI_SHOWCASE_GALLERY_FOLDERS").is_ok();
-                // HYLKI_SHOWCASE_GALLERY_SEARCH=<text> types into the
+                let folders = std::env::var("TEGAMI_SHOWCASE_GALLERY_FOLDERS").is_ok();
+                // TEGAMI_SHOWCASE_GALLERY_SEARCH=<text> types into the
                 // search box and reports whether it keeps the focus.
-                let search = std::env::var("HYLKI_SHOWCASE_GALLERY_SEARCH").ok();
-                // HYLKI_SHOWCASE_GALLERY_MORE=<n> pages down n times,
+                let search = std::env::var("TEGAMI_SHOWCASE_GALLERY_SEARCH").ok();
+                // TEGAMI_SHOWCASE_GALLERY_MORE=<n> pages down n times,
                 // as scrolling to the end would.
-                let more: u32 = std::env::var("HYLKI_SHOWCASE_GALLERY_MORE")
+                let more: u32 = std::env::var("TEGAMI_SHOWCASE_GALLERY_MORE")
                     .ok()
                     .and_then(|v| v.parse().ok())
                     .unwrap_or(0);
@@ -414,10 +414,10 @@ impl AppModel {
         }
     }
 
-    /// HYLKI_SHOWCASE_RAIL=1 collapses the sidebar to the rail
+    /// TEGAMI_SHOWCASE_RAIL=1 collapses the sidebar to the rail
     /// at 3s (the user's own toggle, fold-ups and all).
     pub(super) fn stage_rail(&self) {
-        if std::env::var("HYLKI_SHOWCASE_RAIL").is_ok() {
+        if std::env::var("TEGAMI_SHOWCASE_RAIL").is_ok() {
             let sb = self.sidebar.sender().clone();
             gtk::glib::timeout_add_seconds_local_once(3, move || {
                 let _ = sb.send(SidebarInput::ToggleCollapsed);
@@ -426,16 +426,16 @@ impl AppModel {
     }
 }
 
-/// HYLKI_SHOWCASE_PEEK=<seconds>[,<seconds>…] works the header's
+/// TEGAMI_SHOWCASE_PEEK=<seconds>[,<seconds>…] works the header's
 /// sidebar toggle at each of those moments (1 or anything
 /// unparseable means 8 s), with the window raised first so the
-/// slide really animates; HYLKI_SHOWCASE_BURST writes stills
+/// slide really animates; TEGAMI_SHOWCASE_BURST writes stills
 /// through the first one. In a narrow window (a window.toml
 /// under the 1094px breakpoint) that is the floating peek; at
 /// full width, or under Focus Mode's rail, it is the rail
 /// expanding and folding again.
 pub(super) fn stage_peek(root: &adw::ApplicationWindow, sender: &ComponentSender<AppModel>) {
-    if let Ok(spec) = std::env::var("HYLKI_SHOWCASE_PEEK") {
+    if let Ok(spec) = std::env::var("TEGAMI_SHOWCASE_PEEK") {
         let mut at: Vec<f64> = spec
             .split(',')
             .filter_map(|p| p.trim().parse::<f64>().ok())
@@ -444,7 +444,7 @@ pub(super) fn stage_peek(root: &adw::ApplicationWindow, sender: &ComponentSender
         if at.is_empty() {
             at.push(8.0);
         }
-        let burst = std::env::var("HYLKI_SHOWCASE_BURST").ok();
+        let burst = std::env::var("TEGAMI_SHOWCASE_BURST").ok();
         let win = root.clone();
         {
             let win = win.clone();
@@ -481,10 +481,10 @@ pub(super) fn stage_peek(root: &adw::ApplicationWindow, sender: &ComponentSender
 }
 
 impl AppModel {
-    /// HYLKI_SHOWCASE_TOGGLE=starred|sent|drafts toggles that
+    /// TEGAMI_SHOWCASE_TOGGLE=starred|sent|drafts toggles that
     /// unified row's list at 5s (what a long-press does).
     pub(super) fn stage_toggle(&self) {
-        if let Ok(which) = std::env::var("HYLKI_SHOWCASE_TOGGLE") {
+        if let Ok(which) = std::env::var("TEGAMI_SHOWCASE_TOGGLE") {
             let kind = match which.as_str() {
                 "sent" => FolderKind::Sent,
                 "drafts" => FolderKind::Drafts,
@@ -498,10 +498,10 @@ impl AppModel {
         }
     }
 
-    /// HYLKI_SHOWCASE_FOLD_FILTERED folds All Inboxes' Filtered
+    /// TEGAMI_SHOWCASE_FOLD_FILTERED folds All Inboxes' Filtered
     /// Folders section, to check its folded header.
     pub(super) fn stage_fold_filtered(&self) {
-        if std::env::var("HYLKI_SHOWCASE_FOLD_FILTERED").is_ok() {
+        if std::env::var("TEGAMI_SHOWCASE_FOLD_FILTERED").is_ok() {
             let sb = self.sidebar.sender().clone();
             gtk::glib::timeout_add_seconds_local_once(3, move || {
                 let _ = sb.send(SidebarInput::ToggleFilteredExpand(

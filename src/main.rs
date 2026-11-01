@@ -1,4 +1,4 @@
-//! Hylki — a clean, fast, GNOME-native email client built with Rust + relm4.
+//! Tegami Mail — a clean, fast, GNOME-native email client built with Rust + relm4.
 
 // A binary crate exports nothing, so a bare `pub` only hides how far an item
 // really reaches; `pub(crate)` or narrower says it.
@@ -29,16 +29,16 @@ pub(crate) use crate::desktop::single_instance::primary_instance_running;
 use crate::desktop::single_instance::{relay_to_primary, UriKind};
 
 const APP_ID: &str = if cfg!(feature = "beta") {
-    "co.hyprlab.Hylki.Beta"
+    "io.github.DocteurScience.TegamiMail.Beta"
 } else {
-    "co.hyprlab.Hylki"
+    "io.github.DocteurScience.TegamiMail"
 };
 
 /// The user-visible application name.
 const APP_NAME: &str = if cfg!(feature = "beta") {
-    "Hylki (beta)"
+    "Tegami Mail (beta)"
 } else {
-    "Hylki"
+    "Tegami Mail"
 };
 
 /// The user-visible version — the crate version verbatim. Beta builds carry a
@@ -57,15 +57,15 @@ const HIDDEN_FLAG: &str = "--hidden";
 /// Set in the environment before the restart the welcome wizard's language
 /// pick asks for, so the instance that comes back opens the wizard again
 /// (the restart helper keeps it; app init clears it).
-const WIZARD_AGAIN_VAR: &str = "HYLKI_WIZARD_AGAIN";
+const WIZARD_AGAIN_VAR: &str = "TEGAMI_WIZARD_AGAIN";
 
 /// Whether this run started hidden. Read once the UI is built, to keep the first
 /// activation from presenting the window that was deliberately not shown.
 static HIDDEN_START: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
 
-/// Marks a `GSK_RENDERER` that Hylki set itself, so a restart, which
+/// Marks a `GSK_RENDERER` that Tegami Mail set itself, so a restart, which
 /// inherits the environment, does not take it for the session's own.
-const RENDERER_SET: &str = "HYLKI_GSK_RENDERER_SET";
+const RENDERER_SET: &str = "TEGAMI_GSK_RENDERER_SET";
 
 /// Settings → System → Renderer (#403), into `GSK_RENDERER` before GTK
 /// starts. One the session already has (a `flatpak override --env`) wins.
@@ -124,12 +124,12 @@ fn main() {
 
     apply_renderer();
     // On X11 the window class is the program name, which defaults to the
-    // binary's, "hylki"; docks match it against the launcher's
+    // binary's, "tegami"; docks match it against the launcher's
     // StartupWMClass, the app ID, and showed a second icon without it (#402).
     // Wayland takes the app ID from the application, so nothing changes there.
     // The display name keeps sound mixers from showing the app ID instead.
     gtk::glib::set_prgname(Some(APP_ID));
-    gtk::glib::set_application_name("Hylki");
+    gtk::glib::set_application_name("Tegami Mail");
 
     let adw_app = build_application();
 
@@ -161,24 +161,24 @@ fn init_tracing() {
     use tracing_subscriber::Layer;
     let stderr = tracing_subscriber::fmt::layer().with_filter(
         tracing_subscriber::EnvFilter::try_from_default_env()
-            .unwrap_or_else(|_| "hylki=info".into()),
+            .unwrap_or_else(|_| "tegami=info".into()),
     );
     let console = tracing_subscriber::fmt::layer()
         .with_writer(desktop::console_log::ConsoleWriter)
         .with_ansi(false)
         .with_target(false)
         .compact()
-        .with_filter(tracing_subscriber::EnvFilter::new("hylki=debug"));
+        .with_filter(tracing_subscriber::EnvFilter::new("tegami=debug"));
     tracing_subscriber::registry()
         .with(stderr)
         .with(console)
         .init();
 }
 
-/// HYLKI_LOGO_PROBE=<address>[,<address>…] logs which source answers for a sender's
+/// TEGAMI_LOGO_PROBE=<address>[,<address>…] logs which source answers for a sender's
 /// logo (BIMI, bundled, the site, or none), for checking one by hand.
 fn start_logo_probe() {
-    if let Ok(list) = std::env::var("HYLKI_LOGO_PROBE") {
+    if let Ok(list) = std::env::var("TEGAMI_LOGO_PROBE") {
         std::thread::spawn(move || {
             for email in list.split(',').map(str::trim).filter(|e| !e.is_empty()) {
                 tracing::info!("logo probe {email}: {}", services::logo::probe(email));
@@ -188,7 +188,7 @@ fn start_logo_probe() {
 }
 
 /// `--hidden` starts without showing the window: the autostart entry written
-/// by the background portal uses it, so logging in leaves Hylki checking mail
+/// by the background portal uses it, so logging in leaves Tegami Mail checking mail
 /// from the Background Apps menu rather than opening a window at you. The flag
 /// is stripped before GTK sees the arguments, which would otherwise reject it
 /// as unknown. Returns the arguments without it, and whether it was there.
@@ -210,12 +210,12 @@ fn build_application() -> adw::Application {
         use gtk::gio::prelude::*;
         adw_app.connect_open(open_files);
     }
-    // The embedded icon gresource lives at /co/hyprlab/Hylki regardless of the
-    // channel; pin the base path so the beta's app ID (co.hyprlab.Hylki.Beta)
+    // The embedded icon gresource lives at /io/github/DocteurScience/TegamiMail regardless of the
+    // channel; pin the base path so the beta's app ID (io.github.DocteurScience.TegamiMail.Beta)
     // doesn't derive a base the bundled symbolic icons aren't under.
     {
         use gtk::gio::prelude::ApplicationExt;
-        adw_app.set_resource_base_path(Some("/co/hyprlab/Hylki"));
+        adw_app.set_resource_base_path(Some("/io/github/DocteurScience/TegamiMail"));
     }
     adw_app
 }
@@ -275,7 +275,7 @@ fn open_files(app: &adw::Application, files: &[gtk::gio::File], _hint: &str) {
 /// welcome wizard alone; the main window appears when the wizard finishes
 /// or is closed (app/accounts.rs presents it from the wizard's hand-off).
 fn is_first_run() -> bool {
-    std::env::var("HYLKI_DEMO").is_err()
+    std::env::var("TEGAMI_DEMO").is_err()
         && config::load().unwrap_or_default().is_empty()
         && !config::wizard_completed()
 }
@@ -299,11 +299,11 @@ fn install_startup_handlers(adw_app: &adw::Application) {
     });
 }
 
-/// Register the embedded GResource holding Hylki's bundled symbolic icons.
+/// Register the embedded GResource holding Tegami Mail's bundled symbolic icons.
 ///
-/// The blob is compiled from `resources/hylki.gresource.xml` by `build.rs` and
+/// The blob is compiled from `resources/tegami.gresource.xml` by `build.rs` and
 /// baked into the binary. Registering it makes the icons available under the
-/// resource path `/co/hyprlab/Hylki/icons`. Because the app's resource base
+/// resource path `/io/github/DocteurScience/TegamiMail/icons`. Because the app's resource base
 /// path is derived from `APP_ID`, GTK automatically appends that `icons`
 /// subdirectory to the default icon theme's search path, as part of hicolor.
 /// Icons are named plainly (`edit-find-symbolic`), so the user's icon theme
@@ -312,20 +312,20 @@ fn install_startup_handlers(adw_app: &adw::Application) {
 fn register_resources() {
     use gtk::{gio, glib};
     let bytes =
-        glib::Bytes::from_static(include_bytes!(concat!(env!("OUT_DIR"), "/hylki.gresource")));
+        glib::Bytes::from_static(include_bytes!(concat!(env!("OUT_DIR"), "/tegami.gresource")));
     match gio::Resource::from_data(&bytes) {
         Ok(resource) => gio::resources_register(&resource),
         Err(e) => tracing::error!("failed to register bundled icon resources: {e}"),
     }
     // The bundled sender logos (see src/services/logo.rs), under
-    // /co/hyprlab/Hylki/logos/<source>/<file>.
+    // /io/github/DocteurScience/TegamiMail/logos/<source>/<file>.
     let logos =
         glib::Bytes::from_static(include_bytes!(concat!(env!("OUT_DIR"), "/logos.gresource")));
     match gio::Resource::from_data(&logos) {
         Ok(resource) => gio::resources_register(&resource),
         Err(e) => tracing::error!("failed to register bundled logo resources: {e}"),
     }
-    // The built-in new-mail sounds, under /co/hyprlab/Hylki/sounds/<name>.ogg.
+    // The built-in new-mail sounds, under /io/github/DocteurScience/TegamiMail/sounds/<name>.ogg.
     let sounds = glib::Bytes::from_static(include_bytes!(concat!(
         env!("OUT_DIR"),
         "/sounds.gresource"
@@ -344,21 +344,21 @@ mod tests {
     fn the_hidden_flag_is_taken_out_wherever_it_stands() {
         let args = |v: &[&str]| v.iter().map(|s| s.to_string()).collect::<Vec<_>>();
         assert_eq!(
-            strip_hidden_flag(args(&["hylki", "--hidden", "mailto:a@example.org"])),
-            (args(&["hylki", "mailto:a@example.org"]), true)
+            strip_hidden_flag(args(&["tegami", "--hidden", "mailto:a@example.org"])),
+            (args(&["tegami", "mailto:a@example.org"]), true)
         );
         assert_eq!(
-            strip_hidden_flag(args(&["hylki", "--hidden", "x", "--hidden"])),
-            (args(&["hylki", "x"]), true)
+            strip_hidden_flag(args(&["tegami", "--hidden", "x", "--hidden"])),
+            (args(&["tegami", "x"]), true)
         );
         assert_eq!(
-            strip_hidden_flag(args(&["hylki"])),
-            (args(&["hylki"]), false)
+            strip_hidden_flag(args(&["tegami"])),
+            (args(&["tegami"]), false)
         );
         // Only the exact flag.
         assert_eq!(
-            strip_hidden_flag(args(&["hylki", "--hidden=1"])),
-            (args(&["hylki", "--hidden=1"]), false)
+            strip_hidden_flag(args(&["tegami", "--hidden=1"])),
+            (args(&["tegami", "--hidden=1"]), false)
         );
     }
 }

@@ -134,7 +134,7 @@ impl AppModel {
     pub(super) fn compose_target(&self) -> Option<Message> {
         let m = self.reply_target()?;
         tracing::debug!(
-            target: "hylki::reply",
+            target: "tegami::reply",
             "toolbar target: selected {}:{} from={} cards={} thread={} head={}",
             m.account_id, m.id, m.from_addr, self.selection_from_cards,
             self.current_thread.len(), self.thread_star_target(&m),
@@ -144,7 +144,7 @@ impl AppModel {
         }
         let picked = self.newest_to_answer(&self.current_thread, m);
         tracing::debug!(
-            target: "hylki::reply",
+            target: "tegami::reply",
             "toolbar target: answering {}:{} from={}",
             picked.account_id, picked.id, picked.from_addr,
         );

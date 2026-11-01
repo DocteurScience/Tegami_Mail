@@ -11,9 +11,9 @@ use super::tokens::{exchange_code, FlowResult};
 use super::DROPBOX_REDIRECT_PORT;
 use crate::encoding::base64_encode;
 
-/// The Hylki app icon, embedded so the success page needs no external resources.
+/// The Tegami Mail app icon, embedded so the success page needs no external resources.
 const ICON_PNG: &[u8] =
-    include_bytes!("../../../data/icons/hicolor/256x256/apps/co.hyprlab.Hylki.png");
+    include_bytes!("../../../data/icons/hicolor/256x256/apps/io.github.DocteurScience.TegamiMail.png");
 
 /// Branded sign-in success page. `__ICON__` is replaced with the app icon (as a
 /// data URI) at runtime by [`success_page`]. Self-contained (inline CSS/SVG,
@@ -23,7 +23,7 @@ const SUCCESS_TEMPLATE: &str = r##"<!doctype html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Hylki — Signed in</title>
+<title>Tegami Mail — Signed in</title>
 <style>
   :root { color-scheme: light dark; --bg1:#0b1220; --bg2:#0e1526; --glow:rgba(53,132,228,.28);
           --card:rgba(255,255,255,.045); --stroke:rgba(255,255,255,.09); --shadow:rgba(0,0,0,.5);
@@ -73,15 +73,15 @@ const SUCCESS_TEMPLATE: &str = r##"<!doctype html>
 <body>
   <main class="card">
     <div class="hero">
-      <img src="data:image/png;base64,__ICON__" alt="Hylki">
+      <img src="data:image/png;base64,__ICON__" alt="Tegami Mail">
       <span class="check">
         <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2"
              stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.3L19 6.8"/></svg>
       </span>
     </div>
-    <div class="brand">Hylki</div>
+    <div class="brand">Tegami Mail</div>
     <h1>You&rsquo;re signed in</h1>
-    <p>Your account is connected. You can close this tab and head back to Hylki.</p>
+    <p>Your account is connected. You can close this tab and head back to Tegami Mail.</p>
     <div class="hint">It&rsquo;s safe to close this window.</div>
   </main>
 </body>
@@ -240,7 +240,7 @@ impl Authorization {
         })
     }
 
-    /// For a sign-in in Hylki's own window (#329): the code a navigation
+    /// For a sign-in in Tegami Mail's own window (#329): the code a navigation
     /// to `uri` carries, `None` while it is not the redirect, or the
     /// provider's refusal.
     pub(crate) fn answer(
@@ -334,9 +334,9 @@ fn wait_for_code(listener: &TcpListener, expected_state: &str) -> Result<String,
                 // them approve the app (#329). Say so, in the browser too.
                 if code.is_none() {
                     if let Some((error, description)) = redirect_error(line) {
-                        let body = "<!doctype html><meta charset=utf-8><title>Hylki</title>\
+                        let body = "<!doctype html><meta charset=utf-8><title>Tegami Mail</title>\
                                     <p style=\"font:16px system-ui;margin:3em\">The sign-in did not finish. \
-                                    You can close this tab and return to Hylki.</p>";
+                                    You can close this tab and return to Tegami Mail.</p>";
                         let _ = stream.write_all(
                             format!(
                                 "HTTP/1.1 200 OK\r\nContent-Type: text/html; charset=utf-8\r\n\
@@ -397,7 +397,7 @@ fn redirect_error(request_line: &str) -> Option<(String, String)> {
 }
 
 /// A Microsoft sign-in that failed for want of consent, with where an
-/// organisation's administrator approves Hylki for all its users. Users of
+/// organisation's administrator approves Tegami Mail for all its users. Users of
 /// work and school accounts elsewhere cannot approve an app from a publisher
 /// Microsoft has not verified themselves (#329).
 fn explain_microsoft_refusal(settings: &OAuthSettings, reason: String) -> String {
@@ -419,7 +419,7 @@ fn explain_microsoft_refusal(settings: &OAuthSettings, reason: String) -> String
         settings.client_id
     );
     crate::i18n::i18n_f(
-        "{reason} If your organization manages your account, an administrator can approve Hylki for everyone at {link}",
+        "{reason} If your organization manages your account, an administrator can approve Tegami Mail for everyone at {link}",
         &[("reason", &reason), ("link", &link)],
     )
 }

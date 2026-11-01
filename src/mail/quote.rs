@@ -34,7 +34,7 @@ fn quote_block(attribution: &str, text: &str) -> String {
     // (#436): its spaces are part of the text, and a plain-text reply
     // sends them back as they were.
     format!(
-        "<p class=\"hylki-quote-attr\">{}</p><blockquote><div style=\"white-space:pre-wrap\">{}</div></blockquote>",
+        "<p class=\"tegami-quote-attr\">{}</p><blockquote><div style=\"white-space:pre-wrap\">{}</div></blockquote>",
         esc(attribution),
         esc(text)
     )
@@ -42,7 +42,7 @@ fn quote_block(attribution: &str, text: &str) -> String {
 
 /// Like [`quote_block`], but the quoted body is already-sanitized HTML.
 ///
-/// A body that sets its own colors is marked `hylki-quote-mail`: the editor
+/// A body that sets its own colors is marked `tegami-quote-mail`: the editor
 /// lays it on the light ground it was designed for, where a dark composer
 /// would leave its dark text unreadable.
 fn quote_block_html(attribution: &str, inner_html: &str) -> String {
@@ -51,10 +51,10 @@ fn quote_block_html(attribution: &str, inner_html: &str) -> String {
         .iter()
         .any(|c| inner_html.contains(c));
     format!(
-        "<p class=\"hylki-quote-attr\">{}</p><blockquote{}>{}</blockquote>",
+        "<p class=\"tegami-quote-attr\">{}</p><blockquote{}>{}</blockquote>",
         esc(attribution),
         if colored {
-            " class=\"hylki-quote-mail\""
+            " class=\"tegami-quote-mail\""
         } else {
             ""
         },
@@ -138,11 +138,11 @@ fn hard_wrap_plain_regions(html: &str) -> String {
         };
     }
     // A message of mixed parts (`wrap_fragment`): only its text parts are
-    // pre-wrap, each one a `.hylki-plain` div the worker writes itself, with
+    // pre-wrap, each one a `.tegami-plain` div the worker writes itself, with
     // nothing but escaped text and links inside it.
     let mut out = String::with_capacity(html.len());
     let mut rest = html;
-    while let Some(at) = rest.find("class=\"hylki-plain\"") {
+    while let Some(at) = rest.find("class=\"tegami-plain\"") {
         let Some(open) = rest[at..].find('>').map(|i| at + i + 1) else {
             break;
         };
@@ -198,12 +198,12 @@ pub(crate) fn body_is_plain_text(body: &str) -> bool {
             // `linkify`'s links, the one markup inside the text.
             "a" | "/a" => true,
             "div" if !whole => {
-                let part = tag.contains("class=\"hylki-plain\"");
+                let part = tag.contains("class=\"tegami-plain\"");
                 text |= part;
                 part
             }
             "/div" => !whole,
-            "img" => !whole && tag.contains("class=\"hylki-inline\""),
+            "img" => !whole && tag.contains("class=\"tegami-inline\""),
             _ => false,
         };
         if !ok {
@@ -509,7 +509,7 @@ mod tests {
         // An answer to an answer: the inner quote has to stay one level in
         // (#248), not be flattened into the outer one.
         let body = "<!doctype html><html><head></head><body><div>yada yada</div>\
-            <p class=\"hylki-quote-attr\">On Monday, Ada wrote:</p>\
+            <p class=\"tegami-quote-attr\">On Monday, Ada wrote:</p>\
             <blockquote><div>tagada</div></blockquote></body></html>";
         let quoted = super::quoted_original("On Tuesday, Bo wrote:", body);
         let inner = quoted.split_once("</p>").expect("attribution line").1;
@@ -534,8 +534,8 @@ mod tests {
 
         // The same in a message of several parts, where only the text part
         // is pre-wrap and the HTML part's source newlines are not breaks.
-        let mixed = "<!doctype html><html><head><style>.hylki-plain{white-space:pre-wrap}\
-            </style></head><body><div class=\"hylki-plain\">One\nTwo</div>\
+        let mixed = "<!doctype html><html><head><style>.tegami-plain{white-space:pre-wrap}\
+            </style></head><body><div class=\"tegami-plain\">One\nTwo</div>\
             <div>\n<b>Three</b>\n</div></body></html>";
         let quoted = super::quoted_original("hdr", mixed);
         assert!(quoted.contains("One<br>Two"), "{quoted}");
@@ -573,7 +573,7 @@ mod tests {
             "<html><head><style>body{white-space:pre-wrap}</style></head><body><b>Hi</b></body></html>"
         ));
         // A text part and an HTML part side by side.
-        let both = "<!doctype html><html><head></head><body><div class=\"hylki-plain\">One</div>\
+        let both = "<!doctype html><html><head></head><body><div class=\"tegami-plain\">One</div>\
             <div><b>Two</b></div></body></html>";
         assert!(!super::body_is_plain_text(both));
         assert!(!super::body_is_plain_text(""));
@@ -758,15 +758,15 @@ mod tests {
     fn quote_blocks_escape_the_attribution() {
         assert_eq!(
             quote_block("On <d>,\nA wrote:", "a & b\nc"),
-            "<p class=\"hylki-quote-attr\">On &lt;d&gt;,<br>A wrote:</p><blockquote><div style=\"white-space:pre-wrap\">a &amp; b<br>c</div></blockquote>"
+            "<p class=\"tegami-quote-attr\">On &lt;d&gt;,<br>A wrote:</p><blockquote><div style=\"white-space:pre-wrap\">a &amp; b<br>c</div></blockquote>"
         );
         assert_eq!(
             quote_block_html("A", "<p>x</p>"),
-            "<p class=\"hylki-quote-attr\">A</p><blockquote><p>x</p></blockquote>"
+            "<p class=\"tegami-quote-attr\">A</p><blockquote><p>x</p></blockquote>"
         );
         assert_eq!(
             quote_block_html("A", "<p style=\"background: red\">x</p>"),
-            "<p class=\"hylki-quote-attr\">A</p><blockquote class=\"hylki-quote-mail\"><p style=\"background: red\">x</p></blockquote>"
+            "<p class=\"tegami-quote-attr\">A</p><blockquote class=\"tegami-quote-mail\"><p style=\"background: red\">x</p></blockquote>"
         );
     }
 

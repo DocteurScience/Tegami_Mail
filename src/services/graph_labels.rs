@@ -42,7 +42,7 @@ struct TenantLabel {
 }
 
 /// The accounts whose list is read: Microsoft 365 over Graph with the
-/// switch on, signed in within Hylki. A token from GNOME Online Accounts
+/// switch on, signed in within Tegami Mail. A token from GNOME Online Accounts
 /// carries only the scopes GNOME asked for.
 fn usable(account: &AccountConfig) -> bool {
     account.enabled
@@ -107,19 +107,19 @@ fn lookup(account: &AccountConfig, id: &str) -> Option<TenantLabel> {
     let mut st = state().lock().ok()?;
     match read {
         Ok(labels) => {
-            tracing::debug!(target: "hylki::graph", "< OK sensitivity labels ({} for {email})", labels.len());
+            tracing::debug!(target: "tegami::graph", "< OK sensitivity labels ({} for {email})", labels.len());
             let found = labels.get(id).cloned();
             st.lists.insert(email.to_string(), (Instant::now(), labels));
             st.failed.remove(email);
             found
         }
         Err(Failure::Refused(why)) => {
-            tracing::warn!(target: "hylki::graph", "sensitivity labels refused for {email} ({why}); not asked again this session");
+            tracing::warn!(target: "tegami::graph", "sensitivity labels refused for {email} ({why}); not asked again this session");
             st.refused.insert(email.to_string());
             None
         }
         Err(Failure::Failed(why)) => {
-            tracing::warn!(target: "hylki::graph", "sensitivity labels for {email} failed: {why}");
+            tracing::warn!(target: "tegami::graph", "sensitivity labels for {email} failed: {why}");
             st.failed.insert(email.to_string(), Instant::now());
             None
         }
@@ -141,7 +141,7 @@ fn agent() -> &'static ureq::Agent {
 }
 
 fn get(token: &str, url: &str) -> Result<serde_json::Value, (Option<u16>, String)> {
-    tracing::debug!(target: "hylki::graph", "> GET {}", url.strip_prefix("https://graph.microsoft.com").unwrap_or(url));
+    tracing::debug!(target: "tegami::graph", "> GET {}", url.strip_prefix("https://graph.microsoft.com").unwrap_or(url));
     match agent().get(url).set("Authorization", &bearer(token)).call() {
         Ok(resp) => resp.into_json().map_err(|e| (None, e.to_string())),
         Err(ureq::Error::Status(code, resp)) => {

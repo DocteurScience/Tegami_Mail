@@ -2,7 +2,7 @@
 //! gallery): a searchable, sortable list of every GNOME Contacts entry beside
 //! the selected contact's full card, with editing, creation and deletion done
 //! right here (writes go through EDS, so GNOME Contacts and CardDAV stay in
-//! sync). Anything Hylki doesn't do — linking, photos — is one click away via
+//! sync). Anything Tegami Mail doesn't do — linking, photos — is one click away via
 //! a contact's "Open in GNOME Contacts".
 
 use std::cell::RefCell;
@@ -74,7 +74,7 @@ impl Component for ContactsPage {
                     },
                     pack_end = &gtk::Button {
                         set_icon_name: "document-open-symbolic",
-                        set_tooltip_text: Some(i18n("Import vCard files into the Hylki address book").as_str()),
+                        set_tooltip_text: Some(i18n("Import vCard files into the Tegami Mail address book").as_str()),
                         add_css_class: "flat",
                         connect_clicked => ContactsPageInput::ImportContacts,
                     },
@@ -95,7 +95,7 @@ impl Component for ContactsPage {
                     set_description: Some(if model.loading {
                         String::new()
                     } else {
-                        i18n("Add a contact with the + button, or import vCard files. Contacts are kept in Hylki's own address book, and the address books of GNOME Contacts are listed here too.")
+                        i18n("Add a contact with the + button, or import vCard files. Contacts are kept in Tegami Mail's own address book, and the address books of GNOME Contacts are listed here too.")
                     }.as_str()),
                 },
             },
@@ -179,7 +179,7 @@ impl Component for ContactsPage {
                         },
                         pack_end = &gtk::Button {
                             set_icon_name: "document-open-symbolic",
-                            set_tooltip_text: Some(i18n("Import vCard files into the Hylki address book").as_str()),
+                            set_tooltip_text: Some(i18n("Import vCard files into the Tegami Mail address book").as_str()),
                             add_css_class: "flat",
                             connect_clicked => ContactsPageInput::ImportContacts,
                         },

@@ -130,7 +130,7 @@ mod tests {
         ] {
             let raw = format!(
                 "From: Ann <ann@example.test>\r\nTo: me@example.test\r\nSubject: note {n}\r\n\
-                 Message-ID: <hylki-509-jmap-{pid}-{n}@example.test>\r\n\r\n{body}\r\n"
+                 Message-ID: <tegami-509-jmap-{pid}-{n}@example.test>\r\n\r\n{body}\r\n"
             );
             let email = serde_json::json!({ "mailboxIds": { made.clone(): true } });
             ids.push(jmap_import_email(&s, raw.as_bytes(), email).expect("import"));

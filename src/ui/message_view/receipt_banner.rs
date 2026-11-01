@@ -12,9 +12,9 @@ use crate::models::{Message, ReceiptMark, ReceiptMarks};
 /// green once it came back, none (hidden) on mail that asked for nothing.
 fn read_mark_class(mark: Option<&ReceiptMark>) -> &'static str {
     match mark {
-        Some(m) if m.read => "hylki-read read",
-        Some(_) => "hylki-read asked",
-        None => "hylki-read",
+        Some(m) if m.read => "tegami-read read",
+        Some(_) => "tegami-read asked",
+        None => "tegami-read",
     }
 }
 
@@ -27,7 +27,7 @@ pub(super) fn read_mark_html(key: (u32, u32), mark: Option<&ReceiptMark>) -> Str
         key.0,
         key.1,
         attr_escape(mark.map_or("", |m| m.tooltip.as_str())),
-        inline_icon_svg("hylki-read-receipt-symbolic"),
+        inline_icon_svg("tegami-read-receipt-symbolic"),
     )
 }
 
@@ -37,7 +37,7 @@ pub(super) fn read_mark_html(key: (u32, u32), mark: Option<&ReceiptMark>) -> Str
 /// [`MessageView::receipt_inner_html`] rendered.
 pub(super) fn receipt_row_html(key: (u32, u32), inner: &str) -> String {
     format!(
-        "<div class=\"hylki-mdn\" data-key=\"{}:{}\">{inner}</div>",
+        "<div class=\"tegami-mdn\" data-key=\"{}:{}\">{inner}</div>",
         key.0, key.1
     )
 }
@@ -72,7 +72,7 @@ impl MessageView {
         };
         let button = |answer: &str, label: &str, title: &str| {
             format!(
-                "<button type=\"button\" class=\"hylki-unsub-btn\" data-key=\"{}:{}\" \
+                "<button type=\"button\" class=\"tegami-unsub-btn\" data-key=\"{}:{}\" \
                  data-mdn=\"{answer}\" title=\"{}\">{}</button>",
                 key.0,
                 key.1,
@@ -81,7 +81,7 @@ impl MessageView {
             )
         };
         format!(
-            "<span class=\"hylki-unsub-text\">{}</span>{}{}",
+            "<span class=\"tegami-unsub-text\">{}</span>{}{}",
             escape_html(&text),
             button(
                 "send",
@@ -110,7 +110,7 @@ impl MessageView {
         };
         let html = self.receipt_inner_html(m);
         let js = format!(
-            "(function(){{var d=document.querySelector('.hylki-mdn[data-key=\"{account_id}:{id}\"]');\
+            "(function(){{var d=document.querySelector('.tegami-mdn[data-key=\"{account_id}:{id}\"]');\
              if(d)d.innerHTML={};}})()",
             serde_json::to_string(&html).unwrap_or_else(|_| "''".into()),
         );
@@ -131,7 +131,7 @@ impl MessageView {
         for m in &self.thread {
             let mark = self.receipt_marks.of(m);
             js.push_str(&format!(
-                "d=document.querySelector('.hylki-read[data-key=\"{}:{}\"]');\
+                "d=document.querySelector('.tegami-read[data-key=\"{}:{}\"]');\
                  if(d){{d.className={};d.title={};}}",
                 m.account_id,
                 m.id,

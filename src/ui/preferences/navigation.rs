@@ -109,7 +109,7 @@ pub(super) const SIDE_PAGES: &[(&str, &[SidePage])] = &[
             SidePage {
                 id: "reading",
                 title: i18n_noop("Reading"),
-                icon: "hylki-mail-read-symbolic",
+                icon: "tegami-mail-read-symbolic",
                 accounts: false,
             },
             SidePage {

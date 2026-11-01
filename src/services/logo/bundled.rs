@@ -67,7 +67,7 @@ pub(super) fn bundled_bytes(entry: &LogoEntry) -> Option<Vec<u8>> {
     match entry.source.as_str() {
         "brand" => crate::desktop::brand::png(&entry.file).map(<[u8]>::to_vec),
         "simple" | "gilbarbara" => {
-            let path = format!("/co/hyprlab/Hylki/logos/{}/{}", entry.source, entry.file);
+            let path = format!("/io/github/DocteurScience/TegamiMail/logos/{}/{}", entry.source, entry.file);
             let data =
                 gtk::gio::resources_lookup_data(&path, gtk::gio::ResourceLookupFlags::NONE).ok()?;
             let svg = std::str::from_utf8(&data).ok()?;

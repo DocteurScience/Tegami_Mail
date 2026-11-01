@@ -2,7 +2,7 @@
 //! pictures.
 //!
 //! Account metadata (name, email, servers, username) lives in
-//! `~/.config/hylki/accounts.toml`. Passwords are kept in the system keyring
+//! `~/.config/tegami/accounts.toml`. Passwords are kept in the system keyring
 //! (see [`super::secrets`]), never written to disk. The `password` field is
 //! read from the TOML if present (older configs, manual setup) and migrated
 //! into the keyring on first use, then stripped from the file.
@@ -103,7 +103,7 @@ pub(crate) const LOCAL_ACCOUNT: &str = "local";
 
 /// Where an On This Computer account keeps its folders.
 pub(crate) fn local_mail_dir() -> Option<PathBuf> {
-    data_base().map(|d| d.join("hylki").join("local-mail"))
+    data_base().map(|d| d.join("tegami").join("local-mail"))
 }
 
 /// A new On This Computer account (#552). Its mail is kept whole on disk,
@@ -133,7 +133,7 @@ impl AccountConfig {
 }
 
 /// How an account's servers are secured, as GNOME Online Accounts records
-/// it for the accounts it holds (#254). Hylki otherwise infers the TLS mode
+/// it for the accounts it holds (#254). Tegami Mail otherwise infers the TLS mode
 /// from the port (993 and 465 open with TLS, the rest upgrade), which a
 /// server on a port of its own defeats, and verifies every certificate,
 /// which a home server's self-signed one fails even after the user
@@ -204,7 +204,7 @@ pub(crate) struct AccountConfig {
     pub(crate) tls_accept_hostname_mismatch: bool,
     /// How the servers are secured, where GNOME Online Accounts says so
     /// (#254); `None` goes by the port numbers, as for every account set
-    /// up in Hylki.
+    /// up in Tegami Mail.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub(crate) security: Option<ServerSecurity>,
     /// SMTP username (used only when `smtp_separate`).
@@ -232,7 +232,7 @@ pub(crate) struct AccountConfig {
     #[serde(default)]
     pub(crate) gravatar: bool,
     /// The signature put in new messages from this account: the default
-    /// one of `signatures`, written here too so an older Hylki still finds
+    /// one of `signatures`, written here too so an older Tegami Mail still finds
     /// it. A config from before #445 has only this.
     #[serde(default)]
     pub(crate) signature: Option<String>,
@@ -274,7 +274,7 @@ pub(crate) struct AccountConfig {
     #[serde(default = "default_on")]
     pub(crate) goa_enabled_before_mail_disabled: bool,
     /// Authenticate with OAuth2 (XOAUTH2) instead of a stored password. The token
-    /// comes from GOA (`goa_id`) or, for accounts added directly in Hylki, from
+    /// comes from GOA (`goa_id`) or, for accounts added directly in Tegami Mail, from
     /// refreshing `oauth_settings` with the keyring-stored refresh token.
     #[serde(default)]
     pub(crate) oauth: bool,
@@ -312,10 +312,10 @@ pub(crate) struct AccountConfig {
     /// would (#136). Ignored by Microsoft 365, which files its own copy.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub(crate) sent_copy_path: Option<String>,
-    /// The server files its own copy of outgoing mail, so Hylki must not add
+    /// The server files its own copy of outgoing mail, so Tegami Mail must not add
     /// one. Gmail does this for anything sent through its SMTP, which leaves
-    /// two copies of every message: Google's, and the one Hylki appends.
-    /// Off by default, because a server that does *not* do it and a Hylki
+    /// two copies of every message: Google's, and the one Tegami Mail appends.
+    /// Off by default, because a server that does *not* do it and a Tegami Mail
     /// that has stopped appending means no sent mail is kept at all.
     #[serde(default, skip_serializing_if = "is_false")]
     pub(crate) server_saves_sent: bool,
@@ -375,7 +375,7 @@ pub(crate) struct AccountConfig {
     pub(crate) plain_subject: bool,
     /// The composer's recipient suggestions also search the organization's
     /// directory through Microsoft Graph (#410). Only for a Microsoft 365
-    /// account signed in within Hylki: the scopes it needs are asked for
+    /// account signed in within Tegami Mail: the scopes it needs are asked for
     /// when it is turned on, and a token from GNOME Online Accounts cannot
     /// be given them.
     #[serde(default, skip_serializing_if = "is_false")]
@@ -388,7 +388,7 @@ pub(crate) struct AccountConfig {
     /// A message's sensitivity label whose name the message leaves out is
     /// named from the organization's list of labels, read through
     /// Microsoft Graph (#411). Like `graph_directory`, only for an account
-    /// signed in within Hylki, with its scope asked for when turned on.
+    /// signed in within Tegami Mail, with its scope asked for when turned on.
     #[serde(default, skip_serializing_if = "is_false")]
     pub(crate) graph_label_names: bool,
 }
@@ -492,7 +492,7 @@ where
         .collect())
 }
 
-/// OAuth2 client configuration for an account added directly in Hylki.
+/// OAuth2 client configuration for an account added directly in Tegami Mail.
 #[derive(Debug, Clone, Default, Deserialize, Serialize)]
 pub(crate) struct OAuthSettings {
     pub(crate) auth_url: String,
@@ -503,9 +503,9 @@ pub(crate) struct OAuthSettings {
     pub(crate) client_secret: String,
     pub(crate) scopes: String,
     /// A redirect the client is registered with other than a loopback one,
-    /// such as Microsoft's `…/oauth2/nativeclient` (#329). Empty: Hylki's
+    /// such as Microsoft's `…/oauth2/nativeclient` (#329). Empty: Tegami Mail's
     /// own loopback listener, with the sign-in in the browser. Otherwise the
-    /// sign-in runs in a window of Hylki's, which catches the redirect.
+    /// sign-in runs in a window of Tegami Mail's, which catches the redirect.
     #[serde(default, skip_serializing_if = "String::is_empty")]
     pub(crate) redirect_uri: String,
 }
@@ -534,7 +534,7 @@ impl AccountConfig {
     }
 
     /// Store `signatures`, with `default` the one new messages start with,
-    /// and keep `signature` in step for an older Hylki.
+    /// and keep `signature` in step for an older Tegami Mail.
     pub(crate) fn set_signatures(
         &mut self,
         signatures: Vec<NamedSignature>,
@@ -631,7 +631,7 @@ pub(crate) fn blank_account() -> AccountConfig {
     }
 }
 
-/// Demo mode's edited stand-in accounts (`~/.config/hylki/demo-accounts.toml`):
+/// Demo mode's edited stand-in accounts (`~/.config/tegami/demo-accounts.toml`):
 /// what the Accounts panel changed on the sample accounts (color, emoji,
 /// picture, label), kept apart from the real accounts file so the demo
 /// stays a demo. `None` when there is none, or it is empty.
@@ -660,7 +660,7 @@ fn demo_accounts_path() -> Option<PathBuf> {
     config_file("demo-accounts.toml")
 }
 
-/// Path to the accounts config file (`~/.config/hylki/accounts.toml`).
+/// Path to the accounts config file (`~/.config/tegami/accounts.toml`).
 pub(crate) fn path() -> Option<PathBuf> {
     config_file("accounts.toml")
 }

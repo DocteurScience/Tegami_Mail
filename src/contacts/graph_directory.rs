@@ -1,6 +1,6 @@
 //! The organization's directory over Microsoft Graph (#410), for the
 //! composer's recipient suggestions: what LDAP directories are through EDS
-//! (`directory`), for a Microsoft 365 account signed in within Hylki whose
+//! (`directory`), for a Microsoft 365 account signed in within Tegami Mail whose
 //! "Search the organization directory" switch is on.
 //!
 //! Two lists are asked. `/me/people` is the people the user works with,
@@ -49,7 +49,7 @@ impl Endpoint {
 }
 
 /// The accounts a search asks: Microsoft 365 over Graph with the switch on,
-/// signed in within Hylki. A token from GNOME Online Accounts carries only
+/// signed in within Tegami Mail. A token from GNOME Online Accounts carries only
 /// the scopes GNOME asked for, which do not include the directory.
 pub(crate) fn usable(account: &AccountConfig) -> bool {
     account.enabled
@@ -286,7 +286,7 @@ fn get(token: &str, endpoint: Endpoint, typed: &str) -> Result<serde_json::Value
         Endpoint::Users => (users_url(typed), Some("eventual")),
     };
     // The query is a person's name, so the log names only the list asked.
-    tracing::debug!(target: "hylki::graph", "> GET {} (directory search)", endpoint.name());
+    tracing::debug!(target: "tegami::graph", "> GET {} (directory search)", endpoint.name());
     let mut req = agent().get(&url).set("Authorization", &bearer(token));
     if let Some(level) = consistency {
         req = req.set("ConsistencyLevel", level);
@@ -368,12 +368,12 @@ fn search_account(account: &AccountConfig, typed: &str, query: &str) -> Vec<Sugg
                 if json["value"].as_array().map_or(0, Vec::len) >= TOP {
                     complete = false;
                 }
-                tracing::debug!(target: "hylki::graph", "< OK {} ({} found)", endpoint.name(), page.len());
+                tracing::debug!(target: "tegami::graph", "< OK {} ({} found)", endpoint.name(), page.len());
                 merge(&mut found, page);
             }
             Err(Failure::Refused(why)) => {
                 tracing::warn!(
-                    target: "hylki::graph",
+                    target: "tegami::graph",
                     "directory search: {} refused for {email} ({why}); not asked again this session",
                     endpoint.name()
                 );
@@ -383,7 +383,7 @@ fn search_account(account: &AccountConfig, typed: &str, query: &str) -> Vec<Sugg
                 complete = false;
             }
             Err(Failure::Throttled(secs)) => {
-                tracing::warn!(target: "hylki::graph", "directory search: throttled for {email}, waiting {secs} s");
+                tracing::warn!(target: "tegami::graph", "directory search: throttled for {email}, waiting {secs} s");
                 if let Ok(mut st) = state().lock() {
                     st.paused.insert(
                         email.to_string(),
@@ -395,12 +395,12 @@ fn search_account(account: &AccountConfig, typed: &str, query: &str) -> Vec<Sugg
                 break;
             }
             Err(Failure::Unauthorized) => {
-                tracing::warn!(target: "hylki::graph", "directory search: {} turned the token down for {email}", endpoint.name());
+                tracing::warn!(target: "tegami::graph", "directory search: {} turned the token down for {email}", endpoint.name());
                 complete = false;
                 keep = false;
             }
             Err(Failure::Failed(why)) => {
-                tracing::warn!(target: "hylki::graph", "directory search: {} failed for {email}: {why}", endpoint.name());
+                tracing::warn!(target: "tegami::graph", "directory search: {} failed for {email}: {why}", endpoint.name());
                 complete = false;
                 keep = false;
             }

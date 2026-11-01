@@ -73,7 +73,7 @@ impl Component for Compose {
                         add_css_class: "compose-toolbar",
                         set_show_start_title_buttons: false,
                         set_show_end_title_buttons: false,
-                        // No "Hylki" branding on the compose bar.
+                        // No "Tegami Mail" branding on the compose bar.
                         #[wrap(Some)]
                         set_title_widget = &gtk::Label {
                             set_label: "",
@@ -565,10 +565,10 @@ impl Component for Compose {
             ),
             ComposeFormat::Rich | ComposeFormat::Plain => {}
         }
-        // HYLKI_SHOWCASE_PLAIN_LOG also logs the body a composer opens with
+        // TEGAMI_SHOWCASE_PLAIN_LOG also logs the body a composer opens with
         // (demo only), to check a reply started in plain text (#436).
-        if std::env::var_os("HYLKI_SHOWCASE_PLAIN_LOG").is_some()
-            && std::env::var_os("HYLKI_DEMO").is_some()
+        if std::env::var_os("TEGAMI_SHOWCASE_PLAIN_LOG").is_some()
+            && std::env::var_os("TEGAMI_DEMO").is_some()
         {
             let ed = editor.clone();
             gtk::glib::timeout_add_local_once(std::time::Duration::from_millis(2500), move || {

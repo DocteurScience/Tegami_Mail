@@ -10,11 +10,11 @@
   var AUTO_DIR = 'body>div,body>p,li';
   /* Not in the message a reply or a forward quotes: it is somebody
      else's, and goes out as it came. */
-  function quoted(n){ return n.matches('.hylki-quote-attr+blockquote *'); }
+  function quoted(n){ return n.matches('.tegami-quote-attr+blockquote *'); }
   function autoDir(){
     if(!document.body) return;
     Array.prototype.forEach.call(document.querySelectorAll(AUTO_DIR), function(n){
-      if(!n.hasAttribute('dir') && !n.hasAttribute('data-hylki-ui') && !quoted(n)) n.setAttribute('dir', 'auto');
+      if(!n.hasAttribute('dir') && !n.hasAttribute('data-tegami-ui') && !quoted(n)) n.setAttribute('dir', 'auto');
     });
   }
   new MutationObserver(autoDir)
@@ -32,7 +32,7 @@
      joins each line to the block above with a <br>, the line it has always
      been, so drafts, the text part and the other formats see no
      difference. */
-  var LINE = 'data-hylki-line';
+  var LINE = 'data-tegami-line';
   function lineBlock(el){
     if(!el || !/^(DIV|P)$/.test(el.tagName) || el.parentNode !== document.body) return false;
     for(var i = 0; i < el.attributes.length; i++){
@@ -98,7 +98,7 @@
       });
     });
   }
-  if(!window.__hylkiPlain) document.addEventListener('DOMContentLoaded', splitLines);
-  window.__hylkiLines = {LINE: LINE, bare: bare, quoted: quoted, lineBlock: lineBlock,
+  if(!window.__tegamiPlain) document.addEventListener('DOMContentLoaded', splitLines);
+  window.__tegamiLines = {LINE: LINE, bare: bare, quoted: quoted, lineBlock: lineBlock,
     blockOf: blockOf, joinLines: joinLines};
 })();

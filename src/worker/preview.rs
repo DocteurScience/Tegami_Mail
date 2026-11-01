@@ -204,7 +204,7 @@ pub(super) fn pgp_preview(collapsed: &str) -> Option<String> {
 ///
 /// A converter renders a link as `text ( url )`, so a mail whose first element is
 /// a linked logo — every marketing template — begins with a bare tracking URL.
-/// Hylki showed that URL as the preview where Apple Mail shows the greeting. The
+/// Tegami Mail showed that URL as the preview where Apple Mail shows the greeting. The
 /// parenthesised URLs go, and any URL-only lines left at the front go with them;
 /// if that is the whole message, it stays as it was, since a link is better than
 /// an empty row.

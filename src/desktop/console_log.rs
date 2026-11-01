@@ -1,7 +1,7 @@
 //! The console-mode log store: a capped ring buffer fed by a dedicated
 //! tracing layer (see `main.rs`), read by the status bar's console view.
 //!
-//! The layer runs at `hylki=debug` regardless of `RUST_LOG`, so the console
+//! The layer runs at `tegami=debug` regardless of `RUST_LOG`, so the console
 //! is verbose even when stderr is quiet. Lines are sequence-numbered so the
 //! UI can poll cheaply ("everything after seq N") without copying the whole
 //! buffer each tick.
@@ -113,7 +113,7 @@ pub(crate) fn export_text(memory: &str) -> String {
     };
     let mut out = String::new();
     out.push_str(&format!(
-        "Hylki {} ({}), {host}\n{os}, GTK {}.{}.{}, libadwaita {}.{}.{}\nExported {}\nEmail addresses are shortened to their domain.\n\n",
+        "Tegami Mail {} ({}), {host}\n{os}, GTK {}.{}.{}, libadwaita {}.{}.{}\nExported {}\nEmail addresses are shortened to their domain.\n\n",
         crate::VERSION,
         crate::APP_ID,
         gtk::major_version(),

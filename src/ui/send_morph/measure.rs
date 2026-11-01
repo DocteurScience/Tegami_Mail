@@ -7,15 +7,15 @@ use gtk::graphene;
 /// The script that lists the reader document's cards: each one's key, its
 /// box in the view's own pixels, and its header's height, with the view's
 /// width in the document's pixels to scale them by.
-pub(super) const CARDS_JS: &str = concat!("(function(){", first_text_js!(), "var r=[];var ms=document.querySelectorAll('.hylki-msg');\
+pub(super) const CARDS_JS: &str = concat!("(function(){", first_text_js!(), "var r=[];var ms=document.querySelectorAll('.tegami-msg');\
 for(var i=0;i<ms.length;i++){var b=ms[i].getBoundingClientRect();\
-var h=ms[i].querySelector('.hylki-msg-hdr');\
-var f=ms[i].querySelector('iframe.hylki-frame'),t=null;\
+var h=ms[i].querySelector('.tegami-msg-hdr');\
+var f=ms[i].querySelector('iframe.tegami-frame'),t=null;\
 try{var q=f&&f.contentDocument?ft(f.contentDocument):null;\
 if(q){var fr=f.getBoundingClientRect();t=[fr.left+q[0],fr.top+q[1],q[2]];}}catch(_){}\
 r.push([ms[i].dataset.key||'',b.left,b.top,b.width,b.height,h?h.getBoundingClientRect().height:0,t]);}\
-var fs=document.querySelectorAll('iframe.hylki-frame'),live=true;\
-for(var j=0;j<fs.length;j++){if(!fs[j].classList.contains('hylki-live'))live=false;}\
+var fs=document.querySelectorAll('iframe.tegami-frame'),live=true;\
+for(var j=0;j<fs.length;j++){if(!fs[j].classList.contains('tegami-live'))live=false;}\
 return JSON.stringify({w:window.innerWidth,y:window.scrollY,live:live,cards:r});})()");
 
 /// The script that finds where the editor's first line of text begins.

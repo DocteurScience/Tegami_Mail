@@ -412,12 +412,12 @@ mod tests {
             Some(Shortcut::InWindow(WindowCompose::Reply))
         );
         assert_eq!(gmail_shortcut_for(Key::N, true), Some(Shortcut::Refresh));
-        // d is Gmail's compose in a window, not Hylki's delete.
+        // d is Gmail's compose in a window, not Tegami Mail's delete.
         assert_eq!(
             gmail_shortcut_for(Key::d, false),
             Some(Shortcut::InWindow(WindowCompose::New))
         );
-        // Hylki's own keys that Gmail does not have stay off.
+        // Tegami Mail's own keys that Gmail does not have stay off.
         assert_eq!(gmail_shortcut_for(Key::w, false), None);
         assert_eq!(gmail_shortcut_for(Key::h, false), None);
         assert_eq!(

@@ -5,7 +5,7 @@ use super::edit::{new_group_vcard, GroupEdit};
 use super::read::{local_book, Book};
 use crate::i18n::i18n;
 
-/// The books demo mode offers new contacts, the Hylki book among them.
+/// The books demo mode offers new contacts, the Tegami Mail book among them.
 pub(crate) fn demo_books() -> Vec<Book> {
     vec![
         Book {
@@ -14,15 +14,15 @@ pub(crate) fn demo_books() -> Vec<Book> {
             groups: Some(GroupFormat::Evolution),
         },
         Book {
-            uid: "CardDAV — jason@hylki.hyprlab.co".into(),
-            name: "CardDAV — jason@hylki.hyprlab.co".into(),
+            uid: "CardDAV — jason@example.org".into(),
+            name: "CardDAV — jason@example.org".into(),
             groups: Some(GroupFormat::Apple),
         },
         local_book(),
     ]
 }
 
-/// Sample contacts for demo mode (HYLKI_DEMO): the people from the demo
+/// Sample contacts for demo mode (TEGAMI_DEMO): the people from the demo
 /// mailbox, fleshed out so the contacts view has something to show off.
 /// No EDS identity: demo entries are display-only. The book's name stands
 /// in for its UID, so the book filter has something to tell apart.
@@ -34,7 +34,7 @@ pub(crate) fn demo_contacts() -> Vec<ContactDetails> {
     let contact = |name: &str, book: &str| ContactDetails {
         name: name.into(),
         book_name: book.into(),
-        book_uid: if book == "Hylki Address Book" {
+        book_uid: if book == "Tegami Mail Address Book" {
             crate::contacts::local::LOCAL_BOOK_UID.into()
         } else {
             book.into()
@@ -55,7 +55,7 @@ pub(crate) fn demo_contacts() -> Vec<ContactDetails> {
             phones: vec![l("Mobile", "+1 (415) 555-0114")],
             addresses: vec![l("Work", "2261 Market St, San Francisco, CA 94114")],
             urls: vec!["sophie.design".into()],
-            ..contact("Sophie Turner", "CardDAV — jason@hylki.hyprlab.co")
+            ..contact("Sophie Turner", "CardDAV — jason@example.org")
         },
         ContactDetails {
             org: "Studio.dev".into(),
@@ -65,7 +65,7 @@ pub(crate) fn demo_contacts() -> Vec<ContactDetails> {
                 l("Mobile", "+1 (415) 555-0187"),
                 l("Work", "+1 (415) 555-0100"),
             ],
-            ..contact("Marcus Chen", "CardDAV — jason@hylki.hyprlab.co")
+            ..contact("Marcus Chen", "CardDAV — jason@example.org")
         },
         ContactDetails {
             org: "Studio.dev".into(),
@@ -97,13 +97,13 @@ pub(crate) fn demo_contacts() -> Vec<ContactDetails> {
             ],
             phones: vec![l("Mobile", "+34 612 555 021")],
             urls: vec!["ferroustype.com".into()],
-            ..contact("Diego Álvarez", "CardDAV — jason@hylki.hyprlab.co")
+            ..contact("Diego Álvarez", "CardDAV — jason@example.org")
         },
         ContactDetails {
             emails: vec![l("Home", "tom.okafor@example.com")],
             phones: vec![l("Mobile", "+44 7700 900 214")],
             birthday: "July 30, 1988".into(),
-            ..contact("Tom Okafor", "Hylki Address Book")
+            ..contact("Tom Okafor", "Tegami Mail Address Book")
         },
         ContactDetails {
             org: "Kim & Partners".into(),
@@ -111,7 +111,7 @@ pub(crate) fn demo_contacts() -> Vec<ContactDetails> {
             emails: vec![l("Work", "grace@kimpartners.example")],
             phones: vec![l("Work", "+1 (212) 555-0170")],
             addresses: vec![l("Work", "425 Lexington Ave, New York, NY 10017")],
-            ..contact("Grace Kim", "CardDAV — jason@hylki.hyprlab.co")
+            ..contact("Grace Kim", "CardDAV — jason@example.org")
         },
         demo_group(
             "Studio.dev Team",
@@ -135,7 +135,7 @@ pub(crate) fn demo_contacts() -> Vec<ContactDetails> {
     ]
 }
 
-/// A demo group in the Hylki book, with a card to edit.
+/// A demo group in the Tegami Mail book, with a card to edit.
 fn demo_group(name: &str, hide_addresses: bool, people: &[(&str, &str)]) -> ContactDetails {
     let members: Vec<Member> = people
         .iter()
@@ -153,7 +153,7 @@ fn demo_group(name: &str, hide_addresses: bool, people: &[(&str, &str)]) -> Cont
     };
     ContactDetails {
         name: name.into(),
-        book_name: i18n("Hylki Address Book"),
+        book_name: i18n("Tegami Mail Address Book"),
         book_uid: crate::contacts::local::LOCAL_BOOK_UID.into(),
         group: Some(GroupFormat::Evolution),
         members,

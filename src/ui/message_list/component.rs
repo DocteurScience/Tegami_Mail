@@ -178,7 +178,7 @@ impl SimpleComponent for MessageList {
                         gtk::Button {
                             #[watch]
                             set_icon_name: if model.selection_any_unread() {
-                                "hylki-mail-read-symbolic"
+                                "tegami-mail-read-symbolic"
                             } else {
                                 "mail-unread-symbolic"
                             },
@@ -195,7 +195,7 @@ impl SimpleComponent for MessageList {
                         gtk::Button {
                             #[watch]
                             set_icon_name: if model.selection_all_starred() {
-                                "hylki-non-starred-symbolic"
+                                "tegami-non-starred-symbolic"
                             } else {
                                 "starred-symbolic"
                             },

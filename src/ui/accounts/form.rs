@@ -44,7 +44,7 @@ pub(super) fn wrap_subtitle(row: &impl IsA<gtk::Widget>, chars: i32) {
 /// Declared once because the row is rebuilt whenever an editor opens, and the
 /// two copies drifting apart is how a hint goes stale.
 pub(super) const SENT_COPY_HINT: &str =
-    "Any folder, inbox included. Only applies to mail sent from this Hylki client \
+    "Any folder, inbox included. Only applies to mail sent from this Tegami Mail client \
      going forward. Not recursive.";
 
 pub(super) const REPLY_COPIES_HINT: &str =
@@ -567,7 +567,7 @@ pub(super) fn fill_editor(widgets: &AccountsWindowWidgets, acc: &AccountConfig) 
         .form
         .oauth_scope_row
         .set_text(s.map(|s| s.scopes.as_str()).unwrap_or(""));
-    // What a Microsoft account was set up with beyond Hylki's own app (#329).
+    // What a Microsoft account was set up with beyond Tegami Mail's own app (#329).
     let adv = s
         .map(crate::services::oauth::microsoft_advanced_of)
         .unwrap_or_default();
@@ -591,7 +591,7 @@ pub(super) fn fill_editor(widgets: &AccountsWindowWidgets, acc: &AccountConfig) 
 /// An account imported from GOA takes its address, servers, protocol and
 /// credentials from the system; editing them here would either be overwritten
 /// the next time GOA is read, or quietly disagree with what the rest of the
-/// desktop uses. What stays editable is what Hylki owns: the sender's display
+/// desktop uses. What stays editable is what Tegami Mail owns: the sender's display
 /// name, signature, color, emoji and label.
 pub(super) fn set_connection_editable(widgets: &AccountsWindowWidgets, editable: bool) {
     for row in [
@@ -690,7 +690,7 @@ pub(super) fn trimmed(row: &impl IsA<gtk::Editable>) -> String {
 pub(super) fn form_protocol(widgets: &AccountsWindowWidgets) -> Protocol {
     match provider_at(widgets.form.provider_row.selected()).kind {
         ProviderKind::Jmap => Protocol::Jmap,
-        // Hylki's own Microsoft sign-in asks for Graph, not IMAP (#329).
+        // Tegami Mail's own Microsoft sign-in asks for Graph, not IMAP (#329).
         ProviderKind::Microsoft => Protocol::Graph,
         _ => protocol_at(widgets.form.protocol_row.selected()),
     }

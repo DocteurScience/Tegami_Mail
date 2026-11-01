@@ -23,7 +23,7 @@ impl<E: Fn(WorkerEvent)> GraphWorker<E> {
         let emit = &|ev| name_labels(&self.account, &self.emit, ev);
         // Categories are defined once per mailbox, with a name and a
         // color: the master list is the whole answer. Counts come
-        // from the cache, the only place Hylki has them.
+        // from the cache, the only place Tegami Mail has them.
         let mut found: Vec<KeywordFinding> = Vec::new();
         if let Some(token) = graph_token(account, emit).await {
             let t = token.clone();

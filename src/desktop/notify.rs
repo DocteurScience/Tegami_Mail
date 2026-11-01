@@ -80,7 +80,7 @@ fn compose_new_mail(
 /// Notification id for an account's new-mail toast (one per account, so a later
 /// batch replaces the previous rather than stacking).
 fn mail_id(account_id: u32) -> String {
-    format!("hylki-mail-{account_id}")
+    format!("tegami-mail-{account_id}")
 }
 
 /// Post (or replace) the new-mail notification for an account. Clicking it opens
@@ -275,7 +275,7 @@ pub(crate) fn error(account_id: u32, title: &str, body: &str) {
     }
     n.set_priority(gio::NotificationPriority::High);
     n.set_default_action(&format!("app.{PRESENT_ACTION}"));
-    send(&format!("hylki-error-{account_id}"), &n);
+    send(&format!("tegami-error-{account_id}"), &n);
 }
 
 /// A read receipt came back (#520): who read which message. A click opens
@@ -300,7 +300,7 @@ pub(crate) fn read_receipt(
         ),
         None => n.set_default_action(&format!("app.{PRESENT_ACTION}")),
     }
-    send(&format!("hylki-receipt-{}", message_id.to_lowercase()), &n);
+    send(&format!("tegami-receipt-{}", message_id.to_lowercase()), &n);
 }
 
 /// A message opened from outside the app (a file manager's "Send by email",
@@ -311,11 +311,11 @@ pub(crate) fn read_receipt(
 pub(crate) fn compose_ready(attachments: u32) {
     let n = gio::Notification::new(&i18n("Message ready to send"));
     let body = if attachments == 0 {
-        i18n("A new message is open in Hylki.")
+        i18n("A new message is open in Tegami Mail.")
     } else {
         crate::i18n::ni18n_f(
-            "A new message with {n} file attached is open in Hylki.",
-            "A new message with {n} files attached is open in Hylki.",
+            "A new message with {n} file attached is open in Tegami Mail.",
+            "A new message with {n} files attached is open in Tegami Mail.",
             attachments,
             &[("n", &attachments.to_string())],
         )

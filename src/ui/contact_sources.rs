@@ -1,8 +1,8 @@
-//! Settings → Contacts: every place Hylki finds contacts, laid out as Mail
-//! Accounts is. One row per source (the Hylki book, this computer's books,
+//! Settings → Contacts: every place Tegami Mail finds contacts, laid out as Mail
+//! Accounts is. One row per source (the Tegami Mail book, this computer's books,
 //! each GNOME Online Account that keeps contacts, CardDAV accounts and LDAP
-//! directories), each with a switch that uses it in Hylki or not, and a
-//! page of its own: its address books, its sign-in, or the Hylki book's
+//! directories), each with a switch that uses it in Tegami Mail or not, and a
+//! page of its own: its address books, its sign-in, or the Tegami Mail book's
 //! import and export. **Add Address Book…** sets up CardDAV accounts and
 //! LDAP directories, and says where Google and Microsoft 365 are added.
 
@@ -40,7 +40,7 @@ enum AddWhat {
         hint: &'static str,
     },
     Ldap,
-    /// Added in GNOME Online Accounts: Hylki cannot sign in to it itself.
+    /// Added in GNOME Online Accounts: Tegami Mail cannot sign in to it itself.
     Online,
 }
 
@@ -127,7 +127,7 @@ pub(super) enum ContactSourcesInput {
         sources: Vec<Source>,
         eds: bool,
     },
-    /// The books new contacts can go to, and the Hylki book's size, from
+    /// The books new contacts can go to, and the Tegami Mail book's size, from
     /// the app.
     SetBooks(Vec<crate::contacts::Book>),
     SetLocalCount(usize),
@@ -144,7 +144,7 @@ pub(super) enum ContactSourcesInput {
         book: String,
         on: bool,
     },
-    /// A name given in Hylki to an account or an address book, by its ID
+    /// A name given in Tegami Mail to an account or an address book, by its ID
     /// (`None`: its own name again).
     Rename {
         id: String,
@@ -186,7 +186,7 @@ pub(crate) enum ContactSourcesOutput {
         open: bool,
         form: bool,
     },
-    /// What Hylki reads contacts from changed: read them again.
+    /// What Tegami Mail reads contacts from changed: read them again.
     Changed,
     ImportLocal,
     ExportLocal,
@@ -234,7 +234,7 @@ impl SimpleComponent for ContactSources {
                             set_child = &adw::PreferencesPage {
                                 add = &adw::PreferencesGroup {
                                     set_title: &i18n("Address Books"),
-                                    set_description: Some(&i18n("Where contacts come from for Contacts, suggestions, sender pictures and filters. Switching one off leaves it out of Hylki.")),
+                                    set_description: Some(&i18n("Where contacts come from for Contacts, suggestions, sender pictures and filters. Switching one off leaves it out of Tegami Mail.")),
                                     #[wrap(Some)]
                                     set_header_suffix = &gtk::Box {
                                         set_orientation: gtk::Orientation::Horizontal,
@@ -434,11 +434,11 @@ impl SimpleComponent for ContactSources {
                 let _ = out.send(ContactSourcesOutput::LoadBooks);
             });
         }
-        // HYLKI_SHOWCASE_EDIT_CONTACTS=<index>|add|add<kind> opens that
+        // TEGAMI_SHOWCASE_EDIT_CONTACTS=<index>|add|add<kind> opens that
         // source's page or the add page (on a kind), for a capture (demo
         // only), once the page has read its sources.
-        if let Ok(what) = std::env::var("HYLKI_SHOWCASE_EDIT_CONTACTS") {
-            if std::env::var_os("HYLKI_DEMO").is_some() {
+        if let Ok(what) = std::env::var("TEGAMI_SHOWCASE_EDIT_CONTACTS") {
+            if std::env::var_os("TEGAMI_DEMO").is_some() {
                 let s = sender.input_sender().clone();
                 gtk::glib::timeout_add_seconds_local_once(7, move || {
                     if let Some(kind) = what.strip_prefix("add") {

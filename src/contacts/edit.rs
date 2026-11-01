@@ -323,7 +323,7 @@ pub(crate) fn save_group(
             }
             patched_apple_group(original, &edit)
         }
-        GroupFormat::Kind => return Err(i18n("Hylki cannot change this kind of group")),
+        GroupFormat::Kind => return Err(i18n("Tegami Mail cannot change this kind of group")),
     };
     if create {
         create_contact(book_uid, &vcard)
@@ -409,7 +409,7 @@ impl BookCards {
                     return Ok(uid);
                 }
                 let uid = format!(
-                    "hylki-{}",
+                    "tegami-{}",
                     crate::rng::token(24).map_err(|e| e.to_string())?
                 );
                 let card = insert_after_version(&card, &format!("UID:{uid}"));
@@ -447,7 +447,7 @@ fn write_local(result: Result<(), String>) -> Result<(), String> {
     result
 }
 
-/// Import `.vcf` files into the local Hylki book (blocking: call from a
+/// Import `.vcf` files into the local Tegami Mail book (blocking: call from a
 /// background thread).
 pub(crate) fn import_vcf_files(
     paths: &[PathBuf],

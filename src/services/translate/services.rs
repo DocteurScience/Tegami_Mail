@@ -15,7 +15,7 @@ pub(super) fn prepare_blocks(body: &str) -> Vec<String> {
     let mut out = Vec::new();
     for block in crate::mail::reader::extract_blocks(body) {
         match block
-            .strip_prefix("<div class=\"hylki-plain\">")
+            .strip_prefix("<div class=\"tegami-plain\">")
             .and_then(|b| b.strip_suffix("</div>"))
         {
             Some(text) => {

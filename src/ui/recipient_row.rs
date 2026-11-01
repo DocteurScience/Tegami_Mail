@@ -65,7 +65,7 @@ mod imp {
 
     #[glib::object_subclass]
     impl ObjectSubclass for RecipientRow {
-        const NAME: &'static str = "HylkiRecipientRow";
+        const NAME: &'static str = "TegamiRecipientRow";
         type Type = super::RecipientRow;
         type ParentType = adw::PreferencesRow;
     }

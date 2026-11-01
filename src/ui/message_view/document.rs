@@ -68,7 +68,7 @@ fn wrapper_scripts() -> (String, String) {
                 i18n("Add to Contacts"),
             ]);
             format!(
-                "<script nonce=\"{n}\">var vireoQT={qt};var hylkiAM={am};{SIZE_SCRIPT}</script>"
+                "<script nonce=\"{n}\">var vireoQT={qt};var tegamiAM={am};{SIZE_SCRIPT}</script>"
             )
         }
         None => String::new(),
@@ -195,7 +195,7 @@ impl MessageView {
             bg.clone()
         };
         let page = if carded { deep } else { single_ground };
-        let body_class = if carded { " class=\"hylki-conv\"" } else { "" };
+        let body_class = if carded { " class=\"tegami-conv\"" } else { "" };
         let (csp, sizer) = wrapper_scripts();
         // A single message that paints no background of its own (plain mail,
         // and much styled mail too — Apple Mail styles fonts and wrapping but
@@ -208,8 +208,8 @@ impl MessageView {
             !carded && thread.len() == 1 && (reader || !paints_own_background(&thread[0].body));
         let plain_css = if single_plain {
             format!(
-                "body:not(.hylki-conv) .hylki-msg,\
-                 body:not(.hylki-conv) iframe.hylki-frame{{background:{chrome};}}"
+                "body:not(.tegami-conv) .tegami-msg,\
+                 body:not(.tegami-conv) iframe.tegami-frame{{background:{chrome};}}"
             )
         } else {
             String::new()
@@ -263,7 +263,7 @@ fn card_body(cards: &Cards<'_>, m: &Message) -> String {
         })
         .map_or((None, false), |(html, reader)| (Some(html), reader));
     let body = if m.body.trim().is_empty() && translated.is_none() {
-        "<div class=\"hylki-loading\">Loading…</div>".to_string()
+        "<div class=\"tegami-loading\">Loading…</div>".to_string()
     } else {
         message_frame(
             translated.as_deref().unwrap_or(&m.body),
@@ -302,21 +302,21 @@ fn card_avatar(m: &Message, dark: bool) -> String {
             .then(|| crate::services::avatar::own_gravatar_data_uri(&m.from_addr, 26))
             .flatten();
         if let Some(uri) = gravatar {
-            return Some(format!("<img class=\"hylki-ava\" src=\"{uri}\" alt=\"\">"));
+            return Some(format!("<img class=\"tegami-ava\" src=\"{uri}\" alt=\"\">"));
         }
         match (&face.picture, &face.emoji) {
             (Some(path), _) => crate::ui::initials::picture_data_uri(path, 26)
-                .map(|uri| format!("<img class=\"hylki-ava\" src=\"{uri}\" alt=\"\">")),
+                .map(|uri| format!("<img class=\"tegami-ava\" src=\"{uri}\" alt=\"\">")),
             (None, Some(emoji)) => {
                 let png = gtk::gdk::RGBA::parse(&face.color)
                     .ok()
                     .and_then(|bg| crate::ui::initials::png_data_uri(emoji, bg, 26));
                 Some(match png {
                     Some(uri) => {
-                        format!("<img class=\"hylki-ava\" src=\"{uri}\" alt=\"\">")
+                        format!("<img class=\"tegami-ava\" src=\"{uri}\" alt=\"\">")
                     }
                     None => format!(
-                        "<span class=\"hylki-ava\" style=\"background:{bg}\">{glyph}</span>",
+                        "<span class=\"tegami-ava\" style=\"background:{bg}\">{glyph}</span>",
                         bg = attr_escape(&face.color),
                         glyph = escape_html(emoji),
                     ),
@@ -346,9 +346,9 @@ fn card_avatar(m: &Message, dark: bool) -> String {
         // only before a window exists to render with.
         let bg = crate::ui::initials::hsl(f64::from(hue), 0.52, f64::from(l) / 100.0);
         match crate::ui::initials::png_data_uri(&initial, bg, 26) {
-            Some(uri) => format!("<img class=\"hylki-ava\" src=\"{uri}\" alt=\"\">"),
+            Some(uri) => format!("<img class=\"tegami-ava\" src=\"{uri}\" alt=\"\">"),
             None => format!(
-                "<span class=\"hylki-ava\" style=\"background:hsl({hue},52%,{l}%)\">{}</span>",
+                "<span class=\"tegami-ava\" style=\"background:hsl({hue},52%,{l}%)\">{}</span>",
                 escape_html(&initial),
             ),
         }
@@ -369,12 +369,12 @@ fn card_html(cards: &Cards<'_>, m: &Message, ava_html: &str, body: String) -> St
     // verdict arrives (SenderCheckFor patches it live), then
     // tinted by trust — Bazaar's fixed blue for a pass.
     let verify = format!(
-        "<button type=\"button\" class=\"hylki-verify\" data-key=\"{aid}:{id}\" \
+        "<button type=\"button\" class=\"tegami-verify\" data-key=\"{aid}:{id}\" \
              title=\"\">{svg}</button>\
-             <button type=\"button\" class=\"hylki-pgp\" data-key=\"{aid}:{id}\" \
-             title=\"\">{lock}{sig}<span class=\"hylki-pgp-text\"></span></button>\
-             <span class=\"hylki-sens\" data-key=\"{aid}:{id}\" title=\"\">{sens}\
-             <span class=\"hylki-sens-text\"></span></span>",
+             <button type=\"button\" class=\"tegami-pgp\" data-key=\"{aid}:{id}\" \
+             title=\"\">{lock}{sig}<span class=\"tegami-pgp-text\"></span></button>\
+             <span class=\"tegami-sens\" data-key=\"{aid}:{id}\" title=\"\">{sens}\
+             <span class=\"tegami-sens-text\"></span></span>",
         aid = m.account_id,
         id = m.id,
         svg = inline_icon_svg("verified-checkmark-symbolic"),
@@ -389,14 +389,14 @@ fn card_html(cards: &Cards<'_>, m: &Message, ava_html: &str, body: String) -> St
         sens = inline_icon_svg("tag-outline-symbolic"),
     );
     format!(
-        "<section class=\"hylki-msg{sel}{unread_cls}{starred_cls}{folded_cls}\" data-key=\"{aid}:{id}\">\
-               <header class=\"hylki-msg-hdr\" data-key=\"{aid}:{id}\" \
+        "<section class=\"tegami-msg{sel}{unread_cls}{starred_cls}{folded_cls}\" data-key=\"{aid}:{id}\">\
+               <header class=\"tegami-msg-hdr\" data-key=\"{aid}:{id}\" \
                  title=\"{hdr_title}\">\
-                 <div class=\"hylki-hdr-line\">\
-                   {ava}{dot}<span class=\"hylki-from\">{from}</span>{verify}{addr}\
-                   <span class=\"hylki-tags\" data-key=\"{aid}:{id}\">{tags}</span>\
-                   <span class=\"hylki-hdr-meta\">{folder}{rcpt_toggle}{marks}{read}\
-                     <span class=\"hylki-date\">{date}</span></span>\
+                 <div class=\"tegami-hdr-line\">\
+                   {ava}{dot}<span class=\"tegami-from\">{from}</span>{verify}{addr}\
+                   <span class=\"tegami-tags\" data-key=\"{aid}:{id}\">{tags}</span>\
+                   <span class=\"tegami-hdr-meta\">{folder}{rcpt_toggle}{marks}{read}\
+                     <span class=\"tegami-date\">{date}</span></span>\
                    {acts_toggle}{acts}\
                  </div>{rcpt}\
                </header>{fbar}{tpl}{invite}{receipt}{unsub}{tr}{body}{atts}</section>",
@@ -452,7 +452,7 @@ fn card_html(cards: &Cards<'_>, m: &Message, ava_html: &str, body: String) -> St
         // The translation banner (#327), on the same terms.
         tr = LIVE_TRANSLATE.with(|t| {
             format!(
-                "<div class=\"hylki-tr\" data-key=\"{}:{}\">{}</div>",
+                "<div class=\"tegami-tr\" data-key=\"{}:{}\">{}</div>",
                 m.account_id,
                 m.id,
                 t.borrow()
@@ -477,7 +477,7 @@ fn card_html(cards: &Cards<'_>, m: &Message, ava_html: &str, body: String) -> St
         // display:none otherwise, so it costs nothing when off.
         acts_toggle = if !thread.is_empty() {
             format!(
-                "<button type=\"button\" class=\"hylki-acts-toggle\" \
+                "<button type=\"button\" class=\"tegami-acts-toggle\" \
                      title=\"{acts_title}\" data-key=\"{aid}:{id}\">{svg}</button>",
                 aid = m.account_id,
                 id = m.id,
@@ -512,7 +512,7 @@ fn card_html(cards: &Cards<'_>, m: &Message, ava_html: &str, body: String) -> St
         }),
         // Folded (#326): the header and a line of preview.
         folded_cls = if LIVE_FOLDED.with(|f| f.borrow().contains(&(m.account_id, m.id))) {
-            " hylki-folded"
+            " tegami-folded"
         } else {
             ""
         },
@@ -546,7 +546,7 @@ fn card_html(cards: &Cards<'_>, m: &Message, ava_html: &str, body: String) -> St
             // attacker-controlled address can't smuggle markup
             // through the attributes.
             format!(
-                "<span class=\"hylki-addr hylki-mail\" data-mail=\"{0}\" \
+                "<span class=\"tegami-addr tegami-mail\" data-mail=\"{0}\" \
                      data-addr=\"&lt;{0}&gt;\">&lt;{0}&gt;</span>",
                 escape_html(&m.from_addr).replace('"', "&quot;")
             )
@@ -561,7 +561,7 @@ fn card_html(cards: &Cards<'_>, m: &Message, ava_html: &str, body: String) -> St
             // single-recipient chip would only repeat it (#40).
             1 if always_show_recipients => String::new(),
             n => format!(
-                "<button type=\"button\" class=\"hylki-rcpt-toggle{open}\" \
+                "<button type=\"button\" class=\"tegami-rcpt-toggle{open}\" \
                      title=\"{title}\">{label}</button>",
                 label = gtk::glib::markup_escape_text(&ni18n_f(
                     "{n} recipient",
@@ -581,7 +581,7 @@ fn card_html(cards: &Cards<'_>, m: &Message, ava_html: &str, body: String) -> St
         // Where this message was read from, when that isn't the
         // folder on screen — the reply you sent, pulled in from Sent.
         folder = match folder_labels.get(&(m.account_id, m.id)) {
-            Some(label) => format!("<span class=\"hylki-folder\">{}</span>", escape_html(label)),
+            Some(label) => format!("<span class=\"tegami-folder\">{}</span>", escape_html(label)),
             None => String::new(),
         },
         body = body,
@@ -590,7 +590,7 @@ fn card_html(cards: &Cards<'_>, m: &Message, ava_html: &str, body: String) -> St
         // scrolling past no longer counts as reading.
         dot = if m.unread {
             format!(
-                "<span class=\"hylki-dot\" data-key=\"{}:{}\"></span>",
+                "<span class=\"tegami-dot\" data-key=\"{}:{}\"></span>",
                 m.account_id, m.id
             )
         } else {
@@ -614,27 +614,27 @@ fn card_actions(cards: &Cards<'_>, m: &Message) -> String {
     // are baked in; the section's `unread` class picks
     // one, so marking read/unread flips in place.
     let toggle_read = format!(
-        "<button type=\"button\" class=\"hylki-act\" data-act=\"toggleread\" \
+        "<button type=\"button\" class=\"tegami-act\" data-act=\"toggleread\" \
              data-key=\"{aid}:{id}\" title=\"{title}\">\
              <span class=\"tr-when-unread\">{read_svg}</span>\
              <span class=\"tr-when-read\">{unread_svg}</span></button>",
         aid = key.0,
         id = key.1,
         title = gtk::glib::markup_escape_text(&i18n("Mark as read or unread")),
-        read_svg = inline_icon_svg("hylki-mail-read-symbolic"),
+        read_svg = inline_icon_svg("tegami-mail-read-symbolic"),
         unread_svg = inline_icon_svg("mail-unread-symbolic"),
     );
     // The star keeps one glyph; the starred state is
     // color alone (`.on`, toggled optimistically on
     // click too).
     let star = format!(
-        "<button type=\"button\" class=\"hylki-act{on}\" data-act=\"star\" \
+        "<button type=\"button\" class=\"tegami-act{on}\" data-act=\"star\" \
              data-key=\"{aid}:{id}\" title=\"{title}\">{svg}</button>",
         on = if m.starred { " on" } else { "" },
         title = gtk::glib::markup_escape_text(&i18n("Star this message")),
         aid = key.0,
         id = key.1,
-        svg = inline_icon_svg("hylki-non-starred-symbolic"),
+        svg = inline_icon_svg("tegami-non-starred-symbolic"),
     );
     let source_and_translate = format!(
         "{}{}",
@@ -651,7 +651,7 @@ fn card_actions(cards: &Cards<'_>, m: &Message) -> String {
         },
     );
     format!(
-        "<span class=\"hylki-acts\">{}{}{}{}{}{}{}{}{}{}{}{}{}</span>",
+        "<span class=\"tegami-acts\">{}{}{}{}{}{}{}{}{}{}{}{}{}</span>",
         // Same order as the reader toolbar and the list's
         // actions palette, View Source closing the line.
         card_action_button(
@@ -711,7 +711,7 @@ fn card_actions(cards: &Cards<'_>, m: &Message) -> String {
         if style.active() && !reader {
             let on = sender_style.contains(&key);
             format!(
-                "<button type=\"button\" class=\"hylki-act{on_cls}\" data-act=\"senderfmt\" \
+                "<button type=\"button\" class=\"tegami-act{on_cls}\" data-act=\"senderfmt\" \
                      data-key=\"{aid}:{id}\" title=\"{title}\">{svg}</button>",
                 on_cls = if on { " on" } else { "" },
                 aid = key.0,
@@ -734,7 +734,7 @@ fn card_actions(cards: &Cards<'_>, m: &Message) -> String {
         // card that actually has something to load.
         if has_remote_resources(&m.body) {
             format!(
-                "<button type=\"button\" class=\"hylki-act{on_cls}\" data-act=\"remote\" \
+                "<button type=\"button\" class=\"tegami-act{on_cls}\" data-act=\"remote\" \
                      data-key=\"{aid}:{id}\" title=\"{title}\">{svg}</button>",
                 on_cls = if restrict { "" } else { " on" },
                 aid = key.0,

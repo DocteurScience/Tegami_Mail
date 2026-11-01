@@ -30,7 +30,7 @@ fn a_conversation_renders_one_card_per_message_in_order() {
         100,
     );
     assert_eq!(
-        doc.matches("<section class=\"hylki-msg\"").count(),
+        doc.matches("<section class=\"tegami-msg\"").count(),
         2,
         "each message gets its own card: {doc}"
     );
@@ -38,7 +38,7 @@ fn a_conversation_renders_one_card_per_message_in_order() {
     let grace = doc.find("Grace Hopper").expect("second sender present");
     assert!(ada < grace, "cards must keep the order they were handed");
     assert!(
-        doc.contains("<body class=\"hylki-conv\">"),
+        doc.contains("<body class=\"tegami-conv\">"),
         "conversation padding"
     );
     // The cards sit on the deeper page — the same color the spinner and the
@@ -104,7 +104,7 @@ fn a_card_from_your_own_mailbox_wears_that_mailboxs_face() {
 
     // A picture wins over the emoji, and rides along embedded: the
     // document is handed the image, never a path it could go and read.
-    let dir = std::env::temp_dir().join(format!("hylki-own-face-{}", std::process::id()));
+    let dir = std::env::temp_dir().join(format!("tegami-own-face-{}", std::process::id()));
     std::fs::create_dir_all(&dir).expect("a directory to write the picture in");
     let path = dir.join("avatar.png");
     let pixbuf = gtk::gdk_pixbuf::Pixbuf::new(gtk::gdk_pixbuf::Colorspace::Rgb, true, 8, 64, 64)
@@ -122,7 +122,7 @@ fn a_card_from_your_own_mailbox_wears_that_mailboxs_face() {
     )]);
     let doc = build(std::slice::from_ref(&mine));
     assert!(
-        doc.contains("<img class=\"hylki-ava\" src=\"data:image/png;base64,"),
+        doc.contains("<img class=\"tegami-ava\" src=\"data:image/png;base64,"),
         "the picture is embedded in the card: {doc}"
     );
     assert!(
@@ -166,12 +166,12 @@ fn every_card_carries_its_recipients_escaped_and_collapsed() {
         100,
     );
     assert_eq!(
-        doc.matches("class=\"hylki-rcpt\" hidden").count(),
+        doc.matches("class=\"tegami-rcpt\" hidden").count(),
         2,
         "each card gets a collapsed To/Cc block: {doc}"
     );
     assert_eq!(
-        doc.matches("class=\"hylki-rcpt-toggle\"").count(),
+        doc.matches("class=\"tegami-rcpt-toggle\"").count(),
         2,
         "each card gets a recipients chip: {doc}"
     );
@@ -219,7 +219,7 @@ fn a_card_with_no_recipients_shows_no_chip() {
         100,
     );
     assert_eq!(
-        doc.matches("<button type=\"button\" class=\"hylki-rcpt-toggle\"")
+        doc.matches("<button type=\"button\" class=\"tegami-rcpt-toggle\"")
             .count(),
         1,
         "only the second card: {doc}"
@@ -260,7 +260,7 @@ fn a_card_offers_remote_content_both_ways_and_only_where_there_is_any() {
     );
     assert!(blocked.contains("Show remote content"), "{blocked}");
     assert!(
-        !blocked.contains("class=\"hylki-act on\" data-act=\"remote\""),
+        !blocked.contains("class=\"tegami-act on\" data-act=\"remote\""),
         "not lit while blocked"
     );
     // Showing it, the same button offers to put the block back, and is lit.
@@ -268,7 +268,7 @@ fn a_card_offers_remote_content_both_ways_and_only_where_there_is_any() {
     assert_eq!(shown.matches("data-act=\"remote\"").count(), 1, "{shown}");
     assert!(shown.contains("Block remote content"), "{shown}");
     assert!(
-        shown.contains("class=\"hylki-act on\" data-act=\"remote\""),
+        shown.contains("class=\"tegami-act on\" data-act=\"remote\""),
         "lit while showing: {shown}"
     );
 }
@@ -335,18 +335,18 @@ fn only_unread_conversation_messages_are_marked() {
         100,
     );
     assert_eq!(
-        doc.matches("class=\"hylki-dot\"").count(),
+        doc.matches("class=\"tegami-dot\"").count(),
         1,
         "one dot: {doc}"
     );
     assert_eq!(
-        doc.matches("class=\"hylki-end\"").count(),
+        doc.matches("class=\"tegami-end\"").count(),
         0,
         "no sentinel: {doc}"
     );
     // Keyed to the unread message, so reading it can't clear another's.
     assert!(
-        doc.contains("class=\"hylki-dot\" data-key=\"1:2\""),
+        doc.contains("class=\"tegami-dot\" data-key=\"1:2\""),
         "{doc}"
     );
 }
@@ -379,12 +379,12 @@ fn a_deliberately_unread_message_keeps_its_mark() {
         100,
     );
     assert_eq!(
-        doc.matches("class=\"hylki-dot\"").count(),
+        doc.matches("class=\"tegami-dot\"").count(),
         1,
         "still marked: {doc}"
     );
     assert_eq!(
-        doc.matches("class=\"hylki-end\"").count(),
+        doc.matches("class=\"tegami-end\"").count(),
         0,
         "no sentinel: {doc}"
     );
@@ -454,11 +454,11 @@ fn a_selected_card_is_outlined_in_the_accent() {
         100,
     );
     assert!(
-        doc.contains("class=\"hylki-msg selected\" data-key=\"1:2\""),
+        doc.contains("class=\"tegami-msg selected\" data-key=\"1:2\""),
         "{doc}"
     );
     assert_eq!(
-        doc.matches("hylki-msg selected").count(),
+        doc.matches("tegami-msg selected").count(),
         1,
         "only the selected one"
     );
@@ -491,15 +491,15 @@ fn a_single_message_keeps_the_header_but_goes_full_bleed() {
         100,
     );
     assert!(
-        doc.contains("<section class=\"hylki-msg\""),
+        doc.contains("<section class=\"tegami-msg\""),
         "message chrome: {doc}"
     );
     assert!(
-        doc.contains("class=\"hylki-msg-hdr\""),
+        doc.contains("class=\"tegami-msg-hdr\""),
         "in-document header: {doc}"
     );
     assert!(
-        !doc.contains("<body class=\"hylki-conv\">"),
+        !doc.contains("<body class=\"tegami-conv\">"),
         "no card gutter: {doc}"
     );
     assert!(
@@ -535,7 +535,7 @@ fn a_single_message_cards_up_when_asked() {
         100,
     );
     assert!(
-        doc.contains("<body class=\"hylki-conv\">"),
+        doc.contains("<body class=\"tegami-conv\">"),
         "card gutter: {doc}"
     );
     assert!(
@@ -568,7 +568,7 @@ fn a_message_from_another_folder_is_labelled_with_it() {
         100,
     );
     assert_eq!(
-        doc.matches("class=\"hylki-folder\"").count(),
+        doc.matches("class=\"tegami-folder\"").count(),
         // on the message that came from Sent, and never on the one the
         // reader is already showing the folder of.
         1,

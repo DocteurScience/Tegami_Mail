@@ -48,7 +48,7 @@ pub(crate) fn extract(body: &str) -> String {
     // line for line, as the ordinary view shows it (see `body_html`).
     if !body.contains('<') {
         return format!(
-            "<div class=\"hylki-plain\">{}</div>",
+            "<div class=\"tegami-plain\">{}</div>",
             escape_html(body.trim_matches('\n'))
         );
     }
@@ -60,7 +60,7 @@ pub(crate) fn extract(body: &str) -> String {
 pub(crate) fn extract_blocks(body: &str) -> Vec<String> {
     if !body.contains('<') {
         return vec![format!(
-            "<div class=\"hylki-plain\">{}</div>",
+            "<div class=\"tegami-plain\">{}</div>",
             escape_html(body.trim_matches('\n'))
         )];
     }
@@ -92,7 +92,7 @@ fn stylesheet(dark: bool, accent: &str) -> String {
          body{{color:{fg};font:15px/1.6 system-ui,\"Adwaita Sans\",Cantarell,sans-serif;\
            overflow-wrap:anywhere;-webkit-font-smoothing:antialiased;background:transparent;\
            max-width:44em;margin:0 auto;padding:22px 26px 26px;box-sizing:border-box;}}\
-         p,ul,ol,dl,blockquote,pre,table,figure,.hylki-plain{{margin:0 0 1em;}}\
+         p,ul,ol,dl,blockquote,pre,table,figure,.tegami-plain{{margin:0 0 1em;}}\
          body>:last-child{{margin-bottom:0;}}\
          h1,h2,h3,h4,h5,h6{{margin:1.4em 0 0.5em;line-height:1.25;font-weight:700;}}\
          h1{{font-size:1.5em;}}h2{{font-size:1.3em;}}h3{{font-size:1.15em;}}\
@@ -118,7 +118,7 @@ fn stylesheet(dark: bool, accent: &str) -> String {
            vertical-align:top;}}\
          th{{font-weight:700;}}\
          figcaption,small{{font-size:0.85em;color:{muted};}}\
-         .hylki-plain{{white-space:pre-wrap;}}\
+         .tegami-plain{{white-space:pre-wrap;}}\
          mark{{background:rgba(229,165,10,0.35);color:inherit;}}\
          p,li,dt,dd,h1,h2,h3,h4,h5,h6,th,td,figcaption,div,pre{{unicode-bidi:plaintext;}}"
     )
@@ -183,7 +183,7 @@ impl Elem {
             || self
                 .attrs
                 .iter()
-                .any(|(k, v)| *k == "class" && v == "hylki-plain")
+                .any(|(k, v)| *k == "class" && v == "tegami-plain")
     }
 }
 

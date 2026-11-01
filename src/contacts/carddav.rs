@@ -1,17 +1,17 @@
-//! CardDAV accounts set up in Hylki (#408), kept by Evolution Data Server.
+//! CardDAV accounts set up in Tegami Mail (#408), kept by Evolution Data Server.
 //!
 //! An account is an EDS collection source with the `webdav` backend, the
 //! kind Evolution's Collection Account makes. EDS asks the server which
 //! address books the account has, adds a book for each and keeps them in
 //! step, so they read like any other EDS book and show in Evolution and
-//! GNOME Contacts too. Hylki carries no CardDAV client of its own.
+//! GNOME Contacts too. Tegami Mail carries no CardDAV client of its own.
 //!
 //! The password goes in the keyring in the shape EDS keeps its own in, by
 //! the account's UID. EDS then signs in by itself, on any desktop and while
-//! Hylki is not running, and nobody has to answer a prompt.
+//! Tegami Mail is not running, and nobody has to answer a prompt.
 //!
 //! EDS keeps a book in step only while some app has it open. On GNOME,
-//! GNOME Contacts does that; elsewhere nothing would, so Hylki opens the
+//! GNOME Contacts does that; elsewhere nothing would, so Tegami Mail opens the
 //! books that sync with a server for as long as it runs ([`sync_books`]).
 
 use std::collections::{HashMap, HashSet};
@@ -39,7 +39,7 @@ pub(crate) struct Account {
     pub(crate) books: Vec<String>,
     /// The registry's object for the source, for writing and removing it.
     path: String,
-    /// The source as EDS keeps it, so saving keeps the keys Hylki does not
+    /// The source as EDS keeps it, so saving keeps the keys Tegami Mail does not
     /// show (an Evolution-made account's calendars, say).
     data: String,
 }
@@ -334,7 +334,7 @@ pub(crate) fn status(account: &Account) -> Status {
 // Keeping the books in step
 // ---------------------------------------------------------------------------
 
-/// The address books Hylki holds open, by source UID: when each was last
+/// The address books Tegami Mail holds open, by source UID: when each was last
 /// asked to sync.
 fn opened() -> &'static Mutex<HashMap<String, Instant>> {
     static OPENED: std::sync::OnceLock<Mutex<HashMap<String, Instant>>> =
@@ -400,7 +400,7 @@ pub(crate) fn sync_books(force: bool) -> bool {
         if !due {
             continue;
         }
-        // The book stays open on Hylki's connection, and EDS keeps it in
+        // The book stays open on Tegami Mail's connection, and EDS keeps it in
         // step with the server while it is.
         let (bus_name, path) = match crate::contacts::open_book(&conn, &factory, &uid) {
             Ok(book) => book,

@@ -1,5 +1,5 @@
 //! Capturing a window to a PNG, for the showcase runs that make the site's
-//! and the store's screenshots (HYLKI_SHOWCASE_*). The app's showcase hooks
+//! and the store's screenshots (TEGAMI_SHOWCASE_*). The app's showcase hooks
 //! and the widgets that open their own dialogs both call it.
 
 use adw::prelude::*;

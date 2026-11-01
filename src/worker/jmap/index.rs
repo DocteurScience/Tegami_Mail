@@ -33,7 +33,7 @@ const JMAP_UNSTEADY: u32 = u32::MAX;
 pub(super) struct JmapState {
     /// The session, once the server has been reached.
     pub(super) session: Option<JmapSession>,
-    /// Hylki folder path → (folder id, mailbox id), from the last listing.
+    /// Tegami Mail folder path → (folder id, mailbox id), from the last listing.
     pub(super) folders: HashMap<String, (u32, String)>,
     /// Message uid (hashed JMAP id) → (JMAP id, blob id).
     pub(super) uids: HashMap<u32, (String, String)>,

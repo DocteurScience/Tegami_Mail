@@ -7,7 +7,7 @@
 //! A message is one file, named `<unique>:2,<flags>`; its read, starred,
 //! answered and forwarded state are letters of the name, its tags lower
 //! case letters that `dovecot-keywords` spells out. Each folder keeps the
-//! number the app knows each message by in `hylki-uids`, given in order
+//! number the app knows each message by in `tegami-uids`, given in order
 //! as files arrive, so the cache and the list key the mail as they key a
 //! server's.
 //!
@@ -19,7 +19,7 @@ use std::io::Write;
 use std::path::{Path, PathBuf};
 
 /// The file that keeps a folder's message numbers.
-const UIDS_FILE: &str = "hylki-uids";
+const UIDS_FILE: &str = "tegami-uids";
 /// The file that names a folder's tag letters, as Dovecot writes it.
 const KEYWORDS_FILE: &str = "dovecot-keywords";
 /// The Inbox, the tree's root.

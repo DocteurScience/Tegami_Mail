@@ -122,7 +122,7 @@ mod tests {
             let date = chrono::DateTime::from_timestamp(now - age * 86_400, 0).unwrap();
             let raw = format!(
                 "From: Ann <ann@example.test>\r\nTo: me@example.test\r\nSubject: offline {n}\r\n\
-                 Message-ID: <hylki-536-jmap-{pid}-{n}@example.test>\r\nDate: {}\r\n\
+                 Message-ID: <tegami-536-jmap-{pid}-{n}@example.test>\r\nDate: {}\r\n\
                  MIME-Version: 1.0\r\nContent-Type: multipart/mixed; boundary=b\r\n\r\n\
                  --b\r\nContent-Type: text/plain\r\n\r\nbody {n}\r\n\
                  --b\r\nContent-Type: application/octet-stream\r\n\

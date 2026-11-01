@@ -28,7 +28,7 @@ impl MessageView {
         };
         let button = |label: &str, title: &str| {
             format!(
-                "<button type=\"button\" class=\"hylki-unsub-btn\" data-key=\"{}:{}\" title=\"{}\">{}</button>",
+                "<button type=\"button\" class=\"tegami-unsub-btn\" data-key=\"{}:{}\" title=\"{}\">{}</button>",
                 key.0,
                 key.1,
                 attr_escape(title),
@@ -81,7 +81,7 @@ impl MessageView {
             }
         };
         format!(
-            "<span class=\"hylki-unsub-text\">{}</span>{btn}",
+            "<span class=\"tegami-unsub-text\">{}</span>{btn}",
             escape_html(&text)
         )
     }
@@ -100,7 +100,7 @@ impl MessageView {
         };
         let html = self.unsub_inner_html(m);
         let js = format!(
-            "(function(){{var d=document.querySelector('.hylki-unsub[data-key=\"{account_id}:{id}\"]');\
+            "(function(){{var d=document.querySelector('.tegami-unsub[data-key=\"{account_id}:{id}\"]');\
              if(d)d.innerHTML={};}})()",
             serde_json::to_string(&html).unwrap_or_else(|_| "''".into()),
         );

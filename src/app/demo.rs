@@ -1,12 +1,12 @@
-//! The demo mode's stand-ins (HYLKI_DEMO): accounts, tags and filters for
+//! The demo mode's stand-ins (TEGAMI_DEMO): accounts, tags and filters for
 //! screenshots, with no server behind them.
 
 use crate::config::{self, AccountConfig};
 
 /// Whether to serve the built-in sample/demo data (for screenshots). Off unless
-/// `HYLKI_DEMO` is set, so removing all real accounts leaves the app blank.
+/// `TEGAMI_DEMO` is set, so removing all real accounts leaves the app blank.
 pub(super) fn demo_mode() -> bool {
-    std::env::var_os("HYLKI_DEMO").is_some()
+    std::env::var_os("TEGAMI_DEMO").is_some()
 }
 
 /// Stand-in [`AccountConfig`]s mirroring the demo backend's three accounts
@@ -72,7 +72,7 @@ pub(super) fn demo_account_configs() -> Vec<AccountConfig> {
         graph_label_names: false,
     };
     vec![
-        mk("Jason M.", "jason@hylki.hyprlab.co", "#3584e4", Some("🚀")),
+        mk("Jason M.", "jason@example.org", "#3584e4", Some("🚀")),
         mk("Hyprlab", "hello@hyprlab.dev", "#f6d32d", None),
         mk(
             "Jason (Personal)",
@@ -146,7 +146,7 @@ pub(super) fn demo_filters() -> Vec<config::FilterRule> {
     vec![
         mk(
             "Substack",
-            "jason@hylki.hyprlab.co",
+            "jason@example.org",
             FilterField::FromAddress,
             FilterMatch::EndsWith,
             "substack.com",

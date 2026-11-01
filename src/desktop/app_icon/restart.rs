@@ -27,7 +27,7 @@ pub(crate) fn launch_restart_helper() -> Result<(), String> {
     }
 }
 
-/// What running Hylki again means for this install. From an AppImage it is
+/// What running Tegami Mail again means for this install. From an AppImage it is
 /// the bundle, never `current_exe()`: that path is inside the runtime's
 /// temporary mount, which is unmounted as this process exits, so a helper
 /// holding it would re-exec a path that had stopped resolving.
@@ -108,17 +108,17 @@ pub(crate) fn run_restart_helper() -> ! {
         std::thread::sleep(std::time::Duration::from_millis(200));
     }
     drop(conn);
-    let exe = relaunch_path().unwrap_or_else(|_| PathBuf::from("hylki"));
+    let exe = relaunch_path().unwrap_or_else(|_| PathBuf::from("tegami"));
     // A one-off launch's review and capture switches must not carry over
     // into the instance that comes back.
     let err = std::process::Command::new(exe)
-        .env_remove("HYLKI_WELCOME")
-        .env_remove("HYLKI_SHOWCASE")
-        .env_remove("HYLKI_SHOWCASE_PAGE")
-        .env_remove("HYLKI_SHOWCASE_SETTINGS")
-        .env_remove("HYLKI_SHOWCASE_SCROLL")
-        .env_remove("HYLKI_SHOWCASE_DELAY")
+        .env_remove("TEGAMI_WELCOME")
+        .env_remove("TEGAMI_SHOWCASE")
+        .env_remove("TEGAMI_SHOWCASE_PAGE")
+        .env_remove("TEGAMI_SHOWCASE_SETTINGS")
+        .env_remove("TEGAMI_SHOWCASE_SCROLL")
+        .env_remove("TEGAMI_SHOWCASE_DELAY")
         .exec();
-    eprintln!("hylki: restart failed: {err}");
+    eprintln!("tegami: restart failed: {err}");
     std::process::exit(1);
 }

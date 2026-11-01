@@ -224,10 +224,10 @@ pub(crate) enum ComposeInput {
     /// The body's text history changed: WebKit gained or lost a step. The
     /// flag is whether it now has anything to take back.
     BodyHistory(bool),
-    /// Showcase only (HYLKI_SHOWCASE_COMPOSE_UNDO): one step of the scripted
+    /// Showcase only (TEGAMI_SHOWCASE_COMPOSE_UNDO): one step of the scripted
     /// history check. See [`Compose::showcase_history`].
     ShowcaseHistory(u8),
-    /// Showcase only (HYLKI_SHOWCASE_COMPOSE_FROM): pick the From row's
+    /// Showcase only (TEGAMI_SHOWCASE_COMPOSE_FROM): pick the From row's
     /// entry `n`, as a click would, so the signature swap can be captured.
     ShowcaseFrom(u32),
 }
@@ -294,6 +294,6 @@ pub(crate) enum ComposeOutput {
     /// A directory could not be asked (#307): for the status bar, once per
     /// composer.
     DirectoryError(String),
-    /// The contacts modal asked for Hylki's Contacts view.
+    /// The contacts modal asked for Tegami Mail's Contacts view.
     ShowContacts,
 }

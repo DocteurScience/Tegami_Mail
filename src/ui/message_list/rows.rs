@@ -339,7 +339,7 @@ impl MessageList {
         // the row quotes the other side however recently you wrote back. With
         // "Show your own replies in the message list" turned on, the cache's
         // newest wins whenever it is later than anything on screen (#236);
-        // off, which is how Hylki has always behaved, the folder has the last
+        // off, which is how Tegami Mail has always behaved, the folder has the last
         // word.
         let (latest, from, preview, latest_at) =
             newest_line(elsewhere.as_ref(), &newest_here, count);

@@ -1,21 +1,21 @@
-# Flatpak manifest for Hylki — builds the self-hosted Flatpak distributed from
-# hylki.hyprlab.co. (The GNOME runtime + SDK below come from the flathub *remote* — that
-# is just where the org.gnome.Platform runtime is hosted; Hylki itself is not on
+# Flatpak manifest for Tegami Mail — builds the self-hosted Flatpak distributed from
+# example.org. (The GNOME runtime + SDK below come from the flathub *remote* — that
+# is just where the org.gnome.Platform runtime is hosted; Tegami Mail itself is not on
 # Flathub.)
 #
 # Local test build (both tools are already installed):
 #   python3 flatpak-cargo-generator.py Cargo.lock -o cargo-sources.json
 #   flatpak install flathub org.gnome.Sdk//50 org.gnome.Platform//50 \
 #       org.freedesktop.Sdk.Extension.rust-stable//25.08
-#   flatpak-builder --user --install --force-clean build-dir co.hyprlab.Hylki.yml
-#   flatpak run co.hyprlab.Hylki
-id: co.hyprlab.Hylki
+#   flatpak-builder --user --install --force-clean build-dir io.github.DocteurScience.TegamiMail.yml
+#   flatpak run io.github.DocteurScience.TegamiMail
+id: io.github.DocteurScience.TegamiMail
 runtime: org.gnome.Platform
 runtime-version: '50'
 sdk: org.gnome.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.rust-stable
-command: hylki
+command: tegami
 # Keep the message catalogues in the app itself. By default flatpak-builder
 # moves /app/share/locale into a .Locale extension of which Flatpak installs
 # only the user's configured languages, so a language chosen in Settings
@@ -82,7 +82,7 @@ finish-args:
 build-options:
   append-path: /usr/lib/sdk/rust-stable/bin
   env:
-    CARGO_HOME: /run/build/hylki/cargo
+    CARGO_HOME: /run/build/tegami/cargo
     # No Google OAuth client is bundled — Google sign-in goes through GNOME Online
     # Accounts (the account editor guides users there). Microsoft's client ID is
     # built into the source and works out of the box.
@@ -150,32 +150,32 @@ modules:
       - type: archive
         url: https://github.com/LibreOffice/dictionaries/archive/32b006a2c22a4ac7e8ed3f03346f7b3d85a970a4.tar.gz
         sha256: cbd790eca560de5e8ec8bd64117a00dfd0bc06b091c8f52d23e44ea00d3e8461
-  - name: hylki
+  - name: tegami
     buildsystem: simple
     build-commands:
       - cargo --offline fetch --manifest-path Cargo.toml --verbose
       - cargo --offline build --release --verbose
-      - install -Dm755 target/release/hylki /app/bin/hylki
+      - install -Dm755 target/release/tegami /app/bin/tegami
       # Translations: each po/<lang>.po becomes a message catalogue under
       # /app/share/locale (kept in the app: separate-locales above),
       # and the launcher and metainfo get their translated fields merged in
       # (see po/README.md).
-      - for po in po/*.po; do [ -e "$po" ] || continue; lang=$(basename "$po" .po); install -d /app/share/locale/$lang/LC_MESSAGES; msgfmt -o /app/share/locale/$lang/LC_MESSAGES/hylki.mo "$po"; done
-      - install -d /app/share/applications && msgfmt --desktop --template=data/co.hyprlab.Hylki.desktop -d po -o /app/share/applications/co.hyprlab.Hylki.desktop
-      - install -Dm644 data/icons/hicolor/256x256/apps/co.hyprlab.Hylki.png /app/share/icons/hicolor/256x256/apps/co.hyprlab.Hylki.png
-      - install -Dm644 data/icons/hicolor/512x512/apps/co.hyprlab.Hylki.png /app/share/icons/hicolor/512x512/apps/co.hyprlab.Hylki.png
-      - install -Dm644 data/icons/hicolor/scalable/apps/co.hyprlab.Hylki.svg /app/share/icons/hicolor/scalable/apps/co.hyprlab.Hylki.svg
-      - install -Dm644 data/icons/hicolor/symbolic/apps/co.hyprlab.Hylki-symbolic.svg /app/share/icons/hicolor/symbolic/apps/co.hyprlab.Hylki-symbolic.svg
+      - for po in po/*.po; do [ -e "$po" ] || continue; lang=$(basename "$po" .po); install -d /app/share/locale/$lang/LC_MESSAGES; msgfmt -o /app/share/locale/$lang/LC_MESSAGES/tegami.mo "$po"; done
+      - install -d /app/share/applications && msgfmt --desktop --template=data/io.github.DocteurScience.TegamiMail.desktop -d po -o /app/share/applications/io.github.DocteurScience.TegamiMail.desktop
+      - install -Dm644 data/icons/hicolor/256x256/apps/io.github.DocteurScience.TegamiMail.png /app/share/icons/hicolor/256x256/apps/io.github.DocteurScience.TegamiMail.png
+      - install -Dm644 data/icons/hicolor/512x512/apps/io.github.DocteurScience.TegamiMail.png /app/share/icons/hicolor/512x512/apps/io.github.DocteurScience.TegamiMail.png
+      - install -Dm644 data/icons/hicolor/scalable/apps/io.github.DocteurScience.TegamiMail.svg /app/share/icons/hicolor/scalable/apps/io.github.DocteurScience.TegamiMail.svg
+      - install -Dm644 data/icons/hicolor/symbolic/apps/io.github.DocteurScience.TegamiMail-symbolic.svg /app/share/icons/hicolor/symbolic/apps/io.github.DocteurScience.TegamiMail-symbolic.svg
       # The restart helper's D-Bus service (Settings → App icon → Restart Now):
       # exported by Flatpak, so the bus can start a fresh sandbox instance.
-      - install -Dm644 data/co.hyprlab.Hylki.Restart.service /app/share/dbus-1/services/co.hyprlab.Hylki.Restart.service
+      - install -Dm644 data/io.github.DocteurScience.TegamiMail.Restart.service /app/share/dbus-1/services/io.github.DocteurScience.TegamiMail.Restart.service
       # WebKit's fonts for a host whose own fonts hang it (#296): used only
       # once a probe page has shown the fallback is what loads.
-      - install -Dm644 data/fontconfig/fallback.conf /app/share/hylki/fontconfig/fallback.conf
-      - install -d /app/share/metainfo && msgfmt --xml --template=data/co.hyprlab.Hylki.metainfo.xml -d po -o /app/share/metainfo/co.hyprlab.Hylki.metainfo.xml
+      - install -Dm644 data/fontconfig/fallback.conf /app/share/tegami/fontconfig/fallback.conf
+      - install -d /app/share/metainfo && msgfmt --xml --template=data/io.github.DocteurScience.TegamiMail.metainfo.xml -d po -o /app/share/metainfo/io.github.DocteurScience.TegamiMail.metainfo.xml
     sources:
       - type: git
-        url: https://github.com/hyprlab/hylki.git
+        url: https://github.com/DocteurScience/Tegami_Mail.git
         tag: v1.46.0
         commit: 6f57421857f6d25378b49685161de37d5ae63629
       # Vendored crate sources for the offline Flatpak build. Generate with:

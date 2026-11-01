@@ -27,8 +27,8 @@ pub(super) fn reader_style_css(
         return String::new();
     }
     // "everything under the scope", at id weight.
-    let all = format!("{scope} :not(#hylki-a):not(#hylki-b):not(#hylki-c)");
-    let of = |sel: &str| format!("{scope} {sel}:not(#hylki-a):not(#hylki-b):not(#hylki-c)");
+    let all = format!("{scope} :not(#tegami-a):not(#tegami-b):not(#tegami-c)");
+    let of = |sel: &str| format!("{scope} {sel}:not(#tegami-a):not(#tegami-b):not(#tegami-c)");
     let mut css = String::new();
     if let Some(font) = &style.font {
         let (family, size, face) = css_font(font);
@@ -49,16 +49,16 @@ pub(super) fn reader_style_css(
             code = of(":is(pre,code,kbd,samp,tt)"),
         ));
     }
-    // Plain-text messages (#181): their parts are wrapped in `.hylki-plain`
+    // Plain-text messages (#181): their parts are wrapped in `.tegami-plain`
     // when the body is rendered, so the fixed-width font lands on exactly
     // them. After the message font above, and one class more specific, so
     // it wins where both apply.
     if let Some(font) = &style.plain_font {
         let (family, size, face) = css_font(font);
         css.push_str(&format!(
-            "{p},{p} :not(#hylki-a):not(#hylki-b):not(#hylki-c)\
+            "{p},{p} :not(#tegami-a):not(#tegami-b):not(#tegami-c)\
              {{font-family:{family} !important;font-size:{size} !important;{face}}}",
-            p = of(".hylki-plain"),
+            p = of(".tegami-plain"),
         ));
     }
     if style.colors {
@@ -207,9 +207,9 @@ pub(super) fn auto_direction(doc: &str) -> String {
         doc.to_string()
     };
     let plain = if crate::mail::quote::body_is_pre_wrap(&doc) {
-        "body,.hylki-plain"
-    } else if lower.contains("hylki-plain") {
-        ".hylki-plain"
+        "body,.tegami-plain"
+    } else if lower.contains("tegami-plain") {
+        ".tegami-plain"
     } else {
         return doc;
     };
@@ -225,10 +225,10 @@ pub(super) fn auto_direction(doc: &str) -> String {
 /// refuses the fetch.
 pub(super) fn inject_csp(html: &str, allow_remote: bool, dark: bool) -> String {
     let policy = if allow_remote {
-        "default-src 'none'; img-src http: https: hylki-http: hylki-https: data: cid:; \
-         style-src 'unsafe-inline' http: https: hylki-http: hylki-https: data:; \
-         font-src http: https: hylki-http: hylki-https: data:; \
-         media-src http: https: hylki-http: hylki-https: data:"
+        "default-src 'none'; img-src http: https: tegami-http: tegami-https: data: cid:; \
+         style-src 'unsafe-inline' http: https: tegami-http: tegami-https: data:; \
+         font-src http: https: tegami-http: tegami-https: data:; \
+         media-src http: https: tegami-http: tegami-https: data:"
     } else {
         "default-src 'none'; img-src data: cid:; style-src 'unsafe-inline' data:; \
          font-src data:; media-src data:"
@@ -252,7 +252,7 @@ pub(super) fn inject_csp(html: &str, allow_remote: bool, dark: bool) -> String {
     // pane whose width grows as the frame is widened, so the widening
     // never quite catches it) swallows the vertical deltas the page
     // needed. The wrapper widens the frame to the content and scrolls it
-    // in `.hylki-pan`; whatever is left over is clipped rather than
+    // in `.tegami-pan`; whatever is left over is clipped rather than
     // scrollable. `scrollWidth`/`scrollHeight` still measure the content.
     // `color-scheme` makes the browser's default colors (for content that sets
     // none of its own) follow the app's light/dark setting; styled emails keep
@@ -266,7 +266,7 @@ pub(super) fn inject_csp(html: &str, allow_remote: bool, dark: bool) -> String {
          @media print{{:root{{color-scheme:light;}}html{{overflow:visible !important;}}html,body{{background:#fff !important;}}}}\
          </style>"
     );
-    // `no-referrer` keeps the synthetic `hylki.localhost` base URI from leaking as
+    // `no-referrer` keeps the synthetic `tegami.localhost` base URI from leaking as
     // a Referer/Origin header — both for privacy and because hotlink-protected
     // servers (e.g. some DreamHost sites) return 403 to foreign referrers, which
     // otherwise blocks legitimate images even once the sender is trusted.

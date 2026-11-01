@@ -247,11 +247,11 @@ impl SimpleComponent for CloudAccounts {
                 let _ = s.send(CloudAccountsOutput::EditorOpen(editor));
             });
         }
-        // HYLKI_SHOWCASE_EDIT_CLOUD=<index> opens that account's editor
+        // TEGAMI_SHOWCASE_EDIT_CLOUD=<index> opens that account's editor
         // for a capture (demo only); "add", "add:dropbox", "add:seafile"
         // or "add:onedrive" opens the Add page on that kind.
-        if let Ok(what) = std::env::var("HYLKI_SHOWCASE_EDIT_CLOUD") {
-            if std::env::var_os("HYLKI_DEMO").is_some() {
+        if let Ok(what) = std::env::var("TEGAMI_SHOWCASE_EDIT_CLOUD") {
+            if std::env::var_os("TEGAMI_DEMO").is_some() {
                 let s = sender.input_sender().clone();
                 gtk::glib::timeout_add_seconds_local_once(2, move || {
                     let _ = s.send(match what.as_str() {

@@ -68,7 +68,7 @@ impl AppModel {
     /// from the split pane beside it.
     pub(super) fn reply_joins(&self, from: u32, out: &OutgoingMessage) -> bool {
         let skip = |why: &str| {
-            tracing::info!(target: "hylki::morph", "no send morph: {why}");
+            tracing::info!(target: "tegami::morph", "no send morph: {why}");
             false
         };
         let Some(r) = self.reader_compose.as_ref().filter(|r| r.id == from) else {
@@ -109,7 +109,7 @@ impl AppModel {
             .get(account_id.checked_sub(1)? as usize)?;
         // The body its copy will have; failing that, what was written.
         let body = worker::sent_body_preview(account, out).unwrap_or_else(|| {
-            tracing::info!(target: "hylki::morph", "the reply's card shows the text as written");
+            tracing::info!(target: "tegami::morph", "the reply's card shows the text as written");
             worker::wrap_plain(&out.body)
         });
         let (from_name, from_addr) = out
@@ -184,7 +184,7 @@ impl AppModel {
         let view = self.reader_web_view();
         let editor = find_widget(composer, &|w| w.has_css_class("compose-editor-card"));
         let (Some(reader), Some(view), Some(editor)) = (reader, view, editor) else {
-            tracing::info!(target: "hylki::morph", "no send morph: the pane's parts were not found");
+            tracing::info!(target: "tegami::morph", "no send morph: the pane's parts were not found");
             return false;
         };
         if self.send_morph.parent().is_none() {
@@ -193,7 +193,7 @@ impl AppModel {
         let Some(conversation) = self.current.as_ref().map(|c| (c.account_id, c.id)) else {
             return false;
         };
-        tracing::info!(target: "hylki::morph", "send morph: starting");
+        tracing::info!(target: "tegami::morph", "send morph: starting");
         self.morph_pending = Some(MorphPending {
             message,
             composer: composer.clone(),
@@ -422,7 +422,7 @@ mod tests {
     /// from disk before anything has gone out.
     #[test]
     fn a_sent_file_is_listed_by_its_name_and_size() {
-        let dir = std::env::temp_dir().join(format!("hylki-sent-file-{}", std::process::id()));
+        let dir = std::env::temp_dir().join(format!("tegami-sent-file-{}", std::process::id()));
         std::fs::create_dir_all(&dir).unwrap();
         let path = dir.join("report.pdf");
         std::fs::write(&path, b"12345").unwrap();

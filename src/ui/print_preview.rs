@@ -1,13 +1,13 @@
 //! Printing and the print preview (issues #16, #359).
 //!
 //! Everything printed goes through a PDF. WebKit lays the message out on the
-//! chosen paper and writes it to a file; Hylki then draws the page footer
+//! chosen paper and writes it to a file; Tegami Mail then draws the page footer
 //! (page numbers, the date printed) onto every page and hands that file to the
 //! printer. The footer cannot come from the document: WebKit has no CSS page
 //! margin boxes, and a `position: fixed` element prints once, not on every
 //! page.
 //!
-//! The preview is that same PDF, shown page by page in a window of Hylki's
+//! The preview is that same PDF, shown page by page in a window of Tegami Mail's
 //! own. The print dialog's own Preview button belongs to the portal and, in a
 //! sandbox, produces nothing; handing a PDF to an external viewer was tried
 //! and is a chain of things that can each fail quietly (a URI, the document
@@ -191,10 +191,10 @@ fn load_for_print(html: &str, ready: impl FnOnce(&webkit6::WebView, Box<dyn FnOn
             }),
         );
     });
-    webview.load_html(html, Some("https://hylki.localhost/print"));
+    webview.load_html(html, Some("https://tegami.localhost/print"));
 }
 
-/// The paper of `base` with Hylki's margins, never narrower than the
+/// The paper of `base` with Tegami Mail's margins, never narrower than the
 /// paper's own: those can carry the printer's limits.
 fn laid_out(base: &gtk::PageSetup, options: PrintOptions) -> gtk::PageSetup {
     let page = base.copy();
@@ -238,7 +238,7 @@ fn render_pdf(
         done(Err(i18n("No PDF writer is available on this system")));
         return;
     };
-    let dir = std::env::temp_dir().join(format!("hylki-print-{}", std::process::id()));
+    let dir = std::env::temp_dir().join(format!("tegami-print-{}", std::process::id()));
     if let Err(e) = std::fs::create_dir_all(&dir) {
         done(Err(e.to_string()));
         return;
@@ -322,7 +322,7 @@ fn stamp(raw: &Path, out: &Path, footer: &Footer, title: &str) -> Result<(), Str
     // Every page is sized as it is drawn; this first size is never used.
     let surface = cairo::PdfSurface::new(595.0, 842.0, out).map_err(|e| e.to_string())?;
     let _ = surface.set_metadata(cairo::PdfMetadata::Title, title);
-    let _ = surface.set_metadata(cairo::PdfMetadata::Creator, "Hylki");
+    let _ = surface.set_metadata(cairo::PdfMetadata::Creator, "Tegami Mail");
     let cr = cairo::Context::new(&surface).map_err(|e| e.to_string())?;
     for n in 0..pages {
         let Some(page) = doc.page(n) else { continue };
@@ -710,7 +710,7 @@ mod tests {
     #[test]
     fn a_page_with_a_footer_survives_the_stamp() {
         // A two-page PDF drawn by cairo stands in for WebKit's.
-        let dir = std::env::temp_dir().join(format!("hylki-stamp-test-{}", std::process::id()));
+        let dir = std::env::temp_dir().join(format!("tegami-stamp-test-{}", std::process::id()));
         std::fs::create_dir_all(&dir).unwrap();
         let raw = dir.join("raw.pdf");
         let out = dir.join("out.pdf");

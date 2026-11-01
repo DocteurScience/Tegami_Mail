@@ -177,7 +177,7 @@ fn chunked_upload(
     timeout: Duration,
 ) -> Result<(), String> {
     let upload = format!(
-        "{}/remote.php/dav/uploads/{}/hylki-{}",
+        "{}/remote.php/dav/uploads/{}/tegami-{}",
         account.base(),
         crate::encoding::percent::encode(account.user.trim()),
         crate::rng::token(12).map_err(|e| e.to_string())?

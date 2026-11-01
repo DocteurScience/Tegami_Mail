@@ -32,14 +32,14 @@ pub(super) fn graph_err(e: ureq::Error) -> String {
 /// The Microsoft Graph conversation for the console: method and URL (the
 /// token travels in a header and is never logged), then the verdict.
 fn graph_wire(method: &str, url: &str) {
-    tracing::debug!(target: "hylki::graph", "> {method} {}", url.strip_prefix(GRAPH_BASE).unwrap_or(url));
+    tracing::debug!(target: "tegami::graph", "> {method} {}", url.strip_prefix(GRAPH_BASE).unwrap_or(url));
 }
 
 fn graph_wired<T>(method: &str, url: &str, r: &Result<T, String>) {
     let path = url.strip_prefix(GRAPH_BASE).unwrap_or(url);
     match r {
-        Ok(_) => tracing::debug!(target: "hylki::graph", "< OK ({method} {path})"),
-        Err(e) => tracing::warn!(target: "hylki::graph", "< {e} ({method} {path})"),
+        Ok(_) => tracing::debug!(target: "tegami::graph", "< OK ({method} {path})"),
+        Err(e) => tracing::warn!(target: "tegami::graph", "< {e} ({method} {path})"),
     }
 }
 
@@ -71,7 +71,7 @@ fn graph_get(token: &str, url: &str) -> Result<ureq::Response, String> {
                     return Err(graph_err(e));
                 };
                 tries += 1;
-                tracing::info!(target: "hylki::graph", "throttled, waiting {} s", wait.as_secs());
+                tracing::info!(target: "tegami::graph", "throttled, waiting {} s", wait.as_secs());
                 std::thread::sleep(wait);
             }
             r => return r.map_err(graph_err),
@@ -215,8 +215,8 @@ pub(super) async fn graph_token(
     match fetch_oauth_token(account).await {
         Some(t) => Some(t),
         None => {
-            // Signed in through Hylki's own Microsoft app (#329) rather than
-            // GNOME Online Accounts: it is Hylki's sign-in to renew.
+            // Signed in through Tegami Mail's own Microsoft app (#329) rather than
+            // GNOME Online Accounts: it is Tegami Mail's sign-in to renew.
             emit(WorkerEvent::net_error(if account.goa_id.is_some() {
                 format!(
                     "GNOME Online Accounts could not provide a sign-in token for {}. Open \
@@ -225,7 +225,7 @@ pub(super) async fn graph_token(
                 )
             } else {
                 format!(
-                    "Microsoft did not accept the saved sign-in for {}. Open Hylki's Settings → \
+                    "Microsoft did not accept the saved sign-in for {}. Open Tegami Mail's Settings → \
                      Mail Accounts and sign in to it again.",
                     account.email
                 )

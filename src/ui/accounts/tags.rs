@@ -135,9 +135,9 @@ impl AccountsWindow {
         scroller.set_child(Some(&list));
         dialog.set_extra_child(Some(&scroller));
 
-        // The report is the showcase's to capture (HYLKI_SHOWCASE_FIND_TAGS).
-        if std::env::var("HYLKI_SHOWCASE_FIND_TAGS").is_ok() {
-            if let Ok(path) = std::env::var("HYLKI_SHOWCASE") {
+        // The report is the showcase's to capture (TEGAMI_SHOWCASE_FIND_TAGS).
+        if std::env::var("TEGAMI_SHOWCASE_FIND_TAGS").is_ok() {
+            if let Ok(path) = std::env::var("TEGAMI_SHOWCASE") {
                 let d = dialog.clone();
                 gtk::glib::timeout_add_seconds_local_once(2, move || {
                     crate::ui::showcase::showcase_capture(d.upcast_ref(), &path);

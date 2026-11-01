@@ -414,7 +414,7 @@ impl MessageList {
         let mut css = String::new();
         for (id, color) in colors {
             css.push_str(&format!(
-                ".hylki-acct-ring-{0} {{ border-radius: 9999px; outline: 2px solid {1}; outline-offset: 1px; }}\n",
+                ".tegami-acct-ring-{0} {{ border-radius: 9999px; outline: 2px solid {1}; outline-offset: 1px; }}\n",
                 id, color
             ));
         }

@@ -153,7 +153,7 @@ impl AppModel {
         let editable = crate::worker::editable_from_raw(&item.raw, &item.rcpts);
 
         let attachments = stage_attachments(
-            &format!("hylki-outbox-{account_id}-{id}"),
+            &format!("tegami-outbox-{account_id}-{id}"),
             &editable.attachments,
         );
 

@@ -10,7 +10,7 @@ use super::tags::{load_tags, save_tags, Tag};
 use super::window::{sidebar_path, window_path, SidebarFile, WindowFile};
 use super::{read_toml, write_private};
 
-/// A portable settings bundle (#50): every configuration file Hylki keeps —
+/// A portable settings bundle (#50): every configuration file Tegami Mail keeps —
 /// preferences, accounts (colors, emoji, labels, aliases, folder roles and
 /// per-account push included), filters, tags, cloud storage accounts,
 /// sidebar layout, window/pane state (the app icon choice with it), and

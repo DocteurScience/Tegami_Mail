@@ -176,8 +176,8 @@ pub(crate) enum ReturnedReceipts {
     Keep,
 }
 
-/// What a hand-off of files from GNOME Files ("Send with Hylki", "Open
-/// With Hylki", "Email…") opens them into.
+/// What a hand-off of files from GNOME Files ("Send with Tegami Mail", "Open
+/// With Tegami Mail", "Email…") opens them into.
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
 #[serde(rename_all = "snake_case")]
 pub(crate) enum FilesAction {
@@ -367,7 +367,7 @@ pub(crate) enum ReplyPosition {
 /// Where the signature goes in a reply or forward (#237). Above the quoted
 /// original is what Apple Mail and Thunderbird do, and what a reader
 /// expects: the signature closes the words above it, not the words
-/// somebody else wrote. Below is the placement Hylki had before.
+/// somebody else wrote. Below is the placement Tegami Mail had before.
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
 #[serde(rename_all = "snake_case")]
 pub(crate) enum SignaturePosition {
@@ -570,7 +570,7 @@ pub(crate) fn load_contact_book() -> String {
     load_privacy().contact_book
 }
 
-/// Whether Hylki starts at login (background running only).
+/// Whether Tegami Mail starts at login (background running only).
 pub(crate) fn load_autostart() -> bool {
     let p = load_privacy();
     p.run_in_background && p.autostart

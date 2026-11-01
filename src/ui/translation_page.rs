@@ -58,7 +58,7 @@ pub(super) fn build() -> adw::PreferencesPage {
     let reading_group = adw::PreferencesGroup::new();
     reading_group.set_title(&i18n("Messages"));
     let mut targets = vec![i18n_f(
-        "Hylki's language ({language})",
+        "Tegami Mail's language ({language})",
         &[(
             "language",
             &translate::language_name(&translate::ui_language()),

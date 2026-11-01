@@ -1,13 +1,13 @@
-//! Native OAuth2 (XOAUTH2) sign-in for accounts added directly in Hylki.
+//! Native OAuth2 (XOAUTH2) sign-in for accounts added directly in Tegami Mail.
 //!
 //! Runs the authorization-code flow with PKCE against the provider: opens the
 //! system browser, captures the redirect on a loopback socket, and exchanges the
 //! code for a refresh token. The refresh token is kept in the keyring; a fresh
 //! access token is minted from it at connect time.
 //!
-//! Microsoft uses Hylki's built-in OAuth client; Google's client is bundled into
+//! Microsoft uses Tegami Mail's built-in OAuth client; Google's client is bundled into
 //! official builds at compile time (otherwise use GNOME Online Accounts, or your
-//! own client in `~/.config/hylki/oauth.toml`). Advanced users can override any of
+//! own client in `~/.config/tegami/oauth.toml`). Advanced users can override any of
 //! it or point "Custom OAuth" at another provider — see `provider_credentials`.
 
 use serde::Deserialize;
@@ -31,36 +31,36 @@ pub(crate) use tokens::{
 // Google's client is deliberately kept OUT of the public source — GitHub push
 // protection and Google's own secret scanning flag it, and Google may auto-revoke
 // an exposed secret. It's read at COMPILE TIME from env vars, so a build *can*
-// bundle a Google app by setting `HYLKI_GOOGLE_CLIENT_ID` / `HYLKI_GOOGLE_CLIENT_SECRET`
+// bundle a Google app by setting `TEGAMI_GOOGLE_CLIENT_ID` / `TEGAMI_GOOGLE_CLIENT_SECRET`
 // — but the official builds ship empty, so Google sign-in goes through GNOME
 // Online Accounts (or a client the user supplies). Runtime overrides —
-// `~/.config/hylki/oauth.toml` or `HYLKI_*` env vars at runtime — still take
+// `~/.config/tegami/oauth.toml` or `TEGAMI_*` env vars at runtime — still take
 // precedence; see `provider_credentials`.
-const GOOGLE_CLIENT_ID: &str = match option_env!("HYLKI_GOOGLE_CLIENT_ID") {
+const GOOGLE_CLIENT_ID: &str = match option_env!("TEGAMI_GOOGLE_CLIENT_ID") {
     Some(v) => v,
     None => "",
 };
-const GOOGLE_CLIENT_SECRET: &str = match option_env!("HYLKI_GOOGLE_CLIENT_SECRET") {
+const GOOGLE_CLIENT_SECRET: &str = match option_env!("TEGAMI_GOOGLE_CLIENT_SECRET") {
     Some(v) => v,
     None => "",
 };
-// Microsoft: Hylki's own app registration in Microsoft Entra (#329), a public
+// Microsoft: Tegami Mail's own app registration in Microsoft Entra (#329), a public
 // client (PKCE, no secret) for personal and work accounts alike, verified
-// against hylki.app. Mail runs over Graph, as it does for accounts imported
+// against tegami.app. Mail runs over Graph, as it does for accounts imported
 // from GNOME Online Accounts (#36), which some systems cannot add (GNOME 46's
 // GOA fails on personal accounts) and some tenants refuse. A build can name
-// another client via `HYLKI_MICROSOFT_CLIENT_ID`, and oauth.toml or the
+// another client via `TEGAMI_MICROSOFT_CLIENT_ID`, and oauth.toml or the
 // environment still override it at run time.
-const MICROSOFT_CLIENT_ID: &str = match option_env!("HYLKI_MICROSOFT_CLIENT_ID") {
+const MICROSOFT_CLIENT_ID: &str = match option_env!("TEGAMI_MICROSOFT_CLIENT_ID") {
     Some(v) => v,
     None => "01cdc012-c8d8-4d03-822c-76696a01c14e",
 };
 const MICROSOFT_CLIENT_SECRET: &str = "";
 // Dropbox (cloud attachments, #144): a public client with PKCE, so an app
-// key alone is enough. A build can bundle one via `HYLKI_DROPBOX_CLIENT_ID`;
+// key alone is enough. A build can bundle one via `TEGAMI_DROPBOX_CLIENT_ID`;
 // otherwise the user makes an app in the Dropbox App Console and types its
 // key into the account's settings.
-const DROPBOX_CLIENT_ID: &str = match option_env!("HYLKI_DROPBOX_CLIENT_ID") {
+const DROPBOX_CLIENT_ID: &str = match option_env!("TEGAMI_DROPBOX_CLIENT_ID") {
     Some(v) => v,
     None => "",
 };
@@ -130,7 +130,7 @@ const MICROSOFT_DIRECTORY_SCOPES: [&str; 2] = [
 pub(crate) const MICROSOFT_LABEL_SCOPES: [&str; 1] =
     ["https://graph.microsoft.com/InformationProtectionPolicy.Read"];
 
-/// Every scope Hylki adds to its own sign-in on request.
+/// Every scope Tegami Mail adds to its own sign-in on request.
 const MICROSOFT_EXTRA_SCOPES: [&[&str]; 2] = [&MICROSOFT_DIRECTORY_SCOPES, &MICROSOFT_LABEL_SCOPES];
 
 /// Whether `scope` is the scope `full`, written out or as Graph's short
@@ -170,8 +170,8 @@ pub(crate) fn with_directory_scopes(scopes: &str) -> String {
     with_scopes(scopes, &MICROSOFT_DIRECTORY_SCOPES)
 }
 
-/// `scopes` without the ones Hylki adds as it adds them, so a sign-in that
-/// has them still reads as Hylki's own and the Advanced row stays empty.
+/// `scopes` without the ones Tegami Mail adds as it adds them, so a sign-in that
+/// has them still reads as Tegami Mail's own and the Advanced row stays empty.
 /// Short names typed into that row are the user's and stay.
 fn without_extra_scopes(scopes: &str) -> String {
     scopes
@@ -186,7 +186,7 @@ fn without_extra_scopes(scopes: &str) -> String {
         .join(" ")
 }
 
-/// Hylki's Microsoft sign-in made with another app registration (#329):
+/// Tegami Mail's Microsoft sign-in made with another app registration (#329):
 /// its client ID, its tenant (`common`, `organizations`, `consumers`, a
 /// directory ID or domain), its scopes and its redirect. Empty values keep
 /// what `settings` has. Scopes are Graph's short names, as Evolution lists
@@ -226,7 +226,7 @@ pub(crate) fn microsoft_advanced(
 
 /// [`microsoft_advanced`] read back from a saved account's settings, for
 /// the form: `(client_id, tenant, scopes, redirect)`, each empty where it
-/// is Hylki's own.
+/// is Tegami Mail's own.
 pub(crate) fn microsoft_advanced_of(settings: &OAuthSettings) -> (String, String, String, String) {
     let Some(p) = preset("microsoft") else {
         return Default::default();
@@ -257,9 +257,9 @@ pub(crate) fn microsoft_advanced_of(settings: &OAuthSettings) -> (String, String
 
 /// Resolve a provider's OAuth client credentials `(client_id, client_secret)`,
 /// preferring the user's own over the built-in fallback. Order:
-///   1. Environment: `HYLKI_GOOGLE_CLIENT_ID` / `HYLKI_GOOGLE_CLIENT_SECRET`
-///      (or `HYLKI_MICROSOFT_*`).
-///   2. `~/.config/hylki/oauth.toml` — `[google]` / `[microsoft]` with
+///   1. Environment: `TEGAMI_GOOGLE_CLIENT_ID` / `TEGAMI_GOOGLE_CLIENT_SECRET`
+///      (or `TEGAMI_MICROSOFT_*`).
+///   2. `~/.config/tegami/oauth.toml` — `[google]` / `[microsoft]` with
 ///      `client_id` and `client_secret`. Keeps secrets out of the source repo.
 ///   3. The built-in Thunderbird fallback.
 ///
@@ -273,22 +273,22 @@ pub(crate) fn provider_credentials(provider: &str) -> (String, String) {
     // valid override there.
     let (env_id, env_secret, default_id, default_secret, secret_required) = match provider {
         "google" => (
-            "HYLKI_GOOGLE_CLIENT_ID",
-            "HYLKI_GOOGLE_CLIENT_SECRET",
+            "TEGAMI_GOOGLE_CLIENT_ID",
+            "TEGAMI_GOOGLE_CLIENT_SECRET",
             GOOGLE_CLIENT_ID,
             GOOGLE_CLIENT_SECRET,
             true,
         ),
         "microsoft" => (
-            "HYLKI_MICROSOFT_CLIENT_ID",
-            "HYLKI_MICROSOFT_CLIENT_SECRET",
+            "TEGAMI_MICROSOFT_CLIENT_ID",
+            "TEGAMI_MICROSOFT_CLIENT_SECRET",
             MICROSOFT_CLIENT_ID,
             MICROSOFT_CLIENT_SECRET,
             false,
         ),
         "dropbox" => (
-            "HYLKI_DROPBOX_CLIENT_ID",
-            "HYLKI_DROPBOX_CLIENT_SECRET",
+            "TEGAMI_DROPBOX_CLIENT_ID",
+            "TEGAMI_DROPBOX_CLIENT_SECRET",
             DROPBOX_CLIENT_ID,
             "",
             false,

@@ -142,7 +142,7 @@ impl ContactsPage {
         });
     }
 
-    /// Ask for a name for the book `uid`, Hylki's own: GNOME and Evolution
+    /// Ask for a name for the book `uid`, Tegami Mail's own: GNOME and Evolution
     /// keep the book's. One given before can be dropped again.
     pub(super) fn ask_book_name(
         &self,
@@ -164,7 +164,7 @@ impl ContactsPage {
         let dialog = adw::AlertDialog::new(
             Some(&i18n("Rename Address Book")),
             Some(&i18n(
-                "The name is used in Hylki only; GNOME Contacts and Evolution keep the book's own.",
+                "The name is used in Tegami Mail only; GNOME Contacts and Evolution keep the book's own.",
             )),
         );
         dialog.set_extra_child(Some(&entry));
@@ -413,7 +413,7 @@ impl ContactsPage {
     }
 
     /// The people of the selection that can move to the book `to`: those
-    /// in another book Hylki can write to, and delete from.
+    /// in another book Tegami Mail can write to, and delete from.
     pub(super) fn movable(&self, to: &str) -> Vec<usize> {
         self.chosen()
             .into_iter()
@@ -421,7 +421,7 @@ impl ContactsPage {
             .collect()
     }
 
-    /// Whether a person can move to the book `to`: from another book Hylki
+    /// Whether a person can move to the book `to`: from another book Tegami Mail
     /// can write to, and delete from.
     pub(super) fn can_move(&self, c: &ContactDetails, to: &str) -> bool {
         let writable = |uid: &str| self.books.iter().any(|b| b.uid == uid);
@@ -551,7 +551,7 @@ impl ContactsPage {
     }
 
     /// Fill the filter popover's books from those known: the writable ones
-    /// (the Hylki book always among them), any others the contacts come
+    /// (the Tegami Mail book always among them), any others the contacts come
     /// from, and the directories. A book unticked stays so while it is
     /// there.
     pub(super) fn refresh_book_filter(&mut self) {

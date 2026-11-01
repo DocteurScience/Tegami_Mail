@@ -1,9 +1,9 @@
-# Hylki documentation
+# Tegami Mail documentation
 
 - **[FEATURES.md](FEATURES.md):** everything the app does.
 - **[DOCUMENTATION.md](DOCUMENTATION.md):** setting up accounts and OAuth,
   cloud attachments, writing in Markdown or HTML, OpenPGP, the GNOME Files
-  entry, and what Hylki keeps on disk.
+  entry, and what Tegami Mail keeps on disk.
 - **[KEYBOARD_SHORTCUTS.md](KEYBOARD_SHORTCUTS.md):** the single-key scheme.
 - **[BUILDING.md](BUILDING.md):** building from source.
 - **[CONTRIBUTING.md](CONTRIBUTING.md):** how to help.

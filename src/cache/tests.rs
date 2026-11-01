@@ -175,14 +175,14 @@ fn cached_rows_follow_their_accounts() {
 }
 
 /// How long the conversation lookups take on a real cache (#259):
-/// `HYLKI_CACHE_TIMING=<copy of cache.db> cargo test --release --bin hylki
+/// `TEGAMI_CACHE_TIMING=<copy of cache.db> cargo test --release --bin tegami
 /// cache::tests::thread_lookup_timing -- --ignored --nocapture`. Takes
 /// each account's newest 256 Message-IDs as one page of badges, and the
 /// newest reply's ids as one opened conversation.
 #[test]
 #[ignore]
 fn thread_lookup_timing() {
-    let Ok(path) = std::env::var("HYLKI_CACHE_TIMING") else {
+    let Ok(path) = std::env::var("TEGAMI_CACHE_TIMING") else {
         return;
     };
     let c = Cache {
@@ -224,7 +224,7 @@ fn thread_lookup_timing() {
 #[test]
 fn background_reader_sees_wal_updates_without_writing() {
     let path = std::env::temp_dir().join(format!(
-        "hylki-cache-reader-{}-{}.db",
+        "tegami-cache-reader-{}-{}.db",
         std::process::id(),
         std::time::SystemTime::now()
             .duration_since(std::time::UNIX_EPOCH)
@@ -274,12 +274,12 @@ fn background_reader_sees_wal_updates_without_writing() {
 fn the_cache_is_not_world_readable() {
     use std::os::unix::fs::PermissionsExt;
 
-    let base = std::env::temp_dir().join(format!("hylki-cache-test-{}", std::process::id()));
+    let base = std::env::temp_dir().join(format!("tegami-cache-test-{}", std::process::id()));
     let _ = std::fs::remove_dir_all(&base);
     std::fs::create_dir_all(&base).unwrap();
     std::env::set_var("XDG_DATA_HOME", &base);
 
-    let dir = base.join("hylki");
+    let dir = base.join("tegami");
     // Start from the permissions the old code left behind, to prove an
     // existing cache is tightened rather than only a freshly created one.
     std::fs::create_dir_all(&dir).unwrap();

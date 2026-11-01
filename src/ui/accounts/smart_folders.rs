@@ -197,7 +197,7 @@ impl AccountsWindow {
                                 i18n("From address when no Reply-To is set")
                             }
                             Some(SmartField::FromInContacts | SmartField::FromNotInContacts) => {
-                                i18n("Looks in the system address books and the Hylki book")
+                                i18n("Looks in the system address books and the Tegami Mail book")
                             }
                             _ => String::new(),
                         });

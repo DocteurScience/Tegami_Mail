@@ -4,7 +4,7 @@
   function box(r){
     return [r.left, r.top, Math.max(1, r.width), Math.max(1, r.height)].map(Math.round).join(',');
   }
-  window.__hylkiEmojiMark = function(){
+  window.__tegamiEmojiMark = function(){
     var el = document.activeElement;
     at = null;
     if(el && el.tagName === 'TEXTAREA') return box(el.getBoundingClientRect());
@@ -29,7 +29,7 @@
       || parseFloat(getComputedStyle(e).fontSize) * 1.3 || 20;
     return box({left: r.left, top: r.top, width: 1, height: Math.min(r.height || lh, lh)});
   };
-  window.__hylkiEmojiPut = function(text){
+  window.__tegamiEmojiPut = function(text){
     if(at){
       var sel = getSelection();
       sel.removeAllRanges();

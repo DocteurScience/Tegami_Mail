@@ -53,7 +53,7 @@ fn given_name(typed: &str, own: &str) -> Option<String> {
     (!typed.is_empty() && typed != own).then(|| typed.to_string())
 }
 
-/// The name the account goes by in Hylki: here, and under its address
+/// The name the account goes by in Tegami Mail: here, and under its address
 /// books in Contacts. GNOME and Evolution keep theirs.
 pub(super) fn name_group(
     source: &Source,
@@ -62,7 +62,7 @@ pub(super) fn name_group(
     let group = adw::PreferencesGroup::new();
     let own = [("own", source.own_title.as_str())];
     group.set_description(Some(&match source.kind {
-        Kind::Hylki => i18n_f("The name used here and in Contacts. Left blank, it is {own}.", &own),
+        Kind::Tegami Mail => i18n_f("The name used here and in Contacts. Left blank, it is {own}.", &own),
         _ => i18n_f(
             "The name used here and in Contacts; GNOME Contacts keeps its own. Left blank, it is {own}.",
             &own,
@@ -83,7 +83,7 @@ pub(super) fn name_group(
     group
 }
 
-/// A source's address books, each with its name in Hylki and its own
+/// A source's address books, each with its name in Tegami Mail and its own
 /// switch.
 pub(super) fn books_group(
     source: &Source,
@@ -92,7 +92,7 @@ pub(super) fn books_group(
     let group = adw::PreferencesGroup::new();
     group.set_title(&i18n("Address books"));
     group.set_description(Some(&i18n(
-        "Rename a book for Hylki, or switch it off to leave it out.",
+        "Rename a book for Tegami Mail, or switch it off to leave it out.",
     )));
     for book in &source.books {
         let row = adw::EntryRow::new();
@@ -109,7 +109,7 @@ pub(super) fn books_group(
         let switch = gtk::Switch::new();
         switch.set_valign(gtk::Align::Center);
         switch.set_active(book.on);
-        switch.set_tooltip_text(Some(&i18n("Use in Hylki")));
+        switch.set_tooltip_text(Some(&i18n("Use in Tegami Mail")));
         // The account's own switch decides first.
         switch.set_sensitive(source.on);
         let (s, uid) = (sender.clone(), book.uid.clone());

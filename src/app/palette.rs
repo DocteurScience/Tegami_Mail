@@ -179,7 +179,7 @@ const SHORTCUT_HELP: &[(&str, &[(&str, &str)])] = &[
                 "Ctrl+W",
                 i18n_noop("Close the window (background sync keeps running)"),
             ),
-            ("Ctrl+Q", i18n_noop("Quit Hylki entirely")),
+            ("Ctrl+Q", i18n_noop("Quit Tegami Mail entirely")),
             (
                 "Ctrl+K",
                 i18n_noop("Command palette: search actions, folders and tags"),
@@ -342,7 +342,7 @@ impl AppModel {
         add(i18n("Keyboard Shortcuts"), &action, "Ctrl+?", || {
             AppMsg::ShowShortcuts
         });
-        add(i18n("About Hylki"), &action, "", || AppMsg::OpenAbout);
+        add(i18n("About Tegami Mail"), &action, "", || AppMsg::OpenAbout);
         {
             let mut focus = self.focus;
             focus.enabled = !focus.enabled;

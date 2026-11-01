@@ -249,10 +249,10 @@ impl MessageList {
         if let Some(entry) = &self.search_entry {
             entry.set_text(&text);
         }
-        // HYLKI_SHOWCASE_SCOPE_MENU=<png> opens the scope popover and
+        // TEGAMI_SHOWCASE_SCOPE_MENU=<png> opens the scope popover and
         // captures it.
         if let (Ok(path), Some(picker)) = (
-            std::env::var("HYLKI_SHOWCASE_SCOPE_MENU"),
+            std::env::var("TEGAMI_SHOWCASE_SCOPE_MENU"),
             &self.scope_picker,
         ) {
             picker.button.popup();
@@ -261,10 +261,10 @@ impl MessageList {
                     crate::ui::showcase::showcase_capture(popover.upcast_ref(), &path);
                 });
             }
-            // HYLKI_SHOWCASE_SCOPE_INFO=<png> opens the first scope's
+            // TEGAMI_SHOWCASE_SCOPE_INFO=<png> opens the first scope's
             // info popover on top and captures that.
             if let (Ok(path), Some(info)) = (
-                std::env::var("HYLKI_SHOWCASE_SCOPE_INFO"),
+                std::env::var("TEGAMI_SHOWCASE_SCOPE_INFO"),
                 picker.infos.first(),
             ) {
                 let info = info.clone();

@@ -3,19 +3,19 @@
 # Build the AppImage (#235).
 #
 #   tools/build-appimage.sh          # builds it in a container, from the host
-#   HYLKI_APPIMAGE_SRC=<checkout> tools/build-appimage.sh
+#   TEGAMI_APPIMAGE_SRC=<checkout> tools/build-appimage.sh
 #                                    # builds another checkout (a tag, the
 #                                    # beta worktree) with this script
 #
 # Output lands in packaging/out/:
-#   Hylki-<arch>.AppImage            - the stable bundle
-#   Hylki-Beta-<arch>.AppImage       - the beta, when the version is X.Y.Z-beta.N
+#   Tegami Mail-<arch>.AppImage            - the stable bundle
+#   Tegami Mail-Beta-<arch>.AppImage       - the beta, when the version is X.Y.Z-beta.N
 #
 # A beta is the beta app, as in the Flatpak: built with the `beta` feature,
-# app ID co.hyprlab.Hylki.Beta, its own launcher and icon. Outside the
-# Flatpak both read ~/.config/hylki, so a beta tester keeps their accounts.
+# app ID io.github.DocteurScience.TegamiMail.Beta, its own launcher and icon. Outside the
+# Flatpak both read ~/.config/tegami, so a beta tester keeps their accounts.
 #
-# Both update from hylki.hyprlab.co, which serves the newest AppImage of each
+# Both update from example.org, which serves the newest AppImage of each
 # channel and its .zsync file. Flatout writes the same address in again when
 # the bundle is published, and makes the .zsync itself.
 #
@@ -38,21 +38,21 @@ set -euo pipefail
 # packaging/appimage; ROOT is the source being built. They differ when an
 # older tag is built with today's script (CI does that for a hand-started run).
 HERE="$(cd "$(dirname "$0")/.." && pwd)"
-ROOT="${HYLKI_APPIMAGE_SRC:-$HERE}"
+ROOT="${TEGAMI_APPIMAGE_SRC:-$HERE}"
 ARCH="$(uname -m)"
-IMAGE="${HYLKI_APPIMAGE_IMAGE:-ghcr.io/pkgforge-dev/archlinux:latest}"
-SITE="https://hylki.hyprlab.co"
+IMAGE="${TEGAMI_APPIMAGE_IMAGE:-ghcr.io/pkgforge-dev/archlinux:latest}"
+SITE="https://example.org"
 VERSION="$(sed -n 's/^version = "\(.*\)"/\1/p' "$ROOT/Cargo.toml" | head -1)"
 case "$VERSION" in
     *-beta.*)
-        APP_ID="co.hyprlab.Hylki.Beta"
-        NAME="Hylki-Beta"
+        APP_ID="io.github.DocteurScience.TegamiMail.Beta"
+        NAME="Tegami Mail-Beta"
         FEATURES=(--features beta)
         UPDATES="$SITE/download/beta/$NAME-$ARCH.AppImage.zsync"
         ;;
     *)
-        APP_ID="co.hyprlab.Hylki"
-        NAME="Hylki"
+        APP_ID="io.github.DocteurScience.TegamiMail"
+        NAME="Tegami Mail"
         FEATURES=()
         UPDATES="$SITE/download/$NAME-$ARCH.AppImage.zsync"
         ;;
@@ -78,15 +78,15 @@ if [ ! -f /etc/arch-release ]; then
         -v "$ROOT":/src:ro \
         -v "$HERE":/here:ro \
         -v "$OUT":/out \
-        -v hylki-appimage-target:/build/target \
-        -v hylki-appimage-cargo:/root/.cargo \
+        -v tegami-appimage-target:/build/target \
+        -v tegami-appimage-cargo:/root/.cargo \
         "$IMAGE" \
         sh -euc '
             mkdir -p /build
             tar -C /src --exclude=./target --exclude=./temp --exclude=./.git \
                         --exclude=./dist --exclude=./packaging/out -cf - . \
                 | tar -C /build -xf -
-            HYLKI_APPIMAGE_SRC=/build exec /here/tools/build-appimage.sh
+            TEGAMI_APPIMAGE_SRC=/build exec /here/tools/build-appimage.sh
         '
 fi
 
@@ -131,10 +131,10 @@ cd "$ROOT"
 cargo build --release "${FEATURES[@]}"
 
 echo "==> Installing into /usr"
-# The same layout the RPM installs (packaging/fedora/hylki.spec): the
+# The same layout the RPM installs (packaging/fedora/tegami.spec): the
 # collector reads the app out of /usr, and the app's own paths are relative to
 # the binary, so what works there works inside the bundle.
-install -Dm755 target/release/hylki /usr/bin/hylki
+install -Dm755 target/release/tegami /usr/bin/tegami
 install -d /usr/share/applications /usr/share/metainfo
 msgfmt --desktop --template="data/$APP_ID.desktop" -d po -o "/usr/share/applications/$APP_ID.desktop"
 msgfmt --xml --template="data/$APP_ID.metainfo.xml" -d po -o "/usr/share/metainfo/$APP_ID.metainfo.xml"
@@ -142,7 +142,7 @@ for po in po/*.po; do
     [ -e "$po" ] || continue
     lang="$(basename "$po" .po)"
     install -d "/usr/share/locale/$lang/LC_MESSAGES"
-    msgfmt -o "/usr/share/locale/$lang/LC_MESSAGES/hylki.mo" "$po"
+    msgfmt -o "/usr/share/locale/$lang/LC_MESSAGES/tegami.mo" "$po"
 done
 for size in 256x256 512x512; do
     install -Dm644 "data/icons/hicolor/$size/apps/$APP_ID.png" \
@@ -180,7 +180,7 @@ export UPINFO="zsync|$UPDATES"
 # module that makes WebKit honour the desktop's proxy settings, and
 # enchant_hunspell is the only spell-check backend we want (the aspell,
 # hspell, nuspell and voikko ones would each drag in a library of their own).
-quick-sharun /usr/bin/hylki \
+quick-sharun /usr/bin/tegami \
     /usr/lib/gio/modules/libgiognomeproxy.so \
     /usr/lib/enchant-2/enchant_hunspell.so
 
@@ -232,14 +232,14 @@ echo "    dictionaries: $(ls "$APPDIR/share/hunspell" | sed 's/\..*//' | sort -u
 # serif and monospace in DejaVu, Liberation for the Arial, Times and Courier
 # that mail asks for by name, Adwaita for the GNOME look. About 20 MB raw.
 echo "==> Fallback fonts"
-FC="$APPDIR/share/hylki/fontconfig"
-install -d "$FC" "$APPDIR/share/hylki/fonts"
+FC="$APPDIR/share/tegami/fontconfig"
+install -d "$FC" "$APPDIR/share/tegami/fonts"
 cp -L /usr/share/fonts/TTF/DejaVuSans{,-Bold,-Oblique,-BoldOblique}.ttf \
       /usr/share/fonts/TTF/DejaVuSerif{,-Bold,-Italic,-BoldItalic}.ttf \
       /usr/share/fonts/TTF/DejaVuSansMono{,-Bold,-Oblique,-BoldOblique}.ttf \
       /usr/share/fonts/liberation/Liberation{Sans,Serif,Mono}-*.ttf \
       /usr/share/fonts/Adwaita/*.ttf \
-      "$APPDIR/share/hylki/fonts/"
+      "$APPDIR/share/tegami/fonts/"
 # The rules of the build's conf.d, written into the file rather than
 # included: an include of conf.d resolves to the host's /etc/fonts. Left
 # out, as in the Flatpak's: the ones that add folders (the user's, the
@@ -270,19 +270,19 @@ open(dest, "w").write(text)
 PY
 # The fallback has to find these fonts and no others, wherever the bundle is
 # mounted: tried from a second, moved copy.
-probe="$(mktemp -d)/share/hylki"
-install -d "$probe"; cp -r "$APPDIR/share/hylki/." "$probe/"
+probe="$(mktemp -d)/share/tegami"
+install -d "$probe"; cp -r "$APPDIR/share/tegami/." "$probe/"
 fonts="$(HOME=$(mktemp -d) FONTCONFIG_FILE="$probe/fontconfig/fallback.conf" fc-list : file 2>"$probe/fc.err")"
 grep -i "fontconfig error" "$probe/fc.err" && { echo "fontconfig refuses the fallback config" >&2; exit 1; }
 echo "$fonts" | grep -v "^$probe/fonts/" | grep . && { echo "fallback fonts reach outside the bundle" >&2; exit 1; }
 echo "    fallback fonts: $(echo "$fonts" | grep -c .), sans-serif is $(HOME=$(mktemp -d) FONTCONFIG_FILE="$probe/fontconfig/fallback.conf" fc-match -f '%{family[0]}' sans-serif)"
-echo 'HYLKI_FONT_FALLBACK_CONF=${SHARUN_DIR}/share/hylki/fontconfig/fallback.conf' >> "$APPDIR/.env"
+echo 'TEGAMI_FONT_FALLBACK_CONF=${SHARUN_DIR}/share/tegami/fontconfig/fallback.conf' >> "$APPDIR/.env"
 
 # Pin the message catalogues rather than leave them to be found: src/i18n.rs
 # looks beside the binary, which happens to land in the right place in the
 # bundle's layout, and a layout change upstream should not silently turn the
 # app monolingual.
-echo 'HYLKI_LOCALEDIR=${SHARUN_DIR}/share/locale' >> "$APPDIR/.env"
+echo 'TEGAMI_LOCALEDIR=${SHARUN_DIR}/share/locale' >> "$APPDIR/.env"
 
 echo "==> Packing"
 quick-sharun --make-appimage

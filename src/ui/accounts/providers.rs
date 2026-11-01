@@ -44,7 +44,7 @@ impl Provider {
 
     /// Google stays out of the wizard's manual form: it is imported from
     /// GNOME Online Accounts on the page before it. Microsoft signs in here
-    /// too, with Hylki's own app (#329), for systems whose GNOME Online
+    /// too, with Tegami Mail's own app (#329), for systems whose GNOME Online
     /// Accounts cannot add it.
     pub(crate) fn wizard_listed(&self) -> bool {
         self.kind != ProviderKind::Google

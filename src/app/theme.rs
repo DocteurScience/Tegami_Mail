@@ -136,7 +136,7 @@ thread_local! {
 /// GNOME Shell turns animations off in every app while a remote desktop
 /// session is on, to spare the connection; that is not the person asking
 /// for less motion. Where the app can read GNOME's own Reduce Animation
-/// switch (through dconf, which the Flatpak has no access to), Hylki's
+/// switch (through dconf, which the Flatpak has no access to), Tegami Mail's
 /// animations follow that switch instead, now and whenever it changes.
 pub(super) fn follow_motion_setting() {
     use gtk::gio;

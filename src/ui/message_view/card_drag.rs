@@ -217,7 +217,7 @@ fn find_handle(view: &webkit6::WebView, surface: (f64, f64), pointer: Pointer, s
     };
     let width = view.width().max(1);
     view.evaluate_javascript(
-        &format!("window.__hylkiDragAt({x},{y},{width})"),
+        &format!("window.__tegamiDragAt({x},{y},{width})"),
         None,
         None,
         None::<&gtk::gio::Cancellable>,
@@ -253,7 +253,7 @@ fn pick_card_at(view: &webkit6::WebView, surface: (f64, f64), state: gdk::Modifi
     };
     let width = view.width().max(1);
     view.evaluate_javascript(
-        &format!("window.__hylkiPickAt({x},{y},{width},'{mode}')"),
+        &format!("window.__tegamiPickAt({x},{y},{width},'{mode}')"),
         None,
         None,
         None::<&gtk::gio::Cancellable>,

@@ -14,7 +14,7 @@ use crate::models::Message;
 /// rendered.
 pub(super) fn invite_row_html(key: (u32, u32), inner: &str) -> String {
     format!(
-        "<div class=\"hylki-inv\" data-key=\"{}:{}\">{inner}</div>",
+        "<div class=\"tegami-inv\" data-key=\"{}:{}\">{inner}</div>",
         key.0, key.1
     )
 }
@@ -105,7 +105,7 @@ impl MessageView {
             if text.trim().is_empty() {
                 String::new()
             } else {
-                format!("<div class=\"hylki-inv-row\">{}</div>", escape_html(text))
+                format!("<div class=\"tegami-inv-row\">{}</div>", escape_html(text))
             }
         };
         // The heading: the meeting's name, and what this message does to it.
@@ -124,10 +124,10 @@ impl MessageView {
         let buttons = invite_buttons(key, inv, answered);
 
         format!(
-            "<div class=\"hylki-inv-icon\">{icon}</div>\
-             <div class=\"hylki-inv-body\">\
-               <div class=\"hylki-inv-head\">\
-                 <span class=\"hylki-inv-title{struck}\">{title}</span>{kind}\
+            "<div class=\"tegami-inv-icon\">{icon}</div>\
+             <div class=\"tegami-inv-body\">\
+               <div class=\"tegami-inv-head\">\
+                 <span class=\"tegami-inv-title{struck}\">{title}</span>{kind}\
                </div>{when}{where_}{who}{note}{acts}\
              </div>",
             icon = inline_icon_svg("x-office-calendar-symbolic"),
@@ -141,7 +141,7 @@ impl MessageView {
                 String::new()
             } else {
                 format!(
-                    "<span class=\"hylki-inv-kind\">{}</span>",
+                    "<span class=\"tegami-inv-kind\">{}</span>",
                     escape_html(&kind)
                 )
             },
@@ -151,12 +151,12 @@ impl MessageView {
             note = if note.is_empty() {
                 String::new()
             } else {
-                format!("<div class=\"hylki-inv-note\">{}</div>", escape_html(&note))
+                format!("<div class=\"tegami-inv-note\">{}</div>", escape_html(&note))
             },
             acts = if buttons.is_empty() {
                 String::new()
             } else {
-                format!("<div class=\"hylki-inv-acts\">{buttons}</div>")
+                format!("<div class=\"tegami-inv-acts\">{buttons}</div>")
             },
         )
     }
@@ -196,7 +196,7 @@ impl MessageView {
         };
         let html = self.invite_inner_html(m);
         let js = format!(
-            "(function(){{var d=document.querySelector('.hylki-inv[data-key=\"{account_id}:{id}\"]');\
+            "(function(){{var d=document.querySelector('.tegami-inv[data-key=\"{account_id}:{id}\"]');\
              if(d)d.innerHTML={};}})()",
             serde_json::to_string(&html).unwrap_or_else(|_| "''".into()),
         );
@@ -305,7 +305,7 @@ fn invite_buttons(
         use crate::models::Rsvp;
         let answer = |rsvp: Rsvp, verb: &str, label: String, title: String| {
             format!(
-                "<button type=\"button\" class=\"hylki-inv-btn {verb}{on}\" \
+                "<button type=\"button\" class=\"tegami-inv-btn {verb}{on}\" \
                  data-key=\"{}:{}\" data-inv=\"{verb}\" title=\"{}\">{}</button>",
                 key.0,
                 key.1,
@@ -342,7 +342,7 @@ fn invite_buttons(
     // asking about.
     if !inv.cancelled && inv.method != "CANCEL" && inv.method != "REPLY" && !inv.ics.is_empty() {
         buttons.push_str(&format!(
-            "<button type=\"button\" class=\"hylki-inv-btn cal\" data-key=\"{}:{}\" \
+            "<button type=\"button\" class=\"tegami-inv-btn cal\" data-key=\"{}:{}\" \
              data-inv=\"cal\" title=\"{}\">{}</button>",
             key.0,
             key.1,

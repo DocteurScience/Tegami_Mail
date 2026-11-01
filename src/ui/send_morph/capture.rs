@@ -1,5 +1,5 @@
 //! Pixels: stills of a widget, the colour behind a card, and the development
-//! recorders (`HYLKI_MORPH_SLOW`, `HYLKI_MORPH_FRAMES`).
+//! recorders (`TEGAMI_MORPH_SLOW`, `TEGAMI_MORPH_FRAMES`).
 
 use super::flow::capture_next_frame;
 use super::SendMorph;
@@ -7,19 +7,19 @@ use adw::prelude::*;
 use gtk::subclass::prelude::*;
 use gtk::{gdk, glib, graphene, gsk};
 
-/// HYLKI_MORPH_SLOW=<factor> plays the morph that many times slower, to
+/// TEGAMI_MORPH_SLOW=<factor> plays the morph that many times slower, to
 /// look at it (development only).
 pub(super) fn slow_motion() -> f64 {
     thread_local! {
-        static SLOW: f64 = std::env::var("HYLKI_MORPH_SLOW").ok().and_then(|v| v.parse().ok()).filter(|v: &f64| *v >= 1.0).unwrap_or(1.0);
+        static SLOW: f64 = std::env::var("TEGAMI_MORPH_SLOW").ok().and_then(|v| v.parse().ok()).filter(|v: &f64| *v >= 1.0).unwrap_or(1.0);
     }
     SLOW.with(|s| *s)
 }
 
-/// HYLKI_MORPH_FRAMES=<dir> saves every frame of the morph there as a PNG
+/// TEGAMI_MORPH_FRAMES=<dir> saves every frame of the morph there as a PNG
 /// named by its time and progress (development only).
 pub(super) fn record_frame(obj: &SendMorph) {
-    let Some(dir) = std::env::var_os("HYLKI_MORPH_FRAMES") else {
+    let Some(dir) = std::env::var_os("TEGAMI_MORPH_FRAMES") else {
         return;
     };
     if obj.width() <= 0 || obj.height() <= 0 {
@@ -53,12 +53,12 @@ pub(super) fn record_frame(obj: &SendMorph) {
     let _ = tex.save_to_png(path);
 }
 
-/// With HYLKI_MORPH_FRAMES set, the pane itself once the stage is gone, to
+/// With TEGAMI_MORPH_FRAMES set, the pane itself once the stage is gone, to
 /// hold the last frame against: the whole window, with the pane's box
 /// beside it to crop by, since the pane alone leaves out the window's
 /// ground (development only).
 pub(super) fn record_final(obj: &SendMorph) {
-    let (Some(dir), Some(pane)) = (std::env::var_os("HYLKI_MORPH_FRAMES"), obj.parent()) else {
+    let (Some(dir), Some(pane)) = (std::env::var_os("TEGAMI_MORPH_FRAMES"), obj.parent()) else {
         return;
     };
     for (ms, name) in [(30, "zz-final-a.png"), (400, "zz-final-b.png")] {

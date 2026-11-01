@@ -89,7 +89,7 @@ fn about_identity(page: &gtk::Box) {
                 "This is a beta build for trying upcoming changes early. \
              Expect bugs and instability — please report anything broken \
              on GitHub. It shares your accounts and mail with the stable \
-             Hylki install.",
+             Tegami Mail install.",
             )
             .as_str(),
         ));
@@ -162,16 +162,16 @@ fn about_links(page: &gtk::Box) {
         row.connect_activated(move |_| crate::services::oauth::open_uri(&u));
         row
     };
-    links.append(&mk_row(&i18n("Website"), "https://hylki.hyprlab.co"));
+    links.append(&mk_row(&i18n("Website"), "https://example.org"));
     links.append(&mk_row(
         &i18n("Report an issue or feature request"),
-        "https://github.com/hyprlab/hylki/issues",
+        "https://github.com/DocteurScience/Tegami_Mail/issues",
     ));
     links.append(&mk_row("Discord", "https://discord.gg/YfEJ4b6PFW"));
     links.append(&mk_row("hyprlab@proton.me", "mailto:hyprlab@proton.me"));
     links.append(&mk_row(
         &i18n("Source Code"),
-        "https://github.com/hyprlab/hylki",
+        "https://github.com/DocteurScience/Tegami_Mail",
     ));
     links.append(&mk_row(
         &i18n("License (GNU AGPL v3)"),
@@ -300,11 +300,11 @@ impl AppModel {
         win.set_content(Some(&nav));
         win.present();
 
-        // Screenshot hook: HYLKI_SHOWCASE_SCROLL runs the page down by that
+        // Screenshot hook: TEGAMI_SHOWCASE_SCROLL runs the page down by that
         // fraction once it has been laid out, so a capture can show the
         // thanks lists at the bottom (the same variable does this for
         // Settings).
-        if let Some(frac) = std::env::var("HYLKI_SHOWCASE_SCROLL")
+        if let Some(frac) = std::env::var("TEGAMI_SHOWCASE_SCROLL")
             .ok()
             .map(|v| v.parse::<f64>().unwrap_or(1.0))
         {

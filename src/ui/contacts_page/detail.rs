@@ -293,7 +293,7 @@ fn render_group_card(
         let row = adw::ActionRow::new();
         row.set_title(&i18n("Changed in the app it came from"));
         row.set_subtitle(&i18n(
-            "This group names its members by contact, which Hylki does not edit.",
+            "This group names its members by contact, which Tegami Mail does not edit.",
         ));
         row.add_css_class("property");
         details.append(&row);
@@ -427,7 +427,7 @@ impl ContactsPage {
     }
 
     /// Open the form for the entry at `idx`: a group's, or a contact's. A
-    /// group Hylki cannot write stays as it is.
+    /// group Tegami Mail cannot write stays as it is.
     pub(super) fn edit(
         &mut self,
         widgets: &ContactsPageWidgets,
@@ -556,10 +556,10 @@ impl ContactsPage {
     }
 
     /// The books a group can be saved in: any that keeps groups, with the
-    /// group's own first when it is not one of them, else the Hylki book.
+    /// group's own first when it is not one of them, else the Tegami Mail book.
     fn group_books(&self, c: &ContactDetails, editing: bool) -> Vec<crate::contacts::Book> {
         // Any book that keeps groups: a new group goes in one, a group
-        // being edited can move to another. The Hylki book when none is
+        // being edited can move to another. The Tegami Mail book when none is
         // listed yet.
         let mut books: Vec<crate::contacts::Book> = self
             .books
@@ -672,7 +672,7 @@ impl ContactsPage {
         identity.append(&birthday_row);
 
         // ---- the address book: chosen for a new contact; for one being
-        // edited, its own, or another to move it to (when Hylki can write
+        // edited, its own, or another to move it to (when Tegami Mail can write
         // to its book, and so delete from it) ----
         let mut book = None;
         let editing = self.editing_target.is_some();

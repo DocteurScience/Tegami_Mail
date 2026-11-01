@@ -249,7 +249,7 @@ impl AccountsWindow {
                                 i18n("From address when no Reply-To is set")
                             }
                             Some(f) if f.is_contact_check() => {
-                                i18n("Looks in the system address books and the Hylki book")
+                                i18n("Looks in the system address books and the Tegami Mail book")
                             }
                             _ => String::new(),
                         });
@@ -392,9 +392,9 @@ impl AccountsWindow {
         }
 
         showcase_open_row(&tag_row, &conds, &account_row);
-        // HYLKI_SHOWCASE_ADD_CONDITION=<n> adds that many blank conditions
+        // TEGAMI_SHOWCASE_ADD_CONDITION=<n> adds that many blank conditions
         // once the page is up, for a capture of the stacked groups.
-        if let Some(Ok(n)) = std::env::var("HYLKI_SHOWCASE_ADD_CONDITION")
+        if let Some(Ok(n)) = std::env::var("TEGAMI_SHOWCASE_ADD_CONDITION")
             .ok()
             .map(|v| v.parse::<usize>())
         {
@@ -587,7 +587,7 @@ impl AccountsWindow {
     }
 }
 
-/// Showcase hook: HYLKI_SHOWCASE_OPEN_ROW=tag|where|match|account
+/// Showcase hook: TEGAMI_SHOWCASE_OPEN_ROW=tag|where|match|account
 /// activates that combo row once the page is up and logs whether its
 /// popover opened and how many choices it holds, the way a click would
 /// (the "Move to" list was found empty this way, 2026-09-14).
@@ -596,7 +596,7 @@ fn showcase_open_row(
     conds: &std::rc::Rc<std::cell::RefCell<Vec<CondRows>>>,
     account_row: &adw::ComboRow,
 ) {
-    if let Ok(which) = std::env::var("HYLKI_SHOWCASE_OPEN_ROW") {
+    if let Ok(which) = std::env::var("TEGAMI_SHOWCASE_OPEN_ROW") {
         let row: adw::ComboRow = match which.as_str() {
             "tag" => tag_row.clone(),
             "where" => conds.borrow()[0].field.clone(),

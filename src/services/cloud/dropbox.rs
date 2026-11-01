@@ -328,7 +328,7 @@ mod tests {
 
     #[test]
     fn dropbox_header_arg_is_ascii() {
-        let arg = dropbox_arg(&serde_json::json!({"path": "/Hylki/caf\u{e9} \u{1F4CE}.pdf"}));
+        let arg = dropbox_arg(&serde_json::json!({"path": "/Tegami Mail/caf\u{e9} \u{1F4CE}.pdf"}));
         assert!(arg.is_ascii());
         assert!(arg.contains("caf\\u00e9"));
         assert!(arg.contains("\\ud83d\\udcce"));

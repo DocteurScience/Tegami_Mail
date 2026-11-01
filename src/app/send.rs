@@ -413,7 +413,7 @@ impl AppModel {
             match self.provisional_message(&out) {
                 Some(m) => self.arriving = Some((from, m, motion_wanted())),
                 None => {
-                    tracing::info!(target: "hylki::morph", "no send morph: the reply's card could not be built")
+                    tracing::info!(target: "tegami::morph", "no send morph: the reply's card could not be built")
                 }
             }
         }

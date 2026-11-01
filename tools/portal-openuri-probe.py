@@ -2,13 +2,13 @@
 # Probe: make one OpenURI request the way src/ui/launch.rs does (own
 # handle_token, Response watched before the call) and print the response
 # code. Run inside the sandbox to check the portal road:
-#   flatpak run --command=python3 co.hyprlab.Hylki $PWD/tools/portal-openuri-probe.py [--ask]
+#   flatpak run --command=python3 io.github.DocteurScience.TegamiMail $PWD/tools/portal-openuri-probe.py [--ask]
 import sys, os, gi
 from gi.repository import Gio, GLib
 ask = '--ask' in sys.argv
-uri = 'https://example.com/hylki-portal-probe'
+uri = 'https://example.com/tegami-portal-probe'
 conn = Gio.bus_get_sync(Gio.BusType.SESSION, None)
-token = 'hylki' + str(os.getpid())
+token = 'tegami' + str(os.getpid())
 sender = conn.get_unique_name()[1:].replace('.', '_')
 path = f'/org/freedesktop/portal/desktop/request/{sender}/{token}'
 loop = GLib.MainLoop()

@@ -324,7 +324,7 @@ mod imp {
 
     #[glib::object_subclass]
     impl ObjectSubclass for SquareBox {
-        const NAME: &'static str = "HylkiSquareBox";
+        const NAME: &'static str = "TegamiSquareBox";
         type Type = super::SquareBox;
         type ParentType = gtk::Widget;
     }

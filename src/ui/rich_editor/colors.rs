@@ -49,7 +49,7 @@ pub(super) fn color_menu(
             repaint();
             run_restored(
                 &weak,
-                &format!("window.__hylkiStyled('{cmd}',{})", js_str(&value)),
+                &format!("window.__tegamiStyled('{cmd}',{})", js_str(&value)),
             );
         })
     };

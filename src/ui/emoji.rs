@@ -39,10 +39,10 @@ pub(crate) fn follow_all() {
 /// Have `window` set up each text field it focuses, once.
 fn follow(window: &gtk::Window) {
     unsafe {
-        if window.data::<bool>("hylki-emoji-follow").is_some() {
+        if window.data::<bool>("tegami-emoji-follow").is_some() {
             return;
         }
-        window.set_data("hylki-emoji-follow", true);
+        window.set_data("tegami-emoji-follow", true);
     }
     window.connect_focus_widget_notify(|w| {
         if let Some(text) = gtk::prelude::GtkWindowExt::focus(w).and_downcast::<gtk::Text>() {
@@ -57,10 +57,10 @@ fn follow(window: &gtk::Window) {
 fn watch(text: &gtk::Text) {
     // Once per field.
     unsafe {
-        if text.data::<bool>("hylki-emoji-watch").is_some() {
+        if text.data::<bool>("tegami-emoji-watch").is_some() {
             return;
         }
-        text.set_data("hylki-emoji-watch", true);
+        text.set_data("tegami-emoji-watch", true);
     }
     let keys = gtk::EventControllerKey::new();
     keys.set_propagation_phase(gtk::PropagationPhase::Capture);

@@ -15,7 +15,7 @@ use webkit6::prelude::WebViewExt;
 /// if the same picture was pasted twice.
 pub(super) fn detach_ctx_image(webview: &webkit6::WebView, cb: AttachCallback) {
     webview.evaluate_javascript(
-        "(function(){var n=window.__hylkiCtxImg;\
+        "(function(){var n=window.__tegamiCtxImg;\
           if(!n){var sel=getSelection();\
             if(sel.rangeCount===1){var r=sel.getRangeAt(0);\
               if(r.startContainer===r.endContainer&&r.endOffset-r.startOffset===1){\
@@ -23,7 +23,7 @@ pub(super) fn detach_ctx_image(webview: &webkit6::WebView, cb: AttachCallback) {
                 if(c&&c.tagName==='IMG')n=c;}}}\
           if(!n||n.tagName!=='IMG')return 'E:none';\
           var s=n.src;if(s.indexOf('data:image/')!==0)return 'E:src:'+s.slice(0,40);\
-          n.remove();window.__hylkiCtxImg=null;return s;})()",
+          n.remove();window.__tegamiCtxImg=null;return s;})()",
         None,
         None,
         gtk::gio::Cancellable::NONE,
@@ -125,7 +125,7 @@ pub(super) fn paste_into(webview: &webkit6::WebView, rich: bool, cb: &AttachCall
 fn paste_via_webkit(webview: &webkit6::WebView, rich: bool) {
     let v = webview.clone();
     webview.evaluate_javascript(
-        &format!("window.__hylkiPasteOnce={rich};"),
+        &format!("window.__tegamiPasteOnce={rich};"),
         None,
         None,
         gtk::gio::Cancellable::NONE,
@@ -171,7 +171,7 @@ pub(super) fn deliver_files(
                 exec(
                     webview,
                     &format!(
-                        "window.__hylkiInsertImageURL(\
+                        "window.__tegamiInsertImageURL(\
                          'data:{mime};base64,{b64}','{mime}','{name}',{x},{y})"
                     ),
                 );

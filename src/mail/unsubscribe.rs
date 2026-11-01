@@ -769,15 +769,15 @@ Subject: Hello\r\n\r\nBody\r\n";
         assert!(u.in_headers && u.direct());
     }
 
-    /// Survey a directory of saved messages: `HYLKI_UNSUB_SURVEY=<dir>
-    /// cargo test --bin hylki unsubscribe::tests::survey_dir -- --ignored
+    /// Survey a directory of saved messages: `TEGAMI_UNSUB_SURVEY=<dir>
+    /// cargo test --bin tegami unsubscribe::tests::survey_dir -- --ignored
     /// --nocapture` reports what was found for each, and names every
     /// message that says "unsubscribe" somewhere but gave up no route —
     /// the ones that slipped through.
     #[test]
     #[ignore]
     fn survey_dir() {
-        let Ok(dir) = std::env::var("HYLKI_UNSUB_SURVEY") else {
+        let Ok(dir) = std::env::var("TEGAMI_UNSUB_SURVEY") else {
             return;
         };
         let (mut total, mut hdr, mut body_only, mut none, mut missed) = (0, 0, 0, 0, 0);
@@ -853,13 +853,13 @@ Subject: Hello\r\n\r\nBody\r\n";
         eprintln!("\n== {total} messages: {hdr} from headers, {body_only} from the body, {none} with nothing ({missed} of those say the word) ==");
     }
 
-    /// Probe a saved message (or header block): `HYLKI_UNSUB_PROBE=<file>
-    /// cargo test --bin hylki unsubscribe::tests::probe_file -- --ignored
+    /// Probe a saved message (or header block): `TEGAMI_UNSUB_PROBE=<file>
+    /// cargo test --bin tegami unsubscribe::tests::probe_file -- --ignored
     /// --nocapture` prints what is read out of it.
     #[test]
     #[ignore]
     fn probe_file() {
-        let Ok(path) = std::env::var("HYLKI_UNSUB_PROBE") else {
+        let Ok(path) = std::env::var("TEGAMI_UNSUB_PROBE") else {
             return;
         };
         let raw = std::fs::read(&path).expect("readable file");

@@ -10,7 +10,7 @@ use crate::i18n::i18n;
 
 /// Present the contacts browser as a modal of `parent`. `on_choose` runs with
 /// the chosen contact when a row is activated, `on_show_all` when the header
-/// button asks for Hylki's Contacts view (the window closes either way).
+/// button asks for Tegami Mail's Contacts view (the window closes either way).
 pub(super) fn present(
     parent: &impl IsA<gtk::Window>,
     on_choose: impl Fn(Contact) + 'static,

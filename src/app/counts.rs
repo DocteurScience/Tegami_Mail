@@ -270,7 +270,7 @@ impl AppModel {
     /// conversation until Sent was visited by hand. Asked once per account
     /// per run, as soon as its folders are known; the worker lists the first
     /// page and indexes the rest behind it. Both the folder the server files
-    /// sent mail in and the one Hylki copies to, when they differ.
+    /// sent mail in and the one Tegami Mail copies to, when they differ.
     pub(super) fn index_sent_folders(&mut self, account_id: u32) {
         if self.sent_index_requested.contains(&account_id) {
             return;

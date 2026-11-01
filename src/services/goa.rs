@@ -2,9 +2,9 @@
 //!
 //! Reads mail-capable accounts configured in GNOME Settings → Online Accounts via
 //! the `org.gnome.OnlineAccounts` D-Bus service (session bus), so the user can
-//! enable them in Hylki without re-entering server settings. Password-based
+//! enable them in Tegami Mail without re-entering server settings. Password-based
 //! providers (generic IMAP/SMTP) have their password retrieved from GOA and stored
-//! in Hylki's keyring on import; OAuth2 providers (Gmail, Microsoft) authenticate
+//! in Tegami Mail's keyring on import; OAuth2 providers (Gmail, Microsoft) authenticate
 //! with a GOA-issued access token (XOAUTH2) fetched fresh at connect time.
 
 use std::collections::{HashMap, HashSet};
@@ -49,14 +49,14 @@ pub(crate) struct GoaMailAccount {
 }
 
 impl GoaMailAccount {
-    /// Whether Hylki can reach this account's mail: over IMAP, or over Graph
+    /// Whether Tegami Mail can reach this account's mail: over IMAP, or over Graph
     /// for Microsoft 365. An Exchange (EWS) account fills in the address
     /// and nothing else, and an import of it would only fail to connect (#316).
     pub(crate) fn can_connect(&self) -> bool {
         !self.imap_host.is_empty() || (self.oauth2 && self.provider_type == "ms_graph")
     }
 
-    /// Turn a discovered GOA account into a Hylki [`AccountConfig`]. Pass the
+    /// Turn a discovered GOA account into a Tegami Mail [`AccountConfig`]. Pass the
     /// password for password-based providers, or `oauth = true` for OAuth ones
     /// (the token is fetched from GOA at connect time).
     pub(crate) fn to_config(&self, password: String, oauth: bool) -> AccountConfig {
@@ -135,7 +135,7 @@ impl GoaMailAccount {
 
 impl GoaMailAccount {
     /// Bring an imported account's servers in line with GOA's: what is
-    /// changed in GNOME Settings reaches Hylki, and an import from before
+    /// changed in GNOME Settings reaches Tegami Mail, and an import from before
     /// GOA's security settings were read picks them up (#254). Returns
     /// whether anything changed. The protocol stays as it is: a Microsoft
     /// 365 account runs over Graph whatever GOA lists.
@@ -251,7 +251,7 @@ fn mail_account(ifaces: &HashMap<String, HashMap<String, OwnedValue>>) -> Option
     }
     // `UseSsl` is TLS from the first byte, `UseTls` a STARTTLS upgrade. GOA
     // never lets a mail account go unencrypted: with neither set, its own
-    // sign-in check opens with TLS, and so does Hylki.
+    // sign-in check opens with TLS, and so does Tegami Mail.
     let imap_ssl = get_bool(mail, "ImapUseSsl");
     let imap_starttls = !imap_ssl && get_bool(mail, "ImapUseTls");
     let smtp_ssl = get_bool(mail, "SmtpUseSsl");
@@ -787,7 +787,7 @@ mod tests {
         assert_eq!(
             account.label.as_deref(),
             Some("Work"),
-            "Hylki's own settings stay"
+            "Tegami Mail's own settings stay"
         );
     }
 

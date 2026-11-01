@@ -101,11 +101,11 @@ fn links_keep_their_target_and_nothing_dangerous() {
 
 #[test]
 fn plain_text_keeps_its_lines() {
-    let html = "<html><body><div class=\"hylki-plain\">line one\n\n  indented\n&gt; quoted</div></body></html>";
+    let html = "<html><body><div class=\"tegami-plain\">line one\n\n  indented\n&gt; quoted</div></body></html>";
     let out = extract(html);
     assert_eq!(
         out,
-        "<div class=\"hylki-plain\">line one\n\n  indented\n&gt; quoted</div>"
+        "<div class=\"tegami-plain\">line one\n\n  indented\n&gt; quoted</div>"
     );
 }
 
@@ -114,12 +114,12 @@ fn raw_plain_text_keeps_its_lines_too() {
     let out = extract("Hi,\n\nTwo lines & a line\n  indented.\n");
     assert_eq!(
         out,
-        "<div class=\"hylki-plain\">Hi,\n\nTwo lines &amp; a line\n  indented.</div>"
+        "<div class=\"tegami-plain\">Hi,\n\nTwo lines &amp; a line\n  indented.</div>"
     );
     // The ordinary view's own plain wrapper (`body_html`) reads the same.
     let wrapped =
-        "<!doctype html><html><head></head><body class=\"hylki-plain\">a\n\nb</body></html>";
-    assert_eq!(extract(wrapped), "<div class=\"hylki-plain\">a\n\nb</div>");
+        "<!doctype html><html><head></head><body class=\"tegami-plain\">a\n\nb</body></html>";
+    assert_eq!(extract(wrapped), "<div class=\"tegami-plain\">a\n\nb</div>");
 }
 
 #[test]
@@ -166,12 +166,12 @@ fn the_document_carries_the_sheet_and_theme() {
     assert!(light.contains("color-scheme:light"), "{light}");
 }
 
-/// `HYLKI_READER_PROBE=<file> cargo test --bin hylki reader::tests::probe_file -- --ignored --nocapture`
+/// `TEGAMI_READER_PROBE=<file> cargo test --bin tegami reader::tests::probe_file -- --ignored --nocapture`
 /// prints what the reader makes of a cached body dumped to a file.
 #[test]
 #[ignore]
 fn probe_file() {
-    let Ok(path) = std::env::var("HYLKI_READER_PROBE") else {
+    let Ok(path) = std::env::var("TEGAMI_READER_PROBE") else {
         return;
     };
     let body = std::fs::read_to_string(path).unwrap();

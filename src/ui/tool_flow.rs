@@ -55,7 +55,7 @@ mod imp {
 
     #[glib::object_subclass]
     impl ObjectSubclass for ToolFlow {
-        const NAME: &'static str = "HylkiToolFlow";
+        const NAME: &'static str = "TegamiToolFlow";
         type Type = super::ToolFlow;
         type ParentType = gtk::Widget;
     }

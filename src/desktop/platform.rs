@@ -9,7 +9,7 @@
 use std::fs;
 use std::path::PathBuf;
 
-/// Whether Hylki is running inside a Flatpak sandbox.
+/// Whether Tegami Mail is running inside a Flatpak sandbox.
 pub(crate) fn is_flatpak() -> bool {
     std::path::Path::new("/.flatpak-info").exists()
 }
@@ -40,7 +40,7 @@ pub(crate) fn keyfile_value(data: &str, group: &str, key: &str) -> Option<String
 /// The AppImage this process was launched from (#235), if it was one. The
 /// runtime sets `APPIMAGE` to the bundle's own path, which is the only
 /// lasting one: the binary runs from a temporary mount that is gone the
-/// moment the app exits, so anything that has to name Hylki *later* — a
+/// moment the app exits, so anything that has to name Tegami Mail *later* — a
 /// restart, a launcher, the GNOME Files entry — has to name the bundle.
 /// `APPIMAGE` alone does not mean *this* app is one: the runtime exports it
 /// into the environment, and a child process started from an AppImage (a
@@ -54,7 +54,7 @@ pub(crate) fn appimage() -> Option<PathBuf> {
     (bundle.is_file() && exe.starts_with(&mount)).then_some(bundle)
 }
 
-/// Whether Hylki runs from an AppImage.
+/// Whether Tegami Mail runs from an AppImage.
 pub(crate) fn is_appimage() -> bool {
     appimage().is_some()
 }
@@ -114,7 +114,7 @@ pub(crate) fn is_mint_cinnamon() -> bool {
 }
 
 /// The terminal command that installs the nautilus-python bindings (the
-/// loader GNOME Files needs for the Hylki extension, #188) on this machine,
+/// loader GNOME Files needs for the Tegami Mail extension, #188) on this machine,
 /// judged by the host's os-release. `None` for a distribution whose package
 /// manager and package name are not known here.
 pub(crate) fn nautilus_python_install_command() -> Option<&'static str> {

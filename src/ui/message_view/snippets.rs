@@ -12,7 +12,7 @@ use relm4::prelude::*;
 pub(super) fn template_row_html(key: (u32, u32)) -> String {
     let button = |verb: &str, label: &str, title: &str| {
         format!(
-            "<button type=\"button\" class=\"hylki-unsub-btn hylki-tpl-btn\" data-key=\"{}:{}\" \
+            "<button type=\"button\" class=\"tegami-unsub-btn tegami-tpl-btn\" data-key=\"{}:{}\" \
              data-tpl=\"{verb}\" title=\"{}\">{}</button>",
             key.0,
             key.1,
@@ -21,7 +21,7 @@ pub(super) fn template_row_html(key: (u32, u32)) -> String {
         )
     };
     format!(
-        "<div class=\"hylki-unsub hylki-tpl\"><span class=\"hylki-unsub-text\">{}</span>{}{}</div>",
+        "<div class=\"tegami-unsub tegami-tpl\"><span class=\"tegami-unsub-text\">{}</span>{}{}</div>",
         escape_html(&i18n("This message is a template.")),
         button(
             "edit",
@@ -41,7 +41,7 @@ pub(super) fn template_row_html(key: (u32, u32)) -> String {
 /// stylesheet). `inner` is what [`MessageView::unsub_inner_html`] rendered.
 pub(super) fn unsub_row_html(key: (u32, u32), inner: &str) -> String {
     format!(
-        "<div class=\"hylki-unsub\" data-key=\"{}:{}\">{inner}</div>",
+        "<div class=\"tegami-unsub\" data-key=\"{}:{}\">{inner}</div>",
         key.0, key.1
     )
 }
@@ -50,7 +50,7 @@ pub(super) fn unsub_row_html(key: (u32, u32), inner: &str) -> String {
 /// arrival can be patched into it (an empty row is hidden by the stylesheet).
 pub(super) fn att_row_html(key: (u32, u32), atts: Option<&[CardAttachment]>) -> String {
     format!(
-        "<div class=\"hylki-atts\" data-key=\"{}:{}\">{}</div>",
+        "<div class=\"tegami-atts\" data-key=\"{}:{}\">{}</div>",
         key.0,
         key.1,
         att_chips_html(key, atts.unwrap_or(&[]))
@@ -66,12 +66,12 @@ pub(super) fn att_chips_html(key: (u32, u32), atts: &[CardAttachment]) -> String
     for (idx, a) in atts.iter().enumerate() {
         let icon = icon_for(&a.name);
         out.push_str(&format!(
-            "<span class=\"hylki-attw\">\
-             <button type=\"button\" class=\"hylki-attc {cls}\" data-key=\"{aid}:{id}\" \
+            "<span class=\"tegami-attw\">\
+             <button type=\"button\" class=\"tegami-attc {cls}\" data-key=\"{aid}:{id}\" \
              data-idx=\"{idx}\" title=\"{open}\">{svg}\
-             <span class=\"hylki-attn\">{name}</span>\
-             <span class=\"hylki-attz\">{size}</span></button>\
-             <button type=\"button\" class=\"hylki-attsave\" data-key=\"{aid}:{id}\" \
+             <span class=\"tegami-attn\">{name}</span>\
+             <span class=\"tegami-attz\">{size}</span></button>\
+             <button type=\"button\" class=\"tegami-attsave\" data-key=\"{aid}:{id}\" \
              data-idx=\"{idx}\" title=\"{save}\">{dl}</button></span>",
             cls = icon_color_class(&a.name),
             aid = key.0,
@@ -100,7 +100,7 @@ pub(super) fn tag_chips_html(
     for pill in crate::models::pills(keywords, labels, tags) {
         match pill {
             crate::models::Pill::Tag(t) => out.push_str(&format!(
-                "<span class=\"hylki-tag\" style=\"background:{bg};color:{fg}\">{name}</span>",
+                "<span class=\"tegami-tag\" style=\"background:{bg};color:{fg}\">{name}</span>",
                 bg = gtk::glib::markup_escape_text(&t.color),
                 fg = crate::color::readable_text(&t.color),
                 name = gtk::glib::markup_escape_text(&t.name),
@@ -108,7 +108,7 @@ pub(super) fn tag_chips_html(
             crate::models::Pill::Label(name) => {
                 let color = crate::config::TAG_COLORS[crate::models::label_hue(&name)];
                 out.push_str(&format!(
-                    "<span class=\"hylki-tag hylki-label\" style=\"background:{color};color:{fg}\" title=\"{name}\">{name}</span>",
+                    "<span class=\"tegami-tag tegami-label\" style=\"background:{color};color:{fg}\" title=\"{name}\">{name}</span>",
                     fg = crate::color::readable_text(color),
                     name = gtk::glib::markup_escape_text(&name),
                 ))
@@ -125,7 +125,7 @@ pub(super) fn tag_chips_html(
 pub(super) fn card_action_button(key: (u32, u32), act: &str, icon: &str, title: &str) -> String {
     let svg = inline_icon_svg(icon);
     format!(
-        "<button type=\"button\" class=\"hylki-act\" data-act=\"{act}\" \
+        "<button type=\"button\" class=\"tegami-act\" data-act=\"{act}\" \
          data-key=\"{aid}:{id}\" title=\"{title}\">{svg}</button>",
         aid = key.0,
         id = key.1,
@@ -146,7 +146,7 @@ const PGP_LOCK_ICON: &str = "channel-secure-symbolic";
 /// paths carry no fill, so the document's `fill:currentColor` recolors it);
 /// empty when the resource bundle isn't registered (tests).
 pub(super) fn inline_icon_svg(icon: &str) -> String {
-    let path = format!("/co/hyprlab/Hylki/icons/scalable/actions/{icon}.svg");
+    let path = format!("/io/github/DocteurScience/TegamiMail/icons/scalable/actions/{icon}.svg");
     gtk::gio::resources_lookup_data(&path, gtk::gio::ResourceLookupFlags::NONE)
         .ok()
         .and_then(|b| String::from_utf8(b.to_vec()).ok())
@@ -195,7 +195,7 @@ pub(super) fn recipients_html(m: &Message, always_shown: bool) -> String {
         if list.is_empty() {
             continue;
         }
-        // Each recipient becomes a `.hylki-mail` span (click composes to it,
+        // Each recipient becomes a `.tegami-mail` span (click composes to it,
         // right-click offers copy/new-message), keyed by its bare address.
         let mut parts = String::new();
         for entry in split_addr_list(list) {
@@ -215,7 +215,7 @@ pub(super) fn recipients_html(m: &Message, always_shown: bool) -> String {
             // is in the right-click menu.
             let shown = crate::contacts::contact_name(mail);
             parts.push_str(&format!(
-                "<span class=\"hylki-mail\" data-mail=\"{}\">{}</span>",
+                "<span class=\"tegami-mail\" data-mail=\"{}\">{}</span>",
                 escape_html(mail).replace('"', "&quot;"),
                 escape_html(shown.as_deref().unwrap_or(entry))
             ));
@@ -226,7 +226,7 @@ pub(super) fn recipients_html(m: &Message, always_shown: bool) -> String {
         return String::new();
     }
     let hidden = if always_shown { "" } else { " hidden" };
-    format!("<div class=\"hylki-rcpt\"{hidden}>{lines}</div>")
+    format!("<div class=\"tegami-rcpt\"{hidden}>{lines}</div>")
 }
 
 /// Split an address-list header on commas, honouring double-quoted display

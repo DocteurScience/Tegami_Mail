@@ -437,7 +437,7 @@ pub(crate) enum AppMsg {
     AskDeleteAttachment(AttachmentTarget),
     /// The user said yes: have the account's worker do it.
     DeleteAttachment(AttachmentTarget),
-    /// Send the request (held back by HYLKI_SHOWCASE_DELETE_HOLD, otherwise
+    /// Send the request (held back by TEGAMI_SHOWCASE_DELETE_HOLD, otherwise
     /// straight after [`AppMsg::DeleteAttachment`]).
     SendDeleteAttachment(AttachmentTarget),
     /// The worker could not delete it: show the file as it was.
@@ -460,20 +460,20 @@ pub(crate) enum AppMsg {
     },
 
     // ---- on_showcase (showcase/messages.rs) ----
-    /// HYLKI_SHOWCASE_POPOUT: open the open message in a window of its own.
+    /// TEGAMI_SHOWCASE_POPOUT: open the open message in a window of its own.
     ShowcasePopout,
-    /// Showcase only (HYLKI_SHOWCASE_FOLDER): switch to the first account's
+    /// Showcase only (TEGAMI_SHOWCASE_FOLDER): switch to the first account's
     /// folder of this kind, so a capture can start from Drafts, Sent, etc.
     ShowcaseFolder {
         kind: FolderKind,
         account: Option<u32>,
     },
-    /// Showcase only (HYLKI_SHOWCASE_NOTIFY): post the new-mail notification
+    /// Showcase only (TEGAMI_SHOWCASE_NOTIFY): post the new-mail notification
     /// for the active account's newest Inbox message, focus or not, so the
     /// notification, its buttons and its sound can be tried without
     /// waiting for mail (#337).
     ShowcaseNotify,
-    /// Showcase only (HYLKI_SHOWCASE_DELETE_ATTACHMENT): the drawer's
+    /// Showcase only (TEGAMI_SHOWCASE_DELETE_ATTACHMENT): the drawer's
     /// Delete from Server for the file called `name`, asking first unless
     /// `confirmed`.
     ShowcaseDeleteAttachment { name: String, confirmed: bool },
@@ -489,7 +489,7 @@ pub(crate) enum AppMsg {
     /// Forward one message of the open conversation by its id (#240), as
     /// its card's Forward button would.
     ShowcaseForward { account_id: u32, id: u32 },
-    /// Showcase only (HYLKI_SHOWCASE_COMPOSE_UNDO): drive the inline
+    /// Showcase only (TEGAMI_SHOWCASE_COMPOSE_UNDO): drive the inline
     /// composer's history through a scripted round of edits and undos.
     ShowcaseComposeUndo,
     /// Showcase only: open the window's burger menu, to read its Undo and
@@ -498,19 +498,19 @@ pub(crate) enum AppMsg {
     /// Showcase only: put the inline composer into this composing format
     /// first, so the same round runs over a source-mode body.
     ShowcaseComposeFormat(config::ComposeFormat),
-    /// Showcase only (HYLKI_SHOWCASE_COMPOSE_CLOSE): cancel the inline
+    /// Showcase only (TEGAMI_SHOWCASE_COMPOSE_CLOSE): cancel the inline
     /// composer, to check its web process goes with it.
     ShowcaseComposeClose,
-    /// Showcase only (HYLKI_SHOWCASE_COPY): the sent reply's copy is read
+    /// Showcase only (TEGAMI_SHOWCASE_COPY): the sent reply's copy is read
     /// back, made up from its stand-in card, as a server's would be.
     ShowcaseCopy,
-    /// Showcase only (HYLKI_SHOWCASE_SEND): write `text` in the split
+    /// Showcase only (TEGAMI_SHOWCASE_SEND): write `text` in the split
     /// reply's editor and send it, to watch the send morph.
     ShowcaseSend(String),
-    /// Showcase only (HYLKI_SHOWCASE_ACCOUNT=new[:<provider>]): open a blank
+    /// Showcase only (TEGAMI_SHOWCASE_ACCOUNT=new[:<provider>]): open a blank
     /// account editor, on that provider when one is named.
     ShowcaseNewAccount(Option<String>),
-    /// Showcase only (HYLKI_SHOWCASE_EDITOR_DIRTY): change the open account
+    /// Showcase only (TEGAMI_SHOWCASE_EDITOR_DIRTY): change the open account
     /// editor, so leaving an edited one can be captured.
     ShowcaseDirtyEditor,
     /// Showcase: open filter rule `i` in the current Accounts panel.
@@ -671,7 +671,7 @@ pub(crate) enum AppMsg {
     /// (#408): read the contacts again if they are showing.
     ContactBooksSynced,
     /// Read with the contacts: the books new contacts can go to, chosen one
-    /// first, and how many contacts the Hylki book holds.
+    /// first, and how many contacts the Tegami Mail book holds.
     ContactBooksLoaded {
         books: Vec<crate::contacts::Book>,
         local_count: usize,
@@ -721,7 +721,7 @@ pub(crate) enum AppMsg {
     ContactTreeAction(crate::ui::contacts_page::TreeAction),
     /// The accounts and books folded under the sidebar's Contacts row.
     ContactsFolded(Vec<String>),
-    /// Name an address book in Hylki (`None`: its own name again).
+    /// Name an address book in Tegami Mail (`None`: its own name again).
     RenameBook { uid: String, name: Option<String> },
     /// Copy these cards into the book `to`.
     CopyContacts { to: String, cards: Vec<String> },
@@ -732,7 +732,7 @@ pub(crate) enum AppMsg {
     },
     /// A contact write finished (`Some` = the error to show).
     ContactWriteDone(Option<String>),
-    /// `.vcf` files chosen in the Contacts page, to import into the Hylki book.
+    /// `.vcf` files chosen in the Contacts page, to import into the Tegami Mail book.
     ImportContacts(Vec<std::path::PathBuf>),
     /// The import finished.
     ContactsImported(Result<crate::contacts::local::ImportOutcome, String>),
@@ -947,7 +947,7 @@ pub(crate) enum AppMsg {
         remember: bool,
     },
     /// Files handed in from outside the app (a file manager's "Open With
-    /// Hylki", or the command line): open a fresh composer with them attached
+    /// Tegami Mail", or the command line): open a fresh composer with them attached
     /// (Isaac's PR #96).
     OpenWithFiles(Vec<std::path::PathBuf>),
     /// Files let go on one of the main window's cards: a new message with
@@ -1163,7 +1163,7 @@ pub(crate) enum AppMsg {
     /// The welcome wizard's privacy/personalize choices: fan out through the
     /// existing Set* handlers so every side effect stays in one place.
     ApplyWelcomePrefs(crate::ui::welcome::WelcomePrefs),
-    /// Use a GNOME Online Accounts account in Hylki, or switch it back on.
+    /// Use a GNOME Online Accounts account in Tegami Mail, or switch it back on.
     ImportGoaAccount(Box<AccountConfig>),
     /// An account was removed in Settings: its secrets and its config go.
     AccountRemoved { email: String },
@@ -1184,7 +1184,7 @@ pub(crate) enum AppMsg {
     /// Open the status bar straight into console mode (button / burger menu).
     OpenConsole,
     /// Write the exported log straight to `path`, no chooser: the
-    /// HYLKI_SHOWCASE_MEMORY hook, for reading the memory section of a
+    /// TEGAMI_SHOWCASE_MEMORY hook, for reading the memory section of a
     /// running instance.
     ExportLogTo(std::path::PathBuf),
 

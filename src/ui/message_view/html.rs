@@ -24,7 +24,7 @@ pub(super) fn body_html(body: &str) -> String {
             "<!doctype html><html><head><meta charset=\"utf-8\"><style>\
              body{{margin:0;padding:20px;font:14px/1.5 system-ui,sans-serif;\
              white-space:pre-wrap;word-wrap:break-word}}\
-             </style></head><body class=\"hylki-plain\">{}</body></html>",
+             </style></head><body class=\"tegami-plain\">{}</body></html>",
             escape_html(body)
         )
     }

@@ -1,7 +1,7 @@
 //! Appearance themes: whole palettes the app can wear, on top of the
 //! light/dark preference.
 //!
-//! Hylki normally paints itself in the system's own colors — stock
+//! Tegami Mail normally paints itself in the system's own colors — stock
 //! libadwaita plus the desktop accent — and that is still the default
 //! ([`SYSTEM_ID`]). A theme replaces those colors wholesale: each one
 //! carries a light and a dark palette, so "Follow system", "Light" and

@@ -1,7 +1,7 @@
 //! Snooze (#527): mail put away in the account's Snoozed folder until a set
 //! time, then moved back, unread, to the folder it came from. The times are
 //! kept in snoozed.toml; the app's clock does the waking, so mail snoozed
-//! here comes back while Hylki is running, or as soon as it starts.
+//! here comes back while Tegami Mail is running, or as soon as it starts.
 
 use std::collections::{HashMap, HashSet};
 use std::time::{Duration, Instant};

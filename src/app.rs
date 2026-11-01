@@ -161,7 +161,7 @@ impl SimpleComponent for AppModel {
         adw::ApplicationWindow {
             set_title: Some(crate::APP_NAME),
             set_icon_name: Some(crate::APP_ID),
-            add_css_class: "hylki",
+            add_css_class: "tegami",
 
             // Persist the window size + maximized state on close. (Position and
             // which monitor can't be restored on Wayland — the compositor owns
@@ -169,7 +169,7 @@ impl SimpleComponent for AppModel {
             connect_close_request[background = model.run_in_background.clone(), outgoing = model.outgoing.clone()] => move |w| {
                 save_window_geometry(w);
                 // Running in the background: hide the window and stay alive, so
-                // mail keeps arriving and GNOME lists Hylki under Background Apps
+                // mail keeps arriving and GNOME lists Tegami Mail under Background Apps
                 // (issue #3). The window is kept rather than rebuilt, so reopening
                 // is instant and nothing is torn down — which is also what makes
                 // this safe, given the exit below.
@@ -237,10 +237,10 @@ impl SimpleComponent for AppModel {
                                 },
                             },
                             pack_end = &gtk::MenuButton {
-                                // Hylki's own copy of the three bars: an icon of
+                                // Tegami Mail's own copy of the three bars: an icon of
                                 // the GNOME name from a theme or another program
                                 // drew a gear on some systems.
-                                set_icon_name: "hylki-open-menu-symbolic",
+                                set_icon_name: "tegami-open-menu-symbolic",
                                 set_tooltip_text: Some(i18n("Main Menu").as_str()),
                                 add_css_class: "flat",
                                 set_menu_model: Some(&model.menu),
@@ -274,7 +274,7 @@ impl SimpleComponent for AppModel {
                             pack_start: &model.sidebar_refresh,
                             #[name = "sidebar_menu"]
                             pack_end = &gtk::MenuButton {
-                                set_icon_name: "hylki-open-menu-symbolic",
+                                set_icon_name: "tegami-open-menu-symbolic",
                                 set_tooltip_text: Some(i18n("Main Menu").as_str()),
                                 add_css_class: "flat",
                                 set_menu_model: Some(&model.menu),
@@ -390,7 +390,7 @@ impl SimpleComponent for AppModel {
                                 set_show_end_title_buttons: model.controls_in_list(),
                                 // No folder title here — the sidebar's selection
                                 // already names it. An empty label keeps the
-                                // window's "Hylki" title from appearing instead.
+                                // window's "Tegami Mail" title from appearing instead.
                                 #[wrap(Some)]
                                 set_title_widget = &gtk::Label {
                                     set_label: "",
@@ -524,7 +524,7 @@ impl SimpleComponent for AppModel {
                                 // action row fits a narrower pane (see
                                 // READER_ACTIONS_BREAKPOINT and styles.css).
                                 add_css_class: "reader-toolbar",
-                                // Empty title so the window's "Hylki" title isn't
+                                // Empty title so the window's "Tegami Mail" title isn't
                                 // shown here; the app title lives above the sidebar.
                                 #[wrap(Some)]
                                 set_title_widget = &gtk::Label {
@@ -652,7 +652,7 @@ impl SimpleComponent for AppModel {
                                         set_tooltip_text: Some(if model.toolbar_star_lit() { i18n("Remove Star") } else { i18n("Star") }.as_str()),
                                         // One glyph in both states, like every other
                                         // icon; the starred state carries color only.
-                                        set_icon_name: "hylki-non-starred-symbolic",
+                                        set_icon_name: "tegami-non-starred-symbolic",
                                         #[watch]
                                         set_css_classes: if model.toolbar_star_lit() {
                                             &["flat", "star-active"]
@@ -818,7 +818,7 @@ impl SimpleComponent for AppModel {
                                         // "mark as read"), matching the menus.
                                         #[watch]
                                         set_icon_name: if model.reply_target().is_some_and(|m| m.unread) {
-                                            "hylki-mail-read-symbolic"
+                                            "tegami-mail-read-symbolic"
                                         } else {
                                             "mail-unread-symbolic"
                                         },

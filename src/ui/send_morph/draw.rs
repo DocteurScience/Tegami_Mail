@@ -215,7 +215,7 @@ impl SendMorph {
         let bottom = (arrival.rect.y() + arrival.rect.height()).min(view.y() + view.height());
         if bottom - top < 8.0 {
             // The card landed out of sight: nothing to carry the editor to.
-            tracing::info!(target: "hylki::morph", "send morph: the reply's card is out of sight");
+            tracing::info!(target: "tegami::morph", "send morph: the reply's card is out of sight");
             return None;
         }
         let card = graphene::Rect::new(arrival.rect.x(), top, arrival.rect.width(), bottom - top);

@@ -49,7 +49,7 @@ fn initial_suggestions_keep_newer_names_and_frequency() {
 
 #[test]
 fn a_markdown_reply_has_a_line_to_write_on_above_the_quote() {
-    let reply = "<p><br></p><p class=\"hylki-quote-attr\">On Monday, Ann wrote:</p><blockquote><p>Hi</p></blockquote>";
+    let reply = "<p><br></p><p class=\"tegami-quote-attr\">On Monday, Ann wrote:</p><blockquote><p>Hi</p></blockquote>";
     let md = super::markdown_body(reply);
     assert!(md.starts_with("\n\nOn Monday, Ann wrote:"), "{md:?}");
     // A new message stays empty, and written text is left as it is.
@@ -64,11 +64,11 @@ use crate::ui::rich_editor::SourceKind;
 fn the_separator_line_follows_the_setting() {
     assert_eq!(
         sig_html("Ann", false),
-        "<div class=\"hylki-sig\"><br>Ann</div>"
+        "<div class=\"tegami-sig\"><br>Ann</div>"
     );
     assert_eq!(
         sig_html("Ann", true),
-        "<div class=\"hylki-sig\"><br>-- <br>Ann</div>"
+        "<div class=\"tegami-sig\"><br>-- <br>Ann</div>"
     );
     assert!(!sig_source(SourceKind::Markdown, "Ann", false).contains("-- "));
     assert!(sig_source(SourceKind::Markdown, "Ann", true).starts_with("\n\n-- \n"));
@@ -81,7 +81,7 @@ fn the_separator_line_follows_the_setting() {
 fn pinned_an_html_source_signature_is_the_rich_block() {
     assert_eq!(
         sig_source(SourceKind::Html, "Ann\nB", true),
-        "\n<div class=\"hylki-sig\"><br>-- <br>Ann<br>B</div>\n"
+        "\n<div class=\"tegami-sig\"><br>-- <br>Ann<br>B</div>\n"
     );
     // Anything with a `<` is taken as HTML.
     assert_eq!(

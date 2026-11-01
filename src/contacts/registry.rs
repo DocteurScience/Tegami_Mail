@@ -31,7 +31,7 @@ pub(super) fn registry_books() -> Option<HashMap<String, String>> {
         // [Data Source] Enabled=false when Contacts is toggled off for the
         // account). Only that section's Enabled counts — other sections
         // (Refresh etc.) have Enabled keys of their own. Nor switched off
-        // for Hylki in Settings → Contacts, it or its account.
+        // for Tegami Mail in Settings → Contacts, it or its account.
         if data.contains("[Address Book]")
             && !data_source_disabled(data)
             && crate::contacts::contact_sources::book_used(uid, &sources, &off)
@@ -101,7 +101,7 @@ pub(super) fn sources_from_reply(
 /// A book's friendly name: which account it belongs to and over what — walked
 /// up the source's parent chain to the account collection, whose backend
 /// (google / microsoft365 / webdav) and identity say it best.
-/// A book's name with the one given to its account in Hylki, if any, in
+/// A book's name with the one given to its account in Tegami Mail, if any, in
 /// place of the account's own ("Work · Family" for "CardDAV — a@b.org ·
 /// Family"); a book that is its account alone keeps its address as its own
 /// name ("Work · a@b.org").
@@ -114,7 +114,7 @@ pub(super) fn with_account_name(name: &str, account: Option<&String>) -> String 
     }
 }
 
-/// A book's name with the one given to it in Hylki, if any, in place of the
+/// A book's name with the one given to it in Tegami Mail, if any, in place of the
 /// book's own: after its account's ("CardDAV — a@b.org · Family"), or alone
 /// for a book that is no account's.
 pub(super) fn with_given_name(name: &str, given: Option<&String>) -> String {
@@ -246,7 +246,7 @@ fn sources_dest_from_files() -> Option<String> {
 }
 
 /// Whether the registry lists `uid` as live (fail-open when unreachable,
-/// but for a book switched off for Hylki by its own UID).
+/// but for a book switched off for Tegami Mail by its own UID).
 pub(super) fn book_uid_active(uid: &str, books: &Option<HashMap<String, String>>) -> bool {
     books.as_ref().map_or_else(
         || !crate::contacts::contact_sources::off().contains(uid),

@@ -1,10 +1,10 @@
-# Translation template for Hylki.
-# This file is distributed under the same license as the Hylki package.
+# Translation template for Tegami Mail.
+# This file is distributed under the same license as the Tegami Mail package.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: hylki\n"
-"Report-Msgid-Bugs-To: https://github.com/hyprlab/hylki/issues\n"
+"Project-Id-Version: tegami\n"
+"Report-Msgid-Bugs-To: https://github.com/DocteurScience/Tegami_Mail/issues\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -17,7 +17,7 @@ msgstr ""
 msgid ""
 "This is a beta build for trying upcoming changes early. Expect bugs and "
 "instability — please report anything broken on GitHub. It shares your "
-"accounts and mail with the stable Hylki install."
+"accounts and mail with the stable Tegami Mail install."
 msgstr ""
 
 msgid "Release Notes"
@@ -63,7 +63,7 @@ msgstr ""
 msgid "About"
 msgstr ""
 
-msgid "Hylki couldn’t save your password"
+msgid "Tegami Mail couldn’t save your password"
 msgstr ""
 
 msgid "Keyring setup on Linux Mint"
@@ -212,10 +212,10 @@ msgstr ""
 msgid "New Message"
 msgstr ""
 
-msgid "Hylki Address Book"
+msgid "Tegami Mail Address Book"
 msgstr ""
 
-msgid "Hylki cannot change this kind of group"
+msgid "Tegami Mail cannot change this kind of group"
 msgstr ""
 
 msgid "On This Computer"
@@ -253,8 +253,8 @@ msgid_plural "{n} address books"
 msgstr[0] ""
 msgstr[1] ""
 
-msgid "{n} contact, kept by Hylki"
-msgid_plural "{n} contacts, kept by Hylki"
+msgid "{n} contact, kept by Tegami Mail"
+msgid_plural "{n} contacts, kept by Tegami Mail"
 msgstr[0] ""
 msgstr[1] ""
 
@@ -544,13 +544,13 @@ msgstr ""
 msgid "Always do this (change it in Settings → System → GNOME Files)"
 msgstr ""
 
-msgid "Could not attach {names}: Hylki cannot read the file."
-msgid_plural "Could not attach {n} files (Hylki cannot read them): {names}"
+msgid "Could not attach {names}: Tegami Mail cannot read the file."
+msgid_plural "Could not attach {n} files (Tegami Mail cannot read them): {names}"
 msgstr[0] ""
 msgstr[1] ""
 
-msgid "Send {n} file with Hylki"
-msgid_plural "Send {n} files with Hylki"
+msgid "Send {n} file with Tegami Mail"
+msgid_plural "Send {n} files with Tegami Mail"
 msgstr[0] ""
 msgstr[1] ""
 
@@ -854,7 +854,7 @@ msgstr ""
 msgid "Close the window (background sync keeps running)"
 msgstr ""
 
-msgid "Quit Hylki entirely"
+msgid "Quit Tegami Mail entirely"
 msgstr ""
 
 msgid "Command palette: search actions, folders and tags"
@@ -1009,7 +1009,7 @@ msgstr ""
 msgid "Keyboard Shortcuts"
 msgstr ""
 
-msgid "About Hylki"
+msgid "About Tegami Mail"
 msgstr ""
 
 msgid "Turn Focus Mode On"
@@ -1099,10 +1099,10 @@ msgid "Delete All Contacts?"
 msgstr ""
 
 msgid ""
-"The {n} contact in the Hylki address book is deleted. This cannot be undone; "
+"The {n} contact in the Tegami Mail address book is deleted. This cannot be undone; "
 "export the book first to keep a copy."
 msgid_plural ""
-"The {n} contacts in the Hylki address book are deleted. This cannot be "
+"The {n} contacts in the Tegami Mail address book are deleted. This cannot be "
 "undone; export the book first to keep a copy."
 msgstr[0] ""
 msgstr[1] ""
@@ -1130,23 +1130,23 @@ msgstr ""
 
 msgid ""
 "{n} mail account(s), the cloud storage accounts and all preferences were "
-"imported. Restart Hylki to apply them. Passwords and sign-ins are not part "
+"imported. Restart Tegami Mail to apply them. Passwords and sign-ins are not part "
 "of a backup; re-enter them on first use if this is a new machine."
 msgstr ""
 
 msgid "Later"
 msgstr ""
 
-msgid "Restart Hylki"
+msgid "Restart Tegami Mail"
 msgstr ""
 
 msgid "Import failed: {e}"
 msgstr ""
 
-msgid "The renderer applies the next time Hylki starts."
+msgid "The renderer applies the next time Tegami Mail starts."
 msgstr ""
 
-msgid "The language applies the next time Hylki starts."
+msgid "The language applies the next time Tegami Mail starts."
 msgstr ""
 
 msgid "Edit this message"
@@ -1284,7 +1284,7 @@ msgstr ""
 msgid "Could not save the message: {e}"
 msgstr ""
 
-msgid "Open Hylki"
+msgid "Open Tegami Mail"
 msgstr ""
 
 msgid "View all {n} unread in Inboxes…"
@@ -1301,24 +1301,24 @@ msgid_plural "{n} unread in Inboxes"
 msgstr[0] ""
 msgstr[1] ""
 
-msgid "Restarting Hylki"
+msgid "Restarting Tegami Mail"
 msgstr ""
 
-msgid "Applying your new app icon. Hylki will close and reopen in a moment."
+msgid "Applying your new app icon. Tegami Mail will close and reopen in a moment."
 msgstr ""
 
 msgid "Restart to finish switching icons?"
 msgstr ""
 
 msgid ""
-"The dock and Hylki's own windows keep the old icon until Hylki restarts."
+"The dock and Tegami Mail's own windows keep the old icon until Tegami Mail restarts."
 msgstr ""
 
 msgid "Restart Now"
 msgstr ""
 
 msgid ""
-"Couldn't restart automatically — quit and reopen Hylki to finish switching "
+"Couldn't restart automatically — quit and reopen Tegami Mail to finish switching "
 "the icon."
 msgstr ""
 
@@ -1335,7 +1335,7 @@ msgid "Unsubscribe from {name}?"
 msgstr ""
 
 msgid ""
-"Hylki will ask the list to stop sending you mail. A list can take a few days "
+"Tegami Mail will ask the list to stop sending you mail. A list can take a few days "
 "to act on the request."
 msgstr ""
 
@@ -1350,7 +1350,7 @@ msgid ""
 msgstr ""
 
 msgid ""
-"This message carries no unsubscribe header, so Hylki is going by the link in "
+"This message carries no unsubscribe header, so Tegami Mail is going by the link in "
 "it."
 msgstr ""
 
@@ -1519,7 +1519,7 @@ msgid "Classic"
 msgstr ""
 
 msgid ""
-"Hylki checks for new mail and shows notifications while its window is closed."
+"Tegami Mail checks for new mail and shows notifications while its window is closed."
 msgstr ""
 
 msgid "Checking for new mail"
@@ -1536,11 +1536,11 @@ msgstr ""
 msgid "Message ready to send"
 msgstr ""
 
-msgid "A new message is open in Hylki."
+msgid "A new message is open in Tegami Mail."
 msgstr ""
 
-msgid "A new message with {n} file attached is open in Hylki."
-msgid_plural "A new message with {n} files attached is open in Hylki."
+msgid "A new message with {n} file attached is open in Tegami Mail."
+msgid_plural "A new message with {n} files attached is open in Tegami Mail."
 msgstr[0] ""
 msgstr[1] ""
 
@@ -1642,12 +1642,12 @@ msgstr ""
 msgid ""
 "The sender's organization labeled this message without naming the label in "
 "it. For a Microsoft 365 account, turning on “Show sensitivity label names” "
-"in its settings shows the name. Hylki shows the label but does not apply its "
+"in its settings shows the name. Tegami Mail shows the label but does not apply its "
 "rules."
 msgstr ""
 
 msgid ""
-"The sender's organization labeled this message “{label}”. Hylki shows the "
+"The sender's organization labeled this message “{label}”. Tegami Mail shows the "
 "label but does not apply its rules."
 msgstr ""
 
@@ -1941,7 +1941,7 @@ msgstr ""
 
 msgid ""
 "{reason} If your organization manages your account, an administrator can "
-"approve Hylki for everyone at {link}"
+"approve Tegami Mail for everyone at {link}"
 msgstr ""
 
 msgid "The service's answer could not be read."
@@ -1980,19 +1980,19 @@ msgstr ""
 msgid "Mail"
 msgstr ""
 
-msgid "Use this account in Hylki"
+msgid "Use this account in Tegami Mail"
 msgstr ""
 
 msgid "GOA"
 msgstr ""
 
-msgid "Hylki"
+msgid "Tegami Mail"
 msgstr ""
 
 msgid "Imported GNOME Online Account"
 msgstr ""
 
-msgid "Added directly in Hylki"
+msgid "Added directly in Tegami Mail"
 msgstr ""
 
 msgid "Paused: Mail is switched off for this account in GNOME Settings"
@@ -2150,7 +2150,7 @@ msgid "POP3 accounts have no server folders to save a copy in."
 msgstr ""
 
 msgid ""
-"Only for an account added in Hylki with Microsoft 365 / Outlook as the "
+"Only for an account added in Tegami Mail with Microsoft 365 / Outlook as the "
 "provider, not from GNOME Online Accounts."
 msgstr ""
 
@@ -2238,7 +2238,7 @@ msgstr ""
 msgid "From address when no Reply-To is set"
 msgstr ""
 
-msgid "Looks in the system address books and the Hylki book"
+msgid "Looks in the system address books and the Tegami Mail book"
 msgstr ""
 
 msgid "Tag with"
@@ -2480,7 +2480,7 @@ msgid "Enter a client ID and sign in before saving"
 msgstr ""
 
 msgid ""
-"Remove {name} from Hylki? Its folders and the mail in them stay on this "
+"Remove {name} from Tegami Mail? Its folders and the mail in them stay on this "
 "computer, in {dir}, and come back if it is added again."
 msgstr ""
 
@@ -2777,7 +2777,7 @@ msgstr ""
 msgid "Open in the default app"
 msgstr ""
 
-msgid "Welcome to Hylki, formerly {old}"
+msgid "Welcome to Tegami Mail, formerly {old}"
 msgstr ""
 
 msgid ""
@@ -2788,7 +2788,7 @@ msgstr ""
 
 msgid ""
 "{old} is still the app your desktop opens email links with. To hand that to "
-"Hylki, choose it under Default Apps in Settings."
+"Tegami Mail, choose it under Default Apps in Settings."
 msgstr ""
 
 msgid "To remove {old}, run:"
@@ -3186,7 +3186,7 @@ msgid "An attachment is missing"
 msgstr ""
 
 msgid ""
-"Hylki cannot read {names}. It was moved or deleted after it was attached. "
+"Tegami Mail cannot read {names}. It was moved or deleted after it was attached. "
 "Remove it, or attach it again from where it is now."
 msgstr ""
 
@@ -3328,10 +3328,10 @@ msgstr ""
 msgid "Address books"
 msgstr ""
 
-msgid "Rename a book for Hylki, or switch it off to leave it out."
+msgid "Rename a book for Tegami Mail, or switch it off to leave it out."
 msgstr ""
 
-msgid "Use in Hylki"
+msgid "Use in Tegami Mail"
 msgstr ""
 
 msgid "Address book"
@@ -3418,10 +3418,10 @@ msgid ""
 "account there with Contacts on, and it will be listed here."
 msgstr ""
 
-msgid "Kept in Hylki's own data folder. Works without GNOME."
+msgid "Kept in Tegami Mail's own data folder. Works without GNOME."
 msgstr ""
 
-msgid "Contacts in the Hylki book"
+msgid "Contacts in the Tegami Mail book"
 msgstr ""
 
 msgid "Import vCard files"
@@ -3435,7 +3435,7 @@ msgstr ""
 msgid "Export as a vCard file"
 msgstr ""
 
-msgid "Saves every contact in the Hylki book in one .vcf file."
+msgid "Saves every contact in the Tegami Mail book in one .vcf file."
 msgstr ""
 
 msgid "Delete all contacts"
@@ -3444,7 +3444,7 @@ msgstr ""
 msgid "Other address books are not touched."
 msgstr ""
 
-msgid "Set up in Hylki"
+msgid "Set up in Tegami Mail"
 msgstr ""
 
 msgid "From GNOME Online Accounts"
@@ -3507,7 +3507,7 @@ msgstr ""
 
 msgid ""
 "Where contacts come from for Contacts, suggestions, sender pictures and "
-"filters. Switching one off leaves it out of Hylki."
+"filters. Switching one off leaves it out of Tegami Mail."
 msgstr ""
 
 msgid "Look again for address books"
@@ -3558,7 +3558,7 @@ msgstr ""
 msgid "Looking for address books on {name}…"
 msgstr ""
 
-msgid "Hylki, on this computer"
+msgid "Tegami Mail, on this computer"
 msgstr ""
 
 msgid "Edit Group"
@@ -3592,7 +3592,7 @@ msgid "Rename Address Book"
 msgstr ""
 
 msgid ""
-"The name is used in Hylki only; GNOME Contacts and Evolution keep the book's "
+"The name is used in Tegami Mail only; GNOME Contacts and Evolution keep the book's "
 "own."
 msgstr ""
 
@@ -3669,7 +3669,7 @@ msgstr ""
 msgid "Changed in the app it came from"
 msgstr ""
 
-msgid "This group names its members by contact, which Hylki does not edit."
+msgid "This group names its members by contact, which Tegami Mail does not edit."
 msgstr ""
 
 msgid ""
@@ -3935,7 +3935,7 @@ msgid_plural "This will remove {n} contacts from your address books."
 msgstr[0] ""
 msgstr[1] ""
 
-msgid "Import vCard files into the Hylki address book"
+msgid "Import vCard files into the Tegami Mail address book"
 msgstr ""
 
 msgid "New contact or group"
@@ -3946,7 +3946,7 @@ msgstr ""
 
 msgid ""
 "Add a contact with the + button, or import vCard files. Contacts are kept in "
-"Hylki's own address book, and the address books of GNOME Contacts are listed "
+"Tegami Mail's own address book, and the address books of GNOME Contacts are listed "
 "here too."
 msgstr ""
 
@@ -5377,7 +5377,7 @@ msgstr ""
 msgid "Choose…"
 msgstr ""
 
-msgid "Also play while Hylki is in front"
+msgid "Also play while Tegami Mail is in front"
 msgstr ""
 
 msgid "Notification Buttons"
@@ -5476,7 +5476,7 @@ msgstr ""
 msgid "Restore Defaults"
 msgstr ""
 
-msgid "Hylki collects no telemetry and sends no analytics."
+msgid "Tegami Mail collects no telemetry and sends no analytics."
 msgstr ""
 
 msgid "Always load remote content"
@@ -5973,7 +5973,7 @@ msgstr ""
 msgid "Messages"
 msgstr ""
 
-msgid "Hylki's language ({language})"
+msgid "Tegami Mail's language ({language})"
 msgstr ""
 
 msgid "Offer to translate"
@@ -6044,7 +6044,7 @@ msgid "Language"
 msgstr ""
 
 msgid ""
-"Choosing another language restarts Hylki: it closes for a moment and this "
+"Choosing another language restarts Tegami Mail: it closes for a moment and this "
 "wizard comes back in that language."
 msgstr ""
 
@@ -6073,7 +6073,7 @@ msgid "Privacy, your way"
 msgstr ""
 
 msgid ""
-"Hylki sends no telemetry, ever. These control what leaves your machine while "
+"Tegami Mail sends no telemetry, ever. These control what leaves your machine while "
 "you read."
 msgstr ""
 
@@ -6135,7 +6135,7 @@ msgid ""
 "please open an issue on our <a href=\"{url}\">Github</a>."
 msgstr ""
 
-msgid "Welcome to Hylki"
+msgid "Welcome to Tegami Mail"
 msgstr ""
 
 msgid "Add your email account"
@@ -6183,7 +6183,7 @@ msgid ""
 msgstr ""
 
 msgid ""
-"Could not read the password for {email} from the keyring ({e}). Hylki tries "
+"Could not read the password for {email} from the keyring ({e}). Tegami Mail tries "
 "again at the next connection."
 msgstr ""
 
@@ -6291,7 +6291,7 @@ msgid "Connection failed: {e}"
 msgstr ""
 
 msgid ""
-"This account has no IMAP server. Hylki can't use Exchange accounts from "
+"This account has no IMAP server. Tegami Mail can't use Exchange accounts from "
 "Online Accounts: remove it and add it as an IMAP or Microsoft 365 account."
 msgstr ""
 
@@ -6317,7 +6317,7 @@ msgid "Could not change the star: {e}"
 msgstr ""
 
 msgid ""
-"This server does not store tags, so Hylki keeps them on this computer only"
+"This server does not store tags, so Tegami Mail keeps them on this computer only"
 msgstr ""
 
 msgid "Could not tag message: {e}"
@@ -6327,7 +6327,7 @@ msgid "Could not mark folder read: {e}"
 msgstr ""
 
 msgid ""
-"Gmail keeps a copy of every message in All Mail, so Hylki cannot remove an "
+"Gmail keeps a copy of every message in All Mail, so Tegami Mail cannot remove an "
 "attachment there"
 msgstr ""
 
@@ -6503,7 +6503,7 @@ msgstr ""
 msgid "GNOME Online Account"
 msgstr ""
 
-msgid "Show in Hylki"
+msgid "Show in Tegami Mail"
 msgstr ""
 
 msgid "Off returns it to the import list. It stays in GNOME Online Accounts."
@@ -7233,7 +7233,7 @@ msgid "GNOME Files Integration"
 msgstr ""
 
 msgid ""
-"Adds “Send with Hylki” to the right-click menu in Files. Needs the nautilus-"
+"Adds “Send with Tegami Mail” to the right-click menu in Files. Needs the nautilus-"
 "python package and a restart of Files."
 msgstr ""
 
@@ -7252,7 +7252,7 @@ msgstr ""
 msgid "Restart"
 msgstr ""
 
-msgid "Default Send with Hylki behavior"
+msgid "Default Send with Tegami Mail behavior"
 msgstr ""
 
 msgid "Default large attachments behavior"
@@ -7318,7 +7318,7 @@ msgid "Email;Mail;IMAP;"
 msgstr ""
 
 msgid ""
-"Hylki is a desktop email client for GNOME on Wayland, written in Rust with "
+"Tegami Mail is a desktop email client for GNOME on Wayland, written in Rust with "
 "libadwaita. Your mail and credentials stay on your machine, remote content "
 "is blocked until you allow it, and there is no telemetry. It works with "
 "IMAP, POP3, JMAP and Microsoft 365, and with any server from iCloud to "
@@ -7361,7 +7361,7 @@ msgstr ""
 
 msgid ""
 "Large files uploaded to your own Nextcloud, OneDrive, Dropbox or Seafile; a "
-"Send with Hylki entry in GNOME Files"
+"Send with Tegami Mail entry in GNOME Files"
 msgstr ""
 
 msgid "Reading:"

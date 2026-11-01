@@ -57,11 +57,11 @@ pub(super) fn connect(
     ucm: &webkit6::UserContentManager,
     state: &GrammarState,
 ) {
-    ucm.register_script_message_handler("hylkiGrammar", None);
-    ucm.register_script_message_handler("hylkiGrammarHit", None);
+    ucm.register_script_message_handler("tegamiGrammar", None);
+    ucm.register_script_message_handler("tegamiGrammarHit", None);
     {
         let (weak, state) = (webview.downgrade(), state.clone());
-        ucm.connect_script_message_received(Some("hylkiGrammar"), move |_, value| {
+        ucm.connect_script_message_received(Some("tegamiGrammar"), move |_, value| {
             let Ok(req) = serde_json::from_str::<Request>(&value.to_str()) else {
                 return;
             };
@@ -70,7 +70,7 @@ pub(super) fn connect(
     }
     {
         let state = state.clone();
-        ucm.connect_script_message_received(Some("hylkiGrammarHit"), move |_, value| {
+        ucm.connect_script_message_received(Some("tegamiGrammarHit"), move |_, value| {
             *state.hit.borrow_mut() = serde_json::from_str::<Option<Hit>>(&value.to_str())
                 .ok()
                 .flatten()
@@ -85,7 +85,7 @@ pub(super) fn connect(
     });
 }
 
-const SWITCH_ON: &str = "window.__hylkiGrammarOn && window.__hylkiGrammarOn()";
+const SWITCH_ON: &str = "window.__tegamiGrammarOn && window.__tegamiGrammarOn()";
 
 /// Start checking the text of this editor.
 pub(super) fn switch_on(webview: &webkit6::WebView, state: &GrammarState) {
@@ -108,7 +108,7 @@ pub(super) fn pause(webview: &webkit6::WebView, state: &GrammarState, on: bool) 
     }
     exec(
         webview,
-        "window.__hylkiGrammarClear && window.__hylkiGrammarClear()",
+        "window.__tegamiGrammarClear && window.__tegamiGrammarClear()",
     );
     if !on && state.on.get() {
         exec(webview, SWITCH_ON);
@@ -194,7 +194,7 @@ fn show(weak: &gtk::glib::WeakRef<webkit6::WebView>, seq: u64, issues: &str) {
     if let Some(v) = weak.upgrade() {
         exec(
             &v,
-            &format!("window.__hylkiGrammarShow && window.__hylkiGrammarShow({seq},{issues})"),
+            &format!("window.__tegamiGrammarShow && window.__tegamiGrammarShow({seq},{issues})"),
         );
     }
 }
@@ -235,7 +235,7 @@ pub(super) fn lead_menu(
         if let Some(why) = state.error.borrow().as_ref() {
             if grammar::load().active() {
                 put(note(
-                    "hylki-grammar-error",
+                    "tegami-grammar-error",
                     &i18n_f("Grammar check failed: {error}", &[("error", why)]),
                 ));
                 put(webkit6::ContextMenuItem::new_separator());
@@ -243,15 +243,15 @@ pub(super) fn lead_menu(
         }
         return at;
     };
-    put(note("hylki-grammar-note", &shorten(&hit.message)));
+    put(note("tegami-grammar-note", &shorten(&hit.message)));
     if hit.replacements.is_empty() {
-        put(note("hylki-grammar-none", &i18n("No suggestions")));
+        put(note("tegami-grammar-none", &i18n("No suggestions")));
     }
     for (i, rep) in hit.replacements.iter().enumerate() {
-        let action = gtk::gio::SimpleAction::new(&format!("hylki-grammar-fix-{i}"), None);
+        let action = gtk::gio::SimpleAction::new(&format!("tegami-grammar-fix-{i}"), None);
         let v = view.downgrade();
         let js = format!(
-            "window.__hylkiGrammarFix({},{})",
+            "window.__tegamiGrammarFix({},{})",
             hit.id,
             serde_json::to_string(rep).unwrap_or_else(|_| "''".into())
         );
@@ -269,7 +269,7 @@ pub(super) fn lead_menu(
             &action, &label, None,
         ));
     }
-    let action = gtk::gio::SimpleAction::new("hylki-grammar-ignore", None);
+    let action = gtk::gio::SimpleAction::new("tegami-grammar-ignore", None);
     let v = view.downgrade();
     let (rule, text) = (hit.rule.clone(), hit.text.clone());
     action.connect_activate(move |_, _| {
@@ -279,7 +279,7 @@ pub(super) fn lead_menu(
                 serde_json::to_string(&rule).unwrap_or_default(),
                 serde_json::to_string(&text).unwrap_or_default(),
             );
-            exec(&v, &format!("window.__hylkiGrammarIgnore({r},{t})"));
+            exec(&v, &format!("window.__tegamiGrammarIgnore({r},{t})"));
         }
     });
     put(webkit6::ContextMenuItem::from_gaction(

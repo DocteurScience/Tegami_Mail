@@ -1,4 +1,4 @@
-//! Opening a link outside Hylki. The road out differs by host and every
+//! Opening a link outside Tegami Mail. The road out differs by host and every
 //! road has been seen to fail without a word, so each attempt has a fallback
 //! and the last one says what happened instead of leaving a click that does
 //! nothing (#202).
@@ -56,7 +56,7 @@ pub(super) struct Browser {
 }
 
 /// The browsers this process can actually launch — the desktop entries
-/// registered for `https`, minus Hylki itself.
+/// registered for `https`, minus Tegami Mail itself.
 ///
 /// Inside the Flatpak sandbox this is empty: the host's desktop entries are
 /// not visible there, and nothing in them could be run from inside anyway.
@@ -232,7 +232,7 @@ pub(super) fn portal_request(
     };
     let token = crate::rng::nonce(16)
         .map(|t| t.replace('-', "_"))
-        .unwrap_or_else(|_| format!("hylki{}", std::process::id()));
+        .unwrap_or_else(|_| format!("tegami{}", std::process::id()));
     let sender_token = conn
         .unique_name()
         .map(|n| n.trim_start_matches(':').replace('.', "_"))

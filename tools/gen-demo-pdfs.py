@@ -70,7 +70,7 @@ def pdf(page, title):
         b"<< /Length %d >>\nstream\n" % len(content) + content + b"\nendstream",
         b"<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>",
         b"<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>",
-        f"<< /Title ({title}) /Producer (Hylki demo) >>".encode(),
+        f"<< /Title ({title}) /Producer (Tegami Mail demo) >>".encode(),
     ]
     out = bytearray(b"%PDF-1.4\n")
     offs = []

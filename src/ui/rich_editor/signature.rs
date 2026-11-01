@@ -209,7 +209,7 @@ mod signature_tests {
     /// A local image next to the file is embedded; a remote one is left alone.
     #[test]
     fn local_images_are_embedded_and_remote_ones_kept() {
-        let dir = std::env::temp_dir().join(format!("hylki-sig-test-{}", std::process::id()));
+        let dir = std::env::temp_dir().join(format!("tegami-sig-test-{}", std::process::id()));
         std::fs::create_dir_all(&dir).unwrap();
         std::fs::write(dir.join("logo.png"), [0x89, b'P', b'N', b'G']).unwrap();
         let src = "<p><img src=\"logo.png\" width=\"80\"> <img src='https://x.example/a.png'>\

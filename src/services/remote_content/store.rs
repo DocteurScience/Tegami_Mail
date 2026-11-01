@@ -1,5 +1,5 @@
 //! The disk side of the remote-content cache: one file per URL under
-//! `~/.cache/hylki/remote`, named by the URL's SHA-256, holding the content
+//! `~/.cache/tegami/remote`, named by the URL's SHA-256, holding the content
 //! type on its first line and the bytes after it.
 //!
 //! An entry is used for a week from its fetch, then fetched again; pictures
@@ -161,7 +161,7 @@ mod tests {
     use super::*;
 
     fn temp_dir(name: &str) -> PathBuf {
-        let d = std::env::temp_dir().join(format!("hylki-remote-{name}-{}", std::process::id()));
+        let d = std::env::temp_dir().join(format!("tegami-remote-{name}-{}", std::process::id()));
         let _ = std::fs::remove_dir_all(&d);
         d
     }

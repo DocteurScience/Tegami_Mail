@@ -1,13 +1,13 @@
 //! Dates and times in the format the system asks for (#32).
 //!
-//! Hylki's UI is English, but a date is not English: someone whose desktop is set
+//! Tegami Mail's UI is English, but a date is not English: someone whose desktop is set
 //! to German expects 23.08.2026 and 14:03, not 08/23/2026 and 2:03 PM. Chrono
 //! formats dates by pattern only — it has no notion of a locale — so the patterns
 //! it was given were hard-coded American, whatever the machine was set to.
 //!
 //! GLib does know: `g_date_time_format` reads `LC_TIME`, so `%x` is the locale's
 //! own date, `%b` its month names, and `%p` empty wherever the clock is 24-hour.
-//! Those three are all it takes to follow the system while keeping Hylki's own
+//! Those three are all it takes to follow the system while keeping Tegami Mail's own
 //! layout — the list still shows "23. Aug, 14:03" where it showed "Aug 23, 2:03
 //! PM", rather than surrendering the arrangement to `%c`.
 //!
@@ -88,7 +88,7 @@ fn system_day_first() -> bool {
 fn day_first_from_probe(probe: &str) -> bool {
     match (probe.find("25"), probe.find("12")) {
         (Some(day), Some(month)) => day < month,
-        // No recognisable date: keep the arrangement Hylki has always used.
+        // No recognisable date: keep the arrangement Tegami Mail has always used.
         _ => false,
     }
 }
@@ -239,7 +239,7 @@ pub(crate) fn day_month(ts: i64) -> String {
 
 /// Day, month and year: "Aug 23, 2026" or "23. Aug 2026".
 ///
-/// Hylki's own arrangement, with the locale's field order and month names rather
+/// Tegami Mail's own arrangement, with the locale's field order and month names rather
 /// than the locale's written date (`%x`, which is all digits). A date is read at
 /// a glance in a list of mail, and "Aug 23" is quicker to place than "08/23" —
 /// the point of #32 was that the *order* and the *clock* were American, not that
@@ -369,13 +369,13 @@ pub(crate) fn day_starts(now: i64) -> [i64; 4] {
 }
 
 /// Now, as a timestamp. The demo's mail is dated in October 2025; a
-/// showcase can set the clock it is read against with `HYLKI_DEMO_NOW`
+/// showcase can set the clock it is read against with `TEGAMI_DEMO_NOW`
 /// (Unix seconds).
 pub(crate) fn now() -> i64 {
     static DEMO_NOW: std::sync::OnceLock<Option<i64>> = std::sync::OnceLock::new();
     let demo = DEMO_NOW.get_or_init(|| {
-        std::env::var_os("HYLKI_DEMO")?;
-        std::env::var("HYLKI_DEMO_NOW").ok()?.parse().ok()
+        std::env::var_os("TEGAMI_DEMO")?;
+        std::env::var("TEGAMI_DEMO_NOW").ok()?.parse().ok()
     });
     if let Some(ts) = demo {
         return *ts;
@@ -440,7 +440,7 @@ mod tests {
         assert!(day_first_from_probe("25/12/26"));
         assert!(!day_first_from_probe("12/25/2026"));
         assert!(!day_first_from_probe("2026-12-25"));
-        // Nothing recognisable: keep Hylki's own arrangement rather than guess.
+        // Nothing recognisable: keep Tegami Mail's own arrangement rather than guess.
         assert!(!day_first_from_probe(""));
         assert!(!day_first_from_probe("Freitag"));
     }

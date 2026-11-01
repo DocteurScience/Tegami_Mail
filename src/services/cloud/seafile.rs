@@ -151,7 +151,7 @@ fn seafile_library(account: &CloudAccount, token: &str) -> Result<String, String
     let v: serde_json::Value = ureq::post(&format!("{base}/api2/repos/"))
         .set("Authorization", &seafile_auth(token))
         .timeout(Duration::from_secs(60))
-        .send_form(&[("name", want.as_str()), ("desc", "Files shared from Hylki")])
+        .send_form(&[("name", want.as_str()), ("desc", "Files shared from Tegami Mail")])
         .map_err(|e| seafile_err("Could not create the library", e))?
         .into_json()
         .map_err(|e| format!("Could not read the new library's answer: {e}"))?;
@@ -170,7 +170,7 @@ fn multipart_upload<R: Read>(
     size: u64,
 ) -> Result<(String, u64, impl Read), String> {
     let boundary = format!(
-        "----HylkiUpload{}",
+        "----TegamiUpload{}",
         crate::rng::token(24).map_err(|e| e.to_string())?
     );
     let mut head = String::new();
@@ -406,7 +406,7 @@ mod tests {
 
     #[test]
     fn multipart_body_has_the_right_length() {
-        let dir = std::env::temp_dir().join(format!("hylki-mp-{}", std::process::id()));
+        let dir = std::env::temp_dir().join(format!("tegami-mp-{}", std::process::id()));
         std::fs::write(&dir, b"hello").unwrap();
         let f = std::fs::File::open(&dir).unwrap();
         let (ctype, len, mut body) = multipart_upload(

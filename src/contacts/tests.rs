@@ -108,7 +108,7 @@ struct ConfineFixture {
 
 impl ConfineFixture {
     fn new(n: u32) -> Self {
-        let base = std::env::temp_dir().join(format!("hylki-confine-{}-{n}", std::process::id()));
+        let base = std::env::temp_dir().join(format!("tegami-confine-{}-{n}", std::process::id()));
         std::fs::create_dir_all(base.join("root")).unwrap();
         std::fs::create_dir_all(base.join("outside")).unwrap();
         std::fs::write(base.join("root/photo.png"), b"in").unwrap();
@@ -280,30 +280,30 @@ fn the_chosen_book_comes_first() {
         name: uid.into(),
         groups: None,
     };
-    let mut books = vec![book("a"), book("b"), book("hylki-local")];
-    prefer_book(&mut books, "hylki-local");
+    let mut books = vec![book("a"), book("b"), book("tegami-local")];
+    prefer_book(&mut books, "tegami-local");
     assert_eq!(
         books.iter().map(|b| b.uid.as_str()).collect::<Vec<_>>(),
-        ["hylki-local", "a", "b"]
+        ["tegami-local", "a", "b"]
     );
     prefer_book(&mut books, "gone");
     prefer_book(&mut books, "");
-    assert_eq!(books[0].uid, "hylki-local");
+    assert_eq!(books[0].uid, "tegami-local");
 }
 
 #[test]
 fn only_the_reserved_uid_is_local() {
-    assert!(is_local_book("hylki-local"));
+    assert!(is_local_book("tegami-local"));
     assert!(!is_local_book("system-address-book"));
 }
 
 #[test]
 fn local_details_carry_the_book_and_the_raw_vcard() {
     let v = card("Ann", "ann@x.org");
-    let out = details_from_local_vcards(vec![v.clone()], "Hylki");
+    let out = details_from_local_vcards(vec![v.clone()], "Tegami Mail");
     assert_eq!(out.len(), 1);
-    assert_eq!(out[0].book_uid, "hylki-local");
-    assert_eq!(out[0].book_name, "Hylki");
+    assert_eq!(out[0].book_uid, "tegami-local");
+    assert_eq!(out[0].book_name, "Tegami Mail");
     assert_eq!(out[0].eds_uid, "Ann");
     assert_eq!(out[0].raw_vcard, v);
 }
@@ -312,8 +312,8 @@ fn local_details_carry_the_book_and_the_raw_vcard() {
 fn same_email_in_two_books_is_kept_per_book() {
     // The EDS reader de-duplicates among EDS books by first email; the
     // local list is built on its own, so a shared address is not dropped.
-    let a = details_from_local_vcards(vec![card("Ann", "same@x.org")], "Hylki");
-    let b = details_from_local_vcards(vec![card("Ann", "same@x.org")], "Hylki");
+    let a = details_from_local_vcards(vec![card("Ann", "same@x.org")], "Tegami Mail");
+    let b = details_from_local_vcards(vec![card("Ann", "same@x.org")], "Tegami Mail");
     assert_eq!(a[0].primary_email(), b[0].primary_email());
     assert_eq!(a.len() + b.len(), 2);
 }
@@ -424,7 +424,7 @@ fn a_card_with_no_name_or_address_is_still_a_contact() {
 }
 
 #[test]
-fn an_account_named_in_hylki_names_its_books_account() {
+fn an_account_named_in_tegami_names_its_books_account() {
     let work = "Work".to_string();
     assert_eq!(
         super::with_account_name("CardDAV — a@b.org · card", Some(&work)),
@@ -454,7 +454,7 @@ fn an_account_named_in_hylki_names_its_books_account() {
 }
 
 #[test]
-fn a_book_named_in_hylki_keeps_its_account() {
+fn a_book_named_in_tegami_keeps_its_account() {
     let given = "Family".to_string();
     assert_eq!(
         super::with_given_name("CardDAV — a@b.org · card", Some(&given)),
@@ -465,7 +465,7 @@ fn a_book_named_in_hylki_keeps_its_account() {
         "CardDAV — Work · Family"
     );
     assert_eq!(
-        super::with_given_name("Hylki Address Book", Some(&given)),
+        super::with_given_name("Tegami Mail Address Book", Some(&given)),
         "Family"
     );
     assert_eq!(

@@ -93,7 +93,7 @@ pub(super) fn build_widgets() -> RowWidgets {
     star.add_css_class("star-icon");
     top.append(&star);
     // Sent mail's read receipt (#520), beside the date it was sent.
-    let receipt = gtk::Image::from_icon_name("hylki-read-receipt-symbolic");
+    let receipt = gtk::Image::from_icon_name("tegami-read-receipt-symbolic");
     receipt.set_visible(false);
     top.append(&receipt);
     let date = gtk::Label::new(None);

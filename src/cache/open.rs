@@ -126,7 +126,7 @@ impl Cache {
         Ok(Cache { conn })
     }
 
-    /// Open (creating if needed) the cache DB at `~/.local/share/hylki/cache.db`.
+    /// Open (creating if needed) the cache DB at `~/.local/share/tegami/cache.db`.
     pub(crate) fn open() -> rusqlite::Result<Cache> {
         // No `temp_dir` fallback: this database holds message bodies, attachment
         // bytes and the harvested address book, and a shared world-writable
@@ -138,7 +138,7 @@ impl Cache {
                     "no XDG data directory for the mail cache",
                 ))
             })?
-            .join("hylki");
+            .join("tegami");
         let _ = std::fs::create_dir_all(&path);
         restrict(&path, 0o700);
         Self::open_at(&path.join("cache.db"))

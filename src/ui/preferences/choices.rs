@@ -5,7 +5,7 @@ use super::*;
 
 /// App-chrome appearance options, in combo order.
 pub(super) const TRAY_ICONS: &[(&str, TrayIcon)] = &[
-    (i18n_noop("App icon"), TrayIcon::Hylki),
+    (i18n_noop("App icon"), TrayIcon::Tegami Mail),
     (i18n_noop("Symbolic"), TrayIcon::Symbolic),
 ];
 
@@ -538,7 +538,7 @@ mod tests {
     #[test]
     fn choice_tables_keep_their_order() {
         let tray: Vec<_> = TRAY_ICONS.iter().map(|(_, v)| *v).collect();
-        assert_eq!(tray, [TrayIcon::Hylki, TrayIcon::Symbolic]);
+        assert_eq!(tray, [TrayIcon::Tegami Mail, TrayIcon::Symbolic]);
         let badges: Vec<_> = LAUNCHER_BADGES.iter().map(|(_, v)| *v).collect();
         assert_eq!(
             badges,

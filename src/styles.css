@@ -1,4 +1,4 @@
-/* Hylki — clean, calm styling layered on top of libadwaita defaults. */
+/* Tegami Mail — clean, calm styling layered on top of libadwaita defaults. */
 
 .app-title {
   font-weight: 700;
@@ -309,7 +309,7 @@ headerbar.rail-header {
   padding: 14px 12px;
 }
 
-/* Badge marking where an account comes from (GNOME Online Accounts vs Hylki). */
+/* Badge marking where an account comes from (GNOME Online Accounts vs Tegami Mail). */
 .account-source-badge {
   font-size: 0.72em;
   font-weight: 700;
@@ -525,7 +525,7 @@ flowbox.attach-flow > flowboxchild {
 /* The entry a menu is currently set to. `color` is inherited, so one class
    on the row carries both the label and the symbolic icon beside it, and
    `@accent_color` is libadwaita's legible-on-a-normal-background accent —
-   the desktop's under the stock look, the palette's under a Hylki theme. */
+   the desktop's under the stock look, the palette's under a Tegami Mail theme. */
 .context-menu-selected,
 .context-menu-selected label {
   color: @accent_color;
@@ -541,7 +541,7 @@ flowbox.attach-flow > flowboxchild {
   background-color: alpha(currentColor, 0.13);
 }
 /* On, the shield and the lock take the accent color (the desktop's under
-   the stock look, the palette's under a Hylki theme), in the menu and in
+   the stock look, the palette's under a Tegami Mail theme), in the menu and in
    the header, so a message about to go out signed or encrypted is plain to
    see. */
 .context-menu-item:checked image,
@@ -2501,18 +2501,18 @@ textview.console-view text selection {
 /* Message zoom chip on the reader header's account line: shown only away
    from the default, and a click goes back there, so it answers the pointer
    like a button. */
-.hylki-zoom-chip {
+.tegami-zoom-chip {
   padding: 1px 8px;
   border-radius: 99px;
   background: alpha(currentColor, 0.1);
   font-weight: 600;
   transition: background 150ms ease-out, color 150ms ease-out;
 }
-.hylki-zoom-chip:hover {
+.tegami-zoom-chip:hover {
   background: alpha(@accent_bg_color, 0.2);
   color: @accent_color;
 }
-.hylki-zoom-chip:active {
+.tegami-zoom-chip:active {
   background: alpha(@accent_bg_color, 0.35);
 }
 

@@ -154,7 +154,7 @@ pub(crate) struct AccountsWindow {
     /// The email value the label field currently mirrors, so the label auto-fills
     /// from the email until the user customizes it.
     label_synced: String,
-    /// GNOME Online Accounts mail accounts available to import (not yet in Hylki).
+    /// GNOME Online Accounts mail accounts available to import (not yet in Tegami Mail).
     goa: Vec<crate::services::goa::GoaMailAccount>,
     /// Refresh token captured from a successful OAuth sign-in, applied on save.
     pending_oauth_refresh: Option<String>,

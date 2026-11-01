@@ -1,13 +1,13 @@
 //! LDAP directories (#307), kept by Evolution Data Server.
 //!
 //! A directory is an EDS address book with the `ldap` backend, the same kind
-//! Evolution makes, so one set up in either app shows in both and Hylki
+//! Evolution makes, so one set up in either app shows in both and Tegami Mail
 //! carries no LDAP client of its own. The composer asks the directories as a
 //! recipient is typed; nothing is copied down.
 //!
 //! EDS keeps a directory's password in the keyring only when a desktop
 //! client that can prompt for it put it there, as Evolution does; EDS then
-//! signs in with it on its own. Hylki keeps its own copy under `ldap:<uid>`
+//! signs in with it on its own. Tegami Mail keeps its own copy under `ldap:<uid>`
 //! for the directories it set up, and hands it over whenever EDS says the
 //! directory wants one.
 
@@ -113,7 +113,7 @@ pub(crate) struct Directory {
     pub(crate) enabled: bool,
     /// The registry's object for the source, for writing and removing it.
     path: String,
-    /// The source as EDS keeps it, so saving keeps the keys Hylki does not
+    /// The source as EDS keeps it, so saving keeps the keys Tegami Mail does not
     /// show (Evolution's own, such as the search filter and offline copy).
     data: String,
 }
@@ -158,7 +158,7 @@ impl Directory {
         if get("Address Book", "BackendName") != "ldap" {
             return None;
         }
-        // EDS keeps the encryption in the Security extension. Hylki used to
+        // EDS keeps the encryption in the Security extension. Tegami Mail used to
         // write it under a key EDS never reads, so a directory saved then
         // still holds what the user chose there (#307).
         let mut method = get("Security", "Method");
@@ -190,7 +190,7 @@ impl Directory {
         })
     }
 
-    /// Saved by Hylki before 1.44, with its encryption only under a key EDS
+    /// Saved by Tegami Mail before 1.44, with its encryption only under a key EDS
     /// never read, so EDS has been connecting without any (#307).
     fn wants_security_moved(&self) -> bool {
         crate::desktop::platform::keyfile(&self.data).is_some_and(|kf| {
@@ -314,7 +314,7 @@ pub(crate) fn remove(dir: &Directory) -> Result<(), String> {
     Ok(())
 }
 
-/// Whether Hylki holds a password for the directory.
+/// Whether Tegami Mail holds a password for the directory.
 pub(crate) fn has_password(dir: &Directory) -> bool {
     crate::config::load_cloud_password(&dir.keyring_key()).is_some()
 }
@@ -416,7 +416,7 @@ fn connect_error(dir: &Directory, last: &LastCredentials, fallback: String) -> S
     let detail = last.message.trim();
     let server = format!("{}:{}", dir.host.trim(), dir.port);
     match last.reason.as_str() {
-        // Still waiting for a password: neither Hylki nor the keyring EDS
+        // Still waiting for a password: neither Tegami Mail nor the keyring EDS
         // reads has one for it.
         "required" if !dir.bind_dn.trim().is_empty() => needs_password(),
         "required" => i18n("The directory cannot be searched without signing in. Add a sign-in to it in Settings → Contacts."),
@@ -494,7 +494,7 @@ fn query_directory(dir: &Directory, query: &str) -> Result<Vec<String>, String> 
         ("required" | "rejected" | "ssl_failed" | "error", Some(pw)) => {
             authenticate(&conn, dir, &pw)?
         }
-        // No password of Hylki's, as for a directory set up in Evolution:
+        // No password of Tegami Mail's, as for a directory set up in Evolution:
         // "required" is what the backend records as it opens, and EDS then
         // signs in by itself with the password Evolution stored (#307).
         // Anything else is an answer already.
@@ -565,13 +565,13 @@ const RETRY_AFTER: Duration = Duration::from_secs(30);
 
 static LIST_STALE: AtomicBool = AtomicBool::new(false);
 
-/// Hylki changed a directory: read the list again at the next lookup.
+/// Tegami Mail changed a directory: read the list again at the next lookup.
 pub(crate) fn list_changed() {
     LIST_STALE.store(true, Ordering::Relaxed);
 }
 
 /// The directories that are switched on, read again once [`LIST_FRESH`] has
-/// passed or Hylki changed one.
+/// passed or Tegami Mail changed one.
 fn enabled() -> Vec<Directory> {
     static CACHE: Mutex<Option<(Instant, Vec<Directory>)>> = Mutex::new(None);
     let stale = LIST_STALE.swap(false, Ordering::Relaxed);
@@ -804,7 +804,7 @@ pub(crate) fn search_contacts(
             c.photo = crate::contacts::vcard_photo_with(&card, false);
             c.book_uid = dir.uid.clone();
             c.book_name = dir.title();
-            // Not an entry Hylki can change or delete.
+            // Not an entry Tegami Mail can change or delete.
             c.eds_uid = String::new();
             c.raw_vcard = card;
             entries.push(c);
@@ -819,7 +819,7 @@ pub(crate) fn search_contacts(
 
 /// Check a saved directory answers, signing in as it would for a search.
 pub(crate) fn check(dir: &Directory) -> Result<(), String> {
-    let r = query_directory(dir, "(is \"email\" \"hylki-check@invalid\")").map(|_| ());
+    let r = query_directory(dir, "(is \"email\" \"tegami-check@invalid\")").map(|_| ());
     match &r {
         Ok(()) => {
             note_answer(&dir.uid);

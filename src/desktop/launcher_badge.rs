@@ -12,7 +12,7 @@ use std::sync::{Mutex, OnceLock};
 use zbus::zvariant::Value;
 
 const IFACE: &str = "com.canonical.Unity.LauncherEntry";
-const PATH: &str = "/co/hyprlab/Hylki/LauncherEntry";
+const PATH: &str = "/io/github/DocteurScience/TegamiMail/LauncherEntry";
 
 /// One connection for the life of the process: Plasma and Dash to Dock
 /// drop a badge when the connection that set it goes away, so a connection

@@ -216,7 +216,7 @@ fn push_css(b: &[u8], start: usize, end: usize, spans: &mut Vec<(usize, usize)>)
 /// Whether a URL reaches a remote host.
 ///
 /// `data:` and `cid:` carry their own bytes, and a path-relative or root-relative
-/// URL resolves against `hylki.localhost`, which serves nothing. A
+/// URL resolves against `tegami.localhost`, which serves nothing. A
 /// protocol-relative `//host/x` does reach the network — that one is the bypass
 /// the old substring list missed.
 pub(super) fn is_remote_url(u: &[u8]) -> bool {
@@ -282,7 +282,7 @@ pub(super) fn has_remote_resources(html: &str) -> bool {
 }
 
 /// Send every remote fetch in `html` through the app's own cache (#474):
-/// `https://host/x` becomes `hylki-https://host/x`, which the web context
+/// `https://host/x` becomes `tegami-https://host/x`, which the web context
 /// hands to [`crate::services::remote_content`]. The original scheme is kept in
 /// the new one's name, so a relative URL inside a fetched stylesheet still
 /// resolves on the right host. Only for mail whose remote content is allowed;

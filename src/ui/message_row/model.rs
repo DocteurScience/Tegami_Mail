@@ -1,5 +1,5 @@
-//! The list's GObject model: `RowItem` ("HylkiRowItem") holds one row's
-//! data, and `MessageModel` ("HylkiMessageModel") is the ListModel and
+//! The list's GObject model: `RowItem` ("TegamiRowItem") holds one row's
+//! data, and `MessageModel` ("TegamiMessageModel") is the ListModel and
 //! SectionModel the ListView shows, updated by diffing rows rather than
 //! replacing them. A hot path: the diff and the swap thresholds are tuned.
 
@@ -44,7 +44,7 @@ mod item_imp {
 
     #[glib::object_subclass]
     impl ObjectSubclass for RowItem {
-        const NAME: &'static str = "HylkiRowItem";
+        const NAME: &'static str = "TegamiRowItem";
         type Type = super::RowItem;
     }
 
@@ -125,7 +125,7 @@ mod model_imp {
 
     #[glib::object_subclass]
     impl ObjectSubclass for MessageModel {
-        const NAME: &'static str = "HylkiMessageModel";
+        const NAME: &'static str = "TegamiMessageModel";
         type Type = super::MessageModel;
         type Interfaces = (gio::ListModel, gtk::SectionModel);
     }

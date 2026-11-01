@@ -2,7 +2,7 @@
 # Keep AI tool attribution, and the writing that comes with it, out of the
 # history (#230), and keep the log readable at a glance (#277).
 #
-# The README's AI notice declares how Hylki is built, once, for the whole
+# The README's AI notice declares how Tegami Mail is built, once, for the whole
 # repository; a trailer repeating it on every commit only makes the log harder
 # to read and attributes the work to a tool rather than to the maintainer.
 # A Co-Authored-By line for a person is fine, and is how contributors are

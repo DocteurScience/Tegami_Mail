@@ -122,7 +122,7 @@ pub(crate) enum GalleryInput {
     Removed(FileKey),
     /// The fade is over: take the item away.
     RemoveNow(FileKey),
-    /// Showcase only (HYLKI_SHOWCASE_DELETE_ATTACHMENT=gallery:<name>):
+    /// Showcase only (TEGAMI_SHOWCASE_DELETE_ATTACHMENT=gallery:<name>):
     /// Delete from Server… on the first file of that name.
     ShowcaseDelete(String),
     /// A cell was double-clicked: open it externally, closing any preview.
@@ -136,10 +136,10 @@ pub(crate) enum GalleryInput {
     /// A lightbox-size PDF render finished (keyed by content hash) — show it
     /// if that PDF is still the one being previewed.
     PreviewRendered(u64),
-    /// Showcase only (HYLKI_SHOWCASE_GALLERY_FOLDERS): drop the footer's
+    /// Showcase only (TEGAMI_SHOWCASE_GALLERY_FOLDERS): drop the footer's
     /// folder popover open so a capture can see it.
     ShowcaseFolders,
-    /// Showcase only (HYLKI_SHOWCASE_GALLERY_SEARCH): focus the search box and
+    /// Showcase only (TEGAMI_SHOWCASE_GALLERY_SEARCH): focus the search box and
     /// put text in it, as typing would, then report whether the box still has
     /// the focus once the search has run. Guards the bug where a search that
     /// matched nothing hid the toolbar the box lives in.

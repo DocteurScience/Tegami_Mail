@@ -11,14 +11,14 @@ use super::registry::registry_books;
 use super::vcard::{vcard_photo, vcard_photo_with};
 
 /// Photo bytes and the EDS database state they came from. The inexpensive
-/// fingerprint check lets a long-running Hylki notice CardDAV synchronizations
+/// fingerprint check lets a long-running Tegami Mail notice CardDAV synchronizations
 /// without subscribing to backend-specific EDS signals.
 #[derive(Clone)]
 struct PhotoLocation {
     db: PathBuf,
     uid: String,
     cached_book: bool,
-    /// The photo lives in the local Hylki book (`db` is unused).
+    /// The photo lives in the local Tegami Mail book (`db` is unused).
     local: bool,
 }
 
@@ -207,7 +207,7 @@ fn photo_db_paths() -> Vec<PathBuf> {
 
 fn load_contact_photo_index() -> HashMap<String, Vec<PhotoLocation>> {
     let mut photos = HashMap::new();
-    // A book switched off, in EDS or for Hylki, lends no faces.
+    // A book switched off, in EDS or for Tegami Mail, lends no faces.
     let active = registry_books();
     for layout in EDS_LAYOUTS {
         let sql = format!(
@@ -227,9 +227,9 @@ fn load_contact_photo_index() -> HashMap<String, Vec<PhotoLocation>> {
     photos
 }
 
-/// Index the local Hylki book's contacts that carry a photo.
+/// Index the local Tegami Mail book's contacts that carry a photo.
 fn add_local_photo_locations(photos: &mut HashMap<String, Vec<PhotoLocation>>) {
-    if !crate::contacts::local::exists() || !crate::contacts::contact_sources::hylki_used() {
+    if !crate::contacts::local::exists() || !crate::contacts::contact_sources::tegami_used() {
         return;
     }
     let entries = match crate::contacts::local::photo_entries() {

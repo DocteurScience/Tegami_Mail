@@ -272,7 +272,7 @@ impl AccountsWindow {
             .reply_copies_row
             .set_visible(matches!(protocol, Protocol::Imap | Protocol::Jmap));
         // GNOME Online Accounts asked Microsoft for its own scopes, and
-        // Hylki cannot add the directory's to a token GNOME holds.
+        // Tegami Mail cannot add the directory's to a token GNOME holds.
         let from_goa = self
             .editing
             .and_then(|i| self.accounts.get(i))
@@ -284,7 +284,7 @@ impl AccountsWindow {
         widgets.form.graph_directory_row.set_sensitive(!from_goa);
         widgets.form.graph_labels_row.set_sensitive(!from_goa);
         widgets.form.graph_group.set_description(Some(&if from_goa {
-            i18n("Only for an account added in Hylki with Microsoft 365 / Outlook as the provider, not from GNOME Online Accounts.")
+            i18n("Only for an account added in Tegami Mail with Microsoft 365 / Outlook as the provider, not from GNOME Online Accounts.")
         } else {
             i18n("Asks Microsoft for access. Some organizations need an administrator to approve it.")
         }));
@@ -767,10 +767,10 @@ fn show_goa_state(widgets: &AccountsWindowWidgets, acc: &AccountConfig) {
     widgets.form.goa_banner.set_visible(is_goa);
     widgets.form.keyring_note.set_visible(!is_goa);
     // GOA accounts get the same Remove flow — it removes the account
-    // from Hylki only (back to the import list); GNOME keeps it.
+    // from Tegami Mail only (back to the import list); GNOME keeps it.
     widgets.remove_btn.set_visible(true);
     // GNOME owns a GOA account's connection outright, so the server
-    // and credential section isn't shown at all — only what Hylki
+    // and credential section isn't shown at all — only what Tegami Mail
     // owns (name, label, color, signature, aliases) plus the email
     // for identification. `apply_provider` re-shows what applies the
     // next time a native account or the add-form opens the editor.
