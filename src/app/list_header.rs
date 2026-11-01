@@ -29,6 +29,8 @@ pub(super) struct ListHeaderWidgets {
     pub(super) overflow: gtk::Revealer,
     filter: SortFilterPopover,
     sort: gtk::gio::SimpleAction,
+    /// The All / Unread / Starred switch above the list.
+    show: adw::ToggleGroup,
 }
 
 /// The orders the list header offers, by their keys in `SortOrder`. The
@@ -317,7 +319,7 @@ impl SortFilterPopover {
 
         let filter_col = column(&i18n("Show only"));
         let mut filters = Vec::new();
-        for f in QuickFilter::ALL {
+        for f in QuickFilter::IN_POPOVER {
             let check = gtk::CheckButton::with_label(&f.label());
             let s = sender.clone();
             check.connect_toggled(move |c| s.emit(AppMsg::SetQuickFilter(f, c.is_active())));
@@ -412,6 +414,13 @@ impl AppModel {
             .emit(MessageListInput::SetQuickFilters { filters, contacts });
         if let Some(lh) = self.list_header_widgets.get() {
             lh.filter.sync(filters);
+            let name = show_toggle(
+                filters.has(QuickFilter::Unread),
+                filters.has(QuickFilter::Starred),
+            );
+            if lh.show.active_name().as_deref() != name {
+                lh.show.set_active_name(name);
+            }
         }
     }
 
@@ -429,7 +438,7 @@ impl AppModel {
             let _ = s.send(AppMsg::OpenListSearch);
         })
         .icon("system-search-symbolic");
-        let filters: Vec<MenuEntry> = QuickFilter::ALL
+        let filters: Vec<MenuEntry> = QuickFilter::IN_POPOVER
             .into_iter()
             .map(|f| {
                 let on = self.quick_filters.has(f);
@@ -542,6 +551,44 @@ impl AppModel {
         !self.focus.active(config::FocusPart::HideSubject)
     }
 
+    /// The list header's title: what the list shows, as the sidebar names
+    /// it (docs/DESIGN.md, "Header bars"). The title is the one place that
+    /// names the view once the sidebar is folded away, at narrow widths and
+    /// in the rail.
+    pub(super) fn list_title(&self) -> String {
+        if let Some((_, keyword)) = &self.tag_view {
+            let Some(keyword) = keyword else {
+                return i18n("Tags");
+            };
+            let name = self
+                .tags
+                .iter()
+                .find(|t| t.keyword.eq_ignore_ascii_case(keyword))
+                .map_or(keyword.as_str(), |t| t.name.as_str());
+            return i18n_f("Tag: {name}", &[("name", name)]);
+        }
+        if let Some(id) = &self.smart_view {
+            return self
+                .smart_folders
+                .iter()
+                .find(|f| &f.id == id)
+                .map(|f| f.name.clone())
+                .unwrap_or_default();
+        }
+        if self.unified {
+            return match self.unified_view {
+                super::types::UnifiedView::Kind(kind) => crate::ui::sidebar::kind_label(kind),
+                super::types::UnifiedView::Filtered => i18n("Filters"),
+                super::types::UnifiedView::Favorites => i18n("Favorites"),
+            };
+        }
+        self.selected
+            .as_ref()
+            .and_then(|s| self.folder_by_id(s.account_id, s.folder_id))
+            .map(|f| f.name.clone())
+            .unwrap_or_default()
+    }
+
     /// The messages the router sends here (see `AppModel::route`).
     pub(super) fn on_list_header(&mut self, msg: AppMsg, sender: ComponentSender<Self>) {
         match msg {
@@ -614,11 +661,97 @@ impl AppModel {
                 sender.input_sender(),
             ),
             sort: sort_action,
+            show: build_show_switch(&widgets.list_show_bar, sender.input_sender()),
         });
         // Focus Mode's chrome as saved: nothing is mapped yet, so the
         // revealers jump to their state without animating.
         self.sync_focus_chrome();
         self.reader_overflow_btn
             .set_visible(self.reader_overflow_wanted());
+    }
+}
+
+/// The New Message button's right-click menu: a blank message or one from a
+/// template, the two entries the sidebar's compose button offered.
+pub(super) fn compose_menu(
+    widget: &gtk::Widget,
+    x: f64,
+    y: f64,
+    sender: &ComponentSender<AppModel>,
+) {
+    use crate::ui::context_menu::{show_context_menu, MenuEntry};
+    let (blank, template) = (sender.clone(), sender.clone());
+    show_context_menu(
+        widget,
+        x,
+        y,
+        vec![vec![
+            MenuEntry::new(i18n("New Message"), move || blank.input(AppMsg::Compose))
+                .icon("mail-message-new-symbolic"),
+            MenuEntry::new(i18n("New Message from Template…"), move || {
+                template.input(AppMsg::NewFromTemplate);
+            })
+            .icon("folder-templates-symbolic"),
+        ]],
+    );
+}
+
+/// Build the All / Unread / Starred switch into `bar`, the strip under the
+/// list's header bar (docs/DESIGN.md, "Header bars"). It turns the Unread
+/// and Starred quick filters on and off; the other filters stay in the sort
+/// and filter popover.
+fn build_show_switch(bar: &gtk::Box, sender: &relm4::Sender<AppMsg>) -> adw::ToggleGroup {
+    let group = adw::ToggleGroup::new();
+    group.set_hexpand(true);
+    for (name, label) in [
+        ("all", i18n("All")),
+        ("unread", i18n("Unread")),
+        ("starred", i18n("Starred")),
+    ] {
+        group.add(adw::Toggle::builder().name(name).label(label).build());
+    }
+    group.set_active_name(Some("all"));
+    let s = sender.clone();
+    group.connect_active_name_notify(move |g| {
+        // No toggle is active while both filters are on (set from the
+        // keyboard or the overflow menu): that is not a choice to act on.
+        let only = match g.active_name().as_deref() {
+            Some("all") => None,
+            Some("unread") => Some(QuickFilter::Unread),
+            Some("starred") => Some(QuickFilter::Starred),
+            _ => return,
+        };
+        s.emit(AppMsg::SetListShow(only));
+    });
+    bar.append(&group);
+    group
+}
+
+/// The switch's toggle for the Unread and Starred filters as they are: one
+/// of them alone, or neither. With both on, no single toggle tells the
+/// truth, so none is active.
+fn show_toggle(unread: bool, starred: bool) -> Option<&'static str> {
+    match (unread, starred) {
+        (false, false) => Some("all"),
+        (true, false) => Some("unread"),
+        (false, true) => Some("starred"),
+        (true, true) => None,
+    }
+}
+
+#[cfg(test)]
+mod show_switch_tests {
+    use super::show_toggle;
+
+    #[test]
+    fn each_filter_alone_has_its_toggle() {
+        assert_eq!(show_toggle(false, false), Some("all"));
+        assert_eq!(show_toggle(true, false), Some("unread"));
+        assert_eq!(show_toggle(false, true), Some("starred"));
+    }
+
+    #[test]
+    fn both_filters_on_light_no_toggle() {
+        assert_eq!(show_toggle(true, true), None);
     }
 }

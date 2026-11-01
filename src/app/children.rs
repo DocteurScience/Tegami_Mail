@@ -397,8 +397,6 @@ pub(super) fn sidebar_output_msg(out: SidebarOutput) -> AppMsg {
             collapsed,
         },
         SidebarOutput::AddAccount => AppMsg::AddFirstAccount,
-        SidebarOutput::ComposeRequested => AppMsg::Compose,
-        SidebarOutput::ComposeFromTemplateRequested => AppMsg::NewFromTemplate,
         SidebarOutput::Context(action) => AppMsg::SidebarContext(action),
         SidebarOutput::MoveMessages {
             dest_account,

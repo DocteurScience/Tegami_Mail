@@ -765,6 +765,29 @@ msgstr "Szűrők"
 msgid "Sort"
 msgstr "Rendezés"
 
+#, fuzzy
+msgid "Tag: {name}"
+msgstr "Címke hozzáadása: {name}"
+
+msgid "Filters"
+msgstr "Szűrők"
+
+msgid "Favorites"
+msgstr ""
+
+msgid "New Message from Template…"
+msgstr ""
+
+msgid "All"
+msgstr ""
+
+#, fuzzy
+msgid "Unread"
+msgstr "Olvasott/olvasatlan"
+
+msgid "Starred"
+msgstr "Csillakerülzott"
+
 #. Rightmost, beside the window controls, as in the main window.
 msgid "Actions"
 msgstr "Műveletek"
@@ -1590,6 +1613,10 @@ msgstr "Oldalsáv kibontása"
 
 msgid "Collapse sidebar"
 msgstr "Oldalsáv összecsukása"
+
+#, fuzzy
+msgid "New Message (Ctrl+N)"
+msgstr "Üzenetek keresése (Ctrl+F)"
 
 msgid "Search messages (Ctrl+F)"
 msgstr "Üzenetek keresése (Ctrl+F)"
@@ -2853,16 +2880,9 @@ msgstr "Levélszemét"
 msgid "Trash"
 msgstr "Kuka"
 
-msgid "Starred"
-msgstr "Csillakerülzott"
-
 #, fuzzy
 msgid "Not starred"
 msgstr "Nincs telepítve"
-
-#, fuzzy
-msgid "Unread"
-msgstr "Olvasott/olvasatlan"
 
 #, fuzzy
 msgid "Read"
@@ -5876,9 +5896,6 @@ msgstr "Két másodperc után"
 msgid "{percent}%"
 msgstr "{percent}%"
 
-msgid "Filters"
-msgstr "Szűrők"
-
 msgid "Senders"
 msgstr "Feladók"
 
@@ -6658,12 +6675,6 @@ msgstr "Első fiók hozzáadása"
 
 msgid "No accounts yet"
 msgstr "Még nincsenek fiókok"
-
-msgid "New Message from Template…"
-msgstr ""
-
-msgid "Favorites"
-msgstr ""
 
 msgid "Show each inbox"
 msgstr "Minden beérkezett megjelenítése"

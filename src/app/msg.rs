@@ -354,6 +354,9 @@ pub(crate) enum AppMsg {
     ClearFilterDates,
     /// Turn every quick filter off.
     ClearQuickFilters,
+    /// The list's All / Unread / Starred switch: show everything, or only
+    /// the mail that has this property (docs/DESIGN.md, "Header bars").
+    SetListShow(Option<QuickFilter>),
     /// Delay-policy read marking (#100): fires a couple of seconds after a
     /// message opened; only applies if it is still the one on screen.
     DeferredMarkRead { message: Box<Message> },

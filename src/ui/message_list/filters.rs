@@ -32,6 +32,18 @@ impl QuickFilter {
         QuickFilter::Today,
     ];
 
+    /// The filters the list header's popover offers: every one but Unread
+    /// and Starred, which have the All / Unread / Starred switch above the
+    /// list, so that each filter is set in one place.
+    pub(crate) const IN_POPOVER: [QuickFilter; 6] = [
+        QuickFilter::Attachment,
+        QuickFilter::ToMe,
+        QuickFilter::Contacts,
+        QuickFilter::Important,
+        QuickFilter::Tagged,
+        QuickFilter::Today,
+    ];
+
     pub(crate) fn label(self) -> String {
         use crate::i18n::i18n_noop;
         i18n(match self {

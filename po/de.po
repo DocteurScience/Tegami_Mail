@@ -740,6 +740,28 @@ msgstr "Filter"
 msgid "Sort"
 msgstr "Sortieren"
 
+#, fuzzy
+msgid "Tag: {name}"
+msgstr "Tag {name} hinzufügen"
+
+msgid "Filters"
+msgstr "Filter"
+
+msgid "Favorites"
+msgstr "Favoriten"
+
+msgid "New Message from Template…"
+msgstr "Aus Vorlage erstellen…"
+
+msgid "All"
+msgstr ""
+
+msgid "Unread"
+msgstr "Ungelesen"
+
+msgid "Starred"
+msgstr "Mit Stern markiert"
+
 #. Rightmost, beside the window controls, as in the main window.
 msgid "Actions"
 msgstr "Aktionen"
@@ -1512,6 +1534,10 @@ msgstr "Seitenleiste ausklappen"
 
 msgid "Collapse sidebar"
 msgstr "Seitenleiste einklappen"
+
+#, fuzzy
+msgid "New Message (Ctrl+N)"
+msgstr "Nachrichten durchsuchen (Strg+F)"
 
 msgid "Search messages (Ctrl+F)"
 msgstr "Nachrichten durchsuchen (Strg+F)"
@@ -2747,14 +2773,8 @@ msgstr "Spam"
 msgid "Trash"
 msgstr "Papierkorb"
 
-msgid "Starred"
-msgstr "Mit Stern markiert"
-
 msgid "Not starred"
 msgstr "Nicht mit Stern markiert"
-
-msgid "Unread"
-msgstr "Ungelesen"
 
 msgid "Read"
 msgstr "Gelesen"
@@ -5674,9 +5694,6 @@ msgstr "Nach zwei Sekunden"
 msgid "{percent}%"
 msgstr "{percent} %"
 
-msgid "Filters"
-msgstr "Filter"
-
 msgid "Senders"
 msgstr "Absender"
 
@@ -6451,12 +6468,6 @@ msgstr "Erstes Konto hinzufügen"
 
 msgid "No accounts yet"
 msgstr "Noch keine Konten"
-
-msgid "New Message from Template…"
-msgstr "Aus Vorlage erstellen…"
-
-msgid "Favorites"
-msgstr "Favoriten"
 
 msgid "Show each inbox"
 msgstr "Jeden Posteingang anzeigen"

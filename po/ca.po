@@ -741,6 +741,28 @@ msgstr "Filtra"
 msgid "Sort"
 msgstr "Ordena"
 
+#, fuzzy
+msgid "Tag: {name}"
+msgstr "Afegeix l'etiqueta {name}"
+
+msgid "Filters"
+msgstr "Filtres"
+
+msgid "Favorites"
+msgstr "Preferits"
+
+msgid "New Message from Template…"
+msgstr "Missatge nou a partir d'una plantilla…"
+
+msgid "All"
+msgstr ""
+
+msgid "Unread"
+msgstr "No llegit"
+
+msgid "Starred"
+msgstr "Destacats"
+
 #. Rightmost, beside the window controls, as in the main window.
 msgid "Actions"
 msgstr "Accions"
@@ -1512,6 +1534,10 @@ msgstr "Expandeix la barra lateral"
 
 msgid "Collapse sidebar"
 msgstr "Replega la barra lateral"
+
+#, fuzzy
+msgid "New Message (Ctrl+N)"
+msgstr "Cerca missatges (Ctrl+F)"
 
 msgid "Search messages (Ctrl+F)"
 msgstr "Cerca missatges (Ctrl+F)"
@@ -2745,14 +2771,8 @@ msgstr "Brossa"
 msgid "Trash"
 msgstr "Paperera"
 
-msgid "Starred"
-msgstr "Destacats"
-
 msgid "Not starred"
 msgstr "No destacat"
-
-msgid "Unread"
-msgstr "No llegit"
 
 msgid "Read"
 msgstr "Llegit"
@@ -5652,9 +5672,6 @@ msgstr "Després de dos segons"
 msgid "{percent}%"
 msgstr "{percent}%"
 
-msgid "Filters"
-msgstr "Filtres"
-
 msgid "Senders"
 msgstr "Remitents"
 
@@ -6404,12 +6421,6 @@ msgstr "Afegeix el primer compte"
 
 msgid "No accounts yet"
 msgstr "Encara no hi ha comptes"
-
-msgid "New Message from Template…"
-msgstr "Missatge nou a partir d'una plantilla…"
-
-msgid "Favorites"
-msgstr "Preferits"
 
 msgid "Show each inbox"
 msgstr "Mostra cada bústia d'entrada"

@@ -6,7 +6,7 @@ use relm4::prelude::*;
 use crate::config;
 use crate::models::{thread_ids, Message, ThreadSummary};
 use crate::ui::contacts_page::ContactsPageInput;
-use crate::ui::message_list::{DateBound, MessageListInput, QuickFilters};
+use crate::ui::message_list::{DateBound, MessageListInput, QuickFilter, QuickFilters};
 use crate::ui::message_view::MessageViewInput;
 use crate::worker::MailRequest;
 
@@ -180,6 +180,12 @@ impl AppModel {
             ),
 
             AppMsg::ClearQuickFilters => self.set_quick_filters(QuickFilters::default()),
+
+            AppMsg::SetListShow(only) => self.set_quick_filters(
+                self.quick_filters
+                    .with(QuickFilter::Unread, only == Some(QuickFilter::Unread))
+                    .with(QuickFilter::Starred, only == Some(QuickFilter::Starred)),
+            ),
 
             AppMsg::DeferredMarkRead { message } => {
                 let still_current = self

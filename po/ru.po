@@ -789,6 +789,29 @@ msgstr "Фильтры"
 msgid "Sort"
 msgstr "Сортировать"
 
+#, fuzzy
+msgid "Tag: {name}"
+msgstr "Добавить тег {name}"
+
+msgid "Filters"
+msgstr "Фильтры"
+
+msgid "Favorites"
+msgstr "Избранное"
+
+msgid "New Message from Template…"
+msgstr "Новое сообщение из шаблона…"
+
+msgid "All"
+msgstr ""
+
+#, fuzzy
+msgid "Unread"
+msgstr "Прочитано/Непрочитано"
+
+msgid "Starred"
+msgstr "Отмеченные"
+
 #. Rightmost, beside the window controls, as in the main window.
 msgid "Actions"
 msgstr "Действия"
@@ -1621,6 +1644,10 @@ msgstr "Развернуть боковую панель"
 
 msgid "Collapse sidebar"
 msgstr "Свернуть боковую панель"
+
+#, fuzzy
+msgid "New Message (Ctrl+N)"
+msgstr "Поиск сообщений (Ctrl+F)"
 
 msgid "Search messages (Ctrl+F)"
 msgstr "Поиск сообщений (Ctrl+F)"
@@ -2880,16 +2907,9 @@ msgstr "Спам"
 msgid "Trash"
 msgstr "Корзина"
 
-msgid "Starred"
-msgstr "Отмеченные"
-
 #, fuzzy
 msgid "Not starred"
 msgstr "Не установлено"
-
-#, fuzzy
-msgid "Unread"
-msgstr "Прочитано/Непрочитано"
 
 #, fuzzy
 msgid "Read"
@@ -5893,9 +5913,6 @@ msgstr "Через две секунды"
 msgid "{percent}%"
 msgstr "{percent}%"
 
-msgid "Filters"
-msgstr "Фильтры"
-
 msgid "Senders"
 msgstr "Отправители"
 
@@ -6653,12 +6670,6 @@ msgstr "Добавить первую учётную запись"
 
 msgid "No accounts yet"
 msgstr "Учётные записи пока не добавлены"
-
-msgid "New Message from Template…"
-msgstr "Новое сообщение из шаблона…"
-
-msgid "Favorites"
-msgstr "Избранное"
 
 msgid "Show each inbox"
 msgstr "Показывать каждую папку «Входящие»"

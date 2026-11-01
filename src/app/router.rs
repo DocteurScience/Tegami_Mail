@@ -125,6 +125,7 @@ impl AppModel {
             | AppMsg::SetFilterDate(..)
             | AppMsg::ClearFilterDates
             | AppMsg::ClearQuickFilters
+            | AppMsg::SetListShow(..)
             | AppMsg::DeferredMarkRead { .. }
             | AppMsg::SelectionKeys(..)
             | AppMsg::ListChecked(..)

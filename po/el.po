@@ -751,6 +751,28 @@ msgstr "Φίλτρο"
 msgid "Sort"
 msgstr "Ταξινόμηση"
 
+#, fuzzy
+msgid "Tag: {name}"
+msgstr "Προσθήκη ετικέτας {name}"
+
+msgid "Filters"
+msgstr "Φίλτρα"
+
+msgid "Favorites"
+msgstr "Αγαπημένα"
+
+msgid "New Message from Template…"
+msgstr "Νέο μήνυμα από πρότυπο…"
+
+msgid "All"
+msgstr ""
+
+msgid "Unread"
+msgstr "Μη αναγνωσμένα"
+
+msgid "Starred"
+msgstr "Με αστέρι"
+
 #. Rightmost, beside the window controls, as in the main window.
 msgid "Actions"
 msgstr "Ενέργειες"
@@ -1532,6 +1554,10 @@ msgstr "Ανάπτυξη πλευρικής στήλης"
 
 msgid "Collapse sidebar"
 msgstr "Σύμπτυξη πλευρικής στήλης"
+
+#, fuzzy
+msgid "New Message (Ctrl+N)"
+msgstr "Αναζήτηση μηνυμάτων (Ctrl+F)"
 
 msgid "Search messages (Ctrl+F)"
 msgstr "Αναζήτηση μηνυμάτων (Ctrl+F)"
@@ -2784,14 +2810,8 @@ msgstr "Ανεπιθύμητα"
 msgid "Trash"
 msgstr "Κάδος"
 
-msgid "Starred"
-msgstr "Με αστέρι"
-
 msgid "Not starred"
 msgstr "Χωρίς αστέρι"
-
-msgid "Unread"
-msgstr "Μη αναγνωσμένα"
 
 msgid "Read"
 msgstr "Αναγνωσμένα"
@@ -5729,9 +5749,6 @@ msgstr "Μετά από δύο δευτερόλεπτα"
 msgid "{percent}%"
 msgstr "{percent}%"
 
-msgid "Filters"
-msgstr "Φίλτρα"
-
 msgid "Senders"
 msgstr "Αποστολείς"
 
@@ -6494,12 +6511,6 @@ msgstr "Προσθήκη πρώτου λογαριασμού"
 
 msgid "No accounts yet"
 msgstr "Δεν υπάρχουν ακόμη λογαριασμοί"
-
-msgid "New Message from Template…"
-msgstr "Νέο μήνυμα από πρότυπο…"
-
-msgid "Favorites"
-msgstr "Αγαπημένα"
 
 msgid "Show each inbox"
 msgstr "Εμφάνιση κάθε φακέλου εισερχομένων"

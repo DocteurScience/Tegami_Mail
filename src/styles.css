@@ -21,78 +21,6 @@ switch > image {
 
 /* ---- Sidebar / account header ---- */
 
-/* The sidebar's "New message" action: a standing accent button shaped like a
-   row — full width, rounded like the row highlights, icon column aligned with
-   the rows below. Text and icon in plain white on the accent. */
-/* Row geometry plus extra vertical presence: 5px above and below the
-   shared .folder-row padding, so the accent button stands taller than a
-   plain row without changing its width alignment. */
-row.compose-row {
-  background-color: @accent_bg_color;
-  color: white;
-  padding-top: 5px;
-  padding-bottom: 5px;
-}
-
-/* The icon-only rail centres a lone icon — no text to pad around, and the
-   expanded button's extra vertical presence goes back to the default. */
-.rail-collapsed row.compose-row {
-  padding: 0;
-}
-
-row.compose-row:hover {
-  background-color: shade(@accent_bg_color, 1.1);
-}
-
-row.compose-row:active {
-  background-color: shade(@accent_bg_color, 0.9);
-}
-
-row.compose-row .folder-icon,
-row.compose-row .account-name {
-  color: white;
-  opacity: 1;
-}
-
-/* Expanded, it is split like the composer's Send (#360): the caret at the
-   end opens the template menu, past a short inset divider. The caret keeps
-   to the row's height and reaches into its end padding, far enough to sit
-   in line with the chevrons of the unified rows beneath. */
-row.compose-row .compose-split {
-  padding-right: 0;
-}
-row.compose-row .compose-split:dir(rtl) {
-  padding-left: 0;
-  padding-right: 8px;
-}
-row.compose-row .compose-split > separator {
-  background-color: alpha(white, 0.55);
-  min-width: 1px;
-  margin: 3px 4px 3px 8px;
-}
-row.compose-row .compose-split > separator:dir(rtl) {
-  margin: 3px 8px 3px 4px;
-}
-row.compose-row .compose-caret {
-  color: white;
-  min-height: 0;
-  min-width: 0;
-  padding: 2px 6px;
-  margin-top: -4px;
-  margin-right: -3px;
-  margin-bottom: -4px;
-}
-row.compose-row .compose-caret:dir(rtl) {
-  margin-right: 0;
-  margin-left: -3px;
-}
-row.compose-row .compose-caret:hover {
-  background-color: alpha(white, 0.15);
-}
-row.compose-row .compose-caret:active {
-  background-color: alpha(white, 0.28);
-}
-
 .account-header {
   padding: 10px 12px 14px 12px;
   /* Match the side margin + rounded highlight of the navigation-sidebar rows
@@ -813,6 +741,12 @@ flowbox.attach-flow > flowboxchild {
   padding-bottom: 5px;
   border-bottom: none;
   border-top: 1px solid alpha(currentColor, 0.08);
+}
+
+/* The All / Unread / Starred switch under the list's header bar: the
+   cards' own side margin, so it lines up with them. */
+.list-show-bar {
+  padding: 6px 12px 10px 12px;
 }
 
 .bulk-count {

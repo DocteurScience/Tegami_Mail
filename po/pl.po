@@ -789,6 +789,29 @@ msgstr "Filtry"
 msgid "Sort"
 msgstr "Sortuj"
 
+#, fuzzy
+msgid "Tag: {name}"
+msgstr "Dodaj etykietę {name}"
+
+msgid "Filters"
+msgstr "Filtry"
+
+msgid "Favorites"
+msgstr ""
+
+msgid "New Message from Template…"
+msgstr ""
+
+msgid "All"
+msgstr ""
+
+#, fuzzy
+msgid "Unread"
+msgstr "Przeczytane/nieprzeczytane"
+
+msgid "Starred"
+msgstr "Oznaczone gwiazdką"
+
 #. Rightmost, beside the window controls, as in the main window.
 msgid "Actions"
 msgstr "Działania"
@@ -1624,6 +1647,10 @@ msgstr "Rozwiń panel boczny"
 
 msgid "Collapse sidebar"
 msgstr "Zwiń panel boczny"
+
+#, fuzzy
+msgid "New Message (Ctrl+N)"
+msgstr "Przeszukaj wiadomości (Ctrl+F)"
 
 msgid "Search messages (Ctrl+F)"
 msgstr "Przeszukaj wiadomości (Ctrl+F)"
@@ -2903,16 +2930,9 @@ msgstr "Spam"
 msgid "Trash"
 msgstr "Kosz"
 
-msgid "Starred"
-msgstr "Oznaczone gwiazdką"
-
 #, fuzzy
 msgid "Not starred"
 msgstr "Niezainstalowane"
-
-#, fuzzy
-msgid "Unread"
-msgstr "Przeczytane/nieprzeczytane"
 
 #, fuzzy
 msgid "Read"
@@ -5952,9 +5972,6 @@ msgstr "Po dwóch sekundach"
 msgid "{percent}%"
 msgstr "{percent}%"
 
-msgid "Filters"
-msgstr "Filtry"
-
 msgid "Senders"
 msgstr "Nadawcy"
 
@@ -6727,12 +6744,6 @@ msgstr "Dodaj pierwsze konto"
 
 msgid "No accounts yet"
 msgstr "Brak kont"
-
-msgid "New Message from Template…"
-msgstr ""
-
-msgid "Favorites"
-msgstr ""
 
 msgid "Show each inbox"
 msgstr "Wyświetl poszczególne skrzynki odbiorcze"

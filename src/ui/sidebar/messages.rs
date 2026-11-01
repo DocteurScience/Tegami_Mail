@@ -224,10 +224,6 @@ pub(crate) enum SidebarOutput {
     SmartSelected(String),
     /// The user toggled an account's own Tags section.
     ToggleAccountTags(u32),
-    /// The "New message" row at the top of the sidebar.
-    ComposeRequested,
-    /// Its right-click menu's New Message from Template (#360).
-    ComposeFromTemplateRequested,
     /// The refresh button beside it.
     RefreshRequested,
     /// Long-press on the rail's refresh button: reveal the status bar.

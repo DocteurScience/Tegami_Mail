@@ -139,6 +139,7 @@ use children::Children;
 use consts::READER_MIN_WIDTH;
 use contacts::start_contacts_sync;
 use diagnostics::start_heap_trim;
+use list_header::compose_menu;
 use palette::palette_key;
 use theme::{apply_app_theme, follow_motion_setting};
 use window::{exit_now, install_window_actions, save_window_geometry};
@@ -388,12 +389,15 @@ impl SimpleComponent for AppModel {
                                 set_show_start_title_buttons: false,
                                 #[watch]
                                 set_show_end_title_buttons: model.controls_in_list(),
-                                // No folder title here — the sidebar's selection
-                                // already names it. An empty label keeps the
-                                // window's "Tegami Mail" title from appearing instead.
+                                // What the list shows (docs/DESIGN.md, "Header
+                                // bars"): the sidebar names it too, but the
+                                // sidebar folds away at narrow widths.
                                 #[wrap(Some)]
                                 set_title_widget = &gtk::Label {
-                                    set_label: "",
+                                    #[watch]
+                                    set_label: &model.list_title(),
+                                    add_css_class: "heading",
+                                    set_ellipsize: gtk::pango::EllipsizeMode::End,
                                 },
                                 // Leftmost, mirroring the pane it acts on: the
                                 // sidebar expand/collapse toggle (moved here from
@@ -405,19 +409,22 @@ impl SimpleComponent for AppModel {
                                     add_css_class: "flat",
                                     connect_clicked[sender] => move |_| sender.input(AppMsg::ToggleSidebar),
                                 },
-                                // Search lives behind this button (#102);
-                                // Ctrl+F and / open it too.
-                                #[name = "lh_search"]
-                                pack_start = &gtk::Revealer {
-                                    set_transition_type: gtk::RevealerTransitionType::SlideRight,
-                                    set_transition_duration: FOCUS_ANIM_MS,
-                                    add_css_class: "focus-fade",
-                                    gtk::Button {
-                                        set_icon_name: "system-search-symbolic",
-                                        set_tooltip_text: Some(i18n("Search messages (Ctrl+F)").as_str()),
-                                        add_css_class: "flat",
-                                        connect_clicked[sender] => move |_| {
-                                            sender.input(AppMsg::OpenListSearch);
+                                // New message, at the start of the list it adds
+                                // to (docs/DESIGN.md, "Header bars"). A right click
+                                // offers a template too, as the sidebar's button
+                                // did.
+                                pack_start = &gtk::Button {
+                                    set_icon_name: "mail-message-new-symbolic",
+                                    set_tooltip_text: Some(i18n("New Message (Ctrl+N)").as_str()),
+                                    add_css_class: "flat",
+                                    connect_clicked[sender] => move |_| sender.input(AppMsg::Compose),
+                                    add_controller = gtk::GestureClick {
+                                        set_button: gtk::gdk::BUTTON_SECONDARY,
+                                        connect_pressed[sender] => move |gesture, _, x, y| {
+                                            gesture.set_state(gtk::EventSequenceState::Claimed);
+                                            if let Some(widget) = gesture.widget() {
+                                                compose_menu(&widget, x, y, &sender);
+                                            }
                                         },
                                     },
                                 },
@@ -441,6 +448,26 @@ impl SimpleComponent for AppModel {
                                     // for several rows; not twice.
                                     #[watch]
                                     set_visible: model.toolbar_in_list() && !model.many_selected(),
+                                },
+                                // Search lives behind this button (#102);
+                                // Ctrl+F and / open it too. Last at the end, after
+                                // the sort menu (docs/DESIGN.md, "Header bars"):
+                                // pack_end packs right to left, so it comes
+                                // straight after the toolbar that sits by the
+                                // window controls.
+                                #[name = "lh_search"]
+                                pack_end = &gtk::Revealer {
+                                    set_transition_type: gtk::RevealerTransitionType::SlideLeft,
+                                    set_transition_duration: FOCUS_ANIM_MS,
+                                    add_css_class: "focus-fade",
+                                    gtk::Button {
+                                        set_icon_name: "system-search-symbolic",
+                                        set_tooltip_text: Some(i18n("Search messages (Ctrl+F)").as_str()),
+                                        add_css_class: "flat",
+                                        connect_clicked[sender] => move |_| {
+                                            sender.input(AppMsg::OpenListSearch);
+                                        },
+                                    },
                                 },
                                 // Focus Mode: the ⋯ that stands in for the
                                 // search, filters, count and sort while they
@@ -488,6 +515,12 @@ impl SimpleComponent for AppModel {
                                         add_css_class: "list-count",
                                     },
                                 },
+                            },
+                            // The All / Unread / Starred switch, under the
+                            // header bar; filled by init_list_sort_menu.
+                            #[name = "list_show_bar"]
+                            add_top_bar = &gtk::Box {
+                                add_css_class: "list-show-bar",
                             },
                             #[wrap(Some)]
                             set_content = model.message_list.widget(),
