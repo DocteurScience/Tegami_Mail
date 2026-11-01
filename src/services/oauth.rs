@@ -44,16 +44,15 @@ const GOOGLE_CLIENT_SECRET: &str = match option_env!("TEGAMI_GOOGLE_CLIENT_SECRE
     Some(v) => v,
     None => "",
 };
-// Microsoft: Tegami Mail's own app registration in Microsoft Entra (#329), a public
-// client (PKCE, no secret) for personal and work accounts alike, verified
-// against tegami.app. Mail runs over Graph, as it does for accounts imported
-// from GNOME Online Accounts (#36), which some systems cannot add (GNOME 46's
-// GOA fails on personal accounts) and some tenants refuse. A build can name
-// another client via `TEGAMI_MICROSOFT_CLIENT_ID`, and oauth.toml or the
-// environment still override it at run time.
+// Microsoft: a public client (PKCE, no secret) registered in Microsoft Entra,
+// for personal and work accounts alike. Tegami Mail has no registration of its
+// own yet, so none is bundled (the one Hylki ships belongs to its authors):
+// Microsoft accounts go through GNOME Online Accounts, or through a client the
+// user supplies. A build can name one via `TEGAMI_MICROSOFT_CLIENT_ID`, and
+// oauth.toml or the environment override it at run time.
 const MICROSOFT_CLIENT_ID: &str = match option_env!("TEGAMI_MICROSOFT_CLIENT_ID") {
     Some(v) => v,
-    None => "01cdc012-c8d8-4d03-822c-76696a01c14e",
+    None => "",
 };
 const MICROSOFT_CLIENT_SECRET: &str = "";
 // Dropbox (cloud attachments, #144): a public client with PKCE, so an app

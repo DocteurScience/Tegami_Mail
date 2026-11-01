@@ -433,14 +433,14 @@ address are filled in from the sign-in, and its mail is read and sent through
 Microsoft Graph. This also works where GNOME Online Accounts cannot add the
 account, as with personal accounts on GNOME 46 (Ubuntu 24.04, Linux Mint 22).
 
-Personal accounts (outlook.com, hotmail.com, live.com) approve Tegami Mail
-themselves the first time. A work or school account may need its
-organization's administrator to approve Tegami Mail once for everyone, at
-`https://login.microsoftonline.com/organizations/adminconsent?client_id=01cdc012-c8d8-4d03-822c-76696a01c14e`;
-Tegami Mail shows that link when Microsoft refuses a sign-in for want of approval.
+Tegami Mail does not bundle a Microsoft app registration yet, so this sign-in
+needs a Client ID: your own registration in Microsoft Entra, typed into the
+**Advanced** row described below, or an account imported from GNOME Online
+Accounts. A work or school account may need its organization's administrator
+to approve that registration once for everyone.
 
-An organization that has approved another mail app's registration, and not
-Tegami Mail's, can sign in with that one instead. The **Advanced** row on the
+An organization that has approved another mail app's registration can sign
+in with that one instead. The **Advanced** row on the
 account's page takes its **Client ID**, a **Tenant** (`common`,
 `organizations`, `consumers`, or the organization's directory ID or
 domain), the **Scopes** it was approved for and its **Redirect URI**. Empty

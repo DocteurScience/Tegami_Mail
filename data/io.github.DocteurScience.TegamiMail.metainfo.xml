@@ -2,11 +2,6 @@
 <!-- Copyright 2026 Hyprlab -->
 <component type="desktop-application">
   <id>io.github.DocteurScience.TegamiMail</id>
-  <!-- Tegami Mail was called Veem through v1.5.1 and Vireo through v1.34.0 -->
-  <replaces>
-    <id>co.hyprlab.Vireo</id>
-    <id>com.getveem.Veem</id>
-  </replaces>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>AGPL-3.0-or-later</project_license>
 
@@ -55,14 +50,8 @@
     <color type="primary" scheme_preference="dark">#1a5fb4</color>
   </branding>
 
-  <screenshots>
-    <screenshot type="default">
-      <image>https://raw.githubusercontent.com/hyprlab/tegami/main/data/repo/screenshot.png</image>
-      <caption>The unified inbox in light mode</caption>
-    </screenshot>
-  </screenshots>
 
-  <url type="homepage">https://example.org</url>
+  <url type="homepage">https://github.com/DocteurScience/Tegami_Mail</url>
   <url type="bugtracker">https://github.com/DocteurScience/Tegami_Mail/issues</url>
   <url type="vcs-browser">https://github.com/DocteurScience/Tegami_Mail</url>
 
@@ -447,7 +436,7 @@
       </description>
     </release>
     <release version="1.17.1" date="2026-08-28" type="stable">
-      <url type="details">https://github.com/DocteurScience/Tegami_Mail/releases/tag/v1.17.1</url>
+      <url type="details">https://github.com/hyprlab/hylki/releases/tag/v1.17.1</url>
       <description>
         <p>Microsoft 365 accounts from GNOME Online Accounts work now, speaking the Graph API with GNOME's own sign-in; GOA accounts can be un-imported and removed properly and their editors slim down; Contacts and Refresh move into the sidebar beside a New Message button; and the message list reclaims a row by moving its count and sort menu into the header bar.</p>
       </description>
@@ -459,7 +448,7 @@
       </description>
     </release>
     <release version="1.16.2" date="2026-08-27" type="stable">
-      <url type="details">https://github.com/DocteurScience/Tegami_Mail/releases/tag/v1.16.2</url>
+      <url type="details">https://github.com/hyprlab/hylki/releases/tag/v1.16.2</url>
       <description>
         <p>Cancelling an attachment's Open With dialog no longer reopens it, and the message list gets rounded inset highlights with floating separators.</p>
       </description>
@@ -477,7 +466,7 @@
       </description>
     </release>
     <release version="1.15.7" date="2026-08-26" type="stable">
-      <url type="details">https://github.com/DocteurScience/Tegami_Mail/releases/tag/v1.15.7</url>
+      <url type="details">https://github.com/hyprlab/hylki/releases/tag/v1.15.7</url>
       <description>
         <p>Panning a zoomed attachment preview is smooth, and the toolbar attachment menu's Open button opens files properly, matching the drawer and gallery.</p>
       </description>
@@ -525,7 +514,7 @@
       </description>
     </release>
     <release version="1.14.4" date="2026-08-26" type="stable">
-      <url type="details">https://github.com/DocteurScience/Tegami_Mail/releases/tag/v1.14.4</url>
+      <url type="details">https://github.com/hyprlab/hylki/releases/tag/v1.14.4</url>
       <description>
         <p>Sender avatars now show your GNOME Contacts photos, contributed by Anton Palgunov. The circle beside a message resolves personal-first — the contact's own photo, then Gravatar and the sender's site icon when enabled, then colored initials — reading photos from the local address-book cache with no network request, picking up changes within moments, and hiding a tier's images immediately when it is switched off.</p>
       </description>
@@ -555,7 +544,7 @@
       </description>
     </release>
     <release version="1.13.5" date="2026-08-24" type="stable">
-      <url type="details">https://github.com/DocteurScience/Tegami_Mail/releases/tag/v1.13.5</url>
+      <url type="details">https://github.com/hyprlab/hylki/releases/tag/v1.13.5</url>
       <description>
         <p>Replies sent from Tegami Mail now carry the In-Reply-To and References headers that mark them as replies, so they stay in their conversation for the recipient and in Tegami Mail itself.</p>
       </description>
@@ -585,7 +574,7 @@
       </description>
     </release>
     <release version="1.12.7" date="2026-08-23" type="stable">
-      <url type="details">https://github.com/DocteurScience/Tegami_Mail/releases/tag/v1.12.7</url>
+      <url type="details">https://github.com/hyprlab/hylki/releases/tag/v1.12.7</url>
       <description>
         <p>Sender circles can now show a brand's own logo, fetched from the sender's domain.</p>
       </description>
@@ -633,13 +622,13 @@
       </description>
     </release>
     <release version="1.11.0" date="2026-08-22" type="stable">
-      <url type="details">https://github.com/DocteurScience/Tegami_Mail/releases/tag/v1.11.0</url>
+      <url type="details">https://github.com/hyprlab/hylki/releases/tag/v1.11.0</url>
       <description>
         <p>Tegami Mail can now keep running with its window closed, appearing under Background Apps in the GNOME system menu, and can start at login without opening a window.</p>
       </description>
     </release>
     <release version="1.10.3" date="2026-08-22" type="stable">
-      <url type="details">https://github.com/DocteurScience/Tegami_Mail/releases/tag/v1.10.3</url>
+      <url type="details">https://github.com/hyprlab/hylki/releases/tag/v1.10.3</url>
       <description>
         <p>Fixes password-based accounts imported from GNOME Online Accounts failing to authenticate.</p>
       </description>
@@ -663,7 +652,7 @@
       </description>
     </release>
     <release version="1.9.2" date="2026-08-19" type="stable">
-      <url type="details">https://github.com/DocteurScience/Tegami_Mail/releases/tag/v1.9.2</url>
+      <url type="details">https://github.com/hyprlab/hylki/releases/tag/v1.9.2</url>
       <description>
         <p>ARM64 (aarch64) builds are now published alongside x86_64, so ARM machines install and run Tegami Mail like any other. The About window also formats its changelog and release notes properly.</p>
       </description>
@@ -681,7 +670,7 @@
       </description>
     </release>
     <release version="1.8.1" date="2026-08-13" type="stable">
-      <url type="details">https://github.com/DocteurScience/Tegami_Mail/releases/tag/v1.8.1</url>
+      <url type="details">https://github.com/hyprlab/hylki/releases/tag/v1.8.1</url>
       <description>
         <p>The sender-authentication lightbulb now stays in the toolbar, greyed out until a verdict arrives, so the reader's icons no longer shift.</p>
       </description>
@@ -693,7 +682,7 @@
       </description>
     </release>
     <release version="1.7.2" date="2026-08-10" type="stable">
-      <url type="details">https://github.com/DocteurScience/Tegami_Mail/releases/tag/v1.7.2</url>
+      <url type="details">https://github.com/hyprlab/hylki/releases/tag/v1.7.2</url>
       <description>
         <p>Photos embedded in a message can now be saved from the right-click menu, and are listed as attachments.</p>
       </description>
@@ -711,7 +700,7 @@
       </description>
     </release>
     <release version="1.6.1" date="2026-08-03" type="stable">
-      <url type="details">https://github.com/DocteurScience/Tegami_Mail/releases/tag/v1.6.1</url>
+      <url type="details">https://github.com/hyprlab/hylki/releases/tag/v1.6.1</url>
       <description>
         <p>Flatpak installs now migrate the old Veem app's accounts, settings and cached mail automatically on first run.</p>
       </description>
@@ -723,7 +712,7 @@
       </description>
     </release>
     <release version="1.5.1" date="2026-07-28" type="stable">
-      <url type="details">https://github.com/DocteurScience/Tegami_Mail/releases/tag/v1.5.1</url>
+      <url type="details">https://github.com/hyprlab/hylki/releases/tag/v1.5.1</url>
       <description>
         <p>A collapsed conversation now keeps a strong unread highlight and dot until every message in it is read, and a new setting chooses whether conversations start collapsed or expanded.</p>
       </description>
@@ -735,7 +724,7 @@
       </description>
     </release>
     <release version="1.4.6" date="2026-07-19" type="stable">
-      <url type="details">https://github.com/DocteurScience/Tegami_Mail/releases/tag/v1.4.6</url>
+      <url type="details">https://github.com/hyprlab/hylki/releases/tag/v1.4.6</url>
       <description>
         <p>The message-list Actions Palette now opens from a horizontal ellipsis (⋯) button instead of a chevron.</p>
       </description>
@@ -777,7 +766,7 @@
       </description>
     </release>
     <release version="1.3.9" date="2026-07-13" type="stable">
-      <url type="details">https://github.com/DocteurScience/Tegami_Mail/releases/tag/v1.3.9</url>
+      <url type="details">https://github.com/hyprlab/hylki/releases/tag/v1.3.9</url>
       <description>
         <p>Fixed the app not fetching new mail after the computer wakes from sleep — Tegami Mail now detects resume and reconnects to your mail servers immediately.</p>
       </description>
@@ -837,7 +826,7 @@
       </description>
     </release>
     <release version="1.2.3" date="2026-07-11" type="stable">
-      <url type="details">https://github.com/DocteurScience/Tegami_Mail/releases/tag/v1.2.3</url>
+      <url type="details">https://github.com/hyprlab/hylki/releases/tag/v1.2.3</url>
       <description>
         <p>Add Account now has a provider dropdown that auto-fills sign-in and server settings for iCloud, Yahoo, Proton, Google, Microsoft and more.</p>
       </description>
@@ -861,7 +850,7 @@
       </description>
     </release>
     <release version="1.1.5" date="2026-07-11" type="stable">
-      <url type="details">https://github.com/DocteurScience/Tegami_Mail/releases/tag/v1.1.5</url>
+      <url type="details">https://github.com/hyprlab/hylki/releases/tag/v1.1.5</url>
       <description>
         <p>Reordered the reader's message-action buttons and tightened the message list to its minimum width.</p>
       </description>
@@ -897,7 +886,7 @@
       </description>
     </release>
     <release version="1.0.9" date="2026-07-05" type="stable">
-      <url type="details">https://github.com/DocteurScience/Tegami_Mail/releases/tag/v1.0.9</url>
+      <url type="details">https://github.com/hyprlab/hylki/releases/tag/v1.0.9</url>
       <description>
         <p>Added a Changelog section to the About window.</p>
       </description>

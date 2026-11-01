@@ -41,7 +41,7 @@ HERE="$(cd "$(dirname "$0")/.." && pwd)"
 ROOT="${TEGAMI_APPIMAGE_SRC:-$HERE}"
 ARCH="$(uname -m)"
 IMAGE="${TEGAMI_APPIMAGE_IMAGE:-ghcr.io/pkgforge-dev/archlinux:latest}"
-SITE="https://example.org"
+SITE="https://github.com/DocteurScience/Tegami_Mail"
 VERSION="$(sed -n 's/^version = "\(.*\)"/\1/p' "$ROOT/Cargo.toml" | head -1)"
 case "$VERSION" in
     *-beta.*)

@@ -162,36 +162,23 @@ fn about_links(page: &gtk::Box) {
         row.connect_activated(move |_| crate::services::oauth::open_uri(&u));
         row
     };
-    links.append(&mk_row(&i18n("Website"), "https://example.org"));
     links.append(&mk_row(
         &i18n("Report an issue or feature request"),
         "https://github.com/DocteurScience/Tegami_Mail/issues",
     ));
-    links.append(&mk_row("Discord", "https://discord.gg/YfEJ4b6PFW"));
-    links.append(&mk_row("hyprlab@proton.me", "mailto:hyprlab@proton.me"));
     links.append(&mk_row(
         &i18n("Source Code"),
         "https://github.com/DocteurScience/Tegami_Mail",
+    ));
+    // Tegami Mail is a modified version of Hylki; its authors are credited here.
+    links.append(&mk_row(
+        "Hylki (original project)",
+        "https://github.com/hyprlab/hylki",
     ));
     links.append(&mk_row(
         &i18n("License (GNU AGPL v3)"),
         "https://www.gnu.org/licenses/agpl-3.0.html",
     ));
-
-    // Buy Me a Coffee — with a coffee-cup glyph as its leading icon.
-    let coffee = adw::ActionRow::builder()
-        .title(i18n("Buy Me a Coffee"))
-        .activatable(true)
-        .build();
-    coffee.set_tooltip_text(Some("https://buymeacoffee.com/hyprlab"));
-    let cup = gtk::Label::new(Some("☕"));
-    cup.add_css_class("about-coffee");
-    coffee.add_prefix(&cup);
-    coffee.add_suffix(&gtk::Image::from_icon_name("adw-external-link-symbolic"));
-    coffee.connect_activated(move |_| {
-        crate::services::oauth::open_uri("https://buymeacoffee.com/hyprlab")
-    });
-    links.append(&coffee);
     page.append(&links);
 }
 

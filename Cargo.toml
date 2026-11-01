@@ -5,7 +5,7 @@ edition = "2021"
 description = "A clean, fast GNOME-native email client"
 license = "AGPL-3.0-or-later"
 repository = "https://github.com/DocteurScience/Tegami_Mail"
-homepage = "https://example.org"
+homepage = "https://github.com/DocteurScience/Tegami_Mail"
 
 [features]
 # The community beta channel: "Tegami Mail (beta)" branding, app ID
