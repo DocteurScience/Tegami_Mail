@@ -195,10 +195,7 @@ h.addEventListener('click',function(e){\
 if(e.ctrlKey||e.metaKey||e.shiftKey||e.altKey)return;\
 if(e.target.closest&&e.target.closest('button,a,.tegami-addr,.tegami-acts,.tegami-tags,.tegami-verify,.tegami-rcpt'))return;\
 if(tm){clearTimeout(tm);tm=null;return;}\
-tm=setTimeout(function(){tm=null;foldCard(h.closest('.tegami-msg'));},260);});})(hs[j]);}\
-var fb=document.querySelectorAll('.tegami-fbar');\
-for(var j=0;j<fb.length;j++){fb[j].addEventListener('click',function(e){\
-if(e.ctrlKey||e.metaKey||e.shiftKey||e.altKey)return;foldCard(this.closest('.tegami-msg'));});}}\
+tm=setTimeout(function(){tm=null;foldCard(h.closest('.tegami-msg'));},260);});})(hs[j]);}}\
 var rbd=document.body.dataset;\
 if(rbd.tegamiReadmark&&document.body.classList.contains('tegami-conv')){\
 var rdel=parseInt(rbd.tegamiReadmark,10)||250;var rt={};\

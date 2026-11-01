@@ -86,24 +86,20 @@ impl MessageView {
         labels
     }
 
-    /// What a folded card shows under its header, which stays exactly as it
-    /// is open: as many lines of preview as the message list shows (#326),
-    /// and nothing when the list shows none. The box keeps all its lines
-    /// when the text is shorter or missing, so every folded card stands the
-    /// same height. A click on it opens the card.
+    /// The first words of a folded card, on its header's one line between
+    /// the sender and the date (docs/DESIGN.md, "Reading pane and
+    /// conversations"), so a folded card is one line, whatever it holds.
+    /// Nothing when the message list shows no preview either (#326). Hidden
+    /// while the card is open. A click on the header opens the card.
     pub(super) fn fold_bar_html(&self, m: &Message) -> String {
         if self.fold_preview_lines == 0 {
             return String::new();
         }
         let preview = crate::models::preview_display(&m.preview);
         format!(
-            "<div class=\"tegami-fbar\" data-key=\"{}:{}\" title=\"{}\" \
-             style=\"-webkit-line-clamp:{n};height:calc({n} * 1.35em)\">{}</div>",
-            m.account_id,
-            m.id,
+            "<span class=\"tegami-fbar\" title=\"{}\">{}</span>",
             attr_escape(&i18n("Click to open this message")),
             escape_html(preview.trim()),
-            n = self.fold_preview_lines,
         )
     }
 
@@ -127,5 +123,111 @@ impl MessageView {
             serde_json::to_string(&keys).unwrap_or_else(|_| "[]".into()),
         );
         self.run_js(&js);
+    }
+}
+
+impl MessageView {
+    /// The line under a conversation's subject: how many messages it holds
+    /// and how many people take part in it.
+    pub(super) fn conversation_summary(&self) -> String {
+        let messages = self.thread.len();
+        let people = participant_count(&self.thread);
+        let (m, p) = (messages.to_string(), people.to_string());
+        // One sentence with both parts, so a language can order them as it
+        // needs; each count is its own plural.
+        crate::i18n::i18n_f(
+            "{messages} · {participants}",
+            &[
+                (
+                    "messages",
+                    &crate::i18n::ni18n_f(
+                        "{n} message",
+                        "{n} messages",
+                        messages as u32,
+                        &[("n", &m)],
+                    ),
+                ),
+                (
+                    "participants",
+                    &crate::i18n::ni18n_f(
+                        "{n} participant",
+                        "{n} participants",
+                        people as u32,
+                        &[("n", &p)],
+                    ),
+                ),
+            ],
+        )
+    }
+}
+
+/// How many different people a conversation involves: every sender and
+/// every To and Cc recipient, by address, whatever the case. Bcc is left
+/// out: only the sender's own copy names it, so counting it would give the
+/// same conversation two sizes depending on who looks.
+fn participant_count(thread: &[Message]) -> usize {
+    let mut people = std::collections::HashSet::new();
+    for m in thread {
+        for addr in std::iter::once(m.from_addr.as_str())
+            .chain(m.to.split(','))
+            .chain(m.cc.split(','))
+        {
+            // An entry may be written "Name <addr>"; the address decides.
+            let addr = match (addr.rfind('<'), addr.rfind('>')) {
+                (Some(open), Some(close)) if open < close => &addr[open + 1..close],
+                _ => addr,
+            };
+            let addr = addr.trim().to_lowercase();
+            if !addr.is_empty() {
+                people.insert(addr);
+            }
+        }
+    }
+    people.len()
+}
+
+#[cfg(test)]
+mod summary_tests {
+    use super::participant_count;
+    use crate::models::Message;
+
+    fn msg(from: &str, to: &str, cc: &str) -> Message {
+        let mut m = crate::models::test_util::msg(1, 1, 1);
+        m.from_addr = from.into();
+        m.to = to.into();
+        m.cc = cc.into();
+        m
+    }
+
+    #[test]
+    fn senders_and_recipients_count_once_each() {
+        let thread = [
+            msg(
+                "camille@example.org",
+                "me@example.org, julien@example.org",
+                "",
+            ),
+            msg(
+                "me@example.org",
+                "Camille@Example.org",
+                "julien@example.org",
+            ),
+        ];
+        assert_eq!(participant_count(&thread), 3);
+    }
+
+    #[test]
+    fn a_named_address_counts_by_its_address() {
+        let thread = [msg(
+            "a@example.org",
+            "A <a@example.org>, B <b@example.org>",
+            "",
+        )];
+        assert_eq!(participant_count(&thread), 2);
+    }
+
+    #[test]
+    fn empty_fields_count_nobody() {
+        assert_eq!(participant_count(&[msg("a@example.org", "", " , ")]), 1);
     }
 }

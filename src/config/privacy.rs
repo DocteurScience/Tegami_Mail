@@ -705,7 +705,7 @@ impl Default for PrivacyFile {
             thread_expansion: default_thread_expansion(),
             thread_row_newest: false,
             thread_newest_first: false,
-            fold_messages: FoldMessages::Never,
+            fold_messages: FoldMessages::Read,
             always_show_recipients: false,
             pgp_labels: false,
             reader_find_bottom: false,

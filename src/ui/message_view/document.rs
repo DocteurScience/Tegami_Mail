@@ -393,13 +393,13 @@ fn card_html(cards: &Cards<'_>, m: &Message, ava_html: &str, body: String) -> St
                <header class=\"tegami-msg-hdr\" data-key=\"{aid}:{id}\" \
                  title=\"{hdr_title}\">\
                  <div class=\"tegami-hdr-line\">\
-                   {ava}{dot}<span class=\"tegami-from\">{from}</span>{verify}{addr}\
+                   {ava}{dot}<span class=\"tegami-from\">{from}</span>{fbar}{verify}{addr}\
                    <span class=\"tegami-tags\" data-key=\"{aid}:{id}\">{tags}</span>\
                    <span class=\"tegami-hdr-meta\">{folder}{rcpt_toggle}{marks}{read}\
                      <span class=\"tegami-date\">{date}</span></span>\
                    {acts_toggle}{acts}\
                  </div>{rcpt}\
-               </header>{fbar}{tpl}{invite}{receipt}{unsub}{tr}{body}{atts}</section>",
+               </header>{tpl}{invite}{receipt}{unsub}{tr}{body}{atts}</section>",
         aid = m.account_id,
         id = m.id,
         // The message's own attachments beneath its body (#213).
@@ -516,8 +516,9 @@ fn card_html(cards: &Cards<'_>, m: &Message, ava_html: &str, body: String) -> St
         } else {
             ""
         },
-        // What a folded card shows under its header instead of the
-        // rest (#326).
+        // What a folded card shows after the sender's name, on the
+        // header's one line, instead of the rest (#326; docs/DESIGN.md,
+        // "Reading pane and conversations").
         fbar = LIVE_FOLDBAR.with(|b| {
             b.borrow()
                 .get(&(m.account_id, m.id))

@@ -343,9 +343,11 @@ impl ComposeFormat {
 #[serde(rename_all = "snake_case")]
 pub(crate) enum FoldMessages {
     /// Every message opens.
-    #[default]
     Never,
-    /// The messages already read.
+    /// The messages already read. The default: a conversation opens on
+    /// what is new in it, with the older messages one line each
+    /// (docs/DESIGN.md, "Reading pane and conversations").
+    #[default]
     Read,
     /// Every message but the newest, read or not.
     AllButNewest,

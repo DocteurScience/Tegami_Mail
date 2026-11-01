@@ -4762,6 +4762,17 @@ msgstr "Bloca el contingut remot"
 msgid "Click to open this message"
 msgstr "Fes clic per obrir aquest missatge"
 
+#. One sentence with both parts, so a language can order them as it
+#. needs; each count is its own plural.
+msgid "{messages} · {participants}"
+msgstr ""
+
+#, fuzzy
+msgid "{n} participant"
+msgid_plural "{n} participants"
+msgstr[0] "{n} destinatari"
+msgstr[1] "{n} destinataris"
+
 msgid "Repeats daily"
 msgstr "Es repeteix diàriament"
 

@@ -4836,6 +4836,17 @@ msgstr "Αποκλεισμός απομακρυσμένου περιεχομέν
 msgid "Click to open this message"
 msgstr "Κάντε κλικ για να ανοίξετε αυτό το μήνυμα"
 
+#. One sentence with both parts, so a language can order them as it
+#. needs; each count is its own plural.
+msgid "{messages} · {participants}"
+msgstr ""
+
+#, fuzzy
+msgid "{n} participant"
+msgid_plural "{n} participants"
+msgstr[0] "{n} παραλήπτης"
+msgstr[1] "{n} παραλήπτες"
+
 msgid "Repeats daily"
 msgstr "Επαναλαμβάνεται καθημερινά"
 

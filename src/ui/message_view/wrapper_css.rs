@@ -31,14 +31,26 @@ pub(super) fn wrapper_css(
          body:not(.tegami-conv) .tegami-msg{{border-radius:0;margin:0;}}\
          .tegami-msg.selected{{box-shadow:0 0 0 2px {accent};}}\
          .tegami-fbar{{display:none;}}\
-         /* Folded, a card keeps its header exactly as it is open and\
-         shows the preview under it, lined up with the sender's name\
-         (16px padding, 26px circle, 8px gap). */\
-         .tegami-msg.tegami-folded>.tegami-fbar{{display:-webkit-box;-webkit-box-orient:vertical;\
-         overflow:hidden;opacity:0.6;font-size:0.92em;line-height:1.35;overflow-wrap:anywhere;\
-         margin:-6px 0 12px;padding:0;padding-inline:50px 16px;position:relative;z-index:2;\
+         /* Folded, a card is one line: avatar, sender, first words, date\
+         (docs/DESIGN.md, \"Reading pane and conversations\"). The first\
+         words take the room the address, the seals, the tags and the\
+         chips leave, and are cut at the end of the line. 70 % of the\
+         text colour keeps 4.5:1. */\
+         .tegami-msg.tegami-folded .tegami-fbar{{display:block;flex:1 1 0;min-width:0;\
+         white-space:nowrap;overflow:hidden;text-overflow:ellipsis;opacity:0.7;\
          cursor:pointer;user-select:none;}}\
-         .tegami-msg.tegami-folded>:not(.tegami-fbar):not(.tegami-msg-hdr){{display:none;}}\
+         .tegami-msg.tegami-folded .tegami-addr,\
+         .tegami-msg.tegami-folded .tegami-verify,\
+         .tegami-msg.tegami-folded .tegami-pgp,\
+         .tegami-msg.tegami-folded .tegami-sens,\
+         .tegami-msg.tegami-folded .tegami-tags,\
+         .tegami-msg.tegami-folded .tegami-rcpt-toggle,\
+         .tegami-msg.tegami-folded .tegami-folder,\
+         .tegami-msg.tegami-folded .tegami-acts-toggle,\
+         .tegami-msg.tegami-folded .tegami-acts,\
+         .tegami-msg.tegami-folded .tegami-rcpt{{display:none !important;}}\
+         .tegami-msg.tegami-folded .tegami-from{{flex:0 1 auto;}}\
+         .tegami-msg.tegami-folded>:not(.tegami-msg-hdr){{display:none;}}\
          .tegami-marks{{display:inline-flex;gap:8px;align-self:center;flex:none;}}\
          .tegami-mark{{display:inline-flex;opacity:0.55;line-height:0;}}\
          .tegami-mark svg{{width:16px;height:16px;}}\
@@ -48,8 +60,8 @@ pub(super) fn wrapper_css(
          .tegami-mark-star{{color:#e5a50a;opacity:1;}}\
          .tegami-msg:not(.starred) .tegami-mark-star{{visibility:hidden;}}\
          body.tegami-folds .tegami-msg-hdr{{cursor:pointer;}}\
-         @media print{{.tegami-msg.tegami-folded>:not(.tegami-fbar){{display:revert !important;}}\
-         .tegami-msg.tegami-folded>.tegami-fbar{{display:none !important;}}}}\
+         @media print{{.tegami-msg.tegami-folded>*{{display:revert !important;}}\
+         .tegami-msg.tegami-folded .tegami-fbar{{display:none !important;}}}}\
          .tegami-msg-hdr{{cursor:pointer;}}\
          .tegami-msg-hdr{{padding:12px 16px;cursor:default;user-select:none;\
          position:sticky;top:0;z-index:1;background-color:{bg};}}\
@@ -69,7 +81,6 @@ pub(super) fn wrapper_css(
          combined inset never drops below 20px. */\
          body.tegami-conv{{padding:10px;}}\
          body.tegami-conv .tegami-msg-hdr{{padding:12px 10px;}}\
-         .tegami-msg.tegami-folded>.tegami-fbar{{padding-inline:44px 10px;}}\
          .tegami-hdr-line{{flex-wrap:wrap;}}\
          .tegami-hdr-meta{{order:10;flex-basis:100%;margin-inline-start:34px;\
          justify-content:flex-start;}}\

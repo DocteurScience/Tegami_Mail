@@ -1318,6 +1318,12 @@ flowbox.attach-flow > flowboxchild {
 
 /* ---- Reader ---- */
 
+/* A conversation's "3 messages · 3 participants": secondary text at 70 %
+   of the text colour, which keeps 4.5:1 where libadwaita's 55 % does not. */
+.reader-conv-summary {
+  opacity: 0.7;
+}
+
 /* The reader pane's toolbar: tighter than stock between the action icons —
    narrower buttons and less gap in the packed start/end groups — so the full
    row fits down to READER_ACTIONS_BREAKPOINT before folding into the ⋯ menu. */

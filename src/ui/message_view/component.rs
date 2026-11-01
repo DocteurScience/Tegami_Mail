@@ -330,6 +330,22 @@ impl Component for MessageView {
                         add_css_class: "reader-subject",
                     },
 
+                    // A conversation's size under its subject, "3 messages ·
+                    // 3 participants" (docs/DESIGN.md, "Reading pane and
+                    // conversations"), so the folded cards below are known
+                    // to be part of it before any is opened.
+                    gtk::Label {
+                        #[watch]
+                        set_label: &model.conversation_summary(),
+                        #[watch]
+                        set_visible: model.thread.len() > 1,
+                        set_halign: gtk::Align::Start,
+                        set_xalign: 0.0,
+                        set_wrap: true,
+                        add_css_class: "caption",
+                        add_css_class: "reader-conv-summary",
+                    },
+
                     // Tag chips (#71) for a lone full-bleed message, whose
                     // header is these widgets; cards draw theirs in the
                     // document. Filled by post_view.
