@@ -614,7 +614,7 @@ fn render(icon: TrayIcon, app_png: AppIconPng, dotted: bool, size: i32, fill: f6
 /// symbolic envelope rasterised in mid-grey.
 fn base_pixbuf(icon: TrayIcon, app_png: AppIconPng, size: i32) -> Option<Pixbuf> {
     match icon {
-        TrayIcon::Tegami Mail => {
+        TrayIcon::Tegami => {
             // Sniffed rather than assumed: an icon set on the launcher by
             // hand can be an SVG as well as a PNG.
             let loader = PixbufLoader::new();
@@ -690,7 +690,7 @@ mod tests {
 
     #[test]
     fn every_icon_renders_at_every_size() {
-        for icon in [TrayIcon::Tegami Mail, TrayIcon::Symbolic] {
+        for icon in [TrayIcon::Tegami, TrayIcon::Symbolic] {
             for dotted in [false, true] {
                 let set = render_set(
                     icon,
@@ -737,7 +737,7 @@ mod tests {
             assert_eq!(t.tray_icon, TrayIcon::Symbolic, "{old}");
         }
         let t: T = toml::from_str("tray_icon = \"tegami\"").unwrap();
-        assert_eq!(t.tray_icon, TrayIcon::Tegami Mail);
+        assert_eq!(t.tray_icon, TrayIcon::Tegami);
         assert_eq!(TrayIcon::default(), TrayIcon::Symbolic);
     }
 
@@ -797,7 +797,7 @@ mod tests {
     fn a_half_fill_leaves_a_clear_margin_and_moves_the_dot() {
         let size = 32usize;
         let icon = render(
-            TrayIcon::Tegami Mail,
+            TrayIcon::Tegami,
             crate::desktop::app_icon::png_for(crate::desktop::app_icon::DEFAULT_ID),
             true,
             size as i32,

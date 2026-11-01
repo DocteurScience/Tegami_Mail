@@ -167,7 +167,7 @@ impl ContactSources {
             page.append(&note);
         }
         let form: Option<(gtk::Widget, Rc<dyn Fn() -> bool>)> = match &source.kind {
-            Kind::Tegami Mail => {
+            Kind::Tegami => {
                 page.append(&self.tegami_group(sender));
                 None
             }
@@ -361,7 +361,7 @@ impl ContactSources {
             vbox.append(&detail);
             hbox.append(&vbox);
             let (label, tip) = match s.origin {
-                Origin::Tegami Mail => (i18n("Tegami Mail"), i18n("Set up in Tegami Mail")),
+                Origin::Tegami => (i18n("Tegami Mail"), i18n("Set up in Tegami Mail")),
                 Origin::Online => (i18n("GOA"), i18n("From GNOME Online Accounts")),
                 Origin::Evolution => (
                     i18n("Evolution"),

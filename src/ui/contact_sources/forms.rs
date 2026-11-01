@@ -62,7 +62,7 @@ pub(super) fn name_group(
     let group = adw::PreferencesGroup::new();
     let own = [("own", source.own_title.as_str())];
     group.set_description(Some(&match source.kind {
-        Kind::Tegami Mail => i18n_f("The name used here and in Contacts. Left blank, it is {own}.", &own),
+        Kind::Tegami => i18n_f("The name used here and in Contacts. Left blank, it is {own}.", &own),
         _ => i18n_f(
             "The name used here and in Contacts; GNOME Contacts keeps its own. Left blank, it is {own}.",
             &own,

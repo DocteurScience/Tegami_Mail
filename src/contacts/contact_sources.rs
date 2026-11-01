@@ -148,7 +148,7 @@ pub(crate) fn book_used(
 /// What kind of source a row is.
 #[derive(Debug, Clone)]
 pub(crate) enum Kind {
-    Tegami Mail,
+    Tegami,
     ThisComputer,
     /// An account in GNOME Online Accounts: changed in GNOME Settings.
     Online,
@@ -201,7 +201,7 @@ pub(crate) struct Source {
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub(crate) enum Origin {
-    Tegami Mail,
+    Tegami,
     Online,
     Evolution,
 }
@@ -364,7 +364,7 @@ fn tegami_source(off: &HashSet<String>) -> Source {
         own_title: String::new(),
         given: None,
         id: TEGAMI.to_string(),
-        kind: Kind::Tegami Mail,
+        kind: Kind::Tegami,
         title: i18n("Tegami Mail Address Book"),
         detail: ni18n_f(
             "{n} contact, kept by Tegami Mail",
@@ -373,7 +373,7 @@ fn tegami_source(off: &HashSet<String>) -> Source {
             &[("n", &count.to_string())],
         ),
         mark: "x-office-address-book-symbolic",
-        origin: Origin::Tegami Mail,
+        origin: Origin::Tegami,
         books: Vec::new(),
         on: !off.contains(TEGAMI),
         paused: None,
@@ -531,7 +531,7 @@ fn carddav_source(
         _ => format!("CardDAV · {}", books_line(&books)),
     };
     let origin = if is_tegami_made(data) {
-        Origin::Tegami Mail
+        Origin::Tegami
     } else {
         Origin::Evolution
     };
@@ -603,7 +603,7 @@ fn ldap_sources(off: &HashSet<String>) -> Vec<Source> {
                 detail: failed.unwrap_or(detail),
                 mark: "network-server-symbolic",
                 origin: if is_tegami_made_ldap(&dir) {
-                    Origin::Tegami Mail
+                    Origin::Tegami
                 } else {
                     Origin::Evolution
                 },
