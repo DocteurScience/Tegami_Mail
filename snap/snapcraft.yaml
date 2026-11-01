@@ -1,0 +1,117 @@
+# Snap packaging for Tegami Mail (first draft, never built yet).
+#
+# Build on Ubuntu 26.04 with:
+#   sudo snap install snapcraft --classic
+#   snapcraft            # uses LXD or Multipass; first run asks to set it up
+#   sudo snap install --dangerous ./tegami-mail_*.snap
+#
+# Things to check on the first build (they could not be tested when this file
+# was written): that core26 and its `gnome` extension exist under these names,
+# that the stage-packages names below match the archive, and that the
+# interfaces named in `plugs` are the ones this version of snapd offers.
+name: tegami-mail
+title: Tegami Mail
+base: core26
+version: '1.46.0'
+summary: A fast, GNOME-native email client
+description: |
+  Tegami Mail is a desktop email client for GNOME, written in Rust with GTK 4
+  and libadwaita. Your mail and credentials stay on your machine, remote
+  content is blocked until you allow it, and there is no telemetry.
+
+  It works with IMAP, POP3, JMAP and Microsoft 365, and can use the accounts
+  set up in GNOME Online Accounts.
+
+  Tegami Mail is based on Hylki (https://github.com/hyprlab/hylki).
+license: AGPL-3.0-or-later
+grade: devel
+confinement: strict
+source-code: https://github.com/DocteurScience/Tegami_Mail
+issues: https://github.com/DocteurScience/Tegami_Mail/issues
+website: https://github.com/DocteurScience/Tegami_Mail
+contact: https://github.com/DocteurScience/Tegami_Mail/issues
+compression: lzo
+
+apps:
+  tegami-mail:
+    command: usr/bin/tegami
+    extensions: [gnome]
+    desktop: usr/share/applications/io.github.DocteurScience.TegamiMail.desktop
+    common-id: io.github.DocteurScience.TegamiMail
+    plugs:
+      - network                     # IMAP, SMTP, JMAP, OAuth
+      - network-bind                # OAuth sign-in listens on a loopback port
+      - audio-playback              # the new-mail sound
+      - home                        # attachments read from the home folder
+      - removable-media             # attachments on USB drives
+      - password-manager-service    # the keyring: passwords and OAuth tokens
+      - online-accounts-service     # GNOME Online Accounts
+      - gpg-keys                    # OpenPGP signing and encryption
+      - gpg-public-keys
+
+parts:
+  tegami:
+    plugin: nil
+    source: .
+    build-packages:
+      - build-essential
+      - pkg-config
+      - curl
+      - ca-certificates
+      - gettext
+      - libgtk-4-dev
+      - libadwaita-1-dev
+      - libwebkitgtk-6.0-dev
+      - libpoppler-glib-dev
+      - libssl-dev
+      - libwayland-dev
+    stage-packages:
+      - libwebkitgtk-6.0-4
+      - libjavascriptcoregtk-6.0-1
+      - libpoppler-glib8t64
+      - libenchant-2-2
+      - hunspell-en-us
+      - hunspell-fr
+      - hunspell-de-de
+      - hunspell-es
+    override-build: |
+      set -eu
+      # Rust from rustup: the distribution's compiler may be older than the
+      # project needs.
+      curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --profile minimal
+      . "$HOME/.cargo/env"
+      cargo build --release --locked
+
+      install -Dm755 target/release/tegami "$CRAFT_PART_INSTALL/usr/bin/tegami"
+
+      app=io.github.DocteurScience.TegamiMail
+      for size in 256x256 512x512; do
+        install -Dm644 "data/icons/hicolor/$size/apps/$app.png" \
+          "$CRAFT_PART_INSTALL/usr/share/icons/hicolor/$size/apps/$app.png"
+      done
+      install -Dm644 "data/icons/hicolor/scalable/apps/$app.svg" \
+        "$CRAFT_PART_INSTALL/usr/share/icons/hicolor/scalable/apps/$app.svg"
+      install -Dm644 "data/icons/hicolor/symbolic/apps/$app-symbolic.svg" \
+        "$CRAFT_PART_INSTALL/usr/share/icons/hicolor/symbolic/apps/$app-symbolic.svg"
+
+      # Launcher: translated through po/, then pointed at this snap's command
+      # and icon (a snap's launcher cannot name the icon by theme alone).
+      install -d "$CRAFT_PART_INSTALL/usr/share/applications"
+      msgfmt --desktop --template="data/$app.desktop" -d po \
+        -o "$CRAFT_PART_INSTALL/usr/share/applications/$app.desktop"
+      sed -i \
+        -e 's|^Exec=tegami |Exec=tegami-mail |' \
+        -e 's|^Exec=tegami$|Exec=tegami-mail|' \
+        -e "s|^Icon=.*|Icon=\${SNAP}/usr/share/icons/hicolor/512x512/apps/$app.png|" \
+        "$CRAFT_PART_INSTALL/usr/share/applications/$app.desktop"
+
+      for po in po/*.po; do
+        [ -e "$po" ] || continue
+        lang=$(basename "$po" .po)
+        install -d "$CRAFT_PART_INSTALL/usr/share/locale/$lang/LC_MESSAGES"
+        msgfmt -o "$CRAFT_PART_INSTALL/usr/share/locale/$lang/LC_MESSAGES/tegami.mo" "$po"
+      done
+
+      install -d "$CRAFT_PART_INSTALL/usr/share/metainfo"
+      msgfmt --xml --template="data/$app.metainfo.xml" -d po \
+        -o "$CRAFT_PART_INSTALL/usr/share/metainfo/$app.metainfo.xml"
