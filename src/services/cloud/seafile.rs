@@ -151,7 +151,10 @@ fn seafile_library(account: &CloudAccount, token: &str) -> Result<String, String
     let v: serde_json::Value = ureq::post(&format!("{base}/api2/repos/"))
         .set("Authorization", &seafile_auth(token))
         .timeout(Duration::from_secs(60))
-        .send_form(&[("name", want.as_str()), ("desc", "Files shared from Tegami Mail")])
+        .send_form(&[
+            ("name", want.as_str()),
+            ("desc", "Files shared from Tegami Mail"),
+        ])
         .map_err(|e| seafile_err("Could not create the library", e))?
         .into_json()
         .map_err(|e| format!("Could not read the new library's answer: {e}"))?;

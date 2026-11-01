@@ -390,8 +390,11 @@ mod tests {
         let root = std::env::temp_dir().join(format!("tegami-legacy-test-{}", std::process::id()));
         let new_base = root.join("io.github.DocteurScience.TegamiMail/config");
         std::fs::create_dir_all(&new_base).unwrap();
-        std::os::unix::fs::symlink(root.join("io.github.DocteurScience.TegamiMail"), root.join("co.hyprlab.Vireo"))
-            .unwrap();
+        std::os::unix::fs::symlink(
+            root.join("io.github.DocteurScience.TegamiMail"),
+            root.join("co.hyprlab.Vireo"),
+        )
+        .unwrap();
         let old = root.join("co.hyprlab.Vireo/config/vireo");
         std::fs::create_dir_all(&old).unwrap();
         assert!(same_tree(&old, &new_base.join("tegami")));

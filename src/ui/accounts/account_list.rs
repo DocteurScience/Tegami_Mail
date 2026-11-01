@@ -379,7 +379,12 @@ fn account_titles(acc: &AccountConfig) -> gtk::Box {
 fn source_badge(acc: &AccountConfig) -> gtk::Label {
     let from_goa = acc.goa_id.is_some();
     let badge = gtk::Label::new(Some(
-        if from_goa { i18n("GOA") } else { i18n("Tegami Mail") }.as_str(),
+        if from_goa {
+            i18n("GOA")
+        } else {
+            i18n("Tegami Mail")
+        }
+        .as_str(),
     ));
     badge.set_valign(gtk::Align::Center);
     badge.add_css_class("account-source-badge");

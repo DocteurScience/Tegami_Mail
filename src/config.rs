@@ -95,7 +95,8 @@ pub(crate) fn write_private(path: &std::path::Path, contents: &str) -> std::io::
 /// et al., so no redirection is needed or done.
 fn shared_base(own: fn() -> Option<PathBuf>, sub: &str) -> Option<PathBuf> {
     if cfg!(feature = "beta")
-        && std::env::var("FLATPAK_ID").is_ok_and(|id| id == "io.github.DocteurScience.TegamiMail.Beta")
+        && std::env::var("FLATPAK_ID")
+            .is_ok_and(|id| id == "io.github.DocteurScience.TegamiMail.Beta")
         && stable_data_present()
     {
         return Some(
@@ -124,7 +125,10 @@ fn stable_data_present() -> bool {
     static PRESENT: OnceLock<bool> = OnceLock::new();
     *PRESENT.get_or_init(|| {
         dirs::home_dir()
-            .map(|h| h.join(".var/app/io.github.DocteurScience.TegamiMail").is_dir())
+            .map(|h| {
+                h.join(".var/app/io.github.DocteurScience.TegamiMail")
+                    .is_dir()
+            })
             .unwrap_or(false)
     })
 }

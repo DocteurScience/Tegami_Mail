@@ -102,7 +102,9 @@ impl AppModel {
                 // change is saved and announced.
                 if config::load_renderer() != renderer {
                     config::save_renderer(&renderer);
-                    self.notice(i18n("The renderer applies the next time Tegami Mail starts."));
+                    self.notice(i18n(
+                        "The renderer applies the next time Tegami Mail starts.",
+                    ));
                 }
             }
 
@@ -111,7 +113,9 @@ impl AppModel {
                 // change is saved and announced.
                 if config::load_language() != code {
                     config::save_language(&code);
-                    self.notice(i18n("The language applies the next time Tegami Mail starts."));
+                    self.notice(i18n(
+                        "The language applies the next time Tegami Mail starts.",
+                    ));
                 }
             }
 

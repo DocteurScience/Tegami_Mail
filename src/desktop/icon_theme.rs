@@ -170,7 +170,8 @@ mod tests {
     #[test]
     fn every_icon_named_in_the_code_is_bundled() {
         let root = std::path::Path::new(env!("CARGO_MANIFEST_DIR"));
-        let manifest = std::fs::read_to_string(root.join("resources/tegami.gresource.xml")).unwrap();
+        let manifest =
+            std::fs::read_to_string(root.join("resources/tegami.gresource.xml")).unwrap();
         fn walk(dir: &std::path::Path, out: &mut Vec<std::path::PathBuf>) {
             for entry in std::fs::read_dir(dir).unwrap().flatten() {
                 let path = entry.path();

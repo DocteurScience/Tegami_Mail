@@ -9,7 +9,10 @@ use crate::i18n::{i18n, i18n_f};
 
 #[allow(deprecated)] // adw::MessageDialog: AlertDialog would change how it looks
 pub(crate) fn show(parent: &impl IsA<gtk::Window>, from: &'static Predecessor) {
-    let heading = i18n_f("Welcome to Tegami Mail, formerly {old}", &[("old", from.name)]);
+    let heading = i18n_f(
+        "Welcome to Tegami Mail, formerly {old}",
+        &[("old", from.name)],
+    );
     let mut body = i18n_f(
         "Your accounts, settings and cached mail were carried over from {old}. \
          There is nothing to set up again, and nothing in {old} was changed or \

@@ -372,9 +372,11 @@ fn live_group() {
         .expect("the group");
     let card = super::book_get_contact(&conn, &bus, &path, &group_uid).unwrap();
     println!("=== made:\n{card}");
-    let stub = find(format!("(is \"email\" \"tegami-test-{stamp}@example.com\")"))
-        .pop()
-        .expect("the member's card");
+    let stub = find(format!(
+        "(is \"email\" \"tegami-test-{stamp}@example.com\")"
+    ))
+    .pop()
+    .expect("the member's card");
     println!(
         "=== member's card:\n{}",
         super::book_get_contact(&conn, &bus, &path, &stub).unwrap()
@@ -502,7 +504,10 @@ fn live_copy_into_group() {
     let by_name = "(is \"full_name\" \"Tegami Mail Phone Only\")";
     // What an earlier run left.
     for book in [from, to] {
-        for q in [by_name, "(beginswith \"full_name\" \"Tegami Mail copy test\")"] {
+        for q in [
+            by_name,
+            "(beginswith \"full_name\" \"Tegami Mail copy test\")",
+        ] {
             for (uid, _) in find(book, q) {
                 super::delete_contact(book, &uid).unwrap();
             }

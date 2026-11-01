@@ -678,7 +678,8 @@ mod tests {
 
     #[test]
     fn reading_the_book_leaves_the_file_untouched() {
-        let dir = std::env::temp_dir().join(format!("tegami-local-contacts-{}", std::process::id()));
+        let dir =
+            std::env::temp_dir().join(format!("tegami-local-contacts-{}", std::process::id()));
         std::fs::create_dir_all(&dir).unwrap();
         let path = dir.join("local_contacts.db");
         let _ = std::fs::remove_file(&path);

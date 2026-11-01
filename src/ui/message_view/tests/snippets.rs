@@ -110,7 +110,9 @@ fn every_card_has_somewhere_to_put_an_invitation() {
     );
     // And above the body, not below it: the meeting is the point of the
     // message, and the calendar's own prose repeats it underneath.
-    let inv = doc.find("<div class=\"tegami-inv\"").expect("the container");
+    let inv = doc
+        .find("<div class=\"tegami-inv\"")
+        .expect("the container");
     let body = doc.find("<iframe").expect("the body frame");
     assert!(inv < body, "the banner comes before the body");
 }

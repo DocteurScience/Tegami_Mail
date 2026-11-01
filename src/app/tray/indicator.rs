@@ -71,8 +71,9 @@ pub(crate) struct TrayMailList {
 type AppIconPng<'a> = &'a [u8];
 /// The app's symbolic icon (the opened envelope, drawn in black); its
 /// fill is swapped for the chosen color.
-const ENVELOPE_SVG: &str =
-    include_str!("../../../data/icons/hicolor/symbolic/apps/io.github.DocteurScience.TegamiMail-symbolic.svg");
+const ENVELOPE_SVG: &str = include_str!(
+    "../../../data/icons/hicolor/symbolic/apps/io.github.DocteurScience.TegamiMail-symbolic.svg"
+);
 /// Panels ask for different sizes; a set covers them without upscaling blur.
 const SIZES: [i32; 6] = [16, 22, 24, 32, 48, 64];
 /// Symbolic icons, when the file is read as one, are painted mid-grey on no
@@ -210,7 +211,9 @@ fn symbolic_theme(icon: TrayIcon) -> Option<String> {
     if icon != TrayIcon::Symbolic || !panel_recolors_files() {
         return None;
     }
-    let root = crate::config::data_base()?.join("tegami").join("tray-icons");
+    let root = crate::config::data_base()?
+        .join("tegami")
+        .join("tray-icons");
     let dir = symbolic_dir(&root);
     let written = std::fs::create_dir_all(&dir)
         .and_then(|_| {

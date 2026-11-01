@@ -276,9 +276,8 @@ impl MessageView {
         // Everything the page posts to the `tegami` handler (see bridge.rs).
         if let Some(ucm) = self.webview.user_content_manager() {
             let open_sender = sender.clone();
-            ucm.connect_script_message_received(
-                Some("tegami"),
-                move |_ucm, value| match parse_bridge(&value.to_str()) {
+            ucm.connect_script_message_received(Some("tegami"), move |_ucm, value| {
+                match parse_bridge(&value.to_str()) {
                     Some(Bridge::Input(input)) => open_sender.input_sender().emit(input),
                     Some(Bridge::Clipboard(text)) => {
                         if let Some(display) = gtk::gdk::Display::default() {
@@ -286,8 +285,8 @@ impl MessageView {
                         }
                     }
                     None => {}
-                },
-            );
+                }
+            });
         }
     }
 

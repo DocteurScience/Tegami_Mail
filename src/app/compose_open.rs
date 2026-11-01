@@ -337,7 +337,9 @@ impl AppModel {
         let attachments = self
             .attachment_cache
             .get(&body_key(&m))
-            .map(|items| stage_attachments(&format!("tegami-copy-{}-{}", m.account_id, m.id), items))
+            .map(|items| {
+                stage_attachments(&format!("tegami-copy-{}-{}", m.account_id, m.id), items)
+            })
             .unwrap_or_default();
         tracing::info!(
             "edit as new: copying {}:{} ({} attachment(s))",

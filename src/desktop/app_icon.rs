@@ -48,8 +48,9 @@ const ICON_GENERATION: u32 = 3;
 const DEFAULT_PNG: &[u8] =
     include_bytes!("../../data/icons/hicolor/512x512/apps/io.github.DocteurScience.TegamiMail.png");
 #[cfg(feature = "beta")]
-const DEFAULT_PNG: &[u8] =
-    include_bytes!("../../data/icons/hicolor/512x512/apps/io.github.DocteurScience.TegamiMail.Beta.png");
+const DEFAULT_PNG: &[u8] = include_bytes!(
+    "../../data/icons/hicolor/512x512/apps/io.github.DocteurScience.TegamiMail.Beta.png"
+);
 
 /// The gallery, in display order: the build's own icon (the opened
 /// envelope, so it has no entry of its own), the same envelope on a blue,

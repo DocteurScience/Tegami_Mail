@@ -549,7 +549,10 @@ fn live_rename_moves_subscriptions() {
     rt.block_on(async {
         let mut sess = connect(&account).await.expect("connect");
         let delim = session_delimiter(&mut sess).await;
-        let (old, sub) = ("Tegami Mail Rig".to_string(), format!("Tegami Mail Rig{delim}Sub one"));
+        let (old, sub) = (
+            "Tegami Mail Rig".to_string(),
+            format!("Tegami Mail Rig{delim}Sub one"),
+        );
         let (new, new_sub) = (
             "Tegami Mail Rig Moved".to_string(),
             format!("Tegami Mail Rig Moved{delim}Sub one"),

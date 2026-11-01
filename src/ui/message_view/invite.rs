@@ -151,7 +151,10 @@ impl MessageView {
             note = if note.is_empty() {
                 String::new()
             } else {
-                format!("<div class=\"tegami-inv-note\">{}</div>", escape_html(&note))
+                format!(
+                    "<div class=\"tegami-inv-note\">{}</div>",
+                    escape_html(&note)
+                )
             },
             acts = if buttons.is_empty() {
                 String::new()

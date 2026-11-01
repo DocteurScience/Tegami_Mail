@@ -311,8 +311,10 @@ fn install_startup_handlers(adw_app: &adw::Application) {
 /// app's own icons, and GNOME's for a theme that lacks them.
 fn register_resources() {
     use gtk::{gio, glib};
-    let bytes =
-        glib::Bytes::from_static(include_bytes!(concat!(env!("OUT_DIR"), "/tegami.gresource")));
+    let bytes = glib::Bytes::from_static(include_bytes!(concat!(
+        env!("OUT_DIR"),
+        "/tegami.gresource"
+    )));
     match gio::Resource::from_data(&bytes) {
         Ok(resource) => gio::resources_register(&resource),
         Err(e) => tracing::error!("failed to register bundled icon resources: {e}"),

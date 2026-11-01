@@ -625,7 +625,10 @@ mod tests {
         );
         std::fs::write(
             &path,
-            format!("[Desktop Entry]\nName=Tegami Mail\nIcon={}\n", crate::APP_ID),
+            format!(
+                "[Desktop Entry]\nName=Tegami Mail\nIcon={}\n",
+                crate::APP_ID
+            ),
         )
         .unwrap();
         assert_eq!(Launcher::Owned(path.clone()).custom_icon(), None);
