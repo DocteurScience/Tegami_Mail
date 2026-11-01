@@ -1,6 +1,6 @@
-# Flatpak manifest for Tegami Mail — builds the self-hosted Flatpak distributed from
-# example.org. (The GNOME runtime + SDK below come from the flathub *remote* — that
-# is just where the org.gnome.Platform runtime is hosted; Tegami Mail itself is not on
+# Flatpak manifest for Tegami Mail — builds a local Flatpak from this checkout.
+# (The GNOME runtime + SDK below come from the flathub *remote* — that is just
+# where the org.gnome.Platform runtime is hosted; Tegami Mail itself is not on
 # Flathub.)
 #
 # Local test build (both tools are already installed):
@@ -174,10 +174,8 @@ modules:
       - install -Dm644 data/fontconfig/fallback.conf /app/share/tegami/fontconfig/fallback.conf
       - install -d /app/share/metainfo && msgfmt --xml --template=data/io.github.DocteurScience.TegamiMail.metainfo.xml -d po -o /app/share/metainfo/io.github.DocteurScience.TegamiMail.metainfo.xml
     sources:
-      - type: git
-        url: https://github.com/DocteurScience/Tegami_Mail.git
-        tag: v1.46.0
-        commit: 6f57421857f6d25378b49685161de37d5ae63629
+      - type: dir
+        path: .
       # Vendored crate sources for the offline Flatpak build. Generate with:
       #   flatpak-cargo-generator.py Cargo.lock -o cargo-sources.json
       - cargo-sources.json
