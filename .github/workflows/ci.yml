@@ -25,7 +25,7 @@ jobs:
           apt-get install -y --no-install-recommends \
             build-essential pkg-config libgtk-4-dev libadwaita-1-dev \
             libwebkitgtk-6.0-dev libpoppler-glib-dev libssl-dev gettext \
-            libwayland-dev curl ca-certificates git xvfb
+            libwayland-dev curl ca-certificates git xvfb xauth
 
       - uses: actions/checkout@v4
 
