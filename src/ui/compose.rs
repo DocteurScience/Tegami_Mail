@@ -285,7 +285,7 @@ impl Component for Compose {
                         // From and To are always offered, inline included — a
                         // forward is unaddressable without To (#25, #52). Cc, Bcc,
                         // and (for replies/forwards) the prefilled Subject wait
-                        // behind the To row's "More" button; per-row visibility is
+                        // behind the To row's "Cc / Bcc" button; per-row visibility is
                         // set in `init`.
                         #[name = "fields_list"]
                         gtk::ListBox {

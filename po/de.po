@@ -3482,8 +3482,11 @@ msgstr "Entwurf löschen"
 msgid "Move this draft to Trash"
 msgstr "Diesen Entwurf in den Papierkorb verschieben"
 
-msgid "More"
-msgstr "Mehr"
+#. "Cc / Bcc", the design's name for it (docs/DESIGN.md,
+#. "Replying and composing"): it says what it adds where "More"
+#. left it to guesswork. Reply-To comes with them.
+msgid "Cc / Bcc"
+msgstr ""
 
 msgid "Show Cc, Bcc and Reply-To"
 msgstr "Cc, Bcc und Reply-To anzeigen"
@@ -8182,6 +8185,9 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "More"
+#~ msgstr "Mehr"
 
 #~ msgid "Save to Templates"
 #~ msgstr "Unter Vorlagen speichern"

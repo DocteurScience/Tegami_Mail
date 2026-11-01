@@ -118,7 +118,7 @@ pub(super) fn document(
               The `html` outranks the plain view's reset of every block.\
               Secondary text at 70 %, which keeps 4.5:1. */\
            html body>div[data-tegami-ui=fold]{{display:flex;align-items:center;\
-             gap:12px;margin:18px 0 10px;padding:8px 0;cursor:pointer;\
+             gap:12px;margin:18px 0 0;padding:8px 0;cursor:pointer;\
              border-block:1px solid rgba(128,128,128,0.3);\
              font:{EDITOR_FONT};-webkit-user-select:none;user-select:none;}}\
            html body>div[data-tegami-ui=fold] .tegami-hist-names{{flex:1;}}\
@@ -129,6 +129,26 @@ pub(super) fn document(
              border-radius:6px;}}\
            html body>div[data-tegami-ui=fold]:hover .tegami-hist-toggle{{\
              background:rgba(128,128,128,0.2);}}\
+           /* The history on a ground of its own under the header, so the\
+              reply above it reads as what is being written and the rest\
+              as what was. The quote's bar is drawn into that ground, 12px\
+              in, rather than as a border on its edge. The \"wrote:\" line\
+              dims its text, not itself: its opacity would pale its ground\
+              too. */\
+           html body>div[data-tegami-ui=fold]+.tegami-quote-attr{{margin:0;\
+             padding:10px 12px 4px;background:rgba(128,128,128,0.08);\
+             opacity:1;color:color-mix(in srgb,currentColor 70%,transparent);}}\
+           html body>div[data-tegami-ui=fold]+.tegami-quote-attr+blockquote{{\
+             margin:0;padding-block:4px 12px;padding-inline:25px 12px;\
+             border-inline-start:none;background:linear-gradient(to right,\
+             transparent 12px,rgba(128,128,128,0.4) 12px,\
+             rgba(128,128,128,0.4) 15px,transparent 15px),\
+             rgba(128,128,128,0.08);}}\
+           html body>div[data-tegami-ui=fold]+.tegami-quote-attr+blockquote:dir(rtl){{\
+             background:linear-gradient(to left,\
+             transparent 12px,rgba(128,128,128,0.4) 12px,\
+             rgba(128,128,128,0.4) 15px,transparent 15px),\
+             rgba(128,128,128,0.08);}}\
            /* Hidden, the \"wrote:\" line and the quote after the header,\
               and the button for older messages. */\
            html.tegami-folded body>div[data-tegami-ui=fold]+*,\

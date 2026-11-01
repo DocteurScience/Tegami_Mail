@@ -76,6 +76,15 @@ pub(super) fn size_for_host(
     editor_holder.set_vexpand(true);
     editor_holder.set_height_request(-1);
     header.set_show_end_title_buttons(windowed || decorations);
+    // In a window the composer is drawn flat, rows parted by hairlines
+    // (docs/DESIGN.md, "Replying and composing"). Inline it keeps its
+    // cards: it sits among the conversation's cards, and a sent reply's
+    // editor card turns into one of them (send_morph.rs).
+    if windowed {
+        root.add_css_class("compose-windowed");
+    } else {
+        root.remove_css_class("compose-windowed");
+    }
 }
 
 /// Save the edited message, discard it, or go back to it. Escape answers
@@ -397,7 +406,7 @@ impl Compose {
         let bcc_shown = !prefill.bcc.trim().is_empty();
         widgets.cc_row.set_visible(cc_shown);
         widgets.bcc_row.set_visible(bcc_shown);
-        // Reply-To (#58) is rare enough to always start hidden behind "More".
+        // Reply-To (#58) is rare enough to always start hidden behind "Cc / Bcc".
         widgets.reply_to_row.set_visible(false);
         widgets.subject_row.set_visible(true);
         // Compact split reply: only the editor shows; the full field rows
@@ -409,7 +418,10 @@ impl Compose {
             .set_visible(!self.compact || self.fields_shown);
         widgets.fields_btn.set_active(self.fields_shown);
         {
-            let more = gtk::Button::with_label(&i18n("More"));
+            // "Cc / Bcc", the design's name for it (docs/DESIGN.md,
+            // "Replying and composing"): it says what it adds where "More"
+            // left it to guesswork. Reply-To comes with them.
+            let more = gtk::Button::with_label(&i18n("Cc / Bcc"));
             more.add_css_class("flat");
             more.set_valign(gtk::Align::Center);
             more.set_tooltip_text(Some(i18n("Show Cc, Bcc and Reply-To").as_str()));

@@ -3490,8 +3490,11 @@ msgstr "Supprimer le brouillon"
 msgid "Move this draft to Trash"
 msgstr "Déplacer ce brouillon vers la Corbeille"
 
-msgid "More"
-msgstr "Plus"
+#. "Cc / Bcc", the design's name for it (docs/DESIGN.md,
+#. "Replying and composing"): it says what it adds where "More"
+#. left it to guesswork. Reply-To comes with them.
+msgid "Cc / Bcc"
+msgstr "Cc / Cci"
 
 msgid "Show Cc, Bcc and Reply-To"
 msgstr "Afficher Cc, Cci et Répondre à"
@@ -7676,7 +7679,9 @@ msgstr "Masquer l’historique de la conversation"
 msgid ""
 "Replies and forwards open with the quoted messages hidden. They are sent "
 "either way."
-msgstr "Les réponses et les transferts s’ouvrent avec les messages cités masqués. Ils sont envoyés dans tous les cas."
+msgstr ""
+"Les réponses et les transferts s’ouvrent avec les messages cités masqués. "
+"Ils sont envoyés dans tous les cas."
 
 msgid "Undo Send"
 msgstr "Annuler l’envoi"
@@ -8149,6 +8154,9 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "More"
+#~ msgstr "Plus"
 
 #, fuzzy
 #~ msgid "Fold quoted text"

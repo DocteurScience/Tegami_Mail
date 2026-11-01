@@ -1611,6 +1611,28 @@ headerbar box.list-tools.compact button {
   border: none;
 }
 
+/* The composer in a window of its own is flat (docs/DESIGN.md, "Replying
+   and composing"): the fields, the formatting row and the body run edge to
+   edge on the view's ground, parted by hairlines, instead of floating as
+   cards. The ground itself is set in the scheme stylesheet (theme.rs),
+   which outranks this one. */
+.compose-windowed .compose-pane {
+  padding: 0;
+  border-spacing: 0;
+}
+
+.compose-windowed list.compose-fields.boxed-list {
+  border-radius: 0;
+  box-shadow: none;
+  border-bottom: 1px solid alpha(currentColor, 0.15);
+}
+
+.compose-windowed frame.compose-editor-card {
+  border-radius: 0;
+  box-shadow: none;
+  border-top: 1px solid alpha(currentColor, 0.15);
+}
+
 /* Recipient fields (From/To/Cc/Bcc/Subject): trimmed from libadwaita's 50px
    default so the body editor keeps generous room, but no further — 34px read
    as cramped (yioannides, #81). */

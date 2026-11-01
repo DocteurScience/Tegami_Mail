@@ -3486,8 +3486,11 @@ msgstr "Eliminar rascunho"
 msgid "Move this draft to Trash"
 msgstr "Mover este rascunho para o Lixo"
 
-msgid "More"
-msgstr "Mais"
+#. "Cc / Bcc", the design's name for it (docs/DESIGN.md,
+#. "Replying and composing"): it says what it adds where "More"
+#. left it to guesswork. Reply-To comes with them.
+msgid "Cc / Bcc"
+msgstr ""
 
 msgid "Show Cc, Bcc and Reply-To"
 msgstr "Mostrar Cc, Bcc e Responder a"
@@ -8138,6 +8141,9 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "More"
+#~ msgstr "Mais"
 
 #, fuzzy
 #~ msgid "Fold quoted text"

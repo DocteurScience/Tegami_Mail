@@ -65,6 +65,7 @@ pub(super) fn install_scheme_css(window: &impl IsA<gtk::Widget>) {
             ".remote-alert image {{ color: {shield}; }}\
              .refresh-offline {{ color: {offline}; }}\
              .inline-compose-surface, .compose-pane {{ background-color: {page}; }}\
+             .compose-windowed .compose-pane {{ background-color: @view_bg_color; }}\
              .reader-split > separator {{ background-color: {page}; }}"
         ));
     };
