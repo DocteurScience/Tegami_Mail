@@ -27,7 +27,7 @@ jobs:
             libwebkitgtk-6.0-dev libpoppler-glib-dev libssl-dev gettext \
             libwayland-dev librsvg2-common curl ca-certificates git xvfb xauth
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Rust
         run: |
@@ -84,7 +84,7 @@ jobs:
   snap:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Snapcraft and LXD
         id: setup
@@ -132,7 +132,7 @@ jobs:
           git commit -q -m "Snap logs for $sha"
           git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" ci-logs-snap
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: steps.snap.outcome == 'success'
         with:
           name: snap
