@@ -1,0 +1,93 @@
+name: CI
+
+# Builds Tegami Mail on a Debian 13 container (the oldest release with
+# libadwaita 1.7, which the app needs) and copies the log of each step to the
+# `ci-logs` branch, so it can be read without opening the Actions page.
+# The snap is built in a second job, on a best-effort basis.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: debian:trixie
+    steps:
+      - name: System packages
+        run: |
+          apt-get update
+          apt-get install -y --no-install-recommends \
+            build-essential pkg-config libgtk-4-dev libadwaita-1-dev \
+            libwebkitgtk-6.0-dev libpoppler-glib-dev libssl-dev gettext \
+            libwayland-dev curl ca-certificates git xvfb
+
+      - uses: actions/checkout@v4
+
+      - name: Rust
+        run: |
+          curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --profile minimal
+          echo "$HOME/.cargo/bin" >> "$GITHUB_PATH"
+
+      - name: Build
+        id: build
+        continue-on-error: true
+        run: |
+          mkdir -p logs
+          cargo build --release --locked 2>&1 | tee logs/build.log
+          exit "${PIPESTATUS[0]}"
+        shell: bash
+
+      - name: Tests
+        id: test
+        if: steps.build.outcome == 'success'
+        continue-on-error: true
+        run: |
+          xvfb-run -a cargo test --release --locked 2>&1 | tee logs/test.log
+          exit "${PIPESTATUS[0]}"
+        shell: bash
+
+      - name: Publish the logs on the ci-logs branch
+        if: always()
+        run: |
+          set -eu
+          sha=$(git rev-parse --short HEAD)
+          {
+            echo "commit: $sha"
+            echo "build: ${{ steps.build.outcome }}"
+            echo "test: ${{ steps.test.outcome }}"
+          } > logs/summary.txt
+          # keep the end of each log, where the errors are
+          for f in logs/build.log logs/test.log; do
+            [ -e "$f" ] && tail -n 400 "$f" > "$f.tail" && mv "$f.tail" "$f" || true
+          done
+          rm -rf /tmp/ci-logs && mkdir /tmp/ci-logs && cp -r logs/. /tmp/ci-logs/
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          cd /tmp/ci-logs
+          git init -q -b ci-logs
+          git config user.name "ci"
+          git config user.email "ci@users.noreply.github.com"
+          git add -A
+          git commit -q -m "CI logs for $sha"
+          git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" ci-logs
+
+      - name: Fail if the build or the tests failed
+        if: steps.build.outcome != 'success' || steps.test.outcome == 'failure'
+        run: exit 1
+
+  snap:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: snapcore/action-build@v1
+        id: snapcraft
+      - uses: actions/upload-artifact@v4
+        with:
+          name: snap
+          path: ${{ steps.snapcraft.outputs.snap }}
