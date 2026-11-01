@@ -41,9 +41,6 @@ msgstr "Fes que les contrasenyes dels comptes siguin persistents al Linux Mint"
 msgid "Project"
 msgstr "Projecte"
 
-msgid "Website"
-msgstr "Lloc web"
-
 msgid "Report an issue or feature request"
 msgstr "Informa d'un problema o demana una funcionalitat"
 
@@ -52,9 +49,6 @@ msgstr "Codi font"
 
 msgid "License (GNU AGPL v3)"
 msgstr "Llicència (GNU AGPL v3)"
-
-msgid "Buy Me a Coffee"
-msgstr "Convida'm a un cafè"
 
 #. Contributors — people outside Hyprlab whose patches are in the app.
 msgid "Special thanks to these contributors"
@@ -85,6 +79,10 @@ msgstr "No s'ha pogut desar el compte: {e}"
 
 msgid "Could not import account: {e}"
 msgstr "No s'ha pogut importar el compte: {e}"
+
+#, fuzzy
+msgid "On This Computer is switched off"
+msgstr "En aquest ordinador"
 
 msgid "Delete the attachment from the server?"
 msgstr "Vols suprimir l'adjunt del servidor?"
@@ -194,6 +192,10 @@ msgid "Mark as Spam"
 msgstr "Marca com a brossa"
 
 msgid "Move To…"
+msgstr "Mou a…"
+
+#, fuzzy
+msgid "Copy To…"
 msgstr "Mou a…"
 
 msgid "Archive"
@@ -578,10 +580,13 @@ msgid "Always do this (change it in Settings → System → GNOME Files)"
 msgstr "Fes-ho sempre (canvia-ho a Paràmetres → Sistema → Fitxers del GNOME)"
 
 msgid "Could not attach {names}: Tegami Mail cannot read the file."
-msgid_plural "Could not attach {n} files (Tegami Mail cannot read them): {names}"
-msgstr[0] "No s'ha pogut adjuntar {names}: l'Tegami Mail no pot llegir el fitxer."
+msgid_plural ""
+"Could not attach {n} files (Tegami Mail cannot read them): {names}"
+msgstr[0] ""
+"No s'ha pogut adjuntar {names}: l'Tegami Mail no pot llegir el fitxer."
 msgstr[1] ""
-"No s'han pogut adjuntar {n} fitxers (l'Tegami Mail no els pot llegir): {names}"
+"No s'han pogut adjuntar {n} fitxers (l'Tegami Mail no els pot llegir): "
+"{names}"
 
 msgid "Send {n} file with Tegami Mail"
 msgid_plural "Send {n} files with Tegami Mail"
@@ -743,6 +748,12 @@ msgstr "Accions"
 msgid "Refresh or long-press for Status Bar"
 msgstr "Actualitza o mantén premut per a la barra d'estat"
 
+#, fuzzy
+msgid "Copying one message to On This Computer…"
+msgid_plural "Copying {n} messages to On This Computer…"
+msgstr[0] "S'està movent un missatge a {account}…"
+msgstr[1] "S'estan movent {n} missatges a {account}…"
+
 msgid "Sending message…"
 msgstr "S'està enviant el missatge…"
 
@@ -829,6 +840,9 @@ msgstr "Missatge nou a partir d'una plantilla"
 msgid "Send the message you are writing"
 msgstr "Envia el missatge que estàs escrivint"
 
+#. Save Draft, Save as Template and Delete Draft are not here:
+#. the Save Draft button and its arrow stay in the header at
+#. any width.
 msgid "Attach files"
 msgstr "Adjunta fitxers"
 
@@ -1155,17 +1169,17 @@ msgid "Delete All Contacts?"
 msgstr "Vols eliminar tots els contactes?"
 
 msgid ""
-"The {n} contact in the Tegami Mail address book is deleted. This cannot be undone; "
-"export the book first to keep a copy."
+"The {n} contact in the Tegami Mail address book is deleted. This cannot be "
+"undone; export the book first to keep a copy."
 msgid_plural ""
 "The {n} contacts in the Tegami Mail address book are deleted. This cannot be "
 "undone; export the book first to keep a copy."
 msgstr[0] ""
-"El contacte {n} de la llibreta d'adreces de l'Tegami Mail se suprimirà. Això no es "
-"pot desfer; exporta primer la llibreta per conservar-ne una còpia."
+"El contacte {n} de la llibreta d'adreces de l'Tegami Mail se suprimirà. Això "
+"no es pot desfer; exporta primer la llibreta per conservar-ne una còpia."
 msgstr[1] ""
-"Els {n} contactes de la llibreta d'adreces de l'Tegami Mail se suprimiran. Això no "
-"es pot desfer; exporta primer la llibreta per conservar-ne una còpia."
+"Els {n} contactes de la llibreta d'adreces de l'Tegami Mail se suprimiran. "
+"Això no es pot desfer; exporta primer la llibreta per conservar-ne una còpia."
 
 msgid "Delete All"
 msgstr "Elimina-ho tot"
@@ -1190,8 +1204,8 @@ msgstr "Paràmetres importats"
 
 msgid ""
 "{n} mail account(s), the cloud storage accounts and all preferences were "
-"imported. Restart Tegami Mail to apply them. Passwords and sign-ins are not part "
-"of a backup; re-enter them on first use if this is a new machine."
+"imported. Restart Tegami Mail to apply them. Passwords and sign-ins are not "
+"part of a backup; re-enter them on first use if this is a new machine."
 msgstr ""
 "S'han importat {n} compte(s) de correu, els comptes d'emmagatzematge al "
 "núvol i totes les preferències. Reinicia l'Tegami Mail per aplicar-les. Les "
@@ -1208,7 +1222,8 @@ msgid "Import failed: {e}"
 msgstr "La importació ha fallat: {e}"
 
 msgid "The renderer applies the next time Tegami Mail starts."
-msgstr "El renderitzador s'aplicarà la propera vegada que s'iniciï l'Tegami Mail."
+msgstr ""
+"El renderitzador s'aplicarà la propera vegada que s'iniciï l'Tegami Mail."
 
 msgid "The language applies the next time Tegami Mail starts."
 msgstr "L'idioma s'aplicarà la propera vegada que s'iniciï l'Tegami Mail."
@@ -1329,10 +1344,22 @@ msgstr ""
 msgid "Snooze until"
 msgstr ""
 
+#, fuzzy
+msgid "One message could not be copied to {account}: {error}"
+msgid_plural "{n} messages could not be copied to {account}: {error}"
+msgstr[0] "No s'ha pogut moure un missatge a {account}: {error}"
+msgstr[1] "No s'han pogut moure {n} missatges a {account}: {error}"
+
 msgid "One message could not be moved to {account}: {error}"
 msgid_plural "{n} messages could not be moved to {account}: {error}"
 msgstr[0] "No s'ha pogut moure un missatge a {account}: {error}"
 msgstr[1] "No s'han pogut moure {n} missatges a {account}: {error}"
+
+#, fuzzy
+msgid "Copying one message to {account}…"
+msgid_plural "Copying {n} messages to {account}…"
+msgstr[0] "S'està movent un missatge a {account}…"
+msgstr[1] "S'estan movent {n} missatges a {account}…"
 
 msgid "Moving one message to {account}…"
 msgid_plural "Moving {n} messages to {account}…"
@@ -1372,29 +1399,31 @@ msgstr[1] "{n} no llegits a les bústies d'entrada"
 msgid "Restarting Tegami Mail"
 msgstr "S'està reiniciant l'Tegami Mail"
 
-msgid "Applying your new app icon. Tegami Mail will close and reopen in a moment."
+msgid ""
+"Applying your new app icon. Tegami Mail will close and reopen in a moment."
 msgstr ""
-"S'està aplicant la nova icona de l'aplicació. L'Tegami Mail es tancarà i tornarà a "
-"obrir-se d'aquí a un moment."
+"S'està aplicant la nova icona de l'aplicació. L'Tegami Mail es tancarà i "
+"tornarà a obrir-se d'aquí a un moment."
 
 msgid "Restart to finish switching icons?"
 msgstr "Vols reiniciar per acabar de canviar les icones?"
 
 msgid ""
-"The dock and Tegami Mail's own windows keep the old icon until Tegami Mail restarts."
+"The dock and Tegami Mail's own windows keep the old icon until Tegami Mail "
+"restarts."
 msgstr ""
-"El dock i les finestres de l'Tegami Mail mantindran la icona antiga fins que es "
-"reiniciï l'Tegami Mail."
+"El dock i les finestres de l'Tegami Mail mantindran la icona antiga fins que "
+"es reiniciï l'Tegami Mail."
 
 msgid "Restart Now"
 msgstr "Reinicia ara"
 
 msgid ""
-"Couldn't restart automatically — quit and reopen Tegami Mail to finish switching "
-"the icon."
+"Couldn't restart automatically — quit and reopen Tegami Mail to finish "
+"switching the icon."
 msgstr ""
-"No s'ha pogut reiniciar automàticament — surt i torna a obrir l'Tegami Mail per "
-"acabar de canviar la icona."
+"No s'ha pogut reiniciar automàticament — surt i torna a obrir l'Tegami Mail "
+"per acabar de canviar la icona."
 
 msgid "Move to {name}"
 msgstr "Mou a {name}"
@@ -1409,11 +1438,11 @@ msgid "Unsubscribe from {name}?"
 msgstr "Vols donar-te de baixa de {name}?"
 
 msgid ""
-"Tegami Mail will ask the list to stop sending you mail. A list can take a few days "
-"to act on the request."
+"Tegami Mail will ask the list to stop sending you mail. A list can take a "
+"few days to act on the request."
 msgstr ""
-"L'Tegami Mail demanarà a la llista que deixi d'enviar-te correu. Una llista pot "
-"trigar uns dies a actuar sobre la sol·licitud."
+"L'Tegami Mail demanarà a la llista que deixi d'enviar-te correu. Una llista "
+"pot trigar uns dies a actuar sobre la sol·licitud."
 
 msgid ""
 "An unsubscribe request will be sent to {addr} from {from}. A list can take a "
@@ -1430,11 +1459,11 @@ msgstr ""
 "pàgina de baixa s'obrirà al navegador."
 
 msgid ""
-"This message carries no unsubscribe header, so Tegami Mail is going by the link in "
-"it."
+"This message carries no unsubscribe header, so Tegami Mail is going by the "
+"link in it."
 msgstr ""
-"Aquest missatge no porta cap capçalera de baixa, així que l'Tegami Mail es guia "
-"per l'enllaç que conté."
+"Aquest missatge no porta cap capçalera de baixa, així que l'Tegami Mail es "
+"guia per l'enllaç que conté."
 
 msgid "Unsubscribe"
 msgstr "Dona'm de baixa"
@@ -1606,10 +1635,11 @@ msgid "Classic"
 msgstr "Clàssic"
 
 msgid ""
-"Tegami Mail checks for new mail and shows notifications while its window is closed."
+"Tegami Mail checks for new mail and shows notifications while its window is "
+"closed."
 msgstr ""
-"L'Tegami Mail comprova si hi ha correu nou i mostra notificacions mentre la seva "
-"finestra és tancada."
+"L'Tegami Mail comprova si hi ha correu nou i mostra notificacions mentre la "
+"seva finestra és tancada."
 
 msgid "Checking for new mail"
 msgstr "S'està comprovant si hi ha correu nou"
@@ -1631,7 +1661,8 @@ msgstr "Hi ha un missatge nou obert a l'Tegami Mail."
 msgid "A new message with {n} file attached is open in Tegami Mail."
 msgid_plural "A new message with {n} files attached is open in Tegami Mail."
 msgstr[0] "Hi ha un missatge nou amb {n} fitxer adjunt obert a l'Tegami Mail."
-msgstr[1] "Hi ha un missatge nou amb {n} fitxers adjunts obert a l'Tegami Mail."
+msgstr[1] ""
+"Hi ha un missatge nou amb {n} fitxers adjunts obert a l'Tegami Mail."
 
 #, fuzzy
 msgid "On {date} at {time}, {name} wrote:"
@@ -1739,8 +1770,8 @@ msgstr "El remitent ha marcat aquest missatge com a «{label}»."
 msgid ""
 "The sender's organization labeled this message without naming the label in "
 "it. For a Microsoft 365 account, turning on “Show sensitivity label names” "
-"in its settings shows the name. Tegami Mail shows the label but does not apply its "
-"rules."
+"in its settings shows the name. Tegami Mail shows the label but does not "
+"apply its rules."
 msgstr ""
 "L'organització del remitent ha etiquetat aquest missatge sense indicar-ne el "
 "nom de l'etiqueta. Per a un compte de Microsoft 365, activar «Mostra els "
@@ -1748,8 +1779,8 @@ msgstr ""
 "L'Tegami Mail mostra l'etiqueta però no n'aplica les regles."
 
 msgid ""
-"The sender's organization labeled this message “{label}”. Tegami Mail shows the "
-"label but does not apply its rules."
+"The sender's organization labeled this message “{label}”. Tegami Mail shows "
+"the label but does not apply its rules."
 msgstr ""
 "L'organització del remitent ha etiquetat aquest missatge com a «{label}». "
 "L'Tegami Mail mostra l'etiqueta però no n'aplica les regles."
@@ -1966,6 +1997,116 @@ msgstr "Signatura caducada"
 msgid "This message hasn't been checked."
 msgstr "Aquest missatge no s'ha comprovat."
 
+#, fuzzy
+msgid "Harper is not available for this computer."
+msgstr "No hi ha cap carpeta de plantilles disponible per a aquest compte"
+
+msgid "Harper is not downloaded. Download it in Settings → Composing."
+msgstr ""
+
+#, fuzzy
+msgid "Harper could not be started: {e}"
+msgstr "No s'ha pogut contactar amb el servei: {e}"
+
+#, fuzzy
+msgid "Harper's answer could not be read."
+msgstr "No s'ha pogut llegir la resposta del servei."
+
+#, fuzzy
+msgid "There is no folder to install to."
+msgstr "No hi ha text per traduir."
+
+msgid "There is not enough free space: {size} is needed."
+msgstr ""
+
+#, fuzzy
+msgid "The download could not start: {e}"
+msgstr "No s'ha pogut desar l'esborrany: {e}"
+
+msgid "The download was cancelled."
+msgstr ""
+
+msgid "The download stopped: {e}"
+msgstr ""
+
+msgid "The downloaded file is not the one expected, so it was not installed."
+msgstr ""
+
+#, fuzzy
+msgid "The download could not be unpacked: {e}"
+msgstr "No s'ha pogut contactar amb el servei: {e}"
+
+#, fuzzy
+msgid "The files could not be written: {e}"
+msgstr "No s'ha pogut obrir el fitxer"
+
+msgid "{n} MB"
+msgstr ""
+
+#, fuzzy
+msgid "The server's answer could not be read."
+msgstr "No s'ha pogut llegir la resposta del servei."
+
+msgid "Nothing answers at that address. Check that the server is running."
+msgstr ""
+
+#, fuzzy
+msgid "The server's name could not be found."
+msgstr "No s'ha pogut llegir la resposta del servei."
+
+#, fuzzy
+msgid "The server's address is not valid."
+msgstr "Introdueix l'adreça del servidor."
+
+#, fuzzy
+msgid "The server could not be reached: {e}"
+msgstr "No s'ha pogut contactar amb el servei: {e}"
+
+#, fuzzy
+msgid "The server did not accept the username and key."
+msgstr "El servidor no ha acceptat el nom d'usuari o la contrasenya."
+
+#, fuzzy
+msgid "The message is too long for the server."
+msgstr "Aquest missatge és massa llarg per enviar-lo a traduir."
+
+msgid "Too many requests: try again in a moment."
+msgstr "Massa sol·licituds: torna-ho a provar d'aquí a un moment."
+
+#, fuzzy
+msgid "The server refused the request (error {code})."
+msgstr "El servei ha refusat la sol·licitud (error {code})."
+
+#, fuzzy
+msgid "LanguageTool is not available for this computer."
+msgstr "No hi ha cap carpeta d'esborranys disponible per a aquest compte"
+
+msgid "LanguageTool stopped unexpectedly."
+msgstr ""
+
+msgid "LanguageTool is not downloaded. Download it in Settings → Composing."
+msgstr ""
+
+#, fuzzy
+msgid "LanguageTool could not be started: {e}"
+msgstr "No s'ha pogut contactar amb el servei: {e}"
+
+msgid "LanguageTool could not be started."
+msgstr ""
+
+#, fuzzy
+msgid "LanguageTool took too long to start."
+msgstr "El servidor ha trigat massa a respondre."
+
+#, fuzzy
+msgid "Enter the LanguageTool server's address in Settings → Composing."
+msgstr ""
+"Introdueix l'adreça del servidor LibreTranslate a Paràmetres → Traducció."
+
+#, fuzzy
+msgid "Enter the server's address first."
+msgstr "Introdueix l'adreça del servidor."
+
 msgid ""
 "{reason} If your organization manages your account, an administrator can "
 "approve Tegami Mail for everyone at {link}"
@@ -1981,9 +2122,6 @@ msgstr "No s'ha pogut contactar amb el servei: {e}"
 
 msgid "The service did not accept the key."
 msgstr "El servei no ha acceptat la clau."
-
-msgid "Too many requests: try again in a moment."
-msgstr "Massa sol·licituds: torna-ho a provar d'aquí a un moment."
 
 msgid "This month's allowance is used up."
 msgstr "S'ha esgotat l'assignació d'aquest mes."
@@ -2196,8 +2334,8 @@ msgid ""
 "Only for an account added in Tegami Mail with Microsoft 365 / Outlook as the "
 "provider, not from GNOME Online Accounts."
 msgstr ""
-"Només per a un compte afegit a l'Tegami Mail amb Microsoft 365 / Outlook com a "
-"proveïdor, no des dels comptes en línia del GNOME."
+"Només per a un compte afegit a l'Tegami Mail amb Microsoft 365 / Outlook com "
+"a proveïdor, no des dels comptes en línia del GNOME."
 
 msgid ""
 "Asks Microsoft for access. Some organizations need an administrator to "
@@ -2288,7 +2426,8 @@ msgid "From address when no Reply-To is set"
 msgstr "Adreça del remitent quan no s'ha definit cap Reply-To"
 
 msgid "Looks in the system address books and the Tegami Mail book"
-msgstr "Cerca a les llibretes d'adreces del sistema i a la llibreta de l'Tegami Mail"
+msgstr ""
+"Cerca a les llibretes d'adreces del sistema i a la llibreta de l'Tegami Mail"
 
 msgid "Tag with"
 msgstr "Etiqueta amb"
@@ -2329,6 +2468,14 @@ msgstr "Servidor entrant"
 
 msgid "Port (IMAP 993 / POP3 995)"
 msgstr "Port (IMAP 993 / POP3 995)"
+
+#, fuzzy
+msgid "Import Mbox Files"
+msgstr "Importa un fitxer…"
+
+#, fuzzy
+msgid "Import Maildir Folders"
+msgstr "La importació ha fallat: {e}"
 
 msgid "Signed in as {address}, not {email}."
 msgstr "Sessió iniciada com a {address}, no com a {email}."
@@ -2386,6 +2533,14 @@ msgstr "Comprova si hi ha comptes nous als comptes en línia del GNOME"
 
 msgid "Add Account…"
 msgstr "Afegeix un compte…"
+
+msgid ""
+"Store mail in folders that live on this computer. Move or copy mail from any "
+"account to here."
+msgstr ""
+
+msgid "Add"
+msgstr "Afegeix"
 
 msgid "GNOME Online Accounts"
 msgstr "Comptes en línia del GNOME"
@@ -2521,6 +2676,10 @@ msgstr "Proton Mail"
 msgid "Custom OAuth"
 msgstr "OAuth personalitzat"
 
+#, fuzzy
+msgid "Folders on this computer"
+msgstr "Tegami Mail, en aquest ordinador"
+
 msgid "IMAP/POP3 account"
 msgstr "Compte IMAP/POP3"
 
@@ -2532,6 +2691,11 @@ msgstr "Compte de correu"
 
 msgid "Enter a client ID and sign in before saving"
 msgstr "Introdueix un ID de client i inicia sessió abans de desar"
+
+msgid ""
+"Remove {name} from Tegami Mail? Its folders and the mail in them stay on "
+"this computer, in {dir}, and come back if it is added again."
+msgstr ""
 
 msgid "Edit HTML"
 msgstr "Edita l'HTML"
@@ -2847,8 +3011,8 @@ msgid ""
 "Tegami Mail, choose it under Default Apps in Settings."
 msgstr ""
 "{old} encara és l'aplicació amb què el teu escriptori obre els enllaços de "
-"correu. Per assignar-ho a l'Tegami Mail, tria'l a Aplicacions per defecte als "
-"paràmetres."
+"correu. Per assignar-ho a l'Tegami Mail, tria'l a Aplicacions per defecte "
+"als paràmetres."
 
 msgid "To remove {old}, run:"
 msgstr "Per eliminar {old}, executa:"
@@ -3298,11 +3462,11 @@ msgid "An attachment is missing"
 msgstr "Falta un adjunt"
 
 msgid ""
-"Tegami Mail cannot read {names}. It was moved or deleted after it was attached. "
-"Remove it, or attach it again from where it is now."
+"Tegami Mail cannot read {names}. It was moved or deleted after it was "
+"attached. Remove it, or attach it again from where it is now."
 msgstr ""
-"L'Tegami Mail no pot llegir {names}. Es va moure o suprimir després d'adjuntar-lo. "
-"Elimina'l, o torna a adjuntar-lo des d'on és ara."
+"L'Tegami Mail no pot llegir {names}. Es va moure o suprimir després "
+"d'adjuntar-lo. Elimina'l, o torna a adjuntar-lo des d'on és ara."
 
 msgid "Type a From address"
 msgstr "Escriu una adreça de remitent"
@@ -3449,8 +3613,8 @@ msgstr "Llibretes d'adreces"
 
 msgid "Rename a book for Tegami Mail, or switch it off to leave it out."
 msgstr ""
-"Canvia el nom d'una llibreta per a l'Tegami Mail, o desactiva-la per deixar-la "
-"fora."
+"Canvia el nom d'una llibreta per a l'Tegami Mail, o desactiva-la per deixar-"
+"la fora."
 
 msgid "Use in Tegami Mail"
 msgstr "Utilitza a l'Tegami Mail"
@@ -3548,8 +3712,8 @@ msgstr ""
 
 msgid "Kept in Tegami Mail's own data folder. Works without GNOME."
 msgstr ""
-"Es conserven a la carpeta de dades pròpia de l'Tegami Mail. Funcionen sense el "
-"GNOME."
+"Es conserven a la carpeta de dades pròpia de l'Tegami Mail. Funcionen sense "
+"el GNOME."
 
 msgid "Contacts in the Tegami Mail book"
 msgstr "Contactes a la llibreta de l'Tegami Mail"
@@ -3569,7 +3733,8 @@ msgstr "Exporta com a fitxer vCard"
 
 msgid "Saves every contact in the Tegami Mail book in one .vcf file."
 msgstr ""
-"Desa tots els contactes de la llibreta de l'Tegami Mail en un sol fitxer .vcf."
+"Desa tots els contactes de la llibreta de l'Tegami Mail en un sol "
+"fitxer .vcf."
 
 msgid "Delete all contacts"
 msgstr "Suprimeix tots els contactes"
@@ -3656,7 +3821,8 @@ msgid ""
 "filters. Switching one off leaves it out of Tegami Mail."
 msgstr ""
 "D'on surten els contactes per a Contactes, els suggeriments, les imatges "
-"dels remitents i els filtres. Desactivar-ne una la deixa fora de l'Tegami Mail."
+"dels remitents i els filtres. Desactivar-ne una la deixa fora de l'Tegami "
+"Mail."
 
 msgid "Look again for address books"
 msgstr "Torna a cercar llibretes d'adreces"
@@ -3745,11 +3911,11 @@ msgid "Rename Address Book"
 msgstr "Canvia el nom de la llibreta d'adreces"
 
 msgid ""
-"The name is used in Tegami Mail only; GNOME Contacts and Evolution keep the book's "
-"own."
+"The name is used in Tegami Mail only; GNOME Contacts and Evolution keep the "
+"book's own."
 msgstr ""
-"El nom només s'utilitza a l'Tegami Mail; els contactes del GNOME i l'Evolution "
-"mantenen el propi de la llibreta."
+"El nom només s'utilitza a l'Tegami Mail; els contactes del GNOME i "
+"l'Evolution mantenen el propi de la llibreta."
 
 msgid "Use Its Own Name"
 msgstr "Utilitza el seu propi nom"
@@ -3805,6 +3971,9 @@ msgstr "Telèfon"
 msgid "Address"
 msgstr "Adreça"
 
+msgid "Website"
+msgstr "Lloc web"
+
 msgid "Birthday"
 msgstr "Aniversari"
 
@@ -3830,9 +3999,11 @@ msgstr "Encara no hi ha ningú en aquest grup."
 msgid "Changed in the app it came from"
 msgstr "Canviat a l'aplicació d'on prové"
 
-msgid "This group names its members by contact, which Tegami Mail does not edit."
+msgid ""
+"This group names its members by contact, which Tegami Mail does not edit."
 msgstr ""
-"Aquest grup anomena els seus membres per contacte, cosa que l'Tegami Mail no edita."
+"Aquest grup anomena els seus membres per contacte, cosa que l'Tegami Mail no "
+"edita."
 
 msgid ""
 "Saving moves the group to this address book, with its people, and removes it "
@@ -4132,8 +4303,8 @@ msgstr "S'estan carregant els contactes…"
 
 msgid ""
 "Add a contact with the + button, or import vCard files. Contacts are kept in "
-"Tegami Mail's own address book, and the address books of GNOME Contacts are listed "
-"here too."
+"Tegami Mail's own address book, and the address books of GNOME Contacts are "
+"listed here too."
 msgstr ""
 "Afegeix un contacte amb el botó +, o importa fitxers vCard. Els contactes es "
 "conserven a la llibreta d'adreces pròpia de l'Tegami Mail, i les llibretes "
@@ -4396,6 +4567,12 @@ msgstr "Importància baixa"
 
 msgid "In {folder}"
 msgstr "A {folder}"
+
+#, fuzzy
+msgid "{n} more tag: {names}"
+msgid_plural "{n} more tags: {names}"
+msgstr[0] "Treu l'etiqueta {name}"
+msgstr[1] "Treu l'etiqueta {name}"
 
 msgid "Yesterday"
 msgstr "Ahir"
@@ -5223,6 +5400,88 @@ msgstr "Balanceig"
 msgid "Custom File"
 msgstr "Fitxer personalitzat"
 
+#, fuzzy
+msgid "Downloading: {done} of {total}"
+msgstr "Carpeta {done} de {total}"
+
+#, fuzzy
+msgid "Not available for this computer."
+msgstr "No hi ha cap carpeta d'esborranys disponible per a aquest compte"
+
+#, fuzzy
+msgid "Version {version}, on this computer."
+msgstr "Tegami Mail, en aquest ordinador"
+
+msgid "Not downloaded yet. The download is {size}."
+msgstr ""
+
+#, fuzzy
+msgid "The files could not be removed."
+msgstr "No s'ha pogut obrir el fitxer"
+
+msgid "The download stopped unexpectedly."
+msgstr ""
+
+msgid "Grammar"
+msgstr ""
+
+msgid "Check grammar and style"
+msgstr ""
+
+#, fuzzy
+msgid "Right-click a marked phrase for suggestions."
+msgstr "Fes clic dret en una paraula per veure'n correccions."
+
+#, fuzzy
+msgid "Checker"
+msgstr "Comprova"
+
+msgid "Harper"
+msgstr ""
+
+#, fuzzy
+msgid "LanguageTool"
+msgstr "Idioma"
+
+#, fuzzy
+msgid "LanguageTool server"
+msgstr "Idiomes"
+
+msgid "English only. Nothing leaves this computer."
+msgstr ""
+
+msgid "Multi-language support. Nothing leaves this computer. Uses 1GB of RAM"
+msgstr ""
+
+#, fuzzy
+msgid "What you write is sent to the server as you type."
+msgstr "Aquesta carpeta no és al servidor"
+
+msgid "Username (LanguageTool Premium)"
+msgstr ""
+
+msgid "API key (LanguageTool Premium)"
+msgstr ""
+
+msgid "Check the settings"
+msgstr "Comprova els paràmetres"
+
+#, fuzzy
+msgid "Sends a test sentence to the server."
+msgstr "No s'ha pogut connectar al servidor."
+
+msgid "Check"
+msgstr "Comprova"
+
+msgid "Checking…"
+msgstr "S'està comprovant…"
+
+msgid "The check stopped unexpectedly."
+msgstr ""
+
+msgid "It works: {server} answered."
+msgstr ""
+
 msgid "Messages already read"
 msgstr "Missatges ja llegits"
 
@@ -5405,6 +5664,7 @@ msgstr "Traducció"
 msgid "General"
 msgstr "General"
 
+#. Rendered as Pango markup — a bare "&" breaks it.
 msgid "Appearance"
 msgstr "Aparença"
 
@@ -5962,6 +6222,12 @@ msgstr "Serif"
 msgid "Monospace"
 msgstr "Monoespaiada"
 
+msgid "Grammar check failed: {error}"
+msgstr ""
+
+msgid "No suggestions"
+msgstr ""
+
 msgid "Spelling Language"
 msgstr "Idioma de correcció ortogràfica"
 
@@ -6188,14 +6454,8 @@ msgstr "Clau"
 msgid "Region (empty for a global resource)"
 msgstr "Regió (buit per a un recurs global)"
 
-msgid "Check the settings"
-msgstr "Comprova els paràmetres"
-
 msgid "Translates a greeting to test the service."
 msgstr "Tradueix una salutació per provar el servei."
-
-msgid "Check"
-msgstr "Comprova"
 
 msgid "Messages"
 msgstr "Missatges"
@@ -6216,9 +6476,6 @@ msgstr ""
 msgid "Key (if the server asks for one)"
 msgstr "Clau (si el servidor en demana una)"
 
-msgid "Checking…"
-msgstr "S'està comprovant…"
-
 msgid "It works: “{sent}” came back as “{back}”."
 msgstr "Funciona: «{sent}» ha tornat com a «{back}»."
 
@@ -6227,9 +6484,6 @@ msgstr "Inicia sessió"
 
 msgid "The sign-in window was closed."
 msgstr "La finestra d'inici de sessió s'ha tancat."
-
-msgid "Add"
-msgstr "Afegeix"
 
 msgid "✓ {email} — added"
 msgstr "✓ {email} — afegit"
@@ -6283,11 +6537,11 @@ msgid "Language"
 msgstr "Idioma"
 
 msgid ""
-"Choosing another language restarts Tegami Mail: it closes for a moment and this "
-"wizard comes back in that language."
+"Choosing another language restarts Tegami Mail: it closes for a moment and "
+"this wizard comes back in that language."
 msgstr ""
-"Triar un altre idioma reinicia l'Tegami Mail: es tanca un moment i aquest auxiliar "
-"torna en aquest idioma."
+"Triar un altre idioma reinicia l'Tegami Mail: es tanca un moment i aquest "
+"auxiliar torna en aquest idioma."
 
 msgid "Get Started"
 msgstr "Comença"
@@ -6317,11 +6571,11 @@ msgid "Privacy, your way"
 msgstr "Privacitat, a la teva manera"
 
 msgid ""
-"Tegami Mail sends no telemetry, ever. These control what leaves your machine while "
-"you read."
+"Tegami Mail sends no telemetry, ever. These control what leaves your machine "
+"while you read."
 msgstr ""
-"L'Tegami Mail no envia mai cap telemetria. Aquests controlen què surt de la teva "
-"màquina mentre llegeixes."
+"L'Tegami Mail no envia mai cap telemetria. Aquests controlen què surt de la "
+"teva màquina mentre llegeixes."
 
 msgid "Block remote images"
 msgstr "Bloca les imatges remotes"
@@ -6437,8 +6691,8 @@ msgstr ""
 "premut per a la barra d'estat"
 
 msgid ""
-"Could not read the password for {email} from the keyring ({e}). Tegami Mail tries "
-"again at the next connection."
+"Could not read the password for {email} from the keyring ({e}). Tegami Mail "
+"tries again at the next connection."
 msgstr ""
 "No s'ha pogut llegir la contrasenya de {email} de l'anell de claus ({e}). "
 "L'Tegami Mail ho tornarà a provar a la propera connexió."
@@ -6549,8 +6803,9 @@ msgid "Connection failed: {e}"
 msgstr "La connexió ha fallat: {e}"
 
 msgid ""
-"This account has no IMAP server. Tegami Mail can't use Exchange accounts from "
-"Online Accounts: remove it and add it as an IMAP or Microsoft 365 account."
+"This account has no IMAP server. Tegami Mail can't use Exchange accounts "
+"from Online Accounts: remove it and add it as an IMAP or Microsoft 365 "
+"account."
 msgstr ""
 "Aquest compte no té servidor IMAP. L'Tegami Mail no pot utilitzar comptes "
 "d'Exchange dels comptes en línia: elimina'l i afegeix-lo com a compte IMAP o "
@@ -6578,10 +6833,11 @@ msgid "Could not change the star: {e}"
 msgstr "No s'ha pogut canviar la destacat: {e}"
 
 msgid ""
-"This server does not store tags, so Tegami Mail keeps them on this computer only"
+"This server does not store tags, so Tegami Mail keeps them on this computer "
+"only"
 msgstr ""
-"Aquest servidor no emmagatzema etiquetes, així que l'Tegami Mail les conserva "
-"només en aquest ordinador"
+"Aquest servidor no emmagatzema etiquetes, així que l'Tegami Mail les "
+"conserva només en aquest ordinador"
 
 msgid "Could not tag message: {e}"
 msgstr "No s'ha pogut etiquetar el missatge: {e}"
@@ -6590,8 +6846,8 @@ msgid "Could not mark folder read: {e}"
 msgstr "No s'ha pogut marcar la carpeta com a llegida: {e}"
 
 msgid ""
-"Gmail keeps a copy of every message in All Mail, so Tegami Mail cannot remove an "
-"attachment there"
+"Gmail keeps a copy of every message in All Mail, so Tegami Mail cannot "
+"remove an attachment there"
 msgstr ""
 "El Gmail conserva una còpia de cada missatge a «Tot el correu», així que "
 "l'Tegami Mail no pot eliminar un adjunt allà"
@@ -6618,6 +6874,43 @@ msgstr "Aquesta carpeta no és al servidor"
 
 msgid "Could not reach the JMAP server: {e}"
 msgstr "No s'ha pogut contactar amb el servidor JMAP: {e}"
+
+msgid "Mail on this computer is not sent, and has no drafts"
+msgstr ""
+
+msgid "Mail is not sent from On This Computer: choose another From address"
+msgstr ""
+
+#, fuzzy
+msgid "Could not import {path}: {e}"
+msgstr "No s'ha pogut importar: {e}"
+
+#, fuzzy
+msgid "Importing {done} of {total} messages…"
+msgstr "Carpeta {done} de {total}"
+
+#, fuzzy
+msgid "A folder by that name already exists"
+msgstr "Ja hi ha una carpeta anomenada {new_name}."
+
+msgid "The folder still holds mail"
+msgstr ""
+
+#, fuzzy
+msgid "That is not a folder name"
+msgstr "Aquesta carpeta"
+
+#, fuzzy
+msgid "Could not store the message: {e}"
+msgstr "No s'ha pogut desar el missatge: {e}"
+
+#, fuzzy
+msgid "Could not open the folders on this computer: {e}"
+msgstr "No s'ha pogut buidar la carpeta: {e}"
+
+#, fuzzy
+msgid "Reading {n} messages…"
+msgstr "S'estan indexant {n} missatges…"
 
 #. Nothing failed: the message waits for the network, which the
 #. Refresh button already shows is down (#442).
@@ -6937,7 +7230,7 @@ msgstr ""
 "El correu de la bústia d'entrada amb un enllaç de baixa més antic que això "
 "es mou a la paperera, tret que estigui destacat."
 
-msgid "Keep mail offline"
+msgid "Keep mail cached"
 msgstr ""
 
 msgid "Leaves out Trash, Junk and Drafts."
@@ -6948,6 +7241,36 @@ msgid "Include attachments"
 msgstr "No hi ha adjunts"
 
 msgid "Can consume a lot of hard drive space."
+msgstr ""
+
+#, fuzzy
+msgid "Copy mail to On This Computer"
+msgstr "En aquest ordinador"
+
+msgid ""
+"Downloads copies of every message from every folder of this account to this "
+"computer (except Trash, Junk and Drafts) and stores them in On This Computer."
+msgstr ""
+
+#, fuzzy
+msgid "Import"
+msgstr "Importa…"
+
+msgid "Mail already here is not imported again."
+msgstr ""
+
+#, fuzzy
+msgid "Maildir folders"
+msgstr "Totes les carpetes"
+
+msgid "Evolution's On This Computer, Dovecot and other Maildir trees."
+msgstr ""
+
+#, fuzzy
+msgid "Mbox files"
+msgstr "Tots els fitxers"
+
+msgid "Thunderbird's folders and other mbox files."
 msgstr ""
 
 msgid "Microsoft 365"
@@ -7511,11 +7834,11 @@ msgid "GNOME Files Integration"
 msgstr "Integració amb els Fitxers del GNOME"
 
 msgid ""
-"Adds “Send with Tegami Mail” to the right-click menu in Files. Needs the nautilus-"
-"python package and a restart of Files."
+"Adds “Send with Tegami Mail” to the right-click menu in Files. Needs the "
+"nautilus-python package and a restart of Files."
 msgstr ""
-"Afegeix «Envia amb l'Tegami Mail» al menú contextual dels Fitxers. Necessita el "
-"paquet nautilus-python i reiniciar els Fitxers."
+"Afegeix «Envia amb l'Tegami Mail» al menú contextual dels Fitxers. Necessita "
+"el paquet nautilus-python i reiniciar els Fitxers."
 
 msgid "Right-click menu entry"
 msgstr "Entrada al menú contextual"
@@ -7600,17 +7923,18 @@ msgid "Email;Mail;IMAP;"
 msgstr "Correu;Mail;IMAP;"
 
 msgid ""
-"Tegami Mail is a desktop email client for GNOME on Wayland, written in Rust with "
-"libadwaita. Your mail and credentials stay on your machine, remote content "
-"is blocked until you allow it, and there is no telemetry. It works with "
-"IMAP, POP3, JMAP and Microsoft 365, and with any server from iCloud to "
+"Tegami Mail is a desktop email client for GNOME on Wayland, written in Rust "
+"with libadwaita. Your mail and credentials stay on your machine, remote "
+"content is blocked until you allow it, and there is no telemetry. It works "
+"with IMAP, POP3, JMAP and Microsoft 365, and with any server from iCloud to "
 "Proton Bridge to a Stalwart of your own."
 msgstr ""
-"L'Tegami Mail és un client de correu d'escriptori per al GNOME a Wayland, escrit "
-"en Rust amb libadwaita. El teu correu i les credencials es queden a la teva "
-"màquina, el contingut remot està blocat fins que el permetis, i no hi ha "
-"telemetria. Funciona amb IMAP, POP3, JMAP i Microsoft 365, i amb qualsevol "
-"servidor des de l'iCloud fins al Proton Bridge fins a un Stalwart propi."
+"L'Tegami Mail és un client de correu d'escriptori per al GNOME a Wayland, "
+"escrit en Rust amb libadwaita. El teu correu i les credencials es queden a "
+"la teva màquina, el contingut remot està blocat fins que el permetis, i no "
+"hi ha telemetria. Funciona amb IMAP, POP3, JMAP i Microsoft 365, i amb "
+"qualsevol servidor des de l'iCloud fins al Proton Bridge fins a un Stalwart "
+"propi."
 
 msgid "Accounts and mail:"
 msgstr "Comptes i correu:"
@@ -7714,11 +8038,14 @@ msgstr ""
 "Integració amb els contactes del GNOME, la teva elecció d'idioma i rellotge, "
 "i contrasenyes conservades a l'anell de claus del sistema"
 
-msgid "The unified inbox in light mode"
-msgstr "La bústia d'entrada unificada en mode clar"
-
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Buy Me a Coffee"
+#~ msgstr "Convida'm a un cafè"
+
+#~ msgid "The unified inbox in light mode"
+#~ msgstr "La bústia d'entrada unificada en mode clar"
 
 #~ msgid "Received"
 #~ msgstr "Rebut"

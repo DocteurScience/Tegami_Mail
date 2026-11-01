@@ -33,9 +33,6 @@ msgstr ""
 msgid "Project"
 msgstr ""
 
-msgid "Website"
-msgstr ""
-
 msgid "Report an issue or feature request"
 msgstr ""
 
@@ -43,9 +40,6 @@ msgid "Source Code"
 msgstr ""
 
 msgid "License (GNU AGPL v3)"
-msgstr ""
-
-msgid "Buy Me a Coffee"
 msgstr ""
 
 #. Contributors — people outside Hyprlab whose patches are in the app.
@@ -545,7 +539,8 @@ msgid "Always do this (change it in Settings → System → GNOME Files)"
 msgstr ""
 
 msgid "Could not attach {names}: Tegami Mail cannot read the file."
-msgid_plural "Could not attach {n} files (Tegami Mail cannot read them): {names}"
+msgid_plural ""
+"Could not attach {n} files (Tegami Mail cannot read them): {names}"
 msgstr[0] ""
 msgstr[1] ""
 
@@ -788,6 +783,9 @@ msgstr ""
 msgid "Send the message you are writing"
 msgstr ""
 
+#. Save Draft, Save as Template and Delete Draft are not here:
+#. the Save Draft button and its arrow stay in the header at
+#. any width.
 msgid "Attach files"
 msgstr ""
 
@@ -1099,8 +1097,8 @@ msgid "Delete All Contacts?"
 msgstr ""
 
 msgid ""
-"The {n} contact in the Tegami Mail address book is deleted. This cannot be undone; "
-"export the book first to keep a copy."
+"The {n} contact in the Tegami Mail address book is deleted. This cannot be "
+"undone; export the book first to keep a copy."
 msgid_plural ""
 "The {n} contacts in the Tegami Mail address book are deleted. This cannot be "
 "undone; export the book first to keep a copy."
@@ -1130,8 +1128,8 @@ msgstr ""
 
 msgid ""
 "{n} mail account(s), the cloud storage accounts and all preferences were "
-"imported. Restart Tegami Mail to apply them. Passwords and sign-ins are not part "
-"of a backup; re-enter them on first use if this is a new machine."
+"imported. Restart Tegami Mail to apply them. Passwords and sign-ins are not "
+"part of a backup; re-enter them on first use if this is a new machine."
 msgstr ""
 
 msgid "Later"
@@ -1304,22 +1302,24 @@ msgstr[1] ""
 msgid "Restarting Tegami Mail"
 msgstr ""
 
-msgid "Applying your new app icon. Tegami Mail will close and reopen in a moment."
+msgid ""
+"Applying your new app icon. Tegami Mail will close and reopen in a moment."
 msgstr ""
 
 msgid "Restart to finish switching icons?"
 msgstr ""
 
 msgid ""
-"The dock and Tegami Mail's own windows keep the old icon until Tegami Mail restarts."
+"The dock and Tegami Mail's own windows keep the old icon until Tegami Mail "
+"restarts."
 msgstr ""
 
 msgid "Restart Now"
 msgstr ""
 
 msgid ""
-"Couldn't restart automatically — quit and reopen Tegami Mail to finish switching "
-"the icon."
+"Couldn't restart automatically — quit and reopen Tegami Mail to finish "
+"switching the icon."
 msgstr ""
 
 msgid "Move to {name}"
@@ -1335,8 +1335,8 @@ msgid "Unsubscribe from {name}?"
 msgstr ""
 
 msgid ""
-"Tegami Mail will ask the list to stop sending you mail. A list can take a few days "
-"to act on the request."
+"Tegami Mail will ask the list to stop sending you mail. A list can take a "
+"few days to act on the request."
 msgstr ""
 
 msgid ""
@@ -1350,8 +1350,8 @@ msgid ""
 msgstr ""
 
 msgid ""
-"This message carries no unsubscribe header, so Tegami Mail is going by the link in "
-"it."
+"This message carries no unsubscribe header, so Tegami Mail is going by the "
+"link in it."
 msgstr ""
 
 msgid "Unsubscribe"
@@ -1519,7 +1519,8 @@ msgid "Classic"
 msgstr ""
 
 msgid ""
-"Tegami Mail checks for new mail and shows notifications while its window is closed."
+"Tegami Mail checks for new mail and shows notifications while its window is "
+"closed."
 msgstr ""
 
 msgid "Checking for new mail"
@@ -1642,13 +1643,13 @@ msgstr ""
 msgid ""
 "The sender's organization labeled this message without naming the label in "
 "it. For a Microsoft 365 account, turning on “Show sensitivity label names” "
-"in its settings shows the name. Tegami Mail shows the label but does not apply its "
-"rules."
+"in its settings shows the name. Tegami Mail shows the label but does not "
+"apply its rules."
 msgstr ""
 
 msgid ""
-"The sender's organization labeled this message “{label}”. Tegami Mail shows the "
-"label but does not apply its rules."
+"The sender's organization labeled this message “{label}”. Tegami Mail shows "
+"the label but does not apply its rules."
 msgstr ""
 
 msgid ""
@@ -2480,8 +2481,8 @@ msgid "Enter a client ID and sign in before saving"
 msgstr ""
 
 msgid ""
-"Remove {name} from Tegami Mail? Its folders and the mail in them stay on this "
-"computer, in {dir}, and come back if it is added again."
+"Remove {name} from Tegami Mail? Its folders and the mail in them stay on "
+"this computer, in {dir}, and come back if it is added again."
 msgstr ""
 
 msgid "Edit HTML"
@@ -3186,8 +3187,8 @@ msgid "An attachment is missing"
 msgstr ""
 
 msgid ""
-"Tegami Mail cannot read {names}. It was moved or deleted after it was attached. "
-"Remove it, or attach it again from where it is now."
+"Tegami Mail cannot read {names}. It was moved or deleted after it was "
+"attached. Remove it, or attach it again from where it is now."
 msgstr ""
 
 msgid "Type a From address"
@@ -3592,8 +3593,8 @@ msgid "Rename Address Book"
 msgstr ""
 
 msgid ""
-"The name is used in Tegami Mail only; GNOME Contacts and Evolution keep the book's "
-"own."
+"The name is used in Tegami Mail only; GNOME Contacts and Evolution keep the "
+"book's own."
 msgstr ""
 
 msgid "Use Its Own Name"
@@ -3644,6 +3645,9 @@ msgstr ""
 msgid "Address"
 msgstr ""
 
+msgid "Website"
+msgstr ""
+
 msgid "Birthday"
 msgstr ""
 
@@ -3669,7 +3673,8 @@ msgstr ""
 msgid "Changed in the app it came from"
 msgstr ""
 
-msgid "This group names its members by contact, which Tegami Mail does not edit."
+msgid ""
+"This group names its members by contact, which Tegami Mail does not edit."
 msgstr ""
 
 msgid ""
@@ -3946,8 +3951,8 @@ msgstr ""
 
 msgid ""
 "Add a contact with the + button, or import vCard files. Contacts are kept in "
-"Tegami Mail's own address book, and the address books of GNOME Contacts are listed "
-"here too."
+"Tegami Mail's own address book, and the address books of GNOME Contacts are "
+"listed here too."
 msgstr ""
 
 msgid "Search contacts (Ctrl+F)"
@@ -4191,6 +4196,11 @@ msgstr ""
 
 msgid "In {folder}"
 msgstr ""
+
+msgid "{n} more tag: {names}"
+msgid_plural "{n} more tags: {names}"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "Yesterday"
 msgstr ""
@@ -5217,6 +5227,7 @@ msgstr ""
 msgid "General"
 msgstr ""
 
+#. Rendered as Pango markup — a bare "&" breaks it.
 msgid "Appearance"
 msgstr ""
 
@@ -6044,8 +6055,8 @@ msgid "Language"
 msgstr ""
 
 msgid ""
-"Choosing another language restarts Tegami Mail: it closes for a moment and this "
-"wizard comes back in that language."
+"Choosing another language restarts Tegami Mail: it closes for a moment and "
+"this wizard comes back in that language."
 msgstr ""
 
 msgid "Get Started"
@@ -6073,8 +6084,8 @@ msgid "Privacy, your way"
 msgstr ""
 
 msgid ""
-"Tegami Mail sends no telemetry, ever. These control what leaves your machine while "
-"you read."
+"Tegami Mail sends no telemetry, ever. These control what leaves your machine "
+"while you read."
 msgstr ""
 
 msgid "Block remote images"
@@ -6183,8 +6194,8 @@ msgid ""
 msgstr ""
 
 msgid ""
-"Could not read the password for {email} from the keyring ({e}). Tegami Mail tries "
-"again at the next connection."
+"Could not read the password for {email} from the keyring ({e}). Tegami Mail "
+"tries again at the next connection."
 msgstr ""
 
 msgid ""
@@ -6291,8 +6302,9 @@ msgid "Connection failed: {e}"
 msgstr ""
 
 msgid ""
-"This account has no IMAP server. Tegami Mail can't use Exchange accounts from "
-"Online Accounts: remove it and add it as an IMAP or Microsoft 365 account."
+"This account has no IMAP server. Tegami Mail can't use Exchange accounts "
+"from Online Accounts: remove it and add it as an IMAP or Microsoft 365 "
+"account."
 msgstr ""
 
 msgid "could not reach the server"
@@ -6317,7 +6329,8 @@ msgid "Could not change the star: {e}"
 msgstr ""
 
 msgid ""
-"This server does not store tags, so Tegami Mail keeps them on this computer only"
+"This server does not store tags, so Tegami Mail keeps them on this computer "
+"only"
 msgstr ""
 
 msgid "Could not tag message: {e}"
@@ -6327,8 +6340,8 @@ msgid "Could not mark folder read: {e}"
 msgstr ""
 
 msgid ""
-"Gmail keeps a copy of every message in All Mail, so Tegami Mail cannot remove an "
-"attachment there"
+"Gmail keeps a copy of every message in All Mail, so Tegami Mail cannot "
+"remove an attachment there"
 msgstr ""
 
 msgid "Could not move {len} messages: {e}"
@@ -7233,8 +7246,8 @@ msgid "GNOME Files Integration"
 msgstr ""
 
 msgid ""
-"Adds “Send with Tegami Mail” to the right-click menu in Files. Needs the nautilus-"
-"python package and a restart of Files."
+"Adds “Send with Tegami Mail” to the right-click menu in Files. Needs the "
+"nautilus-python package and a restart of Files."
 msgstr ""
 
 msgid "Right-click menu entry"
@@ -7318,10 +7331,10 @@ msgid "Email;Mail;IMAP;"
 msgstr ""
 
 msgid ""
-"Tegami Mail is a desktop email client for GNOME on Wayland, written in Rust with "
-"libadwaita. Your mail and credentials stay on your machine, remote content "
-"is blocked until you allow it, and there is no telemetry. It works with "
-"IMAP, POP3, JMAP and Microsoft 365, and with any server from iCloud to "
+"Tegami Mail is a desktop email client for GNOME on Wayland, written in Rust "
+"with libadwaita. Your mail and credentials stay on your machine, remote "
+"content is blocked until you allow it, and there is no telemetry. It works "
+"with IMAP, POP3, JMAP and Microsoft 365, and with any server from iCloud to "
 "Proton Bridge to a Stalwart of your own."
 msgstr ""
 
@@ -7398,9 +7411,6 @@ msgstr ""
 msgid ""
 "GNOME Contacts integration, your choice of language and clock, and passwords "
 "kept in the system keyring"
-msgstr ""
-
-msgid "The unified inbox in light mode"
 msgstr ""
 
 msgid "Hyprlab"

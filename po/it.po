@@ -40,9 +40,6 @@ msgstr "Rendi persistenti le password degli account su Linux Mint"
 msgid "Project"
 msgstr "Progetto"
 
-msgid "Website"
-msgstr "Sito web"
-
 msgid "Report an issue or feature request"
 msgstr "Segnala un problema o una richiesta di funzionalità"
 
@@ -51,9 +48,6 @@ msgstr "Codice sorgente"
 
 msgid "License (GNU AGPL v3)"
 msgstr "Licenza (GNU AGPL v3)"
-
-msgid "Buy Me a Coffee"
-msgstr "Offrimi un caffè"
 
 #. Contributors — people outside Hyprlab whose patches are in the app.
 msgid "Special thanks to these contributors"
@@ -84,6 +78,10 @@ msgstr "Impossibile salvare l'account: {e}"
 
 msgid "Could not import account: {e}"
 msgstr "Impossibile importare l'account: {e}"
+
+#, fuzzy
+msgid "On This Computer is switched off"
+msgstr "Su questo computer"
 
 msgid "Delete the attachment from the server?"
 msgstr "Eliminare l'allegato dal server?"
@@ -193,6 +191,10 @@ msgid "Mark as Spam"
 msgstr "Segna come indesiderato"
 
 msgid "Move To…"
+msgstr "Sposta in…"
+
+#, fuzzy
+msgid "Copy To…"
 msgstr "Sposta in…"
 
 msgid "Archive"
@@ -592,8 +594,10 @@ msgid "Always do this (change it in Settings → System → GNOME Files)"
 msgstr "Fai sempre così (cambialo in Impostazioni → Sistema → File GNOME)"
 
 msgid "Could not attach {names}: Tegami Mail cannot read the file."
-msgid_plural "Could not attach {n} files (Tegami Mail cannot read them): {names}"
-msgstr[0] "Impossibile allegare {names}: Tegami Mail non riesce a leggere il file."
+msgid_plural ""
+"Could not attach {n} files (Tegami Mail cannot read them): {names}"
+msgstr[0] ""
+"Impossibile allegare {names}: Tegami Mail non riesce a leggere il file."
 msgstr[1] ""
 "Impossibile allegare {n} file (Tegami Mail non riesce a leggerli): {names}"
 
@@ -763,6 +767,12 @@ msgid "Refresh or long-press for Status Bar"
 msgstr "Aggiorna o tieni premuto per la barra di stato"
 
 #, fuzzy
+msgid "Copying one message to On This Computer…"
+msgid_plural "Copying {n} messages to On This Computer…"
+msgstr[0] "Spostamento di un messaggio in {account}…"
+msgstr[1] "Spostamento di {n} messaggi in {account}…"
+
+#, fuzzy
 msgid "Sending message…"
 msgstr "Indicizzazione di {n} messaggi…"
 
@@ -849,6 +859,9 @@ msgstr "Nuovo messaggio da un modello"
 msgid "Send the message you are writing"
 msgstr "Invia il messaggio che stai scrivendo"
 
+#. Save Draft, Save as Template and Delete Draft are not here:
+#. the Save Draft button and its arrow stay in the header at
+#. any width.
 msgid "Attach files"
 msgstr "Allega file"
 
@@ -1195,17 +1208,17 @@ msgid "Delete All Contacts?"
 msgstr "Eliminare tutti i contatti?"
 
 msgid ""
-"The {n} contact in the Tegami Mail address book is deleted. This cannot be undone; "
-"export the book first to keep a copy."
+"The {n} contact in the Tegami Mail address book is deleted. This cannot be "
+"undone; export the book first to keep a copy."
 msgid_plural ""
 "The {n} contacts in the Tegami Mail address book are deleted. This cannot be "
 "undone; export the book first to keep a copy."
 msgstr[0] ""
-"Il contatto {n} nella rubrica di Tegami Mail viene eliminato. Questa azione non "
-"può essere annullata; esporta la rubrica prima per conservarne una copia."
+"Il contatto {n} nella rubrica di Tegami Mail viene eliminato. Questa azione "
+"non può essere annullata; esporta la rubrica prima per conservarne una copia."
 msgstr[1] ""
-"I {n} contatti nella rubrica di Tegami Mail vengono eliminati. Questa azione non "
-"può essere annullata; esporta la rubrica prima per conservarne una copia."
+"I {n} contatti nella rubrica di Tegami Mail vengono eliminati. Questa azione "
+"non può essere annullata; esporta la rubrica prima per conservarne una copia."
 
 msgid "Delete All"
 msgstr "Elimina tutto"
@@ -1230,8 +1243,8 @@ msgstr "Impostazioni importate"
 
 msgid ""
 "{n} mail account(s), the cloud storage accounts and all preferences were "
-"imported. Restart Tegami Mail to apply them. Passwords and sign-ins are not part "
-"of a backup; re-enter them on first use if this is a new machine."
+"imported. Restart Tegami Mail to apply them. Passwords and sign-ins are not "
+"part of a backup; re-enter them on first use if this is a new machine."
 msgstr ""
 "{n} account e-mail, gli account di archiviazione cloud e tutte le preferenze "
 "sono stati importati. Riavvia Tegami Mail per applicarli. Le password e gli "
@@ -1373,10 +1386,22 @@ msgstr ""
 msgid "Snooze until"
 msgstr ""
 
+#, fuzzy
+msgid "One message could not be copied to {account}: {error}"
+msgid_plural "{n} messages could not be copied to {account}: {error}"
+msgstr[0] "Un messaggio non è stato spostato in {account}: {error}"
+msgstr[1] "{n} messaggi non sono stati spostati in {account}: {error}"
+
 msgid "One message could not be moved to {account}: {error}"
 msgid_plural "{n} messages could not be moved to {account}: {error}"
 msgstr[0] "Un messaggio non è stato spostato in {account}: {error}"
 msgstr[1] "{n} messaggi non sono stati spostati in {account}: {error}"
+
+#, fuzzy
+msgid "Copying one message to {account}…"
+msgid_plural "Copying {n} messages to {account}…"
+msgstr[0] "Spostamento di un messaggio in {account}…"
+msgstr[1] "Spostamento di {n} messaggi in {account}…"
 
 msgid "Moving one message to {account}…"
 msgid_plural "Moving {n} messages to {account}…"
@@ -1417,7 +1442,8 @@ msgstr[1] "{n} non letti nella Posta in arrivo"
 msgid "Restarting Tegami Mail"
 msgstr "Riavvio di Tegami Mail"
 
-msgid "Applying your new app icon. Tegami Mail will close and reopen in a moment."
+msgid ""
+"Applying your new app icon. Tegami Mail will close and reopen in a moment."
 msgstr ""
 "Applicazione della nuova icona. Tegami Mail si chiuderà e si riaprirà tra un "
 "momento."
@@ -1426,20 +1452,21 @@ msgid "Restart to finish switching icons?"
 msgstr "Riavviare per completare il cambio di icone?"
 
 msgid ""
-"The dock and Tegami Mail's own windows keep the old icon until Tegami Mail restarts."
+"The dock and Tegami Mail's own windows keep the old icon until Tegami Mail "
+"restarts."
 msgstr ""
-"Il dock e le finestre di Tegami Mail mantengono la vecchia icona fino al riavvio "
-"di Tegami Mail."
+"Il dock e le finestre di Tegami Mail mantengono la vecchia icona fino al "
+"riavvio di Tegami Mail."
 
 msgid "Restart Now"
 msgstr "Riavvia ora"
 
 msgid ""
-"Couldn't restart automatically — quit and reopen Tegami Mail to finish switching "
-"the icon."
+"Couldn't restart automatically — quit and reopen Tegami Mail to finish "
+"switching the icon."
 msgstr ""
-"Impossibile riavviare automaticamente — esci e riapri Tegami Mail per completare "
-"il cambio dell'icona."
+"Impossibile riavviare automaticamente — esci e riapri Tegami Mail per "
+"completare il cambio dell'icona."
 
 msgid "Move to {name}"
 msgstr "Sposta in {name}"
@@ -1454,8 +1481,8 @@ msgid "Unsubscribe from {name}?"
 msgstr "Disiscriversi da {name}?"
 
 msgid ""
-"Tegami Mail will ask the list to stop sending you mail. A list can take a few days "
-"to act on the request."
+"Tegami Mail will ask the list to stop sending you mail. A list can take a "
+"few days to act on the request."
 msgstr ""
 "Tegami Mail chiederà alla lista di smettere di inviarti posta. Una lista può "
 "impiegare qualche giorno per elaborare la richiesta."
@@ -1475,8 +1502,8 @@ msgstr ""
 "disiscrizione verrà aperta nel browser."
 
 msgid ""
-"This message carries no unsubscribe header, so Tegami Mail is going by the link in "
-"it."
+"This message carries no unsubscribe header, so Tegami Mail is going by the "
+"link in it."
 msgstr ""
 "Questo messaggio non contiene nessuna intestazione di disiscrizione, quindi "
 "Tegami Mail usa il link presente nel messaggio."
@@ -1654,10 +1681,11 @@ msgid "Classic"
 msgstr "Classico"
 
 msgid ""
-"Tegami Mail checks for new mail and shows notifications while its window is closed."
+"Tegami Mail checks for new mail and shows notifications while its window is "
+"closed."
 msgstr ""
-"Tegami Mail controlla la nuova posta e mostra notifiche anche quando la finestra è "
-"chiusa."
+"Tegami Mail controlla la nuova posta e mostra notifiche anche quando la "
+"finestra è chiusa."
 
 msgid "Checking for new mail"
 msgstr "Controllo nuova posta in corso"
@@ -1787,16 +1815,16 @@ msgstr "Il mittente ha contrassegnato questo messaggio come \"{label}\"."
 msgid ""
 "The sender's organization labeled this message without naming the label in "
 "it. For a Microsoft 365 account, turning on “Show sensitivity label names” "
-"in its settings shows the name. Tegami Mail shows the label but does not apply its "
-"rules."
+"in its settings shows the name. Tegami Mail shows the label but does not "
+"apply its rules."
 msgstr ""
 "L'organizzazione del mittente ha etichettato questo messaggio, senza "
-"indicare il nome dell'etichetta. Tegami Mail mostra l'etichetta ma non ne applica "
-"le regole."
+"indicare il nome dell'etichetta. Tegami Mail mostra l'etichetta ma non ne "
+"applica le regole."
 
 msgid ""
-"The sender's organization labeled this message “{label}”. Tegami Mail shows the "
-"label but does not apply its rules."
+"The sender's organization labeled this message “{label}”. Tegami Mail shows "
+"the label but does not apply its rules."
 msgstr ""
 "L'organizzazione del mittente ha etichettato questo messaggio come \"{label}"
 "\". Tegami Mail mostra l'etichetta ma non ne applica le regole."
@@ -2014,6 +2042,116 @@ msgstr "Firma scaduta"
 msgid "This message hasn't been checked."
 msgstr "Questo messaggio non è stato verificato."
 
+#, fuzzy
+msgid "Harper is not available for this computer."
+msgstr "Nessuna cartella Modelli disponibile per questo account"
+
+msgid "Harper is not downloaded. Download it in Settings → Composing."
+msgstr ""
+
+#, fuzzy
+msgid "Harper could not be started: {e}"
+msgstr "Impossibile raggiungere il servizio: {e}"
+
+#, fuzzy
+msgid "Harper's answer could not be read."
+msgstr "Impossibile leggere la risposta del servizio."
+
+#, fuzzy
+msgid "There is no folder to install to."
+msgstr "Non c'è testo da tradurre."
+
+msgid "There is not enough free space: {size} is needed."
+msgstr ""
+
+#, fuzzy
+msgid "The download could not start: {e}"
+msgstr "Impossibile salvare la bozza: {e}"
+
+msgid "The download was cancelled."
+msgstr ""
+
+msgid "The download stopped: {e}"
+msgstr ""
+
+msgid "The downloaded file is not the one expected, so it was not installed."
+msgstr ""
+
+#, fuzzy
+msgid "The download could not be unpacked: {e}"
+msgstr "Impossibile raggiungere il servizio: {e}"
+
+#, fuzzy
+msgid "The files could not be written: {e}"
+msgstr "Impossibile aprire il file"
+
+msgid "{n} MB"
+msgstr ""
+
+#, fuzzy
+msgid "The server's answer could not be read."
+msgstr "Impossibile leggere la risposta del servizio."
+
+msgid "Nothing answers at that address. Check that the server is running."
+msgstr ""
+
+#, fuzzy
+msgid "The server's name could not be found."
+msgstr "Impossibile leggere la risposta del servizio."
+
+#, fuzzy
+msgid "The server's address is not valid."
+msgstr "Inserisci il server della directory."
+
+#, fuzzy
+msgid "The server could not be reached: {e}"
+msgstr "Impossibile raggiungere il servizio: {e}"
+
+#, fuzzy
+msgid "The server did not accept the username and key."
+msgstr "La directory non ha accettato la password."
+
+#, fuzzy
+msgid "The message is too long for the server."
+msgstr "Questo messaggio è troppo lungo per essere inviato per la traduzione."
+
+msgid "Too many requests: try again in a moment."
+msgstr "Troppe richieste: riprova tra un momento."
+
+#, fuzzy
+msgid "The server refused the request (error {code})."
+msgstr "Il servizio ha rifiutato la richiesta (errore {code})."
+
+#, fuzzy
+msgid "LanguageTool is not available for this computer."
+msgstr "Nessuna cartella Bozze disponibile per questo account"
+
+msgid "LanguageTool stopped unexpectedly."
+msgstr ""
+
+msgid "LanguageTool is not downloaded. Download it in Settings → Composing."
+msgstr ""
+
+#, fuzzy
+msgid "LanguageTool could not be started: {e}"
+msgstr "Impossibile raggiungere il servizio: {e}"
+
+msgid "LanguageTool could not be started."
+msgstr ""
+
+#, fuzzy
+msgid "LanguageTool took too long to start."
+msgstr "Il server ha impiegato troppo tempo a rispondere."
+
+#, fuzzy
+msgid "Enter the LanguageTool server's address in Settings → Composing."
+msgstr ""
+"Inserisci l'indirizzo del server LibreTranslate in Impostazioni → Traduzione."
+
+#, fuzzy
+msgid "Enter the server's address first."
+msgstr "Inserisci il server della directory."
+
 msgid ""
 "{reason} If your organization manages your account, an administrator can "
 "approve Tegami Mail for everyone at {link}"
@@ -2029,9 +2167,6 @@ msgstr "Impossibile raggiungere il servizio: {e}"
 
 msgid "The service did not accept the key."
 msgstr "Il servizio non ha accettato la chiave."
-
-msgid "Too many requests: try again in a moment."
-msgstr "Troppe richieste: riprova tra un momento."
 
 msgid "This month's allowance is used up."
 msgstr "La quota mensile è esaurita."
@@ -2385,6 +2520,14 @@ msgstr "Server in entrata"
 msgid "Port (IMAP 993 / POP3 995)"
 msgstr "Porta (IMAP 993 / POP3 995)"
 
+#, fuzzy
+msgid "Import Mbox Files"
+msgstr "Importa file…"
+
+#, fuzzy
+msgid "Import Maildir Folders"
+msgstr "Importazione non riuscita: {e}"
+
 msgid "Signed in as {address}, not {email}."
 msgstr "Accesso effettuato come {address}, non come {email}."
 
@@ -2442,6 +2585,14 @@ msgstr "Controlla nuovi account in GNOME Account online"
 
 msgid "Add Account…"
 msgstr "Aggiungi account…"
+
+msgid ""
+"Store mail in folders that live on this computer. Move or copy mail from any "
+"account to here."
+msgstr ""
+
+msgid "Add"
+msgstr "Aggiungi"
 
 msgid "GNOME Online Accounts"
 msgstr "GNOME Account online"
@@ -2595,6 +2746,10 @@ msgstr "Proton Mail"
 msgid "Custom OAuth"
 msgstr "OAuth personalizzato"
 
+#, fuzzy
+msgid "Folders on this computer"
+msgstr "Su questo computer"
+
 msgid "IMAP/POP3 account"
 msgstr "Account IMAP/POP3"
 
@@ -2606,6 +2761,11 @@ msgstr "Account e-mail"
 
 msgid "Enter a client ID and sign in before saving"
 msgstr "Inserisci un ID client e accedi prima di salvare"
+
+msgid ""
+"Remove {name} from Tegami Mail? Its folders and the mail in them stay on "
+"this computer, in {dir}, and come back if it is added again."
+msgstr ""
 
 #, fuzzy
 msgid "Edit HTML"
@@ -2954,9 +3114,9 @@ msgid ""
 msgstr ""
 "Accedi con la tua password Seafile. Se l'account usa la verifica in due "
 "passaggi, inserisci anche il codice corrente dall'app di autenticazione: "
-"Tegami Mail lo converte in un token API una sola volta e conserva quello al posto "
-"della password. Un token ottenuto in altro modo può essere incollato nel "
-"campo password."
+"Tegami Mail lo converte in un token API una sola volta e conserva quello al "
+"posto della password. Un token ottenuto in altro modo può essere incollato "
+"nel campo password."
 
 msgid "Dropbox app key"
 msgstr "Chiave app Dropbox"
@@ -3075,8 +3235,8 @@ msgstr ""
 "2. Scegli Accesso con ambiti, quindi Cartella app (Tegami Mail vede solo la "
 "propriacartella sotto App) o Dropbox completo (i caricamenti vanno nella "
 "cartellaindicata sopra).\n"
-"3. Dai all'app un nome che nessun altro abbia usato, come Tegami Mail per il tuo "
-"nome,e premi Crea app.\n"
+"3. Dai all'app un nome che nessun altro abbia usato, come Tegami Mail per il "
+"tuo nome,e premi Crea app.\n"
 "4. Nella scheda Autorizzazioni, spunta account_info.read,files.content.write "
 "e sharing.write, poi premi Invia.\n"
 "5. Nella scheda Impostazioni, sotto OAuth 2, aggiungi l'URI di "
@@ -3394,11 +3554,11 @@ msgid "An attachment is missing"
 msgstr "Un allegato è mancante"
 
 msgid ""
-"Tegami Mail cannot read {names}. It was moved or deleted after it was attached. "
-"Remove it, or attach it again from where it is now."
+"Tegami Mail cannot read {names}. It was moved or deleted after it was "
+"attached. Remove it, or attach it again from where it is now."
 msgstr ""
-"Tegami Mail non riesce a leggere {names}. È stato spostato o eliminato dopo essere "
-"stato allegato. Rimuovilo, o allegalo di nuovo da dove si trova ora."
+"Tegami Mail non riesce a leggere {names}. È stato spostato o eliminato dopo "
+"essere stato allegato. Rimuovilo, o allegalo di nuovo da dove si trova ora."
 
 msgid "Type a From address"
 msgstr "Digita un indirizzo Da"
@@ -3649,9 +3809,9 @@ msgstr ""
 #, fuzzy
 msgid "Kept in Tegami Mail's own data folder. Works without GNOME."
 msgstr ""
-"Contatti che Tegami Mail conserva autonomamente, nella sua cartella dati. Sono "
-"elencati in Contatti accanto alle rubriche di GNOME Contatti, e funzionano "
-"senza GNOME."
+"Contatti che Tegami Mail conserva autonomamente, nella sua cartella dati. "
+"Sono elencati in Contatti accanto alle rubriche di GNOME Contatti, e "
+"funzionano senza GNOME."
 
 msgid "Contacts in the Tegami Mail book"
 msgstr "Contatti nella rubrica Tegami Mail"
@@ -3664,8 +3824,8 @@ msgid ""
 "Adds contacts from .vcf files. Importing a file again updates existing "
 "entries."
 msgstr ""
-"Aggiunge i contatti nei file .vcf alla rubrica Tegami Mail. Reimportare un file "
-"aggiorna i suoi contatti."
+"Aggiunge i contatti nei file .vcf alla rubrica Tegami Mail. Reimportare un "
+"file aggiorna i suoi contatti."
 
 msgid "Export as a vCard file"
 msgstr "Esporta come file vCard"
@@ -3682,7 +3842,8 @@ msgstr "Elimina tutti i contatti"
 #, fuzzy
 msgid "Other address books are not touched."
 msgstr ""
-"Svuota la rubrica Tegami Mail. Le rubriche di GNOME Contatti non vengono toccate."
+"Svuota la rubrica Tegami Mail. Le rubriche di GNOME Contatti non vengono "
+"toccate."
 
 #, fuzzy
 msgid "Set up in Tegami Mail"
@@ -3861,8 +4022,8 @@ msgid "Rename Address Book"
 msgstr "Rubrica"
 
 msgid ""
-"The name is used in Tegami Mail only; GNOME Contacts and Evolution keep the book's "
-"own."
+"The name is used in Tegami Mail only; GNOME Contacts and Evolution keep the "
+"book's own."
 msgstr ""
 
 msgid "Use Its Own Name"
@@ -3924,6 +4085,9 @@ msgstr "Telefono"
 msgid "Address"
 msgstr "Indirizzo"
 
+msgid "Website"
+msgstr "Sito web"
+
 msgid "Birthday"
 msgstr "Compleanno"
 
@@ -3952,7 +4116,8 @@ msgstr ""
 msgid "Changed in the app it came from"
 msgstr ""
 
-msgid "This group names its members by contact, which Tegami Mail does not edit."
+msgid ""
+"This group names its members by contact, which Tegami Mail does not edit."
 msgstr ""
 
 msgid ""
@@ -4284,12 +4449,12 @@ msgstr "Caricamento contatti in corso…"
 
 msgid ""
 "Add a contact with the + button, or import vCard files. Contacts are kept in "
-"Tegami Mail's own address book, and the address books of GNOME Contacts are listed "
-"here too."
+"Tegami Mail's own address book, and the address books of GNOME Contacts are "
+"listed here too."
 msgstr ""
 "Aggiungi un contatto con il pulsante +, o importa file vCard. I contatti "
-"vengono conservati nella rubrica di Tegami Mail, e le rubriche di GNOME Contatti "
-"sono elencate qui."
+"vengono conservati nella rubrica di Tegami Mail, e le rubriche di GNOME "
+"Contatti sono elencate qui."
 
 #, fuzzy
 msgid "Search contacts (Ctrl+F)"
@@ -4557,6 +4722,12 @@ msgstr "Bassa importanza"
 #, fuzzy
 msgid "In {folder}"
 msgstr "cartella sconosciuta"
+
+#, fuzzy
+msgid "{n} more tag: {names}"
+msgid_plural "{n} more tags: {names}"
+msgstr[0] "Rimuovi etichetta {name}"
+msgstr[1] "Rimuovi etichetta {name}"
 
 #, fuzzy
 msgid "Yesterday"
@@ -5101,8 +5272,8 @@ msgstr "GnuPG"
 #, fuzzy
 msgid "The same keyring the gpg command and other mail apps use."
 msgstr ""
-"GnuPG {version} trovato. Tegami Mail legge e scrive il suo portachiavi, lo stesso "
-"usato dal comando gpg e da altri programmi di posta."
+"GnuPG {version} trovato. Tegami Mail legge e scrive il suo portachiavi, lo "
+"stesso usato dal comando gpg e da altri programmi di posta."
 
 msgid "Your keys"
 msgstr "Le tue chiavi"
@@ -5399,6 +5570,87 @@ msgstr "Oscillazione"
 msgid "Custom File"
 msgstr "File personalizzato"
 
+#, fuzzy
+msgid "Downloading: {done} of {total}"
+msgstr "Cartella {done} di {total}"
+
+#, fuzzy
+msgid "Not available for this computer."
+msgstr "Nessuna cartella Bozze disponibile per questo account"
+
+#, fuzzy
+msgid "Version {version}, on this computer."
+msgstr "Su questo computer"
+
+msgid "Not downloaded yet. The download is {size}."
+msgstr ""
+
+#, fuzzy
+msgid "The files could not be removed."
+msgstr "Impossibile aprire il file"
+
+msgid "The download stopped unexpectedly."
+msgstr ""
+
+msgid "Grammar"
+msgstr ""
+
+msgid "Check grammar and style"
+msgstr ""
+
+msgid "Right-click a marked phrase for suggestions."
+msgstr ""
+
+#, fuzzy
+msgid "Checker"
+msgstr "Verifica"
+
+msgid "Harper"
+msgstr ""
+
+#, fuzzy
+msgid "LanguageTool"
+msgstr "Lingua"
+
+#, fuzzy
+msgid "LanguageTool server"
+msgstr "Lingue"
+
+msgid "English only. Nothing leaves this computer."
+msgstr ""
+
+msgid "Multi-language support. Nothing leaves this computer. Uses 1GB of RAM"
+msgstr ""
+
+#, fuzzy
+msgid "What you write is sent to the server as you type."
+msgstr "Quella cartella non è sul server"
+
+msgid "Username (LanguageTool Premium)"
+msgstr ""
+
+msgid "API key (LanguageTool Premium)"
+msgstr ""
+
+msgid "Check the settings"
+msgstr "Controlla le impostazioni"
+
+#, fuzzy
+msgid "Sends a test sentence to the server."
+msgstr "Impossibile raggiungere il server"
+
+msgid "Check"
+msgstr "Verifica"
+
+msgid "Checking…"
+msgstr "Verifica in corso…"
+
+msgid "The check stopped unexpectedly."
+msgstr ""
+
+msgid "It works: {server} answered."
+msgstr ""
+
 msgid "Messages already read"
 msgstr "Messaggi già letti"
 
@@ -5543,8 +5795,8 @@ msgstr "Tema"
 #, fuzzy
 msgid "The launcher shows an icon set elsewhere. Picking one here replaces it."
 msgstr ""
-"Il launcher mostra un set di icone esterno a Tegami Mail. Sceglierne uno qui lo "
-"sostituisce."
+"Il launcher mostra un set di icone esterno a Tegami Mail. Sceglierne uno qui "
+"lo sostituisce."
 
 msgid "Always"
 msgstr "Sempre"
@@ -5587,6 +5839,7 @@ msgstr "Traduzione"
 msgid "General"
 msgstr "Generale"
 
+#. Rendered as Pango markup — a bare "&" breaks it.
 msgid "Appearance"
 msgstr "Aspetto"
 
@@ -6147,6 +6400,12 @@ msgstr "Serif"
 msgid "Monospace"
 msgstr "Monospace"
 
+msgid "Grammar check failed: {error}"
+msgstr ""
+
+msgid "No suggestions"
+msgstr ""
+
 msgid "Spelling Language"
 msgstr "Lingua di ortografia"
 
@@ -6372,15 +6631,9 @@ msgstr "Chiave"
 msgid "Region (empty for a global resource)"
 msgstr "Regione (vuoto per una risorsa globale)"
 
-msgid "Check the settings"
-msgstr "Controlla le impostazioni"
-
 #, fuzzy
 msgid "Translates a greeting to test the service."
 msgstr "Traduce un saluto, per verificare che il servizio risponda."
-
-msgid "Check"
-msgstr "Verifica"
 
 msgid "Messages"
 msgstr "Messaggi"
@@ -6402,9 +6655,6 @@ msgstr ""
 msgid "Key (if the server asks for one)"
 msgstr "Chiave (se il server la richiede)"
 
-msgid "Checking…"
-msgstr "Verifica in corso…"
-
 msgid "It works: “{sent}” came back as “{back}”."
 msgstr "Funziona: \"{sent}\" è tornato come \"{back}\"."
 
@@ -6413,9 +6663,6 @@ msgstr "Accedi"
 
 msgid "The sign-in window was closed."
 msgstr "La finestra di accesso è stata chiusa."
-
-msgid "Add"
-msgstr "Aggiungi"
 
 msgid "✓ {email} — added"
 msgstr "✓ {email} — aggiunto"
@@ -6469,11 +6716,11 @@ msgid "Language"
 msgstr "Lingua"
 
 msgid ""
-"Choosing another language restarts Tegami Mail: it closes for a moment and this "
-"wizard comes back in that language."
+"Choosing another language restarts Tegami Mail: it closes for a moment and "
+"this wizard comes back in that language."
 msgstr ""
-"Scegliere un'altra lingua riavvia Tegami Mail: si chiude per un momento e questa "
-"procedura guidata torna in quella lingua."
+"Scegliere un'altra lingua riavvia Tegami Mail: si chiude per un momento e "
+"questa procedura guidata torna in quella lingua."
 
 msgid "Get Started"
 msgstr "Inizia"
@@ -6503,8 +6750,8 @@ msgid "Privacy, your way"
 msgstr "Privacy, come vuoi tu"
 
 msgid ""
-"Tegami Mail sends no telemetry, ever. These control what leaves your machine while "
-"you read."
+"Tegami Mail sends no telemetry, ever. These control what leaves your machine "
+"while you read."
 msgstr ""
 "Tegami Mail non invia mai telemetria. Questi controllano cosa lascia il tuo "
 "computer mentre leggi."
@@ -6620,11 +6867,11 @@ msgid ""
 msgstr ""
 
 msgid ""
-"Could not read the password for {email} from the keyring ({e}). Tegami Mail tries "
-"again at the next connection."
+"Could not read the password for {email} from the keyring ({e}). Tegami Mail "
+"tries again at the next connection."
 msgstr ""
-"Impossibile leggere la password per {email} dal portachiavi ({e}). Tegami Mail "
-"riproverà alla prossima connessione."
+"Impossibile leggere la password per {email} dal portachiavi ({e}). Tegami "
+"Mail riproverà alla prossima connessione."
 
 msgid ""
 "no OpenPGP key of your own for {addr}; generate one under Settings, OpenPGP"
@@ -6731,11 +6978,13 @@ msgid "Connection failed: {e}"
 msgstr "Connessione non riuscita: {e}"
 
 msgid ""
-"This account has no IMAP server. Tegami Mail can't use Exchange accounts from "
-"Online Accounts: remove it and add it as an IMAP or Microsoft 365 account."
+"This account has no IMAP server. Tegami Mail can't use Exchange accounts "
+"from Online Accounts: remove it and add it as an IMAP or Microsoft 365 "
+"account."
 msgstr ""
-"Questo account non ha server IMAP. Tegami Mail non può usare gli account Exchange "
-"da Account online: rimuovilo e aggiungilo come account IMAP o Microsoft 365."
+"Questo account non ha server IMAP. Tegami Mail non può usare gli account "
+"Exchange da Account online: rimuovilo e aggiungilo come account IMAP o "
+"Microsoft 365."
 
 #, fuzzy
 msgid "could not reach the server"
@@ -6761,10 +7010,11 @@ msgid "Could not change the star: {e}"
 msgstr "Impossibile cambiare il contrassegno: {e}"
 
 msgid ""
-"This server does not store tags, so Tegami Mail keeps them on this computer only"
+"This server does not store tags, so Tegami Mail keeps them on this computer "
+"only"
 msgstr ""
-"Questo server non memorizza le etichette, quindi Tegami Mail le conserva solo su "
-"questo computer"
+"Questo server non memorizza le etichette, quindi Tegami Mail le conserva "
+"solo su questo computer"
 
 msgid "Could not tag message: {e}"
 msgstr "Impossibile etichettare il messaggio: {e}"
@@ -6773,11 +7023,11 @@ msgid "Could not mark folder read: {e}"
 msgstr "Impossibile contrassegnare la cartella come letta: {e}"
 
 msgid ""
-"Gmail keeps a copy of every message in All Mail, so Tegami Mail cannot remove an "
-"attachment there"
+"Gmail keeps a copy of every message in All Mail, so Tegami Mail cannot "
+"remove an attachment there"
 msgstr ""
-"Gmail conserva una copia di ogni messaggio in Tutti i messaggi, quindi Tegami Mail "
-"non può rimuovere un allegato da lì"
+"Gmail conserva una copia di ogni messaggio in Tutti i messaggi, quindi "
+"Tegami Mail non può rimuovere un allegato da lì"
 
 msgid "Could not move {len} messages: {e}"
 msgstr "Impossibile spostare {len} messaggi: {e}"
@@ -6801,6 +7051,43 @@ msgstr "Quella cartella non è sul server"
 
 msgid "Could not reach the JMAP server: {e}"
 msgstr "Impossibile raggiungere il server JMAP: {e}"
+
+msgid "Mail on this computer is not sent, and has no drafts"
+msgstr ""
+
+msgid "Mail is not sent from On This Computer: choose another From address"
+msgstr ""
+
+#, fuzzy
+msgid "Could not import {path}: {e}"
+msgstr "Impossibile importare: {e}"
+
+#, fuzzy
+msgid "Importing {done} of {total} messages…"
+msgstr "Cartella {done} di {total}"
+
+#, fuzzy
+msgid "A folder by that name already exists"
+msgstr "Esiste già una cartella chiamata {new_name}."
+
+msgid "The folder still holds mail"
+msgstr ""
+
+#, fuzzy
+msgid "That is not a folder name"
+msgstr "Questa cartella"
+
+#, fuzzy
+msgid "Could not store the message: {e}"
+msgstr "Impossibile salvare il messaggio: {e}"
+
+#, fuzzy
+msgid "Could not open the folders on this computer: {e}"
+msgstr "Impossibile svuotare la cartella: {e}"
+
+#, fuzzy
+msgid "Reading {n} messages…"
+msgstr "Indicizzazione di {n} messaggi…"
 
 #. Nothing failed: the message waits for the network, which the
 #. Refresh button already shows is down (#442).
@@ -7137,7 +7424,7 @@ msgstr ""
 "disiscrizione)più vecchia di questo periodo, a meno che non sia "
 "contrassegnata. Controllato ad ogni sincronizzazione."
 
-msgid "Keep mail offline"
+msgid "Keep mail cached"
 msgstr ""
 
 msgid "Leaves out Trash, Junk and Drafts."
@@ -7149,6 +7436,37 @@ msgstr "Nessun allegato"
 
 msgid "Can consume a lot of hard drive space."
 msgstr ""
+
+#, fuzzy
+msgid "Copy mail to On This Computer"
+msgstr "Su questo computer"
+
+msgid ""
+"Downloads copies of every message from every folder of this account to this "
+"computer (except Trash, Junk and Drafts) and stores them in On This Computer."
+msgstr ""
+
+#, fuzzy
+msgid "Import"
+msgstr "Importa…"
+
+msgid "Mail already here is not imported again."
+msgstr ""
+
+#, fuzzy
+msgid "Maildir folders"
+msgstr "Tutte le cartelle"
+
+msgid "Evolution's On This Computer, Dovecot and other Maildir trees."
+msgstr ""
+
+#, fuzzy
+msgid "Mbox files"
+msgstr "Tutti i file"
+
+#, fuzzy
+msgid "Thunderbird's folders and other mbox files."
+msgstr "Le cartelle sotto la riga Filtri."
 
 #, fuzzy
 msgid "Microsoft 365"
@@ -7744,8 +8062,8 @@ msgid "GNOME Files Integration"
 msgstr "Integrazione con File GNOME"
 
 msgid ""
-"Adds “Send with Tegami Mail” to the right-click menu in Files. Needs the nautilus-"
-"python package and a restart of Files."
+"Adds “Send with Tegami Mail” to the right-click menu in Files. Needs the "
+"nautilus-python package and a restart of Files."
 msgstr ""
 
 msgid "Right-click menu entry"
@@ -7832,14 +8150,14 @@ msgid "Email;Mail;IMAP;"
 msgstr "Email;Posta;IMAP;"
 
 msgid ""
-"Tegami Mail is a desktop email client for GNOME on Wayland, written in Rust with "
-"libadwaita. Your mail and credentials stay on your machine, remote content "
-"is blocked until you allow it, and there is no telemetry. It works with "
-"IMAP, POP3, JMAP and Microsoft 365, and with any server from iCloud to "
+"Tegami Mail is a desktop email client for GNOME on Wayland, written in Rust "
+"with libadwaita. Your mail and credentials stay on your machine, remote "
+"content is blocked until you allow it, and there is no telemetry. It works "
+"with IMAP, POP3, JMAP and Microsoft 365, and with any server from iCloud to "
 "Proton Bridge to a Stalwart of your own."
 msgstr ""
-"Tegami Mail è un client e-mail desktop per GNOME su Wayland, scritto in Rust con "
-"libadwaita. La tua posta e le credenziali rimangono sul tuo computer, il "
+"Tegami Mail è un client e-mail desktop per GNOME su Wayland, scritto in Rust "
+"con libadwaita. La tua posta e le credenziali rimangono sul tuo computer, il "
 "contenuto remoto è bloccato finché non lo consenti, e non c'è telemetria. "
 "Funziona con IMAP, POP3, JMAP e Microsoft 365, e con qualsiasi server da "
 "iCloud a Proton Bridge a uno Stalwart tuo."
@@ -7947,11 +8265,14 @@ msgstr ""
 "Integrazione con GNOME Contatti, scelta della lingua e dell'orologio, e "
 "password conservate nel portachiavi di sistema"
 
-msgid "The unified inbox in light mode"
-msgstr "La posta in arrivo unificata in modalità chiara"
-
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Buy Me a Coffee"
+#~ msgstr "Offrimi un caffè"
+
+#~ msgid "The unified inbox in light mode"
+#~ msgstr "La posta in arrivo unificata in modalità chiara"
 
 #~ msgid "Received"
 #~ msgstr "Ricevuto"
@@ -7977,9 +8298,10 @@ msgstr "Hyprlab"
 
 #~ msgid ""
 #~ "Which browser a link in a message opens in. Inside its Flatpak sandbox "
-#~ "Tegami Mail cannot see the applications installed on the system, so links leave "
-#~ "through the desktop portal: choose \"Ask each time\" to pick the browser "
-#~ "as each link is opened — the desktop's chooser can remember the choice."
+#~ "Tegami Mail cannot see the applications installed on the system, so links "
+#~ "leave through the desktop portal: choose \"Ask each time\" to pick the "
+#~ "browser as each link is opened — the desktop's chooser can remember the "
+#~ "choice."
 #~ msgstr ""
 #~ "Il browser con cui si apre un link in un messaggio. Dentro la sua "
 #~ "sandboxFlatpak Tegami Mail non può vedere le applicazioni installate nel "
@@ -8067,9 +8389,9 @@ msgstr "Hyprlab"
 
 #~ msgid ""
 #~ "File incoming mail into folders or tag it automatically, by sender, "
-#~ "subject or recipients. Applied to each account's Inbox as Tegami Mail syncs it, "
-#~ "or to the mail already there with Apply Now; a folder's right-click menu "
-#~ "runs them over that one folder."
+#~ "subject or recipients. Applied to each account's Inbox as Tegami Mail "
+#~ "syncs it, or to the mail already there with Apply Now; a folder's right-"
+#~ "click menu runs them over that one folder."
 #~ msgstr ""
 #~ "Archivia la posta in arrivo nelle cartelle o etichettala automaticamente, "
 #~ "per mittente, oggetto o destinatari. Applicato alla Posta in arrivo di "
@@ -8190,11 +8512,11 @@ msgstr "Hyprlab"
 #~ msgstr "Tutti gli account significa quelli nella sezione unificata"
 
 #~ msgid ""
-#~ "Tegami Mail forgets the account and its sign-in. Files already uploaded, and "
-#~ "the links in messages you sent, stay where they are."
+#~ "Tegami Mail forgets the account and its sign-in. Files already uploaded, "
+#~ "and the links in messages you sent, stay where they are."
 #~ msgstr ""
-#~ "Tegami Mail dimentica l'account e il suo accesso. I file già caricati e i link "
-#~ "nei messaggi inviati rimangono dov'erano."
+#~ "Tegami Mail dimentica l'account e il suo accesso. I file già caricati e i "
+#~ "link nei messaggi inviati rimangono dov'erano."
 
 #~ msgid ""
 #~ "Cloudflare's proxy refuses a request over 100 MB, so bigger files are "
@@ -8269,8 +8591,8 @@ msgstr "Hyprlab"
 #~ "The address book a contact made in Tegami Mail goes to, unless another is "
 #~ "picked when it is made."
 #~ msgstr ""
-#~ "La rubrica in cui va un contatto creato in Tegami Mail, a meno che non ne venga "
-#~ "scelta un'altra al momento della creazione."
+#~ "La rubrica in cui va un contatto creato in Tegami Mail, a meno che non ne "
+#~ "venga scelta un'altra al momento della creazione."
 
 #, fuzzy
 #~ msgid ""
@@ -8291,15 +8613,15 @@ msgstr "Hyprlab"
 #~ "configurata in Evolution è elencata qui."
 
 #~ msgid ""
-#~ "Tegami Mail reads and writes the keyring of the GnuPG on this computer, the "
-#~ "same one the gpg command and other mail programs use."
+#~ "Tegami Mail reads and writes the keyring of the GnuPG on this computer, "
+#~ "the same one the gpg command and other mail programs use."
 #~ msgstr ""
 #~ "Tegami Mail legge e scrive il portachiavi di GnuPG su questo computer, lo "
 #~ "stesso usato dal comando gpg e da altri programmi di posta."
 
 #~ msgid ""
-#~ "Show system notifications for new mail and error alerts when Tegami Mail isn't "
-#~ "focused."
+#~ "Show system notifications for new mail and error alerts when Tegami Mail "
+#~ "isn't focused."
 #~ msgstr ""
 #~ "Mostra notifiche di sistema per nuova posta e avvisi di errore quando "
 #~ "Tegami Mail non è in primo piano."
@@ -8321,18 +8643,19 @@ msgstr "Hyprlab"
 #~ msgstr "Sposta il messaggio nella Posta indesiderata."
 
 #~ msgid ""
-#~ "All of Tegami Mail's text, messages included, against the desktop's text size. "
-#~ "Icons keep their size."
+#~ "All of Tegami Mail's text, messages included, against the desktop's text "
+#~ "size. Icons keep their size."
 #~ msgstr ""
-#~ "Tutto il testo di Tegami Mail, messaggi inclusi, rispetto alla dimensione del "
-#~ "testo del desktop. Le icone mantengono le loro dimensioni."
+#~ "Tutto il testo di Tegami Mail, messaggi inclusi, rispetto alla dimensione "
+#~ "del testo del desktop. Le icone mantengono le loro dimensioni."
 
 #~ msgid ""
-#~ "Draw icons from the desktop's icon theme instead of Tegami Mail's own, so the "
-#~ "app may look different on another desktop."
+#~ "Draw icons from the desktop's icon theme instead of Tegami Mail's own, so "
+#~ "the app may look different on another desktop."
 #~ msgstr ""
 #~ "Disegna le icone dal tema icone del desktop invece delle icone proprie di "
-#~ "Tegami Mail, quindi l'app potrebbe avere un aspetto diverso su un altro desktop."
+#~ "Tegami Mail, quindi l'app potrebbe avere un aspetto diverso su un altro "
+#~ "desktop."
 
 #~ msgid "The view shown first when Settings is opened from the menu."
 #~ msgstr "La vista mostrata per prima quando si apre Impostazioni dal menu."
@@ -8546,9 +8869,6 @@ msgstr "Hyprlab"
 #~ msgid "The account list under the unified Trash row."
 #~ msgstr "L'elenco account sotto la riga Cestino unificato."
 
-#~ msgid "The folders under the Filters row."
-#~ msgstr "Le cartelle sotto la riga Filtri."
-
 #~ msgid "The tags under the Tags row."
 #~ msgstr "Le etichette sotto la riga Etichette."
 
@@ -8721,8 +9041,8 @@ msgstr "Hyprlab"
 #~ "messaggio sullo schermo in chiaro o scuro, solo per quel messaggio."
 
 #~ msgid ""
-#~ "How large every message is shown. Ctrl+ and Ctrl- change it until Tegami Mail "
-#~ "is next started; Ctrl+0 comes back to this."
+#~ "How large every message is shown. Ctrl+ and Ctrl- change it until Tegami "
+#~ "Mail is next started; Ctrl+0 comes back to this."
 #~ msgstr ""
 #~ "Quanto grande viene mostrato ogni messaggio. Ctrl+ e Ctrl- lo cambiano "
 #~ "fino al prossimo avvio di Tegami Mail; Ctrl+0 torna a questo."
@@ -8948,14 +9268,14 @@ msgstr "Hyprlab"
 
 #~ msgid ""
 #~ "Fills the sender's avatar with the brand's logo: the one the sender "
-#~ "publishes for mail (BIMI), one bundled with Tegami Mail, or the site's own "
-#~ "icon. All but the bundled ones are fetched from the sender's domain, "
+#~ "publishes for mail (BIMI), one bundled with Tegami Mail, or the site's "
+#~ "own icon. All but the bundled ones are fetched from the sender's domain, "
 #~ "which then learns your IP address, as blocking remote content otherwise "
 #~ "avoids."
 #~ msgstr ""
 #~ "Riempie l'avatar del mittente con il logo del marchio: quello pubblicato "
-#~ "dal mittente per la posta (BIMI), uno incluso con Tegami Mail, o l'icona del "
-#~ "sito. Tutti tranne quelli inclusi vengono recuperati dal dominio del "
+#~ "dal mittente per la posta (BIMI), uno incluso con Tegami Mail, o l'icona "
+#~ "del sito. Tutti tranne quelli inclusi vengono recuperati dal dominio del "
 #~ "mittente, che poi conosce il tuo indirizzo IP, come il blocco del "
 #~ "contenuto remoto evita altrimenti."
 
@@ -8969,9 +9289,9 @@ msgstr "Hyprlab"
 #~ "per sovrascrivere quello impostato nel sistema."
 
 #~ msgid ""
-#~ "The language Tegami Mail is shown in. \"System\" follows the desktop, with "
-#~ "English where no translation exists. A change applies the next time Tegami Mail "
-#~ "starts."
+#~ "The language Tegami Mail is shown in. \"System\" follows the desktop, "
+#~ "with English where no translation exists. A change applies the next time "
+#~ "Tegami Mail starts."
 #~ msgstr ""
 #~ "La lingua in cui è mostrato Tegami Mail. \"Sistema\" segue il desktop, "
 #~ "conl'inglese dove non esiste una traduzione. Un cambiamento si applica al "
@@ -8979,8 +9299,8 @@ msgstr "Hyprlab"
 
 #~ msgid ""
 #~ "How the windows are drawn. OpenGL or Software can help on older graphics "
-#~ "hardware where Vulkan is incomplete. A change applies the next time Tegami Mail "
-#~ "starts."
+#~ "hardware where Vulkan is incomplete. A change applies the next time "
+#~ "Tegami Mail starts."
 #~ msgstr ""
 #~ "Come vengono disegnate le finestre. OpenGL o Software possono aiutare su "
 #~ "hardware grafico più vecchio dove Vulkan è incompleto. Un cambiamento si "
@@ -8988,29 +9308,29 @@ msgstr "Hyprlab"
 
 #~ msgid ""
 #~ "Closing the window hides it instead of quitting, so new mail still "
-#~ "arrives. Tegami Mail then appears under Background Apps in the system menu, "
-#~ "where it can be quit."
+#~ "arrives. Tegami Mail then appears under Background Apps in the system "
+#~ "menu, where it can be quit."
 #~ msgstr ""
 #~ "Chiudere la finestra la nasconde invece di uscire, così la nuova posta "
 #~ "arriva ancora. Tegami Mail appare poi sotto App in background nel menu di "
 #~ "sistema, dove può essere chiuso."
 
 #~ msgid ""
-#~ "Start checking for mail when you log in. Tegami Mail starts without a window "
-#~ "and waits in the system menu."
+#~ "Start checking for mail when you log in. Tegami Mail starts without a "
+#~ "window and waits in the system menu."
 #~ msgstr ""
-#~ "Inizia a controllare la posta quando esegui l'accesso. Tegami Mail si avvia "
-#~ "senza finestra e attende nel menu di sistema."
+#~ "Inizia a controllare la posta quando esegui l'accesso. Tegami Mail si "
+#~ "avvia senza finestra e attende nel menu di sistema."
 
 #~ msgid ""
 #~ "An icon in the system tray, with a red dot while any inbox has unread "
-#~ "mail. Click it to open Tegami Mail. GNOME needs the AppIndicator extension; "
-#~ "other desktops show it as they are."
+#~ "mail. Click it to open Tegami Mail. GNOME needs the AppIndicator "
+#~ "extension; other desktops show it as they are."
 #~ msgstr ""
 #~ "Un'icona nella barra di sistema, con un punto rosso mentre qualsiasi "
-#~ "posta in arrivo ha posta non letta. Cliccala per aprire Tegami Mail. GNOME "
-#~ "richiede l'estensione AppIndicator; altri desktop la mostrano come di "
-#~ "consueto."
+#~ "posta in arrivo ha posta non letta. Cliccala per aprire Tegami Mail. "
+#~ "GNOME richiede l'estensione AppIndicator; altri desktop la mostrano come "
+#~ "di consueto."
 
 #~ msgid ""
 #~ "The app icon in full color, or its symbolic outline, which the panel "
@@ -9028,12 +9348,13 @@ msgstr "Hyprlab"
 
 #, fuzzy
 #~ msgid ""
-#~ "A number on Tegami Mail's icon in the dock or task manager: every unread inbox "
-#~ "message, or only those that arrived while Tegami Mail was not in front. KDE "
-#~ "Plasma shows it; GNOME needs a dock extension such as Dash to Dock."
+#~ "A number on Tegami Mail's icon in the dock or task manager: every unread "
+#~ "inbox message, or only those that arrived while Tegami Mail was not in "
+#~ "front. KDE Plasma shows it; GNOME needs a dock extension such as Dash to "
+#~ "Dock."
 #~ msgstr ""
-#~ "Il numero di messaggi non letti nella posta in arrivo sull'icona di Tegami Mail "
-#~ "nel dock o task manager. KDE Plasma lo mostra; GNOME richiede "
+#~ "Il numero di messaggi non letti nella posta in arrivo sull'icona di "
+#~ "Tegami Mail nel dock o task manager. KDE Plasma lo mostra; GNOME richiede "
 #~ "un'estensione dock come Dash to Dock."
 
 #~ msgid ""
@@ -9053,19 +9374,19 @@ msgstr "Hyprlab"
 #~ "apre, e archivia, # elimina, g poi una lettera va a una cartella."
 
 #~ msgid ""
-#~ "A verbose live console in the status bar showing everything Tegami Mail is "
-#~ "doing under the hood."
+#~ "A verbose live console in the status bar showing everything Tegami Mail "
+#~ "is doing under the hood."
 #~ msgstr ""
 #~ "Una console live dettagliata nella barra di stato che mostra tutto ciò "
 #~ "che Tegami Mail sta facendo internamente."
 
 #~ msgid ""
-#~ "Save everything the console has recorded since Tegami Mail started, to attach "
-#~ "to a bug report. Email addresses are shortened to their domain."
+#~ "Save everything the console has recorded since Tegami Mail started, to "
+#~ "attach to a bug report. Email addresses are shortened to their domain."
 #~ msgstr ""
-#~ "Salva tutto ciò che la console ha registrato dall'avvio di Tegami Mail, da "
-#~ "allegare a un rapporto di bug. Gli indirizzi e-mail vengono abbreviati al "
-#~ "loro dominio."
+#~ "Salva tutto ciò che la console ha registrato dall'avvio di Tegami Mail, "
+#~ "da allegare a un rapporto di bug. Gli indirizzi e-mail vengono abbreviati "
+#~ "al loro dominio."
 
 #~ msgid ""
 #~ "Older messages and their attachments are removed from this computer and "
@@ -9075,15 +9396,15 @@ msgstr "Hyprlab"
 #~ "computer e recuperati di nuovo quando vengono aperti."
 
 #~ msgid ""
-#~ "Add \"Send with Tegami Mail\" to the right-click menu in Files (Nautilus): the "
-#~ "selected files open in a new message, attached. This installs a small "
-#~ "extension in your home folder. It also needs the nautilus-python package "
-#~ "(python3-nautilus on Debian and Ubuntu), and Files has to be restarted "
-#~ "before the entry appears."
+#~ "Add \"Send with Tegami Mail\" to the right-click menu in Files "
+#~ "(Nautilus): the selected files open in a new message, attached. This "
+#~ "installs a small extension in your home folder. It also needs the "
+#~ "nautilus-python package (python3-nautilus on Debian and Ubuntu), and "
+#~ "Files has to be restarted before the entry appears."
 #~ msgstr ""
-#~ "Aggiungi \"Invia con Tegami Mail\" al menu contestuale in File (Nautilus):i "
-#~ "file selezionati si aprono in un nuovo messaggio allegati. Installa "
-#~ "unapiccola estensione nella tua cartella home. Richiede anche il "
+#~ "Aggiungi \"Invia con Tegami Mail\" al menu contestuale in File "
+#~ "(Nautilus):i file selezionati si aprono in un nuovo messaggio allegati. "
+#~ "Installa unapiccola estensione nella tua cartella home. Richiede anche il "
 #~ "pacchettonautilus-python (python3-nautilus su Debian e Ubuntu), e File "
 #~ "deve essereriavviato prima che la voce appaia."
 
@@ -9103,18 +9424,18 @@ msgstr "Hyprlab"
 #~ "per impostazione predefinita."
 
 #~ msgid ""
-#~ "Everything Tegami Mail keeps, as one file: mail and cloud storage accounts, "
-#~ "preferences, filters, tags, the sidebar and window layout, the app icon "
-#~ "choice and the words taught to the spell checker. Passwords and sign-ins "
-#~ "stay in the system keyring and are never exported; OpenPGP keys stay in "
-#~ "GnuPG."
+#~ "Everything Tegami Mail keeps, as one file: mail and cloud storage "
+#~ "accounts, preferences, filters, tags, the sidebar and window layout, the "
+#~ "app icon choice and the words taught to the spell checker. Passwords and "
+#~ "sign-ins stay in the system keyring and are never exported; OpenPGP keys "
+#~ "stay in GnuPG."
 #~ msgstr ""
-#~ "Tutto ciò che Tegami Mail conserva, come un unico file: account e-mail e di "
-#~ "archiviazione cloud, preferenze, filtri, etichette, il layout della barra "
-#~ "laterale e delle finestre, la scelta dell'icona dell'app e le parole "
-#~ "insegnate al correttore ortografico. Le password e gli accessi rimangono "
-#~ "nel portachiavi di sistema e non vengono mai esportati; le chiavi OpenPGP "
-#~ "rimangono in GnuPG."
+#~ "Tutto ciò che Tegami Mail conserva, come un unico file: account e-mail e "
+#~ "di archiviazione cloud, preferenze, filtri, etichette, il layout della "
+#~ "barra laterale e delle finestre, la scelta dell'icona dell'app e le "
+#~ "parole insegnate al correttore ortografico. Le password e gli accessi "
+#~ "rimangono nel portachiavi di sistema e non vengono mai esportati; le "
+#~ "chiavi OpenPGP rimangono in GnuPG."
 
 #, fuzzy
 #~ msgid "Like the accounts"

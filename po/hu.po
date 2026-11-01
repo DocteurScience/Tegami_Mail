@@ -43,9 +43,6 @@ msgstr "A fiókjelszavak megőrzése Linux Minten"
 msgid "Project"
 msgstr "Projekt"
 
-msgid "Website"
-msgstr "Honlap"
-
 msgid "Report an issue or feature request"
 msgstr "Hiba vagy funkciókérés bejelentése"
 
@@ -54,9 +51,6 @@ msgstr "Forráskód"
 
 msgid "License (GNU AGPL v3)"
 msgstr "Licenc (GNU AGPL v3)"
-
-msgid "Buy Me a Coffee"
-msgstr "Hívj meg egy kávéra"
 
 #. Contributors — people outside Hyprlab whose patches are in the app.
 msgid "Special thanks to these contributors"
@@ -87,6 +81,10 @@ msgstr "A fiók nem menthető: {e}"
 
 msgid "Could not import account: {e}"
 msgstr "A fiók nem importálható: {e}"
+
+#, fuzzy
+msgid "On This Computer is switched off"
+msgstr "Ezen a számítógépen"
 
 msgid "Delete the attachment from the server?"
 msgstr "Töröljük a mellékletet a kiszolgálóról?"
@@ -201,6 +199,10 @@ msgid "Mark as Spam"
 msgstr "Megjelölés levélszemétként"
 
 msgid "Move To…"
+msgstr "Áthelyezés ide…"
+
+#, fuzzy
+msgid "Copy To…"
 msgstr "Áthelyezés ide…"
 
 msgid "Archive"
@@ -598,10 +600,13 @@ msgstr ""
 "menüpontban)"
 
 msgid "Could not attach {names}: Tegami Mail cannot read the file."
-msgid_plural "Could not attach {n} files (Tegami Mail cannot read them): {names}"
-msgstr[0] "Nem sikerült csatolni: {names}: a Tegami Mail nem tudja olvasni a fájlt."
+msgid_plural ""
+"Could not attach {n} files (Tegami Mail cannot read them): {names}"
+msgstr[0] ""
+"Nem sikerült csatolni: {names}: a Tegami Mail nem tudja olvasni a fájlt."
 msgstr[1] ""
-"Nem sikerült csatolni {n} fájlt (a Tegami Mail nem tudja olvasni őket): {names}"
+"Nem sikerült csatolni {n} fájlt (a Tegami Mail nem tudja olvasni őket): "
+"{names}"
 
 msgid "Send {n} file with Tegami Mail"
 msgid_plural "Send {n} files with Tegami Mail"
@@ -768,6 +773,12 @@ msgid "Refresh or long-press for Status Bar"
 msgstr "Frissítsen, vagy tartsa hosszan lenyomva az állapotsávhoz"
 
 #, fuzzy
+msgid "Copying one message to On This Computer…"
+msgid_plural "Copying {n} messages to On This Computer…"
+msgstr[0] "Egy üzenet áthelyezése a {account} fiókba…"
+msgstr[1] "{n} üzenet áthelyezése a {account} fiókba…"
+
+#, fuzzy
 msgid "Sending message…"
 msgstr "{n} üzenet indexelése…"
 
@@ -858,6 +869,9 @@ msgstr "Legújabb üzenet elöl"
 msgid "Send the message you are writing"
 msgstr "Küldd el az éppen írt üzenetet"
 
+#. Save Draft, Save as Template and Delete Draft are not here:
+#. the Save Draft button and its arrow stay in the header at
+#. any width.
 msgid "Attach files"
 msgstr "Fájlok csatolása"
 
@@ -1229,8 +1243,8 @@ msgid "Delete All Contacts?"
 msgstr "Törli a névjegyet?"
 
 msgid ""
-"The {n} contact in the Tegami Mail address book is deleted. This cannot be undone; "
-"export the book first to keep a copy."
+"The {n} contact in the Tegami Mail address book is deleted. This cannot be "
+"undone; export the book first to keep a copy."
 msgid_plural ""
 "The {n} contacts in the Tegami Mail address book are deleted. This cannot be "
 "undone; export the book first to keep a copy."
@@ -1261,8 +1275,8 @@ msgstr "Beállítások importálva"
 
 msgid ""
 "{n} mail account(s), the cloud storage accounts and all preferences were "
-"imported. Restart Tegami Mail to apply them. Passwords and sign-ins are not part "
-"of a backup; re-enter them on first use if this is a new machine."
+"imported. Restart Tegami Mail to apply them. Passwords and sign-ins are not "
+"part of a backup; re-enter them on first use if this is a new machine."
 msgstr ""
 "{n} levelezési fiók, tárhely fiók és minden beállítás importálva. Indítsa "
 "újra a Tegamit az alkalmazásukhoz. A jelszavak és bejelentkezések nem részei "
@@ -1279,10 +1293,12 @@ msgstr "Az importálás sikertelen: {e}"
 
 #, fuzzy
 msgid "The renderer applies the next time Tegami Mail starts."
-msgstr "A nyelvi módosítások a Tegami Mail következő indításakor lépnek életbe."
+msgstr ""
+"A nyelvi módosítások a Tegami Mail következő indításakor lépnek életbe."
 
 msgid "The language applies the next time Tegami Mail starts."
-msgstr "A nyelvi módosítások a Tegami Mail következő indításakor lépnek életbe."
+msgstr ""
+"A nyelvi módosítások a Tegami Mail következő indításakor lépnek életbe."
 
 msgid "Edit this message"
 msgstr "Üzenet szerkesztése"
@@ -1399,10 +1415,22 @@ msgstr ""
 msgid "Snooze until"
 msgstr ""
 
+#, fuzzy
+msgid "One message could not be copied to {account}: {error}"
+msgid_plural "{n} messages could not be copied to {account}: {error}"
+msgstr[0] "Egy üzenet nem tudott átkerülni a {account} fiókba: {error}"
+msgstr[1] "{n} üzeneteket nem sikerült áthelyezni a {account} fiókba: {error}"
+
 msgid "One message could not be moved to {account}: {error}"
 msgid_plural "{n} messages could not be moved to {account}: {error}"
 msgstr[0] "Egy üzenet nem tudott átkerülni a {account} fiókba: {error}"
 msgstr[1] "{n} üzeneteket nem sikerült áthelyezni a {account} fiókba: {error}"
+
+#, fuzzy
+msgid "Copying one message to {account}…"
+msgid_plural "Copying {n} messages to {account}…"
+msgstr[0] "Egy üzenet áthelyezése a {account} fiókba…"
+msgstr[1] "{n} üzenet áthelyezése a {account} fiókba…"
 
 msgid "Moving one message to {account}…"
 msgid_plural "Moving {n} messages to {account}…"
@@ -1445,14 +1473,16 @@ msgstr[1] "{n} olvasatlan üzenet a Beérkező levelekben"
 msgid "Restarting Tegami Mail"
 msgstr "A Tegami Mail újraindítása"
 
-msgid "Applying your new app icon. Tegami Mail will close and reopen in a moment."
+msgid ""
+"Applying your new app icon. Tegami Mail will close and reopen in a moment."
 msgstr "Az új ikon alkalmazása. A Tegami Mail most automatikusan újraindul."
 
 msgid "Restart to finish switching icons?"
 msgstr "Újraindítja az ikonváltás befejezéséhez?"
 
 msgid ""
-"The dock and Tegami Mail's own windows keep the old icon until Tegami Mail restarts."
+"The dock and Tegami Mail's own windows keep the old icon until Tegami Mail "
+"restarts."
 msgstr ""
 "A dokk és a Tegami Mail saját ablakai a régi ikont használják a Tegami Mail "
 "újraindításáig."
@@ -1461,8 +1491,8 @@ msgid "Restart Now"
 msgstr "Újraindítás most"
 
 msgid ""
-"Couldn't restart automatically — quit and reopen Tegami Mail to finish switching "
-"the icon."
+"Couldn't restart automatically — quit and reopen Tegami Mail to finish "
+"switching the icon."
 msgstr ""
 "Nem sikerült automatikusan újraindítani — lépjen ki a Tegamiből, majd nyissa "
 "meg újra az ikonváltás befejezéséhez."
@@ -1480,11 +1510,11 @@ msgid "Unsubscribe from {name}?"
 msgstr "Leiratkozás innen: {name}?"
 
 msgid ""
-"Tegami Mail will ask the list to stop sending you mail. A list can take a few days "
-"to act on the request."
+"Tegami Mail will ask the list to stop sending you mail. A list can take a "
+"few days to act on the request."
 msgstr ""
-"A Tegami Mail megkéri a listát, hogy ne küldjön több levelet önnek. A listának "
-"néhány napba telhet a kérés teljesítése."
+"A Tegami Mail megkéri a listát, hogy ne küldjön több levelet önnek. A "
+"listának néhány napba telhet a kérés teljesítése."
 
 msgid ""
 "An unsubscribe request will be sent to {addr} from {from}. A list can take a "
@@ -1501,11 +1531,11 @@ msgstr ""
 "oldala megnyílik a böngészőben."
 
 msgid ""
-"This message carries no unsubscribe header, so Tegami Mail is going by the link in "
-"it."
+"This message carries no unsubscribe header, so Tegami Mail is going by the "
+"link in it."
 msgstr ""
-"Ez az üzenet nem tartalmaz leiratkozási fejlécet, ezért a Tegami Mail a benne lévő "
-"hivatkozást használja."
+"Ez az üzenet nem tartalmaz leiratkozási fejlécet, ezért a Tegami Mail a "
+"benne lévő hivatkozást használja."
 
 msgid "Unsubscribe"
 msgstr "Leiratkozás"
@@ -1690,10 +1720,11 @@ msgid "Classic"
 msgstr "Klasszikus"
 
 msgid ""
-"Tegami Mail checks for new mail and shows notifications while its window is closed."
+"Tegami Mail checks for new mail and shows notifications while its window is "
+"closed."
 msgstr ""
-"A Tegami Mail automatikusan szinkronizál és értesítéseket jelenít meg, akkor is, "
-"ha az ablaka zárva van."
+"A Tegami Mail automatikusan szinkronizál és értesítéseket jelenít meg, akkor "
+"is, ha az ablaka zárva van."
 
 msgid "Checking for new mail"
 msgstr "Új levelek keresése"
@@ -1826,13 +1857,13 @@ msgstr ""
 msgid ""
 "The sender's organization labeled this message without naming the label in "
 "it. For a Microsoft 365 account, turning on “Show sensitivity label names” "
-"in its settings shows the name. Tegami Mail shows the label but does not apply its "
-"rules."
+"in its settings shows the name. Tegami Mail shows the label but does not "
+"apply its rules."
 msgstr ""
 
 msgid ""
-"The sender's organization labeled this message “{label}”. Tegami Mail shows the "
-"label but does not apply its rules."
+"The sender's organization labeled this message “{label}”. Tegami Mail shows "
+"the label but does not apply its rules."
 msgstr ""
 
 msgid ""
@@ -2051,6 +2082,111 @@ msgstr "Az aláírás érvényessége lejárt"
 msgid "This message hasn't been checked."
 msgstr "Ezt az üzenetet még nem ellenőrizték."
 
+#, fuzzy
+msgid "Harper is not available for this computer."
+msgstr "Ehhez a fiókhoz nem érhető el Piszkozatok mappa"
+
+msgid "Harper is not downloaded. Download it in Settings → Composing."
+msgstr ""
+
+#, fuzzy
+msgid "Harper could not be started: {e}"
+msgstr "A fájl nem megnyitható"
+
+#, fuzzy
+msgid "Harper's answer could not be read."
+msgstr "a lista e-mail-címét nem sikerült beolvasni"
+
+msgid "There is no folder to install to."
+msgstr ""
+
+msgid "There is not enough free space: {size} is needed."
+msgstr ""
+
+#, fuzzy
+msgid "The download could not start: {e}"
+msgstr "A piszkozat nem menthető: {e}"
+
+msgid "The download was cancelled."
+msgstr ""
+
+msgid "The download stopped: {e}"
+msgstr ""
+
+msgid "The downloaded file is not the one expected, so it was not installed."
+msgstr ""
+
+#, fuzzy
+msgid "The download could not be unpacked: {e}"
+msgstr "A fájl nem megnyitható"
+
+#, fuzzy
+msgid "The files could not be written: {e}"
+msgstr "A fájl nem megnyitható"
+
+msgid "{n} MB"
+msgstr ""
+
+#, fuzzy
+msgid "The server's answer could not be read."
+msgstr "a lista e-mail-címét nem sikerült beolvasni"
+
+msgid "Nothing answers at that address. Check that the server is running."
+msgstr ""
+
+#, fuzzy
+msgid "The server's name could not be found."
+msgstr "a lista e-mail-címét nem sikerült beolvasni"
+
+#, fuzzy
+msgid "The server's address is not valid."
+msgstr "Lépjen be a könyvtár kiszolgálójára."
+
+#, fuzzy
+msgid "The server could not be reached: {e}"
+msgstr "A fájl nem megnyitható"
+
+#, fuzzy
+msgid "The server did not accept the username and key."
+msgstr "A könyvtár nem fogadta el a jelszót."
+
+#, fuzzy
+msgid "The message is too long for the server."
+msgstr "Ez az üzenet nem tartalmaz megnyitható naptárfájlt."
+
+msgid "Too many requests: try again in a moment."
+msgstr ""
+
+msgid "The server refused the request (error {code})."
+msgstr ""
+
+#, fuzzy
+msgid "LanguageTool is not available for this computer."
+msgstr "Ehhez a fiókhoz nem érhető el Piszkozatok mappa"
+
+msgid "LanguageTool stopped unexpectedly."
+msgstr ""
+
+msgid "LanguageTool is not downloaded. Download it in Settings → Composing."
+msgstr ""
+
+#, fuzzy
+msgid "LanguageTool could not be started: {e}"
+msgstr "A fájl nem megnyitható"
+
+msgid "LanguageTool could not be started."
+msgstr ""
+
+msgid "LanguageTool took too long to start."
+msgstr ""
+
+msgid "Enter the LanguageTool server's address in Settings → Composing."
+msgstr ""
+
+#, fuzzy
+msgid "Enter the server's address first."
+msgstr "Lépjen be a könyvtár kiszolgálójára."
+
 msgid ""
 "{reason} If your organization manages your account, an administrator can "
 "approve Tegami Mail for everyone at {link}"
@@ -2067,9 +2203,6 @@ msgstr "A fájl nem megnyitható"
 #, fuzzy
 msgid "The service did not accept the key."
 msgstr "A könyvtár nem fogadta el a jelszót."
-
-msgid "Too many requests: try again in a moment."
-msgstr ""
 
 msgid "This month's allowance is used up."
 msgstr ""
@@ -2424,6 +2557,14 @@ msgid "Port (IMAP 993 / POP3 995)"
 msgstr "Végpont (IMAP 993 / POP3 995)"
 
 #, fuzzy
+msgid "Import Mbox Files"
+msgstr "Fájl importálása…"
+
+#, fuzzy
+msgid "Import Maildir Folders"
+msgstr "Az importálás sikertelen: {e}"
+
+#, fuzzy
 msgid "Signed in as {address}, not {email}."
 msgstr "Bejelentkezve mint: {who}. {terms}"
 
@@ -2484,6 +2625,14 @@ msgstr "GNOME Internetes Fiókok"
 
 msgid "Add Account…"
 msgstr "Fiók hozzáadása…"
+
+msgid ""
+"Store mail in folders that live on this computer. Move or copy mail from any "
+"account to here."
+msgstr ""
+
+msgid "Add"
+msgstr "Hozzáadás"
 
 msgid "GNOME Online Accounts"
 msgstr "GNOME Internetes Fiókok"
@@ -2631,6 +2780,10 @@ msgstr "Proton Mail"
 msgid "Custom OAuth"
 msgstr "Egyedi OAuth"
 
+#, fuzzy
+msgid "Folders on this computer"
+msgstr "Ezen a számítógépen"
+
 msgid "IMAP/POP3 account"
 msgstr "IMAP/POP3 fiók"
 
@@ -2643,6 +2796,11 @@ msgstr "E-mail fiók"
 msgid "Enter a client ID and sign in before saving"
 msgstr ""
 "Mentés előtt adja meg az ügyfélazonosítót (client ID) és jelentkezzen be"
+
+msgid ""
+"Remove {name} from Tegami Mail? Its folders and the mail in them stay on "
+"this computer, in {dir}, and come back if it is added again."
+msgstr ""
 
 #, fuzzy
 msgid "Edit HTML"
@@ -2971,9 +3129,9 @@ msgid ""
 "Tegami Mail, choose it under Default Apps in Settings."
 msgstr ""
 "A {old} továbbra is az az alkalmazás, amellyel az asztali számítógéped "
-"megnyitja az e-mailben található hivatkozásokat. Ha ezt Tegami Mail-nek szeretnéd "
-"rendelni, válaszd ki a Beállítások menü „Alapértelmezett alkalmazások” "
-"pontja alatt. "
+"megnyitja az e-mailben található hivatkozásokat. Ha ezt Tegami Mail-nek "
+"szeretnéd rendelni, válaszd ki a Beállítások menü „Alapértelmezett "
+"alkalmazások” pontja alatt. "
 
 msgid "To remove {old}, run:"
 msgstr "{old} törléséhez, futtasd:"
@@ -3119,11 +3277,11 @@ msgstr ""
 "hozzon létre egyet magának (egy percig tart, és privát marad):\n"
 "1. Nyissa meg a dropbox.com/developers/apps oldalt Dropbox-fiókjával "
 "bejelentkezve, majd nyomja meg az Alkalmazás létrehozása gombot.\n"
-"2. Válassza a Hatókörözött hozzáférést, majd az Alkalmazásmappát (a Tegami Mail "
-"csak a saját, Alkalmazások alatti mappáját látja), vagy a Teljes Dropboxot "
-"(a feltöltések a fent megadott mappába kerülnek).\n"
-"3. Adjon az alkalmazásnak egy még nem használt nevet, például Tegami Mail az Ön "
-"neve számára, majd nyomja meg az Alkalmazás létrehozása gombot.\n"
+"2. Válassza a Hatókörözött hozzáférést, majd az Alkalmazásmappát (a Tegami "
+"Mail csak a saját, Alkalmazások alatti mappáját látja), vagy a Teljes "
+"Dropboxot (a feltöltések a fent megadott mappába kerülnek).\n"
+"3. Adjon az alkalmazásnak egy még nem használt nevet, például Tegami Mail az "
+"Ön neve számára, majd nyomja meg az Alkalmazás létrehozása gombot.\n"
 "4. Az Engedélyek lapon jelölje be az account_info.read, files.content.write "
 "és sharing.write engedélyeket, majd nyomja meg a Küldés gombot.\n"
 "5. A Beállítások lapon, az OAuth 2 alatt adja hozzá a(z) {uri} átirányítási "
@@ -3449,8 +3607,8 @@ msgid "An attachment is missing"
 msgstr "{n} melléklet"
 
 msgid ""
-"Tegami Mail cannot read {names}. It was moved or deleted after it was attached. "
-"Remove it, or attach it again from where it is now."
+"Tegami Mail cannot read {names}. It was moved or deleted after it was "
+"attached. Remove it, or attach it again from where it is now."
 msgstr ""
 
 #, fuzzy
@@ -3928,8 +4086,8 @@ msgid "Rename Address Book"
 msgstr "Címjegyzék"
 
 msgid ""
-"The name is used in Tegami Mail only; GNOME Contacts and Evolution keep the book's "
-"own."
+"The name is used in Tegami Mail only; GNOME Contacts and Evolution keep the "
+"book's own."
 msgstr ""
 
 msgid "Use Its Own Name"
@@ -3984,6 +4142,9 @@ msgstr "Telefon"
 msgid "Address"
 msgstr "Cím"
 
+msgid "Website"
+msgstr "Honlap"
+
 msgid "Birthday"
 msgstr ""
 
@@ -4011,7 +4172,8 @@ msgstr ""
 msgid "Changed in the app it came from"
 msgstr ""
 
-msgid "This group names its members by contact, which Tegami Mail does not edit."
+msgid ""
+"This group names its members by contact, which Tegami Mail does not edit."
 msgstr ""
 
 msgid ""
@@ -4313,8 +4475,8 @@ msgstr "Névjegyek betöltése…"
 
 msgid ""
 "Add a contact with the + button, or import vCard files. Contacts are kept in "
-"Tegami Mail's own address book, and the address books of GNOME Contacts are listed "
-"here too."
+"Tegami Mail's own address book, and the address books of GNOME Contacts are "
+"listed here too."
 msgstr ""
 
 #, fuzzy
@@ -4587,6 +4749,12 @@ msgstr "Kulcs importálva"
 #, fuzzy
 msgid "In {folder}"
 msgstr "Minden mappa megjelenítése"
+
+#, fuzzy
+msgid "{n} more tag: {names}"
+msgid_plural "{n} more tags: {names}"
+msgstr[0] "Címke eltávolítása: {name}"
+msgstr[1] "Címke eltávolítása: {name}"
 
 #, fuzzy
 msgid "Yesterday"
@@ -5146,8 +5314,8 @@ msgstr "GnuPG"
 #, fuzzy
 msgid "The same keyring the gpg command and other mail apps use."
 msgstr ""
-"A GnuPG {version} megtalálva. A Tegami Mail olvassa és írja a kulcskészletét, "
-"amelyet a gpg parancs és más e-mail programok is használnak."
+"A GnuPG {version} megtalálva. A Tegami Mail olvassa és írja a "
+"kulcskészletét, amelyet a gpg parancs és más e-mail programok is használnak."
 
 msgid "Your keys"
 msgstr "Saját kulcsok"
@@ -5446,6 +5614,88 @@ msgid "Custom File"
 msgstr "Egyéni fájl"
 
 #, fuzzy
+msgid "Downloading: {done} of {total}"
+msgstr "{done} mappa a {total} közül"
+
+#, fuzzy
+msgid "Not available for this computer."
+msgstr "Ehhez a fiókhoz nem érhető el Piszkozatok mappa"
+
+#, fuzzy
+msgid "Version {version}, on this computer."
+msgstr "Ezen a számítógépen"
+
+msgid "Not downloaded yet. The download is {size}."
+msgstr ""
+
+#, fuzzy
+msgid "The files could not be removed."
+msgstr "A fájl nem megnyitható"
+
+msgid "The download stopped unexpectedly."
+msgstr ""
+
+msgid "Grammar"
+msgstr ""
+
+msgid "Check grammar and style"
+msgstr ""
+
+msgid "Right-click a marked phrase for suggestions."
+msgstr ""
+
+msgid "Checker"
+msgstr ""
+
+msgid "Harper"
+msgstr ""
+
+#, fuzzy
+msgid "LanguageTool"
+msgstr "Nyelv"
+
+#, fuzzy
+msgid "LanguageTool server"
+msgstr "Nyelv"
+
+msgid "English only. Nothing leaves this computer."
+msgstr ""
+
+msgid "Multi-language support. Nothing leaves this computer. Uses 1GB of RAM"
+msgstr ""
+
+#, fuzzy
+msgid "What you write is sent to the server as you type."
+msgstr "A mappa nincs a kiszolgálón"
+
+msgid "Username (LanguageTool Premium)"
+msgstr ""
+
+msgid "API key (LanguageTool Premium)"
+msgstr ""
+
+#, fuzzy
+msgid "Check the settings"
+msgstr "Keresési beállítások"
+
+#, fuzzy
+msgid "Sends a test sentence to the server."
+msgstr "Nem sikerült elérni a kiszolgálót"
+
+msgid "Check"
+msgstr ""
+
+#, fuzzy
+msgid "Checking…"
+msgstr "Keresés…"
+
+msgid "The check stopped unexpectedly."
+msgstr ""
+
+msgid "It works: {server} answered."
+msgstr ""
+
+#, fuzzy
 msgid "Messages already read"
 msgstr "Az üzenet elküldésre kész"
 
@@ -5592,8 +5842,8 @@ msgstr "Téma"
 #, fuzzy
 msgid "The launcher shows an icon set elsewhere. Picking one here replaces it."
 msgstr ""
-"Az indítóprogram egy, a Tegami Mail-n kívüli ikonkészletet jelenít meg. Ha itt "
-"kiválasztasz egyet, az felváltja a jelenlegit."
+"Az indítóprogram egy, a Tegami Mail-n kívüli ikonkészletet jelenít meg. Ha "
+"itt kiválasztasz egyet, az felváltja a jelenlegit."
 
 #, fuzzy
 msgid "Always"
@@ -5639,6 +5889,7 @@ msgstr "Fordította"
 msgid "General"
 msgstr "Általános"
 
+#. Rendered as Pango markup — a bare "&" breaks it.
 msgid "Appearance"
 msgstr "Megjelenés"
 
@@ -6208,6 +6459,12 @@ msgstr ""
 msgid "Monospace"
 msgstr "Fix szélességű betűtípus"
 
+msgid "Grammar check failed: {error}"
+msgstr ""
+
+msgid "No suggestions"
+msgstr ""
+
 #, fuzzy
 msgid "Spelling Language"
 msgstr "Helyesírás"
@@ -6453,14 +6710,7 @@ msgstr "Kulcs"
 msgid "Region (empty for a global resource)"
 msgstr ""
 
-#, fuzzy
-msgid "Check the settings"
-msgstr "Keresési beállítások"
-
 msgid "Translates a greeting to test the service."
-msgstr ""
-
-msgid "Check"
 msgstr ""
 
 #, fuzzy
@@ -6482,10 +6732,6 @@ msgstr ""
 msgid "Key (if the server asks for one)"
 msgstr ""
 
-#, fuzzy
-msgid "Checking…"
-msgstr "Keresés…"
-
 msgid "It works: “{sent}” came back as “{back}”."
 msgstr ""
 
@@ -6495,9 +6741,6 @@ msgstr "Bejelentkezés"
 
 msgid "The sign-in window was closed."
 msgstr ""
-
-msgid "Add"
-msgstr "Hozzáadás"
 
 msgid "✓ {email} — added"
 msgstr "✓ {email} — hozzáadva"
@@ -6550,11 +6793,11 @@ msgid "Language"
 msgstr "Nyelv"
 
 msgid ""
-"Choosing another language restarts Tegami Mail: it closes for a moment and this "
-"wizard comes back in that language."
+"Choosing another language restarts Tegami Mail: it closes for a moment and "
+"this wizard comes back in that language."
 msgstr ""
-"Ha másik nyelvet választasz, a Tegami Mail újraindul: egy pillanatra bezárul, majd "
-"a varázsló az adott nyelven jelenik meg újra."
+"Ha másik nyelvet választasz, a Tegami Mail újraindul: egy pillanatra "
+"bezárul, majd a varázsló az adott nyelven jelenik meg újra."
 
 msgid "Get Started"
 msgstr "Kezdés"
@@ -6584,19 +6827,19 @@ msgid "Privacy, your way"
 msgstr "Adatvédelem az Ön módján"
 
 msgid ""
-"Tegami Mail sends no telemetry, ever. These control what leaves your machine while "
-"you read."
+"Tegami Mail sends no telemetry, ever. These control what leaves your machine "
+"while you read."
 msgstr ""
-"A Tegami Mail soha nem küld telemetriai adatokat. Ezekkel szabályozhatod, hogy mi "
-"kerüljön ki a készülékedről olvasás közben."
+"A Tegami Mail soha nem küld telemetriai adatokat. Ezekkel szabályozhatod, "
+"hogy mi kerüljön ki a készülékedről olvasás közben."
 
 msgid "Block remote images"
 msgstr "Távoli képek blokkolása"
 
 msgid "Stops senders tracking when and where you open mail"
 msgstr ""
-"A Tegami Mail soha nem küld telemetriai adatokat. Ezekkel szabályozhatod, hogy mi "
-"kerüljön ki a készülékedről olvasás közben."
+"A Tegami Mail soha nem küld telemetriai adatokat. Ezekkel szabályozhatod, "
+"hogy mi kerüljön ki a készülékedről olvasás közben."
 
 msgid "Fetch Gravatar portraits"
 msgstr "Gravatar lekérése"
@@ -6704,8 +6947,8 @@ msgid ""
 msgstr ""
 
 msgid ""
-"Could not read the password for {email} from the keyring ({e}). Tegami Mail tries "
-"again at the next connection."
+"Could not read the password for {email} from the keyring ({e}). Tegami Mail "
+"tries again at the next connection."
 msgstr ""
 
 msgid ""
@@ -6817,8 +7060,9 @@ msgid "Connection failed: {e}"
 msgstr "A kapcsolat sikertelen: {e}"
 
 msgid ""
-"This account has no IMAP server. Tegami Mail can't use Exchange accounts from "
-"Online Accounts: remove it and add it as an IMAP or Microsoft 365 account."
+"This account has no IMAP server. Tegami Mail can't use Exchange accounts "
+"from Online Accounts: remove it and add it as an IMAP or Microsoft 365 "
+"account."
 msgstr ""
 
 #, fuzzy
@@ -6844,10 +7088,11 @@ msgid "Could not change the star: {e}"
 msgstr "Nem sikerült a csillagozás: {e}"
 
 msgid ""
-"This server does not store tags, so Tegami Mail keeps them on this computer only"
+"This server does not store tags, so Tegami Mail keeps them on this computer "
+"only"
 msgstr ""
-"Ez a kiszolgáló nem tárol címkéket, ezért a Tegami Mail csak ezen a számítógépen "
-"őrzi őket"
+"Ez a kiszolgáló nem tárol címkéket, ezért a Tegami Mail csak ezen a "
+"számítógépen őrzi őket"
 
 msgid "Could not tag message: {e}"
 msgstr "Az üzenet nem címkézhető: {e}"
@@ -6856,8 +7101,8 @@ msgid "Could not mark folder read: {e}"
 msgstr "A mappa nem jelölhető olvasottként: {e}"
 
 msgid ""
-"Gmail keeps a copy of every message in All Mail, so Tegami Mail cannot remove an "
-"attachment there"
+"Gmail keeps a copy of every message in All Mail, so Tegami Mail cannot "
+"remove an attachment there"
 msgstr ""
 "A Gmail minden üzenetről másolatot tárol az „Összes levél” mappában, ezért a "
 "Tegami Mail onnan nem tudja eltávolítani a mellékleteket"
@@ -6884,6 +7129,43 @@ msgstr "A mappa nincs a kiszolgálón"
 
 msgid "Could not reach the JMAP server: {e}"
 msgstr "Nem sikerült elérni a JMAP kiszolgálót: {e}"
+
+msgid "Mail on this computer is not sent, and has no drafts"
+msgstr ""
+
+msgid "Mail is not sent from On This Computer: choose another From address"
+msgstr ""
+
+#, fuzzy
+msgid "Could not import {path}: {e}"
+msgstr "Nem importálható: {e}"
+
+#, fuzzy
+msgid "Importing {done} of {total} messages…"
+msgstr "{done} mappa a {total} közül"
+
+#, fuzzy
+msgid "A folder by that name already exists"
+msgstr "Már létezik {new_name} nevű mappa."
+
+msgid "The folder still holds mail"
+msgstr ""
+
+#, fuzzy
+msgid "That is not a folder name"
+msgstr "Ez a mappa"
+
+#, fuzzy
+msgid "Could not store the message: {e}"
+msgstr "Az üzenet nem frissíthető: {e}"
+
+#, fuzzy
+msgid "Could not open the folders on this computer: {e}"
+msgstr "A mappa nem üríthető ki: {e}"
+
+#, fuzzy
+msgid "Reading {n} messages…"
+msgstr "{n} üzenet indexelése…"
 
 #. Nothing failed: the message waits for the network, which the
 #. Refresh button already shows is down (#442).
@@ -7220,7 +7502,7 @@ msgid ""
 "starred."
 msgstr ""
 
-msgid "Keep mail offline"
+msgid "Keep mail cached"
 msgstr ""
 
 msgid "Leaves out Trash, Junk and Drafts."
@@ -7232,6 +7514,37 @@ msgstr "Nincsenek mellékletek"
 
 msgid "Can consume a lot of hard drive space."
 msgstr ""
+
+#, fuzzy
+msgid "Copy mail to On This Computer"
+msgstr "Ezen a számítógépen"
+
+msgid ""
+"Downloads copies of every message from every folder of this account to this "
+"computer (except Trash, Junk and Drafts) and stores them in On This Computer."
+msgstr ""
+
+#, fuzzy
+msgid "Import"
+msgstr "Importálás…"
+
+msgid "Mail already here is not imported again."
+msgstr ""
+
+#, fuzzy
+msgid "Maildir folders"
+msgstr "Minden mappa"
+
+msgid "Evolution's On This Computer, Dovecot and other Maildir trees."
+msgstr ""
+
+#, fuzzy
+msgid "Mbox files"
+msgstr "Minden fájl"
+
+#, fuzzy
+msgid "Thunderbird's folders and other mbox files."
+msgstr "A „Szűrők” sor alatt található mappák."
 
 #, fuzzy
 msgid "Microsoft 365"
@@ -7830,8 +8143,8 @@ msgid "GNOME Files Integration"
 msgstr "A GNOME Fájlkezelő integrációja"
 
 msgid ""
-"Adds “Send with Tegami Mail” to the right-click menu in Files. Needs the nautilus-"
-"python package and a restart of Files."
+"Adds “Send with Tegami Mail” to the right-click menu in Files. Needs the "
+"nautilus-python package and a restart of Files."
 msgstr ""
 
 msgid "Right-click menu entry"
@@ -7920,15 +8233,15 @@ msgid "Email;Mail;IMAP;"
 msgstr "E-mail;Levél;IMAP;"
 
 msgid ""
-"Tegami Mail is a desktop email client for GNOME on Wayland, written in Rust with "
-"libadwaita. Your mail and credentials stay on your machine, remote content "
-"is blocked until you allow it, and there is no telemetry. It works with "
-"IMAP, POP3, JMAP and Microsoft 365, and with any server from iCloud to "
+"Tegami Mail is a desktop email client for GNOME on Wayland, written in Rust "
+"with libadwaita. Your mail and credentials stay on your machine, remote "
+"content is blocked until you allow it, and there is no telemetry. It works "
+"with IMAP, POP3, JMAP and Microsoft 365, and with any server from iCloud to "
 "Proton Bridge to a Stalwart of your own."
 msgstr ""
-"A Tegami Mail egy Wayland-alapú GNOME-környezethez készült asztali e-mail kliens, "
-"amelyet Rust nyelven írtak a libadwaita segítségével. Az e-mailjei és "
-"hitelesítő adatai a saját gépén maradnak, a távoli tartalmakat addig "
+"A Tegami Mail egy Wayland-alapú GNOME-környezethez készült asztali e-mail "
+"kliens, amelyet Rust nyelven írtak a libadwaita segítségével. Az e-mailjei "
+"és hitelesítő adatai a saját gépén maradnak, a távoli tartalmakat addig "
 "blokkolja a program, amíg Ön engedélyt nem ad rájuk, és nincs telemetria. "
 "IMAP, POP3, JMAP és Microsoft 365 protokollokkal, valamint bármilyen "
 "szerverrel működik, az iCloudtól a Proton Bridge-en át a saját Stalwart-"
@@ -7987,8 +8300,8 @@ msgid ""
 "Send with Tegami Mail entry in GNOME Files"
 msgstr ""
 "A saját Nextcloud-, OneDrive-, Dropbox- vagy Seafile-fiókodba feltöltött "
-"nagy méretű fájlok; a „Küldés a Tegami Mail segítségével” bejegyzés a GNOME Fájlok "
-"alkalmazásban"
+"nagy méretű fájlok; a „Küldés a Tegami Mail segítségével” bejegyzés a GNOME "
+"Fájlok alkalmazásban"
 
 msgid "Reading:"
 msgstr "Olvasás:"
@@ -8038,11 +8351,14 @@ msgstr ""
 "A GNOME Névjegyzék integrációja, a nyelv és az óra beállítása, valamint a "
 "rendszer kulcstartójában tárolt jelszavak"
 
-msgid "The unified inbox in light mode"
-msgstr "Az egységes beérkező levelek mappa világos üzemmódban"
-
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Buy Me a Coffee"
+#~ msgstr "Hívj meg egy kávéra"
+
+#~ msgid "The unified inbox in light mode"
+#~ msgstr "Az egységes beérkező levelek mappa világos üzemmódban"
 
 #, fuzzy
 #~ msgid "Search all folders but Trash and Junk"
@@ -8067,9 +8383,10 @@ msgstr "Hyprlab"
 
 #~ msgid ""
 #~ "Which browser a link in a message opens in. Inside its Flatpak sandbox "
-#~ "Tegami Mail cannot see the applications installed on the system, so links leave "
-#~ "through the desktop portal: choose \"Ask each time\" to pick the browser "
-#~ "as each link is opened — the desktop's chooser can remember the choice."
+#~ "Tegami Mail cannot see the applications installed on the system, so links "
+#~ "leave through the desktop portal: choose \"Ask each time\" to pick the "
+#~ "browser as each link is opened — the desktop's chooser can remember the "
+#~ "choice."
 #~ msgstr ""
 #~ "Melyik böngészőben nyílik meg egy üzenetben található link. A Flatpak-"
 #~ "szandboxon belül a Tegami Mail nem látja a rendszerre telepített "
@@ -8149,14 +8466,14 @@ msgstr "Hyprlab"
 
 #~ msgid ""
 #~ "File incoming mail into folders or tag it automatically, by sender, "
-#~ "subject or recipients. Applied to each account's Inbox as Tegami Mail syncs it, "
-#~ "or to the mail already there with Apply Now; a folder's right-click menu "
-#~ "runs them over that one folder."
+#~ "subject or recipients. Applied to each account's Inbox as Tegami Mail "
+#~ "syncs it, or to the mail already there with Apply Now; a folder's right-"
+#~ "click menu runs them over that one folder."
 #~ msgstr ""
 #~ "A beérkező leveleket mappákba rendezheti, vagy automatikusan címkézheti "
 #~ "feladó, tárgy vagy címzettek szerint. Ez az egyes fiókok Beérkező levelek "
-#~ "mappájára vonatkozik, amint a Tegami Mail szinkronizálja azokat, illetve a már "
-#~ "ott található levelekre is alkalmazható az \"Alkalmazás azonnal\" "
+#~ "mappájára vonatkozik, amint a Tegami Mail szinkronizálja azokat, illetve "
+#~ "a már ott található levelekre is alkalmazható az \"Alkalmazás azonnal\" "
 #~ "funkcióval; a mappa jobb egérgombbal elérhető menüjéből pedig az adott "
 #~ "mappára vonatkozóan hajthatja végre ezeket a műveleteket."
 
@@ -8276,12 +8593,12 @@ msgstr "Hyprlab"
 #~ msgstr "A fióklista az egységesített „Elküldve” sor alatt."
 
 #~ msgid ""
-#~ "Tegami Mail forgets the account and its sign-in. Files already uploaded, and "
-#~ "the links in messages you sent, stay where they are."
+#~ "Tegami Mail forgets the account and its sign-in. Files already uploaded, "
+#~ "and the links in messages you sent, stay where they are."
 #~ msgstr ""
-#~ "Tegami Mail elfelejti a fiókot és a bejelentkezési adatait. A már feltöltött "
-#~ "fájlok, valamint az általad elküldött üzenetekben szereplő hivatkozások "
-#~ "változatlanul megmaradnak."
+#~ "Tegami Mail elfelejti a fiókot és a bejelentkezési adatait. A már "
+#~ "feltöltött fájlok, valamint az általad elküldött üzenetekben szereplő "
+#~ "hivatkozások változatlanul megmaradnak."
 
 #~ msgid ""
 #~ "Cloudflare's proxy refuses a request over 100 MB, so bigger files are "
@@ -8366,18 +8683,19 @@ msgstr "Hyprlab"
 #~ "ban létrehozott címjegyzékek is megjelennek itt."
 
 #~ msgid ""
-#~ "Tegami Mail reads and writes the keyring of the GnuPG on this computer, the "
-#~ "same one the gpg command and other mail programs use."
+#~ "Tegami Mail reads and writes the keyring of the GnuPG on this computer, "
+#~ "the same one the gpg command and other mail programs use."
 #~ msgstr ""
-#~ "A Tegami Mail beolvassa és írja a GnuPG kulcskészletét ezen a számítógépen, "
-#~ "amelyet a gpg parancs és más levelezőprogramok is használnak."
+#~ "A Tegami Mail beolvassa és írja a GnuPG kulcskészletét ezen a "
+#~ "számítógépen, amelyet a gpg parancs és más levelezőprogramok is "
+#~ "használnak."
 
 #~ msgid ""
-#~ "Show system notifications for new mail and error alerts when Tegami Mail isn't "
-#~ "focused."
+#~ "Show system notifications for new mail and error alerts when Tegami Mail "
+#~ "isn't focused."
 #~ msgstr ""
-#~ "A Tegami Mail nem aktív ablakként fut, amikor új e-mail érkezik vagy hibaüzenet "
-#~ "jelenik meg, a rendszer értesítéseket jelenít meg."
+#~ "A Tegami Mail nem aktív ablakként fut, amikor új e-mail érkezik vagy "
+#~ "hibaüzenet jelenik meg, a rendszer értesítéseket jelenít meg."
 
 #~ msgid "Moves the message to Trash."
 #~ msgstr "Az üzenetet a Kukába helyezi."
@@ -8389,8 +8707,8 @@ msgstr "Hyprlab"
 #~ msgstr "Az üzenetet a „Levélszemét” mappába helyezi."
 
 #~ msgid ""
-#~ "All of Tegami Mail's text, messages included, against the desktop's text size. "
-#~ "Icons keep their size."
+#~ "All of Tegami Mail's text, messages included, against the desktop's text "
+#~ "size. Icons keep their size."
 #~ msgstr ""
 #~ "Tegami Mail összes szövege – az üzeneteket is beleértve – az asztal "
 #~ "szövegméretéhez igazodik. Az ikonok mérete változatlan marad."
@@ -8606,9 +8924,6 @@ msgstr "Hyprlab"
 #~ msgid "The account list under the unified Trash row."
 #~ msgstr "A fióklista az egységes „Piszkozatok” sor alatt."
 
-#~ msgid "The folders under the Filters row."
-#~ msgstr "A „Szűrők” sor alatt található mappák."
-
 #~ msgid "The tags under the Tags row."
 #~ msgstr "A „Címkék” sor alatt található címkék."
 
@@ -8739,12 +9054,12 @@ msgstr "Hyprlab"
 #~ "Csak az e-mail tartalom témája, nem magának az alkalmazásnak a témája."
 
 #~ msgid ""
-#~ "How large every message is shown. Ctrl+ and Ctrl- change it until Tegami Mail "
-#~ "is next started; Ctrl+0 comes back to this."
+#~ "How large every message is shown. Ctrl+ and Ctrl- change it until Tegami "
+#~ "Mail is next started; Ctrl+0 comes back to this."
 #~ msgstr ""
 #~ "Az egyes üzenetek méretének megjelenítése. A Ctrl+ és a Ctrl- "
-#~ "billentyűkkel a Tegami Mail következő indításáig módosítható a méret; a Ctrl+0 "
-#~ "billentyűkombinációval visszaállítható az eredeti méret."
+#~ "billentyűkkel a Tegami Mail következő indításáig módosítható a méret; a "
+#~ "Ctrl+0 billentyűkombinációval visszaállítható az eredeti méret."
 
 #~ msgid ""
 #~ "Show every message in the font and size chosen below instead of the "
@@ -8908,11 +9223,11 @@ msgstr "Hyprlab"
 #~ "(images, trackers) is blocked by default. Allow it per message, trust a "
 #~ "sender to always load it, or turn on \"Always load remote content\" below."
 #~ msgstr ""
-#~ "A Tegami Mail nem gyűjt telemetriai adatokat és nem küld elemzési adatokat. A "
-#~ "távoli tartalmak (képek, nyomkövetők) alapértelmezés szerint blokkolva "
-#~ "vannak. Engedélyezheted őket üzenetenként, beállíthatod, hogy egy adott "
-#~ "feladótól mindig betöltődjenek, vagy az alábbi „Távoli tartalmak mindig "
-#~ "betöltése” opciót is bekapcsolhatod."
+#~ "A Tegami Mail nem gyűjt telemetriai adatokat és nem küld elemzési "
+#~ "adatokat. A távoli tartalmak (képek, nyomkövetők) alapértelmezés szerint "
+#~ "blokkolva vannak. Engedélyezheted őket üzenetenként, beállíthatod, hogy "
+#~ "egy adott feladótól mindig betöltődjenek, vagy az alábbi „Távoli "
+#~ "tartalmak mindig betöltése” opciót is bekapcsolhatod."
 
 #~ msgid ""
 #~ "Show images and other remote content in every new message without asking. "
@@ -8951,8 +9266,8 @@ msgstr "Hyprlab"
 
 #~ msgid ""
 #~ "Fills the sender's avatar with the brand's logo: the one the sender "
-#~ "publishes for mail (BIMI), one bundled with Tegami Mail, or the site's own "
-#~ "icon. All but the bundled ones are fetched from the sender's domain, "
+#~ "publishes for mail (BIMI), one bundled with Tegami Mail, or the site's "
+#~ "own icon. All but the bundled ones are fetched from the sender's domain, "
 #~ "which then learns your IP address, as blocking remote content otherwise "
 #~ "avoids."
 #~ msgstr ""
@@ -8974,39 +9289,39 @@ msgstr "Hyprlab"
 #~ "beállításait."
 
 #~ msgid ""
-#~ "The language Tegami Mail is shown in. \"System\" follows the desktop, with "
-#~ "English where no translation exists. A change applies the next time Tegami Mail "
-#~ "starts."
+#~ "The language Tegami Mail is shown in. \"System\" follows the desktop, "
+#~ "with English where no translation exists. A change applies the next time "
+#~ "Tegami Mail starts."
 #~ msgstr ""
-#~ "A Tegami Mail program nyelvezete. A „Rendszer” beállítás az asztali környezetet "
-#~ "követi, és ahol nincs fordítás, ott az angol nyelv jelenik meg. A "
-#~ "módosítás a Tegami Mail következő indításakor lép érvénybe."
+#~ "A Tegami Mail program nyelvezete. A „Rendszer” beállítás az asztali "
+#~ "környezetet követi, és ahol nincs fordítás, ott az angol nyelv jelenik "
+#~ "meg. A módosítás a Tegami Mail következő indításakor lép érvénybe."
 
 #~ msgid ""
 #~ "Closing the window hides it instead of quitting, so new mail still "
-#~ "arrives. Tegami Mail then appears under Background Apps in the system menu, "
-#~ "where it can be quit."
+#~ "arrives. Tegami Mail then appears under Background Apps in the system "
+#~ "menu, where it can be quit."
 #~ msgstr ""
 #~ "Az ablak bezárása elrejti azt a kilépés helyett, így az új levelek "
-#~ "továbbra is megérkeznek. A Tegami Mail ezután a rendszer menüjének Háttérben "
-#~ "futó alkalmazások szakaszában jelenik meg, ahol kiléphet belőle."
+#~ "továbbra is megérkeznek. A Tegami Mail ezután a rendszer menüjének "
+#~ "Háttérben futó alkalmazások szakaszában jelenik meg, ahol kiléphet belőle."
 
 #~ msgid ""
-#~ "Start checking for mail when you log in. Tegami Mail starts without a window "
-#~ "and waits in the system menu."
+#~ "Start checking for mail when you log in. Tegami Mail starts without a "
+#~ "window and waits in the system menu."
 #~ msgstr ""
-#~ "Levelek keresésének megkezdése bejelentkezéskor. A Tegami Mail ablak nélkül "
-#~ "indul, és a rendszer menüjében várakozik."
+#~ "Levelek keresésének megkezdése bejelentkezéskor. A Tegami Mail ablak "
+#~ "nélkül indul, és a rendszer menüjében várakozik."
 
 #~ msgid ""
 #~ "An icon in the system tray, with a red dot while any inbox has unread "
-#~ "mail. Click it to open Tegami Mail. GNOME needs the AppIndicator extension; "
-#~ "other desktops show it as they are."
+#~ "mail. Click it to open Tegami Mail. GNOME needs the AppIndicator "
+#~ "extension; other desktops show it as they are."
 #~ msgstr ""
 #~ "Ikon a rendszertálcán, piros ponttal, ha bármelyik beérkezett mappában "
-#~ "olvasatlan levél van. Kattintson rá a Tegami Mail megnyitásához. A GNOME-hoz az "
-#~ "AppIndicator-kiterjesztés szükséges; más asztali környezetek natívan "
-#~ "jelenítik meg."
+#~ "olvasatlan levél van. Kattintson rá a Tegami Mail megnyitásához. A GNOME-"
+#~ "hoz az AppIndicator-kiterjesztés szükséges; más asztali környezetek "
+#~ "natívan jelenítik meg."
 
 #~ msgid ""
 #~ "The app icon in full color, or its symbolic outline, which the panel "
@@ -9024,13 +9339,15 @@ msgstr "Hyprlab"
 
 #, fuzzy
 #~ msgid ""
-#~ "A number on Tegami Mail's icon in the dock or task manager: every unread inbox "
-#~ "message, or only those that arrived while Tegami Mail was not in front. KDE "
-#~ "Plasma shows it; GNOME needs a dock extension such as Dash to Dock."
+#~ "A number on Tegami Mail's icon in the dock or task manager: every unread "
+#~ "inbox message, or only those that arrived while Tegami Mail was not in "
+#~ "front. KDE Plasma shows it; GNOME needs a dock extension such as Dash to "
+#~ "Dock."
 #~ msgstr ""
-#~ "A beérkezett üzenetek közül az olvasatlanok száma Tegami Mail ikonján a dokkban "
-#~ "vagy a feladatkezelőben. A KDE Plasma ezt megjeleníti; a GNOME esetében "
-#~ "ehhez egy dokk-bővítményre van szükség, például a Dash to Dock-ra."
+#~ "A beérkezett üzenetek közül az olvasatlanok száma Tegami Mail ikonján a "
+#~ "dokkban vagy a feladatkezelőben. A KDE Plasma ezt megjeleníti; a GNOME "
+#~ "esetében ehhez egy dokk-bővítményre van szükség, például a Dash to Dock-"
+#~ "ra."
 
 #~ msgid ""
 #~ "Act on mail with one key and no modifier — j/k to move, r to reply, a to "
@@ -9041,32 +9358,33 @@ msgstr "Hyprlab"
 #~ "megtekintéséhez nyomd meg a Ctrl+? billentyűkombinációt."
 
 #~ msgid ""
-#~ "A verbose live console in the status bar showing everything Tegami Mail is "
-#~ "doing under the hood."
+#~ "A verbose live console in the status bar showing everything Tegami Mail "
+#~ "is doing under the hood."
 #~ msgstr ""
 #~ "Részletes, élő konzol az állapotsávban, amely megmutat mindent, amit a "
 #~ "Tegami Mail a háttérben végez."
 
 #~ msgid ""
-#~ "Save everything the console has recorded since Tegami Mail started, to attach "
-#~ "to a bug report. Email addresses are shortened to their domain."
+#~ "Save everything the console has recorded since Tegami Mail started, to "
+#~ "attach to a bug report. Email addresses are shortened to their domain."
 #~ msgstr ""
-#~ "Mentse el mindazt, amit a konzol Tegami Mail elindulása óta rögzített, hogy "
-#~ "csatolhassa egy hibajelentéshez. Az e-mail címeket a domainre rövidítjük."
+#~ "Mentse el mindazt, amit a konzol Tegami Mail elindulása óta rögzített, "
+#~ "hogy csatolhassa egy hibajelentéshez. Az e-mail címeket a domainre "
+#~ "rövidítjük."
 
 #~ msgid ""
-#~ "Add \"Send with Tegami Mail\" to the right-click menu in Files (Nautilus): the "
-#~ "selected files open in a new message, attached. This installs a small "
-#~ "extension in your home folder. It also needs the nautilus-python package "
-#~ "(python3-nautilus on Debian and Ubuntu), and Files has to be restarted "
-#~ "before the entry appears."
+#~ "Add \"Send with Tegami Mail\" to the right-click menu in Files "
+#~ "(Nautilus): the selected files open in a new message, attached. This "
+#~ "installs a small extension in your home folder. It also needs the "
+#~ "nautilus-python package (python3-nautilus on Debian and Ubuntu), and "
+#~ "Files has to be restarted before the entry appears."
 #~ msgstr ""
-#~ "Adja hozzá a „Küldés a Tegami Mail-val” menüpontot a Fájlok (GNOME Fájlkezelő) "
-#~ "jobb egérgombbal elérhető menüjéhez: a kijelölt fájlok mellékletként "
-#~ "megnyílnak egy új üzenetben. Ezzel egy kis kiterjesztés települ a saját "
-#~ "mappájába. Ehhez szükség van a nautilus-python csomagra (python3-nautilus "
-#~ "Debian és Ubuntu rendszereken), és a Fájlok alkalmazást újra kell "
-#~ "indítani, mielőtt a menüpont megjelenik."
+#~ "Adja hozzá a „Küldés a Tegami Mail-val” menüpontot a Fájlok (GNOME "
+#~ "Fájlkezelő) jobb egérgombbal elérhető menüjéhez: a kijelölt fájlok "
+#~ "mellékletként megnyílnak egy új üzenetben. Ezzel egy kis kiterjesztés "
+#~ "települ a saját mappájába. Ehhez szükség van a nautilus-python csomagra "
+#~ "(python3-nautilus Debian és Ubuntu rendszereken), és a Fájlok alkalmazást "
+#~ "újra kell indítani, mielőtt a menüpont megjelenik."
 
 #~ msgid ""
 #~ "Closes every Files window, the same as \"nautilus -q\". The next one "
@@ -9085,11 +9403,11 @@ msgstr "Hyprlab"
 #~ "alapértelmezés szerint mellékletként kerülnek csatolásra."
 
 #~ msgid ""
-#~ "Everything Tegami Mail keeps, as one file: mail and cloud storage accounts, "
-#~ "preferences, filters, tags, the sidebar and window layout, the app icon "
-#~ "choice and the words taught to the spell checker. Passwords and sign-ins "
-#~ "stay in the system keyring and are never exported; OpenPGP keys stay in "
-#~ "GnuPG."
+#~ "Everything Tegami Mail keeps, as one file: mail and cloud storage "
+#~ "accounts, preferences, filters, tags, the sidebar and window layout, the "
+#~ "app icon choice and the words taught to the spell checker. Passwords and "
+#~ "sign-ins stay in the system keyring and are never exported; OpenPGP keys "
+#~ "stay in GnuPG."
 #~ msgstr ""
 #~ "A Tegami Mail mindent egyetlen fájlban tárol: az e-mail- és felhőalapú "
 #~ "tárolófiókokat, a beállításokat, a szűrőket, a címkéket, az oldalsáv és "
@@ -9402,9 +9720,11 @@ msgstr "Hyprlab"
 #~ msgstr "Boríték, fekete"
 
 #~ msgid ""
-#~ "The Tegami Mail icon, or a plain envelope in white or black to match the panel."
+#~ "The Tegami Mail icon, or a plain envelope in white or black to match the "
+#~ "panel."
 #~ msgstr ""
-#~ "A Tegami Mail ikonja, vagy a panelhez illő fehér vagy fekete egyszerű boríték."
+#~ "A Tegami Mail ikonja, vagy a panelhez illő fehér vagy fekete egyszerű "
+#~ "boríték."
 
 #~ msgid "A clean, fast GNOME-native email client"
 #~ msgstr "Tiszta, gyors, GNOME-ba illeszkedő levelezőkliens"
@@ -9413,14 +9733,16 @@ msgstr "Hyprlab"
 #~ msgstr "Privát, GNOME-ba illeszkedő levelezőkliens"
 
 #~ msgid ""
-#~ "Tegami Mail is a desktop email client for Wayland that feels at home in GNOME. "
-#~ "It talks IMAP and SMTP directly, keeps your mail and credentials on your "
-#~ "machine, and blocks trackers by default — no telemetry, no analytics."
+#~ "Tegami Mail is a desktop email client for Wayland that feels at home in "
+#~ "GNOME. It talks IMAP and SMTP directly, keeps your mail and credentials "
+#~ "on your machine, and blocks trackers by default — no telemetry, no "
+#~ "analytics."
 #~ msgstr ""
-#~ "A Tegami Mail egy Waylandhez készült asztali levelezőkliens, amely otthonosan "
-#~ "érzi magát a GNOME-ban. Közvetlenül IMAP-pal és SMTP-vel kommunikál, a "
-#~ "leveleket és hitelesítő adatokat a gépén tartja, és alapértelmezés "
-#~ "szerint blokkolja a követőket — nincs telemetria, nincs elemzés."
+#~ "A Tegami Mail egy Waylandhez készült asztali levelezőkliens, amely "
+#~ "otthonosan érzi magát a GNOME-ban. Közvetlenül IMAP-pal és SMTP-vel "
+#~ "kommunikál, a leveleket és hitelesítő adatokat a gépén tartja, és "
+#~ "alapértelmezés szerint blokkolja a követőket — nincs telemetria, nincs "
+#~ "elemzés."
 
 #~ msgid "Features:"
 #~ msgstr "Funkciók:"
