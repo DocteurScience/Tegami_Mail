@@ -254,12 +254,15 @@ pub(crate) struct PrivacyFile {
     #[serde(default = "default_swipe_sensitivity")]
     pub(crate) swipe_sensitivity: f64,
     /// Whether "New message" opens inline over the reading pane (like a
-    /// reply) rather than in its own window.
-    #[serde(default = "default_on")]
+    /// reply) rather than in its own window. Off by default: the composer
+    /// window is the one the design draws, with the conversation's history
+    /// under the reply (docs/DESIGN.md, "Replying and composing").
+    #[serde(default)]
     pub(crate) compose_inline: bool,
     /// Whether Reply, Reply All and Forward open in the reading pane (#86)
-    /// rather than in a window of their own (#295).
-    #[serde(default = "default_on")]
+    /// rather than in a window of their own (#295). Off by default, for the
+    /// same reason as `compose_inline`.
+    #[serde(default)]
     pub(crate) reply_inline: bool,
     /// Whether the inline reply panel shows its From, To and Subject rows
     /// from the start (#154); off, a button in its header reveals them.
@@ -739,8 +742,8 @@ impl Default for PrivacyFile {
             swipe_enabled: true,
             swipe_reversed: false,
             swipe_sensitivity: default_swipe_sensitivity(),
-            compose_inline: true,
-            reply_inline: true,
+            compose_inline: false,
+            reply_inline: false,
             reply_fields: false,
             compose_default_from: String::new(),
             single_card_default_applied: false,

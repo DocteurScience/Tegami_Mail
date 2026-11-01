@@ -804,9 +804,6 @@ msgstr ""
 msgid "Send the message you are writing"
 msgstr ""
 
-#. Save Draft, Save as Template and Delete Draft are not here:
-#. the Save Draft button and its arrow stay in the header at
-#. any width.
 msgid "Attach files"
 msgstr ""
 
@@ -3124,12 +3121,6 @@ msgstr ""
 msgid "Typing"
 msgstr ""
 
-msgid "Collapse into reader"
-msgstr ""
-
-msgid "Open in window"
-msgstr ""
-
 msgid "Save the template?"
 msgstr ""
 
@@ -3155,22 +3146,52 @@ msgstr ""
 msgid "Discard"
 msgstr ""
 
+msgid "Save as Template"
+msgstr ""
+
 msgid "Upload to cloud storage and share a link"
 msgstr ""
 
 msgid "Open Contacts"
 msgstr ""
 
+msgid "Sign with OpenPGP"
+msgstr ""
+
 msgid "Sign with your OpenPGP key"
 msgstr ""
 
+msgid "Encrypt with OpenPGP"
+msgstr ""
+
 msgid "Encrypt with OpenPGP to every recipient's key"
+msgstr ""
+
+msgid "Request a read receipt"
+msgstr ""
+
+msgid "Not every mail app sends one."
+msgstr ""
+
+msgid "Collapse into reader"
+msgstr ""
+
+msgid "Open in window"
+msgstr ""
+
+msgid "Delete Draft"
+msgstr ""
+
+msgid "Move this draft to Trash"
 msgstr ""
 
 msgid "More"
 msgstr ""
 
 msgid "Show Cc, Bcc and Reply-To"
+msgstr ""
+
+msgid "Reply to {name}"
 msgstr ""
 
 msgid ""
@@ -3230,6 +3251,9 @@ msgstr ""
 msgid "Insert Signature"
 msgstr ""
 
+msgid "Attach a File…"
+msgstr ""
+
 msgid "No Signature"
 msgstr ""
 
@@ -3270,25 +3294,7 @@ msgstr ""
 msgid "Could not translate"
 msgstr ""
 
-msgid "Save to Templates"
-msgstr ""
-
-msgid "Save to Drafts"
-msgstr ""
-
-msgid "More ways to save"
-msgstr ""
-
-msgid "Keep a copy in Templates to start new messages from"
-msgstr ""
-
-msgid "Save as Template"
-msgstr ""
-
-msgid "Move this draft to Trash"
-msgstr ""
-
-msgid "Delete Draft"
+msgid "Draft saved at {time}"
 msgstr ""
 
 msgid "Send"
@@ -3312,10 +3318,7 @@ msgstr ""
 msgid "Pick a date and time…"
 msgstr ""
 
-msgid "Request a read receipt"
-msgstr ""
-
-msgid "Not every mail app sends one."
+msgid "More actions"
 msgstr ""
 
 msgid "Show From, To and Subject"

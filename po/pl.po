@@ -914,9 +914,6 @@ msgstr "Najnowsza wiadomość na początku"
 msgid "Send the message you are writing"
 msgstr "Wyślij pisaną wiadomość"
 
-#. Save Draft, Save as Template and Delete Draft are not here:
-#. the Save Draft button and its arrow stay in the header at
-#. any width.
 msgid "Attach files"
 msgstr "Załącz pliki"
 
@@ -3585,12 +3582,6 @@ msgstr ""
 msgid "Typing"
 msgstr "Pisanie"
 
-msgid "Collapse into reader"
-msgstr "Zwiń do panelu czytania"
-
-msgid "Open in window"
-msgstr "Otwórz w osobnym oknie"
-
 #, fuzzy
 msgid "Save the template?"
 msgstr "Czy zapisać etykietę?"
@@ -3623,23 +3614,57 @@ msgstr "Wróć do pisania"
 msgid "Discard"
 msgstr "Odrzuć"
 
+#, fuzzy
+msgid "Save as Template"
+msgstr "Wklejanie jako zwykły tekst"
+
 msgid "Upload to cloud storage and share a link"
 msgstr "Prześlij do chmury i udostępnij odnośnik"
 
 msgid "Open Contacts"
 msgstr "Otwórz kontakty"
 
+#, fuzzy
+msgid "Sign with OpenPGP"
+msgstr "Podpisz własnym kluczem OpenPGP"
+
 msgid "Sign with your OpenPGP key"
 msgstr "Podpisz własnym kluczem OpenPGP"
 
+#, fuzzy
+msgid "Encrypt with OpenPGP"
+msgstr "Zaszyfrowana za pomocą OpenPGP"
+
 msgid "Encrypt with OpenPGP to every recipient's key"
 msgstr "Zaszyfruj za pomocą OpenPGP kluczami wszystkich odbiorców"
+
+msgid "Request a read receipt"
+msgstr ""
+
+msgid "Not every mail app sends one."
+msgstr ""
+
+msgid "Collapse into reader"
+msgstr "Zwiń do panelu czytania"
+
+msgid "Open in window"
+msgstr "Otwórz w osobnym oknie"
+
+msgid "Delete Draft"
+msgstr "Usuń szkic"
+
+msgid "Move this draft to Trash"
+msgstr "Przenieś ten szkic do kosza"
 
 msgid "More"
 msgstr "Więcej"
 
 msgid "Show Cc, Bcc and Reply-To"
 msgstr "Wyświetl pola „DW”, „UDW” i „Odpowiedź do”"
+
+#, fuzzy
+msgid "Reply to {name}"
+msgstr "Przenieś do katalogu {name}"
 
 msgid ""
 "There is no OpenPGP key of your own for {addr}. Generate one under Settings, "
@@ -3708,6 +3733,10 @@ msgid "Insert Signature"
 msgstr "Importuj podpis"
 
 #, fuzzy
+msgid "Attach a File…"
+msgstr "Załącz pliki"
+
+#, fuzzy
 msgid "No Signature"
 msgstr "Podpis"
 
@@ -3760,27 +3789,8 @@ msgid "Could not translate"
 msgstr "Nie udało się oznaczyć wiadomości etykietą: {e}"
 
 #, fuzzy
-msgid "Save to Templates"
-msgstr "Zapisz w katalogu „Szkice”"
-
-msgid "Save to Drafts"
-msgstr "Zapisz w katalogu „Szkice”"
-
-msgid "More ways to save"
-msgstr ""
-
-msgid "Keep a copy in Templates to start new messages from"
-msgstr ""
-
-#, fuzzy
-msgid "Save as Template"
-msgstr "Wklejanie jako zwykły tekst"
-
-msgid "Move this draft to Trash"
-msgstr "Przenieś ten szkic do kosza"
-
-msgid "Delete Draft"
-msgstr "Usuń szkic"
+msgid "Draft saved at {time}"
+msgstr "{date} o {time}"
 
 msgid "Send"
 msgstr "Wyślij"
@@ -3804,11 +3814,9 @@ msgstr "W poniedziałek rano ({time})"
 msgid "Pick a date and time…"
 msgstr "Wybierz datę i godzinę…"
 
-msgid "Request a read receipt"
-msgstr ""
-
-msgid "Not every mail app sends one."
-msgstr ""
+#, fuzzy
+msgid "More actions"
+msgstr "Gesty przesuwania"
 
 msgid "Show From, To and Subject"
 msgstr "Wyświetl pola „Od”, „Do” i „Temat”"
@@ -8444,6 +8452,13 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#, fuzzy
+#~ msgid "Save to Templates"
+#~ msgstr "Zapisz w katalogu „Szkice”"
+
+#~ msgid "Save to Drafts"
+#~ msgstr "Zapisz w katalogu „Szkice”"
 
 #~ msgid "Buy Me a Coffee"
 #~ msgstr "Buy Me a Coffee"

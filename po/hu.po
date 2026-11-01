@@ -892,9 +892,6 @@ msgstr "Legújabb üzenet elöl"
 msgid "Send the message you are writing"
 msgstr "Küldd el az éppen írt üzenetet"
 
-#. Save Draft, Save as Template and Delete Draft are not here:
-#. the Save Draft button and its arrow stay in the header at
-#. any width.
 msgid "Attach files"
 msgstr "Fájlok csatolása"
 
@@ -3533,12 +3530,6 @@ msgstr ""
 msgid "Typing"
 msgstr "Gépelés"
 
-msgid "Collapse into reader"
-msgstr "Olvasói nézetre váltás"
-
-msgid "Open in window"
-msgstr "Megnyitás ablakban"
-
 #, fuzzy
 msgid "Save the template?"
 msgstr "Elmented a címkét?"
@@ -3571,23 +3562,57 @@ msgstr "Szerkesztés folytatása"
 msgid "Discard"
 msgstr "Elvetés"
 
+#, fuzzy
+msgid "Save as Template"
+msgstr "Beillesztés egyszerű szövegként"
+
 msgid "Upload to cloud storage and share a link"
 msgstr "Feltöltés felhőtárhelyre és hivatkozás megosztása"
 
 msgid "Open Contacts"
 msgstr "Névjegyek megnyitása"
 
+#, fuzzy
+msgid "Sign with OpenPGP"
+msgstr "Aláírás a saját OpenPGP-kulccsal"
+
 msgid "Sign with your OpenPGP key"
 msgstr "Aláírás a saját OpenPGP-kulccsal"
 
+#, fuzzy
+msgid "Encrypt with OpenPGP"
+msgstr "OpenPGP-vel titkosítva"
+
 msgid "Encrypt with OpenPGP to every recipient's key"
 msgstr "Titkosítás OpenPGP-vel minden címzett kulcsára"
+
+msgid "Request a read receipt"
+msgstr ""
+
+msgid "Not every mail app sends one."
+msgstr ""
+
+msgid "Collapse into reader"
+msgstr "Olvasói nézetre váltás"
+
+msgid "Open in window"
+msgstr "Megnyitás ablakban"
+
+msgid "Delete Draft"
+msgstr "Piszkozat törlése"
+
+msgid "Move this draft to Trash"
+msgstr "Piszkozat áthelyezése a Kukába"
 
 msgid "More"
 msgstr "Továbbiak"
 
 msgid "Show Cc, Bcc and Reply-To"
 msgstr "Másolat, titkos másolat és válaszcím megjelenítése"
+
+#, fuzzy
+msgid "Reply to {name}"
+msgstr "Áthelyzés ide: {name}"
 
 msgid ""
 "There is no OpenPGP key of your own for {addr}. Generate one under Settings, "
@@ -3657,6 +3682,10 @@ msgid "Insert Signature"
 msgstr "Aláírás importálása"
 
 #, fuzzy
+msgid "Attach a File…"
+msgstr "Fájlok csatolása"
+
+#, fuzzy
 msgid "No Signature"
 msgstr "Aláírás"
 
@@ -3709,27 +3738,8 @@ msgid "Could not translate"
 msgstr "Az üzenet nem címkézhető: {e}"
 
 #, fuzzy
-msgid "Save to Templates"
-msgstr "Mentés a Piszkozatok közé"
-
-msgid "Save to Drafts"
-msgstr "Mentés a Piszkozatok közé"
-
-msgid "More ways to save"
-msgstr ""
-
-msgid "Keep a copy in Templates to start new messages from"
-msgstr ""
-
-#, fuzzy
-msgid "Save as Template"
-msgstr "Beillesztés egyszerű szövegként"
-
-msgid "Move this draft to Trash"
-msgstr "Piszkozat áthelyezése a Kukába"
-
-msgid "Delete Draft"
-msgstr "Piszkozat törlése"
+msgid "Draft saved at {time}"
+msgstr "{date} {time} órakor"
 
 msgid "Send"
 msgstr "Küldés"
@@ -3753,11 +3763,9 @@ msgstr "Hétfő reggel ({time})"
 msgid "Pick a date and time…"
 msgstr "Dátum és idő kiválasztása…"
 
-msgid "Request a read receipt"
-msgstr ""
-
-msgid "Not every mail app sends one."
-msgstr ""
+#, fuzzy
+msgid "More actions"
+msgstr "Csúsztatási műveletek"
 
 msgid "Show From, To and Subject"
 msgstr "Feladó, címzett és tárgy megjelenítése"
@@ -8375,6 +8383,13 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#, fuzzy
+#~ msgid "Save to Templates"
+#~ msgstr "Mentés a Piszkozatok közé"
+
+#~ msgid "Save to Drafts"
+#~ msgstr "Mentés a Piszkozatok közé"
 
 #~ msgid "Buy Me a Coffee"
 #~ msgstr "Hívj meg egy kávéra"

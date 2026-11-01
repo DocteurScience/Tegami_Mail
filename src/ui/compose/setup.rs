@@ -9,8 +9,8 @@ use crate::ui::rich_editor::RichEditor;
 use adw::prelude::*;
 use relm4::prelude::*;
 
-/// The buttons at the far end of the format bar: signature, translate,
-/// preview and the format chooser, in that order.
+/// The buttons at the far end of the format bar: Attach a File, signature,
+/// translate, preview and the format chooser, in that order.
 pub(super) fn add_toolbar_end_buttons(
     editor: &RichEditor,
     format: ComposeFormat,
@@ -94,6 +94,29 @@ pub(super) fn add_toolbar_end_buttons(
         });
         signature_btn.add_controller(right);
     }
+    // Attach a File, with its word as in the design's composer (docs/
+    // DESIGN.md, "Replying and composing"): it moved here from the header
+    // bar, which keeps to Cancel, the title, More actions and Send, and
+    // this row is never folded away, so it is there at every width.
+    let attach_btn = gtk::Button::builder()
+        .child(
+            &adw::ButtonContent::builder()
+                .icon_name("mail-attachment-symbolic")
+                .label(i18n("Attach a File…"))
+                .can_shrink(true)
+                .build(),
+        )
+        .build();
+    attach_btn.set_tooltip_text(Some(i18n("Attach files").as_str()));
+    attach_btn.add_css_class("flat");
+    attach_btn.set_can_focus(false);
+    {
+        let s = sender.input_sender().clone();
+        attach_btn.connect_clicked(move |_| {
+            let _ = s.send(ComposeInput::AttachFiles);
+        });
+    }
+    editor.toolbar_end().append(&attach_btn);
     editor.toolbar_end().append(&signature_btn);
     editor.toolbar_end().append(&translate_btn);
     editor.toolbar_end().append(&preview_btn);

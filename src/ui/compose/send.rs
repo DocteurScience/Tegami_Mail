@@ -661,6 +661,7 @@ impl Compose {
                 }
                 self.draft_origin = Some(origin);
                 self.autosaved = pending;
+                self.saved_at = Some(crate::datefmt::now());
             }
             // Saved, but not found again to be replaced next time:
             // one more save would leave a second copy behind.

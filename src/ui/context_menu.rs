@@ -35,6 +35,10 @@ pub(crate) struct MenuEntry {
     /// A switch that is on: the row gets the grey of a pressed toggle
     /// button, so it reads like the header button it stands in for.
     checked: bool,
+    /// An entry that cannot be taken back (Delete Draft): drawn in the
+    /// destructive colour, the one entry of its menu that is (HIG; docs/
+    /// DESIGN.md, "Menus").
+    destructive: bool,
     /// Shown on hover in place of the label (a switch's state, say).
     tooltip: Option<String>,
     /// The keys that do the same, shown dim at the end of the row (#497).
@@ -53,11 +57,19 @@ impl MenuEntry {
             enabled: true,
             selected: false,
             checked: false,
+            destructive: false,
             tooltip: None,
             accel: None,
             activate: Box::new(activate),
             submenu: None,
         }
+    }
+
+    /// Draw the entry in the destructive colour: for an action that cannot
+    /// be taken back.
+    pub(crate) fn destructive(mut self) -> Self {
+        self.destructive = true;
+        self
     }
 
     /// An entry that opens `sections` as a page of the same popover, headed
@@ -71,6 +83,7 @@ impl MenuEntry {
             enabled: !empty,
             selected: false,
             checked: false,
+            destructive: false,
             tooltip: None,
             accel: None,
             activate: Box::new(|| {}),
@@ -429,6 +442,7 @@ fn build_page(
                 enabled,
                 selected,
                 checked,
+                destructive,
                 tooltip,
                 accel,
                 activate,
@@ -474,6 +488,12 @@ fn build_page(
             }
             btn.add_css_class("flat");
             btn.add_css_class("context-menu-item");
+            if destructive {
+                // libadwaita's error colour, which follows the theme and
+                // high contrast; the label says what happens, so the colour
+                // is never the only sign.
+                btn.add_css_class("error");
+            }
             btn.set_halign(gtk::Align::Fill);
             btn.set_sensitive(enabled);
             if checked {

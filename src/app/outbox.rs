@@ -174,6 +174,9 @@ impl AppModel {
             receipt: Some(editable.receipt),
             outbox_origin: Some(id),
             reply_addressed_to: String::new(),
+            // Reopened, the message replied to is not known: the title
+            // names the first recipient instead.
+            reply_name: String::new(),
             from_address: first_recipient(&editable.from)
                 .map(|(_, addr)| addr)
                 .unwrap_or_default(),

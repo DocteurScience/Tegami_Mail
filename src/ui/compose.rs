@@ -31,7 +31,7 @@ use crate::ui::later::{next_monday, preset_time};
 use cloud::not_signed_in;
 pub(crate) use format::forget_zoom;
 use format::{markdown_body, session_zoom, zoom_chip, SHOWCASE_PLAIN_LOG};
-use host::{fold_on_first_map, pgp_tooltip, set_toggle_icon, size_for_host, COMPOSE_MIN_WIDTH};
+use host::{compose_heading, fold_on_first_map, size_for_host, COMPOSE_MIN_WIDTH};
 pub(crate) use keys::composer_key;
 pub(crate) use messages::{ComposeInput, ComposeOutput};
 pub(crate) use model::Compose;
@@ -73,72 +73,22 @@ impl Component for Compose {
                         add_css_class: "compose-toolbar",
                         set_show_start_title_buttons: false,
                         set_show_end_title_buttons: false,
-                        // No "Tegami Mail" branding on the compose bar.
+                        // What is being written, and whether it is safe in
+                        // Drafts (docs/DESIGN.md, "Replying and composing").
                         #[wrap(Some)]
-                        set_title_widget = &gtk::Label {
-                            set_label: "",
+                        set_title_widget = &adw::WindowTitle {
+                            #[watch]
+                            set_title: &model.heading,
+                            #[watch]
+                            set_subtitle: &model.saved_at.map(|t| i18n_f("Draft saved at {time}", &[("time", &crate::datefmt::time(t))])).unwrap_or_default(),
                         },
 
+                        // A flat text button: the window's one suggested
+                        // button is Send.
                         pack_start = &gtk::Button {
                             set_label: &i18n("Cancel"),
+                            add_css_class: "flat",
                             connect_clicked => ComposeInput::Cancel,
-                        },
-                        // Save Draft stays, label and all, however narrow the
-                        // pane: it is the one action worth a click in a hurry.
-                        // Save as Template (#360) beside it, as Send Later
-                        // is beside Send; a template being edited has the
-                        // one way to be saved.
-                        pack_start = &gtk::Box {
-                            add_css_class: "linked",
-                            gtk::Button {
-                                set_label: &if model.template { i18n("Save Template") } else { i18n("Save Draft") },
-                                set_tooltip_text: Some(
-                                    if model.template { i18n("Save to Templates") } else { i18n("Save to Drafts") }.as_str()
-                                ),
-                                connect_clicked => ComposeInput::SaveDraft,
-                            },
-                            gtk::MenuButton {
-                                set_icon_name: "pan-down-symbolic",
-                                set_tooltip_text: Some(i18n("More ways to save").as_str()),
-                                set_can_focus: false,
-                                set_visible: !model.template,
-                                #[wrap(Some)]
-                                set_popover = &gtk::Popover {
-                                    gtk::Box {
-                                        set_orientation: gtk::Orientation::Vertical,
-                                        add_css_class: "context-menu-list",
-                                        gtk::Button {
-                                            add_css_class: "flat",
-                                            add_css_class: "context-menu-item",
-                                            set_halign: gtk::Align::Fill,
-                                            set_tooltip_text: Some(i18n("Keep a copy in Templates to start new messages from").as_str()),
-                                            #[wrap(Some)]
-                                            set_child = &gtk::Label { set_label: &i18n("Save as Template"), set_halign: gtk::Align::Start },
-                                            connect_clicked[sender] => move |b| {
-                                                if let Some(p) = b.ancestor(gtk::Popover::static_type()).and_downcast::<gtk::Popover>() { p.popdown(); }
-                                                sender.input_sender().emit(ComposeInput::SaveAsTemplate);
-                                            },
-                                        },
-                                        // Only while editing an existing draft: the
-                                        // message is moved to Trash, not saved, and
-                                        // the editor closes.
-                                        gtk::Button {
-                                            add_css_class: "flat",
-                                            add_css_class: "context-menu-item",
-                                            set_halign: gtk::Align::Fill,
-                                            set_tooltip_text: Some(i18n("Move this draft to Trash").as_str()),
-                                            #[watch]
-                                            set_visible: model.draft_origin.is_some(),
-                                            #[wrap(Some)]
-                                            set_child = &gtk::Label { set_label: &i18n("Delete Draft"), set_halign: gtk::Align::Start },
-                                            connect_clicked[sender] => move |b| {
-                                                if let Some(p) = b.ancestor(gtk::Popover::static_type()).and_downcast::<gtk::Popover>() { p.popdown(); }
-                                                sender.input_sender().emit(ComposeInput::DeleteDraft);
-                                            },
-                                        },
-                                    },
-                                },
-                            },
                         },
                         // Send, with Send Later beside it (#145): presets, or a
                         // date and time of your own.
@@ -223,39 +173,28 @@ impl Component for Compose {
                                                 sender.input_sender().emit(ComposeInput::PickSendTime);
                                             },
                                         },
-                                        gtk::Separator {},
-                                        gtk::CheckButton {
-                                            add_css_class: "context-menu-item",
-                                            set_label: Some(&i18n("Request a read receipt")),
-                                            set_tooltip_text: Some(&i18n("Not every mail app sends one.")),
-                                            set_active: model.request_receipt,
-                                            connect_toggled[sender] => move |b| {
-                                                sender.input_sender().emit(ComposeInput::ToggleReceipt(b.is_active()));
-                                            },
-                                        },
                                     },
                                 },
                             },
                         },
-                        // The folded toolbar (narrow pane): every action that is
-                        // not Cancel or Send lives in this menu.
+                        // More actions: everything that is not Cancel or Send,
+                        // at every width (docs/DESIGN.md, "Menus"). The header
+                        // keeps to Cancel, the title, this and Send.
                         #[name = "overflow_btn"]
                         pack_end = &gtk::Button {
                             set_icon_name: "view-more-horizontal-symbolic",
-                            set_tooltip_text: Some(i18n("Actions").as_str()),
-                            #[watch]
-                            set_visible: model.narrow,
+                            set_tooltip_text: Some(i18n("More actions").as_str()),
+                            add_css_class: "flat",
                             connect_clicked => ComposeInput::OverflowMenu,
                         },
-                        // OpenPGP (#133): only offered where a gpg exists.
+                        // OpenPGP (#133). Never shown: the toggles are set from
+                        // More actions, and these hold their state, so that the
+                        // menu and the code that reads them agree.
                         #[name = "encrypt_btn"]
                         pack_end = &gtk::ToggleButton {
                             set_icon_name: "channel-secure-symbolic",
                             add_css_class: "pgp-toggle",
-                            #[watch]
-                            set_tooltip_text: Some(&pgp_tooltip(&i18n("Encrypt with OpenPGP to every recipient's key"), model.encrypt)),
-                            #[watch]
-                            set_visible: crate::mail::pgp::available() && !model.narrow,
+                            set_visible: false,
                             connect_toggled[sender] => move |b| {
                                 sender.input_sender().emit(ComposeInput::ToggleEncrypt(b.is_active()));
                             },
@@ -264,47 +203,13 @@ impl Component for Compose {
                         pack_end = &gtk::ToggleButton {
                             set_icon_name: "security-high-symbolic",
                             add_css_class: "pgp-toggle",
-                            #[watch]
-                            set_tooltip_text: Some(&pgp_tooltip(&i18n("Sign with your OpenPGP key"), model.sign)),
-                            #[watch]
-                            set_visible: crate::mail::pgp::available() && !model.narrow,
+                            set_visible: false,
                             connect_toggled[sender] => move |b| {
                                 sender.input_sender().emit(ComposeInput::ToggleSign(b.is_active()));
                             },
                         },
-                        pack_end = &gtk::Button {
-                            set_icon_name: "mail-attachment-symbolic",
-                            set_tooltip_text: Some(i18n("Attach files").as_str()),
-                            #[watch]
-                            set_visible: !model.narrow,
-                            connect_clicked => ComposeInput::AttachFiles,
-                        },
-                        // Cloud attachments (#144): only with an account set up.
-                        pack_end = &gtk::Button {
-                            set_icon_name: "cloud-symbolic",
-                            set_tooltip_text: Some(i18n("Upload to cloud storage and share a link").as_str()),
-                            #[watch]
-                            set_visible: !model.cloud_accounts.is_empty() && !model.narrow,
-                            #[watch]
-                            set_sensitive: model.cloud_busy == 0,
-                            connect_clicked => ComposeInput::CloudAttach,
-                        },
-                        pack_end = &gtk::Button {
-                            set_icon_name: "x-office-address-book-symbolic",
-                            set_tooltip_text: Some(i18n("Open Contacts").as_str()),
-                            #[watch]
-                            set_visible: !model.narrow,
-                            connect_clicked => ComposeInput::OpenContacts,
-                        },
-                        // Promote inline reply → window, or collapse window → inline.
-                        // Icon set in `init` and on SetWindowed.
-                        #[name = "toggle_btn"]
-                        pack_end = &gtk::Button {
-                            set_tooltip_text: Some(i18n("Open in window").as_str()),
-                            #[watch]
-                            set_visible: model.can_toggle && !model.narrow,
-                            connect_clicked => ComposeInput::ToggleWindowed,
-                        },
+                        // Attach is in the formatting row, the cloud, Contacts
+                        // and the window toggle in More actions.
                         // The compact reply's From/To/Subject rows (#154): folded
                         // away by default, one press brings them back.
                         #[name = "fields_btn"]
@@ -482,6 +387,7 @@ impl Component for Compose {
             !prefill_attachments.is_empty() && draft_origin.is_none() && outbox_origin.is_none();
         let prefill_encrypt = prefill.encrypt;
         let request_receipt = prefill.receipt.unwrap_or(false);
+        let heading = compose_heading(&in_reply_to, &forwards, &prefill.reply_name, &prefill.to);
         let send_at = prefill.send_at;
         let current_sig = accounts
             .get(selected)
@@ -646,6 +552,8 @@ impl Component for Compose {
             // A template is saved when its editor says so: an automatic save
             // would put the half-edited one in its place.
             autosave_off: template,
+            heading,
+            saved_at: None,
             tr_subject: None,
             preview_btn,
             preview_content,
@@ -679,10 +587,6 @@ impl Component for Compose {
         }
         widgets.editor_holder.append(&model.editor.widget);
 
-        // The inline/window toggle: only reply/forward panes can toggle. Its icon
-        // reflects the current host (fullscreen = "expand to window", restore =
-        // "collapse back inline").
-        set_toggle_icon(&widgets.toggle_btn, model.windowed);
         size_for_host(
             &widgets.toolbar_root,
             &widgets.header,

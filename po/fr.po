@@ -868,9 +868,6 @@ msgstr "Nouveau message à partir d’un modèle"
 msgid "Send the message you are writing"
 msgstr "Envoyer le message en cours de rédaction"
 
-#. Save Draft, Save as Template and Delete Draft are not here:
-#. the Save Draft button and its arrow stay in the header at
-#. any width.
 msgid "Attach files"
 msgstr "Joindre des fichiers"
 
@@ -3425,12 +3422,6 @@ msgstr "Basculer"
 msgid "Typing"
 msgstr "Saisie"
 
-msgid "Collapse into reader"
-msgstr "Réduire dans le lecteur"
-
-msgid "Open in window"
-msgstr "Ouvrir dans une fenêtre"
-
 msgid "Save the template?"
 msgstr "Enregistrer le modèle ?"
 
@@ -3460,23 +3451,53 @@ msgstr "Continuer la modification"
 msgid "Discard"
 msgstr "Abandonner"
 
+msgid "Save as Template"
+msgstr "Enregistrer comme modèle"
+
 msgid "Upload to cloud storage and share a link"
 msgstr "Téléverser vers un stockage en ligne et partager un lien"
 
 msgid "Open Contacts"
 msgstr "Ouvrir les contacts"
 
+msgid "Sign with OpenPGP"
+msgstr "Signer avec OpenPGP"
+
 msgid "Sign with your OpenPGP key"
 msgstr "Signer avec votre clé OpenPGP"
 
+msgid "Encrypt with OpenPGP"
+msgstr "Chiffrer avec OpenPGP"
+
 msgid "Encrypt with OpenPGP to every recipient's key"
 msgstr "Chiffrer avec OpenPGP en utilisant la clé de chaque destinataire"
+
+msgid "Request a read receipt"
+msgstr "Demander un accusé de réception"
+
+msgid "Not every mail app sends one."
+msgstr "Toutes les applications de messagerie n’en envoient pas."
+
+msgid "Collapse into reader"
+msgstr "Réduire dans le lecteur"
+
+msgid "Open in window"
+msgstr "Ouvrir dans une fenêtre"
+
+msgid "Delete Draft"
+msgstr "Supprimer le brouillon"
+
+msgid "Move this draft to Trash"
+msgstr "Déplacer ce brouillon vers la Corbeille"
 
 msgid "More"
 msgstr "Plus"
 
 msgid "Show Cc, Bcc and Reply-To"
 msgstr "Afficher Cc, Cci et Répondre à"
+
+msgid "Reply to {name}"
+msgstr "Répondre à {name}"
 
 msgid ""
 "There is no OpenPGP key of your own for {addr}. Generate one under Settings, "
@@ -3545,6 +3566,9 @@ msgstr "Traduire ce que vous avez écrit"
 msgid "Insert Signature"
 msgstr "Insérer la signature"
 
+msgid "Attach a File…"
+msgstr "Joindre un fichier…"
+
 msgid "No Signature"
 msgstr "Aucune signature"
 
@@ -3587,26 +3611,8 @@ msgstr "Écrivez d’abord quelque chose, ou sélectionnez le texte à traduire.
 msgid "Could not translate"
 msgstr "Impossible de traduire"
 
-msgid "Save to Templates"
-msgstr "Enregistrer dans les modèles"
-
-msgid "Save to Drafts"
-msgstr "Enregistrer dans les brouillons"
-
-msgid "More ways to save"
-msgstr "Autres façons d’enregistrer"
-
-msgid "Keep a copy in Templates to start new messages from"
-msgstr "Conserver une copie dans Modèles pour démarrer de nouveaux messages"
-
-msgid "Save as Template"
-msgstr "Enregistrer comme modèle"
-
-msgid "Move this draft to Trash"
-msgstr "Déplacer ce brouillon vers la Corbeille"
-
-msgid "Delete Draft"
-msgstr "Supprimer le brouillon"
+msgid "Draft saved at {time}"
+msgstr "Brouillon enregistré à {time}"
 
 msgid "Send"
 msgstr "Envoyer"
@@ -3630,11 +3636,8 @@ msgstr "Lundi matin ({time})"
 msgid "Pick a date and time…"
 msgstr "Choisir une date et une heure…"
 
-msgid "Request a read receipt"
-msgstr ""
-
-msgid "Not every mail app sends one."
-msgstr ""
+msgid "More actions"
+msgstr "Plus d’actions"
 
 msgid "Show From, To and Subject"
 msgstr "Afficher l’expéditeur, le destinataire et l’objet"
@@ -8128,6 +8131,18 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Save to Templates"
+#~ msgstr "Enregistrer dans les modèles"
+
+#~ msgid "Save to Drafts"
+#~ msgstr "Enregistrer dans les brouillons"
+
+#~ msgid "More ways to save"
+#~ msgstr "Autres façons d’enregistrer"
+
+#~ msgid "Keep a copy in Templates to start new messages from"
+#~ msgstr "Conserver une copie dans Modèles pour démarrer de nouveaux messages"
 
 #~ msgid "Buy Me a Coffee"
 #~ msgstr "Offrez-moi un café"

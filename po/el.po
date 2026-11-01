@@ -872,9 +872,6 @@ msgstr "Νέο μήνυμα από πρότυπο"
 msgid "Send the message you are writing"
 msgstr "Αποστολή του μηνύματος που συντάσσετε"
 
-#. Save Draft, Save as Template and Delete Draft are not here:
-#. the Save Draft button and its arrow stay in the header at
-#. any width.
 msgid "Attach files"
 msgstr "Επισύναψη αρχείων"
 
@@ -3457,12 +3454,6 @@ msgstr "Εναλλαγή"
 msgid "Typing"
 msgstr "Πληκτρολόγηση"
 
-msgid "Collapse into reader"
-msgstr "Σύμπτυξη στην προβολή ανάγνωσης"
-
-msgid "Open in window"
-msgstr "Άνοιγμα σε παράθυρο"
-
 msgid "Save the template?"
 msgstr "Αποθήκευση του προτύπου;"
 
@@ -3492,23 +3483,56 @@ msgstr "Συνέχεια επεξεργασίας"
 msgid "Discard"
 msgstr "Απόρριψη"
 
+msgid "Save as Template"
+msgstr "Αποθήκευση ως πρότυπο"
+
 msgid "Upload to cloud storage and share a link"
 msgstr "Μεταφόρτωση στον χώρο αποθήκευσης cloud και κοινοποίηση συνδέσμου"
 
 msgid "Open Contacts"
 msgstr "Άνοιγμα Επαφών"
 
+#, fuzzy
+msgid "Sign with OpenPGP"
+msgstr "Υπογραφή με το κλειδί OpenPGP σας"
+
 msgid "Sign with your OpenPGP key"
 msgstr "Υπογραφή με το κλειδί OpenPGP σας"
 
+#, fuzzy
+msgid "Encrypt with OpenPGP"
+msgstr "Κρυπτογραφημένο με OpenPGP"
+
 msgid "Encrypt with OpenPGP to every recipient's key"
 msgstr "Κρυπτογράφηση με OpenPGP για το κλειδί κάθε παραλήπτη"
+
+msgid "Request a read receipt"
+msgstr ""
+
+msgid "Not every mail app sends one."
+msgstr ""
+
+msgid "Collapse into reader"
+msgstr "Σύμπτυξη στην προβολή ανάγνωσης"
+
+msgid "Open in window"
+msgstr "Άνοιγμα σε παράθυρο"
+
+msgid "Delete Draft"
+msgstr "Διαγραφή προχείρου"
+
+msgid "Move this draft to Trash"
+msgstr "Μετακίνηση αυτού του προχείρου στον Κάδο"
 
 msgid "More"
 msgstr "Περισσότερα"
 
 msgid "Show Cc, Bcc and Reply-To"
 msgstr "Εμφάνιση Κοιν., Κρυφής κοιν. και Απάντησης προς"
+
+#, fuzzy
+msgid "Reply to {name}"
+msgstr "Μετακίνηση στο {name}"
 
 msgid ""
 "There is no OpenPGP key of your own for {addr}. Generate one under Settings, "
@@ -3576,6 +3600,10 @@ msgstr "Μετάφραση όσων γράψατε"
 msgid "Insert Signature"
 msgstr "Εισαγωγή υπογραφής"
 
+#, fuzzy
+msgid "Attach a File…"
+msgstr "Επισύναψη αρχείων"
+
 msgid "No Signature"
 msgstr "Χωρίς υπογραφή"
 
@@ -3618,27 +3646,9 @@ msgstr "Γράψτε πρώτα κάτι ή επιλέξτε το κείμενο
 msgid "Could not translate"
 msgstr "Δεν ήταν δυνατή η μετάφραση"
 
-msgid "Save to Templates"
-msgstr "Αποθήκευση στα Πρότυπα"
-
-msgid "Save to Drafts"
-msgstr "Αποθήκευση στα Πρόχειρα"
-
-msgid "More ways to save"
-msgstr "Περισσότεροι τρόποι αποθήκευσης"
-
-msgid "Keep a copy in Templates to start new messages from"
-msgstr ""
-"Διατήρηση αντιγράφου στα Πρότυπα για τη δημιουργία νέων μηνυμάτων από αυτό"
-
-msgid "Save as Template"
-msgstr "Αποθήκευση ως πρότυπο"
-
-msgid "Move this draft to Trash"
-msgstr "Μετακίνηση αυτού του προχείρου στον Κάδο"
-
-msgid "Delete Draft"
-msgstr "Διαγραφή προχείρου"
+#, fuzzy
+msgid "Draft saved at {time}"
+msgstr "{date} στις {time}"
 
 msgid "Send"
 msgstr "Αποστολή"
@@ -3662,11 +3672,9 @@ msgstr "Δευτέρα πρωί ({time})"
 msgid "Pick a date and time…"
 msgstr "Επιλογή ημερομηνίας και ώρας…"
 
-msgid "Request a read receipt"
-msgstr ""
-
-msgid "Not every mail app sends one."
-msgstr ""
+#, fuzzy
+msgid "More actions"
+msgstr "Ενέργειες σάρωσης"
 
 msgid "Show From, To and Subject"
 msgstr "Εμφάνιση Από, Προς και Θέμα"
@@ -8195,6 +8203,19 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Save to Templates"
+#~ msgstr "Αποθήκευση στα Πρότυπα"
+
+#~ msgid "Save to Drafts"
+#~ msgstr "Αποθήκευση στα Πρόχειρα"
+
+#~ msgid "More ways to save"
+#~ msgstr "Περισσότεροι τρόποι αποθήκευσης"
+
+#~ msgid "Keep a copy in Templates to start new messages from"
+#~ msgstr ""
+#~ "Διατήρηση αντιγράφου στα Πρότυπα για τη δημιουργία νέων μηνυμάτων από αυτό"
 
 #~ msgid "Buy Me a Coffee"
 #~ msgstr "Κεράστε με έναν καφέ"

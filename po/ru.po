@@ -913,9 +913,6 @@ msgstr "Новое сообщение из шаблона"
 msgid "Send the message you are writing"
 msgstr "Отправить создаваемое сообщение"
 
-#. Save Draft, Save as Template and Delete Draft are not here:
-#. the Save Draft button and its arrow stay in the header at
-#. any width.
 msgid "Attach files"
 msgstr "Прикрепить файлы"
 
@@ -3559,12 +3556,6 @@ msgstr ""
 msgid "Typing"
 msgstr "Ввод текста"
 
-msgid "Collapse into reader"
-msgstr "Свернуть в область чтения"
-
-msgid "Open in window"
-msgstr "Открыть в отдельном окне"
-
 msgid "Save the template?"
 msgstr "Сохранить шаблон?"
 
@@ -3592,23 +3583,56 @@ msgstr "Продолжить редактирование"
 msgid "Discard"
 msgstr "Отменить"
 
+msgid "Save as Template"
+msgstr "Сохранить как шаблон"
+
 msgid "Upload to cloud storage and share a link"
 msgstr "Загрузить в облачное хранилище и поделиться ссылкой"
 
 msgid "Open Contacts"
 msgstr "Открыть «Контакты»"
 
+#, fuzzy
+msgid "Sign with OpenPGP"
+msgstr "Подписать вашим ключом OpenPGP"
+
 msgid "Sign with your OpenPGP key"
 msgstr "Подписать вашим ключом OpenPGP"
 
+#, fuzzy
+msgid "Encrypt with OpenPGP"
+msgstr "Зашифровано с помощью OpenPGP"
+
 msgid "Encrypt with OpenPGP to every recipient's key"
 msgstr "Зашифровать с помощью OpenPGP для каждого получателя"
+
+msgid "Request a read receipt"
+msgstr ""
+
+msgid "Not every mail app sends one."
+msgstr ""
+
+msgid "Collapse into reader"
+msgstr "Свернуть в область чтения"
+
+msgid "Open in window"
+msgstr "Открыть в отдельном окне"
+
+msgid "Delete Draft"
+msgstr "Удалить черновик"
+
+msgid "Move this draft to Trash"
+msgstr "Переместить этот черновик в «Корзину»"
 
 msgid "More"
 msgstr "Ещё"
 
 msgid "Show Cc, Bcc and Reply-To"
 msgstr "Показать «Копия», «Скрытая копия» и «Адрес для ответа»"
+
+#, fuzzy
+msgid "Reply to {name}"
+msgstr "Переместить в {name}"
 
 msgid ""
 "There is no OpenPGP key of your own for {addr}. Generate one under Settings, "
@@ -3678,6 +3702,10 @@ msgid "Insert Signature"
 msgstr "Импортировать подпись"
 
 #, fuzzy
+msgid "Attach a File…"
+msgstr "Прикрепить файлы"
+
+#, fuzzy
 msgid "No Signature"
 msgstr "Подпись"
 
@@ -3722,26 +3750,9 @@ msgstr "Сначала напишите что-нибудь или выбери�
 msgid "Could not translate"
 msgstr "Не удалось перевести"
 
-msgid "Save to Templates"
-msgstr "Сохранить в «Шаблоны»"
-
-msgid "Save to Drafts"
-msgstr "Сохранить в «Черновики»"
-
-msgid "More ways to save"
-msgstr "Другие способы сохранения"
-
-msgid "Keep a copy in Templates to start new messages from"
-msgstr "Сохранять копию в «Шаблонах» для создания новых сообщений"
-
-msgid "Save as Template"
-msgstr "Сохранить как шаблон"
-
-msgid "Move this draft to Trash"
-msgstr "Переместить этот черновик в «Корзину»"
-
-msgid "Delete Draft"
-msgstr "Удалить черновик"
+#, fuzzy
+msgid "Draft saved at {time}"
+msgstr "{date} в {time}"
 
 msgid "Send"
 msgstr "Отправить"
@@ -3765,11 +3776,9 @@ msgstr "В понедельник утром ({time})"
 msgid "Pick a date and time…"
 msgstr "Выбрать дату и время…"
 
-msgid "Request a read receipt"
-msgstr ""
-
-msgid "Not every mail app sends one."
-msgstr ""
+#, fuzzy
+msgid "More actions"
+msgstr "Действия свайпом"
 
 msgid "Show From, To and Subject"
 msgstr "Показать поля «От», «Кому» и «Тема»"
@@ -8362,6 +8371,18 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Save to Templates"
+#~ msgstr "Сохранить в «Шаблоны»"
+
+#~ msgid "Save to Drafts"
+#~ msgstr "Сохранить в «Черновики»"
+
+#~ msgid "More ways to save"
+#~ msgstr "Другие способы сохранения"
+
+#~ msgid "Keep a copy in Templates to start new messages from"
+#~ msgstr "Сохранять копию в «Шаблонах» для создания новых сообщений"
 
 #~ msgid "Buy Me a Coffee"
 #~ msgstr "Поддержать проект"

@@ -36,6 +36,7 @@ pub(super) fn reply_prefill(m: &Message, header: &str) -> ComposePrefill {
         // Who the original went to, so a mail addressed to one of the
         // account's send-as aliases is answered from that alias (#34).
         reply_addressed_to: format!("{}, {}", m.to, m.cc),
+        reply_name: m.from_name.clone(),
         // The original is quoted as it was written, the way a forward quotes
         // it (#52). Flattening it to text collapsed every level of quoting
         // into one bar, so an answer to an answer lost the shape of the
@@ -93,6 +94,9 @@ pub(super) fn reply_all_prefill(m: &Message, own: &[String], header: &str) -> Co
             prefill.to = cc.remove(0);
         }
         prefill.cc = cc.join(", ");
+        // The answer goes to the message's recipients, not to its sender
+        // (the account itself): the title names the first of them instead.
+        prefill.reply_name.clear();
         return prefill;
     }
     // Whoever is already in To (the Reply-To address when one exists) must not
@@ -231,6 +235,9 @@ pub(super) fn unsent_prefill(m: crate::worker::OutgoingMessage) -> ComposePrefil
         receipt: Some(m.request_receipt),
         outbox_origin: m.outbox_origin,
         reply_addressed_to: String::new(),
+        // Reopened, the message replied to is not known: the title
+        // names the first recipient instead.
+        reply_name: String::new(),
         from_address: m
             .from_alias
             .as_deref()

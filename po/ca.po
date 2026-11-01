@@ -862,9 +862,6 @@ msgstr "Missatge nou a partir d'una plantilla"
 msgid "Send the message you are writing"
 msgstr "Envia el missatge que estàs escrivint"
 
-#. Save Draft, Save as Template and Delete Draft are not here:
-#. the Save Draft button and its arrow stay in the header at
-#. any width.
 msgid "Attach files"
 msgstr "Adjunta fitxers"
 
@@ -3396,12 +3393,6 @@ msgstr "Canvia"
 msgid "Typing"
 msgstr "S'està escrivint"
 
-msgid "Collapse into reader"
-msgstr "Replega dins del lector"
-
-msgid "Open in window"
-msgstr "Obre en una finestra"
-
 msgid "Save the template?"
 msgstr "Vols desar la plantilla?"
 
@@ -3428,23 +3419,56 @@ msgstr "Continua editant"
 msgid "Discard"
 msgstr "Descarta"
 
+msgid "Save as Template"
+msgstr "Desa com a plantilla"
+
 msgid "Upload to cloud storage and share a link"
 msgstr "Puja a l'emmagatzematge al núvol i comparteix un enllaç"
 
 msgid "Open Contacts"
 msgstr "Obre els contactes"
 
+#, fuzzy
+msgid "Sign with OpenPGP"
+msgstr "Signa amb la teva clau OpenPGP"
+
 msgid "Sign with your OpenPGP key"
 msgstr "Signa amb la teva clau OpenPGP"
 
+#, fuzzy
+msgid "Encrypt with OpenPGP"
+msgstr "Xifrat amb OpenPGP"
+
 msgid "Encrypt with OpenPGP to every recipient's key"
 msgstr "Xifra amb OpenPGP amb la clau de cada destinatari"
+
+msgid "Request a read receipt"
+msgstr ""
+
+msgid "Not every mail app sends one."
+msgstr ""
+
+msgid "Collapse into reader"
+msgstr "Replega dins del lector"
+
+msgid "Open in window"
+msgstr "Obre en una finestra"
+
+msgid "Delete Draft"
+msgstr "Suprimeix l'esborrany"
+
+msgid "Move this draft to Trash"
+msgstr "Mou aquest esborrany a la paperera"
 
 msgid "More"
 msgstr "Més"
 
 msgid "Show Cc, Bcc and Reply-To"
 msgstr "Mostra Cc, Cco i Respon a"
+
+#, fuzzy
+msgid "Reply to {name}"
+msgstr "Mou a {name}"
 
 msgid ""
 "There is no OpenPGP key of your own for {addr}. Generate one under Settings, "
@@ -3509,6 +3533,10 @@ msgstr "Tradueix el que has escrit"
 msgid "Insert Signature"
 msgstr "Insereix la signatura"
 
+#, fuzzy
+msgid "Attach a File…"
+msgstr "Adjunta fitxers"
+
 msgid "No Signature"
 msgstr "Sense signatura"
 
@@ -3551,26 +3579,9 @@ msgstr "Escriu alguna cosa primer, o selecciona el text per traduir."
 msgid "Could not translate"
 msgstr "No s'ha pogut traduir"
 
-msgid "Save to Templates"
-msgstr "Desa a plantilles"
-
-msgid "Save to Drafts"
-msgstr "Desa a esborranys"
-
-msgid "More ways to save"
-msgstr "Més maneres de desar"
-
-msgid "Keep a copy in Templates to start new messages from"
-msgstr "Conserva una còpia a Plantilles per començar missatges nous"
-
-msgid "Save as Template"
-msgstr "Desa com a plantilla"
-
-msgid "Move this draft to Trash"
-msgstr "Mou aquest esborrany a la paperera"
-
-msgid "Delete Draft"
-msgstr "Suprimeix l'esborrany"
+#, fuzzy
+msgid "Draft saved at {time}"
+msgstr "{date} a les {time}"
 
 msgid "Send"
 msgstr "Envia"
@@ -3594,11 +3605,9 @@ msgstr "Dilluns al matí ({time})"
 msgid "Pick a date and time…"
 msgstr "Tria una data i una hora…"
 
-msgid "Request a read receipt"
-msgstr ""
-
-msgid "Not every mail app sends one."
-msgstr ""
+#, fuzzy
+msgid "More actions"
+msgstr "Accions de lliscament"
 
 msgid "Show From, To and Subject"
 msgstr "Mostra De, A i Assumpte"
@@ -8062,6 +8071,18 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Save to Templates"
+#~ msgstr "Desa a plantilles"
+
+#~ msgid "Save to Drafts"
+#~ msgstr "Desa a esborranys"
+
+#~ msgid "More ways to save"
+#~ msgstr "Més maneres de desar"
+
+#~ msgid "Keep a copy in Templates to start new messages from"
+#~ msgstr "Conserva una còpia a Plantilles per començar missatges nous"
 
 #~ msgid "Buy Me a Coffee"
 #~ msgstr "Convida'm a un cafè"

@@ -8,7 +8,7 @@ use super::types::ComposePrefill;
 use super::types::Field;
 use super::Compose;
 use super::ComposeWidgets;
-use crate::i18n::i18n;
+use crate::i18n::{i18n, i18n_f};
 use crate::ui::context_menu::{show_context_menu, MenuEntry};
 use adw::prelude::*;
 use relm4::prelude::*;
@@ -76,17 +76,6 @@ pub(super) fn size_for_host(
     editor_holder.set_vexpand(true);
     editor_holder.set_height_request(-1);
     header.set_show_end_title_buttons(windowed || decorations);
-}
-
-/// Set the inline/window toggle button's icon + tooltip for the current host.
-pub(super) fn set_toggle_icon(btn: &gtk::Button, windowed: bool) {
-    if windowed {
-        btn.set_icon_name("view-restore-symbolic");
-        btn.set_tooltip_text(Some(i18n("Collapse into reader").as_str()));
-    } else {
-        btn.set_icon_name("view-fullscreen-symbolic");
-        btn.set_tooltip_text(Some(i18n("Open in window").as_str()));
-    }
 }
 
 /// Save the edited message, discard it, or go back to it. Escape answers
@@ -240,7 +229,11 @@ impl Compose {
         });
     }
 
-    /// Handles [`ComposeInput::OverflowMenu`].
+    /// The More actions menu (docs/DESIGN.md, "Menus"): every action of
+    /// the composer that is not Cancel, Send or in the formatting row, in
+    /// one place at every width. Saving first, as it is the one most
+    /// reached for; Delete Draft last and on its own, since it cannot be
+    /// taken back.
     pub(super) fn on_overflow_menu(
         &mut self,
         widgets: &ComposeWidgets,
@@ -251,14 +244,24 @@ impl Compose {
             MenuEntry::new(&label, move || s.input_sender().emit(msg()))
                 .icon(format!("{icon}-symbolic"))
         };
-        // Save Draft, Save as Template and Delete Draft are not here:
-        // the Save Draft button and its arrow stay in the header at
-        // any width.
-        let mut attach = vec![entry(i18n("Attach files"), "mail-attachment", || {
-            ComposeInput::AttachFiles
-        })];
+        let mut save = vec![if self.template {
+            entry(i18n("Save Template"), "document-save", || {
+                ComposeInput::SaveDraft
+            })
+        } else {
+            entry(i18n("Save Draft"), "document-save", || {
+                ComposeInput::SaveDraft
+            })
+        }];
+        if !self.template {
+            save.push(entry(i18n("Save as Template"), "folder-templates", || {
+                ComposeInput::SaveAsTemplate
+            }));
+        }
+        let mut share = Vec::new();
+        // Cloud attachments (#144): only with an account set up.
         if !self.cloud_accounts.is_empty() {
-            attach.push(
+            share.push(
                 entry(
                     i18n("Upload to cloud storage and share a link"),
                     "cloud",
@@ -267,18 +270,18 @@ impl Compose {
                 .enabled(self.cloud_busy == 0),
             );
         }
-        attach.push(entry(
+        share.push(entry(
             i18n("Open Contacts"),
             "x-office-address-book",
             || ComposeInput::OpenContacts,
         ));
-        // The OpenPGP toggles go through their buttons so the
+        // Checks: the OpenPGP toggles go through their buttons so the
         // toggled handlers keep the model and the buttons agreeing.
-        let mut pgp = Vec::new();
+        let mut checks = Vec::new();
         if crate::mail::pgp::available() {
             let sign = widgets.sign_btn.clone();
-            pgp.push(
-                MenuEntry::new(i18n("Sign with your OpenPGP key"), move || {
+            checks.push(
+                MenuEntry::new(i18n("Sign with OpenPGP"), move || {
                     sign.set_active(!sign.is_active())
                 })
                 .icon("security-high-symbolic")
@@ -286,11 +289,10 @@ impl Compose {
                 .tooltip(pgp_tooltip(&i18n("Sign with your OpenPGP key"), self.sign)),
             );
             let encrypt = widgets.encrypt_btn.clone();
-            pgp.push(
-                MenuEntry::new(
-                    i18n("Encrypt with OpenPGP to every recipient's key"),
-                    move || encrypt.set_active(!encrypt.is_active()),
-                )
+            checks.push(
+                MenuEntry::new(i18n("Encrypt with OpenPGP"), move || {
+                    encrypt.set_active(!encrypt.is_active())
+                })
                 .icon("channel-secure-symbolic")
                 .checked(self.encrypt)
                 .tooltip(pgp_tooltip(
@@ -299,9 +301,18 @@ impl Compose {
                 )),
             );
         }
-        // The format chooser, the preview toggle and Insert Signature
-        // are not here: they sit at the end of the formatting row,
-        // which a narrow pane never folds away.
+        // The read receipt (#520), moved here from the Send menu, which
+        // now holds only when to send.
+        let receipt = !self.request_receipt;
+        let s = sender.clone();
+        checks.push(
+            MenuEntry::new(i18n("Request a read receipt"), move || {
+                s.input_sender().emit(ComposeInput::ToggleReceipt(receipt))
+            })
+            .icon("tegami-read-receipt-symbolic")
+            .checked(self.request_receipt)
+            .tooltip(i18n("Not every mail app sends one.")),
+        );
         let mut host = Vec::new();
         if self.can_toggle {
             host.push(if self.windowed {
@@ -314,12 +325,27 @@ impl Compose {
                 })
             });
         }
+        // Only while editing an existing draft: the message is moved to
+        // Trash, not saved, and the editor closes.
+        let mut delete = Vec::new();
+        if self.draft_origin.is_some() && !self.template {
+            delete.push(
+                entry(i18n("Delete Draft"), "user-trash", || {
+                    ComposeInput::DeleteDraft
+                })
+                .tooltip(i18n("Move this draft to Trash"))
+                .destructive(),
+            );
+        }
         let btn = &widgets.overflow_btn;
         show_context_menu(
             btn,
             (btn.width() / 2) as f64,
             btn.height() as f64,
-            vec![attach, pgp, host],
+            vec![save, share, checks, host, delete]
+                .into_iter()
+                .filter(|section| !section.is_empty())
+                .collect(),
         );
     }
 
@@ -348,7 +374,6 @@ impl Compose {
     /// Handles [`ComposeInput::SetWindowed`].
     pub(super) fn on_set_windowed(&mut self, windowed: bool, widgets: &ComposeWidgets) {
         self.windowed = windowed;
-        set_toggle_icon(&widgets.toggle_btn, windowed);
         size_for_host(
             &widgets.toolbar_root,
             &widgets.header,
@@ -454,4 +479,76 @@ pub(super) fn fold_on_first_map(
         bp.connect_unapply(move |_| s2.input_sender().emit(ComposeInput::SetNarrow(false)));
         root.add_breakpoint(bp);
     });
+}
+
+/// The composer's title (docs/DESIGN.md, "Replying and composing"):
+/// "Forward" for a forward, "Reply to <name>" for a reply, and "New
+/// Message" otherwise. A reply is named after `reply_name`, the sender of
+/// the message replied to; without one (a reply to a draft reopened, say),
+/// after the first recipient as written in To.
+pub(super) fn compose_heading(
+    in_reply_to: &str,
+    forwards: &str,
+    reply_name: &str,
+    to: &str,
+) -> String {
+    if !forwards.is_empty() {
+        return i18n("Forward");
+    }
+    if in_reply_to.is_empty() {
+        return i18n("New Message");
+    }
+    if !reply_name.trim().is_empty() {
+        return i18n_f("Reply to {name}", &[("name", reply_name.trim())]);
+    }
+    let first = to.split(',').next().unwrap_or("").trim();
+    // "Name <addr>" names the person; a bare address is all there is.
+    let name = match first.find('<') {
+        Some(open) if open > 0 => first[..open].trim().trim_matches('"'),
+        _ => first.trim_matches(|c| c == '<' || c == '>'),
+    };
+    if name.is_empty() {
+        i18n("Reply")
+    } else {
+        i18n_f("Reply to {name}", &[("name", name)])
+    }
+}
+
+#[cfg(test)]
+mod heading_tests {
+    use super::compose_heading;
+
+    #[test]
+    fn a_reply_is_named_after_the_person_replied_to() {
+        assert_eq!(
+            compose_heading("id@x", "", "Camille Moreau", "list@x.org"),
+            "Reply to Camille Moreau"
+        );
+    }
+
+    #[test]
+    fn without_a_name_the_first_recipient_names_it() {
+        assert_eq!(
+            compose_heading("id@x", "", "", "\"Camille Moreau\" <c@x.org>, j@x.org"),
+            "Reply to Camille Moreau"
+        );
+        assert_eq!(
+            compose_heading("id@x", "", " ", "c@x.org"),
+            "Reply to c@x.org"
+        );
+    }
+
+    #[test]
+    fn a_reply_with_nobody_in_to_is_a_plain_reply() {
+        assert_eq!(compose_heading("id@x", "", "", ""), "Reply");
+    }
+
+    #[test]
+    fn forwards_and_new_messages_have_their_own_titles() {
+        assert_eq!(
+            compose_heading("id@x", "fw@x", "Camille", "c@x.org"),
+            "Forward"
+        );
+        assert_eq!(compose_heading("", "", "", ""), "New Message");
+    }
 }

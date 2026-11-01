@@ -881,9 +881,6 @@ msgstr "Nuovo messaggio da un modello"
 msgid "Send the message you are writing"
 msgstr "Invia il messaggio che stai scrivendo"
 
-#. Save Draft, Save as Template and Delete Draft are not here:
-#. the Save Draft button and its arrow stay in the header at
-#. any width.
 msgid "Attach files"
 msgstr "Allega file"
 
@@ -3486,12 +3483,6 @@ msgstr ""
 msgid "Typing"
 msgstr "Digitando"
 
-msgid "Collapse into reader"
-msgstr "Comprimi in modalità lettura"
-
-msgid "Open in window"
-msgstr "Apri in una finestra"
-
 msgid "Save the template?"
 msgstr "Salvare il modello?"
 
@@ -3519,23 +3510,56 @@ msgstr "Continua a modificare"
 msgid "Discard"
 msgstr "Scarta"
 
+msgid "Save as Template"
+msgstr "Salva come modello"
+
 msgid "Upload to cloud storage and share a link"
 msgstr "Carica nell'archivio cloud e condividi un link"
 
 msgid "Open Contacts"
 msgstr "Apri Contatti"
 
+#, fuzzy
+msgid "Sign with OpenPGP"
+msgstr "Firma con la tua chiave OpenPGP"
+
 msgid "Sign with your OpenPGP key"
 msgstr "Firma con la tua chiave OpenPGP"
 
+#, fuzzy
+msgid "Encrypt with OpenPGP"
+msgstr "Crittografato con OpenPGP"
+
 msgid "Encrypt with OpenPGP to every recipient's key"
 msgstr "Crittografa con OpenPGP usando la chiave di ogni destinatario"
+
+msgid "Request a read receipt"
+msgstr ""
+
+msgid "Not every mail app sends one."
+msgstr ""
+
+msgid "Collapse into reader"
+msgstr "Comprimi in modalità lettura"
+
+msgid "Open in window"
+msgstr "Apri in una finestra"
+
+msgid "Delete Draft"
+msgstr "Elimina bozza"
+
+msgid "Move this draft to Trash"
+msgstr "Sposta questa bozza nel Cestino"
 
 msgid "More"
 msgstr "Altro"
 
 msgid "Show Cc, Bcc and Reply-To"
 msgstr "Mostra Cc, Ccn e Rispondi a"
+
+#, fuzzy
+msgid "Reply to {name}"
+msgstr "Sposta in {name}"
 
 msgid ""
 "There is no OpenPGP key of your own for {addr}. Generate one under Settings, "
@@ -3602,6 +3626,10 @@ msgid "Insert Signature"
 msgstr "Inserisci firma"
 
 #, fuzzy
+msgid "Attach a File…"
+msgstr "Allega file"
+
+#, fuzzy
 msgid "No Signature"
 msgstr "Firma"
 
@@ -3644,26 +3672,9 @@ msgstr "Scrivi prima qualcosa, o seleziona il testo da tradurre."
 msgid "Could not translate"
 msgstr "Traduzione non riuscita"
 
-msgid "Save to Templates"
-msgstr "Salva nei modelli"
-
-msgid "Save to Drafts"
-msgstr "Salva nelle bozze"
-
-msgid "More ways to save"
-msgstr "Altri modi per salvare"
-
-msgid "Keep a copy in Templates to start new messages from"
-msgstr "Conserva una copia nei modelli per iniziare nuovi messaggi"
-
-msgid "Save as Template"
-msgstr "Salva come modello"
-
-msgid "Move this draft to Trash"
-msgstr "Sposta questa bozza nel Cestino"
-
-msgid "Delete Draft"
-msgstr "Elimina bozza"
+#, fuzzy
+msgid "Draft saved at {time}"
+msgstr "{date} alle {time}"
 
 msgid "Send"
 msgstr "Invia"
@@ -3687,11 +3698,9 @@ msgstr "Lunedì mattina ({time})"
 msgid "Pick a date and time…"
 msgstr "Scegli una data e un orario…"
 
-msgid "Request a read receipt"
-msgstr ""
-
-msgid "Not every mail app sends one."
-msgstr ""
+#, fuzzy
+msgid "More actions"
+msgstr "Azioni di scorrimento"
 
 msgid "Show From, To and Subject"
 msgstr "Mostra Da, A e Oggetto"
@@ -8289,6 +8298,18 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Save to Templates"
+#~ msgstr "Salva nei modelli"
+
+#~ msgid "Save to Drafts"
+#~ msgstr "Salva nelle bozze"
+
+#~ msgid "More ways to save"
+#~ msgstr "Altri modi per salvare"
+
+#~ msgid "Keep a copy in Templates to start new messages from"
+#~ msgstr "Conserva una copia nei modelli per iniziare nuovi messaggi"
 
 #~ msgid "Buy Me a Coffee"
 #~ msgstr "Offrimi un caffè"

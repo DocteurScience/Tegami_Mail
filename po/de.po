@@ -861,9 +861,6 @@ msgstr "Neue Nachricht aus Vorlage"
 msgid "Send the message you are writing"
 msgstr "Geschriebene Nachricht senden"
 
-#. Save Draft, Save as Template and Delete Draft are not here:
-#. the Save Draft button and its arrow stay in the header at
-#. any width.
 msgid "Attach files"
 msgstr "Dateien anhängen"
 
@@ -3414,12 +3411,6 @@ msgstr "Wechseln"
 msgid "Typing"
 msgstr "Eingabe"
 
-msgid "Collapse into reader"
-msgstr "Im Lesebereich einklappen"
-
-msgid "Open in window"
-msgstr "In Fenster öffnen"
-
 msgid "Save the template?"
 msgstr "Vorlage speichern?"
 
@@ -3449,23 +3440,57 @@ msgstr "Weiter bearbeiten"
 msgid "Discard"
 msgstr "Verwerfen"
 
+msgid "Save as Template"
+msgstr "Als Vorlage speichern"
+
 msgid "Upload to cloud storage and share a link"
 msgstr "In Cloud-Speicher hochladen und Link teilen"
 
 msgid "Open Contacts"
 msgstr "Kontakte öffnen"
 
+#, fuzzy
+msgid "Sign with OpenPGP"
+msgstr "Mit eigenem OpenPGP-Schlüssel signieren"
+
 msgid "Sign with your OpenPGP key"
 msgstr "Mit eigenem OpenPGP-Schlüssel signieren"
 
+#, fuzzy
+msgid "Encrypt with OpenPGP"
+msgstr "Mit OpenPGP verschlüsselt"
+
 msgid "Encrypt with OpenPGP to every recipient's key"
 msgstr "Mit OpenPGP für jeden Empfängerschlüssel verschlüsseln"
+
+msgid "Request a read receipt"
+msgstr "Lesebestätigung anfordern"
+
+msgid "Not every mail app sends one."
+msgstr ""
+"Nicht jede E-Mail-Anwendung unterstützt das Senden von Lesebestätigungen."
+
+msgid "Collapse into reader"
+msgstr "Im Lesebereich einklappen"
+
+msgid "Open in window"
+msgstr "In Fenster öffnen"
+
+msgid "Delete Draft"
+msgstr "Entwurf löschen"
+
+msgid "Move this draft to Trash"
+msgstr "Diesen Entwurf in den Papierkorb verschieben"
 
 msgid "More"
 msgstr "Mehr"
 
 msgid "Show Cc, Bcc and Reply-To"
 msgstr "Cc, Bcc und Reply-To anzeigen"
+
+#, fuzzy
+msgid "Reply to {name}"
+msgstr "Nach {name} verschieben"
 
 msgid ""
 "There is no OpenPGP key of your own for {addr}. Generate one under Settings, "
@@ -3534,6 +3559,10 @@ msgstr "Eigegebenen Text übersetzen"
 msgid "Insert Signature"
 msgstr "Signatur einfügen"
 
+#, fuzzy
+msgid "Attach a File…"
+msgstr "Dateien anhängen"
+
 msgid "No Signature"
 msgstr "Keine Signatur"
 
@@ -3576,27 +3605,9 @@ msgstr "Zuerst Text eingeben oder den zu übersetzenden Text auswählen."
 msgid "Could not translate"
 msgstr "Übersetzung nicht möglich"
 
-msgid "Save to Templates"
-msgstr "Unter Vorlagen speichern"
-
-msgid "Save to Drafts"
-msgstr "Unter Entwürfe speichern"
-
-msgid "More ways to save"
-msgstr "Weitere Speicheroptionen"
-
-msgid "Keep a copy in Templates to start new messages from"
-msgstr ""
-"Eine Kopie in Vorlagen aufbewahren, um neue Nachrichten davon zu starten"
-
-msgid "Save as Template"
-msgstr "Als Vorlage speichern"
-
-msgid "Move this draft to Trash"
-msgstr "Diesen Entwurf in den Papierkorb verschieben"
-
-msgid "Delete Draft"
-msgstr "Entwurf löschen"
+#, fuzzy
+msgid "Draft saved at {time}"
+msgstr "{date} um {time}"
 
 msgid "Send"
 msgstr "Senden"
@@ -3619,12 +3630,9 @@ msgstr "Montagmorgen ({time})"
 msgid "Pick a date and time…"
 msgstr "Datum und Uhrzeit auswählen…"
 
-msgid "Request a read receipt"
-msgstr "Lesebestätigung anfordern"
-
-msgid "Not every mail app sends one."
-msgstr ""
-"Nicht jede E-Mail-Anwendung unterstützt das Senden von Lesebestätigungen."
+#, fuzzy
+msgid "More actions"
+msgstr "Wischaktionen"
 
 msgid "Show From, To and Subject"
 msgstr "Von, An und Betreff anzeigen"
@@ -8149,6 +8157,19 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Save to Templates"
+#~ msgstr "Unter Vorlagen speichern"
+
+#~ msgid "Save to Drafts"
+#~ msgstr "Unter Entwürfe speichern"
+
+#~ msgid "More ways to save"
+#~ msgstr "Weitere Speicheroptionen"
+
+#~ msgid "Keep a copy in Templates to start new messages from"
+#~ msgstr ""
+#~ "Eine Kopie in Vorlagen aufbewahren, um neue Nachrichten davon zu starten"
 
 #~ msgid "Buy Me a Coffee"
 #~ msgstr "Entwicklern einen Kaffee spendieren"

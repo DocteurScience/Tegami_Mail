@@ -140,6 +140,13 @@ pub(crate) struct Compose {
     pub(super) autosave_pending: Option<u64>,
     pub(super) autosave_made: bool,
     pub(super) autosave_off: bool,
+    /// The header bar's title: "New Message", "Reply to <name>" or
+    /// "Forward" (docs/DESIGN.md, "Replying and composing").
+    pub(super) heading: String,
+    /// When the draft was last saved on its own, for the header bar's
+    /// "Draft saved at <time>": the save happens unseen, and the line is
+    /// how the person knows it did.
+    pub(super) saved_at: Option<i64>,
     /// The subject as written and as translated with the body, so Show
     /// Original and Show Translation can swap it back and forth (#327).
     pub(super) tr_subject: Option<(String, String)>,
