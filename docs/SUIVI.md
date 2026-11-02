@@ -5,7 +5,7 @@ reprendre le travail dans une autre conversation. Les règles durables
 (conventions, commandes, architecture) sont dans [CLAUDE.md](../CLAUDE.md).
 Mettre ce fichier à jour à chaque étape poussée.
 
-Dernière mise à jour : 2026-11-02, après `3713aeb`.
+Dernière mise à jour : 2026-11-02, après `f504a8b`.
 
 ## État
 
@@ -80,6 +80,9 @@ Dernière mise à jour : 2026-11-02, après `3713aeb`.
 | `7d5bc0a` | Menu du clic droit d'une ligne réduit à la maquette |
 | `89e8aa0` | « Copier vers… » supprimé partout (menus liste, sélection, lecteur) avec son code ; docs et CHANGELOG mis à jour |
 | `15f9b65` | Interrupteur clair/sombre par message supprimé (en-tête du lecteur, réglage, clé `theme_switch_shown`) ; Réglages → Lecture → Apparence des messages reste |
+| `3713aeb` | En-tête de la barre latérale : titre « Courrier », plus d'Actualiser au début (le rail et le panneau étroit gardent le leur) |
+| `f09700d` | Composeur : Envoyer en un seul bouton (icône + libellé), « Envoyer plus tard » retiré (l'Outbox envoie encore ce qu'une version antérieure a programmé), plus de bouton Fermer dans la fenêtre du composeur |
+| `f504a8b` | Menu ⋯ du composeur : section Format (`MenuEntry::heading`), Vérifier l'orthographe, Langue du correcteur (`spelling_choices` partagé avec le clic droit) ; bouton de format retiré de la barre |
 | `bb5953c` | Vue Lecteur supprimée : interrupteur de l'en-tête, réglages (Lecture), partie « Vue Lecteur » du mode Focus, bascule de la fenêtre de message, clés `reader_mode` / `reader_switch` / `reader_default`. La feuille `crate::mail::reader` reste : elle affiche les traductions de messages en texte brut. Paramètre `reader` de `conversation_document` retiré ; instantané `three_cards.html` régénéré |
 
 ## Décisions prises
@@ -139,6 +142,23 @@ Dernière mise à jour : 2026-11-02, après `3713aeb`.
   d'une carte, titres de groupes par date (non tranché, gardés).
 - En-tête de la barre latérale fait (`3713aeb`) : titre « Courrier », pas
   d'Actualiser au début.
+
+Note : le « bouton Police A » de la question était en fait le choix du
+format (texte enrichi, brut, Markdown, HTML) ; erreur de description de ma
+part, signalée au propriétaire. Le format est passé dans le menu ⋯ comme
+dans la maquette 06.
+
+Questions en attente :
+- Garder Markdown et Source HTML dans Format (la maquette n'a que texte
+  enrichi et texte brut) ?
+- Menu ⋯ du composeur : garder Enregistrer comme modèle, Envoyer vers le
+  cloud, Ouvrir les contacts, Ouvrir dans une fenêtre (absents de la
+  maquette) ?
+
+Restant du point 3, dans l'ordre : champ De en bouton « Envoyer depuis »
+(+ retrait du crayon), puis retrait des vues unifiées, Filtres, Contacts
+et Pièces jointes de la barre latérale, menu ⋯ du lecteur, menu d'un
+dossier, avatars des destinataires, menu ⋯ d'une carte.
 
 ## Reste à faire (connu)
 
