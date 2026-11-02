@@ -482,8 +482,9 @@ pub(crate) enum AppMsg {
     ShowcaseDeleteAttachment { name: String, confirmed: bool },
     /// Showcase only: open a drop gap in the Settings toolbar editor.
     ShowcaseToolbarGap { zone: usize, index: usize },
-    /// Showcase only: open the inline composer's More actions menu.
-    ShowcaseComposeMenu,
+    /// Showcase only: open the inline composer's More actions menu, or its
+    /// Send from menu.
+    ShowcaseComposeMenu { from: bool },
     /// Pick entry `n` of the inline composer's From row (#237 capture).
     ShowcaseComposeFrom(u32),
     /// Forward one message of the open conversation by its id (#240), as

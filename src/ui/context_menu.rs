@@ -49,6 +49,9 @@ pub(crate) struct MenuEntry {
     /// A section's title (the composer's "Format"): a dim caption, not a
     /// row that acts.
     heading: bool,
+    /// A second, dim line under the label (an identity's address in the
+    /// composer's Send from menu).
+    subtitle: Option<String>,
 }
 
 impl MenuEntry {
@@ -66,6 +69,7 @@ impl MenuEntry {
             activate: Box::new(activate),
             submenu: None,
             heading: false,
+            subtitle: None,
         }
     }
 
@@ -102,6 +106,7 @@ impl MenuEntry {
             activate: Box::new(|| {}),
             submenu: Some(sections),
             heading: false,
+            subtitle: None,
         }
     }
 
@@ -155,6 +160,12 @@ impl MenuEntry {
     /// Mark this entry as the one the menu is set to.
     pub(crate) fn selected(mut self, selected: bool) -> Self {
         self.selected = selected;
+        self
+    }
+
+    /// A second line under the label, dim and smaller.
+    pub(crate) fn subtitle(mut self, text: impl Into<String>) -> Self {
+        self.subtitle = Some(text.into());
         self
     }
 }
@@ -462,6 +473,7 @@ fn build_page(
                 activate,
                 submenu,
                 heading,
+                subtitle,
             } = entry;
 
             if heading {
@@ -498,7 +510,24 @@ fn build_page(
             lbl.set_hexpand(true);
             lbl.set_ellipsize(gtk::pango::EllipsizeMode::End);
             lbl.set_max_width_chars(MAX_LABEL_CHARS);
-            row.append(&lbl);
+            match &subtitle {
+                Some(sub) => {
+                    let lines = gtk::Box::new(gtk::Orientation::Vertical, 0);
+                    lines.set_hexpand(true);
+                    lines.append(&lbl);
+                    let second = gtk::Label::new(Some(sub));
+                    second.set_xalign(0.0);
+                    second.add_css_class("caption");
+                    // 70 %, not dim-label's 55 %: secondary text keeps a
+                    // 4.5:1 contrast (CLAUDE.md, accessibility).
+                    second.add_css_class("secondary-text");
+                    second.set_ellipsize(gtk::pango::EllipsizeMode::End);
+                    second.set_max_width_chars(MAX_LABEL_CHARS);
+                    lines.append(&second);
+                    row.append(&lines);
+                }
+                None => row.append(&lbl),
+            }
             if let Some(accel) = accel {
                 let keys = gtk::Label::new(Some(&accel));
                 keys.add_css_class("dim-label");

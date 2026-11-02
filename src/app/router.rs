@@ -157,7 +157,7 @@ impl AppModel {
             | AppMsg::ShowcaseNotify
             | AppMsg::ShowcaseDeleteAttachment { .. }
             | AppMsg::ShowcaseToolbarGap { .. }
-            | AppMsg::ShowcaseComposeMenu
+            | AppMsg::ShowcaseComposeMenu { .. }
             | AppMsg::ShowcaseComposeFrom(..)
             | AppMsg::ShowcaseForward { .. }
             | AppMsg::ShowcaseComposeUndo

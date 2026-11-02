@@ -3593,18 +3593,8 @@ msgstr ""
 "Non esiste nessuna chiave OpenPGP per {addr}. Chiedi loro la chiave "
 "pubblica, o recuperala in Impostazioni, OpenPGP."
 
-msgid "The From has to be one address, such as Ann <ann@example.com>."
-msgstr ""
-"Il campo Da deve contenere un solo indirizzo, come Anna <anna@esempio.com>."
-
-msgid "“{address}” is not an email address."
-msgstr "\"{address}\" non è un indirizzo e-mail."
-
 msgid "Cannot send with OpenPGP"
 msgstr "Impossibile inviare con OpenPGP"
-
-msgid "Check the From address"
-msgstr "Controlla l'indirizzo Da"
 
 #, fuzzy
 msgid "Send without an attachment?"
@@ -3632,11 +3622,17 @@ msgstr ""
 "Tegami Mail non riesce a leggere {names}. È stato spostato o eliminato dopo "
 "essere stato allegato. Rimuovilo, o allegalo di nuovo da dove si trova ora."
 
-msgid "Type a From address"
-msgstr "Digita un indirizzo Da"
+#, fuzzy
+msgid "Choose the sending account"
+msgstr "Scegli prima un account online."
 
-msgid "Choose from your addresses"
-msgstr "Scegli tra i tuoi indirizzi"
+#, fuzzy
+msgid "Manage Accounts…"
+msgstr "GNOME Account online"
+
+#, fuzzy
+msgid "Send from"
+msgstr "Invia ora"
 
 msgid "Check the address"
 msgstr "Controlla l'indirizzo"
@@ -8347,6 +8343,23 @@ msgstr ""
 msgid "Hyprlab"
 msgstr "Hyprlab"
 
+#~ msgid "The From has to be one address, such as Ann <ann@example.com>."
+#~ msgstr ""
+#~ "Il campo Da deve contenere un solo indirizzo, come Anna "
+#~ "<anna@esempio.com>."
+
+#~ msgid "“{address}” is not an email address."
+#~ msgstr "\"{address}\" non è un indirizzo e-mail."
+
+#~ msgid "Check the From address"
+#~ msgstr "Controlla l'indirizzo Da"
+
+#~ msgid "Type a From address"
+#~ msgstr "Digita un indirizzo Da"
+
+#~ msgid "Choose from your addresses"
+#~ msgstr "Scegli tra i tuoi indirizzi"
+
 #~ msgid "Markdown"
 #~ msgstr "Markdown"
 
@@ -8394,9 +8407,6 @@ msgstr "Hyprlab"
 #, fuzzy
 #~ msgid "Send options"
 #~ msgstr "Azioni"
-
-#~ msgid "Send now"
-#~ msgstr "Invia ora"
 
 #~ msgid "Send now instead"
 #~ msgstr "Invia ora invece"

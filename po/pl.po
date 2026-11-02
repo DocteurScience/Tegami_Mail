@@ -3695,18 +3695,8 @@ msgstr ""
 "Brak klucza OpenPGP dla adresu {addr}. Poproś właściciela adresu o klucz "
 "publiczny lub pobierz go w oknie Ustawienia → OpenPGP."
 
-msgid "The From has to be one address, such as Ann <ann@example.com>."
-msgstr ""
-
-msgid "“{address}” is not an email address."
-msgstr ""
-
 msgid "Cannot send with OpenPGP"
 msgstr "Nie można wysłać wiadomości z użyciem OpenPGP"
-
-#, fuzzy
-msgid "Check the From address"
-msgstr "DMARC (czy adres „Od” jest prawdziwy)"
 
 #, fuzzy
 msgid "Send without an attachment?"
@@ -3733,11 +3723,17 @@ msgid ""
 "attached. Remove it, or attach it again from where it is now."
 msgstr ""
 
-msgid "Type a From address"
-msgstr ""
+#, fuzzy
+msgid "Choose the sending account"
+msgstr "Najpierw wybierz konto online."
 
-msgid "Choose from your addresses"
-msgstr ""
+#, fuzzy
+msgid "Manage Accounts…"
+msgstr "Konta online GNOME"
+
+#, fuzzy
+msgid "Send from"
+msgstr "Wyślij teraz"
 
 #, fuzzy
 msgid "Check the address"
@@ -8500,6 +8496,10 @@ msgstr ""
 msgid "Hyprlab"
 msgstr "Hyprlab"
 
+#, fuzzy
+#~ msgid "Check the From address"
+#~ msgstr "DMARC (czy adres „Od” jest prawdziwy)"
+
 #~ msgid "Markdown"
 #~ msgstr "Markdown"
 
@@ -8549,9 +8549,6 @@ msgstr "Hyprlab"
 #, fuzzy
 #~ msgid "Send options"
 #~ msgstr "Działania"
-
-#~ msgid "Send now"
-#~ msgstr "Wyślij teraz"
 
 #~ msgid "Send now instead"
 #~ msgstr "Zamiast tego wyślij teraz"

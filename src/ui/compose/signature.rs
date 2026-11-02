@@ -135,7 +135,7 @@ window.__tegamiDirty=true;})()"#
         if self.sign_touched || self.encrypt || !crate::mail::pgp::available() {
             return;
         }
-        let idx = widgets.from_row.selected() as usize;
+        let idx = self.from_index;
         let on = self.accounts.get(idx).is_some_and(|a| a.sign_default);
         if on != widgets.sign_btn.is_active() {
             self.sign_expected = Some(on);
@@ -144,8 +144,8 @@ window.__tegamiDirty=true;})()"#
     }
 
     /// Handles [`ComposeInput::InsertSignature`].
-    pub(super) fn on_insert_signature(&mut self, place: SigPlace, widgets: &ComposeWidgets) {
-        let idx = widgets.from_row.selected() as usize;
+    pub(super) fn on_insert_signature(&mut self, place: SigPlace) {
+        let idx = self.from_index;
         let sig = self
             .accounts
             .get(idx)
@@ -155,12 +155,8 @@ window.__tegamiDirty=true;})()"#
     }
 
     /// Handles [`ComposeInput::SignatureClicked`].
-    pub(super) fn on_signature_clicked(
-        &mut self,
-        widgets: &ComposeWidgets,
-        sender: &ComponentSender<Self>,
-    ) {
-        let idx = widgets.from_row.selected() as usize;
+    pub(super) fn on_signature_clicked(&mut self, sender: &ComponentSender<Self>) {
+        let idx = self.from_index;
         let Some(account) = self.accounts.get(idx) else {
             return;
         };
@@ -200,8 +196,8 @@ window.__tegamiDirty=true;})()"#
     }
 
     /// Handles [`ComposeInput::UseSignature`].
-    pub(super) fn on_use_signature(&mut self, choice: Option<usize>, widgets: &ComposeWidgets) {
-        let idx = widgets.from_row.selected() as usize;
+    pub(super) fn on_use_signature(&mut self, choice: Option<usize>) {
+        let idx = self.from_index;
         let sig = match choice {
             Some(i) => match self.accounts.get(idx).and_then(|a| a.signatures.get(i)) {
                 Some(sig) => sig.html.clone(),

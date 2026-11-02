@@ -190,13 +190,15 @@ pub(super) fn stage_forward(sender: &ComponentSender<AppModel>) {
     }
 }
 
-/// TEGAMI_SHOWCASE_COMPOSE_MENU (any value) opens the inline composer's
-/// More actions menu. Pair it with TEGAMI_SHOWCASE_MENU=main.
+/// TEGAMI_SHOWCASE_COMPOSE_MENU opens the inline composer's More actions
+/// menu, or with `from` its Send from menu. Pair it with
+/// TEGAMI_SHOWCASE_MENU=main.
 pub(super) fn stage_compose_menu(sender: &ComponentSender<AppModel>) {
-    if std::env::var_os("TEGAMI_SHOWCASE_COMPOSE_MENU").is_some() {
+    if let Ok(which) = std::env::var("TEGAMI_SHOWCASE_COMPOSE_MENU") {
         let s = sender.clone();
+        let from = which == "from";
         gtk::glib::timeout_add_seconds_local_once(6, move || {
-            s.input(AppMsg::ShowcaseComposeMenu);
+            s.input(AppMsg::ShowcaseComposeMenu { from });
         });
     }
 }

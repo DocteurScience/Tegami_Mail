@@ -388,18 +388,11 @@ impl Compose {
             let cc = widgets.cc_row.clone();
             let bcc = widgets.bcc_row.clone();
             let reply_to = widgets.reply_to_row.clone();
-            let from = widgets.from_row.clone();
-            let custom = widgets.custom_from_row.clone();
             let btn = more.clone();
             more.connect_clicked(move |_| {
                 cc.set_visible(true);
                 bcc.set_visible(true);
                 reply_to.set_visible(true);
-                // With one address the From row is hidden; More brings it,
-                // with its pencil for typing another (#347).
-                if !custom.is_visible() {
-                    from.set_visible(true);
-                }
                 btn.set_visible(false);
             });
             widgets.to_row.add_suffix(&more);
@@ -435,7 +428,6 @@ pub(super) fn label_fields(widgets: &ComposeWidgets) {
         .from_row
         .update_property(&[gtk::accessible::Property::Label(&from)]);
     for (row, name) in [
-        (&widgets.custom_from_row, i18n("From")),
         (&widgets.reply_to_row, i18n("Reply-To")),
         (&widgets.subject_row, i18n("Subject")),
     ] {

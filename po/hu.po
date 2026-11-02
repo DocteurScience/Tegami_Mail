@@ -3646,18 +3646,8 @@ msgstr ""
 "Nincs OpenPGP-kulcs ehhez: {addr}. Kérje el a nyilvános kulcsukat, vagy "
 "kérje le a Beállítások → OpenPGP alatt."
 
-msgid "The From has to be one address, such as Ann <ann@example.com>."
-msgstr ""
-
-msgid "“{address}” is not an email address."
-msgstr ""
-
 msgid "Cannot send with OpenPGP"
 msgstr "Nem lehet küldeni OpenPGP-vel"
-
-#, fuzzy
-msgid "Check the From address"
-msgstr "Feladó címe"
 
 #, fuzzy
 msgid "Send without an attachment?"
@@ -3685,11 +3675,16 @@ msgid ""
 msgstr ""
 
 #, fuzzy
-msgid "Type a From address"
-msgstr "Feladó címe"
+msgid "Choose the sending account"
+msgstr "Először válasszon egy Internetes Fiókot."
 
-msgid "Choose from your addresses"
-msgstr ""
+#, fuzzy
+msgid "Manage Accounts…"
+msgstr "GNOME Internetes Fiókok"
+
+#, fuzzy
+msgid "Send from"
+msgstr "Küldés most"
 
 #, fuzzy
 msgid "Check the address"
@@ -8431,6 +8426,14 @@ msgstr ""
 msgid "Hyprlab"
 msgstr "Hyprlab"
 
+#, fuzzy
+#~ msgid "Check the From address"
+#~ msgstr "Feladó címe"
+
+#, fuzzy
+#~ msgid "Type a From address"
+#~ msgstr "Feladó címe"
+
 #~ msgid "Markdown"
 #~ msgstr "Markdown"
 
@@ -8479,9 +8482,6 @@ msgstr "Hyprlab"
 #, fuzzy
 #~ msgid "Send options"
 #~ msgstr "Műveletek"
-
-#~ msgid "Send now"
-#~ msgstr "Küldés most"
 
 #~ msgid "Send now instead"
 #~ msgstr "Küldés inkább most"

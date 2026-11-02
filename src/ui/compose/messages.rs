@@ -67,8 +67,10 @@ pub(crate) enum ComposeInput {
     TranslateMenu,
     /// The quoted message's text came back: show the languages.
     ShowTranslateMenu(String),
-    /// Type the From instead of picking it, or go back to the list (#347).
-    CustomFrom(bool),
+    /// The From button was pressed: the Send from menu.
+    FromMenu,
+    /// An identity was picked in the Send from menu, by index.
+    PickFrom(usize),
     /// Show Original or Show Translation: the translation was the last
     /// edit, so it is undone or done again, the subject with it (#327).
     TranslateToggle {
@@ -142,7 +144,6 @@ pub(crate) enum ComposeInput {
     MarkFieldsDirty,
     /// Save to Drafts only if edited, then close (used when superseded / on nav).
     SaveDraftIfDirty,
-    AccountChanged,
     AttachFiles,
     /// The writer's own text, read for the forgotten-attachment check.
     AttachCheck(String),
@@ -240,7 +241,10 @@ pub(crate) enum ComposeOutput {
     SaveTemplate(Box<OutgoingMessage>),
     /// Delete the draft this composer was opened from, and close it. The app
     /// moves the draft to Trash (undoable, like deleting it from the list).
-    DeleteDraft { id: u32, origin: DraftOrigin },
+    DeleteDraft {
+        id: u32,
+        origin: DraftOrigin,
+    },
     /// What this composer's history can do now, so the window that hosts it
     /// inline can label and enable its own Undo and Redo entries from the
     /// composer while the composer has focus (#200). `None` means that
@@ -261,10 +265,15 @@ pub(crate) enum ComposeOutput {
     },
     /// Discarded, a new message that only automatic saves put in Drafts:
     /// take that copy out, and close.
-    DiscardAutosave { id: u32, origin: DraftOrigin },
+    DiscardAutosave {
+        id: u32,
+        origin: DraftOrigin,
+    },
     /// The spelling languages were changed from the body's right-click
     /// menu (#365): the whole new setting, saved app-wide like the
     /// Settings switches.
+    /// Manage Accounts… in the Send from menu: the app's account settings.
+    ManageAccounts,
     SetSpellcheckLangs(String),
     /// Check spelling was switched in More actions: the app-wide setting,
     /// as Settings → Composing has it.

@@ -82,8 +82,17 @@ pub(crate) struct Compose {
     /// A compact reply's field rows, revealed by the header button (#154)
     /// or from the start by the preference.
     pub(super) fields_shown: bool,
-    /// The From is typed, in `custom_from_row`, not picked (#347).
-    pub(super) custom_from: bool,
+    /// The identity the message is sent from: an index into `accounts`,
+    /// picked in the From button's Send from menu.
+    pub(super) from_index: usize,
+    /// A From that is none of the identities, kept as it came (#347): a
+    /// reply to a `+tag` address of one, or a draft saved from one. The
+    /// From button shows it and it is sent as is; picking an identity
+    /// drops it. It can no longer be typed (owner's decision,
+    /// docs/SUIVI.md).
+    pub(super) custom_from: Option<String>,
+    /// The From button and its face, made by `fill_from_row`.
+    pub(super) from_face: Option<super::send::FromFace>,
     /// The pane is too narrow for the full toolbar: everything but Cancel,
     /// Send and the fields chevron folds into the ⋯ menu (like the reader's
     /// header), so the window controls at the end never leave the canvas.

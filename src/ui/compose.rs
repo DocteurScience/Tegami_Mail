@@ -196,18 +196,12 @@ impl Component for Compose {
                             add_css_class: "compose-fields",
                             set_selection_mode: gtk::SelectionMode::None,
 
+                            // The From: a button naming the identity, which
+                            // opens Send from (docs/DESIGN.md, "Menus";
+                            // mockups 04 and 06). Filled by fill_from_row.
                             #[name = "from_row"]
-                            adw::ComboRow {
+                            adw::ActionRow {
                                 set_title: &i18n("From"),
-                                connect_selected_notify => ComposeInput::AccountChanged,
-                            },
-                            // The From as text (#347): any name and address,
-                            // sent through the account chosen above.
-                            #[name = "custom_from_row"]
-                            adw::EntryRow {
-                                set_title: &i18n("From"),
-                                set_input_purpose: gtk::InputPurpose::Email,
-                                set_visible: false,
                             },
                             #[name = "to_row"]
                             RecipientRow {
@@ -440,7 +434,9 @@ impl Component for Compose {
             compact: compact && !prefill.to.trim().is_empty(),
             decorations,
             fields_shown: crate::config::load_privacy().reply_fields,
-            custom_from: false,
+            from_index: selected,
+            custom_from: None,
+            from_face: None,
             narrow: false,
             // Files handed in from outside are something to lose: closing
             // asks first, as it would once the user had attached them.
@@ -655,21 +651,19 @@ impl Component for Compose {
                     self.showcase_history(step, widgets, &sender);
                 }
 
-                ComposeInput::ShowcaseFrom(n) => {
-                    widgets.from_row.set_selected(n);
-                }
+                ComposeInput::ShowcaseFrom(n) => self.on_pick_from(n as usize, widgets),
 
                 ComposeInput::BodyHistory(can_undo) => self.on_body_history(can_undo, &sender),
 
-                ComposeInput::CustomFrom(on) => self.on_custom_from(on, widgets),
+                ComposeInput::FromMenu => self.on_from_menu(&sender),
 
-                ComposeInput::AccountChanged => self.on_account_changed(widgets),
+                ComposeInput::PickFrom(i) => self.on_pick_from(i, widgets),
 
-                ComposeInput::InsertSignature(place) => self.on_insert_signature(place, widgets),
+                ComposeInput::InsertSignature(place) => self.on_insert_signature(place),
 
-                ComposeInput::SignatureClicked => self.on_signature_clicked(widgets, &sender),
+                ComposeInput::SignatureClicked => self.on_signature_clicked(&sender),
 
-                ComposeInput::UseSignature(choice) => self.on_use_signature(choice, widgets),
+                ComposeInput::UseSignature(choice) => self.on_use_signature(choice),
 
                 ComposeInput::SignatureMenu => self.on_signature_menu(&sender),
 

@@ -3567,19 +3567,8 @@ msgstr ""
 "Δεν υπάρχει κλειδί OpenPGP για τη διεύθυνση {addr}. Ζητήστε το δημόσιο "
 "κλειδί ή ανακτήστε το στις Ρυθμίσεις, OpenPGP."
 
-msgid "The From has to be one address, such as Ann <ann@example.com>."
-msgstr ""
-"Το πεδίο αποστολέα πρέπει να περιέχει μία διεύθυνση, όπως Ann "
-"<ann@example.com>."
-
-msgid "“{address}” is not an email address."
-msgstr "Το «{address}» δεν είναι διεύθυνση email."
-
 msgid "Cannot send with OpenPGP"
 msgstr "Δεν είναι δυνατή η αποστολή με OpenPGP"
-
-msgid "Check the From address"
-msgstr "Ελέγξτε τη διεύθυνση αποστολέα"
 
 #, fuzzy
 msgid "Send without an attachment?"
@@ -3608,11 +3597,17 @@ msgstr ""
 "μετά την επισύναψή του. Αφαιρέστε το ή επισυνάψτε το ξανά από τη νέα του "
 "θέση."
 
-msgid "Type a From address"
-msgstr "Πληκτρολογήστε μια διεύθυνση αποστολέα"
+#, fuzzy
+msgid "Choose the sending account"
+msgstr "Επιλέξτε πρώτα έναν διαδικτυακό λογαριασμό."
 
-msgid "Choose from your addresses"
-msgstr "Επιλέξτε από τις διευθύνσεις σας"
+#, fuzzy
+msgid "Manage Accounts…"
+msgstr "Διαδικτυακοί λογαριασμοί GNOME"
+
+#, fuzzy
+msgid "Send from"
+msgstr "Αποστολή τώρα"
 
 msgid "Check the address"
 msgstr "Ελέγξτε τη διεύθυνση"
@@ -8259,6 +8254,23 @@ msgstr ""
 msgid "Hyprlab"
 msgstr "Hyprlab"
 
+#~ msgid "The From has to be one address, such as Ann <ann@example.com>."
+#~ msgstr ""
+#~ "Το πεδίο αποστολέα πρέπει να περιέχει μία διεύθυνση, όπως Ann "
+#~ "<ann@example.com>."
+
+#~ msgid "“{address}” is not an email address."
+#~ msgstr "Το «{address}» δεν είναι διεύθυνση email."
+
+#~ msgid "Check the From address"
+#~ msgstr "Ελέγξτε τη διεύθυνση αποστολέα"
+
+#~ msgid "Type a From address"
+#~ msgstr "Πληκτρολογήστε μια διεύθυνση αποστολέα"
+
+#~ msgid "Choose from your addresses"
+#~ msgstr "Επιλέξτε από τις διευθύνσεις σας"
+
 #~ msgid "Markdown"
 #~ msgstr "Markdown"
 
@@ -8304,9 +8316,6 @@ msgstr "Hyprlab"
 #, fuzzy
 #~ msgid "Send options"
 #~ msgstr "Ενότητες"
-
-#~ msgid "Send now"
-#~ msgstr "Αποστολή τώρα"
 
 #~ msgid "Send now instead"
 #~ msgstr "Αποστολή τώρα αντί για αργότερα"

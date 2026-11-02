@@ -3528,18 +3528,8 @@ msgstr ""
 "No hay ninguna clave OpenPGP para {addr}. Pide su clave pública o búscala "
 "desde Ajustes → OpenPGP."
 
-msgid "The From has to be one address, such as Ann <ann@example.com>."
-msgstr ""
-"El campo De debe contener una sola dirección, como Ana <ana@example.com>."
-
-msgid "“{address}” is not an email address."
-msgstr "«{address}» no es una dirección de correo electrónico."
-
 msgid "Cannot send with OpenPGP"
 msgstr "No se puede enviar con OpenPGP"
-
-msgid "Check the From address"
-msgstr "Comprobar la dirección del remitente"
 
 #, fuzzy
 msgid "Send without an attachment?"
@@ -3567,11 +3557,17 @@ msgstr ""
 "Tegami Mail no puede leer {names}. Se ha movido o eliminado después de "
 "adjuntarlo. Quítalo o vuelve a adjuntarlo desde su ubicación actual."
 
-msgid "Type a From address"
-msgstr "Escribir una dirección de remitente"
+#, fuzzy
+msgid "Choose the sending account"
+msgstr "Elige primero una cuenta en línea."
 
-msgid "Choose from your addresses"
-msgstr "Elegir entre tus direcciones"
+#, fuzzy
+msgid "Manage Accounts…"
+msgstr "Cuentas en línea de GNOME"
+
+#, fuzzy
+msgid "Send from"
+msgstr "Enviar ahora"
 
 msgid "Check the address"
 msgstr "Comprobar la dirección"
@@ -8183,6 +8179,22 @@ msgstr ""
 msgid "Hyprlab"
 msgstr "Hyprlab"
 
+#~ msgid "The From has to be one address, such as Ann <ann@example.com>."
+#~ msgstr ""
+#~ "El campo De debe contener una sola dirección, como Ana <ana@example.com>."
+
+#~ msgid "“{address}” is not an email address."
+#~ msgstr "«{address}» no es una dirección de correo electrónico."
+
+#~ msgid "Check the From address"
+#~ msgstr "Comprobar la dirección del remitente"
+
+#~ msgid "Type a From address"
+#~ msgstr "Escribir una dirección de remitente"
+
+#~ msgid "Choose from your addresses"
+#~ msgstr "Elegir entre tus direcciones"
+
 #~ msgid "Markdown"
 #~ msgstr "Markdown"
 
@@ -8228,9 +8240,6 @@ msgstr "Hyprlab"
 #, fuzzy
 #~ msgid "Send options"
 #~ msgstr "Secciones"
-
-#~ msgid "Send now"
-#~ msgstr "Enviar ahora"
 
 #~ msgid "Send now instead"
 #~ msgstr "Enviar ahora en su lugar"

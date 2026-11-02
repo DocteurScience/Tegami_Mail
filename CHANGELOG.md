@@ -19,6 +19,12 @@
   **Spelling Language** list, which were only in Settings and the body's
   right-click menu.
 
+- **Changed: the From row is a button** (mockups 04 and 06): the address's
+  avatar, name and address, opening **Send from** with every address and
+  **Manage Accounts…**. It is always shown, one address or several. A From
+  can no longer be typed (#347); a reply to a `+tag` address and a draft
+  saved from an address that is none of yours still keep theirs.
+
 - **Removed: writing in Markdown and in HTML source.** A message is written
   in rich text or plain text, the two formats the redesign keeps (mockup
   06), with the source editor, its Preview toggle and the Markdown renderer

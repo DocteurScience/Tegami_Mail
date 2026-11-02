@@ -10,6 +10,7 @@ use super::ComposeWidgets;
 use crate::config::ComposeFormat;
 use crate::i18n::{i18n, i18n_f};
 use crate::models::DraftOrigin;
+use crate::ui::context_menu::{show_context_menu_with_header, MenuEntry};
 use crate::ui::dialog::alert;
 use crate::worker::OutgoingMessage;
 use adw::prelude::*;
@@ -79,45 +80,27 @@ fn pgp_send_check(
     Ok(())
 }
 
+/// The From row's button and the parts of it that name the identity.
+pub(super) struct FromFace {
+    button: gtk::Button,
+    avatar: adw::Avatar,
+    name: gtk::Label,
+    address: gtk::Label,
+}
+
 impl Compose {
-    /// The From to put on the wire: the picked identity's (`None` for the
-    /// account's own), or the one typed in (#347), which has to hold one
-    /// address.
-    fn chosen_from(&self, widgets: &ComposeWidgets) -> Result<Option<String>, String> {
-        let idx = widgets.from_row.selected() as usize;
-        let picked = self.accounts.get(idx).and_then(|a| a.alias_from.clone());
-        if !self.custom_from {
-            return Ok(picked);
+    /// The From to put on the wire: the one kept from the prefill (#347)
+    /// unless it reads as the picked identity, else the identity's own
+    /// (`None` for the account's address).
+    fn chosen_from(&self) -> Option<String> {
+        let account = self.accounts.get(self.from_index);
+        let picked = account.and_then(|a| a.alias_from.clone());
+        match &self.custom_from {
+            Some(custom) if !account.is_some_and(|a| same_from(&identity_display(a), custom)) => {
+                Some(custom.clone())
+            }
+            _ => picked,
         }
-        let typed = widgets.custom_from_row.text().trim().to_string();
-        let found = crate::worker::parse_recipients(&typed);
-        let [(name, addr)] = found.as_slice() else {
-            return Err(i18n(
-                "The From has to be one address, such as Ann <ann@example.com>.",
-            ));
-        };
-        let at = addr.split_once('@');
-        if at.is_none_or(|(user, host)| {
-            user.is_empty() || !host.contains('.') || addr.contains(char::is_whitespace)
-        }) {
-            return Err(i18n_f(
-                "“{address}” is not an email address.",
-                &[("address", addr)],
-            ));
-        }
-        // Left as the picked identity reads: send as that.
-        if self
-            .accounts
-            .get(idx)
-            .is_some_and(|a| same_from(&identity_display(a), &typed))
-        {
-            return Ok(picked);
-        }
-        Ok(Some(if name.trim().is_empty() {
-            addr.clone()
-        } else {
-            format!("{} <{addr}>", name.trim())
-        }))
     }
 
     /// Read the body out of the editor: the document's HTML and text.
@@ -142,19 +125,16 @@ impl Compose {
     }
 
     /// The fields as a draft or the automatic save takes them, before the
-    /// body is read. A draft can be saved without recipients, and keeps even
-    /// a From still being typed: it is checked when the message is sent.
+    /// body is read. A draft can be saved without recipients.
     fn draft_fields(&self, widgets: &ComposeWidgets) -> OutgoingFields {
         let to = widgets.to_row.text().trim().to_string();
         let cc = widgets.cc_row.text().trim().to_string();
         let bcc = widgets.bcc_row.text().trim().to_string();
         let reply_to = widgets.reply_to_row.text().trim().to_string();
         let subject = widgets.subject_row.text().to_string();
-        let idx = widgets.from_row.selected() as usize;
+        let idx = self.from_index;
         let from_account_id = self.accounts.get(idx).map(|a| a.id).unwrap_or(1);
-        let from_alias = self
-            .chosen_from(widgets)
-            .unwrap_or_else(|_| self.accounts.get(idx).and_then(|a| a.alias_from.clone()));
+        let from_alias = self.chosen_from();
         OutgoingFields {
             html: String::new(),
             text: String::new(),
@@ -235,33 +215,10 @@ impl Compose {
         }
     }
 
-    /// Handles [`ComposeInput::CustomFrom`].
-    pub(super) fn on_custom_from(&mut self, on: bool, widgets: &ComposeWidgets) {
-        self.custom_from = on;
-        if on {
-            // Start from the address that was picked, to edit.
-            let idx = widgets.from_row.selected() as usize;
-            let start = self
-                .accounts
-                .get(idx)
-                .map(identity_display)
-                .unwrap_or_default();
-            if widgets.custom_from_row.text().trim().is_empty() {
-                widgets.custom_from_row.set_text(&start);
-            }
-            widgets.from_row.set_visible(false);
-            widgets.custom_from_row.set_visible(true);
-            widgets.custom_from_row.grab_focus();
-        } else {
-            widgets.custom_from_row.set_visible(false);
-            widgets.from_row.set_visible(true);
-        }
-    }
-
-    /// Handles [`ComposeInput::AccountChanged`].
-    pub(super) fn on_account_changed(&mut self, widgets: &ComposeWidgets) {
+    /// Another identity was picked: signing, directory and signature follow.
+    fn on_account_changed(&mut self, widgets: &ComposeWidgets) {
         self.follow_account_signing(widgets);
-        let idx = widgets.from_row.selected() as usize;
+        let idx = self.from_index;
         // Another account may suggest from elsewhere: what a
         // directory answered for the last one is not kept.
         let account_changed = self
@@ -350,19 +307,12 @@ impl Compose {
         let bcc = widgets.bcc_row.text().trim().to_string();
         let reply_to = widgets.reply_to_row.text().trim().to_string();
         let subject = widgets.subject_row.text().to_string();
-        let idx = widgets.from_row.selected() as usize;
+        let idx = self.from_index;
         if self.pgp_check_pending(idx, [&to, &cc, &bcc], sender) {
             return;
         }
         let from_account_id = self.accounts.get(idx).map(|a| a.id).unwrap_or(1);
-        let from_alias = match self.chosen_from(widgets) {
-            Ok(from) => from,
-            Err(why) => {
-                let parent = widgets.to_row.root().and_downcast::<gtk::Window>();
-                alert(parent.as_ref(), &i18n("Check the From address"), &why);
-                return;
-            }
-        };
+        let from_alias = self.chosen_from();
 
         // Pull the body out of the editor (async), then finish
         // sending via SendBody. The send-time reader also recuts any
@@ -669,8 +619,10 @@ impl Compose {
         }
     }
 
-    /// The From row: the identities, the pencil for a From of one's own, and
-    /// a prefilled From that is none of the identities.
+    /// The From row's button (docs/DESIGN.md, "Menus"; mockup 04): the
+    /// sending identity's avatar, name and address, opening Send from. A
+    /// prefilled From that is none of the identities is kept and shown
+    /// (#347).
     pub(super) fn fill_from_row(
         &mut self,
         widgets: &ComposeWidgets,
@@ -678,58 +630,6 @@ impl Compose {
         selected: usize,
         sender: &ComponentSender<Self>,
     ) {
-        // Populate the From dropdown.
-        let labels: Vec<&str> = self.accounts.iter().map(|a| a.label.as_str()).collect();
-        let strings = gtk::StringList::new(&labels);
-        widgets.from_row.set_model(Some(&strings));
-        // Custom factory so the selected account isn't needlessly ellipsized.
-        let factory = gtk::SignalListItemFactory::new();
-        factory.connect_setup(|_, item| {
-            if let Some(item) = item.downcast_ref::<gtk::ListItem>() {
-                let label = gtk::Label::new(None);
-                label.set_xalign(0.0);
-                label.set_ellipsize(gtk::pango::EllipsizeMode::None);
-                item.set_child(Some(&label));
-            }
-        });
-        factory.connect_bind(|_, item| {
-            if let Some(item) = item.downcast_ref::<gtk::ListItem>() {
-                let text = item
-                    .item()
-                    .and_downcast::<gtk::StringObject>()
-                    .map(|s| s.string().to_string())
-                    .unwrap_or_default();
-                if let Some(label) = item.child().and_downcast::<gtk::Label>() {
-                    label.set_label(&text);
-                }
-            }
-        });
-        widgets.from_row.set_factory(Some(&factory));
-        widgets.from_row.set_selected(selected as u32);
-        widgets.from_row.set_visible(self.accounts.len() > 1);
-        {
-            // The pencil types a From of your own (#347); the custom row's
-            // button goes back to the list.
-            let edit = gtk::Button::from_icon_name("document-edit-symbolic");
-            edit.add_css_class("flat");
-            edit.set_valign(gtk::Align::Center);
-            edit.set_tooltip_text(Some(i18n("Type a From address").as_str()));
-            let s = sender.input_sender().clone();
-            edit.connect_clicked(move |_| {
-                let _ = s.send(ComposeInput::CustomFrom(true));
-            });
-            widgets.from_row.add_suffix(&edit);
-            let back = gtk::Button::from_icon_name("pan-down-symbolic");
-            back.add_css_class("flat");
-            back.set_valign(gtk::Align::Center);
-            back.set_tooltip_text(Some(i18n("Choose from your addresses").as_str()));
-            let s = sender.input_sender().clone();
-            back.connect_clicked(move |_| {
-                let _ = s.send(ComposeInput::CustomFrom(false));
-            });
-            widgets.custom_from_row.add_suffix(&back);
-        }
-        // A From that is none of the identities opens as text (#347).
         let custom = prefill.custom_from.trim();
         if !custom.is_empty() {
             let addr = crate::worker::parse_recipients(custom)
@@ -748,11 +648,132 @@ impl Compose {
                     .get(selected)
                     .is_some_and(|a| a.email.eq_ignore_ascii_case(&addr));
             if !same && !bare {
-                self.custom_from = true;
-                widgets.from_row.set_visible(false);
-                widgets.custom_from_row.set_text(custom);
-                widgets.custom_from_row.set_visible(true);
+                self.custom_from = Some(custom.to_string());
             }
+        }
+        let avatar = adw::Avatar::new(24, None, true);
+        let name = gtk::Label::new(None);
+        name.add_css_class("heading");
+        let address = gtk::Label::new(None);
+        address.add_css_class("secondary-text");
+        // A button's label is bold; the address is not (mockup 04).
+        address.add_css_class("body");
+        address.set_ellipsize(gtk::pango::EllipsizeMode::End);
+        // Says the button opens a list; nothing waits for a hover.
+        let chevron = gtk::Image::from_icon_name("pan-down-symbolic");
+        chevron.add_css_class("secondary-text");
+        let face = gtk::Box::new(gtk::Orientation::Horizontal, 8);
+        face.append(&avatar);
+        face.append(&name);
+        face.append(&address);
+        face.append(&chevron);
+        let button = gtk::Button::new();
+        button.set_child(Some(&face));
+        button.add_css_class("flat");
+        button.add_css_class("compose-from");
+        button.set_valign(gtk::Align::Center);
+        button.set_tooltip_text(Some(i18n("Choose the sending account").as_str()));
+        let s = sender.input_sender().clone();
+        button.connect_clicked(move |_| {
+            let _ = s.send(ComposeInput::FromMenu);
+        });
+        widgets.from_row.add_prefix(&button);
+        // A row's prefixes go in at the front: move the button after the
+        // "From" label that label_fields put there first.
+        if let (Some(parent), Some(label)) = (button.parent(), button.next_sibling()) {
+            button.insert_after(&parent, Some(&label));
+        }
+        self.from_face = Some(FromFace {
+            button,
+            avatar,
+            name,
+            address,
+        });
+        self.show_from();
+    }
+
+    /// The From button's face for the From that will be sent.
+    fn show_from(&self) {
+        let Some(face) = &self.from_face else {
+            return;
+        };
+        let shown = self
+            .custom_from
+            .clone()
+            .or_else(|| self.accounts.get(self.from_index).map(identity_display))
+            .unwrap_or_default();
+        let (name, address) = crate::config::split_identity(&shown);
+        face.avatar
+            .set_text(Some(if name.is_empty() { &address } else { &name }));
+        face.name.set_label(&name);
+        face.name.set_visible(!name.is_empty());
+        face.address.set_label(&if name.is_empty() {
+            address
+        } else {
+            format!("<{address}>")
+        });
+    }
+
+    /// Handles [`ComposeInput::FromMenu`]: Send from, one entry per
+    /// identity with its address, the one in use marked, then Manage
+    /// Accounts… (docs/DESIGN.md, "Menus").
+    pub(super) fn on_from_menu(&self, sender: &ComponentSender<Self>) {
+        let Some(face) = &self.from_face else {
+            return;
+        };
+        let entry = |from: &str| {
+            let (name, address) = crate::config::split_identity(from);
+            let label = if name.is_empty() {
+                address.clone()
+            } else {
+                name
+            };
+            (label, address)
+        };
+        let mut froms = Vec::new();
+        if let Some(custom) = &self.custom_from {
+            let (label, address) = entry(custom);
+            froms.push(
+                MenuEntry::new(label, || {})
+                    .subtitle(address)
+                    .selected(true),
+            );
+        }
+        for (i, account) in self.accounts.iter().enumerate() {
+            let (label, address) = entry(&identity_display(account));
+            let s = sender.input_sender().clone();
+            froms.push(
+                MenuEntry::new(label, move || s.emit(ComposeInput::PickFrom(i)))
+                    .subtitle(address)
+                    .selected(self.custom_from.is_none() && i == self.from_index),
+            );
+        }
+        let s = sender.clone();
+        let manage = MenuEntry::new(i18n("Manage Accounts…"), move || {
+            let _ = s.output(ComposeOutput::ManageAccounts);
+        });
+        let b = &face.button;
+        show_context_menu_with_header(
+            b,
+            (b.width() / 2) as f64,
+            b.height() as f64,
+            Some(&i18n("Send from")),
+            vec![froms, vec![manage]],
+        );
+    }
+
+    /// Handles [`ComposeInput::PickFrom`].
+    pub(super) fn on_pick_from(&mut self, index: usize, widgets: &ComposeWidgets) {
+        if index >= self.accounts.len() {
+            return;
+        }
+        let changed = index != self.from_index || self.custom_from.is_some();
+        self.custom_from = None;
+        self.from_index = index;
+        self.show_from();
+        if changed {
+            self.fields_dirty = true;
+            self.on_account_changed(widgets);
         }
     }
 

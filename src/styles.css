@@ -2522,3 +2522,10 @@ textview.console-view text selection {
 toast-countdown {
   color: @accent_bg_color;
 }
+
+/* Secondary text that must stay readable: 70 % opacity keeps a 4.5:1
+   contrast on the light and dark grounds, where dim-label's 55 % does not
+   (a menu entry's second line, the composer's From address). */
+.secondary-text {
+  opacity: 0.7;
+}

@@ -3524,19 +3524,8 @@ msgstr ""
 "Il n’y a pas de clé OpenPGP pour {addr}. Demandez-lui sa clé publique ou "
 "récupérez-la dans « Paramètres », « OpenPGP »."
 
-msgid "The From has to be one address, such as Ann <ann@example.com>."
-msgstr ""
-"Le champ De doit contenir une seule adresse, par exemple Anne "
-"<anne@example.com>."
-
-msgid "“{address}” is not an email address."
-msgstr "« {address} » n’est pas une adresse e-mail."
-
 msgid "Cannot send with OpenPGP"
 msgstr "Impossible d’envoyer avec OpenPGP"
-
-msgid "Check the From address"
-msgstr "Vérifiez l’adresse d’expéditeur"
 
 msgid "Send without an attachment?"
 msgstr "Envoyer sans pièce jointe ?"
@@ -3564,11 +3553,14 @@ msgstr ""
 "après avoir été joint. Retirez-le, ou joignez-le à nouveau depuis son "
 "emplacement actuel."
 
-msgid "Type a From address"
-msgstr "Saisir une adresse d’expéditeur"
+msgid "Choose the sending account"
+msgstr "Choisir le compte d’envoi"
 
-msgid "Choose from your addresses"
-msgstr "Choisir parmi vos adresses"
+msgid "Manage Accounts…"
+msgstr "Gérer les comptes…"
+
+msgid "Send from"
+msgstr "Envoyer depuis"
 
 msgid "Check the address"
 msgstr "Vérifiez l’adresse"
@@ -8162,6 +8154,23 @@ msgstr ""
 msgid "Hyprlab"
 msgstr "Hyprlab"
 
+#~ msgid "The From has to be one address, such as Ann <ann@example.com>."
+#~ msgstr ""
+#~ "Le champ De doit contenir une seule adresse, par exemple Anne "
+#~ "<anne@example.com>."
+
+#~ msgid "“{address}” is not an email address."
+#~ msgstr "« {address} » n’est pas une adresse e-mail."
+
+#~ msgid "Check the From address"
+#~ msgstr "Vérifiez l’adresse d’expéditeur"
+
+#~ msgid "Type a From address"
+#~ msgstr "Saisir une adresse d’expéditeur"
+
+#~ msgid "Choose from your addresses"
+#~ msgstr "Choisir parmi vos adresses"
+
 #~ msgid "Markdown"
 #~ msgstr "Markdown"
 
@@ -8207,9 +8216,6 @@ msgstr "Hyprlab"
 #, fuzzy
 #~ msgid "Send options"
 #~ msgstr "Sections"
-
-#~ msgid "Send now"
-#~ msgstr "Envoyer maintenant"
 
 #~ msgid "Send now instead"
 #~ msgstr "Envoyer maintenant à la place"

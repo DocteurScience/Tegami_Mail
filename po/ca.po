@@ -3503,17 +3503,8 @@ msgstr ""
 "No hi ha cap clau OpenPGP per a {addr}. Demana'ls la seva clau pública, o "
 "obtén-la a Paràmetres, OpenPGP."
 
-msgid "The From has to be one address, such as Ann <ann@example.com>."
-msgstr "El remitent ha de ser una sola adreça, com ara Ann <ann@example.com>."
-
-msgid "“{address}” is not an email address."
-msgstr "«{address}» no és una adreça de correu electrònic."
-
 msgid "Cannot send with OpenPGP"
 msgstr "No es pot enviar amb OpenPGP"
-
-msgid "Check the From address"
-msgstr "Comprova l'adreça del remitent"
 
 #, fuzzy
 msgid "Send without an attachment?"
@@ -3541,11 +3532,17 @@ msgstr ""
 "L'Tegami Mail no pot llegir {names}. Es va moure o suprimir després "
 "d'adjuntar-lo. Elimina'l, o torna a adjuntar-lo des d'on és ara."
 
-msgid "Type a From address"
-msgstr "Escriu una adreça de remitent"
+#, fuzzy
+msgid "Choose the sending account"
+msgstr "Tria primer un compte en línia."
 
-msgid "Choose from your addresses"
-msgstr "Tria entre les teves adreces"
+#, fuzzy
+msgid "Manage Accounts…"
+msgstr "Comptes en línia del GNOME"
+
+#, fuzzy
+msgid "Send from"
+msgstr "Envia ara"
 
 msgid "Check the address"
 msgstr "Comprova l'adreça"
@@ -8128,6 +8125,22 @@ msgstr ""
 msgid "Hyprlab"
 msgstr "Hyprlab"
 
+#~ msgid "The From has to be one address, such as Ann <ann@example.com>."
+#~ msgstr ""
+#~ "El remitent ha de ser una sola adreça, com ara Ann <ann@example.com>."
+
+#~ msgid "“{address}” is not an email address."
+#~ msgstr "«{address}» no és una adreça de correu electrònic."
+
+#~ msgid "Check the From address"
+#~ msgstr "Comprova l'adreça del remitent"
+
+#~ msgid "Type a From address"
+#~ msgstr "Escriu una adreça de remitent"
+
+#~ msgid "Choose from your addresses"
+#~ msgstr "Tria entre les teves adreces"
+
 #~ msgid "Markdown"
 #~ msgstr "Markdown"
 
@@ -8173,9 +8186,6 @@ msgstr "Hyprlab"
 #, fuzzy
 #~ msgid "Send options"
 #~ msgstr "Seccions"
-
-#~ msgid "Send now"
-#~ msgstr "Envia ara"
 
 #~ msgid "Send now instead"
 #~ msgstr "Envia-ho ara"

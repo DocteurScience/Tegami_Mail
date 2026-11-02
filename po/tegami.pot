@@ -3216,16 +3216,7 @@ msgid ""
 "it under Settings, OpenPGP."
 msgstr ""
 
-msgid "The From has to be one address, such as Ann <ann@example.com>."
-msgstr ""
-
-msgid "“{address}” is not an email address."
-msgstr ""
-
 msgid "Cannot send with OpenPGP"
-msgstr ""
-
-msgid "Check the From address"
 msgstr ""
 
 msgid "Send without an attachment?"
@@ -3249,10 +3240,13 @@ msgid ""
 "attached. Remove it, or attach it again from where it is now."
 msgstr ""
 
-msgid "Type a From address"
+msgid "Choose the sending account"
 msgstr ""
 
-msgid "Choose from your addresses"
+msgid "Manage Accounts…"
+msgstr ""
+
+msgid "Send from"
 msgstr ""
 
 msgid "Check the address"

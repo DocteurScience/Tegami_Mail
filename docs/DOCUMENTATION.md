@@ -1199,18 +1199,17 @@ the next field.
 
 ### The From address
 
-The From row lists each account's address and the aliases set up for it.
-Its pencil turns the row into text, where any name and address can be typed
-for this one message, a throwaway address or a `+tag` one, without making
-it an alias; the arrow beside it goes back to the list. The message still
-goes through the account picked in the list, and with one address that row
-appears under **More**. A reply to mail sent to a `+tag` address of one of
-your addresses starts from that address, and a draft saved from a typed
-address opens with it. Whether the server accepts mail from an address it
-does not know is up to the server: many refuse it, or rewrite it.
+The **From** row names the address the message goes from. A click on it
+opens **Send from**: each account's address and the aliases set up for it,
+the one in use marked, then **Manage Accounts…**, which opens the accounts
+in Settings. A reply to mail sent to a `+tag` address of one of your
+addresses starts from that address, and a draft saved from an address that
+is none of yours opens with it; picking an address in **Send from** replaces
+it. Whether the server accepts mail from an address it does not know is up
+to the server: many refuse it, or rewrite it.
 
 A JMAP account lists the identities the server keeps for it as well, so an
-alias made in the webmail is in the From row without setting it up again.
+alias made in the webmail is in **Send from** without setting it up again.
 The message is sent as the identity with its address, or as a catch-all
 identity for its domain (`*@example.org`) when there is one. The account's
 page in Settings shows them under Send-as aliases, read-only: they are
