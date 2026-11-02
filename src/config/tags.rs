@@ -22,6 +22,53 @@ pub(crate) struct Tag {
     pub(crate) color: String,
 }
 
+/// The base letters of an accented Latin letter or a ligature, for a
+/// keyword (`Tag::keyword_for`): "é" → "e", "Ç" → "C", "œ" → "oe". Any
+/// other character, which an IMAP atom cannot carry either, gives nothing.
+/// A table rather than Unicode decomposition: it is the one place that
+/// needs it, and the letters of the languages the app is translated into
+/// are all here.
+fn base_letters(c: char) -> &'static str {
+    match c {
+        'à' | 'á' | 'â' | 'ã' | 'ä' | 'å' | 'ā' | 'ă' | 'ą' => "a",
+        'À' | 'Á' | 'Â' | 'Ã' | 'Ä' | 'Å' | 'Ā' | 'Ă' | 'Ą' => "A",
+        'ç' | 'ć' | 'ĉ' | 'ċ' | 'č' => "c",
+        'Ç' | 'Ć' | 'Ĉ' | 'Ċ' | 'Č' => "C",
+        'ď' | 'đ' => "d",
+        'Ď' | 'Đ' => "D",
+        'è' | 'é' | 'ê' | 'ë' | 'ē' | 'ĕ' | 'ė' | 'ę' | 'ě' => "e",
+        'È' | 'É' | 'Ê' | 'Ë' | 'Ē' | 'Ĕ' | 'Ė' | 'Ę' | 'Ě' => "E",
+        'ĝ' | 'ğ' | 'ġ' | 'ģ' => "g",
+        'Ĝ' | 'Ğ' | 'Ġ' | 'Ģ' => "G",
+        'ì' | 'í' | 'î' | 'ï' | 'ĩ' | 'ī' | 'ĭ' | 'į' | 'ı' => "i",
+        'Ì' | 'Í' | 'Î' | 'Ï' | 'Ĩ' | 'Ī' | 'Ĭ' | 'Į' | 'İ' => "I",
+        'ł' | 'ĺ' | 'ļ' | 'ľ' => "l",
+        'Ł' | 'Ĺ' | 'Ļ' | 'Ľ' => "L",
+        'ñ' | 'ń' | 'ņ' | 'ň' => "n",
+        'Ñ' | 'Ń' | 'Ņ' | 'Ň' => "N",
+        'ò' | 'ó' | 'ô' | 'õ' | 'ö' | 'ø' | 'ō' | 'ŏ' | 'ő' => "o",
+        'Ò' | 'Ó' | 'Ô' | 'Õ' | 'Ö' | 'Ø' | 'Ō' | 'Ŏ' | 'Ő' => "O",
+        'ŕ' | 'ŗ' | 'ř' => "r",
+        'Ŕ' | 'Ŗ' | 'Ř' => "R",
+        'ś' | 'ŝ' | 'ş' | 'š' | 'ș' => "s",
+        'Ś' | 'Ŝ' | 'Ş' | 'Š' | 'Ș' => "S",
+        'ţ' | 'ť' | 'ț' => "t",
+        'Ţ' | 'Ť' | 'Ț' => "T",
+        'ù' | 'ú' | 'û' | 'ü' | 'ũ' | 'ū' | 'ŭ' | 'ů' | 'ű' | 'ų' => "u",
+        'Ù' | 'Ú' | 'Û' | 'Ü' | 'Ũ' | 'Ū' | 'Ŭ' | 'Ů' | 'Ű' | 'Ų' => "U",
+        'ý' | 'ÿ' => "y",
+        'Ý' | 'Ÿ' => "Y",
+        'ź' | 'ż' | 'ž' => "z",
+        'Ź' | 'Ż' | 'Ž' => "Z",
+        'æ' => "ae",
+        'Æ' => "AE",
+        'œ' => "oe",
+        'Œ' => "OE",
+        'ß' => "ss",
+        _ => "",
+    }
+}
+
 /// The tag palette, GNOME's color set at its middle strength.
 pub(crate) const TAG_COLORS: &[&str] = &[
     "#1c71d8", "#2ec27e", "#f5c211", "#e66100", "#c01c28", "#813d9c", "#865e3c", "#77767b",
@@ -69,14 +116,21 @@ impl Tag {
     }
 
     /// The keyword a tag named `name` gets unless the user picks one: the
-    /// name with spaces turned to underscores and anything an atom cannot
-    /// carry dropped ("To Do" → `To_Do`, "Réunion" → `Runion`).
+    /// name with spaces turned to underscores, accented letters turned to
+    /// their base letter, and anything else an atom cannot carry dropped
+    /// ("To Do" → `To_Do`, "Réunion" → `Reunion`, not `Runion`; docs/
+    /// DESIGN.md, "Small changes the design depends on"). Only the keyword
+    /// on the server changes; the name shown keeps its accents.
     pub(crate) fn keyword_for(name: &str) -> String {
-        name.trim()
-            .chars()
-            .map(|c| if c == ' ' { '_' } else { c })
-            .filter(|c| Self::is_keyword_char(*c))
-            .collect()
+        let mut out = String::new();
+        for c in name.trim().chars() {
+            match c {
+                ' ' => out.push('_'),
+                c if Self::is_keyword_char(c) => out.push(c),
+                c => out.push_str(base_letters(c)),
+            }
+        }
+        out
     }
 
     /// The CSS class carrying this tag's color (see the app's tag stylesheet):

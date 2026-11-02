@@ -240,7 +240,7 @@ fn found_keywords_get_names_and_colors() {
 fn tag_keywords_derive_from_names() {
     assert_eq!(Tag::keyword_for("To Do"), "To_Do");
     assert_eq!(Tag::keyword_for("  Work "), "Work");
-    assert_eq!(Tag::keyword_for("Réunion (lundi)"), "Runion_lundi");
+    assert_eq!(Tag::keyword_for("Réunion (lundi)"), "Reunion_lundi");
     assert!(Tag::valid_keyword("$label1"));
     assert!(!Tag::valid_keyword("has space"));
     assert!(!Tag::valid_keyword(""));
@@ -902,4 +902,18 @@ fn chip_pairs_keep_their_contrast() {
         let ratio = (a.max(b) + 0.05) / (a.min(b) + 0.05);
         assert!(ratio >= 7.8, "{fg} on {bg} is {ratio:.2}:1");
     }
+}
+
+/// Accented names keep their letters in the keyword, without the accents
+/// an IMAP atom cannot carry (docs/DESIGN.md).
+#[test]
+fn a_keyword_drops_accents_not_letters() {
+    assert_eq!(Tag::keyword_for("Réunion"), "Reunion");
+    assert_eq!(Tag::keyword_for("À suivre"), "A_suivre");
+    assert_eq!(Tag::keyword_for("Œuvre complète"), "OEuvre_complete");
+    assert_eq!(Tag::keyword_for("Straße"), "Strasse");
+    assert_eq!(Tag::keyword_for("To Do"), "To_Do");
+    // What has no base letter is still dropped.
+    assert_eq!(Tag::keyword_for("日本 (Japan)"), "_Japan");
+    assert!(Tag::valid_keyword(&Tag::keyword_for("Projet Tegami été")));
 }
