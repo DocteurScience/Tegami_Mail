@@ -5,7 +5,7 @@ reprendre le travail dans une autre conversation. Les règles durables
 (conventions, commandes, architecture) sont dans [CLAUDE.md](../CLAUDE.md).
 Mettre ce fichier à jour à chaque étape poussée.
 
-Dernière mise à jour : 2026-11-02, après `8e38bf6`.
+Dernière mise à jour : 2026-11-02, après `40a6c7e`.
 
 ## État
 
@@ -88,6 +88,7 @@ Dernière mise à jour : 2026-11-02, après `8e38bf6`.
 | `a357bad` | Champ De en bouton (avatar, nom, adresse) ouvrant « Envoyer depuis » + « Gérer les comptes… » ; crayon (#347) retiré, un From hors identités venu du préremplissage (+tag, brouillon) est gardé et affiché ; `MenuEntry::subtitle`, classe `.secondary-text` (70 %) |
 | `d90278f` | Navigateur de pièces jointes supprimé : page galerie, ligne de la barre latérale, réglage, état enregistré, requêtes du cache, scan BODYSTRUCTURE. Gardés : `AppMsg::OpenMessageAt` (liens `tegami:`), aides « Suppression… » du tiroir, table `attachment_meta` |
 | `8e38bf6` | Vue Contacts supprimée : page, ligne et arbre de la barre latérale, pied de barre, raccourci g c, réglages d'emplacement et de recherche, code d'édition des contacts. Gardés : carnets et Réglages → Contacts (import/export/tout supprimer), « Ajouter aux contacts », suggestions et groupes du composeur, noms et photos |
+| `40a6c7e` | Section Filtres de la barre latérale supprimée (ligne unifiée, vue fusionnée, réglage d'emplacement, repli du rail). Gardés : règles de filtre, marque sur le dossier où une règle range, « Appliquer les filtres » |
 | `bb5953c` | Vue Lecteur supprimée : interrupteur de l'en-tête, réglages (Lecture), partie « Vue Lecteur » du mode Focus, bascule de la fenêtre de message, clés `reader_mode` / `reader_switch` / `reader_default`. La feuille `crate::mail::reader` reste : elle affiche les traductions de messages en texte brut. Paramètre `reader` de `conversation_document` retiré ; instantané `three_cards.html` régénéré |
 
 ## Décisions prises
@@ -185,8 +186,14 @@ ne peuvent plus être modifiés ni supprimés un par un dans l'application
 (seulement importés, exportés, tous supprimés) ; ceux des carnets GNOME ou
 en ligne se modifient dans GNOME Contacts.
 
-Restant du point 3, dans l'ordre : retrait de la section Filtres et des
-vues unifiées de la barre latérale (Pièces jointes et Contacts faits), menu
+Restant du point 3, dans l'ordre : retrait des vues unifiées de la barre
+latérale (section du haut : Boîtes de réception, Favoris/Starred, Envoyés,
+Brouillons, Archives, Indésirables, Corbeille, Reportés, de tous les
+comptes, avec `UnifiedView::Kind`, `show_unified`, `unified_kinds`,
+`unified_chips`, « garder un compte hors de Toutes les boîtes ») ; garder
+les lignes Favoris (#367, dossiers favoris), Étiquettes et Dossiers
+intelligents qui utilisent la même mécanique (`UnifiedRow`), et
+l'Outbox. Puis menu
 ⋯ du lecteur, menu d'un dossier, avatars des destinataires, menu ⋯ d'une
 carte.
 
