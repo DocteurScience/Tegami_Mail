@@ -9,13 +9,11 @@ use super::{ConfigFile, ListColumn, PrivacyFile, StateFile};
 #[test]
 fn unified_placements_move_out() {
     use super::{LegacySwitches, SectionPlacement::*};
-    let text = "filtered_placement = \"all_inboxes\"\nunified_filtered = true\n\
-                tags_placement = \"all_inboxes\"\nunified_tags = false\n\
+    let text = "tags_placement = \"all_inboxes\"\nunified_tags = false\n\
                 favorites_placement = \"below_accounts\"\n";
     let mut file: PrivacyFile = toml::from_str(text).unwrap();
     let old: LegacySwitches = toml::from_str(text).unwrap();
     assert!(old.place(&mut file));
-    assert_eq!(file.filtered_placement, AboveAccounts);
     assert_eq!(file.tags_placement, Off);
     assert_eq!(file.favorites_placement, BelowAccounts);
     assert!(!old.place(&mut file));

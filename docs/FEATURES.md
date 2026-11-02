@@ -63,9 +63,8 @@ The full list. The [README](../README.md) carries a shorter one.
 - **Smart folders:** saved searches across accounts and folders, on
   starred, unread, attachments, tags and the filter conditions, with unread
   counts. See [Smart folders](DOCUMENTATION.md#smart-folders).
-- **Unified and filtered folders:** Inboxes, Starred, Sent, Drafts, Archive,
-  Junk, Trash and Snoozed across accounts, plus a folder per filter and any folders
-  you keep in Favorites.
+- **Unified folders:** Inboxes, Starred, Sent, Drafts, Archive, Junk, Trash
+  and Snoozed across accounts, and any folders you keep in Favorites.
 - **Empty Trash and Junk**, by hand or automatically after a number of days,
   and move old newsletter and mailing-list mail out of the Inbox the same way.
 - **Delete an attachment from the server:** take a large file out of a

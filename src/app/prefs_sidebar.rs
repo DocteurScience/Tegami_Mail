@@ -95,12 +95,6 @@ impl AppModel {
                 }
             }
 
-            PrefOutput::SetFilteredPlacement(p) => {
-                if pref!(self.filtered_placement = p) {
-                    self.rebuild_sidebar();
-                }
-            }
-
             PrefOutput::SetTagsPlacement(p) => {
                 if pref!(self.tags_placement = p) {
                     self.rebuild_sidebar();

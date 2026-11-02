@@ -739,9 +739,6 @@ msgstr "Trier"
 msgid "Tag: {name}"
 msgstr "Étiquette : {name}"
 
-msgid "Filters"
-msgstr "Filtres"
-
 msgid "Favorites"
 msgstr "Favoris"
 
@@ -5127,6 +5124,9 @@ msgstr "Après deux secondes"
 msgid "{percent}%"
 msgstr "{percent} %"
 
+msgid "Filters"
+msgstr "Filtres"
+
 msgid "Senders"
 msgstr "Expéditeurs"
 
@@ -5551,9 +5551,6 @@ msgstr "Sections"
 
 msgid "Section style"
 msgstr "Style des sections"
-
-msgid "Filters placement"
-msgstr "Emplacement des filtres"
 
 msgid "Tags placement"
 msgstr "Emplacement des tags"
@@ -7584,6 +7581,9 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Filters placement"
+#~ msgstr "Emplacement des filtres"
 
 #~ msgid "Tegami Mail cannot change this kind of group"
 #~ msgstr "Tegami Mail ne peut pas modifier ce type de groupe"

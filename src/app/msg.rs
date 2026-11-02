@@ -173,7 +173,6 @@ pub(crate) enum AppMsg {
     /// opened or folded — record it with the layout.
     SidebarSectionsOpen {
         all_inboxes: bool,
-        filtered: bool,
         tags: bool,
         starred: bool,
         sent: bool,

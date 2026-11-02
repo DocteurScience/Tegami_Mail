@@ -785,9 +785,6 @@ msgstr "Sortuj"
 msgid "Tag: {name}"
 msgstr "Dodaj etykietę {name}"
 
-msgid "Filters"
-msgstr "Filtry"
-
 msgid "Favorites"
 msgstr ""
 
@@ -5398,6 +5395,9 @@ msgstr "Po dwóch sekundach"
 msgid "{percent}%"
 msgstr "{percent}%"
 
+msgid "Filters"
+msgstr "Filtry"
+
 msgid "Senders"
 msgstr "Nadawcy"
 
@@ -5826,9 +5826,6 @@ msgstr "Działania"
 #, fuzzy
 msgid "Section style"
 msgstr "Działania"
-
-msgid "Filters placement"
-msgstr "Położenie filtrów"
 
 msgid "Tags placement"
 msgstr "Położenie etykiet"
@@ -7910,6 +7907,9 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Filters placement"
+#~ msgstr "Położenie filtrów"
 
 #, fuzzy
 #~ msgid "Contacts placement"

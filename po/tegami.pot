@@ -681,9 +681,6 @@ msgstr ""
 msgid "Tag: {name}"
 msgstr ""
 
-msgid "Filters"
-msgstr ""
-
 msgid "Favorites"
 msgstr ""
 
@@ -4697,6 +4694,9 @@ msgstr ""
 msgid "{percent}%"
 msgstr ""
 
+msgid "Filters"
+msgstr ""
+
 msgid "Senders"
 msgstr ""
 
@@ -5092,9 +5092,6 @@ msgid "Sections"
 msgstr ""
 
 msgid "Section style"
-msgstr ""
-
-msgid "Filters placement"
 msgstr ""
 
 msgid "Tags placement"

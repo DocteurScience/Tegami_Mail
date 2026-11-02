@@ -36,7 +36,6 @@ pub(in crate::ui::preferences) struct SidebarPage {
     pub(in crate::ui::preferences) unified_chip_trash_row: adw::SwitchRow,
     pub(in crate::ui::preferences) unified_chip_snoozed_row: adw::SwitchRow,
     pub(in crate::ui::preferences) section_style_row: adw::ComboRow,
-    pub(in crate::ui::preferences) filtered_placement_row: adw::ComboRow,
     pub(in crate::ui::preferences) tags_placement_row: adw::ComboRow,
     pub(in crate::ui::preferences) favorites_placement_row: adw::ComboRow,
     pub(in crate::ui::preferences) rail_dots_row: adw::SwitchRow,
@@ -50,7 +49,6 @@ pub(in crate::ui::preferences) struct SidebarPage {
     pub(in crate::ui::preferences) rail_fold_junk_row: adw::SwitchRow,
     pub(in crate::ui::preferences) rail_fold_trash_row: adw::SwitchRow,
     pub(in crate::ui::preferences) rail_fold_snoozed_row: adw::SwitchRow,
-    pub(in crate::ui::preferences) rail_fold_filtered_row: adw::SwitchRow,
     pub(in crate::ui::preferences) rail_fold_tags_row: adw::SwitchRow,
 }
 
@@ -282,14 +280,6 @@ impl SidebarPage {
                         },
                     },
 
-                    #[name = "filtered_placement_row"]
-                    adw::ComboRow {
-                        set_title: &i18n("Filters placement"),
-                        connect_selected_notify[sender] => move |row| {
-                            sender.input(PrefInput::ChangeFilteredPlacement(row.selected()));
-                        },
-                    },
-
                     #[name = "tags_placement_row"]
                     adw::ComboRow {
                         set_title: &i18n("Tags placement"),
@@ -393,13 +383,6 @@ impl SidebarPage {
                                 sender.input(PrefInput::ToggleRailFoldSnoozed(row.is_active()));
                             },
                         },
-                        #[name = "rail_fold_filtered_row"]
-                        add_row = &adw::SwitchRow {
-                            set_title: &i18n("Filters"),
-                            connect_active_notify[sender] => move |row| {
-                                sender.input(PrefInput::ToggleRailFoldFiltered(row.is_active()));
-                            },
-                        },
                         #[name = "rail_fold_tags_row"]
                         add_row = &adw::SwitchRow {
                             set_title: &i18n("Tags"),
@@ -439,7 +422,6 @@ impl SidebarPage {
             unified_chip_trash_row,
             unified_chip_snoozed_row,
             section_style_row,
-            filtered_placement_row,
             tags_placement_row,
             favorites_placement_row,
             rail_dots_row,
@@ -453,7 +435,6 @@ impl SidebarPage {
             rail_fold_junk_row,
             rail_fold_trash_row,
             rail_fold_snoozed_row,
-            rail_fold_filtered_row,
             rail_fold_tags_row,
         }
     }

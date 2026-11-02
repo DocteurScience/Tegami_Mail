@@ -337,7 +337,6 @@ pub(crate) struct AppModel {
     /// The sections' open state, as the sidebar last reported it,
     /// persisted with the rest of the sidebar layout.
     pub(super) unified_expanded: bool,
-    pub(super) filtered_expanded: bool,
     pub(super) tags_expanded: bool,
     pub(super) starred_expanded: bool,
     pub(super) sent_expanded: bool,
@@ -351,8 +350,7 @@ pub(crate) struct AppModel {
     pub(super) favorites: Vec<String>,
     pub(super) favorites_expanded: bool,
     pub(super) smart_expanded: bool,
-    /// Account emails whose own Filtered Folders / Tags sections are open.
-    pub(super) filtered_expanded_accounts: Vec<String>,
+    /// Account emails whose own Tags sections are open.
     pub(super) tags_expanded_accounts: Vec<String>,
     /// Preference: the icon rail marks unread mail with a dot, not a count.
     pub(super) rail_dots: bool,
@@ -569,7 +567,6 @@ pub(crate) struct AppModel {
     /// Where the Filters, Tags, Favorites and Contacts sections sit
     /// (Settings → Sidebar), and how they are drawn.
     pub(super) section_style: config::SectionStyle,
-    pub(super) filtered_placement: config::SectionPlacement,
     pub(super) tags_placement: config::SectionPlacement,
     pub(super) favorites_placement: config::SectionPlacement,
     /// The unified section's Starred / Sent / Drafts rows (Settings →

@@ -86,7 +86,7 @@ impl Sidebar {
         }
     }
 
-    /// Whether a unified row's list is open. All Inboxes, Filtered Folders
+    /// Whether a unified row's list is open. All Inboxes
     /// and Tags keep their own state (persisted, folded by the rail); the
     /// Starred / Sent / Drafts rows live in `kind_expanded`.
     fn row_open(&self, row: UnifiedRow) -> bool {
@@ -94,7 +94,6 @@ impl Sidebar {
             UnifiedRow::Kind(FolderKind::Inbox) => self.unified_expanded,
             UnifiedRow::Kind(kind) => self.kind_open(kind),
             UnifiedRow::Favorites => self.favorites_expanded,
-            UnifiedRow::Filtered => self.unified_folders_expanded,
             UnifiedRow::Tags => self.tags_expanded,
             UnifiedRow::Smart => self.smart_expanded,
         }
@@ -110,7 +109,6 @@ impl Sidebar {
                 && match row {
                     UnifiedRow::Kind(kind) => self.rail_fold.folds_kind(kind),
                     UnifiedRow::Favorites | UnifiedRow::Smart => false,
-                    UnifiedRow::Filtered => self.rail_fold.folds_filtered(),
                     UnifiedRow::Tags => self.rail_fold.folds_tags(),
                 }
     }
@@ -158,7 +156,6 @@ impl Sidebar {
                 self.kind_expanded.insert(kind, open);
             }
             UnifiedRow::Favorites => self.favorites_expanded = open,
-            UnifiedRow::Filtered => self.unified_folders_expanded = open,
             UnifiedRow::Tags => self.tags_expanded = open,
             UnifiedRow::Smart => self.smart_expanded = open,
         }
@@ -193,7 +190,6 @@ impl Sidebar {
                 .filter(|r| r.folder.kind != FolderKind::Sent)
                 .map(|r| r.folder.unread)
                 .sum(),
-            UnifiedRow::Filtered => self.filtered_unread(Slot::Unified),
             UnifiedRow::Tags => 0,
             UnifiedRow::Smart => self.smart_unread.values().sum(),
         }
@@ -235,15 +231,12 @@ impl Sidebar {
         }
     }
 
-    /// Whether `row` is drawn in the tree style: Favorites, Filters and
-    /// Tags with it chosen, out of the icon rail.
+    /// Whether `row` is drawn in the tree style: Favorites and Tags
+    /// with it chosen, out of the icon rail.
     pub(super) fn as_heading(&self, row: UnifiedRow) -> bool {
         self.section_style == crate::config::SectionStyle::Tree
             && !self.collapsed
-            && matches!(
-                row,
-                UnifiedRow::Favorites | UnifiedRow::Filtered | UnifiedRow::Tags
-            )
+            && matches!(row, UnifiedRow::Favorites | UnifiedRow::Tags)
     }
 
     /// Whether a unified row's total-unread chip is switched on (Settings →
@@ -251,7 +244,7 @@ impl Sidebar {
     pub(super) fn chip_shown(&self, row: UnifiedRow) -> bool {
         match row {
             UnifiedRow::Kind(kind) => self.unified_chips.has(kind),
-            UnifiedRow::Favorites | UnifiedRow::Filtered | UnifiedRow::Smart => true,
+            UnifiedRow::Favorites | UnifiedRow::Smart => true,
             UnifiedRow::Tags => false,
         }
     }
@@ -261,15 +254,12 @@ impl Sidebar {
         !self.tags.is_empty() && self.tags_placement.shown()
     }
 
-    /// The Favorites, Filters and Tags rows placed `at`, above or
+    /// The Favorites and Tags rows placed `at`, above or
     /// below the accounts.
     pub(super) fn placed_rows(&self, at: crate::config::SectionPlacement) -> Vec<UnifiedRow> {
         let mut rows = Vec::new();
         if self.favorites_shown() && self.favorites_placement == at {
             rows.push(UnifiedRow::Favorites);
-        }
-        if !self.unified_folders.is_empty() && self.filtered_placement == at {
-            rows.push(UnifiedRow::Filtered);
         }
         if self.unified_tags_shown() && self.tags_placement == at {
             rows.push(UnifiedRow::Tags);
@@ -317,14 +307,6 @@ impl Sidebar {
             .collect()
     }
 
-    /// Every favorite as (account, path), for a menu built later.
-    pub(super) fn favorite_keys(&self) -> Vec<(u32, String)> {
-        self.favorite_folders
-            .iter()
-            .map(|r| (r.account_id, r.folder.path.clone()))
-            .collect()
-    }
-
     /// Whether a unified Starred / Sent / Drafts row's account list is open.
     fn kind_open(&self, kind: FolderKind) -> bool {
         self.kind_expanded.get(&kind).copied().unwrap_or(false)
@@ -345,19 +327,10 @@ impl Sidebar {
             .sum()
     }
 
-    /// A Filtered Folders section's unread total, from its rows.
-    fn filtered_unread(&self, slot: Slot) -> u32 {
-        self.filtered_rows
-            .get(&slot)
-            .map(|rows| rows.iter().map(|r| r.folder.unread).sum())
-            .unwrap_or(0)
-    }
-
     /// Tell the app how the three sections stand, for the saved layout.
     fn report_sections(&self, sender: &ComponentSender<Self>) {
         let _ = sender.output(SidebarOutput::SectionsOpen {
             all_inboxes: self.unified_expanded,
-            filtered: self.unified_folders_expanded,
             tags: self.tags_expanded,
             starred: self.kind_open(FolderKind::Starred),
             sent: self.kind_open(FolderKind::Sent),
@@ -398,12 +371,6 @@ impl Sidebar {
                 header.unselect_all();
                 quiet.set(false);
             });
-        }
-    }
-
-    pub(super) fn on_toggle_filtered_expand(&mut self, slot: Slot, sender: ComponentSender<Self>) {
-        if slot == Slot::Unified {
-            self.toggle_row(UnifiedRow::Filtered, &sender);
         }
     }
 

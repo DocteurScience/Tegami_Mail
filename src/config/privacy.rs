@@ -513,10 +513,6 @@ pub(crate) struct PrivacyFile {
     /// How Filters, Tags, Favorites and Contacts are drawn wherever they sit.
     #[serde(default)]
     pub(crate) section_style: SectionStyle,
-    /// Where the Filters section sits (#71 follow-up): above or below the
-    /// accounts, or nowhere.
-    #[serde(default)]
-    pub(crate) filtered_placement: SectionPlacement,
     /// Where the Tags section sits, the same choices.
     #[serde(default)]
     pub(crate) tags_placement: SectionPlacement,
@@ -638,7 +634,6 @@ impl Default for PrivacyFile {
             unified_kinds: UnifiedKinds::default(),
             show_accounts: true,
             section_style: SectionStyle::default(),
-            filtered_placement: SectionPlacement::AboveAccounts,
             tags_placement: SectionPlacement::AboveAccounts,
             favorites_placement: SectionPlacement::AboveAccounts,
             chevrons_left: default_chevrons_left(),
@@ -794,8 +789,6 @@ pub(crate) fn load_privacy() -> PrivacyFile {
 #[derive(serde::Deserialize)]
 pub(super) struct LegacySwitches {
     #[serde(default = "default_on")]
-    unified_filtered: bool,
-    #[serde(default = "default_on")]
     unified_tags: bool,
     #[serde(default = "default_on")]
     unified_favorites: bool,
@@ -806,7 +799,6 @@ impl LegacySwitches {
     pub(super) fn place(&self, file: &mut PrivacyFile) -> bool {
         let mut moved = false;
         for (at, on) in [
-            (&mut file.filtered_placement, self.unified_filtered),
             (&mut file.tags_placement, self.unified_tags),
             (&mut file.favorites_placement, self.unified_favorites),
         ] {

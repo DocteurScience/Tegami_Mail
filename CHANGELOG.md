@@ -19,6 +19,12 @@
   **Spelling Language** list, which were only in Settings and the body's
   right-click menu.
 
+- **Removed: the sidebar's Filters section,** which gathered the folders
+  filter rules file into, with **Settings → Sidebar → Filters placement**
+  and its icon-rail fold switch. The rules themselves are unchanged
+  (**Settings → Filters**), and a folder a rule files into is still marked
+  under its account.
+
 - **Removed: the Contacts view.** The sidebar's **Contacts** row (in the
   footer or as a section, with its books and groups), the page that listed,
   edited, grouped, moved and deleted contacts, the **g c** key, and the

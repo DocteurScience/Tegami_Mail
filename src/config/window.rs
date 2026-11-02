@@ -36,8 +36,6 @@ pub(crate) struct SidebarState {
     #[serde(default = "default_on")]
     pub(crate) unified_expanded: bool,
     #[serde(default = "default_on")]
-    pub(crate) filtered_expanded: bool,
-    #[serde(default = "default_on")]
     pub(crate) tags_expanded: bool,
     /// The unified Starred / Sent / Drafts rows' account lists; closed
     /// until opened.
@@ -64,10 +62,6 @@ pub(crate) struct SidebarState {
     /// Whether the Smart Folders list (#417) is open.
     #[serde(default = "default_on")]
     pub(crate) smart_expanded: bool,
-    /// Account emails whose own Filtered Folders / Tags sections are open
-    /// (closed by default, like their custom folders).
-    #[serde(default)]
-    pub(crate) filtered_expanded_accounts: Vec<String>,
     #[serde(default)]
     pub(crate) tags_expanded_accounts: Vec<String>,
 }

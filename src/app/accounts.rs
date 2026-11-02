@@ -443,7 +443,6 @@ impl AppModel {
                         self.account_order.retain(|e| e != email);
                         self.collapsed.retain(|e| e != email);
                         self.folders_expanded.retain(|e| e != email);
-                        self.filtered_expanded_accounts.retain(|e| e != email);
                         self.tags_expanded_accounts.retain(|e| e != email);
                     }
                     self.save_sidebar_state();

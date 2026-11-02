@@ -643,9 +643,6 @@ impl Component for Preferences {
                 self.show_accounts = on;
             }
             PrefInput::ChangeSectionStyle(idx) => self.on_change_section_style(idx, sender),
-            PrefInput::ChangeFilteredPlacement(idx) => {
-                let _ = sender.output(PrefOutput::SetFilteredPlacement(placement_from_index(idx)));
-            }
             PrefInput::ChangeTagsPlacement(idx) => {
                 let _ = sender.output(PrefOutput::SetTagsPlacement(placement_from_index(idx)));
             }
@@ -691,9 +688,6 @@ impl Component for Preferences {
             PrefInput::ToggleRailFoldTrash(on) => self.set_rail_fold(|s| &mut s.trash, on, sender),
             PrefInput::ToggleRailFoldSnoozed(on) => {
                 self.set_rail_fold(|s| &mut s.snoozed, on, sender)
-            }
-            PrefInput::ToggleRailFoldFiltered(on) => {
-                self.set_rail_fold(|s| &mut s.filtered, on, sender)
             }
             PrefInput::ToggleRailFoldTags(on) => self.set_rail_fold(|s| &mut s.tags, on, sender),
             PrefInput::ChangeReadMark(idx) => self.on_change_read_mark(idx, sender),

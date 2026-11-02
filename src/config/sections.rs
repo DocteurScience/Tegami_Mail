@@ -268,9 +268,6 @@ pub(crate) struct RailFold {
     pub(crate) trash: bool,
     #[serde(default = "default_on")]
     pub(crate) snoozed: bool,
-    /// The Filtered Folders section.
-    #[serde(default = "default_on")]
-    pub(crate) filtered: bool,
     /// The Tags section.
     #[serde(default = "default_on")]
     pub(crate) tags: bool,
@@ -289,7 +286,6 @@ impl Default for RailFold {
             junk: true,
             trash: true,
             snoozed: true,
-            filtered: true,
             tags: true,
         }
     }
@@ -317,10 +313,6 @@ impl RailFold {
                 Snoozed => self.snoozed,
                 _ => false,
             }
-    }
-
-    pub(crate) fn folds_filtered(self) -> bool {
-        self.enabled && self.filtered
     }
 
     pub(crate) fn folds_tags(self) -> bool {

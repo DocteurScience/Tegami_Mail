@@ -152,10 +152,6 @@ pub(crate) struct Sidebar {
     unified_inboxes: Vec<InboxRef>,
     /// Unread badges for the sub-list rows, by (account_id, inbox folder_id).
     unified_inbox_badges: HashMap<(u32, u32), gtk::Label>,
-    /// The filtered folders listed in the unified section, in row order.
-    unified_folders: Vec<UnifiedFolderRef>,
-    /// Whether the unified "Filtered Folders" section is open.
-    unified_folders_expanded: bool,
     /// The favorite folders (#367), in the order they were added.
     favorite_folders: Vec<UnifiedFolderRef>,
     favorites_expanded: bool,
@@ -165,10 +161,6 @@ pub(crate) struct Sidebar {
     smart_expanded: bool,
     smart_unread: HashMap<String, u32>,
     smart_badges: HashMap<String, gtk::Label>,
-    /// The rows of every Filtered Folders section (the unified one and each
-    /// account's own), in row order, with the sections' widgets and badges.
-    filtered_rows: HashMap<Slot, Vec<UnifiedFolderRef>>,
-    filtered_badges: HashMap<Slot, HashMap<(u32, u32), gtk::Label>>,
     /// Inbox unread badge overlaid on each account's avatar circle, shown only
     /// while that account's section is collapsed (its Inbox row — and normal
     /// chip — is then hidden inside the revealer). Keyed by account_id.
@@ -193,11 +185,10 @@ pub(crate) struct Sidebar {
     kind_widgets: HashMap<UnifiedRow, KindWidgets>,
     /// Whether the account sections are shown at all.
     show_accounts: bool,
-    /// Where the Filters, Tags and Favorites sections sit
+    /// Where the Tags and Favorites sections sit
     /// (Settings → Sidebar), and whether they are drawn as unified rows or
     /// as a tree.
     section_style: crate::config::SectionStyle,
-    filtered_placement: crate::config::SectionPlacement,
     tags_placement: crate::config::SectionPlacement,
     favorites_placement: crate::config::SectionPlacement,
     /// Focus Mode: the account sections are hidden.
@@ -331,16 +322,12 @@ impl Component for Sidebar {
             unified_inbox_list: None,
             unified_inboxes: Vec::new(),
             unified_inbox_badges: HashMap::new(),
-            unified_folders: Vec::new(),
-            unified_folders_expanded: init.filtered_expanded,
             favorite_folders: Vec::new(),
             favorites_expanded: init.favorites_expanded,
             smart_folders: Vec::new(),
             smart_expanded: init.smart_expanded,
             smart_unread: HashMap::new(),
             smart_badges: HashMap::new(),
-            filtered_rows: HashMap::new(),
-            filtered_badges: HashMap::new(),
             account_circle_badges: HashMap::new(),
             tags: Vec::new(),
             tags_expanded: init.tags_expanded,
@@ -360,7 +347,6 @@ impl Component for Sidebar {
             rail_open_accounts: HashMap::new(),
             show_accounts: true,
             section_style: crate::config::SectionStyle::default(),
-            filtered_placement: crate::config::SectionPlacement::AboveAccounts,
             tags_placement: crate::config::SectionPlacement::AboveAccounts,
             favorites_placement: crate::config::SectionPlacement::AboveAccounts,
             focus_hide_accounts: false,
@@ -424,9 +410,6 @@ impl Sidebar {
             SidebarInput::ToggleUnifiedExpand => {
                 self.toggle_row(UnifiedRow::Kind(FolderKind::Inbox), &sender)
             }
-            SidebarInput::FilteredRowSelected { slot, index } => {
-                self.on_filtered_row_selected(slot, index, sender)
-            }
             SidebarInput::TagRowSelected { slot, index } => {
                 self.on_tag_row_selected(slot, index, sender)
             }
@@ -441,14 +424,10 @@ impl Sidebar {
             SidebarInput::FavoriteRowSelected(index) => {
                 self.on_favorite_row_selected(index, sender)
             }
-            SidebarInput::ToggleFilteredExpand(slot) => {
-                self.on_toggle_filtered_expand(slot, sender)
-            }
             SidebarInput::UnifiedKindRowSelected(kind) => {
                 self.on_unified_kind_row_selected(kind, sender)
             }
             SidebarInput::UnifiedFavoritesSelected => self.on_unified_favorites_selected(sender),
-            SidebarInput::UnifiedFilteredSelected => self.on_unified_filtered_selected(sender),
             SidebarInput::UnifiedTagsSelected => self.on_unified_tags_selected(sender),
             SidebarInput::KindSubRowSelected { kind, index } => {
                 self.on_kind_sub_row_selected(kind, index, sender)

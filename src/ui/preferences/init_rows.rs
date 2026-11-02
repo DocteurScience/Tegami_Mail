@@ -25,7 +25,6 @@ impl Preferences {
             &widgets.system.renderer_row,
             &widgets.sidebar.chevron_side_row,
             &widgets.sidebar.section_style_row,
-            &widgets.sidebar.filtered_placement_row,
             &widgets.sidebar.tags_placement_row,
             &widgets.sidebar.favorites_placement_row,
             &widgets.sidebar.start_view_row,
@@ -263,10 +262,6 @@ impl Preferences {
             .section_style_row
             .set_selected(section_style_index(init.section_style));
         for (row, placement) in [
-            (
-                &widgets.sidebar.filtered_placement_row,
-                init.filtered_placement,
-            ),
             (&widgets.sidebar.tags_placement_row, init.tags_placement),
             (
                 &widgets.sidebar.favorites_placement_row,
@@ -391,10 +386,6 @@ impl Preferences {
             .sidebar
             .rail_fold_snoozed_row
             .set_active(init.rail_fold.snoozed);
-        widgets
-            .sidebar
-            .rail_fold_filtered_row
-            .set_active(init.rail_fold.filtered);
         widgets
             .sidebar
             .rail_fold_tags_row

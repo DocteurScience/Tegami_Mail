@@ -43,37 +43,6 @@ impl Sidebar {
         }
     }
 
-    pub(super) fn on_filtered_row_selected(
-        &mut self,
-        slot: Slot,
-        index: i32,
-        sender: ComponentSender<Self>,
-    ) {
-        let Some(r) = self
-            .filtered_rows
-            .get(&slot)
-            .and_then(|rows| rows.get(index as usize))
-            .cloned()
-        else {
-            return;
-        };
-        let key = match slot {
-            Slot::Unified => Sel::UnifiedFolder(r.account_id, r.folder.path.clone()),
-            Slot::Account(_) => Sel::AccountFiltered(r.account_id, r.folder.path.clone()),
-        };
-        if self.selected == key {
-            return;
-        }
-        self.selected = key.clone();
-        self.clear_other_selections(key);
-        let _ = sender.output(SidebarOutput::FolderSelected {
-            account_id: r.account_id,
-            folder_id: r.folder.id,
-            name: r.folder.name,
-            path: r.folder.path,
-        });
-    }
-
     pub(super) fn on_tag_row_selected(
         &mut self,
         slot: Slot,
@@ -147,15 +116,6 @@ impl Sidebar {
         self.selected = Sel::UnifiedFavorites;
         self.clear_other_selections(Sel::UnifiedFavorites);
         let _ = sender.output(SidebarOutput::UnifiedFavoritesSelected);
-    }
-
-    pub(super) fn on_unified_filtered_selected(&mut self, sender: ComponentSender<Self>) {
-        if self.selected == Sel::UnifiedFiltered {
-            return;
-        }
-        self.selected = Sel::UnifiedFiltered;
-        self.clear_other_selections(Sel::UnifiedFiltered);
-        let _ = sender.output(SidebarOutput::UnifiedFilteredSelected);
     }
 
     pub(super) fn on_unified_tags_selected(&mut self, sender: ComponentSender<Self>) {

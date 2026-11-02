@@ -135,9 +135,6 @@ fn load_accounts(sidebar_state: &mut config::SidebarState) -> Vec<AccountConfig>
             .folders_expanded
             .retain(|e| !goa_removed.contains(e));
         sidebar_state
-            .filtered_expanded_accounts
-            .retain(|e| !goa_removed.contains(e));
-        sidebar_state
             .tags_expanded_accounts
             .retain(|e| !goa_removed.contains(e));
         config::save_sidebar_state(sidebar_state);
@@ -176,7 +173,6 @@ pub(super) fn sidebar_init(
         collapsed,
         mirror,
         unified_expanded: state.unified_expanded,
-        filtered_expanded: state.filtered_expanded,
         tags_expanded: state.tags_expanded,
         starred_expanded: state.starred_expanded,
         sent_expanded: state.sent_expanded,

@@ -402,7 +402,6 @@ impl AppModel {
             | PrefOutput::SetUnifiedKinds(..)
             | PrefOutput::SetShowAccounts(..)
             | PrefOutput::SetSectionStyle(..)
-            | PrefOutput::SetFilteredPlacement(..)
             | PrefOutput::SetTagsPlacement(..)
             | PrefOutput::SetFavoritesPlacement(..)
             | PrefOutput::SetStartView(..)

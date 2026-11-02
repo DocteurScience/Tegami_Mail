@@ -83,7 +83,6 @@ impl AppModel {
         };
         self.snoozed_row.set(unified_kinds.snoozed);
         let unified_unread = self.unified_inboxes_unread();
-        let unified_folders = self.unified_folder_refs();
         let favorite_folders = self.favorite_folder_refs();
         self.sidebars_emit(SidebarInput::SetContents {
             sections,
@@ -96,11 +95,9 @@ impl AppModel {
             rail_dots: self.rail_dots_now(),
             rail_fold: self.rail_fold,
             unified_unread,
-            unified_folders,
             favorite_folders,
             tags: self.tags.clone(),
             section_style: self.section_style,
-            filtered_placement: self.filtered_placement,
             tags_placement: self.tags_placement,
             favorites_placement: self.favorites_placement,
             smart_folders: self

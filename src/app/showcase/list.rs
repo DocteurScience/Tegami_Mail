@@ -228,7 +228,6 @@ impl AppModel {
                 "junk" => SidebarInput::UnifiedKindRowSelected(FolderKind::Junk),
                 "trash" => SidebarInput::UnifiedKindRowSelected(FolderKind::Trash),
                 "snoozed" => SidebarInput::UnifiedKindRowSelected(FolderKind::Snoozed),
-                "filtered" => SidebarInput::UnifiedFilteredSelected,
                 "favorites" => SidebarInput::UnifiedFavoritesSelected,
                 "tags" => SidebarInput::UnifiedTagsSelected,
                 "smart" => SidebarInput::SmartRowSelected(0),
@@ -465,19 +464,6 @@ impl AppModel {
             let sb = self.sidebar.sender().clone();
             gtk::glib::timeout_add_seconds_local_once(5, move || {
                 let _ = sb.send(SidebarInput::ToggleKindExpand(kind));
-            });
-        }
-    }
-
-    /// TEGAMI_SHOWCASE_FOLD_FILTERED folds All Inboxes' Filtered
-    /// Folders section, to check its folded header.
-    pub(super) fn stage_fold_filtered(&self) {
-        if std::env::var("TEGAMI_SHOWCASE_FOLD_FILTERED").is_ok() {
-            let sb = self.sidebar.sender().clone();
-            gtk::glib::timeout_add_seconds_local_once(3, move || {
-                let _ = sb.send(SidebarInput::ToggleFilteredExpand(
-                    crate::ui::sidebar::Slot::Unified,
-                ));
             });
         }
     }

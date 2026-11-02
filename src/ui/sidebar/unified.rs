@@ -9,8 +9,8 @@ use super::types::{
     SectionWidgets, UnifiedRow,
 };
 use super::widgets::{
-    build_unified_inbox_row, filtered_folder_icon, heading_chevron, section_heading, style_badge,
-    tree_indent, with_unread_overlay, ROW_LEFT_INSET,
+    build_unified_inbox_row, heading_chevron, section_heading, style_badge, tree_indent,
+    with_unread_overlay, ROW_LEFT_INSET,
 };
 use super::*;
 
@@ -36,7 +36,7 @@ impl Sidebar {
         let toggle_tip = match row_kind {
             UnifiedRow::Kind(FolderKind::Inbox) => i18n("Show each inbox"),
             UnifiedRow::Kind(_) => i18n("Show each account"),
-            UnifiedRow::Favorites | UnifiedRow::Filtered => i18n("Show each folder"),
+            UnifiedRow::Favorites => i18n("Show each folder"),
             UnifiedRow::Tags => i18n("Show each tag"),
             UnifiedRow::Smart => i18n("Show each smart folder"),
         };
@@ -290,7 +290,6 @@ impl Sidebar {
             }
             UnifiedRow::Favorites => self.fill_favorites(&sub, &mut row_badges, sender),
             UnifiedRow::Smart => self.fill_smart(&sub, sender),
-            UnifiedRow::Filtered => self.fill_filtered(&sub, sections, &mut row_badges, sender),
             UnifiedRow::Tags => self.fill_tags(&sub, sender),
         }
 
@@ -676,10 +675,12 @@ impl Sidebar {
         click.set_button(gtk::gdk::BUTTON_SECONDARY);
         let cs = sender.clone();
         let sub_w = sub.clone();
+        // The folders a filter rule files into, for the menu's Apply
+        // Filters entry.
         let filtered: Vec<(u32, String)> = self
-            .unified_folders
+            .sections
             .iter()
-            .map(|r| (r.account_id, r.folder.path.clone()))
+            .flat_map(|s| s.filtered.iter().map(|f| (s.account.id, f.path.clone())))
             .collect();
         click.connect_pressed(move |_, _, x, y| {
             if let Some(r) = sub_w
@@ -750,79 +751,6 @@ impl Sidebar {
                     ),
                     (i18n_noop("New Smart Folder…"), CtxAction::NewSmartFolder),
                 ];
-                show_sidebar_menu(&sub_w, x, y, items, &cs);
-            }
-        });
-        sub.add_controller(click);
-    }
-
-    /// Every folder a filter rule files into.
-    fn fill_filtered(
-        &mut self,
-        sub: &gtk::ListBox,
-        sections: &[SectionData],
-        row_badges: &mut HashMap<(u32, u32), gtk::Label>,
-        sender: &ComponentSender<Self>,
-    ) {
-        let refs = self.unified_folders.clone();
-        for r in &refs {
-            let Some(section) = sections.iter().find(|s| s.account.id == r.account_id) else {
-                continue;
-            };
-            // The glyph in the account's color says whose folder
-            // this is; the tooltip names the account.
-            let icon = filtered_folder_icon(&r.folder, section.account.id);
-            pin_icon_size(&icon);
-            let tip = format!("{} \u{2014} {}", r.folder.name, section.account.label);
-            let (row, badge) = build_unified_sub_row(
-                &tree_indent(&icon, self.collapsed),
-                &r.folder.name,
-                &tip,
-                r.folder.unread,
-                self.collapsed,
-                self.chevrons_left,
-                false,
-            );
-            // Filtered folders take drops like any folder of their account.
-            row.add_controller(folder_drop_target(
-                r.account_id,
-                r.folder.path.clone(),
-                sender,
-            ));
-            sub.append(&row);
-            row_badges.insert((r.account_id, r.folder.id), badge);
-        }
-        self.filtered_badges
-            .insert(Slot::Unified, row_badges.clone());
-        let ss = sender.input_sender().clone();
-        let quiet = self.quiet.clone();
-        sub.connect_row_selected(move |_, row| {
-            if quiet.get() {
-                return;
-            }
-            if let Some(row) = row {
-                let _ = ss.send(SidebarInput::FilteredRowSelected {
-                    slot: Slot::Unified,
-                    index: row.index(),
-                });
-            }
-        });
-        // Right-click a filtered folder: act on that folder alone.
-        let click = gtk::GestureClick::new();
-        click.set_button(gtk::gdk::BUTTON_SECONDARY);
-        let cs = sender.clone();
-        let sub_w = sub.clone();
-        let favorites = self.favorite_keys();
-        click.connect_pressed(move |_, _, x, y| {
-            if let Some(r) = sub_w
-                .row_at_y(y as i32)
-                .and_then(|row| refs.get(row.index() as usize))
-            {
-                // The same menu the folder has under its account.
-                let favorite = favorites
-                    .iter()
-                    .any(|(a, p)| *a == r.account_id && *p == r.folder.path);
-                let items = folder_menu_items(r.account_id, &r.folder, true, true, favorite);
                 show_sidebar_menu(&sub_w, x, y, items, &cs);
             }
         });

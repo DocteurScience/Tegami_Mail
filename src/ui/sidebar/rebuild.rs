@@ -227,7 +227,6 @@ impl Sidebar {
         self.unified_inbox_list = None;
         self.unified_inboxes.clear();
         self.unified_inbox_badges.clear();
-        self.filtered_badges.clear();
         self.account_circle_badges.clear();
         self.tag_sections.clear();
         self.kind_widgets.clear();
@@ -493,7 +492,6 @@ impl Sidebar {
             .folder_badges
             .iter()
             .chain(&self.unified_inbox_badges)
-            .chain(self.filtered_badges.values().flatten())
             .chain(self.kind_widgets.values().flat_map(|w| &w.row_badges))
         {
             mark(label, seen(&mut std::iter::once(key)));

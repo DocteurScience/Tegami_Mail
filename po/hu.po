@@ -762,9 +762,6 @@ msgstr "Rendezés"
 msgid "Tag: {name}"
 msgstr "Címke hozzáadása: {name}"
 
-msgid "Filters"
-msgstr "Szűrők"
-
 msgid "Favorites"
 msgstr ""
 
@@ -5332,6 +5329,9 @@ msgstr "Két másodperc után"
 msgid "{percent}%"
 msgstr "{percent}%"
 
+msgid "Filters"
+msgstr "Szűrők"
+
 msgid "Senders"
 msgstr "Feladók"
 
@@ -5763,9 +5763,6 @@ msgstr "Műveletek"
 #, fuzzy
 msgid "Section style"
 msgstr "Műveletek"
-
-msgid "Filters placement"
-msgstr "A szűrők elhelyezése"
 
 msgid "Tags placement"
 msgstr "Címkék elhelyezése"
@@ -7852,6 +7849,9 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Filters placement"
+#~ msgstr "A szűrők elhelyezése"
 
 #, fuzzy
 #~ msgid "Contacts placement"

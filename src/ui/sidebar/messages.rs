@@ -20,17 +20,13 @@ pub(crate) enum SidebarInput {
         rail_dots: bool,
         rail_fold: crate::config::RailFold,
         unified_unread: u32,
-        /// Filter-rule folders to list inside All Inboxes (already
-        /// narrowed to the rules that opt in and the Settings switch).
-        unified_folders: Vec<UnifiedFolderRef>,
         /// The favorite folders (#367), from every account.
         favorite_folders: Vec<UnifiedFolderRef>,
         /// The tags (#71), for the Tags section.
         tags: Vec<crate::config::Tag>,
-        /// Where the Filters, Tags and Favorites sections are
+        /// Where the Tags and Favorites sections are
         /// drawn, and how they look.
         section_style: crate::config::SectionStyle,
-        filtered_placement: crate::config::SectionPlacement,
         tags_placement: crate::config::SectionPlacement,
         favorites_placement: crate::config::SectionPlacement,
         /// The smart folders (#417) as (id, name).
@@ -55,8 +51,6 @@ pub(crate) enum SidebarInput {
     ToggleTagsExpand(Slot),
     /// A unified Starred / Sent / Drafts row was chosen (the merged view).
     UnifiedKindRowSelected(FolderKind),
-    /// The unified Filtered Folders row was chosen (every rule's folder).
-    UnifiedFilteredSelected,
     /// The Favorites row was chosen (every favorite folder).
     UnifiedFavoritesSelected,
     /// The unified Tags row was chosen (every tagged message).
@@ -90,13 +84,6 @@ pub(crate) enum SidebarInput {
     UnifiedInboxRowSelected(i32),
     /// Toggle the "All Inboxes" per-account inbox sub-list.
     ToggleUnifiedExpand,
-    /// A row in a Filtered Folders section was chosen.
-    FilteredRowSelected {
-        slot: Slot,
-        index: i32,
-    },
-    /// Toggle a Filtered Folders section.
-    ToggleFilteredExpand(Slot),
     /// Open or fold the Favorites list (#367).
     ToggleFavoritesExpand,
     /// A folder picked in the Favorites list, by its index there.
@@ -174,7 +161,6 @@ pub(crate) enum SidebarOutput {
     /// fold-up) — for persistence.
     SectionsOpen {
         all_inboxes: bool,
-        filtered: bool,
         tags: bool,
         starred: bool,
         sent: bool,
@@ -192,8 +178,6 @@ pub(crate) enum SidebarOutput {
     /// An account's row under the unified Starred row, for an account with
     /// no Starred folder: its starred mail, wherever it is filed (#482).
     AccountStarredSelected(u32),
-    /// The unified Filtered Folders row: every rule's folder, merged.
-    UnifiedFilteredSelected,
     /// The Favorites row: every favorite folder, merged.
     UnifiedFavoritesSelected,
     /// The unified Tags row: every tagged message.

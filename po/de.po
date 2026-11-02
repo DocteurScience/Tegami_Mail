@@ -736,9 +736,6 @@ msgstr "Sortieren"
 msgid "Tag: {name}"
 msgstr "Tag {name} hinzufügen"
 
-msgid "Filters"
-msgstr "Filter"
-
 msgid "Favorites"
 msgstr "Favoriten"
 
@@ -5132,6 +5129,9 @@ msgstr "Nach zwei Sekunden"
 msgid "{percent}%"
 msgstr "{percent} %"
 
+msgid "Filters"
+msgstr "Filter"
+
 msgid "Senders"
 msgstr "Absender"
 
@@ -5576,9 +5576,6 @@ msgstr "Abschnitte"
 
 msgid "Section style"
 msgstr "Abschnittsstil"
-
-msgid "Filters placement"
-msgstr "Position der Filter"
 
 msgid "Tags placement"
 msgstr "Position der Tags"
@@ -7640,6 +7637,9 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Filters placement"
+#~ msgstr "Position der Filter"
 
 #~ msgid "Tegami Mail cannot change this kind of group"
 #~ msgstr "Kontaktlisten dieser Art können nicht geändert werden."

@@ -170,8 +170,7 @@ The chevrons open and close the items in the sidebar. Clicking a folder
 opens it and leaves its sub-folders as they were. Clicking the name of the
 Folders or Tags heading of an account does nothing; the chevron beside it
 opens or closes the section. Clicking Inboxes, Starred, Sent, Drafts,
-Archive, Junk or Trash in the unified section, or Favorites, Filters, Tags
-or Contacts, opens the combined list without showing each account's folder under it, and
+Archive, Junk or Trash in the unified section, or Favorites or Tags, opens the combined list without showing each account's folder under it, and
 double-clicking it opens or closes that list as its chevron does. An
 account's header works the same way: its chevron, or a double click on the
 header, opens or closes its folders, and a single click elsewhere on it
@@ -190,11 +189,11 @@ or **Empty Trash…**. The same item on the unified Junk or Trash row itself
 empties that folder in every account in the unified section at once, after
 a confirmation that lists them.
 
-**Settings → Sidebar → Sections** places Filters, Tags and Favorites
+**Settings → Sidebar → Sections** places Tags and Favorites
 **Above the accounts**, **Below the accounts** or **Off**, which leaves it
 out of the sidebar. Wherever they are, they are rows like the
 unified section's, with a chevron that opens their list. **Section style**
-set to **Tree style** draws all three as a tree instead: the caret that
+set to **Tree style** draws both as a tree instead: the caret that
 opens and closes the list stands where the icon was, and the row has no
 chevron at its end. Clicking the name opens the combined view either way.
 

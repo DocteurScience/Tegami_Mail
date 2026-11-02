@@ -653,7 +653,6 @@ impl AppModel {
         if self.unified {
             return match self.unified_view {
                 super::types::UnifiedView::Kind(kind) => crate::ui::sidebar::kind_label(kind),
-                super::types::UnifiedView::Filtered => i18n("Filters"),
                 super::types::UnifiedView::Favorites => i18n("Favorites"),
             };
         }

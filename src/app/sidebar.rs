@@ -71,7 +71,6 @@ impl AppModel {
             tree_collapsed: self.tree_collapsed.clone(),
             folder_order: self.folder_order.clone(),
             unified_expanded: self.unified_expanded,
-            filtered_expanded: self.filtered_expanded,
             tags_expanded: self.tags_expanded,
             starred_expanded: self.starred_expanded,
             sent_expanded: self.sent_expanded,
@@ -83,7 +82,6 @@ impl AppModel {
             favorites: self.favorites.clone(),
             favorites_expanded: self.favorites_expanded,
             smart_expanded: self.smart_expanded,
-            filtered_expanded_accounts: self.filtered_expanded_accounts.clone(),
             tags_expanded_accounts: self.tags_expanded_accounts.clone(),
         });
     }
@@ -336,7 +334,6 @@ impl AppModel {
     fn on_sidebar_sections_open(&mut self, msg: AppMsg) {
         let AppMsg::SidebarSectionsOpen {
             all_inboxes,
-            filtered,
             tags,
             starred,
             sent,
@@ -353,7 +350,6 @@ impl AppModel {
         };
         let now = [
             all_inboxes,
-            filtered,
             tags,
             starred,
             sent,
@@ -367,7 +363,6 @@ impl AppModel {
         ];
         let was = [
             self.unified_expanded,
-            self.filtered_expanded,
             self.tags_expanded,
             self.starred_expanded,
             self.sent_expanded,
@@ -381,7 +376,6 @@ impl AppModel {
         ];
         if now != was {
             self.unified_expanded = all_inboxes;
-            self.filtered_expanded = filtered;
             self.tags_expanded = tags;
             self.starred_expanded = starred;
             self.sent_expanded = sent;

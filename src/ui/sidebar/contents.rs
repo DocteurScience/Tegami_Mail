@@ -23,11 +23,9 @@ impl Sidebar {
             rail_dots,
             rail_fold,
             unified_unread,
-            unified_folders,
             favorite_folders,
             tags,
             section_style,
-            filtered_placement,
             tags_placement,
             favorites_placement,
             smart_folders,
@@ -65,39 +63,16 @@ impl Sidebar {
         // as they are once it expands (see `locked_row`).
         self.rail_fold = rail_fold;
         self.unified_unread = unified_unread;
-        self.unified_folders = unified_folders;
         self.favorite_folders = favorite_folders;
         self.tags = tags;
         self.section_style = section_style;
-        self.filtered_placement = filtered_placement;
         self.tags_placement = tags_placement;
         self.favorites_placement = favorites_placement;
         self.smart_folders = smart_folders;
         self.unified_kinds = unified_kinds;
         self.show_accounts = show_accounts;
-        self.fill_filtered_rows();
         self.settle_selection();
         self.rebuild(widgets, &sender);
-    }
-
-    /// Every Filtered Folders section's rows: the unified one's (narrowed
-    /// by the app to the rules that opted in) and each account's own
-    /// (every rule's destination).
-    fn fill_filtered_rows(&mut self) {
-        self.filtered_rows.clear();
-        self.filtered_rows
-            .insert(Slot::Unified, self.unified_folders.clone());
-        for s in &self.sections {
-            let rows = s
-                .filtered
-                .iter()
-                .map(|f| UnifiedFolderRef {
-                    account_id: s.account.id,
-                    folder: f.clone(),
-                })
-                .collect();
-            self.filtered_rows.insert(Slot::Account(s.account.id), rows);
-        }
     }
 
     /// The selection after new contents: a row that is gone falls back to
@@ -126,9 +101,6 @@ impl Sidebar {
             if !self.unified_kinds.has(*kind) {
                 self.selected = Sel::None;
             }
-        }
-        if self.selected == Sel::UnifiedFiltered && self.unified_folders.is_empty() {
-            self.selected = Sel::None;
         }
         if self.selected == Sel::UnifiedFavorites && !self.favorites_shown() {
             self.selected = Sel::None;
@@ -173,30 +145,6 @@ impl Sidebar {
                 .iter()
                 .any(|r| r.account_id == *acc && r.folder.path == *path)
             {
-                self.selected = Sel::Folder(*acc, path.clone());
-            }
-        }
-        // Likewise a folder that left an account's own Filtered
-        // Folders section (its rule was removed).
-        if let Sel::AccountFiltered(acc, path) = &self.selected {
-            let listed = self
-                .filtered_rows
-                .get(&Slot::Account(*acc))
-                .is_some_and(|rows| rows.iter().any(|r| r.folder.path == *path));
-            if !listed {
-                self.selected = Sel::Folder(*acc, path.clone());
-            }
-        }
-        // A selected filtered folder that just left the section (its
-        // rule opted out, or the section was switched off) is still
-        // the open folder: carry the highlight to the account
-        // section's own row for it.
-        if let Sel::UnifiedFolder(acc, path) = &self.selected {
-            let listed = self
-                .unified_folders
-                .iter()
-                .any(|r| r.account_id == *acc && r.folder.path == *path);
-            if !listed {
                 self.selected = Sel::Folder(*acc, path.clone());
             }
         }
@@ -273,17 +221,8 @@ impl Sidebar {
         // rebuild draws them right (the account folders are done
         // below).
         let fresh = |aid: u32, fid: u32, cur: u32| folders.get(&(aid, fid)).copied().unwrap_or(cur);
-        for r in self
-            .unified_folders
-            .iter_mut()
-            .chain(self.favorite_folders.iter_mut())
-        {
+        for r in self.favorite_folders.iter_mut() {
             r.folder.unread = fresh(r.account_id, r.folder.id, r.folder.unread);
-        }
-        for rows in self.filtered_rows.values_mut() {
-            for r in rows.iter_mut() {
-                r.folder.unread = fresh(r.account_id, r.folder.id, r.folder.unread);
-            }
         }
         for s in &mut self.sections {
             let aid = s.account.id;
@@ -295,7 +234,6 @@ impl Sidebar {
             .folder_badges
             .iter()
             .chain(&self.unified_inbox_badges)
-            .chain(self.filtered_badges.values().flatten())
             .chain(self.kind_widgets.values().flat_map(|w| &w.row_badges))
         {
             let n = folders.get(&(*aid, *fid)).copied().unwrap_or(0);

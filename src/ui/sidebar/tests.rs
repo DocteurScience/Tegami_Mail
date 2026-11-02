@@ -490,16 +490,6 @@ fn a_selection_knows_its_account_and_moves_to_a_renumbered_one() {
         ),
         (Sel::UnifiedInbox(3), Some(3), Sel::UnifiedInbox(9)),
         (
-            Sel::UnifiedFolder(3, "a".into()),
-            Some(3),
-            Sel::UnifiedFolder(9, "a".into()),
-        ),
-        (
-            Sel::AccountFiltered(3, "a".into()),
-            Some(3),
-            Sel::AccountFiltered(9, "a".into()),
-        ),
-        (
             Sel::Tag(Some(3), "t".into()),
             Some(3),
             Sel::Tag(Some(9), "t".into()),
@@ -537,7 +527,6 @@ fn unified_rows_have_titles_icons_and_messages() {
     let sent = UnifiedRow::Kind(FolderKind::Sent);
     assert_eq!(row_title(inbox), "Inboxes");
     assert_eq!(row_title(sent), "Sent");
-    assert_eq!(row_title(UnifiedRow::Filtered), "Filters");
     assert_eq!(row_title(UnifiedRow::Smart), "Smart Folders");
     assert_eq!(row_icon(inbox), "mail-inbox-symbolic");
     assert_eq!(row_icon(UnifiedRow::Favorites), "user-bookmarks-symbolic");
@@ -546,10 +535,6 @@ fn unified_rows_have_titles_icons_and_messages() {
     assert_eq!(dbg(select_msg(UnifiedRow::Smart)), "ToggleSmartExpand");
     assert_eq!(dbg(toggle_msg(inbox)), "ToggleUnifiedExpand");
     assert_eq!(dbg(toggle_msg(sent)), "ToggleKindExpand(Sent)");
-    assert_eq!(
-        dbg(toggle_msg(UnifiedRow::Filtered)),
-        "ToggleFilteredExpand(Unified)"
-    );
     assert_eq!(
         dbg(toggle_msg(UnifiedRow::Tags)),
         "ToggleTagsExpand(Unified)"

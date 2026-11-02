@@ -11,7 +11,6 @@ folder_order = [
     "a@x\tHome",
 ]
 unified_expanded = false
-filtered_expanded = false
 tags_expanded = false
 starred_expanded = true
 sent_expanded = true
@@ -23,5 +22,4 @@ snoozed_expanded = true
 favorites = ["a@x\tINBOX"]
 favorites_expanded = false
 smart_expanded = false
-filtered_expanded_accounts = ["a@x"]
 tags_expanded_accounts = ["b@x"]

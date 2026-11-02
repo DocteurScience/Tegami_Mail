@@ -747,9 +747,6 @@ msgstr "Ταξινόμηση"
 msgid "Tag: {name}"
 msgstr "Προσθήκη ετικέτας {name}"
 
-msgid "Filters"
-msgstr "Φίλτρα"
-
 msgid "Favorites"
 msgstr "Αγαπημένα"
 
@@ -5185,6 +5182,9 @@ msgstr "Μετά από δύο δευτερόλεπτα"
 msgid "{percent}%"
 msgstr "{percent}%"
 
+msgid "Filters"
+msgstr "Φίλτρα"
+
 msgid "Senders"
 msgstr "Αποστολείς"
 
@@ -5616,9 +5616,6 @@ msgstr "Ενότητες"
 
 msgid "Section style"
 msgstr "Στυλ ενότητας"
-
-msgid "Filters placement"
-msgstr "Τοποθέτηση φίλτρων"
 
 msgid "Tags placement"
 msgstr "Τοποθέτηση ετικετών"
@@ -7682,6 +7679,9 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Filters placement"
+#~ msgstr "Τοποθέτηση φίλτρων"
 
 #~ msgid "Tegami Mail cannot change this kind of group"
 #~ msgstr "Το Tegami Mail δεν μπορεί να αλλάξει αυτόν τον τύπο ομάδας"

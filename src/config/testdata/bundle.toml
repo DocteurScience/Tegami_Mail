@@ -121,7 +121,6 @@ show_unified = true
 unified_chip = true
 show_accounts = true
 section_style = "unified"
-filtered_placement = "above_accounts"
 tags_placement = "above_accounts"
 favorites_placement = "above_accounts"
 chevrons_left = false
@@ -151,7 +150,6 @@ archive = true
 junk = true
 trash = true
 snoozed = true
-filtered = true
 tags = true
 
 [privacy.list_column_widths]
@@ -299,7 +297,6 @@ icon_only = false
 tree_collapsed = []
 folder_order = []
 unified_expanded = false
-filtered_expanded = false
 tags_expanded = false
 starred_expanded = false
 sent_expanded = false
@@ -311,7 +308,6 @@ snoozed_expanded = false
 favorites = []
 favorites_expanded = false
 smart_expanded = false
-filtered_expanded_accounts = []
 tags_expanded_accounts = []
 
 [window]

@@ -45,7 +45,6 @@ impl Sidebar {
                 UnifiedRow::Kind(k) => keep == Sel::UnifiedKind(*k),
                 UnifiedRow::Favorites => keep == Sel::UnifiedFavorites,
                 UnifiedRow::Smart => false,
-                UnifiedRow::Filtered => keep == Sel::UnifiedFiltered,
                 UnifiedRow::Tags => keep == Sel::UnifiedTags,
             };
             if !keep_header {
@@ -54,7 +53,6 @@ impl Sidebar {
             let keep_list = match row {
                 UnifiedRow::Kind(k) => matches!(&keep, Sel::UnifiedKindRow(kk, _) if kk == k),
                 UnifiedRow::Favorites => matches!(keep, Sel::Favorite(..)),
-                UnifiedRow::Filtered => matches!(keep, Sel::UnifiedFolder(..)),
                 UnifiedRow::Tags => matches!(keep, Sel::Tag(None, _)),
                 UnifiedRow::Smart => matches!(keep, Sel::Smart(_)),
             };
@@ -202,13 +200,8 @@ impl Sidebar {
             Sel::Outbox => self.select_outbox(),
             Sel::Folder(acc, path) => self.select_folder(acc, &path),
             Sel::UnifiedInbox(acc) => self.select_unified_inbox(acc),
-            Sel::UnifiedFolder(acc, path) => self.select_filtered_row(Slot::Unified, acc, &path),
-            Sel::AccountFiltered(acc, path) => {
-                self.select_filtered_row(Slot::Account(acc), acc, &path)
-            }
             Sel::Tag(acc, kw) => self.select_tag(acc, &kw),
             Sel::UnifiedKind(kind) => self.select_row_header(UnifiedRow::Kind(kind)),
-            Sel::UnifiedFiltered => self.select_row_header(UnifiedRow::Filtered),
             Sel::UnifiedFavorites => self.select_row_header(UnifiedRow::Favorites),
             Sel::UnifiedTags => self.select_row_header(UnifiedRow::Tags),
             Sel::Smart(id) => {
@@ -311,27 +304,6 @@ impl Sidebar {
                 if let Some(row) = list.row_at_index(idx as i32) {
                     list.select_row(Some(&row));
                 }
-            }
-        }
-    }
-
-    /// Highlight a filtered folder's row: in the unified row's list, or an
-    /// account's own section.
-    fn select_filtered_row(&self, slot: Slot, account_id: u32, path: &str) {
-        let list = match slot {
-            Slot::Unified => self
-                .kind_widgets
-                .get(&UnifiedRow::Filtered)
-                .map(|w| w.list.clone()),
-            Slot::Account(_) => None,
-        };
-        let Some(list) = list else { return };
-        if let Some(idx) = self.filtered_rows.get(&slot).and_then(|rows| {
-            rows.iter()
-                .position(|r| r.account_id == account_id && r.folder.path == path)
-        }) {
-            if let Some(row) = list.row_at_index(idx as i32) {
-                list.select_row(Some(&row));
             }
         }
     }
@@ -488,13 +460,9 @@ impl Sidebar {
         {
             return;
         }
-        // Likewise a click on a filtered folder in either kind of
-        // Filtered Folders section, on a favorite, or on an account's
-        // folder in a unified Starred / Sent / Drafts row's list.
-        if self.selected == Sel::UnifiedFolder(account_id, path.clone())
-            || self.selected == Sel::AccountFiltered(account_id, path.clone())
-            || self.selected == Sel::Favorite(account_id, path.clone())
-        {
+        // Likewise a click on a favorite, or on an account's folder in a
+        // unified Starred / Sent / Drafts row's list.
+        if self.selected == Sel::Favorite(account_id, path.clone()) {
             return;
         }
         if let Sel::UnifiedKindRow(kind, acc) = &self.selected {

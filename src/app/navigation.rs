@@ -85,7 +85,6 @@ impl AppModel {
             UnifiedView::Kind(kind) => {
                 self.multi_account() && self.unified_kinds_listed().has(kind)
             }
-            UnifiedView::Filtered => self.filtered_shown(),
             UnifiedView::Favorites => {
                 self.favorites_placement.shown() && !self.favorites.is_empty()
             }
@@ -124,7 +123,6 @@ impl AppModel {
             }
             UnifiedView::Kind(FolderKind::Inbox) => crate::ui::sidebar::Sel::Unified,
             UnifiedView::Kind(kind) => crate::ui::sidebar::Sel::UnifiedKind(kind),
-            UnifiedView::Filtered => crate::ui::sidebar::Sel::UnifiedFiltered,
             UnifiedView::Favorites => crate::ui::sidebar::Sel::UnifiedFavorites,
         });
         self.showing_outbox = false;

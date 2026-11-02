@@ -115,7 +115,6 @@ impl AppModel {
             unified_kinds: self.unified_kinds,
             show_accounts: self.show_accounts,
             section_style: self.section_style,
-            filtered_placement: self.filtered_placement,
             tags_placement: self.tags_placement,
             favorites_placement: self.favorites_placement,
             chevrons_left: self.chevrons_left,

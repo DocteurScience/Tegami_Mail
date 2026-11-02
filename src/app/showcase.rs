@@ -83,7 +83,6 @@ impl AppModel {
                 self.stage_rail();
                 list::stage_peek(root, sender);
                 self.stage_toggle();
-                self.stage_fold_filtered();
                 compose::stage_focus(sender);
                 compose::stage_folder(sender);
                 compose::stage_send(sender);

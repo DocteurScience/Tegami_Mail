@@ -91,67 +91,6 @@ impl AppModel {
             .collect()
     }
 
-    /// Whether the Filters section is in the sidebar.
-    pub(super) fn filtered_shown(&self) -> bool {
-        self.filtered_placement.shown()
-    }
-
-    /// The folders the unified "Filtered Folders" section lists: the
-    /// destination of every rule, in account order then rule order, without
-    /// repeats; nothing when Settings → Sidebar has the section off. An
-    /// inbox destination is already an All Inboxes row and is skipped, and
-    /// an account left out of the unified section (#267) lists its rules'
-    /// folders under its own section only.
-    pub(super) fn unified_folder_refs(&self) -> Vec<UnifiedFolderRef> {
-        let mut out: Vec<UnifiedFolderRef> = Vec::new();
-        if !self.filtered_shown() {
-            return out;
-        }
-        for email in self.ordered_emails() {
-            let Some(account) = self.accounts.iter().find(|a| a.email == email) else {
-                continue;
-            };
-            if !self.in_unified(account.id) {
-                continue;
-            }
-            let Some(folders) = self.folders.get(&account.id) else {
-                continue;
-            };
-            let rules = self
-                .filters
-                .iter()
-                .filter(|r| r.account_email.eq_ignore_ascii_case(&email));
-            for r in rules {
-                let Some(f) = folders.iter().find(|f| f.path == r.dest_path) else {
-                    continue;
-                };
-                if f.kind == FolderKind::Inbox
-                    || out
-                        .iter()
-                        .any(|o| o.account_id == account.id && o.folder.id == f.id)
-                {
-                    continue;
-                }
-                let mut folder = f.clone();
-                folder.unread = self.folder_unread_of(f);
-                out.push(UnifiedFolderRef {
-                    account_id: account.id,
-                    folder,
-                });
-            }
-        }
-        out
-    }
-
-    /// The identity of [`unified_folder_refs`](Self::unified_folder_refs),
-    /// for telling whether a rule change moved anything in or out.
-    pub(super) fn unified_folder_keys(&self) -> Vec<(u32, u32)> {
-        self.unified_folder_refs()
-            .into_iter()
-            .map(|r| (r.account_id, r.folder.id))
-            .collect()
-    }
-
     pub(super) fn folder_unread_of(&self, f: &Folder) -> u32 {
         self.folder_unread
             .get(&(f.account_id, f.id))

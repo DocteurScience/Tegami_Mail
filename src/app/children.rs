@@ -212,7 +212,6 @@ pub(super) fn sidebar_output_msg(out: SidebarOutput) -> AppMsg {
         SidebarOutput::AccountStarredSelected(account_id) => {
             AppMsg::AccountStarredSelected(account_id)
         }
-        SidebarOutput::UnifiedFilteredSelected => AppMsg::UnifiedSelected(UnifiedView::Filtered),
         SidebarOutput::UnifiedFavoritesSelected => AppMsg::UnifiedSelected(UnifiedView::Favorites),
         SidebarOutput::UnifiedTagsSelected => AppMsg::TagSelected {
             keyword: None,
@@ -244,7 +243,6 @@ pub(super) fn sidebar_output_msg(out: SidebarOutput) -> AppMsg {
         SidebarOutput::CollapsedChanged(collapsed) => AppMsg::SidebarCollapsed(collapsed),
         SidebarOutput::SectionsOpen {
             all_inboxes,
-            filtered,
             tags,
             starred,
             sent,
@@ -257,7 +255,6 @@ pub(super) fn sidebar_output_msg(out: SidebarOutput) -> AppMsg {
             smart,
         } => AppMsg::SidebarSectionsOpen {
             all_inboxes,
-            filtered,
             tags,
             starred,
             sent,

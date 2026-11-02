@@ -392,11 +392,6 @@ impl AppModel {
                         .map(|f| (a.id, f.id, f.path.clone()))
                 })
                 .collect(),
-            UnifiedView::Filtered => self
-                .unified_folder_refs()
-                .into_iter()
-                .map(|r| (r.account_id, r.folder.id, r.folder.path))
-                .collect(),
             UnifiedView::Favorites => self
                 .favorite_folder_refs()
                 .into_iter()
@@ -414,10 +409,6 @@ impl AppModel {
                         .folder_of_kind(account_id, kind)
                         .is_some_and(|f| f.id == folder_id)
             }
-            UnifiedView::Filtered => self
-                .unified_folder_refs()
-                .iter()
-                .any(|r| r.account_id == account_id && r.folder.id == folder_id),
             UnifiedView::Favorites => self
                 .favorite_folder_refs()
                 .iter()

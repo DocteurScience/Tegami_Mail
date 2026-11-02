@@ -56,8 +56,6 @@ pub(super) struct SelectedFolder {
 pub(crate) enum UnifiedView {
     /// Every account's folder of this kind.
     Kind(FolderKind),
-    /// Every filter rule's folder listed under All Inboxes.
-    Filtered,
     /// Every favorite folder.
     Favorites,
 }

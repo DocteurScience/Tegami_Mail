@@ -786,9 +786,6 @@ msgstr "Сортировать"
 msgid "Tag: {name}"
 msgstr "Добавить тег {name}"
 
-msgid "Filters"
-msgstr "Фильтры"
-
 msgid "Favorites"
 msgstr "Избранное"
 
@@ -5341,6 +5338,9 @@ msgstr "Через две секунды"
 msgid "{percent}%"
 msgstr "{percent}%"
 
+msgid "Filters"
+msgstr "Фильтры"
+
 msgid "Senders"
 msgstr "Отправители"
 
@@ -5769,9 +5769,6 @@ msgstr "Действия"
 #, fuzzy
 msgid "Section style"
 msgstr "Действия"
-
-msgid "Filters placement"
-msgstr "Расположение фильтров"
 
 msgid "Tags placement"
 msgstr "Расположение тегов"
@@ -7831,6 +7828,9 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Filters placement"
+#~ msgstr "Расположение фильтров"
 
 #, fuzzy
 #~ msgid "Contacts placement"

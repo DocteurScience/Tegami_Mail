@@ -488,17 +488,13 @@ impl AppModel {
 
             AppMsg::SetFilters(rules) => {
                 config::save_filters(&rules);
-                let listed_before = self.unified_folder_keys();
                 if rules.iter().any(|r| r.needs_contacts()) {
                     self.saved_addresses.refresh();
                 }
                 self.filters = rules;
-                // A rule opting its folder in or out of All Inboxes changes
-                // the sidebar's Filtered Folders section; nothing else
-                // about the rules is drawn there.
-                if self.unified_folder_keys() != listed_before {
-                    self.rebuild_sidebar();
-                }
+                // The sidebar marks the folders a rule files into; rules
+                // change rarely, so it is drawn again each time.
+                self.rebuild_sidebar();
                 // File whatever already sits in the inboxes under the new
                 // rules; reuses the blacklist's re-sync sweep.
                 self.sweep_blacklisted();
