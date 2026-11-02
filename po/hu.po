@@ -543,18 +543,6 @@ msgstr ""
 msgid "Empty"
 msgstr "Kiürítés"
 
-msgid "Empty Trash in Every Account?"
-msgstr ""
-
-msgid "Empty Junk in Every Account?"
-msgstr ""
-
-#, fuzzy
-msgid ""
-"Every message in them will be erased from the server. This can’t be undone."
-msgstr ""
-"A benne lévő összes üzenet törlődik a kiszolgálóról. Ez nem vonható vissza."
-
 msgid "Create Folder"
 msgstr "Mappa létrehozása"
 
@@ -1162,9 +1150,6 @@ msgstr "Fókusz mód"
 
 msgid "View"
 msgstr ""
-
-msgid "All accounts"
-msgstr "Összes fiók"
 
 msgid "Outbox"
 msgstr "Kimenő"
@@ -2836,6 +2821,9 @@ msgstr "HTML- és szövegfájlok"
 
 msgid "Could Not Read the File"
 msgstr "A fájl nem olvasható"
+
+msgid "All accounts"
+msgstr "Összes fiók"
 
 msgid "All but Trash and Junk"
 msgstr ""
@@ -5250,8 +5238,9 @@ msgstr "A fiókok felett"
 msgid "Below the accounts"
 msgstr "A fiókok alatt"
 
-msgid "All Inboxes"
-msgstr "Összes beérkezett"
+#, fuzzy
+msgid "The first account's inbox"
+msgstr "Az utolsó fiók beérkező levelei"
 
 msgid "The last account's inbox"
 msgstr "Az utolsó fiók beérkező levelei"
@@ -5734,28 +5723,6 @@ msgstr ""
 msgid "A count turns grey once you have looked at the folder."
 msgstr ""
 
-msgid "Unified"
-msgstr "Egységes"
-
-#, fuzzy
-msgid "Shown only with more than one account."
-msgstr "Csak ezt a fiókot mutasd"
-
-msgid "Inboxes"
-msgstr "Beérkezett üzenetek"
-
-msgid "Snoozed"
-msgstr ""
-
-msgid "Shown only while mail is snoozed."
-msgstr ""
-
-msgid "Unread counts"
-msgstr "Olvasatlanok száma"
-
-msgid "Shown on the unified rows while they are folded up."
-msgstr ""
-
 #, fuzzy
 msgid "Sections"
 msgstr "Műveletek"
@@ -6128,12 +6095,6 @@ msgstr "Első fiók hozzáadása"
 
 msgid "No accounts yet"
 msgstr "Még nincsenek fiókok"
-
-msgid "Show each inbox"
-msgstr "Minden beérkezett megjelenítése"
-
-msgid "Show each account"
-msgstr "Minden fiók megjelenítése"
 
 msgid "Show each folder"
 msgstr "Minden mappa megjelenítése"
@@ -6928,15 +6889,12 @@ msgid ""
 "differ."
 msgstr ""
 
-msgid "Show in All Inboxes"
-msgstr "Megjelenítés az összes beérkező levelek mappájában"
-
 #, fuzzy
-msgid "Also in the unified Starred, Sent, Drafts, Archive, Filters and Tags."
+msgid "Show in combined views"
+msgstr "Beszélgetés megjelenítése"
+
+msgid "Favorites, Tags and Smart Folders across accounts."
 msgstr ""
-"A fiók levelei kerüljenek az egyesített Beérkezett üzenetek, Csillagozott, "
-"Elküldött, Piszkozatok és Archívum mappákba, valamint az egyesített Szűrők "
-"és Címkék közé."
 
 msgid "Test Connection"
 msgstr "Kapcsolat tesztelése"
@@ -7126,6 +7084,9 @@ msgstr ""
 "kiküldött leveleket. Letiltja a fenti „Másolat mentése” opciót."
 
 msgid "Templates"
+msgstr ""
+
+msgid "Snoozed"
 msgstr ""
 
 msgid "Hidden Folders"
@@ -7849,6 +7810,47 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#, fuzzy
+#~ msgid ""
+#~ "Every message in them will be erased from the server. This can’t be "
+#~ "undone."
+#~ msgstr ""
+#~ "A benne lévő összes üzenet törlődik a kiszolgálóról. Ez nem vonható "
+#~ "vissza."
+
+#~ msgid "All Inboxes"
+#~ msgstr "Összes beérkezett"
+
+#~ msgid "Unified"
+#~ msgstr "Egységes"
+
+#, fuzzy
+#~ msgid "Shown only with more than one account."
+#~ msgstr "Csak ezt a fiókot mutasd"
+
+#~ msgid "Inboxes"
+#~ msgstr "Beérkezett üzenetek"
+
+#~ msgid "Unread counts"
+#~ msgstr "Olvasatlanok száma"
+
+#~ msgid "Show each inbox"
+#~ msgstr "Minden beérkezett megjelenítése"
+
+#~ msgid "Show each account"
+#~ msgstr "Minden fiók megjelenítése"
+
+#~ msgid "Show in All Inboxes"
+#~ msgstr "Megjelenítés az összes beérkező levelek mappájában"
+
+#, fuzzy
+#~ msgid ""
+#~ "Also in the unified Starred, Sent, Drafts, Archive, Filters and Tags."
+#~ msgstr ""
+#~ "A fiók levelei kerüljenek az egyesített Beérkezett üzenetek, "
+#~ "Csillagozott, Elküldött, Piszkozatok és Archívum mappákba, valamint az "
+#~ "egyesített Szűrők és Címkék közé."
 
 #~ msgid "Filters placement"
 #~ msgstr "A szűrők elhelyezése"

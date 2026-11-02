@@ -526,18 +526,6 @@ msgstr ""
 msgid "Empty"
 msgstr "Vider"
 
-msgid "Empty Trash in Every Account?"
-msgstr "Vider la corbeille de tous les comptes ?"
-
-msgid "Empty Junk in Every Account?"
-msgstr "Vider les indésirables de tous les comptes ?"
-
-msgid ""
-"Every message in them will be erased from the server. This can’t be undone."
-msgstr ""
-"Tous les messages qu’ils contiennent seront effacés du serveur. Cette action "
-"est irréversible."
-
 msgid "Create Folder"
 msgstr "Créer un dossier"
 
@@ -1099,9 +1087,6 @@ msgstr "Désactiver le mode Focus"
 
 msgid "View"
 msgstr "Affichage"
-
-msgid "All accounts"
-msgstr "Tous les comptes"
 
 msgid "Outbox"
 msgstr "Boîte d’envoi"
@@ -2740,6 +2725,9 @@ msgstr "Fichiers HTML et texte"
 
 msgid "Could Not Read the File"
 msgstr "Impossible de lire le fichier"
+
+msgid "All accounts"
+msgstr "Tous les comptes"
 
 msgid "All but Trash and Junk"
 msgstr "Tous sauf la Corbeille et les Indésirables"
@@ -5053,8 +5041,8 @@ msgstr "Au-dessus des comptes"
 msgid "Below the accounts"
 msgstr "Sous les comptes"
 
-msgid "All Inboxes"
-msgstr "Toutes les boîtes de réception"
+msgid "The first account's inbox"
+msgstr "La boîte de réception du premier compte"
 
 msgid "The last account's inbox"
 msgstr "La boîte de réception du dernier compte"
@@ -5525,27 +5513,6 @@ msgstr "Mettre en évidence uniquement les nouveaux messages non lus"
 msgid "A count turns grey once you have looked at the folder."
 msgstr "Un compteur devient gris dès que vous avez consulté le dossier."
 
-msgid "Unified"
-msgstr "Unifié"
-
-msgid "Shown only with more than one account."
-msgstr "Affiché uniquement avec plus d’un compte."
-
-msgid "Inboxes"
-msgstr "Boîtes de réception"
-
-msgid "Snoozed"
-msgstr ""
-
-msgid "Shown only while mail is snoozed."
-msgstr ""
-
-msgid "Unread counts"
-msgstr "Compteurs de non-lus"
-
-msgid "Shown on the unified rows while they are folded up."
-msgstr "Affiché sur les lignes unifiées lorsqu’elles sont repliées."
-
 msgid "Sections"
 msgstr "Sections"
 
@@ -5894,12 +5861,6 @@ msgstr "Ajouter un premier compte"
 
 msgid "No accounts yet"
 msgstr "Aucun compte pour le moment"
-
-msgid "Show each inbox"
-msgstr "Afficher chaque boîte de réception"
-
-msgid "Show each account"
-msgstr "Afficher chaque compte"
 
 msgid "Show each folder"
 msgstr "Afficher chaque dossier"
@@ -6681,13 +6642,11 @@ msgstr ""
 "Pour l’hébergement mutualisé. À n’activer que si le test de connexion "
 "indique que les noms diffèrent."
 
-msgid "Show in All Inboxes"
-msgstr "Afficher dans Toutes les boîtes de réception"
+msgid "Show in combined views"
+msgstr "Afficher dans les vues combinées"
 
-msgid "Also in the unified Starred, Sent, Drafts, Archive, Filters and Tags."
-msgstr ""
-"Aussi dans les vues unifiées Favoris, Envoyés, Brouillons, Archives, Filtres "
-"et Tags."
+msgid "Favorites, Tags and Smart Folders across accounts."
+msgstr "Favoris, tags et dossiers intelligents de tous les comptes."
 
 msgid "Test Connection"
 msgstr "Tester la connexion"
@@ -6872,6 +6831,9 @@ msgstr "Pour Gmail et les services qui classent eux-mêmes le courrier envoyé."
 
 msgid "Templates"
 msgstr "Modèles"
+
+msgid "Snoozed"
+msgstr ""
 
 msgid "Hidden Folders"
 msgstr "Dossiers masqués"
@@ -7581,6 +7543,52 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Empty Trash in Every Account?"
+#~ msgstr "Vider la corbeille de tous les comptes ?"
+
+#~ msgid "Empty Junk in Every Account?"
+#~ msgstr "Vider les indésirables de tous les comptes ?"
+
+#~ msgid ""
+#~ "Every message in them will be erased from the server. This can’t be "
+#~ "undone."
+#~ msgstr ""
+#~ "Tous les messages qu’ils contiennent seront effacés du serveur. Cette "
+#~ "action est irréversible."
+
+#~ msgid "All Inboxes"
+#~ msgstr "Toutes les boîtes de réception"
+
+#~ msgid "Unified"
+#~ msgstr "Unifié"
+
+#~ msgid "Shown only with more than one account."
+#~ msgstr "Affiché uniquement avec plus d’un compte."
+
+#~ msgid "Inboxes"
+#~ msgstr "Boîtes de réception"
+
+#~ msgid "Unread counts"
+#~ msgstr "Compteurs de non-lus"
+
+#~ msgid "Shown on the unified rows while they are folded up."
+#~ msgstr "Affiché sur les lignes unifiées lorsqu’elles sont repliées."
+
+#~ msgid "Show each inbox"
+#~ msgstr "Afficher chaque boîte de réception"
+
+#~ msgid "Show each account"
+#~ msgstr "Afficher chaque compte"
+
+#~ msgid "Show in All Inboxes"
+#~ msgstr "Afficher dans Toutes les boîtes de réception"
+
+#~ msgid ""
+#~ "Also in the unified Starred, Sent, Drafts, Archive, Filters and Tags."
+#~ msgstr ""
+#~ "Aussi dans les vues unifiées Favoris, Envoyés, Brouillons, Archives, "
+#~ "Filtres et Tags."
 
 #~ msgid "Filters placement"
 #~ msgstr "Emplacement des filtres"

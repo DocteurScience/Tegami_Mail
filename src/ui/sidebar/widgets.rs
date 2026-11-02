@@ -98,56 +98,6 @@ pub(super) fn slide_tree_row(row: &gtk::ListBoxRow, rev: &gtk::Revealer, hidden:
     }
 }
 
-/// A row in the "All Inboxes" sub-list: a small account pill, the account name,
-/// and that inbox's unread badge. In the compact rail only the pill is shown
-/// (centred), with the unread count as a corner chip. Returns the badge for
-/// in-place updates.
-pub(super) fn build_unified_inbox_row(
-    section: &SectionData,
-    inbox: &Folder,
-    collapsed: bool,
-    inset: bool,
-) -> (gtk::ListBoxRow, gtk::Label) {
-    // Show the account's configured label (defaults to its email) so accounts are
-    // easy to tell apart in the All Inboxes view.
-    let label = &section.account.label;
-
-    // Small account pill (color + initials/emoji), like the header circle.
-    let id = section.account.id;
-    let circle = gtk::Box::new(gtk::Orientation::Horizontal, 0);
-    circle.add_css_class("account-circle-sm");
-    circle.add_css_class(&format!("acct-color-{id}"));
-    circle.add_css_class(&format!("acct-ring-{id}"));
-    circle.set_valign(gtk::Align::Center);
-    circle.set_halign(gtk::Align::Center);
-    circle.set_hexpand(false);
-    circle.set_size_request(21, 21);
-    let gravatar = account_gravatar(&section.account.email);
-    let glyph: gtk::Widget = match (&gravatar, &section.avatar, &section.emoji) {
-        (Some(texture), ..) => {
-            circle.set_overflow(gtk::Overflow::Hidden);
-            crate::ui::initials::picture_from_texture(texture, 21).upcast()
-        }
-        (None, Some(path), _) => {
-            circle.set_overflow(gtk::Overflow::Hidden);
-            crate::ui::initials::avatar_picture(path, 21).upcast()
-        }
-        (None, None, Some(em)) if !em.is_empty() => {
-            crate::ui::initials::glyph_picture(em, &section.color, 0.6, 21).upcast()
-        }
-        _ => crate::ui::initials::glyph_picture(
-            &account_initials(label, &section.account.email),
-            &section.color,
-            0.5,
-            21,
-        )
-        .upcast(),
-    };
-    circle.append(&glyph);
-
-    build_unified_sub_row(&circle, label, label, inbox.unread, collapsed, inset, true)
-}
-
 /// A row nested under "All Inboxes": `lead` (the account's pill), `title`,
 /// and an unread badge. In the compact rail only the lead is shown
 /// (centred), with the count as a corner chip and `tip` (plus the count) as

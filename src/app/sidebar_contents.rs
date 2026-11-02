@@ -67,34 +67,14 @@ impl AppModel {
             .iter()
             .filter_map(|email| self.section_data(email))
             .collect();
-        // Count enabled accounts from config, not just the workers that have
-        // reported in: at startup the accounts stream in one by one, and
-        // counting only the connected ones made the first sidebar build look
-        // single-account — its default selection then landed on that account's
-        // inbox (possibly inside a collapsed section, so nothing visibly
-        // highlighted) instead of the "All Inboxes" the app should open with.
-        let multi_account = self.multi_account();
-        let show_unified = self.unified_inboxes_shown();
-        // The other unified rows are as pointless with one account.
-        let unified_kinds = if multi_account {
-            self.unified_kinds_listed()
-        } else {
-            config::UnifiedKinds::NONE
-        };
-        self.snoozed_row.set(unified_kinds.snoozed);
-        let unified_unread = self.unified_inboxes_unread();
         let favorite_folders = self.favorite_folder_refs();
         self.sidebars_emit(SidebarInput::SetContents {
             sections,
-            show_unified,
-            unified_kinds,
             show_accounts: self.show_accounts,
-            unified_chips: self.unified_chips,
             chevrons_left: self.chevrons_left,
             account_click_folds: self.account_click_folds,
             rail_dots: self.rail_dots_now(),
             rail_fold: self.rail_fold,
-            unified_unread,
             favorite_folders,
             tags: self.tags.clone(),
             section_style: self.section_style,
@@ -159,7 +139,6 @@ impl AppModel {
         let gmail = self.gmail_labels(account.id);
         Some(SectionData {
             gmail,
-            in_unified: self.in_unified(account.id),
             has_filters,
             collapsed: self.collapsed.iter().any(|e| e == email),
             custom_expanded: self.folders_expanded.iter().any(|e| e == email),

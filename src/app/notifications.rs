@@ -13,7 +13,6 @@ use super::flags::read_label;
 use super::model::AppModel;
 use super::msg::AppMsg;
 use super::prefill::reply_prefill;
-use super::types::UnifiedView;
 use super::undo::FlagKind;
 
 /// Resolve a notification's `(account_id, folder_id, message_id)` to the full
@@ -106,7 +105,7 @@ impl AppModel {
                 account_id,
                 folder_id,
                 message_id,
-            } => self.open_from_notification(account_id, folder_id, message_id, sender),
+            } => self.open_from_notification(account_id, folder_id, message_id),
 
             AppMsg::NotificationMarkRead {
                 account_id,
@@ -269,24 +268,17 @@ impl AppModel {
     }
 
     /// A new-mail desktop notification was clicked — open that message.
-    fn open_from_notification(
-        &mut self,
-        account_id: u32,
-        folder_id: u32,
-        message_id: u32,
-        sender: ComponentSender<Self>,
-    ) {
+    fn open_from_notification(&mut self, account_id: u32, folder_id: u32, message_id: u32) {
         // The user clicked a new-mail notification: they've engaged with
         // that account's mail, so clear its toast, then navigate to the
         // message's folder and open it in the reader.
         crate::desktop::notify::withdraw_mail(account_id);
         tracing::info!(
-            "notification: open account {account_id} folder {folder_id} message {message_id} (unified row: {})",
-            self.unified_inboxes_shown()
+            "notification: open account {account_id} folder {folder_id} message {message_id}"
         );
-        if let Some((name, path, kind)) = self
+        if let Some((name, path)) = self
             .folder_by_id(account_id, folder_id)
-            .map(|f| (f.name.clone(), f.path.clone(), f.kind))
+            .map(|f| (f.name.clone(), f.path.clone()))
         {
             // Ask for the body before anything else goes to the
             // account's worker. Opening Inboxes below asks every
@@ -315,24 +307,11 @@ impl AppModel {
                     );
                 }
             }
-            // Mail that landed in an inbox opens in the unified
-            // Inboxes when the sidebar has that row (the view the
-            // app opens with; the account's own Inbox row may sit
-            // inside a folded section, where a highlight has nowhere
-            // to show). Without the row — one account, or the
-            // preference off — or when a filter filed the message
-            // elsewhere, its folder opens directly and the sidebar
-            // unfolds the account to show where that is. Both emit
-            // the (cached) list synchronously, so the SelectAndLoad
-            // that follows finds the row and opens it.
-            if kind == FolderKind::Inbox
-                && self.unified_inboxes_shown()
-                && self.in_unified(account_id)
-            {
-                self.open_unified(UnifiedView::Kind(FolderKind::Inbox), &sender);
-            } else {
-                self.select_folder(account_id, folder_id, name, path);
-            }
+            // The message's folder opens and the sidebar unfolds the
+            // account to show where that is. It emits the (cached) list
+            // synchronously, so the SelectAndLoad that follows finds the
+            // row and opens it.
+            self.select_folder(account_id, folder_id, name, path);
             self.message_list
                 .emit(MessageListInput::SelectAndLoad((account_id, message_id)));
         }

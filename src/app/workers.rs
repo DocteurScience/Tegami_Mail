@@ -81,7 +81,7 @@ fn map_event(account_id: u32, event: WorkerEvent) -> AppMsg {
         },
         WorkerEvent::Quota(quota) => AppMsg::QuotaFound { account_id, quota },
         WorkerEvent::KeywordsSynced { paths } => AppMsg::KeywordsSynced { account_id, paths },
-        WorkerEvent::FlagsSynced { paths } => AppMsg::FlagsSynced { account_id, paths },
+        WorkerEvent::FlagsSynced { paths } => AppMsg::FlagsSynced { paths },
         WorkerEvent::Restored {
             folder_id,
             message_ids,
@@ -579,7 +579,6 @@ impl AppModel {
                     for (account_id, folder_id, path) in reqs {
                         self.send_to(account_id, MailRequest::LoadMessages { folder_id, path });
                     }
-                    self.refresh_unified_starred(&sender);
                 } else {
                     match self.selected.clone() {
                         Some(sel) => self.send_to(
@@ -805,10 +804,8 @@ mod tests {
     fn sidebar_and_worker_outputs_map_to_app_messages() {
         let dbg = |m: AppMsg| format!("{m:?}");
         assert_eq!(
-            dbg(sidebar_output_msg(SidebarOutput::UnifiedSelected)),
-            dbg(AppMsg::UnifiedSelected(UnifiedView::Kind(
-                FolderKind::Inbox
-            )))
+            dbg(sidebar_output_msg(SidebarOutput::UnifiedFavoritesSelected)),
+            dbg(AppMsg::UnifiedSelected(UnifiedView::Favorites))
         );
         assert_eq!(
             dbg(sidebar_output_msg(SidebarOutput::UnifiedTagsSelected)),

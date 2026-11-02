@@ -35,14 +35,8 @@ impl Sidebar {
     /// Deselect every list except the one owning `keep` (whose own list keeps its
     /// selection). Used when a selection moves between sections.
     pub(super) fn clear_other_selections(&self, keep: Sel) {
-        if keep != Sel::Unified {
-            if let Some(l) = &self.unified_list {
-                l.unselect_all();
-            }
-        }
         for (row, w) in &self.kind_widgets {
             let keep_header = match row {
-                UnifiedRow::Kind(k) => keep == Sel::UnifiedKind(*k),
                 UnifiedRow::Favorites => keep == Sel::UnifiedFavorites,
                 UnifiedRow::Smart => false,
                 UnifiedRow::Tags => keep == Sel::UnifiedTags,
@@ -51,7 +45,6 @@ impl Sidebar {
                 w.header.unselect_all();
             }
             let keep_list = match row {
-                UnifiedRow::Kind(k) => matches!(&keep, Sel::UnifiedKindRow(kk, _) if kk == k),
                 UnifiedRow::Favorites => matches!(keep, Sel::Favorite(..)),
                 UnifiedRow::Tags => matches!(keep, Sel::Tag(None, _)),
                 UnifiedRow::Smart => matches!(keep, Sel::Smart(_)),
@@ -67,11 +60,6 @@ impl Sidebar {
         }
         if keep != Sel::Outbox {
             if let Some(l) = &self.outbox_list {
-                l.unselect_all();
-            }
-        }
-        if !matches!(keep, Sel::UnifiedInbox(_)) {
-            if let Some(l) = &self.unified_inbox_list {
                 l.unselect_all();
             }
         }
@@ -113,10 +101,10 @@ impl Sidebar {
     }
 
     /// Re-apply the current selection after a rebuild; on first populate (no
-    /// prior selection) default to the unified row if shown, else the first folder.
+    /// prior selection) default to the first account's first folder.
     pub(super) fn restore_selection(&mut self) {
         // With nothing selected the primary instance picks the opening view
-        // (All Inboxes, else the first inbox) and must say so: that first
+        // (the first inbox) and must say so: that first
         // pick reaches the app through the list boxes' selection signals.
         // Everything else is a restore of what is already shown — silent.
         let announce = self.selected == Sel::None && !self.mirror;
@@ -172,16 +160,14 @@ impl Sidebar {
         let start = self.start.clone();
         if let Some(target) = start {
             match self.resolve_start(&target) {
-                Some(Sel::UnifiedInbox(acc)) => return self.select_unified_inbox(acc),
                 Some(Sel::Folder(acc, path)) => return self.select_folder(acc, &path),
                 _ if !self.start_account_ready(&target) => return,
                 // Listed, but with nowhere to land: the usual view.
                 _ => self.start = None,
             }
         }
-        if self.show_unified {
-            self.select_unified();
-        } else if let Some(acc) = self
+        // The first account's Inbox, the usual first view.
+        if let Some(acc) = self
             .sections
             .iter()
             .find(|s| !s.folders.is_empty())
@@ -196,12 +182,9 @@ impl Sidebar {
     /// row's own handler takes it up and tells the app.
     fn select_sel(&self, sel: Sel) {
         match sel {
-            Sel::Unified => self.select_unified(),
             Sel::Outbox => self.select_outbox(),
             Sel::Folder(acc, path) => self.select_folder(acc, &path),
-            Sel::UnifiedInbox(acc) => self.select_unified_inbox(acc),
             Sel::Tag(acc, kw) => self.select_tag(acc, &kw),
-            Sel::UnifiedKind(kind) => self.select_row_header(UnifiedRow::Kind(kind)),
             Sel::UnifiedFavorites => self.select_row_header(UnifiedRow::Favorites),
             Sel::UnifiedTags => self.select_row_header(UnifiedRow::Tags),
             Sel::Smart(id) => {
@@ -222,13 +205,6 @@ impl Sidebar {
                     }
                 }
             }
-            Sel::UnifiedKindRow(kind, acc) => {
-                if let Some(w) = self.kind_widgets.get(&UnifiedRow::Kind(kind)) {
-                    if let Some(idx) = w.rows.iter().position(|r| r.account_id == acc) {
-                        w.list.select_row(w.list.row_at_index(idx as i32).as_ref());
-                    }
-                }
-            }
             Sel::None => {}
         }
     }
@@ -242,9 +218,8 @@ impl Sidebar {
             .any(|s| account.is_none_or(|acc| s.account.id == acc) && !s.folders.is_empty())
     }
 
-    /// The row a launch view names, if it is on screen: an inbox in the
-    /// Inboxes list when that is open (or the accounts' own sections are
-    /// hidden), otherwise the folder in its account's section.
+    /// The row a launch view names, if it is on screen: the folder in its
+    /// account's section.
     fn resolve_start(&self, target: &StartTarget) -> Option<Sel> {
         let (email, path) = match target {
             StartTarget::Inbox(email) => (email, None),
@@ -266,12 +241,6 @@ impl Sidebar {
             .cloned()
             .or_else(|| inbox.clone())?;
         let accounts_shown = self.show_accounts && !self.focus_hide_accounts;
-        let in_inboxes =
-            self.show_unified && self.unified_inboxes.iter().any(|r| r.account_id == acc);
-        if inbox.as_ref() == Some(&path) && in_inboxes && (self.unified_expanded || !accounts_shown)
-        {
-            return Some(Sel::UnifiedInbox(acc));
-        }
         if accounts_shown && section.folders.iter().any(|f| f.path == path) {
             return Some(Sel::Folder(acc, path));
         }
@@ -284,28 +253,6 @@ impl Sidebar {
         self.sections
             .iter()
             .any(|s| s.account.email.eq_ignore_ascii_case(email) && !s.folders.is_empty())
-    }
-
-    fn select_unified(&self) {
-        if let Some(list) = &self.unified_list {
-            if let Some(row) = list.row_at_index(0) {
-                list.select_row(Some(&row));
-            }
-        }
-    }
-
-    fn select_unified_inbox(&self, account_id: u32) {
-        if let Some(list) = &self.unified_inbox_list {
-            if let Some(idx) = self
-                .unified_inboxes
-                .iter()
-                .position(|r| r.account_id == account_id)
-            {
-                if let Some(row) = list.row_at_index(idx as i32) {
-                    list.select_row(Some(&row));
-                }
-            }
-        }
     }
 
     /// Unfold an account's section if it is folded, the way its chevron
@@ -428,56 +375,17 @@ impl Sidebar {
         }
     }
 
-    pub(super) fn on_select_unified_row(&mut self, sender: ComponentSender<Self>) {
-        if self.selected == Sel::Unified {
-            return;
-        }
-        self.selected = Sel::Unified;
-        self.quiet.set(true);
-        self.clear_other_selections(Sel::Unified);
-        if let Some(l) = &self.unified_list {
-            l.select_row(l.row_at_index(0).as_ref());
-        }
-        self.quiet.set(false);
-        let _ = sender.output(SidebarOutput::UnifiedSelected);
-    }
-
     pub(super) fn on_select_folder_row(
         &mut self,
         account_id: u32,
         path: String,
         sender: ComponentSender<Self>,
     ) {
-        // A click on a per-account inbox under "All Inboxes" echoes
-        // back here as its plain folder path; that sub-row already
-        // shows this exact folder, so keep its highlight instead of
-        // jumping to the account section's own Inbox row.
-        if self.selected == Sel::UnifiedInbox(account_id)
-            && self
-                .unified_inboxes
-                .iter()
-                .any(|r| r.account_id == account_id && r.path == path)
-        {
-            return;
-        }
-        // Likewise a click on a favorite, or on an account's folder in a
-        // unified Starred / Sent / Drafts row's list.
+        // A click on a favorite echoes back here as its plain folder path;
+        // that row already shows this exact folder, so it keeps the
+        // highlight.
         if self.selected == Sel::Favorite(account_id, path.clone()) {
             return;
-        }
-        if let Sel::UnifiedKindRow(kind, acc) = &self.selected {
-            if *acc == account_id
-                && self
-                    .kind_widgets
-                    .get(&UnifiedRow::Kind(*kind))
-                    .is_some_and(|w| {
-                        w.rows
-                            .iter()
-                            .any(|r| r.account_id == account_id && r.path == path)
-                    })
-            {
-                return;
-            }
         }
         let key = Sel::Folder(account_id, path.clone());
         if self.selected != key {

@@ -336,15 +336,7 @@ pub(crate) struct AppModel {
     pub(super) remember_rail: bool,
     /// The sections' open state, as the sidebar last reported it,
     /// persisted with the rest of the sidebar layout.
-    pub(super) unified_expanded: bool,
     pub(super) tags_expanded: bool,
-    pub(super) starred_expanded: bool,
-    pub(super) sent_expanded: bool,
-    pub(super) drafts_expanded: bool,
-    pub(super) archive_expanded: bool,
-    pub(super) junk_expanded: bool,
-    pub(super) trash_expanded: bool,
-    pub(super) snoozed_expanded: bool,
     /// Favorite folders (#367), as "email\tpath" entries in the order they
     /// were added, and whether their list is open.
     pub(super) favorites: Vec<String>,
@@ -560,18 +552,11 @@ pub(crate) struct AppModel {
     pub(super) pgp_labels: bool,
     /// The reader's find bar opens under the message (#392).
     pub(super) reader_find_bottom: bool,
-    /// Whether the sidebar offers the unified "All Inboxes" section at all.
-    pub(super) show_unified_pref: bool,
-    /// Whether the collapsed "All Inboxes" row wears its total-unread chip.
-    pub(super) unified_chips: config::UnifiedChips,
     /// Where the Filters, Tags, Favorites and Contacts sections sit
     /// (Settings → Sidebar), and how they are drawn.
     pub(super) section_style: config::SectionStyle,
     pub(super) tags_placement: config::SectionPlacement,
     pub(super) favorites_placement: config::SectionPlacement,
-    /// The unified section's Starred / Sent / Drafts rows (Settings →
-    /// Sidebar → Unified).
-    pub(super) unified_kinds: config::UnifiedKinds,
     /// Whether the account sections are shown at all.
     pub(super) show_accounts: bool,
     /// The main menu's "Show Accounts" check item, kept in step with the
@@ -631,20 +616,6 @@ pub(crate) struct AppModel {
     pub(super) smart_view_cache: HashMap<String, Vec<Message>>,
     pub(super) smart_view_loading: bool,
     pub(super) smart_view_dirty: bool,
-    /// The unified Starred view's read of the index (#482) is running, and
-    /// another is owed when it lands.
-    pub(super) unified_starred_loading: bool,
-    pub(super) unified_starred_dirty: bool,
-    /// The starred mail of the accounts with no Starred folder, by account,
-    /// with the folder path each message sits in: kept for the session, so
-    /// the unified Starred view opens at once (#482).
-    pub(super) unified_starred_rows: HashMap<u32, Vec<(String, Message)>>,
-    pub(super) unified_starred_due: bool,
-    /// A read of the unified rows' folders into memory is due (`Preload`).
-    pub(super) preload_due: bool,
-    /// Unified rows still to build ahead for the message list (`PrebuildNext`).
-    pub(super) prebuild_queue: Vec<UnifiedView>,
-    pub(super) prebuild_due: bool,
     /// A count of the smart folders' unread mail is waiting to run, or
     /// running: syncs come in bursts, and one count covers a burst.
     pub(super) smart_counts_due: bool,
@@ -812,9 +783,6 @@ pub(crate) struct AppModel {
     pub(super) outbox_by_account: HashMap<u32, Vec<crate::models::OutboxItem>>,
     /// Snoozed mail (#527), as snoozed.toml keeps it.
     pub(super) snoozed: Vec<config::Snooze>,
-    /// Whether the sidebar was last given the unified Snoozed row, which
-    /// it has only while something is snoozed (#542).
-    pub(super) snoozed_row: std::cell::Cell<bool>,
     /// How many messages each Snoozed folder holds on the server, by
     /// (account, path), as the last recount or listing found (#542).
     pub(super) snoozed_held: HashMap<(u32, String), u32>,

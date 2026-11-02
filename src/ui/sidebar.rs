@@ -1,8 +1,8 @@
-//! Left pane: an optional "All Inboxes" (unified) row, then one section per
-//! account. Each account has a colored avatar circle + header button (chevron
+//! Left pane: one section per account, with the merged Favorites, Tags and
+//! Smart Folders rows placed above or below them. Each account has a colored avatar circle + header button (chevron
 //! on the right) and an animated `gtk::Revealer` holding its folder list, so
 //! expanding/collapsing slides smoothly. Exactly one thing is selected across
-//! the unified row and all account folder lists.
+//! the merged rows and all account folder lists.
 //!
 //! Account order is managed in the Accounts window, not here; folder order is
 //! set here (a folder dragged between its siblings) and handed to the app to keep, which sends it back in `SectionData`. Collapse state is
@@ -36,19 +36,13 @@ mod widgets;
 pub(crate) use messages::{CtxAction, SidebarInput, SidebarOutput};
 pub(crate) use tree::Hierarchy;
 pub(crate) use tree::{folder_depth, order_folders, placed_run, TREE_EXPANDER_WIDTH};
-pub(crate) use types::kind_label;
-use types::{InboxRef, KindWidgets, SectionWidgets, UnifiedRow};
+use types::{KindWidgets, SectionWidgets, UnifiedRow};
 pub(crate) use types::{SectionData, Sel, SidebarInit, Slot, StartTarget, UnifiedFolderRef};
 pub(crate) use widgets::{account_initials, build_unified_sub_row, pin_icon_size};
 
 pub(crate) struct Sidebar {
     /// Last sections received, in display order.
     sections: Vec<SectionData>,
-    /// Whether to show the unified "All Inboxes" row.
-    show_unified: bool,
-    /// Whether the collapsed-up "All Inboxes" row wears its total-unread chip
-    /// (while expanded, the per-inbox sub-list carries the counts instead).
-    unified_chips: crate::config::UnifiedChips,
     /// Whether the disclosure chevrons LEAD their rows (Settings: Chevron
     /// placement). Off restores the classic trailing position.
     chevrons_left: bool,
@@ -94,8 +88,6 @@ pub(crate) struct Sidebar {
     /// The "Folders" section revealer and its chevron, per account.
     custom_revealers: HashMap<u32, gtk::Revealer>,
     custom_chevrons: HashMap<u32, gtk::Image>,
-    /// The unified-row list box (one row), when shown.
-    unified_list: Option<gtk::ListBox>,
     /// Refresh/spinner stack + spinner beside the "New Message" button.
     sync_stack: Option<gtk::Stack>,
     sync_spinner: Option<gtk::Spinner>,
@@ -134,24 +126,11 @@ pub(crate) struct Sidebar {
     /// only exists while this is non-zero — an empty Outbox is the normal state
     /// and does not deserve permanent furniture.
     outbox_count: u32,
-    /// Total unread across all inboxes, for the "All Inboxes" badge.
-    unified_unread: u32,
     /// The folders whose unread count is new since last looked at, while
     /// "Highlight only new unread mail" is on (#343); `None` when it is off.
     fresh: Option<std::collections::HashSet<(u32, u32)>>,
     /// Unread badge labels by (account_id, folder_id), updated in place.
     folder_badges: HashMap<(u32, u32), gtk::Label>,
-    /// The "All Inboxes" unread badge label, when shown.
-    unified_badge: Option<gtk::Label>,
-    /// Whether the "All Inboxes" per-account inbox sub-list is expanded.
-    unified_expanded: bool,
-    unified_revealer: Option<gtk::Revealer>,
-    unified_chevron: Option<gtk::Image>,
-    unified_inbox_list: Option<gtk::ListBox>,
-    /// Per-account inboxes shown under "All Inboxes", in sub-list row order.
-    unified_inboxes: Vec<InboxRef>,
-    /// Unread badges for the sub-list rows, by (account_id, inbox folder_id).
-    unified_inbox_badges: HashMap<(u32, u32), gtk::Label>,
     /// The favorite folders (#367), in the order they were added.
     favorite_folders: Vec<UnifiedFolderRef>,
     favorites_expanded: bool,
@@ -178,10 +157,7 @@ pub(crate) struct Sidebar {
     /// or folded, when "Fold up expanded items" covers it.
     rail_open: HashMap<UnifiedRow, bool>,
     rail_open_accounts: HashMap<u32, bool>,
-    /// Which unified Starred / Sent / Drafts rows are shown, whether their
-    /// account lists are open, and their widgets.
-    unified_kinds: crate::config::UnifiedKinds,
-    kind_expanded: HashMap<FolderKind, bool>,
+    /// The Favorites, Tags and Smart Folders rows' widgets.
     kind_widgets: HashMap<UnifiedRow, KindWidgets>,
     /// Whether the account sections are shown at all.
     show_accounts: bool,
@@ -220,7 +196,7 @@ impl Component for Sidebar {
             gtk::Overlay {
                 set_vexpand: true,
 
-                // The top block (compose bar, All Inboxes) is pinned above
+                // The top block (the compose bar) is pinned above
                 // the scroller so it never scrolls away; only the per-account
                 // sections below scroll.
                 #[wrap(Some)]
@@ -275,8 +251,6 @@ impl Component for Sidebar {
 
         let mut model = Sidebar {
             sections: Vec::new(),
-            show_unified: false,
-            unified_chips: crate::config::UnifiedChips::default(),
             chevrons_left: false,
             account_click_folds: false,
             rail_dots: false,
@@ -297,7 +271,6 @@ impl Component for Sidebar {
             built_collapsed: init.collapsed,
             custom_revealers: HashMap::new(),
             custom_chevrons: HashMap::new(),
-            unified_list: None,
             sync_stack: None,
             sync_spinner: None,
             busy: false,
@@ -312,16 +285,8 @@ impl Component for Sidebar {
             start: if init.mirror { None } else { init.start },
             reannounce: None,
             outbox_count: 0,
-            unified_unread: 0,
             fresh: None,
             folder_badges: HashMap::new(),
-            unified_badge: None,
-            unified_expanded: init.unified_expanded,
-            unified_revealer: None,
-            unified_chevron: None,
-            unified_inbox_list: None,
-            unified_inboxes: Vec::new(),
-            unified_inbox_badges: HashMap::new(),
             favorite_folders: Vec::new(),
             favorites_expanded: init.favorites_expanded,
             smart_folders: Vec::new(),
@@ -332,16 +297,6 @@ impl Component for Sidebar {
             tags: Vec::new(),
             tags_expanded: init.tags_expanded,
             tag_sections: HashMap::new(),
-            unified_kinds: crate::config::UnifiedKinds::NONE,
-            kind_expanded: HashMap::from([
-                (FolderKind::Starred, init.starred_expanded),
-                (FolderKind::Sent, init.sent_expanded),
-                (FolderKind::Drafts, init.drafts_expanded),
-                (FolderKind::Archive, init.archive_expanded),
-                (FolderKind::Junk, init.junk_expanded),
-                (FolderKind::Trash, init.trash_expanded),
-                (FolderKind::Snoozed, init.snoozed_expanded),
-            ]),
             kind_widgets: HashMap::new(),
             rail_open: HashMap::new(),
             rail_open_accounts: HashMap::new(),
@@ -400,16 +355,8 @@ impl Sidebar {
             SidebarInput::Reannounce => self.on_reannounce(sender),
             SidebarInput::MirrorSelection(sel) => self.on_mirror_selection(sel),
             msg @ SidebarInput::SetContents { .. } => self.on_set_contents(msg, widgets, sender),
-            SidebarInput::UnifiedRowSelected => self.on_unified_row_selected(sender),
-            SidebarInput::SelectUnifiedRow => self.on_select_unified_row(sender),
             SidebarInput::OutboxRowSelected => self.on_outbox_row_selected(sender),
             SidebarInput::SetOutboxCount(count) => self.on_set_outbox_count(count, widgets, sender),
-            SidebarInput::UnifiedInboxRowSelected(index) => {
-                self.on_unified_inbox_row_selected(index, sender)
-            }
-            SidebarInput::ToggleUnifiedExpand => {
-                self.toggle_row(UnifiedRow::Kind(FolderKind::Inbox), &sender)
-            }
             SidebarInput::TagRowSelected { slot, index } => {
                 self.on_tag_row_selected(slot, index, sender)
             }
@@ -424,28 +371,15 @@ impl Sidebar {
             SidebarInput::FavoriteRowSelected(index) => {
                 self.on_favorite_row_selected(index, sender)
             }
-            SidebarInput::UnifiedKindRowSelected(kind) => {
-                self.on_unified_kind_row_selected(kind, sender)
-            }
             SidebarInput::UnifiedFavoritesSelected => self.on_unified_favorites_selected(sender),
             SidebarInput::UnifiedTagsSelected => self.on_unified_tags_selected(sender),
-            SidebarInput::KindSubRowSelected { kind, index } => {
-                self.on_kind_sub_row_selected(kind, index, sender)
-            }
-            SidebarInput::ToggleKindExpand(kind) => {
-                self.toggle_row(UnifiedRow::Kind(kind), &sender)
-            }
             SidebarInput::FolderRowSelected { account_id, index } => {
                 self.on_folder_row_selected(account_id, index, sender)
             }
             SidebarInput::SelectFolderRow { account_id, path } => {
                 self.on_select_folder_row(account_id, path, sender)
             }
-            SidebarInput::SetUnread {
-                folders,
-                unified,
-                fresh,
-            } => self.on_set_unread(folders, unified, fresh),
+            SidebarInput::SetUnread { folders, fresh } => self.on_set_unread(folders, fresh),
             SidebarInput::SetBusy(busy) => self.on_set_busy(busy),
             SidebarInput::SetOffline(offline) => self.on_set_offline(offline),
             SidebarInput::SetFocus {

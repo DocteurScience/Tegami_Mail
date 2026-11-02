@@ -187,69 +187,9 @@ impl Preferences {
             .set_active(init.notification_buttons.spam);
     }
 
-    /// Settings → Sidebar: the unified section, placements, start view, folder
+    /// Settings → Sidebar: placements, start view, folder
     /// order and the icon rail.
     pub(super) fn init_sidebar_rows(&self, widgets: &PreferencesWidgets, init: &PrefInit) {
-        widgets
-            .sidebar
-            .show_unified_row
-            .set_active(init.show_unified);
-        widgets
-            .sidebar
-            .unified_chip_all_inboxes_row
-            .set_active(init.unified_chips.all_inboxes);
-        widgets
-            .sidebar
-            .unified_chip_starred_row
-            .set_active(init.unified_chips.starred);
-        widgets
-            .sidebar
-            .unified_chip_drafts_row
-            .set_active(init.unified_chips.drafts);
-        widgets
-            .sidebar
-            .unified_chip_archive_row
-            .set_active(init.unified_chips.archive);
-        widgets
-            .sidebar
-            .unified_chip_junk_row
-            .set_active(init.unified_chips.junk);
-        widgets
-            .sidebar
-            .unified_chip_trash_row
-            .set_active(init.unified_chips.trash);
-        widgets
-            .sidebar
-            .unified_chip_snoozed_row
-            .set_active(init.unified_chips.snoozed);
-        widgets
-            .sidebar
-            .unified_starred_row
-            .set_active(init.unified_kinds.starred);
-        widgets
-            .sidebar
-            .unified_sent_row
-            .set_active(init.unified_kinds.sent);
-        widgets
-            .sidebar
-            .unified_drafts_row
-            .set_active(init.unified_kinds.drafts);
-        widgets
-            .sidebar
-            .unified_archive_row
-            .set_active(init.unified_kinds.archive);
-        widgets
-            .sidebar
-            .unified_junk_row
-            .set_active(init.unified_kinds.junk);
-        widgets
-            .sidebar
-            .unified_trash_row
-            .set_active(init.unified_kinds.trash);
-        widgets
-            .sidebar
-            .unified_snoozed_row
-            .set_active(init.unified_kinds.snoozed);
         widgets
             .sidebar
             .section_style_row
@@ -279,7 +219,7 @@ impl Preferences {
             .sidebar
             .start_view_row
             .set_model(Some(&gtk::StringList::new(&[
-                i18n("All Inboxes").as_str(),
+                i18n("The first account's inbox").as_str(),
                 i18n("The last account's inbox").as_str(),
                 i18n("The last folder").as_str(),
             ])));
@@ -333,14 +273,11 @@ impl Preferences {
             .sidebar
             .rail_fold_row
             .set_enable_expansion(init.rail_fold.enabled);
-        // Unread counts and Fold up expanded items start folded each
+        // Fold up expanded items starts folded each
         // launch and stay as they are left for the rest of the session,
         // a rebuilt Settings window included. Switching expansion on opens
         // a row, so its state is set after that.
-        for (row, i) in [
-            (&widgets.sidebar.unified_chips_row, 0),
-            (&widgets.sidebar.rail_fold_row, 1),
-        ] {
+        for (row, i) in [(&widgets.sidebar.rail_fold_row, 0)] {
             row.set_expanded(SESSION_OPEN.with(|o| o.get()[i]));
             row.connect_expanded_notify(move |row| {
                 SESSION_OPEN.with(|o| {
@@ -354,38 +291,6 @@ impl Preferences {
             .sidebar
             .rail_fold_accounts_row
             .set_active(init.rail_fold.accounts);
-        widgets
-            .sidebar
-            .rail_fold_all_inboxes_row
-            .set_active(init.rail_fold.all_inboxes);
-        widgets
-            .sidebar
-            .rail_fold_starred_row
-            .set_active(init.rail_fold.starred);
-        widgets
-            .sidebar
-            .rail_fold_sent_row
-            .set_active(init.rail_fold.sent);
-        widgets
-            .sidebar
-            .rail_fold_drafts_row
-            .set_active(init.rail_fold.drafts);
-        widgets
-            .sidebar
-            .rail_fold_archive_row
-            .set_active(init.rail_fold.archive);
-        widgets
-            .sidebar
-            .rail_fold_junk_row
-            .set_active(init.rail_fold.junk);
-        widgets
-            .sidebar
-            .rail_fold_trash_row
-            .set_active(init.rail_fold.trash);
-        widgets
-            .sidebar
-            .rail_fold_snoozed_row
-            .set_active(init.rail_fold.snoozed);
         widgets
             .sidebar
             .rail_fold_tags_row

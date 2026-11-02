@@ -39,28 +39,6 @@ fn read_unseen_folders(unseen: Vec<(u32, u32, String)>, sender: &ComponentSender
 }
 
 impl AppModel {
-    /// More than one switched-on account takes part in the unified section:
-    /// with one, or none (every other account left out of it, #267), its
-    /// rows would only repeat an account's own. Counted from config, not
-    /// from the workers that have reported in: at startup the accounts
-    /// stream in one by one, and counting only the connected ones made the
-    /// first sidebar build look single-account — its default selection then
-    /// landed on that account's inbox (possibly inside a collapsed section,
-    /// so nothing visibly highlighted) instead of the "All Inboxes" the app
-    /// should open with.
-    pub(super) fn multi_account(&self) -> bool {
-        self.config.iter().filter(|c| c.enabled && c.in_unified).count() > 1
-            // The demo has no config-file accounts, but its mock accounts
-            // deserve the same All Inboxes opening as a real multi-account setup.
-            || (demo_mode() && self.accounts.iter().filter(|a| self.in_unified(a.id)).count() > 1)
-    }
-
-    /// The sidebar has an Inboxes row: the preference is on and there is
-    /// more than one account to merge.
-    pub(super) fn unified_inboxes_shown(&self) -> bool {
-        self.show_unified_pref && self.multi_account()
-    }
-
     /// An account joined or left the unified section (#267): the unified
     /// Tags lists are read again, and the unified view that was open
     /// (`open`) is loaded afresh over the accounts now in it. When its row
@@ -81,10 +59,6 @@ impl AppModel {
         }
         let Some(view) = open else { return };
         let listed = match view {
-            UnifiedView::Kind(FolderKind::Inbox) => self.unified_inboxes_shown(),
-            UnifiedView::Kind(kind) => {
-                self.multi_account() && self.unified_kinds_listed().has(kind)
-            }
             UnifiedView::Favorites => {
                 self.favorites_placement.shown() && !self.favorites.is_empty()
             }
@@ -113,16 +87,8 @@ impl AppModel {
         sender: &ComponentSender<Self>,
     ) {
         let t_open = std::time::Instant::now();
-        if view == UnifiedView::Kind(FolderKind::Inbox) && !demo_mode() {
-            config::save_last_view(config::LastView::default());
-        }
         self.close_sidebar_peek();
         self.mirror_selection(match view {
-            UnifiedView::Kind(kind) if let Some(acc) = account => {
-                crate::ui::sidebar::Sel::UnifiedKindRow(kind, acc)
-            }
-            UnifiedView::Kind(FolderKind::Inbox) => crate::ui::sidebar::Sel::Unified,
-            UnifiedView::Kind(kind) => crate::ui::sidebar::Sel::UnifiedKind(kind),
             UnifiedView::Favorites => crate::ui::sidebar::Sel::UnifiedFavorites,
         });
         self.showing_outbox = false;
@@ -146,10 +112,9 @@ impl AppModel {
             self.push_unread_counts_later(sender);
         }
         self.blank_reader();
-        self.reset_list_for_unified(view, account);
+        self.reset_list_for_unified(account);
         let reqs = self.unified_targets();
         let unseen = self.seed_unified_slices(&reqs);
-        self.fill_unified_starred();
         // No account has the folder (Snoozed is made by the first snooze,
         // #542): nothing will answer, so the list is empty now rather than
         // loading. Starred reads flags instead, and an account whose
@@ -159,17 +124,12 @@ impl AppModel {
             .iter()
             .filter(|a| self.in_unified(a.id) && account.is_none_or(|x| x == a.id))
             .any(|a| self.folders.get(&a.id).is_none_or(|fs| fs.is_empty()));
-        let waiting =
-            !reqs.is_empty() || unlisted || view == UnifiedView::Kind(FolderKind::Starred);
+        let waiting = !reqs.is_empty() || unlisted;
         self.show_unified_view(waiting, sender);
         // Request every account's inbox; each result replaces that
         // account's slice as it arrives.
         for (account_id, folder_id, path) in reqs {
             self.send_to(account_id, MailRequest::LoadMessages { folder_id, path });
-        }
-        if view == UnifiedView::Kind(FolderKind::Starred) {
-            self.refresh_unified_starred(sender);
-            self.sync_view_flags();
         }
         if !unseen.is_empty() && self.cache.is_some() {
             read_unseen_folders(unseen, sender);
@@ -186,44 +146,28 @@ impl AppModel {
     /// The list and the reader set up for a merged view: nothing selected,
     /// the scope, colors, recipient names and what rows can do as that
     /// kind of folder has them.
-    fn reset_list_for_unified(&self, view: UnifiedView, account: Option<u32>) {
+    fn reset_list_for_unified(&self, account: Option<u32>) {
         self.message_list.emit(MessageListInput::SetSelected(None));
         self.message_list.emit(MessageListInput::ResetPaging);
         self.message_list
-            .emit(MessageListInput::SetScope(default_scope(
-                view == UnifiedView::Kind(FolderKind::Inbox),
-            )));
+            .emit(MessageListInput::SetScope(default_scope(false)));
         self.message_list
             .emit(MessageListInput::SetColorize(account.is_none()));
-        // A Sent view's rows all come from you — name the recipients.
-        self.message_list.emit(MessageListInput::SetShowRecipient(
-            view == UnifiedView::Kind(FolderKind::Sent),
-        ));
-        // Unified Trash and Junk offer the way back as each account's own
-        // folder does (#369); the move and Not Spam go per message.
-        let restorable = matches!(
-            view,
-            UnifiedView::Kind(FolderKind::Trash | FolderKind::Junk)
-        );
+        // The favorite folders mix kinds: rows act as in an ordinary
+        // folder (#367).
         self.message_list
-            .emit(MessageListInput::SetRestorable(restorable));
-        self.message_list.emit(MessageListInput::SetInJunk(
-            view == UnifiedView::Kind(FolderKind::Junk),
-        ));
-        self.message_list.emit(MessageListInput::SetInDrafts(
-            view == UnifiedView::Kind(FolderKind::Drafts),
-        ));
-        // Each message is checked when it is snoozed (#527); unified
-        // Snoozed offers Unsnooze as an account's own does (#542).
-        self.message_list.emit(MessageListInput::SetSnoozeOffer(
-            (view != UnifiedView::Kind(FolderKind::Drafts))
-                .then_some(view == UnifiedView::Kind(FolderKind::Snoozed)),
-        ));
+            .emit(MessageListInput::SetShowRecipient(false));
+        self.message_list
+            .emit(MessageListInput::SetRestorable(false));
+        self.message_list.emit(MessageListInput::SetInJunk(false));
+        self.message_list.emit(MessageListInput::SetInDrafts(false));
+        // Each message is checked when it is snoozed (#527).
+        self.message_list
+            .emit(MessageListInput::SetSnoozeOffer(Some(false)));
         self.message_list
             .emit(MessageListInput::SetInTemplates(false));
-        self.message_view.emit(MessageViewInput::SetDraftsView(
-            view == UnifiedView::Kind(FolderKind::Drafts),
-        ));
+        self.message_view
+            .emit(MessageViewInput::SetDraftsView(false));
     }
 
     /// Keep every account's last known slice and top it up from the
@@ -434,14 +378,6 @@ impl AppModel {
         match msg {
             AppMsg::UnifiedSelected(view) => {
                 self.open_unified(view, &sender);
-            }
-
-            AppMsg::AccountStarredSelected(account_id) => {
-                self.open_unified_in(
-                    UnifiedView::Kind(FolderKind::Starred),
-                    Some(account_id),
-                    &sender,
-                );
             }
 
             AppMsg::FolderSelected {

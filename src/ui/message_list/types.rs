@@ -56,19 +56,6 @@ pub(crate) enum MessageListInput {
     },
     /// The fingerprint of the content about to be set for the view on show.
     SetViewFp(u64),
-    /// Build a view that is not on show and keep it, so its first visit
-    /// is shown as kept: the unified rows, once a start has read their
-    /// folders.
-    Prebuild {
-        key: u64,
-        fp: u64,
-        messages: Vec<Message>,
-    },
-    /// The conversations of the view being built ahead.
-    PrebuildThreads {
-        gen: u64,
-        threads: Box<SourceThreads>,
-    },
     /// Merge more indexed messages into the current list (background backfill),
     /// preserving the current search query and view.
     AppendMessages {

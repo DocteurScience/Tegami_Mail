@@ -14,15 +14,11 @@ impl Sidebar {
     ) {
         let SidebarInput::SetContents {
             mut sections,
-            show_unified,
-            unified_kinds,
             show_accounts,
-            unified_chips,
             chevrons_left,
             account_click_folds,
             rail_dots,
             rail_fold,
-            unified_unread,
             favorite_folders,
             tags,
             section_style,
@@ -52,8 +48,6 @@ impl Sidebar {
             .map(|s| (s.account.id, s.tree_collapsed.iter().cloned().collect()))
             .collect();
         self.sections = sections;
-        self.show_unified = show_unified;
-        self.unified_chips = unified_chips;
         self.chevrons_left = chevrons_left;
         self.account_click_folds = account_click_folds;
         self.rail_dots = rail_dots;
@@ -62,14 +56,12 @@ impl Sidebar {
         // ticked items folded while the sidebar is collapsed and
         // as they are once it expands (see `locked_row`).
         self.rail_fold = rail_fold;
-        self.unified_unread = unified_unread;
         self.favorite_folders = favorite_folders;
         self.tags = tags;
         self.section_style = section_style;
         self.tags_placement = tags_placement;
         self.favorites_placement = favorites_placement;
         self.smart_folders = smart_folders;
-        self.unified_kinds = unified_kinds;
         self.show_accounts = show_accounts;
         self.settle_selection();
         self.rebuild(widgets, &sender);
@@ -95,48 +87,11 @@ impl Sidebar {
                 self.selected = Sel::None;
             }
         }
-        // A unified row switched off in Settings (or with nothing
-        // left to list): its view stays, nothing shows selected.
-        if let Sel::UnifiedKind(kind) = &self.selected {
-            if !self.unified_kinds.has(*kind) {
-                self.selected = Sel::None;
-            }
-        }
         if self.selected == Sel::UnifiedFavorites && !self.favorites_shown() {
             self.selected = Sel::None;
         }
-        // All Inboxes gone (one account or none left in the unified
-        // section, #267): the usual first view is picked again.
-        if self.selected == Sel::Unified && !self.show_unified {
-            self.selected = Sel::None;
-        }
-        // An inbox or folder picked under a unified row whose account
-        // has just left the unified section is still the open
-        // folder: carry the highlight to the account's own row.
-        let left_unified = |acc: u32| {
-            self.sections
-                .iter()
-                .find(|s| s.account.id == acc)
-                .map(|s| !s.in_unified)
-        };
-        let moved = match &self.selected {
-            Sel::UnifiedInbox(acc) => Some((*acc, FolderKind::Inbox)),
-            Sel::UnifiedKindRow(kind, acc) => Some((*acc, *kind)),
-            _ => None,
-        };
-        if let Some((acc, kind)) = moved.filter(|(acc, _)| left_unified(*acc) == Some(true)) {
-            self.selected = self.own_folder_row(acc, kind);
-        }
         if self.selected == Sel::UnifiedTags && !self.unified_tags_shown() {
             self.selected = Sel::None;
-        }
-        // A folder picked in a switched-off row's account list is
-        // still the open folder: carry the highlight to the
-        // account's own row.
-        if let Sel::UnifiedKindRow(kind, acc) = self.selected.clone() {
-            if !self.unified_kinds.has(kind) {
-                self.selected = self.own_folder_row(acc, kind);
-            }
         }
         // A folder taken out of Favorites is still the open folder.
         if let Sel::Favorite(acc, path) = &self.selected {
@@ -148,18 +103,6 @@ impl Sidebar {
                 self.selected = Sel::Folder(*acc, path.clone());
             }
         }
-    }
-
-    /// The row of account `acc`'s own folder of `kind`, or nothing when it
-    /// has none.
-    fn own_folder_row(&self, acc: u32, kind: FolderKind) -> Sel {
-        let path = self
-            .sections
-            .iter()
-            .find(|s| s.account.id == acc)
-            .and_then(|s| s.folders.iter().find(|f| f.kind == kind))
-            .map(|f| f.path.clone());
-        path.map_or(Sel::None, |p| Sel::Folder(acc, p))
     }
 
     pub(super) fn on_set_outbox_count(
@@ -213,7 +156,6 @@ impl Sidebar {
     pub(super) fn on_set_unread(
         &mut self,
         folders: HashMap<(u32, u32), u32>,
-        unified: u32,
         fresh: Option<std::collections::HashSet<(u32, u32)>>,
     ) {
         self.fresh = fresh;
@@ -233,20 +175,11 @@ impl Sidebar {
         for ((aid, fid), label) in self
             .folder_badges
             .iter()
-            .chain(&self.unified_inbox_badges)
             .chain(self.kind_widgets.values().flat_map(|w| &w.row_badges))
         {
             let n = folders.get(&(*aid, *fid)).copied().unwrap_or(0);
             label.set_text(&n.to_string());
             label.set_visible(n > 0);
-        }
-        if let Some(label) = &self.unified_badge {
-            label.set_text(&unified.to_string());
-            label.set_visible(
-                unified > 0
-                    && !self.row_shown_open(UnifiedRow::Kind(FolderKind::Inbox))
-                    && self.unified_chips.all_inboxes,
-            );
         }
         for (row, w) in &self.kind_widgets {
             let total: u32 = w
@@ -275,7 +208,6 @@ impl Sidebar {
                 label.set_visible(self.account_shown_folded(section) && n > 0);
             }
         }
-        self.unified_unread = unified;
         self.restyle_seen();
         // Persist the fresh counts into `sections` as well. Otherwise the
         // next rebuild_normal (e.g. toggling the sidebar collapse) recreates

@@ -105,34 +105,6 @@ fn favorites_load_in_order() {
     );
 }
 
-/// #369: unified Junk and Trash are off in a file that predates them,
-/// and list after Archive, in an account's own order. Snoozed (#542) is
-/// on, and closes the run.
-#[test]
-fn unified_junk_and_trash_start_off() {
-    use crate::models::FolderKind::*;
-    let kinds: super::UnifiedKinds = toml::from_str("starred = false").expect("parses");
-    assert!(!kinds.junk && !kinds.trash && kinds.snoozed && kinds.archive);
-    assert_eq!(kinds.listed(), vec![Sent, Drafts, Archive, Snoozed]);
-    let all = super::UnifiedKinds {
-        junk: true,
-        trash: true,
-        ..Default::default()
-    };
-    assert_eq!(
-        all.listed(),
-        vec![Starred, Sent, Drafts, Archive, Junk, Trash, Snoozed]
-    );
-    assert_eq!(
-        super::UnifiedKinds {
-            trash: true,
-            ..super::UnifiedKinds::NONE
-        }
-        .listed(),
-        vec![Trash]
-    );
-}
-
 /// #334: the saved columns come back in order; a name this version does
 /// not know, or a repeat, is dropped, and the subject is never missing.
 #[test]

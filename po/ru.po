@@ -559,18 +559,6 @@ msgstr ""
 msgid "Empty"
 msgstr "Очистить"
 
-msgid "Empty Trash in Every Account?"
-msgstr ""
-
-msgid "Empty Junk in Every Account?"
-msgstr ""
-
-#, fuzzy
-msgid ""
-"Every message in them will be erased from the server. This can’t be undone."
-msgstr ""
-"Все сообщения в нем будут удалены с сервера. Это действие нельзя отменить."
-
 msgid "Create Folder"
 msgstr "Создать папку"
 
@@ -1183,9 +1171,6 @@ msgstr "Режим фокусировки"
 
 msgid "View"
 msgstr ""
-
-msgid "All accounts"
-msgstr "Все учётные записи"
 
 msgid "Outbox"
 msgstr "Исходящие"
@@ -2861,6 +2846,9 @@ msgstr "Файлы HTML и текстовые файлы"
 
 msgid "Could Not Read the File"
 msgstr "Не удалось прочитать файл"
+
+msgid "All accounts"
+msgstr "Все учётные записи"
 
 msgid "All but Trash and Junk"
 msgstr ""
@@ -5260,8 +5248,9 @@ msgstr "Над учётными записями"
 msgid "Below the accounts"
 msgstr "Под учётными записями"
 
-msgid "All Inboxes"
-msgstr "Все входящие"
+#, fuzzy
+msgid "The first account's inbox"
+msgstr "Папка «Входящие» последней учётной записи"
 
 msgid "The last account's inbox"
 msgstr "Папка «Входящие» последней учётной записи"
@@ -5740,28 +5729,6 @@ msgstr "Выделять только новые непрочитанные пи
 msgid "A count turns grey once you have looked at the folder."
 msgstr ""
 
-msgid "Unified"
-msgstr "Общие"
-
-#, fuzzy
-msgid "Shown only with more than one account."
-msgstr "Показывать только эту учётную запись"
-
-msgid "Inboxes"
-msgstr "Входящие"
-
-msgid "Snoozed"
-msgstr ""
-
-msgid "Shown only while mail is snoozed."
-msgstr ""
-
-msgid "Unread counts"
-msgstr "Счётчики непрочитанного"
-
-msgid "Shown on the unified rows while they are folded up."
-msgstr ""
-
 #, fuzzy
 msgid "Sections"
 msgstr "Действия"
@@ -6117,12 +6084,6 @@ msgstr "Добавить первую учётную запись"
 
 msgid "No accounts yet"
 msgstr "Учётные записи пока не добавлены"
-
-msgid "Show each inbox"
-msgstr "Показывать каждую папку «Входящие»"
-
-msgid "Show each account"
-msgstr "Показывать каждую учётную запись"
 
 msgid "Show each folder"
 msgstr "Показывать каждую папку"
@@ -6918,15 +6879,12 @@ msgid ""
 "differ."
 msgstr ""
 
-msgid "Show in All Inboxes"
-msgstr "Отображать во «Всех входящих»"
-
 #, fuzzy
-msgid "Also in the unified Starred, Sent, Drafts, Archive, Filters and Tags."
+msgid "Show in combined views"
+msgstr "Заголовки столбцов"
+
+msgid "Favorites, Tags and Smart Folders across accounts."
 msgstr ""
-"Включать почту этой учётной записи в объединённые папки «Входящие», "
-"«Отмеченные», «Отправленные», «Черновики» и «Архив», а также в объединённые "
-"фильтры и метки."
 
 msgid "Test Connection"
 msgstr "Проверить соединение"
@@ -7117,6 +7075,9 @@ msgstr ""
 
 msgid "Templates"
 msgstr "Шаблоны"
+
+msgid "Snoozed"
+msgstr ""
 
 msgid "Hidden Folders"
 msgstr "Скрытые папки"
@@ -7828,6 +7789,46 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#, fuzzy
+#~ msgid ""
+#~ "Every message in them will be erased from the server. This can’t be "
+#~ "undone."
+#~ msgstr ""
+#~ "Все сообщения в нем будут удалены с сервера. Это действие нельзя отменить."
+
+#~ msgid "All Inboxes"
+#~ msgstr "Все входящие"
+
+#~ msgid "Unified"
+#~ msgstr "Общие"
+
+#, fuzzy
+#~ msgid "Shown only with more than one account."
+#~ msgstr "Показывать только эту учётную запись"
+
+#~ msgid "Inboxes"
+#~ msgstr "Входящие"
+
+#~ msgid "Unread counts"
+#~ msgstr "Счётчики непрочитанного"
+
+#~ msgid "Show each inbox"
+#~ msgstr "Показывать каждую папку «Входящие»"
+
+#~ msgid "Show each account"
+#~ msgstr "Показывать каждую учётную запись"
+
+#~ msgid "Show in All Inboxes"
+#~ msgstr "Отображать во «Всех входящих»"
+
+#, fuzzy
+#~ msgid ""
+#~ "Also in the unified Starred, Sent, Drafts, Archive, Filters and Tags."
+#~ msgstr ""
+#~ "Включать почту этой учётной записи в объединённые папки «Входящие», "
+#~ "«Отмеченные», «Отправленные», «Черновики» и «Архив», а также в "
+#~ "объединённые фильтры и метки."
 
 #~ msgid "Filters placement"
 #~ msgstr "Расположение фильтров"

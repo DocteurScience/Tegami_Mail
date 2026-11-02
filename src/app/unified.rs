@@ -1,14 +1,13 @@
 //! The unified views (All Inboxes, Starred, Favorites ...): one list merged
 //! from many folders, rebuilt only when what it holds changed.
 
-use std::collections::{HashMap, HashSet};
+use std::collections::HashSet;
 
 use relm4::prelude::*;
 
 use crate::models::{FolderKind, Message};
 use crate::ui::message_list::MessageListInput;
 
-use super::demo::demo_mode;
 use super::model::AppModel;
 use super::msg::AppMsg;
 use super::types::UnifiedView;
@@ -52,10 +51,6 @@ fn content_fp<'a>(msgs: impl Iterator<Item = &'a Message>) -> u64 {
 /// once, read from the index while the rest of the folder is.
 pub(super) const LIST_NEWEST: usize = 300;
 
-/// How long after an account's folders arrive the unified rows' folders are
-/// read into memory: past the start's own rush of work.
-const PRELOAD_AFTER_SECS: u32 = 5;
-
 impl AppModel {
     /// Merge the unified view's slices for the list shortly (and hand it the
     /// new thread links), once for every answer that lands meanwhile. Each
@@ -77,134 +72,6 @@ impl AppModel {
         let s = sender.input_sender().clone();
         gtk::glib::timeout_add_local_once(wait, move || {
             let _ = s.send(AppMsg::EmitUnified);
-        });
-    }
-
-    /// `PrebuildViews` shortly, once for however many folder reads land
-    /// meanwhile.
-    fn schedule_prebuild(&mut self, sender: &ComponentSender<Self>) {
-        if std::mem::replace(&mut self.prebuild_due, true) {
-            return;
-        }
-        let s = sender.input_sender().clone();
-        gtk::glib::timeout_add_seconds_local_once(2, move || {
-            let _ = s.send(AppMsg::PrebuildViews);
-        });
-    }
-
-    /// Hand the message list the next unified row to build ahead: one whose
-    /// folders are all in memory, not on show, and not kept as it is. The
-    /// next follows a moment later, so the window keeps drawing between.
-    fn prebuild_next(&mut self, sender: &ComponentSender<Self>) {
-        while let Some(view) = self.prebuild_queue.pop() {
-            let UnifiedView::Kind(kind) = view else {
-                continue;
-            };
-            let key = view_key_of(view, None);
-            if self.unified && self.unified_view_key() == key {
-                continue;
-            }
-            let targets: Vec<(u32, u32)> = self
-                .accounts
-                .iter()
-                .filter(|a| self.in_unified(a.id))
-                .filter_map(|a| self.folder_of_kind(a.id, kind).map(|f| (a.id, f.id)))
-                .collect();
-            if targets.is_empty() || targets.iter().any(|k| !self.message_cache.contains_key(k)) {
-                continue;
-            }
-            let content = || {
-                targets
-                    .iter()
-                    .filter_map(|k| self.message_cache.get(k))
-                    .flatten()
-            };
-            if content().count() > crate::ui::message_list::KEEP_AT_MOST {
-                continue;
-            }
-            let fp = content_fp(content());
-            if self.message_list.model().has_view(key, fp) {
-                continue;
-            }
-            let mut messages: Vec<Message> = content().cloned().collect();
-            messages.sort_by_key(|m| std::cmp::Reverse(m.timestamp));
-            tracing::debug!(
-                "prebuild: {view:?}, {} messages ({})",
-                messages.len(),
-                self.message_list.model().view_miss(key, fp)
-            );
-            self.message_list
-                .emit(MessageListInput::Prebuild { key, fp, messages });
-            let s = sender.input_sender().clone();
-            gtk::glib::timeout_add_local_once(std::time::Duration::from_millis(300), move || {
-                let _ = s.send(AppMsg::PrebuildNext);
-            });
-            return;
-        }
-    }
-
-    /// `preload` a few seconds from now, once for however many accounts'
-    /// folders arrive meanwhile.
-    pub(super) fn schedule_preload(&mut self, sender: &ComponentSender<Self>) {
-        if std::mem::replace(&mut self.preload_due, true) {
-            return;
-        }
-        let s = sender.input_sender().clone();
-        gtk::glib::timeout_add_seconds_local_once(PRELOAD_AFTER_SECS, move || {
-            let _ = s.send(AppMsg::Preload);
-        });
-    }
-
-    /// Read the folders the unified rows merge (Inboxes, Sent, Drafts,
-    /// Archive and the rest switched on, every account in the unified
-    /// section) into memory off the main thread, those not there yet. The
-    /// first visit to a row after a start then opens from memory as later
-    /// ones do; the folders were going to be held from that visit on anyway.
-    fn preload(&mut self, sender: &ComponentSender<Self>) {
-        if self.cache.is_none() || demo_mode() && self.config.is_empty() {
-            return;
-        }
-        let mut kinds = self.unified_kinds_listed().listed();
-        kinds.push(FolderKind::Inbox);
-        let wanted: Vec<(u32, u32, String, FolderKind)> = self
-            .accounts
-            .iter()
-            .filter(|a| self.in_unified(a.id))
-            .flat_map(|a| self.folders.get(&a.id).into_iter().flatten())
-            .filter(|f| kinds.contains(&f.kind))
-            .filter(|f| !self.message_cache.contains_key(&(f.account_id, f.id)))
-            .map(|f| (f.account_id, f.id, f.path.clone(), f.kind))
-            .collect();
-        if wanted.is_empty() {
-            self.schedule_prebuild(sender);
-            return;
-        }
-        let s = sender.input_sender().clone();
-        std::thread::spawn(move || {
-            let t = std::time::Instant::now();
-            let lists: Vec<((u32, u32), Vec<Message>)> = match crate::cache::Cache::open() {
-                Ok(cache) => {
-                    // A row too large to be built ahead is not read ahead
-                    // either: it is read at its visit, as any folder is (#504).
-                    let mut sizes: HashMap<FolderKind, usize> = HashMap::new();
-                    for (a, _, path, kind) in &wanted {
-                        *sizes.entry(*kind).or_default() += cache.count_messages(*a, path);
-                    }
-                    wanted
-                        .into_iter()
-                        .filter(|(.., kind)| sizes[kind] <= crate::ui::message_list::KEEP_AT_MOST)
-                        .map(|(a, f, path, _)| ((a, f), cache.load_messages(a, &path, f)))
-                        .collect()
-                }
-                Err(_) => Vec::new(),
-            };
-            tracing::debug!(
-                "preload: {} folders, {} messages, read in {:?}",
-                lists.len(),
-                lists.iter().map(|(_, l)| l.len()).sum::<usize>(),
-                t.elapsed()
-            );
-            let _ = s.send(AppMsg::UnifiedFoldersLoaded { lists });
         });
     }
 
@@ -236,15 +103,6 @@ impl AppModel {
             .filter_map(|k| self.message_cache.get(k))
             .flat_map(|v| v.iter());
         filled.chain(unfilled)
-    }
-
-    /// Whether the open unified view reads its folders from the folder
-    /// caches rather than from copies. A row of whole folders has nothing a
-    /// copy would add, and an Archive's copy was tens of megabytes (#504).
-    /// Starred keeps its slices: they are a folder's starred messages, not
-    /// the folder.
-    pub(super) fn unified_reads_through(&self) -> bool {
-        matches!(self.unified_view, UnifiedView::Kind(kind) if kind != FolderKind::Starred)
     }
 
     /// The folders on show: the open unified view's, or the open folder.
@@ -328,13 +186,6 @@ impl AppModel {
     /// the unified slices.
     pub(super) fn fill_unified_slices(&mut self) {
         let t = std::time::Instant::now();
-        if self.unified_reads_through() {
-            // Read where they are; only a newest-first slice goes.
-            for key in &self.unified_unfilled {
-                self.unified_slices.remove(key);
-            }
-            return;
-        }
         for key in std::mem::take(&mut self.unified_unfilled) {
             match self.message_cache.get(&key) {
                 Some(c) if !c.is_empty() => {
@@ -374,24 +225,9 @@ impl AppModel {
             .emit(MessageListInput::SetMessages { messages: merged });
     }
 
-    /// Whether an account's mail belongs in the open unified view: it is in
-    /// the unified section, and the view is not narrowed to another one.
-    fn in_unified_view(&self, account_id: u32) -> bool {
-        self.in_unified(account_id) && self.unified_account.is_none_or(|a| a == account_id)
-    }
-
     /// The folders the open unified view merges: (account, folder id, path).
     pub(super) fn unified_targets(&self) -> Vec<(u32, u32, String)> {
         match self.unified_view {
-            UnifiedView::Kind(kind) => self
-                .accounts
-                .iter()
-                .filter(|a| self.in_unified_view(a.id))
-                .filter_map(|a| {
-                    self.folder_of_kind(a.id, kind)
-                        .map(|f| (a.id, f.id, f.path.clone()))
-                })
-                .collect(),
             UnifiedView::Favorites => self
                 .favorite_folder_refs()
                 .into_iter()
@@ -403,12 +239,6 @@ impl AppModel {
     /// Whether a folder is one the open unified view merges.
     pub(super) fn is_unified_target(&self, account_id: u32, folder_id: u32) -> bool {
         match self.unified_view {
-            UnifiedView::Kind(kind) => {
-                self.in_unified_view(account_id)
-                    && self
-                        .folder_of_kind(account_id, kind)
-                        .is_some_and(|f| f.id == folder_id)
-            }
             UnifiedView::Favorites => self
                 .favorite_folder_refs()
                 .iter()
@@ -417,41 +247,11 @@ impl AppModel {
     }
 
     /// The messages the router sends here (see `AppModel::route`).
-    pub(super) fn on_unified(&mut self, msg: AppMsg, sender: ComponentSender<Self>) {
+    pub(super) fn on_unified(&mut self, msg: AppMsg) {
         match msg {
             AppMsg::FillUnifiedSlices => self.fill_unified_slices(),
 
-            AppMsg::Preload => {
-                self.preload_due = false;
-                self.preload(&sender);
-            }
-
-            AppMsg::PrebuildViews => {
-                self.prebuild_due = false;
-                let mut views: Vec<UnifiedView> = Vec::new();
-                if self.multi_account() {
-                    if self.unified_inboxes_shown() {
-                        views.push(UnifiedView::Kind(FolderKind::Inbox));
-                    }
-                    // Starred is built from the flags of every folder, and
-                    // is small: its first visit builds it.
-                    views.extend(
-                        self.unified_kinds_listed()
-                            .listed()
-                            .into_iter()
-                            .filter(|k| *k != FolderKind::Starred)
-                            .map(UnifiedView::Kind),
-                    );
-                }
-                // Taken from the end: the Inboxes first.
-                views.reverse();
-                self.prebuild_queue = views;
-                self.prebuild_next(&sender);
-            }
-
-            AppMsg::PrebuildNext => self.prebuild_next(&sender),
-
-            AppMsg::UnifiedFoldersLoaded { lists } => self.on_unified_folders_loaded(lists, sender),
+            AppMsg::UnifiedFoldersLoaded { lists } => self.on_unified_folders_loaded(lists),
 
             AppMsg::PushUnreadCounts => self.push_unread_counts(),
 
@@ -476,12 +276,8 @@ impl AppModel {
     }
 
     /// Folders not in memory yet, read whole from the index off the main
-    /// thread: for the unified view being opened, or ahead of it (`Preload`).
-    fn on_unified_folders_loaded(
-        &mut self,
-        lists: Vec<((u32, u32), Vec<Message>)>,
-        sender: ComponentSender<Self>,
-    ) {
+    /// thread: for the unified view being opened.
+    fn on_unified_folders_loaded(&mut self, lists: Vec<((u32, u32), Vec<Message>)>) {
         let open = self.unified;
         let mut landed = false;
         for ((account_id, folder_id), messages) in lists {
@@ -503,14 +299,9 @@ impl AppModel {
             }
             let messages = self.overlay_local_state(account_id, folder_id, messages);
             if open && self.is_unified_target(account_id, folder_id) {
-                if self.unified_reads_through() {
-                    self.unified_slices.remove(&(account_id, folder_id));
-                    self.unified_unfilled.insert((account_id, folder_id));
-                } else {
-                    self.unified_unfilled.remove(&(account_id, folder_id));
-                    self.unified_slices
-                        .insert((account_id, folder_id), messages.clone());
-                }
+                self.unified_unfilled.remove(&(account_id, folder_id));
+                self.unified_slices
+                    .insert((account_id, folder_id), messages.clone());
                 landed = true;
             } else if !open
                 && self
@@ -532,7 +323,6 @@ impl AppModel {
             self.emit_unified();
             self.push_index_complete();
         }
-        self.schedule_prebuild(&sender);
     }
 }
 
@@ -543,13 +333,9 @@ mod tests {
 
     #[test]
     fn view_keys_differ_by_view_and_account() {
-        let inbox = UnifiedView::Kind(FolderKind::Inbox);
-        assert_eq!(view_key_of(inbox, None), view_key_of(inbox, None));
-        assert_ne!(view_key_of(inbox, None), view_key_of(inbox, Some(1)));
-        assert_ne!(
-            view_key_of(inbox, None),
-            view_key_of(UnifiedView::Favorites, None)
-        );
+        let fav = UnifiedView::Favorites;
+        assert_eq!(view_key_of(fav, None), view_key_of(fav, None));
+        assert_ne!(view_key_of(fav, None), view_key_of(fav, Some(1)));
     }
 
     /// The fingerprint ignores order, and (B29) only hashes the lengths of

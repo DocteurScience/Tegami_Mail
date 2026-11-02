@@ -541,18 +541,6 @@ msgstr ""
 msgid "Empty"
 msgstr "Svuota"
 
-msgid "Empty Trash in Every Account?"
-msgstr "Svuotare il Cestino in tutti gli account?"
-
-msgid "Empty Junk in Every Account?"
-msgstr "Svuotare la Posta indesiderata in tutti gli account?"
-
-msgid ""
-"Every message in them will be erased from the server. This can’t be undone."
-msgstr ""
-"Ogni messaggio in essi verrà cancellato dal server. Questa azione non può "
-"essere annullata."
-
 msgid "Create Folder"
 msgstr "Crea cartella"
 
@@ -1132,9 +1120,6 @@ msgstr "Disattiva modalità focus"
 
 msgid "View"
 msgstr "Vista"
-
-msgid "All accounts"
-msgstr "Tutti gli account"
 
 msgid "Outbox"
 msgstr "Posta in uscita"
@@ -2799,6 +2784,9 @@ msgstr "File HTML e di testo"
 
 msgid "Could Not Read the File"
 msgstr "Impossibile leggere il file"
+
+msgid "All accounts"
+msgstr "Tutti gli account"
 
 msgid "All but Trash and Junk"
 msgstr "Tutto tranne Cestino e Posta indesiderata"
@@ -5164,8 +5152,9 @@ msgstr "Sopra gli account"
 msgid "Below the accounts"
 msgstr "Sotto gli account"
 
-msgid "All Inboxes"
-msgstr "Tutte le caselle in arrivo"
+#, fuzzy
+msgid "The first account's inbox"
+msgstr "La posta in arrivo dell'ultimo account"
 
 msgid "The last account's inbox"
 msgstr "La posta in arrivo dell'ultimo account"
@@ -5640,28 +5629,6 @@ msgstr "Evidenzia solo la nuova posta non letta"
 msgid "A count turns grey once you have looked at the folder."
 msgstr ""
 
-msgid "Unified"
-msgstr "Unificato"
-
-#, fuzzy
-msgid "Shown only with more than one account."
-msgstr "Mostra solo questo account"
-
-msgid "Inboxes"
-msgstr "Caselle in arrivo"
-
-msgid "Snoozed"
-msgstr ""
-
-msgid "Shown only while mail is snoozed."
-msgstr ""
-
-msgid "Unread counts"
-msgstr "Conteggi non letti"
-
-msgid "Shown on the unified rows while they are folded up."
-msgstr ""
-
 #, fuzzy
 msgid "Sections"
 msgstr "Azioni"
@@ -6013,12 +5980,6 @@ msgstr "Aggiungi il primo account"
 
 msgid "No accounts yet"
 msgstr "Nessun account ancora"
-
-msgid "Show each inbox"
-msgstr "Mostra ogni posta in arrivo"
-
-msgid "Show each account"
-msgstr "Mostra ogni account"
 
 msgid "Show each folder"
 msgstr "Mostra ogni cartella"
@@ -6807,14 +6768,12 @@ msgid ""
 "differ."
 msgstr ""
 
-msgid "Show in All Inboxes"
-msgstr "Mostra in tutte le caselle in arrivo"
-
 #, fuzzy
-msgid "Also in the unified Starred, Sent, Drafts, Archive, Filters and Tags."
+msgid "Show in combined views"
+msgstr "Intestazioni colonne"
+
+msgid "Favorites, Tags and Smart Folders across accounts."
 msgstr ""
-"Includi la posta di questo account nelle Posta in arrivo, Contrassegnati, "
-"Inviati, Bozze e Archivio unificati, e nei Filtri e Etichette unificati."
 
 msgid "Test Connection"
 msgstr "Test connessione"
@@ -7011,6 +6970,9 @@ msgstr ""
 
 msgid "Templates"
 msgstr "Modelli"
+
+msgid "Snoozed"
+msgstr ""
 
 msgid "Hidden Folders"
 msgstr "Cartelle nascoste"
@@ -7723,6 +7685,51 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Empty Trash in Every Account?"
+#~ msgstr "Svuotare il Cestino in tutti gli account?"
+
+#~ msgid "Empty Junk in Every Account?"
+#~ msgstr "Svuotare la Posta indesiderata in tutti gli account?"
+
+#~ msgid ""
+#~ "Every message in them will be erased from the server. This can’t be "
+#~ "undone."
+#~ msgstr ""
+#~ "Ogni messaggio in essi verrà cancellato dal server. Questa azione non può "
+#~ "essere annullata."
+
+#~ msgid "All Inboxes"
+#~ msgstr "Tutte le caselle in arrivo"
+
+#~ msgid "Unified"
+#~ msgstr "Unificato"
+
+#, fuzzy
+#~ msgid "Shown only with more than one account."
+#~ msgstr "Mostra solo questo account"
+
+#~ msgid "Inboxes"
+#~ msgstr "Caselle in arrivo"
+
+#~ msgid "Unread counts"
+#~ msgstr "Conteggi non letti"
+
+#~ msgid "Show each inbox"
+#~ msgstr "Mostra ogni posta in arrivo"
+
+#~ msgid "Show each account"
+#~ msgstr "Mostra ogni account"
+
+#~ msgid "Show in All Inboxes"
+#~ msgstr "Mostra in tutte le caselle in arrivo"
+
+#, fuzzy
+#~ msgid ""
+#~ "Also in the unified Starred, Sent, Drafts, Archive, Filters and Tags."
+#~ msgstr ""
+#~ "Includi la posta di questo account nelle Posta in arrivo, Contrassegnati, "
+#~ "Inviati, Bozze e Archivio unificati, e nei Filtri e Etichette unificati."
 
 #~ msgid "Filters placement"
 #~ msgstr "Posizione filtri"

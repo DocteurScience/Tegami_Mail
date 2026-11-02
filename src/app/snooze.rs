@@ -9,7 +9,6 @@ use std::time::{Duration, Instant};
 use adw::prelude::*;
 use relm4::prelude::*;
 
-use super::types::UnifiedView;
 use crate::config::{self, Snooze};
 use crate::i18n::i18n;
 use crate::models::{FolderKind, Message};
@@ -82,7 +81,6 @@ impl AppModel {
                 count,
             } => {
                 self.snoozed_held.insert((account_id, path), count);
-                self.sync_snoozed_row();
             }
             _ => unreachable!("not routed to on_snooze"),
         }
@@ -188,7 +186,8 @@ impl AppModel {
         };
         if self.many_selected() {
             if self.unified {
-                return self.unified_view == UnifiedView::Kind(FolderKind::Snoozed);
+                // The Favorites view: each message's own folder decides.
+                return false;
             }
             return self
                 .selected
@@ -280,7 +279,6 @@ impl AppModel {
             config::save_snoozed(&self.snoozed);
         }
         self.push_snoozed();
-        self.sync_snoozed_row();
         // Recount the Snoozed folders once the moves just asked for have
         // landed (a worker takes requests in order), so the row does not
         // wait for the next round to go with the last of their mail.
@@ -292,14 +290,6 @@ impl AppModel {
             .collect();
         for account_id in accounts {
             self.send_to(account_id, MailRequest::RefreshUnread);
-        }
-    }
-
-    /// The unified Snoozed row comes with the first snoozed message and
-    /// goes with the last (#542).
-    pub(super) fn sync_snoozed_row(&self) {
-        if self.unified_kinds_listed().snoozed != self.snoozed_row.get() {
-            self.rebuild_sidebar();
         }
     }
 
@@ -317,7 +307,6 @@ impl AppModel {
         };
         let key = (account_id, f.path.clone());
         self.snoozed_held.insert(key, count as u32);
-        self.sync_snoozed_row();
     }
 
     /// Undo and Redo of a Snooze (#542): mail an undo takes out of its
@@ -361,30 +350,6 @@ impl AppModel {
         if changed {
             self.save_snoozed();
         }
-    }
-
-    /// The unified rows the sidebar lists: those switched on, Snoozed only
-    /// while mail of an account in the unified section is snoozed (#542),
-    /// as Filters and Tags show only with a rule or a tag to list. Snoozed
-    /// means a Snoozed folder the server says holds mail, whoever put it
-    /// there, or a snooze made here that no recount has seen land yet.
-    pub(super) fn unified_kinds_listed(&self) -> config::UnifiedKinds {
-        let mut kinds = self.unified_kinds;
-        let recorded = self.snoozed.iter().any(|s| {
-            self.account_id_by_email(&s.account)
-                .is_some_and(|id| self.in_unified(id))
-        });
-        let held = self
-            .accounts
-            .iter()
-            .filter(|a| self.in_unified(a.id))
-            .filter_map(|a| {
-                let path = self.folder_path_for(a.id, FolderKind::Snoozed)?;
-                self.snoozed_held.get(&(a.id, path)).copied()
-            })
-            .any(|n| n > 0);
-        kinds.snoozed &= recorded || held;
-        kinds
     }
 
     /// Tell the list when each snoozed message comes back, for its rows.

@@ -373,10 +373,6 @@ impl SimpleComponent for MessageList {
                 self.on_set_view(key, fp, restore, &sender)
             }
             MessageListInput::SetViewFp(fp) => self.view_fp = fp,
-            MessageListInput::Prebuild { key, fp, messages } => self.on_prebuild(key, fp, messages),
-            MessageListInput::PrebuildThreads { gen, threads } => {
-                self.on_prebuild_threads(gen, *threads)
-            }
             MessageListInput::SetMessages { messages } => self.on_set_messages(messages),
             MessageListInput::AppendMessages { messages } => self.on_append_messages(messages),
             MessageListInput::SetLoading => self.on_set_loading(&sender),

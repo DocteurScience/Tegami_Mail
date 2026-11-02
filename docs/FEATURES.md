@@ -5,7 +5,7 @@ The full list. The [README](../README.md) carries a shorter one.
 ## Accounts
 
 - **Multiple accounts:** IMAP, POP3 and JMAP, each on its own background
-  worker, with a unified *Inboxes* view across all of them.
+  worker, each with its own folders.
 - **JMAP:** a Stalwart or Fastmail mailbox over the JSON mail protocol,
   including push. See [Configuration](DOCUMENTATION.md#jmap-stalwart-fastmail).
 - **OAuth 2.0 sign-in:** Microsoft with Tegami Mail's own app (no GNOME Online
@@ -63,8 +63,8 @@ The full list. The [README](../README.md) carries a shorter one.
 - **Smart folders:** saved searches across accounts and folders, on
   starred, unread, attachments, tags and the filter conditions, with unread
   counts. See [Smart folders](DOCUMENTATION.md#smart-folders).
-- **Unified folders:** Inboxes, Starred, Sent, Drafts, Archive, Junk, Trash
-  and Snoozed across accounts, and any folders you keep in Favorites.
+- **Favorites:** any folders, from any account, listed together and merged
+  in one view.
 - **Empty Trash and Junk**, by hand or automatically after a number of days,
   and move old newsletter and mailing-list mail out of the Inbox the same way.
 - **Delete an attachment from the server:** take a large file out of a

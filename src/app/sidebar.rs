@@ -70,15 +70,7 @@ impl AppModel {
             icon_only: self.sidebar_collapsed,
             tree_collapsed: self.tree_collapsed.clone(),
             folder_order: self.folder_order.clone(),
-            unified_expanded: self.unified_expanded,
             tags_expanded: self.tags_expanded,
-            starred_expanded: self.starred_expanded,
-            sent_expanded: self.sent_expanded,
-            drafts_expanded: self.drafts_expanded,
-            archive_expanded: self.archive_expanded,
-            junk_expanded: self.junk_expanded,
-            trash_expanded: self.trash_expanded,
-            snoozed_expanded: self.snoozed_expanded,
             favorites: self.favorites.clone(),
             favorites_expanded: self.favorites_expanded,
             smart_expanded: self.smart_expanded,
@@ -329,61 +321,25 @@ impl AppModel {
         }
     }
 
-    /// The sidebar's All Inboxes / Filtered Folders / Tags sections were
+    /// The sidebar's Tags / Favorites / Smart Folders sections were
     /// opened or folded — record it with the layout.
     fn on_sidebar_sections_open(&mut self, msg: AppMsg) {
         let AppMsg::SidebarSectionsOpen {
-            all_inboxes,
             tags,
-            starred,
-            sent,
-            drafts,
-            archive,
-            junk,
-            trash,
-            snoozed,
             favorites,
             smart,
         } = msg
         else {
             unreachable!("only SidebarSectionsOpen comes here")
         };
-        let now = [
-            all_inboxes,
-            tags,
-            starred,
-            sent,
-            drafts,
-            archive,
-            junk,
-            trash,
-            snoozed,
-            favorites,
-            smart,
-        ];
+        let now = [tags, favorites, smart];
         let was = [
-            self.unified_expanded,
             self.tags_expanded,
-            self.starred_expanded,
-            self.sent_expanded,
-            self.drafts_expanded,
-            self.archive_expanded,
-            self.junk_expanded,
-            self.trash_expanded,
-            self.snoozed_expanded,
             self.favorites_expanded,
             self.smart_expanded,
         ];
         if now != was {
-            self.unified_expanded = all_inboxes;
             self.tags_expanded = tags;
-            self.starred_expanded = starred;
-            self.sent_expanded = sent;
-            self.drafts_expanded = drafts;
-            self.archive_expanded = archive;
-            self.junk_expanded = junk;
-            self.trash_expanded = trash;
-            self.snoozed_expanded = snoozed;
             self.favorites_expanded = favorites;
             self.smart_expanded = smart;
             self.save_sidebar_state();

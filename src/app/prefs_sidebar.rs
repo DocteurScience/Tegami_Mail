@@ -52,25 +52,6 @@ impl AppModel {
                 }
             }
 
-            PrefOutput::SetShowUnified(show) => {
-                if pref!(self.show_unified_pref = show) {
-                    // Rebuilds the sidebar with or without the unified section.
-                    self.rebuild_sidebar();
-                }
-            }
-
-            PrefOutput::SetUnifiedChips(chips) => {
-                if pref!(self.unified_chips = chips) {
-                    self.rebuild_sidebar();
-                }
-            }
-
-            PrefOutput::SetUnifiedKinds(kinds) => {
-                if pref!(self.unified_kinds = kinds) {
-                    self.rebuild_sidebar();
-                }
-            }
-
             PrefOutput::SetShowAccounts(show) => {
                 if pref!(self.show_accounts = show) {
                     self.rebuild_sidebar();

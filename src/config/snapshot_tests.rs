@@ -295,15 +295,7 @@ folders_expanded = ["b@x"]
 icon_only = true
 tree_collapsed = ["a@x	INBOX/Sub"]
 folder_order = ["a@x	Work", "a@x	Home"]
-unified_expanded = false
 tags_expanded = false
-starred_expanded = true
-sent_expanded = true
-drafts_expanded = true
-archive_expanded = true
-junk_expanded = true
-trash_expanded = true
-snoozed_expanded = true
 favorites = ["a@x	INBOX"]
 favorites_expanded = false
 smart_expanded = false
@@ -317,12 +309,10 @@ tags_expanded_accounts = ["b@x"]
 #[test]
 fn sidebar_state_defaults() {
     let missing = SidebarState::default();
-    assert!(!missing.unified_expanded);
     assert!(!missing.tags_expanded);
     assert!(!missing.favorites_expanded);
     assert!(!missing.smart_expanded);
     let empty: SidebarFile = toml::from_str("").unwrap();
-    assert!(empty.unified_expanded);
     assert!(empty.tags_expanded);
     assert!(empty.favorites_expanded);
     assert!(empty.smart_expanded);

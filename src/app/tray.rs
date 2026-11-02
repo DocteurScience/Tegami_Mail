@@ -93,11 +93,7 @@ impl AppModel {
         let folders = self.folder_unread.clone();
         let unified = self.unified_unread();
         let fresh = self.seen_counts.then(|| self.fresh_unread());
-        self.sidebars_emit(SidebarInput::SetUnread {
-            folders,
-            unified: self.unified_inboxes_unread(),
-            fresh,
-        });
+        self.sidebars_emit(SidebarInput::SetUnread { folders, fresh });
         // The counted total is what GNOME shows beside Tegami Mail in Background
         // Apps, so a process with no window still says what it is there for.
         if self.run_in_background.get() {
@@ -365,20 +361,17 @@ impl AppModel {
             }
 
             AppMsg::TrayViewUnread => {
-                // The tray counts every inbox (#267): when all of its unread
-                // mail is in accounts left out of All Inboxes, that view
-                // would show none of it.
-                let unified = self.unified_inboxes_shown()
-                    && (self.unified_inboxes_unread() > 0 || self.inboxes_unread() == 0);
-                if unified {
-                    // Through the sidebar, so its highlight moves too; it
-                    // answers with UnifiedSelected.
-                    self.sidebar.emit(SidebarInput::SelectUnifiedRow);
-                } else if let Some((account_id, folder_id, name, path)) = self
+                // The first inbox with unread mail, every account counted
+                // (#267); with none, the first account's inbox.
+                let inboxes: Vec<_> = self
                     .accounts
                     .iter()
                     .filter_map(|a| self.inbox_of(a.id))
+                    .collect();
+                if let Some((account_id, folder_id, name, path)) = inboxes
+                    .iter()
                     .find(|f| self.folder_unread_of(f) > 0)
+                    .or(inboxes.first())
                     .map(|f| (f.account_id, f.id, f.name.clone(), f.path.clone()))
                 {
                     self.select_folder(account_id, folder_id, name, path);

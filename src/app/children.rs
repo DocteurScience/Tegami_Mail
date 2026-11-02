@@ -5,7 +5,6 @@ use adw::prelude::*;
 use relm4::prelude::*;
 
 use crate::config;
-use crate::models::FolderKind;
 use crate::ui::attachment_drawer::AttachmentDrawer;
 use crate::ui::message_list::{MessageList, MessageListOutput};
 use crate::ui::message_view::{MessageView, MessageViewOutput};
@@ -203,15 +202,6 @@ fn notifications_output_msg(out: NotifyOutput) -> AppMsg {
 /// floating peek panel are two instances, driven alike.
 pub(super) fn sidebar_output_msg(out: SidebarOutput) -> AppMsg {
     match out {
-        SidebarOutput::UnifiedSelected => {
-            AppMsg::UnifiedSelected(UnifiedView::Kind(FolderKind::Inbox))
-        }
-        SidebarOutput::UnifiedKindSelected(kind) => {
-            AppMsg::UnifiedSelected(UnifiedView::Kind(kind))
-        }
-        SidebarOutput::AccountStarredSelected(account_id) => {
-            AppMsg::AccountStarredSelected(account_id)
-        }
         SidebarOutput::UnifiedFavoritesSelected => AppMsg::UnifiedSelected(UnifiedView::Favorites),
         SidebarOutput::UnifiedTagsSelected => AppMsg::TagSelected {
             keyword: None,
@@ -242,27 +232,11 @@ pub(super) fn sidebar_output_msg(out: SidebarOutput) -> AppMsg {
         SidebarOutput::ToggleCustomFolders(id) => AppMsg::ToggleCustomFolders(id),
         SidebarOutput::CollapsedChanged(collapsed) => AppMsg::SidebarCollapsed(collapsed),
         SidebarOutput::SectionsOpen {
-            all_inboxes,
             tags,
-            starred,
-            sent,
-            drafts,
-            archive,
-            junk,
-            trash,
-            snoozed,
             favorites,
             smart,
         } => AppMsg::SidebarSectionsOpen {
-            all_inboxes,
             tags,
-            starred,
-            sent,
-            drafts,
-            archive,
-            junk,
-            trash,
-            snoozed,
             favorites,
             smart,
         },

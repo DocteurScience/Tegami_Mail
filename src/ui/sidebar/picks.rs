@@ -4,15 +4,6 @@
 use super::*;
 
 impl Sidebar {
-    pub(super) fn on_unified_row_selected(&mut self, sender: ComponentSender<Self>) {
-        if self.selected == Sel::Unified {
-            return;
-        }
-        self.selected = Sel::Unified;
-        self.clear_other_selections(Sel::Unified);
-        let _ = sender.output(SidebarOutput::UnifiedSelected);
-    }
-
     pub(super) fn on_outbox_row_selected(&mut self, sender: ComponentSender<Self>) {
         if self.selected == Sel::Outbox {
             return;
@@ -20,27 +11,6 @@ impl Sidebar {
         self.selected = Sel::Outbox;
         self.clear_other_selections(Sel::Outbox);
         let _ = sender.output(SidebarOutput::OutboxSelected);
-    }
-
-    pub(super) fn on_unified_inbox_row_selected(
-        &mut self,
-        index: i32,
-        sender: ComponentSender<Self>,
-    ) {
-        if let Some(r) = self.unified_inboxes.get(index as usize).cloned() {
-            let key = Sel::UnifiedInbox(r.account_id);
-            if self.selected == key {
-                return;
-            }
-            self.selected = key.clone();
-            self.clear_other_selections(key);
-            let _ = sender.output(SidebarOutput::FolderSelected {
-                account_id: r.account_id,
-                folder_id: r.folder_id,
-                name: r.name,
-                path: r.path,
-            });
-        }
     }
 
     pub(super) fn on_tag_row_selected(
@@ -95,20 +65,6 @@ impl Sidebar {
         });
     }
 
-    pub(super) fn on_unified_kind_row_selected(
-        &mut self,
-        kind: FolderKind,
-        sender: ComponentSender<Self>,
-    ) {
-        let key = Sel::UnifiedKind(kind);
-        if self.selected == key {
-            return;
-        }
-        self.selected = key.clone();
-        self.clear_other_selections(key);
-        let _ = sender.output(SidebarOutput::UnifiedKindSelected(kind));
-    }
-
     pub(super) fn on_unified_favorites_selected(&mut self, sender: ComponentSender<Self>) {
         if self.selected == Sel::UnifiedFavorites {
             return;
@@ -125,38 +81,6 @@ impl Sidebar {
         self.selected = Sel::UnifiedTags;
         self.clear_other_selections(Sel::UnifiedTags);
         let _ = sender.output(SidebarOutput::UnifiedTagsSelected);
-    }
-
-    pub(super) fn on_kind_sub_row_selected(
-        &mut self,
-        kind: FolderKind,
-        index: i32,
-        sender: ComponentSender<Self>,
-    ) {
-        let Some(r) = self
-            .kind_widgets
-            .get(&UnifiedRow::Kind(kind))
-            .and_then(|w| w.rows.get(index as usize))
-            .cloned()
-        else {
-            return;
-        };
-        let key = Sel::UnifiedKindRow(kind, r.account_id);
-        if self.selected == key {
-            return;
-        }
-        self.selected = key.clone();
-        self.clear_other_selections(key);
-        if r.path.is_empty() {
-            let _ = sender.output(SidebarOutput::AccountStarredSelected(r.account_id));
-            return;
-        }
-        let _ = sender.output(SidebarOutput::FolderSelected {
-            account_id: r.account_id,
-            folder_id: r.folder_id,
-            name: r.name,
-            path: r.path,
-        });
     }
 
     pub(super) fn on_folder_row_selected(

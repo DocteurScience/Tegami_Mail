@@ -117,8 +117,6 @@ tray_mail = true
 launcher_count = true
 show_remote_banner = true
 show_spoof_banner = true
-show_unified = true
-unified_chip = true
 show_accounts = true
 section_style = "unified"
 tags_placement = "above_accounts"
@@ -142,35 +140,9 @@ folder_sort = "custom"
 [privacy.rail_fold]
 enabled = true
 accounts = true
-all_inboxes = true
-starred = true
-sent = true
-drafts = true
-archive = true
-junk = true
-trash = true
-snoozed = true
 tags = true
 
 [privacy.list_column_widths]
-
-[privacy.unified_chips]
-all_inboxes = true
-starred = true
-drafts = true
-archive = true
-junk = true
-trash = true
-snoozed = true
-
-[privacy.unified_kinds]
-starred = true
-sent = true
-drafts = true
-archive = true
-junk = false
-trash = false
-snoozed = true
 
 [privacy.print]
 page_numbers = true
@@ -296,15 +268,7 @@ folders_expanded = []
 icon_only = false
 tree_collapsed = []
 folder_order = []
-unified_expanded = false
 tags_expanded = false
-starred_expanded = false
-sent_expanded = false
-drafts_expanded = false
-archive_expanded = false
-junk_expanded = false
-trash_expanded = false
-snoozed_expanded = false
 favorites = []
 favorites_expanded = false
 smart_expanded = false

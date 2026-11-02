@@ -361,8 +361,8 @@ impl EditorForm {
                     // the tray and notifications are unchanged.
                     #[name = "in_unified_row"]
                     adw::SwitchRow {
-                        set_title: &i18n("Show in All Inboxes"),
-                        set_subtitle: &i18n("Also in the unified Starred, Sent, Drafts, Archive, Filters and Tags."),
+                        set_title: &i18n("Show in combined views"),
+                        set_subtitle: &i18n("Favorites, Tags and Smart Folders across accounts."),
                         set_active: true,
                     },
 

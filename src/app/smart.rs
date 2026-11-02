@@ -393,8 +393,8 @@ impl AppModel {
                 self.push_index_complete();
             }
 
-            AppMsg::FlagsSynced { account_id, paths } => {
-                self.on_flags_synced(account_id, &paths, &sender);
+            AppMsg::FlagsSynced { paths } => {
+                self.on_flags_synced(&paths, &sender);
             }
 
             AppMsg::SmartViewLoaded { id, rows } => {

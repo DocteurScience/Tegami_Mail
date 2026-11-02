@@ -7,7 +7,6 @@ use relm4::prelude::*;
 use crate::app::model::AppModel;
 use crate::app::msg::AppMsg;
 use crate::app::AppModelWidgets;
-use crate::models::FolderKind;
 use crate::ui::message_list::MessageListInput;
 use crate::ui::message_view::MessageViewInput;
 use crate::ui::showcase::showcase_capture;
@@ -202,45 +201,25 @@ impl AppModel {
         }
     }
 
-    /// TEGAMI_SHOWCASE_UNIFIED=sent|starred|drafts|archive|junk|trash|snoozed|smart opens that unified
-    /// row at 3s, All Inboxes at 6s and the row again at 9s, so the
-    /// timing logs show a cold and a warm open. starred@N picks the
-    /// Nth account's row under Starred instead.
-    /// TEGAMI_SHOWCASE_UNIFIED_AT=<s> starts that at s seconds rather
-    /// than 3, once a real profile's accounts have loaded.
+    /// TEGAMI_SHOWCASE_UNIFIED=favorites|tags|smart opens that merged
+    /// row at 3s and again at 9s, so the timing logs show a cold and a
+    /// warm open. TEGAMI_SHOWCASE_UNIFIED_AT=<s> starts that at s seconds
+    /// rather than 3, once a real profile's accounts have loaded.
     pub(super) fn stage_unified(&self) {
         if let Ok(which) = std::env::var("TEGAMI_SHOWCASE_UNIFIED") {
             let at: u32 = std::env::var("TEGAMI_SHOWCASE_UNIFIED_AT")
                 .ok()
                 .and_then(|v| v.parse().ok())
                 .unwrap_or(3);
-            let sub = which
-                .strip_prefix("starred@")
-                .and_then(|n| n.parse::<i32>().ok());
             let pick = move || match which.as_str() {
-                _ if let Some(index) = sub => SidebarInput::KindSubRowSelected {
-                    kind: FolderKind::Starred,
-                    index,
-                },
-                "starred" => SidebarInput::UnifiedKindRowSelected(FolderKind::Starred),
-                "drafts" => SidebarInput::UnifiedKindRowSelected(FolderKind::Drafts),
-                "archive" => SidebarInput::UnifiedKindRowSelected(FolderKind::Archive),
-                "junk" => SidebarInput::UnifiedKindRowSelected(FolderKind::Junk),
-                "trash" => SidebarInput::UnifiedKindRowSelected(FolderKind::Trash),
-                "snoozed" => SidebarInput::UnifiedKindRowSelected(FolderKind::Snoozed),
-                "favorites" => SidebarInput::UnifiedFavoritesSelected,
                 "tags" => SidebarInput::UnifiedTagsSelected,
                 "smart" => SidebarInput::SmartRowSelected(0),
-                _ => SidebarInput::UnifiedKindRowSelected(FolderKind::Sent),
+                _ => SidebarInput::UnifiedFavoritesSelected,
             };
             let sb = self.sidebar.sender().clone();
             let p = pick.clone();
             gtk::glib::timeout_add_seconds_local_once(at, move || {
                 let _ = sb.send(p());
-            });
-            let sb = self.sidebar.sender().clone();
-            gtk::glib::timeout_add_seconds_local_once(at + 3, move || {
-                let _ = sb.send(SidebarInput::SelectUnifiedRow);
             });
             let sb = self.sidebar.sender().clone();
             gtk::glib::timeout_add_seconds_local_once(at + 6, move || {
@@ -446,25 +425,6 @@ pub(super) fn stage_peek(root: &adw::ApplicationWindow, sender: &ComponentSender
                     }
                 },
             );
-        }
-    }
-}
-
-impl AppModel {
-    /// TEGAMI_SHOWCASE_TOGGLE=starred|sent|drafts toggles that
-    /// unified row's list at 5s (what a long-press does).
-    pub(super) fn stage_toggle(&self) {
-        if let Ok(which) = std::env::var("TEGAMI_SHOWCASE_TOGGLE") {
-            let kind = match which.as_str() {
-                "sent" => FolderKind::Sent,
-                "drafts" => FolderKind::Drafts,
-                "archive" => FolderKind::Archive,
-                _ => FolderKind::Starred,
-            };
-            let sb = self.sidebar.sender().clone();
-            gtk::glib::timeout_add_seconds_local_once(5, move || {
-                let _ = sb.send(SidebarInput::ToggleKindExpand(kind));
-            });
         }
     }
 }

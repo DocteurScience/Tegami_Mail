@@ -1,4 +1,4 @@
-//! Settings → Sidebar: the unified rows, the sections and the icon
+//! Settings → Sidebar: the sections and the icon
 //! rail.
 
 use adw::prelude::*;
@@ -19,36 +19,12 @@ pub(in crate::ui::preferences) struct SidebarPage {
     pub(in crate::ui::preferences) remember_sidebar_row: adw::SwitchRow,
     pub(in crate::ui::preferences) remember_rail_row: adw::SwitchRow,
     pub(in crate::ui::preferences) seen_counts_row: adw::SwitchRow,
-    pub(in crate::ui::preferences) show_unified_row: adw::SwitchRow,
-    pub(in crate::ui::preferences) unified_starred_row: adw::SwitchRow,
-    pub(in crate::ui::preferences) unified_sent_row: adw::SwitchRow,
-    pub(in crate::ui::preferences) unified_drafts_row: adw::SwitchRow,
-    pub(in crate::ui::preferences) unified_archive_row: adw::SwitchRow,
-    pub(in crate::ui::preferences) unified_junk_row: adw::SwitchRow,
-    pub(in crate::ui::preferences) unified_trash_row: adw::SwitchRow,
-    pub(in crate::ui::preferences) unified_snoozed_row: adw::SwitchRow,
-    pub(in crate::ui::preferences) unified_chips_row: adw::ExpanderRow,
-    pub(in crate::ui::preferences) unified_chip_all_inboxes_row: adw::SwitchRow,
-    pub(in crate::ui::preferences) unified_chip_starred_row: adw::SwitchRow,
-    pub(in crate::ui::preferences) unified_chip_drafts_row: adw::SwitchRow,
-    pub(in crate::ui::preferences) unified_chip_archive_row: adw::SwitchRow,
-    pub(in crate::ui::preferences) unified_chip_junk_row: adw::SwitchRow,
-    pub(in crate::ui::preferences) unified_chip_trash_row: adw::SwitchRow,
-    pub(in crate::ui::preferences) unified_chip_snoozed_row: adw::SwitchRow,
     pub(in crate::ui::preferences) section_style_row: adw::ComboRow,
     pub(in crate::ui::preferences) tags_placement_row: adw::ComboRow,
     pub(in crate::ui::preferences) favorites_placement_row: adw::ComboRow,
     pub(in crate::ui::preferences) rail_dots_row: adw::SwitchRow,
     pub(in crate::ui::preferences) rail_fold_row: adw::ExpanderRow,
     pub(in crate::ui::preferences) rail_fold_accounts_row: adw::SwitchRow,
-    pub(in crate::ui::preferences) rail_fold_all_inboxes_row: adw::SwitchRow,
-    pub(in crate::ui::preferences) rail_fold_starred_row: adw::SwitchRow,
-    pub(in crate::ui::preferences) rail_fold_sent_row: adw::SwitchRow,
-    pub(in crate::ui::preferences) rail_fold_drafts_row: adw::SwitchRow,
-    pub(in crate::ui::preferences) rail_fold_archive_row: adw::SwitchRow,
-    pub(in crate::ui::preferences) rail_fold_junk_row: adw::SwitchRow,
-    pub(in crate::ui::preferences) rail_fold_trash_row: adw::SwitchRow,
-    pub(in crate::ui::preferences) rail_fold_snoozed_row: adw::SwitchRow,
     pub(in crate::ui::preferences) rail_fold_tags_row: adw::SwitchRow,
 }
 
@@ -141,135 +117,6 @@ impl SidebarPage {
                 },
 
                 add = &adw::PreferencesGroup {
-                    set_title: &i18n("Unified"),
-                    set_description: Some(
-                        &i18n("Shown only with more than one account."),
-                    ),
-
-                    #[name = "show_unified_row"]
-                    adw::SwitchRow {
-                        set_title: &i18n("Inboxes"),
-                        connect_active_notify[sender] => move |row| {
-                            sender.input(PrefInput::ToggleShowUnified(row.is_active()));
-                        },
-                    },
-
-                    #[name = "unified_starred_row"]
-                    adw::SwitchRow {
-                        set_title: &i18n("Starred"),
-                        connect_active_notify[sender] => move |row| {
-                            sender.input(PrefInput::ToggleUnifiedStarred(row.is_active()));
-                        },
-                    },
-
-                    #[name = "unified_sent_row"]
-                    adw::SwitchRow {
-                        set_title: &i18n("Sent"),
-                        connect_active_notify[sender] => move |row| {
-                            sender.input(PrefInput::ToggleUnifiedSent(row.is_active()));
-                        },
-                    },
-
-                    #[name = "unified_drafts_row"]
-                    adw::SwitchRow {
-                        set_title: &i18n("Drafts"),
-                        connect_active_notify[sender] => move |row| {
-                            sender.input(PrefInput::ToggleUnifiedDrafts(row.is_active()));
-                        },
-                    },
-
-                    #[name = "unified_archive_row"]
-                    adw::SwitchRow {
-                        set_title: &i18n("Archive"),
-                        connect_active_notify[sender] => move |row| {
-                            sender.input(PrefInput::ToggleUnifiedArchive(row.is_active()));
-                        },
-                    },
-
-                    #[name = "unified_junk_row"]
-                    adw::SwitchRow {
-                        set_title: &i18n("Junk"),
-                        connect_active_notify[sender] => move |row| {
-                            sender.input(PrefInput::ToggleUnifiedJunk(row.is_active()));
-                        },
-                    },
-
-                    #[name = "unified_trash_row"]
-                    adw::SwitchRow {
-                        set_title: &i18n("Trash"),
-                        connect_active_notify[sender] => move |row| {
-                            sender.input(PrefInput::ToggleUnifiedTrash(row.is_active()));
-                        },
-                    },
-
-                    #[name = "unified_snoozed_row"]
-                    adw::SwitchRow {
-                        set_title: &i18n("Snoozed"),
-                        set_subtitle: &i18n("Shown only while mail is snoozed."),
-                        connect_active_notify[sender] => move |row| {
-                            sender.input(PrefInput::ToggleUnifiedSnoozed(row.is_active()));
-                        },
-                    },
-
-                    #[name = "unified_chips_row"]
-                    adw::ExpanderRow {
-                        set_title: &i18n("Unread counts"),
-                        set_subtitle: &i18n("Shown on the unified rows while they are folded up."),
-                        set_expanded: false,
-
-                        #[name = "unified_chip_all_inboxes_row"]
-                        add_row = &adw::SwitchRow {
-                            set_title: &i18n("Inboxes"),
-                            connect_active_notify[sender] => move |row| {
-                                sender.input(PrefInput::ToggleUnifiedChipAllInboxes(row.is_active()));
-                            },
-                        },
-                        #[name = "unified_chip_starred_row"]
-                        add_row = &adw::SwitchRow {
-                            set_title: &i18n("Starred"),
-                            connect_active_notify[sender] => move |row| {
-                                sender.input(PrefInput::ToggleUnifiedChipStarred(row.is_active()));
-                            },
-                        },
-                        #[name = "unified_chip_drafts_row"]
-                        add_row = &adw::SwitchRow {
-                            set_title: &i18n("Drafts"),
-                            connect_active_notify[sender] => move |row| {
-                                sender.input(PrefInput::ToggleUnifiedChipDrafts(row.is_active()));
-                            },
-                        },
-                        #[name = "unified_chip_archive_row"]
-                        add_row = &adw::SwitchRow {
-                            set_title: &i18n("Archive"),
-                            connect_active_notify[sender] => move |row| {
-                                sender.input(PrefInput::ToggleUnifiedChipArchive(row.is_active()));
-                            },
-                        },
-                        #[name = "unified_chip_junk_row"]
-                        add_row = &adw::SwitchRow {
-                            set_title: &i18n("Junk"),
-                            connect_active_notify[sender] => move |row| {
-                                sender.input(PrefInput::ToggleUnifiedChipJunk(row.is_active()));
-                            },
-                        },
-                        #[name = "unified_chip_trash_row"]
-                        add_row = &adw::SwitchRow {
-                            set_title: &i18n("Trash"),
-                            connect_active_notify[sender] => move |row| {
-                                sender.input(PrefInput::ToggleUnifiedChipTrash(row.is_active()));
-                            },
-                        },
-                        #[name = "unified_chip_snoozed_row"]
-                        add_row = &adw::SwitchRow {
-                            set_title: &i18n("Snoozed"),
-                            connect_active_notify[sender] => move |row| {
-                                sender.input(PrefInput::ToggleUnifiedChipSnoozed(row.is_active()));
-                            },
-                        },
-                    },
-                },
-
-                add = &adw::PreferencesGroup {
                     set_title: &i18n("Sections"),
 
                     #[name = "section_style_row"]
@@ -327,62 +174,6 @@ impl SidebarPage {
                                 sender.input(PrefInput::ToggleRailFoldAccounts(row.is_active()));
                             },
                         },
-                        #[name = "rail_fold_all_inboxes_row"]
-                        add_row = &adw::SwitchRow {
-                            set_title: &i18n("Inboxes"),
-                            connect_active_notify[sender] => move |row| {
-                                sender.input(PrefInput::ToggleRailFoldAllInboxes(row.is_active()));
-                            },
-                        },
-                        #[name = "rail_fold_starred_row"]
-                        add_row = &adw::SwitchRow {
-                            set_title: &i18n("Starred"),
-                            connect_active_notify[sender] => move |row| {
-                                sender.input(PrefInput::ToggleRailFoldStarred(row.is_active()));
-                            },
-                        },
-                        #[name = "rail_fold_sent_row"]
-                        add_row = &adw::SwitchRow {
-                            set_title: &i18n("Sent"),
-                            connect_active_notify[sender] => move |row| {
-                                sender.input(PrefInput::ToggleRailFoldSent(row.is_active()));
-                            },
-                        },
-                        #[name = "rail_fold_drafts_row"]
-                        add_row = &adw::SwitchRow {
-                            set_title: &i18n("Drafts"),
-                            connect_active_notify[sender] => move |row| {
-                                sender.input(PrefInput::ToggleRailFoldDrafts(row.is_active()));
-                            },
-                        },
-                        #[name = "rail_fold_archive_row"]
-                        add_row = &adw::SwitchRow {
-                            set_title: &i18n("Archive"),
-                            connect_active_notify[sender] => move |row| {
-                                sender.input(PrefInput::ToggleRailFoldArchive(row.is_active()));
-                            },
-                        },
-                        #[name = "rail_fold_junk_row"]
-                        add_row = &adw::SwitchRow {
-                            set_title: &i18n("Junk"),
-                            connect_active_notify[sender] => move |row| {
-                                sender.input(PrefInput::ToggleRailFoldJunk(row.is_active()));
-                            },
-                        },
-                        #[name = "rail_fold_trash_row"]
-                        add_row = &adw::SwitchRow {
-                            set_title: &i18n("Trash"),
-                            connect_active_notify[sender] => move |row| {
-                                sender.input(PrefInput::ToggleRailFoldTrash(row.is_active()));
-                            },
-                        },
-                        #[name = "rail_fold_snoozed_row"]
-                        add_row = &adw::SwitchRow {
-                            set_title: &i18n("Snoozed"),
-                            connect_active_notify[sender] => move |row| {
-                                sender.input(PrefInput::ToggleRailFoldSnoozed(row.is_active()));
-                            },
-                        },
                         #[name = "rail_fold_tags_row"]
                         add_row = &adw::SwitchRow {
                             set_title: &i18n("Tags"),
@@ -405,36 +196,12 @@ impl SidebarPage {
             remember_sidebar_row,
             remember_rail_row,
             seen_counts_row,
-            show_unified_row,
-            unified_starred_row,
-            unified_sent_row,
-            unified_drafts_row,
-            unified_archive_row,
-            unified_junk_row,
-            unified_trash_row,
-            unified_snoozed_row,
-            unified_chips_row,
-            unified_chip_all_inboxes_row,
-            unified_chip_starred_row,
-            unified_chip_drafts_row,
-            unified_chip_archive_row,
-            unified_chip_junk_row,
-            unified_chip_trash_row,
-            unified_chip_snoozed_row,
             section_style_row,
             tags_placement_row,
             favorites_placement_row,
             rail_dots_row,
             rail_fold_row,
             rail_fold_accounts_row,
-            rail_fold_all_inboxes_row,
-            rail_fold_starred_row,
-            rail_fold_sent_row,
-            rail_fold_drafts_row,
-            rail_fold_archive_row,
-            rail_fold_junk_row,
-            rail_fold_trash_row,
-            rail_fold_snoozed_row,
             rail_fold_tags_row,
         }
     }

@@ -27,8 +27,6 @@ impl MessageList {
             view_fp: 0,
             views: std::collections::VecDeque::new(),
             pending_restore: None,
-            prebuild: None,
-            prebuild_gen: 0,
             switched: false,
             look_stale: Default::default(),
             pending_select: None,

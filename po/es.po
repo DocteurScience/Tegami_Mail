@@ -529,18 +529,6 @@ msgstr ""
 msgid "Empty"
 msgstr "Vaciar"
 
-msgid "Empty Trash in Every Account?"
-msgstr "¿Vaciar la papelera de todas las cuentas?"
-
-msgid "Empty Junk in Every Account?"
-msgstr "¿Vaciar el correo no deseado de todas las cuentas?"
-
-msgid ""
-"Every message in them will be erased from the server. This can’t be undone."
-msgstr ""
-"Se eliminarán del servidor todos los mensajes de esas carpetas. Esta acción "
-"no se puede deshacer."
-
 msgid "Create Folder"
 msgstr "Crear carpeta"
 
@@ -1101,9 +1089,6 @@ msgstr "Desactivar el modo de concentración"
 
 msgid "View"
 msgstr "Ver"
-
-msgid "All accounts"
-msgstr "Todas las cuentas"
 
 msgid "Outbox"
 msgstr "Bandeja de salida"
@@ -2741,6 +2726,9 @@ msgstr "Archivos HTML y de texto"
 
 msgid "Could Not Read the File"
 msgstr "No se pudo leer el archivo"
+
+msgid "All accounts"
+msgstr "Todas las cuentas"
 
 msgid "All but Trash and Junk"
 msgstr "Todas excepto Papelera y Correo no deseado"
@@ -5071,8 +5059,9 @@ msgstr "Encima de las cuentas"
 msgid "Below the accounts"
 msgstr "Debajo de las cuentas"
 
-msgid "All Inboxes"
-msgstr "Todas las bandejas de entrada"
+#, fuzzy
+msgid "The first account's inbox"
+msgstr "La bandeja de entrada de la última cuenta"
 
 msgid "The last account's inbox"
 msgstr "La bandeja de entrada de la última cuenta"
@@ -5546,27 +5535,6 @@ msgstr "Resaltar solo el correo nuevo sin leer"
 msgid "A count turns grey once you have looked at the folder."
 msgstr "El contador se vuelve gris cuando ya has consultado la carpeta."
 
-msgid "Unified"
-msgstr "Unificado"
-
-msgid "Shown only with more than one account."
-msgstr "Solo se muestra si hay más de una cuenta."
-
-msgid "Inboxes"
-msgstr "Bandejas de entrada"
-
-msgid "Snoozed"
-msgstr ""
-
-msgid "Shown only while mail is snoozed."
-msgstr ""
-
-msgid "Unread counts"
-msgstr "Contadores de no leídos"
-
-msgid "Shown on the unified rows while they are folded up."
-msgstr "Se muestra en las filas unificadas mientras están contraídas."
-
 msgid "Sections"
 msgstr "Secciones"
 
@@ -5920,12 +5888,6 @@ msgstr "Añadir primera cuenta"
 
 msgid "No accounts yet"
 msgstr "Todavía no hay cuentas"
-
-msgid "Show each inbox"
-msgstr "Mostrar cada bandeja de entrada"
-
-msgid "Show each account"
-msgstr "Mostrar cada cuenta"
 
 msgid "Show each folder"
 msgstr "Mostrar cada carpeta"
@@ -6713,13 +6675,12 @@ msgstr ""
 "Para alojamientos compartidos. Actívalo solo si la prueba de conexión indica "
 "que los nombres son diferentes."
 
-msgid "Show in All Inboxes"
-msgstr "Mostrar en todas las bandejas de entrada"
+#, fuzzy
+msgid "Show in combined views"
+msgstr "Mostrar encabezados de columna"
 
-msgid "Also in the unified Starred, Sent, Drafts, Archive, Filters and Tags."
+msgid "Favorites, Tags and Smart Folders across accounts."
 msgstr ""
-"También en las vistas unificadas de Destacados, Enviados, Borradores, "
-"Archivo, Filtros y Etiquetas."
 
 msgid "Test Connection"
 msgstr "Probar conexión"
@@ -6905,6 +6866,9 @@ msgstr ""
 
 msgid "Templates"
 msgstr "Plantillas"
+
+msgid "Snoozed"
+msgstr ""
 
 msgid "Hidden Folders"
 msgstr "Carpetas ocultas"
@@ -7606,6 +7570,52 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Empty Trash in Every Account?"
+#~ msgstr "¿Vaciar la papelera de todas las cuentas?"
+
+#~ msgid "Empty Junk in Every Account?"
+#~ msgstr "¿Vaciar el correo no deseado de todas las cuentas?"
+
+#~ msgid ""
+#~ "Every message in them will be erased from the server. This can’t be "
+#~ "undone."
+#~ msgstr ""
+#~ "Se eliminarán del servidor todos los mensajes de esas carpetas. Esta "
+#~ "acción no se puede deshacer."
+
+#~ msgid "All Inboxes"
+#~ msgstr "Todas las bandejas de entrada"
+
+#~ msgid "Unified"
+#~ msgstr "Unificado"
+
+#~ msgid "Shown only with more than one account."
+#~ msgstr "Solo se muestra si hay más de una cuenta."
+
+#~ msgid "Inboxes"
+#~ msgstr "Bandejas de entrada"
+
+#~ msgid "Unread counts"
+#~ msgstr "Contadores de no leídos"
+
+#~ msgid "Shown on the unified rows while they are folded up."
+#~ msgstr "Se muestra en las filas unificadas mientras están contraídas."
+
+#~ msgid "Show each inbox"
+#~ msgstr "Mostrar cada bandeja de entrada"
+
+#~ msgid "Show each account"
+#~ msgstr "Mostrar cada cuenta"
+
+#~ msgid "Show in All Inboxes"
+#~ msgstr "Mostrar en todas las bandejas de entrada"
+
+#~ msgid ""
+#~ "Also in the unified Starred, Sent, Drafts, Archive, Filters and Tags."
+#~ msgstr ""
+#~ "También en las vistas unificadas de Destacados, Enviados, Borradores, "
+#~ "Archivo, Filtros y Etiquetas."
 
 #~ msgid "Filters placement"
 #~ msgstr "Posición de los filtros"

@@ -169,30 +169,23 @@ what was dragged. The item is there only once something has been.
 The chevrons open and close the items in the sidebar. Clicking a folder
 opens it and leaves its sub-folders as they were. Clicking the name of the
 Folders or Tags heading of an account does nothing; the chevron beside it
-opens or closes the section. Clicking Inboxes, Starred, Sent, Drafts,
-Archive, Junk or Trash in the unified section, or Favorites or Tags, opens the combined list without showing each account's folder under it, and
+opens or closes the section. Clicking Favorites, Tags or Smart Folders
+opens the combined list without opening the list under it, and
 double-clicking it opens or closes that list as its chevron does. An
 account's header works the same way: its chevron, or a double click on the
 header, opens or closes its folders, and a single click elsewhere on it
 does nothing. **Settings → Sidebar → Fold accounts with one click** brings
 back the single click anywhere on the header. In the icon rail, which has
 no chevrons, a click on a section's icon opens or closes it, and a long
-press or a double click opens or closes the unified rows.
+press or a double click opens or closes the combined rows.
 
-**Settings → Sidebar → Unified** chooses the unified section's rows.
-Inboxes, Starred, Sent, Drafts, Archive and Snoozed are on until switched
-off, and Snoozed is listed only while mail is snoozed; Junk and Trash are off
-until switched on. In the unified Junk and Trash, **Not
-Spam** and **Move to Inbox** send each message to its own account's Inbox,
-and the right-click menu of each account's row beneath has **Empty Junk…**
-or **Empty Trash…**. The same item on the unified Junk or Trash row itself
-empties that folder in every account in the unified section at once, after
-a confirmation that lists them.
+There is no view merging the inboxes, or any other folder, of every
+account: each account's folders are its own. Favorites, Tags and Smart
+Folders are the rows that gather mail across accounts.
 
 **Settings → Sidebar → Sections** places Tags and Favorites
 **Above the accounts**, **Below the accounts** or **Off**, which leaves it
-out of the sidebar. Wherever they are, they are rows like the
-unified section's, with a chevron that opens their list. **Section style**
+out of the sidebar. Wherever they are, they are rows with a chevron that opens their list. **Section style**
 set to **Tree style** draws both as a tree instead: the caret that
 opens and closes the list stands where the icon was, and the row has no
 chevron at its end. Clicking the name opens the combined view either way.
@@ -207,7 +200,7 @@ account's color. Clicking Favorites lists the mail of every favorite folder
 together; its chevron, or a double click, opens or closes the list. **Remove from Favorites**, in the same
 menu or on the favorite itself, takes it out, and the row goes when the last
 one does. Favorites show with a single account too, and for an account left
-out of All Inboxes.
+out of the combined views.
 
 They are kept on this computer, in `sidebar.toml` as `favorites`. A folder
 renamed or moved in Tegami Mail stays a favorite under its new name; one deleted
@@ -216,14 +209,14 @@ leaves the list.
 ### Smart folders
 
 A smart folder is a saved search. It lists the messages that match its
-conditions and sits in a Smart Folders row at the end of the unified
-section, each with its unread count. **Settings → Smart Folders → Add Smart
+conditions and sits in a Smart Folders row with Favorites and Tags,
+each with its unread count. **Settings → Smart Folders → Add Smart
 Folder…** makes one; so do **New Smart Folder…** in the row's right-click
 menu and in the command palette. Right-clicking a smart folder edits or
 deletes it. Deleting one takes only the search away, never the mail.
 
-- **Account:** one account, or all accounts, meaning those in the unified
-  section.
+- **Account:** one account, or all accounts, meaning those shown in the
+  combined views.
 - **Folders:** one kind of folder (Inbox, Sent, Drafts, Archive, Junk or
   Trash), or every folder but Trash and Junk.
 - **Conditions:** starred or not, unread or read, has attachments, tagged
@@ -277,23 +270,18 @@ level), so a "Notes" folder on any other server is left alone. The look is
 taken once per account; a folder brought back from the Hidden Folders list
 stays back.
 
-### Keeping an account out of All Inboxes
+### Keeping an account out of the combined views
 
-**Settings → Accounts → the account → Show in All Inboxes** decides whether
-the account's mail is merged into the unified section at the top of the
-sidebar. Switched off, the account's folders are left out of the unified
-Inboxes, Starred, Sent, Drafts, Archive, Junk, Trash and Snoozed rows, their
-account lists and unread counts, and the account's filter folders and tagged
-mail are left out of the unified Filters and Tags. The account keeps its own section in
-the sidebar, and a search still covers its mail.
+**Settings → Accounts → the account → Show in combined views** decides
+whether the account's mail is merged into Tags and Smart Folders set to all
+accounts. Switched off, the account's tagged mail and its matches are left
+out of those rows and their unread counts. The account keeps its own section
+in the sidebar, its folders can still be favorites, and a search still
+covers its mail.
 
 The tray icon's count and new-mail notifications still include the
-account. Clicking a notification for it opens the account's own Inbox.
-With fewer than two accounts left in the unified section, it is not shown,
-as with a single account, and **Open at startup: All Inboxes** opens the
-first account's Inbox instead.
-Stored on the account as `in_unified = false` in `accounts.toml`; without
-the key an account is included.
+account. Stored on the account as `in_unified = false` in `accounts.toml`;
+without the key an account is included.
 
 ### Moving mail to another account
 
@@ -335,8 +323,8 @@ answers and unsubscribe mail for its messages go out the same way.
 
 Every message is rendered into the cache in the background, so a search
 covers the whole archive, and clearing downloaded mail in **Settings →
-System** leaves it alone. It is not in All Inboxes until
-**Show in All Inboxes** is switched on. **Empty Junk automatically** and
+System** leaves it alone. It is not in the combined views until
+**Show in combined views** is switched on. **Empty Junk automatically** and
 **Empty Trash automatically** count the days from when a message was moved
 into the folder.
 
@@ -980,11 +968,7 @@ phone or another mail program sees it leave the Inbox too. The folder is
 made the first time something is snoozed; on Gmail it is a label. In the
 Snoozed folder each message shows when it comes back in place of its date.
 A time chosen there replaces the old one, and **Unsnooze** brings the
-message back now. While any account's Snoozed folder holds mail, a
-**Snoozed** row in the unified section lists it all together; **Settings →
-Sidebar → Unified → Snoozed** turns it off. The folders are counted each time
-Tegami Mail checks for new mail, so mail snoozed on another computer brings the row
-too. A reply that arrives in the conversation brings it back
+message back now. A reply that arrives in the conversation brings it back
 early. **Undo** (Ctrl+Z) right after a snooze puts the message back where it
 was.
 
@@ -1680,7 +1664,7 @@ button beside each choice in its popover says what that choice searches.
 **All folders (except trash & junk)** searches every folder of every account
 except Trash and Junk, unless the list is showing one of them. **Everywhere**
 takes in Trash and Junk too, and **This folder** only the folder on screen.
-A search started in an Inbox, or in All Inboxes, looks in all folders; one
+A search started in an Inbox looks in all folders; one
 started anywhere else looks in that folder, and the button changes it for as
 long as the folder is open. In all folders and everywhere, each result wears
 a pill with the name of the folder it is in, and a Gmail message filed under
@@ -1794,8 +1778,7 @@ A folder's unread count is in the accent color. With **Settings → Sidebar →
 Highlight only new unread mail** on, it is only while mail has come into the
 folder since you last looked at it; once you have opened the folder, the
 count turns grey, however much is still unread, until more arrives. A folder
-on screen counts as looked at, and so do the inboxes of All Inboxes while it
-is open. Reading mail elsewhere lowers the mark with the count. What was
+on screen counts as looked at. Reading mail elsewhere lowers the mark with the count. What was
 unread when the setting was turned on counts as seen. The marks are kept in
 `state.toml`, and the setting is `seen_counts` in `privacy.toml`.
 

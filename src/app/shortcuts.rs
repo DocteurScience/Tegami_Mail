@@ -21,7 +21,6 @@ use crate::ui::keymap::{
 use super::keymap::ctrl_shortcut_for;
 use super::model::AppModel;
 use super::msg::AppMsg;
-use super::types::UnifiedView;
 use super::undo::{FlagChange, FlagKind, FlagRef, UndoStep};
 
 impl AppModel {
@@ -90,20 +89,11 @@ impl AppModel {
             Shortcut::InWindow(what) => sender.input(AppMsg::ComposeInWindow(what)),
             Shortcut::Refresh => sender.input(AppMsg::Refresh),
             Shortcut::GoTo(GoTarget::Kind(kind)) => {
-                // The merged view when the sidebar lists one, else the
-                // account's own folder of that kind.
-                let merged = match kind {
-                    FolderKind::Inbox => self.unified_inboxes_shown(),
-                    _ => self.unified_kinds_listed().has(kind),
-                };
-                if merged {
-                    self.open_unified(UnifiedView::Kind(kind), sender);
-                } else {
-                    sender.input(AppMsg::ShowcaseFolder {
-                        kind,
-                        account: None,
-                    });
-                }
+                // The open account's own folder of that kind.
+                sender.input(AppMsg::ShowcaseFolder {
+                    kind,
+                    account: None,
+                });
             }
             Shortcut::NextInThread => self.step_thread(1),
             Shortcut::PrevInThread => self.step_thread(-1),

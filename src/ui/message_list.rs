@@ -67,11 +67,6 @@ pub(crate) struct MessageList {
     views: std::collections::VecDeque<ViewSnapshot>,
     /// A kept view to show at the next queued rebuild, in place of one.
     pending_restore: Option<ViewSnapshot>,
-    /// A view being built ahead (`Prebuild`) while its conversations are
-    /// worked out off the main thread: its number, key, fingerprint and
-    /// messages.
-    prebuild: Option<(u64, u64, u64, Vec<Rc<Message>>)>,
-    prebuild_gen: u64,
     /// Another view was opened: its first rebuild waits for a frame, and
     /// fills the rows for the new look in passing (#401).
     switched: bool,

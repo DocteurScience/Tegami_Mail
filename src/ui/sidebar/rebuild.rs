@@ -35,14 +35,14 @@ impl Sidebar {
 
         let sections = self.sections.clone();
         self.build_compose_bar(pinned, sender);
-        self.build_unified_section(container, &sections, sender);
+        self.build_smart_row(container, sender);
         self.build_outbox_row(container, sender);
 
         // Favorites, Filters and Tags placed above the accounts,
         // drawn like the unified rows.
         let rows_above = self.placed_rows(AboveAccounts);
         if !rows_above.is_empty() {
-            self.build_unified_run(container, &rows_above, &sections, sender);
+            self.build_unified_run(container, &rows_above, sender);
         }
 
         // The account sections — unless Settings (or the main menu) has
@@ -86,7 +86,7 @@ impl Sidebar {
         // And those placed after the last account.
         let rows_below = self.placed_rows(BelowAccounts);
         if !rows_below.is_empty() {
-            self.build_unified_run(container, &rows_below, &sections, sender);
+            self.build_unified_run(container, &rows_below, sender);
         }
 
         self.load_account_css(&sections);
@@ -214,19 +214,12 @@ impl Sidebar {
         self.custom_folder_lists.clear();
         self.custom_revealers.clear();
         self.custom_chevrons.clear();
-        self.unified_list = None;
         self.outbox_list = None;
         self.folder_badges.clear();
         self.tree_chevrons.clear();
         self.tree_row_revealers.clear();
         self.main_folders.clear();
         self.main_row_revealers.clear();
-        self.unified_badge = None;
-        self.unified_revealer = None;
-        self.unified_chevron = None;
-        self.unified_inbox_list = None;
-        self.unified_inboxes.clear();
-        self.unified_inbox_badges.clear();
         self.account_circle_badges.clear();
         self.tag_sections.clear();
         self.kind_widgets.clear();
@@ -338,37 +331,14 @@ impl Sidebar {
         }
     }
 
-    fn build_unified_section(
-        &mut self,
-        container: &gtk::Box,
-        sections: &[SectionData],
-        sender: &ComponentSender<Self>,
-    ) {
-        // The unified section: the "All Inboxes" row and the Starred / Sent /
-        // Drafts rows (Settings → Sidebar → Unified), all built alike: a
-        // header row that opens the merged view and a caret that opens the
-        // list beneath. It heads the scrolling sidebar rather than the pinned
-        // area: with several lists open at once it can stand taller than a
-        // short window, and pinned it would have forced the window taller
-        // than the screen.
-        let mut unified_rows: Vec<UnifiedRow> = Vec::new();
-        if self.show_unified {
-            unified_rows.push(UnifiedRow::Kind(FolderKind::Inbox));
-        }
-        unified_rows.extend(
-            self.unified_kinds
-                .listed()
-                .into_iter()
-                .map(UnifiedRow::Kind),
-        );
-        // Smart folders (#417) close the section, and stand alone with a
-        // single account.
+    /// The smart folders (#417), at the head of the scrolling sidebar, built
+    /// like the Favorites and Tags rows. (The unified section of every
+    /// account's Inbox, Starred, Sent… went with the redesign, owner's
+    /// decision in docs/SUIVI.md.)
+    fn build_smart_row(&mut self, container: &gtk::Box, sender: &ComponentSender<Self>) {
         if !self.smart_folders.is_empty() {
-            unified_rows.push(UnifiedRow::Smart);
+            self.build_unified_run(container, &[UnifiedRow::Smart], sender);
         }
-        let unified_sections: Vec<SectionData> =
-            sections.iter().filter(|s| s.in_unified).cloned().collect();
-        self.build_unified_run(container, &unified_rows, &unified_sections, sender);
     }
 
     fn build_outbox_row(&mut self, container: &gtk::Box, sender: &ComponentSender<Self>) {
@@ -454,7 +424,6 @@ impl Sidebar {
                 .chain(self.custom_revealers.values())
                 .chain(self.tree_row_revealers.values().flatten())
                 .cloned()
-                .chain(self.unified_revealer.clone())
                 .chain(self.tag_sections.values().map(|w| w.revealer.clone()))
                 .chain(self.kind_widgets.values().map(|w| w.revealer.clone()))
                 .collect();
@@ -491,13 +460,9 @@ impl Sidebar {
         for (key, label) in self
             .folder_badges
             .iter()
-            .chain(&self.unified_inbox_badges)
             .chain(self.kind_widgets.values().flat_map(|w| &w.row_badges))
         {
             mark(label, seen(&mut std::iter::once(key)));
-        }
-        if let Some(label) = &self.unified_badge {
-            mark(label, seen(&mut self.unified_inbox_badges.keys()));
         }
         for w in self.kind_widgets.values() {
             if let Some(b) = &w.badge {
@@ -518,8 +483,8 @@ impl Sidebar {
 }
 
 /// A list about to go keeps no keyboard focus: GTK would hand it to the
-/// first list left, All Inboxes, and a list selects the row it focuses,
-/// opening All Inboxes over the folder on screen. A folder's menu (Add to
+/// first list left, and a list selects the row it focuses, opening that
+/// row over the folder on screen. A folder's menu (Add to
 /// Favorites, #367) rebuilds right under its own list.
 fn release_focus(pinned: &gtk::Box, container: &gtk::Box) {
     if let Some(root) = container.root() {

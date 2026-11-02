@@ -527,18 +527,6 @@ msgstr ""
 msgid "Empty"
 msgstr "Leeren"
 
-msgid "Empty Trash in Every Account?"
-msgstr "Alle Papierkörbe leeren?"
-
-msgid "Empty Junk in Every Account?"
-msgstr "Alle Spam-Ordner leeren?"
-
-msgid ""
-"Every message in them will be erased from the server. This can’t be undone."
-msgstr ""
-"Alle darin enthaltenen Nachrichten werden dauerhaft vom Server gelöscht. "
-"Dieser Vorgang kann nicht rückgängig gemacht werden."
-
 msgid "Create Folder"
 msgstr "Ordner erstellen"
 
@@ -1092,9 +1080,6 @@ msgstr "Fokusmodus aus"
 
 msgid "View"
 msgstr "Anzeigen"
-
-msgid "All accounts"
-msgstr "Alle Konten"
 
 msgid "Outbox"
 msgstr "Postausgang"
@@ -2728,6 +2713,9 @@ msgstr "HTML und Textdateien"
 
 msgid "Could Not Read the File"
 msgstr "Datei konnte nicht gelesen werden"
+
+msgid "All accounts"
+msgstr "Alle Konten"
 
 msgid "All but Trash and Junk"
 msgstr "Alle außer Papierkorb und Spam."
@@ -5058,8 +5046,9 @@ msgstr "Über den Konten"
 msgid "Below the accounts"
 msgstr "Unterhalb der Konten"
 
-msgid "All Inboxes"
-msgstr "Alle Posteingänge"
+#, fuzzy
+msgid "The first account's inbox"
+msgstr "Posteingang des zuletzt verwendeten Kontos"
 
 msgid "The last account's inbox"
 msgstr "Posteingang des zuletzt verwendeten Kontos"
@@ -5550,27 +5539,6 @@ msgstr "Nur neue, ungelesene E-Mails hervorheben"
 msgid "A count turns grey once you have looked at the folder."
 msgstr "Sobald ein Ordner betrachtet wurde, wechselt der Zähler zu Grau."
 
-msgid "Unified"
-msgstr "Zusammengefasst"
-
-msgid "Shown only with more than one account."
-msgstr "Wird nur angezeigt, wenn mehr als ein Konto eingerichtet ist."
-
-msgid "Inboxes"
-msgstr "Posteingänge"
-
-msgid "Snoozed"
-msgstr "Zurückgestellt"
-
-msgid "Shown only while mail is snoozed."
-msgstr "Anzeige nur bei zurückgestellten Nachrichten"
-
-msgid "Unread counts"
-msgstr "Zähler ungelesener Nachrichten"
-
-msgid "Shown on the unified rows while they are folded up."
-msgstr "Anzeige auf zusammengefassten Einträgen im eingeklappten Zustand."
-
 msgid "Sections"
 msgstr "Abschnitte"
 
@@ -5925,12 +5893,6 @@ msgstr "Erstes Konto hinzufügen"
 
 msgid "No accounts yet"
 msgstr "Noch keine Konten"
-
-msgid "Show each inbox"
-msgstr "Jeden Posteingang anzeigen"
-
-msgid "Show each account"
-msgstr "Jedes Konto anzeigen"
 
 msgid "Show each folder"
 msgstr "Jeden Ordner anzeigen"
@@ -6722,13 +6684,12 @@ msgstr ""
 "Für Shared-Hosting. Nur aktivieren, wenn der Verbindungstest abweichende "
 "Namen meldet."
 
-msgid "Show in All Inboxes"
-msgstr "In allen Posteingängen anzeigen"
+#, fuzzy
+msgid "Show in combined views"
+msgstr "Spaltentitel anzeigen"
 
-msgid "Also in the unified Starred, Sent, Drafts, Archive, Filters and Tags."
+msgid "Favorites, Tags and Smart Folders across accounts."
 msgstr ""
-"Auch in zusammengeführten Ordnern „Posteingang“, „Markiert“, „Gesendet“, "
-"„Entwürfe“ und „Archiv“ sowie Filtern und Tags."
 
 msgid "Test Connection"
 msgstr "Verbindung testen"
@@ -6913,6 +6874,9 @@ msgstr ""
 
 msgid "Templates"
 msgstr "Vorlagen"
+
+msgid "Snoozed"
+msgstr "Zurückgestellt"
 
 msgid "Hidden Folders"
 msgstr "Ausgeblendete Ordner"
@@ -7637,6 +7601,55 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Empty Trash in Every Account?"
+#~ msgstr "Alle Papierkörbe leeren?"
+
+#~ msgid "Empty Junk in Every Account?"
+#~ msgstr "Alle Spam-Ordner leeren?"
+
+#~ msgid ""
+#~ "Every message in them will be erased from the server. This can’t be "
+#~ "undone."
+#~ msgstr ""
+#~ "Alle darin enthaltenen Nachrichten werden dauerhaft vom Server gelöscht. "
+#~ "Dieser Vorgang kann nicht rückgängig gemacht werden."
+
+#~ msgid "All Inboxes"
+#~ msgstr "Alle Posteingänge"
+
+#~ msgid "Unified"
+#~ msgstr "Zusammengefasst"
+
+#~ msgid "Shown only with more than one account."
+#~ msgstr "Wird nur angezeigt, wenn mehr als ein Konto eingerichtet ist."
+
+#~ msgid "Inboxes"
+#~ msgstr "Posteingänge"
+
+#~ msgid "Shown only while mail is snoozed."
+#~ msgstr "Anzeige nur bei zurückgestellten Nachrichten"
+
+#~ msgid "Unread counts"
+#~ msgstr "Zähler ungelesener Nachrichten"
+
+#~ msgid "Shown on the unified rows while they are folded up."
+#~ msgstr "Anzeige auf zusammengefassten Einträgen im eingeklappten Zustand."
+
+#~ msgid "Show each inbox"
+#~ msgstr "Jeden Posteingang anzeigen"
+
+#~ msgid "Show each account"
+#~ msgstr "Jedes Konto anzeigen"
+
+#~ msgid "Show in All Inboxes"
+#~ msgstr "In allen Posteingängen anzeigen"
+
+#~ msgid ""
+#~ "Also in the unified Starred, Sent, Drafts, Archive, Filters and Tags."
+#~ msgstr ""
+#~ "Auch in zusammengeführten Ordnern „Posteingang“, „Markiert“, „Gesendet“, "
+#~ "„Entwürfe“ und „Archiv“ sowie Filtern und Tags."
 
 #~ msgid "Filters placement"
 #~ msgstr "Position der Filter"

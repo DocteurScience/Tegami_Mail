@@ -557,19 +557,6 @@ msgstr ""
 msgid "Empty"
 msgstr "Opróżnij"
 
-msgid "Empty Trash in Every Account?"
-msgstr ""
-
-msgid "Empty Junk in Every Account?"
-msgstr ""
-
-#, fuzzy
-msgid ""
-"Every message in them will be erased from the server. This can’t be undone."
-msgstr ""
-"Wszystkie wiadomości z tego katalogu zostaną trwale usunięte z serwera. Tej "
-"czynności nie można cofnąć."
-
 msgid "Create Folder"
 msgstr "Utwórz katalog"
 
@@ -1180,9 +1167,6 @@ msgstr "Tryb skupienia"
 
 msgid "View"
 msgstr ""
-
-msgid "All accounts"
-msgstr "Wszystkie konta"
 
 msgid "Outbox"
 msgstr "Skrzynka nadawcza"
@@ -2882,6 +2866,9 @@ msgstr "Pliki HTML i tekstowe"
 
 msgid "Could Not Read the File"
 msgstr "Nie udało się odczytać pliku"
+
+msgid "All accounts"
+msgstr "Wszystkie konta"
 
 msgid "All but Trash and Junk"
 msgstr ""
@@ -5316,8 +5303,9 @@ msgstr "Nad kontami"
 msgid "Below the accounts"
 msgstr "Pod kontami"
 
-msgid "All Inboxes"
-msgstr "Wszystkie skrzynki odbiorcze"
+#, fuzzy
+msgid "The first account's inbox"
+msgstr "Skrzynka odbiorcza ostatniego konta"
 
 msgid "The last account's inbox"
 msgstr "Skrzynka odbiorcza ostatniego konta"
@@ -5797,28 +5785,6 @@ msgstr ""
 msgid "A count turns grey once you have looked at the folder."
 msgstr ""
 
-msgid "Unified"
-msgstr "Widoki zbiorcze"
-
-#, fuzzy
-msgid "Shown only with more than one account."
-msgstr "Wyświetl tylko to konto"
-
-msgid "Inboxes"
-msgstr "Skrzynki odbiorcze"
-
-msgid "Snoozed"
-msgstr ""
-
-msgid "Shown only while mail is snoozed."
-msgstr ""
-
-msgid "Unread counts"
-msgstr "Liczniki nieprzeczytanych"
-
-msgid "Shown on the unified rows while they are folded up."
-msgstr ""
-
 #, fuzzy
 msgid "Sections"
 msgstr "Działania"
@@ -6188,12 +6154,6 @@ msgstr "Dodaj pierwsze konto"
 
 msgid "No accounts yet"
 msgstr "Brak kont"
-
-msgid "Show each inbox"
-msgstr "Wyświetl poszczególne skrzynki odbiorcze"
-
-msgid "Show each account"
-msgstr "Wyświetl poszczególne konta"
 
 msgid "Show each folder"
 msgstr "Wyświetl poszczególne katalogi"
@@ -6987,15 +6947,12 @@ msgid ""
 "differ."
 msgstr ""
 
-msgid "Show in All Inboxes"
-msgstr "Wyświetlanie w widokach zbiorczych"
-
 #, fuzzy
-msgid "Also in the unified Starred, Sent, Drafts, Archive, Filters and Tags."
+msgid "Show in combined views"
+msgstr "Wyświetl rozmowę"
+
+msgid "Favorites, Tags and Smart Folders across accounts."
 msgstr ""
-"Uwzględnia pocztę z tego konta w zbiorczych widokach „Skrzynki odbiorcze”, "
-"„Oznaczone gwiazdką”, „Wysłane”, „Szkice” i „Archiwum” oraz we wspólnych "
-"filtrach i etykietach."
 
 msgid "Test Connection"
 msgstr "Sprawdź połączenie"
@@ -7187,6 +7144,9 @@ msgstr ""
 "powyższe zapisywanie kopii."
 
 msgid "Templates"
+msgstr ""
+
+msgid "Snoozed"
 msgstr ""
 
 msgid "Hidden Folders"
@@ -7907,6 +7867,47 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#, fuzzy
+#~ msgid ""
+#~ "Every message in them will be erased from the server. This can’t be "
+#~ "undone."
+#~ msgstr ""
+#~ "Wszystkie wiadomości z tego katalogu zostaną trwale usunięte z serwera. "
+#~ "Tej czynności nie można cofnąć."
+
+#~ msgid "All Inboxes"
+#~ msgstr "Wszystkie skrzynki odbiorcze"
+
+#~ msgid "Unified"
+#~ msgstr "Widoki zbiorcze"
+
+#, fuzzy
+#~ msgid "Shown only with more than one account."
+#~ msgstr "Wyświetl tylko to konto"
+
+#~ msgid "Inboxes"
+#~ msgstr "Skrzynki odbiorcze"
+
+#~ msgid "Unread counts"
+#~ msgstr "Liczniki nieprzeczytanych"
+
+#~ msgid "Show each inbox"
+#~ msgstr "Wyświetl poszczególne skrzynki odbiorcze"
+
+#~ msgid "Show each account"
+#~ msgstr "Wyświetl poszczególne konta"
+
+#~ msgid "Show in All Inboxes"
+#~ msgstr "Wyświetlanie w widokach zbiorczych"
+
+#, fuzzy
+#~ msgid ""
+#~ "Also in the unified Starred, Sent, Drafts, Archive, Filters and Tags."
+#~ msgstr ""
+#~ "Uwzględnia pocztę z tego konta w zbiorczych widokach „Skrzynki "
+#~ "odbiorcze”, „Oznaczone gwiazdką”, „Wysłane”, „Szkice” i „Archiwum” oraz "
+#~ "we wspólnych filtrach i etykietach."
 
 #~ msgid "Filters placement"
 #~ msgstr "Położenie filtrów"

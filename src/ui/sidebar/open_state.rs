@@ -86,13 +86,9 @@ impl Sidebar {
         }
     }
 
-    /// Whether a unified row's list is open. All Inboxes
-    /// and Tags keep their own state (persisted, folded by the rail); the
-    /// Starred / Sent / Drafts rows live in `kind_expanded`.
+    /// Whether a row's list is open (persisted, folded by the rail).
     fn row_open(&self, row: UnifiedRow) -> bool {
         match row {
-            UnifiedRow::Kind(FolderKind::Inbox) => self.unified_expanded,
-            UnifiedRow::Kind(kind) => self.kind_open(kind),
             UnifiedRow::Favorites => self.favorites_expanded,
             UnifiedRow::Tags => self.tags_expanded,
             UnifiedRow::Smart => self.smart_expanded,
@@ -107,7 +103,6 @@ impl Sidebar {
         self.focus_fold_unified
             || self.collapsed
                 && match row {
-                    UnifiedRow::Kind(kind) => self.rail_fold.folds_kind(kind),
                     UnifiedRow::Favorites | UnifiedRow::Smart => false,
                     UnifiedRow::Tags => self.rail_fold.folds_tags(),
                 }
@@ -151,10 +146,6 @@ impl Sidebar {
 
     fn set_row_open(&mut self, row: UnifiedRow, open: bool) {
         match row {
-            UnifiedRow::Kind(FolderKind::Inbox) => self.unified_expanded = open,
-            UnifiedRow::Kind(kind) => {
-                self.kind_expanded.insert(kind, open);
-            }
             UnifiedRow::Favorites => self.favorites_expanded = open,
             UnifiedRow::Tags => self.tags_expanded = open,
             UnifiedRow::Smart => self.smart_expanded = open,
@@ -165,12 +156,6 @@ impl Sidebar {
     /// screen, animated, with its chevron turned. The rebuild that follows
     /// draws them folded for good (see `locked_row`).
     pub(super) fn fold_unified_rows_now(&self) {
-        if let Some(rev) = &self.unified_revealer {
-            rev.set_reveal_child(false);
-        }
-        if let Some(ch) = &self.unified_chevron {
-            ch.set_icon_name(Some(chevron_icon(false)));
-        }
         for w in self.kind_widgets.values() {
             w.revealer.set_reveal_child(false);
             if let Some(ch) = &w.chevron {
@@ -182,8 +167,6 @@ impl Sidebar {
     /// The unread total a unified row's folded chip shows.
     pub(super) fn row_unread(&self, row: UnifiedRow) -> u32 {
         match row {
-            UnifiedRow::Kind(FolderKind::Inbox) => self.unified_unread,
-            UnifiedRow::Kind(kind) => self.kind_unread(kind),
             UnifiedRow::Favorites => self
                 .favorite_folders
                 .iter()
@@ -208,17 +191,7 @@ impl Sidebar {
             self.report_sections(sender);
         }
         let unread = self.row_unread(row);
-        if row == UnifiedRow::Kind(FolderKind::Inbox) {
-            if let Some(rev) = &self.unified_revealer {
-                rev.set_reveal_child(open);
-            }
-            if let Some(label) = &self.unified_badge {
-                label.set_visible(unread > 0 && !open && self.unified_chips.all_inboxes);
-            }
-            if let Some(ch) = &self.unified_chevron {
-                ch.set_icon_name(Some(chevron_icon(open)));
-            }
-        } else if let Some(w) = self.kind_widgets.get(&row) {
+        if let Some(w) = self.kind_widgets.get(&row) {
             w.revealer.set_reveal_child(open);
             // Expanded: the list shows each count, so the total chip bows
             // out; it returns when folded back up.
@@ -239,11 +212,9 @@ impl Sidebar {
             && matches!(row, UnifiedRow::Favorites | UnifiedRow::Tags)
     }
 
-    /// Whether a unified row's total-unread chip is switched on (Settings →
-    /// Sidebar → Unified → Unread counts). Sent and Tags never carry one.
+    /// Whether a row's total-unread chip is shown. Tags never carry one.
     pub(super) fn chip_shown(&self, row: UnifiedRow) -> bool {
         match row {
-            UnifiedRow::Kind(kind) => self.unified_chips.has(kind),
             UnifiedRow::Favorites | UnifiedRow::Smart => true,
             UnifiedRow::Tags => false,
         }
@@ -307,38 +278,10 @@ impl Sidebar {
             .collect()
     }
 
-    /// Whether a unified Starred / Sent / Drafts row's account list is open.
-    fn kind_open(&self, kind: FolderKind) -> bool {
-        self.kind_expanded.get(&kind).copied().unwrap_or(false)
-    }
-
-    /// The unread total a unified row shows: every account's folder of that
-    /// kind (Drafts counts every draft, as its chips do).
-    fn kind_unread(&self, kind: FolderKind) -> u32 {
-        if kind == FolderKind::Sent {
-            return 0;
-        }
-        self.sections
-            .iter()
-            .filter(|s| s.in_unified)
-            .flat_map(|s| s.folders.iter())
-            .filter(|f| f.kind == kind)
-            .map(|f| f.unread)
-            .sum()
-    }
-
-    /// Tell the app how the three sections stand, for the saved layout.
+    /// Tell the app how the sections stand, for the saved layout.
     fn report_sections(&self, sender: &ComponentSender<Self>) {
         let _ = sender.output(SidebarOutput::SectionsOpen {
-            all_inboxes: self.unified_expanded,
             tags: self.tags_expanded,
-            starred: self.kind_open(FolderKind::Starred),
-            sent: self.kind_open(FolderKind::Sent),
-            drafts: self.kind_open(FolderKind::Drafts),
-            archive: self.kind_open(FolderKind::Archive),
-            junk: self.kind_open(FolderKind::Junk),
-            trash: self.kind_open(FolderKind::Trash),
-            snoozed: self.kind_open(FolderKind::Snoozed),
             favorites: self.favorites_expanded,
             smart: self.smart_expanded,
         });

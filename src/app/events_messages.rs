@@ -211,16 +211,6 @@ impl AppModel {
         }
         self.refile_carried_threads(account_id, &messages);
         self.show_listed(account_id, folder_id, messages, unchanged, &sender);
-        if !unchanged && self.flag_starred_accounts().contains(&account_id) {
-            // The index just took this folder's flags: read them
-            // again now for the view on show, else once a sync's
-            // burst of folders has passed.
-            if self.starred_by_flag().is_empty() {
-                self.refresh_unified_starred_soon(&sender);
-            } else {
-                self.refresh_unified_starred(&sender);
-            }
-        }
         self.schedule_smart_counts(&sender);
         // The reader's message was removed by this sync (deleted/moved on
         // another device). Clear it right away so nothing stale lingers, then
@@ -535,23 +525,14 @@ impl AppModel {
             // Accept only the folders the view merges, by recency.
             if self.is_unified_target(account_id, folder_id) {
                 let key = (account_id, folder_id);
-                let through = self.unified_reads_through();
                 let same_slice = unchanged
-                    && if through {
-                        self.unified_unfilled.contains(&key)
-                    } else {
-                        self.unified_slices
-                            .get(&key)
-                            .is_some_and(|s| *s == messages)
-                    };
+                    && self
+                        .unified_slices
+                        .get(&key)
+                        .is_some_and(|s| *s == messages);
                 if !same_slice {
-                    if through {
-                        self.unified_slices.remove(&key);
-                        self.unified_unfilled.insert(key);
-                    } else {
-                        self.unified_unfilled.remove(&key);
-                        self.unified_slices.insert(key, messages);
-                    }
+                    self.unified_unfilled.remove(&key);
+                    self.unified_slices.insert(key, messages);
                     // Accounts answer one after another, a large or
                     // slow one in several goes: one merge for the lot
                     // that lands together, not one each.

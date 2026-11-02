@@ -5,11 +5,9 @@ use adw::prelude::*;
 use relm4::prelude::*;
 
 use crate::i18n::{i18n, i18n_noop};
-use crate::models::FolderKind;
 use crate::ui::preferences::PrefOutput;
 use crate::ui::sidebar::CtxAction;
 
-use super::types::UnifiedView;
 use super::{AppModel, AppMsg};
 
 /// Ctrl+K opens the command palette (#399) wherever the keyboard is, a
@@ -375,31 +373,6 @@ impl AppModel {
                 }),
             });
         };
-        // The merged views the sidebar lists, under the sidebar's names.
-        let every = i18n("All accounts");
-        for kind in [
-            FolderKind::Inbox,
-            FolderKind::Starred,
-            FolderKind::Sent,
-            FolderKind::Drafts,
-            FolderKind::Archive,
-            FolderKind::Junk,
-            FolderKind::Trash,
-            FolderKind::Snoozed,
-        ] {
-            let listed = if kind == FolderKind::Inbox {
-                self.unified_inboxes_shown()
-            } else {
-                self.unified_kinds_listed().has(kind)
-            };
-            if listed {
-                go(
-                    crate::ui::sidebar::kind_label(kind),
-                    every.clone(),
-                    Box::new(move || AppMsg::UnifiedSelected(UnifiedView::Kind(kind))),
-                );
-            }
-        }
         go(
             i18n("Outbox"),
             view.clone(),

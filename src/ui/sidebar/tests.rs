@@ -481,14 +481,12 @@ fn a_placed_folder_joins_the_targets_run_only() {
 #[test]
 fn a_selection_knows_its_account_and_moves_to_a_renumbered_one() {
     use super::types::Sel;
-    let k = FolderKind::Sent;
     let cases = [
         (
             Sel::Folder(3, "a".into()),
             Some(3),
             Sel::Folder(9, "a".into()),
         ),
-        (Sel::UnifiedInbox(3), Some(3), Sel::UnifiedInbox(9)),
         (
             Sel::Tag(Some(3), "t".into()),
             Some(3),
@@ -499,16 +497,9 @@ fn a_selection_knows_its_account_and_moves_to_a_renumbered_one() {
             Some(3),
             Sel::Favorite(9, "a".into()),
         ),
-        (
-            Sel::UnifiedKindRow(k, 3),
-            Some(3),
-            Sel::UnifiedKindRow(k, 9),
-        ),
         (Sel::Tag(None, "t".into()), None, Sel::Tag(None, "t".into())),
         (Sel::None, None, Sel::None),
-        (Sel::Unified, None, Sel::Unified),
         (Sel::Outbox, None, Sel::Outbox),
-        (Sel::UnifiedKind(k), None, Sel::UnifiedKind(k)),
         (Sel::Smart("s".into()), None, Sel::Smart("s".into())),
     ];
     for (sel, account, moved) in cases {
@@ -520,29 +511,19 @@ fn a_selection_knows_its_account_and_moves_to_a_renumbered_one() {
 #[test]
 fn unified_rows_have_titles_icons_and_messages() {
     use super::types::{
-        chevron_icon, kind_label, row_icon, row_title, select_msg, toggle_msg, Slot, UnifiedRow,
+        chevron_icon, row_icon, row_title, select_msg, toggle_msg, Slot, UnifiedRow,
     };
     let dbg = |m: super::SidebarInput| format!("{m:?}");
-    let inbox = UnifiedRow::Kind(FolderKind::Inbox);
-    let sent = UnifiedRow::Kind(FolderKind::Sent);
-    assert_eq!(row_title(inbox), "Inboxes");
-    assert_eq!(row_title(sent), "Sent");
+    assert_eq!(row_title(UnifiedRow::Tags), "Tags");
     assert_eq!(row_title(UnifiedRow::Smart), "Smart Folders");
-    assert_eq!(row_icon(inbox), "mail-inbox-symbolic");
     assert_eq!(row_icon(UnifiedRow::Favorites), "user-bookmarks-symbolic");
-    assert_eq!(dbg(select_msg(inbox)), "UnifiedRowSelected");
-    assert_eq!(dbg(select_msg(sent)), "UnifiedKindRowSelected(Sent)");
     assert_eq!(dbg(select_msg(UnifiedRow::Smart)), "ToggleSmartExpand");
-    assert_eq!(dbg(toggle_msg(inbox)), "ToggleUnifiedExpand");
-    assert_eq!(dbg(toggle_msg(sent)), "ToggleKindExpand(Sent)");
     assert_eq!(
         dbg(toggle_msg(UnifiedRow::Tags)),
         "ToggleTagsExpand(Unified)"
     );
     assert_eq!(chevron_icon(true), "pan-down-symbolic");
     assert_eq!(chevron_icon(false), "pan-end-symbolic");
-    assert_eq!(kind_label(FolderKind::Custom), "Folder");
-    assert_eq!(kind_label(FolderKind::Templates), "Folder");
     assert_eq!(Slot::Unified.account(), None);
     assert_eq!(Slot::Account(4).account(), Some(4));
 }

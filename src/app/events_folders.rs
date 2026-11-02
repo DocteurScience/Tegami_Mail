@@ -17,12 +17,12 @@ use super::pending::{PENDING_MOVE_MAX, PENDING_SEEN_MAX, PENDING_TAG_SETTLED};
 
 impl AppModel {
     /// The messages the router sends here (see `AppModel::route`).
-    pub(super) fn on_events_folders(&mut self, msg: AppMsg, sender: ComponentSender<Self>) {
+    pub(super) fn on_events_folders(&mut self, msg: AppMsg) {
         match msg {
             AppMsg::SetFolders {
                 account_id,
                 folders,
-            } => self.on_set_folders(account_id, folders, sender),
+            } => self.on_set_folders(account_id, folders),
 
             AppMsg::FolderUnread {
                 account_id,
@@ -171,12 +171,7 @@ impl AppModel {
     }
 
     /// An account's folder list, from the worker's cache or the server.
-    fn on_set_folders(
-        &mut self,
-        account_id: u32,
-        folders: Vec<Folder>,
-        sender: ComponentSender<Self>,
-    ) {
+    fn on_set_folders(&mut self, account_id: u32, folders: Vec<Folder>) {
         self.notifications.emit(NotifyInput::ClearConnectivity);
         // Defence in depth against a wedged session's empty LIST (the
         // worker filters these too): never trade a real folder list
@@ -232,10 +227,6 @@ impl AppModel {
             self.rebuild_sidebar();
         }
         self.request_unified_boot(account_id);
-        self.schedule_preload(&sender);
-        if self.flag_starred_accounts().contains(&account_id) {
-            self.refresh_unified_starred(&sender);
-        }
         self.index_sent_folders(account_id);
         // A unified view merges one folder per account, and this
         // account's folders may only now have arrived — so the set the

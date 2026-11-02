@@ -7,19 +7,13 @@ use super::*;
 pub(crate) enum SidebarInput {
     SetContents {
         sections: Vec<SectionData>,
-        show_unified: bool,
-        /// The unified Starred / Sent / Drafts rows to show (already
-        /// narrowed by the app to a multi-account setup).
-        unified_kinds: crate::config::UnifiedKinds,
         /// Whether the account sections are shown at all.
         show_accounts: bool,
-        unified_chips: crate::config::UnifiedChips,
         chevrons_left: bool,
         /// A click anywhere on an account's header folds it.
         account_click_folds: bool,
         rail_dots: bool,
         rail_fold: crate::config::RailFold,
-        unified_unread: u32,
         /// The favorite folders (#367), from every account.
         favorite_folders: Vec<UnifiedFolderRef>,
         /// The tags (#71), for the Tags section.
@@ -49,25 +43,10 @@ pub(crate) enum SidebarInput {
     },
     /// Toggle a Tags section.
     ToggleTagsExpand(Slot),
-    /// A unified Starred / Sent / Drafts row was chosen (the merged view).
-    UnifiedKindRowSelected(FolderKind),
     /// The Favorites row was chosen (every favorite folder).
     UnifiedFavoritesSelected,
     /// The unified Tags row was chosen (every tagged message).
     UnifiedTagsSelected,
-    /// A row in a unified Starred / Sent / Drafts row's account list.
-    KindSubRowSelected {
-        kind: FolderKind,
-        index: i32,
-    },
-    /// Toggle a unified Starred / Sent / Drafts row's account list.
-    ToggleKindExpand(FolderKind),
-    UnifiedRowSelected,
-    /// Select the "All Inboxes" row programmatically (the tray menu's
-    /// "View all unread"): the highlight follows, and the selection goes
-    /// out like a click. State is set before the row, so the row-selected
-    /// signal hits the already-selected guard.
-    SelectUnifiedRow,
     FolderRowSelected {
         account_id: u32,
         index: i32,
@@ -80,10 +59,6 @@ pub(crate) enum SidebarInput {
         account_id: u32,
         path: String,
     },
-    /// A per-account inbox row under "All Inboxes" was chosen.
-    UnifiedInboxRowSelected(i32),
-    /// Toggle the "All Inboxes" per-account inbox sub-list.
-    ToggleUnifiedExpand,
     /// Open or fold the Favorites list (#367).
     ToggleFavoritesExpand,
     /// A folder picked in the Favorites list, by its index there.
@@ -137,7 +112,6 @@ pub(crate) enum SidebarInput {
     /// Update unread badges in place without rebuilding the sidebar.
     SetUnread {
         folders: HashMap<(u32, u32), u32>,
-        unified: u32,
         /// With "Highlight only new unread mail" on (#343): the folders
         /// with mail come in since they were last looked at. Every other
         /// count is grey. `None`: every count in the accent color.
@@ -160,24 +134,10 @@ pub(crate) enum SidebarOutput {
     /// The unified sections' open state changed (a click, or the rail's
     /// fold-up) — for persistence.
     SectionsOpen {
-        all_inboxes: bool,
         tags: bool,
-        starred: bool,
-        sent: bool,
-        drafts: bool,
-        archive: bool,
-        junk: bool,
-        trash: bool,
-        snoozed: bool,
         favorites: bool,
         smart: bool,
     },
-    /// A unified Starred / Sent / Drafts row was chosen: every account's
-    /// folder of that kind, merged.
-    UnifiedKindSelected(FolderKind),
-    /// An account's row under the unified Starred row, for an account with
-    /// no Starred folder: its starred mail, wherever it is filed (#482).
-    AccountStarredSelected(u32),
     /// The Favorites row: every favorite folder, merged.
     UnifiedFavoritesSelected,
     /// The unified Tags row: every tagged message.
@@ -224,7 +184,6 @@ pub(crate) enum SidebarOutput {
         account_id: u32,
         sort: Option<crate::config::FolderSort>,
     },
-    UnifiedSelected,
     /// A tag was selected (#71): its keyword, and the account it is scoped
     /// to (an account's own Tags section) or `None` for every account.
     TagSelected {
@@ -286,10 +245,6 @@ pub(crate) enum CtxAction {
         account_id: u32,
         folder_id: u32,
     },
-    MarkAllInboxesRead,
-    RefreshAllInboxes,
-    /// Erase every unified account's Trash or Junk at once (#413).
-    EmptyAll(FolderKind),
     /// Open Settings → Accounts with this account's editor up.
     OpenAccountSettings(u32),
     RemoveAccount(u32),

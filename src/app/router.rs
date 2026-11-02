@@ -81,9 +81,9 @@ impl AppModel {
                 folder_path,
                 uid,
             } => self.open_message_at(account_id, &folder_path, uid),
-            msg @ (AppMsg::UnifiedSelected(..)
-            | AppMsg::AccountStarredSelected(..)
-            | AppMsg::FolderSelected { .. }) => self.on_navigation(msg, sender),
+            msg @ (AppMsg::UnifiedSelected(..) | AppMsg::FolderSelected { .. }) => {
+                self.on_navigation(msg, sender)
+            }
             msg @ (AppMsg::AccountFolded { .. }
             | AppMsg::ToggleCustomFolders(..)
             | AppMsg::ReorderFolders { .. }
@@ -309,13 +309,10 @@ impl AppModel {
             | AppMsg::Sent { .. }
             | AppMsg::Unsent { .. }) => self.on_send(msg, sender),
             msg @ (AppMsg::FillUnifiedSlices
-            | AppMsg::Preload
-            | AppMsg::PrebuildViews
-            | AppMsg::PrebuildNext
             | AppMsg::UnifiedFoldersLoaded { .. }
             | AppMsg::PushUnreadCounts
             | AppMsg::EmitUnifiedNow
-            | AppMsg::EmitUnified) => self.on_unified(msg, sender),
+            | AppMsg::EmitUnified) => self.on_unified(msg),
             msg @ (AppMsg::SendMorphMeasured | AppMsg::SendMorphFailed) => self.on_send_morph(msg),
             msg @ (AppMsg::ComposeClosed(..) | AppMsg::ComposeCloseRequested(..)) => {
                 self.on_compose_host(msg)
@@ -344,9 +341,6 @@ impl AppModel {
             | AppMsg::CountSmartFolders
             | AppMsg::SmartCounts(..)
             | AppMsg::SetSmartFolders(..)) => self.on_smart(msg, sender),
-            msg @ (AppMsg::RefreshUnifiedStarred | AppMsg::UnifiedStarredLoaded { .. }) => {
-                self.on_unified_starred(msg, sender)
-            }
             msg @ (AppMsg::SetTag { .. }
             | AppMsg::SetTagMany { .. }
             | AppMsg::MoveToInbox
@@ -367,7 +361,7 @@ impl AppModel {
             | AppMsg::TagSettled { .. }
             | AppMsg::MovesSettled { .. }
             | AppMsg::FolderUnreadByPath { .. }
-            | AppMsg::BodyHits { .. }) => self.on_events_folders(msg, sender),
+            | AppMsg::BodyHits { .. }) => self.on_events_folders(msg),
             msg @ (AppMsg::RawExported { .. } | AppMsg::RawImported { .. }) => {
                 self.on_transfer(msg, sender)
             }
@@ -397,9 +391,6 @@ impl AppModel {
             | PrefOutput::SetSeenCounts(..)
             | PrefOutput::SetRailDots(..)
             | PrefOutput::SetRailFold(..)
-            | PrefOutput::SetShowUnified(..)
-            | PrefOutput::SetUnifiedChips(..)
-            | PrefOutput::SetUnifiedKinds(..)
             | PrefOutput::SetShowAccounts(..)
             | PrefOutput::SetSectionStyle(..)
             | PrefOutput::SetTagsPlacement(..)

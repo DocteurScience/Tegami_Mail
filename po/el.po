@@ -535,18 +535,6 @@ msgstr ""
 msgid "Empty"
 msgstr "Άδειασμα"
 
-msgid "Empty Trash in Every Account?"
-msgstr "Άδειασμα κάδου σε όλους τους λογαριασμούς;"
-
-msgid "Empty Junk in Every Account?"
-msgstr "Άδειασμα ανεπιθύμητων σε όλους τους λογαριασμούς;"
-
-msgid ""
-"Every message in them will be erased from the server. This can’t be undone."
-msgstr ""
-"Κάθε μήνυμα σε αυτούς θα διαγραφεί από τον διακομιστή. Αυτό δεν μπορεί να "
-"αναιρεθεί."
-
 msgid "Create Folder"
 msgstr "Δημιουργία φακέλου"
 
@@ -1107,9 +1095,6 @@ msgstr "Απενεργοποίηση λειτουργίας συγκέντρωσ
 
 msgid "View"
 msgstr "Προβολή"
-
-msgid "All accounts"
-msgstr "Όλοι οι λογαριασμοί"
 
 msgid "Outbox"
 msgstr "Εξερχόμενα"
@@ -2766,6 +2751,9 @@ msgstr "Αρχεία HTML και κειμένου"
 
 msgid "Could Not Read the File"
 msgstr "Δεν ήταν δυνατή η ανάγνωση του αρχείου"
+
+msgid "All accounts"
+msgstr "Όλοι οι λογαριασμοί"
 
 msgid "All but Trash and Junk"
 msgstr "Όλοι εκτός από τον Κάδο και τα Ανεπιθύμητα"
@@ -5111,8 +5099,9 @@ msgstr "Πάνω από τους λογαριασμούς"
 msgid "Below the accounts"
 msgstr "Κάτω από τους λογαριασμούς"
 
-msgid "All Inboxes"
-msgstr "Όλα τα Εισερχόμενα"
+#, fuzzy
+msgid "The first account's inbox"
+msgstr "Τα Εισερχόμενα του τελευταίου λογαριασμού"
 
 msgid "The last account's inbox"
 msgstr "Τα Εισερχόμενα του τελευταίου λογαριασμού"
@@ -5590,27 +5579,6 @@ msgstr "Επισήμανση μόνο νέας μη αναγνωσμένης α�
 msgid "A count turns grey once you have looked at the folder."
 msgstr "Ο αριθμός γίνεται γκρίζος μόλις ανοίξετε τον φάκελο."
 
-msgid "Unified"
-msgstr "Ενοποιημένα"
-
-msgid "Shown only with more than one account."
-msgstr "Εμφανίζεται μόνο όταν υπάρχουν περισσότεροι από ένας λογαριασμοί."
-
-msgid "Inboxes"
-msgstr "Εισερχόμενα"
-
-msgid "Snoozed"
-msgstr ""
-
-msgid "Shown only while mail is snoozed."
-msgstr ""
-
-msgid "Unread counts"
-msgstr "Πλήθος μη αναγνωσμένων"
-
-msgid "Shown on the unified rows while they are folded up."
-msgstr "Εμφανίζεται στις ενοποιημένες γραμμές όταν είναι συμπτυγμένες."
-
 msgid "Sections"
 msgstr "Ενότητες"
 
@@ -5966,12 +5934,6 @@ msgstr "Προσθήκη πρώτου λογαριασμού"
 
 msgid "No accounts yet"
 msgstr "Δεν υπάρχουν ακόμη λογαριασμοί"
-
-msgid "Show each inbox"
-msgstr "Εμφάνιση κάθε φακέλου εισερχομένων"
-
-msgid "Show each account"
-msgstr "Εμφάνιση κάθε λογαριασμού"
 
 msgid "Show each folder"
 msgstr "Εμφάνιση κάθε φακέλου"
@@ -6772,13 +6734,12 @@ msgstr ""
 "Για κοινόχρηστη φιλοξενία. Ενεργοποιήστε το μόνο αν ο έλεγχος σύνδεσης "
 "δείξει ότι τα ονόματα διαφέρουν."
 
-msgid "Show in All Inboxes"
-msgstr "Εμφάνιση σε όλα τα Εισερχόμενα"
+#, fuzzy
+msgid "Show in combined views"
+msgstr "Εμφάνιση επικεφαλίδων στηλών"
 
-msgid "Also in the unified Starred, Sent, Drafts, Archive, Filters and Tags."
+msgid "Favorites, Tags and Smart Folders across accounts."
 msgstr ""
-"Επίσης στις ενοποιημένες ενότητες Επισημασμένα, Απεσταλμένα, Πρόχειρα, "
-"Αρχειοθήκη, Φίλτρα και Ετικέτες."
 
 msgid "Test Connection"
 msgstr "Δοκιμή σύνδεσης"
@@ -6965,6 +6926,9 @@ msgstr ""
 
 msgid "Templates"
 msgstr "Πρότυπα"
+
+msgid "Snoozed"
+msgstr ""
 
 msgid "Hidden Folders"
 msgstr "Κρυφοί φάκελοι"
@@ -7679,6 +7643,52 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Empty Trash in Every Account?"
+#~ msgstr "Άδειασμα κάδου σε όλους τους λογαριασμούς;"
+
+#~ msgid "Empty Junk in Every Account?"
+#~ msgstr "Άδειασμα ανεπιθύμητων σε όλους τους λογαριασμούς;"
+
+#~ msgid ""
+#~ "Every message in them will be erased from the server. This can’t be "
+#~ "undone."
+#~ msgstr ""
+#~ "Κάθε μήνυμα σε αυτούς θα διαγραφεί από τον διακομιστή. Αυτό δεν μπορεί να "
+#~ "αναιρεθεί."
+
+#~ msgid "All Inboxes"
+#~ msgstr "Όλα τα Εισερχόμενα"
+
+#~ msgid "Unified"
+#~ msgstr "Ενοποιημένα"
+
+#~ msgid "Shown only with more than one account."
+#~ msgstr "Εμφανίζεται μόνο όταν υπάρχουν περισσότεροι από ένας λογαριασμοί."
+
+#~ msgid "Inboxes"
+#~ msgstr "Εισερχόμενα"
+
+#~ msgid "Unread counts"
+#~ msgstr "Πλήθος μη αναγνωσμένων"
+
+#~ msgid "Shown on the unified rows while they are folded up."
+#~ msgstr "Εμφανίζεται στις ενοποιημένες γραμμές όταν είναι συμπτυγμένες."
+
+#~ msgid "Show each inbox"
+#~ msgstr "Εμφάνιση κάθε φακέλου εισερχομένων"
+
+#~ msgid "Show each account"
+#~ msgstr "Εμφάνιση κάθε λογαριασμού"
+
+#~ msgid "Show in All Inboxes"
+#~ msgstr "Εμφάνιση σε όλα τα Εισερχόμενα"
+
+#~ msgid ""
+#~ "Also in the unified Starred, Sent, Drafts, Archive, Filters and Tags."
+#~ msgstr ""
+#~ "Επίσης στις ενοποιημένες ενότητες Επισημασμένα, Απεσταλμένα, Πρόχειρα, "
+#~ "Αρχειοθήκη, Φίλτρα και Ετικέτες."
 
 #~ msgid "Filters placement"
 #~ msgstr "Τοποθέτηση φίλτρων"

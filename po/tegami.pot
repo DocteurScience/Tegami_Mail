@@ -489,16 +489,6 @@ msgstr ""
 msgid "Empty"
 msgstr ""
 
-msgid "Empty Trash in Every Account?"
-msgstr ""
-
-msgid "Empty Junk in Every Account?"
-msgstr ""
-
-msgid ""
-"Every message in them will be erased from the server. This can’t be undone."
-msgstr ""
-
 msgid "Create Folder"
 msgstr ""
 
@@ -1026,9 +1016,6 @@ msgid "Turn Focus Mode Off"
 msgstr ""
 
 msgid "View"
-msgstr ""
-
-msgid "All accounts"
 msgstr ""
 
 msgid "Outbox"
@@ -2512,6 +2499,9 @@ msgid "HTML and text files"
 msgstr ""
 
 msgid "Could Not Read the File"
+msgstr ""
+
+msgid "All accounts"
 msgstr ""
 
 msgid "All but Trash and Junk"
@@ -4625,7 +4615,7 @@ msgstr ""
 msgid "Below the accounts"
 msgstr ""
 
-msgid "All Inboxes"
+msgid "The first account's inbox"
 msgstr ""
 
 msgid "The last account's inbox"
@@ -5067,27 +5057,6 @@ msgstr ""
 msgid "A count turns grey once you have looked at the folder."
 msgstr ""
 
-msgid "Unified"
-msgstr ""
-
-msgid "Shown only with more than one account."
-msgstr ""
-
-msgid "Inboxes"
-msgstr ""
-
-msgid "Snoozed"
-msgstr ""
-
-msgid "Shown only while mail is snoozed."
-msgstr ""
-
-msgid "Unread counts"
-msgstr ""
-
-msgid "Shown on the unified rows while they are folded up."
-msgstr ""
-
 msgid "Sections"
 msgstr ""
 
@@ -5422,12 +5391,6 @@ msgid "Add first account"
 msgstr ""
 
 msgid "No accounts yet"
-msgstr ""
-
-msgid "Show each inbox"
-msgstr ""
-
-msgid "Show each account"
 msgstr ""
 
 msgid "Show each folder"
@@ -6139,10 +6102,10 @@ msgid ""
 "differ."
 msgstr ""
 
-msgid "Show in All Inboxes"
+msgid "Show in combined views"
 msgstr ""
 
-msgid "Also in the unified Starred, Sent, Drafts, Archive, Filters and Tags."
+msgid "Favorites, Tags and Smart Folders across accounts."
 msgstr ""
 
 msgid "Test Connection"
@@ -6310,6 +6273,9 @@ msgid "For Gmail and others that file sent mail themselves."
 msgstr ""
 
 msgid "Templates"
+msgstr ""
+
+msgid "Snoozed"
 msgstr ""
 
 msgid "Hidden Folders"

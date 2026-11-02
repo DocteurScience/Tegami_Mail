@@ -130,9 +130,6 @@ pub(crate) enum AppMsg {
     /// / Sent / Drafts row (every account's folder of that kind), or its
     /// Filtered Folders row (every rule's folder).
     UnifiedSelected(UnifiedView),
-    /// An account's starred mail, for an account with no Starred folder
-    /// (#482): the unified Starred view narrowed to it.
-    AccountStarredSelected(u32),
     /// A folder row was chosen (the sidebar, the command palette): list it.
     FolderSelected {
         account_id: u32,
@@ -169,18 +166,10 @@ pub(crate) enum AppMsg {
         path: String,
         collapsed: bool,
     },
-    /// The sidebar's All Inboxes / Filtered Folders / Tags sections were
+    /// The sidebar's Tags / Favorites / Smart Folders sections were
     /// opened or folded — record it with the layout.
     SidebarSectionsOpen {
-        all_inboxes: bool,
         tags: bool,
-        starred: bool,
-        sent: bool,
-        drafts: bool,
-        archive: bool,
-        junk: bool,
-        trash: bool,
-        snoozed: bool,
         favorites: bool,
         smart: bool,
     },
@@ -765,8 +754,8 @@ pub(crate) enum AppMsg {
     RestartNow,
     /// Quit was chosen from the tray icon's menu.
     QuitFromTray,
-    /// "View all unread" was chosen from the tray icon's menu: go to All
-    /// Inboxes, or without it to the first inbox holding unread mail.
+    /// "View all unread" was chosen from the tray icon's menu: go to the
+    /// first inbox holding unread mail.
     TrayViewUnread,
     /// Raise and focus the main window (welcome wizard hand-off).
     PresentWindow,
@@ -1029,15 +1018,8 @@ pub(crate) enum AppMsg {
     // ---- on_unified (unified.rs) ----
     /// Copy the unified view's folders into its slices (`unified_unfilled`).
     FillUnifiedSlices,
-    /// Read the folders the unified rows list into memory, off the main
-    /// thread, so the first visit after a start finds them there.
-    Preload,
-    /// Build the unified rows ahead for the message list, one at a time.
-    PrebuildViews,
-    /// Build the next view waiting in the prebuild queue (`PrebuildViews`).
-    PrebuildNext,
     /// Folders not in memory yet, read whole from the index off the main
-    /// thread: for the unified view being opened, or ahead of it (`Preload`).
+    /// thread: for the unified view being opened.
     UnifiedFoldersLoaded {
         lists: Vec<((u32, u32), Vec<Message>)>,
     },
@@ -1134,23 +1116,13 @@ pub(crate) enum AppMsg {
     },
     /// An account's flag check (#532) changed the cached stars or read
     /// state of these folders.
-    FlagsSynced { account_id: u32, paths: Vec<String> },
+    FlagsSynced { paths: Vec<String> },
     /// Count every smart folder's unread mail now (the debounce ran out).
     CountSmartFolders,
     /// The smart folders' unread counts, by id, for the sidebar.
     SmartCounts(HashMap<String, u32>),
     /// The smart folders as Settings left them.
     SetSmartFolders(Vec<config::SmartFolder>),
-
-    // ---- on_unified_starred (unified_starred.rs) ----
-    /// Read the starred mail of accounts with no Starred folder again (the
-    /// debounce ran out).
-    RefreshUnifiedStarred,
-    /// The starred mail of the accounts with no Starred folder, read from
-    /// the index for the unified Starred view (#482).
-    UnifiedStarredLoaded {
-        rows: HashMap<u32, Vec<(String, Message)>>,
-    },
 
     // ---- on_move_tag (move_tag.rs) ----
     /// Put a tag on one message, or take it off (row menu, palette, card).

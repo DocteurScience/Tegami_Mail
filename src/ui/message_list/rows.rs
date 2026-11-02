@@ -468,7 +468,7 @@ impl MessageList {
             rows,
             by_date,
             any_expanded,
-        } = self.compute_rows(false);
+        } = self.compute_rows();
         // Only what changed reaches the view: rows that show the same message
         // stay where they are, with whatever they were doing (#323).
         let t_rows = std::time::Instant::now();
@@ -490,10 +490,8 @@ impl MessageList {
     }
 
     /// Sort, group and describe `all` into the rows of the window, leaving
-    /// the rest in `tail` and the conversation maps filled. `offscreen`: for
-    /// a view not on show (`prebuild_view`), which must not touch the look of
-    /// the one that is.
-    pub(super) fn compute_rows(&mut self, offscreen: bool) -> Built {
+    /// the rest in `tail` and the conversation maps filled.
+    pub(super) fn compute_rows(&mut self) -> Built {
         let passes = self.filter();
         let source_len = self.active_source().len();
         let mut matches = self.source_matches();
@@ -518,7 +516,7 @@ impl MessageList {
             .listed_folders
             .iter()
             .any(|(a, _)| self.graph_accounts.contains(a));
-        if !offscreen && graph_in_view != self.graph_in_view {
+        if graph_in_view != self.graph_in_view {
             self.graph_in_view = graph_in_view;
             self.sync_look();
         }

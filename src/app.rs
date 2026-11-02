@@ -123,7 +123,6 @@ mod tray;
 mod types;
 mod undo;
 mod unified;
-mod unified_starred;
 mod unsubscribe;
 mod uri_queue;
 mod view_flags;

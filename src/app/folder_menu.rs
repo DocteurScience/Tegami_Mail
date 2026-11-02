@@ -4,7 +4,6 @@ use adw::prelude::*;
 use relm4::prelude::*;
 
 use crate::i18n::{i18n, i18n_f};
-use crate::models::FolderKind;
 use crate::ui::sidebar::CtxAction;
 use crate::worker::MailRequest;
 
@@ -174,62 +173,6 @@ impl AppModel {
         );
     }
 
-    /// Empty every unified account's Trash or Junk (#413). One folder asks
-    /// the way its own row does; more name each account they belong to.
-    fn confirm_empty_all(&self, kind: FolderKind, sender: &ComponentSender<Self>) {
-        let targets: Vec<(u32, u32, String, String, String)> = self
-            .accounts
-            .iter()
-            .filter(|a| self.in_unified(a.id))
-            .filter_map(|a| {
-                let f = self.folder_of_kind(a.id, kind)?;
-                Some((a.id, f.id, f.name.clone(), f.path.clone(), a.email.clone()))
-            })
-            .collect();
-        match targets.as_slice() {
-            [] => {}
-            [(account_id, folder_id, name, path, _)] => {
-                self.confirm_empty_folder(
-                    *account_id,
-                    *folder_id,
-                    name.clone(),
-                    path.clone(),
-                    sender,
-                );
-            }
-            _ => {
-                let heading = if kind == FolderKind::Trash {
-                    i18n("Empty Trash in Every Account?")
-                } else {
-                    i18n("Empty Junk in Every Account?")
-                };
-                let accounts: Vec<&str> = targets.iter().map(|t| t.4.as_str()).collect();
-                let body = format!(
-                    "{}\n\n{}",
-                    i18n("Every message in them will be erased from the server. This can’t be undone."),
-                    accounts.join("\n")
-                );
-                let s = sender.clone();
-                confirm_destructive(
-                    Some(self.window.upcast_ref()),
-                    &heading,
-                    &body,
-                    "empty",
-                    &i18n("Empty"),
-                    move || {
-                        for (account_id, folder_id, _, path, _) in targets {
-                            s.input(AppMsg::EmptyFolder {
-                                account_id,
-                                folder_id,
-                                path,
-                            });
-                        }
-                    },
-                );
-            }
-        }
-    }
-
     /// The messages the router sends here (see `AppModel::route`).
     pub(super) fn on_folder_menu(&mut self, msg: AppMsg, sender: ComponentSender<Self>) {
         match msg {
@@ -324,32 +267,6 @@ impl AppModel {
                 if let Some(path) = self.folder_path(account_id, folder_id) {
                     self.send_to(account_id, MailRequest::LoadMessages { folder_id, path });
                 }
-            }
-            CtxAction::MarkAllInboxesRead => {
-                // The inboxes the row merges, as its chip counts them.
-                let inboxes: Vec<(u32, u32)> = self
-                    .accounts
-                    .iter()
-                    .filter(|a| self.in_unified(a.id))
-                    .filter_map(|a| self.inbox_of(a.id).map(|f| (a.id, f.id)))
-                    .collect();
-                for (account_id, folder_id) in inboxes {
-                    self.mark_folder_read(account_id, folder_id);
-                }
-            }
-            CtxAction::RefreshAllInboxes => {
-                let reqs: Vec<(u32, u32, String)> = self
-                    .accounts
-                    .iter()
-                    .filter(|a| self.in_unified(a.id))
-                    .filter_map(|a| self.inbox_of(a.id).map(|f| (a.id, f.id, f.path.clone())))
-                    .collect();
-                for (account_id, folder_id, path) in reqs {
-                    self.send_to(account_id, MailRequest::LoadMessages { folder_id, path });
-                }
-            }
-            CtxAction::EmptyAll(kind) => {
-                self.confirm_empty_all(kind, &sender);
             }
             CtxAction::ApplyFilters {
                 account_id,

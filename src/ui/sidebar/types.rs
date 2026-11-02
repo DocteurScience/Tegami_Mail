@@ -3,15 +3,6 @@
 
 use super::*;
 
-/// A per-account inbox shown in the expandable "All Inboxes" sub-list.
-#[derive(Clone)]
-pub(super) struct InboxRef {
-    pub(super) account_id: u32,
-    pub(super) folder_id: u32,
-    pub(super) name: String,
-    pub(super) path: String,
-}
-
 /// A folder listed in a unified section (Favorites, #367): the account it
 /// belongs to and the folder.
 #[derive(Debug, Clone)]
@@ -46,25 +37,21 @@ pub(super) struct SectionWidgets {
     pub(super) list: gtk::ListBox,
 }
 
-/// One unified row — All Inboxes, or the unified section's Starred / Sent /
-/// Drafts: the header list (one selectable row), the per-account list under
-/// it, and their badges.
+/// One merged row (Favorites, Tags, Smart Folders): the header list (one
+/// selectable row), the list under it, and their badges.
 pub(super) struct KindWidgets {
     pub(super) header: gtk::ListBox,
     pub(super) revealer: gtk::Revealer,
     pub(super) chevron: Option<gtk::Image>,
     pub(super) badge: Option<gtk::Label>,
     pub(super) list: gtk::ListBox,
-    pub(super) rows: Vec<InboxRef>,
     pub(super) row_badges: HashMap<(u32, u32), gtk::Label>,
 }
 
-/// A row of the unified section: All Inboxes and the Starred / Sent /
-/// Drafts rows (one folder per account), Favorites and the Tags row (every
-/// tag) — all built alike.
+/// A row built like a section of its own: Favorites, the Tags row (every
+/// tag) and the smart folders — all built alike.
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
 pub(super) enum UnifiedRow {
-    Kind(FolderKind),
     /// The folders picked with Add to Favorites (#367), from any account.
     Favorites,
     Tags,
@@ -75,7 +62,6 @@ pub(super) enum UnifiedRow {
 /// What a unified row is called.
 pub(super) fn row_title(row: UnifiedRow) -> String {
     match row {
-        UnifiedRow::Kind(kind) => kind_label(kind),
         UnifiedRow::Favorites => i18n("Favorites"),
         UnifiedRow::Tags => i18n("Tags"),
         UnifiedRow::Smart => i18n("Smart Folders"),
@@ -85,7 +71,6 @@ pub(super) fn row_title(row: UnifiedRow) -> String {
 /// A unified row's icon.
 pub(super) fn row_icon(row: UnifiedRow) -> &'static str {
     match row {
-        UnifiedRow::Kind(kind) => kind.icon(),
         UnifiedRow::Favorites => "user-bookmarks-symbolic",
         UnifiedRow::Tags => "tag-outline-symbolic",
         UnifiedRow::Smart => "folder-saved-search-symbolic",
@@ -95,8 +80,6 @@ pub(super) fn row_icon(row: UnifiedRow) -> &'static str {
 /// The message a unified row's header sends when selected.
 pub(super) fn select_msg(row: UnifiedRow) -> SidebarInput {
     match row {
-        UnifiedRow::Kind(FolderKind::Inbox) => SidebarInput::UnifiedRowSelected,
-        UnifiedRow::Kind(kind) => SidebarInput::UnifiedKindRowSelected(kind),
         UnifiedRow::Favorites => SidebarInput::UnifiedFavoritesSelected,
         UnifiedRow::Tags => SidebarInput::UnifiedTagsSelected,
         // Each smart folder is a view of its own; the header holds them.
@@ -107,8 +90,6 @@ pub(super) fn select_msg(row: UnifiedRow) -> SidebarInput {
 /// The message a unified row's chevron (or, in the rail, a long press) sends.
 pub(super) fn toggle_msg(row: UnifiedRow) -> SidebarInput {
     match row {
-        UnifiedRow::Kind(FolderKind::Inbox) => SidebarInput::ToggleUnifiedExpand,
-        UnifiedRow::Kind(kind) => SidebarInput::ToggleKindExpand(kind),
         UnifiedRow::Favorites => SidebarInput::ToggleFavoritesExpand,
         UnifiedRow::Tags => SidebarInput::ToggleTagsExpand(Slot::Unified),
         UnifiedRow::Smart => SidebarInput::ToggleSmartExpand,
@@ -121,21 +102,6 @@ pub(super) fn chevron_icon(open: bool) -> &'static str {
         "pan-down-symbolic"
     } else {
         "pan-end-symbolic"
-    }
-}
-
-/// What a unified row is called.
-pub(crate) fn kind_label(kind: FolderKind) -> String {
-    match kind {
-        FolderKind::Inbox => i18n("Inboxes"),
-        FolderKind::Starred => i18n("Starred"),
-        FolderKind::Sent => i18n("Sent"),
-        FolderKind::Drafts => i18n("Drafts"),
-        FolderKind::Archive => i18n("Archive"),
-        FolderKind::Junk => i18n("Junk"),
-        FolderKind::Trash => i18n("Trash"),
-        FolderKind::Snoozed => i18n("Snoozed"),
-        _ => i18n("Folder"),
     }
 }
 
@@ -175,10 +141,6 @@ pub(crate) struct SectionData {
     pub(crate) has_filters: bool,
     /// Whether this account's own "Tags" section is open.
     pub(crate) tags_expanded: bool,
-    /// Whether the account takes part in the unified section (#267): off,
-    /// its folders are left out of every unified row and chip, and only
-    /// its own section lists them.
-    pub(crate) in_unified: bool,
     /// A Gmail account, whose own folders are labels and say so (#374).
     pub(crate) gmail: bool,
 }
@@ -191,21 +153,12 @@ pub(crate) struct SidebarInit {
     /// on its own when nothing is selected — the app hands it the primary
     /// sidebar's choice through `SidebarInput::MirrorSelection`.
     pub(crate) mirror: bool,
-    /// The three sections' open state as last left (persisted with the
-    /// sidebar layout).
-    pub(crate) unified_expanded: bool,
+    /// The sections' open state as last left (persisted with the sidebar
+    /// layout).
     pub(crate) tags_expanded: bool,
-    /// The unified Starred / Sent / Drafts rows' account lists.
-    pub(crate) starred_expanded: bool,
-    pub(crate) sent_expanded: bool,
-    pub(crate) drafts_expanded: bool,
-    pub(crate) archive_expanded: bool,
-    pub(crate) junk_expanded: bool,
-    pub(crate) trash_expanded: bool,
-    pub(crate) snoozed_expanded: bool,
     pub(crate) favorites_expanded: bool,
     pub(crate) smart_expanded: bool,
-    /// Where the first pick lands instead of All Inboxes (#256).
+    /// Where the first pick lands instead of the first Inbox (#256).
     pub(crate) start: Option<StartTarget>,
 }
 
@@ -221,20 +174,12 @@ pub(crate) enum StartTarget {
 #[derive(Clone, PartialEq, Debug)]
 pub(crate) enum Sel {
     None,
-    Unified,
     Outbox,
     Folder(u32, String),
-    /// An account's inbox selected via the "All Inboxes" sub-list.
-    UnifiedInbox(u32),
-    /// A unified Starred / Sent / Drafts row: the merged view.
-    UnifiedKind(FolderKind),
     /// The Favorites row: every favorite folder, merged.
     UnifiedFavorites,
     /// The unified Tags row: every tagged message.
     UnifiedTags,
-    /// An account's folder picked in a unified Starred / Sent / Drafts
-    /// row's account list.
-    UnifiedKindRow(FolderKind, u32),
     /// A folder (account, path) picked in the Favorites list (#367).
     Favorite(u32, String),
     /// A tag (its keyword) selected in a Tags section (#71): scoped to an
@@ -248,11 +193,7 @@ impl Sel {
     /// The account the selection belongs to, if it belongs to one.
     pub(super) fn account(&self) -> Option<u32> {
         match self {
-            Sel::Folder(acc, _)
-            | Sel::UnifiedInbox(acc)
-            | Sel::Tag(Some(acc), _)
-            | Sel::Favorite(acc, _)
-            | Sel::UnifiedKindRow(_, acc) => Some(*acc),
+            Sel::Folder(acc, _) | Sel::Tag(Some(acc), _) | Sel::Favorite(acc, _) => Some(*acc),
             _ => None,
         }
     }
@@ -261,10 +202,8 @@ impl Sel {
     pub(super) fn with_account(self, id: u32) -> Sel {
         match self {
             Sel::Folder(_, p) => Sel::Folder(id, p),
-            Sel::UnifiedInbox(_) => Sel::UnifiedInbox(id),
             Sel::Tag(Some(_), k) => Sel::Tag(Some(id), k),
             Sel::Favorite(_, p) => Sel::Favorite(id, p),
-            Sel::UnifiedKindRow(kind, _) => Sel::UnifiedKindRow(kind, id),
             other => other,
         }
     }

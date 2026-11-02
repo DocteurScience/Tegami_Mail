@@ -66,12 +66,6 @@ pub(crate) struct Preferences {
     sound: crate::config::NewMailSound,
     /// The custom sound file, a copy in the data directory.
     custom_sound: Option<std::path::PathBuf>,
-    show_unified: bool,
-    /// The unified Starred / Sent / Drafts switches, kept whole so each
-    /// toggle can hand the app the full set.
-    unified_kinds: crate::config::UnifiedKinds,
-    /// The unified rows' unread-chip switches, likewise kept whole.
-    unified_chips: crate::config::UnifiedChips,
     /// The Printing switches, kept whole so each toggle can hand the app
     /// the full set (#359).
     print_options: crate::config::PrintOptions,
@@ -401,9 +395,6 @@ impl Component for Preferences {
             column_editor: None,
             columns_group: None,
             list_single_possible: init.list_layout != crate::config::ListLayout::Cards,
-            show_unified: init.show_unified,
-            unified_kinds: init.unified_kinds,
-            unified_chips: init.unified_chips,
             print_options: init.print_options,
             show_accounts: init.show_accounts,
             rail_fold: init.rail_fold,
@@ -580,51 +571,12 @@ impl Component for Preferences {
             PrefInput::ToggleSound(on) => self.on_toggle_sound(on),
             PrefInput::ToggleSoundFocused(on) => self.on_toggle_sound_focused(on),
             PrefInput::ChangeSound(index) => self.on_change_sound(index, sender),
-            PrefInput::ToggleShowUnified(on) => self.on_toggle_show_unified(on, sender),
             PrefInput::TogglePrintPageNumbers(on) => {
                 self.set_print_option(|s| &mut s.page_numbers, on, sender)
             }
             PrefInput::TogglePrintDate(on) => self.set_print_option(|s| &mut s.date, on, sender),
             PrefInput::TogglePrintPunchMargin(on) => {
                 self.set_print_option(|s| &mut s.punch_margin, on, sender)
-            }
-            PrefInput::ToggleUnifiedChipAllInboxes(on) => {
-                self.set_unified_chip(|s| &mut s.all_inboxes, on, sender)
-            }
-            PrefInput::ToggleUnifiedChipStarred(on) => {
-                self.set_unified_chip(|s| &mut s.starred, on, sender)
-            }
-            PrefInput::ToggleUnifiedChipDrafts(on) => {
-                self.set_unified_chip(|s| &mut s.drafts, on, sender)
-            }
-            PrefInput::ToggleUnifiedChipArchive(on) => {
-                self.set_unified_chip(|s| &mut s.archive, on, sender)
-            }
-            PrefInput::ToggleUnifiedChipJunk(on) => {
-                self.set_unified_chip(|s| &mut s.junk, on, sender)
-            }
-            PrefInput::ToggleUnifiedChipTrash(on) => {
-                self.set_unified_chip(|s| &mut s.trash, on, sender)
-            }
-            PrefInput::ToggleUnifiedChipSnoozed(on) => {
-                self.set_unified_chip(|s| &mut s.snoozed, on, sender)
-            }
-            PrefInput::ToggleUnifiedStarred(on) => {
-                self.set_unified_kind(|s| &mut s.starred, on, sender)
-            }
-            PrefInput::ToggleUnifiedSent(on) => self.set_unified_kind(|s| &mut s.sent, on, sender),
-            PrefInput::ToggleUnifiedDrafts(on) => {
-                self.set_unified_kind(|s| &mut s.drafts, on, sender)
-            }
-            PrefInput::ToggleUnifiedArchive(on) => {
-                self.set_unified_kind(|s| &mut s.archive, on, sender)
-            }
-            PrefInput::ToggleUnifiedJunk(on) => self.set_unified_kind(|s| &mut s.junk, on, sender),
-            PrefInput::ToggleUnifiedTrash(on) => {
-                self.set_unified_kind(|s| &mut s.trash, on, sender)
-            }
-            PrefInput::ToggleUnifiedSnoozed(on) => {
-                self.set_unified_kind(|s| &mut s.snoozed, on, sender)
             }
             PrefInput::MountPages => self.mount_pages(),
             PrefInput::Search(text) => self.on_search(text),
@@ -670,24 +622,6 @@ impl Component for Preferences {
             }
             PrefInput::ToggleRailFoldAccounts(on) => {
                 self.set_rail_fold(|s| &mut s.accounts, on, sender)
-            }
-            PrefInput::ToggleRailFoldAllInboxes(on) => {
-                self.set_rail_fold(|s| &mut s.all_inboxes, on, sender)
-            }
-            PrefInput::ToggleRailFoldStarred(on) => {
-                self.set_rail_fold(|s| &mut s.starred, on, sender)
-            }
-            PrefInput::ToggleRailFoldSent(on) => self.set_rail_fold(|s| &mut s.sent, on, sender),
-            PrefInput::ToggleRailFoldDrafts(on) => {
-                self.set_rail_fold(|s| &mut s.drafts, on, sender)
-            }
-            PrefInput::ToggleRailFoldArchive(on) => {
-                self.set_rail_fold(|s| &mut s.archive, on, sender)
-            }
-            PrefInput::ToggleRailFoldJunk(on) => self.set_rail_fold(|s| &mut s.junk, on, sender),
-            PrefInput::ToggleRailFoldTrash(on) => self.set_rail_fold(|s| &mut s.trash, on, sender),
-            PrefInput::ToggleRailFoldSnoozed(on) => {
-                self.set_rail_fold(|s| &mut s.snoozed, on, sender)
             }
             PrefInput::ToggleRailFoldTags(on) => self.set_rail_fold(|s| &mut s.tags, on, sender),
             PrefInput::ChangeReadMark(idx) => self.on_change_read_mark(idx, sender),
@@ -737,5 +671,5 @@ impl Component for Preferences {
 thread_local! {
     /// Whether Settings → Sidebar's Unread counts and Fold up expanded
     /// items rows are open, for this run of the app only.
-    static SESSION_OPEN: std::cell::Cell<[bool; 2]> = const { std::cell::Cell::new([false; 2]) };
+    static SESSION_OPEN: std::cell::Cell<[bool; 1]> = const { std::cell::Cell::new([false; 1]) };
 }

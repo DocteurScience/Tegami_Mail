@@ -1,6 +1,6 @@
 //! Small types shared across the app's modules.
 
-use crate::models::{FolderKind, Message};
+use crate::models::Message;
 
 /// A folder's messages as [`AppModel::message_cache`] keeps them: shared,
 /// not copied, with a search pool being put together on another thread
@@ -54,8 +54,6 @@ pub(super) struct SelectedFolder {
 /// Which folders a unified view merges (see `AppModel::unified_view`).
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub(crate) enum UnifiedView {
-    /// Every account's folder of this kind.
-    Kind(FolderKind),
     /// Every favorite folder.
     Favorites,
 }

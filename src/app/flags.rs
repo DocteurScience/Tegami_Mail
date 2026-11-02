@@ -168,7 +168,6 @@ impl AppModel {
         let Some(path) = self.resolve_folder_path(m) else {
             return;
         };
-        self.note_flag_star(m, &path, starred);
         self.send_to(
             m.account_id,
             MailRequest::SetFlagged {
@@ -317,23 +316,6 @@ impl AppModel {
         m
     }
 
-    /// Keep a star set or taken off here in `unified_starred_rows`, so the
-    /// unified Starred view opens with it before the index is read again.
-    fn note_flag_star(&mut self, m: &Message, path: &str, starred: bool) {
-        let Some(rows) = self.unified_starred_rows.get_mut(&m.account_id) else {
-            return;
-        };
-        match rows.iter_mut().find(|(p, r)| p == path && r.uid == m.uid) {
-            Some((_, r)) => r.starred = starred,
-            None if starred => {
-                let mut r = m.clone();
-                r.starred = true;
-                rows.push((path.to_string(), r));
-            }
-            None => {}
-        }
-    }
-
     /// Mark a cached message read in every list that holds it, so unread badges
     /// update immediately without waiting for the next server sync.
     pub(super) fn mark_cached_read(&mut self, account_id: u32, folder_id: u32, message_id: u32) {
@@ -360,16 +342,6 @@ impl AppModel {
         for msgs in lists.into_iter().flatten() {
             if let Some(m) = msgs.iter_mut().find(|m| m.id == message_id) {
                 m.unread = unread;
-            }
-        }
-        if let Some(path) = self.folder_path(account_id, folder_id) {
-            if let Some(rows) = self.unified_starred_rows.get_mut(&account_id) {
-                if let Some((_, m)) = rows
-                    .iter_mut()
-                    .find(|(p, m)| *p == path && m.id == message_id)
-                {
-                    m.unread = unread;
-                }
             }
         }
     }

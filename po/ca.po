@@ -527,18 +527,6 @@ msgstr ""
 msgid "Empty"
 msgstr "Buida"
 
-msgid "Empty Trash in Every Account?"
-msgstr "Vols buidar la paperera de tots els comptes?"
-
-msgid "Empty Junk in Every Account?"
-msgstr "Vols buidar la brossa de tots els comptes?"
-
-msgid ""
-"Every message in them will be erased from the server. This can’t be undone."
-msgstr ""
-"Tots els missatges que contenen s'esborraran del servidor. Això no es pot "
-"desfer."
-
 msgid "Create Folder"
 msgstr "Crea una carpeta"
 
@@ -1094,9 +1082,6 @@ msgstr "Desactiva el mode d'enfocament"
 
 msgid "View"
 msgstr "Visualitza"
-
-msgid "All accounts"
-msgstr "Tots els comptes"
 
 msgid "Outbox"
 msgstr "Bústia de sortida"
@@ -2727,6 +2712,9 @@ msgstr "Fitxers HTML i de text"
 
 msgid "Could Not Read the File"
 msgstr "No s'ha pogut llegir el fitxer"
+
+msgid "All accounts"
+msgstr "Tots els comptes"
 
 msgid "All but Trash and Junk"
 msgstr "Totes menys la paperera i la brossa"
@@ -5042,8 +5030,9 @@ msgstr "A sobre dels comptes"
 msgid "Below the accounts"
 msgstr "A sota dels comptes"
 
-msgid "All Inboxes"
-msgstr "Totes les bústies d'entrada"
+#, fuzzy
+msgid "The first account's inbox"
+msgstr "La bústia d'entrada de l'últim compte"
 
 msgid "The last account's inbox"
 msgstr "La bústia d'entrada de l'últim compte"
@@ -5509,27 +5498,6 @@ msgstr "Ressalta només el correu no llegit nou"
 msgid "A count turns grey once you have looked at the folder."
 msgstr "El recompte es torna gris un cop has mirat la carpeta."
 
-msgid "Unified"
-msgstr "Unificat"
-
-msgid "Shown only with more than one account."
-msgstr "Només es mostra amb més d'un compte."
-
-msgid "Inboxes"
-msgstr "Bústies d'entrada"
-
-msgid "Snoozed"
-msgstr ""
-
-msgid "Shown only while mail is snoozed."
-msgstr ""
-
-msgid "Unread counts"
-msgstr "Recomptes de no llegits"
-
-msgid "Shown on the unified rows while they are folded up."
-msgstr "Es mostren a les files unificades mentre estan replegades."
-
 msgid "Sections"
 msgstr "Seccions"
 
@@ -5884,12 +5852,6 @@ msgstr "Afegeix el primer compte"
 
 msgid "No accounts yet"
 msgstr "Encara no hi ha comptes"
-
-msgid "Show each inbox"
-msgstr "Mostra cada bústia d'entrada"
-
-msgid "Show each account"
-msgstr "Mostra cada compte"
 
 msgid "Show each folder"
 msgstr "Mostra cada carpeta"
@@ -6675,12 +6637,12 @@ msgstr ""
 "Per a allotjament compartit. Activa-ho només quan la prova de connexió digui "
 "que els noms difereixen."
 
-msgid "Show in All Inboxes"
-msgstr "Mostra a totes les bústies d'entrada"
+#, fuzzy
+msgid "Show in combined views"
+msgstr "Mostra els encapçalaments de columna"
 
-msgid "Also in the unified Starred, Sent, Drafts, Archive, Filters and Tags."
+msgid "Favorites, Tags and Smart Folders across accounts."
 msgstr ""
-"També a destacats, enviats, esborranys, arxiu, filtres i etiquetes unificats."
 
 msgid "Test Connection"
 msgstr "Prova la connexió"
@@ -6859,6 +6821,9 @@ msgstr "Per al Gmail i altres que arxiven ells mateixos el correu enviat."
 
 msgid "Templates"
 msgstr "Plantilles"
+
+msgid "Snoozed"
+msgstr ""
 
 msgid "Hidden Folders"
 msgstr "Carpetes amagades"
@@ -7555,6 +7520,52 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Empty Trash in Every Account?"
+#~ msgstr "Vols buidar la paperera de tots els comptes?"
+
+#~ msgid "Empty Junk in Every Account?"
+#~ msgstr "Vols buidar la brossa de tots els comptes?"
+
+#~ msgid ""
+#~ "Every message in them will be erased from the server. This can’t be "
+#~ "undone."
+#~ msgstr ""
+#~ "Tots els missatges que contenen s'esborraran del servidor. Això no es pot "
+#~ "desfer."
+
+#~ msgid "All Inboxes"
+#~ msgstr "Totes les bústies d'entrada"
+
+#~ msgid "Unified"
+#~ msgstr "Unificat"
+
+#~ msgid "Shown only with more than one account."
+#~ msgstr "Només es mostra amb més d'un compte."
+
+#~ msgid "Inboxes"
+#~ msgstr "Bústies d'entrada"
+
+#~ msgid "Unread counts"
+#~ msgstr "Recomptes de no llegits"
+
+#~ msgid "Shown on the unified rows while they are folded up."
+#~ msgstr "Es mostren a les files unificades mentre estan replegades."
+
+#~ msgid "Show each inbox"
+#~ msgstr "Mostra cada bústia d'entrada"
+
+#~ msgid "Show each account"
+#~ msgstr "Mostra cada compte"
+
+#~ msgid "Show in All Inboxes"
+#~ msgstr "Mostra a totes les bústies d'entrada"
+
+#~ msgid ""
+#~ "Also in the unified Starred, Sent, Drafts, Archive, Filters and Tags."
+#~ msgstr ""
+#~ "També a destacats, enviats, esborranys, arxiu, filtres i etiquetes "
+#~ "unificats."
 
 #~ msgid "Filters placement"
 #~ msgstr "Col·locació dels filtres"

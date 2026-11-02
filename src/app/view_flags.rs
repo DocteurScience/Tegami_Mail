@@ -8,7 +8,6 @@ use std::time::{Duration, Instant};
 
 use relm4::prelude::*;
 
-use crate::models::FolderKind;
 use crate::worker::MailRequest;
 
 use super::model::AppModel;
@@ -18,8 +17,8 @@ use super::model::AppModel;
 const PAUSE: Duration = Duration::from_secs(15);
 
 impl AppModel {
-    /// The folders, per account, that the open Smart Folder or unified
-    /// Starred view reads from the index.
+    /// The folders, per account, that the open Smart Folder reads from the
+    /// index.
     fn view_flag_paths(&self) -> Vec<(u32, Vec<String>)> {
         let all_but = |account_id: u32, skip: &[String]| -> Vec<String> {
             self.folders
@@ -39,20 +38,7 @@ impl AppModel {
                 })
                 .collect();
         }
-        self.starred_by_flag()
-            .into_iter()
-            .map(|id| {
-                let skip: Vec<String> = self
-                    .folders
-                    .get(&id)
-                    .into_iter()
-                    .flatten()
-                    .filter(|f| matches!(f.kind, FolderKind::Trash | FolderKind::Junk))
-                    .map(|f| f.path.clone())
-                    .collect();
-                (id, all_but(id, &skip))
-            })
-            .collect()
+        Vec::new()
     }
 
     /// Have each account check the stars and read state the open view's
@@ -83,20 +69,12 @@ impl AppModel {
 
     /// An account's flag check changed the index under `paths`: the views
     /// that read it read it again.
-    pub(super) fn on_flags_synced(
-        &mut self,
-        account_id: u32,
-        paths: &[String],
-        sender: &ComponentSender<Self>,
-    ) {
+    pub(super) fn on_flags_synced(&mut self, paths: &[String], sender: &ComponentSender<Self>) {
         if paths.is_empty() {
             return;
         }
         if self.smart_view.is_some() {
             self.refresh_smart_view(sender);
-        }
-        if self.flag_starred_accounts().contains(&account_id) {
-            self.refresh_unified_starred(sender);
         }
         self.schedule_smart_counts(sender);
     }

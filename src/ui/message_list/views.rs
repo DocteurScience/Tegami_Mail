@@ -2,7 +2,6 @@
 //! swaps them in instead of rebuilding, and views prebuilt before they are
 //! opened.
 
-use super::rows::LIST_WINDOW;
 use super::sort::SortOrder;
 use super::threading::{SourceThreads, THREADS_OFF_MAIN};
 use super::MessageList;
@@ -293,67 +292,5 @@ impl MessageList {
             self.total_matches,
             t.elapsed()
         );
-    }
-
-    /// Build the view `key` from `all` and keep it, leaving the view on show
-    /// as it is: its state steps aside for the build and comes back.
-    pub(super) fn prebuild_view(
-        &mut self,
-        key: u64,
-        fp: u64,
-        all: Vec<Rc<Message>>,
-        threads: Option<Rc<SourceThreads>>,
-    ) {
-        // A search on show would filter the build; the visit builds it then.
-        if !self.query.is_empty() {
-            return;
-        }
-        let t = std::time::Instant::now();
-        let all = std::mem::replace(&mut self.all, all);
-        let source_threads =
-            std::mem::replace(&mut *self.source_threads.borrow_mut(), threads.clone());
-        let shown = std::mem::take(&mut self.shown);
-        let tail = std::mem::take(&mut self.tail);
-        let groups = std::mem::take(&mut self.groups);
-        let msg_thread = std::mem::take(&mut self.msg_thread);
-        let thread_members = std::mem::take(&mut self.thread_members);
-        let nested = std::mem::take(&mut self.nested);
-        let listed_folders = std::mem::take(&mut self.listed_folders);
-        let total_matches = self.total_matches;
-        let thread_drag = std::mem::take(&mut *self.shared.thread_drag.borrow_mut());
-        let window = std::mem::replace(&mut self.window, LIST_WINDOW);
-        let selected_ids = std::mem::take(&mut self.selected_ids);
-        let selected_id = self.selected_id.take();
-
-        let built = self.compute_rows(true);
-        let snap = ViewSnapshot {
-            key,
-            fp,
-            sig: self.rows_signature(),
-            all: std::mem::replace(&mut self.all, all),
-            threads,
-            rows: built.rows,
-            shown: std::mem::replace(&mut self.shown, shown),
-            tail: std::mem::replace(&mut self.tail, tail),
-            groups: std::mem::replace(&mut self.groups, groups),
-            msg_thread: std::mem::replace(&mut self.msg_thread, msg_thread),
-            thread_members: std::mem::replace(&mut self.thread_members, thread_members),
-            nested: std::mem::replace(&mut self.nested, nested),
-            listed_folders: std::mem::replace(&mut self.listed_folders, listed_folders),
-            total_matches: std::mem::replace(&mut self.total_matches, total_matches),
-            thread_drag: std::mem::replace(&mut *self.shared.thread_drag.borrow_mut(), thread_drag),
-            window: std::mem::replace(&mut self.window, window),
-        };
-        *self.source_threads.borrow_mut() = source_threads;
-        self.selected_ids = selected_ids;
-        self.selected_id = selected_id;
-        tracing::debug!(
-            "list: built ahead, {} rows of {}, in {:?}",
-            snap.shown.len(),
-            snap.total_matches,
-            t.elapsed()
-        );
-        self.views.retain(|v| v.key != key);
-        self.views.push_back(snap);
     }
 }

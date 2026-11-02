@@ -31,28 +31,10 @@ pub(crate) struct SidebarState {
     /// entries: a folder sorts among its siblings by where it stands here.
     #[serde(default)]
     pub(crate) folder_order: Vec<String>,
-    /// The three sections' open state; open when the file predates them,
-    /// which is how they always started.
-    #[serde(default = "default_on")]
-    pub(crate) unified_expanded: bool,
+    /// The Tags section's open state; open when the file predates it,
+    /// which is how it always started.
     #[serde(default = "default_on")]
     pub(crate) tags_expanded: bool,
-    /// The unified Starred / Sent / Drafts rows' account lists; closed
-    /// until opened.
-    #[serde(default)]
-    pub(crate) starred_expanded: bool,
-    #[serde(default)]
-    pub(crate) sent_expanded: bool,
-    #[serde(default)]
-    pub(crate) drafts_expanded: bool,
-    #[serde(default)]
-    pub(crate) archive_expanded: bool,
-    #[serde(default)]
-    pub(crate) junk_expanded: bool,
-    #[serde(default)]
-    pub(crate) trash_expanded: bool,
-    #[serde(default)]
-    pub(crate) snoozed_expanded: bool,
     /// Folders picked as favorites (#367), as "email\tpath" entries in the
     /// order they were added, and whether their list is open.
     #[serde(default)]

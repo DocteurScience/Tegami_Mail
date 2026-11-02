@@ -128,17 +128,6 @@ impl AppModel {
             .sum()
     }
 
-    /// The number behind the unified Inboxes chip: the inboxes that view
-    /// merges, which leaves out the accounts kept apart from it (#267).
-    pub(super) fn unified_inboxes_unread(&self) -> u32 {
-        self.accounts
-            .iter()
-            .filter(|a| self.in_unified(a.id))
-            .filter_map(|a| self.inbox_of(a.id))
-            .map(|f| self.folder_unread_of(f))
-            .sum()
-    }
-
     /// Whether an account's mail is merged into the unified section (#267).
     /// An account with no config (never the case outside a test) is in.
     pub(super) fn in_unified(&self, account_id: u32) -> bool {

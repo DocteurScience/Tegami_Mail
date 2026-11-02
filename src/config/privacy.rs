@@ -14,9 +14,7 @@ use super::prefs::{
     ComposeFormat, FilesAction, FilesLarge, FoldMessages, LauncherBadge, NotificationButtons,
     PrintOptions, ReadMark, ReceiptPolicy, ReplyPosition, ReturnedReceipts, SignaturePosition,
 };
-use super::sections::{
-    FolderSort, RailFold, SectionPlacement, SectionStyle, StartView, UnifiedChips, UnifiedKinds,
-};
+use super::sections::{FolderSort, RailFold, SectionPlacement, SectionStyle, StartView};
 use super::{config_file, default_on, is_zero, save_private_toml, write_private};
 
 /// Every preference privacy.toml holds. The name is historical: the file
@@ -488,24 +486,6 @@ pub(crate) struct PrivacyFile {
     /// still shows the verdict, and a failed check always gets the banner.
     #[serde(default = "default_on")]
     pub(crate) show_spoof_banner: bool,
-    /// Whether the sidebar offers the unified "All Inboxes" section at all
-    /// (it only ever appears with more than one enabled account).
-    #[serde(default = "default_on")]
-    pub(crate) show_unified: bool,
-    /// The old single switch for All Inboxes' unread chip, kept so a file
-    /// written before `unified_chips` still reads as it was set.
-    #[serde(default = "default_on")]
-    pub(crate) unified_chip: bool,
-    /// Which unified rows wear their total-unread chip while folded up
-    /// (expanded, the rows beneath carry the counts and the total is never
-    /// shown). One switch per row: All Inboxes, Starred, Drafts, Archive,
-    /// Filtered Folders. Sent never counts.
-    #[serde(default)]
-    pub(crate) unified_chips: UnifiedChips,
-    /// The unified section's Starred / Sent / Drafts rows, one switch each
-    /// (All Inboxes is `show_unified` above).
-    #[serde(default)]
-    pub(crate) unified_kinds: UnifiedKinds,
     /// Whether the account sections are shown at all. Off leaves the unified
     /// section alone, for those who only ever work from it.
     #[serde(default = "default_on")]
@@ -628,10 +608,6 @@ impl Default for PrivacyFile {
             remote_ahead: false,
             show_remote_banner: true,
             show_spoof_banner: true,
-            show_unified: true,
-            unified_chip: true,
-            unified_chips: UnifiedChips::default(),
-            unified_kinds: UnifiedKinds::default(),
             show_accounts: true,
             section_style: SectionStyle::default(),
             tags_placement: SectionPlacement::AboveAccounts,

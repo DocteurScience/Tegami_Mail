@@ -2,6 +2,18 @@
 
 ## Unreleased
 
+- **Removed: the unified views.** The sidebar's top section, with
+  **Inboxes**, **Starred**, **Sent**, **Drafts**, **Archive**, **Junk**,
+  **Trash** and **Snoozed** merged across accounts, their account lists,
+  **Settings → Sidebar → Unified** and its unread-count switches, and their
+  icon-rail fold switches, as the redesign has each account's folders on
+  their own (mockup 01). **Favorites**, **Tags** and **Smart Folders**
+  still gather mail across accounts; **Show in All Inboxes** on an account
+  is now **Show in combined views** and decides whether they include it.
+  **Open at startup** opens the first account's inbox in place of All
+  Inboxes, and the tray's **View all unread** the first inbox with unread
+  mail.
+
 - **Removed: Reader View and the per-message Light / Dark Mode switch.**
   The two switches of the reader header, their settings in **Settings →
   Reading** and Focus Mode's **Reader View** part are gone, as the redesign
