@@ -5,7 +5,7 @@ reprendre le travail dans une autre conversation. Les règles durables
 (conventions, commandes, architecture) sont dans [CLAUDE.md](../CLAUDE.md).
 Mettre ce fichier à jour à chaque étape poussée.
 
-Dernière mise à jour : 2026-11-02, après `a357bad`.
+Dernière mise à jour : 2026-11-02, après `d90278f`.
 
 ## État
 
@@ -86,6 +86,7 @@ Dernière mise à jour : 2026-11-02, après `a357bad`.
 | `d1c6780` | Menu ⋯ du composeur réduit à la maquette : retrait d'Enregistrer comme modèle, Envoyer vers le cloud (fichiers choisis), Ouvrir les contacts, Ouvrir dans une fenêtre / Replier, avec leur code (bascule fenêtre ↔ volet, sélecteur de contacts) |
 | `1e9d453` | Markdown et Source HTML supprimés : `ComposeFormat` = Rich / Plain (alias serde « markdown »/« html » → Rich), mode source et Aperçu du composeur, moteur Markdown et `pulldown-cmark` ; le mode source reste pour la signature HTML dans les Réglages |
 | `a357bad` | Champ De en bouton (avatar, nom, adresse) ouvrant « Envoyer depuis » + « Gérer les comptes… » ; crayon (#347) retiré, un From hors identités venu du préremplissage (+tag, brouillon) est gardé et affiché ; `MenuEntry::subtitle`, classe `.secondary-text` (70 %) |
+| `d90278f` | Navigateur de pièces jointes supprimé : page galerie, ligne de la barre latérale, réglage, état enregistré, requêtes du cache, scan BODYSTRUCTURE. Gardés : `AppMsg::OpenMessageAt` (liens `tegami:`), aides « Suppression… » du tiroir, table `attachment_meta` |
 | `bb5953c` | Vue Lecteur supprimée : interrupteur de l'en-tête, réglages (Lecture), partie « Vue Lecteur » du mode Focus, bascule de la fenêtre de message, clés `reader_mode` / `reader_switch` / `reader_default`. La feuille `crate::mail::reader` reste : elle affiche les traductions de messages en texte brut. Paramètre `reader` de `conversation_document` retiré ; instantané `three_cards.html` régénéré |
 
 ## Décisions prises
@@ -170,6 +171,13 @@ conteneur (locale `fr_FR.UTF-8` installée, catalogue compilé dans
 14 planches envoyées au propriétaire. Relevé : bouton Étiquettes absent de
 l'en-tête du lecteur sur une conversation (planche 10), dates longues dans
 la liste.
+
+À faire plus tard (nettoyage moteur de la galerie) : supprimer la table
+`attachment_meta`/`attachment_scan` par une migration de schéma (et ses
+écritures : `strip.rs`, `graph/handle_write.rs`, `cache/messages.rs`,
+`open.rs` seed, `demo_cache.rs`) ; le préchargement en arrière-plan des
+pièces jointes des dossiers « galerie » (`backfill.rs` `job.gallery`,
+`prefetch.rs` `gallery_folder`) qui n'a plus de raison d'être.
 
 Restant du point 3, dans l'ordre : retrait des vues unifiées, Filtres, Contacts
 et Pièces jointes de la barre latérale, menu ⋯ du lecteur, menu d'un
