@@ -5,15 +5,15 @@ reprendre le travail dans une autre conversation. Les règles durables
 (conventions, commandes, architecture) sont dans [CLAUDE.md](../CLAUDE.md).
 Mettre ce fichier à jour à chaque étape poussée.
 
-Dernière mise à jour : 2026-11-02, après `d90278f`.
+Dernière mise à jour : 2026-11-02, après `8e38bf6`.
 
 ## État
 
 - Base : import de Hylki 1.46.0, renommé Tegami Mail (commits du
   2026-10-31 et du 2026-11-01 jusqu'à `fd0ccce`).
-- CI : verte sur tous les commits jusqu'à `42aaef8` (build, tests, snap) ;
+- CI : verte sur tous les commits jusqu'à `deef37d` (build, tests, snap) ;
   les suivants à vérifier (`gh run list --repo DocteurScience/Tegami_Mail`).
-- Tests : 1213 réussis, 45 ignorés.
+- Tests : 1156 réussis, 40 ignorés.
 - Référence du design : `docs/DESIGN.md`, `docs/DESIGN_STRINGS.md`,
   maquettes `data/repo/design/01` à `17`.
 
@@ -87,6 +87,7 @@ Dernière mise à jour : 2026-11-02, après `d90278f`.
 | `1e9d453` | Markdown et Source HTML supprimés : `ComposeFormat` = Rich / Plain (alias serde « markdown »/« html » → Rich), mode source et Aperçu du composeur, moteur Markdown et `pulldown-cmark` ; le mode source reste pour la signature HTML dans les Réglages |
 | `a357bad` | Champ De en bouton (avatar, nom, adresse) ouvrant « Envoyer depuis » + « Gérer les comptes… » ; crayon (#347) retiré, un From hors identités venu du préremplissage (+tag, brouillon) est gardé et affiché ; `MenuEntry::subtitle`, classe `.secondary-text` (70 %) |
 | `d90278f` | Navigateur de pièces jointes supprimé : page galerie, ligne de la barre latérale, réglage, état enregistré, requêtes du cache, scan BODYSTRUCTURE. Gardés : `AppMsg::OpenMessageAt` (liens `tegami:`), aides « Suppression… » du tiroir, table `attachment_meta` |
+| `8e38bf6` | Vue Contacts supprimée : page, ligne et arbre de la barre latérale, pied de barre, raccourci g c, réglages d'emplacement et de recherche, code d'édition des contacts. Gardés : carnets et Réglages → Contacts (import/export/tout supprimer), « Ajouter aux contacts », suggestions et groupes du composeur, noms et photos |
 | `bb5953c` | Vue Lecteur supprimée : interrupteur de l'en-tête, réglages (Lecture), partie « Vue Lecteur » du mode Focus, bascule de la fenêtre de message, clés `reader_mode` / `reader_switch` / `reader_default`. La feuille `crate::mail::reader` reste : elle affiche les traductions de messages en texte brut. Paramètre `reader` de `conversation_document` retiré ; instantané `three_cards.html` régénéré |
 
 ## Décisions prises
@@ -178,6 +179,11 @@ la liste.
 `open.rs` seed, `demo_cache.rs`) ; le préchargement en arrière-plan des
 pièces jointes des dossiers « galerie » (`backfill.rs` `job.gallery`,
 `prefetch.rs` `gallery_folder`) qui n'a plus de raison d'être.
+
+Conséquence à signaler au propriétaire : les contacts du carnet Tegami Mail
+ne peuvent plus être modifiés ni supprimés un par un dans l'application
+(seulement importés, exportés, tous supprimés) ; ceux des carnets GNOME ou
+en ligne se modifient dans GNOME Contacts.
 
 Restant du point 3, dans l'ordre : retrait des vues unifiées, Filtres, Contacts
 et Pièces jointes de la barre latérale, menu ⋯ du lecteur, menu d'un
