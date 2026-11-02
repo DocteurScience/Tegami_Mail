@@ -166,6 +166,7 @@ impl AppModel {
                 if pref!(self.threading = on) {
                     self.message_list.emit(MessageListInput::SetThreading(on));
                 }
+                self.sync_show_checks();
             }
 
             PrefOutput::SetThreadExpansion(on) => {

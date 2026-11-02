@@ -720,6 +720,20 @@ msgstr "λήγει στις {date}"
 msgid "Sort by"
 msgstr "Ταξινόμηση κατά"
 
+msgid "Show"
+msgstr "Εμφάνιση"
+
+#, fuzzy
+msgid "Group into Conversations"
+msgstr "Συζητήσεις"
+
+#, fuzzy
+msgid "Message Preview"
+msgstr "Προεπισκόπηση μηνύματος"
+
+msgid "Avatars"
+msgstr ""
+
 msgid "Show only"
 msgstr "Εμφάνιση μόνο"
 
@@ -2268,9 +2282,6 @@ msgstr "Φάκελος"
 #, fuzzy
 msgid "Permanently deletes the message"
 msgstr "Μετάφραση αυτού του μηνύματος"
-
-msgid "Show"
-msgstr "Εμφάνιση"
 
 msgid "Bring this folder back to the sidebar"
 msgstr "Επαναφορά αυτού του φακέλου στην πλευρική στήλη"

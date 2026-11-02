@@ -710,6 +710,20 @@ msgstr "caduca el {date}"
 msgid "Sort by"
 msgstr "Ordena per"
 
+msgid "Show"
+msgstr "Mostra"
+
+#, fuzzy
+msgid "Group into Conversations"
+msgstr "Converses"
+
+#, fuzzy
+msgid "Message Preview"
+msgstr "Previsualització del missatge"
+
+msgid "Avatars"
+msgstr ""
+
 msgid "Show only"
 msgstr "Mostra només"
 
@@ -2239,9 +2253,6 @@ msgstr "Carpeta"
 #, fuzzy
 msgid "Permanently deletes the message"
 msgstr "Tradueix aquest missatge"
-
-msgid "Show"
-msgstr "Mostra"
 
 msgid "Bring this folder back to the sidebar"
 msgstr "Torna a portar aquesta carpeta a la barra lateral"

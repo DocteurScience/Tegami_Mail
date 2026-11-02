@@ -716,6 +716,18 @@ msgstr "expire le {date}"
 msgid "Sort by"
 msgstr "Trier par"
 
+msgid "Show"
+msgstr "Afficher"
+
+msgid "Group into Conversations"
+msgstr "Regrouper en conversations"
+
+msgid "Message Preview"
+msgstr "Aperçu du message"
+
+msgid "Avatars"
+msgstr "Avatars"
+
 msgid "Show only"
 msgstr "Afficher uniquement"
 
@@ -2248,9 +2260,6 @@ msgstr "Dossier"
 
 msgid "Permanently deletes the message"
 msgstr "Supprime définitivement le message"
-
-msgid "Show"
-msgstr "Afficher"
 
 msgid "Bring this folder back to the sidebar"
 msgstr "Ramener ce dossier dans la barre latérale"

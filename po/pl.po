@@ -754,6 +754,20 @@ msgstr "wygasa {date}"
 msgid "Sort by"
 msgstr "Sortowanie według"
 
+msgid "Show"
+msgstr "Wyświetl"
+
+#, fuzzy
+msgid "Group into Conversations"
+msgstr "Rozmowy"
+
+#, fuzzy
+msgid "Message Preview"
+msgstr "Źródło wiadomości"
+
+msgid "Avatars"
+msgstr ""
+
 #, fuzzy
 msgid "Show only"
 msgstr "Wyświetl tylko nieprzeczytane"
@@ -2366,9 +2380,6 @@ msgstr "Katalog"
 #, fuzzy
 msgid "Permanently deletes the message"
 msgstr "Usuń tę wiadomość"
-
-msgid "Show"
-msgstr "Wyświetl"
 
 msgid "Bring this folder back to the sidebar"
 msgstr "Przywróć ten katalog do panelu bocznego"

@@ -730,6 +730,20 @@ msgstr "lejár: {date}"
 msgid "Sort by"
 msgstr "Rendezés"
 
+msgid "Show"
+msgstr "Megjelenítés"
+
+#, fuzzy
+msgid "Group into Conversations"
+msgstr "Beszélgetések"
+
+#, fuzzy
+msgid "Message Preview"
+msgstr "Üzenetforrás"
+
+msgid "Avatars"
+msgstr ""
+
 #, fuzzy
 msgid "Show only"
 msgstr "Csak olvasatlanok megjelenítése"
@@ -2319,9 +2333,6 @@ msgstr "Mappa"
 #, fuzzy
 msgid "Permanently deletes the message"
 msgstr "Üzenet törlése"
-
-msgid "Show"
-msgstr "Megjelenítés"
 
 msgid "Bring this folder back to the sidebar"
 msgstr "Helyezd vissza ezt a mappát az oldalsávba"

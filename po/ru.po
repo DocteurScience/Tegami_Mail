@@ -753,6 +753,20 @@ msgstr "срок действия истекает {date}"
 msgid "Sort by"
 msgstr "Сортировать по"
 
+msgid "Show"
+msgstr "Показать"
+
+#, fuzzy
+msgid "Group into Conversations"
+msgstr "Обсуждения"
+
+#, fuzzy
+msgid "Message Preview"
+msgstr "Исходный текст сообщения"
+
+msgid "Avatars"
+msgstr ""
+
 #, fuzzy
 msgid "Show only"
 msgstr "Только непрочитанные"
@@ -2346,9 +2360,6 @@ msgstr "Папка"
 #, fuzzy
 msgid "Permanently deletes the message"
 msgstr "Перевести это сообщение"
-
-msgid "Show"
-msgstr "Показать"
 
 msgid "Bring this folder back to the sidebar"
 msgstr "Вернуть эту папку на боковую панель"

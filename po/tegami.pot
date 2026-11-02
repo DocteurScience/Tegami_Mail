@@ -657,6 +657,18 @@ msgstr ""
 msgid "Sort by"
 msgstr ""
 
+msgid "Show"
+msgstr ""
+
+msgid "Group into Conversations"
+msgstr ""
+
+msgid "Message Preview"
+msgstr ""
+
+msgid "Avatars"
+msgstr ""
+
 msgid "Show only"
 msgstr ""
 
@@ -2057,9 +2069,6 @@ msgid "Folder"
 msgstr ""
 
 msgid "Permanently deletes the message"
-msgstr ""
-
-msgid "Show"
 msgstr ""
 
 msgid "Bring this folder back to the sidebar"

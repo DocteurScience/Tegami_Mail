@@ -710,6 +710,20 @@ msgstr "Bis zum {date}"
 msgid "Sort by"
 msgstr "Sortieren nach"
 
+msgid "Show"
+msgstr "Anzeigen"
+
+#, fuzzy
+msgid "Group into Conversations"
+msgstr "Unterhaltungen"
+
+#, fuzzy
+msgid "Message Preview"
+msgstr "Vorschau der Nachricht"
+
+msgid "Avatars"
+msgstr ""
+
 msgid "Show only"
 msgstr "Nur anzeigen"
 
@@ -2238,9 +2252,6 @@ msgstr "Ordner"
 
 msgid "Permanently deletes the message"
 msgstr "Nachricht dauerhaft löschen"
-
-msgid "Show"
-msgstr "Anzeigen"
 
 msgid "Bring this folder back to the sidebar"
 msgstr "Diesen Ordner wieder in die Seitenleiste einfügen"

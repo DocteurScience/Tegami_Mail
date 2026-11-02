@@ -49,6 +49,13 @@ const SORT_ORDERS: [(&str, &str); 6] = [
 /// the last.
 struct SortFilterPopover {
     button: gtk::MenuButton,
+    /// Show: Group into Conversations, Message Preview, Avatars (docs/
+    /// DESIGN.md, "Menus"), under the sort orders. Each sets its setting;
+    /// `sync_show` puts the setting back on it when it changes elsewhere.
+    show: [gtk::CheckButton; 3],
+    /// The preview lines to come back to when Message Preview is ticked
+    /// again: the last count above none.
+    preview_lines: Rc<Cell<u32>>,
     filters: Vec<(QuickFilter, gtk::CheckButton)>,
     dates: Rc<DateRange>,
     clear: gtk::Button,
@@ -317,6 +324,45 @@ impl SortFilterPopover {
             show_sort(a.state().and_then(|v| v.str().map(String::from)))
         });
 
+        // Show (docs/DESIGN.md, "Menus"): the list's look, under the
+        // orders, in the same column as the mockup has it.
+        let show_caption = gtk::Label::new(Some(&i18n("Show")));
+        show_caption.set_xalign(0.0);
+        show_caption.add_css_class("dim-label");
+        show_caption.add_css_class("caption-heading");
+        show_caption.set_margin_top(8);
+        sort_col.append(&show_caption);
+        let preview_lines = Rc::new(Cell::new(config::load_privacy().preview_lines.max(1)));
+        let check = |label: String| {
+            let c = gtk::CheckButton::with_label(&label);
+            sort_col.append(&c);
+            c
+        };
+        let threads = check(i18n("Group into Conversations"));
+        let preview = check(i18n("Message Preview"));
+        let avatars = check(i18n("Avatars"));
+        {
+            let s = sender.clone();
+            threads.connect_toggled(move |c| {
+                s.emit(AppMsg::Pref(
+                    crate::ui::preferences::PrefOutput::SetThreading(c.is_active()),
+                ))
+            });
+            let (s, lines) = (sender.clone(), preview_lines.clone());
+            preview.connect_toggled(move |c| {
+                let n = if c.is_active() { lines.get() } else { 0 };
+                s.emit(AppMsg::Pref(
+                    crate::ui::preferences::PrefOutput::SetPreviewLines(n),
+                ))
+            });
+            let s = sender.clone();
+            avatars.connect_toggled(move |c| {
+                s.emit(AppMsg::Pref(
+                    crate::ui::preferences::PrefOutput::SetAvatars(c.is_active()),
+                ))
+            });
+        }
+
         let filter_col = column(&i18n("Show only"));
         let mut filters = Vec::new();
         for f in QuickFilter::IN_POPOVER {
@@ -365,9 +411,29 @@ impl SortFilterPopover {
         button.set_popover(Some(&popover));
         Self {
             button,
+            show: [threads, preview, avatars],
+            preview_lines,
             filters,
             dates: range,
             clear,
+        }
+    }
+
+    /// Tick Show's three as the settings are. Setting a check to what it
+    /// already is emits nothing, so this never feeds back.
+    fn sync_show(&self, threading: bool, preview_lines: u32, avatars: bool) {
+        if preview_lines > 0 {
+            self.preview_lines.set(preview_lines);
+        }
+        let [threads, preview, faces] = &self.show;
+        for (check, on) in [
+            (threads, threading),
+            (preview, preview_lines > 0),
+            (faces, avatars),
+        ] {
+            if check.is_active() != on {
+                check.set_active(on);
+            }
         }
     }
 
@@ -510,7 +576,16 @@ impl AppModel {
 
     /// Hand the list its look; `animate` slides the avatars away or back
     /// (a Focus Mode toggle) rather than rebuilding the rows outright.
+    /// The sort menu's Show checks, as the settings are now.
+    pub(super) fn sync_show_checks(&self) {
+        if let Some(lh) = self.list_header_widgets.get() {
+            lh.filter
+                .sync_show(self.threading, self.preview_lines, self.avatars);
+        }
+    }
+
     pub(super) fn push_list_look(&self, animate: bool) {
+        self.sync_show_checks();
         self.message_list.emit(MessageListInput::SetLook {
             avatars: self.list_avatars(),
             preview_lines: self.list_preview_lines(),
@@ -663,6 +738,7 @@ impl AppModel {
             sort: sort_action,
             show: build_show_switch(&widgets.list_show_bar, sender.input_sender()),
         });
+        self.sync_show_checks();
         // Focus Mode's chrome as saved: nothing is mapped yet, so the
         // revealers jump to their state without animating.
         self.sync_focus_chrome();

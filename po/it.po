@@ -723,6 +723,20 @@ msgstr "scade il {date}"
 msgid "Sort by"
 msgstr "Ordina per"
 
+msgid "Show"
+msgstr "Mostra"
+
+#, fuzzy
+msgid "Group into Conversations"
+msgstr "Conversazioni"
+
+#, fuzzy
+msgid "Message Preview"
+msgstr "Anteprima messaggio"
+
+msgid "Avatars"
+msgstr ""
+
 #, fuzzy
 msgid "Show only"
 msgstr "Mostra solo non letti"
@@ -2283,9 +2297,6 @@ msgstr "Cartella"
 #, fuzzy
 msgid "Permanently deletes the message"
 msgstr "Traduci questo messaggio"
-
-msgid "Show"
-msgstr "Mostra"
 
 msgid "Bring this folder back to the sidebar"
 msgstr "Riporta questa cartella nella barra laterale"

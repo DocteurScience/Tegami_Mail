@@ -717,6 +717,20 @@ msgstr "expira em {date}"
 msgid "Sort by"
 msgstr "Ordenar por"
 
+msgid "Show"
+msgstr "Mostrar"
+
+#, fuzzy
+msgid "Group into Conversations"
+msgstr "Conversas"
+
+#, fuzzy
+msgid "Message Preview"
+msgstr "Visualização da mensagem"
+
+msgid "Avatars"
+msgstr ""
+
 msgid "Show only"
 msgstr "Mostrar apenas"
 
@@ -2244,9 +2258,6 @@ msgstr "Pasta"
 
 msgid "Permanently deletes the message"
 msgstr "Exclui a mensagem permanentemente"
-
-msgid "Show"
-msgstr "Mostrar"
 
 msgid "Bring this folder back to the sidebar"
 msgstr "Voltar a mostrar esta pasta na barra lateral"
