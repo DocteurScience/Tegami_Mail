@@ -6635,6 +6635,10 @@ msgstr "Εμφάνιση κάθε καταλόγου διευθύνσεων"
 msgid "Long-press to expand or collapse"
 msgstr "Παρατεταμένο πάτημα για ανάπτυξη ή σύμπτυξη"
 
+#, fuzzy
+msgid "New Tag…"
+msgstr "Προσθήκη ετικέτας…"
+
 msgid "Show or hide tags"
 msgstr "Εμφάνιση ή απόκρυψη ετικετών"
 
@@ -6688,10 +6692,6 @@ msgstr ""
 #, fuzzy
 msgid "Favorite"
 msgstr "Αγαπημένα"
-
-#, fuzzy
-msgid "New Tag…"
-msgstr "Προσθήκη ετικέτας…"
 
 #, fuzzy
 msgid "Manage Tags…"

@@ -6592,6 +6592,10 @@ msgstr "Jedes Adressbuch anzeigen"
 msgid "Long-press to expand or collapse"
 msgstr "Lange drücken, um aus- oder einzuklappen"
 
+#, fuzzy
+msgid "New Tag…"
+msgstr "Tag hinzufügen…"
+
 msgid "Show or hide tags"
 msgstr "Tags ein- oder ausblenden"
 
@@ -6645,10 +6649,6 @@ msgstr ""
 #, fuzzy
 msgid "Favorite"
 msgstr "Favoriten"
-
-#, fuzzy
-msgid "New Tag…"
-msgstr "Tag hinzufügen…"
 
 #, fuzzy
 msgid "Manage Tags…"

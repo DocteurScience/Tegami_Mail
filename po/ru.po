@@ -6800,6 +6800,10 @@ msgstr "Сохранить каталог?"
 msgid "Long-press to expand or collapse"
 msgstr "Долгое нажатие — развернуть или свернуть"
 
+#, fuzzy
+msgid "New Tag…"
+msgstr "Добавить тег…"
+
 msgid "Show or hide tags"
 msgstr "Показать или скрыть метки"
 
@@ -6855,10 +6859,6 @@ msgstr ""
 #, fuzzy
 msgid "Favorite"
 msgstr "Избранное"
-
-#, fuzzy
-msgid "New Tag…"
-msgstr "Добавить тег…"
 
 #, fuzzy
 msgid "Manage Tags…"

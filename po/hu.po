@@ -6801,6 +6801,10 @@ msgstr "El akarod menteni a könyvtárat?"
 msgid "Long-press to expand or collapse"
 msgstr "Hosszú gombnyomással kibontható vagy összecsukható"
 
+#, fuzzy
+msgid "New Tag…"
+msgstr "Címke hozzáadása…"
+
 msgid "Show or hide tags"
 msgstr "Címkék megjelenítése vagy elrejtése"
 
@@ -6856,10 +6860,6 @@ msgstr ""
 #, fuzzy
 msgid "Favorite"
 msgstr "Hozzáadás a névjegyekhez"
-
-#, fuzzy
-msgid "New Tag…"
-msgstr "Címke hozzáadása…"
 
 #, fuzzy
 msgid "Manage Tags…"

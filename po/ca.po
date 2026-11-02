@@ -6546,6 +6546,10 @@ msgstr "Mostra cada llibreta d'adreces"
 msgid "Long-press to expand or collapse"
 msgstr "Mantén premut per expandir o replegar"
 
+#, fuzzy
+msgid "New Tag…"
+msgstr "Afegeix una etiqueta…"
+
 msgid "Show or hide tags"
 msgstr "Mostra o amaga les etiquetes"
 
@@ -6599,10 +6603,6 @@ msgstr ""
 #, fuzzy
 msgid "Favorite"
 msgstr "Preferits"
-
-#, fuzzy
-msgid "New Tag…"
-msgstr "Afegeix una etiqueta…"
 
 #, fuzzy
 msgid "Manage Tags…"

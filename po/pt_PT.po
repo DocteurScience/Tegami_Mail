@@ -6573,6 +6573,10 @@ msgstr "Mostrar cada livro de endereços"
 msgid "Long-press to expand or collapse"
 msgstr "Premir sem soltar para expandir ou recolher"
 
+#, fuzzy
+msgid "New Tag…"
+msgstr "Adicionar etiqueta…"
+
 msgid "Show or hide tags"
 msgstr "Mostrar ou ocultar etiquetas"
 
@@ -6626,10 +6630,6 @@ msgstr ""
 #, fuzzy
 msgid "Favorite"
 msgstr "Favoritos"
-
-#, fuzzy
-msgid "New Tag…"
-msgstr "Adicionar etiqueta…"
 
 #, fuzzy
 msgid "Manage Tags…"

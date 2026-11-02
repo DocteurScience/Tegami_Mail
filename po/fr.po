@@ -6572,6 +6572,9 @@ msgstr "Afficher chaque carnet d’adresses"
 msgid "Long-press to expand or collapse"
 msgstr "Appui long pour déplier ou replier"
 
+msgid "New Tag…"
+msgstr "Nouvelle étiquette…"
+
 msgid "Show or hide tags"
 msgstr "Afficher ou masquer les tags"
 
@@ -6619,9 +6622,6 @@ msgstr "Rechercher ou créer une étiquette"
 
 msgid "Favorite"
 msgstr "Favori"
-
-msgid "New Tag…"
-msgstr "Nouvelle étiquette…"
 
 msgid "Manage Tags…"
 msgstr "Gérer les étiquettes…"

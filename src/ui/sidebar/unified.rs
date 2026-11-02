@@ -134,6 +134,21 @@ impl Sidebar {
                 label.set_margin_start(-2);
             }
             hbox.append(&label);
+            // New Tag on the Tags row, as on an account's Tags heading
+            // (docs/DESIGN.md, "Tags and favourite"; mockup 08): its own
+            // button, so it never selects the row.
+            if row_kind == UnifiedRow::Tags {
+                let add = gtk::Button::from_icon_name("list-add-symbolic");
+                add.add_css_class("flat");
+                add.add_css_class("sidebar-heading-button");
+                add.set_valign(gtk::Align::Center);
+                add.set_tooltip_text(Some(i18n("New Tag…").as_str()));
+                let s = sender.clone();
+                add.connect_clicked(move |_| {
+                    let _ = s.output(SidebarOutput::NewTagRequested);
+                });
+                hbox.append(&add);
+            }
             chevron_img = Some(chevron.clone());
             // The total-unread chip right-aligns like every folder row's,
             // one shared column down the sidebar. While the list is
@@ -371,6 +386,19 @@ impl Sidebar {
             lbl.set_hexpand(true);
             lbl.set_ellipsize(gtk::pango::EllipsizeMode::End);
             hb.append(&lbl);
+            // New Tag, from the section it adds to (docs/DESIGN.md, "Tags
+            // and favourite"; mockup 08). The heading is a plain box in the
+            // full sidebar, so a button of its own takes its own clicks.
+            let add = gtk::Button::from_icon_name("list-add-symbolic");
+            add.add_css_class("flat");
+            add.add_css_class("sidebar-heading-button");
+            add.set_valign(gtk::Align::Center);
+            add.set_tooltip_text(Some(i18n("New Tag…").as_str()));
+            let s = sender.clone();
+            add.connect_clicked(move |_| {
+                let _ = s.output(SidebarOutput::NewTagRequested);
+            });
+            hb.append(&add);
         }
         let toggle = section_heading(
             &hb,

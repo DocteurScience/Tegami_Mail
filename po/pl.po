@@ -6873,6 +6873,10 @@ msgstr "Czy zapisać filtr?"
 msgid "Long-press to expand or collapse"
 msgstr "Przytrzymaj, aby rozwinąć lub zwinąć"
 
+#, fuzzy
+msgid "New Tag…"
+msgstr "Dodaj etykietę…"
+
 msgid "Show or hide tags"
 msgstr "Wyświetl lub ukryj etykiety"
 
@@ -6928,10 +6932,6 @@ msgstr ""
 #, fuzzy
 msgid "Favorite"
 msgstr "Dodaj do kontaktów"
-
-#, fuzzy
-msgid "New Tag…"
-msgstr "Dodaj etykietę…"
 
 #, fuzzy
 msgid "Manage Tags…"

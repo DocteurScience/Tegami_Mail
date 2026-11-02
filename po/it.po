@@ -6725,6 +6725,10 @@ msgstr "Salvare la directory?"
 msgid "Long-press to expand or collapse"
 msgstr "Tieni premuto per espandere o comprimere"
 
+#, fuzzy
+msgid "New Tag…"
+msgstr "Aggiungi etichetta…"
+
 msgid "Show or hide tags"
 msgstr "Mostra o nascondi le etichette"
 
@@ -6778,10 +6782,6 @@ msgstr ""
 #, fuzzy
 msgid "Favorite"
 msgstr "Preferiti"
-
-#, fuzzy
-msgid "New Tag…"
-msgstr "Aggiungi etichetta…"
 
 #, fuzzy
 msgid "Manage Tags…"

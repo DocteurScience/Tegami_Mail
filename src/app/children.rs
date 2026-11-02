@@ -338,6 +338,7 @@ pub(super) fn sidebar_output_msg(out: SidebarOutput) -> AppMsg {
         SidebarOutput::ContactsClicked => AppMsg::OpenContacts,
         SidebarOutput::RefreshRequested => AppMsg::Refresh,
         SidebarOutput::StatusBarRequested => AppMsg::ToggleNotifications,
+        SidebarOutput::NewTagRequested => AppMsg::NewTagDialog { apply: false },
         SidebarOutput::OpenGnomeContacts => AppMsg::LaunchGnomeContacts,
         SidebarOutput::ContactScope(scope) => AppMsg::ContactScope(scope),
         SidebarOutput::ContactDrop { keys, on, moving } => AppMsg::ContactDrop { keys, on, moving },

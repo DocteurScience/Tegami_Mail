@@ -6586,6 +6586,10 @@ msgstr "Mostrar cada libreta de direcciones"
 msgid "Long-press to expand or collapse"
 msgstr "Mantén pulsado para expandir o contraer"
 
+#, fuzzy
+msgid "New Tag…"
+msgstr "Añadir etiqueta…"
+
 msgid "Show or hide tags"
 msgstr "Mostrar u ocultar etiquetas"
 
@@ -6639,10 +6643,6 @@ msgstr ""
 #, fuzzy
 msgid "Favorite"
 msgstr "Favoritos"
-
-#, fuzzy
-msgid "New Tag…"
-msgstr "Añadir etiqueta…"
 
 #, fuzzy
 msgid "Manage Tags…"

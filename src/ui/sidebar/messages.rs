@@ -191,6 +191,8 @@ pub(crate) enum SidebarInput {
 
 #[derive(Debug)]
 pub(crate) enum SidebarOutput {
+    /// The Tags heading's + button: the New Tag dialog.
+    NewTagRequested,
     /// The unified sections' open state changed (a click, or the rail's
     /// fold-up) — for persistence.
     SectionsOpen {

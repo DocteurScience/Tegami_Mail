@@ -6047,6 +6047,9 @@ msgstr ""
 msgid "Long-press to expand or collapse"
 msgstr ""
 
+msgid "New Tag…"
+msgstr ""
+
 msgid "Show or hide tags"
 msgstr ""
 
@@ -6093,9 +6096,6 @@ msgid "Search or create a tag"
 msgstr ""
 
 msgid "Favorite"
-msgstr ""
-
-msgid "New Tag…"
 msgstr ""
 
 msgid "Manage Tags…"
