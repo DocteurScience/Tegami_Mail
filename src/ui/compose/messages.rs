@@ -181,6 +181,9 @@ pub(crate) enum ComposeInput {
     FocusField(Field),
     AddAttachments(Vec<std::path::PathBuf>),
     RemoveAttachment(usize),
+    /// A large attachment's "Send a Link": upload it to the cloud, and
+    /// once the link is in the message, take the file off.
+    SendAsLink(usize),
     OpenContacts,
     /// The given recipient field changed — refresh autocomplete.
     Suggest(Field),

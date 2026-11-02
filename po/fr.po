@@ -3320,6 +3320,9 @@ msgid "Type an action, a folder or a tag, or > for actions only"
 msgstr ""
 "Saisissez une action, un dossier ou un tag, ou > pour les actions uniquement"
 
+msgid "{kind} · {size}"
+msgstr "{kind} · {size}"
+
 msgid "The file was moved or deleted. Attach it again from where it is now."
 msgstr ""
 "Le fichier a été déplacé ou supprimé. Joignez-le à nouveau depuis son "
@@ -3327,6 +3330,23 @@ msgstr ""
 
 msgid "Not found"
 msgstr "Non trouvé"
+
+msgid "Large: some servers will refuse it."
+msgstr "Volumineux : certains serveurs le refuseront."
+
+msgid "Send a Link"
+msgstr "Envoyer un lien"
+
+msgid "Upload it to cloud storage and send a link instead"
+msgstr "Le téléverser vers un stockage en ligne et envoyer un lien à la place"
+
+msgid "{files} · {size}"
+msgstr "{files} · {size}"
+
+msgid "{n} file"
+msgid_plural "{n} files"
+msgstr[0] "{n} fichier"
+msgstr[1] "{n} fichiers"
 
 msgid "{name} (link)"
 msgstr "{name} (lien)"
@@ -3384,7 +3404,9 @@ msgstr ""
 #. was forgotten when the message contains one of them. Keep them
 #. specific: a common word would make it ask too often.
 msgid "attached, attachment, attachments, enclosed"
-msgstr "pièce jointe, pièces jointes, ci-joint, ci-jointe, ci-joints, ci-jointes, en annexe, joint à ce message"
+msgstr ""
+"pièce jointe, pièces jointes, ci-joint, ci-jointe, ci-joints, ci-jointes, en "
+"annexe, joint à ce message"
 
 msgid "Rich text"
 msgstr "Texte enrichi"
@@ -3559,7 +3581,9 @@ msgstr "Envoyer sans pièce jointe ?"
 
 msgid ""
 "Your message mentions an attachment (“{word}”), but no file is attached."
-msgstr "Votre message mentionne une pièce jointe (« {word} »), mais aucun fichier n’y est joint."
+msgstr ""
+"Votre message mentionne une pièce jointe (« {word} »), mais aucun fichier "
+"n’y est joint."
 
 msgid "Send Anyway"
 msgstr "Envoyer quand même"
@@ -7075,7 +7099,8 @@ msgstr ""
 
 msgid ""
 "The server refused the message because it is too large. It said: {reply}"
-msgstr "Le serveur a refusé le message : il est trop volumineux. Sa réponse : {reply}"
+msgstr ""
+"Le serveur a refusé le message : il est trop volumineux. Sa réponse : {reply}"
 
 msgid "The message is signed or encrypted, and removing a file would break it"
 msgstr ""

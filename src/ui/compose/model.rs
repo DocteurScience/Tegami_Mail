@@ -144,6 +144,10 @@ pub(crate) struct Compose {
     /// chose to send anyway, or nothing was mentioned: the next Send goes
     /// through without asking (docs/DESIGN.md, "Attachments").
     pub(super) attach_check_passed: bool,
+    /// Attached files on their way to the cloud through Send a Link: each
+    /// is taken off the message once its link is in, and stays if the
+    /// upload fails or is called off.
+    pub(super) link_instead: Vec<std::path::PathBuf>,
     /// The header bar's title: "New Message", "Reply to <name>" or
     /// "Forward" (docs/DESIGN.md, "Replying and composing").
     pub(super) heading: String,

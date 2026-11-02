@@ -3295,11 +3295,36 @@ msgstr "Paleta d'ordres"
 msgid "Type an action, a folder or a tag, or > for actions only"
 msgstr "Escriu una acció, una carpeta o una etiqueta, o > per a només accions"
 
+#, fuzzy
+msgid "{kind} · {size}"
+msgstr "{n} fitxer · {size}"
+
 msgid "The file was moved or deleted. Attach it again from where it is now."
 msgstr "El fitxer es va moure o suprimir. Torna a adjuntar-lo des d'on és ara."
 
 msgid "Not found"
 msgstr "No trobat"
+
+msgid "Large: some servers will refuse it."
+msgstr ""
+
+#, fuzzy
+msgid "Send a Link"
+msgstr "Obre l'enllaç"
+
+#, fuzzy
+msgid "Upload it to cloud storage and send a link instead"
+msgstr "Puja a l'emmagatzematge al núvol i comparteix un enllaç"
+
+#, fuzzy
+msgid "{files} · {size}"
+msgstr "{n} fitxer · {size}"
+
+#, fuzzy
+msgid "{n} file"
+msgid_plural "{n} files"
+msgstr[0] "Fitxer de so"
+msgstr[1] "Fitxer de so"
 
 msgid "{name} (link)"
 msgstr "{name} (enllaç)"

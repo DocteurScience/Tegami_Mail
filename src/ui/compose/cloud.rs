@@ -226,7 +226,7 @@ impl Compose {
                 .map(|s| s.to_string_lossy().to_string())
                 .unwrap_or_default();
             self.cloud_busy += 1;
-            self.rebuild_attachments(&widgets.attach_box, sender);
+            self.rebuild_attachments(widgets, sender);
             let s = sender.input_sender().clone();
             let (a, pw, lp) = (account.clone(), password.clone(), link_password.clone());
             std::thread::spawn(move || {
@@ -247,6 +247,22 @@ impl Compose {
         root: &adw::BreakpointBin,
     ) {
         self.cloud_busy = self.cloud_busy.saturating_sub(1);
+        // A file sent as a link instead (Send a Link) leaves the message
+        // once its link is in; a failed upload leaves it attached.
+        if let Some(pos) = self
+            .link_instead
+            .iter()
+            .position(|p| p.file_name().is_some_and(|n| n.to_string_lossy() == name))
+        {
+            let path = self.link_instead.remove(pos);
+            if result.is_ok() {
+                if let Some(i) = self.attachments.iter().position(|a| *a == path) {
+                    sender
+                        .input_sender()
+                        .emit(ComposeInput::RemoveAttachment(i));
+                }
+            }
+        }
         match result {
             Ok(share) => {
                 let id = format!(
@@ -300,7 +316,7 @@ impl Compose {
                         name: share.name,
                         url: share.url,
                     });
-                    self.rebuild_attachments(&widgets.attach_box, sender);
+                    self.rebuild_attachments(widgets, sender);
                     return;
                 }
                 self.editor.run_js(&format!(
@@ -332,7 +348,7 @@ impl Compose {
                 );
             }
         }
-        self.rebuild_attachments(&widgets.attach_box, sender);
+        self.rebuild_attachments(widgets, sender);
     }
 
     /// Handles [`ComposeInput::RemoveCloudLink`].
@@ -355,14 +371,14 @@ impl Compose {
                    .join('\\n');window.__tegamiDirty=true;}})()",
                     js_escape(&link.url)
                 ));
-                self.rebuild_attachments(&widgets.attach_box, sender);
+                self.rebuild_attachments(widgets, sender);
                 return;
             }
             self.editor.run_js(&format!(
             "(function(){{var p=document.getElementById('{}');if(p)p.remove();document.dispatchEvent(new Event('input'));}})()",
             js_escape(&link.id)
         ));
-            self.rebuild_attachments(&widgets.attach_box, sender);
+            self.rebuild_attachments(widgets, sender);
         }
     }
 

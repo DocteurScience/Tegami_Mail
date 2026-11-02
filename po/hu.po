@@ -3426,12 +3426,37 @@ msgstr ""
 msgid "Type an action, a folder or a tag, or > for actions only"
 msgstr ""
 
+#, fuzzy
+msgid "{kind} · {size}"
+msgstr "{n} fájl · {méret}"
+
 msgid "The file was moved or deleted. Attach it again from where it is now."
 msgstr ""
 
 #, fuzzy
 msgid "Not found"
 msgstr "Nem jelenik meg"
+
+msgid "Large: some servers will refuse it."
+msgstr ""
+
+#, fuzzy
+msgid "Send a Link"
+msgstr "Hivatkozás megnyitása"
+
+#, fuzzy
+msgid "Upload it to cloud storage and send a link instead"
+msgstr "Feltöltés felhőtárhelyre és hivatkozás megosztása"
+
+#, fuzzy
+msgid "{files} · {size}"
+msgstr "{n} fájl · {méret}"
+
+#, fuzzy
+msgid "{n} file"
+msgid_plural "{n} files"
+msgstr[0] "Hangfájl"
+msgstr[1] "Hangfájl"
 
 msgid "{name} (link)"
 msgstr "{name} (hivatkozás)"

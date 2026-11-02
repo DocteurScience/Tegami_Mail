@@ -3452,6 +3452,10 @@ msgstr ""
 msgid "Type an action, a folder or a tag, or > for actions only"
 msgstr ""
 
+#, fuzzy
+msgid "{kind} · {size}"
+msgstr "{n} файл · {size}"
+
 msgid "The file was moved or deleted. Attach it again from where it is now."
 msgstr ""
 "Файл был перемещён или удалён. Прикрепите его повторно из нового "
@@ -3459,6 +3463,28 @@ msgstr ""
 
 msgid "Not found"
 msgstr "Не найдено"
+
+msgid "Large: some servers will refuse it."
+msgstr ""
+
+#, fuzzy
+msgid "Send a Link"
+msgstr "Открыть ссылку"
+
+#, fuzzy
+msgid "Upload it to cloud storage and send a link instead"
+msgstr "Загрузить в облачное хранилище и поделиться ссылкой"
+
+#, fuzzy
+msgid "{files} · {size}"
+msgstr "{n} файл · {size}"
+
+#, fuzzy
+msgid "{n} file"
+msgid_plural "{n} files"
+msgstr[0] "Звуковой файл"
+msgstr[1] "Звуковой файл"
+msgstr[2] "Звуковой файл"
 
 msgid "{name} (link)"
 msgstr "{name} (ссылка)"

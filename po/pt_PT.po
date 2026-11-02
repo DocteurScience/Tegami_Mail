@@ -3315,6 +3315,10 @@ msgid "Type an action, a folder or a tag, or > for actions only"
 msgstr ""
 "Escreva uma ação, uma pasta ou uma etiqueta, ou > para ver apenas ações"
 
+#, fuzzy
+msgid "{kind} · {size}"
+msgstr "{n} ficheiro · {size}"
+
 msgid "The file was moved or deleted. Attach it again from where it is now."
 msgstr ""
 "O ficheiro foi movido ou eliminado. Volte a anexá-lo a partir da sua "
@@ -3322,6 +3326,27 @@ msgstr ""
 
 msgid "Not found"
 msgstr "Não encontrado"
+
+msgid "Large: some servers will refuse it."
+msgstr ""
+
+#, fuzzy
+msgid "Send a Link"
+msgstr "Abrir ligação"
+
+#, fuzzy
+msgid "Upload it to cloud storage and send a link instead"
+msgstr "Carregar para o armazenamento na nuvem e partilhar uma ligação"
+
+#, fuzzy
+msgid "{files} · {size}"
+msgstr "{n} ficheiro · {size}"
+
+#, fuzzy
+msgid "{n} file"
+msgid_plural "{n} files"
+msgstr[0] "Ficheiro de som"
+msgstr[1] "Ficheiro de som"
 
 msgid "{name} (link)"
 msgstr "{name} (ligação)"

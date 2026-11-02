@@ -334,25 +334,49 @@ impl Component for Compose {
                             },
                         },
 
-                        // Attachments in up to three equal columns (#299),
-                        // filling left to right and wrapping.
-                        #[name = "attach_box"]
-                        gtk::FlowBox {
-                            set_selection_mode: gtk::SelectionMode::None,
-                            set_column_spacing: 6,
-                            set_row_spacing: 6,
-                            set_homogeneous: true,
-                            set_max_children_per_line: 3,
-                            add_css_class: "attach-flow",
-                            set_visible: false,
-                        },
-
                         // Holder for the shared rich-text editor (toolbar + body),
                         // appended in `init`.
                         #[name = "editor_holder"]
                         gtk::Box {
                             set_orientation: gtk::Orientation::Vertical,
                             set_vexpand: true,
+                        },
+
+                        // The attachments, under the text they go with
+                        // (docs/DESIGN.md, "Attachments"): a header with how
+                        // many files and their total size, then the files in
+                        // up to three equal columns (#299). Shown while there
+                        // is any.
+                        #[name = "attach_section"]
+                        gtk::Box {
+                            set_orientation: gtk::Orientation::Vertical,
+                            set_spacing: 8,
+                            add_css_class: "attach-section",
+                            set_visible: false,
+                            gtk::Box {
+                                set_spacing: 12,
+                                gtk::Label {
+                                    set_label: &i18n("Attachments"),
+                                    set_xalign: 0.0,
+                                    set_hexpand: true,
+                                    add_css_class: "heading",
+                                },
+                                #[name = "attach_summary"]
+                                gtk::Label {
+                                    set_xalign: 1.0,
+                                    add_css_class: "caption",
+                                    add_css_class: "attach-summary",
+                                },
+                            },
+                            #[name = "attach_box"]
+                            gtk::FlowBox {
+                                set_selection_mode: gtk::SelectionMode::None,
+                                set_column_spacing: 6,
+                                set_row_spacing: 6,
+                                set_homogeneous: true,
+                                set_max_children_per_line: 3,
+                                add_css_class: "attach-flow",
+                            },
                         },
                     },
                 },
@@ -557,6 +581,7 @@ impl Component for Compose {
             heading,
             saved_at: None,
             attach_check_passed: false,
+            link_instead: Vec::new(),
             tr_subject: None,
             preview_btn,
             preview_content,
@@ -610,7 +635,7 @@ impl Component for Compose {
         widgets.bcc_row.set_text(&prefill.bcc);
         widgets.subject_row.set_text(&prefill.subject);
         if !model.attachments.is_empty() {
-            model.rebuild_attachments(&widgets.attach_box, &sender);
+            model.rebuild_attachments(&widgets, &sender);
         }
 
         model.install_drop_zones(&root, &widgets, &sender);
@@ -749,6 +774,16 @@ impl Component for Compose {
                 ComposeInput::OpenContacts => self.on_open_contacts(widgets, &sender, root),
 
                 ComposeInput::AttachFiles => self.on_attach_files(&sender, root),
+                ComposeInput::SendAsLink(index) => {
+                    if let Some(path) = self.attachments.get(index).cloned() {
+                        if !self.link_instead.contains(&path) {
+                            self.link_instead.push(path.clone());
+                        }
+                        sender
+                            .input_sender()
+                            .emit(ComposeInput::CloudPicked(vec![path]));
+                    }
+                }
 
                 ComposeInput::AddAttachments(paths) => {
                     self.on_add_attachments(paths, widgets, &sender)

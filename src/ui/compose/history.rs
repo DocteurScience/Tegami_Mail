@@ -111,7 +111,7 @@ impl Compose {
             self.redo_stack = to;
         }
         if changed_attachments {
-            self.rebuild_attachments(&widgets.attach_box, sender);
+            self.rebuild_attachments(widgets, sender);
         }
         self.report_history(sender);
     }

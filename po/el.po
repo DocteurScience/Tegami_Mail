@@ -3351,12 +3351,37 @@ msgstr ""
 "Πληκτρολογήστε μια ενέργεια, έναν φάκελο ή μια ετικέτα, ή > για μόνο "
 "ενέργειες"
 
+#, fuzzy
+msgid "{kind} · {size}"
+msgstr "{n} αρχείο · {size}"
+
 msgid "The file was moved or deleted. Attach it again from where it is now."
 msgstr ""
 "Το αρχείο μετακινήθηκε ή διαγράφηκε. Επισυνάψτε το ξανά από τη νέα του θέση."
 
 msgid "Not found"
 msgstr "Δεν βρέθηκε"
+
+msgid "Large: some servers will refuse it."
+msgstr ""
+
+#, fuzzy
+msgid "Send a Link"
+msgstr "Άνοιγμα συνδέσμου"
+
+#, fuzzy
+msgid "Upload it to cloud storage and send a link instead"
+msgstr "Μεταφόρτωση στον χώρο αποθήκευσης cloud και κοινοποίηση συνδέσμου"
+
+#, fuzzy
+msgid "{files} · {size}"
+msgstr "{n} αρχείο · {size}"
+
+#, fuzzy
+msgid "{n} file"
+msgid_plural "{n} files"
+msgstr[0] "Αρχείο ήχου"
+msgstr[1] "Αρχείο ήχου"
 
 msgid "{name} (link)"
 msgstr "{name} (σύνδεσμος)"

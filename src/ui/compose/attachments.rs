@@ -6,7 +6,7 @@ use super::Compose;
 use super::ComposeWidgets;
 use crate::config::ComposeFormat;
 use crate::i18n::i18n_noop;
-use crate::i18n::{i18n, i18n_f};
+use crate::i18n::{i18n, i18n_f, ni18n_f};
 use crate::models::is_image_name;
 use crate::ui::context_menu::{show_context_menu, MenuEntry};
 use crate::ui::drop_zones::{DropChoice, DropContext, DropZones};
@@ -49,6 +49,7 @@ fn attachment_chip(
     thumbs: &AttachThumbs,
     sender: &ComponentSender<Compose>,
     index: usize,
+    cloud: bool,
 ) -> gtk::Box {
     use crate::ui::thumbnails::is_pdf_name;
     let name = path
@@ -105,7 +106,13 @@ fn attachment_chip(
     let lbl = FadeLabel::new(&name, CHIP_NAME_NATURAL);
     text.append(&lbl);
     let size_text = match size {
-        Some(n) => crate::models::human_size(n),
+        Some(n) => i18n_f(
+            "{kind} \u{b7} {size}",
+            &[
+                ("kind", &crate::ui::thumbnails::type_label(&name)),
+                ("size", &crate::models::human_size(n)),
+            ],
+        ),
         None => {
             // Moved or deleted since it was attached (#340): Send refuses it.
             chip.add_css_class("missing");
@@ -134,7 +141,79 @@ fn attachment_chip(
 
     add_hover_card(&chip, thumbs, path, &name, kind, size);
     add_open_and_menu(&chip, path, &name, index, sender);
-    chip
+    if !size.is_some_and(is_large) {
+        return chip;
+    }
+    // A large file says so, under it (docs/DESIGN.md, "Attachments"), with
+    // a way to send a link instead when a cloud account is set up. No
+    // server limit is drawn: the app cannot know it (see the design).
+    let card = gtk::Box::new(gtk::Orientation::Vertical, 6);
+    card.add_css_class("attach-card");
+    card.append(&chip);
+    let warn = gtk::Box::new(gtk::Orientation::Horizontal, 8);
+    warn.add_css_class("attach-large");
+    let icon = gtk::Image::from_icon_name("dialog-warning-symbolic");
+    icon.set_valign(gtk::Align::Center);
+    icon.set_accessible_role(gtk::AccessibleRole::Presentation);
+    warn.append(&icon);
+    let text = gtk::Label::new(Some(&i18n("Large: some servers will refuse it.")));
+    text.set_wrap(true);
+    text.set_xalign(0.0);
+    text.set_hexpand(true);
+    text.add_css_class("caption");
+    warn.append(&text);
+    if cloud {
+        let link = gtk::Button::builder()
+            .child(
+                &adw::ButtonContent::builder()
+                    .icon_name("cloud-symbolic")
+                    .label(i18n("Send a Link"))
+                    .build(),
+            )
+            .build();
+        link.add_css_class("flat");
+        link.set_valign(gtk::Align::Center);
+        link.set_tooltip_text(Some(&i18n(
+            "Upload it to cloud storage and send a link instead",
+        )));
+        let s = sender.input_sender().clone();
+        link.connect_clicked(move |_| {
+            let _ = s.send(ComposeInput::SendAsLink(index));
+        });
+        warn.append(&link);
+    }
+    card.append(&warn);
+    card
+}
+
+/// Files from this size up are called large (docs/DESIGN.md,
+/// "Attachments"): many mail servers refuse messages of 10 to 25 MB, and a
+/// file's encoding in the message adds a third to it.
+const LARGE_BYTES: u64 = 10 * 1000 * 1000;
+
+fn is_large(bytes: u64) -> bool {
+    bytes >= LARGE_BYTES
+}
+
+/// The attachments header's "3 files · 18.4 MB". A file that can no longer
+/// be read counts for the number and not for the size.
+fn attachments_summary(paths: &[std::path::PathBuf]) -> String {
+    let total: u64 = paths
+        .iter()
+        .filter_map(|p| std::fs::metadata(p).ok())
+        .map(|m| m.len())
+        .sum();
+    let n = paths.len();
+    i18n_f(
+        "{files} \u{b7} {size}",
+        &[
+            (
+                "files",
+                &ni18n_f("{n} file", "{n} files", n as u32, &[("n", &n.to_string())]),
+            ),
+            ("size", &crate::models::human_size(total)),
+        ],
+    )
 }
 
 /// Slide a chip's name to show the rest of it while the pointer is over
@@ -228,12 +307,18 @@ pub(super) fn attachment_label(template: &str, path: &std::path::Path, count: us
 }
 
 impl Compose {
-    pub(super) fn rebuild_attachments(&self, flow: &gtk::FlowBox, sender: &ComponentSender<Self>) {
+    pub(super) fn rebuild_attachments(
+        &self,
+        widgets: &ComposeWidgets,
+        sender: &ComponentSender<Self>,
+    ) {
+        let flow = &widgets.attach_box;
         while let Some(child) = flow.first_child() {
             flow.remove(&child);
         }
+        let cloud = !self.cloud_accounts.is_empty();
         for (i, path) in self.attachments.iter().enumerate() {
-            let chip = attachment_chip(path, &self.attach_thumbs, sender, i);
+            let chip = attachment_chip(path, &self.attach_thumbs, sender, i, cloud);
             append_chip(flow, &chip);
         }
         // Cloud links (#144) sit with the attachments but read as links: a
@@ -274,9 +359,12 @@ impl Compose {
                 cell.set_can_focus(false);
             }
         }
-        flow.set_visible(
+        widgets.attach_section.set_visible(
             !self.attachments.is_empty() || !self.cloud_links.is_empty() || self.cloud_busy > 0,
         );
+        widgets
+            .attach_summary
+            .set_label(&attachments_summary(&self.attachments));
     }
 
     /// Handles [`ComposeInput::AttachFiles`].
@@ -312,7 +400,7 @@ impl Compose {
                 count: paths.len(),
             },
         );
-        self.rebuild_attachments(&widgets.attach_box, sender);
+        self.rebuild_attachments(widgets, sender);
         self.report_history(sender);
     }
 
@@ -334,7 +422,7 @@ impl Compose {
                     paths: vec![path],
                 },
             );
-            self.rebuild_attachments(&widgets.attach_box, sender);
+            self.rebuild_attachments(widgets, sender);
             self.report_history(sender);
         }
     }
@@ -543,4 +631,31 @@ fn add_open_and_menu(
         });
     }
     chip.add_controller(right);
+}
+
+#[cfg(test)]
+mod section_tests {
+    use super::{attachments_summary, is_large};
+
+    #[test]
+    fn ten_megabytes_is_large() {
+        assert!(!is_large(9_999_999));
+        assert!(is_large(10_000_000));
+    }
+
+    #[test]
+    fn the_summary_counts_every_file_and_sizes_the_readable_ones() {
+        let dir = std::env::temp_dir().join(format!("tegami-summary-{}", std::process::id()));
+        std::fs::create_dir_all(&dir).unwrap();
+        let a = dir.join("a.bin");
+        std::fs::write(&a, vec![0u8; 1500]).unwrap();
+        let gone = dir.join("gone.bin");
+        let summary = attachments_summary(&[a, gone]);
+        std::fs::remove_dir_all(&dir).unwrap();
+        assert!(summary.starts_with("2 files · "), "{summary}");
+        assert!(
+            summary.ends_with(&crate::models::human_size(1500)),
+            "{summary}"
+        );
+    }
 }

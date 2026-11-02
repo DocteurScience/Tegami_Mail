@@ -3379,12 +3379,37 @@ msgstr "Palette comandi"
 msgid "Type an action, a folder or a tag, or > for actions only"
 msgstr "Digita un'azione, una cartella o un'etichetta, o > solo per le azioni"
 
+#, fuzzy
+msgid "{kind} · {size}"
+msgstr "{n} file · {size}"
+
 msgid "The file was moved or deleted. Attach it again from where it is now."
 msgstr ""
 "Il file è stato spostato o eliminato. Allegalo di nuovo da dove si trova ora."
 
 msgid "Not found"
 msgstr "Non trovato"
+
+msgid "Large: some servers will refuse it."
+msgstr ""
+
+#, fuzzy
+msgid "Send a Link"
+msgstr "Apri link"
+
+#, fuzzy
+msgid "Upload it to cloud storage and send a link instead"
+msgstr "Carica nell'archivio cloud e condividi un link"
+
+#, fuzzy
+msgid "{files} · {size}"
+msgstr "{n} file · {size}"
+
+#, fuzzy
+msgid "{n} file"
+msgid_plural "{n} files"
+msgstr[0] "File audio"
+msgstr[1] "File audio"
 
 msgid "{name} (link)"
 msgstr "{name} (link)"

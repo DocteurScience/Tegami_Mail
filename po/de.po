@@ -3307,6 +3307,10 @@ msgstr "Befehlspalette"
 msgid "Type an action, a folder or a tag, or > for actions only"
 msgstr "Aktion, Ordner oder Tag eingeben (oder > nur für Aktionen)"
 
+#, fuzzy
+msgid "{kind} · {size}"
+msgstr "{n} Datei · {size}"
+
 msgid "The file was moved or deleted. Attach it again from where it is now."
 msgstr ""
 "Die Datei wurde verschoben oder gelöscht. Erneut am aktuellen Speicherort "
@@ -3314,6 +3318,27 @@ msgstr ""
 
 msgid "Not found"
 msgstr "Nicht gefunden"
+
+msgid "Large: some servers will refuse it."
+msgstr ""
+
+#, fuzzy
+msgid "Send a Link"
+msgstr "Link öffnen"
+
+#, fuzzy
+msgid "Upload it to cloud storage and send a link instead"
+msgstr "In Cloud-Speicher hochladen und Link teilen"
+
+#, fuzzy
+msgid "{files} · {size}"
+msgstr "{n} Datei · {size}"
+
+#, fuzzy
+msgid "{n} file"
+msgid_plural "{n} files"
+msgstr[0] "Tondatei"
+msgstr[1] "Tondatei"
 
 msgid "{name} (link)"
 msgstr "{name} (Link)"

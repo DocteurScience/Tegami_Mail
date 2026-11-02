@@ -1652,6 +1652,23 @@ headerbar box.list-tools.compact button {
   opacity: 0;
 }
 
+/* The attachments under the text (docs/DESIGN.md, "Attachments"): the
+   same inset as the body, and a large file's warning in a tinted box under
+   its chip. The summary is secondary text at 70 %, which keeps 4.5:1. */
+.attach-section {
+  padding: 12px 16px;
+}
+
+.attach-summary {
+  opacity: 0.7;
+}
+
+.attach-large {
+  padding: 6px 10px;
+  border-radius: 6px;
+  background-color: alpha(@warning_bg_color, 0.15);
+}
+
 .compose-windowed .compose-pane {
   padding: 0;
   border-spacing: 0;
