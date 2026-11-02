@@ -2384,62 +2384,6 @@ textview.console-view text selection {
   transition: background-color 400ms ease-out;
 }
 
-/* The composer's Send split (#145): Send and the Send Later dropdown as
-   one accent-colored control, joined flush, with a short inset divider
-   line between them rather than a full-height seam. */
-.send-split {
-  background: @accent_bg_color;
-  border-radius: 6px;
-}
-.send-split > button:dir(ltr):first-child,
-.send-split > menubutton:dir(ltr):first-child > button,
-.send-split > button:dir(rtl):last-child,
-.send-split > menubutton:dir(rtl):last-child > button {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-}
-.send-split > button:dir(ltr):last-child,
-.send-split > menubutton:dir(ltr):last-child > button,
-.send-split > button:dir(rtl):first-child,
-.send-split > menubutton:dir(rtl):first-child > button {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-}
-.send-split > button:last-child,
-.send-split > menubutton:last-child > button {
-  padding-left: 6px;
-  padding-right: 6px;
-  min-width: 0;
-}
-/* The dropdown's inner button paints the same accent as Send: a
-   menubutton's child button otherwise takes its own, lighter, fill. */
-.send-split > menubutton > button {
-  background-color: @accent_bg_color;
-  background-image: none;
-  color: @accent_fg_color;
-  box-shadow: none;
-}
-.send-split > menubutton > button:hover {
-  background-image: image(alpha(currentColor, 0.1));
-}
-.send-split > menubutton > button:active,
-.send-split > menubutton > button:checked {
-  background-image: image(alpha(currentColor, 0.2));
-}
-.send-split > separator {
-  background-color: alpha(@accent_fg_color, 0.55);
-  /* Two wide: the dropdown's linked edge overlaps the first pixel, so one
-     shows, which is the line wanted. */
-  min-width: 2px;
-  margin-top: 9px;
-  margin-bottom: 9px;
-}
-/* Linked siblings overlap by a pixel, which is exactly the divider's width:
-   the dropdown keeps to its own side of it. */
-.send-split > menubutton {
-  margin-left: 0;
-}
-
 /* The reply panel's fields disclosure (#154): a chevron that turns over as
    the From/To/Subject rows unfold, like any expander. */
 .fields-chevron image {

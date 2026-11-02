@@ -77,9 +77,6 @@ pub(crate) struct ComposePrefill {
     /// a default identity in Settings (#157). Empty = the account's own
     /// address. Ignored when `reply_addressed_to` names an identity.
     pub(crate) from_address: String,
-    /// Send Later (#145): a queued message's scheduled time, kept while it is
-    /// edited so Send re-queues it for the same moment.
-    pub(crate) send_at: Option<i64>,
     /// Files handed in from GNOME Files that were too big to attach: the
     /// composer opens its cloud upload dialog on them as soon as it is up,
     /// so the links land in the body instead.

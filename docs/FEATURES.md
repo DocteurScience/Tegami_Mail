@@ -81,8 +81,6 @@ The full list. The [README](../README.md) carries a shorter one.
 - **Outbox:** a send that fails is kept and retried when the connection
   returns, not lost. Queued messages can be edited, sent by hand or discarded.
   A message being sent is listed there too until it has gone.
-- **Send later:** schedule a message for tomorrow morning, Monday, or any
-  date and time; it waits in the Outbox, editable, until then.
 - **Snooze:** put a message away until this evening, tomorrow, the weekend
   or any date and time. It waits in a Snoozed folder on the server and comes
   back unread, or sooner when a reply arrives. See [Snoozing mail](DOCUMENTATION.md#snoozing-mail).

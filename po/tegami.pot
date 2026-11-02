@@ -3237,12 +3237,6 @@ msgid ""
 "it under Settings, OpenPGP."
 msgstr ""
 
-msgid "Send later"
-msgstr ""
-
-msgid "Schedule"
-msgstr ""
-
 msgid "The From has to be one address, such as Ann <ann@example.com>."
 msgstr ""
 
@@ -3340,34 +3334,16 @@ msgstr ""
 msgid "Draft saved at {time}"
 msgstr ""
 
+msgid "Send the message"
+msgstr ""
+
 msgid "Send"
-msgstr ""
-
-msgid "Send options"
-msgstr ""
-
-msgid "Send now"
-msgstr ""
-
-msgid "Tomorrow morning ({time})"
-msgstr ""
-
-msgid "Tomorrow afternoon ({time})"
-msgstr ""
-
-msgid "Monday morning ({time})"
-msgstr ""
-
-msgid "Pick a date and time…"
 msgstr ""
 
 msgid "More actions"
 msgstr ""
 
 msgid "Show From, To and Subject"
-msgstr ""
-
-msgid "Send now instead"
 msgstr ""
 
 msgid "Download password for {name}: {password}"
@@ -4098,7 +4074,19 @@ msgstr[1] ""
 msgid "Later today ({time})"
 msgstr ""
 
+msgid "Tomorrow morning ({time})"
+msgstr ""
+
+msgid "Tomorrow afternoon ({time})"
+msgstr ""
+
 msgid "Saturday morning ({time})"
+msgstr ""
+
+msgid "Monday morning ({time})"
+msgstr ""
+
+msgid "Pick a date and time…"
 msgstr ""
 
 msgid "Unsnooze"

@@ -3547,12 +3547,6 @@ msgstr ""
 "No hay ninguna clave OpenPGP para {addr}. Pide su clave pública o búscala "
 "desde Ajustes → OpenPGP."
 
-msgid "Send later"
-msgstr "Enviar más tarde"
-
-msgid "Schedule"
-msgstr "Programar"
-
 msgid "The From has to be one address, such as Ann <ann@example.com>."
 msgstr ""
 "El campo De debe contener una sola dirección, como Ana <ana@example.com>."
@@ -3659,27 +3653,12 @@ msgstr "No se pudo traducir"
 msgid "Draft saved at {time}"
 msgstr "{date} a las {time}"
 
+#, fuzzy
+msgid "Send the message"
+msgstr "¿Guardar el mensaje?"
+
 msgid "Send"
 msgstr "Enviar"
-
-#, fuzzy
-msgid "Send options"
-msgstr "Secciones"
-
-msgid "Send now"
-msgstr "Enviar ahora"
-
-msgid "Tomorrow morning ({time})"
-msgstr "Mañana por la mañana ({time})"
-
-msgid "Tomorrow afternoon ({time})"
-msgstr "Mañana por la tarde ({time})"
-
-msgid "Monday morning ({time})"
-msgstr "El lunes por la mañana ({time})"
-
-msgid "Pick a date and time…"
-msgstr "Elegir fecha y hora…"
 
 #, fuzzy
 msgid "More actions"
@@ -3687,9 +3666,6 @@ msgstr "Acciones al deslizar"
 
 msgid "Show From, To and Subject"
 msgstr "Mostrar De, Para y Asunto"
-
-msgid "Send now instead"
-msgstr "Enviar ahora en su lugar"
 
 msgid "Download password for {name}: {password}"
 msgstr "Contraseña de descarga para {name}: {password}"
@@ -4503,9 +4479,21 @@ msgstr[1] "{n} mensajes"
 msgid "Later today ({time})"
 msgstr "Hoy, {time}"
 
+msgid "Tomorrow morning ({time})"
+msgstr "Mañana por la mañana ({time})"
+
+msgid "Tomorrow afternoon ({time})"
+msgstr "Mañana por la tarde ({time})"
+
 #, fuzzy
 msgid "Saturday morning ({time})"
 msgstr "El lunes por la mañana ({time})"
+
+msgid "Monday morning ({time})"
+msgstr "El lunes por la mañana ({time})"
+
+msgid "Pick a date and time…"
+msgstr "Elegir fecha y hora…"
 
 msgid "Unsnooze"
 msgstr ""
@@ -8222,6 +8210,22 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Send later"
+#~ msgstr "Enviar más tarde"
+
+#~ msgid "Schedule"
+#~ msgstr "Programar"
+
+#, fuzzy
+#~ msgid "Send options"
+#~ msgstr "Secciones"
+
+#~ msgid "Send now"
+#~ msgstr "Enviar ahora"
+
+#~ msgid "Send now instead"
+#~ msgstr "Enviar ahora en su lugar"
 
 #~ msgid ""
 #~ "Reader View shows a message as its text alone, in one plain format, "

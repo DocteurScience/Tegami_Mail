@@ -244,7 +244,6 @@ pub(super) fn unsent_prefill(m: crate::worker::OutgoingMessage) -> ComposePrefil
             .map(|f| crate::config::split_identity(f).1)
             .unwrap_or_default(),
         custom_from: m.from_alias.clone().unwrap_or_default(),
-        send_at: m.send_at,
         cloud_uploads: Vec::new(),
         inline_files: Vec::new(),
         block_remote_images: false,
@@ -473,6 +472,6 @@ mod tests {
         assert_eq!(p.from_address, "me@x.org");
         assert_eq!(p.custom_from, "Me <me@x.org>");
         assert!(p.resumed && p.encrypt && !p.template);
-        assert_eq!((p.outbox_origin, p.send_at), (Some(7), Some(5)));
+        assert_eq!(p.outbox_origin, Some(7));
     }
 }

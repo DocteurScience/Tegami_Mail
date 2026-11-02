@@ -181,7 +181,6 @@ impl AppModel {
                 .map(|(_, addr)| addr)
                 .unwrap_or_default(),
             custom_from: editable.from,
-            send_at: item.send_at,
             cloud_uploads: Vec::new(),
             inline_files: Vec::new(),
             block_remote_images: false,

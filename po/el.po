@@ -3586,12 +3586,6 @@ msgstr ""
 "Δεν υπάρχει κλειδί OpenPGP για τη διεύθυνση {addr}. Ζητήστε το δημόσιο "
 "κλειδί ή ανακτήστε το στις Ρυθμίσεις, OpenPGP."
 
-msgid "Send later"
-msgstr "Αποστολή αργότερα"
-
-msgid "Schedule"
-msgstr "Προγραμματισμός"
-
 msgid "The From has to be one address, such as Ann <ann@example.com>."
 msgstr ""
 "Το πεδίο αποστολέα πρέπει να περιέχει μία διεύθυνση, όπως Ann "
@@ -3700,27 +3694,12 @@ msgstr "Δεν ήταν δυνατή η μετάφραση"
 msgid "Draft saved at {time}"
 msgstr "{date} στις {time}"
 
+#, fuzzy
+msgid "Send the message"
+msgstr "Να αποθηκευτεί το μήνυμα;"
+
 msgid "Send"
 msgstr "Αποστολή"
-
-#, fuzzy
-msgid "Send options"
-msgstr "Ενότητες"
-
-msgid "Send now"
-msgstr "Αποστολή τώρα"
-
-msgid "Tomorrow morning ({time})"
-msgstr "Αύριο το πρωί ({time})"
-
-msgid "Tomorrow afternoon ({time})"
-msgstr "Αύριο το απόγευμα ({time})"
-
-msgid "Monday morning ({time})"
-msgstr "Δευτέρα πρωί ({time})"
-
-msgid "Pick a date and time…"
-msgstr "Επιλογή ημερομηνίας και ώρας…"
 
 #, fuzzy
 msgid "More actions"
@@ -3728,9 +3707,6 @@ msgstr "Ενέργειες σάρωσης"
 
 msgid "Show From, To and Subject"
 msgstr "Εμφάνιση Από, Προς και Θέμα"
-
-msgid "Send now instead"
-msgstr "Αποστολή τώρα αντί για αργότερα"
 
 msgid "Download password for {name}: {password}"
 msgstr "Κωδικός λήψης για {name}: {password}"
@@ -4545,9 +4521,21 @@ msgstr[1] "{n} μηνύματα"
 msgid "Later today ({time})"
 msgstr "Σήμερα, {time}"
 
+msgid "Tomorrow morning ({time})"
+msgstr "Αύριο το πρωί ({time})"
+
+msgid "Tomorrow afternoon ({time})"
+msgstr "Αύριο το απόγευμα ({time})"
+
 #, fuzzy
 msgid "Saturday morning ({time})"
 msgstr "Δευτέρα πρωί ({time})"
+
+msgid "Monday morning ({time})"
+msgstr "Δευτέρα πρωί ({time})"
+
+msgid "Pick a date and time…"
+msgstr "Επιλογή ημερομηνίας και ώρας…"
 
 msgid "Unsnooze"
 msgstr ""
@@ -8298,6 +8286,22 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Send later"
+#~ msgstr "Αποστολή αργότερα"
+
+#~ msgid "Schedule"
+#~ msgstr "Προγραμματισμός"
+
+#, fuzzy
+#~ msgid "Send options"
+#~ msgstr "Ενότητες"
+
+#~ msgid "Send now"
+#~ msgstr "Αποστολή τώρα"
+
+#~ msgid "Send now instead"
+#~ msgstr "Αποστολή τώρα αντί για αργότερα"
 
 #~ msgid ""
 #~ "Reader View shows a message as its text alone, in one plain format, "

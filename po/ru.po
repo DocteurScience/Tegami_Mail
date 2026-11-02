@@ -3686,12 +3686,6 @@ msgstr ""
 "Отсутствует ключ OpenPGP для {addr}. Запросите у адресата его открытый ключ "
 "или получите его в разделе «Настройки» → «OpenPGP»."
 
-msgid "Send later"
-msgstr "Отправить позже"
-
-msgid "Schedule"
-msgstr "Запланировать"
-
 msgid "The From has to be one address, such as Ann <ann@example.com>."
 msgstr ""
 "В поле «От кого» должен быть указан один адрес, например, Ann "
@@ -3804,27 +3798,12 @@ msgstr "Не удалось перевести"
 msgid "Draft saved at {time}"
 msgstr "{date} в {time}"
 
+#, fuzzy
+msgid "Send the message"
+msgstr "Сохранить сообщение?"
+
 msgid "Send"
 msgstr "Отправить"
-
-#, fuzzy
-msgid "Send options"
-msgstr "Действия"
-
-msgid "Send now"
-msgstr "Отправить сейчас"
-
-msgid "Tomorrow morning ({time})"
-msgstr "Завтра утром ({time})"
-
-msgid "Tomorrow afternoon ({time})"
-msgstr "Завтра днём ({time})"
-
-msgid "Monday morning ({time})"
-msgstr "В понедельник утром ({time})"
-
-msgid "Pick a date and time…"
-msgstr "Выбрать дату и время…"
 
 #, fuzzy
 msgid "More actions"
@@ -3832,9 +3811,6 @@ msgstr "Действия свайпом"
 
 msgid "Show From, To and Subject"
 msgstr "Показать поля «От», «Кому» и «Тема»"
-
-msgid "Send now instead"
-msgstr "Отправить сейчас вместо запланированного"
 
 msgid "Download password for {name}: {password}"
 msgstr "Пароль для скачивания {name}: {password}"
@@ -4675,9 +4651,21 @@ msgstr[2] "{n} писем"
 msgid "Later today ({time})"
 msgstr "Сегодня, {time}"
 
+msgid "Tomorrow morning ({time})"
+msgstr "Завтра утром ({time})"
+
+msgid "Tomorrow afternoon ({time})"
+msgstr "Завтра днём ({time})"
+
 #, fuzzy
 msgid "Saturday morning ({time})"
 msgstr "В понедельник утром ({time})"
+
+msgid "Monday morning ({time})"
+msgstr "В понедельник утром ({time})"
+
+msgid "Pick a date and time…"
+msgstr "Выбрать дату и время…"
 
 msgid "Unsnooze"
 msgstr ""
@@ -8464,6 +8452,22 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Send later"
+#~ msgstr "Отправить позже"
+
+#~ msgid "Schedule"
+#~ msgstr "Запланировать"
+
+#, fuzzy
+#~ msgid "Send options"
+#~ msgstr "Действия"
+
+#~ msgid "Send now"
+#~ msgstr "Отправить сейчас"
+
+#~ msgid "Send now instead"
+#~ msgstr "Отправить сейчас вместо запланированного"
 
 #~ msgid ""
 #~ "Reader View shows a message as its text alone, in one plain format, "

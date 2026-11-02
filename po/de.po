@@ -3544,12 +3544,6 @@ msgstr ""
 "Es ist kein OpenPGP-Schlüssel für {addr} vorhanden. Bitte den öffentlichen "
 "Schlüssel anfragen oder unter Einstellungen → OpenPGP abrufen."
 
-msgid "Send later"
-msgstr "Später senden"
-
-msgid "Schedule"
-msgstr "Planen"
-
 msgid "The From has to be one address, such as Ann <ann@example.com>."
 msgstr ""
 "Das Feld „Von“ muss genau eine Adresse enthalten, wie zum Beispiel Ann "
@@ -3658,26 +3652,12 @@ msgstr "Übersetzung nicht möglich"
 msgid "Draft saved at {time}"
 msgstr "{date} um {time}"
 
+#, fuzzy
+msgid "Send the message"
+msgstr "Die Nachricht speichern?"
+
 msgid "Send"
 msgstr "Senden"
-
-msgid "Send options"
-msgstr "Sendeoptionen"
-
-msgid "Send now"
-msgstr "Jetzt senden"
-
-msgid "Tomorrow morning ({time})"
-msgstr "Morgen früh ({time})"
-
-msgid "Tomorrow afternoon ({time})"
-msgstr "Morgen Nachmittag ({time})"
-
-msgid "Monday morning ({time})"
-msgstr "Montagmorgen ({time})"
-
-msgid "Pick a date and time…"
-msgstr "Datum und Uhrzeit auswählen…"
 
 #, fuzzy
 msgid "More actions"
@@ -3685,9 +3665,6 @@ msgstr "Wischaktionen"
 
 msgid "Show From, To and Subject"
 msgstr "Von, An und Betreff anzeigen"
-
-msgid "Send now instead"
-msgstr "Stattdessen jetzt senden"
 
 msgid "Download password for {name}: {password}"
 msgstr "Download-Passwort für {name}: {password}"
@@ -4503,8 +4480,20 @@ msgstr[1] "{n} Nachrichten"
 msgid "Later today ({time})"
 msgstr "Heute später (um {time})"
 
+msgid "Tomorrow morning ({time})"
+msgstr "Morgen früh ({time})"
+
+msgid "Tomorrow afternoon ({time})"
+msgstr "Morgen Nachmittag ({time})"
+
 msgid "Saturday morning ({time})"
 msgstr "Samstagmorgen (um {time})"
+
+msgid "Monday morning ({time})"
+msgstr "Montagmorgen ({time})"
+
+msgid "Pick a date and time…"
+msgstr "Datum und Uhrzeit auswählen…"
 
 msgid "Unsnooze"
 msgstr "Zurückstellen aufheben"
@@ -8253,6 +8242,21 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Send later"
+#~ msgstr "Später senden"
+
+#~ msgid "Schedule"
+#~ msgstr "Planen"
+
+#~ msgid "Send options"
+#~ msgstr "Sendeoptionen"
+
+#~ msgid "Send now"
+#~ msgstr "Jetzt senden"
+
+#~ msgid "Send now instead"
+#~ msgstr "Stattdessen jetzt senden"
 
 #~ msgid ""
 #~ "Reader View shows a message as its text alone, in one plain format, "

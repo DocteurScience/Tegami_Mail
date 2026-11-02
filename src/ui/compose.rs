@@ -29,7 +29,6 @@ mod tests;
 mod translate;
 mod types;
 
-use crate::ui::later::{next_monday, preset_time};
 use cloud::not_signed_in;
 pub(crate) use format::forget_zoom;
 use format::{markdown_body, session_zoom, zoom_chip, SHOWCASE_PLAIN_LOG};
@@ -40,7 +39,7 @@ use host::{
 pub(crate) use keys::composer_key;
 pub(crate) use messages::{ComposeInput, ComposeOutput};
 pub(crate) use model::Compose;
-use send::{pick_send_time, start_autosave};
+use send::start_autosave;
 use setup::{add_toolbar_end_buttons, connect_editor};
 use showcase::showcase_hooks;
 use signature::sig_html;
@@ -95,92 +94,17 @@ impl Component for Compose {
                             add_css_class: "flat",
                             connect_clicked => ComposeInput::Cancel,
                         },
-                        // Send, with Send Later beside it (#145): presets, or a
-                        // date and time of your own.
-                        pack_end = &gtk::Box {
-                            add_css_class: "linked",
-                            add_css_class: "send-split",
-                            gtk::Button {
-                                #[watch]
-                                set_label: &if model.send_at.is_some() { i18n("Schedule") } else { i18n("Send") },
-                                add_css_class: "suggested-action",
-                                connect_clicked => ComposeInput::Send,
+                        // Send, the window's one suggested button, with its
+                        // icon and its name (mockup 04).
+                        pack_end = &gtk::Button {
+                            add_css_class: "suggested-action",
+                            set_tooltip_text: Some(i18n("Send the message").as_str()),
+                            #[wrap(Some)]
+                            set_child = &adw::ButtonContent {
+                                set_icon_name: "mail-send-symbolic",
+                                set_label: &i18n("Send"),
                             },
-                            // A floating divider, not a seam: the box paints the
-                            // accent behind it so the two read as one control.
-                            gtk::Separator {
-                                set_orientation: gtk::Orientation::Vertical,
-                            },
-                            gtk::MenuButton {
-                                set_icon_name: "pan-down-symbolic",
-                                add_css_class: "suggested-action",
-                                set_tooltip_text: Some(i18n("Send options").as_str()),
-                                set_can_focus: false,
-                                #[wrap(Some)]
-                                set_popover = &gtk::Popover {
-                                    gtk::Box {
-                                        set_orientation: gtk::Orientation::Vertical,
-                                        set_spacing: 2,
-                                        // Menu rows, not buttons: regular weight
-                                        // like every other popover menu (#167).
-                                        add_css_class: "context-menu-list",
-                                        gtk::Button {
-                                            add_css_class: "flat",
-                                            add_css_class: "context-menu-item",
-                                            set_halign: gtk::Align::Fill,
-                                            #[wrap(Some)]
-                                            set_child = &gtk::Label { set_label: &i18n("Send now"), set_halign: gtk::Align::Start },
-                                            connect_clicked[sender] => move |b| {
-                                                if let Some(p) = b.ancestor(gtk::Popover::static_type()).and_downcast::<gtk::Popover>() { p.popdown(); }
-                                                sender.input_sender().emit(ComposeInput::ClearSendAt);
-                                                sender.input_sender().emit(ComposeInput::Send);
-                                            },
-                                        },
-                                        gtk::Separator {},
-                                        gtk::Button {
-                                            add_css_class: "flat",
-                                            add_css_class: "context-menu-item",
-                                            #[wrap(Some)]
-                                            set_child = &gtk::Label { set_label: &i18n_f("Tomorrow morning ({time})", &[("time", &crate::datefmt::clock_label(8))]), set_halign: gtk::Align::Start },
-                                            connect_clicked[sender] => move |b| {
-                                                if let Some(p) = b.ancestor(gtk::Popover::static_type()).and_downcast::<gtk::Popover>() { p.popdown(); }
-                                                sender.input_sender().emit(ComposeInput::SendAt(preset_time(1, 8)));
-                                            },
-                                        },
-                                        gtk::Button {
-                                            add_css_class: "flat",
-                                            add_css_class: "context-menu-item",
-                                            #[wrap(Some)]
-                                            set_child = &gtk::Label { set_label: &i18n_f("Tomorrow afternoon ({time})", &[("time", &crate::datefmt::clock_label(13))]), set_halign: gtk::Align::Start },
-                                            connect_clicked[sender] => move |b| {
-                                                if let Some(p) = b.ancestor(gtk::Popover::static_type()).and_downcast::<gtk::Popover>() { p.popdown(); }
-                                                sender.input_sender().emit(ComposeInput::SendAt(preset_time(1, 13)));
-                                            },
-                                        },
-                                        gtk::Button {
-                                            add_css_class: "flat",
-                                            add_css_class: "context-menu-item",
-                                            #[wrap(Some)]
-                                            set_child = &gtk::Label { set_label: &i18n_f("Monday morning ({time})", &[("time", &crate::datefmt::clock_label(8))]), set_halign: gtk::Align::Start },
-                                            connect_clicked[sender] => move |b| {
-                                                if let Some(p) = b.ancestor(gtk::Popover::static_type()).and_downcast::<gtk::Popover>() { p.popdown(); }
-                                                sender.input_sender().emit(ComposeInput::SendAt(next_monday(8)));
-                                            },
-                                        },
-                                        gtk::Separator {},
-                                        gtk::Button {
-                                            add_css_class: "flat",
-                                            add_css_class: "context-menu-item",
-                                            #[wrap(Some)]
-                                            set_child = &gtk::Label { set_label: &i18n("Pick a date and time…"), set_halign: gtk::Align::Start },
-                                            connect_clicked[sender] => move |b| {
-                                                if let Some(p) = b.ancestor(gtk::Popover::static_type()).and_downcast::<gtk::Popover>() { p.popdown(); }
-                                                sender.input_sender().emit(ComposeInput::PickSendTime);
-                                            },
-                                        },
-                                    },
-                                },
-                            },
+                            connect_clicked => ComposeInput::Send,
                         },
                         // More actions: everything that is not Cancel or Send,
                         // at every width (docs/DESIGN.md, "Menus"). The header
@@ -228,31 +152,6 @@ impl Component for Compose {
                             connect_toggled[sender] => move |b| {
                                 sender.input_sender().emit(ComposeInput::ShowFields(b.is_active()));
                             },
-                        },
-                    },
-                    // Send Later (#145): says when a scheduled message goes, with a
-                    // way back to sending at once.
-                    add_top_bar = &gtk::Box {
-                        add_css_class: "schedule-bar",
-                        set_spacing: 8,
-                        set_margin_start: 12,
-                        set_margin_end: 12,
-                        set_margin_top: 4,
-                        set_margin_bottom: 4,
-                        #[watch]
-                        set_visible: model.send_at.is_some(),
-                        gtk::Image { set_icon_name: Some("alarm-symbolic") },
-                        gtk::Label {
-                            set_hexpand: true,
-                            set_halign: gtk::Align::Start,
-                            set_ellipsize: gtk::pango::EllipsizeMode::End,
-                            #[watch]
-                            set_label: &model.send_at.map(|t| i18n_f("Scheduled for {when}", &[("when", &crate::datefmt::date_time(t))])).unwrap_or_default(),
-                        },
-                        gtk::Button {
-                            add_css_class: "flat",
-                            set_label: &i18n("Send now instead"),
-                            connect_clicked => ComposeInput::ClearSendAt,
                         },
                     },
                     // Cloud attachments (#144): the download passwords, which
@@ -417,7 +316,6 @@ impl Component for Compose {
         let prefill_encrypt = prefill.encrypt;
         let request_receipt = prefill.receipt.unwrap_or(false);
         let heading = compose_heading(&in_reply_to, &forwards, &prefill.reply_name, &prefill.to);
-        let send_at = prefill.send_at;
         let current_sig = accounts
             .get(selected)
             .map(|a| a.signature.clone())
@@ -593,7 +491,6 @@ impl Component for Compose {
             request_receipt,
             pgp_checking: false,
             pgp_cleared: None,
-            send_at,
             cloud_accounts: crate::services::cloud::load_enabled_accounts(),
             drop_zones: None,
             cloud_links: Vec::new(),
@@ -693,15 +590,6 @@ impl Component for Compose {
 
                 ComposeInput::Discard => self.on_discard(&sender),
 
-                ComposeInput::SendAt(at) => {
-                    self.send_at = Some(at);
-                    sender.input_sender().emit(ComposeInput::Send);
-                }
-
-                ComposeInput::ClearSendAt => {
-                    self.send_at = None;
-                }
-
                 ComposeInput::FocusField(field) => self.on_focus_field(field, widgets),
 
                 ComposeInput::ShowFields(on) => {
@@ -753,11 +641,6 @@ impl Component for Compose {
                 ComposeInput::RemoveCloudLink(i) => self.on_remove_cloud_link(i, widgets, &sender),
 
                 ComposeInput::CopyCloudPasswords => self.on_copy_cloud_passwords(),
-
-                ComposeInput::PickSendTime => {
-                    let parent = root.root().and_downcast::<gtk::Window>();
-                    pick_send_time(parent.as_ref(), self.send_at, sender.input_sender().clone());
-                }
 
                 ComposeInput::DeleteDraft => self.on_delete_draft(&sender),
 

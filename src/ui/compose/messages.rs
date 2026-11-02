@@ -16,12 +16,6 @@ pub(crate) enum ComposeInput {
         checked: Vec<String>,
         result: Result<(), String>,
     },
-    /// Send Later (#145): queue for this unix time, then send as usual.
-    SendAt(i64),
-    /// Open the date-and-time picker.
-    PickSendTime,
-    /// Forget the scheduled time: Send goes out at once again.
-    ClearSendAt,
     /// A compact reply shows or hides its From/To/Subject rows (#154).
     ShowFields(bool),
     /// The pane crossed its width breakpoint: fold the toolbar into the ⋯

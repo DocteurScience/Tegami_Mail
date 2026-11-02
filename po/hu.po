@@ -3667,12 +3667,6 @@ msgstr ""
 "Nincs OpenPGP-kulcs ehhez: {addr}. Kérje el a nyilvános kulcsukat, vagy "
 "kérje le a Beállítások → OpenPGP alatt."
 
-msgid "Send later"
-msgstr "Küldés később"
-
-msgid "Schedule"
-msgstr "Ütemezés"
-
 msgid "The From has to be one address, such as Ann <ann@example.com>."
 msgstr ""
 
@@ -3792,27 +3786,12 @@ msgstr "Az üzenet nem címkézhető: {e}"
 msgid "Draft saved at {time}"
 msgstr "{date} {time} órakor"
 
+#, fuzzy
+msgid "Send the message"
+msgstr "Elmenti az üzenetet?"
+
 msgid "Send"
 msgstr "Küldés"
-
-#, fuzzy
-msgid "Send options"
-msgstr "Műveletek"
-
-msgid "Send now"
-msgstr "Küldés most"
-
-msgid "Tomorrow morning ({time})"
-msgstr "Holnap reggel ({time})"
-
-msgid "Tomorrow afternoon ({time})"
-msgstr "Holnap délután ({time})"
-
-msgid "Monday morning ({time})"
-msgstr "Hétfő reggel ({time})"
-
-msgid "Pick a date and time…"
-msgstr "Dátum és idő kiválasztása…"
 
 #, fuzzy
 msgid "More actions"
@@ -3820,9 +3799,6 @@ msgstr "Csúsztatási műveletek"
 
 msgid "Show From, To and Subject"
 msgstr "Feladó, címzett és tárgy megjelenítése"
-
-msgid "Send now instead"
-msgstr "Küldés inkább most"
 
 msgid "Download password for {name}: {password}"
 msgstr "Letöltési jelszó ehhez: {name}: {password}"
@@ -4645,9 +4621,21 @@ msgstr[1] "{n} üzenet"
 msgid "Later today ({time})"
 msgstr "Ma, {time}"
 
+msgid "Tomorrow morning ({time})"
+msgstr "Holnap reggel ({time})"
+
+msgid "Tomorrow afternoon ({time})"
+msgstr "Holnap délután ({time})"
+
 #, fuzzy
 msgid "Saturday morning ({time})"
 msgstr "Hétfő reggel ({time})"
+
+msgid "Monday morning ({time})"
+msgstr "Hétfő reggel ({time})"
+
+msgid "Pick a date and time…"
+msgstr "Dátum és idő kiválasztása…"
 
 msgid "Unsnooze"
 msgstr ""
@@ -8474,6 +8462,22 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Send later"
+#~ msgstr "Küldés később"
+
+#~ msgid "Schedule"
+#~ msgstr "Ütemezés"
+
+#, fuzzy
+#~ msgid "Send options"
+#~ msgstr "Műveletek"
+
+#~ msgid "Send now"
+#~ msgstr "Küldés most"
+
+#~ msgid "Send now instead"
+#~ msgstr "Küldés inkább most"
 
 #~ msgid ""
 #~ "Reader View shows a message as its text alone, in one plain format, "

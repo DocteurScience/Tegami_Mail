@@ -162,8 +162,6 @@ pub(crate) struct Compose {
     /// The preview toggle's icon-and-label insides, kept only so the label
     /// can be dropped in a pane too narrow to carry it.
     pub(super) preview_content: adw::ButtonContent,
-    /// Send Later (#145): when set, Send queues the message for this time.
-    pub(super) send_at: Option<i64>,
     /// Cloud attachments (#144): the accounts files can be uploaded to, the
     /// links already placed in the body, and how many uploads are running.
     pub(super) cloud_accounts: Vec<crate::services::cloud::CloudAccount>,

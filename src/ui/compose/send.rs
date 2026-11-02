@@ -1,5 +1,5 @@
-//! Sending and saving: the From, the outgoing message, OpenPGP checks before a
-//! send, and Send Later.
+//! Sending and saving: the From, the outgoing message, and OpenPGP checks
+//! before a send.
 
 use super::messages::ComposeOutput;
 use super::messages::{ComposeInput, OutgoingFields};
@@ -77,24 +77,6 @@ fn pgp_send_check(
         }
     }
     Ok(())
-}
-
-/// The Send Later picker (#145), starting from the scheduled time if there
-/// is one.
-pub(super) fn pick_send_time(
-    parent: Option<&gtk::Window>,
-    current: Option<i64>,
-    sender: relm4::Sender<ComposeInput>,
-) {
-    crate::ui::later::pick_later_time(
-        parent,
-        current,
-        &i18n("Send later"),
-        &i18n("Schedule"),
-        move |t| {
-            let _ = sender.send(ComposeInput::SendAt(t));
-        },
-    );
 }
 
 impl Compose {
@@ -250,7 +232,10 @@ impl Compose {
             calendar: None,
             request_receipt: self.request_receipt,
             receipt_report: None,
-            send_at: self.send_at,
+            // The composer no longer schedules (owner's decision,
+            // docs/SUIVI.md); the outbox still sends mail queued for a time
+            // by an earlier version.
+            send_at: None,
         }
     }
 
@@ -577,13 +562,12 @@ impl Compose {
             // A copy, cut loose from wherever this message came
             // from: saving it replaces no draft and no queued
             // message, and a message started from it answers
-            // nothing and waits for no time.
+            // nothing.
             out.draft_origin = None;
             out.outbox_origin = None;
             out.in_reply_to.clear();
             out.references.clear();
             out.forwards.clear();
-            out.send_at = None;
             let _ = sender.output(ComposeOutput::SaveTemplate(Box::new(out)));
             return;
         }

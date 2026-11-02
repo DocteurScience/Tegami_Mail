@@ -3522,12 +3522,6 @@ msgstr ""
 "No hi ha cap clau OpenPGP per a {addr}. Demana'ls la seva clau pública, o "
 "obtén-la a Paràmetres, OpenPGP."
 
-msgid "Send later"
-msgstr "Envia més tard"
-
-msgid "Schedule"
-msgstr "Programa"
-
 msgid "The From has to be one address, such as Ann <ann@example.com>."
 msgstr "El remitent ha de ser una sola adreça, com ara Ann <ann@example.com>."
 
@@ -3633,27 +3627,12 @@ msgstr "No s'ha pogut traduir"
 msgid "Draft saved at {time}"
 msgstr "{date} a les {time}"
 
+#, fuzzy
+msgid "Send the message"
+msgstr "Vols desar el missatge?"
+
 msgid "Send"
 msgstr "Envia"
-
-#, fuzzy
-msgid "Send options"
-msgstr "Seccions"
-
-msgid "Send now"
-msgstr "Envia ara"
-
-msgid "Tomorrow morning ({time})"
-msgstr "Demà al matí ({time})"
-
-msgid "Tomorrow afternoon ({time})"
-msgstr "Demà a la tarda ({time})"
-
-msgid "Monday morning ({time})"
-msgstr "Dilluns al matí ({time})"
-
-msgid "Pick a date and time…"
-msgstr "Tria una data i una hora…"
 
 #, fuzzy
 msgid "More actions"
@@ -3661,9 +3640,6 @@ msgstr "Accions de lliscament"
 
 msgid "Show From, To and Subject"
 msgstr "Mostra De, A i Assumpte"
-
-msgid "Send now instead"
-msgstr "Envia-ho ara"
 
 msgid "Download password for {name}: {password}"
 msgstr "Contrasenya de descàrrega per a {name}: {password}"
@@ -4475,9 +4451,21 @@ msgstr[1] "{n} missatges"
 msgid "Later today ({time})"
 msgstr "Avui, {time}"
 
+msgid "Tomorrow morning ({time})"
+msgstr "Demà al matí ({time})"
+
+msgid "Tomorrow afternoon ({time})"
+msgstr "Demà a la tarda ({time})"
+
 #, fuzzy
 msgid "Saturday morning ({time})"
 msgstr "Dilluns al matí ({time})"
+
+msgid "Monday morning ({time})"
+msgstr "Dilluns al matí ({time})"
+
+msgid "Pick a date and time…"
+msgstr "Tria una data i una hora…"
 
 msgid "Unsnooze"
 msgstr ""
@@ -8167,6 +8155,22 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Send later"
+#~ msgstr "Envia més tard"
+
+#~ msgid "Schedule"
+#~ msgstr "Programa"
+
+#, fuzzy
+#~ msgid "Send options"
+#~ msgstr "Seccions"
+
+#~ msgid "Send now"
+#~ msgstr "Envia ara"
+
+#~ msgid "Send now instead"
+#~ msgstr "Envia-ho ara"
 
 #~ msgid ""
 #~ "Reader View shows a message as its text alone, in one plain format, "

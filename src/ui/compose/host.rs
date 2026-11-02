@@ -64,7 +64,9 @@ fn header_rows_width(header: &gtk::Widget) -> Option<i32> {
 /// covers, or tops), so it takes over the GNOME window decorations — unless
 /// `decorations` is off: a split reply beneath the reader leaves the reader's
 /// own header in place, and a second set of controls mid-pane would be wrong.
-/// In a window of its own the header is the window's, close button and all.
+/// In a window of its own the header has no close button: Cancel closes it,
+/// asking first about what was written (mockup 04; one action in one place,
+/// owner's decision in docs/SUIVI.md).
 pub(super) fn size_for_host(
     root: &adw::ToolbarView,
     header: &adw::HeaderBar,
@@ -75,7 +77,7 @@ pub(super) fn size_for_host(
     root.set_vexpand(true);
     editor_holder.set_vexpand(true);
     editor_holder.set_height_request(-1);
-    header.set_show_end_title_buttons(windowed || decorations);
+    header.set_show_end_title_buttons(!windowed && decorations);
     // In a window the composer is drawn flat, rows parted by hairlines
     // (docs/DESIGN.md, "Replying and composing"). Inline it keeps its
     // cards: it sits among the conversation's cards, and a sent reply's

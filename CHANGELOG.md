@@ -9,6 +9,10 @@
   every message light, dark or as the app does. Saved choices for them are
   ignored.
 
+- **Removed: Send Later in the composer.** Send is one button again, as the
+  redesign draws it (mockup 04). Mail already scheduled by an earlier
+  version still goes out at its time from the Outbox.
+
 - **Added: On This Computer, folders kept on this computer** (#552).
   **Settings → Accounts → On This Computer → Add** adds an account with no
   server, as Evolution has, for an archive of mail moved or copied in from

@@ -3613,12 +3613,6 @@ msgstr ""
 "Non esiste nessuna chiave OpenPGP per {addr}. Chiedi loro la chiave "
 "pubblica, o recuperala in Impostazioni, OpenPGP."
 
-msgid "Send later"
-msgstr "Invia più tardi"
-
-msgid "Schedule"
-msgstr "Pianifica"
-
 msgid "The From has to be one address, such as Ann <ann@example.com>."
 msgstr ""
 "Il campo Da deve contenere un solo indirizzo, come Anna <anna@esempio.com>."
@@ -3726,27 +3720,12 @@ msgstr "Traduzione non riuscita"
 msgid "Draft saved at {time}"
 msgstr "{date} alle {time}"
 
+#, fuzzy
+msgid "Send the message"
+msgstr "Salvare il messaggio?"
+
 msgid "Send"
 msgstr "Invia"
-
-#, fuzzy
-msgid "Send options"
-msgstr "Azioni"
-
-msgid "Send now"
-msgstr "Invia ora"
-
-msgid "Tomorrow morning ({time})"
-msgstr "Domani mattina ({time})"
-
-msgid "Tomorrow afternoon ({time})"
-msgstr "Domani pomeriggio ({time})"
-
-msgid "Monday morning ({time})"
-msgstr "Lunedì mattina ({time})"
-
-msgid "Pick a date and time…"
-msgstr "Scegli una data e un orario…"
 
 #, fuzzy
 msgid "More actions"
@@ -3754,9 +3733,6 @@ msgstr "Azioni di scorrimento"
 
 msgid "Show From, To and Subject"
 msgstr "Mostra Da, A e Oggetto"
-
-msgid "Send now instead"
-msgstr "Invia ora invece"
 
 msgid "Download password for {name}: {password}"
 msgstr "Password di download per {name}: {password}"
@@ -4621,9 +4597,21 @@ msgstr[1] "{n} messaggi"
 msgid "Later today ({time})"
 msgstr "Oggi, {time}"
 
+msgid "Tomorrow morning ({time})"
+msgstr "Domani mattina ({time})"
+
+msgid "Tomorrow afternoon ({time})"
+msgstr "Domani pomeriggio ({time})"
+
 #, fuzzy
 msgid "Saturday morning ({time})"
 msgstr "Lunedì mattina ({time})"
+
+msgid "Monday morning ({time})"
+msgstr "Lunedì mattina ({time})"
+
+msgid "Pick a date and time…"
+msgstr "Scegli una data e un orario…"
 
 msgid "Unsnooze"
 msgstr ""
@@ -8388,6 +8376,22 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Send later"
+#~ msgstr "Invia più tardi"
+
+#~ msgid "Schedule"
+#~ msgstr "Pianifica"
+
+#, fuzzy
+#~ msgid "Send options"
+#~ msgstr "Azioni"
+
+#~ msgid "Send now"
+#~ msgstr "Invia ora"
+
+#~ msgid "Send now instead"
+#~ msgstr "Invia ora invece"
 
 #~ msgid ""
 #~ "Reader View shows a message as its text alone, in one plain format, "

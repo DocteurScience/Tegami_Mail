@@ -137,7 +137,7 @@ writing, the composer keeps them: there <kbd>Ctrl+U</kbd> underlines.
 
 <kbd>Ctrl+Enter</kbd> sends the message you are writing, from the body or
 any of its address rows. It does what the Send button does, so a message with
-no recipient is not sent, and one scheduled for later is queued.
+no recipient is not sent.
 
 <kbd>Ctrl+Shift+A</kbd> attaches files, and <kbd>Ctrl+Shift+T</kbd>,
 <kbd>Ctrl+Shift+C</kbd> and <kbd>Ctrl+Shift+B</kbd> put the cursor in To, Cc
