@@ -105,7 +105,6 @@ struct Cards<'a> {
     always_show_recipients: bool,
     style: &'a crate::config::ReaderStyle,
     sender_style: &'a std::collections::HashSet<(u32, u32)>,
-    reader: bool,
     zoom: u32,
     /// Card selection only means something between cards.
     mark_selection: bool,
@@ -136,7 +135,6 @@ impl MessageView {
         single_message_card: bool,
         style: &crate::config::ReaderStyle,
         sender_style: &std::collections::HashSet<(u32, u32)>,
-        reader: bool,
         zoom: u32,
     ) -> String {
         // Every message renders with the conversation chrome — a thread of one
@@ -161,7 +159,6 @@ impl MessageView {
             always_show_recipients,
             style,
             sender_style,
-            reader,
             zoom,
             mark_selection,
         };
@@ -186,14 +183,12 @@ impl MessageView {
         // ground than its own; a full-bleed single message sits on its own
         // ground — the chrome ground when it paints no background (see
         // `plain_css` below) — so the whole view is one color.
-        let single_ground = if !carded
-            && thread.len() == 1
-            && (reader || !paints_own_background(&thread[0].body))
-        {
-            chrome.clone()
-        } else {
-            bg.clone()
-        };
+        let single_ground =
+            if !carded && thread.len() == 1 && !paints_own_background(&thread[0].body) {
+                chrome.clone()
+            } else {
+                bg.clone()
+            };
         let page = if carded { deep } else { single_ground };
         let body_class = if carded { " class=\"tegami-conv\"" } else { "" };
         let (csp, sizer) = wrapper_scripts();
@@ -204,8 +199,7 @@ impl MessageView {
         // unbroken pane from subject to the end of the message. A message
         // that declares a background keeps the plain ground so its design
         // renders as intended.
-        let single_plain =
-            !carded && thread.len() == 1 && (reader || !paints_own_background(&thread[0].body));
+        let single_plain = !carded && thread.len() == 1 && !paints_own_background(&thread[0].body);
         let plain_css = if single_plain {
             format!(
                 "body:not(.tegami-conv) .tegami-msg,\
@@ -249,12 +243,11 @@ fn card_body(cards: &Cards<'_>, m: &Message) -> String {
         style,
         sender_style,
         accent,
-        reader,
         zoom,
         ..
     } = *cards;
     // A card showing its translation (#327): the message with its
-    // text replaced, or for plain text a Reader View fragment.
+    // text replaced, or for plain text a reader-sheet fragment.
     let (translated, translated_reader) = LIVE_TRANSLATE
         .with(|t| {
             t.borrow()
@@ -278,7 +271,7 @@ fn card_body(cards: &Cards<'_>, m: &Message) -> String {
                 style
             },
             accent,
-            reader || translated_reader,
+            translated_reader,
             zoom,
         )
     };
@@ -604,7 +597,6 @@ fn card_html(cards: &Cards<'_>, m: &Message, ava_html: &str, body: String) -> St
 fn card_actions(cards: &Cards<'_>, m: &Message) -> String {
     let Cards {
         style,
-        reader,
         sender_style,
         restrict,
         ..
@@ -709,7 +701,7 @@ fn card_actions(cards: &Cards<'_>, m: &Message) -> String {
         // The escape from the reader's own fonts and
         // colors (#56): only offered while an override
         // is on, lit while this card shows the sender's.
-        if style.active() && !reader {
+        if style.active() {
             let on = sender_style.contains(&key);
             format!(
                 "<button type=\"button\" class=\"tegami-act{on_cls}\" data-act=\"senderfmt\" \

@@ -15,7 +15,7 @@
 //! stylesheets, images or scripts. Every service is asked to keep the
 //! markup, and each run's translation goes back where the run was, so the
 //! message keeps its design (#327). A plain-text message goes as its
-//! paragraphs and is shown as Reader View shows it.
+//! paragraphs and is shown in the reader sheet (`crate::mail::reader`).
 //!
 //! The settings live in `translation.toml`; the key is in the keyring.
 //! Which language a message is in, for the optional "Translate" offer, is
@@ -274,10 +274,9 @@ pub(crate) fn store_key(service: Service, key: &str) {
 #[derive(Clone, Debug, PartialEq)]
 pub(crate) struct Translated {
     /// The translation: the whole message with its text replaced, or, for
-    /// plain text, a Reader View fragment.
+    /// plain text, a reader-sheet fragment (`crate::mail::reader`).
     pub(crate) html: String,
-    /// `html` is a Reader View fragment, to be shown as Reader View shows
-    /// a message.
+    /// `html` is a reader-sheet fragment, to be shown in that sheet.
     pub(crate) reader: bool,
     /// The language the service found the message to be in.
     pub(crate) from: Option<String>,
@@ -561,7 +560,7 @@ mod tests {
 
     #[test]
     fn a_translation_keeps_the_messages_design() {
-        // #327: what was sent was Reader View, so it came back unstyled.
+        // #327: what was once sent was the reader sheet, so it came back unstyled.
         let body = r##"<!doctype html><html><head><style>.hero{color:#c00}</style></head><body>
             <div style="display:none">preheader text</div>
             <table class="hero" bgcolor="#eee"><tr><td style="padding:20px">Hello <a href="https://example.com/track?id=42" style="color:red">our offer</a>, friend.</td></tr></table>

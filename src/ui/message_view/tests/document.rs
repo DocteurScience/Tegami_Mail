@@ -26,7 +26,6 @@ fn a_conversation_renders_one_card_per_message_in_order() {
         false,
         &crate::config::ReaderStyle::NONE,
         &Default::default(),
-        false,
         100,
     );
     assert_eq!(
@@ -72,7 +71,6 @@ fn a_card_from_your_own_mailbox_wears_that_mailboxs_face() {
             false,
             &crate::config::ReaderStyle::NONE,
             &Default::default(),
-            false,
             100,
         )
     };
@@ -162,7 +160,6 @@ fn every_card_carries_its_recipients_escaped_and_collapsed() {
         false,
         &crate::config::ReaderStyle::NONE,
         &Default::default(),
-        false,
         100,
     );
     assert_eq!(
@@ -215,7 +212,6 @@ fn a_card_with_no_recipients_shows_no_chip() {
         false,
         &crate::config::ReaderStyle::NONE,
         &Default::default(),
-        false,
         100,
     );
     assert_eq!(
@@ -247,7 +243,6 @@ fn a_card_offers_remote_content_both_ways_and_only_where_there_is_any() {
             false,
             &crate::config::ReaderStyle::NONE,
             &Default::default(),
-            false,
             100,
         )
     };
@@ -294,7 +289,6 @@ fn every_card_carries_its_own_actions_keyed_to_that_message() {
         false,
         &crate::config::ReaderStyle::NONE,
         &Default::default(),
-        false,
         100,
     );
     for act in ["reply", "replyall", "forward"] {
@@ -331,7 +325,6 @@ fn only_unread_conversation_messages_are_marked() {
         false,
         &crate::config::ReaderStyle::NONE,
         &Default::default(),
-        false,
         100,
     );
     assert_eq!(
@@ -375,7 +368,6 @@ fn a_deliberately_unread_message_keeps_its_mark() {
         false,
         &crate::config::ReaderStyle::NONE,
         &Default::default(),
-        false,
         100,
     );
     assert_eq!(
@@ -412,7 +404,6 @@ fn a_known_frame_height_is_used_on_reopen() {
         false,
         &crate::config::ReaderStyle::NONE,
         &Default::default(),
-        false,
         100,
     );
     assert!(
@@ -450,7 +441,6 @@ fn a_selected_card_is_outlined_in_the_accent() {
         false,
         &crate::config::ReaderStyle::NONE,
         &Default::default(),
-        false,
         100,
     );
     assert!(
@@ -487,7 +477,6 @@ fn a_single_message_keeps_the_header_but_goes_full_bleed() {
         false,
         &crate::config::ReaderStyle::NONE,
         &Default::default(),
-        false,
         100,
     );
     assert!(
@@ -531,7 +520,6 @@ fn a_single_message_cards_up_when_asked() {
         true,
         &crate::config::ReaderStyle::NONE,
         &Default::default(),
-        false,
         100,
     );
     assert!(
@@ -564,7 +552,6 @@ fn a_message_from_another_folder_is_labelled_with_it() {
         false,
         &crate::config::ReaderStyle::NONE,
         &Default::default(),
-        false,
         100,
     );
     assert_eq!(
@@ -602,7 +589,6 @@ fn a_folder_label_cannot_smuggle_markup_into_the_header() {
         false,
         &crate::config::ReaderStyle::NONE,
         &Default::default(),
-        false,
         100,
     );
     assert!(
@@ -638,7 +624,6 @@ fn a_sender_cannot_put_markup_in_the_conversation_header() {
         false,
         &crate::config::ReaderStyle::NONE,
         &Default::default(),
-        false,
         100,
     );
 

@@ -316,12 +316,7 @@ impl MessageView {
             .iter()
             .enumerate()
             .map(|(n, m)| {
-                // Reader View prints what it shows: the content alone.
-                let doc = if self.reader_mode {
-                    crate::mail::reader::render(&m.body, false, &self.accent_hex())
-                } else {
-                    body_html(&m.body)
-                };
+                let doc = body_html(&m.body);
                 let doc = if self.remote_allowed {
                     route_remote(&doc)
                 } else {

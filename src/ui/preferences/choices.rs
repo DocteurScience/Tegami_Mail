@@ -338,26 +338,6 @@ pub(super) fn fold_messages_at(idx: u32) -> crate::config::FoldMessages {
     }
 }
 
-/// The row of the reader default combo that shows `value`.
-pub(super) fn reader_default_index(value: crate::config::ReaderDefault) -> u32 {
-    use crate::config::ReaderDefault;
-    match value {
-        ReaderDefault::Remember => 0,
-        ReaderDefault::On => 1,
-        ReaderDefault::Off => 2,
-    }
-}
-
-/// The reader default value at row `idx` of its combo; past the end reads as the first.
-pub(super) fn reader_default_at(idx: u32) -> crate::config::ReaderDefault {
-    use crate::config::ReaderDefault;
-    match idx {
-        1 => ReaderDefault::On,
-        2 => ReaderDefault::Off,
-        _ => ReaderDefault::Remember,
-    }
-}
-
 /// The row of the compose format combo that shows `value`.
 pub(super) fn compose_format_index(value: crate::config::ComposeFormat) -> u32 {
     use crate::config::ComposeFormat;
@@ -630,14 +610,6 @@ mod tests {
             assert_eq!(fold_messages_at(fold_messages_index(v)), v);
         }
         assert_eq!(fold_messages_at(9), FoldMessages::Never);
-        for v in [
-            ReaderDefault::Remember,
-            ReaderDefault::On,
-            ReaderDefault::Off,
-        ] {
-            assert_eq!(reader_default_at(reader_default_index(v)), v);
-        }
-        assert_eq!(reader_default_at(9), ReaderDefault::Remember);
         for (i, v) in [
             ComposeFormat::Rich,
             ComposeFormat::Markdown,

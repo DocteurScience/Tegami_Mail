@@ -341,7 +341,6 @@ fn sender_style_toggle_escapes_one_card() {
         false,
         &style,
         &escaped,
-        false,
         100,
     );
     assert_eq!(doc.matches("data-act=\"senderfmt\"").count(), 2, "{doc}");
@@ -371,7 +370,6 @@ fn sender_style_toggle_escapes_one_card() {
         false,
         &crate::config::ReaderStyle::NONE,
         &escaped,
-        false,
         100,
     );
     assert!(!plain.contains("senderfmt"), "{plain}");

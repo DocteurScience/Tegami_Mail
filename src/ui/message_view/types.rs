@@ -171,20 +171,12 @@ pub(crate) enum MessageViewInput {
         account_id: u32,
         id: u32,
     },
-    /// Reader View on or off (the header's toggle): re-renders the whole
-    /// conversation stripped to its content, or back as sent.
-    SetReaderMode(bool),
     /// Message zoom in percent; the bodies on screen rescale in place.
     SetZoom(u32),
     /// The zoom Settings starts at, which the chip measures against.
     SetZoomDefault(u32),
-    /// Settings: show the Reader View switch in the header at all.
-    SetReaderSwitchShown(bool),
     /// Whether the header's account chip is shown (Settings).
     SetAccountChipShown(bool),
-    /// Settings: what Reader View does when a conversation is opened. A
-    /// per-message default applies to what is on screen right away.
-    SetReaderDefault(crate::config::ReaderDefault),
     /// The popover's "Fetch the sender's key" (#133): the Autocrypt key in
     /// the message first, then WKD and the keyservers.
     PgpFetchKey {
@@ -537,9 +529,6 @@ pub(crate) enum MessageViewOutput {
     ReloadBody(Box<Message>),
     /// Something to tell the user in a toast.
     Notice(String),
-    /// The subject block's Reader View toggle was flipped; the app saves the
-    /// preference and pushes it back (`SetReaderMode`) to every reader.
-    ReaderMode(bool),
     /// Message zoom one step in (1) or out (-1), from Ctrl + the scroll
     /// wheel over the body, or back to the default from Settings (0), from
     /// a click on the zoom chip.

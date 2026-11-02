@@ -16,7 +16,6 @@ use crate::ui::dialog::confirm_destructive;
 /// What the Settings window reports, as the message it means here.
 fn prefs_output_msg(out: PrefOutput) -> AppMsg {
     match out {
-        PrefOutput::SetReaderSwitch(on) => AppMsg::SetReaderSwitchShown(on),
         PrefOutput::SetReaderZoom(z) => AppMsg::SetZoomDefault(z),
         PrefOutput::PageShown(id) => AppMsg::SettingsPageShown(id),
         PrefOutput::Closed => AppMsg::ClosePreferences,
@@ -85,10 +84,8 @@ impl AppModel {
             pgp_labels: self.pgp_labels,
             reader_find_bottom: self.reader_find_bottom,
             single_message_card: self.single_message_card,
-            reader_switch: self.reader_switch,
             account_chip: self.account_chip,
             desktop_icons: self.desktop_icons,
-            reader_default: self.reader_default,
             reader_zoom: self.zoom_default,
             card_attachments: self.card_attachments,
             attachment_drawer: self.drawer_enabled,

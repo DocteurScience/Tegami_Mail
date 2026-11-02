@@ -276,33 +276,6 @@ pub(crate) fn load_reader_zoom() -> u32 {
     }
 }
 
-/// What Reader View does each time a message is opened.
-#[derive(Clone, Copy, Debug, Default, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
-#[serde(rename_all = "snake_case")]
-pub(crate) enum ReaderDefault {
-    /// Stay as last set; the switch's state is remembered across runs.
-    #[default]
-    Remember,
-    /// Every message opens in Reader View (the switch can turn it off for
-    /// that one).
-    On,
-    /// Every message opens as sent (the switch can turn Reader View on for
-    /// that one).
-    Off,
-}
-
-impl ReaderDefault {
-    /// The state a freshly opened message starts in, or `None` to keep the
-    /// last choice.
-    pub(crate) fn starts_on(self) -> Option<bool> {
-        match self {
-            ReaderDefault::Remember => None,
-            ReaderDefault::On => Some(true),
-            ReaderDefault::Off => Some(false),
-        }
-    }
-}
-
 /// The three reader-override preferences (#56): font switch, font, color switch.
 pub(crate) fn load_reader_override() -> (bool, String, bool) {
     let p = load_privacy();

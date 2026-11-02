@@ -22,7 +22,6 @@ fn the_wrapper_only_runs_its_own_script() {
         false,
         &crate::config::ReaderStyle::NONE,
         &Default::default(),
-        false,
         100,
     );
 
@@ -65,7 +64,6 @@ fn the_wrapper_only_runs_its_own_script() {
         false,
         &crate::config::ReaderStyle::NONE,
         &Default::default(),
-        false,
         100,
     );
     assert!(!again.contains(nonce), "nonce was reused across renders");
@@ -232,7 +230,6 @@ fn the_wrapper_in_a_real_engine_sizes_frames_and_refuses_injected_script() {
         false,
         &crate::config::ReaderStyle::NONE,
         &Default::default(),
-        false,
         100,
     );
 

@@ -273,8 +273,6 @@ impl AppModel {
             | AppMsg::ZoomMessage(..)
             | AppMsg::CopyReaderSelection) => self.on_shortcuts(msg, sender),
             msg @ (AppMsg::SetZoomDefault(..)
-            | AppMsg::SetReaderMode(..)
-            | AppMsg::SetReaderSwitchShown(..)
             | AppMsg::SetRemoteContent { .. }
             | AppMsg::ReloadBody(..)) => self.on_prefs_reader(msg),
             msg @ (AppMsg::Undo | AppMsg::Redo | AppMsg::UndoRestored { .. }) => self.on_undo(msg),
@@ -493,7 +491,6 @@ impl AppModel {
             | PrefOutput::SetAlwaysShowRecipients(..)
             | PrefOutput::SetCardAttachments(..)
             | PrefOutput::SetAttachmentDrawer(..)
-            | PrefOutput::SetReaderDefault(..)
             | PrefOutput::SetPgpLabels(..)
             | PrefOutput::SetAccountChip(..)
             | PrefOutput::SetReaderFindBottom(..)

@@ -1,4 +1,4 @@
-//! Applying reader settings: zoom, Reader View, font and color overrides.
+//! Applying reader settings: zoom, font and color overrides.
 
 use adw::prelude::*;
 use relm4::prelude::*;
@@ -22,21 +22,6 @@ impl AppModel {
         self.zoom = zoom;
         self.message_view.emit(MessageViewInput::SetZoom(zoom));
         self.popouts_emit(|| MessageWindowInput::SetZoom(zoom));
-    }
-
-    /// What Reader View does on each open: Focus Mode's "on" while it holds,
-    /// else the setting.
-    pub(super) fn effective_reader_default(&self) -> config::ReaderDefault {
-        if self.focus.active(config::FocusPart::ReaderView) {
-            config::ReaderDefault::On
-        } else {
-            self.reader_default
-        }
-    }
-
-    /// Reader View for the message on screen: on in Focus Mode, else as saved.
-    pub(super) fn effective_reader_mode(&self) -> bool {
-        self.reader_mode || self.focus.active(config::FocusPart::ReaderView)
     }
 
     /// The reader's font-and-color override (#56) as the reader applies it:
@@ -251,15 +236,6 @@ impl AppModel {
                     self.popouts_emit(|| MessageWindowInput::SetAttachmentDrawer(on));
                 }
             }
-            PrefOutput::SetReaderDefault(policy) => {
-                if pref!(self.reader_default = policy) {
-                    // Focus Mode's Reader View outranks it while on.
-                    let policy = self.effective_reader_default();
-                    self.message_view
-                        .emit(MessageViewInput::SetReaderDefault(policy));
-                    self.popouts_emit(|| MessageWindowInput::SetReaderDefault(policy));
-                }
-            }
             PrefOutput::SetPgpLabels(on) => {
                 if pref!(self.pgp_labels = on) {
                     self.message_view.emit(MessageViewInput::SetPgpLabels(on));
@@ -357,31 +333,6 @@ impl AppModel {
                 // The setting is also what the user wants to see now.
                 self.set_zoom(zoom);
             }
-            AppMsg::SetReaderMode(on) => {
-                // In Focus Mode with Reader View on, the switch changes the
-                // message on screen alone: the saved choice is the ordinary
-                // one, and it comes back with the rest of the layout.
-                if self.focus.active(config::FocusPart::ReaderView) {
-                    // Nothing to remember.
-                } else if self.reader_mode != on {
-                    self.reader_mode = on;
-                    self.save_settings();
-                }
-                // Always pushed, equal or not: with a per-message default the
-                // readers reset themselves on each open, so what they show
-                // can differ from the saved state — and a switch flipped in
-                // one of them must land there regardless.
-                self.message_view.emit(MessageViewInput::SetReaderMode(on));
-                self.popouts_emit(|| MessageWindowInput::SetReaderMode(on));
-            }
-            AppMsg::SetReaderSwitchShown(on) => {
-                if pref!(self.reader_switch = on) {
-                    self.message_view
-                        .emit(MessageViewInput::SetReaderSwitchShown(on));
-                    self.popouts_emit(|| MessageWindowInput::SetReaderSwitchShown(on));
-                }
-            }
-
             AppMsg::SetRemoteContent {
                 account_id,
                 id,

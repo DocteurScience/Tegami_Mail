@@ -105,7 +105,6 @@ impl MessageView {
         self.theme_grounds(dark).hash(&mut h);
         self.remote_allowed.hash(&mut h);
         self.reader_style.hash(&mut h);
-        self.reader_mode.hash(&mut h);
         // Translations (#327): which cards show one, and whether cards
         // offer Translate at all.
         crate::services::translate::generation().hash(&mut h);
@@ -258,7 +257,6 @@ impl MessageView {
             self.single_message_card,
             &self.reader_style,
             &self.sender_style,
-            self.reader_mode,
             self.zoom,
         )
     }

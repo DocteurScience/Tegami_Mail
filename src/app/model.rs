@@ -710,18 +710,10 @@ pub(crate) struct AppModel {
     pub(super) zoom: u32,
     /// Settings → Reading: the zoom every launch starts at, in percent.
     pub(super) zoom_default: u32,
-    /// Reader View: every message in the reader shown as its content alone,
-    /// in the reader's own sheet (see `crate::mail::reader`). The toggle sits in
-    /// the reader's subject block; the choice is remembered across runs.
-    pub(super) reader_mode: bool,
-    /// The Reader View switch is shown in the reader header.
-    pub(super) reader_switch: bool,
     /// The account chip is shown in the reader header (Settings).
     pub(super) account_chip: bool,
     /// Icons come from the desktop's icon theme, not Tegami Mail's own (Settings).
     pub(super) desktop_icons: bool,
-    /// What Reader View does when a message is opened (Settings).
-    pub(super) reader_default: config::ReaderDefault,
     /// Each conversation message lists its own attachments (#213).
     pub(super) card_attachments: bool,
     /// The attachment drawer beneath the reader is shown at all (#213).

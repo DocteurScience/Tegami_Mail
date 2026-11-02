@@ -4,8 +4,6 @@ use adw::prelude::*;
 use relm4::prelude::*;
 
 use crate::config;
-use crate::ui::message_view::MessageViewInput;
-use crate::ui::message_window::MessageWindowInput;
 use crate::ui::preferences::PrefInput;
 use crate::ui::sidebar::SidebarInput;
 
@@ -65,9 +63,6 @@ impl AppModel {
                 self.rebuild_sidebar();
                 self.sync_rail();
             }
-            if changed(F::ReaderView) {
-                self.push_reader_focus();
-            }
         }
         // The menu's check item and Settings stay in step wherever the
         // change came from.
@@ -101,22 +96,6 @@ impl AppModel {
                 focus_reveal(r, shown);
             }
             focus_reveal(&lh.overflow, !shown);
-        }
-    }
-
-    /// Focus Mode's Reader View came or went: every reader follows, the
-    /// message on screen included.
-    fn push_reader_focus(&self) {
-        let policy = self.effective_reader_default();
-        let mode = self.effective_reader_mode();
-        self.message_view
-            .emit(MessageViewInput::SetReaderDefault(policy));
-        self.message_view
-            .emit(MessageViewInput::SetReaderMode(mode));
-        for p in self.popouts.values() {
-            p.controller
-                .emit(MessageWindowInput::SetReaderDefault(policy));
-            p.controller.emit(MessageWindowInput::SetReaderMode(mode));
         }
     }
 }

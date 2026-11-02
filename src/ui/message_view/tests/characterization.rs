@@ -96,7 +96,6 @@ fn document(
     dark: bool,
     always_show_recipients: bool,
     single_message_card: bool,
-    reader: bool,
     zoom: u32,
 ) -> String {
     let mut labels = std::collections::HashMap::new();
@@ -118,7 +117,6 @@ fn document(
         single_message_card,
         &crate::config::ReaderStyle::NONE,
         &sender_style,
-        reader,
         zoom,
     );
     normalise_nonce(&doc)
@@ -128,7 +126,7 @@ fn document(
 fn golden_single_message_full_bleed() {
     golden(
         "single.html",
-        &document(&[message(1)], &[], true, false, false, false, false, 100),
+        &document(&[message(1)], &[], true, false, false, false, 100),
     );
 }
 
@@ -139,7 +137,7 @@ fn golden_single_message_carded_dark() {
     m.cc = "carol@golden.example".into();
     golden(
         "single_carded_dark.html",
-        &document(&[m], &[], false, true, true, true, false, 120),
+        &document(&[m], &[], false, true, true, true, 120),
     );
 }
 
@@ -155,7 +153,6 @@ fn golden_two_card_conversation() {
             &[message(1), second],
             &[(7, 2)],
             true,
-            false,
             false,
             false,
             false,
@@ -231,7 +228,6 @@ fn golden_three_cards_with_side_channels() {
         true,
         true,
         false,
-        true,
         90,
     );
     golden("three_cards.html", &doc);

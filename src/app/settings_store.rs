@@ -41,11 +41,8 @@ impl AppModel {
             pgp_labels: self.pgp_labels,
             reader_find_bottom: self.reader_find_bottom,
             single_message_card: self.single_message_card,
-            reader_mode: self.reader_mode,
-            reader_switch: self.reader_switch,
             account_chip: self.account_chip,
             desktop_icons: self.desktop_icons,
-            reader_default: self.reader_default,
             reader_zoom: self.zoom_default,
             card_attachments: self.card_attachments,
             attachment_drawer: self.drawer_enabled,
@@ -239,19 +236,11 @@ impl AppModel {
             ));
         self.message_view
             .emit(MessageViewInput::SetFoldMessages(self.fold_messages));
-        self.message_view.emit(MessageViewInput::SetReaderMode(
-            self.effective_reader_mode(),
-        ));
         self.message_view
             .emit(MessageViewInput::SetZoomDefault(self.zoom_default));
         self.message_view.emit(MessageViewInput::SetZoom(self.zoom));
         self.message_view
-            .emit(MessageViewInput::SetReaderSwitchShown(self.reader_switch));
-        self.message_view
             .emit(MessageViewInput::SetAccountChipShown(self.account_chip));
-        self.message_view.emit(MessageViewInput::SetReaderDefault(
-            self.effective_reader_default(),
-        ));
         self.message_view
             .emit(MessageViewInput::SetCardAttachmentsShown(
                 self.card_attachments,

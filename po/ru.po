@@ -4940,16 +4940,6 @@ msgstr ""
 "Масштаб сообщения. Сочетания Ctrl+ и Ctrl- меняют его; нажатие здесь или "
 "Ctrl+0 возвращает значение по умолчанию из Параметров."
 
-msgid ""
-"Reader View shows a message as its text alone, in one plain format, without "
-"the sender's layout, colors and fonts."
-msgstr ""
-"Режим чтения отображает сообщение в виде чистого текста в едином простом "
-"формате, без оформления, цветов и шрифтов отправителя."
-
-msgid "Reader View"
-msgstr "Режим чтения"
-
 #. Dimming comes from the cover's own foreground, which
 #. is picked for the message theme — `dim-label` would
 #. fade it against the app's instead.
@@ -5815,15 +5805,6 @@ msgstr "Создание писем в основном окне"
 #, fuzzy
 msgid "Bottom of the message"
 msgstr "Создание писем в основном окне"
-
-msgid "Remember the last choice"
-msgstr "Запоминать последний выбор"
-
-msgid "Reader View on"
-msgstr "Режим чтения: включён"
-
-msgid "Reader View off"
-msgstr "Режим чтения: выключен"
 
 msgid "Hidden behind a toggle"
 msgstr "Скрыто за переключателем"
@@ -7945,10 +7926,6 @@ msgstr "Сворачивать боковую панель в панель зн�
 msgid "Hovering it slides the full sidebar out."
 msgstr ""
 
-#, fuzzy
-msgid "Open messages in Reader View."
-msgstr "Сообщение ещё не загружено."
-
 msgid "Compose in the main window"
 msgstr "Создание писем в основном окне"
 
@@ -8173,25 +8150,6 @@ msgstr ""
 #, fuzzy
 msgid "Find bar position"
 msgstr "Действия"
-
-#, fuzzy
-msgid "A message's text alone, without the sender's layout, colors and fonts."
-msgstr ""
-"Режим чтения отображает сообщение в виде чистого текста в едином простом "
-"формате, без оформления, цветов и шрифтов отправителя."
-
-#, fuzzy
-msgid "Show Reader View switch in message header"
-msgstr "Переключатель режима чтения"
-
-msgid "When a message is opened"
-msgstr "При открытии сообщения"
-
-#, fuzzy
-msgid "The header's switch still changes the open message."
-msgstr ""
-"Каждое сообщение открывается в режиме чтения. Переключатель в заголовке по-"
-"прежнему позволяет изменить режим для текущего сообщения."
 
 msgid "Printing"
 msgstr "Печать"
@@ -8506,6 +8464,49 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid ""
+#~ "Reader View shows a message as its text alone, in one plain format, "
+#~ "without the sender's layout, colors and fonts."
+#~ msgstr ""
+#~ "Режим чтения отображает сообщение в виде чистого текста в едином простом "
+#~ "формате, без оформления, цветов и шрифтов отправителя."
+
+#~ msgid "Reader View"
+#~ msgstr "Режим чтения"
+
+#~ msgid "Remember the last choice"
+#~ msgstr "Запоминать последний выбор"
+
+#~ msgid "Reader View on"
+#~ msgstr "Режим чтения: включён"
+
+#~ msgid "Reader View off"
+#~ msgstr "Режим чтения: выключен"
+
+#, fuzzy
+#~ msgid "Open messages in Reader View."
+#~ msgstr "Сообщение ещё не загружено."
+
+#, fuzzy
+#~ msgid ""
+#~ "A message's text alone, without the sender's layout, colors and fonts."
+#~ msgstr ""
+#~ "Режим чтения отображает сообщение в виде чистого текста в едином простом "
+#~ "формате, без оформления, цветов и шрифтов отправителя."
+
+#, fuzzy
+#~ msgid "Show Reader View switch in message header"
+#~ msgstr "Переключатель режима чтения"
+
+#~ msgid "When a message is opened"
+#~ msgstr "При открытии сообщения"
+
+#, fuzzy
+#~ msgid "The header's switch still changes the open message."
+#~ msgstr ""
+#~ "Каждое сообщение открывается в режиме чтения. Переключатель в заголовке "
+#~ "по-прежнему позволяет изменить режим для текущего сообщения."
 
 #, fuzzy
 #~ msgid "Displays in the message header for each message."

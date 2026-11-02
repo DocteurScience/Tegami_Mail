@@ -69,12 +69,6 @@ impl MessageView {
             self.did_autoscroll = false;
             self.saved_anchor = None;
             self.scroll_owed = false;
-            // A per-message Reader View default (Settings) resets
-            // the view for each conversation opened; the switch can
-            // still flip this one.
-            if let Some(on) = self.reader_default.starts_on() {
-                self.set_reader_mode(on);
-            }
         }
         self.thread = thread;
         self.folder_labels = folder_labels;

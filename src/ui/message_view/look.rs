@@ -71,8 +71,7 @@ impl MessageView {
     /// empty row adding its spacing above the subject.
     pub(super) fn account_line_shown(&self) -> bool {
         let chip = self.account_name.is_some() && self.account_chip_shown;
-        let controls =
-            self.current.is_some() && (self.reader_switch_shown || self.zoom != self.zoom_default);
+        let controls = self.current.is_some() && self.zoom != self.zoom_default;
         chip || controls
     }
 
@@ -92,9 +91,7 @@ impl MessageView {
         let (ground, page, chrome) = self.theme_grounds(dark);
         let (bg, kind) = if self.carded() {
             (&page, "page")
-        } else if self.thread.len() == 1
-            && (self.reader_mode || !paints_own_background(&self.thread[0].body))
-        {
+        } else if self.thread.len() == 1 && !paints_own_background(&self.thread[0].body) {
             (&chrome, "chrome")
         } else {
             (&ground, "ground")

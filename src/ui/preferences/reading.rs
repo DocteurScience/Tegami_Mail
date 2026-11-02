@@ -1,6 +1,6 @@
 //! Settings → Message List, Conversations and Reading, and Printing.
 
-use super::choices::{fold_messages_at, list_layout_at, read_mark_at, reader_default_at};
+use super::choices::{fold_messages_at, list_layout_at, read_mark_at};
 use super::*;
 
 impl Preferences {
@@ -17,11 +17,6 @@ impl Preferences {
     pub(super) fn on_toggle_thread_expansion(&mut self, on: bool, sender: ComponentSender<Self>) {
         self.thread_expansion = on;
         let _ = sender.output(PrefOutput::SetThreadExpansion(on));
-    }
-
-    pub(super) fn on_change_reader_default(&mut self, idx: u32, sender: ComponentSender<Self>) {
-        let policy = reader_default_at(idx);
-        let _ = sender.output(PrefOutput::SetReaderDefault(policy));
     }
 
     pub(super) fn on_change_reader_zoom(&mut self, idx: u32, sender: ComponentSender<Self>) {

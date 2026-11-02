@@ -4752,16 +4752,6 @@ msgstr ""
 "Zoom del mensaje. Se cambia con Ctrl+ y Ctrl-, o con Ctrl y la rueda del "
 "ratón. Un clic aquí, o Ctrl+0, restablece el valor predeterminado de Ajustes."
 
-msgid ""
-"Reader View shows a message as its text alone, in one plain format, without "
-"the sender's layout, colors and fonts."
-msgstr ""
-"La Vista de lectura muestra únicamente el texto del mensaje con un formato "
-"uniforme, sin el diseño, colores ni fuentes del remitente."
-
-msgid "Reader View"
-msgstr "Vista de lectura"
-
 #. Dimming comes from the cover's own foreground, which
 #. is picked for the message theme — `dim-label` would
 #. fade it against the app's instead.
@@ -5613,15 +5603,6 @@ msgstr "Parte superior de la lista"
 #, fuzzy
 msgid "Bottom of the message"
 msgstr "Parte inferior de la lista"
-
-msgid "Remember the last choice"
-msgstr "Recordar la última opción"
-
-msgid "Reader View on"
-msgstr "Vista de lectura activada"
-
-msgid "Reader View off"
-msgstr "Vista de lectura desactivada"
 
 msgid "Hidden behind a toggle"
 msgstr "Oculto tras un interruptor"
@@ -7706,9 +7687,6 @@ msgstr "Contraer la barra lateral a la barra de iconos"
 msgid "Hovering it slides the full sidebar out."
 msgstr "Al pasar el puntero, aparece la barra lateral completa."
 
-msgid "Open messages in Reader View."
-msgstr "Abrir mensajes en la vista de lectura."
-
 msgid "Compose in the main window"
 msgstr "Redactar en la ventana principal"
 
@@ -7929,22 +7907,6 @@ msgstr "Al desactivarlo, solo se muestran los iconos."
 #, fuzzy
 msgid "Find bar position"
 msgstr "Posición de la barra de selección"
-
-msgid "A message's text alone, without the sender's layout, colors and fonts."
-msgstr ""
-"Solo el texto del mensaje, sin la disposición, los colores ni las fuentes "
-"del remitente."
-
-msgid "Show Reader View switch in message header"
-msgstr "Mostrar el interruptor de vista de lectura en la cabecera del mensaje"
-
-msgid "When a message is opened"
-msgstr "Al abrir un mensaje"
-
-msgid "The header's switch still changes the open message."
-msgstr ""
-"El interruptor de la cabecera sigue permitiendo cambiar la vista del mensaje "
-"abierto."
 
 msgid "Printing"
 msgstr "Impresión"
@@ -8260,6 +8222,46 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid ""
+#~ "Reader View shows a message as its text alone, in one plain format, "
+#~ "without the sender's layout, colors and fonts."
+#~ msgstr ""
+#~ "La Vista de lectura muestra únicamente el texto del mensaje con un "
+#~ "formato uniforme, sin el diseño, colores ni fuentes del remitente."
+
+#~ msgid "Reader View"
+#~ msgstr "Vista de lectura"
+
+#~ msgid "Remember the last choice"
+#~ msgstr "Recordar la última opción"
+
+#~ msgid "Reader View on"
+#~ msgstr "Vista de lectura activada"
+
+#~ msgid "Reader View off"
+#~ msgstr "Vista de lectura desactivada"
+
+#~ msgid "Open messages in Reader View."
+#~ msgstr "Abrir mensajes en la vista de lectura."
+
+#~ msgid ""
+#~ "A message's text alone, without the sender's layout, colors and fonts."
+#~ msgstr ""
+#~ "Solo el texto del mensaje, sin la disposición, los colores ni las fuentes "
+#~ "del remitente."
+
+#~ msgid "Show Reader View switch in message header"
+#~ msgstr ""
+#~ "Mostrar el interruptor de vista de lectura en la cabecera del mensaje"
+
+#~ msgid "When a message is opened"
+#~ msgstr "Al abrir un mensaje"
+
+#~ msgid "The header's switch still changes the open message."
+#~ msgstr ""
+#~ "El interruptor de la cabecera sigue permitiendo cambiar la vista del "
+#~ "mensaje abierto."
 
 #~ msgid ""
 #~ "Show this message in light or dark mode. Other messages are not affected."

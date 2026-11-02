@@ -8,7 +8,7 @@ use crate::i18n::{i18n, i18n_f};
 use super::detect::visible_text;
 use super::{base, generation, translate, Service, Settings, BATCH, CHUNK, DONE};
 
-/// The Reader View of a body as top-level blocks. Plain text, which the
+/// A body in the reader sheet (`crate::mail::reader`), as top-level blocks. Plain text, which the
 /// reader shows line for line, is turned into paragraphs and line breaks
 /// first: sent as markup, its newlines would otherwise be read as spaces.
 pub(super) fn prepare_blocks(body: &str) -> Vec<String> {

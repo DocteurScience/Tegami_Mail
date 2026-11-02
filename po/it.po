@@ -4880,16 +4880,6 @@ msgstr ""
 "Zoom del messaggio. Ctrl+ e Ctrl- lo cambiano; un clic qui, o Ctrl+0, lo "
 "riporta al valore predefinito dalle Impostazioni."
 
-msgid ""
-"Reader View shows a message as its text alone, in one plain format, without "
-"the sender's layout, colors and fonts."
-msgstr ""
-"La modalità lettore mostra un messaggio solo come testo, in un formato "
-"semplice, senza il layout, i colori e i caratteri del mittente."
-
-msgid "Reader View"
-msgstr "Modalità lettore"
-
 #. Dimming comes from the cover's own foreground, which
 #. is picked for the message theme — `dim-label` would
 #. fade it against the app's instead.
@@ -5749,15 +5739,6 @@ msgstr "Componi nella finestra principale"
 #, fuzzy
 msgid "Bottom of the message"
 msgstr "Componi nella finestra principale"
-
-msgid "Remember the last choice"
-msgstr "Ricorda l'ultima scelta"
-
-msgid "Reader View on"
-msgstr "Modalità lettore attiva"
-
-msgid "Reader View off"
-msgstr "Modalità lettore disattivata"
 
 msgid "Hidden behind a toggle"
 msgstr "Nascosto dietro un interruttore"
@@ -7869,10 +7850,6 @@ msgstr "Comprimi la barra laterale alla barra icone"
 msgid "Hovering it slides the full sidebar out."
 msgstr ""
 
-#, fuzzy
-msgid "Open messages in Reader View."
-msgstr "Il messaggio non è ancora stato caricato."
-
 msgid "Compose in the main window"
 msgstr "Componi nella finestra principale"
 
@@ -8101,25 +8078,6 @@ msgstr ""
 #, fuzzy
 msgid "Find bar position"
 msgstr "Azioni"
-
-#, fuzzy
-msgid "A message's text alone, without the sender's layout, colors and fonts."
-msgstr ""
-"La modalità lettore mostra un messaggio solo come testo, in un formato "
-"semplice, senza il layout, i colori e i caratteri del mittente."
-
-#, fuzzy
-msgid "Show Reader View switch in message header"
-msgstr "Interruttore Modalità lettore"
-
-msgid "When a message is opened"
-msgstr "Quando si apre un messaggio"
-
-#, fuzzy
-msgid "The header's switch still changes the open message."
-msgstr ""
-"Ogni messaggio si apre in Modalità lettore. L'interruttore dell'intestazione "
-"cambia ancora quello sullo schermo."
 
 msgid "Printing"
 msgstr "Stampa"
@@ -8430,6 +8388,49 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid ""
+#~ "Reader View shows a message as its text alone, in one plain format, "
+#~ "without the sender's layout, colors and fonts."
+#~ msgstr ""
+#~ "La modalità lettore mostra un messaggio solo come testo, in un formato "
+#~ "semplice, senza il layout, i colori e i caratteri del mittente."
+
+#~ msgid "Reader View"
+#~ msgstr "Modalità lettore"
+
+#~ msgid "Remember the last choice"
+#~ msgstr "Ricorda l'ultima scelta"
+
+#~ msgid "Reader View on"
+#~ msgstr "Modalità lettore attiva"
+
+#~ msgid "Reader View off"
+#~ msgstr "Modalità lettore disattivata"
+
+#, fuzzy
+#~ msgid "Open messages in Reader View."
+#~ msgstr "Il messaggio non è ancora stato caricato."
+
+#, fuzzy
+#~ msgid ""
+#~ "A message's text alone, without the sender's layout, colors and fonts."
+#~ msgstr ""
+#~ "La modalità lettore mostra un messaggio solo come testo, in un formato "
+#~ "semplice, senza il layout, i colori e i caratteri del mittente."
+
+#, fuzzy
+#~ msgid "Show Reader View switch in message header"
+#~ msgstr "Interruttore Modalità lettore"
+
+#~ msgid "When a message is opened"
+#~ msgstr "Quando si apre un messaggio"
+
+#, fuzzy
+#~ msgid "The header's switch still changes the open message."
+#~ msgstr ""
+#~ "Ogni messaggio si apre in Modalità lettore. L'interruttore "
+#~ "dell'intestazione cambia ancora quello sullo schermo."
 
 #~ msgid ""
 #~ "Show this message in light or dark mode. Other messages are not affected."

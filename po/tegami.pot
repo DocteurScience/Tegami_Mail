@@ -4326,14 +4326,6 @@ msgid ""
 "click here, or Ctrl+0, puts it back to the default from Settings."
 msgstr ""
 
-msgid ""
-"Reader View shows a message as its text alone, in one plain format, without "
-"the sender's layout, colors and fonts."
-msgstr ""
-
-msgid "Reader View"
-msgstr ""
-
 #. Dimming comes from the cover's own foreground, which
 #. is picked for the message theme — `dim-label` would
 #. fade it against the app's instead.
@@ -5129,15 +5121,6 @@ msgid "Top of the message"
 msgstr ""
 
 msgid "Bottom of the message"
-msgstr ""
-
-msgid "Remember the last choice"
-msgstr ""
-
-msgid "Reader View on"
-msgstr ""
-
-msgid "Reader View off"
 msgstr ""
 
 msgid "Hidden behind a toggle"
@@ -7057,9 +7040,6 @@ msgstr ""
 msgid "Hovering it slides the full sidebar out."
 msgstr ""
 
-msgid "Open messages in Reader View."
-msgstr ""
-
 msgid "Compose in the main window"
 msgstr ""
 
@@ -7264,18 +7244,6 @@ msgid "Off shows the icons alone."
 msgstr ""
 
 msgid "Find bar position"
-msgstr ""
-
-msgid "A message's text alone, without the sender's layout, colors and fonts."
-msgstr ""
-
-msgid "Show Reader View switch in message header"
-msgstr ""
-
-msgid "When a message is opened"
-msgstr ""
-
-msgid "The header's switch still changes the open message."
 msgstr ""
 
 msgid "Printing"

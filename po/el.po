@@ -4793,16 +4793,6 @@ msgstr ""
 "αλλάζουν τη μεγέθυνση· κάντε κλικ εδώ ή πατήστε Ctrl+0 για επαναφορά στην "
 "προεπιλογή των Ρυθμίσεων."
 
-msgid ""
-"Reader View shows a message as its text alone, in one plain format, without "
-"the sender's layout, colors and fonts."
-msgstr ""
-"Η Προβολή ανάγνωσης εμφανίζει ένα μήνυμα μόνο ως κείμενο, σε ενιαία απλή "
-"μορφή, χωρίς τη διάταξη, τα χρώματα και τις γραμματοσειρές του αποστολέα."
-
-msgid "Reader View"
-msgstr "Προβολή ανάγνωσης"
-
 #. Dimming comes from the cover's own foreground, which
 #. is picked for the message theme — `dim-label` would
 #. fade it against the app's instead.
@@ -5656,15 +5646,6 @@ msgstr "Στην κορυφή της λίστας"
 #, fuzzy
 msgid "Bottom of the message"
 msgstr "Στο κάτω μέρος της λίστας"
-
-msgid "Remember the last choice"
-msgstr "Απομνημόνευση της τελευταίας επιλογής"
-
-msgid "Reader View on"
-msgstr "Προβολή ανάγνωσης ενεργή"
-
-msgid "Reader View off"
-msgstr "Προβολή ανάγνωσης ανενεργή"
 
 msgid "Hidden behind a toggle"
 msgstr "Κρυμμένη πίσω από διακόπτη"
@@ -7778,9 +7759,6 @@ msgstr "Σύμπτυξη της πλευρικής στήλης σε λωρίδ�
 msgid "Hovering it slides the full sidebar out."
 msgstr "Με το πέρασμα του δείκτη, εμφανίζεται ολόκληρη η πλευρική στήλη."
 
-msgid "Open messages in Reader View."
-msgstr "Άνοιγμα μηνυμάτων στην Προβολή ανάγνωσης."
-
 msgid "Compose in the main window"
 msgstr "Σύνταξη στο κύριο παράθυρο"
 
@@ -8002,22 +7980,6 @@ msgstr "Ανενεργό: εμφανίζονται μόνο τα εικονίδ�
 #, fuzzy
 msgid "Find bar position"
 msgstr "Θέση γραμμής επιλογής"
-
-msgid "A message's text alone, without the sender's layout, colors and fonts."
-msgstr ""
-"Μόνο το κείμενο του μηνύματος, χωρίς τη διάταξη, τα χρώματα και τις "
-"γραμματοσειρές του αποστολέα."
-
-msgid "Show Reader View switch in message header"
-msgstr "Εμφάνιση διακόπτη Προβολής ανάγνωσης στην κεφαλίδα μηνύματος"
-
-msgid "When a message is opened"
-msgstr "Κατά το άνοιγμα ενός μηνύματος"
-
-msgid "The header's switch still changes the open message."
-msgstr ""
-"Ο διακόπτης στην κεφαλίδα εξακολουθεί να αλλάζει την προβολή του ανοιχτού "
-"μηνύματος."
 
 msgid "Printing"
 msgstr "Εκτύπωση"
@@ -8336,6 +8298,45 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid ""
+#~ "Reader View shows a message as its text alone, in one plain format, "
+#~ "without the sender's layout, colors and fonts."
+#~ msgstr ""
+#~ "Η Προβολή ανάγνωσης εμφανίζει ένα μήνυμα μόνο ως κείμενο, σε ενιαία απλή "
+#~ "μορφή, χωρίς τη διάταξη, τα χρώματα και τις γραμματοσειρές του αποστολέα."
+
+#~ msgid "Reader View"
+#~ msgstr "Προβολή ανάγνωσης"
+
+#~ msgid "Remember the last choice"
+#~ msgstr "Απομνημόνευση της τελευταίας επιλογής"
+
+#~ msgid "Reader View on"
+#~ msgstr "Προβολή ανάγνωσης ενεργή"
+
+#~ msgid "Reader View off"
+#~ msgstr "Προβολή ανάγνωσης ανενεργή"
+
+#~ msgid "Open messages in Reader View."
+#~ msgstr "Άνοιγμα μηνυμάτων στην Προβολή ανάγνωσης."
+
+#~ msgid ""
+#~ "A message's text alone, without the sender's layout, colors and fonts."
+#~ msgstr ""
+#~ "Μόνο το κείμενο του μηνύματος, χωρίς τη διάταξη, τα χρώματα και τις "
+#~ "γραμματοσειρές του αποστολέα."
+
+#~ msgid "Show Reader View switch in message header"
+#~ msgstr "Εμφάνιση διακόπτη Προβολής ανάγνωσης στην κεφαλίδα μηνύματος"
+
+#~ msgid "When a message is opened"
+#~ msgstr "Κατά το άνοιγμα ενός μηνύματος"
+
+#~ msgid "The header's switch still changes the open message."
+#~ msgstr ""
+#~ "Ο διακόπτης στην κεφαλίδα εξακολουθεί να αλλάζει την προβολή του ανοιχτού "
+#~ "μηνύματος."
 
 #~ msgid ""
 #~ "Show this message in light or dark mode. Other messages are not affected."

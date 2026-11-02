@@ -4969,16 +4969,6 @@ msgstr ""
 "Powiększenie wiadomości. Można je zmienić za pomocą Ctrl+ i Ctrl-; "
 "kliknięcie tutaj lub Ctrl+0 przywraca wartość domyślną z ustawień."
 
-msgid ""
-"Reader View shows a message as its text alone, in one plain format, without "
-"the sender's layout, colors and fonts."
-msgstr ""
-"Widok czytania wyświetla samą treść wiadomości w jednolitym formacie, bez "
-"układu, kolorów i czcionek nadawcy."
-
-msgid "Reader View"
-msgstr "Widok czytania"
-
 #. Dimming comes from the cover's own foreground, which
 #. is picked for the message theme — `dim-label` would
 #. fade it against the app's instead.
@@ -5869,15 +5859,6 @@ msgstr "Pisanie w oknie głównym"
 #, fuzzy
 msgid "Bottom of the message"
 msgstr "Pisanie w oknie głównym"
-
-msgid "Remember the last choice"
-msgstr "Jak ostatnio"
-
-msgid "Reader View on"
-msgstr "Widok czytania włączony"
-
-msgid "Reader View off"
-msgstr "Widok czytania wyłączony"
 
 msgid "Hidden behind a toggle"
 msgstr "Ukryta za przełącznikiem"
@@ -8016,10 +7997,6 @@ msgstr "Zwijanie panelu bocznego do paska ikon"
 msgid "Hovering it slides the full sidebar out."
 msgstr ""
 
-#, fuzzy
-msgid "Open messages in Reader View."
-msgstr "Ta wiadomość nie została sprawdzona."
-
 msgid "Compose in the main window"
 msgstr "Pisanie w oknie głównym"
 
@@ -8248,25 +8225,6 @@ msgstr ""
 #, fuzzy
 msgid "Find bar position"
 msgstr "Działania"
-
-#, fuzzy
-msgid "A message's text alone, without the sender's layout, colors and fonts."
-msgstr ""
-"Widok czytania wyświetla samą treść wiadomości w jednolitym formacie, bez "
-"układu, kolorów i czcionek nadawcy."
-
-#, fuzzy
-msgid "Show Reader View switch in message header"
-msgstr "Przełącznik widoku czytania"
-
-msgid "When a message is opened"
-msgstr "Po otwarciu wiadomości"
-
-#, fuzzy
-msgid "The header's switch still changes the open message."
-msgstr ""
-"Każda wiadomość jest otwierana w widoku czytania. Przełącznik w nagłówku "
-"nadal zmienia widok bieżącej wiadomości."
 
 #, fuzzy
 msgid "Printing"
@@ -8585,6 +8543,49 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid ""
+#~ "Reader View shows a message as its text alone, in one plain format, "
+#~ "without the sender's layout, colors and fonts."
+#~ msgstr ""
+#~ "Widok czytania wyświetla samą treść wiadomości w jednolitym formacie, bez "
+#~ "układu, kolorów i czcionek nadawcy."
+
+#~ msgid "Reader View"
+#~ msgstr "Widok czytania"
+
+#~ msgid "Remember the last choice"
+#~ msgstr "Jak ostatnio"
+
+#~ msgid "Reader View on"
+#~ msgstr "Widok czytania włączony"
+
+#~ msgid "Reader View off"
+#~ msgstr "Widok czytania wyłączony"
+
+#, fuzzy
+#~ msgid "Open messages in Reader View."
+#~ msgstr "Ta wiadomość nie została sprawdzona."
+
+#, fuzzy
+#~ msgid ""
+#~ "A message's text alone, without the sender's layout, colors and fonts."
+#~ msgstr ""
+#~ "Widok czytania wyświetla samą treść wiadomości w jednolitym formacie, bez "
+#~ "układu, kolorów i czcionek nadawcy."
+
+#, fuzzy
+#~ msgid "Show Reader View switch in message header"
+#~ msgstr "Przełącznik widoku czytania"
+
+#~ msgid "When a message is opened"
+#~ msgstr "Po otwarciu wiadomości"
+
+#, fuzzy
+#~ msgid "The header's switch still changes the open message."
+#~ msgstr ""
+#~ "Każda wiadomość jest otwierana w widoku czytania. Przełącznik w nagłówku "
+#~ "nadal zmienia widok bieżącej wiadomości."
 
 #, fuzzy
 #~ msgid "Displays in the message header for each message."

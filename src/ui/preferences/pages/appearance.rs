@@ -30,7 +30,6 @@ pub(in crate::ui::preferences) struct AppearancePage {
     pub(in crate::ui::preferences) focus_preview_row: adw::SwitchRow,
     pub(in crate::ui::preferences) focus_subject_row: adw::SwitchRow,
     pub(in crate::ui::preferences) focus_rail_row: adw::SwitchRow,
-    pub(in crate::ui::preferences) focus_reader_row: adw::SwitchRow,
 }
 
 impl AppearancePage {
@@ -250,16 +249,6 @@ impl AppearancePage {
                             sender.input(PrefInput::ToggleFocus(crate::config::FocusPart::RailSidebar, row.is_active()));
                         },
                     },
-                    #[name = "focus_reader_row"]
-                    adw::SwitchRow {
-                        // Kept current by update_view.
-                        set_active: model.focus.reader_view,
-                        set_title: &i18n("Reader View"),
-                        set_subtitle: &i18n("Open messages in Reader View."),
-                        connect_active_notify[sender] => move |row| {
-                            sender.input(PrefInput::ToggleFocus(crate::config::FocusPart::ReaderView, row.is_active()));
-                        },
-                    },
                 },
             }
         }
@@ -285,7 +274,6 @@ impl AppearancePage {
             focus_preview_row,
             focus_subject_row,
             focus_rail_row,
-            focus_reader_row,
         }
     }
 
@@ -310,6 +298,5 @@ impl AppearancePage {
             .set_sensitive(!model.focus.hide_preview);
         self.focus_subject_row.set_active(model.focus.hide_subject);
         self.focus_rail_row.set_active(model.focus.rail_sidebar);
-        self.focus_reader_row.set_active(model.focus.reader_view);
     }
 }

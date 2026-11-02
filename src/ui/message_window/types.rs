@@ -40,18 +40,12 @@ pub(crate) struct MessageWindowInit {
     pub(crate) content_dark: Option<bool>,
     /// The reader's own fonts and colors over the senders' (#56).
     pub(crate) reader_style: crate::config::ReaderStyle,
-    /// Reader View (the main window's header toggle), followed here too.
-    pub(crate) reader_mode: bool,
     /// Message zoom in percent (Ctrl+ / Ctrl-), followed here too.
     pub(crate) zoom: u32,
     /// The zoom Settings starts at, for the chip.
     pub(crate) zoom_default: u32,
-    /// Whether the Reader View switch is shown at all.
-    pub(crate) reader_switch: bool,
     /// Whether the account chip is shown.
     pub(crate) account_chip: bool,
-    /// What Reader View does when a message is opened.
-    pub(crate) reader_default: crate::config::ReaderDefault,
     /// The tags (#71), for the cards' chips.
     pub(crate) tags: Vec<crate::config::Tag>,
     /// The OpenPGP chip says its verdict in words (#300).
@@ -142,18 +136,11 @@ pub(crate) enum MessageWindowInput {
     SetContentTheme(Option<bool>),
     /// The reader's own fonts and colors changed (#56).
     SetReaderStyle(crate::config::ReaderStyle),
-    SetReaderMode(bool),
     SetZoom(u32),
     SetZoomDefault(u32),
     /// A zoom step (or the chip's reset, 0) asked for in this window.
     Zoom(i8),
-    SetReaderSwitchShown(bool),
     SetAccountChipShown(bool),
-    SetReaderDefault(crate::config::ReaderDefault),
-    /// This window's own Reader View switch was flipped. It changes this
-    /// window alone: the main window and the saved choice are left as they
-    /// were.
-    ReaderMode(bool),
     /// What one of the user's own mailboxes shows changed (#189).
     FacesChanged,
     // ---- toolbar actions ----

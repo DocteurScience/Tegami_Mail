@@ -4720,16 +4720,6 @@ msgstr ""
 "canvien; un clic aquí, o Ctrl+0, el torna al valor per defecte dels "
 "paràmetres."
 
-msgid ""
-"Reader View shows a message as its text alone, in one plain format, without "
-"the sender's layout, colors and fonts."
-msgstr ""
-"La vista de lector mostra un missatge només amb el seu text, en un format "
-"únic i senzill, sense la disposició, els colors i les fonts del remitent."
-
-msgid "Reader View"
-msgstr "Vista de lector"
-
 #. Dimming comes from the cover's own foreground, which
 #. is picked for the message theme — `dim-label` would
 #. fade it against the app's instead.
@@ -5580,15 +5570,6 @@ msgstr "A la part superior de la llista"
 #, fuzzy
 msgid "Bottom of the message"
 msgstr "A la part inferior de la llista"
-
-msgid "Remember the last choice"
-msgstr "Recorda l'última elecció"
-
-msgid "Reader View on"
-msgstr "Vista de lector activada"
-
-msgid "Reader View off"
-msgstr "Vista de lector desactivada"
 
 msgid "Hidden behind a toggle"
 msgstr "Amagat darrere un commutador"
@@ -7658,9 +7639,6 @@ msgstr "Replega la barra lateral a la barra d'icones"
 msgid "Hovering it slides the full sidebar out."
 msgstr "Passar-hi per sobre desplega la barra lateral sencera."
 
-msgid "Open messages in Reader View."
-msgstr "Obre els missatges a la vista de lector."
-
 msgid "Compose in the main window"
 msgstr "Redacta a la finestra principal"
 
@@ -7878,21 +7856,6 @@ msgstr "Desactivat mostra només les icones."
 #, fuzzy
 msgid "Find bar position"
 msgstr "Posició de la barra de selecció"
-
-msgid "A message's text alone, without the sender's layout, colors and fonts."
-msgstr ""
-"Només el text d'un missatge, sense la disposició, els colors i les fonts del "
-"remitent."
-
-msgid "Show Reader View switch in message header"
-msgstr ""
-"Mostra l'interruptor de la vista de lector a l'encapçalament del missatge"
-
-msgid "When a message is opened"
-msgstr "Quan s'obre un missatge"
-
-msgid "The header's switch still changes the open message."
-msgstr "L'interruptor de l'encapçalament encara canvia el missatge obert."
 
 msgid "Printing"
 msgstr "Impressió"
@@ -8204,6 +8167,44 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid ""
+#~ "Reader View shows a message as its text alone, in one plain format, "
+#~ "without the sender's layout, colors and fonts."
+#~ msgstr ""
+#~ "La vista de lector mostra un missatge només amb el seu text, en un format "
+#~ "únic i senzill, sense la disposició, els colors i les fonts del remitent."
+
+#~ msgid "Reader View"
+#~ msgstr "Vista de lector"
+
+#~ msgid "Remember the last choice"
+#~ msgstr "Recorda l'última elecció"
+
+#~ msgid "Reader View on"
+#~ msgstr "Vista de lector activada"
+
+#~ msgid "Reader View off"
+#~ msgstr "Vista de lector desactivada"
+
+#~ msgid "Open messages in Reader View."
+#~ msgstr "Obre els missatges a la vista de lector."
+
+#~ msgid ""
+#~ "A message's text alone, without the sender's layout, colors and fonts."
+#~ msgstr ""
+#~ "Només el text d'un missatge, sense la disposició, els colors i les fonts "
+#~ "del remitent."
+
+#~ msgid "Show Reader View switch in message header"
+#~ msgstr ""
+#~ "Mostra l'interruptor de la vista de lector a l'encapçalament del missatge"
+
+#~ msgid "When a message is opened"
+#~ msgstr "Quan s'obre un missatge"
+
+#~ msgid "The header's switch still changes the open message."
+#~ msgstr "L'interruptor de l'encapçalament encara canvia el missatge obert."
 
 #~ msgid ""
 #~ "Show this message in light or dark mode. Other messages are not affected."

@@ -4907,17 +4907,6 @@ msgstr ""
 "kattintasz, vagy a Ctrl+0 billentyűkombinációt nyomod meg, az üzenet "
 "visszaáll a Beállítások menüben megadott alapértelmezett értékre."
 
-msgid ""
-"Reader View shows a message as its text alone, in one plain format, without "
-"the sender's layout, colors and fonts."
-msgstr ""
-"Az „Olvasói nézet” az üzenetet kizárólag szövegként jeleníti meg, egyszerű "
-"formátumban, a feladó által megadott elrendezés, színek és betűtípusok "
-"nélkül."
-
-msgid "Reader View"
-msgstr "Olvasó nézet"
-
 #. Dimming comes from the cover's own foreground, which
 #. is picked for the message theme — `dim-label` would
 #. fade it against the app's instead.
@@ -5796,15 +5785,6 @@ msgstr "Levélírás a főablakban"
 #, fuzzy
 msgid "Bottom of the message"
 msgstr "Levélírás a főablakban"
-
-msgid "Remember the last choice"
-msgstr "Emlékezz az utolsó választásra"
-
-msgid "Reader View on"
-msgstr "Olvasói nézet Be"
-
-msgid "Reader View off"
-msgstr "Olvasói nézet Ki"
 
 msgid "Hidden behind a toggle"
 msgstr "Egy kapcsoló mögött rejtve"
@@ -7947,10 +7927,6 @@ msgstr "Oldalsáv behajtása ikonsávra"
 msgid "Hovering it slides the full sidebar out."
 msgstr ""
 
-#, fuzzy
-msgid "Open messages in Reader View."
-msgstr "Ezt az üzenetet még nem ellenőrizték."
-
 msgid "Compose in the main window"
 msgstr "Levélírás a főablakban"
 
@@ -8180,26 +8156,6 @@ msgstr ""
 #, fuzzy
 msgid "Find bar position"
 msgstr "Műveletek"
-
-#, fuzzy
-msgid "A message's text alone, without the sender's layout, colors and fonts."
-msgstr ""
-"Az „Olvasói nézet” az üzenetet kizárólag szövegként jeleníti meg, egyszerű "
-"formátumban, a feladó által megadott elrendezés, színek és betűtípusok "
-"nélkül."
-
-#, fuzzy
-msgid "Show Reader View switch in message header"
-msgstr "„Olvasói nézet” kapcsoló"
-
-msgid "When a message is opened"
-msgstr "Amikor egy üzenetet megnyitnak"
-
-#, fuzzy
-msgid "The header's switch still changes the open message."
-msgstr ""
-"Minden üzenet olvasási nézetben nyílik meg. A fejlécen található kapcsoló "
-"továbbra is megváltoztatja a képernyőn megjelenő nézetet."
 
 #, fuzzy
 msgid "Printing"
@@ -8518,6 +8474,51 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid ""
+#~ "Reader View shows a message as its text alone, in one plain format, "
+#~ "without the sender's layout, colors and fonts."
+#~ msgstr ""
+#~ "Az „Olvasói nézet” az üzenetet kizárólag szövegként jeleníti meg, "
+#~ "egyszerű formátumban, a feladó által megadott elrendezés, színek és "
+#~ "betűtípusok nélkül."
+
+#~ msgid "Reader View"
+#~ msgstr "Olvasó nézet"
+
+#~ msgid "Remember the last choice"
+#~ msgstr "Emlékezz az utolsó választásra"
+
+#~ msgid "Reader View on"
+#~ msgstr "Olvasói nézet Be"
+
+#~ msgid "Reader View off"
+#~ msgstr "Olvasói nézet Ki"
+
+#, fuzzy
+#~ msgid "Open messages in Reader View."
+#~ msgstr "Ezt az üzenetet még nem ellenőrizték."
+
+#, fuzzy
+#~ msgid ""
+#~ "A message's text alone, without the sender's layout, colors and fonts."
+#~ msgstr ""
+#~ "Az „Olvasói nézet” az üzenetet kizárólag szövegként jeleníti meg, "
+#~ "egyszerű formátumban, a feladó által megadott elrendezés, színek és "
+#~ "betűtípusok nélkül."
+
+#, fuzzy
+#~ msgid "Show Reader View switch in message header"
+#~ msgstr "„Olvasói nézet” kapcsoló"
+
+#~ msgid "When a message is opened"
+#~ msgstr "Amikor egy üzenetet megnyitnak"
+
+#, fuzzy
+#~ msgid "The header's switch still changes the open message."
+#~ msgstr ""
+#~ "Minden üzenet olvasási nézetben nyílik meg. A fejlécen található kapcsoló "
+#~ "továbbra is megváltoztatja a képernyőn megjelenő nézetet."
 
 #, fuzzy
 #~ msgid "Displays in the message header for each message."

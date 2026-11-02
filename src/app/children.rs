@@ -161,7 +161,6 @@ fn message_view_output_msg(out: MessageViewOutput) -> AppMsg {
         MessageViewOutput::AddContactAddr(addr) => AppMsg::AddContactAddr(addr),
         MessageViewOutput::ReloadBody(m) => AppMsg::ReloadBody(m),
         MessageViewOutput::Notice(text) => AppMsg::Notice(text),
-        MessageViewOutput::ReaderMode(on) => AppMsg::SetReaderMode(on),
         MessageViewOutput::Zoom(step) => AppMsg::ZoomMessage(step),
         MessageViewOutput::Unsubscribe { message, info } => AppMsg::Unsubscribe { message, info },
         MessageViewOutput::ReceiptAnswer { message, send } => {

@@ -63,7 +63,7 @@ pub(super) const PAGE: (&str, &str) = ("#f1f1f1", "#141414");
 pub(super) const CHROME: (&str, &str) = ("#fafafa", "#242424");
 
 /// Each card's translation banner, and the translation (and whether it is
-/// a Reader View fragment) the card shows instead of its message.
+/// a reader-sheet fragment, `crate::mail::reader`) the card shows instead of its message.
 type TranslationsShown = std::collections::HashMap<(u32, u32), (String, Option<(String, bool)>)>;
 
 thread_local! {
@@ -143,8 +143,8 @@ pub(super) fn message_frame(
     reader: bool,
     zoom: u32,
 ) -> String {
-    // Reader View: the message rebuilt from its content alone, in the
-    // reader's own sheet. It carries no colors of the sender's to adapt
+    // A translated plain-text message: rebuilt from its content alone, in
+    // the reader's own sheet (`crate::mail::reader`). It carries no colors of the sender's to adapt
     // and needs none of the reader's color override over it; the reader's
     // font choice (#56) still applies, below.
     let doc = if reader {

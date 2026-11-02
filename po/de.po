@@ -4744,16 +4744,6 @@ msgstr ""
 "Klick hierauf oder Strg+0 setzt die Ansicht auf die Standardeinstellung aus "
 "den Einstellungen zurück."
 
-msgid ""
-"Reader View shows a message as its text alone, in one plain format, without "
-"the sender's layout, colors and fonts."
-msgstr ""
-"Reader View zeigt eine Nachricht als Text allein, in einem einfachen Format, "
-"ohne das Layout, die Farben und die Schriftarten des Absenders."
-
-msgid "Reader View"
-msgstr "Leseansicht"
-
 #. Dimming comes from the cover's own foreground, which
 #. is picked for the message theme — `dim-label` would
 #. fade it against the app's instead.
@@ -5601,15 +5591,6 @@ msgstr "Anfang der Nachricht"
 
 msgid "Bottom of the message"
 msgstr "Ende der Nachricht"
-
-msgid "Remember the last choice"
-msgstr "Letzte Auswahl merken"
-
-msgid "Reader View on"
-msgstr "Leseansicht ein"
-
-msgid "Reader View off"
-msgstr "Leseansicht aus"
 
 msgid "Hidden behind a toggle"
 msgstr "Hinter einem Schalter verborgen"
@@ -7719,9 +7700,6 @@ msgstr "Seitenleiste zur Symbolleiste einklappen"
 msgid "Hovering it slides the full sidebar out."
 msgstr "Durch Überfahren mit der Maus wird die gesamte Seitenleiste sichtbar."
 
-msgid "Open messages in Reader View."
-msgstr "Nachrichten in der Leseansicht öffnen."
-
 msgid "Compose in the main window"
 msgstr "Im Hauptfenster verfassen"
 
@@ -7954,21 +7932,6 @@ msgstr "Bei Deaktivierung werden nur Symbole angezeigt."
 
 msgid "Find bar position"
 msgstr "Position der Suchleiste"
-
-msgid "A message's text alone, without the sender's layout, colors and fonts."
-msgstr ""
-"Reiner Nachrichtentext; ignoriert Layout, Farben und Schriftarten des "
-"Absenders."
-
-msgid "Show Reader View switch in message header"
-msgstr "Schalter für Leseansicht in der Kopfzeile anzeigen"
-
-msgid "When a message is opened"
-msgstr "Wenn eine Nachricht geöffnet wird"
-
-msgid "The header's switch still changes the open message."
-msgstr ""
-"Der Schalter im Kopfbereich wirkt sich weiterhin auf die Nachricht aus."
 
 msgid "Printing"
 msgstr "Drucken"
@@ -8290,6 +8253,44 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid ""
+#~ "Reader View shows a message as its text alone, in one plain format, "
+#~ "without the sender's layout, colors and fonts."
+#~ msgstr ""
+#~ "Reader View zeigt eine Nachricht als Text allein, in einem einfachen "
+#~ "Format, ohne das Layout, die Farben und die Schriftarten des Absenders."
+
+#~ msgid "Reader View"
+#~ msgstr "Leseansicht"
+
+#~ msgid "Remember the last choice"
+#~ msgstr "Letzte Auswahl merken"
+
+#~ msgid "Reader View on"
+#~ msgstr "Leseansicht ein"
+
+#~ msgid "Reader View off"
+#~ msgstr "Leseansicht aus"
+
+#~ msgid "Open messages in Reader View."
+#~ msgstr "Nachrichten in der Leseansicht öffnen."
+
+#~ msgid ""
+#~ "A message's text alone, without the sender's layout, colors and fonts."
+#~ msgstr ""
+#~ "Reiner Nachrichtentext; ignoriert Layout, Farben und Schriftarten des "
+#~ "Absenders."
+
+#~ msgid "Show Reader View switch in message header"
+#~ msgstr "Schalter für Leseansicht in der Kopfzeile anzeigen"
+
+#~ msgid "When a message is opened"
+#~ msgstr "Wenn eine Nachricht geöffnet wird"
+
+#~ msgid "The header's switch still changes the open message."
+#~ msgstr ""
+#~ "Der Schalter im Kopfbereich wirkt sich weiterhin auf die Nachricht aus."
 
 #~ msgid ""
 #~ "Show this message in light or dark mode. Other messages are not affected."

@@ -1,8 +1,8 @@
 //! Filling the reading, files and composing rows when the window is built.
 
 use super::choices::{
-    compose_format_index, fold_messages_index, read_mark_index, reader_default_index,
-    reply_position_index, signature_position_index,
+    compose_format_index, fold_messages_index, read_mark_index, reply_position_index,
+    signature_position_index,
 };
 use super::rows::no_truncate;
 use super::*;
@@ -74,10 +74,6 @@ impl Preferences {
             .set_active(init.single_message_card);
         widgets
             .reading
-            .reader_switch_row
-            .set_active(init.reader_switch);
-        widgets
-            .reading
             .account_chip_row
             .set_active(init.account_chip);
         widgets
@@ -88,19 +84,6 @@ impl Preferences {
             .appearance
             .toolbar_fold_row
             .set_active(init.toolbar_fold_right);
-        widgets
-            .reading
-            .reader_default_row
-            .set_model(Some(&gtk::StringList::new(&[
-                &i18n("Remember the last choice"),
-                &i18n("Reader View on"),
-                &i18n("Reader View off"),
-            ])));
-        no_truncate(&widgets.reading.reader_default_row);
-        widgets
-            .reading
-            .reader_default_row
-            .set_selected(reader_default_index(init.reader_default));
         let zoom_labels: Vec<String> = crate::config::READER_ZOOM_STEPS
             .iter()
             .map(|z| format!("{z}%"))

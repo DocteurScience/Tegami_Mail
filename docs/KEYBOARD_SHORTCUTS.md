@@ -215,10 +215,10 @@ including after you have picked a result. Closing the window ends the
 search.
 
 <kbd>Ctrl++</kbd> and <kbd>Ctrl+-</kbd> zoom the message in the reading pane
-in and out, with or without Reader View, and so does <kbd>Ctrl</kbd> with the
+in and out, and so does <kbd>Ctrl</kbd> with the
 scroll wheel over the message; <kbd>Ctrl+0</kbd> puts it back to
 the default. Only the message scales, not the header or the toolbar; a chip
-beside the Reader View switch shows the percentage while it is away from
+in the message header shows the percentage while it is away from
 the default, and a click on it goes back there.
 The zoom stays as set from message to message until Tegami Mail is next started,
 which begins at the default from **Settings → Reading → Default zoom**.

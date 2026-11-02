@@ -108,24 +108,15 @@ pub(crate) struct MessageView {
     /// despite `reader_style` (the card's "sender's formatting" toggle).
     /// Kept for the session, so a thread reopened keeps the choice.
     sender_style: std::collections::HashSet<(u32, u32)>,
-    /// Reader View: every message on screen stripped to its content and set
-    /// in the reader's own uniform sheet (see `crate::mail::reader`). The header's
-    /// toggle; applies to the whole conversation at once.
-    reader_mode: bool,
-    /// Whether the header's Reader View switch is shown (Settings).
-    reader_switch_shown: bool,
     /// Whether the header's account chip is shown (Settings).
     account_chip_shown: bool,
     /// Message zoom in percent (Ctrl+ / Ctrl-): the bodies alone are
-    /// scaled, in Reader View and out of it; the chrome keeps its size.
+    /// scaled; the chrome keeps its size.
     zoom: u32,
     /// The zoom Settings starts every launch at. The header's chip only
     /// speaks up away from it: someone who chose 125% has nothing to be
     /// told at 125%.
     zoom_default: u32,
-    /// What Reader View does when a conversation is opened afresh
-    /// (Settings): keep the last choice, or start on or off.
-    reader_default: crate::config::ReaderDefault,
     /// Read-marking policy (#100), stamped on the document for the
     /// viewport observer.
     read_mark: crate::config::ReadMark,

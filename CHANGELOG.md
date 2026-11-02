@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+- **Removed: Reader View and the per-message Light / Dark Mode switch.**
+  The two switches of the reader header, their settings in **Settings →
+  Reading** and Focus Mode's **Reader View** part are gone, as the redesign
+  has them nowhere. **Settings → Reading → Message appearance** still draws
+  every message light, dark or as the app does. Saved choices for them are
+  ignored.
+
 - **Added: On This Computer, folders kept on this computer** (#552).
   **Settings → Accounts → On This Computer → Add** adds an account with no
   server, as Evolution has, for an archive of mail moved or copied in from
@@ -101,9 +108,8 @@ and a search for other people's OpenPGP keys. German is complete.
 - **Added: a setting to hide the account in the message header** (#546, by
   Valentin Morice). **Settings → Reading → Show account in message header**
   hides the account chip above the subject, in the main window and in a
-  message's own window. The Light / Dark Mode and Reader View switches stay
-  at the right end of the line, and with all three hidden the line goes.
-  On by default.
+  message's own window. With it hidden and the zoom at its default, the
+  line goes. On by default.
 
 - **Added: a lone message card folds and selects** like a conversation's
   cards: a click on its header folds it, a click on it takes the selection

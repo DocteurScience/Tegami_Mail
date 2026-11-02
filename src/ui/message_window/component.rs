@@ -67,14 +67,11 @@ impl Component for MessageWindow {
         // Apply the message-content theme before the first render.
         view.emit(MessageViewInput::SetContentTheme(init.content_dark));
         view.emit(MessageViewInput::SetReaderStyle(init.reader_style.clone()));
-        view.emit(MessageViewInput::SetReaderMode(init.reader_mode));
         view.emit(MessageViewInput::SetZoomDefault(init.zoom_default));
         view.emit(MessageViewInput::SetZoom(init.zoom));
-        view.emit(MessageViewInput::SetReaderSwitchShown(init.reader_switch));
         view.emit(MessageViewInput::SetAccountChipShown(init.account_chip));
         view.emit(MessageViewInput::SetPgpLabels(init.pgp_labels));
         view.emit(MessageViewInput::SetFindBottom(init.find_bottom));
-        view.emit(MessageViewInput::SetReaderDefault(init.reader_default));
         view.emit(MessageViewInput::SetTags(init.tags.clone()));
         view.emit(MessageViewInput::SetAttachmentDrawer(init.drawer_enabled));
         view.emit(MessageViewInput::SetCardAttachmentsShown(
@@ -189,20 +186,8 @@ impl Component for MessageWindow {
             MessageWindowInput::Zoom(step) => {
                 let _ = sender.output(MessageWindowOutput::Zoom(step));
             }
-            MessageWindowInput::SetReaderMode(on) => {
-                self.view.emit(MessageViewInput::SetReaderMode(on));
-            }
-            MessageWindowInput::SetReaderSwitchShown(on) => {
-                self.view.emit(MessageViewInput::SetReaderSwitchShown(on));
-            }
             MessageWindowInput::SetAccountChipShown(on) => {
                 self.view.emit(MessageViewInput::SetAccountChipShown(on));
-            }
-            MessageWindowInput::SetReaderDefault(policy) => {
-                self.view.emit(MessageViewInput::SetReaderDefault(policy));
-            }
-            MessageWindowInput::ReaderMode(on) => {
-                self.view.emit(MessageViewInput::SetReaderMode(on));
             }
             MessageWindowInput::Unsubscribe { message, info } => {
                 let _ = sender.output(MessageWindowOutput::Unsubscribe { message, info });
@@ -430,7 +415,6 @@ fn from_reader(out: MessageViewOutput) -> MessageWindowInput {
         MessageViewOutput::ComposeTo(addr) => MessageWindowInput::ComposeTo(addr),
         MessageViewOutput::ReloadBody(m) => MessageWindowInput::ReloadBody(m),
         MessageViewOutput::Notice(text) => MessageWindowInput::Notice(text),
-        MessageViewOutput::ReaderMode(on) => MessageWindowInput::ReaderMode(on),
         MessageViewOutput::Zoom(step) => MessageWindowInput::Zoom(step),
         MessageViewOutput::Unsubscribe { message, info } => {
             MessageWindowInput::Unsubscribe { message, info }

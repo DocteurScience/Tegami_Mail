@@ -1,4 +1,4 @@
-//! Settings → Reading: the reading pane, Reader View and printing.
+//! Settings → Reading: the reading pane and printing.
 
 use adw::prelude::*;
 
@@ -27,8 +27,6 @@ pub(in crate::ui::preferences) struct ReadingPage {
     pub(in crate::ui::preferences) always_show_recipients_row: adw::SwitchRow,
     pub(in crate::ui::preferences) pgp_labels_row: adw::SwitchRow,
     pub(in crate::ui::preferences) find_place_row: adw::ComboRow,
-    pub(in crate::ui::preferences) reader_switch_row: adw::SwitchRow,
-    pub(in crate::ui::preferences) reader_default_row: adw::ComboRow,
     pub(in crate::ui::preferences) print_page_numbers_row: adw::SwitchRow,
     pub(in crate::ui::preferences) print_date_row: adw::SwitchRow,
     pub(in crate::ui::preferences) print_punch_margin_row: adw::SwitchRow,
@@ -210,28 +208,6 @@ impl ReadingPage {
                 },
 
                 add = &adw::PreferencesGroup {
-                    set_title: &i18n("Reader View"),
-                    set_description: Some(&i18n("A message's text alone, without the sender's layout, colors and fonts.")),
-
-                    #[name = "reader_switch_row"]
-                    adw::SwitchRow {
-                        set_title: &i18n("Show Reader View switch in message header"),
-                        connect_active_notify[sender] => move |row| {
-                            let _ = sender.output(PrefOutput::SetReaderSwitch(row.is_active()));
-                        },
-                    },
-
-                    #[name = "reader_default_row"]
-                    adw::ComboRow {
-                        set_title: &i18n("When a message is opened"),
-                        set_subtitle: &i18n("The header's switch still changes the open message."),
-                        connect_selected_notify[sender] => move |row| {
-                            sender.input(PrefInput::ChangeReaderDefault(row.selected()));
-                        },
-                    },
-                },
-
-                add = &adw::PreferencesGroup {
                     set_title: &i18n("Printing"),
 
                     #[name = "print_page_numbers_row"]
@@ -281,8 +257,6 @@ impl ReadingPage {
             always_show_recipients_row,
             pgp_labels_row,
             find_place_row,
-            reader_switch_row,
-            reader_default_row,
             print_page_numbers_row,
             print_date_row,
             print_punch_margin_row,

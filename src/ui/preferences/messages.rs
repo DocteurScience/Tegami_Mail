@@ -50,10 +50,6 @@ pub(crate) struct PrefInit {
     pub(crate) account_chip: bool,
     /// Icons come from the desktop's icon theme, not Tegami Mail's own.
     pub(crate) desktop_icons: bool,
-    /// The Reader View switch is shown in the reader header.
-    pub(crate) reader_switch: bool,
-    /// What Reader View does when a message is opened.
-    pub(crate) reader_default: crate::config::ReaderDefault,
     /// The message zoom every launch starts at, in percent.
     pub(crate) reader_zoom: u32,
     /// Each conversation message lists its own attachments (#213).
@@ -256,7 +252,6 @@ pub(crate) enum PrefInput {
     RemoveDownloadsNow,
     ChangeKeepDownloads(u32),
     ToggleThreading(bool),
-    ChangeReaderDefault(u32),
     ChangeReaderZoom(u32),
     ToggleThreadExpansion(bool),
     ChangeCardActionsMode(u32),
@@ -440,10 +435,8 @@ pub(crate) enum PrefOutput {
     SetPgpLabels(bool),
     SetReaderFindBottom(bool),
     SetSingleMessageCard(bool),
-    SetReaderSwitch(bool),
     SetAccountChip(bool),
     SetDesktopIcons(bool),
-    SetReaderDefault(crate::config::ReaderDefault),
     SetReaderZoom(u32),
     SetCardAttachments(bool),
     SetAttachmentDrawer(bool),

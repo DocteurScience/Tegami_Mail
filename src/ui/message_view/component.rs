@@ -249,39 +249,6 @@ impl Component for MessageView {
                             },
                         },
 
-                        // Reader View: the message(s) as content alone. A
-                        // switch behind a pair of reading glasses on the
-                        // account chip's line, at its right end — part of
-                        // the message header, not the action row.
-                        gtk::Box {
-                            set_orientation: gtk::Orientation::Horizontal,
-                            set_spacing: 6,
-                            set_halign: gtk::Align::End,
-                            set_valign: gtk::Align::Center,
-                            add_css_class: "reader-toggle",
-                            set_tooltip_text: Some(i18n("Reader View shows a message as its text alone, in one plain format, without the sender's layout, colors and fonts.").as_str()),
-                            #[watch]
-                            set_visible: model.current.is_some() && model.reader_switch_shown,
-
-                            gtk::Image {
-                                set_icon_name: Some("glasses-symbolic"),
-                                add_css_class: "dim-label",
-                            },
-                            gtk::Switch {
-                                set_valign: gtk::Align::Center,
-                                update_property: &[gtk::accessible::Property::Label(&i18n("Reader View"))],
-                                #[watch]
-                                set_active: model.reader_mode,
-                                // The owner decides what a flip does, so it
-                                // never renders on its own: the main window
-                                // saves the choice and hands it back to every
-                                // reader, a message's own window applies it
-                                // to itself alone.
-                                connect_active_notify[sender] => move |sw| {
-                                    let _ = sender.output(MessageViewOutput::ReaderMode(sw.is_active()));
-                                },
-                            },
-                        },
                     },
 
                     gtk::Label {
@@ -510,20 +477,13 @@ impl Component for MessageView {
             }
             MessageViewInput::SetContentTheme(o) => self.on_set_content_theme(o),
             MessageViewInput::SetReaderStyle(style) => self.on_set_reader_style(style),
-            MessageViewInput::SetReaderMode(on) => {
-                self.set_reader_mode(on);
-            }
             MessageViewInput::SetZoomDefault(percent) => {
                 self.zoom_default = percent;
             }
             MessageViewInput::SetZoom(percent) => self.on_set_zoom(percent),
-            MessageViewInput::SetReaderSwitchShown(on) => {
-                self.reader_switch_shown = on;
-            }
             MessageViewInput::SetAccountChipShown(on) => {
                 self.account_chip_shown = on;
             }
-            MessageViewInput::SetReaderDefault(policy) => self.on_set_reader_default(policy),
             MessageViewInput::ToggleSenderStyle { account_id, id } => {
                 self.on_toggle_sender_style(account_id, id)
             }

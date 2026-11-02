@@ -272,8 +272,7 @@ pub(super) fn sample_messages() -> Vec<Message> {
             preview: "Crate of the week, RFCs, and community updates. This issue: async closures stabilize, and a deep dive into…",
             // A designed newsletter, as they come: a preheader hidden from
             // the message, a layout table with its own colors and fonts, a
-            // button, a tracking pixel. The Reader View demo strips it to
-            // the words.
+            // button, a tracking pixel.
             body: "<html><head><style>body{margin:0;background:#f4f1ea;font-family:Georgia,serif}.btn{background:#c0392b;color:#fff!important;padding:10px 18px;border-radius:4px;text-decoration:none;display:inline-block}</style></head>\
                    <body><div style=\"display:none;max-height:0;overflow:hidden;font-size:1px;color:#f4f1ea\">Async closures land on stable, zero-copy parsing, 14 crates \u{200b}\u{200b}\u{200b}</div>\
                    <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" bgcolor=\"#f4f1ea\"><tr><td align=\"center\" style=\"padding:24px 12px\">\

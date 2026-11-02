@@ -12,8 +12,7 @@ use super::look::{
 use super::prefs::{
     default_files_limit_mb, default_reader_zoom, default_swipe_sensitivity, default_undo_send_secs,
     ComposeFormat, FilesAction, FilesLarge, FoldMessages, LauncherBadge, NotificationButtons,
-    PrintOptions, ReadMark, ReaderDefault, ReceiptPolicy, ReplyPosition, ReturnedReceipts,
-    SignaturePosition,
+    PrintOptions, ReadMark, ReceiptPolicy, ReplyPosition, ReturnedReceipts, SignaturePosition,
 };
 use super::sections::{
     FolderSort, RailFold, SectionPlacement, SectionStyle, StartView, UnifiedChips, UnifiedKinds,
@@ -133,13 +132,6 @@ pub(crate) struct PrivacyFile {
     /// messages (#57); off keeps the full-bleed view.
     #[serde(default = "default_single_message_card")]
     pub(crate) single_message_card: bool,
-    /// Reader View (the reader header's toggle): every message shown as its
-    /// content alone, in the reader's own sheet.
-    #[serde(default)]
-    pub(crate) reader_mode: bool,
-    /// Whether the Reader View switch is shown in the reader header at all.
-    #[serde(default = "default_on")]
-    pub(crate) reader_switch: bool,
     /// Whether the chip naming the message's account is shown above the
     /// subject in the reader header. On by default.
     #[serde(default = "default_on")]
@@ -148,10 +140,6 @@ pub(crate) struct PrivacyFile {
     /// (Settings → Appearance). Off: the app looks the same everywhere.
     #[serde(default)]
     pub(crate) desktop_icons: bool,
-    /// What Reader View does when a message is opened: keep the last choice,
-    /// or start every message on or off.
-    #[serde(default)]
-    pub(crate) reader_default: ReaderDefault,
     /// The message zoom every launch starts at, in percent (Settings →
     /// Reading). Ctrl+ and Ctrl- move away from it for the session; the
     /// next launch is back here.
@@ -710,11 +698,8 @@ impl Default for PrivacyFile {
             pgp_labels: false,
             reader_find_bottom: false,
             single_message_card: default_single_message_card(),
-            reader_mode: false,
-            reader_switch: true,
             account_chip: true,
             desktop_icons: false,
-            reader_default: ReaderDefault::default(),
             reader_zoom: default_reader_zoom(),
             card_attachments: true,
             attachment_drawer: false,

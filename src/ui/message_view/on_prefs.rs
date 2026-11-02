@@ -91,13 +91,6 @@ impl MessageView {
         }
     }
 
-    pub(super) fn on_set_reader_default(&mut self, policy: crate::config::ReaderDefault) {
-        self.reader_default = policy;
-        if let Some(on) = policy.starts_on() {
-            self.set_reader_mode(on);
-        }
-    }
-
     pub(super) fn on_set_unsubscribed(&mut self, lists: std::collections::HashMap<String, i64>) {
         self.unsubscribed = lists;
         let keys: Vec<(u32, u32)> = self.thread.iter().map(|m| (m.account_id, m.id)).collect();
@@ -199,19 +192,4 @@ impl MessageView {
     }
 }
 
-impl MessageView {
-    /// Reader View on or off, re-rendering what is on screen if it changed.
-    pub(super) fn set_reader_mode(&mut self, on: bool) {
-        if self.reader_mode == on {
-            return;
-        }
-        self.reader_mode = on;
-        // A frame measures differently in each view; the heights remembered
-        // for the other one would only make the cards lurch on the way to
-        // their real size.
-        self.frame_heights.clear();
-        if self.current.is_some() && !self.loading {
-            self.render();
-        }
-    }
-}
+impl MessageView {}

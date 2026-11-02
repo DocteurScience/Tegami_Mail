@@ -1,4 +1,4 @@
-//! Reader View's tests.
+//! The reader sheet's tests.
 
 use super::*;
 

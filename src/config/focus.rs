@@ -57,9 +57,6 @@ pub(crate) struct FocusMode {
     /// for as long as Focus Mode is, and the sidebar comes back as it was.
     #[serde(default = "default_on")]
     pub(crate) rail_sidebar: bool,
-    /// Every message opens in Reader View (the switch still works).
-    #[serde(default = "default_on")]
-    pub(crate) reader_view: bool,
 }
 
 impl Default for FocusMode {
@@ -76,7 +73,6 @@ impl Default for FocusMode {
             hide_preview: true,
             hide_subject: false,
             rail_sidebar: true,
-            reader_view: true,
         }
     }
 }
@@ -98,7 +94,6 @@ pub(crate) enum FocusPart {
     HidePreview,
     HideSubject,
     RailSidebar,
-    ReaderView,
 }
 
 impl FocusMode {
@@ -115,7 +110,6 @@ impl FocusMode {
             FocusPart::HidePreview => self.hide_preview,
             FocusPart::HideSubject => self.hide_subject,
             FocusPart::RailSidebar => self.rail_sidebar,
-            FocusPart::ReaderView => self.reader_view,
         }
     }
 
@@ -132,7 +126,6 @@ impl FocusMode {
             FocusPart::HidePreview => self.hide_preview = on,
             FocusPart::HideSubject => self.hide_subject = on,
             FocusPart::RailSidebar => self.rail_sidebar = on,
-            FocusPart::ReaderView => self.reader_view = on,
         }
     }
 
@@ -166,12 +159,12 @@ mod focus_tests {
         // The app opens out of the mode until it is asked to do otherwise.
         assert!(!f.start_focused);
         assert!(f.reader_toolbar && f.list_header && f.hide_accounts && f.fold_unified);
-        assert!(f.hide_avatars && f.one_preview_line && f.reader_view);
+        assert!(f.hide_avatars && f.one_preview_line);
         assert!(f.hide_preview && f.rail_sidebar);
         // The exception: the subject stays until it is asked for.
         assert!(!f.hide_subject);
         // Off, no part is in force whatever its switch says.
-        assert!(!f.active(FocusPart::ReaderView));
+        assert!(!f.active(FocusPart::RailSidebar));
     }
 
     #[test]

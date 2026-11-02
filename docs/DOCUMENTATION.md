@@ -933,8 +933,8 @@ the rest of the session, so opening the message again costs nothing more.
 What is sent is the message's text, a paragraph or a cell at a time, with
 the bold, italics and links inside it but none of the sender's styling,
 images or link addresses. The translation is put back where the text was, so
-the message keeps its design; a plain-text message is shown as Reader View
-shows it. Long messages go in pieces, and one with over about 120,000
+the message keeps its design; a plain-text message is shown as its text
+alone, in one plain sheet that follows the app's theme. Long messages go in pieces, and one with over about 120,000
 characters to send is not sent.
 Messages that arrived encrypted are never sent.
 
@@ -1682,9 +1682,7 @@ them, and the right-hand group folds into a ⋯ menu as it does in the main
 window. Its files are in the attachment drawer under the
 message, and on each message's card when those are switched on, and images
 and PDFs open in the same full-window preview. A conversation's window
-gathers the files of every message in it. Its Reader View switch changes
-that window alone; the main window and the choice Tegami Mail remembers stay as
-they were. **Ctrl+F** finds in the message and **Ctrl+P** prints it.
+gathers the files of every message in it. **Ctrl+F** finds in the message and **Ctrl+P** prints it.
 
 ### Message files (.eml and .msg)
 

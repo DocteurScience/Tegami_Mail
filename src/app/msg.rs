@@ -882,10 +882,6 @@ pub(crate) enum AppMsg {
     // ---- on_prefs_reader (prefs_reader.rs) ----
     /// Settings → Reading: the zoom every launch starts at.
     SetZoomDefault(u32),
-    /// Reader View on or off (the header's switch).
-    SetReaderMode(bool),
-    /// Show or hide the Reader View switch in the reader header.
-    SetReaderSwitchShown(bool),
     /// Show or block remote content for one message, whatever the standing
     /// policy is — the reader menu's entry, and what the banner's Load does.
     SetRemoteContent {

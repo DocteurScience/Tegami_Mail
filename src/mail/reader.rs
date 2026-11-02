@@ -1,7 +1,7 @@
-//! Reader view: a message stripped to what it says.
+//! The reader sheet: a message stripped to what it says.
 //!
-//! The reader pane's Reader View toggle shows every message in the open
-//! conversation without the sender's design: no stylesheets, no layout
+//! A translated plain-text message (#327) is shown this way, without the
+//! sender's design: no stylesheets, no layout
 //! tables, no colors, no hidden preview text, no tracking pixels. What is
 //! left — headings, paragraphs, lists, quotes, links, real images, data
 //! tables — is set in one uniform sheet that follows the app's theme.
@@ -11,7 +11,7 @@
 //! the original attributes, styles or structure survives except what this
 //! module chooses to emit. The result is still shown in the same sandboxed
 //! frame as any other message (no scripts, the CSP, the remote-content
-//! policy), so the reader view narrows what is shown; it never widens what
+//! policy), so the sheet narrows what is shown; it never widens what
 //! is allowed.
 
 use self::tidy::tidy;

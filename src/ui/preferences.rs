@@ -567,7 +567,6 @@ impl Component for Preferences {
             PrefInput::ToggleAvatars(on) => self.on_toggle_avatars(on, sender),
             PrefInput::ToggleThreading(on) => self.on_toggle_threading(on, sender),
             PrefInput::ToggleThreadExpansion(on) => self.on_toggle_thread_expansion(on, sender),
-            PrefInput::ChangeReaderDefault(idx) => self.on_change_reader_default(idx, sender),
             PrefInput::ChangeReaderZoom(idx) => self.on_change_reader_zoom(idx, sender),
             PrefInput::ChangeCardActionsMode(index) => {
                 self.on_change_card_actions_mode(index, sender)
