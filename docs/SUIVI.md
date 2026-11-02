@@ -5,7 +5,7 @@ reprendre le travail dans une autre conversation. Les règles durables
 (conventions, commandes, architecture) sont dans [CLAUDE.md](../CLAUDE.md).
 Mettre ce fichier à jour à chaque étape poussée.
 
-Dernière mise à jour : 2026-11-02, après `7d5bc0a`.
+Dernière mise à jour : 2026-11-02, après `89e8aa0`.
 
 ## État
 
@@ -77,7 +77,8 @@ Dernière mise à jour : 2026-11-02, après `7d5bc0a`.
 | `636b0d7` | CLAUDE.md, ce journal, scripts `tools/dev/` |
 | `fd7a789` | Menu principal : Synchroniser maintenant (F5), Ajouter un compte…, Comptes en ligne GNOME…, Aide ; retrait d'Annuler, Volet de lecture, Mode Focus, Plein écran (les raccourcis restent) |
 | `583c960` | Composeur dans le volet de lecture : l'historique ne montre que le dernier message reçu (`history_levels` 1 ; 2 en fenêtre) |
-| `7d5bc0a` | Menu du clic droit d'une ligne réduit à la maquette ; « Copier vers… » gardé en attendant la décision |
+| `7d5bc0a` | Menu du clic droit d'une ligne réduit à la maquette |
+| `89e8aa0` | « Copier vers… » supprimé partout (menus liste, sélection, lecteur) avec son code ; docs et CHANGELOG mis à jour |
 
 ## Décisions prises
 
@@ -111,11 +112,18 @@ Dernière mise à jour : 2026-11-02, après `7d5bc0a`.
 5. Historique dans le composeur intégré : replié sauf le dernier message
    reçu. Fait (`583c960`).
 
-## En attente d'une réponse du propriétaire
+## Décisions du propriétaire, suite (2026-11-02)
 
-- « Copier vers… » (copie d'un message vers une autre boîte, notamment
-  « Sur cet ordinateur ») : le garder dans le menu de la liste, le
-  déplacer (menu ⋯ du lecteur ?), ou le retirer.
+- « Copier vers… » : supprimé complètement (fait, `89e8aa0`).
+- Supprimer les fonctions absentes des maquettes. Demandé explicitement :
+  les deux interrupteurs de l'en-tête du lecteur, mode clair/sombre par
+  message et vue Lecteur (en cours). Relire les maquettes : le
+  propriétaire voit dans les captures des éléments qui n'y sont pas.
+- Ordre de travail convenu : 1. Copier vers (fait), 2. vérifier la CI,
+  3. écarts avec les maquettes (barre latérale, champ De, menu ⋯ du
+  composeur, menu ⋯ du lecteur, menu d'un dossier, avatars des
+  destinataires, menu ⋯ d'une carte), 4. documentation (CHANGELOG,
+  FEATURES, KEYBOARD_SHORTCUTS).
 
 ## Reste à faire (connu)
 
