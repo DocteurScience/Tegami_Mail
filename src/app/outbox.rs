@@ -217,7 +217,6 @@ impl AppModel {
                 // out from under the user. `selected` stays None so no sync or
                 // server request is ever aimed at it.
                 self.showing_outbox = true;
-                self.showing_contacts = false;
                 self.unified = false;
                 self.tag_view = None;
                 self.smart_view = None;

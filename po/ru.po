@@ -213,9 +213,6 @@ msgstr "Новое сообщение"
 msgid "Tegami Mail Address Book"
 msgstr "Адресная книга"
 
-msgid "Tegami Mail cannot change this kind of group"
-msgstr ""
-
 msgid "On This Computer"
 msgstr "На этом компьютере"
 
@@ -1192,9 +1189,6 @@ msgstr ""
 
 msgid "All accounts"
 msgstr "Все учётные записи"
-
-msgid "Contacts"
-msgstr "Контакты"
 
 msgid "Outbox"
 msgstr "Исходящие"
@@ -3875,6 +3869,9 @@ msgstr ""
 msgid "LDAP Directory"
 msgstr "Каталог LDAP"
 
+msgid "Contacts"
+msgstr "Контакты"
+
 #, fuzzy
 msgid "Address Books"
 msgstr "Адресная книга"
@@ -3920,19 +3917,6 @@ msgstr "Нет контактов"
 msgid "Saved addresses show the contact's name, not the mail's."
 msgstr ""
 
-msgid "Layout"
-msgstr "Разметка"
-
-#, fuzzy
-msgid "Contacts placement"
-msgstr "Расположение тегов"
-
-msgid "'In the footer' disables expand/collapse."
-msgstr ""
-
-msgid "Keep the search field open"
-msgstr ""
-
 #, fuzzy
 msgid "Address Book"
 msgstr "Адресная книга"
@@ -3940,461 +3924,6 @@ msgstr "Адресная книга"
 #, fuzzy
 msgid "Looking for address books on {name}…"
 msgstr "Поиск ключа для {addr}…"
-
-#, fuzzy
-msgid "Tegami Mail, on this computer"
-msgstr "На этом компьютере"
-
-#, fuzzy
-msgid "Edit Group"
-msgstr "Правая группа"
-
-#, fuzzy
-msgid "Delete Group…"
-msgstr "Удалить ваш ключ?"
-
-msgid "New Contact"
-msgstr "Новый контакт"
-
-#, fuzzy
-msgid "New Group"
-msgstr "Левая группа"
-
-#, fuzzy
-msgid "Rename…"
-msgstr "Переименовать"
-
-#, fuzzy
-msgid "Show or hide"
-msgstr "Показать или скрыть метки"
-
-#, fuzzy
-msgid "Rename Address Book"
-msgstr "Адресная книга"
-
-msgid ""
-"The name is used in Tegami Mail only; GNOME Contacts and Evolution keep the "
-"book's own."
-msgstr ""
-
-msgid "Use Its Own Name"
-msgstr ""
-
-#, fuzzy
-msgid "All Address Books"
-msgstr "Адресная книга"
-
-#, fuzzy
-msgid "Move Contact?"
-msgstr "Открыть «Контакты»"
-
-msgid ""
-"This will move {name} out of {from} and into {to}, locally and on the "
-"server. A group in {from} that holds the contact will no longer have it."
-msgstr ""
-
-#, fuzzy
-msgid "Move {n} Contact?"
-msgid_plural "Move {n} Contacts?"
-msgstr[0] "Открыть «Контакты»"
-msgstr[1] "Открыть «Контакты»"
-msgstr[2] "Открыть «Контакты»"
-
-msgid ""
-"This will move {n} contact out of the address book it is in and into {to}, "
-"locally and on the server. A group there that holds it will no longer have "
-"it."
-msgid_plural ""
-"This will move {n} contacts out of the address books they are in and into "
-"{to}, locally and on the server. Groups there that hold them will no longer "
-"have them."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-
-#, fuzzy
-msgid "Move"
-msgstr "Переместить в"
-
-msgid "View photo"
-msgstr "Просмотреть фото"
-
-msgid "Add to Contacts"
-msgstr "Добавить в Контакты"
-
-msgid "Email"
-msgstr "Email"
-
-msgid "Phone"
-msgstr "Телефон"
-
-msgid "Address"
-msgstr "Адрес"
-
-msgid "Website"
-msgstr "Веб-сайт"
-
-msgid "Birthday"
-msgstr ""
-
-#. ---- note ----
-msgid "Note"
-msgstr ""
-
-#, fuzzy
-msgid "Directory"
-msgstr "Добавить каталог"
-
-msgid "Details"
-msgstr ""
-
-#, fuzzy
-msgid "Members"
-msgstr "Номера страниц"
-
-#, fuzzy
-msgid "No email address"
-msgstr "Адрес электронной почты"
-
-msgid "No one is in this group yet."
-msgstr ""
-
-msgid "Changed in the app it came from"
-msgstr ""
-
-msgid ""
-"This group names its members by contact, which Tegami Mail does not edit."
-msgstr ""
-
-msgid ""
-"Saving moves the group to this address book, with its people, and removes it "
-"from {book}."
-msgstr ""
-
-msgid ""
-"Groups here hold addresses, so people with no email address are left out."
-msgstr ""
-
-msgid "Group"
-msgstr ""
-
-#, fuzzy
-msgid "Send as Bcc"
-msgstr "Отправить все"
-
-msgid "Members do not see each other's addresses."
-msgstr ""
-
-#. An Apple group (iCloud's) holds cards of its own book.
-msgid ""
-"Groups in this address book hold its own contacts: anyone added who is not "
-"in it yet is added to it."
-msgstr ""
-
-msgid "Edit Contact"
-msgstr "Редактировать контакт"
-
-#. ---- identity fields ----
-msgid "Identity"
-msgstr ""
-
-msgid "Nickname"
-msgstr ""
-
-#, fuzzy
-msgid "Organization"
-msgstr "Перевод"
-
-msgid "Title"
-msgstr ""
-
-msgid "Another book moves the contact there when saved."
-msgstr ""
-
-msgid "Add email"
-msgstr "Добавить адрес"
-
-msgid "Add phone"
-msgstr "Добавить телефон"
-
-msgid "Add website"
-msgstr "Добавить веб-сайт"
-
-msgid "No label"
-msgstr ""
-
-msgid "Home"
-msgstr ""
-
-msgid "Work"
-msgstr ""
-
-msgid "Mobile"
-msgstr ""
-
-msgid "Fax"
-msgstr ""
-
-msgid "Label"
-msgstr ""
-
-#, fuzzy
-msgid "Add address"
-msgstr "Адрес"
-
-msgid "Street"
-msgstr ""
-
-msgid "City"
-msgstr ""
-
-msgid "State or region"
-msgstr ""
-
-msgid "Postal code"
-msgstr ""
-
-msgid "Country"
-msgstr ""
-
-msgid "No birthday"
-msgstr ""
-
-msgid "Year"
-msgstr ""
-
-msgid "Change Photo…"
-msgstr ""
-
-#, fuzzy
-msgid "Remove Photo"
-msgstr "Удалить тег"
-
-#, fuzzy
-msgid "Choose a Photo"
-msgstr "Выбрать картинку"
-
-msgid "{shown} of {total}"
-msgstr "{shown} из {total}"
-
-#, fuzzy
-msgid "In Directories"
-msgstr "Каталоги LDAP"
-
-msgid "Type three letters or more to search the directory."
-msgstr ""
-
-msgid "Nobody in the directory matches."
-msgstr ""
-
-#, fuzzy
-msgid "Remove from Group"
-msgstr "Удалить из избранного"
-
-msgid "Add to Group"
-msgstr ""
-
-#, fuzzy
-msgid "Move to Address Book"
-msgstr "Адресная книга"
-
-msgid "Delete…"
-msgstr "Удалить…"
-
-msgid "Edit"
-msgstr "Редактировать"
-
-msgid "Open in GNOME Contacts"
-msgstr "Открыть в «Контактах GNOME»"
-
-#, fuzzy
-msgid "{n} Group Selected"
-msgid_plural "{n} Groups Selected"
-msgstr[0] "Подтверждать удаление обсуждения"
-msgstr[1] "Подтверждать удаление обсуждения"
-msgstr[2] "Подтверждать удаление обсуждения"
-
-#, fuzzy
-msgid "{n} Contact Selected"
-msgid_plural "{n} Contacts Selected"
-msgstr[0] "Подтверждать удаление обсуждения"
-msgstr[1] "Подтверждать удаление обсуждения"
-msgstr[2] "Подтверждать удаление обсуждения"
-
-msgid "Move to…"
-msgstr "Переместить в…"
-
-#, fuzzy
-msgid "Move to another address book"
-msgstr "Сохранить каталог?"
-
-#, fuzzy
-msgid "Selected"
-msgstr "Импортировать выбранные"
-
-msgid "Add a person by name or address"
-msgstr ""
-
-#, fuzzy
-msgid "No email address · {book}"
-msgstr "Адрес электронной почты"
-
-msgid "First name"
-msgstr "Имя"
-
-msgid "Last name"
-msgstr "Фамилия"
-
-#, fuzzy
-msgid "Sort and filter contacts"
-msgstr "{n} сообщений"
-
-#, fuzzy
-msgid "Import Contacts"
-msgstr "Сортировка контактов"
-
-#, fuzzy
-msgid "vCard files"
-msgstr "Большие файлы"
-
-msgid "All files"
-msgstr "Все файлы"
-
-#, fuzzy
-msgid "Directories"
-msgstr "Каталоги LDAP"
-
-msgid "Has Photo"
-msgstr ""
-
-#, fuzzy
-msgid "Has Email"
-msgstr "Email"
-
-#, fuzzy
-msgid "Has Phone"
-msgstr "Телефон"
-
-#, fuzzy
-msgid "Has Address"
-msgstr "Адрес"
-
-msgid "Has Birthday"
-msgstr ""
-
-msgid "Has Company"
-msgstr ""
-
-#, fuzzy
-msgid "Not in a Group"
-msgstr "Левая группа"
-
-msgid ""
-"This will remove the group {name} from your address book locally and on the "
-"server. The contacts are not removed."
-msgstr ""
-
-msgid ""
-"This will remove the group {name} from your address book. The contacts are "
-"not removed."
-msgstr ""
-
-#, fuzzy
-msgid "Delete Group?"
-msgstr "Удалить ваш ключ?"
-
-msgid ""
-"This will remove the contact {name} from your address book locally and on "
-"the server."
-msgstr ""
-
-msgid "This will remove the contact {name} from your address book."
-msgstr ""
-
-msgid "Delete Contact?"
-msgstr "Удалить контакт?"
-
-#, fuzzy
-msgid "Delete {n} Group?"
-msgid_plural "Delete {n} Groups?"
-msgstr[0] "Удалить ваш ключ?"
-msgstr[1] "Удалить ваш ключ?"
-msgstr[2] "Удалить ваш ключ?"
-
-msgid ""
-"This will remove {n} group from your address books locally and on the "
-"server. The contacts are not removed."
-msgid_plural ""
-"This will remove {n} groups from your address books locally and on the "
-"server. The contacts are not removed."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-
-msgid ""
-"This will remove {n} group from your address book. The contacts are not "
-"removed."
-msgid_plural ""
-"This will remove {n} groups from your address books. The contacts are not "
-"removed."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-
-#, fuzzy
-msgid "Delete {n} Contact?"
-msgid_plural "Delete {n} Contacts?"
-msgstr[0] "Удалить контакт?"
-msgstr[1] "Удалить контакт?"
-msgstr[2] "Удалить контакт?"
-
-msgid ""
-"This will remove {n} contact from your address books locally and on the "
-"server."
-msgid_plural ""
-"This will remove {n} contacts from your address books locally and on the "
-"server."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-
-msgid "This will remove {n} contact from your address book."
-msgid_plural "This will remove {n} contacts from your address books."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-
-msgid "Toggle sidebar"
-msgstr "Показать/скрыть боковую панель"
-
-msgid "Import vCard files into the Tegami Mail address book"
-msgstr ""
-
-#, fuzzy
-msgid "New contact or group"
-msgstr "Новый контакт"
-
-msgid "Loading Contacts…"
-msgstr "Загрузка контактов…"
-
-msgid "No Contacts"
-msgstr "Нет контактов"
-
-msgid ""
-"Add a contact with the + button, or import vCard files. Contacts are kept in "
-"Tegami Mail's own address book, and the address books of GNOME Contacts are "
-"listed here too."
-msgstr ""
-
-#, fuzzy
-msgid "Search contacts (Ctrl+F)"
-msgstr "Поиск контактов"
-
-msgid "Search contacts"
-msgstr "Поиск контактов"
-
-msgid "Edit contact"
-msgstr "Редактировать контакт"
 
 #, fuzzy
 msgid "Attach to Message"
@@ -4661,6 +4190,9 @@ msgstr ""
 msgid "Mark as read"
 msgstr "Отметить как прочитанное"
 
+msgid "Move to…"
+msgstr "Переместить в…"
+
 msgid "Not spam"
 msgstr "Не спам"
 
@@ -4794,6 +4326,9 @@ msgstr "Скрыть цитируемый текст"
 #, fuzzy
 msgid "Copy Address"
 msgstr "Копировать адрес ссылки"
+
+msgid "Add to Contacts"
+msgstr "Добавить в Контакты"
 
 msgid "Double-click to open in a new window"
 msgstr "Дважды щёлкните, чтобы открыть в новом окне"
@@ -5333,6 +4868,9 @@ msgstr ""
 msgid "Generate"
 msgstr "Сгенерировать"
 
+msgid "Address"
+msgstr "Адрес"
+
 msgid "Expires"
 msgstr "Срок действия"
 
@@ -5356,6 +4894,9 @@ msgstr "Импортировать ключ"
 
 msgid "OpenPGP keys"
 msgstr "Ключи OpenPGP"
+
+msgid "All files"
+msgstr "Все файлы"
 
 msgid "Could not import: {e}"
 msgstr "Не удалось импортировать: {e}"
@@ -5520,16 +5061,6 @@ msgstr "Каждые 15 минут"
 
 msgid "Every 30 minutes"
 msgstr "Каждые 30 минут"
-
-#, fuzzy
-msgid "In the footer"
-msgstr "Сохранить фильтр?"
-
-msgid "Above the accounts"
-msgstr "Над учётными записями"
-
-msgid "Below the accounts"
-msgstr "Под учётными записями"
 
 #. GNOME Settings' own names for its alert sounds.
 msgid "Click"
@@ -5725,6 +5256,12 @@ msgstr "Общие"
 #, fuzzy
 msgid "Tree style"
 msgstr "Действия"
+
+msgid "Above the accounts"
+msgstr "Над учётными записями"
+
+msgid "Below the accounts"
+msgstr "Под учётными записями"
 
 msgid "All Inboxes"
 msgstr "Все входящие"
@@ -6010,6 +5547,9 @@ msgstr ""
 "Отправленные вами письма содержат Gravatar, изображение или эмодзи учётной "
 "записи — так же, как и её значок на боковой панели."
 
+msgid "Layout"
+msgstr "Разметка"
+
 msgid "Automatic uses single lines in wide windows."
 msgstr ""
 
@@ -6026,6 +5566,9 @@ msgid "Tags and labels under the text"
 msgstr ""
 
 msgid "Gives the subject its full width."
+msgstr ""
+
+msgid "Keep the search field open"
 msgstr ""
 
 #, fuzzy
@@ -6356,6 +5899,9 @@ msgstr "Сохранено: {name}"
 msgid "Could not save the PDF: {error}"
 msgstr "Не удалось сохранить PDF: {error}"
 
+msgid "Edit"
+msgstr "Редактировать"
+
 #, fuzzy
 msgid "Custom…"
 msgstr "Другой цвет…"
@@ -6590,10 +6136,6 @@ msgstr "Показывать каждую метку"
 #, fuzzy
 msgid "Show each smart folder"
 msgstr "Показывать каждую папку"
-
-#, fuzzy
-msgid "Show each address book"
-msgstr "Сохранить каталог?"
 
 msgid "Long-press to expand or collapse"
 msgstr "Долгое нажатие — развернуть или свернуть"
@@ -7223,6 +6765,9 @@ msgstr ""
 msgid "No address book available to add contacts"
 msgstr "Нет адресной книги для добавления контактов"
 
+msgid "Email"
+msgstr "Email"
+
 msgid "Added to Contacts"
 msgstr "Добавлено в контакты"
 
@@ -7235,27 +6780,6 @@ msgstr "Уже есть в контактах ({name})"
 msgid "Could not add contact: {e}"
 msgstr "Не удалось добавить контакт: {e}"
 
-msgid "No address book available"
-msgstr "Адресная книга недоступна"
-
-#, fuzzy
-msgid "Could not rename the address book: {e}"
-msgstr "Не удалось переименовать папку: {e}"
-
-#, fuzzy
-msgid "{n} contact was not copied: {e}"
-msgid_plural "{n} contacts were not copied: {e}"
-msgstr[0] "Журнал экспортирован в {display}"
-msgstr[1] "Журнал экспортирован в {display}"
-msgstr[2] "Журнал экспортирован в {display}"
-
-#, fuzzy
-msgid "{n} contact was not moved: {e}"
-msgid_plural "{n} contacts were not moved: {e}"
-msgstr[0] "Журнал экспортирован в {display}"
-msgstr[1] "Журнал экспортирован в {display}"
-msgstr[2] "Журнал экспортирован в {display}"
-
 msgid "Could not update contact: {e}"
 msgstr "Не удалось обновить контакт: {e}"
 
@@ -7266,6 +6790,14 @@ msgstr "Не удалось импортировать учетную запис
 #, fuzzy
 msgid "Could not read: {files}"
 msgstr "Не удалось перезапустить «Файлы»"
+
+#, fuzzy
+msgid "Import Contacts"
+msgstr "Сортировка контактов"
+
+#, fuzzy
+msgid "vCard files"
+msgstr "Большие файлы"
 
 msgid "Search filters"
 msgstr "Поиск фильтров"
@@ -7307,6 +6839,9 @@ msgstr "Хранилище"
 
 msgid "Mail Account"
 msgstr "Почтовая учётная запись"
+
+msgid "Nickname"
+msgstr ""
 
 msgid "Display Name"
 msgstr "Отображаемое имя"
@@ -8296,6 +7831,263 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#, fuzzy
+#~ msgid "Contacts placement"
+#~ msgstr "Расположение тегов"
+
+#, fuzzy
+#~ msgid "Tegami Mail, on this computer"
+#~ msgstr "На этом компьютере"
+
+#, fuzzy
+#~ msgid "Edit Group"
+#~ msgstr "Правая группа"
+
+#, fuzzy
+#~ msgid "Delete Group…"
+#~ msgstr "Удалить ваш ключ?"
+
+#~ msgid "New Contact"
+#~ msgstr "Новый контакт"
+
+#, fuzzy
+#~ msgid "New Group"
+#~ msgstr "Левая группа"
+
+#, fuzzy
+#~ msgid "Rename…"
+#~ msgstr "Переименовать"
+
+#, fuzzy
+#~ msgid "Show or hide"
+#~ msgstr "Показать или скрыть метки"
+
+#, fuzzy
+#~ msgid "Rename Address Book"
+#~ msgstr "Адресная книга"
+
+#, fuzzy
+#~ msgid "All Address Books"
+#~ msgstr "Адресная книга"
+
+#, fuzzy
+#~ msgid "Move Contact?"
+#~ msgstr "Открыть «Контакты»"
+
+#, fuzzy
+#~ msgid "Move {n} Contact?"
+#~ msgid_plural "Move {n} Contacts?"
+#~ msgstr[0] "Открыть «Контакты»"
+#~ msgstr[1] "Открыть «Контакты»"
+#~ msgstr[2] "Открыть «Контакты»"
+
+#, fuzzy
+#~ msgid "Move"
+#~ msgstr "Переместить в"
+
+#~ msgid "View photo"
+#~ msgstr "Просмотреть фото"
+
+#~ msgid "Phone"
+#~ msgstr "Телефон"
+
+#~ msgid "Website"
+#~ msgstr "Веб-сайт"
+
+#, fuzzy
+#~ msgid "Directory"
+#~ msgstr "Добавить каталог"
+
+#, fuzzy
+#~ msgid "Members"
+#~ msgstr "Номера страниц"
+
+#, fuzzy
+#~ msgid "No email address"
+#~ msgstr "Адрес электронной почты"
+
+#, fuzzy
+#~ msgid "Send as Bcc"
+#~ msgstr "Отправить все"
+
+#~ msgid "Edit Contact"
+#~ msgstr "Редактировать контакт"
+
+#, fuzzy
+#~ msgid "Organization"
+#~ msgstr "Перевод"
+
+#~ msgid "Add email"
+#~ msgstr "Добавить адрес"
+
+#~ msgid "Add phone"
+#~ msgstr "Добавить телефон"
+
+#~ msgid "Add website"
+#~ msgstr "Добавить веб-сайт"
+
+#, fuzzy
+#~ msgid "Add address"
+#~ msgstr "Адрес"
+
+#, fuzzy
+#~ msgid "Remove Photo"
+#~ msgstr "Удалить тег"
+
+#, fuzzy
+#~ msgid "Choose a Photo"
+#~ msgstr "Выбрать картинку"
+
+#~ msgid "{shown} of {total}"
+#~ msgstr "{shown} из {total}"
+
+#, fuzzy
+#~ msgid "In Directories"
+#~ msgstr "Каталоги LDAP"
+
+#, fuzzy
+#~ msgid "Remove from Group"
+#~ msgstr "Удалить из избранного"
+
+#, fuzzy
+#~ msgid "Move to Address Book"
+#~ msgstr "Адресная книга"
+
+#~ msgid "Delete…"
+#~ msgstr "Удалить…"
+
+#~ msgid "Open in GNOME Contacts"
+#~ msgstr "Открыть в «Контактах GNOME»"
+
+#, fuzzy
+#~ msgid "{n} Group Selected"
+#~ msgid_plural "{n} Groups Selected"
+#~ msgstr[0] "Подтверждать удаление обсуждения"
+#~ msgstr[1] "Подтверждать удаление обсуждения"
+#~ msgstr[2] "Подтверждать удаление обсуждения"
+
+#, fuzzy
+#~ msgid "{n} Contact Selected"
+#~ msgid_plural "{n} Contacts Selected"
+#~ msgstr[0] "Подтверждать удаление обсуждения"
+#~ msgstr[1] "Подтверждать удаление обсуждения"
+#~ msgstr[2] "Подтверждать удаление обсуждения"
+
+#, fuzzy
+#~ msgid "Move to another address book"
+#~ msgstr "Сохранить каталог?"
+
+#, fuzzy
+#~ msgid "Selected"
+#~ msgstr "Импортировать выбранные"
+
+#, fuzzy
+#~ msgid "No email address · {book}"
+#~ msgstr "Адрес электронной почты"
+
+#~ msgid "First name"
+#~ msgstr "Имя"
+
+#~ msgid "Last name"
+#~ msgstr "Фамилия"
+
+#, fuzzy
+#~ msgid "Sort and filter contacts"
+#~ msgstr "{n} сообщений"
+
+#, fuzzy
+#~ msgid "Directories"
+#~ msgstr "Каталоги LDAP"
+
+#, fuzzy
+#~ msgid "Has Email"
+#~ msgstr "Email"
+
+#, fuzzy
+#~ msgid "Has Phone"
+#~ msgstr "Телефон"
+
+#, fuzzy
+#~ msgid "Has Address"
+#~ msgstr "Адрес"
+
+#, fuzzy
+#~ msgid "Not in a Group"
+#~ msgstr "Левая группа"
+
+#, fuzzy
+#~ msgid "Delete Group?"
+#~ msgstr "Удалить ваш ключ?"
+
+#~ msgid "Delete Contact?"
+#~ msgstr "Удалить контакт?"
+
+#, fuzzy
+#~ msgid "Delete {n} Group?"
+#~ msgid_plural "Delete {n} Groups?"
+#~ msgstr[0] "Удалить ваш ключ?"
+#~ msgstr[1] "Удалить ваш ключ?"
+#~ msgstr[2] "Удалить ваш ключ?"
+
+#, fuzzy
+#~ msgid "Delete {n} Contact?"
+#~ msgid_plural "Delete {n} Contacts?"
+#~ msgstr[0] "Удалить контакт?"
+#~ msgstr[1] "Удалить контакт?"
+#~ msgstr[2] "Удалить контакт?"
+
+#~ msgid "Toggle sidebar"
+#~ msgstr "Показать/скрыть боковую панель"
+
+#, fuzzy
+#~ msgid "New contact or group"
+#~ msgstr "Новый контакт"
+
+#~ msgid "Loading Contacts…"
+#~ msgstr "Загрузка контактов…"
+
+#~ msgid "No Contacts"
+#~ msgstr "Нет контактов"
+
+#, fuzzy
+#~ msgid "Search contacts (Ctrl+F)"
+#~ msgstr "Поиск контактов"
+
+#~ msgid "Search contacts"
+#~ msgstr "Поиск контактов"
+
+#~ msgid "Edit contact"
+#~ msgstr "Редактировать контакт"
+
+#, fuzzy
+#~ msgid "In the footer"
+#~ msgstr "Сохранить фильтр?"
+
+#, fuzzy
+#~ msgid "Show each address book"
+#~ msgstr "Сохранить каталог?"
+
+#~ msgid "No address book available"
+#~ msgstr "Адресная книга недоступна"
+
+#, fuzzy
+#~ msgid "Could not rename the address book: {e}"
+#~ msgstr "Не удалось переименовать папку: {e}"
+
+#, fuzzy
+#~ msgid "{n} contact was not copied: {e}"
+#~ msgid_plural "{n} contacts were not copied: {e}"
+#~ msgstr[0] "Журнал экспортирован в {display}"
+#~ msgstr[1] "Журнал экспортирован в {display}"
+#~ msgstr[2] "Журнал экспортирован в {display}"
+
+#, fuzzy
+#~ msgid "{n} contact was not moved: {e}"
+#~ msgid_plural "{n} contacts were not moved: {e}"
+#~ msgstr[0] "Журнал экспортирован в {display}"
+#~ msgstr[1] "Журнал экспортирован в {display}"
+#~ msgstr[2] "Журнал экспортирован в {display}"
 
 #~ msgid "Go to Message"
 #~ msgstr "Перейти к сообщению"

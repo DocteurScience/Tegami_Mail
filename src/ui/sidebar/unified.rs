@@ -1,5 +1,5 @@
 //! The unified section's rows (All Inboxes, Starred, Sent, Drafts, Archive,
-//! Junk, Trash, Favorites, Filters, Tags, Smart Folders, Contacts) and the
+//! Junk, Trash, Favorites, Filters, Tags, Smart Folders) and the
 //! Tags sections.
 
 use super::dnd::folder_drop_target;
@@ -39,7 +39,6 @@ impl Sidebar {
             UnifiedRow::Favorites | UnifiedRow::Filtered => i18n("Show each folder"),
             UnifiedRow::Tags => i18n("Show each tag"),
             UnifiedRow::Smart => i18n("Show each smart folder"),
-            UnifiedRow::Contacts => i18n("Show each address book"),
         };
 
         let list = gtk::ListBox::new();
@@ -291,7 +290,6 @@ impl Sidebar {
             }
             UnifiedRow::Favorites => self.fill_favorites(&sub, &mut row_badges, sender),
             UnifiedRow::Smart => self.fill_smart(&sub, sender),
-            UnifiedRow::Contacts => self.fill_contacts(&sub, sender),
             UnifiedRow::Filtered => self.fill_filtered(&sub, sections, &mut row_badges, sender),
             UnifiedRow::Tags => self.fill_tags(&sub, sender),
         }
@@ -756,37 +754,6 @@ impl Sidebar {
             }
         });
         sub.add_controller(click);
-    }
-
-    /// The address books and groups under Contacts.
-    fn fill_contacts(&mut self, sub: &gtk::ListBox, sender: &ComponentSender<Self>) {
-        // The tree the contact page handed over; filled again as it
-        // changes (see `fill_contact_tree`).
-        if let Some(tree) = &self.contact_tree {
-            let filled = crate::ui::contact_tree::fill(
-                sub,
-                tree,
-                self.collapsed,
-                self.chevrons_left,
-                &self.contacts_folded,
-                sender.input_sender(),
-            );
-            *self.tree_rows.borrow_mut() = filled.rows;
-            self.contact_layout = filled.layout;
-            self.contact_chevrons = filled.chevrons;
-        }
-        let ss = sender.input_sender().clone();
-        let quiet = self.quiet.clone();
-        let rows = self.tree_rows.clone();
-        sub.connect_row_selected(move |_, row| {
-            if quiet.get() {
-                return;
-            }
-            let Some(row) = row else { return };
-            if let Some((scope, _)) = rows.borrow().iter().find(|(_, r)| r == row) {
-                let _ = ss.send(SidebarInput::ContactTreeSelected(scope.clone()));
-            }
-        });
     }
 
     /// Every folder a filter rule files into.

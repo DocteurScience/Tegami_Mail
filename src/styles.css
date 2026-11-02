@@ -308,18 +308,6 @@ headerbar.rail-header {
   color: @accent_fg_color;
 }
 
-/* The group form's people to add: the one the arrow keys are on, as in
-   the composer's suggestions. */
-.member-matches row:selected {
-  background-color: @accent_bg_color;
-  color: @accent_fg_color;
-}
-
-.member-matches row:selected label,
-.member-matches row:selected image {
-  color: @accent_fg_color;
-}
-
 /* The inline composer's ground: opaque, so sliding down over the reader
    actually hides it rather than blending with it. */
 .inline-compose-surface {
@@ -561,19 +549,6 @@ flowbox.attach-flow > flowboxchild {
   color: @accent_fg_color;
   font-weight: bold;
   font-size: 0.85em;
-}
-
-/* A contact's face in the list: the disc clips a photo round. */
-.contact-face {
-  border-radius: 9999px;
-}
-
-/* Scoped to the row's own header box: a context-menu popover anchored to the
-   row is also its descendant, and a bare `label` selector painted the menu's
-   text white-on-white. */
-.contacts-listbox > row:selected box.header label {
-  color: white;
-  opacity: 1;
 }
 
 /* Faint rule above the pinned Contacts/Attachments footer, just enough to

@@ -8,12 +8,7 @@ use super::*;
 impl Sidebar {
     /// Rebuild everything and select again what was selected.
     pub(super) fn rebuild(&mut self, widgets: &SidebarWidgets, sender: &ComponentSender<Self>) {
-        self.rebuild_normal(
-            &widgets.pinned_box,
-            &widgets.normal_box,
-            &widgets.footer_box,
-            sender,
-        );
+        self.rebuild_normal(&widgets.pinned_box, &widgets.normal_box, sender);
         self.restore_selection();
     }
 
@@ -23,13 +18,12 @@ impl Sidebar {
         &mut self,
         pinned: &gtk::Box,
         container: &gtk::Box,
-        footer: &gtk::Box,
         sender: &ComponentSender<Self>,
     ) {
         use crate::config::SectionPlacement::{AboveAccounts, BelowAccounts};
-        release_focus(pinned, container, footer);
+        release_focus(pinned, container);
         let (scroller, saved_scroll) = self.freeze_over_swap(pinned, container);
-        self.clear_boxes(pinned, container, footer);
+        self.clear_boxes(pinned, container);
         self.forget_widgets();
 
         // No accounts yet: show a prompt to add the first one instead of an empty
@@ -42,10 +36,9 @@ impl Sidebar {
         let sections = self.sections.clone();
         self.build_compose_bar(pinned, sender);
         self.build_unified_section(container, &sections, sender);
-        self.build_footer(footer, sender);
         self.build_outbox_row(container, sender);
 
-        // Favorites, Filters, Tags and Contacts placed above the accounts,
+        // Favorites, Filters and Tags placed above the accounts,
         // drawn like the unified rows.
         let rows_above = self.placed_rows(AboveAccounts);
         if !rows_above.is_empty() {
@@ -186,30 +179,25 @@ impl Sidebar {
         (scroller, saved_scroll)
     }
 
-    /// Empty the three boxes, and style them for the icon rail when it is on.
-    fn clear_boxes(&self, pinned: &gtk::Box, container: &gtk::Box, footer: &gtk::Box) {
+    /// Empty the two boxes, and style them for the icon rail when it is on.
+    fn clear_boxes(&self, pinned: &gtk::Box, container: &gtk::Box) {
         while let Some(child) = pinned.first_child() {
             pinned.remove(&child);
         }
         while let Some(child) = container.first_child() {
             container.remove(&child);
         }
-        while let Some(child) = footer.first_child() {
-            footer.remove(&child);
-        }
         if self.collapsed {
             pinned.add_css_class("rail-collapsed");
             container.add_css_class("rail-collapsed");
-            footer.add_css_class("rail-collapsed");
         } else {
             pinned.remove_css_class("rail-collapsed");
             container.remove_css_class("rail-collapsed");
-            footer.remove_css_class("rail-collapsed");
         }
         // Unread dots in place of counts (Settings → Sidebar → Icon rail):
         // a style on the rail's containers, so every mini chip built below
         // shrinks to a dot without each builder knowing.
-        for w in [pinned, container, footer] {
+        for w in [pinned, container] {
             if self.collapsed && self.rail_dots {
                 w.add_css_class("rail-dots");
             } else {
@@ -227,8 +215,6 @@ impl Sidebar {
         self.custom_revealers.clear();
         self.custom_chevrons.clear();
         self.unified_list = None;
-        self.footer_list = None;
-        self.contacts_row = None;
         self.outbox_list = None;
         self.folder_badges.clear();
         self.tree_chevrons.clear();
@@ -386,67 +372,6 @@ impl Sidebar {
         self.build_unified_run(container, &unified_rows, &unified_sections, sender);
     }
 
-    fn build_footer(&mut self, footer: &gtk::Box, sender: &ComponentSender<Self>) {
-        // Contacts lives in the pinned footer against the sidebar's bottom
-        // edge — out of the way of the account list, never scrolling off. A
-        // faint rule sets it apart from whatever the scroller above ends on.
-        if self.contacts_in_footer() {
-            let sep = gtk::Separator::new(gtk::Orientation::Horizontal);
-            sep.add_css_class("footer-separator");
-            footer.append(&sep);
-
-            let list = gtk::ListBox::new();
-            list.set_selection_mode(gtk::SelectionMode::Single);
-            list.add_css_class("navigation-sidebar");
-            list.add_css_class("sidebar-footer");
-
-            // "Contacts" row: the in-app contacts view, where Settings →
-            // Sidebar puts it by default. Right-click offers GNOME Contacts.
-            if self.contacts_in_footer() {
-                let row = self.footer_row("x-office-address-book-symbolic", &i18n("Contacts"));
-                let right_click = gtk::GestureClick::new();
-                right_click.set_button(3);
-                let s = sender.clone();
-                right_click.connect_pressed(move |gesture, _, x, y| {
-                    let Some(widget) = gesture.widget() else {
-                        return;
-                    };
-                    let s2 = s.clone();
-                    show_context_menu(
-                        &widget,
-                        x,
-                        y,
-                        vec![vec![MenuEntry::new(
-                            i18n("Open GNOME Contacts"),
-                            move || {
-                                let _ = s2.output(SidebarOutput::OpenGnomeContacts);
-                            },
-                        )
-                        .icon("adw-external-link-symbolic")]],
-                    );
-                });
-                row.add_controller(right_click);
-                list.append(&row);
-                self.contacts_row = Some(row);
-            }
-
-            let s = sender.clone();
-            let contacts_row = self.contacts_row.clone();
-            let quiet = self.quiet.clone();
-            list.connect_row_selected(move |_, row| {
-                if quiet.get() {
-                    return;
-                }
-                let Some(row) = row else { return };
-                if Some(row) == contacts_row.as_ref() {
-                    s.input(SidebarInput::ContactsRowClicked);
-                }
-            });
-            footer.append(&list);
-            self.footer_list = Some(list);
-        }
-    }
-
     fn build_outbox_row(&mut self, container: &gtk::Box, sender: &ComponentSender<Self>) {
         // "Outbox" row — only while something is waiting to be sent. It sits
         // directly above the accounts so a stuck message is impossible to miss.
@@ -592,47 +517,17 @@ impl Sidebar {
             }
         }
     }
-
-    /// A row of the pinned footer: an icon and a name, the icon alone
-    /// (the name in its tooltip) on the rail.
-    fn footer_row(&self, icon: &str, name: &str) -> gtk::ListBoxRow {
-        let row = gtk::ListBoxRow::new();
-        let hbox = gtk::Box::new(gtk::Orientation::Horizontal, 12);
-        hbox.add_css_class("folder-row");
-        let img = gtk::Image::from_icon_name(icon);
-        img.add_css_class("folder-icon");
-        pin_icon_size(&img);
-        if self.collapsed {
-            hbox.set_halign(gtk::Align::Center);
-            row.set_tooltip_text(Some(name));
-            hbox.append(&img);
-        } else {
-            if self.chevrons_left {
-                img.set_margin_start(ROW_LEFT_INSET);
-            }
-            hbox.append(&img);
-            let label = gtk::Label::new(Some(name));
-            label.set_hexpand(true);
-            label.set_halign(gtk::Align::Start);
-            label.add_css_class("account-name");
-            hbox.append(&label);
-        }
-        row.set_child(Some(&hbox));
-        row
-    }
 }
 
 /// A list about to go keeps no keyboard focus: GTK would hand it to the
 /// first list left, All Inboxes, and a list selects the row it focuses,
 /// opening All Inboxes over the folder on screen. A folder's menu (Add to
 /// Favorites, #367) rebuilds right under its own list.
-fn release_focus(pinned: &gtk::Box, container: &gtk::Box, footer: &gtk::Box) {
+fn release_focus(pinned: &gtk::Box, container: &gtk::Box) {
     if let Some(root) = container.root() {
-        let doomed = root.focus().is_some_and(|f| {
-            [pinned, container, footer]
-                .iter()
-                .any(|b| f.is_ancestor(*b))
-        });
+        let doomed = root
+            .focus()
+            .is_some_and(|f| [pinned, container].iter().any(|b| f.is_ancestor(*b)));
         if doomed {
             root.set_focus(None::<&gtk::Widget>);
         }

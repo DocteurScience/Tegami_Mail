@@ -6,6 +6,7 @@ use std::path::PathBuf;
 use super::read::{cache_dir, data_dir};
 
 // vCard's TEXT escapes are iCalendar's (crate::encoding).
+#[cfg(test)]
 pub(super) use crate::encoding::escape_text_value as escape_vcard_value;
 pub(crate) use crate::encoding::unescape_text_value as unescape_vcard_text;
 
@@ -201,21 +202,4 @@ pub(super) fn is_group_vcard(vcard: &str) -> bool {
                 || name.eq_ignore_ascii_case("X-ADDRESSBOOKSERVER-KIND"))
                 && value.eq_ignore_ascii_case("group"))
     })
-}
-
-/// `line` put after a card's VERSION line (first, when it has none).
-pub(super) fn insert_after_version(card: &str, line: &str) -> String {
-    let mut out: Vec<String> = Vec::new();
-    let mut put = false;
-    for l in card.split("\r\n").flat_map(|l| l.split('\n')) {
-        out.push(l.to_string());
-        if !put && l.to_ascii_uppercase().starts_with("VERSION:") {
-            out.push(line.to_string());
-            put = true;
-        }
-    }
-    if !put {
-        out.insert(1.min(out.len()), line.to_string());
-    }
-    out.join("\r\n")
 }

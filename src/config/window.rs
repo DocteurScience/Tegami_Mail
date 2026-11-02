@@ -64,12 +64,6 @@ pub(crate) struct SidebarState {
     /// Whether the Smart Folders list (#417) is open.
     #[serde(default = "default_on")]
     pub(crate) smart_expanded: bool,
-    /// Whether the Contacts row's address books are shown.
-    #[serde(default)]
-    pub(crate) contacts_expanded: bool,
-    /// The accounts and books folded under the Contacts row, by key.
-    #[serde(default)]
-    pub(crate) contacts_folded: Vec<String>,
     /// Account emails whose own Filtered Folders / Tags sections are open
     /// (closed by default, like their custom folders).
     #[serde(default)]

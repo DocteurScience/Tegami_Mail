@@ -13,36 +13,6 @@ impl Sidebar {
         let _ = sender.output(SidebarOutput::UnifiedSelected);
     }
 
-    pub(super) fn on_contacts_row_clicked(&mut self, sender: ComponentSender<Self>) {
-        if self.selected == Sel::Contacts {
-            return;
-        }
-        self.selected = Sel::Contacts;
-        self.clear_other_selections(Sel::Contacts);
-        let _ = sender.output(SidebarOutput::ContactsClicked);
-        // The row itself is every contact. The footer's opens
-        // Contacts on the book its own picker last showed.
-        if !self.contacts_in_footer() {
-            let _ = sender.output(SidebarOutput::ContactScope(
-                crate::ui::contacts_page::ContactScope::All,
-            ));
-        }
-    }
-
-    pub(super) fn on_contact_tree_selected(
-        &mut self,
-        scope: crate::ui::contacts_page::ContactScope,
-        sender: ComponentSender<Self>,
-    ) {
-        let key = Sel::ContactScope(scope.clone());
-        if self.selected == key {
-            return;
-        }
-        self.selected = key.clone();
-        self.clear_other_selections(key);
-        let _ = sender.output(SidebarOutput::ContactScope(scope));
-    }
-
     pub(super) fn on_outbox_row_selected(&mut self, sender: ComponentSender<Self>) {
         if self.selected == Sel::Outbox {
             return;

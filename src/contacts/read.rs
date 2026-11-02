@@ -5,13 +5,12 @@ use std::collections::{HashMap, HashSet};
 use std::path::PathBuf;
 
 use super::details::{
-    parse_vcard_fields, person_address, resolve_book_members, resolve_members, ContactDetails,
-    GroupFormat,
+    parse_vcard_fields, person_address, resolve_members, ContactDetails, GroupFormat,
 };
 use super::eds_write::{factory_dest, open_book, BOOK_IFACE};
 use super::photos::find_dbs;
 use super::registry::{book_group_formats, book_uid_active, book_uid_name, registry_books};
-use super::vcard::{is_group_vcard, vcard_display_name, vcard_photo_with};
+use super::vcard::{is_group_vcard, vcard_display_name};
 use super::Contact;
 use crate::i18n::i18n;
 
@@ -382,44 +381,6 @@ pub(crate) fn local_book() -> Book {
             .remove(crate::contacts::local::LOCAL_BOOK_UID)
             .unwrap_or_else(|| i18n("Tegami Mail Address Book")),
         groups: Some(GroupFormat::Evolution),
-    }
-}
-
-/// Parse stored local vCards into the Contacts view's entries. A local
-/// vCard may come from any `.vcf` file, so its PHOTO is read only when
-/// embedded, never from a `file://` path.
-pub(super) fn details_from_local_vcards(
-    vcards: Vec<String>,
-    book_name: &str,
-) -> Vec<ContactDetails> {
-    vcards
-        .into_iter()
-        .filter_map(|vcard| {
-            let mut c = parse_vcard_fields(&vcard)?;
-            c.book_uid = crate::contacts::local::LOCAL_BOOK_UID.to_string();
-            c.book_name = book_name.to_string();
-            c.photo = vcard_photo_with(&vcard, false);
-            c.raw_vcard = vcard;
-            Some(c)
-        })
-        .collect()
-}
-
-/// The local book's contacts, parsed (empty when it was never written).
-pub(super) fn local_details() -> Vec<ContactDetails> {
-    if !crate::contacts::local::exists() || !crate::contacts::contact_sources::tegami_used() {
-        return Vec::new();
-    }
-    match crate::contacts::local::list_vcards() {
-        Ok(vcards) => {
-            let mut book = details_from_local_vcards(vcards, &local_book().name);
-            resolve_book_members(&mut book);
-            book
-        }
-        Err(e) => {
-            tracing::warn!("contacts: cannot read the local address book: {e}");
-            Vec::new()
-        }
     }
 }
 

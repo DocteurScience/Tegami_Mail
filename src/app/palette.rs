@@ -401,11 +401,6 @@ impl AppModel {
             }
         }
         go(
-            i18n("Contacts"),
-            view.clone(),
-            Box::new(|| AppMsg::OpenContacts),
-        );
-        go(
             i18n("Outbox"),
             view.clone(),
             Box::new(|| AppMsg::ShowOutbox),

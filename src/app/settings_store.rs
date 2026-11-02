@@ -3,7 +3,6 @@
 use relm4::prelude::*;
 
 use crate::config;
-use crate::ui::contacts_page::ContactsPageInput;
 use crate::ui::message_list::MessageListInput;
 use crate::ui::message_view::MessageViewInput;
 use crate::ui::sidebar::SidebarInput;
@@ -99,7 +98,6 @@ impl AppModel {
             list_pills_below: self.list_pills_below,
             date_groups_default_applied: true,
             list_search_open: self.list_search_open,
-            contacts_search_open: self.contacts_search_open,
             contact_names: self.contact_names,
             list_search_bottom: self.list_search_bottom,
             list_bulk_bar_bottom: self.list_bulk_bar_bottom,
@@ -141,8 +139,6 @@ impl AppModel {
             filtered_placement: self.filtered_placement,
             tags_placement: self.tags_placement,
             favorites_placement: self.favorites_placement,
-            contacts_placement: self.contacts_placement,
-            contacts_footer_default_applied: true,
             chevrons_left: self.chevrons_left,
             account_click_folds: self.account_click_folds,
             console_mode: self.console_mode,
@@ -189,12 +185,6 @@ impl AppModel {
         self.message_list
             .emit(MessageListInput::SetSearchPinned(self.list_search_open));
         self.push_list_bars();
-        self.contacts_page.emit(ContactsPageInput::SetSearchPinned(
-            self.contacts_search_open,
-        ));
-        self.contacts_page.emit(ContactsPageInput::SetBookPicker(
-            !self.contacts_placement.shown(),
-        ));
         self.message_list.emit(MessageListInput::SetColumnWidths(
             self.list_column_widths.clone(),
         ));

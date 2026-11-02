@@ -190,13 +190,11 @@ or **Empty Trash…**. The same item on the unified Junk or Trash row itself
 empties that folder in every account in the unified section at once, after
 a confirmation that lists them.
 
-**Settings → Sidebar → Sections** places Filters, Tags, Favorites and
-Contacts **Above the accounts**, **Below the accounts** or **Off**, which
-leaves it out of the sidebar. Contacts can also be **In the footer**, where
-it is by default: a row above Attachments, without its address books under
-it. The same Contacts placement is in **Settings → Contacts**. Wherever they are, they are rows like the
+**Settings → Sidebar → Sections** places Filters, Tags and Favorites
+**Above the accounts**, **Below the accounts** or **Off**, which leaves it
+out of the sidebar. Wherever they are, they are rows like the
 unified section's, with a chevron that opens their list. **Section style**
-set to **Tree style** draws all four as a tree instead: the caret that
+set to **Tree style** draws all three as a tree instead: the caret that
 opens and closes the list stands where the icon was, and the row has no
 chevron at its end. Clicking the name opens the combined view either way.
 
@@ -568,7 +566,7 @@ iCloud), each [CardDAV account](#carddav-accounts) and each
 [LDAP directory](#ldap-directories). A row names the account, what it holds,
 and where it was set up: **Tegami Mail**, **GOA** or **Evolution**.
 
-A row's switch uses the address book in Tegami Mail or leaves it out: of Contacts,
+A row's switch uses the address book in Tegami Mail or leaves it out: of
 the composer's suggestions, sender pictures, the
 [filters on Contacts](#filtering-on-contacts) and syncing. The switch is
 Tegami Mail's own; GNOME Contacts and Evolution go on using the book. An account
@@ -576,11 +574,10 @@ whose Contacts are switched off in GNOME Online Accounts has its switch
 greyed out, and says so.
 
 The arrow at the end of a row opens the address book's page. Its **Name**
-field gives the account a name of its own in Tegami Mail: in this list, and
-under its address books in the sidebar's Contacts list, while GNOME
-Contacts and Evolution keep the account's. An account's page lists its
-address books, each with a name that can be changed the same way, as
-**Rename…** in the sidebar does, and a switch of its own, under the
+field gives the account a name of its own in Tegami Mail, in this list,
+while GNOME Contacts and Evolution keep the account's. An account's page
+lists its address books, each with a name that can be changed the same way,
+and a switch of its own, under the
 account's switch. A name left blank, applied, is the account's or the
 book's own again. The Tegami Mail book's page holds its import and export. A
 GNOME Online Accounts account's page has **Open Online Accounts**, where its
@@ -608,109 +605,24 @@ this, and a contact saved without a name keeps the message's.
 
 Tegami Mail keeps an address book of its own, the **Tegami Mail Address Book**, beside
 the address books of GNOME Contacts, which Evolution Data Server (EDS)
-holds. It is there whether EDS is installed or not. Its contacts are
-created, edited and deleted like any other, and their addresses and photos
-are used for suggestions and avatars.
+holds. It is there whether EDS is installed or not. Its addresses and photos
+are used for suggestions and avatars. **Add Sender to Contacts**, in a
+message's menus, puts an address in it, or in the book chosen under **Save
+new contacts in**. Tegami Mail has no contacts view of its own: contacts in a
+GNOME Contacts or online book are edited there.
 
-The Contacts view searches as the message list does. The search button in
-the list's header, <kbd>Ctrl+F</kbd> or <kbd>/</kbd> shows the search field,
-and <kbd>Esc</kbd>, or leaving the field empty, hides it and clears the
-search. **Settings → Contacts → Keep the search field open** shows it at
-all times. The button at the right of the header sorts the people by first
-name, last name or email. Its **Show only** column keeps those with a photo,
-an email address, a phone number, a street address, a birthday or a
-company, or those in no group. The button turns the accent color while a
-filter is on, and **Clear Filters** shows everything again.
-
-**Contacts** is a row of the sidebar's footer, above Attachments, unless
-**Settings → Sidebar → Sections** places it elsewhere. In the footer, or
-with Contacts off, a dropdown over the list picks **All Address Books** or
-one of them, and a book lists its groups and then its contacts. Above or
-below the accounts, the row opens every contact, and its chevron opens the list beneath:
-the Tegami Mail book first, then each account. An account with one address
-book is that book's row, with the account or server it is kept by in
-small type under its name; an account with several is a row of its own,
-with how many contacts they hold together, and its books under it.
-Every book shows how many contacts it holds, and its groups are under
-it. An account or a book with groups folds and opens with the caret
-beside it, as a folder with sub-folders does; the list, the accounts and
-the books stay open or folded as they were left. Picking a book lists its
-groups, by name, and then its contacts; picking an account lists the
-groups and contacts of all its books. Picking a book opens Contacts on its contacts alone; picking a
-group lists the group and then its people, with **Remove from Group** in
-their right-click menu. An LDAP directory, under **Directories**, is
-searched by typing. A book's right-click menu has **New Contact** and
-**New Group**, made in that book, and **Rename…**, which gives the book
-a name of its own in Tegami Mail: in the sidebar, on its contacts' cards and
-wherever Tegami Mail names it, while GNOME Contacts and Evolution keep the
-book's own. **Use Its Own Name**, in the same window, goes back to it. A
-group's menu has **New Message**, **Edit Group** and **Delete Group…**.
-
-Contacts dragged from the list onto a book in the sidebar are copied
-there, and stay where they were. With <kbd>Ctrl</kbd> held as they are
-dropped they move instead, after a question that names both books.
-Dropped onto a group, they join it, copied first into the group's book
-when it needs them (see [Contact groups](#contact-groups)). A drag takes
-every contact selected with the one dragged. A book Tegami Mail cannot write
-to, and a group it cannot change, take no drop.
-
-Several contacts are selected together with <kbd>Ctrl</kbd> or
-<kbd>Shift</kbd> and a click, or <kbd>Ctrl+A</kbd> for the whole list. The
-right-hand pane then lists them, with **Add to Group**, which puts them in
-a group (those it can take: see [Contact groups](#contact-groups)), **Move
-to…**, which moves them to another address book, and **Delete…**; a
-right-click on one of them offers the same. A move adds each contact to the
-book picked and removes it from the one it was in, locally and on the
-server, with its photo; a group that names it by its card in the old book
-loses it. Contacts in a book Tegami Mail cannot write to are not moved. With a
-group picked in the sidebar, the pane has **Remove from Group** for them
-too.
-
-A new contact, made with the **+** button, has an **Address
-book** row at the top of its form that picks where it is saved; it starts on
-the book picked in the sidebar, or on the default book when every book is
-shown. A contact being edited can move to another book
-from the same row, which then names the one it is in: saving asks first,
-and moves it with its changes. A contact's right-click menu has **Move to
-Address Book** too, and several selected together move with **Move to…**
-(see below). A move takes the contact out of its book and puts it in the
-other, locally and on the server, after a question that names both; a group
-in the old book that held the contact no longer has it. A contact in a book
-Tegami Mail cannot write to stays where it is.
-
-The contact form holds the photo, which **Change Photo…** replaces with an
-image file (made at most 512 pixels a side and kept in the card) and
-**Remove Photo** takes away; the name, nickname, organization, title and
-birthday (a day and a month, the year if known); email addresses and phone
-numbers, each with a label (Home, Work, Mobile, Fax); postal addresses, in
-their parts; websites; and a note. No field is required: a card with only a
-phone number, or only a company, is a contact, and one with no name is
-listed by its email address, nickname, company or phone number, which the
-list also shows under the name when there is no email address. Every card
-in every book is listed, so someone kept in two books shows twice, each
-with its book named.
-
-The Tegami Mail book's page in **Settings → Contacts** shows how many contacts it
-holds, and has **Import vCard files**, **Export as a vCard file** (one `.vcf`
-file with every contact, which other apps can import) and **Delete all
-contacts**, which asks first and leaves the other books alone. **Save new
-contacts in**, on the same page as the list, sets the default book for
-contacts made in Tegami Mail, from the Contacts view or with **Add Sender to
-Contacts**. Until it is set, a new contact goes to the first writable EDS
-book, or to the Tegami Mail book when there is none.
-
-Importing reads `.vcf` files into the Tegami Mail book, from Settings or from the
-import button in the Contacts view's header. A file can hold many contacts,
-in vCard 2.1, 3.0 or 4.0. A contact with the same ID as one already in the
-book updates it, and one without an ID is matched by its content, so
-importing a file twice adds nothing new. A contact list in the file becomes
-a group (see [Contact groups](#contact-groups)). Entries with neither a name
-nor an address are skipped; truncated or oversized entries
-(over 5 MB) are counted as damaged; a second card with the same ID in one
-file is skipped, so the first is kept. Files over 50 MB are refused, and
-photos are used only when they are inside the file: nothing is fetched from
-the web. A person who is in both an EDS book and the Tegami Mail book appears in
-each, with the book named, and once in the composer's suggestions.
+**Settings → Contacts → Tegami Mail Address Book** imports `.vcf` files into
+it, exports it, and deletes all of it. A file can hold many contacts, in
+vCard 2.1, 3.0 or 4.0. A contact with the same ID as one already in the book
+updates it, and one without an ID is matched by its content, so importing a
+file twice adds nothing new. A contact list in the file becomes a group (see
+[Contact groups](#contact-groups)). Entries with neither a name nor an
+address are skipped; truncated or oversized entries (over 5 MB) are counted
+as damaged; a second card with the same ID in one file is skipped, so the
+first is kept. Files over 50 MB are refused, and photos are used only when
+they are inside the file: nothing is fetched from the web. A person who is
+in both an EDS book and the Tegami Mail book is offered once in the
+composer's suggestions.
 
 The book is the file `local_contacts.db` in Tegami Mail's data folder, kept apart
 from the mail cache, so clearing the cache leaves it alone.
@@ -721,59 +633,12 @@ A group is a name for several people, such as a team or a club, that the
 composer offers like a contact. Typing part of its name in To, Cc or Bcc
 lists it among the suggestions with the number of people in it, and picking
 it adds a pill for each of them. People already in that field are not added
-twice.
+twice. Groups come from the address books: those GNOME Contacts or a
+CardDAV server keep, and the contact lists of an imported `.vcf` file.
 
-A group can be set to **Send as Bcc**. Picking it in any field then puts its
-people in Bcc, and opens the Bcc row, so they do not see each other's
-addresses. To still needs at least one address, your own for example.
-
-A group is listed in the sidebar under its address book, and picking it
-lists its people (see [The Tegami Mail address book](#the-tegami-address-book)).
-
-**New Group**, under the **+** button in the Contacts view, makes a group in
-the address book picked at the top of the form: the Tegami Mail book, a book on
-this computer, or a CardDAV book such as iCloud's. Google and Microsoft 365
-keep no groups, so their books are not offered. Add people by typing part of a name or address and picking
-from the matches under the field, or by typing or pasting addresses and
-pressing <kbd>Return</kbd>. The matches are the composer's suggestions: your
-contacts, and the addresses in the mail you have sent and received, marked
-with a clock. <kbd>↓</kbd> and <kbd>↑</kbd> move through them and
-<kbd>Return</kbd> adds the one highlighted. Anyone with an address can be in
-a group, not only people in your contacts. A contact's right-click menu has **Add to Group**,
-and a group's card has **New Message**, which writes to everyone in it. The
-group's pencil, at the top of its card, changes its name, its people and the
-Bcc switch, and its **Address book** moves it to another book: saving makes
-the group there, with its people, and then removes it from the book it was
-in. Moved into a CardDAV book, its people are copied there as contacts when
-the book does not have them yet; moved into the Tegami Mail book or one on this
-computer, whose groups hold addresses, its people with no email address are
-left out. The form says so when another book is picked.
-
-The lists made in Evolution, kept in the books of Evolution Data Server, are
-shown and offered too, and Evolution's **Hide addresses when sending mail to
-this list** is the same as **Send as Bcc**. They can be changed in Tegami Mail as
-well.
-
-A group in the Tegami Mail book or on this computer is saved as an Evolution list,
-so **Export as a vCard file** carries it to Evolution, and back. A group in
-a CardDAV book is saved as Apple Contacts and iCloud save theirs, which
-the Apple apps, Fastmail and DAVx⁵ read as groups too. Such a group holds
-contacts of its own book. A contact of another book put in it with **Add
-to Group** is copied to the group's book first, whole: phone numbers,
-photo and all, and the original stays where it was. Someone the book
-already has, by address (or, with no address, by name), is not copied
-again. Someone added in the group's form by typing an address is added to
-the book as a contact with their name and address. The groups made by Apple
-Contacts and iCloud can be changed in Tegami Mail the same way. Such a group can
-hold people with no email address, known by a phone number for example:
-they are listed in it as having none, and mail to the group goes to the
-others. An Evolution list holds addresses, so a contact with none cannot
-join one.
-Send as Bcc is kept in the group, where other apps pass it over. A vCard 4
-group (`KIND:group`) is shown and offered with the people it names in the
-same book, but is changed in the app it came from. Groups are not counted as contacts in **Settings →
-Contacts**, and the people in a group do not count as contacts for the
-filters below.
+A group set to **Send as Bcc** puts its people in Bcc whichever field it is
+picked in, and opens the Bcc row, so they do not see each other's addresses.
+To still needs at least one address, your own for example.
 
 ### Filtering on Contacts
 

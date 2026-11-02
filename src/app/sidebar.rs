@@ -83,8 +83,6 @@ impl AppModel {
             favorites: self.favorites.clone(),
             favorites_expanded: self.favorites_expanded,
             smart_expanded: self.smart_expanded,
-            contacts_expanded: self.contacts_expanded,
-            contacts_folded: self.contacts_folded.clone(),
             filtered_expanded_accounts: self.filtered_expanded_accounts.clone(),
             tags_expanded_accounts: self.tags_expanded_accounts.clone(),
         });
@@ -349,7 +347,6 @@ impl AppModel {
             snoozed,
             favorites,
             smart,
-            contacts,
         } = msg
         else {
             unreachable!("only SidebarSectionsOpen comes here")
@@ -367,7 +364,6 @@ impl AppModel {
             snoozed,
             favorites,
             smart,
-            contacts,
         ];
         let was = [
             self.unified_expanded,
@@ -382,7 +378,6 @@ impl AppModel {
             self.snoozed_expanded,
             self.favorites_expanded,
             self.smart_expanded,
-            self.contacts_expanded,
         ];
         if now != was {
             self.unified_expanded = all_inboxes;
@@ -397,7 +392,6 @@ impl AppModel {
             self.snoozed_expanded = snoozed;
             self.favorites_expanded = favorites;
             self.smart_expanded = smart;
-            self.contacts_expanded = contacts;
             self.save_sidebar_state();
         }
     }

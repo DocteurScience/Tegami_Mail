@@ -5,7 +5,6 @@ use relm4::prelude::*;
 
 use crate::config;
 use crate::models::{thread_ids, Message, ThreadSummary};
-use crate::ui::contacts_page::ContactsPageInput;
 use crate::ui::message_list::{DateBound, MessageListInput, QuickFilter, QuickFilters};
 use crate::ui::message_view::MessageViewInput;
 use crate::worker::MailRequest;
@@ -152,11 +151,8 @@ impl AppModel {
 
             AppMsg::OpenListSearch => {
                 // Ctrl+F routes by focus (#102/#103): in the reader it finds
-                // within the message, everywhere else it searches the list
-                // shown, Contacts' included.
-                if self.showing_contacts {
-                    self.contacts_page.emit(ContactsPageInput::FocusSearch);
-                } else if self.reader_has_focus() && self.current.is_some() {
+                // within the message, everywhere else it searches the list.
+                if self.reader_has_focus() && self.current.is_some() {
                     self.message_view.emit(MessageViewInput::OpenFind);
                 } else {
                     self.message_list.emit(MessageListInput::FocusSearch);

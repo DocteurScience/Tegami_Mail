@@ -650,7 +650,6 @@ impl AppModel {
             );
             let slots = [
                 self.reader_compose_revealer.clone(),
-                self.contacts_compose_revealer.clone(),
                 self.reader_split_top.clone(),
                 self.reader_split_bottom.clone(),
             ];

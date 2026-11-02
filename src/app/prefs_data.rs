@@ -54,9 +54,7 @@ impl AppModel {
     pub(super) fn on_prefs_data_pref(&mut self, pref: PrefOutput, sender: ComponentSender<Self>) {
         match pref {
             PrefOutput::SetContactBook(uid) => {
-                if pref!(self.contact_book = uid) && self.showing_contacts {
-                    reload_contacts(&sender, 0);
-                }
+                pref!(self.contact_book = uid);
             }
             PrefOutput::LoadContactBooks => {
                 if demo_mode() {
@@ -76,12 +74,9 @@ impl AppModel {
             }
             PrefOutput::ImportLocalContacts => {
                 let s = sender.clone();
-                crate::ui::contacts_page::choose_vcf_files(
-                    self.dialog_parent().as_ref(),
-                    move |paths| {
-                        s.input(AppMsg::ImportContacts(paths));
-                    },
-                );
+                super::contacts::choose_vcf_files(self.dialog_parent().as_ref(), move |paths| {
+                    s.input(AppMsg::ImportContacts(paths));
+                });
             }
             PrefOutput::ExportLocalContacts => {
                 let dialog = gtk::FileDialog::builder()

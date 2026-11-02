@@ -107,7 +107,6 @@ impl AppModel {
                 settings::stage_settings_go(sender);
                 settings::stage_add_contact(sender);
                 settings::stage_dialog();
-                self.stage_contacts(sender);
                 // TEGAMI_SHOWCASE_SETTINGS names a Settings panel to open
                 // and to capture instead of the main window.
                 let settings = std::env::var("TEGAMI_SHOWCASE_SETTINGS").ok();

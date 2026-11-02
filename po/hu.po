@@ -218,9 +218,6 @@ msgstr "Új üzenet"
 msgid "Tegami Mail Address Book"
 msgstr "Címjegyzék"
 
-msgid "Tegami Mail cannot change this kind of group"
-msgstr ""
-
 msgid "On This Computer"
 msgstr "Ezen a számítógépen"
 
@@ -1171,9 +1168,6 @@ msgstr ""
 
 msgid "All accounts"
 msgstr "Összes fiók"
-
-msgid "Contacts"
-msgstr "Névjegyek"
 
 msgid "Outbox"
 msgstr "Kimenő"
@@ -3863,6 +3857,9 @@ msgstr ""
 msgid "LDAP Directory"
 msgstr "LDAP Mappa"
 
+msgid "Contacts"
+msgstr "Névjegyek"
+
 #, fuzzy
 msgid "Address Books"
 msgstr "Címjegyzék"
@@ -3908,19 +3905,6 @@ msgstr "Nincsenek névjegyek"
 msgid "Saved addresses show the contact's name, not the mail's."
 msgstr ""
 
-msgid "Layout"
-msgstr ""
-
-#, fuzzy
-msgid "Contacts placement"
-msgstr "Címkék elhelyezése"
-
-msgid "'In the footer' disables expand/collapse."
-msgstr ""
-
-msgid "Keep the search field open"
-msgstr ""
-
 #, fuzzy
 msgid "Address Book"
 msgstr "Címjegyzék"
@@ -3928,450 +3912,6 @@ msgstr "Címjegyzék"
 #, fuzzy
 msgid "Looking for address books on {name}…"
 msgstr "Kulcs keresése ehhez: {addr}…"
-
-#, fuzzy
-msgid "Tegami Mail, on this computer"
-msgstr "Ezen a számítógépen"
-
-#, fuzzy
-msgid "Edit Group"
-msgstr "Jobb oldali csoport"
-
-#, fuzzy
-msgid "Delete Group…"
-msgstr "Törli a kulcsát?"
-
-msgid "New Contact"
-msgstr "Új névjegy"
-
-#, fuzzy
-msgid "New Group"
-msgstr "Bal oldali csoport"
-
-#, fuzzy
-msgid "Rename…"
-msgstr "Átnevezés"
-
-#, fuzzy
-msgid "Show or hide"
-msgstr "Címkék megjelenítése vagy elrejtése"
-
-#, fuzzy
-msgid "Rename Address Book"
-msgstr "Címjegyzék"
-
-msgid ""
-"The name is used in Tegami Mail only; GNOME Contacts and Evolution keep the "
-"book's own."
-msgstr ""
-
-msgid "Use Its Own Name"
-msgstr ""
-
-#, fuzzy
-msgid "All Address Books"
-msgstr "Címjegyzék"
-
-#, fuzzy
-msgid "Move Contact?"
-msgstr "Névjegyek megnyitása"
-
-msgid ""
-"This will move {name} out of {from} and into {to}, locally and on the "
-"server. A group in {from} that holds the contact will no longer have it."
-msgstr ""
-
-#, fuzzy
-msgid "Move {n} Contact?"
-msgid_plural "Move {n} Contacts?"
-msgstr[0] "Névjegyek megnyitása"
-msgstr[1] "Névjegyek megnyitása"
-
-msgid ""
-"This will move {n} contact out of the address book it is in and into {to}, "
-"locally and on the server. A group there that holds it will no longer have "
-"it."
-msgid_plural ""
-"This will move {n} contacts out of the address books they are in and into "
-"{to}, locally and on the server. Groups there that hold them will no longer "
-"have them."
-msgstr[0] ""
-msgstr[1] ""
-
-#, fuzzy
-msgid "Move"
-msgstr "Áthelyezés ide"
-
-msgid "View photo"
-msgstr "Fénykép megtekintése"
-
-msgid "Add to Contacts"
-msgstr "Hozzáadás a névjegyekhez"
-
-msgid "Email"
-msgstr "E-mail"
-
-msgid "Phone"
-msgstr "Telefon"
-
-msgid "Address"
-msgstr "Cím"
-
-msgid "Website"
-msgstr "Honlap"
-
-msgid "Birthday"
-msgstr ""
-
-#. ---- note ----
-msgid "Note"
-msgstr ""
-
-#, fuzzy
-msgid "Directory"
-msgstr "Könyvtár hozzáadása"
-
-msgid "Details"
-msgstr ""
-
-msgid "Members"
-msgstr ""
-
-#, fuzzy
-msgid "No email address"
-msgstr "E-mail-cím"
-
-msgid "No one is in this group yet."
-msgstr ""
-
-msgid "Changed in the app it came from"
-msgstr ""
-
-msgid ""
-"This group names its members by contact, which Tegami Mail does not edit."
-msgstr ""
-
-msgid ""
-"Saving moves the group to this address book, with its people, and removes it "
-"from {book}."
-msgstr ""
-
-msgid ""
-"Groups here hold addresses, so people with no email address are left out."
-msgstr ""
-
-msgid "Group"
-msgstr ""
-
-#, fuzzy
-msgid "Send as Bcc"
-msgstr "Összes küldése"
-
-msgid "Members do not see each other's addresses."
-msgstr ""
-
-#. An Apple group (iCloud's) holds cards of its own book.
-msgid ""
-"Groups in this address book hold its own contacts: anyone added who is not "
-"in it yet is added to it."
-msgstr ""
-
-msgid "Edit Contact"
-msgstr "Névjegy szerkesztése"
-
-#. ---- identity fields ----
-msgid "Identity"
-msgstr ""
-
-msgid "Nickname"
-msgstr ""
-
-#, fuzzy
-msgid "Organization"
-msgstr "Fordította"
-
-msgid "Title"
-msgstr ""
-
-msgid "Another book moves the contact there when saved."
-msgstr ""
-
-msgid "Add email"
-msgstr "E-mail hozzáadása"
-
-msgid "Add phone"
-msgstr "Telefonszám hozzáadása"
-
-msgid "Add website"
-msgstr "Webhely hozzáadása"
-
-msgid "No label"
-msgstr ""
-
-msgid "Home"
-msgstr ""
-
-msgid "Work"
-msgstr ""
-
-msgid "Mobile"
-msgstr ""
-
-msgid "Fax"
-msgstr ""
-
-msgid "Label"
-msgstr ""
-
-#, fuzzy
-msgid "Add address"
-msgstr "Cím"
-
-msgid "Street"
-msgstr ""
-
-msgid "City"
-msgstr ""
-
-msgid "State or region"
-msgstr ""
-
-msgid "Postal code"
-msgstr ""
-
-msgid "Country"
-msgstr ""
-
-msgid "No birthday"
-msgstr ""
-
-msgid "Year"
-msgstr ""
-
-msgid "Change Photo…"
-msgstr ""
-
-#, fuzzy
-msgid "Remove Photo"
-msgstr "Címke eltávolítása"
-
-#, fuzzy
-msgid "Choose a Photo"
-msgstr "Kép választása"
-
-msgid "{shown} of {total}"
-msgstr "{shown} / {total}"
-
-#, fuzzy
-msgid "In Directories"
-msgstr "LDAP Mappák"
-
-msgid "Type three letters or more to search the directory."
-msgstr ""
-
-msgid "Nobody in the directory matches."
-msgstr ""
-
-#, fuzzy
-msgid "Remove from Group"
-msgstr "Szűrő eltávolítása"
-
-msgid "Add to Group"
-msgstr ""
-
-#, fuzzy
-msgid "Move to Address Book"
-msgstr "Címjegyzék"
-
-msgid "Delete…"
-msgstr "Törlés…"
-
-msgid "Edit"
-msgstr "Szerkesztés"
-
-msgid "Open in GNOME Contacts"
-msgstr "Megnyitás a GNOME Névjegyekben"
-
-#, fuzzy
-msgid "{n} Group Selected"
-msgid_plural "{n} Groups Selected"
-msgstr[0] "Beszélgetés törlésének megerősítése"
-msgstr[1] "Beszélgetés törlésének megerősítése"
-
-#, fuzzy
-msgid "{n} Contact Selected"
-msgid_plural "{n} Contacts Selected"
-msgstr[0] "Beszélgetés törlésének megerősítése"
-msgstr[1] "Beszélgetés törlésének megerősítése"
-
-msgid "Move to…"
-msgstr "Áthelyezés…"
-
-#, fuzzy
-msgid "Move to another address book"
-msgstr "El akarod menteni a könyvtárat?"
-
-#, fuzzy
-msgid "Selected"
-msgstr "Kijelöltek importálása"
-
-msgid "Add a person by name or address"
-msgstr ""
-
-#, fuzzy
-msgid "No email address · {book}"
-msgstr "E-mail-cím"
-
-msgid "First name"
-msgstr "Keresztnév"
-
-msgid "Last name"
-msgstr "Vezetéknév"
-
-#, fuzzy
-msgid "Sort and filter contacts"
-msgstr "{n} db üzenet"
-
-#, fuzzy
-msgid "Import Contacts"
-msgstr "Névjegyek rendezése"
-
-#, fuzzy
-msgid "vCard files"
-msgstr "Nagy fájlok"
-
-msgid "All files"
-msgstr "Minden fájl"
-
-#, fuzzy
-msgid "Directories"
-msgstr "LDAP Mappák"
-
-msgid "Has Photo"
-msgstr ""
-
-#, fuzzy
-msgid "Has Email"
-msgstr "E-mail"
-
-#, fuzzy
-msgid "Has Phone"
-msgstr "Telefon"
-
-#, fuzzy
-msgid "Has Address"
-msgstr "Cím"
-
-msgid "Has Birthday"
-msgstr ""
-
-msgid "Has Company"
-msgstr ""
-
-#, fuzzy
-msgid "Not in a Group"
-msgstr "Bal oldali csoport"
-
-msgid ""
-"This will remove the group {name} from your address book locally and on the "
-"server. The contacts are not removed."
-msgstr ""
-
-msgid ""
-"This will remove the group {name} from your address book. The contacts are "
-"not removed."
-msgstr ""
-
-#, fuzzy
-msgid "Delete Group?"
-msgstr "Törli a kulcsát?"
-
-msgid ""
-"This will remove the contact {name} from your address book locally and on "
-"the server."
-msgstr ""
-
-msgid "This will remove the contact {name} from your address book."
-msgstr ""
-
-msgid "Delete Contact?"
-msgstr "Törli a névjegyet?"
-
-#, fuzzy
-msgid "Delete {n} Group?"
-msgid_plural "Delete {n} Groups?"
-msgstr[0] "Törli a kulcsát?"
-msgstr[1] "Törli a kulcsát?"
-
-msgid ""
-"This will remove {n} group from your address books locally and on the "
-"server. The contacts are not removed."
-msgid_plural ""
-"This will remove {n} groups from your address books locally and on the "
-"server. The contacts are not removed."
-msgstr[0] ""
-msgstr[1] ""
-
-msgid ""
-"This will remove {n} group from your address book. The contacts are not "
-"removed."
-msgid_plural ""
-"This will remove {n} groups from your address books. The contacts are not "
-"removed."
-msgstr[0] ""
-msgstr[1] ""
-
-#, fuzzy
-msgid "Delete {n} Contact?"
-msgid_plural "Delete {n} Contacts?"
-msgstr[0] "Törli a névjegyet?"
-msgstr[1] "Törli a névjegyet?"
-
-msgid ""
-"This will remove {n} contact from your address books locally and on the "
-"server."
-msgid_plural ""
-"This will remove {n} contacts from your address books locally and on the "
-"server."
-msgstr[0] ""
-msgstr[1] ""
-
-msgid "This will remove {n} contact from your address book."
-msgid_plural "This will remove {n} contacts from your address books."
-msgstr[0] ""
-msgstr[1] ""
-
-msgid "Toggle sidebar"
-msgstr "Oldalsáv ki/bekapcsolása"
-
-msgid "Import vCard files into the Tegami Mail address book"
-msgstr ""
-
-#, fuzzy
-msgid "New contact or group"
-msgstr "Új névjegy"
-
-msgid "Loading Contacts…"
-msgstr "Névjegyek betöltése…"
-
-msgid "No Contacts"
-msgstr "Nincsenek névjegyek"
-
-msgid ""
-"Add a contact with the + button, or import vCard files. Contacts are kept in "
-"Tegami Mail's own address book, and the address books of GNOME Contacts are "
-"listed here too."
-msgstr ""
-
-#, fuzzy
-msgid "Search contacts (Ctrl+F)"
-msgstr "Névjegyek keresése"
-
-msgid "Search contacts"
-msgstr "Névjegyek keresése"
-
-msgid "Edit contact"
-msgstr "Névjegy szerkesztése"
 
 #, fuzzy
 msgid "Attach to Message"
@@ -4629,6 +4169,9 @@ msgstr ""
 msgid "Mark as read"
 msgstr "Megjelölés olvasottként"
 
+msgid "Move to…"
+msgstr "Áthelyezés…"
+
 msgid "Not spam"
 msgstr "Nem levélszemét"
 
@@ -4762,6 +4305,9 @@ msgstr "Elrejtés a preview text"
 #, fuzzy
 msgid "Copy Address"
 msgstr "Hivatkozás másolása"
+
+msgid "Add to Contacts"
+msgstr "Hozzáadás a névjegyekhez"
 
 msgid "Double-click to open in a new window"
 msgstr "Kattintson duplán az új ablakban való megnyitáshoz"
@@ -5308,6 +4854,9 @@ msgstr ""
 msgid "Generate"
 msgstr "Létrehozás"
 
+msgid "Address"
+msgstr "Cím"
+
 msgid "Expires"
 msgstr "Lejárat"
 
@@ -5331,6 +4880,9 @@ msgstr "Kulcs importálása"
 
 msgid "OpenPGP keys"
 msgstr "OpenPGP-kulcsok"
+
+msgid "All files"
+msgstr "Minden fájl"
 
 msgid "Could not import: {e}"
 msgstr "Nem importálható: {e}"
@@ -5497,16 +5049,6 @@ msgstr "15 percenként"
 
 msgid "Every 30 minutes"
 msgstr "30 percenként"
-
-#, fuzzy
-msgid "In the footer"
-msgstr "Elmented a szűrőt?"
-
-msgid "Above the accounts"
-msgstr "A fiókok felett"
-
-msgid "Below the accounts"
-msgstr "A fiókok alatt"
 
 #. GNOME Settings' own names for its alert sounds.
 msgid "Click"
@@ -5704,6 +5246,12 @@ msgstr "Egységes"
 #, fuzzy
 msgid "Tree style"
 msgstr "Műveletek"
+
+msgid "Above the accounts"
+msgstr "A fiókok felett"
+
+msgid "Below the accounts"
+msgstr "A fiókok alatt"
 
 msgid "All Inboxes"
 msgstr "Összes beérkezett"
@@ -5993,6 +5541,9 @@ msgstr ""
 "Az általad elküldött üzenetek a fiók Gravatar-képét, fotóját vagy emojiját "
 "jelenítik meg, ahogyan az oldalsávban található kör is."
 
+msgid "Layout"
+msgstr ""
+
 msgid "Automatic uses single lines in wide windows."
 msgstr ""
 
@@ -6009,6 +5560,9 @@ msgid "Tags and labels under the text"
 msgstr ""
 
 msgid "Gives the subject its full width."
+msgstr ""
+
+msgid "Keep the search field open"
 msgstr ""
 
 #, fuzzy
@@ -6343,6 +5897,9 @@ msgstr "Eltávolítva: {name}"
 msgid "Could not save the PDF: {error}"
 msgstr "A PDF nem menthető: {error}"
 
+msgid "Edit"
+msgstr "Szerkesztés"
+
 #, fuzzy
 msgid "Custom…"
 msgstr "Egyéni szín…"
@@ -6590,10 +6147,6 @@ msgstr "Minden címke megjelenítése"
 #, fuzzy
 msgid "Show each smart folder"
 msgstr "Minden mappa megjelenítése"
-
-#, fuzzy
-msgid "Show each address book"
-msgstr "El akarod menteni a könyvtárat?"
 
 msgid "Long-press to expand or collapse"
 msgstr "Hosszú gombnyomással kibontható vagy összecsukható"
@@ -7223,6 +6776,9 @@ msgstr ""
 msgid "No address book available to add contacts"
 msgstr "Névjegyek hozzáadásához nem érhető el címjegyzék"
 
+msgid "Email"
+msgstr "E-mail"
+
 msgid "Added to Contacts"
 msgstr "Hozzáadva a névjegyekhez"
 
@@ -7235,25 +6791,6 @@ msgstr "Már a névjegyek között van ({name})"
 msgid "Could not add contact: {e}"
 msgstr "A névjegy nem adható hozzá: {e}"
 
-msgid "No address book available"
-msgstr "Nem érhető el címjegyzék"
-
-#, fuzzy
-msgid "Could not rename the address book: {e}"
-msgstr "A mappa nem nevezhető át: {e}"
-
-#, fuzzy
-msgid "{n} contact was not copied: {e}"
-msgid_plural "{n} contacts were not copied: {e}"
-msgstr[0] "A napló exportálva ide: {display}"
-msgstr[1] "A napló exportálva ide: {display}"
-
-#, fuzzy
-msgid "{n} contact was not moved: {e}"
-msgid_plural "{n} contacts were not moved: {e}"
-msgstr[0] "A napló exportálva ide: {display}"
-msgstr[1] "A napló exportálva ide: {display}"
-
 msgid "Could not update contact: {e}"
 msgstr "A névjegy nem frissíthető: {e}"
 
@@ -7264,6 +6801,14 @@ msgstr "A fiók nem importálható: {e}"
 #, fuzzy
 msgid "Could not read: {files}"
 msgstr "A alkalmazás újraindítása nem sikerült"
+
+#, fuzzy
+msgid "Import Contacts"
+msgstr "Névjegyek rendezése"
+
+#, fuzzy
+msgid "vCard files"
+msgstr "Nagy fájlok"
 
 msgid "Search filters"
 msgstr "Keresési szűrők"
@@ -7305,6 +6850,9 @@ msgstr "Tárhely"
 
 msgid "Mail Account"
 msgstr "Levelezési fiók"
+
+msgid "Nickname"
+msgstr ""
 
 msgid "Display Name"
 msgstr "Megjelenítési név"
@@ -8304,6 +7852,252 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#, fuzzy
+#~ msgid "Contacts placement"
+#~ msgstr "Címkék elhelyezése"
+
+#, fuzzy
+#~ msgid "Tegami Mail, on this computer"
+#~ msgstr "Ezen a számítógépen"
+
+#, fuzzy
+#~ msgid "Edit Group"
+#~ msgstr "Jobb oldali csoport"
+
+#, fuzzy
+#~ msgid "Delete Group…"
+#~ msgstr "Törli a kulcsát?"
+
+#~ msgid "New Contact"
+#~ msgstr "Új névjegy"
+
+#, fuzzy
+#~ msgid "New Group"
+#~ msgstr "Bal oldali csoport"
+
+#, fuzzy
+#~ msgid "Rename…"
+#~ msgstr "Átnevezés"
+
+#, fuzzy
+#~ msgid "Show or hide"
+#~ msgstr "Címkék megjelenítése vagy elrejtése"
+
+#, fuzzy
+#~ msgid "Rename Address Book"
+#~ msgstr "Címjegyzék"
+
+#, fuzzy
+#~ msgid "All Address Books"
+#~ msgstr "Címjegyzék"
+
+#, fuzzy
+#~ msgid "Move Contact?"
+#~ msgstr "Névjegyek megnyitása"
+
+#, fuzzy
+#~ msgid "Move {n} Contact?"
+#~ msgid_plural "Move {n} Contacts?"
+#~ msgstr[0] "Névjegyek megnyitása"
+#~ msgstr[1] "Névjegyek megnyitása"
+
+#, fuzzy
+#~ msgid "Move"
+#~ msgstr "Áthelyezés ide"
+
+#~ msgid "View photo"
+#~ msgstr "Fénykép megtekintése"
+
+#~ msgid "Phone"
+#~ msgstr "Telefon"
+
+#~ msgid "Website"
+#~ msgstr "Honlap"
+
+#, fuzzy
+#~ msgid "Directory"
+#~ msgstr "Könyvtár hozzáadása"
+
+#, fuzzy
+#~ msgid "No email address"
+#~ msgstr "E-mail-cím"
+
+#, fuzzy
+#~ msgid "Send as Bcc"
+#~ msgstr "Összes küldése"
+
+#~ msgid "Edit Contact"
+#~ msgstr "Névjegy szerkesztése"
+
+#, fuzzy
+#~ msgid "Organization"
+#~ msgstr "Fordította"
+
+#~ msgid "Add email"
+#~ msgstr "E-mail hozzáadása"
+
+#~ msgid "Add phone"
+#~ msgstr "Telefonszám hozzáadása"
+
+#~ msgid "Add website"
+#~ msgstr "Webhely hozzáadása"
+
+#, fuzzy
+#~ msgid "Add address"
+#~ msgstr "Cím"
+
+#, fuzzy
+#~ msgid "Remove Photo"
+#~ msgstr "Címke eltávolítása"
+
+#, fuzzy
+#~ msgid "Choose a Photo"
+#~ msgstr "Kép választása"
+
+#~ msgid "{shown} of {total}"
+#~ msgstr "{shown} / {total}"
+
+#, fuzzy
+#~ msgid "In Directories"
+#~ msgstr "LDAP Mappák"
+
+#, fuzzy
+#~ msgid "Remove from Group"
+#~ msgstr "Szűrő eltávolítása"
+
+#, fuzzy
+#~ msgid "Move to Address Book"
+#~ msgstr "Címjegyzék"
+
+#~ msgid "Delete…"
+#~ msgstr "Törlés…"
+
+#~ msgid "Open in GNOME Contacts"
+#~ msgstr "Megnyitás a GNOME Névjegyekben"
+
+#, fuzzy
+#~ msgid "{n} Group Selected"
+#~ msgid_plural "{n} Groups Selected"
+#~ msgstr[0] "Beszélgetés törlésének megerősítése"
+#~ msgstr[1] "Beszélgetés törlésének megerősítése"
+
+#, fuzzy
+#~ msgid "{n} Contact Selected"
+#~ msgid_plural "{n} Contacts Selected"
+#~ msgstr[0] "Beszélgetés törlésének megerősítése"
+#~ msgstr[1] "Beszélgetés törlésének megerősítése"
+
+#, fuzzy
+#~ msgid "Move to another address book"
+#~ msgstr "El akarod menteni a könyvtárat?"
+
+#, fuzzy
+#~ msgid "Selected"
+#~ msgstr "Kijelöltek importálása"
+
+#, fuzzy
+#~ msgid "No email address · {book}"
+#~ msgstr "E-mail-cím"
+
+#~ msgid "First name"
+#~ msgstr "Keresztnév"
+
+#~ msgid "Last name"
+#~ msgstr "Vezetéknév"
+
+#, fuzzy
+#~ msgid "Sort and filter contacts"
+#~ msgstr "{n} db üzenet"
+
+#, fuzzy
+#~ msgid "Directories"
+#~ msgstr "LDAP Mappák"
+
+#, fuzzy
+#~ msgid "Has Email"
+#~ msgstr "E-mail"
+
+#, fuzzy
+#~ msgid "Has Phone"
+#~ msgstr "Telefon"
+
+#, fuzzy
+#~ msgid "Has Address"
+#~ msgstr "Cím"
+
+#, fuzzy
+#~ msgid "Not in a Group"
+#~ msgstr "Bal oldali csoport"
+
+#, fuzzy
+#~ msgid "Delete Group?"
+#~ msgstr "Törli a kulcsát?"
+
+#~ msgid "Delete Contact?"
+#~ msgstr "Törli a névjegyet?"
+
+#, fuzzy
+#~ msgid "Delete {n} Group?"
+#~ msgid_plural "Delete {n} Groups?"
+#~ msgstr[0] "Törli a kulcsát?"
+#~ msgstr[1] "Törli a kulcsát?"
+
+#, fuzzy
+#~ msgid "Delete {n} Contact?"
+#~ msgid_plural "Delete {n} Contacts?"
+#~ msgstr[0] "Törli a névjegyet?"
+#~ msgstr[1] "Törli a névjegyet?"
+
+#~ msgid "Toggle sidebar"
+#~ msgstr "Oldalsáv ki/bekapcsolása"
+
+#, fuzzy
+#~ msgid "New contact or group"
+#~ msgstr "Új névjegy"
+
+#~ msgid "Loading Contacts…"
+#~ msgstr "Névjegyek betöltése…"
+
+#~ msgid "No Contacts"
+#~ msgstr "Nincsenek névjegyek"
+
+#, fuzzy
+#~ msgid "Search contacts (Ctrl+F)"
+#~ msgstr "Névjegyek keresése"
+
+#~ msgid "Search contacts"
+#~ msgstr "Névjegyek keresése"
+
+#~ msgid "Edit contact"
+#~ msgstr "Névjegy szerkesztése"
+
+#, fuzzy
+#~ msgid "In the footer"
+#~ msgstr "Elmented a szűrőt?"
+
+#, fuzzy
+#~ msgid "Show each address book"
+#~ msgstr "El akarod menteni a könyvtárat?"
+
+#~ msgid "No address book available"
+#~ msgstr "Nem érhető el címjegyzék"
+
+#, fuzzy
+#~ msgid "Could not rename the address book: {e}"
+#~ msgstr "A mappa nem nevezhető át: {e}"
+
+#, fuzzy
+#~ msgid "{n} contact was not copied: {e}"
+#~ msgid_plural "{n} contacts were not copied: {e}"
+#~ msgstr[0] "A napló exportálva ide: {display}"
+#~ msgstr[1] "A napló exportálva ide: {display}"
+
+#, fuzzy
+#~ msgid "{n} contact was not moved: {e}"
+#~ msgid_plural "{n} contacts were not moved: {e}"
+#~ msgstr[0] "A napló exportálva ide: {display}"
+#~ msgstr[1] "A napló exportálva ide: {display}"
 
 #~ msgid "Go to Message"
 #~ msgstr "Ugrás az üzenethez"

@@ -3,14 +3,12 @@
 use adw::prelude::*;
 use relm4::prelude::*;
 
-use crate::i18n::{i18n, i18n_f, ni18n_f};
-use crate::ui::contacts_page::ContactsPageInput;
+use crate::i18n::{i18n, i18n_f};
 use crate::ui::message_list::MessageListInput;
 use crate::ui::message_view::MessageViewInput;
 use crate::ui::message_window::MessageWindowInput;
 use crate::ui::notifications::NotifyInput;
 use crate::ui::preferences::PrefInput;
-use crate::ui::sidebar::SidebarInput;
 
 use super::demo::demo_mode;
 use super::model::AppModel;
@@ -29,39 +27,22 @@ pub(super) fn sync_contact_books(sender: &ComponentSender<AppModel>, force: bool
     });
 }
 
-/// Runs a contact write off the main thread (EDS is talked to over
-/// blocking D-Bus) and reports its error, if any, as ContactWriteDone.
-fn spawn_contact_write(
-    sender: &ComponentSender<AppModel>,
-    write: impl FnOnce() -> Option<String> + Send + 'static,
-) {
-    let s = sender.clone();
-    std::thread::spawn(move || {
-        let err = write();
-        s.input(AppMsg::ContactWriteDone(err));
-    });
-}
-
-/// Read the contacts, the books new ones can go to and the Tegami Mail book's
-/// size off the main thread, after `delay_ms` (EDS takes a moment to flush
+/// Tell what depends on the contacts to read them again, and read the books
+/// new ones can go to and the Tegami Mail book's size, off the main thread, after `delay_ms` (EDS takes a moment to flush
 /// a write to the cache the read goes through).
 pub(super) fn reload_contacts(sender: &ComponentSender<AppModel>, delay_ms: u64) {
     let s = sender.clone();
     std::thread::spawn(move || {
         std::thread::sleep(std::time::Duration::from_millis(delay_ms));
         if demo_mode() {
-            s.input(AppMsg::ContactsLoaded(crate::contacts::demo_contacts()));
+            s.input(AppMsg::ContactsLoaded);
             s.input(AppMsg::ContactBooksLoaded {
                 books: crate::contacts::demo_books(),
                 local_count: 1,
             });
             return;
         }
-        let contacts = crate::contacts::read_contact_details();
-        crate::services::avatar::retain_photo_thumbnails(
-            &contacts.iter().map(|c| c.photo_key).collect(),
-        );
-        s.input(AppMsg::ContactsLoaded(contacts));
+        s.input(AppMsg::ContactsLoaded);
         s.input(AppMsg::ContactBooksLoaded {
             books: crate::contacts::writable_books(),
             local_count: crate::contacts::local::count(),
@@ -204,20 +185,6 @@ impl AppModel {
         dialog.present();
     }
 
-    /// Show Contacts in place of the mail panes, read afresh.
-    fn show_contacts_view(&mut self, sender: &ComponentSender<Self>) {
-        self.close_sidebar_peek();
-        self.showing_outbox = false;
-        self.showing_contacts = true;
-        // Read EDS off the UI thread (SQLite + photo decoding); the page
-        // shows its loading face until the list lands.
-        self.contacts_page.emit(ContactsPageInput::SetLoading);
-        reload_contacts(sender, 0);
-        if !demo_mode() {
-            sync_contact_books(sender, false, 0);
-        }
-    }
-
     /// The messages the router sends here (see `AppModel::route`).
     pub(super) fn on_contacts(&mut self, msg: AppMsg, sender: ComponentSender<Self>) {
         match msg {
@@ -260,39 +227,11 @@ impl AppModel {
                 if self.contact_names {
                     self.read_contact_names(&sender);
                 }
-                // The books' files changed: a sync landed, which EDS writes
-                // after its refresh call has already returned (#408).
-                if self.showing_contacts && !demo_mode() {
-                    reload_contacts(&sender, 0);
-                }
-            }
-
-            AppMsg::OpenContacts => {
-                self.mirror_selection(crate::ui::sidebar::Sel::Contacts);
-                self.show_contacts_view(&sender);
-            }
-
-            AppMsg::ContactTree(tree) => {
-                self.sidebar
-                    .emit(SidebarInput::SetContactTree(tree.clone()));
-                self.peek_sidebar.emit(SidebarInput::SetContactTree(tree));
-            }
-
-            AppMsg::ContactScope(scope) => {
-                // A book or group under the sidebar's Contacts row opens
-                // Contacts on it.
-                if !self.showing_contacts {
-                    self.show_contacts_view(&sender);
-                } else {
-                    self.close_sidebar_peek();
-                }
-                self.contacts_page.emit(ContactsPageInput::SetScope(scope));
             }
 
             AppMsg::ContactBooksSynced => {
-                // EDS writes what it fetched just after the sync returns.
-                // Read even while Contacts is hidden: the page keeps its
-                // list between visits, and this keeps that list current.
+                // EDS writes what it fetched just after the sync returns:
+                // the books Settings lists and the names the list shows.
                 reload_contacts(&sender, 1500);
                 if self.filters.iter().any(|r| r.needs_contacts()) {
                     self.saved_addresses.refresh();
@@ -304,26 +243,9 @@ impl AppModel {
                     p.emit(PrefInput::SetContactBooks(books.clone()));
                     p.emit(PrefInput::SetLocalContactCount(local_count));
                 }
-                self.contacts_page.emit(ContactsPageInput::SetBooks(books));
             }
 
-            AppMsg::ContactSuggestions => {
-                let own: Vec<(String, String)> = self
-                    .config
-                    .iter()
-                    .map(|c| (c.name.clone(), c.email.clone()))
-                    .collect();
-                let page = self.contacts_page.sender().clone();
-                std::thread::spawn(move || {
-                    let _ = page.send(ContactsPageInput::SuggestionsLoaded(
-                        crate::contacts::suggestions(&own),
-                    ));
-                });
-            }
-
-            AppMsg::ContactsLoaded(contacts) => {
-                self.contacts_page
-                    .emit(ContactsPageInput::SetContacts(contacts));
+            AppMsg::ContactsLoaded => {
                 // A contact was saved, deleted or imported: the rules on
                 // whether a sender is in Contacts should know.
                 if self.filters.iter().any(|r| r.needs_contacts()) {
@@ -349,151 +271,13 @@ impl AppModel {
                 }
             }
 
-            AppMsg::LaunchGnomeContacts => crate::ui::contacts_browser::launch_gnome_contacts(),
-
-            AppMsg::SaveContact { book_uid, vcard } => {
-                spawn_contact_write(&sender, move || {
-                    let result = crate::contacts::modify_contact(&book_uid, &vcard);
-                    result.err()
-                });
-            }
-
-            AppMsg::CreateContact { book_uid, vcard } => {
-                spawn_contact_write(&sender, move || {
-                    // No book picked (none was listed yet): the default one.
-                    let book_uid = match book_uid {
-                        Some(uid) => Some(uid),
-                        None => crate::contacts::writable_books()
-                            .first()
-                            .map(|b| b.uid.clone()),
-                    };
-                    let result = match book_uid {
-                        Some(uid) => crate::contacts::create_contact(&uid, &vcard),
-                        None => Err(i18n("No address book available")),
-                    };
-                    result.err()
-                });
-            }
-
-            AppMsg::SaveGroup {
-                book_uid,
-                format,
-                original,
-                edit,
-            } => {
-                spawn_contact_write(&sender, move || {
-                    let result =
-                        crate::contacts::save_group(&book_uid, format, original.as_deref(), edit);
-                    result.err()
-                });
-            }
-
-            AppMsg::DeleteContacts(keys) => {
-                spawn_contact_write(&sender, move || {
-                    // One call per book.
-                    let mut by_book: Vec<(String, Vec<String>)> = Vec::new();
-                    for (book, uid) in keys {
-                        match by_book.iter_mut().find(|(b, _)| *b == book) {
-                            Some((_, uids)) => uids.push(uid),
-                            None => by_book.push((book, vec![uid])),
-                        }
-                    }
-                    by_book
-                        .iter()
-                        .filter_map(|(book, uids)| {
-                            crate::contacts::delete_contacts(book, uids).err()
-                        })
-                        .next()
-                });
-            }
-
-            AppMsg::MoveGroup {
-                from,
-                uid,
-                to,
-                format,
-                edit,
-            } => {
-                spawn_contact_write(&sender, move || {
-                    let result = crate::contacts::move_group(&from, &uid, &to, format, edit);
-                    result.err()
-                });
-            }
-
-            AppMsg::ContactDrop { keys, on, moving } => {
-                self.contacts_page
-                    .emit(ContactsPageInput::DropContacts { keys, on, moving });
-            }
-
-            AppMsg::ContactTreeAction(action) => {
-                self.close_sidebar_peek();
-                self.contacts_page.emit(ContactsPageInput::Tree(action));
-            }
-
-            AppMsg::ContactsFolded(keys) => {
-                self.contacts_folded = keys;
-                self.save_sidebar_state();
-            }
-
-            AppMsg::RenameBook { uid, name } => {
-                if let Err(e) = crate::contacts::contact_sources::set_name(&uid, name.as_deref()) {
-                    self.notice_error(i18n_f(
-                        "Could not rename the address book: {e}",
-                        &[("e", &e)],
-                    ));
-                }
-                // Every name of the book is read again with the books.
-                reload_contacts(&sender, 0);
-            }
-
-            AppMsg::CopyContacts { to, cards } => {
-                spawn_contact_write(&sender, move || {
-                    let failed: Vec<String> = cards
-                        .iter()
-                        .filter_map(|card| crate::contacts::create_contact(&to, card).err())
-                        .collect();
-                    failed.first().map(|e| {
-                        let n = failed.len() as u32;
-                        ni18n_f(
-                            "{n} contact was not copied: {e}",
-                            "{n} contacts were not copied: {e}",
-                            n,
-                            &[("n", &n.to_string()), ("e", e)],
-                        )
-                    })
-                });
-            }
-
-            AppMsg::MoveContacts { to, cards } => {
-                spawn_contact_write(&sender, move || {
-                    let failed: Vec<String> = cards
-                        .iter()
-                        .filter_map(|(book, uid, vcard)| {
-                            crate::contacts::move_contact(book, uid, vcard, &to).err()
-                        })
-                        .collect();
-                    failed.first().map(|e| {
-                        let n = failed.len() as u32;
-                        ni18n_f(
-                            "{n} contact was not moved: {e}",
-                            "{n} contacts were not moved: {e}",
-                            n,
-                            &[("n", &n.to_string()), ("e", e)],
-                        )
-                    })
-                });
-            }
-
             AppMsg::ContactWriteDone(err) => {
                 if let Some(e) = err {
-                    // What was taken off the list may still be there.
-                    self.contacts_page.emit(ContactsPageInput::WriteFailed);
                     self.notice_error(i18n_f(
                         "Could not update contact: {e}",
                         &[("e", &(e).to_string())],
                     ));
                 }
-                // Success or not, re-read so the card shows what EDS holds.
                 // A short pause lets EDS flush the write to its SQLite cache
                 // (that is what the read goes through).
                 reload_contacts(&sender, 500);
@@ -537,6 +321,41 @@ impl AppModel {
             _ => unreachable!("not routed to on_contacts"),
         }
     }
+}
+
+/// Ask for `.vcf` files to import into the Tegami Mail book, and hand their paths
+/// to `done` (never called for a cancelled dialog or no files).
+pub(super) fn choose_vcf_files(
+    parent: Option<&gtk::Window>,
+    done: impl Fn(Vec<std::path::PathBuf>) + 'static,
+) {
+    let dialog = gtk::FileDialog::builder()
+        .title(i18n("Import Contacts"))
+        .build();
+    let filter = gtk::FileFilter::new();
+    filter.set_name(Some(&i18n("vCard files")));
+    filter.add_pattern("*.vcf");
+    filter.add_pattern("*.vcard");
+    filter.add_mime_type("text/vcard");
+    filter.add_mime_type("text/x-vcard");
+    let filters = gtk::gio::ListStore::new::<gtk::FileFilter>();
+    filters.append(&filter);
+    let any = gtk::FileFilter::new();
+    any.set_name(Some(&i18n("All files")));
+    any.add_pattern("*");
+    filters.append(&any);
+    dialog.set_filters(Some(&filters));
+    dialog.open_multiple(parent, gtk::gio::Cancellable::NONE, move |res| {
+        let Ok(files) = res else { return };
+        let paths: Vec<std::path::PathBuf> = files
+            .iter::<gtk::gio::File>()
+            .flatten()
+            .filter_map(|f| f.path())
+            .collect();
+        if !paths.is_empty() {
+            done(paths);
+        }
+    });
 }
 
 /// Nothing keeps a CardDAV or Online Accounts address book in step

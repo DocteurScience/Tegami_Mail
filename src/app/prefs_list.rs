@@ -3,7 +3,6 @@
 use relm4::prelude::*;
 
 use crate::config;
-use crate::ui::contacts_page::ContactsPageInput;
 use crate::ui::message_list::MessageListInput;
 use crate::ui::preferences::PrefOutput;
 
@@ -39,12 +38,6 @@ impl AppModel {
             PrefOutput::SetContactNames(on) => {
                 if pref!(self.contact_names = on) {
                     self.read_contact_names(&sender);
-                }
-            }
-            PrefOutput::SetContactsSearchOpen(on) => {
-                if pref!(self.contacts_search_open = on) {
-                    self.contacts_page
-                        .emit(ContactsPageInput::SetSearchPinned(on));
                 }
             }
             PrefOutput::SetListSearchBottom(on) => {

@@ -9,7 +9,6 @@ use crate::config;
 use crate::i18n::i18n;
 use crate::models::{FolderKind, Message};
 use crate::ui::compose::ComposeInput;
-use crate::ui::contacts_page::ContactsPageInput;
 use crate::ui::message_list::{BulkAction, MessageListInput, RowAction};
 use crate::ui::message_view::MessageViewInput;
 
@@ -28,11 +27,6 @@ use super::undo::{FlagChange, FlagKind, FlagRef, UndoStep};
 impl AppModel {
     /// Carry out a single-key shortcut.
     fn run_shortcut(&mut self, action: Shortcut, sender: &ComponentSender<Self>) {
-        // Contacts covers the list and the reader: a key there must not
-        // act on mail out of sight, Delete outside its list above all.
-        if self.showing_contacts && action.acts_on_selection() {
-            return;
-        }
         // Checking rows with none checked: say why the key did nothing
         // (#392).
         if self.checked == Some(0) && action.acts_on_selection() {
@@ -52,9 +46,6 @@ impl AppModel {
                 } else {
                     self.message_list.emit(MessageListInput::FocusList);
                 }
-            }
-            Shortcut::Search if self.showing_contacts => {
-                self.contacts_page.emit(ContactsPageInput::FocusSearch)
             }
             Shortcut::Search => self.message_list.emit(MessageListInput::FocusSearch),
             // The open message's own view, not the reader's first page,
@@ -98,7 +89,6 @@ impl AppModel {
             }
             Shortcut::InWindow(what) => sender.input(AppMsg::ComposeInWindow(what)),
             Shortcut::Refresh => sender.input(AppMsg::Refresh),
-            Shortcut::GoTo(GoTarget::Contacts) => sender.input(AppMsg::OpenContacts),
             Shortcut::GoTo(GoTarget::Kind(kind)) => {
                 // The merged view when the sidebar lists one, else the
                 // account's own folder of that kind.

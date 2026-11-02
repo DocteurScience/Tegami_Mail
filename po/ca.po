@@ -209,9 +209,6 @@ msgstr "Missatge nou"
 msgid "Tegami Mail Address Book"
 msgstr "Llibreta d'adreces de l'Tegami Mail"
 
-msgid "Tegami Mail cannot change this kind of group"
-msgstr "L'Tegami Mail no pot modificar aquest tipus de grup"
-
 msgid "On This Computer"
 msgstr "En aquest ordinador"
 
@@ -1103,9 +1100,6 @@ msgstr "Visualitza"
 
 msgid "All accounts"
 msgstr "Tots els comptes"
-
-msgid "Contacts"
-msgstr "Contactes"
 
 msgid "Outbox"
 msgstr "Bústia de sortida"
@@ -3702,6 +3696,9 @@ msgstr ""
 msgid "LDAP Directory"
 msgstr "Directori LDAP"
 
+msgid "Contacts"
+msgstr "Contactes"
+
 msgid "Address Books"
 msgstr "Llibretes d'adreces"
 
@@ -3748,465 +3745,11 @@ msgstr "De contactes"
 msgid "Saved addresses show the contact's name, not the mail's."
 msgstr ""
 
-msgid "Layout"
-msgstr "Disposició"
-
-msgid "Contacts placement"
-msgstr "Col·locació dels contactes"
-
-msgid "'In the footer' disables expand/collapse."
-msgstr "«Al peu» desactiva l'expandir/replegar."
-
-msgid "Keep the search field open"
-msgstr "Mantén obert el camp de cerca"
-
 msgid "Address Book"
 msgstr "Llibreta d'adreces"
 
 msgid "Looking for address books on {name}…"
 msgstr "S'estan cercant llibretes d'adreces a {name}…"
-
-msgid "Tegami Mail, on this computer"
-msgstr "Tegami Mail, en aquest ordinador"
-
-msgid "Edit Group"
-msgstr "Edita el grup"
-
-msgid "Delete Group…"
-msgstr "Suprimeix el grup…"
-
-msgid "New Contact"
-msgstr "Contacte nou"
-
-msgid "New Group"
-msgstr "Grup nou"
-
-msgid "Rename…"
-msgstr "Canvia el nom…"
-
-msgid "Show or hide"
-msgstr "Mostra o amaga"
-
-msgid "Rename Address Book"
-msgstr "Canvia el nom de la llibreta d'adreces"
-
-msgid ""
-"The name is used in Tegami Mail only; GNOME Contacts and Evolution keep the "
-"book's own."
-msgstr ""
-"El nom només s'utilitza a l'Tegami Mail; els contactes del GNOME i "
-"l'Evolution mantenen el propi de la llibreta."
-
-msgid "Use Its Own Name"
-msgstr "Utilitza el seu propi nom"
-
-msgid "All Address Books"
-msgstr "Totes les llibretes d'adreces"
-
-msgid "Move Contact?"
-msgstr "Vols moure el contacte?"
-
-msgid ""
-"This will move {name} out of {from} and into {to}, locally and on the "
-"server. A group in {from} that holds the contact will no longer have it."
-msgstr ""
-"Això mourà {name} de {from} a {to}, localment i al servidor. Un grup a "
-"{from} que contingui el contacte deixarà de tenir-lo."
-
-msgid "Move {n} Contact?"
-msgid_plural "Move {n} Contacts?"
-msgstr[0] "Vols moure {n} contacte?"
-msgstr[1] "Vols moure {n} contactes?"
-
-msgid ""
-"This will move {n} contact out of the address book it is in and into {to}, "
-"locally and on the server. A group there that holds it will no longer have "
-"it."
-msgid_plural ""
-"This will move {n} contacts out of the address books they are in and into "
-"{to}, locally and on the server. Groups there that hold them will no longer "
-"have them."
-msgstr[0] ""
-"Això mourà {n} contacte de la llibreta d'adreces on és a {to}, localment i "
-"al servidor. Un grup allà que el contingui deixarà de tenir-lo."
-msgstr[1] ""
-"Això mourà {n} contactes de les llibretes d'adreces on són a {to}, localment "
-"i al servidor. Els grups allà que els continguin deixaran de tenir-los."
-
-msgid "Move"
-msgstr "Mou"
-
-msgid "View photo"
-msgstr "Mostra la foto"
-
-msgid "Add to Contacts"
-msgstr "Afegeix a contactes"
-
-msgid "Email"
-msgstr "Correu electrònic"
-
-msgid "Phone"
-msgstr "Telèfon"
-
-msgid "Address"
-msgstr "Adreça"
-
-msgid "Website"
-msgstr "Lloc web"
-
-msgid "Birthday"
-msgstr "Aniversari"
-
-#. ---- note ----
-msgid "Note"
-msgstr "Nota"
-
-msgid "Directory"
-msgstr "Directori"
-
-msgid "Details"
-msgstr "Detalls"
-
-msgid "Members"
-msgstr "Membres"
-
-msgid "No email address"
-msgstr "Sense adreça de correu"
-
-msgid "No one is in this group yet."
-msgstr "Encara no hi ha ningú en aquest grup."
-
-msgid "Changed in the app it came from"
-msgstr "Canviat a l'aplicació d'on prové"
-
-msgid ""
-"This group names its members by contact, which Tegami Mail does not edit."
-msgstr ""
-"Aquest grup anomena els seus membres per contacte, cosa que l'Tegami Mail no "
-"edita."
-
-msgid ""
-"Saving moves the group to this address book, with its people, and removes it "
-"from {book}."
-msgstr ""
-"Desar mou el grup a aquesta llibreta d'adreces, amb la seva gent, i "
-"l'elimina de {book}."
-
-msgid ""
-"Groups here hold addresses, so people with no email address are left out."
-msgstr ""
-"Els grups d'aquí contenen adreces, així que les persones sense adreça de "
-"correu queden fora."
-
-msgid "Group"
-msgstr "Grup"
-
-msgid "Send as Bcc"
-msgstr "Envia com a Cco"
-
-msgid "Members do not see each other's addresses."
-msgstr "Els membres no veuen les adreces dels altres."
-
-#. An Apple group (iCloud's) holds cards of its own book.
-msgid ""
-"Groups in this address book hold its own contacts: anyone added who is not "
-"in it yet is added to it."
-msgstr ""
-"Els grups d'aquesta llibreta d'adreces contenen els seus propis contactes: "
-"qualsevol que s'hi afegeixi i no hi sigui encara s'hi afegeix."
-
-msgid "Edit Contact"
-msgstr "Edita el contacte"
-
-#. ---- identity fields ----
-msgid "Identity"
-msgstr "Identitat"
-
-msgid "Nickname"
-msgstr "Àlies"
-
-msgid "Organization"
-msgstr "Organització"
-
-msgid "Title"
-msgstr "Càrrec"
-
-msgid "Another book moves the contact there when saved."
-msgstr "Una altra llibreta mou el contacte allà quan es desa."
-
-msgid "Add email"
-msgstr "Afegeix un correu"
-
-msgid "Add phone"
-msgstr "Afegeix un telèfon"
-
-msgid "Add website"
-msgstr "Afegeix un lloc web"
-
-msgid "No label"
-msgstr "Sense etiqueta"
-
-msgid "Home"
-msgstr "Casa"
-
-msgid "Work"
-msgstr "Feina"
-
-msgid "Mobile"
-msgstr "Mòbil"
-
-msgid "Fax"
-msgstr "Fax"
-
-msgid "Label"
-msgstr "Etiqueta"
-
-msgid "Add address"
-msgstr "Afegeix una adreça"
-
-msgid "Street"
-msgstr "Carrer"
-
-msgid "City"
-msgstr "Ciutat"
-
-msgid "State or region"
-msgstr "Estat o regió"
-
-msgid "Postal code"
-msgstr "Codi postal"
-
-msgid "Country"
-msgstr "País"
-
-msgid "No birthday"
-msgstr "Sense aniversari"
-
-msgid "Year"
-msgstr "Any"
-
-msgid "Change Photo…"
-msgstr "Canvia la foto…"
-
-msgid "Remove Photo"
-msgstr "Elimina la foto"
-
-msgid "Choose a Photo"
-msgstr "Tria una foto"
-
-msgid "{shown} of {total}"
-msgstr "{shown} de {total}"
-
-msgid "In Directories"
-msgstr "Als directoris"
-
-msgid "Type three letters or more to search the directory."
-msgstr "Escriu tres lletres o més per cercar al directori."
-
-msgid "Nobody in the directory matches."
-msgstr "Ningú del directori coincideix."
-
-msgid "Remove from Group"
-msgstr "Treu del grup"
-
-msgid "Add to Group"
-msgstr "Afegeix a un grup"
-
-msgid "Move to Address Book"
-msgstr "Mou a una llibreta d'adreces"
-
-msgid "Delete…"
-msgstr "Suprimeix…"
-
-msgid "Edit"
-msgstr "Edita"
-
-msgid "Open in GNOME Contacts"
-msgstr "Obre als contactes del GNOME"
-
-msgid "{n} Group Selected"
-msgid_plural "{n} Groups Selected"
-msgstr[0] "{n} grup seleccionat"
-msgstr[1] "{n} grups seleccionats"
-
-msgid "{n} Contact Selected"
-msgid_plural "{n} Contacts Selected"
-msgstr[0] "{n} contacte seleccionat"
-msgstr[1] "{n} contactes seleccionats"
-
-msgid "Move to…"
-msgstr "Mou a…"
-
-msgid "Move to another address book"
-msgstr "Mou a una altra llibreta d'adreces"
-
-msgid "Selected"
-msgstr "Seleccionat"
-
-msgid "Add a person by name or address"
-msgstr "Afegeix una persona pel nom o l'adreça"
-
-msgid "No email address · {book}"
-msgstr "Sense adreça de correu · {book}"
-
-msgid "First name"
-msgstr "Nom"
-
-msgid "Last name"
-msgstr "Cognom"
-
-msgid "Sort and filter contacts"
-msgstr "Ordena i filtra contactes"
-
-msgid "Import Contacts"
-msgstr "Importa contactes"
-
-msgid "vCard files"
-msgstr "Fitxers vCard"
-
-msgid "All files"
-msgstr "Tots els fitxers"
-
-msgid "Directories"
-msgstr "Directoris"
-
-msgid "Has Photo"
-msgstr "Té foto"
-
-msgid "Has Email"
-msgstr "Té correu"
-
-msgid "Has Phone"
-msgstr "Té telèfon"
-
-msgid "Has Address"
-msgstr "Té adreça"
-
-msgid "Has Birthday"
-msgstr "Té aniversari"
-
-msgid "Has Company"
-msgstr "Té empresa"
-
-msgid "Not in a Group"
-msgstr "No és en cap grup"
-
-msgid ""
-"This will remove the group {name} from your address book locally and on the "
-"server. The contacts are not removed."
-msgstr ""
-"Això eliminarà el grup {name} de la teva llibreta d'adreces localment i al "
-"servidor. Els contactes no s'eliminen."
-
-msgid ""
-"This will remove the group {name} from your address book. The contacts are "
-"not removed."
-msgstr ""
-"Això eliminarà el grup {name} de la teva llibreta d'adreces. Els contactes "
-"no s'eliminen."
-
-msgid "Delete Group?"
-msgstr "Vols suprimir el grup?"
-
-msgid ""
-"This will remove the contact {name} from your address book locally and on "
-"the server."
-msgstr ""
-"Això eliminarà el contacte {name} de la teva llibreta d'adreces localment i "
-"al servidor."
-
-msgid "This will remove the contact {name} from your address book."
-msgstr "Això eliminarà el contacte {name} de la teva llibreta d'adreces."
-
-msgid "Delete Contact?"
-msgstr "Vols suprimir el contacte?"
-
-msgid "Delete {n} Group?"
-msgid_plural "Delete {n} Groups?"
-msgstr[0] "Vols suprimir {n} grup?"
-msgstr[1] "Vols suprimir {n} grups?"
-
-msgid ""
-"This will remove {n} group from your address books locally and on the "
-"server. The contacts are not removed."
-msgid_plural ""
-"This will remove {n} groups from your address books locally and on the "
-"server. The contacts are not removed."
-msgstr[0] ""
-"Això eliminarà {n} grup de les teves llibretes d'adreces localment i al "
-"servidor. Els contactes no s'eliminen."
-msgstr[1] ""
-"Això eliminarà {n} grups de les teves llibretes d'adreces localment i al "
-"servidor. Els contactes no s'eliminen."
-
-msgid ""
-"This will remove {n} group from your address book. The contacts are not "
-"removed."
-msgid_plural ""
-"This will remove {n} groups from your address books. The contacts are not "
-"removed."
-msgstr[0] ""
-"Això eliminarà {n} grup de la teva llibreta d'adreces. Els contactes no "
-"s'eliminen."
-msgstr[1] ""
-"Això eliminarà {n} grups de les teves llibretes d'adreces. Els contactes no "
-"s'eliminen."
-
-msgid "Delete {n} Contact?"
-msgid_plural "Delete {n} Contacts?"
-msgstr[0] "Vols suprimir {n} contacte?"
-msgstr[1] "Vols suprimir {n} contactes?"
-
-msgid ""
-"This will remove {n} contact from your address books locally and on the "
-"server."
-msgid_plural ""
-"This will remove {n} contacts from your address books locally and on the "
-"server."
-msgstr[0] ""
-"Això eliminarà {n} contacte de les teves llibretes d'adreces localment i al "
-"servidor."
-msgstr[1] ""
-"Això eliminarà {n} contactes de les teves llibretes d'adreces localment i al "
-"servidor."
-
-msgid "This will remove {n} contact from your address book."
-msgid_plural "This will remove {n} contacts from your address books."
-msgstr[0] "Això eliminarà {n} contacte de la teva llibreta d'adreces."
-msgstr[1] "Això eliminarà {n} contactes de les teves llibretes d'adreces."
-
-msgid "Toggle sidebar"
-msgstr "Mostra o amaga la barra lateral"
-
-msgid "Import vCard files into the Tegami Mail address book"
-msgstr "Importa fitxers vCard a la llibreta d'adreces de l'Tegami Mail"
-
-msgid "New contact or group"
-msgstr "Contacte o grup nou"
-
-msgid "Loading Contacts…"
-msgstr "S'estan carregant els contactes…"
-
-msgid "No Contacts"
-msgstr "No hi ha contactes"
-
-msgid ""
-"Add a contact with the + button, or import vCard files. Contacts are kept in "
-"Tegami Mail's own address book, and the address books of GNOME Contacts are "
-"listed here too."
-msgstr ""
-"Afegeix un contacte amb el botó +, o importa fitxers vCard. Els contactes es "
-"conserven a la llibreta d'adreces pròpia de l'Tegami Mail, i les llibretes "
-"d'adreces dels contactes del GNOME també es llisten aquí."
-
-msgid "Search contacts (Ctrl+F)"
-msgstr "Cerca contactes (Ctrl+F)"
-
-msgid "Search contacts"
-msgstr "Cerca contactes"
-
-msgid "Edit contact"
-msgstr "Edita el contacte"
 
 #, fuzzy
 msgid "Attach to Message"
@@ -4455,6 +3998,9 @@ msgstr "Arrossega per redimensionar, doble clic per a l'amplada habitual"
 msgid "Mark as read"
 msgstr "Marca com a llegit"
 
+msgid "Move to…"
+msgstr "Mou a…"
+
 msgid "Not spam"
 msgstr "No és brossa"
 
@@ -4578,6 +4124,9 @@ msgstr "Amaga el text citat"
 #, fuzzy
 msgid "Copy Address"
 msgstr "Copia l'adreça de l'enllaç"
+
+msgid "Add to Contacts"
+msgstr "Afegeix a contactes"
 
 msgid "Double-click to open in a new window"
 msgstr "Fes doble clic per obrir en una finestra nova"
@@ -5104,6 +4653,9 @@ msgstr ""
 msgid "Generate"
 msgstr "Genera"
 
+msgid "Address"
+msgstr "Adreça"
+
 msgid "Expires"
 msgstr "Caduca"
 
@@ -5127,6 +4679,9 @@ msgstr "Importa una clau"
 
 msgid "OpenPGP keys"
 msgstr "Claus OpenPGP"
+
+msgid "All files"
+msgstr "Tots els fitxers"
 
 msgid "Could not import: {e}"
 msgstr "No s'ha pogut importar: {e}"
@@ -5289,15 +4844,6 @@ msgstr "Cada 15 minuts"
 
 msgid "Every 30 minutes"
 msgstr "Cada 30 minuts"
-
-msgid "In the footer"
-msgstr "Al peu"
-
-msgid "Above the accounts"
-msgstr "A sobre dels comptes"
-
-msgid "Below the accounts"
-msgstr "A sota dels comptes"
 
 #. GNOME Settings' own names for its alert sounds.
 msgid "Click"
@@ -5492,6 +5038,12 @@ msgstr "Estil unificat"
 
 msgid "Tree style"
 msgstr "Estil d'arbre"
+
+msgid "Above the accounts"
+msgstr "A sobre dels comptes"
+
+msgid "Below the accounts"
+msgstr "A sota dels comptes"
 
 msgid "All Inboxes"
 msgstr "Totes les bústies d'entrada"
@@ -5759,6 +5311,9 @@ msgstr "El correu enviat utilitza el cercle del teu compte"
 msgid "The account's picture or emoji, as in the sidebar."
 msgstr "La imatge o l'emoji del compte, com a la barra lateral."
 
+msgid "Layout"
+msgstr "Disposició"
+
 msgid "Automatic uses single lines in wide windows."
 msgstr "Automàtic utilitza línies individuals en finestres amples."
 
@@ -5776,6 +5331,9 @@ msgstr "Etiquetes i etiquetes del servidor sota el text"
 
 msgid "Gives the subject its full width."
 msgstr "Dona a l'assumpte tota l'amplada."
+
+msgid "Keep the search field open"
+msgstr "Mantén obert el camp de cerca"
 
 msgid "Search field position"
 msgstr "Posició del camp de cerca"
@@ -6113,6 +5671,9 @@ msgstr "S'ha desat {name}"
 msgid "Could not save the PDF: {error}"
 msgstr "No s'ha pogut desar el PDF: {error}"
 
+msgid "Edit"
+msgstr "Edita"
+
 msgid "Custom…"
 msgstr "Personalitzada…"
 
@@ -6341,9 +5902,6 @@ msgstr "Mostra cada etiqueta"
 
 msgid "Show each smart folder"
 msgstr "Mostra cada carpeta intel·ligent"
-
-msgid "Show each address book"
-msgstr "Mostra cada llibreta d'adreces"
 
 msgid "Long-press to expand or collapse"
 msgstr "Mantén premut per expandir o replegar"
@@ -6970,6 +6528,9 @@ msgstr "Contactes importats: {added} nous, {updated} actualitzats"
 msgid "No address book available to add contacts"
 msgstr "No hi ha cap llibreta d'adreces disponible per afegir contactes"
 
+msgid "Email"
+msgstr "Correu electrònic"
+
 msgid "Added to Contacts"
 msgstr "Afegit a contactes"
 
@@ -6982,22 +6543,6 @@ msgstr "Ja és a contactes ({name})"
 msgid "Could not add contact: {e}"
 msgstr "No s'ha pogut afegir el contacte: {e}"
 
-msgid "No address book available"
-msgstr "No hi ha cap llibreta d'adreces disponible"
-
-msgid "Could not rename the address book: {e}"
-msgstr "No s'ha pogut canviar el nom de la llibreta d'adreces: {e}"
-
-msgid "{n} contact was not copied: {e}"
-msgid_plural "{n} contacts were not copied: {e}"
-msgstr[0] "{n} contacte no s'ha pogut copiar: {e}"
-msgstr[1] "{n} contactes no s'han pogut copiar: {e}"
-
-msgid "{n} contact was not moved: {e}"
-msgid_plural "{n} contacts were not moved: {e}"
-msgstr[0] "{n} contacte no s'ha pogut moure: {e}"
-msgstr[1] "{n} contactes no s'han pogut moure: {e}"
-
 msgid "Could not update contact: {e}"
 msgstr "No s'ha pogut actualitzar el contacte: {e}"
 
@@ -7006,6 +6551,12 @@ msgstr "No s'han pogut importar els contactes: {e}"
 
 msgid "Could not read: {files}"
 msgstr "No s'ha pogut llegir: {files}"
+
+msgid "Import Contacts"
+msgstr "Importa contactes"
+
+msgid "vCard files"
+msgstr "Fitxers vCard"
 
 msgid "Search filters"
 msgstr "Cerca filtres"
@@ -7048,6 +6599,9 @@ msgstr "Emmagatzematge"
 
 msgid "Mail Account"
 msgstr "Compte de correu"
+
+msgid "Nickname"
+msgstr "Àlies"
 
 msgid "Display Name"
 msgstr "Nom visible"
@@ -8004,6 +7558,450 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Tegami Mail cannot change this kind of group"
+#~ msgstr "L'Tegami Mail no pot modificar aquest tipus de grup"
+
+#~ msgid "Contacts placement"
+#~ msgstr "Col·locació dels contactes"
+
+#~ msgid "'In the footer' disables expand/collapse."
+#~ msgstr "«Al peu» desactiva l'expandir/replegar."
+
+#~ msgid "Tegami Mail, on this computer"
+#~ msgstr "Tegami Mail, en aquest ordinador"
+
+#~ msgid "Edit Group"
+#~ msgstr "Edita el grup"
+
+#~ msgid "Delete Group…"
+#~ msgstr "Suprimeix el grup…"
+
+#~ msgid "New Contact"
+#~ msgstr "Contacte nou"
+
+#~ msgid "New Group"
+#~ msgstr "Grup nou"
+
+#~ msgid "Rename…"
+#~ msgstr "Canvia el nom…"
+
+#~ msgid "Show or hide"
+#~ msgstr "Mostra o amaga"
+
+#~ msgid "Rename Address Book"
+#~ msgstr "Canvia el nom de la llibreta d'adreces"
+
+#~ msgid ""
+#~ "The name is used in Tegami Mail only; GNOME Contacts and Evolution keep "
+#~ "the book's own."
+#~ msgstr ""
+#~ "El nom només s'utilitza a l'Tegami Mail; els contactes del GNOME i "
+#~ "l'Evolution mantenen el propi de la llibreta."
+
+#~ msgid "Use Its Own Name"
+#~ msgstr "Utilitza el seu propi nom"
+
+#~ msgid "All Address Books"
+#~ msgstr "Totes les llibretes d'adreces"
+
+#~ msgid "Move Contact?"
+#~ msgstr "Vols moure el contacte?"
+
+#~ msgid ""
+#~ "This will move {name} out of {from} and into {to}, locally and on the "
+#~ "server. A group in {from} that holds the contact will no longer have it."
+#~ msgstr ""
+#~ "Això mourà {name} de {from} a {to}, localment i al servidor. Un grup a "
+#~ "{from} que contingui el contacte deixarà de tenir-lo."
+
+#~ msgid "Move {n} Contact?"
+#~ msgid_plural "Move {n} Contacts?"
+#~ msgstr[0] "Vols moure {n} contacte?"
+#~ msgstr[1] "Vols moure {n} contactes?"
+
+#~ msgid ""
+#~ "This will move {n} contact out of the address book it is in and into "
+#~ "{to}, locally and on the server. A group there that holds it will no "
+#~ "longer have it."
+#~ msgid_plural ""
+#~ "This will move {n} contacts out of the address books they are in and into "
+#~ "{to}, locally and on the server. Groups there that hold them will no "
+#~ "longer have them."
+#~ msgstr[0] ""
+#~ "Això mourà {n} contacte de la llibreta d'adreces on és a {to}, localment "
+#~ "i al servidor. Un grup allà que el contingui deixarà de tenir-lo."
+#~ msgstr[1] ""
+#~ "Això mourà {n} contactes de les llibretes d'adreces on són a {to}, "
+#~ "localment i al servidor. Els grups allà que els continguin deixaran de "
+#~ "tenir-los."
+
+#~ msgid "Move"
+#~ msgstr "Mou"
+
+#~ msgid "View photo"
+#~ msgstr "Mostra la foto"
+
+#~ msgid "Phone"
+#~ msgstr "Telèfon"
+
+#~ msgid "Website"
+#~ msgstr "Lloc web"
+
+#~ msgid "Birthday"
+#~ msgstr "Aniversari"
+
+#~ msgid "Note"
+#~ msgstr "Nota"
+
+#~ msgid "Directory"
+#~ msgstr "Directori"
+
+#~ msgid "Details"
+#~ msgstr "Detalls"
+
+#~ msgid "Members"
+#~ msgstr "Membres"
+
+#~ msgid "No email address"
+#~ msgstr "Sense adreça de correu"
+
+#~ msgid "No one is in this group yet."
+#~ msgstr "Encara no hi ha ningú en aquest grup."
+
+#~ msgid "Changed in the app it came from"
+#~ msgstr "Canviat a l'aplicació d'on prové"
+
+#~ msgid ""
+#~ "This group names its members by contact, which Tegami Mail does not edit."
+#~ msgstr ""
+#~ "Aquest grup anomena els seus membres per contacte, cosa que l'Tegami Mail "
+#~ "no edita."
+
+#~ msgid ""
+#~ "Saving moves the group to this address book, with its people, and removes "
+#~ "it from {book}."
+#~ msgstr ""
+#~ "Desar mou el grup a aquesta llibreta d'adreces, amb la seva gent, i "
+#~ "l'elimina de {book}."
+
+#~ msgid ""
+#~ "Groups here hold addresses, so people with no email address are left out."
+#~ msgstr ""
+#~ "Els grups d'aquí contenen adreces, així que les persones sense adreça de "
+#~ "correu queden fora."
+
+#~ msgid "Group"
+#~ msgstr "Grup"
+
+#~ msgid "Send as Bcc"
+#~ msgstr "Envia com a Cco"
+
+#~ msgid "Members do not see each other's addresses."
+#~ msgstr "Els membres no veuen les adreces dels altres."
+
+#~ msgid ""
+#~ "Groups in this address book hold its own contacts: anyone added who is "
+#~ "not in it yet is added to it."
+#~ msgstr ""
+#~ "Els grups d'aquesta llibreta d'adreces contenen els seus propis "
+#~ "contactes: qualsevol que s'hi afegeixi i no hi sigui encara s'hi afegeix."
+
+#~ msgid "Edit Contact"
+#~ msgstr "Edita el contacte"
+
+#~ msgid "Identity"
+#~ msgstr "Identitat"
+
+#~ msgid "Organization"
+#~ msgstr "Organització"
+
+#~ msgid "Title"
+#~ msgstr "Càrrec"
+
+#~ msgid "Another book moves the contact there when saved."
+#~ msgstr "Una altra llibreta mou el contacte allà quan es desa."
+
+#~ msgid "Add email"
+#~ msgstr "Afegeix un correu"
+
+#~ msgid "Add phone"
+#~ msgstr "Afegeix un telèfon"
+
+#~ msgid "Add website"
+#~ msgstr "Afegeix un lloc web"
+
+#~ msgid "No label"
+#~ msgstr "Sense etiqueta"
+
+#~ msgid "Home"
+#~ msgstr "Casa"
+
+#~ msgid "Work"
+#~ msgstr "Feina"
+
+#~ msgid "Mobile"
+#~ msgstr "Mòbil"
+
+#~ msgid "Fax"
+#~ msgstr "Fax"
+
+#~ msgid "Label"
+#~ msgstr "Etiqueta"
+
+#~ msgid "Add address"
+#~ msgstr "Afegeix una adreça"
+
+#~ msgid "Street"
+#~ msgstr "Carrer"
+
+#~ msgid "City"
+#~ msgstr "Ciutat"
+
+#~ msgid "State or region"
+#~ msgstr "Estat o regió"
+
+#~ msgid "Postal code"
+#~ msgstr "Codi postal"
+
+#~ msgid "Country"
+#~ msgstr "País"
+
+#~ msgid "No birthday"
+#~ msgstr "Sense aniversari"
+
+#~ msgid "Year"
+#~ msgstr "Any"
+
+#~ msgid "Change Photo…"
+#~ msgstr "Canvia la foto…"
+
+#~ msgid "Remove Photo"
+#~ msgstr "Elimina la foto"
+
+#~ msgid "Choose a Photo"
+#~ msgstr "Tria una foto"
+
+#~ msgid "{shown} of {total}"
+#~ msgstr "{shown} de {total}"
+
+#~ msgid "In Directories"
+#~ msgstr "Als directoris"
+
+#~ msgid "Type three letters or more to search the directory."
+#~ msgstr "Escriu tres lletres o més per cercar al directori."
+
+#~ msgid "Nobody in the directory matches."
+#~ msgstr "Ningú del directori coincideix."
+
+#~ msgid "Remove from Group"
+#~ msgstr "Treu del grup"
+
+#~ msgid "Add to Group"
+#~ msgstr "Afegeix a un grup"
+
+#~ msgid "Move to Address Book"
+#~ msgstr "Mou a una llibreta d'adreces"
+
+#~ msgid "Delete…"
+#~ msgstr "Suprimeix…"
+
+#~ msgid "Open in GNOME Contacts"
+#~ msgstr "Obre als contactes del GNOME"
+
+#~ msgid "{n} Group Selected"
+#~ msgid_plural "{n} Groups Selected"
+#~ msgstr[0] "{n} grup seleccionat"
+#~ msgstr[1] "{n} grups seleccionats"
+
+#~ msgid "{n} Contact Selected"
+#~ msgid_plural "{n} Contacts Selected"
+#~ msgstr[0] "{n} contacte seleccionat"
+#~ msgstr[1] "{n} contactes seleccionats"
+
+#~ msgid "Move to another address book"
+#~ msgstr "Mou a una altra llibreta d'adreces"
+
+#~ msgid "Selected"
+#~ msgstr "Seleccionat"
+
+#~ msgid "Add a person by name or address"
+#~ msgstr "Afegeix una persona pel nom o l'adreça"
+
+#~ msgid "No email address · {book}"
+#~ msgstr "Sense adreça de correu · {book}"
+
+#~ msgid "First name"
+#~ msgstr "Nom"
+
+#~ msgid "Last name"
+#~ msgstr "Cognom"
+
+#~ msgid "Sort and filter contacts"
+#~ msgstr "Ordena i filtra contactes"
+
+#~ msgid "Directories"
+#~ msgstr "Directoris"
+
+#~ msgid "Has Photo"
+#~ msgstr "Té foto"
+
+#~ msgid "Has Email"
+#~ msgstr "Té correu"
+
+#~ msgid "Has Phone"
+#~ msgstr "Té telèfon"
+
+#~ msgid "Has Address"
+#~ msgstr "Té adreça"
+
+#~ msgid "Has Birthday"
+#~ msgstr "Té aniversari"
+
+#~ msgid "Has Company"
+#~ msgstr "Té empresa"
+
+#~ msgid "Not in a Group"
+#~ msgstr "No és en cap grup"
+
+#~ msgid ""
+#~ "This will remove the group {name} from your address book locally and on "
+#~ "the server. The contacts are not removed."
+#~ msgstr ""
+#~ "Això eliminarà el grup {name} de la teva llibreta d'adreces localment i "
+#~ "al servidor. Els contactes no s'eliminen."
+
+#~ msgid ""
+#~ "This will remove the group {name} from your address book. The contacts "
+#~ "are not removed."
+#~ msgstr ""
+#~ "Això eliminarà el grup {name} de la teva llibreta d'adreces. Els "
+#~ "contactes no s'eliminen."
+
+#~ msgid "Delete Group?"
+#~ msgstr "Vols suprimir el grup?"
+
+#~ msgid ""
+#~ "This will remove the contact {name} from your address book locally and on "
+#~ "the server."
+#~ msgstr ""
+#~ "Això eliminarà el contacte {name} de la teva llibreta d'adreces localment "
+#~ "i al servidor."
+
+#~ msgid "This will remove the contact {name} from your address book."
+#~ msgstr "Això eliminarà el contacte {name} de la teva llibreta d'adreces."
+
+#~ msgid "Delete Contact?"
+#~ msgstr "Vols suprimir el contacte?"
+
+#~ msgid "Delete {n} Group?"
+#~ msgid_plural "Delete {n} Groups?"
+#~ msgstr[0] "Vols suprimir {n} grup?"
+#~ msgstr[1] "Vols suprimir {n} grups?"
+
+#~ msgid ""
+#~ "This will remove {n} group from your address books locally and on the "
+#~ "server. The contacts are not removed."
+#~ msgid_plural ""
+#~ "This will remove {n} groups from your address books locally and on the "
+#~ "server. The contacts are not removed."
+#~ msgstr[0] ""
+#~ "Això eliminarà {n} grup de les teves llibretes d'adreces localment i al "
+#~ "servidor. Els contactes no s'eliminen."
+#~ msgstr[1] ""
+#~ "Això eliminarà {n} grups de les teves llibretes d'adreces localment i al "
+#~ "servidor. Els contactes no s'eliminen."
+
+#~ msgid ""
+#~ "This will remove {n} group from your address book. The contacts are not "
+#~ "removed."
+#~ msgid_plural ""
+#~ "This will remove {n} groups from your address books. The contacts are not "
+#~ "removed."
+#~ msgstr[0] ""
+#~ "Això eliminarà {n} grup de la teva llibreta d'adreces. Els contactes no "
+#~ "s'eliminen."
+#~ msgstr[1] ""
+#~ "Això eliminarà {n} grups de les teves llibretes d'adreces. Els contactes "
+#~ "no s'eliminen."
+
+#~ msgid "Delete {n} Contact?"
+#~ msgid_plural "Delete {n} Contacts?"
+#~ msgstr[0] "Vols suprimir {n} contacte?"
+#~ msgstr[1] "Vols suprimir {n} contactes?"
+
+#~ msgid ""
+#~ "This will remove {n} contact from your address books locally and on the "
+#~ "server."
+#~ msgid_plural ""
+#~ "This will remove {n} contacts from your address books locally and on the "
+#~ "server."
+#~ msgstr[0] ""
+#~ "Això eliminarà {n} contacte de les teves llibretes d'adreces localment i "
+#~ "al servidor."
+#~ msgstr[1] ""
+#~ "Això eliminarà {n} contactes de les teves llibretes d'adreces localment i "
+#~ "al servidor."
+
+#~ msgid "This will remove {n} contact from your address book."
+#~ msgid_plural "This will remove {n} contacts from your address books."
+#~ msgstr[0] "Això eliminarà {n} contacte de la teva llibreta d'adreces."
+#~ msgstr[1] "Això eliminarà {n} contactes de les teves llibretes d'adreces."
+
+#~ msgid "Toggle sidebar"
+#~ msgstr "Mostra o amaga la barra lateral"
+
+#~ msgid "Import vCard files into the Tegami Mail address book"
+#~ msgstr "Importa fitxers vCard a la llibreta d'adreces de l'Tegami Mail"
+
+#~ msgid "New contact or group"
+#~ msgstr "Contacte o grup nou"
+
+#~ msgid "Loading Contacts…"
+#~ msgstr "S'estan carregant els contactes…"
+
+#~ msgid "No Contacts"
+#~ msgstr "No hi ha contactes"
+
+#~ msgid ""
+#~ "Add a contact with the + button, or import vCard files. Contacts are kept "
+#~ "in Tegami Mail's own address book, and the address books of GNOME "
+#~ "Contacts are listed here too."
+#~ msgstr ""
+#~ "Afegeix un contacte amb el botó +, o importa fitxers vCard. Els contactes "
+#~ "es conserven a la llibreta d'adreces pròpia de l'Tegami Mail, i les "
+#~ "llibretes d'adreces dels contactes del GNOME també es llisten aquí."
+
+#~ msgid "Search contacts (Ctrl+F)"
+#~ msgstr "Cerca contactes (Ctrl+F)"
+
+#~ msgid "Search contacts"
+#~ msgstr "Cerca contactes"
+
+#~ msgid "Edit contact"
+#~ msgstr "Edita el contacte"
+
+#~ msgid "In the footer"
+#~ msgstr "Al peu"
+
+#~ msgid "Show each address book"
+#~ msgstr "Mostra cada llibreta d'adreces"
+
+#~ msgid "No address book available"
+#~ msgstr "No hi ha cap llibreta d'adreces disponible"
+
+#~ msgid "Could not rename the address book: {e}"
+#~ msgstr "No s'ha pogut canviar el nom de la llibreta d'adreces: {e}"
+
+#~ msgid "{n} contact was not copied: {e}"
+#~ msgid_plural "{n} contacts were not copied: {e}"
+#~ msgstr[0] "{n} contacte no s'ha pogut copiar: {e}"
+#~ msgstr[1] "{n} contactes no s'han pogut copiar: {e}"
+
+#~ msgid "{n} contact was not moved: {e}"
+#~ msgid_plural "{n} contacts were not moved: {e}"
+#~ msgstr[0] "{n} contacte no s'ha pogut moure: {e}"
+#~ msgstr[1] "{n} contactes no s'han pogut moure: {e}"
 
 #~ msgid "Go to Message"
 #~ msgstr "Ves al missatge"

@@ -499,16 +499,6 @@ impl AppModel {
                 );
             }
 
-            AppMsg::ComposeBcc(bcc) => {
-                self.compose_addressed(
-                    ComposePrefill {
-                        bcc,
-                        ..Default::default()
-                    },
-                    &sender,
-                );
-            }
-
             AppMsg::OpenMailto(uri) => self.open_mailto(uri, sender),
 
             AppMsg::PresentComposers => {

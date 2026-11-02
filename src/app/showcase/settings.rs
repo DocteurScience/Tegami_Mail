@@ -7,7 +7,6 @@ use relm4::prelude::*;
 use crate::app::model::AppModel;
 use crate::app::msg::AppMsg;
 use crate::i18n::i18n;
-use crate::ui::contacts_page::ContactsPageInput;
 use crate::ui::showcase::showcase_capture;
 use crate::ui::sidebar::CtxAction;
 
@@ -132,62 +131,5 @@ pub(super) fn stage_dialog() {
                 None => tracing::warn!("showcase: no dialog to answer"),
             }
         });
-    }
-}
-
-impl AppModel {
-    /// TEGAMI_SHOWCASE_CONTACTS=list|new|group|search:<text>[@<n>]|filter:<n>|multi:<n>
-    /// opens Contacts at 3s, and with "new" its editor for a new
-    /// contact at 5s ("group": for a new group), or with "search:"
-    /// types the text into its search
-    /// then, so the directories are asked too (#307), and with
-    /// "@<n>" shows only book n of the filter at 6s; "filter:"
-    /// turns on its nth "Show only" filter at 5s; "multi:"
-    /// selects the first n entries at 5s.
-    pub(super) fn stage_contacts(&self, sender: &ComponentSender<AppModel>) {
-        if let Ok(which) = std::env::var("TEGAMI_SHOWCASE_CONTACTS") {
-            input_after(sender, 3, AppMsg::OpenContacts);
-            let page = self.contacts_page.sender().clone();
-            if which == "new" || which == "group" {
-                gtk::glib::timeout_add_seconds_local_once(5, move || {
-                    let _ = page.send(if which == "group" {
-                        ContactsPageInput::NewGroup
-                    } else {
-                        ContactsPageInput::NewContact
-                    });
-                });
-            } else if let Some(filter) = which
-                .strip_prefix("filter:")
-                .and_then(|n| n.parse::<usize>().ok())
-                .and_then(|n| crate::ui::contacts_page::ContactFilter::ALL.get(n).copied())
-            {
-                gtk::glib::timeout_add_seconds_local_once(5, move || {
-                    let _ = page.send(ContactsPageInput::SetFilter(filter, true));
-                });
-            } else if let Some(n) = which
-                .strip_prefix("multi:")
-                .and_then(|n| n.parse::<u32>().ok())
-            {
-                gtk::glib::timeout_add_seconds_local_once(5, move || {
-                    let _ = page.send(ContactsPageInput::SelectFirst(n));
-                });
-            } else if let Some(spec) = which.strip_prefix("search:") {
-                let (text, book) = match spec.rsplit_once('@') {
-                    Some((t, n)) if n.parse::<u32>().is_ok() => {
-                        (t.to_string(), n.parse::<u32>().ok())
-                    }
-                    _ => (spec.to_string(), None),
-                };
-                let p = page.clone();
-                gtk::glib::timeout_add_seconds_local_once(5, move || {
-                    let _ = p.send(ContactsPageInput::SetSearch(text));
-                });
-                if let Some(n) = book {
-                    gtk::glib::timeout_add_seconds_local_once(6, move || {
-                        let _ = page.send(ContactsPageInput::PickBook(n));
-                    });
-                }
-            }
-        }
     }
 }

@@ -19,6 +19,15 @@
   **Spelling Language** list, which were only in Settings and the body's
   right-click menu.
 
+- **Removed: the Contacts view.** The sidebar's **Contacts** row (in the
+  footer or as a section, with its books and groups), the page that listed,
+  edited, grouped, moved and deleted contacts, the **g c** key, and the
+  settings that placed it and kept its search open. The address books stay:
+  **Settings → Contacts** lists them, imports, exports and empties the
+  Tegami Mail book; **Add Sender to Contacts** still saves an address; the
+  composer still suggests contacts and groups; names and photos still show
+  in mail. Contacts in GNOME Contacts or online books are edited there.
+
 - **Removed: the Attachments browser.** The sidebar's **Attachments** row,
   its page, **Settings → Sidebar → Show Attachments Browser** and the
   background scan that described every folder's attachments for it are

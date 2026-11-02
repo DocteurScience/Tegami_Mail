@@ -187,8 +187,6 @@ pub(super) fn sidebar_init(
         snoozed_expanded: state.snoozed_expanded,
         favorites_expanded: state.favorites_expanded,
         smart_expanded: state.smart_expanded,
-        contacts_expanded: state.contacts_expanded,
-        contacts_folded: state.contacts_folded.clone(),
         start,
     }
 }

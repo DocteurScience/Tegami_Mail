@@ -11,7 +11,6 @@ use crate::models::{Account, Attachment, Folder, Message};
 use crate::ui::accounts::AccountsWindow;
 use crate::ui::attachment_drawer::AttachmentDrawer;
 use crate::ui::compose::Compose;
-use crate::ui::contacts_page::ContactsPage;
 use crate::ui::message_list::{MessageList, QuickFilters};
 use crate::ui::message_view::MessageView;
 use crate::ui::notifications::NotificationCenter;
@@ -130,9 +129,6 @@ pub(crate) struct AppModel {
     pub(super) outgoing: super::outgoing::OutgoingList,
     /// The last ticket handed to a send; 0 is never used.
     pub(super) send_ticket: u64,
-    /// Same idea over the contacts view's detail pane: composing from a
-    /// contact slides down right there instead of yanking the mail view back.
-    pub(super) contacts_compose_revealer: gtk::Revealer,
     /// Monotonic id source for composers.
     pub(super) next_compose_id: u32,
     pub(super) menu: gtk::gio::Menu,
@@ -355,9 +351,6 @@ pub(crate) struct AppModel {
     pub(super) favorites: Vec<String>,
     pub(super) favorites_expanded: bool,
     pub(super) smart_expanded: bool,
-    pub(super) contacts_expanded: bool,
-    /// The accounts and books folded under the sidebar's Contacts row.
-    pub(super) contacts_folded: Vec<String>,
     /// Account emails whose own Filtered Folders / Tags sections are open.
     pub(super) filtered_expanded_accounts: Vec<String>,
     pub(super) tags_expanded_accounts: Vec<String>,
@@ -473,8 +466,6 @@ pub(crate) struct AppModel {
     pub(super) list_pills_below: bool,
     /// The list's search field stays open (#446).
     pub(super) list_search_open: bool,
-    /// Contacts' search field stays open.
-    pub(super) contacts_search_open: bool,
     /// Saved contacts go by their address-book names (#541).
     pub(super) contact_names: bool,
     /// The list's search field and bulk bar open under the rows (#496).
@@ -581,7 +572,6 @@ pub(crate) struct AppModel {
     pub(super) filtered_placement: config::SectionPlacement,
     pub(super) tags_placement: config::SectionPlacement,
     pub(super) favorites_placement: config::SectionPlacement,
-    pub(super) contacts_placement: config::SectionPlacement,
     /// The unified section's Starred / Sent / Drafts rows (Settings →
     /// Sidebar → Unified).
     pub(super) unified_kinds: config::UnifiedKinds,
@@ -819,10 +809,6 @@ pub(crate) struct AppModel {
     pub(super) message_view: Controller<MessageView>,
     /// In-message attachment thumbnail drawer, docked below the reader body.
     pub(super) attachment_drawer: Controller<AttachmentDrawer>,
-    /// The in-app contacts view behind the sidebar's Contacts row.
-    pub(super) contacts_page: Controller<ContactsPage>,
-    /// Whether the content area shows the contacts view.
-    pub(super) showing_contacts: bool,
     /// Whether the Outbox is showing instead of the mail panes.
     pub(super) showing_outbox: bool,
     /// Messages waiting to be sent, per account, as last reported by its worker.

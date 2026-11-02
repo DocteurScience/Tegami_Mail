@@ -214,13 +214,13 @@ impl AppModel {
         init.compact = contextual;
         // Beneath the reader (#212) the reader's header stays, so the
         // composer's must not carry a second set of window controls.
-        let bottom = contextual && !self.showing_contacts && self.split_reply_at_bottom();
+        let bottom = contextual && self.split_reply_at_bottom();
         init.decorations = !bottom;
         let controller = self.spawn_compose(init, sender);
         let widget = controller.widget();
         widget.set_hexpand(true);
         widget.add_css_class("inline-compose-surface");
-        if contextual && !self.showing_contacts {
+        if contextual {
             self.open_split_panel(&controller, bottom, focus);
         } else {
             self.open_covering_composer(&controller);

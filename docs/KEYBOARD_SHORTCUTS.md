@@ -54,7 +54,7 @@ followed by another goes somewhere.
 | <kbd>g</kbd> <kbd>t</kbd> | Sent | <kbd>!</kbd> | Mark as spam |
 | <kbd>g</kbd> <kbd>d</kbd> | Drafts | <kbd>s</kbd> | Star or unstar |
 | <kbd>g</kbd> <kbd>a</kbd> | Archive | <kbd>Shift+I</kbd> | Mark the conversation as read |
-| <kbd>g</kbd> <kbd>c</kbd> | Contacts | <kbd>Shift+U</kbd> | Mark the conversation as unread and close it |
+| | | <kbd>Shift+U</kbd> | Mark the conversation as unread and close it |
 | <kbd>/</kbd> | Search | <kbd>_</kbd> | Mark as unread from this message on and close it |
 | <kbd>c</kbd> | Compose | <kbd>x</kbd> | Select the row the cursor is on without opening it |
 | <kbd>d</kbd> | Compose in a window | <kbd>*</kbd> <kbd>a</kbd> / <kbd>*</kbd> <kbd>n</kbd> | Select every row, or none |
@@ -197,17 +197,6 @@ your typing instead, and <kbd>Ctrl+B</kbd>, <kbd>Ctrl+I</kbd> and
 In the attachment drawer, <kbd>Space</kbd> or <kbd>Enter</kbd> previews the
 highlighted attachment. In the full-window preview, <kbd>←</kbd> and
 <kbd>→</kbd> step to the previous and next one, and <kbd>Esc</kbd> closes it.
-
-In the Contacts view, <kbd>Ctrl+F</kbd> and <kbd>/</kbd> open its search
-and <kbd>Esc</kbd> closes it, as in the message list. <kbd>Ctrl</kbd> or
-<kbd>Shift</kbd> and a click select several contacts, and <kbd>Ctrl+A</kbd>
-all of them. <kbd>Delete</kbd> asks to delete the contact shown, or those
-selected, while the contact list has the focus. Contacts dragged onto an
-address book in the sidebar are copied there, or moved with <kbd>Ctrl</kbd>
-held as they are dropped. In a group's form, <kbd>↓</kbd> and
-<kbd>↑</kbd> move through the people matching what is typed in the field
-that adds them, <kbd>Enter</kbd> adds the one highlighted, and <kbd>Esc</kbd>
-puts the matches away.
 
 <kbd>Ctrl+F</kbd> in the Settings window opens its search, and closes it
 again. <kbd>Esc</kbd> closes it too, wherever the focus is in the window,

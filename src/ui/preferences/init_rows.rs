@@ -28,7 +28,6 @@ impl Preferences {
             &widgets.sidebar.filtered_placement_row,
             &widgets.sidebar.tags_placement_row,
             &widgets.sidebar.favorites_placement_row,
-            &widgets.sidebar.contacts_placement_row,
             &widgets.sidebar.start_view_row,
             &widgets.sidebar.folder_sort_row,
         ] {
@@ -281,14 +280,6 @@ impl Preferences {
             ])));
             row.set_selected(placement_index(placement));
         }
-        widgets
-            .sidebar
-            .contacts_placement_row
-            .set_model(Some(&contacts_placement_model()));
-        widgets
-            .sidebar
-            .contacts_placement_row
-            .set_selected(contacts_placement_index(init.contacts_placement));
         widgets
             .sidebar
             .start_view_row

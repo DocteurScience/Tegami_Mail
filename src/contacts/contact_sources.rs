@@ -738,12 +738,9 @@ mod tests {
                 .unwrap();
         crate::contacts::carddav::sync_books(true);
         std::thread::sleep(std::time::Duration::from_secs(2));
-        let from_server = || {
-            crate::contacts::read_contact_details()
-                .into_iter()
-                .filter(|c| c.book_name.contains(&got.books[0]))
-                .count()
-        };
+        // Every book's contacts: the read that the composer's suggestions
+        // and the filters go through.
+        let from_server = || crate::contacts::read_contacts().len();
         let shown = from_server();
         println!("contacts from {}: {shown}", got.books[0]);
         assert!(shown > 0);

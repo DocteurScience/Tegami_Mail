@@ -32,42 +32,6 @@ impl Sidebar {
         }
     }
 
-    /// List the address books and groups under the Contacts row, the one
-    /// the contact list shows picked.
-    pub(super) fn fill_contact_tree(&mut self, sender: &ComponentSender<Self>) {
-        let Some(list) = self
-            .kind_widgets
-            .get(&UnifiedRow::Contacts)
-            .map(|w| w.list.clone())
-        else {
-            return;
-        };
-        let Some(tree) = self.contact_tree.as_ref() else {
-            return;
-        };
-        self.quiet.set(true);
-        while let Some(child) = list.first_child() {
-            list.remove(&child);
-        }
-        let filled = crate::ui::contact_tree::fill(
-            &list,
-            tree,
-            self.collapsed,
-            self.chevrons_left,
-            &self.contacts_folded,
-            sender.input_sender(),
-        );
-        if let Sel::ContactScope(scope) = &self.selected {
-            if let Some((_, row)) = filled.rows.iter().find(|(s, _)| s == scope) {
-                list.select_row(Some(row));
-            }
-        }
-        self.quiet.set(false);
-        *self.tree_rows.borrow_mut() = filled.rows;
-        self.contact_layout = filled.layout;
-        self.contact_chevrons = filled.chevrons;
-    }
-
     /// Deselect every list except the one owning `keep` (whose own list keeps its
     /// selection). Used when a selection moves between sections.
     pub(super) fn clear_other_selections(&self, keep: Sel) {
@@ -83,7 +47,6 @@ impl Sidebar {
                 UnifiedRow::Smart => false,
                 UnifiedRow::Filtered => keep == Sel::UnifiedFiltered,
                 UnifiedRow::Tags => keep == Sel::UnifiedTags,
-                UnifiedRow::Contacts => keep == Sel::Contacts,
             };
             if !keep_header {
                 w.header.unselect_all();
@@ -94,7 +57,6 @@ impl Sidebar {
                 UnifiedRow::Filtered => matches!(keep, Sel::UnifiedFolder(..)),
                 UnifiedRow::Tags => matches!(keep, Sel::Tag(None, _)),
                 UnifiedRow::Smart => matches!(keep, Sel::Smart(_)),
-                UnifiedRow::Contacts => matches!(keep, Sel::ContactScope(_)),
             };
             if !keep_list {
                 w.list.unselect_all();
@@ -103,11 +65,6 @@ impl Sidebar {
         for (slot, w) in &self.tag_sections {
             if !matches!(&keep, Sel::Tag(acc, _) if *acc == slot.account()) {
                 w.list.unselect_all();
-            }
-        }
-        if keep != Sel::Contacts {
-            if let Some(l) = &self.footer_list {
-                l.unselect_all();
             }
         }
         if keep != Sel::Outbox {
@@ -138,25 +95,6 @@ impl Sidebar {
             let keep_here = matches!(&keep, Sel::Folder(kaid, _) if kaid == aid) && keep_is_custom;
             if !keep_here {
                 lb.unselect_all();
-            }
-        }
-    }
-
-    /// The Contacts row (every contact), or a book or group under it.
-    pub(super) fn select_contacts(&self, scope: Option<&crate::ui::contacts_page::ContactScope>) {
-        if let (Some(list), Some(row)) = (&self.footer_list, &self.contacts_row) {
-            list.select_row(Some(row));
-            return;
-        }
-        let Some(w) = self.kind_widgets.get(&UnifiedRow::Contacts) else {
-            return;
-        };
-        match scope {
-            None => w.header.select_row(w.header.row_at_index(0).as_ref()),
-            Some(scope) => {
-                if let Some((_, row)) = self.tree_rows.borrow().iter().find(|(s, _)| s == scope) {
-                    w.list.select_row(Some(row));
-                }
             }
         }
     }
@@ -261,8 +199,6 @@ impl Sidebar {
     fn select_sel(&self, sel: Sel) {
         match sel {
             Sel::Unified => self.select_unified(),
-            Sel::Contacts => self.select_contacts(None),
-            Sel::ContactScope(scope) => self.select_contacts(Some(&scope)),
             Sel::Outbox => self.select_outbox(),
             Sel::Folder(acc, path) => self.select_folder(acc, &path),
             Sel::UnifiedInbox(acc) => self.select_unified_inbox(acc),

@@ -541,14 +541,9 @@ fn unified_rows_have_titles_icons_and_messages() {
     assert_eq!(row_title(UnifiedRow::Smart), "Smart Folders");
     assert_eq!(row_icon(inbox), "mail-inbox-symbolic");
     assert_eq!(row_icon(UnifiedRow::Favorites), "user-bookmarks-symbolic");
-    assert_eq!(
-        row_icon(UnifiedRow::Contacts),
-        "x-office-address-book-symbolic"
-    );
     assert_eq!(dbg(select_msg(inbox)), "UnifiedRowSelected");
     assert_eq!(dbg(select_msg(sent)), "UnifiedKindRowSelected(Sent)");
     assert_eq!(dbg(select_msg(UnifiedRow::Smart)), "ToggleSmartExpand");
-    assert_eq!(dbg(select_msg(UnifiedRow::Contacts)), "ContactsRowClicked");
     assert_eq!(dbg(toggle_msg(inbox)), "ToggleUnifiedExpand");
     assert_eq!(dbg(toggle_msg(sent)), "ToggleKindExpand(Sent)");
     assert_eq!(

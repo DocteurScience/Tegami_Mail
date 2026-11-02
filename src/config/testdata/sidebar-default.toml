@@ -17,7 +17,5 @@ snoozed_expanded = false
 favorites = []
 favorites_expanded = false
 smart_expanded = false
-contacts_expanded = false
-contacts_folded = []
 filtered_expanded_accounts = []
 tags_expanded_accounts = []

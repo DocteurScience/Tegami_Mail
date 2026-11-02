@@ -30,7 +30,6 @@ impl Sidebar {
             filtered_placement,
             tags_placement,
             favorites_placement,
-            contacts_placement,
             smart_folders,
         } = msg
         else {
@@ -73,7 +72,6 @@ impl Sidebar {
         self.filtered_placement = filtered_placement;
         self.tags_placement = tags_placement;
         self.favorites_placement = favorites_placement;
-        self.contacts_placement = contacts_placement;
         self.smart_folders = smart_folders;
         self.unified_kinds = unified_kinds;
         self.show_accounts = show_accounts;
@@ -160,15 +158,6 @@ impl Sidebar {
         if self.selected == Sel::UnifiedTags && !self.unified_tags_shown() {
             self.selected = Sel::None;
         }
-        // Contacts placed off takes its selection with it; in the
-        // footer, its one row is every scope.
-        if matches!(self.selected, Sel::Contacts | Sel::ContactScope(_)) {
-            if self.contacts_placement == crate::config::SectionPlacement::Off {
-                self.selected = Sel::None;
-            } else if self.contacts_in_footer() {
-                self.selected = Sel::Contacts;
-            }
-        }
         // A folder picked in a switched-off row's account list is
         // still the open folder: carry the highlight to the
         // account's own row.
@@ -223,33 +212,6 @@ impl Sidebar {
             .and_then(|s| s.folders.iter().find(|f| f.kind == kind))
             .map(|f| f.path.clone());
         path.map_or(Sel::None, |p| Sel::Folder(acc, p))
-    }
-
-    pub(super) fn on_set_contact_tree(
-        &mut self,
-        tree: crate::ui::contacts_page::ContactTree,
-        sender: ComponentSender<Self>,
-    ) {
-        if self.contact_tree.as_ref() == Some(&tree) {
-            return;
-        }
-        // The highlight follows a scope the contact page picked
-        // itself (a book's New Contact opens that book).
-        if matches!(self.selected, Sel::Contacts | Sel::ContactScope(_)) {
-            self.selected = match &tree.scope {
-                _ if self.contacts_in_footer() => Sel::Contacts,
-                crate::ui::contacts_page::ContactScope::All => Sel::Contacts,
-                scope => Sel::ContactScope(scope.clone()),
-            };
-            self.quiet.set(true);
-            self.clear_other_selections(self.selected.clone());
-            if self.selected == Sel::Contacts {
-                self.select_contacts(None);
-            }
-            self.quiet.set(false);
-        }
-        self.contact_tree = Some(tree);
-        self.fill_contact_tree(&sender);
     }
 
     pub(super) fn on_set_outbox_count(

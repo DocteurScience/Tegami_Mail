@@ -24,8 +24,8 @@ fn registry_reply_keeps_sources_and_skips_unrelated_objects() {
 }
 
 use super::{
-    details_from_local_vcards, is_local_book, merge_target, prefer_book, vcard_display_name,
-    vcard_photo, vcard_photo_with, Book,
+    is_local_book, merge_target, prefer_book, vcard_display_name, vcard_photo, vcard_photo_with,
+    Book,
 };
 
 pub(super) const ONE_PIXEL_PNG: &str =
@@ -298,27 +298,6 @@ fn only_the_reserved_uid_is_local() {
 }
 
 #[test]
-fn local_details_carry_the_book_and_the_raw_vcard() {
-    let v = card("Ann", "ann@x.org");
-    let out = details_from_local_vcards(vec![v.clone()], "Tegami Mail");
-    assert_eq!(out.len(), 1);
-    assert_eq!(out[0].book_uid, "tegami-local");
-    assert_eq!(out[0].book_name, "Tegami Mail");
-    assert_eq!(out[0].eds_uid, "Ann");
-    assert_eq!(out[0].raw_vcard, v);
-}
-
-#[test]
-fn same_email_in_two_books_is_kept_per_book() {
-    // The EDS reader de-duplicates among EDS books by first email; the
-    // local list is built on its own, so a shared address is not dropped.
-    let a = details_from_local_vcards(vec![card("Ann", "same@x.org")], "Tegami Mail");
-    let b = details_from_local_vcards(vec![card("Ann", "same@x.org")], "Tegami Mail");
-    assert_eq!(a[0].primary_email(), b[0].primary_email());
-    assert_eq!(a.len() + b.len(), 2);
-}
-
-#[test]
 fn local_vcards_never_read_file_photos() {
     let v = "BEGIN:VCARD\r\nFN:Ann\r\nPHOTO;VALUE=uri:file:///etc/hostname\r\nEND:VCARD\r\n";
     assert!(vcard_photo_with(v, false).is_none());
@@ -332,95 +311,6 @@ fn merge_target_matches_the_name_ignoring_case() {
         .contains("ann@x.org"));
     assert!(merge_target(&vcards, "Carl").is_none());
     assert!(merge_target(&vcards, "  ").is_none());
-}
-
-#[test]
-fn an_edit_writes_addresses_birthdays_and_photos() {
-    let original = "BEGIN:VCARD\r\nVERSION:3.0\r\nUID:u1\r\nFN:Pat Doe\r\n\
-                    ADR;TYPE=HOME:PO 7;Flat 2;1 Main St\\, Rear;Springfield;IL;62701;USA\r\n\
-                    BDAY:1985-04-12\r\nPHOTO;ENCODING=b;TYPE=PNG:iVBORw0KGgo=\r\nEND:VCARD\r\n";
-    let c = super::parse_vcard_fields(original).unwrap();
-    assert_eq!(c.postal[0].street, "1 Main St, Rear");
-    assert_eq!(
-        (c.postal[0].pobox.as_str(), c.postal[0].label.as_str()),
-        ("PO 7", "Home")
-    );
-    assert_eq!(
-        super::birthday_parts(&c.birthday_raw),
-        Some((Some(1985), 4, 12))
-    );
-    let mut postal = c.postal.clone();
-    postal[0].locality = "Shelbyville".into();
-    postal.push(super::Postal {
-        label: "Work".into(),
-        street: "2 Side Rd".into(),
-        ..Default::default()
-    });
-    let edit = super::ContactEdit {
-        name: "Pat Doe".into(),
-        addresses: postal,
-        birthday: super::birthday_value(None, 4, 12),
-        ..Default::default()
-    };
-    let out = super::patched_vcard(original, &edit);
-    assert!(
-        out.contains("ADR;TYPE=HOME:PO 7;Flat 2;1 Main St\\, Rear;Shelbyville;IL;62701;USA\r\n"),
-        "{out}"
-    );
-    assert!(out.contains("ADR;TYPE=WORK:;;2 Side Rd;;;;\r\n"), "{out}");
-    assert!(
-        out.contains("BDAY:--04-12\r\n") && !out.contains("1985"),
-        "{out}"
-    );
-    assert!(
-        out.contains("PHOTO;ENCODING=b;TYPE=PNG:iVBORw0KGgo="),
-        "a kept photo stays: {out}"
-    );
-    let gone = super::patched_vcard(
-        original,
-        &super::ContactEdit {
-            photo: super::PhotoEdit::Remove,
-            ..edit.clone()
-        },
-    );
-    assert!(!gone.contains("PHOTO"), "{gone}");
-    let set = super::patched_vcard(
-        original,
-        &super::ContactEdit {
-            photo: super::PhotoEdit::Set(vec![0xFF, 0xD8, 0xFF, 1]),
-            ..edit
-        },
-    );
-    assert!(
-        set.contains("PHOTO;ENCODING=b;TYPE=JPEG:/9j/AQ==\r\n") && !set.contains("iVBOR"),
-        "{set}"
-    );
-}
-
-#[test]
-fn a_card_with_no_name_or_address_is_still_a_contact() {
-    let phone = "BEGIN:VCARD\r\nVERSION:3.0\r\nTEL:+1 555 0100\r\nEND:VCARD\r\n";
-    assert_eq!(
-        super::parse_vcard_fields(phone).unwrap().name,
-        "+1 555 0100"
-    );
-    let org = "BEGIN:VCARD\r\nVERSION:3.0\r\nORG:Acme;\r\nTEL:+1 555 0100\r\nEND:VCARD\r\n";
-    assert_eq!(super::parse_vcard_fields(org).unwrap().name, "Acme");
-    assert!(super::parse_vcard_fields("BEGIN:VCARD\r\nVERSION:3.0\r\nEND:VCARD\r\n").is_none());
-    // Saved with no name, it goes by its company.
-    let edit = super::ContactEdit {
-        org: "Acme".into(),
-        phones: vec![super::Labeled {
-            label: "Work".into(),
-            value: "+1 555 0100".into(),
-        }],
-        ..Default::default()
-    };
-    let out = super::new_vcard(&edit);
-    assert!(
-        out.contains("\r\nFN:Acme\r\n") && out.contains("TEL;TYPE=WORK:+1 555 0100"),
-        "{out}"
-    );
 }
 
 #[test]
@@ -471,16 +361,5 @@ fn a_book_named_in_tegami_keeps_its_account() {
     assert_eq!(
         super::with_given_name("CardDAV — a@b.org · card", None),
         "CardDAV — a@b.org · card"
-    );
-}
-
-#[test]
-fn a_line_goes_after_the_version() {
-    assert_eq!(
-        super::insert_after_version(
-            "BEGIN:VCARD\r\nVERSION:3.0\r\nFN:A\r\nEND:VCARD\r\n",
-            "UID:x"
-        ),
-        "BEGIN:VCARD\r\nVERSION:3.0\r\nUID:x\r\nFN:A\r\nEND:VCARD\r\n"
     );
 }

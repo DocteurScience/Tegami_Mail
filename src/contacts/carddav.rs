@@ -561,9 +561,7 @@ mod tests {
         );
         println!("synced: {}", super::sync_books(true));
         std::thread::sleep(std::time::Duration::from_secs(2));
-        for c in crate::contacts::read_contact_details() {
-            println!("  {} ({})", c.name, c.book_name);
-        }
+        println!("contacts: {}", crate::contacts::read_contacts().len());
         if std::env::var_os("CARDDAV_KEEP").is_some() {
             return;
         }

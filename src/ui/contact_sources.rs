@@ -104,8 +104,6 @@ pub(super) struct ContactSources {
     book_row: adw::ComboRow,
     /// Set while the book row's model is replaced, which fires its notify.
     book_guard: Rc<std::cell::Cell<bool>>,
-    placement_row: adw::ComboRow,
-    placement_guard: Rc<std::cell::Cell<bool>>,
     toasts: adw::ToastOverlay,
     nav: adw::NavigationView,
     editor_page: adw::NavigationPage,
@@ -174,8 +172,6 @@ pub(super) enum ContactSourcesInput {
     ImportLocal,
     ExportLocal,
     DeleteAllLocal,
-    /// Settings → Sidebar's Contacts placement changed.
-    SetPlacement(crate::config::SectionPlacement),
 }
 
 #[derive(Debug)]
@@ -194,18 +190,11 @@ pub(crate) enum ContactSourcesOutput {
     SetContactBook(String),
     /// The page is showing: read the books new contacts can go to.
     LoadBooks,
-    /// Keep the Contacts search field open.
-    SetSearchOpen(bool),
     /// Saved contacts go by their address-book names in mail (#541).
     SetContactNames(bool),
-    /// Where Contacts sits in the sidebar.
-    SetPlacement(crate::config::SectionPlacement),
 }
 
 pub(super) struct ContactSourcesInit {
-    /// Whether the Contacts search field is kept open.
-    pub(super) search_open: bool,
-    pub(super) placement: crate::config::SectionPlacement,
     /// Whether saved contacts go by their address-book names in mail.
     pub(super) contact_names: bool,
 }
@@ -297,24 +286,6 @@ impl SimpleComponent for ContactSources {
                                         },
                                     },
                                 },
-                                add = &adw::PreferencesGroup {
-                                    set_title: &i18n("Layout"),
-                                    // The same row as Settings → Sidebar's.
-                                    #[name = "placement_row"]
-                                    adw::ComboRow {
-                                        set_title: &i18n("Contacts placement"),
-                                        set_subtitle: &i18n("'In the footer' disables expand/collapse."),
-                                        set_model: Some(&crate::ui::preferences::contacts_placement_model()),
-                                        set_selected: crate::ui::preferences::contacts_placement_index(init.placement),
-                                    },
-                                    adw::SwitchRow {
-                                        set_title: &i18n("Keep the search field open"),
-                                        set_active: init.search_open,
-                                        connect_active_notify[sender] => move |row| {
-                                            let _ = sender.output(ContactSourcesOutput::SetSearchOpen(row.is_active()));
-                                        },
-                                    },
-                                },
                             },
                         },
                     },
@@ -372,19 +343,6 @@ impl SimpleComponent for ContactSources {
         sender: ComponentSender<Self>,
     ) -> ComponentParts<Self> {
         let widgets = view_output!();
-        // Connected once its choice is set, and quiet while the Sidebar
-        // page's row sets it.
-        let placement_guard = Rc::new(std::cell::Cell::new(false));
-        {
-            let (out, guard) = (sender.output_sender().clone(), placement_guard.clone());
-            widgets.placement_row.connect_selected_notify(move |row| {
-                if !guard.get() {
-                    let _ = out.send(ContactSourcesOutput::SetPlacement(
-                        crate::ui::preferences::contacts_placement_from_index(row.selected()),
-                    ));
-                }
-            });
-        }
         let model = ContactSources {
             sources: Vec::new(),
             books: Vec::new(),
@@ -394,8 +352,6 @@ impl SimpleComponent for ContactSources {
             no_eds: widgets.no_eds.clone(),
             book_row: widgets.book_row.clone(),
             book_guard: Rc::new(std::cell::Cell::new(false)),
-            placement_row: widgets.placement_row.clone(),
-            placement_guard,
             toasts: widgets.toasts.clone(),
             nav: widgets.nav.clone(),
             editor_page: widgets.editor_page.clone(),
@@ -492,14 +448,6 @@ impl SimpleComponent for ContactSources {
                 self.book_guard.set(false);
             }
             ContactSourcesInput::SetLocalCount(n) => self.local_count = n,
-            ContactSourcesInput::SetPlacement(placement) => {
-                let idx = crate::ui::preferences::contacts_placement_index(placement);
-                if self.placement_row.selected() != idx {
-                    self.placement_guard.set(true);
-                    self.placement_row.set_selected(idx);
-                    self.placement_guard.set(false);
-                }
-            }
             ContactSourcesInput::ChangeBook(i) => {
                 if self.book_guard.get() {
                     return;

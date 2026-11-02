@@ -149,7 +149,6 @@ pub(crate) struct PrefInit {
     pub(crate) filtered_placement: crate::config::SectionPlacement,
     pub(crate) tags_placement: crate::config::SectionPlacement,
     pub(crate) favorites_placement: crate::config::SectionPlacement,
-    pub(crate) contacts_placement: crate::config::SectionPlacement,
     pub(crate) chevrons_left: bool,
     pub(crate) account_click_folds: bool,
     pub(crate) start_view: crate::config::StartView,
@@ -176,7 +175,6 @@ pub(crate) struct PrefInit {
     pub(crate) list_group_by_date: bool,
     pub(crate) list_pills_below: bool,
     pub(crate) list_search_open: bool,
-    pub(crate) contacts_search_open: bool,
     pub(crate) contact_names: bool,
     pub(crate) list_search_bottom: bool,
     pub(crate) list_bulk_bar_bottom: bool,
@@ -302,7 +300,6 @@ pub(crate) enum PrefInput {
     ChangeFilteredPlacement(u32),
     ChangeTagsPlacement(u32),
     ChangeFavoritesPlacement(u32),
-    ChangeContactsPlacement(u32),
     /// A reader toolbar chip was dropped: `key` names the button, `side`
     /// the zone (None = not shown), `index` its place in that zone.
     ToolbarDrop {
@@ -488,7 +485,6 @@ pub(crate) enum PrefOutput {
     SetFilteredPlacement(crate::config::SectionPlacement),
     SetTagsPlacement(crate::config::SectionPlacement),
     SetFavoritesPlacement(crate::config::SectionPlacement),
-    SetContactsPlacement(crate::config::SectionPlacement),
     SetConsoleMode(bool),
     SetStatusBarTop(bool),
     SetReadMark(crate::config::ReadMark),
@@ -524,7 +520,6 @@ pub(crate) enum PrefOutput {
     /// Keep the list's search field open (#446).
     SetListSearchOpen(bool),
     /// Keep Contacts' search field open.
-    SetContactsSearchOpen(bool),
     /// Saved contacts go by their address-book names (#541).
     SetContactNames(bool),
     /// The list's search field under the rows, not above them (#496).

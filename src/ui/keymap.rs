@@ -110,7 +110,6 @@ pub(crate) enum WindowCompose {
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub(crate) enum GoTarget {
     Kind(FolderKind),
-    Contacts,
 }
 
 /// Which single keys are on, for the key hints in the menus.
@@ -262,7 +261,6 @@ pub(crate) fn gmail_sequence(first: char, key: gtk::gdk::Key) -> Option<Shortcut
         ('g', Key::t) => Some(Shortcut::GoTo(GoTarget::Kind(FolderKind::Sent))),
         ('g', Key::d) => Some(Shortcut::GoTo(GoTarget::Kind(FolderKind::Drafts))),
         ('g', Key::a) => Some(Shortcut::GoTo(GoTarget::Kind(FolderKind::Archive))),
-        ('g', Key::c) => Some(Shortcut::GoTo(GoTarget::Contacts)),
         ('*', Key::a) => Some(Shortcut::SelectAll),
         ('*', Key::n) => Some(Shortcut::SelectNone),
         ('*', Key::r) => Some(Shortcut::SelectWhere(CheckFilter::Read)),

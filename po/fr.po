@@ -210,9 +210,6 @@ msgstr "Nouveau message"
 msgid "Tegami Mail Address Book"
 msgstr "Carnet d’adresses Tegami Mail"
 
-msgid "Tegami Mail cannot change this kind of group"
-msgstr "Tegami Mail ne peut pas modifier ce type de groupe"
-
 msgid "On This Computer"
 msgstr "Sur cet ordinateur"
 
@@ -1108,9 +1105,6 @@ msgstr "Affichage"
 
 msgid "All accounts"
 msgstr "Tous les comptes"
-
-msgid "Contacts"
-msgstr "Contacts"
 
 msgid "Outbox"
 msgstr "Boîte d’envoi"
@@ -3717,6 +3711,9 @@ msgstr ""
 msgid "LDAP Directory"
 msgstr "Annuaire LDAP"
 
+msgid "Contacts"
+msgstr "Contacts"
+
 msgid "Address Books"
 msgstr "Carnets d’adresses"
 
@@ -3762,468 +3759,11 @@ msgstr "De mes contacts"
 msgid "Saved addresses show the contact's name, not the mail's."
 msgstr ""
 
-msgid "Layout"
-msgstr "Disposition"
-
-msgid "Contacts placement"
-msgstr "Emplacement des contacts"
-
-msgid "'In the footer' disables expand/collapse."
-msgstr "« Dans le pied de page » désactive le repli et le dépliage."
-
-msgid "Keep the search field open"
-msgstr "Garder le champ de recherche ouvert"
-
 msgid "Address Book"
 msgstr "Carnet d’adresses"
 
 msgid "Looking for address books on {name}…"
 msgstr "Recherche de carnets d’adresses sur {name}…"
-
-msgid "Tegami Mail, on this computer"
-msgstr "Tegami Mail, sur cet ordinateur"
-
-msgid "Edit Group"
-msgstr "Modifier le groupe"
-
-msgid "Delete Group…"
-msgstr "Supprimer le groupe…"
-
-msgid "New Contact"
-msgstr "Nouveau contact"
-
-msgid "New Group"
-msgstr "Nouveau groupe"
-
-msgid "Rename…"
-msgstr "Renommer…"
-
-msgid "Show or hide"
-msgstr "Afficher ou masquer"
-
-msgid "Rename Address Book"
-msgstr "Renommer le carnet d’adresses"
-
-msgid ""
-"The name is used in Tegami Mail only; GNOME Contacts and Evolution keep the "
-"book's own."
-msgstr ""
-"Ce nom n’est utilisé que dans Tegami Mail ; GNOME Contacts et Evolution "
-"conservent le nom propre du carnet."
-
-msgid "Use Its Own Name"
-msgstr "Utiliser son propre nom"
-
-msgid "All Address Books"
-msgstr "Tous les carnets d’adresses"
-
-msgid "Move Contact?"
-msgstr "Déplacer le contact ?"
-
-msgid ""
-"This will move {name} out of {from} and into {to}, locally and on the "
-"server. A group in {from} that holds the contact will no longer have it."
-msgstr ""
-"{name} sera déplacé de {from} vers {to}, en local et sur le serveur. Un "
-"groupe de {from} qui contient ce contact ne l’aura plus."
-
-msgid "Move {n} Contact?"
-msgid_plural "Move {n} Contacts?"
-msgstr[0] "Déplacer {n} contact ?"
-msgstr[1] "Déplacer {n} contacts ?"
-
-msgid ""
-"This will move {n} contact out of the address book it is in and into {to}, "
-"locally and on the server. A group there that holds it will no longer have "
-"it."
-msgid_plural ""
-"This will move {n} contacts out of the address books they are in and into "
-"{to}, locally and on the server. Groups there that hold them will no longer "
-"have them."
-msgstr[0] ""
-"{n} contact sera déplacé du carnet d’adresses où il se trouve vers {to}, en "
-"local et sur le serveur. Un groupe de ce carnet qui le contient ne l’aura "
-"plus."
-msgstr[1] ""
-"{n} contacts seront déplacés des carnets d’adresses où ils se trouvent vers "
-"{to}, en local et sur le serveur. Les groupes de ces carnets qui les "
-"contiennent ne les auront plus."
-
-msgid "Move"
-msgstr "Déplacer"
-
-msgid "View photo"
-msgstr "Voir la photo"
-
-msgid "Add to Contacts"
-msgstr "Ajouter aux contacts"
-
-msgid "Email"
-msgstr "E-mail"
-
-msgid "Phone"
-msgstr "Téléphone"
-
-msgid "Address"
-msgstr "Adresse"
-
-msgid "Website"
-msgstr "Site web"
-
-msgid "Birthday"
-msgstr "Anniversaire"
-
-#. ---- note ----
-msgid "Note"
-msgstr "Note"
-
-msgid "Directory"
-msgstr "Annuaire"
-
-msgid "Details"
-msgstr "Détails"
-
-msgid "Members"
-msgstr "Membres"
-
-msgid "No email address"
-msgstr "Aucune adresse e-mail"
-
-msgid "No one is in this group yet."
-msgstr "Ce groupe ne contient encore personne."
-
-msgid "Changed in the app it came from"
-msgstr "Modifié dans l’application d’origine"
-
-msgid ""
-"This group names its members by contact, which Tegami Mail does not edit."
-msgstr ""
-"Ce groupe désigne ses membres par contact, ce que Tegami Mail ne modifie pas."
-
-msgid ""
-"Saving moves the group to this address book, with its people, and removes it "
-"from {book}."
-msgstr ""
-"L’enregistrement déplace le groupe vers ce carnet d’adresses, avec ses "
-"membres, et le retire de {book}."
-
-msgid ""
-"Groups here hold addresses, so people with no email address are left out."
-msgstr ""
-"Les groupes contiennent ici des adresses : les personnes sans adresse e-mail "
-"sont donc exclues."
-
-msgid "Group"
-msgstr "Groupe"
-
-msgid "Send as Bcc"
-msgstr "Envoyer en Cci"
-
-msgid "Members do not see each other's addresses."
-msgstr "Les membres ne voient pas les adresses des autres."
-
-#. An Apple group (iCloud's) holds cards of its own book.
-msgid ""
-"Groups in this address book hold its own contacts: anyone added who is not "
-"in it yet is added to it."
-msgstr ""
-"Les groupes de ce carnet d’adresses contiennent ses propres contacts : toute "
-"personne ajoutée qui n’y figure pas encore y est ajoutée."
-
-msgid "Edit Contact"
-msgstr "Modifier le contact"
-
-#. ---- identity fields ----
-msgid "Identity"
-msgstr "Identité"
-
-msgid "Nickname"
-msgstr "Surnom"
-
-msgid "Organization"
-msgstr "Organisation"
-
-msgid "Title"
-msgstr "Titre"
-
-msgid "Another book moves the contact there when saved."
-msgstr ""
-"Si vous choisissez un autre carnet, le contact y sera déplacé à "
-"l’enregistrement."
-
-msgid "Add email"
-msgstr "Ajouter une adresse e-mail"
-
-msgid "Add phone"
-msgstr "Ajouter un numéro de téléphone"
-
-msgid "Add website"
-msgstr "Ajouter un site web"
-
-msgid "No label"
-msgstr "Aucune étiquette"
-
-msgid "Home"
-msgstr "Domicile"
-
-msgid "Work"
-msgstr "Travail"
-
-msgid "Mobile"
-msgstr "Mobile"
-
-msgid "Fax"
-msgstr "Fax"
-
-msgid "Label"
-msgstr "Étiquette"
-
-msgid "Add address"
-msgstr "Ajouter une adresse"
-
-msgid "Street"
-msgstr "Rue"
-
-msgid "City"
-msgstr "Ville"
-
-msgid "State or region"
-msgstr "État ou région"
-
-msgid "Postal code"
-msgstr "Code postal"
-
-msgid "Country"
-msgstr "Pays"
-
-msgid "No birthday"
-msgstr "Aucun anniversaire"
-
-msgid "Year"
-msgstr "Année"
-
-msgid "Change Photo…"
-msgstr "Changer la photo…"
-
-msgid "Remove Photo"
-msgstr "Retirer la photo"
-
-msgid "Choose a Photo"
-msgstr "Choisir une photo"
-
-msgid "{shown} of {total}"
-msgstr "{shown} sur {total}"
-
-msgid "In Directories"
-msgstr "Dans les annuaires"
-
-msgid "Type three letters or more to search the directory."
-msgstr "Saisissez au moins trois lettres pour rechercher dans l’annuaire."
-
-msgid "Nobody in the directory matches."
-msgstr "Personne dans l’annuaire ne correspond."
-
-msgid "Remove from Group"
-msgstr "Retirer du groupe"
-
-msgid "Add to Group"
-msgstr "Ajouter au groupe"
-
-msgid "Move to Address Book"
-msgstr "Déplacer vers un carnet d’adresses"
-
-msgid "Delete…"
-msgstr "Supprimer…"
-
-msgid "Edit"
-msgstr "Modifier"
-
-msgid "Open in GNOME Contacts"
-msgstr "Ouvrir dans Contacts GNOME"
-
-msgid "{n} Group Selected"
-msgid_plural "{n} Groups Selected"
-msgstr[0] "{n} groupe sélectionné"
-msgstr[1] "{n} groupes sélectionnés"
-
-msgid "{n} Contact Selected"
-msgid_plural "{n} Contacts Selected"
-msgstr[0] "{n} contact sélectionné"
-msgstr[1] "{n} contacts sélectionnés"
-
-msgid "Move to…"
-msgstr "Déplacer vers…"
-
-msgid "Move to another address book"
-msgstr "Déplacer vers un autre carnet d’adresses"
-
-msgid "Selected"
-msgstr "Sélectionné"
-
-msgid "Add a person by name or address"
-msgstr "Ajouter une personne par nom ou adresse"
-
-msgid "No email address · {book}"
-msgstr "Aucune adresse e-mail · {book}"
-
-msgid "First name"
-msgstr "Prénom"
-
-msgid "Last name"
-msgstr "Nom"
-
-msgid "Sort and filter contacts"
-msgstr "Trier et filtrer les contacts"
-
-msgid "Import Contacts"
-msgstr "Importer des contacts"
-
-msgid "vCard files"
-msgstr "Fichiers vCard"
-
-msgid "All files"
-msgstr "Tous les fichiers"
-
-msgid "Directories"
-msgstr "Annuaires"
-
-msgid "Has Photo"
-msgstr "Avec photo"
-
-msgid "Has Email"
-msgstr "Avec e-mail"
-
-msgid "Has Phone"
-msgstr "Avec téléphone"
-
-msgid "Has Address"
-msgstr "Avec adresse"
-
-msgid "Has Birthday"
-msgstr "Avec anniversaire"
-
-msgid "Has Company"
-msgstr "Avec entreprise"
-
-msgid "Not in a Group"
-msgstr "Sans groupe"
-
-msgid ""
-"This will remove the group {name} from your address book locally and on the "
-"server. The contacts are not removed."
-msgstr ""
-"Le groupe {name} sera supprimé de votre carnet d’adresses, en local et sur "
-"le serveur. Les contacts ne sont pas supprimés."
-
-msgid ""
-"This will remove the group {name} from your address book. The contacts are "
-"not removed."
-msgstr ""
-"Le groupe {name} sera supprimé de votre carnet d’adresses. Les contacts ne "
-"sont pas supprimés."
-
-msgid "Delete Group?"
-msgstr "Supprimer le groupe ?"
-
-msgid ""
-"This will remove the contact {name} from your address book locally and on "
-"the server."
-msgstr ""
-"Le contact {name} sera supprimé de votre carnet d’adresses, en local et sur "
-"le serveur."
-
-msgid "This will remove the contact {name} from your address book."
-msgstr "Le contact {name} sera supprimé de votre carnet d’adresses."
-
-msgid "Delete Contact?"
-msgstr "Supprimer le contact ?"
-
-msgid "Delete {n} Group?"
-msgid_plural "Delete {n} Groups?"
-msgstr[0] "Supprimer {n} groupe ?"
-msgstr[1] "Supprimer {n} groupes ?"
-
-msgid ""
-"This will remove {n} group from your address books locally and on the "
-"server. The contacts are not removed."
-msgid_plural ""
-"This will remove {n} groups from your address books locally and on the "
-"server. The contacts are not removed."
-msgstr[0] ""
-"{n} groupe sera supprimé de vos carnets d’adresses, en local et sur le "
-"serveur. Les contacts ne sont pas supprimés."
-msgstr[1] ""
-"{n} groupes seront supprimés de vos carnets d’adresses, en local et sur le "
-"serveur. Les contacts ne sont pas supprimés."
-
-msgid ""
-"This will remove {n} group from your address book. The contacts are not "
-"removed."
-msgid_plural ""
-"This will remove {n} groups from your address books. The contacts are not "
-"removed."
-msgstr[0] ""
-"{n} groupe sera supprimé de votre carnet d’adresses. Les contacts ne sont "
-"pas supprimés."
-msgstr[1] ""
-"{n} groupes seront supprimés de vos carnets d’adresses. Les contacts ne sont "
-"pas supprimés."
-
-msgid "Delete {n} Contact?"
-msgid_plural "Delete {n} Contacts?"
-msgstr[0] "Supprimer {n} contact ?"
-msgstr[1] "Supprimer {n} contacts ?"
-
-msgid ""
-"This will remove {n} contact from your address books locally and on the "
-"server."
-msgid_plural ""
-"This will remove {n} contacts from your address books locally and on the "
-"server."
-msgstr[0] ""
-"{n} contact sera supprimé de vos carnets d’adresses, en local et sur le "
-"serveur."
-msgstr[1] ""
-"{n} contacts seront supprimés de vos carnets d’adresses, en local et sur le "
-"serveur."
-
-msgid "This will remove {n} contact from your address book."
-msgid_plural "This will remove {n} contacts from your address books."
-msgstr[0] "{n} contact sera supprimé de votre carnet d’adresses."
-msgstr[1] "{n} contacts seront supprimés de vos carnets d’adresses."
-
-msgid "Toggle sidebar"
-msgstr "Basculer la barre latérale"
-
-msgid "Import vCard files into the Tegami Mail address book"
-msgstr "Importer des fichiers vCard dans le carnet d’adresses Tegami Mail"
-
-msgid "New contact or group"
-msgstr "Nouveau contact ou groupe"
-
-msgid "Loading Contacts…"
-msgstr "Chargement des contacts…"
-
-msgid "No Contacts"
-msgstr "Aucun contact"
-
-msgid ""
-"Add a contact with the + button, or import vCard files. Contacts are kept in "
-"Tegami Mail's own address book, and the address books of GNOME Contacts are "
-"listed here too."
-msgstr ""
-"Ajoutez un contact avec le bouton +, ou importez des fichiers vCard. Les "
-"contacts sont conservés dans le carnet d’adresses propre à Tegami Mail, et "
-"les carnets d’adresses de Contacts GNOME sont également listés ici."
-
-msgid "Search contacts (Ctrl+F)"
-msgstr "Rechercher des contacts (Ctrl+F)"
-
-msgid "Search contacts"
-msgstr "Rechercher des contacts"
-
-msgid "Edit contact"
-msgstr "Modifier le contact"
 
 msgid "Attach to Message"
 msgstr "Joindre au message"
@@ -4474,6 +4014,9 @@ msgstr ""
 msgid "Mark as read"
 msgstr "Marquer comme lu"
 
+msgid "Move to…"
+msgstr "Déplacer vers…"
+
 msgid "Not spam"
 msgstr "Non indésirable"
 
@@ -4595,6 +4138,9 @@ msgstr "Masquer le texte cité"
 #, fuzzy
 msgid "Copy Address"
 msgstr "Copier l’adresse du lien"
+
+msgid "Add to Contacts"
+msgstr "Ajouter aux contacts"
 
 msgid "Double-click to open in a new window"
 msgstr "Double-cliquez pour ouvrir dans une nouvelle fenêtre"
@@ -5120,6 +4666,9 @@ msgstr ""
 msgid "Generate"
 msgstr "Générer"
 
+msgid "Address"
+msgstr "Adresse"
+
 msgid "Expires"
 msgstr "Date d’expiration"
 
@@ -5143,6 +4692,9 @@ msgstr "Importer la clé"
 
 msgid "OpenPGP keys"
 msgstr "Clés OpenPGP"
+
+msgid "All files"
+msgstr "Tous les fichiers"
 
 msgid "Could not import: {e}"
 msgstr "Impossible d’importer : {e}"
@@ -5305,15 +4857,6 @@ msgstr "Toutes les 15 minutes"
 
 msgid "Every 30 minutes"
 msgstr "Toutes les 30 minutes"
-
-msgid "In the footer"
-msgstr "Dans le pied de page"
-
-msgid "Above the accounts"
-msgstr "Au-dessus des comptes"
-
-msgid "Below the accounts"
-msgstr "Sous les comptes"
 
 #. GNOME Settings' own names for its alert sounds.
 msgid "Click"
@@ -5506,6 +5049,12 @@ msgstr "Style unifié"
 
 msgid "Tree style"
 msgstr "Style arborescent"
+
+msgid "Above the accounts"
+msgstr "Au-dessus des comptes"
+
+msgid "Below the accounts"
+msgstr "Sous les comptes"
 
 msgid "All Inboxes"
 msgstr "Toutes les boîtes de réception"
@@ -5776,6 +5325,9 @@ msgstr "Les messages envoyés utilisent le cercle de votre compte"
 msgid "The account's picture or emoji, as in the sidebar."
 msgstr "L’image ou l’émoji du compte, comme dans la barre latérale."
 
+msgid "Layout"
+msgstr "Disposition"
+
 msgid "Automatic uses single lines in wide windows."
 msgstr "Automatique utilise des lignes simples dans les fenêtres larges."
 
@@ -5793,6 +5345,9 @@ msgstr "Tags et étiquettes sous le texte"
 
 msgid "Gives the subject its full width."
 msgstr "Donne à l’objet toute sa largeur."
+
+msgid "Keep the search field open"
+msgstr "Garder le champ de recherche ouvert"
 
 msgid "Search field position"
 msgstr "Position du champ de recherche"
@@ -6131,6 +5686,9 @@ msgstr "{name} enregistré"
 msgid "Could not save the PDF: {error}"
 msgstr "Impossible d’enregistrer le PDF : {error}"
 
+msgid "Edit"
+msgstr "Modifier"
+
 msgid "Custom…"
 msgstr "Personnalisé…"
 
@@ -6354,9 +5912,6 @@ msgstr "Afficher chaque tag"
 
 msgid "Show each smart folder"
 msgstr "Afficher chaque dossier intelligent"
-
-msgid "Show each address book"
-msgstr "Afficher chaque carnet d’adresses"
 
 msgid "Long-press to expand or collapse"
 msgstr "Appui long pour déplier ou replier"
@@ -6978,6 +6533,9 @@ msgstr "Contacts importés : {added} nouveaux, {updated} mis à jour"
 msgid "No address book available to add contacts"
 msgstr "Aucun carnet d’adresses disponible pour ajouter des contacts"
 
+msgid "Email"
+msgstr "E-mail"
+
 msgid "Added to Contacts"
 msgstr "Ajouté aux contacts"
 
@@ -6990,22 +6548,6 @@ msgstr "Déjà dans les contacts ({name})"
 msgid "Could not add contact: {e}"
 msgstr "Impossible d’ajouter le contact : {e}"
 
-msgid "No address book available"
-msgstr "Aucun carnet d’adresses disponible"
-
-msgid "Could not rename the address book: {e}"
-msgstr "Impossible de renommer le carnet d’adresses : {e}"
-
-msgid "{n} contact was not copied: {e}"
-msgid_plural "{n} contacts were not copied: {e}"
-msgstr[0] "{n} contact n’a pas été copié : {e}"
-msgstr[1] "{n} contacts n’ont pas été copiés : {e}"
-
-msgid "{n} contact was not moved: {e}"
-msgid_plural "{n} contacts were not moved: {e}"
-msgstr[0] "{n} contact n’a pas été déplacé : {e}"
-msgstr[1] "{n} contacts n’ont pas été déplacés : {e}"
-
 msgid "Could not update contact: {e}"
 msgstr "Impossible de mettre à jour le contact : {e}"
 
@@ -7014,6 +6556,12 @@ msgstr "Impossible d’importer les contacts : {e}"
 
 msgid "Could not read: {files}"
 msgstr "Impossible de lire : {files}"
+
+msgid "Import Contacts"
+msgstr "Importer des contacts"
+
+msgid "vCard files"
+msgstr "Fichiers vCard"
 
 msgid "Search filters"
 msgstr "Filtres de recherche"
@@ -7057,6 +6605,9 @@ msgstr "Stockage"
 
 msgid "Mail Account"
 msgstr "Compte e-mail"
+
+msgid "Nickname"
+msgstr "Surnom"
 
 msgid "Display Name"
 msgstr "Nom d’affichage"
@@ -8033,6 +7584,453 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Tegami Mail cannot change this kind of group"
+#~ msgstr "Tegami Mail ne peut pas modifier ce type de groupe"
+
+#~ msgid "Contacts placement"
+#~ msgstr "Emplacement des contacts"
+
+#~ msgid "'In the footer' disables expand/collapse."
+#~ msgstr "« Dans le pied de page » désactive le repli et le dépliage."
+
+#~ msgid "Tegami Mail, on this computer"
+#~ msgstr "Tegami Mail, sur cet ordinateur"
+
+#~ msgid "Edit Group"
+#~ msgstr "Modifier le groupe"
+
+#~ msgid "Delete Group…"
+#~ msgstr "Supprimer le groupe…"
+
+#~ msgid "New Contact"
+#~ msgstr "Nouveau contact"
+
+#~ msgid "New Group"
+#~ msgstr "Nouveau groupe"
+
+#~ msgid "Rename…"
+#~ msgstr "Renommer…"
+
+#~ msgid "Show or hide"
+#~ msgstr "Afficher ou masquer"
+
+#~ msgid "Rename Address Book"
+#~ msgstr "Renommer le carnet d’adresses"
+
+#~ msgid ""
+#~ "The name is used in Tegami Mail only; GNOME Contacts and Evolution keep "
+#~ "the book's own."
+#~ msgstr ""
+#~ "Ce nom n’est utilisé que dans Tegami Mail ; GNOME Contacts et Evolution "
+#~ "conservent le nom propre du carnet."
+
+#~ msgid "Use Its Own Name"
+#~ msgstr "Utiliser son propre nom"
+
+#~ msgid "All Address Books"
+#~ msgstr "Tous les carnets d’adresses"
+
+#~ msgid "Move Contact?"
+#~ msgstr "Déplacer le contact ?"
+
+#~ msgid ""
+#~ "This will move {name} out of {from} and into {to}, locally and on the "
+#~ "server. A group in {from} that holds the contact will no longer have it."
+#~ msgstr ""
+#~ "{name} sera déplacé de {from} vers {to}, en local et sur le serveur. Un "
+#~ "groupe de {from} qui contient ce contact ne l’aura plus."
+
+#~ msgid "Move {n} Contact?"
+#~ msgid_plural "Move {n} Contacts?"
+#~ msgstr[0] "Déplacer {n} contact ?"
+#~ msgstr[1] "Déplacer {n} contacts ?"
+
+#~ msgid ""
+#~ "This will move {n} contact out of the address book it is in and into "
+#~ "{to}, locally and on the server. A group there that holds it will no "
+#~ "longer have it."
+#~ msgid_plural ""
+#~ "This will move {n} contacts out of the address books they are in and into "
+#~ "{to}, locally and on the server. Groups there that hold them will no "
+#~ "longer have them."
+#~ msgstr[0] ""
+#~ "{n} contact sera déplacé du carnet d’adresses où il se trouve vers {to}, "
+#~ "en local et sur le serveur. Un groupe de ce carnet qui le contient ne "
+#~ "l’aura plus."
+#~ msgstr[1] ""
+#~ "{n} contacts seront déplacés des carnets d’adresses où ils se trouvent "
+#~ "vers {to}, en local et sur le serveur. Les groupes de ces carnets qui les "
+#~ "contiennent ne les auront plus."
+
+#~ msgid "Move"
+#~ msgstr "Déplacer"
+
+#~ msgid "View photo"
+#~ msgstr "Voir la photo"
+
+#~ msgid "Phone"
+#~ msgstr "Téléphone"
+
+#~ msgid "Website"
+#~ msgstr "Site web"
+
+#~ msgid "Birthday"
+#~ msgstr "Anniversaire"
+
+#~ msgid "Note"
+#~ msgstr "Note"
+
+#~ msgid "Directory"
+#~ msgstr "Annuaire"
+
+#~ msgid "Details"
+#~ msgstr "Détails"
+
+#~ msgid "Members"
+#~ msgstr "Membres"
+
+#~ msgid "No email address"
+#~ msgstr "Aucune adresse e-mail"
+
+#~ msgid "No one is in this group yet."
+#~ msgstr "Ce groupe ne contient encore personne."
+
+#~ msgid "Changed in the app it came from"
+#~ msgstr "Modifié dans l’application d’origine"
+
+#~ msgid ""
+#~ "This group names its members by contact, which Tegami Mail does not edit."
+#~ msgstr ""
+#~ "Ce groupe désigne ses membres par contact, ce que Tegami Mail ne modifie "
+#~ "pas."
+
+#~ msgid ""
+#~ "Saving moves the group to this address book, with its people, and removes "
+#~ "it from {book}."
+#~ msgstr ""
+#~ "L’enregistrement déplace le groupe vers ce carnet d’adresses, avec ses "
+#~ "membres, et le retire de {book}."
+
+#~ msgid ""
+#~ "Groups here hold addresses, so people with no email address are left out."
+#~ msgstr ""
+#~ "Les groupes contiennent ici des adresses : les personnes sans adresse e-"
+#~ "mail sont donc exclues."
+
+#~ msgid "Group"
+#~ msgstr "Groupe"
+
+#~ msgid "Send as Bcc"
+#~ msgstr "Envoyer en Cci"
+
+#~ msgid "Members do not see each other's addresses."
+#~ msgstr "Les membres ne voient pas les adresses des autres."
+
+#~ msgid ""
+#~ "Groups in this address book hold its own contacts: anyone added who is "
+#~ "not in it yet is added to it."
+#~ msgstr ""
+#~ "Les groupes de ce carnet d’adresses contiennent ses propres contacts : "
+#~ "toute personne ajoutée qui n’y figure pas encore y est ajoutée."
+
+#~ msgid "Edit Contact"
+#~ msgstr "Modifier le contact"
+
+#~ msgid "Identity"
+#~ msgstr "Identité"
+
+#~ msgid "Organization"
+#~ msgstr "Organisation"
+
+#~ msgid "Title"
+#~ msgstr "Titre"
+
+#~ msgid "Another book moves the contact there when saved."
+#~ msgstr ""
+#~ "Si vous choisissez un autre carnet, le contact y sera déplacé à "
+#~ "l’enregistrement."
+
+#~ msgid "Add email"
+#~ msgstr "Ajouter une adresse e-mail"
+
+#~ msgid "Add phone"
+#~ msgstr "Ajouter un numéro de téléphone"
+
+#~ msgid "Add website"
+#~ msgstr "Ajouter un site web"
+
+#~ msgid "No label"
+#~ msgstr "Aucune étiquette"
+
+#~ msgid "Home"
+#~ msgstr "Domicile"
+
+#~ msgid "Work"
+#~ msgstr "Travail"
+
+#~ msgid "Mobile"
+#~ msgstr "Mobile"
+
+#~ msgid "Fax"
+#~ msgstr "Fax"
+
+#~ msgid "Label"
+#~ msgstr "Étiquette"
+
+#~ msgid "Add address"
+#~ msgstr "Ajouter une adresse"
+
+#~ msgid "Street"
+#~ msgstr "Rue"
+
+#~ msgid "City"
+#~ msgstr "Ville"
+
+#~ msgid "State or region"
+#~ msgstr "État ou région"
+
+#~ msgid "Postal code"
+#~ msgstr "Code postal"
+
+#~ msgid "Country"
+#~ msgstr "Pays"
+
+#~ msgid "No birthday"
+#~ msgstr "Aucun anniversaire"
+
+#~ msgid "Year"
+#~ msgstr "Année"
+
+#~ msgid "Change Photo…"
+#~ msgstr "Changer la photo…"
+
+#~ msgid "Remove Photo"
+#~ msgstr "Retirer la photo"
+
+#~ msgid "Choose a Photo"
+#~ msgstr "Choisir une photo"
+
+#~ msgid "{shown} of {total}"
+#~ msgstr "{shown} sur {total}"
+
+#~ msgid "In Directories"
+#~ msgstr "Dans les annuaires"
+
+#~ msgid "Type three letters or more to search the directory."
+#~ msgstr "Saisissez au moins trois lettres pour rechercher dans l’annuaire."
+
+#~ msgid "Nobody in the directory matches."
+#~ msgstr "Personne dans l’annuaire ne correspond."
+
+#~ msgid "Remove from Group"
+#~ msgstr "Retirer du groupe"
+
+#~ msgid "Add to Group"
+#~ msgstr "Ajouter au groupe"
+
+#~ msgid "Move to Address Book"
+#~ msgstr "Déplacer vers un carnet d’adresses"
+
+#~ msgid "Delete…"
+#~ msgstr "Supprimer…"
+
+#~ msgid "Open in GNOME Contacts"
+#~ msgstr "Ouvrir dans Contacts GNOME"
+
+#~ msgid "{n} Group Selected"
+#~ msgid_plural "{n} Groups Selected"
+#~ msgstr[0] "{n} groupe sélectionné"
+#~ msgstr[1] "{n} groupes sélectionnés"
+
+#~ msgid "{n} Contact Selected"
+#~ msgid_plural "{n} Contacts Selected"
+#~ msgstr[0] "{n} contact sélectionné"
+#~ msgstr[1] "{n} contacts sélectionnés"
+
+#~ msgid "Move to another address book"
+#~ msgstr "Déplacer vers un autre carnet d’adresses"
+
+#~ msgid "Selected"
+#~ msgstr "Sélectionné"
+
+#~ msgid "Add a person by name or address"
+#~ msgstr "Ajouter une personne par nom ou adresse"
+
+#~ msgid "No email address · {book}"
+#~ msgstr "Aucune adresse e-mail · {book}"
+
+#~ msgid "First name"
+#~ msgstr "Prénom"
+
+#~ msgid "Last name"
+#~ msgstr "Nom"
+
+#~ msgid "Sort and filter contacts"
+#~ msgstr "Trier et filtrer les contacts"
+
+#~ msgid "Directories"
+#~ msgstr "Annuaires"
+
+#~ msgid "Has Photo"
+#~ msgstr "Avec photo"
+
+#~ msgid "Has Email"
+#~ msgstr "Avec e-mail"
+
+#~ msgid "Has Phone"
+#~ msgstr "Avec téléphone"
+
+#~ msgid "Has Address"
+#~ msgstr "Avec adresse"
+
+#~ msgid "Has Birthday"
+#~ msgstr "Avec anniversaire"
+
+#~ msgid "Has Company"
+#~ msgstr "Avec entreprise"
+
+#~ msgid "Not in a Group"
+#~ msgstr "Sans groupe"
+
+#~ msgid ""
+#~ "This will remove the group {name} from your address book locally and on "
+#~ "the server. The contacts are not removed."
+#~ msgstr ""
+#~ "Le groupe {name} sera supprimé de votre carnet d’adresses, en local et "
+#~ "sur le serveur. Les contacts ne sont pas supprimés."
+
+#~ msgid ""
+#~ "This will remove the group {name} from your address book. The contacts "
+#~ "are not removed."
+#~ msgstr ""
+#~ "Le groupe {name} sera supprimé de votre carnet d’adresses. Les contacts "
+#~ "ne sont pas supprimés."
+
+#~ msgid "Delete Group?"
+#~ msgstr "Supprimer le groupe ?"
+
+#~ msgid ""
+#~ "This will remove the contact {name} from your address book locally and on "
+#~ "the server."
+#~ msgstr ""
+#~ "Le contact {name} sera supprimé de votre carnet d’adresses, en local et "
+#~ "sur le serveur."
+
+#~ msgid "This will remove the contact {name} from your address book."
+#~ msgstr "Le contact {name} sera supprimé de votre carnet d’adresses."
+
+#~ msgid "Delete Contact?"
+#~ msgstr "Supprimer le contact ?"
+
+#~ msgid "Delete {n} Group?"
+#~ msgid_plural "Delete {n} Groups?"
+#~ msgstr[0] "Supprimer {n} groupe ?"
+#~ msgstr[1] "Supprimer {n} groupes ?"
+
+#~ msgid ""
+#~ "This will remove {n} group from your address books locally and on the "
+#~ "server. The contacts are not removed."
+#~ msgid_plural ""
+#~ "This will remove {n} groups from your address books locally and on the "
+#~ "server. The contacts are not removed."
+#~ msgstr[0] ""
+#~ "{n} groupe sera supprimé de vos carnets d’adresses, en local et sur le "
+#~ "serveur. Les contacts ne sont pas supprimés."
+#~ msgstr[1] ""
+#~ "{n} groupes seront supprimés de vos carnets d’adresses, en local et sur "
+#~ "le serveur. Les contacts ne sont pas supprimés."
+
+#~ msgid ""
+#~ "This will remove {n} group from your address book. The contacts are not "
+#~ "removed."
+#~ msgid_plural ""
+#~ "This will remove {n} groups from your address books. The contacts are not "
+#~ "removed."
+#~ msgstr[0] ""
+#~ "{n} groupe sera supprimé de votre carnet d’adresses. Les contacts ne sont "
+#~ "pas supprimés."
+#~ msgstr[1] ""
+#~ "{n} groupes seront supprimés de vos carnets d’adresses. Les contacts ne "
+#~ "sont pas supprimés."
+
+#~ msgid "Delete {n} Contact?"
+#~ msgid_plural "Delete {n} Contacts?"
+#~ msgstr[0] "Supprimer {n} contact ?"
+#~ msgstr[1] "Supprimer {n} contacts ?"
+
+#~ msgid ""
+#~ "This will remove {n} contact from your address books locally and on the "
+#~ "server."
+#~ msgid_plural ""
+#~ "This will remove {n} contacts from your address books locally and on the "
+#~ "server."
+#~ msgstr[0] ""
+#~ "{n} contact sera supprimé de vos carnets d’adresses, en local et sur le "
+#~ "serveur."
+#~ msgstr[1] ""
+#~ "{n} contacts seront supprimés de vos carnets d’adresses, en local et sur "
+#~ "le serveur."
+
+#~ msgid "This will remove {n} contact from your address book."
+#~ msgid_plural "This will remove {n} contacts from your address books."
+#~ msgstr[0] "{n} contact sera supprimé de votre carnet d’adresses."
+#~ msgstr[1] "{n} contacts seront supprimés de vos carnets d’adresses."
+
+#~ msgid "Toggle sidebar"
+#~ msgstr "Basculer la barre latérale"
+
+#~ msgid "Import vCard files into the Tegami Mail address book"
+#~ msgstr "Importer des fichiers vCard dans le carnet d’adresses Tegami Mail"
+
+#~ msgid "New contact or group"
+#~ msgstr "Nouveau contact ou groupe"
+
+#~ msgid "Loading Contacts…"
+#~ msgstr "Chargement des contacts…"
+
+#~ msgid "No Contacts"
+#~ msgstr "Aucun contact"
+
+#~ msgid ""
+#~ "Add a contact with the + button, or import vCard files. Contacts are kept "
+#~ "in Tegami Mail's own address book, and the address books of GNOME "
+#~ "Contacts are listed here too."
+#~ msgstr ""
+#~ "Ajoutez un contact avec le bouton +, ou importez des fichiers vCard. Les "
+#~ "contacts sont conservés dans le carnet d’adresses propre à Tegami Mail, "
+#~ "et les carnets d’adresses de Contacts GNOME sont également listés ici."
+
+#~ msgid "Search contacts (Ctrl+F)"
+#~ msgstr "Rechercher des contacts (Ctrl+F)"
+
+#~ msgid "Search contacts"
+#~ msgstr "Rechercher des contacts"
+
+#~ msgid "Edit contact"
+#~ msgstr "Modifier le contact"
+
+#~ msgid "In the footer"
+#~ msgstr "Dans le pied de page"
+
+#~ msgid "Show each address book"
+#~ msgstr "Afficher chaque carnet d’adresses"
+
+#~ msgid "No address book available"
+#~ msgstr "Aucun carnet d’adresses disponible"
+
+#~ msgid "Could not rename the address book: {e}"
+#~ msgstr "Impossible de renommer le carnet d’adresses : {e}"
+
+#~ msgid "{n} contact was not copied: {e}"
+#~ msgid_plural "{n} contacts were not copied: {e}"
+#~ msgstr[0] "{n} contact n’a pas été copié : {e}"
+#~ msgstr[1] "{n} contacts n’ont pas été copiés : {e}"
+
+#~ msgid "{n} contact was not moved: {e}"
+#~ msgid_plural "{n} contacts were not moved: {e}"
+#~ msgstr[0] "{n} contact n’a pas été déplacé : {e}"
+#~ msgstr[1] "{n} contacts n’ont pas été déplacés : {e}"
 
 #~ msgid "Go to Message"
 #~ msgstr "Aller au message"

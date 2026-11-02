@@ -44,20 +44,8 @@ impl Preferences {
             Out::DeleteAllLocal => {
                 let _ = sender.output(PrefOutput::DeleteAllLocalContacts);
             }
-            Out::SetSearchOpen(on) => {
-                let _ = sender.output(PrefOutput::SetContactsSearchOpen(on));
-            }
             Out::SetContactNames(on) => {
                 let _ = sender.output(PrefOutput::SetContactNames(on));
-            }
-            // Through the Sidebar page's row, which tells the app.
-            Out::SetPlacement(placement) => {
-                if let Some(row) = &self.contacts_placement_row {
-                    let idx = contacts_placement_index(placement);
-                    if row.selected() != idx {
-                        row.set_selected(idx);
-                    }
-                }
             }
             Out::SetContactBook(uid) => {
                 let _ = sender.output(PrefOutput::SetContactBook(uid));

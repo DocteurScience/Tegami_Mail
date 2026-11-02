@@ -308,8 +308,6 @@ snoozed_expanded = true
 favorites = ["a@x	INBOX"]
 favorites_expanded = false
 smart_expanded = false
-contacts_expanded = true
-contacts_folded = ["book:1"]
 filtered_expanded_accounts = ["a@x"]
 tags_expanded_accounts = ["b@x"]
 "#,
@@ -362,7 +360,6 @@ drawer_height = 300
 drawer_list_view = true
 drawer_sort_desc = true
 list_pane_width = 420
-contacts_pane_width = 380
 about_height = 500
 split_reply_height = 240
 wizard_completed = true

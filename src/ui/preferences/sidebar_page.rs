@@ -34,14 +34,6 @@ impl Preferences {
         let _ = sender.output(PrefOutput::SetSectionStyle(style));
     }
 
-    pub(super) fn on_change_contacts_placement(&mut self, idx: u32, sender: ComponentSender<Self>) {
-        let placement = contacts_placement_from_index(idx);
-        if let Some(c) = &self.contacts {
-            c.emit(crate::ui::contact_sources::ContactSourcesInput::SetPlacement(placement));
-        }
-        let _ = sender.output(PrefOutput::SetContactsPlacement(placement));
-    }
-
     pub(super) fn on_change_start_view(&mut self, idx: u32, sender: ComponentSender<Self>) {
         let view = start_view_at(idx);
         let _ = sender.output(PrefOutput::SetStartView(view));

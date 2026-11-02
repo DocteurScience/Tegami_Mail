@@ -34,14 +34,11 @@ impl Preferences {
         self.cloud = Some(cloud);
         let contacts = crate::ui::contact_sources::ContactSources::builder()
             .launch(crate::ui::contact_sources::ContactSourcesInit {
-                search_open: init.contacts_search_open,
                 contact_names: init.contact_names,
-                placement: init.contacts_placement,
             })
             .forward(sender.input_sender(), PrefInput::Contacts);
         widgets.contacts_slot.set_child(Some(contacts.widget()));
         self.contacts = Some(contacts);
-        self.contacts_placement_row = Some(widgets.sidebar.contacts_placement_row.clone());
     }
 
     /// The category sidebar (#141): a heading per section, a row per

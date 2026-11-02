@@ -7,7 +7,6 @@ use relm4::prelude::*;
 use crate::config;
 use crate::models::FolderKind;
 use crate::ui::attachment_drawer::AttachmentDrawer;
-use crate::ui::contacts_page::{ContactsPage, ContactsPageOutput};
 use crate::ui::message_list::{MessageList, MessageListOutput};
 use crate::ui::message_view::{MessageView, MessageViewOutput};
 use crate::ui::notifications::{NotificationCenter, NotifyOutput};
@@ -191,62 +190,6 @@ fn attachment_drawer_output_msg(out: crate::ui::attachment_drawer::DrawerOutput)
     }
 }
 
-/// What the contacts page reports, as the message it means here.
-fn contacts_page_output_msg(out: ContactsPageOutput) -> AppMsg {
-    match out {
-        ContactsPageOutput::Compose(email) => AppMsg::ComposeTo(email),
-        ContactsPageOutput::ComposeBcc(field) => AppMsg::ComposeBcc(field),
-        ContactsPageOutput::ToggleSidebar => AppMsg::ToggleSidebar,
-        ContactsPageOutput::SaveContact { book_uid, vcard } => {
-            AppMsg::SaveContact { book_uid, vcard }
-        }
-        ContactsPageOutput::CreateContact { book_uid, vcard } => {
-            AppMsg::CreateContact { book_uid, vcard }
-        }
-        ContactsPageOutput::SaveGroup {
-            book_uid,
-            format,
-            original,
-            edit,
-        } => AppMsg::SaveGroup {
-            book_uid,
-            format,
-            original,
-            edit,
-        },
-        ContactsPageOutput::DeleteContacts(keys) => AppMsg::DeleteContacts(keys),
-        ContactsPageOutput::MoveGroup {
-            from,
-            uid,
-            to,
-            format,
-            edit,
-        } => AppMsg::MoveGroup {
-            from,
-            uid,
-            to,
-            format,
-            edit,
-        },
-        ContactsPageOutput::MoveContacts { to, cards } => AppMsg::MoveContacts { to, cards },
-        ContactsPageOutput::CopyContacts { to, cards } => AppMsg::CopyContacts { to, cards },
-        ContactsPageOutput::RenameBook { uid, name } => AppMsg::RenameBook { uid, name },
-        ContactsPageOutput::Tree(tree) => AppMsg::ContactTree(tree),
-        ContactsPageOutput::ImportContacts(paths) => AppMsg::ImportContacts(paths),
-        ContactsPageOutput::WantSuggestions => AppMsg::ContactSuggestions,
-        ContactsPageOutput::ShowPhoto { name, data } => {
-            // The lightbox routes by extension — a bare contact
-            // name sent the JPEG down the PDF path, where poppler
-            // hung the UI trying to parse it. Name it by content.
-            let name = format!("{name}.{}", crate::models::image_ext(&data));
-            AppMsg::ShowLightbox {
-                items: vec![crate::models::Attachment { name, data }],
-                start: 0,
-            }
-        }
-    }
-}
-
 /// What the notifications reports, as the message it means here.
 fn notifications_output_msg(out: NotifyOutput) -> AppMsg {
     match out {
@@ -281,15 +224,9 @@ pub(super) fn sidebar_output_msg(out: SidebarOutput) -> AppMsg {
             account,
         },
         SidebarOutput::ToggleAccountTags(id) => AppMsg::ToggleAccountTags(id),
-        SidebarOutput::ContactsClicked => AppMsg::OpenContacts,
         SidebarOutput::RefreshRequested => AppMsg::Refresh,
         SidebarOutput::StatusBarRequested => AppMsg::ToggleNotifications,
         SidebarOutput::NewTagRequested => AppMsg::NewTagDialog { apply: false },
-        SidebarOutput::OpenGnomeContacts => AppMsg::LaunchGnomeContacts,
-        SidebarOutput::ContactScope(scope) => AppMsg::ContactScope(scope),
-        SidebarOutput::ContactDrop { keys, on, moving } => AppMsg::ContactDrop { keys, on, moving },
-        SidebarOutput::ContactTreeAction(action) => AppMsg::ContactTreeAction(action),
-        SidebarOutput::ContactsFolded(keys) => AppMsg::ContactsFolded(keys),
         SidebarOutput::OutboxSelected => AppMsg::ShowOutbox,
         SidebarOutput::FolderSelected {
             account_id,
@@ -318,7 +255,6 @@ pub(super) fn sidebar_output_msg(out: SidebarOutput) -> AppMsg {
             snoozed,
             favorites,
             smart,
-            contacts,
         } => AppMsg::SidebarSectionsOpen {
             all_inboxes,
             filtered,
@@ -332,7 +268,6 @@ pub(super) fn sidebar_output_msg(out: SidebarOutput) -> AppMsg {
             snoozed,
             favorites,
             smart,
-            contacts,
         },
         SidebarOutput::FolderNodeCollapsed {
             account_id,
@@ -393,8 +328,6 @@ pub(super) struct Children {
     pub(super) message_view: Controller<MessageView>,
     pub(super) attachment_drawer: Controller<AttachmentDrawer>,
     pub(super) lightbox: Controller<crate::ui::lightbox::Lightbox>,
-    pub(super) contacts_compose_revealer: gtk::Revealer,
-    pub(super) contacts_page: Controller<ContactsPage>,
     pub(super) notifications: Controller<NotificationCenter>,
 }
 
@@ -443,20 +376,6 @@ impl Children {
 
         let lightbox = crate::ui::lightbox::Lightbox::builder().launch(()).detach();
 
-        // Built here (not in the model literal) because the contacts page
-        // mounts it over its detail pane at launch.
-        let contacts_compose_revealer = {
-            let r = gtk::Revealer::new();
-            r.set_transition_type(gtk::RevealerTransitionType::SlideDown);
-            r.set_transition_duration(300);
-            r.set_reveal_child(false);
-            r.set_can_target(false);
-            r
-        };
-        let contacts_page = ContactsPage::builder()
-            .launch(contacts_compose_revealer.clone())
-            .forward(sender.input_sender(), contacts_page_output_msg);
-
         let notifications = NotificationCenter::builder()
             .launch(())
             .forward(sender.input_sender(), notifications_output_msg);
@@ -467,8 +386,6 @@ impl Children {
             message_view,
             attachment_drawer,
             lightbox,
-            contacts_compose_revealer,
-            contacts_page,
             notifications,
         }
     }

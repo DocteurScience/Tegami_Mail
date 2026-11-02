@@ -72,9 +72,6 @@ pub(super) enum UnifiedRow {
     Tags,
     /// The smart folders (#417): saved searches, each a row of the list.
     Smart,
-    /// Contacts: every contact, and under it each account's address
-    /// books with their groups.
-    Contacts,
 }
 
 /// What a unified row is called.
@@ -85,7 +82,6 @@ pub(super) fn row_title(row: UnifiedRow) -> String {
         UnifiedRow::Filtered => i18n("Filters"),
         UnifiedRow::Tags => i18n("Tags"),
         UnifiedRow::Smart => i18n("Smart Folders"),
-        UnifiedRow::Contacts => i18n("Contacts"),
     }
 }
 
@@ -97,7 +93,6 @@ pub(super) fn row_icon(row: UnifiedRow) -> &'static str {
         UnifiedRow::Filtered => "filter-folder-symbolic",
         UnifiedRow::Tags => "tag-outline-symbolic",
         UnifiedRow::Smart => "folder-saved-search-symbolic",
-        UnifiedRow::Contacts => "x-office-address-book-symbolic",
     }
 }
 
@@ -111,7 +106,6 @@ pub(super) fn select_msg(row: UnifiedRow) -> SidebarInput {
         UnifiedRow::Tags => SidebarInput::UnifiedTagsSelected,
         // Each smart folder is a view of its own; the header holds them.
         UnifiedRow::Smart => SidebarInput::ToggleSmartExpand,
-        UnifiedRow::Contacts => SidebarInput::ContactsRowClicked,
     }
 }
 
@@ -124,7 +118,6 @@ pub(super) fn toggle_msg(row: UnifiedRow) -> SidebarInput {
         UnifiedRow::Filtered => SidebarInput::ToggleFilteredExpand(Slot::Unified),
         UnifiedRow::Tags => SidebarInput::ToggleTagsExpand(Slot::Unified),
         UnifiedRow::Smart => SidebarInput::ToggleSmartExpand,
-        UnifiedRow::Contacts => SidebarInput::ToggleContactsExpand,
     }
 }
 
@@ -219,8 +212,6 @@ pub(crate) struct SidebarInit {
     pub(crate) snoozed_expanded: bool,
     pub(crate) favorites_expanded: bool,
     pub(crate) smart_expanded: bool,
-    pub(crate) contacts_expanded: bool,
-    pub(crate) contacts_folded: Vec<String>,
     /// Where the first pick lands instead of All Inboxes (#256).
     pub(crate) start: Option<StartTarget>,
 }
@@ -238,10 +229,6 @@ pub(crate) enum StartTarget {
 pub(crate) enum Sel {
     None,
     Unified,
-    /// The in-app contacts view, every contact.
-    Contacts,
-    /// An address book or group picked under the Contacts row.
-    ContactScope(crate::ui::contacts_page::ContactScope),
     Outbox,
     Folder(u32, String),
     /// An account's inbox selected via the "All Inboxes" sub-list.

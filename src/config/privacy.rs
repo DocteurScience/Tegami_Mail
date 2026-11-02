@@ -412,10 +412,6 @@ pub(crate) struct PrivacyFile {
     /// search button (#446). Off by default.
     #[serde(default)]
     pub(crate) list_search_open: bool,
-    /// Contacts' own search field stays above its list, as
-    /// `list_search_open` keeps the message list's. Off by default.
-    #[serde(default)]
-    pub(crate) contacts_search_open: bool,
     /// A saved contact goes by the name in the address book, not the one
     /// its mail gives (#541). Off by default.
     #[serde(default)]
@@ -527,14 +523,6 @@ pub(crate) struct PrivacyFile {
     /// Where Favorites sit, the same choices.
     #[serde(default)]
     pub(crate) favorites_placement: SectionPlacement,
-    /// Where Contacts sits, the same choices or the footer.
-    #[serde(default)]
-    pub(crate) contacts_placement: SectionPlacement,
-    /// Whether the footer, Contacts' default since 1.45, has been applied
-    /// once to a file that placed it above the accounts without anyone
-    /// choosing that. A new install starts with this set.
-    #[serde(default)]
-    pub(crate) contacts_footer_default_applied: bool,
     /// Whether the sidebar's disclosure chevrons (All Inboxes, account
     /// headers) LEAD their rows; off puts them back at the row's end.
     #[serde(default = "default_chevrons_left")]
@@ -653,8 +641,6 @@ impl Default for PrivacyFile {
             filtered_placement: SectionPlacement::AboveAccounts,
             tags_placement: SectionPlacement::AboveAccounts,
             favorites_placement: SectionPlacement::AboveAccounts,
-            contacts_placement: SectionPlacement::Footer,
-            contacts_footer_default_applied: true,
             chevrons_left: default_chevrons_left(),
             account_click_folds: false,
             console_mode: false,
@@ -758,7 +744,6 @@ impl Default for PrivacyFile {
             list_pills_below: true,
             date_groups_default_applied: true,
             list_search_open: false,
-            contacts_search_open: false,
             contact_names: false,
             list_search_bottom: false,
             list_bulk_bar_bottom: false,
@@ -814,8 +799,6 @@ pub(super) struct LegacySwitches {
     unified_tags: bool,
     #[serde(default = "default_on")]
     unified_favorites: bool,
-    #[serde(default = "default_on")]
-    show_contacts: bool,
 }
 
 impl LegacySwitches {
@@ -826,7 +809,6 @@ impl LegacySwitches {
             (&mut file.filtered_placement, self.unified_filtered),
             (&mut file.tags_placement, self.unified_tags),
             (&mut file.favorites_placement, self.unified_favorites),
-            (&mut file.contacts_placement, self.show_contacts),
         ] {
             if *at == SectionPlacement::AllInboxes {
                 *at = if on {
@@ -857,15 +839,6 @@ pub(super) fn apply_new_defaults(file: &mut PrivacyFile) -> bool {
     if !file.date_groups_default_applied {
         file.date_groups_default_applied = true;
         file.list_group_by_date = true;
-        changed = true;
-    }
-    // Contacts back in the footer, the default since 1.45; switched off
-    // stays off.
-    if !file.contacts_footer_default_applied {
-        file.contacts_footer_default_applied = true;
-        if file.contacts_placement != SectionPlacement::Off {
-            file.contacts_placement = SectionPlacement::Footer;
-        }
         changed = true;
     }
     changed

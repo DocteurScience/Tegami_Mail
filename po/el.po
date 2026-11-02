@@ -212,9 +212,6 @@ msgstr "Νέο μήνυμα"
 msgid "Tegami Mail Address Book"
 msgstr "Βιβλίο διευθύνσεων Tegami Mail"
 
-msgid "Tegami Mail cannot change this kind of group"
-msgstr "Το Tegami Mail δεν μπορεί να αλλάξει αυτόν τον τύπο ομάδας"
-
 msgid "On This Computer"
 msgstr "Σε αυτόν τον υπολογιστή"
 
@@ -1116,9 +1113,6 @@ msgstr "Προβολή"
 
 msgid "All accounts"
 msgstr "Όλοι οι λογαριασμοί"
-
-msgid "Contacts"
-msgstr "Επαφές"
 
 msgid "Outbox"
 msgstr "Εξερχόμενα"
@@ -3767,6 +3761,9 @@ msgstr ""
 msgid "LDAP Directory"
 msgstr "Κατάλογος LDAP"
 
+msgid "Contacts"
+msgstr "Επαφές"
+
 msgid "Address Books"
 msgstr "Κατάλογοι διευθύνσεων"
 
@@ -3813,469 +3810,11 @@ msgstr "Από τις επαφές"
 msgid "Saved addresses show the contact's name, not the mail's."
 msgstr ""
 
-msgid "Layout"
-msgstr "Διάταξη"
-
-msgid "Contacts placement"
-msgstr "Θέση επαφών"
-
-msgid "'In the footer' disables expand/collapse."
-msgstr ""
-
-msgid "Keep the search field open"
-msgstr "Διατήρηση ανοιχτού πεδίου αναζήτησης"
-
 msgid "Address Book"
 msgstr "Βιβλίο διευθύνσεων"
 
 msgid "Looking for address books on {name}…"
 msgstr "Αναζήτηση καταλόγων διευθύνσεων στο {name}…"
-
-msgid "Tegami Mail, on this computer"
-msgstr "Tegami Mail, σε αυτόν τον υπολογιστή"
-
-msgid "Edit Group"
-msgstr "Επεξεργασία ομάδας"
-
-msgid "Delete Group…"
-msgstr "Διαγραφή ομάδας…"
-
-msgid "New Contact"
-msgstr "Νέα επαφή"
-
-msgid "New Group"
-msgstr "Νέα ομάδα"
-
-msgid "Rename…"
-msgstr "Μετονομασία…"
-
-msgid "Show or hide"
-msgstr "Εμφάνιση ή απόκρυψη"
-
-msgid "Rename Address Book"
-msgstr "Μετονομασία καταλόγου διευθύνσεων"
-
-msgid ""
-"The name is used in Tegami Mail only; GNOME Contacts and Evolution keep the "
-"book's own."
-msgstr ""
-"Το όνομα χρησιμοποιείται μόνο στο Tegami Mail· οι Επαφές GNOME και το "
-"Evolution διατηρούν το δικό τους όνομα."
-
-msgid "Use Its Own Name"
-msgstr "Χρήση του δικού του ονόματος"
-
-msgid "All Address Books"
-msgstr "Όλα τα βιβλία διευθύνσεων"
-
-msgid "Move Contact?"
-msgstr "Μετακίνηση επαφής;"
-
-msgid ""
-"This will move {name} out of {from} and into {to}, locally and on the "
-"server. A group in {from} that holds the contact will no longer have it."
-msgstr ""
-"Η επαφή {name} θα μετακινηθεί από το {from} στο {to}, τοπικά και στον "
-"διακομιστή. Οι ομάδες στο {from} που περιλαμβάνουν την επαφή δεν θα την "
-"περιλαμβάνουν πλέον."
-
-msgid "Move {n} Contact?"
-msgid_plural "Move {n} Contacts?"
-msgstr[0] "Μετακίνηση {n} επαφής;"
-msgstr[1] "Μετακίνηση {n} επαφών;"
-
-msgid ""
-"This will move {n} contact out of the address book it is in and into {to}, "
-"locally and on the server. A group there that holds it will no longer have "
-"it."
-msgid_plural ""
-"This will move {n} contacts out of the address books they are in and into "
-"{to}, locally and on the server. Groups there that hold them will no longer "
-"have them."
-msgstr[0] ""
-"Η {n} επαφή θα μετακινηθεί από τον τρέχοντα κατάλογο στο {to}, τοπικά και "
-"στον διακομιστή. Οι ομάδες που την περιλαμβάνουν δεν θα την περιλαμβάνουν "
-"πλέον."
-msgstr[1] ""
-"Οι {n} επαφές θα μετακινηθούν από τους τρέχοντες καταλόγους στο {to}, τοπικά "
-"και στον διακομιστή. Οι ομάδες που τις περιλαμβάνουν δεν θα τις "
-"περιλαμβάνουν πλέον."
-
-msgid "Move"
-msgstr "Μετακίνηση"
-
-msgid "View photo"
-msgstr "Προβολή φωτογραφίας"
-
-msgid "Add to Contacts"
-msgstr "Προσθήκη στις επαφές"
-
-msgid "Email"
-msgstr "Email"
-
-msgid "Phone"
-msgstr "Τηλέφωνο"
-
-msgid "Address"
-msgstr "Διεύθυνση"
-
-msgid "Website"
-msgstr "Ιστότοπος"
-
-msgid "Birthday"
-msgstr "Γενέθλια"
-
-#. ---- note ----
-msgid "Note"
-msgstr "Σημείωση"
-
-msgid "Directory"
-msgstr "Κατάλογος"
-
-msgid "Details"
-msgstr "Λεπτομέρειες"
-
-msgid "Members"
-msgstr "Μέλη"
-
-msgid "No email address"
-msgstr "Χωρίς διεύθυνση email"
-
-msgid "No one is in this group yet."
-msgstr "Δεν υπάρχει ακόμη κανείς σε αυτήν την ομάδα."
-
-msgid "Changed in the app it came from"
-msgstr "Έγινε αλλαγή στην εφαρμογή προέλευσης"
-
-msgid ""
-"This group names its members by contact, which Tegami Mail does not edit."
-msgstr ""
-"Αυτή η ομάδα ορίζει τα μέλη της μέσω επαφών, κάτι που το Tegami Mail δεν "
-"μπορεί να επεξεργαστεί."
-
-msgid ""
-"Saving moves the group to this address book, with its people, and removes it "
-"from {book}."
-msgstr ""
-"Με την αποθήκευση, η ομάδα και τα μέλη της μεταφέρονται σε αυτόν τον "
-"κατάλογο και αφαιρούνται από τον {book}."
-
-msgid ""
-"Groups here hold addresses, so people with no email address are left out."
-msgstr ""
-"Οι ομάδες εδώ περιέχουν διευθύνσεις, επομένως παραλείπονται άτομα χωρίς "
-"διεύθυνση email."
-
-msgid "Group"
-msgstr "Ομάδα"
-
-msgid "Send as Bcc"
-msgstr "Αποστολή ως κρυφή κοινοποίηση"
-
-msgid "Members do not see each other's addresses."
-msgstr "Τα μέλη δεν βλέπουν τις διευθύνσεις των υπόλοιπων."
-
-#. An Apple group (iCloud's) holds cards of its own book.
-msgid ""
-"Groups in this address book hold its own contacts: anyone added who is not "
-"in it yet is added to it."
-msgstr ""
-"Οι ομάδες αυτού του καταλόγου περιέχουν τις δικές του επαφές. Όποια επαφή "
-"προστεθεί και δεν υπάρχει ήδη στον κατάλογο προστίθεται σε αυτόν."
-
-msgid "Edit Contact"
-msgstr "Επεξεργασία επαφής"
-
-#. ---- identity fields ----
-msgid "Identity"
-msgstr "Ταυτότητα"
-
-msgid "Nickname"
-msgstr "Ψευδώνυμο"
-
-msgid "Organization"
-msgstr "Οργανισμός"
-
-msgid "Title"
-msgstr "Τίτλος"
-
-msgid "Another book moves the contact there when saved."
-msgstr ""
-"Αν επιλέξετε άλλον κατάλογο, η επαφή θα μεταφερθεί εκεί κατά την αποθήκευση."
-
-msgid "Add email"
-msgstr "Προσθήκη email"
-
-msgid "Add phone"
-msgstr "Προσθήκη τηλεφώνου"
-
-msgid "Add website"
-msgstr "Προσθήκη ιστοτόπου"
-
-msgid "No label"
-msgstr "Χωρίς ετικέτα"
-
-msgid "Home"
-msgstr "Οικία"
-
-msgid "Work"
-msgstr "Εργασία"
-
-msgid "Mobile"
-msgstr "Κινητό"
-
-msgid "Fax"
-msgstr "Φαξ"
-
-msgid "Label"
-msgstr "Ετικέτα"
-
-msgid "Add address"
-msgstr "Προσθήκη διεύθυνσης"
-
-msgid "Street"
-msgstr "Οδός"
-
-msgid "City"
-msgstr "Πόλη"
-
-msgid "State or region"
-msgstr "Πολιτεία ή περιφέρεια"
-
-msgid "Postal code"
-msgstr "Ταχυδρομικός κώδικας"
-
-msgid "Country"
-msgstr "Χώρα"
-
-msgid "No birthday"
-msgstr "Χωρίς γενέθλια"
-
-msgid "Year"
-msgstr "Έτος"
-
-msgid "Change Photo…"
-msgstr "Αλλαγή φωτογραφίας…"
-
-msgid "Remove Photo"
-msgstr "Αφαίρεση φωτογραφίας"
-
-msgid "Choose a Photo"
-msgstr "Επιλογή φωτογραφίας"
-
-msgid "{shown} of {total}"
-msgstr "{shown} από {total}"
-
-msgid "In Directories"
-msgstr "Στους καταλόγους"
-
-msgid "Type three letters or more to search the directory."
-msgstr "Πληκτρολογήστε τουλάχιστον τρία γράμματα για αναζήτηση στον κατάλογο."
-
-msgid "Nobody in the directory matches."
-msgstr "Δεν βρέθηκε κανένα άτομο στον κατάλογο."
-
-msgid "Remove from Group"
-msgstr "Αφαίρεση από ομάδα"
-
-msgid "Add to Group"
-msgstr "Προσθήκη στην ομάδα"
-
-msgid "Move to Address Book"
-msgstr "Μετακίνηση σε κατάλογο διευθύνσεων"
-
-msgid "Delete…"
-msgstr "Διαγραφή…"
-
-msgid "Edit"
-msgstr "Επεξεργασία"
-
-msgid "Open in GNOME Contacts"
-msgstr "Άνοιγμα στις Επαφές GNOME"
-
-msgid "{n} Group Selected"
-msgid_plural "{n} Groups Selected"
-msgstr[0] "{n} ομάδα επιλεγμένη"
-msgstr[1] "{n} ομάδες επιλεγμένες"
-
-msgid "{n} Contact Selected"
-msgid_plural "{n} Contacts Selected"
-msgstr[0] "{n} επαφή επιλεγμένη"
-msgstr[1] "{n} επαφές επιλεγμένες"
-
-msgid "Move to…"
-msgstr "Μετακίνηση σε…"
-
-msgid "Move to another address book"
-msgstr "Μετακίνηση σε άλλον κατάλογο διευθύνσεων"
-
-msgid "Selected"
-msgstr "Επιλεγμένα"
-
-msgid "Add a person by name or address"
-msgstr "Προσθήκη ατόμου με όνομα ή διεύθυνση"
-
-msgid "No email address · {book}"
-msgstr "Χωρίς διεύθυνση email · {book}"
-
-msgid "First name"
-msgstr "Όνομα"
-
-msgid "Last name"
-msgstr "Επώνυμο"
-
-msgid "Sort and filter contacts"
-msgstr "Ταξινόμηση και φιλτράρισμα επαφών"
-
-msgid "Import Contacts"
-msgstr "Εισαγωγή επαφών"
-
-msgid "vCard files"
-msgstr "Αρχεία vCard"
-
-msgid "All files"
-msgstr "Όλα τα αρχεία"
-
-msgid "Directories"
-msgstr "Κατάλογοι"
-
-msgid "Has Photo"
-msgstr "Έχει φωτογραφία"
-
-msgid "Has Email"
-msgstr "Έχει email"
-
-msgid "Has Phone"
-msgstr "Έχει τηλέφωνο"
-
-msgid "Has Address"
-msgstr "Έχει διεύθυνση"
-
-msgid "Has Birthday"
-msgstr "Έχει γενέθλια"
-
-msgid "Has Company"
-msgstr "Έχει εταιρεία"
-
-msgid "Not in a Group"
-msgstr "Δεν ανήκει σε ομάδα"
-
-msgid ""
-"This will remove the group {name} from your address book locally and on the "
-"server. The contacts are not removed."
-msgstr ""
-"Αυτό θα αφαιρέσει την ομάδα {name} από τον κατάλογο διευθύνσεών σας, τοπικά "
-"και στον διακομιστή. Οι επαφές δεν αφαιρούνται."
-
-msgid ""
-"This will remove the group {name} from your address book. The contacts are "
-"not removed."
-msgstr ""
-"Αυτό θα αφαιρέσει την ομάδα {name} από τον κατάλογο διευθύνσεών σας. Οι "
-"επαφές δεν αφαιρούνται."
-
-msgid "Delete Group?"
-msgstr "Διαγραφή ομάδας;"
-
-msgid ""
-"This will remove the contact {name} from your address book locally and on "
-"the server."
-msgstr ""
-"Αυτό θα αφαιρέσει την επαφή {name} από τον κατάλογο διευθύνσεών σας, τοπικά "
-"και στον διακομιστή."
-
-msgid "This will remove the contact {name} from your address book."
-msgstr "Αυτό θα αφαιρέσει την επαφή {name} από τον κατάλογο διευθύνσεών σας."
-
-msgid "Delete Contact?"
-msgstr "Διαγραφή επαφής;"
-
-msgid "Delete {n} Group?"
-msgid_plural "Delete {n} Groups?"
-msgstr[0] "Διαγραφή {n} ομάδας;"
-msgstr[1] "Διαγραφή {n} ομάδων;"
-
-msgid ""
-"This will remove {n} group from your address books locally and on the "
-"server. The contacts are not removed."
-msgid_plural ""
-"This will remove {n} groups from your address books locally and on the "
-"server. The contacts are not removed."
-msgstr[0] ""
-"Αυτό θα αφαιρέσει {n} ομάδα από τους καταλόγους διευθύνσεών σας τοπικά και "
-"στον διακομιστή. Οι επαφές δεν αφαιρούνται."
-msgstr[1] ""
-"Αυτό θα αφαιρέσει {n} ομάδες από τους καταλόγους διευθύνσεών σας τοπικά και "
-"στον διακομιστή. Οι επαφές δεν αφαιρούνται."
-
-msgid ""
-"This will remove {n} group from your address book. The contacts are not "
-"removed."
-msgid_plural ""
-"This will remove {n} groups from your address books. The contacts are not "
-"removed."
-msgstr[0] ""
-"Αυτό θα αφαιρέσει {n} ομάδα από τον κατάλογο διευθύνσεών σας. Οι επαφές δεν "
-"αφαιρούνται."
-msgstr[1] ""
-"Αυτό θα αφαιρέσει {n} ομάδες από τους καταλόγους διευθύνσεών σας. Οι επαφές "
-"δεν αφαιρούνται."
-
-msgid "Delete {n} Contact?"
-msgid_plural "Delete {n} Contacts?"
-msgstr[0] "Διαγραφή {n} επαφής;"
-msgstr[1] "Διαγραφή {n} επαφών;"
-
-msgid ""
-"This will remove {n} contact from your address books locally and on the "
-"server."
-msgid_plural ""
-"This will remove {n} contacts from your address books locally and on the "
-"server."
-msgstr[0] ""
-"Αυτό θα αφαιρέσει {n} επαφή από τους καταλόγους διευθύνσεών σας τοπικά και "
-"στον διακομιστή."
-msgstr[1] ""
-"Αυτό θα αφαιρέσει {n} επαφές από τους καταλόγους διευθύνσεών σας τοπικά και "
-"στον διακομιστή."
-
-msgid "This will remove {n} contact from your address book."
-msgid_plural "This will remove {n} contacts from your address books."
-msgstr[0] "Αυτό θα αφαιρέσει {n} επαφή από τον κατάλογο διευθύνσεών σας."
-msgstr[1] "Αυτό θα αφαιρέσει {n} επαφές από τους καταλόγους διευθύνσεών σας."
-
-msgid "Toggle sidebar"
-msgstr "Εναλλαγή πλευρικής στήλης"
-
-msgid "Import vCard files into the Tegami Mail address book"
-msgstr "Εισαγωγή αρχείων vCard στο βιβλίο διευθύνσεων του Tegami Mail"
-
-msgid "New contact or group"
-msgstr "Νέα επαφή ή ομάδα"
-
-msgid "Loading Contacts…"
-msgstr "Φόρτωση επαφών..."
-
-msgid "No Contacts"
-msgstr "Δεν υπάρχουν επαφές"
-
-msgid ""
-"Add a contact with the + button, or import vCard files. Contacts are kept in "
-"Tegami Mail's own address book, and the address books of GNOME Contacts are "
-"listed here too."
-msgstr ""
-"Προσθέστε μια επαφή με το κουμπί + ή εισαγάγετε αρχεία vCard. Οι επαφές "
-"διατηρούνται στο δικό του βιβλίο διευθύνσεων του Tegami Mail, ενώ εδώ "
-"εμφανίζονται και τα βιβλία διευθύνσεων των Επαφών GNOME."
-
-msgid "Search contacts (Ctrl+F)"
-msgstr "Αναζήτηση επαφών (Ctrl+F)"
-
-msgid "Search contacts"
-msgstr "Αναζήτηση επαφών"
-
-msgid "Edit contact"
-msgstr "Επεξεργασία επαφής"
 
 #, fuzzy
 msgid "Attach to Message"
@@ -4526,6 +4065,9 @@ msgstr "Σύρετε για αλλαγή μεγέθους, κάντε διπλό
 msgid "Mark as read"
 msgstr "Σήμανση ως αναγνωσμένο"
 
+msgid "Move to…"
+msgstr "Μετακίνηση σε…"
+
 msgid "Not spam"
 msgstr "Μη ανεπιθύμητο"
 
@@ -4649,6 +4191,9 @@ msgstr "Απόκρυψη παρατιθέμενου κειμένου"
 #, fuzzy
 msgid "Copy Address"
 msgstr "Αντιγραφή διεύθυνσης συνδέσμου"
+
+msgid "Add to Contacts"
+msgstr "Προσθήκη στις επαφές"
 
 msgid "Double-click to open in a new window"
 msgstr "Διπλό κλικ για άνοιγμα σε νέο παράθυρο"
@@ -5177,6 +4722,9 @@ msgstr ""
 msgid "Generate"
 msgstr "Δημιουργία"
 
+msgid "Address"
+msgstr "Διεύθυνση"
+
 msgid "Expires"
 msgstr "Λήγει"
 
@@ -5200,6 +4748,9 @@ msgstr "Εισαγωγή κλειδιού"
 
 msgid "OpenPGP keys"
 msgstr "Κλειδιά OpenPGP"
+
+msgid "All files"
+msgstr "Όλα τα αρχεία"
 
 msgid "Could not import: {e}"
 msgstr "Δεν ήταν δυνατή η εισαγωγή: {e}"
@@ -5362,16 +4913,6 @@ msgstr "Κάθε 15 λεπτά"
 
 msgid "Every 30 minutes"
 msgstr "Κάθε 30 λεπτά"
-
-#, fuzzy
-msgid "In the footer"
-msgstr "Αποθήκευση του φίλτρου;"
-
-msgid "Above the accounts"
-msgstr "Πάνω από τους λογαριασμούς"
-
-msgid "Below the accounts"
-msgstr "Κάτω από τους λογαριασμούς"
 
 #. GNOME Settings' own names for its alert sounds.
 msgid "Click"
@@ -5566,6 +5107,12 @@ msgstr "Ενοποιημένο στυλ"
 
 msgid "Tree style"
 msgstr "Δενδρικό στυλ"
+
+msgid "Above the accounts"
+msgstr "Πάνω από τους λογαριασμούς"
+
+msgid "Below the accounts"
+msgstr "Κάτω από τους λογαριασμούς"
 
 msgid "All Inboxes"
 msgstr "Όλα τα Εισερχόμενα"
@@ -5838,6 +5385,9 @@ msgstr "Τα απεσταλμένα χρησιμοποιούν τον κύκλο
 msgid "The account's picture or emoji, as in the sidebar."
 msgstr "Η εικόνα ή το emoji του λογαριασμού, όπως στην πλευρική στήλη."
 
+msgid "Layout"
+msgstr "Διάταξη"
+
 msgid "Automatic uses single lines in wide windows."
 msgstr "Η αυτόματη επιλογή χρησιμοποιεί μονές γραμμές σε πλατιά παράθυρα."
 
@@ -5855,6 +5405,9 @@ msgstr "Ετικέτες κάτω από το κείμενο"
 
 msgid "Gives the subject its full width."
 msgstr "Δίνει στο θέμα όλο το διαθέσιμο πλάτος."
+
+msgid "Keep the search field open"
+msgstr "Διατήρηση ανοιχτού πεδίου αναζήτησης"
 
 msgid "Search field position"
 msgstr "Θέση πεδίου αναζήτησης"
@@ -6200,6 +5753,9 @@ msgstr "Αποθηκεύτηκε το {name}"
 msgid "Could not save the PDF: {error}"
 msgstr "Δεν ήταν δυνατή η αποθήκευση του PDF: {error}"
 
+msgid "Edit"
+msgstr "Επεξεργασία"
+
 msgid "Custom…"
 msgstr "Προσαρμοσμένο…"
 
@@ -6428,9 +5984,6 @@ msgstr "Εμφάνιση κάθε ετικέτας"
 
 msgid "Show each smart folder"
 msgstr "Εμφάνιση κάθε έξυπνου φακέλου"
-
-msgid "Show each address book"
-msgstr "Εμφάνιση κάθε καταλόγου διευθύνσεων"
 
 msgid "Long-press to expand or collapse"
 msgstr "Παρατεταμένο πάτημα για ανάπτυξη ή σύμπτυξη"
@@ -7071,6 +6624,9 @@ msgstr "Εισαγωγή επαφών: {added} νέες, {updated} ενημερ�
 msgid "No address book available to add contacts"
 msgstr "Δεν υπάρχει διαθέσιμο βιβλίο διευθύνσεων για προσθήκη επαφών"
 
+msgid "Email"
+msgstr "Email"
+
 msgid "Added to Contacts"
 msgstr "Προστέθηκε στις επαφές"
 
@@ -7083,22 +6639,6 @@ msgstr "Υπάρχει ήδη στις επαφές ({name})"
 msgid "Could not add contact: {e}"
 msgstr "Αδυναμία προσθήκης επαφής: {e}"
 
-msgid "No address book available"
-msgstr "Δεν υπάρχει διαθέσιμο βιβλίο διευθύνσεων"
-
-msgid "Could not rename the address book: {e}"
-msgstr "Δεν ήταν δυνατή η μετονομασία του καταλόγου διευθύνσεων: {e}"
-
-msgid "{n} contact was not copied: {e}"
-msgid_plural "{n} contacts were not copied: {e}"
-msgstr[0] "{n} επαφή δεν αντιγράφηκε: {e}"
-msgstr[1] "{n} επαφές δεν αντιγράφηκαν: {e}"
-
-msgid "{n} contact was not moved: {e}"
-msgid_plural "{n} contacts were not moved: {e}"
-msgstr[0] "{n} επαφή δεν μετακινήθηκε: {e}"
-msgstr[1] "{n} επαφές δεν μετακινήθηκαν: {e}"
-
 msgid "Could not update contact: {e}"
 msgstr "Αδυναμία ενημέρωσης επαφής: {e}"
 
@@ -7107,6 +6647,12 @@ msgstr "Δεν ήταν δυνατή η εισαγωγή επαφών: {e}"
 
 msgid "Could not read: {files}"
 msgstr "Δεν ήταν δυνατή η ανάγνωση: {files}"
+
+msgid "Import Contacts"
+msgstr "Εισαγωγή επαφών"
+
+msgid "vCard files"
+msgstr "Αρχεία vCard"
 
 msgid "Search filters"
 msgstr "Αναζήτηση φίλτρων"
@@ -7150,6 +6696,9 @@ msgstr "Αποθήκευση"
 
 msgid "Mail Account"
 msgstr "Λογαριασμός αλληλογραφίας"
+
+msgid "Nickname"
+msgstr "Ψευδώνυμο"
 
 msgid "Display Name"
 msgstr "Εμφανιζόμενο όνομα"
@@ -8133,6 +7682,455 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Tegami Mail cannot change this kind of group"
+#~ msgstr "Το Tegami Mail δεν μπορεί να αλλάξει αυτόν τον τύπο ομάδας"
+
+#~ msgid "Contacts placement"
+#~ msgstr "Θέση επαφών"
+
+#~ msgid "Tegami Mail, on this computer"
+#~ msgstr "Tegami Mail, σε αυτόν τον υπολογιστή"
+
+#~ msgid "Edit Group"
+#~ msgstr "Επεξεργασία ομάδας"
+
+#~ msgid "Delete Group…"
+#~ msgstr "Διαγραφή ομάδας…"
+
+#~ msgid "New Contact"
+#~ msgstr "Νέα επαφή"
+
+#~ msgid "New Group"
+#~ msgstr "Νέα ομάδα"
+
+#~ msgid "Rename…"
+#~ msgstr "Μετονομασία…"
+
+#~ msgid "Show or hide"
+#~ msgstr "Εμφάνιση ή απόκρυψη"
+
+#~ msgid "Rename Address Book"
+#~ msgstr "Μετονομασία καταλόγου διευθύνσεων"
+
+#~ msgid ""
+#~ "The name is used in Tegami Mail only; GNOME Contacts and Evolution keep "
+#~ "the book's own."
+#~ msgstr ""
+#~ "Το όνομα χρησιμοποιείται μόνο στο Tegami Mail· οι Επαφές GNOME και το "
+#~ "Evolution διατηρούν το δικό τους όνομα."
+
+#~ msgid "Use Its Own Name"
+#~ msgstr "Χρήση του δικού του ονόματος"
+
+#~ msgid "All Address Books"
+#~ msgstr "Όλα τα βιβλία διευθύνσεων"
+
+#~ msgid "Move Contact?"
+#~ msgstr "Μετακίνηση επαφής;"
+
+#~ msgid ""
+#~ "This will move {name} out of {from} and into {to}, locally and on the "
+#~ "server. A group in {from} that holds the contact will no longer have it."
+#~ msgstr ""
+#~ "Η επαφή {name} θα μετακινηθεί από το {from} στο {to}, τοπικά και στον "
+#~ "διακομιστή. Οι ομάδες στο {from} που περιλαμβάνουν την επαφή δεν θα την "
+#~ "περιλαμβάνουν πλέον."
+
+#~ msgid "Move {n} Contact?"
+#~ msgid_plural "Move {n} Contacts?"
+#~ msgstr[0] "Μετακίνηση {n} επαφής;"
+#~ msgstr[1] "Μετακίνηση {n} επαφών;"
+
+#~ msgid ""
+#~ "This will move {n} contact out of the address book it is in and into "
+#~ "{to}, locally and on the server. A group there that holds it will no "
+#~ "longer have it."
+#~ msgid_plural ""
+#~ "This will move {n} contacts out of the address books they are in and into "
+#~ "{to}, locally and on the server. Groups there that hold them will no "
+#~ "longer have them."
+#~ msgstr[0] ""
+#~ "Η {n} επαφή θα μετακινηθεί από τον τρέχοντα κατάλογο στο {to}, τοπικά και "
+#~ "στον διακομιστή. Οι ομάδες που την περιλαμβάνουν δεν θα την περιλαμβάνουν "
+#~ "πλέον."
+#~ msgstr[1] ""
+#~ "Οι {n} επαφές θα μετακινηθούν από τους τρέχοντες καταλόγους στο {to}, "
+#~ "τοπικά και στον διακομιστή. Οι ομάδες που τις περιλαμβάνουν δεν θα τις "
+#~ "περιλαμβάνουν πλέον."
+
+#~ msgid "Move"
+#~ msgstr "Μετακίνηση"
+
+#~ msgid "View photo"
+#~ msgstr "Προβολή φωτογραφίας"
+
+#~ msgid "Phone"
+#~ msgstr "Τηλέφωνο"
+
+#~ msgid "Website"
+#~ msgstr "Ιστότοπος"
+
+#~ msgid "Birthday"
+#~ msgstr "Γενέθλια"
+
+#~ msgid "Note"
+#~ msgstr "Σημείωση"
+
+#~ msgid "Directory"
+#~ msgstr "Κατάλογος"
+
+#~ msgid "Details"
+#~ msgstr "Λεπτομέρειες"
+
+#~ msgid "Members"
+#~ msgstr "Μέλη"
+
+#~ msgid "No email address"
+#~ msgstr "Χωρίς διεύθυνση email"
+
+#~ msgid "No one is in this group yet."
+#~ msgstr "Δεν υπάρχει ακόμη κανείς σε αυτήν την ομάδα."
+
+#~ msgid "Changed in the app it came from"
+#~ msgstr "Έγινε αλλαγή στην εφαρμογή προέλευσης"
+
+#~ msgid ""
+#~ "This group names its members by contact, which Tegami Mail does not edit."
+#~ msgstr ""
+#~ "Αυτή η ομάδα ορίζει τα μέλη της μέσω επαφών, κάτι που το Tegami Mail δεν "
+#~ "μπορεί να επεξεργαστεί."
+
+#~ msgid ""
+#~ "Saving moves the group to this address book, with its people, and removes "
+#~ "it from {book}."
+#~ msgstr ""
+#~ "Με την αποθήκευση, η ομάδα και τα μέλη της μεταφέρονται σε αυτόν τον "
+#~ "κατάλογο και αφαιρούνται από τον {book}."
+
+#~ msgid ""
+#~ "Groups here hold addresses, so people with no email address are left out."
+#~ msgstr ""
+#~ "Οι ομάδες εδώ περιέχουν διευθύνσεις, επομένως παραλείπονται άτομα χωρίς "
+#~ "διεύθυνση email."
+
+#~ msgid "Group"
+#~ msgstr "Ομάδα"
+
+#~ msgid "Send as Bcc"
+#~ msgstr "Αποστολή ως κρυφή κοινοποίηση"
+
+#~ msgid "Members do not see each other's addresses."
+#~ msgstr "Τα μέλη δεν βλέπουν τις διευθύνσεις των υπόλοιπων."
+
+#~ msgid ""
+#~ "Groups in this address book hold its own contacts: anyone added who is "
+#~ "not in it yet is added to it."
+#~ msgstr ""
+#~ "Οι ομάδες αυτού του καταλόγου περιέχουν τις δικές του επαφές. Όποια επαφή "
+#~ "προστεθεί και δεν υπάρχει ήδη στον κατάλογο προστίθεται σε αυτόν."
+
+#~ msgid "Edit Contact"
+#~ msgstr "Επεξεργασία επαφής"
+
+#~ msgid "Identity"
+#~ msgstr "Ταυτότητα"
+
+#~ msgid "Organization"
+#~ msgstr "Οργανισμός"
+
+#~ msgid "Title"
+#~ msgstr "Τίτλος"
+
+#~ msgid "Another book moves the contact there when saved."
+#~ msgstr ""
+#~ "Αν επιλέξετε άλλον κατάλογο, η επαφή θα μεταφερθεί εκεί κατά την "
+#~ "αποθήκευση."
+
+#~ msgid "Add email"
+#~ msgstr "Προσθήκη email"
+
+#~ msgid "Add phone"
+#~ msgstr "Προσθήκη τηλεφώνου"
+
+#~ msgid "Add website"
+#~ msgstr "Προσθήκη ιστοτόπου"
+
+#~ msgid "No label"
+#~ msgstr "Χωρίς ετικέτα"
+
+#~ msgid "Home"
+#~ msgstr "Οικία"
+
+#~ msgid "Work"
+#~ msgstr "Εργασία"
+
+#~ msgid "Mobile"
+#~ msgstr "Κινητό"
+
+#~ msgid "Fax"
+#~ msgstr "Φαξ"
+
+#~ msgid "Label"
+#~ msgstr "Ετικέτα"
+
+#~ msgid "Add address"
+#~ msgstr "Προσθήκη διεύθυνσης"
+
+#~ msgid "Street"
+#~ msgstr "Οδός"
+
+#~ msgid "City"
+#~ msgstr "Πόλη"
+
+#~ msgid "State or region"
+#~ msgstr "Πολιτεία ή περιφέρεια"
+
+#~ msgid "Postal code"
+#~ msgstr "Ταχυδρομικός κώδικας"
+
+#~ msgid "Country"
+#~ msgstr "Χώρα"
+
+#~ msgid "No birthday"
+#~ msgstr "Χωρίς γενέθλια"
+
+#~ msgid "Year"
+#~ msgstr "Έτος"
+
+#~ msgid "Change Photo…"
+#~ msgstr "Αλλαγή φωτογραφίας…"
+
+#~ msgid "Remove Photo"
+#~ msgstr "Αφαίρεση φωτογραφίας"
+
+#~ msgid "Choose a Photo"
+#~ msgstr "Επιλογή φωτογραφίας"
+
+#~ msgid "{shown} of {total}"
+#~ msgstr "{shown} από {total}"
+
+#~ msgid "In Directories"
+#~ msgstr "Στους καταλόγους"
+
+#~ msgid "Type three letters or more to search the directory."
+#~ msgstr ""
+#~ "Πληκτρολογήστε τουλάχιστον τρία γράμματα για αναζήτηση στον κατάλογο."
+
+#~ msgid "Nobody in the directory matches."
+#~ msgstr "Δεν βρέθηκε κανένα άτομο στον κατάλογο."
+
+#~ msgid "Remove from Group"
+#~ msgstr "Αφαίρεση από ομάδα"
+
+#~ msgid "Add to Group"
+#~ msgstr "Προσθήκη στην ομάδα"
+
+#~ msgid "Move to Address Book"
+#~ msgstr "Μετακίνηση σε κατάλογο διευθύνσεων"
+
+#~ msgid "Delete…"
+#~ msgstr "Διαγραφή…"
+
+#~ msgid "Open in GNOME Contacts"
+#~ msgstr "Άνοιγμα στις Επαφές GNOME"
+
+#~ msgid "{n} Group Selected"
+#~ msgid_plural "{n} Groups Selected"
+#~ msgstr[0] "{n} ομάδα επιλεγμένη"
+#~ msgstr[1] "{n} ομάδες επιλεγμένες"
+
+#~ msgid "{n} Contact Selected"
+#~ msgid_plural "{n} Contacts Selected"
+#~ msgstr[0] "{n} επαφή επιλεγμένη"
+#~ msgstr[1] "{n} επαφές επιλεγμένες"
+
+#~ msgid "Move to another address book"
+#~ msgstr "Μετακίνηση σε άλλον κατάλογο διευθύνσεων"
+
+#~ msgid "Selected"
+#~ msgstr "Επιλεγμένα"
+
+#~ msgid "Add a person by name or address"
+#~ msgstr "Προσθήκη ατόμου με όνομα ή διεύθυνση"
+
+#~ msgid "No email address · {book}"
+#~ msgstr "Χωρίς διεύθυνση email · {book}"
+
+#~ msgid "First name"
+#~ msgstr "Όνομα"
+
+#~ msgid "Last name"
+#~ msgstr "Επώνυμο"
+
+#~ msgid "Sort and filter contacts"
+#~ msgstr "Ταξινόμηση και φιλτράρισμα επαφών"
+
+#~ msgid "Directories"
+#~ msgstr "Κατάλογοι"
+
+#~ msgid "Has Photo"
+#~ msgstr "Έχει φωτογραφία"
+
+#~ msgid "Has Email"
+#~ msgstr "Έχει email"
+
+#~ msgid "Has Phone"
+#~ msgstr "Έχει τηλέφωνο"
+
+#~ msgid "Has Address"
+#~ msgstr "Έχει διεύθυνση"
+
+#~ msgid "Has Birthday"
+#~ msgstr "Έχει γενέθλια"
+
+#~ msgid "Has Company"
+#~ msgstr "Έχει εταιρεία"
+
+#~ msgid "Not in a Group"
+#~ msgstr "Δεν ανήκει σε ομάδα"
+
+#~ msgid ""
+#~ "This will remove the group {name} from your address book locally and on "
+#~ "the server. The contacts are not removed."
+#~ msgstr ""
+#~ "Αυτό θα αφαιρέσει την ομάδα {name} από τον κατάλογο διευθύνσεών σας, "
+#~ "τοπικά και στον διακομιστή. Οι επαφές δεν αφαιρούνται."
+
+#~ msgid ""
+#~ "This will remove the group {name} from your address book. The contacts "
+#~ "are not removed."
+#~ msgstr ""
+#~ "Αυτό θα αφαιρέσει την ομάδα {name} από τον κατάλογο διευθύνσεών σας. Οι "
+#~ "επαφές δεν αφαιρούνται."
+
+#~ msgid "Delete Group?"
+#~ msgstr "Διαγραφή ομάδας;"
+
+#~ msgid ""
+#~ "This will remove the contact {name} from your address book locally and on "
+#~ "the server."
+#~ msgstr ""
+#~ "Αυτό θα αφαιρέσει την επαφή {name} από τον κατάλογο διευθύνσεών σας, "
+#~ "τοπικά και στον διακομιστή."
+
+#~ msgid "This will remove the contact {name} from your address book."
+#~ msgstr ""
+#~ "Αυτό θα αφαιρέσει την επαφή {name} από τον κατάλογο διευθύνσεών σας."
+
+#~ msgid "Delete Contact?"
+#~ msgstr "Διαγραφή επαφής;"
+
+#~ msgid "Delete {n} Group?"
+#~ msgid_plural "Delete {n} Groups?"
+#~ msgstr[0] "Διαγραφή {n} ομάδας;"
+#~ msgstr[1] "Διαγραφή {n} ομάδων;"
+
+#~ msgid ""
+#~ "This will remove {n} group from your address books locally and on the "
+#~ "server. The contacts are not removed."
+#~ msgid_plural ""
+#~ "This will remove {n} groups from your address books locally and on the "
+#~ "server. The contacts are not removed."
+#~ msgstr[0] ""
+#~ "Αυτό θα αφαιρέσει {n} ομάδα από τους καταλόγους διευθύνσεών σας τοπικά "
+#~ "και στον διακομιστή. Οι επαφές δεν αφαιρούνται."
+#~ msgstr[1] ""
+#~ "Αυτό θα αφαιρέσει {n} ομάδες από τους καταλόγους διευθύνσεών σας τοπικά "
+#~ "και στον διακομιστή. Οι επαφές δεν αφαιρούνται."
+
+#~ msgid ""
+#~ "This will remove {n} group from your address book. The contacts are not "
+#~ "removed."
+#~ msgid_plural ""
+#~ "This will remove {n} groups from your address books. The contacts are not "
+#~ "removed."
+#~ msgstr[0] ""
+#~ "Αυτό θα αφαιρέσει {n} ομάδα από τον κατάλογο διευθύνσεών σας. Οι επαφές "
+#~ "δεν αφαιρούνται."
+#~ msgstr[1] ""
+#~ "Αυτό θα αφαιρέσει {n} ομάδες από τους καταλόγους διευθύνσεών σας. Οι "
+#~ "επαφές δεν αφαιρούνται."
+
+#~ msgid "Delete {n} Contact?"
+#~ msgid_plural "Delete {n} Contacts?"
+#~ msgstr[0] "Διαγραφή {n} επαφής;"
+#~ msgstr[1] "Διαγραφή {n} επαφών;"
+
+#~ msgid ""
+#~ "This will remove {n} contact from your address books locally and on the "
+#~ "server."
+#~ msgid_plural ""
+#~ "This will remove {n} contacts from your address books locally and on the "
+#~ "server."
+#~ msgstr[0] ""
+#~ "Αυτό θα αφαιρέσει {n} επαφή από τους καταλόγους διευθύνσεών σας τοπικά "
+#~ "και στον διακομιστή."
+#~ msgstr[1] ""
+#~ "Αυτό θα αφαιρέσει {n} επαφές από τους καταλόγους διευθύνσεών σας τοπικά "
+#~ "και στον διακομιστή."
+
+#~ msgid "This will remove {n} contact from your address book."
+#~ msgid_plural "This will remove {n} contacts from your address books."
+#~ msgstr[0] "Αυτό θα αφαιρέσει {n} επαφή από τον κατάλογο διευθύνσεών σας."
+#~ msgstr[1] ""
+#~ "Αυτό θα αφαιρέσει {n} επαφές από τους καταλόγους διευθύνσεών σας."
+
+#~ msgid "Toggle sidebar"
+#~ msgstr "Εναλλαγή πλευρικής στήλης"
+
+#~ msgid "Import vCard files into the Tegami Mail address book"
+#~ msgstr "Εισαγωγή αρχείων vCard στο βιβλίο διευθύνσεων του Tegami Mail"
+
+#~ msgid "New contact or group"
+#~ msgstr "Νέα επαφή ή ομάδα"
+
+#~ msgid "Loading Contacts…"
+#~ msgstr "Φόρτωση επαφών..."
+
+#~ msgid "No Contacts"
+#~ msgstr "Δεν υπάρχουν επαφές"
+
+#~ msgid ""
+#~ "Add a contact with the + button, or import vCard files. Contacts are kept "
+#~ "in Tegami Mail's own address book, and the address books of GNOME "
+#~ "Contacts are listed here too."
+#~ msgstr ""
+#~ "Προσθέστε μια επαφή με το κουμπί + ή εισαγάγετε αρχεία vCard. Οι επαφές "
+#~ "διατηρούνται στο δικό του βιβλίο διευθύνσεων του Tegami Mail, ενώ εδώ "
+#~ "εμφανίζονται και τα βιβλία διευθύνσεων των Επαφών GNOME."
+
+#~ msgid "Search contacts (Ctrl+F)"
+#~ msgstr "Αναζήτηση επαφών (Ctrl+F)"
+
+#~ msgid "Search contacts"
+#~ msgstr "Αναζήτηση επαφών"
+
+#~ msgid "Edit contact"
+#~ msgstr "Επεξεργασία επαφής"
+
+#, fuzzy
+#~ msgid "In the footer"
+#~ msgstr "Αποθήκευση του φίλτρου;"
+
+#~ msgid "Show each address book"
+#~ msgstr "Εμφάνιση κάθε καταλόγου διευθύνσεων"
+
+#~ msgid "No address book available"
+#~ msgstr "Δεν υπάρχει διαθέσιμο βιβλίο διευθύνσεων"
+
+#~ msgid "Could not rename the address book: {e}"
+#~ msgstr "Δεν ήταν δυνατή η μετονομασία του καταλόγου διευθύνσεων: {e}"
+
+#~ msgid "{n} contact was not copied: {e}"
+#~ msgid_plural "{n} contacts were not copied: {e}"
+#~ msgstr[0] "{n} επαφή δεν αντιγράφηκε: {e}"
+#~ msgstr[1] "{n} επαφές δεν αντιγράφηκαν: {e}"
+
+#~ msgid "{n} contact was not moved: {e}"
+#~ msgid_plural "{n} contacts were not moved: {e}"
+#~ msgstr[0] "{n} επαφή δεν μετακινήθηκε: {e}"
+#~ msgstr[1] "{n} επαφές δεν μετακινήθηκαν: {e}"
 
 #~ msgid "Go to Message"
 #~ msgstr "Μετάβαση στο μήνυμα"

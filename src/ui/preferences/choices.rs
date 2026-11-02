@@ -171,32 +171,6 @@ pub(super) fn placement_from_index(idx: u32) -> crate::config::SectionPlacement 
     }
 }
 
-/// The Contacts placement combos' choices, here and in Settings →
-/// Contacts: Contacts alone can sit in the footer, first as the default.
-pub(crate) fn contacts_placement_model() -> gtk::StringList {
-    gtk::StringList::new(&[
-        i18n("In the footer").as_str(),
-        i18n("Above the accounts").as_str(),
-        i18n("Below the accounts").as_str(),
-        i18n("Off").as_str(),
-    ])
-}
-
-/// The Contacts placement combo's rows: the footer, then the others.
-pub(crate) fn contacts_placement_index(p: crate::config::SectionPlacement) -> u32 {
-    match p {
-        crate::config::SectionPlacement::Footer => 0,
-        p => placement_index(p) + 1,
-    }
-}
-
-pub(crate) fn contacts_placement_from_index(idx: u32) -> crate::config::SectionPlacement {
-    match idx {
-        0 => crate::config::SectionPlacement::Footer,
-        idx => placement_from_index(idx - 1),
-    }
-}
-
 /// The new-mail sound choices, in `BUILTIN_SOUNDS` order, then Custom File.
 pub(super) fn sound_labels() -> Vec<String> {
     // GNOME Settings' own names for its alert sounds.
@@ -452,16 +426,6 @@ mod tests {
         assert_eq!(placement_from_index(1), BelowAccounts);
         assert_eq!(placement_from_index(2), Off);
         assert_eq!(placement_from_index(9), AboveAccounts);
-        assert_eq!(contacts_placement_index(Footer), 0);
-        assert_eq!(contacts_placement_index(AllInboxes), 1);
-        assert_eq!(contacts_placement_index(AboveAccounts), 1);
-        assert_eq!(contacts_placement_index(BelowAccounts), 2);
-        assert_eq!(contacts_placement_index(Off), 3);
-        assert_eq!(contacts_placement_from_index(0), Footer);
-        assert_eq!(contacts_placement_from_index(1), AboveAccounts);
-        assert_eq!(contacts_placement_from_index(2), BelowAccounts);
-        assert_eq!(contacts_placement_from_index(3), Off);
-        assert_eq!(contacts_placement_from_index(7), AboveAccounts);
     }
 
     #[test]

@@ -3,7 +3,6 @@
 use adw::prelude::*;
 use relm4::prelude::*;
 
-use crate::ui::contacts_page::ContactsPageInput;
 use crate::ui::preferences::{PrefInput, PrefOutput};
 
 use super::model::AppModel;
@@ -110,16 +109,6 @@ impl AppModel {
 
             PrefOutput::SetFavoritesPlacement(p) => {
                 if pref!(self.favorites_placement = p) {
-                    self.rebuild_sidebar();
-                }
-            }
-
-            PrefOutput::SetContactsPlacement(p) => {
-                if pref!(self.contacts_placement = p) {
-                    // Without its books under it in the sidebar, Contacts
-                    // picks them itself.
-                    self.contacts_page
-                        .emit(ContactsPageInput::SetBookPicker(!p.shown()));
                     self.rebuild_sidebar();
                 }
             }

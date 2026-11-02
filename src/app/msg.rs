@@ -184,7 +184,6 @@ pub(crate) enum AppMsg {
         snoozed: bool,
         favorites: bool,
         smart: bool,
-        contacts: bool,
     },
     /// The accounts were dragged into a new order (their addresses, in
     /// order): the display order only, nothing reconnects.
@@ -612,12 +611,8 @@ pub(crate) enum AppMsg {
     ComposeInWindow(WindowCompose),
     /// Copy the message the reader is on into a new one (#232).
     EditAsNewCurrent,
-    /// Write a new message to this address (an address's menu, the
-    /// Contacts page).
+    /// Write a new message to this address (an address's menu).
     ComposeTo(String),
-    /// A new message to these recipients in Bcc: a contact group that hides
-    /// its members' addresses.
-    ComposeBcc(String),
     /// Open a composer from a `mailto:` URI.
     OpenMailto(String),
     /// The click on a "message ready" desktop alert: raise the window and
@@ -641,14 +636,8 @@ pub(crate) enum AppMsg {
     /// The GNOME Contacts photo index changed (EDS sync, or the first load
     /// finished) — refresh the avatars that are on screen.
     ContactPhotosChanged,
-    /// Show the Contacts page in the main window.
-    OpenContacts,
-    /// The Contacts page's books and groups, for the sidebars.
-    ContactTree(crate::ui::contacts_page::ContactTree),
-    /// Picked in the sidebar: what the contact list shows.
-    ContactScope(crate::ui::contacts_page::ContactScope),
     /// The address books that sync with a server fetched what changed
-    /// (#408): read the contacts again if they are showing.
+    /// (#408): read the contacts again.
     ContactBooksSynced,
     /// Read with the contacts: the books new contacts can go to, chosen one
     /// first, and how many contacts the Tegami Mail book holds.
@@ -656,63 +645,15 @@ pub(crate) enum AppMsg {
         books: Vec<crate::contacts::Book>,
         local_count: usize,
     },
-    /// Read the composer's recipient suggestions for the Contacts view's
-    /// group form, off the main thread.
-    ContactSuggestions,
-    /// The background EDS read for the contacts view finished.
-    ContactsLoaded(Vec<crate::contacts::ContactDetails>),
+    /// The contacts were read again: what depends on them follows.
+    ContactsLoaded,
     /// The saved contacts' names by address, read for "Show names from
     /// Contacts" (#541); empty with the switch off.
     ContactNamesRead(std::collections::HashMap<String, String>),
-    /// Right-click on the sidebar's Contacts row: the external app.
-    LaunchGnomeContacts,
-    /// Contact editor writes (run on a background thread against EDS).
-    SaveContact { book_uid: String, vcard: String },
-    /// A new contact, into the book picked in the editor (`None`: the
-    /// default one).
-    CreateContact {
-        book_uid: Option<String>,
-        vcard: String,
-    },
-    /// A group, new (`original` is `None`) or changed.
-    SaveGroup {
-        book_uid: String,
-        format: crate::contacts::GroupFormat,
-        original: Option<String>,
-        edit: crate::contacts::GroupEdit,
-    },
-    /// Contacts to delete, by book and UID.
-    DeleteContacts(Vec<(String, String)>),
-    /// A group to make in the book `to` and delete from `from`.
-    MoveGroup {
-        from: String,
-        uid: String,
-        to: String,
-        format: crate::contacts::GroupFormat,
-        edit: crate::contacts::GroupEdit,
-    },
-    /// Contacts dropped on a book or group in the sidebar.
-    ContactDrop {
-        keys: Vec<(String, String)>,
-        on: crate::ui::contacts_page::DropOn,
-        moving: bool,
-    },
-    /// A right-click choice on a book or group in the sidebar.
-    ContactTreeAction(crate::ui::contacts_page::TreeAction),
-    /// The accounts and books folded under the sidebar's Contacts row.
-    ContactsFolded(Vec<String>),
-    /// Name an address book in Tegami Mail (`None`: its own name again).
-    RenameBook { uid: String, name: Option<String> },
-    /// Copy these cards into the book `to`.
-    CopyContacts { to: String, cards: Vec<String> },
-    /// Contacts to move to the book `to`: (book, UID, the card for `to`).
-    MoveContacts {
-        to: String,
-        cards: Vec<(String, String, String)>,
-    },
-    /// A contact write finished (`Some` = the error to show).
+    /// A write to the address books finished (`Some` = the error to show):
+    /// Settings' Delete All Contacts.
     ContactWriteDone(Option<String>),
-    /// `.vcf` files chosen in the Contacts page, to import into the Tegami Mail book.
+    /// `.vcf` files chosen in Settings, to import into the Tegami Mail book.
     ImportContacts(Vec<std::path::PathBuf>),
     /// The import finished.
     ContactsImported(Result<crate::contacts::local::ImportOutcome, String>),

@@ -597,16 +597,6 @@ fn enabled() -> Vec<Directory> {
     dirs
 }
 
-/// The directories that are switched on, as (UID, name), for the Contacts
-/// view's address book filter. Blocking, but only a registry call at most
-/// every [`LIST_FRESH`].
-pub(crate) fn enabled_names() -> Vec<(String, String)> {
-    enabled()
-        .into_iter()
-        .map(|d| (d.uid.clone(), d.title()))
-        .collect()
-}
-
 /// A directory's last failure, kept until it answers again.
 struct Failure {
     message: String,
@@ -782,39 +772,6 @@ pub(crate) fn search(typed: &str) -> (Vec<Suggestion>, Vec<DirectoryFailure>) {
         .flat_map(|(_, cards)| cards.iter().flat_map(|c| suggestions_from_vcard(c)))
         .collect();
     (suggestions, failed)
-}
-
-/// The same people as whole entries, for the Contacts view, at most `limit`
-/// from each directory, each naming the directory it came from as its book.
-pub(crate) fn search_contacts(
-    typed: &str,
-    limit: usize,
-) -> (Vec<crate::contacts::ContactDetails>, Vec<DirectoryFailure>) {
-    let (found, failed) = lookup(typed);
-    let mut out = Vec::new();
-    for (dir, cards) in found {
-        let mut entries = Vec::new();
-        for card in cards {
-            let Some(mut c) = crate::contacts::parse_vcard_fields(&card).filter(|c| !c.is_group())
-            else {
-                continue;
-            };
-            // A directory's photo is carried in the card; nothing on disk is
-            // read for it.
-            c.photo = crate::contacts::vcard_photo_with(&card, false);
-            c.book_uid = dir.uid.clone();
-            c.book_name = dir.title();
-            // Not an entry Tegami Mail can change or delete.
-            c.eds_uid = String::new();
-            c.raw_vcard = card;
-            entries.push(c);
-        }
-        entries.sort_by_key(|c| c.name.to_lowercase());
-        entries.truncate(limit);
-        out.extend(entries);
-    }
-    out.sort_by_key(|c| c.name.to_lowercase());
-    (out, failed)
 }
 
 /// Check a saved directory answers, signing in as it would for a search.

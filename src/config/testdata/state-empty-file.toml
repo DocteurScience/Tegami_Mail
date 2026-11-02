@@ -5,7 +5,6 @@ drawer_list_view = false
 drawer_sort_desc = false
 list_pane_width = 350
 list_pane_height = 320
-contacts_pane_width = 280
 about_height = 740
 split_reply_height = 0
 wizard_completed = false

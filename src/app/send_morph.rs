@@ -78,7 +78,7 @@ impl AppModel {
         let Some(r) = self.reader_compose.as_ref().filter(|r| r.id == from) else {
             return false;
         };
-        if r.window.is_some() || self.showing_contacts || self.live_split().is_none() {
+        if r.window.is_some() || self.live_split().is_none() {
             return skip("not sent from the split beside the reader");
         }
         // A message sent later is not in Sent yet; one that starts a

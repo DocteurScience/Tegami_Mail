@@ -27,13 +27,12 @@ pub(crate) enum SidebarInput {
         favorite_folders: Vec<UnifiedFolderRef>,
         /// The tags (#71), for the Tags section.
         tags: Vec<crate::config::Tag>,
-        /// Where the Filters, Tags, Favorites and Contacts sections are
+        /// Where the Filters, Tags and Favorites sections are
         /// drawn, and how they look.
         section_style: crate::config::SectionStyle,
         filtered_placement: crate::config::SectionPlacement,
         tags_placement: crate::config::SectionPlacement,
         favorites_placement: crate::config::SectionPlacement,
-        contacts_placement: crate::config::SectionPlacement,
         /// The smart folders (#417) as (id, name).
         smart_folders: Vec<(String, String)>,
     },
@@ -75,24 +74,6 @@ pub(crate) enum SidebarInput {
     /// out like a click. State is set before the row, so the row-selected
     /// signal hits the already-selected guard.
     SelectUnifiedRow,
-    /// The "Contacts" row was clicked (it acts as a launcher, not a selection).
-    ContactsRowClicked,
-    /// The address books and groups the Contacts row lists.
-    SetContactTree(crate::ui::contacts_page::ContactTree),
-    /// Open or fold the Contacts row's list.
-    ToggleContactsExpand,
-    /// Fold or open an account or book under it, by key.
-    ToggleContactNode(String),
-    /// A book or group (or every contact) was picked in that list.
-    ContactTreeSelected(crate::ui::contacts_page::ContactScope),
-    /// Contacts were dropped on a book or group there.
-    ContactTreeDrop {
-        keys: Vec<(String, String)>,
-        on: crate::ui::contacts_page::DropOn,
-        moving: bool,
-    },
-    /// A right-click choice on a book or group there.
-    ContactTreeMenu(crate::ui::contacts_page::TreeAction),
     FolderRowSelected {
         account_id: u32,
         index: i32,
@@ -204,7 +185,6 @@ pub(crate) enum SidebarOutput {
         snoozed: bool,
         favorites: bool,
         smart: bool,
-        contacts: bool,
     },
     /// A unified Starred / Sent / Drafts row was chosen: every account's
     /// folder of that kind, merged.
@@ -226,21 +206,6 @@ pub(crate) enum SidebarOutput {
     RefreshRequested,
     /// Long-press on the rail's refresh button: reveal the status bar.
     StatusBarRequested,
-    /// Right-click on the Contacts row: open the GNOME Contacts app.
-    OpenGnomeContacts,
-    /// What the contact list shows, picked in the sidebar.
-    ContactScope(crate::ui::contacts_page::ContactScope),
-    /// Contacts dropped on a book or group in the sidebar.
-    ContactDrop {
-        keys: Vec<(String, String)>,
-        on: crate::ui::contacts_page::DropOn,
-        moving: bool,
-    },
-    /// A right-click choice on a book or group in the sidebar.
-    ContactTreeAction(crate::ui::contacts_page::TreeAction),
-    /// The accounts and books folded under the Contacts row changed: for
-    /// persistence.
-    ContactsFolded(Vec<String>),
     /// A folder-tree node was collapsed or expanded (#51) — for persistence.
     FolderNodeCollapsed {
         account_id: u32,
@@ -282,8 +247,6 @@ pub(crate) enum SidebarOutput {
         keyword: String,
         account: Option<u32>,
     },
-    /// The "Contacts" row was clicked — open the contacts browser.
-    ContactsClicked,
     OutboxSelected,
     FolderSelected {
         account_id: u32,

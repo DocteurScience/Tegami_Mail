@@ -198,33 +198,16 @@ impl AppModel {
             | AppMsg::ComposeInWindow(..)
             | AppMsg::EditAsNewCurrent
             | AppMsg::ComposeTo(..)
-            | AppMsg::ComposeBcc(..)
             | AppMsg::OpenMailto(..)
             | AppMsg::PresentComposers) => self.on_compose_open(msg, sender),
             msg @ (AppMsg::AddContactAddr(..)
             | AppMsg::AddContactBooks { .. }
             | AppMsg::ContactAdded(..)
             | AppMsg::ContactPhotosChanged
-            | AppMsg::OpenContacts
-            | AppMsg::ContactTree(..)
-            | AppMsg::ContactScope(..)
             | AppMsg::ContactBooksSynced
             | AppMsg::ContactBooksLoaded { .. }
-            | AppMsg::ContactSuggestions
-            | AppMsg::ContactsLoaded(..)
+            | AppMsg::ContactsLoaded
             | AppMsg::ContactNamesRead(..)
-            | AppMsg::LaunchGnomeContacts
-            | AppMsg::SaveContact { .. }
-            | AppMsg::CreateContact { .. }
-            | AppMsg::SaveGroup { .. }
-            | AppMsg::DeleteContacts(..)
-            | AppMsg::MoveGroup { .. }
-            | AppMsg::ContactDrop { .. }
-            | AppMsg::ContactTreeAction(..)
-            | AppMsg::ContactsFolded(..)
-            | AppMsg::RenameBook { .. }
-            | AppMsg::CopyContacts { .. }
-            | AppMsg::MoveContacts { .. }
             | AppMsg::ContactWriteDone(..)
             | AppMsg::ImportContacts(..)
             | AppMsg::ContactsImported(..)) => self.on_contacts(msg, sender),
@@ -422,7 +405,6 @@ impl AppModel {
             | PrefOutput::SetFilteredPlacement(..)
             | PrefOutput::SetTagsPlacement(..)
             | PrefOutput::SetFavoritesPlacement(..)
-            | PrefOutput::SetContactsPlacement(..)
             | PrefOutput::SetStartView(..)
             | PrefOutput::SetChevronsLeft(..)
             | PrefOutput::SetAccountClickFolds(..)) => self.on_prefs_sidebar_pref(pref),
@@ -505,7 +487,6 @@ impl AppModel {
             | PrefOutput::SetListHeadings(..)
             | PrefOutput::SetListColumnScroll(..)
             | PrefOutput::SetListSearchOpen(..)
-            | PrefOutput::SetContactsSearchOpen(..)
             | PrefOutput::SetContactNames(..)
             | PrefOutput::SetListSearchBottom(..)
             | PrefOutput::SetListBulkBarBottom(..)

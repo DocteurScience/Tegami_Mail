@@ -89,50 +89,6 @@ fn live() {
     remove(&found).expect("removed");
 }
 
-/// Search the directories already in EDS, as the composer and Contacts
-/// do: `LDAP_LIVE_SEARCH=<typed>`, twice, so the second shows a failed
-/// directory is not asked again but still reported. On the EDS rig
-/// only, as for `live`.
-#[test]
-#[ignore]
-fn live_search() {
-    let Ok(typed) = std::env::var("LDAP_LIVE_SEARCH") else {
-        return;
-    };
-    for round in 1..=2 {
-        let t = Instant::now();
-        let (found, errors) = search(&typed);
-        println!("round {round} after {:?}", t.elapsed());
-        for s in &found {
-            println!("  suggestion: {} <{}>", s.name, s.email);
-        }
-        for e in &errors {
-            println!("  error: {}", e.text());
-        }
-    }
-    // A failed directory rests, so this one asks only those that
-    // answered, and names the one resting.
-    let (entries, errors) = search_contacts(&typed, 50);
-    for c in &entries {
-        println!(
-            "  entry: {} {:?} in {}",
-            c.name,
-            c.primary_email(),
-            c.book_name
-        );
-    }
-    println!(
-        "  contacts errors: {:?}",
-        errors
-            .iter()
-            .map(DirectoryFailure::text)
-            .collect::<Vec<_>>()
-    );
-    for d in list().unwrap() {
-        println!("  {} last error: {:?}", d.title(), last_error(&d.uid));
-    }
-}
-
 #[test]
 fn a_server_typed_as_a_url_is_taken_apart() {
     assert_eq!(

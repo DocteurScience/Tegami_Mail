@@ -44,10 +44,6 @@ impl AppModel {
         prefill: ComposePrefill,
         sender: &ComponentSender<Self>,
     ) {
-        // The contacts view hosts its own compose slot (the composer
-        // slides down over the contact card); from the gallery there is
-        // no slot, so bring the mail panes back first — the composer
-        // would otherwise open invisibly behind the stack.
         let account = self
             .current
             .as_ref()
@@ -81,28 +77,19 @@ impl AppModel {
         });
     }
 
-    /// The revealer the inline composer should slide down in: the reader
-    /// pane's, or — while the contacts view is up — the contact card's.
+    /// The revealer the inline composer slides down in: the reader pane's.
     pub(super) fn compose_slot(&self) -> &gtk::Revealer {
-        if self.showing_contacts {
-            &self.contacts_compose_revealer
-        } else {
-            &self.reader_compose_revealer
-        }
+        &self.reader_compose_revealer
     }
 
     /// Hide and empty every inline-composer slot (only one ever holds it).
     pub(super) fn clear_compose_slots(&self) {
-        for r in [
-            &self.reader_compose_revealer,
-            &self.contacts_compose_revealer,
-        ] {
-            r.set_reveal_child(false);
-            // Without this the hidden, pane-covering revealer keeps
-            // swallowing every click and scroll over the pane beneath.
-            r.set_can_target(false);
-            r.set_child(None::<&gtk::Widget>);
-        }
+        let r = &self.reader_compose_revealer;
+        r.set_reveal_child(false);
+        // Without this the hidden, pane-covering revealer keeps swallowing
+        // every click and scroll over the pane beneath.
+        r.set_can_target(false);
+        r.set_child(None::<&gtk::Widget>);
         // In-flow (not overlay) slot: no click-swallowing to disarm. Settle
         // any running slide, then remember the height the user dragged the
         // panel to before it goes.
@@ -138,23 +125,23 @@ impl AppModel {
     /// reparenting keeps using the instant clear: it needs the widget freed
     /// immediately.
     fn animate_cover_close(&self) {
-        for r in [
-            &self.reader_compose_revealer,
-            &self.contacts_compose_revealer,
-        ] {
-            let Some(child) = r.child() else { continue };
+        let r = &self.reader_compose_revealer;
+        if let Some(child) = r.child() {
             r.set_can_target(false);
-            if !r.reveals_child() {
+            if r.reveals_child() {
+                r.set_reveal_child(false);
+                let r2 = r.clone();
+                gtk::glib::timeout_add_local_once(
+                    std::time::Duration::from_millis(340),
+                    move || {
+                        if r2.child().as_ref() == Some(&child) && !r2.reveals_child() {
+                            r2.set_child(None::<&gtk::Widget>);
+                        }
+                    },
+                );
+            } else {
                 r.set_child(None::<&gtk::Widget>);
-                continue;
             }
-            r.set_reveal_child(false);
-            let r2 = r.clone();
-            gtk::glib::timeout_add_local_once(std::time::Duration::from_millis(340), move || {
-                if r2.child().as_ref() == Some(&child) && !r2.reveals_child() {
-                    r2.set_child(None::<&gtk::Widget>);
-                }
-            });
         }
         self.message_view.emit(MessageViewInput::BlurCard);
     }

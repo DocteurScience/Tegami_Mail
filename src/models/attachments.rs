@@ -80,18 +80,6 @@ pub(crate) fn type_bucket(name: &str) -> u32 {
     }
 }
 
-/// The file extension matching an image's magic bytes ("jpg" when unsure —
-/// for content that is known to be an image but arrived without a name).
-pub(crate) fn image_ext(data: &[u8]) -> &'static str {
-    match data {
-        [0x89, b'P', b'N', b'G', ..] => "png",
-        [b'G', b'I', b'F', b'8', ..] => "gif",
-        [b'B', b'M', ..] => "bmp",
-        [b'R', b'I', b'F', b'F', _, _, _, _, b'W', b'E', b'B', b'P', ..] => "webp",
-        _ => "jpg",
-    }
-}
-
 /// What the server says about one attachment, without its bytes, as the
 /// cache's `attachment_meta` records it.
 #[derive(Debug, Clone)]

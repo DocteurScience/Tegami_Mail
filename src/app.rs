@@ -298,14 +298,6 @@ impl SimpleComponent for AppModel {
                     #[name = "content_stack"]
                     gtk::Stack {
                         set_hexpand: true,
-                        // Swap the mail panes for the contacts view, at
-                        // once: no transition.
-                        #[watch]
-                        set_visible_child_name: if model.showing_contacts {
-                            "contacts"
-                        } else {
-                            "mail"
-                        },
 
                     #[name = "mail_split"]
                     add_named[Some("mail")] = &gtk::Paned {
@@ -982,7 +974,6 @@ impl SimpleComponent for AppModel {
         model.init_reader_toolbar_fold(&widgets, &sender);
         model.place_reader();
         model.init_compose_overlay(&widgets);
-        model.init_contacts_page(&widgets);
         model.install_notification_actions(&sender);
         model.init_window_size(&root, &widgets, &sender);
         model.init_hover_peek(&widgets, &sender);

@@ -61,8 +61,6 @@ impl AppModel {
             favorites,
             favorites_expanded,
             smart_expanded,
-            contacts_expanded,
-            contacts_folded,
             filtered_expanded_accounts,
             tags_expanded_accounts,
         } = sidebar_state;
@@ -73,8 +71,6 @@ impl AppModel {
             message_view,
             attachment_drawer,
             lightbox,
-            contacts_compose_revealer,
-            contacts_page,
             notifications,
         } = children;
         let MainMenu {
@@ -160,7 +156,6 @@ impl AppModel {
                 r.set_reveal_child(false);
                 r
             },
-            contacts_compose_revealer,
             next_compose_id: 1,
             menu,
             help_menu,
@@ -318,8 +313,6 @@ impl AppModel {
             favorites,
             favorites_expanded,
             smart_expanded,
-            contacts_expanded,
-            contacts_folded,
             filtered_expanded_accounts,
             tags_expanded_accounts,
             rail_dots: prefs.rail_dots,
@@ -372,7 +365,6 @@ impl AppModel {
             list_group_by_date: prefs.list_group_by_date,
             list_pills_below: prefs.list_pills_below,
             list_search_open: prefs.list_search_open,
-            contacts_search_open: prefs.contacts_search_open,
             contact_names: prefs.contact_names,
             list_search_bottom: prefs.list_search_bottom,
             list_bulk_bar_bottom: prefs.list_bulk_bar_bottom,
@@ -418,7 +410,6 @@ impl AppModel {
             filtered_placement: prefs.filtered_placement,
             tags_placement: prefs.tags_placement,
             favorites_placement: prefs.favorites_placement,
-            contacts_placement: prefs.contacts_placement,
             unified_kinds: prefs.unified_kinds,
             show_accounts,
             show_accounts_action,
@@ -555,8 +546,6 @@ impl AppModel {
             message_list,
             message_view,
             attachment_drawer,
-            contacts_page,
-            showing_contacts: false,
             showing_outbox: false,
             outbox_by_account: HashMap::new(),
             snoozed: super::snooze::load_snoozed(),

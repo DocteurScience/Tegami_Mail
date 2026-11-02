@@ -16,8 +16,8 @@ use crate::i18n::ni18n_f;
 
 mod demo;
 mod details;
-mod edit;
 mod eds_write;
+mod import;
 mod names;
 mod photos;
 mod read;
@@ -32,16 +32,14 @@ pub(crate) mod local;
 
 pub(crate) use demo::*;
 pub(crate) use details::*;
-pub(crate) use edit::*;
 pub(crate) use eds_write::*;
+pub(crate) use import::*;
 pub(crate) use names::*;
 pub(crate) use photos::*;
 pub(crate) use read::*;
 pub(crate) use registry::*;
 pub(crate) use vcard::*;
 
-#[cfg(test)]
-mod group_tests;
 #[cfg(test)]
 mod tests;
 #[cfg(test)]

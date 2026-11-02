@@ -39,7 +39,6 @@ pub(in crate::ui::preferences) struct SidebarPage {
     pub(in crate::ui::preferences) filtered_placement_row: adw::ComboRow,
     pub(in crate::ui::preferences) tags_placement_row: adw::ComboRow,
     pub(in crate::ui::preferences) favorites_placement_row: adw::ComboRow,
-    pub(in crate::ui::preferences) contacts_placement_row: adw::ComboRow,
     pub(in crate::ui::preferences) rail_dots_row: adw::SwitchRow,
     pub(in crate::ui::preferences) rail_fold_row: adw::ExpanderRow,
     pub(in crate::ui::preferences) rail_fold_accounts_row: adw::SwitchRow,
@@ -307,14 +306,6 @@ impl SidebarPage {
                         },
                     },
 
-                    #[name = "contacts_placement_row"]
-                    adw::ComboRow {
-                        set_title: &i18n("Contacts placement"),
-                        set_subtitle: &i18n("'In the footer' disables expand/collapse."),
-                        connect_selected_notify[sender] => move |row| {
-                            sender.input(PrefInput::ChangeContactsPlacement(row.selected()));
-                        },
-                    },
                 },
 
                 add = &adw::PreferencesGroup {
@@ -451,7 +442,6 @@ impl SidebarPage {
             filtered_placement_row,
             tags_placement_row,
             favorites_placement_row,
-            contacts_placement_row,
             rail_dots_row,
             rail_fold_row,
             rail_fold_accounts_row,

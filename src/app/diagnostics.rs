@@ -209,16 +209,6 @@ impl AppModel {
             human_count(gravatars),
             human_bytes(gravatar_bytes)
         ));
-        let (entries, entry_bytes, photo_bytes) = self.contacts_page.model().memory_stats();
-        let (thumbs, thumb_bytes) = crate::services::avatar::photo_thumb_stats();
-        out.push_str(&format!(
-            "  Contacts list: {} entries, {} (of which photos {}); list photos {} ({} of pixels)\n",
-            human_count(entries),
-            human_bytes(entry_bytes as u64),
-            human_bytes(photo_bytes as u64),
-            human_count(thumbs),
-            human_bytes(thumb_bytes)
-        ));
         let (pictures, picture_bytes, circles, circle_bytes) = crate::ui::initials::cache_stats();
         out.push_str(&format!(
             "  account pictures: {} ({} of pixels); rendered circles: {} ({}) (unbounded)\n",

@@ -41,9 +41,6 @@ pub(super) struct StateFile {
     /// The list's height with the reader below it (#475).
     #[serde(default = "default_list_pane_height")]
     list_pane_height: i32,
-    /// Contacts view: the contact-list pane's width in px.
-    #[serde(default = "default_contacts_pane_width")]
-    contacts_pane_width: i32,
     /// The About window's height, remembering the user's vertical resize.
     /// (The settings window's is fixed since its two-pane layout, #141; an
     /// old `prefs_height` key in the file is ignored.)
@@ -130,10 +127,6 @@ pub(super) fn default_list_pane_width() -> i32 {
 
 fn default_list_pane_height() -> i32 {
     320
-}
-
-fn default_contacts_pane_width() -> i32 {
-    280
 }
 
 fn default_drawer_height() -> i32 {
@@ -423,13 +416,4 @@ pub(crate) fn load_list_pane_height() -> i32 {
 
 pub(crate) fn save_list_pane_height(height: i32) {
     update_state(|s| s.list_pane_height = height.clamp(120, 4000));
-}
-
-/// The contacts view's remembered list-pane width (280 is also its floor).
-pub(crate) fn load_contacts_pane_width() -> i32 {
-    load_state().contacts_pane_width.clamp(280, 4000)
-}
-
-pub(crate) fn save_contacts_pane_width(width: i32) {
-    update_state(|s| s.contacts_pane_width = width.clamp(280, 4000));
 }

@@ -197,9 +197,6 @@ msgstr ""
 msgid "Tegami Mail Address Book"
 msgstr ""
 
-msgid "Tegami Mail cannot change this kind of group"
-msgstr ""
-
 msgid "On This Computer"
 msgstr ""
 
@@ -1035,9 +1032,6 @@ msgid "View"
 msgstr ""
 
 msgid "All accounts"
-msgstr ""
-
-msgid "Contacts"
 msgstr ""
 
 msgid "Outbox"
@@ -3374,6 +3368,9 @@ msgstr ""
 msgid "LDAP Directory"
 msgstr ""
 
+msgid "Contacts"
+msgstr ""
+
 msgid "Address Books"
 msgstr ""
 
@@ -3412,427 +3409,10 @@ msgstr ""
 msgid "Saved addresses show the contact's name, not the mail's."
 msgstr ""
 
-msgid "Layout"
-msgstr ""
-
-msgid "Contacts placement"
-msgstr ""
-
-msgid "'In the footer' disables expand/collapse."
-msgstr ""
-
-msgid "Keep the search field open"
-msgstr ""
-
 msgid "Address Book"
 msgstr ""
 
 msgid "Looking for address books on {name}…"
-msgstr ""
-
-msgid "Tegami Mail, on this computer"
-msgstr ""
-
-msgid "Edit Group"
-msgstr ""
-
-msgid "Delete Group…"
-msgstr ""
-
-msgid "New Contact"
-msgstr ""
-
-msgid "New Group"
-msgstr ""
-
-msgid "Rename…"
-msgstr ""
-
-msgid "Show or hide"
-msgstr ""
-
-msgid "Rename Address Book"
-msgstr ""
-
-msgid ""
-"The name is used in Tegami Mail only; GNOME Contacts and Evolution keep the "
-"book's own."
-msgstr ""
-
-msgid "Use Its Own Name"
-msgstr ""
-
-msgid "All Address Books"
-msgstr ""
-
-msgid "Move Contact?"
-msgstr ""
-
-msgid ""
-"This will move {name} out of {from} and into {to}, locally and on the "
-"server. A group in {from} that holds the contact will no longer have it."
-msgstr ""
-
-msgid "Move {n} Contact?"
-msgid_plural "Move {n} Contacts?"
-msgstr[0] ""
-msgstr[1] ""
-
-msgid ""
-"This will move {n} contact out of the address book it is in and into {to}, "
-"locally and on the server. A group there that holds it will no longer have "
-"it."
-msgid_plural ""
-"This will move {n} contacts out of the address books they are in and into "
-"{to}, locally and on the server. Groups there that hold them will no longer "
-"have them."
-msgstr[0] ""
-msgstr[1] ""
-
-msgid "Move"
-msgstr ""
-
-msgid "View photo"
-msgstr ""
-
-msgid "Add to Contacts"
-msgstr ""
-
-msgid "Email"
-msgstr ""
-
-msgid "Phone"
-msgstr ""
-
-msgid "Address"
-msgstr ""
-
-msgid "Website"
-msgstr ""
-
-msgid "Birthday"
-msgstr ""
-
-#. ---- note ----
-msgid "Note"
-msgstr ""
-
-msgid "Directory"
-msgstr ""
-
-msgid "Details"
-msgstr ""
-
-msgid "Members"
-msgstr ""
-
-msgid "No email address"
-msgstr ""
-
-msgid "No one is in this group yet."
-msgstr ""
-
-msgid "Changed in the app it came from"
-msgstr ""
-
-msgid ""
-"This group names its members by contact, which Tegami Mail does not edit."
-msgstr ""
-
-msgid ""
-"Saving moves the group to this address book, with its people, and removes it "
-"from {book}."
-msgstr ""
-
-msgid ""
-"Groups here hold addresses, so people with no email address are left out."
-msgstr ""
-
-msgid "Group"
-msgstr ""
-
-msgid "Send as Bcc"
-msgstr ""
-
-msgid "Members do not see each other's addresses."
-msgstr ""
-
-#. An Apple group (iCloud's) holds cards of its own book.
-msgid ""
-"Groups in this address book hold its own contacts: anyone added who is not "
-"in it yet is added to it."
-msgstr ""
-
-msgid "Edit Contact"
-msgstr ""
-
-#. ---- identity fields ----
-msgid "Identity"
-msgstr ""
-
-msgid "Nickname"
-msgstr ""
-
-msgid "Organization"
-msgstr ""
-
-msgid "Title"
-msgstr ""
-
-msgid "Another book moves the contact there when saved."
-msgstr ""
-
-msgid "Add email"
-msgstr ""
-
-msgid "Add phone"
-msgstr ""
-
-msgid "Add website"
-msgstr ""
-
-msgid "No label"
-msgstr ""
-
-msgid "Home"
-msgstr ""
-
-msgid "Work"
-msgstr ""
-
-msgid "Mobile"
-msgstr ""
-
-msgid "Fax"
-msgstr ""
-
-msgid "Label"
-msgstr ""
-
-msgid "Add address"
-msgstr ""
-
-msgid "Street"
-msgstr ""
-
-msgid "City"
-msgstr ""
-
-msgid "State or region"
-msgstr ""
-
-msgid "Postal code"
-msgstr ""
-
-msgid "Country"
-msgstr ""
-
-msgid "No birthday"
-msgstr ""
-
-msgid "Year"
-msgstr ""
-
-msgid "Change Photo…"
-msgstr ""
-
-msgid "Remove Photo"
-msgstr ""
-
-msgid "Choose a Photo"
-msgstr ""
-
-msgid "{shown} of {total}"
-msgstr ""
-
-msgid "In Directories"
-msgstr ""
-
-msgid "Type three letters or more to search the directory."
-msgstr ""
-
-msgid "Nobody in the directory matches."
-msgstr ""
-
-msgid "Remove from Group"
-msgstr ""
-
-msgid "Add to Group"
-msgstr ""
-
-msgid "Move to Address Book"
-msgstr ""
-
-msgid "Delete…"
-msgstr ""
-
-msgid "Edit"
-msgstr ""
-
-msgid "Open in GNOME Contacts"
-msgstr ""
-
-msgid "{n} Group Selected"
-msgid_plural "{n} Groups Selected"
-msgstr[0] ""
-msgstr[1] ""
-
-msgid "{n} Contact Selected"
-msgid_plural "{n} Contacts Selected"
-msgstr[0] ""
-msgstr[1] ""
-
-msgid "Move to…"
-msgstr ""
-
-msgid "Move to another address book"
-msgstr ""
-
-msgid "Selected"
-msgstr ""
-
-msgid "Add a person by name or address"
-msgstr ""
-
-msgid "No email address · {book}"
-msgstr ""
-
-msgid "First name"
-msgstr ""
-
-msgid "Last name"
-msgstr ""
-
-msgid "Sort and filter contacts"
-msgstr ""
-
-msgid "Import Contacts"
-msgstr ""
-
-msgid "vCard files"
-msgstr ""
-
-msgid "All files"
-msgstr ""
-
-msgid "Directories"
-msgstr ""
-
-msgid "Has Photo"
-msgstr ""
-
-msgid "Has Email"
-msgstr ""
-
-msgid "Has Phone"
-msgstr ""
-
-msgid "Has Address"
-msgstr ""
-
-msgid "Has Birthday"
-msgstr ""
-
-msgid "Has Company"
-msgstr ""
-
-msgid "Not in a Group"
-msgstr ""
-
-msgid ""
-"This will remove the group {name} from your address book locally and on the "
-"server. The contacts are not removed."
-msgstr ""
-
-msgid ""
-"This will remove the group {name} from your address book. The contacts are "
-"not removed."
-msgstr ""
-
-msgid "Delete Group?"
-msgstr ""
-
-msgid ""
-"This will remove the contact {name} from your address book locally and on "
-"the server."
-msgstr ""
-
-msgid "This will remove the contact {name} from your address book."
-msgstr ""
-
-msgid "Delete Contact?"
-msgstr ""
-
-msgid "Delete {n} Group?"
-msgid_plural "Delete {n} Groups?"
-msgstr[0] ""
-msgstr[1] ""
-
-msgid ""
-"This will remove {n} group from your address books locally and on the "
-"server. The contacts are not removed."
-msgid_plural ""
-"This will remove {n} groups from your address books locally and on the "
-"server. The contacts are not removed."
-msgstr[0] ""
-msgstr[1] ""
-
-msgid ""
-"This will remove {n} group from your address book. The contacts are not "
-"removed."
-msgid_plural ""
-"This will remove {n} groups from your address books. The contacts are not "
-"removed."
-msgstr[0] ""
-msgstr[1] ""
-
-msgid "Delete {n} Contact?"
-msgid_plural "Delete {n} Contacts?"
-msgstr[0] ""
-msgstr[1] ""
-
-msgid ""
-"This will remove {n} contact from your address books locally and on the "
-"server."
-msgid_plural ""
-"This will remove {n} contacts from your address books locally and on the "
-"server."
-msgstr[0] ""
-msgstr[1] ""
-
-msgid "This will remove {n} contact from your address book."
-msgid_plural "This will remove {n} contacts from your address books."
-msgstr[0] ""
-msgstr[1] ""
-
-msgid "Toggle sidebar"
-msgstr ""
-
-msgid "Import vCard files into the Tegami Mail address book"
-msgstr ""
-
-msgid "New contact or group"
-msgstr ""
-
-msgid "Loading Contacts…"
-msgstr ""
-
-msgid "No Contacts"
-msgstr ""
-
-msgid ""
-"Add a contact with the + button, or import vCard files. Contacts are kept in "
-"Tegami Mail's own address book, and the address books of GNOME Contacts are "
-"listed here too."
-msgstr ""
-
-msgid "Search contacts (Ctrl+F)"
-msgstr ""
-
-msgid "Search contacts"
-msgstr ""
-
-msgid "Edit contact"
 msgstr ""
 
 msgid "Attach to Message"
@@ -4065,6 +3645,9 @@ msgstr ""
 msgid "Mark as read"
 msgstr ""
 
+msgid "Move to…"
+msgstr ""
+
 msgid "Not spam"
 msgstr ""
 
@@ -4179,6 +3762,9 @@ msgid "Hide quoted text"
 msgstr ""
 
 msgid "Copy Address"
+msgstr ""
+
+msgid "Add to Contacts"
 msgstr ""
 
 msgid "Double-click to open in a new window"
@@ -4678,6 +4264,9 @@ msgstr ""
 msgid "Generate"
 msgstr ""
 
+msgid "Address"
+msgstr ""
+
 msgid "Expires"
 msgstr ""
 
@@ -4700,6 +4289,9 @@ msgid "Import Key"
 msgstr ""
 
 msgid "OpenPGP keys"
+msgstr ""
+
+msgid "All files"
 msgstr ""
 
 msgid "Could not import: {e}"
@@ -4849,15 +4441,6 @@ msgid "Every 15 minutes"
 msgstr ""
 
 msgid "Every 30 minutes"
-msgstr ""
-
-msgid "In the footer"
-msgstr ""
-
-msgid "Above the accounts"
-msgstr ""
-
-msgid "Below the accounts"
 msgstr ""
 
 #. GNOME Settings' own names for its alert sounds.
@@ -5037,6 +4620,12 @@ msgid "Unified style"
 msgstr ""
 
 msgid "Tree style"
+msgstr ""
+
+msgid "Above the accounts"
+msgstr ""
+
+msgid "Below the accounts"
 msgstr ""
 
 msgid "All Inboxes"
@@ -5296,6 +4885,9 @@ msgstr ""
 msgid "The account's picture or emoji, as in the sidebar."
 msgstr ""
 
+msgid "Layout"
+msgstr ""
+
 msgid "Automatic uses single lines in wide windows."
 msgstr ""
 
@@ -5312,6 +4904,9 @@ msgid "Tags and labels under the text"
 msgstr ""
 
 msgid "Gives the subject its full width."
+msgstr ""
+
+msgid "Keep the search field open"
 msgstr ""
 
 msgid "Search field position"
@@ -5620,6 +5215,9 @@ msgstr ""
 msgid "Could not save the PDF: {error}"
 msgstr ""
 
+msgid "Edit"
+msgstr ""
+
 msgid "Custom…"
 msgstr ""
 
@@ -5842,9 +5440,6 @@ msgid "Show each tag"
 msgstr ""
 
 msgid "Show each smart folder"
-msgstr ""
-
-msgid "Show each address book"
 msgstr ""
 
 msgid "Long-press to expand or collapse"
@@ -6412,6 +6007,9 @@ msgstr ""
 msgid "No address book available to add contacts"
 msgstr ""
 
+msgid "Email"
+msgstr ""
+
 msgid "Added to Contacts"
 msgstr ""
 
@@ -6424,22 +6022,6 @@ msgstr ""
 msgid "Could not add contact: {e}"
 msgstr ""
 
-msgid "No address book available"
-msgstr ""
-
-msgid "Could not rename the address book: {e}"
-msgstr ""
-
-msgid "{n} contact was not copied: {e}"
-msgid_plural "{n} contacts were not copied: {e}"
-msgstr[0] ""
-msgstr[1] ""
-
-msgid "{n} contact was not moved: {e}"
-msgid_plural "{n} contacts were not moved: {e}"
-msgstr[0] ""
-msgstr[1] ""
-
 msgid "Could not update contact: {e}"
 msgstr ""
 
@@ -6447,6 +6029,12 @@ msgid "Could not import contacts: {e}"
 msgstr ""
 
 msgid "Could not read: {files}"
+msgstr ""
+
+msgid "Import Contacts"
+msgstr ""
+
+msgid "vCard files"
 msgstr ""
 
 msgid "Search filters"
@@ -6481,6 +6069,9 @@ msgid "Storage"
 msgstr ""
 
 msgid "Mail Account"
+msgstr ""
+
+msgid "Nickname"
 msgstr ""
 
 msgid "Display Name"

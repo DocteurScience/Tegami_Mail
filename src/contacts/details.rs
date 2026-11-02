@@ -1,13 +1,8 @@
-//! A contact in full, as the Contacts page shows it, read from its vCard,
-//! and the members of contact groups.
+//! What a vCard says (its fields, a group's members) and the members of
+//! contact groups.
 
-use std::collections::{HashMap, HashSet};
-
-use super::read::{local_details, open_book_db, EDS_LAYOUTS};
-use super::registry::{book_uid_active, book_uid_name, registry_books};
 use super::vcard::{
-    escape_vcard_value, property_name, split_unescaped, split_vcard_line, unescape_vcard_text,
-    unfold_vcard, vcard_photo, vcard_photo_with,
+    property_name, split_unescaped, split_vcard_line, unescape_vcard_text, unfold_vcard,
 };
 
 // ---------------------------------------------------------------------------
@@ -43,60 +38,6 @@ impl Postal {
             code: next(),
             country: next(),
         }
-    }
-
-    pub(crate) fn is_empty(&self) -> bool {
-        [
-            &self.pobox,
-            &self.extended,
-            &self.street,
-            &self.locality,
-            &self.region,
-            &self.code,
-            &self.country,
-        ]
-        .iter()
-        .all(|p| p.trim().is_empty())
-    }
-
-    pub(super) fn adr_value(&self) -> String {
-        [
-            &self.pobox,
-            &self.extended,
-            &self.street,
-            &self.locality,
-            &self.region,
-            &self.code,
-            &self.country,
-        ]
-        .iter()
-        .map(|p| escape_vcard_value(p.trim()))
-        .collect::<Vec<_>>()
-        .join(";")
-    }
-}
-
-/// A birthday as (year, month, day) from a stored BDAY, the year `None`
-/// when it has none ("--04-12").
-pub(crate) fn birthday_parts(raw: &str) -> Option<(Option<i32>, u32, u32)> {
-    let head = raw.split('T').next().unwrap_or(raw).trim();
-    let digits: String = head.chars().filter(|c| c.is_ascii_digit()).collect();
-    let (year, month, day) = if head.starts_with("--") && digits.len() == 4 {
-        (None, &digits[0..2], &digits[2..4])
-    } else if digits.len() == 8 {
-        (digits[0..4].parse().ok(), &digits[4..6], &digits[6..8])
-    } else {
-        return None;
-    };
-    let (month, day) = (month.parse().ok()?, day.parse().ok()?);
-    ((1..=12).contains(&month) && (1..=31).contains(&day)).then_some((year, month, day))
-}
-
-/// A BDAY value from its parts, with no year as "--MM-DD".
-pub(crate) fn birthday_value(year: Option<i32>, month: u32, day: u32) -> String {
-    match year {
-        Some(y) => format!("{y:04}-{month:02}-{day:02}"),
-        None => format!("--{month:02}-{day:02}"),
     }
 }
 
@@ -159,25 +100,6 @@ pub(crate) struct ContactDetails {
 }
 
 impl ContactDetails {
-    /// Whether the card has a photo, held here or let go by the Contacts
-    /// list once it made the list's thumbnail.
-    pub(crate) fn has_photo(&self) -> bool {
-        self.photo.is_some() || self.photo_key != 0
-    }
-
-    /// The photo's bytes: those held, or read again from the card. The
-    /// Contacts list keeps only thumbnails, since iCloud's megapixel photos
-    /// came to some 40 MB held for the whole session (#504).
-    pub(crate) fn photo_bytes(&self) -> Option<Vec<u8>> {
-        if self.photo.is_some() || self.photo_key == 0 {
-            return self.photo.clone();
-        }
-        vcard_photo_with(
-            &self.raw_vcard,
-            self.book_uid != crate::contacts::local::LOCAL_BOOK_UID,
-        )
-    }
-
     /// The address used for avatars and as the compose default.
     pub(crate) fn primary_email(&self) -> Option<&str> {
         self.emails.first().map(|e| e.value.as_str())
@@ -187,32 +109,10 @@ impl ContactDetails {
         self.group.is_some()
     }
 
-    /// Whether the group can be changed here: Evolution's lists and
-    /// Apple's groups, the kinds Tegami Mail writes. A vCard 4 group is only read.
-    pub(crate) fn group_editable(&self) -> bool {
-        matches!(
-            self.group,
-            Some(GroupFormat::Evolution | GroupFormat::Apple)
-        )
-    }
-
-    /// How a group member found by card is known in a set of addresses.
-    pub(crate) fn grouped_key(&self) -> String {
-        format!("card:{}:{}", self.book_uid, self.eds_uid)
-    }
-
     /// The members with an address to send to: an Apple group may hold
     /// people known only by a phone number.
     pub(crate) fn reachable(&self) -> impl Iterator<Item = &Member> {
         self.members.iter().filter(|m| !m.email.is_empty())
-    }
-
-    /// The members' addresses as one recipient field.
-    pub(crate) fn members_field(&self) -> String {
-        self.reachable()
-            .map(|m| crate::worker::format_recipient(&m.name, &m.email))
-            .collect::<Vec<_>>()
-            .join(", ")
     }
 }
 
@@ -252,130 +152,7 @@ pub(crate) struct Member {
     pub(crate) source: Option<(String, String)>,
 }
 
-impl Member {
-    /// Whether `other` is the same person: the same card, or the same
-    /// address.
-    pub(crate) fn same(&self, other: &Member) -> bool {
-        (!self.uid.is_empty() && self.uid == other.uid)
-            || (!self.email.is_empty() && self.email.eq_ignore_ascii_case(&other.email))
-            || (self.source.is_some() && self.source == other.source)
-    }
-
-    /// The key [`ContactDetails::grouped_key`] gives the member's card.
-    pub(crate) fn card_key(&self, book_uid: &str) -> Option<String> {
-        (!self.uid.is_empty()).then(|| format!("card:{book_uid}:{}", self.uid))
-    }
-}
-
-/// Every contact from the local + cached (CardDAV) EDS books, fully parsed
-/// and sorted by display name, contact groups among them.
-pub(crate) fn read_contact_details() -> Vec<ContactDetails> {
-    let mut out: Vec<ContactDetails> = Vec::new();
-    let mut seen: HashSet<String> = HashSet::new();
-    let active = registry_books();
-    // Walk the book directories directly (like `writable_books`) so each
-    // contact remembers which book it belongs to.
-    for layout in EDS_LAYOUTS {
-        let sql = format!("SELECT {} FROM {}", layout.vcard, layout.cards);
-        for (db, uid) in layout.books() {
-            if !book_uid_active(&uid, &active) {
-                continue;
-            }
-            let name = book_uid_name(&uid, &active, layout.unnamed);
-            read_detail_db(&db, &sql, &uid, &name, &mut out, &mut seen);
-        }
-    }
-    out.extend(local_details());
-    out.sort_by_key(|c| c.name.to_lowercase());
-    // Hashed here, off the main thread: the page finds the photos it has
-    // decoded already by these (#477).
-    for c in &mut out {
-        c.photo_key = c.photo.as_deref().map_or(0, photo_key);
-    }
-    out
-}
-
-/// A photo's identity, for the decoded avatars kept between reads. Never 0,
-/// which stands for no photo.
-pub(crate) fn photo_key(bytes: &[u8]) -> u64 {
-    use std::hash::{Hash, Hasher};
-    let mut hasher = std::collections::hash_map::DefaultHasher::new();
-    bytes.hash(&mut hasher);
-    hasher.finish().max(1)
-}
-
-fn read_detail_db(
-    path: &std::path::Path,
-    query: &str,
-    book_uid: &str,
-    book_name: &str,
-    out: &mut Vec<ContactDetails>,
-    seen: &mut HashSet<String>,
-) {
-    let conn = match open_book_db(path) {
-        Ok(c) => c,
-        Err(e) => {
-            tracing::warn!("contacts: cannot open {}: {e}", path.display());
-            return;
-        }
-    };
-    let mut stmt = match conn.prepare(query) {
-        Ok(s) => s,
-        Err(e) => {
-            tracing::warn!("contacts: query failed on {}: {e}", path.display());
-            return;
-        }
-    };
-    let rows = stmt.query_map([], |row| row.get::<_, String>(0));
-    let Ok(rows) = rows else { return };
-    let mut book: Vec<ContactDetails> = Vec::new();
-    for vcard in rows.flatten() {
-        let Some(mut c) = parse_vcard_details(&vcard) else {
-            continue;
-        };
-        c.book_uid = book_uid.to_string();
-        c.book_name = book_name.to_string();
-        c.raw_vcard = vcard;
-        book.push(c);
-    }
-    resolve_book_members(&mut book);
-    for c in book {
-        if c.is_group() {
-            out.push(c);
-            continue;
-        }
-        // Every card is listed, the same person in two books twice, each
-        // with its book, as an address book app lists them. Only a card
-        // read twice (a book in two places on disk) is listed once.
-        if c.eds_uid.is_empty() || seen.insert(format!("{}\u{0}{}", c.book_uid, c.eds_uid)) {
-            out.push(c);
-        }
-    }
-}
-
-/// Resolve the groups' members named by UID against the people of the same
-/// book, all of which are in `book`.
-pub(super) fn resolve_book_members(book: &mut [ContactDetails]) {
-    if !book.iter().any(|c| !c.member_refs.is_empty()) {
-        return;
-    }
-    let people: HashMap<String, (String, String)> = book
-        .iter()
-        .filter(|c| !c.is_group() && !c.eds_uid.is_empty())
-        .map(|c| {
-            (
-                c.eds_uid.clone(),
-                (
-                    c.name.clone(),
-                    c.primary_email().unwrap_or_default().to_string(),
-                ),
-            )
-        })
-        .collect();
-    for c in book.iter_mut().filter(|c| !c.member_refs.is_empty()) {
-        resolve_members(c, |uid| people.get(uid).cloned());
-    }
-}
+impl Member {}
 
 /// The human label for a property's TYPE parameters ("" when none applies).
 fn vcard_type_label(params: &[&str]) -> String {
@@ -419,15 +196,6 @@ pub(super) fn pretty_birthday(raw: &str) -> String {
         Some(_) => crate::datefmt::day_month_year(date.to_unix()),
         None => crate::datefmt::day_month(date.to_unix()),
     }
-}
-
-/// Parse the fields the Contacts view shows out of one vCard, its photo
-/// included. Returns `None` for contact lists and entries with neither a name
-/// nor an address.
-pub(super) fn parse_vcard_details(vcard: &str) -> Option<ContactDetails> {
-    let mut c = parse_vcard_fields(vcard)?;
-    c.photo = vcard_photo(vcard);
-    Some(c)
 }
 
 /// [`parse_vcard_details`] without the photo, which costs a base64 decode or

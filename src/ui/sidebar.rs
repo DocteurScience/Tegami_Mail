@@ -16,7 +16,7 @@ use relm4::prelude::*;
 
 use crate::i18n::{i18n, i18n_f, i18n_noop};
 use crate::models::{Account, Folder, FolderKind};
-use crate::ui::context_menu::{show_context_menu, show_context_menu_with_header, MenuEntry};
+use crate::ui::context_menu::{show_context_menu_with_header, MenuEntry};
 
 mod account_section;
 mod contents;
@@ -96,18 +96,6 @@ pub(crate) struct Sidebar {
     custom_chevrons: HashMap<u32, gtk::Image>,
     /// The unified-row list box (one row), when shown.
     unified_list: Option<gtk::ListBox>,
-    /// The pinned footer's single list box (the Contacts row),
-    /// for selection management.
-    footer_list: Option<gtk::ListBox>,
-    /// The address books and groups the Contacts row lists.
-    contact_tree: Option<crate::ui::contacts_page::ContactTree>,
-    /// That list's rows, by the scope each picks; shared with its
-    /// selection handler.
-    tree_rows: std::rc::Rc<
-        std::cell::RefCell<Vec<(crate::ui::contacts_page::ContactScope, gtk::ListBoxRow)>>,
-    >,
-    /// The footer's Contacts row, when Contacts is placed there.
-    contacts_row: Option<gtk::ListBoxRow>,
     /// Refresh/spinner stack + spinner beside the "New Message" button.
     sync_stack: Option<gtk::Stack>,
     sync_spinner: Option<gtk::Spinner>,
@@ -175,13 +163,6 @@ pub(crate) struct Sidebar {
     /// each one's unread count and the badge showing it.
     smart_folders: Vec<(String, String)>,
     smart_expanded: bool,
-    /// Whether the Contacts row's address books are shown.
-    contacts_expanded: bool,
-    /// The accounts and books folded under it, by key.
-    contacts_folded: HashSet<String>,
-    /// Its rows that fold, and the carets that fold them.
-    contact_layout: Vec<crate::ui::contact_tree::TreeRow>,
-    contact_chevrons: Vec<(String, gtk::Image)>,
     smart_unread: HashMap<String, u32>,
     smart_badges: HashMap<String, gtk::Label>,
     /// The rows of every Filtered Folders section (the unified one and each
@@ -212,14 +193,13 @@ pub(crate) struct Sidebar {
     kind_widgets: HashMap<UnifiedRow, KindWidgets>,
     /// Whether the account sections are shown at all.
     show_accounts: bool,
-    /// Where the Filters, Tags, Favorites and Contacts sections sit
+    /// Where the Filters, Tags and Favorites sections sit
     /// (Settings → Sidebar), and whether they are drawn as unified rows or
     /// as a tree.
     section_style: crate::config::SectionStyle,
     filtered_placement: crate::config::SectionPlacement,
     tags_placement: crate::config::SectionPlacement,
     favorites_placement: crate::config::SectionPlacement,
-    contacts_placement: crate::config::SectionPlacement,
     /// Focus Mode: the account sections are hidden.
     focus_hide_accounts: bool,
     /// Focus Mode: the unified rows show folded, whatever their saved
@@ -251,8 +231,7 @@ impl Component for Sidebar {
 
                 // The top block (compose bar, All Inboxes) is pinned above
                 // the scroller so it never scrolls away; only the per-account
-                // sections below scroll. Contacts pins below it,
-                // in the footer.
+                // sections below scroll.
                 #[wrap(Some)]
                 set_child = &gtk::Box {
                     set_orientation: gtk::Orientation::Vertical,
@@ -277,13 +256,6 @@ impl Component for Sidebar {
                         },
                     },
 
-                    // Pinned footer, below the scroller: the Contacts and
-                    // Attachments rows stay put against the sidebar's bottom
-                    // edge no matter how tall the account list above grows.
-                    #[name = "footer_box"]
-                    gtk::Box {
-                        set_orientation: gtk::Orientation::Vertical,
-                    },
                 },
 
                 // Freeze-frame for rebuilds: the sidebar's last-rendered pixels,
@@ -335,10 +307,6 @@ impl Component for Sidebar {
             custom_revealers: HashMap::new(),
             custom_chevrons: HashMap::new(),
             unified_list: None,
-            footer_list: None,
-            contact_tree: None,
-            tree_rows: std::rc::Rc::new(std::cell::RefCell::new(Vec::new())),
-            contacts_row: None,
             sync_stack: None,
             sync_spinner: None,
             busy: false,
@@ -369,10 +337,6 @@ impl Component for Sidebar {
             favorites_expanded: init.favorites_expanded,
             smart_folders: Vec::new(),
             smart_expanded: init.smart_expanded,
-            contacts_expanded: init.contacts_expanded,
-            contacts_folded: init.contacts_folded.iter().cloned().collect(),
-            contact_layout: Vec::new(),
-            contact_chevrons: Vec::new(),
             smart_unread: HashMap::new(),
             smart_badges: HashMap::new(),
             filtered_rows: HashMap::new(),
@@ -399,7 +363,6 @@ impl Component for Sidebar {
             filtered_placement: crate::config::SectionPlacement::AboveAccounts,
             tags_placement: crate::config::SectionPlacement::AboveAccounts,
             favorites_placement: crate::config::SectionPlacement::AboveAccounts,
-            contacts_placement: crate::config::SectionPlacement::AboveAccounts,
             focus_hide_accounts: false,
             focus_fold_unified: false,
             accounts_revealer: None,
@@ -453,21 +416,6 @@ impl Sidebar {
             msg @ SidebarInput::SetContents { .. } => self.on_set_contents(msg, widgets, sender),
             SidebarInput::UnifiedRowSelected => self.on_unified_row_selected(sender),
             SidebarInput::SelectUnifiedRow => self.on_select_unified_row(sender),
-            SidebarInput::ContactsRowClicked => self.on_contacts_row_clicked(sender),
-            SidebarInput::SetContactTree(tree) => self.on_set_contact_tree(tree, sender),
-            SidebarInput::ToggleContactsExpand => {
-                self.toggle_row(UnifiedRow::Contacts, &sender);
-            }
-            SidebarInput::ToggleContactNode(key) => self.on_toggle_contact_node(key, sender),
-            SidebarInput::ContactTreeSelected(scope) => {
-                self.on_contact_tree_selected(scope, sender)
-            }
-            SidebarInput::ContactTreeDrop { keys, on, moving } => {
-                let _ = sender.output(SidebarOutput::ContactDrop { keys, on, moving });
-            }
-            SidebarInput::ContactTreeMenu(action) => {
-                let _ = sender.output(SidebarOutput::ContactTreeAction(action));
-            }
             SidebarInput::OutboxRowSelected => self.on_outbox_row_selected(sender),
             SidebarInput::SetOutboxCount(count) => self.on_set_outbox_count(count, widgets, sender),
             SidebarInput::UnifiedInboxRowSelected(index) => {

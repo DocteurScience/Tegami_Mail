@@ -11,34 +11,14 @@ fn unified_placements_move_out() {
     use super::{LegacySwitches, SectionPlacement::*};
     let text = "filtered_placement = \"all_inboxes\"\nunified_filtered = true\n\
                 tags_placement = \"all_inboxes\"\nunified_tags = false\n\
-                favorites_placement = \"below_accounts\"\nshow_contacts = false\n";
+                favorites_placement = \"below_accounts\"\n";
     let mut file: PrivacyFile = toml::from_str(text).unwrap();
     let old: LegacySwitches = toml::from_str(text).unwrap();
     assert!(old.place(&mut file));
     assert_eq!(file.filtered_placement, AboveAccounts);
     assert_eq!(file.tags_placement, Off);
     assert_eq!(file.favorites_placement, BelowAccounts);
-    // A file from before the key: its old switch decides.
-    assert_eq!(file.contacts_placement, Off);
     assert!(!old.place(&mut file));
-    assert_eq!(PrivacyFile::default().contacts_placement, Footer);
-}
-
-/// Contacts moves to the footer once, from wherever it was put
-/// unless it was off; afterwards it stays where it is put.
-#[test]
-fn contacts_moves_to_the_footer_once() {
-    use super::SectionPlacement::*;
-    let mut file: PrivacyFile =
-        toml::from_str("contacts_placement = \"above_accounts\"\n").unwrap();
-    assert!(super::apply_new_defaults(&mut file));
-    assert_eq!(file.contacts_placement, Footer);
-    file.contacts_placement = BelowAccounts;
-    super::apply_new_defaults(&mut file);
-    assert_eq!(file.contacts_placement, BelowAccounts);
-    let mut off: PrivacyFile = toml::from_str("contacts_placement = \"off\"\n").unwrap();
-    super::apply_new_defaults(&mut off);
-    assert_eq!(off.contacts_placement, Off);
 }
 
 /// The keyring thread runs what is queued in order, a call made from

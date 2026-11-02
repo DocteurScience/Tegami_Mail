@@ -191,14 +191,6 @@ impl Store {
         tx.commit().map_err(|e| e.to_string())
     }
 
-    /// Remove a contact (its email rows go with it).
-    fn delete(&self, uid: &str) -> Result<(), String> {
-        self.conn
-            .execute("DELETE FROM contact WHERE uid = ?1", [uid])
-            .map(|_| ())
-            .map_err(|e| e.to_string())
-    }
-
     /// Every stored vCard, sorted by display name.
     fn vcards(&self) -> Result<Vec<String>, String> {
         let mut stmt = self
@@ -613,11 +605,6 @@ pub(crate) fn modify(vcard: &str) -> Result<(), String> {
     Store::open()?.upsert_one(vcard)
 }
 
-/// Delete a contact by UID.
-pub(crate) fn delete(uid: &str) -> Result<(), String> {
-    Store::open()?.delete(uid)
-}
-
 /// How many contacts the book holds, its groups left out.
 pub(crate) fn count() -> usize {
     Store::open_read().ok().flatten().map_or(0, |s| s.people())
@@ -863,53 +850,6 @@ mod tests {
         let text = format!("{big}BEGIN:VCARD\r\nFN:Cut\r\n");
         let out = import_text_into(&mut store, &text).unwrap();
         assert_eq!((out.added, out.errors), (0, 2));
-    }
-
-    #[test]
-    fn create_modify_delete_keep_the_email_index_in_sync() {
-        let mut store = Store::in_memory();
-        store
-            .upsert_one(
-                "BEGIN:VCARD\r\nVERSION:3.0\r\nUID:u1\r\nFN:Ann\r\nEMAIL:A@X.org\r\nEND:VCARD\r\n",
-            )
-            .unwrap();
-        assert_eq!(
-            store.emails().unwrap(),
-            vec![("Ann".to_string(), "A@X.org".to_string())]
-        );
-
-        store.upsert_one("BEGIN:VCARD\r\nVERSION:3.0\r\nUID:u1\r\nFN:Ann B\r\nEMAIL:new@x.org\r\nEND:VCARD\r\n").unwrap();
-        assert_eq!(
-            store.emails().unwrap(),
-            vec![("Ann B".to_string(), "new@x.org".to_string())]
-        );
-
-        store.delete("u1").unwrap();
-        assert!(store.emails().unwrap().is_empty());
-        assert!(store.vcards().unwrap().is_empty());
-    }
-
-    #[test]
-    fn a_group_made_in_the_editor_is_stored_with_a_uid() {
-        let mut store = Store::in_memory();
-        let edit = crate::contacts::GroupEdit {
-            name: "Team".into(),
-            members: vec![crate::contacts::Member {
-                name: "Ann".into(),
-                email: "a@x.org".into(),
-                ..Default::default()
-            }],
-            hide_addresses: false,
-            kept: Vec::new(),
-        };
-        store
-            .upsert_one(&crate::contacts::new_group_vcard(&edit))
-            .unwrap();
-        let stored = store.group_vcards().unwrap();
-        assert!(stored[0].contains("\r\nUID:tegami-"));
-        // Ann is in the group, not in the book.
-        assert!(store.emails().unwrap().is_empty());
-        assert_eq!(store.people(), 0);
     }
 
     #[test]

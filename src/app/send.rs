@@ -306,7 +306,7 @@ impl AppModel {
         }
         let account_id = o.account_id;
         let prefill = unsent_prefill(*o.message);
-        let free = self.reader_compose.is_none() && !self.showing_contacts && !self.showing_outbox;
+        let free = self.reader_compose.is_none() && !self.showing_outbox;
         match o.origin {
             super::outgoing::Origin::Split(answering)
                 if free

@@ -97,7 +97,6 @@ impl Sidebar {
             UnifiedRow::Filtered => self.unified_folders_expanded,
             UnifiedRow::Tags => self.tags_expanded,
             UnifiedRow::Smart => self.smart_expanded,
-            UnifiedRow::Contacts => self.contacts_expanded,
         }
     }
 
@@ -110,7 +109,7 @@ impl Sidebar {
             || self.collapsed
                 && match row {
                     UnifiedRow::Kind(kind) => self.rail_fold.folds_kind(kind),
-                    UnifiedRow::Favorites | UnifiedRow::Smart | UnifiedRow::Contacts => false,
+                    UnifiedRow::Favorites | UnifiedRow::Smart => false,
                     UnifiedRow::Filtered => self.rail_fold.folds_filtered(),
                     UnifiedRow::Tags => self.rail_fold.folds_tags(),
                 }
@@ -162,7 +161,6 @@ impl Sidebar {
             UnifiedRow::Filtered => self.unified_folders_expanded = open,
             UnifiedRow::Tags => self.tags_expanded = open,
             UnifiedRow::Smart => self.smart_expanded = open,
-            UnifiedRow::Contacts => self.contacts_expanded = open,
         }
     }
 
@@ -198,7 +196,6 @@ impl Sidebar {
             UnifiedRow::Filtered => self.filtered_unread(Slot::Unified),
             UnifiedRow::Tags => 0,
             UnifiedRow::Smart => self.smart_unread.values().sum(),
-            UnifiedRow::Contacts => 0,
         }
     }
 
@@ -238,17 +235,14 @@ impl Sidebar {
         }
     }
 
-    /// Whether `row` is drawn in the tree style: Favorites, Filters, Tags
-    /// and Contacts with it chosen, out of the icon rail.
+    /// Whether `row` is drawn in the tree style: Favorites, Filters and
+    /// Tags with it chosen, out of the icon rail.
     pub(super) fn as_heading(&self, row: UnifiedRow) -> bool {
         self.section_style == crate::config::SectionStyle::Tree
             && !self.collapsed
             && matches!(
                 row,
-                UnifiedRow::Favorites
-                    | UnifiedRow::Filtered
-                    | UnifiedRow::Tags
-                    | UnifiedRow::Contacts
+                UnifiedRow::Favorites | UnifiedRow::Filtered | UnifiedRow::Tags
             )
     }
 
@@ -258,7 +252,7 @@ impl Sidebar {
         match row {
             UnifiedRow::Kind(kind) => self.unified_chips.has(kind),
             UnifiedRow::Favorites | UnifiedRow::Filtered | UnifiedRow::Smart => true,
-            UnifiedRow::Tags | UnifiedRow::Contacts => false,
+            UnifiedRow::Tags => false,
         }
     }
 
@@ -267,7 +261,7 @@ impl Sidebar {
         !self.tags.is_empty() && self.tags_placement.shown()
     }
 
-    /// The Favorites, Filters, Tags and Contacts rows placed `at`, above or
+    /// The Favorites, Filters and Tags rows placed `at`, above or
     /// below the accounts.
     pub(super) fn placed_rows(&self, at: crate::config::SectionPlacement) -> Vec<UnifiedRow> {
         let mut rows = Vec::new();
@@ -280,26 +274,12 @@ impl Sidebar {
         if self.unified_tags_shown() && self.tags_placement == at {
             rows.push(UnifiedRow::Tags);
         }
-        if self.contacts_shown() && self.contacts_placement == at {
-            rows.push(UnifiedRow::Contacts);
-        }
         rows
     }
 
     /// Whether Favorites are in the sidebar at all.
     pub(super) fn favorites_shown(&self) -> bool {
         !self.favorite_folders.is_empty() && self.favorites_placement.shown()
-    }
-
-    /// Whether Contacts is a row of the scrolling sidebar, its books
-    /// under it.
-    fn contacts_shown(&self) -> bool {
-        self.contacts_placement.shown()
-    }
-
-    /// Whether Contacts is a row of the pinned footer.
-    pub(super) fn contacts_in_footer(&self) -> bool {
-        self.contacts_placement == crate::config::SectionPlacement::Footer
     }
 
     pub(super) fn tags_open(&self, slot: Slot) -> bool {
@@ -388,37 +368,11 @@ impl Sidebar {
             snoozed: self.kind_open(FolderKind::Snoozed),
             favorites: self.favorites_expanded,
             smart: self.smart_expanded,
-            contacts: self.contacts_expanded,
         });
     }
 }
 
 impl Sidebar {
-    pub(super) fn on_toggle_contact_node(&mut self, key: String, sender: ComponentSender<Self>) {
-        let was_folded = self.contacts_folded.remove(&key);
-        if !was_folded {
-            self.contacts_folded.insert(key.clone());
-        }
-        for (k, chevron) in &self.contact_chevrons {
-            if *k == key {
-                if was_folded {
-                    chevron.add_css_class("open");
-                } else {
-                    chevron.remove_css_class("open");
-                }
-            }
-        }
-        for t in &self.contact_layout {
-            if t.under.contains(&key) {
-                let hidden = t.under.iter().any(|k| self.contacts_folded.contains(k));
-                slide_tree_row(&t.row, &t.revealer, hidden);
-            }
-        }
-        let mut keys: Vec<String> = self.contacts_folded.iter().cloned().collect();
-        keys.sort();
-        let _ = sender.output(SidebarOutput::ContactsFolded(keys));
-    }
-
     // The unified slot is a unified row; an account's is a heading.
     pub(super) fn on_toggle_tags_expand(&mut self, slot: Slot, sender: ComponentSender<Self>) {
         if slot == Slot::Unified {

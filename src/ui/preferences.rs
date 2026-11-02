@@ -36,9 +36,6 @@ mod system;
 
 use chips::{ColumnEditor, ToolbarEditor};
 pub(crate) use choices::language_choices;
-pub(crate) use choices::{
-    contacts_placement_from_index, contacts_placement_index, contacts_placement_model,
-};
 use choices::{
     files_action_index, files_large_index, link_browser_index, placement_from_index,
     placement_index, sound_index, sound_labels, APP_THEMES, CLOCK_STYLES, DATE_STYLES,
@@ -141,9 +138,6 @@ pub(crate) struct Preferences {
     /// The content header bar; hidden while the accounts editor subpage is
     /// open, whose own header takes over.
     host_header: Option<adw::HeaderBar>,
-    /// Settings → Sidebar's Contacts placement row, kept in step with the
-    /// same row in Settings → Contacts.
-    contacts_placement_row: Option<adw::ComboRow>,
     /// The OpenPGP page (#133), kept alive with the window.
     pgp_keys: Option<Controller<crate::ui::pgp_keys::PgpKeys>>,
     /// (name, address) per enabled account and alias, the rows of the
@@ -428,7 +422,6 @@ impl Component for Preferences {
             split: None,
             accounts_sender: init.accounts_sender.clone(),
             host_header: None,
-            contacts_placement_row: None,
             pgp_keys: None,
             identities: init.identities.clone(),
             cloud: None,
@@ -658,9 +651,6 @@ impl Component for Preferences {
             }
             PrefInput::ChangeFavoritesPlacement(idx) => {
                 let _ = sender.output(PrefOutput::SetFavoritesPlacement(placement_from_index(idx)));
-            }
-            PrefInput::ChangeContactsPlacement(idx) => {
-                self.on_change_contacts_placement(idx, sender)
             }
             PrefInput::ChangeStartView(idx) => self.on_change_start_view(idx, sender),
             PrefInput::ChangeFolderSort(idx) => self.on_change_folder_sort(idx, sender),

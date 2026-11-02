@@ -103,7 +103,6 @@ impl AppModel {
             filtered_placement: self.filtered_placement,
             tags_placement: self.tags_placement,
             favorites_placement: self.favorites_placement,
-            contacts_placement: self.contacts_placement,
             smart_folders: self
                 .smart_folders
                 .iter()
