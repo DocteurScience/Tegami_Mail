@@ -19,7 +19,7 @@ use crate::worker::outbox::{
 use crate::worker::pop3::client::Pop3;
 use crate::worker::render::attachments::{attachments_of, extract_attachments};
 use crate::worker::render::body_cacheable;
-use crate::worker::smtp::{send_smtp, smtp_refused};
+use crate::worker::smtp::{send_error_text, send_smtp, smtp_refused};
 use crate::worker::strip::strip_refused;
 use crate::worker::{
     answered_copies, render_raw, summary_from_raw, MailRequest, OutgoingMessage, WorkerEvent,
@@ -541,7 +541,7 @@ impl<E: Fn(WorkerEvent)> Pop3Worker<E> {
                     account,
                     &message,
                     None,
-                    &e.to_string(),
+                    &send_error_text(&e),
                     smtp_refused(&e),
                     emit,
                 );

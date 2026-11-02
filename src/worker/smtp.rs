@@ -225,6 +225,38 @@ pub(super) fn smtp_refused(e: &SmtpError) -> bool {
         .is_some_and(|code| !(530..540).contains(&u16::from(code)))
 }
 
+/// What to tell the person about a failed send: the server's own words,
+/// except for a message refused for its size, which gets a plain sentence
+/// with the server's words after it (docs/DESIGN.md, "Attachments"). That
+/// refusal is the one a person can act on (fewer or smaller files, or a
+/// cloud link), and servers word it every way.
+pub(super) fn send_error_text(e: &SmtpError) -> String {
+    let text = e.to_string();
+    let code = e
+        .downcast_ref::<lettre::transport::smtp::Error>()
+        .and_then(|e| e.status())
+        .map(u16::from);
+    if is_size_refusal(code, &text) {
+        crate::i18n::i18n_f(
+            "The server refused the message because it is too large. It said: {reply}",
+            &[("reply", &text)],
+        )
+    } else {
+        text
+    }
+}
+
+/// Whether an SMTP refusal is about the message's size: the reply code 552
+/// (RFC 5321, "exceeded storage allocation"), or the enhanced status code
+/// 5.3.4 ("message too big for system", RFC 3463) in the reply's text,
+/// which some servers send under another code.
+fn is_size_refusal(code: Option<u16>, text: &str) -> bool {
+    code == Some(552)
+        || text
+            .split(|c: char| !(c.is_ascii_digit() || c == '.'))
+            .any(|word| word == "5.3.4")
+}
+
 /// Send `msg`, and hand back the bytes to file as its Sent copy: what went
 /// out, with the Bcc put back (#476).
 pub(super) async fn send_smtp(
@@ -246,6 +278,31 @@ pub(super) fn smtp_host(account: &AccountConfig) -> String {
         format!("smtp{rest}")
     } else {
         account.imap_host.clone()
+    }
+}
+
+#[cfg(test)]
+mod size_refusal_tests {
+    use super::is_size_refusal;
+
+    #[test]
+    fn code_552_or_status_5_3_4_is_a_size_refusal() {
+        assert!(is_size_refusal(Some(552), "552 Message size exceeds limit"));
+        assert!(is_size_refusal(
+            Some(554),
+            "554 5.3.4 Message too big for system"
+        ));
+        assert!(is_size_refusal(
+            None,
+            "permanent error: 5.3.4 message too large"
+        ));
+    }
+
+    #[test]
+    fn other_refusals_are_not() {
+        assert!(!is_size_refusal(Some(550), "550 5.1.1 User unknown"));
+        assert!(!is_size_refusal(Some(554), "554 5.3.40 something else"));
+        assert!(!is_size_refusal(None, "15.3.4 is not the code"));
     }
 }
 

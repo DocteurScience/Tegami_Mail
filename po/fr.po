@@ -3378,6 +3378,14 @@ msgstr ""
 "La connexion pour {name} n’est pas dans le trousseau de clés. Ouvrez "
 "Paramètres, Stockage en ligne, et saisissez-la à nouveau."
 
+#. TRANSLATORS: words that, written in a message, mean a file should be
+#. attached ("attached", "enclosed"), comma separated, in lower case.
+#. Before a message with no attachment is sent, Tegami Mail asks if one
+#. was forgotten when the message contains one of them. Keep them
+#. specific: a common word would make it ask too often.
+msgid "attached, attachment, attachments, enclosed"
+msgstr "pièce jointe, pièces jointes, ci-joint, ci-jointe, ci-joints, ci-jointes, en annexe, joint à ce message"
+
 msgid "Rich text"
 msgstr "Texte enrichi"
 
@@ -3546,6 +3554,19 @@ msgstr "Impossible d’envoyer avec OpenPGP"
 msgid "Check the From address"
 msgstr "Vérifiez l’adresse d’expéditeur"
 
+msgid "Send without an attachment?"
+msgstr "Envoyer sans pièce jointe ?"
+
+msgid ""
+"Your message mentions an attachment (“{word}”), but no file is attached."
+msgstr "Votre message mentionne une pièce jointe (« {word} »), mais aucun fichier n’y est joint."
+
+msgid "Send Anyway"
+msgstr "Envoyer quand même"
+
+msgid "Attach a File…"
+msgstr "Joindre un fichier…"
+
 msgid "An attachment is missing"
 msgstr "Une pièce jointe est manquante"
 
@@ -3577,9 +3598,6 @@ msgstr "Traduire ce que vous avez écrit"
 
 msgid "Insert Signature"
 msgstr "Insérer la signature"
-
-msgid "Attach a File…"
-msgstr "Joindre un fichier…"
 
 msgid "No Signature"
 msgstr "Aucune signature"
@@ -7054,6 +7072,10 @@ msgid ""
 msgstr ""
 "Le POP3 ne permet pas de modifier un message sur le serveur, la pièce jointe "
 "n’a donc pas été supprimée"
+
+msgid ""
+"The server refused the message because it is too large. It said: {reply}"
+msgstr "Le serveur a refusé le message : il est trop volumineux. Sa réponse : {reply}"
 
 msgid "The message is signed or encrypted, and removing a file would break it"
 msgstr ""

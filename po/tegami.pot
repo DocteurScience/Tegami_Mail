@@ -3077,6 +3077,14 @@ msgid ""
 "and enter it again."
 msgstr ""
 
+#. TRANSLATORS: words that, written in a message, mean a file should be
+#. attached ("attached", "enclosed"), comma separated, in lower case.
+#. Before a message with no attachment is sent, Tegami Mail asks if one
+#. was forgotten when the message contains one of them. Keep them
+#. specific: a common word would make it ask too often.
+msgid "attached, attachment, attachments, enclosed"
+msgstr ""
+
 msgid "Rich text"
 msgstr ""
 
@@ -3234,6 +3242,19 @@ msgstr ""
 msgid "Check the From address"
 msgstr ""
 
+msgid "Send without an attachment?"
+msgstr ""
+
+msgid ""
+"Your message mentions an attachment (“{word}”), but no file is attached."
+msgstr ""
+
+msgid "Send Anyway"
+msgstr ""
+
+msgid "Attach a File…"
+msgstr ""
+
 msgid "An attachment is missing"
 msgstr ""
 
@@ -3261,9 +3282,6 @@ msgid "Translate what you wrote"
 msgstr ""
 
 msgid "Insert Signature"
-msgstr ""
-
-msgid "Attach a File…"
 msgstr ""
 
 msgid "No Signature"
@@ -6483,6 +6501,10 @@ msgstr ""
 
 msgid ""
 "POP3 cannot change a message on the server, so the attachment was not removed"
+msgstr ""
+
+msgid ""
+"The server refused the message because it is too large. It said: {reply}"
 msgstr ""
 
 msgid "The message is signed or encrypted, and removing a file would break it"

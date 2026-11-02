@@ -399,6 +399,27 @@ impl RichEditor {
         self.toolbar_commands.append_kept(widget);
     }
 
+    /// What the person wrote, as text: the body without the quoted history,
+    /// its "wrote:" line, the signature or the editor's own furniture; for a
+    /// message kept as source, the text without its quoted lines and
+    /// signature. For checks on the writer's own words (a mentioned
+    /// attachment), which the quote would set off on every reply.
+    pub(super) fn own_text(&self, cb: impl FnOnce(String) + 'static) {
+        if self.source_kind().is_some() {
+            self.eval(
+                "(function(){var t=document.getElementById('src');return t?t.value:'';})()",
+                move |source| cb(crate::ui::compose::own_source_text(&source)),
+            );
+        } else {
+            self.eval(
+                "(function(){var c=document.body.cloneNode(true);\
+                 c.querySelectorAll('[data-tegami-ui],.tegami-quote-attr,blockquote,.tegami-sig')\
+                 .forEach(function(n){n.remove();});return c.innerText||'';})()",
+                cb,
+            );
+        }
+    }
+
     /// Read the current body HTML asynchronously.
     pub(super) fn extract_html(&self, cb: impl FnOnce(String) + 'static) {
         self.eval("window.__tegamiBodyHtml()", cb);

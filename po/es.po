@@ -3372,6 +3372,14 @@ msgstr ""
 "El inicio de sesión de {name} no está en el llavero. Abre Ajustes → "
 "Almacenamiento en la nube e introdúcelo de nuevo."
 
+#. TRANSLATORS: words that, written in a message, mean a file should be
+#. attached ("attached", "enclosed"), comma separated, in lower case.
+#. Before a message with no attachment is sent, Tegami Mail asks if one
+#. was forgotten when the message contains one of them. Keep them
+#. specific: a common word would make it ask too often.
+msgid "attached, attachment, attachments, enclosed"
+msgstr ""
+
 msgid "Rich text"
 msgstr "Texto enriquecido"
 
@@ -3540,6 +3548,22 @@ msgstr "No se puede enviar con OpenPGP"
 msgid "Check the From address"
 msgstr "Comprobar la dirección del remitente"
 
+#, fuzzy
+msgid "Send without an attachment?"
+msgstr "Enviar como archivo adjunto normal"
+
+msgid ""
+"Your message mentions an attachment (“{word}”), but no file is attached."
+msgstr ""
+
+#, fuzzy
+msgid "Send Anyway"
+msgstr "Enviar ahora"
+
+#, fuzzy
+msgid "Attach a File…"
+msgstr "Adjuntar archivos"
+
 msgid "An attachment is missing"
 msgstr "Falta un archivo adjunto"
 
@@ -3570,10 +3594,6 @@ msgstr "Traducir lo que has escrito"
 
 msgid "Insert Signature"
 msgstr "Insertar firma"
-
-#, fuzzy
-msgid "Attach a File…"
-msgstr "Adjuntar archivos"
 
 msgid "No Signature"
 msgstr "Sin firma"
@@ -7060,6 +7080,10 @@ msgid ""
 msgstr ""
 "POP3 no puede modificar un mensaje en el servidor, por lo que el archivo "
 "adjunto no se eliminó"
+
+msgid ""
+"The server refused the message because it is too large. It said: {reply}"
+msgstr ""
 
 msgid "The message is signed or encrypted, and removing a file would break it"
 msgstr ""

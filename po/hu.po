@@ -3483,6 +3483,14 @@ msgstr ""
 "A(z) {name} bejelentkezése nincs a kulcstartón. Nyissa meg a Beállítások → "
 "Felhőtárhely menüt, és adja meg újra."
 
+#. TRANSLATORS: words that, written in a message, mean a file should be
+#. attached ("attached", "enclosed"), comma separated, in lower case.
+#. Before a message with no attachment is sent, Tegami Mail asks if one
+#. was forgotten when the message contains one of them. Keep them
+#. specific: a common word would make it ask too often.
+msgid "attached, attachment, attachments, enclosed"
+msgstr ""
+
 msgid "Rich text"
 msgstr "Formázott szöveg"
 
@@ -3660,6 +3668,22 @@ msgid "Check the From address"
 msgstr "Feladó címe"
 
 #, fuzzy
+msgid "Send without an attachment?"
+msgstr "Küldés normál mellékletként"
+
+msgid ""
+"Your message mentions an attachment (“{word}”), but no file is attached."
+msgstr ""
+
+#, fuzzy
+msgid "Send Anyway"
+msgstr "Küldés most"
+
+#, fuzzy
+msgid "Attach a File…"
+msgstr "Fájlok csatolása"
+
+#, fuzzy
 msgid "An attachment is missing"
 msgstr "{n} melléklet"
 
@@ -3692,10 +3716,6 @@ msgstr "Fordította"
 #, fuzzy
 msgid "Insert Signature"
 msgstr "Aláírás importálása"
-
-#, fuzzy
-msgid "Attach a File…"
-msgstr "Fájlok csatolása"
 
 #, fuzzy
 msgid "No Signature"
@@ -7277,6 +7297,10 @@ msgid ""
 msgstr ""
 "A POP3 nem tudja módosítani a kiszolgálón található üzenetet, ezért a "
 "melléklet nem került eltávolításra"
+
+msgid ""
+"The server refused the message because it is too large. It said: {reply}"
+msgstr ""
 
 msgid "The message is signed or encrypted, and removing a file would break it"
 msgstr ""

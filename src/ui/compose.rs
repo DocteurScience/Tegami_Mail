@@ -10,6 +10,8 @@ use crate::ui::rich_editor::{RichEditor, SourceKind};
 
 mod attachments;
 mod cloud;
+mod forgotten;
+pub(crate) use forgotten::own_source_text;
 mod format;
 mod history;
 mod host;
@@ -554,6 +556,7 @@ impl Component for Compose {
             autosave_off: template,
             heading,
             saved_at: None,
+            attach_check_passed: false,
             tr_subject: None,
             preview_btn,
             preview_content,
@@ -884,6 +887,11 @@ impl Component for Compose {
                     self.on_pgp_checked(checked, result, widgets, &sender)
                 }
                 ComposeInput::Send => self.on_send(widgets, &sender),
+                ComposeInput::AttachCheck(text) => self.on_attach_check(&text, widgets, &sender),
+                ComposeInput::SendWithoutAttachment => {
+                    self.attach_check_passed = true;
+                    sender.input_sender().emit(ComposeInput::Send);
+                }
 
                 ComposeInput::SendBody(fields) => self.on_send_body(fields, &sender),
 

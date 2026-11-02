@@ -140,6 +140,10 @@ pub(crate) struct Compose {
     pub(super) autosave_pending: Option<u64>,
     pub(super) autosave_made: bool,
     pub(super) autosave_off: bool,
+    /// The person was asked about a mentioned but missing attachment and
+    /// chose to send anyway, or nothing was mentioned: the next Send goes
+    /// through without asking (docs/DESIGN.md, "Attachments").
+    pub(super) attach_check_passed: bool,
     /// The header bar's title: "New Message", "Reply to <name>" or
     /// "Forward" (docs/DESIGN.md, "Replying and composing").
     pub(super) heading: String,

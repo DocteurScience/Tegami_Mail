@@ -3410,6 +3410,14 @@ msgstr ""
 "Τα στοιχεία σύνδεσης για το {name} δεν βρίσκονται στην κλειδοθήκη. Ανοίξτε "
 "τις Ρυθμίσεις, Αποθήκευση στο cloud και εισαγάγετέ τα ξανά."
 
+#. TRANSLATORS: words that, written in a message, mean a file should be
+#. attached ("attached", "enclosed"), comma separated, in lower case.
+#. Before a message with no attachment is sent, Tegami Mail asks if one
+#. was forgotten when the message contains one of them. Keep them
+#. specific: a common word would make it ask too often.
+msgid "attached, attachment, attachments, enclosed"
+msgstr ""
+
 msgid "Rich text"
 msgstr "Εμπλουτισμένο κείμενο"
 
@@ -3580,6 +3588,22 @@ msgstr "Δεν είναι δυνατή η αποστολή με OpenPGP"
 msgid "Check the From address"
 msgstr "Ελέγξτε τη διεύθυνση αποστολέα"
 
+#, fuzzy
+msgid "Send without an attachment?"
+msgstr "Αποστολή ως κανονικό συνημμένο"
+
+msgid ""
+"Your message mentions an attachment (“{word}”), but no file is attached."
+msgstr ""
+
+#, fuzzy
+msgid "Send Anyway"
+msgstr "Αποστολή τώρα"
+
+#, fuzzy
+msgid "Attach a File…"
+msgstr "Επισύναψη αρχείων"
+
 msgid "An attachment is missing"
 msgstr "Λείπει ένα συνημμένο"
 
@@ -3611,10 +3635,6 @@ msgstr "Μετάφραση όσων γράψατε"
 
 msgid "Insert Signature"
 msgstr "Εισαγωγή υπογραφής"
-
-#, fuzzy
-msgid "Attach a File…"
-msgstr "Επισύναψη αρχείων"
 
 msgid "No Signature"
 msgstr "Χωρίς υπογραφή"
@@ -7121,6 +7141,10 @@ msgid ""
 msgstr ""
 "Το POP3 δεν μπορεί να τροποποιήσει ένα μήνυμα στον διακομιστή, επομένως το "
 "συνημμένο δεν αφαιρέθηκε."
+
+msgid ""
+"The server refused the message because it is too large. It said: {reply}"
+msgstr ""
 
 msgid "The message is signed or encrypted, and removing a file would break it"
 msgstr ""

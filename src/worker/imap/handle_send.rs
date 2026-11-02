@@ -11,7 +11,7 @@ use crate::worker::imap::send::{
     append_draft, delete_draft, file_sent_copy, flush_outbox, index_sent_copy, mark_answered,
 };
 use crate::worker::outbox::{drop_superseded_outbox, schedule_send, send_failed};
-use crate::worker::smtp::{send_smtp, smtp_refused};
+use crate::worker::smtp::{send_error_text, send_smtp, smtp_refused};
 use crate::worker::{reply_copy_path, OutgoingMessage, WorkerEvent};
 
 impl<E: Emit> ImapWorker<E> {
@@ -173,7 +173,7 @@ impl<E: Emit> ImapWorker<E> {
                     account,
                     &message,
                     sent_path.as_deref(),
-                    &e.to_string(),
+                    &send_error_text(&e),
                     smtp_refused(&e),
                     emit,
                 );

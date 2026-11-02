@@ -3509,6 +3509,14 @@ msgstr ""
 "Данные входа для {name} отсутствуют в связке ключей. Откройте «Настройки» → "
 "«Облачное хранилище» и введите их снова."
 
+#. TRANSLATORS: words that, written in a message, mean a file should be
+#. attached ("attached", "enclosed"), comma separated, in lower case.
+#. Before a message with no attachment is sent, Tegami Mail asks if one
+#. was forgotten when the message contains one of them. Keep them
+#. specific: a common word would make it ask too often.
+msgid "attached, attachment, attachments, enclosed"
+msgstr ""
+
 msgid "Rich text"
 msgstr "Отформатированный текст"
 
@@ -3680,6 +3688,22 @@ msgstr "Невозможно отправить с помощью OpenPGP"
 msgid "Check the From address"
 msgstr "Проверьте адрес отправителя"
 
+#, fuzzy
+msgid "Send without an attachment?"
+msgstr "Отправить как обычное вложение"
+
+msgid ""
+"Your message mentions an attachment (“{word}”), but no file is attached."
+msgstr ""
+
+#, fuzzy
+msgid "Send Anyway"
+msgstr "Отправить сейчас"
+
+#, fuzzy
+msgid "Attach a File…"
+msgstr "Прикрепить файлы"
+
 msgid "An attachment is missing"
 msgstr "Отсутствует вложение"
 
@@ -3712,10 +3736,6 @@ msgstr "Перевести написанный текст"
 #, fuzzy
 msgid "Insert Signature"
 msgstr "Импортировать подпись"
-
-#, fuzzy
-msgid "Attach a File…"
-msgstr "Прикрепить файлы"
 
 #, fuzzy
 msgid "No Signature"
@@ -7276,6 +7296,10 @@ msgid ""
 msgstr ""
 "Протокол POP3 не позволяет изменять сообщения на сервере, поэтому вложение "
 "не было удалено"
+
+msgid ""
+"The server refused the message because it is too large. It said: {reply}"
+msgstr ""
 
 msgid "The message is signed or encrypted, and removing a file would break it"
 msgstr ""

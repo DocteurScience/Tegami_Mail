@@ -172,6 +172,10 @@ pub(crate) enum ComposeInput {
     SaveDraftIfDirty,
     AccountChanged,
     AttachFiles,
+    /// The writer's own text, read for the forgotten-attachment check.
+    AttachCheck(String),
+    /// "Send Anyway" in the forgotten-attachment dialog.
+    SendWithoutAttachment,
     /// Show a recipient row, with the field rows if a compact reply has
     /// them folded away, and put the cursor in it (#491).
     FocusField(Field),

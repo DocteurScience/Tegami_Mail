@@ -376,6 +376,14 @@ impl Compose {
         if !self.attachments_present(widgets, sender) {
             return;
         }
+        // A message with no file whose text mentions one asks first
+        // (docs/DESIGN.md, "Attachments"). A cloud link counts as a file.
+        if self.attachments.is_empty() && self.cloud_links.is_empty() && !self.attach_check_passed {
+            let s = sender.input_sender().clone();
+            self.editor
+                .own_text(move |text| s.emit(ComposeInput::AttachCheck(text)));
+            return;
+        }
         let cc = widgets.cc_row.text().trim().to_string();
         let bcc = widgets.bcc_row.text().trim().to_string();
         let reply_to = widgets.reply_to_row.text().trim().to_string();
@@ -414,6 +422,48 @@ impl Compose {
                     from_alias: from_alias.clone(),
                 }));
         });
+    }
+
+    /// Handles [`ComposeInput::AttachCheck`]: with an attachment mentioned
+    /// in the writer's own text, ask before sending without one; otherwise
+    /// send. The dialog's answers are Cancel, Send Anyway, and Attach a
+    /// File…, the one suggested, since a forgotten file is the likelier
+    /// story than a mention of one that is not wanted.
+    pub(super) fn on_attach_check(
+        &mut self,
+        text: &str,
+        widgets: &ComposeWidgets,
+        sender: &ComponentSender<Self>,
+    ) {
+        let Some(word) =
+            super::forgotten::mentioned_attachment(text, &super::forgotten::attachment_words())
+        else {
+            self.attach_check_passed = true;
+            sender.input_sender().emit(ComposeInput::Send);
+            return;
+        };
+        let dialog = adw::AlertDialog::new(
+            Some(&i18n("Send without an attachment?")),
+            Some(&i18n_f(
+                "Your message mentions an attachment (\u{201c}{word}\u{201d}), but no file is attached.",
+                &[("word", &word)],
+            )),
+        );
+        dialog.add_responses(&[
+            ("cancel", &i18n("Cancel")),
+            ("send", &i18n("Send Anyway")),
+            ("attach", &i18n("Attach a File\u{2026}")),
+        ]);
+        dialog.set_response_appearance("attach", adw::ResponseAppearance::Suggested);
+        dialog.set_default_response(Some("attach"));
+        dialog.set_close_response("cancel");
+        let s = sender.input_sender().clone();
+        dialog.connect_response(None, move |_, response| match response {
+            "send" => s.emit(ComposeInput::SendWithoutAttachment),
+            "attach" => s.emit(ComposeInput::AttachFiles),
+            _ => {}
+        });
+        dialog.present(widgets.to_row.root().as_ref());
     }
 
     /// Whether every attached file can still be read. One moved or deleted
