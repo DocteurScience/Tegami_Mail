@@ -42,8 +42,8 @@ impl RecipientRow {
         pill
     }
 
-    /// A pill for one recipient, with its remove button, pointer and key
-    /// handling, menu and drag source.
+    /// A pill for one recipient, with its avatar, its remove button,
+    /// pointer and key handling, menu and drag source.
     fn pill(&self, name: &str, addr: &str, recipient: &str) -> gtk::Box {
         let pill = gtk::Box::new(gtk::Orientation::Horizontal, 0);
         pill.add_css_class("recipient-pill");
@@ -56,7 +56,15 @@ impl RecipientRow {
         }
         let shown = if name.is_empty() { addr } else { name };
         pill.update_property(&[gtk::accessible::Property::Label(shown)]);
+        // The recipient's initials in their avatar color, as the From
+        // button and the reader's cards show people (mockup 04). The
+        // name says it already, so the circle is left out of the
+        // accessible tree.
+        let avatar = adw::Avatar::new(24, Some(shown), true);
+        avatar.set_accessible_role(gtk::AccessibleRole::Presentation);
+        pill.append(&avatar);
         let label = gtk::Label::new(Some(shown));
+        label.set_margin_start(6);
         label.set_ellipsize(gtk::pango::EllipsizeMode::End);
         label.set_max_width_chars(32);
         label.set_single_line_mode(true);

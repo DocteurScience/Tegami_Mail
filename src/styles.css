@@ -1694,18 +1694,19 @@ button.sidebar-heading-button {
 }
 
 /* To, Cc and Bcc hold each address as a pill. */
+/* A recipient: avatar, name, and a remove button at least 32 px square
+   (docs/DESIGN.md, "Replying and composing"; mockup 04). */
 .recipient-pill {
   border-radius: 999px;
   background-color: alpha(currentColor, 0.1);
-  padding: 0 1px 0 9px;
-  min-height: 20px;
+  padding: 0 0 0 4px;
+  min-height: 32px;
 }
 
 .recipient-pill > button {
-  min-width: 16px;
-  min-height: 16px;
+  min-width: 32px;
+  min-height: 32px;
   padding: 0;
-  margin-left: 3px;
 }
 
 .recipient-pill > button image {

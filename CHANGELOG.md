@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- **Changed: a recipient in the composer wears its avatar** (mockup 04),
+  the initials in the colour the reader gives that person, and its remove
+  button is 32 pixels square, an easier target.
+
 - **Changed: a folder's right-click menu follows the redesign** (mockup
   06), in sections: **Mark All as Read** and **Sync This Folder**; **New
   Subfolder…** (new: a folder inside this one) and **Rename…**; the
