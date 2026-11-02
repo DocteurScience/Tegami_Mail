@@ -186,16 +186,23 @@ ne peuvent plus être modifiés ni supprimés un par un dans l'application
 (seulement importés, exportés, tous supprimés) ; ceux des carnets GNOME ou
 en ligne se modifient dans GNOME Contacts.
 
-Restant du point 3, dans l'ordre : retrait des vues unifiées de la barre
-latérale (section du haut : Boîtes de réception, Favoris/Starred, Envoyés,
-Brouillons, Archives, Indésirables, Corbeille, Reportés, de tous les
-comptes, avec `UnifiedView::Kind`, `show_unified`, `unified_kinds`,
-`unified_chips`, « garder un compte hors de Toutes les boîtes ») ; garder
-les lignes Favoris (#367, dossiers favoris), Étiquettes et Dossiers
-intelligents qui utilisent la même mécanique (`UnifiedRow`), et
-l'Outbox. Puis menu
-⋯ du lecteur, menu d'un dossier, avatars des destinataires, menu ⋯ d'une
-carte.
+Vues unifiées retirées (`5022e1b`) : section du haut, réglages
+`show_unified`/`unified_chips`/`unified_kinds`, replis du rail
+correspondants, état d'ouverture dans `sidebar.toml`, Starred unifié des
+comptes sans dossier Starred (#482), préchargement et préconstruction des
+listes unifiées, actions « toutes les boîtes » du menu de dossier. Restent
+les lignes Favoris, Étiquettes et Dossiers intelligents (moteur
+`unified.rs` gardé pour elles) ; l'interrupteur de compte s'appelle
+« Afficher dans les vues combinées » (`in_unified`). Ouverture au
+démarrage : boîte du premier compte. Tray « Voir tous les non lus » :
+première boîte avec du non-lu.
+
+Conséquences à signaler : plus de Starred unifié (#482) ; « Afficher les
+comptes » (Ctrl+Maj+A) et le mode Concentration « replier les lignes
+unifiées » n'ont plus beaucoup de sens (gardés, à trancher).
+
+Restant du point 3, dans l'ordre : menu ⋯ du lecteur (maquette 06), menu
+d'un dossier, avatars des destinataires, menu ⋯ d'une carte.
 
 ## Reste à faire (connu)
 
