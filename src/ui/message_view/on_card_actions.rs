@@ -94,7 +94,10 @@ impl MessageView {
             key: Some((account_id, id)),
             x: x * ratio,
             y: y * ratio,
-            hit: MenuHit::default(),
+            hit: MenuHit {
+                more_button: true,
+                ..MenuHit::default()
+            },
         });
     }
 

@@ -1449,6 +1449,11 @@ out, and <kbd>Shift</kbd> and a click select every message from the first
 selected to that one, without folding or opening it. Archive, Delete, Spam and Move act on the selected
 messages alone, and the rest of the conversation stays open.
 
+An open message's **More actions** (⋯) answers that message: **Reply**,
+**Reply All** and **Forward**. Everything else is in the reader's header,
+which acts on the conversation's latest message, and in the message's
+right-click menu.
+
 A message's header, or its folded card, drags it to a folder in the sidebar,
 as its row in the message list does; with several selected, the drag carries
 all of them. A drag across the message's text selects the text.

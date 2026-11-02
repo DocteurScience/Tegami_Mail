@@ -181,6 +181,12 @@ impl AppModel {
         let window = parent.clone().downcast::<gtk::Window>().ok();
         let item = card_item(&m, popout, sender);
         let kind = self.folder_kind(m.account_id, m.folder_id);
+        // A card's own ⋯ answers this one message and nothing else; the
+        // rest is the reader header's and the right-click's.
+        if hit.more_button {
+            show_context_menu(&parent, x, y, vec![answer_entries(&item, kind)]);
+            return;
+        }
         let mut sections = Vec::new();
         let here = crate::ui::message_view::hit_menu_entries(&hit, window);
         if !here.is_empty() {

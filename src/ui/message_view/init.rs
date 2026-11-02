@@ -229,6 +229,7 @@ impl MessageView {
                         .flatten()
                         .map(|u| u.to_string()),
                     selection: None,
+                    more_button: false,
                     translate: None,
                     folds: None,
                 };

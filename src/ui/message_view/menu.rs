@@ -24,6 +24,9 @@ pub(crate) struct MenuHit {
     /// Expand All and Collapse All (#326), in a conversation: whether any
     /// message is folded, whether any is open, and the reader to tell.
     pub(crate) folds: Option<(bool, bool, relm4::Sender<MessageViewInput>)>,
+    /// The card's own More actions (⋯) asked, not a right-click: its menu
+    /// is Reply, Reply All and Forward alone (docs/DESIGN.md, "Reading").
+    pub(crate) more_button: bool,
 }
 
 /// Translate, Show Original or Show Translation in a message's menu, sent

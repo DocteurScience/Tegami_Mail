@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- **Changed: an open message's More actions** (⋯ on its card) holds
+  **Reply**, **Reply All** and **Forward** alone, as the redesign has it.
+  The card's right-click menu keeps every action.
+
 - **Changed: a recipient in the composer wears its avatar** (mockup 04),
   the initials in the colour the reader gives that person, and its remove
   button is 32 pixels square, an easier target.
