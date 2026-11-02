@@ -185,9 +185,10 @@ ne peuvent plus être modifiés ni supprimés un par un dans l'application
 (seulement importés, exportés, tous supprimés) ; ceux des carnets GNOME ou
 en ligne se modifient dans GNOME Contacts.
 
-Restant du point 3, dans l'ordre : retrait des vues unifiées, Filtres, Contacts
-et Pièces jointes de la barre latérale, menu ⋯ du lecteur, menu d'un
-dossier, avatars des destinataires, menu ⋯ d'une carte.
+Restant du point 3, dans l'ordre : retrait de la section Filtres et des
+vues unifiées de la barre latérale (Pièces jointes et Contacts faits), menu
+⋯ du lecteur, menu d'un dossier, avatars des destinataires, menu ⋯ d'une
+carte.
 
 ## Reste à faire (connu)
 
