@@ -6056,6 +6056,54 @@ msgstr ""
 msgid "Delete Smart Folder…"
 msgstr ""
 
+msgid "Blue"
+msgstr ""
+
+msgid "Green"
+msgstr ""
+
+msgid "Yellow"
+msgstr ""
+
+msgid "Orange"
+msgstr ""
+
+msgid "Red"
+msgstr ""
+
+msgid "Purple"
+msgstr ""
+
+msgid "Brown"
+msgstr ""
+
+msgid "Gray"
+msgstr ""
+
+msgid "New Tag"
+msgstr ""
+
+msgid "Tag name"
+msgstr ""
+
+msgid "Search or create…"
+msgstr ""
+
+msgid "Search or create a tag"
+msgstr ""
+
+msgid "Favorite"
+msgstr ""
+
+msgid "New Tag…"
+msgstr ""
+
+msgid "Manage Tags…"
+msgstr ""
+
+msgid "Create “{name}”"
+msgstr ""
+
 msgid "Script"
 msgstr ""
 

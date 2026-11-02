@@ -6555,6 +6555,63 @@ msgstr "Edita la carpeta intel·ligent…"
 msgid "Delete Smart Folder…"
 msgstr "Suprimeix la carpeta intel·ligent…"
 
+msgid "Blue"
+msgstr ""
+
+msgid "Green"
+msgstr ""
+
+#, fuzzy
+msgid "Yellow"
+msgstr "Quadrat groc"
+
+msgid "Orange"
+msgstr ""
+
+#, fuzzy
+msgid "Red"
+msgstr "Refés"
+
+msgid "Purple"
+msgstr ""
+
+msgid "Brown"
+msgstr ""
+
+msgid "Gray"
+msgstr ""
+
+#, fuzzy
+msgid "New Tag"
+msgstr "No hi ha etiquetes noves"
+
+#, fuzzy
+msgid "Tag name"
+msgstr "Afegeix l'etiqueta {name}"
+
+#, fuzzy
+msgid "Search or create…"
+msgstr "Cerca missatges…"
+
+msgid "Search or create a tag"
+msgstr ""
+
+#, fuzzy
+msgid "Favorite"
+msgstr "Preferits"
+
+#, fuzzy
+msgid "New Tag…"
+msgstr "Afegeix una etiqueta…"
+
+#, fuzzy
+msgid "Manage Tags…"
+msgstr "Troba etiquetes…"
+
+#, fuzzy
+msgid "Create “{name}”"
+msgstr "Vols suprimir «{name}»?"
+
 msgid "Script"
 msgstr ""
 

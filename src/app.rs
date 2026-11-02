@@ -873,7 +873,9 @@ impl SimpleComponent for AppModel {
                                         #[local_ref]
                                         reader_tag_btn -> gtk::Button {
                                             #[watch]
-                                            set_visible: model.toolbar_visible(config::ToolbarItem::Tags) && !model.tags.is_empty(),
+                                            // Shown with no tag yet too: the
+                                            // panel's search creates the first.
+                                            set_visible: model.toolbar_visible(config::ToolbarItem::Tags),
                                             #[watch]
                                             set_sensitive: model.acts_on_selection(),
                                         },

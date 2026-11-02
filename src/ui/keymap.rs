@@ -144,6 +144,15 @@ pub(crate) fn key_mode() -> KeyMode {
 
 /// The number key for the tag at `index` in Settings order (#157), for a
 /// menu's hint: the first nine have one, while single keys are on.
+/// The key that stars a message, for a menu to show beside Favorite: "s"
+/// in either single-key scheme, none when they are off.
+pub(crate) fn star_key() -> Option<&'static str> {
+    match key_mode() {
+        KeyMode::Off => None,
+        KeyMode::Single | KeyMode::Gmail => Some("s"),
+    }
+}
+
 pub(crate) fn tag_key(index: usize) -> Option<&'static str> {
     const DIGITS: [&str; 9] = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
     match key_mode() {

@@ -6884,6 +6884,63 @@ msgstr "Modyfikuj filtr…"
 msgid "Delete Smart Folder…"
 msgstr "Usuń katalog…"
 
+msgid "Blue"
+msgstr ""
+
+msgid "Green"
+msgstr ""
+
+#, fuzzy
+msgid "Yellow"
+msgstr "Żółty kwadrat"
+
+msgid "Orange"
+msgstr ""
+
+#, fuzzy
+msgid "Red"
+msgstr "Ponów"
+
+msgid "Purple"
+msgstr ""
+
+msgid "Brown"
+msgstr ""
+
+msgid "Gray"
+msgstr ""
+
+#, fuzzy
+msgid "New Tag"
+msgstr "Brak nowych etykiet"
+
+#, fuzzy
+msgid "Tag name"
+msgstr "Dodaj etykietę {name}"
+
+#, fuzzy
+msgid "Search or create…"
+msgstr "Przeszukaj wiadomości…"
+
+msgid "Search or create a tag"
+msgstr ""
+
+#, fuzzy
+msgid "Favorite"
+msgstr "Dodaj do kontaktów"
+
+#, fuzzy
+msgid "New Tag…"
+msgstr "Dodaj etykietę…"
+
+#, fuzzy
+msgid "Manage Tags…"
+msgstr "Znajdź etykiety…"
+
+#, fuzzy
+msgid "Create “{name}”"
+msgstr "Czy opróżnić katalog „{name}”?"
+
 msgid "Script"
 msgstr ""
 

@@ -121,6 +121,32 @@ impl AppModel {
         ))
     }
 
+    /// What the Tags panel shows (docs/DESIGN.md, "Tags and favourite"):
+    /// every tag, the ones the message carries ticked, and whether it is
+    /// starred. With several selected (#313), a tag or the star is ticked
+    /// when every one carries it, since only then does choosing it take it
+    /// off. `None` with no message to tag.
+    pub(super) fn reader_tags_state(&self) -> Option<crate::ui::tags_panel::TagsPanelState> {
+        let many = self.multi_selection();
+        let (on, starred) = match many.first() {
+            Some(first) => {
+                let mut on = first.tag_keywords(&self.tags);
+                on.retain(|k| many.iter().all(|m| self.carries_tag(m, k)));
+                (on, many.iter().all(|m| m.starred))
+            }
+            None => {
+                let m = self.reply_target()?;
+                (m.tag_keywords(&self.tags), m.starred)
+            }
+        };
+        Some(crate::ui::tags_panel::TagsPanelState {
+            tags: self.tags.clone(),
+            on,
+            starred,
+            star_key: crate::ui::keymap::star_key().map(str::to_string),
+        })
+    }
+
     /// The collapsed reader header's overflow menu: the right group of the
     /// toolbar (Tags, Read/Unread, Spam, Move To, Find, Print), same icons,
     /// enabled under the same conditions. The left group never folds.
@@ -518,7 +544,6 @@ impl AppModel {
                     .reader_toolbar
                     .right
                     .iter()
-                    .filter(|i| **i != config::ToolbarItem::Tags || !self.tags.is_empty())
                     .filter(|i| self.reader_shown() || !reader_only(**i))
                     .count() as i32;
                 // The ⋯ goes as the right group comes.

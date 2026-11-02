@@ -429,6 +429,57 @@ impl AppModel {
                 self.sweep_blacklisted();
             }
 
+            AppMsg::AddTag { name, color, apply } => {
+                // A name already a tag's is that tag: put it on, rather
+                // than make a second of the same name.
+                if let Some(tag) = self
+                    .tags
+                    .iter()
+                    .find(|t| t.name.trim().eq_ignore_ascii_case(name.trim()))
+                {
+                    if apply {
+                        sender.input(AppMsg::ToggleTagCurrent(tag.keyword.clone()));
+                    }
+                    return;
+                }
+                let keyword = config::Tag::unique_keyword(&name, &self.tags);
+                let taken: Vec<String> = self.tags.iter().map(|t| t.color.clone()).collect();
+                let color =
+                    color.unwrap_or_else(|| config::Tag::color_for_keyword(&keyword, &taken));
+                let mut tags = self.tags.clone();
+                tags.push(config::Tag {
+                    name: name.trim().to_string(),
+                    keyword: keyword.clone(),
+                    color,
+                });
+                // Through SetTags, so the new tag is saved and shown
+                // everywhere as one from Settings is; then on the message.
+                sender.input(AppMsg::SetTags(tags));
+                if apply {
+                    sender.input(AppMsg::ToggleTagCurrent(keyword));
+                }
+            }
+
+            AppMsg::NewTagDialog { apply } => {
+                let taken: Vec<String> = self.tags.iter().map(|t| t.color.clone()).collect();
+                let color = config::Tag::color_for_keyword("", &taken);
+                let s = sender.input_sender().clone();
+                crate::ui::tag_dialog::show(&self.window, &color, move |name, color| {
+                    s.emit(AppMsg::AddTag {
+                        name,
+                        color: Some(color),
+                        apply,
+                    });
+                });
+            }
+
+            AppMsg::ManageTags => {
+                self.open_settings_window(&sender, true, false);
+                if let Some(p) = &self.prefs {
+                    p.emit(PrefInput::ShowPageById("tags".to_string()));
+                }
+            }
+
             AppMsg::TagSelected { keyword, account } => {
                 let sel = match keyword.clone() {
                     Some(k) => crate::ui::sidebar::Sel::Tag(account, k),

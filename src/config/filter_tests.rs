@@ -917,3 +917,17 @@ fn a_keyword_drops_accents_not_letters() {
     assert_eq!(Tag::keyword_for("日本 (Japan)"), "_Japan");
     assert!(Tag::valid_keyword(&Tag::keyword_for("Projet Tegami été")));
 }
+
+#[test]
+fn a_new_tags_keyword_is_never_one_already_taken() {
+    let tag = |k: &str| Tag {
+        name: k.into(),
+        keyword: k.into(),
+        color: TAG_COLORS[0].into(),
+    };
+    let tags = [tag("Ete"), tag("Ete_2"), tag("Work")];
+    assert_eq!(Tag::unique_keyword("Été", &tags), "Ete_3");
+    assert_eq!(Tag::unique_keyword("work", &tags), "work_2");
+    assert_eq!(Tag::unique_keyword("Réunion", &tags), "Reunion");
+    assert_eq!(Tag::unique_keyword("日本", &tags), "tag");
+}

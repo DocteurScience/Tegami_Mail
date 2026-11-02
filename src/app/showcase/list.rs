@@ -325,6 +325,22 @@ pub(super) fn stage_reader_menu(sender: &ComponentSender<AppModel>) {
     }
 }
 
+/// TEGAMI_SHOWCASE_TAGS=panel opens the Tags panel at 5s, =new the New
+/// Tag dialog; each captures itself to `<TEGAMI_SHOWCASE>.tags.png`, as a
+/// popover and a dialog are not part of the window's snapshot.
+pub(super) fn stage_tags(sender: &ComponentSender<AppModel>) {
+    if let Ok(which) = std::env::var("TEGAMI_SHOWCASE_TAGS") {
+        let s = sender.input_sender().clone();
+        gtk::glib::timeout_add_seconds_local_once(5, move || {
+            let _ = s.send(if which == "new" {
+                AppMsg::NewTagDialog { apply: false }
+            } else {
+                AppMsg::ReaderTagMenu
+            });
+        });
+    }
+}
+
 /// TEGAMI_SHOWCASE_PRINT=1 opens the print preview of the open
 /// message at 6s (#359); TEGAMI_SHOWCASE_TOP captures it.
 pub(super) fn stage_print(sender: &ComponentSender<AppModel>) {

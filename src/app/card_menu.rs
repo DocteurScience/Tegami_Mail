@@ -387,13 +387,30 @@ impl AppModel {
     pub(super) fn on_card_menu(&self, msg: AppMsg, sender: ComponentSender<Self>) {
         match msg {
             AppMsg::ReaderTagMenu => {
-                if let Some(entries) = self.reader_tag_entries(&sender) {
-                    let btn = &self.reader_tag_btn;
-                    crate::ui::context_menu::show_context_menu(
-                        btn,
-                        (btn.width() / 2) as f64,
-                        btn.height() as f64,
-                        vec![entries],
+                if let Some(state) = self.reader_tags_state() {
+                    let s = sender.input_sender().clone();
+                    let (star, create, new_tag, manage) =
+                        (s.clone(), s.clone(), s.clone(), s.clone());
+                    crate::ui::tags_panel::show(
+                        &self.reader_tag_btn,
+                        state,
+                        crate::ui::tags_panel::TagsPanelActions {
+                            toggle: Box::new(move |keyword| {
+                                s.emit(AppMsg::ToggleTagCurrent(keyword))
+                            }),
+                            toggle_star: Box::new(move || star.emit(AppMsg::ToggleStar)),
+                            create: Box::new(move |name| {
+                                create.emit(AppMsg::AddTag {
+                                    name,
+                                    color: None,
+                                    apply: true,
+                                })
+                            }),
+                            new_tag: Box::new(move || {
+                                new_tag.emit(AppMsg::NewTagDialog { apply: true })
+                            }),
+                            manage: Box::new(move || manage.emit(AppMsg::ManageTags)),
+                        },
                     );
                 }
             }

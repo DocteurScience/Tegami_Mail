@@ -6601,6 +6601,63 @@ msgstr "Bearbeite Smart Folder…"
 msgid "Delete Smart Folder…"
 msgstr "Lösche Smart Folder…"
 
+msgid "Blue"
+msgstr ""
+
+msgid "Green"
+msgstr ""
+
+#, fuzzy
+msgid "Yellow"
+msgstr "Gelbes Quadrat"
+
+msgid "Orange"
+msgstr ""
+
+#, fuzzy
+msgid "Red"
+msgstr "Wiederholen"
+
+msgid "Purple"
+msgstr ""
+
+msgid "Brown"
+msgstr ""
+
+msgid "Gray"
+msgstr ""
+
+#, fuzzy
+msgid "New Tag"
+msgstr "Keine neuen Tags"
+
+#, fuzzy
+msgid "Tag name"
+msgstr "Tag {name} hinzufügen"
+
+#, fuzzy
+msgid "Search or create…"
+msgstr "Nachrichten durchsuchen…"
+
+msgid "Search or create a tag"
+msgstr ""
+
+#, fuzzy
+msgid "Favorite"
+msgstr "Favoriten"
+
+#, fuzzy
+msgid "New Tag…"
+msgstr "Tag hinzufügen…"
+
+#, fuzzy
+msgid "Manage Tags…"
+msgstr "Tags suchen…"
+
+#, fuzzy
+msgid "Create “{name}”"
+msgstr "Lösche „{name}“?"
+
 msgid "Script"
 msgstr ""
 

@@ -6811,6 +6811,63 @@ msgstr "Редактировать фильтр…"
 msgid "Delete Smart Folder…"
 msgstr "Удалить папку…"
 
+msgid "Blue"
+msgstr ""
+
+msgid "Green"
+msgstr ""
+
+#, fuzzy
+msgid "Yellow"
+msgstr "Жёлтый квадрат"
+
+msgid "Orange"
+msgstr ""
+
+#, fuzzy
+msgid "Red"
+msgstr "Повторить"
+
+msgid "Purple"
+msgstr ""
+
+msgid "Brown"
+msgstr ""
+
+msgid "Gray"
+msgstr ""
+
+#, fuzzy
+msgid "New Tag"
+msgstr "Новых меток нет"
+
+#, fuzzy
+msgid "Tag name"
+msgstr "Добавить тег {name}"
+
+#, fuzzy
+msgid "Search or create…"
+msgstr "Поиск сообщений…"
+
+msgid "Search or create a tag"
+msgstr ""
+
+#, fuzzy
+msgid "Favorite"
+msgstr "Избранное"
+
+#, fuzzy
+msgid "New Tag…"
+msgstr "Добавить тег…"
+
+#, fuzzy
+msgid "Manage Tags…"
+msgstr "Найти теги…"
+
+#, fuzzy
+msgid "Create “{name}”"
+msgstr "Очистить «{name}»?"
+
 msgid "Script"
 msgstr ""
 

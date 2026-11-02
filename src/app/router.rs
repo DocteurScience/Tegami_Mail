@@ -318,6 +318,9 @@ impl AppModel {
             | AppMsg::KeywordsFound { .. }
             | AppMsg::TagScanTimeout(..)
             | AppMsg::SetTags(..)
+            | AppMsg::AddTag { .. }
+            | AppMsg::NewTagDialog { .. }
+            | AppMsg::ManageTags
             | AppMsg::TagSelected { .. }
             | AppMsg::KeywordsSynced { .. }
             | AppMsg::TagViewLoaded { .. }) => self.on_tags(msg, sender),

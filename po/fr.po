@@ -6581,6 +6581,54 @@ msgstr "Modifier le dossier intelligent…"
 msgid "Delete Smart Folder…"
 msgstr "Supprimer le dossier intelligent…"
 
+msgid "Blue"
+msgstr "Bleu"
+
+msgid "Green"
+msgstr "Vert"
+
+msgid "Yellow"
+msgstr "Jaune"
+
+msgid "Orange"
+msgstr "Orange"
+
+msgid "Red"
+msgstr "Rouge"
+
+msgid "Purple"
+msgstr "Violet"
+
+msgid "Brown"
+msgstr "Marron"
+
+msgid "Gray"
+msgstr "Gris"
+
+msgid "New Tag"
+msgstr "Nouvelle étiquette"
+
+msgid "Tag name"
+msgstr "Nom de l’étiquette"
+
+msgid "Search or create…"
+msgstr "Rechercher ou créer…"
+
+msgid "Search or create a tag"
+msgstr "Rechercher ou créer une étiquette"
+
+msgid "Favorite"
+msgstr "Favori"
+
+msgid "New Tag…"
+msgstr "Nouvelle étiquette…"
+
+msgid "Manage Tags…"
+msgstr "Gérer les étiquettes…"
+
+msgid "Create “{name}”"
+msgstr "Créer « {name} »"
+
 msgid "Script"
 msgstr "Script"
 

@@ -1066,6 +1066,18 @@ pub(crate) enum AppMsg {
     TagScanTimeout(u32),
     /// The tags changed in Settings (#71).
     SetTags(Vec<config::Tag>),
+    /// Make a tag of this name (from the Tags panel's search, or the New
+    /// Tag dialog), in `color` or the first one the others leave free, and
+    /// put it on the message on screen when `apply`.
+    AddTag {
+        name: String,
+        color: Option<String>,
+        apply: bool,
+    },
+    /// The New Tag dialog; `apply` as for [`AppMsg::AddTag`].
+    NewTagDialog { apply: bool },
+    /// Manage Tags…: Settings on its Tags page.
+    ManageTags,
     /// A tag row was chosen: its keyword (`None` for the unified Tags row,
     /// every tag at once), and the account it is scoped to (an account
     /// section's own Tags row) or `None` for every account.

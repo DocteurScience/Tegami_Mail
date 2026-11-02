@@ -6565,6 +6565,63 @@ msgstr "Editar pasta de pesquisa…"
 msgid "Delete Smart Folder…"
 msgstr "Excluir pasta de pesquisa…"
 
+msgid "Blue"
+msgstr ""
+
+msgid "Green"
+msgstr ""
+
+#, fuzzy
+msgid "Yellow"
+msgstr "Quadrado amarelo"
+
+msgid "Orange"
+msgstr ""
+
+#, fuzzy
+msgid "Red"
+msgstr "Refazer"
+
+msgid "Purple"
+msgstr ""
+
+msgid "Brown"
+msgstr ""
+
+msgid "Gray"
+msgstr ""
+
+#, fuzzy
+msgid "New Tag"
+msgstr "Nenhuma etiqueta nova"
+
+#, fuzzy
+msgid "Tag name"
+msgstr "Adicionar etiqueta {name}"
+
+#, fuzzy
+msgid "Search or create…"
+msgstr "Pesquisar mensagens…"
+
+msgid "Search or create a tag"
+msgstr ""
+
+#, fuzzy
+msgid "Favorite"
+msgstr "Favoritos"
+
+#, fuzzy
+msgid "New Tag…"
+msgstr "Adicionar etiqueta…"
+
+#, fuzzy
+msgid "Manage Tags…"
+msgstr "Localizar etiquetas…"
+
+#, fuzzy
+msgid "Create “{name}”"
+msgstr "Excluir “{name}”?"
+
 msgid "Script"
 msgstr ""
 

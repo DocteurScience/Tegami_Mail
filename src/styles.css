@@ -1671,6 +1671,21 @@ headerbar box.list-tools.compact button {
   background-color: alpha(@warning_bg_color, 0.15);
 }
 
+/* The New Tag dialog's colours: the one chosen is ringed in the text
+   colour and ticked in white, so it shows on every one of the eight. */
+button.tag-swatch {
+  padding: 3px;
+  min-width: 0;
+  min-height: 0;
+}
+button.tag-swatch:checked {
+  background: none;
+  box-shadow: inset 0 0 0 2px @window_fg_color;
+}
+.tag-swatch-tick {
+  color: white;
+}
+
 .compose-windowed .compose-pane {
   padding: 0;
   border-spacing: 0;

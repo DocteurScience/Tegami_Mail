@@ -6595,6 +6595,63 @@ msgstr "Editar carpeta inteligente…"
 msgid "Delete Smart Folder…"
 msgstr "Eliminar carpeta inteligente…"
 
+msgid "Blue"
+msgstr ""
+
+msgid "Green"
+msgstr ""
+
+#, fuzzy
+msgid "Yellow"
+msgstr "Cuadrado amarillo"
+
+msgid "Orange"
+msgstr ""
+
+#, fuzzy
+msgid "Red"
+msgstr "Rehacer"
+
+msgid "Purple"
+msgstr ""
+
+msgid "Brown"
+msgstr ""
+
+msgid "Gray"
+msgstr ""
+
+#, fuzzy
+msgid "New Tag"
+msgstr "No hay etiquetas nuevas"
+
+#, fuzzy
+msgid "Tag name"
+msgstr "Añadir etiqueta {name}"
+
+#, fuzzy
+msgid "Search or create…"
+msgstr "Buscar mensajes…"
+
+msgid "Search or create a tag"
+msgstr ""
+
+#, fuzzy
+msgid "Favorite"
+msgstr "Favoritos"
+
+#, fuzzy
+msgid "New Tag…"
+msgstr "Añadir etiqueta…"
+
+#, fuzzy
+msgid "Manage Tags…"
+msgstr "Buscar etiquetas…"
+
+#, fuzzy
+msgid "Create “{name}”"
+msgstr "¿Eliminar «{name}»?"
+
 msgid "Script"
 msgstr ""
 

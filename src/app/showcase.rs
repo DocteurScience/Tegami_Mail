@@ -75,6 +75,7 @@ impl AppModel {
                 list::stage_toolbar_gap(sender);
                 list::stage_toolbar_menu(widgets, sender);
                 list::stage_reader_menu(sender);
+                list::stage_tags(sender);
                 list::stage_print(sender);
                 list::stage_popout(sender);
                 list::stage_edit_as_new(sender);

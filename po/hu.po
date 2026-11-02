@@ -6812,6 +6812,63 @@ msgstr "Szűrő szerkesztése…"
 msgid "Delete Smart Folder…"
 msgstr "Mappa törlése…"
 
+msgid "Blue"
+msgstr ""
+
+msgid "Green"
+msgstr ""
+
+#, fuzzy
+msgid "Yellow"
+msgstr "Sárga négyzet"
+
+msgid "Orange"
+msgstr ""
+
+#, fuzzy
+msgid "Red"
+msgstr "Újra"
+
+msgid "Purple"
+msgstr ""
+
+msgid "Brown"
+msgstr ""
+
+msgid "Gray"
+msgstr ""
+
+#, fuzzy
+msgid "New Tag"
+msgstr "Nincs új címke"
+
+#, fuzzy
+msgid "Tag name"
+msgstr "Címke hozzáadása: {name}"
+
+#, fuzzy
+msgid "Search or create…"
+msgstr "Üzenetek keresése..."
+
+msgid "Search or create a tag"
+msgstr ""
+
+#, fuzzy
+msgid "Favorite"
+msgstr "Hozzáadás a névjegyekhez"
+
+#, fuzzy
+msgid "New Tag…"
+msgstr "Címke hozzáadása…"
+
+#, fuzzy
+msgid "Manage Tags…"
+msgstr "Címkék keresése…"
+
+#, fuzzy
+msgid "Create “{name}”"
+msgstr "Kiüríti ezt: „{name}”?"
+
 msgid "Script"
 msgstr ""
 

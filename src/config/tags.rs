@@ -133,6 +133,27 @@ impl Tag {
         out
     }
 
+    /// A keyword for a new tag named `name` that no tag in `tags` has: the
+    /// derived one (`keyword_for`), "tag" when nothing of the name is left
+    /// ("日本"), and a number after it while it is taken ("Work_2"). Two
+    /// names that fold to the same atom ("Été", "Ete") so get two
+    /// keywords, not one tag on the server for both (docs/DESIGN.md, open
+    /// questions).
+    pub(crate) fn unique_keyword(name: &str, tags: &[Tag]) -> String {
+        let base = match Self::keyword_for(name) {
+            k if k.is_empty() || k.chars().all(|c| c == '_') => "tag".to_string(),
+            k => k,
+        };
+        let taken = |k: &str| tags.iter().any(|t| t.keyword.eq_ignore_ascii_case(k));
+        if !taken(&base) {
+            return base;
+        }
+        (2..)
+            .map(|n| format!("{base}_{n}"))
+            .find(|k| !taken(k))
+            .unwrap_or(base)
+    }
+
     /// The CSS class carrying this tag's color (see the app's tag stylesheet):
     /// the keyword reduced to what a class name may hold.
     pub(crate) fn css_class(&self) -> String {

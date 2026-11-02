@@ -6644,6 +6644,63 @@ msgstr "Επεξεργασία έξυπνου φακέλου…"
 msgid "Delete Smart Folder…"
 msgstr "Διαγραφή έξυπνου φακέλου…"
 
+msgid "Blue"
+msgstr ""
+
+msgid "Green"
+msgstr ""
+
+#, fuzzy
+msgid "Yellow"
+msgstr "Κίτρινο τετράγωνο"
+
+msgid "Orange"
+msgstr ""
+
+#, fuzzy
+msgid "Red"
+msgstr "Επανάληψη"
+
+msgid "Purple"
+msgstr ""
+
+msgid "Brown"
+msgstr ""
+
+msgid "Gray"
+msgstr ""
+
+#, fuzzy
+msgid "New Tag"
+msgstr "Δεν υπάρχουν νέες ετικέτες"
+
+#, fuzzy
+msgid "Tag name"
+msgstr "Προσθήκη ετικέτας {name}"
+
+#, fuzzy
+msgid "Search or create…"
+msgstr "Αναζήτηση μηνυμάτων…"
+
+msgid "Search or create a tag"
+msgstr ""
+
+#, fuzzy
+msgid "Favorite"
+msgstr "Αγαπημένα"
+
+#, fuzzy
+msgid "New Tag…"
+msgstr "Προσθήκη ετικέτας…"
+
+#, fuzzy
+msgid "Manage Tags…"
+msgstr "Εύρεση ετικετών…"
+
+#, fuzzy
+msgid "Create “{name}”"
+msgstr "Διαγραφή του «{name}»;"
+
 msgid "Script"
 msgstr ""
 

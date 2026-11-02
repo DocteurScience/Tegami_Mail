@@ -6734,6 +6734,63 @@ msgstr "Modifica cartella smart…"
 msgid "Delete Smart Folder…"
 msgstr "Elimina cartella smart…"
 
+msgid "Blue"
+msgstr ""
+
+msgid "Green"
+msgstr ""
+
+#, fuzzy
+msgid "Yellow"
+msgstr "Quadrato giallo"
+
+msgid "Orange"
+msgstr ""
+
+#, fuzzy
+msgid "Red"
+msgstr "Ripristina"
+
+msgid "Purple"
+msgstr ""
+
+msgid "Brown"
+msgstr ""
+
+msgid "Gray"
+msgstr ""
+
+#, fuzzy
+msgid "New Tag"
+msgstr "Nessuna nuova etichetta"
+
+#, fuzzy
+msgid "Tag name"
+msgstr "Aggiungi etichetta {name}"
+
+#, fuzzy
+msgid "Search or create…"
+msgstr "Cerca messaggi…"
+
+msgid "Search or create a tag"
+msgstr ""
+
+#, fuzzy
+msgid "Favorite"
+msgstr "Preferiti"
+
+#, fuzzy
+msgid "New Tag…"
+msgstr "Aggiungi etichetta…"
+
+#, fuzzy
+msgid "Manage Tags…"
+msgstr "Trova etichette…"
+
+#, fuzzy
+msgid "Create “{name}”"
+msgstr "Eliminare \"{name}\"?"
+
 msgid "Script"
 msgstr ""
 
