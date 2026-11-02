@@ -47,6 +47,52 @@ pub(crate) fn save_attachment_as(
 /// a `.pdf`) the portal falls back to GNOME's own app-chooser dialog instead
 /// of silently doing nothing.
 pub(crate) fn open_bytes(name: &str, data: &[u8], parent: Option<&gtk::Window>) {
+    let Some(path) = stage(name, data) else {
+        return;
+    };
+    open_staged(path, parent);
+}
+
+/// Open the file with an application the person picks (docs/DESIGN.md,
+/// "Menus": Open With…). Staged as `open_bytes` stages it, then handed to
+/// the OpenURI portal asking it to show its chooser, inside the sandbox
+/// or not: the portal's dialog is the desktop's own app chooser.
+pub(crate) fn open_bytes_choosing(name: &str, data: &[u8], parent: Option<&gtk::Window>) {
+    let Some(path) = stage(name, data) else {
+        return;
+    };
+    portal_open_file(path, true, parent.cloned());
+}
+
+/// Every attachment of a message into one folder the person picks (Save
+/// All…). A name is stripped of path separators, as it comes from the
+/// sender; a file that cannot be written is skipped, the others still are.
+pub(crate) fn save_all_attachments(
+    atts: Vec<crate::models::Attachment>,
+    parent: Option<&gtk::Window>,
+) {
+    if atts.is_empty() {
+        return;
+    }
+    let dialog = gtk::FileDialog::builder()
+        .title(i18n("Save All Attachments"))
+        .build();
+    dialog.select_folder(parent, gtk::gio::Cancellable::NONE, move |res| {
+        let Some(dir) = res.ok().and_then(|folder| folder.path()) else {
+            return;
+        };
+        for att in &atts {
+            let safe = att.name.replace(['/', '\\'], "_");
+            if let Err(e) = std::fs::write(dir.join(&safe), &att.data) {
+                tracing::warn!("could not save an attachment: {e}");
+            }
+        }
+    });
+}
+
+/// Write the attachment to a fresh private file for an application to
+/// open, and say where; `None` when that cannot be done safely.
+fn stage(name: &str, data: &[u8]) -> Option<std::path::PathBuf> {
     let safe: String = name
         .chars()
         .map(|c| {
@@ -57,7 +103,7 @@ pub(crate) fn open_bytes(name: &str, data: &[u8], parent: Option<&gtk::Window>) 
             }
         })
         .collect();
-    let Some(dir) = attachment_dir() else { return };
+    let dir = attachment_dir()?;
     let base = if safe.is_empty() {
         "attachment".to_string()
     } else {
@@ -65,16 +111,21 @@ pub(crate) fn open_bytes(name: &str, data: &[u8], parent: Option<&gtk::Window>) 
     };
     let Some((mut file, path)) = create_private(&dir, &base) else {
         tracing::warn!("could not open a temporary file for the attachment");
-        return;
+        return None;
     };
     // Write through the handle rather than reopening by path: the checks below
     // are about what is at that name, and going back through it would hand the
     // result to whatever is there by the time we look again.
     if let Err(e) = std::io::Write::write_all(&mut file, data) {
         tracing::warn!("could not write the attachment: {e}");
-        return;
+        return None;
     }
     drop(file);
+    Some(path)
+}
+
+/// Open a staged file in its default application.
+fn open_staged(path: std::path::PathBuf, parent: Option<&gtk::Window>) {
     let uri = format!("file://{}", path.to_string_lossy());
     // Outside Flatpak, GIO launches the default handler directly; the portal
     // route has been seen accepting an OpenURI request and then launching

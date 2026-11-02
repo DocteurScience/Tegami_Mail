@@ -2818,9 +2818,6 @@ msgstr "N’importe quel tag"
 msgid "The preview each message has in the list"
 msgstr "L’aperçu de chaque message dans la liste"
 
-msgid "Save All Attachments"
-msgstr "Enregistrer toutes les pièces jointes"
-
 msgid "Open"
 msgstr "Ouvrir"
 
@@ -2893,6 +2890,9 @@ msgstr "Enregistrer chaque pièce jointe dans un dossier"
 
 msgid "Save Attachment"
 msgstr "Enregistrer la pièce jointe"
+
+msgid "Save All Attachments"
+msgstr "Enregistrer toutes les pièces jointes"
 
 msgid "The file could not be opened"
 msgstr "Le fichier n’a pas pu être ouvert"
@@ -4947,6 +4947,12 @@ msgstr "Copier l’adresse de l’image"
 msgid "Translate"
 msgstr "Traduire"
 
+msgid "Open With…"
+msgstr "Ouvrir avec…"
+
+msgid "Save As…"
+msgstr "Enregistrer sous…"
+
 msgid "Encrypted messages are not sent for translation."
 msgstr "Les messages chiffrés ne sont pas envoyés à la traduction."
 
@@ -5054,8 +5060,11 @@ msgstr "Modifier le modèle lui-même"
 msgid "Start a new message from a copy of the template"
 msgstr "Démarrer un nouveau message à partir d’une copie du modèle"
 
-msgid "Save…"
-msgstr "Enregistrer…"
+msgid "{size} in total"
+msgstr "{size} au total"
+
+msgid "Executable file: open it only if you trust it."
+msgstr "Fichier exécutable : ne l’ouvrez que s’il est de confiance."
 
 msgid "Translating…"
 msgstr "Traduction en cours…"
@@ -6529,6 +6538,9 @@ msgstr "Modifier le dossier intelligent…"
 
 msgid "Delete Smart Folder…"
 msgstr "Supprimer le dossier intelligent…"
+
+msgid "Script"
+msgstr "Script"
 
 msgid ""
 "Uses a translation service under your own key. A message's text is sent only "
@@ -8154,6 +8166,9 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Save…"
+#~ msgstr "Enregistrer…"
 
 #~ msgid "More"
 #~ msgstr "Plus"

@@ -64,6 +64,19 @@ impl MessageWindow {
                 Vec::new()
             }));
         self.view.emit(MessageViewInput::SetCardAttachments(rows));
+        // The previews the cards still lack, made off the main thread.
+        let wanted: Vec<_> = self
+            .attachments
+            .iter()
+            .flat_map(|(key, files)| {
+                files.iter().enumerate().filter_map(move |(index, a)| {
+                    crate::ui::message_view::cached_card_preview(&a.data)
+                        .is_none()
+                        .then(|| (*key, index, a.name.clone(), a.data.clone()))
+                })
+            })
+            .collect();
+        crate::ui::message_view::request_card_previews(wanted, self.view.sender());
         self.fit_min_width();
     }
 }
@@ -106,6 +119,7 @@ fn merge_attachments(
                 .map(|a| crate::ui::message_view::CardAttachment {
                     name: a.name.clone(),
                     size: a.data.len() as u64,
+                    preview: crate::ui::message_view::cached_card_preview(&a.data),
                 })
                 .collect::<Vec<_>>();
             rows.insert(key, row);

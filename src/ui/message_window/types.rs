@@ -129,12 +129,12 @@ pub(crate) enum MessageWindowInput {
         items: Vec<Attachment>,
         start: usize,
     },
-    /// A card's attachment row: open or save that member's file at `index`.
+    /// A card's attachment: do `verb` to that member's file at `index`.
     CardAttachment {
         account_id: u32,
         id: u32,
         index: usize,
-        save: bool,
+        verb: crate::ui::message_view::AttVerb,
     },
     /// The drawer's Delete from Server.
     DeleteAttachment(Attachment),

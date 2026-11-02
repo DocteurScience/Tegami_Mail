@@ -4,7 +4,7 @@
 use super::html::attr_escape;
 use super::types::CardAttachment;
 use crate::encoding::escape_html;
-use crate::i18n::i18n;
+use crate::i18n::{i18n, i18n_f, ni18n_f};
 use crate::models::Message;
 use relm4::prelude::*;
 
@@ -57,35 +57,85 @@ pub(super) fn att_row_html(key: (u32, u32), atts: Option<&[CardAttachment]>) -> 
     )
 }
 
-/// The chips for one card's attachments (#213): the gallery's type icon in
-/// its color, the name, the size, and a save button. The chip opens the
-/// file; both post the message key and the attachment's index back.
+/// A card's attachments (#213), as the design's section under the body
+/// (docs/DESIGN.md, "Attachments"): a header with how many files there are,
+/// their total size and Save All, then a card per file with its type icon
+/// in its colour, its name, its type and size, and Save As and More actions
+/// buttons, both always shown. A file that may run code says so in words.
+/// The icon and the name open the file; every button posts the message key
+/// and the attachment's index back. Empty when there are none, so the row
+/// takes no room.
 pub(super) fn att_chips_html(key: (u32, u32), atts: &[CardAttachment]) -> String {
-    use crate::ui::thumbnails::{icon_color_class, icon_for};
-    let mut out = String::new();
+    use crate::ui::thumbnails::{icon_color_class, icon_for, is_executable, type_label};
+    if atts.is_empty() {
+        return String::new();
+    }
+    let (aid, id) = key;
+    let attr = |s: String| gtk::glib::markup_escape_text(&s).to_string();
+    let n = atts.len();
+    let total: u64 = atts.iter().map(|a| a.size).sum();
+    let mut out = format!(
+        "<div class=\"tegami-atth\"><div><div class=\"tegami-attcount\">{count}</div>\
+         <div class=\"tegami-atttotal\">{total}</div></div>\
+         <button type=\"button\" class=\"tegami-attall\" data-key=\"{aid}:{id}\" \
+         data-idx=\"0\">{dl}<span>{save_all}</span></button></div>\
+         <div class=\"tegami-attg\">",
+        count = escape_html(&ni18n_f(
+            "{n} attachment",
+            "{n} attachments",
+            n as u32,
+            &[("n", &n.to_string())]
+        )),
+        total = escape_html(&i18n_f(
+            "{size} in total",
+            &[("size", &crate::models::human_size(total))]
+        )),
+        dl = inline_icon_svg("folder-download-symbolic"),
+        save_all = escape_html(&i18n("Save All\u{2026}")),
+    );
     for (idx, a) in atts.iter().enumerate() {
-        let icon = icon_for(&a.name);
+        let warning = if is_executable(&a.name) {
+            format!(
+                "<div class=\"tegami-attwarn\">{}<span>{}</span></div>",
+                inline_icon_svg("dialog-warning-symbolic"),
+                escape_html(&i18n("Executable file: open it only if you trust it."))
+            )
+        } else {
+            String::new()
+        };
         out.push_str(&format!(
-            "<span class=\"tegami-attw\">\
+            "<div class=\"tegami-attcard\">\
              <button type=\"button\" class=\"tegami-attc {cls}\" data-key=\"{aid}:{id}\" \
-             data-idx=\"{idx}\" title=\"{open}\">{svg}\
+             data-idx=\"{idx}\" title=\"{open}\"><span class=\"tegami-attp\">{preview}</span>\
              <span class=\"tegami-attn\">{name}</span>\
-             <span class=\"tegami-attz\">{size}</span></button>\
+             <span class=\"tegami-attz\">{kind} \u{b7} {size}</span></button>{warning}\
+             <div class=\"tegami-attb\">\
              <button type=\"button\" class=\"tegami-attsave\" data-key=\"{aid}:{id}\" \
-             data-idx=\"{idx}\" title=\"{save}\">{dl}</button></span>",
+             data-idx=\"{idx}\" title=\"{save}\" aria-label=\"{save}\">{dl}</button>\
+             <button type=\"button\" class=\"tegami-attmore\" data-key=\"{aid}:{id}\" \
+             data-idx=\"{idx}\" title=\"{more}\" aria-label=\"{more}\">{dots}</button>\
+             </div></div>",
             cls = icon_color_class(&a.name),
-            aid = key.0,
-            id = key.1,
-            open = gtk::glib::markup_escape_text(&i18n("Open")),
-            svg = inline_icon_svg(icon),
+            open = attr(i18n("Open")),
+            // The picture or the PDF's first page once the app has made it,
+            // the type's icon until then (or for any other file). The URI is
+            // the app's own PNG, escaped as any attribute is.
+            preview = match &a.preview {
+                Some(uri) => format!("<img src=\"{}\" alt=\"\">", attr(uri.clone())),
+                None => inline_icon_svg(icon_for(&a.name)),
+            },
             // The name comes from the sender: text content, escaped like
             // every other header field.
             name = escape_html(&a.name),
+            kind = escape_html(&type_label(&a.name)),
             size = crate::models::human_size(a.size),
-            save = gtk::glib::markup_escape_text(&i18n("Save\u{2026}")),
+            save = attr(i18n("Save As\u{2026}")),
             dl = inline_icon_svg("folder-download-symbolic"),
+            more = attr(i18n("More actions")),
+            dots = inline_icon_svg("view-more-horizontal-symbolic"),
         ));
     }
+    out.push_str("</div>");
     out
 }
 

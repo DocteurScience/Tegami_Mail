@@ -2587,9 +2587,6 @@ msgstr ""
 msgid "The preview each message has in the list"
 msgstr ""
 
-msgid "Save All Attachments"
-msgstr ""
-
 msgid "Open"
 msgstr ""
 
@@ -2658,6 +2655,9 @@ msgid "Save every attachment to a folder"
 msgstr ""
 
 msgid "Save Attachment"
+msgstr ""
+
+msgid "Save All Attachments"
 msgstr ""
 
 msgid "The file could not be opened"
@@ -4522,6 +4522,12 @@ msgstr ""
 msgid "Translate"
 msgstr ""
 
+msgid "Open With…"
+msgstr ""
+
+msgid "Save As…"
+msgstr ""
+
 msgid "Encrypted messages are not sent for translation."
 msgstr ""
 
@@ -4620,7 +4626,10 @@ msgstr ""
 msgid "Start a new message from a copy of the template"
 msgstr ""
 
-msgid "Save…"
+msgid "{size} in total"
+msgstr ""
+
+msgid "Executable file: open it only if you trust it."
 msgstr ""
 
 msgid "Translating…"
@@ -6007,6 +6016,9 @@ msgid "Edit Smart Folder…"
 msgstr ""
 
 msgid "Delete Smart Folder…"
+msgstr ""
+
+msgid "Script"
 msgstr ""
 
 msgid ""

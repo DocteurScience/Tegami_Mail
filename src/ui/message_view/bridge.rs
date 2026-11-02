@@ -6,7 +6,7 @@
 //! parse is dropped. `extra` is everything after the third colon, so it may
 //! itself contain colons.
 
-use super::types::{InviteAction, MessageViewInput, SelectMode};
+use super::types::{AttVerb, InviteAction, MessageViewInput, SelectMode};
 use crate::ui::message_list::RowAction;
 
 /// What one page message asks for.
@@ -124,15 +124,34 @@ pub(super) fn parse_bridge(msg: &str) -> Option<Bridge> {
                 action,
             }
         }
-        // A card's attachment chip (#213); `extra` is the index.
-        "attopen" | "attsave" => MessageViewInput::AttachmentAction {
+        // A card's attachment (#213); `extra` is the index.
+        "attopen" | "attsave" | "attall" => MessageViewInput::AttachmentAction {
             account_id,
             id,
             index: extra
                 .and_then(|x| x.trim().parse::<usize>().ok())
                 .unwrap_or(0),
-            save: verb == "attsave",
+            verb: match verb {
+                "attsave" => AttVerb::Save,
+                "attall" => AttVerb::SaveAll,
+                _ => AttVerb::Open,
+            },
         },
+        // Its More actions button: the index, then the button's
+        // bottom-centre and the page width, in CSS pixels.
+        "attmenu" => {
+            let [index, x, y, vw] = numbers(extra)[..] else {
+                return None;
+            };
+            MessageViewInput::AttachmentMenuFrom {
+                account_id,
+                id,
+                index: index.max(0.0) as usize,
+                x,
+                y,
+                page_width: vw,
+            }
+        }
         "found" => {
             let (current, total) = extra
                 .and_then(|e| e.split_once(','))
@@ -319,12 +338,21 @@ mod tests {
             ),
             (
                 "attopen:1:2: 3",
-                "Some(Input(AttachmentAction { account_id: 1, id: 2, index: 3, save: false }))",
+                "Some(Input(AttachmentAction { account_id: 1, id: 2, index: 3, verb: Open }))",
             ),
             (
                 "attsave:1:2:x",
-                "Some(Input(AttachmentAction { account_id: 1, id: 2, index: 0, save: true }))",
+                "Some(Input(AttachmentAction { account_id: 1, id: 2, index: 0, verb: Save }))",
             ),
+            (
+                "attall:1:2:0",
+                "Some(Input(AttachmentAction { account_id: 1, id: 2, index: 0, verb: SaveAll }))",
+            ),
+            (
+                "attmenu:1:2:1,40.5,80,600",
+                "Some(Input(AttachmentMenuFrom { account_id: 1, id: 2, index: 1, x: 40.5, y: 80.0, page_width: 600.0 }))",
+            ),
+            ("attmenu:1:2:1,40", "None"),
             (
                 "found:1:2:3,9",
                 "Some(Input(FindCounted { current: 3, total: 9 }))",

@@ -82,27 +82,7 @@ impl AttachmentDrawer {
 
     /// Ask for a folder and write every attachment into it ("Save All").
     pub(super) fn save_all(&self) {
-        if self.items.is_empty() {
-            return;
-        }
-        let atts = self.items.clone();
-        let dialog = gtk::FileDialog::builder()
-            .title(i18n("Save All Attachments"))
-            .build();
-        dialog.select_folder(
-            self.window().as_ref(),
-            gtk::gio::Cancellable::NONE,
-            move |res| {
-                if let Ok(folder) = res {
-                    if let Some(dir) = folder.path() {
-                        for att in &atts {
-                            let safe = att.name.replace(['/', '\\'], "_");
-                            let _ = std::fs::write(dir.join(&safe), &att.data);
-                        }
-                    }
-                }
-            },
-        );
+        crate::ui::attachment_io::save_all_attachments(self.items.clone(), self.window().as_ref());
     }
 
     /// Right-click menu: Open / Download, Show in Message, and Delete from

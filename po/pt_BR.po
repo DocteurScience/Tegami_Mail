@@ -2806,9 +2806,6 @@ msgstr "Qualquer etiqueta"
 msgid "The preview each message has in the list"
 msgstr "A visualização de cada mensagem na lista"
 
-msgid "Save All Attachments"
-msgstr "Salvar todos os anexos"
-
 msgid "Open"
 msgstr "Abrir"
 
@@ -2880,6 +2877,9 @@ msgstr "Salvar todos os anexos em uma pasta"
 
 msgid "Save Attachment"
 msgstr "Salvar anexo"
+
+msgid "Save All Attachments"
+msgstr "Salvar todos os anexos"
 
 msgid "The file could not be opened"
 msgstr "Não foi possível abrir o arquivo"
@@ -4922,6 +4922,13 @@ msgstr "Copiar endereço da imagem"
 msgid "Translate"
 msgstr "Traduzir"
 
+msgid "Open With…"
+msgstr ""
+
+#, fuzzy
+msgid "Save As…"
+msgstr "Salvar tudo…"
+
 msgid "Encrypted messages are not sent for translation."
 msgstr "As mensagens criptografadas não são enviadas para tradução."
 
@@ -5028,8 +5035,12 @@ msgstr "Alterar o próprio modelo"
 msgid "Start a new message from a copy of the template"
 msgstr "Iniciar uma nova mensagem a partir de uma cópia do modelo"
 
-msgid "Save…"
-msgstr "Salvar…"
+#, fuzzy
+msgid "{size} in total"
+msgstr "{shown} de {total}"
+
+msgid "Executable file: open it only if you trust it."
+msgstr ""
 
 msgid "Translating…"
 msgstr "Traduzindo…"
@@ -6506,6 +6517,9 @@ msgstr "Editar pasta de pesquisa…"
 
 msgid "Delete Smart Folder…"
 msgstr "Excluir pasta de pesquisa…"
+
+msgid "Script"
+msgstr ""
 
 msgid ""
 "Uses a translation service under your own key. A message's text is sent only "
@@ -8113,6 +8127,9 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Save…"
+#~ msgstr "Salvar…"
 
 #~ msgid "More"
 #~ msgstr "Mais"

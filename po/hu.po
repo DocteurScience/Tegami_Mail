@@ -2917,9 +2917,6 @@ msgstr ""
 msgid "The preview each message has in the list"
 msgstr ""
 
-msgid "Save All Attachments"
-msgstr "Összes melléklet mentése"
-
 msgid "Open"
 msgstr "Megnyitás"
 
@@ -2992,6 +2989,9 @@ msgstr "Minden melléklet mentése egy mappába"
 
 msgid "Save Attachment"
 msgstr "Melléklet mentése"
+
+msgid "Save All Attachments"
+msgstr "Összes melléklet mentése"
 
 msgid "The file could not be opened"
 msgstr "A fájl nem megnyitható"
@@ -5103,6 +5103,13 @@ msgstr "Kép címének másolása"
 msgid "Translate"
 msgstr "Fordította"
 
+msgid "Open With…"
+msgstr ""
+
+#, fuzzy
+msgid "Save As…"
+msgstr "Összes mentése…"
+
 msgid "Encrypted messages are not sent for translation."
 msgstr ""
 
@@ -5216,8 +5223,12 @@ msgstr ""
 msgid "Start a new message from a copy of the template"
 msgstr "Kezdd az üzenetet úgy, hogy a képet beilleszted a szövegbe"
 
-msgid "Save…"
-msgstr "Mentés…"
+#, fuzzy
+msgid "{size} in total"
+msgstr "{shown} / {total}"
+
+msgid "Executable file: open it only if you trust it."
+msgstr ""
 
 #, fuzzy
 msgid "Translating…"
@@ -6753,6 +6764,9 @@ msgstr "Szűrő szerkesztése…"
 #, fuzzy
 msgid "Delete Smart Folder…"
 msgstr "Mappa törlése…"
+
+msgid "Script"
+msgstr ""
 
 msgid ""
 "Uses a translation service under your own key. A message's text is sent only "
@@ -8410,6 +8424,9 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Save…"
+#~ msgstr "Mentés…"
 
 #~ msgid "More"
 #~ msgstr "Továbbiak"

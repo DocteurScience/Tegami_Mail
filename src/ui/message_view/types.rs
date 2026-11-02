@@ -3,12 +3,31 @@
 use super::menu::MenuHit;
 use crate::models::Message;
 
-/// One attachment as a card lists it (#213): the name and size only. The
-/// bytes stay with the app, which opens or saves the file on request.
+/// One attachment as a card lists it (#213): the name and size, and once
+/// made, a small preview of a picture or a PDF. The bytes stay with the app,
+/// which opens or saves the file on request.
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub(crate) struct CardAttachment {
     pub(crate) name: String,
     pub(crate) size: u64,
+    /// A PNG `data:` URI the app made from the file (thumbnails.rs), never
+    /// anything the sender wrote.
+    pub(crate) preview: Option<String>,
+}
+
+/// What to do with a card's attachment (docs/DESIGN.md, "Menus",
+/// Attachment): its card opens it, its buttons save it, and its menu offers
+/// the rest.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub(crate) enum AttVerb {
+    /// In its default application, or the lightbox for a picture.
+    Open,
+    /// In an application the person picks.
+    OpenWith,
+    /// Save As…
+    Save,
+    /// Every attachment of the message, into one folder.
+    SaveAll,
 }
 
 #[derive(Debug)]
@@ -61,12 +80,30 @@ pub(crate) enum MessageViewInput {
         account_id: u32,
         id: u32,
     },
-    /// A card's attachment chip was clicked (open) or its save button (#213).
+    /// A card's attachment (#213): its icon or name was clicked (open), or
+    /// one of its buttons or its menu's entries.
     AttachmentAction {
         account_id: u32,
         id: u32,
         index: usize,
-        save: bool,
+        verb: AttVerb,
+    },
+    /// A card attachment's preview is ready: show it in place.
+    SetCardPreview {
+        key: (u32, u32),
+        index: usize,
+        uri: String,
+    },
+    /// A card's attachment's More actions button: its menu, under the
+    /// button, whose bottom-centre is (x, y) in CSS pixels of a page
+    /// `page_width` wide (see "senderinfo" in the bridge).
+    AttachmentMenuFrom {
+        account_id: u32,
+        id: u32,
+        index: usize,
+        x: f64,
+        y: f64,
+        page_width: f64,
     },
     Show {
         /// The conversation, newest first. A single message for a normal open;
@@ -475,13 +512,13 @@ pub(crate) enum MessageViewOutput {
     },
     /// A card's "Add sender to Contacts" button — add this message's sender.
     ContactSender(Box<Message>),
-    /// A card's attachment chip (#213): open the file at `index` of that
-    /// message's attachments, or save it.
+    /// A card's attachment (#213): do `verb` to the file at `index` of that
+    /// message's attachments.
     AttachmentAction {
         account_id: u32,
         id: u32,
         index: usize,
-        save: bool,
+        verb: AttVerb,
     },
     /// A right-click on a card: the app shows the message's full menu (the
     /// list row's) at window point (x, y), with `hit`'s entries first.

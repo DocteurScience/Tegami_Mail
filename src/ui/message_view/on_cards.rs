@@ -2,7 +2,7 @@
 //! focus, scroll places and live patches.
 
 use super::snippets::tag_chips_html;
-use super::types::{CardAttachment, MessageViewOutput, SelectMode};
+use super::types::{AttVerb, CardAttachment, MessageViewInput, MessageViewOutput, SelectMode};
 use super::MessageView;
 use adw::prelude::*;
 use relm4::prelude::*;
@@ -32,6 +32,19 @@ impl MessageView {
         self.patch_card_atts(&keys);
     }
 
+    /// A card attachment's preview, made after the card was shown: put it
+    /// on the card in place, the page left as it is.
+    pub(super) fn on_set_card_preview(&mut self, key: (u32, u32), index: usize, uri: String) {
+        let Some(att) = self.card_atts.get_mut(&key).and_then(|v| v.get_mut(index)) else {
+            return;
+        };
+        if att.preview.as_deref() == Some(uri.as_str()) {
+            return;
+        }
+        att.preview = Some(uri);
+        self.patch_card_atts(&[key]);
+    }
+
     pub(super) fn on_scroll_to_attachments(&mut self, account_id: u32, id: u32) {
         // The row when it has chips, else the card itself; centred,
         // with the row flashed so the eye lands on it.
@@ -52,15 +65,73 @@ impl MessageView {
         account_id: u32,
         id: u32,
         index: usize,
-        save: bool,
+        verb: AttVerb,
         sender: &ComponentSender<Self>,
     ) {
         let _ = sender.output(MessageViewOutput::AttachmentAction {
             account_id,
             id,
             index,
-            save,
+            verb,
         });
+    }
+
+    /// A card attachment's More actions menu (docs/DESIGN.md, "Menus"),
+    /// under its button: Open, Open With…, then Save As… and Save All….
+    #[allow(clippy::too_many_arguments)]
+    pub(super) fn on_attachment_menu_from(
+        &mut self,
+        account_id: u32,
+        id: u32,
+        index: usize,
+        x: f64,
+        y: f64,
+        page_width: f64,
+        sender: &ComponentSender<Self>,
+    ) {
+        use crate::i18n::i18n;
+        use crate::ui::context_menu::{show_context_menu, MenuEntry};
+        // CSS pixels → widget pixels (the page may be zoomed).
+        let ratio = self.webview.width() as f64 / page_width.max(1.0);
+        let entry = |label: String, icon: &str, verb: AttVerb| {
+            let s = sender.clone();
+            MenuEntry::new(label, move || {
+                s.input(MessageViewInput::AttachmentAction {
+                    account_id,
+                    id,
+                    index,
+                    verb,
+                })
+            })
+            .icon(icon.to_string())
+        };
+        show_context_menu(
+            self.webview.upcast_ref::<gtk::Widget>(),
+            x * ratio,
+            y * ratio,
+            vec![
+                vec![
+                    entry(i18n("Open"), "document-open-symbolic", AttVerb::Open),
+                    entry(
+                        i18n("Open With\u{2026}"),
+                        "view-more-horizontal-symbolic",
+                        AttVerb::OpenWith,
+                    ),
+                ],
+                vec![
+                    entry(
+                        i18n("Save As\u{2026}"),
+                        "folder-download-symbolic",
+                        AttVerb::Save,
+                    ),
+                    entry(
+                        i18n("Save All\u{2026}"),
+                        "folder-download-symbolic",
+                        AttVerb::SaveAll,
+                    ),
+                ],
+            ],
+        );
     }
 
     pub(super) fn on_suppress_auto_read(&mut self, account_id: u32, id: u32) {

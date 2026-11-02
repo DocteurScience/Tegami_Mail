@@ -2967,9 +2967,6 @@ msgstr ""
 msgid "The preview each message has in the list"
 msgstr ""
 
-msgid "Save All Attachments"
-msgstr "Zapisz wszystkie załączniki"
-
 msgid "Open"
 msgstr "Otwórz"
 
@@ -3043,6 +3040,9 @@ msgstr "Zapisz wszystkie załączniki w katalogu"
 
 msgid "Save Attachment"
 msgstr "Zapisz załącznik"
+
+msgid "Save All Attachments"
+msgstr "Zapisz wszystkie załączniki"
 
 msgid "The file could not be opened"
 msgstr "Nie udało się otworzyć pliku"
@@ -5177,6 +5177,13 @@ msgstr "Adres e-mail"
 msgid "Translate"
 msgstr "Tłumacze"
 
+msgid "Open With…"
+msgstr ""
+
+#, fuzzy
+msgid "Save As…"
+msgstr "Zapisz wszystkie…"
+
 msgid "Encrypted messages are not sent for translation."
 msgstr ""
 
@@ -5290,8 +5297,12 @@ msgstr ""
 msgid "Start a new message from a copy of the template"
 msgstr "Utwórz wiadomość z obrazem w treści"
 
-msgid "Save…"
-msgstr "Zapisz…"
+#, fuzzy
+msgid "{size} in total"
+msgstr "{shown} z {total}"
+
+msgid "Executable file: open it only if you trust it."
+msgstr ""
 
 #, fuzzy
 msgid "Translating…"
@@ -6824,6 +6835,9 @@ msgstr "Modyfikuj filtr…"
 #, fuzzy
 msgid "Delete Smart Folder…"
 msgstr "Usuń katalog…"
+
+msgid "Script"
+msgstr ""
 
 msgid ""
 "Uses a translation service under your own key. A message's text is sent only "
@@ -8480,6 +8494,9 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Save…"
+#~ msgstr "Zapisz…"
 
 #~ msgid "More"
 #~ msgstr "Więcej"

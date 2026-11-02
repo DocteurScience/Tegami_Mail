@@ -428,7 +428,7 @@ pub(crate) enum AppMsg {
         account_id: u32,
         id: u32,
         index: usize,
-        save: bool,
+        verb: crate::ui::message_view::AttVerb,
     },
     /// The drawer's "Show in Message": scroll the reader to the message this
     /// attachment came with (#213).

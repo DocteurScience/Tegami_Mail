@@ -168,6 +168,7 @@ impl AppModel {
                     .map(|a| CardAttachment {
                         name: a.name.clone(),
                         size: a.data.len() as u64,
+                        preview: crate::ui::message_view::cached_card_preview(&a.data),
                     })
                     .collect(),
                 None => self.sent_card_files(key).unwrap_or_default(),
@@ -178,6 +179,22 @@ impl AppModel {
         }
         self.message_view
             .emit(MessageViewInput::SetCardAttachments(map));
+        // The previews the cards still lack, made off the main thread.
+        let mut wanted = Vec::new();
+        for key in self.conversation_members() {
+            let Some(items) = self
+                .member_key(key)
+                .and_then(|k| self.attachment_cache.get(&k))
+            else {
+                continue;
+            };
+            for (index, a) in items.iter().enumerate() {
+                if crate::ui::message_view::cached_card_preview(&a.data).is_none() {
+                    wanted.push((key, index, a.name.clone(), a.data.clone()));
+                }
+            }
+        }
+        crate::ui::message_view::request_card_previews(wanted, self.message_view.sender());
     }
 
     /// Fill the drawer for a whole conversation: ask the disk cache for every
@@ -346,8 +363,9 @@ impl AppModel {
                 account_id,
                 id,
                 index,
-                save,
+                verb,
             } => {
+                use crate::ui::message_view::AttVerb;
                 let Some(items) = self
                     .member_key((account_id, id))
                     .and_then(|k| self.attachment_cache.get(&k))
@@ -359,9 +377,18 @@ impl AppModel {
                 let Some(att) = items.get(index).cloned() else {
                     return;
                 };
-                if save {
-                    // A card chip's save button (#213); a failed write is dropped.
-                    save_attachment_as(&att.name, att.data, Some(self.window.upcast_ref()), |_| {});
+                let parent: &gtk::Window = self.window.upcast_ref();
+                if verb == AttVerb::Save {
+                    // A card's Save As (#213); a failed write is dropped.
+                    save_attachment_as(&att.name, att.data, Some(parent), |_| {});
+                } else if verb == AttVerb::SaveAll {
+                    crate::ui::attachment_io::save_all_attachments(items, Some(parent));
+                } else if verb == AttVerb::OpenWith {
+                    crate::ui::attachment_io::open_bytes_choosing(
+                        &att.name,
+                        &att.data,
+                        Some(parent),
+                    );
                 } else if crate::ui::attachment_drawer::previewable(&att) {
                     // The lightbox pages through this message's previewable
                     // files, starting at the one clicked.

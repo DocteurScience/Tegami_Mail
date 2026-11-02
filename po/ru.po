@@ -2943,9 +2943,6 @@ msgstr ""
 msgid "The preview each message has in the list"
 msgstr ""
 
-msgid "Save All Attachments"
-msgstr "Сохранить все вложения"
-
 msgid "Open"
 msgstr "Открыть"
 
@@ -3020,6 +3017,9 @@ msgstr "Сохранить все вложения в папку"
 
 msgid "Save Attachment"
 msgstr "Сохранить вложение"
+
+msgid "Save All Attachments"
+msgstr "Сохранить все вложения"
 
 msgid "The file could not be opened"
 msgstr "Не удалось открыть файл"
@@ -5134,6 +5134,13 @@ msgstr "Копировать адрес изображения"
 msgid "Translate"
 msgstr "Перевести"
 
+msgid "Open With…"
+msgstr ""
+
+#, fuzzy
+msgid "Save As…"
+msgstr "Сохранить все…"
+
 msgid "Encrypted messages are not sent for translation."
 msgstr "Зашифрованные сообщения не отправляются на перевод."
 
@@ -5245,8 +5252,12 @@ msgstr "Изменить сам шаблон"
 msgid "Start a new message from a copy of the template"
 msgstr "Создать новое сообщение на основе копии шаблона"
 
-msgid "Save…"
-msgstr "Сохранить…"
+#, fuzzy
+msgid "{size} in total"
+msgstr "{shown} из {total}"
+
+msgid "Executable file: open it only if you trust it."
+msgstr ""
 
 msgid "Translating…"
 msgstr "Перевод…"
@@ -6751,6 +6762,9 @@ msgstr "Редактировать фильтр…"
 #, fuzzy
 msgid "Delete Smart Folder…"
 msgstr "Удалить папку…"
+
+msgid "Script"
+msgstr ""
 
 msgid ""
 "Uses a translation service under your own key. A message's text is sent only "
@@ -8399,6 +8413,9 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Save…"
+#~ msgstr "Сохранить…"
 
 #~ msgid "More"
 #~ msgstr "Ещё"

@@ -229,10 +229,12 @@ fn a_cards_attachment_row_lists_its_own_files() {
         CardAttachment {
             name: "report.pdf".into(),
             size: 2048,
+            preview: None,
         },
         CardAttachment {
             name: "<b>x</b>.png".into(),
             size: 10,
+            preview: None,
         },
     ];
     let row = att_row_html((1, 7), Some(&atts));

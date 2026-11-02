@@ -169,8 +169,10 @@ pub(crate) struct PrivacyFile {
     #[serde(default = "default_on")]
     pub(crate) card_attachments: bool,
     /// The attachment drawer beneath the reader, gathering every attachment
-    /// in the open conversation (#213).
-    #[serde(default = "default_on")]
+    /// in the open conversation (#213). Off by default: each message shows
+    /// its own files in a section under its body (docs/DESIGN.md,
+    /// "Attachments"), and the drawer would show them a second time.
+    #[serde(default)]
     pub(crate) attachment_drawer: bool,
     /// Whether deleting a whole selected conversation asks for confirmation
     /// first.
@@ -723,7 +725,7 @@ impl Default for PrivacyFile {
             reader_default: ReaderDefault::default(),
             reader_zoom: default_reader_zoom(),
             card_attachments: true,
-            attachment_drawer: true,
+            attachment_drawer: false,
             confirm_thread_delete: true,
             message_theme: MessageTheme::default(),
             override_fonts: false,

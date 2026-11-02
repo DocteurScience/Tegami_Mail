@@ -44,7 +44,11 @@ impl SentFile {
             .unwrap_or_else(|| "attachment".to_string());
         let size = std::fs::metadata(path).map_or(0, |m| m.len());
         SentFile {
-            card: CardAttachment { name, size },
+            card: CardAttachment {
+                name,
+                size,
+                preview: None,
+            },
             path: path.to_string(),
         }
     }

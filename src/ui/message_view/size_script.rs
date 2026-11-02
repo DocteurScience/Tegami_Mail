@@ -274,10 +274,13 @@ document.addEventListener('click',function(e){\
 if(e.target&&e.target.closest&&e.target.closest('.tegami-msg'))return;\
 try{window.webkit.messageHandlers.tegami.postMessage('desel:0:0');}catch(_){}});\
 document.addEventListener('click',function(e){\
-var t=e.target&&e.target.closest?e.target.closest('.tegami-attc,.tegami-attsave'):null;if(!t)return;\
+var t=e.target&&e.target.closest?e.target.closest('.tegami-attc,.tegami-attsave,.tegami-attall,.tegami-attmore'):null;if(!t)return;\
 e.stopPropagation();e.preventDefault();\
-var verb=t.classList.contains('tegami-attsave')?'attsave':'attopen';\
-try{window.webkit.messageHandlers.tegami.postMessage(verb+':'+t.dataset.key+':'+t.dataset.idx);}catch(_){}},true);\
+var c=t.classList,extra=t.dataset.idx;\
+var verb=c.contains('tegami-attsave')?'attsave':c.contains('tegami-attall')?'attall':c.contains('tegami-attmore')?'attmenu':'attopen';\
+if(verb==='attmenu'){var r=t.getBoundingClientRect();\
+extra+=','+(r.left+r.width/2)+','+r.bottom+','+window.innerWidth;}\
+try{window.webkit.messageHandlers.tegami.postMessage(verb+':'+t.dataset.key+':'+extra);}catch(_){}},true);\
 var ms=document.querySelectorAll('.tegami-msg');\
 for(var q=0;q<ms.length;q++){ms[q].addEventListener('click',function(e){\
 var k=this.dataset.key;if(k)pick(k,e);});}\

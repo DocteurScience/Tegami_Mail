@@ -6,6 +6,7 @@
 use gtk::prelude::*;
 use gtk::{gdk, glib};
 
+use crate::i18n::i18n;
 use crate::models::is_image_name;
 
 /// A `gdk::Texture` from raw image bytes, or `None` if the format isn't loadable.
@@ -310,6 +311,105 @@ pub(super) fn pdf_page_texture(data: &[u8], target_width: f64) -> Option<gdk::Te
     texture_from(&png)
 }
 
+/// The size of a card's preview, at twice the CSS pixels it fills (a
+/// 180px-wide card, 96px high) so it stays sharp on a HiDPI screen.
+const PREVIEW_W: f64 = 400.0;
+const PREVIEW_H: f64 = 240.0;
+
+/// Files larger than this get no card preview: decoding one would hold a
+/// worker and its memory for a picture shown at 200 pixels.
+const PREVIEW_MAX_BYTES: usize = 30 * 1024 * 1024;
+
+thread_local! {
+    /// Card previews by content hash, as `data:` URIs, or `None` for a file
+    /// that would not decode. A handful of kilobytes each; dropped whole
+    /// past `PREVIEW_CACHE_MAX` entries, the open messages asking again.
+    static PREVIEWS: std::cell::RefCell<std::collections::HashMap<u64, Option<String>>> =
+        std::cell::RefCell::new(std::collections::HashMap::new());
+}
+
+const PREVIEW_CACHE_MAX: usize = 200;
+
+/// Whether a file can have a card preview: a picture or a PDF, not too big.
+pub(super) fn has_card_preview(name: &str, data: &[u8]) -> bool {
+    (is_image_name(name) || is_pdf_name(name)) && data.len() <= PREVIEW_MAX_BYTES
+}
+
+/// The card preview already made for these bytes, if any.
+pub(super) fn cached_card_preview(data: &[u8]) -> Option<Option<String>> {
+    PREVIEWS.with(|c| c.borrow().get(&thumb_cache_key(data)).cloned())
+}
+
+/// A card's preview of an attachment (docs/DESIGN.md, "Attachments"): the
+/// picture, or a PDF's first page, scaled to cover the card's preview
+/// box, as a PNG `data:` URI the reader's page can show without loading
+/// anything. Made off the main thread, like the drawer's thumbnails, and
+/// handed to `on_done` back on it; `None` for a file that would not decode.
+pub(super) fn card_preview(
+    name: &str,
+    data: Vec<u8>,
+    on_done: impl FnOnce(Option<String>) + 'static,
+) {
+    if !has_card_preview(name, &data) {
+        on_done(None);
+        return;
+    }
+    if let Some(done) = cached_card_preview(&data) {
+        on_done(done);
+        return;
+    }
+    let key = thumb_cache_key(&data);
+    let image = is_image_name(name);
+    glib::spawn_future_local(async move {
+        let uri = gtk::gio::spawn_blocking(move || {
+            let png = if image {
+                scaled_png(&data)?
+            } else {
+                pdf_page_texture(&data, PREVIEW_W)?
+                    .save_to_png_bytes()
+                    .to_vec()
+            };
+            Some(format!(
+                "data:image/png;base64,{}",
+                base64::Engine::encode(&base64::engine::general_purpose::STANDARD, png)
+            ))
+        })
+        .await
+        .ok()
+        .flatten();
+        PREVIEWS.with(|c| {
+            let mut c = c.borrow_mut();
+            if c.len() >= PREVIEW_CACHE_MAX {
+                c.clear();
+            }
+            c.insert(key, uri.clone());
+        });
+        on_done(uri);
+    });
+}
+
+/// A picture decoded straight to the size that covers the preview box,
+/// never larger than it was, and written out as a PNG.
+fn scaled_png(data: &[u8]) -> Option<Vec<u8>> {
+    use gtk::gdk_pixbuf::PixbufLoader;
+    let loader = PixbufLoader::new();
+    loader.connect_size_prepared(|loader, w, h| {
+        if w <= 0 || h <= 0 {
+            return;
+        }
+        let scale = (PREVIEW_W / f64::from(w))
+            .max(PREVIEW_H / f64::from(h))
+            .min(1.0);
+        loader.set_size(
+            ((f64::from(w) * scale).round() as i32).max(1),
+            ((f64::from(h) * scale).round() as i32).max(1),
+        );
+    });
+    loader.write(data).ok()?;
+    loader.close().ok()?;
+    loader.pixbuf()?.save_to_bufferv("png", &[]).ok()
+}
+
 /// A symbolic icon name for a filename by extension.
 pub(super) fn icon_for(name: &str) -> &'static str {
     let lower = name.to_ascii_lowercase();
@@ -327,6 +427,71 @@ pub(super) fn icon_for(name: &str) -> &'static str {
         }
         "ics" => "x-office-calendar-symbolic",
         _ => "text-x-generic-symbolic",
+    }
+}
+
+/// A file name's extension, lower case, or "" when it has none ("README",
+/// ".bashrc").
+fn extension(name: &str) -> String {
+    match name.rsplit_once('.') {
+        Some((stem, ext)) if !stem.is_empty() => ext.to_ascii_lowercase(),
+        _ => String::new(),
+    }
+}
+
+/// Script files, which run when opened on some systems and are read as
+/// programs anywhere.
+const SCRIPTS: &[&str] = &[
+    "sh", "bash", "zsh", "csh", "ksh", "fish", "py", "pl", "rb", "js", "vbs", "vbe", "wsf", "ps1",
+    "psm1", "bat", "cmd", "command",
+];
+
+/// Programs and installers.
+const PROGRAMS: &[&str] = &[
+    "exe",
+    "msi",
+    "com",
+    "scr",
+    "pif",
+    "cpl",
+    "jar",
+    "app",
+    "dmg",
+    "pkg",
+    "deb",
+    "rpm",
+    "appimage",
+    "flatpakref",
+    "snap",
+    "run",
+    "bin",
+    "apk",
+    "desktop",
+    "reg",
+    "lnk",
+];
+
+/// Whether opening the file may run code: a script, a program or an
+/// installer. The reader then warns in words before it is opened
+/// (docs/DESIGN.md, "Attachments"). By extension, as the mail says nothing
+/// more trustworthy about it; a renamed file escapes this, so it is a
+/// warning and not a guard.
+pub(crate) fn is_executable(name: &str) -> bool {
+    let ext = extension(name);
+    SCRIPTS.contains(&ext.as_str()) || PROGRAMS.contains(&ext.as_str())
+}
+
+/// The kind of file, as a card names it under the file's name: "Script"
+/// for a script, the extension in capitals otherwise ("PDF", "PNG"), and
+/// "File" when there is none.
+pub(crate) fn type_label(name: &str) -> String {
+    let ext = extension(name);
+    if ext.is_empty() {
+        i18n("File")
+    } else if SCRIPTS.contains(&ext.as_str()) {
+        i18n("Script")
+    } else {
+        ext.to_ascii_uppercase()
     }
 }
 
@@ -349,6 +514,83 @@ pub(super) fn icon_color_class(name: &str) -> &'static str {
         }
         "ics" => "ftype-calendar",
         _ => "ftype-generic",
+    }
+}
+
+#[cfg(test)]
+mod preview_tests {
+    use super::scaled_png;
+    use gtk::gdk_pixbuf::{Colorspace, Pixbuf, PixbufLoader};
+    use gtk::prelude::*;
+
+    fn png(w: i32, h: i32) -> Vec<u8> {
+        let pb = Pixbuf::new(Colorspace::Rgb, false, 8, w, h).unwrap();
+        pb.fill(0x3584e4ff);
+        pb.save_to_bufferv("png", &[]).unwrap()
+    }
+
+    fn size(png: &[u8]) -> (i32, i32) {
+        let loader = PixbufLoader::new();
+        loader.write(png).unwrap();
+        loader.close().unwrap();
+        let pb = loader.pixbuf().unwrap();
+        (pb.width(), pb.height())
+    }
+
+    #[test]
+    fn a_large_picture_is_scaled_to_cover_the_preview_box() {
+        // 400x240 is the box: the wider side keeps the cover, 480x240.
+        assert_eq!(size(&scaled_png(&png(1000, 500)).unwrap()), (480, 240));
+        assert_eq!(size(&scaled_png(&png(500, 1000)).unwrap()), (400, 800));
+    }
+
+    #[test]
+    fn a_small_picture_is_never_enlarged() {
+        assert_eq!(size(&scaled_png(&png(120, 80)).unwrap()), (120, 80));
+    }
+
+    #[test]
+    fn bytes_that_are_no_picture_give_no_preview() {
+        assert!(scaled_png(b"not a picture").is_none());
+    }
+}
+
+#[cfg(test)]
+mod type_tests {
+    use super::{is_executable, type_label};
+
+    #[test]
+    fn scripts_programs_and_installers_are_executable() {
+        for name in [
+            "preparer-salle.sh",
+            "setup.EXE",
+            "app.AppImage",
+            "run.ps1",
+            "x.deb",
+        ] {
+            assert!(is_executable(name), "{name}");
+        }
+    }
+
+    #[test]
+    fn documents_and_names_without_an_extension_are_not() {
+        for name in [
+            "planning.pdf",
+            "photo.png",
+            "README",
+            ".bashrc",
+            "notes.txt",
+        ] {
+            assert!(!is_executable(name), "{name}");
+        }
+    }
+
+    #[test]
+    fn the_type_is_the_extension_in_capitals() {
+        assert_eq!(type_label("planning-jeudi.pdf"), "PDF");
+        assert_eq!(type_label("maquette.Png"), "PNG");
+        assert_eq!(type_label("preparer-salle.sh"), "Script");
+        assert_eq!(type_label("README"), "File");
     }
 }
 

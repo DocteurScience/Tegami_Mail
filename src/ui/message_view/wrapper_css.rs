@@ -106,7 +106,7 @@ pub(super) fn wrapper_css(
          .tegami-tags{{display:inline-flex;gap:4px;align-items:center;flex:0 0 auto;}}\
          .tegami-tags:empty{{display:none;}}\
          /* A card's own attachments (#213): chips beneath the body. */\
-         .tegami-atts{{display:flex;flex-wrap:wrap;gap:6px;padding:2px 14px 12px;}}\
+         .tegami-atts{{padding:4px 16px 16px;}}\
          .tegami-atts:empty{{display:none;}}\
          /* The Unsubscribe banner between a list message's header and\
          body: a line of text and one button. */\
@@ -153,34 +153,57 @@ pub(super) fn wrapper_css(
          again shows where it stands at a glance. */\
          .tegami-inv-btn.on{{border-color:{accent};color:{accent};\
          background:color-mix(in srgb, {accent} 16%, transparent);}}\
-         .tegami-attw{{display:inline-flex;align-items:stretch;max-width:100%;\
-         border:1px solid rgba(128,128,128,0.35);border-radius:8px;overflow:hidden;\
-         background:rgba(128,128,128,0.08);}}\
-         .tegami-attc{{display:inline-flex;align-items:center;gap:6px;padding:4px 8px;\
-         border:none;background:none;color:inherit;font:inherit;font-size:0.85em;\
-         cursor:pointer;min-width:0;max-width:320px;}}\
-         .tegami-attc:hover{{background:rgba(128,128,128,0.18);}}\
-         .tegami-attc svg{{width:16px;height:16px;flex:none;display:block;}}\
-         .tegami-attc svg,.tegami-attc svg *{{fill:currentColor;}}\
-         .tegami-attc.ftype-pdf svg{{color:#e01b24;}}\
-         .tegami-attc.ftype-doc svg{{color:#3584e4;}}\
-         .tegami-attc.ftype-sheet svg{{color:#2ec27e;}}\
-         .tegami-attc.ftype-slides svg{{color:#ff7800;}}\
-         .tegami-attc.ftype-archive svg{{color:#e5a50a;}}\
-         .tegami-attc.ftype-audio svg{{color:#9141ac;}}\
-         .tegami-attc.ftype-video svg{{color:#e6689e;}}\
-         .tegami-attc.ftype-calendar svg{{color:#009e8f;}}\
-         .tegami-attc.ftype-image svg{{color:#1c9bd8;}}\
-         .tegami-attc.ftype-generic svg{{color:#8c8c8c;}}\
-         .tegami-attn{{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;}}\
-         .tegami-attz{{opacity:0.55;white-space:nowrap;flex:none;}}\
-         .tegami-attsave{{display:inline-flex;align-items:center;padding:0 7px;border:none;\
-         border-inline-start:1px solid rgba(128,128,128,0.35);background:none;color:inherit;\
-         cursor:pointer;opacity:0.6;}}\
-         .tegami-attsave:hover{{opacity:1;background:rgba(128,128,128,0.18);}}\
-         .tegami-attsave svg{{width:14px;height:14px;display:block;}}\
-         .tegami-attsave svg,.tegami-attsave svg *{{fill:currentColor;}}\
-         .tegami-atts.flash .tegami-attw{{animation:tegami-att-flash 1.2s ease-out;}}\
+         /* A card's attachments as a section (docs/DESIGN.md,\
+         \"Attachments\"): a header with the count, the total and Save\
+         All, then a grid of cards. Secondary text at 70 %, which keeps\
+         4.5:1. Nothing waits for hover: every button is always shown. */\
+         .tegami-atth{{display:flex;align-items:center;gap:12px;margin:0 0 10px;}}\
+         .tegami-atth>div{{flex:1;min-width:0;}}\
+         .tegami-attcount{{font-weight:700;}}\
+         .tegami-atttotal{{font-size:0.85em;opacity:0.7;}}\
+         .tegami-attall,.tegami-attsave,.tegami-attmore{{display:inline-flex;align-items:center;\
+         gap:6px;border:none;background:none;color:inherit;font:inherit;cursor:pointer;\
+         border-radius:6px;}}\
+         .tegami-attall{{padding:6px 10px;}}\
+         .tegami-attsave,.tegami-attmore{{padding:6px;}}\
+         .tegami-attall:hover,.tegami-attsave:hover,.tegami-attmore:hover{{\
+         background:rgba(128,128,128,0.18);}}\
+         .tegami-attall svg,.tegami-attsave svg,.tegami-attmore svg{{width:16px;height:16px;\
+         display:block;}}\
+         .tegami-attall svg *,.tegami-attsave svg *,.tegami-attmore svg *{{fill:currentColor;}}\
+         .tegami-attg{{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));\
+         gap:12px;}}\
+         .tegami-attcard{{display:flex;flex-direction:column;min-width:0;overflow:hidden;\
+         border:1px solid rgba(128,128,128,0.35);border-radius:12px;}}\
+         .tegami-attc{{display:flex;flex-direction:column;align-items:stretch;gap:2px;\
+         padding:0 0 4px;border:none;background:none;color:inherit;font:inherit;\
+         text-align:start;cursor:pointer;min-width:0;}}\
+         .tegami-attp{{display:flex;align-items:center;justify-content:center;height:96px;\
+         margin:0 0 8px;background:rgba(128,128,128,0.12);}}\
+         .tegami-attc:hover .tegami-attp{{background:rgba(128,128,128,0.2);}}\
+         .tegami-attp svg{{width:32px;height:32px;display:block;}}\
+         .tegami-attp img{{width:100%;height:100%;object-fit:cover;display:block;}}\
+         .tegami-attp svg,.tegami-attp svg *{{fill:currentColor;}}\
+         .tegami-attc.ftype-pdf .tegami-attp{{color:#c01c28;}}\
+         .tegami-attc.ftype-doc .tegami-attp{{color:#1c71d8;}}\
+         .tegami-attc.ftype-sheet .tegami-attp{{color:#26a269;}}\
+         .tegami-attc.ftype-slides .tegami-attp{{color:#c64600;}}\
+         .tegami-attc.ftype-archive .tegami-attp{{color:#986a44;}}\
+         .tegami-attc.ftype-audio .tegami-attp{{color:#813d9c;}}\
+         .tegami-attc.ftype-video .tegami-attp{{color:#a51d2d;}}\
+         .tegami-attc.ftype-calendar .tegami-attp{{color:#00796b;}}\
+         .tegami-attc.ftype-image .tegami-attp{{color:#1a5fb4;}}\
+         .tegami-attc.ftype-generic .tegami-attp{{color:inherit;}}\
+         .tegami-attn{{font-weight:700;padding:0 12px;white-space:nowrap;overflow:hidden;\
+         text-overflow:ellipsis;}}\
+         .tegami-attz{{font-size:0.85em;opacity:0.7;padding:0 12px;white-space:nowrap;}}\
+         .tegami-attwarn{{display:flex;gap:6px;align-items:flex-start;margin:4px 12px 0;\
+         padding:6px 8px;border-radius:6px;font-size:0.85em;\
+         background:color-mix(in srgb,#e5a50a 18%,transparent);}}\
+         .tegami-attwarn svg{{width:14px;height:14px;flex:none;margin-top:2px;}}\
+         .tegami-attwarn svg *{{fill:currentColor;}}\
+         .tegami-attb{{display:flex;justify-content:flex-end;gap:2px;padding:2px 6px 6px;}}\
+         .tegami-atts.flash .tegami-attcard{{animation:tegami-att-flash 1.2s ease-out;}}\
          @keyframes tegami-att-flash{{0%,40%{{box-shadow:0 0 0 3px rgba(53,132,228,0.7);}}\
          100%{{box-shadow:0 0 0 3px rgba(53,132,228,0);}}}}\
          .tegami-tag{{font-size:0.72em;font-weight:700;line-height:1.4;padding:1px 7px;\

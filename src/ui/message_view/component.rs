@@ -517,8 +517,19 @@ impl Component for MessageView {
                 account_id,
                 id,
                 index,
-                save,
-            } => self.on_attachment_action(account_id, id, index, save, &sender),
+                verb,
+            } => self.on_attachment_action(account_id, id, index, verb, &sender),
+            MessageViewInput::SetCardPreview { key, index, uri } => {
+                self.on_set_card_preview(key, index, uri)
+            }
+            MessageViewInput::AttachmentMenuFrom {
+                account_id,
+                id,
+                index,
+                x,
+                y,
+                page_width,
+            } => self.on_attachment_menu_from(account_id, id, index, x, y, page_width, &sender),
             MessageViewInput::SetBannerShown(show) => {
                 self.show_banner = show;
             }

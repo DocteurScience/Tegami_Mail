@@ -2840,9 +2840,6 @@ msgstr "Οποιαδήποτε ετικέτα"
 msgid "The preview each message has in the list"
 msgstr "Η προεπισκόπηση κάθε μηνύματος στη λίστα"
 
-msgid "Save All Attachments"
-msgstr "Αποθήκευση όλων των συνημμένων"
-
 msgid "Open"
 msgstr "Άνοιγμα"
 
@@ -2915,6 +2912,9 @@ msgstr "Αποθήκευση κάθε συνημμένου σε φάκελο"
 
 msgid "Save Attachment"
 msgstr "Αποθήκευση συνημμένου"
+
+msgid "Save All Attachments"
+msgstr "Αποθήκευση όλων των συνημμένων"
 
 msgid "The file could not be opened"
 msgstr "Δεν ήταν δυνατό το άνοιγμα του αρχείου"
@@ -4986,6 +4986,13 @@ msgstr "Αντιγραφή διεύθυνσης εικόνας"
 msgid "Translate"
 msgstr "Μετάφραση"
 
+msgid "Open With…"
+msgstr ""
+
+#, fuzzy
+msgid "Save As…"
+msgstr "Αποθήκευση όλων…"
+
 msgid "Encrypted messages are not sent for translation."
 msgstr "Τα κρυπτογραφημένα μηνύματα δεν αποστέλλονται για μετάφραση."
 
@@ -5092,8 +5099,12 @@ msgstr "Αλλαγή του ίδιου του προτύπου"
 msgid "Start a new message from a copy of the template"
 msgstr "Έναρξη νέου μηνύματος από αντίγραφο του προτύπου"
 
-msgid "Save…"
-msgstr "Αποθήκευση…"
+#, fuzzy
+msgid "{size} in total"
+msgstr "{shown} από {total}"
+
+msgid "Executable file: open it only if you trust it."
+msgstr ""
 
 msgid "Translating…"
 msgstr "Μετάφραση…"
@@ -6585,6 +6596,9 @@ msgstr "Επεξεργασία έξυπνου φακέλου…"
 
 msgid "Delete Smart Folder…"
 msgstr "Διαγραφή έξυπνου φακέλου…"
+
+msgid "Script"
+msgstr ""
 
 msgid ""
 "Uses a translation service under your own key. A message's text is sent only "
@@ -8230,6 +8244,9 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Save…"
+#~ msgstr "Αποθήκευση…"
 
 #~ msgid "More"
 #~ msgstr "Περισσότερα"

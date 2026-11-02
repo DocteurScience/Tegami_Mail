@@ -52,8 +52,8 @@ pub(crate) use menu::{hit_menu_entries, strip_navigation_items};
 pub(crate) use page_fade::{on_next_page_fade, PAGE_FADE_MS};
 pub(crate) use remote::remote_urls;
 pub(crate) use types::{
-    CardAttachment, InviteAction, MessageViewInput, MessageViewOutput, SelectMode, TrState,
-    UnsubState,
+    AttVerb, CardAttachment, InviteAction, MessageViewInput, MessageViewOutput, SelectMode,
+    TrState, UnsubState,
 };
 pub(crate) use webview::{keep_tab_out_of_key_translator, new_preview_webview, shared_web_context};
 
@@ -323,5 +323,33 @@ impl Drop for MessageView {
     /// drops at exit): see [`crate::desktop::memory_report::release_web_view`].
     fn drop(&mut self) {
         crate::desktop::memory_report::release_web_view(&self.webview);
+    }
+}
+
+/// The card preview already made for these bytes, for a card being built
+/// (see `request_card_previews`).
+pub(crate) fn cached_card_preview(data: &[u8]) -> Option<String> {
+    crate::ui::thumbnails::cached_card_preview(data).flatten()
+}
+
+/// Make the previews the cards of `view` still lack (docs/DESIGN.md,
+/// "Attachments"): each item is a card's key, the attachment's index on it,
+/// its name and its bytes. Pictures and PDFs only; each preview is handed to
+/// the view as it is ready, the others never are. Already made, it is sent
+/// at once.
+pub(crate) fn request_card_previews(
+    items: Vec<((u32, u32), usize, String, Vec<u8>)>,
+    view: &relm4::Sender<MessageViewInput>,
+) {
+    for (key, index, name, data) in items {
+        if !crate::ui::thumbnails::has_card_preview(&name, &data) {
+            continue;
+        }
+        let view = view.clone();
+        crate::ui::thumbnails::card_preview(&name, data, move |uri| {
+            if let Some(uri) = uri {
+                view.emit(MessageViewInput::SetCardPreview { key, index, uri });
+            }
+        });
     }
 }

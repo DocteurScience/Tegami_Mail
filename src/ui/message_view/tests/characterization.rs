@@ -181,6 +181,7 @@ fn golden_three_cards_with_side_channels() {
             vec![CardAttachment {
                 name: "report <q3>.pdf".into(),
                 size: 123_456,
+                preview: None,
             }],
         );
     });
@@ -326,12 +327,33 @@ fn tag_and_attachment_chips_are_stable() {
     let atts = [CardAttachment {
         name: "a<b>.zip".into(),
         size: 2048,
+        preview: None,
     }];
     // The icons are empty here: the resource bundle is not registered in tests.
     assert_eq!(
         att_chips_html((3, 4), &atts),
-        "<span class=\"tegami-attw\"><button type=\"button\" class=\"tegami-attc ftype-archive\" data-key=\"3:4\" data-idx=\"0\" title=\"Open\"><span class=\"tegami-attn\">a&lt;b&gt;.zip</span><span class=\"tegami-attz\">2.0\u{a0}kB</span></button><button type=\"button\" class=\"tegami-attsave\" data-key=\"3:4\" data-idx=\"0\" title=\"Save…\"></button></span>"
+        "<div class=\"tegami-atth\"><div><div class=\"tegami-attcount\">1 attachment</div><div class=\"tegami-atttotal\">2.0\u{a0}kB in total</div></div><button type=\"button\" class=\"tegami-attall\" data-key=\"3:4\" data-idx=\"0\"><span>Save All…</span></button></div><div class=\"tegami-attg\"><div class=\"tegami-attcard\"><button type=\"button\" class=\"tegami-attc ftype-archive\" data-key=\"3:4\" data-idx=\"0\" title=\"Open\"><span class=\"tegami-attp\"></span><span class=\"tegami-attn\">a&lt;b&gt;.zip</span><span class=\"tegami-attz\">ZIP · 2.0\u{a0}kB</span></button><div class=\"tegami-attb\"><button type=\"button\" class=\"tegami-attsave\" data-key=\"3:4\" data-idx=\"0\" title=\"Save As…\" aria-label=\"Save As…\"></button><button type=\"button\" class=\"tegami-attmore\" data-key=\"3:4\" data-idx=\"0\" title=\"More actions\" aria-label=\"More actions\"></button></div></div></div>"
     );
+    // A file that may run code says so in words; others do not.
+    let script = [CardAttachment {
+        name: "setup.sh".into(),
+        size: 10,
+        preview: None,
+    }];
+    assert!(
+        att_chips_html((3, 4), &script).contains("Executable file: open it only if you trust it.")
+    );
+    assert!(!att_chips_html((3, 4), &atts).contains("tegami-attwarn"));
+    // A preview is the app's own URI, but it is still escaped as an
+    // attribute: nothing in it can close the tag.
+    let shown = [CardAttachment {
+        name: "p.png".into(),
+        size: 10,
+        preview: Some("data:image/png;base64,AA\"><x>".into()),
+    }];
+    assert!(att_chips_html((3, 4), &shown)
+        .contains("<img src=\"data:image/png;base64,AA&quot;&gt;&lt;x&gt;\" alt=\"\">"));
+    assert_eq!(att_chips_html((3, 4), &[]), "");
     assert_eq!(
         att_row_html((3, 4), None),
         "<div class=\"tegami-atts\" data-key=\"3:4\"></div>"
