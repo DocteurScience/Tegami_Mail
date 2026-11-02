@@ -1515,6 +1515,9 @@ msgstr "No s'ha pogut obrir {file}: {e}"
 msgid "No message with the ID {id} was found"
 msgstr "No s'ha trobat cap missatge amb l'ID {id}"
 
+msgid "Mail"
+msgstr "Correu"
+
 msgid "Main Menu"
 msgstr "Menú principal"
 
@@ -2170,9 +2173,6 @@ msgstr "Aquest missatge és massa llarg per enviar-lo a traduir."
 
 msgid "This is too long to send for translation."
 msgstr "Això és massa llarg per enviar-ho a traduir."
-
-msgid "Mail"
-msgstr "Correu"
 
 msgid "Use this account in Tegami Mail"
 msgstr "Utilitza aquest compte a l'Tegami Mail"

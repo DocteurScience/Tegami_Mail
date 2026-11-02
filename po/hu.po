@@ -1595,6 +1595,9 @@ msgstr "A mappa nem helyezhető át: {e}"
 msgid "No message with the ID {id} was found"
 msgstr "Nem található üzenet ezzel az azonosítóval: {id}"
 
+msgid "Mail"
+msgstr ""
+
 msgid "Main Menu"
 msgstr "Főmenü"
 
@@ -2253,9 +2256,6 @@ msgstr "Ez az üzenet nem tartalmaz megnyitható naptárfájlt."
 #, fuzzy
 msgid "This is too long to send for translation."
 msgstr "Ez az üzenet nem tartalmaz megnyitható naptárfájlt."
-
-msgid "Mail"
-msgstr ""
 
 msgid "Use this account in Tegami Mail"
 msgstr "Fiók használata a Tegami Mail-ben"

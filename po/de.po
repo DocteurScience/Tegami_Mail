@@ -1514,6 +1514,9 @@ msgstr "Datei {file} konnte nicht geöffnet werden: {e}"
 msgid "No message with the ID {id} was found"
 msgstr "Keine Nachricht mit der ID {id} wurde gefunden"
 
+msgid "Mail"
+msgstr "E-Mail"
+
 msgid "Main Menu"
 msgstr "Hauptmenü"
 
@@ -2174,9 +2177,6 @@ msgstr "Diese Nachricht überschreitet die maximale Länge für Übersetzungen."
 
 msgid "This is too long to send for translation."
 msgstr "Zu lang für die Übersetzung"
-
-msgid "Mail"
-msgstr "E-Mail"
 
 msgid "Use this account in Tegami Mail"
 msgstr "Verwende dieses Konto in Tegami Mail"

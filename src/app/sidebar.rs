@@ -29,9 +29,10 @@ pub(super) fn set_sidebar_header_compact(
     // The menu is always in exactly one of three spots — packed end
     // (expanded), the title slot (rail), or packed start (peek) — and
     // HeaderBar::remove detaches it from any of them, so transitions are
-    // free to start from whichever state is current. Refresh is either packed
-    // start (expanded / peek) or unparented (rail, which stacks its own
-    // refresh under the menu instead) — only remove it while it is a child.
+    // free to start from whichever state is current. Refresh is never in this
+    // header: the design leaves its start empty (docs/DESIGN.md, "Header
+    // bars"), Sync now is in the main menu, and the rail stacks its own
+    // refresh under the menu. Removed only while it is a child.
     header.remove(menu);
     if refresh.parent().is_some() {
         header.remove(refresh);
@@ -48,7 +49,6 @@ pub(super) fn set_sidebar_header_compact(
         header.remove_css_class("rail-header");
         header.set_title_widget(Some(title));
         header.pack_end(menu);
-        header.pack_start(refresh);
     }
     title.set_visible(!compact);
 }

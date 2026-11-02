@@ -225,7 +225,7 @@ impl SimpleComponent for AppModel {
                             set_show_end_title_buttons: false,
                             #[wrap(Some)]
                             set_title_widget = &gtk::Label {
-                                set_label: crate::APP_NAME,
+                                set_label: &i18n("Mail"),
                                 add_css_class: "app-title",
                             },
                             pack_start = &gtk::Button {
@@ -273,10 +273,12 @@ impl SimpleComponent for AppModel {
                             #[wrap(Some)]
                             #[name = "app_title"]
                             set_title_widget = &gtk::Label {
-                                set_label: crate::APP_NAME,
+                                // The pane's name, as the design's header bars
+                                // have it (docs/DESIGN.md, "Header bars"); the
+                                // window title keeps the app's name.
+                                set_label: &i18n("Mail"),
                                 add_css_class: "app-title",
                             },
-                            pack_start: &model.sidebar_refresh,
                             #[name = "sidebar_menu"]
                             pack_end = &gtk::MenuButton {
                                 set_icon_name: "tegami-open-menu-symbolic",

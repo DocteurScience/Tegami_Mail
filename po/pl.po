@@ -1625,6 +1625,9 @@ msgstr "Nie udało się przenieść katalogu: {e}"
 msgid "No message with the ID {id} was found"
 msgstr "Nie odnaleziono wiadomości o identyfikatorze {id}"
 
+msgid "Mail"
+msgstr ""
+
 msgid "Main Menu"
 msgstr "Menu główne"
 
@@ -2296,9 +2299,6 @@ msgstr "Ta wiadomość nie zawiera pliku kalendarza do otwarcia."
 #, fuzzy
 msgid "This is too long to send for translation."
 msgstr "Ta wiadomość nie zawiera pliku kalendarza do otwarcia."
-
-msgid "Mail"
-msgstr ""
 
 msgid "Use this account in Tegami Mail"
 msgstr "Używaj tego konta w aplikacji Tegami Mail"

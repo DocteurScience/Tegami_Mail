@@ -1404,6 +1404,9 @@ msgstr ""
 msgid "No message with the ID {id} was found"
 msgstr ""
 
+msgid "Mail"
+msgstr ""
+
 msgid "Main Menu"
 msgstr ""
 
@@ -1996,9 +1999,6 @@ msgid "This message is too long to send for translation."
 msgstr ""
 
 msgid "This is too long to send for translation."
-msgstr ""
-
-msgid "Mail"
 msgstr ""
 
 msgid "Use this account in Tegami Mail"

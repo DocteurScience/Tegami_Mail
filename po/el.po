@@ -1535,6 +1535,9 @@ msgstr "Δεν ήταν δυνατό το άνοιγμα του {file}: {e}"
 msgid "No message with the ID {id} was found"
 msgstr "Δεν βρέθηκε μήνυμα με αναγνωριστικό {id}"
 
+msgid "Mail"
+msgstr "Αλληλογραφία"
+
 msgid "Main Menu"
 msgstr "Κύριο μενού"
 
@@ -2199,9 +2202,6 @@ msgstr "Αυτό το μήνυμα είναι πολύ μεγάλο για απ�
 
 msgid "This is too long to send for translation."
 msgstr "Αυτό είναι πολύ μεγάλο για αποστολή προς μετάφραση."
-
-msgid "Mail"
-msgstr "Αλληλογραφία"
 
 msgid "Use this account in Tegami Mail"
 msgstr "Χρήση αυτού του λογαριασμού στο Tegami Mail"

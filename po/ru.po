@@ -1624,6 +1624,9 @@ msgstr "Не удалось переместить папку: {e}"
 msgid "No message with the ID {id} was found"
 msgstr "Ни одного сообщения с ID {id} не найдено"
 
+msgid "Mail"
+msgstr ""
+
 msgid "Main Menu"
 msgstr "Главное меню"
 
@@ -2278,9 +2281,6 @@ msgstr "Это сообщение слишком длинное для отпр�
 
 msgid "This is too long to send for translation."
 msgstr "Этот текст слишком длинный для отправки на перевод."
-
-msgid "Mail"
-msgstr ""
 
 msgid "Use this account in Tegami Mail"
 msgstr "Использовать эту учётную запись в Tegami Mail"
