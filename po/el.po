@@ -100,30 +100,21 @@ msgstr ""
 msgid "Delete"
 msgstr "Διαγραφή"
 
+msgid "Sync Now"
+msgstr ""
+
+msgid "Add Account…"
+msgstr "Προσθήκη λογαριασμού…"
+
+#, fuzzy
+msgid "GNOME Online Accounts…"
+msgstr "Διαδικτυακοί λογαριασμοί GNOME"
+
 msgid "Settings"
 msgstr "Ρυθμίσεις"
 
 msgid "Show Accounts"
 msgstr "Εμφάνιση λογαριασμών"
-
-msgid "Right"
-msgstr "Δεξιά"
-
-msgid "Below"
-msgstr ""
-
-msgid "Off"
-msgstr "Ανενεργό"
-
-#, fuzzy
-msgid "Reading Pane"
-msgstr "Ανάγνωση"
-
-msgid "Focus Mode"
-msgstr "Λειτουργία συγκέντρωσης"
-
-msgid "Fullscreen"
-msgstr ""
 
 msgid "Print Preview…"
 msgstr "Προεπισκόπηση εκτύπωσης…"
@@ -1170,6 +1161,9 @@ msgstr "Εμφάνιση γραμμής κατάστασης"
 msgid "Console"
 msgstr "Κονσόλα"
 
+msgid "Help"
+msgstr ""
+
 msgid "New Message Instead"
 msgstr "Νέο μήνυμα αντί αυτού"
 
@@ -2202,6 +2196,9 @@ msgstr ""
 "Εισαγάγετε τη διεύθυνση του διακομιστή LibreTranslate στις Ρυθμίσεις → "
 "Μετάφραση."
 
+msgid "Off"
+msgstr "Ανενεργό"
+
 msgid "Choose a translation service in Settings → Translation first."
 msgstr "Επιλέξτε πρώτα μια υπηρεσία μετάφρασης στις Ρυθμίσεις → Μετάφραση."
 
@@ -2605,9 +2602,6 @@ msgstr "Σύρετε για να ορίσετε τη σειρά εμφάνισή
 
 msgid "Check GNOME Online Accounts for new accounts"
 msgstr "Έλεγχος για νέους λογαριασμούς στους Διαδικτυακούς Λογαριασμούς GNOME"
-
-msgid "Add Account…"
-msgstr "Προσθήκη λογαριασμού…"
 
 msgid ""
 "Store mail in folders that live on this computer. Move or copy mail from any "
@@ -5788,6 +5782,9 @@ msgstr "Ο τελευταίος φάκελος"
 msgid "Left"
 msgstr "Αριστερά"
 
+msgid "Right"
+msgstr "Δεξιά"
+
 msgid "1 line"
 msgstr "1 γραμμή"
 
@@ -7751,6 +7748,9 @@ msgstr ""
 msgid "Always fold the right group into ⋯"
 msgstr ""
 
+msgid "Focus Mode"
+msgstr "Λειτουργία συγκέντρωσης"
+
 msgid ""
 "The parts switched on below hide while Focus Mode is on. Activated by "
 "Ctrl+Shift+F or the main menu."
@@ -8367,6 +8367,10 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#, fuzzy
+#~ msgid "Reading Pane"
+#~ msgstr "Ανάγνωση"
 
 #~ msgid "Attach"
 #~ msgstr "Επισύναψη"

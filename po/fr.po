@@ -99,30 +99,20 @@ msgstr ""
 msgid "Delete"
 msgstr "Supprimer"
 
+msgid "Sync Now"
+msgstr "Synchroniser maintenant"
+
+msgid "Add Account…"
+msgstr "Ajouter un compte…"
+
+msgid "GNOME Online Accounts…"
+msgstr "Comptes en ligne GNOME…"
+
 msgid "Settings"
 msgstr "Paramètres"
 
 msgid "Show Accounts"
 msgstr "Afficher les comptes"
-
-msgid "Right"
-msgstr "Droite"
-
-msgid "Below"
-msgstr ""
-
-msgid "Off"
-msgstr "Désactivé"
-
-#, fuzzy
-msgid "Reading Pane"
-msgstr "Lecture"
-
-msgid "Focus Mode"
-msgstr "Mode Focus"
-
-msgid "Fullscreen"
-msgstr "Plein écran"
 
 msgid "Print Preview…"
 msgstr "Aperçu avant impression…"
@@ -1163,6 +1153,9 @@ msgstr "Afficher la barre d’état"
 msgid "Console"
 msgstr "Console"
 
+msgid "Help"
+msgstr "Aide"
+
 msgid "New Message Instead"
 msgstr "Nouveau message à la place"
 
@@ -2185,6 +2178,9 @@ msgid "Enter the LibreTranslate server's address in Settings → Translation."
 msgstr ""
 "Saisissez l’adresse du serveur LibreTranslate dans Paramètres → Traduction."
 
+msgid "Off"
+msgstr "Désactivé"
+
 msgid "Choose a translation service in Settings → Translation first."
 msgstr ""
 "Choisissez d’abord un service de traduction dans Paramètres → Traduction."
@@ -2581,9 +2577,6 @@ msgstr "Faites glisser pour les réorganiser dans la barre latérale."
 
 msgid "Check GNOME Online Accounts for new accounts"
 msgstr "Rechercher de nouveaux comptes dans les Comptes en ligne de GNOME"
-
-msgid "Add Account…"
-msgstr "Ajouter un compte…"
 
 msgid ""
 "Store mail in folders that live on this computer. Move or copy mail from any "
@@ -5736,6 +5729,9 @@ msgstr "Le dernier dossier"
 msgid "Left"
 msgstr "Gauche"
 
+msgid "Right"
+msgstr "Droite"
+
 msgid "1 line"
 msgstr "1 ligne"
 
@@ -7659,6 +7655,9 @@ msgstr ""
 msgid "Always fold the right group into ⋯"
 msgstr ""
 
+msgid "Focus Mode"
+msgstr "Mode Focus"
+
 msgid ""
 "The parts switched on below hide while Focus Mode is on. Activated by "
 "Ctrl+Shift+F or the main menu."
@@ -8273,6 +8272,13 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#, fuzzy
+#~ msgid "Reading Pane"
+#~ msgstr "Lecture"
+
+#~ msgid "Fullscreen"
+#~ msgstr "Plein écran"
 
 #~ msgid "Attach"
 #~ msgstr "Joindre"
@@ -10096,9 +10102,6 @@ msgstr "Hyprlab"
 #~ msgstr ""
 #~ "Où classer les e-mails correspondants ; ou les laisser dans la boîte de "
 #~ "réception et se contenter de les marquer"
-
-#~ msgid "Send Now"
-#~ msgstr "Envoyer maintenant"
 
 #~ msgid "Send All"
 #~ msgstr "Tout envoyer"

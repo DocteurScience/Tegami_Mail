@@ -100,30 +100,21 @@ msgstr ""
 msgid "Delete"
 msgstr "Löschen"
 
+msgid "Sync Now"
+msgstr ""
+
+msgid "Add Account…"
+msgstr "Konto hinzufügen…"
+
+#, fuzzy
+msgid "GNOME Online Accounts…"
+msgstr "GNOME Online Accounts"
+
 msgid "Settings"
 msgstr "Einstellungen"
 
 msgid "Show Accounts"
 msgstr "Konten anzeigen"
-
-msgid "Right"
-msgstr "Rechts"
-
-msgid "Below"
-msgstr ""
-
-msgid "Off"
-msgstr "Aus"
-
-#, fuzzy
-msgid "Reading Pane"
-msgstr "Lesen"
-
-msgid "Focus Mode"
-msgstr "Fokusmodus"
-
-msgid "Fullscreen"
-msgstr "Vollbild"
 
 msgid "Print Preview…"
 msgstr "Druckvorschau…"
@@ -1154,6 +1145,9 @@ msgstr "Statusleiste anzeigen"
 msgid "Console"
 msgstr "Konsole"
 
+msgid "Help"
+msgstr ""
+
 msgid "New Message Instead"
 msgstr "Stattdessen neue Nachricht verfassen"
 
@@ -2178,6 +2172,9 @@ msgstr ""
 "Adresse des LibreTranslate-Servers unter „Einstellungen“ → „Übersetzung“ "
 "eintragen"
 
+msgid "Off"
+msgstr "Aus"
+
 msgid "Choose a translation service in Settings → Translation first."
 msgstr ""
 "Bitte zuerst unter Einstellungen → Übersetzung einen Übersetzungsdienst "
@@ -2570,9 +2567,6 @@ msgstr "Ziehen, um die Reihenfolge in der Seitenleiste festzulegen."
 
 msgid "Check GNOME Online Accounts for new accounts"
 msgstr "GNOME Online Accounts auf neue Konten prüfen"
-
-msgid "Add Account…"
-msgstr "Konto hinzufügen…"
 
 msgid ""
 "Store mail in folders that live on this computer. Move or copy mail from any "
@@ -5733,6 +5727,9 @@ msgstr "Zuletzt verwendeter Ordner"
 msgid "Left"
 msgstr "Links"
 
+msgid "Right"
+msgstr "Rechts"
+
 msgid "1 line"
 msgstr "1 Zeile"
 
@@ -7690,6 +7687,9 @@ msgstr ""
 msgid "Always fold the right group into ⋯"
 msgstr "Die rechte Gruppe immer zu ⋯ einklappen"
 
+msgid "Focus Mode"
+msgstr "Fokusmodus"
+
 msgid ""
 "The parts switched on below hide while Focus Mode is on. Activated by "
 "Ctrl+Shift+F or the main menu."
@@ -8322,6 +8322,13 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#, fuzzy
+#~ msgid "Reading Pane"
+#~ msgstr "Lesen"
+
+#~ msgid "Fullscreen"
+#~ msgstr "Vollbild"
 
 #~ msgid "Attach"
 #~ msgstr "Anhängen"

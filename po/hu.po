@@ -99,30 +99,22 @@ msgstr ""
 msgid "Delete"
 msgstr "Törlés"
 
+#, fuzzy
+msgid "Sync Now"
+msgstr "Küldés most"
+
+msgid "Add Account…"
+msgstr "Fiók hozzáadása…"
+
+#, fuzzy
+msgid "GNOME Online Accounts…"
+msgstr "GNOME Internetes Fiókok"
+
 msgid "Settings"
 msgstr "Beállítások"
 
 msgid "Show Accounts"
 msgstr "Fiókok megjelenítése"
-
-msgid "Right"
-msgstr "Jobbra"
-
-msgid "Below"
-msgstr ""
-
-msgid "Off"
-msgstr "Ki"
-
-#, fuzzy
-msgid "Reading Pane"
-msgstr "Olvasás"
-
-msgid "Focus Mode"
-msgstr "Fókusz mód"
-
-msgid "Fullscreen"
-msgstr ""
 
 msgid "Print Preview…"
 msgstr "Nyomtatási előnézet…"
@@ -1228,6 +1220,9 @@ msgstr "Állapotsáv megjelenítése"
 msgid "Console"
 msgstr "Konzol"
 
+msgid "Help"
+msgstr ""
+
 msgid "New Message Instead"
 msgstr "Inkább új üzenet"
 
@@ -2255,6 +2250,9 @@ msgstr ""
 msgid "Enter the LibreTranslate server's address in Settings → Translation."
 msgstr ""
 
+msgid "Off"
+msgstr "Ki"
+
 msgid "Choose a translation service in Settings → Translation first."
 msgstr ""
 
@@ -2661,9 +2659,6 @@ msgstr "Húzással állítsa be az oldalsávban való megjelenési sorrendet."
 #, fuzzy
 msgid "Check GNOME Online Accounts for new accounts"
 msgstr "GNOME Internetes Fiókok"
-
-msgid "Add Account…"
-msgstr "Fiók hozzáadása…"
 
 msgid ""
 "Store mail in folders that live on this computer. Move or copy mail from any "
@@ -5927,6 +5922,9 @@ msgstr "Az utolsó mappa"
 msgid "Left"
 msgstr "Balra"
 
+msgid "Right"
+msgstr "Jobbra"
+
 msgid "1 line"
 msgstr "1 sor"
 
@@ -7918,6 +7916,9 @@ msgstr ""
 msgid "Always fold the right group into ⋯"
 msgstr ""
 
+msgid "Focus Mode"
+msgstr "Fókusz mód"
+
 msgid ""
 "The parts switched on below hide while Focus Mode is on. Activated by "
 "Ctrl+Shift+F or the main menu."
@@ -8547,6 +8548,10 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#, fuzzy
+#~ msgid "Reading Pane"
+#~ msgstr "Olvasás"
 
 #~ msgid "Attach"
 #~ msgstr "Csatolás"
@@ -10069,9 +10074,6 @@ msgstr "Hyprlab"
 #~ msgstr ""
 #~ "Az egyező levelek helye; vagy hagyja őket a Beérkezett üzenetek között, "
 #~ "és csak címkézze őket"
-
-#~ msgid "Send Now"
-#~ msgstr "Küldés most"
 
 #~ msgid "Send All"
 #~ msgstr "Összes küldése"

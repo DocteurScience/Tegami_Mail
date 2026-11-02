@@ -98,30 +98,21 @@ msgstr ""
 msgid "Delete"
 msgstr "Usuń"
 
+msgid "Sync Now"
+msgstr ""
+
+msgid "Add Account…"
+msgstr "Dodaj konto…"
+
+#, fuzzy
+msgid "GNOME Online Accounts…"
+msgstr "Konta online GNOME"
+
 msgid "Settings"
 msgstr "Ustawienia"
 
 msgid "Show Accounts"
 msgstr "Wyświetlanie kont"
-
-msgid "Right"
-msgstr "Po prawej"
-
-msgid "Below"
-msgstr ""
-
-msgid "Off"
-msgstr "Wyłączone"
-
-#, fuzzy
-msgid "Reading Pane"
-msgstr "Czytanie"
-
-msgid "Focus Mode"
-msgstr "Tryb skupienia"
-
-msgid "Fullscreen"
-msgstr ""
 
 msgid "Print Preview…"
 msgstr "Podgląd wydruku…"
@@ -1245,6 +1236,9 @@ msgstr "Wyświetl pasek stanu"
 msgid "Console"
 msgstr "Konsola"
 
+msgid "Help"
+msgstr ""
+
 msgid "New Message Instead"
 msgstr "Nowa wiadomość"
 
@@ -2302,6 +2296,9 @@ msgstr ""
 msgid "Enter the LibreTranslate server's address in Settings → Translation."
 msgstr ""
 
+msgid "Off"
+msgstr "Wyłączone"
+
 msgid "Choose a translation service in Settings → Translation first."
 msgstr ""
 
@@ -2709,9 +2706,6 @@ msgstr "Przeciągnij, aby ustawić kolejność kont w panelu bocznym."
 #, fuzzy
 msgid "Check GNOME Online Accounts for new accounts"
 msgstr "Konta online GNOME"
-
-msgid "Add Account…"
-msgstr "Dodaj konto…"
 
 msgid ""
 "Store mail in folders that live on this computer. Move or copy mail from any "
@@ -6005,6 +5999,9 @@ msgstr "Ostatni katalog"
 msgid "Left"
 msgstr "Po lewej"
 
+msgid "Right"
+msgstr "Po prawej"
+
 msgid "1 line"
 msgstr "1 wiersz"
 
@@ -7991,6 +7988,9 @@ msgstr ""
 msgid "Always fold the right group into ⋯"
 msgstr ""
 
+msgid "Focus Mode"
+msgstr "Tryb skupienia"
+
 msgid ""
 "The parts switched on below hide while Focus Mode is on. Activated by "
 "Ctrl+Shift+F or the main menu."
@@ -8618,6 +8618,10 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#, fuzzy
+#~ msgid "Reading Pane"
+#~ msgstr "Czytanie"
 
 #~ msgid "Attach"
 #~ msgstr "Załącz"

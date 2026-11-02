@@ -207,7 +207,7 @@ pub(super) struct MainMenu {
     pub(super) reading_pane_action: gtk::gio::SimpleAction,
 }
 
-/// Sectioned: settings / printing / window & help / quit.
+/// Sectioned: sync / accounts / settings / printing / help / quit.
 pub(super) fn build_main_menu(
     show_accounts: bool,
     reading_pane: config::ReadingPane,
@@ -218,42 +218,35 @@ pub(super) fn build_main_menu(
     let help_menu = gtk::gio::Menu::new();
     let model_undo_menu = gtk::gio::Menu::new();
     {
-        // #200: the only place undo and redo are visible. They name the
-        // action they would reverse ("Undo Archive") and grey out when
-        // there is nothing on the stack.
-        menu.append_section(None, &model_undo_menu);
+        // The design's main menu (docs/DESIGN.md, "Menus"), with Print and
+        // Quit kept (owner's decision, docs/SUIVI.md, 2026-11-02). Undo,
+        // Reading Pane, Focus Mode and Fullscreen are no longer here; their
+        // keys still work (Ctrl+Z, Ctrl+Alt+1-3, Ctrl+Shift+F, F11), and
+        // refresh_undo_menu still fills `model_undo_menu`, unshown, as it
+        // also enables the Undo and Redo actions.
+        let sync = gtk::gio::Menu::new();
+        sync.append_item(&keyed_item(&i18n("Sync Now"), "win.sync-now", "F5"));
+        menu.append_section(None, &sync);
+
+        let accounts = gtk::gio::Menu::new();
+        accounts.append(Some(i18n("Add Account…").as_str()), Some("win.add-account"));
+        accounts.append(
+            Some(i18n("GNOME Online Accounts…").as_str()),
+            Some("win.online-accounts"),
+        );
+        menu.append_section(None, &accounts);
 
         let settings = gtk::gio::Menu::new();
         settings.append(Some(i18n("Settings").as_str()), Some("win.accounts"));
-        menu.append_section(None, &settings);
-
         // The sidebar's account sections, for those who work from the
-        // unified section alone (also Settings → Sidebar).
-        let sidebar = gtk::gio::Menu::new();
-        sidebar.append_item(&keyed_item(
+        // unified section alone (also Settings → Sidebar). Not in the
+        // mockup, and not among the entries the owner took out.
+        settings.append_item(&keyed_item(
             &i18n("Show Accounts"),
             "app.show-accounts",
             "<Ctrl><Shift>a",
         ));
-        // Where the reader sits (#475). Off, the list takes the window
-        // and messages open in their own. Ctrl+Alt+1, 2 and 3 choose too.
-        let pane = gtk::gio::Menu::new();
-        for (label, key) in [
-            (i18n("Right"), config::ReadingPane::Right),
-            (i18n("Below"), config::ReadingPane::Below),
-            (i18n("Off"), config::ReadingPane::Off),
-        ] {
-            pane.append(
-                Some(label.as_str()),
-                Some(&format!("app.reading-pane::{}", key.key())),
-            );
-        }
-        sidebar.append_submenu(Some(i18n("Reading Pane").as_str()), &pane);
-        // Focus Mode: the distraction-free layout (also Ctrl+Shift+F
-        // and Settings → Appearance, where its parts are chosen).
-        sidebar.append(Some(i18n("Focus Mode").as_str()), Some("app.focus-mode"));
-        sidebar.append(Some(i18n("Fullscreen").as_str()), Some("win.fullscreen"));
-        menu.append_section(None, &sidebar);
+        menu.append_section(None, &settings);
 
         let printing = gtk::gio::Menu::new();
         printing.append(

@@ -86,28 +86,19 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
+msgid "Sync Now"
+msgstr ""
+
+msgid "Add Account…"
+msgstr ""
+
+msgid "GNOME Online Accounts…"
+msgstr ""
+
 msgid "Settings"
 msgstr ""
 
 msgid "Show Accounts"
-msgstr ""
-
-msgid "Right"
-msgstr ""
-
-msgid "Below"
-msgstr ""
-
-msgid "Off"
-msgstr ""
-
-msgid "Reading Pane"
-msgstr ""
-
-msgid "Focus Mode"
-msgstr ""
-
-msgid "Fullscreen"
 msgstr ""
 
 msgid "Print Preview…"
@@ -1085,6 +1076,9 @@ msgstr ""
 msgid "Console"
 msgstr ""
 
+msgid "Help"
+msgstr ""
+
 msgid "New Message Instead"
 msgstr ""
 
@@ -1999,6 +1993,9 @@ msgstr ""
 msgid "Enter the LibreTranslate server's address in Settings → Translation."
 msgstr ""
 
+msgid "Off"
+msgstr ""
+
 msgid "Choose a translation service in Settings → Translation first."
 msgstr ""
 
@@ -2365,9 +2362,6 @@ msgid "Drag to reorder them in the sidebar."
 msgstr ""
 
 msgid "Check GNOME Online Accounts for new accounts"
-msgstr ""
-
-msgid "Add Account…"
 msgstr ""
 
 msgid ""
@@ -5254,6 +5248,9 @@ msgstr ""
 msgid "Left"
 msgstr ""
 
+msgid "Right"
+msgstr ""
+
 msgid "1 line"
 msgstr ""
 
@@ -7025,6 +7022,9 @@ msgid ""
 msgstr ""
 
 msgid "Always fold the right group into ⋯"
+msgstr ""
+
+msgid "Focus Mode"
 msgstr ""
 
 msgid ""

@@ -34,5 +34,5 @@ else
 fi
 docker cp "$repo/tools/dev/run.sh" tgu:/run.sh
 docker cp "$repo/tools/dev/shot.sh" tgu:/shot.sh
-echo "/target-ubu/" >> "$repo/.git/info/exclude"
+grep -qx "/target-ubu/" "$repo/.git/info/exclude" || echo "/target-ubu/" >> "$repo/.git/info/exclude"
 docker exec tgu pkg-config --modversion libadwaita-1 gtk4

@@ -97,30 +97,22 @@ msgstr ""
 msgid "Delete"
 msgstr "Удалить"
 
+#, fuzzy
+msgid "Sync Now"
+msgstr "Отправить сейчас"
+
+msgid "Add Account…"
+msgstr "Добавить учётную запись…"
+
+#, fuzzy
+msgid "GNOME Online Accounts…"
+msgstr "Сетевые учётные записи GNOME"
+
 msgid "Settings"
 msgstr "Настройки"
 
 msgid "Show Accounts"
 msgstr "Показывать учётные записи"
-
-msgid "Right"
-msgstr "Справа"
-
-msgid "Below"
-msgstr ""
-
-msgid "Off"
-msgstr "Выкл."
-
-#, fuzzy
-msgid "Reading Pane"
-msgstr "Чтение"
-
-msgid "Focus Mode"
-msgstr "Режим фокусировки"
-
-msgid "Fullscreen"
-msgstr ""
 
 msgid "Print Preview…"
 msgstr "Предпросмотр печати…"
@@ -1248,6 +1240,9 @@ msgstr "Показать строку состояния"
 msgid "Console"
 msgstr "Консоль"
 
+msgid "Help"
+msgstr ""
+
 msgid "New Message Instead"
 msgstr "Написать новое письмо"
 
@@ -2283,6 +2278,9 @@ msgstr "Сервис отклонил запрос (ошибка {code})."
 msgid "Enter the LibreTranslate server's address in Settings → Translation."
 msgstr "Введите адрес сервера LibreTranslate в меню Параметры → Перевод."
 
+msgid "Off"
+msgstr "Выкл."
+
 msgid "Choose a translation service in Settings → Translation first."
 msgstr "Сначала выберите сервис перевода в меню Параметры → Перевод."
 
@@ -2686,9 +2684,6 @@ msgstr "Перетащите, чтобы изменить порядок ото�
 #, fuzzy
 msgid "Check GNOME Online Accounts for new accounts"
 msgstr "Сетевые учётные записи GNOME"
-
-msgid "Add Account…"
-msgstr "Добавить учётную запись…"
 
 msgid ""
 "Store mail in folders that live on this computer. Move or copy mail from any "
@@ -5948,6 +5943,9 @@ msgstr "Последняя открытая папка"
 msgid "Left"
 msgstr "Слева"
 
+msgid "Right"
+msgstr "Справа"
+
 msgid "1 line"
 msgstr "1 строка"
 
@@ -7918,6 +7916,9 @@ msgstr ""
 msgid "Always fold the right group into ⋯"
 msgstr ""
 
+msgid "Focus Mode"
+msgstr "Режим фокусировки"
+
 msgid ""
 "The parts switched on below hide while Focus Mode is on. Activated by "
 "Ctrl+Shift+F or the main menu."
@@ -8537,6 +8538,10 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#, fuzzy
+#~ msgid "Reading Pane"
+#~ msgstr "Чтение"
 
 #~ msgid "Attach"
 #~ msgstr "Прикрепить"
@@ -10110,9 +10115,6 @@ msgstr "Hyprlab"
 #~ msgstr ""
 #~ "Куда складывать подходящие письма; либо оставить во «Входящих» и только "
 #~ "присвоить метку"
-
-#~ msgid "Send Now"
-#~ msgstr "Отправить сейчас"
 
 #~ msgid "Send All"
 #~ msgstr "Отправить всё"

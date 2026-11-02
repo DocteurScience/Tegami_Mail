@@ -597,6 +597,8 @@ impl AppModel {
             Some(i18n("Keyboard Shortcuts").as_str()),
             Some("win.shortcuts"),
         );
+        self.help_menu
+            .append(Some(i18n("Help").as_str()), Some("win.help"));
         self.help_menu.append(
             Some(format!("{} {}", i18n("About"), crate::APP_NAME).as_str()),
             Some("win.about"),

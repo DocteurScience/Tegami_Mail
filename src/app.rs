@@ -20,6 +20,10 @@ relm4::new_stateless_action!(AboutAction, WindowActionGroup, "about");
 relm4::new_stateless_action!(ShortcutsAction, WindowActionGroup, "shortcuts");
 relm4::new_stateless_action!(PrintAction, WindowActionGroup, "print");
 relm4::new_stateless_action!(PrintPreviewAction, WindowActionGroup, "print-preview");
+relm4::new_stateless_action!(SyncNowAction, WindowActionGroup, "sync-now");
+relm4::new_stateless_action!(AddAccountAction, WindowActionGroup, "add-account");
+relm4::new_stateless_action!(OnlineAccountsAction, WindowActionGroup, "online-accounts");
+relm4::new_stateless_action!(HelpAction, WindowActionGroup, "help");
 /// Store a setting the user changed and save the settings, if it really
 /// changed; says whether it did, so the caller can apply it.
 macro_rules! pref {

@@ -101,30 +101,21 @@ msgstr ""
 msgid "Delete"
 msgstr "Eliminar"
 
+msgid "Sync Now"
+msgstr ""
+
+msgid "Add Account…"
+msgstr "Adicionar conta…"
+
+#, fuzzy
+msgid "GNOME Online Accounts…"
+msgstr "Contas online do GNOME"
+
 msgid "Settings"
 msgstr "Definições"
 
 msgid "Show Accounts"
 msgstr "Mostrar contas"
-
-msgid "Right"
-msgstr "Direita"
-
-msgid "Below"
-msgstr ""
-
-msgid "Off"
-msgstr "Desligado"
-
-#, fuzzy
-msgid "Reading Pane"
-msgstr "Leitura"
-
-msgid "Focus Mode"
-msgstr "Modo de foco"
-
-msgid "Fullscreen"
-msgstr "Ecrã inteiro"
 
 msgid "Print Preview…"
 msgstr "Pré-visualizar impressão…"
@@ -1168,6 +1159,9 @@ msgstr "Mostrar a barra de estado"
 msgid "Console"
 msgstr "Consola"
 
+msgid "Help"
+msgstr ""
+
 msgid "New Message Instead"
 msgstr "Criar uma nova mensagem"
 
@@ -2189,6 +2183,9 @@ msgid "Enter the LibreTranslate server's address in Settings → Translation."
 msgstr ""
 "Introduza o endereço do servidor LibreTranslate em Definições → Tradução."
 
+msgid "Off"
+msgstr "Desligado"
+
 msgid "Choose a translation service in Settings → Translation first."
 msgstr "Escolha primeiro um serviço de tradução em Definições → Tradução."
 
@@ -2578,9 +2575,6 @@ msgstr "Arraste para alterar a ordem na barra lateral."
 
 msgid "Check GNOME Online Accounts for new accounts"
 msgstr "Procurar novas contas nas Contas online do GNOME"
-
-msgid "Add Account…"
-msgstr "Adicionar conta…"
 
 msgid ""
 "Store mail in folders that live on this computer. Move or copy mail from any "
@@ -5736,6 +5730,9 @@ msgstr "A última pasta"
 msgid "Left"
 msgstr "Esquerda"
 
+msgid "Right"
+msgstr "Direita"
+
 msgid "1 line"
 msgstr "1 linha"
 
@@ -7669,6 +7666,9 @@ msgstr ""
 msgid "Always fold the right group into ⋯"
 msgstr ""
 
+msgid "Focus Mode"
+msgstr "Modo de foco"
+
 msgid ""
 "The parts switched on below hide while Focus Mode is on. Activated by "
 "Ctrl+Shift+F or the main menu."
@@ -8278,6 +8278,13 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#, fuzzy
+#~ msgid "Reading Pane"
+#~ msgstr "Leitura"
+
+#~ msgid "Fullscreen"
+#~ msgstr "Ecrã inteiro"
 
 #~ msgid "Attach"
 #~ msgstr "Anexar"

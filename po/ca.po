@@ -97,30 +97,21 @@ msgstr ""
 msgid "Delete"
 msgstr "Suprimeix"
 
+msgid "Sync Now"
+msgstr ""
+
+msgid "Add Account…"
+msgstr "Afegeix un compte…"
+
+#, fuzzy
+msgid "GNOME Online Accounts…"
+msgstr "Comptes en línia del GNOME"
+
 msgid "Settings"
 msgstr "Paràmetres"
 
 msgid "Show Accounts"
 msgstr "Mostra els comptes"
-
-msgid "Right"
-msgstr "Dreta"
-
-msgid "Below"
-msgstr ""
-
-msgid "Off"
-msgstr "Desactivat"
-
-#, fuzzy
-msgid "Reading Pane"
-msgstr "Lectura"
-
-msgid "Focus Mode"
-msgstr "Mode d'enfocament"
-
-msgid "Fullscreen"
-msgstr ""
 
 msgid "Print Preview…"
 msgstr "Previsualització d'impressió…"
@@ -1157,6 +1148,9 @@ msgstr "Mostra la barra d'estat"
 msgid "Console"
 msgstr "Consola"
 
+msgid "Help"
+msgstr ""
+
 msgid "New Message Instead"
 msgstr "Millor un missatge nou"
 
@@ -2174,6 +2168,9 @@ msgid "Enter the LibreTranslate server's address in Settings → Translation."
 msgstr ""
 "Introdueix l'adreça del servidor LibreTranslate a Paràmetres → Traducció."
 
+msgid "Off"
+msgstr "Desactivat"
+
 msgid "Choose a translation service in Settings → Translation first."
 msgstr "Tria primer un servei de traducció a Paràmetres → Traducció."
 
@@ -2568,9 +2565,6 @@ msgstr "Arrossega per reordenar-les a la barra lateral."
 
 msgid "Check GNOME Online Accounts for new accounts"
 msgstr "Comprova si hi ha comptes nous als comptes en línia del GNOME"
-
-msgid "Add Account…"
-msgstr "Afegeix un compte…"
 
 msgid ""
 "Store mail in folders that live on this computer. Move or copy mail from any "
@@ -5712,6 +5706,9 @@ msgstr "L'última carpeta"
 msgid "Left"
 msgstr "Esquerra"
 
+msgid "Right"
+msgstr "Dreta"
+
 msgid "1 line"
 msgstr "1 línia"
 
@@ -7631,6 +7628,9 @@ msgstr ""
 msgid "Always fold the right group into ⋯"
 msgstr ""
 
+msgid "Focus Mode"
+msgstr "Mode d'enfocament"
+
 msgid ""
 "The parts switched on below hide while Focus Mode is on. Activated by "
 "Ctrl+Shift+F or the main menu."
@@ -8235,6 +8235,10 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#, fuzzy
+#~ msgid "Reading Pane"
+#~ msgstr "Lectura"
 
 #~ msgid "Attach"
 #~ msgstr "Adjunta"

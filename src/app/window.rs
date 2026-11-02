@@ -10,9 +10,10 @@ use super::accounts::finish_keyring_writes;
 use super::model::AppModel;
 use super::msg::AppMsg;
 use super::{
-    AboutAction, AccountsAction, AppModelWidgets, ConsoleAction, FindAction, FullscreenAction,
-    PreferencesAction, PrintAction, PrintPreviewAction, RedoAction, ShortcutsAction,
-    StatusBarAction, UndoAction, WindowActionGroup,
+    AboutAction, AccountsAction, AddAccountAction, AppModelWidgets, ConsoleAction, FindAction,
+    FullscreenAction, HelpAction, OnlineAccountsAction, PreferencesAction, PrintAction,
+    PrintPreviewAction, RedoAction, ShortcutsAction, StatusBarAction, SyncNowAction, UndoAction,
+    WindowActionGroup,
 };
 
 /// Saves the window's size and maximized state. Only the geometry: on
@@ -213,6 +214,10 @@ impl AppModel {
     }
 }
 
+/// Where Help leads: the project's user documentation.
+const HELP_URL: &str =
+    "https://github.com/DocteurScience/Tegami_Mail/blob/main/docs/DOCUMENTATION.md";
+
 /// The window's action group (Settings, About, print, find, undo and redo
 /// ...) and their accelerators. Undo and Redo are handed back for the model
 /// to enable and disable.
@@ -224,6 +229,32 @@ pub(super) fn install_window_actions(
     let accounts_sender = sender.clone();
     group.add_action(RelmAction::<AccountsAction>::new_stateless(move |_| {
         accounts_sender.input(AppMsg::OpenSettings);
+    }));
+    // The main menu's own entries (docs/DESIGN.md, "Menus").
+    let s = sender.clone();
+    group.add_action(RelmAction::<SyncNowAction>::new_stateless(move |_| {
+        s.input(AppMsg::Refresh);
+    }));
+    let s = sender.clone();
+    group.add_action(RelmAction::<AddAccountAction>::new_stateless(move |_| {
+        s.input(AppMsg::AddFirstAccount);
+    }));
+    group.add_action(RelmAction::<OnlineAccountsAction>::new_stateless(|_| {
+        crate::ui::accounts::open_online_accounts();
+    }));
+    let help_window = root.clone();
+    group.add_action(RelmAction::<HelpAction>::new_stateless(move |_| {
+        // The user documentation, in the browser: the app has no help
+        // pages of its own (no Yelp book).
+        gtk::UriLauncher::new(HELP_URL).launch(
+            Some(&help_window),
+            gtk::gio::Cancellable::NONE,
+            |res| {
+                if let Err(e) = res {
+                    tracing::warn!("could not open the help: {e}");
+                }
+            },
+        );
     }));
     let prefs_sender = sender.clone();
     group.add_action(RelmAction::<PreferencesAction>::new_stateless(move |_| {
@@ -302,6 +333,7 @@ pub(super) fn install_window_actions(
     // bound because layouts disagree about whether Ctrl+Shift+/ arrives as
     // `question` or as `slash`, and F1 is the GNOME convention.
     relm4::main_application().set_accelerators_for_action::<PrintAction>(&["<Ctrl>p"]);
+    relm4::main_application().set_accelerators_for_action::<SyncNowAction>(&["F5"]);
     relm4::main_application()
         .set_accelerators_for_action::<PrintPreviewAction>(&["<Ctrl><Shift>p"]);
     relm4::main_application().set_accelerators_for_action::<StatusBarAction>(&["<Ctrl><Shift>s"]);
