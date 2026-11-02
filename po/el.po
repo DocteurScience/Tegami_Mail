@@ -4464,14 +4464,16 @@ msgstr "Αναζήτηση επαφών (Ctrl+F)"
 msgid "Edit contact"
 msgstr "Επεξεργασία επαφής"
 
-msgid "Attach"
-msgstr "Επισύναψη"
+#, fuzzy
+msgid "Attach to Message"
+msgstr "Επισύναψη σε νέο μήνυμα"
 
 msgid "Insert in Text"
 msgstr "Εισαγωγή στο κείμενο"
 
-msgid "Upload to Cloud"
-msgstr "Μεταφόρτωση στο cloud"
+#, fuzzy
+msgid "Upload and Share a Link"
+msgstr "Μεταφόρτωση στον χώρο αποθήκευσης cloud και κοινοποίηση συνδέσμου"
 
 msgid "Attach to New Message"
 msgstr "Επισύναψη σε νέο μήνυμα"
@@ -8293,6 +8295,12 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Attach"
+#~ msgstr "Επισύναψη"
+
+#~ msgid "Upload to Cloud"
+#~ msgstr "Μεταφόρτωση στο cloud"
 
 #~ msgid "Save…"
 #~ msgstr "Αποθήκευση…"

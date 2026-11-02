@@ -4562,14 +4562,16 @@ msgstr "Névjegyek keresése"
 msgid "Edit contact"
 msgstr "Névjegy szerkesztése"
 
-msgid "Attach"
-msgstr "Csatolás"
+#, fuzzy
+msgid "Attach to Message"
+msgstr "Csatolás új üzenethez"
 
 msgid "Insert in Text"
 msgstr "Beillesztés a szövegbe"
 
-msgid "Upload to Cloud"
-msgstr "Feltöltés a felhőbe"
+#, fuzzy
+msgid "Upload and Share a Link"
+msgstr "Feltöltés felhőtárhelyre és hivatkozás megosztása"
 
 msgid "Attach to New Message"
 msgstr "Csatolás új üzenethez"
@@ -8473,6 +8475,12 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Attach"
+#~ msgstr "Csatolás"
+
+#~ msgid "Upload to Cloud"
+#~ msgstr "Feltöltés a felhőbe"
 
 #~ msgid "Save…"
 #~ msgstr "Mentés…"

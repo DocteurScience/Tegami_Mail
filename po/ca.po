@@ -4393,14 +4393,16 @@ msgstr "Cerca contactes (Ctrl+F)"
 msgid "Edit contact"
 msgstr "Edita el contacte"
 
-msgid "Attach"
-msgstr "Adjunta"
+#, fuzzy
+msgid "Attach to Message"
+msgstr "Adjunta a un missatge nou"
 
 msgid "Insert in Text"
 msgstr "Insereix al text"
 
-msgid "Upload to Cloud"
-msgstr "Puja al núvol"
+#, fuzzy
+msgid "Upload and Share a Link"
+msgstr "Puja a l'emmagatzematge al núvol i comparteix un enllaç"
 
 msgid "Attach to New Message"
 msgstr "Adjunta a un missatge nou"
@@ -8161,6 +8163,12 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Attach"
+#~ msgstr "Adjunta"
+
+#~ msgid "Upload to Cloud"
+#~ msgstr "Puja al núvol"
 
 #~ msgid "Save…"
 #~ msgstr "Desa…"

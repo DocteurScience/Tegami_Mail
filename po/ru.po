@@ -4586,14 +4586,16 @@ msgstr "Поиск контактов"
 msgid "Edit contact"
 msgstr "Редактировать контакт"
 
-msgid "Attach"
-msgstr "Прикрепить"
+#, fuzzy
+msgid "Attach to Message"
+msgstr "Прикрепить к новому сообщению"
 
 msgid "Insert in Text"
 msgstr "Вставить в текст"
 
-msgid "Upload to Cloud"
-msgstr "Загрузить в облако"
+#, fuzzy
+msgid "Upload and Share a Link"
+msgstr "Загрузить в облачное хранилище и поделиться ссылкой"
 
 msgid "Attach to New Message"
 msgstr "Прикрепить к новому сообщению"
@@ -8463,6 +8465,12 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Attach"
+#~ msgstr "Прикрепить"
+
+#~ msgid "Upload to Cloud"
+#~ msgstr "Загрузить в облако"
 
 #~ msgid "Save…"
 #~ msgstr "Сохранить…"

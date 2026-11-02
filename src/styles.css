@@ -394,7 +394,9 @@ flowbox.attach-flow > flowboxchild {
 .drop-zone {
   padding: 20px 16px;
   border-radius: 20px;
-  border: 2px dashed alpha(@accent_color, 0.35);
+  /* The accent at full strength, as the design draws it: a pale dash
+     on the veil read as disabled. */
+  border: 2px dashed @accent_color;
   /* Opaque, unlike the veil around it: the message beneath shows through
      only at the margins, never behind a card's words. */
   background-color: mix(@window_bg_color, @accent_bg_color, 0.05);

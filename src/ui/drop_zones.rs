@@ -105,10 +105,12 @@ impl DropZones {
         layer.append(&zones);
 
         let (attach, inline, cloud) = match context {
+            // The design's names (docs/DESIGN.md, "Attachments"): each says
+            // where the files end up.
             DropContext::Composer => (
-                i18n("Attach"),
+                i18n("Attach to Message"),
                 i18n("Insert in Text"),
-                i18n("Upload to Cloud"),
+                i18n("Upload and Share a Link"),
             ),
             DropContext::NewMessage => (
                 i18n("Attach to New Message"),

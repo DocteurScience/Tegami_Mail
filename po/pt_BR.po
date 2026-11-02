@@ -4402,14 +4402,16 @@ msgstr "Pesquisar contatos (Ctrl+F)"
 msgid "Edit contact"
 msgstr "Editar contato"
 
-msgid "Attach"
-msgstr "Anexar"
+#, fuzzy
+msgid "Attach to Message"
+msgstr "Anexar a uma nova mensagem"
 
 msgid "Insert in Text"
 msgstr "Inserir no texto"
 
-msgid "Upload to Cloud"
-msgstr "Enviar para a nuvem"
+#, fuzzy
+msgid "Upload and Share a Link"
+msgstr "Enviar para o armazenamento na nuvem e compartilhar um link"
 
 msgid "Attach to New Message"
 msgstr "Anexar a uma nova mensagem"
@@ -8176,6 +8178,12 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Attach"
+#~ msgstr "Anexar"
+
+#~ msgid "Upload to Cloud"
+#~ msgstr "Enviar para a nuvem"
 
 #~ msgid "Save…"
 #~ msgstr "Salvar…"

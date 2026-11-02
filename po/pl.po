@@ -4617,14 +4617,16 @@ msgstr "Wyszukaj kontakty"
 msgid "Edit contact"
 msgstr "Modyfikuj kontakt"
 
-msgid "Attach"
-msgstr "Załącz"
+#, fuzzy
+msgid "Attach to Message"
+msgstr "Załącz do nowej wiadomości"
 
 msgid "Insert in Text"
 msgstr "Wstaw w treść"
 
-msgid "Upload to Cloud"
-msgstr "Prześlij do chmury"
+#, fuzzy
+msgid "Upload and Share a Link"
+msgstr "Prześlij do chmury i udostępnij odnośnik"
 
 msgid "Attach to New Message"
 msgstr "Załącz do nowej wiadomości"
@@ -8544,6 +8546,12 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Attach"
+#~ msgstr "Załącz"
+
+#~ msgid "Upload to Cloud"
+#~ msgstr "Prześlij do chmury"
 
 #~ msgid "Save…"
 #~ msgstr "Zapisz…"

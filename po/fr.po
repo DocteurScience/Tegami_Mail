@@ -4422,14 +4422,14 @@ msgstr "Rechercher des contacts (Ctrl+F)"
 msgid "Edit contact"
 msgstr "Modifier le contact"
 
-msgid "Attach"
-msgstr "Joindre"
+msgid "Attach to Message"
+msgstr "Joindre au message"
 
 msgid "Insert in Text"
 msgstr "Insérer dans le texte"
 
-msgid "Upload to Cloud"
-msgstr "Téléverser vers le stockage en ligne"
+msgid "Upload and Share a Link"
+msgstr "Téléverser et partager un lien"
 
 msgid "Attach to New Message"
 msgstr "Joindre à un nouveau message"
@@ -8213,6 +8213,12 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Attach"
+#~ msgstr "Joindre"
+
+#~ msgid "Upload to Cloud"
+#~ msgstr "Téléverser vers le stockage en ligne"
 
 #~ msgid "Save…"
 #~ msgstr "Enregistrer…"

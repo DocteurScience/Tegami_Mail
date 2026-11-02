@@ -4540,14 +4540,16 @@ msgstr "Cerca contatti"
 msgid "Edit contact"
 msgstr "Modifica contatto"
 
-msgid "Attach"
-msgstr "Allega"
+#, fuzzy
+msgid "Attach to Message"
+msgstr "Allega a un nuovo messaggio"
 
 msgid "Insert in Text"
 msgstr "Inserisci nel testo"
 
-msgid "Upload to Cloud"
-msgstr "Carica nel cloud"
+#, fuzzy
+msgid "Upload and Share a Link"
+msgstr "Carica nell'archivio cloud e condividi un link"
 
 msgid "Attach to New Message"
 msgstr "Allega a un nuovo messaggio"
@@ -8388,6 +8390,12 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Attach"
+#~ msgstr "Allega"
+
+#~ msgid "Upload to Cloud"
+#~ msgstr "Carica nel cloud"
 
 #~ msgid "Save…"
 #~ msgstr "Salva…"

@@ -4023,13 +4023,13 @@ msgstr ""
 msgid "Edit contact"
 msgstr ""
 
-msgid "Attach"
+msgid "Attach to Message"
 msgstr ""
 
 msgid "Insert in Text"
 msgstr ""
 
-msgid "Upload to Cloud"
+msgid "Upload and Share a Link"
 msgstr ""
 
 msgid "Attach to New Message"
