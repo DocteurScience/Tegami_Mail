@@ -14,7 +14,7 @@ use relm4::prelude::*;
 
 impl MessageView {
     pub(super) fn render(&mut self) {
-        let dark = self.effective_dark();
+        let dark = self.theme_dark();
         self.apply_webview_bg(dark);
         // Already showing exactly this — returning to a conversation, or a
         // re-render nothing changed. Loading it again would only blank the view

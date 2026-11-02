@@ -43,7 +43,6 @@ impl AppModel {
             single_message_card: self.single_message_card,
             reader_mode: self.reader_mode,
             reader_switch: self.reader_switch,
-            theme_switch: self.theme_switch,
             account_chip: self.account_chip,
             desktop_icons: self.desktop_icons,
             reader_default: self.reader_default,
@@ -248,8 +247,6 @@ impl AppModel {
         self.message_view.emit(MessageViewInput::SetZoom(self.zoom));
         self.message_view
             .emit(MessageViewInput::SetReaderSwitchShown(self.reader_switch));
-        self.message_view
-            .emit(MessageViewInput::SetThemeSwitchShown(self.theme_switch));
         self.message_view
             .emit(MessageViewInput::SetAccountChipShown(self.account_chip));
         self.message_view.emit(MessageViewInput::SetReaderDefault(

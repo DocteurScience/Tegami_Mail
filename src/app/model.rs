@@ -716,8 +716,6 @@ pub(crate) struct AppModel {
     pub(super) reader_mode: bool,
     /// The Reader View switch is shown in the reader header.
     pub(super) reader_switch: bool,
-    /// The Light / Dark Mode switch is shown in the reader header (PR #386).
-    pub(super) theme_switch: bool,
     /// The account chip is shown in the reader header (Settings).
     pub(super) account_chip: bool,
     /// Icons come from the desktop's icon theme, not Tegami Mail's own (Settings).

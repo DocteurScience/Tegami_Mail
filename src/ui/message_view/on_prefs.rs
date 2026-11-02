@@ -52,7 +52,7 @@ impl MessageView {
     pub(super) fn on_set_content_theme(&mut self, o: Option<bool>) {
         if self.content_dark != o {
             self.content_dark = o;
-            let dark = self.effective_dark();
+            let dark = self.theme_dark();
             self.apply_webview_bg(dark);
             if self.current.is_some() && !self.loading {
                 self.render();
@@ -66,26 +66,6 @@ impl MessageView {
             if self.current.is_some() && !self.loading {
                 self.render();
             }
-        }
-    }
-
-    pub(super) fn on_set_message_flipped(&mut self, on: bool) {
-        if self.message_flipped() == on {
-            return;
-        }
-        let Some(key) = self.current.as_ref().map(|m| (m.account_id, m.id)) else {
-            return;
-        };
-        // Off forgets the choice: the message follows the theme again.
-        if on {
-            self.theme_picks.insert(key, !self.theme_dark());
-        } else {
-            self.theme_picks.remove(&key);
-        }
-        let dark = self.effective_dark();
-        self.apply_webview_bg(dark);
-        if !self.loading {
-            self.render();
         }
     }
 

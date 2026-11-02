@@ -4745,15 +4745,6 @@ msgstr ""
 "den Einstellungen zurück."
 
 msgid ""
-"Show this message in light or dark mode. Other messages are not affected."
-msgstr ""
-"Diese Nachricht im hellen oder dunklen Modus anzeigen. Andere Nachrichten "
-"bleiben davon unberührt."
-
-msgid "Light / Dark Mode"
-msgstr "Heller / Dunkler Modus"
-
-msgid ""
 "Reader View shows a message as its text alone, in one plain format, without "
 "the sender's layout, colors and fonts."
 msgstr ""
@@ -7887,12 +7878,6 @@ msgstr ""
 msgid "Message appearance"
 msgstr "Darstellung der Nachricht"
 
-msgid "Light / Dark Mode switch"
-msgstr "Hell-/Dunkelmodus-Umschalter"
-
-msgid "Displays in the message header for each message."
-msgstr "Anzeige in der Kopfzeile jeder Nachricht."
-
 msgid "Show account in message header"
 msgstr "Konto im Nachrichtenkopf anzeigen"
 
@@ -8305,6 +8290,21 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid ""
+#~ "Show this message in light or dark mode. Other messages are not affected."
+#~ msgstr ""
+#~ "Diese Nachricht im hellen oder dunklen Modus anzeigen. Andere Nachrichten "
+#~ "bleiben davon unberührt."
+
+#~ msgid "Light / Dark Mode"
+#~ msgstr "Heller / Dunkler Modus"
+
+#~ msgid "Light / Dark Mode switch"
+#~ msgstr "Hell-/Dunkelmodus-Umschalter"
+
+#~ msgid "Displays in the message header for each message."
+#~ msgstr "Anzeige in der Kopfzeile jeder Nachricht."
 
 #, fuzzy
 #~ msgid "Copy To…"

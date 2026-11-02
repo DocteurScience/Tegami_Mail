@@ -4753,15 +4753,6 @@ msgstr ""
 "ratón. Un clic aquí, o Ctrl+0, restablece el valor predeterminado de Ajustes."
 
 msgid ""
-"Show this message in light or dark mode. Other messages are not affected."
-msgstr ""
-"Mostrar este mensaje en modo claro u oscuro. Los demás mensajes no se ven "
-"afectados."
-
-msgid "Light / Dark Mode"
-msgstr "Modo claro/oscuro"
-
-msgid ""
 "Reader View shows a message as its text alone, in one plain format, without "
 "the sender's layout, colors and fonts."
 msgstr ""
@@ -7866,12 +7857,6 @@ msgstr "En las conversaciones, cada mensaje se marca al aparecer en pantalla."
 msgid "Message appearance"
 msgstr "Apariencia de los mensajes"
 
-msgid "Light / Dark Mode switch"
-msgstr "Interruptor del modo claro/oscuro"
-
-msgid "Displays in the message header for each message."
-msgstr "Se muestra en la cabecera de cada mensaje."
-
 #, fuzzy
 msgid "Show account in message header"
 msgstr "Mostrar el interruptor de vista de lectura en la cabecera del mensaje"
@@ -8275,6 +8260,21 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid ""
+#~ "Show this message in light or dark mode. Other messages are not affected."
+#~ msgstr ""
+#~ "Mostrar este mensaje en modo claro u oscuro. Los demás mensajes no se ven "
+#~ "afectados."
+
+#~ msgid "Light / Dark Mode"
+#~ msgstr "Modo claro/oscuro"
+
+#~ msgid "Light / Dark Mode switch"
+#~ msgstr "Interruptor del modo claro/oscuro"
+
+#~ msgid "Displays in the message header for each message."
+#~ msgstr "Se muestra en la cabecera de cada mensaje."
 
 #, fuzzy
 #~ msgid "Copy To…"

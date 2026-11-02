@@ -4881,15 +4881,6 @@ msgstr ""
 "riporta al valore predefinito dalle Impostazioni."
 
 msgid ""
-"Show this message in light or dark mode. Other messages are not affected."
-msgstr ""
-"Mostra questo messaggio in modalità chiara o scura. Gli altri messaggi non "
-"vengono influenzati."
-
-msgid "Light / Dark Mode"
-msgstr "Modalità chiara / scura"
-
-msgid ""
 "Reader View shows a message as its text alone, in one plain format, without "
 "the sender's layout, colors and fonts."
 msgstr ""
@@ -8036,13 +8027,6 @@ msgstr ""
 msgid "Message appearance"
 msgstr "Aspetto del messaggio"
 
-msgid "Light / Dark Mode switch"
-msgstr "Interruttore Modalità chiara / scura"
-
-#, fuzzy
-msgid "Displays in the message header for each message."
-msgstr "Apre il messaggio con un inoltro avviato."
-
 #, fuzzy
 msgid "Show account in message header"
 msgstr "Interruttore Modalità lettore"
@@ -8446,6 +8430,22 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid ""
+#~ "Show this message in light or dark mode. Other messages are not affected."
+#~ msgstr ""
+#~ "Mostra questo messaggio in modalità chiara o scura. Gli altri messaggi "
+#~ "non vengono influenzati."
+
+#~ msgid "Light / Dark Mode"
+#~ msgstr "Modalità chiara / scura"
+
+#~ msgid "Light / Dark Mode switch"
+#~ msgstr "Interruttore Modalità chiara / scura"
+
+#, fuzzy
+#~ msgid "Displays in the message header for each message."
+#~ msgstr "Apre il messaggio con un inoltro avviato."
 
 #, fuzzy
 #~ msgid "Copy To…"

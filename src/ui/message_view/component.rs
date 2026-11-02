@@ -249,37 +249,6 @@ impl Component for MessageView {
                             },
                         },
 
-                        // Light / Dark Mode: the message on screen in the
-                        // other scheme, for that message alone. Sits just
-                        // before the Reader View switch, the highlights icon
-                        // for a label.
-                        gtk::Box {
-                            set_orientation: gtk::Orientation::Horizontal,
-                            set_spacing: 6,
-                            set_halign: gtk::Align::End,
-                            set_valign: gtk::Align::Center,
-                            add_css_class: "reader-toggle",
-                            set_tooltip_text: Some(i18n("Show this message in light or dark mode. Other messages are not affected.").as_str()),
-                            #[watch]
-                            set_visible: model.current.is_some() && model.theme_switch_shown,
-
-                            gtk::Image {
-                                set_icon_name: Some("highlights-symbolic"),
-                                add_css_class: "dim-label",
-                            },
-                            gtk::Switch {
-                                set_valign: gtk::Align::Center,
-                                update_property: &[gtk::accessible::Property::Label(&i18n("Light / Dark Mode"))],
-                                #[watch]
-                                set_active: model.message_flipped(),
-                                // Setting it to what is already shown (a new
-                                // message, a theme change) does nothing.
-                                connect_active_notify[sender] => move |sw| {
-                                    sender.input_sender().emit(MessageViewInput::SetMessageFlipped(sw.is_active()));
-                                },
-                            },
-                        },
-
                         // Reader View: the message(s) as content alone. A
                         // switch behind a pair of reading glasses on the
                         // account chip's line, at its right end — part of
@@ -426,7 +395,7 @@ impl Component for MessageView {
         model.loading_page = Some(widgets.loading_page.clone());
         model.account_chip = Some(widgets.account_chip.clone());
         model.cover = Some(widgets.body_stack.clone());
-        model.apply_webview_bg(model.effective_dark());
+        model.apply_webview_bg(model.theme_dark());
         let body_overlay = gtk::Overlay::new();
         body_overlay.set_child(Some(&model.webview));
         body_overlay.add_overlay(&model.page_fade.cover);
@@ -544,16 +513,12 @@ impl Component for MessageView {
             MessageViewInput::SetReaderMode(on) => {
                 self.set_reader_mode(on);
             }
-            MessageViewInput::SetMessageFlipped(on) => self.on_set_message_flipped(on),
             MessageViewInput::SetZoomDefault(percent) => {
                 self.zoom_default = percent;
             }
             MessageViewInput::SetZoom(percent) => self.on_set_zoom(percent),
             MessageViewInput::SetReaderSwitchShown(on) => {
                 self.reader_switch_shown = on;
-            }
-            MessageViewInput::SetThemeSwitchShown(on) => {
-                self.theme_switch_shown = on;
             }
             MessageViewInput::SetAccountChipShown(on) => {
                 self.account_chip_shown = on;

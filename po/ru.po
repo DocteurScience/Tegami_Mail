@@ -4941,13 +4941,6 @@ msgstr ""
 "Ctrl+0 возвращает значение по умолчанию из Параметров."
 
 msgid ""
-"Show this message in light or dark mode. Other messages are not affected."
-msgstr ""
-
-msgid "Light / Dark Mode"
-msgstr ""
-
-msgid ""
 "Reader View shows a message as its text alone, in one plain format, without "
 "the sender's layout, colors and fonts."
 msgstr ""
@@ -8110,13 +8103,6 @@ msgstr ""
 msgid "Message appearance"
 msgstr "Оформление сообщений"
 
-msgid "Light / Dark Mode switch"
-msgstr ""
-
-#, fuzzy
-msgid "Displays in the message header for each message."
-msgstr "Открывает сообщение с готовым черновиком пересылки."
-
 #, fuzzy
 msgid "Show account in message header"
 msgstr "Переключатель режима чтения"
@@ -8520,6 +8506,10 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#, fuzzy
+#~ msgid "Displays in the message header for each message."
+#~ msgstr "Открывает сообщение с готовым черновиком пересылки."
 
 #, fuzzy
 #~ msgid "Copy To…"

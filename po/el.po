@@ -4794,15 +4794,6 @@ msgstr ""
 "προεπιλογή των Ρυθμίσεων."
 
 msgid ""
-"Show this message in light or dark mode. Other messages are not affected."
-msgstr ""
-"Εμφάνιση αυτού του μηνύματος σε φωτεινή ή σκοτεινή λειτουργία. Δεν "
-"επηρεάζονται άλλα μηνύματα."
-
-msgid "Light / Dark Mode"
-msgstr "Φωτεινή / σκοτεινή λειτουργία"
-
-msgid ""
 "Reader View shows a message as its text alone, in one plain format, without "
 "the sender's layout, colors and fonts."
 msgstr ""
@@ -7939,12 +7930,6 @@ msgstr "Οι συζητήσεις σημειώνουν κάθε μήνυμα ω�
 msgid "Message appearance"
 msgstr "Εμφάνιση μηνυμάτων"
 
-msgid "Light / Dark Mode switch"
-msgstr "Εναλλαγή φωτεινής / σκοτεινής λειτουργίας"
-
-msgid "Displays in the message header for each message."
-msgstr "Εμφανίζεται στην κεφαλίδα κάθε μηνύματος."
-
 #, fuzzy
 msgid "Show account in message header"
 msgstr "Εμφάνιση διακόπτη Προβολής ανάγνωσης στην κεφαλίδα μηνύματος"
@@ -8351,6 +8336,21 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid ""
+#~ "Show this message in light or dark mode. Other messages are not affected."
+#~ msgstr ""
+#~ "Εμφάνιση αυτού του μηνύματος σε φωτεινή ή σκοτεινή λειτουργία. Δεν "
+#~ "επηρεάζονται άλλα μηνύματα."
+
+#~ msgid "Light / Dark Mode"
+#~ msgstr "Φωτεινή / σκοτεινή λειτουργία"
+
+#~ msgid "Light / Dark Mode switch"
+#~ msgstr "Εναλλαγή φωτεινής / σκοτεινής λειτουργίας"
+
+#~ msgid "Displays in the message header for each message."
+#~ msgstr "Εμφανίζεται στην κεφαλίδα κάθε μηνύματος."
 
 #, fuzzy
 #~ msgid "Copy To…"

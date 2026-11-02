@@ -380,7 +380,6 @@ impl AppModel {
             zoom: self.zoom,
             zoom_default: self.zoom_default,
             reader_switch: self.reader_switch,
-            theme_switch: self.theme_switch,
             account_chip: self.account_chip,
             reader_default: self.effective_reader_default(),
             tags: self.tags.clone(),

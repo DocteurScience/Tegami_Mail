@@ -59,23 +59,6 @@ impl MessageView {
             .unwrap_or_else(|| adw::StyleManager::default().is_dark())
     }
 
-    /// Whether the message on screen is drawn dark: the scheme the user
-    /// chose for it, else the theme's.
-    pub(super) fn effective_dark(&self) -> bool {
-        self.current
-            .as_ref()
-            .and_then(|m| self.theme_picks.get(&(m.account_id, m.id)).copied())
-            .unwrap_or_else(|| self.theme_dark())
-    }
-
-    /// The Light / Dark Mode switch's position: on only while the message is
-    /// shown opposite the theme. A message the user turned light reads off
-    /// once the theme turns light too, and still stays light if it turns
-    /// back.
-    pub(super) fn message_flipped(&self) -> bool {
-        self.effective_dark() != self.theme_dark()
-    }
-
     /// Whether cards list their own attachments (#213): by preference, and
     /// only where the drawer is not already that list — a lone message's
     /// drawer holds exactly its files, so its card repeats nothing.
@@ -88,10 +71,8 @@ impl MessageView {
     /// empty row adding its spacing above the subject.
     pub(super) fn account_line_shown(&self) -> bool {
         let chip = self.account_name.is_some() && self.account_chip_shown;
-        let controls = self.current.is_some()
-            && (self.theme_switch_shown
-                || self.reader_switch_shown
-                || self.zoom != self.zoom_default);
+        let controls =
+            self.current.is_some() && (self.reader_switch_shown || self.zoom != self.zoom_default);
         chip || controls
     }
 

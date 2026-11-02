@@ -174,18 +174,12 @@ pub(crate) enum MessageViewInput {
     /// Reader View on or off (the header's toggle): re-renders the whole
     /// conversation stripped to its content, or back as sent.
     SetReaderMode(bool),
-    /// The header's Light / Dark Mode switch: on shows the message on screen
-    /// in the scheme opposite the theme, off as the theme has it, for that
-    /// message alone.
-    SetMessageFlipped(bool),
     /// Message zoom in percent; the bodies on screen rescale in place.
     SetZoom(u32),
     /// The zoom Settings starts at, which the chip measures against.
     SetZoomDefault(u32),
     /// Settings: show the Reader View switch in the header at all.
     SetReaderSwitchShown(bool),
-    /// Whether the header's Light / Dark Mode switch is shown (Settings).
-    SetThemeSwitchShown(bool),
     /// Whether the header's account chip is shown (Settings).
     SetAccountChipShown(bool),
     /// Settings: what Reader View does when a conversation is opened. A

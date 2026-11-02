@@ -1707,17 +1707,10 @@ Its HTML or plain text, its attachments and the pictures in its text all
 come through. A message whose text Outlook kept only as RTF shows no text,
 and a message attached to it is left out.
 
-### One message light or dark
+### Message appearance
 
 **Settings → Reading → Message appearance** draws every message light, dark
-or as the system is. The message header has a switch beside Reader View
-that draws the message on screen in the other scheme, for that message
-alone, until Tegami Mail is closed. The switch starts off for every message; on
-draws the message opposite the theme. A message keeps the scheme chosen for
-it when the theme changes afterwards, and the switch then reads off if the
-message matches the new theme. In a conversation the choice follows the
-message the conversation was opened on. It works in a message's own window
-too. **Light / Dark Mode switch**, in the same group, hides the switch.
+or as the system is.
 
 ### The account in the message header
 

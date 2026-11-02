@@ -114,16 +114,8 @@ pub(crate) struct MessageView {
     reader_mode: bool,
     /// Whether the header's Reader View switch is shown (Settings).
     reader_switch_shown: bool,
-    /// Whether the header's Light / Dark Mode switch is shown (Settings).
-    theme_switch_shown: bool,
     /// Whether the header's account chip is shown (Settings).
     account_chip_shown: bool,
-    /// The scheme the user chose for a message with the header's Light /
-    /// Dark Mode switch, dark (`true`) or light. The scheme itself is kept,
-    /// not a flip of the theme, so a message turned light stays light when
-    /// the theme changes after. Kept for the session, so a message reopened
-    /// keeps the choice.
-    theme_picks: std::collections::HashMap<(u32, u32), bool>,
     /// Message zoom in percent (Ctrl+ / Ctrl-): the bodies alone are
     /// scaled, in Reader View and out of it; the chrome keeps its size.
     zoom: u32,

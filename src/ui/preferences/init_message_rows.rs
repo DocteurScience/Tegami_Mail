@@ -78,10 +78,6 @@ impl Preferences {
             .set_active(init.reader_switch);
         widgets
             .reading
-            .theme_switch_row
-            .set_active(init.theme_switch);
-        widgets
-            .reading
             .account_chip_row
             .set_active(init.account_chip);
         widgets

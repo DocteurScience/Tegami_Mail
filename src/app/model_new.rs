@@ -505,7 +505,6 @@ impl AppModel {
             zoom: config::load_reader_zoom(),
             zoom_default: config::load_reader_zoom(),
             reader_switch: prefs.reader_switch,
-            theme_switch: prefs.theme_switch,
             account_chip: prefs.account_chip,
             desktop_icons: prefs.desktop_icons,
             reader_default: prefs.reader_default,

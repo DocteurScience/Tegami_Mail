@@ -11,7 +11,6 @@ pub(in crate::ui::preferences) struct ReadingPage {
     pub(in crate::ui::preferences) page: adw::PreferencesPage,
     pub(in crate::ui::preferences) read_mark_row: adw::ComboRow,
     pub(in crate::ui::preferences) message_theme_row: adw::ComboRow,
-    pub(in crate::ui::preferences) theme_switch_row: adw::SwitchRow,
     pub(in crate::ui::preferences) account_chip_row: adw::SwitchRow,
     pub(in crate::ui::preferences) reader_zoom_row: adw::ComboRow,
     pub(in crate::ui::preferences) override_fonts_row: adw::SwitchRow,
@@ -56,15 +55,6 @@ impl ReadingPage {
                         set_title: &i18n("Message appearance"),
                         connect_selected_notify[sender] => move |row| {
                             sender.input(PrefInput::ChangeMessageTheme(row.selected()));
-                        },
-                    },
-
-                    #[name = "theme_switch_row"]
-                    adw::SwitchRow {
-                        set_title: &i18n("Light / Dark Mode switch"),
-                        set_subtitle: &i18n("Displays in the message header for each message."),
-                        connect_active_notify[sender] => move |row| {
-                            let _ = sender.output(PrefOutput::SetThemeSwitch(row.is_active()));
                         },
                     },
 
@@ -275,7 +265,6 @@ impl ReadingPage {
             page,
             read_mark_row,
             message_theme_row,
-            theme_switch_row,
             account_chip_row,
             reader_zoom_row,
             override_fonts_row,

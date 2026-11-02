@@ -381,13 +381,6 @@ impl AppModel {
                     self.popouts_emit(|| MessageWindowInput::SetReaderSwitchShown(on));
                 }
             }
-            AppMsg::SetThemeSwitchShown(on) => {
-                if pref!(self.theme_switch = on) {
-                    self.message_view
-                        .emit(MessageViewInput::SetThemeSwitchShown(on));
-                    self.popouts_emit(|| MessageWindowInput::SetThemeSwitchShown(on));
-                }
-            }
 
             AppMsg::SetRemoteContent {
                 account_id,

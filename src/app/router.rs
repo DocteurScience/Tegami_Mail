@@ -275,7 +275,6 @@ impl AppModel {
             msg @ (AppMsg::SetZoomDefault(..)
             | AppMsg::SetReaderMode(..)
             | AppMsg::SetReaderSwitchShown(..)
-            | AppMsg::SetThemeSwitchShown(..)
             | AppMsg::SetRemoteContent { .. }
             | AppMsg::ReloadBody(..)) => self.on_prefs_reader(msg),
             msg @ (AppMsg::Undo | AppMsg::Redo | AppMsg::UndoRestored { .. }) => self.on_undo(msg),

@@ -92,7 +92,7 @@ impl MessageView {
         // Repaint the cover for what is arriving, even when the spinner
         // is about to be shown instead of a document: the whole point is
         // that the spinner already sits on the right color.
-        self.apply_webview_bg(self.effective_dark());
+        self.apply_webview_bg(self.theme_dark());
         // While loading, the spinner page is shown; rendering the (empty)
         // body would just flash blank, so wait for the real body.
         if !self.loading {
@@ -148,7 +148,7 @@ impl MessageView {
 
     pub(super) fn on_theme_changed(&mut self) {
         self.paint_account_chip();
-        let dark = self.effective_dark();
+        let dark = self.theme_dark();
         self.apply_webview_bg(dark);
         if self.current.is_some() && !self.loading {
             self.render();

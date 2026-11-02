@@ -4327,13 +4327,6 @@ msgid ""
 msgstr ""
 
 msgid ""
-"Show this message in light or dark mode. Other messages are not affected."
-msgstr ""
-
-msgid "Light / Dark Mode"
-msgstr ""
-
-msgid ""
 "Reader View shows a message as its text alone, in one plain format, without "
 "the sender's layout, colors and fonts."
 msgstr ""
@@ -7202,12 +7195,6 @@ msgid "Conversations mark each message as it comes into view."
 msgstr ""
 
 msgid "Message appearance"
-msgstr ""
-
-msgid "Light / Dark Mode switch"
-msgstr ""
-
-msgid "Displays in the message header for each message."
 msgstr ""
 
 msgid "Show account in message header"

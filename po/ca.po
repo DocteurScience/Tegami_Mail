@@ -4721,15 +4721,6 @@ msgstr ""
 "paràmetres."
 
 msgid ""
-"Show this message in light or dark mode. Other messages are not affected."
-msgstr ""
-"Mostra aquest missatge en mode clar o fosc. Els altres missatges no es veuen "
-"afectats."
-
-msgid "Light / Dark Mode"
-msgstr "Mode clar / fosc"
-
-msgid ""
 "Reader View shows a message as its text alone, in one plain format, without "
 "the sender's layout, colors and fonts."
 msgstr ""
@@ -7814,12 +7805,6 @@ msgstr "Les converses marquen cada missatge a mesura que apareix a la vista."
 msgid "Message appearance"
 msgstr "Aparença dels missatges"
 
-msgid "Light / Dark Mode switch"
-msgstr "Interruptor de mode clar / fosc"
-
-msgid "Displays in the message header for each message."
-msgstr "Es mostra a l'encapçalament de cada missatge."
-
 #, fuzzy
 msgid "Show account in message header"
 msgstr ""
@@ -8219,6 +8204,21 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid ""
+#~ "Show this message in light or dark mode. Other messages are not affected."
+#~ msgstr ""
+#~ "Mostra aquest missatge en mode clar o fosc. Els altres missatges no es "
+#~ "veuen afectats."
+
+#~ msgid "Light / Dark Mode"
+#~ msgstr "Mode clar / fosc"
+
+#~ msgid "Light / Dark Mode switch"
+#~ msgstr "Interruptor de mode clar / fosc"
+
+#~ msgid "Displays in the message header for each message."
+#~ msgstr "Es mostra a l'encapçalament de cada missatge."
 
 #, fuzzy
 #~ msgid "Copy To…"

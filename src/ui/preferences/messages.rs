@@ -46,8 +46,6 @@ pub(crate) struct PrefInit {
     pub(crate) reader_find_bottom: bool,
     /// Lone messages render as inset cards, like conversation messages.
     pub(crate) single_message_card: bool,
-    /// The Light / Dark Mode switch is shown in the reader header (PR #386).
-    pub(crate) theme_switch: bool,
     /// The account chip is shown in the reader header.
     pub(crate) account_chip: bool,
     /// Icons come from the desktop's icon theme, not Tegami Mail's own.
@@ -443,7 +441,6 @@ pub(crate) enum PrefOutput {
     SetReaderFindBottom(bool),
     SetSingleMessageCard(bool),
     SetReaderSwitch(bool),
-    SetThemeSwitch(bool),
     SetAccountChip(bool),
     SetDesktopIcons(bool),
     SetReaderDefault(crate::config::ReaderDefault),

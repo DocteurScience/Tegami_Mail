@@ -48,8 +48,6 @@ pub(crate) struct MessageWindowInit {
     pub(crate) zoom_default: u32,
     /// Whether the Reader View switch is shown at all.
     pub(crate) reader_switch: bool,
-    /// Whether the Light / Dark Mode switch is shown (PR #386).
-    pub(crate) theme_switch: bool,
     /// Whether the account chip is shown.
     pub(crate) account_chip: bool,
     /// What Reader View does when a message is opened.
@@ -150,7 +148,6 @@ pub(crate) enum MessageWindowInput {
     /// A zoom step (or the chip's reset, 0) asked for in this window.
     Zoom(i8),
     SetReaderSwitchShown(bool),
-    SetThemeSwitchShown(bool),
     SetAccountChipShown(bool),
     SetReaderDefault(crate::config::ReaderDefault),
     /// This window's own Reader View switch was flipped. It changes this

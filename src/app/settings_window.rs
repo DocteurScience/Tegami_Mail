@@ -17,7 +17,6 @@ use crate::ui::dialog::confirm_destructive;
 fn prefs_output_msg(out: PrefOutput) -> AppMsg {
     match out {
         PrefOutput::SetReaderSwitch(on) => AppMsg::SetReaderSwitchShown(on),
-        PrefOutput::SetThemeSwitch(on) => AppMsg::SetThemeSwitchShown(on),
         PrefOutput::SetReaderZoom(z) => AppMsg::SetZoomDefault(z),
         PrefOutput::PageShown(id) => AppMsg::SettingsPageShown(id),
         PrefOutput::Closed => AppMsg::ClosePreferences,
@@ -87,7 +86,6 @@ impl AppModel {
             reader_find_bottom: self.reader_find_bottom,
             single_message_card: self.single_message_card,
             reader_switch: self.reader_switch,
-            theme_switch: self.theme_switch,
             account_chip: self.account_chip,
             desktop_icons: self.desktop_icons,
             reader_default: self.reader_default,
