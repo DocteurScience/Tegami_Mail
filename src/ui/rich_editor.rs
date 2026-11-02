@@ -54,6 +54,10 @@ pub(super) struct RichEditor {
     /// only text. Read by every load of the document and by whatever puts
     /// files or the clipboard into it.
     plain: std::rc::Rc<std::cell::Cell<bool>>,
+    /// How many quoted messages the conversation history shows before
+    /// "Show previous message" (fold.js): read by every load of the
+    /// document, changed with `set_history_levels`.
+    history_levels: std::rc::Rc<std::cell::Cell<u32>>,
     /// Where "Send as Attachment Instead" delivers the lifted image, as a
     /// temp-file path the host adds to its attachment list. Set by the host
     /// via [`RichEditor::connect_send_as_attachment`].
@@ -211,7 +215,13 @@ impl RichEditor {
         self.show_preview(None);
         crate::desktop::web_fonts::load_html(
             &self.webview,
-            &document(content, &self.webview, &self.image_policy, self.plain.get()),
+            &document(
+                content,
+                &self.webview,
+                &self.image_policy,
+                self.plain.get(),
+                self.history_levels.get(),
+            ),
             Some("https://tegami.localhost/editor"),
         );
     }
@@ -418,6 +428,16 @@ impl RichEditor {
                 cb,
             );
         }
+    }
+
+    /// Show this many quoted messages in the conversation history before
+    /// "Show previous message": now in the page on screen, and in every
+    /// later load of it.
+    pub(super) fn set_history_levels(&self, levels: u32) {
+        self.history_levels.set(levels);
+        self.run_js(&format!(
+            "window.__tegamiSetHistoryLevels&&window.__tegamiSetHistoryLevels({levels})"
+        ));
     }
 
     /// Read the current body HTML asynchronously.

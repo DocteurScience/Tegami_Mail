@@ -26,14 +26,28 @@ impl RichEditor {
     /// pictures): opening a reply must not fetch what reading the message
     /// did not (#295). The markup keeps every address, so the recipient
     /// gets the quote whole.
-    pub(crate) fn new(initial_html: &str, remote_images: Option<&[String]>, plain: bool) -> Self {
+    /// `history_levels`: how many quoted messages the conversation history
+    /// shows at first (see `set_history_levels`).
+    pub(crate) fn new(
+        initial_html: &str,
+        remote_images: Option<&[String]>,
+        plain: bool,
+        history_levels: u32,
+    ) -> Self {
         let plain = std::rc::Rc::new(std::cell::Cell::new(plain));
+        let history_levels = std::rc::Rc::new(std::cell::Cell::new(history_levels));
         let image_policy: std::rc::Rc<str> = image_policy_meta(remote_images).into();
         let (webview, ucm) = editor_view();
         let spinner = loading_spinner(&webview);
         crate::desktop::web_fonts::load_html(
             &webview,
-            &document(initial_html, &webview, &image_policy, plain.get()),
+            &document(
+                initial_html,
+                &webview,
+                &image_policy,
+                plain.get(),
+                history_levels.get(),
+            ),
             Some("https://tegami.localhost/editor"),
         );
         let theme_handler = follow_theme(&webview);
@@ -127,6 +141,7 @@ impl RichEditor {
             preview: std::rc::Rc::new(std::cell::RefCell::new(None)),
             source: source.clone(),
             plain,
+            history_levels,
             attach_cb,
             loaded,
             pending_files,

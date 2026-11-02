@@ -59,22 +59,42 @@
     head.appendChild(toggle);
     attr.before(head);
 
-    /* Older messages than the quote's own and the one it answers: behind a
-       button, as the reader folds older cards. */
+    /* How many of the quoted messages show at first, newest first: two in
+       a window of its own, one (the message replied to) in a composer
+       under the reading pane, where the conversation is already in view
+       (owner's decision, docs/SUIVI.md). The older ones wait behind a
+       button, as the reader folds older cards. The stylesheet hides them
+       by the level <html> carries. */
+    var levels = window.__tegamiHistoryLevels || 2;
     var deep = null;
-    if(count > 2){
-      deep = el('div', null, words.previous);
-      deep.setAttribute('data-tegami-ui', 'deep');
-      deep.setAttribute('contenteditable', 'false');
-      deep.setAttribute('role', 'button');
-      quote.after(deep);
-      deep.addEventListener('mousedown', function(e){
-        e.preventDefault();
-        if(e.button !== 0) return;
-        root.classList.add('tegami-deep');
+    function placeDeep(){
+      var wanted = count > levels && !root.classList.contains('tegami-deep');
+      if(wanted && !deep){
+        deep = el('div', null, words.previous);
+        deep.setAttribute('data-tegami-ui', 'deep');
+        deep.setAttribute('contenteditable', 'false');
+        deep.setAttribute('role', 'button');
+        quote.after(deep);
+        deep.addEventListener('mousedown', function(e){
+          e.preventDefault();
+          if(e.button !== 0) return;
+          root.classList.add('tegami-deep');
+          deep.remove();
+          deep = null;
+        });
+      } else if(!wanted && deep){
         deep.remove();
-      });
+        deep = null;
+      }
     }
+    root.dataset.historyLevels = levels;
+    placeDeep();
+    /* The composer moved between a window and the reading pane. */
+    window.__tegamiSetHistoryLevels = function(n){
+      levels = n;
+      root.dataset.historyLevels = n;
+      if(head.isConnected) placeDeep();
+    };
 
     function folded(){ return root.classList.contains('tegami-folded'); }
     function fold(on){

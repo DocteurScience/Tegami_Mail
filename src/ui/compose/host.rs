@@ -383,6 +383,7 @@ impl Compose {
     /// Handles [`ComposeInput::SetWindowed`].
     pub(super) fn on_set_windowed(&mut self, windowed: bool, widgets: &ComposeWidgets) {
         self.windowed = windowed;
+        self.editor.set_history_levels(history_levels(windowed));
         size_for_host(
             &widgets.toolbar_root,
             &widgets.header,
@@ -528,6 +529,18 @@ fn keep_hidden(row: &gtk::Widget, class: &str) {
             c = child.next_sibling();
             todo.push(child);
         }
+    }
+}
+
+/// How many quoted messages a composer's conversation history shows at
+/// first: two in a window of its own, as the design draws it; one, the
+/// message replied to, in the reading pane, where the conversation is in
+/// view right below (owner's decision, docs/SUIVI.md, 2026-11-02).
+pub(super) fn history_levels(windowed: bool) -> u32 {
+    if windowed {
+        2
+    } else {
+        1
     }
 }
 

@@ -33,7 +33,10 @@ use crate::ui::later::{next_monday, preset_time};
 use cloud::not_signed_in;
 pub(crate) use format::forget_zoom;
 use format::{markdown_body, session_zoom, zoom_chip, SHOWCASE_PLAIN_LOG};
-use host::{compose_heading, fold_on_first_map, label_fields, size_for_host, COMPOSE_MIN_WIDTH};
+use host::{
+    compose_heading, fold_on_first_map, history_levels, label_fields, size_for_host,
+    COMPOSE_MIN_WIDTH,
+};
 pub(crate) use keys::composer_key;
 pub(crate) use messages::{ComposeInput, ComposeOutput};
 pub(crate) use model::Compose;
@@ -470,6 +473,7 @@ impl Component for Compose {
             &content,
             remote_images.as_deref(),
             format == ComposeFormat::Plain,
+            history_levels(windowed),
         );
         editor.set_formatting_visible(format == ComposeFormat::Rich);
         editor.set_zoom(session_zoom());

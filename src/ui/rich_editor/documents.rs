@@ -26,6 +26,7 @@ pub(super) fn document(
     webview: &webkit6::WebView,
     image_policy: &str,
     plain: bool,
+    history_levels: u32,
 ) -> String {
     let dark = adw::StyleManager::default().is_dark();
     let scheme = if dark { "dark" } else { "light" };
@@ -43,6 +44,7 @@ pub(super) fn document(
          window.__tegamiReturnParagraph={return_paragraph};\
          window.__tegamiFoldQuote={fold_quote};\
          window.__tegamiHistory={history};\
+         window.__tegamiHistoryLevels={history_levels};\
          window.__tegamiPlain={plain};</script>\
          {LINES_SCRIPT}{PASTE_SCRIPT}{FOLD_SCRIPT}{HISTORY_SCRIPT}{EMOJI_SCRIPT}\
          {GRAMMAR_SCRIPT}"
@@ -158,6 +160,8 @@ pub(super) fn document(
               behind Show Previous Message. */\
            html:not(.tegami-deep) body>div[data-tegami-ui=fold]+.tegami-quote-attr+\
              blockquote blockquote blockquote{{display:none;}}\
+           html[data-history-levels=\"1\"]:not(.tegami-deep) body>div[data-tegami-ui=fold]+\
+             .tegami-quote-attr+blockquote blockquote{{display:none;}}\
            html body>div[data-tegami-ui=deep]{{display:table;margin:8px 0;\
              padding:4px 8px;border-radius:6px;cursor:pointer;font:{EDITOR_FONT};\
              -webkit-user-select:none;user-select:none;}}\
