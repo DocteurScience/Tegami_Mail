@@ -209,7 +209,7 @@ impl AppModel {
         self.send_morph.finish();
         // Supersede any composer already in the reader slot first.
         self.release_reader_compose();
-        let (id, mut init) = self.build_compose_init(account_id, prefill, false, true);
+        let (id, mut init) = self.build_compose_init(account_id, prefill, false);
         // The split reply is compact: just the editor, fields behind pop-out.
         init.compact = contextual;
         // Beneath the reader (#212) the reader's header stays, so the

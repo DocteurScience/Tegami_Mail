@@ -554,23 +554,9 @@ impl Compose {
     pub(super) fn on_save_draft_body(
         &mut self,
         fields: OutgoingFields,
-        as_template: bool,
         sender: &ComponentSender<Self>,
     ) {
-        let mut out = self.outgoing_message(fields);
-        if as_template {
-            // A copy, cut loose from wherever this message came
-            // from: saving it replaces no draft and no queued
-            // message, and a message started from it answers
-            // nothing.
-            out.draft_origin = None;
-            out.outbox_origin = None;
-            out.in_reply_to.clear();
-            out.references.clear();
-            out.forwards.clear();
-            let _ = sender.output(ComposeOutput::SaveTemplate(Box::new(out)));
-            return;
-        }
+        let out = self.outgoing_message(fields);
         if self.template {
             let _ = sender.output(ComposeOutput::SaveTemplate(Box::new(out)));
         } else {
@@ -797,7 +783,6 @@ impl Compose {
     /// editor has given it.
     pub(super) fn on_save_draft(
         &mut self,
-        as_template: bool,
         widgets: &ComposeWidgets,
         sender: &ComponentSender<Self>,
     ) {
@@ -811,7 +796,6 @@ impl Compose {
                     text,
                     ..fields.clone()
                 },
-                as_template,
             });
         });
     }

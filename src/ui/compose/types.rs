@@ -116,8 +116,6 @@ pub(crate) struct ComposeInit {
     pub(crate) own_addresses: Vec<(String, String)>,
     /// Whether the pane starts hosted in a standalone window (vs. inline).
     pub(crate) windowed: bool,
-    /// Whether the inline/window toggle button is offered (reply/forward only).
-    pub(crate) can_toggle: bool,
     /// Compact reply (#86 follow-up): the split reply hides every address/
     /// subject row and shows just the editor — popping out to a window brings
     /// the full fields back.

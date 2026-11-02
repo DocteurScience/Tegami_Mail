@@ -1,7 +1,6 @@
 //! Cloud links: uploading a file too big to attach and putting its link in the
 //! body.
 
-use super::attachments::pick_files;
 use super::messages::ComposeInput;
 use super::types::CloudLink;
 use super::{Compose, ComposeWidgets};
@@ -147,18 +146,6 @@ fn cloud_upload_dialog(
 }
 
 impl Compose {
-    /// Handles [`ComposeInput::CloudAttach`].
-    pub(super) fn on_cloud_attach(
-        &mut self,
-        sender: &ComponentSender<Self>,
-        root: &adw::BreakpointBin,
-    ) {
-        let s = sender.input_sender().clone();
-        pick_files(root, &i18n("Upload to Cloud Storage"), move |paths| {
-            let _ = s.send(ComposeInput::CloudPicked(paths));
-        });
-    }
-
     /// Handles [`ComposeInput::CloudPicked`].
     pub(super) fn on_cloud_picked(
         &mut self,

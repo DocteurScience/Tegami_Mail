@@ -71,7 +71,7 @@ impl AppModel {
         prefill: ComposePrefill,
         sender: &ComponentSender<Self>,
     ) {
-        let (id, init) = self.build_compose_init(account_id, prefill, true, false);
+        let (id, init) = self.build_compose_init(account_id, prefill, true);
         let controller = self.spawn_compose(init, sender);
         let window = self.compose_window_host(controller.widget(), id, sender);
         controller.emit(ComposeInput::FocusInitial);
@@ -252,50 +252,6 @@ impl AppModel {
         }
     }
 
-    /// Promote the reader's inline pane to a window, or collapse a window back
-    /// inline — reparenting the live pane so the editor state survives the move.
-    fn toggle_compose_window(&mut self, id: u32, sender: &ComponentSender<Self>) {
-        let Some(mut r) = self.reader_compose.take() else {
-            return;
-        };
-        if r.id != id {
-            self.reader_compose = Some(r);
-            return;
-        }
-        let widget = r.controller.widget().clone();
-        match r.window.take() {
-            None => {
-                // inline → window: unparent from the revealer, then host in a window.
-                self.clear_compose_slots();
-                self.reader_overflow_btn
-                    .set_visible(self.reader_overflow_wanted());
-                let window = self.compose_window_host(&widget, id, sender);
-                r.window = Some(window);
-                r.controller.emit(ComposeInput::SetWindowed(true));
-            }
-            Some(window) => {
-                // window → inline: unparent from the window, drop it back in place.
-                window.set_content(None::<&gtk::Widget>);
-                window.destroy();
-                widget.set_vexpand(true);
-                widget.set_hexpand(true);
-                widget.add_css_class("inline-compose-surface");
-                self.reader_overflow_btn.set_visible(false);
-                let slot = self.compose_slot();
-                slot.set_child(Some(&widget));
-                slot.set_can_target(true);
-                let s = slot.clone();
-                gtk::glib::idle_add_local_once(move || s.set_reveal_child(true));
-                // Back inline it covers the reader, header and all, so it
-                // carries the decorations whatever slot it left from.
-                r.controller.emit(ComposeInput::SetDecorations(true));
-                r.controller.emit(ComposeInput::SetWindowed(false));
-            }
-        }
-        r.controller.emit(ComposeInput::FocusInitial);
-        self.reader_compose = Some(r);
-    }
-
     /// Tear down a composer by id (from a Close output or a window's close-request).
     pub(super) fn close_compose(&mut self, id: u32) {
         tracing::debug!(target: "tegami::compose", "composer {id} closed");
@@ -350,7 +306,7 @@ impl AppModel {
     }
 
     /// The messages the router sends here (see `AppModel::route`).
-    pub(super) fn on_compose_host(&mut self, msg: AppMsg, sender: ComponentSender<Self>) {
+    pub(super) fn on_compose_host(&mut self, msg: AppMsg) {
         match msg {
             AppMsg::ComposeClosed(id) => {
                 self.close_compose(id);
@@ -374,7 +330,6 @@ impl AppModel {
                 }
             }
 
-            AppMsg::ComposeToggleWindow(id) => self.toggle_compose_window(id, &sender),
             _ => unreachable!("not routed to on_compose_host"),
         }
     }

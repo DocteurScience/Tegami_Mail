@@ -3472,15 +3472,6 @@ msgstr "Continuar a editar"
 msgid "Discard"
 msgstr "Descartar"
 
-msgid "Save as Template"
-msgstr "Guardar como modelo"
-
-msgid "Upload to cloud storage and share a link"
-msgstr "Carregar para o armazenamento na nuvem e partilhar uma ligação"
-
-msgid "Open Contacts"
-msgstr "Abrir Contactos"
-
 #, fuzzy
 msgid "Sign with OpenPGP"
 msgstr "Assinar com a sua chave OpenPGP"
@@ -3507,12 +3498,6 @@ msgstr "Ortografia"
 
 msgid "Spelling Language"
 msgstr "Idioma da correção ortográfica"
-
-msgid "Collapse into reader"
-msgstr "Recolher no leitor"
-
-msgid "Open in window"
-msgstr "Abrir numa janela"
 
 msgid "Delete Draft"
 msgstr "Eliminar rascunho"
@@ -3975,15 +3960,6 @@ msgstr "Mudar o nome…"
 msgid "Show or hide"
 msgstr "Mostrar ou ocultar"
 
-msgid "Search contacts"
-msgstr "Pesquisar contactos"
-
-msgid "No Contacts"
-msgstr "Sem contactos"
-
-msgid "Add contacts in the Contacts view to see them here."
-msgstr "Adicione contactos na vista Contactos para os ver aqui."
-
 msgid "Rename Address Book"
 msgstr "Mudar o nome do livro de endereços"
 
@@ -4382,6 +4358,9 @@ msgstr "Novo contacto ou grupo"
 msgid "Loading Contacts…"
 msgstr "A carregar contactos…"
 
+msgid "No Contacts"
+msgstr "Sem contactos"
+
 msgid ""
 "Add a contact with the + button, or import vCard files. Contacts are kept in "
 "Tegami Mail's own address book, and the address books of GNOME Contacts are "
@@ -4393,6 +4372,9 @@ msgstr ""
 
 msgid "Search contacts (Ctrl+F)"
 msgstr "Pesquisar contactos (Ctrl+F)"
+
+msgid "Search contacts"
+msgstr "Pesquisar contactos"
 
 msgid "Edit contact"
 msgstr "Editar contacto"
@@ -8204,6 +8186,24 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Save as Template"
+#~ msgstr "Guardar como modelo"
+
+#~ msgid "Upload to cloud storage and share a link"
+#~ msgstr "Carregar para o armazenamento na nuvem e partilhar uma ligação"
+
+#~ msgid "Open Contacts"
+#~ msgstr "Abrir Contactos"
+
+#~ msgid "Collapse into reader"
+#~ msgstr "Recolher no leitor"
+
+#~ msgid "Open in window"
+#~ msgstr "Abrir numa janela"
+
+#~ msgid "Add contacts in the Contacts view to see them here."
+#~ msgstr "Adicione contactos na vista Contactos para os ver aqui."
 
 #~ msgid "Writing in {format}"
 #~ msgstr "A escrever em {format}"

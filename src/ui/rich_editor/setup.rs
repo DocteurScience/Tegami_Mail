@@ -27,7 +27,7 @@ impl RichEditor {
     /// did not (#295). The markup keeps every address, so the recipient
     /// gets the quote whole.
     /// `history_levels`: how many quoted messages the conversation history
-    /// shows at first (see `set_history_levels`).
+    /// shows at first: one in the reading pane, two in a window.
     pub(crate) fn new(
         initial_html: &str,
         remote_images: Option<&[String]>,

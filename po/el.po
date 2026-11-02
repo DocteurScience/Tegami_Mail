@@ -3510,15 +3510,6 @@ msgstr "Συνέχεια επεξεργασίας"
 msgid "Discard"
 msgstr "Απόρριψη"
 
-msgid "Save as Template"
-msgstr "Αποθήκευση ως πρότυπο"
-
-msgid "Upload to cloud storage and share a link"
-msgstr "Μεταφόρτωση στον χώρο αποθήκευσης cloud και κοινοποίηση συνδέσμου"
-
-msgid "Open Contacts"
-msgstr "Άνοιγμα Επαφών"
-
 #, fuzzy
 msgid "Sign with OpenPGP"
 msgstr "Υπογραφή με το κλειδί OpenPGP σας"
@@ -3545,12 +3536,6 @@ msgstr "Ορθογραφία"
 
 msgid "Spelling Language"
 msgstr "Γλώσσα ορθογραφικού ελέγχου"
-
-msgid "Collapse into reader"
-msgstr "Σύμπτυξη στην προβολή ανάγνωσης"
-
-msgid "Open in window"
-msgstr "Άνοιγμα σε παράθυρο"
 
 msgid "Delete Draft"
 msgstr "Διαγραφή προχείρου"
@@ -4019,15 +4004,6 @@ msgstr "Μετονομασία…"
 msgid "Show or hide"
 msgstr "Εμφάνιση ή απόκρυψη"
 
-msgid "Search contacts"
-msgstr "Αναζήτηση επαφών"
-
-msgid "No Contacts"
-msgstr "Δεν υπάρχουν επαφές"
-
-msgid "Add contacts in the Contacts view to see them here."
-msgstr "Προσθέστε επαφές στην προβολή Επαφές για να εμφανιστούν εδώ."
-
 msgid "Rename Address Book"
 msgstr "Μετονομασία καταλόγου διευθύνσεων"
 
@@ -4426,6 +4402,9 @@ msgstr "Νέα επαφή ή ομάδα"
 msgid "Loading Contacts…"
 msgstr "Φόρτωση επαφών..."
 
+msgid "No Contacts"
+msgstr "Δεν υπάρχουν επαφές"
+
 msgid ""
 "Add a contact with the + button, or import vCard files. Contacts are kept in "
 "Tegami Mail's own address book, and the address books of GNOME Contacts are "
@@ -4437,6 +4416,9 @@ msgstr ""
 
 msgid "Search contacts (Ctrl+F)"
 msgstr "Αναζήτηση επαφών (Ctrl+F)"
+
+msgid "Search contacts"
+msgstr "Αναζήτηση επαφών"
 
 msgid "Edit contact"
 msgstr "Επεξεργασία επαφής"
@@ -8291,6 +8273,24 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Save as Template"
+#~ msgstr "Αποθήκευση ως πρότυπο"
+
+#~ msgid "Upload to cloud storage and share a link"
+#~ msgstr "Μεταφόρτωση στον χώρο αποθήκευσης cloud και κοινοποίηση συνδέσμου"
+
+#~ msgid "Open Contacts"
+#~ msgstr "Άνοιγμα Επαφών"
+
+#~ msgid "Collapse into reader"
+#~ msgstr "Σύμπτυξη στην προβολή ανάγνωσης"
+
+#~ msgid "Open in window"
+#~ msgstr "Άνοιγμα σε παράθυρο"
+
+#~ msgid "Add contacts in the Contacts view to see them here."
+#~ msgstr "Προσθέστε επαφές στην προβολή Επαφές για να εμφανιστούν εδώ."
 
 #~ msgid "Writing in {format}"
 #~ msgstr "Σύνταξη σε {format}"

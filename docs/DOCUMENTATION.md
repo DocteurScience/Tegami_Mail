@@ -489,8 +489,9 @@ TEGAMI_GOOGLE_CLIENT_ID=... TEGAMI_GOOGLE_CLIENT_SECRET=... cargo build --releas
 
 ### Cloud attachments (Nextcloud, OneDrive, Dropbox, Seafile)
 
-Settings → Cloud Storage holds the accounts the composer's upload button can
-put files on. A file goes to the account's upload folder and a share link,
+Settings → Cloud Storage holds the accounts the composer can put files on:
+a file dropped on **Upload to Cloud**, or a large attachment's **Send a
+Link**. A file goes to the account's upload folder and a share link,
 with the size and any expiry, is placed in the message above your signature.
 Every kind of account can expire links after a number of days and protect
 them with a download password, shown to you to pass on separately. The
@@ -1141,11 +1142,7 @@ A template is a message kept to start new ones from. It lives in the
 account's Templates folder, on the server, so another client that keeps
 templates there, Thunderbird among them, sees the same ones.
 
-- **Save as Template**, in the arrow beside **Save Draft**, keeps a copy of
-  the message being written in Templates and leaves the composer open. The
-  copy answers nothing: it carries no reply headers, and a message started
-  from it begins a conversation of its own. An account with no Templates
-  folder gets one the first time.
+- Templates are the messages in that folder, whoever put them there.
 - A template opened in the Templates folder has a banner. **Use Template**,
   or a double-click on it in the list, opens a new message with its
   recipients, subject, text and files, sent from the address it was saved
@@ -1545,8 +1542,7 @@ place they can go, and the files go where they are let go:
   SVG or AVIF picture of 32 MB or less, and only while the message is being
   written as rich text: plain text has nowhere to put a picture, and in
   Markdown or HTML the reference is yours to write.
-- **Upload to Cloud** opens the upload dialog for the files, as the
-  composer's cloud button does. It is offered when a cloud storage account
+- **Upload to Cloud** opens the upload dialog for the files. It is offered when a cloud storage account
   is set up (see [Cloud attachments](#cloud-attachments-nextcloud-onedrive-dropbox-seafile)).
 
 Letting go between the cards attaches the files. A composer in a window of

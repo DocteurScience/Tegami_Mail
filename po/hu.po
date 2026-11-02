@@ -3590,16 +3590,6 @@ msgid "Discard"
 msgstr "Elvetés"
 
 #, fuzzy
-msgid "Save as Template"
-msgstr "Beillesztés egyszerű szövegként"
-
-msgid "Upload to cloud storage and share a link"
-msgstr "Feltöltés felhőtárhelyre és hivatkozás megosztása"
-
-msgid "Open Contacts"
-msgstr "Névjegyek megnyitása"
-
-#, fuzzy
 msgid "Sign with OpenPGP"
 msgstr "Aláírás a saját OpenPGP-kulccsal"
 
@@ -3626,12 +3616,6 @@ msgstr "Helyesírás"
 #, fuzzy
 msgid "Spelling Language"
 msgstr "Helyesírás"
-
-msgid "Collapse into reader"
-msgstr "Olvasói nézetre váltás"
-
-msgid "Open in window"
-msgstr "Megnyitás ablakban"
 
 msgid "Delete Draft"
 msgstr "Piszkozat törlése"
@@ -4125,16 +4109,6 @@ msgstr "Átnevezés"
 msgid "Show or hide"
 msgstr "Címkék megjelenítése vagy elrejtése"
 
-msgid "Search contacts"
-msgstr "Névjegyek keresése"
-
-msgid "No Contacts"
-msgstr "Nincsenek névjegyek"
-
-#, fuzzy
-msgid "Add contacts in the Contacts view to see them here."
-msgstr "Adjon hozzá névjegyeket a GNOME Névjegyekben a megtekintésükhöz."
-
 #, fuzzy
 msgid "Rename Address Book"
 msgstr "Címjegyzék"
@@ -4527,6 +4501,9 @@ msgstr "Új névjegy"
 msgid "Loading Contacts…"
 msgstr "Névjegyek betöltése…"
 
+msgid "No Contacts"
+msgstr "Nincsenek névjegyek"
+
 msgid ""
 "Add a contact with the + button, or import vCard files. Contacts are kept in "
 "Tegami Mail's own address book, and the address books of GNOME Contacts are "
@@ -4535,6 +4512,9 @@ msgstr ""
 
 #, fuzzy
 msgid "Search contacts (Ctrl+F)"
+msgstr "Névjegyek keresése"
+
+msgid "Search contacts"
 msgstr "Névjegyek keresése"
 
 msgid "Edit contact"
@@ -8466,6 +8446,26 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#, fuzzy
+#~ msgid "Save as Template"
+#~ msgstr "Beillesztés egyszerű szövegként"
+
+#~ msgid "Upload to cloud storage and share a link"
+#~ msgstr "Feltöltés felhőtárhelyre és hivatkozás megosztása"
+
+#~ msgid "Open Contacts"
+#~ msgstr "Névjegyek megnyitása"
+
+#~ msgid "Collapse into reader"
+#~ msgstr "Olvasói nézetre váltás"
+
+#~ msgid "Open in window"
+#~ msgstr "Megnyitás ablakban"
+
+#, fuzzy
+#~ msgid "Add contacts in the Contacts view to see them here."
+#~ msgstr "Adjon hozzá névjegyeket a GNOME Névjegyekben a megtekintésükhöz."
 
 #~ msgid "Writing in {format}"
 #~ msgstr "{format} formátumben írás"

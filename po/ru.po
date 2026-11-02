@@ -3610,15 +3610,6 @@ msgstr "Продолжить редактирование"
 msgid "Discard"
 msgstr "Отменить"
 
-msgid "Save as Template"
-msgstr "Сохранить как шаблон"
-
-msgid "Upload to cloud storage and share a link"
-msgstr "Загрузить в облачное хранилище и поделиться ссылкой"
-
-msgid "Open Contacts"
-msgstr "Открыть «Контакты»"
-
 #, fuzzy
 msgid "Sign with OpenPGP"
 msgstr "Подписать вашим ключом OpenPGP"
@@ -3645,12 +3636,6 @@ msgstr "Орфография"
 
 msgid "Spelling Language"
 msgstr "Язык проверки орфографии"
-
-msgid "Collapse into reader"
-msgstr "Свернуть в область чтения"
-
-msgid "Open in window"
-msgstr "Открыть в отдельном окне"
 
 msgid "Delete Draft"
 msgstr "Удалить черновик"
@@ -4136,16 +4121,6 @@ msgstr "Переименовать"
 msgid "Show or hide"
 msgstr "Показать или скрыть метки"
 
-msgid "Search contacts"
-msgstr "Поиск контактов"
-
-msgid "No Contacts"
-msgstr "Нет контактов"
-
-#, fuzzy
-msgid "Add contacts in the Contacts view to see them here."
-msgstr "Добавьте контакты в «Контактах GNOME», чтобы увидеть их здесь."
-
 #, fuzzy
 msgid "Rename Address Book"
 msgstr "Адресная книга"
@@ -4549,6 +4524,9 @@ msgstr "Новый контакт"
 msgid "Loading Contacts…"
 msgstr "Загрузка контактов…"
 
+msgid "No Contacts"
+msgstr "Нет контактов"
+
 msgid ""
 "Add a contact with the + button, or import vCard files. Contacts are kept in "
 "Tegami Mail's own address book, and the address books of GNOME Contacts are "
@@ -4557,6 +4535,9 @@ msgstr ""
 
 #, fuzzy
 msgid "Search contacts (Ctrl+F)"
+msgstr "Поиск контактов"
+
+msgid "Search contacts"
 msgstr "Поиск контактов"
 
 msgid "Edit contact"
@@ -8457,6 +8438,25 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Save as Template"
+#~ msgstr "Сохранить как шаблон"
+
+#~ msgid "Upload to cloud storage and share a link"
+#~ msgstr "Загрузить в облачное хранилище и поделиться ссылкой"
+
+#~ msgid "Open Contacts"
+#~ msgstr "Открыть «Контакты»"
+
+#~ msgid "Collapse into reader"
+#~ msgstr "Свернуть в область чтения"
+
+#~ msgid "Open in window"
+#~ msgstr "Открыть в отдельном окне"
+
+#, fuzzy
+#~ msgid "Add contacts in the Contacts view to see them here."
+#~ msgstr "Добавьте контакты в «Контактах GNOME», чтобы увидеть их здесь."
 
 #~ msgid "Writing in {format}"
 #~ msgstr "Формат письма: {format}"

@@ -3639,16 +3639,6 @@ msgid "Discard"
 msgstr "Odrzuć"
 
 #, fuzzy
-msgid "Save as Template"
-msgstr "Wklejanie jako zwykły tekst"
-
-msgid "Upload to cloud storage and share a link"
-msgstr "Prześlij do chmury i udostępnij odnośnik"
-
-msgid "Open Contacts"
-msgstr "Otwórz kontakty"
-
-#, fuzzy
 msgid "Sign with OpenPGP"
 msgstr "Podpisz własnym kluczem OpenPGP"
 
@@ -3675,12 +3665,6 @@ msgstr "Pisownia"
 #, fuzzy
 msgid "Spelling Language"
 msgstr "Pisownia"
-
-msgid "Collapse into reader"
-msgstr "Zwiń do panelu czytania"
-
-msgid "Open in window"
-msgstr "Otwórz w osobnym oknie"
 
 msgid "Delete Draft"
 msgstr "Usuń szkic"
@@ -4166,16 +4150,6 @@ msgstr "Zmień nazwę"
 msgid "Show or hide"
 msgstr "Wyświetl lub ukryj etykiety"
 
-msgid "Search contacts"
-msgstr "Wyszukaj kontakty"
-
-msgid "No Contacts"
-msgstr "Brak kontaktów"
-
-#, fuzzy
-msgid "Add contacts in the Contacts view to see them here."
-msgstr "Dodaj kontakty w aplikacji Kontakty, aby były tutaj wyświetlane."
-
 #, fuzzy
 msgid "Rename Address Book"
 msgstr "Książka adresowa"
@@ -4578,6 +4552,9 @@ msgstr "Nowy kontakt"
 msgid "Loading Contacts…"
 msgstr "Wczytywanie kontaktów…"
 
+msgid "No Contacts"
+msgstr "Brak kontaktów"
+
 msgid ""
 "Add a contact with the + button, or import vCard files. Contacts are kept in "
 "Tegami Mail's own address book, and the address books of GNOME Contacts are "
@@ -4586,6 +4563,9 @@ msgstr ""
 
 #, fuzzy
 msgid "Search contacts (Ctrl+F)"
+msgstr "Wyszukaj kontakty"
+
+msgid "Search contacts"
 msgstr "Wyszukaj kontakty"
 
 msgid "Edit contact"
@@ -8535,6 +8515,26 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#, fuzzy
+#~ msgid "Save as Template"
+#~ msgstr "Wklejanie jako zwykły tekst"
+
+#~ msgid "Upload to cloud storage and share a link"
+#~ msgstr "Prześlij do chmury i udostępnij odnośnik"
+
+#~ msgid "Open Contacts"
+#~ msgstr "Otwórz kontakty"
+
+#~ msgid "Collapse into reader"
+#~ msgstr "Zwiń do panelu czytania"
+
+#~ msgid "Open in window"
+#~ msgstr "Otwórz w osobnym oknie"
+
+#, fuzzy
+#~ msgid "Add contacts in the Contacts view to see them here."
+#~ msgstr "Dodaj kontakty w aplikacji Kontakty, aby były tutaj wyświetlane."
 
 #~ msgid "Writing in {format}"
 #~ msgstr "Tryb pisania: {format}"

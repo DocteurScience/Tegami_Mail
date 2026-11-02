@@ -3167,15 +3167,6 @@ msgstr ""
 msgid "Discard"
 msgstr ""
 
-msgid "Save as Template"
-msgstr ""
-
-msgid "Upload to cloud storage and share a link"
-msgstr ""
-
-msgid "Open Contacts"
-msgstr ""
-
 msgid "Sign with OpenPGP"
 msgstr ""
 
@@ -3198,12 +3189,6 @@ msgid "Check Spelling"
 msgstr ""
 
 msgid "Spelling Language"
-msgstr ""
-
-msgid "Collapse into reader"
-msgstr ""
-
-msgid "Open in window"
 msgstr ""
 
 msgid "Delete Draft"
@@ -3617,15 +3602,6 @@ msgstr ""
 msgid "Show or hide"
 msgstr ""
 
-msgid "Search contacts"
-msgstr ""
-
-msgid "No Contacts"
-msgstr ""
-
-msgid "Add contacts in the Contacts view to see them here."
-msgstr ""
-
 msgid "Rename Address Book"
 msgstr ""
 
@@ -3986,6 +3962,9 @@ msgstr ""
 msgid "Loading Contacts…"
 msgstr ""
 
+msgid "No Contacts"
+msgstr ""
+
 msgid ""
 "Add a contact with the + button, or import vCard files. Contacts are kept in "
 "Tegami Mail's own address book, and the address books of GNOME Contacts are "
@@ -3993,6 +3972,9 @@ msgid ""
 msgstr ""
 
 msgid "Search contacts (Ctrl+F)"
+msgstr ""
+
+msgid "Search contacts"
 msgstr ""
 
 msgid "Edit contact"

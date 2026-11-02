@@ -75,8 +75,6 @@ pub(crate) struct Compose {
     pub(super) compose_id: u32,
     /// Currently shown as a standalone window (drives the toggle-button icon).
     pub(super) windowed: bool,
-    /// Whether this composer offers the inline/window toggle at all.
-    pub(super) can_toggle: bool,
     pub(super) compact: bool,
     /// Whether the inline header carries the window decorations (see
     /// `ComposeInit::decorations`).

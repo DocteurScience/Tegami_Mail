@@ -23,8 +23,6 @@ pub(crate) enum ComposeInput {
     SetNarrow(bool),
     /// The folded toolbar's ⋯ button: the actions as a menu.
     OverflowMenu,
-    /// Cloud attachments (#144): pick files to upload and share.
-    CloudAttach,
     /// Files picked; ask which account and how, then upload.
     CloudPicked(Vec<std::path::PathBuf>),
     /// Files let go on one of the drop surfaces.
@@ -108,8 +106,6 @@ pub(crate) enum ComposeInput {
     SendBody(OutgoingFields),
     /// Save the current message to Drafts.
     SaveDraft,
-    /// Save a copy of the message as a template (#360), and go on writing.
-    SaveAsTemplate,
     /// The From account's signature, put in by hand (#385): at the caret,
     /// or before or after the text from the button's right-click menu.
     InsertSignature(SigPlace),
@@ -121,11 +117,9 @@ pub(crate) enum ComposeInput {
     /// One of the From account's signatures (#445), by index, in place of
     /// the one in the message; `None` takes it out.
     UseSignature(Option<usize>),
-    /// The editor content came back — finish saving the draft, or the copy
-    /// kept as a template.
+    /// The editor content came back — finish saving the draft.
     SaveDraftBody {
         fields: OutgoingFields,
-        as_template: bool,
     },
     /// The automatic save's tick (#340), then, once anything was edited,
     /// the fields and body read for it.
@@ -147,13 +141,6 @@ pub(crate) enum ComposeInput {
     KeepEditing,
     /// Close without saving.
     Discard,
-    /// The user clicked the inline/window toggle button.
-    ToggleWindowed,
-    /// The app moved this pane between inline and window; sync the button icon.
-    SetWindowed(bool),
-    /// Whether the inline header should carry the window decorations: off
-    /// while the pane sits beneath the reader, whose header stays (#212).
-    SetDecorations(bool),
     /// Put keyboard focus where writing starts, once the composer is on
     /// screen (opened, or moved between inline and window): see
     /// [`Compose::focus_initial`].
@@ -176,7 +163,6 @@ pub(crate) enum ComposeInput {
     /// A large attachment's "Send a Link": upload it to the cloud, and
     /// once the link is in the message, take the file off.
     SendAsLink(usize),
-    OpenContacts,
     /// The given recipient field changed — refresh autocomplete.
     Suggest(Field),
     /// The accounts whose organization directory is searched (#410), and
@@ -263,8 +249,6 @@ pub(crate) enum ComposeOutput {
     /// Delete the draft this composer was opened from, and close it. The app
     /// moves the draft to Trash (undoable, like deleting it from the list).
     DeleteDraft { id: u32, origin: DraftOrigin },
-    /// Ask the app to promote/demote this pane (inline ↔ window). Carries the id.
-    ToggleWindow(u32),
     /// What this composer's history can do now, so the window that hosts it
     /// inline can label and enable its own Undo and Redo entries from the
     /// composer while the composer has focus (#200). `None` means that
@@ -296,6 +280,4 @@ pub(crate) enum ComposeOutput {
     /// A directory could not be asked (#307): for the status bar, once per
     /// composer.
     DirectoryError(String),
-    /// The contacts modal asked for Tegami Mail's Contacts view.
-    ShowContacts,
 }

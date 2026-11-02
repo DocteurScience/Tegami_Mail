@@ -148,12 +148,12 @@ format (texte enrichi, brut, Markdown, HTML) ; erreur de description de ma
 part, signalée au propriétaire. Le format est passé dans le menu ⋯ comme
 dans la maquette 06.
 
-Questions en attente :
-- Garder Markdown et Source HTML dans Format (la maquette n'a que texte
-  enrichi et texte brut) ?
-- Menu ⋯ du composeur : garder Enregistrer comme modèle, Envoyer vers le
-  cloud, Ouvrir les contacts, Ouvrir dans une fenêtre (absents de la
-  maquette) ?
+Décisions du propriétaire (2026-11-02, suite) :
+- Format : texte enrichi et texte brut seulement ; Markdown et Source HTML
+  supprimés.
+- Menu ⋯ du composeur : les 4 entrées absentes de la maquette sont
+  supprimées (Enregistrer comme modèle, Envoyer vers le cloud, Ouvrir les
+  contacts, Ouvrir dans une fenêtre).
 
 Restant du point 3, dans l'ordre : champ De en bouton « Envoyer depuis »
 (+ retrait du crayon), puis retrait des vues unifiées, Filtres, Contacts

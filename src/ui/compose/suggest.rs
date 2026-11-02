@@ -228,33 +228,6 @@ impl Compose {
         self.completion_open.set(true);
     }
 
-    /// Handles [`ComposeInput::OpenContacts`].
-    pub(super) fn on_open_contacts(
-        &mut self,
-        widgets: &ComposeWidgets,
-        sender: &ComponentSender<Self>,
-        root: &adw::BreakpointBin,
-    ) {
-        // Browse contacts; the chosen one is appended to the To field.
-        let Some(win) = root.root().and_downcast::<gtk::Window>() else {
-            return;
-        };
-        let to_row = widgets.to_row.clone();
-        let s = sender.clone();
-        crate::ui::contacts_browser::present(
-            &win,
-            move |contact| {
-                to_row.add_recipient(&crate::worker::format_recipient(
-                    &contact.name,
-                    &contact.email,
-                ));
-            },
-            move || {
-                let _ = s.output(ComposeOutput::ShowContacts);
-            },
-        );
-    }
-
     /// Handles [`ComposeInput::Suggest`].
     pub(super) fn on_suggest(
         &mut self,

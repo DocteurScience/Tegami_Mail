@@ -89,12 +89,6 @@
     }
     root.dataset.historyLevels = levels;
     placeDeep();
-    /* The composer moved between a window and the reading pane. */
-    window.__tegamiSetHistoryLevels = function(n){
-      levels = n;
-      root.dataset.historyLevels = n;
-      if(head.isConnected) placeDeep();
-    };
 
     function folded(){ return root.classList.contains('tegami-folded'); }
     function fold(on){

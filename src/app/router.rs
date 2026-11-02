@@ -206,7 +206,6 @@ impl AppModel {
             | AppMsg::AddContactBooks { .. }
             | AppMsg::ContactAdded(..)
             | AppMsg::ContactPhotosChanged
-            | AppMsg::ShowContactsPage
             | AppMsg::OpenContacts
             | AppMsg::ContactTree(..)
             | AppMsg::ContactScope(..)
@@ -336,9 +335,9 @@ impl AppModel {
             | AppMsg::EmitUnifiedNow
             | AppMsg::EmitUnified) => self.on_unified(msg, sender),
             msg @ (AppMsg::SendMorphMeasured | AppMsg::SendMorphFailed) => self.on_send_morph(msg),
-            msg @ (AppMsg::ComposeClosed(..)
-            | AppMsg::ComposeCloseRequested(..)
-            | AppMsg::ComposeToggleWindow(..)) => self.on_compose_host(msg, sender),
+            msg @ (AppMsg::ComposeClosed(..) | AppMsg::ComposeCloseRequested(..)) => {
+                self.on_compose_host(msg)
+            }
             msg @ (AppMsg::OpenAccounts
             | AppMsg::AddFirstAccount
             | AppMsg::AccountSaved { .. }

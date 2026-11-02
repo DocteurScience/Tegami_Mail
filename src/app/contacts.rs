@@ -268,11 +268,6 @@ impl AppModel {
                 }
             }
 
-            AppMsg::ShowContactsPage => {
-                crate::desktop::session::present_window(&self.window);
-                sender.input(AppMsg::OpenContacts);
-            }
-
             AppMsg::OpenContacts => {
                 self.mirror_selection(crate::ui::sidebar::Sel::Contacts);
                 self.show_contacts_view(&sender);

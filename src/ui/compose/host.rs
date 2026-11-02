@@ -255,7 +255,7 @@ impl Compose {
             MenuEntry::new(&label, move || s.input_sender().emit(msg()))
                 .icon(format!("{icon}-symbolic"))
         };
-        let mut save = vec![if self.template {
+        let save = vec![if self.template {
             entry(i18n("Save Template"), "document-save", || {
                 ComposeInput::SaveDraft
             })
@@ -264,28 +264,6 @@ impl Compose {
                 ComposeInput::SaveDraft
             })
         }];
-        if !self.template {
-            save.push(entry(i18n("Save as Template"), "folder-templates", || {
-                ComposeInput::SaveAsTemplate
-            }));
-        }
-        let mut share = Vec::new();
-        // Cloud attachments (#144): only with an account set up.
-        if !self.cloud_accounts.is_empty() {
-            share.push(
-                entry(
-                    i18n("Upload to cloud storage and share a link"),
-                    "cloud",
-                    || ComposeInput::CloudAttach,
-                )
-                .enabled(self.cloud_busy == 0),
-            );
-        }
-        share.push(entry(
-            i18n("Open Contacts"),
-            "x-office-address-book",
-            || ComposeInput::OpenContacts,
-        ));
         // Checks: the OpenPGP toggles go through their buttons so the
         // toggled handlers keep the model and the buttons agreeing.
         let mut checks = Vec::new();
@@ -345,18 +323,6 @@ impl Compose {
         if !langs.is_empty() {
             spelling.push(MenuEntry::submenu(i18n("Spelling Language"), vec![langs]));
         }
-        let mut host = Vec::new();
-        if self.can_toggle {
-            host.push(if self.windowed {
-                entry(i18n("Collapse into reader"), "view-restore", || {
-                    ComposeInput::ToggleWindowed
-                })
-            } else {
-                entry(i18n("Open in window"), "view-fullscreen", || {
-                    ComposeInput::ToggleWindowed
-                })
-            });
-        }
         // Only while editing an existing draft: the message is moved to
         // Trash, not saved, and the editor closes.
         let mut delete = Vec::new();
@@ -374,20 +340,11 @@ impl Compose {
             btn,
             (btn.width() / 2) as f64,
             btn.height() as f64,
-            // The design's order (docs/DESIGN.md, "Menus"), with sharing
-            // and the window toggle, which it does not draw, after spelling.
-            vec![
-                save,
-                self.format_entries(sender),
-                checks,
-                spelling,
-                share,
-                host,
-                delete,
-            ]
-            .into_iter()
-            .filter(|section| !section.is_empty())
-            .collect(),
+            // The design's entries, in its order (docs/DESIGN.md, "Menus").
+            vec![save, self.format_entries(sender), checks, spelling, delete]
+                .into_iter()
+                .filter(|section| !section.is_empty())
+                .collect(),
         );
     }
 
@@ -399,36 +356,6 @@ impl Compose {
                 origin,
             });
         }
-    }
-
-    /// Handles [`ComposeInput::SetDecorations`].
-    pub(super) fn on_set_decorations(&mut self, on: bool, widgets: &ComposeWidgets) {
-        self.decorations = on;
-        size_for_host(
-            &widgets.toolbar_root,
-            &widgets.header,
-            &widgets.editor_holder,
-            self.windowed,
-            on,
-        );
-    }
-
-    /// Handles [`ComposeInput::SetWindowed`].
-    pub(super) fn on_set_windowed(&mut self, windowed: bool, widgets: &ComposeWidgets) {
-        self.windowed = windowed;
-        self.editor.set_history_levels(history_levels(windowed));
-        size_for_host(
-            &widgets.toolbar_root,
-            &widgets.header,
-            &widgets.editor_holder,
-            windowed,
-            self.decorations,
-        );
-        // A compact reply grows its field rows back in a window (and
-        // sheds them again if it returns inline).
-        widgets
-            .fields_list
-            .set_visible(!(self.compact && !windowed) || self.fields_shown);
     }
 
     pub(super) fn show_initial_rows(&self, widgets: &ComposeWidgets, prefill: &ComposePrefill) {

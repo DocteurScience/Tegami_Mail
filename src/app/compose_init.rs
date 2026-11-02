@@ -257,7 +257,6 @@ impl AppModel {
         account_id: u32,
         prefill: ComposePrefill,
         windowed: bool,
-        can_toggle: bool,
     ) -> (u32, ComposeInit) {
         let accounts = compose_identities(
             &self.account_order,
@@ -290,7 +289,6 @@ impl AppModel {
             selected,
             own_addresses: own,
             windowed,
-            can_toggle,
             compact: false,
             decorations: true,
             format,
@@ -319,7 +317,6 @@ impl AppModel {
                     AppMsg::DiscardAutosave { id, origin }
                 }
                 ComposeOutput::DeleteDraft { id, origin } => AppMsg::DeleteDraft { id, origin },
-                ComposeOutput::ToggleWindow(id) => AppMsg::ComposeToggleWindow(id),
                 ComposeOutput::Close(id) => AppMsg::ComposeClosed(id),
                 ComposeOutput::History { id, undo, redo } => {
                     AppMsg::ComposeHistory { id, undo, redo }
@@ -329,7 +326,6 @@ impl AppModel {
                 }
                 ComposeOutput::SetSpellcheck(on) => AppMsg::Pref(PrefOutput::SetSpellcheck(on)),
                 ComposeOutput::DirectoryError(text) => AppMsg::DirectoryError(text),
-                ComposeOutput::ShowContacts => AppMsg::ShowContactsPage,
             })
     }
 

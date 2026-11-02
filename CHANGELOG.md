@@ -19,6 +19,12 @@
   **Spelling Language** list, which were only in Settings and the body's
   right-click menu.
 
+- **Removed: from the composer's More actions,** as the redesign has them
+  nowhere: **Save as Template**, the cloud upload of picked files (files
+  dropped on **Upload to Cloud** and a large attachment's **Send a Link**
+  still go there), **Open Contacts**, and the move between a window and
+  the reading pane.
+
 - **Added: On This Computer, folders kept on this computer** (#552).
   **Settings → Accounts → On This Computer → Add** adds an account with no
   server, as Evolution has, for an archive of mail moved or copied in from

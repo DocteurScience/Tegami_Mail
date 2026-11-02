@@ -298,7 +298,6 @@ impl Component for Compose {
             selected,
             own_addresses,
             windowed,
-            can_toggle,
             compact,
             decorations,
             format,
@@ -451,7 +450,6 @@ impl Component for Compose {
             outbox_origin,
             compose_id,
             windowed,
-            can_toggle,
             // A compact (fields-hidden) pane only makes sense once it is
             // addressed: replies arrive with To filled, forwards do not.
             compact: compact && !prefill.to.trim().is_empty(),
@@ -601,8 +599,6 @@ impl Component for Compose {
 
                 ComposeInput::OverflowMenu => self.on_overflow_menu(widgets, &sender),
 
-                ComposeInput::CloudAttach => self.on_cloud_attach(&sender, root),
-
                 ComposeInput::DroppedFiles(choice, paths) => {
                     self.on_dropped_files(choice, paths, &sender)
                 }
@@ -642,21 +638,11 @@ impl Component for Compose {
 
                 ComposeInput::DeleteDraft => self.on_delete_draft(&sender),
 
-                ComposeInput::ToggleWindowed => {
-                    let _ = sender.output(ComposeOutput::ToggleWindow(self.compose_id));
-                }
-
-                ComposeInput::SetDecorations(on) => self.on_set_decorations(on, widgets),
-
-                ComposeInput::SetWindowed(windowed) => self.on_set_windowed(windowed, widgets),
-
                 ComposeInput::FocusInitial => self.focus_initial(widgets),
 
                 ComposeInput::MarkFieldsDirty => self.fields_dirty = true,
 
                 ComposeInput::SaveDraftIfDirty => self.on_save_draft_if_dirty(&sender),
-
-                ComposeInput::OpenContacts => self.on_open_contacts(widgets, &sender, root),
 
                 ComposeInput::AttachFiles => self.on_attach_files(&sender, root),
                 ComposeInput::SendAsLink(index) => {
@@ -813,13 +799,9 @@ impl Component for Compose {
 
                 ComposeInput::SendBody(fields) => self.on_send_body(fields, &sender),
 
-                ComposeInput::SaveDraft => self.on_save_draft(false, widgets, &sender),
-                ComposeInput::SaveAsTemplate => self.on_save_draft(true, widgets, &sender),
+                ComposeInput::SaveDraft => self.on_save_draft(widgets, &sender),
 
-                ComposeInput::SaveDraftBody {
-                    fields,
-                    as_template,
-                } => self.on_save_draft_body(fields, as_template, &sender),
+                ComposeInput::SaveDraftBody { fields } => self.on_save_draft_body(fields, &sender),
 
                 ComposeInput::AutoSave => self.on_auto_save(&sender),
 

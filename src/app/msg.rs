@@ -660,9 +660,6 @@ pub(crate) enum AppMsg {
     /// The GNOME Contacts photo index changed (EDS sync, or the first load
     /// finished) — refresh the avatars that are on screen.
     ContactPhotosChanged,
-    /// Contacts, asked for from a composer, which may be a window of its
-    /// own: the main window comes forward to show it.
-    ShowContactsPage,
     /// Show the Contacts page in the main window.
     OpenContacts,
     /// The Contacts page's books and groups, for the sidebars.
@@ -1143,8 +1140,6 @@ pub(crate) enum AppMsg {
     /// A composer window's close button: the composer decides, as for
     /// Cancel, whether to ask first (#290).
     ComposeCloseRequested(u32),
-    /// Promote/demote the reader's inline composer (id) between inline and window.
-    ComposeToggleWindow(u32),
 
     // ---- on_accounts (accounts.rs) ----
     /// Open Settings at its accounts panel.
