@@ -3127,7 +3127,7 @@ msgid ""
 "Ctrl+0, puts it back to 100%."
 msgstr ""
 
-msgid "Writing in {format}"
+msgid "Format"
 msgstr ""
 
 msgid "Switch to plain text?"
@@ -3192,6 +3192,12 @@ msgid "Request a read receipt"
 msgstr ""
 
 msgid "Not every mail app sends one."
+msgstr ""
+
+msgid "Check Spelling"
+msgstr ""
+
+msgid "Spelling Language"
 msgstr ""
 
 msgid "Collapse into reader"
@@ -5807,9 +5813,6 @@ msgid "Grammar check failed: {error}"
 msgstr ""
 
 msgid "No suggestions"
-msgstr ""
-
-msgid "Spelling Language"
 msgstr ""
 
 msgid "Normal"

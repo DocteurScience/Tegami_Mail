@@ -411,15 +411,14 @@ impl Component for Compose {
                 });
             });
         }
-        let (format_btn, preview_btn, preview_content, translate_btn, signature_btn) =
-            add_toolbar_end_buttons(
-                &editor,
-                format,
-                accounts
-                    .get(selected)
-                    .is_some_and(|a| !a.signatures.is_empty()),
-                &sender,
-            );
+        let (preview_btn, preview_content, translate_btn, signature_btn) = add_toolbar_end_buttons(
+            &editor,
+            format,
+            accounts
+                .get(selected)
+                .is_some_and(|a| !a.signatures.is_empty()),
+            &sender,
+        );
 
         connect_editor(&editor, &sender);
 
@@ -469,7 +468,6 @@ impl Component for Compose {
             sign_expected: None,
             format,
             zoom_chip,
-            format_btn,
             translate_btn,
             signature_btn,
             translating: false,
@@ -748,8 +746,6 @@ impl Component for Compose {
                 }
 
                 ComposeInput::ToggleSign(on) => self.on_toggle_sign(on),
-
-                ComposeInput::FormatMenu => self.on_format_menu(&sender),
 
                 ComposeInput::TranslateMenu => self.on_translate_menu(&sender),
 

@@ -3465,8 +3465,9 @@ msgid ""
 "Ctrl+0, puts it back to 100%."
 msgstr ""
 
-msgid "Writing in {format}"
-msgstr "Σύνταξη σε {format}"
+#, fuzzy
+msgid "Format"
+msgstr "Κανονική"
 
 msgid "Switch to plain text?"
 msgstr "Μετάβαση σε απλό κείμενο;"
@@ -3537,6 +3538,13 @@ msgstr ""
 
 msgid "Not every mail app sends one."
 msgstr ""
+
+#, fuzzy
+msgid "Check Spelling"
+msgstr "Ορθογραφία"
+
+msgid "Spelling Language"
+msgstr "Γλώσσα ορθογραφικού ελέγχου"
 
 msgid "Collapse into reader"
 msgstr "Σύμπτυξη στην προβολή ανάγνωσης"
@@ -6393,9 +6401,6 @@ msgstr ""
 msgid "No suggestions"
 msgstr ""
 
-msgid "Spelling Language"
-msgstr "Γλώσσα ορθογραφικού ελέγχου"
-
 msgid "Normal"
 msgstr "Κανονική"
 
@@ -8286,6 +8291,9 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Writing in {format}"
+#~ msgstr "Σύνταξη σε {format}"
 
 #~ msgid "Send later"
 #~ msgstr "Αποστολή αργότερα"

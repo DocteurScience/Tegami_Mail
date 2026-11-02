@@ -324,6 +324,27 @@ impl Compose {
             .checked(self.request_receipt)
             .tooltip(i18n("Not every mail app sends one.")),
         );
+        // Spelling (mockup 06): the app-wide switch, and the languages
+        // while it is on, as the body's right-click menu offers them.
+        let spelling_on = crate::config::load_privacy().spellcheck;
+        let s = sender.clone();
+        let mut spelling = vec![MenuEntry::new(i18n("Check Spelling"), move || {
+            let _ = s.output(ComposeOutput::SetSpellcheck(!spelling_on));
+        })
+        .checked(spelling_on)];
+        let langs: Vec<MenuEntry> = crate::ui::rich_editor::spelling::spelling_choices()
+            .into_iter()
+            .map(|c| {
+                let s = sender.clone();
+                MenuEntry::new(c.label, move || {
+                    let _ = s.output(ComposeOutput::SetSpellcheckLangs(c.next.clone()));
+                })
+                .checked(c.on)
+            })
+            .collect();
+        if !langs.is_empty() {
+            spelling.push(MenuEntry::submenu(i18n("Spelling Language"), vec![langs]));
+        }
         let mut host = Vec::new();
         if self.can_toggle {
             host.push(if self.windowed {
@@ -353,10 +374,20 @@ impl Compose {
             btn,
             (btn.width() / 2) as f64,
             btn.height() as f64,
-            vec![save, share, checks, host, delete]
-                .into_iter()
-                .filter(|section| !section.is_empty())
-                .collect(),
+            // The design's order (docs/DESIGN.md, "Menus"), with sharing
+            // and the window toggle, which it does not draw, after spelling.
+            vec![
+                save,
+                self.format_entries(sender),
+                checks,
+                spelling,
+                share,
+                host,
+                delete,
+            ]
+            .into_iter()
+            .filter(|section| !section.is_empty())
+            .collect(),
         );
     }
 

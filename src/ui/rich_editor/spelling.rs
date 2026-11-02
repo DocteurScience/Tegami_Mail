@@ -26,20 +26,29 @@ pub(crate) fn apply_spellcheck() {
     ctx.set_spell_checking_languages(&langs);
 }
 
-/// The right-click menu's Spelling Language submenu (#365): the system
-/// language, then a check item per installed dictionary, ticked as the
-/// setting stands. Choosing one switches it as the matching switch in
-/// Settings does, and `cb` takes the setting that results.
-pub(super) fn append_spelling_menu(menu: &webkit6::ContextMenu, cb: &SpellLangsCallback) {
-    use gtk::prelude::ToVariant;
-    if !crate::config::load_privacy().spellcheck {
-        return;
+/// One choice of a Spelling Language menu: the system language (an empty
+/// code) or an installed dictionary, whether it is on, and the setting
+/// that choosing it would leave.
+pub(crate) struct SpellChoice {
+    pub(crate) label: String,
+    pub(crate) on: bool,
+    pub(crate) next: String,
+}
+
+/// The choices of a Spelling Language menu (#365), in its order: the system
+/// language, then each installed dictionary, ticked as the setting stands.
+/// Empty while checking is off or no dictionary is installed. Shared by the
+/// editor's right-click menu and the composer's More actions (mockup 06).
+pub(crate) fn spelling_choices() -> Vec<SpellChoice> {
+    let prefs = crate::config::load_privacy();
+    if !prefs.spellcheck {
+        return Vec::new();
     }
     let dicts = crate::desktop::spell::installed_dictionaries();
     if dicts.is_empty() {
-        return;
+        return Vec::new();
     }
-    let setting = crate::config::load_privacy().spellcheck_langs;
+    let setting = prefs.spellcheck_langs;
     let chosen = crate::desktop::spell::parse_languages(&setting);
     let system = crate::desktop::spell::system_spell_languages();
     let system_label = i18n_f(
@@ -49,28 +58,44 @@ pub(super) fn append_spelling_menu(menu: &webkit6::ContextMenu, cb: &SpellLangsC
             &crate::desktop::spell::spell_language_names(&system),
         )],
     );
-    let entries = std::iter::once((String::new(), system_label, chosen.is_empty())).chain(
-        dicts.iter().map(|d| {
+    std::iter::once((String::new(), system_label, chosen.is_empty()))
+        .chain(dicts.iter().map(|d| {
             (
                 d.clone(),
                 crate::desktop::spell::language_display_name(d),
                 chosen.contains(d),
             )
-        }),
-    );
+        }))
+        .map(|(code, label, on)| SpellChoice {
+            next: crate::desktop::spell::toggle_language(&setting, &code, !on, &system),
+            label,
+            on,
+        })
+        .collect()
+}
+
+/// The right-click menu's Spelling Language submenu (#365): the choices of
+/// [`spelling_choices`] as check items. Choosing one switches it as the
+/// matching switch in Settings does, and `cb` takes the setting that
+/// results.
+pub(super) fn append_spelling_menu(menu: &webkit6::ContextMenu, cb: &SpellLangsCallback) {
+    use gtk::prelude::ToVariant;
+    let choices = spelling_choices();
+    if choices.is_empty() {
+        return;
+    }
     let sub = webkit6::ContextMenu::new();
-    for (i, (code, label, on)) in entries.enumerate() {
+    for (i, SpellChoice { label, on, next }) in choices.into_iter().enumerate() {
         // A boolean state is what makes WebKit draw a check item.
         let action = gtk::gio::SimpleAction::new_stateful(
             &format!("tegami-spell-lang-{i}"),
             None,
             &on.to_variant(),
         );
-        let (cb, setting, system) = (cb.clone(), setting.clone(), system.clone());
+        let cb = cb.clone();
         action.connect_activate(move |_, _| {
-            let next = crate::desktop::spell::toggle_language(&setting, &code, !on, &system);
             if let Some(f) = cb.borrow().as_ref() {
-                f(next);
+                f(next.clone());
             }
         });
         sub.append(&webkit6::ContextMenuItem::from_gaction(

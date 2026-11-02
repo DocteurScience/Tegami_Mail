@@ -46,6 +46,9 @@ pub(crate) struct MenuEntry {
     activate: Box<dyn Fn()>,
     /// Sections of a nested page this entry opens instead of acting.
     submenu: Option<Vec<Vec<MenuEntry>>>,
+    /// A section's title (the composer's "Format"): a dim caption, not a
+    /// row that acts.
+    heading: bool,
 }
 
 impl MenuEntry {
@@ -62,6 +65,16 @@ impl MenuEntry {
             accel: None,
             activate: Box::new(activate),
             submenu: None,
+            heading: false,
+        }
+    }
+
+    /// A section's title, drawn as a dim caption above its entries
+    /// (docs/DESIGN.md, "Menus": the composer's Format section).
+    pub(crate) fn heading(label: impl Into<String>) -> Self {
+        Self {
+            heading: true,
+            ..Self::new(label, || {})
         }
     }
 
@@ -88,6 +101,7 @@ impl MenuEntry {
             accel: None,
             activate: Box::new(|| {}),
             submenu: Some(sections),
+            heading: false,
         }
     }
 
@@ -447,7 +461,20 @@ fn build_page(
                 accel,
                 activate,
                 submenu,
+                heading,
             } = entry;
+
+            if heading {
+                let caption = gtk::Label::new(Some(&label));
+                caption.set_xalign(0.0);
+                caption.add_css_class("dim-label");
+                caption.add_css_class("caption-heading");
+                caption.set_margin_start(10);
+                caption.set_margin_top(6);
+                caption.set_margin_bottom(2);
+                list.append(&caption);
+                continue;
+            }
 
             let row = gtk::Box::new(gtk::Orientation::Horizontal, 10);
             if selected {

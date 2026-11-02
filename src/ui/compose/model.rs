@@ -119,9 +119,7 @@ pub(crate) struct Compose {
     /// The body's zoom, shown at the start of the format bar while it is
     /// not 100%; see [`super::format::zoom_chip`].
     pub(super) zoom_chip: gtk::Label,
-    /// The format chooser and preview toggle, which live at the end of the
-    /// editor's formatting row rather than in the header.
-    pub(super) format_btn: gtk::Button,
+    /// The preview toggle, at the end of the editor's formatting row.
     /// Translate what is being written (#327), beside the format chooser;
     /// shown only with a translation service set up.
     pub(super) translate_btn: gtk::Button,

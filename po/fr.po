@@ -3426,8 +3426,8 @@ msgid ""
 "Ctrl+0, puts it back to 100%."
 msgstr ""
 
-msgid "Writing in {format}"
-msgstr "Rédaction en {format}"
+msgid "Format"
+msgstr "Format"
 
 msgid "Switch to plain text?"
 msgstr "Passer en texte brut ?"
@@ -3496,6 +3496,12 @@ msgstr "Demander un accusé de réception"
 
 msgid "Not every mail app sends one."
 msgstr "Toutes les applications de messagerie n’en envoient pas."
+
+msgid "Check Spelling"
+msgstr "Vérifier l’orthographe"
+
+msgid "Spelling Language"
+msgstr "Langue du correcteur"
 
 msgid "Collapse into reader"
 msgstr "Réduire dans le lecteur"
@@ -6324,9 +6330,6 @@ msgstr ""
 msgid "No suggestions"
 msgstr ""
 
-msgid "Spelling Language"
-msgstr "Langue du correcteur orthographique"
-
 msgid "Normal"
 msgstr "Normal"
 
@@ -8191,6 +8194,9 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Writing in {format}"
+#~ msgstr "Rédaction en {format}"
 
 #~ msgid "Send later"
 #~ msgstr "Envoyer plus tard"

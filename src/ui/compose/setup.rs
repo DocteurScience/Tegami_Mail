@@ -1,43 +1,29 @@
 //! Steps of the composer's `init` that belong to no one concern.
 
-use super::format::{format_icon, format_label};
 use super::messages::{ComposeInput, ComposeOutput};
 use super::Compose;
 use crate::config::ComposeFormat;
-use crate::i18n::{i18n, i18n_f};
+use crate::i18n::i18n;
 use crate::ui::rich_editor::RichEditor;
 use adw::prelude::*;
 use relm4::prelude::*;
 
-/// The buttons at the far end of the format bar: signature, translate,
-/// preview and the format chooser, in that order; and Attach a File, after
-/// the formatting tools.
+/// The buttons at the far end of the format bar: signature, translate and
+/// preview, in that order; and Attach a File, after the formatting tools.
+/// The format is chosen in More actions (docs/DESIGN.md, "Menus").
 pub(super) fn add_toolbar_end_buttons(
     editor: &RichEditor,
     format: ComposeFormat,
     has_signatures: bool,
     sender: &ComponentSender<Compose>,
 ) -> (
-    gtk::Button,
     gtk::ToggleButton,
     adw::ButtonContent,
     gtk::Button,
     gtk::Button,
 ) {
-    // The format chooser and the preview toggle belong with the other
-    // formatting controls, at the far end of the same row: a header
-    // button for them folded away exactly when the pane was narrow, and
-    // the format is a property of the body, not of the window.
-    // Icon alone: it sits at the end of a row of icons, and the label
-    // it wore for a while read as a second toolbar rather than as one
-    // more control on the same one. The tooltip still names the format.
-    let format_btn = gtk::Button::from_icon_name(format_icon(format));
-    format_btn.set_tooltip_text(Some(
-        i18n_f("Writing in {format}", &[("format", &format_label(format))]).as_str(),
-    ));
-    format_btn.add_css_class("flat");
-    format_btn.set_can_focus(false);
-    // The preview keeps its word. It is a state rather than an action,
+    // The preview toggle belongs with the other formatting controls, at
+    // the far end of the same row. It keeps its word. It is a state rather than an action,
     // and an eye on its own leaves which state to guesswork.
     let preview_content = adw::ButtonContent::builder()
         .icon_name("eye-open-negative-filled-symbolic")
@@ -51,20 +37,14 @@ pub(super) fn add_toolbar_end_buttons(
     preview_btn.set_visible(format.is_source());
     {
         let s = sender.input_sender().clone();
-        format_btn.connect_clicked(move |_| {
-            let _ = s.send(ComposeInput::FormatMenu);
-        });
-        let s = sender.input_sender().clone();
         preview_btn.connect_toggled(move |b| {
             let _ = s.send(ComposeInput::TogglePreview(b.is_active()));
         });
     }
-    // The chooser goes last, which in a right-aligned group is the far
-    // end of the row: it is there in every format, so it is the one
-    // that must not move. Preview comes and goes beside it, to its
-    // left, where an appearing button pushes nothing around.
-    // Translate (#327) goes before both: it is there in every format, but
-    // only once a translation service is set up.
+    // Preview goes last, the far end of the right-aligned group, where
+    // its coming and going pushes nothing around. Translate (#327) goes
+    // before it: it is there in every format, but only once a translation
+    // service is set up.
     let translate_btn = gtk::Button::from_icon_name("translate-symbolic");
     translate_btn.set_tooltip_text(Some(i18n("Translate what you wrote").as_str()));
     translate_btn.add_css_class("flat");
@@ -122,14 +102,7 @@ pub(super) fn add_toolbar_end_buttons(
     editor.toolbar_end().append(&signature_btn);
     editor.toolbar_end().append(&translate_btn);
     editor.toolbar_end().append(&preview_btn);
-    editor.toolbar_end().append(&format_btn);
-    (
-        format_btn,
-        preview_btn,
-        preview_content,
-        translate_btn,
-        signature_btn,
-    )
+    (preview_btn, preview_content, translate_btn, signature_btn)
 }
 
 /// What the editor tells the composer: images lifted out as attachments,

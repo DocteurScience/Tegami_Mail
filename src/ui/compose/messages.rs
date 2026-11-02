@@ -65,8 +65,6 @@ pub(crate) enum ComposeInput {
     AskPlain,
     /// Put the message in this format, now that nothing stands in the way.
     ApplyFormat(ComposeFormat),
-    /// The header's format button: the four formats as a menu.
-    FormatMenu,
     /// The Translate button (#327): read the quoted message's language
     /// first, so the menu can offer it.
     TranslateMenu,
@@ -292,6 +290,9 @@ pub(crate) enum ComposeOutput {
     /// menu (#365): the whole new setting, saved app-wide like the
     /// Settings switches.
     SetSpellcheckLangs(String),
+    /// Check spelling was switched in More actions: the app-wide setting,
+    /// as Settings → Composing has it.
+    SetSpellcheck(bool),
     /// A directory could not be asked (#307): for the status bar, once per
     /// composer.
     DirectoryError(String),

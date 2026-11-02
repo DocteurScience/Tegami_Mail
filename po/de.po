@@ -3421,8 +3421,9 @@ msgstr ""
 "Zoomstufe der Bildschirmanzeige (betrifft nicht die gesendete Nachricht). "
 "Ein Klick hierauf oder Strg+0 stellt die Standardgröße (100 %) wieder her."
 
-msgid "Writing in {format}"
-msgstr "Schreiben in: {format}"
+#, fuzzy
+msgid "Format"
+msgstr "Normaler Text"
 
 msgid "Switch to plain text?"
 msgstr "Zu reinem Text wechseln?"
@@ -3494,6 +3495,13 @@ msgstr "Lesebestätigung anfordern"
 msgid "Not every mail app sends one."
 msgstr ""
 "Nicht jede E-Mail-Anwendung unterstützt das Senden von Lesebestätigungen."
+
+#, fuzzy
+msgid "Check Spelling"
+msgstr "Rechtschreibung"
+
+msgid "Spelling Language"
+msgstr "Sprache für Rechtschreibprüfung"
 
 msgid "Collapse into reader"
 msgstr "Im Lesebereich einklappen"
@@ -6350,9 +6358,6 @@ msgstr ""
 msgid "No suggestions"
 msgstr ""
 
-msgid "Spelling Language"
-msgstr "Sprache für Rechtschreibprüfung"
-
 msgid "Normal"
 msgstr "Normaler Text"
 
@@ -8242,6 +8247,9 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Writing in {format}"
+#~ msgstr "Schreiben in: {format}"
 
 #~ msgid "Send later"
 #~ msgstr "Später senden"

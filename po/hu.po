@@ -3541,8 +3541,8 @@ msgid ""
 "Ctrl+0, puts it back to 100%."
 msgstr ""
 
-msgid "Writing in {format}"
-msgstr "{format} formátumben írás"
+msgid "Format"
+msgstr ""
 
 #, fuzzy
 msgid "Switch to plain text?"
@@ -3618,6 +3618,14 @@ msgstr ""
 
 msgid "Not every mail app sends one."
 msgstr ""
+
+#, fuzzy
+msgid "Check Spelling"
+msgstr "Helyesírás"
+
+#, fuzzy
+msgid "Spelling Language"
+msgstr "Helyesírás"
 
 msgid "Collapse into reader"
 msgstr "Olvasói nézetre váltás"
@@ -6542,10 +6550,6 @@ msgstr ""
 msgid "No suggestions"
 msgstr ""
 
-#, fuzzy
-msgid "Spelling Language"
-msgstr "Helyesírás"
-
 msgid "Normal"
 msgstr ""
 
@@ -8462,6 +8466,9 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Writing in {format}"
+#~ msgstr "{format} formátumben írás"
 
 #~ msgid "Send later"
 #~ msgstr "Küldés később"

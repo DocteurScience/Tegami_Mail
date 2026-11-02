@@ -190,15 +190,13 @@ pub(super) fn stage_forward(sender: &ComponentSender<AppModel>) {
     }
 }
 
-/// TEGAMI_SHOWCASE_COMPOSE_MENU=format opens the inline
-/// composer's format chooser; any other value opens its
-/// overflow menu. Pair either with TEGAMI_SHOWCASE_MENU=main.
+/// TEGAMI_SHOWCASE_COMPOSE_MENU (any value) opens the inline composer's
+/// More actions menu. Pair it with TEGAMI_SHOWCASE_MENU=main.
 pub(super) fn stage_compose_menu(sender: &ComponentSender<AppModel>) {
-    if let Ok(which) = std::env::var("TEGAMI_SHOWCASE_COMPOSE_MENU") {
+    if std::env::var_os("TEGAMI_SHOWCASE_COMPOSE_MENU").is_some() {
         let s = sender.clone();
-        let format = which == "format";
         gtk::glib::timeout_add_seconds_local_once(6, move || {
-            s.input(AppMsg::ShowcaseComposeMenu { format });
+            s.input(AppMsg::ShowcaseComposeMenu);
         });
     }
 }

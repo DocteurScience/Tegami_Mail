@@ -74,13 +74,9 @@ impl AppModel {
                     p.emit(PrefInput::ToolbarGapPreview { zone, index });
                 }
             }
-            AppMsg::ShowcaseComposeMenu { format } => {
+            AppMsg::ShowcaseComposeMenu => {
                 if let Some(r) = self.reader_compose.as_ref() {
-                    r.controller.emit(if format {
-                        ComposeInput::FormatMenu
-                    } else {
-                        ComposeInput::OverflowMenu
-                    });
+                    r.controller.emit(ComposeInput::OverflowMenu);
                 }
             }
             AppMsg::ShowcaseComposePreview => {

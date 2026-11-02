@@ -4,8 +4,7 @@
 use super::messages::ComposeInput;
 use super::Compose;
 use crate::config::ComposeFormat;
-use crate::i18n::{i18n, i18n_f};
-use crate::ui::context_menu::show_context_menu;
+use crate::i18n::i18n;
 use crate::ui::context_menu::MenuEntry;
 use crate::ui::rich_editor::SourceKind;
 use adw::prelude::*;
@@ -112,17 +111,8 @@ html:document.body?document.body.innerHTML:document.documentElement.outerHTML.sl
 text:window.__tegamiBodyText?window.__tegamiBodyText():''})"#;
 
 impl Compose {
-    /// The format chooser's icon and tooltip for the format it is currently
-    /// set to, and whether the preview toggle can afford its label.
+    /// Whether the preview toggle can afford its label.
     pub(super) fn dress_format_buttons(&self) {
-        self.format_btn.set_icon_name(format_icon(self.format));
-        self.format_btn.set_tooltip_text(Some(
-            i18n_f(
-                "Writing in {format}",
-                &[("format", &format_label(self.format))],
-            )
-            .as_str(),
-        ));
         // The one label on the row goes when there is no width for it, the
         // same trade the header makes when it folds.
         let preview = i18n("Preview");
@@ -130,26 +120,29 @@ impl Compose {
             .set_label(if self.narrow { "" } else { preview.as_str() });
     }
 
-    /// The four formats as menu entries, the current one wearing a tick in
-    /// place of its icon (as the OpenPGP toggles do).
-    fn format_entries(&self, sender: &ComponentSender<Self>) -> Vec<MenuEntry> {
-        [
+    /// The More actions menu's Format section (docs/DESIGN.md, "Menus";
+    /// mockup 06): its title, then the formats, the current one marked.
+    /// Each format's one-line explanation is its tooltip.
+    pub(super) fn format_entries(&self, sender: &ComponentSender<Self>) -> Vec<MenuEntry> {
+        let formats = [
             ComposeFormat::Rich,
+            ComposeFormat::Plain,
             ComposeFormat::Markdown,
             ComposeFormat::Html,
-            ComposeFormat::Plain,
         ]
         .into_iter()
         .map(|format| {
             let s = sender.clone();
-            let label = format!("{} — {}", format_label(format), format_hint(format));
-            MenuEntry::new(&label, move || {
+            MenuEntry::new(format_label(format), move || {
                 s.input_sender().emit(ComposeInput::SetFormat(format))
             })
             .icon(format_icon(format))
+            .tooltip(format_hint(format))
             .selected(format == self.format)
-        })
-        .collect()
+        });
+        std::iter::once(MenuEntry::heading(i18n("Format")))
+            .chain(formats)
+            .collect()
     }
 
     /// Handles [`ComposeInput::Zoom`].
@@ -164,17 +157,6 @@ impl Compose {
         ZOOM.store(zoom, std::sync::atomic::Ordering::Relaxed);
         self.editor.set_zoom(zoom);
         show_zoom(&self.zoom_chip, zoom);
-    }
-
-    /// Handles [`ComposeInput::FormatMenu`].
-    pub(super) fn on_format_menu(&mut self, sender: &ComponentSender<Self>) {
-        let btn = &self.format_btn;
-        show_context_menu(
-            btn,
-            (btn.width() / 2) as f64,
-            btn.height() as f64,
-            vec![self.format_entries(sender)],
-        );
     }
 
     /// Handles [`ComposeInput::SetFormat`].

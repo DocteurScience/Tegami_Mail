@@ -327,6 +327,7 @@ impl AppModel {
                 ComposeOutput::SetSpellcheckLangs(langs) => {
                     AppMsg::Pref(PrefOutput::SetSpellcheckLangs(langs))
                 }
+                ComposeOutput::SetSpellcheck(on) => AppMsg::Pref(PrefOutput::SetSpellcheck(on)),
                 ComposeOutput::DirectoryError(text) => AppMsg::DirectoryError(text),
                 ComposeOutput::ShowContacts => AppMsg::ShowContactsPage,
             })

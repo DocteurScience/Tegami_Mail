@@ -3427,8 +3427,9 @@ msgid ""
 "Ctrl+0, puts it back to 100%."
 msgstr ""
 
-msgid "Writing in {format}"
-msgstr "Escribiendo en {format}"
+#, fuzzy
+msgid "Format"
+msgstr "Normal"
 
 msgid "Switch to plain text?"
 msgstr "¿Cambiar a texto sin formato?"
@@ -3498,6 +3499,13 @@ msgstr ""
 
 msgid "Not every mail app sends one."
 msgstr ""
+
+#, fuzzy
+msgid "Check Spelling"
+msgstr "Ortografía"
+
+msgid "Spelling Language"
+msgstr "Idioma del corrector ortográfico"
 
 msgid "Collapse into reader"
 msgstr "Contraer en el lector"
@@ -6344,9 +6352,6 @@ msgstr ""
 msgid "No suggestions"
 msgstr ""
 
-msgid "Spelling Language"
-msgstr "Idioma del corrector ortográfico"
-
 msgid "Normal"
 msgstr "Normal"
 
@@ -8210,6 +8215,9 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Writing in {format}"
+#~ msgstr "Escribiendo en {format}"
 
 #~ msgid "Send later"
 #~ msgstr "Enviar más tarde"

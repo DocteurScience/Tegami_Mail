@@ -15,7 +15,7 @@ mod grammar;
 mod scripts;
 mod setup;
 mod signature;
-mod spelling;
+pub(crate) mod spelling;
 mod toolbar;
 
 pub(crate) use documents::remote_image_urls;

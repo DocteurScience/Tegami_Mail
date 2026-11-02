@@ -13,6 +13,12 @@
   redesign draws it (mockup 04). Mail already scheduled by an earlier
   version still goes out at its time from the Outbox.
 
+- **Changed: the composer's More actions menu follows the redesign**
+  (mockup 06). It holds the message's **Format**, in place of the button
+  at the end of the formatting row, and **Check Spelling** with the
+  **Spelling Language** list, which were only in Settings and the body's
+  right-click menu.
+
 - **Added: On This Computer, folders kept on this computer** (#552).
   **Settings → Accounts → On This Computer → Add** adds an account with no
   server, as Evolution has, for an archive of mail moved or copied in from

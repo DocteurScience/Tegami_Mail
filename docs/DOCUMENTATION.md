@@ -943,7 +943,7 @@ translations go into shows a Translate button above it. Which language a
 message is in is worked out on this computer; nothing is sent until the
 button is pressed.
 
-In the composer, the A文 button beside the format chooser translates what
+In the composer, the A文 button at the end of the formatting row translates what
 you are writing: the selection if there is one, otherwise everything you
 wrote above the quote and signature, which are left as they are. It offers
 the language of the message you are answering first, recognised offline,
@@ -1358,9 +1358,8 @@ The settings are in `grammar.toml`; the API key is in the keyring.
 
 A message can be written in any of four formats, chosen in **Settings →
 Composing → Write messages in** for new messages and switched for any single
-message with the format button at the right-hand end of the composer's
-formatting row, which wears the icon of the format it is set to and lists
-the others, the current one in your accent colour:
+message under **Format** in the composer's **More actions** (⋯) menu, the
+current one in your accent colour:
 
 - **Rich text:** the WYSIWYG editor with its formatting toolbar. The default.
   It is sent as HTML with a plain-text alternative, not as RTF.
@@ -1370,7 +1369,7 @@ the others, the current one in your accent colour:
 
 Markdown and HTML source are written as *source*: a monospace field, the formatting
 buttons gone from the row above it (they would go nowhere), and a **Preview**
-toggle beside the format chooser that swaps the source for the message as it
+toggle at the end of the row that swaps the source for the message as it
 will be sent. Nothing
 is sent as source. Markdown is rendered to HTML when the message goes out,
 and the Markdown you wrote travels as the plain-text alternative, so a
@@ -1388,7 +1387,7 @@ that came as plain text only, the way mailing lists and many of the people on
 them send it, opens in plain text, the original quoted as `>` lines that keep
 its indents. A message with an HTML part is answered in the format chosen in
 **Write messages in**. Drafts, templates and **Edit as New** open as they
-always have, and the format button still switches any one message.
+always have, and **More actions → Format** still switches any one message.
 
 **The Markdown Tegami Mail understands** is the dialect documented at
 [markdownguide.org](https://www.markdownguide.org/): all of the basic
