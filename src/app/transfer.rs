@@ -507,6 +507,16 @@ impl AppModel {
                     }
                     return;
                 }
+                if let Some(m) = self.pending_forward_attach.remove(&token) {
+                    match raw {
+                        Ok(raw) => self.open_forward_attached(&m, &raw, &sender),
+                        Err(e) => self.notice_error(i18n_f(
+                            "Could not forward the message: {e}",
+                            &[("e", &e)],
+                        )),
+                    }
+                    return;
+                }
                 if self.pending_draft_token == Some(token) {
                     self.pending_draft_token = None;
                     let Some((m, inline, extra)) = self.pending_draft.take() else {

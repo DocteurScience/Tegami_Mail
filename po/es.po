@@ -206,6 +206,10 @@ msgstr "Imprimir…"
 msgid "New Message"
 msgstr "Mensaje nuevo"
 
+#, fuzzy
+msgid "Could not forward the message: {e}"
+msgstr "No se pudo guardar el mensaje: {e}"
+
 msgid "Tegami Mail Address Book"
 msgstr "Libreta de direcciones de Tegami Mail"
 
@@ -1242,6 +1246,10 @@ msgstr "Intentar enviar este mensaje ahora"
 
 msgid "Send all"
 msgstr "Enviar todo"
+
+#, fuzzy
+msgid "Forward as Attachment"
+msgstr "Con archivos adjuntos"
 
 msgid "Delete {n} messages"
 msgstr "Eliminar {n} mensajes"

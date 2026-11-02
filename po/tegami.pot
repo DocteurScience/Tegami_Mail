@@ -194,6 +194,9 @@ msgstr ""
 msgid "New Message"
 msgstr ""
 
+msgid "Could not forward the message: {e}"
+msgstr ""
+
 msgid "Tegami Mail Address Book"
 msgstr ""
 
@@ -1150,6 +1153,9 @@ msgid "Try to send this message now"
 msgstr ""
 
 msgid "Send all"
+msgstr ""
+
+msgid "Forward as Attachment"
 msgstr ""
 
 msgid "Delete {n} messages"

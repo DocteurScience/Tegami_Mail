@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+- **Changed: the reader's More actions follows the redesign** (mockup 06):
+  **Forward as Attachment** (new: the message attached whole, as an
+  `.eml` file), **Mark as Unread**, **Mark as Spam**, **Move To…**, then
+  **Show Remote Content**, **View Source**, **Print…** and **Save as
+  File…**. The ⋯ is always there. Star, Snooze, Find in Message and Print
+  Preview left it; they stay in a message's right-click menu and on their
+  keys.
+
 - **Removed: the unified views.** The sidebar's top section, with
   **Inboxes**, **Starred**, **Sent**, **Drafts**, **Archive**, **Junk**,
   **Trash** and **Snoozed** merged across accounts, their account lists,

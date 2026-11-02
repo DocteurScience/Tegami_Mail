@@ -195,6 +195,7 @@ impl AppModel {
             | AppMsg::Reply
             | AppMsg::ReplyAll
             | AppMsg::Forward
+            | AppMsg::ForwardAsAttachment
             | AppMsg::ComposeInWindow(..)
             | AppMsg::EditAsNewCurrent
             | AppMsg::ComposeTo(..)

@@ -255,6 +255,7 @@ impl AppModel {
             next_transfer: 0,
             next_local_id: u32::MAX - 1,
             pending_saves: HashMap::new(),
+            pending_forward_attach: HashMap::new(),
             transfer_tally: TransferTally::default(),
             sidebar_split: None,
             app_title: None,

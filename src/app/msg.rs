@@ -594,6 +594,9 @@ pub(crate) enum AppMsg {
     ReplyAll,
     /// Forward the message the reader shows.
     Forward,
+    /// Forward the message the reader shows as an attached .eml, its
+    /// bytes as the server keeps them (mockup 06).
+    ForwardAsAttachment,
     /// A reply, reply to all, forward or new message in a window of its
     /// own, whatever Settings says (Gmail's Shift+R, Shift+A, Shift+F, d).
     ComposeInWindow(WindowCompose),

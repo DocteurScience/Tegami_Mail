@@ -311,7 +311,11 @@ impl AppModel {
     /// it can be switched off (Settings → Privacy) and then there is
     /// nothing to click, so the choice lives here too, and here it goes
     /// both ways: the banner can only ever let content in.
-    fn card_remote_entry(&self, m: &Message, sender: &ComponentSender<Self>) -> MenuEntry {
+    pub(super) fn card_remote_entry(
+        &self,
+        m: &Message,
+        sender: &ComponentSender<Self>,
+    ) -> MenuEntry {
         let showing = self.remote_allowed(m);
         let s = sender.input_sender().clone();
         let (account_id, id) = (m.account_id, m.id);

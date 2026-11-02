@@ -96,6 +96,7 @@ The full list. The [README](../README.md) carries a shorter one.
 - **Templates:** save a message as a template and start new ones from it,
   from the Templates folder or with Ctrl+Shift+N. Thunderbird's Templates
   folder is picked up as it is.
+- **Forward as attachment:** the whole message attached as an `.eml` file.
 - **Forwarding keeps the attachments:** the original's files are attached to
   the forward, ready to send on. A reply does not repeat them.
 - **Inline images:** dropped, pasted or picked from a file manager, resized

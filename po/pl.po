@@ -213,6 +213,10 @@ msgid "New Message"
 msgstr "Nowa wiadomość"
 
 #, fuzzy
+msgid "Could not forward the message: {e}"
+msgstr "Nie udało się zaktualizować wiadomości: {e}"
+
+#, fuzzy
 msgid "Tegami Mail Address Book"
 msgstr "Książka adresowa"
 
@@ -1324,6 +1328,10 @@ msgstr "Spróbuj teraz wysłać tę wiadomość"
 
 msgid "Send all"
 msgstr "Wyślij wszystkie"
+
+#, fuzzy
+msgid "Forward as Attachment"
+msgstr "Brak załączników"
 
 msgid "Delete {n} messages"
 msgstr "Usuń wiadomości ({n})"

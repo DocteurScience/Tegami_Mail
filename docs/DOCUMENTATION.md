@@ -1459,11 +1459,19 @@ Printing shows every message in full.
 ### The reader's toolbar
 
 The buttons above the message are in two groups. The left group, up to seven
-buttons, stays on the bar at every width: Reply, Reply All, Forward, Star,
-Archive, Spam and Delete by default. The right group folds into a ⋯ menu:
-always while **Settings → Appearance → Always fold the right group into ⋯**
-is on, as it is on a new install, and otherwise only when the pane is too
-narrow for it.
+buttons, stays on the bar at every width: Reply, Reply All, Forward,
+Archive and Delete by default. The right group folds away: always while
+**Settings → Appearance → Always fold the right group into ⋯** is on, as it
+is on a new install, and otherwise only when the pane is too narrow for it.
+Tags keeps its button while there is room.
+
+**More actions** (⋯), at the end, holds **Forward as Attachment**, **Mark as
+Unread**, **Mark as Spam** and **Move To…**, then **Show Remote Content**,
+**View Source**, **Print…** and **Save as File…**; one of them that is a
+button on the bar is left out. Forward as Attachment opens a composer with
+the message attached whole, as an `.eml` file. Star, Snooze and Find in
+Message are in a message's right-click menu and on their keys (**s**,
+**z**, **Ctrl+F**) when not on the bar.
 **Settings → Appearance → Toolbar** moves buttons between the groups, or out
 of the toolbar, by dragging them; right-clicking an empty part of the
 toolbar opens it there.

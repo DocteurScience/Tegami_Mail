@@ -206,6 +206,10 @@ msgstr "Imprimeix…"
 msgid "New Message"
 msgstr "Missatge nou"
 
+#, fuzzy
+msgid "Could not forward the message: {e}"
+msgstr "No s'ha pogut desar el missatge: {e}"
+
 msgid "Tegami Mail Address Book"
 msgstr "Llibreta d'adreces de l'Tegami Mail"
 
@@ -1232,6 +1236,10 @@ msgstr "Intenta enviar aquest missatge ara"
 
 msgid "Send all"
 msgstr "Envia-ho tot"
+
+#, fuzzy
+msgid "Forward as Attachment"
+msgstr "Té adjunts"
 
 msgid "Delete {n} messages"
 msgstr "Suprimeix {n} missatges"

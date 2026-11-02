@@ -21,6 +21,16 @@ use super::AppModelWidgets;
 /// layout; this value only stands in if that measurement comes back empty.
 const READER_ACTIONS_BREAKPOINT: f64 = 490.0;
 
+/// The header's items that More actions lists, in the design's order
+/// (docs/DESIGN.md, "Menus"), after Forward as Attachment. Tags is there
+/// only while its button is not.
+const DESIGN_MENU: [config::ToolbarItem; 4] = [
+    config::ToolbarItem::ReadUnread,
+    config::ToolbarItem::Spam,
+    config::ToolbarItem::MoveTo,
+    config::ToolbarItem::Tags,
+];
+
 /// The reader header's action buttons and fold breakpoint, kept for
 /// re-packing when the layout changes (see relayout_reader_toolbar).
 pub(super) struct ReaderToolbarWidgets {
@@ -217,15 +227,103 @@ impl AppModel {
         sections
     }
 
-    /// The reader toolbar's overflow: the right group, in its own order;
-    /// the left group stays on the bar at every width. Per-message actions
-    /// act on the reply target: the open message, or, in a conversation,
-    /// the one highlighted card. With none (or several) highlighted they
-    /// grey out.
+    /// The reader's More actions (docs/DESIGN.md, "Menus"; mockup 06):
+    /// Forward as Attachment, Mark as Unread, Mark as Spam and Move To,
+    /// then remote content, View Source, Print and Save as File. A button
+    /// the header shows is left out, so an action is in one place; the
+    /// Tags submenu stands in for its button when that is folded. Focus
+    /// Mode folds the header's buttons in too, as a first section.
+    /// Per-message actions act on the reply target: the open message, or,
+    /// in a conversation, the one highlighted card. With none (or several)
+    /// highlighted they grey out.
     fn toolbar_overflow_sections(
         &self,
         has_current: bool,
         focus: bool,
+        sender: &ComponentSender<Self>,
+    ) -> Vec<Vec<MenuEntry>> {
+        use config::ToolbarItem as T;
+        let mut sections = Vec::new();
+        if focus {
+            let mut header: Vec<T> = self.reader_toolbar.left.clone();
+            header.extend(
+                self.reader_toolbar
+                    .right
+                    .iter()
+                    .filter(|i| !DESIGN_MENU.contains(i)),
+            );
+            sections.extend(self.toolbar_item_sections(&[&header], has_current, sender));
+        }
+        let menu: Vec<T> = DESIGN_MENU
+            .iter()
+            .copied()
+            .filter(|i| focus || !self.toolbar_visible(*i))
+            .collect();
+        let target = self.reply_target();
+        let acts = target.is_some();
+        let mut first = vec![action_entry(
+            sender,
+            i18n("Forward as Attachment"),
+            "mail-forward",
+            || AppMsg::ForwardAsAttachment,
+            acts,
+        )];
+        for mut section in self.toolbar_item_sections(&[&menu], has_current, sender) {
+            first.append(&mut section);
+        }
+        sections.push(first);
+        let mut second = Vec::new();
+        if let Some(m) = target.as_ref() {
+            second.push(self.card_remote_entry(m, sender));
+        }
+        second.push(
+            action_entry(
+                sender,
+                i18n("View Source"),
+                "code",
+                || AppMsg::ViewSource,
+                acts,
+            )
+            .keys(MessageAction::row_keys(
+                crate::ui::message_list::RowAction::ViewSource,
+                false,
+                KeysOf::Main,
+            )),
+        );
+        second.push(
+            action_entry(
+                sender,
+                i18n("Print…"),
+                "printer",
+                || AppMsg::PrintMessage,
+                has_current,
+            )
+            .keys(Some("<Control>p")),
+        );
+        let s = sender.input_sender().clone();
+        second.push(
+            MenuEntry::new(i18n("Save as File…"), move || {
+                if let Some(m) = target.clone() {
+                    let _ = s.send(AppMsg::RowAction {
+                        action: crate::ui::message_list::RowAction::SaveAsFile,
+                        message: Box::new(m),
+                        conversation: Vec::new(),
+                    });
+                }
+            })
+            .icon("document-save-symbolic")
+            .enabled(acts),
+        );
+        sections.push(second);
+        sections
+    }
+
+    /// The menu entries of toolbar items, one section per group, in the
+    /// groups' order.
+    fn toolbar_item_sections(
+        &self,
+        groups: &[&[config::ToolbarItem]],
+        has_current: bool,
         sender: &ComponentSender<Self>,
     ) -> Vec<Vec<MenuEntry>> {
         use config::ToolbarItem as T;
@@ -239,13 +337,6 @@ impl AppModel {
             self.folder_kind(m.account_id, m.folder_id)
                 .is_some_and(|k| matches!(k, FolderKind::Trash | FolderKind::Junk))
         });
-        // Focus Mode folds the left group in as well, as a section of
-        // its own ahead of the right group.
-        let groups: Vec<&[T]> = if focus {
-            vec![&self.reader_toolbar.left, &self.reader_toolbar.right]
-        } else {
-            vec![&self.reader_toolbar.right]
-        };
         let item = |action: MessageAction, msg: fn() -> AppMsg, enabled: bool| {
             action_entry(sender, action.label(), action.icon(), msg, enabled)
                 .keys(action.keys(KeysOf::Main))
@@ -253,7 +344,7 @@ impl AppModel {
         let mut sections = Vec::new();
         for group in groups {
             let mut section = Vec::new();
-            for item_kind in group {
+            for item_kind in group.iter() {
                 if !self.reader_shown() && reader_only(*item_kind) {
                     continue;
                 }
@@ -355,15 +446,17 @@ impl AppModel {
             }
     }
 
-    /// The ⋯ overflow stands in for the folded right group: only while
-    /// collapsed, and only when that group has something to offer (the
-    /// Outbox keeps View Source there regardless).
+    /// Whether the header shows ⋯: always for a message, and in the
+    /// Outbox while its right group is folded.
     pub(super) fn reader_overflow_wanted(&self) -> bool {
         // Focus Mode folds the whole row in, so the ⋯ is the toolbar.
         if self.focus.active(config::FocusPart::ReaderToolbar) {
             return true;
         }
-        self.right_group_folded() && (self.showing_outbox || !self.reader_toolbar.right.is_empty())
+        // A message's More actions is always there (docs/DESIGN.md,
+        // "Header bars"); the Outbox's holds only what its folded group
+        // does.
+        !self.showing_outbox || self.right_group_folded()
     }
 
     /// Whether the right group is in the ⋯ menu: by choice, or for want of

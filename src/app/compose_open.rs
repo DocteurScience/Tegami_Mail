@@ -4,6 +4,7 @@
 use relm4::prelude::*;
 
 use crate::config;
+use crate::i18n::i18n_f;
 use crate::models::{FolderKind, Message};
 use crate::ui::compose::{ComposeInput, ComposePrefill};
 use crate::worker::MailRequest;
@@ -13,8 +14,8 @@ use super::hand_off::{FileHandOff, HandOffFiles};
 use super::model::AppModel;
 use super::msg::AppMsg;
 use super::prefill::{
-    first_recipient, forward_prefill, reply_all_prefill, reply_prefill, reply_subject,
-    stage_attachments,
+    first_recipient, forward_prefill, forward_subject, reply_all_prefill, reply_prefill,
+    reply_subject, stage_attachments,
 };
 use super::uri_queue::parse_mailto;
 use crate::mail::quote::editable_copy_html;
@@ -318,6 +319,56 @@ impl AppModel {
         }
     }
 
+    /// Forward as Attachment: the message's own bytes are asked for, and
+    /// the composer opens with them attached once they are here (see the
+    /// `RawExported` handler).
+    fn forward_as_attachment(&mut self, m: Message) {
+        let Some(path) = self.resolve_folder_path(&m) else {
+            return;
+        };
+        let token = self.next_transfer;
+        self.next_transfer += 1;
+        self.send_to(
+            m.account_id,
+            MailRequest::ExportRaw {
+                token,
+                path,
+                uid: m.uid,
+                for_reader: true,
+            },
+        );
+        self.pending_forward_attach.insert(token, m);
+    }
+
+    /// The bytes of a message forwarded as an attachment are here: a
+    /// window composer with the subject a forward has, an empty body and
+    /// the message attached as a .eml file, which goes out as
+    /// message/rfc822.
+    pub(super) fn open_forward_attached(
+        &mut self,
+        m: &Message,
+        raw: &[u8],
+        sender: &ComponentSender<Self>,
+    ) {
+        let dir =
+            std::env::temp_dir().join(format!("tegami-forward-eml-{}-{}", m.account_id, m.id));
+        let file = dir.join(super::uri_queue::eml_file_name(&m.subject));
+        if let Err(e) = std::fs::create_dir_all(&dir).and_then(|()| std::fs::write(&file, raw)) {
+            self.notice_error(i18n_f(
+                "Could not forward the message: {e}",
+                &[("e", &e.to_string())],
+            ));
+            return;
+        }
+        let prefill = ComposePrefill {
+            subject: forward_subject(&m.subject),
+            forwards: m.message_id.clone(),
+            attachments: vec![file],
+            ..Default::default()
+        };
+        self.open_compose(m.account_id, prefill, sender);
+    }
+
     /// "Edit as New Message" (#232): the message opened in the composer as a
     /// message of its own — the same recipients, subject, body and
     /// attachments, with none of the threading headers and no tie to what it
@@ -453,6 +504,12 @@ impl AppModel {
             AppMsg::Forward => {
                 if let Some(m) = self.compose_target() {
                     self.forward(m, true, &sender);
+                }
+            }
+
+            AppMsg::ForwardAsAttachment => {
+                if let Some(m) = self.compose_target() {
+                    self.forward_as_attachment(m);
                 }
             }
 

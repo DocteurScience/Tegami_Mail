@@ -215,6 +215,10 @@ msgid "New Message"
 msgstr "Új üzenet"
 
 #, fuzzy
+msgid "Could not forward the message: {e}"
+msgstr "Az üzenet nem frissíthető: {e}"
+
+#, fuzzy
 msgid "Tegami Mail Address Book"
 msgstr "Címjegyzék"
 
@@ -1306,6 +1310,10 @@ msgstr "Üzenet küldésének megkísérlése most"
 
 msgid "Send all"
 msgstr "Összes küldése"
+
+#, fuzzy
+msgid "Forward as Attachment"
+msgstr "Nincsenek mellékletek"
 
 msgid "Delete {n} messages"
 msgstr "{n} üzenet törlése"

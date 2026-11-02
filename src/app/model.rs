@@ -282,6 +282,9 @@ pub(crate) struct AppModel {
     pub(super) next_local_id: u32,
     /// The `ExportRaw` tokens of Save as File, with the name to offer.
     pub(super) pending_saves: HashMap<u64, String>,
+    /// The `ExportRaw` tokens of Forward as Attachment, with the message
+    /// being forwarded.
+    pub(super) pending_forward_attach: HashMap<u64, Message>,
     /// How the moves to other accounts under way are going, for the status
     /// line and the one report at the end.
     pub(super) transfer_tally: TransferTally,

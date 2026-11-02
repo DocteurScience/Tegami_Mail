@@ -209,6 +209,10 @@ msgstr "Εκτύπωση…"
 msgid "New Message"
 msgstr "Νέο μήνυμα"
 
+#, fuzzy
+msgid "Could not forward the message: {e}"
+msgstr "Δεν ήταν δυνατή η αποθήκευση του μηνύματος: {e}"
+
 msgid "Tegami Mail Address Book"
 msgstr "Βιβλίο διευθύνσεων Tegami Mail"
 
@@ -1248,6 +1252,10 @@ msgstr "Προσπάθεια αποστολής αυτού του μηνύματ
 
 msgid "Send all"
 msgstr "Αποστολή όλων"
+
+#, fuzzy
+msgid "Forward as Attachment"
+msgstr "Έχει συνημμένα"
 
 msgid "Delete {n} messages"
 msgstr "Διαγραφή {n} μηνυμάτων"
