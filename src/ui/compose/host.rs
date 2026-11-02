@@ -447,6 +447,90 @@ impl Compose {
     }
 }
 
+/// Name each field with a label at the start of its row, "From", "To",
+/// "Subject", in one column (docs/DESIGN.md, "Replying and composing"),
+/// instead of the title an entry row floats over its text. The rows keep
+/// their libadwaita markup; only where the name sits changes. A screen
+/// reader still hears each field's name: the label labels the text, and
+/// the From row, whose title it replaces, carries it as its own label.
+pub(super) fn label_fields(widgets: &ComposeWidgets) {
+    // Each label holds a reference to the group, so it lives as long as
+    // they do.
+    let group = gtk::SizeGroup::new(gtk::SizeGroupMode::Horizontal);
+    let label = |text: String| {
+        let l = gtk::Label::new(Some(&text));
+        l.set_xalign(0.0);
+        l.add_css_class("caption-heading");
+        l.add_css_class("compose-field-label");
+        group.add_widget(&l);
+        l
+    };
+    let from = i18n("From");
+    widgets.from_row.set_title("");
+    widgets.from_row.add_prefix(&label(from.clone()));
+    // The empty title's box still takes the row's spare width, pushing the
+    // address to the far end; gone, the address follows its label.
+    keep_hidden(widgets.from_row.upcast_ref(), "title");
+    widgets
+        .from_row
+        .update_property(&[gtk::accessible::Property::Label(&from)]);
+    for (row, name) in [
+        (&widgets.custom_from_row, i18n("From")),
+        (&widgets.reply_to_row, i18n("Reply-To")),
+        (&widgets.subject_row, i18n("Subject")),
+    ] {
+        let l = label(name);
+        row.set_title("");
+        row.add_prefix(&l);
+        // The empty floating title still keeps a line above the text,
+        // which then sits lower than its label.
+        keep_hidden(row.upcast_ref(), "title");
+        keep_hidden(row.upcast_ref(), "subtitle");
+        if let Some(text) = row.delegate() {
+            text.update_relation(&[gtk::accessible::Relation::LabelledBy(&[
+                l.upcast_ref::<gtk::Accessible>()
+            ])]);
+        }
+    }
+    for (row, name) in [
+        (&widgets.to_row, i18n("To")),
+        (&widgets.cc_row, i18n("Cc")),
+        (&widgets.bcc_row, i18n("Bcc")),
+    ] {
+        row.set_side_label(&label(name));
+    }
+}
+
+/// Hide the parts of a libadwaita row's header carrying the CSS class
+/// `class` (its title, once `label_fields` has emptied it), and keep them
+/// hidden should the row show them again. Only the row's own header is
+/// searched, not the popovers inside it.
+fn keep_hidden(row: &gtk::Widget, class: &str) {
+    let Some(header) = row.first_child() else {
+        return;
+    };
+    let mut todo = vec![header];
+    while let Some(w) = todo.pop() {
+        if w.has_css_class(class) {
+            w.set_visible(false);
+            w.connect_visible_notify(|w| {
+                if w.is_visible() {
+                    w.set_visible(false);
+                }
+            });
+            continue;
+        }
+        if w.is::<gtk::Popover>() {
+            continue;
+        }
+        let mut c = w.first_child();
+        while let Some(child) = c {
+            c = child.next_sibling();
+            todo.push(child);
+        }
+    }
+}
+
 pub(super) fn fold_on_first_map(
     root: &adw::BreakpointBin,
     widgets: &ComposeWidgets,

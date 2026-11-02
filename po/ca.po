@@ -3469,6 +3469,15 @@ msgstr ""
 msgid "Show Cc, Bcc and Reply-To"
 msgstr "Mostra Cc, Cco i Respon a"
 
+msgid "Reply-To"
+msgstr "Respon a"
+
+msgid "Cc"
+msgstr "Cc"
+
+msgid "Bcc"
+msgstr "Cco"
+
 #, fuzzy
 msgid "Reply to {name}"
 msgstr "Mou a {name}"
@@ -3620,15 +3629,6 @@ msgstr "Envia-ho ara"
 
 msgid "Download password for {name}: {password}"
 msgstr "Contrasenya de descàrrega per a {name}: {password}"
-
-msgid "Cc"
-msgstr "Cc"
-
-msgid "Bcc"
-msgstr "Cco"
-
-msgid "Reply-To"
-msgstr "Respon a"
 
 msgid "The name used here and in Contacts. Left blank, it is {own}."
 msgstr "El nom utilitzat aquí i a Contactes. Si es deixa buit, és {own}."

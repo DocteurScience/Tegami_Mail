@@ -393,6 +393,12 @@ impl RichEditor {
         &self.toolbar_end
     }
 
+    /// Add a control after the formatting tools that stays when they are
+    /// hidden (a message written as plain text or source).
+    pub(super) fn append_kept_tool(&self, widget: &impl IsA<gtk::Widget>) {
+        self.toolbar_commands.append_kept(widget);
+    }
+
     /// Read the current body HTML asynchronously.
     pub(super) fn extract_html(&self, cb: impl FnOnce(String) + 'static) {
         self.eval("window.__tegamiBodyHtml()", cb);

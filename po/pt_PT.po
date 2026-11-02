@@ -3495,6 +3495,15 @@ msgstr ""
 msgid "Show Cc, Bcc and Reply-To"
 msgstr "Mostrar Cc, Bcc e Responder a"
 
+msgid "Reply-To"
+msgstr "Responder a"
+
+msgid "Cc"
+msgstr "Cc"
+
+msgid "Bcc"
+msgstr "Bcc"
+
 #, fuzzy
 msgid "Reply to {name}"
 msgstr "Mover para {name}"
@@ -3648,15 +3657,6 @@ msgstr "Enviar agora em alternativa"
 
 msgid "Download password for {name}: {password}"
 msgstr "Palavra-passe de transferência de {name}: {password}"
-
-msgid "Cc"
-msgstr "Cc"
-
-msgid "Bcc"
-msgstr "Bcc"
-
-msgid "Reply-To"
-msgstr "Responder a"
 
 msgid "The name used here and in Contacts. Left blank, it is {own}."
 msgstr "O nome utilizado aqui e nos Contactos. Se ficar em branco, é {own}."

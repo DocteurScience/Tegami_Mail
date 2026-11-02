@@ -1616,6 +1616,42 @@ headerbar box.list-tools.compact button {
    edge on the view's ground, parted by hairlines, instead of floating as
    cards. The ground itself is set in the scheme stylesheet (theme.rs),
    which outranks this one. */
+/* The name at the start of each field (label_fields): the design's small,
+   dimmed label, in a column wide enough for the longest. 70 % of the text
+   colour keeps 4.5:1. */
+.compose-field-label {
+  opacity: 0.7;
+  margin-right: 12px;
+}
+/* A recipient row's label sits in its header, outside the entry area,
+   without the insets libadwaita gives an entry row's prefixes and text:
+   these margins put the label and the first pill in the same columns as
+   the other rows' label and text. */
+.recipient-row .compose-field-label {
+  margin-left: 6px;
+}
+.recipient-row .compose-field-label:dir(rtl) {
+  margin-left: 12px;
+  margin-right: 6px;
+}
+.recipient-row .compose-field-label ~ .editable-area .recipient-flow {
+  margin-left: 12px;
+}
+.recipient-row .compose-field-label ~ .editable-area .recipient-flow:dir(rtl) {
+  margin-left: 0;
+  margin-right: 12px;
+}
+.compose-field-label:dir(rtl) {
+  margin-right: 0;
+  margin-left: 12px;
+}
+
+/* The fields are named by those labels, so an entry row's pencil has
+   nothing left to say. */
+.compose-fields row.entry image.edit-icon {
+  opacity: 0;
+}
+
 .compose-windowed .compose-pane {
   padding: 0;
   border-spacing: 0;

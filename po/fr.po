@@ -3499,6 +3499,15 @@ msgstr "Cc / Cci"
 msgid "Show Cc, Bcc and Reply-To"
 msgstr "Afficher Cc, Cci et Répondre à"
 
+msgid "Reply-To"
+msgstr "Répondre à"
+
+msgid "Cc"
+msgstr "Cc"
+
+msgid "Bcc"
+msgstr "Cci"
+
 msgid "Reply to {name}"
 msgstr "Répondre à {name}"
 
@@ -3650,15 +3659,6 @@ msgstr "Envoyer maintenant à la place"
 
 msgid "Download password for {name}: {password}"
 msgstr "Mot de passe de téléchargement pour {name} : {password}"
-
-msgid "Cc"
-msgstr "Cc"
-
-msgid "Bcc"
-msgstr "Cci"
-
-msgid "Reply-To"
-msgstr "Répondre à"
 
 msgid "The name used here and in Contacts. Left blank, it is {own}."
 msgstr "Le nom utilisé ici et dans Contacts. Laissé vide, il s’agit de {own}."

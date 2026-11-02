@@ -3665,6 +3665,15 @@ msgstr ""
 msgid "Show Cc, Bcc and Reply-To"
 msgstr "Wyświetl pola „DW”, „UDW” i „Odpowiedź do”"
 
+msgid "Reply-To"
+msgstr "Odpowiedź do"
+
+msgid "Cc"
+msgstr "DW"
+
+msgid "Bcc"
+msgstr "UDW"
+
 #, fuzzy
 msgid "Reply to {name}"
 msgstr "Przenieś do katalogu {name}"
@@ -3829,15 +3838,6 @@ msgstr "Zamiast tego wyślij teraz"
 
 msgid "Download password for {name}: {password}"
 msgstr "Hasło do pobrania pliku {name}: {password}"
-
-msgid "Cc"
-msgstr "DW"
-
-msgid "Bcc"
-msgstr "UDW"
-
-msgid "Reply-To"
-msgstr "Odpowiedź do"
 
 msgid "The name used here and in Contacts. Left blank, it is {own}."
 msgstr ""

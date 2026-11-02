@@ -3613,6 +3613,15 @@ msgstr ""
 msgid "Show Cc, Bcc and Reply-To"
 msgstr "Másolat, titkos másolat és válaszcím megjelenítése"
 
+msgid "Reply-To"
+msgstr "Válaszcím"
+
+msgid "Cc"
+msgstr "Másolat (Cc)"
+
+msgid "Bcc"
+msgstr "Titkos másolat (Bcc)"
+
 #, fuzzy
 msgid "Reply to {name}"
 msgstr "Áthelyzés ide: {name}"
@@ -3778,15 +3787,6 @@ msgstr "Küldés inkább most"
 
 msgid "Download password for {name}: {password}"
 msgstr "Letöltési jelszó ehhez: {name}: {password}"
-
-msgid "Cc"
-msgstr "Másolat (Cc)"
-
-msgid "Bcc"
-msgstr "Titkos másolat (Bcc)"
-
-msgid "Reply-To"
-msgstr "Válaszcím"
 
 msgid "The name used here and in Contacts. Left blank, it is {own}."
 msgstr ""

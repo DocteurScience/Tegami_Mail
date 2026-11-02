@@ -42,7 +42,7 @@ mod imp {
 
     #[derive(Default)]
     pub(crate) struct RecipientRow {
-        header: gtk::Box,
+        pub(super) header: gtk::Box,
         pub(super) empty_title: gtk::Label,
         pub(super) title: gtk::Label,
         pub(super) flow: super::PillFlow,
@@ -56,6 +56,9 @@ mod imp {
         /// for typing.
         pub(super) busy: Cell<bool>,
         pub(super) focused: Cell<bool>,
+        /// The name is a label at the start of the row rather than a title
+        /// floating over the text (see `set_side_label`).
+        pub(super) side: Cell<bool>,
         /// Every recipient field of the composer, this one included, in
         /// order: a selection spans them, and a pill's menu moves to them.
         pub(super) fields: RefCell<Vec<glib::WeakRef<super::RecipientRow>>>,
@@ -310,16 +313,36 @@ impl RecipientRow {
         imp.busy.set(false);
     }
 
+    /// Name the field with `label`, put at the start of the row, instead of
+    /// the title floating over the text: the composer's rows read "To" then
+    /// the recipients, on one line (docs/DESIGN.md, "Replying and
+    /// composing"). The text is labelled by it for screen readers, as it
+    /// was by the title, and the pencil goes too: the label says what the
+    /// row is for.
+    pub(crate) fn set_side_label(&self, label: &gtk::Label) {
+        let imp = self.imp();
+        imp.side.set(true);
+        label.set_valign(gtk::Align::Center);
+        imp.header.prepend(label);
+        imp.text
+            .update_relation(&[gtk::accessible::Relation::LabelledBy(&[label
+                .upcast_ref::<gtk::Accessible>(
+            )])]);
+        self.update_state();
+    }
+
     /// The floating title, the focus ring and the pencil, as an entry row
-    /// shows them.
+    /// shows them; with a side label, only the focus ring.
     fn update_state(&self) {
         let imp = self.imp();
         let focused = imp.focused.get();
         let empty = imp.pills.borrow().is_empty() && imp.text.text().is_empty();
         let floating = focused || !empty;
-        imp.empty_title.set_visible(!floating);
+        let side = imp.side.get();
+        imp.empty_title.set_visible(!floating && !side);
+        imp.title.set_visible(!side);
         imp.title.set_opacity(if floating { 1.0 } else { 0.0 });
-        imp.edit_icon.set_visible(!focused);
+        imp.edit_icon.set_visible(!focused && !side);
         if focused {
             self.add_css_class("focused");
         } else {

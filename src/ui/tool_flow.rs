@@ -51,6 +51,8 @@ mod imp {
         /// The tools hidden as one (a message written as source), the end
         /// widget staying.
         pub(super) hidden: Cell<bool>,
+        /// Tools that stay when the rest are hidden (see `append_kept`).
+        pub(super) kept: RefCell<Vec<gtk::Widget>>,
     }
 
     #[glib::object_subclass]
@@ -152,6 +154,16 @@ impl ToolFlow {
         child.set_child_visible(!self.imp().hidden.get());
     }
 
+    /// Add a tool at the end of the flow that stays when the others are
+    /// hidden: an action every format has, such as attaching a file, which
+    /// then starts the row on its own.
+    pub(crate) fn append_kept(&self, child: &impl IsA<gtk::Widget>) {
+        self.append(child);
+        let child = child.as_ref();
+        child.set_child_visible(true);
+        self.imp().kept.borrow_mut().push(child.clone());
+    }
+
     /// The widget that holds the top right corner (top left, right to left).
     pub(super) fn set_end(&self, end: &impl IsA<gtk::Widget>) {
         let end = end.as_ref();
@@ -159,13 +171,15 @@ impl ToolFlow {
         self.imp().end.replace(Some(end.clone()));
     }
 
-    /// Show or hide every tool at once; the end widget stays.
+    /// Show or hide every tool at once; the end widget and the kept tools
+    /// stay.
     pub(super) fn set_tools_shown(&self, on: bool) {
         self.imp().hidden.set(!on);
         let end = self.imp().end.borrow().clone();
+        let kept = self.imp().kept.borrow().clone();
         let mut child = self.first_child();
         while let Some(c) = child {
-            if Some(&c) != end.as_ref() {
+            if Some(&c) != end.as_ref() && !kept.contains(&c) {
                 c.set_child_visible(on);
             }
             child = c.next_sibling();
