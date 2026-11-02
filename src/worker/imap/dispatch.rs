@@ -343,9 +343,6 @@ impl<E: Emit> ImapWorker<E> {
                 self.on_move_messages(path, uids, dest).await
             }
             MailRequest::Locate { message_id } => self.on_locate(message_id).await,
-            MailRequest::ScanAttachments { folder_path } => {
-                self.on_scan_attachments(folder_path).await
-            }
             MailRequest::FindKeywords => self.on_find_keywords().await,
             MailRequest::Quota => self.on_quota().await,
             // Only On This Computer imports mail (#552).

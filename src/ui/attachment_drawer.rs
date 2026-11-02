@@ -39,6 +39,7 @@ use crate::ui::attachment_io::open_bytes;
 
 mod actions;
 mod cells;
+mod deleting;
 mod motion;
 mod setup;
 

@@ -213,20 +213,6 @@ impl<E: Fn(WorkerEvent)> GraphWorker<E> {
             MailRequest::RefreshFlags { .. } => {
                 emit(WorkerEvent::FlagsSynced { paths: Vec::new() })
             }
-            // Graph has no equivalent of BODYSTRUCTURE in the shape this path
-            // uses: attachments come out of the raw MIME it downloads, so
-            // describing one costs the same as fetching it. Listing them
-            // through /messages/{id}/attachments would work, but it is a
-            // different call on a backend there is no account here to test
-            // against — so a Microsoft account's gallery still shows what has
-            // been downloaded rather than reaching back through the archive.
-            MailRequest::ScanAttachments { folder_path } => {
-                emit(WorkerEvent::AttachmentsScanned {
-                    folder_path,
-                    added: 0,
-                    remaining: 0,
-                });
-            }
             // Cache-only, exactly like the IMAP path: assemble the conversation
             // from every folder's cached summaries.
             MailRequest::LoadRelated { message_id, ids } => {

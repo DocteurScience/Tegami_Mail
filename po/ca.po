@@ -557,12 +557,6 @@ msgstr "Destinació"
 msgid "Move Folder"
 msgstr "Mou la carpeta"
 
-msgid "Attachments"
-msgstr "Adjunts"
-
-msgid "Toggle sidebar"
-msgstr "Mostra o amaga la barra lateral"
-
 msgid "Always do this (change it in Settings → System → GNOME Files)"
 msgstr "Fes-ho sempre (canvia-ho a Paràmetres → Sistema → Fitxers del GNOME)"
 
@@ -882,6 +876,9 @@ msgstr ""
 
 msgid "Bold, italic, underline"
 msgstr "Negreta, cursiva, subratllat"
+
+msgid "Attachments"
+msgstr "Adjunts"
 
 msgid "Preview the highlighted attachment"
 msgstr "Previsualitza l'adjunt ressaltat"
@@ -2831,6 +2828,9 @@ msgstr "Baixa"
 msgid "Import OpenPGP key"
 msgstr "Importa una clau OpenPGP"
 
+msgid "Deleting…"
+msgstr "S'està suprimint…"
+
 msgid "Show the attachments"
 msgstr "Mostra els adjunts"
 
@@ -2871,138 +2871,6 @@ msgstr "Desa tots els adjunts"
 
 msgid "The file could not be opened"
 msgstr "No s'ha pogut obrir el fitxer"
-
-msgid "Go to Message"
-msgstr "Ves al missatge"
-
-msgid "Deleting…"
-msgstr "S'està suprimint…"
-
-msgid "Unknown"
-msgstr "Desconegut"
-
-#. Deliberately counts messages, not attachments: until a message has
-#. been described there is no telling how many files it holds.
-msgid "Indexing {n} messages…"
-msgstr "S'estan indexant {n} missatges…"
-
-msgid "Loading more…"
-msgstr "S'està carregant més…"
-
-msgid "{shown} of {total}"
-msgstr "{shown} de {total}"
-
-msgid "File"
-msgstr "Fitxer"
-
-msgid "Search by sender, subject, type, filename…"
-msgstr "Cerca per remitent, assumpte, tipus, nom de fitxer…"
-
-msgid "Loading attachments…"
-msgstr "S'estan carregant els adjunts…"
-
-msgid "No attachments"
-msgstr "No hi ha adjunts"
-
-msgid "Attachments from your inboxes will appear here."
-msgstr "Els adjunts de les teves bústies d'entrada apareixeran aquí."
-
-msgid "No matching attachments"
-msgstr "No hi ha adjunts coincidents"
-
-msgid ""
-"Try a different search, or check which accounts and folders the footer is "
-"pulling from."
-msgstr ""
-"Prova una cerca diferent, o comprova de quins comptes i carpetes està "
-"extraient el peu de pàgina."
-
-msgid "Type"
-msgstr "Tipus"
-
-msgid "Size"
-msgstr "Mida"
-
-msgid "Thumbnail grid"
-msgstr "Graella de miniatures"
-
-msgid "Table"
-msgstr "Taula"
-
-msgid "Show only this account"
-msgstr "Mostra només aquest compte"
-
-msgid "Folders to pull from"
-msgstr "Carpetes d'on extreure"
-
-msgid "Include Archive"
-msgstr "Inclou l'arxiu"
-
-msgid "Include other folders"
-msgstr "Inclou altres carpetes"
-
-msgid "Everything that is not an inbox or an archive"
-msgstr "Tot el que no sigui una bústia d'entrada o un arxiu"
-
-msgid "Pulling attachments from"
-msgstr "S'estan extraient adjunts de"
-
-msgid "Show only this type"
-msgstr "Mostra només aquest tipus"
-
-msgid "All types"
-msgstr "Tots els tipus"
-
-msgid "PDFs"
-msgstr "PDFs"
-
-msgid "Documents"
-msgstr "Documents"
-
-msgid "Archives"
-msgstr "Arxius"
-
-msgid "Audio & Video"
-msgstr "Àudio i vídeo"
-
-msgid "Other"
-msgstr "Altres"
-
-msgid "Newest first"
-msgstr "Més recents primer"
-
-msgid "Oldest first"
-msgstr "Més antics primer"
-
-msgid "Name (A–Z)"
-msgstr "Nom (A–Z)"
-
-msgid "Name (Z–A)"
-msgstr "Nom (Z–A)"
-
-msgid "Sender (Z–A)"
-msgstr "Remitent (Z–A)"
-
-msgid "Largest first"
-msgstr "Més grans primer"
-
-msgid "Smallest first"
-msgstr "Més petits primer"
-
-msgid "Type (A–Z)"
-msgstr "Tipus (A–Z)"
-
-msgid "Type (Z–A)"
-msgstr "Tipus (Z–A)"
-
-msgid "Previous"
-msgstr "Anterior"
-
-msgid "Next"
-msgstr "Següent"
-
-msgid "Open in the default app"
-msgstr "Obre amb l'aplicació per defecte"
 
 msgid "Welcome to Tegami Mail, formerly {old}"
 msgstr "Benvingut a l'Tegami Mail, abans {old}"
@@ -4126,6 +3994,9 @@ msgstr "Elimina la foto"
 msgid "Choose a Photo"
 msgstr "Tria una foto"
 
+msgid "{shown} of {total}"
+msgstr "{shown} de {total}"
+
 msgid "In Directories"
 msgstr "Als directoris"
 
@@ -4304,6 +4175,9 @@ msgid_plural "This will remove {n} contacts from your address books."
 msgstr[0] "Això eliminarà {n} contacte de la teva llibreta d'adreces."
 msgstr[1] "Això eliminarà {n} contactes de les teves llibretes d'adreces."
 
+msgid "Toggle sidebar"
+msgstr "Mostra o amaga la barra lateral"
+
 msgid "Import vCard files into the Tegami Mail address book"
 msgstr "Importa fitxers vCard a la llibreta d'adreces de l'Tegami Mail"
 
@@ -4469,8 +4343,17 @@ msgstr ""
 "• Actualitzar «xdg-desktop-portal» i tornar a iniciar sessió pot arreglar "
 "l'obertura directa d'enllaços"
 
+msgid "Previous"
+msgstr "Anterior"
+
+msgid "Next"
+msgstr "Següent"
+
 msgid "{name} · {current} of {total}"
 msgstr "{name} · {current} de {total}"
+
+msgid "Loading more…"
+msgstr "S'està carregant més…"
 
 msgid "No Messages"
 msgstr "No hi ha missatges"
@@ -6046,12 +5929,6 @@ msgid "When off, only its chevron or a double click activates the fold."
 msgstr ""
 "Quan està desactivat, només el seu xevró o un doble clic activen el replegat."
 
-msgid "Show Attachments Browser"
-msgstr "Mostra el navegador d'adjunts"
-
-msgid "Browse every account's attachments in one place."
-msgstr "Navega pels adjunts de cada compte en un sol lloc."
-
 msgid "Expand the sidebar on hover"
 msgstr "Expandeix la barra lateral en passar-hi per sobre"
 
@@ -6536,6 +6413,9 @@ msgstr "Troba etiquetes…"
 #, fuzzy
 msgid "Create “{name}”"
 msgstr "Vols suprimir «{name}»?"
+
+msgid "File"
+msgstr "Fitxer"
 
 msgid "Script"
 msgstr ""
@@ -8124,6 +8004,124 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Go to Message"
+#~ msgstr "Ves al missatge"
+
+#~ msgid "Unknown"
+#~ msgstr "Desconegut"
+
+#~ msgid "Indexing {n} messages…"
+#~ msgstr "S'estan indexant {n} missatges…"
+
+#~ msgid "Search by sender, subject, type, filename…"
+#~ msgstr "Cerca per remitent, assumpte, tipus, nom de fitxer…"
+
+#~ msgid "Loading attachments…"
+#~ msgstr "S'estan carregant els adjunts…"
+
+#~ msgid "No attachments"
+#~ msgstr "No hi ha adjunts"
+
+#~ msgid "Attachments from your inboxes will appear here."
+#~ msgstr "Els adjunts de les teves bústies d'entrada apareixeran aquí."
+
+#~ msgid "No matching attachments"
+#~ msgstr "No hi ha adjunts coincidents"
+
+#~ msgid ""
+#~ "Try a different search, or check which accounts and folders the footer is "
+#~ "pulling from."
+#~ msgstr ""
+#~ "Prova una cerca diferent, o comprova de quins comptes i carpetes està "
+#~ "extraient el peu de pàgina."
+
+#~ msgid "Type"
+#~ msgstr "Tipus"
+
+#~ msgid "Size"
+#~ msgstr "Mida"
+
+#~ msgid "Thumbnail grid"
+#~ msgstr "Graella de miniatures"
+
+#~ msgid "Table"
+#~ msgstr "Taula"
+
+#~ msgid "Show only this account"
+#~ msgstr "Mostra només aquest compte"
+
+#~ msgid "Folders to pull from"
+#~ msgstr "Carpetes d'on extreure"
+
+#~ msgid "Include Archive"
+#~ msgstr "Inclou l'arxiu"
+
+#~ msgid "Include other folders"
+#~ msgstr "Inclou altres carpetes"
+
+#~ msgid "Everything that is not an inbox or an archive"
+#~ msgstr "Tot el que no sigui una bústia d'entrada o un arxiu"
+
+#~ msgid "Pulling attachments from"
+#~ msgstr "S'estan extraient adjunts de"
+
+#~ msgid "Show only this type"
+#~ msgstr "Mostra només aquest tipus"
+
+#~ msgid "All types"
+#~ msgstr "Tots els tipus"
+
+#~ msgid "PDFs"
+#~ msgstr "PDFs"
+
+#~ msgid "Documents"
+#~ msgstr "Documents"
+
+#~ msgid "Archives"
+#~ msgstr "Arxius"
+
+#~ msgid "Audio & Video"
+#~ msgstr "Àudio i vídeo"
+
+#~ msgid "Other"
+#~ msgstr "Altres"
+
+#~ msgid "Newest first"
+#~ msgstr "Més recents primer"
+
+#~ msgid "Oldest first"
+#~ msgstr "Més antics primer"
+
+#~ msgid "Name (A–Z)"
+#~ msgstr "Nom (A–Z)"
+
+#~ msgid "Name (Z–A)"
+#~ msgstr "Nom (Z–A)"
+
+#~ msgid "Sender (Z–A)"
+#~ msgstr "Remitent (Z–A)"
+
+#~ msgid "Largest first"
+#~ msgstr "Més grans primer"
+
+#~ msgid "Smallest first"
+#~ msgstr "Més petits primer"
+
+#~ msgid "Type (A–Z)"
+#~ msgstr "Tipus (A–Z)"
+
+#~ msgid "Type (Z–A)"
+#~ msgstr "Tipus (Z–A)"
+
+#~ msgid "Open in the default app"
+#~ msgstr "Obre amb l'aplicació per defecte"
+
+#~ msgid "Show Attachments Browser"
+#~ msgstr "Mostra el navegador d'adjunts"
+
+#~ msgid "Browse every account's attachments in one place."
+#~ msgstr "Navega pels adjunts de cada compte en un sol lloc."
 
 #~ msgid "The From has to be one address, such as Ann <ann@example.com>."
 #~ msgstr ""

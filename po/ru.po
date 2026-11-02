@@ -592,12 +592,6 @@ msgstr "Обновлённое приглашение"
 msgid "Move Folder"
 msgstr "Переместить папку"
 
-msgid "Attachments"
-msgstr "Вложения"
-
-msgid "Toggle sidebar"
-msgstr "Показать/скрыть боковую панель"
-
 msgid "Always do this (change it in Settings → System → GNOME Files)"
 msgstr ""
 "Всегда выполнять это действие (можно изменить в Параметрах → Система → "
@@ -934,6 +928,9 @@ msgstr ""
 
 msgid "Bold, italic, underline"
 msgstr "Полужирный, курсив, подчёркнутый"
+
+msgid "Attachments"
+msgstr "Вложения"
 
 msgid "Preview the highlighted attachment"
 msgstr "Предпросмотр выделенного вложения"
@@ -2974,6 +2971,9 @@ msgstr "Скачать…"
 msgid "Import OpenPGP key"
 msgstr "Импортировать ключ OpenPGP"
 
+msgid "Deleting…"
+msgstr "Удаление…"
+
 msgid "Show the attachments"
 msgstr "Показать вложения"
 
@@ -3015,138 +3015,6 @@ msgstr "Сохранить все вложения"
 
 msgid "The file could not be opened"
 msgstr "Не удалось открыть файл"
-
-msgid "Go to Message"
-msgstr "Перейти к сообщению"
-
-msgid "Deleting…"
-msgstr "Удаление…"
-
-msgid "Unknown"
-msgstr ""
-
-#. Deliberately counts messages, not attachments: until a message has
-#. been described there is no telling how many files it holds.
-msgid "Indexing {n} messages…"
-msgstr "Индексация {n} сообщений…"
-
-msgid "Loading more…"
-msgstr "Загрузка остальных…"
-
-msgid "{shown} of {total}"
-msgstr "{shown} из {total}"
-
-msgid "File"
-msgstr ""
-
-msgid "Search by sender, subject, type, filename…"
-msgstr "Поиск по отправителю, теме, типу, имени файла…"
-
-msgid "Loading attachments…"
-msgstr "Загрузка вложений…"
-
-msgid "No attachments"
-msgstr "Нет вложений"
-
-msgid "Attachments from your inboxes will appear here."
-msgstr "Вложения из ваших почтовых ящиков появятся здесь."
-
-msgid "No matching attachments"
-msgstr "Вложения не найдены"
-
-msgid ""
-"Try a different search, or check which accounts and folders the footer is "
-"pulling from."
-msgstr ""
-"Попробуйте изменить поисковый запрос или проверьте, из каких учётных записей "
-"и папок подвал получает данные."
-
-msgid "Type"
-msgstr ""
-
-msgid "Size"
-msgstr ""
-
-msgid "Thumbnail grid"
-msgstr "Сетка миниатюр"
-
-msgid "Table"
-msgstr "Таблица"
-
-msgid "Show only this account"
-msgstr "Показывать только эту учётную запись"
-
-msgid "Folders to pull from"
-msgstr "Папки для получения сообщений"
-
-msgid "Include Archive"
-msgstr "Включать архив"
-
-msgid "Include other folders"
-msgstr "Включать другие папки"
-
-msgid "Everything that is not an inbox or an archive"
-msgstr "Всё, что не является входящими или архивом"
-
-msgid "Pulling attachments from"
-msgstr "Загрузить вложения с сервера"
-
-msgid "Show only this type"
-msgstr "Показывать только этот тип"
-
-msgid "All types"
-msgstr "Все типы"
-
-msgid "PDFs"
-msgstr "Документы PDF"
-
-msgid "Documents"
-msgstr "Документы"
-
-msgid "Archives"
-msgstr "Архивы"
-
-msgid "Audio & Video"
-msgstr "Аудио и видео"
-
-msgid "Other"
-msgstr "Другое"
-
-msgid "Newest first"
-msgstr "Сначала новые"
-
-msgid "Oldest first"
-msgstr "Сначала старые"
-
-msgid "Name (A–Z)"
-msgstr "По имени (А–Я)"
-
-msgid "Name (Z–A)"
-msgstr "По имени (Я–А)"
-
-msgid "Sender (Z–A)"
-msgstr "Отправитель (Я–А)"
-
-msgid "Largest first"
-msgstr "Сначала большие"
-
-msgid "Smallest first"
-msgstr "Сначала маленькие"
-
-msgid "Type (A–Z)"
-msgstr "По типу (А–Я)"
-
-msgid "Type (Z–A)"
-msgstr "По типу (Я–А)"
-
-msgid "Previous"
-msgstr "Назад"
-
-msgid "Next"
-msgstr "Вперёд"
-
-msgid "Open in the default app"
-msgstr "Открыть в приложении по умолчанию"
 
 msgid "Welcome to Tegami Mail, formerly {old}"
 msgstr "Добро пожаловать в Tegami Mail (ранее — {old})"
@@ -4306,6 +4174,9 @@ msgstr "Удалить тег"
 msgid "Choose a Photo"
 msgstr "Выбрать картинку"
 
+msgid "{shown} of {total}"
+msgstr "{shown} из {total}"
+
 #, fuzzy
 msgid "In Directories"
 msgstr "Каталоги LDAP"
@@ -4493,6 +4364,9 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
+msgid "Toggle sidebar"
+msgstr "Показать/скрыть боковую панель"
+
 msgid "Import vCard files into the Tegami Mail address book"
 msgstr ""
 
@@ -4666,8 +4540,17 @@ msgstr ""
 "• Обновление пакета «xdg-desktop-portal» и повторный вход в систему могут "
 "исправить прямое открытие ссылок"
 
+msgid "Previous"
+msgstr "Назад"
+
+msgid "Next"
+msgstr "Вперёд"
+
 msgid "{name} · {current} of {total}"
 msgstr "{name} · {current} из {total}"
+
+msgid "Loading more…"
+msgstr "Загрузка остальных…"
 
 msgid "No Messages"
 msgstr "Нет сообщений"
@@ -6293,13 +6176,6 @@ msgstr ""
 msgid "When off, only its chevron or a double click activates the fold."
 msgstr ""
 
-#, fuzzy
-msgid "Show Attachments Browser"
-msgstr "Панель вложений"
-
-msgid "Browse every account's attachments in one place."
-msgstr ""
-
 msgid "Expand the sidebar on hover"
 msgstr "Раскрывать боковую панель при наведении"
 
@@ -6789,6 +6665,9 @@ msgstr "Найти теги…"
 #, fuzzy
 msgid "Create “{name}”"
 msgstr "Очистить «{name}»?"
+
+msgid "File"
+msgstr ""
 
 msgid "Script"
 msgstr ""
@@ -8417,6 +8296,113 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Go to Message"
+#~ msgstr "Перейти к сообщению"
+
+#~ msgid "Indexing {n} messages…"
+#~ msgstr "Индексация {n} сообщений…"
+
+#~ msgid "Search by sender, subject, type, filename…"
+#~ msgstr "Поиск по отправителю, теме, типу, имени файла…"
+
+#~ msgid "Loading attachments…"
+#~ msgstr "Загрузка вложений…"
+
+#~ msgid "No attachments"
+#~ msgstr "Нет вложений"
+
+#~ msgid "Attachments from your inboxes will appear here."
+#~ msgstr "Вложения из ваших почтовых ящиков появятся здесь."
+
+#~ msgid "No matching attachments"
+#~ msgstr "Вложения не найдены"
+
+#~ msgid ""
+#~ "Try a different search, or check which accounts and folders the footer is "
+#~ "pulling from."
+#~ msgstr ""
+#~ "Попробуйте изменить поисковый запрос или проверьте, из каких учётных "
+#~ "записей и папок подвал получает данные."
+
+#~ msgid "Thumbnail grid"
+#~ msgstr "Сетка миниатюр"
+
+#~ msgid "Table"
+#~ msgstr "Таблица"
+
+#~ msgid "Show only this account"
+#~ msgstr "Показывать только эту учётную запись"
+
+#~ msgid "Folders to pull from"
+#~ msgstr "Папки для получения сообщений"
+
+#~ msgid "Include Archive"
+#~ msgstr "Включать архив"
+
+#~ msgid "Include other folders"
+#~ msgstr "Включать другие папки"
+
+#~ msgid "Everything that is not an inbox or an archive"
+#~ msgstr "Всё, что не является входящими или архивом"
+
+#~ msgid "Pulling attachments from"
+#~ msgstr "Загрузить вложения с сервера"
+
+#~ msgid "Show only this type"
+#~ msgstr "Показывать только этот тип"
+
+#~ msgid "All types"
+#~ msgstr "Все типы"
+
+#~ msgid "PDFs"
+#~ msgstr "Документы PDF"
+
+#~ msgid "Documents"
+#~ msgstr "Документы"
+
+#~ msgid "Archives"
+#~ msgstr "Архивы"
+
+#~ msgid "Audio & Video"
+#~ msgstr "Аудио и видео"
+
+#~ msgid "Other"
+#~ msgstr "Другое"
+
+#~ msgid "Newest first"
+#~ msgstr "Сначала новые"
+
+#~ msgid "Oldest first"
+#~ msgstr "Сначала старые"
+
+#~ msgid "Name (A–Z)"
+#~ msgstr "По имени (А–Я)"
+
+#~ msgid "Name (Z–A)"
+#~ msgstr "По имени (Я–А)"
+
+#~ msgid "Sender (Z–A)"
+#~ msgstr "Отправитель (Я–А)"
+
+#~ msgid "Largest first"
+#~ msgstr "Сначала большие"
+
+#~ msgid "Smallest first"
+#~ msgstr "Сначала маленькие"
+
+#~ msgid "Type (A–Z)"
+#~ msgstr "По типу (А–Я)"
+
+#~ msgid "Type (Z–A)"
+#~ msgstr "По типу (Я–А)"
+
+#~ msgid "Open in the default app"
+#~ msgstr "Открыть в приложении по умолчанию"
+
+#, fuzzy
+#~ msgid "Show Attachments Browser"
+#~ msgstr "Панель вложений"
 
 #~ msgid "The From has to be one address, such as Ann <ann@example.com>."
 #~ msgstr ""

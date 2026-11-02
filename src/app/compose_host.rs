@@ -48,7 +48,6 @@ impl AppModel {
         // slides down over the contact card); from the gallery there is
         // no slot, so bring the mail panes back first — the composer
         // would otherwise open invisibly behind the stack.
-        self.leave_gallery();
         let account = self
             .current
             .as_ref()

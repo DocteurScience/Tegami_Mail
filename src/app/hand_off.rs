@@ -181,7 +181,6 @@ impl AppModel {
     /// Settings → System → GNOME Files says: straight into a new message, a
     /// draft or a reply, or a dialog offering the three.
     pub(super) fn begin_hand_off(&mut self, hand_off: FileHandOff, sender: &ComponentSender<Self>) {
-        self.leave_gallery();
         let dropped = hand_off.dropped.clone();
         let attached = hand_off.files.len();
         // The focus watch runs from here: whichever window opens next (the
@@ -594,7 +593,6 @@ impl AppModel {
                     DropChoice::Inline => prefill.inline_files = paths,
                     DropChoice::Cloud => prefill.cloud_uploads = paths,
                 }
-                self.leave_gallery();
                 let account = self
                     .current
                     .as_ref()
@@ -616,7 +614,6 @@ impl AppModel {
                     r.controller.emit(ComposeInput::AddAttachments(paths));
                     return;
                 }
-                self.leave_gallery();
                 self.hand_off_size_check(
                     FileHandOff {
                         base: ComposePrefill::default(),

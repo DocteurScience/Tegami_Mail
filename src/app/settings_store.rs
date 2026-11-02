@@ -56,7 +56,6 @@ impl AppModel {
             notifications: self.notifications_enabled,
             notification_content: self.notification_content,
             notification_buttons: self.notification_buttons.to_list(),
-            show_attachments: self.show_attachments,
             settings_open_accounts: self.settings_open_accounts,
             card_actions_hover: self.card_actions_hover,
             card_actions_auto: self.card_actions_auto,

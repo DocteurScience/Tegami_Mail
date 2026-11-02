@@ -10,7 +10,6 @@ use crate::config::{self, AccountConfig};
 use crate::models::{Account, Attachment, Folder, Message};
 use crate::ui::accounts::AccountsWindow;
 use crate::ui::attachment_drawer::AttachmentDrawer;
-use crate::ui::attachments_gallery::AttachmentsGallery;
 use crate::ui::compose::Compose;
 use crate::ui::contacts_page::ContactsPage;
 use crate::ui::message_list::{MessageList, QuickFilters};
@@ -451,8 +450,6 @@ pub(crate) struct AppModel {
     pub(super) notification_content: bool,
     /// Which action buttons a new-mail notification carries (#244).
     pub(super) notification_buttons: config::NotificationButtons,
-    /// Whether the sidebar's footer shows the "Attachments" row.
-    pub(super) show_attachments: bool,
     /// Whether the settings window opens on Accounts (vs Preferences).
     pub(super) settings_open_accounts: bool,
     /// The Settings category last shown this session, to reopen on.
@@ -554,7 +551,7 @@ pub(crate) struct AppModel {
     /// UID: a UID alone names a different message in every folder (#317).
     pub(super) thread_cache: HashMap<BodyKey, Vec<Message>>,
     /// Attachments being deleted from the server (#289), shown as such in
-    /// the drawer and the gallery until the worker answers.
+    /// the drawer until the worker answers.
     pub(super) deleting_attachments: Vec<AttachmentTarget>,
     /// Showcase only: answer the next delete question with Delete.
     pub(super) showcase_confirm_delete: bool,
@@ -822,13 +819,10 @@ pub(crate) struct AppModel {
     pub(super) message_view: Controller<MessageView>,
     /// In-message attachment thumbnail drawer, docked below the reader body.
     pub(super) attachment_drawer: Controller<AttachmentDrawer>,
-    pub(super) gallery: Controller<AttachmentsGallery>,
     /// The in-app contacts view behind the sidebar's Contacts row.
     pub(super) contacts_page: Controller<ContactsPage>,
     /// Whether the content area shows the contacts view.
     pub(super) showing_contacts: bool,
-    /// True when the attachments gallery replaces the mail panes.
-    pub(super) showing_gallery: bool,
     /// Whether the Outbox is showing instead of the mail panes.
     pub(super) showing_outbox: bool,
     /// Messages waiting to be sent, per account, as last reported by its worker.
@@ -867,12 +861,6 @@ pub(crate) struct AppModel {
     /// copies (tens of thousands of messages for an Archive) made after.
     /// Until then the folder's cache stands for the slice.
     pub(super) unified_unfilled: std::collections::HashSet<(u32, u32)>,
-    /// How many attachments the gallery's current query matches, carried
-    /// between pages so only the first one pays for the COUNT.
-    pub(super) gallery_total: u32,
-    /// Messages each in-scope folder has still to have described, so the
-    /// gallery's footer can show one figure for the whole scan.
-    pub(super) gallery_scan_left: HashMap<(u32, String), u32>,
     /// Messages popped out into their own windows, keyed by (account, message).
     pub(super) popouts: HashMap<(u32, u32), PopOut>,
     /// The conversation currently shown in the reader (newest first), with bodies

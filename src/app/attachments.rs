@@ -10,7 +10,6 @@ use crate::i18n::{i18n, i18n_f};
 use crate::models::Attachment;
 use crate::ui::attachment_drawer::AttachmentDrawerInput;
 use crate::ui::attachment_io::save_attachment_as;
-use crate::ui::attachments_gallery::GalleryInput;
 use crate::ui::message_list::MessageListInput;
 use crate::ui::message_view::MessageViewInput;
 use crate::ui::message_window::MessageWindowInput;
@@ -64,17 +63,6 @@ pub(crate) struct AttachmentTarget {
     pub(super) uid: u32,
     pub(super) name: String,
     pub(super) size: u64,
-}
-
-impl AttachmentTarget {
-    fn gallery_key(&self) -> crate::ui::attachments_gallery::FileKey {
-        (
-            self.account_id,
-            self.path.clone(),
-            self.uid,
-            self.name.clone(),
-        )
-    }
 }
 
 impl AppModel {
@@ -451,8 +439,6 @@ impl AppModel {
                         AttachmentDrawerInput::MarkDeleting(t.name.clone(), t.size as usize),
                     ));
                 }
-                self.gallery
-                    .emit(GalleryInput::SetDeleting(t.gallery_key(), true));
                 self.deleting_attachments.push(t.clone());
                 // TEGAMI_SHOWCASE_DELETE_HOLD=<seconds> holds the request back,
                 // so the file can be captured while it is being deleted.
@@ -486,10 +472,7 @@ impl AppModel {
                 name,
                 size,
             } => {
-                if let Some(t) = self.take_deleting(account_id, message_id, &name) {
-                    self.gallery
-                        .emit(GalleryInput::SetDeleting(t.gallery_key(), false));
-                }
+                self.take_deleting(account_id, message_id, &name);
                 if let Some(p) = self.popouts.get(&(account_id, message_id)) {
                     p.controller.emit(MessageWindowInput::Drawer(
                         AttachmentDrawerInput::NotDeleted(name.clone(), size as usize),
@@ -521,12 +504,6 @@ impl AppModel {
         // The file fades out where it is shown; the lists that
         // follow wait for it.
         let t = self.take_deleting(account_id, message_id, &name);
-        self.gallery.emit(GalleryInput::Removed((
-            account_id,
-            path.clone(),
-            uid,
-            name.clone(),
-        )));
         let shown = t.map_or(size, |t| t.size) as usize;
         self.attachment_drawer
             .emit(AttachmentDrawerInput::Deleted(name.clone(), shown));
@@ -607,25 +584,4 @@ pub(super) fn schedule_download_prune() {
             gtk::glib::ControlFlow::Continue
         });
     });
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn attachment_targets_key_the_gallery_by_path_uid_and_name() {
-        let t = AttachmentTarget {
-            account_id: 1,
-            message_id: 2,
-            path: "INBOX".into(),
-            uid: 3,
-            name: "a.pdf".into(),
-            size: 4,
-        };
-        assert_eq!(
-            t.gallery_key(),
-            (1, "INBOX".to_string(), 3, "a.pdf".to_string())
-        );
-    }
 }

@@ -187,10 +187,6 @@ impl Preferences {
             .general
             .notify_spam_row
             .set_active(init.notification_buttons.spam);
-        widgets
-            .sidebar
-            .show_attachments_row
-            .set_active(init.show_attachments);
     }
 
     /// Settings → Sidebar: the unified section, placements, start view, folder

@@ -107,16 +107,6 @@ pub(super) async fn run_mock(
                     hit: None,
                 });
             }
-            // Demo mode seeds its in-memory cache up front (see
-            // `backend::seed_demo_cache`), so every attachment is already
-            // described and there is nothing to ask a server about.
-            MailRequest::ScanAttachments { folder_path } => {
-                emit(WorkerEvent::AttachmentsScanned {
-                    folder_path,
-                    added: 0,
-                    remaining: 0,
-                });
-            }
             MailRequest::Quota => emit(WorkerEvent::Quota(Some(MailboxQuota {
                 used: 2_310_000_000,
                 limit: 15_000_000_000,

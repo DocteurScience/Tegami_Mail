@@ -565,12 +565,6 @@ msgstr "προορισμός"
 msgid "Move Folder"
 msgstr "Μετακίνηση φακέλου"
 
-msgid "Attachments"
-msgstr "Συνημμένα"
-
-msgid "Toggle sidebar"
-msgstr "Εναλλαγή πλευρικής στήλης"
-
 msgid "Always do this (change it in Settings → System → GNOME Files)"
 msgstr "Να γίνεται πάντα αυτό (αλλαγή στις Ρυθμίσεις → Σύστημα → Αρχεία GNOME)"
 
@@ -892,6 +886,9 @@ msgstr ""
 
 msgid "Bold, italic, underline"
 msgstr "Έντονα, πλάγια, υπογραμμισμένα"
+
+msgid "Attachments"
+msgstr "Συνημμένα"
 
 msgid "Preview the highlighted attachment"
 msgstr "Προεπισκόπηση του επιλεγμένου συνημμένου"
@@ -2871,6 +2868,9 @@ msgstr "Λήψη"
 msgid "Import OpenPGP key"
 msgstr "Εισαγωγή κλειδιού OpenPGP"
 
+msgid "Deleting…"
+msgstr "Διαγραφή…"
+
 msgid "Show the attachments"
 msgstr "Εμφάνιση συνημμένων"
 
@@ -2911,138 +2911,6 @@ msgstr "Αποθήκευση όλων των συνημμένων"
 
 msgid "The file could not be opened"
 msgstr "Δεν ήταν δυνατό το άνοιγμα του αρχείου"
-
-msgid "Go to Message"
-msgstr "Μετάβαση στο μήνυμα"
-
-msgid "Deleting…"
-msgstr "Διαγραφή…"
-
-msgid "Unknown"
-msgstr "Άγνωστο"
-
-#. Deliberately counts messages, not attachments: until a message has
-#. been described there is no telling how many files it holds.
-msgid "Indexing {n} messages…"
-msgstr "Ευρετηρίαση {n} μηνυμάτων…"
-
-msgid "Loading more…"
-msgstr "Φόρτωση περισσότερων…"
-
-msgid "{shown} of {total}"
-msgstr "{shown} από {total}"
-
-msgid "File"
-msgstr "Αρχείο"
-
-msgid "Search by sender, subject, type, filename…"
-msgstr "Αναζήτηση κατά αποστολέα, θέμα, τύπο, όνομα αρχείου…"
-
-msgid "Loading attachments…"
-msgstr "Φόρτωση συνημμένων…"
-
-msgid "No attachments"
-msgstr "Δεν υπάρχουν συνημμένα"
-
-msgid "Attachments from your inboxes will appear here."
-msgstr "Τα συνημμένα από τα εισερχόμενά σας θα εμφανίζονται εδώ."
-
-msgid "No matching attachments"
-msgstr "Δεν υπάρχουν συνημμένα που να ταιριάζουν"
-
-msgid ""
-"Try a different search, or check which accounts and folders the footer is "
-"pulling from."
-msgstr ""
-"Δοκιμάστε διαφορετική αναζήτηση ή ελέγξτε από ποιους λογαριασμούς και "
-"φακέλους αντλεί στοιχεία το υποσέλιδο."
-
-msgid "Type"
-msgstr "Τύπος"
-
-msgid "Size"
-msgstr "Μέγεθος"
-
-msgid "Thumbnail grid"
-msgstr "Πλέγμα μικρογραφιών"
-
-msgid "Table"
-msgstr "Πίνακας"
-
-msgid "Show only this account"
-msgstr "Εμφάνιση μόνο αυτού του λογαριασμού"
-
-msgid "Folders to pull from"
-msgstr "Φάκελοι άντλησης"
-
-msgid "Include Archive"
-msgstr "Συμπερίληψη Αρχείου"
-
-msgid "Include other folders"
-msgstr "Συμπερίληψη άλλων φακέλων"
-
-msgid "Everything that is not an inbox or an archive"
-msgstr "Όλα όσα δεν βρίσκονται στα εισερχόμενα ή στο αρχείο"
-
-msgid "Pulling attachments from"
-msgstr "Άντληση συνημμένων από"
-
-msgid "Show only this type"
-msgstr "Εμφάνιση μόνο αυτού του τύπου"
-
-msgid "All types"
-msgstr "Όλοι οι τύποι"
-
-msgid "PDFs"
-msgstr "PDF"
-
-msgid "Documents"
-msgstr "Έγγραφα"
-
-msgid "Archives"
-msgstr "Αρχεία"
-
-msgid "Audio & Video"
-msgstr "Ήχος και βίντεο"
-
-msgid "Other"
-msgstr "Άλλα"
-
-msgid "Newest first"
-msgstr "Νεότερα πρώτα"
-
-msgid "Oldest first"
-msgstr "Παλαιότερα πρώτα"
-
-msgid "Name (A–Z)"
-msgstr "Όνομα (Α–Ω)"
-
-msgid "Name (Z–A)"
-msgstr "Όνομα (Ω–Α)"
-
-msgid "Sender (Z–A)"
-msgstr "Αποστολέας (Ω–Α)"
-
-msgid "Largest first"
-msgstr "Μεγαλύτερα πρώτα"
-
-msgid "Smallest first"
-msgstr "Μικρότερα πρώτα"
-
-msgid "Type (A–Z)"
-msgstr "Τύπος (Α–Ω)"
-
-msgid "Type (Z–A)"
-msgstr "Τύπος (Ω–Α)"
-
-msgid "Previous"
-msgstr "Προηγούμενο"
-
-msgid "Next"
-msgstr "Επόμενο"
-
-msgid "Open in the default app"
-msgstr "Άνοιγμα στην προεπιλεγμένη εφαρμογή"
 
 msgid "Welcome to Tegami Mail, formerly {old}"
 msgstr "Καλώς ορίσατε στο Tegami Mail, πρώην {old}"
@@ -4195,6 +4063,9 @@ msgstr "Αφαίρεση φωτογραφίας"
 msgid "Choose a Photo"
 msgstr "Επιλογή φωτογραφίας"
 
+msgid "{shown} of {total}"
+msgstr "{shown} από {total}"
+
 msgid "In Directories"
 msgstr "Στους καταλόγους"
 
@@ -4373,6 +4244,9 @@ msgid_plural "This will remove {n} contacts from your address books."
 msgstr[0] "Αυτό θα αφαιρέσει {n} επαφή από τον κατάλογο διευθύνσεών σας."
 msgstr[1] "Αυτό θα αφαιρέσει {n} επαφές από τους καταλόγους διευθύνσεών σας."
 
+msgid "Toggle sidebar"
+msgstr "Εναλλαγή πλευρικής στήλης"
+
 msgid "Import vCard files into the Tegami Mail address book"
 msgstr "Εισαγωγή αρχείων vCard στο βιβλίο διευθύνσεων του Tegami Mail"
 
@@ -4538,8 +4412,17 @@ msgstr ""
 "• Η ενημέρωση του «xdg-desktop-portal» και η εκ νέου σύνδεση ενδέχεται να "
 "διορθώσουν το απευθείας άνοιγμα συνδέσμων"
 
+msgid "Previous"
+msgstr "Προηγούμενο"
+
+msgid "Next"
+msgstr "Επόμενο"
+
 msgid "{name} · {current} of {total}"
 msgstr "{name} · {current} από {total}"
+
+msgid "Loading more…"
+msgstr "Φόρτωση περισσότερων…"
 
 msgid "No Messages"
 msgstr "Δεν υπάρχουν μηνύματα"
@@ -6131,12 +6014,6 @@ msgstr ""
 "Όταν είναι απενεργοποιημένο, η σύμπτυξη γίνεται μόνο με το βέλος ή με διπλό "
 "κλικ."
 
-msgid "Show Attachments Browser"
-msgstr "Εμφάνιση προγράμματος περιήγησης συνημμένων"
-
-msgid "Browse every account's attachments in one place."
-msgstr "Περιήγηση στα συνημμένα όλων των λογαριασμών σε ένα μέρος."
-
 msgid "Expand the sidebar on hover"
 msgstr "Ανάπτυξη πλευρικής στήλης κατά την αιώρηση"
 
@@ -6623,6 +6500,9 @@ msgstr "Εύρεση ετικετών…"
 #, fuzzy
 msgid "Create “{name}”"
 msgstr "Διαγραφή του «{name}»;"
+
+msgid "File"
+msgstr "Αρχείο"
 
 msgid "Script"
 msgstr ""
@@ -8253,6 +8133,124 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Go to Message"
+#~ msgstr "Μετάβαση στο μήνυμα"
+
+#~ msgid "Unknown"
+#~ msgstr "Άγνωστο"
+
+#~ msgid "Indexing {n} messages…"
+#~ msgstr "Ευρετηρίαση {n} μηνυμάτων…"
+
+#~ msgid "Search by sender, subject, type, filename…"
+#~ msgstr "Αναζήτηση κατά αποστολέα, θέμα, τύπο, όνομα αρχείου…"
+
+#~ msgid "Loading attachments…"
+#~ msgstr "Φόρτωση συνημμένων…"
+
+#~ msgid "No attachments"
+#~ msgstr "Δεν υπάρχουν συνημμένα"
+
+#~ msgid "Attachments from your inboxes will appear here."
+#~ msgstr "Τα συνημμένα από τα εισερχόμενά σας θα εμφανίζονται εδώ."
+
+#~ msgid "No matching attachments"
+#~ msgstr "Δεν υπάρχουν συνημμένα που να ταιριάζουν"
+
+#~ msgid ""
+#~ "Try a different search, or check which accounts and folders the footer is "
+#~ "pulling from."
+#~ msgstr ""
+#~ "Δοκιμάστε διαφορετική αναζήτηση ή ελέγξτε από ποιους λογαριασμούς και "
+#~ "φακέλους αντλεί στοιχεία το υποσέλιδο."
+
+#~ msgid "Type"
+#~ msgstr "Τύπος"
+
+#~ msgid "Size"
+#~ msgstr "Μέγεθος"
+
+#~ msgid "Thumbnail grid"
+#~ msgstr "Πλέγμα μικρογραφιών"
+
+#~ msgid "Table"
+#~ msgstr "Πίνακας"
+
+#~ msgid "Show only this account"
+#~ msgstr "Εμφάνιση μόνο αυτού του λογαριασμού"
+
+#~ msgid "Folders to pull from"
+#~ msgstr "Φάκελοι άντλησης"
+
+#~ msgid "Include Archive"
+#~ msgstr "Συμπερίληψη Αρχείου"
+
+#~ msgid "Include other folders"
+#~ msgstr "Συμπερίληψη άλλων φακέλων"
+
+#~ msgid "Everything that is not an inbox or an archive"
+#~ msgstr "Όλα όσα δεν βρίσκονται στα εισερχόμενα ή στο αρχείο"
+
+#~ msgid "Pulling attachments from"
+#~ msgstr "Άντληση συνημμένων από"
+
+#~ msgid "Show only this type"
+#~ msgstr "Εμφάνιση μόνο αυτού του τύπου"
+
+#~ msgid "All types"
+#~ msgstr "Όλοι οι τύποι"
+
+#~ msgid "PDFs"
+#~ msgstr "PDF"
+
+#~ msgid "Documents"
+#~ msgstr "Έγγραφα"
+
+#~ msgid "Archives"
+#~ msgstr "Αρχεία"
+
+#~ msgid "Audio & Video"
+#~ msgstr "Ήχος και βίντεο"
+
+#~ msgid "Other"
+#~ msgstr "Άλλα"
+
+#~ msgid "Newest first"
+#~ msgstr "Νεότερα πρώτα"
+
+#~ msgid "Oldest first"
+#~ msgstr "Παλαιότερα πρώτα"
+
+#~ msgid "Name (A–Z)"
+#~ msgstr "Όνομα (Α–Ω)"
+
+#~ msgid "Name (Z–A)"
+#~ msgstr "Όνομα (Ω–Α)"
+
+#~ msgid "Sender (Z–A)"
+#~ msgstr "Αποστολέας (Ω–Α)"
+
+#~ msgid "Largest first"
+#~ msgstr "Μεγαλύτερα πρώτα"
+
+#~ msgid "Smallest first"
+#~ msgstr "Μικρότερα πρώτα"
+
+#~ msgid "Type (A–Z)"
+#~ msgstr "Τύπος (Α–Ω)"
+
+#~ msgid "Type (Z–A)"
+#~ msgstr "Τύπος (Ω–Α)"
+
+#~ msgid "Open in the default app"
+#~ msgstr "Άνοιγμα στην προεπιλεγμένη εφαρμογή"
+
+#~ msgid "Show Attachments Browser"
+#~ msgstr "Εμφάνιση προγράμματος περιήγησης συνημμένων"
+
+#~ msgid "Browse every account's attachments in one place."
+#~ msgstr "Περιήγηση στα συνημμένα όλων των λογαριασμών σε ένα μέρος."
 
 #~ msgid "The From has to be one address, such as Ann <ann@example.com>."
 #~ msgstr ""

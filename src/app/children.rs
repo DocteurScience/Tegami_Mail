@@ -7,7 +7,6 @@ use relm4::prelude::*;
 use crate::config;
 use crate::models::FolderKind;
 use crate::ui::attachment_drawer::AttachmentDrawer;
-use crate::ui::attachments_gallery::{AttachmentsGallery, GalleryOutput};
 use crate::ui::contacts_page::{ContactsPage, ContactsPageOutput};
 use crate::ui::message_list::{MessageList, MessageListOutput};
 use crate::ui::message_view::{MessageView, MessageViewOutput};
@@ -15,7 +14,6 @@ use crate::ui::notifications::{NotificationCenter, NotifyOutput};
 use crate::ui::preferences::PrefOutput;
 use crate::ui::sidebar::{Sidebar, SidebarInput, SidebarOutput};
 
-use super::attachments::AttachmentTarget;
 use super::boot::{sidebar_init, start_target, Boot};
 use super::model::AppModel;
 use super::msg::AppMsg;
@@ -193,45 +191,6 @@ fn attachment_drawer_output_msg(out: crate::ui::attachment_drawer::DrawerOutput)
     }
 }
 
-/// What the gallery reports, as the message it means here.
-fn gallery_output_msg(out: GalleryOutput) -> AppMsg {
-    match out {
-        GalleryOutput::OpenMessage {
-            account_id,
-            folder_path,
-            uid,
-        } => AppMsg::OpenAttachmentMessage {
-            account_id,
-            folder_path,
-            uid,
-        },
-        GalleryOutput::Load(req) => AppMsg::GalleryLoad(Box::new(req)),
-        GalleryOutput::Fetch {
-            account_id,
-            folder_path,
-            uid,
-        } => AppMsg::GalleryFetch {
-            account_id,
-            folder_path,
-            uid,
-        },
-        GalleryOutput::DeleteFromServer {
-            account_id,
-            folder_path,
-            uid,
-            name,
-            size,
-        } => AppMsg::AskDeleteAttachment(AttachmentTarget {
-            account_id,
-            message_id: uid,
-            path: folder_path,
-            uid,
-            name,
-            size,
-        }),
-    }
-}
-
 /// What the contacts page reports, as the message it means here.
 fn contacts_page_output_msg(out: ContactsPageOutput) -> AppMsg {
     match out {
@@ -322,7 +281,6 @@ pub(super) fn sidebar_output_msg(out: SidebarOutput) -> AppMsg {
             account,
         },
         SidebarOutput::ToggleAccountTags(id) => AppMsg::ToggleAccountTags(id),
-        SidebarOutput::AttachmentsSelected => AppMsg::ShowAttachments,
         SidebarOutput::ContactsClicked => AppMsg::OpenContacts,
         SidebarOutput::RefreshRequested => AppMsg::Refresh,
         SidebarOutput::StatusBarRequested => AppMsg::ToggleNotifications,
@@ -435,7 +393,6 @@ pub(super) struct Children {
     pub(super) message_view: Controller<MessageView>,
     pub(super) attachment_drawer: Controller<AttachmentDrawer>,
     pub(super) lightbox: Controller<crate::ui::lightbox::Lightbox>,
-    pub(super) gallery: Controller<AttachmentsGallery>,
     pub(super) contacts_compose_revealer: gtk::Revealer,
     pub(super) contacts_page: Controller<ContactsPage>,
     pub(super) notifications: Controller<NotificationCenter>,
@@ -444,13 +401,11 @@ pub(super) struct Children {
 impl Children {
     /// Launches every child with its output forwarded to the root.
     pub(super) fn launch(boot: &Boot, sender: &ComponentSender<AppModel>) -> Self {
-        let show_attachments = boot.prefs.show_attachments;
         let start = start_target(boot.prefs.start_view);
         let start_pending = start.is_some();
         let sidebar = Sidebar::builder()
             .launch(sidebar_init(
                 &boot.sidebar_state,
-                show_attachments,
                 boot.rail_now,
                 false,
                 start,
@@ -466,13 +421,7 @@ impl Children {
         }
         // The peek panel's rows: a second, always-expanded instance.
         let peek_sidebar = Sidebar::builder()
-            .launch(sidebar_init(
-                &boot.sidebar_state,
-                show_attachments,
-                false,
-                true,
-                None,
-            ))
+            .launch(sidebar_init(&boot.sidebar_state, false, true, None))
             .forward(sender.input_sender(), sidebar_output_msg);
 
         let message_list = MessageList::builder()
@@ -493,10 +442,6 @@ impl Children {
             .forward(sender.input_sender(), attachment_drawer_output_msg);
 
         let lightbox = crate::ui::lightbox::Lightbox::builder().launch(()).detach();
-
-        let gallery = AttachmentsGallery::builder()
-            .launch(())
-            .forward(sender.input_sender(), gallery_output_msg);
 
         // Built here (not in the model literal) because the contacts page
         // mounts it over its detail pane at launch.
@@ -522,7 +467,6 @@ impl Children {
             message_view,
             attachment_drawer,
             lightbox,
-            gallery,
             contacts_compose_revealer,
             contacts_page,
             notifications,

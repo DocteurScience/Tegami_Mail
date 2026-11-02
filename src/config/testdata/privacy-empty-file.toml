@@ -44,7 +44,6 @@ notification_buttons = [
     "archive",
     "delete",
 ]
-show_attachments = true
 settings_open_accounts = false
 card_actions_hover = true
 card_actions_auto = false

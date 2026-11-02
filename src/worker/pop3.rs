@@ -132,16 +132,6 @@ impl<E: Fn(WorkerEvent)> Pop3Worker<E> {
                     hit: None,
                 });
             }
-            // POP3 downloads every message in full, so an attachment is either
-            // already in the cache or does not exist: there is nothing a scan
-            // could add.
-            MailRequest::ScanAttachments { folder_path } => {
-                emit(WorkerEvent::AttachmentsScanned {
-                    folder_path,
-                    added: 0,
-                    remaining: 0,
-                });
-            }
             // POP3 has no server-side keywords: nothing to find.
             MailRequest::FindKeywords => emit(WorkerEvent::KeywordsFound(Vec::new())),
             // POP3 has no way to say how much room is left.

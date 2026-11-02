@@ -3,7 +3,7 @@
 /// The numbers and tags the cache and state.toml store these as.
 #[test]
 fn stored_codes_stay_put() {
-    use super::{GallerySort, Importance, SenderTrust};
+    use super::{Importance, SenderTrust};
     for (importance, n) in [
         (Importance::Normal, 0),
         (Importance::High, 1),
@@ -23,15 +23,6 @@ fn stored_codes_stay_put() {
         assert_eq!(SenderTrust::from_tag(tag), trust);
     }
     assert_eq!(SenderTrust::from_tag("other"), SenderTrust::Unverified);
-    let sorts: Vec<GallerySort> = (0..10).map(GallerySort::from_index).collect();
-    assert_eq!(
-        format!("{sorts:?}"),
-        "[Newest, Oldest, Name, NameDesc, Sender, SenderDesc, Largest, Smallest, Type, TypeDesc]"
-    );
-    for (i, sort) in sorts.iter().enumerate() {
-        assert_eq!(sort.index(), i as u32);
-    }
-    assert_eq!(GallerySort::from_index(10), GallerySort::Newest);
 }
 use super::*;
 

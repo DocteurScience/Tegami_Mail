@@ -13,7 +13,6 @@ use crate::config::{self, AccountConfig};
 use crate::models::{
     Account, Attachment, Folder, FolderKind, KeywordFinding, Message, ThreadSummary,
 };
-use crate::ui::attachments_gallery::GalleryRequest;
 use crate::ui::message_list::{BulkAction, DateBound, QuickFilter, RowAction};
 use crate::ui::preferences::PrefOutput;
 use crate::ui::sidebar::CtxAction;
@@ -118,26 +117,9 @@ pub(crate) enum AppMsg {
     /// The notification bar was shown or hidden.
     StatusBarShown(bool),
 
-    // ---- on_gallery (gallery.rs) ----
-    /// Show the attachments gallery (sidebar "Attachments" row).
-    ShowAttachments,
-    /// Download an attachment the gallery knows of but has never fetched.
-    GalleryFetch {
-        account_id: u32,
-        folder_path: String,
-        uid: u32,
-    },
-    /// A chunk of a folder's attachments was described by the scan.
-    AttachmentsScanned {
-        account_id: u32,
-        folder_path: String,
-        added: u32,
-        remaining: u32,
-    },
-    /// The gallery wants a page of attachments matching this query.
-    GalleryLoad(Box<GalleryRequest>),
-    /// Gallery "Go to Message" — open the attachment's source message.
-    OpenAttachmentMessage {
+    /// Open the message at this account, folder and UID (a `tegami:`
+    /// link, a notification).
+    OpenMessageAt {
         account_id: u32,
         folder_path: String,
         uid: u32,

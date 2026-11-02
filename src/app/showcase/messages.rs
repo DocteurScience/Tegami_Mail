@@ -7,7 +7,6 @@ use relm4::prelude::*;
 use crate::app::model::AppModel;
 use crate::app::msg::AppMsg;
 use crate::models::FolderKind;
-use crate::ui::attachments_gallery::GalleryInput;
 use crate::ui::compose::ComposeInput;
 use crate::ui::preferences::PrefInput;
 
@@ -57,12 +56,6 @@ impl AppModel {
                 }
             }
             AppMsg::ShowcaseDeleteAttachment { name, confirmed } => {
-                if let Some(name) = name.strip_prefix("gallery:") {
-                    self.showcase_confirm_delete = confirmed;
-                    self.gallery
-                        .emit(GalleryInput::ShowcaseDelete(name.to_string()));
-                    return;
-                }
                 match self.attachment_target(&name, None) {
                     Some(target) if confirmed => sender.input(AppMsg::DeleteAttachment(target)),
                     Some(target) => sender.input(AppMsg::AskDeleteAttachment(target)),

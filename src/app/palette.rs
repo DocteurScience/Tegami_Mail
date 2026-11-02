@@ -406,11 +406,6 @@ impl AppModel {
             Box::new(|| AppMsg::OpenContacts),
         );
         go(
-            i18n("Attachments"),
-            view.clone(),
-            Box::new(|| AppMsg::ShowAttachments),
-        );
-        go(
             i18n("Outbox"),
             view.clone(),
             Box::new(|| AppMsg::ShowOutbox),

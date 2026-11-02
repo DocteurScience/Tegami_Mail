@@ -76,11 +76,11 @@ impl AppModel {
             | AppMsg::NotifyCount(..)
             | AppMsg::ToggleNotifications
             | AppMsg::StatusBarShown(..)) => self.on_notifications(msg, sender),
-            msg @ (AppMsg::ShowAttachments
-            | AppMsg::GalleryFetch { .. }
-            | AppMsg::AttachmentsScanned { .. }
-            | AppMsg::GalleryLoad(..)
-            | AppMsg::OpenAttachmentMessage { .. }) => self.on_gallery(msg),
+            AppMsg::OpenMessageAt {
+                account_id,
+                folder_path,
+                uid,
+            } => self.open_message_at(account_id, &folder_path, uid),
             msg @ (AppMsg::UnifiedSelected(..)
             | AppMsg::AccountStarredSelected(..)
             | AppMsg::FolderSelected { .. }) => self.on_navigation(msg, sender),
@@ -513,7 +513,6 @@ impl AppModel {
             | PrefOutput::SetPillsBelow(..)
             | PrefOutput::SetListColumns(..)
             | PrefOutput::SetPreviewLines(..)
-            | PrefOutput::SetAttachmentsRow(..)
             | PrefOutput::ResetColumnWidths
             | PrefOutput::SetPaletteCollapse(..)
             | PrefOutput::SetListPalette(..)

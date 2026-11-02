@@ -110,7 +110,6 @@ impl AppModel {
             notification_content: self.notification_content,
             notify_receipts: self.notify_receipts,
             notification_buttons: self.notification_buttons,
-            show_attachments: self.show_attachments,
             show_unified: self.show_unified_pref,
             unified_chips: self.unified_chips,
             unified_kinds: self.unified_kinds,

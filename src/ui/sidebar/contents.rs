@@ -392,21 +392,6 @@ impl Sidebar {
         }
     }
 
-    pub(super) fn on_set_attachments_row(
-        &mut self,
-        show: bool,
-        widgets: &SidebarWidgets,
-        sender: ComponentSender<Self>,
-    ) {
-        self.show_attachments = show;
-        // The row is about to disappear from under the selection; fall
-        // back the same way an emptied selection does.
-        if !show && self.selected == Sel::Attachments {
-            self.selected = Sel::None;
-        }
-        self.rebuild(widgets, &sender);
-    }
-
     pub(super) fn on_set_busy(&mut self, busy: bool) {
         self.busy = busy;
         if let Some(sp) = &self.sync_spinner {

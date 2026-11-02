@@ -91,17 +91,6 @@ pub(in crate::worker) const BACKFILL_CHUNK: usize = 1_000;
 /// older attachment messages download on demand (with a spinner) when opened.
 pub(in crate::worker) const PREFETCH_LIMIT: usize = 25;
 
-/// How many messages one attachment scan describes. One FETCH per chunk, so
-/// bigger means fewer round trips; small enough that a chunk lands quickly and
-/// the gallery fills in visibly while the user is looking at it.
-const SCAN_CHUNK: u32 = 200;
-
-/// Most FETCHes one scan request will spend, counting the extra ones a failing
-/// batch costs as it is halved. Bounds the work a folder full of responses we
-/// cannot parse can demand in one pass; whatever is left keeps its place in the
-/// queue and is picked up by the next.
-const SCAN_SPLIT_BUDGET: u32 = 64;
-
 /// How many messages one body fetch asks for.
 ///
 /// `BODY.PEEK[]` returns whole messages, attachments included, so a whole

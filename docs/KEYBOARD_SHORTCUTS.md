@@ -195,7 +195,7 @@ your typing instead, and <kbd>Ctrl+B</kbd>, <kbd>Ctrl+I</kbd> and
 <kbd>Ctrl+U</kbd> set bold, italic and underline.
 
 In the attachment drawer, <kbd>Space</kbd> or <kbd>Enter</kbd> previews the
-highlighted attachment. In the attachments gallery's preview, <kbd>←</kbd> and
+highlighted attachment. In the full-window preview, <kbd>←</kbd> and
 <kbd>→</kbd> step to the previous and next one, and <kbd>Esc</kbd> closes it.
 
 In the Contacts view, <kbd>Ctrl+F</kbd> and <kbd>/</kbd> open its search

@@ -2,11 +2,11 @@
 //! the lightbox, and the cells rebuilt to match.
 
 use super::cells::{build_cell, build_list_row, previewable};
+use super::deleting::fade_out;
 use super::{AttachmentDrawer, AttachmentDrawerInput, DrawerOutput};
 use crate::i18n::i18n;
 use crate::models::Attachment;
 use crate::ui::attachment_io::{open_bytes, save_attachment_as};
-use crate::ui::attachments_gallery::fade_out;
 use crate::ui::context_menu::{show_context_menu, MenuEntry};
 use adw::prelude::*;
 use relm4::prelude::*;

@@ -80,7 +80,6 @@ impl AppModel {
                 list::stage_popout(sender);
                 list::stage_edit_as_new(sender);
                 list::stage_move(sender);
-                self.stage_gallery(sender);
                 self.stage_rail();
                 list::stage_peek(root, sender);
                 self.stage_toggle();

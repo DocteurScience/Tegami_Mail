@@ -348,7 +348,7 @@ impl AppModel {
                         "mid: {message_id} found on account {account_id}, {folder_path} uid {uid}"
                     );
                     self.mid_searches.remove(&message_id);
-                    sender.input(AppMsg::OpenAttachmentMessage {
+                    sender.input(AppMsg::OpenMessageAt {
                         account_id,
                         folder_path,
                         uid,
@@ -399,7 +399,7 @@ impl AppModel {
             .cloned()
         {
             tracing::info!("mid: {id} is cached in account {account_id}, {folder_path} uid {uid}");
-            sender.input(AppMsg::OpenAttachmentMessage {
+            sender.input(AppMsg::OpenMessageAt {
                 account_id,
                 folder_path,
                 uid,

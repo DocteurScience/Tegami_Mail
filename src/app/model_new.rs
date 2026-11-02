@@ -73,7 +73,6 @@ impl AppModel {
             message_view,
             attachment_drawer,
             lightbox,
-            gallery,
             contacts_compose_revealer,
             contacts_page,
             notifications,
@@ -90,7 +89,6 @@ impl AppModel {
         let launcher_badge = prefs.launcher_badge();
         let remember_sidebar = prefs.remember_sidebar;
         let remember_rail = prefs.remember_rail;
-        let show_attachments = prefs.show_attachments;
         let start_view = prefs.start_view;
         let show_accounts = prefs.show_accounts;
         let reader_override = config::load_reader_override();
@@ -363,7 +361,6 @@ impl AppModel {
             notifications_enabled: prefs.notifications,
             notification_content: prefs.notification_content,
             notification_buttons: config::load_notification_buttons(),
-            show_attachments,
             settings_open_accounts: prefs.settings_open_accounts,
             last_settings_page: None,
             list_count: String::new(),
@@ -558,8 +555,6 @@ impl AppModel {
             message_list,
             message_view,
             attachment_drawer,
-            gallery,
-            showing_gallery: false,
             contacts_page,
             showing_contacts: false,
             showing_outbox: false,
@@ -577,8 +572,6 @@ impl AppModel {
             unified_emitted_at: std::cell::Cell::new(std::time::Instant::now()),
             list_fp: std::cell::Cell::new(None),
             unified_unfilled: std::collections::HashSet::new(),
-            gallery_total: 0,
-            gallery_scan_left: HashMap::new(),
         }
     }
 }

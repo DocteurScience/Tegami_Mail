@@ -109,9 +109,6 @@ pub(crate) enum MailRequest {
         uids: Vec<u32>,
         dest: String,
     },
-    /// Work through a folder's attachment-carrying messages that have never
-    /// been described, recording what each one holds without downloading it.
-    ScanAttachments { folder_path: String },
     /// Assemble a conversation from the local cache across every folder of the
     /// account: the messages whose Message-ID or references match `ids`. Answers
     /// with [`WorkerEvent::Related`]; never touches the network.
@@ -367,13 +364,6 @@ pub(crate) struct CalendarPart {
 #[allow(clippy::large_enum_variant)]
 #[derive(Debug)]
 pub(crate) enum WorkerEvent {
-    /// A batch of a folder's attachments was described (not downloaded).
-    /// `remaining` is how many of its messages are still unscanned.
-    AttachmentsScanned {
-        folder_path: String,
-        added: u32,
-        remaining: u32,
-    },
     Account(Account),
     /// The sending identities a JMAP server keeps for the account (#346):
     /// `(name, address)`, the address `*@domain` for one that sends as

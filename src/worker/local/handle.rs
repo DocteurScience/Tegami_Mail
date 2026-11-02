@@ -70,11 +70,6 @@ impl<E: Fn(WorkerEvent)> LocalWorker<E> {
                 hits: Vec::new(),
                 done: true,
             }),
-            MailRequest::ScanAttachments { folder_path } => emit(WorkerEvent::AttachmentsScanned {
-                folder_path,
-                added: 0,
-                remaining: 0,
-            }),
             MailRequest::FindKeywords => self.on_find_keywords(),
             // The file names are the flags, and a folder reads them again
             // each time it opens.

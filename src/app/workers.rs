@@ -21,16 +21,6 @@ use super::AppModelWidgets;
 
 fn map_event(account_id: u32, event: WorkerEvent) -> AppMsg {
     match event {
-        WorkerEvent::AttachmentsScanned {
-            folder_path,
-            added,
-            remaining,
-        } => AppMsg::AttachmentsScanned {
-            account_id,
-            folder_path,
-            added,
-            remaining,
-        },
         WorkerEvent::BulkComplete => AppMsg::BulkComplete,
         WorkerEvent::Related {
             message_id,
@@ -830,22 +820,6 @@ mod tests {
         assert_eq!(
             dbg(map_event(3, WorkerEvent::BulkComplete)),
             dbg(AppMsg::BulkComplete)
-        );
-        assert_eq!(
-            dbg(map_event(
-                3,
-                WorkerEvent::AttachmentsScanned {
-                    folder_path: "INBOX".into(),
-                    added: 1,
-                    remaining: 2
-                }
-            )),
-            dbg(AppMsg::AttachmentsScanned {
-                account_id: 3,
-                folder_path: "INBOX".into(),
-                added: 1,
-                remaining: 2
-            })
         );
     }
 }

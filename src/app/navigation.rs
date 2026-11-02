@@ -127,7 +127,6 @@ impl AppModel {
             UnifiedView::Filtered => crate::ui::sidebar::Sel::UnifiedFiltered,
             UnifiedView::Favorites => crate::ui::sidebar::Sel::UnifiedFavorites,
         });
-        self.leave_gallery();
         self.showing_contacts = false;
         self.showing_outbox = false;
         // Another view's slices are another view's: start afresh
@@ -346,7 +345,6 @@ impl AppModel {
                 path: path.clone(),
             });
         }
-        self.leave_gallery();
         self.showing_contacts = false;
         self.showing_outbox = false;
         // Mirror the selection in the sidebar. Navigation that starts in the

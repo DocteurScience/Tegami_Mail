@@ -208,7 +208,6 @@ impl AppModel {
     fn show_contacts_view(&mut self, sender: &ComponentSender<Self>) {
         self.close_sidebar_peek();
         self.showing_outbox = false;
-        self.leave_gallery();
         self.showing_contacts = true;
         // Read EDS off the UI thread (SQLite + photo decoding); the page
         // shows its loading face until the list lands.

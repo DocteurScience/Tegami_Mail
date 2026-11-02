@@ -576,12 +576,6 @@ msgstr "Frissített meghívó"
 msgid "Move Folder"
 msgstr "Mappa áthelyezése"
 
-msgid "Attachments"
-msgstr "Mellékletek"
-
-msgid "Toggle sidebar"
-msgstr "Oldalsáv ki/bekapcsolása"
-
 msgid "Always do this (change it in Settings → System → GNOME Files)"
 msgstr ""
 "Mindig ezt tegye (módosítható a Beállítások → Rendszer → GNOME Files "
@@ -911,6 +905,9 @@ msgstr ""
 
 msgid "Bold, italic, underline"
 msgstr ""
+
+msgid "Attachments"
+msgstr "Mellékletek"
 
 #, fuzzy
 msgid "Preview the highlighted attachment"
@@ -2949,6 +2946,9 @@ msgstr "Letöltés…"
 msgid "Import OpenPGP key"
 msgstr "OpenPGP kulcs importálása"
 
+msgid "Deleting…"
+msgstr "Törlés…"
+
 msgid "Show the attachments"
 msgstr "Mellékletek megjelenítése"
 
@@ -2989,138 +2989,6 @@ msgstr "Összes melléklet mentése"
 
 msgid "The file could not be opened"
 msgstr "A fájl nem megnyitható"
-
-msgid "Go to Message"
-msgstr "Ugrás az üzenethez"
-
-msgid "Deleting…"
-msgstr "Törlés…"
-
-msgid "Unknown"
-msgstr ""
-
-#. Deliberately counts messages, not attachments: until a message has
-#. been described there is no telling how many files it holds.
-msgid "Indexing {n} messages…"
-msgstr "{n} üzenet indexelése…"
-
-msgid "Loading more…"
-msgstr "Továbbiak betöltése…"
-
-msgid "{shown} of {total}"
-msgstr "{shown} / {total}"
-
-msgid "File"
-msgstr ""
-
-msgid "Search by sender, subject, type, filename…"
-msgstr "Keresés feladó, tárgy, típus vagy fájlnév alapján…"
-
-msgid "Loading attachments…"
-msgstr "Mellékletek betöltése…"
-
-msgid "No attachments"
-msgstr "Nincsenek mellékletek"
-
-msgid "Attachments from your inboxes will appear here."
-msgstr "A beérkezett üzenetek mellékletei itt jelennek meg."
-
-msgid "No matching attachments"
-msgstr "Nincs egyező melléklet"
-
-msgid ""
-"Try a different search, or check which accounts and folders the footer is "
-"pulling from."
-msgstr ""
-"Próbáljon meg másképp keresni, vagy ellenőrizze, mely fiókokból és mappákból "
-"származnak az oldalalján szereplő adatok."
-
-msgid "Type"
-msgstr ""
-
-msgid "Size"
-msgstr ""
-
-msgid "Thumbnail grid"
-msgstr "Bélyegképrács"
-
-msgid "Table"
-msgstr "Táblázat"
-
-msgid "Show only this account"
-msgstr "Csak ezt a fiókot mutasd"
-
-msgid "Folders to pull from"
-msgstr "Mappák melyekből lekérhető"
-
-msgid "Include Archive"
-msgstr "Archívum bevonása"
-
-msgid "Include other folders"
-msgstr "Egyéb mappák bevonása"
-
-msgid "Everything that is not an inbox or an archive"
-msgstr "Minden, ami nem a beérkező levelek mappája vagy az archívum"
-
-msgid "Pulling attachments from"
-msgstr "Mellékletek letöltése a"
-
-msgid "Show only this type"
-msgstr "Csak ennek a típusnak a megjelenítése"
-
-msgid "All types"
-msgstr "Minden típus"
-
-msgid "PDFs"
-msgstr "PDF-ek"
-
-msgid "Documents"
-msgstr "Dokumentumok"
-
-msgid "Archives"
-msgstr "Archívumok"
-
-msgid "Audio & Video"
-msgstr "Hang és videó"
-
-msgid "Other"
-msgstr "Egyéb"
-
-msgid "Newest first"
-msgstr "Legújabb elöl"
-
-msgid "Oldest first"
-msgstr "Legrégebbi elöl"
-
-msgid "Name (A–Z)"
-msgstr "Név (A–Z)"
-
-msgid "Name (Z–A)"
-msgstr "Név (Z–A)"
-
-msgid "Sender (Z–A)"
-msgstr "Feladó (Z–A)"
-
-msgid "Largest first"
-msgstr "Legnagyobb elöl"
-
-msgid "Smallest first"
-msgstr "Legkisebb elöl"
-
-msgid "Type (A–Z)"
-msgstr "Típus (A–Z)"
-
-msgid "Type (Z–A)"
-msgstr "Típus (Z–A)"
-
-msgid "Previous"
-msgstr "Előző"
-
-msgid "Next"
-msgstr "Következő"
-
-msgid "Open in the default app"
-msgstr "Megnyitás az alapértelmezett alkalmazásban"
 
 msgid "Welcome to Tegami Mail, formerly {old}"
 msgstr "Üdvözöljük a Tegami Mail-n, korábban {old}"
@@ -4291,6 +4159,9 @@ msgstr "Címke eltávolítása"
 msgid "Choose a Photo"
 msgstr "Kép választása"
 
+msgid "{shown} of {total}"
+msgstr "{shown} / {total}"
+
 #, fuzzy
 msgid "In Directories"
 msgstr "LDAP Mappák"
@@ -4470,6 +4341,9 @@ msgid_plural "This will remove {n} contacts from your address books."
 msgstr[0] ""
 msgstr[1] ""
 
+msgid "Toggle sidebar"
+msgstr "Oldalsáv ki/bekapcsolása"
+
 msgid "Import vCard files into the Tegami Mail address book"
 msgstr ""
 
@@ -4635,8 +4509,17 @@ msgstr ""
 "• Az „xdg-desktop-portal” frissítése és az újbóli bejelentkezés megoldhatja "
 "a hivatkozások közvetlen megnyitásának problémáját"
 
+msgid "Previous"
+msgstr "Előző"
+
+msgid "Next"
+msgstr "Következő"
+
 msgid "{name} · {current} of {total}"
 msgstr "{name} · {current} / {total}"
+
+msgid "Loading more…"
+msgstr "Továbbiak betöltése…"
 
 msgid "No Messages"
 msgstr "Nincsenek üzenetek"
@@ -6276,13 +6159,6 @@ msgstr ""
 msgid "When off, only its chevron or a double click activates the fold."
 msgstr ""
 
-#, fuzzy
-msgid "Show Attachments Browser"
-msgstr "Csatolmány tároló"
-
-msgid "Browse every account's attachments in one place."
-msgstr ""
-
 msgid "Expand the sidebar on hover"
 msgstr "Oldalsáv kibontása rámutatáskor"
 
@@ -6789,6 +6665,9 @@ msgstr "Címkék keresése…"
 #, fuzzy
 msgid "Create “{name}”"
 msgstr "Kiüríti ezt: „{name}”?"
+
+msgid "File"
+msgstr ""
 
 msgid "Script"
 msgstr ""
@@ -8425,6 +8304,113 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Go to Message"
+#~ msgstr "Ugrás az üzenethez"
+
+#~ msgid "Indexing {n} messages…"
+#~ msgstr "{n} üzenet indexelése…"
+
+#~ msgid "Search by sender, subject, type, filename…"
+#~ msgstr "Keresés feladó, tárgy, típus vagy fájlnév alapján…"
+
+#~ msgid "Loading attachments…"
+#~ msgstr "Mellékletek betöltése…"
+
+#~ msgid "No attachments"
+#~ msgstr "Nincsenek mellékletek"
+
+#~ msgid "Attachments from your inboxes will appear here."
+#~ msgstr "A beérkezett üzenetek mellékletei itt jelennek meg."
+
+#~ msgid "No matching attachments"
+#~ msgstr "Nincs egyező melléklet"
+
+#~ msgid ""
+#~ "Try a different search, or check which accounts and folders the footer is "
+#~ "pulling from."
+#~ msgstr ""
+#~ "Próbáljon meg másképp keresni, vagy ellenőrizze, mely fiókokból és "
+#~ "mappákból származnak az oldalalján szereplő adatok."
+
+#~ msgid "Thumbnail grid"
+#~ msgstr "Bélyegképrács"
+
+#~ msgid "Table"
+#~ msgstr "Táblázat"
+
+#~ msgid "Show only this account"
+#~ msgstr "Csak ezt a fiókot mutasd"
+
+#~ msgid "Folders to pull from"
+#~ msgstr "Mappák melyekből lekérhető"
+
+#~ msgid "Include Archive"
+#~ msgstr "Archívum bevonása"
+
+#~ msgid "Include other folders"
+#~ msgstr "Egyéb mappák bevonása"
+
+#~ msgid "Everything that is not an inbox or an archive"
+#~ msgstr "Minden, ami nem a beérkező levelek mappája vagy az archívum"
+
+#~ msgid "Pulling attachments from"
+#~ msgstr "Mellékletek letöltése a"
+
+#~ msgid "Show only this type"
+#~ msgstr "Csak ennek a típusnak a megjelenítése"
+
+#~ msgid "All types"
+#~ msgstr "Minden típus"
+
+#~ msgid "PDFs"
+#~ msgstr "PDF-ek"
+
+#~ msgid "Documents"
+#~ msgstr "Dokumentumok"
+
+#~ msgid "Archives"
+#~ msgstr "Archívumok"
+
+#~ msgid "Audio & Video"
+#~ msgstr "Hang és videó"
+
+#~ msgid "Other"
+#~ msgstr "Egyéb"
+
+#~ msgid "Newest first"
+#~ msgstr "Legújabb elöl"
+
+#~ msgid "Oldest first"
+#~ msgstr "Legrégebbi elöl"
+
+#~ msgid "Name (A–Z)"
+#~ msgstr "Név (A–Z)"
+
+#~ msgid "Name (Z–A)"
+#~ msgstr "Név (Z–A)"
+
+#~ msgid "Sender (Z–A)"
+#~ msgstr "Feladó (Z–A)"
+
+#~ msgid "Largest first"
+#~ msgstr "Legnagyobb elöl"
+
+#~ msgid "Smallest first"
+#~ msgstr "Legkisebb elöl"
+
+#~ msgid "Type (A–Z)"
+#~ msgstr "Típus (A–Z)"
+
+#~ msgid "Type (Z–A)"
+#~ msgstr "Típus (Z–A)"
+
+#~ msgid "Open in the default app"
+#~ msgstr "Megnyitás az alapértelmezett alkalmazásban"
+
+#, fuzzy
+#~ msgid "Show Attachments Browser"
+#~ msgstr "Csatolmány tároló"
 
 #, fuzzy
 #~ msgid "Check the From address"

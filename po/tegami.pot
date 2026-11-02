@@ -517,12 +517,6 @@ msgstr ""
 msgid "Move Folder"
 msgstr ""
 
-msgid "Attachments"
-msgstr ""
-
-msgid "Toggle sidebar"
-msgstr ""
-
 msgid "Always do this (change it in Settings → System → GNOME Files)"
 msgstr ""
 
@@ -820,6 +814,9 @@ msgid "New paragraph (Return starts a new line, unless Settings swaps them)"
 msgstr ""
 
 msgid "Bold, italic, underline"
+msgstr ""
+
+msgid "Attachments"
 msgstr ""
 
 msgid "Preview the highlighted attachment"
@@ -2615,6 +2612,9 @@ msgstr ""
 msgid "Import OpenPGP key"
 msgstr ""
 
+msgid "Deleting…"
+msgstr ""
+
 msgid "Show the attachments"
 msgstr ""
 
@@ -2654,136 +2654,6 @@ msgid "Save All Attachments"
 msgstr ""
 
 msgid "The file could not be opened"
-msgstr ""
-
-msgid "Go to Message"
-msgstr ""
-
-msgid "Deleting…"
-msgstr ""
-
-msgid "Unknown"
-msgstr ""
-
-#. Deliberately counts messages, not attachments: until a message has
-#. been described there is no telling how many files it holds.
-msgid "Indexing {n} messages…"
-msgstr ""
-
-msgid "Loading more…"
-msgstr ""
-
-msgid "{shown} of {total}"
-msgstr ""
-
-msgid "File"
-msgstr ""
-
-msgid "Search by sender, subject, type, filename…"
-msgstr ""
-
-msgid "Loading attachments…"
-msgstr ""
-
-msgid "No attachments"
-msgstr ""
-
-msgid "Attachments from your inboxes will appear here."
-msgstr ""
-
-msgid "No matching attachments"
-msgstr ""
-
-msgid ""
-"Try a different search, or check which accounts and folders the footer is "
-"pulling from."
-msgstr ""
-
-msgid "Type"
-msgstr ""
-
-msgid "Size"
-msgstr ""
-
-msgid "Thumbnail grid"
-msgstr ""
-
-msgid "Table"
-msgstr ""
-
-msgid "Show only this account"
-msgstr ""
-
-msgid "Folders to pull from"
-msgstr ""
-
-msgid "Include Archive"
-msgstr ""
-
-msgid "Include other folders"
-msgstr ""
-
-msgid "Everything that is not an inbox or an archive"
-msgstr ""
-
-msgid "Pulling attachments from"
-msgstr ""
-
-msgid "Show only this type"
-msgstr ""
-
-msgid "All types"
-msgstr ""
-
-msgid "PDFs"
-msgstr ""
-
-msgid "Documents"
-msgstr ""
-
-msgid "Archives"
-msgstr ""
-
-msgid "Audio & Video"
-msgstr ""
-
-msgid "Other"
-msgstr ""
-
-msgid "Newest first"
-msgstr ""
-
-msgid "Oldest first"
-msgstr ""
-
-msgid "Name (A–Z)"
-msgstr ""
-
-msgid "Name (Z–A)"
-msgstr ""
-
-msgid "Sender (Z–A)"
-msgstr ""
-
-msgid "Largest first"
-msgstr ""
-
-msgid "Smallest first"
-msgstr ""
-
-msgid "Type (A–Z)"
-msgstr ""
-
-msgid "Type (Z–A)"
-msgstr ""
-
-msgid "Previous"
-msgstr ""
-
-msgid "Next"
-msgstr ""
-
-msgid "Open in the default app"
 msgstr ""
 
 msgid "Welcome to Tegami Mail, formerly {old}"
@@ -3772,6 +3642,9 @@ msgstr ""
 msgid "Choose a Photo"
 msgstr ""
 
+msgid "{shown} of {total}"
+msgstr ""
+
 msgid "In Directories"
 msgstr ""
 
@@ -3932,6 +3805,9 @@ msgid_plural "This will remove {n} contacts from your address books."
 msgstr[0] ""
 msgstr[1] ""
 
+msgid "Toggle sidebar"
+msgstr ""
+
 msgid "Import vCard files into the Tegami Mail address book"
 msgstr ""
 
@@ -4081,7 +3957,16 @@ msgid ""
 "directly"
 msgstr ""
 
+msgid "Previous"
+msgstr ""
+
+msgid "Next"
+msgstr ""
+
 msgid "{name} · {current} of {total}"
+msgstr ""
+
+msgid "Loading more…"
 msgstr ""
 
 msgid "No Messages"
@@ -5566,12 +5451,6 @@ msgstr ""
 msgid "When off, only its chevron or a double click activates the fold."
 msgstr ""
 
-msgid "Show Attachments Browser"
-msgstr ""
-
-msgid "Browse every account's attachments in one place."
-msgstr ""
-
 msgid "Expand the sidebar on hover"
 msgstr ""
 
@@ -6026,6 +5905,9 @@ msgid "Manage Tags…"
 msgstr ""
 
 msgid "Create “{name}”"
+msgstr ""
+
+msgid "File"
 msgstr ""
 
 msgid "Script"

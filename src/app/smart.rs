@@ -83,7 +83,6 @@ impl AppModel {
     ) {
         self.close_sidebar_peek();
         self.mirror_selection(sel);
-        self.leave_gallery();
         self.showing_contacts = false;
         self.showing_outbox = false;
         self.unified = false;

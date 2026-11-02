@@ -4,7 +4,6 @@
 use relm4::prelude::*;
 
 use crate::models::{Attachment, Message};
-use crate::ui::attachments_gallery::GalleryInput;
 use crate::ui::message_view::MessageViewInput;
 use crate::ui::message_window::MessageWindowInput;
 use crate::worker::MailRequest;
@@ -235,18 +234,6 @@ impl AppModel {
         }
         self.resume_auto_forwards(account_id, message_id, key, false);
         let is_target = |m: &Message| is_event_target(m, key, account_id, message_id);
-        // A file the gallery asked for: hand the bytes straight over so
-        // the thumbnail and the preview fill in without a reload, which
-        // would throw away the user's place in the list.
-        if self.showing_gallery {
-            self.gallery.emit(GalleryInput::SetFetching(false));
-            self.gallery.emit(GalleryInput::Fetched {
-                account_id,
-                path: path.clone(),
-                uid: key.map_or(message_id, |k| k.2),
-                items: items.clone(),
-            });
-        }
         if self.current.as_ref().is_some_and(is_target) {
             self.attachments_loading = false;
             self.attachments = items.clone();

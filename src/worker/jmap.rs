@@ -243,14 +243,6 @@ impl<E: Fn(WorkerEvent)> JmapWorker<E> {
             MailRequest::RefreshFlags { .. } => {
                 emit(WorkerEvent::FlagsSynced { paths: Vec::new() })
             }
-            // Cache-only, exactly like the other paths.
-            MailRequest::ScanAttachments { folder_path } => {
-                emit(WorkerEvent::AttachmentsScanned {
-                    folder_path,
-                    added: 0,
-                    remaining: 0,
-                });
-            }
             MailRequest::LoadRelated { message_id, ids } => {
                 let messages = cache
                     .as_ref()

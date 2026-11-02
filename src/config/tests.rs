@@ -1,9 +1,7 @@
 //! Tests of privacy.toml's migrations, the keyring thread, accounts.toml
 //! and state.toml.
 
-use super::{
-    decode_gallery_folder, encode_gallery_folder, ConfigFile, ListColumn, PrivacyFile, StateFile,
-};
+use super::{ConfigFile, ListColumn, PrivacyFile, StateFile};
 
 /// A section once kept in the unified section moves above the accounts
 /// where its switch was on, and off where it was off; one already
@@ -204,51 +202,12 @@ fn list_columns_keep_their_order_and_the_subject() {
     );
 }
 
-/// Every gallery folder override survives the trip to the file and back,
-/// including the paths servers really use: dots, slashes, spaces, UTF-7.
-#[test]
-fn a_gallery_folder_override_round_trips() {
-    let cases = [
-        (1, "INBOX", true),
-        (2, "INBOX.Sent", false),
-        (3, "Archive/2026", true),
-        (7, "Saved Mail", false),
-        (11, "INBOX.&AMQA5gDo-", true),
-    ];
-    for (id, path, on) in cases {
-        let encoded = encode_gallery_folder(id, path, on);
-        assert_eq!(
-            decode_gallery_folder(&encoded),
-            Some((id, path.to_string(), on)),
-            "{path} did not survive the round trip",
-        );
-    }
-}
-
-/// A line that is not in the stored shape is dropped, not guessed at.
-#[test]
-fn a_malformed_gallery_override_is_skipped() {
-    for bad in ["", "1", "1\tInbox", "notanid\tInbox\t1", "1\t\t1"] {
-        assert_eq!(
-            decode_gallery_folder(bad),
-            None,
-            "{bad:?} should not decode"
-        );
-    }
-}
-
 /// A first run with no state file must land on the `#[serde(default = …)]`
-/// each field declares, not on the zero its type happens to have: the
-/// gallery's two master switches start on, and the panes have real widths.
+/// each field declares, not on the zero its type happens to have: the panes
+/// have real widths.
 #[test]
 fn a_missing_state_file_falls_back_to_the_declared_defaults() {
     let fresh: StateFile = toml::from_str("").expect("an empty state document must parse");
-    assert!(fresh.gallery_archive);
-    assert!(fresh.gallery_other);
-    assert_eq!(
-        fresh.gallery_thumb_width,
-        super::default_gallery_thumb_width()
-    );
     assert_eq!(fresh.list_pane_width, super::default_list_pane_width());
 }
 

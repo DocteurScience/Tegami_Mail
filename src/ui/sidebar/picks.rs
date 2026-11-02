@@ -13,15 +13,6 @@ impl Sidebar {
         let _ = sender.output(SidebarOutput::UnifiedSelected);
     }
 
-    pub(super) fn on_attachments_row_selected(&mut self, sender: ComponentSender<Self>) {
-        if self.selected == Sel::Attachments {
-            return;
-        }
-        self.selected = Sel::Attachments;
-        self.clear_other_selections(Sel::Attachments);
-        let _ = sender.output(SidebarOutput::AttachmentsSelected);
-    }
-
     pub(super) fn on_contacts_row_clicked(&mut self, sender: ComponentSender<Self>) {
         if self.selected == Sel::Contacts {
             return;

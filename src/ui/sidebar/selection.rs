@@ -105,9 +105,7 @@ impl Sidebar {
                 w.list.unselect_all();
             }
         }
-        // One list holds both footer rows; single-selection makes them
-        // mutually exclusive, so it only needs clearing when neither is kept.
-        if keep != Sel::Attachments && keep != Sel::Contacts {
+        if keep != Sel::Contacts {
             if let Some(l) = &self.footer_list {
                 l.unselect_all();
             }
@@ -141,12 +139,6 @@ impl Sidebar {
             if !keep_here {
                 lb.unselect_all();
             }
-        }
-    }
-
-    fn select_attachments(&self) {
-        if let (Some(list), Some(row)) = (&self.footer_list, &self.attachments_row) {
-            list.select_row(Some(row));
         }
     }
 
@@ -269,7 +261,6 @@ impl Sidebar {
     fn select_sel(&self, sel: Sel) {
         match sel {
             Sel::Unified => self.select_unified(),
-            Sel::Attachments => self.select_attachments(),
             Sel::Contacts => self.select_contacts(None),
             Sel::ContactScope(scope) => self.select_contacts(Some(&scope)),
             Sel::Outbox => self.select_outbox(),

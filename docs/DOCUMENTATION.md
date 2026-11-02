@@ -391,7 +391,7 @@ the folders where they are, and adding it again finds them.
 ### Deleting an attachment from the server
 
 **Delete from Server…** in the right-click menu of a file in the attachment
-drawer, or in the attachment gallery, takes that one file out of the message
+drawer takes that one file out of the message
 on the server, to save space there. The rest of the message stays: its text,
 its other files, where it is filed, its read, starred and tag state, and its
 date. Tegami Mail asks first, as the change reaches every device that reads the

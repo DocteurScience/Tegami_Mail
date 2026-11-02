@@ -182,14 +182,10 @@ impl AppModel {
             human_count(self.sender_cache.len()),
             self.popouts.len()
         ));
-        let (items, with_data, data_bytes) = self.gallery.model().memory_stats();
         let ((thumbs, thumbs_rendered, thumb_bytes), (pdfs, pdfs_rendered, pdf_bytes)) =
             crate::ui::thumbnails::cache_stats();
         out.push_str(&format!(
-            "  gallery: {} items listed, {} with file bytes ({}); thumbnails {} ({} rendered, {} of pixels), PDF pages {} ({} rendered, {} of pixels) (unbounded)\n",
-            human_count(items),
-            human_count(with_data),
-            human_bytes(data_bytes),
+            "  thumbnails {} ({} rendered, {} of pixels), PDF pages {} ({} rendered, {} of pixels) (unbounded)\n",
             human_count(thumbs),
             human_count(thumbs_rendered),
             human_bytes(thumb_bytes),

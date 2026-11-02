@@ -19,6 +19,12 @@
   **Spelling Language** list, which were only in Settings and the body's
   right-click menu.
 
+- **Removed: the Attachments browser.** The sidebar's **Attachments** row,
+  its page, **Settings → Sidebar → Show Attachments Browser** and the
+  background scan that described every folder's attachments for it are
+  gone, as the redesign has no such view. A message's files stay where they
+  were: under it, in its cards, and in the attachment drawer.
+
 - **Changed: the From row is a button** (mockups 04 and 06): the address's
   avatar, name and address, opening **Send from** with every address and
   **Manage Accounts…**. It is always shown, one address or several. A From

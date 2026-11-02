@@ -141,7 +141,6 @@ pub(crate) struct PrefInit {
     /// A notification when a read receipt comes back (#520).
     pub(crate) notify_receipts: bool,
     pub(crate) notification_buttons: crate::config::NotificationButtons,
-    pub(crate) show_attachments: bool,
     pub(crate) show_unified: bool,
     pub(crate) unified_chips: crate::config::UnifiedChips,
     pub(crate) unified_kinds: crate::config::UnifiedKinds,
@@ -476,7 +475,6 @@ pub(crate) enum PrefOutput {
     SetNotificationContent(bool),
     SetNotifyReceipts(bool),
     SetNotificationButtons(crate::config::NotificationButtons),
-    SetAttachmentsRow(bool),
     SetShowUnified(bool),
     SetUnifiedChips(crate::config::UnifiedChips),
     SetPrintOptions(crate::config::PrintOptions),

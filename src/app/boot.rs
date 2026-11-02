@@ -168,7 +168,6 @@ pub(super) fn start_target(start_view: config::StartView) -> Option<StartTarget>
 /// differ only in `collapsed`, `mirror` and `start`.
 pub(super) fn sidebar_init(
     state: &config::SidebarState,
-    show_attachments: bool,
     collapsed: bool,
     mirror: bool,
     start: Option<StartTarget>,
@@ -190,7 +189,6 @@ pub(super) fn sidebar_init(
         smart_expanded: state.smart_expanded,
         contacts_expanded: state.contacts_expanded,
         contacts_folded: state.contacts_folded.clone(),
-        show_attachments,
         start,
     }
 }

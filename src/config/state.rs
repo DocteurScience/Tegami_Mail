@@ -1,11 +1,11 @@
 //! state.toml: what the app remembers between runs that is not a
-//! preference (pane sizes, the drawer and gallery, the last view, fetch
+//! preference (pane sizes, the drawer, the last view, fetch
 //! modes, recent fonts, one-time flags).
 
 use serde::{Deserialize, Serialize};
 use std::path::PathBuf;
 
-use super::{config_file, default_on, read_toml, save_plain_toml};
+use super::{config_file, read_toml, save_plain_toml};
 
 // ---------------------------------------------------------------------------
 // Keyring health check + one-time setup-help flag
@@ -35,28 +35,6 @@ pub(super) struct StateFile {
     /// The drawer's list view sorts Z→A instead of A→Z.
     #[serde(default)]
     drawer_sort_desc: bool,
-    /// Attachments gallery shows a table instead of the thumbnail grid.
-    #[serde(default)]
-    gallery_table_view: bool,
-    /// Attachments gallery thumbnail cell width in px.
-    #[serde(default = "default_gallery_thumb_width")]
-    pub(super) gallery_thumb_width: i32,
-    /// Attachments gallery sort criterion (the sort dropdown's row index).
-    #[serde(default)]
-    gallery_sort: u32,
-    /// Attachments gallery: pull from Archive folders.
-    #[serde(default = "default_on")]
-    pub(super) gallery_archive: bool,
-    /// Attachments gallery: pull from folders that are neither Inbox nor
-    /// Archive (custom folders and Starred).
-    #[serde(default = "default_on")]
-    pub(super) gallery_other: bool,
-    /// Attachments gallery: folders the user ticked or unticked by hand in the
-    /// folder list, as "<account id>\t<path>\t<0|1>". Only folders that differ
-    /// from their kind's default are stored, so a new folder on the server
-    /// follows the default rather than an entry that predates it.
-    #[serde(default)]
-    gallery_folders: Vec<String>,
     /// Message-list pane width in px (#28 — it reset every launch).
     #[serde(default = "default_list_pane_width")]
     pub(super) list_pane_width: i32,
@@ -162,10 +140,6 @@ fn default_drawer_height() -> i32 {
     160
 }
 
-pub(super) fn default_gallery_thumb_width() -> i32 {
-    230
-}
-
 pub(super) fn state_path() -> Option<PathBuf> {
     config_file("state.toml")
 }
@@ -174,7 +148,7 @@ pub(super) fn state_path() -> Option<PathBuf> {
 /// deserializing an empty document, not to `StateFile::default()`: the derived
 /// Default hands every field its type's zero, which is not what the
 /// `#[serde(default = …)]` on each one says a first run should get (a pane
-/// width of 0, a gallery that pulls from nothing). Every field carries a serde
+/// width of 0). Every field carries a serde
 /// default, so the empty document always parses.
 fn load_state() -> StateFile {
     read_toml::<StateFile>(state_path())
@@ -405,75 +379,6 @@ pub(crate) fn save_drawer_list_view(list_view: bool) {
 /// Persist the attachment drawer's list sort direction.
 pub(crate) fn save_drawer_sort_desc(desc: bool) {
     update_state(|s| s.drawer_sort_desc = desc);
-}
-
-/// The attachments gallery's remembered view settings:
-/// (table view, thumbnail width px, sort index).
-pub(crate) fn load_gallery_view() -> (bool, i32, u32) {
-    let s = load_state();
-    (
-        s.gallery_table_view,
-        s.gallery_thumb_width.clamp(140, 380),
-        s.gallery_sort,
-    )
-}
-
-/// Persist whether the attachments gallery shows the table view.
-pub(crate) fn save_gallery_table_view(table: bool) {
-    update_state(|s| s.gallery_table_view = table);
-}
-
-/// Persist the attachments gallery's thumbnail width.
-pub(crate) fn save_gallery_thumb_width(width: i32) {
-    update_state(|s| s.gallery_thumb_width = width);
-}
-
-/// Persist the attachments gallery's sort criterion (dropdown row index).
-pub(crate) fn save_gallery_sort(sort: u32) {
-    update_state(|s| s.gallery_sort = sort);
-}
-
-/// One per-folder gallery override as it is stored: "<account id>\t<path>\t<0|1>".
-/// A mailbox path can hold almost any byte a server chooses, but never a tab.
-pub(super) fn encode_gallery_folder(id: u32, path: &str, on: bool) -> String {
-    format!("{id}\t{path}\t{}", u8::from(on))
-}
-
-/// Read back [`encode_gallery_folder`]; `None` for an entry that is not in that
-/// shape, so a hand-edited or older file loses only the bad line.
-pub(super) fn decode_gallery_folder(entry: &str) -> Option<(u32, String, bool)> {
-    let mut parts = entry.splitn(3, '\t');
-    let id: u32 = parts.next()?.parse().ok()?;
-    let path = parts.next()?;
-    let on = parts.next()?;
-    if path.is_empty() {
-        return None;
-    }
-    Some((id, path.to_string(), on == "1"))
-}
-
-/// The attachments gallery's remembered folder scope: (pull from Archive,
-/// pull from other folders, per-folder overrides as (account id, path, on)).
-pub(crate) fn load_gallery_scope() -> (bool, bool, Vec<(u32, String, bool)>) {
-    let s = load_state();
-    let folders = s
-        .gallery_folders
-        .iter()
-        .filter_map(|e| decode_gallery_folder(e))
-        .collect();
-    (s.gallery_archive, s.gallery_other, folders)
-}
-
-/// Persist the attachments gallery's folder scope.
-pub(crate) fn save_gallery_scope(archive: bool, other: bool, folders: &[(u32, String, bool)]) {
-    let mut s = load_state();
-    s.gallery_archive = archive;
-    s.gallery_other = other;
-    s.gallery_folders = folders
-        .iter()
-        .map(|(id, path, on)| encode_gallery_folder(*id, path, *on))
-        .collect();
-    save_state(&s);
 }
 
 /// The split-reply panel's dragged height; 0 when it has never been dragged

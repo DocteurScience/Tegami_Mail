@@ -221,8 +221,6 @@ pub(crate) struct SidebarInit {
     pub(crate) smart_expanded: bool,
     pub(crate) contacts_expanded: bool,
     pub(crate) contacts_folded: Vec<String>,
-    /// Whether the "Attachments" row is shown.
-    pub(crate) show_attachments: bool,
     /// Where the first pick lands instead of All Inboxes (#256).
     pub(crate) start: Option<StartTarget>,
 }
@@ -240,8 +238,6 @@ pub(crate) enum StartTarget {
 pub(crate) enum Sel {
     None,
     Unified,
-    /// The attachments gallery (all inboxes).
-    Attachments,
     /// The in-app contacts view, every contact.
     Contacts,
     /// An address book or group picked under the Contacts row.

@@ -192,10 +192,6 @@ pub(crate) struct PrivacyFile {
     /// at most three count. Absent = mark_read, archive, delete.
     #[serde(default = "default_notification_buttons")]
     pub(crate) notification_buttons: Vec<String>,
-    /// Whether the sidebar's pinned footer shows the "Attachments" row (the
-    /// gallery of every account's attachments).
-    #[serde(default = "default_on")]
-    pub(crate) show_attachments: bool,
     /// Whether the combined Accounts & Preferences window opens showing the
     /// Accounts view instead of Preferences (the default).
     #[serde(default)]
@@ -713,7 +709,6 @@ impl Default for PrivacyFile {
             notifications: true,
             notification_content: true,
             notification_buttons: default_notification_buttons(),
-            show_attachments: true,
             settings_open_accounts: false,
             card_actions_hover: true,
             card_actions_auto: default_card_actions_auto(),

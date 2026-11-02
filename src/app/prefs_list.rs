@@ -6,7 +6,6 @@ use crate::config;
 use crate::ui::contacts_page::ContactsPageInput;
 use crate::ui::message_list::MessageListInput;
 use crate::ui::preferences::PrefOutput;
-use crate::ui::sidebar::SidebarInput;
 
 use super::model::AppModel;
 use super::msg::AppMsg;
@@ -92,11 +91,6 @@ impl AppModel {
                 }
             }
 
-            PrefOutput::SetAttachmentsRow(show) => {
-                if pref!(self.show_attachments = show) {
-                    self.sidebars_emit(SidebarInput::SetAttachmentsRow(show));
-                }
-            }
             PrefOutput::ResetColumnWidths => {
                 if pref!(self.list_column_widths = Default::default()) {
                     self.message_list

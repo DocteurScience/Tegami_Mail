@@ -5,7 +5,6 @@
 pub(crate) mod accounts;
 pub(crate) mod attachment_drawer;
 pub(crate) mod attachment_io;
-pub(crate) mod attachments_gallery;
 pub(crate) mod carry_over;
 mod chip_flow;
 mod cloud_accounts;

@@ -566,12 +566,6 @@ msgstr "destino"
 msgid "Move Folder"
 msgstr "Mover pasta"
 
-msgid "Attachments"
-msgstr "Anexos"
-
-msgid "Toggle sidebar"
-msgstr "Alternar barra lateral"
-
 msgid "Always do this (change it in Settings → System → GNOME Files)"
 msgstr ""
 "Fazer sempre isto (alterar em Definições → Sistema → Ficheiros do GNOME)"
@@ -894,6 +888,9 @@ msgstr ""
 
 msgid "Bold, italic, underline"
 msgstr "Negrito, itálico, sublinhado"
+
+msgid "Attachments"
+msgstr "Anexos"
 
 msgid "Preview the highlighted attachment"
 msgstr "Pré-visualizar o anexo selecionado"
@@ -2847,6 +2844,9 @@ msgstr "Transferir"
 msgid "Import OpenPGP key"
 msgstr "Importar chave OpenPGP"
 
+msgid "Deleting…"
+msgstr "A eliminar…"
+
 msgid "Show the attachments"
 msgstr "Mostrar os anexos"
 
@@ -2887,137 +2887,6 @@ msgstr "Guardar todos os anexos"
 
 msgid "The file could not be opened"
 msgstr "Não foi possível abrir o ficheiro"
-
-msgid "Go to Message"
-msgstr "Ir para a mensagem"
-
-msgid "Deleting…"
-msgstr "A eliminar…"
-
-msgid "Unknown"
-msgstr "Desconhecido"
-
-#. Deliberately counts messages, not attachments: until a message has
-#. been described there is no telling how many files it holds.
-msgid "Indexing {n} messages…"
-msgstr "A indexar {n} mensagens…"
-
-msgid "Loading more…"
-msgstr "A carregar mais…"
-
-msgid "{shown} of {total}"
-msgstr "{shown} de {total}"
-
-msgid "File"
-msgstr "Ficheiro"
-
-msgid "Search by sender, subject, type, filename…"
-msgstr "Pesquisar por remetente, assunto, tipo, nome de ficheiro…"
-
-msgid "Loading attachments…"
-msgstr "A carregar anexos…"
-
-msgid "No attachments"
-msgstr "Sem anexos"
-
-msgid "Attachments from your inboxes will appear here."
-msgstr "Os anexos das suas caixas de entrada irão aparecer aqui."
-
-msgid "No matching attachments"
-msgstr "Nenhum anexo correspondente"
-
-msgid ""
-"Try a different search, or check which accounts and folders the footer is "
-"pulling from."
-msgstr ""
-"Tente outra pesquisa ou verifique as contas e pastas selecionadas no rodapé."
-
-msgid "Type"
-msgstr "Tipo"
-
-msgid "Size"
-msgstr "Tamanho"
-
-msgid "Thumbnail grid"
-msgstr "Grelha de miniaturas"
-
-msgid "Table"
-msgstr "Tabela"
-
-msgid "Show only this account"
-msgstr "Mostrar apenas esta conta"
-
-msgid "Folders to pull from"
-msgstr "Pastas de origem"
-
-msgid "Include Archive"
-msgstr "Incluir Arquivo"
-
-msgid "Include other folders"
-msgstr "Incluir outras pastas"
-
-msgid "Everything that is not an inbox or an archive"
-msgstr "Tudo o que não seja uma caixa de entrada nem um arquivo"
-
-msgid "Pulling attachments from"
-msgstr "A obter anexos de"
-
-msgid "Show only this type"
-msgstr "Mostrar apenas este tipo"
-
-msgid "All types"
-msgstr "Todos os tipos"
-
-msgid "PDFs"
-msgstr "PDF"
-
-msgid "Documents"
-msgstr "Documentos"
-
-msgid "Archives"
-msgstr "Arquivos"
-
-msgid "Audio & Video"
-msgstr "Áudio e vídeo"
-
-msgid "Other"
-msgstr "Outro"
-
-msgid "Newest first"
-msgstr "Mais recentes primeiro"
-
-msgid "Oldest first"
-msgstr "Mais antigos primeiro"
-
-msgid "Name (A–Z)"
-msgstr "Nome (A–Z)"
-
-msgid "Name (Z–A)"
-msgstr "Nome (Z–A)"
-
-msgid "Sender (Z–A)"
-msgstr "Remetente (Z–A)"
-
-msgid "Largest first"
-msgstr "Maiores primeiro"
-
-msgid "Smallest first"
-msgstr "Menores primeiro"
-
-msgid "Type (A–Z)"
-msgstr "Tipo (A–Z)"
-
-msgid "Type (Z–A)"
-msgstr "Tipo (Z–A)"
-
-msgid "Previous"
-msgstr "Anterior"
-
-msgid "Next"
-msgstr "Seguinte"
-
-msgid "Open in the default app"
-msgstr "Abrir na aplicação predefinida"
 
 msgid "Welcome to Tegami Mail, formerly {old}"
 msgstr "Bem-vindo ao Tegami Mail, anteriormente {old}"
@@ -4152,6 +4021,9 @@ msgstr "Remover fotografia"
 msgid "Choose a Photo"
 msgstr "Escolher uma fotografia"
 
+msgid "{shown} of {total}"
+msgstr "{shown} de {total}"
+
 msgid "In Directories"
 msgstr "Nos diretórios"
 
@@ -4330,6 +4202,9 @@ msgid_plural "This will remove {n} contacts from your address books."
 msgstr[0] "Esta ação irá remover {n} contacto do seu livro de endereços."
 msgstr[1] "Esta ação irá remover {n} contactos dos seus livros de endereços."
 
+msgid "Toggle sidebar"
+msgstr "Alternar barra lateral"
+
 msgid "Import vCard files into the Tegami Mail address book"
 msgstr "Importar ficheiros vCard para o livro de endereços do Tegami Mail"
 
@@ -4494,8 +4369,17 @@ msgstr ""
 "• Atualizar o “xdg-desktop-portal” e terminar e voltar a iniciar a sessão "
 "poderá corrigir a abertura direta das ligações"
 
+msgid "Previous"
+msgstr "Anterior"
+
+msgid "Next"
+msgstr "Seguinte"
+
 msgid "{name} · {current} of {total}"
 msgstr "{name} · {current} de {total}"
+
+msgid "Loading more…"
+msgstr "A carregar mais…"
 
 msgid "No Messages"
 msgstr "Sem mensagens"
@@ -6072,12 +5956,6 @@ msgstr "Recolher contas com um clique"
 msgid "When off, only its chevron or a double click activates the fold."
 msgstr "Quando desativado, só a seta ou um duplo clique ativa a recolha."
 
-msgid "Show Attachments Browser"
-msgstr "Mostrar navegador de anexos"
-
-msgid "Browse every account's attachments in one place."
-msgstr "Explore os anexos de todas as contas num único lugar."
-
 msgid "Expand the sidebar on hover"
 msgstr "Expandir a barra lateral ao passar o ponteiro"
 
@@ -6562,6 +6440,9 @@ msgstr "Localizar etiquetas…"
 #, fuzzy
 msgid "Create “{name}”"
 msgstr "Eliminar “{name}”?"
+
+msgid "File"
+msgstr "Ficheiro"
 
 msgid "Script"
 msgstr ""
@@ -8167,6 +8048,124 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Go to Message"
+#~ msgstr "Ir para a mensagem"
+
+#~ msgid "Unknown"
+#~ msgstr "Desconhecido"
+
+#~ msgid "Indexing {n} messages…"
+#~ msgstr "A indexar {n} mensagens…"
+
+#~ msgid "Search by sender, subject, type, filename…"
+#~ msgstr "Pesquisar por remetente, assunto, tipo, nome de ficheiro…"
+
+#~ msgid "Loading attachments…"
+#~ msgstr "A carregar anexos…"
+
+#~ msgid "No attachments"
+#~ msgstr "Sem anexos"
+
+#~ msgid "Attachments from your inboxes will appear here."
+#~ msgstr "Os anexos das suas caixas de entrada irão aparecer aqui."
+
+#~ msgid "No matching attachments"
+#~ msgstr "Nenhum anexo correspondente"
+
+#~ msgid ""
+#~ "Try a different search, or check which accounts and folders the footer is "
+#~ "pulling from."
+#~ msgstr ""
+#~ "Tente outra pesquisa ou verifique as contas e pastas selecionadas no "
+#~ "rodapé."
+
+#~ msgid "Type"
+#~ msgstr "Tipo"
+
+#~ msgid "Size"
+#~ msgstr "Tamanho"
+
+#~ msgid "Thumbnail grid"
+#~ msgstr "Grelha de miniaturas"
+
+#~ msgid "Table"
+#~ msgstr "Tabela"
+
+#~ msgid "Show only this account"
+#~ msgstr "Mostrar apenas esta conta"
+
+#~ msgid "Folders to pull from"
+#~ msgstr "Pastas de origem"
+
+#~ msgid "Include Archive"
+#~ msgstr "Incluir Arquivo"
+
+#~ msgid "Include other folders"
+#~ msgstr "Incluir outras pastas"
+
+#~ msgid "Everything that is not an inbox or an archive"
+#~ msgstr "Tudo o que não seja uma caixa de entrada nem um arquivo"
+
+#~ msgid "Pulling attachments from"
+#~ msgstr "A obter anexos de"
+
+#~ msgid "Show only this type"
+#~ msgstr "Mostrar apenas este tipo"
+
+#~ msgid "All types"
+#~ msgstr "Todos os tipos"
+
+#~ msgid "PDFs"
+#~ msgstr "PDF"
+
+#~ msgid "Documents"
+#~ msgstr "Documentos"
+
+#~ msgid "Archives"
+#~ msgstr "Arquivos"
+
+#~ msgid "Audio & Video"
+#~ msgstr "Áudio e vídeo"
+
+#~ msgid "Other"
+#~ msgstr "Outro"
+
+#~ msgid "Newest first"
+#~ msgstr "Mais recentes primeiro"
+
+#~ msgid "Oldest first"
+#~ msgstr "Mais antigos primeiro"
+
+#~ msgid "Name (A–Z)"
+#~ msgstr "Nome (A–Z)"
+
+#~ msgid "Name (Z–A)"
+#~ msgstr "Nome (Z–A)"
+
+#~ msgid "Sender (Z–A)"
+#~ msgstr "Remetente (Z–A)"
+
+#~ msgid "Largest first"
+#~ msgstr "Maiores primeiro"
+
+#~ msgid "Smallest first"
+#~ msgstr "Menores primeiro"
+
+#~ msgid "Type (A–Z)"
+#~ msgstr "Tipo (A–Z)"
+
+#~ msgid "Type (Z–A)"
+#~ msgstr "Tipo (Z–A)"
+
+#~ msgid "Open in the default app"
+#~ msgstr "Abrir na aplicação predefinida"
+
+#~ msgid "Show Attachments Browser"
+#~ msgstr "Mostrar navegador de anexos"
+
+#~ msgid "Browse every account's attachments in one place."
+#~ msgstr "Explore os anexos de todas as contas num único lugar."
 
 #~ msgid "The From has to be one address, such as Ann <ann@example.com>."
 #~ msgstr ""

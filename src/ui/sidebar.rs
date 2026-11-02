@@ -96,7 +96,7 @@ pub(crate) struct Sidebar {
     custom_chevrons: HashMap<u32, gtk::Image>,
     /// The unified-row list box (one row), when shown.
     unified_list: Option<gtk::ListBox>,
-    /// The pinned footer's single list box (Contacts + Attachments rows),
+    /// The pinned footer's single list box (the Contacts row),
     /// for selection management.
     footer_list: Option<gtk::ListBox>,
     /// The address books and groups the Contacts row lists.
@@ -106,7 +106,6 @@ pub(crate) struct Sidebar {
     tree_rows: std::rc::Rc<
         std::cell::RefCell<Vec<(crate::ui::contacts_page::ContactScope, gtk::ListBoxRow)>>,
     >,
-    attachments_row: Option<gtk::ListBoxRow>,
     /// The footer's Contacts row, when Contacts is placed there.
     contacts_row: Option<gtk::ListBoxRow>,
     /// Refresh/spinner stack + spinner beside the "New Message" button.
@@ -143,8 +142,6 @@ pub(crate) struct Sidebar {
     /// account is held by address: ids follow the account order, which a
     /// removal shifts.
     reannounce: Option<(Sel, Option<String>)>,
-    /// Whether the "Attachments" row is shown (in the pinned footer).
-    show_attachments: bool,
     /// How many messages are waiting in the Outbox across all accounts. The row
     /// only exists while this is non-zero — an empty Outbox is the normal state
     /// and does not deserve permanent furniture.
@@ -254,7 +251,7 @@ impl Component for Sidebar {
 
                 // The top block (compose bar, All Inboxes) is pinned above
                 // the scroller so it never scrolls away; only the per-account
-                // sections below scroll. Contacts/Attachments pin below it,
+                // sections below scroll. Contacts pins below it,
                 // in the footer.
                 #[wrap(Some)]
                 set_child = &gtk::Box {
@@ -341,7 +338,6 @@ impl Component for Sidebar {
             footer_list: None,
             contact_tree: None,
             tree_rows: std::rc::Rc::new(std::cell::RefCell::new(Vec::new())),
-            attachments_row: None,
             contacts_row: None,
             sync_stack: None,
             sync_spinner: None,
@@ -356,7 +352,6 @@ impl Component for Sidebar {
             mirror: init.mirror,
             start: if init.mirror { None } else { init.start },
             reannounce: None,
-            show_attachments: init.show_attachments,
             outbox_count: 0,
             unified_unread: 0,
             fresh: None,
@@ -458,7 +453,6 @@ impl Sidebar {
             msg @ SidebarInput::SetContents { .. } => self.on_set_contents(msg, widgets, sender),
             SidebarInput::UnifiedRowSelected => self.on_unified_row_selected(sender),
             SidebarInput::SelectUnifiedRow => self.on_select_unified_row(sender),
-            SidebarInput::AttachmentsRowSelected => self.on_attachments_row_selected(sender),
             SidebarInput::ContactsRowClicked => self.on_contacts_row_clicked(sender),
             SidebarInput::SetContactTree(tree) => self.on_set_contact_tree(tree, sender),
             SidebarInput::ToggleContactsExpand => {
@@ -525,9 +519,6 @@ impl Sidebar {
                 unified,
                 fresh,
             } => self.on_set_unread(folders, unified, fresh),
-            SidebarInput::SetAttachmentsRow(show) => {
-                self.on_set_attachments_row(show, widgets, sender)
-            }
             SidebarInput::SetBusy(busy) => self.on_set_busy(busy),
             SidebarInput::SetOffline(offline) => self.on_set_offline(offline),
             SidebarInput::SetFocus {

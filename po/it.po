@@ -571,12 +571,6 @@ msgstr "destinazione"
 msgid "Move Folder"
 msgstr "Sposta cartella"
 
-msgid "Attachments"
-msgstr "Allegati"
-
-msgid "Toggle sidebar"
-msgstr "Attiva/disattiva barra laterale"
-
 msgid "Always do this (change it in Settings → System → GNOME Files)"
 msgstr "Fai sempre così (cambialo in Impostazioni → Sistema → File GNOME)"
 
@@ -901,6 +895,9 @@ msgstr ""
 
 msgid "Bold, italic, underline"
 msgstr "Grassetto, corsivo, sottolineato"
+
+msgid "Attachments"
+msgstr "Allegati"
 
 msgid "Preview the highlighted attachment"
 msgstr "Anteprima dell'allegato evidenziato"
@@ -2904,6 +2901,9 @@ msgstr "Scarica"
 msgid "Import OpenPGP key"
 msgstr "Importa chiave OpenPGP"
 
+msgid "Deleting…"
+msgstr "Eliminazione in corso…"
+
 msgid "Show the attachments"
 msgstr "Mostra gli allegati"
 
@@ -2944,138 +2944,6 @@ msgstr "Salva tutti gli allegati"
 
 msgid "The file could not be opened"
 msgstr "Impossibile aprire il file"
-
-msgid "Go to Message"
-msgstr "Vai al messaggio"
-
-msgid "Deleting…"
-msgstr "Eliminazione in corso…"
-
-msgid "Unknown"
-msgstr "Sconosciuto"
-
-#. Deliberately counts messages, not attachments: until a message has
-#. been described there is no telling how many files it holds.
-msgid "Indexing {n} messages…"
-msgstr "Indicizzazione di {n} messaggi…"
-
-msgid "Loading more…"
-msgstr "Caricamento altro…"
-
-msgid "{shown} of {total}"
-msgstr "{shown} di {total}"
-
-msgid "File"
-msgstr "File"
-
-msgid "Search by sender, subject, type, filename…"
-msgstr "Cerca per mittente, oggetto, tipo, nome file…"
-
-msgid "Loading attachments…"
-msgstr "Caricamento allegati in corso…"
-
-msgid "No attachments"
-msgstr "Nessun allegato"
-
-msgid "Attachments from your inboxes will appear here."
-msgstr "Gli allegati delle tue caselle in arrivo appariranno qui."
-
-msgid "No matching attachments"
-msgstr "Nessun allegato corrispondente"
-
-msgid ""
-"Try a different search, or check which accounts and folders the footer is "
-"pulling from."
-msgstr ""
-"Prova una ricerca diversa, o controlla da quali account e cartelle sta "
-"recuperando il piè di pagina."
-
-msgid "Type"
-msgstr "Tipo"
-
-msgid "Size"
-msgstr "Dimensione"
-
-msgid "Thumbnail grid"
-msgstr "Griglia miniature"
-
-msgid "Table"
-msgstr "Tabella"
-
-msgid "Show only this account"
-msgstr "Mostra solo questo account"
-
-msgid "Folders to pull from"
-msgstr "Cartelle da cui recuperare"
-
-msgid "Include Archive"
-msgstr "Includi Archivio"
-
-msgid "Include other folders"
-msgstr "Includi altre cartelle"
-
-msgid "Everything that is not an inbox or an archive"
-msgstr "Tutto ciò che non è una posta in arrivo o un archivio"
-
-msgid "Pulling attachments from"
-msgstr "Recupero allegati da"
-
-msgid "Show only this type"
-msgstr "Mostra solo questo tipo"
-
-msgid "All types"
-msgstr "Tutti i tipi"
-
-msgid "PDFs"
-msgstr "PDF"
-
-msgid "Documents"
-msgstr "Documenti"
-
-msgid "Archives"
-msgstr "Archivi"
-
-msgid "Audio & Video"
-msgstr "Audio e video"
-
-msgid "Other"
-msgstr "Altro"
-
-msgid "Newest first"
-msgstr "Più recenti prima"
-
-msgid "Oldest first"
-msgstr "Più vecchi prima"
-
-msgid "Name (A–Z)"
-msgstr "Nome (A–Z)"
-
-msgid "Name (Z–A)"
-msgstr "Nome (Z–A)"
-
-msgid "Sender (Z–A)"
-msgstr "Mittente (Z–A)"
-
-msgid "Largest first"
-msgstr "Più grandi prima"
-
-msgid "Smallest first"
-msgstr "Più piccoli prima"
-
-msgid "Type (A–Z)"
-msgstr "Tipo (A–Z)"
-
-msgid "Type (Z–A)"
-msgstr "Tipo (Z–A)"
-
-msgid "Previous"
-msgstr "Precedente"
-
-msgid "Next"
-msgstr "Successivo"
-
-msgid "Open in the default app"
-msgstr "Apri nell'app predefinita"
 
 msgid "Welcome to Tegami Mail, formerly {old}"
 msgstr "Benvenuto in Tegami Mail, ex {old}"
@@ -4238,6 +4106,9 @@ msgstr "Rimuovi etichetta"
 msgid "Choose a Photo"
 msgstr "Scegli una foto"
 
+msgid "{shown} of {total}"
+msgstr "{shown} di {total}"
+
 #, fuzzy
 msgid "In Directories"
 msgstr "Directory LDAP"
@@ -4446,6 +4317,9 @@ msgstr[1] ""
 "{name} viene rimosso dalla rubrica, e per una rubrica sincronizzata, anche "
 "dal server."
 
+msgid "Toggle sidebar"
+msgstr "Attiva/disattiva barra laterale"
+
 msgid "Import vCard files into the Tegami Mail address book"
 msgstr "Importa file vCard nella rubrica Tegami Mail"
 
@@ -4612,8 +4486,17 @@ msgstr ""
 "• Aggiornare “xdg-desktop-portal” e rieseguire l'accesso potrebbe "
 "risolverel'apertura diretta dei link"
 
+msgid "Previous"
+msgstr "Precedente"
+
+msgid "Next"
+msgstr "Successivo"
+
 msgid "{name} · {current} of {total}"
 msgstr "{name} · {current} di {total}"
+
+msgid "Loading more…"
+msgstr "Caricamento altro…"
 
 msgid "No Messages"
 msgstr "Nessun messaggio"
@@ -6223,13 +6106,6 @@ msgstr ""
 msgid "When off, only its chevron or a double click activates the fold."
 msgstr ""
 
-#, fuzzy
-msgid "Show Attachments Browser"
-msgstr "Cassetto allegati"
-
-msgid "Browse every account's attachments in one place."
-msgstr ""
-
 msgid "Expand the sidebar on hover"
 msgstr "Espandi la barra laterale al passaggio del mouse"
 
@@ -6712,6 +6588,9 @@ msgstr "Trova etichette…"
 #, fuzzy
 msgid "Create “{name}”"
 msgstr "Eliminare \"{name}\"?"
+
+msgid "File"
+msgstr "File"
 
 msgid "Script"
 msgstr ""
@@ -8342,6 +8221,122 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Go to Message"
+#~ msgstr "Vai al messaggio"
+
+#~ msgid "Unknown"
+#~ msgstr "Sconosciuto"
+
+#~ msgid "Indexing {n} messages…"
+#~ msgstr "Indicizzazione di {n} messaggi…"
+
+#~ msgid "Search by sender, subject, type, filename…"
+#~ msgstr "Cerca per mittente, oggetto, tipo, nome file…"
+
+#~ msgid "Loading attachments…"
+#~ msgstr "Caricamento allegati in corso…"
+
+#~ msgid "No attachments"
+#~ msgstr "Nessun allegato"
+
+#~ msgid "Attachments from your inboxes will appear here."
+#~ msgstr "Gli allegati delle tue caselle in arrivo appariranno qui."
+
+#~ msgid "No matching attachments"
+#~ msgstr "Nessun allegato corrispondente"
+
+#~ msgid ""
+#~ "Try a different search, or check which accounts and folders the footer is "
+#~ "pulling from."
+#~ msgstr ""
+#~ "Prova una ricerca diversa, o controlla da quali account e cartelle sta "
+#~ "recuperando il piè di pagina."
+
+#~ msgid "Type"
+#~ msgstr "Tipo"
+
+#~ msgid "Size"
+#~ msgstr "Dimensione"
+
+#~ msgid "Thumbnail grid"
+#~ msgstr "Griglia miniature"
+
+#~ msgid "Table"
+#~ msgstr "Tabella"
+
+#~ msgid "Show only this account"
+#~ msgstr "Mostra solo questo account"
+
+#~ msgid "Folders to pull from"
+#~ msgstr "Cartelle da cui recuperare"
+
+#~ msgid "Include Archive"
+#~ msgstr "Includi Archivio"
+
+#~ msgid "Include other folders"
+#~ msgstr "Includi altre cartelle"
+
+#~ msgid "Everything that is not an inbox or an archive"
+#~ msgstr "Tutto ciò che non è una posta in arrivo o un archivio"
+
+#~ msgid "Pulling attachments from"
+#~ msgstr "Recupero allegati da"
+
+#~ msgid "Show only this type"
+#~ msgstr "Mostra solo questo tipo"
+
+#~ msgid "All types"
+#~ msgstr "Tutti i tipi"
+
+#~ msgid "PDFs"
+#~ msgstr "PDF"
+
+#~ msgid "Documents"
+#~ msgstr "Documenti"
+
+#~ msgid "Archives"
+#~ msgstr "Archivi"
+
+#~ msgid "Audio & Video"
+#~ msgstr "Audio e video"
+
+#~ msgid "Other"
+#~ msgstr "Altro"
+
+#~ msgid "Newest first"
+#~ msgstr "Più recenti prima"
+
+#~ msgid "Oldest first"
+#~ msgstr "Più vecchi prima"
+
+#~ msgid "Name (A–Z)"
+#~ msgstr "Nome (A–Z)"
+
+#~ msgid "Name (Z–A)"
+#~ msgstr "Nome (Z–A)"
+
+#~ msgid "Sender (Z–A)"
+#~ msgstr "Mittente (Z–A)"
+
+#~ msgid "Largest first"
+#~ msgstr "Più grandi prima"
+
+#~ msgid "Smallest first"
+#~ msgstr "Più piccoli prima"
+
+#~ msgid "Type (A–Z)"
+#~ msgstr "Tipo (A–Z)"
+
+#~ msgid "Type (Z–A)"
+#~ msgstr "Tipo (Z–A)"
+
+#~ msgid "Open in the default app"
+#~ msgstr "Apri nell'app predefinita"
+
+#, fuzzy
+#~ msgid "Show Attachments Browser"
+#~ msgstr "Cassetto allegati"
 
 #~ msgid "The From has to be one address, such as Ann <ann@example.com>."
 #~ msgstr ""

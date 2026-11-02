@@ -13,31 +13,9 @@ pub(super) fn add_msg(c: &Cache, folder: &str, uid: u32, from: &str, subject: &s
         params![folder, uid, from, subject, ts],
     ).unwrap();
 }
-pub(super) fn add_att(c: &Cache, folder: &str, uid: u32, idx: u32, name: &str, data: &[u8]) {
-    c.conn.execute(
-        "INSERT INTO attachments (account_id, folder_path, uid, idx, name, data) VALUES (1, ?1, ?2, ?3, ?4, ?5)",
-        params![folder, uid, idx, name, data],
-    ).unwrap();
-}
 pub(super) fn add_folder(c: &Cache, path: &str, kind: FolderKind) {
     c.conn.execute(
         "INSERT INTO folders (account_id, path, name, kind, unread, ord) VALUES (1, ?1, ?1, ?2, 0, 0)",
         params![path, kind_to_i64(kind)],
     ).unwrap();
-}
-
-/// Describe an attachment without downloading it, as the scan does.
-pub(super) fn add_meta(c: &Cache, folder: &str, uid: u32, idx: u32, name: &str, size: u64) {
-    c.save_attachment_meta(
-        1,
-        folder,
-        uid,
-        &[crate::models::AttachmentMeta {
-            idx,
-            name: name.to_string(),
-            mime: String::new(),
-            size,
-            section: format!("{}", idx + 1),
-        }],
-    );
 }

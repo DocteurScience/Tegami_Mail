@@ -1,5 +1,5 @@
 //! Showcase hooks for the list, the reader and the sidebar: opening rows,
-//! menus and palettes, swipes, the gallery, the rail and the peek panel.
+//! menus and palettes, swipes, the rail and the peek panel.
 
 use adw::prelude::*;
 use relm4::prelude::*;
@@ -8,7 +8,6 @@ use crate::app::model::AppModel;
 use crate::app::msg::AppMsg;
 use crate::app::AppModelWidgets;
 use crate::models::FolderKind;
-use crate::ui::attachments_gallery::GalleryInput;
 use crate::ui::message_list::MessageListInput;
 use crate::ui::message_view::MessageViewInput;
 use crate::ui::showcase::showcase_capture;
@@ -386,50 +385,6 @@ pub(super) fn stage_move(sender: &ComponentSender<AppModel>) {
 }
 
 impl AppModel {
-    /// TEGAMI_SHOWCASE_GALLERY=1 opens the attachments gallery at
-    /// 3s; add TEGAMI_SHOWCASE_GALLERY_FOLDERS=1 to drop its folder
-    /// popover open a second later, or TEGAMI_SHOWCASE_GALLERY_ACCOUNT=<row>
-    /// to pick that row of its account filter (0 = all accounts).
-    pub(super) fn stage_gallery(&self, sender: &ComponentSender<AppModel>) {
-        if std::env::var("TEGAMI_SHOWCASE_GALLERY").is_ok() {
-            let s = sender.input_sender().clone();
-            let g = self.gallery.sender().clone();
-            gtk::glib::timeout_add_seconds_local_once(3, move || {
-                let _ = s.send(AppMsg::ShowAttachments);
-                let row: Option<u32> = std::env::var("TEGAMI_SHOWCASE_GALLERY_ACCOUNT")
-                    .ok()
-                    .and_then(|v| v.parse().ok());
-                let folders = std::env::var("TEGAMI_SHOWCASE_GALLERY_FOLDERS").is_ok();
-                // TEGAMI_SHOWCASE_GALLERY_SEARCH=<text> types into the
-                // search box and reports whether it keeps the focus.
-                let search = std::env::var("TEGAMI_SHOWCASE_GALLERY_SEARCH").ok();
-                // TEGAMI_SHOWCASE_GALLERY_MORE=<n> pages down n times,
-                // as scrolling to the end would.
-                let more: u32 = std::env::var("TEGAMI_SHOWCASE_GALLERY_MORE")
-                    .ok()
-                    .and_then(|v| v.parse().ok())
-                    .unwrap_or(0);
-                gtk::glib::timeout_add_seconds_local_once(1, move || {
-                    if let Some(row) = row {
-                        let _ = g.send(GalleryInput::SetAccountFilter(row));
-                    }
-                    for i in 0..more {
-                        let g = g.clone();
-                        gtk::glib::timeout_add_seconds_local_once(1 + i, move || {
-                            let _ = g.send(GalleryInput::LoadMore);
-                        });
-                    }
-                    if let Some(text) = search {
-                        let _ = g.send(GalleryInput::ShowcaseSearch(text));
-                    }
-                    if folders {
-                        let _ = g.send(GalleryInput::ShowcaseFolders);
-                    }
-                });
-            });
-        }
-    }
-
     /// TEGAMI_SHOWCASE_RAIL=1 collapses the sidebar to the rail
     /// at 3s (the user's own toggle, fold-ups and all).
     pub(super) fn stage_rail(&self) {

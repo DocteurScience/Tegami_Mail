@@ -1,8 +1,7 @@
 //! The handlers for requests that read: folder lists, bodies, sources,
 //! attachments, raw exports, searches across folders, quota and keywords.
 
-use async_imap::types::{Fetch, Flag};
-use futures::TryStreamExt;
+use async_imap::types::Flag;
 
 use super::{ensured, After, Emit, ImapWorker};
 use crate::cache::Cache;
@@ -20,11 +19,10 @@ use crate::worker::imap::prefetch::{
 use crate::worker::imap::retry::{
     load_bodies_retry, load_body_retry, load_messages_retry, load_raw_retry, load_source_retry,
 };
-use crate::worker::imap::structure::structure_attachments;
 use crate::worker::imap::sweep::{emit_body_hits, selected_chip_count};
 use crate::worker::imap::watch::{watch_active_folder, watchable};
-use crate::worker::imap::wire::{exam, fetch_uids, search_uids, sel, uid_set};
-use crate::worker::imap::{BODY_FETCH_BATCH, FIRST_PAGE, SCAN_CHUNK, SCAN_SPLIT_BUDGET};
+use crate::worker::imap::wire::{exam, search_uids, sel};
+use crate::worker::imap::{BODY_FETCH_BATCH, FIRST_PAGE};
 use crate::worker::preempt::interrupt_read_for_reader;
 use crate::worker::render::attachments::attachments_of;
 use crate::worker::render::body_cacheable;
@@ -407,116 +405,6 @@ impl<E: Emit> ImapWorker<E> {
         emit(WorkerEvent::Located {
             message_id: message_id.clone(),
             hit,
-        });
-        After::Done
-    }
-
-    /// Describe a batch of a folder's unscanned attachments for the gallery.
-    pub(super) async fn on_scan_attachments(&mut self, folder_path: String) -> After {
-        let account_id = self.account_id;
-        let cache = &self.cache;
-        let session = &mut self.session;
-        let emit = &self.emit;
-        // Ask the server what a batch of messages holds, without
-        // downloading any of it. BODYSTRUCTURE is a few hundred bytes
-        // per message, so a whole archive costs single-digit megabytes
-        // — the difference between a gallery that reaches back two
-        // decades and one that shows only what has been opened.
-        let Some(c) = cache.as_ref() else {
-            return After::Skip;
-        };
-        let uids = c.unscanned_attachment_uids(account_id, folder_path.as_str(), SCAN_CHUNK);
-        if uids.is_empty() {
-            emit(WorkerEvent::AttachmentsScanned {
-                folder_path: folder_path.clone(),
-                added: 0,
-                remaining: 0,
-            });
-            return After::Skip;
-        }
-        let sess = ensured(session);
-        if sel(sess, folder_path.as_str()).await.is_err() {
-            return After::Skip;
-        }
-
-        // One bad response must not cost the whole batch. A batch that
-        // will not parse is halved and retried, down to the single
-        // message responsible: its neighbours are described normally
-        // and only it is written off. Smaller responses also parse more
-        // often, so the split usually resolves the failure outright.
-        let mut added = 0u32;
-        let mut pending: Vec<Vec<u32>> = vec![uids];
-        let mut budget = SCAN_SPLIT_BUDGET;
-        while let Some(batch) = pending.pop() {
-            if budget == 0 {
-                break; // the rest keeps its place in the queue
-            }
-            budget -= 1;
-            let set = uid_set(&batch);
-            // BODYSTRUCTURE on its own, not beside ENVELOPE: the
-            // servers that make us fall back to raw headers (iCloud)
-            // usually choke on the ENVELOPE half — an unescaped quote
-            // in a Message-ID — so asking for the structure alone
-            // often parses where the combined fetch did not.
-            let fetched: Result<Vec<Fetch>, _> = match fetch_uids(sess, &set, "BODYSTRUCTURE").await
-            {
-                Ok(stream) => stream.try_collect().await,
-                Err(e) => Err(e),
-            };
-            match fetched {
-                Ok(fetches) => {
-                    // Every UID asked about is answered, including the
-                    // ones holding nothing: an empty list is still an
-                    // answer, and recording it stops the message being
-                    // asked about on every pass forever.
-                    let mut seen: std::collections::HashSet<u32> = std::collections::HashSet::new();
-                    for f in &fetches {
-                        let Some(uid) = f.uid else { continue };
-                        seen.insert(uid);
-                        let metas = f
-                            .bodystructure()
-                            .map(structure_attachments)
-                            .unwrap_or_default();
-                        added += metas.len() as u32;
-                        c.save_attachment_meta(account_id, folder_path.as_str(), uid, &metas);
-                    }
-                    for uid in batch.iter().filter(|u| !seen.contains(u)) {
-                        c.save_attachment_meta(account_id, folder_path.as_str(), *uid, &[]);
-                    }
-                }
-                // A dropped connection says nothing about these
-                // messages. Leave them unscanned and let the next pass
-                // have them, rather than recording an answer the server
-                // never gave.
-                Err(async_imap::error::Error::ConnectionLost) => {
-                    pending.clear();
-                    session.take();
-                    break;
-                }
-                Err(e) if batch.len() > 1 => {
-                    let mid = batch.len() / 2;
-                    pending.push(batch[mid..].to_vec());
-                    pending.push(batch[..mid].to_vec());
-                    tracing::debug!(
-                        "attachment scan of {folder_path}: splitting {} after {e}",
-                        batch.len()
-                    );
-                }
-                Err(e) => {
-                    // One message whose structure our parser will not
-                    // take. Record it as holding nothing rather than
-                    // retrying it forever; opening it still fetches the
-                    // message in full and lists what it really holds.
-                    tracing::warn!("attachment scan of {folder_path} uid {}: {e}", batch[0]);
-                    c.save_attachment_meta(account_id, folder_path.as_str(), batch[0], &[]);
-                }
-            }
-        }
-
-        emit(WorkerEvent::AttachmentsScanned {
-            folder_path: folder_path.clone(),
-            added,
-            remaining: c.unscanned_attachment_count(account_id, folder_path.as_str()),
         });
         After::Done
     }

@@ -75,8 +75,6 @@ pub(crate) enum SidebarInput {
     /// out like a click. State is set before the row, so the row-selected
     /// signal hits the already-selected guard.
     SelectUnifiedRow,
-    /// The "Attachments" row was chosen.
-    AttachmentsRowSelected,
     /// The "Contacts" row was clicked (it acts as a launcher, not a selection).
     ContactsRowClicked,
     /// The address books and groups the Contacts row lists.
@@ -160,8 +158,6 @@ pub(crate) enum SidebarInput {
         after: bool,
     },
     ToggleCollapsed,
-    /// Show/hide the "Attachments" row in the pinned footer.
-    SetAttachmentsRow(bool),
     /// Whether any account is syncing — spins the refresh button.
     SetBusy(bool),
     /// Whether the network is down: the refresh button turns orange (#442).
@@ -286,8 +282,6 @@ pub(crate) enum SidebarOutput {
         keyword: String,
         account: Option<u32>,
     },
-    /// The attachments gallery was selected.
-    AttachmentsSelected,
     /// The "Contacts" row was clicked — open the contacts browser.
     ContactsClicked,
     OutboxSelected,

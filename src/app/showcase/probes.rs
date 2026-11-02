@@ -70,9 +70,6 @@ pub(super) fn probe_delete_attachment(sender: &ComponentSender<AppModel>) {
             .ok()
             .and_then(|v| v.parse().ok())
             .unwrap_or(10);
-        if name.starts_with("gallery:") {
-            input_after(sender, at.saturating_sub(4), AppMsg::ShowAttachments);
-        }
         let s = sender.clone();
         gtk::glib::timeout_add_seconds_local_once(at, move || {
             s.input(AppMsg::ShowcaseDeleteAttachment { name, confirmed });

@@ -1,9 +1,9 @@
 //! The grid's cells and the list's rows.
 
+use super::deleting::{deleting_label, deleting_over, deleting_veil};
 use super::{AttachmentDrawer, AttachmentDrawerInput};
 use crate::i18n::i18n;
 use crate::models::{is_image_name, Attachment};
-use crate::ui::attachments_gallery::{deleting_label, deleting_over, deleting_veil};
 use crate::ui::thumbnails::{
     icon_color_class, icon_for, is_pdf_name, spawn_thumbnail_render, texture_from,
     thumbnail_texture, Thumbnail,

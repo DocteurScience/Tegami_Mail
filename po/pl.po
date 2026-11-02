@@ -591,12 +591,6 @@ msgstr "Zaktualizowane zaproszenie"
 msgid "Move Folder"
 msgstr "Przenieś katalog"
 
-msgid "Attachments"
-msgstr "Załączniki"
-
-msgid "Toggle sidebar"
-msgstr "Przełącz panel boczny"
-
 msgid "Always do this (change it in Settings → System → GNOME Files)"
 msgstr ""
 "Zawsze wykonuj tę czynność (można to zmienić w oknie Ustawienia → System → "
@@ -932,6 +926,9 @@ msgstr ""
 
 msgid "Bold, italic, underline"
 msgstr ""
+
+msgid "Attachments"
+msgstr "Załączniki"
 
 #, fuzzy
 msgid "Preview the highlighted attachment"
@@ -2995,6 +2992,9 @@ msgstr "Pobierz…"
 msgid "Import OpenPGP key"
 msgstr "Importuj klucz OpenPGP"
 
+msgid "Deleting…"
+msgstr "Usuwanie…"
+
 msgid "Show the attachments"
 msgstr "Wyświetl załączniki"
 
@@ -3036,138 +3036,6 @@ msgstr "Zapisz wszystkie załączniki"
 
 msgid "The file could not be opened"
 msgstr "Nie udało się otworzyć pliku"
-
-msgid "Go to Message"
-msgstr "Przejdź do wiadomości"
-
-msgid "Deleting…"
-msgstr "Usuwanie…"
-
-msgid "Unknown"
-msgstr ""
-
-#. Deliberately counts messages, not attachments: until a message has
-#. been described there is no telling how many files it holds.
-msgid "Indexing {n} messages…"
-msgstr "Indeksowanie wiadomości ({n})…"
-
-msgid "Loading more…"
-msgstr "Wczytywanie kolejnych…"
-
-msgid "{shown} of {total}"
-msgstr "{shown} z {total}"
-
-msgid "File"
-msgstr ""
-
-msgid "Search by sender, subject, type, filename…"
-msgstr "Wyszukaj według nadawcy, tematu, typu, nazwy pliku…"
-
-msgid "Loading attachments…"
-msgstr "Wczytywanie załączników…"
-
-msgid "No attachments"
-msgstr "Brak załączników"
-
-msgid "Attachments from your inboxes will appear here."
-msgstr "W tym miejscu będą wyświetlane załączniki ze skrzynek odbiorczych."
-
-msgid "No matching attachments"
-msgstr "Brak pasujących załączników"
-
-msgid ""
-"Try a different search, or check which accounts and folders the footer is "
-"pulling from."
-msgstr ""
-"Spróbuj wyszukać coś innego lub sprawdź w stopce, z których kont i katalogów "
-"są pobierane załączniki."
-
-msgid "Type"
-msgstr ""
-
-msgid "Size"
-msgstr ""
-
-msgid "Thumbnail grid"
-msgstr "Siatka miniatur"
-
-msgid "Table"
-msgstr "Tabela"
-
-msgid "Show only this account"
-msgstr "Wyświetl tylko to konto"
-
-msgid "Folders to pull from"
-msgstr "Katalogi źródłowe"
-
-msgid "Include Archive"
-msgstr "Uwzględnianie archiwum"
-
-msgid "Include other folders"
-msgstr "Uwzględnianie innych katalogów"
-
-msgid "Everything that is not an inbox or an archive"
-msgstr "Wszystko, co nie jest skrzynką odbiorczą ani archiwum"
-
-msgid "Pulling attachments from"
-msgstr "Źródła załączników"
-
-msgid "Show only this type"
-msgstr "Wyświetl tylko ten typ"
-
-msgid "All types"
-msgstr "Wszystkie typy"
-
-msgid "PDFs"
-msgstr "Pliki PDF"
-
-msgid "Documents"
-msgstr "Dokumenty"
-
-msgid "Archives"
-msgstr "Archiwa"
-
-msgid "Audio & Video"
-msgstr "Audio i wideo"
-
-msgid "Other"
-msgstr "Inne"
-
-msgid "Newest first"
-msgstr "Od najnowszych"
-
-msgid "Oldest first"
-msgstr "Od najstarszych"
-
-msgid "Name (A–Z)"
-msgstr "Nazwa (A–Z)"
-
-msgid "Name (Z–A)"
-msgstr "Nazwa (Z–A)"
-
-msgid "Sender (Z–A)"
-msgstr "Nadawca (Z–A)"
-
-msgid "Largest first"
-msgstr "Od największych"
-
-msgid "Smallest first"
-msgstr "Od najmniejszych"
-
-msgid "Type (A–Z)"
-msgstr "Typ (A–Z)"
-
-msgid "Type (Z–A)"
-msgstr "Typ (Z–A)"
-
-msgid "Previous"
-msgstr "Poprzedni"
-
-msgid "Next"
-msgstr "Następny"
-
-msgid "Open in the default app"
-msgstr "Otwórz w domyślnej aplikacji"
 
 msgid "Welcome to Tegami Mail, formerly {old}"
 msgstr "Witamy w aplikacji Tegami Mail (dawniej {old})"
@@ -4335,6 +4203,9 @@ msgstr "Usuń etykietę"
 msgid "Choose a Photo"
 msgstr "Wybierz obraz"
 
+msgid "{shown} of {total}"
+msgstr "{shown} z {total}"
+
 #, fuzzy
 msgid "In Directories"
 msgstr "Dodaj filtr"
@@ -4522,6 +4393,9 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
+msgid "Toggle sidebar"
+msgstr "Przełącz panel boczny"
+
 msgid "Import vCard files into the Tegami Mail address book"
 msgstr ""
 
@@ -4695,8 +4569,17 @@ msgstr ""
 "• Zaktualizowanie pakietu „xdg-desktop-portal” i ponowne zalogowanie się "
 "może rozwiązać problem z bezpośrednim otwieraniem odnośników"
 
+msgid "Previous"
+msgstr "Poprzedni"
+
+msgid "Next"
+msgstr "Następny"
+
 msgid "{name} · {current} of {total}"
 msgstr "{name} · {current} z {total}"
+
+msgid "Loading more…"
+msgstr "Wczytywanie kolejnych…"
 
 msgid "No Messages"
 msgstr "Brak wiadomości"
@@ -6349,13 +6232,6 @@ msgstr ""
 msgid "When off, only its chevron or a double click activates the fold."
 msgstr ""
 
-#, fuzzy
-msgid "Show Attachments Browser"
-msgstr "Szuflada załączników"
-
-msgid "Browse every account's attachments in one place."
-msgstr ""
-
 msgid "Expand the sidebar on hover"
 msgstr "Rozwijanie panelu bocznego po najechaniu kursorem"
 
@@ -6859,6 +6735,9 @@ msgstr "Znajdź etykiety…"
 #, fuzzy
 msgid "Create “{name}”"
 msgstr "Czy opróżnić katalog „{name}”?"
+
+msgid "File"
+msgstr ""
 
 msgid "Script"
 msgstr ""
@@ -8495,6 +8374,113 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Go to Message"
+#~ msgstr "Przejdź do wiadomości"
+
+#~ msgid "Indexing {n} messages…"
+#~ msgstr "Indeksowanie wiadomości ({n})…"
+
+#~ msgid "Search by sender, subject, type, filename…"
+#~ msgstr "Wyszukaj według nadawcy, tematu, typu, nazwy pliku…"
+
+#~ msgid "Loading attachments…"
+#~ msgstr "Wczytywanie załączników…"
+
+#~ msgid "No attachments"
+#~ msgstr "Brak załączników"
+
+#~ msgid "Attachments from your inboxes will appear here."
+#~ msgstr "W tym miejscu będą wyświetlane załączniki ze skrzynek odbiorczych."
+
+#~ msgid "No matching attachments"
+#~ msgstr "Brak pasujących załączników"
+
+#~ msgid ""
+#~ "Try a different search, or check which accounts and folders the footer is "
+#~ "pulling from."
+#~ msgstr ""
+#~ "Spróbuj wyszukać coś innego lub sprawdź w stopce, z których kont i "
+#~ "katalogów są pobierane załączniki."
+
+#~ msgid "Thumbnail grid"
+#~ msgstr "Siatka miniatur"
+
+#~ msgid "Table"
+#~ msgstr "Tabela"
+
+#~ msgid "Show only this account"
+#~ msgstr "Wyświetl tylko to konto"
+
+#~ msgid "Folders to pull from"
+#~ msgstr "Katalogi źródłowe"
+
+#~ msgid "Include Archive"
+#~ msgstr "Uwzględnianie archiwum"
+
+#~ msgid "Include other folders"
+#~ msgstr "Uwzględnianie innych katalogów"
+
+#~ msgid "Everything that is not an inbox or an archive"
+#~ msgstr "Wszystko, co nie jest skrzynką odbiorczą ani archiwum"
+
+#~ msgid "Pulling attachments from"
+#~ msgstr "Źródła załączników"
+
+#~ msgid "Show only this type"
+#~ msgstr "Wyświetl tylko ten typ"
+
+#~ msgid "All types"
+#~ msgstr "Wszystkie typy"
+
+#~ msgid "PDFs"
+#~ msgstr "Pliki PDF"
+
+#~ msgid "Documents"
+#~ msgstr "Dokumenty"
+
+#~ msgid "Archives"
+#~ msgstr "Archiwa"
+
+#~ msgid "Audio & Video"
+#~ msgstr "Audio i wideo"
+
+#~ msgid "Other"
+#~ msgstr "Inne"
+
+#~ msgid "Newest first"
+#~ msgstr "Od najnowszych"
+
+#~ msgid "Oldest first"
+#~ msgstr "Od najstarszych"
+
+#~ msgid "Name (A–Z)"
+#~ msgstr "Nazwa (A–Z)"
+
+#~ msgid "Name (Z–A)"
+#~ msgstr "Nazwa (Z–A)"
+
+#~ msgid "Sender (Z–A)"
+#~ msgstr "Nadawca (Z–A)"
+
+#~ msgid "Largest first"
+#~ msgstr "Od największych"
+
+#~ msgid "Smallest first"
+#~ msgstr "Od najmniejszych"
+
+#~ msgid "Type (A–Z)"
+#~ msgstr "Typ (A–Z)"
+
+#~ msgid "Type (Z–A)"
+#~ msgstr "Typ (Z–A)"
+
+#~ msgid "Open in the default app"
+#~ msgstr "Otwórz w domyślnej aplikacji"
+
+#, fuzzy
+#~ msgid "Show Attachments Browser"
+#~ msgstr "Szuflada załączników"
 
 #, fuzzy
 #~ msgid "Check the From address"

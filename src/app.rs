@@ -66,7 +66,6 @@ mod flags;
 mod focus;
 mod folder_menu;
 mod folders;
-mod gallery;
 mod hand_off;
 mod identity;
 mod invites;
@@ -78,6 +77,7 @@ mod move_tag;
 mod msg;
 mod navigation;
 mod notifications;
+mod open_message;
 mod outbox;
 mod outgoing;
 mod palette;
@@ -298,12 +298,10 @@ impl SimpleComponent for AppModel {
                     #[name = "content_stack"]
                     gtk::Stack {
                         set_hexpand: true,
-                        // Swap the mail panes for the attachments gallery or
-                        // the contacts view, at once: no transition.
+                        // Swap the mail panes for the contacts view, at
+                        // once: no transition.
                         #[watch]
-                        set_visible_child_name: if model.showing_gallery {
-                            "gallery"
-                        } else if model.showing_contacts {
+                        set_visible_child_name: if model.showing_contacts {
                             "contacts"
                         } else {
                             "mail"
@@ -984,7 +982,7 @@ impl SimpleComponent for AppModel {
         model.init_reader_toolbar_fold(&widgets, &sender);
         model.place_reader();
         model.init_compose_overlay(&widgets);
-        model.init_gallery_page(&widgets, &sender);
+        model.init_contacts_page(&widgets);
         model.install_notification_actions(&sender);
         model.init_window_size(&root, &widgets, &sender);
         model.init_hover_peek(&widgets, &sender);

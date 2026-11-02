@@ -3,15 +3,6 @@ drawer_collapsed = true
 drawer_height = 300
 drawer_list_view = true
 drawer_sort_desc = true
-gallery_table_view = true
-gallery_thumb_width = 200
-gallery_sort = 3
-gallery_archive = false
-gallery_other = false
-gallery_folders = [
-    "1\tINBOX/Sub\t1",
-    "2\tWork\t0",
-]
 list_pane_width = 420
 list_pane_height = 320
 contacts_pane_width = 380
