@@ -201,8 +201,25 @@ Conséquences à signaler : plus de Starred unifié (#482) ; « Afficher les
 comptes » (Ctrl+Maj+A) et le mode Concentration « replier les lignes
 unifiées » n'ont plus beaucoup de sens (gardés, à trancher).
 
-Restant du point 3, dans l'ordre : menu ⋯ du lecteur (maquette 06), menu
-d'un dossier, avatars des destinataires, menu ⋯ d'une carte.
+Point 3 terminé (2026-11-02) :
+- `e9fb982` menu ⋯ du lecteur selon la maquette 06, toujours affiché ;
+  nouvelle action « Transférer en pièce jointe » (.eml joint, export brut
+  `ExportRaw`, `pending_forward_attach`). Étoile, Reporter, Rechercher et
+  Aperçu avant impression sortent de ce menu (restent au clic droit et
+  aux touches).
+- `a40a6c6` menu d'un dossier en sections (maquette 06) ; nouveau
+  « Nouveau sous-dossier… » (`CtxAction::NewSubfolder`, `CreateFolder`
+  avec `parent`). Les entrées hors maquette (Favoris, filtres, Masquer,
+  Vider) sont gardées dans une section du milieu : à trancher avec le
+  propriétaire.
+- `552673d` avatar dans les puces de destinataires, bouton de retrait de
+  32 px.
+- `f3a334b` ⋯ d'une carte ouverte : Répondre, Répondre à tous, Transférer.
+
+Remarques : une réponse met l'adresse nue dans « À » (pas le nom), donc
+la puce montre l'adresse ; la maquette montre un nom. Les menus gardent
+la casse des titres du catalogue (« Mark All as Read ») alors que
+DESIGN.md demande la casse de phrase : à décider globalement.
 
 ## Reste à faire (connu)
 
