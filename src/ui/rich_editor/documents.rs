@@ -184,8 +184,7 @@ pub(super) fn document(
 /// and the engine's own spell checking all behave there without help.
 ///
 /// The text goes in after a newline: an HTML parser drops the first newline
-/// of a textarea's content, which took the blank line a Markdown reply opens
-/// with and left the caret on the quote's "wrote:" line.
+/// of a textarea's content, which would take a leading blank line with it.
 pub(super) fn source_document(text: &str, webview: &webkit6::WebView) -> String {
     let dark = adw::StyleManager::default().is_dark();
     let scheme = if dark { "dark" } else { "light" };

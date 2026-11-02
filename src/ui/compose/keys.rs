@@ -175,12 +175,8 @@ impl Compose {
             }
             // Tab and Shift+Tab go round the composer and nowhere else.
             // Left to the window, Tab off the body went on into the main
-            // window's sidebar and list, never back to To. The HTML and
-            // Markdown source keeps Tab, which indents there.
+            // window's sidebar and list, never back to To.
             if let Some(direction) = tab_direction(keyval, state) {
-                if editor.source_kind().is_some() && editor.has_focus() {
-                    return Propagation::Proceed;
-                }
                 cycle_focus(key_root.upcast_ref(), direction);
                 // Focus on the view alone leaves the document without a
                 // caret, and typing would go nowhere (#266).

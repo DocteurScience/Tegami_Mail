@@ -3562,25 +3562,12 @@ msgstr ""
 msgid "Rich text"
 msgstr "Tekst sformatowany"
 
-msgid "Markdown"
-msgstr "Markdown"
-
-#, fuzzy
-msgid "HTML source"
-msgstr "Wyświetl źródło"
-
 msgid "Plain text"
 msgstr "Zwykły tekst"
 
 #, fuzzy
 msgid "Format as you type; it is sent as HTML"
 msgstr "Formatowanie podczas pisania za pomocą paska narzędzi"
-
-msgid "Write Markdown; it is sent as formatted mail"
-msgstr "Pisanie w języku Markdown; wiadomość jest wysyłana jako sformatowana"
-
-msgid "Write the message's HTML by hand"
-msgstr "Ręczne pisanie kodu HTML wiadomości"
 
 msgid "No formatting at all"
 msgstr "Bez żadnego formatowania"
@@ -3758,9 +3745,6 @@ msgstr "DMARC (czy adres „Od” jest prawdziwy)"
 
 msgid "“{addr}” is not an email address."
 msgstr ""
-
-msgid "Show the message as it will be sent"
-msgstr "Wyświetl wiadomość tak, jak zostanie wysłana"
 
 #, fuzzy
 msgid "Translate what you wrote"
@@ -8515,6 +8499,23 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Markdown"
+#~ msgstr "Markdown"
+
+#, fuzzy
+#~ msgid "HTML source"
+#~ msgstr "Wyświetl źródło"
+
+#~ msgid "Write Markdown; it is sent as formatted mail"
+#~ msgstr ""
+#~ "Pisanie w języku Markdown; wiadomość jest wysyłana jako sformatowana"
+
+#~ msgid "Write the message's HTML by hand"
+#~ msgstr "Ręczne pisanie kodu HTML wiadomości"
+
+#~ msgid "Show the message as it will be sent"
+#~ msgstr "Wyświetl wiadomość tak, jak zostanie wysłana"
 
 #, fuzzy
 #~ msgid "Save as Template"

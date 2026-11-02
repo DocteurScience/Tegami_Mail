@@ -8,7 +8,7 @@ use crate::encoding::escape_html;
 use crate::i18n::i18n;
 use crate::i18n::i18n_f;
 use crate::ui::dialog::alert;
-use crate::ui::rich_editor::{js_escape, SourceKind};
+use crate::ui::rich_editor::js_escape;
 use adw::prelude::*;
 use relm4::prelude::*;
 
@@ -275,37 +275,6 @@ impl Compose {
                 // Into the body where the user's own text ends: above
                 // the signature, and above a quoted original in a
                 // reply, so the link reads as part of the message.
-                if let Some(kind) = self.editor.source_kind() {
-                    let line = match kind {
-                        SourceKind::Markdown => format!(
-                            "\u{1F4CE} [{name}]({url}) ({caption})",
-                            name = share.name,
-                            url = share.url,
-                            caption = caption,
-                        ),
-                        SourceKind::Html => html.clone(),
-                    };
-                    // The same place, said in text: above the `-- `
-                    // signature line if there is one, else at the end.
-                    self.editor.run_js(&format!(
-                        "(function(){{var t=document.getElementById('src');if(!t)return;\
-                     var l='{}';var v=t.value;var i=v.lastIndexOf('\\n-- \\n');\
-                     if(i>=0){{v=v.slice(0,i)+'\\n'+l+'\\n'+v.slice(i);}}\
-                     else{{v=v.replace(/\\s*$/,'')+'\\n\\n'+l+'\\n';}}\
-                     t.value=v;window.__tegamiDirty=true;}})()",
-                        js_escape(&line)
-                    ));
-                    if let Some(p) = share.password.clone() {
-                        self.cloud_passwords.push((share.name.clone(), p));
-                    }
-                    self.cloud_links.push(CloudLink {
-                        id,
-                        name: share.name,
-                        url: share.url,
-                    });
-                    self.rebuild_attachments(widgets, sender);
-                    return;
-                }
                 self.editor.run_js(&format!(
                 "(function(){{var d=document.createElement('div');d.innerHTML='{}';\
                  var p=d.firstChild;var b=document.body;\
@@ -348,19 +317,6 @@ impl Compose {
         if i < self.cloud_links.len() {
             let link = self.cloud_links.remove(i);
             self.cloud_passwords.retain(|(n, _)| *n != link.name);
-            // Source mode has no element to remove: the line that
-            // names the link is what goes.
-            if self.editor.source_kind().is_some() {
-                self.editor.run_js(&format!(
-                    "(function(){{var t=document.getElementById('src');if(!t)return;\
-                 var u='{}';\
-                 t.value=t.value.split('\\n').filter(function(l){{return l.indexOf(u)<0;}})\
-                   .join('\\n');window.__tegamiDirty=true;}})()",
-                    js_escape(&link.url)
-                ));
-                self.rebuild_attachments(widgets, sender);
-                return;
-            }
             self.editor.run_js(&format!(
             "(function(){{var p=document.getElementById('{}');if(p)p.remove();document.dispatchEvent(new Event('input'));}})()",
             js_escape(&link.id)

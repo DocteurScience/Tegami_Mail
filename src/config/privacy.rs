@@ -293,8 +293,8 @@ pub(crate) struct PrivacyFile {
     /// composer the way this one was left.
     #[serde(default)]
     pub(crate) compose_plain: bool,
-    /// What new messages are written in: rich text, Markdown, HTML
-    /// source, or plain text. Absent on installs that predate the choice,
+    /// What new messages are written in: rich text or plain text (a saved
+    /// Markdown or HTML reads as rich text, see `ComposeFormat`). Absent on installs that predate the choice,
     /// where `compose_plain` above still says which of the two it is.
     #[serde(default)]
     pub(crate) compose_format: Option<ComposeFormat>,

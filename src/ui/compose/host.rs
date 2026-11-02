@@ -221,7 +221,6 @@ impl Compose {
         root: &adw::BreakpointBin,
     ) {
         self.narrow = narrow;
-        self.dress_format_buttons();
         // Folded, the header is as narrow as it gets: the pane goes
         // no narrower, so a small window stops shrinking rather than
         // cutting Send off at its edge. Unfolded, the floor drops

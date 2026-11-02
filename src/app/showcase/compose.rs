@@ -201,16 +201,6 @@ pub(super) fn stage_compose_menu(sender: &ComponentSender<AppModel>) {
     }
 }
 
-/// TEGAMI_SHOWCASE_COMPOSE_PREVIEW=1 turns the inline
-/// composer's preview on a beat after it opens, so a
-/// capture can show the rendered message rather than the
-/// source it was written in.
-pub(super) fn stage_compose_preview(sender: &ComponentSender<AppModel>) {
-    if std::env::var("TEGAMI_SHOWCASE_COMPOSE_PREVIEW").is_ok() {
-        input_after(sender, 6, AppMsg::ShowcaseComposePreview);
-    }
-}
-
 /// TEGAMI_SHOWCASE_COMPOSE_FROM=N picks the inline composer's
 /// From entry N at 7 s, to check where the new account's
 /// signature lands (#237).
@@ -245,8 +235,6 @@ pub(super) fn stage_compose_format(sender: &ComponentSender<AppModel>) {
             let (name, at) = showcase_at(step, 6);
             let format = match name {
                 "rich" => config::ComposeFormat::Rich,
-                "markdown" => config::ComposeFormat::Markdown,
-                "html" => config::ComposeFormat::Html,
                 "plain" => config::ComposeFormat::Plain,
                 _ => continue,
             };
@@ -260,15 +248,12 @@ pub(super) fn stage_compose_format(sender: &ComponentSender<AppModel>) {
 /// `tegami::compose::undo` log target: the one way to exercise
 /// it without a keyboard, since the keys cannot be injected
 /// on this desktop. Pair with TEGAMI_SHOWCASE_REPLY.
-/// Set it to markdown, html or plain to walk a source-mode
-/// body (a textarea) instead of the rich document, to
-/// `backspace` to trim text rather than type it, or to
+/// Set it to plain to walk a plain-text body instead of the
+/// rich document, to `backspace` to trim text rather than type it, or to
 /// `pause` to leave a long gap between two runs of typing.
 pub(super) fn stage_compose_undo(sender: &ComponentSender<AppModel>) {
     if let Ok(which) = std::env::var("TEGAMI_SHOWCASE_COMPOSE_UNDO") {
         let format = match which.as_str() {
-            "markdown" => Some(config::ComposeFormat::Markdown),
-            "html" => Some(config::ComposeFormat::Html),
             "plain" => Some(config::ComposeFormat::Plain),
             _ => None,
         };

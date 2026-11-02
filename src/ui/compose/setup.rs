@@ -2,49 +2,21 @@
 
 use super::messages::{ComposeInput, ComposeOutput};
 use super::Compose;
-use crate::config::ComposeFormat;
 use crate::i18n::i18n;
 use crate::ui::rich_editor::RichEditor;
 use adw::prelude::*;
 use relm4::prelude::*;
 
-/// The buttons at the far end of the format bar: signature, translate and
-/// preview, in that order; and Attach a File, after the formatting tools.
-/// The format is chosen in More actions (docs/DESIGN.md, "Menus").
+/// The buttons at the far end of the format bar: signature, then
+/// translate; and Attach a File, after the formatting tools. The format is
+/// chosen in More actions (docs/DESIGN.md, "Menus").
 pub(super) fn add_toolbar_end_buttons(
     editor: &RichEditor,
-    format: ComposeFormat,
     has_signatures: bool,
     sender: &ComponentSender<Compose>,
-) -> (
-    gtk::ToggleButton,
-    adw::ButtonContent,
-    gtk::Button,
-    gtk::Button,
-) {
-    // The preview toggle belongs with the other formatting controls, at
-    // the far end of the same row. It keeps its word. It is a state rather than an action,
-    // and an eye on its own leaves which state to guesswork.
-    let preview_content = adw::ButtonContent::builder()
-        .icon_name("eye-open-negative-filled-symbolic")
-        .label(i18n("Preview"))
-        .build();
-    let preview_btn = gtk::ToggleButton::builder().child(&preview_content).build();
-    preview_btn.set_tooltip_text(Some(i18n("Show the message as it will be sent").as_str()));
-    preview_btn.add_css_class("flat");
-    preview_btn.set_can_focus(false);
-    preview_btn.set_can_shrink(true);
-    preview_btn.set_visible(format.is_source());
-    {
-        let s = sender.input_sender().clone();
-        preview_btn.connect_toggled(move |b| {
-            let _ = s.send(ComposeInput::TogglePreview(b.is_active()));
-        });
-    }
-    // Preview goes last, the far end of the right-aligned group, where
-    // its coming and going pushes nothing around. Translate (#327) goes
-    // before it: it is there in every format, but only once a translation
-    // service is set up.
+) -> (gtk::Button, gtk::Button) {
+    // Translate (#327) goes last: it is there in every format, but only
+    // once a translation service is set up.
     let translate_btn = gtk::Button::from_icon_name("translate-symbolic");
     translate_btn.set_tooltip_text(Some(i18n("Translate what you wrote").as_str()));
     translate_btn.add_css_class("flat");
@@ -101,8 +73,7 @@ pub(super) fn add_toolbar_end_buttons(
     editor.append_kept_tool(&attach_btn);
     editor.toolbar_end().append(&signature_btn);
     editor.toolbar_end().append(&translate_btn);
-    editor.toolbar_end().append(&preview_btn);
-    (preview_btn, preview_content, translate_btn, signature_btn)
+    (translate_btn, signature_btn)
 }
 
 /// What the editor tells the composer: images lifted out as attachments,

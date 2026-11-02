@@ -3439,23 +3439,11 @@ msgstr ""
 msgid "Rich text"
 msgstr "Εμπλουτισμένο κείμενο"
 
-msgid "Markdown"
-msgstr "Markdown"
-
-msgid "HTML source"
-msgstr "Πηγαίος κώδικας HTML"
-
 msgid "Plain text"
 msgstr "Απλό κείμενο"
 
 msgid "Format as you type; it is sent as HTML"
 msgstr "Μορφοποίηση κατά την πληκτρολόγηση· αποστέλλεται ως HTML"
-
-msgid "Write Markdown; it is sent as formatted mail"
-msgstr "Γράψτε Markdown· αποστέλλεται ως μορφοποιημένο μήνυμα"
-
-msgid "Write the message's HTML by hand"
-msgstr "Γράψτε τον κώδικα HTML του μηνύματος με το χέρι"
 
 msgid "No formatting at all"
 msgstr "Χωρίς καμία μορφοποίηση"
@@ -3631,9 +3619,6 @@ msgstr "Ελέγξτε τη διεύθυνση"
 
 msgid "“{addr}” is not an email address."
 msgstr "Το «{addr}» δεν είναι διεύθυνση email."
-
-msgid "Show the message as it will be sent"
-msgstr "Εμφάνιση του μηνύματος όπως θα σταλεί"
 
 msgid "Translate what you wrote"
 msgstr "Μετάφραση όσων γράψατε"
@@ -8273,6 +8258,21 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Markdown"
+#~ msgstr "Markdown"
+
+#~ msgid "HTML source"
+#~ msgstr "Πηγαίος κώδικας HTML"
+
+#~ msgid "Write Markdown; it is sent as formatted mail"
+#~ msgstr "Γράψτε Markdown· αποστέλλεται ως μορφοποιημένο μήνυμα"
+
+#~ msgid "Write the message's HTML by hand"
+#~ msgstr "Γράψτε τον κώδικα HTML του μηνύματος με το χέρι"
+
+#~ msgid "Show the message as it will be sent"
+#~ msgstr "Εμφάνιση του μηνύματος όπως θα σταλεί"
 
 #~ msgid "Save as Template"
 #~ msgstr "Αποθήκευση ως πρότυπο"

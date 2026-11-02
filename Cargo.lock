@@ -1412,59 +1412,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "df3b46402a9d5adb4c86a0cf463f42e19994e3ee891101b1841f30a545cb49a9"
 
 [[package]]
-name = "tegami"
-version = "1.46.0"
-dependencies = [
- "ammonia",
- "async-imap",
- "async-native-tls",
- "base64",
- "cairo-rs",
- "cfb",
- "chrono",
- "css-inline",
- "dirs",
- "flate2",
- "futures",
- "getrandom 0.2.17",
- "gettext-rs",
- "glib-build-tools",
- "gtk4",
- "html5ever",
- "keyring",
- "ksni",
- "lettre",
- "libadwaita",
- "libc",
- "libloading",
- "mail-parser",
- "markup5ever_rcdom",
- "pangocairo",
- "poppler-rs",
- "pulldown-cmark",
- "relm4",
- "rfc2047-decoder",
- "rusqlite",
- "serde",
- "serde_json",
- "sha2",
- "siphasher",
- "tar",
- "tokio",
- "toml 0.8.23",
- "tracing",
- "tracing-subscriber",
- "ureq",
- "wayland-backend",
- "wayland-client",
- "wayland-scanner",
- "webkit6",
- "whatlang",
- "zbus 4.4.0",
- "zip",
-]
-
-[[package]]
 name = "iana-time-zone"
 version = "0.1.65"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2474,24 +2421,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "pulldown-cmark"
-version = "0.13.4"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e9f068eba8e7071c5f9511831b44f32c740d5adf574e990f946ddb53db2f314e"
-dependencies = [
- "bitflags",
- "memchr",
- "pulldown-cmark-escape",
- "unicase",
-]
-
-[[package]]
-name = "pulldown-cmark-escape"
-version = "0.11.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "007d8adb5ddab6f8e3f491ac63566a7d5002cc7ed73901f72057943fa71ae1ae"
-
-[[package]]
 name = "quick-xml"
 version = "0.41.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3168,6 +3097,58 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "adb6935a6f5c20170eeceb1a3835a49e12e19d792f6dd344ccc76a985ca5a6ca"
 
 [[package]]
+name = "tegami"
+version = "1.46.0"
+dependencies = [
+ "ammonia",
+ "async-imap",
+ "async-native-tls",
+ "base64",
+ "cairo-rs",
+ "cfb",
+ "chrono",
+ "css-inline",
+ "dirs",
+ "flate2",
+ "futures",
+ "getrandom 0.2.17",
+ "gettext-rs",
+ "glib-build-tools",
+ "gtk4",
+ "html5ever",
+ "keyring",
+ "ksni",
+ "lettre",
+ "libadwaita",
+ "libc",
+ "libloading",
+ "mail-parser",
+ "markup5ever_rcdom",
+ "pangocairo",
+ "poppler-rs",
+ "relm4",
+ "rfc2047-decoder",
+ "rusqlite",
+ "serde",
+ "serde_json",
+ "sha2",
+ "siphasher",
+ "tar",
+ "tokio",
+ "toml 0.8.23",
+ "tracing",
+ "tracing-subscriber",
+ "ureq",
+ "wayland-backend",
+ "wayland-client",
+ "wayland-scanner",
+ "webkit6",
+ "whatlang",
+ "zbus 4.4.0",
+ "zip",
+]
+
+[[package]]
 name = "temp-dir"
 version = "0.1.16"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3467,12 +3448,6 @@ dependencies = [
  "tempfile",
  "windows-sys 0.61.2",
 ]
-
-[[package]]
-name = "unicase"
-version = "2.9.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "dbc4bc3a9f746d862c45cb89d705aa10f187bb96c76001afab07a0d35ce60142"
 
 [[package]]
 name = "unicode-ident"

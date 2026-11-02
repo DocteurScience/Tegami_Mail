@@ -1,35 +1,18 @@
-//! The composing formats (rich, Markdown, HTML, plain), switching between them,
-//! and the body's zoom.
+//! The composing formats (rich text and plain text), switching between
+//! them, and the body's zoom.
 
 use super::messages::ComposeInput;
 use super::Compose;
 use crate::config::ComposeFormat;
 use crate::i18n::i18n;
 use crate::ui::context_menu::MenuEntry;
-use crate::ui::rich_editor::SourceKind;
 use adw::prelude::*;
 use relm4::prelude::*;
-
-/// A body as Markdown, keeping the empty line a reply opens with above its
-/// quote and signature. The conversion drops leading blank lines, which
-/// left the caret at the start of the "On … wrote:" line, so whatever was
-/// typed joined it.
-pub(super) fn markdown_body(html: &str) -> String {
-    let md = crate::mail::markdown::from_html(html);
-    let top = html.trim_start();
-    if !md.is_empty() && (top.starts_with("<p><br></p>") || top.starts_with("<div><br></div>")) {
-        format!("\n\n{md}")
-    } else {
-        md
-    }
-}
 
 /// The icon a composing format carries, in the header and in its menu.
 pub(super) fn format_icon(format: ComposeFormat) -> &'static str {
     match format {
         ComposeFormat::Rich => "format-text-rich-symbolic",
-        ComposeFormat::Markdown => "markdown-symbolic",
-        ComposeFormat::Html => "code-symbolic",
         ComposeFormat::Plain => "text-x-generic-symbolic",
     }
 }
@@ -38,8 +21,6 @@ pub(super) fn format_icon(format: ComposeFormat) -> &'static str {
 pub(super) fn format_label(format: ComposeFormat) -> String {
     match format {
         ComposeFormat::Rich => i18n("Rich text"),
-        ComposeFormat::Markdown => i18n("Markdown"),
-        ComposeFormat::Html => i18n("HTML source"),
         ComposeFormat::Plain => i18n("Plain text"),
     }
 }
@@ -48,8 +29,6 @@ pub(super) fn format_label(format: ComposeFormat) -> String {
 fn format_hint(format: ComposeFormat) -> String {
     match format {
         ComposeFormat::Rich => i18n("Format as you type; it is sent as HTML"),
-        ComposeFormat::Markdown => i18n("Write Markdown; it is sent as formatted mail"),
-        ComposeFormat::Html => i18n("Write the message's HTML by hand"),
         ComposeFormat::Plain => i18n("No formatting at all"),
     }
 }
@@ -111,35 +90,21 @@ html:document.body?document.body.innerHTML:document.documentElement.outerHTML.sl
 text:window.__tegamiBodyText?window.__tegamiBodyText():''})"#;
 
 impl Compose {
-    /// Whether the preview toggle can afford its label.
-    pub(super) fn dress_format_buttons(&self) {
-        // The one label on the row goes when there is no width for it, the
-        // same trade the header makes when it folds.
-        let preview = i18n("Preview");
-        self.preview_content
-            .set_label(if self.narrow { "" } else { preview.as_str() });
-    }
-
     /// The More actions menu's Format section (docs/DESIGN.md, "Menus";
     /// mockup 06): its title, then the formats, the current one marked.
     /// Each format's one-line explanation is its tooltip.
     pub(super) fn format_entries(&self, sender: &ComponentSender<Self>) -> Vec<MenuEntry> {
-        let formats = [
-            ComposeFormat::Rich,
-            ComposeFormat::Plain,
-            ComposeFormat::Markdown,
-            ComposeFormat::Html,
-        ]
-        .into_iter()
-        .map(|format| {
-            let s = sender.clone();
-            MenuEntry::new(format_label(format), move || {
-                s.input_sender().emit(ComposeInput::SetFormat(format))
-            })
-            .icon(format_icon(format))
-            .tooltip(format_hint(format))
-            .selected(format == self.format)
-        });
+        let formats = [ComposeFormat::Rich, ComposeFormat::Plain]
+            .into_iter()
+            .map(|format| {
+                let s = sender.clone();
+                MenuEntry::new(format_label(format), move || {
+                    s.input_sender().emit(ComposeInput::SetFormat(format))
+                })
+                .icon(format_icon(format))
+                .tooltip(format_hint(format))
+                .selected(format == self.format)
+            });
         std::iter::once(MenuEntry::heading(i18n("Format")))
             .chain(formats)
             .collect()
@@ -235,39 +200,19 @@ impl Compose {
         if let Some(zones) = &self.drop_zones {
             zones.set_allow_inline(to == ComposeFormat::Rich);
         }
-        self.dress_format_buttons();
-        self.preview_btn.set_visible(to.is_source());
-        // A preview of the old format's render would be a lie about
-        // the new one.
-        self.preview_btn.set_active(false);
         // Every change reloads the body, plain text included: it
         // shows the message flattened to what is sent (#424), so it
         // cannot share the rich document's undo history.
         let s = sender.clone();
-        self.read_body_as(from, false, move |body, _| {
-            s.input_sender()
-                .emit(ComposeInput::LoadAs { from, to, body });
+        self.read_body(false, move |body, _| {
+            s.input_sender().emit(ComposeInput::LoadAs { to, body });
         });
     }
 
     /// Handles [`ComposeInput::LoadAs`].
-    pub(super) fn on_load_as(&mut self, from: ComposeFormat, to: ComposeFormat, body: String) {
-        // Every conversion goes through HTML: it is the one form
-        // all four formats can be written to and read back from.
-        let html = match from {
-            ComposeFormat::Markdown => crate::mail::markdown::to_html(&body),
-            _ => body,
-        };
+    pub(super) fn on_load_as(&mut self, to: ComposeFormat, body: String) {
         self.editor.set_plain(to == ComposeFormat::Plain);
-        match to {
-            ComposeFormat::Markdown => self
-                .editor
-                .set_source(SourceKind::Markdown, &markdown_body(&html)),
-            ComposeFormat::Html => self
-                .editor
-                .set_source(SourceKind::Html, &crate::mail::markdown::pretty_html(&html)),
-            ComposeFormat::Rich | ComposeFormat::Plain => self.editor.set_html(&html),
-        }
+        self.editor.set_html(&body);
         self.editor.grab_focus();
         // TEGAMI_SHOWCASE_PLAIN_LOG logs the reloaded body, its font
         // and the text it sends (demo only).
@@ -281,22 +226,5 @@ impl Compose {
                 });
             });
         }
-    }
-
-    /// Handles [`ComposeInput::TogglePreview`].
-    pub(super) fn on_toggle_preview(&mut self, on: bool, sender: &ComponentSender<Self>) {
-        // Keep the button with the state, for the times the message
-        // arrives from somewhere other than a click on it.
-        if self.preview_btn.is_active() != on {
-            self.preview_btn.set_active(on);
-        }
-        if !on {
-            self.editor.show_preview(None);
-            return;
-        }
-        let s = sender.clone();
-        self.read_body_as(self.format, false, move |body, _| {
-            s.input_sender().emit(ComposeInput::ShowPreview(body));
-        });
     }
 }

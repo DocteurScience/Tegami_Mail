@@ -2,10 +2,10 @@
 
 use super::dom::{parse, Elem, Node};
 
-/// HTML to Markdown source. Used when the composer switches format, and to
-/// write the plain-text alternative of a message composed as HTML — Markdown
-/// being, by design, the form of plain text that still reads as itself.
-pub(crate) fn from_html(html: &str) -> String {
+/// HTML to Markdown-style text: the plain-text alternative of an HTML body
+/// (see [`html_to_text`]) — Markdown being, by design, the form of plain
+/// text that still reads as itself.
+pub(super) fn from_html(html: &str) -> String {
     let nodes = parse(html);
     let md = blocks(&nodes);
     md.trim_matches('\n').to_string()

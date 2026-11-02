@@ -3393,23 +3393,11 @@ msgstr ""
 msgid "Rich text"
 msgstr "Formatierter Text"
 
-msgid "Markdown"
-msgstr "Markdown"
-
-msgid "HTML source"
-msgstr "HTML Quelltext"
-
 msgid "Plain text"
 msgstr "Nur Text"
 
 msgid "Format as you type; it is sent as HTML"
 msgstr "Formatierung während der Eingabe; der Versand erfolgt als HTML."
-
-msgid "Write Markdown; it is sent as formatted mail"
-msgstr "Markdown schreiben; es wird als formatierte E-Mail gesendet"
-
-msgid "Write the message's HTML by hand"
-msgstr "HTML der Nachricht von Hand schreiben"
 
 msgid "No formatting at all"
 msgstr "Ganz ohne Formatierung"
@@ -3589,9 +3577,6 @@ msgstr "Adresse überprüfen"
 
 msgid "“{addr}” is not an email address."
 msgstr "„{addr}“ ist keine E-Mail-Adresse."
-
-msgid "Show the message as it will be sent"
-msgstr "Zeige die Nachricht, wie sie gesendet wird"
 
 msgid "Translate what you wrote"
 msgstr "Eigegebenen Text übersetzen"
@@ -8229,6 +8214,21 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Markdown"
+#~ msgstr "Markdown"
+
+#~ msgid "HTML source"
+#~ msgstr "HTML Quelltext"
+
+#~ msgid "Write Markdown; it is sent as formatted mail"
+#~ msgstr "Markdown schreiben; es wird als formatierte E-Mail gesendet"
+
+#~ msgid "Write the message's HTML by hand"
+#~ msgstr "HTML der Nachricht von Hand schreiben"
+
+#~ msgid "Show the message as it will be sent"
+#~ msgstr "Zeige die Nachricht, wie sie gesendet wird"
 
 #~ msgid "Save as Template"
 #~ msgstr "Als Vorlage speichern"

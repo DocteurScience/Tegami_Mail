@@ -94,7 +94,6 @@ impl AppModel {
                 compose::stage_new(root, sender);
                 compose::stage_forward(sender);
                 compose::stage_compose_menu(sender);
-                compose::stage_compose_preview(sender);
                 compose::stage_compose_from(sender);
                 compose::stage_compose_close(sender);
                 compose::stage_compose_format(sender);

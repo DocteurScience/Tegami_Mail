@@ -116,11 +116,10 @@ impl Drop for RichEditor {
     }
 }
 
-/// What a source-mode editor is holding. Rich text is the absence of
-/// both.
+/// What a source-mode editor is holding: HTML, for a signature edited as
+/// source in Settings. Rich text is its absence.
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub(super) enum SourceKind {
-    Markdown,
     Html,
 }
 
@@ -404,30 +403,22 @@ impl RichEditor {
     }
 
     /// Add a control after the formatting tools that stays when they are
-    /// hidden (a message written as plain text or source).
+    /// hidden (a message written as plain text).
     pub(super) fn append_kept_tool(&self, widget: &impl IsA<gtk::Widget>) {
         self.toolbar_commands.append_kept(widget);
     }
 
     /// What the person wrote, as text: the body without the quoted history,
-    /// its "wrote:" line, the signature or the editor's own furniture; for a
-    /// message kept as source, the text without its quoted lines and
-    /// signature. For checks on the writer's own words (a mentioned
+    /// its "wrote:" line, the signature or the editor's own furniture. For
+    /// checks on the writer's own words (a mentioned
     /// attachment), which the quote would set off on every reply.
     pub(super) fn own_text(&self, cb: impl FnOnce(String) + 'static) {
-        if self.source_kind().is_some() {
-            self.eval(
-                "(function(){var t=document.getElementById('src');return t?t.value:'';})()",
-                move |source| cb(crate::ui::compose::own_source_text(&source)),
-            );
-        } else {
-            self.eval(
-                "(function(){var c=document.body.cloneNode(true);\
-                 c.querySelectorAll('[data-tegami-ui],.tegami-quote-attr,blockquote,.tegami-sig')\
-                 .forEach(function(n){n.remove();});return c.innerText||'';})()",
-                cb,
-            );
-        }
+        self.eval(
+            "(function(){var c=document.body.cloneNode(true);\
+             c.querySelectorAll('[data-tegami-ui],.tegami-quote-attr,blockquote,.tegami-sig')\
+             .forEach(function(n){n.remove();});return c.innerText||'';})()",
+            cb,
+        );
     }
 
     /// Read the current body HTML asynchronously.

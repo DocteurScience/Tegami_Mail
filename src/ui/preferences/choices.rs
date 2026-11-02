@@ -343,9 +343,7 @@ pub(super) fn compose_format_index(value: crate::config::ComposeFormat) -> u32 {
     use crate::config::ComposeFormat;
     match value {
         ComposeFormat::Rich => 0,
-        ComposeFormat::Markdown => 1,
-        ComposeFormat::Html => 2,
-        ComposeFormat::Plain => 3,
+        ComposeFormat::Plain => 1,
     }
 }
 
@@ -353,9 +351,7 @@ pub(super) fn compose_format_index(value: crate::config::ComposeFormat) -> u32 {
 pub(super) fn compose_format_at(idx: u32) -> crate::config::ComposeFormat {
     use crate::config::ComposeFormat;
     match idx {
-        1 => ComposeFormat::Markdown,
-        2 => ComposeFormat::Html,
-        3 => ComposeFormat::Plain,
+        1 => ComposeFormat::Plain,
         _ => ComposeFormat::Rich,
     }
 }
@@ -610,14 +606,9 @@ mod tests {
             assert_eq!(fold_messages_at(fold_messages_index(v)), v);
         }
         assert_eq!(fold_messages_at(9), FoldMessages::Never);
-        for (i, v) in [
-            ComposeFormat::Rich,
-            ComposeFormat::Markdown,
-            ComposeFormat::Html,
-            ComposeFormat::Plain,
-        ]
-        .into_iter()
-        .enumerate()
+        for (i, v) in [ComposeFormat::Rich, ComposeFormat::Plain]
+            .into_iter()
+            .enumerate()
         {
             assert_eq!(compose_format_index(v), i as u32);
             assert_eq!(compose_format_at(i as u32), v);

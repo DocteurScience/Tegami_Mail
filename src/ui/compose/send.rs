@@ -120,22 +120,12 @@ impl Compose {
         }))
     }
 
-    /// Read the body out of the editor in `format`'s own terms: the source
-    /// text for a source format (with no plain-text rendering, since the
-    /// source *is* text), the document's HTML and text otherwise.
+    /// Read the body out of the editor: the document's HTML and text.
     ///
     /// `for_send` picks the reader that recuts pictures armed for it; a
     /// draft save must never cost quality, so it passes false.
-    pub(super) fn read_body_as(
-        &self,
-        format: ComposeFormat,
-        for_send: bool,
-        cb: impl FnOnce(String, String) + 'static,
-    ) {
-        if format.is_source() {
-            self.editor
-                .extract_source(move |src| cb(src, String::new()));
-        } else if for_send {
+    pub(super) fn read_body(&self, for_send: bool, cb: impl FnOnce(String, String) + 'static) {
+        if for_send {
             self.editor.extract_for_send(cb);
         } else {
             self.editor.extract(cb);
@@ -143,24 +133,11 @@ impl Compose {
     }
 
     /// The `(html, text)` parts of the outgoing message, from what the
-    /// editor handed back. Markdown is rendered and keeps its source as the
-    /// text part — Markdown being, deliberately, plain text that reads as
-    /// itself. Hand-written HTML is sanitized and gets a Markdown rendering
-    /// as its text part. Plain text sends no HTML part at all (#180).
+    /// editor handed back. Plain text sends no HTML part at all (#180).
     fn outgoing_body(&self, body: String, text: String) -> (String, String) {
         match self.format {
             ComposeFormat::Rich => (body, text),
             ComposeFormat::Plain => (String::new(), text),
-            ComposeFormat::Markdown => {
-                let html = crate::mail::markdown::sanitize_outgoing(
-                    &crate::mail::markdown::to_html(&body),
-                );
-                (html, body)
-            }
-            ComposeFormat::Html => {
-                let text = crate::mail::markdown::html_to_text(&body);
-                (crate::mail::markdown::sanitize_outgoing(&body), text)
-            }
         }
     }
 
@@ -393,7 +370,7 @@ impl Compose {
         // source format `html` carries the source itself, which
         // `outgoing_body` converts.
         let s = sender.clone();
-        self.read_body_as(self.format, true, move |html, text| {
+        self.read_body(true, move |html, text| {
             s.input_sender()
                 .emit(ComposeInput::SendBody(OutgoingFields {
                     html,
@@ -595,7 +572,7 @@ impl Compose {
         }
         let fields = self.draft_fields(widgets);
         let s = sender.clone();
-        self.read_body_as(self.format, false, move |html, text| {
+        self.read_body(false, move |html, text| {
             s.input_sender()
                 .emit(ComposeInput::AutoSaveBody(OutgoingFields {
                     html,
@@ -789,7 +766,7 @@ impl Compose {
         // A draft can be saved without recipients; just capture the fields.
         let fields = self.draft_fields(widgets);
         let s = sender.clone();
-        self.read_body_as(self.format, false, move |html, text| {
+        self.read_body(false, move |html, text| {
             s.input_sender().emit(ComposeInput::SaveDraftBody {
                 fields: OutgoingFields {
                     html,

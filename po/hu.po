@@ -3513,25 +3513,12 @@ msgstr ""
 msgid "Rich text"
 msgstr "Formázott szöveg"
 
-msgid "Markdown"
-msgstr "Markdown"
-
-#, fuzzy
-msgid "HTML source"
-msgstr "Forrás megtekintése"
-
 msgid "Plain text"
 msgstr "Egyszerű szöveg"
 
 #, fuzzy
 msgid "Format as you type; it is sent as HTML"
 msgstr "Szerkesztés közbeni formázás, eszköztárral"
-
-msgid "Write Markdown; it is sent as formatted mail"
-msgstr "Markdown írása; formázott levélként lesz"
-
-msgid "Write the message's HTML by hand"
-msgstr "Üzenet HTML-jének szerkesztése kézzel"
 
 msgid "No formatting at all"
 msgstr "Egyáltalán nincs formázás"
@@ -3710,9 +3697,6 @@ msgstr "Feladó címe"
 
 msgid "“{addr}” is not an email address."
 msgstr ""
-
-msgid "Show the message as it will be sent"
-msgstr "Az üzenet megjelenítése úgy, ahogyan elküldésre kerül"
 
 #, fuzzy
 msgid "Translate what you wrote"
@@ -8446,6 +8430,22 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Markdown"
+#~ msgstr "Markdown"
+
+#, fuzzy
+#~ msgid "HTML source"
+#~ msgstr "Forrás megtekintése"
+
+#~ msgid "Write Markdown; it is sent as formatted mail"
+#~ msgstr "Markdown írása; formázott levélként lesz"
+
+#~ msgid "Write the message's HTML by hand"
+#~ msgstr "Üzenet HTML-jének szerkesztése kézzel"
+
+#~ msgid "Show the message as it will be sent"
+#~ msgstr "Az üzenet megjelenítése úgy, ahogyan elküldésre kerül"
 
 #, fuzzy
 #~ msgid "Save as Template"

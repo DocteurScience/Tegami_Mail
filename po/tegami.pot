@@ -3101,22 +3101,10 @@ msgstr ""
 msgid "Rich text"
 msgstr ""
 
-msgid "Markdown"
-msgstr ""
-
-msgid "HTML source"
-msgstr ""
-
 msgid "Plain text"
 msgstr ""
 
 msgid "Format as you type; it is sent as HTML"
-msgstr ""
-
-msgid "Write Markdown; it is sent as formatted mail"
-msgstr ""
-
-msgid "Write the message's HTML by hand"
 msgstr ""
 
 msgid "No formatting at all"
@@ -3271,9 +3259,6 @@ msgid "Check the address"
 msgstr ""
 
 msgid "“{addr}” is not an email address."
-msgstr ""
-
-msgid "Show the message as it will be sent"
 msgstr ""
 
 msgid "Translate what you wrote"

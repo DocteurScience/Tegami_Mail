@@ -111,8 +111,7 @@ pub(crate) struct Compose {
     /// `toggled` arrives: that one is not the user's.
     pub(super) sign_expected: Option<bool>,
     /// What this message is written in. Plain text hides the
-    /// formatting toolbar and sends no HTML part (#180); Markdown and HTML
-    /// are written as source and converted on the way out.
+    /// formatting toolbar and sends no HTML part (#180).
     pub(super) format: ComposeFormat,
     /// The body's zoom, shown at the start of the format bar while it is
     /// not 100%; see [`super::format::zoom_chip`].
@@ -154,10 +153,6 @@ pub(crate) struct Compose {
     /// The subject as written and as translated with the body, so Show
     /// Original and Show Translation can swap it back and forth (#327).
     pub(super) tr_subject: Option<(String, String)>,
-    pub(super) preview_btn: gtk::ToggleButton,
-    /// The preview toggle's icon-and-label insides, kept only so the label
-    /// can be dropped in a pane too narrow to carry it.
-    pub(super) preview_content: adw::ButtonContent,
     /// Cloud attachments (#144): the accounts files can be uploaded to, the
     /// links already placed in the body, and how many uploads are running.
     pub(super) cloud_accounts: Vec<crate::services::cloud::CloudAccount>,

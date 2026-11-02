@@ -79,11 +79,6 @@ impl AppModel {
                     r.controller.emit(ComposeInput::OverflowMenu);
                 }
             }
-            AppMsg::ShowcaseComposePreview => {
-                if let Some(r) = self.reader_compose.as_ref() {
-                    r.controller.emit(ComposeInput::TogglePreview(true));
-                }
-            }
             AppMsg::ShowcaseComposeFrom(n) => {
                 if let Some(r) = self.reader_compose.as_ref() {
                     r.controller.emit(ComposeInput::ShowcaseFrom(n));

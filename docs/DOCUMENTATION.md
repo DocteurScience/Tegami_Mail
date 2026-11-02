@@ -17,7 +17,7 @@ keyboard.
 - [LDAP directories](#ldap-directories)
 - [Translating messages](#translating-messages)
 - [Grammar checking](#grammar-checking)
-- [Writing in Markdown or HTML](#writing-in-markdown-or-html)
+- [Rich text or plain text](#rich-text-or-plain-text)
 - [OpenPGP (encrypted and signed mail)](#openpgp-encrypted-and-signed-mail)
 - [Send with Tegami Mail from GNOME Files](#send-with-tegami-from-gnome-files)
 - [Privacy](#privacy)
@@ -954,7 +954,7 @@ whose subject is already the conversation's. The translation replaces your
 text as one edit, so Ctrl+Z gives back what you wrote. Until you change the
 text again, the same menu offers **Show Original**, which puts back what you
 wrote, subject included, and then **Show Translation**. It works in rich
-text, plain text, Markdown and HTML. A message set to be encrypted is never
+text and plain text. A message set to be encrypted is never
 sent for translation.
 
 The settings are in `translation.toml`; the key is in the keyring.
@@ -1035,8 +1035,7 @@ The quoted message opens folded behind a ••• button, since the reading pan
 beside the composer shows it already. A click shows it, with the button
 moved above it to fold it again. It is sent either way. A delete that would
 reach the folded quote, such as Select All and Delete, opens it instead of
-removing text that cannot be seen; the next one removes it. Markdown and
-HTML source show the quote as source. **Settings → Composing → Fold quoted
+removing text that cannot be seen; the next one removes it. **Settings → Composing → Fold quoted
 text**, on by default, switched off, opens every quote in full.
 
 A message that was replied to shows a reply arrow in the message list, one
@@ -1224,14 +1223,13 @@ paragraph, and <kbd>Shift+Return</kbd> ends the paragraph with a hard
 return, which leaves a space before the next one. **Settings → Composing →
 Return starts a new paragraph** swaps the two. In a list <kbd>Return</kbd>
 still starts the next item, and pressed twice in a quote it still leaves the
-quote. The setting applies when a composer opens. Markdown, HTML and plain
-text are written as source, where <kbd>Return</kbd> is always a new line.
+quote. The setting applies when a composer opens. In plain text
+<kbd>Return</kbd> is always a new line.
 
 ### The formatting toolbar
 
 The rich text editor's toolbar has bold, italic, underline, strikethrough,
-bulleted and numbered lists, quote, link and Clear formatting, all of which
-survive a switch to Markdown. The chevron after them shows or hides the
+bulleted and numbered lists, quote, link and Clear formatting. The chevron after them shows or hides the
 rest of what a mail can carry:
 
 - **Paragraph style:** Normal, Heading 1 to 3 and Preformatted. The menu's
@@ -1255,8 +1253,7 @@ rest of what a mail can carry:
   pictures in the message at the cursor, as dropping or pasting them does.
 
 Colors, fonts and sizes go out as inline styles, which every mail client keeps.
-Markdown has no words for them, so switching such a message to Markdown or
-plain text leaves them out. **Settings → Composing → Formatting toolbar**
+Switching such a message to plain text leaves them out. **Settings → Composing → Formatting toolbar**
 says whether a new message starts with these tools shown (Always expanded)
 or hidden behind the chevron (Always collapsed, the default); the chevron
 changes it for the message at hand. **Settings → Composing → Font** and
@@ -1302,8 +1299,7 @@ leaves that problem alone in every composer until the app is closed. A
 suggestion goes in as one edit, so Ctrl+Z takes it back.
 
 The text is checked about a second after typing stops. The quoted message
-and the signature are left out. It works in rich text and plain text; a
-message written in Markdown or HTML is not checked.
+and the signature are left out. It works in rich text and plain text.
 
 **Checker** is what reads it. No checker ships with the app: the first two
 are downloaded with the **Download** button under it, once, and run on this
@@ -1351,32 +1347,16 @@ spell checker while it is on, so they are not marked twice.
 
 The settings are in `grammar.toml`; the API key is in the keyring.
 
-### Writing in Markdown or HTML
+### Rich text or plain text
 
-A message can be written in any of four formats, chosen in **Settings →
+A message is written in rich text or in plain text, chosen in **Settings →
 Composing → Write messages in** for new messages and switched for any single
 message under **Format** in the composer's **More actions** (⋯) menu, the
 current one in your accent colour:
 
 - **Rich text:** the WYSIWYG editor with its formatting toolbar. The default.
   It is sent as HTML with a plain-text alternative, not as RTF.
-- **Markdown:** you write Markdown, the recipient gets formatted mail.
-- **HTML source:** you write the message's HTML by hand.
 - **Plain text:** no formatting at all, sent as `text/plain` only.
-
-Markdown and HTML source are written as *source*: a monospace field, the formatting
-buttons gone from the row above it (they would go nowhere), and a **Preview**
-toggle at the end of the row that swaps the source for the message as it
-will be sent. Nothing
-is sent as source. Markdown is rendered to HTML when the message goes out,
-and the Markdown you wrote travels as the plain-text alternative, so a
-recipient whose client shows plain text gets something that still reads as
-itself. Hand-written HTML gets a readable plain-text alternative made for it
-the same way.
-
-Switching format converts what is already in the message, so you can start a
-reply in rich text and finish it in Markdown; the quoted original comes
-across as `>` lines.
 
 **Settings → Composing → Reply in the original's format**, off by default,
 answers plain text in kind. A reply, a reply to all or a forward of a message
@@ -1385,31 +1365,6 @@ them send it, opens in plain text, the original quoted as `>` lines that keep
 its indents. A message with an HTML part is answered in the format chosen in
 **Write messages in**. Drafts, templates and **Edit as New** open as they
 always have, and **More actions → Format** still switches any one message.
-
-**The Markdown Tegami Mail understands** is the dialect documented at
-[markdownguide.org](https://www.markdownguide.org/): all of the basic
-syntax, and all of the extended syntax:
-
-| | |
-| --- | --- |
-| Basic | headings (both styles), bold, italic, blockquotes, ordered and unordered lists, code, horizontal rules, links (inline, reference and autolinks), images, hard line breaks, backslash escapes |
-| Extended | tables with alignment, fenced code blocks with a language, footnotes, heading IDs (`{#id}`), definition lists, `~~strikethrough~~`, task lists, `:emoji:` shortcodes, `==highlighting==`, `~subscript~` and `^superscript^`, and bare URLs and email addresses turned into links |
-
-Two notes on what that means in mail. The HTML Tegami Mail writes carries its
-styling as `style` attributes on the tags themselves, because a `<style>`
-block is the first thing most webmail clients throw away, so tables really
-do arrive with their borders. And anything you send, in Markdown or in HTML,
-passes through a sanitizer on the way out: scripts, event handlers and style
-sheets are removed, while tables, inline styles, images and everything
-Markdown produces are kept. That is not a defence against you; it is a
-defence for you, since a `<script>` in a message is at best stripped by the
-recipient's client and at worst the reason the message lands in their spam
-folder.
-
-A draft saved from a Markdown or HTML message is stored as ordinary mail (a
-formatted part and a plain-text one), so re-opening it puts you in your
-default format. Switching that draft back to Markdown converts it, which for
-a message that started life as Markdown lands very close to what you wrote.
 
 ### OpenPGP (encrypted and signed mail)
 
@@ -1540,8 +1495,7 @@ place they can go, and the files go where they are let go:
   (at the top when the cursor is not in the text), and attaches any other
   file. It is offered when the files include a PNG, JPEG, GIF, WebP, BMP,
   SVG or AVIF picture of 32 MB or less, and only while the message is being
-  written as rich text: plain text has nowhere to put a picture, and in
-  Markdown or HTML the reference is yours to write.
+  written as rich text: plain text has nowhere to put a picture.
 - **Upload to Cloud** opens the upload dialog for the files. It is offered when a cloud storage account
   is set up (see [Cloud attachments](#cloud-attachments-nextcloud-onedrive-dropbox-seafile)).
 

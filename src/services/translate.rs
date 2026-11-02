@@ -485,54 +485,6 @@ fn remember_compose_target(target: &str) {
     }
 }
 
-/// Plain text as paragraphs of HTML, for a service asked to keep markup:
-/// a blank line starts a paragraph, a line break stays a line break.
-pub(crate) fn text_to_parts(text: &str) -> Vec<String> {
-    text.split("\n\n")
-        .map(|p| p.trim_matches('\n'))
-        .filter(|p| !p.trim().is_empty())
-        .map(|p| {
-            let esc = p
-                .replace('&', "&amp;")
-                .replace('<', "&lt;")
-                .replace('>', "&gt;");
-            format!("<p>{}</p>", esc.replace('\n', "<br>"))
-        })
-        .collect()
-}
-
-/// [`text_to_parts`] the other way: the paragraphs that came back, as text.
-pub(crate) fn parts_to_text(parts: &[String]) -> String {
-    parts
-        .iter()
-        .map(|p| {
-            let p = p
-                .replace("<br>", "\n")
-                .replace("<br/>", "\n")
-                .replace("<br />", "\n");
-            let mut out = String::with_capacity(p.len());
-            let mut in_tag = false;
-            for c in p.chars() {
-                match c {
-                    '<' => in_tag = true,
-                    '>' if in_tag => in_tag = false,
-                    _ if !in_tag => out.push(c),
-                    _ => {}
-                }
-            }
-            out.replace("&lt;", "<")
-                .replace("&gt;", ">")
-                .replace("&quot;", "\"")
-                .replace("&#39;", "'")
-                .replace("&nbsp;", " ")
-                .replace("&amp;", "&")
-                .trim()
-                .to_string()
-        })
-        .collect::<Vec<_>>()
-        .join("\n\n")
-}
-
 #[cfg(test)]
 mod tests {
     use super::in_place::{ATTRS_ATTR, RUN_ATTR};
@@ -745,17 +697,6 @@ mod tests {
         assert_eq!(detect("<p>OK</p>"), None, "too little to go on");
         assert!(differs("de", "en"));
         assert!(!differs("pt", "pt-BR"));
-    }
-
-    #[test]
-    fn written_text_goes_as_paragraphs_and_comes_back_as_text() {
-        let parts = text_to_parts("Hi Anna,\nthanks <3\n\n**Ben**\n");
-        assert_eq!(parts, ["<p>Hi Anna,<br>thanks &lt;3</p>", "<p>**Ben**</p>"]);
-        let back = parts_to_text(&[
-            "<p>Hallo Anna,<br/>danke &lt;3</p>".to_string(),
-            "<p>**Ben**</p>".to_string(),
-        ]);
-        assert_eq!(back, "Hallo Anna,\ndanke <3\n\n**Ben**");
     }
 
     #[test]

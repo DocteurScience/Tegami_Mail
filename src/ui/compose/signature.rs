@@ -1,5 +1,4 @@
-//! Signatures: which one, where it goes, and swapping one for another in rich
-//! and source bodies.
+//! Signatures: which one, where it goes, and swapping one for another.
 
 use super::messages::ComposeInput;
 use super::types::{ComposeAccount, SigPlace};
@@ -8,7 +7,7 @@ use super::ComposeWidgets;
 use crate::config::SignaturePosition;
 use crate::i18n::i18n;
 use crate::ui::context_menu::{show_context_menu, MenuEntry};
-use crate::ui::rich_editor::{self, js_escape, SourceKind};
+use crate::ui::rich_editor;
 use adw::prelude::*;
 use relm4::prelude::*;
 
@@ -18,23 +17,6 @@ pub(super) fn sig_html(sig: &str, dashes: bool) -> String {
     let body = rich_editor::signature_to_html(sig);
     let dashes = if dashes { "-- <br>" } else { "" };
     format!("<div class=\"tegami-sig\"><br>{dashes}{body}</div>")
-}
-
-/// The signature as it reads in a source-mode body: Markdown (under its
-/// `-- ` line when `dashes` is set), or the same HTML block the rich
-/// editor holds.
-pub(super) fn sig_source(kind: SourceKind, sig: &str, dashes: bool) -> String {
-    if sig.is_empty() {
-        return String::new();
-    }
-    match kind {
-        SourceKind::Html => format!("\n{}\n", sig_html(sig, dashes)),
-        SourceKind::Markdown => format!(
-            "\n\n{}{}\n",
-            if dashes { "-- \n" } else { "" },
-            crate::mail::markdown::from_html(&rich_editor::signature_to_html(sig))
-        ),
-    }
 }
 
 impl Compose {
@@ -61,36 +43,6 @@ impl Compose {
     /// Put `new_sig` in the editor in place of the current signature block,
     /// or where the setting puts a signature when there is none.
     pub(super) fn put_signature(&mut self, new_sig: String) {
-        // Source mode holds the signature as text, so the swap is a
-        // text replacement in the field rather than a DOM one.
-        if let Some(kind) = self.editor.source_kind() {
-            // The old block is looked for with and without its
-            // `-- ` line: a draft keeps the form it was written in,
-            // whatever the setting says now.
-            let old = sig_source(kind, &self.current_sig, self.sig_dashes);
-            let old_other = sig_source(kind, &self.current_sig, !self.sig_dashes);
-            let new = sig_source(kind, &new_sig, self.sig_dashes);
-            // With no old block to replace (the previous account had
-            // none), the new one goes where the setting puts it: at
-            // the end, or above the quoted original (#237), which
-            // in source is found by its text. HTML keeps the quote's
-            // tags; Markdown has the `> ` lines, with the attribution
-            // line or the forward header above.
-            let place = self.source_sig_place(kind);
-            self.editor.run_js(&format!(
-                "(function(){{var t=document.getElementById('src');if(!t)return;\
-                 var o='{}',p='{}',n='{}';var v=t.value;\
-                 var i=o?v.lastIndexOf(o):-1;\
-                 if(i<0&&p){{i=v.lastIndexOf(p);if(i>=0)o=p;}}\
-                 if(i>=0){{v=v.slice(0,i)+n+v.slice(i+o.length);}}else{{{place}}}\
-                 t.value=v;window.__tegamiDirty=true;}})()",
-                js_escape(&old),
-                js_escape(&old_other),
-                js_escape(&new)
-            ));
-            self.current_sig = new_sig;
-            return;
-        }
         {
             let replacement = if new_sig.is_empty() {
                 String::new()
@@ -112,31 +64,6 @@ impl Compose {
             );
             self.editor.run_js(&js);
             self.current_sig = new_sig;
-        }
-    }
-
-    /// Source-mode JS that puts `n` into `v` where the setting puts a
-    /// signature: at the end, or above the quoted original (#237), which in
-    /// source is found by its text. HTML keeps the quote's tags; Markdown
-    /// has the `> ` lines, with the attribution line ("On …, X wrote:" or
-    /// the forward header) above. Both are in the app's language (#528), so
-    /// they are found by shape: a line ending in a colon, or a paragraph
-    /// opening with the forward header's dashes.
-    fn source_sig_place(&self, kind: SourceKind) -> &'static str {
-        match (self.signature_position, kind) {
-            (SignaturePosition::BelowQuote, _) => "v=v+n;",
-            (SignaturePosition::AboveQuote, SourceKind::Html) => {
-                "var q=v.search(/<p class=\"tegami-quote-attr\"|<blockquote/);\
-                 if(q<0){v=v+n;}else{v=v.slice(0,q).replace(/\\s*$/,'')+n+v.slice(q);}"
-            }
-            (SignaturePosition::AboveQuote, SourceKind::Markdown) => {
-                "var L=v.split('\\n');var qi=-1;\
-                 for(var k=0;k<L.length;k++){if(L[k]==='>'||L[k].indexOf('> ')===0){qi=k;break;}}\
-                 if(qi<0){v=v+n;}else{var a=qi-1;while(a>=0&&L[a].trim()==='')a--;\
-                 if(a>=0){var s=a;while(s>0&&L[s-1].trim()!=='')s--;\
-                 if(/^-{5,} /.test(L[s]))qi=s;else if(/[:\\uFF1A]\\s*$/.test(L[a]))qi=a;}\
-                 v=L.slice(0,qi).join('\\n').replace(/\\s*$/,'')+n+'\\n'+L.slice(qi).join('\\n');}"
-            }
         }
     }
 
@@ -168,33 +95,6 @@ impl Compose {
             SigPlace::Start => "start",
             SigPlace::End => "end",
         };
-        if let Some(kind) = self.editor.source_kind() {
-            let old = sig_source(kind, &self.current_sig, self.sig_dashes);
-            let old_other = sig_source(kind, &self.current_sig, !self.sig_dashes);
-            let new = sig_source(kind, &sig, self.sig_dashes);
-            // A caret only counts while the field has focus: a fresh
-            // composer's field reports 0, which is the top, not a choice.
-            let js = r#"(function(){var t=document.getElementById('src');if(!t)return;
-var o=@OLD@,p=@OTHER@,n=@NEW@,where=@WHERE@,v=t.value;
-var a=document.activeElement===t?t.selectionEnd:-1;
-var i=o?v.lastIndexOf(o):-1;if(i<0&&p){i=v.lastIndexOf(p);if(i>=0)o=p;}
-if(i>=0){v=v.slice(0,i)+v.slice(i+o.length);if(a>i+o.length)a-=o.length;else if(a>i)a=i;}
-if(where==='start'){v=n.replace(/^\s+/,'')+'\n'+v;a=-1;}
-else if(where==='end'){v=v.replace(/\s*$/,'')+n;a=-1;}
-else if(a>=0){v=v.slice(0,a)+n+v.slice(a);}
-else{@PLACE@}
-t.value=v;if(a>=0){t.selectionStart=t.selectionEnd=a;}window.__tegamiDirty=true;})()"#
-                // The signature text goes in last, so nothing in it is
-                // taken for a placeholder.
-                .replace("@WHERE@", &format!("'{place_js}'"))
-                .replace("@PLACE@", self.source_sig_place(kind))
-                .replace("@OTHER@", &format!("'{}'", js_escape(&old_other)))
-                .replace("@OLD@", &format!("'{}'", js_escape(&old)))
-                .replace("@NEW@", &format!("'{}'", js_escape(&new)));
-            self.editor.run_js(&js);
-            self.current_sig = sig;
-            return;
-        }
         // At the caret the line it sits on is split, so the signature
         // stands as a block of its own between the two halves; an empty
         // line gives up its place to it.

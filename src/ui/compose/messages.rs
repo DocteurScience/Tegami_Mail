@@ -1,6 +1,5 @@
 //! What the composer is told, and what it tells its host.
 
-use super::translate::TranslateHow;
 use super::types::{Field, OwnMail, SigPlace};
 use crate::config::ComposeFormat;
 use crate::contacts::Suggestion;
@@ -85,19 +84,13 @@ pub(crate) enum ComposeInput {
     /// The translation came back, or failed.
     Translated {
         result: Result<Vec<String>, String>,
-        how: TranslateHow,
         subject: Option<String>,
     },
     /// The body came back for a format change; put it in the new one.
     LoadAs {
-        from: ComposeFormat,
         to: ComposeFormat,
         body: String,
     },
-    /// Show or hide the rendered preview of a source message.
-    TogglePreview(bool),
-    /// The source came back for the preview; render it.
-    ShowPreview(String),
     /// The OpenPGP Encrypt toggle; encrypting turns signing on too.
     ToggleEncrypt(bool),
     /// The Send menu's read receipt check (#520).
@@ -218,8 +211,7 @@ pub(crate) enum ComposeInput {
 }
 
 /// A message as it stood when Send, Save or the automatic save read it:
-/// the body from the editor (source text in Markdown and HTML), the rest
-/// from the fields.
+/// the body from the editor, the rest from the fields.
 #[derive(Debug, Clone)]
 pub(crate) struct OutgoingFields {
     pub(super) html: String,

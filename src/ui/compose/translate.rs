@@ -5,29 +5,14 @@ use relm4::prelude::*;
 
 use super::messages::ComposeInput;
 use super::{Compose, ComposeWidgets};
-use crate::config::ComposeFormat;
 use crate::i18n::{i18n, i18n_f};
 use crate::ui::context_menu::MenuEntry;
 use crate::ui::dialog::alert;
 use adw::prelude::*;
 
-/// Which editor a translation (#327) was taken from, and so how it goes
-/// back: as HTML into the rich document, or as text into the source field.
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
-pub(crate) enum TranslateHow {
-    Rich,
-    Markdown,
-    Html,
-}
-
 /// The quoted message's text, for telling which language to offer first:
-/// the reply's quote in the rich document, or the quoted lines of a
-/// Markdown or HTML source.
-pub(super) const TR_QUOTE_TEXT: &str = r#"(function(){var t=document.getElementById('src');
-if(t){var v=t.value;var i=v.search(/<blockquote/i);
-if(i>=0)return v.slice(i).replace(/<[^>]*>/g,' ').slice(0,4000);
-return v.split('\n').filter(function(l){return /^\s*>/.test(l);}).map(function(l){return l.replace(/^\s*>+\s?/,'');}).join('\n').slice(0,4000);}
-var q=document.querySelector('blockquote.tegami-quote-mail')||document.querySelector('blockquote');
+/// the reply's quote in the document.
+pub(super) const TR_QUOTE_TEXT: &str = r#"(function(){var q=document.querySelector('blockquote.tegami-quote-mail')||document.querySelector('blockquote');
 return q?q.innerText.slice(0,4000):'';})()"#;
 
 /// What the rich document asks to have translated: the selection, else
@@ -73,31 +58,9 @@ var r=window.__tegamiTr;window.__tegamiTr=null;if(!r)return;b.focus();
 var s=getSelection();s.removeAllRanges();s.addRange(r);
 document.execCommand('insertHTML',false,h);window.__tegamiPlainFix&&window.__tegamiPlainFix();window.__tegamiDirty=true;window.__tegamiTrState='translated';if(!window.__tegamiTrWatch){window.__tegamiTrWatch=true;document.addEventListener('input',function(e){var st=window.__tegamiTrState;if(!st)return;var k=e.inputType||'';if(k==='historyUndo')window.__tegamiTrState=st==='translated'?'original':'';else if(k==='historyRedo')window.__tegamiTrState=st==='original'?'translated':'';else window.__tegamiTrState='';},true);}})(ARG)"#;
 
-/// The source field's version of [`TR_RICH_BEGIN`]: the selection, else
-/// the text above the quote (and, in Markdown, its "wrote:" line) and the
-/// signature. HTMLFLAG says whether the source is HTML.
-pub(super) const TR_SOURCE_BEGIN: &str = r#"(function(H){var t=document.getElementById('src');if(!t)return '';
-var v=t.value,a=t.selectionStart,e=t.selectionEnd,sel=e>a;
-if(!sel){a=0;e=v.length;
-var sig=H?v.search(/<div class="tegami-sig"/):v.indexOf('\n-- \n');if(sig>=0)e=Math.min(e,sig);
-var q=H?v.search(/<p class="tegami-quote-attr"|<blockquote/i):v.search(/(^|\n)[ \t]*>/);
-if(q>=0){if(!H){var pre=v.slice(0,q).replace(/\s+$/,'');var ls=pre.lastIndexOf('\n');
-var L=pre.split('\n'),p=L.length-1;while(p>0&&L[p-1].trim()!=='')p--;
-if(/^-{5,} /.test(L[p]))q=L.slice(0,p).join('\n').length+(p?1:0);else if(/[:：]\s*$/.test(pre.slice(ls+1)))q=ls+1;}
-e=Math.min(e,q);}}
-while(e>a&&/\s/.test(v.charAt(e-1)))e--;while(a<e&&/\s/.test(v.charAt(a)))a++;
-var x=v.slice(a,e);if(!x.trim())return JSON.stringify({empty:true,sel:sel});
-window.__tegamiTr={a:a,e:e};t.readOnly=true;return JSON.stringify({text:x,sel:sel});})(HTMLFLAG)"#;
-
-/// [`TR_RICH_END`] for the source field.
-pub(super) const TR_SOURCE_END: &str = r#"(function(x){var t=document.getElementById('src');if(!t)return;t.readOnly=false;
-var r=window.__tegamiTr;window.__tegamiTr=null;if(!r)return;t.focus();t.setSelectionRange(r.a,r.e);
-if(!document.execCommand('insertText',false,x))t.setRangeText(x,r.a,r.e,'end');
-window.__tegamiDirty=true;t.dispatchEvent(new Event('input'));window.__tegamiTrState='translated';if(!window.__tegamiTrWatch){window.__tegamiTrWatch=true;document.addEventListener('input',function(e){var st=window.__tegamiTrState;if(!st)return;var k=e.inputType||'';if(k==='historyUndo')window.__tegamiTrState=st==='translated'?'original':'';else if(k==='historyRedo')window.__tegamiTrState=st==='original'?'translated':'';else window.__tegamiTrState='';},true);}})(ARG)"#;
-
 /// A translation that will not come: unlock the body as it was.
-pub(super) const TR_CANCEL: &str = r#"(function(){var b=document.body;if(b&&!document.getElementById('src'))b.setAttribute('contenteditable','true');
-var t=document.getElementById('src');if(t)t.readOnly=false;window.__tegamiTr=null;})()"#;
+pub(super) const TR_CANCEL: &str = r#"(function(){var b=document.body;if(b)b.setAttribute('contenteditable','true');
+window.__tegamiTr=null;})()"#;
 
 impl Compose {
     /// Handles [`ComposeInput::TranslateMenu`].
@@ -222,13 +185,8 @@ impl Compose {
         }
         self.translating = true;
         self.translate_btn.set_sensitive(false);
-        let js = match self.format {
-            ComposeFormat::Html => TR_SOURCE_BEGIN.replace("HTMLFLAG", "true"),
-            ComposeFormat::Markdown => TR_SOURCE_BEGIN.replace("HTMLFLAG", "false"),
-            _ => TR_RICH_BEGIN.to_string(),
-        };
         let s = sender.input_sender().clone();
-        self.editor.eval(&js, move |found| {
+        self.editor.eval(TR_RICH_BEGIN, move |found| {
             let _ = s.send(ComposeInput::TranslateBegun { found, target });
         });
     }
@@ -243,23 +201,14 @@ impl Compose {
         root: &adw::BreakpointBin,
     ) {
         let v: serde_json::Value = serde_json::from_str(&found).unwrap_or_default();
-        let how = match self.format {
-            ComposeFormat::Html => TranslateHow::Html,
-            ComposeFormat::Markdown => TranslateHow::Markdown,
-            _ => TranslateHow::Rich,
-        };
-        let parts: Vec<String> = match (&how, v["text"].as_str()) {
-            (TranslateHow::Html, Some(text)) => vec![text.to_string()],
-            (TranslateHow::Markdown, Some(text)) => crate::services::translate::text_to_parts(text),
-            _ => v["parts"]
-                .as_array()
-                .map(|a| {
-                    a.iter()
-                        .filter_map(|p| p.as_str().map(str::to_string))
-                        .collect()
-                })
-                .unwrap_or_default(),
-        };
+        let parts: Vec<String> = v["parts"]
+            .as_array()
+            .map(|a| {
+                a.iter()
+                    .filter_map(|p| p.as_str().map(str::to_string))
+                    .collect()
+            })
+            .unwrap_or_default();
         if parts.is_empty() {
             self.translating = false;
             self.translate_btn.set_sensitive(true);
@@ -293,11 +242,7 @@ impl Compose {
             let key = crate::services::translate::load_key(settings.service).unwrap_or_default();
             let result =
                 crate::services::translate::translate_parts(&settings, &key, &parts, &target);
-            let _ = s.send(ComposeInput::Translated {
-                result,
-                how,
-                subject,
-            });
+            let _ = s.send(ComposeInput::Translated { result, subject });
         });
     }
 
@@ -325,7 +270,6 @@ impl Compose {
     pub(super) fn on_translated(
         &mut self,
         result: Result<Vec<String>, String>,
-        how: TranslateHow,
         subject: Option<String>,
         widgets: &ComposeWidgets,
         root: &adw::BreakpointBin,
@@ -348,16 +292,8 @@ impl Compose {
                         self.tr_subject = Some((original, translated));
                     }
                 }
-                let (end, text) = match how {
-                    TranslateHow::Rich => (TR_RICH_END, parts.concat()),
-                    TranslateHow::Html => (TR_SOURCE_END, parts.concat()),
-                    TranslateHow::Markdown => (
-                        TR_SOURCE_END,
-                        crate::services::translate::parts_to_text(&parts),
-                    ),
-                };
-                let arg = serde_json::to_string(&text).unwrap_or_else(|_| "''".into());
-                self.editor.run_js(&end.replace("ARG", &arg));
+                let arg = serde_json::to_string(&parts.concat()).unwrap_or_else(|_| "''".into());
+                self.editor.run_js(&TR_RICH_END.replace("ARG", &arg));
             }
             Err(why) => {
                 self.editor.run_js(TR_CANCEL);

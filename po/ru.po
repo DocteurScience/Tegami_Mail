@@ -3538,25 +3538,12 @@ msgstr ""
 msgid "Rich text"
 msgstr "Отформатированный текст"
 
-msgid "Markdown"
-msgstr "Markdown"
-
-#, fuzzy
-msgid "HTML source"
-msgstr "Просмотреть исходный текст"
-
 msgid "Plain text"
 msgstr "Обычный текст"
 
 #, fuzzy
 msgid "Format as you type; it is sent as HTML"
 msgstr "Форматировать при вводе с помощью панели инструментов"
-
-msgid "Write Markdown; it is sent as formatted mail"
-msgstr "Писать на Markdown; отправляется как форматированное письмо"
-
-msgid "Write the message's HTML by hand"
-msgstr "Создавать HTML-код сообщения вручную"
 
 msgid "No formatting at all"
 msgstr "Без форматирования"
@@ -3731,9 +3718,6 @@ msgstr "Проверьте адрес"
 
 msgid "“{addr}” is not an email address."
 msgstr "«{addr}» не является адресом электронной почты."
-
-msgid "Show the message as it will be sent"
-msgstr "Показать сообщение в том виде, в котором оно будет отправлено"
 
 msgid "Translate what you wrote"
 msgstr "Перевести написанный текст"
@@ -8438,6 +8422,22 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Markdown"
+#~ msgstr "Markdown"
+
+#, fuzzy
+#~ msgid "HTML source"
+#~ msgstr "Просмотреть исходный текст"
+
+#~ msgid "Write Markdown; it is sent as formatted mail"
+#~ msgstr "Писать на Markdown; отправляется как форматированное письмо"
+
+#~ msgid "Write the message's HTML by hand"
+#~ msgstr "Создавать HTML-код сообщения вручную"
+
+#~ msgid "Show the message as it will be sent"
+#~ msgstr "Показать сообщение в том виде, в котором оно будет отправлено"
 
 #~ msgid "Save as Template"
 #~ msgstr "Сохранить как шаблон"

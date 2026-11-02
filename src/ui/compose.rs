@@ -6,12 +6,11 @@ use relm4::prelude::*;
 use crate::config::{ComposeFormat, SignaturePosition};
 use crate::i18n::{i18n, i18n_f};
 use crate::ui::recipient_row::RecipientRow;
-use crate::ui::rich_editor::{RichEditor, SourceKind};
+use crate::ui::rich_editor::RichEditor;
 
 mod attachments;
 mod cloud;
 mod forgotten;
-pub(crate) use forgotten::own_source_text;
 mod format;
 mod history;
 mod host;
@@ -31,7 +30,7 @@ mod types;
 
 use cloud::not_signed_in;
 pub(crate) use format::forget_zoom;
-use format::{markdown_body, session_zoom, zoom_chip, SHOWCASE_PLAIN_LOG};
+use format::{session_zoom, zoom_chip, SHOWCASE_PLAIN_LOG};
 use host::{
     compose_heading, fold_on_first_map, history_levels, label_fields, size_for_host,
     COMPOSE_MIN_WIDTH,
@@ -385,19 +384,6 @@ impl Component for Compose {
                 },
             ));
         }
-        // A source format starts from the same content, written out as
-        // source: a reply's quoted original becomes `> ` lines in Markdown,
-        // or the HTML it already was.
-        match format {
-            ComposeFormat::Markdown => {
-                editor.set_source(SourceKind::Markdown, &markdown_body(&content))
-            }
-            ComposeFormat::Html => editor.set_source(
-                SourceKind::Html,
-                &crate::mail::markdown::pretty_html(&content),
-            ),
-            ComposeFormat::Rich | ComposeFormat::Plain => {}
-        }
         // TEGAMI_SHOWCASE_PLAIN_LOG also logs the body a composer opens with
         // (demo only), to check a reply started in plain text (#436).
         if std::env::var_os("TEGAMI_SHOWCASE_PLAIN_LOG").is_some()
@@ -410,9 +396,8 @@ impl Component for Compose {
                 });
             });
         }
-        let (preview_btn, preview_content, translate_btn, signature_btn) = add_toolbar_end_buttons(
+        let (translate_btn, signature_btn) = add_toolbar_end_buttons(
             &editor,
-            format,
             accounts
                 .get(selected)
                 .is_some_and(|a| !a.signatures.is_empty()),
@@ -481,8 +466,6 @@ impl Component for Compose {
             attach_check_passed: false,
             link_instead: Vec::new(),
             tr_subject: None,
-            preview_btn,
-            preview_content,
             encrypt: false,
             request_receipt,
             pgp_checking: false,
@@ -749,11 +732,9 @@ impl Component for Compose {
                     self.on_translate_toggle(original, widgets, &sender)
                 }
 
-                ComposeInput::Translated {
-                    result,
-                    how,
-                    subject,
-                } => self.on_translated(result, how, subject, widgets, root),
+                ComposeInput::Translated { result, subject } => {
+                    self.on_translated(result, subject, widgets, root)
+                }
 
                 ComposeInput::SetFormat(to) => self.on_set_format(to, &sender),
 
@@ -761,20 +742,8 @@ impl Component for Compose {
 
                 ComposeInput::ApplyFormat(to) => self.on_apply_format(to, &sender),
 
-                ComposeInput::LoadAs { from, to, body } => self.on_load_as(from, to, body),
+                ComposeInput::LoadAs { to, body } => self.on_load_as(to, body),
 
-                ComposeInput::TogglePreview(on) => self.on_toggle_preview(on, &sender),
-
-                ComposeInput::ShowPreview(body) => {
-                    let html = match self.format {
-                        ComposeFormat::Markdown => {
-                            crate::mail::direction::stamp(&crate::mail::markdown::to_html(&body))
-                        }
-                        ComposeFormat::Html => crate::mail::direction::stamp(&body),
-                        _ => body,
-                    };
-                    self.editor.show_preview(Some(&html));
-                }
                 ComposeInput::ToggleEncrypt(on) => {
                     self.encrypt = on;
                     self.editor.pause_grammar(on);

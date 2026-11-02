@@ -298,8 +298,6 @@ impl Preferences {
             .compose_format_row
             .set_model(Some(&gtk::StringList::new(&[
                 &i18n("Rich text"),
-                &i18n("Markdown"),
-                &i18n("HTML source"),
                 &i18n("Plain text"),
             ])));
         no_truncate(&widgets.composing.compose_format_row);

@@ -19,6 +19,11 @@
   **Spelling Language** list, which were only in Settings and the body's
   right-click menu.
 
+- **Removed: writing in Markdown and in HTML source.** A message is written
+  in rich text or plain text, the two formats the redesign keeps (mockup
+  06), with the source editor, its Preview toggle and the Markdown renderer
+  gone. A saved choice of Markdown or HTML reads as rich text.
+
 - **Removed: from the composer's More actions,** as the redesign has them
   nowhere: **Save as Template**, the cloud upload of picked files (files
   dropped on **Upload to Cloud** and a large attachment's **Send a Link**

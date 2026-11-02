@@ -47,18 +47,7 @@ fn initial_suggestions_keep_newer_names_and_frequency() {
     assert_eq!(current[0].name, "Ann");
 }
 
-#[test]
-fn a_markdown_reply_has_a_line_to_write_on_above_the_quote() {
-    let reply = "<p><br></p><p class=\"tegami-quote-attr\">On Monday, Ann wrote:</p><blockquote><p>Hi</p></blockquote>";
-    let md = super::markdown_body(reply);
-    assert!(md.starts_with("\n\nOn Monday, Ann wrote:"), "{md:?}");
-    // A new message stays empty, and written text is left as it is.
-    assert_eq!(super::markdown_body("<p><br></p>"), "");
-    assert!(super::markdown_body("<p>Hello</p>").starts_with("Hello"));
-}
-
-use super::signature::{sig_html, sig_source};
-use crate::ui::rich_editor::SourceKind;
+use super::signature::sig_html;
 
 #[test]
 fn the_separator_line_follows_the_setting() {
@@ -70,25 +59,9 @@ fn the_separator_line_follows_the_setting() {
         sig_html("Ann", true),
         "<div class=\"tegami-sig\"><br>-- <br>Ann</div>"
     );
-    assert!(!sig_source(SourceKind::Markdown, "Ann", false).contains("-- "));
-    assert!(sig_source(SourceKind::Markdown, "Ann", true).starts_with("\n\n-- \n"));
-    assert_eq!(sig_source(SourceKind::Markdown, "", true), "");
 }
 
 // Characterization tests (restructure, area D).
-
-#[test]
-fn pinned_an_html_source_signature_is_the_rich_block() {
-    assert_eq!(
-        sig_source(SourceKind::Html, "Ann\nB", true),
-        "\n<div class=\"tegami-sig\"><br>-- <br>Ann<br>B</div>\n"
-    );
-    // Anything with a `<` is taken as HTML.
-    assert_eq!(
-        sig_source(SourceKind::Markdown, "Ann\nB <x>", false),
-        "\n\nAnn B\n"
-    );
-}
 
 #[test]
 fn pinned_froms_compare_by_name_and_address() {
@@ -127,14 +100,6 @@ fn pinned_format_icons() {
     assert_eq!(
         super::format::format_icon(ComposeFormat::Rich),
         "format-text-rich-symbolic"
-    );
-    assert_eq!(
-        super::format::format_icon(ComposeFormat::Markdown),
-        "markdown-symbolic"
-    );
-    assert_eq!(
-        super::format::format_icon(ComposeFormat::Html),
-        "code-symbolic"
     );
     assert_eq!(
         super::format::format_icon(ComposeFormat::Plain),
@@ -202,7 +167,7 @@ fn pinned_translate_scripts_are_unchanged() {
     );
     assert_eq!(
         fnv(super::translate::TR_QUOTE_TEXT),
-        (454, 0x590ab2bf4b49d839)
+        (154, 0xdbd6a7efb7080808)
     );
     assert_eq!(
         fnv(super::translate::TR_RICH_BEGIN),
@@ -212,13 +177,5 @@ fn pinned_translate_scripts_are_unchanged() {
         fnv(super::translate::TR_RICH_END),
         (743, 0x111f1e3ff5268947)
     );
-    assert_eq!(
-        fnv(super::translate::TR_SOURCE_BEGIN),
-        (880, 0xb91bfb37b0a47a9b)
-    );
-    assert_eq!(
-        fnv(super::translate::TR_SOURCE_END),
-        (731, 0xf6a52262219b6229)
-    );
-    assert_eq!(fnv(super::translate::TR_CANCEL), (198, 0x3294a9c6becf8a48));
+    assert_eq!(fnv(super::translate::TR_CANCEL), (106, 0x2868c0588530129));
 }

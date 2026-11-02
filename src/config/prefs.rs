@@ -288,23 +288,40 @@ pub(crate) fn load_plain_style() -> (bool, String) {
     (p.plain_monospace, p.plain_font)
 }
 
-/// What a message is written in. Rich text is the WYSIWYG editor;
-/// Markdown and HTML are source views that are converted on the way out;
-/// plain text sends no HTML part at all.
+/// What a message is written in: rich text, the WYSIWYG editor, or plain
+/// text, which sends no HTML part at all (docs/DESIGN.md, "Menus").
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
 #[serde(rename_all = "snake_case")]
 pub(crate) enum ComposeFormat {
+    /// Also what a setting saved as Markdown or HTML source reads as: those
+    /// formats were removed (owner's decision, docs/SUIVI.md), and an
+    /// unknown value would fail the whole settings file.
     #[default]
+    #[serde(alias = "markdown", alias = "html")]
     Rich,
-    Markdown,
-    Html,
     Plain,
 }
 
-impl ComposeFormat {
-    /// Whether this format is edited as source rather than as rich text.
-    pub(crate) fn is_source(self) -> bool {
-        matches!(self, ComposeFormat::Markdown | ComposeFormat::Html)
+#[cfg(test)]
+mod compose_format_tests {
+    use super::ComposeFormat;
+
+    #[derive(serde::Deserialize)]
+    struct Holder {
+        f: ComposeFormat,
+    }
+
+    #[test]
+    fn removed_formats_read_as_rich_text() {
+        for (value, want) in [
+            ("rich", ComposeFormat::Rich),
+            ("plain", ComposeFormat::Plain),
+            ("markdown", ComposeFormat::Rich),
+            ("html", ComposeFormat::Rich),
+        ] {
+            let h: Holder = toml::from_str(&format!("f = \"{value}\"")).unwrap();
+            assert_eq!(h.f, want, "{value}");
+        }
     }
 }
 

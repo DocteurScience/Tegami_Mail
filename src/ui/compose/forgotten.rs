@@ -58,27 +58,9 @@ pub(super) fn mentioned_attachment(text: &str, words: &[String]) -> Option<Strin
     })
 }
 
-/// What the person wrote in a message kept as source (Markdown or HTML
-/// text): the lines quoted with ">" are left out, and so is everything from
-/// the signature's "-- " line on.
-pub(crate) fn own_source_text(source: &str) -> String {
-    let mut out = String::new();
-    for line in source.lines() {
-        if line == "-- " {
-            break;
-        }
-        if line.trim_start().starts_with('>') {
-            continue;
-        }
-        out.push_str(line);
-        out.push('\n');
-    }
-    out
-}
-
 #[cfg(test)]
 mod tests {
-    use super::{mentioned_attachment, own_source_text};
+    use super::mentioned_attachment;
 
     fn words() -> Vec<String> {
         ["attached", "enclosed", "ci-joint", "pièce jointe"]
@@ -117,11 +99,5 @@ mod tests {
     fn nothing_mentioned_is_nothing_found() {
         assert_eq!(mentioned_attachment("See you on Thursday.", &words()), None);
         assert_eq!(mentioned_attachment("", &words()), None);
-    }
-
-    #[test]
-    fn quoted_lines_and_the_signature_are_not_the_writers_own() {
-        let source = "Thanks!\n\n> I attached the file\n>> enclosed too\n-- \nSee attached\n";
-        assert_eq!(own_source_text(source), "Thanks!\n\n");
     }
 }

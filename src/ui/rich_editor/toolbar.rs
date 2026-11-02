@@ -169,7 +169,7 @@ fn menu_items(
 }
 
 /// The format bar: the character styles, lists, quote, link and Clear
-/// formatting, all of which Markdown can say, then a chevron that shows
+/// formatting, then a chevron that shows
 /// paragraph styles and fonts, colors, indents, emoji and pictures (#358),
 /// shown from the start when `expanded`. Its groups wrap onto a second row
 /// in a narrow composer.

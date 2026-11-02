@@ -181,15 +181,7 @@ impl Compose {
                 .collect::<Vec<_>>()
                 .join(", ")
         };
-        // Source mode is a textarea rather than the rich document, and takes
-        // the same route through WebKit's history — worth walking too, since
-        // three of the four composing formats are written in it (#180).
-        let focus_js = if self.editor.source_kind().is_some() {
-            "var t=document.getElementById('src');t.focus();\
-             t.selectionStart=t.selectionEnd=t.value.length;"
-        } else {
-            "document.body.focus();"
-        };
+        let focus_js = "document.body.focus();";
         // TEGAMI_SHOWCASE_COMPOSE_UNDO=backspace trims the body with the
         // Backspace key's own editing command instead of typing into it,
         // which is how a reply is usually cut down to size.
@@ -271,11 +263,7 @@ impl Compose {
                 s.input_sender()
                     .emit(ComposeInput::ShowcaseHistory(step + 1));
             };
-            if editor.source_kind().is_some() {
-                editor.extract_source(report);
-            } else {
-                editor.extract_html(report);
-            }
+            editor.extract_html(report);
         });
         tracing::info!(
             target: "tegami::compose::undo",

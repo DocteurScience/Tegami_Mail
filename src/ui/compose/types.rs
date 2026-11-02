@@ -123,8 +123,7 @@ pub(crate) struct ComposeInit {
     /// Whether the inline header carries the window decorations. Off for a
     /// split reply placed beneath the reader (#212), whose header stays.
     pub(crate) decorations: bool,
-    /// What the message is written in: rich text, Markdown, HTML
-    /// source, or plain text.
+    /// What the message is written in: rich text or plain text.
     pub(crate) format: ComposeFormat,
     /// Where the signature goes against a quoted original (#237).
     pub(crate) signature_position: SignaturePosition,
