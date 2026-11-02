@@ -5,13 +5,13 @@ reprendre le travail dans une autre conversation. Les règles durables
 (conventions, commandes, architecture) sont dans [CLAUDE.md](../CLAUDE.md).
 Mettre ce fichier à jour à chaque étape poussée.
 
-Dernière mise à jour : 2026-11-02, après `bb5953c`.
+Dernière mise à jour : 2026-11-02, après `3713aeb`.
 
 ## État
 
 - Base : import de Hylki 1.46.0, renommé Tegami Mail (commits du
   2026-10-31 et du 2026-11-01 jusqu'à `fd0ccce`).
-- CI : verte sur tous les commits jusqu'à `89e8aa0` (build, tests, snap) ;
+- CI : verte sur tous les commits jusqu'à `3713aeb` (build, tests, snap) ;
   les suivants à vérifier (`gh run list --repo DocteurScience/Tegami_Mail`).
 - Tests : 1243 réussis, 45 ignorés.
 - Référence du design : `docs/DESIGN.md`, `docs/DESIGN_STRINGS.md`,
@@ -126,6 +126,19 @@ Dernière mise à jour : 2026-11-02, après `bb5953c`.
   composeur, menu ⋯ du lecteur, menu d'un dossier, avatars des
   destinataires, menu ⋯ d'une carte), 4. documentation (CHANGELOG,
   FEATURES, KEYBOARD_SHORTCUTS).
+
+## Décisions du propriétaire, éléments absents des maquettes (2026-11-02)
+
+- À supprimer complètement : vues unifiées de la barre latérale (Boîtes
+  de réception, Favoris, Envoyés… de tous les comptes), section Filtres,
+  lignes Contacts et Pièces jointes de la barre latérale (avec leurs
+  pages) ; dans le composeur, le crayon du champ De (adresse libre, #347),
+  la flèche d'Envoyer (Envoyer plus tard, #145), le bouton Fermer (X) de
+  la fenêtre, le bouton Police « A » de la barre de mise en forme.
+- À garder : puce du compte au-dessus de l'objet, puce « n destinataires »
+  d'une carte, titres de groupes par date (non tranché, gardés).
+- En-tête de la barre latérale fait (`3713aeb`) : titre « Courrier », pas
+  d'Actualiser au début.
 
 ## Reste à faire (connu)
 
