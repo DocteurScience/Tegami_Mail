@@ -43,18 +43,16 @@ impl MessageList {
         // 2026-11-02, docs/SUIVI.md): reply; read, star, tags; archive,
         // move, spam; delete. Snooze, Add Sender to Contacts, Create
         // Filter, View Source and Save as File are left to the reader's
-        // own right-click menu, More actions and their keys. Copy To stays
-        // until the owner decides: this menu is its one way in.
+        // own right-click menu, More actions and their keys.
         let mut flag_section: Vec<MenuEntry> =
             self.read_entry(msg, sender, &item).into_iter().collect();
         flag_section.push(self.star_entry(msg, sender, &item));
         flag_section.extend(self.tag_section(msg, sender));
         let move_entry = self.move_entry(msg, x, y, sender);
-        let copy_entry = self.copy_entry(msg, x, y, sender);
         let sections = vec![
             self.reply_section(&item),
             flag_section,
-            self.move_section(move_entry, copy_entry, &item),
+            self.move_section(move_entry, &item),
             vec![item(
                 RowAction::Delete,
                 &i18n("Delete"),
@@ -177,28 +175,6 @@ impl MessageList {
         .keys(A::MoveTo.keys(KeysOf::Main))
     }
 
-    /// Copy To… (#552): what Move To… offers, for a copy.
-    fn copy_entry(
-        &self,
-        msg: &Message,
-        x: f64,
-        y: f64,
-        sender: &ComponentSender<Self>,
-    ) -> MenuEntry {
-        let (messages, offer_whole) = self.move_to_messages(msg);
-        let (wx, wy) = self.window_point(x, y);
-        let s = sender.clone();
-        MenuEntry::new(i18n("Copy To…"), move || {
-            let _ = s.output(MessageListOutput::CopyTo {
-                messages: messages.clone(),
-                offer_whole,
-                x: wx,
-                y: wy,
-            });
-        })
-        .icon("edit-copy-symbolic")
-    }
-
     /// The read toggle, if the row has one. A conversation row acts on the
     /// whole thread: its read entry marks every member, through the same
     /// bulk path as a multi-select, and the singular toggle is dropped (the
@@ -291,14 +267,9 @@ impl MessageList {
         }
     }
 
-    /// Archive, Move to Inbox where it applies, Move To…, Copy To…, and
-    /// Spam (or Not Spam in Junk).
-    fn move_section(
-        &self,
-        move_entry: MenuEntry,
-        copy_entry: MenuEntry,
-        item: &MakeEntry<'_>,
-    ) -> Vec<MenuEntry> {
+    /// Archive, Move to Inbox where it applies, Move To…, and Spam (or Not
+    /// Spam in Junk).
+    fn move_section(&self, move_entry: MenuEntry, item: &MakeEntry<'_>) -> Vec<MenuEntry> {
         let mut section = vec![item(
             RowAction::Archive,
             &i18n("Archive"),
@@ -313,7 +284,6 @@ impl MessageList {
             ));
         }
         section.push(move_entry);
-        section.push(copy_entry);
         // In Junk the way back is "Not Spam" (#168): the server is told,
         // and the message returns to the Inbox. In Trash it is a plain
         // move, with spam still on offer.
@@ -556,19 +526,6 @@ impl MessageList {
                         })
                         .icon("folder-symbolic")
                         .keys(A::MoveTo.keys(KeysOf::Main)),
-                    );
-                    let messages = self.selected_conversations();
-                    let s = sender.clone();
-                    section.push(
-                        MenuEntry::new(i18n("Copy To…"), move || {
-                            let _ = s.output(MessageListOutput::CopyTo {
-                                messages: messages.clone(),
-                                offer_whole: false,
-                                x: wx,
-                                y: wy,
-                            });
-                        })
-                        .icon("edit-copy-symbolic"),
                     );
                 }
                 section.push(item(

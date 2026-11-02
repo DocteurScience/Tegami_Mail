@@ -377,8 +377,6 @@ impl AppModel {
             | AppMsg::MoveToMenu
             | AppMsg::ListMoveTo { .. }
             | AppMsg::MoveMessagesTo { .. }
-            | AppMsg::ListCopyTo { .. }
-            | AppMsg::CopyMessagesTo { .. }
             | AppMsg::MoveSelectionTo { .. }) => self.on_move_tag(msg, sender),
             msg @ (AppMsg::ReaderTagMenu | AppMsg::CardMenu { .. }) => {
                 self.on_card_menu(msg, sender)

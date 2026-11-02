@@ -318,15 +318,6 @@ IMAP and JMAP accounts can receive mail this way, and so can
 can be moved from but not into: Microsoft files a message added to a folder
 as a draft, and POP3 has only an inbox.
 
-### Copying mail to another folder
-
-**Copy To…**, in a message's right-click menu in the list and in the
-reader, opens the same picker as Move To. The message is stored again in
-the folder picked, with its read and starred state, and the original stays
-where it is. It works within an account and across accounts, into any
-folder of an account that can receive mail (see above), and a copy is not
-undone with Ctrl+Z.
-
 ### On This Computer
 
 **Settings → Accounts → On This Computer → Add** adds folders kept on this
@@ -334,8 +325,8 @@ computer rather than on a server, as Evolution's account of the same name
 does. It starts with a Trash, and an Inbox that is shown only while it
 holds mail, as mail copied from an account goes to a folder named after
 the account. Folders are made, renamed and
-deleted as on any account, and mail comes in by being moved or copied there
-from another account with **Move To** or **Copy To**, or by dragging it onto
+deleted as on any account, and mail comes in by being moved there from
+another account with **Move To**, or by dragging it onto
 one of its folders (see [Moving mail to another account](#moving-mail-to-another-account)).
 Moving mail to a folder it does not have yet, such as Archive or Snoozed,
 makes the folder.

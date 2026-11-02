@@ -188,10 +188,6 @@ msgstr "Отметить как спам"
 msgid "Move To…"
 msgstr "Переместить в…"
 
-#, fuzzy
-msgid "Copy To…"
-msgstr "Переместить в…"
-
 msgid "Archive"
 msgstr "Архив"
 
@@ -1468,25 +1464,11 @@ msgstr ""
 msgid "Snooze until"
 msgstr ""
 
-#, fuzzy
-msgid "One message could not be copied to {account}: {error}"
-msgid_plural "{n} messages could not be copied to {account}: {error}"
-msgstr[0] "Не удалось переместить {n} сообщение в «{account}»: {error}"
-msgstr[1] "Не удалось переместить {n} сообщения в «{account}»: {error}"
-msgstr[2] "Не удалось переместить {n} сообщений в «{account}»: {error}"
-
 msgid "One message could not be moved to {account}: {error}"
 msgid_plural "{n} messages could not be moved to {account}: {error}"
 msgstr[0] "Не удалось переместить {n} сообщение в «{account}»: {error}"
 msgstr[1] "Не удалось переместить {n} сообщения в «{account}»: {error}"
 msgstr[2] "Не удалось переместить {n} сообщений в «{account}»: {error}"
-
-#, fuzzy
-msgid "Copying one message to {account}…"
-msgid_plural "Copying {n} messages to {account}…"
-msgstr[0] "Перемещение {n} сообщения в «{account}»…"
-msgstr[1] "Перемещение {n} сообщений в «{account}»…"
-msgstr[2] "Перемещение {n} сообщений в «{account}»…"
 
 msgid "Moving one message to {account}…"
 msgid_plural "Moving {n} messages to {account}…"
@@ -8538,6 +8520,24 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#, fuzzy
+#~ msgid "Copy To…"
+#~ msgstr "Переместить в…"
+
+#, fuzzy
+#~ msgid "One message could not be copied to {account}: {error}"
+#~ msgid_plural "{n} messages could not be copied to {account}: {error}"
+#~ msgstr[0] "Не удалось переместить {n} сообщение в «{account}»: {error}"
+#~ msgstr[1] "Не удалось переместить {n} сообщения в «{account}»: {error}"
+#~ msgstr[2] "Не удалось переместить {n} сообщений в «{account}»: {error}"
+
+#, fuzzy
+#~ msgid "Copying one message to {account}…"
+#~ msgid_plural "Copying {n} messages to {account}…"
+#~ msgstr[0] "Перемещение {n} сообщения в «{account}»…"
+#~ msgstr[1] "Перемещение {n} сообщений в «{account}»…"
+#~ msgstr[2] "Перемещение {n} сообщений в «{account}»…"
 
 #, fuzzy
 #~ msgid "Reading Pane"

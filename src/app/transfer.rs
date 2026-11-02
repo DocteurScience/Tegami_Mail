@@ -1,4 +1,4 @@
-//! Moving and copying mail between accounts.
+//! Moving mail between accounts.
 
 use std::collections::{HashMap, HashSet};
 
@@ -29,8 +29,6 @@ pub(super) struct Transfer {
     flagged: bool,
     /// The message as the list had it, for the undo step.
     row: Option<Message>,
-    /// A copy (Copy To): the original stays where it is.
-    copy: bool,
 }
 
 /// A message that has landed in another account, and where its original
@@ -60,8 +58,6 @@ pub(super) struct TransferTally {
     dest_folders: std::collections::BTreeSet<(u32, String)>,
     /// What has landed so far, recorded as one undo step at the end.
     landed: Vec<Landed>,
-    /// The mail is being copied, not moved: the status and the report say so.
-    copying: bool,
 }
 
 /// One side of a cross-account move each, with its Trash: (source
@@ -163,7 +159,6 @@ impl AppModel {
                     seen: cached.as_ref().is_none_or(|m| !m.unread),
                     flagged: cached.as_ref().is_some_and(|m| m.starred),
                     row: cached.clone(),
-                    copy: false,
                 },
             );
             // Off the source's lists until the move has landed or failed.
@@ -197,85 +192,11 @@ impl AppModel {
         self.show_transfer_status();
     }
 
-    /// The Copy To picker's accounts: `own`'s folders less `exclude` when
-    /// it can take a message whole, then those of the other accounts that
-    /// can.
-    pub(super) fn copy_picker_accounts(
-        &self,
-        own: u32,
-        exclude: Option<String>,
-    ) -> Vec<crate::ui::folder_picker::PickerAccount> {
-        let mut accounts = self.picker_accounts(own, exclude);
-        if !self.can_receive(own) {
-            accounts.retain(|a| a.account_id != own);
-        }
-        accounts
-    }
-
-    /// Copy messages into `dest` on `dest_account` (Copy To): each is read
-    /// whole out of its folder and stored again there, with its read and
-    /// starred state, the way a move to another account copies it. The
-    /// originals stay.
-    pub(super) fn copy_messages(
-        &mut self,
-        messages: Vec<Message>,
-        dest_account: u32,
-        dest: String,
-    ) {
-        for m in messages {
-            let Some(src) = self.resolve_folder_path(&m) else {
-                continue;
-            };
-            if m.account_id == dest_account && src == dest {
-                continue;
-            }
-            let token = self.next_transfer;
-            self.next_transfer += 1;
-            self.transfers.insert(
-                token,
-                Transfer {
-                    src_account: m.account_id,
-                    src_folder: m.folder_id,
-                    src_path: src.clone(),
-                    uid: m.uid,
-                    dest_account,
-                    dest_path: dest.clone(),
-                    seen: !m.unread,
-                    flagged: m.starred,
-                    row: None,
-                    copy: true,
-                },
-            );
-            self.transfer_tally.total += 1;
-            self.transfer_tally.copying = true;
-            self.send_to(
-                m.account_id,
-                MailRequest::ExportRaw {
-                    token,
-                    path: src,
-                    uid: m.uid,
-                    for_reader: false,
-                },
-            );
-        }
-        self.transfer_tally.dest_accounts.insert(dest_account);
-        self.transfer_tally
-            .dest_folders
-            .insert((dest_account, dest));
-        self.transfer_step();
-    }
-
-    /// A message is stored in its new account: take the original out,
-    /// unless it was a copy.
+    /// A message is stored in its new account: take the original out.
     fn transfer_landed(&mut self, token: u64) {
         let Some(t) = self.transfers.remove(&token) else {
             return;
         };
-        if t.copy {
-            self.transfer_tally.done += 1;
-            self.transfer_step();
-            return;
-        }
         let trash = self
             .folder_path_for(t.src_account, FolderKind::Trash)
             .filter(|trash| *trash != t.src_path);
@@ -312,12 +233,6 @@ impl AppModel {
             return;
         };
         tracing::warn!("move to another account failed: {error}");
-        if t.copy {
-            self.transfer_tally.failed += 1;
-            self.transfer_tally.error.get_or_insert(error);
-            self.transfer_step();
-            return;
-        }
         self.pending_moves
             .borrow_mut()
             .remove(&(t.src_account, t.src_path.clone(), t.uid));
@@ -377,21 +292,12 @@ impl AppModel {
                 ("account", account.as_str()),
                 ("error", tally.error.as_deref().unwrap_or("")),
             ];
-            let text = if tally.copying {
-                ni18n_f(
-                    "One message could not be copied to {account}: {error}",
-                    "{n} messages could not be copied to {account}: {error}",
-                    tally.failed as u32,
-                    &args,
-                )
-            } else {
-                ni18n_f(
-                    "One message could not be moved to {account}: {error}",
-                    "{n} messages could not be moved to {account}: {error}",
-                    tally.failed as u32,
-                    &args,
-                )
-            };
+            let text = ni18n_f(
+                "One message could not be moved to {account}: {error}",
+                "{n} messages could not be moved to {account}: {error}",
+                tally.failed as u32,
+                &args,
+            );
             self.notice_error(text);
         }
     }
@@ -496,21 +402,12 @@ impl AppModel {
         let n = left.to_string();
         let account = names.join(", ");
         let args = [("n", n.as_str()), ("account", account.as_str())];
-        let text = if tally.copying {
-            ni18n_f(
-                "Copying one message to {account}…",
-                "Copying {n} messages to {account}…",
-                left as u32,
-                &args,
-            )
-        } else {
-            ni18n_f(
-                "Moving one message to {account}…",
-                "Moving {n} messages to {account}…",
-                left as u32,
-                &args,
-            )
-        };
+        let text = ni18n_f(
+            "Moving one message to {account}…",
+            "Moving {n} messages to {account}…",
+            left as u32,
+            &args,
+        );
         self.notifications.emit(NotifyInput::SetStatus(text));
     }
 

@@ -5,7 +5,7 @@
 - **Added: On This Computer, folders kept on this computer** (#552).
   **Settings → Accounts → On This Computer → Add** adds an account with no
   server, as Evolution has, for an archive of mail moved or copied in from
-  any other account with **Move To**, **Copy To** or by dragging it onto one
+  any other account with **Move To** or by dragging it onto one
   of its folders. It starts with a Trash, and its Inbox is shown only while
   it holds mail. Folders are made,
   renamed and deleted as on any account. Nothing is sent from it: a reply to
@@ -15,10 +15,6 @@
   Trash can be emptied automatically, counting from when mail was moved in.
   The mail is a Maildir++ tree in `~/.local/share/hylki/local-mail/`, the
   layout Dovecot uses, with tags in `dovecot-keywords`.
-
-- **Added: Copy To** (#552). A message's right-click menu, in the list and
-  in the reader, has **Copy To…**, which stores the message again in a folder
-  of the same account or of another one and leaves the original.
 
 - **Added: copying an account's mail to On This Computer** (#552).
   **Settings → Accounts → the account → Syncing → Copy mail to On This

@@ -42,8 +42,7 @@ The full list. The [README](../README.md) carries a shorter one.
   conversation, and an expanded conversation shows your replies from Sent
   and its archived messages alongside the folder's own.
 - **Moving mail between accounts:** Move To lists every account's folders,
-  and mail dragged onto another account's folder goes there too. Copy To
-  stores a copy anywhere and leaves the original.
+  and mail dragged onto another account's folder goes there too.
 - **Full folder management:** create, rename, move, reorder and delete
   folders, assign the special roles (Drafts, Sent, Junk, Trash, Archive),
   and hide the ones you never open. An Exchange server's calendar, contacts

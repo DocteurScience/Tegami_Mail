@@ -185,10 +185,6 @@ msgstr "Marcar como spam"
 msgid "Move To…"
 msgstr "Mover a…"
 
-#, fuzzy
-msgid "Copy To…"
-msgstr "Mover a…"
-
 msgid "Archive"
 msgstr "Archivar"
 
@@ -1383,22 +1379,10 @@ msgstr ""
 msgid "Snooze until"
 msgstr ""
 
-#, fuzzy
-msgid "One message could not be copied to {account}: {error}"
-msgid_plural "{n} messages could not be copied to {account}: {error}"
-msgstr[0] "No se pudo mover un mensaje a {account}: {error}"
-msgstr[1] "No se pudieron mover {n} mensajes a {account}: {error}"
-
 msgid "One message could not be moved to {account}: {error}"
 msgid_plural "{n} messages could not be moved to {account}: {error}"
 msgstr[0] "No se pudo mover un mensaje a {account}: {error}"
 msgstr[1] "No se pudieron mover {n} mensajes a {account}: {error}"
-
-#, fuzzy
-msgid "Copying one message to {account}…"
-msgid_plural "Copying {n} messages to {account}…"
-msgstr[0] "Moviendo un mensaje a {account}…"
-msgstr[1] "Moviendo {n} mensajes a {account}…"
 
 msgid "Moving one message to {account}…"
 msgid_plural "Moving {n} messages to {account}…"
@@ -8291,6 +8275,22 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#, fuzzy
+#~ msgid "Copy To…"
+#~ msgstr "Mover a…"
+
+#, fuzzy
+#~ msgid "One message could not be copied to {account}: {error}"
+#~ msgid_plural "{n} messages could not be copied to {account}: {error}"
+#~ msgstr[0] "No se pudo mover un mensaje a {account}: {error}"
+#~ msgstr[1] "No se pudieron mover {n} mensajes a {account}: {error}"
+
+#, fuzzy
+#~ msgid "Copying one message to {account}…"
+#~ msgid_plural "Copying {n} messages to {account}…"
+#~ msgstr[0] "Moviendo un mensaje a {account}…"
+#~ msgstr[1] "Moviendo {n} mensajes a {account}…"
 
 #, fuzzy
 #~ msgid "Reading Pane"

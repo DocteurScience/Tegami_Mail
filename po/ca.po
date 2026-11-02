@@ -185,10 +185,6 @@ msgstr "Marca com a brossa"
 msgid "Move To…"
 msgstr "Mou a…"
 
-#, fuzzy
-msgid "Copy To…"
-msgstr "Mou a…"
-
 msgid "Archive"
 msgstr "Arxiva"
 
@@ -1371,22 +1367,10 @@ msgstr ""
 msgid "Snooze until"
 msgstr ""
 
-#, fuzzy
-msgid "One message could not be copied to {account}: {error}"
-msgid_plural "{n} messages could not be copied to {account}: {error}"
-msgstr[0] "No s'ha pogut moure un missatge a {account}: {error}"
-msgstr[1] "No s'han pogut moure {n} missatges a {account}: {error}"
-
 msgid "One message could not be moved to {account}: {error}"
 msgid_plural "{n} messages could not be moved to {account}: {error}"
 msgstr[0] "No s'ha pogut moure un missatge a {account}: {error}"
 msgstr[1] "No s'han pogut moure {n} missatges a {account}: {error}"
-
-#, fuzzy
-msgid "Copying one message to {account}…"
-msgid_plural "Copying {n} messages to {account}…"
-msgstr[0] "S'està movent un missatge a {account}…"
-msgstr[1] "S'estan movent {n} missatges a {account}…"
 
 msgid "Moving one message to {account}…"
 msgid_plural "Moving {n} messages to {account}…"
@@ -8235,6 +8219,22 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#, fuzzy
+#~ msgid "Copy To…"
+#~ msgstr "Mou a…"
+
+#, fuzzy
+#~ msgid "One message could not be copied to {account}: {error}"
+#~ msgid_plural "{n} messages could not be copied to {account}: {error}"
+#~ msgstr[0] "No s'ha pogut moure un missatge a {account}: {error}"
+#~ msgstr[1] "No s'han pogut moure {n} missatges a {account}: {error}"
+
+#, fuzzy
+#~ msgid "Copying one message to {account}…"
+#~ msgid_plural "Copying {n} messages to {account}…"
+#~ msgstr[0] "S'està movent un missatge a {account}…"
+#~ msgstr[1] "S'estan movent {n} missatges a {account}…"
 
 #, fuzzy
 #~ msgid "Reading Pane"

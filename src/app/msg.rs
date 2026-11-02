@@ -1286,20 +1286,6 @@ pub(crate) enum AppMsg {
         dest: String,
         messages: Vec<Message>,
     },
-    /// Copy To… (#552): the folder picker for copying `messages`, as
-    /// [`AppMsg::ListMoveTo`] opens it for a move.
-    ListCopyTo {
-        messages: Vec<Message>,
-        offer_whole: bool,
-        x: f64,
-        y: f64,
-    },
-    /// That picker's answer.
-    CopyMessagesTo {
-        account_id: u32,
-        dest: String,
-        messages: Vec<Message>,
-    },
     /// The picker's answer: file the target or selection into `dest` —
     /// or, with `whole`, the open conversation entire (#171).
     MoveSelectionTo {

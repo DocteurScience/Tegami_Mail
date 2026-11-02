@@ -173,9 +173,6 @@ msgstr ""
 msgid "Move To…"
 msgstr ""
 
-msgid "Copy To…"
-msgstr ""
-
 msgid "Archive"
 msgstr ""
 
@@ -1276,18 +1273,8 @@ msgstr ""
 msgid "Snooze until"
 msgstr ""
 
-msgid "One message could not be copied to {account}: {error}"
-msgid_plural "{n} messages could not be copied to {account}: {error}"
-msgstr[0] ""
-msgstr[1] ""
-
 msgid "One message could not be moved to {account}: {error}"
 msgid_plural "{n} messages could not be moved to {account}: {error}"
-msgstr[0] ""
-msgstr[1] ""
-
-msgid "Copying one message to {account}…"
-msgid_plural "Copying {n} messages to {account}…"
 msgstr[0] ""
 msgstr[1] ""
 

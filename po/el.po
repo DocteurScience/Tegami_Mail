@@ -188,10 +188,6 @@ msgstr "Σήμανση ως ανεπιθύμητο"
 msgid "Move To…"
 msgstr "Μετακίνηση σε…"
 
-#, fuzzy
-msgid "Copy To…"
-msgstr "Μετακίνηση σε…"
-
 msgid "Archive"
 msgstr "Αρχειοθέτηση"
 
@@ -1388,22 +1384,10 @@ msgstr ""
 msgid "Snooze until"
 msgstr ""
 
-#, fuzzy
-msgid "One message could not be copied to {account}: {error}"
-msgid_plural "{n} messages could not be copied to {account}: {error}"
-msgstr[0] "Δεν ήταν δυνατή η μετακίνηση ενός μηνύματος στο {account}: {error}"
-msgstr[1] "Δεν ήταν δυνατή η μετακίνηση {n} μηνυμάτων στο {account}: {error}"
-
 msgid "One message could not be moved to {account}: {error}"
 msgid_plural "{n} messages could not be moved to {account}: {error}"
 msgstr[0] "Δεν ήταν δυνατή η μετακίνηση ενός μηνύματος στο {account}: {error}"
 msgstr[1] "Δεν ήταν δυνατή η μετακίνηση {n} μηνυμάτων στο {account}: {error}"
-
-#, fuzzy
-msgid "Copying one message to {account}…"
-msgid_plural "Copying {n} messages to {account}…"
-msgstr[0] "Μετακίνηση ενός μηνύματος στο {account}…"
-msgstr[1] "Μετακίνηση {n} μηνυμάτων στο {account}…"
 
 msgid "Moving one message to {account}…"
 msgid_plural "Moving {n} messages to {account}…"
@@ -8367,6 +8351,24 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#, fuzzy
+#~ msgid "Copy To…"
+#~ msgstr "Μετακίνηση σε…"
+
+#, fuzzy
+#~ msgid "One message could not be copied to {account}: {error}"
+#~ msgid_plural "{n} messages could not be copied to {account}: {error}"
+#~ msgstr[0] ""
+#~ "Δεν ήταν δυνατή η μετακίνηση ενός μηνύματος στο {account}: {error}"
+#~ msgstr[1] ""
+#~ "Δεν ήταν δυνατή η μετακίνηση {n} μηνυμάτων στο {account}: {error}"
+
+#, fuzzy
+#~ msgid "Copying one message to {account}…"
+#~ msgid_plural "Copying {n} messages to {account}…"
+#~ msgstr[0] "Μετακίνηση ενός μηνύματος στο {account}…"
+#~ msgstr[1] "Μετακίνηση {n} μηνυμάτων στο {account}…"
 
 #, fuzzy
 #~ msgid "Reading Pane"

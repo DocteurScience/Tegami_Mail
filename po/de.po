@@ -188,10 +188,6 @@ msgstr "Als Spam markieren"
 msgid "Move To…"
 msgstr "Verschieben nach…"
 
-#, fuzzy
-msgid "Copy To…"
-msgstr "Verschieben nach…"
-
 msgid "Archive"
 msgstr "Archivieren"
 
@@ -1368,24 +1364,11 @@ msgstr ""
 msgid "Snooze until"
 msgstr "Zurückstellen bis"
 
-#, fuzzy
-msgid "One message could not be copied to {account}: {error}"
-msgid_plural "{n} messages could not be copied to {account}: {error}"
-msgstr[0] "Eine Nachricht konnte nicht in {account} verschoben werden: {error}"
-msgstr[1] ""
-"{n} Nachrichten konnten nicht in {account} verschoben werden: {error}"
-
 msgid "One message could not be moved to {account}: {error}"
 msgid_plural "{n} messages could not be moved to {account}: {error}"
 msgstr[0] "Eine Nachricht konnte nicht in {account} verschoben werden: {error}"
 msgstr[1] ""
 "{n} Nachrichten konnten nicht in {account} verschoben werden: {error}"
-
-#, fuzzy
-msgid "Copying one message to {account}…"
-msgid_plural "Copying {n} messages to {account}…"
-msgstr[0] "Eine Nachricht wird in {account} verschoben…"
-msgstr[1] "{n} Nachrichten werden in {account} verschoben…"
 
 msgid "Moving one message to {account}…"
 msgid_plural "Moving {n} messages to {account}…"
@@ -8322,6 +8305,24 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#, fuzzy
+#~ msgid "Copy To…"
+#~ msgstr "Verschieben nach…"
+
+#, fuzzy
+#~ msgid "One message could not be copied to {account}: {error}"
+#~ msgid_plural "{n} messages could not be copied to {account}: {error}"
+#~ msgstr[0] ""
+#~ "Eine Nachricht konnte nicht in {account} verschoben werden: {error}"
+#~ msgstr[1] ""
+#~ "{n} Nachrichten konnten nicht in {account} verschoben werden: {error}"
+
+#, fuzzy
+#~ msgid "Copying one message to {account}…"
+#~ msgid_plural "Copying {n} messages to {account}…"
+#~ msgstr[0] "Eine Nachricht wird in {account} verschoben…"
+#~ msgstr[1] "{n} Nachrichten werden in {account} verschoben…"
 
 #, fuzzy
 #~ msgid "Reading Pane"
