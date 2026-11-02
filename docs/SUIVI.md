@@ -5,13 +5,13 @@ reprendre le travail dans une autre conversation. Les règles durables
 (conventions, commandes, architecture) sont dans [CLAUDE.md](../CLAUDE.md).
 Mettre ce fichier à jour à chaque étape poussée.
 
-Dernière mise à jour : 2026-11-02, après `89e8aa0`.
+Dernière mise à jour : 2026-11-02, après `bb5953c`.
 
 ## État
 
 - Base : import de Hylki 1.46.0, renommé Tegami Mail (commits du
   2026-10-31 et du 2026-11-01 jusqu'à `fd0ccce`).
-- CI : verte sur tous les commits jusqu'à `3e900c1` (build, tests, snap) ;
+- CI : verte sur tous les commits jusqu'à `89e8aa0` (build, tests, snap) ;
   les suivants à vérifier (`gh run list --repo DocteurScience/Tegami_Mail`).
 - Tests : 1243 réussis, 45 ignorés.
 - Référence du design : `docs/DESIGN.md`, `docs/DESIGN_STRINGS.md`,
@@ -79,6 +79,8 @@ Dernière mise à jour : 2026-11-02, après `89e8aa0`.
 | `583c960` | Composeur dans le volet de lecture : l'historique ne montre que le dernier message reçu (`history_levels` 1 ; 2 en fenêtre) |
 | `7d5bc0a` | Menu du clic droit d'une ligne réduit à la maquette |
 | `89e8aa0` | « Copier vers… » supprimé partout (menus liste, sélection, lecteur) avec son code ; docs et CHANGELOG mis à jour |
+| `15f9b65` | Interrupteur clair/sombre par message supprimé (en-tête du lecteur, réglage, clé `theme_switch_shown`) ; Réglages → Lecture → Apparence des messages reste |
+| `bb5953c` | Vue Lecteur supprimée : interrupteur de l'en-tête, réglages (Lecture), partie « Vue Lecteur » du mode Focus, bascule de la fenêtre de message, clés `reader_mode` / `reader_switch` / `reader_default`. La feuille `crate::mail::reader` reste : elle affiche les traductions de messages en texte brut. Paramètre `reader` de `conversation_document` retiré ; instantané `three_cards.html` régénéré |
 
 ## Décisions prises
 
@@ -117,7 +119,7 @@ Dernière mise à jour : 2026-11-02, après `89e8aa0`.
 - « Copier vers… » : supprimé complètement (fait, `89e8aa0`).
 - Supprimer les fonctions absentes des maquettes. Demandé explicitement :
   les deux interrupteurs de l'en-tête du lecteur, mode clair/sombre par
-  message et vue Lecteur (en cours). Relire les maquettes : le
+  message et vue Lecteur (faits, `15f9b65`, `bb5953c`). Relire les maquettes : le
   propriétaire voit dans les captures des éléments qui n'y sont pas.
 - Ordre de travail convenu : 1. Copier vers (fait), 2. vérifier la CI,
   3. écarts avec les maquettes (barre latérale, champ De, menu ⋯ du
@@ -127,7 +129,6 @@ Dernière mise à jour : 2026-11-02, après `89e8aa0`.
 
 ## Reste à faire (connu)
 
-- « Copier vers… », selon la réponse.
 - Section Étiquettes de la barre latérale ouverte par défaut (les valeurs
   par défaut de `sidebar.toml` valent pour toutes les sections ; un test
   fige ce comportement).
