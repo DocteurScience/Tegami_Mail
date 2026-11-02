@@ -5,13 +5,14 @@ reprendre le travail dans une autre conversation. Les règles durables
 (conventions, commandes, architecture) sont dans [CLAUDE.md](../CLAUDE.md).
 Mettre ce fichier à jour à chaque étape poussée.
 
-Dernière mise à jour : 2026-11-02, après `3e900c1`.
+Dernière mise à jour : 2026-11-02, après `7d5bc0a`.
 
 ## État
 
 - Base : import de Hylki 1.46.0, renommé Tegami Mail (commits du
   2026-10-31 et du 2026-11-01 jusqu'à `fd0ccce`).
-- CI : verte sur tous les commits jusqu'à `3e900c1` (build, tests, snap).
+- CI : verte sur tous les commits jusqu'à `3e900c1` (build, tests, snap) ;
+  les suivants à vérifier (`gh run list --repo DocteurScience/Tegami_Mail`).
 - Tests : 1243 réussis, 45 ignorés.
 - Référence du design : `docs/DESIGN.md`, `docs/DESIGN_STRINGS.md`,
   maquettes `data/repo/design/01` à `17`.
@@ -73,6 +74,10 @@ Dernière mise à jour : 2026-11-02, après `3e900c1`.
 | --- | --- |
 | `a019b3c` | Barre du lecteur par défaut : Répondre (avec libellé), Répondre à tous, Transférer, Archiver, Supprimer … Étiquettes, ⋯ ; Étiquettes reste visible quand le groupe droit est replié ; « Supprimer le dossier… » en rouge |
 | `3e900c1` | Menu de tri : section Afficher (conversations, aperçu, avatars) liée aux réglages |
+| `636b0d7` | CLAUDE.md, ce journal, scripts `tools/dev/` |
+| `fd7a789` | Menu principal : Synchroniser maintenant (F5), Ajouter un compte…, Comptes en ligne GNOME…, Aide ; retrait d'Annuler, Volet de lecture, Mode Focus, Plein écran (les raccourcis restent) |
+| `583c960` | Composeur dans le volet de lecture : l'historique ne montre que le dernier message reçu (`history_levels` 1 ; 2 en fenêtre) |
+| `7d5bc0a` | Menu du clic droit d'une ligne réduit à la maquette ; « Copier vers… » gardé en attendant la décision |
 
 ## Décisions prises
 
@@ -89,25 +94,32 @@ Dernière mise à jour : 2026-11-02, après `3e900c1`.
 - Les nouveaux tests de la barre d'outils utilisent l'ancienne disposition
   par défaut comme jeu d'essai (`legacy_default`).
 
+## Décisions du propriétaire (2026-11-02)
+
+1. Menu principal : retirer Annuler, Volet de lecture, Mode Focus, Plein
+   écran ; garder Imprimer, Quitter et les entrées de la maquette. Fait
+   (`fd7a789`). Gardés aussi, non mentionnés : Afficher les comptes, barre
+   d'état, Console.
+2. Menu contextuel d'un message : celui de la maquette ; on verra en V2
+   pour les fonctions retirées. Signaler toute fonction qui deviendrait
+   inaccessible. Fait (`7d5bc0a`) ; seule « Copier vers… » n'a pas d'autre
+   accès : question posée, gardée en attendant.
+3. Compteurs par étiquette : laissés de côté.
+4. Petites largeurs : hors de cette version, dans une version à part. Ne
+   rien faire qui l'empêche plus tard (ne pas figer davantage la
+   structure `OverlaySplitView` / `Paned` de `src/app.rs`).
+5. Historique dans le composeur intégré : replié sauf le dernier message
+   reçu. Fait (`583c960`).
+
 ## En attente d'une réponse du propriétaire
 
-1. Menu principal : le réduire aux 7 entrées de la maquette (retirer
-   Annuler, Afficher les comptes, Volet de lecture, Mode Focus, Plein
-   écran, Imprimer, Quitter) ou les déplacer ?
-2. Menu contextuel d'un message : plus riche que la maquette (Reporter,
-   Créer un filtre, Ajouter aux contacts…). Même question.
-3. Compteurs par étiquette dans la barre latérale : nécessite une nouvelle
-   requête au cache. À faire ?
-4. Petites largeurs (maquettes 14, 15) : passer la fenêtre à
-   `AdwNavigationSplitView`. Proposé en chantier séparé : d'abord le repli
-   à 1024 px derrière un bouton, puis la navigation en trois pages. La
-   fenêtre ne descend pas aujourd'hui sous ~900 px.
-5. Historique dans le composeur intégré au volet de lecture : le replier
-   d'office (la conversation est juste en dessous) ?
+- « Copier vers… » (copie d'un message vers une autre boîte, notamment
+  « Sur cet ordinateur ») : le garder dans le menu de la liste, le
+  déplacer (menu ⋯ du lecteur ?), ou le retirer.
 
 ## Reste à faire (connu)
 
-- Les points ci-dessus, selon les réponses.
+- « Copier vers… », selon la réponse.
 - Section Étiquettes de la barre latérale ouverte par défaut (les valeurs
   par défaut de `sidebar.toml` valent pour toutes les sections ; un test
   fige ce comportement).
