@@ -2,16 +2,16 @@ left = [
     "reply",
     "reply_all",
     "forward",
-    "star",
     "archive",
-    "spam",
     "delete",
 ]
 right = [
-    "snooze",
     "tags",
     "read_unread",
+    "spam",
     "move_to",
+    "snooze",
+    "star",
     "find",
     "print",
 ]

@@ -298,6 +298,8 @@ impl AppModel {
                     )),
                     // Tags (#71), where there are any and something to tag —
                     // behind a submenu, as in the message list's menu.
+                    // Not while its button is in the header.
+                    T::Tags if self.toolbar_visible(T::Tags) => {}
                     T::Tags => {
                         if let Some(entries) = self.reader_tag_entries(sender) {
                             section.push(
@@ -342,7 +344,13 @@ impl AppModel {
                 Some(ToolbarSide::Left) => true,
                 // The compact breakpoint is applied alone, in place of the
                 // fold, and folds the right group all the same.
-                Some(ToolbarSide::Right) => !self.right_group_folded(),
+                // Tags stays a button while the pane is wide, folded right
+                // group or not: it opens a panel of its own, which a menu
+                // entry could not (docs/DESIGN.md, "Header bars").
+                Some(ToolbarSide::Right) => {
+                    !self.right_group_folded()
+                        || (item == config::ToolbarItem::Tags && self.tags_button_kept())
+                }
                 None => false,
             }
     }
@@ -360,6 +368,17 @@ impl AppModel {
 
     /// Whether the right group is in the ⋯ menu: by choice, or for want of
     /// room.
+    /// Whether the Tags button stays in the header while the rest of the
+    /// right group is folded into ⋯: when only the setting folds it, not a
+    /// pane too narrow for the buttons.
+    fn tags_button_kept(&self) -> bool {
+        let (collapsed, compact) = self.toolbar_fold();
+        // With the setting folding the group, `collapsed` only says the
+        // whole group would not fit, which no longer matters: the pane is
+        // too narrow for one more button when it is compact.
+        !compact && (self.toolbar_fold_right || !collapsed)
+    }
+
     fn right_group_folded(&self) -> bool {
         let (collapsed, compact) = self.toolbar_fold();
         self.toolbar_fold_right || collapsed || compact

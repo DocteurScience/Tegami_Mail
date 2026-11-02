@@ -248,9 +248,17 @@ pub(super) fn show_sidebar_menu(
         .into_iter()
         .map(|(label, action)| {
             let chosen = chosen.clone();
-            MenuEntry::new(i18n(label), move || {
+            // Deleting a folder takes its mail with it: the one entry in
+            // the destructive colour (docs/DESIGN.md, "Menus").
+            let destructive = matches!(action, CtxAction::DeleteFolder { .. });
+            let entry = MenuEntry::new(i18n(label), move || {
                 *chosen.borrow_mut() = Some(action.clone());
-            })
+            });
+            if destructive {
+                entry.destructive()
+            } else {
+                entry
+            }
         })
         .collect();
     let popover =

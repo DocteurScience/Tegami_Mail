@@ -1562,6 +1562,10 @@ msgstr "Αναζήτηση μηνυμάτων (Ctrl+F)"
 msgid "Search, filters and sort"
 msgstr "Αναζήτηση, φίλτρα και ταξινόμηση"
 
+#, fuzzy
+msgid "Reply (Ctrl+R)"
+msgstr "Απάντηση σε όλους"
+
 #. The preview, not the print dialog: it shows what will come
 #. out and prints from there (#359).
 msgid "Print Preview (Ctrl+Shift+P)"

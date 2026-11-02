@@ -1552,6 +1552,9 @@ msgstr "Rechercher des messages (Ctrl+F)"
 msgid "Search, filters and sort"
 msgstr "Recherche, filtres et tri"
 
+msgid "Reply (Ctrl+R)"
+msgstr "Répondre (Ctrl+R)"
+
 #. The preview, not the print dialog: it shows what will come
 #. out and prints from there (#359).
 msgid "Print Preview (Ctrl+Shift+P)"

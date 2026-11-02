@@ -629,8 +629,16 @@ impl SimpleComponent for AppModel {
                                     set_transition_duration: FOCUS_ANIM_MS,
                                     add_css_class: "focus-fade",
                                     gtk::Button {
-                                        set_icon_name: "mail-reply-sender-symbolic",
-                                        set_tooltip_text: Some(i18n("Reply").as_str()),
+                                        // Icon and word: the one label the
+                                        // header has, on the action most taken
+                                        // (docs/DESIGN.md, "Header bars").
+                                        #[wrap(Some)]
+                                        set_child = &adw::ButtonContent {
+                                            set_icon_name: "mail-reply-sender-symbolic",
+                                            set_label: &i18n("Reply"),
+                                            set_can_shrink: true,
+                                        },
+                                        set_tooltip_text: Some(i18n("Reply (Ctrl+R)").as_str()),
                                         add_css_class: "flat",
                                         #[watch]
                                         set_visible: model.toolbar_visible(config::ToolbarItem::Reply),

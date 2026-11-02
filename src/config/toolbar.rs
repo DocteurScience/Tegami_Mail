@@ -152,6 +152,11 @@ pub(crate) struct ReaderToolbar {
     pub(crate) right: Vec<ToolbarItem>,
 }
 
+/// The design's reading pane header (docs/DESIGN.md, "Header bars"): Reply,
+/// Reply to all, Forward, Archive and Delete at the start; at the end, Tags
+/// and More actions, the ⋯ that holds the rest of the right group. The star
+/// is Favorite in the Tags panel now, and the rest of the actions are in
+/// More actions, so each lives in one place.
 impl Default for ReaderToolbar {
     fn default() -> Self {
         ReaderToolbar {
@@ -159,16 +164,16 @@ impl Default for ReaderToolbar {
                 ToolbarItem::Reply,
                 ToolbarItem::ReplyAll,
                 ToolbarItem::Forward,
-                ToolbarItem::Star,
                 ToolbarItem::Archive,
-                ToolbarItem::Spam,
                 ToolbarItem::Delete,
             ],
             right: vec![
-                ToolbarItem::Snooze,
                 ToolbarItem::Tags,
                 ToolbarItem::ReadUnread,
+                ToolbarItem::Spam,
                 ToolbarItem::MoveTo,
+                ToolbarItem::Snooze,
+                ToolbarItem::Star,
                 ToolbarItem::Find,
                 ToolbarItem::Print,
             ],
@@ -346,9 +351,49 @@ pub(crate) fn save_reader_toolbar(layout: &ReaderToolbar) {
 mod toolbar_tests {
     use super::*;
 
+    /// The default layout before the design's (revision 1), with a full
+    /// left group: the fixture these tests were written against, kept so
+    /// that they test the same moves whatever the default is now.
+    fn legacy_default() -> ReaderToolbar {
+        use ToolbarItem as T;
+        ReaderToolbar {
+            left: vec![
+                T::Reply,
+                T::ReplyAll,
+                T::Forward,
+                T::Star,
+                T::Archive,
+                T::Spam,
+                T::Delete,
+            ],
+            right: vec![
+                T::Snooze,
+                T::Tags,
+                T::ReadUnread,
+                T::MoveTo,
+                T::Find,
+                T::Print,
+            ],
+        }
+    }
+
+    #[test]
+    fn the_default_is_the_designs_header() {
+        use ToolbarItem as T;
+        let t = ReaderToolbar::default();
+        assert_eq!(
+            t.left,
+            vec![T::Reply, T::ReplyAll, T::Forward, T::Archive, T::Delete]
+        );
+        assert_eq!(t.right.first(), Some(&T::Tags));
+        // Every button is somewhere: the right group folds into More
+        // actions, so none is out of reach.
+        assert!(t.hidden().is_empty());
+    }
+
     #[test]
     fn place_moves_between_and_within_sides() {
-        let mut t = ReaderToolbar::default();
+        let mut t = legacy_default();
         // The default left group is full: a move onto it changes nothing.
         t.place(ToolbarItem::Print, Some(ToolbarSide::Left), 0);
         assert_eq!(t.left[0], ToolbarItem::Reply);
@@ -385,7 +430,8 @@ mod toolbar_tests {
             toml::from_str("left = [\"reply\", \"delete\"]\nright = [\"tags\", \"print\"]\n")
                 .unwrap();
         let layout = old.layout();
-        assert_eq!(layout.right[0], ToolbarItem::Snooze);
+        // At the default's index in its group, here past the file's two.
+        assert_eq!(layout.right.last(), Some(&ToolbarItem::Snooze));
         assert_eq!(layout.left, vec![ToolbarItem::Reply, ToolbarItem::Delete]);
         // Put away and saved: it stays away.
         let mut hidden = layout.clone();
@@ -405,7 +451,7 @@ mod toolbar_tests {
             "left = [\"reply\", \"reply_all\", \"forward\", \"star\", \"archive\", \"delete\"]\n{old_right}"
         ))
         .unwrap();
-        assert_eq!(old.layout(), ReaderToolbar::default());
+        assert_eq!(old.layout(), legacy_default());
         // A left group of the user's own (reordered, or other buttons):
         // Spam stays on the right.
         for left in [
@@ -426,7 +472,7 @@ mod toolbar_tests {
         .unwrap();
         assert_eq!(hidden.layout().side(ToolbarItem::Spam), None);
         // Saved since, back on the right: it stays there.
-        let mut moved = ReaderToolbar::default();
+        let mut moved = legacy_default();
         moved.place(ToolbarItem::Spam, Some(ToolbarSide::Right), 0);
         let text = toml::to_string(&ToolbarFile::of(&moved)).unwrap();
         let back: ToolbarFile = toml::from_str(&text).unwrap();
@@ -440,7 +486,7 @@ mod toolbar_tests {
                 .unwrap();
         let layout = file.layout();
         assert_eq!(layout.left, vec![ToolbarItem::Reply, ToolbarItem::Delete]);
-        assert_eq!(layout.right, vec![ToolbarItem::Snooze, ToolbarItem::Print]);
+        assert_eq!(layout.right, vec![ToolbarItem::Print, ToolbarItem::Snooze]);
         for item in ToolbarItem::ALL {
             assert_eq!(ToolbarItem::from_key(item.key()), Some(item));
         }
