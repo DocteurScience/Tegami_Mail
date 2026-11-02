@@ -39,64 +39,34 @@ impl MessageList {
             .icon(icon)
             .keys(A::row_keys(action, msg.unread, KeysOf::Main))
         };
-        let mut flag_section = vec![self.star_entry(msg, sender, &item)];
+        // The design's menu (docs/DESIGN.md, "Menus"; owner's decision of
+        // 2026-11-02, docs/SUIVI.md): reply; read, star, tags; archive,
+        // move, spam; delete. Snooze, Add Sender to Contacts, Create
+        // Filter, View Source and Save as File are left to the reader's
+        // own right-click menu, More actions and their keys. Copy To stays
+        // until the owner decides: this menu is its one way in.
+        let mut flag_section: Vec<MenuEntry> =
+            self.read_entry(msg, sender, &item).into_iter().collect();
+        flag_section.push(self.star_entry(msg, sender, &item));
+        flag_section.extend(self.tag_section(msg, sender));
         let move_entry = self.move_entry(msg, x, y, sender);
         let copy_entry = self.copy_entry(msg, x, y, sender);
-        flag_section.extend(self.read_entry(msg, sender, &item));
-        let tag_section = self.tag_section(msg, sender);
-        let mut move_section = self.move_section(move_entry, copy_entry, &item);
-        if let Some(snoozed) = self.snooze_offer {
-            let s = sender.clone();
-            let m = msg.clone();
-            let conversation = conversation.clone();
-            let menu = crate::ui::later::snooze_menu(snoozed, move |choice| {
-                let _ = s.output(MessageListOutput::Action {
-                    action: RowAction::Snooze(choice),
-                    message: Box::new(m.clone()),
-                    conversation: conversation.clone(),
-                });
-            });
-            // After Archive, as on the toolbar.
-            let at = move_section.len().saturating_sub(1);
-            move_section.insert(
-                at,
-                MenuEntry::submenu(i18n("Snooze"), menu)
-                    .icon("alarm-symbolic")
-                    .keys(A::Snooze.keys(KeysOf::Main)),
-            );
-        }
         let sections = vec![
             self.reply_section(&item),
             flag_section,
-            tag_section,
-            move_section,
-            vec![
-                item(
-                    RowAction::AddContact,
-                    &i18n("Add Sender to Contacts"),
-                    "contact-new-symbolic",
-                ),
-                item(
-                    RowAction::CreateFilter,
-                    &i18n("Create Filter from Message…"),
-                    "filter-folder-symbolic",
-                ),
-            ],
-            vec![
-                item(RowAction::ViewSource, &i18n("View Source"), "code-symbolic"),
-                item(
-                    RowAction::SaveAsFile,
-                    &i18n("Save as File…"),
-                    "document-save-symbolic",
-                ),
-            ],
+            self.move_section(move_entry, copy_entry, &item),
+            vec![item(
+                RowAction::Delete,
+                &i18n("Delete"),
+                "user-trash-symbolic",
+            )],
         ];
 
         self.popup_menu(x, y, None, sections);
     }
 
-    /// Reply, Reply All, Forward and Edit as New; in Templates, the
-    /// template's two uses instead.
+    /// Reply, Reply All and Forward; in Templates, the template's two uses
+    /// instead.
     fn reply_section(&self, item: &MakeEntry<'_>) -> Vec<MenuEntry> {
         if self.in_templates {
             vec![
@@ -127,11 +97,6 @@ impl MessageList {
                     RowAction::Forward,
                     &i18n("Forward"),
                     "mail-forward-symbolic",
-                ),
-                item(
-                    RowAction::EditAsNew,
-                    &i18n("Edit as New Message"),
-                    "document-edit-symbolic",
                 ),
             ]
         }
@@ -326,50 +291,45 @@ impl MessageList {
         }
     }
 
-    /// Spam (or Not Spam in Junk), Move to Inbox where it applies, Move
-    /// To…, Archive and Delete.
+    /// Archive, Move to Inbox where it applies, Move To…, Copy To…, and
+    /// Spam (or Not Spam in Junk).
     fn move_section(
         &self,
         move_entry: MenuEntry,
         copy_entry: MenuEntry,
         item: &MakeEntry<'_>,
     ) -> Vec<MenuEntry> {
-        let mut section = Vec::new();
-        // In Junk the way back is "Not Spam" (#168): the server is
-        // told, and the message returns to the Inbox. In Trash it
-        // is a plain move, with spam still on offer.
-        if self.in_junk {
+        let mut section = vec![item(
+            RowAction::Archive,
+            &i18n("Archive"),
+            "mail-archive-symbolic",
+        )];
+        // In Trash and Junk, the way back to the Inbox first.
+        if self.restorable && !self.in_junk {
             section.push(item(
-                RowAction::NotSpam,
-                &i18n("Not Spam"),
-                "mail-mark-notjunk-symbolic",
-            ));
-        } else {
-            if self.restorable {
-                section.push(item(
-                    RowAction::MoveToInbox,
-                    &i18n("Move to Inbox"),
-                    "mail-inbox-symbolic",
-                ));
-            }
-            section.push(item(
-                RowAction::Spam,
-                &i18n("Mark as Spam"),
-                "mail-mark-junk-symbolic",
+                RowAction::MoveToInbox,
+                &i18n("Move to Inbox"),
+                "mail-inbox-symbolic",
             ));
         }
         section.push(move_entry);
         section.push(copy_entry);
-        section.push(item(
-            RowAction::Archive,
-            &i18n("Archive"),
-            "mail-archive-symbolic",
-        ));
-        section.push(item(
-            RowAction::Delete,
-            &i18n("Delete"),
-            "user-trash-symbolic",
-        ));
+        // In Junk the way back is "Not Spam" (#168): the server is told,
+        // and the message returns to the Inbox. In Trash it is a plain
+        // move, with spam still on offer.
+        section.push(if self.in_junk {
+            item(
+                RowAction::NotSpam,
+                &i18n("Not Spam"),
+                "mail-mark-notjunk-symbolic",
+            )
+        } else {
+            item(
+                RowAction::Spam,
+                &i18n("Mark as Spam"),
+                "mail-mark-junk-symbolic",
+            )
+        });
         section
     }
 
