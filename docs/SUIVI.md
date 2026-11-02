@@ -5,13 +5,13 @@ reprendre le travail dans une autre conversation. Les règles durables
 (conventions, commandes, architecture) sont dans [CLAUDE.md](../CLAUDE.md).
 Mettre ce fichier à jour à chaque étape poussée.
 
-Dernière mise à jour : 2026-11-02, après `1e9d453`.
+Dernière mise à jour : 2026-11-02, après `a357bad`.
 
 ## État
 
 - Base : import de Hylki 1.46.0, renommé Tegami Mail (commits du
   2026-10-31 et du 2026-11-01 jusqu'à `fd0ccce`).
-- CI : verte sur tous les commits jusqu'à `3713aeb` (build, tests, snap) ;
+- CI : verte sur tous les commits jusqu'à `42aaef8` (build, tests, snap) ;
   les suivants à vérifier (`gh run list --repo DocteurScience/Tegami_Mail`).
 - Tests : 1213 réussis, 45 ignorés.
 - Référence du design : `docs/DESIGN.md`, `docs/DESIGN_STRINGS.md`,
@@ -85,6 +85,7 @@ Dernière mise à jour : 2026-11-02, après `1e9d453`.
 | `f504a8b` | Menu ⋯ du composeur : section Format (`MenuEntry::heading`), Vérifier l'orthographe, Langue du correcteur (`spelling_choices` partagé avec le clic droit) ; bouton de format retiré de la barre |
 | `d1c6780` | Menu ⋯ du composeur réduit à la maquette : retrait d'Enregistrer comme modèle, Envoyer vers le cloud (fichiers choisis), Ouvrir les contacts, Ouvrir dans une fenêtre / Replier, avec leur code (bascule fenêtre ↔ volet, sélecteur de contacts) |
 | `1e9d453` | Markdown et Source HTML supprimés : `ComposeFormat` = Rich / Plain (alias serde « markdown »/« html » → Rich), mode source et Aperçu du composeur, moteur Markdown et `pulldown-cmark` ; le mode source reste pour la signature HTML dans les Réglages |
+| `a357bad` | Champ De en bouton (avatar, nom, adresse) ouvrant « Envoyer depuis » + « Gérer les comptes… » ; crayon (#347) retiré, un From hors identités venu du préremplissage (+tag, brouillon) est gardé et affiché ; `MenuEntry::subtitle`, classe `.secondary-text` (70 %) |
 | `bb5953c` | Vue Lecteur supprimée : interrupteur de l'en-tête, réglages (Lecture), partie « Vue Lecteur » du mode Focus, bascule de la fenêtre de message, clés `reader_mode` / `reader_switch` / `reader_default`. La feuille `crate::mail::reader` reste : elle affiche les traductions de messages en texte brut. Paramètre `reader` de `conversation_document` retiré ; instantané `three_cards.html` régénéré |
 
 ## Décisions prises
@@ -163,8 +164,14 @@ toujours) ; l'envoi vers le cloud ne se fait plus que par la zone de dépôt
 et « Envoyer un lien » d'une grosse pièce jointe ; l'emplacement du
 composeur (fenêtre ou volet) ne se règle plus que dans les Réglages.
 
-Restant du point 3, dans l'ordre : champ De en bouton « Envoyer depuis »
-(+ retrait du crayon), puis retrait des vues unifiées, Filtres, Contacts
+Comparaison maquettes / application : captures en français dans le
+conteneur (locale `fr_FR.UTF-8` installée, catalogue compilé dans
+`/tmp/loc`, `TEGAMI_LOCALEDIR=/tmp/loc LANGUAGE=fr LANG_=fr_FR.UTF-8`) ;
+14 planches envoyées au propriétaire. Relevé : bouton Étiquettes absent de
+l'en-tête du lecteur sur une conversation (planche 10), dates longues dans
+la liste.
+
+Restant du point 3, dans l'ordre : retrait des vues unifiées, Filtres, Contacts
 et Pièces jointes de la barre latérale, menu ⋯ du lecteur, menu d'un
 dossier, avatars des destinataires, menu ⋯ d'une carte.
 
