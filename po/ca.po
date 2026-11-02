@@ -491,6 +491,14 @@ msgstr "Carpeta nova"
 msgid "Create a new folder for this account."
 msgstr "Crea una carpeta nova per a aquest compte."
 
+#, fuzzy
+msgid "New Subfolder"
+msgstr "Carpeta nova"
+
+#, fuzzy
+msgid "Create a folder inside {folder}."
+msgstr "Crea una carpeta nova per a aquest compte."
+
 msgid "Cancel"
 msgstr "Cancel·la"
 
@@ -5822,6 +5830,17 @@ msgstr "Elimina el compte…"
 msgid "Follow Settings: {sort}"
 msgstr "Segueix els paràmetres: {sort}"
 
+#, fuzzy
+msgid "Sync This Folder"
+msgstr "Aquesta carpeta"
+
+#, fuzzy
+msgid "New Subfolder…"
+msgstr "Carpeta nova…"
+
+msgid "Rename…"
+msgstr "Canvia el nom…"
+
 msgid "Remove from Favorites"
 msgstr "Treu de preferits"
 
@@ -5834,12 +5853,6 @@ msgstr "Aplica els filtres"
 msgid "Edit Filter…"
 msgstr "Edita el filtre…"
 
-msgid "Rename Folder…"
-msgstr "Canvia el nom de la carpeta…"
-
-msgid "Delete Folder…"
-msgstr "Suprimeix la carpeta…"
-
 msgid "Hide Folder"
 msgstr "Amaga la carpeta"
 
@@ -5848,6 +5861,10 @@ msgstr "Buida la paperera…"
 
 msgid "Empty Junk…"
 msgstr "Buida la brossa…"
+
+#, fuzzy
+msgid "Delete Folder"
+msgstr "Suprimeix la carpeta…"
 
 msgid "Edit Tag…"
 msgstr "Edita l'etiqueta…"
@@ -7529,6 +7546,9 @@ msgstr ""
 msgid "Hyprlab"
 msgstr "Hyprlab"
 
+#~ msgid "Rename Folder…"
+#~ msgstr "Canvia el nom de la carpeta…"
+
 #~ msgid "Empty Trash in Every Account?"
 #~ msgstr "Vols buidar la paperera de tots els comptes?"
 
@@ -7601,9 +7621,6 @@ msgstr "Hyprlab"
 
 #~ msgid "New Group"
 #~ msgstr "Grup nou"
-
-#~ msgid "Rename…"
-#~ msgstr "Canvia el nom…"
 
 #~ msgid "Show or hide"
 #~ msgstr "Mostra o amaga"

@@ -45,34 +45,61 @@ pub(super) fn folder_sort_menu(
     sections
 }
 
-/// The context menu of one folder — the same wherever the folder is
-/// listed (under its account, or as a filtered folder in the unified
-/// section): `filtered` says a filter rule files into it.
+/// The context menu of one folder, the same wherever the folder is listed
+/// (under its account, or among Favorites), in the design's sections
+/// (docs/DESIGN.md, "Menus"; mockup 06): Mark All as Read and Sync This
+/// Folder; New Subfolder and Rename; what else this folder offers; Delete
+/// Folder alone at the end. `filtered` says a filter rule files into it.
 pub(super) fn folder_menu_items(
     id: u32,
     f: &Folder,
     filtered: bool,
     has_filters: bool,
     favorite: bool,
-) -> Vec<(&'static str, CtxAction)> {
-    let mut items = vec![
+) -> Vec<Vec<(&'static str, CtxAction)>> {
+    let custom = f.kind == FolderKind::Custom;
+    let first = vec![
         (
-            i18n_noop("Mark as Read"),
+            i18n_noop("Mark All as Read"),
             CtxAction::MarkFolderRead {
                 account_id: id,
                 folder_id: f.id,
             },
         ),
         (
-            i18n_noop("Refresh"),
+            i18n_noop("Sync This Folder"),
             CtxAction::RefreshFolder {
                 account_id: id,
                 folder_id: f.id,
             },
         ),
     ];
+    let mut shape = Vec::new();
+    // Starred is a search over every folder on Gmail, not a mailbox that
+    // can hold others; Snoozed is mail on its way back.
+    if !matches!(f.kind, FolderKind::Starred | FolderKind::Snoozed) {
+        shape.push((
+            i18n_noop("New Subfolder…"),
+            CtxAction::NewSubfolder {
+                account_id: id,
+                parent: f.path.clone(),
+            },
+        ));
+    }
+    // Only user-created folders can be renamed or deleted.
+    if custom {
+        shape.push((
+            i18n_noop("Rename…"),
+            CtxAction::RenameFolder {
+                account_id: id,
+                name: f.name.clone(),
+                path: f.path.clone(),
+            },
+        ));
+    }
+    let mut more = Vec::new();
     // Favorites (#367): any folder can be kept at the top of the sidebar.
-    items.push(if favorite {
+    more.push(if favorite {
         (
             i18n_noop("Remove from Favorites"),
             CtxAction::RemoveFavorite {
@@ -104,7 +131,7 @@ pub(super) fn folder_menu_items(
             | FolderKind::Starred
     );
     if has_filters && filterable {
-        items.push((
+        more.push((
             i18n_noop("Apply Filters"),
             CtxAction::ApplyFilters {
                 account_id: id,
@@ -114,7 +141,7 @@ pub(super) fn folder_menu_items(
     }
     // A filter files into this folder: its rule is a click away.
     if filtered {
-        items.push((
+        more.push((
             i18n_noop("Edit Filter…"),
             CtxAction::EditFilter {
                 account_id: id,
@@ -122,27 +149,10 @@ pub(super) fn folder_menu_items(
             },
         ));
     }
-    // Only user-created folders can be renamed or deleted.
-    if f.kind == FolderKind::Custom {
-        items.push((
-            i18n_noop("Rename Folder…"),
-            CtxAction::RenameFolder {
-                account_id: id,
-                name: f.name.clone(),
-                path: f.path.clone(),
-            },
-        ));
-        items.push((
-            i18n_noop("Delete Folder…"),
-            CtxAction::DeleteFolder {
-                account_id: id,
-                name: f.name.clone(),
-                path: f.path.clone(),
-            },
-        ));
-        // And hidden (#239): only a plain folder, since a role folder out
-        // of sight would still be where mail is filed to.
-        items.push((
+    // Hidden (#239): only a plain folder, since a role folder out of sight
+    // would still be where mail is filed to.
+    if custom {
+        more.push((
             i18n_noop("Hide Folder"),
             CtxAction::HideFolder {
                 account_id: id,
@@ -157,7 +167,7 @@ pub(super) fn folder_menu_items(
         _ => None,
     };
     if let Some(label) = empty_label {
-        items.push((
+        more.push((
             label,
             CtxAction::EmptyFolder {
                 account_id: id,
@@ -167,7 +177,19 @@ pub(super) fn folder_menu_items(
             },
         ));
     }
-    items
+    let mut sections = vec![first, shape, more];
+    if custom {
+        sections.push(vec![(
+            i18n_noop("Delete Folder"),
+            CtxAction::DeleteFolder {
+                account_id: id,
+                name: f.name.clone(),
+                path: f.path.clone(),
+            },
+        )]);
+    }
+    sections.retain(|s| !s.is_empty());
+    sections
 }
 
 /// Right-click on a tag row, wherever tags are listed: edit it in Settings.
@@ -197,7 +219,7 @@ pub(super) fn attach_tag_context_menu(
     list.add_controller(click);
 }
 
-/// Wire a right-click menu (Mark as Read / Refresh / Delete) onto a folder list;
+/// Wire the folder menu ([`folder_menu_items`]) onto a folder list;
 /// `folders` maps the list's row indices to their folders.
 pub(super) fn attach_folder_context_menu(
     list: &gtk::ListBox,
@@ -224,7 +246,7 @@ pub(super) fn attach_folder_context_menu(
                 has_filters,
                 favorites.contains(&f.path),
             );
-            show_sidebar_menu(&list_w, x, y, items, &cs);
+            show_sidebar_menu_sections(&list_w, x, y, items, &cs);
         }
     });
     list.add_controller(click);
@@ -239,30 +261,42 @@ pub(super) fn show_sidebar_menu(
     items: Vec<(&str, CtxAction)>,
     sender: &ComponentSender<Sidebar>,
 ) {
+    show_sidebar_menu_sections(parent, x, y, vec![items], sender);
+}
+
+/// [`show_sidebar_menu`] with the entries in sections, a separator between
+/// each.
+pub(super) fn show_sidebar_menu_sections(
+    parent: &impl IsA<gtk::Widget>,
+    x: f64,
+    y: f64,
+    sections: Vec<Vec<(&str, CtxAction)>>,
+    sender: &ComponentSender<Sidebar>,
+) {
     // The pick goes out once the menu has closed: an action that rebuilds
     // the sidebar would otherwise take the menu's parent list away while
     // the menu is still closing, and GTK, handing focus back to it, gives
     // it to the first list instead (see `rebuild_normal`).
     let chosen: std::rc::Rc<std::cell::RefCell<Option<CtxAction>>> = Default::default();
-    let entries = items
+    let entry_of = |(label, action): (&str, CtxAction)| {
+        let chosen = chosen.clone();
+        // Deleting a folder takes its mail with it: the one entry in
+        // the destructive colour (docs/DESIGN.md, "Menus").
+        let destructive = matches!(action, CtxAction::DeleteFolder { .. });
+        let entry = MenuEntry::new(i18n(label), move || {
+            *chosen.borrow_mut() = Some(action.clone());
+        });
+        if destructive {
+            entry.destructive()
+        } else {
+            entry
+        }
+    };
+    let sections = sections
         .into_iter()
-        .map(|(label, action)| {
-            let chosen = chosen.clone();
-            // Deleting a folder takes its mail with it: the one entry in
-            // the destructive colour (docs/DESIGN.md, "Menus").
-            let destructive = matches!(action, CtxAction::DeleteFolder { .. });
-            let entry = MenuEntry::new(i18n(label), move || {
-                *chosen.borrow_mut() = Some(action.clone());
-            });
-            if destructive {
-                entry.destructive()
-            } else {
-                entry
-            }
-        })
+        .map(|items| items.into_iter().map(entry_of).collect())
         .collect();
-    let popover =
-        crate::ui::context_menu::show_context_menu_popover(parent, x, y, None, vec![entries]);
+    let popover = crate::ui::context_menu::show_context_menu_popover(parent, x, y, None, sections);
     let s = sender.clone();
     popover.connect_closed(move |_| {
         if let Some(action) = chosen.borrow_mut().take() {

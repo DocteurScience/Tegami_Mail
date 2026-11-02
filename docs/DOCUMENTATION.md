@@ -140,6 +140,13 @@ settings (Settings → Mail Accounts → the account), or the right-click menu
 of the account's **Folders** heading in the sidebar. **Follow Settings** goes back
 to the choice in Settings → Sidebar.
 
+A folder's right-click menu has **Mark All as Read** and **Sync This
+Folder**; **New Subfolder…**, which makes a folder inside it, and
+**Rename…**; then **Add to Favorites**, **Apply Filters**, **Edit
+Filter…**, **Hide Folder** and **Empty Trash…** or **Empty Junk…** where
+they apply; and **Delete Folder**, in red, at the end. Only folders you
+made can be renamed, hidden or deleted.
+
 To put folders in an order of your own, drag them up or down the list.
 While a folder is dragged, a line in the accent color shows the gap
 between folders where it will land, indented to the level it lands at.

@@ -499,6 +499,14 @@ msgstr "Νέος φάκελος"
 msgid "Create a new folder for this account."
 msgstr "Δημιουργήστε έναν νέο φάκελο για αυτόν τον λογαριασμό."
 
+#, fuzzy
+msgid "New Subfolder"
+msgstr "Νέος φάκελος"
+
+#, fuzzy
+msgid "Create a folder inside {folder}."
+msgstr "Δημιουργήστε έναν νέο φάκελο για αυτόν τον λογαριασμό."
+
 msgid "Cancel"
 msgstr "Ακύρωση"
 
@@ -5904,6 +5912,17 @@ msgstr "Αφαίρεση λογαριασμού…"
 msgid "Follow Settings: {sort}"
 msgstr "Ακολούθηση ρυθμίσεων: {sort}"
 
+#, fuzzy
+msgid "Sync This Folder"
+msgstr "Αυτός ο φάκελος"
+
+#, fuzzy
+msgid "New Subfolder…"
+msgstr "Νέος φάκελος…"
+
+msgid "Rename…"
+msgstr "Μετονομασία…"
+
 msgid "Remove from Favorites"
 msgstr "Αφαίρεση από τα Αγαπημένα"
 
@@ -5916,12 +5935,6 @@ msgstr "Εφαρμογή φίλτρων"
 msgid "Edit Filter…"
 msgstr "Επεξεργασία φίλτρου…"
 
-msgid "Rename Folder…"
-msgstr "Μετονομασία φακέλου…"
-
-msgid "Delete Folder…"
-msgstr "Διαγραφή φακέλου…"
-
 msgid "Hide Folder"
 msgstr "Απόκρυψη φακέλου"
 
@@ -5930,6 +5943,10 @@ msgstr "Άδειασμα κάδου…"
 
 msgid "Empty Junk…"
 msgstr "Άδειασμα ανεπιθύμητων…"
+
+#, fuzzy
+msgid "Delete Folder"
+msgstr "Διαγραφή φακέλου…"
 
 msgid "Edit Tag…"
 msgstr "Επεξεργασία ετικέτας…"
@@ -7652,6 +7669,9 @@ msgstr ""
 msgid "Hyprlab"
 msgstr "Hyprlab"
 
+#~ msgid "Rename Folder…"
+#~ msgstr "Μετονομασία φακέλου…"
+
 #~ msgid "Empty Trash in Every Account?"
 #~ msgstr "Άδειασμα κάδου σε όλους τους λογαριασμούς;"
 
@@ -7721,9 +7741,6 @@ msgstr "Hyprlab"
 
 #~ msgid "New Group"
 #~ msgstr "Νέα ομάδα"
-
-#~ msgid "Rename…"
-#~ msgstr "Μετονομασία…"
 
 #~ msgid "Show or hide"
 #~ msgstr "Εμφάνιση ή απόκρυψη"

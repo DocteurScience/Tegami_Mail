@@ -505,6 +505,14 @@ msgstr "Nuova cartella"
 msgid "Create a new folder for this account."
 msgstr "Crea una nuova cartella per questo account."
 
+#, fuzzy
+msgid "New Subfolder"
+msgstr "Nuova cartella"
+
+#, fuzzy
+msgid "Create a folder inside {folder}."
+msgstr "Crea una nuova cartella per questo account."
+
 msgid "Cancel"
 msgstr "Annulla"
 
@@ -5950,6 +5958,18 @@ msgstr "Rimuovi account…"
 msgid "Follow Settings: {sort}"
 msgstr "Segui le impostazioni: {sort}"
 
+#, fuzzy
+msgid "Sync This Folder"
+msgstr "Questa cartella"
+
+#, fuzzy
+msgid "New Subfolder…"
+msgstr "Nuova cartella…"
+
+#, fuzzy
+msgid "Rename…"
+msgstr "Rinomina"
+
 msgid "Remove from Favorites"
 msgstr "Rimuovi dai preferiti"
 
@@ -5962,12 +5982,6 @@ msgstr "Applica filtri"
 msgid "Edit Filter…"
 msgstr "Modifica filtro…"
 
-msgid "Rename Folder…"
-msgstr "Rinomina cartella…"
-
-msgid "Delete Folder…"
-msgstr "Elimina cartella…"
-
 msgid "Hide Folder"
 msgstr "Nascondi cartella"
 
@@ -5976,6 +5990,10 @@ msgstr "Svuota Cestino…"
 
 msgid "Empty Junk…"
 msgstr "Svuota Posta indesiderata…"
+
+#, fuzzy
+msgid "Delete Folder"
+msgstr "Elimina cartella…"
 
 msgid "Edit Tag…"
 msgstr "Modifica etichetta…"
@@ -7694,6 +7712,9 @@ msgstr ""
 msgid "Hyprlab"
 msgstr "Hyprlab"
 
+#~ msgid "Rename Folder…"
+#~ msgstr "Rinomina cartella…"
+
 #~ msgid "Empty Trash in Every Account?"
 #~ msgstr "Svuotare il Cestino in tutti gli account?"
 
@@ -7764,10 +7785,6 @@ msgstr "Hyprlab"
 #, fuzzy
 #~ msgid "New Group"
 #~ msgstr "Gruppo sinistra"
-
-#, fuzzy
-#~ msgid "Rename…"
-#~ msgstr "Rinomina"
 
 #, fuzzy
 #~ msgid "Show or hide"

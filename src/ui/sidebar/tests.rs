@@ -583,3 +583,36 @@ fn arrange_keeps_ranked_items_and_slots_the_rest_after_their_predecessor() {
     assert_eq!(arrange(vec![0, 1, 2, 3, 4], rank, |i| i), [0, 3, 4, 1, 2]);
     assert_eq!(arrange(vec![2, 0], |_| None, |i| i), [0, 2]);
 }
+
+/// The folder menu follows mockup 06: two short sections first, Delete
+/// Folder alone at the end and only on a folder of the user's own; a role
+/// folder can hold a subfolder but is neither renamed nor deleted.
+#[test]
+fn folder_menu_has_the_design_sections() {
+    use super::menus::folder_menu_items;
+    let labels = |f: &Folder| -> Vec<Vec<&str>> {
+        folder_menu_items(1, f, false, false, false)
+            .iter()
+            .map(|s| s.iter().map(|(l, _)| *l).collect())
+            .collect()
+    };
+    assert_eq!(
+        labels(&custom(5, "Work")),
+        vec![
+            vec!["Mark All as Read", "Sync This Folder"],
+            vec!["New Subfolder…", "Rename…"],
+            vec!["Add to Favorites", "Hide Folder"],
+            vec!["Delete Folder"],
+        ]
+    );
+    assert_eq!(
+        labels(&main(1, "INBOX", FolderKind::Inbox)),
+        vec![
+            vec!["Mark All as Read", "Sync This Folder"],
+            vec!["New Subfolder…"],
+            vec!["Add to Favorites"],
+        ]
+    );
+    let starred = labels(&main(2, "[Gmail]/Starred", FolderKind::Starred));
+    assert_eq!(starred.len(), 2, "{starred:?}");
+}

@@ -456,6 +456,12 @@ msgstr ""
 msgid "Create a new folder for this account."
 msgstr ""
 
+msgid "New Subfolder"
+msgstr ""
+
+msgid "Create a folder inside {folder}."
+msgstr ""
+
 msgid "Cancel"
 msgstr ""
 
@@ -5360,6 +5366,15 @@ msgstr ""
 msgid "Follow Settings: {sort}"
 msgstr ""
 
+msgid "Sync This Folder"
+msgstr ""
+
+msgid "New Subfolder…"
+msgstr ""
+
+msgid "Rename…"
+msgstr ""
+
 msgid "Remove from Favorites"
 msgstr ""
 
@@ -5372,12 +5387,6 @@ msgstr ""
 msgid "Edit Filter…"
 msgstr ""
 
-msgid "Rename Folder…"
-msgstr ""
-
-msgid "Delete Folder…"
-msgstr ""
-
 msgid "Hide Folder"
 msgstr ""
 
@@ -5385,6 +5394,9 @@ msgid "Empty Trash…"
 msgstr ""
 
 msgid "Empty Junk…"
+msgstr ""
+
+msgid "Delete Folder"
 msgstr ""
 
 msgid "Edit Tag…"

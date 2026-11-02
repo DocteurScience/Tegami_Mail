@@ -250,6 +250,11 @@ pub(crate) enum CtxAction {
     RemoveAccount(u32),
     /// Create a new custom folder under this account.
     NewFolder(u32),
+    /// Create a folder inside this one.
+    NewSubfolder {
+        account_id: u32,
+        parent: String,
+    },
     /// Delete a custom folder (its contents are moved to Trash first).
     DeleteFolder {
         account_id: u32,

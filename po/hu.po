@@ -508,6 +508,14 @@ msgstr "Új mappa"
 msgid "Create a new folder for this account."
 msgstr "Új mappa létrehozása ehhez a fiókhoz."
 
+#, fuzzy
+msgid "New Subfolder"
+msgstr "Új mappa"
+
+#, fuzzy
+msgid "Create a folder inside {folder}."
+msgstr "Új mappa létrehozása ehhez a fiókhoz."
+
 msgid "Cancel"
 msgstr "Mégse"
 
@@ -6064,6 +6072,18 @@ msgid "Follow Settings: {sort}"
 msgstr "Beállítások követése: {sort}"
 
 #, fuzzy
+msgid "Sync This Folder"
+msgstr "Ez a mappa"
+
+#, fuzzy
+msgid "New Subfolder…"
+msgstr "Új mappa…"
+
+#, fuzzy
+msgid "Rename…"
+msgstr "Átnevezés"
+
+#, fuzzy
 msgid "Remove from Favorites"
 msgstr "Szűrő eltávolítása"
 
@@ -6077,12 +6097,6 @@ msgstr "Szűrők alkalmazása"
 msgid "Edit Filter…"
 msgstr "Szűrő szerkesztése…"
 
-msgid "Rename Folder…"
-msgstr "Mappa átnevezése…"
-
-msgid "Delete Folder…"
-msgstr "Mappa törlése…"
-
 msgid "Hide Folder"
 msgstr "Mappa elrejtése"
 
@@ -6091,6 +6105,10 @@ msgstr "Kuka kiürítése…"
 
 msgid "Empty Junk…"
 msgstr "Levélszemét kiürítése…"
+
+#, fuzzy
+msgid "Delete Folder"
+msgstr "Mappa törlése…"
 
 msgid "Edit Tag…"
 msgstr "Címke szerkesztése…"
@@ -7819,6 +7837,9 @@ msgstr ""
 msgid "Hyprlab"
 msgstr "Hyprlab"
 
+#~ msgid "Rename Folder…"
+#~ msgstr "Mappa átnevezése…"
+
 #, fuzzy
 #~ msgid ""
 #~ "Every message in them will be erased from the server. This can’t be "
@@ -7885,10 +7906,6 @@ msgstr "Hyprlab"
 #, fuzzy
 #~ msgid "New Group"
 #~ msgstr "Bal oldali csoport"
-
-#, fuzzy
-#~ msgid "Rename…"
-#~ msgstr "Átnevezés"
 
 #, fuzzy
 #~ msgid "Show or hide"

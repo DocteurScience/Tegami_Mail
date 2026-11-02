@@ -491,6 +491,14 @@ msgstr "Neuer Ordner"
 msgid "Create a new folder for this account."
 msgstr "Neuen Ordner für dieses Konto erstellen."
 
+#, fuzzy
+msgid "New Subfolder"
+msgstr "Neuer Ordner"
+
+#, fuzzy
+msgid "Create a folder inside {folder}."
+msgstr "Neuen Ordner für dieses Konto erstellen."
+
 msgid "Cancel"
 msgstr "Abbrechen"
 
@@ -5863,6 +5871,17 @@ msgstr "Konto entfernen…"
 msgid "Follow Settings: {sort}"
 msgstr "Einstellung übernehmen: {sort}"
 
+#, fuzzy
+msgid "Sync This Folder"
+msgstr "Dieser Ordner"
+
+#, fuzzy
+msgid "New Subfolder…"
+msgstr "Neuer Ordner…"
+
+msgid "Rename…"
+msgstr "Umbenennen…"
+
 msgid "Remove from Favorites"
 msgstr "Aus Favoriten entfernen"
 
@@ -5875,12 +5894,6 @@ msgstr "Filter anwenden"
 msgid "Edit Filter…"
 msgstr "Filter bearbeiten…"
 
-msgid "Rename Folder…"
-msgstr "Ordner umbenennen…"
-
-msgid "Delete Folder…"
-msgstr "Ordner löschen…"
-
 msgid "Hide Folder"
 msgstr "Ordner ausblenden"
 
@@ -5889,6 +5902,10 @@ msgstr "Papierkorb leeren…"
 
 msgid "Empty Junk…"
 msgstr "Spam-Ordner leeren…"
+
+#, fuzzy
+msgid "Delete Folder"
+msgstr "Ordner löschen…"
 
 msgid "Edit Tag…"
 msgstr "Tag bearbeiten…"
@@ -7610,6 +7627,9 @@ msgstr ""
 msgid "Hyprlab"
 msgstr "Hyprlab"
 
+#~ msgid "Rename Folder…"
+#~ msgstr "Ordner umbenennen…"
+
 #~ msgid "Empty Trash in Every Account?"
 #~ msgstr "Alle Papierkörbe leeren?"
 
@@ -7685,9 +7705,6 @@ msgstr "Hyprlab"
 
 #~ msgid "New Group"
 #~ msgstr "Neue Kontaktliste"
-
-#~ msgid "Rename…"
-#~ msgstr "Umbenennen…"
 
 #~ msgid "Show or hide"
 #~ msgstr "Ein- oder ausblenden"

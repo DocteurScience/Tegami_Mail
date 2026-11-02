@@ -521,6 +521,14 @@ msgstr "Nowy katalog"
 msgid "Create a new folder for this account."
 msgstr "Utwórz nowy katalog na tym koncie."
 
+#, fuzzy
+msgid "New Subfolder"
+msgstr "Nowy katalog"
+
+#, fuzzy
+msgid "Create a folder inside {folder}."
+msgstr "Utwórz nowy katalog na tym koncie."
+
 msgid "Cancel"
 msgstr "Anuluj"
 
@@ -6123,6 +6131,18 @@ msgid "Follow Settings: {sort}"
 msgstr "Zgodnie z ustawieniami: {sort}"
 
 #, fuzzy
+msgid "Sync This Folder"
+msgstr "Ten katalog"
+
+#, fuzzy
+msgid "New Subfolder…"
+msgstr "Nowy katalog…"
+
+#, fuzzy
+msgid "Rename…"
+msgstr "Zmień nazwę"
+
+#, fuzzy
 msgid "Remove from Favorites"
 msgstr "Usuń filtr"
 
@@ -6136,12 +6156,6 @@ msgstr "Zastosuj filtry"
 msgid "Edit Filter…"
 msgstr "Modyfikuj filtr…"
 
-msgid "Rename Folder…"
-msgstr "Zmień nazwę katalogu…"
-
-msgid "Delete Folder…"
-msgstr "Usuń katalog…"
-
 msgid "Hide Folder"
 msgstr "Ukryj katalog"
 
@@ -6150,6 +6164,10 @@ msgstr "Opróżnij kosz…"
 
 msgid "Empty Junk…"
 msgstr "Opróżnij katalog spamu…"
+
+#, fuzzy
+msgid "Delete Folder"
+msgstr "Usuń katalog…"
 
 msgid "Edit Tag…"
 msgstr "Modyfikuj etykietę…"
@@ -7876,6 +7894,9 @@ msgstr ""
 msgid "Hyprlab"
 msgstr "Hyprlab"
 
+#~ msgid "Rename Folder…"
+#~ msgstr "Zmień nazwę katalogu…"
+
 #, fuzzy
 #~ msgid ""
 #~ "Every message in them will be erased from the server. This can’t be "
@@ -7942,10 +7963,6 @@ msgstr "Hyprlab"
 #, fuzzy
 #~ msgid "New Group"
 #~ msgstr "Lewa grupa"
-
-#, fuzzy
-#~ msgid "Rename…"
-#~ msgstr "Zmień nazwę"
 
 #, fuzzy
 #~ msgid "Show or hide"

@@ -497,6 +497,14 @@ msgstr "Nova pasta"
 msgid "Create a new folder for this account."
 msgstr "Criar uma nova pasta para esta conta."
 
+#, fuzzy
+msgid "New Subfolder"
+msgstr "Nova pasta"
+
+#, fuzzy
+msgid "Create a folder inside {folder}."
+msgstr "Criar uma nova pasta para esta conta."
+
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -5827,6 +5835,17 @@ msgstr "Remover conta…"
 msgid "Follow Settings: {sort}"
 msgstr "Seguir as configurações: {sort}"
 
+#, fuzzy
+msgid "Sync This Folder"
+msgstr "Esta pasta"
+
+#, fuzzy
+msgid "New Subfolder…"
+msgstr "Nova pasta…"
+
+msgid "Rename…"
+msgstr "Renomear…"
+
 msgid "Remove from Favorites"
 msgstr "Remover dos favoritos"
 
@@ -5839,12 +5858,6 @@ msgstr "Aplicar filtros"
 msgid "Edit Filter…"
 msgstr "Editar filtro…"
 
-msgid "Rename Folder…"
-msgstr "Renomear pasta…"
-
-msgid "Delete Folder…"
-msgstr "Excluir pasta…"
-
 msgid "Hide Folder"
 msgstr "Ocultar pasta"
 
@@ -5853,6 +5866,10 @@ msgstr "Esvaziar lixeira…"
 
 msgid "Empty Junk…"
 msgstr "Esvaziar spam…"
+
+#, fuzzy
+msgid "Delete Folder"
+msgstr "Excluir pasta…"
 
 msgid "Edit Tag…"
 msgstr "Editar etiqueta…"
@@ -7540,6 +7557,9 @@ msgstr ""
 msgid "Hyprlab"
 msgstr "Hyprlab"
 
+#~ msgid "Rename Folder…"
+#~ msgstr "Renomear pasta…"
+
 #~ msgid "Empty Trash in Every Account?"
 #~ msgstr "Esvaziar a Lixeira de todas as contas?"
 
@@ -7612,9 +7632,6 @@ msgstr "Hyprlab"
 
 #~ msgid "New Group"
 #~ msgstr "Novo grupo"
-
-#~ msgid "Rename…"
-#~ msgstr "Renomear…"
 
 #~ msgid "Show or hide"
 #~ msgstr "Mostrar ou ocultar"

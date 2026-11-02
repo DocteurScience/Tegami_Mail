@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- **Changed: a folder's right-click menu follows the redesign** (mockup
+  06), in sections: **Mark All as Read** and **Sync This Folder**; **New
+  Subfolder…** (new: a folder inside this one) and **Rename…**; the
+  folder's other actions; **Delete Folder** alone at the end.
+
 - **Changed: the reader's More actions follows the redesign** (mockup 06):
   **Forward as Attachment** (new: the message attached whole, as an
   `.eml` file), **Mark as Unread**, **Mark as Spam**, **Move To…**, then

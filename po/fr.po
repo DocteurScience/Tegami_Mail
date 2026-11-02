@@ -489,6 +489,12 @@ msgstr "Nouveau dossier"
 msgid "Create a new folder for this account."
 msgstr "Créer un nouveau dossier pour ce compte."
 
+msgid "New Subfolder"
+msgstr "Nouveau sous-dossier"
+
+msgid "Create a folder inside {folder}."
+msgstr "Créer un dossier dans {folder}."
+
 msgid "Cancel"
 msgstr "Annuler"
 
@@ -3954,7 +3960,7 @@ msgid "Star Conversation"
 msgstr "Ajouter une étoile à la conversation"
 
 msgid "Mark All as Read"
-msgstr "Tout marquer comme lu"
+msgstr "Marquer tout comme lu"
 
 msgid "Mark All as Unread"
 msgstr "Tout marquer comme non lu"
@@ -5829,6 +5835,15 @@ msgstr "Supprimer le compte…"
 msgid "Follow Settings: {sort}"
 msgstr "Suivre les paramètres : {sort}"
 
+msgid "Sync This Folder"
+msgstr "Synchroniser ce dossier"
+
+msgid "New Subfolder…"
+msgstr "Nouveau sous-dossier…"
+
+msgid "Rename…"
+msgstr "Renommer…"
+
 msgid "Remove from Favorites"
 msgstr "Retirer des Favoris"
 
@@ -5841,12 +5856,6 @@ msgstr "Appliquer des filtres"
 msgid "Edit Filter…"
 msgstr "Modifier le filtre…"
 
-msgid "Rename Folder…"
-msgstr "Renommer le dossier…"
-
-msgid "Delete Folder…"
-msgstr "Supprimer le dossier…"
-
 msgid "Hide Folder"
 msgstr "Masquer le dossier"
 
@@ -5855,6 +5864,9 @@ msgstr "Vider la Corbeille…"
 
 msgid "Empty Junk…"
 msgstr "Vider les Indésirables…"
+
+msgid "Delete Folder"
+msgstr "Supprimer le dossier"
 
 msgid "Edit Tag…"
 msgstr "Modifier le tag…"
@@ -7550,6 +7562,9 @@ msgstr ""
 msgid "Hyprlab"
 msgstr "Hyprlab"
 
+#~ msgid "Rename Folder…"
+#~ msgstr "Renommer le dossier…"
+
 #~ msgid "Empty Trash in Every Account?"
 #~ msgstr "Vider la corbeille de tous les comptes ?"
 
@@ -7622,9 +7637,6 @@ msgstr "Hyprlab"
 
 #~ msgid "New Group"
 #~ msgstr "Nouveau groupe"
-
-#~ msgid "Rename…"
-#~ msgstr "Renommer…"
 
 #~ msgid "Show or hide"
 #~ msgstr "Afficher ou masquer"

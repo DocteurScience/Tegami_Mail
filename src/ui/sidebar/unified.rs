@@ -2,7 +2,9 @@
 //! account, and the Tags sections.
 
 use super::dnd::folder_drop_target;
-use super::menus::{attach_tag_context_menu, folder_menu_items, show_sidebar_menu};
+use super::menus::{
+    attach_tag_context_menu, folder_menu_items, show_sidebar_menu, show_sidebar_menu_sections,
+};
 use super::types::{
     chevron_icon, row_icon, row_title, select_msg, toggle_msg, KindWidgets, SectionWidgets,
     UnifiedRow,
@@ -494,7 +496,7 @@ impl Sidebar {
                     .iter()
                     .any(|(a, p)| *a == r.account_id && *p == r.folder.path);
                 let items = folder_menu_items(r.account_id, &r.folder, is_filtered, true, true);
-                show_sidebar_menu(&sub_w, x, y, items, &cs);
+                show_sidebar_menu_sections(&sub_w, x, y, items, &cs);
             }
         });
         sub.add_controller(click);
