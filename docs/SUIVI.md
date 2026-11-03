@@ -221,6 +221,21 @@ la puce montre l'adresse ; la maquette montre un nom. Les menus gardent
 la casse des titres du catalogue (« Mark All as Read ») alors que
 DESIGN.md demande la casse de phrase : à décider globalement.
 
+## Décisions du propriétaire (2026-11-03)
+
+1. Menu d'un dossier : les entrées hors maquette (Favoris, filtres,
+   Masquer, Vider) sont conservées.
+2. « Afficher les comptes » (menu, Ctrl+Maj+A, Réglages) et l'option
+   Concentration « replier les lignes unifiées » : supprimés (`a0a871c`).
+   L'option Concentration « masquer les comptes » reste.
+3. Casse de phrase partout (`2546cac`) : script de conversion limité aux
+   littéraux des appels `i18n…`, msgid renommés dans tous les catalogues
+   (traductions gardées, doublons fusionnés), doc mise à jour. Règle
+   ajoutée à CLAUDE.md. Le fichier .desktop garde sa casse de titre.
+4. « Nom <adresse> » partout (`00b9d8f`) : réponse, réponse à tous
+   (lecture par `parse_recipients`, écriture par `format_recipient`) et
+   adresse cliquée dans le lecteur (nom du contact ou de la conversation).
+
 ## Reste à faire (connu)
 
 - Section Étiquettes de la barre latérale ouverte par défaut (les valeurs
