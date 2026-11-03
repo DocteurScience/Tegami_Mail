@@ -129,15 +129,19 @@ impl<E: Emit> ImapWorker<E> {
                 // now-obsolete draft and refresh the Drafts folder.
                 if let Some(o) = message.draft_origin.clone() {
                     if o.account_id == account_id {
-                        {
-                            // Not `ensured`: index_sent_copy above can leave
-                            // the session `None`, and this then panics (a
-                            // suspected bug kept as it is, B1 in the notes).
-                            let sess = session.as_mut().unwrap();
+                        // Not `ensured`: filing the Sent copy can leave the
+                        // session `None` (a read that failed twice drops it).
+                        // Without one the draft stays, on the server and in
+                        // the list, rather than the worker going down.
+                        if let Some(sess) = session.as_mut() {
                             let _ = delete_draft(sess, &o.path, o.uid).await;
-                        }
-                        if let Some(c) = cache.as_ref() {
-                            c.delete_message(account_id, &o.path, o.uid);
+                            if let Some(c) = cache.as_ref() {
+                                c.delete_message(account_id, &o.path, o.uid);
+                            }
+                        } else {
+                            tracing::warn!(
+                                "[account {account_id}] sent, but the draft it came from stays: no connection"
+                            );
                         }
                         if let Ok(messages) = load_messages_retry(
                             account_id,

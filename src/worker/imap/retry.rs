@@ -10,6 +10,26 @@ use crate::worker::imap::fetch_mode::{is_parse_error, previews_rejected, step_fe
 use crate::worker::imap::sync::load_messages;
 use crate::worker::imap::ImapSession;
 
+/// The session to read on: the one held, or a fresh login when an earlier
+/// read of the same request dropped it. A retry that fails twice leaves no
+/// session, and a request that reads again after one (sending an edited
+/// draft: the Sent copy, then the Drafts folder) used to panic here and
+/// take the account's whole worker down with it.
+async fn take_or_reconnect<F>(
+    session: &mut Option<ImapSession>,
+    reconnect: F,
+) -> Result<ImapSession, async_imap::error::Error>
+where
+    F: AsyncFnOnce() -> Result<ImapSession, Box<dyn std::error::Error>>,
+{
+    match session.take() {
+        Some(s) => Ok(s),
+        None => reconnect()
+            .await
+            .map_err(|_| async_imap::error::Error::ConnectionLost),
+    }
+}
+
 /// Run `load_messages`, retrying once over a fresh login if the first attempt
 /// fails (typically a server-dropped idle connection: "unexpected EOF"). On
 /// success the (possibly new) session is stored back; on failure it is dropped.
@@ -22,7 +42,7 @@ pub(super) async fn load_messages_retry(
     use_envelope: &mut bool,
     cache: Option<&Cache>,
 ) -> Result<Vec<Message>, async_imap::error::Error> {
-    let mut s = session.take().expect("session ensured before call");
+    let mut s = take_or_reconnect(session, async || connect(account).await).await?;
     let mut result = load_messages(account_id, &mut s, folder_id, path, *use_envelope, cache).await;
 
     // A non-empty success is trustworthy — keep the session and return it.
@@ -89,7 +109,7 @@ async fn with_one_retry<T>(
     account: &AccountConfig,
     mut read: impl AsyncFnMut(&mut ImapSession) -> Result<T, async_imap::error::Error>,
 ) -> Result<T, async_imap::error::Error> {
-    let mut s = session.take().expect("session ensured before call");
+    let mut s = take_or_reconnect(session, async || connect(account).await).await?;
     let mut res = read(&mut s).await;
     if res.is_err() {
         if let Ok(fresh) = connect(account).await {
@@ -154,4 +174,24 @@ pub(super) async fn load_raw_retry(
     uid: u32,
 ) -> Result<Vec<u8>, async_imap::error::Error> {
     with_one_retry(session, account, async |s| load_raw(s, path, uid).await).await
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    /// No session and no way to make one is an error for the caller to
+    /// report, not a panic (see `take_or_reconnect`).
+    #[test]
+    fn a_missing_session_that_cannot_reconnect_is_an_error() {
+        let rt = tokio::runtime::Builder::new_current_thread()
+            .build()
+            .unwrap();
+        let mut session: Option<ImapSession> = None;
+        let res = rt.block_on(take_or_reconnect(&mut session, async || {
+            Err::<ImapSession, Box<dyn std::error::Error>>("offline".into())
+        }));
+        assert!(matches!(res, Err(async_imap::error::Error::ConnectionLost)));
+        assert!(session.is_none());
+    }
 }
