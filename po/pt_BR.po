@@ -1846,6 +1846,9 @@ msgstr "{free} livres ({pct}%)"
 msgid "Encrypted message"
 msgstr "Mensagem criptografada"
 
+msgid "Yesterday"
+msgstr "Ontem"
+
 msgid "Today, {time}"
 msgstr "Hoje, {time}"
 
@@ -3964,9 +3967,6 @@ msgid "{n} more tag: {names}"
 msgid_plural "{n} more tags: {names}"
 msgstr[0] "Remover etiqueta {name}"
 msgstr[1] "Remover etiqueta {name}"
-
-msgid "Yesterday"
-msgstr "Ontem"
 
 msgid "Last 7 days"
 msgstr "Últimos 7 dias"

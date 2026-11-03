@@ -1851,6 +1851,9 @@ msgstr "{free} libres ({pct}%)"
 msgid "Encrypted message"
 msgstr "Mensaje cifrado"
 
+msgid "Yesterday"
+msgstr "Ayer"
+
 msgid "Today, {time}"
 msgstr "Hoy, {time}"
 
@@ -3989,9 +3992,6 @@ msgid "{n} more tag: {names}"
 msgid_plural "{n} more tags: {names}"
 msgstr[0] "Eliminar etiqueta {name}"
 msgstr[1] "Eliminar etiqueta {name}"
-
-msgid "Yesterday"
-msgstr "Ayer"
 
 msgid "Last 7 days"
 msgstr "Últimos 7 días"

@@ -1844,6 +1844,9 @@ msgstr "{free} libres ({pct} %)"
 msgid "Encrypted message"
 msgstr "Message chiffré"
 
+msgid "Yesterday"
+msgstr "Hier"
+
 msgid "Today, {time}"
 msgstr "Aujourd’hui, {time}"
 
@@ -3971,9 +3974,6 @@ msgid "{n} more tag: {names}"
 msgid_plural "{n} more tags: {names}"
 msgstr[0] "{n} autre étiquette : {names}"
 msgstr[1] "{n} autres étiquettes : {names}"
-
-msgid "Yesterday"
-msgstr "Hier"
 
 msgid "Last 7 days"
 msgstr "7 derniers jours"

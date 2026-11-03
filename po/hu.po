@@ -1916,6 +1916,10 @@ msgstr "{free} szabad ({pct}%)"
 msgid "Encrypted message"
 msgstr "Titkosított üzenet"
 
+#, fuzzy
+msgid "Yesterday"
+msgstr "tegnap"
+
 msgid "Today, {time}"
 msgstr "Ma, {time}"
 
@@ -4123,10 +4127,6 @@ msgid "{n} more tag: {names}"
 msgid_plural "{n} more tags: {names}"
 msgstr[0] "Címke eltávolítása: {name}"
 msgstr[1] "Címke eltávolítása: {name}"
-
-#, fuzzy
-msgid "Yesterday"
-msgstr "tegnap"
 
 #, fuzzy
 msgid "Last 7 days"

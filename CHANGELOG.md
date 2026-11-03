@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- **Changed: short dates in the message list** (mockup 01): the time for
+  today's mail, "Yesterday", the day of the week for the rest of the last
+  week, then the day and month, with the year only for another year. The
+  sender's name keeps the room the time used to take.
+
 - **Removed: Focus Mode,** with **Ctrl+Shift+F**, its main menu and
   command palette entries, **Settings → Appearance → Focus mode** and the
   list header's ⋯ it brought. The redesign has none of it. The saved

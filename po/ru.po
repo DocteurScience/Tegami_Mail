@@ -1938,6 +1938,10 @@ msgstr "Свободно {free} ({pct}%)"
 msgid "Encrypted message"
 msgstr "Зашифрованное сообщение"
 
+#, fuzzy
+msgid "Yesterday"
+msgstr "вчера"
+
 msgid "Today, {time}"
 msgstr "Сегодня, {time}"
 
@@ -4144,10 +4148,6 @@ msgid_plural "{n} more tags: {names}"
 msgstr[0] "Удалить тег {name}?"
 msgstr[1] "Удалить тег {name}?"
 msgstr[2] "Удалить тег {name}?"
-
-#, fuzzy
-msgid "Yesterday"
-msgstr "вчера"
 
 #, fuzzy
 msgid "Last 7 days"

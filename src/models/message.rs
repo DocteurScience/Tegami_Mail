@@ -326,17 +326,27 @@ fn label_names_tag(label: &str, tag: &crate::config::Tag) -> bool {
             .eq_ignore_ascii_case(&crate::mail::mutf7::decode(label))
 }
 
-/// A short date for a single line: the time for today, the day and month
-/// this year, the year too before that. Used where the full list date would
-/// crowd out the text: a folded card (#326), a one-line list row (#334).
+/// The date a list row or a folded card shows (mockup 01): the time for
+/// today, "Yesterday", the day of the week for the days before that in the
+/// last week, the day and month this year, the year too before that. Short
+/// enough never to crowd out the sender.
 pub(crate) fn date_short(timestamp: i64, date: &str) -> String {
+    date_short_at(timestamp, date, crate::datefmt::now())
+}
+
+/// [`date_short`] against a given "now", for the tests.
+fn date_short_at(timestamp: i64, date: &str, now: i64) -> String {
     use crate::datefmt as d;
     if timestamp <= 0 {
         return date.to_string();
     }
-    let now = d::now();
+    let [today, yesterday, week, _] = d::day_starts(now);
     if d::day_key(timestamp) == d::day_key(now) {
         d::time(timestamp)
+    } else if (yesterday..today).contains(&timestamp) {
+        i18n("Yesterday")
+    } else if (week..yesterday).contains(&timestamp) {
+        d::weekday_short(timestamp)
     } else if d::year(timestamp) == d::year(now) {
         d::day_month(timestamp)
     } else {
@@ -417,4 +427,40 @@ pub(crate) fn thread_ids<'a>(msgs: impl IntoIterator<Item = &'a Message>) -> Vec
         }
     }
     ids
+}
+
+#[cfg(test)]
+mod date_tests {
+    use super::date_short_at;
+    use crate::datefmt as d;
+
+    /// Mockup 01's dates: the time today, "Yesterday", the weekday in the
+    /// last week, then the day and month, with the year only for another
+    /// year.
+    #[test]
+    fn a_row_date_is_as_short_as_its_age_allows() {
+        // Noon, Thursday 15 October 2026, local time.
+        let now = gtk::glib::DateTime::from_local(2026, 10, 15, 12, 0, 0.0)
+            .unwrap()
+            .to_unix();
+        let hour = 3600;
+        let day = 24 * hour;
+        assert_eq!(date_short_at(now - hour, "", now), d::time(now - hour));
+        assert_eq!(date_short_at(now - day, "", now), "Yesterday");
+        let tuesday = now - 2 * day;
+        assert_eq!(date_short_at(tuesday, "", now), d::weekday_short(tuesday));
+        assert!(!d::weekday_short(tuesday)
+            .chars()
+            .any(|c| c.is_ascii_digit()));
+        assert_eq!(
+            date_short_at(now - 9 * day, "", now),
+            d::day_month(now - 9 * day)
+        );
+        let last_year = now - 400 * day;
+        assert_eq!(
+            date_short_at(last_year, "", now),
+            d::day_month_year(last_year)
+        );
+        assert_eq!(date_short_at(0, "Mon, 1 Jan", now), "Mon, 1 Jan");
+    }
 }

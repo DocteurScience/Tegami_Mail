@@ -223,15 +223,13 @@ impl Row {
                 bin.set_width(column_width(look, c));
             }
         }
-        match (&meta.latest, &meta.latest_at) {
-            (_, Some((ts, date))) if single => {
-                w.date.set_label(&crate::models::date_short(*ts, date))
-            }
-            (Some(latest), _) if !single => w.date.set_label(latest),
-            _ if single => w
+        // The short date in every layout (mockup 01): a conversation's
+        // newest message, or the message's own.
+        match &meta.latest_at {
+            Some((ts, date)) => w.date.set_label(&crate::models::date_short(*ts, date)),
+            None => w
                 .date
                 .set_label(&crate::models::date_short(msg.timestamp, &msg.date)),
-            _ => w.date.set_label(&msg.datetime_list()),
         }
         // Snoozed mail says when it comes back instead (#527).
         let until = shared.snoozed.borrow().until(msg);

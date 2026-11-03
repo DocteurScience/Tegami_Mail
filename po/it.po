@@ -1880,6 +1880,10 @@ msgstr "{free} liberi ({pct}%)"
 msgid "Encrypted message"
 msgstr "Messaggio crittografato"
 
+#, fuzzy
+msgid "Yesterday"
+msgstr "ieri"
+
 msgid "Today, {time}"
 msgstr "Oggi, {time}"
 
@@ -4063,10 +4067,6 @@ msgid "{n} more tag: {names}"
 msgid_plural "{n} more tags: {names}"
 msgstr[0] "Rimuovi etichetta {name}"
 msgstr[1] "Rimuovi etichetta {name}"
-
-#, fuzzy
-msgid "Yesterday"
-msgstr "ieri"
 
 #, fuzzy
 msgid "Last 7 days"

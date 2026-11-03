@@ -1862,6 +1862,9 @@ msgstr "{free} ελεύθερα ({pct}%)"
 msgid "Encrypted message"
 msgstr "Κρυπτογραφημένο μήνυμα"
 
+msgid "Yesterday"
+msgstr "Χθες"
+
 msgid "Today, {time}"
 msgstr "Σήμερα, {time}"
 
@@ -4026,9 +4029,6 @@ msgid "{n} more tag: {names}"
 msgid_plural "{n} more tags: {names}"
 msgstr[0] "Αφαίρεση ετικέτας {name}"
 msgstr[1] "Αφαίρεση ετικέτας {name}"
-
-msgid "Yesterday"
-msgstr "Χθες"
 
 msgid "Last 7 days"
 msgstr "Τελευταίες 7 ημέρες"

@@ -1949,6 +1949,10 @@ msgstr ""
 msgid "Encrypted message"
 msgstr "Wiadomość zaszyfrowana"
 
+#, fuzzy
+msgid "Yesterday"
+msgstr "wczoraj"
+
 msgid "Today, {time}"
 msgstr "Dzisiaj, {time}"
 
@@ -4173,10 +4177,6 @@ msgid_plural "{n} more tags: {names}"
 msgstr[0] "Usuń etykietę {name}"
 msgstr[1] "Usuń etykietę {name}"
 msgstr[2] "Usuń etykietę {name}"
-
-#, fuzzy
-msgid "Yesterday"
-msgstr "wczoraj"
 
 #, fuzzy
 msgid "Last 7 days"

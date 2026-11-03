@@ -1691,6 +1691,9 @@ msgstr ""
 msgid "Encrypted message"
 msgstr ""
 
+msgid "Yesterday"
+msgstr ""
+
 msgid "Today, {time}"
 msgstr ""
 
@@ -3603,9 +3606,6 @@ msgid "{n} more tag: {names}"
 msgid_plural "{n} more tags: {names}"
 msgstr[0] ""
 msgstr[1] ""
-
-msgid "Yesterday"
-msgstr ""
 
 msgid "Last 7 days"
 msgstr ""

@@ -258,6 +258,21 @@ pub(crate) fn day_month_year(ts: i64) -> String {
     text.trim().to_string()
 }
 
+/// The day of the week, abbreviated as the locale has it and with a capital
+/// ("Tue", "Mar."): what a list row shows for mail of the last few days
+/// (mockup 01).
+pub(crate) fn weekday_short(ts: i64) -> String {
+    let Some(dt) = local(ts) else {
+        return String::new();
+    };
+    let day = fmt(&dt, "%a");
+    let mut chars = day.trim().chars();
+    match chars.next() {
+        Some(first) => first.to_uppercase().chain(chars).collect(),
+        None => String::new(),
+    }
+}
+
 /// Month and year: "March 2019", for the list's scrollbar.
 pub(crate) fn month_year(ts: i64) -> String {
     local(ts).map_or_else(String::new, |dt| fmt(&dt, "%B %Y"))
