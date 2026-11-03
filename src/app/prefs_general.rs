@@ -63,7 +63,7 @@ impl AppModel {
 
             PrefOutput::SetAvatars(on) => {
                 if pref!(self.avatars = on) {
-                    self.push_list_look(false);
+                    self.push_list_look();
                 }
             }
 

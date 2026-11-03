@@ -41,11 +41,9 @@ impl Postal {
     }
 }
 
-/// One labelled value on a contact (a "Home" email, a "Mobile" phone…). The
-/// label may be empty when the vCard carries no usable TYPE.
+/// One value on a contact (an email, a phone, an address).
 #[derive(Debug, Clone)]
 pub(crate) struct Labeled {
-    pub(crate) label: String,
     pub(crate) value: String,
 }
 
@@ -68,14 +66,8 @@ pub(crate) struct ContactDetails {
     /// `birthday` is it in words.
     pub(crate) birthday_raw: String,
     pub(crate) urls: Vec<String>,
-    pub(crate) photo: Option<Vec<u8>>,
-    /// [`photo_key`] of `photo`, set by [`read_contact_details`]; 0 when
-    /// there is none or it was not worked out.
-    pub(crate) photo_key: u64,
     /// EDS source UID of the book this contact came from — where edits go.
     pub(crate) book_uid: String,
-    /// That book's display name ("On This Computer", the CardDAV account…).
-    pub(crate) book_name: String,
     /// The contact's own EDS UID (for deletion and deep links).
     pub(crate) eds_uid: String,
     /// The stored vCard, verbatim; edits patch this so unknown properties
@@ -250,18 +242,12 @@ pub(crate) fn parse_vcard_fields(vcard: &str) -> Option<ContactDetails> {
                     value.clone(),
                 ));
                 if value.contains('@') && !c.emails.iter().any(|e| e.value == value) {
-                    c.emails.push(Labeled {
-                        label: vcard_type_label(&params),
-                        value,
-                    });
+                    c.emails.push(Labeled { value });
                 }
             }
             "TEL" => {
                 if !c.phones.iter().any(|p| p.value == value) {
-                    c.phones.push(Labeled {
-                        label: vcard_type_label(&params),
-                        value,
-                    });
+                    c.phones.push(Labeled { value });
                 }
             }
             "URL" => {
@@ -324,10 +310,7 @@ fn read_address(c: &mut ContactDetails, raw_value: &str, params: &[&str]) {
         .collect::<Vec<_>>()
         .join(", ");
     if !formatted.is_empty() && !c.addresses.iter().any(|a| a.value == formatted) {
-        c.addresses.push(Labeled {
-            label: vcard_type_label(params),
-            value: formatted,
-        });
+        c.addresses.push(Labeled { value: formatted });
         c.postal
             .push(Postal::from_adr(vcard_type_label(params), raw_value.trim()));
     }

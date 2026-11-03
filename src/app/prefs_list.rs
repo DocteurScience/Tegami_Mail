@@ -71,7 +71,7 @@ impl AppModel {
                     let was_off = self.preview_lines == 0;
                     self.preview_lines = lines;
                     self.save_settings();
-                    self.push_list_look(false);
+                    self.push_list_look();
                     // Previews switched back on: IMAP summaries fetched while
                     // they were off carry no preview text (the setting also
                     // stops the body slice being downloaded), so nothing would

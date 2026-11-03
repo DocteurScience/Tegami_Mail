@@ -70,48 +70,12 @@ impl MessageList {
         }
     }
 
-    pub(super) fn on_set_look(
-        &mut self,
-        avatars: bool,
-        preview_lines: u32,
-        subject: bool,
-        animate: bool,
-        sender: &ComponentSender<Self>,
-    ) {
+    pub(super) fn on_set_look(&mut self, avatars: bool, preview_lines: u32) {
         let preview_lines = preview_lines.min(3);
-        let avatars_changed = self.avatars != avatars;
-        let lines_changed = self.preview_lines != preview_lines;
-        let subject_changed = self.show_subject != subject;
-        if !avatars_changed && !lines_changed && !subject_changed {
-            return;
-        }
-        self.show_subject = subject;
-        if animate && avatars_changed && !avatars {
-            // Slide every circle on screen away (and the preview to
-            // its new height in place); the rows give the slot back
-            // once they have gone.
-            self.preview_lines = preview_lines;
-            for row in self.shared.bound_rows() {
-                row.slide_avatar_away();
-                if lines_changed {
-                    row.set_preview_lines(preview_lines);
-                }
-            }
-            let s = sender.clone();
-            gtk::glib::timeout_add_local_once(
-                std::time::Duration::from_millis(u64::from(crate::ui::FOCUS_ANIM_MS) + 40),
-                move || s.input(MessageListInput::LookSettled),
-            );
-        } else {
+        if self.avatars != avatars || self.preview_lines != preview_lines {
             self.avatars = avatars;
             self.preview_lines = preview_lines;
             self.sync_look();
-            // Circles coming back start folded and slide in.
-            if animate && avatars_changed && avatars {
-                for row in self.shared.bound_rows() {
-                    row.slide_avatar_in();
-                }
-            }
         }
     }
 

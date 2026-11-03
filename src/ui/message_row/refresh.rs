@@ -280,7 +280,6 @@ impl Row {
         let single = look.single_line;
         // Whether a widget's column is on: a card shows what it always has.
         let col = |c: ListColumn| !single || look.columns.contains(&c);
-        w.subject_line.set_visible(look.show_subject);
         // One line: the subject, then its text dimmed after it, in one label,
         // so the subject is cut only once the text has gone (#334).
         if single {
@@ -323,7 +322,7 @@ impl Row {
                 home.append(&w.tags_box);
             }
             w.pills_line
-                .set_visible(below && look.show_subject && w.tags_box.first_child().is_some());
+                .set_visible(below && w.tags_box.first_child().is_some());
         }
     }
 
@@ -652,13 +651,6 @@ impl Row {
         }
         w.text.set_visible(columns.is_none());
         w.line.set_visible(columns.is_some());
-    }
-
-    /// Show this many preview lines in place (Focus Mode).
-    pub(crate) fn set_preview_lines(&self, lines: u32) {
-        let lines = lines.clamp(1, 3);
-        self.w.preview.set_wrap(lines > 1);
-        self.w.preview.set_lines(lines as i32);
     }
 
     pub(super) fn set_hover(&self, over: bool) {

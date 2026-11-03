@@ -34,8 +34,6 @@ pub(crate) struct RowLook {
     pub(crate) min_width: i32,
     /// How many lines of the message's text a row shows (0–3).
     pub(crate) preview_lines: u32,
-    /// Whether the subject line is drawn (Focus Mode can take it away).
-    pub(crate) show_subject: bool,
     /// A card's pills go on a line of their own under its text (#374).
     pub(crate) pills_below: bool,
     /// The folder each result of a search across folders is in, by
@@ -72,7 +70,6 @@ impl Default for RowLook {
             widths: HashMap::new(),
             min_width: -1,
             preview_lines: 1,
-            show_subject: true,
             pills_below: false,
             folder_pills: Default::default(),
             show_palette: true,

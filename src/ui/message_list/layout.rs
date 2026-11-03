@@ -219,7 +219,6 @@ impl MessageList {
             look.avatars = self.avatars;
             look.sender_logos = self.sender_logos;
             look.preview_lines = self.preview_lines;
-            look.show_subject = self.show_subject;
             look.pills_below = self.pills_below;
             // The palette hangs under a card; a single line has no room for
             // it, so actions come from the menu, swipes and keys there.

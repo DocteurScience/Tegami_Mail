@@ -136,8 +136,6 @@ pub(crate) struct MessageList {
     gravatar: bool,
     /// Lines of preview text per row (1–3), from Preferences.
     preview_lines: u32,
-    /// Whether rows draw their subject line (Focus Mode can take it away).
-    show_subject: bool,
     /// Whether the colored avatars are drawn (#29).
     avatars: bool,
     /// Whether a sender's site icon may fill one (#30).

@@ -65,7 +65,6 @@ impl MessageList {
             avatars: true,
             sender_logos: false,
             preview_lines: 1,
-            show_subject: true,
             colorize: false,
             account_colors: std::collections::HashMap::new(),
             color_provider,

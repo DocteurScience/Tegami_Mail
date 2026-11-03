@@ -432,13 +432,7 @@ impl SimpleComponent for MessageList {
             MessageListInput::SetLook {
                 avatars,
                 preview_lines,
-                subject,
-                animate,
-            } => self.on_set_look(avatars, preview_lines, subject, animate, &sender),
-            MessageListInput::LookSettled => {
-                self.avatars = false;
-                self.sync_look();
-            }
+            } => self.on_set_look(avatars, preview_lines),
             MessageListInput::SetAvatars(on) => self.on_set_avatars(on),
             MessageListInput::SetGravatar(on) => self.on_set_gravatar(on),
             MessageListInput::SetShowRecipient(on) => self.on_set_show_recipient(on),

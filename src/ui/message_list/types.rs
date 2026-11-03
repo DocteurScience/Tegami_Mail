@@ -144,18 +144,11 @@ pub(crate) enum MessageListInput {
     SetShowRecipient(bool),
     /// Show or hide the colored avatars (#29).
     SetAvatars(bool),
-    /// The avatars and preview lines together, as the settings and Focus
-    /// Mode leave them. `animate` (a Focus Mode toggle) slides the avatars
-    /// away before the rows are rebuilt without them, or builds them folded
-    /// and slides them in.
+    /// The avatars and preview lines together, as the settings leave them.
     SetLook {
         avatars: bool,
         preview_lines: u32,
-        subject: bool,
-        animate: bool,
     },
-    /// The Focus Mode slide finished: rebuild the rows as they now are.
-    LookSettled,
     /// Lay the rows out on one line, or as cards (#334).
     SetSingleLine(bool),
     /// The single-line columns, in order (#334).

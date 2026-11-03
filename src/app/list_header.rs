@@ -518,33 +518,16 @@ impl AppModel {
         }
     }
 
-    pub(super) fn push_list_look(&self, animate: bool) {
+    pub(super) fn push_list_look(&self) {
         self.sync_show_checks();
         self.message_list.emit(MessageListInput::SetLook {
-            avatars: self.list_avatars(),
-            preview_lines: self.list_preview_lines(),
-            subject: self.list_show_subject(),
-            animate,
+            avatars: self.avatars,
+            preview_lines: self.preview_lines,
         });
         // A folded card in a conversation shows what a list row does (#326).
         self.message_view.emit(MessageViewInput::SetFoldLook {
-            preview_lines: self.list_preview_lines(),
+            preview_lines: self.preview_lines,
         });
-    }
-
-    /// The avatars the list draws.
-    pub(super) fn list_avatars(&self) -> bool {
-        self.avatars
-    }
-
-    /// The preview lines the list shows.
-    pub(super) fn list_preview_lines(&self) -> u32 {
-        self.preview_lines
-    }
-
-    /// Whether the list draws subject lines.
-    pub(super) fn list_show_subject(&self) -> bool {
-        true
     }
 
     /// The list header's title: what the list shows, as the sidebar names

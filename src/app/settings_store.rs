@@ -152,7 +152,7 @@ impl AppModel {
         self.message_list
             .emit(MessageListInput::SetGravatar(self.gravatar));
         self.message_list
-            .emit(MessageListInput::SetAvatars(self.list_avatars()));
+            .emit(MessageListInput::SetAvatars(self.avatars));
         // The formatter is a free function, so the preference has to be handed to
         // it before anything draws a date.
         self.message_list
@@ -160,13 +160,11 @@ impl AppModel {
         crate::datefmt::set_style(self.date_style, self.clock_style);
         crate::ui::print_preview::set_options(self.print_options);
         self.message_list.emit(MessageListInput::SetLook {
-            avatars: self.list_avatars(),
-            preview_lines: self.list_preview_lines(),
-            subject: self.list_show_subject(),
-            animate: false,
+            avatars: self.avatars,
+            preview_lines: self.preview_lines,
         });
         self.message_view.emit(MessageViewInput::SetFoldLook {
-            preview_lines: self.list_preview_lines(),
+            preview_lines: self.preview_lines,
         });
         self.push_single_line();
         self.message_list

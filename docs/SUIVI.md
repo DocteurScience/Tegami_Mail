@@ -248,10 +248,10 @@ DESIGN.md demande la casse de phrase : à décider globalement.
 
 ## Reste à faire (connu)
 
-- Nettoyage : les boutons des en-têtes restent dans des revealers
-  (`focus-fade`) qui ne servent plus à rien depuis le retrait du mode
-  Concentration ; `push_list_look(animate)` et le masquage du sujet
-  dans la liste aussi.
+- Les boutons des en-têtes et l'avatar des lignes restent dans des
+  revealers (`focus-fade`) hérités du mode Concentration : la mesure du
+  repli de la barre du lecteur s'appuie dessus (`follow_button`,
+  `MeasureReaderFold`) ; les retirer demande de reprendre cette mesure.
 
 - Section Étiquettes de la barre latérale ouverte par défaut (les valeurs
   par défaut de `sidebar.toml` valent pour toutes les sections ; un test

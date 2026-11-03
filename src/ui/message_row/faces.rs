@@ -7,7 +7,6 @@ use super::RowData;
 use adw::prelude::*;
 use gtk::glib;
 use relm4::prelude::*;
-use std::rc::Rc;
 
 /// A background face lookup's answer, correlated by sender address (a recycled
 /// row compares before using it). The tiers are personal-first: the contact's
@@ -331,36 +330,5 @@ impl Row {
                 .avatar
                 .set_custom_image(self.avatar_image(&data, &look).as_ref());
         }
-    }
-
-    /// Slide the circle away (Focus Mode), before the list drops it.
-    pub(crate) fn slide_avatar_away(&self) {
-        self.st.borrow_mut().avatar_shown = false;
-        self.w.avatar_revealer.set_reveal_child(false);
-        self.w
-            .avatar_revealer
-            .set_css_classes(&["focus-fade", "away"]);
-    }
-
-    /// Fold the circle and slide it in a moment later (Focus Mode has given
-    /// the avatars back), once the row is on screen and the revealer mapped.
-    pub(crate) fn slide_avatar_in(self: &Rc<Self>) {
-        self.st.borrow_mut().avatar_shown = false;
-        self.w.avatar_revealer.set_transition_duration(0);
-        self.w.avatar_revealer.set_reveal_child(false);
-        self.w
-            .avatar_revealer
-            .set_transition_duration(crate::ui::FOCUS_ANIM_MS);
-        let weak = Rc::downgrade(self);
-        let gen = self.st.borrow().gen;
-        glib::timeout_add_local_once(std::time::Duration::from_millis(60), move || {
-            let Some(row) = weak.upgrade() else { return };
-            if row.st.borrow().gen != gen {
-                return;
-            }
-            row.st.borrow_mut().avatar_shown = true;
-            row.w.avatar_revealer.set_reveal_child(true);
-            row.w.avatar_revealer.set_css_classes(&["focus-fade"]);
-        });
     }
 }

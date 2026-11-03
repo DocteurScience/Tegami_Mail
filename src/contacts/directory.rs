@@ -657,7 +657,6 @@ fn directory_lock(uid: &str) -> Arc<Mutex<()>> {
 /// A directory that did not answer, and why, worded for the status bar.
 #[derive(Debug, Clone)]
 pub(crate) struct DirectoryFailure {
-    pub(crate) uid: String,
     pub(crate) name: String,
     pub(crate) message: String,
 }
@@ -688,7 +687,6 @@ fn lookup(typed: &str) -> (Vec<(Directory, Vec<String>)>, Vec<DirectoryFailure>)
             Some(message) => {
                 tracing::debug!(directory = %dir.title(), "LDAP directory not asked, it failed less than {}s ago: {message}", RETRY_AFTER.as_secs());
                 failed.push(DirectoryFailure {
-                    uid: dir.uid.clone(),
                     name: dir.title(),
                     message,
                 });
@@ -752,7 +750,6 @@ fn lookup(typed: &str) -> (Vec<(Directory, Vec<String>)>, Vec<DirectoryFailure>)
             Err(e) => {
                 tracing::warn!(directory = %dir.title(), typed, ms = took.as_millis() as u64, "LDAP directory lookup failed: {e}");
                 failed.push(DirectoryFailure {
-                    uid: dir.uid.clone(),
                     name: dir.title(),
                     message: e,
                 });
