@@ -23,8 +23,8 @@
     <file>icons/scalable/actions/adw-tab-overflow-symbolic.svg</file>
     <file>icons/scalable/actions/adw-tab-unpin-symbolic.svg</file>
     <file>icons/scalable/actions/alarm-symbolic.svg</file>
-    <file>icons/scalable/actions/applications-system-symbolic.svg</file>
     <file>icons/scalable/actions/application-x-executable-symbolic.svg</file>
+    <file>icons/scalable/actions/applications-system-symbolic.svg</file>
     <file>icons/scalable/actions/arrow-into-box-symbolic.svg</file>
     <file>icons/scalable/actions/audio-volume-high-symbolic.svg</file>
     <file>icons/scalable/actions/audio-volume-low-symbolic.svg</file>
@@ -77,7 +77,6 @@
     <file>icons/scalable/actions/emoji-recent-symbolic.svg</file>
     <file>icons/scalable/actions/emoji-symbols-symbolic.svg</file>
     <file>icons/scalable/actions/emoji-travel-symbolic.svg</file>
-    <file>icons/scalable/actions/eye-open-negative-filled-symbolic.svg</file>
     <file>icons/scalable/actions/face-smile-big-symbolic.svg</file>
     <file>icons/scalable/actions/face-smile-symbolic.svg</file>
     <file>icons/scalable/actions/filter-folder-symbolic.svg</file>
@@ -112,17 +111,10 @@
     <file>icons/scalable/actions/gesture-swipe-right-symbolic.svg</file>
     <file>icons/scalable/actions/gesture-two-finger-swipe-left-symbolic.svg</file>
     <file>icons/scalable/actions/gesture-two-finger-swipe-right-symbolic.svg</file>
-    <file>icons/scalable/actions/glasses-symbolic.svg</file>
     <file>icons/scalable/actions/go-down-symbolic.svg</file>
     <file>icons/scalable/actions/go-next-symbolic.svg</file>
     <file>icons/scalable/actions/go-previous-symbolic.svg</file>
     <file>icons/scalable/actions/go-up-symbolic.svg</file>
-    <file>icons/scalable/actions/highlights-symbolic.svg</file>
-    <file>icons/scalable/actions/tegami-importance-low-symbolic.svg</file>
-    <file>icons/scalable/actions/tegami-mail-read-symbolic.svg</file>
-    <file>icons/scalable/actions/tegami-non-starred-symbolic.svg</file>
-    <file>icons/scalable/actions/tegami-read-receipt-symbolic.svg</file>
-    <file>icons/scalable/actions/tegami-open-menu-symbolic.svg</file>
     <file>icons/scalable/actions/image-x-generic-symbolic.svg</file>
     <file>icons/scalable/actions/info-outline-symbolic.svg</file>
     <file>icons/scalable/actions/insert-image-symbolic.svg</file>
@@ -144,7 +136,6 @@
     <file>icons/scalable/actions/mail-reply-sender-symbolic.svg</file>
     <file>icons/scalable/actions/mail-send-symbolic.svg</file>
     <file>icons/scalable/actions/mail-unread-symbolic.svg</file>
-    <file>icons/scalable/actions/markdown-symbolic.svg</file>
     <file>icons/scalable/actions/media-eject-symbolic.svg</file>
     <file>icons/scalable/actions/media-playback-pause-symbolic.svg</file>
     <file>icons/scalable/actions/media-playback-start-symbolic.svg</file>
@@ -155,7 +146,6 @@
     <file>icons/scalable/actions/network-server-symbolic.svg</file>
     <file>icons/scalable/actions/network-workgroup-symbolic.svg</file>
     <file>icons/scalable/actions/object-select-symbolic.svg</file>
-    <file>icons/scalable/actions/open-book-symbolic.svg</file>
     <file>icons/scalable/actions/open-menu-symbolic.svg</file>
     <file>icons/scalable/actions/orientation-landscape-inverse-symbolic.svg</file>
     <file>icons/scalable/actions/orientation-landscape-symbolic.svg</file>
@@ -182,6 +172,11 @@
     <file>icons/scalable/actions/system-users-symbolic.svg</file>
     <file>icons/scalable/actions/tag-outline-symbolic.svg</file>
     <file>icons/scalable/actions/tag-symbolic.svg</file>
+    <file>icons/scalable/actions/tegami-importance-low-symbolic.svg</file>
+    <file>icons/scalable/actions/tegami-mail-read-symbolic.svg</file>
+    <file>icons/scalable/actions/tegami-non-starred-symbolic.svg</file>
+    <file>icons/scalable/actions/tegami-open-menu-symbolic.svg</file>
+    <file>icons/scalable/actions/tegami-read-receipt-symbolic.svg</file>
     <file>icons/scalable/actions/text-x-generic-symbolic.svg</file>
     <file>icons/scalable/actions/translate-symbolic.svg</file>
     <file>icons/scalable/actions/user-bookmarks-symbolic.svg</file>
@@ -202,7 +197,6 @@
     <file>icons/scalable/actions/view-more-horizontal-symbolic.svg</file>
     <file>icons/scalable/actions/view-more-symbolic.svg</file>
     <file>icons/scalable/actions/view-refresh-symbolic.svg</file>
-    <file>icons/scalable/actions/view-restore-symbolic.svg</file>
     <file>icons/scalable/actions/view-reveal-symbolic.svg</file>
     <file>icons/scalable/actions/view-sort-ascending-symbolic.svg</file>
     <file>icons/scalable/actions/view-sort-descending-symbolic.svg</file>

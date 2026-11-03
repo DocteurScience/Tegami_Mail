@@ -53,14 +53,6 @@ headerbar.rail-header {
   min-height: 0;
 }
 
-.account-avatar {
-  min-width: 36px;
-  min-height: 36px;
-  border-radius: 18px;
-  background: linear-gradient(135deg, @accent_bg_color, shade(@accent_bg_color, 0.8));
-  color: #fff;
-}
-
 /* Version pill on the About window. */
 .about-version-chip {
   background-color: alpha(@accent_color, 0.15);
@@ -68,19 +60,6 @@ headerbar.rail-header {
   border-radius: 999px;
   padding: 1px 12px;
   font-weight: 600;
-}
-
-.about-section {
-  padding: 12px 14px;
-}
-
-.about-coffee {
-  font-size: 1.2em;
-}
-
-.account-avatar label {
-  font-weight: 700;
-  color: #fff;
 }
 
 .account-name {
@@ -94,15 +73,6 @@ headerbar.rail-header {
   border-radius: 15px;
 }
 
-/* The circle's glyph (initials or emoji) is drawn ink-centred by
-   ui::initials, so no label rules or optical nudges are needed here. */
-
-/* Small pill for the "All Inboxes" per-account sub-list. */
-.account-circle-sm {
-  min-width: 21px;
-  min-height: 21px;
-  border-radius: 10.5px;
-}
 /* The account editor's preview circle: a 72px disc whose color comes
    from a stylesheet the editor rewrites as the color button changes. */
 .account-preview-disc {
@@ -484,20 +454,6 @@ flowbox.attach-flow > flowboxchild {
   color: @accent_color;
 }
 
-/* Popout-window attachment popover rows. */
-.attach-row {
-  padding: 4px 6px;
-  border-radius: 8px;
-}
-.attach-row:hover {
-  background: alpha(currentColor, 0.06);
-}
-
-/* Tint the attachments button with the GNOME accent when present. */
-.attach-present {
-  color: @accent_color;
-}
-
 /* Account chip in the reader header (colors set at runtime). */
 .account-chip {
   border-radius: 8px;
@@ -531,22 +487,6 @@ flowbox.attach-flow > flowboxchild {
   opacity: 0.6;
 }
 
-/* Pane header titles (Attachments, Contacts): bold, matching GNOME's
-   header-bar title convention. */
-.pane-title {
-  font-weight: 700;
-}
-
-/* ---- Contacts view ---- */
-
-/* Selected contact: the full accent treatment the message list's selection
-   gets — accent ground, everything on it white at full strength. */
-.contacts-listbox > row:selected,
-.contacts-listbox > row:selected:hover,
-.contacts-listbox > row:selected:active {
-  background-color: @accent_bg_color;
-}
-
 /* A dragged message: its circle, subject and sender on a card. The margin
    leaves the drag surface room for the shadow. */
 .message-drag-card {
@@ -566,25 +506,6 @@ flowbox.attach-flow > flowboxchild {
   color: @accent_fg_color;
   font-weight: bold;
   font-size: 0.85em;
-}
-
-/* Faint rule above the pinned Contacts/Attachments footer, just enough to
-   set the utility rows apart from the account list scrolling above. */
-/* The rule over the sidebar's foot. Nothing below it: the list's own 6px
-   is the gap to the Attachments pill, as it is at the pill's sides and
-   under it. */
-.footer-separator {
-  min-height: 1px;
-  margin: 4px 12px 0 12px;
-  opacity: 0.5;
-}
-/* The Attachments pill as tall as the unified rows' above (46px, their
-   chevron's 32 and the row's padding); in the icon rail, as the rail's. */
-.sidebar-footer > row {
-  min-height: 46px;
-}
-.rail-collapsed .sidebar-footer > row {
-  min-height: 0;
 }
 
 /* Collapsible "Folders" (custom folders) section header. */
@@ -710,11 +631,6 @@ flowbox.attach-flow > flowboxchild {
 
 .list-search-row {
   padding: 8px 12px 10px 12px;
-}
-
-.list-title {
-  font-size: 1.25em;
-  font-weight: 800;
 }
 
 .list-count {
@@ -1096,7 +1012,6 @@ flowbox.attach-flow > flowboxchild {
   margin-right: -2px;
 }
 
-
 /* A reply in an expanded thread is a card like any other, indented 10px
    further onto the thread rail. The end margin is the list's, so an
    expanded thread never opens a gap along the pane's edge. */
@@ -1134,7 +1049,6 @@ flowbox.attach-flow > flowboxchild {
   margin-left: 0;
   margin-right: -5px;
 }
-
 
 /* The Actions Palette: quick-action buttons that expand rightward out of the
    ⋯. The whole line floats in an overlay over the pill's bottom-left corner,
@@ -1404,48 +1318,6 @@ headerbar box.list-tools.compact button {
   font-weight: 800;
 }
 
-.reader-avatar {
-  min-width: 44px;
-  min-height: 44px;
-  border-radius: 22px;
-  background: linear-gradient(135deg, @accent_bg_color, shade(@accent_bg_color, 0.75));
-}
-
-.reader-avatar label {
-  font-weight: 700;
-  color: #fff;
-}
-
-.reader-from-name {
-  font-weight: 700;
-}
-
-.reader-from-addr {
-  opacity: 0.55;
-  font-size: 0.9em;
-}
-
-.reader-date {
-  opacity: 0.55;
-  font-size: 0.9em;
-}
-
-.reader-to {
-  opacity: 0.55;
-  font-size: 0.9em;
-}
-
-.reader-cc {
-  opacity: 0.55;
-  font-size: 0.9em;
-}
-
-.reader-body {
-  padding: 22px 24px;
-  font-size: 1.02em;
-  line-height: 1.55;
-}
-
 /* ---- Notifications ---- */
 
 /* The bar uses the desktop accent color (libadwaita maps the GNOME accent to
@@ -1496,11 +1368,6 @@ headerbar box.list-tools.compact button {
 .toast-card-icon {
   color: rgba(0, 0, 0, 0.75);
   margin-top: 2px;
-}
-
-/* Header notification icon turns yellow while there are errors to see. */
-.attention-icon {
-  color: #ffca28;
 }
 
 /* Count pill in the header button. */
@@ -1770,22 +1637,6 @@ button.sidebar-heading-button {
   background-color: @accent_color;
 }
 
-.compose-body {
-  font-size: 1.02em;
-  line-height: 1.5;
-  background: transparent;
-}
-
-/* ---- Sidebar reorder ---- */
-
-.reorder-row {
-  padding: 10px 8px;
-}
-
-.reorder-row image {
-  opacity: 0.6;
-}
-
 /* Bottom "loading more" indicator for infinite scroll. */
 .list-loading label {
   font-size: 0.9em;
@@ -1808,7 +1659,7 @@ button.sidebar-heading-button {
 .ftype-image    { color: #1c9bd8; } /* cyan   — images */
 .ftype-generic  { color: #8c8c8c; } /* grey   — everything else */
 
-/* Quick-open button on the thumbnail, revealed on hover. */
+/* The drawer cells' quick actions, shown on hover and focus (below). */
 .gallery-open {
   opacity: 0;
   transition: opacity 120ms ease;
@@ -1816,7 +1667,6 @@ button.sidebar-heading-button {
   min-height: 0;
   padding: 5px;
 }
-.gallery-cell:hover .gallery-open,
 .gallery-open:hover {
   opacity: 1;
 }
@@ -1921,8 +1771,10 @@ button.sidebar-heading-button {
 .drawer-filename {
   font-size: 0.82em;
 }
-/* Reveal the hover quick-actions on drawer cells too. */
-.drawer-cell:hover .gallery-open {
+/* The quick actions show over the cell under the pointer, and over the
+   one the keyboard is in: a focused button nobody can see is a trap. */
+.drawer-cell:hover .gallery-open,
+.drawer-cell:focus-within .gallery-open {
   opacity: 1;
 }
 /* Drawer hover quick-actions are ~25% smaller than the gallery's. */
@@ -1943,9 +1795,7 @@ button.sidebar-heading-button {
 /* A file being deleted from the server (#289): pale red, "Deleting…" in
    place of its actions, until it fades out. */
 .attachment-drawer-flow > flowboxchild .drawer-cell.attachment-deleting,
-.gallery-flow > flowboxchild .gallery-cell.attachment-deleting,
-.attachment-drawer-flow > flowboxchild.attachment-deleting,
-.gallery-table row.attachment-deleting {
+.attachment-drawer-flow > flowboxchild.attachment-deleting {
   background: alpha(@error_color, 0.12);
 }
 .attachment-deleting-label {
@@ -2106,11 +1956,6 @@ window.welcome-window,
   color: #ffffff;
 }
 
-.welcome-added {
-  font-weight: 700;
-  color: #ffffff;
-}
-
 .welcome-check {
   color: #ffffff;
 }
@@ -2253,7 +2098,6 @@ textview.console-view text selection {
 .drawer-seam .reader-find.bottom {
   padding-bottom: 24px;
 }
-
 
 /* A row being dragged to a folder (`.dragging`, set for the drag's
    duration) fades to half strength while the envelope travels. */

@@ -105,7 +105,8 @@ pub(super) fn build_cell(
     let overlay = gtk::Overlay::new();
     overlay.set_child(Some(&square));
 
-    // Hover quick actions (Download, Open) — same style as the gallery.
+    // Quick actions (Download, Open), shown over the cell under the pointer
+    // or holding the keyboard focus (styles.css, `.drawer-cell`).
     let actions = gtk::Box::new(gtk::Orientation::Horizontal, 4);
     actions.set_halign(gtk::Align::End);
     actions.set_valign(gtk::Align::End);
