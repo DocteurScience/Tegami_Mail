@@ -2410,3 +2410,11 @@ toast-countdown {
 .secondary-text {
   opacity: 0.7;
 }
+
+/* The tags panel: Favorite is a section of its own, above the tags
+   (mockup 07). */
+.tags-panel-list > row.tags-panel-first {
+  border-top: 1px solid alpha(currentColor, 0.15);
+  margin-top: 6px;
+  padding-top: 6px;
+}

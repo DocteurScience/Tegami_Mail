@@ -309,7 +309,7 @@ tags_expanded_accounts = ["b@x"]
 #[test]
 fn sidebar_state_defaults() {
     let missing = SidebarState::default();
-    assert!(!missing.tags_expanded);
+    assert!(missing.tags_expanded);
     assert!(!missing.favorites_expanded);
     assert!(!missing.smart_expanded);
     let empty: SidebarFile = toml::from_str("").unwrap();

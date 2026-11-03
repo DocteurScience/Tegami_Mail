@@ -94,7 +94,7 @@ pub(crate) fn show(
         line.append(&label);
         if let Some(key) = &state.star_key {
             let keys = gtk::Label::new(Some(&key.to_uppercase()));
-            keys.add_css_class("dim-label");
+            keys.add_css_class("secondary-text");
             keys.add_css_class("caption");
             line.append(&keys);
         }
@@ -124,7 +124,7 @@ pub(crate) fn show(
         // The first nine tags have a number key (KEYBOARD_SHORTCUTS.md).
         if let Some(key) = crate::ui::keymap::tag_key(i) {
             let keys = gtk::Label::new(Some(key));
-            keys.add_css_class("dim-label");
+            keys.add_css_class("secondary-text");
             keys.add_css_class("caption");
             line.append(&keys);
         }
@@ -329,6 +329,8 @@ fn set_checked(row: &gtk::ListBoxRow, on: bool) {
 fn menu_button(label: &str) -> gtk::Button {
     let text = gtk::Label::new(Some(label));
     text.set_xalign(0.0);
+    // A menu entry's weight, not a button's (mockup 07).
+    text.add_css_class("body");
     let button = gtk::Button::new();
     button.set_child(Some(&text));
     button.add_css_class("flat");

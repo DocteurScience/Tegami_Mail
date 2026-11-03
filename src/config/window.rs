@@ -8,9 +8,9 @@ use super::{config_file, default_on, read_toml, save_plain_toml, save_private_to
 
 /// Sidebar state persisted across restarts, as sidebar.toml holds it.
 ///
-/// A missing file gives `Default` (every section closed), while a file
+/// A missing file gives `Default` (every section closed but Tags), while a file
 /// without the section keys opens the ones marked `default_on`.
-#[derive(Debug, Default, Deserialize, Serialize)]
+#[derive(Debug, Deserialize, Serialize)]
 pub(crate) struct SidebarState {
     /// Account emails in the user's preferred display order.
     #[serde(default)]
@@ -46,6 +46,26 @@ pub(crate) struct SidebarState {
     pub(crate) smart_expanded: bool,
     #[serde(default)]
     pub(crate) tags_expanded_accounts: Vec<String>,
+}
+
+/// A first launch: every section closed but Tags, which the redesign
+/// shows open under the accounts (mockups 01 and 07).
+impl Default for SidebarState {
+    fn default() -> Self {
+        SidebarState {
+            order: Vec::new(),
+            collapsed: Vec::new(),
+            folders_expanded: Vec::new(),
+            icon_only: false,
+            tree_collapsed: Vec::new(),
+            folder_order: Vec::new(),
+            tags_expanded: true,
+            favorites: Vec::new(),
+            favorites_expanded: false,
+            smart_expanded: false,
+            tags_expanded_accounts: Vec::new(),
+        }
+    }
 }
 
 /// sidebar.toml's own name for its shape, used by the settings bundle.

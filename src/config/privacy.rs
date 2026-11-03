@@ -605,7 +605,8 @@ impl Default for PrivacyFile {
             show_remote_banner: true,
             show_spoof_banner: true,
             section_style: SectionStyle::default(),
-            tags_placement: SectionPlacement::AboveAccounts,
+            // Under the accounts' folders, as the redesign has it (mockup 01).
+            tags_placement: SectionPlacement::BelowAccounts,
             favorites_placement: SectionPlacement::AboveAccounts,
             chevrons_left: default_chevrons_left(),
             account_click_folds: false,
