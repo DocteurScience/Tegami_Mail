@@ -53,7 +53,7 @@ impl MessageList {
     pub(super) fn on_append_messages(&mut self, messages: Vec<Message>) {
         self.pending_restore = None;
         // Grow the searchable index in place. Dedup by (account, uid) since
-        // UIDs collide across accounts in the unified inbox.
+        // UIDs collide across accounts in a merged view.
         let existing: std::collections::HashSet<(u32, u32)> =
             self.all.iter().map(|m| (m.account_id, m.uid)).collect();
         let before = self.all.len();

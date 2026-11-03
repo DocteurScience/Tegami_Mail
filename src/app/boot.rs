@@ -127,7 +127,7 @@ fn load_accounts(sidebar_state: &mut config::SidebarState) -> Vec<AccountConfig>
     config
 }
 
-/// The view the sidebar picks first instead of All Inboxes (#256), from
+/// The view the sidebar picks first instead of the first inbox (#256), from
 /// Settings → General's start view and the last view left.
 pub(super) fn start_target(start_view: config::StartView) -> Option<StartTarget> {
     let (last, last_account) = config::load_last_view();

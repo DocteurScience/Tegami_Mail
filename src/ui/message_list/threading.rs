@@ -76,9 +76,9 @@ pub(super) fn reader_conversation(
 /// conversation's true head is further down, unrendered. Asked against the
 /// whole list, that row failed the head test, was taken for a reply picked
 /// out of an opened-up thread, and was shown alone in the reader, with no
-/// look in the cache for the rest. The unified Inboxes hit this constantly:
-/// several inboxes merged, newest first, put a conversation's start past
-/// the rendered window within days, while one folder rarely does.
+/// look in the cache for the rest. Merged views hit this most: several
+/// folders merged, newest first, put a conversation's start past the
+/// rendered window within days, while one folder rarely does.
 pub(super) fn heads_its_row(
     key: (u32, u32),
     msg_thread: &std::collections::HashMap<(u32, u32), (u32, String)>,

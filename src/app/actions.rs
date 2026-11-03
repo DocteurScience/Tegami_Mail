@@ -228,17 +228,15 @@ impl AppModel {
         }
     }
 
-    /// A conversation card's own action pill. Reply/Reply all/Forward open the
-    /// reader's inline composer (like the toolbar); the rest act like RowAction.
+    /// A conversation card's own action pill. Reply/Reply all/Forward open a
+    /// composer window on that card's message (like the toolbar); the rest
+    /// act like RowAction.
     fn on_card_action(
         &mut self,
         action: RowAction,
         message: Box<Message>,
         sender: ComponentSender<Self>,
     ) {
-        // A reply started from a card belongs in the main window's
-        // inline composer, exactly like the toolbar's buttons — not in
-        // a separate compose window.
         let m = self.with_cached_body(*message);
         tracing::debug!(
             target: "tegami::reply",

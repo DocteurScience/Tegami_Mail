@@ -170,7 +170,7 @@ pub(crate) enum AccountsInput {
     EditFilter(usize),
     /// The dialog saved changes to the rule at this index.
     FilterEdited(usize, crate::config::FilterRule),
-    /// Toggle whether a rule's folder is listed under All Inboxes.
+    /// The dialog made a new rule.
     FilterAdded(crate::config::FilterRule),
     /// Tags (#71): the dialog, and what it hands back.
     AddTag,

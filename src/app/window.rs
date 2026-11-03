@@ -125,27 +125,18 @@ impl AppModel {
         });
         app.add_action(&quit);
         gtk::prelude::GtkApplicationExt::set_accels_for_action(&app, "app.quit", &["<Ctrl>q"]);
-        // Ctrl+Shift+C opens the console, but in a composer it is
-        // Thunderbird's Cc, as Ctrl+Shift+A is Attach (#490, #491). An application key
-        // reaches the main window before the composer in it, so the two
-        // belong to actions of their own that ask where the focus is
-        // (AppMsg::ComposerKey). The menus keep the real actions, with
-        // the keys shown beside them, so a click there never reaches a
-        // composer that had the focus before.
-        for (name, keyval, accel) in [
-            ("accounts-key", gtk::gdk::Key::a, "<Ctrl><Shift>a"),
-            ("console-key", gtk::gdk::Key::c, "<Ctrl><Shift>c"),
-        ] {
-            let action = gtk::gio::SimpleAction::new(name, None);
-            let s = sender.clone();
-            action.connect_activate(move |_, _| s.input(AppMsg::ComposerKey(keyval)));
-            app.add_action(&action);
-            gtk::prelude::GtkApplicationExt::set_accels_for_action(
-                &app,
-                &format!("app.{name}"),
-                &[accel],
-            );
-        }
+        // Ctrl+Shift+C opens the console. In a composer window it is
+        // Thunderbird's Cc, as Ctrl+Shift+A is Attach (#490, #491): the
+        // composer's capture-phase key handler takes both before this.
+        let console_key = gtk::gio::SimpleAction::new("console-key", None);
+        let s = sender.clone();
+        console_key.connect_activate(move |_, _| s.input(AppMsg::OpenConsole));
+        app.add_action(&console_key);
+        gtk::prelude::GtkApplicationExt::set_accels_for_action(
+            &app,
+            "app.console-key",
+            &["<Ctrl><Shift>c"],
+        );
         // Ctrl+Alt+1, 2 and 3: the reader right of the list, below it, or
         // off (#475). The menu shows them beside its radio items.
         for (pane, accel) in [
@@ -173,7 +164,7 @@ impl AppModel {
         ] {
             let action = gtk::gio::SimpleAction::new(name, None);
             let s = sender.clone();
-            action.connect_activate(move |_, _| s.input(AppMsg::ZoomKey(step)));
+            action.connect_activate(move |_, _| s.input(AppMsg::ZoomMessage(step)));
             app.add_action(&action);
             gtk::prelude::GtkApplicationExt::set_accels_for_action(
                 &app,

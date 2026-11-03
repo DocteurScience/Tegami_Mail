@@ -406,8 +406,8 @@ impl AppModel {
 
     /// Paint the mail panes straight from the disk cache, before any worker
     /// has spoken: every enabled account's folder list and inbox slice is
-    /// loaded synchronously at startup, so "All Inboxes" (the launch view) is
-    /// full the instant the window appears. The workers' own cache-first
+    /// loaded synchronously at startup, so the launch view is full the
+    /// instant the window appears. The workers' own cache-first
     /// loads and syncs then replace each slice with whatever changed since
     /// the app last ran.
     fn prime_from_cache(&mut self) {

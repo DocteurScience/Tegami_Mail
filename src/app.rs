@@ -763,13 +763,9 @@ impl SimpleComponent for AppModel {
                                     set_visible: model.attachments_loading,
                                 },
                             },
-                            // Reader content: the inline reply/forward pane drops
-                            // down (SlideDown revealer) above the message body,
-                            // pushing it down to make room. The revealer is
-                            // prepended in `init`. The drawer's widget is a Paned
+                            // Reader content: the drawer's widget is a Paned
                             // that holds the reader body + attachment footer.
                             #[wrap(Some)]
-                            #[name = "reader_content_box"]
                             set_content = &gtk::Box {
                                 set_orientation: gtk::Orientation::Vertical,
                                 append: model.attachment_drawer.widget(),
@@ -788,8 +784,8 @@ impl SimpleComponent for AppModel {
 
                 // ======== Full-window attachment lightbox ========
                 // Covers all three panes; shown for images and PDFs coming
-                // from the drawer. Same look as the gallery's own lightbox
-                // (same CSS), no extra window.
+                // from the drawer, and from a card's attachments; no
+                // extra window.
                 add_overlay: model.lightbox.widget(),
             },
             },

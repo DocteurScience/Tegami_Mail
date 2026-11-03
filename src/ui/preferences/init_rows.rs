@@ -273,20 +273,13 @@ impl Preferences {
             .sidebar
             .rail_fold_row
             .set_enable_expansion(init.rail_fold.enabled);
-        // Fold up expanded items starts folded each
-        // launch and stay as they are left for the rest of the session,
-        // a rebuilt Settings window included. Switching expansion on opens
-        // a row, so its state is set after that.
-        for (row, i) in [(&widgets.sidebar.rail_fold_row, 0)] {
-            row.set_expanded(SESSION_OPEN.with(|o| o.get()[i]));
-            row.connect_expanded_notify(move |row| {
-                SESSION_OPEN.with(|o| {
-                    let mut open = o.get();
-                    open[i] = row.is_expanded();
-                    o.set(open);
-                });
-            });
-        }
+        // Fold up expanded items starts folded each launch and stays as it
+        // is left for the rest of the session, a rebuilt Settings window
+        // included. Switching expansion on opens the row, so its state is
+        // set after that.
+        let row = &widgets.sidebar.rail_fold_row;
+        row.set_expanded(RAIL_FOLD_OPEN.with(|o| o.get()));
+        row.connect_expanded_notify(|row| RAIL_FOLD_OPEN.with(|o| o.set(row.is_expanded())));
         widgets
             .sidebar
             .rail_fold_accounts_row

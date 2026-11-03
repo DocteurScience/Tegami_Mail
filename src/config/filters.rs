@@ -46,7 +46,7 @@ pub(crate) struct FilterRule {
     #[serde(default)]
     pub(crate) tag: String,
     /// Whether the destination folder's unread mail counts toward the unread
-    /// total (the All Inboxes chip, the tray icon and its menu, the
+    /// total (the tray icon and its menu, the launcher badge, the
     /// Background Apps status), as inbox mail does (#116). Trash and Junk
     /// destinations never count, whatever this says.
     #[serde(default = "count_unread_default")]

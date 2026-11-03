@@ -201,7 +201,7 @@ fn editor_view() -> (webkit6::WebView, webkit6::UserContentManager) {
     webview.set_settings(&settings);
     // Transparent until the document paints: a fresh WebView otherwise
     // renders an opaque default surface (black) for its first frames,
-    // which flashes while the inline composer slides over the reader.
+    // which flashes as the composer window opens.
     // The document itself paints `Canvas` below, so the editor's normal
     // ground appears with the first real frame.
     webview.set_background_color(&gtk::gdk::RGBA::new(0.0, 0.0, 0.0, 0.0));

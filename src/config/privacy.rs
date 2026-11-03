@@ -477,7 +477,7 @@ pub(crate) struct PrivacyFile {
     /// Where Favorites sit, the same choices.
     #[serde(default)]
     pub(crate) favorites_placement: SectionPlacement,
-    /// Whether the sidebar's disclosure chevrons (All Inboxes, account
+    /// Whether the sidebar's disclosure chevrons (merged rows, account
     /// headers) LEAD their rows; off puts them back at the row's end.
     #[serde(default = "default_chevrons_left")]
     pub(crate) chevrons_left: bool,

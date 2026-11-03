@@ -31,7 +31,7 @@ pub(super) fn activate_on_keys(flow: &gtk::FlowBox, sender: &ComponentSender<Att
 }
 
 /// The grab pill floats just above the seam, over the reader's bottom
-/// edge — the same affordance, in the same place, as the split reply's.
+/// edge.
 /// Its gestures route through update(), which knows the collapsed
 /// state: a plain click toggles the drawer, a drag resizes it live —
 /// collapsed included, where the release point becomes the drawer's

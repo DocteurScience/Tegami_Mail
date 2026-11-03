@@ -219,10 +219,12 @@ mod tests {
                     .expect("stored");
             }
 
-            let changed = refresh_flags(1, &mut sess, Some(&cache), &[folder.clone()]).await;
-            assert_eq!(changed, [folder.clone()]);
+            let changed =
+                refresh_flags(1, &mut sess, Some(&cache), std::slice::from_ref(&folder)).await;
+            assert_eq!(changed, std::slice::from_ref(&folder));
             assert_eq!(state_of(&cache), Some((oldest, false, false)));
-            let again = refresh_flags(1, &mut sess, Some(&cache), &[folder.clone()]).await;
+            let again =
+                refresh_flags(1, &mut sess, Some(&cache), std::slice::from_ref(&folder)).await;
             assert!(again.is_empty(), "nothing left to change");
 
             // The folder's own sync, from the index as it was.

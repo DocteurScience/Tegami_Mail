@@ -314,8 +314,8 @@ pub(crate) enum MessageListInput {
     /// Change the list sort order.
     SetSort(SortOrder),
     /// A message was read. Messages are named by their slot (account,
-    /// folder, UID) here: a UID repeats from folder to folder and, in the
-    /// unified view, from account to account (#333).
+    /// folder, UID) here: a UID repeats from folder to folder and, in a
+    /// merged view, from account to account (#333).
     MarkRead((u32, u32, u32)),
     SetRead {
         slot: (u32, u32, u32),

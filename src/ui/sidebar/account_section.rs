@@ -120,8 +120,7 @@ impl Sidebar {
         header.add_css_class("account-header");
         let hbox = gtk::Box::new(gtk::Orientation::Horizontal, 10);
 
-        // A configured label wins (same as the All Inboxes sub-rows);
-        // otherwise the account's name, then its address.
+        // A configured label wins; otherwise the account's name, then its address.
         let name_str = if !section.account.label.trim().is_empty()
             && section.account.label != section.account.email
         {
@@ -135,8 +134,7 @@ impl Sidebar {
         let circle = account_circle(section, &name_str);
         // While this account's section is collapsed its Inbox row (and the
         // chip on it) is hidden inside the revealer, so surface the inbox
-        // unread count on the avatar instead — mirroring how the collapsed
-        // "All Inboxes" rail badges its icon.
+        // unread count on the avatar instead.
         let inbox_unread = section
             .folders
             .iter()
@@ -161,7 +159,7 @@ impl Sidebar {
         // Chevron is tracked even when collapsed so per-account toggles
         // still update an icon; it's only shown in the expanded layout —
         // leading (overlaid on the header's left edge, reserving no
-        // layout space, like the All Inboxes row's) or classic trailing,
+        // layout space) or classic trailing,
         // per Settings → Chevron placement.
         let chevron = gtk::Image::from_icon_name(chevron_icon(!folded));
         chevron.set_valign(gtk::Align::Center);
@@ -657,8 +655,8 @@ fn account_circle(section: &SectionData, name_str: &str) -> gtk::Box {
     let circle = gtk::Box::new(gtk::Orientation::Horizontal, 0);
     circle.add_css_class("account-circle");
     circle.add_css_class(&format!("acct-color-{id}"));
-    // Ringed in the account's color, as the list's avatars are in
-    // All Inboxes: a picture covers the color the disc would show.
+    // Ringed in the account's color, as the list's avatars are in merged
+    // views: a picture covers the color the disc would show.
     circle.add_css_class(&format!("acct-ring-{id}"));
     circle.set_valign(gtk::Align::Center);
     // Keep it a perfect circle: a fixed square that never stretches with

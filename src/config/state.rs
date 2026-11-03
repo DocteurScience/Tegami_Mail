@@ -56,8 +56,8 @@ pub(super) struct StateFile {
     /// commit, so a runtime update gets another try with every font.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     web_font_fallback: Option<String>,
-    /// The mail view open last (#256): an account's folder, or All Inboxes
-    /// when `email` is empty. Accounts are named by address, which stays
+    /// The mail view open last (#256): an account's folder; an empty
+    /// `email` (a file from when All Inboxes existed) reopens nothing. Accounts are named by address, which stays
     /// true across launches where an account's number may not.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     last_view: Option<LastView>,
@@ -168,7 +168,7 @@ fn save_state(state: &StateFile) {
 /// A mail view to reopen at launch (#256).
 #[derive(Clone, Debug, Default, PartialEq, Eq, Deserialize, Serialize)]
 pub(crate) struct LastView {
-    /// The account's address; empty for All Inboxes.
+    /// The account's address; empty in files from when All Inboxes existed.
     #[serde(default)]
     pub(crate) email: String,
     /// The folder's path on the server.

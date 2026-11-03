@@ -109,7 +109,7 @@ pub(crate) fn local_mail_dir() -> Option<PathBuf> {
 /// A new On This Computer account (#552). Its mail is kept whole on disk,
 /// so the cache keeps everything it renders, as for an account keeping all
 /// its mail offline; and mail filed away is not new mail, so it stays out
-/// of All Inboxes until asked.
+/// of the merged views and the unread totals until asked.
 pub(crate) fn local_account() -> AccountConfig {
     let name = crate::i18n::i18n("On this computer");
     AccountConfig {
@@ -248,7 +248,8 @@ pub(crate) struct AccountConfig {
     /// without one, and the composer's signature button puts one in.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub(crate) default_signature: Option<usize>,
-    /// How this account is labelled in the UI (e.g. the All Inboxes view).
+    /// How this account is labelled in the UI (its sidebar header, the
+    /// reader's account chip).
     /// When unset, the email address is shown.
     #[serde(default)]
     pub(crate) label: Option<String>,

@@ -458,14 +458,6 @@ impl AppModel {
             }
 
             AppMsg::Shortcut(action) => self.run_shortcut(action, &sender),
-            AppMsg::ZoomKey(step) => sender.input(AppMsg::ZoomMessage(step)),
-            // Ctrl+Shift+C opens the console; Ctrl+Shift+A means nothing
-            // in the main window (a composer window takes both itself).
-            AppMsg::ComposerKey(keyval) => {
-                if keyval != gtk::gdk::Key::a {
-                    sender.input(AppMsg::OpenConsole);
-                }
-            }
             AppMsg::ZoomMessage(step) => {
                 use config::READER_ZOOM_STEPS as STEPS;
                 let at = STEPS.iter().position(|&z| z == self.zoom).unwrap_or(5) as i32;

@@ -501,10 +501,9 @@ mod tests {
             )
         );
         // An English reply to a Hebrew message has nothing to stamp.
-        let reply = format!(
-            "<p>Thanks</p><p class=\"tegami-quote-attr\">Dan wrote:</p>\
+        let reply = "<p>Thanks</p><p class=\"tegami-quote-attr\">Dan wrote:</p>\
             <blockquote><div>שלום<br>Hi</div></blockquote>"
-        );
+            .to_string();
         assert_eq!(stamp(&reply), reply);
         // A Hebrew reply over a Hebrew message: the quote goes with it.
         assert_eq!(

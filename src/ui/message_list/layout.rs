@@ -404,7 +404,7 @@ impl MessageList {
     }
 
     /// Update the display-wide CSS that rings each account's avatar with its
-    /// color (used in the unified "All Inboxes" view to identify the account).
+    /// color (in views merging several accounts, to tell them apart).
     /// The ring is the sidebar's, a pixel off the disc, so an account's
     /// avatar reads the same in both places.
     pub(super) fn refresh_tint_css(&self) {

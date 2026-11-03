@@ -57,8 +57,8 @@ pub(super) fn stage_undo(sender: &ComponentSender<AppModel>) {
     }
 }
 
-/// TEGAMI_SHOWCASE_REPLY opens the inline reply composer on the
-/// selected message, to check the composer's grounds (#148).
+/// TEGAMI_SHOWCASE_REPLY opens a reply composer on the selected
+/// message, to check the composer's grounds (#148).
 /// Two seconds on, it logs where focus landed (#266).
 pub(super) fn stage_reply(root: &adw::ApplicationWindow, sender: &ComponentSender<AppModel>) {
     if let Ok(v) = std::env::var("TEGAMI_SHOWCASE_REPLY") {
@@ -68,7 +68,7 @@ pub(super) fn stage_reply(root: &adw::ApplicationWindow, sender: &ComponentSende
         let window = root.clone();
         gtk::glib::timeout_add_seconds_local_once(at, move || {
             s.input(AppMsg::Reply);
-            // After the split's slide, which focus waits for.
+            // Once the composer window has opened and taken the focus.
             gtk::glib::timeout_add_seconds_local_once(2, move || showcase_log_focus(&window));
         });
     }
@@ -123,7 +123,7 @@ pub(super) fn stage_forward(sender: &ComponentSender<AppModel>) {
     }
 }
 
-/// TEGAMI_SHOWCASE_COMPOSE_MENU opens the inline composer's More actions
+/// TEGAMI_SHOWCASE_COMPOSE_MENU opens the latest composer's More actions
 /// menu, or with `from` its Send from menu. Pair it with
 /// TEGAMI_SHOWCASE_MENU=main.
 pub(super) fn stage_compose_menu(sender: &ComponentSender<AppModel>) {
@@ -136,7 +136,7 @@ pub(super) fn stage_compose_menu(sender: &ComponentSender<AppModel>) {
     }
 }
 
-/// TEGAMI_SHOWCASE_COMPOSE_FROM=N picks the inline composer's
+/// TEGAMI_SHOWCASE_COMPOSE_FROM=N picks the latest composer's
 /// From entry N at 7 s, to check where the new account's
 /// signature lands (#237).
 pub(super) fn stage_compose_from(sender: &ComponentSender<AppModel>) {
@@ -148,7 +148,7 @@ pub(super) fn stage_compose_from(sender: &ComponentSender<AppModel>) {
     }
 }
 
-/// TEGAMI_SHOWCASE_COMPOSE_CLOSE=N cancels the inline composer
+/// TEGAMI_SHOWCASE_COMPOSE_CLOSE=N cancels the latest composer
 /// N seconds in (pair with TEGAMI_SHOWCASE_REPLY), to check
 /// that a closed composer's web view, and so its web process,
 /// actually goes away (#221).
@@ -162,7 +162,7 @@ pub(super) fn stage_compose_close(sender: &ComponentSender<AppModel>) {
 }
 
 /// TEGAMI_SHOWCASE_COMPOSE_FORMAT=plain@6,rich@10 switches the
-/// inline composer's format at those moments (#424). Pair
+/// latest composer's format at those moments (#424). Pair
 /// with TEGAMI_SHOWCASE_REPLY.
 pub(super) fn stage_compose_format(sender: &ComponentSender<AppModel>) {
     if let Ok(steps) = std::env::var("TEGAMI_SHOWCASE_COMPOSE_FORMAT") {

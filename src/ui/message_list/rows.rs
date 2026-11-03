@@ -624,7 +624,7 @@ impl MessageList {
             self.groups.reserve(grouped.len());
         }
         let mut any_expanded = false;
-        let full_rows = self.window.max(LIST_WINDOW).min(FULL_ROWS_AT_MOST);
+        let full_rows = self.window.clamp(LIST_WINDOW, FULL_ROWS_AT_MOST);
         // Rows on screen are described in full wherever they are, so a
         // rebuild never shows them half done.
         let bound = self.shared.bound_slots();

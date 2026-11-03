@@ -69,11 +69,13 @@ impl MessageWindow {
             .attachments
             .iter()
             .flat_map(|(key, files)| {
-                files.iter().enumerate().filter_map(move |(index, a)| {
-                    crate::ui::message_view::cached_card_preview(&a.data)
-                        .is_none()
-                        .then(|| (*key, index, a.name.clone(), a.data.clone()))
-                })
+                files
+                    .iter()
+                    .enumerate()
+                    .filter(|(_, a)| {
+                        crate::ui::message_view::cached_card_preview(&a.data).is_none()
+                    })
+                    .map(|(index, a)| (*key, index, a.name.clone(), a.data.clone()))
             })
             .collect();
         crate::ui::message_view::request_card_previews(wanted, self.view.sender());

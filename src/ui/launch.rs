@@ -13,8 +13,8 @@
 //! the request's `Response` means a failed quiet launch is retried with the
 //! portal's own app chooser, whose launch machinery works where the direct
 //! one does not, and whose "always open with" sticks in the permission
-//! store. The same request plumbing opens attachments (`portal_open_file` in
-//! the gallery), which is where the chooser retry was first worked out.
+//! store. The same request plumbing opens attachments (`portal_open_file`),
+//! which is where the chooser retry was first worked out.
 //!
 //! On top of all that sits the user's own choice (#232): Settings names the
 //! browser links open in, and it is launched by its desktop entry before any

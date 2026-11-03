@@ -93,7 +93,7 @@ fn another_list_is_swapped_in_whole() {
     assert!(!swaps(&old, &[]));
     // Another account's folder.
     assert!(swaps(&old, &(2000..3000).collect::<Vec<_>>()));
-    // All Inboxes to one of its accounts: every other row goes.
+    // A merged view to one of its accounts: every other row goes.
     let one: Vec<u32> = (0..1000).filter(|n| n % 2 == 0).collect();
     assert!(swaps(&old, &one));
 }

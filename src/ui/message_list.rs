@@ -60,7 +60,7 @@ pub(crate) struct MessageList {
     /// one rebuild instead of one each.
     rebuild_queued: Option<bool>,
     /// The view on show, as the app named it (`SetView`), and its content's
-    /// fingerprint: a unified view is kept as built when left, and shown
+    /// fingerprint: a merged view is kept as built when left, and shown
     /// again from that if nothing in it changed.
     view_key: Option<u64>,
     view_fp: u64,
@@ -140,7 +140,7 @@ pub(crate) struct MessageList {
     avatars: bool,
     /// Whether a sender's site icon may fill one (#30).
     sender_logos: bool,
-    /// Ring each avatar in its account's color (the unified inbox view).
+    /// Ring each avatar in its account's color (views merging accounts).
     colorize: bool,
     /// account_id → avatar color, for the rings.
     account_colors: std::collections::HashMap<u32, String>,
@@ -153,8 +153,8 @@ pub(crate) struct MessageList {
     /// The bulk bar's tag button, which its menu hangs from (#313).
     bulk_tag_btn: gtk::Button,
     /// The message currently being viewed, kept selected across list rebuilds.
-    /// Keyed by (account_id, id) since UIDs collide across accounts in the
-    /// unified "All Inboxes" view.
+    /// Keyed by (account_id, id) since UIDs collide across accounts in a
+    /// merged view.
     selected_id: Option<(u32, u32)>,
     /// (account, message-id, references) for mail in the account's *other*
     /// folders. A conversation is often joined through messages that aren't on

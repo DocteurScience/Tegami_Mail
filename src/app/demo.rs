@@ -116,7 +116,7 @@ pub(super) fn demo_tags() -> Vec<config::Tag> {
 }
 
 /// The demo's filter rules, one per account, each filing into that
-/// account's custom folder (backend.rs) and listed under All Inboxes. Their
+/// account's custom folder (backend.rs). Their
 /// matches are chosen to hit only the mail already in those folders: the
 /// mock backend never moves anything, so a rule catching inbox mail would
 /// only make it vanish from the list.

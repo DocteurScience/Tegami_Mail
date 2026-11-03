@@ -14,7 +14,7 @@ use super::msg::AppMsg;
 
 impl AppModel {
     /// The account to act on by default: the selected folder's account,
-    /// else the first in sidebar order. With All Inboxes open that is the
+    /// else the first in sidebar order. With a merged view open that is the
     /// account a new message starts from, so it has to be the one the
     /// person put on top, not the one added first (#261).
     pub(super) fn active_account(&self) -> u32 {
@@ -239,7 +239,7 @@ impl AppModel {
 
     /// Display name for an account (name, else email).
     pub(super) fn account_name(&self, account_id: u32) -> String {
-        // The account's UI label (how it's shown in All Inboxes / the reader chip).
+        // The account's UI label (its sidebar header, the reader chip).
         self.accounts
             .iter()
             .find(|a| a.id == account_id)

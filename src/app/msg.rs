@@ -7,8 +7,6 @@
 
 use std::collections::HashMap;
 
-use relm4::prelude::*;
-
 use crate::config::{self, AccountConfig};
 use crate::models::{
     Account, Attachment, Folder, FolderKind, KeywordFinding, Message, ThreadSummary,
@@ -456,24 +454,24 @@ pub(crate) enum AppMsg {
     ShowcaseDeleteAttachment { name: String, confirmed: bool },
     /// Showcase only: open a drop gap in the Settings toolbar editor.
     ShowcaseToolbarGap { zone: usize, index: usize },
-    /// Showcase only: open the inline composer's More actions menu, or its
+    /// Showcase only: open the latest composer's More actions menu, or its
     /// Send from menu.
     ShowcaseComposeMenu { from: bool },
-    /// Pick entry `n` of the inline composer's From row (#237 capture).
+    /// Pick entry `n` of the latest composer's From row (#237 capture).
     ShowcaseComposeFrom(u32),
     /// Forward one message of the open conversation by its id (#240), as
     /// its card's Forward button would.
     ShowcaseForward { account_id: u32, id: u32 },
-    /// Showcase only (TEGAMI_SHOWCASE_COMPOSE_UNDO): drive the inline
+    /// Showcase only (TEGAMI_SHOWCASE_COMPOSE_UNDO): drive the latest
     /// composer's history through a scripted round of edits and undos.
     ShowcaseComposeUndo,
     /// Showcase only: open the window's burger menu, to read its Undo and
     /// Redo entries in the state they are actually seen in.
     ShowcaseBurger,
-    /// Showcase only: put the inline composer into this composing format
-    /// first, so the same round runs over a source-mode body.
+    /// Showcase only: put the latest composer into this composing format
+    /// first, so the same round runs over a plain-text body.
     ShowcaseComposeFormat(config::ComposeFormat),
-    /// Showcase only (TEGAMI_SHOWCASE_COMPOSE_CLOSE): cancel the inline
+    /// Showcase only (TEGAMI_SHOWCASE_COMPOSE_CLOSE): cancel the latest
     /// composer, to check its web process goes with it.
     ShowcaseComposeClose,
     /// Showcase only (TEGAMI_SHOWCASE_ACCOUNT=new[:<provider>]): open a blank
@@ -498,8 +496,8 @@ pub(crate) enum AppMsg {
     DeleteForever,
     /// Erase messages for good (confirmed "Delete permanently" in Trash).
     PurgeMessages(Vec<Message>),
-    /// A conversation card's own action pill. Reply/Reply all/Forward open the
-    /// reader's inline composer (like the toolbar); the rest act like RowAction.
+    /// A conversation card's own action pill. Reply/Reply all/Forward open a
+    /// composer window on that card's message; the rest act like RowAction.
     CardAction {
         action: RowAction,
         message: Box<Message>,
@@ -771,13 +769,6 @@ pub(crate) enum AppMsg {
     PrintMessage,
     /// A single-key shortcut fired.
     Shortcut(Shortcut),
-    /// The zoom keys in the main window: the inline composer's while it has
-    /// the focus and its format zooms, else the message's.
-    ZoomKey(i8),
-    /// Ctrl+Shift+A or Ctrl+Shift+C in the main window: the inline
-    /// composer's while it has the focus, else the accounts switch or the
-    /// console.
-    ComposerKey(gtk::gdk::Key),
     /// Message zoom (Ctrl+ / Ctrl- / Ctrl+0): a step up, a step down, or
     /// back to the default, for this session.
     ZoomMessage(i8),

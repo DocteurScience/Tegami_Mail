@@ -308,13 +308,17 @@ pub(crate) fn cached_card_preview(data: &[u8]) -> Option<String> {
     crate::ui::thumbnails::cached_card_preview(data).flatten()
 }
 
+/// One card preview to make: the card's key, the attachment's index on it,
+/// its name and its bytes.
+pub(crate) type CardPreviewRequest = ((u32, u32), usize, String, Vec<u8>);
+
 /// Make the previews the cards of `view` still lack (docs/DESIGN.md,
 /// "Attachments"): each item is a card's key, the attachment's index on it,
 /// its name and its bytes. Pictures and PDFs only; each preview is handed to
 /// the view as it is ready, the others never are. Already made, it is sent
 /// at once.
 pub(crate) fn request_card_previews(
-    items: Vec<((u32, u32), usize, String, Vec<u8>)>,
+    items: Vec<CardPreviewRequest>,
     view: &relm4::Sender<MessageViewInput>,
 ) {
     for (key, index, name, data) in items {

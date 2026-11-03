@@ -44,7 +44,7 @@ pub(super) fn palette_key(sender: &ComponentSender<AppModel>) -> gtk::EventContr
 }
 
 /// A menu entry that shows its keys even though they belong to another
-/// action (see `accounts-key`).
+/// action (see `console-key` in `window.rs`).
 pub(super) fn keyed_item(label: &str, action: &str, accel: &str) -> gtk::gio::MenuItem {
     let item = gtk::gio::MenuItem::new(Some(label), Some(action));
     item.set_attribute_value("accel", Some(&accel.to_variant()));
@@ -134,9 +134,9 @@ const SHORTCUT_HELP: &[(&str, &[(&str, &str)])] = &[
             ),
             (
                 "←  /  →",
-                i18n_noop("Previous or next in the gallery's preview"),
+                i18n_noop("Previous or next in the attachment preview"),
             ),
-            ("Esc", i18n_noop("Close the gallery's preview")),
+            ("Esc", i18n_noop("Close the attachment preview")),
         ],
     ),
     (

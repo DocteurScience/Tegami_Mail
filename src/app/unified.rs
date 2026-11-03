@@ -1,5 +1,5 @@
-//! The unified views (All Inboxes, Starred, Favorites ...): one list merged
-//! from many folders, rebuilt only when what it holds changed.
+//! The merged view (Favorites, the folders picked from every account): one
+//! list merged from many folders, rebuilt only when what it holds changed.
 
 use std::collections::HashSet;
 

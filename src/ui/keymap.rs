@@ -96,8 +96,8 @@ impl Shortcut {
     }
 }
 
-/// What Gmail's window keys write, in a composer window whatever Settings
-/// says about inline composers (#392).
+/// What Gmail's window keys write (#392). Every composer is a window now,
+/// so they do what the plain keys do; kept for the keymap's own table.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub(crate) enum WindowCompose {
     Reply,

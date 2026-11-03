@@ -28,8 +28,8 @@ fn restrict(_path: &std::path::Path, _mode: u32) {}
 impl Cache {
     /// A cache that lives only in memory, for the offline demo: the demo's
     /// sample mail must never reach the real `cache.db`, and running it through
-    /// the same schema and the same queries is the point — the gallery's
-    /// paging, search and sort are SQL, so a demo that bypassed them would
+    /// the same schema and the same queries is the point — search, smart
+    /// folders and tags are SQL, so a demo that bypassed them would
     /// exercise nothing.
     pub(crate) fn in_memory() -> rusqlite::Result<Cache> {
         let conn = Connection::open_in_memory()?;

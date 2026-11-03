@@ -98,7 +98,8 @@ pub(super) fn slide_tree_row(row: &gtk::ListBoxRow, rev: &gtk::Revealer, hidden:
     }
 }
 
-/// A row nested under "All Inboxes": `lead` (the account's pill), `title`,
+/// A row nested under a merged row (a favorite folder, a tag, a smart
+/// folder): `lead` (its icon or the account's pill), `title`,
 /// and an unread badge. In the compact rail only the lead is shown
 /// (centred), with the count as a corner chip and `tip` (plus the count) as
 /// the tooltip. Returns the badge for in-place updates.

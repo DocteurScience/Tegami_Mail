@@ -425,7 +425,7 @@ impl AppModel {
                     .emit(MessageViewInput::SetTags(self.tags.clone()));
                 self.popouts_emit(|| MessageWindowInput::SetTags(self.tags.clone()));
                 // The sidebar lists the tags; a removed one that was the open
-                // view falls back to All Inboxes there (SetContents).
+                // view falls back to the first inbox there (SetContents).
                 self.rebuild_sidebar();
                 // Rules may name a tag that now exists: tag what already sits
                 // in the inboxes, through the same sweep the filters use.

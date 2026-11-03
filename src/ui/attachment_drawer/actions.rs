@@ -86,7 +86,7 @@ impl AttachmentDrawer {
     }
 
     /// Right-click menu: Open / Download, Show in Message, and Delete from
-    /// Server, matching the gallery's actions.
+    /// Server.
     pub(super) fn show_context_menu(
         &self,
         index: usize,

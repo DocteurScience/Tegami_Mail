@@ -48,7 +48,7 @@ pub(crate) struct RowLook {
     pub(crate) in_drafts: bool,
     /// Sent-folder rows name the recipient, not the sender (#27).
     pub(crate) show_recipient: bool,
-    /// The accounts whose avatars wear their color as a ring (unified view).
+    /// The accounts whose avatars wear their color as a ring (merged views).
     pub(crate) ringed: std::collections::HashSet<u32>,
     /// Whether conversations open out in the list at all.
     pub(crate) thread_expansion: bool,

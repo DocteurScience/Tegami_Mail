@@ -650,7 +650,7 @@ impl Component for Preferences {
 }
 
 thread_local! {
-    /// Whether Settings → Sidebar's Unread counts and Fold up expanded
-    /// items rows are open, for this run of the app only.
-    static SESSION_OPEN: std::cell::Cell<[bool; 1]> = const { std::cell::Cell::new([false; 1]) };
+    /// Whether Settings → Sidebar's Fold up expanded items row is open,
+    /// for this run of the app only.
+    static RAIL_FOLD_OPEN: std::cell::Cell<bool> = const { std::cell::Cell::new(false) };
 }

@@ -162,7 +162,7 @@ impl AppModel {
         }
         gtk::glib::timeout_add_local_once(std::time::Duration::from_millis(900), move || {
             // Any window of ours in front will do: the composer, the main
-            // window under an inline composer, or the dialog asking where
+            // window, or the dialog asking where
             // the files should go.
             let tops = gtk::Window::toplevels();
             let ours = (0..tops.n_items())
@@ -457,10 +457,8 @@ impl AppModel {
         }
     }
 
-    /// A reply to `m` (its body loaded) carrying handed-in files. Splits
-    /// the reading pane when `m` is what it is showing, as Reply does; a
-    /// message picked from elsewhere gets its reply in a window, the pane
-    /// left as it was.
+    /// A reply to `m` (its body loaded) carrying handed-in files, in a
+    /// composer window like every reply.
     pub(super) fn open_hand_off_reply(
         &mut self,
         m: Message,
@@ -470,19 +468,7 @@ impl AppModel {
         let mut prefill = self.reply_context(&m, reply_prefill(&m, &self.reply_header));
         prefill.attachments = files.attach;
         prefill.cloud_uploads = files.cloud;
-        let on_screen = self
-            .current
-            .as_ref()
-            .is_some_and(|c| c.account_id == m.account_id && c.id == m.id)
-            || self
-                .current_thread
-                .iter()
-                .any(|t| t.account_id == m.account_id && t.id == m.id);
-        if on_screen {
-            self.open_compose(m.account_id, prefill, sender);
-        } else {
-            self.open_compose(m.account_id, prefill, sender);
-        }
+        self.open_compose(m.account_id, prefill, sender);
     }
 
     /// The messages the router sends here (see `AppModel::route`).

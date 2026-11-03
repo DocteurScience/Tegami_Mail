@@ -3,7 +3,7 @@
 
 use super::default_on;
 
-/// Where a sidebar section (Filters, Tags, Favorites, Contacts) is drawn.
+/// Where a sidebar section (Tags, Favorites) is drawn.
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
 #[serde(rename_all = "snake_case")]
 pub(crate) enum SectionPlacement {
@@ -16,19 +16,21 @@ pub(crate) enum SectionPlacement {
     AboveAccounts,
     /// In the scrolling sidebar, after the last account.
     BelowAccounts,
-    /// A row of the pinned footer, above Attachments. Only Contacts
-    /// offers it, and has it by default.
+    /// The pinned footer, which Contacts and Attachments had. Both are gone
+    /// and nothing offers it; kept so a file naming it still reads (an
+    /// unknown value would fail the whole settings file), drawn as
+    /// `AboveAccounts`.
     Footer,
     /// Not in the sidebar at all.
     Off,
 }
 
-/// How Filters, Tags, Favorites and Contacts are drawn (Settings → Sidebar → Sections).
+/// How Tags and Favorites are drawn (Settings → Sidebar → Sections).
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
 #[serde(rename_all = "snake_case")]
 pub(crate) enum SectionStyle {
-    /// As the unified section's rows: a pill whose header opens the
-    /// combined view, with a chevron on the right.
+    /// As pills: the header opens the combined view, with a chevron on the
+    /// right.
     #[default]
     Unified,
     /// As a tree: the caret that opens and closes the list in the icon's

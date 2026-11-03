@@ -202,7 +202,7 @@ impl AttachmentDrawer {
     }
 
     /// Flip collapsed/expanded — a plain click on the grab pill — sliding the
-    /// divider there like the split reply's entrance rather than jumping.
+    /// divider there rather than jumping.
     ///
     /// Expanding shows the body at once so it rides the slide open; the
     /// collapse keeps the body visible for the ride down and hides it when

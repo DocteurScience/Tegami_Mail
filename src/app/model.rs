@@ -71,9 +71,8 @@ pub(crate) struct AppModel {
     /// The cards files dragged onto the window bring up when no composer is
     /// open in it, each starting a new message (#293).
     pub(super) window_drop_zones: Option<std::rc::Rc<crate::ui::drop_zones::DropZones>>,
-    /// The reader pane's own header bar: hidden while a split reply hosts,
-    /// since it would show a second set of window decorations mid-window and
-    /// spend vertical space the split needs.
+    /// The reader pane's own header bar, which carries the reader's actions
+    /// (see `reader_toolbar.rs`).
     pub(super) reader_header: std::cell::OnceCell<adw::HeaderBar>,
     /// Where Send says what it is doing, with Undo while it can (#434).
     pub(super) toasts: std::cell::OnceCell<adw::ToastOverlay>,
@@ -152,20 +151,19 @@ pub(crate) struct AppModel {
     /// The attachment lightbox over the whole window (drawer previews and
     /// card attachment rows).
     pub(super) lightbox: Controller<crate::ui::lightbox::Lightbox>,
-    /// True when a unified view is active (no single folder): the folders
+    /// True when a merged view is active (no single folder): the folders
     /// `unified_view` names, merged into one list.
     pub(super) unified: bool,
-    /// Which folders the unified view merges: every account's Inbox for All
-    /// Inboxes, its Starred / Sent / Drafts for those rows, or every
-    /// filter rule's folder for the Filtered Folders row.
+    /// Which folders the merged view merges: the favorite folders, the only
+    /// such view left once All Inboxes, Starred, Sent, Drafts and Filtered
+    /// Folders went (owner's decision, 2026-11-02).
     pub(super) unified_view: UnifiedView,
-    /// The one account the unified view is narrowed to: an account's row
-    /// under the unified Starred row, for one with no Starred folder (#482).
+    /// The one account the merged view is narrowed to, if any.
     pub(super) unified_account: Option<u32>,
-    /// (account, folder) → that folder's latest messages, for the unified
+    /// (account, folder) → that folder's latest messages, for the merged
     /// view's merge.
     pub(super) unified_slices: HashMap<(u32, u32), Vec<Message>>,
-    /// Accounts whose inbox has been requested for the unified view since
+    /// Accounts whose inbox has been requested for a merged view since
     /// launch (the cache-primed slices still need their catch-up sync).
     pub(super) unified_boot_requested: HashSet<u32>,
     /// Accounts whose sent mail has been asked for this run (#236).

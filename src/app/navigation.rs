@@ -1,4 +1,4 @@
-//! Opening a folder or a unified view in the list.
+//! Opening a folder or a merged view (Favorites) in the list.
 
 use relm4::prelude::*;
 
@@ -39,7 +39,7 @@ fn read_unseen_folders(unseen: Vec<(u32, u32, String)>, sender: &ComponentSender
 }
 
 impl AppModel {
-    /// An account joined or left the unified section (#267): the unified
+    /// An account joined or left the combined views (#267): the merged
     /// Tags lists are read again, and the unified view that was open
     /// (`open`) is loaded afresh over the accounts now in it. When its row
     /// went with the change (one account or none left in the section), the
@@ -72,9 +72,8 @@ impl AppModel {
         }
     }
 
-    /// Open a unified view (Inboxes, Starred, Sent, …, Filtered): the merged
-    /// list of every account's folder of that kind. What clicking the
-    /// sidebar row does; a notification click lands here too.
+    /// Open a merged view: the favorite folders of every account in one
+    /// list. What clicking the sidebar row does.
     pub(super) fn open_unified(&mut self, view: UnifiedView, sender: &ComponentSender<Self>) {
         self.open_unified_in(view, None, sender);
     }
@@ -174,7 +173,7 @@ impl AppModel {
     /// folder caches, the way opening a single folder does. This used
     /// to clear the lot and wait: an account whose worker was slow to
     /// answer — busy backfilling a large mailbox, reconnecting, or
-    /// offline — was simply absent from "All Inboxes", while its own
+    /// offline — was simply absent from the merged view, while its own
     /// Inbox, served from cache, still listed its mail. Each account's
     /// slice is replaced when its load lands.
     ///

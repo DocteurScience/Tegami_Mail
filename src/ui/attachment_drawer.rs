@@ -3,10 +3,10 @@
 //! (images and PDFs) or color-coded type icons (everything else), each with the
 //! filename beneath it.
 //!
-//! It reuses the gallery's thumbnail/icon/open helpers ([`texture_from`],
+//! It uses the shared thumbnail/icon/open helpers ([`texture_from`],
 //! [`thumbnail_texture`], [`icon_for`], [`icon_color_class`], [`open_bytes`]).
 //! Hovering a cell reveals
-//! the same Download/Open quick actions used in the gallery; right-clicking opens
+//! its Download/Open quick actions (keyboard focus shows them too); right-clicking opens
 //! a matching context menu; double-clicking previews images and PDFs in the
 //! app's full-window lightbox (via [`DrawerOutput::ShowLightbox`]) and opens
 //! any other type in its default app. Single clicks do nothing — a first click
@@ -82,7 +82,7 @@ pub(crate) struct AttachmentDrawer {
     /// growing.
     paned: gtk::Paned,
     /// The visible resize affordance: the shared grab pill floated just above
-    /// the seam (over the reader's bottom edge), like the split reply's.
+    /// the seam (over the reader's bottom edge).
     /// Shown whenever the drawer is. A click toggles collapsed/expanded; a
     /// drag resizes live — out of the collapse too, where the release point
     /// becomes the drawer's new height.

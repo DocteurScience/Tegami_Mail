@@ -247,8 +247,6 @@ impl AppModel {
             | AppMsg::PrintPreview
             | AppMsg::PrintMessage
             | AppMsg::Shortcut(..)
-            | AppMsg::ZoomKey(..)
-            | AppMsg::ComposerKey(..)
             | AppMsg::ZoomMessage(..)
             | AppMsg::CopyReaderSelection) => self.on_shortcuts(msg, sender),
             msg @ (AppMsg::SetZoomDefault(..)

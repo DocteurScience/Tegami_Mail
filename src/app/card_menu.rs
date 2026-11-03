@@ -15,11 +15,9 @@ use super::msg::AppMsg;
 
 /// One entry of a card's menu that does what a list row's action does.
 ///
-/// Through the card path: a reply started from a card belongs in the
-/// pane's inline composer, like the card's own buttons; the row path would
-/// open a compose window. Every other action falls through to the row
-/// behaviour there. A pop-out has no pane, so it takes the row path, as
-/// its toolbar does.
+/// Through the card path, so a reply answers that card's message, as the
+/// card's own buttons do; every other action falls through to the row
+/// behaviour there. A pop-out takes the row path, as its toolbar does.
 fn card_item<'a>(
     m: &'a Message,
     popout: Option<(u32, u32)>,

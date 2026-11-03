@@ -51,7 +51,7 @@ pub(super) struct SelectedFolder {
     pub(super) path: String,
 }
 
-/// Which folders a unified view merges (see `AppModel::unified_view`).
+/// Which folders a merged view merges (see `AppModel::unified_view`).
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub(crate) enum UnifiedView {
     /// Every favorite folder.

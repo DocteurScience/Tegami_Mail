@@ -79,8 +79,8 @@ type BodyBatch = ((u32, String), Vec<(u32, u32)>);
 /// Every member asked for on its own is a round trip each, and each arrival
 /// re-renders the reader; `LoadBodies` fetches a whole UID set at once. Members
 /// are kept in the order given — the primary is first, so it is first in its
-/// batch and renders first — and a conversation that spans folders (or, in the
-/// unified inbox, accounts) splits into one batch per folder rather than losing
+/// batch and renders first — and a conversation that spans folders (or, in a
+/// merged view, accounts) splits into one batch per folder rather than losing
 /// the members that don't fit the first one.
 fn batch_bodies_by_folder(to_load: Vec<MissingBody>) -> Vec<BodyBatch> {
     let mut batches: Vec<BodyBatch> = Vec::new();

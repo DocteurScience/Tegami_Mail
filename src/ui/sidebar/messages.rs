@@ -41,7 +41,7 @@ pub(crate) enum SidebarInput {
         index: i32,
     },
     /// Select a folder row programmatically — the app navigated there itself
-    /// ("Go to Message" from the gallery, a notification click) and the
+    /// (a `tegami:` link, a notification click) and the
     /// highlight must follow. State is set before the row, so the resulting
     /// row-selected signal hits the already-selected guard and stops.
     SelectFolderRow {
@@ -204,8 +204,8 @@ pub(crate) enum SidebarOutput {
     Context(CtxAction),
     /// Messages (identified by ids) were dropped on a folder to move them there.
     /// `items` is the whole dragged selection as (account, folder, uid, id) — it
-    /// may include messages from other accounts when the drag started in the
-    /// unified inbox; the app filters and reports those (#23).
+    /// may include messages from other accounts when the drag started in a
+    /// merged view; the app filters and reports those (#23).
     MoveMessages {
         dest_account: u32,
         dest: String,

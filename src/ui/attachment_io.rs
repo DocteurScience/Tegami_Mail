@@ -10,7 +10,7 @@ use crate::i18n::i18n;
 /// Ask where to save one attachment ("Save Attachment", the file's own name
 /// offered) and write it there. A place without a local path is passed over
 /// in silence, as it always was; a failed write goes to `on_error`, which
-/// each caller keeps as it had it (most drop it, the gallery logs it).
+/// each caller keeps as it had it (most drop it).
 pub(crate) fn save_attachment_as(
     name: &str,
     data: Vec<u8>,

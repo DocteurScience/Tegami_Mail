@@ -180,15 +180,13 @@ impl AppModel {
         has_current: bool,
         sender: &ComponentSender<Self>,
     ) -> Vec<Vec<MenuEntry>> {
-        let mut sections = Vec::new();
-        sections.push(vec![action_entry(
+        vec![vec![action_entry(
             sender,
             i18n("View source"),
             "code",
             || AppMsg::ViewSource,
             has_current,
-        )]);
-        sections
+        )]]
     }
 
     /// The reader's More actions (docs/DESIGN.md, "Menus"; mockup 06):
