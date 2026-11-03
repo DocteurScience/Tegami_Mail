@@ -3743,7 +3743,7 @@ msgid "Insert in new message"
 msgstr "In neue Nachricht einfügen"
 
 msgid "Share link in new message"
-msgid_plural "Share Links in New Message"
+msgid_plural "Share links in new message"
 msgstr[0] "Download-Link in neuer Nachricht teilen"
 msgstr[1] "Download-Links in neuer Nachricht teilen"
 

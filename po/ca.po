@@ -3718,7 +3718,7 @@ msgid "Insert in new message"
 msgstr "Insereix en un missatge nou"
 
 msgid "Share link in new message"
-msgid_plural "Share Links in New Message"
+msgid_plural "Share links in new message"
 msgstr[0] "Comparteix l'enllaç en un missatge nou"
 msgstr[1] "Comparteix els enllaços en un missatge nou"
 

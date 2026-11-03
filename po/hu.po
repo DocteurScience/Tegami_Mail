@@ -3873,7 +3873,7 @@ msgid "Insert in new message"
 msgstr "Beillesztés új üzenetbe"
 
 msgid "Share link in new message"
-msgid_plural "Share Links in New Message"
+msgid_plural "Share links in new message"
 msgstr[0] "Hivatkozás megosztása új üzenetben"
 msgstr[1] "Hivatkozások megosztása új üzenetben"
 

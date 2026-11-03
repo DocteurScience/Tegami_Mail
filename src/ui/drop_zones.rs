@@ -363,7 +363,7 @@ impl DropZones {
             DropContext::NewMessage => {
                 self.cloud.title.set_label(&ni18n(
                     "Share link in new message",
-                    "Share Links in New Message",
+                    "Share links in new message",
                     n,
                 ));
                 self.attach.subtitle.set_label(&ni18n(

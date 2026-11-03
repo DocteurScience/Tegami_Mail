@@ -3783,7 +3783,7 @@ msgid "Insert in new message"
 msgstr "Εισαγωγή σε νέο μήνυμα"
 
 msgid "Share link in new message"
-msgid_plural "Share Links in New Message"
+msgid_plural "Share links in new message"
 msgstr[0] "Κοινοποίηση συνδέσμου σε νέο μήνυμα"
 msgstr[1] "Κοινοποίηση συνδέσμων σε νέο μήνυμα"
 

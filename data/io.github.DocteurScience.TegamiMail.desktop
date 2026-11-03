@@ -18,5 +18,5 @@ Actions=new-message;
 X-Flatpak-RenamedFrom=co.hyprlab.Vireo.desktop;com.getveem.Veem.desktop;
 
 [Desktop Action new-message]
-Name=New Message
+Name=New message
 Exec=tegami mailto:

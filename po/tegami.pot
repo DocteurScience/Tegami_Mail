@@ -3379,7 +3379,7 @@ msgid "Insert in new message"
 msgstr ""
 
 msgid "Share link in new message"
-msgid_plural "Share Links in New Message"
+msgid_plural "Share links in new message"
 msgstr[0] ""
 msgstr[1] ""
 
