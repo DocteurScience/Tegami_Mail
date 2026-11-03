@@ -800,10 +800,10 @@ msgstr ""
 msgid "Preview the highlighted attachment"
 msgstr ""
 
-msgid "Previous or next in the gallery's preview"
+msgid "Previous or next in the attachment preview"
 msgstr ""
 
-msgid "Close the gallery's preview"
+msgid "Close the attachment preview"
 msgstr ""
 
 msgid "Everything else"

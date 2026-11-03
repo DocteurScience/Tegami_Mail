@@ -46,5 +46,9 @@ msgcat --use-first --no-location "$tmp/header.pot" "$tmp/src.pot" "$tmp/desktop.
 for po in po/*.po; do
   [ -e "$po" ] || continue
   msgmerge --quiet --update --backup=none "$po" po/tegami.pot
+  # Strings gone from the code go from the catalogues too: msgmerge keeps
+  # them as #~ entries, which only piled up (hundreds per language after
+  # the redesign's removals) and no longer match anything.
+  msgattrib --no-obsolete -o "$po" "$po"
 done
 echo "==> $(grep -c '^msgid ' po/tegami.pot) strings in po/tegami.pot"
