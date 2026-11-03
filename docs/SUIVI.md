@@ -260,6 +260,19 @@ brouillon sélectionné s'affiche comme un message, Entrée ou double-clic
 l'ouvre. « New message » dans le lanceur (`ace2d7c`). DESIGN.md parle
 encore d'un réglage « en attendant une décision » : la décision est prise.
 
+Comparaison maquettes 10 à 17 (2026-11-03) :
+- 10 pièces jointes reçues : conforme (la taille « bytes » vient de GLib
+  sans traductions dans le conteneur ; « octets » sur un GNOME français).
+- 11 pièces jointes à l'envoi : cartes à bordure, nom en gras (`b73c2e5`).
+- 12 dépôt de fichiers : cartes compactes empilées en haut (`a833a1b`).
+- 13 pièce jointe oubliée : déjà conforme.
+- 14 (1024×600) : la barre latérale passe en rail d'icônes, la maquette
+  la replie entièrement derrière le bouton ; question au propriétaire.
+- 15 (téléphone) : non pris en charge (largeur minimale 904 px) ; pile
+  de navigation à décider avec le propriétaire.
+- 17 grand texte : tient à 150 %.
+- 16 contraste élevé : à vérifier par le propriétaire.
+
 ## Reste à faire (connu)
 
 - Les boutons des en-têtes et l'avatar des lignes restent dans des
