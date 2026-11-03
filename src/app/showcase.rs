@@ -82,7 +82,6 @@ impl AppModel {
                 list::stage_move(sender);
                 self.stage_rail();
                 list::stage_peek(root, sender);
-                compose::stage_focus(sender);
                 compose::stage_folder(sender);
                 compose::stage_send(sender);
                 compose::stage_undo(sender);

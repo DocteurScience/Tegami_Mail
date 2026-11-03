@@ -34,7 +34,6 @@ impl AppModel {
         let Boot {
             prefs,
             sidebar_state,
-            focus,
             icon_only,
             rail_now,
             config,
@@ -66,7 +65,6 @@ impl AppModel {
             menu,
             help: help_menu,
             undo: model_undo_menu,
-            focus_action,
             reading_pane_action,
         } = main_menu;
         crate::ui::keymap::set_key_mode(prefs.single_key_shortcuts, prefs.gmail_keys);
@@ -385,8 +383,6 @@ impl AppModel {
             section_style: prefs.section_style,
             tags_placement: prefs.tags_placement,
             favorites_placement: prefs.favorites_placement,
-            focus,
-            focus_action,
             reading_pane_action,
             list_header_widgets: std::cell::OnceCell::new(),
             chevrons_left: prefs.chevrons_left,

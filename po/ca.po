@@ -720,15 +720,6 @@ msgstr "Ordena i filtra missatges"
 msgid "Filtered: {names}"
 msgstr "Filtrat: {names}"
 
-msgid "Search messages…"
-msgstr "Cerca missatges…"
-
-msgid "Filter"
-msgstr "Filtra"
-
-msgid "Sort"
-msgstr "Ordena"
-
 #, fuzzy
 msgid "Tag: {name}"
 msgstr "Afegeix l'etiqueta {name}"
@@ -887,12 +878,6 @@ msgstr "Refés-ho (Ctrl+Y fa el mateix)"
 
 msgid "Reveal the status bar (also: long-press Refresh)"
 msgstr "Mostra la barra d'estat (també: mantén premut Actualitza)"
-
-msgid "Show or hide the accounts in the sidebar"
-msgstr "Mostra o amaga els comptes a la barra lateral"
-
-msgid "Focus mode on or off"
-msgstr "Activa o desactiva el mode d'enfocament"
 
 #, fuzzy
 msgid "Fullscreen on or off"
@@ -1073,12 +1058,6 @@ msgstr "Dreceres de teclat"
 msgid "About Tegami Mail"
 msgstr "Quant a l'Tegami Mail"
 
-msgid "Turn focus mode on"
-msgstr "Activa el mode d'enfocament"
-
-msgid "Turn focus mode off"
-msgstr "Desactiva el mode d'enfocament"
-
 msgid "View"
 msgstr "Visualitza"
 
@@ -1222,15 +1201,6 @@ msgstr ""
 
 msgid "The language applies the next time Tegami Mail starts."
 msgstr "L'idioma s'aplicarà la propera vegada que s'iniciï l'Tegami Mail."
-
-msgid "Edit this message"
-msgstr "Edita aquest missatge"
-
-msgid "Try to send this message now"
-msgstr "Intenta enviar aquest missatge ara"
-
-msgid "Send all"
-msgstr "Envia-ho tot"
 
 #, fuzzy
 msgid "Forward as attachment"
@@ -1510,8 +1480,14 @@ msgstr "Cerca missatges (Ctrl+F)"
 msgid "Search messages (Ctrl+F)"
 msgstr "Cerca missatges (Ctrl+F)"
 
-msgid "Search, filters and sort"
-msgstr "Cerca, filtres i ordenació"
+msgid "Edit this message"
+msgstr "Edita aquest missatge"
+
+msgid "Try to send this message now"
+msgstr "Intenta enviar aquest missatge ara"
+
+msgid "Send all"
+msgstr "Envia-ho tot"
 
 #, fuzzy
 msgid "Reply (Ctrl+R)"
@@ -6852,58 +6828,6 @@ msgstr ""
 msgid "Always fold the right group into ⋯"
 msgstr ""
 
-msgid "Focus mode"
-msgstr "Mode d'enfocament"
-
-msgid ""
-"The parts switched on below hide while Focus Mode is on. Activated by "
-"Ctrl+Shift+F or the main menu."
-msgstr ""
-"Les parts activades a sota s'amaguen mentre el mode d'enfocament està "
-"activat. S'activa amb Ctrl+Maj+F o el menú principal."
-
-msgid "Start in focus mode"
-msgstr "Comença en mode d'enfocament"
-
-msgid "Fold the reading pane's toolbar"
-msgstr "Replega la barra d'eines del panell de lectura"
-
-msgid "Every button goes into its ⋯ menu."
-msgstr "Tots els botons van al seu menú ⋯."
-
-msgid "Fold the message list's header"
-msgstr "Replega l'encapçalament de la llista de missatges"
-
-msgid "Everything but the sidebar toggle goes into ⋯."
-msgstr "Tot menys l'alternador de la barra lateral va a ⋯."
-
-msgid "Hide the accounts in the sidebar"
-msgstr "Amaga els comptes a la barra lateral"
-
-msgid "Only Favorites, Tags and Smart Folders stay."
-msgstr ""
-
-msgid "Hide sender avatars"
-msgstr "Amaga els avatars dels remitents"
-
-msgid "Hide the preview text"
-msgstr "Amaga el text de previsualització"
-
-msgid "One line of preview text"
-msgstr "Una línia de text de previsualització"
-
-msgid "Hide the subject"
-msgstr "Amaga l'assumpte"
-
-msgid "Tag chips hide with it."
-msgstr "Les etiquetes s'amaguen amb ella."
-
-msgid "Fold the sidebar to the icon rail"
-msgstr "Replega la barra lateral a la barra d'icones"
-
-msgid "Hovering it slides the full sidebar out."
-msgstr "Passar-hi per sobre desplega la barra lateral sencera."
-
 msgid "Compose in the main window"
 msgstr "Redacta a la finestra principal"
 
@@ -7429,6 +7353,79 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Search messages…"
+#~ msgstr "Cerca missatges…"
+
+#~ msgid "Filter"
+#~ msgstr "Filtra"
+
+#~ msgid "Sort"
+#~ msgstr "Ordena"
+
+#~ msgid "Show or hide the accounts in the sidebar"
+#~ msgstr "Mostra o amaga els comptes a la barra lateral"
+
+#~ msgid "Focus mode on or off"
+#~ msgstr "Activa o desactiva el mode d'enfocament"
+
+#~ msgid "Turn focus mode on"
+#~ msgstr "Activa el mode d'enfocament"
+
+#~ msgid "Turn focus mode off"
+#~ msgstr "Desactiva el mode d'enfocament"
+
+#~ msgid "Search, filters and sort"
+#~ msgstr "Cerca, filtres i ordenació"
+
+#~ msgid "Focus mode"
+#~ msgstr "Mode d'enfocament"
+
+#~ msgid ""
+#~ "The parts switched on below hide while Focus Mode is on. Activated by "
+#~ "Ctrl+Shift+F or the main menu."
+#~ msgstr ""
+#~ "Les parts activades a sota s'amaguen mentre el mode d'enfocament està "
+#~ "activat. S'activa amb Ctrl+Maj+F o el menú principal."
+
+#~ msgid "Start in focus mode"
+#~ msgstr "Comença en mode d'enfocament"
+
+#~ msgid "Fold the reading pane's toolbar"
+#~ msgstr "Replega la barra d'eines del panell de lectura"
+
+#~ msgid "Every button goes into its ⋯ menu."
+#~ msgstr "Tots els botons van al seu menú ⋯."
+
+#~ msgid "Fold the message list's header"
+#~ msgstr "Replega l'encapçalament de la llista de missatges"
+
+#~ msgid "Everything but the sidebar toggle goes into ⋯."
+#~ msgstr "Tot menys l'alternador de la barra lateral va a ⋯."
+
+#~ msgid "Hide the accounts in the sidebar"
+#~ msgstr "Amaga els comptes a la barra lateral"
+
+#~ msgid "Hide sender avatars"
+#~ msgstr "Amaga els avatars dels remitents"
+
+#~ msgid "Hide the preview text"
+#~ msgstr "Amaga el text de previsualització"
+
+#~ msgid "One line of preview text"
+#~ msgstr "Una línia de text de previsualització"
+
+#~ msgid "Hide the subject"
+#~ msgstr "Amaga l'assumpte"
+
+#~ msgid "Tag chips hide with it."
+#~ msgstr "Les etiquetes s'amaguen amb ella."
+
+#~ msgid "Fold the sidebar to the icon rail"
+#~ msgstr "Replega la barra lateral a la barra d'icones"
+
+#~ msgid "Hovering it slides the full sidebar out."
+#~ msgstr "Passar-hi per sobre desplega la barra lateral sencera."
 
 #~ msgid "Show Accounts"
 #~ msgstr "Mostra els comptes"

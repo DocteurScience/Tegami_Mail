@@ -745,16 +745,6 @@ msgstr "{n} db üzenet"
 msgid "Filtered: {names}"
 msgstr "Szűrt mappák"
 
-msgid "Search messages…"
-msgstr "Üzenetek keresése..."
-
-#, fuzzy
-msgid "Filter"
-msgstr "Szűrők"
-
-msgid "Sort"
-msgstr "Rendezés"
-
 #, fuzzy
 msgid "Tag: {name}"
 msgstr "Címke hozzáadása: {name}"
@@ -920,12 +910,6 @@ msgstr "Újra (a Ctrl+Y ugyanezt teszi)"
 
 msgid "Reveal the status bar (also: long-press Refresh)"
 msgstr "Állapotsáv megjelenítése (vagy a Frissítés hosszan lenyomva tartása)"
-
-msgid "Show or hide the accounts in the sidebar"
-msgstr "Fiókok megjelenítése vagy elrejtése az oldalsávban"
-
-msgid "Focus mode on or off"
-msgstr "Fókuszmód be- vagy kikapcsolása"
 
 #, fuzzy
 msgid "Fullscreen on or off"
@@ -1137,14 +1121,6 @@ msgstr "Billentyűparancsok"
 msgid "About Tegami Mail"
 msgstr "Névjegy"
 
-#, fuzzy
-msgid "Turn focus mode on"
-msgstr "Fókusz mód"
-
-#, fuzzy
-msgid "Turn focus mode off"
-msgstr "Fókusz mód"
-
 msgid "View"
 msgstr ""
 
@@ -1294,15 +1270,6 @@ msgstr ""
 msgid "The language applies the next time Tegami Mail starts."
 msgstr ""
 "A nyelvi módosítások a Tegami Mail következő indításakor lépnek életbe."
-
-msgid "Edit this message"
-msgstr "Üzenet szerkesztése"
-
-msgid "Try to send this message now"
-msgstr "Üzenet küldésének megkísérlése most"
-
-msgid "Send all"
-msgstr "Összes küldése"
 
 #, fuzzy
 msgid "Forward as attachment"
@@ -1588,8 +1555,14 @@ msgstr "Üzenetek keresése (Ctrl+F)"
 msgid "Search messages (Ctrl+F)"
 msgstr "Üzenetek keresése (Ctrl+F)"
 
-msgid "Search, filters and sort"
-msgstr "Keresés, szűrők és rendezés"
+msgid "Edit this message"
+msgstr "Üzenet szerkesztése"
+
+msgid "Try to send this message now"
+msgstr "Üzenet küldésének megkísérlése most"
+
+msgid "Send all"
+msgstr "Összes küldése"
 
 #, fuzzy
 msgid "Reply (Ctrl+R)"
@@ -7119,57 +7092,6 @@ msgstr ""
 msgid "Always fold the right group into ⋯"
 msgstr ""
 
-msgid "Focus mode"
-msgstr "Fókusz mód"
-
-msgid ""
-"The parts switched on below hide while Focus Mode is on. Activated by "
-"Ctrl+Shift+F or the main menu."
-msgstr ""
-
-msgid "Start in focus mode"
-msgstr "Indítás fókusz módban"
-
-msgid "Fold the reading pane's toolbar"
-msgstr "Az olvasópanel eszköztárának összecsukása"
-
-msgid "Every button goes into its ⋯ menu."
-msgstr "Minden gomb megnyitja a saját ⋯ menüjét."
-
-msgid "Fold the message list's header"
-msgstr "Üzenetlista fejlécének behajtása"
-
-#, fuzzy
-msgid "Everything but the sidebar toggle goes into ⋯."
-msgstr "Minden gomb megnyitja a saját ⋯ menüjét."
-
-msgid "Hide the accounts in the sidebar"
-msgstr "A fiókok elrejtése az oldalsávban"
-
-msgid "Only Favorites, Tags and Smart Folders stay."
-msgstr ""
-
-msgid "Hide sender avatars"
-msgstr "A feladók avatárjainak elrejtése"
-
-msgid "Hide the preview text"
-msgstr "Elrejtés a preview text"
-
-msgid "One line of preview text"
-msgstr "Egy sor előnézeti szöveg"
-
-msgid "Hide the subject"
-msgstr "A tárgy elrejtése"
-
-msgid "Tag chips hide with it."
-msgstr ""
-
-msgid "Fold the sidebar to the icon rail"
-msgstr "Oldalsáv behajtása ikonsávra"
-
-msgid "Hovering it slides the full sidebar out."
-msgstr ""
-
 msgid "Compose in the main window"
 msgstr "Levélírás a főablakban"
 
@@ -7714,6 +7636,70 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Search messages…"
+#~ msgstr "Üzenetek keresése..."
+
+#, fuzzy
+#~ msgid "Filter"
+#~ msgstr "Szűrők"
+
+#~ msgid "Sort"
+#~ msgstr "Rendezés"
+
+#~ msgid "Show or hide the accounts in the sidebar"
+#~ msgstr "Fiókok megjelenítése vagy elrejtése az oldalsávban"
+
+#~ msgid "Focus mode on or off"
+#~ msgstr "Fókuszmód be- vagy kikapcsolása"
+
+#, fuzzy
+#~ msgid "Turn focus mode on"
+#~ msgstr "Fókusz mód"
+
+#, fuzzy
+#~ msgid "Turn focus mode off"
+#~ msgstr "Fókusz mód"
+
+#~ msgid "Search, filters and sort"
+#~ msgstr "Keresés, szűrők és rendezés"
+
+#~ msgid "Focus mode"
+#~ msgstr "Fókusz mód"
+
+#~ msgid "Start in focus mode"
+#~ msgstr "Indítás fókusz módban"
+
+#~ msgid "Fold the reading pane's toolbar"
+#~ msgstr "Az olvasópanel eszköztárának összecsukása"
+
+#~ msgid "Every button goes into its ⋯ menu."
+#~ msgstr "Minden gomb megnyitja a saját ⋯ menüjét."
+
+#~ msgid "Fold the message list's header"
+#~ msgstr "Üzenetlista fejlécének behajtása"
+
+#, fuzzy
+#~ msgid "Everything but the sidebar toggle goes into ⋯."
+#~ msgstr "Minden gomb megnyitja a saját ⋯ menüjét."
+
+#~ msgid "Hide the accounts in the sidebar"
+#~ msgstr "A fiókok elrejtése az oldalsávban"
+
+#~ msgid "Hide sender avatars"
+#~ msgstr "A feladók avatárjainak elrejtése"
+
+#~ msgid "Hide the preview text"
+#~ msgstr "Elrejtés a preview text"
+
+#~ msgid "One line of preview text"
+#~ msgstr "Egy sor előnézeti szöveg"
+
+#~ msgid "Hide the subject"
+#~ msgstr "A tárgy elrejtése"
+
+#~ msgid "Fold the sidebar to the icon rail"
+#~ msgstr "Oldalsáv behajtása ikonsávra"
 
 #~ msgid "Show Accounts"
 #~ msgstr "Fiókok megjelenítése"

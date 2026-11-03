@@ -162,9 +162,6 @@ swaps them. See [Return and Shift+Return](DOCUMENTATION.md#return-and-shiftretur
 in the body of a message or in any text field that takes emoji; the emoji you
 pick goes where the cursor was.
 
-<kbd>Ctrl+Shift+F</kbd> turns [Focus Mode](FEATURES.md#the-app) on and off,
-with or without single-key shortcuts.
-
 These work with or without single-key shortcuts too:
 
 | Key | What it does |

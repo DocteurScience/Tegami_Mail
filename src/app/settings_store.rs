@@ -5,7 +5,6 @@ use relm4::prelude::*;
 use crate::config;
 use crate::ui::message_list::MessageListInput;
 use crate::ui::message_view::MessageViewInput;
-use crate::ui::sidebar::SidebarInput;
 
 use super::model::AppModel;
 
@@ -182,10 +181,6 @@ impl AppModel {
         self.message_list.emit(MessageListInput::SetColumnWidths(
             self.list_column_widths.clone(),
         ));
-        self.sidebars_emit(SidebarInput::SetFocus {
-            hide_accounts: self.focus.active(config::FocusPart::HideAccounts),
-            animate: false,
-        });
         self.message_list
             .emit(MessageListInput::SetThreading(self.threading));
         self.message_list

@@ -719,15 +719,6 @@ msgstr "Nachrichten sortieren und filtern"
 msgid "Filtered: {names}"
 msgstr "Aktive Filter: {names}"
 
-msgid "Search messages…"
-msgstr "Nachrichten durchsuchen…"
-
-msgid "Filter"
-msgstr "Filter"
-
-msgid "Sort"
-msgstr "Sortieren"
-
 #, fuzzy
 msgid "Tag: {name}"
 msgstr "Tag {name} hinzufügen"
@@ -886,12 +877,6 @@ msgstr "Wiederholen (auch mit Strg+Y)"
 
 msgid "Reveal the status bar (also: long-press Refresh)"
 msgstr "Statusleiste anzeigen (auch: Aktualisieren lange drücken)"
-
-msgid "Show or hide the accounts in the sidebar"
-msgstr "Konten in der Seitenleiste ein- oder ausblenden"
-
-msgid "Focus mode on or off"
-msgstr "Fokusmodus ein- oder ausschalten"
 
 msgid "Fullscreen on or off"
 msgstr "Vollbildmodus ein- oder ausschalten"
@@ -1071,12 +1056,6 @@ msgstr "Tastenkombinationen"
 msgid "About Tegami Mail"
 msgstr "Über Tegami Mail"
 
-msgid "Turn focus mode on"
-msgstr "Fokusmodus ein"
-
-msgid "Turn focus mode off"
-msgstr "Fokusmodus aus"
-
 msgid "View"
 msgstr "Anzeigen"
 
@@ -1216,15 +1195,6 @@ msgstr "Der Renderer wird beim nächsten Start von Tegami Mail übernommen."
 
 msgid "The language applies the next time Tegami Mail starts."
 msgstr "Die Sprache wird beim nächsten Start von Tegami Mail übernommen."
-
-msgid "Edit this message"
-msgstr "Diese Nachricht bearbeiten"
-
-msgid "Try to send this message now"
-msgstr "Jetzt versuchen, diese Nachricht zu senden"
-
-msgid "Send all"
-msgstr "Alle senden"
 
 #, fuzzy
 msgid "Forward as attachment"
@@ -1509,8 +1479,14 @@ msgstr "Nachrichten durchsuchen (Strg+F)"
 msgid "Search messages (Ctrl+F)"
 msgstr "Nachrichten durchsuchen (Strg+F)"
 
-msgid "Search, filters and sort"
-msgstr "Suchen, Filtern und Sortieren"
+msgid "Edit this message"
+msgstr "Diese Nachricht bearbeiten"
+
+msgid "Try to send this message now"
+msgstr "Jetzt versuchen, diese Nachricht zu senden"
+
+msgid "Send all"
+msgstr "Alle senden"
 
 #, fuzzy
 msgid "Reply (Ctrl+R)"
@@ -6905,61 +6881,6 @@ msgstr ""
 msgid "Always fold the right group into ⋯"
 msgstr "Die rechte Gruppe immer zu ⋯ einklappen"
 
-msgid "Focus mode"
-msgstr "Fokusmodus"
-
-msgid ""
-"The parts switched on below hide while Focus Mode is on. Activated by "
-"Ctrl+Shift+F or the main menu."
-msgstr ""
-"Bei eingeschaltetem Fokusmodus werden die unten ausgewählten Bereiche "
-"ausgeblendet. Lässt sich mit Strg+Umschalt+F oder über das Hauptmenü "
-"aktivieren."
-
-msgid "Start in focus mode"
-msgstr "Im Fokusmodus starten"
-
-msgid "Fold the reading pane's toolbar"
-msgstr "Symbolleiste des Lesebereichs einklappen"
-
-msgid "Every button goes into its ⋯ menu."
-msgstr "Jeder Button geht in sein ⋯ Menü."
-
-msgid "Fold the message list's header"
-msgstr "Kopfzeile der Nachrichtenliste einklappen"
-
-msgid "Everything but the sidebar toggle goes into ⋯."
-msgstr ""
-"Alle Elemente außer dem Seitenleisten-Schalter werden unter ⋯ "
-"zusammengefasst."
-
-msgid "Hide the accounts in the sidebar"
-msgstr "Konten in der Seitenleiste ausblenden"
-
-msgid "Only Favorites, Tags and Smart Folders stay."
-msgstr ""
-
-msgid "Hide sender avatars"
-msgstr "Absender-Avatare ausblenden"
-
-msgid "Hide the preview text"
-msgstr "Vorschautext ausblenden"
-
-msgid "One line of preview text"
-msgstr "Eine Zeile Vorschautext"
-
-msgid "Hide the subject"
-msgstr "Betreff ausblenden"
-
-msgid "Tag chips hide with it."
-msgstr "Tag-Chips werden dabei ebenfalls ausgeblendet."
-
-msgid "Fold the sidebar to the icon rail"
-msgstr "Seitenleiste zur Symbolleiste einklappen"
-
-msgid "Hovering it slides the full sidebar out."
-msgstr "Durch Überfahren mit der Maus wird die gesamte Seitenleiste sichtbar."
-
 msgid "Compose in the main window"
 msgstr "Im Hauptfenster verfassen"
 
@@ -7510,6 +7431,83 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Search messages…"
+#~ msgstr "Nachrichten durchsuchen…"
+
+#~ msgid "Filter"
+#~ msgstr "Filter"
+
+#~ msgid "Sort"
+#~ msgstr "Sortieren"
+
+#~ msgid "Show or hide the accounts in the sidebar"
+#~ msgstr "Konten in der Seitenleiste ein- oder ausblenden"
+
+#~ msgid "Focus mode on or off"
+#~ msgstr "Fokusmodus ein- oder ausschalten"
+
+#~ msgid "Turn focus mode on"
+#~ msgstr "Fokusmodus ein"
+
+#~ msgid "Turn focus mode off"
+#~ msgstr "Fokusmodus aus"
+
+#~ msgid "Search, filters and sort"
+#~ msgstr "Suchen, Filtern und Sortieren"
+
+#~ msgid "Focus mode"
+#~ msgstr "Fokusmodus"
+
+#~ msgid ""
+#~ "The parts switched on below hide while Focus Mode is on. Activated by "
+#~ "Ctrl+Shift+F or the main menu."
+#~ msgstr ""
+#~ "Bei eingeschaltetem Fokusmodus werden die unten ausgewählten Bereiche "
+#~ "ausgeblendet. Lässt sich mit Strg+Umschalt+F oder über das Hauptmenü "
+#~ "aktivieren."
+
+#~ msgid "Start in focus mode"
+#~ msgstr "Im Fokusmodus starten"
+
+#~ msgid "Fold the reading pane's toolbar"
+#~ msgstr "Symbolleiste des Lesebereichs einklappen"
+
+#~ msgid "Every button goes into its ⋯ menu."
+#~ msgstr "Jeder Button geht in sein ⋯ Menü."
+
+#~ msgid "Fold the message list's header"
+#~ msgstr "Kopfzeile der Nachrichtenliste einklappen"
+
+#~ msgid "Everything but the sidebar toggle goes into ⋯."
+#~ msgstr ""
+#~ "Alle Elemente außer dem Seitenleisten-Schalter werden unter ⋯ "
+#~ "zusammengefasst."
+
+#~ msgid "Hide the accounts in the sidebar"
+#~ msgstr "Konten in der Seitenleiste ausblenden"
+
+#~ msgid "Hide sender avatars"
+#~ msgstr "Absender-Avatare ausblenden"
+
+#~ msgid "Hide the preview text"
+#~ msgstr "Vorschautext ausblenden"
+
+#~ msgid "One line of preview text"
+#~ msgstr "Eine Zeile Vorschautext"
+
+#~ msgid "Hide the subject"
+#~ msgstr "Betreff ausblenden"
+
+#~ msgid "Tag chips hide with it."
+#~ msgstr "Tag-Chips werden dabei ebenfalls ausgeblendet."
+
+#~ msgid "Fold the sidebar to the icon rail"
+#~ msgstr "Seitenleiste zur Symbolleiste einklappen"
+
+#~ msgid "Hovering it slides the full sidebar out."
+#~ msgstr ""
+#~ "Durch Überfahren mit der Maus wird die gesamte Seitenleiste sichtbar."
 
 #~ msgid "Show Accounts"
 #~ msgstr "Konten anzeigen"

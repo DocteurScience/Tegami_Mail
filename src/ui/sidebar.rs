@@ -165,14 +165,6 @@ pub(crate) struct Sidebar {
     section_style: crate::config::SectionStyle,
     tags_placement: crate::config::SectionPlacement,
     favorites_placement: crate::config::SectionPlacement,
-    /// Focus Mode: the account sections are hidden.
-    focus_hide_accounts: bool,
-    /// The revealer holding every account section, so Focus Mode can slide
-    /// them away as one and bring them back the same way.
-    accounts_revealer: Option<gtk::Revealer>,
-    /// The next rebuild draws the accounts folded away and slides them in
-    /// (Focus Mode has just given them back).
-    reveal_accounts_late: bool,
 }
 
 #[relm4::component(pub(crate))]
@@ -297,9 +289,6 @@ impl Component for Sidebar {
             section_style: crate::config::SectionStyle::default(),
             tags_placement: crate::config::SectionPlacement::AboveAccounts,
             favorites_placement: crate::config::SectionPlacement::AboveAccounts,
-            focus_hide_accounts: false,
-            accounts_revealer: None,
-            reveal_accounts_late: false,
         };
 
         let widgets = view_output!();
@@ -374,11 +363,6 @@ impl Sidebar {
             SidebarInput::SetUnread { folders, fresh } => self.on_set_unread(folders, fresh),
             SidebarInput::SetBusy(busy) => self.on_set_busy(busy),
             SidebarInput::SetOffline(offline) => self.on_set_offline(offline),
-            SidebarInput::SetFocus {
-                hide_accounts,
-                animate,
-            } => self.on_set_focus(hide_accounts, animate, widgets, sender),
-            SidebarInput::FocusSettled => self.on_focus_settled(widgets, sender),
             SidebarInput::SetCollapsed(collapsed) => {
                 self.on_set_collapsed(collapsed, widgets, sender)
             }

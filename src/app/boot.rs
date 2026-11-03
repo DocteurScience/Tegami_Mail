@@ -8,7 +8,6 @@ use relm4::ComponentSender;
 
 use crate::config::{self, AccountConfig};
 use crate::i18n::i18n;
-use crate::ui::preferences::PrefOutput;
 use crate::ui::sidebar::{SidebarInit, StartTarget};
 
 use super::accounts::{forget_account_secrets, reconcile_goa, GoaReconcile};
@@ -25,11 +24,9 @@ pub(super) struct Boot {
     /// The sidebar layout, already pruned of accounts GOA removed and reset
     /// when "Remember the sidebar layout" is off.
     pub(super) sidebar_state: config::SidebarState,
-    pub(super) focus: config::FocusMode,
     /// The user's own icon-rail choice, the one that is saved.
     pub(super) icon_only: bool,
-    /// Whether the sidebar starts as the rail: the user's choice or Focus
-    /// Mode's rail part.
+    /// Whether the sidebar starts as the rail.
     pub(super) rail_now: bool,
     pub(super) config: Vec<AccountConfig>,
     /// Whether this run serves the built-in sample data (see spawn_workers).
@@ -40,14 +37,14 @@ impl Boot {
     /// Runs the steps in the order they depend on each other.
     pub(super) fn read(root: &adw::ApplicationWindow) -> Self {
         let prefs = install_globals(root);
-        let (mut sidebar_state, focus, icon_only, rail_now) = load_sidebar_layout(&prefs);
+        let (mut sidebar_state, icon_only) = load_sidebar_layout(&prefs);
+        let rail_now = icon_only;
         let config = load_accounts(&mut sidebar_state);
         // Decided after the GOA reconcile, which can add accounts.
         let demo_data = demo_mode() && config.is_empty();
         Boot {
             prefs,
             sidebar_state,
-            focus,
             icon_only,
             rail_now,
             config,
@@ -76,11 +73,9 @@ fn install_globals(root: &adw::ApplicationWindow) -> config::PrivacyFile {
     prefs
 }
 
-/// The saved sidebar layout and Focus Mode, as this launch starts them:
-/// `(layout, focus, icon_only, rail_now)`.
-fn load_sidebar_layout(
-    prefs: &config::PrivacyFile,
-) -> (config::SidebarState, config::FocusMode, bool, bool) {
+/// The saved sidebar layout, as this launch starts it: `(layout,
+/// icon_only)`.
+fn load_sidebar_layout(prefs: &config::PrivacyFile) -> (config::SidebarState, bool) {
     let mut sidebar_state = config::load_sidebar_state();
     // Settings → Sidebar: "Remember the icon rail" off starts every
     // launch with the full sidebar; "Remember the sidebar layout" off
@@ -88,19 +83,6 @@ fn load_sidebar_layout(
     // it arrives (SetAccount) — keeping only the account order. The two
     // are independent.
     let icon_only = prefs.remember_rail && sidebar_state.icon_only;
-    // Read here, ahead of the sidebar itself: Focus Mode's rail part
-    // decides what the sidebar is built as. `icon_only` stays the user's
-    // own choice — the one that is saved and the one that comes back
-    // when Focus Mode ends.
-    let mut focus = config::load_focus_mode();
-    // "Start in Focus Mode" decides how the app opens, whatever the last
-    // session left on. Written back at once so the file, the menu's check
-    // item and the window all say the same thing from the first frame.
-    if focus.enabled != focus.start_focused {
-        focus.enabled = focus.start_focused;
-        config::save_focus_mode(&focus);
-    }
-    let rail_now = icon_only || focus.active(config::FocusPart::RailSidebar);
     if !prefs.remember_sidebar {
         // The layout starts fresh; the order things were put in stays.
         sidebar_state = config::SidebarState {
@@ -109,7 +91,7 @@ fn load_sidebar_layout(
             ..Default::default()
         };
     }
-    (sidebar_state, focus, icon_only, rail_now)
+    (sidebar_state, icon_only)
 }
 
 /// Load accounts, then reconcile against GNOME Online Accounts: drop any
@@ -186,14 +168,12 @@ pub(super) struct MainMenu {
     pub(super) menu: gtk::gio::Menu,
     pub(super) help: gtk::gio::Menu,
     pub(super) undo: gtk::gio::Menu,
-    pub(super) focus_action: gtk::gio::SimpleAction,
     pub(super) reading_pane_action: gtk::gio::SimpleAction,
 }
 
 /// Sectioned: sync / accounts / settings / printing / help / quit.
 pub(super) fn build_main_menu(
     reading_pane: config::ReadingPane,
-    focus: &config::FocusMode,
     sender: &ComponentSender<AppModel>,
 ) -> MainMenu {
     let menu = gtk::gio::Menu::new();
@@ -202,8 +182,8 @@ pub(super) fn build_main_menu(
     {
         // The design's main menu (docs/DESIGN.md, "Menus"), with Print and
         // Quit kept (owner's decision, docs/SUIVI.md, 2026-11-02). Undo,
-        // Reading Pane, Focus Mode and Fullscreen are no longer here; their
-        // keys still work (Ctrl+Z, Ctrl+Alt+1-3, Ctrl+Shift+F, F11), and
+        // Reading Pane and Fullscreen are no longer here; their keys still
+        // work (Ctrl+Z, Ctrl+Alt+1-3, F11), and
         // refresh_undo_menu still fills `model_undo_menu`, unshown, as it
         // also enables the Undo and Redo actions.
         let sync = gtk::gio::Menu::new();
@@ -241,7 +221,6 @@ pub(super) fn build_main_menu(
         menu,
         help: help_menu,
         undo: model_undo_menu,
-        focus_action: focus_mode_action(focus, sender),
         reading_pane_action: reading_pane_action(reading_pane, sender),
     }
 }
@@ -267,26 +246,4 @@ fn reading_pane_action(
         }
     });
     action
-}
-
-/// The "focus-mode" check item's action: turns Focus Mode on or off with
-/// the parts saved in focus.toml.
-fn focus_mode_action(
-    focus: &config::FocusMode,
-    sender: &ComponentSender<AppModel>,
-) -> gtk::gio::SimpleAction {
-    let focus_action =
-        gtk::gio::SimpleAction::new_stateful("focus-mode", None, &focus.enabled.to_variant());
-    {
-        let s = sender.clone();
-        focus_action.connect_change_state(move |action, value| {
-            if let Some(on) = value.and_then(|v| v.get::<bool>()) {
-                action.set_state(&on.to_variant());
-                let mut focus = config::load_focus_mode();
-                focus.enabled = on;
-                s.input(AppMsg::Pref(PrefOutput::SetFocusMode(focus)));
-            }
-        });
-    }
-    focus_action
 }

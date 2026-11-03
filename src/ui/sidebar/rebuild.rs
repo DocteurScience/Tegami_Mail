@@ -45,42 +45,10 @@ impl Sidebar {
             self.build_unified_run(container, &rows_above, sender);
         }
 
-        // The account sections — unless Settings (or the main menu) has
-        // them off, for those who work from the unified section alone.
-        let account_sections: Vec<&SectionData> = if !self.focus_hide_accounts {
-            sections.iter().collect()
-        } else {
-            Vec::new()
-        };
-        // Every account section goes in one revealer, so Focus Mode can
-        // slide them all away together (and back).
-        let accounts_box = gtk::Box::new(gtk::Orientation::Vertical, 0);
-        let accounts_revealer = gtk::Revealer::new();
-        accounts_revealer.set_transition_type(gtk::RevealerTransitionType::SlideDown);
-        accounts_revealer.set_transition_duration(0);
-        accounts_revealer.set_reveal_child(!self.reveal_accounts_late);
-        accounts_revealer.set_child(Some(&accounts_box));
-        let any_accounts = !account_sections.is_empty();
-        for (section_idx, section) in account_sections.into_iter().enumerate() {
-            self.build_account_section(section_idx, section, &accounts_box, container, sender);
+        // The account sections.
+        for (section_idx, section) in sections.iter().enumerate() {
+            self.build_account_section(section_idx, section, container, sender);
         }
-
-        if any_accounts {
-            container.append(&accounts_revealer);
-            if std::mem::take(&mut self.reveal_accounts_late) {
-                // Slide them in once the rebuild's freeze-frame has lifted
-                // (80ms), so the whole of the motion is seen.
-                let r = accounts_revealer.clone();
-                gtk::glib::timeout_add_local_once(
-                    std::time::Duration::from_millis(90),
-                    move || {
-                        r.set_transition_duration(crate::ui::FOCUS_ANIM_MS);
-                        r.set_reveal_child(true);
-                    },
-                );
-            }
-        }
-        self.accounts_revealer = any_accounts.then_some(accounts_revealer);
 
         // And those placed after the last account.
         let rows_below = self.placed_rows(BelowAccounts);

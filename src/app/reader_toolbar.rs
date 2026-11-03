@@ -162,11 +162,10 @@ impl AppModel {
     /// enabled under the same conditions. The left group never folds.
     fn show_reader_overflow_menu(&self, sender: &ComponentSender<Self>) {
         let has_current = self.current.is_some();
-        let focus = self.focus.active(config::FocusPart::ReaderToolbar);
         let sections = if self.showing_outbox {
-            self.outbox_overflow_sections(has_current, focus, sender)
+            self.outbox_overflow_sections(has_current, sender)
         } else {
-            self.toolbar_overflow_sections(has_current, focus, sender)
+            self.toolbar_overflow_sections(has_current, sender)
         };
 
         let btn = &self.reader_overflow_btn;
@@ -180,43 +179,9 @@ impl AppModel {
     fn outbox_overflow_sections(
         &self,
         has_current: bool,
-        focus: bool,
         sender: &ComponentSender<Self>,
     ) -> Vec<Vec<MenuEntry>> {
         let mut sections = Vec::new();
-        if focus {
-            let many = has_current || self.many_selected();
-            sections.push(vec![
-                action_entry(
-                    sender,
-                    i18n("Edit this message"),
-                    "document-edit",
-                    || AppMsg::EditCurrentOutbox,
-                    has_current,
-                ),
-                action_entry(
-                    sender,
-                    i18n("Try to send this message now"),
-                    "mail-send",
-                    || AppMsg::SendCurrentOutbox,
-                    has_current,
-                ),
-                action_entry(
-                    sender,
-                    i18n("Send all"),
-                    "mail-send",
-                    || AppMsg::RetryAllOutbox,
-                    true,
-                ),
-                action_entry(
-                    sender,
-                    i18n("Delete"),
-                    "user-trash",
-                    || AppMsg::Delete,
-                    many,
-                ),
-            ]);
-        }
         sections.push(vec![action_entry(
             sender,
             i18n("View source"),
@@ -231,33 +196,21 @@ impl AppModel {
     /// Forward as Attachment, Mark as Unread, Mark as Spam and Move To,
     /// then remote content, View Source, Print and Save as File. A button
     /// the header shows is left out, so an action is in one place; the
-    /// Tags submenu stands in for its button when that is folded. Focus
-    /// Mode folds the header's buttons in too, as a first section.
+    /// Tags submenu stands in for its button when that is folded.
     /// Per-message actions act on the reply target: the open message, or,
     /// in a conversation, the one highlighted card. With none (or several)
     /// highlighted they grey out.
     fn toolbar_overflow_sections(
         &self,
         has_current: bool,
-        focus: bool,
         sender: &ComponentSender<Self>,
     ) -> Vec<Vec<MenuEntry>> {
         use config::ToolbarItem as T;
         let mut sections = Vec::new();
-        if focus {
-            let mut header: Vec<T> = self.reader_toolbar.left.clone();
-            header.extend(
-                self.reader_toolbar
-                    .right
-                    .iter()
-                    .filter(|i| !DESIGN_MENU.contains(i)),
-            );
-            sections.extend(self.toolbar_item_sections(&[&header], has_current, sender));
-        }
         let menu: Vec<T> = DESIGN_MENU
             .iter()
             .copied()
-            .filter(|i| focus || !self.toolbar_visible(*i))
+            .filter(|i| !self.toolbar_visible(*i))
             .collect();
         let target = self.reply_target();
         let acts = target.is_some();
@@ -449,10 +402,6 @@ impl AppModel {
     /// Whether the header shows ⋯: always for a message, and in the
     /// Outbox while its right group is folded.
     pub(super) fn reader_overflow_wanted(&self) -> bool {
-        // Focus Mode folds the whole row in, so the ⋯ is the toolbar.
-        if self.focus.active(config::FocusPart::ReaderToolbar) {
-            return true;
-        }
         // A message's More actions is always there (docs/DESIGN.md,
         // "Header bars"); the Outbox's holds only what its folded group
         // does.
@@ -611,7 +560,6 @@ impl AppModel {
             || (self.toolbar_in_list() && self.many_selected())
             || self.reader_compose.is_some()
             || self.showing_outbox
-            || self.focus.active(config::FocusPart::ReaderToolbar)
         {
             return;
         }

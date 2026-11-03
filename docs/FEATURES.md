@@ -167,8 +167,6 @@ The full list. The [README](../README.md) carries a shorter one.
 - **Appearance themes:** five palettes (Rose, Forest, Tidal, Earth and
   Midnight), each with its own light and dark version, or the stock GNOME
   colours.
-- **Focus Mode:** Ctrl+Shift+F folds the toolbars, sidebar and list down to
-  what you are reading, and puts it back afterwards.
 - **A customizable reader toolbar:** reorder its buttons, or drag them in and
   out, in Settings → Appearance.
 - **A single-line message list:** sender, subject and the start of the

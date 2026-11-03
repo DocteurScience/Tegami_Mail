@@ -721,15 +721,6 @@ msgstr "Trier et filtrer les messages"
 msgid "Filtered: {names}"
 msgstr "Filtré : {names}"
 
-msgid "Search messages…"
-msgstr "Rechercher des messages…"
-
-msgid "Filter"
-msgstr "Filtrer"
-
-msgid "Sort"
-msgstr "Trier"
-
 msgid "Tag: {name}"
 msgstr "Étiquette : {name}"
 
@@ -890,12 +881,6 @@ msgstr "La rétablir (Ctrl+Y fait de même)"
 
 msgid "Reveal the status bar (also: long-press Refresh)"
 msgstr "Afficher la barre d’état (ou appui long sur Actualiser)"
-
-msgid "Show or hide the accounts in the sidebar"
-msgstr "Afficher ou masquer les comptes dans la barre latérale"
-
-msgid "Focus mode on or off"
-msgstr "Activer ou désactiver le mode Focus"
 
 msgid "Fullscreen on or off"
 msgstr "Activer ou désactiver le mode plein écran"
@@ -1076,12 +1061,6 @@ msgstr "Raccourcis clavier"
 msgid "About Tegami Mail"
 msgstr "À propos de Tegami Mail"
 
-msgid "Turn focus mode on"
-msgstr "Activer le mode Focus"
-
-msgid "Turn focus mode off"
-msgstr "Désactiver le mode Focus"
-
 msgid "View"
 msgstr "Affichage"
 
@@ -1225,15 +1204,6 @@ msgstr "Le moteur de rendu s’appliquera au prochain démarrage de Tegami Mail.
 
 msgid "The language applies the next time Tegami Mail starts."
 msgstr "La langue s’appliquera au prochain démarrage de Tegami Mail."
-
-msgid "Edit this message"
-msgstr "Modifier ce message"
-
-msgid "Try to send this message now"
-msgstr "Tenter d’envoyer ce message maintenant"
-
-msgid "Send all"
-msgstr "Tout envoyer"
 
 msgid "Forward as attachment"
 msgstr "Transférer en pièce jointe"
@@ -1514,8 +1484,14 @@ msgstr "Nouveau message (Ctrl+N)"
 msgid "Search messages (Ctrl+F)"
 msgstr "Rechercher des messages (Ctrl+F)"
 
-msgid "Search, filters and sort"
-msgstr "Recherche, filtres et tri"
+msgid "Edit this message"
+msgstr "Modifier ce message"
+
+msgid "Try to send this message now"
+msgstr "Tenter d’envoyer ce message maintenant"
+
+msgid "Send all"
+msgstr "Tout envoyer"
 
 msgid "Reply (Ctrl+R)"
 msgstr "Répondre (Ctrl+R)"
@@ -6858,58 +6834,6 @@ msgstr ""
 msgid "Always fold the right group into ⋯"
 msgstr ""
 
-msgid "Focus mode"
-msgstr "Mode Focus"
-
-msgid ""
-"The parts switched on below hide while Focus Mode is on. Activated by "
-"Ctrl+Shift+F or the main menu."
-msgstr ""
-"Les éléments activés ci-dessous sont masqués lorsque le mode Focus est "
-"actif. Activé par Ctrl+Maj+F ou le menu principal."
-
-msgid "Start in focus mode"
-msgstr "Démarrer en mode Focus"
-
-msgid "Fold the reading pane's toolbar"
-msgstr "Replier la barre d’outils du panneau de lecture"
-
-msgid "Every button goes into its ⋯ menu."
-msgstr "Chaque bouton passe dans son menu ⋯."
-
-msgid "Fold the message list's header"
-msgstr "Replier l’en-tête de la liste des messages"
-
-msgid "Everything but the sidebar toggle goes into ⋯."
-msgstr "Tout sauf le bouton de la barre latérale passe dans ⋯."
-
-msgid "Hide the accounts in the sidebar"
-msgstr "Masquer les comptes dans la barre latérale"
-
-msgid "Only Favorites, Tags and Smart Folders stay."
-msgstr "Seuls les favoris, les tags et les dossiers intelligents restent."
-
-msgid "Hide sender avatars"
-msgstr "Masquer les avatars des expéditeurs"
-
-msgid "Hide the preview text"
-msgstr "Masquer le texte d’aperçu"
-
-msgid "One line of preview text"
-msgstr "Une ligne de texte d’aperçu"
-
-msgid "Hide the subject"
-msgstr "Masquer l’objet"
-
-msgid "Tag chips hide with it."
-msgstr "Les pastilles de tag se masquent avec elle."
-
-msgid "Fold the sidebar to the icon rail"
-msgstr "Replier la barre latérale en bandeau d’icônes"
-
-msgid "Hovering it slides the full sidebar out."
-msgstr "Le survol fait apparaître la barre latérale complète."
-
 msgid "Compose in the main window"
 msgstr "Rédiger dans la fenêtre principale"
 
@@ -7446,6 +7370,82 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Search messages…"
+#~ msgstr "Rechercher des messages…"
+
+#~ msgid "Filter"
+#~ msgstr "Filtrer"
+
+#~ msgid "Sort"
+#~ msgstr "Trier"
+
+#~ msgid "Show or hide the accounts in the sidebar"
+#~ msgstr "Afficher ou masquer les comptes dans la barre latérale"
+
+#~ msgid "Focus mode on or off"
+#~ msgstr "Activer ou désactiver le mode Focus"
+
+#~ msgid "Turn focus mode on"
+#~ msgstr "Activer le mode Focus"
+
+#~ msgid "Turn focus mode off"
+#~ msgstr "Désactiver le mode Focus"
+
+#~ msgid "Search, filters and sort"
+#~ msgstr "Recherche, filtres et tri"
+
+#~ msgid "Focus mode"
+#~ msgstr "Mode Focus"
+
+#~ msgid ""
+#~ "The parts switched on below hide while Focus Mode is on. Activated by "
+#~ "Ctrl+Shift+F or the main menu."
+#~ msgstr ""
+#~ "Les éléments activés ci-dessous sont masqués lorsque le mode Focus est "
+#~ "actif. Activé par Ctrl+Maj+F ou le menu principal."
+
+#~ msgid "Start in focus mode"
+#~ msgstr "Démarrer en mode Focus"
+
+#~ msgid "Fold the reading pane's toolbar"
+#~ msgstr "Replier la barre d’outils du panneau de lecture"
+
+#~ msgid "Every button goes into its ⋯ menu."
+#~ msgstr "Chaque bouton passe dans son menu ⋯."
+
+#~ msgid "Fold the message list's header"
+#~ msgstr "Replier l’en-tête de la liste des messages"
+
+#~ msgid "Everything but the sidebar toggle goes into ⋯."
+#~ msgstr "Tout sauf le bouton de la barre latérale passe dans ⋯."
+
+#~ msgid "Hide the accounts in the sidebar"
+#~ msgstr "Masquer les comptes dans la barre latérale"
+
+#~ msgid "Only Favorites, Tags and Smart Folders stay."
+#~ msgstr "Seuls les favoris, les tags et les dossiers intelligents restent."
+
+#~ msgid "Hide sender avatars"
+#~ msgstr "Masquer les avatars des expéditeurs"
+
+#~ msgid "Hide the preview text"
+#~ msgstr "Masquer le texte d’aperçu"
+
+#~ msgid "One line of preview text"
+#~ msgstr "Une ligne de texte d’aperçu"
+
+#~ msgid "Hide the subject"
+#~ msgstr "Masquer l’objet"
+
+#~ msgid "Tag chips hide with it."
+#~ msgstr "Les pastilles de tag se masquent avec elle."
+
+#~ msgid "Fold the sidebar to the icon rail"
+#~ msgstr "Replier la barre latérale en bandeau d’icônes"
+
+#~ msgid "Hovering it slides the full sidebar out."
+#~ msgstr "Le survol fait apparaître la barre latérale complète."
 
 #~ msgid "Show Accounts"
 #~ msgstr "Afficher les comptes"

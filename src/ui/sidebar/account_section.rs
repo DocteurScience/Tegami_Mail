@@ -12,20 +12,19 @@ use super::widgets::{
 use super::*;
 
 impl Sidebar {
-    /// Build one account's section into `accounts_box`: the header, then
+    /// Build one account's section into `container`: the header, then
     /// the folders in a revealer the header folds.
     pub(super) fn build_account_section(
         &mut self,
         section_idx: usize,
         section: &SectionData,
-        accounts_box: &gtk::Box,
         container: &gtk::Box,
         sender: &ComponentSender<Self>,
     ) {
         let id = section.account.id;
         let (header, chevron, folded) =
             self.build_account_header(section_idx, section, container, sender);
-        accounts_box.append(&header);
+        container.append(&header);
 
         // Animated folder list.
         let revealer = gtk::Revealer::new();
@@ -87,7 +86,7 @@ impl Sidebar {
         }
         wrap.append(&add_btn);
         revealer.set_child(Some(&wrap));
-        accounts_box.append(&revealer);
+        container.append(&revealer);
 
         self.revealers.insert(id, revealer);
         self.chevrons.insert(id, chevron);

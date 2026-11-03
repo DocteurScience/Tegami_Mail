@@ -1,57 +1,8 @@
-//! The icon rail and Focus Mode: collapsing to icons, and the accounts
-//! folding away while Focus Mode is on.
+//! The icon rail: collapsing the sidebar to icons and back.
 
 use super::*;
 
 impl Sidebar {
-    pub(super) fn on_set_focus(
-        &mut self,
-        hide_accounts: bool,
-        animate: bool,
-        widgets: &SidebarWidgets,
-        sender: ComponentSender<Self>,
-    ) {
-        let hiding = hide_accounts && !self.focus_hide_accounts;
-        let showing = !hide_accounts && self.focus_hide_accounts;
-        if !hiding && !showing {
-            return;
-        }
-        self.focus_hide_accounts = hide_accounts;
-        // Whatever was opened for the mode alone goes with it.
-        self.rail_open.clear();
-        self.rail_open_accounts.clear();
-        if animate && hiding {
-            // Slide the accounts up and away. The rebuild that draws the
-            // sidebar without them follows once they have gone — the
-            // pixels it replaces are then the ones it draws.
-            {
-                // SlideDown folding: the block slides up under the
-                // unified section, the way a folder list folds.
-                if let Some(r) = &self.accounts_revealer {
-                    r.set_transition_duration(crate::ui::FOCUS_ANIM_MS);
-                    r.set_reveal_child(false);
-                }
-            }
-            let s = sender.clone();
-            gtk::glib::timeout_add_local_once(
-                std::time::Duration::from_millis(u64::from(crate::ui::FOCUS_ANIM_MS) + 40),
-                move || s.input(SidebarInput::FocusSettled),
-            );
-        } else {
-            // Accounts coming back slide in after the rebuild.
-            self.reveal_accounts_late = animate && showing;
-            self.rebuild(widgets, &sender);
-        }
-    }
-
-    pub(super) fn on_focus_settled(
-        &mut self,
-        widgets: &SidebarWidgets,
-        sender: ComponentSender<Self>,
-    ) {
-        self.rebuild(widgets, &sender);
-    }
-
     pub(super) fn on_set_collapsed(
         &mut self,
         collapsed: bool,

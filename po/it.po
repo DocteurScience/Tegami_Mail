@@ -737,16 +737,6 @@ msgstr "Messaggi e-mail"
 msgid "Filtered: {names}"
 msgstr "{name} rimosso"
 
-msgid "Search messages…"
-msgstr "Cerca messaggi…"
-
-#, fuzzy
-msgid "Filter"
-msgstr "Filtri"
-
-msgid "Sort"
-msgstr "Ordina"
-
 #, fuzzy
 msgid "Tag: {name}"
 msgstr "Aggiungi etichetta {name}"
@@ -906,12 +896,6 @@ msgstr "Ripristina (Ctrl+Y fa lo stesso)"
 
 msgid "Reveal the status bar (also: long-press Refresh)"
 msgstr "Mostra la barra di stato (anche: tieni premuto Aggiorna)"
-
-msgid "Show or hide the accounts in the sidebar"
-msgstr "Mostra o nascondi gli account nella barra laterale"
-
-msgid "Focus mode on or off"
-msgstr "Modalità focus attiva/disattiva"
 
 #, fuzzy
 msgid "Fullscreen on or off"
@@ -1111,12 +1095,6 @@ msgstr "Scorciatoie da tastiera"
 msgid "About Tegami Mail"
 msgstr "Informazioni su Tegami Mail"
 
-msgid "Turn focus mode on"
-msgstr "Attiva modalità focus"
-
-msgid "Turn focus mode off"
-msgstr "Disattiva modalità focus"
-
 msgid "View"
 msgstr "Vista"
 
@@ -1260,15 +1238,6 @@ msgstr "Il renderer verrà applicato al prossimo avvio di Tegami Mail."
 
 msgid "The language applies the next time Tegami Mail starts."
 msgstr "La lingua verrà applicata al prossimo avvio di Tegami Mail."
-
-msgid "Edit this message"
-msgstr "Modifica questo messaggio"
-
-msgid "Try to send this message now"
-msgstr "Prova a inviare questo messaggio ora"
-
-msgid "Send all"
-msgstr "Invia tutti"
 
 #, fuzzy
 msgid "Forward as attachment"
@@ -1553,8 +1522,14 @@ msgstr "Cerca messaggi (Ctrl+F)"
 msgid "Search messages (Ctrl+F)"
 msgstr "Cerca messaggi (Ctrl+F)"
 
-msgid "Search, filters and sort"
-msgstr "Cerca, filtri e ordinamento"
+msgid "Edit this message"
+msgstr "Modifica questo messaggio"
+
+msgid "Try to send this message now"
+msgstr "Prova a inviare questo messaggio ora"
+
+msgid "Send all"
+msgstr "Invia tutti"
 
 #, fuzzy
 msgid "Reply (Ctrl+R)"
@@ -7008,57 +6983,6 @@ msgstr ""
 msgid "Always fold the right group into ⋯"
 msgstr ""
 
-msgid "Focus mode"
-msgstr "Modalità focus"
-
-msgid ""
-"The parts switched on below hide while Focus Mode is on. Activated by "
-"Ctrl+Shift+F or the main menu."
-msgstr ""
-
-msgid "Start in focus mode"
-msgstr "Avvia in Modalità focus"
-
-msgid "Fold the reading pane's toolbar"
-msgstr "Comprimi la barra degli strumenti del pannello di lettura"
-
-msgid "Every button goes into its ⋯ menu."
-msgstr "Ogni pulsante va nel suo menu ⋯."
-
-msgid "Fold the message list's header"
-msgstr "Comprimi l'intestazione dell'elenco messaggi"
-
-#, fuzzy
-msgid "Everything but the sidebar toggle goes into ⋯."
-msgstr "Ogni pulsante va nel suo menu ⋯."
-
-msgid "Hide the accounts in the sidebar"
-msgstr "Nascondi gli account nella barra laterale"
-
-msgid "Only Favorites, Tags and Smart Folders stay."
-msgstr ""
-
-msgid "Hide sender avatars"
-msgstr "Nascondi gli avatar dei mittenti"
-
-msgid "Hide the preview text"
-msgstr "Nascondi il testo di anteprima"
-
-msgid "One line of preview text"
-msgstr "Una riga di testo di anteprima"
-
-msgid "Hide the subject"
-msgstr "Nascondi l'oggetto"
-
-msgid "Tag chips hide with it."
-msgstr ""
-
-msgid "Fold the sidebar to the icon rail"
-msgstr "Comprimi la barra laterale alla barra icone"
-
-msgid "Hovering it slides the full sidebar out."
-msgstr ""
-
 msgid "Compose in the main window"
 msgstr "Componi nella finestra principale"
 
@@ -7594,6 +7518,68 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Search messages…"
+#~ msgstr "Cerca messaggi…"
+
+#, fuzzy
+#~ msgid "Filter"
+#~ msgstr "Filtri"
+
+#~ msgid "Sort"
+#~ msgstr "Ordina"
+
+#~ msgid "Show or hide the accounts in the sidebar"
+#~ msgstr "Mostra o nascondi gli account nella barra laterale"
+
+#~ msgid "Focus mode on or off"
+#~ msgstr "Modalità focus attiva/disattiva"
+
+#~ msgid "Turn focus mode on"
+#~ msgstr "Attiva modalità focus"
+
+#~ msgid "Turn focus mode off"
+#~ msgstr "Disattiva modalità focus"
+
+#~ msgid "Search, filters and sort"
+#~ msgstr "Cerca, filtri e ordinamento"
+
+#~ msgid "Focus mode"
+#~ msgstr "Modalità focus"
+
+#~ msgid "Start in focus mode"
+#~ msgstr "Avvia in Modalità focus"
+
+#~ msgid "Fold the reading pane's toolbar"
+#~ msgstr "Comprimi la barra degli strumenti del pannello di lettura"
+
+#~ msgid "Every button goes into its ⋯ menu."
+#~ msgstr "Ogni pulsante va nel suo menu ⋯."
+
+#~ msgid "Fold the message list's header"
+#~ msgstr "Comprimi l'intestazione dell'elenco messaggi"
+
+#, fuzzy
+#~ msgid "Everything but the sidebar toggle goes into ⋯."
+#~ msgstr "Ogni pulsante va nel suo menu ⋯."
+
+#~ msgid "Hide the accounts in the sidebar"
+#~ msgstr "Nascondi gli account nella barra laterale"
+
+#~ msgid "Hide sender avatars"
+#~ msgstr "Nascondi gli avatar dei mittenti"
+
+#~ msgid "Hide the preview text"
+#~ msgstr "Nascondi il testo di anteprima"
+
+#~ msgid "One line of preview text"
+#~ msgstr "Una riga di testo di anteprima"
+
+#~ msgid "Hide the subject"
+#~ msgstr "Nascondi l'oggetto"
+
+#~ msgid "Fold the sidebar to the icon rail"
+#~ msgstr "Comprimi la barra laterale alla barra icone"
 
 #~ msgid "Show Accounts"
 #~ msgstr "Mostra account"

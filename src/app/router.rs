@@ -225,11 +225,10 @@ impl AppModel {
             | AppMsg::UnsubscribeDone { .. }) => self.on_unsubscribe(msg, sender),
             msg @ AppMsg::InviteAction { .. } => self.on_invites(msg),
             AppMsg::ReceiptAnswer { message, send } => self.answer_receipt(&message, send),
-            msg @ (AppMsg::ListOverflowMenu
-            | AppMsg::ListPaneWidth(..)
+            msg @ (AppMsg::ListPaneWidth(..)
             | AppMsg::ListCount(..)
             | AppMsg::ListColumnWidths(..)
-            | AppMsg::ListSortChanged(..)) => self.on_list_header(msg, sender),
+            | AppMsg::ListSortChanged(..)) => self.on_list_header(msg),
             msg @ AppMsg::OwnGravatarFetched { .. } => self.on_identity(msg),
             msg @ (AppMsg::SetReaderActionsCollapsed(..)
             | AppMsg::SetReaderCompact(..)
@@ -402,7 +401,6 @@ impl AppModel {
             | PrefOutput::SetTextScale(..)
             | PrefOutput::SetTheme(..)
             | PrefOutput::SetAvatars(..)
-            | PrefOutput::SetFocusMode(..)
             | PrefOutput::SetTagRowTint(..)
             | PrefOutput::SetOwnMailboxFace(..)
             | PrefOutput::SetSenderLogos(..)

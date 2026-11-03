@@ -376,19 +376,6 @@ fn toolbar_toml() {
 }
 
 #[test]
-fn focus_toml() {
-    assert_golden(
-        "config/testdata/focus-default.toml",
-        &pretty(&FocusMode::default()),
-    );
-    assert_eq!(
-        toml::from_str::<FocusMode>("").unwrap(),
-        FocusMode::default(),
-        "an empty focus.toml reads as the default"
-    );
-}
-
-#[test]
 fn unsubscribed_and_invites_toml() {
     pin_round_trip::<UnsubscribedFile>(
         "unsubscribed.toml",

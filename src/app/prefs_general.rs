@@ -67,7 +67,6 @@ impl AppModel {
                 }
             }
 
-            PrefOutput::SetFocusMode(focus) => self.set_focus_mode(focus),
             PrefOutput::SetTagRowTint(on) => {
                 if pref!(self.tag_row_tint = on) {
                     self.refresh_tag_css();

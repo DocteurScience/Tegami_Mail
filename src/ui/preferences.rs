@@ -77,9 +77,6 @@ pub(crate) struct Preferences {
     browsers: Vec<crate::ui::launch::Browser>,
     /// The reader toolbar layout being edited (the app applies every drop).
     toolbar: ReaderToolbar,
-    /// Focus Mode's switches, kept whole so each toggle hands the app the
-    /// full set (the main menu and Ctrl+Shift+F flip the master switch too).
-    focus: crate::config::FocusMode,
     /// The three drop zones of the toolbar editor, filled from `toolbar`.
     toolbar_editor: Option<ToolbarEditor>,
     /// The single-line columns being edited (#334), and their editor.
@@ -386,7 +383,6 @@ impl Component for Preferences {
             sound: crate::config::load_new_mail_sound(),
             custom_sound: crate::config::custom_sound(),
             toolbar: init.reader_toolbar.clone(),
-            focus: init.focus,
             toolbar_editor: None,
             list_columns: init.list_columns.clone(),
             column_editor: None,
@@ -509,7 +505,6 @@ impl Component for Preferences {
     /// them; the view itself has none left.
     fn pre_view() {
         general.update_view(model);
-        appearance.update_view(model);
         list.update_view(model);
         conversations.update_view(model);
         reading.update_view(model);
@@ -581,10 +576,6 @@ impl Component for Preferences {
                 panel,
                 sender: accounts,
             } => self.on_set_accounts_panel(panel, accounts),
-            PrefInput::ToggleFocus(part, on) => self.on_toggle_focus(part, on, sender),
-            PrefInput::SetFocusMode(focus) => {
-                self.focus = focus;
-            }
             PrefInput::ChangeSectionStyle(idx) => self.on_change_section_style(idx, sender),
             PrefInput::ChangeTagsPlacement(idx) => {
                 let _ = sender.output(PrefOutput::SetTagsPlacement(placement_from_index(idx)));

@@ -4,7 +4,6 @@
 use adw::prelude::*;
 use relm4::prelude::*;
 
-use crate::config;
 use crate::ui::sidebar::SidebarInput;
 
 use super::model::AppModel;
@@ -22,9 +21,7 @@ impl AppModel {
     fn pin_sidebar_from_peek(&mut self) {
         tracing::info!("peek: pinned to side-by-side");
         self.sidebar_peek = false;
-        if !self.sidebar_layout_borrowed() {
-            self.sidebar_collapsed = false;
-        }
+        self.sidebar_collapsed = false;
         self.rail_active = false;
         if let Some(peek) = self.peek_split.clone() {
             self.peek_transition.set(true);
@@ -35,9 +32,7 @@ impl AppModel {
         // Side-by-side again: settle at the normal expanded width.
         self.animate_sidebar(false);
         self.compact_sidebar_header(false);
-        if !self.sidebar_layout_borrowed() {
-            self.save_sidebar_state();
-        }
+        self.save_sidebar_state();
     }
 
     /// Close the floating sidebar overlay if it is open — navigation picked in
@@ -140,44 +135,9 @@ impl AppModel {
     }
 
     /// Whether the icon rail marks unread folders with a dot instead of a
-    /// count: the preference, or Focus Mode's rail part while it holds.
+    /// count.
     pub(super) fn rail_dots_now(&self) -> bool {
-        self.rail_dots || self.focus.active(config::FocusPart::RailSidebar)
-    }
-
-    /// Whether the rail belongs on screen: the window is too narrow for the
-    /// full sidebar, Focus Mode has folded it, or the user collapsed it
-    /// themselves. Only the last of those is ever saved.
-    fn rail_wanted(&self) -> bool {
-        self.auto_rail
-            || self.focus.active(config::FocusPart::RailSidebar)
-            || self.sidebar_collapsed
-    }
-
-    /// Whether the sidebar's layout is Focus Mode's for the while: the rail
-    /// part is in force, so collapsing or expanding it is a look for as long
-    /// as the mode lasts and never the layout the user keeps. Nothing is
-    /// saved while this holds, and ending the mode gives back exactly the
-    /// sidebar it took over — whatever was done to it meanwhile.
-    fn sidebar_layout_borrowed(&self) -> bool {
-        self.focus.active(config::FocusPart::RailSidebar)
-    }
-
-    /// Put the rail up or take it down to match [`Self::rail_wanted`],
-    /// animating the split the way the toggle does. Persists nothing.
-    pub(super) fn sync_rail(&mut self) {
-        let want = self.rail_wanted();
-        // A floating peek is the expanded sidebar by another name: fold it
-        // before the rail goes up under it.
-        if want && self.sidebar_peek {
-            self.set_sidebar_peek(false, true);
-        }
-        if want != self.rail_active {
-            self.rail_active = want;
-            self.sidebar.emit(SidebarInput::SetCollapsed(want));
-            self.animate_sidebar(want);
-            self.compact_sidebar_header(want);
-        }
+        self.rail_dots
     }
 
     /// The messages the router sends here (see `AppModel::route`).
@@ -206,18 +166,11 @@ impl AppModel {
                     self.rail_active = true;
                     self.set_sidebar_peek(!collapsed, true);
                 } else {
-                    // Focus Mode holding the rail borrows the sidebar's
-                    // layout: expanding it for a moment is a look, not a
-                    // choice, so only what is on screen moves.
-                    if !self.sidebar_layout_borrowed() {
-                        self.sidebar_collapsed = collapsed;
-                    }
+                    self.sidebar_collapsed = collapsed;
                     self.rail_active = collapsed;
                     self.animate_sidebar(collapsed);
                     self.compact_sidebar_header(collapsed);
-                    if !self.sidebar_layout_borrowed() {
-                        self.save_sidebar_state();
-                    }
+                    self.save_sidebar_state();
                 }
             }
 
@@ -233,7 +186,7 @@ impl AppModel {
                 // The rail wins while the window is narrow; the user's own
                 // choice comes back the moment there is room again. Nothing is
                 // persisted here — this is the window's shape, not a preference.
-                let want = self.rail_wanted();
+                let want = self.auto_rail || self.sidebar_collapsed;
                 if want != self.rail_active {
                     self.rail_active = want;
                     self.sidebar.emit(SidebarInput::SetCollapsed(want));
@@ -258,7 +211,7 @@ impl AppModel {
                 // the narrow-window breakpoint or the user's own collapse.
                 // The same peek the expand button opens, dismissed the same
                 // ways (navigation, or a click outside the panel).
-                let rail_up = self.rail_wanted();
+                let rail_up = self.auto_rail || self.sidebar_collapsed;
                 if self.sidebar_hover_expand && rail_up && !self.sidebar_peek {
                     self.rail_active = false;
                     self.set_sidebar_peek(true, true);

@@ -58,20 +58,6 @@ impl QuickFilter {
         })
     }
 
-    /// The icon the row, the reader or the sidebar already uses for it.
-    pub(crate) fn icon(self) -> &'static str {
-        match self {
-            QuickFilter::Unread => "mail-unread-symbolic",
-            QuickFilter::Starred => "starred-symbolic",
-            QuickFilter::Attachment => "mail-attachment-symbolic",
-            QuickFilter::ToMe => "avatar-default-symbolic",
-            QuickFilter::Contacts => "x-office-address-book-symbolic",
-            QuickFilter::Important => "emblem-important-symbolic",
-            QuickFilter::Tagged => "tag-symbolic",
-            QuickFilter::Today => "x-office-calendar-symbolic",
-        }
-    }
-
     fn bit(self) -> u16 {
         1 << self as u16
     }

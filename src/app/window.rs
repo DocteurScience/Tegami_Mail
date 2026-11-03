@@ -112,7 +112,6 @@ impl AppModel {
         sender: &ComponentSender<Self>,
     ) {
         let app = relm4::main_application();
-        app.add_action(&self.focus_action);
         app.add_action(&self.reading_pane_action);
         let window = root.clone();
         let outgoing = self.outgoing.clone();
@@ -160,12 +159,6 @@ impl AppModel {
                 &[accel],
             );
         }
-        // Ctrl+Shift+F switches Focus Mode on and off.
-        gtk::prelude::GtkApplicationExt::set_accels_for_action(
-            &app,
-            "app.focus-mode",
-            &["<Ctrl><Shift>f"],
-        );
         // Ctrl+ / Ctrl- / Ctrl+0: message zoom, the bodies alone. The
         // = key stands in for + on layouts where + needs Shift, and the
         // keypad's keys count too, as in every browser.

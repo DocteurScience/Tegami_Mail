@@ -63,7 +63,6 @@ mod filter_forward;
 mod filter_run;
 mod filters;
 mod flags;
-mod focus;
 mod folder_menu;
 mod folders;
 mod hand_off;
@@ -462,23 +461,6 @@ impl SimpleComponent for AppModel {
                                         connect_clicked[sender] => move |_| {
                                             sender.input(AppMsg::OpenListSearch);
                                         },
-                                    },
-                                },
-                                // Focus Mode: the ⋯ that stands in for the
-                                // search, filters, count and sort while they
-                                // are folded away.
-                                #[name = "lh_overflow"]
-                                pack_end = &gtk::Revealer {
-                                    set_transition_type: gtk::RevealerTransitionType::SlideLeft,
-                                    set_transition_duration: FOCUS_ANIM_MS,
-                                    add_css_class: "focus-fade",
-                                    set_reveal_child: false,
-                                    gtk::Button {
-                                        set_icon_name: "view-more-horizontal-symbolic",
-                                        set_tooltip_text: Some(i18n("Search, filters and sort").as_str()),
-                                        set_valign: gtk::Align::Center,
-                                        add_css_class: "flat",
-                                        connect_clicked[sender] => move |_| sender.input(AppMsg::ListOverflowMenu),
                                     },
                                 },
                                 // The sort orders and every quick filter share
@@ -935,7 +917,7 @@ impl SimpleComponent for AppModel {
     ) -> ComponentParts<Self> {
         let boot = Boot::read(&root);
         let children = Children::launch(&boot, &sender);
-        let main_menu = build_main_menu(boot.prefs.reading_pane, &boot.focus, &sender);
+        let main_menu = build_main_menu(boot.prefs.reading_pane, &sender);
         let mut model = AppModel::new(&root, &sender, boot, children, main_menu);
         model.prime_and_connect(&sender);
         schedule_download_prune();

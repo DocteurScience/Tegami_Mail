@@ -160,8 +160,6 @@ pub(crate) struct PrefInit {
     /// The reader header's buttons, per side and in order.
     pub(crate) reader_toolbar: ReaderToolbar,
     pub(crate) toolbar_fold_right: bool,
-    /// Focus Mode: the master switch and the parts it strips.
-    pub(crate) focus: crate::config::FocusMode,
     pub(crate) preview_lines: u32,
     pub(crate) list_layout: crate::config::ListLayout,
     pub(crate) list_columns: Vec<crate::config::ListColumn>,
@@ -266,10 +264,6 @@ pub(crate) enum PrefInput {
     TogglePrintPageNumbers(bool),
     TogglePrintDate(bool),
     TogglePrintPunchMargin(bool),
-    /// One of Focus Mode's switches.
-    ToggleFocus(crate::config::FocusPart, bool),
-    /// The app's Focus Mode changed elsewhere (menu, shortcut): follow.
-    SetFocusMode(crate::config::FocusMode),
     ChangeChevronSide(u32),
     ChangeStartView(u32),
     ChangeFolderSort(u32),
@@ -460,7 +454,6 @@ pub(crate) enum PrefOutput {
     SetSeenCounts(bool),
     SetReaderToolbar(ReaderToolbar),
     SetToolbarFoldRight(bool),
-    SetFocusMode(crate::config::FocusMode),
     SetRailFold(crate::config::RailFold),
     SetAppTheme(AppTheme),
     SetTextScale(u32),

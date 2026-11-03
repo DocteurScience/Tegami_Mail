@@ -665,15 +665,6 @@ msgstr ""
 msgid "Filtered: {names}"
 msgstr ""
 
-msgid "Search messages…"
-msgstr ""
-
-msgid "Filter"
-msgstr ""
-
-msgid "Sort"
-msgstr ""
-
 msgid "Tag: {name}"
 msgstr ""
 
@@ -825,12 +816,6 @@ msgid "Redo it (Ctrl+Y does the same)"
 msgstr ""
 
 msgid "Reveal the status bar (also: long-press Refresh)"
-msgstr ""
-
-msgid "Show or hide the accounts in the sidebar"
-msgstr ""
-
-msgid "Focus mode on or off"
 msgstr ""
 
 msgid "Fullscreen on or off"
@@ -1006,12 +991,6 @@ msgstr ""
 msgid "About Tegami Mail"
 msgstr ""
 
-msgid "Turn focus mode on"
-msgstr ""
-
-msgid "Turn focus mode off"
-msgstr ""
-
 msgid "View"
 msgstr ""
 
@@ -1138,15 +1117,6 @@ msgid "The renderer applies the next time Tegami Mail starts."
 msgstr ""
 
 msgid "The language applies the next time Tegami Mail starts."
-msgstr ""
-
-msgid "Edit this message"
-msgstr ""
-
-msgid "Try to send this message now"
-msgstr ""
-
-msgid "Send all"
 msgstr ""
 
 msgid "Forward as attachment"
@@ -1397,7 +1367,13 @@ msgstr ""
 msgid "Search messages (Ctrl+F)"
 msgstr ""
 
-msgid "Search, filters and sort"
+msgid "Edit this message"
+msgstr ""
+
+msgid "Try to send this message now"
+msgstr ""
+
+msgid "Send all"
 msgstr ""
 
 msgid "Reply (Ctrl+R)"
@@ -6284,56 +6260,6 @@ msgid ""
 msgstr ""
 
 msgid "Always fold the right group into ⋯"
-msgstr ""
-
-msgid "Focus mode"
-msgstr ""
-
-msgid ""
-"The parts switched on below hide while Focus Mode is on. Activated by "
-"Ctrl+Shift+F or the main menu."
-msgstr ""
-
-msgid "Start in focus mode"
-msgstr ""
-
-msgid "Fold the reading pane's toolbar"
-msgstr ""
-
-msgid "Every button goes into its ⋯ menu."
-msgstr ""
-
-msgid "Fold the message list's header"
-msgstr ""
-
-msgid "Everything but the sidebar toggle goes into ⋯."
-msgstr ""
-
-msgid "Hide the accounts in the sidebar"
-msgstr ""
-
-msgid "Only Favorites, Tags and Smart Folders stay."
-msgstr ""
-
-msgid "Hide sender avatars"
-msgstr ""
-
-msgid "Hide the preview text"
-msgstr ""
-
-msgid "One line of preview text"
-msgstr ""
-
-msgid "Hide the subject"
-msgstr ""
-
-msgid "Tag chips hide with it."
-msgstr ""
-
-msgid "Fold the sidebar to the icon rail"
-msgstr ""
-
-msgid "Hovering it slides the full sidebar out."
 msgstr ""
 
 msgid "Compose in the main window"

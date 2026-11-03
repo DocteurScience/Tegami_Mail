@@ -5,7 +5,6 @@ use adw::prelude::*;
 use relm4::prelude::*;
 
 use crate::i18n::{i18n, i18n_noop};
-use crate::ui::preferences::PrefOutput;
 use crate::ui::sidebar::CtxAction;
 
 use super::{AppModel, AppMsg};
@@ -152,11 +151,6 @@ const SHORTCUT_HELP: &[(&str, &[(&str, &str)])] = &[
                 "Ctrl+Shift+S",
                 i18n_noop("Reveal the status bar (also: long-press Refresh)"),
             ),
-            (
-                "Ctrl+Shift+A",
-                i18n_noop("Show or hide the accounts in the sidebar"),
-            ),
-            ("Ctrl+Shift+F", i18n_noop("Focus mode on or off")),
             ("F11", i18n_noop("Fullscreen on or off")),
             (
                 "Ctrl+Alt+1  /  2  /  3",
@@ -341,24 +335,6 @@ impl AppModel {
             AppMsg::ShowShortcuts
         });
         add(i18n("About Tegami Mail"), &action, "", || AppMsg::OpenAbout);
-        {
-            let mut focus = self.focus;
-            focus.enabled = !focus.enabled;
-            let s = sender.input_sender().clone();
-            out.push(Entry {
-                title: if focus.enabled {
-                    i18n("Turn focus mode on")
-                } else {
-                    i18n("Turn focus mode off")
-                },
-                detail: action.clone(),
-                key: "Ctrl+Shift+F".into(),
-                action: true,
-                run: Box::new(move || {
-                    let _ = s.send(AppMsg::Pref(PrefOutput::SetFocusMode(focus)));
-                }),
-            });
-        }
 
         let view = i18n("View");
         let mut go = |title: String, detail: String, msg: Box<dyn Fn() -> AppMsg>| {

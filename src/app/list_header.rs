@@ -21,12 +21,9 @@ pub(super) const LIST_WIDE_ON: i32 = 600;
 
 const LIST_WIDE_OFF: i32 = 560;
 
-/// The message list header's controls that Focus Mode folds into a ⋯ menu:
-/// each sits in a revealer so it can slide away, and the toggles are kept so
-/// the menu can flip them (their own handlers then do the filtering).
+/// The message list header's sort and filter popover, its sort action and
+/// the All / Unread / Starred switch, kept to be set from elsewhere.
 pub(super) struct ListHeaderWidgets {
-    pub(super) revealers: Vec<gtk::Revealer>,
-    pub(super) overflow: gtk::Revealer,
     filter: SortFilterPopover,
     sort: gtk::gio::SimpleAction,
     /// The All / Unread / Starred switch above the list.
@@ -490,69 +487,6 @@ impl AppModel {
         }
     }
 
-    /// The message list's search, filters, count and sort as a menu: what
-    /// the ⋯ in its header offers while Focus Mode has them folded away.
-    /// The toggles are flipped through their own buttons, so the filtering
-    /// happens where it always does.
-    fn show_list_overflow_menu(&self, sender: &ComponentSender<Self>) {
-        use crate::ui::context_menu::{show_context_menu_with_header, MenuEntry};
-        let Some(lh) = self.list_header_widgets.get() else {
-            return;
-        };
-        let s = sender.input_sender().clone();
-        let search = MenuEntry::new(i18n("Search messages…"), move || {
-            let _ = s.send(AppMsg::OpenListSearch);
-        })
-        .icon("system-search-symbolic");
-        let filters: Vec<MenuEntry> = QuickFilter::IN_POPOVER
-            .into_iter()
-            .map(|f| {
-                let on = self.quick_filters.has(f);
-                let s = sender.input_sender().clone();
-                MenuEntry::new(f.label(), move || s.emit(AppMsg::SetQuickFilter(f, !on)))
-                    .icon(f.icon())
-                    .selected(on)
-            })
-            .collect();
-        let s = sender.input_sender().clone();
-        let clear = MenuEntry::new(i18n("Clear filters"), move || {
-            s.emit(AppMsg::ClearQuickFilters)
-        })
-        .enabled(!self.quick_filters.is_empty());
-        let filter =
-            MenuEntry::submenu(i18n("Filter"), vec![filters, vec![clear]]).icon("filter-symbolic");
-        let current = lh
-            .sort
-            .state()
-            .and_then(|v| v.str().map(String::from))
-            .unwrap_or_default();
-        let orders: Vec<MenuEntry> = SORT_ORDERS
-            .into_iter()
-            .map(|(label, key)| {
-                let action = lh.sort.clone();
-                // The same route the sort menu takes, so the list and the
-                // action's own state both follow.
-                MenuEntry::new(i18n(label), move || {
-                    action.activate(Some(&key.to_variant()))
-                })
-                .selected(current == key)
-            })
-            .collect();
-        let sort =
-            MenuEntry::submenu(i18n("Sort"), vec![orders]).icon("view-sort-descending-symbolic");
-        let sections = vec![vec![search], vec![filter, sort]];
-        // The message count heads the menu, where the header showed it.
-        let header = (!self.list_count.is_empty()).then(|| self.list_count.clone());
-        let btn = lh.overflow.clone();
-        show_context_menu_with_header(
-            &btn,
-            (btn.width() / 2) as f64,
-            btn.height() as f64,
-            header.as_deref(),
-            sections,
-        );
-    }
-
     /// Where the list's search field and bulk bar open (#496).
     pub(super) fn push_list_bars(&self) {
         self.message_list.emit(MessageListInput::SetBarsPlacement {
@@ -598,32 +532,19 @@ impl AppModel {
         });
     }
 
-    /// The avatars the list draws: the setting, unless Focus Mode hides them.
+    /// The avatars the list draws.
     pub(super) fn list_avatars(&self) -> bool {
-        self.avatars && !self.focus.active(config::FocusPart::HideAvatars)
+        self.avatars
     }
 
-    /// The preview lines the list shows: the setting, hidden outright or
-    /// capped at one by Focus Mode (previews switched off stay off).
-    ///
-    /// Only what is *drawn* changes — the setting itself, and with it what
-    /// the workers fetch, is left alone. So the preview text is in hand the
-    /// moment Focus Mode ends, rather than waiting for the next sync the way
-    /// switching previews off in Settings does.
+    /// The preview lines the list shows.
     pub(super) fn list_preview_lines(&self) -> u32 {
-        if self.focus.active(config::FocusPart::HidePreview) {
-            0
-        } else if self.focus.active(config::FocusPart::OnePreviewLine) {
-            self.preview_lines.min(1)
-        } else {
-            self.preview_lines
-        }
+        self.preview_lines
     }
 
-    /// Whether the list draws subject lines: always, unless Focus Mode's
-    /// subject part is in force (then a row is its sender and its date).
+    /// Whether the list draws subject lines.
     pub(super) fn list_show_subject(&self) -> bool {
-        !self.focus.active(config::FocusPart::HideSubject)
+        true
     }
 
     /// The list header's title: what the list shows, as the sidebar names
@@ -663,9 +584,8 @@ impl AppModel {
     }
 
     /// The messages the router sends here (see `AppModel::route`).
-    pub(super) fn on_list_header(&mut self, msg: AppMsg, sender: ComponentSender<Self>) {
+    pub(super) fn on_list_header(&mut self, msg: AppMsg) {
         match msg {
-            AppMsg::ListOverflowMenu => self.show_list_overflow_menu(&sender),
             AppMsg::ListPaneWidth(width) => {
                 // A margin each way, so a drag that rests near the line does
                 // not flick the rows back and forth.
@@ -722,12 +642,6 @@ impl AppModel {
             .insert_action_group("sortmenu", Some(&sort_group));
 
         let _ = self.list_header_widgets.set(ListHeaderWidgets {
-            revealers: vec![
-                widgets.lh_search.clone(),
-                widgets.lh_filter.clone(),
-                widgets.lh_count.clone(),
-            ],
-            overflow: widgets.lh_overflow.clone(),
             filter: SortFilterPopover::new(
                 widgets.list_filter_btn.clone(),
                 &sort_action,
@@ -737,9 +651,6 @@ impl AppModel {
             show: build_show_switch(&widgets.list_show_bar, sender.input_sender()),
         });
         self.sync_show_checks();
-        // Focus Mode's chrome as saved: nothing is mapped yet, so the
-        // revealers jump to their state without animating.
-        self.sync_focus_chrome();
         self.reader_overflow_btn
             .set_visible(self.reader_overflow_wanted());
     }

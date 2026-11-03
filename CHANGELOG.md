@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- **Removed: Focus Mode,** with **Ctrl+Shift+F**, its main menu and
+  command palette entries, **Settings → Appearance → Focus mode** and the
+  list header's ⋯ it brought. The redesign has none of it. The saved
+  `focus.toml` is no longer read.
+
 - **Changed: labels in sentence case.** Menus, buttons, titles and
   headings capitalise their first word only ("Mark all as read", "Save
   as file…"), as the redesign asks; names of products and programs keep

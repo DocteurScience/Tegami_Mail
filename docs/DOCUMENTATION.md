@@ -1755,8 +1755,7 @@ and several filters can be set at once; together the filters show only the
 mail that matches all of them. While any is on the button is in the accent
 color and its tooltip names them, with the dates. **Clear filters** turns
 them all off. They apply to whichever folder or search is shown, and last
-until Tegami Mail is closed. In Focus Mode they are under **Filter** and **Sort**
-in the list's ⋯ menu; the dates are set in the popover only.
+until Tegami Mail is closed.
 
 Clicking the unread dot on a row marks that message read without selecting
 or opening it. A conversation's dot that is lit only for an unread reply

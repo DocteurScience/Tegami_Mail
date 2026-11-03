@@ -128,7 +128,6 @@ impl AppModel {
             seen_counts: self.seen_counts,
             rail_fold: self.rail_fold,
             reader_toolbar: self.reader_toolbar.clone(),
-            focus: self.focus,
             card_actions_hover: self.card_actions_hover,
             card_actions_auto: self.card_actions_auto,
             list_palette: self.list_palette,

@@ -1,22 +1,9 @@
-//! Settings → Sidebar: the placed sections, the icon
-//! rail's fold-ups and Focus Mode.
+//! Settings → Sidebar: the placed sections and the icon rail's fold-ups.
 
 use super::choices::{section_style_at, start_view_at};
 use super::*;
 
 impl Preferences {
-    pub(super) fn on_toggle_focus(
-        &mut self,
-        part: crate::config::FocusPart,
-        on: bool,
-        sender: ComponentSender<Self>,
-    ) {
-        if self.focus.get(part) != on {
-            self.focus.set(part, on);
-            let _ = sender.output(PrefOutput::SetFocusMode(self.focus));
-        }
-    }
-
     pub(super) fn on_change_section_style(&mut self, idx: u32, sender: ComponentSender<Self>) {
         let style = section_style_at(idx);
         let _ = sender.output(PrefOutput::SetSectionStyle(style));

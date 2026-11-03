@@ -1,5 +1,4 @@
-//! Showcase hooks for composing and the app's look: Focus Mode, special
-//! folders, replies, new messages and forwards, the composer's menus and
+//! Showcase hooks for composing and the app's look: special folders, replies, new messages and forwards, the composer's menus and
 //! formats, handed-in files, the light/dark flip and themes.
 
 use relm4::prelude::*;
@@ -10,30 +9,6 @@ use crate::models::FolderKind;
 use crate::ui::preferences::PrefOutput;
 
 use super::{input_after, showcase_at, showcase_log_focus};
-
-/// TEGAMI_SHOWCASE_FOCUS=<seconds> switches Focus Mode on at
-/// that moment (its parts as saved in focus.toml), so a
-/// capture a little later catches the slide, and one later
-/// still the settled layout. TEGAMI_SHOWCASE_FOCUS_OFF=<seconds>
-/// switches it off again.
-pub(super) fn stage_focus(sender: &ComponentSender<AppModel>) {
-    for (var, on) in [
-        ("TEGAMI_SHOWCASE_FOCUS", true),
-        ("TEGAMI_SHOWCASE_FOCUS_OFF", false),
-    ] {
-        if let Some(at) = std::env::var(var).ok().and_then(|v| v.parse::<f64>().ok()) {
-            let s = sender.clone();
-            gtk::glib::timeout_add_local_once(
-                std::time::Duration::from_millis((at * 1000.0) as u64),
-                move || {
-                    let mut focus = config::load_focus_mode();
-                    focus.enabled = on;
-                    s.input(AppMsg::Pref(PrefOutput::SetFocusMode(focus)));
-                },
-            );
-        }
-    }
-}
 
 /// TEGAMI_SHOWCASE_FOLDER=drafts|templates|sent|archive|junk|trash|outbox[@<s>]
 /// switches to that folder at 2 s, before the staging's 3 s

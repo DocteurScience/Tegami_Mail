@@ -560,12 +560,6 @@ pub(crate) struct AppModel {
     pub(super) section_style: config::SectionStyle,
     pub(super) tags_placement: config::SectionPlacement,
     pub(super) favorites_placement: config::SectionPlacement,
-    /// Focus Mode (main menu, Ctrl+Shift+F, Settings → Appearance): the
-    /// master switch and the parts it strips. Applied on top of the ordinary
-    /// settings, which it never changes — off, everything comes back.
-    pub(super) focus: config::FocusMode,
-    /// The main menu's "Focus Mode" check item.
-    pub(super) focus_action: gtk::gio::SimpleAction,
     /// The main menu's "Reading Pane" check item, the setting's only switch.
     pub(super) reading_pane_action: gtk::gio::SimpleAction,
     /// The message list header's foldable controls and the ⋯ that stands in

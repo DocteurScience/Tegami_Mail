@@ -767,16 +767,6 @@ msgstr "wiadomości: {n}"
 msgid "Filtered: {names}"
 msgstr "Usunięto konto {name}"
 
-msgid "Search messages…"
-msgstr "Przeszukaj wiadomości…"
-
-#, fuzzy
-msgid "Filter"
-msgstr "Filtry"
-
-msgid "Sort"
-msgstr "Sortuj"
-
 #, fuzzy
 msgid "Tag: {name}"
 msgstr "Dodaj etykietę {name}"
@@ -938,12 +928,6 @@ msgstr "Ponów (to samo robi Ctrl+Y)"
 
 msgid "Reveal the status bar (also: long-press Refresh)"
 msgstr "Wyświetl pasek stanu (lub przytrzymaj przycisk odświeżania)"
-
-msgid "Show or hide the accounts in the sidebar"
-msgstr "Wyświetl lub ukryj konta w panelu bocznym"
-
-msgid "Focus mode on or off"
-msgstr "Włącz lub wyłącz tryb skupienia"
 
 #, fuzzy
 msgid "Fullscreen on or off"
@@ -1154,14 +1138,6 @@ msgstr "Skróty klawiszowe"
 msgid "About Tegami Mail"
 msgstr "O aplikacji"
 
-#, fuzzy
-msgid "Turn focus mode on"
-msgstr "Tryb skupienia"
-
-#, fuzzy
-msgid "Turn focus mode off"
-msgstr "Tryb skupienia"
-
 msgid "View"
 msgstr ""
 
@@ -1312,15 +1288,6 @@ msgstr ""
 msgid "The language applies the next time Tegami Mail starts."
 msgstr ""
 "Język zostanie zmieniony przy następnym uruchomieniu aplikacji Tegami Mail."
-
-msgid "Edit this message"
-msgstr "Modyfikuj tę wiadomość"
-
-msgid "Try to send this message now"
-msgstr "Spróbuj teraz wysłać tę wiadomość"
-
-msgid "Send all"
-msgstr "Wyślij wszystkie"
 
 #, fuzzy
 msgid "Forward as attachment"
@@ -1617,8 +1584,14 @@ msgstr "Przeszukaj wiadomości (Ctrl+F)"
 msgid "Search messages (Ctrl+F)"
 msgstr "Przeszukaj wiadomości (Ctrl+F)"
 
-msgid "Search, filters and sort"
-msgstr "Wyszukiwanie, filtry i sortowanie"
+msgid "Edit this message"
+msgstr "Modyfikuj tę wiadomość"
+
+msgid "Try to send this message now"
+msgstr "Spróbuj teraz wysłać tę wiadomość"
+
+msgid "Send all"
+msgstr "Wyślij wszystkie"
 
 #, fuzzy
 msgid "Reply (Ctrl+R)"
@@ -7177,57 +7150,6 @@ msgstr ""
 msgid "Always fold the right group into ⋯"
 msgstr ""
 
-msgid "Focus mode"
-msgstr "Tryb skupienia"
-
-msgid ""
-"The parts switched on below hide while Focus Mode is on. Activated by "
-"Ctrl+Shift+F or the main menu."
-msgstr ""
-
-msgid "Start in focus mode"
-msgstr "Uruchamianie w trybie skupienia"
-
-msgid "Fold the reading pane's toolbar"
-msgstr "Zwijanie paska narzędzi panelu czytania"
-
-msgid "Every button goes into its ⋯ menu."
-msgstr "Wszystkie przyciski trafiają do menu ⋯."
-
-msgid "Fold the message list's header"
-msgstr "Zwijanie nagłówka listy wiadomości"
-
-#, fuzzy
-msgid "Everything but the sidebar toggle goes into ⋯."
-msgstr "Wszystkie przyciski trafiają do menu ⋯."
-
-msgid "Hide the accounts in the sidebar"
-msgstr "Ukrywanie kont w panelu bocznym"
-
-msgid "Only Favorites, Tags and Smart Folders stay."
-msgstr ""
-
-msgid "Hide sender avatars"
-msgstr "Ukrywanie awatarów nadawców"
-
-msgid "Hide the preview text"
-msgstr "Ukrywanie podglądu treści"
-
-msgid "One line of preview text"
-msgstr "Jeden wiersz podglądu treści"
-
-msgid "Hide the subject"
-msgstr "Ukrywanie tematu"
-
-msgid "Tag chips hide with it."
-msgstr ""
-
-msgid "Fold the sidebar to the icon rail"
-msgstr "Zwijanie panelu bocznego do paska ikon"
-
-msgid "Hovering it slides the full sidebar out."
-msgstr ""
-
 msgid "Compose in the main window"
 msgstr "Pisanie w oknie głównym"
 
@@ -7771,6 +7693,70 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Search messages…"
+#~ msgstr "Przeszukaj wiadomości…"
+
+#, fuzzy
+#~ msgid "Filter"
+#~ msgstr "Filtry"
+
+#~ msgid "Sort"
+#~ msgstr "Sortuj"
+
+#~ msgid "Show or hide the accounts in the sidebar"
+#~ msgstr "Wyświetl lub ukryj konta w panelu bocznym"
+
+#~ msgid "Focus mode on or off"
+#~ msgstr "Włącz lub wyłącz tryb skupienia"
+
+#, fuzzy
+#~ msgid "Turn focus mode on"
+#~ msgstr "Tryb skupienia"
+
+#, fuzzy
+#~ msgid "Turn focus mode off"
+#~ msgstr "Tryb skupienia"
+
+#~ msgid "Search, filters and sort"
+#~ msgstr "Wyszukiwanie, filtry i sortowanie"
+
+#~ msgid "Focus mode"
+#~ msgstr "Tryb skupienia"
+
+#~ msgid "Start in focus mode"
+#~ msgstr "Uruchamianie w trybie skupienia"
+
+#~ msgid "Fold the reading pane's toolbar"
+#~ msgstr "Zwijanie paska narzędzi panelu czytania"
+
+#~ msgid "Every button goes into its ⋯ menu."
+#~ msgstr "Wszystkie przyciski trafiają do menu ⋯."
+
+#~ msgid "Fold the message list's header"
+#~ msgstr "Zwijanie nagłówka listy wiadomości"
+
+#, fuzzy
+#~ msgid "Everything but the sidebar toggle goes into ⋯."
+#~ msgstr "Wszystkie przyciski trafiają do menu ⋯."
+
+#~ msgid "Hide the accounts in the sidebar"
+#~ msgstr "Ukrywanie kont w panelu bocznym"
+
+#~ msgid "Hide sender avatars"
+#~ msgstr "Ukrywanie awatarów nadawców"
+
+#~ msgid "Hide the preview text"
+#~ msgstr "Ukrywanie podglądu treści"
+
+#~ msgid "One line of preview text"
+#~ msgstr "Jeden wiersz podglądu treści"
+
+#~ msgid "Hide the subject"
+#~ msgstr "Ukrywanie tematu"
+
+#~ msgid "Fold the sidebar to the icon rail"
+#~ msgstr "Zwijanie panelu bocznego do paska ikon"
 
 #~ msgid "Show Accounts"
 #~ msgstr "Wyświetlanie kont"

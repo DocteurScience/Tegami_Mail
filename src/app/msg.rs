@@ -711,9 +711,6 @@ pub(crate) enum AppMsg {
     },
 
     // ---- on_list_header (list_header.rs) ----
-    /// The ⋯ of the message list header (Focus Mode): search, filters and
-    /// sort as a menu.
-    ListOverflowMenu,
     /// The list pane is this wide now (a drag of the divider, #334).
     ListPaneWidth(i32),
     /// The message list's visible-count text changed.
