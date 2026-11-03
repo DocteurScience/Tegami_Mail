@@ -11,6 +11,13 @@ use super::widgets::{
 };
 use super::*;
 
+/// Whether each account gets a Tags section of its own. The redesign has
+/// one Tags section for every account (mockup 01; owner's decision,
+/// 2026-11-03), so it is off, the code kept for the day per-account
+/// sections come back: switching this on is all it takes, their open
+/// state is still saved (`tags_expanded_accounts` in sidebar.toml).
+const ACCOUNT_TAG_SECTIONS: bool = false;
+
 impl Sidebar {
     /// Build one account's section into `container`: the header, then
     /// the folders in a revealer the header folds.
@@ -72,10 +79,10 @@ impl Sidebar {
         let wrap = gtk::Box::new(gtk::Orientation::Vertical, 0);
         wrap.append(&list_box);
         // The account's own Tags section, above its folder hierarchy:
-        // every tag scoped to this account, there whatever the unified
-        // section shows. (Its filtered folders are marked in place in
-        // the hierarchy instead — see `filter_icon`.)
-        if !self.tags.is_empty() {
+        // every tag scoped to this account. Off for now (see
+        // `ACCOUNT_TAG_SECTIONS`). (Its filtered folders are marked in place
+        // in the hierarchy instead — see `filter_icon`.)
+        if ACCOUNT_TAG_SECTIONS && !self.tags.is_empty() {
             self.build_tags_section(&wrap, Slot::Account(id), sender);
         }
         if !custom.is_empty() {
