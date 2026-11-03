@@ -101,7 +101,6 @@ mod router;
 mod search;
 mod selection;
 mod send;
-mod send_morph;
 mod settings_store;
 mod settings_window;
 mod shortcuts;
@@ -111,7 +110,6 @@ mod sidebar_contents;
 mod sidebar_peek;
 mod smart;
 mod snooze;
-mod split_reply;
 mod tags;
 #[cfg(test)]
 mod test_support;
@@ -558,8 +556,7 @@ impl SimpleComponent for AppModel {
                                         set_tooltip_text: Some(i18n("Edit this message").as_str()),
                                         add_css_class: "flat",
                                         #[watch]
-                                        set_visible: model.showing_outbox
-                                            && model.reader_compose.is_none(),
+                                        set_visible: model.showing_outbox,
                                         #[watch]
                                         set_sensitive: model.current.is_some(),
                                         connect_clicked[sender] => move |_| sender.input(AppMsg::EditCurrentOutbox),
@@ -576,8 +573,7 @@ impl SimpleComponent for AppModel {
                                         set_tooltip_text: Some(i18n("Try to send this message now").as_str()),
                                         add_css_class: "flat",
                                         #[watch]
-                                        set_visible: model.showing_outbox
-                                            && model.reader_compose.is_none(),
+                                        set_visible: model.showing_outbox,
                                         #[watch]
                                         set_sensitive: model.current.is_some(),
                                         connect_clicked[sender] => move |_| sender.input(AppMsg::SendCurrentOutbox),
@@ -593,8 +589,7 @@ impl SimpleComponent for AppModel {
                                         set_label: &i18n("Send all"),
                                         add_css_class: "flat",
                                         #[watch]
-                                        set_visible: model.showing_outbox
-                                            && model.reader_compose.is_none(),
+                                        set_visible: model.showing_outbox,
                                         connect_clicked[sender] => move |_| sender.input(AppMsg::RetryAllOutbox),
                                     },
                                 },
@@ -892,8 +887,7 @@ impl SimpleComponent for AppModel {
                                     #[watch]
                                     set_spinning: model.attachments_loading,
                                     #[watch]
-                                    set_visible: model.attachments_loading
-                                        && model.reader_compose.is_none(),
+                                    set_visible: model.attachments_loading,
                                 },
                             },
                             // Reader content: the inline reply/forward pane drops
@@ -968,7 +962,6 @@ impl SimpleComponent for AppModel {
         model.init_reader_header_menu(&widgets, &sender);
         model.init_reader_toolbar_fold(&widgets, &sender);
         model.place_reader();
-        model.init_compose_overlay(&widgets);
         model.install_notification_actions(&sender);
         model.init_window_size(&root, &widgets, &sender);
         model.init_hover_peek(&widgets, &sender);

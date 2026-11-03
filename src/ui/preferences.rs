@@ -641,7 +641,6 @@ impl Component for Preferences {
             PrefInput::ChangeMessageTheme(index) => self.on_change_message_theme(index, sender),
             PrefInput::ChangeComposeFormat(idx) => self.on_change_compose_format(idx, sender),
             PrefInput::ChangeFoldMessages(idx) => self.on_change_fold_messages(idx, sender),
-            PrefInput::ChangeReplyPosition(idx) => self.on_change_reply_position(idx, sender),
             PrefInput::ChangeUndoSend(idx) => self.on_change_undo_send(idx, sender),
             PrefInput::ChangeSignaturePosition(idx) => {
                 self.on_change_signature_position(idx, sender)

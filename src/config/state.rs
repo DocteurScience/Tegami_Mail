@@ -46,10 +46,6 @@ pub(super) struct StateFile {
     /// old `prefs_height` key in the file is ignored.)
     #[serde(default = "default_about_height")]
     about_height: i32,
-    /// Split-reply panel height in px (the dragged divider). 0 = never
-    /// dragged: the panel opens at its computed default.
-    #[serde(default)]
-    split_reply_height: i32,
     /// The welcome wizard has been completed once (Start Reading pressed),
     /// so an install with no accounts is not greeted with it again — a
     /// restart right after the wizard, for the app icon, must not loop.
@@ -372,21 +368,6 @@ pub(crate) fn save_drawer_list_view(list_view: bool) {
 /// Persist the attachment drawer's list sort direction.
 pub(crate) fn save_drawer_sort_desc(desc: bool) {
     update_state(|s| s.drawer_sort_desc = desc);
-}
-
-/// The split-reply panel's dragged height; 0 when it has never been dragged
-/// (the caller computes an opening default from the pane).
-pub(crate) fn load_split_reply_height() -> i32 {
-    let h = load_state().split_reply_height;
-    if h == 0 {
-        0
-    } else {
-        h.clamp(220, 4000)
-    }
-}
-
-pub(crate) fn save_split_reply_height(height: i32) {
-    update_state(|s| s.split_reply_height = height.clamp(220, 4000));
 }
 
 /// The About window's height: tall by default, remembering the user's own

@@ -78,16 +78,8 @@ impl AppModel {
                     self.popouts_emit(|| {
                         MessageWindowInput::SetToolbar(self.reader_toolbar.clone())
                     });
-                    // Not while the inline composer covers the header: that
-                    // path hides the ⋯ by hand and restores it on close.
-                    if !self
-                        .reader_compose
-                        .as_ref()
-                        .is_some_and(|r| r.window.is_none())
-                    {
-                        self.reader_overflow_btn
-                            .set_visible(self.reader_overflow_wanted());
-                    }
+                    self.reader_overflow_btn
+                        .set_visible(self.reader_overflow_wanted());
                 }
             }
 
@@ -97,14 +89,8 @@ impl AppModel {
                     // measured afresh.
                     self.refresh_reader_breakpoint();
                     self.popouts_emit(|| MessageWindowInput::SetToolbarFold(on));
-                    if !self
-                        .reader_compose
-                        .as_ref()
-                        .is_some_and(|r| r.window.is_none())
-                    {
-                        self.reader_overflow_btn
-                            .set_visible(self.reader_overflow_wanted());
-                    }
+                    self.reader_overflow_btn
+                        .set_visible(self.reader_overflow_wanted());
                 }
             }
 

@@ -106,11 +106,6 @@ impl AppModel {
         if !pref!(self.reading_pane = pane) {
             return;
         }
-        // Only the reader beside the list writes in it: an inline reply is
-        // saved or kept in its own window.
-        if was == config::ReadingPane::Right {
-            self.release_reader_compose();
-        }
         if was == config::ReadingPane::Off {
             // The reader shows what is selected now. It was never drawn
             // while the pane was off, so it must not look already shown.
@@ -221,7 +216,6 @@ impl AppModel {
         thread: Vec<Message>,
         sender: &ComponentSender<Self>,
     ) {
-        self.release_reader_compose();
         self.attachments.clear();
         self.attachments_loading = false;
         self.sync_attachment_drawer();

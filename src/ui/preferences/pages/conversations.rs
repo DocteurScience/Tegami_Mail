@@ -15,7 +15,6 @@ pub(in crate::ui::preferences) struct ConversationsPage {
     pub(in crate::ui::preferences) thread_newest_first_row: adw::SwitchRow,
     pub(in crate::ui::preferences) fold_messages_row: adw::ComboRow,
     pub(in crate::ui::preferences) thread_row_newest_row: adw::SwitchRow,
-    pub(in crate::ui::preferences) reply_position_row: adw::ComboRow,
     pub(in crate::ui::preferences) card_attachments_row: adw::SwitchRow,
     pub(in crate::ui::preferences) attachment_drawer_row: adw::SwitchRow,
     pub(in crate::ui::preferences) confirm_thread_delete_row: adw::SwitchRow,
@@ -86,15 +85,6 @@ impl ConversationsPage {
                         },
                     },
 
-                    #[name = "reply_position_row"]
-                    adw::ComboRow {
-                        set_title: &i18n("Reply editor position"),
-                        set_subtitle: &i18n("Following the reading order puts it where the conversation ends."),
-                        connect_selected_notify[sender] => move |row| {
-                            sender.input(PrefInput::ChangeReplyPosition(row.selected()));
-                        },
-                    },
-
                     #[name = "card_attachments_row"]
                     adw::SwitchRow {
                         set_title: &i18n("Attachments on each message"),
@@ -129,7 +119,6 @@ impl ConversationsPage {
             thread_newest_first_row,
             fold_messages_row,
             thread_row_newest_row,
-            reply_position_row,
             card_attachments_row,
             attachment_drawer_row,
             confirm_thread_delete_row,

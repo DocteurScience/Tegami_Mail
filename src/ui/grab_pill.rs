@@ -5,54 +5,6 @@
 
 use gtk::prelude::*;
 
-/// Build a pill that drags `paned`'s divider. Dragging down always increases
-/// the position (the top pane grows), which reads correctly from either side
-/// of the divider. `clamp` bounds each candidate position; hand the Paned's
-/// own limits back unchanged with `|_, p| p`.
-///
-/// The caller aligns the pill against its boundary (`set_valign` +
-/// margin) and adds it to an Overlay over the pane it rides.
-///
-/// The pointer is tracked in ROOT coordinates: the pill rides a pane the drag
-/// itself resizes, so pill-local offsets would feed back into the resize and
-/// jitter (the console grip's trick).
-pub(crate) fn paned_grab_pill(
-    paned: &gtk::Paned,
-    clamp: impl Fn(&gtk::Paned, i32) -> i32 + 'static,
-) -> gtk::Box {
-    let pill = pill_widget();
-    let split = paned.clone();
-    attach_drag(
-        &pill,
-        paned,
-        move |_| {},
-        move |want| {
-            split.set_position(clamp(&split, want));
-        },
-    );
-    pill
-}
-
-/// The pill, for a host that wires its own gesture semantics (the attachment
-/// drawer's click-toggle) via [`attach_drag`]. What comes back is an
-/// invisible, larger hit zone with the thin bar drawn centred inside it — the
-/// visible bar is only 5px tall, far too small a target to press and release
-/// reliably, so the gestures live on the zone (the iOS home indicator does
-/// the same).
-fn pill_widget() -> gtk::Box {
-    let hit = gtk::Box::new(gtk::Orientation::Horizontal, 0);
-    hit.add_css_class("split-grab-hit");
-    hit.set_size_request(120, 20);
-    hit.set_halign(gtk::Align::Center);
-    // row-resize (the arrows with the divider line), matching the split
-    // reply's own Paned separator right below — one cursor across that
-    // whole handle. The drawer's edge variant keeps plain ns-resize, since
-    // its native separator is inert and shows no cursor of its own.
-    hit.set_cursor_from_name(Some("row-resize"));
-    hit.append(&pill_bar());
-    hit
-}
-
 /// The pill stretched into a full-width edge zone: the bar stays centred,
 /// but the gestures answer anywhere along the pane's edge — the attachment
 /// drawer's whole seam clicks and drags, not just the bar.

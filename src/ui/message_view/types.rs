@@ -36,8 +36,6 @@ pub(crate) enum MessageViewInput {
     /// what is blocked — only what the reader says about it.
     SetBannerShown(bool),
     SetSpoofBannerShown(bool),
-    /// The split reply opened above the reader (true) or went away (false).
-    SetUnderSplit(bool),
     /// The "always show recipients" preference changed (re-render follows).
     SetAlwaysShowRecipients(bool),
     /// The "single messages as cards" preference changed (re-render follows).
@@ -412,15 +410,6 @@ pub(crate) enum MessageViewInput {
         current: u32,
         total: u32,
     },
-    /// A split reply opened for this message (#86): scroll its card to the
-    /// top of the (now shorter) reader and give it the selection outline, so
-    /// the message being answered is the one in view.
-    FocusCard {
-        account_id: u32,
-        id: u32,
-    },
-    /// Drop the reply-target outline (the composer closed without sending).
-    BlurCard,
     /// The wrapper document reported its scroll anchor (throttled): the card at
     /// the viewport top and the offset into it — kept so a re-render can put
     /// the reader back where they were.
@@ -428,13 +417,6 @@ pub(crate) enum MessageViewInput {
         account_id: u32,
         id: u32,
         offset: u32,
-    },
-    /// A sent reply's card is joining the conversation: the next document
-    /// pins it in view, below the page's top gutter, and goes in without the
-    /// page crossfade.
-    PinArrival {
-        account_id: u32,
-        id: u32,
     },
     /// The list shows Drafts (or not): the empty pane's wording follows.
     SetDraftsView(bool),

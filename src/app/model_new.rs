@@ -90,57 +90,12 @@ impl AppModel {
             accounts_win: None,
             accounts_seed: None,
             composers: Vec::new(),
-            reader_compose: None,
-            send_morph: crate::ui::send_morph::SendMorph::new(),
-            arriving: None,
-            morph_pending: None,
             self_sender: sender.input_sender().clone(),
-            provisionals: HashMap::new(),
-            sent_files: HashMap::new(),
-            draining_composers: Vec::new(),
-            reader_split_top: {
-                let r = gtk::Revealer::new();
-                r.set_transition_type(gtk::RevealerTransitionType::SlideDown);
-                r.set_transition_duration(300);
-                r.set_reveal_child(false);
-                r
-            },
-            reader_split_bottom: {
-                let r = gtk::Revealer::new();
-                r.set_transition_type(gtk::RevealerTransitionType::SlideUp);
-                r.set_transition_duration(300);
-                r.set_reveal_child(false);
-                r
-            },
-            reader_split_lower: {
-                let p = gtk::Paned::new(gtk::Orientation::Vertical);
-                // Same invisible separator as the outer split: the bottom
-                // panel's grab pill is its visible affordance too.
-                p.add_css_class("reader-split");
-                p
-            },
-            split_close_anim: std::rc::Rc::new(std::cell::RefCell::new(None)),
             reader_header: std::cell::OnceCell::new(),
             toasts: std::cell::OnceCell::new(),
             outgoing: Default::default(),
             send_ticket: 0,
-            reader_split: {
-                let p = gtk::Paned::new(gtk::Orientation::Vertical);
-                // The separator itself is styled invisible — painted the
-                // composer's own ground, so the panel reads as running to its
-                // edge. The visible affordance is the floating grab pill the
-                // split slot overlays on the composer (open_inline_reply).
-                p.add_css_class("reader-split");
-                p
-            },
             window_drop_zones: None,
-            reader_compose_revealer: {
-                let r = gtk::Revealer::new();
-                r.set_transition_type(gtk::RevealerTransitionType::SlideDown);
-                r.set_transition_duration(300);
-                r.set_reveal_child(false);
-                r
-            },
             next_compose_id: 1,
             menu,
             help_menu,
@@ -232,7 +187,6 @@ impl AppModel {
             list_heard: Vec::new(),
             undo_stack: Vec::new(),
             redo_stack: Vec::new(),
-            compose_history: (None, None),
             carried_bodies: HashMap::new(),
             remote_override: HashMap::new(),
             carried_threads: HashMap::new(),
@@ -468,9 +422,6 @@ impl AppModel {
             swipe_enabled: prefs.swipe_enabled,
             swipe_reversed: prefs.swipe_reversed,
             swipe_sensitivity: config::load_swipe_sensitivity(),
-            compose_inline: prefs.compose_inline,
-            reply_inline: prefs.reply_inline,
-            reply_fields: prefs.reply_fields,
             compose_default_from: prefs.compose_default_from,
             paste_plain: prefs.paste_plain,
             return_paragraph: prefs.return_paragraph,
@@ -481,7 +432,6 @@ impl AppModel {
             print_options: prefs.print,
             compose_format: config::load_compose_format(),
             follow_plain: prefs.follow_plain,
-            reply_position: prefs.reply_position,
             signature_position: prefs.signature_position,
             signature_dashes: prefs.signature_dashes,
             fold_quote: prefs.fold_quote,

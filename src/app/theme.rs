@@ -64,9 +64,8 @@ pub(super) fn install_scheme_css(window: &impl IsA<gtk::Widget>) {
         provider.load_from_string(&format!(
             ".remote-alert image {{ color: {shield}; }}\
              .refresh-offline {{ color: {offline}; }}\
-             .inline-compose-surface, .compose-pane {{ background-color: {page}; }}\
-             .compose-windowed .compose-pane {{ background-color: @view_bg_color; }}\
-             .reader-split > separator {{ background-color: {page}; }}"
+             .compose-pane {{ background-color: {page}; }}\
+             .compose-windowed .compose-pane {{ background-color: @view_bg_color; }}"
         ));
     };
     let style = adw::StyleManager::default();
@@ -130,9 +129,4 @@ pub(super) fn follow_motion_setting() {
         .bind("enable-animations", &gtk_settings, "gtk-enable-animations")
         .flags(gio::SettingsBindFlags::GET)
         .build();
-}
-
-/// Whether things on screen should move (see [`follow_motion_setting`]).
-pub(super) fn motion_wanted() -> bool {
-    gtk::Settings::default().is_some_and(|s| s.is_gtk_enable_animations())
 }

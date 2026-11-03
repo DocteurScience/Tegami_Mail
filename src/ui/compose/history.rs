@@ -1,7 +1,7 @@
 //! The composer's own undo history (#200), interleaved with the body's text
 //! history in WebKit.
 
-use super::messages::{ComposeInput, ComposeOutput};
+use super::messages::ComposeInput;
 use super::types::{ComposeStep, ComposeUndoEntry};
 use super::Compose;
 use super::ComposeWidgets;
@@ -113,7 +113,6 @@ impl Compose {
         if changed_attachments {
             self.rebuild_attachments(widgets, sender);
         }
-        self.report_history(sender);
     }
 
     /// Carry out one step, returning the step that puts it back.
@@ -134,25 +133,6 @@ impl Compose {
                 ComposeStep::Insert { at, paths }
             }
         }
-    }
-
-    /// Tell the host what the history can do now, for its own Undo and Redo
-    /// entries. The body's side is read from the editor rather than from the
-    /// stack: a marker that has run out is still sitting there until the
-    /// next step walks past it.
-    pub(super) fn report_history(&self, sender: &ComponentSender<Self>) {
-        let reachable = |stack: &[ComposeUndoEntry], can_text: bool| {
-            stack
-                .iter()
-                .rev()
-                .find(|e| !matches!(e.step, ComposeStep::Body) || can_text)
-                .map(|e| e.what.clone())
-        };
-        let _ = sender.output(ComposeOutput::History {
-            id: self.compose_id,
-            undo: reachable(&self.undo_stack, self.editor.can_undo()),
-            redo: reachable(&self.redo_stack, self.editor.can_redo()),
-        });
     }
 
     /// Showcase only: walk the history through a round that mixes typing
@@ -278,7 +258,7 @@ impl Compose {
     }
 
     /// Handles [`ComposeInput::BodyHistory`].
-    pub(super) fn on_body_history(&mut self, can_undo: bool, sender: &ComponentSender<Self>) {
+    pub(super) fn on_body_history(&mut self, can_undo: bool) {
         // A fresh edit takes its place in the order — one marker
         // covers a whole run of typing, since the editor coalesces
         // its own steps and this only has to say where they sit.
@@ -290,6 +270,5 @@ impl Compose {
         {
             self.push_history(i18n("Typing"), ComposeStep::Body);
         }
-        self.report_history(sender);
     }
 }

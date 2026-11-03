@@ -867,10 +867,9 @@ account that has a signature.
 
 ### Replies and forwards
 
-A reply or a forward opens in the reading pane, beside the message it
-answers. **Settings → Composing → Reply and forward in the main window**,
-switched off, opens them in a window of their own instead, as **Compose in
-the main window** does for a new message.
+A reply, a forward and a new message each open in a window of their own
+(the redesign's composer window, mockups 04 and 05), with the conversation's
+history under a reply.
 
 A reply opens with a line above the quoted message, "On Oct 25, 2026 at
 14:03, Ada wrote:" in the app's language. **Settings → Composing → Reply
@@ -891,7 +890,7 @@ quoted message that sets its own colors keeps the light ground it was
 designed for.
 
 The quoted message opens folded behind a ••• button, since the reading pane
-beside the composer shows it already. A click shows it, with the button
+shows it already. A click shows it, with the button
 moved above it to fold it again. It is sent either way. A delete that would
 reach the folded quote, such as Select All and Delete, opens it instead of
 removing text that cannot be seen; the next one removes it. **Settings → Composing → Fold quoted
@@ -1001,9 +1000,7 @@ templates there, Thunderbird among them, sees the same ones.
   or a double-click on it in the list, opens a new message with its
   recipients, subject, text and files, sent from the address it was saved
   with. The template stays as it is.
-- **Edit template** opens the template itself, where a new message opens:
-  in the reading pane, or in a window of its own with **Settings →
-  Composing → Compose in the main window** switched off. **Save Template**
+- **Edit template** opens the template itself in a composer window. **Save Template**
   puts the changed one back in its place, and nothing is saved on its own
   while it is open. Sending from it leaves the template in Templates.
 - **New message from template…**, in the arrow at the end of **New
@@ -1363,8 +1360,7 @@ Message**, offered on the same terms (Insert in New Message when new
 messages start as rich text, in **Settings → Composing → Write messages
 in**). Attach to New
 Message asks about files over the size limit the way *Send with Tegami Mail* does
-(below). While a message is being written in the main window, files dropped
-anywhere else in it go into that message. Folders are skipped.
+(below). Folders are skipped.
 
 ### Send with Tegami Mail from GNOME Files
 

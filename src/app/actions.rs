@@ -247,30 +247,27 @@ impl AppModel {
         );
         match action {
             RowAction::Reply => {
-                self.open_reply(
+                self.open_compose(
                     m.account_id,
                     self.reply_context(&m, reply_prefill(&m, &self.reply_header)),
-                    (m.account_id, m.id),
                     &sender,
                 );
             }
             RowAction::ReplyAll => {
                 let own = self.own_identities(m.account_id);
-                self.open_reply(
+                self.open_compose(
                     m.account_id,
                     self.reply_context(&m, reply_all_prefill(&m, &own, &self.reply_header)),
-                    (m.account_id, m.id),
                     &sender,
                 );
             }
             RowAction::Forward => {
-                self.forward(m, true, &sender);
+                self.forward(m, &sender);
             }
             // A template's banner (#360): edited where a new message
             // is written.
             RowAction::EditTemplate => {
-                let inline = self.compose_inline;
-                self.open_draft(m, inline, HandOffFiles::default(), &sender);
+                self.open_draft(m, HandOffFiles::default(), &sender);
             }
             // Cards only carry the three above; anything else falls
             // through to the ordinary row behaviour.
@@ -341,7 +338,7 @@ impl AppModel {
             }
             RowAction::Forward => {
                 let m = self.newest_to_answer(&conversation, m);
-                self.forward(m, false, &sender);
+                self.forward(m, &sender);
             }
             // A conversation row stands for its newest message here
             // too: that is the one the row is showing.
@@ -352,8 +349,7 @@ impl AppModel {
             // Edited where a new message is written (#360), from a
             // row's menu as from the banner.
             RowAction::EditTemplate => {
-                let inline = self.compose_inline;
-                self.open_draft(m, inline, HandOffFiles::default(), &sender);
+                self.open_draft(m, HandOffFiles::default(), &sender);
             }
             RowAction::ToggleStar => {
                 let starred = !m.starred;

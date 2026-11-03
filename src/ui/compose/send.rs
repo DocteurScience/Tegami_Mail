@@ -196,25 +196,6 @@ impl Compose {
         }
     }
 
-    /// Handles [`ComposeInput::SaveDraftIfDirty`].
-    pub(super) fn on_save_draft_if_dirty(&mut self, sender: &ComponentSender<Self>) {
-        // Save only if the user actually edited something, so navigating
-        // away from a pristine quote-only reply doesn't litter Drafts.
-        if self.fields_dirty {
-            sender.input_sender().emit(ComposeInput::SaveDraft);
-        } else {
-            let s = sender.clone();
-            let id = self.compose_id;
-            self.editor.is_dirty(move |body_dirty| {
-                if body_dirty {
-                    s.input_sender().emit(ComposeInput::SaveDraft);
-                } else {
-                    let _ = s.output(ComposeOutput::Close(id));
-                }
-            });
-        }
-    }
-
     /// Another identity was picked: signing, directory and signature follow.
     fn on_account_changed(&mut self, widgets: &ComposeWidgets) {
         self.follow_account_signing(widgets);
@@ -471,7 +452,6 @@ impl Compose {
             out.draft_origin = None;
         }
         let _ = sender.output(ComposeOutput::Send {
-            id: self.compose_id,
             message: Box::new(out),
         });
         let _ = sender.output(ComposeOutput::Close(self.compose_id));

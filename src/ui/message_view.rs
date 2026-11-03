@@ -201,9 +201,6 @@ pub(crate) struct MessageView {
     instant: bool,
     /// The messages the list has selected, outlined in the reader.
     selected_cards: Vec<(u32, u32)>,
-    /// Bumped by FocusCard/BlurCard so a blur cancels a focus whose 380ms
-    /// post-slide scroll hasn't fired yet (reply cancelled immediately).
-    focus_gen: std::rc::Rc<std::cell::Cell<u64>>,
     /// True while the body is being fetched (show a spinner instead).
     loading: bool,
     /// False from when a render starts until the WebView reports it finished
@@ -211,10 +208,6 @@ pub(crate) struct MessageView {
     webview_ready: bool,
     /// In-message find (#103).
     find_open: bool,
-    /// The split reply is open above this reader: its header bar is gone and
-    /// the subject block meets the composer's grab strip instead, where the
-    /// list-aligned 4px reads as cramped.
-    under_split: bool,
     find_matches: Option<(u32, u32)>,
     find_entry: Option<gtk::SearchEntry>,
     /// Where the keyboard was when find opened, to hand it back on close:

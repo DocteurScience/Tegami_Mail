@@ -14,7 +14,6 @@ use crate::worker::{MailRequest, OutgoingMessage};
 use super::model::AppModel;
 use super::msg::AppMsg;
 use super::prefill::unsent_prefill;
-use super::theme::motion_wanted;
 
 /// A message the app writes itself (an answer to an invitation, an
 /// unsubscribe request): plain text, nothing attached, signed or quoted.
@@ -70,7 +69,6 @@ impl AppModel {
     /// worker.
     fn queue_send(
         &mut self,
-        origin: super::outgoing::Origin,
         out: Box<OutgoingMessage>,
         sent_path: Option<String>,
         sender: &ComponentSender<Self>,
@@ -105,7 +103,6 @@ impl AppModel {
             message: out,
             sent_path,
             queued_at: crate::datefmt::now(),
-            origin,
             held: delay > 0,
             toast: toast.clone(),
         };
@@ -279,9 +276,7 @@ impl AppModel {
         self.push_outbox();
     }
 
-    /// Undo Send: the message comes back to the composer it was written in,
-    /// as it was. A split reply reopens beside its card if that card is
-    /// still on screen; otherwise it gets a window.
+    /// Undo Send: the message comes back, as it was, in a composer window.
     pub(super) fn undo_send(&mut self, ticket: u64, sender: &ComponentSender<Self>) {
         let taken = {
             let mut list = self.outgoing.borrow_mut();
@@ -293,8 +288,6 @@ impl AppModel {
         o.toast.dismiss();
         self.unmark_answered(ticket);
         self.push_outbox();
-        self.send_morph.finish();
-        self.drop_provisional(&o.message.in_reply_to);
         if self.showing_outbox
             && self
                 .current
@@ -306,29 +299,13 @@ impl AppModel {
         }
         let account_id = o.account_id;
         let prefill = unsent_prefill(*o.message);
-        let free = self.reader_compose.is_none() && !self.showing_outbox;
-        match o.origin {
-            super::outgoing::Origin::Split(answering)
-                if free
-                    && self
-                        .current
-                        .iter()
-                        .chain(self.current_thread.iter())
-                        .any(|m| (m.account_id, m.id) == answering) =>
-            {
-                self.open_inline_reply(account_id, prefill, Some(answering), sender);
-            }
-            super::outgoing::Origin::Pane if free => {
-                self.open_inline_reply(account_id, prefill, None, sender)
-            }
-            _ => self.open_compose(account_id, prefill, sender),
-        }
+        self.open_compose(account_id, prefill, sender);
     }
 
     /// The messages the router sends here (see `AppModel::route`).
     pub(super) fn on_send(&mut self, msg: AppMsg, sender: ComponentSender<Self>) {
         match msg {
-            AppMsg::SendMessage { from, out } => self.on_send_message(from, out, sender),
+            AppMsg::SendMessage { out } => self.on_send_message(out, sender),
 
             AppMsg::DispatchSend(ticket) => self.dispatch_send(ticket),
 
@@ -390,33 +367,14 @@ impl AppModel {
                 if self.take_refused_auto_forward(account_id, &message) {
                     return;
                 }
-                self.drop_provisional(&message.in_reply_to);
                 self.compose_unsent(account_id, *message, &sender);
             }
             _ => unreachable!("not routed to on_send"),
         }
     }
 
-    /// A composer sent a message; `from` is that composer's id.
-    fn on_send_message(
-        &mut self,
-        from: u32,
-        out: Box<OutgoingMessage>,
-        sender: ComponentSender<Self>,
-    ) {
-        // A reply sent from the split pane becomes its own card in
-        // the conversation, instead of sliding away (send_morph.rs):
-        // its card is built now, for the composer's close to carry
-        // the editor to.
-        self.arriving = None;
-        if self.reply_joins(from, &out) {
-            match self.provisional_message(&out) {
-                Some(m) => self.arriving = Some((from, m, motion_wanted())),
-                None => {
-                    tracing::info!(target: "tegami::morph", "no send morph: the reply's card could not be built")
-                }
-            }
-        }
+    /// A composer sent a message.
+    fn on_send_message(&mut self, out: Box<OutgoingMessage>, sender: ComponentSender<Self>) {
         let account_id = out.from_account_id;
         // Remember who this went to, now, whatever route it takes
         // from here (straight out, the Outbox, Send Later): the next
@@ -447,12 +405,6 @@ impl AppModel {
                     new: fresh.clone(),
                 });
             }
-            if let Some(rc) = &self.reader_compose {
-                rc.controller.emit(ComposeInput::AddSuggestions {
-                    account_id,
-                    new: fresh.clone(),
-                });
-            }
         }
         let sent_path = self.sent_copy_path(account_id);
         if out.send_at.is_some() {
@@ -467,14 +419,7 @@ impl AppModel {
                 },
             );
         } else {
-            let origin = match self.reader_compose.as_ref().filter(|r| r.id == from) {
-                Some(r) if r.window.is_none() => r.answering.map_or(
-                    super::outgoing::Origin::Pane,
-                    super::outgoing::Origin::Split,
-                ),
-                _ => super::outgoing::Origin::Window,
-            };
-            self.queue_send(origin, out, sent_path, &sender);
+            self.queue_send(out, sent_path, &sender);
         }
     }
 }

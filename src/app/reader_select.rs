@@ -10,7 +10,6 @@ use crate::ui::message_view::MessageViewInput;
 use crate::worker::MailRequest;
 
 use super::conversation::{body_key, THREAD_BODY_WAIT};
-use super::hand_off::HandOffFiles;
 use super::model::AppModel;
 use super::msg::AppMsg;
 
@@ -438,29 +437,10 @@ impl AppModel {
                 c.keywords.clone(),
             )
         });
-        // Navigating away releases any inline reply (save-if-dirty, or keep
-        // it as an independent window if it was popped out).
-        self.release_reader_compose();
-        // A sent reply still on its way into the conversation left
-        // behind: the reader shows the new message at once.
-        let elsewhere = self
-            .current
-            .as_ref()
-            .is_some_and(|c| (c.account_id, c.id) != (m.account_id, m.id));
-        if elsewhere && self.send_morph.running() {
-            self.send_morph.finish();
-        }
         // A queued message reads like any other, straight from the bytes
         // already on disk — no folder, no UID, nothing to ask the server.
         if let Some(item) = self.outbox_item(m.account_id, m.id) {
             self.show_outbox_message(&item);
-            return;
-        }
-        // Selecting a draft opens it in the compose editor, in the
-        // reading pane where the message would otherwise show.
-        if self.is_drafts_folder(m.account_id, m.folder_id) {
-            self.reader_focus_pending = false;
-            self.open_draft(m, true, HandOffFiles::default(), &sender);
             return;
         }
         self.follow_keyboard_into_reader();

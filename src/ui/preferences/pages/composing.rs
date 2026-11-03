@@ -13,9 +13,6 @@ use crate::i18n::i18n;
 #[derive(Debug)]
 pub(in crate::ui::preferences) struct ComposingPage {
     pub(in crate::ui::preferences) page: adw::PreferencesPage,
-    pub(in crate::ui::preferences) compose_inline_row: adw::SwitchRow,
-    pub(in crate::ui::preferences) reply_inline_row: adw::SwitchRow,
-    pub(in crate::ui::preferences) reply_fields_row: adw::SwitchRow,
     pub(in crate::ui::preferences) default_from_row: adw::ComboRow,
     pub(in crate::ui::preferences) paste_plain_row: adw::SwitchRow,
     pub(in crate::ui::preferences) return_paragraph_row: adw::SwitchRow,
@@ -47,32 +44,6 @@ impl ComposingPage {
             page = adw::PreferencesPage {
                 add = &adw::PreferencesGroup {
                     set_title: &i18n("Composing"),
-
-                    #[name = "compose_inline_row"]
-                    adw::SwitchRow {
-                        set_title: &i18n("Compose in the main window"),
-                        set_subtitle: &i18n("Off opens new messages in their own window."),
-                        connect_active_notify[sender] => move |row| {
-                            let _ = sender.output(PrefOutput::SetComposeInline(row.is_active()));
-                        },
-                    },
-
-                    #[name = "reply_inline_row"]
-                    adw::SwitchRow {
-                        set_title: &i18n("Reply and forward in the main window"),
-                        connect_active_notify[sender] => move |row| {
-                            let _ = sender.output(PrefOutput::SetReplyInline(row.is_active()));
-                        },
-                    },
-
-                    #[name = "reply_fields_row"]
-                    adw::SwitchRow {
-                        set_title: &i18n("Show From, To and Subject in the reply panel"),
-                        set_subtitle: &i18n("Off folds them behind a button."),
-                        connect_active_notify[sender] => move |row| {
-                            let _ = sender.output(PrefOutput::SetReplyFields(row.is_active()));
-                        },
-                    },
 
                     #[name = "default_from_row"]
                     adw::ComboRow {
@@ -277,9 +248,6 @@ impl ComposingPage {
         );
         Self {
             page,
-            compose_inline_row,
-            reply_inline_row,
-            reply_fields_row,
             default_from_row,
             paste_plain_row,
             return_paragraph_row,

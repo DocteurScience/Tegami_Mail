@@ -4499,15 +4499,6 @@ msgid_plural "{n} seconds"
 msgstr[0] ""
 msgstr[1] ""
 
-msgid "Above the messages"
-msgstr ""
-
-msgid "Below the messages"
-msgstr ""
-
-msgid "Follows the reading order"
-msgstr ""
-
 msgid "System language"
 msgstr ""
 
@@ -4699,12 +4690,6 @@ msgid "Show your own replies in the message list"
 msgstr ""
 
 msgid "Off shows the last message that arrived."
-msgstr ""
-
-msgid "Reply editor position"
-msgstr ""
-
-msgid "Following the reading order puts it where the conversation ends."
 msgstr ""
 
 msgid "Attachments on each message"
@@ -6260,21 +6245,6 @@ msgid ""
 msgstr ""
 
 msgid "Always fold the right group into ⋯"
-msgstr ""
-
-msgid "Compose in the main window"
-msgstr ""
-
-msgid "Off opens new messages in their own window."
-msgstr ""
-
-msgid "Reply and forward in the main window"
-msgstr ""
-
-msgid "Show From, To and Subject in the reply panel"
-msgstr ""
-
-msgid "Off folds them behind a button."
 msgstr ""
 
 msgid "Send new messages from"

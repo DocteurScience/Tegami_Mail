@@ -6,6 +6,5 @@ drawer_sort_desc = false
 list_pane_width = 0
 list_pane_height = 0
 about_height = 0
-split_reply_height = 0
 wizard_completed = false
 app_icon_generation = 0

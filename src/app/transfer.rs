@@ -519,16 +519,16 @@ impl AppModel {
                 }
                 if self.pending_draft_token == Some(token) {
                     self.pending_draft_token = None;
-                    let Some((m, inline, extra)) = self.pending_draft.take() else {
+                    let Some((m, extra)) = self.pending_draft.take() else {
                         return;
                     };
                     match raw {
-                        Ok(raw) => self.compose_from_draft_raw(m, &raw, inline, extra, &sender),
+                        Ok(raw) => self.compose_from_draft_raw(m, &raw, extra, &sender),
                         // Offline, say: the body the reader has is still
                         // better than nothing.
                         Err(e) => {
                             tracing::warn!("draft {} could not be fetched whole: {e}", m.uid);
-                            self.open_draft_body(m, inline, extra, &sender);
+                            self.open_draft_body(m, extra, &sender);
                         }
                     }
                     return;

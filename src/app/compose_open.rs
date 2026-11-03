@@ -3,7 +3,6 @@
 
 use relm4::prelude::*;
 
-use crate::config;
 use crate::i18n::i18n_f;
 use crate::models::{FolderKind, Message};
 use crate::ui::compose::{ComposeInput, ComposePrefill};
@@ -72,14 +71,11 @@ impl AppModel {
 
     pub(super) fn composer_exists(&self, id: u32) -> bool {
         self.composers.iter().any(|h| h.id == id)
-            || self.reader_compose.as_ref().is_some_and(|r| r.id == id)
     }
 
     pub(super) fn emit_to_composer(&self, id: u32, input: ComposeInput) {
         if let Some(h) = self.composers.iter().find(|h| h.id == id) {
             h.controller.emit(input);
-        } else if let Some(r) = self.reader_compose.as_ref().filter(|r| r.id == id) {
-            r.controller.emit(input);
         }
     }
 
@@ -93,12 +89,11 @@ impl AppModel {
     pub(super) fn open_draft(
         &mut self,
         m: Message,
-        inline: bool,
         extra: HandOffFiles,
         sender: &ComponentSender<Self>,
     ) {
         let Some(path) = self.resolve_folder_path(&m) else {
-            self.open_draft_body(m, inline, extra, sender);
+            self.open_draft_body(m, extra, sender);
             return;
         };
         let token = self.next_transfer;
@@ -113,7 +108,7 @@ impl AppModel {
                 for_reader: true,
             },
         );
-        self.pending_draft = Some((m, inline, extra));
+        self.pending_draft = Some((m, extra));
     }
 
     /// Open a draft from its body alone, when its bytes can't be had: a
@@ -122,7 +117,6 @@ impl AppModel {
     pub(super) fn open_draft_body(
         &mut self,
         m: Message,
-        inline: bool,
         extra: HandOffFiles,
         sender: &ComponentSender<Self>,
     ) {
@@ -132,7 +126,7 @@ impl AppModel {
             self.body_cache.get(&body_key(&m)).cloned()
         };
         match body {
-            Some(html) => self.compose_from_draft(m, html, inline, extra, sender),
+            Some(html) => self.compose_from_draft(m, html, extra, sender),
             None => {
                 if let Some(path) = self.resolve_folder_path(&m) {
                     self.send_to(
@@ -144,7 +138,7 @@ impl AppModel {
                         },
                     );
                 }
-                self.pending_draft = Some((m, inline, extra));
+                self.pending_draft = Some((m, extra));
             }
         }
     }
@@ -158,7 +152,6 @@ impl AppModel {
         &mut self,
         m: Message,
         body_html: String,
-        inline: bool,
         extra: HandOffFiles,
         sender: &ComponentSender<Self>,
     ) {
@@ -172,7 +165,7 @@ impl AppModel {
             cloud_uploads: extra.cloud,
             ..Default::default()
         };
-        self.show_draft_composer(m, prefill, inline, sender);
+        self.show_draft_composer(m, prefill, sender);
     }
 
     /// Open the compose editor on a draft's own bytes: everything it was
@@ -181,7 +174,6 @@ impl AppModel {
         &mut self,
         m: Message,
         raw: &[u8],
-        inline: bool,
         extra: HandOffFiles,
         sender: &ComponentSender<Self>,
     ) {
@@ -210,7 +202,7 @@ impl AppModel {
             cloud_uploads: extra.cloud,
             ..Default::default()
         };
-        self.show_draft_composer(m, prefill, inline, sender);
+        self.show_draft_composer(m, prefill, sender);
     }
 
     /// The editor for a draft, tied to it so saving or sending replaces it.
@@ -218,7 +210,6 @@ impl AppModel {
         &mut self,
         m: Message,
         mut prefill: ComposePrefill,
-        inline: bool,
         sender: &ComponentSender<Self>,
     ) {
         prefill.draft_origin = Some(crate::models::DraftOrigin {
@@ -231,17 +222,7 @@ impl AppModel {
         // back in Templates, and sending leaves it there.
         prefill.template =
             self.folder_kind(m.account_id, m.folder_id) == Some(FolderKind::Templates);
-        if inline && self.reading_pane == config::ReadingPane::Right {
-            self.attachments.clear();
-            self.attachments_loading = false;
-            self.sync_attachment_drawer();
-            self.current = None;
-            self.current_thread.clear();
-            self.show_message(None, false);
-            self.open_inline_reply(m.account_id, prefill, None, sender);
-        } else {
-            self.open_compose(m.account_id, prefill, sender);
-        }
+        self.open_compose(m.account_id, prefill, sender);
     }
 
     /// Asks for what a copy of `m` (a forward, an edit as new) still
@@ -288,13 +269,13 @@ impl AppModel {
     /// on the server, so each is fetched at most once with the message held
     /// in `pending_forward`, and the reply re-enters here. `inline` says
     /// the composer opens where a reply does; otherwise in a window.
-    pub(super) fn forward(&mut self, m: Message, inline: bool, sender: &ComponentSender<Self>) {
+    pub(super) fn forward(&mut self, m: Message, sender: &ComponentSender<Self>) {
         let mut m = self.with_cached_body(m);
         if let Some(subject) = self.decrypted_subject(&m) {
             m.subject = subject;
         }
         if self.fetch_for_copy(&m) {
-            self.pending_forward = Some((m, inline));
+            self.pending_forward = Some(m);
             return;
         }
         let attachments = self
@@ -312,11 +293,7 @@ impl AppModel {
         );
         let mut prefill = self.quoting(&m, forward_prefill(&m));
         prefill.attachments = attachments;
-        if inline {
-            self.open_reply(m.account_id, prefill, (m.account_id, m.id), sender);
-        } else {
-            self.open_compose(m.account_id, prefill, sender);
-        }
+        self.open_compose(m.account_id, prefill, sender);
     }
 
     /// Forward as Attachment: the message's own bytes are asked for, and
@@ -421,11 +398,7 @@ impl AppModel {
             },
         );
         // A new message, so it opens where a new message opens.
-        if self.compose_inline {
-            self.open_inline_reply(m.account_id, prefill, None, sender);
-        } else {
-            self.open_compose(m.account_id, prefill, sender);
-        }
+        self.open_compose(m.account_id, prefill, sender);
     }
 
     /// What a reply takes over from how the reader showed the original. A
@@ -468,22 +441,14 @@ impl AppModel {
             AppMsg::Compose => {
                 let (account, prefill) =
                     self.new_message_from(self.active_account(), ComposePrefill::default());
-                if self.compose_inline {
-                    // The new-message pane slides down over the reader,
-                    // exactly like an inline reply — same composer, same
-                    // pop-out-to-window toggle in its header.
-                    self.open_inline_reply(account, prefill, None, &sender);
-                } else {
-                    self.open_compose(account, prefill, &sender);
-                }
+                self.open_compose(account, prefill, &sender);
             }
 
             AppMsg::Reply => {
                 if let Some(m) = self.compose_target() {
-                    self.open_reply(
+                    self.open_compose(
                         m.account_id,
                         self.reply_context(&m, reply_prefill(&m, &self.reply_header)),
-                        (m.account_id, m.id),
                         &sender,
                     );
                 }
@@ -492,10 +457,9 @@ impl AppModel {
             AppMsg::ReplyAll => {
                 if let Some(m) = self.compose_target() {
                     let own = self.own_identities(m.account_id);
-                    self.open_reply(
+                    self.open_compose(
                         m.account_id,
                         self.reply_context(&m, reply_all_prefill(&m, &own, &self.reply_header)),
-                        (m.account_id, m.id),
                         &sender,
                     );
                 }
@@ -503,7 +467,7 @@ impl AppModel {
 
             AppMsg::Forward => {
                 if let Some(m) = self.compose_target() {
-                    self.forward(m, true, &sender);
+                    self.forward(m, &sender);
                 }
             }
 
@@ -521,7 +485,7 @@ impl AppModel {
                 }
                 WindowCompose::Forward => {
                     if let Some(m) = self.compose_target() {
-                        self.forward(m, false, &sender);
+                        self.forward(m, &sender);
                     }
                 }
                 WindowCompose::Reply | WindowCompose::ReplyAll => {

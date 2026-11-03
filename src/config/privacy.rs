@@ -12,7 +12,7 @@ use super::look::{
 use super::prefs::{
     default_files_limit_mb, default_reader_zoom, default_swipe_sensitivity, default_undo_send_secs,
     ComposeFormat, FilesAction, FilesLarge, FoldMessages, LauncherBadge, NotificationButtons,
-    PrintOptions, ReadMark, ReceiptPolicy, ReplyPosition, ReturnedReceipts, SignaturePosition,
+    PrintOptions, ReadMark, ReceiptPolicy, ReturnedReceipts, SignaturePosition,
 };
 use super::sections::{FolderSort, RailFold, SectionPlacement, SectionStyle, StartView};
 use super::{config_file, default_on, is_zero, save_private_toml, write_private};
@@ -230,21 +230,6 @@ pub(crate) struct PrivacyFile {
     /// drags follow the finger 1:1 and ignore this.
     #[serde(default = "default_swipe_sensitivity")]
     pub(crate) swipe_sensitivity: f64,
-    /// Whether "New message" opens inline over the reading pane (like a
-    /// reply) rather than in its own window. Off by default: the composer
-    /// window is the one the design draws, with the conversation's history
-    /// under the reply (docs/DESIGN.md, "Replying and composing").
-    #[serde(default)]
-    pub(crate) compose_inline: bool,
-    /// Whether Reply, Reply All and Forward open in the reading pane (#86)
-    /// rather than in a window of their own (#295). Off by default, for the
-    /// same reason as `compose_inline`.
-    #[serde(default)]
-    pub(crate) reply_inline: bool,
-    /// Whether the inline reply panel shows its From, To and Subject rows
-    /// from the start (#154); off, a button in its header reveals them.
-    #[serde(default)]
-    pub(crate) reply_fields: bool,
     /// The identity new messages are sent from (#157): an account's or
     /// alias's address, or empty for the account of the open folder (the
     /// original behaviour). Replies keep answering from the address the
@@ -297,9 +282,6 @@ pub(crate) struct PrivacyFile {
     /// and the people on them often write plain text and expect it back.
     #[serde(default)]
     pub(crate) follow_plain: bool,
-    /// Where the split reply opens in the reading pane (#212).
-    #[serde(default)]
-    pub(crate) reply_position: ReplyPosition,
     /// Where the signature sits in a reply or forward (#237): above the
     /// quoted original, or below it.
     #[serde(default)]
@@ -671,9 +653,6 @@ impl Default for PrivacyFile {
             swipe_enabled: true,
             swipe_reversed: false,
             swipe_sensitivity: default_swipe_sensitivity(),
-            compose_inline: false,
-            reply_inline: false,
-            reply_fields: false,
             compose_default_from: String::new(),
             single_card_default_applied: false,
             paste_plain: true,
@@ -685,7 +664,6 @@ impl Default for PrivacyFile {
             compose_plain: false,
             compose_format: None,
             follow_plain: false,
-            reply_position: ReplyPosition::default(),
             signature_position: SignaturePosition::default(),
             signature_dashes: false,
             fold_quote: false,

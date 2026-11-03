@@ -62,9 +62,6 @@ pub(crate) struct DropZones {
     /// it fades out.
     shown: Cell<bool>,
     fade: RefCell<Option<adw::TimedAnimation>>,
-    /// Whether a drag may bring the cards up at all (the main window's
-    /// stand down while a composer is open in it).
-    gate: RefCell<Option<Box<dyn Fn() -> bool>>>,
     /// Run before the cards come up, to bring what they depend on (the
     /// format a new message starts in, the cloud accounts) up to date.
     refresh: RefCell<Option<Refresh>>,
@@ -137,7 +134,6 @@ impl DropZones {
             cloud_names: RefCell::new(Vec::new()),
             shown: Cell::new(false),
             fade: RefCell::new(None),
-            gate: RefCell::new(None),
             refresh: RefCell::new(None),
         });
 
@@ -163,12 +159,10 @@ impl DropZones {
 
         let weak = Rc::downgrade(&this);
         target.connect_accept(move |_, drop| {
-            let open = weak
-                .upgrade()
-                .is_some_and(|this| this.gate.borrow().as_ref().is_none_or(|gate| gate()));
-            open && drop
-                .formats()
-                .contains_type(gtk::gdk::FileList::static_type())
+            weak.upgrade().is_some()
+                && drop
+                    .formats()
+                    .contains_type(gtk::gdk::FileList::static_type())
                 && drop.actions().contains(gtk::gdk::DragAction::COPY)
         });
 
@@ -277,11 +271,6 @@ impl DropZones {
 
     pub(crate) fn set_cloud_names(&self, names: Vec<String>) {
         *self.cloud_names.borrow_mut() = names;
-    }
-
-    /// Bring the cards up only while `gate` says so.
-    pub(crate) fn set_gate(&self, gate: impl Fn() -> bool + 'static) {
-        *self.gate.borrow_mut() = Some(Box::new(gate));
     }
 
     /// Run `refresh` each time the cards are about to come up.

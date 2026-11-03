@@ -347,7 +347,6 @@ drawer_list_view = true
 drawer_sort_desc = true
 list_pane_width = 420
 about_height = 500
-split_reply_height = 240
 wizard_completed = true
 web_font_fallback = "org.gnome.Platform//49"
 last_account = "a@x"

@@ -9,7 +9,7 @@ use relm4::prelude::*;
 use crate::config;
 use crate::i18n::{i18n, i18n_f, ni18n_f};
 use crate::models::Message;
-use crate::ui::compose::{ComposeInput, ComposePrefill};
+use crate::ui::compose::ComposePrefill;
 use crate::ui::preferences::PrefInput;
 use crate::worker::MailRequest;
 
@@ -422,15 +422,10 @@ impl AppModel {
                 prefill.attachments = files.attach;
                 prefill.cloud_uploads = files.cloud;
                 let (account, prefill) = self.new_message_from(account, prefill);
-                if self.compose_inline {
-                    self.open_inline_reply(account, prefill, None, sender);
-                } else {
-                    self.open_compose(account, prefill, sender);
-                }
+                self.open_compose(account, prefill, sender);
             }
             HandOffTarget::Draft(m) => {
-                let inline = self.compose_inline;
-                self.open_draft(m, inline, files, sender);
+                self.open_draft(m, files, sender);
             }
             HandOffTarget::Reply(m) => {
                 let body = if !m.body.is_empty() {
@@ -484,7 +479,7 @@ impl AppModel {
                 .iter()
                 .any(|t| t.account_id == m.account_id && t.id == m.id);
         if on_screen {
-            self.open_reply(m.account_id, prefill, (m.account_id, m.id), sender);
+            self.open_compose(m.account_id, prefill, sender);
         } else {
             self.open_compose(m.account_id, prefill, sender);
         }
@@ -599,21 +594,11 @@ impl AppModel {
                     .map(|m| m.account_id)
                     .unwrap_or_else(|| self.active_account());
                 let (account, prefill) = self.new_message_from(account, prefill);
-                if self.compose_inline {
-                    self.open_inline_reply(account, prefill, None, &sender);
-                } else {
-                    self.open_compose(account, prefill, &sender);
-                }
+                self.open_compose(account, prefill, &sender);
             }
 
             AppMsg::DropFiles(paths) => {
                 tracing::info!("file drop: {} file(s)", paths.len());
-                // A composer open in the window is what the files are for,
-                // wherever in the window they were let go.
-                if let Some(r) = self.reader_compose.as_ref().filter(|r| r.window.is_none()) {
-                    r.controller.emit(ComposeInput::AddAttachments(paths));
-                    return;
-                }
                 self.hand_off_size_check(
                     FileHandOff {
                         base: ComposePrefill::default(),
@@ -648,16 +633,6 @@ impl AppModel {
                     s.emit(AppMsg::DropFilesAs(choice, paths));
                 },
             );
-            let slots = [
-                self.reader_compose_revealer.clone(),
-                self.reader_split_top.clone(),
-                self.reader_split_bottom.clone(),
-            ];
-            zones.set_gate(move || {
-                !slots
-                    .iter()
-                    .any(|slot| slot.reveals_child() && slot.is_visible())
-            });
             zones.set_refresh(|zones| {
                 zones
                     .set_allow_inline(config::load_compose_format() == config::ComposeFormat::Rich);

@@ -2,6 +2,16 @@
 
 ## Unreleased
 
+- **Removed: writing in the main window.** Replies, forwards and new
+  messages open in the composer window only, the one the redesign draws
+  (mockups 04 and 05). Gone with the reading pane's composer: **Settings →
+  Composing → Compose in the main window**, **Reply and forward in the main
+  window** and **Show From, To and Subject in the reply panel**, **Settings
+  → Conversations → Reply editor position**, the split reply's resizable
+  panel and the animation of a sent reply turning into its card. A draft
+  selected in the list shows as a message; Enter or a double click opens it
+  in a composer window. Undo Send reopens the message in a window.
+
 - **Changed: a tag chip starts with a dot of its colour** (mockups 01, 07
   and 09), in the list, the reader and the New tag preview. The reader's
   chips now use the list's tint and dark text too. Only one Tags section

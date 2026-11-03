@@ -40,30 +40,6 @@ pub(super) fn stage_folder(sender: &ComponentSender<AppModel>) {
     }
 }
 
-/// TEGAMI_SHOWCASE_SEND=<seconds>[:<text>|:@<file>] writes in the
-/// reply's editor and sends it at that moment, for the send
-/// morph.
-pub(super) fn stage_send(sender: &ComponentSender<AppModel>) {
-    if let Ok(v) = std::env::var("TEGAMI_SHOWCASE_SEND") {
-        let (at, text) = v
-            .split_once(':')
-            .unwrap_or((v.as_str(), "Sounds good, ship it.\nJason"));
-        let at = at.parse::<f64>().unwrap_or(9.0);
-        // `@<path>` reads the text from a file.
-        let text = match text.strip_prefix('@') {
-            Some(path) => std::fs::read_to_string(path).unwrap_or_default(),
-            None => text.replace("\\n", "\n"),
-        };
-        let s = sender.clone();
-        gtk::glib::timeout_add_local_once(
-            std::time::Duration::from_millis((at * 1000.0) as u64),
-            move || {
-                s.input(AppMsg::ShowcaseSend(text));
-            },
-        );
-    }
-}
-
 /// TEGAMI_SHOWCASE_UNDO=<seconds> presses Undo on the first
 /// message sent, to check it comes back where it was (#434).
 pub(super) fn stage_undo(sender: &ComponentSender<AppModel>) {
@@ -76,24 +52,6 @@ pub(super) fn stage_undo(sender: &ComponentSender<AppModel>) {
             std::time::Duration::from_millis((at * 1000.0) as u64),
             move || {
                 s.input(AppMsg::UndoSend(1));
-            },
-        );
-    }
-}
-
-/// TEGAMI_SHOWCASE_COPY=<seconds> has the sent reply's copy
-/// read back then, so its stand-in card can be seen to give
-/// way to it.
-pub(super) fn stage_copy(sender: &ComponentSender<AppModel>) {
-    if let Some(at) = std::env::var("TEGAMI_SHOWCASE_COPY")
-        .ok()
-        .and_then(|v| v.parse::<f64>().ok())
-    {
-        let s = sender.clone();
-        gtk::glib::timeout_add_local_once(
-            std::time::Duration::from_millis((at * 1000.0) as u64),
-            move || {
-                s.input(AppMsg::ShowcaseCopy);
             },
         );
     }

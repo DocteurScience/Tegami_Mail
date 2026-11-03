@@ -378,11 +378,10 @@ impl AppModel {
     /// Whether the reader header shows `item` right now: it must be in the
     /// saved layout, and a right-group button also needs the pane wide
     /// enough (the left group never folds). Delete alone also serves the
-    /// Outbox; the inline composer hides the whole row.
+    /// Outbox.
     pub(super) fn toolbar_visible(&self, item: config::ToolbarItem) -> bool {
         use config::ToolbarSide;
-        self.reader_compose.is_none()
-            && (item == config::ToolbarItem::Delete || !self.showing_outbox)
+        (item == config::ToolbarItem::Delete || !self.showing_outbox)
             && (self.reader_shown() || !reader_only(item))
             && match self.reader_toolbar.side(item) {
                 Some(ToolbarSide::Left) => true,
@@ -556,11 +555,7 @@ impl AppModel {
         };
         let (collapsed, compact) = self.toolbar_fold();
         // Hidden in the list header, the row would measure too short.
-        if compact
-            || (self.toolbar_in_list() && self.many_selected())
-            || self.reader_compose.is_some()
-            || self.showing_outbox
-        {
+        if compact || (self.toolbar_in_list() && self.many_selected()) || self.showing_outbox {
             return;
         }
         // The revealers open after the first frames: measured before, the

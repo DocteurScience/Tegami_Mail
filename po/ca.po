@@ -4915,15 +4915,6 @@ msgid_plural "{n} seconds"
 msgstr[0] "{n} segon"
 msgstr[1] "{n} segons"
 
-msgid "Above the messages"
-msgstr "A sobre dels missatges"
-
-msgid "Below the messages"
-msgstr "A sota dels missatges"
-
-msgid "Follows the reading order"
-msgstr "Segueix l'ordre de lectura"
-
 msgid "System language"
 msgstr "Idioma del sistema"
 
@@ -5127,12 +5118,6 @@ msgstr "Mostra les teves pròpies respostes a la llista de missatges"
 
 msgid "Off shows the last message that arrived."
 msgstr "Desactivat mostra l'últim missatge que ha arribat."
-
-msgid "Reply editor position"
-msgstr "Posició de l'editor de respostes"
-
-msgid "Following the reading order puts it where the conversation ends."
-msgstr "Seguir l'ordre de lectura el posa on acaba la conversa."
 
 msgid "Attachments on each message"
 msgstr "Adjunts a cada missatge"
@@ -6828,21 +6813,6 @@ msgstr ""
 msgid "Always fold the right group into ⋯"
 msgstr ""
 
-msgid "Compose in the main window"
-msgstr "Redacta a la finestra principal"
-
-msgid "Off opens new messages in their own window."
-msgstr "Desactivat obre els missatges nous en una finestra pròpia."
-
-msgid "Reply and forward in the main window"
-msgstr "Respon i reenvia a la finestra principal"
-
-msgid "Show From, To and Subject in the reply panel"
-msgstr "Mostra De, A i Assumpte al panell de resposta"
-
-msgid "Off folds them behind a button."
-msgstr "Desactivat els replega darrere d'un botó."
-
 msgid "Send new messages from"
 msgstr "Envia missatges nous des de"
 
@@ -7353,6 +7323,36 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Above the messages"
+#~ msgstr "A sobre dels missatges"
+
+#~ msgid "Below the messages"
+#~ msgstr "A sota dels missatges"
+
+#~ msgid "Follows the reading order"
+#~ msgstr "Segueix l'ordre de lectura"
+
+#~ msgid "Reply editor position"
+#~ msgstr "Posició de l'editor de respostes"
+
+#~ msgid "Following the reading order puts it where the conversation ends."
+#~ msgstr "Seguir l'ordre de lectura el posa on acaba la conversa."
+
+#~ msgid "Compose in the main window"
+#~ msgstr "Redacta a la finestra principal"
+
+#~ msgid "Off opens new messages in their own window."
+#~ msgstr "Desactivat obre els missatges nous en una finestra pròpia."
+
+#~ msgid "Reply and forward in the main window"
+#~ msgstr "Respon i reenvia a la finestra principal"
+
+#~ msgid "Show From, To and Subject in the reply panel"
+#~ msgstr "Mostra De, A i Assumpte al panell de resposta"
+
+#~ msgid "Off folds them behind a button."
+#~ msgstr "Desactivat els replega darrere d'un botó."
 
 #~ msgid "Search messages…"
 #~ msgstr "Cerca missatges…"

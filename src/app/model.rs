@@ -10,7 +10,6 @@ use crate::config::{self, AccountConfig};
 use crate::models::{Account, Attachment, Folder, Message};
 use crate::ui::accounts::AccountsWindow;
 use crate::ui::attachment_drawer::AttachmentDrawer;
-use crate::ui::compose::Compose;
 use crate::ui::message_list::{MessageList, QuickFilters};
 use crate::ui::message_view::MessageView;
 use crate::ui::notifications::NotificationCenter;
@@ -19,7 +18,7 @@ use crate::ui::sidebar::Sidebar;
 use crate::worker::MailRequest;
 
 use super::attachments::AttachmentTarget;
-use super::compose_host::{ComposeHost, ReaderCompose};
+use super::compose_host::ComposeHost;
 use super::conversation::BodyKey;
 use super::filter_run::FilterRun;
 use super::hand_off::{FileHandOff, HandOffFiles};
@@ -27,7 +26,6 @@ use super::list_header::ListHeaderWidgets;
 use super::msg::AppMsg;
 use super::popout::PopOut;
 use super::reader_toolbar::ReaderToolbarWidgets;
-use super::send_morph::{MorphPending, Provisional, SentFile};
 use super::tags::TagScan;
 use super::transfer::{Transfer, TransferTally};
 use super::types::{FolderMessages, SelectedFolder, UnifiedView};
@@ -68,56 +66,11 @@ pub(crate) struct AppModel {
     pub(super) accounts_seed: Option<String>,
     /// Standalone compose windows (multiple allowed at once). Pruned as they close.
     pub(super) composers: Vec<ComposeHost>,
-    /// The reader's inline reply/forward composer, if open.
-    pub(super) reader_compose: Option<ReaderCompose>,
-    /// The stage over the reading pane that turns a sent split reply into
-    /// its card in the conversation (send_morph.rs).
-    pub(super) send_morph: crate::ui::send_morph::SendMorph,
-    /// A reply just sent from the split pane, with the card it gets in the
-    /// conversation and whether it moves there: (composer id, message,
-    /// animated), until that composer closes.
-    pub(super) arriving: Option<(u32, Message, bool)>,
-    /// A sent reply whose morph is under way, until the pane changes under
-    /// the stage.
-    pub(super) morph_pending: Option<MorphPending>,
-    /// The app's own input, for the morph's steps that answer later.
+    /// The app's own input, for steps that answer later.
     pub(super) self_sender: relm4::Sender<AppMsg>,
-    /// The cards standing in for replies sent from here until their copies
-    /// are read back from Sent, by (account, id).
-    pub(super) provisionals: HashMap<(u32, u32), Provisional>,
-    /// The files each reply sent from here went with, by its card, which
-    /// lists them until its copy's own attachments are read back.
-    pub(super) sent_files: HashMap<(u32, u32), Vec<SentFile>>,
-    /// Superseded inline composers still finishing a save-if-dirty before closing.
-    pub(super) draining_composers: Vec<(u32, Controller<Compose>)>,
-    /// SlideDown revealer under the reader toolbar that hosts the inline pane.
-    pub(super) reader_compose_revealer: gtk::Revealer,
     /// The cards files dragged onto the window bring up when no composer is
     /// open in it, each starting a new message (#293).
     pub(super) window_drop_zones: Option<std::rc::Rc<crate::ui::drop_zones::DropZones>>,
-    /// Split-reply slot (#86): a reply slides down from the pane's top and
-    /// the message(s) stay below it, visible and interactive.
-    pub(super) reader_split_top: gtk::Revealer,
-    /// The same slot beneath the reader (#212): the reply slides up from the
-    /// pane's bottom edge when the reading order puts the newest message
-    /// there, so the editor continues the conversation where it ends. Only
-    /// one of the two slots is ever occupied.
-    pub(super) reader_split_bottom: gtk::Revealer,
-    /// The vertical Paned dividing the split reply (start child, the slot
-    /// above) from the reader (end child). A Paned allocates by divider
-    /// position, so the composer holds the height it was given — a big paste
-    /// can't push it down over the messages — and its divider is the grab
-    /// handle that resizes the panel. Hidden slot = hidden divider.
-    pub(super) reader_split: gtk::Paned,
-    /// The reader's own Paned, nested as `reader_split`'s end child: the
-    /// reader (start child) over the bottom slot (end child). A second Paned
-    /// rather than swapping children, so the reader is never reparented and
-    /// the bottom slot has a divider of its own to be sized by.
-    pub(super) reader_split_lower: gtk::Paned,
-    /// The running slide (open or close) of the split reply — held so the
-    /// opposite motion can skip it to its end instead of fighting it over
-    /// the divider.
-    pub(super) split_close_anim: std::rc::Rc<std::cell::RefCell<Option<adw::TimedAnimation>>>,
     /// The reader pane's own header bar: hidden while a split reply hosts,
     /// since it would show a second set of window decorations mid-window and
     /// spend vertical space the split needs.
@@ -696,11 +649,6 @@ pub(crate) struct AppModel {
     /// How far a trackpad two-finger swipe has to travel to fire the action
     /// (higher = shorter swipe); mouse and touch drags are unaffected.
     pub(super) swipe_sensitivity: f64,
-    /// "New message" composes inline over the reading pane (vs a window).
-    pub(super) compose_inline: bool,
-    /// Reply, Reply All and Forward open in the reading pane (vs a window, #295).
-    pub(super) reply_inline: bool,
-    pub(super) reply_fields: bool,
     /// The identity new messages are sent from (#157); empty = the open
     /// folder's account.
     pub(super) compose_default_from: String,
@@ -720,8 +668,6 @@ pub(crate) struct AppModel {
     pub(super) compose_format: crate::config::ComposeFormat,
     /// Replies and forwards to plain-text mail open in plain text (#436).
     pub(super) follow_plain: bool,
-    /// Where the split reply opens in the reading pane (#212).
-    pub(super) reply_position: config::ReplyPosition,
     /// Where the signature sits in a reply or forward (#237).
     pub(super) signature_position: config::SignaturePosition,
     /// A `-- ` line goes above the signature in new messages.
@@ -860,13 +806,6 @@ pub(crate) struct AppModel {
     /// menu and its banner, and kept for the session only — a decision about
     /// one message is not a decision about a sender.
     pub(super) remote_override: HashMap<(u32, u32), bool>,
-    /// What the inline composer's own history can take back (#200), as it
-    /// last reported: `(undo, redo)`, each `None` when that side is empty.
-    /// While the composer holds keyboard focus the window's Undo and Redo
-    /// are its, not the mail history's — the same split the keys already
-    /// make, so the menu never offers to archive a message while someone is
-    /// typing into a reply.
-    pub(super) compose_history: (Option<String>, Option<String>),
     /// The burger menu's Undo/Redo section, relabelled as the stacks change.
     pub(super) undo_menu: gtk::gio::Menu,
     /// Their actions, kept so they can be greyed out when there is nothing
@@ -875,7 +814,7 @@ pub(crate) struct AppModel {
     pub(super) redo_action: Option<RelmAction<RedoAction>>,
     /// A draft whose content is being fetched before its editor opens, and
     /// whether that editor goes in the reading pane (true) or a window.
-    pub(super) pending_draft: Option<(Message, bool, HandOffFiles)>,
+    pub(super) pending_draft: Option<(Message, HandOffFiles)>,
     /// The `ExportRaw` token the pending draft's bytes come back under.
     /// While it is set, the draft waits for those and not for its body.
     pub(super) pending_draft_token: Option<u64>,
@@ -894,8 +833,8 @@ pub(crate) struct AppModel {
     /// it is to be copied from.
     pub(super) pending_edit_as_new: Option<Message>,
     /// A forward (#240) waiting on the body, or the attachments, it is to
-    /// carry, and whether it opens inline or in a window.
-    pub(super) pending_forward: Option<(Message, bool)>,
+    /// carry.
+    pub(super) pending_forward: Option<Message>,
     /// A reply started from a notification's button (#244), waiting for
     /// the body it quotes.
     pub(super) pending_notified_reply: Option<Message>,

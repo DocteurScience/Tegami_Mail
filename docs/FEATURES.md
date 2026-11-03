@@ -109,8 +109,6 @@ The full list. The [README](../README.md) carries a shorter one.
 - **Undo and redo** across the whole message.
 - **Quote folding:** a long quoted original folds away, interleaved replies
   intact.
-- **Split reply:** answer one message of a conversation with the rest still
-  on screen.
 - **Cloud attachments:** upload a large file to your own Nextcloud,
   ownCloud, OpenCloud or Seafile server, or to OneDrive or Dropbox, and put a
   share link in the message, with an optional expiry and download password.

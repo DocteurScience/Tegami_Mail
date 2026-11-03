@@ -308,12 +308,6 @@ headerbar.rail-header {
   color: @accent_fg_color;
 }
 
-/* The inline composer's ground: opaque, so sliding down over the reader
-   actually hides it rather than blending with it. */
-.inline-compose-surface {
-  background-color: @window_bg_color;
-}
-
 /* A set star (reader toolbar, list palette, popout): the flagged state is
    color alone — the glyph stays the same as every other icon. */
 button.star-active {
@@ -1374,13 +1368,6 @@ headerbar box.list-tools.compact button {
   padding: 4px 24px 16px 24px;
 }
 
-/* …or the split reply is open above it: the reader's header bar is gone and
-   the subject block starts right under the composer's grab strip, which the
-   4px reads as touching. 14px more air there. A bar (below) still wins. */
-.reader-header.under-split {
-  padding-top: 18px;
-}
-
 /* …unless a bar (spoofing warning, blocked remote content, find) sits
    between it and the toolbar. There is nothing to line up with there, and
    4px against a filled band reads as cramped rather than aligned, so the
@@ -1866,16 +1853,6 @@ button.sidebar-heading-button {
      (Jason, 2026-09-17): the seam's own 8px strip sits above this, so the
      stock 4px left the header's row, "Save All…" included, sitting low. */
   padding: 2px 8px 4px;
-}
-/* Split-reply divider: the separator is a flush strip of the composer's own
-   ground (its background-color comes from the runtime theme CSS), so the
-   panel reads as running to its edge with no line across. The visible
-   affordance is the floating .split-grab-pill overlaid on the composer. */
-.reader-split > separator {
-  border: none;
-  box-shadow: none;
-  outline: none;
-  min-height: 8px;
 }
 /* The grab handle: a thin rounded bar floated above the panel's bottom edge,
    like the bar at the bottom of the iOS home screen. Sized in code (100×5). */

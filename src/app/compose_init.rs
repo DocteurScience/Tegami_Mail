@@ -306,10 +306,7 @@ impl AppModel {
         Compose::builder()
             .launch(init)
             .forward(sender.input_sender(), |out| match out {
-                ComposeOutput::Send { id, message } => AppMsg::SendMessage {
-                    from: id,
-                    out: message,
-                },
+                ComposeOutput::Send { message } => AppMsg::SendMessage { out: message },
                 ComposeOutput::SaveDraft(msg) => AppMsg::SaveDraftMessage(msg),
                 ComposeOutput::SaveTemplate(msg) => AppMsg::SaveTemplateMessage(msg),
                 ComposeOutput::AutoSave { id, message } => AppMsg::AutoSaveDraft { id, message },
@@ -318,9 +315,6 @@ impl AppModel {
                 }
                 ComposeOutput::DeleteDraft { id, origin } => AppMsg::DeleteDraft { id, origin },
                 ComposeOutput::Close(id) => AppMsg::ComposeClosed(id),
-                ComposeOutput::History { id, undo, redo } => {
-                    AppMsg::ComposeHistory { id, undo, redo }
-                }
                 ComposeOutput::SetSpellcheckLangs(langs) => {
                     AppMsg::Pref(PrefOutput::SetSpellcheckLangs(langs))
                 }

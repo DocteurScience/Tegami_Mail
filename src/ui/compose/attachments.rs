@@ -401,7 +401,6 @@ impl Compose {
             },
         );
         self.rebuild_attachments(widgets, sender);
-        self.report_history(sender);
     }
 
     /// Handles [`ComposeInput::RemoveAttachment`].
@@ -423,7 +422,6 @@ impl Compose {
                 },
             );
             self.rebuild_attachments(widgets, sender);
-            self.report_history(sender);
         }
     }
 

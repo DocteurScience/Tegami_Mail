@@ -1,6 +1,6 @@
 //! Settings → Composing.
 
-use super::choices::{compose_format_at, reply_position_at, signature_position_at};
+use super::choices::{compose_format_at, signature_position_at};
 use super::*;
 
 impl Preferences {
@@ -20,11 +20,6 @@ impl Preferences {
     pub(super) fn on_change_compose_format(&mut self, idx: u32, sender: ComponentSender<Self>) {
         let format = compose_format_at(idx);
         let _ = sender.output(PrefOutput::SetComposeFormat(format));
-    }
-
-    pub(super) fn on_change_reply_position(&mut self, idx: u32, sender: ComponentSender<Self>) {
-        let position = reply_position_at(idx);
-        let _ = sender.output(PrefOutput::SetReplyPosition(position));
     }
 
     pub(super) fn on_change_undo_send(&mut self, idx: u32, sender: ComponentSender<Self>) {

@@ -23,23 +23,10 @@ pub(super) struct Outgoing {
     pub(super) message: Box<OutgoingMessage>,
     pub(super) sent_path: Option<String>,
     pub(super) queued_at: i64,
-    /// Where it was written, for Undo to reopen it there.
-    pub(super) origin: Origin,
     /// Still waiting out the delay, so Undo can take it back. False once the
     /// worker has it.
     pub(super) held: bool,
     pub(super) toast: adw::Toast,
-}
-
-/// The composer a message was sent from.
-#[derive(Clone, Copy, PartialEq, Debug)]
-pub(super) enum Origin {
-    /// The split reply beside the card it answers.
-    Split((u32, u32)),
-    /// The editor covering the reading pane.
-    Pane,
-    /// A window of its own.
-    Window,
 }
 
 pub(super) type OutgoingList = Rc<RefCell<Vec<Outgoing>>>;

@@ -4931,15 +4931,6 @@ msgid_plural "{n} seconds"
 msgstr[0] "{n} Sekunde"
 msgstr[1] "{n} Sekunden"
 
-msgid "Above the messages"
-msgstr "Vor den Meldungen"
-
-msgid "Below the messages"
-msgstr "Unterhalb der Meldungen"
-
-msgid "Follows the reading order"
-msgstr "Befolgt die Lesereihenfolge"
-
 msgid "System language"
 msgstr "Systemsprache"
 
@@ -5143,14 +5134,6 @@ msgstr "Eigene Antworten in der Nachrichtenliste anzeigen"
 
 msgid "Off shows the last message that arrived."
 msgstr "Wenn deaktiviert, wird die zuletzt eingegangene Nachricht angezeigt."
-
-msgid "Reply editor position"
-msgstr "Position des Antwort-Editors"
-
-msgid "Following the reading order puts it where the conversation ends."
-msgstr ""
-"Entsprechend der Lesereihenfolge erfolgt die Platzierung am Ende des "
-"Gesprächsfadens."
 
 msgid "Attachments on each message"
 msgstr "Anhänge jeder Nachricht"
@@ -6881,24 +6864,6 @@ msgstr ""
 msgid "Always fold the right group into ⋯"
 msgstr "Die rechte Gruppe immer zu ⋯ einklappen"
 
-msgid "Compose in the main window"
-msgstr "Im Hauptfenster verfassen"
-
-msgid "Off opens new messages in their own window."
-msgstr ""
-"Bei Deaktivierung erfolgt das Öffnen neuer Nachrichten in einem eigenen "
-"Fenster."
-
-msgid "Reply and forward in the main window"
-msgstr "Im Hauptfenster antworten und weiterleiten"
-
-msgid "Show From, To and Subject in the reply panel"
-msgstr "Von, An und Betreff im Antwortbereich anzeigen"
-
-msgid "Off folds them behind a button."
-msgstr ""
-"Bei Deaktivierung werden sie hinter einer Schaltfläche zusammengeklappt."
-
 msgid "Send new messages from"
 msgstr "Neue Nachrichten senden von"
 
@@ -7431,6 +7396,41 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Above the messages"
+#~ msgstr "Vor den Meldungen"
+
+#~ msgid "Below the messages"
+#~ msgstr "Unterhalb der Meldungen"
+
+#~ msgid "Follows the reading order"
+#~ msgstr "Befolgt die Lesereihenfolge"
+
+#~ msgid "Reply editor position"
+#~ msgstr "Position des Antwort-Editors"
+
+#~ msgid "Following the reading order puts it where the conversation ends."
+#~ msgstr ""
+#~ "Entsprechend der Lesereihenfolge erfolgt die Platzierung am Ende des "
+#~ "Gesprächsfadens."
+
+#~ msgid "Compose in the main window"
+#~ msgstr "Im Hauptfenster verfassen"
+
+#~ msgid "Off opens new messages in their own window."
+#~ msgstr ""
+#~ "Bei Deaktivierung erfolgt das Öffnen neuer Nachrichten in einem eigenen "
+#~ "Fenster."
+
+#~ msgid "Reply and forward in the main window"
+#~ msgstr "Im Hauptfenster antworten und weiterleiten"
+
+#~ msgid "Show From, To and Subject in the reply panel"
+#~ msgstr "Von, An und Betreff im Antwortbereich anzeigen"
+
+#~ msgid "Off folds them behind a button."
+#~ msgstr ""
+#~ "Bei Deaktivierung werden sie hinter einer Schaltfläche zusammengeklappt."
 
 #~ msgid "Search messages…"
 #~ msgstr "Nachrichten durchsuchen…"

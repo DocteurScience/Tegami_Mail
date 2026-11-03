@@ -159,7 +159,7 @@ impl AppModel {
                         preview: crate::ui::message_view::cached_card_preview(&a.data),
                     })
                     .collect(),
-                None => self.sent_card_files(key).unwrap_or_default(),
+                None => Vec::new(),
             };
             if !atts.is_empty() {
                 map.insert(key, atts);
@@ -194,8 +194,6 @@ impl AppModel {
             .current_thread
             .iter()
             .filter(|tm| tm.has_attachment)
-            // A reply's stand-in card is on no server yet.
-            .filter(|tm| !self.provisionals.contains_key(&(tm.account_id, tm.id)))
             .filter(|tm| !self.attachment_cache.contains_key(&body_key(tm)))
             .filter_map(|tm| {
                 self.resolve_folder_path(tm)
@@ -358,7 +356,6 @@ impl AppModel {
                     .member_key((account_id, id))
                     .and_then(|k| self.attachment_cache.get(&k))
                     .cloned()
-                    .or_else(|| self.sent_file_bytes((account_id, id)))
                 else {
                     return;
                 };

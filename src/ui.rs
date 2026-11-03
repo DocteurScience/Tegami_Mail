@@ -38,7 +38,6 @@ pub(crate) mod preferences;
 pub(crate) mod print_preview;
 mod recipient_row;
 pub(crate) mod rich_editor;
-pub(crate) mod send_morph;
 mod sender_row;
 pub(crate) mod showcase;
 pub(crate) mod sidebar;

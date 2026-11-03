@@ -5112,15 +5112,6 @@ msgid_plural "{n} seconds"
 msgstr[0] "{n} címzett"
 msgstr[1] "{n} címzett"
 
-msgid "Above the messages"
-msgstr "Az üzenetek felett"
-
-msgid "Below the messages"
-msgstr "Az üzenetek alatt"
-
-msgid "Follows the reading order"
-msgstr "Az olvasási sorrendet követi"
-
 #, fuzzy
 msgid "System language"
 msgstr "Rendszer nyelve — {language}"
@@ -5339,14 +5330,6 @@ msgstr "Jelenítse meg saját válaszait az üzenetlistában"
 
 msgid "Off shows the last message that arrived."
 msgstr "A legutóbb beérkezett üzenetet jeleníti meg."
-
-#, fuzzy
-msgid "Reply editor position"
-msgstr "Válasz szerkesztő"
-
-#, fuzzy
-msgid "Following the reading order puts it where the conversation ends."
-msgstr "Beszélgetés törlése"
 
 msgid "Attachments on each message"
 msgstr "Mellékletek az egyes üzenetekhez"
@@ -7092,22 +7075,6 @@ msgstr ""
 msgid "Always fold the right group into ⋯"
 msgstr ""
 
-msgid "Compose in the main window"
-msgstr "Levélírás a főablakban"
-
-#, fuzzy
-msgid "Off opens new messages in their own window."
-msgstr "Előbb nyisson meg egy üzenetet, majd nyomtassa ki."
-
-msgid "Reply and forward in the main window"
-msgstr "Válasz és továbbítás a főablakban"
-
-msgid "Show From, To and Subject in the reply panel"
-msgstr "A „Tól”, „Kinek” és „Tárgy” mezők megjelenítése a válaszablakban"
-
-msgid "Off folds them behind a button."
-msgstr ""
-
 msgid "Send new messages from"
 msgstr "Új üzenetek küldése a következő helyről:"
 
@@ -7636,6 +7603,36 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Above the messages"
+#~ msgstr "Az üzenetek felett"
+
+#~ msgid "Below the messages"
+#~ msgstr "Az üzenetek alatt"
+
+#~ msgid "Follows the reading order"
+#~ msgstr "Az olvasási sorrendet követi"
+
+#, fuzzy
+#~ msgid "Reply editor position"
+#~ msgstr "Válasz szerkesztő"
+
+#, fuzzy
+#~ msgid "Following the reading order puts it where the conversation ends."
+#~ msgstr "Beszélgetés törlése"
+
+#~ msgid "Compose in the main window"
+#~ msgstr "Levélírás a főablakban"
+
+#, fuzzy
+#~ msgid "Off opens new messages in their own window."
+#~ msgstr "Előbb nyisson meg egy üzenetet, majd nyomtassa ki."
+
+#~ msgid "Reply and forward in the main window"
+#~ msgstr "Válasz és továbbítás a főablakban"
+
+#~ msgid "Show From, To and Subject in the reply panel"
+#~ msgstr "A „Tól”, „Kinek” és „Tárgy” mezők megjelenítése a válaszablakban"
 
 #~ msgid "Search messages…"
 #~ msgstr "Üzenetek keresése..."

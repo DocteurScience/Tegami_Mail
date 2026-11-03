@@ -4917,15 +4917,6 @@ msgid_plural "{n} seconds"
 msgstr[0] "{n} segundo"
 msgstr[1] "{n} segundos"
 
-msgid "Above the messages"
-msgstr "Acima das mensagens"
-
-msgid "Below the messages"
-msgstr "Abaixo das mensagens"
-
-msgid "Follows the reading order"
-msgstr "Segue a ordem de leitura"
-
 msgid "System language"
 msgstr "Idioma do sistema"
 
@@ -5129,12 +5120,6 @@ msgstr "Mostrar suas próprias respostas na lista de mensagens"
 
 msgid "Off shows the last message that arrived."
 msgstr "Se estiver desativado, mostra a última mensagem recebida."
-
-msgid "Reply editor position"
-msgstr "Posição do editor de respostas"
-
-msgid "Following the reading order puts it where the conversation ends."
-msgstr "Seguir a ordem de leitura o coloca onde a conversa termina."
 
 msgid "Attachments on each message"
 msgstr "Anexos em cada mensagem"
@@ -6837,21 +6822,6 @@ msgstr ""
 msgid "Always fold the right group into ⋯"
 msgstr ""
 
-msgid "Compose in the main window"
-msgstr "Compor na janela principal"
-
-msgid "Off opens new messages in their own window."
-msgstr "Desativado, abre novas mensagens em uma janela própria."
-
-msgid "Reply and forward in the main window"
-msgstr "Responder e encaminhar na janela principal"
-
-msgid "Show From, To and Subject in the reply panel"
-msgstr "Mostrar De, Para e Assunto no painel de resposta"
-
-msgid "Off folds them behind a button."
-msgstr "Desativado, os recolhe atrás de um botão."
-
 msgid "Send new messages from"
 msgstr "Enviar novas mensagens a partir de"
 
@@ -7364,6 +7334,36 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Above the messages"
+#~ msgstr "Acima das mensagens"
+
+#~ msgid "Below the messages"
+#~ msgstr "Abaixo das mensagens"
+
+#~ msgid "Follows the reading order"
+#~ msgstr "Segue a ordem de leitura"
+
+#~ msgid "Reply editor position"
+#~ msgstr "Posição do editor de respostas"
+
+#~ msgid "Following the reading order puts it where the conversation ends."
+#~ msgstr "Seguir a ordem de leitura o coloca onde a conversa termina."
+
+#~ msgid "Compose in the main window"
+#~ msgstr "Compor na janela principal"
+
+#~ msgid "Off opens new messages in their own window."
+#~ msgstr "Desativado, abre novas mensagens em uma janela própria."
+
+#~ msgid "Reply and forward in the main window"
+#~ msgstr "Responder e encaminhar na janela principal"
+
+#~ msgid "Show From, To and Subject in the reply panel"
+#~ msgstr "Mostrar De, Para e Assunto no painel de resposta"
+
+#~ msgid "Off folds them behind a button."
+#~ msgstr "Desativado, os recolhe atrás de um botão."
 
 #~ msgid "Search messages…"
 #~ msgstr "Pesquisar mensagens…"

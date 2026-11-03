@@ -416,39 +416,6 @@ impl AppModel {
             self.current_thread.clone()
         };
         let messages = dedupe_label_copies(messages, &conv, current.folder_id);
-        // A reply sent from here, read back from Sent, takes over the card
-        // that stood in for it, and that card's id, so the card stays where
-        // it is. Its body, until its own is loaded, is the stand-in's: the
-        // same bytes, built the same way.
-        let mut stood_in: HashMap<(u32, u32, u32), String> = HashMap::new();
-        for r in &messages {
-            let took_over = self
-                .provisionals
-                .iter()
-                .find(|(_, p)| p.copied_by(r))
-                .map(|(k, _)| *k);
-            if let Some((key, p)) = took_over.and_then(|key| self.provisionals.remove_entry(&key)) {
-                self.related_ids
-                    .insert((r.account_id, r.folder_id, r.uid), key.1);
-                conv.retain(|m| (m.account_id, m.id) != key);
-                stood_in.insert((r.account_id, r.folder_id, r.uid), p.message.body);
-            }
-        }
-        // A copy already in the conversation (listed with it) retires its
-        // stand-in too.
-        let retired: Vec<(u32, u32)> = self
-            .provisionals
-            .iter()
-            .filter(|(k, p)| {
-                conv.iter()
-                    .any(|m| (m.account_id, m.id) != **k && p.copied_by(m))
-            })
-            .map(|(k, _)| *k)
-            .collect();
-        for k in &retired {
-            self.provisionals.remove(k);
-            conv.retain(|m| (m.account_id, m.id) != *k);
-        }
         let mut added = Vec::new();
         for mut r in messages {
             if conv
@@ -457,27 +424,14 @@ impl AppModel {
             {
                 continue; // already in the conversation, from this folder's own index
             }
-            let body = stood_in.remove(&(r.account_id, r.folder_id, r.uid));
             r.id = self.related_id(&r);
             r.unread = false;
             if let Some(b) = self.body_cache.get(&body_key(&r)) {
                 r.body = b.clone();
-            } else if let Some(b) = body {
-                r.body = b;
             }
             added.push(r);
         }
-        // A reply sent from here whose copy is not back yet keeps its card
-        // in the conversation it answers, however the conversation was put
-        // together again.
-        for (k, p) in &self.provisionals {
-            if !conv.iter().any(|m| (m.account_id, m.id) == *k)
-                && conv.iter().any(|m| m.message_id == p.answers)
-            {
-                added.push(p.message.clone());
-            }
-        }
-        if added.is_empty() && retired.is_empty() {
+        if added.is_empty() {
             // Missing bodies were asked for when the conversation was shown;
             // asking again here would fetch one still on its way a second time.
             return;

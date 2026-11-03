@@ -476,12 +476,6 @@ pub(crate) enum AppMsg {
     /// Showcase only (TEGAMI_SHOWCASE_COMPOSE_CLOSE): cancel the inline
     /// composer, to check its web process goes with it.
     ShowcaseComposeClose,
-    /// Showcase only (TEGAMI_SHOWCASE_COPY): the sent reply's copy is read
-    /// back, made up from its stand-in card, as a server's would be.
-    ShowcaseCopy,
-    /// Showcase only (TEGAMI_SHOWCASE_SEND): write `text` in the split
-    /// reply's editor and send it, to watch the send morph.
-    ShowcaseSend(String),
     /// Showcase only (TEGAMI_SHOWCASE_ACCOUNT=new[:<provider>]): open a blank
     /// account editor, on that provider when one is named.
     ShowcaseNewAccount(Option<String>),
@@ -816,16 +810,6 @@ pub(crate) enum AppMsg {
         message_ids: Vec<String>,
     },
 
-    // ---- on_prefs_compose (prefs_compose.rs) ----
-    /// The inline composer's own history changed (#200): what its Undo and
-    /// Redo would take back now, or `None` for a direction with nothing in
-    /// it. The window's entries follow it while it holds focus.
-    ComposeHistory {
-        id: u32,
-        undo: Option<String>,
-        redo: Option<String>,
-    },
-
     // ---- on_hand_off (hand_off.rs) ----
     /// A hand-off's files have a destination (the dialog answered, or the
     /// preference decided); `remember` writes the choice to Settings.
@@ -999,11 +983,8 @@ pub(crate) enum AppMsg {
     },
 
     // ---- on_send (send.rs) ----
-    /// A composer sent a message; `from` is that composer's id.
-    SendMessage {
-        from: u32,
-        out: Box<OutgoingMessage>,
-    },
+    /// A composer sent a message.
+    SendMessage { out: Box<OutgoingMessage> },
     /// A message's Undo Send delay is over, or Send now was asked for it in
     /// the Outbox: it goes to its worker (#434).
     DispatchSend(u64),
@@ -1034,13 +1015,6 @@ pub(crate) enum AppMsg {
     EmitUnifiedNow,
     /// Merge the unified view's slices now (see `queue_unified_emit`).
     EmitUnified,
-
-    // ---- on_send_morph (send_morph.rs) ----
-    /// Where the conversation's cards stood when a reply was sent has been
-    /// measured: the pane can change under the send morph's stage.
-    SendMorphMeasured,
-    /// The pane could not be captured for the send morph.
-    SendMorphFailed,
 
     // ---- on_compose_host (compose_host.rs) ----
     /// A composer (id) finished — tear down its host (window or inline revealer).

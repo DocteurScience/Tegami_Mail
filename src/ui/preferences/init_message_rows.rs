@@ -1,8 +1,7 @@
 //! Filling the reading, files and composing rows when the window is built.
 
 use super::choices::{
-    compose_format_index, fold_messages_index, read_mark_index, reply_position_index,
-    signature_position_index,
+    compose_format_index, fold_messages_index, read_mark_index, signature_position_index,
 };
 use super::rows::no_truncate;
 use super::*;
@@ -155,18 +154,6 @@ impl Preferences {
             .list
             .swipe_reversed_row
             .set_active(init.swipe_reversed);
-        widgets
-            .composing
-            .compose_inline_row
-            .set_active(init.compose_inline);
-        widgets
-            .composing
-            .reply_inline_row
-            .set_active(init.reply_inline);
-        widgets
-            .composing
-            .reply_fields_row
-            .set_active(init.reply_fields);
     }
 
     /// Settings → System → Files and Links.
@@ -404,19 +391,6 @@ impl Preferences {
             .min_by_key(|(_, &secs)| secs.abs_diff(init.undo_send_secs))
             .map_or(0, |(i, _)| i as u32);
         widgets.composing.undo_send_row.set_selected(nearest);
-        widgets
-            .conversations
-            .reply_position_row
-            .set_model(Some(&gtk::StringList::new(&[
-                &i18n("Above the messages"),
-                &i18n("Below the messages"),
-                &i18n("Follows the reading order"),
-            ])));
-        no_truncate(&widgets.conversations.reply_position_row);
-        widgets
-            .conversations
-            .reply_position_row
-            .set_selected(reply_position_index(init.reply_position));
         widgets.composing.spellcheck_row.set_active(init.spellcheck);
         // The language switches offer exactly what checking can use: the
         // installed dictionaries, behind a "System language" default. Typed

@@ -394,7 +394,7 @@ impl AppModel {
                 // Drafts open in the editor rather than a read-only window,
                 // and a template opens a new message made from it (#360).
                 if self.is_drafts_folder(m.account_id, m.folder_id) {
-                    self.open_draft(m, false, HandOffFiles::default(), &sender);
+                    self.open_draft(m, HandOffFiles::default(), &sender);
                 } else if self.folder_kind(m.account_id, m.folder_id) == Some(FolderKind::Templates)
                 {
                     self.edit_as_new(m, &sender);

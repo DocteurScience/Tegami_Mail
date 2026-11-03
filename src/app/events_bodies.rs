@@ -165,12 +165,12 @@ impl AppModel {
                         self.pending_edit_as_new = Some(pending);
                     }
                 }
-                if let Some((mut pending, inline)) = self.pending_forward.take() {
+                if let Some(mut pending) = self.pending_forward.take() {
                     if is_target(&pending) {
                         pending.has_attachment = false;
-                        self.forward(pending, inline, &sender);
+                        self.forward(pending, &sender);
                     } else {
-                        self.pending_forward = Some((pending, inline));
+                        self.pending_forward = Some(pending);
                     }
                 }
             }
@@ -268,11 +268,11 @@ impl AppModel {
             }
         }
         // The same for a forward that carries them (#240).
-        if let Some((pending, inline)) = self.pending_forward.take() {
+        if let Some(pending) = self.pending_forward.take() {
             if is_target(&pending) {
-                self.forward(pending, inline, &sender);
+                self.forward(pending, &sender);
             } else {
-                self.pending_forward = Some((pending, inline));
+                self.pending_forward = Some(pending);
             }
         }
     }
@@ -331,15 +331,15 @@ impl AppModel {
     ) -> bool {
         // If this body was fetched to open a draft, open the editor now.
         // One waiting for its bytes ignores a body the prefetch sent.
-        if let Some((pd, inline, extra)) = self
+        if let Some((pd, extra)) = self
             .pending_draft
             .take_if(|_| self.pending_draft_token.is_none())
         {
             if pd.account_id == account_id && pd.id == message_id {
-                self.compose_from_draft(pd, body.to_string(), inline, extra, sender);
+                self.compose_from_draft(pd, body.to_string(), extra, sender);
                 return true;
             }
-            self.pending_draft = Some((pd, inline, extra));
+            self.pending_draft = Some((pd, extra));
         }
         // Likewise a copy being edited as a new message: the body is
         // in the cache now, so the second pass finds it there.
@@ -351,12 +351,12 @@ impl AppModel {
             self.pending_edit_as_new = Some(pending);
         }
         // And a forward waiting on the body it quotes.
-        if let Some((pending, inline)) = self.pending_forward.take() {
+        if let Some(pending) = self.pending_forward.take() {
             if pending.account_id == account_id && pending.id == message_id {
-                self.forward(pending, inline, sender);
+                self.forward(pending, sender);
                 return true;
             }
-            self.pending_forward = Some((pending, inline));
+            self.pending_forward = Some(pending);
         }
         // A reply from a notification's button (#244): the message
         // is opening in the reader too, so the body goes on to be
@@ -364,10 +364,9 @@ impl AppModel {
         if let Some(mut m) = self.pending_notified_reply.take() {
             if m.account_id == account_id && m.id == message_id {
                 m.body = body.to_string();
-                self.open_reply(
+                self.open_compose(
                     m.account_id,
                     self.reply_context(&m, reply_prefill(&m, &self.reply_header)),
-                    (m.account_id, m.id),
                     sender,
                 );
             } else {

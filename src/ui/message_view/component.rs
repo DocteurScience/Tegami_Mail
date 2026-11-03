@@ -195,11 +195,6 @@ impl Component for MessageView {
                             || (model.blocked && model.show_banner)
                             || (model.find_open && !model.find_bottom),
                     ),
-                    // Under the split reply there is no list row to line up
-                    // with either, only the composer's grab strip: 14px more
-                    // air than the aligned case.
-                    #[watch]
-                    set_class_active: ("under-split", model.under_split),
                     set_orientation: gtk::Orientation::Vertical,
                     set_spacing: 12,
 
@@ -472,9 +467,6 @@ impl Component for MessageView {
             MessageViewInput::SetSpoofBannerShown(show) => {
                 self.show_spoof_banner = show;
             }
-            MessageViewInput::SetUnderSplit(under) => {
-                self.under_split = under;
-            }
             MessageViewInput::SetContentTheme(o) => self.on_set_content_theme(o),
             MessageViewInput::SetReaderStyle(style) => self.on_set_reader_style(style),
             MessageViewInput::SetZoomDefault(percent) => {
@@ -629,14 +621,11 @@ impl Component for MessageView {
                 id,
                 starred,
             } => self.on_set_card_star(account_id, id, starred),
-            MessageViewInput::FocusCard { account_id, id } => self.on_focus_card(account_id, id),
-            MessageViewInput::BlurCard => self.on_blur_card(),
             MessageViewInput::ScrollAnchor {
                 account_id,
                 id,
                 offset,
             } => self.on_scroll_anchor(account_id, id, offset),
-            MessageViewInput::PinArrival { account_id, id } => self.on_pin_arrival(account_id, id),
             MessageViewInput::SetDraftsView(on) => {
                 self.drafts_view = on;
             }

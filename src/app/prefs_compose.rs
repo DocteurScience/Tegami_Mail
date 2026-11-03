@@ -5,43 +5,11 @@ use relm4::prelude::*;
 use crate::ui::preferences::{PrefInput, PrefOutput};
 
 use super::model::AppModel;
-use super::msg::AppMsg;
 
 impl AppModel {
-    /// The messages the router sends here (see `AppModel::route`).
-    pub(super) fn on_prefs_compose(&mut self, msg: AppMsg) {
-        match msg {
-            AppMsg::ComposeHistory { id, undo, redo } => {
-                // Only the inline composer's: a composer in a window of its
-                // own answers its keys there and has no menu here to label.
-                if self
-                    .reader_compose
-                    .as_ref()
-                    .is_some_and(|r| r.id == id && r.window.is_none())
-                {
-                    self.compose_history = (undo, redo);
-                    self.refresh_undo_menu();
-                }
-            }
-            _ => unreachable!("not routed to on_prefs_compose"),
-        }
-    }
-
     /// The settings changes the router sends here (see `AppModel::route`).
     pub(super) fn on_prefs_compose_pref(&mut self, pref: PrefOutput) {
         match pref {
-            PrefOutput::SetComposeInline(on) => {
-                pref!(self.compose_inline = on);
-            }
-
-            PrefOutput::SetReplyInline(on) => {
-                pref!(self.reply_inline = on);
-            }
-
-            PrefOutput::SetReplyFields(on) => {
-                pref!(self.reply_fields = on);
-            }
-
             PrefOutput::SetFilesPrefs(prefs) => {
                 pref!(self.files_prefs = prefs);
             }
@@ -115,11 +83,6 @@ impl AppModel {
             }
             PrefOutput::SetFollowPlain(on) => {
                 pref!(self.follow_plain = on);
-            }
-            PrefOutput::SetReplyPosition(position) => {
-                // A split reply already open stays where it is; the next
-                // one opens in the new place.
-                pref!(self.reply_position = position);
             }
             PrefOutput::SetSignaturePosition(position) => {
                 // Composers already open keep their signature where it is;

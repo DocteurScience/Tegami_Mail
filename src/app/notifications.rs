@@ -171,10 +171,9 @@ impl AppModel {
                     if m.body.is_empty() {
                         self.pending_notified_reply = Some(m);
                     } else {
-                        self.open_reply(
+                        self.open_compose(
                             m.account_id,
                             self.reply_context(&m, reply_prefill(&m, &self.reply_header)),
-                            (m.account_id, m.id),
                             &sender,
                         );
                     }
@@ -188,7 +187,7 @@ impl AppModel {
             } => {
                 if let Some(m) = notified_message(account_id, folder_id, message_id, &self.folders)
                 {
-                    self.forward(m, true, &sender);
+                    self.forward(m, &sender);
                 }
             }
 

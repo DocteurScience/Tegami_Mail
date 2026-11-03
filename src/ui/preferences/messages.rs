@@ -80,11 +80,6 @@ pub(crate) struct PrefInit {
     pub(crate) swipe_reversed: bool,
     /// How far a trackpad two-finger swipe has to travel to fire the action.
     pub(crate) swipe_sensitivity: f64,
-    /// "New message" composes inline over the reading pane (vs a window).
-    pub(crate) compose_inline: bool,
-    /// Reply, Reply All and Forward open in the reading pane (vs a window).
-    pub(crate) reply_inline: bool,
-    pub(crate) reply_fields: bool,
     /// Settings → System → GNOME Files: what handed-in files open into.
     pub(crate) files: crate::config::FilesPrefs,
     /// Settings → System → Links: the browser links open in (#232). Empty =
@@ -122,8 +117,6 @@ pub(crate) struct PrefInit {
     pub(crate) compose_format: crate::config::ComposeFormat,
     /// Replies and forwards to plain-text mail are written in plain text (#436).
     pub(crate) follow_plain: bool,
-    /// Where the split reply opens in the reading pane (#212).
-    pub(crate) reply_position: crate::config::ReplyPosition,
     /// Where the signature sits in a reply or forward (#237).
     pub(crate) signature_position: crate::config::SignaturePosition,
     pub(crate) signature_dashes: bool,
@@ -305,7 +298,6 @@ pub(crate) enum PrefInput {
     ChangeLauncherBadge(u32),
     ChangeMessageTheme(u32),
     ChangeComposeFormat(u32),
-    ChangeReplyPosition(u32),
     ChangeFoldMessages(u32),
     ChangeSignaturePosition(u32),
     ChangeUndoSend(u32),
@@ -410,9 +402,6 @@ pub(crate) enum PrefOutput {
     SetSwipeEnabled(bool),
     SetSwipeReversed(bool),
     SetSwipeSensitivity(f64),
-    SetComposeInline(bool),
-    SetReplyInline(bool),
-    SetReplyFields(bool),
     SetFilesPrefs(crate::config::FilesPrefs),
     /// The browser links open in (#232): "" = the desktop's default,
     /// "ask" = its app chooser, otherwise a desktop entry id.
@@ -505,7 +494,6 @@ pub(crate) enum PrefOutput {
     SetPlainFont(String),
     SetComposeFormat(crate::config::ComposeFormat),
     SetFollowPlain(bool),
-    SetReplyPosition(crate::config::ReplyPosition),
     SetSignaturePosition(crate::config::SignaturePosition),
     SetSignatureDashes(bool),
     SetFoldQuote(bool),

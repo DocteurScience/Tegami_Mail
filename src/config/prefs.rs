@@ -343,19 +343,6 @@ pub(crate) enum FoldMessages {
     AllButNewest,
 }
 
-/// Where the split reply opens in the reading pane (#212): above the
-/// messages (the original placement), below them, or wherever the newest
-/// message is — above with "newest message first", below otherwise, so the
-/// editor always continues the conversation in its reading direction.
-#[derive(Clone, Copy, Debug, Default, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
-#[serde(rename_all = "snake_case")]
-pub(crate) enum ReplyPosition {
-    #[default]
-    Top,
-    Bottom,
-    Follow,
-}
-
 /// Where the signature goes in a reply or forward (#237). Above the quoted
 /// original is what Apple Mail and Thunderbird do, and what a reader
 /// expects: the signature closes the words above it, not the words

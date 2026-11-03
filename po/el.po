@@ -4984,15 +4984,6 @@ msgid_plural "{n} seconds"
 msgstr[0] "{n} δευτερόλεπτο"
 msgstr[1] "{n} δευτερόλεπτα"
 
-msgid "Above the messages"
-msgstr "Πάνω από τα μηνύματα"
-
-msgid "Below the messages"
-msgstr "Κάτω από τα μηνύματα"
-
-msgid "Follows the reading order"
-msgstr "Ακολουθεί τη σειρά ανάγνωσης"
-
 msgid "System language"
 msgstr "Γλώσσα συστήματος"
 
@@ -5196,12 +5187,6 @@ msgstr "Εμφάνιση των δικών σας απαντήσεων στη λ
 
 msgid "Off shows the last message that arrived."
 msgstr "Ανενεργό: εμφανίζεται το τελευταίο μήνυμα που έφτασε."
-
-msgid "Reply editor position"
-msgstr "Θέση επεξεργαστή απάντησης"
-
-msgid "Following the reading order puts it where the conversation ends."
-msgstr "Η ακολουθία ανάγνωσης τοποθετεί το πλαίσιο στο τέλος της συζήτησης."
 
 msgid "Attachments on each message"
 msgstr "Συνημμένα σε κάθε μήνυμα"
@@ -6940,21 +6925,6 @@ msgstr ""
 msgid "Always fold the right group into ⋯"
 msgstr ""
 
-msgid "Compose in the main window"
-msgstr "Σύνταξη στο κύριο παράθυρο"
-
-msgid "Off opens new messages in their own window."
-msgstr "Ανενεργό: ανοίγει νέα μηνύματα σε δικό τους παράθυρο."
-
-msgid "Reply and forward in the main window"
-msgstr "Απάντηση και προώθηση στο κύριο παράθυρο"
-
-msgid "Show From, To and Subject in the reply panel"
-msgstr "Εμφάνιση Από, Προς και Θέματος στον πίνακα απάντησης"
-
-msgid "Off folds them behind a button."
-msgstr "Ανενεργό: τα συμπτύσσει πίσω από ένα κουμπί."
-
 msgid "Send new messages from"
 msgstr "Αποστολή νέων μηνυμάτων από"
 
@@ -7476,6 +7446,36 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Above the messages"
+#~ msgstr "Πάνω από τα μηνύματα"
+
+#~ msgid "Below the messages"
+#~ msgstr "Κάτω από τα μηνύματα"
+
+#~ msgid "Follows the reading order"
+#~ msgstr "Ακολουθεί τη σειρά ανάγνωσης"
+
+#~ msgid "Reply editor position"
+#~ msgstr "Θέση επεξεργαστή απάντησης"
+
+#~ msgid "Following the reading order puts it where the conversation ends."
+#~ msgstr "Η ακολουθία ανάγνωσης τοποθετεί το πλαίσιο στο τέλος της συζήτησης."
+
+#~ msgid "Compose in the main window"
+#~ msgstr "Σύνταξη στο κύριο παράθυρο"
+
+#~ msgid "Off opens new messages in their own window."
+#~ msgstr "Ανενεργό: ανοίγει νέα μηνύματα σε δικό τους παράθυρο."
+
+#~ msgid "Reply and forward in the main window"
+#~ msgstr "Απάντηση και προώθηση στο κύριο παράθυρο"
+
+#~ msgid "Show From, To and Subject in the reply panel"
+#~ msgstr "Εμφάνιση Από, Προς και Θέματος στον πίνακα απάντησης"
+
+#~ msgid "Off folds them behind a button."
+#~ msgstr "Ανενεργό: τα συμπτύσσει πίσω από ένα κουμπί."
 
 #~ msgid "Search messages…"
 #~ msgstr "Αναζήτηση μηνυμάτων…"

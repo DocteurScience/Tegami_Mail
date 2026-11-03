@@ -164,8 +164,6 @@ impl AppModel {
             | AppMsg::ShowcaseBurger
             | AppMsg::ShowcaseComposeFormat(..)
             | AppMsg::ShowcaseComposeClose
-            | AppMsg::ShowcaseCopy
-            | AppMsg::ShowcaseSend(..)
             | AppMsg::ShowcaseNewAccount(..)
             | AppMsg::ShowcaseDirtyEditor
             | AppMsg::ShowcaseEditFilter(..)) => self.on_showcase(msg, sender),
@@ -257,7 +255,6 @@ impl AppModel {
             | AppMsg::SetRemoteContent { .. }
             | AppMsg::ReloadBody(..)) => self.on_prefs_reader(msg),
             msg @ (AppMsg::Undo | AppMsg::Redo | AppMsg::UndoRestored { .. }) => self.on_undo(msg),
-            msg @ AppMsg::ComposeHistory { .. } => self.on_prefs_compose(msg),
             msg @ (AppMsg::HandOffAction { .. }
             | AppMsg::HandOffDraftPickNow
             | AppMsg::HandOffDraft { .. }
@@ -313,7 +310,6 @@ impl AppModel {
             | AppMsg::PushUnreadCounts
             | AppMsg::EmitUnifiedNow
             | AppMsg::EmitUnified) => self.on_unified(msg),
-            msg @ (AppMsg::SendMorphMeasured | AppMsg::SendMorphFailed) => self.on_send_morph(msg),
             msg @ (AppMsg::ComposeClosed(..) | AppMsg::ComposeCloseRequested(..)) => {
                 self.on_compose_host(msg)
             }
@@ -489,10 +485,7 @@ impl AppModel {
             | PrefOutput::SetSwipeEnabled(..)
             | PrefOutput::SetSwipeReversed(..)
             | PrefOutput::SetSwipeSensitivity(..)) => self.on_prefs_list_pref(pref, sender),
-            pref @ (PrefOutput::SetComposeInline(..)
-            | PrefOutput::SetReplyInline(..)
-            | PrefOutput::SetReplyFields(..)
-            | PrefOutput::SetFilesPrefs(..)
+            pref @ (PrefOutput::SetFilesPrefs(..)
             | PrefOutput::SetLinkBrowser(..)
             | PrefOutput::SetComposeDefaultFrom(..)
             | PrefOutput::SetPastePlain(..)
@@ -506,7 +499,6 @@ impl AppModel {
             | PrefOutput::SetSpellcheckLangs(..)
             | PrefOutput::SetComposeFormat(..)
             | PrefOutput::SetFollowPlain(..)
-            | PrefOutput::SetReplyPosition(..)
             | PrefOutput::SetSignaturePosition(..)
             | PrefOutput::SetSignatureDashes(..)
             | PrefOutput::SetFoldQuote(..)

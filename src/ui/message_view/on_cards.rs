@@ -419,67 +419,9 @@ impl MessageView {
         self.run_js_or_warn(&js, "card star patch");
     }
 
-    pub(super) fn on_focus_card(&mut self, account_id: u32, id: u32) {
-        let webview = self.webview.clone();
-        let gen = self.focus_gen.clone();
-        gen.set(gen.get() + 1);
-        let my_gen = gen.get();
-        // Let the split's 300ms slide finish first — scrolling while
-        // the viewport is still shrinking lands somewhere else.
-        gtk::glib::timeout_add_local_once(std::time::Duration::from_millis(380), move || {
-            if gen.get() != my_gen {
-                // A BlurCard beat us here: the reply was cancelled
-                // before the slide finished. Adding the outline
-                // now would strand it.
-                return;
-            }
-            let js = format!(
-                    "(function(){{\
-                     if(!document.body.classList.contains('tegami-conv'))return;\
-                     var s=document.querySelector('.tegami-msg[data-key=\"{account_id}:{id}\"]');\
-                     if(!s)return;\
-                     document.querySelectorAll('.tegami-msg.selected').forEach(function(e){{e.classList.remove('selected');}});\
-                     s.classList.add('selected');\
-                     s.style.scrollMarginTop='14px';\
-                     s.scrollIntoView({{behavior:'smooth',block:'start'}});}})()"
-                );
-            webview.evaluate_javascript(&js, None, None, None::<&gtk::gio::Cancellable>, |r| {
-                if let Err(e) = r {
-                    tracing::warn!("focus-card scroll failed: {e}");
-                }
-            });
-        });
-    }
-
-    pub(super) fn on_blur_card(&mut self) {
-        self.focus_gen.set(self.focus_gen.get() + 1);
-        self.webview.evaluate_javascript(
-            "(function(){document.querySelectorAll('.tegami-msg.selected')\
-             .forEach(function(e){e.classList.remove('selected');});})()",
-            None,
-            None,
-            None::<&gtk::gio::Cancellable>,
-            |r| {
-                if let Err(e) = r {
-                    tracing::warn!("card blur failed: {e}");
-                }
-            },
-        );
-        // Cards the list still has selected keep their outline.
-        self.apply_card_selection();
-    }
-
     pub(super) fn on_scroll_anchor(&mut self, account_id: u32, id: u32, offset: u32) {
         self.saved_anchor = Some((account_id, id, offset));
         self.anchor_gutter = false;
-    }
-
-    pub(super) fn on_pin_arrival(&mut self, account_id: u32, id: u32) {
-        self.saved_anchor = Some((account_id, id, 0));
-        self.anchor_gutter = true;
-        // The anchor rides only on a document that keeps its place.
-        self.did_autoscroll = true;
-        self.skip_fade = true;
     }
 
     pub(super) fn on_hold_place(&mut self, account_id: u32, id: u32) {

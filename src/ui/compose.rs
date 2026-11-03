@@ -35,7 +35,6 @@ use host::{
     compose_heading, fold_on_first_map, history_levels, label_fields, size_for_host,
     COMPOSE_MIN_WIDTH,
 };
-pub(crate) use keys::composer_key;
 pub(crate) use messages::{ComposeInput, ComposeOutput};
 pub(crate) use model::Compose;
 use send::start_autosave;
@@ -433,7 +432,7 @@ impl Component for Compose {
             // addressed: replies arrive with To filled, forwards do not.
             compact: compact && !prefill.to.trim().is_empty(),
             decorations,
-            fields_shown: crate::config::load_privacy().reply_fields,
+            fields_shown: false,
             from_index: selected,
             custom_from: None,
             from_face: None,
@@ -621,8 +620,6 @@ impl Component for Compose {
 
                 ComposeInput::MarkFieldsDirty => self.fields_dirty = true,
 
-                ComposeInput::SaveDraftIfDirty => self.on_save_draft_if_dirty(&sender),
-
                 ComposeInput::AttachFiles => self.on_attach_files(&sender, root),
                 ComposeInput::SendAsLink(index) => {
                     if let Some(path) = self.attachments.get(index).cloned() {
@@ -653,7 +650,7 @@ impl Component for Compose {
 
                 ComposeInput::ShowcaseFrom(n) => self.on_pick_from(n as usize, widgets),
 
-                ComposeInput::BodyHistory(can_undo) => self.on_body_history(can_undo, &sender),
+                ComposeInput::BodyHistory(can_undo) => self.on_body_history(can_undo),
 
                 ComposeInput::FromMenu => self.on_from_menu(&sender),
 

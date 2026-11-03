@@ -348,26 +348,6 @@ pub(super) fn signature_position_at(idx: u32) -> crate::config::SignaturePositio
     }
 }
 
-/// The row of the reply position combo that shows `value`.
-pub(super) fn reply_position_index(value: crate::config::ReplyPosition) -> u32 {
-    use crate::config::ReplyPosition;
-    match value {
-        ReplyPosition::Top => 0,
-        ReplyPosition::Bottom => 1,
-        ReplyPosition::Follow => 2,
-    }
-}
-
-/// The reply position value at row `idx` of its combo; past the end reads as the first.
-pub(super) fn reply_position_at(idx: u32) -> crate::config::ReplyPosition {
-    use crate::config::ReplyPosition;
-    match idx {
-        1 => ReplyPosition::Bottom,
-        2 => ReplyPosition::Follow,
-        _ => ReplyPosition::Top,
-    }
-}
-
 /// The row of the section style combo: Unified, then Tree.
 pub(super) fn section_style_index(value: crate::config::SectionStyle) -> u32 {
     u32::from(value == crate::config::SectionStyle::Tree)
@@ -582,14 +562,6 @@ mod tests {
             assert_eq!(signature_position_at(signature_position_index(v)), v);
         }
         assert_eq!(signature_position_at(9), SignaturePosition::AboveQuote);
-        for v in [
-            ReplyPosition::Top,
-            ReplyPosition::Bottom,
-            ReplyPosition::Follow,
-        ] {
-            assert_eq!(reply_position_at(reply_position_index(v)), v);
-        }
-        assert_eq!(reply_position_at(9), ReplyPosition::Top);
         assert_eq!(section_style_index(SectionStyle::Unified), 0);
         assert_eq!(section_style_index(SectionStyle::Tree), 1);
         assert_eq!(section_style_at(1), SectionStyle::Tree);

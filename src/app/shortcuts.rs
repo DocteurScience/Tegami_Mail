@@ -8,7 +8,6 @@ use relm4::prelude::*;
 use crate::config;
 use crate::i18n::i18n;
 use crate::models::{FolderKind, Message};
-use crate::ui::compose::ComposeInput;
 use crate::ui::message_list::{BulkAction, MessageListInput, RowAction};
 use crate::ui::message_view::MessageViewInput;
 
@@ -39,8 +38,8 @@ impl AppModel {
             Shortcut::BackToList => {
                 // Gmail's u and Esc close the conversation, back to the list
                 // with nothing open (#392); the classic keys only move the
-                // keyboard there. A draft being written in the reader stays.
-                if self.gmail_on() && self.reader_compose.is_none() {
+                // keyboard there.
+                if self.gmail_on() {
                     self.message_list.emit(MessageListInput::CloseOpen);
                 } else {
                     self.message_list.emit(MessageListInput::FocusList);
@@ -357,11 +356,7 @@ impl AppModel {
     /// keyboard goes back to its row, which stays unread (#392). Checked
     /// rows stay as they are.
     fn close_after_unread(&self) {
-        if self.gmail_on()
-            && self.current.is_some()
-            && !self.many_selected()
-            && self.reader_compose.is_none()
-        {
+        if self.gmail_on() && self.current.is_some() && !self.many_selected() {
             self.message_list.emit(MessageListInput::CloseOpen);
         }
     }
@@ -463,30 +458,12 @@ impl AppModel {
             }
 
             AppMsg::Shortcut(action) => self.run_shortcut(action, &sender),
-            AppMsg::ZoomKey(step) => {
-                // The keys are the application's, so they reach the main
-                // window before the composer in it could take them.
-                let compose = self
-                    .reader_compose
-                    .as_ref()
-                    .filter(|r| r.window.is_none() && focus_in_compose(&self.window));
-                match compose {
-                    Some(r) => r.controller.emit(ComposeInput::Zoom(step)),
-                    None => sender.input(AppMsg::ZoomMessage(step)),
-                }
-            }
+            AppMsg::ZoomKey(step) => sender.input(AppMsg::ZoomMessage(step)),
+            // Ctrl+Shift+C opens the console; Ctrl+Shift+A means nothing
+            // in the main window (a composer window takes both itself).
             AppMsg::ComposerKey(keyval) => {
-                let compose = self
-                    .reader_compose
-                    .as_ref()
-                    .filter(|r| r.window.is_none() && focus_in_compose(&self.window));
-                let shift_ctrl =
-                    gtk::gdk::ModifierType::CONTROL_MASK | gtk::gdk::ModifierType::SHIFT_MASK;
-                match compose.zip(crate::ui::compose::composer_key(keyval, shift_ctrl)) {
-                    Some((r, input)) => r.controller.emit(input),
-                    // Ctrl+Shift+A means nothing outside a composer.
-                    None if keyval == gtk::gdk::Key::a => {}
-                    None => sender.input(AppMsg::OpenConsole),
+                if keyval != gtk::gdk::Key::a {
+                    sender.input(AppMsg::OpenConsole);
                 }
             }
             AppMsg::ZoomMessage(step) => {

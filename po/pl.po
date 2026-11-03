@@ -5177,15 +5177,6 @@ msgstr[0] "{n} odbiorca"
 msgstr[1] "{n} odbiorców"
 msgstr[2] "{n} odbiorców"
 
-msgid "Above the messages"
-msgstr "Nad wiadomościami"
-
-msgid "Below the messages"
-msgstr "Pod wiadomościami"
-
-msgid "Follows the reading order"
-msgstr "Zgodnie z kolejnością czytania"
-
 #, fuzzy
 msgid "System language"
 msgstr "Język systemu – {language}"
@@ -5401,14 +5392,6 @@ msgstr "Wyświetlanie własnych odpowiedzi na liście wiadomości"
 
 msgid "Off shows the last message that arrived."
 msgstr "Po wyłączeniu wyświetlana jest ostatnia otrzymana wiadomość."
-
-#, fuzzy
-msgid "Reply editor position"
-msgstr "Edytor odpowiedzi"
-
-#, fuzzy
-msgid "Following the reading order puts it where the conversation ends."
-msgstr "Usuń rozmowę"
 
 msgid "Attachments on each message"
 msgstr "Załączniki przy każdej wiadomości"
@@ -7150,22 +7133,6 @@ msgstr ""
 msgid "Always fold the right group into ⋯"
 msgstr ""
 
-msgid "Compose in the main window"
-msgstr "Pisanie w oknie głównym"
-
-#, fuzzy
-msgid "Off opens new messages in their own window."
-msgstr "Najpierw otwórz wiadomość, a potem ją wydrukuj."
-
-msgid "Reply and forward in the main window"
-msgstr "Odpowiadanie i przekazywanie w oknie głównym"
-
-msgid "Show From, To and Subject in the reply panel"
-msgstr "Pola „Od”, „Do” i „Temat” w panelu odpowiedzi"
-
-msgid "Off folds them behind a button."
-msgstr ""
-
 msgid "Send new messages from"
 msgstr "Nadawca nowych wiadomości"
 
@@ -7693,6 +7660,36 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Above the messages"
+#~ msgstr "Nad wiadomościami"
+
+#~ msgid "Below the messages"
+#~ msgstr "Pod wiadomościami"
+
+#~ msgid "Follows the reading order"
+#~ msgstr "Zgodnie z kolejnością czytania"
+
+#, fuzzy
+#~ msgid "Reply editor position"
+#~ msgstr "Edytor odpowiedzi"
+
+#, fuzzy
+#~ msgid "Following the reading order puts it where the conversation ends."
+#~ msgstr "Usuń rozmowę"
+
+#~ msgid "Compose in the main window"
+#~ msgstr "Pisanie w oknie głównym"
+
+#, fuzzy
+#~ msgid "Off opens new messages in their own window."
+#~ msgstr "Najpierw otwórz wiadomość, a potem ją wydrukuj."
+
+#~ msgid "Reply and forward in the main window"
+#~ msgstr "Odpowiadanie i przekazywanie w oknie głównym"
+
+#~ msgid "Show From, To and Subject in the reply panel"
+#~ msgstr "Pola „Od”, „Do” i „Temat” w panelu odpowiedzi"
 
 #~ msgid "Search messages…"
 #~ msgstr "Przeszukaj wiadomości…"

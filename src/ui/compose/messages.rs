@@ -142,8 +142,6 @@ pub(crate) enum ComposeInput {
     FocusInitial,
     /// A recipient/subject field changed — mark dirty.
     MarkFieldsDirty,
-    /// Save to Drafts only if edited, then close (used when superseded / on nav).
-    SaveDraftIfDirty,
     AttachFiles,
     /// The writer's own text, read for the forgotten-attachment check.
     AttachCheck(String),
@@ -228,10 +226,8 @@ pub(crate) struct OutgoingFields {
 
 #[derive(Debug)]
 pub(crate) enum ComposeOutput {
-    /// Send the message. Carries the composer's id, so the app knows which
-    /// pane it came from.
+    /// Send the message.
     Send {
-        id: u32,
         message: Box<OutgoingMessage>,
     },
     /// Save the message to the Drafts folder (no send).
@@ -244,15 +240,6 @@ pub(crate) enum ComposeOutput {
     DeleteDraft {
         id: u32,
         origin: DraftOrigin,
-    },
-    /// What this composer's history can do now, so the window that hosts it
-    /// inline can label and enable its own Undo and Redo entries from the
-    /// composer while the composer has focus (#200). `None` means that
-    /// direction is empty.
-    History {
-        id: u32,
-        undo: Option<String>,
-        redo: Option<String>,
     },
     /// This pane is done (cancelled / sent / draft-saved / superseded). Carries
     /// the id so the app tears down the right host.

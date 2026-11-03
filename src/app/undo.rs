@@ -8,11 +8,9 @@ use relm4::prelude::*;
 
 use crate::i18n::{i18n, i18n_f};
 use crate::models::{FolderKind, Message};
-use crate::ui::compose::ComposeInput;
 use crate::ui::message_list::MessageListInput;
 use crate::worker::MailRequest;
 
-use super::compose_host::ReaderCompose;
 use super::conversation::{body_key, CARRIED_BODY_LIMIT};
 use super::model::AppModel;
 use super::msg::AppMsg;
@@ -276,38 +274,10 @@ impl AppModel {
         self.refresh_undo_menu();
     }
 
-    /// Who the window's Undo and Redo entries belong to. Not the same
-    /// question as [`AppModel::focused_compose`], and deliberately not
-    /// decided by focus: opening the menu is itself a focus change, and
-    /// whether it lands on the button, inside the popover, or somewhere in
-    /// between is GTK's business and varies with how the menu was opened.
-    /// An entry that reads correctly only until you reach for it is no use.
-    ///
-    /// So: an open inline composer with something in its history owns them.
-    /// Anything it can take back is more recent than anything in the mail
-    /// history — it is being written now — and while it has nothing the
-    /// entries go back to the mail, which is what someone with an untouched
-    /// reply on screen would expect. The keys keep following focus, because
-    /// Ctrl+Z in the body must undo the body.
-    fn menu_compose(&self) -> Option<&ReaderCompose> {
-        self.reader_compose.as_ref().filter(|r| {
-            r.window.is_none()
-                && (self.compose_history.0.is_some() || self.compose_history.1.is_some())
-        })
-    }
-
     /// Ctrl+Z / Ctrl+Shift+Z: take the top of one stack, apply it, and put
-    /// its inverse on the other so the move can be made again.
-    ///
-    /// Typing into the inline composer hands both over to it: its history
-    /// covers the body and its attachments, and nobody writing a reply means
-    /// "archive that message again" by Ctrl+Z. The menu entries follow the
-    /// same rule, so what they say is always what the key would do.
+    /// its inverse on the other so the move can be made again. A composer
+    /// is a window of its own and answers its own keys.
     fn undo_redo(&mut self, redo: bool) {
-        if let Some(compose) = self.menu_compose() {
-            compose.controller.emit(ComposeInput::History { redo });
-            return;
-        }
         let entry = if redo {
             self.redo_stack.pop()
         } else {
@@ -572,19 +542,10 @@ impl AppModel {
     /// (Re)build the burger menu's Undo/Redo section, naming the action each
     /// one would reverse, and grey the entries out when a stack is empty.
     pub(super) fn refresh_undo_menu(&self) {
-        // The composer's history is the one on offer whenever it has one.
-        let composing = self.menu_compose().is_some();
-        let (undo_what, redo_what) = if composing {
-            (
-                self.compose_history.0.clone(),
-                self.compose_history.1.clone(),
-            )
-        } else {
-            (
-                self.undo_stack.last().map(|e| e.what.clone()),
-                self.redo_stack.last().map(|e| e.what.clone()),
-            )
-        };
+        let (undo_what, redo_what) = (
+            self.undo_stack.last().map(|e| e.what.clone()),
+            self.redo_stack.last().map(|e| e.what.clone()),
+        );
         let label = |verb: &str, what: Option<&String>| match what {
             Some(w) => format!("{verb} {w}"),
             None => verb.to_string(),
@@ -619,7 +580,7 @@ impl AppModel {
             }
             tracing::info!(
                 target: "tegami::compose::undo",
-                "menu: composing={composing} undo={undo_what:?} redo={redo_what:?} focus=[{}]",
+                "menu: undo={undo_what:?} redo={redo_what:?} focus=[{}]",
                 chain.join(" < ")
             );
         }
