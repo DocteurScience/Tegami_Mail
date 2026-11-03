@@ -289,9 +289,6 @@ sous le nom.
   repli de la barre du lecteur s'appuie dessus (`follow_button`,
   `MeasureReaderFold`) ; les retirer demande de reprendre cette mesure.
 
-- Section Étiquettes de la barre latérale ouverte par défaut (les valeurs
-  par défaut de `sidebar.toml` valent pour toutes les sections ; un test
-  fige ce comportement).
 - Vérifier contraste élevé et mode sombre sur une vraie session GNOME.
 - Questions ouvertes de DESIGN.md (icônes symboliques, version sombre des
   écrans).
