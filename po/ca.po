@@ -3430,9 +3430,6 @@ msgstr "Envia"
 msgid "More actions"
 msgstr "Accions de lliscament"
 
-msgid "Show From, To and Subject"
-msgstr "Mostra De, A i Assumpte"
-
 msgid "Download password for {name}: {password}"
 msgstr "Contrasenya de descàrrega per a {name}: {password}"
 
@@ -7323,6 +7320,9 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Show From, To and Subject"
+#~ msgstr "Mostra De, A i Assumpte"
 
 #~ msgid "Above the messages"
 #~ msgstr "A sobre dels missatges"

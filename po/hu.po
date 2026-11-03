@@ -3580,9 +3580,6 @@ msgstr "Küldés"
 msgid "More actions"
 msgstr "Csúsztatási műveletek"
 
-msgid "Show From, To and Subject"
-msgstr "Feladó, címzett és tárgy megjelenítése"
-
 msgid "Download password for {name}: {password}"
 msgstr "Letöltési jelszó ehhez: {name}: {password}"
 
@@ -7603,6 +7600,9 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Show From, To and Subject"
+#~ msgstr "Feladó, címzett és tárgy megjelenítése"
 
 #~ msgid "Above the messages"
 #~ msgstr "Az üzenetek felett"

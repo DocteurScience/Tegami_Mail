@@ -15,8 +15,6 @@ pub(crate) enum ComposeInput {
         checked: Vec<String>,
         result: Result<(), String>,
     },
-    /// A compact reply shows or hides its From/To/Subject rows (#154).
-    ShowFields(bool),
     /// The pane crossed its width breakpoint: fold the toolbar into the ⋯
     /// menu, or spread it out again.
     SetNarrow(bool),

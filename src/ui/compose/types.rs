@@ -114,15 +114,6 @@ pub(crate) struct ComposeInit {
     pub(crate) selected: usize,
     /// Own addresses to include in the suggestions loaded after opening.
     pub(crate) own_addresses: Vec<(String, String)>,
-    /// Whether the pane starts hosted in a standalone window (vs. inline).
-    pub(crate) windowed: bool,
-    /// Compact reply (#86 follow-up): the split reply hides every address/
-    /// subject row and shows just the editor — popping out to a window brings
-    /// the full fields back.
-    pub(crate) compact: bool,
-    /// Whether the inline header carries the window decorations. Off for a
-    /// split reply placed beneath the reader (#212), whose header stays.
-    pub(crate) decorations: bool,
     /// What the message is written in: rich text or plain text.
     pub(crate) format: ComposeFormat,
     /// Where the signature goes against a quoted original (#237).

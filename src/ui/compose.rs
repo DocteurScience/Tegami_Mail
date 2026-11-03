@@ -32,8 +32,8 @@ use cloud::not_signed_in;
 pub(crate) use format::forget_zoom;
 use format::{session_zoom, zoom_chip, SHOWCASE_PLAIN_LOG};
 use host::{
-    compose_heading, fold_on_first_map, history_levels, label_fields, size_for_host,
-    COMPOSE_MIN_WIDTH,
+    compose_heading, fold_on_first_map, label_fields, size_for_host, COMPOSE_MIN_WIDTH,
+    HISTORY_LEVELS,
 };
 pub(crate) use messages::{ComposeInput, ComposeOutput};
 pub(crate) use model::Compose;
@@ -133,22 +133,6 @@ impl Component for Compose {
                             set_visible: false,
                             connect_toggled[sender] => move |b| {
                                 sender.input_sender().emit(ComposeInput::ToggleSign(b.is_active()));
-                            },
-                        },
-                        // Attach is in the formatting row, the cloud, Contacts
-                        // and the window toggle in More actions.
-                        // The compact reply's From/To/Subject rows (#154): folded
-                        // away by default, one press brings them back.
-                        #[name = "fields_btn"]
-                        pack_end = &gtk::ToggleButton {
-                            set_icon_name: "pan-down-symbolic",
-                            add_css_class: "fields-chevron",
-                            set_tooltip_text: Some(i18n("Show From, To and Subject").as_str()),
-                            set_can_focus: false,
-                            #[watch]
-                            set_visible: model.compact && !model.windowed,
-                            connect_toggled[sender] => move |b| {
-                                sender.input_sender().emit(ComposeInput::ShowFields(b.is_active()));
                             },
                         },
                     },
@@ -289,9 +273,6 @@ impl Component for Compose {
             accounts,
             selected,
             own_addresses,
-            windowed,
-            compact,
-            decorations,
             format,
             signature_position,
         } = init;
@@ -362,7 +343,7 @@ impl Component for Compose {
             &content,
             remote_images.as_deref(),
             format == ComposeFormat::Plain,
-            history_levels(windowed),
+            HISTORY_LEVELS,
         );
         editor.set_formatting_visible(format == ComposeFormat::Rich);
         editor.set_zoom(session_zoom());
@@ -427,12 +408,6 @@ impl Component for Compose {
             template,
             outbox_origin,
             compose_id,
-            windowed,
-            // A compact (fields-hidden) pane only makes sense once it is
-            // addressed: replies arrive with To filled, forwards do not.
-            compact: compact && !prefill.to.trim().is_empty(),
-            decorations,
-            fields_shown: false,
             from_index: selected,
             custom_from: None,
             from_face: None,
@@ -494,8 +469,6 @@ impl Component for Compose {
             &widgets.toolbar_root,
             &widgets.header,
             &widgets.editor_holder,
-            model.windowed,
-            model.decorations,
         );
 
         fold_on_first_map(&root, &widgets, &sender);
@@ -565,13 +538,6 @@ impl Component for Compose {
                 ComposeInput::Discard => self.on_discard(&sender),
 
                 ComposeInput::FocusField(field) => self.on_focus_field(field, widgets),
-
-                ComposeInput::ShowFields(on) => {
-                    self.fields_shown = on;
-                    widgets
-                        .fields_list
-                        .set_visible(!(self.compact && !self.windowed) || on);
-                }
 
                 ComposeInput::SetNarrow(narrow) => self.on_set_narrow(narrow, widgets, root),
 

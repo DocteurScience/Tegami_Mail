@@ -73,15 +73,6 @@ pub(crate) struct Compose {
     pub(super) template: bool,
     /// Stable id the app uses to track this composer across host moves.
     pub(super) compose_id: u32,
-    /// Currently shown as a standalone window (drives the toggle-button icon).
-    pub(super) windowed: bool,
-    pub(super) compact: bool,
-    /// Whether the inline header carries the window decorations (see
-    /// `ComposeInit::decorations`).
-    pub(super) decorations: bool,
-    /// A compact reply's field rows, revealed by the header button (#154)
-    /// or from the start by the preference.
-    pub(super) fields_shown: bool,
     /// The identity the message is sent from: an index into `accounts`,
     /// picked in the From button's Send from menu.
     pub(super) from_index: usize,

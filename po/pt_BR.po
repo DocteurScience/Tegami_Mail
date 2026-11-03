@@ -3441,9 +3441,6 @@ msgstr "Enviar"
 msgid "More actions"
 msgstr "Ações de deslize"
 
-msgid "Show From, To and Subject"
-msgstr "Mostrar De, Para e Assunto"
-
 msgid "Download password for {name}: {password}"
 msgstr "Senha de download de {name}: {password}"
 
@@ -7334,6 +7331,9 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Show From, To and Subject"
+#~ msgstr "Mostrar De, Para e Assunto"
 
 #~ msgid "Above the messages"
 #~ msgstr "Acima das mensagens"

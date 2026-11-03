@@ -256,7 +256,6 @@ impl AppModel {
         &mut self,
         account_id: u32,
         prefill: ComposePrefill,
-        windowed: bool,
     ) -> (u32, ComposeInit) {
         let accounts = compose_identities(
             &self.account_order,
@@ -288,9 +287,6 @@ impl AppModel {
             accounts,
             selected,
             own_addresses: own,
-            windowed,
-            compact: false,
-            decorations: true,
             format,
             signature_position: self.signature_position,
         };

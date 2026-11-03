@@ -3593,9 +3593,6 @@ msgstr "Отправить"
 msgid "More actions"
 msgstr "Действия свайпом"
 
-msgid "Show From, To and Subject"
-msgstr "Показать поля «От», «Кому» и «Тема»"
-
 msgid "Download password for {name}: {password}"
 msgstr "Пароль для скачивания {name}: {password}"
 
@@ -7583,6 +7580,9 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Show From, To and Subject"
+#~ msgstr "Показать поля «От», «Кому» и «Тема»"
 
 #~ msgid "Above the messages"
 #~ msgstr "Над сообщениями"

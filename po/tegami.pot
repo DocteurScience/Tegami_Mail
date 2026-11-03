@@ -3131,9 +3131,6 @@ msgstr ""
 msgid "More actions"
 msgstr ""
 
-msgid "Show From, To and Subject"
-msgstr ""
-
 msgid "Download password for {name}: {password}"
 msgstr ""
 

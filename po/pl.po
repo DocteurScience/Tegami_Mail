@@ -3628,9 +3628,6 @@ msgstr "Wyślij"
 msgid "More actions"
 msgstr "Gesty przesuwania"
 
-msgid "Show From, To and Subject"
-msgstr "Wyświetl pola „Od”, „Do” i „Temat”"
-
 msgid "Download password for {name}: {password}"
 msgstr "Hasło do pobrania pliku {name}: {password}"
 
@@ -7660,6 +7657,9 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Show From, To and Subject"
+#~ msgstr "Wyświetl pola „Od”, „Do” i „Temat”"
 
 #~ msgid "Above the messages"
 #~ msgstr "Nad wiadomościami"

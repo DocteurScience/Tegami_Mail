@@ -42,7 +42,7 @@ impl AppModel {
         prefill: ComposePrefill,
         sender: &ComponentSender<Self>,
     ) {
-        let (id, init) = self.build_compose_init(account_id, prefill, true);
+        let (id, init) = self.build_compose_init(account_id, prefill);
         let controller = self.spawn_compose(init, sender);
         let window = self.compose_window_host(controller.widget(), id, sender);
         controller.emit(ComposeInput::FocusInitial);

@@ -57,36 +57,22 @@ fn header_rows_width(header: &gtk::Widget) -> Option<i32> {
     Some(total)
 }
 
-/// Size the pane for its host. Both hosts impose a definite height now — the
-/// reader-covering overlay inline (it fills the whole pane), the window itself
-/// popped out — so the editor always expands to fill whatever it is given.
-/// Inline, the compose header also stands in for the reader's (which it
-/// covers, or tops), so it takes over the GNOME window decorations — unless
-/// `decorations` is off: a split reply beneath the reader leaves the reader's
-/// own header in place, and a second set of controls mid-pane would be wrong.
-/// In a window of its own the header has no close button: Cancel closes it,
+/// Size the pane for its window: the editor expands to fill whatever it is
+/// given, and the composer is drawn flat, rows parted by hairlines
+/// (docs/DESIGN.md, "Replying and composing"). The header has no close
+/// button: Cancel closes it,
 /// asking first about what was written (mockup 04; one action in one place,
 /// owner's decision in docs/SUIVI.md).
 pub(super) fn size_for_host(
     root: &adw::ToolbarView,
     header: &adw::HeaderBar,
     editor_holder: &gtk::Box,
-    windowed: bool,
-    decorations: bool,
 ) {
     root.set_vexpand(true);
     editor_holder.set_vexpand(true);
     editor_holder.set_height_request(-1);
-    header.set_show_end_title_buttons(!windowed && decorations);
-    // In a window the composer is drawn flat, rows parted by hairlines
-    // (docs/DESIGN.md, "Replying and composing"). Inline it keeps its
-    // cards: it sits among the conversation's cards, and a sent reply's
-    // editor card turns into one of them (send_morph.rs).
-    if windowed {
-        root.add_css_class("compose-windowed");
-    } else {
-        root.remove_css_class("compose-windowed");
-    }
+    header.set_show_end_title_buttons(false);
+    root.add_css_class("compose-windowed");
 }
 
 /// Save the edited message, discard it, or go back to it. Escape answers
@@ -203,11 +189,6 @@ impl Compose {
 
     /// Handles [`ComposeInput::FocusField`].
     pub(super) fn on_focus_field(&mut self, field: Field, widgets: &ComposeWidgets) {
-        if !widgets.fields_list.is_visible() {
-            // The chevron's toggle sends ShowFields, which records it.
-            widgets.fields_btn.set_active(true);
-            widgets.fields_list.set_visible(true);
-        }
         let row = field_row(widgets, field);
         row.set_visible(true);
         row.grab_focus();
@@ -369,14 +350,6 @@ impl Compose {
         // Reply-To (#58) is rare enough to always start hidden behind "Cc / Bcc".
         widgets.reply_to_row.set_visible(false);
         widgets.subject_row.set_visible(true);
-        // Compact split reply: only the editor shows; the full field rows
-        // return when the composer pops out to a window. Never for a pane
-        // that arrives unaddressed — a forward — which needs its To row
-        // (#139).
-        widgets
-            .fields_list
-            .set_visible(!self.compact || self.fields_shown);
-        widgets.fields_btn.set_active(self.fields_shown);
         {
             // "Cc / Bcc", the design's name for it (docs/DESIGN.md,
             // "Replying and composing"): it says what it adds where "More"
@@ -484,16 +457,8 @@ fn keep_hidden(row: &gtk::Widget, class: &str) {
 }
 
 /// How many quoted messages a composer's conversation history shows at
-/// first: two in a window of its own, as the design draws it; one, the
-/// message replied to, in the reading pane, where the conversation is in
-/// view right below (owner's decision, docs/SUIVI.md, 2026-11-02).
-pub(super) fn history_levels(windowed: bool) -> u32 {
-    if windowed {
-        2
-    } else {
-        1
-    }
-}
+/// first: two, as the design draws it (mockup 05).
+pub(super) const HISTORY_LEVELS: u32 = 2;
 
 pub(super) fn fold_on_first_map(
     root: &adw::BreakpointBin,

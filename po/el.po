@@ -3495,9 +3495,6 @@ msgstr "Αποστολή"
 msgid "More actions"
 msgstr "Ενέργειες σάρωσης"
 
-msgid "Show From, To and Subject"
-msgstr "Εμφάνιση Από, Προς και Θέμα"
-
 msgid "Download password for {name}: {password}"
 msgstr "Κωδικός λήψης για {name}: {password}"
 
@@ -7446,6 +7443,9 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Show From, To and Subject"
+#~ msgstr "Εμφάνιση Από, Προς και Θέμα"
 
 #~ msgid "Above the messages"
 #~ msgstr "Πάνω από τα μηνύματα"
