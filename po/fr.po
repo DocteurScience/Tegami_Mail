@@ -82,9 +82,8 @@ msgstr "Impossible d’enregistrer le compte : {e}"
 msgid "Could not import account: {e}"
 msgstr "Impossible d’importer le compte : {e}"
 
-#, fuzzy
 msgid "On This Computer is switched off"
-msgstr "Sur cet ordinateur"
+msgstr "« Sur cet ordinateur » est désactivé"
 
 msgid "Delete the attachment from the server?"
 msgstr "Supprimer la pièce jointe du serveur ?"
@@ -187,7 +186,7 @@ msgid "Archive"
 msgstr "Archiver"
 
 msgid "Snooze"
-msgstr ""
+msgstr "Reporter"
 
 msgid "Block remote content"
 msgstr "Bloquer le contenu distant"
@@ -664,25 +663,20 @@ msgstr "Non lus en premier"
 msgid "Starred first"
 msgstr "Favoris en premier"
 
-#, fuzzy
 msgid "Clear dates"
-msgstr "Effacer les filtres"
+msgstr "Effacer les dates"
 
-#, fuzzy
 msgid "Any date"
-msgstr "Date"
+msgstr "N’importe quelle date"
 
-#, fuzzy
 msgid "{from} to {to}"
-msgstr "transfère à {to}"
+msgstr "Du {from} au {to}"
 
-#, fuzzy
 msgid "Since {date}"
-msgstr "expire le {date}"
+msgstr "Depuis le {date}"
 
-#, fuzzy
 msgid "Until {date}"
-msgstr "expire le {date}"
+msgstr "Jusqu’au {date}"
 
 msgid "Sort by"
 msgstr "Trier par"
@@ -705,9 +699,8 @@ msgstr "Afficher uniquement"
 msgid "Clear filters"
 msgstr "Effacer les filtres"
 
-#, fuzzy
 msgid "Dates"
-msgstr "Date"
+msgstr "Dates"
 
 msgid "From"
 msgstr "De"
@@ -746,11 +739,10 @@ msgstr "Actions"
 msgid "Refresh or long-press for Status Bar"
 msgstr "Actualiser ou appuyer longuement pour la barre d’état"
 
-#, fuzzy
 msgid "Copying one message to On This Computer…"
 msgid_plural "Copying {n} messages to On This Computer…"
-msgstr[0] "Déplacement d’un message vers {account}…"
-msgstr[1] "Déplacement de {n} messages vers {account}…"
+msgstr[0] "Copie d’un message dans « Sur cet ordinateur »…"
+msgstr[1] "Copie de {n} messages dans « Sur cet ordinateur »…"
 
 msgid "Sending message…"
 msgstr "Envoi du message…"
@@ -779,9 +771,8 @@ msgstr "Ouvrir le message sélectionné"
 msgid "Back to the message list"
 msgstr "Retour à la liste des messages"
 
-#, fuzzy
 msgid "Open or fold a conversation in the list"
-msgstr "Fermer la conversation et revenir à la liste"
+msgstr "Ouvrir ou replier une conversation dans la liste"
 
 msgid "Next message in the conversation"
 msgstr "Message suivant dans la conversation"
@@ -886,7 +877,7 @@ msgid "Fullscreen on or off"
 msgstr "Activer ou désactiver le mode plein écran"
 
 msgid "Reading pane right of the list, below it, or off"
-msgstr ""
+msgstr "Volet de lecture à droite de la liste, en dessous, ou masqué"
 
 msgid "Message zoom in or out"
 msgstr "Zoom avant ou arrière sur le message"
@@ -1037,17 +1028,14 @@ msgstr "Rechercher des messages"
 msgid "Show or hide the sidebar"
 msgstr "Afficher ou masquer la barre latérale"
 
-#, fuzzy
 msgid "Reading pane right"
-msgstr "Lecture"
+msgstr "Volet de lecture à droite"
 
-#, fuzzy
 msgid "Reading pane below"
-msgstr "Lecture"
+msgstr "Volet de lecture en bas"
 
-#, fuzzy
 msgid "Reading pane off"
-msgstr "Lecture"
+msgstr "Sans volet de lecture"
 
 msgid "Mail accounts"
 msgstr "Comptes e-mail"
@@ -1113,20 +1101,17 @@ msgstr "(sans objet)"
 msgid "Message source"
 msgstr "Code source du message"
 
-#, fuzzy
 msgid "Forwarded message"
-msgstr "Transférer ce message"
+msgstr "Message transféré"
 
 msgid "From: {from}"
 msgstr "De : {from}"
 
-#, fuzzy
 msgid "Date: {date}"
-msgstr "expire le {date}"
+msgstr "Date : {date}"
 
-#, fuzzy
 msgid "Subject: {subject}"
-msgstr "Accepté : {subject}"
+msgstr "Objet : {subject}"
 
 msgid "Export failed: {e}"
 msgstr "Échec de l’exportation : {e}"
@@ -1215,25 +1200,23 @@ msgid "Customize toolbar…"
 msgstr "Personnaliser la barre d’outils…"
 
 msgid "Read receipt"
-msgstr ""
+msgstr "Accusé de réception"
 
-#, fuzzy
 msgid "Read: {subject}"
-msgstr "Accepté : {subject}"
+msgstr "Lu : {subject}"
 
 msgid ""
 "This is a read receipt for the message sent to {to} on {date} with the "
 "subject \"{subject}\"."
-msgstr ""
+msgstr "Ceci est un accusé de réception pour le message envoyé à {to} le {date} avec l’objet « {subject} »."
 
 msgid ""
 "It means the message was shown on the recipient's screen, not that it was "
 "read or understood."
-msgstr ""
+msgstr "Il signifie que le message s’est affiché sur l’écran du destinataire, non qu’il a été lu ou compris."
 
-#, fuzzy
 msgid "Read by {reader}"
-msgstr "Adresse de réponse"
+msgstr "Lu par {reader}"
 
 msgid "Full release notes on GitHub"
 msgstr "Notes de version complètes sur GitHub"
@@ -1314,7 +1297,7 @@ msgstr ""
 "affiche restent là où ils sont."
 
 msgid "Snooze until"
-msgstr ""
+msgstr "Reporter jusqu’à"
 
 msgid "One message could not be moved to {account}: {error}"
 msgid_plural "{n} messages could not be moved to {account}: {error}"
@@ -1540,25 +1523,20 @@ msgstr "Date d’échéance"
 msgid "Date"
 msgstr "Date"
 
-#, fuzzy
 msgid "Newest messages"
-msgstr "Message le plus récent en premier"
+msgstr "Messages les plus récents"
 
-#, fuzzy
 msgid "Last week"
-msgstr "Nom"
+msgstr "La semaine dernière"
 
-#, fuzzy
 msgid "Last month"
-msgstr "Se répète chaque mois"
+msgstr "Le mois dernier"
 
-#, fuzzy
 msgid "Last year"
-msgstr "Nom"
+msgstr "L’année dernière"
 
-#, fuzzy
 msgid "All mail"
-msgstr "Ajouter une adresse e-mail"
+msgstr "Tout le courrier"
 
 msgid "With sent mail"
 msgstr "Avec le courrier envoyé"
@@ -1642,9 +1620,8 @@ msgstr[0] ""
 msgstr[1] ""
 "Un nouveau message avec {n} fichiers joints est ouvert dans Tegami Mail."
 
-#, fuzzy
 msgid "On {date} at {time}, {name} wrote:"
-msgstr "{date} à {time}"
+msgstr "Le {date} à {time}, {name} a écrit :"
 
 msgid "GnuPG (gpg) is not installed, so this message cannot be read."
 msgstr "GnuPG (gpg) n’est pas installé ; ce message ne peut donc pas être lu."
@@ -1874,16 +1851,14 @@ msgstr "En attente depuis {ago}"
 msgid "Scheduled for {when}"
 msgstr "Programmé pour {when}"
 
-#, fuzzy
 msgid "No read receipt yet"
-msgstr "Masquer les destinataires"
+msgstr "Pas encore d’accusé de réception"
 
 msgid "{who}, {when}"
-msgstr ""
+msgstr "{who}, {when}"
 
-#, fuzzy
 msgid "Read by {count} of {total}"
-msgstr "{name} · {current} sur {total}"
+msgstr "Lu par {count} sur {total}"
 
 msgid "Verified sender"
 msgstr "Expéditeur vérifié"
@@ -1981,115 +1956,95 @@ msgstr "Signature expirée"
 msgid "This message hasn't been checked."
 msgstr "Ce message n’a pas été vérifié."
 
-#, fuzzy
 msgid "Harper is not available for this computer."
-msgstr "Aucun dossier Modèles disponible pour ce compte"
+msgstr "Harper n’est pas disponible pour cet ordinateur."
 
 msgid "Harper is not downloaded. Download it in Settings → Composing."
-msgstr ""
+msgstr "Harper n’est pas téléchargé. Téléchargez-le dans Paramètres → Rédaction."
 
-#, fuzzy
 msgid "Harper could not be started: {e}"
-msgstr "Impossible de joindre le service : {e}"
+msgstr "Impossible de démarrer Harper : {e}"
 
-#, fuzzy
 msgid "Harper's answer could not be read."
-msgstr "La réponse du service n’a pas pu être lue."
+msgstr "La réponse de Harper n’a pas pu être lue."
 
-#, fuzzy
 msgid "There is no folder to install to."
-msgstr "Il n’y a aucun texte à traduire."
+msgstr "Il n’y a aucun dossier où l’installer."
 
 msgid "There is not enough free space: {size} is needed."
-msgstr ""
+msgstr "Il n’y a pas assez d’espace libre : il faut {size}."
 
-#, fuzzy
 msgid "The download could not start: {e}"
-msgstr "Impossible d’enregistrer le brouillon : {e}"
+msgstr "Le téléchargement n’a pas pu démarrer : {e}"
 
 msgid "The download was cancelled."
-msgstr ""
+msgstr "Le téléchargement a été annulé."
 
 msgid "The download stopped: {e}"
-msgstr ""
+msgstr "Le téléchargement s’est arrêté : {e}"
 
 msgid "The downloaded file is not the one expected, so it was not installed."
-msgstr ""
+msgstr "Le fichier téléchargé n’est pas celui attendu ; il n’a donc pas été installé."
 
-#, fuzzy
 msgid "The download could not be unpacked: {e}"
-msgstr "Impossible de joindre le service : {e}"
+msgstr "Le téléchargement n’a pas pu être décompressé : {e}"
 
-#, fuzzy
 msgid "The files could not be written: {e}"
-msgstr "Le fichier n’a pas pu être ouvert"
+msgstr "Les fichiers n’ont pas pu être écrits : {e}"
 
 msgid "{n} MB"
-msgstr ""
+msgstr "{n} Mo"
 
-#, fuzzy
 msgid "The server's answer could not be read."
-msgstr "La réponse du service n’a pas pu être lue."
+msgstr "La réponse du serveur n’a pas pu être lue."
 
 msgid "Nothing answers at that address. Check that the server is running."
-msgstr ""
+msgstr "Rien ne répond à cette adresse. Vérifiez que le serveur fonctionne."
 
-#, fuzzy
 msgid "The server's name could not be found."
-msgstr "La réponse du service n’a pas pu être lue."
+msgstr "Le nom du serveur est introuvable."
 
-#, fuzzy
 msgid "The server's address is not valid."
-msgstr "Indiquez l’adresse du serveur."
+msgstr "L’adresse du serveur n’est pas valide."
 
-#, fuzzy
 msgid "The server could not be reached: {e}"
-msgstr "Impossible de joindre le service : {e}"
+msgstr "Impossible de joindre le serveur : {e}"
 
-#, fuzzy
 msgid "The server did not accept the username and key."
-msgstr "Le serveur n’a pas accepté le nom d’utilisateur ou le mot de passe."
+msgstr "Le serveur n’a pas accepté le nom d’utilisateur et la clé."
 
-#, fuzzy
 msgid "The message is too long for the server."
-msgstr "Ce message est trop long pour être envoyé à la traduction."
+msgstr "Le message est trop long pour le serveur."
 
 msgid "Too many requests: try again in a moment."
 msgstr "Trop de requêtes : réessayez dans un instant."
 
-#, fuzzy
 msgid "The server refused the request (error {code})."
-msgstr "Le service a refusé la requête (erreur {code})."
+msgstr "Le serveur a refusé la requête (erreur {code})."
 
-#, fuzzy
 msgid "LanguageTool is not available for this computer."
-msgstr "Aucun dossier Brouillons disponible pour ce compte"
+msgstr "LanguageTool n’est pas disponible pour cet ordinateur."
 
 msgid "LanguageTool stopped unexpectedly."
-msgstr ""
+msgstr "LanguageTool s’est arrêté de façon inattendue."
 
 msgid "LanguageTool is not downloaded. Download it in Settings → Composing."
-msgstr ""
+msgstr "LanguageTool n’est pas téléchargé. Téléchargez-le dans Paramètres → Rédaction."
 
-#, fuzzy
 msgid "LanguageTool could not be started: {e}"
-msgstr "Impossible de joindre le service : {e}"
+msgstr "Impossible de démarrer LanguageTool : {e}"
 
 msgid "LanguageTool could not be started."
-msgstr ""
+msgstr "Impossible de démarrer LanguageTool."
 
-#, fuzzy
 msgid "LanguageTool took too long to start."
-msgstr "Le serveur a mis trop de temps à répondre."
+msgstr "LanguageTool a mis trop de temps à démarrer."
 
-#, fuzzy
 msgid "Enter the LanguageTool server's address in Settings → Composing."
-msgstr ""
-"Saisissez l’adresse du serveur LibreTranslate dans Paramètres → Traduction."
+msgstr "Saisissez l’adresse du serveur LanguageTool dans Paramètres → Rédaction."
 
-#, fuzzy
 msgid "Enter the server's address first."
-msgstr "Indiquez l’adresse du serveur."
+msgstr "Saisissez d’abord l’adresse du serveur."
 
 msgid ""
 "{reason} If your organization manages your account, an administrator can "
@@ -2446,13 +2401,11 @@ msgstr "Serveur d’arrivée"
 msgid "Port (IMAP 993 / POP3 995)"
 msgstr "Port (IMAP 993 / POP3 995)"
 
-#, fuzzy
 msgid "Import mbox files"
-msgstr "Importer le fichier…"
+msgstr "Importer des fichiers mbox"
 
-#, fuzzy
 msgid "Import maildir folders"
-msgstr "Échec de l’importation : {e}"
+msgstr "Importer des dossiers Maildir"
 
 msgid "Signed in as {address}, not {email}."
 msgstr "Connecté en tant que {address}, et non {email}."
@@ -2514,7 +2467,7 @@ msgstr "Rechercher de nouveaux comptes dans les Comptes en ligne de GNOME"
 msgid ""
 "Store mail in folders that live on this computer. Move or copy mail from any "
 "account to here."
-msgstr ""
+msgstr "Rangez le courrier dans des dossiers qui restent sur cet ordinateur. Déplacez ou copiez-y le courrier de n’importe quel compte."
 
 msgid "Add"
 msgstr "Ajouter"
@@ -2654,9 +2607,8 @@ msgstr "Proton Mail"
 msgid "Custom OAuth"
 msgstr "OAuth personnalisé"
 
-#, fuzzy
 msgid "Folders on this computer"
-msgstr "Tegami Mail, sur cet ordinateur"
+msgstr "Dossiers sur cet ordinateur"
 
 msgid "IMAP/POP3 account"
 msgstr "Compte IMAP/POP3"
@@ -2673,7 +2625,7 @@ msgstr "Saisissez un ID client et connectez-vous avant d’enregistrer"
 msgid ""
 "Remove {name} from Tegami Mail? Its folders and the mail in them stay on "
 "this computer, in {dir}, and come back if it is added again."
-msgstr ""
+msgstr "Retirer {name} de Tegami Mail ? Ses dossiers et le courrier qu’ils contiennent restent sur cet ordinateur, dans {dir}, et reviennent s’il est ajouté à nouveau."
 
 msgid "Edit HTML"
 msgstr "Modifier le HTML"
@@ -3226,7 +3178,7 @@ msgstr "Aucune mise en forme"
 msgid ""
 "Zoom of the text on screen, not of the message sent. A click here, or "
 "Ctrl+0, puts it back to 100%."
-msgstr ""
+msgstr "Zoom du texte à l’écran, pas du message envoyé. Un clic ici, ou Ctrl+0, le ramène à 100 %."
 
 msgid "Format"
 msgstr "Format"
@@ -3697,16 +3649,14 @@ msgstr "Enregistrer les nouveaux contacts dans"
 msgid "Unless another is picked when the contact is made."
 msgstr "Sauf si un autre est choisi lors de la création du contact."
 
-#, fuzzy
 msgid "In mail"
-msgstr "Courrier"
+msgstr "Dans les messages"
 
-#, fuzzy
 msgid "Show names from Contacts"
-msgstr "De mes contacts"
+msgstr "Afficher les noms des contacts"
 
 msgid "Saved addresses show the contact's name, not the mail's."
-msgstr ""
+msgstr "Les adresses enregistrées affichent le nom du contact, pas celui du message."
 
 msgid "Looking for address books on {name}…"
 msgstr "Recherche de carnets d’adresses sur {name}…"
@@ -3794,9 +3744,8 @@ msgid_plural "{n} messages"
 msgstr[0] "{n} message"
 msgstr[1] "{n} messages"
 
-#, fuzzy
 msgid "Later today ({time})"
-msgstr "Aujourd’hui, {time}"
+msgstr "Plus tard aujourd’hui ({time})"
 
 msgid "Tomorrow morning ({time})"
 msgstr "Demain matin ({time})"
@@ -3804,9 +3753,8 @@ msgstr "Demain matin ({time})"
 msgid "Tomorrow afternoon ({time})"
 msgstr "Demain après-midi ({time})"
 
-#, fuzzy
 msgid "Saturday morning ({time})"
-msgstr "Lundi matin ({time})"
+msgstr "Samedi matin ({time})"
 
 msgid "Monday morning ({time})"
 msgstr "Lundi matin ({time})"
@@ -3815,7 +3763,7 @@ msgid "Pick a date and time…"
 msgstr "Choisir une date et une heure…"
 
 msgid "Unsnooze"
-msgstr ""
+msgstr "Annuler le report"
 
 msgid "That time has passed"
 msgstr "Cette heure est déjà passée"
@@ -3873,13 +3821,11 @@ msgid "Clear selection"
 msgstr "Effacer la sélection"
 
 #. The scope button beside it says where it looks.
-#, fuzzy
 msgid "Search…"
-msgstr "Recherche…"
+msgstr "Rechercher…"
 
-#, fuzzy
 msgid "Searching the server…"
-msgstr "Recherche…"
+msgstr "Recherche sur le serveur…"
 
 msgid "Choose which folders to search"
 msgstr "Choisir les dossiers dans lesquels rechercher"
@@ -3960,9 +3906,8 @@ msgstr "Ajouter l’expéditeur aux contacts"
 msgid "Forwarded"
 msgstr "Transféré"
 
-#, fuzzy
 msgid "Snoozed until {when}"
-msgstr "Programmé pour {when}"
+msgstr "Reporté jusqu’à {when}"
 
 msgid "Low importance"
 msgstr "Importance basse"
@@ -4054,9 +3999,8 @@ msgstr "Afficher le texte cité"
 msgid "Hide quoted text"
 msgstr "Masquer le texte cité"
 
-#, fuzzy
 msgid "Copy address"
-msgstr "Copier l’adresse du lien"
+msgstr "Copier l’adresse"
 
 msgid "Add to contacts"
 msgstr "Ajouter aux contacts"
@@ -4290,23 +4234,22 @@ msgid "Message"
 msgstr "Message"
 
 msgid "{name} asked for a read receipt."
-msgstr ""
+msgstr "{name} a demandé un accusé de réception."
 
 msgid "{name} asked for a read receipt, to be sent to {addr}."
-msgstr ""
+msgstr "{name} a demandé un accusé de réception, à envoyer à {addr}."
 
 msgid "Send receipt"
-msgstr ""
+msgstr "Envoyer l’accusé"
 
-#, fuzzy
 msgid "Tells the sender you opened this message"
-msgstr "Répondre à tous sur ce message"
+msgstr "Indique à l’expéditeur que vous avez ouvert ce message"
 
 msgid "Ignore"
-msgstr ""
+msgstr "Ignorer"
 
 msgid "Sends nothing and stops asking"
-msgstr ""
+msgstr "N’envoie rien et ne demande plus"
 
 msgid "Copied"
 msgstr "Copié"
@@ -4442,17 +4385,14 @@ msgstr ""
 msgid "Status bar ({n})"
 msgstr "Barre d’état ({n})"
 
-#, fuzzy
 msgid "All keys"
-msgstr "Tous les types"
+msgstr "Toutes les clés"
 
-#, fuzzy
 msgid "Not trusted"
-msgstr "Confiance non établie"
+msgstr "Non fiable"
 
-#, fuzzy
 msgid "Expired or revoked"
-msgstr "Signé, clé révoquée"
+msgstr "Expirée ou révoquée"
 
 msgid "expires {date}"
 msgstr "expire le {date}"
@@ -4530,7 +4470,7 @@ msgid "Fetch by address…"
 msgstr "Récupérer par adresse…"
 
 msgid "Search by name, address or key ID"
-msgstr ""
+msgstr "Rechercher par nom, adresse ou identifiant de clé"
 
 msgid "No keys from other people yet."
 msgstr "Aucune clé provenant d’autres personnes pour le moment."
@@ -4689,9 +4629,8 @@ msgstr "Toujours affiché · jusqu’à {n}"
 msgid "Right group"
 msgstr "Groupe de droite"
 
-#, fuzzy
 msgid "Folds into ⋯ when narrow"
-msgstr "Se plie en ⋯ lorsqu’il est étroit · jusqu’à 6"
+msgstr "Se replie dans ⋯ quand la place manque"
 
 msgid "Not shown"
 msgstr "Non affiché"
@@ -4781,75 +4720,65 @@ msgstr "Balançoire"
 msgid "Custom file"
 msgstr "Fichier personnalisé"
 
-#, fuzzy
 msgid "Downloading: {done} of {total}"
-msgstr "Dossier {done} sur {total}"
+msgstr "Téléchargement : {done} sur {total}"
 
-#, fuzzy
 msgid "Not available for this computer."
-msgstr "Aucun dossier Brouillons disponible pour ce compte"
+msgstr "Non disponible pour cet ordinateur."
 
-#, fuzzy
 msgid "Version {version}, on this computer."
-msgstr "Tegami Mail, sur cet ordinateur"
+msgstr "Version {version}, sur cet ordinateur."
 
 msgid "Not downloaded yet. The download is {size}."
-msgstr ""
+msgstr "Pas encore téléchargé. Le téléchargement fait {size}."
 
-#, fuzzy
 msgid "The files could not be removed."
-msgstr "Le fichier n’a pas pu être ouvert"
+msgstr "Les fichiers n’ont pas pu être supprimés."
 
 msgid "The download stopped unexpectedly."
-msgstr ""
+msgstr "Le téléchargement s’est arrêté de façon inattendue."
 
 msgid "Grammar"
-msgstr ""
+msgstr "Grammaire"
 
 msgid "Check grammar and style"
-msgstr ""
+msgstr "Vérifier la grammaire et le style"
 
-#, fuzzy
 msgid "Right-click a marked phrase for suggestions."
-msgstr "Faites un clic droit sur un mot pour voir les corrections."
+msgstr "Faites un clic droit sur un passage souligné pour voir les suggestions."
 
-#, fuzzy
 msgid "Checker"
-msgstr "Vérifier"
+msgstr "Correcteur"
 
 msgid "Harper"
-msgstr ""
+msgstr "Harper"
 
-#, fuzzy
 msgid "LanguageTool"
-msgstr "Langue"
+msgstr "LanguageTool"
 
-#, fuzzy
 msgid "LanguageTool server"
-msgstr "Langues"
+msgstr "Serveur LanguageTool"
 
 msgid "English only. Nothing leaves this computer."
-msgstr ""
+msgstr "Anglais seulement. Rien ne quitte cet ordinateur."
 
 msgid "Multi-language support. Nothing leaves this computer. Uses 1GB of RAM"
-msgstr ""
+msgstr "Plusieurs langues. Rien ne quitte cet ordinateur. Utilise 1 Go de mémoire vive"
 
-#, fuzzy
 msgid "What you write is sent to the server as you type."
-msgstr "Ce dossier n’existe pas sur le serveur"
+msgstr "Ce que vous écrivez est envoyé au serveur au fil de la frappe."
 
 msgid "Username (LanguageTool Premium)"
-msgstr ""
+msgstr "Nom d’utilisateur (LanguageTool Premium)"
 
 msgid "API key (LanguageTool Premium)"
-msgstr ""
+msgstr "Clé d’API (LanguageTool Premium)"
 
 msgid "Check the settings"
 msgstr "Vérifier les paramètres"
 
-#, fuzzy
 msgid "Sends a test sentence to the server."
-msgstr "Impossible de se connecter au serveur."
+msgstr "Envoie une phrase de test au serveur."
 
 msgid "Check"
 msgstr "Vérifier"
@@ -4858,10 +4787,10 @@ msgid "Checking…"
 msgstr "Vérification…"
 
 msgid "The check stopped unexpectedly."
-msgstr ""
+msgstr "La vérification s’est arrêtée de façon inattendue."
 
 msgid "It works: {server} answered."
-msgstr ""
+msgstr "Ça fonctionne : {server} a répondu."
 
 msgid "Messages already read"
 msgstr "Messages déjà lus"
@@ -4908,9 +4837,8 @@ msgstr "Système par défaut"
 msgid "Account of the current folder"
 msgstr "Compte du dossier actuel"
 
-#, fuzzy
 msgid "Same as reading pane zoom"
-msgstr "Dans le volet de lecture."
+msgstr "Comme le zoom du volet de lecture"
 
 msgid "Above the quoted message"
 msgstr "Au-dessus du message cité"
@@ -5186,12 +5114,11 @@ msgstr ""
 msgid "Show sender and subject"
 msgstr "Afficher l’expéditeur et l’objet"
 
-#, fuzzy
 msgid "Read receipts"
-msgstr "Masquer les destinataires"
+msgstr "Accusés de réception"
 
 msgid "When someone opens mail you asked a receipt for."
-msgstr ""
+msgstr "Quand quelqu’un ouvre un message pour lequel vous avez demandé un accusé."
 
 msgid "Sound for new mail"
 msgstr "Son pour les nouveaux messages"
@@ -5334,10 +5261,10 @@ msgstr ""
 "Le contenu distant peut indiquer à un expéditeur quand et où vous lisez."
 
 msgid "Pre-load remote content for the next messages"
-msgstr ""
+msgstr "Précharger le contenu distant des messages suivants"
 
 msgid "Their senders can tell they were opened."
-msgstr ""
+msgstr "Leurs expéditeurs peuvent savoir qu’ils ont été ouverts."
 
 msgid "Warn when remote content is blocked"
 msgstr "Avertir lorsque le contenu distant est bloqué"
@@ -5370,12 +5297,11 @@ msgstr ""
 "La plupart sont récupérés depuis le domaine de l’expéditeur, qui apprend "
 "ainsi votre adresse IP."
 
-#, fuzzy
 msgid "Send read receipts"
-msgstr "Masquer les destinataires"
+msgstr "Envoyer des accusés de réception"
 
 msgid "A receipt tells the sender when you opened the message."
-msgstr ""
+msgstr "Un accusé indique à l’expéditeur quand vous avez ouvert le message."
 
 msgid "Open at startup"
 msgstr "Ouvrir au démarrage"
@@ -5583,10 +5509,10 @@ msgid "Monospace"
 msgstr "Monospace"
 
 msgid "Grammar check failed: {error}"
-msgstr ""
+msgstr "Échec de la vérification grammaticale : {error}"
 
 msgid "No suggestions"
-msgstr ""
+msgstr "Aucune suggestion"
 
 msgid "Normal"
 msgstr "Normal"
@@ -6274,41 +6200,34 @@ msgid "Could not reach the JMAP server: {e}"
 msgstr "Impossible de contacter le serveur JMAP : {e}"
 
 msgid "Mail on this computer is not sent, and has no drafts"
-msgstr ""
+msgstr "Le courrier sur cet ordinateur n’est pas envoyé et n’a pas de brouillons"
 
 msgid "Mail is not sent from On This Computer: choose another From address"
-msgstr ""
+msgstr "Aucun courrier n’est envoyé depuis « Sur cet ordinateur » : choisissez une autre adresse d’expéditeur"
 
-#, fuzzy
 msgid "Could not import {path}: {e}"
-msgstr "Impossible d’importer : {e}"
+msgstr "Impossible d’importer {path} : {e}"
 
-#, fuzzy
 msgid "Importing {done} of {total} messages…"
-msgstr "Dossier {done} sur {total}"
+msgstr "Importation de {done} messages sur {total}…"
 
-#, fuzzy
 msgid "A folder by that name already exists"
-msgstr "Un dossier nommé {new_name} existe déjà."
+msgstr "Un dossier porte déjà ce nom"
 
 msgid "The folder still holds mail"
-msgstr ""
+msgstr "Le dossier contient encore du courrier"
 
-#, fuzzy
 msgid "That is not a folder name"
-msgstr "Ce dossier"
+msgstr "Ce n’est pas un nom de dossier valide"
 
-#, fuzzy
 msgid "Could not store the message: {e}"
 msgstr "Impossible d’enregistrer le message : {e}"
 
-#, fuzzy
 msgid "Could not open the folders on this computer: {e}"
-msgstr "Impossible de vider le dossier : {e}"
+msgstr "Impossible d’ouvrir les dossiers sur cet ordinateur : {e}"
 
-#, fuzzy
 msgid "Reading {n} messages…"
-msgstr "Indexation de {n} messages…"
+msgstr "Lecture de {n} messages…"
 
 #. Nothing failed: the message waits for the network, which the
 #. Refresh button already shows is down (#442).
@@ -6621,48 +6540,42 @@ msgstr ""
 "favoris."
 
 msgid "Keep mail cached"
-msgstr ""
+msgstr "Garder le courrier en cache"
 
 msgid "Leaves out Trash, Junk and Drafts."
-msgstr ""
+msgstr "Sans la corbeille, les indésirables ni les brouillons."
 
-#, fuzzy
 msgid "Include attachments"
-msgstr "Aucune pièce jointe"
+msgstr "Inclure les pièces jointes"
 
 msgid "Can consume a lot of hard drive space."
-msgstr ""
+msgstr "Peut occuper beaucoup d’espace disque."
 
-#, fuzzy
 msgid "Copy mail to On This Computer"
-msgstr "Sur cet ordinateur"
+msgstr "Copier le courrier dans « Sur cet ordinateur »"
 
 msgid ""
 "Downloads copies of every message from every folder of this account to this "
 "computer (except Trash, Junk and Drafts) and stores them in On This Computer."
-msgstr ""
+msgstr "Télécharge une copie de chaque message de chaque dossier de ce compte sur cet ordinateur (sauf la corbeille, les indésirables et les brouillons) et la range dans « Sur cet ordinateur »."
 
-#, fuzzy
 msgid "Import"
-msgstr "Importer…"
+msgstr "Importer"
 
 msgid "Mail already here is not imported again."
-msgstr ""
+msgstr "Le courrier déjà présent n’est pas importé à nouveau."
 
-#, fuzzy
 msgid "Maildir folders"
-msgstr "Tous les dossiers"
+msgstr "Dossiers Maildir"
 
 msgid "Evolution's On This Computer, Dovecot and other Maildir trees."
-msgstr ""
+msgstr "« Sur cet ordinateur » d’Evolution, Dovecot et autres arborescences Maildir."
 
-#, fuzzy
 msgid "Mbox files"
-msgstr "Tous les fichiers"
+msgstr "Fichiers mbox"
 
-#, fuzzy
 msgid "Thunderbird's folders and other mbox files."
-msgstr "Les dossiers sous la ligne Filtres."
+msgstr "Les dossiers de Thunderbird et autres fichiers mbox."
 
 msgid "Microsoft 365"
 msgstr "Microsoft 365"
@@ -6718,7 +6631,7 @@ msgid "Templates"
 msgstr "Modèles"
 
 msgid "Snoozed"
-msgstr ""
+msgstr "Reportés"
 
 msgid "Hidden folders"
 msgstr "Dossiers masqués"
@@ -6832,7 +6745,7 @@ msgstr ""
 "dans ⋯ lorsque le volet est étroit."
 
 msgid "Always fold the right group into ⋯"
-msgstr ""
+msgstr "Toujours replier le groupe de droite dans ⋯"
 
 msgid "Compose in the main window"
 msgstr "Rédiger dans la fenêtre principale"
@@ -6929,37 +6842,31 @@ msgid "How long Undo is offered after sending."
 msgstr "Durée pendant laquelle Annuler est proposé après l’envoi."
 
 msgid "Request read receipts"
-msgstr ""
+msgstr "Demander des accusés de réception"
 
-#, fuzzy
 msgid "Returned receipts"
-msgstr "Masquer les destinataires"
+msgstr "Accusés de réception reçus"
 
 msgid "Sent mail shows who read it; the receipt goes here."
-msgstr ""
+msgstr "Le courrier envoyé indique qui l’a lu ; l’accusé va ici."
 
-#, fuzzy
 msgid "Move to trash"
-msgstr "Déplacer les messages de listes de diffusion vers la Corbeille"
+msgstr "Placer dans la corbeille"
 
-#, fuzzy
 msgid "Keep in inbox"
 msgstr "Laisser dans la boîte de réception"
 
-#, fuzzy
 msgid "Reply header"
-msgstr "Adresse de réponse"
+msgstr "En-tête de réponse"
 
 msgid "{name}, {address}, {date} and {time} are filled in from the original."
-msgstr ""
+msgstr "{name}, {address}, {date} et {time} sont repris du message d’origine."
 
-#, fuzzy
 msgid "Line above the quoted message"
-msgstr "Au-dessus du message cité"
+msgstr "Ligne au-dessus du message cité"
 
-#, fuzzy
 msgid "Restore default"
-msgstr "Restaurer les paramètres par défaut"
+msgstr "Rétablir la valeur par défaut"
 
 msgid "Spelling"
 msgstr "Orthographe"
@@ -6986,12 +6893,11 @@ msgstr ""
 msgid "Message appearance"
 msgstr "Apparence du message"
 
-#, fuzzy
 msgid "Show account in message header"
-msgstr "Afficher le commutateur du mode Lecture dans l’en-tête du message"
+msgstr "Afficher le compte dans l’en-tête du message"
 
 msgid "The account a message is in, above its subject."
-msgstr ""
+msgstr "Le compte du message, au-dessus de son objet."
 
 msgid "Ctrl+0 returns to the default."
 msgstr "Ctrl+0 revient à la valeur par défaut."
@@ -7160,7 +7066,7 @@ msgid "Keep downloaded mail"
 msgstr "Conserver le courrier téléchargé"
 
 msgid "Mail inside an account's offline period is kept."
-msgstr ""
+msgstr "Le courrier compris dans la période hors ligne d’un compte est conservé."
 
 msgid "GNOME Files integration"
 msgstr "Intégration avec Fichiers de GNOME"

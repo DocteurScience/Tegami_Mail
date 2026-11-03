@@ -236,12 +236,26 @@ DESIGN.md demande la casse de phrase : à décider globalement.
    (lecture par `parse_recipients`, écriture par `format_recipient`) et
    adresse cliquée dans le lecteur (nom du contact ou de la conversation).
 
+## Fait le 2026-11-03 (suite)
+
+- `2065f1f` mode Concentration retiré entièrement (décision du
+  propriétaire) ; `5afe82f` les boutons des en-têtes, que son
+  synchroniseur ouvrait au lancement, démarrent ouverts.
+- `adb4bbf` dates courtes dans la liste (maquette 01) : heure, « Hier »,
+  jour de la semaine, jour et mois, année si autre année.
+- Catalogue français complet : les 93 entrées « fuzzy » relues (beaucoup
+  étaient fausses) et les 61 chaînes manquantes traduites.
+
 ## Reste à faire (connu)
+
+- Nettoyage : les boutons des en-têtes restent dans des revealers
+  (`focus-fade`) qui ne servent plus à rien depuis le retrait du mode
+  Concentration ; `push_list_look(animate)` et le masquage du sujet
+  dans la liste aussi.
 
 - Section Étiquettes de la barre latérale ouverte par défaut (les valeurs
   par défaut de `sidebar.toml` valent pour toutes les sections ; un test
   fige ce comportement).
 - Vérifier contraste élevé et mode sombre sur une vraie session GNOME.
-- Environ 100 traductions françaises « fuzzy » héritées de Hylki.
 - Questions ouvertes de DESIGN.md (icônes symboliques, version sombre des
   écrans).
