@@ -109,7 +109,7 @@ impl AppearancePage {
                         set_spacing: 12,
 
                         gtk::Button {
-                            set_label: &i18n("Restore Defaults"),
+                            set_label: &i18n("Restore defaults"),
                             set_halign: gtk::Align::End,
                             set_valign: gtk::Align::Center,
                             connect_clicked => PrefInput::ToolbarRestore,
@@ -135,7 +135,7 @@ impl AppearancePage {
                 // Focus Mode: the master switch and its parts.
                 // Every row applies at once, animated.
                 add = &adw::PreferencesGroup {
-                    set_title: &i18n("Focus Mode"),
+                    set_title: &i18n("Focus mode"),
                     set_description: Some(
                         &i18n("The parts switched on below hide while Focus Mode is on. Activated by Ctrl+Shift+F or the main menu."),
                     ),
@@ -144,7 +144,7 @@ impl AppearancePage {
                     adw::SwitchRow {
                         // Kept current by update_view.
                         set_active: model.focus.enabled,
-                        set_title: &i18n("Focus Mode"),
+                        set_title: &i18n("Focus mode"),
                         connect_active_notify[sender] => move |row| {
                             sender.input(PrefInput::ToggleFocus(crate::config::FocusPart::Enabled, row.is_active()));
                         },
@@ -153,7 +153,7 @@ impl AppearancePage {
                     adw::SwitchRow {
                         // Kept current by update_view.
                         set_active: model.focus.start_focused,
-                        set_title: &i18n("Start in Focus Mode"),
+                        set_title: &i18n("Start in focus mode"),
                         connect_active_notify[sender] => move |row| {
                             sender.input(PrefInput::ToggleFocus(crate::config::FocusPart::StartFocused, row.is_active()));
                         },

@@ -26,7 +26,7 @@ pub(super) fn font_label(family: &str) -> String {
 /// mail programs offer, each with fallbacks for a system without it. Their
 /// names are not translated.
 pub(super) const FONTS: &[(&str, &str, &str)] = &[
-    ("sans-serif", "sans-serif", i18n_noop("Sans Serif")),
+    ("sans-serif", "sans-serif", i18n_noop("Sans serif")),
     ("serif", "serif", i18n_noop("Serif")),
     ("monospace", "monospace", i18n_noop("Monospace")),
     ("arial", "Arial, Helvetica, sans-serif", "Arial"),

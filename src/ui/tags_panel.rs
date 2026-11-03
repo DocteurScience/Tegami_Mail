@@ -162,8 +162,8 @@ pub(crate) fn show(
     content.append(&list);
 
     content.append(&gtk::Separator::new(gtk::Orientation::Horizontal));
-    let new_tag = menu_button(&i18n("New Tag…"));
-    let manage = menu_button(&i18n("Manage Tags…"));
+    let new_tag = menu_button(&i18n("New tag…"));
+    let manage = menu_button(&i18n("Manage tags…"));
     content.append(&new_tag);
     content.append(&manage);
     popover.set_child(Some(&content));

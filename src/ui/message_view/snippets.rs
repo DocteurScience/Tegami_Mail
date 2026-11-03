@@ -25,12 +25,12 @@ pub(super) fn template_row_html(key: (u32, u32)) -> String {
         escape_html(&i18n("This message is a template.")),
         button(
             "edit",
-            &i18n("Edit Template"),
+            &i18n("Edit template"),
             &i18n("Change the template itself")
         ),
         button(
             "use",
-            &i18n("Use Template"),
+            &i18n("Use template"),
             &i18n("Start a new message from a copy of the template")
         ),
     )
@@ -91,7 +91,7 @@ pub(super) fn att_chips_html(key: (u32, u32), atts: &[CardAttachment]) -> String
             &[("size", &crate::models::human_size(total))]
         )),
         dl = inline_icon_svg("folder-download-symbolic"),
-        save_all = escape_html(&i18n("Save All\u{2026}")),
+        save_all = escape_html(&i18n("Save all\u{2026}")),
     );
     for (idx, a) in atts.iter().enumerate() {
         let warning = if is_executable(&a.name) {
@@ -129,7 +129,7 @@ pub(super) fn att_chips_html(key: (u32, u32), atts: &[CardAttachment]) -> String
             name = escape_html(&a.name),
             kind = escape_html(&type_label(&a.name)),
             size = crate::models::human_size(a.size),
-            save = attr(i18n("Save As\u{2026}")),
+            save = attr(i18n("Save as\u{2026}")),
             dl = inline_icon_svg("folder-download-symbolic"),
             more = attr(i18n("More actions")),
             dots = inline_icon_svg("view-more-horizontal-symbolic"),

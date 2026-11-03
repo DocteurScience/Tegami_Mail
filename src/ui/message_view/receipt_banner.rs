@@ -85,7 +85,7 @@ impl MessageView {
             escape_html(&text),
             button(
                 "send",
-                &i18n("Send Receipt"),
+                &i18n("Send receipt"),
                 &i18n("Tells the sender you opened this message")
             ),
             button(

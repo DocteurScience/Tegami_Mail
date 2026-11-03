@@ -23,7 +23,7 @@ pub(super) fn folder_sort_menu(
         .selected(own == sort)
     };
     let follow = i18n_f(
-        "Follow Settings: {sort}",
+        "Follow settings: {sort}",
         &[("sort", &section.default_folder_sort.label())],
     );
     let mut sections = vec![
@@ -36,7 +36,7 @@ pub(super) fn folder_sort_menu(
     if !section.folder_order.is_empty() {
         let s = sender.clone();
         sections.push(vec![MenuEntry::new(
-            i18n("Reset Folder Order"),
+            i18n("Reset folder order"),
             move || {
                 let _ = s.output(SidebarOutput::Context(CtxAction::ResetFolderOrder(id)));
             },
@@ -60,14 +60,14 @@ pub(super) fn folder_menu_items(
     let custom = f.kind == FolderKind::Custom;
     let first = vec![
         (
-            i18n_noop("Mark All as Read"),
+            i18n_noop("Mark all as read"),
             CtxAction::MarkFolderRead {
                 account_id: id,
                 folder_id: f.id,
             },
         ),
         (
-            i18n_noop("Sync This Folder"),
+            i18n_noop("Sync this folder"),
             CtxAction::RefreshFolder {
                 account_id: id,
                 folder_id: f.id,
@@ -79,7 +79,7 @@ pub(super) fn folder_menu_items(
     // can hold others; Snoozed is mail on its way back.
     if !matches!(f.kind, FolderKind::Starred | FolderKind::Snoozed) {
         shape.push((
-            i18n_noop("New Subfolder…"),
+            i18n_noop("New subfolder…"),
             CtxAction::NewSubfolder {
                 account_id: id,
                 parent: f.path.clone(),
@@ -101,7 +101,7 @@ pub(super) fn folder_menu_items(
     // Favorites (#367): any folder can be kept at the top of the sidebar.
     more.push(if favorite {
         (
-            i18n_noop("Remove from Favorites"),
+            i18n_noop("Remove from favorites"),
             CtxAction::RemoveFavorite {
                 account_id: id,
                 path: f.path.clone(),
@@ -109,7 +109,7 @@ pub(super) fn folder_menu_items(
         )
     } else {
         (
-            i18n_noop("Add to Favorites"),
+            i18n_noop("Add to favorites"),
             CtxAction::AddFavorite {
                 account_id: id,
                 path: f.path.clone(),
@@ -132,7 +132,7 @@ pub(super) fn folder_menu_items(
     );
     if has_filters && filterable {
         more.push((
-            i18n_noop("Apply Filters"),
+            i18n_noop("Apply filters"),
             CtxAction::ApplyFilters {
                 account_id: id,
                 folder_id: f.id,
@@ -142,7 +142,7 @@ pub(super) fn folder_menu_items(
     // A filter files into this folder: its rule is a click away.
     if filtered {
         more.push((
-            i18n_noop("Edit Filter…"),
+            i18n_noop("Edit filter…"),
             CtxAction::EditFilter {
                 account_id: id,
                 path: f.path.clone(),
@@ -153,7 +153,7 @@ pub(super) fn folder_menu_items(
     // would still be where mail is filed to.
     if custom {
         more.push((
-            i18n_noop("Hide Folder"),
+            i18n_noop("Hide folder"),
             CtxAction::HideFolder {
                 account_id: id,
                 path: f.path.clone(),
@@ -162,8 +162,8 @@ pub(super) fn folder_menu_items(
     }
     // Trash and Junk can be emptied outright (#152).
     let empty_label = match f.kind {
-        FolderKind::Trash => Some(i18n_noop("Empty Trash…")),
-        FolderKind::Junk => Some(i18n_noop("Empty Junk…")),
+        FolderKind::Trash => Some(i18n_noop("Empty trash…")),
+        FolderKind::Junk => Some(i18n_noop("Empty junk…")),
         _ => None,
     };
     if let Some(label) = empty_label {
@@ -180,7 +180,7 @@ pub(super) fn folder_menu_items(
     let mut sections = vec![first, shape, more];
     if custom {
         sections.push(vec![(
-            i18n_noop("Delete Folder"),
+            i18n_noop("Delete folder"),
             CtxAction::DeleteFolder {
                 account_id: id,
                 name: f.name.clone(),
@@ -211,7 +211,7 @@ pub(super) fn attach_tag_context_menu(
                 &list_w,
                 x,
                 y,
-                vec![(i18n_noop("Edit Tag…"), CtxAction::EditTag(k.clone()))],
+                vec![(i18n_noop("Edit tag…"), CtxAction::EditTag(k.clone()))],
                 &cs,
             );
         }

@@ -107,7 +107,7 @@ pub(super) fn append_spelling_menu(menu: &webkit6::ContextMenu, cb: &SpellLangsC
     }
     menu.append(&webkit6::ContextMenuItem::new_separator());
     menu.append(&webkit6::ContextMenuItem::with_submenu(
-        &i18n("Spelling Language"),
+        &i18n("Spelling language"),
         &sub,
     ));
 }

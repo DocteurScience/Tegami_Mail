@@ -501,7 +501,7 @@ impl Sidebar {
                     &toggle_w,
                     x,
                     y,
-                    Some(i18n("Sort Folders").as_str()),
+                    Some(i18n("Sort folders").as_str()),
                     folder_sort_menu(&section_c, &cs),
                 );
             });
@@ -531,12 +531,12 @@ impl Sidebar {
         add_box.append(&add_img);
         if self.collapsed {
             add_box.set_halign(gtk::Align::Center);
-            add_btn.set_tooltip_text(Some(i18n("Add Folder").as_str()));
+            add_btn.set_tooltip_text(Some(i18n("Add folder").as_str()));
         } else {
             if self.chevrons_left {
                 add_img.set_margin_start(4);
             }
-            let lbl = gtk::Label::new(Some(i18n("Add Folder").as_str()));
+            let lbl = gtk::Label::new(Some(i18n("Add folder").as_str()));
             lbl.set_halign(gtk::Align::Start);
             lbl.set_hexpand(true);
             add_box.append(&lbl);
@@ -714,7 +714,7 @@ fn attach_account_menu(
         let mut items: Vec<(&str, CtxAction)> = Vec::new();
         if let Some(fid) = inbox_id {
             items.push((
-                i18n_noop("Mark Inbox as Read"),
+                i18n_noop("Mark inbox as read"),
                 CtxAction::MarkFolderRead {
                     account_id: id,
                     folder_id: fid,
@@ -728,18 +728,18 @@ fn attach_account_menu(
                 },
             ));
         }
-        items.push((i18n_noop("New Folder…"), CtxAction::NewFolder(id)));
+        items.push((i18n_noop("New folder…"), CtxAction::NewFolder(id)));
         if own_order {
             items.push((
-                i18n_noop("Reset Folder Order"),
+                i18n_noop("Reset folder order"),
                 CtxAction::ResetFolderOrder(id),
             ));
         }
         items.push((
-            i18n_noop("Account Settings…"),
+            i18n_noop("Account settings…"),
             CtxAction::OpenAccountSettings(id),
         ));
-        items.push((i18n_noop("Remove Account…"), CtxAction::RemoveAccount(id)));
+        items.push((i18n_noop("Remove account…"), CtxAction::RemoveAccount(id)));
         show_sidebar_menu(&header_w, x, y, items, &cs);
     });
     header.add_controller(click);

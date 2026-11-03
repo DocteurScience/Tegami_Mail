@@ -54,7 +54,7 @@ const APP_PW: &str = i18n_noop("Use an app-specific password, not your usual one
 
 const ADD_KINDS: &[AddKind] = &[
     AddKind {
-        label: i18n_noop("CardDAV Server"),
+        label: i18n_noop("CardDAV server"),
         mark: "folder-remote-symbolic",
         what: AddWhat::CardDav {
             server: None,
@@ -79,7 +79,7 @@ const ADD_KINDS: &[AddKind] = &[
         },
     },
     AddKind { label: "Yahoo", mark: "yahoo", what: AddWhat::CardDav { server: Some("https://carddav.address.yahoo.com"), hint: APP_PW } },
-    AddKind { label: i18n_noop("LDAP Directory"), mark: "network-server-symbolic", what: AddWhat::Ldap },
+    AddKind { label: i18n_noop("LDAP directory"), mark: "network-server-symbolic", what: AddWhat::Ldap },
     AddKind { label: "Google", mark: "gmail", what: AddWhat::Online },
     AddKind { label: "Microsoft 365 / Outlook", mark: "outlook", what: AddWhat::Online },
 ];
@@ -222,7 +222,7 @@ impl SimpleComponent for ContactSources {
                             #[wrap(Some)]
                             set_child = &adw::PreferencesPage {
                                 add = &adw::PreferencesGroup {
-                                    set_title: &i18n("Address Books"),
+                                    set_title: &i18n("Address books"),
                                     set_description: Some(&i18n("Where contacts come from for Contacts, suggestions, sender pictures and filters. Switching one off leaves it out of Tegami Mail.")),
                                     #[wrap(Some)]
                                     set_header_suffix = &gtk::Box {
@@ -240,7 +240,7 @@ impl SimpleComponent for ContactSources {
                                         },
                                         #[name = "add_btn"]
                                         gtk::Button {
-                                            set_label: &i18n("Add Address Book…"),
+                                            set_label: &i18n("Add address book…"),
                                             connect_clicked => ContactSourcesInput::Add,
                                         },
                                     },
@@ -263,7 +263,7 @@ impl SimpleComponent for ContactSources {
                                     },
                                 },
                                 add = &adw::PreferencesGroup {
-                                    set_title: &i18n("New Contacts"),
+                                    set_title: &i18n("New contacts"),
                                     #[name = "book_row"]
                                     adw::ComboRow {
                                         set_title: &i18n("Save new contacts in"),
@@ -274,7 +274,7 @@ impl SimpleComponent for ContactSources {
                                     },
                                 },
                                 add = &adw::PreferencesGroup {
-                                    set_title: &i18n("In Mail"),
+                                    set_title: &i18n("In mail"),
                                     // Thunderbird's "Show only the display
                                     // name for people in my address book".
                                     adw::SwitchRow {
@@ -293,7 +293,7 @@ impl SimpleComponent for ContactSources {
 
                 #[name = "editor_page"]
                 add = &adw::NavigationPage {
-                    set_title: &i18n("Address Book"),
+                    set_title: &i18n("Address book"),
                     set_tag: Some("editor"),
 
                     #[wrap(Some)]

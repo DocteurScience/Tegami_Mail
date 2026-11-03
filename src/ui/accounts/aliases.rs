@@ -149,9 +149,9 @@ impl AccountsWindow {
             .modal(true)
             .default_width(440)
             .title(if self.alias_editing.is_some() {
-                i18n("Edit Alias")
+                i18n("Edit alias")
             } else {
-                i18n("Add Alias")
+                i18n("Add alias")
             })
             .build();
         // Parent to whatever window the embedded panel currently sits in.

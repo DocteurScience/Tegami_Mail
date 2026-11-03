@@ -159,7 +159,7 @@ pub(super) fn watch_heading_menu(area: &gtk::Widget, sender: &ComponentSender<Me
         g.set_state(gtk::EventSequenceState::Claimed);
         let s = s.clone();
         let entry =
-            crate::ui::context_menu::MenuEntry::new(i18n("Customize Columns…"), move || {
+            crate::ui::context_menu::MenuEntry::new(i18n("Customize columns…"), move || {
                 let _ = s.output(MessageListOutput::CustomizeColumns);
             })
             .icon("view-list-bullet-symbolic");

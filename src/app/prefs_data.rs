@@ -80,7 +80,7 @@ impl AppModel {
             }
             PrefOutput::ExportLocalContacts => {
                 let dialog = gtk::FileDialog::builder()
-                    .title(i18n("Export Contacts"))
+                    .title(i18n("Export contacts"))
                     .initial_name("tegami-contacts.vcf")
                     .build();
                 let notif = self.notifications.sender().clone();
@@ -122,7 +122,7 @@ impl AppModel {
                         &[("n", &n.to_string())],
                     ),
                     "delete",
-                    &i18n("Delete All"),
+                    &i18n("Delete all"),
                     move || {
                         std::thread::spawn(move || {
                             let err = crate::contacts::local::delete_all().err();
@@ -134,7 +134,7 @@ impl AppModel {
             }
 
             PrefOutput::ExportSettings => self.export_to_chosen_file(
-                &i18n("Export Settings"),
+                &i18n("Export settings"),
                 "tegami-settings.toml",
                 |path| {
                     crate::config::export_bundle()
@@ -149,7 +149,7 @@ impl AppModel {
             ),
 
             PrefOutput::ExportLog => {
-                let title = i18n("Export Log");
+                let title = i18n("Export log");
                 let name = format!(
                     "tegami-log-{}.txt",
                     chrono::Local::now().format("%Y%m%d-%H%M")
@@ -175,7 +175,7 @@ impl AppModel {
 
             PrefOutput::ImportSettings => {
                 let dialog = gtk::FileDialog::builder()
-                    .title(i18n("Import Settings"))
+                    .title(i18n("Import settings"))
                     .build();
                 let win = self.window.clone();
                 let s = sender.clone();
@@ -234,7 +234,7 @@ impl AppModel {
                     .unwrap_or_else(|| self.window.clone().upcast());
                 let alert = adw::MessageDialog::new(
                     Some(&parent),
-                    Some(i18n("Settings Imported").as_str()),
+                    Some(i18n("Settings imported").as_str()),
                     Some(&i18n_f(
                         "{n} mail account(s), the cloud storage accounts and all \
                                  preferences were imported. Restart Tegami Mail to apply them. \

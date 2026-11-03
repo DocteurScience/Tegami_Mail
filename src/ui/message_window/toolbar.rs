@@ -42,7 +42,7 @@ pub(super) fn build_toolbar(
         .map(|item| {
             let (tooltip, msg): (String, fn() -> MessageWindowInput) = match item {
                 ToolbarItem::Reply => (i18n("Reply"), || MessageWindowInput::Reply),
-                ToolbarItem::ReplyAll => (i18n("Reply All"), || MessageWindowInput::ReplyAll),
+                ToolbarItem::ReplyAll => (i18n("Reply all"), || MessageWindowInput::ReplyAll),
                 ToolbarItem::Forward => (i18n("Forward"), || MessageWindowInput::Forward),
                 // One glyph in both states, as in the main window; the
                 // starred state carries color only.
@@ -50,18 +50,18 @@ pub(super) fn build_toolbar(
                 ToolbarItem::Archive => (i18n("Archive"), || MessageWindowInput::Archive),
                 ToolbarItem::Snooze => (i18n("Snooze"), || MessageWindowInput::SnoozeMenu),
                 ToolbarItem::Delete => (i18n("Delete"), || MessageWindowInput::Delete),
-                ToolbarItem::Spam => (i18n("Mark as Spam"), || MessageWindowInput::Spam),
+                ToolbarItem::Spam => (i18n("Mark as spam"), || MessageWindowInput::Spam),
                 ToolbarItem::ReadUnread => {
-                    (i18n("Mark as Unread"), || MessageWindowInput::ToggleRead)
+                    (i18n("Mark as unread"), || MessageWindowInput::ToggleRead)
                 }
                 ToolbarItem::Tags => (i18n("Tags"), || MessageWindowInput::TagMenu),
-                ToolbarItem::MoveTo => (i18n("Move To…"), || MessageWindowInput::MoveTo),
+                ToolbarItem::MoveTo => (i18n("Move to…"), || MessageWindowInput::MoveTo),
                 ToolbarItem::Find => (i18n("Find in message (Ctrl+F)"), || {
                     MessageWindowInput::Find
                 }),
                 // The preview, not the print dialog: it shows what will come
                 // out and prints from there (#359).
-                ToolbarItem::Print => (i18n("Print Preview (Ctrl+Shift+P)"), || {
+                ToolbarItem::Print => (i18n("Print preview (Ctrl+Shift+P)"), || {
                     MessageWindowInput::PrintPreview
                 }),
             };
@@ -190,7 +190,7 @@ impl MessageWindow {
             match item {
                 ToolbarItem::Star => {
                     b.set_tooltip_text(Some(&if self.msg.starred {
-                        i18n("Remove Star")
+                        i18n("Remove star")
                     } else {
                         i18n("Star")
                     }));
@@ -209,9 +209,9 @@ impl MessageWindow {
                         "mail-unread-symbolic"
                     });
                     b.set_tooltip_text(Some(&if self.msg.unread {
-                        i18n("Mark as Read")
+                        i18n("Mark as read")
                     } else {
-                        i18n("Mark as Unread")
+                        i18n("Mark as unread")
                     }));
                 }
                 ToolbarItem::Spam => {
@@ -221,9 +221,9 @@ impl MessageWindow {
                         "mail-mark-junk-symbolic"
                     });
                     b.set_tooltip_text(Some(&if self.in_junk {
-                        i18n("Not Spam")
+                        i18n("Not spam")
                     } else {
-                        i18n("Mark as Spam")
+                        i18n("Mark as spam")
                     }));
                 }
                 _ => {}

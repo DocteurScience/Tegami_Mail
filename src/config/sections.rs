@@ -87,10 +87,10 @@ impl FolderSort {
 
     pub(crate) fn label(self) -> String {
         match self {
-            FolderSort::Custom => crate::i18n::i18n("Custom Order"),
+            FolderSort::Custom => crate::i18n::i18n("Custom order"),
             FolderSort::NameAsc => crate::i18n::i18n("Name (A to Z)"),
             FolderSort::NameDesc => crate::i18n::i18n("Name (Z to A)"),
-            FolderSort::Path => crate::i18n::i18n("Full Path"),
+            FolderSort::Path => crate::i18n::i18n("Full path"),
         }
     }
 

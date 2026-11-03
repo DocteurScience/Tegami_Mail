@@ -245,7 +245,7 @@ impl SimpleComponent for AppModel {
                                 // the GNOME name from a theme or another program
                                 // drew a gear on some systems.
                                 set_icon_name: "tegami-open-menu-symbolic",
-                                set_tooltip_text: Some(i18n("Main Menu").as_str()),
+                                set_tooltip_text: Some(i18n("Main menu").as_str()),
                                 add_css_class: "flat",
                                 set_menu_model: Some(&model.menu),
                             },
@@ -281,7 +281,7 @@ impl SimpleComponent for AppModel {
                             #[name = "sidebar_menu"]
                             pack_end = &gtk::MenuButton {
                                 set_icon_name: "tegami-open-menu-symbolic",
-                                set_tooltip_text: Some(i18n("Main Menu").as_str()),
+                                set_tooltip_text: Some(i18n("Main menu").as_str()),
                                 add_css_class: "flat",
                                 set_menu_model: Some(&model.menu),
                             },
@@ -410,7 +410,7 @@ impl SimpleComponent for AppModel {
                                 // did.
                                 pack_start = &gtk::Button {
                                     set_icon_name: "mail-message-new-symbolic",
-                                    set_tooltip_text: Some(i18n("New Message (Ctrl+N)").as_str()),
+                                    set_tooltip_text: Some(i18n("New message (Ctrl+N)").as_str()),
                                     add_css_class: "flat",
                                     connect_clicked[sender] => move |_| sender.input(AppMsg::Compose),
                                     add_controller = gtk::GestureClick {
@@ -653,7 +653,7 @@ impl SimpleComponent for AppModel {
                                     add_css_class: "focus-fade",
                                     gtk::Button {
                                         set_icon_name: "mail-reply-all-symbolic",
-                                        set_tooltip_text: Some(i18n("Reply All").as_str()),
+                                        set_tooltip_text: Some(i18n("Reply all").as_str()),
                                         add_css_class: "flat",
                                         #[watch]
                                         set_visible: model.toolbar_visible(config::ToolbarItem::ReplyAll),
@@ -685,7 +685,7 @@ impl SimpleComponent for AppModel {
                                     add_css_class: "focus-fade",
                                     gtk::Button {
                                         #[watch]
-                                        set_tooltip_text: Some(if model.toolbar_star_lit() { i18n("Remove Star") } else { i18n("Star") }.as_str()),
+                                        set_tooltip_text: Some(if model.toolbar_star_lit() { i18n("Remove star") } else { i18n("Star") }.as_str()),
                                         // One glyph in both states, like every other
                                         // icon; the starred state carries color only.
                                         set_icon_name: "tegami-non-starred-symbolic",
@@ -751,7 +751,7 @@ impl SimpleComponent for AppModel {
                                     add_css_class: "focus-fade",
                                     gtk::Button {
                                         set_icon_name: "printer-symbolic",
-                                        set_tooltip_text: Some(i18n("Print Preview (Ctrl+Shift+P)").as_str()),
+                                        set_tooltip_text: Some(i18n("Print preview (Ctrl+Shift+P)").as_str()),
                                         add_css_class: "flat",
                                         #[watch]
                                         set_visible: model.toolbar_visible(config::ToolbarItem::Print),
@@ -832,7 +832,7 @@ impl SimpleComponent for AppModel {
                                             "mail-mark-junk-symbolic"
                                         },
                                         #[watch]
-                                        set_tooltip_text: Some(if model.target_in_junk() { i18n("Not Spam") } else { i18n("Mark as Spam") }.as_str()),
+                                        set_tooltip_text: Some(if model.target_in_junk() { i18n("Not spam") } else { i18n("Mark as spam") }.as_str()),
                                         add_css_class: "flat",
                                         #[watch]
                                         set_visible: model.toolbar_visible(config::ToolbarItem::Spam),
@@ -859,7 +859,7 @@ impl SimpleComponent for AppModel {
                                             "mail-unread-symbolic"
                                         },
                                         #[watch]
-                                        set_tooltip_text: Some(if model.reply_target().is_some_and(|m| m.unread) { i18n("Mark as Read") } else { i18n("Mark as Unread") }.as_str()),
+                                        set_tooltip_text: Some(if model.reply_target().is_some_and(|m| m.unread) { i18n("Mark as read") } else { i18n("Mark as unread") }.as_str()),
                                         #[watch]
                                         set_sensitive: model.acts_on_selection(),
                                         connect_clicked[sender] => move |_| sender.input(AppMsg::ToggleReadCurrent),

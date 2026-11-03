@@ -113,7 +113,7 @@ fn about_info_rows(page: &gtk::Box, nav: &adw::NavigationView, sender: &Componen
     info.set_margin_top(20);
 
     let notes_row = adw::ActionRow::builder()
-        .title(i18n("Release Notes"))
+        .title(i18n("Release notes"))
         .subtitle(format!("What's new in {}", crate::VERSION))
         .activatable(true)
         .build();
@@ -128,7 +128,7 @@ fn about_info_rows(page: &gtk::Box, nav: &adw::NavigationView, sender: &Componen
     // where that tip applies, so Mint users who dismissed it can find it again.
     if crate::desktop::platform::is_mint_cinnamon() {
         let keyring_row = adw::ActionRow::builder()
-            .title(i18n("Keyring Setup Help"))
+            .title(i18n("Keyring setup help"))
             .subtitle(i18n("Make account passwords persist on Linux Mint"))
             .activatable(true)
             .build();
@@ -167,7 +167,7 @@ fn about_links(page: &gtk::Box) {
         "https://github.com/DocteurScience/Tegami_Mail/issues",
     ));
     links.append(&mk_row(
-        &i18n("Source Code"),
+        &i18n("Source code"),
         "https://github.com/DocteurScience/Tegami_Mail",
     ));
     // Tegami Mail is a modified version of Hylki; its authors are credited here.

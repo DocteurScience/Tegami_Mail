@@ -56,7 +56,7 @@ impl AccountsWindow {
             label.set_label(&if on {
                 i18n("Searching…")
             } else {
-                i18n("Find Tags…")
+                i18n("Find tags…")
             });
         }
     }
@@ -74,7 +74,7 @@ impl AccountsWindow {
         if found.is_empty() {
             let dialog = adw::MessageDialog::new(
                 parent,
-                Some(i18n("No New Tags").as_str()),
+                Some(i18n("No new tags").as_str()),
                 Some(i18n("Every tag in your mailboxes is already set up here.").as_str()),
             );
             dialog.add_response("ok", &i18n("OK"));
@@ -87,7 +87,7 @@ impl AccountsWindow {
         let n = found.len();
         let dialog = adw::MessageDialog::new(
             parent,
-            Some(i18n("Tags Found").as_str()),
+            Some(i18n("Tags found").as_str()),
             Some(
                 i18n_f(
                     "{n} tags are in use in your mailboxes but not set up here.",
@@ -97,8 +97,8 @@ impl AccountsWindow {
             ),
         );
         dialog.add_response("cancel", &i18n("Cancel"));
-        dialog.add_response("selected", &i18n("Import Selected"));
-        dialog.add_response("all", &i18n("Import All"));
+        dialog.add_response("selected", &i18n("Import selected"));
+        dialog.add_response("all", &i18n("Import all"));
         dialog.set_response_appearance("all", adw::ResponseAppearance::Suggested);
         dialog.set_default_response(Some("all"));
         dialog.set_close_response("cancel");
@@ -245,9 +245,9 @@ impl AccountsWindow {
         use crate::config::{Tag, TAG_COLORS};
         let parent = relm4::main_application().active_window();
         let (title, verb) = if edit.is_some() {
-            (i18n("Edit Tag"), i18n("Save"))
+            (i18n("Edit tag"), i18n("Save"))
         } else {
-            (i18n("Add Tag"), i18n("Add Tag"))
+            (i18n("Add tag"), i18n("Add tag"))
         };
 
         let form = gtk::ListBox::new();
@@ -369,7 +369,7 @@ impl AccountsWindow {
             toggle.connect_clicked(move |t| {
                 let picker = gtk::ColorDialog::new();
                 picker.set_with_alpha(false);
-                picker.set_title(&i18n("Tag Color"));
+                picker.set_title(&i18n("Tag color"));
                 let initial = gtk::gdk::RGBA::parse(chosen.borrow().as_str())
                     .unwrap_or(gtk::gdk::RGBA::new(0.5, 0.5, 0.5, 1.0));
                 let t = t.clone();

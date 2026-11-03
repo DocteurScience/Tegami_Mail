@@ -219,7 +219,7 @@ impl AppModel {
         }
         sections.push(vec![action_entry(
             sender,
-            i18n("View Source"),
+            i18n("View source"),
             "code",
             || AppMsg::ViewSource,
             has_current,
@@ -263,7 +263,7 @@ impl AppModel {
         let acts = target.is_some();
         let mut first = vec![action_entry(
             sender,
-            i18n("Forward as Attachment"),
+            i18n("Forward as attachment"),
             "mail-forward",
             || AppMsg::ForwardAsAttachment,
             acts,
@@ -279,7 +279,7 @@ impl AppModel {
         second.push(
             action_entry(
                 sender,
-                i18n("View Source"),
+                i18n("View source"),
                 "code",
                 || AppMsg::ViewSource,
                 acts,
@@ -302,7 +302,7 @@ impl AppModel {
         );
         let s = sender.input_sender().clone();
         second.push(
-            MenuEntry::new(i18n("Save as File…"), move || {
+            MenuEntry::new(i18n("Save as file…"), move || {
                 if let Some(m) = target.clone() {
                     let _ = s.send(AppMsg::RowAction {
                         action: crate::ui::message_list::RowAction::SaveAsFile,
@@ -756,7 +756,7 @@ impl AppModel {
                 use crate::ui::context_menu::{show_context_menu, MenuEntry};
                 if let Some(header) = self.reader_header.get() {
                     let s = sender.input_sender().clone();
-                    let entry = MenuEntry::new(i18n("Customize Toolbar…"), move || {
+                    let entry = MenuEntry::new(i18n("Customize toolbar…"), move || {
                         let _ = s.send(AppMsg::CustomizeToolbar);
                     })
                     .icon("preferences-desktop-appearance-symbolic");

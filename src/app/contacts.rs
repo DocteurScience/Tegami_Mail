@@ -134,7 +134,7 @@ impl AppModel {
 
         let dialog = adw::MessageDialog::new(
             Some(&self.window),
-            Some(i18n("Add to Contacts").as_str()),
+            Some(i18n("Add to contacts").as_str()),
             None,
         );
         dialog.add_response("cancel", &i18n("Cancel"));
@@ -200,12 +200,12 @@ impl AppModel {
             AppMsg::ContactAdded(result) => {
                 use crate::contacts::AddOutcome;
                 let (text, error) = match result {
-                    Ok(AddOutcome::Created) => (i18n("Added to Contacts"), false),
+                    Ok(AddOutcome::Created) => (i18n("Added to contacts"), false),
                     Ok(AddOutcome::Merged(name)) => {
                         (i18n_f("Added email to {name}", &[("name", &name)]), false)
                     }
                     Ok(AddOutcome::AlreadyPresent(name)) => (
-                        i18n_f("Already in Contacts ({name})", &[("name", &name)]),
+                        i18n_f("Already in contacts ({name})", &[("name", &name)]),
                         false,
                     ),
                     Err(e) => (
@@ -330,7 +330,7 @@ pub(super) fn choose_vcf_files(
     done: impl Fn(Vec<std::path::PathBuf>) + 'static,
 ) {
     let dialog = gtk::FileDialog::builder()
-        .title(i18n("Import Contacts"))
+        .title(i18n("Import contacts"))
         .build();
     let filter = gtk::FileFilter::new();
     filter.set_name(Some(&i18n("vCard files")));

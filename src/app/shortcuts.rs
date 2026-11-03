@@ -223,7 +223,7 @@ impl AppModel {
         // One entry per account, so a single Ctrl+Z restores the
         // whole set rather than giving back one tag per press.
         for (account_id, changes) in changes {
-            self.push_undo(account_id, i18n("Remove Tags"), UndoStep::Flags(changes));
+            self.push_undo(account_id, i18n("Remove tags"), UndoStep::Flags(changes));
         }
     }
 

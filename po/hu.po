@@ -30,10 +30,10 @@ msgstr ""
 "ezeket a GitHubon. Megosztja fiókjait és leveleit a stabil Tegami Mail-"
 "telepítéssel."
 
-msgid "Release Notes"
+msgid "Release notes"
 msgstr "Verzióinformáció"
 
-msgid "Keyring Setup Help"
+msgid "Keyring setup help"
 msgstr "Segítség a kulcstartó beállításához"
 
 msgid "Make account passwords persist on Linux Mint"
@@ -46,7 +46,7 @@ msgstr "Projekt"
 msgid "Report an issue or feature request"
 msgstr "Hiba vagy funkciókérés bejelentése"
 
-msgid "Source Code"
+msgid "Source code"
 msgstr "Forráskód"
 
 msgid "License (GNU AGPL v3)"
@@ -100,10 +100,10 @@ msgid "Delete"
 msgstr "Törlés"
 
 #, fuzzy
-msgid "Sync Now"
+msgid "Sync now"
 msgstr "Küldés most"
 
-msgid "Add Account…"
+msgid "Add account…"
 msgstr "Fiók hozzáadása…"
 
 #, fuzzy
@@ -113,82 +113,82 @@ msgstr "GNOME Internetes Fiókok"
 msgid "Settings"
 msgstr "Beállítások"
 
-msgid "Print Preview…"
+msgid "Print preview…"
 msgstr "Nyomtatási előnézet…"
 
-msgid "Print Message…"
+msgid "Print message…"
 msgstr "Nyomtatás…"
 
 msgid "Quit"
 msgstr "Kilépés"
 
-msgid "Use Template"
+msgid "Use template"
 msgstr ""
 
 #, fuzzy
-msgid "Edit Template"
+msgid "Edit template"
 msgstr "Címke szerkesztése"
 
 msgid "Reply"
 msgstr "Válasz"
 
-msgid "Reply All"
+msgid "Reply all"
 msgstr "Válasz mindenkinek"
 
 msgid "Forward"
 msgstr "Továbbítás"
 
-msgid "Edit as New Message"
+msgid "Edit as new message"
 msgstr "Szerkesztés új üzenetként"
 
-msgid "Remove Star"
+msgid "Remove star"
 msgstr "Csillag eltávolítása"
 
 msgid "Star"
 msgstr "Csillagozás"
 
-msgid "Mark as Read"
+msgid "Mark as read"
 msgstr "Megjelölés olvasottként"
 
-msgid "Mark as Unread"
+msgid "Mark as unread"
 msgstr "Megjelölés olvasatlanként"
 
 #, fuzzy
-msgid "Expand All Messages"
+msgid "Expand all messages"
 msgstr "Keresés az üzenetben"
 
 #, fuzzy
-msgid "Collapse All Messages"
+msgid "Collapse all messages"
 msgstr "Olvasói nézetre váltás"
 
-msgid "View Source"
+msgid "View source"
 msgstr "Forrás megtekintése"
 
 #, fuzzy
-msgid "Save as File…"
+msgid "Save as file…"
 msgstr "Mentés PDF-ként…"
 
-msgid "Add Sender to Contacts"
+msgid "Add sender to contacts"
 msgstr "Feladó hozzáadása a névjegyekhez"
 
 #, fuzzy
-msgid "Create Filter from Message…"
+msgid "Create filter from message…"
 msgstr "Nyomtatás…"
 
 msgid "Tags"
 msgstr "Címkék"
 
-msgid "Not Spam"
+msgid "Not spam"
 msgstr "Nem levélszemét"
 
-msgid "Move to Inbox"
+msgid "Move to inbox"
 msgstr "Áthelyezés a Beérkezett üzenetek közé"
 
-msgid "Mark as Spam"
+msgid "Mark as spam"
 msgstr "Megjelölés levélszemétként"
 
-msgid "Move To…"
-msgstr "Áthelyezés ide…"
+msgid "Move to…"
+msgstr "Áthelyezés…"
 
 msgid "Archive"
 msgstr "Archiválás"
@@ -196,13 +196,13 @@ msgstr "Archiválás"
 msgid "Snooze"
 msgstr ""
 
-msgid "Block Remote Content"
-msgstr "Távoli képek blokkolása"
+msgid "Block remote content"
+msgstr "Távoli tartalom letiltása"
 
-msgid "Show Remote Content"
+msgid "Show remote content"
 msgstr "Távoli tartalom megjelenítése"
 
-msgid "Print Preview"
+msgid "Print preview"
 msgstr "Nyomtatási előnézet"
 
 msgid "Print…"
@@ -216,13 +216,13 @@ msgid "Could not forward the message: {e}"
 msgstr "Az üzenet nem frissíthető: {e}"
 
 #, fuzzy
-msgid "Tegami Mail Address Book"
+msgid "Tegami Mail address book"
 msgstr "Címjegyzék"
 
-msgid "On This Computer"
+msgid "On this computer"
 msgstr "Ezen a számítógépen"
 
-msgid "CardDAV Address Book"
+msgid "CardDAV address book"
 msgstr "CardDAV címjegyzék"
 
 #, fuzzy
@@ -362,7 +362,7 @@ msgstr ""
 "Engedélyezze a konzol módot a Beállítások → Rendszer és megjelenés menüben"
 
 #, fuzzy
-msgid "New Message from Template"
+msgid "New message from template"
 msgstr "Inkább új üzenet"
 
 #, fuzzy
@@ -373,7 +373,7 @@ msgid ""
 "No templates yet. Save one from the composer's ⋯ menu with Save as Template."
 msgstr ""
 
-msgid "Continue a Draft"
+msgid "Continue a draft"
 msgstr "Folytatás piszkozatként"
 
 msgid "The files go into the draft you pick."
@@ -382,7 +382,7 @@ msgstr "A fájlok az Ön által kiválasztott piszkozatba kerülnek."
 msgid "No drafts to continue."
 msgstr "Nincs piszkozat a folytatáshoz."
 
-msgid "Attach to This Draft"
+msgid "Attach to this draft"
 msgstr "Csatolás ehhez a piszkozathoz"
 
 msgid "No Drafts folder available for this account"
@@ -403,10 +403,10 @@ msgstr ""
 msgid "No filters to apply here yet"
 msgstr "Nincs még alkalmazható szűrő"
 
-msgid "Applying Filters"
+msgid "Applying filters"
 msgstr "Szűrők alkalmazása"
 
-msgid "Run in Background"
+msgid "Run in background"
 msgstr "Háttérben futtatás"
 
 msgid "Looked at {n} message so far"
@@ -490,7 +490,7 @@ msgid_plural "Filters tagged {tagged} and filed {filed} of {n} messages"
 msgstr[0] "Az {tagged} címkével ellátott szűrők, {n} üzenetből {filed}. üzenet"
 msgstr[1] "Az {tagged} címkével ellátott szűrők, {n} üzenetből {filed}. üzenet"
 
-msgid "Filters Applied"
+msgid "Filters applied"
 msgstr "Alkalmazott szűrők"
 
 msgid "Close"
@@ -499,14 +499,14 @@ msgstr "Bezárás"
 msgid "Unstar"
 msgstr "Csillagozás törlése"
 
-msgid "New Folder"
+msgid "New folder"
 msgstr "Új mappa"
 
 msgid "Create a new folder for this account."
 msgstr "Új mappa létrehozása ehhez a fiókhoz."
 
 #, fuzzy
-msgid "New Subfolder"
+msgid "New subfolder"
 msgstr "Új mappa"
 
 #, fuzzy
@@ -531,7 +531,7 @@ msgstr "Átnevezés"
 msgid "A folder named {new_name} is already there."
 msgstr "Már létezik {new_name} nevű mappa."
 
-msgid "Rename Folder"
+msgid "Rename folder"
 msgstr "Mappa átnevezése"
 
 msgid ""
@@ -552,7 +552,7 @@ msgstr ""
 msgid "Empty"
 msgstr "Kiürítés"
 
-msgid "Create Folder"
+msgid "Create folder"
 msgstr "Mappa létrehozása"
 
 #, fuzzy
@@ -567,7 +567,7 @@ msgstr "Kuka"
 msgid "destination"
 msgstr "Frissített meghívó"
 
-msgid "Move Folder"
+msgid "Move folder"
 msgstr "Mappa áthelyezése"
 
 msgid "Always do this (change it in Settings → System → GNOME Files)"
@@ -592,13 +592,13 @@ msgstr[1] "{n} fájl küldése a Tegamivel"
 msgid "{names} ({size}). What should the files go into?"
 msgstr "{names} ({size}). Melyik helyre kerüljenek a fájlok?"
 
-msgid "Reply to a Message…"
+msgid "Reply to a message…"
 msgstr "Válasz írása…"
 
-msgid "Continue a Draft…"
+msgid "Continue a draft…"
 msgstr "Egy piszkozat folytatása…"
 
-msgid "Reply to a Message"
+msgid "Reply to a message"
 msgstr "Válasz írása egy üzenetre"
 
 msgid "The files go into a reply to the message you pick."
@@ -607,7 +607,7 @@ msgstr "A fájlok az Ön által kiválasztott üzenetre adott válaszba kerülne
 msgid "No messages to reply to yet."
 msgstr "Még nincs olyan üzenet, amelyre válaszolnod kellene."
 
-msgid "Reply With the Files"
+msgid "Reply with the files"
 msgstr "Válasz ezekkel a fájlokkal"
 
 msgid "Large files"
@@ -626,10 +626,10 @@ msgstr[1] ""
 "{names} mérete {size}, ami meghaladja a {limit} korlátot. Feltölti őket a "
 "felhőbe, és inkább azok hivatkozásait helyezi el az üzenetben?"
 
-msgid "Attach Anyway"
+msgid "Attach anyway"
 msgstr "Csatolás mindenképpen"
 
-msgid "Upload to Cloud Storage"
+msgid "Upload to cloud storage"
 msgstr "Feltöltés a felhőbe"
 
 msgid "This message carries no calendar file to open."
@@ -685,10 +685,10 @@ msgid "Starred first"
 msgstr "Olvasatlanok elöl"
 
 #, fuzzy
-msgid "Clear Dates"
+msgid "Clear dates"
 msgstr "Keresési szűrők"
 
-msgid "Any Date"
+msgid "Any date"
 msgstr ""
 
 #, fuzzy
@@ -710,11 +710,11 @@ msgid "Show"
 msgstr "Megjelenítés"
 
 #, fuzzy
-msgid "Group into Conversations"
+msgid "Group into conversations"
 msgstr "Beszélgetések"
 
 #, fuzzy
-msgid "Message Preview"
+msgid "Message preview"
 msgstr "Üzenetforrás"
 
 msgid "Avatars"
@@ -725,7 +725,7 @@ msgid "Show only"
 msgstr "Csak olvasatlanok megjelenítése"
 
 #, fuzzy
-msgid "Clear Filters"
+msgid "Clear filters"
 msgstr "Keresési szűrők"
 
 msgid "Dates"
@@ -745,7 +745,7 @@ msgstr "{n} db üzenet"
 msgid "Filtered: {names}"
 msgstr "Szűrt mappák"
 
-msgid "Search Messages…"
+msgid "Search messages…"
 msgstr "Üzenetek keresése..."
 
 #, fuzzy
@@ -762,7 +762,7 @@ msgstr "Címke hozzáadása: {name}"
 msgid "Favorites"
 msgstr ""
 
-msgid "New Message from Template…"
+msgid "New message from template…"
 msgstr ""
 
 msgid "All"
@@ -838,9 +838,6 @@ msgstr "Válasz mindenkinek"
 
 msgid "Delete permanently, without going to Trash"
 msgstr ""
-
-msgid "Mark as spam"
-msgstr "Megjelölés levélszemétként"
 
 msgid "Star or unstar"
 msgstr "Csillagozás vagy csillag eltávolítása"
@@ -927,7 +924,7 @@ msgstr "Állapotsáv megjelenítése (vagy a Frissítés hosszan lenyomva tartá
 msgid "Show or hide the accounts in the sidebar"
 msgstr "Fiókok megjelenítése vagy elrejtése az oldalsávban"
 
-msgid "Focus Mode on or off"
+msgid "Focus mode on or off"
 msgstr "Fókuszmód be- vagy kikapcsolása"
 
 #, fuzzy
@@ -986,27 +983,27 @@ msgid "Expand or collapse every message of the conversation"
 msgstr "A beszélgetés előző üzenete"
 
 #, fuzzy
-msgid "Go to Inbox"
+msgid "Go to inbox"
 msgstr "Áthelyezés a Beérkezett üzenetek közé"
 
 #, fuzzy
-msgid "Go to Starred"
+msgid "Go to starred"
 msgstr "Nincs telepítve"
 
 #, fuzzy
-msgid "Go to Sent"
+msgid "Go to sent"
 msgstr "Hozzáadás a névjegyekhez"
 
 #, fuzzy
-msgid "Go to Drafts"
+msgid "Go to drafts"
 msgstr "Mentés a Piszkozatok közé"
 
 #, fuzzy
-msgid "Go to Archive"
+msgid "Go to archive"
 msgstr "Archiválás"
 
 #, fuzzy
-msgid "Go to Contacts"
+msgid "Go to contacts"
 msgstr "Hozzáadás a névjegyekhez"
 
 #, fuzzy
@@ -1075,34 +1072,29 @@ msgstr "Új levelek keresése"
 msgid "Action"
 msgstr "Műveletek"
 
-#, fuzzy
-msgid "Reply to All"
-msgstr "Válasz mindenkinek"
-
 msgid "Print"
 msgstr "Nyomtatás"
 
-msgid "Find in Message"
+msgid "Find in message"
 msgstr "Keresés az üzenetben"
 
 #, fuzzy
-msgid "Delete Permanently"
+msgid "Delete permanently"
 msgstr "Véglegesen törli ezt az üzenetet?"
 
 #, fuzzy
-msgid "Star or Remove Star"
+msgid "Star or remove star"
 msgstr "Csillag eltávolítása"
 
-#, fuzzy
-msgid "Mark as Read or Unread"
+msgid "Mark as read or unread"
 msgstr "Megjelölés olvasottként vagy olvasatlanként"
 
 #, fuzzy
-msgid "Move to Folder"
+msgid "Move to folder"
 msgstr "Mappa áthelyezése"
 
 #, fuzzy
-msgid "Open Message File…"
+msgid "Open message file…"
 msgstr "Nyomtatás…"
 
 msgid "Undo"
@@ -1112,37 +1104,33 @@ msgid "Redo"
 msgstr "Újra"
 
 #, fuzzy
-msgid "Check for New Mail"
-msgstr "Új levelek keresése"
-
-#, fuzzy
-msgid "Search Messages"
+msgid "Search messages"
 msgstr "Üzenetek keresése..."
 
 #, fuzzy
-msgid "Show or Hide the Sidebar"
+msgid "Show or hide the sidebar"
 msgstr "Fiókok megjelenítése vagy elrejtése az oldalsávban"
 
 #, fuzzy
-msgid "Reading Pane Right"
+msgid "Reading pane right"
 msgstr "Olvasás"
 
 #, fuzzy
-msgid "Reading Pane Below"
+msgid "Reading pane below"
 msgstr "Olvasás"
 
 #, fuzzy
-msgid "Reading Pane Off"
+msgid "Reading pane off"
 msgstr "Olvasás"
 
-msgid "Mail Accounts"
+msgid "Mail accounts"
 msgstr "Levelezési fiókok"
 
 #, fuzzy
-msgid "New Smart Folder…"
+msgid "New smart folder…"
 msgstr "Új mappa…"
 
-msgid "Keyboard Shortcuts"
+msgid "Keyboard shortcuts"
 msgstr "Billentyűparancsok"
 
 #, fuzzy
@@ -1150,11 +1138,11 @@ msgid "About Tegami Mail"
 msgstr "Névjegy"
 
 #, fuzzy
-msgid "Turn Focus Mode On"
+msgid "Turn focus mode on"
 msgstr "Fókusz mód"
 
 #, fuzzy
-msgid "Turn Focus Mode Off"
+msgid "Turn focus mode off"
 msgstr "Fókusz mód"
 
 msgid "View"
@@ -1168,7 +1156,7 @@ msgid "Tag"
 msgstr "Címkék"
 
 #, fuzzy
-msgid "Smart Folder"
+msgid "Smart folder"
 msgstr "Mappák rendezése"
 
 #, fuzzy
@@ -1189,10 +1177,10 @@ msgstr ""
 msgid "Your tags"
 msgstr "Saját címkék"
 
-msgid "Hide Status Bar"
+msgid "Hide status bar"
 msgstr "Állapotsáv elrejtése"
 
-msgid "Reveal Status Bar"
+msgid "Reveal status bar"
 msgstr "Állapotsáv megjelenítése"
 
 msgid "Console"
@@ -1201,7 +1189,7 @@ msgstr "Konzol"
 msgid "Help"
 msgstr ""
 
-msgid "New Message Instead"
+msgid "New message instead"
 msgstr "Inkább új üzenet"
 
 msgid "Search by sender, subject or account"
@@ -1210,7 +1198,7 @@ msgstr "Keresés feladó, tárgy vagy fiók szerint"
 msgid "(no subject)"
 msgstr "(nincs tárgy)"
 
-msgid "Message Source"
+msgid "Message source"
 msgstr "Üzenetforrás"
 
 #, fuzzy
@@ -1232,7 +1220,7 @@ msgid "Export failed: {e}"
 msgstr "Az exportálás sikertelen: {e}"
 
 #, fuzzy
-msgid "Export Contacts"
+msgid "Export contacts"
 msgstr "Névjegyek rendezése"
 
 #, fuzzy
@@ -1259,25 +1247,25 @@ msgstr[0] ""
 msgstr[1] ""
 
 #, fuzzy
-msgid "Delete All"
+msgid "Delete all"
 msgstr "Törlés"
 
-msgid "Export Settings"
+msgid "Export settings"
 msgstr "Beállítások exportálása"
 
 msgid "Settings exported to {display}"
 msgstr "A beállítások exportálva ide: {display}"
 
-msgid "Export Log"
+msgid "Export log"
 msgstr "Napló exportálása"
 
 msgid "Log exported to {display}"
 msgstr "A napló exportálva ide: {display}"
 
-msgid "Import Settings"
+msgid "Import settings"
 msgstr "Beállítások importálása"
 
-msgid "Settings Imported"
+msgid "Settings imported"
 msgstr "Beállítások importálva"
 
 msgid ""
@@ -1317,13 +1305,13 @@ msgid "Send all"
 msgstr "Összes küldése"
 
 #, fuzzy
-msgid "Forward as Attachment"
+msgid "Forward as attachment"
 msgstr "Nincsenek mellékletek"
 
 msgid "Delete {n} messages"
 msgstr "{n} üzenet törlése"
 
-msgid "Customize Toolbar…"
+msgid "Customize toolbar…"
 msgstr "Eszköztár testreszabása…"
 
 msgid "Read receipt"
@@ -1347,13 +1335,13 @@ msgstr ""
 msgid "Read by {reader}"
 msgstr "Válaszcím"
 
-msgid "Full Release Notes on GitHub"
+msgid "Full release notes on GitHub"
 msgstr "A teljes verzióinformáció a GitHub-on"
 
 msgid "Delete this conversation?"
 msgstr "Törli ezt a beszélgetést?"
 
-msgid "Delete Conversation"
+msgid "Delete conversation"
 msgstr "Beszélgetés törlése"
 
 msgid "Delete this message permanently?"
@@ -1409,7 +1397,7 @@ msgstr "Eltávolítás"
 msgid "Select a conversation first."
 msgstr "Beszélgetés törlése"
 
-msgid "Remove Tags"
+msgid "Remove tags"
 msgstr "Címkék eltávolítása"
 
 msgid "Open a message first, then print it."
@@ -1486,7 +1474,7 @@ msgstr ""
 "A dokk és a Tegami Mail saját ablakai a régi ikont használják a Tegami Mail "
 "újraindításáig."
 
-msgid "Restart Now"
+msgid "Restart now"
 msgstr "Újraindítás most"
 
 msgid ""
@@ -1499,10 +1487,10 @@ msgstr ""
 msgid "Move to {name}"
 msgstr "Áthelyzés ide: {name}"
 
-msgid "Add Tag {name}"
+msgid "Add tag {name}"
 msgstr "Címke hozzáadása: {name}"
 
-msgid "Remove Tag {name}"
+msgid "Remove tag {name}"
 msgstr "Címke eltávolítása: {name}"
 
 msgid "Unsubscribe from {name}?"
@@ -1558,11 +1546,11 @@ msgid "The list's unsubscribe page is open in your browser."
 msgstr "A lista leiratkozási oldala megnyílik a böngészőben."
 
 #, fuzzy
-msgid "Save Message"
+msgid "Save message"
 msgstr "Új üzenet"
 
 #, fuzzy
-msgid "Open Message File"
+msgid "Open message file"
 msgstr "Új üzenet"
 
 #, fuzzy
@@ -1584,7 +1572,7 @@ msgstr "Nem található üzenet ezzel az azonosítóval: {id}"
 msgid "Mail"
 msgstr ""
 
-msgid "Main Menu"
+msgid "Main menu"
 msgstr "Főmenü"
 
 msgid "Expand sidebar"
@@ -1594,7 +1582,7 @@ msgid "Collapse sidebar"
 msgstr "Oldalsáv összecsukása"
 
 #, fuzzy
-msgid "New Message (Ctrl+N)"
+msgid "New message (Ctrl+N)"
 msgstr "Üzenetek keresése (Ctrl+F)"
 
 msgid "Search messages (Ctrl+F)"
@@ -1609,7 +1597,7 @@ msgstr "Válasz mindenkinek"
 
 #. The preview, not the print dialog: it shows what will come
 #. out and prints from there (#359).
-msgid "Print Preview (Ctrl+Shift+P)"
+msgid "Print preview (Ctrl+Shift+P)"
 msgstr "Nyomtatási előnézet (Ctrl+Shift+P)"
 
 msgid "Find in message (Ctrl+F)"
@@ -1650,7 +1638,7 @@ msgstr "Kulcs importálása"
 msgid "Account"
 msgstr "Fiók"
 
-msgid "Due Date"
+msgid "Due date"
 msgstr ""
 
 msgid "Date"
@@ -1687,7 +1675,7 @@ msgstr "Megjelenítés rámutatáskor"
 msgid "Folder of the original, not the Inbox"
 msgstr "Megjelenítés rámutatáskor"
 
-msgid "Custom Order"
+msgid "Custom order"
 msgstr "Egyedi sorrend"
 
 msgid "Name (A to Z)"
@@ -1696,7 +1684,7 @@ msgstr "Név (A–Z)"
 msgid "Name (Z to A)"
 msgstr "Név (Z–A)"
 
-msgid "Full Path"
+msgid "Full path"
 msgstr "Teljes elérési út"
 
 msgid "Spam"
@@ -1705,8 +1693,8 @@ msgstr "Levélszemét"
 msgid "Read/Unread"
 msgstr "Olvasott/olvasatlan"
 
-msgid "Move To"
-msgstr "Áthelyezés ide"
+msgid "Move to"
+msgstr "Áthelyezés"
 
 msgid "Find"
 msgstr "Keresés"
@@ -2268,9 +2256,6 @@ msgstr "Fiók engedélyezése"
 msgid "Forward to"
 msgstr "Továbbítás"
 
-msgid "Move to"
-msgstr "Áthelyezés"
-
 msgid "forwards to {to}"
 msgstr ""
 
@@ -2285,7 +2270,7 @@ msgid "Then"
 msgstr "Aztán"
 
 #, fuzzy
-msgid "Add Action"
+msgid "Add action"
 msgstr "Fiók hozzáadása"
 
 #, fuzzy
@@ -2318,11 +2303,11 @@ msgid "Kept on the server; change it in your provider's webmail."
 msgstr ""
 
 #, fuzzy
-msgid "Edit Alias"
+msgid "Edit alias"
 msgstr "Címke szerkesztése"
 
 #, fuzzy
-msgid "Add Alias"
+msgid "Add alias"
 msgstr "Álnév (alias) hozzáadása…"
 
 msgid "Save"
@@ -2382,7 +2367,7 @@ msgstr ""
 msgid "Text to match"
 msgstr "Egyeztetendő szöveg"
 
-msgid "Add Condition"
+msgid "Add condition"
 msgstr "Feltétel hozzáadása"
 
 msgid "Condition matching"
@@ -2433,7 +2418,7 @@ msgid ""
 "approve it."
 msgstr ""
 
-msgid "Choose a Picture"
+msgid "Choose a picture"
 msgstr "Kép választása"
 
 msgid "Images"
@@ -2502,13 +2487,13 @@ msgstr "Szűrő eltávolítása"
 msgid "Applying…"
 msgstr "Alkalmazás…"
 
-msgid "Apply Now"
+msgid "Apply now"
 msgstr "Alkalmazás most"
 
-msgid "Edit Filter"
+msgid "Edit filter"
 msgstr "Szűrő szerkesztése"
 
-msgid "Add Filter"
+msgid "Add filter"
 msgstr "Szűrő hozzáadása"
 
 msgid "Name (optional)"
@@ -2545,7 +2530,7 @@ msgid_plural "After {n} days"
 msgstr[0] "{n} nap múlva"
 msgstr[1] "{n} nap múlva"
 
-msgid "API Token"
+msgid "API token"
 msgstr ""
 
 msgid "Password"
@@ -2557,18 +2542,18 @@ msgstr "Kiszolgáló (kiszolgáló név vagy URL)"
 msgid "Port (default 443)"
 msgstr "Végpont (alapértelmezett: 443)"
 
-msgid "Incoming Server"
+msgid "Incoming server"
 msgstr "Bejövő kiszolgáló"
 
 msgid "Port (IMAP 993 / POP3 995)"
 msgstr "Végpont (IMAP 993 / POP3 995)"
 
 #, fuzzy
-msgid "Import Mbox Files"
+msgid "Import mbox files"
 msgstr "Fájl importálása…"
 
 #, fuzzy
-msgid "Import Maildir Folders"
+msgid "Import maildir folders"
 msgstr "Az importálás sikertelen: {e}"
 
 #, fuzzy
@@ -2648,7 +2633,7 @@ msgstr ""
 "használatához."
 
 #, fuzzy
-msgid "Smart Folders"
+msgid "Smart folders"
 msgstr "Mappák rendezése"
 
 #, fuzzy
@@ -2658,16 +2643,16 @@ msgid ""
 msgstr "A fiók megjelenése az oldalsávban és a Beérkezett üzenetek nézetben."
 
 #, fuzzy
-msgid "Add Smart Folder…"
+msgid "Add smart folder…"
 msgstr "Mappa hozzáadása"
 
 msgid "Searching…"
 msgstr "Keresés…"
 
-msgid "Find Tags…"
+msgid "Find tags…"
 msgstr "Címkék keresése…"
 
-msgid "No New Tags"
+msgid "No new tags"
 msgstr "Nincs új címke"
 
 #, fuzzy
@@ -2679,7 +2664,7 @@ msgstr ""
 msgid "OK"
 msgstr "Rendben"
 
-msgid "Tags Found"
+msgid "Tags found"
 msgstr "Talált címkék"
 
 #, fuzzy
@@ -2688,10 +2673,10 @@ msgstr ""
 "A postafiókjaidban nem találtunk olyan címkéket, amelyek még nincsenek itt "
 "beállítva."
 
-msgid "Import Selected"
+msgid "Import selected"
 msgstr "Kijelöltek importálása"
 
-msgid "Import All"
+msgid "Import all"
 msgstr "Összes importálása"
 
 msgid "{n} messages"
@@ -2706,10 +2691,10 @@ msgstr ""
 msgid "Remove tag"
 msgstr "Címke eltávolítása"
 
-msgid "Edit Tag"
+msgid "Edit tag"
 msgstr "Címke szerkesztése"
 
-msgid "Add Tag"
+msgid "Add tag"
 msgstr "Címke hozzáadása"
 
 msgid "Name"
@@ -2732,7 +2717,7 @@ msgstr "Szín"
 msgid "Custom color…"
 msgstr "Egyéni szín…"
 
-msgid "Tag Color"
+msgid "Tag color"
 msgstr "Címke színe"
 
 #, fuzzy
@@ -2813,7 +2798,7 @@ msgstr "HTML szerkesztése…"
 msgid "Edit the signature's HTML source"
 msgstr ""
 
-msgid "Follow Settings"
+msgid "Follow settings"
 msgstr "Beállítások követése"
 
 msgid "On"
@@ -2826,19 +2811,19 @@ msgstr "Aláírás"
 msgid "Preview"
 msgstr "Előnézet"
 
-msgid "Import Signature"
+msgid "Import signature"
 msgstr "Aláírás importálása"
 
 msgid "HTML and text files"
 msgstr "HTML- és szövegfájlok"
 
-msgid "Could Not Read the File"
+msgid "Could not read the file"
 msgstr "A fájl nem olvasható"
 
 msgid "All accounts"
 msgstr "Összes fiók"
 
-msgid "All but Trash and Junk"
+msgid "All but trash and junk"
 msgstr ""
 
 #, fuzzy
@@ -2876,15 +2861,11 @@ msgid "Tagged"
 msgstr ""
 
 #, fuzzy
-msgid "Message preview"
-msgstr "Üzenetforrás"
-
-#, fuzzy
-msgid "Edit Smart Folder"
+msgid "Edit smart folder"
 msgstr "Mappák rendezése"
 
 #, fuzzy
-msgid "Add Smart Folder"
+msgid "Add smart folder"
 msgstr "Mappa hozzáadása"
 
 #, fuzzy
@@ -2906,10 +2887,10 @@ msgstr "Megnyitás"
 msgid "Download…"
 msgstr "Letöltés…"
 
-msgid "Show in Message"
+msgid "Show in message"
 msgstr "Megjelenítés az üzenetben"
 
-msgid "Delete from Server…"
+msgid "Delete from server…"
 msgstr "Törlés a kiszolgálóról…"
 
 msgid "Key imported"
@@ -2967,16 +2948,16 @@ msgstr "Megjelenítés bélyegképként"
 msgid "Show as a list"
 msgstr "Megjelenítés listaként"
 
-msgid "Save All…"
+msgid "Save all…"
 msgstr "Összes mentése…"
 
 msgid "Save every attachment to a folder"
 msgstr "Minden melléklet mentése egy mappába"
 
-msgid "Save Attachment"
+msgid "Save attachment"
 msgstr "Melléklet mentése"
 
-msgid "Save All Attachments"
+msgid "Save all attachments"
 msgstr "Összes melléklet mentése"
 
 msgid "The file could not be opened"
@@ -3070,7 +3051,7 @@ msgstr "Alapértelmezett hivatkozások"
 msgid "Used unless you change them in the upload dialog for one email."
 msgstr ""
 
-msgid "Check Connection"
+msgid "Check connection"
 msgstr "Internetkapcsolat ellenőrzése"
 
 msgid "{email} (Files is off)"
@@ -3220,9 +3201,6 @@ msgstr ""
 msgid "Signed in as {who}. {terms}"
 msgstr "Bejelentkezve mint: {who}. {terms}"
 
-msgid "Cloud Storage"
-msgstr "Felhőtárhely"
-
 msgid "Cloud storage"
 msgstr "Felhőtárhely"
 
@@ -3243,7 +3221,7 @@ msgstr ""
 msgid "No cloud accounts yet."
 msgstr "Még nincsenek felhőfiókok."
 
-msgid "Cloud Account"
+msgid "Cloud account"
 msgstr "Felhőfiók"
 
 msgid "Remove {name}?"
@@ -3259,10 +3237,10 @@ msgstr "Eltávolítva: {name}"
 msgid "Could not store the sign-in in the keyring: {e}"
 msgstr "A bejelentkezés nem tárolható a kulcstartón: {e}"
 
-msgid "Edit Cloud Account"
+msgid "Edit cloud account"
 msgstr "Felhőfiók szerkesztése"
 
-msgid "Add Cloud Account"
+msgid "Add cloud account"
 msgstr "Felhőfiók hozzáadása"
 
 msgid "links expire after {n} days"
@@ -3274,7 +3252,7 @@ msgstr "jelszóval védett"
 msgid "Offer this account in the composer"
 msgstr "Ajánld fel ezt a fiókot a programnak "
 
-msgid "Command Palette"
+msgid "Command palette"
 msgstr ""
 
 msgid "Type an action, a folder or a tag, or > for actions only"
@@ -3295,7 +3273,7 @@ msgid "Large: some servers will refuse it."
 msgstr ""
 
 #, fuzzy
-msgid "Send a Link"
+msgid "Send a link"
 msgstr "Hivatkozás megnyitása"
 
 #, fuzzy
@@ -3317,9 +3295,6 @@ msgstr "{name} (hivatkozás)"
 
 msgid "Uploading…"
 msgstr "Feltöltés…"
-
-msgid "Attach Files"
-msgstr "Fájlok csatolása"
 
 msgid "Attach {name}"
 msgstr "{name} csatolása"
@@ -3416,7 +3391,7 @@ msgstr ""
 "vagy töröld."
 
 #, fuzzy
-msgid "Save Template"
+msgid "Save template"
 msgstr "Kép mentése"
 
 msgid "Save the message?"
@@ -3427,10 +3402,10 @@ msgstr ""
 "Még nem küldted el. Mentsd el a „Piszkozatok” mappába, hogy később befejezd, "
 "vagy töröld."
 
-msgid "Save Draft"
+msgid "Save draft"
 msgstr "Piszkozat mentése"
 
-msgid "Keep Editing"
+msgid "Keep editing"
 msgstr "Szerkesztés folytatása"
 
 msgid "Discard"
@@ -3457,14 +3432,14 @@ msgid "Not every mail app sends one."
 msgstr ""
 
 #, fuzzy
-msgid "Check Spelling"
+msgid "Check spelling"
 msgstr "Helyesírás"
 
 #, fuzzy
-msgid "Spelling Language"
+msgid "Spelling language"
 msgstr "Helyesírás"
 
-msgid "Delete Draft"
+msgid "Delete draft"
 msgstr "Piszkozat törlése"
 
 msgid "Move this draft to Trash"
@@ -3518,11 +3493,11 @@ msgid ""
 msgstr ""
 
 #, fuzzy
-msgid "Send Anyway"
+msgid "Send anyway"
 msgstr "Küldés most"
 
 #, fuzzy
-msgid "Attach a File…"
+msgid "Attach a file…"
 msgstr "Fájlok csatolása"
 
 #, fuzzy
@@ -3539,7 +3514,7 @@ msgid "Choose the sending account"
 msgstr "Először válasszon egy Internetes Fiókot."
 
 #, fuzzy
-msgid "Manage Accounts…"
+msgid "Manage accounts…"
 msgstr "GNOME Internetes Fiókok"
 
 #, fuzzy
@@ -3558,27 +3533,27 @@ msgid "Translate what you wrote"
 msgstr "Fordította"
 
 #, fuzzy
-msgid "Insert Signature"
+msgid "Insert signature"
 msgstr "Aláírás importálása"
 
 #, fuzzy
-msgid "No Signature"
+msgid "No signature"
 msgstr "Aláírás"
 
 #, fuzzy
-msgid "Insert Before the Text"
+msgid "Insert before the text"
 msgstr "Beillesztés a szövegbe"
 
 #, fuzzy
-msgid "Insert After the Text"
+msgid "Insert after the text"
 msgstr "Beillesztés a szövegbe"
 
 #, fuzzy
-msgid "Show Original"
+msgid "Show original"
 msgstr "Címzettek megjelenítése"
 
 #, fuzzy
-msgid "Show Translation"
+msgid "Show translation"
 msgstr "Beszélgetés megjelenítése"
 
 #, fuzzy
@@ -3586,7 +3561,7 @@ msgid "{language} (the quoted message)"
 msgstr "Az idézett üzenet felett"
 
 #, fuzzy
-msgid "Other Languages"
+msgid "Other languages"
 msgstr "Nyelv"
 
 #, fuzzy
@@ -3737,7 +3712,7 @@ msgid "Open Online Accounts"
 msgstr "Internetes Fiókok megnyitása…"
 
 #, fuzzy
-msgid "Add Address Book"
+msgid "Add address book"
 msgstr "Címjegyzék"
 
 #, fuzzy
@@ -3834,7 +3809,7 @@ msgid "Use an app-specific password, not your usual one."
 msgstr "Alkalmazásjelszó szükséges (nem a szokásos bejelentkezési jelszava)."
 
 #, fuzzy
-msgid "CardDAV Server"
+msgid "CardDAV server"
 msgstr "Kiszolgáló"
 
 msgid ""
@@ -3852,15 +3827,11 @@ msgid ""
 "→ Privacy & Security."
 msgstr ""
 
-msgid "LDAP Directory"
+msgid "LDAP directory"
 msgstr "LDAP Mappa"
 
 msgid "Contacts"
 msgstr "Névjegyek"
-
-#, fuzzy
-msgid "Address Books"
-msgstr "Címjegyzék"
 
 msgid ""
 "Where contacts come from for Contacts, suggestions, sender pictures and "
@@ -3872,7 +3843,7 @@ msgid "Look again for address books"
 msgstr "Kulcs keresése ehhez: {addr}…"
 
 #, fuzzy
-msgid "Add Address Book…"
+msgid "Add address book…"
 msgstr "Címjegyzék"
 
 msgid ""
@@ -3882,7 +3853,7 @@ msgid ""
 msgstr ""
 
 #, fuzzy
-msgid "New Contacts"
+msgid "New contacts"
 msgstr "Új névjegy"
 
 #, fuzzy
@@ -3893,7 +3864,7 @@ msgid "Unless another is picked when the contact is made."
 msgstr ""
 
 #, fuzzy
-msgid "In Mail"
+msgid "In mail"
 msgstr "Proton Mail"
 
 #, fuzzy
@@ -3904,31 +3875,27 @@ msgid "Saved addresses show the contact's name, not the mail's."
 msgstr ""
 
 #, fuzzy
-msgid "Address Book"
-msgstr "Címjegyzék"
-
-#, fuzzy
 msgid "Looking for address books on {name}…"
 msgstr "Kulcs keresése ehhez: {addr}…"
 
 #, fuzzy
-msgid "Attach to Message"
+msgid "Attach to message"
 msgstr "Csatolás új üzenethez"
 
-msgid "Insert in Text"
+msgid "Insert in text"
 msgstr "Beillesztés a szövegbe"
 
 #, fuzzy
-msgid "Upload and Share a Link"
+msgid "Upload and share a link"
 msgstr "Feltöltés felhőtárhelyre és hivatkozás megosztása"
 
-msgid "Attach to New Message"
+msgid "Attach to new message"
 msgstr "Csatolás új üzenethez"
 
-msgid "Insert in New Message"
+msgid "Insert in new message"
 msgstr "Beillesztés új üzenetbe"
 
-msgid "Share Link in New Message"
+msgid "Share link in new message"
 msgid_plural "Share Links in New Message"
 msgstr[0] "Hivatkozás megosztása új üzenetben"
 msgstr[1] "Hivatkozások megosztása új üzenetben"
@@ -4059,11 +4026,11 @@ msgstr "{name} · {current} / {total}"
 msgid "Loading more…"
 msgstr "Továbbiak betöltése…"
 
-msgid "No Messages"
+msgid "No messages"
 msgstr "Nincsenek üzenetek"
 
 #, fuzzy
-msgid "No Matching Messages"
+msgid "No matching messages"
 msgstr "Nincsenek üzenetek"
 
 msgid "There's nothing here right now."
@@ -4089,38 +4056,33 @@ msgid "Choose which folders to search"
 msgstr "Válassza ki a keresendő mappákat"
 
 #, fuzzy
-msgid "Has Attachments"
-msgstr "Nincsenek mellékletek"
-
-#, fuzzy
-msgid "Addressed to Me"
+msgid "Addressed to me"
 msgstr "Címjegyzék"
 
 #, fuzzy
-msgid "From Contacts"
+msgid "From contacts"
 msgstr "Nincsenek névjegyek"
 
-#, fuzzy
-msgid "High Importance"
-msgstr "Kulcs importálása"
+msgid "High importance"
+msgstr ""
 
 msgid "Today"
 msgstr ""
 
 #, fuzzy
-msgid "Customize Columns…"
+msgid "Customize columns…"
 msgstr "Eszköztár testreszabása…"
 
-msgid "Remove Stars"
+msgid "Remove stars"
 msgstr "Csillagok eltávolítása"
 
-msgid "Star Conversation"
+msgid "Star conversation"
 msgstr "Beszélgetés csillagozása"
 
-msgid "Mark All as Read"
+msgid "Mark all as read"
 msgstr "Összes megjelölése olvasottként"
 
-msgid "Mark All as Unread"
+msgid "Mark all as unread"
 msgstr "Összes megjelölése olvasatlanként"
 
 #, fuzzy
@@ -4164,23 +4126,8 @@ msgstr ""
 msgid "Drag to resize, double-click for the usual width"
 msgstr ""
 
-msgid "Mark as read"
-msgstr "Megjelölés olvasottként"
-
-msgid "Move to…"
-msgstr "Áthelyezés…"
-
-msgid "Not spam"
-msgstr "Nem levélszemét"
-
 msgid "Add sender to Contacts"
 msgstr "Feladó hozzáadása a névjegyekhez"
-
-msgid "Mark as unread"
-msgstr "Megjelölés olvasatlanként"
-
-msgid "Remove star"
-msgstr "Csillag eltávolítása"
 
 #, fuzzy
 msgid "Forwarded"
@@ -4189,9 +4136,6 @@ msgstr "Továbbítás"
 #, fuzzy
 msgid "Snoozed until {when}"
 msgstr "Ütemezve ekkorra: {when}"
-
-msgid "High importance"
-msgstr ""
 
 #, fuzzy
 msgid "Low importance"
@@ -4259,9 +4203,6 @@ msgstr "Betöltés"
 msgid "Always allow sender"
 msgstr "Feladó mindig engedélyezve"
 
-msgid "Find in message"
-msgstr "Keresés az üzenetben"
-
 msgid "No matches"
 msgstr "Nincs találat"
 
@@ -4301,10 +4242,10 @@ msgid "Hide quoted text"
 msgstr "Elrejtés a preview text"
 
 #, fuzzy
-msgid "Copy Address"
+msgid "Copy address"
 msgstr "Hivatkozás másolása"
 
-msgid "Add to Contacts"
+msgid "Add to contacts"
 msgstr "Hozzáadás a névjegyekhez"
 
 msgid "Double-click to open in a new window"
@@ -4321,14 +4262,8 @@ msgstr "Címzettek elrejtése"
 msgid "Show recipients"
 msgstr "Címzettek megjelenítése"
 
-msgid "Mark as read or unread"
-msgstr "Megjelölés olvasottként vagy olvasatlanként"
-
 msgid "Star this message"
 msgstr "Üzenet csillagozása"
-
-msgid "View source"
-msgstr "Forrás megtekintése"
 
 #, fuzzy
 msgid "Translate this message"
@@ -4357,12 +4292,6 @@ msgstr "Vissza a saját betűtípusaimhoz és színeimhez"
 
 msgid "Show the sender's fonts and colors"
 msgstr "Feladó betűtípusainak és színeinek megjelenítése"
-
-msgid "Show remote content"
-msgstr "Távoli tartalom megjelenítése"
-
-msgid "Block remote content"
-msgstr "Távoli tartalom letiltása"
 
 #, fuzzy
 msgid "Click to open this message"
@@ -4480,39 +4409,39 @@ msgstr "Jelzi a szervezőnek, hogy nem leszel ott"
 msgid "Opens the meeting in your calendar application"
 msgstr "Megnyitja az értekezletet a naptáralkalmazásban"
 
-msgid "Add to Calendar"
+msgid "Add to calendar"
 msgstr "Hozzáadás a naptárhoz"
 
-msgid "Open Link"
+msgid "Open link"
 msgstr "Hivatkozás megnyitása"
 
-msgid "Copy Email Address"
+msgid "Copy email address"
 msgstr "E-mail cím másolása"
 
-msgid "Copy Link Address"
+msgid "Copy link address"
 msgstr "Hivatkozás másolása"
 
-msgid "Save Image As…"
+msgid "Save image as…"
 msgstr "Kép mentése másként…"
 
-msgid "Save Image"
+msgid "Save image"
 msgstr "Kép mentése"
 
-msgid "Copy Image"
+msgid "Copy image"
 msgstr "Kép másolása"
 
-msgid "Copy Image Address"
+msgid "Copy image address"
 msgstr "Kép címének másolása"
 
 #, fuzzy
 msgid "Translate"
 msgstr "Fordította"
 
-msgid "Open With…"
+msgid "Open with…"
 msgstr ""
 
 #, fuzzy
-msgid "Save As…"
+msgid "Save as…"
 msgstr "Összes mentése…"
 
 msgid "Encrypted messages are not sent for translation."
@@ -4563,7 +4492,7 @@ msgstr ""
 msgid "{name} asked for a read receipt, to be sent to {addr}."
 msgstr ""
 
-msgid "Send Receipt"
+msgid "Send receipt"
 msgstr ""
 
 #, fuzzy
@@ -4643,7 +4572,7 @@ msgstr "Tesztelés folyamatban…"
 msgid "Could not translate: {why}"
 msgstr "Az üzenet nem címkézhető: {e}"
 
-msgid "Try Again"
+msgid "Try again"
 msgstr "Próbáld újra"
 
 msgid "Translated from {language} by {service}."
@@ -4700,9 +4629,6 @@ msgstr "Megnyitja a lista leiratkozási oldalát a böngészőben"
 
 msgid "Clear all"
 msgstr "Összes törlése"
-
-msgid "Export log"
-msgstr "Napló exportálása"
 
 msgid "Collapse status bar"
 msgstr "Állapotsáv összecsukása"
@@ -4837,7 +4763,7 @@ msgstr "A kulcs nem hozható létre: {e}"
 msgid "No key found: {e}"
 msgstr "Nem található kulcs: {e}"
 
-msgid "Generate a Key"
+msgid "Generate a key"
 msgstr "Kulcs létrehozása"
 
 #, fuzzy
@@ -4873,7 +4799,7 @@ msgstr "Írja be kétszer ugyanazt a jelmondatot."
 msgid "Generating the key…"
 msgstr "Kulcs létrehozása…"
 
-msgid "Import Key"
+msgid "Import key"
 msgstr "Kulcs importálása"
 
 msgid "OpenPGP keys"
@@ -4885,7 +4811,7 @@ msgstr "Minden fájl"
 msgid "Could not import: {e}"
 msgstr "Nem importálható: {e}"
 
-msgid "Export Public Key"
+msgid "Export public key"
 msgstr "Nyilvános kulcs exportálása"
 
 msgid "Delete your key?"
@@ -4912,7 +4838,7 @@ msgstr ""
 msgid "Could not delete: {e}"
 msgstr "Nem törölhető: {e}"
 
-msgid "Fetch a Key"
+msgid "Fetch a key"
 msgstr "Kulcs lekérése"
 
 msgid ""
@@ -4954,7 +4880,7 @@ msgstr[1] "{n} kulcs importálva."
 msgid "That key was already in your keyring."
 msgstr "Ez a kulcs már a kulcstartóján volt."
 
-msgid "Choose a Sound"
+msgid "Choose a sound"
 msgstr "Válasszon hangot"
 
 msgid "Sounds"
@@ -5064,7 +4990,7 @@ msgstr "Karaktersorozat"
 msgid "Swing"
 msgstr "Megváltozik"
 
-msgid "Custom File"
+msgid "Custom file"
 msgstr "Egyéni fájl"
 
 #, fuzzy
@@ -5351,7 +5277,7 @@ msgstr "Megjelenés"
 msgid "Sidebar"
 msgstr "Oldalsáv"
 
-msgid "Message List"
+msgid "Message list"
 msgstr "Üzenetlista"
 
 msgid "Conversations"
@@ -5366,7 +5292,7 @@ msgstr "Levélírás"
 msgid "Privacy"
 msgstr "Adatvédelem"
 
-msgid "Date and Time"
+msgid "Date and time"
 msgstr "Dátum és idő"
 
 msgid "Backup"
@@ -5399,12 +5325,6 @@ msgid ""
 msgstr ""
 "Fiókok és beállítások egyetlen fájlban. A jelszavak a rendszer kulcstartóján "
 "maradnak, és soha nem kerülnek exportálásra."
-
-msgid "Export settings"
-msgstr "Beállítások exportálása"
-
-msgid "Import settings"
-msgstr "Beállítások importálása"
 
 #, fuzzy
 msgid ""
@@ -5524,7 +5444,7 @@ msgstr "Választás…"
 msgid "Also play while Tegami Mail is in front"
 msgstr ""
 
-msgid "Notification Buttons"
+msgid "Notification buttons"
 msgstr "Értesítési gombok"
 
 msgid "Up to three buttons on a notification about one message."
@@ -5636,7 +5556,7 @@ msgstr "Helyezze a kerülmb here ide hide it"
 msgid "Off, a narrow list scrolls sideways."
 msgstr ""
 
-msgid "Restore Defaults"
+msgid "Restore defaults"
 msgstr "Alapértelmezett beállítások visszaállítása"
 
 msgid "Tegami Mail collects no telemetry and sends no analytics."
@@ -5814,16 +5734,13 @@ msgstr "A bővítményt nem sikerült eltávolítani"
 msgid "Could not restart Files"
 msgstr "A alkalmazás újraindítása nem sikerült"
 
-msgid "Other Font…"
+msgid "Other font…"
 msgstr ""
-
-msgid "Search Settings"
-msgstr "Keresési Beállítások"
 
 msgid "Search settings"
 msgstr "Keresési beállítások"
 
-msgid "No Results"
+msgid "No results"
 msgstr "Nincs találat"
 
 #. Translators: words the settings search finds the Contacts page by,
@@ -5839,7 +5756,7 @@ msgstr "Rendszer nyelve — {language}"
 msgid "Forget this word"
 msgstr "Szó elfelejtése"
 
-msgid "Print Message"
+msgid "Print message"
 msgstr "Üzenet nyomtatása"
 
 #, fuzzy
@@ -5853,7 +5770,7 @@ msgid "Save as PDF…"
 msgstr "Mentés PDF-ként…"
 
 #, fuzzy
-msgid "No Preview"
+msgid "No preview"
 msgstr "Előnézet"
 
 msgid "Save as PDF"
@@ -5895,7 +5812,7 @@ msgstr "Csak olvasatlanok megjelenítése"
 msgid "Show previous message"
 msgstr "Előző üzenet"
 
-msgid "Sans Serif"
+msgid "Sans serif"
 msgstr ""
 
 msgid "Serif"
@@ -6003,13 +5920,6 @@ msgstr "Egyáltalán nincs formázás"
 msgid "Pictures"
 msgstr "Kép"
 
-#, fuzzy
-msgid "Insert Picture"
-msgstr "Kép választása"
-
-msgid "Insert Link"
-msgstr "Hivatkozás Beszúrása"
-
 msgid "Insert"
 msgstr "Beszúrás"
 
@@ -6030,42 +5940,42 @@ msgstr "Mappák ({len})"
 msgid "Labels"
 msgstr ""
 
-msgid "Sort Folders"
+msgid "Sort folders"
 msgstr "Mappák rendezése"
 
-msgid "Add Folder"
+msgid "Add folder"
 msgstr "Mappa hozzáadása"
 
 msgid "Show or hide sub-folders"
 msgstr "Almappák megjelenítése vagy elrejtése"
 
-msgid "Mark Inbox as Read"
+msgid "Mark inbox as read"
 msgstr "Beérkezett megjelölése olvasottként"
 
 msgid "Refresh"
 msgstr "Frissítés"
 
-msgid "New Folder…"
+msgid "New folder…"
 msgstr "Új mappa…"
 
-msgid "Reset Folder Order"
+msgid "Reset folder order"
 msgstr "Mappa sorrendjének visszaállítása"
 
-msgid "Account Settings…"
+msgid "Account settings…"
 msgstr "Fiókbeállítások…"
 
-msgid "Remove Account…"
+msgid "Remove account…"
 msgstr "Fiók eltávolítása…"
 
-msgid "Follow Settings: {sort}"
+msgid "Follow settings: {sort}"
 msgstr "Beállítások követése: {sort}"
 
 #, fuzzy
-msgid "Sync This Folder"
+msgid "Sync this folder"
 msgstr "Ez a mappa"
 
 #, fuzzy
-msgid "New Subfolder…"
+msgid "New subfolder…"
 msgstr "Új mappa…"
 
 #, fuzzy
@@ -6073,33 +5983,33 @@ msgid "Rename…"
 msgstr "Átnevezés"
 
 #, fuzzy
-msgid "Remove from Favorites"
+msgid "Remove from favorites"
 msgstr "Szűrő eltávolítása"
 
 #, fuzzy
-msgid "Add to Favorites"
+msgid "Add to favorites"
 msgstr "Hozzáadás a névjegyekhez"
 
-msgid "Apply Filters"
+msgid "Apply filters"
 msgstr "Szűrők alkalmazása"
 
-msgid "Edit Filter…"
+msgid "Edit filter…"
 msgstr "Szűrő szerkesztése…"
 
-msgid "Hide Folder"
+msgid "Hide folder"
 msgstr "Mappa elrejtése"
 
-msgid "Empty Trash…"
+msgid "Empty trash…"
 msgstr "Kuka kiürítése…"
 
-msgid "Empty Junk…"
+msgid "Empty junk…"
 msgstr "Levélszemét kiürítése…"
 
 #, fuzzy
-msgid "Delete Folder"
+msgid "Delete folder"
 msgstr "Mappa törlése…"
 
-msgid "Edit Tag…"
+msgid "Edit tag…"
 msgstr "Címke szerkesztése…"
 
 msgid "Add account"
@@ -6125,18 +6035,18 @@ msgid "Long-press to expand or collapse"
 msgstr "Hosszú gombnyomással kibontható vagy összecsukható"
 
 #, fuzzy
-msgid "New Tag…"
+msgid "New tag…"
 msgstr "Címke hozzáadása…"
 
 msgid "Show or hide tags"
 msgstr "Címkék megjelenítése vagy elrejtése"
 
 #, fuzzy
-msgid "Edit Smart Folder…"
+msgid "Edit smart folder…"
 msgstr "Szűrő szerkesztése…"
 
 #, fuzzy
-msgid "Delete Smart Folder…"
+msgid "Delete smart folder…"
 msgstr "Mappa törlése…"
 
 msgid "Blue"
@@ -6166,7 +6076,7 @@ msgid "Gray"
 msgstr ""
 
 #, fuzzy
-msgid "New Tag"
+msgid "New tag"
 msgstr "Nincs új címke"
 
 #, fuzzy
@@ -6185,7 +6095,7 @@ msgid "Favorite"
 msgstr "Hozzáadás a névjegyekhez"
 
 #, fuzzy
-msgid "Manage Tags…"
+msgid "Manage tags…"
 msgstr "Címkék keresése…"
 
 #, fuzzy
@@ -6235,7 +6145,7 @@ msgid "It works: “{sent}” came back as “{back}”."
 msgstr ""
 
 #, fuzzy
-msgid "Sign In"
+msgid "Sign in"
 msgstr "Bejelentkezés"
 
 msgid "The sign-in window was closed."
@@ -6251,10 +6161,10 @@ msgid "Enter your email address, the client ID and both OAuth URLs first."
 msgstr ""
 "Először adja meg az e-mail címét, az ügyfélazonosítót és mindkét OAuth-URL-t."
 
-msgid "Sign In & Add"
+msgid "Sign in & add"
 msgstr "bejelentkezés és Hozzáadás"
 
-msgid "Test & Add"
+msgid "Test & add"
 msgstr "Tesztelés és hozzáadás"
 
 msgid "IMAP server"
@@ -6298,7 +6208,7 @@ msgstr ""
 "Ha másik nyelvet választasz, a Tegami Mail újraindul: egy pillanatra "
 "bezárul, majd a varázsló az adott nyelven jelenik meg újra."
 
-msgid "Get Started"
+msgid "Get started"
 msgstr "Kezdés"
 
 msgid "Import your online accounts"
@@ -6319,7 +6229,7 @@ msgstr "Nincs még levélfiók az Internetes Fiókokban beállítva."
 msgid "Open Online Accounts…"
 msgstr "Internetes Fiókok megnyitása…"
 
-msgid "Scan Again"
+msgid "Scan again"
 msgstr "Újraellenőrzés"
 
 msgid "Privacy, your way"
@@ -6416,7 +6326,7 @@ msgstr "Kiszolgáló adatai"
 msgid "Filled in for known providers"
 msgstr "Ismert szolgáltatókhoz kitöltve"
 
-msgid "OAuth Client ID"
+msgid "OAuth client ID"
 msgstr "OAuth ügyfélazonosító (Client ID)"
 
 msgid "OAuth Client Secret (optional)"
@@ -6752,13 +6662,13 @@ msgstr "Névjegyek hozzáadásához nem érhető el címjegyzék"
 msgid "Email"
 msgstr "E-mail"
 
-msgid "Added to Contacts"
+msgid "Added to contacts"
 msgstr "Hozzáadva a névjegyekhez"
 
 msgid "Added email to {name}"
 msgstr "E-mail-cím hozzáadva ehhez: {name}"
 
-msgid "Already in Contacts ({name})"
+msgid "Already in contacts ({name})"
 msgstr "Már a névjegyek között van ({name})"
 
 msgid "Could not add contact: {e}"
@@ -6776,7 +6686,7 @@ msgid "Could not read: {files}"
 msgstr "A alkalmazás újraindítása nem sikerült"
 
 #, fuzzy
-msgid "Import Contacts"
+msgid "Import contacts"
 msgstr "Névjegyek rendezése"
 
 #, fuzzy
@@ -6791,7 +6701,7 @@ msgid ""
 "syncs; Apply Now runs them over the mail already there."
 msgstr ""
 
-msgid "Add Filter…"
+msgid "Add filter…"
 msgstr "Szűrő hozzáadása…"
 
 msgid "Run every rule over the mail already in your inboxes"
@@ -6821,19 +6731,13 @@ msgstr ""
 msgid "Storage"
 msgstr "Tárhely"
 
-msgid "Mail Account"
-msgstr "Levelezési fiók"
-
 msgid "Nickname"
 msgstr ""
 
-msgid "Display Name"
+msgid "Display name"
 msgstr "Megjelenítési név"
 
-msgid "Email Address"
-msgstr "E-mail-cím"
-
-msgid "Incoming Protocol"
+msgid "Incoming protocol"
 msgstr "Bejövő protokoll"
 
 msgid "SMTP Server (optional)"
@@ -6868,7 +6772,7 @@ msgstr ""
 msgid "Redirect URI"
 msgstr ""
 
-msgid "Sign In with Browser"
+msgid "Sign in with browser"
 msgstr "Bejelentkezés böngészővel"
 
 #, fuzzy
@@ -6890,12 +6794,6 @@ msgstr "Külön SMTP hitelesítő adatok"
 msgid "Off uses the credentials above."
 msgstr ""
 
-msgid "SMTP Username"
-msgstr "SMTP Felhasználónév"
-
-msgid "SMTP Password"
-msgstr "SMTP Jelszó"
-
 msgid "Accept a certificate for another name"
 msgstr "Tanúsítvány elfogadása másik névhez"
 
@@ -6911,7 +6809,7 @@ msgstr "Beszélgetés megjelenítése"
 msgid "Favorites, Tags and Smart Folders across accounts."
 msgstr ""
 
-msgid "Test Connection"
+msgid "Test connection"
 msgstr "Kapcsolat tesztelése"
 
 msgid "Account accent color"
@@ -6949,7 +6847,7 @@ msgstr "Álnevek és címek (alias)"
 msgid "Extra addresses this account can send as."
 msgstr ""
 
-msgid "Add Alias…"
+msgid "Add alias…"
 msgstr "Álnév (alias) hozzáadása…"
 
 #, fuzzy
@@ -6962,14 +6860,14 @@ msgid ""
 msgstr ""
 
 #, fuzzy
-msgid "Add Signature"
+msgid "Add signature"
 msgstr "Aláírás"
 
-msgid "Import File…"
+msgid "Import file…"
 msgstr "Fájl importálása…"
 
 #, fuzzy
-msgid "Delete Signature"
+msgid "Delete signature"
 msgstr "Aláírás importálása"
 
 #, fuzzy
@@ -7065,16 +6963,13 @@ msgstr ""
 msgid "Shows a label's name when a message gives only its ID."
 msgstr ""
 
-msgid "Folder Order"
-msgstr "Mappák sorrendje"
-
 #, fuzzy
 msgid "Also in the right-click menu of its Folders heading."
 msgstr ""
 "A fiók mappáinak rendezése az oldalsávban. A Mappák fejléc jobb gombos "
 "menüjében is elérhető."
 
-msgid "Special Folders"
+msgid "Special folders"
 msgstr "Speciális mappák"
 
 msgid ""
@@ -7104,7 +6999,7 @@ msgstr ""
 msgid "Snoozed"
 msgstr ""
 
-msgid "Hidden Folders"
+msgid "Hidden folders"
 msgstr "Rejtett mappák"
 
 msgid ""
@@ -7140,7 +7035,7 @@ msgstr ""
 msgid "Search senders"
 msgstr "Feladók keresése"
 
-msgid "Allowed Senders"
+msgid "Allowed senders"
 msgstr "Engedélyezett feladók"
 
 msgid "Messages from these senders load remote content automatically."
@@ -7152,7 +7047,7 @@ msgid "Allow this sender"
 msgstr "Feladó engedélyezése"
 
 #, fuzzy
-msgid "Blocked Senders"
+msgid "Blocked senders"
 msgstr "Engedélyezett feladók"
 
 #, fuzzy
@@ -7184,7 +7079,7 @@ msgstr ""
 "Húzza a címkét az átrendezéshez: az itt látható sorrend az oldalsáv "
 "sorrendje, és az első kilenc címke válaszol az 1–9 billentyűkre."
 
-msgid "Add Tag…"
+msgid "Add tag…"
 msgstr "Címke hozzáadása…"
 
 msgid "Look through every mailbox for tags other clients have set"
@@ -7224,7 +7119,7 @@ msgstr ""
 msgid "Always fold the right group into ⋯"
 msgstr ""
 
-msgid "Focus Mode"
+msgid "Focus mode"
 msgstr "Fókusz mód"
 
 msgid ""
@@ -7232,7 +7127,7 @@ msgid ""
 "Ctrl+Shift+F or the main menu."
 msgstr ""
 
-msgid "Start in Focus Mode"
+msgid "Start in focus mode"
 msgstr "Indítás fókusz módban"
 
 msgid "Fold the reading pane's toolbar"
@@ -7366,7 +7261,7 @@ msgid ""
 msgstr ""
 
 #, fuzzy
-msgid "Undo Send"
+msgid "Undo send"
 msgstr "Visszavonás"
 
 msgid "How long Undo is offered after sending."
@@ -7383,15 +7278,15 @@ msgid "Sent mail shows who read it; the receipt goes here."
 msgstr ""
 
 #, fuzzy
-msgid "Move to Trash"
+msgid "Move to trash"
 msgstr "Piszkozat áthelyezése a Kukába"
 
 #, fuzzy
-msgid "Keep in Inbox"
+msgid "Keep in inbox"
 msgstr "Hagyja a Beérkezett levelekben"
 
 #, fuzzy
-msgid "Reply Header"
+msgid "Reply header"
 msgstr "Válaszcím"
 
 msgid "{name}, {address}, {date} and {time} are filled in from the original."
@@ -7402,7 +7297,7 @@ msgid "Line above the quoted message"
 msgstr "Az idézett üzenet felett"
 
 #, fuzzy
-msgid "Restore Default"
+msgid "Restore default"
 msgstr "Alapértelmezett beállítások visszaállítása"
 
 msgid "Spelling"
@@ -7608,7 +7503,7 @@ msgstr ""
 msgid "Mail inside an account's offline period is kept."
 msgstr ""
 
-msgid "GNOME Files Integration"
+msgid "GNOME Files integration"
 msgstr "A GNOME Fájlkezelő integrációja"
 
 msgid ""
@@ -7660,7 +7555,7 @@ msgstr "Frissítés"
 msgid "Install"
 msgstr "Telepítés"
 
-msgid "Send as Attachment Instead"
+msgid "Send as attachment instead"
 msgstr "Küldés inkább mellékletként"
 
 msgid "Small"
@@ -7672,20 +7567,17 @@ msgstr "Közepes"
 msgid "Large"
 msgstr "Nagy"
 
-msgid "Original Size"
+msgid "Original size"
 msgstr "Eredeti méret"
 
 msgid "Will be recompressed to the size shown when this is sent"
 msgstr "Küldéskor a megjelenített méretre lesz újratömörítve"
 
-msgid "Recompress to This Size on Send"
+msgid "Recompress to this size on send"
 msgstr "Újratömörítés erre a méretre küldéskor"
 
-msgid "Paste with Formatting"
+msgid "Paste with formatting"
 msgstr "Beillesztés formázással"
-
-msgid "Paste as Plain Text"
-msgstr "Beillesztés egyszerű szövegként"
 
 msgid "Email Client"
 msgstr "E-mail kliens"

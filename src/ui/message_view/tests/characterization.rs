@@ -293,7 +293,7 @@ fn address_lists_split_outside_quotes_only() {
 fn small_banner_rows_are_stable() {
     assert_eq!(
         template_row_html((7, 9)),
-        "<div class=\"tegami-unsub tegami-tpl\"><span class=\"tegami-unsub-text\">This message is a template.</span><button type=\"button\" class=\"tegami-unsub-btn tegami-tpl-btn\" data-key=\"7:9\" data-tpl=\"edit\" title=\"Change the template itself\">Edit Template</button><button type=\"button\" class=\"tegami-unsub-btn tegami-tpl-btn\" data-key=\"7:9\" data-tpl=\"use\" title=\"Start a new message from a copy of the template\">Use Template</button></div>"
+        "<div class=\"tegami-unsub tegami-tpl\"><span class=\"tegami-unsub-text\">This message is a template.</span><button type=\"button\" class=\"tegami-unsub-btn tegami-tpl-btn\" data-key=\"7:9\" data-tpl=\"edit\" title=\"Change the template itself\">Edit template</button><button type=\"button\" class=\"tegami-unsub-btn tegami-tpl-btn\" data-key=\"7:9\" data-tpl=\"use\" title=\"Start a new message from a copy of the template\">Use template</button></div>"
     );
     assert_eq!(
         unsub_row_html((1, 2), "<b>x</b>"),
@@ -328,7 +328,7 @@ fn tag_and_attachment_chips_are_stable() {
     // The icons are empty here: the resource bundle is not registered in tests.
     assert_eq!(
         att_chips_html((3, 4), &atts),
-        "<div class=\"tegami-atth\"><div><div class=\"tegami-attcount\">1 attachment</div><div class=\"tegami-atttotal\">2.0\u{a0}kB in total</div></div><button type=\"button\" class=\"tegami-attall\" data-key=\"3:4\" data-idx=\"0\"><span>Save All…</span></button></div><div class=\"tegami-attg\"><div class=\"tegami-attcard\"><button type=\"button\" class=\"tegami-attc ftype-archive\" data-key=\"3:4\" data-idx=\"0\" title=\"Open\"><span class=\"tegami-attp\"></span><span class=\"tegami-attn\">a&lt;b&gt;.zip</span><span class=\"tegami-attz\">ZIP · 2.0\u{a0}kB</span></button><div class=\"tegami-attb\"><button type=\"button\" class=\"tegami-attsave\" data-key=\"3:4\" data-idx=\"0\" title=\"Save As…\" aria-label=\"Save As…\"></button><button type=\"button\" class=\"tegami-attmore\" data-key=\"3:4\" data-idx=\"0\" title=\"More actions\" aria-label=\"More actions\"></button></div></div></div>"
+        "<div class=\"tegami-atth\"><div><div class=\"tegami-attcount\">1 attachment</div><div class=\"tegami-atttotal\">2.0\u{a0}kB in total</div></div><button type=\"button\" class=\"tegami-attall\" data-key=\"3:4\" data-idx=\"0\"><span>Save all…</span></button></div><div class=\"tegami-attg\"><div class=\"tegami-attcard\"><button type=\"button\" class=\"tegami-attc ftype-archive\" data-key=\"3:4\" data-idx=\"0\" title=\"Open\"><span class=\"tegami-attp\"></span><span class=\"tegami-attn\">a&lt;b&gt;.zip</span><span class=\"tegami-attz\">ZIP · 2.0\u{a0}kB</span></button><div class=\"tegami-attb\"><button type=\"button\" class=\"tegami-attsave\" data-key=\"3:4\" data-idx=\"0\" title=\"Save as…\" aria-label=\"Save as…\"></button><button type=\"button\" class=\"tegami-attmore\" data-key=\"3:4\" data-idx=\"0\" title=\"More actions\" aria-label=\"More actions\"></button></div></div></div>"
     );
     // A file that may run code says so in words; others do not.
     let script = [CardAttachment {

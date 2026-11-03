@@ -179,7 +179,7 @@ impl ComposingPage {
 
                     #[name = "undo_send_row"]
                     adw::ComboRow {
-                        set_title: &i18n("Undo Send"),
+                        set_title: &i18n("Undo send"),
                         set_subtitle: &i18n("How long Undo is offered after sending."),
                         connect_selected_notify[sender] => move |row| {
                             sender.input(PrefInput::ChangeUndoSend(row.selected()));
@@ -200,9 +200,9 @@ impl ComposingPage {
                         set_title: &i18n("Returned receipts"),
                         set_subtitle: &i18n("Sent mail shows who read it; the receipt goes here."),
                         set_model: Some(&gtk::StringList::new(&[
-                            &i18n("Move to Trash"),
+                            &i18n("Move to trash"),
                             &i18n("Archive"),
-                            &i18n("Keep in Inbox"),
+                            &i18n("Keep in inbox"),
                         ])),
                         connect_selected_notify[sender] => move |row| {
                             let _ = sender.output(PrefOutput::SetReturnedReceipts(
@@ -213,7 +213,7 @@ impl ComposingPage {
                 },
 
                 add = &adw::PreferencesGroup {
-                    set_title: &i18n("Reply Header"),
+                    set_title: &i18n("Reply header"),
                     set_description: Some(&i18n("{name}, {address}, {date} and {time} are filled in from the original.")),
 
                     // Saved on Apply; the text is set and wired in build
@@ -225,7 +225,7 @@ impl ComposingPage {
                         add_suffix: reply_header_reset = &gtk::Button {
                             set_icon_name: "edit-undo-symbolic",
                             set_valign: gtk::Align::Center,
-                            set_tooltip_text: Some(i18n("Restore Default").as_str()),
+                            set_tooltip_text: Some(i18n("Restore default").as_str()),
                             add_css_class: "flat",
                         },
                     },

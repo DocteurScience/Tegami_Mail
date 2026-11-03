@@ -158,9 +158,9 @@ impl Welcome {
         }
         widgets.server_exp.set_visible(!builtin);
         widgets.add_btn.set_label(&if oauth {
-            i18n("Sign In & Add")
+            i18n("Sign in & add")
         } else {
-            i18n("Test & Add")
+            i18n("Test & add")
         });
         if let Some(p) = wizard_provider(sel) {
             let (ih, ip, sh, sp) = p.wizard_servers();
@@ -193,7 +193,7 @@ impl Welcome {
             widgets.smtp_port_row.set_visible(!jmap);
             // Fastmail over JMAP takes an API token, not the password (#356).
             widgets.pass_row.set_title(&if p.wizard_token() {
-                i18n("API Token")
+                i18n("API token")
             } else {
                 i18n("Password")
             });

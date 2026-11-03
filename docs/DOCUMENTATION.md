@@ -51,7 +51,7 @@ They are listed on the first-run wizard's first account page, which can be
 skipped, and under **Settings → Accounts → GNOME Online Accounts**, where a
 switch brings one into Tegami Mail. An account added in GNOME Settings while Tegami Mail
 is open joins the list as soon as GNOME announces it; the refresh button
-beside **Add Account…** looks again at once.
+beside **Add account…** looks again at once.
 
 GNOME keeps such an account's address, servers and password, and Tegami Mail
 follows it. The password is read from GNOME Online Accounts each time the
@@ -125,26 +125,26 @@ instead, without the prefix. How
 the custom folders are sorted is chosen in **Settings → Sidebar → Folder
 order**, for every account:
 
-- **Custom Order** (the default): by the name shown, with any folder you
+- **Custom order** (the default): by the name shown, with any folder you
   dragged kept where you put it. A folder that was never dragged, such as
   one created later, goes just after the sibling that comes before it by
   name.
 - **Name (A to Z)** and **Name (Z to A)**: by the name shown, whatever was
   dragged. Gmail's `[Gmail]/Important` sorts as "Important", as it does in
   Thunderbird.
-- **Full Path**: by the whole path on the server, the way Gmail on the web
+- **Full path**: by the whole path on the server, the way Gmail on the web
   lists labels.
 
-An account can have its own: **Folder Order → Sort by** in the account's
+An account can have its own: **Folder order → Sort by** in the account's
 settings (Settings → Mail Accounts → the account), or the right-click menu
-of the account's **Folders** heading in the sidebar. **Follow Settings** goes back
+of the account's **Folders** heading in the sidebar. **Follow settings** goes back
 to the choice in Settings → Sidebar.
 
-A folder's right-click menu has **Mark All as Read** and **Sync This
+A folder's right-click menu has **Mark all as read** and **Sync This
 Folder**; **New Subfolder…**, which makes a folder inside it, and
-**Rename…**; then **Add to Favorites**, **Apply Filters**, **Edit
+**Rename…**; then **Add to favorites**, **Apply filters**, **Edit
 Filter…**, **Hide Folder** and **Empty Trash…** or **Empty Junk…** where
-they apply; and **Delete Folder**, in red, at the end. Only folders you
+they apply; and **Delete folder**, in red, at the end. Only folders you
 made can be renamed, hidden or deleted.
 
 To put folders in an order of your own, drag them up or down the list.
@@ -169,7 +169,7 @@ folder keeps its place.
 The order is kept on this computer, in `sidebar.toml`, and an account's
 own sort in `accounts.toml` as `folder_sort`; only a move to another level
 changes anything on the server. IMAP has no folder order, so other mail
-apps and Gmail on the web each keep their own. **Reset Folder Order**, in
+apps and Gmail on the web each keep their own. **Reset folder order**, in
 the right-click menu of the account's header or its Folders heading, forgets
 what was dragged. The item is there only once something has been.
 
@@ -199,12 +199,12 @@ chevron at its end. Clicking the name opens the combined view either way.
 
 ### Favorites
 
-Right-click any folder in the sidebar and choose **Add to Favorites** to list
+Right-click any folder in the sidebar and choose **Add to favorites** to list
 it in a Favorites row above the accounts (**Settings → Sidebar → Sections**
 can move it). Favorites can come from any account, keep the order they were
 added in, and show their unread counts; the folder's glyph takes its
 account's color. Clicking Favorites lists the mail of every favorite folder
-together; its chevron, or a double click, opens or closes the list. **Remove from Favorites**, in the same
+together; its chevron, or a double click, opens or closes the list. **Remove from favorites**, in the same
 menu or on the favorite itself, takes it out, and the row goes when the last
 one does. Favorites show with a single account too, and for an account left
 out of the combined views.
@@ -257,7 +257,7 @@ before Tegami Mail read labels gets them once, in the background.
 
 ### Hiding folders
 
-Right-click a folder in the sidebar and choose **Hide Folder** to take it out
+Right-click a folder in the sidebar and choose **Hide folder** to take it out
 of the sidebar and out of syncing: the folder is not listed, its unread count
 is not fetched, and its mail is not indexed until it is shown again. Only
 plain folders can be hidden; the folders holding a role (Sent, Drafts,
@@ -292,7 +292,7 @@ without the key an account is included.
 
 ### Moving mail to another account
 
-**Move To** lists the folders of the account the mail is in first, then those
+**Move to** lists the folders of the account the mail is in first, then those
 of every other account that can take mail, each under its account's name.
 Dragging messages onto another account's folder in the sidebar does the same.
 
@@ -312,13 +312,13 @@ as a draft, and POP3 has only an inbox.
 
 ### On This Computer
 
-**Settings → Accounts → On This Computer → Add** adds folders kept on this
+**Settings → Accounts → On this computer → Add** adds folders kept on this
 computer rather than on a server, as Evolution's account of the same name
 does. It starts with a Trash, and an Inbox that is shown only while it
 holds mail, as mail copied from an account goes to a folder named after
 the account. Folders are made, renamed and
 deleted as on any account, and mail comes in by being moved there from
-another account with **Move To**, or by dragging it onto
+another account with **Move to**, or by dragging it onto
 one of its folders (see [Moving mail to another account](#moving-mail-to-another-account)).
 Moving mail to a folder it does not have yet, such as Archive or Snoozed,
 makes the folder.
@@ -352,7 +352,7 @@ listed in `tegami-copied/` beside the folders.
 
 #### Importing from another program
 
-**Settings → Accounts → On This Computer → Import** takes mail from
+**Settings → Accounts → On this computer → Import** takes mail from
 another program's folders:
 
 - **Maildir folders**: a Maildir tree, such as Evolution's own On This
@@ -382,7 +382,7 @@ the folders where they are, and adding it again finds them.
 
 ### Deleting an attachment from the server
 
-**Delete from Server…** in the right-click menu of a file in the attachment
+**Delete from server…** in the right-click menu of a file in the attachment
 drawer takes that one file out of the message
 on the server, to save space there. The rest of the message stays: its text,
 its other files, where it is filed, its read, starred and tag state, and its
@@ -578,7 +578,7 @@ GNOME Online Accounts account's page has **Open Online Accounts**, where its
 sign-in is changed; a CardDAV account's and a directory's page is their form,
 with **Remove**.
 
-**Add Address Book…** offers a CardDAV server, iCloud, Nextcloud, Fastmail,
+**Add address book…** offers a CardDAV server, iCloud, Nextcloud, Fastmail,
 Yahoo and an LDAP directory, set up in Tegami Mail, and Google and Microsoft 365,
 which are added in GNOME Online Accounts and then listed here; the refresh
 button beside it looks again for one just added there. Every kind but the
@@ -597,15 +597,15 @@ this, and a contact saved without a name keeps the message's.
 
 ### The Tegami Mail address book
 
-Tegami Mail keeps an address book of its own, the **Tegami Mail Address Book**, beside
+Tegami Mail keeps an address book of its own, the **Tegami Mail address book**, beside
 the address books of GNOME Contacts, which Evolution Data Server (EDS)
 holds. It is there whether EDS is installed or not. Its addresses and photos
-are used for suggestions and avatars. **Add Sender to Contacts**, in a
+are used for suggestions and avatars. **Add sender to contacts**, in a
 message's menus, puts an address in it, or in the book chosen under **Save
 new contacts in**. Tegami Mail has no contacts view of its own: contacts in a
 GNOME Contacts or online book are edited there.
 
-**Settings → Contacts → Tegami Mail Address Book** imports `.vcf` files into
+**Settings → Contacts → Tegami Mail address book** imports `.vcf` files into
 it, exports it, and deletes all of it. A file can hold many contacts, in
 vCard 2.1, 3.0 or 4.0. A contact with the same ID as one already in the book
 updates it, and one without an ID is matched by its content, so importing a
@@ -653,13 +653,13 @@ address condition with no text, which matches nothing.
 
 ### CardDAV accounts
 
-**Add Address Book…** in Settings → Contacts adds the address books on a
+**Add address book…** in Settings → Contacts adds the address books on a
 CardDAV server, such as Nextcloud, iCloud, Fastmail, Radicale or a mail
 provider's, without GNOME Online Accounts or Evolution. Their contacts are listed in Contacts,
 in the book list above them, and suggested in the composer; a contact added
 or changed in Tegami Mail is saved to the server.
 
-Pick **CardDAV Server**, or the service by name: iCloud, Fastmail and Yahoo
+Pick **CardDAV server**, or the service by name: iCloud, Fastmail and Yahoo
 fill in their server, and Nextcloud asks for yours. The form asks for:
 
 - **Server**: the server's address is enough for most services, such as
@@ -679,7 +679,7 @@ removes the account and its address books from this computer, leaving the
 server as it is.
 
 Google and Microsoft 365 address books are added in GNOME Online Accounts
-instead, which **Add Address Book…** points to: Google takes no password over
+instead, which **Add address book…** points to: Google takes no password over
 CardDAV, and Microsoft 365 has no CardDAV.
 
 An account is kept by Evolution Data Server, the service GNOME Contacts and
@@ -698,7 +698,7 @@ GNOME. Without it, the page says so.
 ### LDAP directories
 
 The directories the composer looks recipients up in are added in Settings →
-Contacts, with **Add Address Book…** → **LDAP Directory**, and listed there
+Contacts, with **Add address book…** → **LDAP directory**, and listed there
 with the other address books. Once three characters of a name or address are typed in
 To, Cc or Bcc, each directory that is switched on is asked for people whose
 name, surname or address starts with them, and the answers join the
@@ -708,7 +708,7 @@ directory to your machine.
 The search in Contacts asks the directories the same way. The people they
 hold are listed after your contacts, under **In Directories**, with the
 directory's name beside each address. Selecting one shows the entry: an
-address starts a message, and **Add to Contacts** copies the person into the
+address starts a message, and **Add to contacts** copies the person into the
 default address book. Each directory is also in the address book list above
 the contacts, by name after the address books: picking it shows only the
 people the search finds there. A directory switched on in Evolution is searched
@@ -785,7 +785,7 @@ answers. **Translate into** is Tegami Mail's own language unless another is chos
 
 A message is translated from the A文 button in its card's actions, or from
 Translate in its right-click menu. The card then shows the translation, with a banner naming the service and the language
-it came from, and **Show Original** in the banner or the menu switches back. The
+it came from, and **Show original** in the banner or the menu switches back. The
 subject is translated with it, in the heading above the message. A
 translation is kept for
 the rest of the session, so opening the message again costs nothing more.
@@ -811,8 +811,8 @@ then the one you used last, then every other. When everything is
 translated, the subject is too, unless the message is a reply or a forward,
 whose subject is already the conversation's. The translation replaces your
 text as one edit, so Ctrl+Z gives back what you wrote. Until you change the
-text again, the same menu offers **Show Original**, which puts back what you
-wrote, subject included, and then **Show Translation**. It works in rich
+text again, the same menu offers **Show original**, which puts back what you
+wrote, subject included, and then **Show translation**. It works in rich
 text and plain text. A message set to be encrypted is never
 sent for translation.
 
@@ -821,21 +821,21 @@ The settings are in `translation.toml`; the key is in the keyring.
 ### Signatures
 
 An account's signature is written in the **Signatures** group of its
-settings, in the same editor as a message; **Import File…** loads one from
+settings, in the same editor as a message; **Import file…** loads one from
 an HTML or text file. **Edit HTML**, at the end of the editor's toolbar,
 shows the signature as its HTML source to edit in place, and **Preview**
 turns it back into the formatted signature. Scripts and style sheets are
 removed from the source; inline styles, tables and pictures are kept.
 
-**Add Signature** starts another, for writing in another language or a
+**Add signature** starts another, for writing in another language or a
 shorter one for quick replies. Once there are two, a **Signature** chooser
 picks the one being edited and a **Name** field names it. **Start messages
 with this signature** marks the one new messages, replies and forwards open
 with; with it off for all of them, a message opens without one. A signature
 left empty is not saved.
 
-With more than one, the composer's **Insert Signature** button lists them
-by name, with **No Signature** at the end. The one picked replaces the
+With more than one, the composer's **Insert signature** button lists them
+by name, with **No signature** at the end. The one picked replaces the
 signature in the message, in the same place; with none in the message, it
 goes where a signature goes. Changing **From** to another account puts in
 that account's own signature; an alias of the same account keeps the one
@@ -856,10 +856,10 @@ Evolution and Mutt use that line to show the signature dimmed and to leave it
 out when they quote your message; Gmail, Apple Mail and Outlook ignore it.
 
 **Edit as New** leaves the signature out, since the copied message already
-has one. **Insert Signature**, the button beside Translate at the end of the
+has one. **Insert signature**, the button beside Translate at the end of the
 formatting row, puts the From account's signature where the cursor is, on a
 line of its own; with several it lists them, as above. Right-click the
-button for **Insert Before the Text** or **Insert After the Text**, the top
+button for **Insert before the text** or **Insert after the text**, the top
 or the end of the message, with the signature last picked or else the
 default. A signature already in the message moves rather than doubling; one
 inside a quoted message is left alone. The button is there only for an
@@ -877,7 +877,7 @@ A reply opens with a line above the quoted message, "On Oct 25, 2026 at
 Header** changes it: `{name}`, `{address}`, `{date}` and `{time}` are
 filled in from the original, so `{name} <{address}> wrote on {date}:` gives
 "Ada <ada@example.org> wrote on Oct 25, 2026:". The date and time follow
-**Date format** and **Clock** in **Settings → Date and Time**. The button at
+**Date format** and **Clock** in **Settings → Date and time**. The button at
 the end of the row restores the default, which follows the language of the
 app. A forward opens with the original's From, Date and Subject, in the
 app's language too.
@@ -912,7 +912,7 @@ Mail already downloaded shows its arrows once it is fetched again.
 ### Replies filed beside the original
 
 A copy of a sent reply goes with the rest of sent mail unless the account
-says otherwise. In **Mail Accounts → Edit → Special Folders**, **Save a copy
+says otherwise. In **Mail accounts → Edit → Special folders**, **Save a copy
 of replies in** has two other choices:
 
 - **Folder of the original** files the copy of a reply in the folder of the
@@ -938,7 +938,7 @@ own copy of sent mail** on, the server's copy is the only one.
 A message being written is saved to the Drafts folder on its own every 30
 seconds while it changes, so a crash or a lost connection costs at most that
 much. Nothing is saved before you have changed anything, so an untouched
-reply leaves no draft. Each save replaces the one before, and **Save Draft**
+reply leaves no draft. Each save replaces the one before, and **Save draft**
 and **Send** replace or remove it as they would a draft you
 saved. **Discard** on a new message removes the copy it left; on a draft you
 had saved before, the last automatic save stays. A save that fails, offline
@@ -997,16 +997,16 @@ account's Templates folder, on the server, so another client that keeps
 templates there, Thunderbird among them, sees the same ones.
 
 - Templates are the messages in that folder, whoever put them there.
-- A template opened in the Templates folder has a banner. **Use Template**,
+- A template opened in the Templates folder has a banner. **Use template**,
   or a double-click on it in the list, opens a new message with its
   recipients, subject, text and files, sent from the address it was saved
   with. The template stays as it is.
-- **Edit Template** opens the template itself, where a new message opens:
+- **Edit template** opens the template itself, where a new message opens:
   in the reading pane, or in a window of its own with **Settings →
   Composing → Compose in the main window** switched off. **Save Template**
   puts the changed one back in its place, and nothing is saved on its own
   while it is open. Sending from it leaves the template in Templates.
-- **New Message from Template…**, in the arrow at the end of **New
+- **New message from template…**, in the arrow at the end of **New
   Message** (on its right-click menu when the sidebar is folded to icons),
   or <kbd>Ctrl+Shift+N</kbd>, lists every account's templates to start
   from.
@@ -1014,7 +1014,7 @@ templates there, Thunderbird among them, sees the same ones.
 A folder called Templates is taken for the role, at the top of the account
 or directly under the Inbox. Nothing on a server marks one otherwise, so a
 folder by another name, "Vorlagen" say, is chosen in the account's
-**Special Folders**, under **Templates**.
+**Special folders**, under **Templates**.
 
 ### Addresses as pills
 
@@ -1056,7 +1056,7 @@ the next field.
 
 The **From** row names the address the message goes from. A click on it
 opens **Send from**: each account's address and the aliases set up for it,
-the one in use marked, then **Manage Accounts…**, which opens the accounts
+the one in use marked, then **Manage accounts…**, which opens the accounts
 in Settings. A reply to mail sent to a `+tag` address of one of your
 addresses starts from that address, and a draft saved from an address that
 is none of yours opens with it; picking an address in **Send from** replaces
@@ -1091,10 +1091,10 @@ rest of what a mail can carry:
 - **Font:** Sans Serif, Serif or Monospace, which leave the recipient's
   client to pick its own font of each kind; the fonts most mail programs
   offer, such as Arial, Georgia, Verdana and Courier New, each with a
-  fallback; or **Other Font…** for any font installed here, followed by its
+  fallback; or **Other font…** for any font installed here, followed by its
   generic kind in case the recipient lacks it. Each font in the menu is shown
   in its own face. The last five fonts picked
-  with **Other Font…** are listed at the foot of the menu. With nothing
+  with **Other font…** are listed at the foot of the menu. With nothing
   selected, the font applies to what is typed next.
 - **Font size:** points from 8 to 36, or Default. With nothing selected, the
   size applies to what is typed next.
@@ -1114,7 +1114,7 @@ changes it for the message at hand. **Settings → Composing → Font** and
 **Font size** set the font and size a rich-text message starts in, and they
 are sent with it, so the recipient sees them too. They cover what you
 write: the signature and the message quoted in a reply or forward keep their
-own look, and text given its own font or size in the message keeps it. **Other Font…** in the Font list picks any
+own look, and text given its own font or size in the message keeps it. **Other font…** in the Font list picks any
 installed font. Default, for both, leaves the recipient's own font and size
 in charge. **Settings → Composing → Default zoom** is the size the
 composer shows a new message at, on screen only: Same as reading pane zoom, the
@@ -1135,7 +1135,7 @@ so a message can mix languages. Switching a dictionary on switches the
 system language off, and switching the last one off switches it back on.
 The system language is the session's own, or the nearest dictionary to it.
 
-The **Spelling Language** submenu at the bottom of the body's right-click
+The **Spelling language** submenu at the bottom of the body's right-click
 menu has the same choices, ticked as they stand. A choice made there is
 saved as the setting and applies to every open composer at once.
 
@@ -1345,7 +1345,7 @@ Files dragged from a file manager over a composer bring up a card for each
 place they can go, and the files go where they are let go:
 
 - **Attach** sends them with the message.
-- **Insert in Text** places the pictures in the message where the cursor is
+- **Insert in text** places the pictures in the message where the cursor is
   (at the top when the cursor is not in the text), and attaches any other
   file. It is offered when the files include a PNG, JPEG, GIF, WebP, BMP,
   SVG or AVIF picture of 32 MB or less, and only while the message is being
@@ -1450,7 +1450,7 @@ selected to that one, without folding or opening it. Archive, Delete, Spam and M
 messages alone, and the rest of the conversation stays open.
 
 An open message's **More actions** (⋯) answers that message: **Reply**,
-**Reply All** and **Forward**. Everything else is in the reader's header,
+**Reply all** and **Forward**. Everything else is in the reader's header,
 which acts on the conversation's latest message, and in the message's
 right-click menu.
 
@@ -1463,7 +1463,7 @@ conversation opens: **Never** shows every message, **Messages already read**
 folds what you have read, and **All but the newest** folds every message
 except the newest, read or not. The newest always opens, and so does a
 message you move to with `w` or `b`. Right-clicking anywhere in a
-conversation offers **Expand All Messages** and **Collapse All Messages**.
+conversation offers **Expand all messages** and **Collapse all messages**.
 What you fold or open stays that way while the conversation is on screen,
 and so does a message read while it is open.
 Printing shows every message in full.
@@ -1477,9 +1477,9 @@ Archive and Delete by default. The right group folds away: always while
 is on a new install, and otherwise only when the pane is too narrow for it.
 Tags keeps its button while there is room.
 
-**More actions** (⋯), at the end, holds **Forward as Attachment**, **Mark as
+**More actions** (⋯), at the end, holds **Forward as attachment**, **Mark as
 Unread**, **Mark as Spam** and **Move To…**, then **Show Remote Content**,
-**View Source**, **Print…** and **Save as File…**; one of them that is a
+**View source**, **Print…** and **Save as file…**; one of them that is a
 button on the bar is left out. Forward as Attachment opens a composer with
 the message attached whole, as an `.eml` file. Star, Snooze and Find in
 Message are in a message's right-click menu and on their keys (**s**,
@@ -1504,13 +1504,13 @@ gathers the files of every message in it. **Ctrl+F** finds in the message and **
 A message saved whole, as a `.eml` file or Outlook's `.msg`, opens in a
 window of its own:
 double-click it in GNOME Files (Tegami Mail is offered for email files), pass it to
-`tegami` on the command line, or pick **Open Message File…** in the command
+`tegami` on the command line, or pick **Open message file…** in the command
 palette (**Ctrl+K**). It is drawn as mail from a server is, with its
-attachments in the drawer, and **Reply**, **Reply All** and **Forward**
+attachments in the drawer, and **Reply**, **Reply all** and **Forward**
 write from the account in view. It belongs to no folder, so there is nothing
 to star, move or delete.
 
-**Save as File…**, in a message's right-click menu in the list or on its card,
+**Save as file…**, in a message's right-click menu in the list or on its card,
 saves the message whole, as the server keeps it, under its subject with
 `.eml` on the end.
 
@@ -1587,7 +1587,7 @@ which marks it read as **Settings → Reading → Mark as read** says. A
 conversation opens whole, each message marked as its window scrolls through
 it. Tegami Mail remembers the choice.
 
-**Settings → Message List → Layout** sets how the list shows a message.
+**Settings → Message list → Layout** sets how the list shows a message.
 **Cards** gives the sender, the subject and the start of the text lines of
 their own. **Single line** puts them on one line in columns: the sender's
 circle and name, the subject with the text dimmed after it, then tags, a
@@ -1597,7 +1597,7 @@ when it is narrower. On one line the actions palette is not shown and a
 row does not swipe, as sideways is how the list scrolls to its columns;
 the right-click menu and keyboard shortcuts do the same things.
 
-**Settings → Message List → Columns** chooses what a single line shows and
+**Settings → Message list → Columns** chooses what a single line shows and
 in what order: drag a column between **Shown** and **Not shown**, or along
 the row. Any number of columns can be shown. The subject always stays, and
 the conversation's size rides at its end. The columns are:
@@ -1633,7 +1633,7 @@ name with untagged mail last. The sort menu follows the headings.
 The name, tags and date columns are resized by dragging a heading's edge,
 where a line shows under the pointer: the right edge of a column left of
 the subject, the left edge of one right of it. A double click there puts
-the column back to its usual width, and **Restore Defaults** puts every
+the column back to its usual width, and **Restore defaults** puts every
 column back.
 
 **Fit columns to the list**, in the same group and on until it is switched
@@ -1643,10 +1643,10 @@ column keeps its width, the subject takes the room they leave, and a list
 too narrow for them all scrolls sideways to the columns past its edge, the
 headings with it.
 
-A right-click on the headings offers **Customize Columns…**, which opens
-Settings at **Message List → Columns**.
+A right-click on the headings offers **Customize columns…**, which opens
+Settings at **Message list → Columns**.
 
-**Settings → Message List → Group by date**, on by default, divides the
+**Settings → Message list → Group by date**, on by default, divides the
 list under headings: **Today**, **Yesterday**, **Last 7 days**, **Last 14
 days** and **Older**, counted in calendar days on this computer's clock. The headings
 show only while the list is sorted by date, newest or oldest first, and move
@@ -1656,23 +1656,23 @@ first, and its replies stay with it when it is opened out. The headings work
 in both layouts and in search results, and are not rows: the keyboard,
 selection and swipes pass them by. It is off unless switched on.
 
-**Settings → Message List → Tint tagged messages** washes the row of a
+**Settings → Message list → Tint tagged messages** washes the row of a
 tagged message with its tag's color, in both layouts. A message with more
 than one tag takes the color of the one listed first in **Settings → Tags**.
 A selected row keeps the selection color. It is on unless switched off.
 
-**Settings → Message List → Tags and labels under the text** puts a card's
+**Settings → Message list → Tags and labels under the text** puts a card's
 tags, Gmail labels and folder pill on a line of their own under the
 message's text, so the subject keeps the row's full width. It is off unless
 switched on; a single-line list keeps them in its Tags column.
 
-**Settings → Message List → Keep the search field open** shows the search
+**Settings → Message list → Keep the search field open** shows the search
 field with the list all the time, instead of only after the search button,
 <kbd>Ctrl+F</kbd> or <kbd>/</kbd>. One click in it starts a search.
 <kbd>Esc</kbd> clears it and returns to the list, and it stays where it is.
 It is off unless switched on.
 
-**Settings → Message List → Search field position** and **Selection bar
+**Settings → Message list → Search field position** and **Selection bar
 position** set where the search field and the bar for several selected
 messages open: at the top of the list, the default, or at the bottom. At the top, each one pushes the
 messages down when it opens; at the bottom, the list gets shorter from its
@@ -1734,10 +1734,10 @@ sender or subject, or puts unread or starred mail first. **Show only** holds
 the quick filters:
 
 - **Unread** and **Starred**
-- **Has Attachments**
-- **Addressed to Me**: one of your addresses or aliases is in To or Cc
-- **From Contacts**: the sender is in your Contacts, as for filter rules
-- **High Importance**
+- **Has attachments**
+- **Addressed to me**: one of your addresses or aliases is in To or Cc
+- **From contacts**: the sender is in your Contacts, as for filter rules
+- **High importance**
 - **Tagged**: the message has a tag or a Gmail label
 - **Today**: it arrived since midnight on this computer's clock
 
@@ -1746,14 +1746,14 @@ the **From** day to the end of the **To** day, on this computer's clock.
 Choosing **From** or **To** sets it to the day in blue on the calendar below
 them, or moves the calendar to the day it already has; a click on a day then
 sets it. A click on a day with neither chosen sets **From**. An end left at
-**Any Date** is open, to show everything since, or up to, a day. **Clear
+**Any date** is open, to show everything since, or up to, a day. **Clear
 Dates** opens both ends again. Older mail is there as soon as the folder's
 index has reached it.
 
 A click turns a filter on or off and leaves the popover open, so an order
 and several filters can be set at once; together the filters show only the
 mail that matches all of them. While any is on the button is in the accent
-color and its tooltip names them, with the dates. **Clear Filters** turns
+color and its tooltip names them, with the dates. **Clear filters** turns
 them all off. They apply to whichever folder or search is shown, and last
 until Tegami Mail is closed. In Focus Mode they are under **Filter** and **Sort**
 in the list's ⋯ menu; the dates are set in the popover only.
@@ -1888,7 +1888,7 @@ offers no way to search for the header, so the choice is not shown there.
 
 A message can ask for a read receipt: a short message back to its sender
 saying when it was opened. When one asks, a banner above its text says so,
-with **Send Receipt** and **Ignore**. Either answer is remembered, and on IMAP
+with **Send receipt** and **Ignore**. Either answer is remembered, and on IMAP
 and JMAP accounts the message is marked `$MDNSent`, as Thunderbird and K-9
 Mail mark it, so other mail apps do not ask again. Your own mail, and mail in
 Sent, Drafts, Templates, Junk and Trash, never asks. Neither does mail
@@ -1982,9 +1982,9 @@ fetched. It all resumes once the connection is no longer metered. Stored as
 ### Notifications
 
 A new-mail notification opens the message when clicked. When it is about a
-single message it also carries up to three buttons. **Mark as Read**,
+single message it also carries up to three buttons. **Mark as read**,
 **Archive**, **Delete** (to Trash, with the usual undo in the window) and
-**Mark as Spam** act on the message without raising the window; **Reply**
+**Mark as spam** act on the message without raising the window; **Reply**
 and **Forward** open the message with the composer started. Settings →
 General → Notification Buttons picks any three of the six (Mark as Read,
 Archive and Delete to begin with); a notification that sums up several new
@@ -2045,7 +2045,7 @@ connection when Settings asks to save data there. It is off by default,
 because a sender's tracking pixel then reports a message as opened before you
 open it. Stored as `remote_ahead` in `privacy.toml`.
 
-**Read receipts** are sent only when you press **Send Receipt**, unless
+**Read receipts** are sent only when you press **Send receipt**, unless
 **Settings → Privacy → Send read receipts** is **Always**. See
 [Read receipts](#read-receipts).
 

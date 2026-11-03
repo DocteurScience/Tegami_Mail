@@ -184,7 +184,7 @@ impl EditorRows {
 
         let check_box = gtk::Box::new(gtk::Orientation::Horizontal, 8);
         check_box.set_margin_top(8);
-        let check = gtk::Button::with_label(&i18n("Check Connection"));
+        let check = gtk::Button::with_label(&i18n("Check connection"));
         check.set_valign(gtk::Align::Start);
         let status = gtk::Label::new(None);
         status.set_wrap(true);
@@ -415,7 +415,7 @@ pub(super) fn build_editor(
             cloudflare.set_visible(!dropbox && !goa);
             if goa {
                 fill_goa(k);
-                check.set_label(&i18n("Check Connection"));
+                check.set_label(&i18n("Check connection"));
                 expire.set_subtitle(&i18n(
                     "Days. 0 keeps links forever. Needs Microsoft 365 or OneDrive for Business.",
                 ));
@@ -444,7 +444,7 @@ pub(super) fn build_editor(
                     protect.set_subtitle(&i18n(
                         "Each file gets its own password, shown to you to pass on.",
                     ));
-                    check.set_label(&i18n("Check Connection"));
+                    check.set_label(&i18n("Check connection"));
                 }
                 CloudKind::Seafile => {
                     user.set_title(&i18n("E-mail"));
@@ -456,7 +456,7 @@ pub(super) fn build_editor(
                     protect.set_subtitle(&i18n(
                         "Each file gets its own password, shown to you to pass on.",
                     ));
-                    check.set_label(&i18n("Check Connection"));
+                    check.set_label(&i18n("Check connection"));
                 }
                 // Handled above, before the return.
                 CloudKind::OneDrive => {}

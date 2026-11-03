@@ -25,6 +25,10 @@ Le redesign suit [docs/DESIGN.md](docs/DESIGN.md) et
   `tools/dev/set-po.py po/fr.po 'msgid' 'traduction' …` (pluriel :
   `'sing|plur'`), puis `msgfmt --check po/fr.po -o /dev/null`. Le français
   du catalogue utilise une espace normale avant « : » et l'apostrophe ’.
+- Libellés en anglais en casse de phrase : majuscule au premier mot
+  seulement (« Mark all as read »), sauf noms propres et produits (GNOME
+  Online Accounts, OpenPGP, Tegami Mail). Décision du propriétaire,
+  2026-11-03.
 - Commentaires : le pourquoi, pas le quoi. Chaque module commence par un
   `//!` qui dit ce qu'il possède. Une fonction au comportement non évident
   a un `///` avec la raison des choix. Citer le numéro d'issue pour un

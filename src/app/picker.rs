@@ -27,7 +27,7 @@ pub(super) fn show_message_picker<T: 'static>(
 ) {
     let dialog = adw::MessageDialog::new(Some(parent), Some(heading), Some(body));
     dialog.add_response("cancel", &i18n("Cancel"));
-    dialog.add_response("new", &i18n("New Message Instead"));
+    dialog.add_response("new", &i18n("New message instead"));
     dialog.add_response("pick", pick_label);
     dialog.set_response_appearance("pick", adw::ResponseAppearance::Suggested);
     dialog.set_response_enabled("pick", false);

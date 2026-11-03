@@ -49,7 +49,7 @@ impl SettingsSearch {
     ) -> Self {
         let button = gtk::ToggleButton::new();
         button.set_icon_name("system-search-symbolic");
-        button.set_tooltip_text(Some(&i18n("Search Settings")));
+        button.set_tooltip_text(Some(&i18n("Search settings")));
         header.pack_start(&button);
 
         let entry = gtk::SearchEntry::new();
@@ -77,7 +77,7 @@ impl SettingsSearch {
 
         let empty = adw::StatusPage::new();
         empty.set_icon_name(Some("system-search-symbolic"));
-        empty.set_title(&i18n("No Results"));
+        empty.set_title(&i18n("No results"));
         empty.add_css_class("compact");
 
         let stack = gtk::Stack::new();

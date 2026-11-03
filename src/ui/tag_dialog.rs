@@ -38,7 +38,7 @@ pub(crate) fn show(
     on_create: impl Fn(String, String) + 'static,
 ) {
     let dialog = adw::Dialog::new();
-    dialog.set_title(&i18n("New Tag"));
+    dialog.set_title(&i18n("New tag"));
     dialog.set_content_width(420);
 
     let header = adw::HeaderBar::new();

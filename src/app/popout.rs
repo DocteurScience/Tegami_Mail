@@ -142,7 +142,7 @@ impl AppModel {
 
         let window = adw::Window::builder()
             .transient_for(&self.window)
-            .title(i18n("Message Source"))
+            .title(i18n("Message source"))
             .default_width(720)
             .default_height(620)
             .content(&toolbar)

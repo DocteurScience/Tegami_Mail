@@ -25,7 +25,7 @@ impl AppModel {
     ) {
         let (heading, body) = match &parent {
             None => (
-                i18n("New Folder"),
+                i18n("New folder"),
                 i18n("Create a new folder for this account."),
             ),
             Some(path) => {
@@ -35,7 +35,7 @@ impl AppModel {
                     .and_then(|fs| fs.iter().find(|f| f.path == *path))
                     .map_or_else(|| path.clone(), |f| f.name.clone());
                 (
-                    i18n("New Subfolder"),
+                    i18n("New subfolder"),
                     i18n_f("Create a folder inside {folder}.", &[("folder", &name)]),
                 )
             }
@@ -134,7 +134,7 @@ impl AppModel {
             ));
             return;
         }
-        self.apply_folder_rename(account_id, path, new_path, Some(i18n("Rename Folder")));
+        self.apply_folder_rename(account_id, path, new_path, Some(i18n("Rename folder")));
     }
 
     /// Confirm deleting a custom folder (contents moved to Trash). Deliberately
@@ -233,7 +233,7 @@ impl AppModel {
                     self.create_folder(account_id, path.clone());
                     self.push_undo(
                         account_id,
-                        i18n("Create Folder"),
+                        i18n("Create folder"),
                         UndoStep::DeleteFolder { path },
                     );
                 }

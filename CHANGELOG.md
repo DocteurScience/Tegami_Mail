@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+- **Changed: labels in sentence case.** Menus, buttons, titles and
+  headings capitalise their first word only ("Mark all as read", "Save
+  as file…"), as the redesign asks; names of products and programs keep
+  theirs (GNOME Online Accounts, OpenPGP, Tegami Mail). Translations are
+  unchanged.
+
 - **Removed: Show Accounts** (the main menu item, **Ctrl+Shift+A** and
   **Settings → Sidebar → Accounts in the sidebar**) and Focus Mode's
   **Fold up the unified rows**: without the unified section they only
@@ -15,7 +21,7 @@
   quoted name with a comma in it is no longer cut in two by Reply All.
 
 - **Changed: an open message's More actions** (⋯ on its card) holds
-  **Reply**, **Reply All** and **Forward** alone, as the redesign has it.
+  **Reply**, **Reply all** and **Forward** alone, as the redesign has it.
   The card's right-click menu keeps every action.
 
 - **Changed: a recipient in the composer wears its avatar** (mockup 04),
@@ -23,14 +29,14 @@
   button is 32 pixels square, an easier target.
 
 - **Changed: a folder's right-click menu follows the redesign** (mockup
-  06), in sections: **Mark All as Read** and **Sync This Folder**; **New
+  06), in sections: **Mark all as read** and **Sync this folder**; **New
   Subfolder…** (new: a folder inside this one) and **Rename…**; the
-  folder's other actions; **Delete Folder** alone at the end.
+  folder's other actions; **Delete folder** alone at the end.
 
 - **Changed: the reader's More actions follows the redesign** (mockup 06):
-  **Forward as Attachment** (new: the message attached whole, as an
-  `.eml` file), **Mark as Unread**, **Mark as Spam**, **Move To…**, then
-  **Show Remote Content**, **View Source**, **Print…** and **Save as
+  **Forward as attachment** (new: the message attached whole, as an
+  `.eml` file), **Mark as unread**, **Mark as spam**, **Move to…**, then
+  **Show remote content**, **View source**, **Print…** and **Save as
   File…**. The ⋯ is always there. Star, Snooze, Find in Message and Print
   Preview left it; they stay in a message's right-click menu and on their
   keys.
@@ -40,7 +46,7 @@
   **Trash** and **Snoozed** merged across accounts, their account lists,
   **Settings → Sidebar → Unified** and its unread-count switches, and their
   icon-rail fold switches, as the redesign has each account's folders on
-  their own (mockup 01). **Favorites**, **Tags** and **Smart Folders**
+  their own (mockup 01). **Favorites**, **Tags** and **Smart folders**
   still gather mail across accounts; **Show in All Inboxes** on an account
   is now **Show in combined views** and decides whether they include it.
   **Open at startup** opens the first account's inbox in place of All
@@ -60,8 +66,8 @@
 
 - **Changed: the composer's More actions menu follows the redesign**
   (mockup 06). It holds the message's **Format**, in place of the button
-  at the end of the formatting row, and **Check Spelling** with the
-  **Spelling Language** list, which were only in Settings and the body's
+  at the end of the formatting row, and **Check spelling** with the
+  **Spelling language** list, which were only in Settings and the body's
   right-click menu.
 
 - **Removed: the sidebar's Filters section,** which gathered the folders
@@ -75,7 +81,7 @@
   edited, grouped, moved and deleted contacts, the **g c** key, and the
   settings that placed it and kept its search open. The address books stay:
   **Settings → Contacts** lists them, imports, exports and empties the
-  Tegami Mail book; **Add Sender to Contacts** still saves an address; the
+  Tegami Mail book; **Add sender to contacts** still saves an address; the
   composer still suggests contacts and groups; names and photos still show
   in mail. Contacts in GNOME Contacts or online books are edited there.
 
@@ -87,7 +93,7 @@
 
 - **Changed: the From row is a button** (mockups 04 and 06): the address's
   avatar, name and address, opening **Send from** with every address and
-  **Manage Accounts…**. It is always shown, one address or several. A From
+  **Manage accounts…**. It is always shown, one address or several. A From
   can no longer be typed (#347); a reply to a `+tag` address and a draft
   saved from an address that is none of yours still keep theirs.
 
@@ -98,14 +104,14 @@
 
 - **Removed: from the composer's More actions,** as the redesign has them
   nowhere: **Save as Template**, the cloud upload of picked files (files
-  dropped on **Upload to Cloud** and a large attachment's **Send a Link**
+  dropped on **Upload to Cloud** and a large attachment's **Send a link**
   still go there), **Open Contacts**, and the move between a window and
   the reading pane.
 
 - **Added: On This Computer, folders kept on this computer** (#552).
-  **Settings → Accounts → On This Computer → Add** adds an account with no
+  **Settings → Accounts → On this computer → Add** adds an account with no
   server, as Evolution has, for an archive of mail moved or copied in from
-  any other account with **Move To** or by dragging it onto one
+  any other account with **Move to** or by dragging it onto one
   of its folders. It starts with a Trash, and its Inbox is shown only while
   it holds mail. Folders are made,
   renamed and deleted as on any account. Nothing is sent from it: a reply to
@@ -151,7 +157,7 @@
   (#475, requested by fhangel). **Main menu → Reading Pane** puts the reader
   **Right** of the list, as before, **Below** it or **Off**, as do
   **Ctrl+Alt+1**, **Ctrl+Alt+2** and **Ctrl+Alt+3**. Below or off, the list
-  shows single lines, whatever **Settings → Message List → Layout** says, the
+  shows single lines, whatever **Settings → Message list → Layout** says, the
   window controls move to the list's header, and a reply, a forward or a new
   message opens in a window of its own, whatever **Settings → Composing** says
   about the reading pane. Below, the toolbar stays at the top of the reader,

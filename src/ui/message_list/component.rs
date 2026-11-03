@@ -117,7 +117,7 @@ impl SimpleComponent for MessageList {
                 add_overlay = &adw::StatusPage {
                     set_icon_name: Some("mail-inbox-symbolic"),
                     #[watch]
-                    set_title: &(if model.quick.is_empty() { i18n("No Messages") } else { i18n("No Matching Messages") }),
+                    set_title: &(if model.quick.is_empty() { i18n("No messages") } else { i18n("No matching messages") }),
                     #[watch]
                     set_description: Some(if model.quick.is_empty() {
                         i18n("There's nothing here right now.")
@@ -183,7 +183,7 @@ impl SimpleComponent for MessageList {
                                 "mail-unread-symbolic"
                             },
                             #[watch]
-                            set_tooltip_text: Some(if model.selection_any_unread() { i18n("Mark as Read") } else { i18n("Mark as Unread") }.as_str()),
+                            set_tooltip_text: Some(if model.selection_any_unread() { i18n("Mark as read") } else { i18n("Mark as unread") }.as_str()),
                             add_css_class: "flat",
                             set_focus_on_click: false,
                             #[watch]
@@ -200,7 +200,7 @@ impl SimpleComponent for MessageList {
                                 "starred-symbolic"
                             },
                             #[watch]
-                            set_tooltip_text: Some(if model.selection_all_starred() { i18n("Remove Star") } else { i18n("Star") }.as_str()),
+                            set_tooltip_text: Some(if model.selection_all_starred() { i18n("Remove star") } else { i18n("Star") }.as_str()),
                             add_css_class: "flat",
                             set_focus_on_click: false,
                             connect_clicked => MessageListInput::Bulk(BulkAction::Flag),
@@ -231,7 +231,7 @@ impl SimpleComponent for MessageList {
                                 "mail-mark-junk-symbolic"
                             },
                             #[watch]
-                            set_tooltip_text: Some(if model.in_junk { i18n("Not Spam") } else { i18n("Mark as Spam") }.as_str()),
+                            set_tooltip_text: Some(if model.in_junk { i18n("Not spam") } else { i18n("Mark as spam") }.as_str()),
                             add_css_class: "flat",
                             set_focus_on_click: false,
                             // Mapped to NotSpam in Junk by the Bulk handler.

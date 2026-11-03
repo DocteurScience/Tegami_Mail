@@ -35,7 +35,7 @@ impl SendersPage {
                 },
 
                 add = &adw::PreferencesGroup {
-                    set_title: &i18n("Allowed Senders"),
+                    set_title: &i18n("Allowed senders"),
                     set_description: Some(
                         i18n("Messages from these senders load remote content \
                          automatically.").as_str()
@@ -74,7 +74,7 @@ impl SendersPage {
                 },
 
                 add = &adw::PreferencesGroup {
-                    set_title: &i18n("Blocked Senders"),
+                    set_title: &i18n("Blocked senders"),
                     set_description: Some(
                         i18n("Their mail is moved to Trash on arrival. Enter an address, or a domain like \"example.com\" to apply to all senders from that domain.").as_str()
                     ),

@@ -131,7 +131,7 @@ pub(super) fn book_display_name(book_data: &str, sources: &HashMap<String, Strin
     let (backend, identity, top_display) = book_account(book_data, sources);
     let account = identity.or(top_display.or(own.clone()));
     let label = match (backend.as_deref(), account.as_deref()) {
-        (Some("local"), _) | (None, None) => i18n("On This Computer"),
+        (Some("local"), _) | (None, None) => i18n("On this computer"),
         (Some("google"), Some(a)) => format!("Google — {a}"),
         (Some("google"), None) => "Google".to_string(),
         (Some("microsoft365"), Some(a)) => format!("Microsoft 365 — {a}"),
@@ -139,7 +139,7 @@ pub(super) fn book_display_name(book_data: &str, sources: &HashMap<String, Strin
         (Some("ldap"), Some(a)) => format!("LDAP — {a}"),
         (Some("ldap"), None) => "LDAP".to_string(),
         (_, Some(a)) => format!("CardDAV — {a}"),
-        (_, None) => i18n("CardDAV Address Book"),
+        (_, None) => i18n("CardDAV address book"),
     };
     // One account can hold several books (Nextcloud: Contacts, Recently
     // contacted, System address book), so name the book too — unless it is

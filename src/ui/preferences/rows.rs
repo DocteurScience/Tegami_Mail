@@ -136,7 +136,7 @@ pub(super) fn compose_font_setup(
         let chosen = state.chosen.borrow().clone();
         let choices = crate::ui::rich_editor::compose_font_choices(&chosen);
         let mut names: Vec<String> = choices.iter().map(|(_, name)| name.clone()).collect();
-        names.push(i18n("Other Font…"));
+        names.push(i18n("Other font…"));
         let at = choices
             .iter()
             .position(|(css, _)| *css == chosen)

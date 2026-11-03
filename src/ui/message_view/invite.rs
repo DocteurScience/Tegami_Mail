@@ -350,7 +350,7 @@ fn invite_buttons(
             key.0,
             key.1,
             attr_escape(&i18n("Opens the meeting in your calendar application")),
-            escape_html(&i18n("Add to Calendar")),
+            escape_html(&i18n("Add to calendar")),
         ));
     }
     buttons

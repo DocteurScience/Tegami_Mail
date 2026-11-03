@@ -47,8 +47,8 @@ impl MessageView {
         let key = (m.account_id, m.id);
         if crate::services::translate::load().enabled() && !self.encrypted(key) {
             let label = match self.translations.get(&key) {
-                Some(TrState::Shown(_)) => i18n("Show Original"),
-                Some(TrState::Original(_)) => i18n("Show Translation"),
+                Some(TrState::Shown(_)) => i18n("Show original"),
+                Some(TrState::Original(_)) => i18n("Show translation"),
                 _ => i18n("Translate"),
             };
             hit.translate = Some(TranslateEntry {

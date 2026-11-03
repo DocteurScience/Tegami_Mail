@@ -728,7 +728,7 @@ pub(super) fn apply_protocol(widgets: &AccountsWindowWidgets) {
     if password_shown {
         widgets.form.user_row.set_visible(!token);
         widgets.form.pass_row.set_title(&if token {
-            i18n("API Token")
+            i18n("API token")
         } else {
             i18n("Password")
         });
@@ -741,7 +741,7 @@ pub(super) fn apply_protocol(widgets: &AccountsWindowWidgets) {
             .set_title(&i18n("Server (host name or URL)"));
         widgets.form.port_row.set_title(&i18n("Port (default 443)"));
     } else {
-        widgets.form.host_row.set_title(&i18n("Incoming Server"));
+        widgets.form.host_row.set_title(&i18n("Incoming server"));
         widgets
             .form
             .port_row

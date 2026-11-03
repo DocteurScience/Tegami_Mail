@@ -102,17 +102,17 @@ fn confirm_discard_dialog(
         (
             i18n("Save the template?"),
             i18n("Its changes have not been saved. Save them to the template, or discard them."),
-            i18n("Save Template"),
+            i18n("Save template"),
         )
     } else {
         (
             i18n("Save the message?"),
             i18n("It has not been sent. Save it to Drafts to finish later, or discard it."),
-            i18n("Save Draft"),
+            i18n("Save draft"),
         )
     };
     let dialog = adw::MessageDialog::new(parent, Some(heading.as_str()), Some(body.as_str()));
-    dialog.add_response("keep", &i18n("Keep Editing"));
+    dialog.add_response("keep", &i18n("Keep editing"));
     dialog.add_response("discard", &i18n("Discard"));
     dialog.add_response("save", &save);
     dialog.set_response_appearance("discard", adw::ResponseAppearance::Destructive);
@@ -255,11 +255,11 @@ impl Compose {
                 .icon(format!("{icon}-symbolic"))
         };
         let save = vec![if self.template {
-            entry(i18n("Save Template"), "document-save", || {
+            entry(i18n("Save template"), "document-save", || {
                 ComposeInput::SaveDraft
             })
         } else {
-            entry(i18n("Save Draft"), "document-save", || {
+            entry(i18n("Save draft"), "document-save", || {
                 ComposeInput::SaveDraft
             })
         }];
@@ -305,7 +305,7 @@ impl Compose {
         // while it is on, as the body's right-click menu offers them.
         let spelling_on = crate::config::load_privacy().spellcheck;
         let s = sender.clone();
-        let mut spelling = vec![MenuEntry::new(i18n("Check Spelling"), move || {
+        let mut spelling = vec![MenuEntry::new(i18n("Check spelling"), move || {
             let _ = s.output(ComposeOutput::SetSpellcheck(!spelling_on));
         })
         .checked(spelling_on)];
@@ -320,14 +320,14 @@ impl Compose {
             })
             .collect();
         if !langs.is_empty() {
-            spelling.push(MenuEntry::submenu(i18n("Spelling Language"), vec![langs]));
+            spelling.push(MenuEntry::submenu(i18n("Spelling language"), vec![langs]));
         }
         // Only while editing an existing draft: the message is moved to
         // Trash, not saved, and the editor closes.
         let mut delete = Vec::new();
         if self.draft_origin.is_some() && !self.template {
             delete.push(
-                entry(i18n("Delete Draft"), "user-trash", || {
+                entry(i18n("Delete draft"), "user-trash", || {
                     ComposeInput::DeleteDraft
                 })
                 .tooltip(i18n("Move this draft to Trash"))
@@ -556,7 +556,7 @@ pub(super) fn compose_heading(
         return i18n("Forward");
     }
     if in_reply_to.is_empty() {
-        return i18n("New Message");
+        return i18n("New message");
     }
     if !reply_name.trim().is_empty() {
         return i18n_f("Reply to {name}", &[("name", reply_name.trim())]);
@@ -609,6 +609,6 @@ mod heading_tests {
             compose_heading("id@x", "fw@x", "Camille", "c@x.org"),
             "Forward"
         );
-        assert_eq!(compose_heading("", "", "", ""), "New Message");
+        assert_eq!(compose_heading("", "", "", ""), "New message");
     }
 }

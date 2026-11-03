@@ -392,7 +392,7 @@ impl SimpleComponent for AttachmentDrawer {
                     // Rightmost by design: the header's one real action, with
                     // the view controls (slider, sort, list/grid) to its left.
                     gtk::Button {
-                        set_label: &i18n("Save All…"),
+                        set_label: &i18n("Save all…"),
                         // A standing button, not a flat hover-reveal.
                         set_valign: gtk::Align::Center,
                         // Matching the count's inset at the other end.

@@ -31,10 +31,10 @@ impl AppModel {
         let s = sender.clone();
         show_message_picker(
             self.window.upcast_ref(),
-            &i18n("New Message from Template"),
+            &i18n("New message from template"),
             &i18n("The new message starts as a copy of the template you pick."),
             &i18n("No templates yet. Save one from the composer's ⋯ menu with Save as Template."),
-            &i18n("Use Template"),
+            &i18n("Use template"),
             templates,
             (),
             move |(), template| s.input(AppMsg::TemplatePicked(template)),
@@ -74,10 +74,10 @@ impl AppModel {
         let s = sender.clone();
         show_message_picker(
             self.window.upcast_ref(),
-            &i18n("Continue a Draft"),
+            &i18n("Continue a draft"),
             &i18n("The files go into the draft you pick."),
             &i18n("No drafts to continue."),
-            &i18n("Attach to This Draft"),
+            &i18n("Attach to this draft"),
             drafts,
             hand_off,
             move |hand_off, draft| s.input(AppMsg::HandOffDraft { hand_off, draft }),

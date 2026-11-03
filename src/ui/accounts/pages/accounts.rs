@@ -23,7 +23,7 @@ impl AccountsPage {
         relm4::view! {
             page = adw::PreferencesPage {
                 add = &adw::PreferencesGroup {
-                    set_title: &i18n("Mail Accounts"),
+                    set_title: &i18n("Mail accounts"),
                     set_description: Some(
                         i18n("Drag to reorder them in the sidebar.").as_str()
                     ),
@@ -46,7 +46,7 @@ impl AccountsPage {
                             connect_clicked => AccountsInput::RefreshGoa,
                         },
                         gtk::Button {
-                            set_label: &i18n("Add Account…"),
+                            set_label: &i18n("Add account…"),
                             set_size_request: (130, -1),
                             connect_clicked => AccountsInput::AddAccount,
                         },
@@ -66,7 +66,7 @@ impl AccountsPage {
                 // rather than a server, offered until there is one.
                 #[name = "local_group"]
                 add = &adw::PreferencesGroup {
-                    set_title: &i18n("On This Computer"),
+                    set_title: &i18n("On this computer"),
                     set_description: Some(
                         i18n("Store mail in folders that live on this computer. Move or copy mail from any account to here.").as_str()
                     ),

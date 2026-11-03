@@ -129,7 +129,7 @@ impl Row {
         let (in_junk, in_drafts) = built_for;
         let reply = button("mail-reply-sender-symbolic", i18n("Reply"));
         action(&reply, RowAction::Reply);
-        let reply_all = button("mail-reply-all-symbolic", i18n("Reply All"));
+        let reply_all = button("mail-reply-all-symbolic", i18n("Reply all"));
         action(&reply_all, RowAction::ReplyAll);
         let forward = button("mail-forward-symbolic", i18n("Forward"));
         action(&forward, RowAction::Forward);
@@ -174,7 +174,7 @@ impl Row {
         };
         let contact = button("contact-new-symbolic", i18n("Add sender to Contacts"));
         action(&contact, RowAction::AddContact);
-        let source = button("code-symbolic", i18n("View Source"));
+        let source = button("code-symbolic", i18n("View source"));
         action(&source, RowAction::ViewSource);
         for b in [
             Some(&reply),

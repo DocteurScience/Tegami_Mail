@@ -228,8 +228,8 @@ impl AppModel {
             ),
         );
         dialog.add_response("cancel", &i18n("Cancel"));
-        dialog.add_response("reply", &i18n("Reply to a Message…"));
-        dialog.add_response("draft", &i18n("Continue a Draft…"));
+        dialog.add_response("reply", &i18n("Reply to a message…"));
+        dialog.add_response("draft", &i18n("Continue a draft…"));
         dialog.add_response("new", &i18n("New Message"));
         dialog.set_response_appearance("new", adw::ResponseAppearance::Suggested);
         dialog.set_default_response(Some("new"));
@@ -304,10 +304,10 @@ impl AppModel {
                 let s = sender.clone();
                 show_message_picker(
                     self.window.upcast_ref(),
-                    &i18n("Reply to a Message"),
+                    &i18n("Reply to a message"),
                     &i18n("The files go into a reply to the message you pick."),
                     &i18n("No messages to reply to yet."),
-                    &i18n("Reply With the Files"),
+                    &i18n("Reply with the files"),
                     messages,
                     hand_off,
                     move |hand_off, message| s.input(AppMsg::HandOffReply { hand_off, message }),
@@ -359,8 +359,8 @@ impl AppModel {
                     ),
                 );
                 dialog.add_response("cancel", &i18n("Cancel"));
-                dialog.add_response("attach", &i18n("Attach Anyway"));
-                dialog.add_response("cloud", &i18n("Upload to Cloud Storage"));
+                dialog.add_response("attach", &i18n("Attach anyway"));
+                dialog.add_response("cloud", &i18n("Upload to cloud storage"));
                 dialog.set_response_appearance("cloud", adw::ResponseAppearance::Suggested);
                 dialog.set_default_response(Some("cloud"));
                 dialog.set_close_response("cancel");

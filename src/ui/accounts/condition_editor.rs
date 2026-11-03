@@ -98,7 +98,7 @@ impl CondControls {
     pub(super) fn new() -> Self {
         let add_group = adw::PreferencesGroup::new();
         let add_row = adw::ActionRow::new();
-        add_row.set_title(&i18n("Add Condition"));
+        add_row.set_title(&i18n("Add condition"));
         add_row.set_activatable(true);
         add_row.add_prefix(&gtk::Image::from_icon_name("list-add-symbolic"));
         add_group.add(&add_row);

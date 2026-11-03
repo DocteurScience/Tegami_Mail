@@ -379,7 +379,7 @@ pub(crate) fn local_book() -> Book {
         uid: crate::contacts::local::LOCAL_BOOK_UID.to_string(),
         name: crate::contacts::contact_sources::names()
             .remove(crate::contacts::local::LOCAL_BOOK_UID)
-            .unwrap_or_else(|| i18n("Tegami Mail Address Book")),
+            .unwrap_or_else(|| i18n("Tegami Mail address book")),
         groups: Some(GroupFormat::Evolution),
     }
 }

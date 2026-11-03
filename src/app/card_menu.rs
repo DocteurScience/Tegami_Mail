@@ -63,23 +63,23 @@ fn answer_entries(
         vec![
             item(
                 RowAction::EditAsNew,
-                i18n("Use Template"),
+                i18n("Use template"),
                 "mail-message-new",
             ),
             item(
                 RowAction::EditTemplate,
-                i18n("Edit Template"),
+                i18n("Edit template"),
                 "document-edit",
             ),
         ]
     } else {
         vec![
             item(RowAction::Reply, i18n("Reply"), "mail-reply-sender"),
-            item(RowAction::ReplyAll, i18n("Reply All"), "mail-reply-all"),
+            item(RowAction::ReplyAll, i18n("Reply all"), "mail-reply-all"),
             item(RowAction::Forward, i18n("Forward"), "mail-forward"),
             item(
                 RowAction::EditAsNew,
-                i18n("Edit as New Message"),
+                i18n("Edit as new message"),
                 "document-edit",
             ),
         ]
@@ -95,7 +95,7 @@ fn flag_entries(
         if m.starred {
             item(
                 RowAction::ToggleStar,
-                i18n("Remove Star"),
+                i18n("Remove star"),
                 "tegami-non-starred",
             )
         } else {
@@ -104,11 +104,11 @@ fn flag_entries(
         if m.unread {
             item(
                 RowAction::ToggleRead,
-                i18n("Mark as Read"),
+                i18n("Mark as read"),
                 "tegami-mail-read",
             )
         } else {
-            item(RowAction::ToggleRead, i18n("Mark as Unread"), "mail-unread")
+            item(RowAction::ToggleRead, i18n("Mark as unread"), "mail-unread")
         },
     ]
 }
@@ -118,12 +118,12 @@ fn fold_entries(hit: &crate::ui::message_view::MenuHit) -> Option<Vec<MenuEntry>
     let (any_folded, any_open, reader) = hit.folds.clone()?;
     let open = reader.clone();
     Some(vec![
-        MenuEntry::new(i18n("Expand All Messages"), move || {
+        MenuEntry::new(i18n("Expand all messages"), move || {
             open.emit(crate::ui::message_view::MessageViewInput::FoldAll(false));
         })
         .icon("pan-down-symbolic")
         .enabled(any_folded),
-        MenuEntry::new(i18n("Collapse All Messages"), move || {
+        MenuEntry::new(i18n("Collapse all messages"), move || {
             reader.emit(crate::ui::message_view::MessageViewInput::FoldAll(true));
         })
         .icon("pan-up-symbolic")
@@ -148,10 +148,10 @@ fn source_entries(
             .icon("translate-symbolic"),
         );
     }
-    last.push(item(RowAction::ViewSource, i18n("View Source"), "code"));
+    last.push(item(RowAction::ViewSource, i18n("View source"), "code"));
     last.push(item(
         RowAction::SaveAsFile,
-        i18n("Save as File…"),
+        i18n("Save as file…"),
         "document-save",
     ));
     last
@@ -201,12 +201,12 @@ impl AppModel {
         sections.push(vec![
             item(
                 RowAction::AddContact,
-                i18n("Add Sender to Contacts"),
+                i18n("Add sender to contacts"),
                 "contact-new",
             ),
             item(
                 RowAction::CreateFilter,
-                i18n("Create Filter from Message…"),
+                i18n("Create filter from message…"),
                 "filter-folder",
             ),
         ]);
@@ -259,20 +259,20 @@ impl AppModel {
         if in_junk {
             acts.push(item(
                 RowAction::NotSpam,
-                i18n("Not Spam"),
+                i18n("Not spam"),
                 "mail-mark-notjunk",
             ));
         } else {
             if restorable {
                 acts.push(item(
                     RowAction::MoveToInbox,
-                    i18n("Move to Inbox"),
+                    i18n("Move to inbox"),
                     "mail-inbox",
                 ));
             }
             acts.push(item(
                 RowAction::Spam,
-                i18n("Mark as Spam"),
+                i18n("Mark as spam"),
                 "mail-mark-junk",
             ));
         }
@@ -280,7 +280,7 @@ impl AppModel {
             let s = sender.input_sender().clone();
             let message = m.clone();
             acts.push(
-                MenuEntry::new(i18n("Move To…"), move || {
+                MenuEntry::new(i18n("Move to…"), move || {
                     let _ = s.send(AppMsg::ListMoveTo {
                         messages: vec![message.clone()],
                         offer_whole: false,
@@ -326,9 +326,9 @@ impl AppModel {
         let s = sender.input_sender().clone();
         let (account_id, id) = (m.account_id, m.id);
         let label = if showing {
-            i18n("Block Remote Content")
+            i18n("Block remote content")
         } else {
-            i18n("Show Remote Content")
+            i18n("Show remote content")
         };
         let icon = if showing {
             "security-high"
@@ -373,7 +373,7 @@ impl AppModel {
             })
         };
         vec![
-            print(i18n("Print Preview"), true)
+            print(i18n("Print preview"), true)
                 .icon("printer-symbolic")
                 .keys(Some("<Control><Shift>p")),
             print(i18n("Print…"), false).keys(Some("<Control>p")),

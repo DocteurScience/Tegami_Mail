@@ -175,7 +175,7 @@ pub(super) fn placement_from_index(idx: u32) -> crate::config::SectionPlacement 
 pub(super) fn sound_labels() -> Vec<String> {
     // GNOME Settings' own names for its alert sounds.
     let mut labels = vec![i18n("Click"), i18n("Hum"), i18n("String"), i18n("Swing")];
-    labels.push(i18n("Custom File"));
+    labels.push(i18n("Custom file"));
     labels
 }
 
@@ -466,7 +466,7 @@ mod tests {
     fn sounds_map_to_rows_with_custom_last() {
         assert_eq!(
             sound_labels(),
-            ["Click", "Hum", "String", "Swing", "Custom File"]
+            ["Click", "Hum", "String", "Swing", "Custom file"]
         );
         assert_eq!(sound_index("click"), 0);
         assert_eq!(sound_index("swing"), 3);

@@ -108,13 +108,13 @@ impl AttachmentDrawer {
         // The drawer gathers the whole conversation's files; this finds the
         // message a file came with (#213).
         let s = sender.clone();
-        let show = MenuEntry::new(i18n("Show in Message"), move || {
+        let show = MenuEntry::new(i18n("Show in message"), move || {
             s.input_sender()
                 .emit(AttachmentDrawerInput::ShowInMessage(index))
         })
         .icon("mail-unread-symbolic");
         let s = sender.clone();
-        let delete = MenuEntry::new(i18n("Delete from Server…"), move || {
+        let delete = MenuEntry::new(i18n("Delete from server…"), move || {
             s.input_sender()
                 .emit(AttachmentDrawerInput::DeleteFromServer(index))
         })

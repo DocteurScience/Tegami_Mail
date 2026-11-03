@@ -201,7 +201,7 @@ impl AppModel {
         );
         dialog.add_responses(&[
             ("later", i18n("Later").as_str()),
-            ("restart", i18n("Restart Now").as_str()),
+            ("restart", i18n("Restart now").as_str()),
         ]);
         dialog.set_response_appearance("restart", adw::ResponseAppearance::Suggested);
         dialog.set_default_response(Some("later"));

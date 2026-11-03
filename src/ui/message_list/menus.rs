@@ -70,12 +70,12 @@ impl MessageList {
             vec![
                 item(
                     RowAction::EditAsNew,
-                    &i18n("Use Template"),
+                    &i18n("Use template"),
                     "mail-message-new-symbolic",
                 ),
                 item(
                     RowAction::EditTemplate,
-                    &i18n("Edit Template"),
+                    &i18n("Edit template"),
                     "document-edit-symbolic",
                 ),
             ]
@@ -88,7 +88,7 @@ impl MessageList {
                 ),
                 item(
                     RowAction::ReplyAll,
-                    &i18n("Reply All"),
+                    &i18n("Reply all"),
                     "mail-reply-all-symbolic",
                 ),
                 item(
@@ -118,9 +118,9 @@ impl MessageList {
             let members = members_for_star.clone();
             MenuEntry::new(
                 if any {
-                    i18n("Remove Stars")
+                    i18n("Remove stars")
                 } else {
-                    i18n("Star Conversation")
+                    i18n("Star conversation")
                 },
                 move || {
                     let _ = s.output(MessageListOutput::Bulk {
@@ -142,7 +142,7 @@ impl MessageList {
         } else if msg.starred {
             item(
                 RowAction::ToggleStar,
-                &i18n("Remove Star"),
+                &i18n("Remove star"),
                 "tegami-non-starred-symbolic",
             )
         } else {
@@ -163,7 +163,7 @@ impl MessageList {
         let (messages, offer_whole) = self.move_to_messages(msg);
         let (wx, wy) = self.window_point(x, y);
         let s = sender.clone();
-        MenuEntry::new(i18n("Move To…"), move || {
+        MenuEntry::new(i18n("Move to…"), move || {
             let _ = s.output(MessageListOutput::MoveTo {
                 messages: messages.clone(),
                 offer_whole,
@@ -200,9 +200,9 @@ impl MessageList {
             Some(
                 MenuEntry::new(
                     if any_unread {
-                        i18n("Mark All as Read")
+                        i18n("Mark all as read")
                     } else {
-                        i18n("Mark All as Unread")
+                        i18n("Mark all as unread")
                     },
                     move || {
                         let _ = s.output(MessageListOutput::Bulk {
@@ -232,13 +232,13 @@ impl MessageList {
         } else if msg.unread {
             Some(item(
                 RowAction::ToggleRead,
-                &i18n("Mark as Read"),
+                &i18n("Mark as read"),
                 "tegami-mail-read-symbolic",
             ))
         } else {
             Some(item(
                 RowAction::ToggleRead,
-                &i18n("Mark as Unread"),
+                &i18n("Mark as unread"),
                 "mail-unread-symbolic",
             ))
         }
@@ -279,7 +279,7 @@ impl MessageList {
         if self.restorable && !self.in_junk {
             section.push(item(
                 RowAction::MoveToInbox,
-                &i18n("Move to Inbox"),
+                &i18n("Move to inbox"),
                 "mail-inbox-symbolic",
             ));
         }
@@ -290,13 +290,13 @@ impl MessageList {
         section.push(if self.in_junk {
             item(
                 RowAction::NotSpam,
-                &i18n("Not Spam"),
+                &i18n("Not spam"),
                 "mail-mark-notjunk-symbolic",
             )
         } else {
             item(
                 RowAction::Spam,
-                &i18n("Mark as Spam"),
+                &i18n("Mark as spam"),
                 "mail-mark-junk-symbolic",
             )
         });
@@ -456,13 +456,13 @@ impl MessageList {
                     section.push(if self.selection_any_unread() {
                         item(
                             BulkAction::MarkRead,
-                            &i18n("Mark as Read"),
+                            &i18n("Mark as read"),
                             "tegami-mail-read-symbolic",
                         )
                     } else {
                         item(
                             BulkAction::MarkUnread,
-                            &i18n("Mark as Unread"),
+                            &i18n("Mark as unread"),
                             "mail-unread-symbolic",
                         )
                     });
@@ -472,7 +472,7 @@ impl MessageList {
                 section.push(if self.selection_all_starred() {
                     item(
                         BulkAction::Flag,
-                        &i18n("Remove Star"),
+                        &i18n("Remove star"),
                         "tegami-non-starred-symbolic",
                     )
                 } else {
@@ -493,20 +493,20 @@ impl MessageList {
                 if self.in_junk {
                     section.push(item(
                         BulkAction::NotSpam,
-                        &i18n("Not Spam"),
+                        &i18n("Not spam"),
                         "mail-mark-notjunk-symbolic",
                     ));
                 } else {
                     if self.restorable {
                         section.push(item(
                             BulkAction::MoveToInbox,
-                            &i18n("Move to Inbox"),
+                            &i18n("Move to inbox"),
                             "mail-inbox-symbolic",
                         ));
                     }
                     section.push(item(
                         BulkAction::Spam,
-                        &i18n("Mark as Spam"),
+                        &i18n("Mark as spam"),
                         "mail-mark-junk-symbolic",
                     ));
                 }
@@ -516,7 +516,7 @@ impl MessageList {
                     let (wx, wy) = self.window_point(x, y);
                     let s = sender.clone();
                     section.push(
-                        MenuEntry::new(i18n("Move To…"), move || {
+                        MenuEntry::new(i18n("Move to…"), move || {
                             let _ = s.output(MessageListOutput::MoveTo {
                                 messages: messages.clone(),
                                 offer_whole: false,

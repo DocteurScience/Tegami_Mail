@@ -43,22 +43,22 @@ impl MessageAction {
     pub(crate) fn label(self) -> String {
         match self {
             Self::Reply => i18n("Reply"),
-            Self::ReplyAll => i18n("Reply All"),
+            Self::ReplyAll => i18n("Reply all"),
             Self::Forward => i18n("Forward"),
             Self::Star => i18n("Star"),
-            Self::RemoveStar => i18n("Remove Star"),
+            Self::RemoveStar => i18n("Remove star"),
             Self::Archive => i18n("Archive"),
             Self::Snooze => i18n("Snooze"),
             Self::Delete => i18n("Delete"),
-            Self::MarkSpam => i18n("Mark as Spam"),
-            Self::NotSpam => i18n("Not Spam"),
-            Self::MarkRead => i18n("Mark as Read"),
-            Self::MarkUnread => i18n("Mark as Unread"),
+            Self::MarkSpam => i18n("Mark as spam"),
+            Self::NotSpam => i18n("Not spam"),
+            Self::MarkRead => i18n("Mark as read"),
+            Self::MarkUnread => i18n("Mark as unread"),
             Self::Tags => i18n("Tags"),
-            Self::MoveToInbox => i18n("Move to Inbox"),
-            Self::MoveTo => i18n("Move To…"),
-            Self::Find => i18n("Find in Message"),
-            Self::PrintPreview => i18n("Print Preview"),
+            Self::MoveToInbox => i18n("Move to inbox"),
+            Self::MoveTo => i18n("Move to…"),
+            Self::Find => i18n("Find in message"),
+            Self::PrintPreview => i18n("Print preview"),
         }
     }
 

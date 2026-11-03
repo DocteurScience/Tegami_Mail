@@ -186,9 +186,9 @@ impl AppModel {
             .map(|w| w.upcast())
             .or_else(|| Some(self.window.clone().upcast()));
         let dialog =
-            adw::MessageDialog::new(parent.as_ref(), Some(&i18n("Applying Filters")), None);
+            adw::MessageDialog::new(parent.as_ref(), Some(&i18n("Applying filters")), None);
         dialog.set_body_use_markup(false);
-        dialog.add_response(FILTER_RUN_RESPONSE, &i18n("Run in Background"));
+        dialog.add_response(FILTER_RUN_RESPONSE, &i18n("Run in background"));
         dialog.set_close_response(FILTER_RUN_RESPONSE);
         let content = gtk::Box::new(gtk::Orientation::Vertical, 12);
         content.set_halign(gtk::Align::Center);
@@ -465,7 +465,7 @@ impl AppModel {
                 d.spinner.set_visible(false);
                 d.body.remove_css_class("dim-label");
                 d.body.set_label(&text);
-                d.dialog.set_heading(Some(&i18n("Filters Applied")));
+                d.dialog.set_heading(Some(&i18n("Filters applied")));
                 d.dialog
                     .set_response_label(FILTER_RUN_RESPONSE, &i18n("Close"));
                 d.dialog.set_response_appearance(

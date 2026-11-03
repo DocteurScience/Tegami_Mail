@@ -230,7 +230,7 @@ impl AppModel {
         match folder.map(|f| f.kind) {
             Some(FolderKind::Trash) => i18n("Delete"),
             Some(FolderKind::Archive) => i18n("Archive"),
-            Some(FolderKind::Junk) => i18n("Mark as Spam"),
+            Some(FolderKind::Junk) => i18n("Mark as spam"),
             _ => {
                 let name = folder
                     .map(|f| f.name.clone())
@@ -249,9 +249,9 @@ impl AppModel {
             .map(|t| t.name.clone())
             .unwrap_or_else(|| keyword.to_string());
         if add {
-            i18n_f("Add Tag {name}", &[("name", &name)])
+            i18n_f("Add tag {name}", &[("name", &name)])
         } else {
-            i18n_f("Remove Tag {name}", &[("name", &name)])
+            i18n_f("Remove tag {name}", &[("name", &name)])
         }
     }
 

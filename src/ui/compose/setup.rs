@@ -29,7 +29,7 @@ pub(super) fn add_toolbar_end_buttons(
         });
     }
     let signature_btn = gtk::Button::from_icon_name("signature-symbolic");
-    signature_btn.set_tooltip_text(Some(i18n("Insert Signature").as_str()));
+    signature_btn.set_tooltip_text(Some(i18n("Insert signature").as_str()));
     signature_btn.add_css_class("flat");
     signature_btn.set_can_focus(false);
     signature_btn.set_visible(has_signatures);
@@ -56,7 +56,7 @@ pub(super) fn add_toolbar_end_buttons(
         .child(
             &adw::ButtonContent::builder()
                 .icon_name("mail-attachment-symbolic")
-                .label(i18n("Attach a File…"))
+                .label(i18n("Attach a file…"))
                 .can_shrink(true)
                 .build(),
         )

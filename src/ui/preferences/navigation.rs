@@ -19,7 +19,7 @@ pub(super) const SIDE_PAGES: &[(&str, &[SidePage])] = &[
         &[
             SidePage {
                 id: "accounts",
-                title: i18n_noop("Mail Accounts"),
+                title: i18n_noop("Mail accounts"),
                 icon: "avatar-default-symbolic",
                 accounts: true,
             },
@@ -37,7 +37,7 @@ pub(super) const SIDE_PAGES: &[(&str, &[SidePage])] = &[
             },
             SidePage {
                 id: "smart",
-                title: i18n_noop("Smart Folders"),
+                title: i18n_noop("Smart folders"),
                 icon: "folder-saved-search-symbolic",
                 accounts: true,
             },
@@ -55,7 +55,7 @@ pub(super) const SIDE_PAGES: &[(&str, &[SidePage])] = &[
             },
             SidePage {
                 id: "cloud",
-                title: i18n_noop("Cloud Storage"),
+                title: i18n_noop("Cloud storage"),
                 icon: "cloud-symbolic",
                 accounts: false,
             },
@@ -96,7 +96,7 @@ pub(super) const SIDE_PAGES: &[(&str, &[SidePage])] = &[
             },
             SidePage {
                 id: "list",
-                title: i18n_noop("Message List"),
+                title: i18n_noop("Message list"),
                 icon: "view-list-bullet-symbolic",
                 accounts: false,
             },
@@ -126,7 +126,7 @@ pub(super) const SIDE_PAGES: &[(&str, &[SidePage])] = &[
             },
             SidePage {
                 id: "datetime",
-                title: i18n_noop("Date and Time"),
+                title: i18n_noop("Date and time"),
                 icon: "x-office-calendar-symbolic",
                 accounts: false,
             },

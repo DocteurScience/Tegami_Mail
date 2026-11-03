@@ -54,7 +54,7 @@ impl Query {
 /// Open the palette over `parent` with `entries`, in the order given.
 pub(crate) fn show(parent: &impl IsA<gtk::Widget>, entries: Vec<Entry>, typed: &str) {
     let dialog = adw::Dialog::builder()
-        .title(i18n("Command Palette"))
+        .title(i18n("Command palette"))
         .content_width(560)
         .content_height(480)
         .build();

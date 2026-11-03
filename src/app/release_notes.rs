@@ -42,7 +42,7 @@ pub(super) fn release_notes_page() -> adw::NavigationPage {
         "Release Notes",
         "notes",
         &current_release_notes(),
-        Some((i18n("Full Release Notes on GitHub"), RELEASE_NOTES_URL)),
+        Some((i18n("Full release notes on GitHub"), RELEASE_NOTES_URL)),
     )
 }
 

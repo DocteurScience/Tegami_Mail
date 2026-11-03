@@ -135,7 +135,7 @@ impl Sidebar {
                 add.add_css_class("flat");
                 add.add_css_class("sidebar-heading-button");
                 add.set_valign(gtk::Align::Center);
-                add.set_tooltip_text(Some(i18n("New Tag…").as_str()));
+                add.set_tooltip_text(Some(i18n("New tag…").as_str()));
                 let s = sender.clone();
                 add.connect_clicked(move |_| {
                     let _ = s.output(SidebarOutput::NewTagRequested);
@@ -196,7 +196,7 @@ impl Sidebar {
                     &list_w,
                     x,
                     y,
-                    vec![(i18n_noop("New Smart Folder…"), CtxAction::NewSmartFolder)],
+                    vec![(i18n_noop("New smart folder…"), CtxAction::NewSmartFolder)],
                     &cs,
                 );
             });
@@ -331,7 +331,7 @@ impl Sidebar {
             add.add_css_class("flat");
             add.add_css_class("sidebar-heading-button");
             add.set_valign(gtk::Align::Center);
-            add.set_tooltip_text(Some(i18n("New Tag…").as_str()));
+            add.set_tooltip_text(Some(i18n("New tag…").as_str()));
             let s = sender.clone();
             add.connect_clicked(move |_| {
                 let _ = s.output(SidebarOutput::NewTagRequested);
@@ -547,14 +547,14 @@ impl Sidebar {
             {
                 let items = vec![
                     (
-                        i18n_noop("Edit Smart Folder…"),
+                        i18n_noop("Edit smart folder…"),
                         CtxAction::EditSmartFolder(id.clone()),
                     ),
                     (
-                        i18n_noop("Delete Smart Folder…"),
+                        i18n_noop("Delete smart folder…"),
                         CtxAction::DeleteSmartFolder(id.clone()),
                     ),
-                    (i18n_noop("New Smart Folder…"), CtxAction::NewSmartFolder),
+                    (i18n_noop("New smart folder…"), CtxAction::NewSmartFolder),
                 ];
                 show_sidebar_menu(&sub_w, x, y, items, &cs);
             }

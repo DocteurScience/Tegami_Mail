@@ -145,7 +145,7 @@ impl AccountsWindow {
             label.set_label(&if on {
                 i18n("Applying…")
             } else {
-                i18n("Apply Now")
+                i18n("Apply now")
             });
         }
     }
@@ -168,9 +168,9 @@ impl AccountsWindow {
             return;
         }
         let (title, verb) = if edit.is_some() {
-            (i18n("Edit Filter"), i18n("Save"))
+            (i18n("Edit filter"), i18n("Save"))
         } else {
-            (i18n("Add Filter"), i18n("Add Filter"))
+            (i18n("Add filter"), i18n("Add filter"))
         };
 
         let (page_box, scrolled) = form_scaffold();

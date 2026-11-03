@@ -48,7 +48,7 @@ impl FiltersPage {
                         set_halign: gtk::Align::End,
                         set_margin_start: 24,
                         gtk::Button {
-                            set_label: &i18n("Add Filter…"),
+                            set_label: &i18n("Add filter…"),
                             set_size_request: (130, -1),
                             connect_clicked => AccountsInput::AddFilter,
                         },
@@ -74,7 +74,7 @@ impl FiltersPage {
                                 },
                                 #[name = "apply_filters_label"]
                                 gtk::Label {
-                                    set_label: &i18n("Apply Now"),
+                                    set_label: &i18n("Apply now"),
                                 },
                             },
                         },

@@ -236,7 +236,7 @@ impl AppModel {
     /// Ask where to put a message's bytes, and write them there (#398).
     pub(super) fn save_message_file(&self, name: String, raw: Vec<u8>) {
         let dialog = gtk::FileDialog::new();
-        dialog.set_title(&i18n("Save Message"));
+        dialog.set_title(&i18n("Save message"));
         dialog.set_initial_name(Some(&name));
         let notifications = self.notifications.sender().clone();
         dialog.save(
@@ -260,7 +260,7 @@ impl AppModel {
     /// Pick a message file to read (#398).
     fn pick_message_file(&self, sender: &ComponentSender<Self>) {
         let dialog = gtk::FileDialog::new();
-        dialog.set_title(&i18n("Open Message File"));
+        dialog.set_title(&i18n("Open message file"));
         let filter = gtk::FileFilter::new();
         filter.set_name(Some(&i18n("Email messages")));
         filter.add_mime_type("message/rfc822");

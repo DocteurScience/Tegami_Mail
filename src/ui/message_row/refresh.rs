@@ -149,7 +149,7 @@ impl Row {
         let clickable = msg.unread && !look.in_drafts;
         w.dot.set_can_target(clickable);
         w.dot
-            .set_tooltip_text(clickable.then(|| i18n("Mark as Read")).as_deref());
+            .set_tooltip_text(clickable.then(|| i18n("Mark as read")).as_deref());
         w.text.set_valign(if look.avatars {
             gtk::Align::Center
         } else {

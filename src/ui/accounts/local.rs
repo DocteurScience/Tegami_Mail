@@ -123,7 +123,7 @@ pub(super) fn pick_import(mbox: bool, sender: &ComponentSender<AccountsWindow>, 
     let dialog = gtk::FileDialog::new();
     let s = sender.clone();
     if mbox {
-        dialog.set_title(&i18n("Import Mbox Files"));
+        dialog.set_title(&i18n("Import mbox files"));
         dialog.open_multiple(parent.as_ref(), gtk::gio::Cancellable::NONE, move |res| {
             let Ok(files) = res else { return };
             let sources: Vec<std::path::PathBuf> = (0..files.n_items())
@@ -139,7 +139,7 @@ pub(super) fn pick_import(mbox: bool, sender: &ComponentSender<AccountsWindow>, 
         });
         return;
     }
-    dialog.set_title(&i18n("Import Maildir Folders"));
+    dialog.set_title(&i18n("Import maildir folders"));
     if let Some(evolution) = dirs::data_dir()
         .map(|d| d.join("evolution/mail/local"))
         .filter(|d| d.is_dir())

@@ -113,19 +113,19 @@ impl MessageView {
                 vec![
                     entry(i18n("Open"), "document-open-symbolic", AttVerb::Open),
                     entry(
-                        i18n("Open With\u{2026}"),
+                        i18n("Open with\u{2026}"),
                         "view-more-horizontal-symbolic",
                         AttVerb::OpenWith,
                     ),
                 ],
                 vec![
                     entry(
-                        i18n("Save As\u{2026}"),
+                        i18n("Save as\u{2026}"),
                         "folder-download-symbolic",
                         AttVerb::Save,
                     ),
                     entry(
-                        i18n("Save All\u{2026}"),
+                        i18n("Save all\u{2026}"),
                         "folder-download-symbolic",
                         AttVerb::SaveAll,
                     ),

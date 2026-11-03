@@ -95,7 +95,7 @@ impl ToolbarItem {
     pub(crate) fn label(self) -> &'static str {
         match self {
             ToolbarItem::Reply => crate::i18n::i18n_noop("Reply"),
-            ToolbarItem::ReplyAll => crate::i18n::i18n_noop("Reply All"),
+            ToolbarItem::ReplyAll => crate::i18n::i18n_noop("Reply all"),
             ToolbarItem::Forward => crate::i18n::i18n_noop("Forward"),
             ToolbarItem::Star => crate::i18n::i18n_noop("Star"),
             ToolbarItem::Archive => crate::i18n::i18n_noop("Archive"),
@@ -104,7 +104,7 @@ impl ToolbarItem {
             ToolbarItem::Spam => crate::i18n::i18n_noop("Spam"),
             ToolbarItem::ReadUnread => crate::i18n::i18n_noop("Read/Unread"),
             ToolbarItem::Tags => crate::i18n::i18n_noop("Tags"),
-            ToolbarItem::MoveTo => crate::i18n::i18n_noop("Move To"),
+            ToolbarItem::MoveTo => crate::i18n::i18n_noop("Move to"),
             ToolbarItem::Find => crate::i18n::i18n_noop("Find"),
             ToolbarItem::Print => crate::i18n::i18n_noop("Print"),
         }

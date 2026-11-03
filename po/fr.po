@@ -30,10 +30,10 @@ msgstr ""
 "sur GitHub. Elle partage vos comptes et e-mails avec l’installation stable "
 "de Tegami Mail."
 
-msgid "Release Notes"
+msgid "Release notes"
 msgstr "Notes de version"
 
-msgid "Keyring Setup Help"
+msgid "Keyring setup help"
 msgstr "Aide à la configuration du trousseau de clés"
 
 msgid "Make account passwords persist on Linux Mint"
@@ -46,7 +46,7 @@ msgstr "Projet"
 msgid "Report an issue or feature request"
 msgstr "Signaler un problème ou une demande de fonctionnalité"
 
-msgid "Source Code"
+msgid "Source code"
 msgstr "Code source"
 
 msgid "License (GNU AGPL v3)"
@@ -99,10 +99,10 @@ msgstr ""
 msgid "Delete"
 msgstr "Supprimer"
 
-msgid "Sync Now"
+msgid "Sync now"
 msgstr "Synchroniser maintenant"
 
-msgid "Add Account…"
+msgid "Add account…"
 msgstr "Ajouter un compte…"
 
 msgid "GNOME Online Accounts…"
@@ -111,76 +111,76 @@ msgstr "Comptes en ligne GNOME…"
 msgid "Settings"
 msgstr "Paramètres"
 
-msgid "Print Preview…"
+msgid "Print preview…"
 msgstr "Aperçu avant impression…"
 
-msgid "Print Message…"
+msgid "Print message…"
 msgstr "Imprimer le message…"
 
 msgid "Quit"
 msgstr "Quitter"
 
-msgid "Use Template"
+msgid "Use template"
 msgstr "Utiliser le modèle"
 
-msgid "Edit Template"
+msgid "Edit template"
 msgstr "Modifier le modèle"
 
 msgid "Reply"
 msgstr "Répondre"
 
-msgid "Reply All"
+msgid "Reply all"
 msgstr "Répondre à tous"
 
 msgid "Forward"
 msgstr "Transférer"
 
-msgid "Edit as New Message"
+msgid "Edit as new message"
 msgstr "Modifier en tant que nouveau message"
 
-msgid "Remove Star"
+msgid "Remove star"
 msgstr "Retirer l’étoile"
 
 msgid "Star"
 msgstr "Ajouter une étoile"
 
-msgid "Mark as Read"
+msgid "Mark as read"
 msgstr "Marquer comme lu"
 
-msgid "Mark as Unread"
+msgid "Mark as unread"
 msgstr "Marquer comme non lu"
 
-msgid "Expand All Messages"
+msgid "Expand all messages"
 msgstr "Déplier tous les messages"
 
-msgid "Collapse All Messages"
+msgid "Collapse all messages"
 msgstr "Réduire tous les messages"
 
-msgid "View Source"
+msgid "View source"
 msgstr "Afficher le code source"
 
-msgid "Save as File…"
+msgid "Save as file…"
 msgstr "Enregistrer dans un fichier…"
 
-msgid "Add Sender to Contacts"
+msgid "Add sender to contacts"
 msgstr "Ajouter l’expéditeur aux contacts"
 
-msgid "Create Filter from Message…"
+msgid "Create filter from message…"
 msgstr "Créer un filtre à partir du message…"
 
 msgid "Tags"
 msgstr "Tags"
 
-msgid "Not Spam"
+msgid "Not spam"
 msgstr "Non indésirable"
 
-msgid "Move to Inbox"
+msgid "Move to inbox"
 msgstr "Déplacer vers la boîte de réception"
 
-msgid "Mark as Spam"
+msgid "Mark as spam"
 msgstr "Marquer comme indésirable"
 
-msgid "Move To…"
+msgid "Move to…"
 msgstr "Déplacer vers…"
 
 msgid "Archive"
@@ -189,13 +189,13 @@ msgstr "Archiver"
 msgid "Snooze"
 msgstr ""
 
-msgid "Block Remote Content"
+msgid "Block remote content"
 msgstr "Bloquer le contenu distant"
 
-msgid "Show Remote Content"
+msgid "Show remote content"
 msgstr "Afficher le contenu distant"
 
-msgid "Print Preview"
+msgid "Print preview"
 msgstr "Aperçu avant impression"
 
 msgid "Print…"
@@ -207,13 +207,13 @@ msgstr "Nouveau message"
 msgid "Could not forward the message: {e}"
 msgstr "Impossible de transférer le message : {e}"
 
-msgid "Tegami Mail Address Book"
+msgid "Tegami Mail address book"
 msgstr "Carnet d’adresses Tegami Mail"
 
-msgid "On This Computer"
+msgid "On this computer"
 msgstr "Sur cet ordinateur"
 
-msgid "CardDAV Address Book"
+msgid "CardDAV address book"
 msgstr "Carnet d’adresses CardDAV"
 
 msgid "Enter the server's address."
@@ -342,7 +342,7 @@ msgstr[1] "{n} personnes"
 msgid "Enable Console mode in Settings → System & Appearance"
 msgstr "Activez le mode Console dans Paramètres → Système et apparence"
 
-msgid "New Message from Template"
+msgid "New message from template"
 msgstr "Nouveau message à partir d’un modèle"
 
 msgid "The new message starts as a copy of the template you pick."
@@ -355,7 +355,7 @@ msgstr ""
 "Aucun modèle pour le moment. Enregistrez-en un depuis le menu ⋯ de la "
 "fenêtre de rédaction avec « Enregistrer comme modèle »."
 
-msgid "Continue a Draft"
+msgid "Continue a draft"
 msgstr "Continuer un brouillon"
 
 msgid "The files go into the draft you pick."
@@ -364,7 +364,7 @@ msgstr "Les fichiers seront ajoutés au brouillon que vous choisissez."
 msgid "No drafts to continue."
 msgstr "Aucun brouillon à continuer."
 
-msgid "Attach to This Draft"
+msgid "Attach to this draft"
 msgstr "Joindre à ce brouillon"
 
 msgid "No Drafts folder available for this account"
@@ -386,10 +386,10 @@ msgstr "Le transfert du filtre {rule} est en attente dans la Boîte d’envoi"
 msgid "No filters to apply here yet"
 msgstr "Aucun filtre à appliquer ici pour l’instant"
 
-msgid "Applying Filters"
+msgid "Applying filters"
 msgstr "Application de filtres"
 
-msgid "Run in Background"
+msgid "Run in background"
 msgstr "Exécuter en arrière-plan"
 
 msgid "Looked at {n} message so far"
@@ -471,7 +471,7 @@ msgid_plural "Filters tagged {tagged} and filed {filed} of {n} messages"
 msgstr[0] "Les filtres ont marqué {tagged} et classé {filed} sur {n} message"
 msgstr[1] "Les filtres ont marqué {tagged} et classé {filed} sur {n} messages"
 
-msgid "Filters Applied"
+msgid "Filters applied"
 msgstr "Filtres appliqués"
 
 msgid "Close"
@@ -480,13 +480,13 @@ msgstr "Fermer"
 msgid "Unstar"
 msgstr "Retirer l’étoile"
 
-msgid "New Folder"
+msgid "New folder"
 msgstr "Nouveau dossier"
 
 msgid "Create a new folder for this account."
 msgstr "Créer un nouveau dossier pour ce compte."
 
-msgid "New Subfolder"
+msgid "New subfolder"
 msgstr "Nouveau sous-dossier"
 
 msgid "Create a folder inside {folder}."
@@ -510,7 +510,7 @@ msgstr "Renommer"
 msgid "A folder named {new_name} is already there."
 msgstr "Un dossier nommé {new_name} existe déjà."
 
-msgid "Rename Folder"
+msgid "Rename folder"
 msgstr "Renommer le dossier"
 
 msgid ""
@@ -532,7 +532,7 @@ msgstr ""
 msgid "Empty"
 msgstr "Vider"
 
-msgid "Create Folder"
+msgid "Create folder"
 msgstr "Créer un dossier"
 
 msgid "archive"
@@ -544,7 +544,7 @@ msgstr "corbeille"
 msgid "destination"
 msgstr "destination"
 
-msgid "Move Folder"
+msgid "Move folder"
 msgstr "Déplacer le dossier"
 
 msgid "Always do this (change it in Settings → System → GNOME Files)"
@@ -570,13 +570,13 @@ msgstr[1] "Envoyer {n} fichiers avec Tegami Mail"
 msgid "{names} ({size}). What should the files go into?"
 msgstr "{names} ({size}). Où placer les fichiers ?"
 
-msgid "Reply to a Message…"
+msgid "Reply to a message…"
 msgstr "Répondre à un message…"
 
-msgid "Continue a Draft…"
+msgid "Continue a draft…"
 msgstr "Continuer un brouillon…"
 
-msgid "Reply to a Message"
+msgid "Reply to a message"
 msgstr "Répondre à un message"
 
 msgid "The files go into a reply to the message you pick."
@@ -586,7 +586,7 @@ msgstr ""
 msgid "No messages to reply to yet."
 msgstr "Aucun message auquel répondre pour l’instant."
 
-msgid "Reply With the Files"
+msgid "Reply with the files"
 msgstr "Répondre avec les fichiers"
 
 msgid "Large files"
@@ -607,10 +607,10 @@ msgstr[1] ""
 "téléverser vers le stockage en ligne et insérer des liens de téléchargement "
 "dans le message à la place ?"
 
-msgid "Attach Anyway"
+msgid "Attach anyway"
 msgstr "Joindre quand même"
 
-msgid "Upload to Cloud Storage"
+msgid "Upload to cloud storage"
 msgstr "Téléverser vers un stockage en ligne"
 
 msgid "This message carries no calendar file to open."
@@ -665,11 +665,11 @@ msgid "Starred first"
 msgstr "Favoris en premier"
 
 #, fuzzy
-msgid "Clear Dates"
+msgid "Clear dates"
 msgstr "Effacer les filtres"
 
 #, fuzzy
-msgid "Any Date"
+msgid "Any date"
 msgstr "Date"
 
 #, fuzzy
@@ -690,10 +690,10 @@ msgstr "Trier par"
 msgid "Show"
 msgstr "Afficher"
 
-msgid "Group into Conversations"
+msgid "Group into conversations"
 msgstr "Regrouper en conversations"
 
-msgid "Message Preview"
+msgid "Message preview"
 msgstr "Aperçu du message"
 
 msgid "Avatars"
@@ -702,7 +702,7 @@ msgstr "Avatars"
 msgid "Show only"
 msgstr "Afficher uniquement"
 
-msgid "Clear Filters"
+msgid "Clear filters"
 msgstr "Effacer les filtres"
 
 #, fuzzy
@@ -721,7 +721,7 @@ msgstr "Trier et filtrer les messages"
 msgid "Filtered: {names}"
 msgstr "Filtré : {names}"
 
-msgid "Search Messages…"
+msgid "Search messages…"
 msgstr "Rechercher des messages…"
 
 msgid "Filter"
@@ -736,7 +736,7 @@ msgstr "Étiquette : {name}"
 msgid "Favorites"
 msgstr "Favoris"
 
-msgid "New Message from Template…"
+msgid "New message from template…"
 msgstr "Nouveau message à partir d’un modèle…"
 
 msgid "All"
@@ -809,9 +809,6 @@ msgstr "Répondre à tous"
 
 msgid "Delete permanently, without going to Trash"
 msgstr "Supprimer définitivement, sans passer par la Corbeille"
-
-msgid "Mark as spam"
-msgstr "Marquer comme indésirable"
 
 msgid "Star or unstar"
 msgstr "Ajouter ou retirer l’étoile"
@@ -897,7 +894,7 @@ msgstr "Afficher la barre d’état (ou appui long sur Actualiser)"
 msgid "Show or hide the accounts in the sidebar"
 msgstr "Afficher ou masquer les comptes dans la barre latérale"
 
-msgid "Focus Mode on or off"
+msgid "Focus mode on or off"
 msgstr "Activer ou désactiver le mode Focus"
 
 msgid "Fullscreen on or off"
@@ -953,22 +950,22 @@ msgstr "Message suivant ou précédent dans la conversation"
 msgid "Expand or collapse every message of the conversation"
 msgstr "Déplier ou replier tous les messages de la conversation"
 
-msgid "Go to Inbox"
+msgid "Go to inbox"
 msgstr "Aller à la boîte de réception"
 
-msgid "Go to Starred"
+msgid "Go to starred"
 msgstr "Aller aux favoris"
 
-msgid "Go to Sent"
+msgid "Go to sent"
 msgstr "Aller aux envoyés"
 
-msgid "Go to Drafts"
+msgid "Go to drafts"
 msgstr "Aller aux brouillons"
 
-msgid "Go to Archive"
+msgid "Go to archive"
 msgstr "Aller à l’archive"
 
-msgid "Go to Contacts"
+msgid "Go to contacts"
 msgstr "Aller aux contacts"
 
 msgid "Archive the conversation"
@@ -1022,28 +1019,25 @@ msgstr "Vérifier s’il y a de nouveaux messages"
 msgid "Action"
 msgstr "Action"
 
-msgid "Reply to All"
-msgstr "Répondre à tous"
-
 msgid "Print"
 msgstr "Imprimer"
 
-msgid "Find in Message"
+msgid "Find in message"
 msgstr "Rechercher dans le message"
 
-msgid "Delete Permanently"
+msgid "Delete permanently"
 msgstr "Supprimer définitivement"
 
-msgid "Star or Remove Star"
+msgid "Star or remove star"
 msgstr "Ajouter ou retirer l’étoile"
 
-msgid "Mark as Read or Unread"
+msgid "Mark as read or unread"
 msgstr "Marquer comme lu ou non lu"
 
-msgid "Move to Folder"
+msgid "Move to folder"
 msgstr "Déplacer vers un dossier"
 
-msgid "Open Message File…"
+msgid "Open message file…"
 msgstr "Ouvrir un fichier de message…"
 
 msgid "Undo"
@@ -1052,43 +1046,40 @@ msgstr "Annuler"
 msgid "Redo"
 msgstr "Rétablir"
 
-msgid "Check for New Mail"
-msgstr "Vérifier les nouveaux messages"
-
-msgid "Search Messages"
+msgid "Search messages"
 msgstr "Rechercher des messages"
 
-msgid "Show or Hide the Sidebar"
+msgid "Show or hide the sidebar"
 msgstr "Afficher ou masquer la barre latérale"
 
 #, fuzzy
-msgid "Reading Pane Right"
+msgid "Reading pane right"
 msgstr "Lecture"
 
 #, fuzzy
-msgid "Reading Pane Below"
+msgid "Reading pane below"
 msgstr "Lecture"
 
 #, fuzzy
-msgid "Reading Pane Off"
+msgid "Reading pane off"
 msgstr "Lecture"
 
-msgid "Mail Accounts"
+msgid "Mail accounts"
 msgstr "Comptes e-mail"
 
-msgid "New Smart Folder…"
+msgid "New smart folder…"
 msgstr "Nouveau dossier intelligent…"
 
-msgid "Keyboard Shortcuts"
+msgid "Keyboard shortcuts"
 msgstr "Raccourcis clavier"
 
 msgid "About Tegami Mail"
 msgstr "À propos de Tegami Mail"
 
-msgid "Turn Focus Mode On"
+msgid "Turn focus mode on"
 msgstr "Activer le mode Focus"
 
-msgid "Turn Focus Mode Off"
+msgid "Turn focus mode off"
 msgstr "Désactiver le mode Focus"
 
 msgid "View"
@@ -1100,7 +1091,7 @@ msgstr "Boîte d’envoi"
 msgid "Tag"
 msgstr "Tag"
 
-msgid "Smart Folder"
+msgid "Smart folder"
 msgstr "Dossier intelligent"
 
 msgid ""
@@ -1119,10 +1110,10 @@ msgstr ""
 msgid "Your tags"
 msgstr "Vos tags"
 
-msgid "Hide Status Bar"
+msgid "Hide status bar"
 msgstr "Masquer la barre d’état"
 
-msgid "Reveal Status Bar"
+msgid "Reveal status bar"
 msgstr "Afficher la barre d’état"
 
 msgid "Console"
@@ -1131,7 +1122,7 @@ msgstr "Console"
 msgid "Help"
 msgstr "Aide"
 
-msgid "New Message Instead"
+msgid "New message instead"
 msgstr "Nouveau message à la place"
 
 msgid "Search by sender, subject or account"
@@ -1140,7 +1131,7 @@ msgstr "Rechercher par expéditeur, objet ou compte"
 msgid "(no subject)"
 msgstr "(sans objet)"
 
-msgid "Message Source"
+msgid "Message source"
 msgstr "Code source du message"
 
 #, fuzzy
@@ -1161,7 +1152,7 @@ msgstr "Accepté : {subject}"
 msgid "Export failed: {e}"
 msgstr "Échec de l’exportation : {e}"
 
-msgid "Export Contacts"
+msgid "Export contacts"
 msgstr "Exporter les contacts"
 
 msgid "{n} contact exported to {path}"
@@ -1188,25 +1179,25 @@ msgstr[1] ""
 "{n} contacts du carnet d’adresses Tegami Mail seront supprimés. Cette action "
 "est irréversible ; exportez d’abord le carnet pour en conserver une copie."
 
-msgid "Delete All"
+msgid "Delete all"
 msgstr "Tout supprimer"
 
-msgid "Export Settings"
+msgid "Export settings"
 msgstr "Exporter les paramètres"
 
 msgid "Settings exported to {display}"
 msgstr "Paramètres exportés vers {display}"
 
-msgid "Export Log"
+msgid "Export log"
 msgstr "Exporter le journal"
 
 msgid "Log exported to {display}"
 msgstr "Journal exporté vers {display}"
 
-msgid "Import Settings"
-msgstr "Importer des paramètres"
+msgid "Import settings"
+msgstr "Importer les paramètres"
 
-msgid "Settings Imported"
+msgid "Settings imported"
 msgstr "Paramètres importés"
 
 msgid ""
@@ -1244,13 +1235,13 @@ msgstr "Tenter d’envoyer ce message maintenant"
 msgid "Send all"
 msgstr "Tout envoyer"
 
-msgid "Forward as Attachment"
+msgid "Forward as attachment"
 msgstr "Transférer en pièce jointe"
 
 msgid "Delete {n} messages"
 msgstr "Supprimer {n} messages"
 
-msgid "Customize Toolbar…"
+msgid "Customize toolbar…"
 msgstr "Personnaliser la barre d’outils…"
 
 msgid "Read receipt"
@@ -1274,13 +1265,13 @@ msgstr ""
 msgid "Read by {reader}"
 msgstr "Adresse de réponse"
 
-msgid "Full Release Notes on GitHub"
+msgid "Full release notes on GitHub"
 msgstr "Notes de version complètes sur GitHub"
 
 msgid "Delete this conversation?"
 msgstr "Supprimer cette conversation ?"
 
-msgid "Delete Conversation"
+msgid "Delete conversation"
 msgstr "Supprimer la conversation"
 
 msgid "Delete this message permanently?"
@@ -1337,7 +1328,7 @@ msgstr "Supprimer"
 msgid "Select a conversation first."
 msgstr "Sélectionnez d’abord une conversation."
 
-msgid "Remove Tags"
+msgid "Remove tags"
 msgstr "Supprimer les tags"
 
 msgid "Open a message first, then print it."
@@ -1415,7 +1406,7 @@ msgstr ""
 "Le dock et les fenêtres de Tegami Mail conserveront l’ancienne icône "
 "jusqu’au redémarrage de Tegami Mail."
 
-msgid "Restart Now"
+msgid "Restart now"
 msgstr "Redémarrer maintenant"
 
 msgid ""
@@ -1428,10 +1419,10 @@ msgstr ""
 msgid "Move to {name}"
 msgstr "Déplacer vers {name}"
 
-msgid "Add Tag {name}"
+msgid "Add tag {name}"
 msgstr "Ajouter le tag {name}"
 
-msgid "Remove Tag {name}"
+msgid "Remove tag {name}"
 msgstr "Supprimer le tag {name}"
 
 msgid "Unsubscribe from {name}?"
@@ -1486,10 +1477,10 @@ msgid "The list's unsubscribe page is open in your browser."
 msgstr ""
 "La page de désabonnement de la liste est ouverte dans votre navigateur."
 
-msgid "Save Message"
+msgid "Save message"
 msgstr "Enregistrer le message"
 
-msgid "Open Message File"
+msgid "Open message file"
 msgstr "Ouvrir un fichier de message"
 
 msgid "Email messages"
@@ -1508,7 +1499,7 @@ msgstr "Aucun message portant l’identifiant {id} n’a été trouvé"
 msgid "Mail"
 msgstr "Courrier"
 
-msgid "Main Menu"
+msgid "Main menu"
 msgstr "Menu principal"
 
 msgid "Expand sidebar"
@@ -1517,7 +1508,7 @@ msgstr "Déplier la barre latérale"
 msgid "Collapse sidebar"
 msgstr "Réduire la barre latérale"
 
-msgid "New Message (Ctrl+N)"
+msgid "New message (Ctrl+N)"
 msgstr "Nouveau message (Ctrl+N)"
 
 msgid "Search messages (Ctrl+F)"
@@ -1531,7 +1522,7 @@ msgstr "Répondre (Ctrl+R)"
 
 #. The preview, not the print dialog: it shows what will come
 #. out and prints from there (#359).
-msgid "Print Preview (Ctrl+Shift+P)"
+msgid "Print preview (Ctrl+Shift+P)"
 msgstr "Aperçu avant impression (Ctrl+Maj+P)"
 
 msgid "Find in message (Ctrl+F)"
@@ -1567,7 +1558,7 @@ msgstr "Importance"
 msgid "Account"
 msgstr "Compte"
 
-msgid "Due Date"
+msgid "Due date"
 msgstr "Date d’échéance"
 
 msgid "Date"
@@ -1602,7 +1593,7 @@ msgstr "Dossier du message d’origine"
 msgid "Folder of the original, not the Inbox"
 msgstr "Dossier du message d’origine, et non la Boîte de réception"
 
-msgid "Custom Order"
+msgid "Custom order"
 msgstr "Ordre personnalisé"
 
 msgid "Name (A to Z)"
@@ -1611,7 +1602,7 @@ msgstr "Nom (A à Z)"
 msgid "Name (Z to A)"
 msgstr "Nom (Z à A)"
 
-msgid "Full Path"
+msgid "Full path"
 msgstr "Chemin complet"
 
 msgid "Spam"
@@ -1620,7 +1611,7 @@ msgstr "Spam"
 msgid "Read/Unread"
 msgstr "Lu/Non lu"
 
-msgid "Move To"
+msgid "Move to"
 msgstr "Déplacer vers"
 
 msgid "Find"
@@ -2193,9 +2184,6 @@ msgstr "Activer ce compte"
 msgid "Forward to"
 msgstr "Transférer à"
 
-msgid "Move to"
-msgstr "Déplacer vers"
-
 msgid "forwards to {to}"
 msgstr "transfère à {to}"
 
@@ -2208,7 +2196,7 @@ msgstr "supprimé définitivement"
 msgid "Then"
 msgstr "Alors"
 
-msgid "Add Action"
+msgid "Add action"
 msgstr "Ajouter une action"
 
 msgid "Remove action"
@@ -2239,10 +2227,10 @@ msgid "Kept on the server; change it in your provider's webmail."
 msgstr ""
 "Conservé sur le serveur ; modifiez-le dans le webmail de votre fournisseur."
 
-msgid "Edit Alias"
+msgid "Edit alias"
 msgstr "Modifier l’alias"
 
-msgid "Add Alias"
+msgid "Add alias"
 msgstr "Ajouter un alias"
 
 msgid "Save"
@@ -2299,7 +2287,7 @@ msgstr "Séparez les alternatives par des virgules."
 msgid "Text to match"
 msgstr "Texte à rechercher"
 
-msgid "Add Condition"
+msgid "Add condition"
 msgstr "Ajouter une condition"
 
 msgid "Condition matching"
@@ -2353,7 +2341,7 @@ msgstr ""
 "Demande l’accès à Microsoft. Certaines organisations exigent l’approbation "
 "d’un administrateur."
 
-msgid "Choose a Picture"
+msgid "Choose a picture"
 msgstr "Choisir une photo"
 
 msgid "Images"
@@ -2416,13 +2404,13 @@ msgstr "Supprimer le filtre"
 msgid "Applying…"
 msgstr "Application…"
 
-msgid "Apply Now"
+msgid "Apply now"
 msgstr "Appliquer maintenant"
 
-msgid "Edit Filter"
+msgid "Edit filter"
 msgstr "Modifier le filtre"
 
-msgid "Add Filter"
+msgid "Add filter"
 msgstr "Ajouter un filtre"
 
 msgid "Name (optional)"
@@ -2461,7 +2449,7 @@ msgid_plural "After {n} days"
 msgstr[0] "Au bout de {n} jour"
 msgstr[1] "Au bout de {n} jours"
 
-msgid "API Token"
+msgid "API token"
 msgstr "Jeton d’API"
 
 msgid "Password"
@@ -2473,18 +2461,18 @@ msgstr "Serveur (nom d’hôte ou URL)"
 msgid "Port (default 443)"
 msgstr "Port (par défaut 443)"
 
-msgid "Incoming Server"
+msgid "Incoming server"
 msgstr "Serveur d’arrivée"
 
 msgid "Port (IMAP 993 / POP3 995)"
 msgstr "Port (IMAP 993 / POP3 995)"
 
 #, fuzzy
-msgid "Import Mbox Files"
+msgid "Import mbox files"
 msgstr "Importer le fichier…"
 
 #, fuzzy
-msgid "Import Maildir Folders"
+msgid "Import maildir folders"
 msgstr "Échec de l’importation : {e}"
 
 msgid "Signed in as {address}, not {email}."
@@ -2559,7 +2547,7 @@ msgid "Mail accounts from GNOME Settings. Switch one on to use it."
 msgstr ""
 "Comptes de messagerie des Paramètres de GNOME. Activez-en un pour l’utiliser."
 
-msgid "Smart Folders"
+msgid "Smart folders"
 msgstr "Dossiers intelligents"
 
 msgid ""
@@ -2569,16 +2557,16 @@ msgstr ""
 "Liste les messages qui répondent à ses conditions. Affiché dans la barre "
 "latérale, sous les lignes unifiées."
 
-msgid "Add Smart Folder…"
+msgid "Add smart folder…"
 msgstr "Ajouter un dossier intelligent…"
 
 msgid "Searching…"
 msgstr "Recherche…"
 
-msgid "Find Tags…"
+msgid "Find tags…"
 msgstr "Rechercher des tags…"
 
-msgid "No New Tags"
+msgid "No new tags"
 msgstr "Aucun nouveau tag"
 
 msgid "Every tag in your mailboxes is already set up here."
@@ -2587,7 +2575,7 @@ msgstr "Tous les tags de vos boîtes aux lettres sont déjà configurés ici."
 msgid "OK"
 msgstr "OK"
 
-msgid "Tags Found"
+msgid "Tags found"
 msgstr "Tags trouvés"
 
 msgid "{n} tags are in use in your mailboxes but not set up here."
@@ -2595,10 +2583,10 @@ msgstr ""
 "{n} tags sont utilisés dans vos boîtes aux lettres mais ne sont pas "
 "configurés ici."
 
-msgid "Import Selected"
+msgid "Import selected"
 msgstr "Importer la sélection"
 
-msgid "Import All"
+msgid "Import all"
 msgstr "Tout importer"
 
 msgid "{n} messages"
@@ -2612,10 +2600,10 @@ msgstr ""
 msgid "Remove tag"
 msgstr "Supprimer le tag"
 
-msgid "Edit Tag"
+msgid "Edit tag"
 msgstr "Modifier le tag"
 
-msgid "Add Tag"
+msgid "Add tag"
 msgstr "Ajouter un tag"
 
 msgid "Name"
@@ -2637,7 +2625,7 @@ msgstr "Couleur"
 msgid "Custom color…"
 msgstr "Couleur personnalisée…"
 
-msgid "Tag Color"
+msgid "Tag color"
 msgstr "Couleur du tag"
 
 msgid "Needs an app password, not your login password."
@@ -2714,7 +2702,7 @@ msgstr "Modifier le HTML"
 msgid "Edit the signature's HTML source"
 msgstr "Modifier le code source HTML de la signature"
 
-msgid "Follow Settings"
+msgid "Follow settings"
 msgstr "Suivre les paramètres"
 
 msgid "On"
@@ -2726,19 +2714,19 @@ msgstr "Signature {n}"
 msgid "Preview"
 msgstr "Aperçu"
 
-msgid "Import Signature"
+msgid "Import signature"
 msgstr "Importer la signature"
 
 msgid "HTML and text files"
 msgstr "Fichiers HTML et texte"
 
-msgid "Could Not Read the File"
+msgid "Could not read the file"
 msgstr "Impossible de lire le fichier"
 
 msgid "All accounts"
 msgstr "Tous les comptes"
 
-msgid "All but Trash and Junk"
+msgid "All but trash and junk"
 msgstr "Tous sauf la Corbeille et les Indésirables"
 
 msgid "Remove smart folder"
@@ -2771,13 +2759,10 @@ msgstr "Contient des pièces jointes"
 msgid "Tagged"
 msgstr "Avec tag"
 
-msgid "Message preview"
-msgstr "Aperçu du message"
-
-msgid "Edit Smart Folder"
+msgid "Edit smart folder"
 msgstr "Modifier le dossier intelligent"
 
-msgid "Add Smart Folder"
+msgid "Add smart folder"
 msgstr "Ajouter un dossier intelligent"
 
 msgid "Those in the unified section."
@@ -2798,10 +2783,10 @@ msgstr "Ouvrir"
 msgid "Download…"
 msgstr "Télécharger…"
 
-msgid "Show in Message"
+msgid "Show in message"
 msgstr "Afficher dans le message"
 
-msgid "Delete from Server…"
+msgid "Delete from server…"
 msgstr "Supprimer du serveur…"
 
 msgid "Key imported"
@@ -2859,16 +2844,16 @@ msgstr "Afficher sous forme de vignettes"
 msgid "Show as a list"
 msgstr "Afficher sous forme de liste"
 
-msgid "Save All…"
+msgid "Save all…"
 msgstr "Tout enregistrer…"
 
 msgid "Save every attachment to a folder"
 msgstr "Enregistrer chaque pièce jointe dans un dossier"
 
-msgid "Save Attachment"
+msgid "Save attachment"
 msgstr "Enregistrer la pièce jointe"
 
-msgid "Save All Attachments"
+msgid "Save all attachments"
 msgstr "Enregistrer toutes les pièces jointes"
 
 msgid "The file could not be opened"
@@ -2963,7 +2948,7 @@ msgstr ""
 "Utilisés, sauf si vous les modifiez dans la boîte de dialogue de "
 "téléversement pour un e-mail."
 
-msgid "Check Connection"
+msgid "Check connection"
 msgstr "Vérifier la connexion"
 
 msgid "{email} (Files is off)"
@@ -3105,9 +3090,6 @@ msgstr ""
 msgid "Signed in as {who}. {terms}"
 msgstr "Connecté en tant que {who}. {terms}"
 
-msgid "Cloud Storage"
-msgstr "Stockage en ligne"
-
 msgid "Cloud storage"
 msgstr "Stockage en ligne"
 
@@ -3125,7 +3107,7 @@ msgstr ""
 msgid "No cloud accounts yet."
 msgstr "Aucun compte cloud pour le moment."
 
-msgid "Cloud Account"
+msgid "Cloud account"
 msgstr "Compte cloud"
 
 msgid "Remove {name}?"
@@ -3143,10 +3125,10 @@ msgstr "{name} supprimé"
 msgid "Could not store the sign-in in the keyring: {e}"
 msgstr "Impossible d’enregistrer la connexion dans le trousseau de clés : {e}"
 
-msgid "Edit Cloud Account"
+msgid "Edit cloud account"
 msgstr "Modifier le compte cloud"
 
-msgid "Add Cloud Account"
+msgid "Add cloud account"
 msgstr "Ajouter un compte cloud"
 
 msgid "links expire after {n} days"
@@ -3158,7 +3140,7 @@ msgstr "protégé par mot de passe"
 msgid "Offer this account in the composer"
 msgstr "Proposer ce compte dans la fenêtre de rédaction"
 
-msgid "Command Palette"
+msgid "Command palette"
 msgstr "Palette de commandes"
 
 msgid "Type an action, a folder or a tag, or > for actions only"
@@ -3179,7 +3161,7 @@ msgstr "Non trouvé"
 msgid "Large: some servers will refuse it."
 msgstr "Volumineux : certains serveurs le refuseront."
 
-msgid "Send a Link"
+msgid "Send a link"
 msgstr "Envoyer un lien"
 
 msgid "Upload it to cloud storage and send a link instead"
@@ -3198,9 +3180,6 @@ msgstr "{name} (lien)"
 
 msgid "Uploading…"
 msgstr "Téléversement…"
-
-msgid "Attach Files"
-msgstr "Joindre des fichiers"
 
 msgid "Attach {name}"
 msgstr "Joindre {name}"
@@ -3294,7 +3273,7 @@ msgstr ""
 "Ses modifications n’ont pas été enregistrées. Enregistrez-les dans le modèle "
 "ou abandonnez-les."
 
-msgid "Save Template"
+msgid "Save template"
 msgstr "Enregistrer le modèle"
 
 msgid "Save the message?"
@@ -3305,10 +3284,10 @@ msgstr ""
 "Il n’a pas été envoyé. Enregistrez-le dans Brouillons pour le terminer plus "
 "tard, ou abandonnez-le."
 
-msgid "Save Draft"
+msgid "Save draft"
 msgstr "Enregistrer le brouillon"
 
-msgid "Keep Editing"
+msgid "Keep editing"
 msgstr "Continuer la modification"
 
 msgid "Discard"
@@ -3332,13 +3311,13 @@ msgstr "Demander un accusé de réception"
 msgid "Not every mail app sends one."
 msgstr "Toutes les applications de messagerie n’en envoient pas."
 
-msgid "Check Spelling"
+msgid "Check spelling"
 msgstr "Vérifier l’orthographe"
 
-msgid "Spelling Language"
+msgid "Spelling language"
 msgstr "Langue du correcteur"
 
-msgid "Delete Draft"
+msgid "Delete draft"
 msgstr "Supprimer le brouillon"
 
 msgid "Move this draft to Trash"
@@ -3392,10 +3371,10 @@ msgstr ""
 "Votre message mentionne une pièce jointe (« {word} »), mais aucun fichier "
 "n’y est joint."
 
-msgid "Send Anyway"
+msgid "Send anyway"
 msgstr "Envoyer quand même"
 
-msgid "Attach a File…"
+msgid "Attach a file…"
 msgstr "Joindre un fichier…"
 
 msgid "An attachment is missing"
@@ -3412,7 +3391,7 @@ msgstr ""
 msgid "Choose the sending account"
 msgstr "Choisir le compte d’envoi"
 
-msgid "Manage Accounts…"
+msgid "Manage accounts…"
 msgstr "Gérer les comptes…"
 
 msgid "Send from"
@@ -3427,28 +3406,28 @@ msgstr "« {addr} » n’est pas une adresse e-mail."
 msgid "Translate what you wrote"
 msgstr "Traduire ce que vous avez écrit"
 
-msgid "Insert Signature"
+msgid "Insert signature"
 msgstr "Insérer la signature"
 
-msgid "No Signature"
+msgid "No signature"
 msgstr "Aucune signature"
 
-msgid "Insert Before the Text"
+msgid "Insert before the text"
 msgstr "Insérer avant le texte"
 
-msgid "Insert After the Text"
+msgid "Insert after the text"
 msgstr "Insérer après le texte"
 
-msgid "Show Original"
+msgid "Show original"
 msgstr "Afficher l’original"
 
-msgid "Show Translation"
+msgid "Show translation"
 msgstr "Afficher la traduction"
 
 msgid "{language} (the quoted message)"
 msgstr "{language} (le message cité)"
 
-msgid "Other Languages"
+msgid "Other languages"
 msgstr "Autres langues"
 
 msgid "Translate into"
@@ -3589,7 +3568,7 @@ msgstr ""
 msgid "Open Online Accounts"
 msgstr "Ouvrir Comptes en ligne"
 
-msgid "Add Address Book"
+msgid "Add address book"
 msgstr "Ajouter un carnet d’adresses"
 
 msgid "Added in GNOME Online Accounts"
@@ -3678,7 +3657,7 @@ msgstr ""
 "Utilisez un mot de passe spécifique à l’application, pas votre mot de passe "
 "habituel."
 
-msgid "CardDAV Server"
+msgid "CardDAV server"
 msgstr "Serveur CardDAV"
 
 msgid ""
@@ -3702,14 +3681,11 @@ msgstr ""
 "Utilisez un mot de passe d’application autorisant l’accès aux contacts, créé "
 "dans Fastmail sous Paramètres → Confidentialité et sécurité."
 
-msgid "LDAP Directory"
+msgid "LDAP directory"
 msgstr "Annuaire LDAP"
 
 msgid "Contacts"
 msgstr "Contacts"
-
-msgid "Address Books"
-msgstr "Carnets d’adresses"
 
 msgid ""
 "Where contacts come from for Contacts, suggestions, sender pictures and "
@@ -3721,7 +3697,7 @@ msgstr ""
 msgid "Look again for address books"
 msgstr "Rechercher à nouveau des carnets d’adresses"
 
-msgid "Add Address Book…"
+msgid "Add address book…"
 msgstr "Ajouter un carnet d’adresses…"
 
 msgid ""
@@ -3733,7 +3709,7 @@ msgstr ""
 "installé. Installez le paquet evolution-data-server (il fonctionne sans "
 "GNOME) et rouvrez cette page."
 
-msgid "New Contacts"
+msgid "New contacts"
 msgstr "Nouveaux contacts"
 
 msgid "Save new contacts in"
@@ -3743,7 +3719,7 @@ msgid "Unless another is picked when the contact is made."
 msgstr "Sauf si un autre est choisi lors de la création du contact."
 
 #, fuzzy
-msgid "In Mail"
+msgid "In mail"
 msgstr "Courrier"
 
 #, fuzzy
@@ -3753,28 +3729,25 @@ msgstr "De mes contacts"
 msgid "Saved addresses show the contact's name, not the mail's."
 msgstr ""
 
-msgid "Address Book"
-msgstr "Carnet d’adresses"
-
 msgid "Looking for address books on {name}…"
 msgstr "Recherche de carnets d’adresses sur {name}…"
 
-msgid "Attach to Message"
+msgid "Attach to message"
 msgstr "Joindre au message"
 
-msgid "Insert in Text"
+msgid "Insert in text"
 msgstr "Insérer dans le texte"
 
-msgid "Upload and Share a Link"
+msgid "Upload and share a link"
 msgstr "Téléverser et partager un lien"
 
-msgid "Attach to New Message"
+msgid "Attach to new message"
 msgstr "Joindre à un nouveau message"
 
-msgid "Insert in New Message"
+msgid "Insert in new message"
 msgstr "Insérer dans un nouveau message"
 
-msgid "Share Link in New Message"
+msgid "Share link in new message"
 msgid_plural "Share Links in New Message"
 msgstr[0] "Partager un lien dans un nouveau message"
 msgstr[1] "Partager des liens dans un nouveau message"
@@ -3905,10 +3878,10 @@ msgstr "{name} · {current} sur {total}"
 msgid "Loading more…"
 msgstr "Chargement de la suite…"
 
-msgid "No Messages"
+msgid "No messages"
 msgstr "Aucun message"
 
-msgid "No Matching Messages"
+msgid "No matching messages"
 msgstr "Aucun message correspondant"
 
 msgid "There's nothing here right now."
@@ -3932,34 +3905,31 @@ msgstr "Recherche…"
 msgid "Choose which folders to search"
 msgstr "Choisir les dossiers dans lesquels rechercher"
 
-msgid "Has Attachments"
-msgstr "Contient des pièces jointes"
-
-msgid "Addressed to Me"
+msgid "Addressed to me"
 msgstr "Adressé à moi"
 
-msgid "From Contacts"
+msgid "From contacts"
 msgstr "De mes contacts"
 
-msgid "High Importance"
+msgid "High importance"
 msgstr "Importance haute"
 
 msgid "Today"
 msgstr "Aujourd’hui"
 
-msgid "Customize Columns…"
+msgid "Customize columns…"
 msgstr "Personnaliser les colonnes…"
 
-msgid "Remove Stars"
+msgid "Remove stars"
 msgstr "Retirer les étoiles"
 
-msgid "Star Conversation"
+msgid "Star conversation"
 msgstr "Ajouter une étoile à la conversation"
 
-msgid "Mark All as Read"
+msgid "Mark all as read"
 msgstr "Marquer tout comme lu"
 
-msgid "Mark All as Unread"
+msgid "Mark all as unread"
 msgstr "Tout marquer comme non lu"
 
 msgid "All folders (except trash & junk)"
@@ -4005,23 +3975,8 @@ msgid "Drag to resize, double-click for the usual width"
 msgstr ""
 "Faites glisser pour redimensionner, double-cliquez pour la largeur habituelle"
 
-msgid "Mark as read"
-msgstr "Marquer comme lu"
-
-msgid "Move to…"
-msgstr "Déplacer vers…"
-
-msgid "Not spam"
-msgstr "Non indésirable"
-
 msgid "Add sender to Contacts"
 msgstr "Ajouter l’expéditeur aux contacts"
-
-msgid "Mark as unread"
-msgstr "Marquer comme non lu"
-
-msgid "Remove star"
-msgstr "Retirer l’étoile"
 
 msgid "Forwarded"
 msgstr "Transféré"
@@ -4029,9 +3984,6 @@ msgstr "Transféré"
 #, fuzzy
 msgid "Snoozed until {when}"
 msgstr "Programmé pour {when}"
-
-msgid "High importance"
-msgstr "Importance haute"
 
 msgid "Low importance"
 msgstr "Importance basse"
@@ -4092,9 +4044,6 @@ msgstr "Charger"
 msgid "Always allow sender"
 msgstr "Toujours autoriser cet expéditeur"
 
-msgid "Find in message"
-msgstr "Rechercher dans le message"
-
 msgid "No matches"
 msgstr "Aucun résultat"
 
@@ -4130,10 +4079,10 @@ msgid "Hide quoted text"
 msgstr "Masquer le texte cité"
 
 #, fuzzy
-msgid "Copy Address"
+msgid "Copy address"
 msgstr "Copier l’adresse du lien"
 
-msgid "Add to Contacts"
+msgid "Add to contacts"
 msgstr "Ajouter aux contacts"
 
 msgid "Double-click to open in a new window"
@@ -4150,14 +4099,8 @@ msgstr "Masquer les destinataires"
 msgid "Show recipients"
 msgstr "Afficher les destinataires"
 
-msgid "Mark as read or unread"
-msgstr "Marquer comme lu ou non lu"
-
 msgid "Star this message"
 msgstr "Ajouter une étoile à ce message"
-
-msgid "View source"
-msgstr "Afficher le code source"
 
 msgid "Translate this message"
 msgstr "Traduire ce message"
@@ -4185,12 +4128,6 @@ msgstr "Retour à mes polices et couleurs"
 
 msgid "Show the sender's fonts and colors"
 msgstr "Afficher les polices et les couleurs de l’expéditeur"
-
-msgid "Show remote content"
-msgstr "Afficher le contenu distant"
-
-msgid "Block remote content"
-msgstr "Bloquer le contenu distant"
 
 msgid "Click to open this message"
 msgstr "Cliquez pour ouvrir ce message"
@@ -4306,37 +4243,37 @@ msgstr "Indique à l’organisateur que vous ne serez pas présent(e)"
 msgid "Opens the meeting in your calendar application"
 msgstr "Ouvre la réunion dans votre application de calendrier"
 
-msgid "Add to Calendar"
+msgid "Add to calendar"
 msgstr "Ajouter au calendrier"
 
-msgid "Open Link"
+msgid "Open link"
 msgstr "Ouvrir le lien"
 
-msgid "Copy Email Address"
+msgid "Copy email address"
 msgstr "Copier l’adresse e-mail"
 
-msgid "Copy Link Address"
+msgid "Copy link address"
 msgstr "Copier l’adresse du lien"
 
-msgid "Save Image As…"
+msgid "Save image as…"
 msgstr "Enregistrer l’image sous…"
 
-msgid "Save Image"
+msgid "Save image"
 msgstr "Enregistrer l’image"
 
-msgid "Copy Image"
+msgid "Copy image"
 msgstr "Copier l’image"
 
-msgid "Copy Image Address"
+msgid "Copy image address"
 msgstr "Copier l’adresse de l’image"
 
 msgid "Translate"
 msgstr "Traduire"
 
-msgid "Open With…"
+msgid "Open with…"
 msgstr "Ouvrir avec…"
 
-msgid "Save As…"
+msgid "Save as…"
 msgstr "Enregistrer sous…"
 
 msgid "Encrypted messages are not sent for translation."
@@ -4382,7 +4319,7 @@ msgstr ""
 msgid "{name} asked for a read receipt, to be sent to {addr}."
 msgstr ""
 
-msgid "Send Receipt"
+msgid "Send receipt"
 msgstr ""
 
 #, fuzzy
@@ -4458,7 +4395,7 @@ msgstr "Traduction en cours…"
 msgid "Could not translate: {why}"
 msgstr "Impossible de traduire : {why}"
 
-msgid "Try Again"
+msgid "Try again"
 msgstr "Réessayer"
 
 msgid "Translated from {language} by {service}."
@@ -4513,9 +4450,6 @@ msgstr "Ouvre la page de désabonnement de la liste dans votre navigateur"
 
 msgid "Clear all"
 msgstr "Tout effacer"
-
-msgid "Export log"
-msgstr "Exporter le journal"
 
 msgid "Collapse status bar"
 msgstr "Réduire la barre d’état"
@@ -4647,7 +4581,7 @@ msgstr "Impossible de générer la clé : {e}"
 msgid "No key found: {e}"
 msgstr "Clé introuvable : {e}"
 
-msgid "Generate a Key"
+msgid "Generate a key"
 msgstr "Générer une clé"
 
 msgid ""
@@ -4681,7 +4615,7 @@ msgstr "Saisissez deux fois la même phrase de passe."
 msgid "Generating the key…"
 msgstr "Génération de la clé…"
 
-msgid "Import Key"
+msgid "Import key"
 msgstr "Importer la clé"
 
 msgid "OpenPGP keys"
@@ -4693,7 +4627,7 @@ msgstr "Tous les fichiers"
 msgid "Could not import: {e}"
 msgstr "Impossible d’importer : {e}"
 
-msgid "Export Public Key"
+msgid "Export public key"
 msgstr "Exporter la clé publique"
 
 msgid "Delete your key?"
@@ -4720,7 +4654,7 @@ msgstr ""
 msgid "Could not delete: {e}"
 msgstr "Impossible de supprimer : {e}"
 
-msgid "Fetch a Key"
+msgid "Fetch a key"
 msgstr "Récupérer une clé"
 
 msgid ""
@@ -4761,7 +4695,7 @@ msgstr[1] "{n} clés importées."
 msgid "That key was already in your keyring."
 msgstr "Cette clé figurait déjà dans votre trousseau de clés."
 
-msgid "Choose a Sound"
+msgid "Choose a sound"
 msgstr "Choisir un son"
 
 msgid "Sounds"
@@ -4868,7 +4802,7 @@ msgstr "Corde"
 msgid "Swing"
 msgstr "Balançoire"
 
-msgid "Custom File"
+msgid "Custom file"
 msgstr "Fichier personnalisé"
 
 #, fuzzy
@@ -5140,7 +5074,7 @@ msgstr "Apparence"
 msgid "Sidebar"
 msgstr "Barre latérale"
 
-msgid "Message List"
+msgid "Message list"
 msgstr "Liste des messages"
 
 msgid "Conversations"
@@ -5155,7 +5089,7 @@ msgstr "Rédaction"
 msgid "Privacy"
 msgstr "Confidentialité"
 
-msgid "Date and Time"
+msgid "Date and time"
 msgstr "Date et heure"
 
 msgid "Backup"
@@ -5185,12 +5119,6 @@ msgid ""
 msgstr ""
 "Comptes, préférences, filtres, tags et mise en page, dans un seul fichier. "
 "Les mots de passe et les clés OpenPGP ne sont pas inclus."
-
-msgid "Export settings"
-msgstr "Exporter les paramètres"
-
-msgid "Import settings"
-msgstr "Importer les paramètres"
 
 msgid ""
 "Replaces everything in place. Don't remove accounts first: that deletes "
@@ -5307,7 +5235,7 @@ msgstr "Choisir…"
 msgid "Also play while Tegami Mail is in front"
 msgstr "Lire aussi le son lorsque Tegami Mail est au premier plan"
 
-msgid "Notification Buttons"
+msgid "Notification buttons"
 msgstr "Boutons de notification"
 
 msgid "Up to three buttons on a notification about one message."
@@ -5414,7 +5342,7 @@ msgstr "Adapter les colonnes à la liste"
 msgid "Off, a narrow list scrolls sideways."
 msgstr "Désactivé, une liste étroite défile horizontalement."
 
-msgid "Restore Defaults"
+msgid "Restore defaults"
 msgstr "Restaurer les paramètres par défaut"
 
 msgid "Tegami Mail collects no telemetry and sends no analytics."
@@ -5598,16 +5526,13 @@ msgstr "Impossible de supprimer l’extension"
 msgid "Could not restart Files"
 msgstr "Impossible de redémarrer Fichiers"
 
-msgid "Other Font…"
+msgid "Other font…"
 msgstr "Autre police…"
-
-msgid "Search Settings"
-msgstr "Rechercher des paramètres"
 
 msgid "Search settings"
 msgstr "Rechercher des paramètres"
 
-msgid "No Results"
+msgid "No results"
 msgstr "Aucun résultat"
 
 #. Translators: words the settings search finds the Contacts page by,
@@ -5625,7 +5550,7 @@ msgstr "Langue du système — {language}"
 msgid "Forget this word"
 msgstr "Oublier ce mot"
 
-msgid "Print Message"
+msgid "Print message"
 msgstr "Imprimer le message"
 
 msgid "No PDF writer is available on this system"
@@ -5637,7 +5562,7 @@ msgstr "Page {page} sur {pages}"
 msgid "Save as PDF…"
 msgstr "Enregistrer au format PDF…"
 
-msgid "No Preview"
+msgid "No preview"
 msgstr "Aucun aperçu"
 
 msgid "Save as PDF"
@@ -5672,7 +5597,7 @@ msgstr "Afficher l’historique"
 msgid "Show previous message"
 msgstr "Afficher le message précédent"
 
-msgid "Sans Serif"
+msgid "Sans serif"
 msgstr "Sans Serif"
 
 msgid "Serif"
@@ -5768,12 +5693,6 @@ msgstr "Plus d’outils de mise en forme"
 msgid "Pictures"
 msgstr "Images"
 
-msgid "Insert Picture"
-msgstr "Insérer une image"
-
-msgid "Insert Link"
-msgstr "Insérer un lien"
-
 msgid "Insert"
 msgstr "Insérer"
 
@@ -5792,70 +5711,70 @@ msgstr "Dossiers ({len})"
 msgid "Labels"
 msgstr "Tags"
 
-msgid "Sort Folders"
+msgid "Sort folders"
 msgstr "Trier les dossiers"
 
-msgid "Add Folder"
+msgid "Add folder"
 msgstr "Ajouter un dossier"
 
 msgid "Show or hide sub-folders"
 msgstr "Afficher ou masquer les sous-dossiers"
 
-msgid "Mark Inbox as Read"
+msgid "Mark inbox as read"
 msgstr "Marquer la boîte de réception comme lue"
 
 msgid "Refresh"
 msgstr "Actualiser"
 
-msgid "New Folder…"
+msgid "New folder…"
 msgstr "Nouveau dossier…"
 
-msgid "Reset Folder Order"
+msgid "Reset folder order"
 msgstr "Réinitialiser l’ordre des dossiers"
 
-msgid "Account Settings…"
+msgid "Account settings…"
 msgstr "Paramètres du compte…"
 
-msgid "Remove Account…"
+msgid "Remove account…"
 msgstr "Supprimer le compte…"
 
-msgid "Follow Settings: {sort}"
+msgid "Follow settings: {sort}"
 msgstr "Suivre les paramètres : {sort}"
 
-msgid "Sync This Folder"
+msgid "Sync this folder"
 msgstr "Synchroniser ce dossier"
 
-msgid "New Subfolder…"
+msgid "New subfolder…"
 msgstr "Nouveau sous-dossier…"
 
 msgid "Rename…"
 msgstr "Renommer…"
 
-msgid "Remove from Favorites"
+msgid "Remove from favorites"
 msgstr "Retirer des Favoris"
 
-msgid "Add to Favorites"
+msgid "Add to favorites"
 msgstr "Ajouter aux Favoris"
 
-msgid "Apply Filters"
+msgid "Apply filters"
 msgstr "Appliquer des filtres"
 
-msgid "Edit Filter…"
+msgid "Edit filter…"
 msgstr "Modifier le filtre…"
 
-msgid "Hide Folder"
+msgid "Hide folder"
 msgstr "Masquer le dossier"
 
-msgid "Empty Trash…"
+msgid "Empty trash…"
 msgstr "Vider la Corbeille…"
 
-msgid "Empty Junk…"
+msgid "Empty junk…"
 msgstr "Vider les Indésirables…"
 
-msgid "Delete Folder"
+msgid "Delete folder"
 msgstr "Supprimer le dossier"
 
-msgid "Edit Tag…"
+msgid "Edit tag…"
 msgstr "Modifier le tag…"
 
 msgid "Add account"
@@ -5879,16 +5798,16 @@ msgstr "Afficher chaque dossier intelligent"
 msgid "Long-press to expand or collapse"
 msgstr "Appui long pour déplier ou replier"
 
-msgid "New Tag…"
+msgid "New tag…"
 msgstr "Nouvelle étiquette…"
 
 msgid "Show or hide tags"
 msgstr "Afficher ou masquer les tags"
 
-msgid "Edit Smart Folder…"
+msgid "Edit smart folder…"
 msgstr "Modifier le dossier intelligent…"
 
-msgid "Delete Smart Folder…"
+msgid "Delete smart folder…"
 msgstr "Supprimer le dossier intelligent…"
 
 msgid "Blue"
@@ -5915,7 +5834,7 @@ msgstr "Marron"
 msgid "Gray"
 msgstr "Gris"
 
-msgid "New Tag"
+msgid "New tag"
 msgstr "Nouvelle étiquette"
 
 msgid "Tag name"
@@ -5930,7 +5849,7 @@ msgstr "Rechercher ou créer une étiquette"
 msgid "Favorite"
 msgstr "Favori"
 
-msgid "Manage Tags…"
+msgid "Manage tags…"
 msgstr "Gérer les étiquettes…"
 
 msgid "Create “{name}”"
@@ -5980,7 +5899,7 @@ msgstr "Clé (si le serveur en demande une)"
 msgid "It works: “{sent}” came back as “{back}”."
 msgstr "Ça fonctionne : « {sent} » est revenu sous la forme « {back} »."
 
-msgid "Sign In"
+msgid "Sign in"
 msgstr "Se connecter"
 
 msgid "The sign-in window was closed."
@@ -5996,10 +5915,10 @@ msgid "Enter your email address, the client ID and both OAuth URLs first."
 msgstr ""
 "Saisissez d’abord votre adresse e-mail, l’ID client et les deux URL OAuth."
 
-msgid "Sign In & Add"
+msgid "Sign in & add"
 msgstr "Se connecter et ajouter"
 
-msgid "Test & Add"
+msgid "Test & add"
 msgstr "Tester et ajouter"
 
 msgid "IMAP server"
@@ -6043,7 +5962,7 @@ msgstr ""
 "Le choix d’une autre langue redémarre Tegami Mail : il se ferme un instant "
 "et cet assistant revient dans cette langue."
 
-msgid "Get Started"
+msgid "Get started"
 msgstr "Commencer"
 
 msgid "Import your online accounts"
@@ -6064,7 +5983,7 @@ msgstr "Aucun compte de messagerie n’a été trouvé dans Comptes en ligne."
 msgid "Open Online Accounts…"
 msgstr "Ouvrir Comptes en ligne…"
 
-msgid "Scan Again"
+msgid "Scan again"
 msgstr "Analyser à nouveau"
 
 msgid "Privacy, your way"
@@ -6160,7 +6079,7 @@ msgstr "Détails du serveur"
 msgid "Filled in for known providers"
 msgstr "Renseigné pour les fournisseurs connus"
 
-msgid "OAuth Client ID"
+msgid "OAuth client ID"
 msgstr "ID client OAuth"
 
 msgid "OAuth Client Secret (optional)"
@@ -6499,13 +6418,13 @@ msgstr "Aucun carnet d’adresses disponible pour ajouter des contacts"
 msgid "Email"
 msgstr "E-mail"
 
-msgid "Added to Contacts"
+msgid "Added to contacts"
 msgstr "Ajouté aux contacts"
 
 msgid "Added email to {name}"
 msgstr "Adresse e-mail ajoutée à {name}"
 
-msgid "Already in Contacts ({name})"
+msgid "Already in contacts ({name})"
 msgstr "Déjà dans les contacts ({name})"
 
 msgid "Could not add contact: {e}"
@@ -6520,7 +6439,7 @@ msgstr "Impossible d’importer les contacts : {e}"
 msgid "Could not read: {files}"
 msgstr "Impossible de lire : {files}"
 
-msgid "Import Contacts"
+msgid "Import contacts"
 msgstr "Importer des contacts"
 
 msgid "vCard files"
@@ -6537,7 +6456,7 @@ msgstr ""
 "s’exécutent sur chaque boîte de réception à la synchronisation ; « Appliquer "
 "maintenant » les exécute sur le courrier déjà présent."
 
-msgid "Add Filter…"
+msgid "Add filter…"
 msgstr "Ajouter un filtre…"
 
 msgid "Run every rule over the mail already in your inboxes"
@@ -6566,19 +6485,13 @@ msgstr ""
 msgid "Storage"
 msgstr "Stockage"
 
-msgid "Mail Account"
-msgstr "Compte e-mail"
-
 msgid "Nickname"
 msgstr "Surnom"
 
-msgid "Display Name"
+msgid "Display name"
 msgstr "Nom d’affichage"
 
-msgid "Email Address"
-msgstr "Adresse e-mail"
-
-msgid "Incoming Protocol"
+msgid "Incoming protocol"
 msgstr "Protocole d’arrivée"
 
 msgid "SMTP Server (optional)"
@@ -6613,7 +6526,7 @@ msgstr "Tenant (common, organizations, consumers ou un ID)"
 msgid "Redirect URI"
 msgstr "URI de redirection"
 
-msgid "Sign In with Browser"
+msgid "Sign in with browser"
 msgstr "Se connecter via le navigateur"
 
 msgid ""
@@ -6631,12 +6544,6 @@ msgstr "Identifiants SMTP distincts"
 msgid "Off uses the credentials above."
 msgstr "Désactivé, les identifiants ci-dessus sont utilisés."
 
-msgid "SMTP Username"
-msgstr "Nom d’utilisateur SMTP"
-
-msgid "SMTP Password"
-msgstr "Mot de passe SMTP"
-
 msgid "Accept a certificate for another name"
 msgstr "Accepter un certificat pour un autre nom"
 
@@ -6653,7 +6560,7 @@ msgstr "Afficher dans les vues combinées"
 msgid "Favorites, Tags and Smart Folders across accounts."
 msgstr "Favoris, tags et dossiers intelligents de tous les comptes."
 
-msgid "Test Connection"
+msgid "Test connection"
 msgstr "Tester la connexion"
 
 msgid "Account accent color"
@@ -6689,7 +6596,7 @@ msgstr "Alias d’expédition"
 msgid "Extra addresses this account can send as."
 msgstr "Adresses supplémentaires depuis lesquelles ce compte peut envoyer."
 
-msgid "Add Alias…"
+msgid "Add alias…"
 msgstr "Ajouter un alias…"
 
 msgid "Signatures"
@@ -6702,13 +6609,13 @@ msgstr ""
 "Avec plusieurs signatures, le bouton de signature de la fenêtre de rédaction "
 "permet de choisir entre elles."
 
-msgid "Add Signature"
+msgid "Add signature"
 msgstr "Ajouter une signature"
 
-msgid "Import File…"
+msgid "Import file…"
 msgstr "Importer le fichier…"
 
-msgid "Delete Signature"
+msgid "Delete signature"
 msgstr "Supprimer la signature"
 
 msgid "Start messages with this signature"
@@ -6806,13 +6713,10 @@ msgstr ""
 "Affiche le nom d’une étiquette lorsqu’un message n’en donne que "
 "l’identifiant."
 
-msgid "Folder Order"
-msgstr "Ordre des dossiers"
-
 msgid "Also in the right-click menu of its Folders heading."
 msgstr "Aussi dans le menu contextuel de son en-tête Dossiers."
 
-msgid "Special Folders"
+msgid "Special folders"
 msgstr "Dossiers spéciaux"
 
 msgid ""
@@ -6840,7 +6744,7 @@ msgstr "Modèles"
 msgid "Snoozed"
 msgstr ""
 
-msgid "Hidden Folders"
+msgid "Hidden folders"
 msgstr "Dossiers masqués"
 
 msgid ""
@@ -6876,7 +6780,7 @@ msgstr ""
 msgid "Search senders"
 msgstr "Rechercher les expéditeurs"
 
-msgid "Allowed Senders"
+msgid "Allowed senders"
 msgstr "Expéditeurs autorisés"
 
 msgid "Messages from these senders load remote content automatically."
@@ -6886,7 +6790,7 @@ msgstr ""
 msgid "Allow this sender"
 msgstr "Autoriser cet expéditeur"
 
-msgid "Blocked Senders"
+msgid "Blocked senders"
 msgstr "Expéditeurs bloqués"
 
 msgid ""
@@ -6915,7 +6819,7 @@ msgstr ""
 "Faites glisser pour réorganiser. Les neuf premiers sont associés aux touches "
 "1 à 9."
 
-msgid "Add Tag…"
+msgid "Add tag…"
 msgstr "Ajouter un tag…"
 
 msgid "Look through every mailbox for tags other clients have set"
@@ -6954,7 +6858,7 @@ msgstr ""
 msgid "Always fold the right group into ⋯"
 msgstr ""
 
-msgid "Focus Mode"
+msgid "Focus mode"
 msgstr "Mode Focus"
 
 msgid ""
@@ -6964,7 +6868,7 @@ msgstr ""
 "Les éléments activés ci-dessous sont masqués lorsque le mode Focus est "
 "actif. Activé par Ctrl+Maj+F ou le menu principal."
 
-msgid "Start in Focus Mode"
+msgid "Start in focus mode"
 msgstr "Démarrer en mode Focus"
 
 msgid "Fold the reading pane's toolbar"
@@ -7094,7 +6998,7 @@ msgstr ""
 "Les réponses et les transferts s’ouvrent avec les messages cités masqués. "
 "Ils sont envoyés dans tous les cas."
 
-msgid "Undo Send"
+msgid "Undo send"
 msgstr "Annuler l’envoi"
 
 msgid "How long Undo is offered after sending."
@@ -7111,15 +7015,15 @@ msgid "Sent mail shows who read it; the receipt goes here."
 msgstr ""
 
 #, fuzzy
-msgid "Move to Trash"
+msgid "Move to trash"
 msgstr "Déplacer les messages de listes de diffusion vers la Corbeille"
 
 #, fuzzy
-msgid "Keep in Inbox"
+msgid "Keep in inbox"
 msgstr "Laisser dans la boîte de réception"
 
 #, fuzzy
-msgid "Reply Header"
+msgid "Reply header"
 msgstr "Adresse de réponse"
 
 msgid "{name}, {address}, {date} and {time} are filled in from the original."
@@ -7130,7 +7034,7 @@ msgid "Line above the quoted message"
 msgstr "Au-dessus du message cité"
 
 #, fuzzy
-msgid "Restore Default"
+msgid "Restore default"
 msgstr "Restaurer les paramètres par défaut"
 
 msgid "Spelling"
@@ -7334,7 +7238,7 @@ msgstr "Conserver le courrier téléchargé"
 msgid "Mail inside an account's offline period is kept."
 msgstr ""
 
-msgid "GNOME Files Integration"
+msgid "GNOME Files integration"
 msgstr "Intégration avec Fichiers de GNOME"
 
 msgid ""
@@ -7386,7 +7290,7 @@ msgstr "Mettre à jour"
 msgid "Install"
 msgstr "Installer"
 
-msgid "Send as Attachment Instead"
+msgid "Send as attachment instead"
 msgstr "Envoyer plutôt en pièce jointe"
 
 msgid "Small"
@@ -7398,20 +7302,17 @@ msgstr "Moyen"
 msgid "Large"
 msgstr "Grand"
 
-msgid "Original Size"
+msgid "Original size"
 msgstr "Taille originale"
 
 msgid "Will be recompressed to the size shown when this is sent"
 msgstr "Sera recompressé à la taille indiquée lors de l’envoi"
 
-msgid "Recompress to This Size on Send"
+msgid "Recompress to this size on send"
 msgstr "Recompresser à cette taille lors de l’envoi"
 
-msgid "Paste with Formatting"
+msgid "Paste with formatting"
 msgstr "Coller avec la mise en forme"
-
-msgid "Paste as Plain Text"
-msgstr "Coller comme texte brut"
 
 msgid "Email Client"
 msgstr "Client e-mail"

@@ -90,8 +90,8 @@ impl Compose {
         // while the translation is still the last thing done to the
         // text (#327).
         let toggle = match v["t"].as_str() {
-            Some("translated") => Some((i18n("Show Original"), true)),
-            Some("original") => Some((i18n("Show Translation"), false)),
+            Some("translated") => Some((i18n("Show original"), true)),
+            Some("original") => Some((i18n("Show translation"), false)),
             _ => None,
         };
         let toggle = toggle.map(|(label, original)| {
@@ -144,7 +144,7 @@ impl Compose {
         } else {
             vec![
                 first,
-                vec![MenuEntry::submenu(i18n("Other Languages"), vec![all])],
+                vec![MenuEntry::submenu(i18n("Other languages"), vec![all])],
             ]
         };
         if let Some(toggle) = toggle {

@@ -56,7 +56,7 @@ pub(super) fn connect_context_menu(
             menu.insert(
                 &webkit6::ContextMenuItem::from_gaction(
                     &action,
-                    &i18n("Send as Attachment Instead"),
+                    &i18n("Send as attachment instead"),
                     None,
                 ),
                 0,
@@ -72,7 +72,7 @@ pub(super) fn connect_context_menu(
                 (i18n("Small"), "small"),
                 (i18n("Medium"), "medium"),
                 (i18n("Large"), "large"),
-                (i18n("Original Size"), "original"),
+                (i18n("Original size"), "original"),
             ] {
                 let action = gtk::gio::SimpleAction::new(&format!("tegami-img-{kind}"), None);
                 let v = view.clone();
@@ -97,7 +97,7 @@ pub(super) fn connect_context_menu(
                 menu.insert(
                     &webkit6::ContextMenuItem::from_gaction(
                         &action,
-                        &i18n("Recompress to This Size on Send"),
+                        &i18n("Recompress to this size on send"),
                         None,
                     ),
                     at,
@@ -133,8 +133,8 @@ pub(super) fn connect_context_menu(
         // paste it does.
         let plain = menu_plain.get();
         for (label, rich) in [
-            (i18n("Paste with Formatting"), true),
-            (i18n("Paste as Plain Text"), false),
+            (i18n("Paste with formatting"), true),
+            (i18n("Paste as plain text"), false),
         ] {
             if rich && plain {
                 continue;

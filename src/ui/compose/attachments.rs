@@ -167,7 +167,7 @@ fn attachment_chip(
             .child(
                 &adw::ButtonContent::builder()
                     .icon_name("cloud-symbolic")
-                    .label(i18n("Send a Link"))
+                    .label(i18n("Send a link"))
                     .build(),
             )
             .build();
@@ -374,7 +374,7 @@ impl Compose {
         root: &adw::BreakpointBin,
     ) {
         let s = sender.input_sender().clone();
-        pick_files(root, &i18n("Attach Files"), move |paths| {
+        pick_files(root, &i18n("Attach files"), move |paths| {
             let _ = s.send(ComposeInput::AddAttachments(paths));
         });
     }

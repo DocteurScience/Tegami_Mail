@@ -101,7 +101,7 @@ impl SimpleComponent for CloudAccounts {
             set_child = &adw::NavigationView {
                 // ---- list page ----
                 add = &adw::NavigationPage {
-                    set_title: &i18n("Cloud Storage"),
+                    set_title: &i18n("Cloud storage"),
                     set_tag: Some("list"),
 
                     #[wrap(Some)]
@@ -129,7 +129,7 @@ impl SimpleComponent for CloudAccounts {
                                             set_halign: gtk::Align::End,
                                         },
                                         gtk::Button {
-                                            set_label: &i18n("Add Account…"),
+                                            set_label: &i18n("Add account…"),
                                             set_halign: gtk::Align::End,
                                             connect_clicked => CloudAccountsInput::Add,
                                         },
@@ -160,7 +160,7 @@ impl SimpleComponent for CloudAccounts {
                 // ---- editor page ----
                 #[name = "editor_page"]
                 add = &adw::NavigationPage {
-                    set_title: &i18n("Cloud Account"),
+                    set_title: &i18n("Cloud account"),
                     set_tag: Some("editor"),
 
                     #[wrap(Some)]
@@ -424,9 +424,9 @@ impl CloudAccounts {
             return;
         };
         page.set_title(&if index.is_some() {
-            i18n("Edit Cloud Account")
+            i18n("Edit cloud account")
         } else {
-            i18n("Add Cloud Account")
+            i18n("Add cloud account")
         });
         self.editing = index;
         if let Some(b) = &self.remove_btn {

@@ -267,7 +267,7 @@ pub(super) fn fill_editor_choices(widgets: &AccountsWindowWidgets) {
         .form
         .push_row
         .set_model(Some(&gtk::StringList::new(&[
-            i18n("Follow Settings").as_str(),
+            i18n("Follow settings").as_str(),
             i18n("On").as_str(),
             i18n("Off").as_str(),
         ])));
@@ -275,7 +275,7 @@ pub(super) fn fill_editor_choices(widgets: &AccountsWindowWidgets) {
         .form
         .push_row
         .set_list_factory(Some(&non_ellipsizing_factory()));
-    let sort_labels: Vec<String> = std::iter::once(i18n("Follow Settings"))
+    let sort_labels: Vec<String> = std::iter::once(i18n("Follow settings"))
         .chain(crate::config::FolderSort::ALL.iter().map(|s| s.label()))
         .collect();
     let sort_labels: Vec<&str> = sort_labels.iter().map(String::as_str).collect();

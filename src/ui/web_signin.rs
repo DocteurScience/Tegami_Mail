@@ -36,7 +36,7 @@ pub(crate) fn run(
         Err(e) => return done(Err(e)),
     };
     let window = adw::Window::builder()
-        .title(i18n("Sign In"))
+        .title(i18n("Sign in"))
         .default_width(520)
         .default_height(680)
         .modal(true)

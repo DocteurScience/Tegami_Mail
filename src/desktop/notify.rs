@@ -124,12 +124,12 @@ pub(crate) fn new_mail(
             .filter(|b| buttons.get(*b))
         {
             let (label, action) = match button {
-                NotificationButton::MarkRead => (i18n("Mark as Read"), MARK_READ_ACTION),
+                NotificationButton::MarkRead => (i18n("Mark as read"), MARK_READ_ACTION),
                 NotificationButton::Archive => (i18n("Archive"), ARCHIVE_ACTION),
                 NotificationButton::Delete => (i18n("Delete"), DELETE_ACTION),
                 NotificationButton::Reply => (i18n("Reply"), REPLY_ACTION),
                 NotificationButton::Forward => (i18n("Forward"), FORWARD_ACTION),
-                NotificationButton::Spam => (i18n("Mark as Spam"), SPAM_ACTION),
+                NotificationButton::Spam => (i18n("Mark as spam"), SPAM_ACTION),
             };
             n.add_button_with_target_value(&label, &format!("app.{action}"), Some(&target));
         }

@@ -70,7 +70,7 @@ pub(crate) fn hit_menu_entries(
     if let Some(uri) = &hit.link {
         let (open, w) = (uri.clone(), window.clone());
         out.push(
-            MenuEntry::new(i18n("Open Link"), move || {
+            MenuEntry::new(i18n("Open link"), move || {
                 crate::ui::launch::open_link(&open, w.as_ref());
             })
             .icon("web-browser-symbolic"),
@@ -84,8 +84,8 @@ pub(crate) fn hit_menu_entries(
             });
         out.push(
             match address {
-                Some(a) => MenuEntry::new(i18n("Copy Email Address"), copy(a)),
-                None => MenuEntry::new(i18n("Copy Link Address"), copy(uri.clone())),
+                Some(a) => MenuEntry::new(i18n("Copy email address"), copy(a)),
+                None => MenuEntry::new(i18n("Copy link address"), copy(uri.clone())),
             }
             .icon("edit-copy-symbolic"),
         );
@@ -98,10 +98,10 @@ pub(crate) fn hit_menu_entries(
                 let texture = gtk::gdk::Texture::from_bytes(&gtk::glib::Bytes::from(&data)).ok();
                 let bytes = data.clone();
                 out.push(
-                    MenuEntry::new(i18n("Save Image As…"), move || {
+                    MenuEntry::new(i18n("Save image as…"), move || {
                         let dialog = gtk::FileDialog::builder()
                             .initial_name(default_image_name(&mime))
-                            .title(i18n("Save Image"))
+                            .title(i18n("Save image"))
                             .build();
                         let bytes = bytes.clone();
                         dialog.save(window.as_ref(), gtk::gio::Cancellable::NONE, move |res| {
@@ -114,7 +114,7 @@ pub(crate) fn hit_menu_entries(
                 );
                 if let Some(texture) = texture {
                     out.push(
-                        MenuEntry::new(i18n("Copy Image"), move || {
+                        MenuEntry::new(i18n("Copy image"), move || {
                             if let Some(display) = gtk::gdk::Display::default() {
                                 display.clipboard().set_texture(&texture);
                             }
@@ -125,7 +125,7 @@ pub(crate) fn hit_menu_entries(
             }
             None if uri.starts_with("http") => {
                 out.push(
-                    MenuEntry::new(i18n("Copy Image Address"), copy(uri.clone()))
+                    MenuEntry::new(i18n("Copy image address"), copy(uri.clone()))
                         .icon("edit-copy-symbolic"),
                 );
             }

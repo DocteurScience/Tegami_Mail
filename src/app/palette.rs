@@ -92,7 +92,7 @@ const SHORTCUT_HELP: &[(&str, &[(&str, &str)])] = &[
                 i18n_noop("Add or remove a tag (the first nine, in Settings order)"),
             ),
             ("0", i18n_noop("Remove every tag")),
-            ("Ctrl+U", i18n_noop("View Source")),
+            ("Ctrl+U", i18n_noop("View source")),
             ("Ctrl+P", i18n_noop("Print the message you are reading")),
             ("Ctrl+Shift+P", i18n_noop("Preview it as a PDF first")),
         ],
@@ -156,7 +156,7 @@ const SHORTCUT_HELP: &[(&str, &[(&str, &str)])] = &[
                 "Ctrl+Shift+A",
                 i18n_noop("Show or hide the accounts in the sidebar"),
             ),
-            ("Ctrl+Shift+F", i18n_noop("Focus Mode on or off")),
+            ("Ctrl+Shift+F", i18n_noop("Focus mode on or off")),
             ("F11", i18n_noop("Fullscreen on or off")),
             (
                 "Ctrl+Alt+1  /  2  /  3",
@@ -199,12 +199,12 @@ const GMAIL_HELP: &[(&str, &[(&str, &str)])] = &[
             ("u  or  Esc", i18n_noop("Close the conversation, back to the list")),
             ("n  /  p", i18n_noop("Next or previous message in the conversation")),
             (";  /  :", i18n_noop("Expand or collapse every message of the conversation")),
-            ("g  i", i18n_noop("Go to Inbox")),
-            ("g  s", i18n_noop("Go to Starred")),
-            ("g  t", i18n_noop("Go to Sent")),
-            ("g  d", i18n_noop("Go to Drafts")),
-            ("g  a", i18n_noop("Go to Archive")),
-            ("g  c", i18n_noop("Go to Contacts")),
+            ("g  i", i18n_noop("Go to inbox")),
+            ("g  s", i18n_noop("Go to starred")),
+            ("g  t", i18n_noop("Go to sent")),
+            ("g  d", i18n_noop("Go to drafts")),
+            ("g  a", i18n_noop("Go to archive")),
+            ("g  c", i18n_noop("Go to contacts")),
             ("/", i18n_noop("Search")),
         ],
     ),
@@ -267,28 +267,28 @@ impl AppModel {
         };
         add(i18n("New Message"), &action, "Ctrl+N", || AppMsg::Compose);
         add(
-            i18n("New Message from Template"),
+            i18n("New message from template"),
             &action,
             "Ctrl+Shift+N",
             || AppMsg::NewFromTemplate,
         );
         if self.reply_target().is_some() {
             add(i18n("Reply"), &action, "Ctrl+R", || AppMsg::Reply);
-            add(i18n("Reply to All"), &action, "Ctrl+Shift+R", || {
+            add(i18n("Reply to all"), &action, "Ctrl+Shift+R", || {
                 AppMsg::ReplyAll
             });
             add(i18n("Forward"), &action, "", || AppMsg::Forward);
-            add(i18n("Edit as New Message"), &action, "", || {
+            add(i18n("Edit as new message"), &action, "", || {
                 AppMsg::EditAsNewCurrent
             });
-            add(i18n("View Source"), &action, "Ctrl+U", || {
+            add(i18n("View source"), &action, "Ctrl+U", || {
                 AppMsg::ViewSource
             });
             add(i18n("Print"), &action, "Ctrl+P", || AppMsg::PrintMessage);
-            add(i18n("Print Preview"), &action, "Ctrl+Shift+P", || {
+            add(i18n("Print preview"), &action, "Ctrl+Shift+P", || {
                 AppMsg::PrintPreview
             });
-            add(i18n("Find in Message"), &action, "", || {
+            add(i18n("Find in message"), &action, "", || {
                 AppMsg::OpenReaderFind
             });
         }
@@ -298,46 +298,46 @@ impl AppModel {
                 add(i18n("Snooze"), &action, "", || AppMsg::SnoozeMenu);
             }
             add(i18n("Delete"), &action, "Delete", || AppMsg::Delete);
-            add(i18n("Delete Permanently"), &action, "Shift+Delete", || {
+            add(i18n("Delete permanently"), &action, "Shift+Delete", || {
                 AppMsg::DeleteForever
             });
-            add(i18n("Mark as Spam"), &action, "", || AppMsg::MarkSpam);
-            add(i18n("Star or Remove Star"), &action, "", || {
+            add(i18n("Mark as spam"), &action, "", || AppMsg::MarkSpam);
+            add(i18n("Star or remove star"), &action, "", || {
                 AppMsg::ToggleStar
             });
-            add(i18n("Mark as Read or Unread"), &action, "", || {
+            add(i18n("Mark as read or unread"), &action, "", || {
                 AppMsg::ToggleReadCurrent
             });
-            add(i18n("Move to Folder"), &action, "", || AppMsg::MoveToMenu);
+            add(i18n("Move to folder"), &action, "", || AppMsg::MoveToMenu);
             add(i18n("Tags"), &action, "", || AppMsg::ReaderTagMenu);
         }
-        add(i18n("Open Message File…"), &action, "", || {
+        add(i18n("Open message file…"), &action, "", || {
             AppMsg::PickMessageFile
         });
         add(i18n("Undo"), &action, "Ctrl+Z", || AppMsg::Undo);
         add(i18n("Redo"), &action, "Ctrl+Shift+Z", || AppMsg::Redo);
-        add(i18n("Check for New Mail"), &action, "", || AppMsg::Refresh);
-        add(i18n("Search Messages"), &action, "Ctrl+F", || {
+        add(i18n("Check for new mail"), &action, "", || AppMsg::Refresh);
+        add(i18n("Search messages"), &action, "Ctrl+F", || {
             AppMsg::OpenListSearch
         });
-        add(i18n("Show or Hide the Sidebar"), &action, "", || {
+        add(i18n("Show or hide the sidebar"), &action, "", || {
             AppMsg::ToggleSidebar
         });
-        add(i18n("Reading Pane Right"), &action, "Ctrl+Alt+1", || {
+        add(i18n("Reading pane right"), &action, "Ctrl+Alt+1", || {
             AppMsg::SetReadingPane(crate::config::ReadingPane::Right)
         });
-        add(i18n("Reading Pane Below"), &action, "Ctrl+Alt+2", || {
+        add(i18n("Reading pane below"), &action, "Ctrl+Alt+2", || {
             AppMsg::SetReadingPane(crate::config::ReadingPane::Below)
         });
-        add(i18n("Reading Pane Off"), &action, "Ctrl+Alt+3", || {
+        add(i18n("Reading pane off"), &action, "Ctrl+Alt+3", || {
             AppMsg::SetReadingPane(crate::config::ReadingPane::Off)
         });
         add(i18n("Settings"), &action, "Ctrl+,", || AppMsg::OpenSettings);
-        add(i18n("Mail Accounts"), &action, "", || AppMsg::OpenAccounts);
-        add(i18n("New Smart Folder…"), &action, "", || {
+        add(i18n("Mail accounts"), &action, "", || AppMsg::OpenAccounts);
+        add(i18n("New smart folder…"), &action, "", || {
             AppMsg::SidebarContext(CtxAction::NewSmartFolder)
         });
-        add(i18n("Keyboard Shortcuts"), &action, "Ctrl+?", || {
+        add(i18n("Keyboard shortcuts"), &action, "Ctrl+?", || {
             AppMsg::ShowShortcuts
         });
         add(i18n("About Tegami Mail"), &action, "", || AppMsg::OpenAbout);
@@ -347,9 +347,9 @@ impl AppModel {
             let s = sender.input_sender().clone();
             out.push(Entry {
                 title: if focus.enabled {
-                    i18n("Turn Focus Mode On")
+                    i18n("Turn focus mode on")
                 } else {
-                    i18n("Turn Focus Mode Off")
+                    i18n("Turn focus mode off")
                 },
                 detail: action.clone(),
                 key: "Ctrl+Shift+F".into(),
@@ -409,7 +409,7 @@ impl AppModel {
                 }),
             );
         }
-        let smart = i18n("Smart Folder");
+        let smart = i18n("Smart folder");
         for f in &self.smart_folders {
             let id = f.id.clone();
             go(
@@ -428,7 +428,7 @@ impl AppModel {
         let win = adw::Window::builder()
             .transient_for(&self.window)
             .modal(true)
-            .title(i18n("Keyboard Shortcuts"))
+            .title(i18n("Keyboard shortcuts"))
             .default_width(600)
             .default_height(640)
             .build();
@@ -543,9 +543,9 @@ impl AppModel {
     pub(super) fn rebuild_help_menu(&self) {
         self.help_menu.remove_all();
         let status_bar = if self.status_bar_shown {
-            i18n("Hide Status Bar")
+            i18n("Hide status bar")
         } else {
-            i18n("Reveal Status Bar")
+            i18n("Reveal status bar")
         };
         self.help_menu
             .append(Some(status_bar.as_str()), Some("win.status-bar"));
@@ -557,7 +557,7 @@ impl AppModel {
             ));
         }
         self.help_menu.append(
-            Some(i18n("Keyboard Shortcuts").as_str()),
+            Some(i18n("Keyboard shortcuts").as_str()),
             Some("win.shortcuts"),
         );
         self.help_menu

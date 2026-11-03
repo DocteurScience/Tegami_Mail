@@ -181,7 +181,7 @@ pub(super) fn build_hero_page(
     lang_note.set_justify(gtk::Justification::Center);
     lang_note.set_max_width_chars(46);
     lang_note.set_margin_top(2);
-    let start = pill(&i18n("Get Started"));
+    let start = pill(&i18n("Get started"));
     start.set_margin_top(10);
     {
         let s = sender.clone();
@@ -265,7 +265,7 @@ pub(super) fn build_goa_page(
     // 4px more: a button's edge has none of a text line's leading.
     goa_links.set_margin_top(GOA_GAP + 4);
     let open_goa = gtk::Button::with_label(&i18n("Open Online Accounts…"));
-    let rescan = gtk::Button::with_label(&i18n("Scan Again"));
+    let rescan = gtk::Button::with_label(&i18n("Scan again"));
     for b in [&open_goa, &rescan] {
         b.add_css_class("pill");
         b.add_css_class("welcome-secondary");

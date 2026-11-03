@@ -429,7 +429,7 @@ impl PgpKeys {
         let parent = relm4::main_application().active_window();
         let dialog = adw::MessageDialog::new(
             parent.as_ref(),
-            Some(&i18n("Generate a Key")),
+            Some(&i18n("Generate a key")),
             Some(&i18n("This will be kept in the GnuPG keyring. The passphrase is asked for when the key is used.")),
         );
         dialog.add_response("cancel", &i18n("Cancel"));
@@ -540,7 +540,7 @@ impl PgpKeys {
 
     /// Choose a key file to import.
     fn on_import(&mut self, sender: &ComponentSender<Self>) {
-        let dialog = gtk::FileDialog::builder().title(i18n("Import Key")).build();
+        let dialog = gtk::FileDialog::builder().title(i18n("Import key")).build();
         let filter = gtk::FileFilter::new();
         filter.set_name(Some(&i18n("OpenPGP keys")));
         for pattern in ["*.asc", "*.gpg", "*.pgp", "*.key", "*.pub"] {
@@ -594,7 +594,7 @@ impl PgpKeys {
             .map(|e| format!("{e}-public.asc"))
             .unwrap_or_else(|| "public-key.asc".to_string());
         let dialog = gtk::FileDialog::builder()
-            .title(i18n("Export Public Key"))
+            .title(i18n("Export public key"))
             .initial_name(&name)
             .build();
         let parent = relm4::main_application().active_window();
@@ -701,7 +701,7 @@ impl PgpKeys {
         let parent = relm4::main_application().active_window();
         let dialog = adw::MessageDialog::new(
             parent.as_ref(),
-            Some(&i18n("Fetch a Key")),
+            Some(&i18n("Fetch a key")),
             Some(&i18n("Looks the address up where its provider publishes keys (WKD), then on the keyservers.")),
         );
         dialog.add_response("cancel", &i18n("Cancel"));

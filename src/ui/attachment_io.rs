@@ -19,7 +19,7 @@ pub(crate) fn save_attachment_as(
 ) {
     let dialog = gtk::FileDialog::builder()
         .initial_name(name)
-        .title(i18n("Save Attachment"))
+        .title(i18n("Save attachment"))
         .build();
     dialog.save(parent, gtk::gio::Cancellable::NONE, move |res| {
         if let Ok(file) = res {
@@ -75,7 +75,7 @@ pub(crate) fn save_all_attachments(
         return;
     }
     let dialog = gtk::FileDialog::builder()
-        .title(i18n("Save All Attachments"))
+        .title(i18n("Save all attachments"))
         .build();
     dialog.select_folder(parent, gtk::gio::Cancellable::NONE, move |res| {
         let Some(dir) = res.ok().and_then(|folder| folder.path()) else {

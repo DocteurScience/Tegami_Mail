@@ -28,10 +28,10 @@ msgstr ""
 "Она использует те же учетные записи и почту, что и стабильная версия Tegami "
 "Mail."
 
-msgid "Release Notes"
+msgid "Release notes"
 msgstr "Примечания к выпуску"
 
-msgid "Keyring Setup Help"
+msgid "Keyring setup help"
 msgstr "Справка по настройке связки ключей"
 
 msgid "Make account passwords persist on Linux Mint"
@@ -44,7 +44,7 @@ msgstr "Проект"
 msgid "Report an issue or feature request"
 msgstr "Сообщить об ошибке или предложить функцию"
 
-msgid "Source Code"
+msgid "Source code"
 msgstr "Исходный код"
 
 msgid "License (GNU AGPL v3)"
@@ -98,10 +98,10 @@ msgid "Delete"
 msgstr "Удалить"
 
 #, fuzzy
-msgid "Sync Now"
+msgid "Sync now"
 msgstr "Отправить сейчас"
 
-msgid "Add Account…"
+msgid "Add account…"
 msgstr "Добавить учётную запись…"
 
 #, fuzzy
@@ -111,78 +111,78 @@ msgstr "Сетевые учётные записи GNOME"
 msgid "Settings"
 msgstr "Настройки"
 
-msgid "Print Preview…"
+msgid "Print preview…"
 msgstr "Предпросмотр печати…"
 
-msgid "Print Message…"
+msgid "Print message…"
 msgstr "Печать сообщения…"
 
 msgid "Quit"
 msgstr "Выйти"
 
-msgid "Use Template"
+msgid "Use template"
 msgstr "Использовать шаблон"
 
-msgid "Edit Template"
+msgid "Edit template"
 msgstr "Редактировать шаблон"
 
 msgid "Reply"
 msgstr "Ответить"
 
-msgid "Reply All"
+msgid "Reply all"
 msgstr "Ответить всем"
 
 msgid "Forward"
 msgstr "Переслать"
 
-msgid "Edit as New Message"
+msgid "Edit as new message"
 msgstr "Изменить как новое сообщение"
 
-msgid "Remove Star"
+msgid "Remove star"
 msgstr "Снять отметку"
 
 msgid "Star"
 msgstr "Отметить"
 
-msgid "Mark as Read"
+msgid "Mark as read"
 msgstr "Отметить как прочитанное"
 
-msgid "Mark as Unread"
+msgid "Mark as unread"
 msgstr "Отметить как непрочитанное"
 
-msgid "Expand All Messages"
+msgid "Expand all messages"
 msgstr "Развернуть все сообщения"
 
-msgid "Collapse All Messages"
+msgid "Collapse all messages"
 msgstr "Свернуть все сообщения"
 
-msgid "View Source"
-msgstr "Просмотр исходного кода"
+msgid "View source"
+msgstr "Просмотреть исходный текст"
 
 #, fuzzy
-msgid "Save as File…"
+msgid "Save as file…"
 msgstr "Сохранить как PDF…"
 
-msgid "Add Sender to Contacts"
+msgid "Add sender to contacts"
 msgstr "Добавить отправителя в контакты"
 
 #, fuzzy
-msgid "Create Filter from Message…"
+msgid "Create filter from message…"
 msgstr "Печать сообщения…"
 
 msgid "Tags"
 msgstr "Теги"
 
-msgid "Not Spam"
+msgid "Not spam"
 msgstr "Не спам"
 
-msgid "Move to Inbox"
+msgid "Move to inbox"
 msgstr "Переместить во «Входящие»"
 
-msgid "Mark as Spam"
+msgid "Mark as spam"
 msgstr "Отметить как спам"
 
-msgid "Move To…"
+msgid "Move to…"
 msgstr "Переместить в…"
 
 msgid "Archive"
@@ -191,13 +191,13 @@ msgstr "Архив"
 msgid "Snooze"
 msgstr ""
 
-msgid "Block Remote Content"
-msgstr "Блокировать удалённый контент"
+msgid "Block remote content"
+msgstr "Блокировать удалённое содержимое"
 
-msgid "Show Remote Content"
-msgstr "Показывать удалённый контент"
+msgid "Show remote content"
+msgstr "Показать удалённое содержимое"
 
-msgid "Print Preview"
+msgid "Print preview"
 msgstr "Предпросмотр печати"
 
 msgid "Print…"
@@ -211,13 +211,13 @@ msgid "Could not forward the message: {e}"
 msgstr "Не удалось обновить сообщение: {e}"
 
 #, fuzzy
-msgid "Tegami Mail Address Book"
+msgid "Tegami Mail address book"
 msgstr "Адресная книга"
 
-msgid "On This Computer"
+msgid "On this computer"
 msgstr "На этом компьютере"
 
-msgid "CardDAV Address Book"
+msgid "CardDAV address book"
 msgstr "Адресная книга CardDAV"
 
 #, fuzzy
@@ -360,7 +360,7 @@ msgstr[2] "{n} получателей"
 msgid "Enable Console mode in Settings → System & Appearance"
 msgstr "Включите режим консоли в Настройки → Система и внешний вид"
 
-msgid "New Message from Template"
+msgid "New message from template"
 msgstr "Новое сообщение из шаблона"
 
 msgid "The new message starts as a copy of the template you pick."
@@ -372,7 +372,7 @@ msgstr ""
 "Шаблонов пока нет. Сохраните письмо как шаблон через меню «⋯» в окне "
 "редактора."
 
-msgid "Continue a Draft"
+msgid "Continue a draft"
 msgstr "Продолжить черновик"
 
 msgid "The files go into the draft you pick."
@@ -381,7 +381,7 @@ msgstr "Файлы будут добавлены в выбранный черн�
 msgid "No drafts to continue."
 msgstr "Нет черновиков для продолжения."
 
-msgid "Attach to This Draft"
+msgid "Attach to this draft"
 msgstr "Прикрепить к этому черновику"
 
 msgid "No Drafts folder available for this account"
@@ -401,10 +401,10 @@ msgstr ""
 msgid "No filters to apply here yet"
 msgstr "Здесь пока нет фильтров для применения"
 
-msgid "Applying Filters"
+msgid "Applying filters"
 msgstr "Применение фильтров"
 
-msgid "Run in Background"
+msgid "Run in background"
 msgstr "Продолжать работу в фоновом режиме"
 
 msgid "Looked at {n} message so far"
@@ -506,7 +506,7 @@ msgstr[1] ""
 msgstr[2] ""
 "Фильтры добавили метки к {tagged} и переместили {filed} из {n} писем"
 
-msgid "Filters Applied"
+msgid "Filters applied"
 msgstr "Фильтры применены"
 
 msgid "Close"
@@ -515,14 +515,14 @@ msgstr "Закрыть"
 msgid "Unstar"
 msgstr "Снять отметку"
 
-msgid "New Folder"
+msgid "New folder"
 msgstr "Новая папка"
 
 msgid "Create a new folder for this account."
 msgstr "Создать новую папку для этого аккаунта."
 
 #, fuzzy
-msgid "New Subfolder"
+msgid "New subfolder"
 msgstr "Новая папка"
 
 #, fuzzy
@@ -547,7 +547,7 @@ msgstr "Переименовать"
 msgid "A folder named {new_name} is already there."
 msgstr "Папка с именем {new_name} уже существует."
 
-msgid "Rename Folder"
+msgid "Rename folder"
 msgstr "Переименовать папку…"
 
 msgid ""
@@ -568,7 +568,7 @@ msgstr ""
 msgid "Empty"
 msgstr "Очистить"
 
-msgid "Create Folder"
+msgid "Create folder"
 msgstr "Создать папку"
 
 #, fuzzy
@@ -583,7 +583,7 @@ msgstr "Корзина"
 msgid "destination"
 msgstr "Обновлённое приглашение"
 
-msgid "Move Folder"
+msgid "Move folder"
 msgstr "Переместить папку"
 
 msgid "Always do this (change it in Settings → System → GNOME Files)"
@@ -612,13 +612,13 @@ msgstr[2] "Отправить {n} файлов через Tegami Mail"
 msgid "{names} ({size}). What should the files go into?"
 msgstr "{names} ({size}). Куда поместить эти файлы?"
 
-msgid "Reply to a Message…"
+msgid "Reply to a message…"
 msgstr "Ответить на сообщение…"
 
-msgid "Continue a Draft…"
+msgid "Continue a draft…"
 msgstr "Продолжить черновик…"
 
-msgid "Reply to a Message"
+msgid "Reply to a message"
 msgstr "Ответить на письмо"
 
 msgid "The files go into a reply to the message you pick."
@@ -627,7 +627,7 @@ msgstr "Файлы будут добавлены в ответ на выбран
 msgid "No messages to reply to yet."
 msgstr "Пока нет писем для ответа."
 
-msgid "Reply With the Files"
+msgid "Reply with the files"
 msgstr "Ответить с прикреплением файлов"
 
 msgid "Large files"
@@ -649,10 +649,10 @@ msgstr[2] ""
 "Файлы {names} суммарно занимают {size}, что превышает лимит {limit}. "
 "Загрузить их в облачное хранилище и добавить ссылки на скачивание в письмо?"
 
-msgid "Attach Anyway"
+msgid "Attach anyway"
 msgstr "Всё равно прикрепить"
 
-msgid "Upload to Cloud Storage"
+msgid "Upload to cloud storage"
 msgstr "Загрузить в облачное хранилище"
 
 msgid "This message carries no calendar file to open."
@@ -707,11 +707,11 @@ msgid "Starred first"
 msgstr "Сначала отмеченные"
 
 #, fuzzy
-msgid "Clear Dates"
+msgid "Clear dates"
 msgstr "Поиск фильтров"
 
 #, fuzzy
-msgid "Any Date"
+msgid "Any date"
 msgstr "Дата"
 
 #, fuzzy
@@ -733,11 +733,11 @@ msgid "Show"
 msgstr "Показать"
 
 #, fuzzy
-msgid "Group into Conversations"
+msgid "Group into conversations"
 msgstr "Обсуждения"
 
 #, fuzzy
-msgid "Message Preview"
+msgid "Message preview"
 msgstr "Исходный текст сообщения"
 
 msgid "Avatars"
@@ -748,7 +748,7 @@ msgid "Show only"
 msgstr "Только непрочитанные"
 
 #, fuzzy
-msgid "Clear Filters"
+msgid "Clear filters"
 msgstr "Поиск фильтров"
 
 #, fuzzy
@@ -769,7 +769,7 @@ msgstr "{n} сообщений"
 msgid "Filtered: {names}"
 msgstr "Отфильтрованные папки"
 
-msgid "Search Messages…"
+msgid "Search messages…"
 msgstr "Поиск сообщений…"
 
 #, fuzzy
@@ -786,7 +786,7 @@ msgstr "Добавить тег {name}"
 msgid "Favorites"
 msgstr "Избранное"
 
-msgid "New Message from Template…"
+msgid "New message from template…"
 msgstr "Новое сообщение из шаблона…"
 
 msgid "All"
@@ -863,9 +863,6 @@ msgstr "Ответить всем"
 
 msgid "Delete permanently, without going to Trash"
 msgstr ""
-
-msgid "Mark as spam"
-msgstr "Отметить как спам"
 
 msgid "Star or unstar"
 msgstr "Поставить или снять отметку"
@@ -948,7 +945,7 @@ msgstr "Показать строку состояния (также: удерж
 msgid "Show or hide the accounts in the sidebar"
 msgstr "Показывать или скрывать учётные записи на боковой панели"
 
-msgid "Focus Mode on or off"
+msgid "Focus mode on or off"
 msgstr "Включить или выключить режим концентрации"
 
 #, fuzzy
@@ -1007,27 +1004,27 @@ msgid "Expand or collapse every message of the conversation"
 msgstr "Предыдущее сообщение в беседе"
 
 #, fuzzy
-msgid "Go to Inbox"
+msgid "Go to inbox"
 msgstr "Переместить во «Входящие»"
 
 #, fuzzy
-msgid "Go to Starred"
+msgid "Go to starred"
 msgstr "Не установлено"
 
 #, fuzzy
-msgid "Go to Sent"
+msgid "Go to sent"
 msgstr "Добавить в Контакты"
 
 #, fuzzy
-msgid "Go to Drafts"
+msgid "Go to drafts"
 msgstr "Сохранить в «Черновики»"
 
 #, fuzzy
-msgid "Go to Archive"
+msgid "Go to archive"
 msgstr "Архив"
 
 #, fuzzy
-msgid "Go to Contacts"
+msgid "Go to contacts"
 msgstr "Добавить в Контакты"
 
 #, fuzzy
@@ -1096,34 +1093,29 @@ msgstr "Проверка новой почты"
 msgid "Action"
 msgstr "Действия"
 
-#, fuzzy
-msgid "Reply to All"
-msgstr "Ответить всем"
-
 msgid "Print"
 msgstr "Печать"
 
-msgid "Find in Message"
+msgid "Find in message"
 msgstr "Найти в сообщении"
 
 #, fuzzy
-msgid "Delete Permanently"
+msgid "Delete permanently"
 msgstr "Удалить это сообщение безвозвратно?"
 
 #, fuzzy
-msgid "Star or Remove Star"
+msgid "Star or remove star"
 msgstr "Снять отметку"
 
-#, fuzzy
-msgid "Mark as Read or Unread"
+msgid "Mark as read or unread"
 msgstr "Отметить как прочитанное или непрочитанное"
 
 #, fuzzy
-msgid "Move to Folder"
+msgid "Move to folder"
 msgstr "Переместить папку"
 
 #, fuzzy
-msgid "Open Message File…"
+msgid "Open message file…"
 msgstr "Печать сообщения…"
 
 msgid "Undo"
@@ -1133,37 +1125,33 @@ msgid "Redo"
 msgstr "Повторить"
 
 #, fuzzy
-msgid "Check for New Mail"
-msgstr "Проверка новой почты"
-
-#, fuzzy
-msgid "Search Messages"
+msgid "Search messages"
 msgstr "Поиск сообщений…"
 
 #, fuzzy
-msgid "Show or Hide the Sidebar"
+msgid "Show or hide the sidebar"
 msgstr "Показывать или скрывать учётные записи на боковой панели"
 
 #, fuzzy
-msgid "Reading Pane Right"
+msgid "Reading pane right"
 msgstr "Чтение"
 
 #, fuzzy
-msgid "Reading Pane Below"
+msgid "Reading pane below"
 msgstr "Чтение"
 
 #, fuzzy
-msgid "Reading Pane Off"
+msgid "Reading pane off"
 msgstr "Чтение"
 
-msgid "Mail Accounts"
+msgid "Mail accounts"
 msgstr "Почтовые учётные записи"
 
 #, fuzzy
-msgid "New Smart Folder…"
+msgid "New smart folder…"
 msgstr "Создать папку…"
 
-msgid "Keyboard Shortcuts"
+msgid "Keyboard shortcuts"
 msgstr "Сочетания клавиш"
 
 #, fuzzy
@@ -1171,11 +1159,11 @@ msgid "About Tegami Mail"
 msgstr "О программе"
 
 #, fuzzy
-msgid "Turn Focus Mode On"
+msgid "Turn focus mode on"
 msgstr "Режим фокусировки"
 
 #, fuzzy
-msgid "Turn Focus Mode Off"
+msgid "Turn focus mode off"
 msgstr "Режим фокусировки"
 
 msgid "View"
@@ -1189,7 +1177,7 @@ msgid "Tag"
 msgstr "Теги"
 
 #, fuzzy
-msgid "Smart Folder"
+msgid "Smart folder"
 msgstr "Сортировать папки"
 
 #, fuzzy
@@ -1209,10 +1197,10 @@ msgstr ""
 msgid "Your tags"
 msgstr "Ваши теги"
 
-msgid "Hide Status Bar"
+msgid "Hide status bar"
 msgstr "Скрыть строку состояния"
 
-msgid "Reveal Status Bar"
+msgid "Reveal status bar"
 msgstr "Показать строку состояния"
 
 msgid "Console"
@@ -1221,7 +1209,7 @@ msgstr "Консоль"
 msgid "Help"
 msgstr ""
 
-msgid "New Message Instead"
+msgid "New message instead"
 msgstr "Написать новое письмо"
 
 msgid "Search by sender, subject or account"
@@ -1230,7 +1218,7 @@ msgstr "Поиск по отправителю, теме или учётной �
 msgid "(no subject)"
 msgstr "(без темы)"
 
-msgid "Message Source"
+msgid "Message source"
 msgstr "Исходный текст сообщения"
 
 #, fuzzy
@@ -1252,7 +1240,7 @@ msgid "Export failed: {e}"
 msgstr "Ошибка экспорта: {e}"
 
 #, fuzzy
-msgid "Export Contacts"
+msgid "Export contacts"
 msgstr "Сортировка контактов"
 
 #, fuzzy
@@ -1281,25 +1269,25 @@ msgstr[1] ""
 msgstr[2] ""
 
 #, fuzzy
-msgid "Delete All"
+msgid "Delete all"
 msgstr "Удалить"
 
-msgid "Export Settings"
-msgstr "Экспорт настроек"
+msgid "Export settings"
+msgstr "Экспортировать настройки"
 
 msgid "Settings exported to {display}"
 msgstr "Настройки экспортированы в {display}"
 
-msgid "Export Log"
+msgid "Export log"
 msgstr "Экспортировать журнал"
 
 msgid "Log exported to {display}"
 msgstr "Журнал экспортирован в {display}"
 
-msgid "Import Settings"
-msgstr "Импорт настроек"
+msgid "Import settings"
+msgstr "Импортировать настройки"
 
-msgid "Settings Imported"
+msgid "Settings imported"
 msgstr "Настройки импортированы"
 
 msgid ""
@@ -1338,13 +1326,13 @@ msgid "Send all"
 msgstr "Отправить все"
 
 #, fuzzy
-msgid "Forward as Attachment"
+msgid "Forward as attachment"
 msgstr "Есть вложения"
 
 msgid "Delete {n} messages"
 msgstr "Удалить {n} сообщений"
 
-msgid "Customize Toolbar…"
+msgid "Customize toolbar…"
 msgstr "Настроить панель инструментов…"
 
 msgid "Read receipt"
@@ -1368,13 +1356,13 @@ msgstr ""
 msgid "Read by {reader}"
 msgstr "Адрес для ответа"
 
-msgid "Full Release Notes on GitHub"
+msgid "Full release notes on GitHub"
 msgstr "Полные примечания к выпуску на GitHub"
 
 msgid "Delete this conversation?"
 msgstr "Удалить эту переписку?"
 
-msgid "Delete Conversation"
+msgid "Delete conversation"
 msgstr "Удалить переписку"
 
 msgid "Delete this message permanently?"
@@ -1433,7 +1421,7 @@ msgstr "Удалить"
 msgid "Select a conversation first."
 msgstr "Удалить переписку"
 
-msgid "Remove Tags"
+msgid "Remove tags"
 msgstr "Удалить теги"
 
 msgid "Open a message first, then print it."
@@ -1514,7 +1502,7 @@ msgstr ""
 "В доке и окнах Tegami Mail будет отображаться старая иконка до перезапуска "
 "программы."
 
-msgid "Restart Now"
+msgid "Restart now"
 msgstr "Перезапустить сейчас"
 
 msgid ""
@@ -1527,10 +1515,10 @@ msgstr ""
 msgid "Move to {name}"
 msgstr "Переместить в {name}"
 
-msgid "Add Tag {name}"
+msgid "Add tag {name}"
 msgstr "Добавить тег {name}"
 
-msgid "Remove Tag {name}"
+msgid "Remove tag {name}"
 msgstr "Удалить тег {name}?"
 
 msgid "Unsubscribe from {name}?"
@@ -1587,11 +1575,11 @@ msgid "The list's unsubscribe page is open in your browser."
 msgstr "Страница отписки этого списка рассылки открыта в вашем браузере."
 
 #, fuzzy
-msgid "Save Message"
+msgid "Save message"
 msgstr "Новое сообщение"
 
 #, fuzzy
-msgid "Open Message File"
+msgid "Open message file"
 msgstr "Новое сообщение"
 
 #, fuzzy
@@ -1613,7 +1601,7 @@ msgstr "Ни одного сообщения с ID {id} не найдено"
 msgid "Mail"
 msgstr ""
 
-msgid "Main Menu"
+msgid "Main menu"
 msgstr "Главное меню"
 
 msgid "Expand sidebar"
@@ -1623,7 +1611,7 @@ msgid "Collapse sidebar"
 msgstr "Свернуть боковую панель"
 
 #, fuzzy
-msgid "New Message (Ctrl+N)"
+msgid "New message (Ctrl+N)"
 msgstr "Поиск сообщений (Ctrl+F)"
 
 msgid "Search messages (Ctrl+F)"
@@ -1638,7 +1626,7 @@ msgstr "Ответить всем"
 
 #. The preview, not the print dialog: it shows what will come
 #. out and prints from there (#359).
-msgid "Print Preview (Ctrl+Shift+P)"
+msgid "Print preview (Ctrl+Shift+P)"
 msgstr "Предпросмотр печати (Ctrl+Shift+P)"
 
 msgid "Find in message (Ctrl+F)"
@@ -1675,7 +1663,7 @@ msgstr "Важность"
 msgid "Account"
 msgstr "Учётная запись"
 
-msgid "Due Date"
+msgid "Due date"
 msgstr "Срок исполнения"
 
 msgid "Date"
@@ -1712,7 +1700,7 @@ msgstr "Отображается оригинал."
 msgid "Folder of the original, not the Inbox"
 msgstr "Отображается оригинал."
 
-msgid "Custom Order"
+msgid "Custom order"
 msgstr "Пользовательский порядок"
 
 msgid "Name (A to Z)"
@@ -1721,7 +1709,7 @@ msgstr "По имени (А–Я)"
 msgid "Name (Z to A)"
 msgstr "По имени (Я–А)"
 
-msgid "Full Path"
+msgid "Full path"
 msgstr "Полный путь"
 
 msgid "Spam"
@@ -1730,7 +1718,7 @@ msgstr "Спам"
 msgid "Read/Unread"
 msgstr "Прочитано/Непрочитано"
 
-msgid "Move To"
+msgid "Move to"
 msgstr "Переместить в"
 
 msgid "Find"
@@ -2293,9 +2281,6 @@ msgstr "Включить эту учётную запись"
 msgid "Forward to"
 msgstr "Переслать"
 
-msgid "Move to"
-msgstr "Переместить в"
-
 msgid "forwards to {to}"
 msgstr ""
 
@@ -2310,7 +2295,7 @@ msgid "Then"
 msgstr "Затем"
 
 #, fuzzy
-msgid "Add Action"
+msgid "Add action"
 msgstr "Добавить учётную запись"
 
 #, fuzzy
@@ -2345,11 +2330,11 @@ msgstr ""
 "Хранится на сервере; измените через веб-интерфейс почтового провайдера."
 
 #, fuzzy
-msgid "Edit Alias"
+msgid "Edit alias"
 msgstr "Редактировать тег"
 
 #, fuzzy
-msgid "Add Alias"
+msgid "Add alias"
 msgstr "Добавить псевдоним…"
 
 msgid "Save"
@@ -2407,7 +2392,7 @@ msgstr "Запятые разделяют варианты; учитываетс
 msgid "Text to match"
 msgstr "Текст для совпадения"
 
-msgid "Add Condition"
+msgid "Add condition"
 msgstr "Добавить условие"
 
 msgid "Condition matching"
@@ -2456,7 +2441,7 @@ msgid ""
 "approve it."
 msgstr ""
 
-msgid "Choose a Picture"
+msgid "Choose a picture"
 msgstr "Выбрать картинку"
 
 msgid "Images"
@@ -2525,13 +2510,13 @@ msgstr "Удалить фильтр"
 msgid "Applying…"
 msgstr "Применение…"
 
-msgid "Apply Now"
+msgid "Apply now"
 msgstr "Применить"
 
-msgid "Edit Filter"
+msgid "Edit filter"
 msgstr "Редактировать фильтр"
 
-msgid "Add Filter"
+msgid "Add filter"
 msgstr "Добавить фильтр"
 
 msgid "Name (optional)"
@@ -2569,7 +2554,7 @@ msgstr[0] "Через {n} день"
 msgstr[1] "Через {n} дня"
 msgstr[2] "Через {n} дней"
 
-msgid "API Token"
+msgid "API token"
 msgstr "API токен"
 
 msgid "Password"
@@ -2581,18 +2566,18 @@ msgstr "Сервер (имя узла или URL)"
 msgid "Port (default 443)"
 msgstr "Порт (по умолчанию 443)"
 
-msgid "Incoming Server"
+msgid "Incoming server"
 msgstr "Сервер входящей почты"
 
 msgid "Port (IMAP 993 / POP3 995)"
 msgstr "Порт (IMAP 993 / POP3 995)"
 
 #, fuzzy
-msgid "Import Mbox Files"
+msgid "Import mbox files"
 msgstr "Импортировать файл…"
 
 #, fuzzy
-msgid "Import Maildir Folders"
+msgid "Import maildir folders"
 msgstr "Ошибка импорта: {e}"
 
 #, fuzzy
@@ -2671,7 +2656,7 @@ msgstr ""
 "её в Tegami Mail."
 
 #, fuzzy
-msgid "Smart Folders"
+msgid "Smart folders"
 msgstr "Сортировать папки"
 
 #, fuzzy
@@ -2682,16 +2667,16 @@ msgstr ""
 "Как эта учётная запись отображается на боковой панели и во «Всех входящих»."
 
 #, fuzzy
-msgid "Add Smart Folder…"
+msgid "Add smart folder…"
 msgstr "Добавить папку"
 
 msgid "Searching…"
 msgstr "Поиск…"
 
-msgid "Find Tags…"
+msgid "Find tags…"
 msgstr "Найти теги…"
 
-msgid "No New Tags"
+msgid "No new tags"
 msgstr "Новых меток нет"
 
 #, fuzzy
@@ -2702,7 +2687,7 @@ msgstr ""
 msgid "OK"
 msgstr "ОК"
 
-msgid "Tags Found"
+msgid "Tags found"
 msgstr "Найденные теги"
 
 #, fuzzy
@@ -2710,10 +2695,10 @@ msgid "{n} tags are in use in your mailboxes but not set up here."
 msgstr ""
 "В ваших почтовых ящиках не найдено меток, которых ещё нет в настройках."
 
-msgid "Import Selected"
+msgid "Import selected"
 msgstr "Импортировать выбранные"
 
-msgid "Import All"
+msgid "Import all"
 msgstr "Импортировать все"
 
 msgid "{n} messages"
@@ -2728,10 +2713,10 @@ msgstr ""
 msgid "Remove tag"
 msgstr "Удалить тег"
 
-msgid "Edit Tag"
+msgid "Edit tag"
 msgstr "Редактировать тег"
 
-msgid "Add Tag"
+msgid "Add tag"
 msgstr "Добавить тег"
 
 msgid "Name"
@@ -2754,7 +2739,7 @@ msgstr "Цвет"
 msgid "Custom color…"
 msgstr "Другой цвет…"
 
-msgid "Tag Color"
+msgid "Tag color"
 msgstr "Цвет тега"
 
 #, fuzzy
@@ -2838,7 +2823,7 @@ msgstr "Редактировать HTML…"
 msgid "Edit the signature's HTML source"
 msgstr ""
 
-msgid "Follow Settings"
+msgid "Follow settings"
 msgstr "Из системных настроек"
 
 msgid "On"
@@ -2851,19 +2836,19 @@ msgstr "Подпись"
 msgid "Preview"
 msgstr "Предпросмотр печати"
 
-msgid "Import Signature"
+msgid "Import signature"
 msgstr "Импортировать подпись"
 
 msgid "HTML and text files"
 msgstr "Файлы HTML и текстовые файлы"
 
-msgid "Could Not Read the File"
+msgid "Could not read the file"
 msgstr "Не удалось прочитать файл"
 
 msgid "All accounts"
 msgstr "Все учётные записи"
 
-msgid "All but Trash and Junk"
+msgid "All but trash and junk"
 msgstr ""
 
 #, fuzzy
@@ -2900,15 +2885,11 @@ msgid "Tagged"
 msgstr ""
 
 #, fuzzy
-msgid "Message preview"
-msgstr "Исходный текст сообщения"
-
-#, fuzzy
-msgid "Edit Smart Folder"
+msgid "Edit smart folder"
 msgstr "Сортировать папки"
 
 #, fuzzy
-msgid "Add Smart Folder"
+msgid "Add smart folder"
 msgstr "Добавить папку"
 
 #, fuzzy
@@ -2930,10 +2911,10 @@ msgstr "Открыть"
 msgid "Download…"
 msgstr "Скачать…"
 
-msgid "Show in Message"
+msgid "Show in message"
 msgstr "Показать в сообщении"
 
-msgid "Delete from Server…"
+msgid "Delete from server…"
 msgstr "Удалить с сервера…"
 
 msgid "Key imported"
@@ -2993,16 +2974,16 @@ msgstr "Показывать значками"
 msgid "Show as a list"
 msgstr "Показывать списком"
 
-msgid "Save All…"
+msgid "Save all…"
 msgstr "Сохранить все…"
 
 msgid "Save every attachment to a folder"
 msgstr "Сохранить все вложения в папку"
 
-msgid "Save Attachment"
+msgid "Save attachment"
 msgstr "Сохранить вложение"
 
-msgid "Save All Attachments"
+msgid "Save all attachments"
 msgstr "Сохранить все вложения"
 
 msgid "The file could not be opened"
@@ -3096,7 +3077,7 @@ msgstr "Параметры ссылок по умолчанию"
 msgid "Used unless you change them in the upload dialog for one email."
 msgstr ""
 
-msgid "Check Connection"
+msgid "Check connection"
 msgstr "Проверить соединение"
 
 msgid "{email} (Files is off)"
@@ -3244,9 +3225,6 @@ msgstr ""
 msgid "Signed in as {who}. {terms}"
 msgstr "Выполнен вход как {who}. {terms}"
 
-msgid "Cloud Storage"
-msgstr "Облачное хранилище"
-
 msgid "Cloud storage"
 msgstr "Облачное хранилище"
 
@@ -3267,7 +3245,7 @@ msgstr ""
 msgid "No cloud accounts yet."
 msgstr "Облачные учётные записи ещё не добавлены."
 
-msgid "Cloud Account"
+msgid "Cloud account"
 msgstr "Облачная учётная запись"
 
 msgid "Remove {name}?"
@@ -3283,10 +3261,10 @@ msgstr "Удалено: {name}"
 msgid "Could not store the sign-in in the keyring: {e}"
 msgstr "Не удалось сохранить данные входа в связке ключей: {e}"
 
-msgid "Edit Cloud Account"
+msgid "Edit cloud account"
 msgstr "Редактировать облачную учётную запись"
 
-msgid "Add Cloud Account"
+msgid "Add cloud account"
 msgstr "Добавить облачную учётную запись"
 
 msgid "links expire after {n} days"
@@ -3298,7 +3276,7 @@ msgstr "защищено паролем"
 msgid "Offer this account in the composer"
 msgstr "Предлагать эту учётную запись в редакторе"
 
-msgid "Command Palette"
+msgid "Command palette"
 msgstr ""
 
 msgid "Type an action, a folder or a tag, or > for actions only"
@@ -3320,7 +3298,7 @@ msgid "Large: some servers will refuse it."
 msgstr ""
 
 #, fuzzy
-msgid "Send a Link"
+msgid "Send a link"
 msgstr "Открыть ссылку"
 
 #, fuzzy
@@ -3343,9 +3321,6 @@ msgstr "{name} (ссылка)"
 
 msgid "Uploading…"
 msgstr "Загрузка…"
-
-msgid "Attach Files"
-msgstr "Прикрепить файлы"
 
 msgid "Attach {name}"
 msgstr "Прикрепить {name}"
@@ -3437,7 +3412,7 @@ msgid ""
 "Its changes have not been saved. Save them to the template, or discard them."
 msgstr "Изменения не сохранены. Сохраните их в шаблон или отмените их."
 
-msgid "Save Template"
+msgid "Save template"
 msgstr "Сохранить шаблон"
 
 msgid "Save the message?"
@@ -3448,10 +3423,10 @@ msgstr ""
 "Сообщение не было отправлено. Сохраните его в «Черновики», чтобы завершить "
 "позже, или удалите его."
 
-msgid "Save Draft"
+msgid "Save draft"
 msgstr "Сохранить черновик"
 
-msgid "Keep Editing"
+msgid "Keep editing"
 msgstr "Продолжить редактирование"
 
 msgid "Discard"
@@ -3478,13 +3453,13 @@ msgid "Not every mail app sends one."
 msgstr ""
 
 #, fuzzy
-msgid "Check Spelling"
+msgid "Check spelling"
 msgstr "Орфография"
 
-msgid "Spelling Language"
+msgid "Spelling language"
 msgstr "Язык проверки орфографии"
 
-msgid "Delete Draft"
+msgid "Delete draft"
 msgstr "Удалить черновик"
 
 msgid "Move this draft to Trash"
@@ -3538,11 +3513,11 @@ msgid ""
 msgstr ""
 
 #, fuzzy
-msgid "Send Anyway"
+msgid "Send anyway"
 msgstr "Отправить сейчас"
 
 #, fuzzy
-msgid "Attach a File…"
+msgid "Attach a file…"
 msgstr "Прикрепить файлы"
 
 msgid "An attachment is missing"
@@ -3561,7 +3536,7 @@ msgid "Choose the sending account"
 msgstr "Сначала выберите сетевую учётную запись."
 
 #, fuzzy
-msgid "Manage Accounts…"
+msgid "Manage accounts…"
 msgstr "Сетевые учётные записи GNOME"
 
 #, fuzzy
@@ -3578,31 +3553,31 @@ msgid "Translate what you wrote"
 msgstr "Перевести написанный текст"
 
 #, fuzzy
-msgid "Insert Signature"
+msgid "Insert signature"
 msgstr "Импортировать подпись"
 
 #, fuzzy
-msgid "No Signature"
+msgid "No signature"
 msgstr "Подпись"
 
 #, fuzzy
-msgid "Insert Before the Text"
+msgid "Insert before the text"
 msgstr "Вставить в текст"
 
 #, fuzzy
-msgid "Insert After the Text"
+msgid "Insert after the text"
 msgstr "Вставить в текст"
 
-msgid "Show Original"
+msgid "Show original"
 msgstr "Показать оригинал"
 
-msgid "Show Translation"
+msgid "Show translation"
 msgstr "Показать перевод"
 
 msgid "{language} (the quoted message)"
 msgstr "{language} (цитируемое сообщение)"
 
-msgid "Other Languages"
+msgid "Other languages"
 msgstr "Другие языки"
 
 msgid "Translate into"
@@ -3748,7 +3723,7 @@ msgid "Open Online Accounts"
 msgstr "Открыть «Сетевые учётные записи»…"
 
 #, fuzzy
-msgid "Add Address Book"
+msgid "Add address book"
 msgstr "Адресная книга"
 
 #, fuzzy
@@ -3846,7 +3821,7 @@ msgid "Use an app-specific password, not your usual one."
 msgstr "Требуется пароль приложения (не ваш обычный пароль для входа)."
 
 #, fuzzy
-msgid "CardDAV Server"
+msgid "CardDAV server"
 msgstr "Сервер"
 
 msgid ""
@@ -3864,15 +3839,11 @@ msgid ""
 "→ Privacy & Security."
 msgstr ""
 
-msgid "LDAP Directory"
+msgid "LDAP directory"
 msgstr "Каталог LDAP"
 
 msgid "Contacts"
 msgstr "Контакты"
-
-#, fuzzy
-msgid "Address Books"
-msgstr "Адресная книга"
 
 msgid ""
 "Where contacts come from for Contacts, suggestions, sender pictures and "
@@ -3884,7 +3855,7 @@ msgid "Look again for address books"
 msgstr "Поиск ключа для {addr}…"
 
 #, fuzzy
-msgid "Add Address Book…"
+msgid "Add address book…"
 msgstr "Адресная книга"
 
 msgid ""
@@ -3894,7 +3865,7 @@ msgid ""
 msgstr ""
 
 #, fuzzy
-msgid "New Contacts"
+msgid "New contacts"
 msgstr "Новый контакт"
 
 #, fuzzy
@@ -3905,7 +3876,7 @@ msgid "Unless another is picked when the contact is made."
 msgstr ""
 
 #, fuzzy
-msgid "In Mail"
+msgid "In mail"
 msgstr "Proton Mail"
 
 #, fuzzy
@@ -3916,31 +3887,27 @@ msgid "Saved addresses show the contact's name, not the mail's."
 msgstr ""
 
 #, fuzzy
-msgid "Address Book"
-msgstr "Адресная книга"
-
-#, fuzzy
 msgid "Looking for address books on {name}…"
 msgstr "Поиск ключа для {addr}…"
 
 #, fuzzy
-msgid "Attach to Message"
+msgid "Attach to message"
 msgstr "Прикрепить к новому сообщению"
 
-msgid "Insert in Text"
+msgid "Insert in text"
 msgstr "Вставить в текст"
 
 #, fuzzy
-msgid "Upload and Share a Link"
+msgid "Upload and share a link"
 msgstr "Загрузить в облачное хранилище и поделиться ссылкой"
 
-msgid "Attach to New Message"
+msgid "Attach to new message"
 msgstr "Прикрепить к новому сообщению"
 
-msgid "Insert in New Message"
+msgid "Insert in new message"
 msgstr "Вставить в новое сообщение"
 
-msgid "Share Link in New Message"
+msgid "Share link in new message"
 msgid_plural "Share Links in New Message"
 msgstr[0] "Поделиться ссылкой в новом сообщении"
 msgstr[1] "Поделиться ссылками в новом сообщении"
@@ -4079,11 +4046,11 @@ msgstr "{name} · {current} из {total}"
 msgid "Loading more…"
 msgstr "Загрузка остальных…"
 
-msgid "No Messages"
+msgid "No messages"
 msgstr "Нет сообщений"
 
 #, fuzzy
-msgid "No Matching Messages"
+msgid "No matching messages"
 msgstr "Нет сообщений"
 
 msgid "There's nothing here right now."
@@ -4109,38 +4076,33 @@ msgid "Choose which folders to search"
 msgstr "Выберите папки для поиска"
 
 #, fuzzy
-msgid "Has Attachments"
-msgstr "Есть вложения"
-
-#, fuzzy
-msgid "Addressed to Me"
+msgid "Addressed to me"
 msgstr "Адресная книга"
 
 #, fuzzy
-msgid "From Contacts"
+msgid "From contacts"
 msgstr "Нет контактов"
 
-#, fuzzy
-msgid "High Importance"
+msgid "High importance"
 msgstr "Высокая важность"
 
 msgid "Today"
 msgstr ""
 
 #, fuzzy
-msgid "Customize Columns…"
+msgid "Customize columns…"
 msgstr "Настроить панель инструментов…"
 
-msgid "Remove Stars"
+msgid "Remove stars"
 msgstr "Снять отметки"
 
-msgid "Star Conversation"
+msgid "Star conversation"
 msgstr "Отметить обсуждение"
 
-msgid "Mark All as Read"
+msgid "Mark all as read"
 msgstr "Отметить все как прочитанные"
 
-msgid "Mark All as Unread"
+msgid "Mark all as unread"
 msgstr "Отметить все как непрочитанные"
 
 #, fuzzy
@@ -4185,23 +4147,8 @@ msgstr ""
 "Потяните, чтобы изменить размер, или дважды нажмите для восстановления "
 "обычной ширины"
 
-msgid "Mark as read"
-msgstr "Отметить как прочитанное"
-
-msgid "Move to…"
-msgstr "Переместить в…"
-
-msgid "Not spam"
-msgstr "Не спам"
-
 msgid "Add sender to Contacts"
 msgstr "Добавить отправителя в «Контакты»"
-
-msgid "Mark as unread"
-msgstr "Отметить как непрочитанное"
-
-msgid "Remove star"
-msgstr "Снять отметку"
 
 #, fuzzy
 msgid "Forwarded"
@@ -4210,9 +4157,6 @@ msgstr "Переслать"
 #, fuzzy
 msgid "Snoozed until {when}"
 msgstr "Запланировано на {when}"
-
-msgid "High importance"
-msgstr "Высокая важность"
 
 msgid "Low importance"
 msgstr "Низкая важность"
@@ -4283,9 +4227,6 @@ msgstr "Загрузить"
 msgid "Always allow sender"
 msgstr "Всегда разрешать для этого отправителя"
 
-msgid "Find in message"
-msgstr "Найти в сообщении"
-
 msgid "No matches"
 msgstr "Совпадений не найдено"
 
@@ -4322,10 +4263,10 @@ msgid "Hide quoted text"
 msgstr "Скрыть цитируемый текст"
 
 #, fuzzy
-msgid "Copy Address"
+msgid "Copy address"
 msgstr "Копировать адрес ссылки"
 
-msgid "Add to Contacts"
+msgid "Add to contacts"
 msgstr "Добавить в Контакты"
 
 msgid "Double-click to open in a new window"
@@ -4343,14 +4284,8 @@ msgstr "Скрыть получателей"
 msgid "Show recipients"
 msgstr "Показать получателей"
 
-msgid "Mark as read or unread"
-msgstr "Отметить как прочитанное или непрочитанное"
-
 msgid "Star this message"
 msgstr "Отметить это сообщение"
-
-msgid "View source"
-msgstr "Просмотреть исходный текст"
 
 msgid "Translate this message"
 msgstr "Перевести это сообщение"
@@ -4378,12 +4313,6 @@ msgstr "Вернуться к моим шрифтам и цветам"
 
 msgid "Show the sender's fonts and colors"
 msgstr "Показывать шрифты и цвета отправителя"
-
-msgid "Show remote content"
-msgstr "Показать удалённое содержимое"
-
-msgid "Block remote content"
-msgstr "Блокировать удалённое содержимое"
 
 msgid "Click to open this message"
 msgstr "Нажмите, чтобы открыть это сообщение"
@@ -4502,38 +4431,38 @@ msgstr "Сообщает организатору, что вы не прийде
 msgid "Opens the meeting in your calendar application"
 msgstr "Открывает встречу в календарном приложении"
 
-msgid "Add to Calendar"
+msgid "Add to calendar"
 msgstr "Добавить в Календарь"
 
-msgid "Open Link"
+msgid "Open link"
 msgstr "Открыть ссылку"
 
-msgid "Copy Email Address"
+msgid "Copy email address"
 msgstr "Копировать адрес электронной почты"
 
-msgid "Copy Link Address"
+msgid "Copy link address"
 msgstr "Копировать адрес ссылки"
 
-msgid "Save Image As…"
+msgid "Save image as…"
 msgstr "Сохранить изображение как…"
 
-msgid "Save Image"
+msgid "Save image"
 msgstr "Сохранить изображение"
 
-msgid "Copy Image"
+msgid "Copy image"
 msgstr "Копировать изображение"
 
-msgid "Copy Image Address"
+msgid "Copy image address"
 msgstr "Копировать адрес изображения"
 
 msgid "Translate"
 msgstr "Перевести"
 
-msgid "Open With…"
+msgid "Open with…"
 msgstr ""
 
 #, fuzzy
-msgid "Save As…"
+msgid "Save as…"
 msgstr "Сохранить все…"
 
 msgid "Encrypted messages are not sent for translation."
@@ -4584,7 +4513,7 @@ msgstr ""
 msgid "{name} asked for a read receipt, to be sent to {addr}."
 msgstr ""
 
-msgid "Send Receipt"
+msgid "Send receipt"
 msgstr ""
 
 #, fuzzy
@@ -4660,7 +4589,7 @@ msgstr "Перевод…"
 msgid "Could not translate: {why}"
 msgstr "Не удалось перевести: {why}"
 
-msgid "Try Again"
+msgid "Try again"
 msgstr "Повторить попытку"
 
 msgid "Translated from {language} by {service}."
@@ -4713,9 +4642,6 @@ msgstr "Открывает страницу отписки от рассылки
 
 msgid "Clear all"
 msgstr "Очистить всё"
-
-msgid "Export log"
-msgstr "Экспортировать журнал"
 
 msgid "Collapse status bar"
 msgstr "Свернуть строку состояния"
@@ -4851,7 +4777,7 @@ msgstr "Не удалось сгенерировать ключ: {e}"
 msgid "No key found: {e}"
 msgstr "Ключ не найден: {e}"
 
-msgid "Generate a Key"
+msgid "Generate a key"
 msgstr "Сгенерировать ключ"
 
 #, fuzzy
@@ -4887,7 +4813,7 @@ msgstr "Введите одну и ту же парольную фразу дв�
 msgid "Generating the key…"
 msgstr "Генерация ключа…"
 
-msgid "Import Key"
+msgid "Import key"
 msgstr "Импортировать ключ"
 
 msgid "OpenPGP keys"
@@ -4899,7 +4825,7 @@ msgstr "Все файлы"
 msgid "Could not import: {e}"
 msgstr "Не удалось импортировать: {e}"
 
-msgid "Export Public Key"
+msgid "Export public key"
 msgstr "Экспортировать открытый ключ"
 
 msgid "Delete your key?"
@@ -4925,7 +4851,7 @@ msgstr ""
 msgid "Could not delete: {e}"
 msgstr "Не удалось удалить: {e}"
 
-msgid "Fetch a Key"
+msgid "Fetch a key"
 msgstr "Получить ключ"
 
 msgid ""
@@ -4968,7 +4894,7 @@ msgstr[2] "Импортировано {n} ключей."
 msgid "That key was already in your keyring."
 msgstr "Этот ключ уже находился в вашей связке ключей."
 
-msgid "Choose a Sound"
+msgid "Choose a sound"
 msgstr "Выберите звук"
 
 msgid "Sounds"
@@ -5076,7 +5002,7 @@ msgstr "Струна"
 msgid "Swing"
 msgstr "Свинг"
 
-msgid "Custom File"
+msgid "Custom file"
 msgstr "Другой файл"
 
 #, fuzzy
@@ -5359,7 +5285,7 @@ msgstr "Внешний вид"
 msgid "Sidebar"
 msgstr "Боковая панель"
 
-msgid "Message List"
+msgid "Message list"
 msgstr "Список сообщений"
 
 msgid "Conversations"
@@ -5374,7 +5300,7 @@ msgstr "Создание писем"
 msgid "Privacy"
 msgstr "Конфиденциальность"
 
-msgid "Date and Time"
+msgid "Date and time"
 msgstr "Дата и время"
 
 msgid "Backup"
@@ -5404,12 +5330,6 @@ msgid ""
 "Accounts, preferences, filters, tags and layout, in one file. Passwords and "
 "OpenPGP keys are not included."
 msgstr ""
-
-msgid "Export settings"
-msgstr "Экспортировать настройки"
-
-msgid "Import settings"
-msgstr "Импортировать настройки"
 
 #, fuzzy
 msgid ""
@@ -5530,7 +5450,7 @@ msgstr "Выбрать…"
 msgid "Also play while Tegami Mail is in front"
 msgstr ""
 
-msgid "Notification Buttons"
+msgid "Notification buttons"
 msgstr "Кнопки в уведомлениях"
 
 msgid "Up to three buttons on a notification about one message."
@@ -5642,7 +5562,7 @@ msgstr "Перетащите столбец сюда, чтобы скрыть е
 msgid "Off, a narrow list scrolls sideways."
 msgstr ""
 
-msgid "Restore Defaults"
+msgid "Restore defaults"
 msgstr "Восстановить по умолчанию"
 
 msgid "Tegami Mail collects no telemetry and sends no analytics."
@@ -5819,16 +5739,13 @@ msgstr "Не удалось удалить расширение"
 msgid "Could not restart Files"
 msgstr "Не удалось перезапустить «Файлы»"
 
-msgid "Other Font…"
+msgid "Other font…"
 msgstr ""
-
-msgid "Search Settings"
-msgstr "Поиск по параметрам"
 
 msgid "Search settings"
 msgstr "Поиск по параметрам"
 
-msgid "No Results"
+msgid "No results"
 msgstr "Ничего не найдено"
 
 #. Translators: words the settings search finds the Contacts page by,
@@ -5844,7 +5761,7 @@ msgstr "Системный язык — {language}"
 msgid "Forget this word"
 msgstr "Удалить это слово"
 
-msgid "Print Message"
+msgid "Print message"
 msgstr "Печать сообщения"
 
 msgid "No PDF writer is available on this system"
@@ -5856,7 +5773,7 @@ msgstr "Страница {page} из {pages}"
 msgid "Save as PDF…"
 msgstr "Сохранить как PDF…"
 
-msgid "No Preview"
+msgid "No preview"
 msgstr "Предпросмотр недоступен"
 
 msgid "Save as PDF"
@@ -5898,7 +5815,7 @@ msgstr "Только непрочитанные"
 msgid "Show previous message"
 msgstr "Предыдущее сообщение"
 
-msgid "Sans Serif"
+msgid "Sans serif"
 msgstr "Без засечек"
 
 msgid "Serif"
@@ -5995,12 +5912,6 @@ msgstr "Больше инструментов форматирования"
 msgid "Pictures"
 msgstr "Изображения"
 
-msgid "Insert Picture"
-msgstr "Вставить изображение"
-
-msgid "Insert Link"
-msgstr "Вставить ссылку"
-
 msgid "Insert"
 msgstr "Вставить"
 
@@ -6021,74 +5932,74 @@ msgstr "Папки ({len})"
 msgid "Labels"
 msgstr ""
 
-msgid "Sort Folders"
+msgid "Sort folders"
 msgstr "Сортировать папки"
 
-msgid "Add Folder"
+msgid "Add folder"
 msgstr "Добавить папку"
 
 msgid "Show or hide sub-folders"
 msgstr "Показать или скрыть вложенные папки"
 
-msgid "Mark Inbox as Read"
+msgid "Mark inbox as read"
 msgstr "Отметить входящие как прочитанные"
 
 msgid "Refresh"
 msgstr "Обновить"
 
-msgid "New Folder…"
+msgid "New folder…"
 msgstr "Создать папку…"
 
-msgid "Reset Folder Order"
+msgid "Reset folder order"
 msgstr "Сбросить порядок папок"
 
-msgid "Account Settings…"
+msgid "Account settings…"
 msgstr "Параметры учётной записи…"
 
-msgid "Remove Account…"
+msgid "Remove account…"
 msgstr "Удалить учётную запись…"
 
-msgid "Follow Settings: {sort}"
+msgid "Follow settings: {sort}"
 msgstr "Из параметров: {sort}"
 
 #, fuzzy
-msgid "Sync This Folder"
+msgid "Sync this folder"
 msgstr "Эта папка"
 
 #, fuzzy
-msgid "New Subfolder…"
+msgid "New subfolder…"
 msgstr "Создать папку…"
 
 #, fuzzy
 msgid "Rename…"
 msgstr "Переименовать"
 
-msgid "Remove from Favorites"
+msgid "Remove from favorites"
 msgstr "Удалить из избранного"
 
-msgid "Add to Favorites"
+msgid "Add to favorites"
 msgstr "Добавить в избранное"
 
-msgid "Apply Filters"
+msgid "Apply filters"
 msgstr "Применить фильтры"
 
-msgid "Edit Filter…"
+msgid "Edit filter…"
 msgstr "Редактировать фильтр…"
 
-msgid "Hide Folder"
+msgid "Hide folder"
 msgstr "Скрыть папку"
 
-msgid "Empty Trash…"
+msgid "Empty trash…"
 msgstr "Очистить корзину…"
 
-msgid "Empty Junk…"
+msgid "Empty junk…"
 msgstr "Очистить спам…"
 
 #, fuzzy
-msgid "Delete Folder"
+msgid "Delete folder"
 msgstr "Удалить папку…"
 
-msgid "Edit Tag…"
+msgid "Edit tag…"
 msgstr "Редактировать метку…"
 
 msgid "Add account"
@@ -6114,18 +6025,18 @@ msgid "Long-press to expand or collapse"
 msgstr "Долгое нажатие — развернуть или свернуть"
 
 #, fuzzy
-msgid "New Tag…"
+msgid "New tag…"
 msgstr "Добавить тег…"
 
 msgid "Show or hide tags"
 msgstr "Показать или скрыть метки"
 
 #, fuzzy
-msgid "Edit Smart Folder…"
+msgid "Edit smart folder…"
 msgstr "Редактировать фильтр…"
 
 #, fuzzy
-msgid "Delete Smart Folder…"
+msgid "Delete smart folder…"
 msgstr "Удалить папку…"
 
 msgid "Blue"
@@ -6155,7 +6066,7 @@ msgid "Gray"
 msgstr ""
 
 #, fuzzy
-msgid "New Tag"
+msgid "New tag"
 msgstr "Новых меток нет"
 
 #, fuzzy
@@ -6174,7 +6085,7 @@ msgid "Favorite"
 msgstr "Избранное"
 
 #, fuzzy
-msgid "Manage Tags…"
+msgid "Manage tags…"
 msgstr "Найти теги…"
 
 #, fuzzy
@@ -6225,7 +6136,7 @@ msgstr "Ключ (если требуется сервером)"
 msgid "It works: “{sent}” came back as “{back}”."
 msgstr "Всё работает: «{sent}» переведено как «{back}»."
 
-msgid "Sign In"
+msgid "Sign in"
 msgstr "Войти"
 
 msgid "The sign-in window was closed."
@@ -6242,10 +6153,10 @@ msgstr ""
 "Сначала введите адрес электронной почты, идентификатор клиента (Client ID) и "
 "оба URL-адреса OAuth."
 
-msgid "Sign In & Add"
+msgid "Sign in & add"
 msgstr "Войти и добавить"
 
-msgid "Test & Add"
+msgid "Test & add"
 msgstr "Проверить и добавить"
 
 msgid "IMAP server"
@@ -6289,7 +6200,7 @@ msgstr ""
 "При выборе другого языка Tegami Mail перезапустится: приложение закроется на "
 "секунду и этот мастер настройки откроется на выбранном языке."
 
-msgid "Get Started"
+msgid "Get started"
 msgstr "Перейти к почте"
 
 msgid "Import your online accounts"
@@ -6310,7 +6221,7 @@ msgstr "В «Сетевых учётных записях» не найдено 
 msgid "Open Online Accounts…"
 msgstr "Открыть «Сетевые учётные записи»…"
 
-msgid "Scan Again"
+msgid "Scan again"
 msgstr "Повторить поиск"
 
 msgid "Privacy, your way"
@@ -6402,7 +6313,7 @@ msgstr "Данные сервера"
 msgid "Filled in for known providers"
 msgstr "Заполняется автоматически для известных провайдеров"
 
-msgid "OAuth Client ID"
+msgid "OAuth client ID"
 msgstr "Идентификатор клиента OAuth (Client ID)"
 
 msgid "OAuth Client Secret (optional)"
@@ -6741,13 +6652,13 @@ msgstr "Нет адресной книги для добавления конт�
 msgid "Email"
 msgstr "Email"
 
-msgid "Added to Contacts"
+msgid "Added to contacts"
 msgstr "Добавлено в контакты"
 
 msgid "Added email to {name}"
 msgstr "Адрес электронной почты добавлен к контакту {name}"
 
-msgid "Already in Contacts ({name})"
+msgid "Already in contacts ({name})"
 msgstr "Уже есть в контактах ({name})"
 
 msgid "Could not add contact: {e}"
@@ -6765,7 +6676,7 @@ msgid "Could not read: {files}"
 msgstr "Не удалось перезапустить «Файлы»"
 
 #, fuzzy
-msgid "Import Contacts"
+msgid "Import contacts"
 msgstr "Сортировка контактов"
 
 #, fuzzy
@@ -6780,7 +6691,7 @@ msgid ""
 "syncs; Apply Now runs them over the mail already there."
 msgstr ""
 
-msgid "Add Filter…"
+msgid "Add filter…"
 msgstr "Добавить фильтр…"
 
 msgid "Run every rule over the mail already in your inboxes"
@@ -6810,19 +6721,13 @@ msgstr ""
 msgid "Storage"
 msgstr "Хранилище"
 
-msgid "Mail Account"
-msgstr "Почтовая учётная запись"
-
 msgid "Nickname"
 msgstr ""
 
-msgid "Display Name"
+msgid "Display name"
 msgstr "Отображаемое имя"
 
-msgid "Email Address"
-msgstr "Адрес электронной почты"
-
-msgid "Incoming Protocol"
+msgid "Incoming protocol"
 msgstr "Протокол входящей почты"
 
 msgid "SMTP Server (optional)"
@@ -6857,7 +6762,7 @@ msgstr "Тенант (common, organizations, consumers или ID)"
 msgid "Redirect URI"
 msgstr "URI перенаправления"
 
-msgid "Sign In with Browser"
+msgid "Sign in with browser"
 msgstr "Войти через браузер"
 
 #, fuzzy
@@ -6880,12 +6785,6 @@ msgstr "Отдельные учётные данные SMTP"
 msgid "Off uses the credentials above."
 msgstr ""
 
-msgid "SMTP Username"
-msgstr "Имя пользователя SMTP"
-
-msgid "SMTP Password"
-msgstr "Пароль SMTP"
-
 msgid "Accept a certificate for another name"
 msgstr "Принимать сертификат для другого имени"
 
@@ -6901,7 +6800,7 @@ msgstr "Заголовки столбцов"
 msgid "Favorites, Tags and Smart Folders across accounts."
 msgstr ""
 
-msgid "Test Connection"
+msgid "Test connection"
 msgstr "Проверить соединение"
 
 msgid "Account accent color"
@@ -6939,7 +6838,7 @@ msgstr "Псевдонимы для отправки"
 msgid "Extra addresses this account can send as."
 msgstr ""
 
-msgid "Add Alias…"
+msgid "Add alias…"
 msgstr "Добавить псевдоним…"
 
 #, fuzzy
@@ -6952,14 +6851,14 @@ msgid ""
 msgstr ""
 
 #, fuzzy
-msgid "Add Signature"
+msgid "Add signature"
 msgstr "Подпись"
 
-msgid "Import File…"
+msgid "Import file…"
 msgstr "Импортировать файл…"
 
 #, fuzzy
-msgid "Delete Signature"
+msgid "Delete signature"
 msgstr "Импортировать подпись"
 
 #, fuzzy
@@ -7055,16 +6954,13 @@ msgstr ""
 msgid "Shows a label's name when a message gives only its ID."
 msgstr ""
 
-msgid "Folder Order"
-msgstr "Порядок папок"
-
 #, fuzzy
 msgid "Also in the right-click menu of its Folders heading."
 msgstr ""
 "Способ сортировки папок этой учётной записи на боковой панели. Настраивается "
 "также в контекстном меню заголовка «Папки»."
 
-msgid "Special Folders"
+msgid "Special folders"
 msgstr "Специальные папки"
 
 msgid ""
@@ -7094,7 +6990,7 @@ msgstr "Шаблоны"
 msgid "Snoozed"
 msgstr ""
 
-msgid "Hidden Folders"
+msgid "Hidden folders"
 msgstr "Скрытые папки"
 
 msgid ""
@@ -7130,7 +7026,7 @@ msgstr ""
 msgid "Search senders"
 msgstr "Поиск отправителей"
 
-msgid "Allowed Senders"
+msgid "Allowed senders"
 msgstr "Разрешённые отправители"
 
 msgid "Messages from these senders load remote content automatically."
@@ -7141,7 +7037,7 @@ msgid "Allow this sender"
 msgstr "Разрешить этого отправителя"
 
 #, fuzzy
-msgid "Blocked Senders"
+msgid "Blocked senders"
 msgstr "Разрешённые отправители"
 
 #, fuzzy
@@ -7173,7 +7069,7 @@ msgstr ""
 "Перетащите тег, чтобы изменить порядок: порядок здесь соответствует боковой "
 "панели, а первые девять вызываются клавишами 1–9."
 
-msgid "Add Tag…"
+msgid "Add tag…"
 msgstr "Добавить тег…"
 
 msgid "Look through every mailbox for tags other clients have set"
@@ -7212,7 +7108,7 @@ msgstr ""
 msgid "Always fold the right group into ⋯"
 msgstr ""
 
-msgid "Focus Mode"
+msgid "Focus mode"
 msgstr "Режим фокусировки"
 
 msgid ""
@@ -7220,7 +7116,7 @@ msgid ""
 "Ctrl+Shift+F or the main menu."
 msgstr ""
 
-msgid "Start in Focus Mode"
+msgid "Start in focus mode"
 msgstr "Запускать в режиме концентрации"
 
 msgid "Fold the reading pane's toolbar"
@@ -7351,7 +7247,7 @@ msgid ""
 msgstr ""
 
 #, fuzzy
-msgid "Undo Send"
+msgid "Undo send"
 msgstr "Отменить"
 
 msgid "How long Undo is offered after sending."
@@ -7368,15 +7264,15 @@ msgid "Sent mail shows who read it; the receipt goes here."
 msgstr ""
 
 #, fuzzy
-msgid "Move to Trash"
+msgid "Move to trash"
 msgstr "Переместить этот черновик в «Корзину»"
 
 #, fuzzy
-msgid "Keep in Inbox"
+msgid "Keep in inbox"
 msgstr "Оставить во «Входящих»"
 
 #, fuzzy
-msgid "Reply Header"
+msgid "Reply header"
 msgstr "Адрес для ответа"
 
 msgid "{name}, {address}, {date} and {time} are filled in from the original."
@@ -7387,7 +7283,7 @@ msgid "Line above the quoted message"
 msgstr "Над цитируемым сообщением"
 
 #, fuzzy
-msgid "Restore Default"
+msgid "Restore default"
 msgstr "Восстановить по умолчанию"
 
 msgid "Spelling"
@@ -7592,7 +7488,7 @@ msgstr ""
 msgid "Mail inside an account's offline period is kept."
 msgstr ""
 
-msgid "GNOME Files Integration"
+msgid "GNOME Files integration"
 msgstr "Интеграция с «Файлами» GNOME"
 
 msgid ""
@@ -7643,7 +7539,7 @@ msgstr "Обновить"
 msgid "Install"
 msgstr "Установить"
 
-msgid "Send as Attachment Instead"
+msgid "Send as attachment instead"
 msgstr "Отправить вложением"
 
 msgid "Small"
@@ -7655,20 +7551,17 @@ msgstr "Средний"
 msgid "Large"
 msgstr "Большой"
 
-msgid "Original Size"
+msgid "Original size"
 msgstr "Исходный размер"
 
 msgid "Will be recompressed to the size shown when this is sent"
 msgstr "Размер будет уменьшен до указанного при отправке"
 
-msgid "Recompress to This Size on Send"
+msgid "Recompress to this size on send"
 msgstr "Сжать до этого размера при отправке"
 
-msgid "Paste with Formatting"
+msgid "Paste with formatting"
 msgstr "Вставить с форматированием"
-
-msgid "Paste as Plain Text"
-msgstr "Вставить как обычный текст"
 
 msgid "Email Client"
 msgstr "Почтовый клиент"

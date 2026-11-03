@@ -166,14 +166,14 @@ impl GeneralPage {
                 // Three at most: once three are on, the rest
                 // grey out until one is switched off.
                 add = &adw::PreferencesGroup {
-                    set_title: &i18n("Notification Buttons"),
+                    set_title: &i18n("Notification buttons"),
                     set_description: Some(&i18n("Up to three buttons on a notification about one message.")),
 
                     #[name = "notify_mark_read_row"]
                     adw::SwitchRow {
                         // Kept current by update_view.
                         set_sensitive: model.button_row_sensitive(crate::config::NotificationButton::MarkRead),
-                        set_title: &i18n("Mark as Read"),
+                        set_title: &i18n("Mark as read"),
                         connect_active_notify[sender] => move |row| {
                             sender.input(PrefInput::ToggleNotificationButton(crate::config::NotificationButton::MarkRead, row.is_active()));
                         },
@@ -223,7 +223,7 @@ impl GeneralPage {
                     adw::SwitchRow {
                         // Kept current by update_view.
                         set_sensitive: model.button_row_sensitive(crate::config::NotificationButton::Spam),
-                        set_title: &i18n("Mark as Spam"),
+                        set_title: &i18n("Mark as spam"),
                         connect_active_notify[sender] => move |row| {
                             sender.input(PrefInput::ToggleNotificationButton(crate::config::NotificationButton::Spam, row.is_active()));
                         },

@@ -325,7 +325,7 @@ impl AppModel {
             account_id,
             path,
             new_path.clone(),
-            Some(i18n("Move Folder")),
+            Some(i18n("Move folder")),
         );
         Some(new_path)
     }

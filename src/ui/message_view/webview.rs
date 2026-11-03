@@ -143,7 +143,7 @@ fn offer_save_image(webview: &webkit6::WebView) {
         action.connect_activate(move |_, _| {
             let dialog = gtk::FileDialog::builder()
                 .initial_name(default_image_name(&mime))
-                .title(i18n("Save Image"))
+                .title(i18n("Save image"))
                 .build();
             let data = data.clone();
             dialog.save(window.as_ref(), gtk::gio::Cancellable::NONE, move |res| {

@@ -39,7 +39,7 @@ impl MessageView {
             Some(UnsubState::Working) => (i18n("Unsubscribing…"), String::new()),
             Some(UnsubState::Failed(why)) => (
                 i18n_f("Unsubscribing didn't work: {why}", &[("why", why)]),
-                button(&i18n("Try Again"), ""),
+                button(&i18n("Try again"), ""),
             ),
             None => {
                 let text = match self.unsubscribed.get(&info.key(&m.from_addr)) {

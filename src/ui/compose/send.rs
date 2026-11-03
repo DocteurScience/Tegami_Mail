@@ -363,8 +363,8 @@ impl Compose {
         );
         dialog.add_responses(&[
             ("cancel", &i18n("Cancel")),
-            ("send", &i18n("Send Anyway")),
-            ("attach", &i18n("Attach a File\u{2026}")),
+            ("send", &i18n("Send anyway")),
+            ("attach", &i18n("Attach a file\u{2026}")),
         ]);
         dialog.set_response_appearance("attach", adw::ResponseAppearance::Suggested);
         dialog.set_default_response(Some("attach"));
@@ -749,7 +749,7 @@ impl Compose {
             );
         }
         let s = sender.clone();
-        let manage = MenuEntry::new(i18n("Manage Accounts…"), move || {
+        let manage = MenuEntry::new(i18n("Manage accounts…"), move || {
             let _ = s.output(ComposeOutput::ManageAccounts);
         });
         let b = &face.button;

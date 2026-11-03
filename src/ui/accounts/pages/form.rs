@@ -184,7 +184,7 @@ impl EditorForm {
                 },
 
                 add = &adw::PreferencesGroup {
-                    set_title: &i18n("Mail Account"),
+                    set_title: &i18n("Mail account"),
 
                     // The nickname first: it is the one thing
                     // most edits are for, and it names the
@@ -205,19 +205,19 @@ impl EditorForm {
                         connect_selected_notify => AccountsInput::ProviderChanged,
                     },
                     #[name = "name_row"]
-                    adw::EntryRow { set_title: &i18n("Display Name") },
+                    adw::EntryRow { set_title: &i18n("Display name") },
                     #[name = "email_row"]
                     adw::EntryRow {
-                        set_title: &i18n("Email Address"),
+                        set_title: &i18n("Email address"),
                         set_input_purpose: gtk::InputPurpose::Email,
                     },
                     #[name = "protocol_row"]
                     adw::ComboRow {
-                        set_title: &i18n("Incoming Protocol"),
+                        set_title: &i18n("Incoming protocol"),
                         connect_selected_notify => AccountsInput::ProtocolChanged,
                     },
                     #[name = "host_row"]
-                    adw::EntryRow { set_title: &i18n("Incoming Server") },
+                    adw::EntryRow { set_title: &i18n("Incoming server") },
                     #[name = "port_row"]
                     adw::EntryRow {
                         set_title: &i18n("Port (IMAP 993 / POP3 995)"),
@@ -247,7 +247,7 @@ impl EditorForm {
                     // ---- OAuth fields (shown when Authentication is an OAuth option) ----
                     #[name = "oauth_client_id_row"]
                     adw::EntryRow {
-                        set_title: &i18n("OAuth Client ID"),
+                        set_title: &i18n("OAuth client ID"),
                         set_visible: false,
                     },
                     #[name = "oauth_secret_row"]
@@ -293,16 +293,16 @@ impl EditorForm {
                             // Tegami Mail's window, not the browser.
                             connect_changed[signin = oauth_signin_btn.clone()] => move |row| {
                                 signin.set_label(&if row.text().trim().is_empty() {
-                                    i18n("Sign In with Browser")
+                                    i18n("Sign in with browser")
                                 } else {
-                                    i18n("Sign In")
+                                    i18n("Sign in")
                                 });
                             },
                         },
                     },
                     #[name = "oauth_signin_btn"]
                     gtk::Button {
-                        set_label: &i18n("Sign In with Browser"),
+                        set_label: &i18n("Sign in with browser"),
                         set_halign: gtk::Align::Start,
                         set_margin_top: 16,
                         set_visible: false,
@@ -347,9 +347,9 @@ impl EditorForm {
                         set_subtitle: &i18n("Off uses the credentials above."),
                     },
                     #[name = "smtp_user_row"]
-                    adw::EntryRow { set_title: &i18n("SMTP Username") },
+                    adw::EntryRow { set_title: &i18n("SMTP username") },
                     #[name = "smtp_pass_row"]
-                    adw::PasswordEntryRow { set_title: &i18n("SMTP Password") },
+                    adw::PasswordEntryRow { set_title: &i18n("SMTP password") },
                     #[name = "tls_mismatch_row"]
                     adw::SwitchRow {
                         set_title: &i18n("Accept a certificate for another name"),
@@ -373,7 +373,7 @@ impl EditorForm {
 
                         #[name = "test_btn"]
                         gtk::Button {
-                            set_label: &i18n("Test Connection"),
+                            set_label: &i18n("Test connection"),
                             set_halign: gtk::Align::Start,
                             connect_clicked => AccountsInput::TestConnection,
                         },
@@ -544,7 +544,7 @@ impl EditorForm {
                         set_halign: gtk::Align::End,
                         set_margin_start: 24,
                         gtk::Button {
-                            set_label: &i18n("Add Alias…"),
+                            set_label: &i18n("Add alias…"),
                             set_size_request: (130, -1),
                             connect_clicked => AccountsInput::AliasAdd,
                         },
@@ -581,12 +581,12 @@ impl EditorForm {
                         set_halign: gtk::Align::End,
                         set_margin_start: 24,
                         gtk::Button {
-                            set_label: &i18n("Add Signature"),
+                            set_label: &i18n("Add signature"),
                             set_size_request: (130, -1),
                             connect_clicked => AccountsInput::SigAdd,
                         },
                         gtk::Button {
-                            set_label: &i18n("Import File…"),
+                            set_label: &i18n("Import file…"),
                             set_size_request: (130, -1),
                             connect_clicked => AccountsInput::SignatureImport,
                         },
@@ -608,7 +608,7 @@ impl EditorForm {
                         add_suffix = &gtk::Button {
                             set_icon_name: "user-trash-symbolic",
                             set_valign: gtk::Align::Center,
-                            set_tooltip_text: Some(&i18n("Delete Signature")),
+                            set_tooltip_text: Some(&i18n("Delete signature")),
                             add_css_class: "flat",
                             connect_clicked => AccountsInput::SigDelete,
                         },
@@ -748,7 +748,7 @@ impl EditorForm {
 
                 // Its own folder order, or Settings → Sidebar's.
                 add = &adw::PreferencesGroup {
-                    set_title: &i18n("Folder Order"),
+                    set_title: &i18n("Folder order"),
                     set_description: Some(
                         i18n("Also in the right-click menu of its Folders heading.").as_str()
                     ),
@@ -769,7 +769,7 @@ impl EditorForm {
                 // account its inbox (#136), which is why the Inbox
                 // is offered in that row and in none of the others.
                 add = &adw::PreferencesGroup {
-                    set_title: &i18n("Special Folders"),
+                    set_title: &i18n("Special folders"),
                     set_description: Some(
                         i18n("Follows the server's own markings unless you pick a folder. Nothing already on the server moves.").as_str()
                     ),
@@ -826,7 +826,7 @@ impl EditorForm {
                 // sidebar took out of sight, each with the way back.
                 #[name = "hidden_group"]
                 adw::PreferencesGroup {
-                    set_title: &i18n("Hidden Folders"),
+                    set_title: &i18n("Hidden folders"),
                     set_description: Some(
                         i18n("Hidden folders are not synced. Hide one from its right-click menu in the sidebar.").as_str()
                     ),

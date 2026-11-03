@@ -38,7 +38,7 @@ impl TagsPage {
                         // so they always share one width), and
                         // the finder's label change moves nothing.
                         gtk::Button {
-                            set_label: &i18n("Add Tag…"),
+                            set_label: &i18n("Add tag…"),
                             set_size_request: (130, -1),
                             connect_clicked => AccountsInput::AddTag,
                         },
@@ -61,7 +61,7 @@ impl TagsPage {
                                 },
                                 #[name = "find_tags_label"]
                                 gtk::Label {
-                                    set_label: &i18n("Find Tags…"),
+                                    set_label: &i18n("Find tags…"),
                                 },
                             },
                         },

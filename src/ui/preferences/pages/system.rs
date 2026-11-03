@@ -202,7 +202,7 @@ impl SystemPage {
 
                 // The Files right-click extension (#188).
                 add = &adw::PreferencesGroup {
-                    set_title: &i18n("GNOME Files Integration"),
+                    set_title: &i18n("GNOME Files integration"),
                     set_description: Some(
                         i18n("Adds “Send with Tegami Mail” to the right-click menu in Files. Needs the nautilus-python package and a restart of Files.").as_str()
                     ),

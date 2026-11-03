@@ -515,7 +515,7 @@ fn unified_rows_have_titles_icons_and_messages() {
     };
     let dbg = |m: super::SidebarInput| format!("{m:?}");
     assert_eq!(row_title(UnifiedRow::Tags), "Tags");
-    assert_eq!(row_title(UnifiedRow::Smart), "Smart Folders");
+    assert_eq!(row_title(UnifiedRow::Smart), "Smart folders");
     assert_eq!(row_icon(UnifiedRow::Favorites), "user-bookmarks-symbolic");
     assert_eq!(dbg(select_msg(UnifiedRow::Smart)), "ToggleSmartExpand");
     assert_eq!(
@@ -599,18 +599,18 @@ fn folder_menu_has_the_design_sections() {
     assert_eq!(
         labels(&custom(5, "Work")),
         vec![
-            vec!["Mark All as Read", "Sync This Folder"],
-            vec!["New Subfolder…", "Rename…"],
-            vec!["Add to Favorites", "Hide Folder"],
-            vec!["Delete Folder"],
+            vec!["Mark all as read", "Sync this folder"],
+            vec!["New subfolder…", "Rename…"],
+            vec!["Add to favorites", "Hide folder"],
+            vec!["Delete folder"],
         ]
     );
     assert_eq!(
         labels(&main(1, "INBOX", FolderKind::Inbox)),
         vec![
-            vec!["Mark All as Read", "Sync This Folder"],
-            vec!["New Subfolder…"],
-            vec!["Add to Favorites"],
+            vec!["Mark all as read", "Sync this folder"],
+            vec!["New subfolder…"],
+            vec!["Add to favorites"],
         ]
     );
     let starred = labels(&main(2, "[Gmail]/Starred", FolderKind::Starred));

@@ -85,7 +85,7 @@ impl AppModel {
             &heading,
             &body,
             "delete",
-            &i18n("Delete Conversation"),
+            &i18n("Delete conversation"),
             move || s.input(AppMsg::DeleteThreadConfirmed(messages)),
         );
     }
@@ -230,7 +230,7 @@ impl AppModel {
             self.notice_error(i18n("No Inbox folder available for this account"));
             return;
         };
-        self.push_undo_move_as(m.account_id, i18n("Not Spam"), &dest, &src, vec![m.clone()]);
+        self.push_undo_move_as(m.account_id, i18n("Not spam"), &dest, &src, vec![m.clone()]);
         self.send_to(
             m.account_id,
             MailRequest::MarkHam {
@@ -352,7 +352,7 @@ impl AppModel {
         }
         for ((account_id, src), (dest, uids, rows)) in groups {
             if action == BulkAction::NotSpam {
-                self.push_undo_move_as(account_id, i18n("Not Spam"), &dest, &src, rows);
+                self.push_undo_move_as(account_id, i18n("Not spam"), &dest, &src, rows);
             } else {
                 self.push_undo_move(account_id, &dest, &src, rows);
             }

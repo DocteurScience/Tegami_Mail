@@ -111,7 +111,7 @@ pub(crate) fn local_mail_dir() -> Option<PathBuf> {
 /// its mail offline; and mail filed away is not new mail, so it stays out
 /// of All Inboxes until asked.
 pub(crate) fn local_account() -> AccountConfig {
-    let name = crate::i18n::i18n("On This Computer");
+    let name = crate::i18n::i18n("On this computer");
     AccountConfig {
         label: Some(name.clone()),
         name,

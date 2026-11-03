@@ -55,7 +55,7 @@ impl MessageView {
             Some(TrState::Working) => line(&i18n("Translating…"), String::new()),
             Some(TrState::Failed(why)) => line(
                 &i18n_f("Could not translate: {why}", &[("why", why)]),
-                button(&i18n("Try Again")),
+                button(&i18n("Try again")),
             ),
             Some(TrState::Shown(t)) => {
                 let text = match &t.from {
@@ -68,11 +68,11 @@ impl MessageView {
                         &[("service", &t.service.name())],
                     ),
                 };
-                line(&text, button(&i18n("Show Original")))
+                line(&text, button(&i18n("Show original")))
             }
             Some(TrState::Original(_)) => line(
                 &i18n("Showing the original."),
-                button(&i18n("Show Translation")),
+                button(&i18n("Show translation")),
             ),
             None => {
                 if !(settings.enabled() && settings.offer)

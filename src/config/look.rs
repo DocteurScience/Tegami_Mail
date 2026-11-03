@@ -308,7 +308,7 @@ impl ListColumn {
             ListColumn::Attachment => crate::i18n::i18n_noop("Attachment"),
             ListColumn::Importance => crate::i18n::i18n_noop("Importance"),
             ListColumn::Account => crate::i18n::i18n_noop("Account"),
-            ListColumn::Due => crate::i18n::i18n_noop("Due Date"),
+            ListColumn::Due => crate::i18n::i18n_noop("Due date"),
             ListColumn::Date => crate::i18n::i18n_noop("Date"),
         }
     }

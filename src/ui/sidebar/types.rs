@@ -64,7 +64,7 @@ pub(super) fn row_title(row: UnifiedRow) -> String {
     match row {
         UnifiedRow::Favorites => i18n("Favorites"),
         UnifiedRow::Tags => i18n("Tags"),
-        UnifiedRow::Smart => i18n("Smart Folders"),
+        UnifiedRow::Smart => i18n("Smart folders"),
     }
 }
 

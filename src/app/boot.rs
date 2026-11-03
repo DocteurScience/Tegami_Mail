@@ -207,11 +207,11 @@ pub(super) fn build_main_menu(
         // refresh_undo_menu still fills `model_undo_menu`, unshown, as it
         // also enables the Undo and Redo actions.
         let sync = gtk::gio::Menu::new();
-        sync.append_item(&keyed_item(&i18n("Sync Now"), "win.sync-now", "F5"));
+        sync.append_item(&keyed_item(&i18n("Sync now"), "win.sync-now", "F5"));
         menu.append_section(None, &sync);
 
         let accounts = gtk::gio::Menu::new();
-        accounts.append(Some(i18n("Add Account…").as_str()), Some("win.add-account"));
+        accounts.append(Some(i18n("Add account…").as_str()), Some("win.add-account"));
         accounts.append(
             Some(i18n("GNOME Online Accounts…").as_str()),
             Some("win.online-accounts"),
@@ -224,10 +224,10 @@ pub(super) fn build_main_menu(
 
         let printing = gtk::gio::Menu::new();
         printing.append(
-            Some(i18n("Print Preview…").as_str()),
+            Some(i18n("Print preview…").as_str()),
             Some("win.print-preview"),
         );
-        printing.append(Some(i18n("Print Message…").as_str()), Some("win.print"));
+        printing.append(Some(i18n("Print message…").as_str()), Some("win.print"));
         menu.append_section(None, &printing);
 
         menu.append_section(None, &help_menu);

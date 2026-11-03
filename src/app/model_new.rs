@@ -189,7 +189,7 @@ impl AppModel {
             },
             reader_move_btn: {
                 let b = gtk::Button::from_icon_name("folder-symbolic");
-                b.set_tooltip_text(Some(i18n("Move To…").as_str()));
+                b.set_tooltip_text(Some(i18n("Move to…").as_str()));
                 b.add_css_class("flat");
                 b
             },

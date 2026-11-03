@@ -206,7 +206,7 @@ impl Component for Welcome {
         server_exp.add_row(&smtp_port_row);
         // Custom OAuth's client, the same fields as the account editor's.
         let oauth_client_id_row = adw::EntryRow::new();
-        oauth_client_id_row.set_title(&i18n("OAuth Client ID"));
+        oauth_client_id_row.set_title(&i18n("OAuth client ID"));
         let oauth_secret_row = adw::PasswordEntryRow::new();
         oauth_secret_row.set_title(&i18n("OAuth Client Secret (optional)"));
         let oauth_auth_url_row = adw::EntryRow::new();
@@ -239,7 +239,7 @@ impl Component for Welcome {
         hint_lbl.set_visible(false);
         acct.append(&hint_lbl);
 
-        let add_btn = pill(&i18n("Test & Add"));
+        let add_btn = pill(&i18n("Test & add"));
         add_btn.set_margin_top(4);
         {
             let s = sender.clone();

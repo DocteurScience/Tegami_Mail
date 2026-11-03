@@ -69,7 +69,7 @@ fn options() -> PrintOptions {
 /// inside one aborts the process.
 pub(super) fn print_html(html: &str, job_name: &str, parent: Option<gtk::Window>) {
     let dialog = gtk::PrintDialog::new();
-    dialog.set_title(&i18n("Print Message"));
+    dialog.set_title(&i18n("Print message"));
     let settings = gtk::PrintSettings::new();
     // Names the job in the queue and seeds the filename when printing to a
     // file, which is otherwise "unknown".
@@ -426,7 +426,7 @@ pub(super) fn open(parent: &gtk::Window, html: &str, job_name: &str) {
     let win = adw::Window::builder()
         .transient_for(parent)
         .modal(false)
-        .title(i18n("Print Preview"))
+        .title(i18n("Print preview"))
         .default_width(900)
         .default_height(900)
         .build();
@@ -562,7 +562,7 @@ pub(super) fn open(parent: &gtk::Window, html: &str, job_name: &str) {
             }
             Err(e) => {
                 tracing::warn!("print preview failed: {e}");
-                failure.set_title(&i18n("No Preview"));
+                failure.set_title(&i18n("No preview"));
                 failure.set_description(Some(&e));
                 stack.set_visible_child_name("failed");
             }

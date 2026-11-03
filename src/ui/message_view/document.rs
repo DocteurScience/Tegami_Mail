@@ -64,8 +64,8 @@ fn wrapper_scripts() -> (String, String) {
             let qt = js(&[i18n("Show quoted text"), i18n("Hide quoted text")]);
             let am = js(&[
                 i18n("New Message"),
-                i18n("Copy Address"),
-                i18n("Add to Contacts"),
+                i18n("Copy address"),
+                i18n("Add to contacts"),
             ]);
             format!(
                 "<script nonce=\"{n}\">var vireoQT={qt};var tegamiAM={am};{SIZE_SCRIPT}</script>"
@@ -689,7 +689,7 @@ fn card_actions(cards: &Cards<'_>, m: &Message) -> String {
             key,
             "spam",
             "mail-mark-junk-symbolic",
-            &i18n("Mark as Spam")
+            &i18n("Mark as spam")
         ),
         card_action_button(
             key,

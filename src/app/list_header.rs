@@ -97,7 +97,7 @@ impl DateRange {
         };
         let ends = [toggle(DateBound::From), toggle(DateBound::To)];
         ends[1].1.set_group(Some(&ends[0].1));
-        let clear = gtk::Button::with_label(&i18n("Clear Dates"));
+        let clear = gtk::Button::with_label(&i18n("Clear dates"));
         clear.add_css_class("flat");
         clear.set_halign(gtk::Align::Start);
         let this = Rc::new(Self {
@@ -220,7 +220,7 @@ impl DateRange {
         let days = [filters.date(DateBound::From), filters.date(DateBound::To)];
         self.days.set(days);
         for ((_, button, label), day) in self.ends.iter().zip(days) {
-            label.set_label(&day.map_or_else(|| i18n("Any Date"), day_label));
+            label.set_label(&day.map_or_else(|| i18n("Any date"), day_label));
             if day.is_none() && days.iter().all(Option::is_none) && button.is_active() {
                 self.quiet.set(true);
                 button.set_active(false);
@@ -246,7 +246,7 @@ fn widest_day_label() -> i32 {
     (1..=12)
         .filter_map(|m| chrono::NaiveDate::from_ymd_opt(2026, m, 28))
         .map(day_label)
-        .chain([i18n("Any Date")])
+        .chain([i18n("Any date")])
         .map(|t| t.chars().count())
         .max()
         .unwrap_or(12) as i32
@@ -338,8 +338,8 @@ impl SortFilterPopover {
             sort_col.append(&c);
             c
         };
-        let threads = check(i18n("Group into Conversations"));
-        let preview = check(i18n("Message Preview"));
+        let threads = check(i18n("Group into conversations"));
+        let preview = check(i18n("Message preview"));
         let avatars = check(i18n("Avatars"));
         {
             let s = sender.clone();
@@ -372,7 +372,7 @@ impl SortFilterPopover {
             filter_col.append(&check);
             filters.push((f, check));
         }
-        let clear = gtk::Button::with_label(&i18n("Clear Filters"));
+        let clear = gtk::Button::with_label(&i18n("Clear filters"));
         clear.add_css_class("flat");
         clear.set_halign(gtk::Align::Start);
         clear.set_sensitive(false);
@@ -500,7 +500,7 @@ impl AppModel {
             return;
         };
         let s = sender.input_sender().clone();
-        let search = MenuEntry::new(i18n("Search Messages…"), move || {
+        let search = MenuEntry::new(i18n("Search messages…"), move || {
             let _ = s.send(AppMsg::OpenListSearch);
         })
         .icon("system-search-symbolic");
@@ -515,7 +515,7 @@ impl AppModel {
             })
             .collect();
         let s = sender.input_sender().clone();
-        let clear = MenuEntry::new(i18n("Clear Filters"), move || {
+        let clear = MenuEntry::new(i18n("Clear filters"), move || {
             s.emit(AppMsg::ClearQuickFilters)
         })
         .enabled(!self.quick_filters.is_empty());
@@ -762,7 +762,7 @@ pub(super) fn compose_menu(
         vec![vec![
             MenuEntry::new(i18n("New Message"), move || blank.input(AppMsg::Compose))
                 .icon("mail-message-new-symbolic"),
-            MenuEntry::new(i18n("New Message from Template…"), move || {
+            MenuEntry::new(i18n("New message from template…"), move || {
                 template.input(AppMsg::NewFromTemplate);
             })
             .icon("folder-templates-symbolic"),

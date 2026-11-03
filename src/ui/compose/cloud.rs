@@ -28,7 +28,7 @@ fn cloud_upload_dialog(
     let n = paths.len();
     let dialog = adw::MessageDialog::new(
         parent,
-        Some(i18n("Upload to Cloud Storage").as_str()),
+        Some(i18n("Upload to cloud storage").as_str()),
         Some(
             crate::i18n::ni18n_f(
                 "Upload {n} file and put its share link in the message.",

@@ -37,7 +37,7 @@ impl ListPage {
         relm4::view! {
             page = adw::PreferencesPage {
                 add = &adw::PreferencesGroup {
-                    set_title: &i18n("Message List"),
+                    set_title: &i18n("Message list"),
 
                     #[name = "avatars_row"]
                     adw::SwitchRow {
@@ -223,7 +223,7 @@ impl ListPage {
                         set_margin_top: 12,
 
                         gtk::Button {
-                            set_label: &i18n("Restore Defaults"),
+                            set_label: &i18n("Restore defaults"),
                             set_halign: gtk::Align::End,
                             set_valign: gtk::Align::Center,
                             connect_clicked => PrefInput::ColumnRestore,

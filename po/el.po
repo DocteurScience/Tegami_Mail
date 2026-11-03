@@ -31,10 +31,10 @@ msgstr ""
 "GitHub. Χρησιμοποιεί τους ίδιους λογαριασμούς και την ίδια αλληλογραφία με "
 "τη σταθερή εγκατάσταση του Tegami Mail."
 
-msgid "Release Notes"
+msgid "Release notes"
 msgstr "Σημειώσεις έκδοσης"
 
-msgid "Keyring Setup Help"
+msgid "Keyring setup help"
 msgstr "Βοήθεια ρύθμισης κλειδοθήκης"
 
 msgid "Make account passwords persist on Linux Mint"
@@ -47,7 +47,7 @@ msgstr "Έργο"
 msgid "Report an issue or feature request"
 msgstr "Αναφορά προβλήματος ή αίτημα λειτουργίας"
 
-msgid "Source Code"
+msgid "Source code"
 msgstr "Πηγαίος κώδικας"
 
 msgid "License (GNU AGPL v3)"
@@ -100,10 +100,10 @@ msgstr ""
 msgid "Delete"
 msgstr "Διαγραφή"
 
-msgid "Sync Now"
+msgid "Sync now"
 msgstr ""
 
-msgid "Add Account…"
+msgid "Add account…"
 msgstr "Προσθήκη λογαριασμού…"
 
 #, fuzzy
@@ -113,76 +113,76 @@ msgstr "Διαδικτυακοί λογαριασμοί GNOME"
 msgid "Settings"
 msgstr "Ρυθμίσεις"
 
-msgid "Print Preview…"
+msgid "Print preview…"
 msgstr "Προεπισκόπηση εκτύπωσης…"
 
-msgid "Print Message…"
+msgid "Print message…"
 msgstr "Εκτύπωση μηνύματος…"
 
 msgid "Quit"
 msgstr "Έξοδος"
 
-msgid "Use Template"
+msgid "Use template"
 msgstr "Χρήση προτύπου"
 
-msgid "Edit Template"
+msgid "Edit template"
 msgstr "Επεξεργασία προτύπου"
 
 msgid "Reply"
 msgstr "Απάντηση"
 
-msgid "Reply All"
+msgid "Reply all"
 msgstr "Απάντηση σε όλους"
 
 msgid "Forward"
 msgstr "Προώθηση"
 
-msgid "Edit as New Message"
+msgid "Edit as new message"
 msgstr "Επεξεργασία ως νέο μήνυμα"
 
-msgid "Remove Star"
+msgid "Remove star"
 msgstr "Αφαίρεση αστεριού"
 
 msgid "Star"
 msgstr "Προσθήκη αστεριού"
 
-msgid "Mark as Read"
+msgid "Mark as read"
 msgstr "Σήμανση ως αναγνωσμένο"
 
-msgid "Mark as Unread"
+msgid "Mark as unread"
 msgstr "Σήμανση ως μη αναγνωσμένο"
 
-msgid "Expand All Messages"
+msgid "Expand all messages"
 msgstr "Ανάπτυξη όλων των μηνυμάτων"
 
-msgid "Collapse All Messages"
+msgid "Collapse all messages"
 msgstr "Σύμπτυξη όλων των μηνυμάτων"
 
-msgid "View Source"
+msgid "View source"
 msgstr "Προβολή πηγαίου κώδικα"
 
-msgid "Save as File…"
+msgid "Save as file…"
 msgstr "Αποθήκευση ως αρχείο…"
 
-msgid "Add Sender to Contacts"
+msgid "Add sender to contacts"
 msgstr "Προσθήκη αποστολέα στις επαφές"
 
-msgid "Create Filter from Message…"
+msgid "Create filter from message…"
 msgstr "Δημιουργία φίλτρου από μήνυμα…"
 
 msgid "Tags"
 msgstr "Ετικέτες"
 
-msgid "Not Spam"
-msgstr "Δεν είναι ανεπιθύμητο"
+msgid "Not spam"
+msgstr "Μη ανεπιθύμητο"
 
-msgid "Move to Inbox"
+msgid "Move to inbox"
 msgstr "Μετακίνηση στα Εισερχόμενα"
 
-msgid "Mark as Spam"
+msgid "Mark as spam"
 msgstr "Σήμανση ως ανεπιθύμητο"
 
-msgid "Move To…"
+msgid "Move to…"
 msgstr "Μετακίνηση σε…"
 
 msgid "Archive"
@@ -191,13 +191,13 @@ msgstr "Αρχειοθέτηση"
 msgid "Snooze"
 msgstr ""
 
-msgid "Block Remote Content"
+msgid "Block remote content"
 msgstr "Αποκλεισμός απομακρυσμένου περιεχομένου"
 
-msgid "Show Remote Content"
+msgid "Show remote content"
 msgstr "Εμφάνιση απομακρυσμένου περιεχομένου"
 
-msgid "Print Preview"
+msgid "Print preview"
 msgstr "Προεπισκόπηση εκτύπωσης"
 
 msgid "Print…"
@@ -210,13 +210,13 @@ msgstr "Νέο μήνυμα"
 msgid "Could not forward the message: {e}"
 msgstr "Δεν ήταν δυνατή η αποθήκευση του μηνύματος: {e}"
 
-msgid "Tegami Mail Address Book"
+msgid "Tegami Mail address book"
 msgstr "Βιβλίο διευθύνσεων Tegami Mail"
 
-msgid "On This Computer"
+msgid "On this computer"
 msgstr "Σε αυτόν τον υπολογιστή"
 
-msgid "CardDAV Address Book"
+msgid "CardDAV address book"
 msgstr "Βιβλίο διευθύνσεων CardDAV"
 
 msgid "Enter the server's address."
@@ -351,7 +351,7 @@ msgid "Enable Console mode in Settings → System & Appearance"
 msgstr ""
 "Ενεργοποίηση της λειτουργίας κονσόλας στις Ρυθμίσεις → Σύστημα & εμφάνιση"
 
-msgid "New Message from Template"
+msgid "New message from template"
 msgstr "Νέο μήνυμα από πρότυπο"
 
 msgid "The new message starts as a copy of the template you pick."
@@ -363,7 +363,7 @@ msgstr ""
 "Δεν υπάρχουν ακόμη πρότυπα. Αποθηκεύστε ένα από το μενού ⋯ του συντάκτη με "
 "την επιλογή «Αποθήκευση ως πρότυπο»."
 
-msgid "Continue a Draft"
+msgid "Continue a draft"
 msgstr "Συνέχιση προχείρου"
 
 msgid "The files go into the draft you pick."
@@ -372,7 +372,7 @@ msgstr "Τα αρχεία θα προστεθούν στο πρόχειρο πο
 msgid "No drafts to continue."
 msgstr "Δεν υπάρχουν πρόχειρα για συνέχιση."
 
-msgid "Attach to This Draft"
+msgid "Attach to this draft"
 msgstr "Επισύναψη σε αυτό το πρόχειρο"
 
 msgid "No Drafts folder available for this account"
@@ -392,10 +392,10 @@ msgstr ""
 msgid "No filters to apply here yet"
 msgstr "Δεν υπάρχουν ακόμη φίλτρα για εφαρμογή εδώ"
 
-msgid "Applying Filters"
+msgid "Applying filters"
 msgstr "Εφαρμογή φίλτρων"
 
-msgid "Run in Background"
+msgid "Run in background"
 msgstr "Εκτέλεση στο παρασκήνιο"
 
 msgid "Looked at {n} message so far"
@@ -481,7 +481,7 @@ msgstr[0] ""
 msgstr[1] ""
 "Φίλτρα με ετικέτα {tagged} και αρχειοθετημένα {filed} από {n} μηνύματα"
 
-msgid "Filters Applied"
+msgid "Filters applied"
 msgstr "Τα φίλτρα εφαρμόστηκαν"
 
 msgid "Close"
@@ -490,14 +490,14 @@ msgstr "Κλείσιμο"
 msgid "Unstar"
 msgstr "Αφαίρεση αστεριού"
 
-msgid "New Folder"
+msgid "New folder"
 msgstr "Νέος φάκελος"
 
 msgid "Create a new folder for this account."
 msgstr "Δημιουργήστε έναν νέο φάκελο για αυτόν τον λογαριασμό."
 
 #, fuzzy
-msgid "New Subfolder"
+msgid "New subfolder"
 msgstr "Νέος φάκελος"
 
 #, fuzzy
@@ -522,7 +522,7 @@ msgstr "Μετονομασία"
 msgid "A folder named {new_name} is already there."
 msgstr "Υπάρχει ήδη φάκελος με όνομα {new_name}."
 
-msgid "Rename Folder"
+msgid "Rename folder"
 msgstr "Μετονομασία φακέλου"
 
 msgid ""
@@ -544,7 +544,7 @@ msgstr ""
 msgid "Empty"
 msgstr "Άδειασμα"
 
-msgid "Create Folder"
+msgid "Create folder"
 msgstr "Δημιουργία φακέλου"
 
 msgid "archive"
@@ -556,7 +556,7 @@ msgstr "κάδος"
 msgid "destination"
 msgstr "προορισμός"
 
-msgid "Move Folder"
+msgid "Move folder"
 msgstr "Μετακίνηση φακέλου"
 
 msgid "Always do this (change it in Settings → System → GNOME Files)"
@@ -580,13 +580,13 @@ msgstr[1] "Αποστολή {n} αρχείων με το Tegami Mail"
 msgid "{names} ({size}). What should the files go into?"
 msgstr "{names} ({size}). Σε τι θέλετε να προστεθούν τα αρχεία;"
 
-msgid "Reply to a Message…"
+msgid "Reply to a message…"
 msgstr "Απάντηση σε μήνυμα…"
 
-msgid "Continue a Draft…"
+msgid "Continue a draft…"
 msgstr "Συνέχιση προχείρου…"
 
-msgid "Reply to a Message"
+msgid "Reply to a message"
 msgstr "Απάντηση σε μήνυμα"
 
 msgid "The files go into a reply to the message you pick."
@@ -595,7 +595,7 @@ msgstr "Τα αρχεία θα προστεθούν σε απάντηση προ
 msgid "No messages to reply to yet."
 msgstr "Δεν υπάρχουν ακόμη μηνύματα για απάντηση."
 
-msgid "Reply With the Files"
+msgid "Reply with the files"
 msgstr "Απάντηση με τα αρχεία"
 
 msgid "Large files"
@@ -615,10 +615,10 @@ msgstr[1] ""
 "μεταφορτωθούν σε αποθήκευση cloud και να προστεθούν σύνδεσμοι λήψης στο "
 "μήνυμα;"
 
-msgid "Attach Anyway"
+msgid "Attach anyway"
 msgstr "Επισύναψη ούτως ή άλλως"
 
-msgid "Upload to Cloud Storage"
+msgid "Upload to cloud storage"
 msgstr "Μεταφόρτωση σε αποθήκευση cloud"
 
 msgid "This message carries no calendar file to open."
@@ -673,11 +673,11 @@ msgid "Starred first"
 msgstr "Με τα μηνύματα με αστέρι πρώτα"
 
 #, fuzzy
-msgid "Clear Dates"
+msgid "Clear dates"
 msgstr "Εκκαθάριση φίλτρων"
 
 #, fuzzy
-msgid "Any Date"
+msgid "Any date"
 msgstr "Ημερομηνία"
 
 #, fuzzy
@@ -699,11 +699,10 @@ msgid "Show"
 msgstr "Εμφάνιση"
 
 #, fuzzy
-msgid "Group into Conversations"
+msgid "Group into conversations"
 msgstr "Συζητήσεις"
 
-#, fuzzy
-msgid "Message Preview"
+msgid "Message preview"
 msgstr "Προεπισκόπηση μηνύματος"
 
 msgid "Avatars"
@@ -712,7 +711,7 @@ msgstr ""
 msgid "Show only"
 msgstr "Εμφάνιση μόνο"
 
-msgid "Clear Filters"
+msgid "Clear filters"
 msgstr "Εκκαθάριση φίλτρων"
 
 #, fuzzy
@@ -731,7 +730,7 @@ msgstr "Ταξινόμηση και φιλτράρισμα μηνυμάτων"
 msgid "Filtered: {names}"
 msgstr "Φιλτραρισμένα: {names}"
 
-msgid "Search Messages…"
+msgid "Search messages…"
 msgstr "Αναζήτηση μηνυμάτων…"
 
 msgid "Filter"
@@ -747,7 +746,7 @@ msgstr "Προσθήκη ετικέτας {name}"
 msgid "Favorites"
 msgstr "Αγαπημένα"
 
-msgid "New Message from Template…"
+msgid "New message from template…"
 msgstr "Νέο μήνυμα από πρότυπο…"
 
 msgid "All"
@@ -820,9 +819,6 @@ msgstr "Απάντηση σε όλους"
 
 msgid "Delete permanently, without going to Trash"
 msgstr "Οριστική διαγραφή χωρίς μεταφορά στον Κάδο"
-
-msgid "Mark as spam"
-msgstr "Σήμανση ως ανεπιθύμητο"
 
 msgid "Star or unstar"
 msgstr "Προσθήκη ή αφαίρεση αστεριού"
@@ -908,7 +904,7 @@ msgstr ""
 msgid "Show or hide the accounts in the sidebar"
 msgstr "Εμφάνιση ή απόκρυψη λογαριασμών στην πλευρική στήλη"
 
-msgid "Focus Mode on or off"
+msgid "Focus mode on or off"
 msgstr "Ενεργοποίηση ή απενεργοποίηση της Λειτουργίας συγκέντρωσης"
 
 #, fuzzy
@@ -964,22 +960,22 @@ msgstr "Επόμενο ή προηγούμενο μήνυμα στη συνομ�
 msgid "Expand or collapse every message of the conversation"
 msgstr "Ανάπτυξη ή σύμπτυξη όλων των μηνυμάτων της συνομιλίας"
 
-msgid "Go to Inbox"
+msgid "Go to inbox"
 msgstr "Μετάβαση στα Εισερχόμενα"
 
-msgid "Go to Starred"
+msgid "Go to starred"
 msgstr "Μετάβαση στα μηνύματα με αστέρι"
 
-msgid "Go to Sent"
+msgid "Go to sent"
 msgstr "Μετάβαση στα Απεσταλμένα"
 
-msgid "Go to Drafts"
+msgid "Go to drafts"
 msgstr "Μετάβαση στα Πρόχειρα"
 
-msgid "Go to Archive"
+msgid "Go to archive"
 msgstr "Μετάβαση στο Αρχείο"
 
-msgid "Go to Contacts"
+msgid "Go to contacts"
 msgstr "Μετάβαση στις Επαφές"
 
 msgid "Archive the conversation"
@@ -1033,28 +1029,25 @@ msgstr "Έλεγχος για νέα μηνύματα"
 msgid "Action"
 msgstr "Ενέργεια"
 
-msgid "Reply to All"
-msgstr "Απάντηση σε όλους"
-
 msgid "Print"
 msgstr "Εκτύπωση"
 
-msgid "Find in Message"
+msgid "Find in message"
 msgstr "Εύρεση στο μήνυμα"
 
-msgid "Delete Permanently"
+msgid "Delete permanently"
 msgstr "Οριστική διαγραφή"
 
-msgid "Star or Remove Star"
+msgid "Star or remove star"
 msgstr "Προσθήκη ή αφαίρεση αστεριού"
 
-msgid "Mark as Read or Unread"
-msgstr "Σήμανση ως αναγνωσμένου ή μη αναγνωσμένου"
+msgid "Mark as read or unread"
+msgstr "Σήμανση ως αναγνωσμένο ή μη αναγνωσμένο"
 
-msgid "Move to Folder"
+msgid "Move to folder"
 msgstr "Μετακίνηση σε φάκελο"
 
-msgid "Open Message File…"
+msgid "Open message file…"
 msgstr "Άνοιγμα αρχείου μηνύματος…"
 
 msgid "Undo"
@@ -1063,43 +1056,40 @@ msgstr "Αναίρεση"
 msgid "Redo"
 msgstr "Επανάληψη"
 
-msgid "Check for New Mail"
-msgstr "Έλεγχος για νέα μηνύματα"
-
-msgid "Search Messages"
+msgid "Search messages"
 msgstr "Αναζήτηση μηνυμάτων"
 
-msgid "Show or Hide the Sidebar"
+msgid "Show or hide the sidebar"
 msgstr "Εμφάνιση ή απόκρυψη της πλευρικής στήλης"
 
 #, fuzzy
-msgid "Reading Pane Right"
+msgid "Reading pane right"
 msgstr "Ανάγνωση"
 
 #, fuzzy
-msgid "Reading Pane Below"
+msgid "Reading pane below"
 msgstr "Ανάγνωση"
 
 #, fuzzy
-msgid "Reading Pane Off"
+msgid "Reading pane off"
 msgstr "Ανάγνωση"
 
-msgid "Mail Accounts"
+msgid "Mail accounts"
 msgstr "Λογαριασμοί αλληλογραφίας"
 
-msgid "New Smart Folder…"
+msgid "New smart folder…"
 msgstr "Νέος έξυπνος φάκελος…"
 
-msgid "Keyboard Shortcuts"
+msgid "Keyboard shortcuts"
 msgstr "Συντομεύσεις πληκτρολογίου"
 
 msgid "About Tegami Mail"
 msgstr "Σχετικά με το Tegami Mail"
 
-msgid "Turn Focus Mode On"
+msgid "Turn focus mode on"
 msgstr "Ενεργοποίηση λειτουργίας συγκέντρωσης"
 
-msgid "Turn Focus Mode Off"
+msgid "Turn focus mode off"
 msgstr "Απενεργοποίηση λειτουργίας συγκέντρωσης"
 
 msgid "View"
@@ -1111,7 +1101,7 @@ msgstr "Εξερχόμενα"
 msgid "Tag"
 msgstr "Ετικέτα"
 
-msgid "Smart Folder"
+msgid "Smart folder"
 msgstr "Έξυπνος φάκελος"
 
 msgid ""
@@ -1130,10 +1120,10 @@ msgstr ""
 msgid "Your tags"
 msgstr "Οι ετικέτες σας"
 
-msgid "Hide Status Bar"
+msgid "Hide status bar"
 msgstr "Απόκρυψη γραμμής κατάστασης"
 
-msgid "Reveal Status Bar"
+msgid "Reveal status bar"
 msgstr "Εμφάνιση γραμμής κατάστασης"
 
 msgid "Console"
@@ -1142,7 +1132,7 @@ msgstr "Κονσόλα"
 msgid "Help"
 msgstr ""
 
-msgid "New Message Instead"
+msgid "New message instead"
 msgstr "Νέο μήνυμα αντί αυτού"
 
 msgid "Search by sender, subject or account"
@@ -1151,7 +1141,7 @@ msgstr "Αναζήτηση κατά αποστολέα, θέμα ή λογαρι
 msgid "(no subject)"
 msgstr "(χωρίς θέμα)"
 
-msgid "Message Source"
+msgid "Message source"
 msgstr "Πηγαίος κώδικας μηνύματος"
 
 #, fuzzy
@@ -1172,7 +1162,7 @@ msgstr "Αποδεκτή: {subject}"
 msgid "Export failed: {e}"
 msgstr "Η εξαγωγή απέτυχε: {e}"
 
-msgid "Export Contacts"
+msgid "Export contacts"
 msgstr "Εξαγωγή επαφών"
 
 msgid "{n} contact exported to {path}"
@@ -1199,25 +1189,25 @@ msgstr[1] ""
 "Οι {n} επαφές στο βιβλίο διευθύνσεων του Tegami Mail θα διαγραφούν. Αυτό δεν "
 "μπορεί να αναιρεθεί· εξαγάγετε πρώτα το βιβλίο για να κρατήσετε αντίγραφο."
 
-msgid "Delete All"
+msgid "Delete all"
 msgstr "Διαγραφή όλων"
 
-msgid "Export Settings"
+msgid "Export settings"
 msgstr "Εξαγωγή ρυθμίσεων"
 
 msgid "Settings exported to {display}"
 msgstr "Οι ρυθμίσεις εξήχθησαν στο {display}"
 
-msgid "Export Log"
+msgid "Export log"
 msgstr "Εξαγωγή αρχείου καταγραφής"
 
 msgid "Log exported to {display}"
 msgstr "Το αρχείο καταγραφής εξήχθη στο {display}"
 
-msgid "Import Settings"
+msgid "Import settings"
 msgstr "Εισαγωγή ρυθμίσεων"
 
-msgid "Settings Imported"
+msgid "Settings imported"
 msgstr "Οι ρυθμίσεις εισήχθησαν"
 
 msgid ""
@@ -1259,13 +1249,13 @@ msgid "Send all"
 msgstr "Αποστολή όλων"
 
 #, fuzzy
-msgid "Forward as Attachment"
+msgid "Forward as attachment"
 msgstr "Έχει συνημμένα"
 
 msgid "Delete {n} messages"
 msgstr "Διαγραφή {n} μηνυμάτων"
 
-msgid "Customize Toolbar…"
+msgid "Customize toolbar…"
 msgstr "Προσαρμογή γραμμής εργαλείων…"
 
 msgid "Read receipt"
@@ -1289,13 +1279,13 @@ msgstr ""
 msgid "Read by {reader}"
 msgstr "Διεύθυνση απάντησης"
 
-msgid "Full Release Notes on GitHub"
+msgid "Full release notes on GitHub"
 msgstr "Όλες οι σημειώσεις έκδοσης στο GitHub"
 
 msgid "Delete this conversation?"
 msgstr "Διαγραφή αυτής της συνομιλίας;"
 
-msgid "Delete Conversation"
+msgid "Delete conversation"
 msgstr "Διαγραφή συνομιλίας"
 
 msgid "Delete this message permanently?"
@@ -1352,7 +1342,7 @@ msgstr "Αφαίρεση"
 msgid "Select a conversation first."
 msgstr "Επιλέξτε πρώτα μια συζήτηση."
 
-msgid "Remove Tags"
+msgid "Remove tags"
 msgstr "Αφαίρεση ετικετών"
 
 msgid "Open a message first, then print it."
@@ -1430,7 +1420,7 @@ msgstr ""
 "Το dock και τα παράθυρα του Tegami Mail διατηρούν το παλιό εικονίδιο μέχρι "
 "να επανεκκινηθεί το Tegami Mail."
 
-msgid "Restart Now"
+msgid "Restart now"
 msgstr "Επανεκκίνηση τώρα"
 
 msgid ""
@@ -1443,10 +1433,10 @@ msgstr ""
 msgid "Move to {name}"
 msgstr "Μετακίνηση στο {name}"
 
-msgid "Add Tag {name}"
+msgid "Add tag {name}"
 msgstr "Προσθήκη ετικέτας {name}"
 
-msgid "Remove Tag {name}"
+msgid "Remove tag {name}"
 msgstr "Αφαίρεση ετικέτας {name}"
 
 msgid "Unsubscribe from {name}?"
@@ -1502,10 +1492,10 @@ msgid "The list's unsubscribe page is open in your browser."
 msgstr ""
 "Η σελίδα διαγραφής από τη λίστα είναι ανοιχτή στο πρόγραμμα περιήγησής σας."
 
-msgid "Save Message"
+msgid "Save message"
 msgstr "Αποθήκευση μηνύματος"
 
-msgid "Open Message File"
+msgid "Open message file"
 msgstr "Άνοιγμα αρχείου μηνύματος"
 
 msgid "Email messages"
@@ -1524,7 +1514,7 @@ msgstr "Δεν βρέθηκε μήνυμα με αναγνωριστικό {id}"
 msgid "Mail"
 msgstr "Αλληλογραφία"
 
-msgid "Main Menu"
+msgid "Main menu"
 msgstr "Κύριο μενού"
 
 msgid "Expand sidebar"
@@ -1534,7 +1524,7 @@ msgid "Collapse sidebar"
 msgstr "Σύμπτυξη πλευρικής στήλης"
 
 #, fuzzy
-msgid "New Message (Ctrl+N)"
+msgid "New message (Ctrl+N)"
 msgstr "Αναζήτηση μηνυμάτων (Ctrl+F)"
 
 msgid "Search messages (Ctrl+F)"
@@ -1549,7 +1539,7 @@ msgstr "Απάντηση σε όλους"
 
 #. The preview, not the print dialog: it shows what will come
 #. out and prints from there (#359).
-msgid "Print Preview (Ctrl+Shift+P)"
+msgid "Print preview (Ctrl+Shift+P)"
 msgstr "Προεπισκόπηση εκτύπωσης (Ctrl+Shift+P)"
 
 msgid "Find in message (Ctrl+F)"
@@ -1585,7 +1575,7 @@ msgstr "Σπουδαιότητα"
 msgid "Account"
 msgstr "Λογαριασμός"
 
-msgid "Due Date"
+msgid "Due date"
 msgstr "Ημερομηνία λήξης"
 
 msgid "Date"
@@ -1620,7 +1610,7 @@ msgstr "Φάκελος του αρχικού μηνύματος"
 msgid "Folder of the original, not the Inbox"
 msgstr "Φάκελος του αρχικού μηνύματος, όχι τα Εισερχόμενα"
 
-msgid "Custom Order"
+msgid "Custom order"
 msgstr "Προσαρμοσμένη σειρά"
 
 msgid "Name (A to Z)"
@@ -1629,7 +1619,7 @@ msgstr "Όνομα (Α έως Ω)"
 msgid "Name (Z to A)"
 msgstr "Όνομα (Ω έως Α)"
 
-msgid "Full Path"
+msgid "Full path"
 msgstr "Πλήρης διαδρομή"
 
 msgid "Spam"
@@ -1638,8 +1628,8 @@ msgstr "Ανεπιθύμητα"
 msgid "Read/Unread"
 msgstr "Αναγνωσμένο/Μη αναγνωσμένο"
 
-msgid "Move To"
-msgstr "Μετακίνηση σε"
+msgid "Move to"
+msgstr "Μετακίνηση στο"
 
 msgid "Find"
 msgstr "Εύρεση"
@@ -2216,9 +2206,6 @@ msgstr "Ενεργοποίηση αυτού του λογαριασμού"
 msgid "Forward to"
 msgstr "Προώθηση"
 
-msgid "Move to"
-msgstr "Μετακίνηση στο"
-
 msgid "forwards to {to}"
 msgstr ""
 
@@ -2233,7 +2220,7 @@ msgid "Then"
 msgstr "Τότε"
 
 #, fuzzy
-msgid "Add Action"
+msgid "Add action"
 msgstr "Προσθήκη λογαριασμού"
 
 #, fuzzy
@@ -2265,10 +2252,10 @@ msgstr "Αφαίρεση αυτού του ψευδωνύμου"
 msgid "Kept on the server; change it in your provider's webmail."
 msgstr "Διατηρείται στον διακομιστή· αλλάξτε το από το webmail του παρόχου."
 
-msgid "Edit Alias"
+msgid "Edit alias"
 msgstr "Επεξεργασία ψευδωνύμου"
 
-msgid "Add Alias"
+msgid "Add alias"
 msgstr "Προσθήκη ψευδωνύμου"
 
 msgid "Save"
@@ -2325,7 +2312,7 @@ msgstr "Διαχωρίστε τις εναλλακτικές με κόμμα."
 msgid "Text to match"
 msgstr "Κείμενο προς αντιστοίχιση"
 
-msgid "Add Condition"
+msgid "Add condition"
 msgstr "Προσθήκη συνθήκης"
 
 msgid "Condition matching"
@@ -2380,7 +2367,7 @@ msgstr ""
 "Ζητά πρόσβαση από τη Microsoft. Ορισμένοι οργανισμοί απαιτούν έγκριση "
 "διαχειριστή."
 
-msgid "Choose a Picture"
+msgid "Choose a picture"
 msgstr "Επιλογή εικόνας"
 
 msgid "Images"
@@ -2444,13 +2431,13 @@ msgstr "Αφαίρεση φίλτρου"
 msgid "Applying…"
 msgstr "Εφαρμογή…"
 
-msgid "Apply Now"
+msgid "Apply now"
 msgstr "Εφαρμογή τώρα"
 
-msgid "Edit Filter"
+msgid "Edit filter"
 msgstr "Επεξεργασία φίλτρου"
 
-msgid "Add Filter"
+msgid "Add filter"
 msgstr "Προσθήκη φίλτρου"
 
 msgid "Name (optional)"
@@ -2488,7 +2475,7 @@ msgid_plural "After {n} days"
 msgstr[0] "Μετά από {n} ημέρα"
 msgstr[1] "Μετά από {n} ημέρες"
 
-msgid "API Token"
+msgid "API token"
 msgstr "Διακριτικό API"
 
 msgid "Password"
@@ -2500,18 +2487,18 @@ msgstr "Διακομιστής (όνομα κεντρικού υπολογιστ
 msgid "Port (default 443)"
 msgstr "Θύρα (προεπιλογή 443)"
 
-msgid "Incoming Server"
+msgid "Incoming server"
 msgstr "Διακομιστής εισερχομένων"
 
 msgid "Port (IMAP 993 / POP3 995)"
 msgstr "Θύρα (IMAP 993 / POP3 995)"
 
 #, fuzzy
-msgid "Import Mbox Files"
+msgid "Import mbox files"
 msgstr "Εισαγωγή αρχείου…"
 
 #, fuzzy
-msgid "Import Maildir Folders"
+msgid "Import maildir folders"
 msgstr "Η εισαγωγή απέτυχε: {e}"
 
 msgid "Signed in as {address}, not {email}."
@@ -2589,7 +2576,7 @@ msgstr ""
 "Λογαριασμοί αλληλογραφίας από τις Ρυθμίσεις GNOME. Ενεργοποιήστε έναν για να "
 "τον χρησιμοποιήσετε στο Tegami Mail."
 
-msgid "Smart Folders"
+msgid "Smart folders"
 msgstr "Έξυπνοι φάκελοι"
 
 msgid ""
@@ -2599,16 +2586,16 @@ msgstr ""
 "Εμφανίζει τα μηνύματα που πληρούν τις συνθήκες του. Βρίσκεται στην πλευρική "
 "στήλη, κάτω από τις ενοποιημένες γραμμές."
 
-msgid "Add Smart Folder…"
+msgid "Add smart folder…"
 msgstr "Προσθήκη έξυπνου φακέλου…"
 
 msgid "Searching…"
 msgstr "Αναζήτηση…"
 
-msgid "Find Tags…"
+msgid "Find tags…"
 msgstr "Εύρεση ετικετών…"
 
-msgid "No New Tags"
+msgid "No new tags"
 msgstr "Δεν υπάρχουν νέες ετικέτες"
 
 msgid "Every tag in your mailboxes is already set up here."
@@ -2617,7 +2604,7 @@ msgstr "Όλες οι ετικέτες στα γραμματοκιβώτιά σ�
 msgid "OK"
 msgstr "Εντάξει"
 
-msgid "Tags Found"
+msgid "Tags found"
 msgstr "Βρέθηκαν ετικέτες"
 
 msgid "{n} tags are in use in your mailboxes but not set up here."
@@ -2625,10 +2612,10 @@ msgstr ""
 "Χρησιμοποιούνται {n} ετικέτες στα γραμματοκιβώτιά σας που δεν έχουν "
 "ρυθμιστεί εδώ."
 
-msgid "Import Selected"
+msgid "Import selected"
 msgstr "Εισαγωγή επιλεγμένων"
 
-msgid "Import All"
+msgid "Import all"
 msgstr "Εισαγωγή όλων"
 
 msgid "{n} messages"
@@ -2642,10 +2629,10 @@ msgstr ""
 msgid "Remove tag"
 msgstr "Αφαίρεση ετικέτας"
 
-msgid "Edit Tag"
+msgid "Edit tag"
 msgstr "Επεξεργασία ετικέτας"
 
-msgid "Add Tag"
+msgid "Add tag"
 msgstr "Προσθήκη ετικέτας"
 
 msgid "Name"
@@ -2667,7 +2654,7 @@ msgstr "Χρώμα"
 msgid "Custom color…"
 msgstr "Προσαρμοσμένο χρώμα…"
 
-msgid "Tag Color"
+msgid "Tag color"
 msgstr "Χρώμα ετικέτας"
 
 msgid "Needs an app password, not your login password."
@@ -2744,7 +2731,7 @@ msgstr "Επεξεργασία HTML"
 msgid "Edit the signature's HTML source"
 msgstr "Επεξεργασία του πηγαίου κώδικα HTML της υπογραφής"
 
-msgid "Follow Settings"
+msgid "Follow settings"
 msgstr "Ακολούθηση ρυθμίσεων"
 
 msgid "On"
@@ -2756,19 +2743,19 @@ msgstr "Υπογραφή {n}"
 msgid "Preview"
 msgstr "Προεπισκόπηση"
 
-msgid "Import Signature"
+msgid "Import signature"
 msgstr "Εισαγωγή υπογραφής"
 
 msgid "HTML and text files"
 msgstr "Αρχεία HTML και κειμένου"
 
-msgid "Could Not Read the File"
+msgid "Could not read the file"
 msgstr "Δεν ήταν δυνατή η ανάγνωση του αρχείου"
 
 msgid "All accounts"
 msgstr "Όλοι οι λογαριασμοί"
 
-msgid "All but Trash and Junk"
+msgid "All but trash and junk"
 msgstr "Όλοι εκτός από τον Κάδο και τα Ανεπιθύμητα"
 
 msgid "Remove smart folder"
@@ -2801,13 +2788,10 @@ msgstr "Έχει συνημμένα"
 msgid "Tagged"
 msgstr "Με ετικέτα"
 
-msgid "Message preview"
-msgstr "Προεπισκόπηση μηνύματος"
-
-msgid "Edit Smart Folder"
+msgid "Edit smart folder"
 msgstr "Επεξεργασία έξυπνου φακέλου"
 
-msgid "Add Smart Folder"
+msgid "Add smart folder"
 msgstr "Προσθήκη έξυπνου φακέλου"
 
 msgid "Those in the unified section."
@@ -2828,10 +2812,10 @@ msgstr "Άνοιγμα"
 msgid "Download…"
 msgstr "Λήψη…"
 
-msgid "Show in Message"
+msgid "Show in message"
 msgstr "Εμφάνιση στο μήνυμα"
 
-msgid "Delete from Server…"
+msgid "Delete from server…"
 msgstr "Διαγραφή από τον διακομιστή…"
 
 msgid "Key imported"
@@ -2889,16 +2873,16 @@ msgstr "Εμφάνιση ως μικρογραφίες"
 msgid "Show as a list"
 msgstr "Εμφάνιση ως λίστα"
 
-msgid "Save All…"
+msgid "Save all…"
 msgstr "Αποθήκευση όλων…"
 
 msgid "Save every attachment to a folder"
 msgstr "Αποθήκευση κάθε συνημμένου σε φάκελο"
 
-msgid "Save Attachment"
+msgid "Save attachment"
 msgstr "Αποθήκευση συνημμένου"
 
-msgid "Save All Attachments"
+msgid "Save all attachments"
 msgstr "Αποθήκευση όλων των συνημμένων"
 
 msgid "The file could not be opened"
@@ -2993,7 +2977,7 @@ msgstr ""
 "Χρησιμοποιούνται εκτός αν τα αλλάξετε στο παράθυρο μεταφόρτωσης για ένα "
 "μήνυμα."
 
-msgid "Check Connection"
+msgid "Check connection"
 msgstr "Έλεγχος σύνδεσης"
 
 msgid "{email} (Files is off)"
@@ -3143,9 +3127,6 @@ msgstr ""
 msgid "Signed in as {who}. {terms}"
 msgstr "Συνδεθήκατε ως {who}. {terms}"
 
-msgid "Cloud Storage"
-msgstr "Αποθήκευση στο cloud"
-
 msgid "Cloud storage"
 msgstr "Αποθήκευση στο cloud"
 
@@ -3163,7 +3144,7 @@ msgstr ""
 msgid "No cloud accounts yet."
 msgstr "Δεν υπάρχουν ακόμη λογαριασμοί cloud."
 
-msgid "Cloud Account"
+msgid "Cloud account"
 msgstr "Λογαριασμός cloud"
 
 msgid "Remove {name}?"
@@ -3181,10 +3162,10 @@ msgstr "Αφαιρέθηκε το {name}"
 msgid "Could not store the sign-in in the keyring: {e}"
 msgstr "Δεν ήταν δυνατή η αποθήκευση των στοιχείων σύνδεσης στο keyring: {e}"
 
-msgid "Edit Cloud Account"
+msgid "Edit cloud account"
 msgstr "Επεξεργασία λογαριασμού cloud"
 
-msgid "Add Cloud Account"
+msgid "Add cloud account"
 msgstr "Προσθήκη λογαριασμού cloud"
 
 msgid "links expire after {n} days"
@@ -3196,7 +3177,7 @@ msgstr "προστασία με κωδικό πρόσβασης"
 msgid "Offer this account in the composer"
 msgstr "Προσφορά αυτού του λογαριασμού στο παράθυρο σύνταξης"
 
-msgid "Command Palette"
+msgid "Command palette"
 msgstr "Παλέτα εντολών"
 
 msgid "Type an action, a folder or a tag, or > for actions only"
@@ -3219,7 +3200,7 @@ msgid "Large: some servers will refuse it."
 msgstr ""
 
 #, fuzzy
-msgid "Send a Link"
+msgid "Send a link"
 msgstr "Άνοιγμα συνδέσμου"
 
 #, fuzzy
@@ -3241,9 +3222,6 @@ msgstr "{name} (σύνδεσμος)"
 
 msgid "Uploading…"
 msgstr "Μεταφόρτωση…"
-
-msgid "Attach Files"
-msgstr "Επισύναψη αρχείων"
 
 msgid "Attach {name}"
 msgstr "Επισύναψη του {name}"
@@ -3338,7 +3316,7 @@ msgstr ""
 "Οι αλλαγές του δεν έχουν αποθηκευτεί. Αποθηκεύστε τις στο πρότυπο ή "
 "απορρίψτε τις."
 
-msgid "Save Template"
+msgid "Save template"
 msgstr "Αποθήκευση προτύπου"
 
 msgid "Save the message?"
@@ -3349,10 +3327,10 @@ msgstr ""
 "Δεν έχει σταλεί. Αποθηκεύστε το στα Πρόχειρα για να το ολοκληρώσετε αργότερα "
 "ή απορρίψτε το."
 
-msgid "Save Draft"
+msgid "Save draft"
 msgstr "Αποθήκευση προχείρου"
 
-msgid "Keep Editing"
+msgid "Keep editing"
 msgstr "Συνέχεια επεξεργασίας"
 
 msgid "Discard"
@@ -3379,13 +3357,13 @@ msgid "Not every mail app sends one."
 msgstr ""
 
 #, fuzzy
-msgid "Check Spelling"
+msgid "Check spelling"
 msgstr "Ορθογραφία"
 
-msgid "Spelling Language"
+msgid "Spelling language"
 msgstr "Γλώσσα ορθογραφικού ελέγχου"
 
-msgid "Delete Draft"
+msgid "Delete draft"
 msgstr "Διαγραφή προχείρου"
 
 msgid "Move this draft to Trash"
@@ -3439,11 +3417,11 @@ msgid ""
 msgstr ""
 
 #, fuzzy
-msgid "Send Anyway"
+msgid "Send anyway"
 msgstr "Αποστολή τώρα"
 
 #, fuzzy
-msgid "Attach a File…"
+msgid "Attach a file…"
 msgstr "Επισύναψη αρχείων"
 
 msgid "An attachment is missing"
@@ -3462,7 +3440,7 @@ msgid "Choose the sending account"
 msgstr "Επιλέξτε πρώτα έναν διαδικτυακό λογαριασμό."
 
 #, fuzzy
-msgid "Manage Accounts…"
+msgid "Manage accounts…"
 msgstr "Διαδικτυακοί λογαριασμοί GNOME"
 
 #, fuzzy
@@ -3478,28 +3456,28 @@ msgstr "Το «{addr}» δεν είναι διεύθυνση email."
 msgid "Translate what you wrote"
 msgstr "Μετάφραση όσων γράψατε"
 
-msgid "Insert Signature"
+msgid "Insert signature"
 msgstr "Εισαγωγή υπογραφής"
 
-msgid "No Signature"
+msgid "No signature"
 msgstr "Χωρίς υπογραφή"
 
-msgid "Insert Before the Text"
+msgid "Insert before the text"
 msgstr "Εισαγωγή πριν από το κείμενο"
 
-msgid "Insert After the Text"
+msgid "Insert after the text"
 msgstr "Εισαγωγή μετά το κείμενο"
 
-msgid "Show Original"
+msgid "Show original"
 msgstr "Εμφάνιση πρωτοτύπου"
 
-msgid "Show Translation"
+msgid "Show translation"
 msgstr "Εμφάνιση μετάφρασης"
 
 msgid "{language} (the quoted message)"
 msgstr "{language} (το παρατιθέμενο μήνυμα)"
 
-msgid "Other Languages"
+msgid "Other languages"
 msgstr "Άλλες γλώσσες"
 
 msgid "Translate into"
@@ -3644,7 +3622,7 @@ msgstr "Η σύνδεσή του και η επιλογή Επαφές βρίσ�
 msgid "Open Online Accounts"
 msgstr "Άνοιγμα Διαδικτυακών λογαριασμών"
 
-msgid "Add Address Book"
+msgid "Add address book"
 msgstr "Προσθήκη καταλόγου διευθύνσεων"
 
 msgid "Added in GNOME Online Accounts"
@@ -3732,7 +3710,7 @@ msgstr "Συνδέθηκε με το {name}"
 msgid "Use an app-specific password, not your usual one."
 msgstr "Χρησιμοποιήστε κωδικό πρόσβασης εφαρμογής, όχι τον συνηθισμένο σας."
 
-msgid "CardDAV Server"
+msgid "CardDAV server"
 msgstr "Διακομιστής CardDAV"
 
 msgid ""
@@ -3756,14 +3734,11 @@ msgstr ""
 "Χρησιμοποιήστε κωδικό εφαρμογής με πρόσβαση στις επαφές, που δημιουργείται "
 "στο Fastmail από τις Ρυθμίσεις → Απόρρητο και ασφάλεια."
 
-msgid "LDAP Directory"
+msgid "LDAP directory"
 msgstr "Κατάλογος LDAP"
 
 msgid "Contacts"
 msgstr "Επαφές"
-
-msgid "Address Books"
-msgstr "Κατάλογοι διευθύνσεων"
 
 msgid ""
 "Where contacts come from for Contacts, suggestions, sender pictures and "
@@ -3776,7 +3751,7 @@ msgstr ""
 msgid "Look again for address books"
 msgstr "Νέα αναζήτηση καταλόγων διευθύνσεων"
 
-msgid "Add Address Book…"
+msgid "Add address book…"
 msgstr "Προσθήκη καταλόγου διευθύνσεων…"
 
 msgid ""
@@ -3788,7 +3763,7 @@ msgstr ""
 "εγκατεστημένο. Εγκαταστήστε το πακέτο evolution-data-server (λειτουργεί και "
 "χωρίς GNOME) και ανοίξτε ξανά αυτήν τη σελίδα."
 
-msgid "New Contacts"
+msgid "New contacts"
 msgstr "Νέες επαφές"
 
 msgid "Save new contacts in"
@@ -3798,7 +3773,7 @@ msgid "Unless another is picked when the contact is made."
 msgstr "Εκτός αν επιλεγεί άλλος κατά τη δημιουργία της επαφής."
 
 #, fuzzy
-msgid "In Mail"
+msgid "In mail"
 msgstr "Αλληλογραφία"
 
 #, fuzzy
@@ -3808,30 +3783,27 @@ msgstr "Από τις επαφές"
 msgid "Saved addresses show the contact's name, not the mail's."
 msgstr ""
 
-msgid "Address Book"
-msgstr "Βιβλίο διευθύνσεων"
-
 msgid "Looking for address books on {name}…"
 msgstr "Αναζήτηση καταλόγων διευθύνσεων στο {name}…"
 
 #, fuzzy
-msgid "Attach to Message"
+msgid "Attach to message"
 msgstr "Επισύναψη σε νέο μήνυμα"
 
-msgid "Insert in Text"
+msgid "Insert in text"
 msgstr "Εισαγωγή στο κείμενο"
 
 #, fuzzy
-msgid "Upload and Share a Link"
+msgid "Upload and share a link"
 msgstr "Μεταφόρτωση στον χώρο αποθήκευσης cloud και κοινοποίηση συνδέσμου"
 
-msgid "Attach to New Message"
+msgid "Attach to new message"
 msgstr "Επισύναψη σε νέο μήνυμα"
 
-msgid "Insert in New Message"
+msgid "Insert in new message"
 msgstr "Εισαγωγή σε νέο μήνυμα"
 
-msgid "Share Link in New Message"
+msgid "Share link in new message"
 msgid_plural "Share Links in New Message"
 msgstr[0] "Κοινοποίηση συνδέσμου σε νέο μήνυμα"
 msgstr[1] "Κοινοποίηση συνδέσμων σε νέο μήνυμα"
@@ -3961,10 +3933,10 @@ msgstr "{name} · {current} από {total}"
 msgid "Loading more…"
 msgstr "Φόρτωση περισσότερων…"
 
-msgid "No Messages"
+msgid "No messages"
 msgstr "Δεν υπάρχουν μηνύματα"
 
-msgid "No Matching Messages"
+msgid "No matching messages"
 msgstr "Δεν υπάρχουν μηνύματα που να ταιριάζουν"
 
 msgid "There's nothing here right now."
@@ -3988,34 +3960,31 @@ msgstr "Αναζήτηση…"
 msgid "Choose which folders to search"
 msgstr "Επιλέξτε τους φακέλους αναζήτησης"
 
-msgid "Has Attachments"
-msgstr "Έχει συνημμένα"
-
-msgid "Addressed to Me"
+msgid "Addressed to me"
 msgstr "Απευθύνεται σε εμένα"
 
-msgid "From Contacts"
+msgid "From contacts"
 msgstr "Από τις επαφές"
 
-msgid "High Importance"
-msgstr "Υψηλή προτεραιότητα"
+msgid "High importance"
+msgstr "Υψηλή σημασία"
 
 msgid "Today"
 msgstr "Σήμερα"
 
-msgid "Customize Columns…"
+msgid "Customize columns…"
 msgstr "Προσαρμογή στηλών…"
 
-msgid "Remove Stars"
+msgid "Remove stars"
 msgstr "Αφαίρεση αστεριών"
 
-msgid "Star Conversation"
+msgid "Star conversation"
 msgstr "Προσθήκη αστεριού στη συζήτηση"
 
-msgid "Mark All as Read"
+msgid "Mark all as read"
 msgstr "Σήμανση όλων ως αναγνωσμένων"
 
-msgid "Mark All as Unread"
+msgid "Mark all as unread"
 msgstr "Σήμανση όλων ως μη αναγνωσμένων"
 
 msgid "All folders (except trash & junk)"
@@ -4060,23 +4029,8 @@ msgstr "Λήξη"
 msgid "Drag to resize, double-click for the usual width"
 msgstr "Σύρετε για αλλαγή μεγέθους, κάντε διπλό κλικ για το συνηθισμένο πλάτος"
 
-msgid "Mark as read"
-msgstr "Σήμανση ως αναγνωσμένο"
-
-msgid "Move to…"
-msgstr "Μετακίνηση σε…"
-
-msgid "Not spam"
-msgstr "Μη ανεπιθύμητο"
-
 msgid "Add sender to Contacts"
 msgstr "Προσθήκη αποστολέα στις Επαφές"
-
-msgid "Mark as unread"
-msgstr "Σήμανση ως μη αναγνωσμένο"
-
-msgid "Remove star"
-msgstr "Αφαίρεση αστεριού"
 
 msgid "Forwarded"
 msgstr "Προωθήθηκε"
@@ -4084,9 +4038,6 @@ msgstr "Προωθήθηκε"
 #, fuzzy
 msgid "Snoozed until {when}"
 msgstr "Προγραμματισμένο για {when}"
-
-msgid "High importance"
-msgstr "Υψηλή σημασία"
 
 msgid "Low importance"
 msgstr "Χαμηλή σπουδαιότητα"
@@ -4148,9 +4099,6 @@ msgstr "Φόρτωση"
 msgid "Always allow sender"
 msgstr "Να επιτρέπεται πάντα ο αποστολέας"
 
-msgid "Find in message"
-msgstr "Εύρεση στο μήνυμα"
-
 msgid "No matches"
 msgstr "Δεν υπάρχουν αντιστοιχίες"
 
@@ -4187,10 +4135,10 @@ msgid "Hide quoted text"
 msgstr "Απόκρυψη παρατιθέμενου κειμένου"
 
 #, fuzzy
-msgid "Copy Address"
+msgid "Copy address"
 msgstr "Αντιγραφή διεύθυνσης συνδέσμου"
 
-msgid "Add to Contacts"
+msgid "Add to contacts"
 msgstr "Προσθήκη στις επαφές"
 
 msgid "Double-click to open in a new window"
@@ -4207,14 +4155,8 @@ msgstr "Απόκρυψη παραληπτών"
 msgid "Show recipients"
 msgstr "Εμφάνιση παραληπτών"
 
-msgid "Mark as read or unread"
-msgstr "Σήμανση ως αναγνωσμένο ή μη αναγνωσμένο"
-
 msgid "Star this message"
 msgstr "Προσθήκη αστεριού σε αυτό το μήνυμα"
-
-msgid "View source"
-msgstr "Προβολή πηγαίου κώδικα"
 
 msgid "Translate this message"
 msgstr "Μετάφραση αυτού του μηνύματος"
@@ -4242,12 +4184,6 @@ msgstr "Επιστροφή στις γραμματοσειρές και τα χ�
 
 msgid "Show the sender's fonts and colors"
 msgstr "Εμφάνιση των γραμματοσειρών και των χρωμάτων του αποστολέα"
-
-msgid "Show remote content"
-msgstr "Εμφάνιση απομακρυσμένου περιεχομένου"
-
-msgid "Block remote content"
-msgstr "Αποκλεισμός απομακρυσμένου περιεχομένου"
 
 msgid "Click to open this message"
 msgstr "Κάντε κλικ για να ανοίξετε αυτό το μήνυμα"
@@ -4364,38 +4300,38 @@ msgstr "Ενημερώνει τον διοργανωτή ότι δεν θα πα
 msgid "Opens the meeting in your calendar application"
 msgstr "Ανοίγει τη συνάντηση στην εφαρμογή ημερολογίου σας"
 
-msgid "Add to Calendar"
+msgid "Add to calendar"
 msgstr "Προσθήκη στο ημερολόγιο"
 
-msgid "Open Link"
+msgid "Open link"
 msgstr "Άνοιγμα συνδέσμου"
 
-msgid "Copy Email Address"
+msgid "Copy email address"
 msgstr "Αντιγραφή διεύθυνσης email"
 
-msgid "Copy Link Address"
+msgid "Copy link address"
 msgstr "Αντιγραφή διεύθυνσης συνδέσμου"
 
-msgid "Save Image As…"
+msgid "Save image as…"
 msgstr "Αποθήκευση εικόνας ως…"
 
-msgid "Save Image"
+msgid "Save image"
 msgstr "Αποθήκευση εικόνας"
 
-msgid "Copy Image"
+msgid "Copy image"
 msgstr "Αντιγραφή εικόνας"
 
-msgid "Copy Image Address"
+msgid "Copy image address"
 msgstr "Αντιγραφή διεύθυνσης εικόνας"
 
 msgid "Translate"
 msgstr "Μετάφραση"
 
-msgid "Open With…"
+msgid "Open with…"
 msgstr ""
 
 #, fuzzy
-msgid "Save As…"
+msgid "Save as…"
 msgstr "Αποθήκευση όλων…"
 
 msgid "Encrypted messages are not sent for translation."
@@ -4441,7 +4377,7 @@ msgstr ""
 msgid "{name} asked for a read receipt, to be sent to {addr}."
 msgstr ""
 
-msgid "Send Receipt"
+msgid "Send receipt"
 msgstr ""
 
 #, fuzzy
@@ -4517,7 +4453,7 @@ msgstr "Μετάφραση…"
 msgid "Could not translate: {why}"
 msgstr "Δεν ήταν δυνατή η μετάφραση: {why}"
 
-msgid "Try Again"
+msgid "Try again"
 msgstr "Δοκιμή ξανά"
 
 msgid "Translated from {language} by {service}."
@@ -4572,9 +4508,6 @@ msgstr "Ανοίγει τη σελίδα διαγραφής από τη λίστ
 
 msgid "Clear all"
 msgstr "Εκκαθάριση όλων"
-
-msgid "Export log"
-msgstr "Εξαγωγή αρχείου καταγραφής"
 
 msgid "Collapse status bar"
 msgstr "Σύμπτυξη γραμμής κατάστασης"
@@ -4707,7 +4640,7 @@ msgstr "Δεν ήταν δυνατή η δημιουργία του κλειδι
 msgid "No key found: {e}"
 msgstr "Δεν βρέθηκε κλειδί: {e}"
 
-msgid "Generate a Key"
+msgid "Generate a key"
 msgstr "Δημιουργία κλειδιού"
 
 msgid ""
@@ -4741,7 +4674,7 @@ msgstr "Πληκτρολογήστε την ίδια φράση πρόσβαση
 msgid "Generating the key…"
 msgstr "Δημιουργία κλειδιού…"
 
-msgid "Import Key"
+msgid "Import key"
 msgstr "Εισαγωγή κλειδιού"
 
 msgid "OpenPGP keys"
@@ -4753,7 +4686,7 @@ msgstr "Όλα τα αρχεία"
 msgid "Could not import: {e}"
 msgstr "Δεν ήταν δυνατή η εισαγωγή: {e}"
 
-msgid "Export Public Key"
+msgid "Export public key"
 msgstr "Εξαγωγή δημόσιου κλειδιού"
 
 msgid "Delete your key?"
@@ -4780,7 +4713,7 @@ msgstr ""
 msgid "Could not delete: {e}"
 msgstr "Δεν ήταν δυνατή η διαγραφή: {e}"
 
-msgid "Fetch a Key"
+msgid "Fetch a key"
 msgstr "Ανάκτηση κλειδιού"
 
 msgid ""
@@ -4821,7 +4754,7 @@ msgstr[1] "Εισήχθησαν {n} κλειδιά."
 msgid "That key was already in your keyring."
 msgstr "Αυτό το κλειδί υπήρχε ήδη στην κλειδοθήκη σας."
 
-msgid "Choose a Sound"
+msgid "Choose a sound"
 msgstr "Επιλογή ήχου"
 
 msgid "Sounds"
@@ -4928,7 +4861,7 @@ msgstr "Χορδή"
 msgid "Swing"
 msgstr "Αιώρα"
 
-msgid "Custom File"
+msgid "Custom file"
 msgstr "Προσαρμοσμένο αρχείο"
 
 #, fuzzy
@@ -5203,7 +5136,7 @@ msgstr "Εμφάνιση"
 msgid "Sidebar"
 msgstr "Πλευρική στήλη"
 
-msgid "Message List"
+msgid "Message list"
 msgstr "Λίστα μηνυμάτων"
 
 msgid "Conversations"
@@ -5218,7 +5151,7 @@ msgstr "Σύνταξη"
 msgid "Privacy"
 msgstr "Απόρρητο"
 
-msgid "Date and Time"
+msgid "Date and time"
 msgstr "Ημερομηνία και ώρα"
 
 msgid "Backup"
@@ -5248,12 +5181,6 @@ msgid ""
 msgstr ""
 "Λογαριασμοί, προτιμήσεις, φίλτρα, ετικέτες και διάταξη σε ένα αρχείο. Δεν "
 "περιλαμβάνονται κωδικοί πρόσβασης και κλειδιά OpenPGP."
-
-msgid "Export settings"
-msgstr "Εξαγωγή ρυθμίσεων"
-
-msgid "Import settings"
-msgstr "Εισαγωγή ρυθμίσεων"
 
 msgid ""
 "Replaces everything in place. Don't remove accounts first: that deletes "
@@ -5372,7 +5299,7 @@ msgstr "Επιλογή…"
 msgid "Also play while Tegami Mail is in front"
 msgstr "Αναπαραγωγή ήχου και όταν το Tegami Mail βρίσκεται στο προσκήνιο"
 
-msgid "Notification Buttons"
+msgid "Notification buttons"
 msgstr "Κουμπιά ειδοποιήσεων"
 
 msgid "Up to three buttons on a notification about one message."
@@ -5478,7 +5405,7 @@ msgstr "Προσαρμογή στηλών στο πλάτος της λίστα�
 msgid "Off, a narrow list scrolls sideways."
 msgstr "Ανενεργό: μια στενή λίστα μετακινείται οριζόντια."
 
-msgid "Restore Defaults"
+msgid "Restore defaults"
 msgstr "Επαναφορά προεπιλογών"
 
 msgid "Tegami Mail collects no telemetry and sends no analytics."
@@ -5670,16 +5597,13 @@ msgstr "Δεν ήταν δυνατή η αφαίρεση της επέκταση
 msgid "Could not restart Files"
 msgstr "Δεν ήταν δυνατή η επανεκκίνηση των Αρχείων"
 
-msgid "Other Font…"
+msgid "Other font…"
 msgstr "Άλλη γραμματοσειρά…"
-
-msgid "Search Settings"
-msgstr "Αναζήτηση στις Ρυθμίσεις"
 
 msgid "Search settings"
 msgstr "Αναζήτηση ρυθμίσεων"
 
-msgid "No Results"
+msgid "No results"
 msgstr "Δεν βρέθηκαν αποτελέσματα"
 
 #. Translators: words the settings search finds the Contacts page by,
@@ -5697,7 +5621,7 @@ msgstr "Γλώσσα συστήματος — {language}"
 msgid "Forget this word"
 msgstr "Να ξεχαστεί αυτή η λέξη"
 
-msgid "Print Message"
+msgid "Print message"
 msgstr "Εκτύπωση μηνύματος"
 
 msgid "No PDF writer is available on this system"
@@ -5709,7 +5633,7 @@ msgstr "Σελίδα {page} από {pages}"
 msgid "Save as PDF…"
 msgstr "Αποθήκευση ως PDF…"
 
-msgid "No Preview"
+msgid "No preview"
 msgstr "Χωρίς προεπισκόπηση"
 
 msgid "Save as PDF"
@@ -5749,7 +5673,7 @@ msgstr "Εμφάνιση μόνο"
 msgid "Show previous message"
 msgstr "Προηγούμενο μήνυμα"
 
-msgid "Sans Serif"
+msgid "Sans serif"
 msgstr "Sans Serif"
 
 msgid "Serif"
@@ -5845,12 +5769,6 @@ msgstr "Περισσότερα εργαλεία μορφοποίησης"
 msgid "Pictures"
 msgstr "Εικόνες"
 
-msgid "Insert Picture"
-msgstr "Εισαγωγή εικόνας"
-
-msgid "Insert Link"
-msgstr "Εισαγωγή συνδέσμου"
-
 msgid "Insert"
 msgstr "Εισαγωγή"
 
@@ -5869,73 +5787,73 @@ msgstr "Φάκελοι ({len})"
 msgid "Labels"
 msgstr "Ετικέτες"
 
-msgid "Sort Folders"
+msgid "Sort folders"
 msgstr "Ταξινόμηση φακέλων"
 
-msgid "Add Folder"
+msgid "Add folder"
 msgstr "Προσθήκη φακέλου"
 
 msgid "Show or hide sub-folders"
 msgstr "Εμφάνιση ή απόκρυψη υποφακέλων"
 
-msgid "Mark Inbox as Read"
+msgid "Mark inbox as read"
 msgstr "Σήμανση Εισερχομένων ως αναγνωσμένων"
 
 msgid "Refresh"
 msgstr "Ανανέωση"
 
-msgid "New Folder…"
+msgid "New folder…"
 msgstr "Νέος φάκελος…"
 
-msgid "Reset Folder Order"
+msgid "Reset folder order"
 msgstr "Επαναφορά σειράς φακέλων"
 
-msgid "Account Settings…"
+msgid "Account settings…"
 msgstr "Ρυθμίσεις λογαριασμού…"
 
-msgid "Remove Account…"
+msgid "Remove account…"
 msgstr "Αφαίρεση λογαριασμού…"
 
-msgid "Follow Settings: {sort}"
+msgid "Follow settings: {sort}"
 msgstr "Ακολούθηση ρυθμίσεων: {sort}"
 
 #, fuzzy
-msgid "Sync This Folder"
+msgid "Sync this folder"
 msgstr "Αυτός ο φάκελος"
 
 #, fuzzy
-msgid "New Subfolder…"
+msgid "New subfolder…"
 msgstr "Νέος φάκελος…"
 
 msgid "Rename…"
 msgstr "Μετονομασία…"
 
-msgid "Remove from Favorites"
+msgid "Remove from favorites"
 msgstr "Αφαίρεση από τα Αγαπημένα"
 
-msgid "Add to Favorites"
+msgid "Add to favorites"
 msgstr "Προσθήκη στα Αγαπημένα"
 
-msgid "Apply Filters"
+msgid "Apply filters"
 msgstr "Εφαρμογή φίλτρων"
 
-msgid "Edit Filter…"
+msgid "Edit filter…"
 msgstr "Επεξεργασία φίλτρου…"
 
-msgid "Hide Folder"
+msgid "Hide folder"
 msgstr "Απόκρυψη φακέλου"
 
-msgid "Empty Trash…"
+msgid "Empty trash…"
 msgstr "Άδειασμα κάδου…"
 
-msgid "Empty Junk…"
+msgid "Empty junk…"
 msgstr "Άδειασμα ανεπιθύμητων…"
 
 #, fuzzy
-msgid "Delete Folder"
+msgid "Delete folder"
 msgstr "Διαγραφή φακέλου…"
 
-msgid "Edit Tag…"
+msgid "Edit tag…"
 msgstr "Επεξεργασία ετικέτας…"
 
 msgid "Add account"
@@ -5960,16 +5878,16 @@ msgid "Long-press to expand or collapse"
 msgstr "Παρατεταμένο πάτημα για ανάπτυξη ή σύμπτυξη"
 
 #, fuzzy
-msgid "New Tag…"
+msgid "New tag…"
 msgstr "Προσθήκη ετικέτας…"
 
 msgid "Show or hide tags"
 msgstr "Εμφάνιση ή απόκρυψη ετικετών"
 
-msgid "Edit Smart Folder…"
+msgid "Edit smart folder…"
 msgstr "Επεξεργασία έξυπνου φακέλου…"
 
-msgid "Delete Smart Folder…"
+msgid "Delete smart folder…"
 msgstr "Διαγραφή έξυπνου φακέλου…"
 
 msgid "Blue"
@@ -5999,7 +5917,7 @@ msgid "Gray"
 msgstr ""
 
 #, fuzzy
-msgid "New Tag"
+msgid "New tag"
 msgstr "Δεν υπάρχουν νέες ετικέτες"
 
 #, fuzzy
@@ -6018,7 +5936,7 @@ msgid "Favorite"
 msgstr "Αγαπημένα"
 
 #, fuzzy
-msgid "Manage Tags…"
+msgid "Manage tags…"
 msgstr "Εύρεση ετικετών…"
 
 #, fuzzy
@@ -6069,7 +5987,7 @@ msgstr "Κλειδί (αν το ζητά ο διακομιστής)"
 msgid "It works: “{sent}” came back as “{back}”."
 msgstr "Λειτουργεί: το «{sent}» επέστρεψε ως «{back}»."
 
-msgid "Sign In"
+msgid "Sign in"
 msgstr "Σύνδεση"
 
 msgid "The sign-in window was closed."
@@ -6086,10 +6004,10 @@ msgstr ""
 "Εισαγάγετε πρώτα τη διεύθυνση email σας, το αναγνωριστικό πελάτη και τα δύο "
 "URL OAuth."
 
-msgid "Sign In & Add"
+msgid "Sign in & add"
 msgstr "Σύνδεση και προσθήκη"
 
-msgid "Test & Add"
+msgid "Test & add"
 msgstr "Δοκιμή και προσθήκη"
 
 msgid "IMAP server"
@@ -6133,7 +6051,7 @@ msgstr ""
 "Η επιλογή άλλης γλώσσας επανεκκινεί το Tegami Mail: κλείνει για λίγο και "
 "αυτός ο οδηγός επιστρέφει σε εκείνη τη γλώσσα."
 
-msgid "Get Started"
+msgid "Get started"
 msgstr "Έναρξη"
 
 msgid "Import your online accounts"
@@ -6156,7 +6074,7 @@ msgstr ""
 msgid "Open Online Accounts…"
 msgstr "Άνοιγμα Διαδικτυακών λογαριασμών…"
 
-msgid "Scan Again"
+msgid "Scan again"
 msgstr "Νέα σάρωση"
 
 msgid "Privacy, your way"
@@ -6253,7 +6171,7 @@ msgstr "Στοιχεία διακομιστή"
 msgid "Filled in for known providers"
 msgstr "Συμπληρώνονται για γνωστούς παρόχους"
 
-msgid "OAuth Client ID"
+msgid "OAuth client ID"
 msgstr "Αναγνωριστικό πελάτη OAuth"
 
 msgid "OAuth Client Secret (optional)"
@@ -6598,13 +6516,13 @@ msgstr "Δεν υπάρχει διαθέσιμο βιβλίο διευθύνσε
 msgid "Email"
 msgstr "Email"
 
-msgid "Added to Contacts"
+msgid "Added to contacts"
 msgstr "Προστέθηκε στις επαφές"
 
 msgid "Added email to {name}"
 msgstr "Το email προστέθηκε στην επαφή {name}"
 
-msgid "Already in Contacts ({name})"
+msgid "Already in contacts ({name})"
 msgstr "Υπάρχει ήδη στις επαφές ({name})"
 
 msgid "Could not add contact: {e}"
@@ -6619,7 +6537,7 @@ msgstr "Δεν ήταν δυνατή η εισαγωγή επαφών: {e}"
 msgid "Could not read: {files}"
 msgstr "Δεν ήταν δυνατή η ανάγνωση: {files}"
 
-msgid "Import Contacts"
+msgid "Import contacts"
 msgstr "Εισαγωγή επαφών"
 
 msgid "vCard files"
@@ -6636,7 +6554,7 @@ msgstr ""
 "εκτελούνται στα Εισερχόμενα κατά τον συγχρονισμό· η επιλογή «Εφαρμογή τώρα» "
 "τα εκτελεί και στα υπάρχοντα μηνύματα."
 
-msgid "Add Filter…"
+msgid "Add filter…"
 msgstr "Προσθήκη φίλτρου…"
 
 msgid "Run every rule over the mail already in your inboxes"
@@ -6665,19 +6583,13 @@ msgstr ""
 msgid "Storage"
 msgstr "Αποθήκευση"
 
-msgid "Mail Account"
-msgstr "Λογαριασμός αλληλογραφίας"
-
 msgid "Nickname"
 msgstr "Ψευδώνυμο"
 
-msgid "Display Name"
+msgid "Display name"
 msgstr "Εμφανιζόμενο όνομα"
 
-msgid "Email Address"
-msgstr "Διεύθυνση email"
-
-msgid "Incoming Protocol"
+msgid "Incoming protocol"
 msgstr "Πρωτόκολλο εισερχομένων"
 
 msgid "SMTP Server (optional)"
@@ -6712,7 +6624,7 @@ msgstr "Μισθωτής (common, organizations, consumers ή αναγνωρισ
 msgid "Redirect URI"
 msgstr "URI ανακατεύθυνσης"
 
-msgid "Sign In with Browser"
+msgid "Sign in with browser"
 msgstr "Σύνδεση με πρόγραμμα περιήγησης"
 
 msgid ""
@@ -6729,12 +6641,6 @@ msgstr "Ξεχωριστά διαπιστευτήρια SMTP"
 
 msgid "Off uses the credentials above."
 msgstr "Ανενεργό: χρησιμοποιούνται τα παραπάνω διαπιστευτήρια."
-
-msgid "SMTP Username"
-msgstr "Όνομα χρήστη SMTP"
-
-msgid "SMTP Password"
-msgstr "Κωδικός πρόσβασης SMTP"
 
 msgid "Accept a certificate for another name"
 msgstr "Αποδοχή πιστοποιητικού για διαφορετικό όνομα"
@@ -6753,7 +6659,7 @@ msgstr "Εμφάνιση επικεφαλίδων στηλών"
 msgid "Favorites, Tags and Smart Folders across accounts."
 msgstr ""
 
-msgid "Test Connection"
+msgid "Test connection"
 msgstr "Δοκιμή σύνδεσης"
 
 msgid "Account accent color"
@@ -6789,7 +6695,7 @@ msgstr "Ψευδώνυμα αποστολέα"
 msgid "Extra addresses this account can send as."
 msgstr "Πρόσθετες διευθύνσεις αποστολής για αυτόν τον λογαριασμό."
 
-msgid "Add Alias…"
+msgid "Add alias…"
 msgstr "Προσθήκη ψευδωνύμου…"
 
 msgid "Signatures"
@@ -6802,13 +6708,13 @@ msgstr ""
 "Με περισσότερες από μία υπογραφές, το κουμπί υπογραφής στη σύνταξη επιτρέπει "
 "την επιλογή τους."
 
-msgid "Add Signature"
+msgid "Add signature"
 msgstr "Προσθήκη υπογραφής"
 
-msgid "Import File…"
+msgid "Import file…"
 msgstr "Εισαγωγή αρχείου…"
 
-msgid "Delete Signature"
+msgid "Delete signature"
 msgstr "Διαγραφή υπογραφής"
 
 msgid "Start messages with this signature"
@@ -6906,13 +6812,10 @@ msgstr ""
 "Εμφανίζει το όνομα μιας ετικέτας όταν το μήνυμα παρέχει μόνο το "
 "αναγνωριστικό της."
 
-msgid "Folder Order"
-msgstr "Σειρά φακέλων"
-
 msgid "Also in the right-click menu of its Folders heading."
 msgstr "Επίσης στο μενού δεξιού κλικ της επικεφαλίδας «Φάκελοι»."
 
-msgid "Special Folders"
+msgid "Special folders"
 msgstr "Ειδικοί φάκελοι"
 
 msgid ""
@@ -6942,7 +6845,7 @@ msgstr "Πρότυπα"
 msgid "Snoozed"
 msgstr ""
 
-msgid "Hidden Folders"
+msgid "Hidden folders"
 msgstr "Κρυφοί φάκελοι"
 
 msgid ""
@@ -6980,7 +6883,7 @@ msgstr ""
 msgid "Search senders"
 msgstr "Αναζήτηση αποστολέων"
 
-msgid "Allowed Senders"
+msgid "Allowed senders"
 msgstr "Επιτρεπόμενοι αποστολείς"
 
 msgid "Messages from these senders load remote content automatically."
@@ -6991,7 +6894,7 @@ msgstr ""
 msgid "Allow this sender"
 msgstr "Να επιτρέπεται αυτός ο αποστολέας"
 
-msgid "Blocked Senders"
+msgid "Blocked senders"
 msgstr "Αποκλεισμένοι αποστολείς"
 
 msgid ""
@@ -7020,7 +6923,7 @@ msgstr ""
 "Σύρετε μια ετικέτα για αλλαγή σειράς: εδώ ορίζεται η σειρά στην πλευρική "
 "στήλη και οι πρώτες εννέα αντιστοιχούν στα πλήκτρα 1–9."
 
-msgid "Add Tag…"
+msgid "Add tag…"
 msgstr "Προσθήκη ετικέτας…"
 
 msgid "Look through every mailbox for tags other clients have set"
@@ -7061,7 +6964,7 @@ msgstr ""
 msgid "Always fold the right group into ⋯"
 msgstr ""
 
-msgid "Focus Mode"
+msgid "Focus mode"
 msgstr "Λειτουργία συγκέντρωσης"
 
 msgid ""
@@ -7071,7 +6974,7 @@ msgstr ""
 "Τα παρακάτω ενεργοποιημένα στοιχεία κρύβονται όταν είναι ενεργή η Λειτουργία "
 "εστίασης. Ενεργοποιείται με Ctrl+Shift+F ή από το κύριο μενού."
 
-msgid "Start in Focus Mode"
+msgid "Start in focus mode"
 msgstr "Έναρξη σε Λειτουργία συγκέντρωσης"
 
 msgid "Fold the reading pane's toolbar"
@@ -7199,7 +7102,7 @@ msgid ""
 "either way."
 msgstr ""
 
-msgid "Undo Send"
+msgid "Undo send"
 msgstr "Αναίρεση αποστολής"
 
 msgid "How long Undo is offered after sending."
@@ -7216,15 +7119,15 @@ msgid "Sent mail shows who read it; the receipt goes here."
 msgstr ""
 
 #, fuzzy
-msgid "Move to Trash"
+msgid "Move to trash"
 msgstr "Μετακίνηση αλληλογραφίας λιστών στον Κάδο"
 
 #, fuzzy
-msgid "Keep in Inbox"
+msgid "Keep in inbox"
 msgstr "Παραμονή στα Εισερχόμενα"
 
 #, fuzzy
-msgid "Reply Header"
+msgid "Reply header"
 msgstr "Διεύθυνση απάντησης"
 
 msgid "{name}, {address}, {date} and {time} are filled in from the original."
@@ -7235,7 +7138,7 @@ msgid "Line above the quoted message"
 msgstr "Πάνω από το παρατιθέμενο μήνυμα"
 
 #, fuzzy
-msgid "Restore Default"
+msgid "Restore default"
 msgstr "Επαναφορά προεπιλογών"
 
 msgid "Spelling"
@@ -7439,7 +7342,7 @@ msgstr "Διατήρηση ληφθέντων μηνυμάτων"
 msgid "Mail inside an account's offline period is kept."
 msgstr ""
 
-msgid "GNOME Files Integration"
+msgid "GNOME Files integration"
 msgstr "Ενσωμάτωση με τα Αρχεία GNOME"
 
 msgid ""
@@ -7492,7 +7395,7 @@ msgstr "Ενημέρωση"
 msgid "Install"
 msgstr "Εγκατάσταση"
 
-msgid "Send as Attachment Instead"
+msgid "Send as attachment instead"
 msgstr "Αποστολή ως συνημμένο αντί για σύνδεσμο"
 
 msgid "Small"
@@ -7504,20 +7407,17 @@ msgstr "Μεσαίο"
 msgid "Large"
 msgstr "Μεγάλο"
 
-msgid "Original Size"
+msgid "Original size"
 msgstr "Αρχικό μέγεθος"
 
 msgid "Will be recompressed to the size shown when this is sent"
 msgstr "Θα επανασυμπιεστεί στο εμφανιζόμενο μέγεθος κατά την αποστολή"
 
-msgid "Recompress to This Size on Send"
+msgid "Recompress to this size on send"
 msgstr "Επανασυμπίεση σε αυτό το μέγεθος κατά την αποστολή"
 
-msgid "Paste with Formatting"
+msgid "Paste with formatting"
 msgstr "Επικόλληση με μορφοποίηση"
-
-msgid "Paste as Plain Text"
-msgstr "Επικόλληση ως απλό κείμενο"
 
 msgid "Email Client"
 msgstr "Πρόγραμμα-πελάτης email"

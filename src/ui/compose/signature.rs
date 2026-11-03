@@ -182,7 +182,7 @@ window.__tegamiDirty=true;})()"#
             })
             .collect();
         let s = sender.clone();
-        let none = MenuEntry::new(i18n("No Signature"), move || {
+        let none = MenuEntry::new(i18n("No signature"), move || {
             s.input_sender().emit(ComposeInput::UseSignature(None))
         })
         .selected(self.current_sig.is_empty());
@@ -224,8 +224,8 @@ window.__tegamiDirty=true;})()"#
             (btn.width() / 2) as f64,
             btn.height() as f64,
             vec![vec![
-                entry(i18n("Insert Before the Text"), SigPlace::Start),
-                entry(i18n("Insert After the Text"), SigPlace::End),
+                entry(i18n("Insert before the text"), SigPlace::Start),
+                entry(i18n("Insert after the text"), SigPlace::End),
             ]],
         );
     }

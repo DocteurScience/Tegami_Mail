@@ -49,10 +49,10 @@ impl QuickFilter {
         i18n(match self {
             QuickFilter::Unread => i18n_noop("Unread"),
             QuickFilter::Starred => i18n_noop("Starred"),
-            QuickFilter::Attachment => i18n_noop("Has Attachments"),
-            QuickFilter::ToMe => i18n_noop("Addressed to Me"),
-            QuickFilter::Contacts => i18n_noop("From Contacts"),
-            QuickFilter::Important => i18n_noop("High Importance"),
+            QuickFilter::Attachment => i18n_noop("Has attachments"),
+            QuickFilter::ToMe => i18n_noop("Addressed to me"),
+            QuickFilter::Contacts => i18n_noop("From contacts"),
+            QuickFilter::Important => i18n_noop("High importance"),
             QuickFilter::Tagged => i18n_noop("Tagged"),
             QuickFilter::Today => i18n_noop("Today"),
         })

@@ -108,14 +108,14 @@ impl DropZones {
             // The design's names (docs/DESIGN.md, "Attachments"): each says
             // where the files end up.
             DropContext::Composer => (
-                i18n("Attach to Message"),
-                i18n("Insert in Text"),
-                i18n("Upload and Share a Link"),
+                i18n("Attach to message"),
+                i18n("Insert in text"),
+                i18n("Upload and share a link"),
             ),
             DropContext::NewMessage => (
-                i18n("Attach to New Message"),
-                i18n("Insert in New Message"),
-                i18n("Share Link in New Message"),
+                i18n("Attach to new message"),
+                i18n("Insert in new message"),
+                i18n("Share link in new message"),
             ),
         };
         let attach = Zone::new("mail-attachment-symbolic", &attach);
@@ -362,7 +362,7 @@ impl DropZones {
             }
             DropContext::NewMessage => {
                 self.cloud.title.set_label(&ni18n(
-                    "Share Link in New Message",
+                    "Share link in new message",
                     "Share Links in New Message",
                     n,
                 ));

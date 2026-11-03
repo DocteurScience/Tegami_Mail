@@ -18,7 +18,7 @@ impl DateTimePage {
         relm4::view! {
             page = adw::PreferencesPage {
                 add = &adw::PreferencesGroup {
-                    set_title: &i18n("Date and Time"),
+                    set_title: &i18n("Date and time"),
                     set_description: Some(
                         i18n("Dates follow the system unless a format is chosen here.").as_str()
                     ),

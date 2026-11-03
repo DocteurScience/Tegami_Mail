@@ -215,7 +215,7 @@ impl ContactSources {
     /// The add page, on the kind at `kind` in the dropdown.
     pub(super) fn open_add(&mut self, kind: u32, sender: &ComponentSender<Self>) {
         self.editing = Some(Editing::Add);
-        self.editor_page.set_title(&i18n("Add Address Book"));
+        self.editor_page.set_title(&i18n("Add address book"));
         self.remove_btn.set_visible(false);
         let what = ADD_KINDS.get(kind as usize).unwrap_or(&ADD_KINDS[0]).what;
         match what {
@@ -271,7 +271,7 @@ impl ContactSources {
     /// The Tegami Mail book's own rows: its size, import, export, emptying.
     fn tegami_group(&self, sender: &ComponentSender<Self>) -> adw::PreferencesGroup {
         let group = adw::PreferencesGroup::new();
-        group.set_title(&i18n("Tegami Mail Address Book"));
+        group.set_title(&i18n("Tegami Mail address book"));
         group.set_description(Some(&i18n(
             "Kept in Tegami Mail's own data folder. Works without GNOME.",
         )));

@@ -40,7 +40,7 @@ impl AccountsWindow {
             };
             let folder = f
                 .folder
-                .map_or_else(|| i18n("All but Trash and Junk"), Self::smart_kind_label);
+                .map_or_else(|| i18n("All but trash and junk"), Self::smart_kind_label);
             row.set_subtitle(&gtk::glib::markup_escape_text(&format!(
                 "{account} · {folder}"
             )));
@@ -98,9 +98,9 @@ impl AccountsWindow {
             FilterMatch, SmartCondition, SmartField, SmartFolder, SmartFolderKind,
         };
         let (title, verb) = if edit.is_some() {
-            (i18n("Edit Smart Folder"), i18n("Save"))
+            (i18n("Edit smart folder"), i18n("Save"))
         } else {
-            (i18n("Add Smart Folder"), i18n("Add Smart Folder"))
+            (i18n("Add smart folder"), i18n("Add smart folder"))
         };
         let emails: Vec<String> = self.accounts.iter().map(|a| a.email.clone()).collect();
 
@@ -123,7 +123,7 @@ impl AccountsWindow {
         let folder_row = adw::ComboRow::new();
         folder_row.set_title(&i18n("Folders"));
         {
-            let mut names = vec![i18n("All but Trash and Junk")];
+            let mut names = vec![i18n("All but trash and junk")];
             names.extend(
                 SmartFolderKind::ALL
                     .iter()

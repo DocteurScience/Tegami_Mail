@@ -27,9 +27,9 @@ pub(super) fn star_label(starred: bool) -> String {
 /// The same for a read/unread change.
 pub(super) fn read_label(read: bool) -> String {
     if read {
-        i18n("Mark as Read")
+        i18n("Mark as read")
     } else {
-        i18n("Mark as Unread")
+        i18n("Mark as unread")
     }
 }
 

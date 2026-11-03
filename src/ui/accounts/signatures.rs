@@ -230,7 +230,7 @@ impl AccountsWindow {
 
     pub(super) fn on_signature_import(&mut self, sender: ComponentSender<Self>, root: &adw::Bin) {
         let dialog = gtk::FileDialog::new();
-        dialog.set_title(&i18n("Import Signature"));
+        dialog.set_title(&i18n("Import signature"));
         let filter = gtk::FileFilter::new();
         filter.set_name(Some(&i18n("HTML and text files")));
         filter.add_mime_type("text/html");
@@ -268,7 +268,7 @@ impl AccountsWindow {
                 let host = root.root().and_downcast::<gtk::Window>();
                 crate::ui::dialog::alert(
                     host.as_ref(),
-                    i18n("Could Not Read the File").as_str(),
+                    i18n("Could not read the file").as_str(),
                     &format!("{}\n{e}", path.display()),
                 );
             }

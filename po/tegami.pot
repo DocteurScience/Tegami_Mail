@@ -20,10 +20,10 @@ msgid ""
 "accounts and mail with the stable Tegami Mail install."
 msgstr ""
 
-msgid "Release Notes"
+msgid "Release notes"
 msgstr ""
 
-msgid "Keyring Setup Help"
+msgid "Keyring setup help"
 msgstr ""
 
 msgid "Make account passwords persist on Linux Mint"
@@ -36,7 +36,7 @@ msgstr ""
 msgid "Report an issue or feature request"
 msgstr ""
 
-msgid "Source Code"
+msgid "Source code"
 msgstr ""
 
 msgid "License (GNU AGPL v3)"
@@ -86,10 +86,10 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-msgid "Sync Now"
+msgid "Sync now"
 msgstr ""
 
-msgid "Add Account…"
+msgid "Add account…"
 msgstr ""
 
 msgid "GNOME Online Accounts…"
@@ -98,76 +98,76 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-msgid "Print Preview…"
+msgid "Print preview…"
 msgstr ""
 
-msgid "Print Message…"
+msgid "Print message…"
 msgstr ""
 
 msgid "Quit"
 msgstr ""
 
-msgid "Use Template"
+msgid "Use template"
 msgstr ""
 
-msgid "Edit Template"
+msgid "Edit template"
 msgstr ""
 
 msgid "Reply"
 msgstr ""
 
-msgid "Reply All"
+msgid "Reply all"
 msgstr ""
 
 msgid "Forward"
 msgstr ""
 
-msgid "Edit as New Message"
+msgid "Edit as new message"
 msgstr ""
 
-msgid "Remove Star"
+msgid "Remove star"
 msgstr ""
 
 msgid "Star"
 msgstr ""
 
-msgid "Mark as Read"
+msgid "Mark as read"
 msgstr ""
 
-msgid "Mark as Unread"
+msgid "Mark as unread"
 msgstr ""
 
-msgid "Expand All Messages"
+msgid "Expand all messages"
 msgstr ""
 
-msgid "Collapse All Messages"
+msgid "Collapse all messages"
 msgstr ""
 
-msgid "View Source"
+msgid "View source"
 msgstr ""
 
-msgid "Save as File…"
+msgid "Save as file…"
 msgstr ""
 
-msgid "Add Sender to Contacts"
+msgid "Add sender to contacts"
 msgstr ""
 
-msgid "Create Filter from Message…"
+msgid "Create filter from message…"
 msgstr ""
 
 msgid "Tags"
 msgstr ""
 
-msgid "Not Spam"
+msgid "Not spam"
 msgstr ""
 
-msgid "Move to Inbox"
+msgid "Move to inbox"
 msgstr ""
 
-msgid "Mark as Spam"
+msgid "Mark as spam"
 msgstr ""
 
-msgid "Move To…"
+msgid "Move to…"
 msgstr ""
 
 msgid "Archive"
@@ -176,13 +176,13 @@ msgstr ""
 msgid "Snooze"
 msgstr ""
 
-msgid "Block Remote Content"
+msgid "Block remote content"
 msgstr ""
 
-msgid "Show Remote Content"
+msgid "Show remote content"
 msgstr ""
 
-msgid "Print Preview"
+msgid "Print preview"
 msgstr ""
 
 msgid "Print…"
@@ -194,13 +194,13 @@ msgstr ""
 msgid "Could not forward the message: {e}"
 msgstr ""
 
-msgid "Tegami Mail Address Book"
+msgid "Tegami Mail address book"
 msgstr ""
 
-msgid "On This Computer"
+msgid "On this computer"
 msgstr ""
 
-msgid "CardDAV Address Book"
+msgid "CardDAV address book"
 msgstr ""
 
 msgid "Enter the server's address."
@@ -319,7 +319,7 @@ msgstr[1] ""
 msgid "Enable Console mode in Settings → System & Appearance"
 msgstr ""
 
-msgid "New Message from Template"
+msgid "New message from template"
 msgstr ""
 
 msgid "The new message starts as a copy of the template you pick."
@@ -329,7 +329,7 @@ msgid ""
 "No templates yet. Save one from the composer's ⋯ menu with Save as Template."
 msgstr ""
 
-msgid "Continue a Draft"
+msgid "Continue a draft"
 msgstr ""
 
 msgid "The files go into the draft you pick."
@@ -338,7 +338,7 @@ msgstr ""
 msgid "No drafts to continue."
 msgstr ""
 
-msgid "Attach to This Draft"
+msgid "Attach to this draft"
 msgstr ""
 
 msgid "No Drafts folder available for this account"
@@ -358,10 +358,10 @@ msgstr ""
 msgid "No filters to apply here yet"
 msgstr ""
 
-msgid "Applying Filters"
+msgid "Applying filters"
 msgstr ""
 
-msgid "Run in Background"
+msgid "Run in background"
 msgstr ""
 
 msgid "Looked at {n} message so far"
@@ -438,7 +438,7 @@ msgid_plural "Filters tagged {tagged} and filed {filed} of {n} messages"
 msgstr[0] ""
 msgstr[1] ""
 
-msgid "Filters Applied"
+msgid "Filters applied"
 msgstr ""
 
 msgid "Close"
@@ -447,13 +447,13 @@ msgstr ""
 msgid "Unstar"
 msgstr ""
 
-msgid "New Folder"
+msgid "New folder"
 msgstr ""
 
 msgid "Create a new folder for this account."
 msgstr ""
 
-msgid "New Subfolder"
+msgid "New subfolder"
 msgstr ""
 
 msgid "Create a folder inside {folder}."
@@ -477,7 +477,7 @@ msgstr ""
 msgid "A folder named {new_name} is already there."
 msgstr ""
 
-msgid "Rename Folder"
+msgid "Rename folder"
 msgstr ""
 
 msgid ""
@@ -495,7 +495,7 @@ msgstr ""
 msgid "Empty"
 msgstr ""
 
-msgid "Create Folder"
+msgid "Create folder"
 msgstr ""
 
 msgid "archive"
@@ -507,7 +507,7 @@ msgstr ""
 msgid "destination"
 msgstr ""
 
-msgid "Move Folder"
+msgid "Move folder"
 msgstr ""
 
 msgid "Always do this (change it in Settings → System → GNOME Files)"
@@ -527,13 +527,13 @@ msgstr[1] ""
 msgid "{names} ({size}). What should the files go into?"
 msgstr ""
 
-msgid "Reply to a Message…"
+msgid "Reply to a message…"
 msgstr ""
 
-msgid "Continue a Draft…"
+msgid "Continue a draft…"
 msgstr ""
 
-msgid "Reply to a Message"
+msgid "Reply to a message"
 msgstr ""
 
 msgid "The files go into a reply to the message you pick."
@@ -542,7 +542,7 @@ msgstr ""
 msgid "No messages to reply to yet."
 msgstr ""
 
-msgid "Reply With the Files"
+msgid "Reply with the files"
 msgstr ""
 
 msgid "Large files"
@@ -557,10 +557,10 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-msgid "Attach Anyway"
+msgid "Attach anyway"
 msgstr ""
 
-msgid "Upload to Cloud Storage"
+msgid "Upload to cloud storage"
 msgstr ""
 
 msgid "This message carries no calendar file to open."
@@ -614,10 +614,10 @@ msgstr ""
 msgid "Starred first"
 msgstr ""
 
-msgid "Clear Dates"
+msgid "Clear dates"
 msgstr ""
 
-msgid "Any Date"
+msgid "Any date"
 msgstr ""
 
 msgid "{from} to {to}"
@@ -635,10 +635,10 @@ msgstr ""
 msgid "Show"
 msgstr ""
 
-msgid "Group into Conversations"
+msgid "Group into conversations"
 msgstr ""
 
-msgid "Message Preview"
+msgid "Message preview"
 msgstr ""
 
 msgid "Avatars"
@@ -647,7 +647,7 @@ msgstr ""
 msgid "Show only"
 msgstr ""
 
-msgid "Clear Filters"
+msgid "Clear filters"
 msgstr ""
 
 msgid "Dates"
@@ -665,7 +665,7 @@ msgstr ""
 msgid "Filtered: {names}"
 msgstr ""
 
-msgid "Search Messages…"
+msgid "Search messages…"
 msgstr ""
 
 msgid "Filter"
@@ -680,7 +680,7 @@ msgstr ""
 msgid "Favorites"
 msgstr ""
 
-msgid "New Message from Template…"
+msgid "New message from template…"
 msgstr ""
 
 msgid "All"
@@ -750,9 +750,6 @@ msgid "Reply to all"
 msgstr ""
 
 msgid "Delete permanently, without going to Trash"
-msgstr ""
-
-msgid "Mark as spam"
 msgstr ""
 
 msgid "Star or unstar"
@@ -833,7 +830,7 @@ msgstr ""
 msgid "Show or hide the accounts in the sidebar"
 msgstr ""
 
-msgid "Focus Mode on or off"
+msgid "Focus mode on or off"
 msgstr ""
 
 msgid "Fullscreen on or off"
@@ -886,22 +883,22 @@ msgstr ""
 msgid "Expand or collapse every message of the conversation"
 msgstr ""
 
-msgid "Go to Inbox"
+msgid "Go to inbox"
 msgstr ""
 
-msgid "Go to Starred"
+msgid "Go to starred"
 msgstr ""
 
-msgid "Go to Sent"
+msgid "Go to sent"
 msgstr ""
 
-msgid "Go to Drafts"
+msgid "Go to drafts"
 msgstr ""
 
-msgid "Go to Archive"
+msgid "Go to archive"
 msgstr ""
 
-msgid "Go to Contacts"
+msgid "Go to contacts"
 msgstr ""
 
 msgid "Archive the conversation"
@@ -955,28 +952,25 @@ msgstr ""
 msgid "Action"
 msgstr ""
 
-msgid "Reply to All"
-msgstr ""
-
 msgid "Print"
 msgstr ""
 
-msgid "Find in Message"
+msgid "Find in message"
 msgstr ""
 
-msgid "Delete Permanently"
+msgid "Delete permanently"
 msgstr ""
 
-msgid "Star or Remove Star"
+msgid "Star or remove star"
 msgstr ""
 
-msgid "Mark as Read or Unread"
+msgid "Mark as read or unread"
 msgstr ""
 
-msgid "Move to Folder"
+msgid "Move to folder"
 msgstr ""
 
-msgid "Open Message File…"
+msgid "Open message file…"
 msgstr ""
 
 msgid "Undo"
@@ -985,40 +979,37 @@ msgstr ""
 msgid "Redo"
 msgstr ""
 
-msgid "Check for New Mail"
+msgid "Search messages"
 msgstr ""
 
-msgid "Search Messages"
+msgid "Show or hide the sidebar"
 msgstr ""
 
-msgid "Show or Hide the Sidebar"
+msgid "Reading pane right"
 msgstr ""
 
-msgid "Reading Pane Right"
+msgid "Reading pane below"
 msgstr ""
 
-msgid "Reading Pane Below"
+msgid "Reading pane off"
 msgstr ""
 
-msgid "Reading Pane Off"
+msgid "Mail accounts"
 msgstr ""
 
-msgid "Mail Accounts"
+msgid "New smart folder…"
 msgstr ""
 
-msgid "New Smart Folder…"
-msgstr ""
-
-msgid "Keyboard Shortcuts"
+msgid "Keyboard shortcuts"
 msgstr ""
 
 msgid "About Tegami Mail"
 msgstr ""
 
-msgid "Turn Focus Mode On"
+msgid "Turn focus mode on"
 msgstr ""
 
-msgid "Turn Focus Mode Off"
+msgid "Turn focus mode off"
 msgstr ""
 
 msgid "View"
@@ -1030,7 +1021,7 @@ msgstr ""
 msgid "Tag"
 msgstr ""
 
-msgid "Smart Folder"
+msgid "Smart folder"
 msgstr ""
 
 msgid ""
@@ -1045,10 +1036,10 @@ msgstr ""
 msgid "Your tags"
 msgstr ""
 
-msgid "Hide Status Bar"
+msgid "Hide status bar"
 msgstr ""
 
-msgid "Reveal Status Bar"
+msgid "Reveal status bar"
 msgstr ""
 
 msgid "Console"
@@ -1057,7 +1048,7 @@ msgstr ""
 msgid "Help"
 msgstr ""
 
-msgid "New Message Instead"
+msgid "New message instead"
 msgstr ""
 
 msgid "Search by sender, subject or account"
@@ -1066,7 +1057,7 @@ msgstr ""
 msgid "(no subject)"
 msgstr ""
 
-msgid "Message Source"
+msgid "Message source"
 msgstr ""
 
 msgid "Forwarded message"
@@ -1084,7 +1075,7 @@ msgstr ""
 msgid "Export failed: {e}"
 msgstr ""
 
-msgid "Export Contacts"
+msgid "Export contacts"
 msgstr ""
 
 msgid "{n} contact exported to {path}"
@@ -1107,25 +1098,25 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-msgid "Delete All"
+msgid "Delete all"
 msgstr ""
 
-msgid "Export Settings"
+msgid "Export settings"
 msgstr ""
 
 msgid "Settings exported to {display}"
 msgstr ""
 
-msgid "Export Log"
+msgid "Export log"
 msgstr ""
 
 msgid "Log exported to {display}"
 msgstr ""
 
-msgid "Import Settings"
+msgid "Import settings"
 msgstr ""
 
-msgid "Settings Imported"
+msgid "Settings imported"
 msgstr ""
 
 msgid ""
@@ -1158,13 +1149,13 @@ msgstr ""
 msgid "Send all"
 msgstr ""
 
-msgid "Forward as Attachment"
+msgid "Forward as attachment"
 msgstr ""
 
 msgid "Delete {n} messages"
 msgstr ""
 
-msgid "Customize Toolbar…"
+msgid "Customize toolbar…"
 msgstr ""
 
 msgid "Read receipt"
@@ -1186,13 +1177,13 @@ msgstr ""
 msgid "Read by {reader}"
 msgstr ""
 
-msgid "Full Release Notes on GitHub"
+msgid "Full release notes on GitHub"
 msgstr ""
 
 msgid "Delete this conversation?"
 msgstr ""
 
-msgid "Delete Conversation"
+msgid "Delete conversation"
 msgstr ""
 
 msgid "Delete this message permanently?"
@@ -1241,7 +1232,7 @@ msgstr ""
 msgid "Select a conversation first."
 msgstr ""
 
-msgid "Remove Tags"
+msgid "Remove tags"
 msgstr ""
 
 msgid "Open a message first, then print it."
@@ -1309,7 +1300,7 @@ msgid ""
 "restarts."
 msgstr ""
 
-msgid "Restart Now"
+msgid "Restart now"
 msgstr ""
 
 msgid ""
@@ -1320,10 +1311,10 @@ msgstr ""
 msgid "Move to {name}"
 msgstr ""
 
-msgid "Add Tag {name}"
+msgid "Add tag {name}"
 msgstr ""
 
-msgid "Remove Tag {name}"
+msgid "Remove tag {name}"
 msgstr ""
 
 msgid "Unsubscribe from {name}?"
@@ -1369,10 +1360,10 @@ msgstr ""
 msgid "The list's unsubscribe page is open in your browser."
 msgstr ""
 
-msgid "Save Message"
+msgid "Save message"
 msgstr ""
 
-msgid "Open Message File"
+msgid "Open message file"
 msgstr ""
 
 msgid "Email messages"
@@ -1391,7 +1382,7 @@ msgstr ""
 msgid "Mail"
 msgstr ""
 
-msgid "Main Menu"
+msgid "Main menu"
 msgstr ""
 
 msgid "Expand sidebar"
@@ -1400,7 +1391,7 @@ msgstr ""
 msgid "Collapse sidebar"
 msgstr ""
 
-msgid "New Message (Ctrl+N)"
+msgid "New message (Ctrl+N)"
 msgstr ""
 
 msgid "Search messages (Ctrl+F)"
@@ -1414,7 +1405,7 @@ msgstr ""
 
 #. The preview, not the print dialog: it shows what will come
 #. out and prints from there (#359).
-msgid "Print Preview (Ctrl+Shift+P)"
+msgid "Print preview (Ctrl+Shift+P)"
 msgstr ""
 
 msgid "Find in message (Ctrl+F)"
@@ -1450,7 +1441,7 @@ msgstr ""
 msgid "Account"
 msgstr ""
 
-msgid "Due Date"
+msgid "Due date"
 msgstr ""
 
 msgid "Date"
@@ -1480,7 +1471,7 @@ msgstr ""
 msgid "Folder of the original, not the Inbox"
 msgstr ""
 
-msgid "Custom Order"
+msgid "Custom order"
 msgstr ""
 
 msgid "Name (A to Z)"
@@ -1489,7 +1480,7 @@ msgstr ""
 msgid "Name (Z to A)"
 msgstr ""
 
-msgid "Full Path"
+msgid "Full path"
 msgstr ""
 
 msgid "Spam"
@@ -1498,7 +1489,7 @@ msgstr ""
 msgid "Read/Unread"
 msgstr ""
 
-msgid "Move To"
+msgid "Move to"
 msgstr ""
 
 msgid "Find"
@@ -2009,9 +2000,6 @@ msgstr ""
 msgid "Forward to"
 msgstr ""
 
-msgid "Move to"
-msgstr ""
-
 msgid "forwards to {to}"
 msgstr ""
 
@@ -2024,7 +2012,7 @@ msgstr ""
 msgid "Then"
 msgstr ""
 
-msgid "Add Action"
+msgid "Add action"
 msgstr ""
 
 msgid "Remove action"
@@ -2054,10 +2042,10 @@ msgstr ""
 msgid "Kept on the server; change it in your provider's webmail."
 msgstr ""
 
-msgid "Edit Alias"
+msgid "Edit alias"
 msgstr ""
 
-msgid "Add Alias"
+msgid "Add alias"
 msgstr ""
 
 msgid "Save"
@@ -2114,7 +2102,7 @@ msgstr ""
 msgid "Text to match"
 msgstr ""
 
-msgid "Add Condition"
+msgid "Add condition"
 msgstr ""
 
 msgid "Condition matching"
@@ -2161,7 +2149,7 @@ msgid ""
 "approve it."
 msgstr ""
 
-msgid "Choose a Picture"
+msgid "Choose a picture"
 msgstr ""
 
 msgid "Images"
@@ -2222,13 +2210,13 @@ msgstr ""
 msgid "Applying…"
 msgstr ""
 
-msgid "Apply Now"
+msgid "Apply now"
 msgstr ""
 
-msgid "Edit Filter"
+msgid "Edit filter"
 msgstr ""
 
-msgid "Add Filter"
+msgid "Add filter"
 msgstr ""
 
 msgid "Name (optional)"
@@ -2263,7 +2251,7 @@ msgid_plural "After {n} days"
 msgstr[0] ""
 msgstr[1] ""
 
-msgid "API Token"
+msgid "API token"
 msgstr ""
 
 msgid "Password"
@@ -2275,16 +2263,16 @@ msgstr ""
 msgid "Port (default 443)"
 msgstr ""
 
-msgid "Incoming Server"
+msgid "Incoming server"
 msgstr ""
 
 msgid "Port (IMAP 993 / POP3 995)"
 msgstr ""
 
-msgid "Import Mbox Files"
+msgid "Import mbox files"
 msgstr ""
 
-msgid "Import Maildir Folders"
+msgid "Import maildir folders"
 msgstr ""
 
 msgid "Signed in as {address}, not {email}."
@@ -2349,7 +2337,7 @@ msgstr ""
 msgid "Mail accounts from GNOME Settings. Switch one on to use it."
 msgstr ""
 
-msgid "Smart Folders"
+msgid "Smart folders"
 msgstr ""
 
 msgid ""
@@ -2357,16 +2345,16 @@ msgid ""
 "unified rows."
 msgstr ""
 
-msgid "Add Smart Folder…"
+msgid "Add smart folder…"
 msgstr ""
 
 msgid "Searching…"
 msgstr ""
 
-msgid "Find Tags…"
+msgid "Find tags…"
 msgstr ""
 
-msgid "No New Tags"
+msgid "No new tags"
 msgstr ""
 
 msgid "Every tag in your mailboxes is already set up here."
@@ -2375,16 +2363,16 @@ msgstr ""
 msgid "OK"
 msgstr ""
 
-msgid "Tags Found"
+msgid "Tags found"
 msgstr ""
 
 msgid "{n} tags are in use in your mailboxes but not set up here."
 msgstr ""
 
-msgid "Import Selected"
+msgid "Import selected"
 msgstr ""
 
-msgid "Import All"
+msgid "Import all"
 msgstr ""
 
 msgid "{n} messages"
@@ -2396,10 +2384,10 @@ msgstr ""
 msgid "Remove tag"
 msgstr ""
 
-msgid "Edit Tag"
+msgid "Edit tag"
 msgstr ""
 
-msgid "Add Tag"
+msgid "Add tag"
 msgstr ""
 
 msgid "Name"
@@ -2419,7 +2407,7 @@ msgstr ""
 msgid "Custom color…"
 msgstr ""
 
-msgid "Tag Color"
+msgid "Tag color"
 msgstr ""
 
 msgid "Needs an app password, not your login password."
@@ -2489,7 +2477,7 @@ msgstr ""
 msgid "Edit the signature's HTML source"
 msgstr ""
 
-msgid "Follow Settings"
+msgid "Follow settings"
 msgstr ""
 
 msgid "On"
@@ -2501,19 +2489,19 @@ msgstr ""
 msgid "Preview"
 msgstr ""
 
-msgid "Import Signature"
+msgid "Import signature"
 msgstr ""
 
 msgid "HTML and text files"
 msgstr ""
 
-msgid "Could Not Read the File"
+msgid "Could not read the file"
 msgstr ""
 
 msgid "All accounts"
 msgstr ""
 
-msgid "All but Trash and Junk"
+msgid "All but trash and junk"
 msgstr ""
 
 msgid "Remove smart folder"
@@ -2546,13 +2534,10 @@ msgstr ""
 msgid "Tagged"
 msgstr ""
 
-msgid "Message preview"
+msgid "Edit smart folder"
 msgstr ""
 
-msgid "Edit Smart Folder"
-msgstr ""
-
-msgid "Add Smart Folder"
+msgid "Add smart folder"
 msgstr ""
 
 msgid "Those in the unified section."
@@ -2573,10 +2558,10 @@ msgstr ""
 msgid "Download…"
 msgstr ""
 
-msgid "Show in Message"
+msgid "Show in message"
 msgstr ""
 
-msgid "Delete from Server…"
+msgid "Delete from server…"
 msgstr ""
 
 msgid "Key imported"
@@ -2631,16 +2616,16 @@ msgstr ""
 msgid "Show as a list"
 msgstr ""
 
-msgid "Save All…"
+msgid "Save all…"
 msgstr ""
 
 msgid "Save every attachment to a folder"
 msgstr ""
 
-msgid "Save Attachment"
+msgid "Save attachment"
 msgstr ""
 
-msgid "Save All Attachments"
+msgid "Save all attachments"
 msgstr ""
 
 msgid "The file could not be opened"
@@ -2719,7 +2704,7 @@ msgstr ""
 msgid "Used unless you change them in the upload dialog for one email."
 msgstr ""
 
-msgid "Check Connection"
+msgid "Check connection"
 msgstr ""
 
 msgid "{email} (Files is off)"
@@ -2825,9 +2810,6 @@ msgstr ""
 msgid "Signed in as {who}. {terms}"
 msgstr ""
 
-msgid "Cloud Storage"
-msgstr ""
-
 msgid "Cloud storage"
 msgstr ""
 
@@ -2841,7 +2823,7 @@ msgstr ""
 msgid "No cloud accounts yet."
 msgstr ""
 
-msgid "Cloud Account"
+msgid "Cloud account"
 msgstr ""
 
 msgid "Remove {name}?"
@@ -2857,10 +2839,10 @@ msgstr ""
 msgid "Could not store the sign-in in the keyring: {e}"
 msgstr ""
 
-msgid "Edit Cloud Account"
+msgid "Edit cloud account"
 msgstr ""
 
-msgid "Add Cloud Account"
+msgid "Add cloud account"
 msgstr ""
 
 msgid "links expire after {n} days"
@@ -2872,7 +2854,7 @@ msgstr ""
 msgid "Offer this account in the composer"
 msgstr ""
 
-msgid "Command Palette"
+msgid "Command palette"
 msgstr ""
 
 msgid "Type an action, a folder or a tag, or > for actions only"
@@ -2890,7 +2872,7 @@ msgstr ""
 msgid "Large: some servers will refuse it."
 msgstr ""
 
-msgid "Send a Link"
+msgid "Send a link"
 msgstr ""
 
 msgid "Upload it to cloud storage and send a link instead"
@@ -2908,9 +2890,6 @@ msgid "{name} (link)"
 msgstr ""
 
 msgid "Uploading…"
-msgstr ""
-
-msgid "Attach Files"
 msgstr ""
 
 msgid "Attach {name}"
@@ -2997,7 +2976,7 @@ msgid ""
 "Its changes have not been saved. Save them to the template, or discard them."
 msgstr ""
 
-msgid "Save Template"
+msgid "Save template"
 msgstr ""
 
 msgid "Save the message?"
@@ -3006,10 +2985,10 @@ msgstr ""
 msgid "It has not been sent. Save it to Drafts to finish later, or discard it."
 msgstr ""
 
-msgid "Save Draft"
+msgid "Save draft"
 msgstr ""
 
-msgid "Keep Editing"
+msgid "Keep editing"
 msgstr ""
 
 msgid "Discard"
@@ -3033,13 +3012,13 @@ msgstr ""
 msgid "Not every mail app sends one."
 msgstr ""
 
-msgid "Check Spelling"
+msgid "Check spelling"
 msgstr ""
 
-msgid "Spelling Language"
+msgid "Spelling language"
 msgstr ""
 
-msgid "Delete Draft"
+msgid "Delete draft"
 msgstr ""
 
 msgid "Move this draft to Trash"
@@ -3086,10 +3065,10 @@ msgid ""
 "Your message mentions an attachment (“{word}”), but no file is attached."
 msgstr ""
 
-msgid "Send Anyway"
+msgid "Send anyway"
 msgstr ""
 
-msgid "Attach a File…"
+msgid "Attach a file…"
 msgstr ""
 
 msgid "An attachment is missing"
@@ -3103,7 +3082,7 @@ msgstr ""
 msgid "Choose the sending account"
 msgstr ""
 
-msgid "Manage Accounts…"
+msgid "Manage accounts…"
 msgstr ""
 
 msgid "Send from"
@@ -3118,28 +3097,28 @@ msgstr ""
 msgid "Translate what you wrote"
 msgstr ""
 
-msgid "Insert Signature"
+msgid "Insert signature"
 msgstr ""
 
-msgid "No Signature"
+msgid "No signature"
 msgstr ""
 
-msgid "Insert Before the Text"
+msgid "Insert before the text"
 msgstr ""
 
-msgid "Insert After the Text"
+msgid "Insert after the text"
 msgstr ""
 
-msgid "Show Original"
+msgid "Show original"
 msgstr ""
 
-msgid "Show Translation"
+msgid "Show translation"
 msgstr ""
 
 msgid "{language} (the quoted message)"
 msgstr ""
 
-msgid "Other Languages"
+msgid "Other languages"
 msgstr ""
 
 msgid "Translate into"
@@ -3269,7 +3248,7 @@ msgstr ""
 msgid "Open Online Accounts"
 msgstr ""
 
-msgid "Add Address Book"
+msgid "Add address book"
 msgstr ""
 
 msgid "Added in GNOME Online Accounts"
@@ -3343,7 +3322,7 @@ msgstr ""
 msgid "Use an app-specific password, not your usual one."
 msgstr ""
 
-msgid "CardDAV Server"
+msgid "CardDAV server"
 msgstr ""
 
 msgid ""
@@ -3361,13 +3340,10 @@ msgid ""
 "→ Privacy & Security."
 msgstr ""
 
-msgid "LDAP Directory"
+msgid "LDAP directory"
 msgstr ""
 
 msgid "Contacts"
-msgstr ""
-
-msgid "Address Books"
 msgstr ""
 
 msgid ""
@@ -3378,7 +3354,7 @@ msgstr ""
 msgid "Look again for address books"
 msgstr ""
 
-msgid "Add Address Book…"
+msgid "Add address book…"
 msgstr ""
 
 msgid ""
@@ -3387,7 +3363,7 @@ msgid ""
 "page."
 msgstr ""
 
-msgid "New Contacts"
+msgid "New contacts"
 msgstr ""
 
 msgid "Save new contacts in"
@@ -3396,7 +3372,7 @@ msgstr ""
 msgid "Unless another is picked when the contact is made."
 msgstr ""
 
-msgid "In Mail"
+msgid "In mail"
 msgstr ""
 
 msgid "Show names from Contacts"
@@ -3405,28 +3381,25 @@ msgstr ""
 msgid "Saved addresses show the contact's name, not the mail's."
 msgstr ""
 
-msgid "Address Book"
-msgstr ""
-
 msgid "Looking for address books on {name}…"
 msgstr ""
 
-msgid "Attach to Message"
+msgid "Attach to message"
 msgstr ""
 
-msgid "Insert in Text"
+msgid "Insert in text"
 msgstr ""
 
-msgid "Upload and Share a Link"
+msgid "Upload and share a link"
 msgstr ""
 
-msgid "Attach to New Message"
+msgid "Attach to new message"
 msgstr ""
 
-msgid "Insert in New Message"
+msgid "Insert in new message"
 msgstr ""
 
-msgid "Share Link in New Message"
+msgid "Share link in new message"
 msgid_plural "Share Links in New Message"
 msgstr[0] ""
 msgstr[1] ""
@@ -3545,10 +3518,10 @@ msgstr ""
 msgid "Loading more…"
 msgstr ""
 
-msgid "No Messages"
+msgid "No messages"
 msgstr ""
 
-msgid "No Matching Messages"
+msgid "No matching messages"
 msgstr ""
 
 msgid "There's nothing here right now."
@@ -3570,34 +3543,31 @@ msgstr ""
 msgid "Choose which folders to search"
 msgstr ""
 
-msgid "Has Attachments"
+msgid "Addressed to me"
 msgstr ""
 
-msgid "Addressed to Me"
+msgid "From contacts"
 msgstr ""
 
-msgid "From Contacts"
-msgstr ""
-
-msgid "High Importance"
+msgid "High importance"
 msgstr ""
 
 msgid "Today"
 msgstr ""
 
-msgid "Customize Columns…"
+msgid "Customize columns…"
 msgstr ""
 
-msgid "Remove Stars"
+msgid "Remove stars"
 msgstr ""
 
-msgid "Star Conversation"
+msgid "Star conversation"
 msgstr ""
 
-msgid "Mark All as Read"
+msgid "Mark all as read"
 msgstr ""
 
-msgid "Mark All as Unread"
+msgid "Mark all as unread"
 msgstr ""
 
 msgid "All folders (except trash & junk)"
@@ -3638,31 +3608,13 @@ msgstr ""
 msgid "Drag to resize, double-click for the usual width"
 msgstr ""
 
-msgid "Mark as read"
-msgstr ""
-
-msgid "Move to…"
-msgstr ""
-
-msgid "Not spam"
-msgstr ""
-
 msgid "Add sender to Contacts"
-msgstr ""
-
-msgid "Mark as unread"
-msgstr ""
-
-msgid "Remove star"
 msgstr ""
 
 msgid "Forwarded"
 msgstr ""
 
 msgid "Snoozed until {when}"
-msgstr ""
-
-msgid "High importance"
 msgstr ""
 
 msgid "Low importance"
@@ -3722,9 +3674,6 @@ msgstr ""
 msgid "Always allow sender"
 msgstr ""
 
-msgid "Find in message"
-msgstr ""
-
 msgid "No matches"
 msgstr ""
 
@@ -3757,10 +3706,10 @@ msgstr ""
 msgid "Hide quoted text"
 msgstr ""
 
-msgid "Copy Address"
+msgid "Copy address"
 msgstr ""
 
-msgid "Add to Contacts"
+msgid "Add to contacts"
 msgstr ""
 
 msgid "Double-click to open in a new window"
@@ -3777,13 +3726,7 @@ msgstr ""
 msgid "Show recipients"
 msgstr ""
 
-msgid "Mark as read or unread"
-msgstr ""
-
 msgid "Star this message"
-msgstr ""
-
-msgid "View source"
 msgstr ""
 
 msgid "Translate this message"
@@ -3811,12 +3754,6 @@ msgid "Back to my fonts and colors"
 msgstr ""
 
 msgid "Show the sender's fonts and colors"
-msgstr ""
-
-msgid "Show remote content"
-msgstr ""
-
-msgid "Block remote content"
 msgstr ""
 
 msgid "Click to open this message"
@@ -3933,37 +3870,37 @@ msgstr ""
 msgid "Opens the meeting in your calendar application"
 msgstr ""
 
-msgid "Add to Calendar"
+msgid "Add to calendar"
 msgstr ""
 
-msgid "Open Link"
+msgid "Open link"
 msgstr ""
 
-msgid "Copy Email Address"
+msgid "Copy email address"
 msgstr ""
 
-msgid "Copy Link Address"
+msgid "Copy link address"
 msgstr ""
 
-msgid "Save Image As…"
+msgid "Save image as…"
 msgstr ""
 
-msgid "Save Image"
+msgid "Save image"
 msgstr ""
 
-msgid "Copy Image"
+msgid "Copy image"
 msgstr ""
 
-msgid "Copy Image Address"
+msgid "Copy image address"
 msgstr ""
 
 msgid "Translate"
 msgstr ""
 
-msgid "Open With…"
+msgid "Open with…"
 msgstr ""
 
-msgid "Save As…"
+msgid "Save as…"
 msgstr ""
 
 msgid "Encrypted messages are not sent for translation."
@@ -4007,7 +3944,7 @@ msgstr ""
 msgid "{name} asked for a read receipt, to be sent to {addr}."
 msgstr ""
 
-msgid "Send Receipt"
+msgid "Send receipt"
 msgstr ""
 
 msgid "Tells the sender you opened this message"
@@ -4076,7 +4013,7 @@ msgstr ""
 msgid "Could not translate: {why}"
 msgstr ""
 
-msgid "Try Again"
+msgid "Try again"
 msgstr ""
 
 msgid "Translated from {language} by {service}."
@@ -4128,9 +4065,6 @@ msgid "Opens the list's unsubscribe page in your browser"
 msgstr ""
 
 msgid "Clear all"
-msgstr ""
-
-msgid "Export log"
 msgstr ""
 
 msgid "Collapse status bar"
@@ -4249,7 +4183,7 @@ msgstr ""
 msgid "No key found: {e}"
 msgstr ""
 
-msgid "Generate a Key"
+msgid "Generate a key"
 msgstr ""
 
 msgid ""
@@ -4281,7 +4215,7 @@ msgstr ""
 msgid "Generating the key…"
 msgstr ""
 
-msgid "Import Key"
+msgid "Import key"
 msgstr ""
 
 msgid "OpenPGP keys"
@@ -4293,7 +4227,7 @@ msgstr ""
 msgid "Could not import: {e}"
 msgstr ""
 
-msgid "Export Public Key"
+msgid "Export public key"
 msgstr ""
 
 msgid "Delete your key?"
@@ -4315,7 +4249,7 @@ msgstr ""
 msgid "Could not delete: {e}"
 msgstr ""
 
-msgid "Fetch a Key"
+msgid "Fetch a key"
 msgstr ""
 
 msgid ""
@@ -4349,7 +4283,7 @@ msgstr[1] ""
 msgid "That key was already in your keyring."
 msgstr ""
 
-msgid "Choose a Sound"
+msgid "Choose a sound"
 msgstr ""
 
 msgid "Sounds"
@@ -4455,7 +4389,7 @@ msgstr ""
 msgid "Swing"
 msgstr ""
 
-msgid "Custom File"
+msgid "Custom file"
 msgstr ""
 
 msgid "Downloading: {done} of {total}"
@@ -4712,7 +4646,7 @@ msgstr ""
 msgid "Sidebar"
 msgstr ""
 
-msgid "Message List"
+msgid "Message list"
 msgstr ""
 
 msgid "Conversations"
@@ -4727,7 +4661,7 @@ msgstr ""
 msgid "Privacy"
 msgstr ""
 
-msgid "Date and Time"
+msgid "Date and time"
 msgstr ""
 
 msgid "Backup"
@@ -4754,12 +4688,6 @@ msgstr ""
 msgid ""
 "Accounts, preferences, filters, tags and layout, in one file. Passwords and "
 "OpenPGP keys are not included."
-msgstr ""
-
-msgid "Export settings"
-msgstr ""
-
-msgid "Import settings"
 msgstr ""
 
 msgid ""
@@ -4869,7 +4797,7 @@ msgstr ""
 msgid "Also play while Tegami Mail is in front"
 msgstr ""
 
-msgid "Notification Buttons"
+msgid "Notification buttons"
 msgstr ""
 
 msgid "Up to three buttons on a notification about one message."
@@ -4968,7 +4896,7 @@ msgstr ""
 msgid "Off, a narrow list scrolls sideways."
 msgstr ""
 
-msgid "Restore Defaults"
+msgid "Restore defaults"
 msgstr ""
 
 msgid "Tegami Mail collects no telemetry and sends no analytics."
@@ -5133,16 +5061,13 @@ msgstr ""
 msgid "Could not restart Files"
 msgstr ""
 
-msgid "Other Font…"
-msgstr ""
-
-msgid "Search Settings"
+msgid "Other font…"
 msgstr ""
 
 msgid "Search settings"
 msgstr ""
 
-msgid "No Results"
+msgid "No results"
 msgstr ""
 
 #. Translators: words the settings search finds the Contacts page by,
@@ -5158,7 +5083,7 @@ msgstr ""
 msgid "Forget this word"
 msgstr ""
 
-msgid "Print Message"
+msgid "Print message"
 msgstr ""
 
 msgid "No PDF writer is available on this system"
@@ -5170,7 +5095,7 @@ msgstr ""
 msgid "Save as PDF…"
 msgstr ""
 
-msgid "No Preview"
+msgid "No preview"
 msgstr ""
 
 msgid "Save as PDF"
@@ -5205,7 +5130,7 @@ msgstr ""
 msgid "Show previous message"
 msgstr ""
 
-msgid "Sans Serif"
+msgid "Sans serif"
 msgstr ""
 
 msgid "Serif"
@@ -5301,12 +5226,6 @@ msgstr ""
 msgid "Pictures"
 msgstr ""
 
-msgid "Insert Picture"
-msgstr ""
-
-msgid "Insert Link"
-msgstr ""
-
 msgid "Insert"
 msgstr ""
 
@@ -5325,70 +5244,70 @@ msgstr ""
 msgid "Labels"
 msgstr ""
 
-msgid "Sort Folders"
+msgid "Sort folders"
 msgstr ""
 
-msgid "Add Folder"
+msgid "Add folder"
 msgstr ""
 
 msgid "Show or hide sub-folders"
 msgstr ""
 
-msgid "Mark Inbox as Read"
+msgid "Mark inbox as read"
 msgstr ""
 
 msgid "Refresh"
 msgstr ""
 
-msgid "New Folder…"
+msgid "New folder…"
 msgstr ""
 
-msgid "Reset Folder Order"
+msgid "Reset folder order"
 msgstr ""
 
-msgid "Account Settings…"
+msgid "Account settings…"
 msgstr ""
 
-msgid "Remove Account…"
+msgid "Remove account…"
 msgstr ""
 
-msgid "Follow Settings: {sort}"
+msgid "Follow settings: {sort}"
 msgstr ""
 
-msgid "Sync This Folder"
+msgid "Sync this folder"
 msgstr ""
 
-msgid "New Subfolder…"
+msgid "New subfolder…"
 msgstr ""
 
 msgid "Rename…"
 msgstr ""
 
-msgid "Remove from Favorites"
+msgid "Remove from favorites"
 msgstr ""
 
-msgid "Add to Favorites"
+msgid "Add to favorites"
 msgstr ""
 
-msgid "Apply Filters"
+msgid "Apply filters"
 msgstr ""
 
-msgid "Edit Filter…"
+msgid "Edit filter…"
 msgstr ""
 
-msgid "Hide Folder"
+msgid "Hide folder"
 msgstr ""
 
-msgid "Empty Trash…"
+msgid "Empty trash…"
 msgstr ""
 
-msgid "Empty Junk…"
+msgid "Empty junk…"
 msgstr ""
 
-msgid "Delete Folder"
+msgid "Delete folder"
 msgstr ""
 
-msgid "Edit Tag…"
+msgid "Edit tag…"
 msgstr ""
 
 msgid "Add account"
@@ -5412,16 +5331,16 @@ msgstr ""
 msgid "Long-press to expand or collapse"
 msgstr ""
 
-msgid "New Tag…"
+msgid "New tag…"
 msgstr ""
 
 msgid "Show or hide tags"
 msgstr ""
 
-msgid "Edit Smart Folder…"
+msgid "Edit smart folder…"
 msgstr ""
 
-msgid "Delete Smart Folder…"
+msgid "Delete smart folder…"
 msgstr ""
 
 msgid "Blue"
@@ -5448,7 +5367,7 @@ msgstr ""
 msgid "Gray"
 msgstr ""
 
-msgid "New Tag"
+msgid "New tag"
 msgstr ""
 
 msgid "Tag name"
@@ -5463,7 +5382,7 @@ msgstr ""
 msgid "Favorite"
 msgstr ""
 
-msgid "Manage Tags…"
+msgid "Manage tags…"
 msgstr ""
 
 msgid "Create “{name}”"
@@ -5509,7 +5428,7 @@ msgstr ""
 msgid "It works: “{sent}” came back as “{back}”."
 msgstr ""
 
-msgid "Sign In"
+msgid "Sign in"
 msgstr ""
 
 msgid "The sign-in window was closed."
@@ -5524,10 +5443,10 @@ msgstr ""
 msgid "Enter your email address, the client ID and both OAuth URLs first."
 msgstr ""
 
-msgid "Sign In & Add"
+msgid "Sign in & add"
 msgstr ""
 
-msgid "Test & Add"
+msgid "Test & add"
 msgstr ""
 
 msgid "IMAP server"
@@ -5567,7 +5486,7 @@ msgid ""
 "this wizard comes back in that language."
 msgstr ""
 
-msgid "Get Started"
+msgid "Get started"
 msgstr ""
 
 msgid "Import your online accounts"
@@ -5585,7 +5504,7 @@ msgstr ""
 msgid "Open Online Accounts…"
 msgstr ""
 
-msgid "Scan Again"
+msgid "Scan again"
 msgstr ""
 
 msgid "Privacy, your way"
@@ -5672,7 +5591,7 @@ msgstr ""
 msgid "Filled in for known providers"
 msgstr ""
 
-msgid "OAuth Client ID"
+msgid "OAuth client ID"
 msgstr ""
 
 msgid "OAuth Client Secret (optional)"
@@ -5977,13 +5896,13 @@ msgstr ""
 msgid "Email"
 msgstr ""
 
-msgid "Added to Contacts"
+msgid "Added to contacts"
 msgstr ""
 
 msgid "Added email to {name}"
 msgstr ""
 
-msgid "Already in Contacts ({name})"
+msgid "Already in contacts ({name})"
 msgstr ""
 
 msgid "Could not add contact: {e}"
@@ -5998,7 +5917,7 @@ msgstr ""
 msgid "Could not read: {files}"
 msgstr ""
 
-msgid "Import Contacts"
+msgid "Import contacts"
 msgstr ""
 
 msgid "vCard files"
@@ -6012,7 +5931,7 @@ msgid ""
 "syncs; Apply Now runs them over the mail already there."
 msgstr ""
 
-msgid "Add Filter…"
+msgid "Add filter…"
 msgstr ""
 
 msgid "Run every rule over the mail already in your inboxes"
@@ -6035,19 +5954,13 @@ msgstr ""
 msgid "Storage"
 msgstr ""
 
-msgid "Mail Account"
-msgstr ""
-
 msgid "Nickname"
 msgstr ""
 
-msgid "Display Name"
+msgid "Display name"
 msgstr ""
 
-msgid "Email Address"
-msgstr ""
-
-msgid "Incoming Protocol"
+msgid "Incoming protocol"
 msgstr ""
 
 msgid "SMTP Server (optional)"
@@ -6080,7 +5993,7 @@ msgstr ""
 msgid "Redirect URI"
 msgstr ""
 
-msgid "Sign In with Browser"
+msgid "Sign in with browser"
 msgstr ""
 
 msgid ""
@@ -6093,12 +6006,6 @@ msgid "Separate SMTP credentials"
 msgstr ""
 
 msgid "Off uses the credentials above."
-msgstr ""
-
-msgid "SMTP Username"
-msgstr ""
-
-msgid "SMTP Password"
 msgstr ""
 
 msgid "Accept a certificate for another name"
@@ -6115,7 +6022,7 @@ msgstr ""
 msgid "Favorites, Tags and Smart Folders across accounts."
 msgstr ""
 
-msgid "Test Connection"
+msgid "Test connection"
 msgstr ""
 
 msgid "Account accent color"
@@ -6151,7 +6058,7 @@ msgstr ""
 msgid "Extra addresses this account can send as."
 msgstr ""
 
-msgid "Add Alias…"
+msgid "Add alias…"
 msgstr ""
 
 msgid "Signatures"
@@ -6162,13 +6069,13 @@ msgid ""
 "between them."
 msgstr ""
 
-msgid "Add Signature"
+msgid "Add signature"
 msgstr ""
 
-msgid "Import File…"
+msgid "Import file…"
 msgstr ""
 
-msgid "Delete Signature"
+msgid "Delete signature"
 msgstr ""
 
 msgid "Start messages with this signature"
@@ -6253,13 +6160,10 @@ msgstr ""
 msgid "Shows a label's name when a message gives only its ID."
 msgstr ""
 
-msgid "Folder Order"
-msgstr ""
-
 msgid "Also in the right-click menu of its Folders heading."
 msgstr ""
 
-msgid "Special Folders"
+msgid "Special folders"
 msgstr ""
 
 msgid ""
@@ -6285,7 +6189,7 @@ msgstr ""
 msgid "Snoozed"
 msgstr ""
 
-msgid "Hidden Folders"
+msgid "Hidden folders"
 msgstr ""
 
 msgid ""
@@ -6317,7 +6221,7 @@ msgstr ""
 msgid "Search senders"
 msgstr ""
 
-msgid "Allowed Senders"
+msgid "Allowed senders"
 msgstr ""
 
 msgid "Messages from these senders load remote content automatically."
@@ -6326,7 +6230,7 @@ msgstr ""
 msgid "Allow this sender"
 msgstr ""
 
-msgid "Blocked Senders"
+msgid "Blocked senders"
 msgstr ""
 
 msgid ""
@@ -6347,7 +6251,7 @@ msgid ""
 "Drag to reorder. The first nine are mapped to the 1–9 keys."
 msgstr ""
 
-msgid "Add Tag…"
+msgid "Add tag…"
 msgstr ""
 
 msgid "Look through every mailbox for tags other clients have set"
@@ -6382,7 +6286,7 @@ msgstr ""
 msgid "Always fold the right group into ⋯"
 msgstr ""
 
-msgid "Focus Mode"
+msgid "Focus mode"
 msgstr ""
 
 msgid ""
@@ -6390,7 +6294,7 @@ msgid ""
 "Ctrl+Shift+F or the main menu."
 msgstr ""
 
-msgid "Start in Focus Mode"
+msgid "Start in focus mode"
 msgstr ""
 
 msgid "Fold the reading pane's toolbar"
@@ -6512,7 +6416,7 @@ msgid ""
 "either way."
 msgstr ""
 
-msgid "Undo Send"
+msgid "Undo send"
 msgstr ""
 
 msgid "How long Undo is offered after sending."
@@ -6527,13 +6431,13 @@ msgstr ""
 msgid "Sent mail shows who read it; the receipt goes here."
 msgstr ""
 
-msgid "Move to Trash"
+msgid "Move to trash"
 msgstr ""
 
-msgid "Keep in Inbox"
+msgid "Keep in inbox"
 msgstr ""
 
-msgid "Reply Header"
+msgid "Reply header"
 msgstr ""
 
 msgid "{name}, {address}, {date} and {time} are filled in from the original."
@@ -6542,7 +6446,7 @@ msgstr ""
 msgid "Line above the quoted message"
 msgstr ""
 
-msgid "Restore Default"
+msgid "Restore default"
 msgstr ""
 
 msgid "Spelling"
@@ -6734,7 +6638,7 @@ msgstr ""
 msgid "Mail inside an account's offline period is kept."
 msgstr ""
 
-msgid "GNOME Files Integration"
+msgid "GNOME Files integration"
 msgstr ""
 
 msgid ""
@@ -6784,7 +6688,7 @@ msgstr ""
 msgid "Install"
 msgstr ""
 
-msgid "Send as Attachment Instead"
+msgid "Send as attachment instead"
 msgstr ""
 
 msgid "Small"
@@ -6796,19 +6700,16 @@ msgstr ""
 msgid "Large"
 msgstr ""
 
-msgid "Original Size"
+msgid "Original size"
 msgstr ""
 
 msgid "Will be recompressed to the size shown when this is sent"
 msgstr ""
 
-msgid "Recompress to This Size on Send"
+msgid "Recompress to this size on send"
 msgstr ""
 
-msgid "Paste with Formatting"
-msgstr ""
-
-msgid "Paste as Plain Text"
+msgid "Paste with formatting"
 msgstr ""
 
 msgid "Email Client"

@@ -27,7 +27,7 @@ pub(super) fn stage_shortcuts(sender: &ComponentSender<AppModel>) {
                 .filter_map(|i| tops.item(i))
                 .filter_map(|o| o.downcast::<adw::Window>().ok())
                 .find(|w| {
-                    w.is_visible() && w.title().is_some_and(|t| t == i18n("Keyboard Shortcuts"))
+                    w.is_visible() && w.title().is_some_and(|t| t == i18n("Keyboard shortcuts"))
                 })
             {
                 w.set_default_size(w.default_width(), h);

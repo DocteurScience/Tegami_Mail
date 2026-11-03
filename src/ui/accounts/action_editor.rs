@@ -30,7 +30,7 @@ impl ActionKind {
     fn label(self) -> String {
         match self {
             ActionKind::Forward => i18n("Forward to"),
-            ActionKind::MarkRead => i18n("Mark as Read"),
+            ActionKind::MarkRead => i18n("Mark as read"),
             ActionKind::Move => i18n("Move to"),
             ActionKind::Delete => i18n("Delete"),
         }
@@ -100,7 +100,7 @@ impl ActionList {
         group.set_title(&i18n("Then"));
         let add_group = adw::PreferencesGroup::new();
         let add_row = adw::ActionRow::new();
-        add_row.set_title(&i18n("Add Action"));
+        add_row.set_title(&i18n("Add action"));
         add_row.set_activatable(true);
         add_row.add_prefix(&gtk::Image::from_icon_name("list-add-symbolic"));
         add_group.add(&add_row);

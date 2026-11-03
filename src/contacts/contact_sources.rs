@@ -365,7 +365,7 @@ fn tegami_source(off: &HashSet<String>) -> Source {
         given: None,
         id: TEGAMI.to_string(),
         kind: Kind::Tegami,
-        title: i18n("Tegami Mail Address Book"),
+        title: i18n("Tegami Mail address book"),
         detail: ni18n_f(
             "{n} contact, kept by Tegami Mail",
             "{n} contacts, kept by Tegami Mail",
@@ -444,7 +444,7 @@ fn this_computer_source(id: String, books: Vec<Book>, on: bool) -> Source {
         given: None,
         id,
         kind: Kind::ThisComputer,
-        title: i18n("On This Computer"),
+        title: i18n("On this computer"),
         detail: i18n_f(
             "{books} · kept by GNOME Contacts and Evolution",
             &[("books", &books_line(&books))],
