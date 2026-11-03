@@ -95,12 +95,16 @@ pub(crate) fn show(
             } else {
                 typed
             };
-            let (fill, text) =
-                crate::config::chip_colors(&chosen.borrow()).unwrap_or(("#e6e6e8", "#3d3d40"));
-            preview.set_markup(&format!(
-                "<span background=\"{fill}\" foreground=\"{text}\" weight=\"bold\">\u{2002}{}\u{2002}</span>",
-                gtk::glib::markup_escape_text(&shown)
-            ));
+            // The list's own chip (mockup 09): the palette colours have a
+            // rule each, the one a Gmail label wears (app/tags.rs).
+            preview.set_label(&shown);
+            let hue = TAG_COLORS
+                .iter()
+                .position(|hex| hex.eq_ignore_ascii_case(&chosen.borrow()));
+            let mut classes = vec!["tag-chip".to_string(), "label-chip".to_string()];
+            classes.extend(hue.map(|i| format!("label-hue-{i}")));
+            let classes: Vec<&str> = classes.iter().map(String::as_str).collect();
+            preview.set_css_classes(&classes);
         }
     };
 
