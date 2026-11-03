@@ -246,6 +246,14 @@ DESIGN.md demande la casse de phrase : à décider globalement.
 - Catalogue français complet : les 93 entrées « fuzzy » relues (beaucoup
   étaient fausses) et les 61 chaînes manquantes traduites.
 
+Décisions du propriétaire (2026-11-03, suite) : une seule section
+Étiquettes (code par compte gardé derrière `ACCOUNT_TAG_SECTIONS`,
+`0207791`) ; point de couleur dans les pastilles (`d72b305`, avec
+l'opacité du texte secondaire du lecteur remontée à 70 %) ; contraste
+élevé et mode sombre vérifiés plus tard par le propriétaire. En attente :
+garder ou non le composeur dans le volet de lecture ; casse du
+« New Message » du lanceur (.desktop).
+
 ## Reste à faire (connu)
 
 - Les boutons des en-têtes et l'avatar des lignes restent dans des
