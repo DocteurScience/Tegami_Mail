@@ -92,14 +92,7 @@ impl Row {
         let msg = &data.msg;
         let w = &self.w;
         // The circle.
-        w.avatar_revealer.set_visible(look.avatars);
-        let shown = self.st.borrow().avatar_shown;
-        w.avatar_revealer.set_reveal_child(shown);
-        w.avatar_revealer.set_css_classes(if shown {
-            &["focus-fade"]
-        } else {
-            &["focus-fade", "away"]
-        });
+        w.avatar.set_visible(look.avatars);
         let ring = format!("tegami-acct-ring-{}", msg.account_id);
         if look.ringed.contains(&msg.account_id) {
             w.avatar.set_css_classes(&[ring.as_str()]);

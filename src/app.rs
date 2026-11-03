@@ -7,7 +7,6 @@ use relm4::prelude::*;
 use crate::config;
 use crate::i18n::i18n;
 use crate::ui::notifications::NotifyInput;
-use crate::ui::FOCUS_ANIM_MS;
 
 // The message list's opening width now comes from config (the remembered pane
 // width, #28); its floor lives with the pane in message_list/layout.rs
@@ -447,51 +446,30 @@ impl SimpleComponent for AppModel {
                                 // pack_end packs right to left, so it comes
                                 // straight after the toolbar that sits by the
                                 // window controls.
-                                #[name = "lh_search"]
-                                pack_end = &gtk::Revealer {
-                                    set_transition_type: gtk::RevealerTransitionType::SlideLeft,
-                                    set_transition_duration: FOCUS_ANIM_MS,
-                                    add_css_class: "focus-fade",
-                                    set_reveal_child: true,
-                                    gtk::Button {
-                                        set_icon_name: "system-search-symbolic",
-                                        set_tooltip_text: Some(i18n("Search messages (Ctrl+F)").as_str()),
-                                        add_css_class: "flat",
-                                        connect_clicked[sender] => move |_| {
-                                            sender.input(AppMsg::OpenListSearch);
-                                        },
+                                pack_end = &gtk::Button {
+                                    set_icon_name: "system-search-symbolic",
+                                    set_tooltip_text: Some(i18n("Search messages (Ctrl+F)").as_str()),
+                                    add_css_class: "flat",
+                                    connect_clicked[sender] => move |_| {
+                                        sender.input(AppMsg::OpenListSearch);
                                     },
                                 },
                                 // The sort orders and every quick filter share
                                 // one popover (#441): a button each would crowd
                                 // the header.
-                                #[name = "lh_filter"]
-                                pack_end = &gtk::Revealer {
-                                    set_transition_type: gtk::RevealerTransitionType::SlideLeft,
-                                    set_transition_duration: FOCUS_ANIM_MS,
-                                    add_css_class: "focus-fade",
-                                    set_reveal_child: true,
-                                    #[name = "list_filter_btn"]
-                                    gtk::MenuButton {
-                                        set_icon_name: "filter-symbolic",
-                                        set_tooltip_text: Some(i18n("Sort and filter messages").as_str()),
-                                        set_valign: gtk::Align::Center,
-                                        add_css_class: "flat",
-                                    },
+                                #[name = "list_filter_btn"]
+                                pack_end = &gtk::MenuButton {
+                                    set_icon_name: "filter-symbolic",
+                                    set_tooltip_text: Some(i18n("Sort and filter messages").as_str()),
+                                    set_valign: gtk::Align::Center,
+                                    add_css_class: "flat",
                                 },
 
-                                #[name = "lh_count"]
-                                pack_end = &gtk::Revealer {
-                                    set_transition_type: gtk::RevealerTransitionType::SlideLeft,
-                                    set_transition_duration: FOCUS_ANIM_MS,
-                                    add_css_class: "focus-fade",
-                                    set_reveal_child: true,
-                                    gtk::Label {
-                                        #[watch]
-                                        set_label: &model.list_count,
-                                        set_valign: gtk::Align::Center,
-                                        add_css_class: "list-count",
-                                    },
+                                pack_end = &gtk::Label {
+                                    #[watch]
+                                    set_label: &model.list_count,
+                                    set_valign: gtk::Align::Center,
+                                    add_css_class: "list-count",
                                 },
                             },
                             // The All / Unread / Starred switch, under the
@@ -546,52 +524,34 @@ impl SimpleComponent for AppModel {
                                 // to, and the questions worth asking about it are
                                 // whether to edit, send or bin it.
                                 #[name = "tb_outbox_edit"]
-                                pack_start = &gtk::Revealer {
-                                    set_transition_type: gtk::RevealerTransitionType::SlideRight,
-                                    set_transition_duration: FOCUS_ANIM_MS,
-                                    add_css_class: "focus-fade",
-                                    set_reveal_child: true,
-                                    gtk::Button {
-                                        set_icon_name: "document-edit-symbolic",
-                                        set_tooltip_text: Some(i18n("Edit this message").as_str()),
-                                        add_css_class: "flat",
-                                        #[watch]
-                                        set_visible: model.showing_outbox,
-                                        #[watch]
-                                        set_sensitive: model.current.is_some(),
-                                        connect_clicked[sender] => move |_| sender.input(AppMsg::EditCurrentOutbox),
-                                    },
+                                pack_start = &gtk::Button {
+                                    set_icon_name: "document-edit-symbolic",
+                                    set_tooltip_text: Some(i18n("Edit this message").as_str()),
+                                    add_css_class: "flat",
+                                    #[watch]
+                                    set_visible: model.showing_outbox,
+                                    #[watch]
+                                    set_sensitive: model.current.is_some(),
+                                    connect_clicked[sender] => move |_| sender.input(AppMsg::EditCurrentOutbox),
                                 },
                                 #[name = "tb_outbox_send"]
-                                pack_start = &gtk::Revealer {
-                                    set_transition_type: gtk::RevealerTransitionType::SlideRight,
-                                    set_transition_duration: FOCUS_ANIM_MS,
-                                    add_css_class: "focus-fade",
-                                    set_reveal_child: true,
-                                    gtk::Button {
-                                        set_icon_name: "mail-send-symbolic",
-                                        set_tooltip_text: Some(i18n("Try to send this message now").as_str()),
-                                        add_css_class: "flat",
-                                        #[watch]
-                                        set_visible: model.showing_outbox,
-                                        #[watch]
-                                        set_sensitive: model.current.is_some(),
-                                        connect_clicked[sender] => move |_| sender.input(AppMsg::SendCurrentOutbox),
-                                    },
+                                pack_start = &gtk::Button {
+                                    set_icon_name: "mail-send-symbolic",
+                                    set_tooltip_text: Some(i18n("Try to send this message now").as_str()),
+                                    add_css_class: "flat",
+                                    #[watch]
+                                    set_visible: model.showing_outbox,
+                                    #[watch]
+                                    set_sensitive: model.current.is_some(),
+                                    connect_clicked[sender] => move |_| sender.input(AppMsg::SendCurrentOutbox),
                                 },
                                 #[name = "tb_outbox_send_all"]
-                                pack_start = &gtk::Revealer {
-                                    set_transition_type: gtk::RevealerTransitionType::SlideRight,
-                                    set_transition_duration: FOCUS_ANIM_MS,
-                                    add_css_class: "focus-fade",
-                                    set_reveal_child: true,
-                                    gtk::Button {
-                                        set_label: &i18n("Send all"),
-                                        add_css_class: "flat",
-                                        #[watch]
-                                        set_visible: model.showing_outbox,
-                                        connect_clicked[sender] => move |_| sender.input(AppMsg::RetryAllOutbox),
-                                    },
+                                pack_start = &gtk::Button {
+                                    set_label: &i18n("Send all"),
+                                    add_css_class: "flat",
+                                    #[watch]
+                                    set_visible: model.showing_outbox,
+                                    connect_clicked[sender] => move |_| sender.input(AppMsg::RetryAllOutbox),
                                 },
                                 // ---- The action buttons. Declared here in the
                                 // default order, then re-packed in init (and on
@@ -602,130 +562,94 @@ impl SimpleComponent for AppModel {
                                 // Reply All, Forward, Star, Archive, Spam,
                                 // Delete.
                                 #[name = "tb_reply"]
-                                pack_start = &gtk::Revealer {
-                                    set_transition_type: gtk::RevealerTransitionType::SlideRight,
-                                    set_transition_duration: FOCUS_ANIM_MS,
-                                    add_css_class: "focus-fade",
-                                    set_reveal_child: true,
-                                    gtk::Button {
-                                        // Icon and word: the one label the
-                                        // header has, on the action most taken
-                                        // (docs/DESIGN.md, "Header bars").
-                                        #[wrap(Some)]
-                                        set_child = &adw::ButtonContent {
-                                            set_icon_name: "mail-reply-sender-symbolic",
-                                            set_label: &i18n("Reply"),
-                                            set_can_shrink: true,
-                                        },
-                                        set_tooltip_text: Some(i18n("Reply (Ctrl+R)").as_str()),
-                                        add_css_class: "flat",
-                                        #[watch]
-                                        set_visible: model.toolbar_visible(config::ToolbarItem::Reply),
-                                        // In a conversation these act on the one
-                                        // highlighted card; with none (or several)
-                                        // highlighted they grey out — no way to say
-                                        // which message they'd mean.
-                                        #[watch]
-                                        set_sensitive: model.reply_target().is_some(),
-                                        connect_clicked[sender] => move |_| sender.input(AppMsg::Reply),
+                                pack_start = &gtk::Button {
+                                    // Icon and word: the one label the
+                                    // header has, on the action most taken
+                                    // (docs/DESIGN.md, "Header bars").
+                                    #[wrap(Some)]
+                                    set_child = &adw::ButtonContent {
+                                        set_icon_name: "mail-reply-sender-symbolic",
+                                        set_label: &i18n("Reply"),
+                                        set_can_shrink: true,
                                     },
+                                    set_tooltip_text: Some(i18n("Reply (Ctrl+R)").as_str()),
+                                    add_css_class: "flat",
+                                    #[watch]
+                                    set_visible: model.toolbar_visible(config::ToolbarItem::Reply),
+                                    // In a conversation these act on the one
+                                    // highlighted card; with none (or several)
+                                    // highlighted they grey out — no way to say
+                                    // which message they'd mean.
+                                    #[watch]
+                                    set_sensitive: model.reply_target().is_some(),
+                                    connect_clicked[sender] => move |_| sender.input(AppMsg::Reply),
                                 },
                                 #[name = "tb_reply_all"]
-                                pack_start = &gtk::Revealer {
-                                    set_transition_type: gtk::RevealerTransitionType::SlideRight,
-                                    set_transition_duration: FOCUS_ANIM_MS,
-                                    add_css_class: "focus-fade",
-                                    set_reveal_child: true,
-                                    gtk::Button {
-                                        set_icon_name: "mail-reply-all-symbolic",
-                                        set_tooltip_text: Some(i18n("Reply all").as_str()),
-                                        add_css_class: "flat",
-                                        #[watch]
-                                        set_visible: model.toolbar_visible(config::ToolbarItem::ReplyAll),
-                                        #[watch]
-                                        set_sensitive: model.reply_target().is_some(),
-                                        connect_clicked[sender] => move |_| sender.input(AppMsg::ReplyAll),
-                                    },
+                                pack_start = &gtk::Button {
+                                    set_icon_name: "mail-reply-all-symbolic",
+                                    set_tooltip_text: Some(i18n("Reply all").as_str()),
+                                    add_css_class: "flat",
+                                    #[watch]
+                                    set_visible: model.toolbar_visible(config::ToolbarItem::ReplyAll),
+                                    #[watch]
+                                    set_sensitive: model.reply_target().is_some(),
+                                    connect_clicked[sender] => move |_| sender.input(AppMsg::ReplyAll),
                                 },
                                 #[name = "tb_forward"]
-                                pack_start = &gtk::Revealer {
-                                    set_transition_type: gtk::RevealerTransitionType::SlideRight,
-                                    set_transition_duration: FOCUS_ANIM_MS,
-                                    add_css_class: "focus-fade",
-                                    set_reveal_child: true,
-                                    gtk::Button {
-                                        set_icon_name: "mail-forward-symbolic",
-                                        set_tooltip_text: Some(i18n("Forward").as_str()),
-                                        add_css_class: "flat",
-                                        #[watch]
-                                        set_visible: model.toolbar_visible(config::ToolbarItem::Forward),
-                                        #[watch]
-                                        set_sensitive: model.reply_target().is_some(),
-                                        connect_clicked[sender] => move |_| sender.input(AppMsg::Forward),
-                                    },
+                                pack_start = &gtk::Button {
+                                    set_icon_name: "mail-forward-symbolic",
+                                    set_tooltip_text: Some(i18n("Forward").as_str()),
+                                    add_css_class: "flat",
+                                    #[watch]
+                                    set_visible: model.toolbar_visible(config::ToolbarItem::Forward),
+                                    #[watch]
+                                    set_sensitive: model.reply_target().is_some(),
+                                    connect_clicked[sender] => move |_| sender.input(AppMsg::Forward),
                                 },
                                 #[name = "tb_star"]
-                                pack_start = &gtk::Revealer {
-                                    set_transition_type: gtk::RevealerTransitionType::SlideRight,
-                                    set_transition_duration: FOCUS_ANIM_MS,
-                                    add_css_class: "focus-fade",
-                                    set_reveal_child: true,
-                                    gtk::Button {
-                                        #[watch]
-                                        set_tooltip_text: Some(if model.toolbar_star_lit() { i18n("Remove star") } else { i18n("Star") }.as_str()),
-                                        // One glyph in both states, like every other
-                                        // icon; the starred state carries color only.
-                                        set_icon_name: "tegami-non-starred-symbolic",
-                                        #[watch]
-                                        set_css_classes: if model.toolbar_star_lit() {
-                                            &["flat", "star-active"]
-                                        } else {
-                                            &["flat"]
-                                        },
-                                        #[watch]
-                                        set_visible: model.toolbar_visible(config::ToolbarItem::Star),
-                                        #[watch]
-                                        set_sensitive: model.acts_on_selection(),
-                                        connect_clicked[sender] => move |_| sender.input(AppMsg::ToggleStar),
+                                pack_start = &gtk::Button {
+                                    #[watch]
+                                    set_tooltip_text: Some(if model.toolbar_star_lit() { i18n("Remove star") } else { i18n("Star") }.as_str()),
+                                    // One glyph in both states, like every other
+                                    // icon; the starred state carries color only.
+                                    set_icon_name: "tegami-non-starred-symbolic",
+                                    #[watch]
+                                    set_css_classes: if model.toolbar_star_lit() {
+                                        &["flat", "star-active"]
+                                    } else {
+                                        &["flat"]
                                     },
+                                    #[watch]
+                                    set_visible: model.toolbar_visible(config::ToolbarItem::Star),
+                                    #[watch]
+                                    set_sensitive: model.acts_on_selection(),
+                                    connect_clicked[sender] => move |_| sender.input(AppMsg::ToggleStar),
                                 },
                                 #[name = "tb_archive"]
-                                pack_start = &gtk::Revealer {
-                                    set_transition_type: gtk::RevealerTransitionType::SlideRight,
-                                    set_transition_duration: FOCUS_ANIM_MS,
-                                    add_css_class: "focus-fade",
-                                    set_reveal_child: true,
-                                    gtk::Button {
-                                        set_icon_name: "mail-archive-symbolic",
-                                        set_tooltip_text: Some(i18n("Archive").as_str()),
-                                        add_css_class: "flat",
-                                        #[watch]
-                                        set_visible: model.toolbar_visible(config::ToolbarItem::Archive),
-                                        #[watch]
-                                        set_sensitive: model.acts_on_selection(),
-                                        connect_clicked[sender] => move |_| sender.input(AppMsg::Archive),
-                                    },
+                                pack_start = &gtk::Button {
+                                    set_icon_name: "mail-archive-symbolic",
+                                    set_tooltip_text: Some(i18n("Archive").as_str()),
+                                    add_css_class: "flat",
+                                    #[watch]
+                                    set_visible: model.toolbar_visible(config::ToolbarItem::Archive),
+                                    #[watch]
+                                    set_sensitive: model.acts_on_selection(),
+                                    connect_clicked[sender] => move |_| sender.input(AppMsg::Archive),
                                 },
                                 #[name = "tb_delete"]
-                                pack_start = &gtk::Revealer {
-                                    set_transition_type: gtk::RevealerTransitionType::SlideRight,
-                                    set_transition_duration: FOCUS_ANIM_MS,
-                                    add_css_class: "focus-fade",
-                                    set_reveal_child: true,
-                                    gtk::Button {
-                                        set_icon_name: "user-trash-symbolic",
-                                        #[watch]
-                                        set_tooltip_text: Some(&model.delete_tooltip()),
-                                        add_css_class: "flat",
-                                        // Shown for the Outbox too (a queued message
-                                        // can still be binned) — see toolbar_visible.
-                                        #[watch]
-                                        set_visible: model.toolbar_visible(config::ToolbarItem::Delete),
-                                        #[watch]
-                                        set_sensitive: model.reply_target().is_some()
-                                            || model.many_selected(),
-                                        connect_clicked[sender] => move |_| sender.input(AppMsg::Delete),
-                                    },
+                                pack_start = &gtk::Button {
+                                    set_icon_name: "user-trash-symbolic",
+                                    #[watch]
+                                    set_tooltip_text: Some(&model.delete_tooltip()),
+                                    add_css_class: "flat",
+                                    // Shown for the Outbox too (a queued message
+                                    // can still be binned) — see toolbar_visible.
+                                    #[watch]
+                                    set_visible: model.toolbar_visible(config::ToolbarItem::Delete),
+                                    #[watch]
+                                    set_sensitive: model.reply_target().is_some()
+                                        || model.many_selected(),
+                                    connect_clicked[sender] => move |_| sender.input(AppMsg::Delete),
                                 },
                                 // ---- Default right group, left to right: Tags,
                                 // Read/Unread, Spam, Move To, Find, Print.
@@ -734,151 +658,100 @@ impl SimpleComponent for AppModel {
                                 // button either: right-click any address in a
                                 // message header.)
                                 #[name = "tb_print"]
-                                pack_end = &gtk::Revealer {
-                                    set_transition_type: gtk::RevealerTransitionType::SlideLeft,
-                                    set_transition_duration: FOCUS_ANIM_MS,
-                                    add_css_class: "focus-fade",
-                                    set_reveal_child: true,
-                                    gtk::Button {
-                                        set_icon_name: "printer-symbolic",
-                                        set_tooltip_text: Some(i18n("Print preview (Ctrl+Shift+P)").as_str()),
-                                        add_css_class: "flat",
-                                        #[watch]
-                                        set_visible: model.toolbar_visible(config::ToolbarItem::Print),
-                                        #[watch]
-                                        set_sensitive: model.current.is_some(),
-                                        // The preview, not the print dialog: the button
-                                        // shows what will come out and prints from
-                                        // there, so nobody spends paper to find out.
-                                        connect_clicked[sender] => move |_| sender.input(AppMsg::PrintPreview),
-                                    },
+                                pack_end = &gtk::Button {
+                                    set_icon_name: "printer-symbolic",
+                                    set_tooltip_text: Some(i18n("Print preview (Ctrl+Shift+P)").as_str()),
+                                    add_css_class: "flat",
+                                    #[watch]
+                                    set_visible: model.toolbar_visible(config::ToolbarItem::Print),
+                                    #[watch]
+                                    set_sensitive: model.current.is_some(),
+                                    // The preview, not the print dialog: the button
+                                    // shows what will come out and prints from
+                                    // there, so nobody spends paper to find out.
+                                    connect_clicked[sender] => move |_| sender.input(AppMsg::PrintPreview),
                                 },
                                 // In-message find (#103).
                                 #[name = "tb_find"]
-                                pack_end = &gtk::Revealer {
-                                    set_transition_type: gtk::RevealerTransitionType::SlideLeft,
-                                    set_transition_duration: FOCUS_ANIM_MS,
-                                    add_css_class: "focus-fade",
-                                    set_reveal_child: true,
-                                    gtk::Button {
-                                        set_icon_name: "loupe-with-arrow-symbolic",
-                                        set_tooltip_text: Some(i18n("Find in message (Ctrl+F)").as_str()),
-                                        add_css_class: "flat",
-                                        // Greyed out, not hidden, with no message
-                                        // open: the toolbar must not shift.
-                                        #[watch]
-                                        set_visible: model.toolbar_visible(config::ToolbarItem::Find),
-                                        #[watch]
-                                        set_sensitive: model.current.is_some(),
-                                        connect_clicked[sender] => move |_| {
-                                            sender.input(AppMsg::OpenReaderFind);
-                                        },
+                                pack_end = &gtk::Button {
+                                    set_icon_name: "loupe-with-arrow-symbolic",
+                                    set_tooltip_text: Some(i18n("Find in message (Ctrl+F)").as_str()),
+                                    add_css_class: "flat",
+                                    // Greyed out, not hidden, with no message
+                                    // open: the toolbar must not shift.
+                                    #[watch]
+                                    set_visible: model.toolbar_visible(config::ToolbarItem::Find),
+                                    #[watch]
+                                    set_sensitive: model.current.is_some(),
+                                    connect_clicked[sender] => move |_| {
+                                        sender.input(AppMsg::OpenReaderFind);
                                     },
                                 },
                                 // Move To… (#164): a folder picker for the
                                 // target, or the whole list selection.
-                                #[name = "tb_move"]
-                                pack_end = &gtk::Revealer {
-                                    set_transition_type: gtk::RevealerTransitionType::SlideLeft,
-                                    set_transition_duration: FOCUS_ANIM_MS,
-                                    add_css_class: "focus-fade",
-                                    set_reveal_child: true,
-                                    gtk::Box {
-                                        #[local_ref]
-                                        reader_move_btn -> gtk::Button {
-                                            #[watch]
-                                            set_visible: model.toolbar_visible(config::ToolbarItem::MoveTo),
-                                            #[watch]
-                                            set_sensitive: model.reply_target().is_some()
-                                                || model.many_selected(),
-                                        },
-                                    },
+                                #[local_ref]
+                                pack_end = &reader_move_btn -> gtk::Button {
+                                    #[watch]
+                                    set_visible: model.toolbar_visible(config::ToolbarItem::MoveTo),
+                                    #[watch]
+                                    set_sensitive: model.reply_target().is_some()
+                                        || model.many_selected(),
                                 },
                                 // Snooze (#527): a menu of times, greyed out
                                 // where nothing can be snoozed (Drafts, POP3).
-                                #[name = "tb_snooze"]
-                                pack_end = &gtk::Revealer {
-                                    set_transition_type: gtk::RevealerTransitionType::SlideLeft,
-                                    set_transition_duration: FOCUS_ANIM_MS,
-                                    add_css_class: "focus-fade",
-                                    set_reveal_child: true,
-                                    gtk::Box {
-                                        #[local_ref]
-                                        reader_snooze_btn -> gtk::Button {
-                                            #[watch]
-                                            set_visible: model.toolbar_visible(config::ToolbarItem::Snooze),
-                                            #[watch]
-                                            set_sensitive: model.snooze_offered(),
-                                        },
-                                    },
+                                #[local_ref]
+                                pack_end = &reader_snooze_btn -> gtk::Button {
+                                    #[watch]
+                                    set_visible: model.toolbar_visible(config::ToolbarItem::Snooze),
+                                    #[watch]
+                                    set_sensitive: model.snooze_offered(),
                                 },
                                 #[name = "tb_spam"]
-                                pack_end = &gtk::Revealer {
-                                    set_transition_type: gtk::RevealerTransitionType::SlideLeft,
-                                    set_transition_duration: FOCUS_ANIM_MS,
-                                    add_css_class: "focus-fade",
-                                    set_reveal_child: true,
-                                    gtk::Button {
-                                        #[watch]
-                                        set_icon_name: if model.target_in_junk() {
-                                            "mail-mark-notjunk-symbolic"
-                                        } else {
-                                            "mail-mark-junk-symbolic"
-                                        },
-                                        #[watch]
-                                        set_tooltip_text: Some(if model.target_in_junk() { i18n("Not spam") } else { i18n("Mark as spam") }.as_str()),
-                                        add_css_class: "flat",
-                                        #[watch]
-                                        set_visible: model.toolbar_visible(config::ToolbarItem::Spam),
-                                        #[watch]
-                                        set_sensitive: model.acts_on_selection(),
-                                        connect_clicked[sender] => move |_| sender.input(AppMsg::MarkSpam),
+                                pack_end = &gtk::Button {
+                                    #[watch]
+                                    set_icon_name: if model.target_in_junk() {
+                                        "mail-mark-notjunk-symbolic"
+                                    } else {
+                                        "mail-mark-junk-symbolic"
                                     },
+                                    #[watch]
+                                    set_tooltip_text: Some(if model.target_in_junk() { i18n("Not spam") } else { i18n("Mark as spam") }.as_str()),
+                                    add_css_class: "flat",
+                                    #[watch]
+                                    set_visible: model.toolbar_visible(config::ToolbarItem::Spam),
+                                    #[watch]
+                                    set_sensitive: model.acts_on_selection(),
+                                    connect_clicked[sender] => move |_| sender.input(AppMsg::MarkSpam),
                                 },
                                 #[name = "tb_read"]
-                                pack_end = &gtk::Revealer {
-                                    set_transition_type: gtk::RevealerTransitionType::SlideLeft,
-                                    set_transition_duration: FOCUS_ANIM_MS,
-                                    add_css_class: "focus-fade",
-                                    set_reveal_child: true,
-                                    gtk::Button {
-                                        add_css_class: "flat",
-                                        #[watch]
-                                        set_visible: model.toolbar_visible(config::ToolbarItem::ReadUnread),
-                                        // The icon shows the ACTION (read envelope =
-                                        // "mark as read"), matching the menus.
-                                        #[watch]
-                                        set_icon_name: if model.reply_target().is_some_and(|m| m.unread) {
-                                            "tegami-mail-read-symbolic"
-                                        } else {
-                                            "mail-unread-symbolic"
-                                        },
-                                        #[watch]
-                                        set_tooltip_text: Some(if model.reply_target().is_some_and(|m| m.unread) { i18n("Mark as read") } else { i18n("Mark as unread") }.as_str()),
-                                        #[watch]
-                                        set_sensitive: model.acts_on_selection(),
-                                        connect_clicked[sender] => move |_| sender.input(AppMsg::ToggleReadCurrent),
+                                pack_end = &gtk::Button {
+                                    add_css_class: "flat",
+                                    #[watch]
+                                    set_visible: model.toolbar_visible(config::ToolbarItem::ReadUnread),
+                                    // The icon shows the ACTION (read envelope =
+                                    // "mark as read"), matching the menus.
+                                    #[watch]
+                                    set_icon_name: if model.reply_target().is_some_and(|m| m.unread) {
+                                        "tegami-mail-read-symbolic"
+                                    } else {
+                                        "mail-unread-symbolic"
                                     },
+                                    #[watch]
+                                    set_tooltip_text: Some(if model.reply_target().is_some_and(|m| m.unread) { i18n("Mark as read") } else { i18n("Mark as unread") }.as_str()),
+                                    #[watch]
+                                    set_sensitive: model.acts_on_selection(),
+                                    connect_clicked[sender] => move |_| sender.input(AppMsg::ToggleReadCurrent),
                                 },
                                 // Tags (#71): a menu of the tags, ticked where
                                 // the target carries them. Only once a tag exists.
-                                #[name = "tb_tags"]
-                                pack_end = &gtk::Revealer {
-                                    set_transition_type: gtk::RevealerTransitionType::SlideLeft,
-                                    set_transition_duration: FOCUS_ANIM_MS,
-                                    add_css_class: "focus-fade",
-                                    set_reveal_child: true,
-                                    gtk::Box {
-                                        #[local_ref]
-                                        reader_tag_btn -> gtk::Button {
-                                            #[watch]
-                                            // Shown with no tag yet too: the
-                                            // panel's search creates the first.
-                                            set_visible: model.toolbar_visible(config::ToolbarItem::Tags),
-                                            #[watch]
-                                            set_sensitive: model.acts_on_selection(),
-                                        },
-                                    },
+                                #[local_ref]
+                                pack_end = &reader_tag_btn -> gtk::Button {
+                                    #[watch]
+                                    // Shown with no tag yet too: the
+                                    // panel's search creates the first.
+                                    set_visible: model.toolbar_visible(config::ToolbarItem::Tags),
+                                    #[watch]
+                                    set_sensitive: model.acts_on_selection(),
                                 },
                                 #[name = "tb_spinner"]
                                 pack_end = &gtk::Spinner {

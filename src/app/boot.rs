@@ -1,6 +1,6 @@
 //! The startup steps that run before the root component's model exists:
 //! process-wide state (network, CSS, icons, theme, web fonts), the sidebar
-//! layout and Focus Mode, the accounts reconciled against GNOME Online
+//! layout, the accounts reconciled against GNOME Online
 //! Accounts, and the main menu and its two stateful actions.
 
 use adw::prelude::*;

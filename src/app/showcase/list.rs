@@ -381,7 +381,7 @@ impl AppModel {
 /// slide really animates; TEGAMI_SHOWCASE_BURST writes stills
 /// through the first one. In a narrow window (a window.toml
 /// under the 1094px breakpoint) that is the floating peek; at
-/// full width, or under Focus Mode's rail, it is the rail
+/// full width it is the rail
 /// expanding and folding again.
 pub(super) fn stage_peek(root: &adw::ApplicationWindow, sender: &ComponentSender<AppModel>) {
     if let Ok(spec) = std::env::var("TEGAMI_SHOWCASE_PEEK") {

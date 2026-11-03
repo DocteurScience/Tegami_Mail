@@ -51,11 +51,6 @@ mod translation_page;
 mod web_signin;
 pub(crate) mod welcome;
 
-/// How long Focus Mode's parts take to slide and fade away (and back), in
-/// milliseconds: the reader toolbar, the list header, the sidebar's
-/// accounts and the list's avatars all move on this one clock.
-pub(crate) const FOCUS_ANIM_MS: u32 = 320;
-
 /// Give a Refresh button its face for the network's state: orange, with a
 /// tooltip that says why, while the network is down (#442). The header's, the
 /// peek's and the rail's buttons all wear it.

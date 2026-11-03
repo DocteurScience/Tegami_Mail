@@ -515,8 +515,8 @@ pub(crate) struct AppModel {
     pub(super) favorites_placement: config::SectionPlacement,
     /// The main menu's "Reading Pane" check item, the setting's only switch.
     pub(super) reading_pane_action: gtk::gio::SimpleAction,
-    /// The message list header's foldable controls and the ⋯ that stands in
-    /// for them in Focus Mode (set in init).
+    /// The message list header's sort and filter popover and the All /
+    /// Unread / Starred switch (set in init).
     pub(super) list_header_widgets: std::cell::OnceCell<ListHeaderWidgets>,
     /// Whether the sidebar's disclosure chevrons lead their rows.
     pub(super) chevrons_left: bool,

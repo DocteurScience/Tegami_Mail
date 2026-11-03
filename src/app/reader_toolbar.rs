@@ -34,10 +34,10 @@ const DESIGN_MENU: [config::ToolbarItem; 4] = [
 /// The reader header's action buttons and fold breakpoint, kept for
 /// re-packing when the layout changes (see relayout_reader_toolbar).
 pub(super) struct ReaderToolbarWidgets {
-    /// Each action button inside its Focus Mode revealer.
+    /// Each action button, as packed in the header.
     pub(super) buttons: Vec<(config::ToolbarItem, gtk::Widget)>,
-    /// The Outbox's own buttons' revealers (Edit, Send, Send all).
-    pub(super) outbox: Vec<gtk::Revealer>,
+    /// The Outbox's own buttons (Edit, Send, Send all).
+    pub(super) outbox: Vec<gtk::Widget>,
     pub(super) spinner: gtk::Widget,
     /// With the reader below the list or off (#475) the buttons move to
     /// this box in the list header.
@@ -174,8 +174,7 @@ impl AppModel {
 
     /// The Outbox's overflow: its own buttons (Edit, Send, Send all,
     /// Delete) sit in the always-visible left group; only View Source is
-    /// left to fold here (queued rows have no context menu to carry it),
-    /// unless Focus Mode folded that group too.
+    /// left to fold here (queued rows have no context menu to carry it).
     fn outbox_overflow_sections(
         &self,
         has_current: bool,
@@ -447,7 +446,7 @@ impl AppModel {
             detach(&overflow);
             header.pack_end(&overflow);
             for r in &tb.outbox {
-                detach(r.upcast_ref());
+                detach(r);
                 header.pack_start(r);
             }
         }
@@ -457,23 +456,13 @@ impl AppModel {
         detach(&tb.spinner);
         let find =
             |item: config::ToolbarItem| tb.buttons.iter().find(|(i, _)| *i == item).map(|(_, w)| w);
-        // Each button's Focus Mode revealer slides towards the edge its
-        // group sits against: GTK's SlideRight moves a folding child off to
-        // the left, SlideLeft keeps it anchored and shrinks it from its
-        // right, which is what an end-packed group needs.
         for item in &self.reader_toolbar.left {
             if let Some(w) = find(*item) {
-                if let Some(r) = w.downcast_ref::<gtk::Revealer>() {
-                    r.set_transition_type(gtk::RevealerTransitionType::SlideRight);
-                }
                 header.pack_start(w);
             }
         }
         for item in self.reader_toolbar.right.iter().rev() {
             if let Some(w) = find(*item) {
-                if let Some(r) = w.downcast_ref::<gtk::Revealer>() {
-                    r.set_transition_type(gtk::RevealerTransitionType::SlideLeft);
-                }
                 header.pack_end(w);
             }
         }
@@ -558,13 +547,8 @@ impl AppModel {
         if compact || (self.toolbar_in_list() && self.many_selected()) || self.showing_outbox {
             return;
         }
-        // The revealers open after the first frames: measured before, the
-        // row looks empty. Try again once they are open.
-        let opening = tb.buttons.iter().any(|(_, w)| {
-            w.downcast_ref::<gtk::Revealer>()
-                .is_some_and(|r| r.get_visible() && !r.is_child_revealed())
-        });
-        if opening || !header.is_mapped() {
+        // Not drawn yet, the row measures as nothing: try again shortly.
+        if !header.is_mapped() {
             let s = self.self_sender.clone();
             gtk::glib::timeout_add_local_once(std::time::Duration::from_millis(250), move || {
                 let _ = s.send(AppMsg::MeasureReaderFold);
@@ -648,6 +632,29 @@ impl AppModel {
             6
         };
         (button, gap.max(0))
+    }
+
+    /// The reader toolbar's buttons, each with the item it stands for.
+    fn toolbar_buttons(
+        &self,
+        widgets: &AppModelWidgets,
+    ) -> Vec<(config::ToolbarItem, gtk::Widget)> {
+        use config::ToolbarItem as T;
+        vec![
+            (T::Reply, widgets.tb_reply.clone().upcast()),
+            (T::ReplyAll, widgets.tb_reply_all.clone().upcast()),
+            (T::Forward, widgets.tb_forward.clone().upcast()),
+            (T::Star, widgets.tb_star.clone().upcast()),
+            (T::Archive, widgets.tb_archive.clone().upcast()),
+            (T::Snooze, self.reader_snooze_btn.clone().upcast()),
+            (T::Delete, widgets.tb_delete.clone().upcast()),
+            (T::Spam, widgets.tb_spam.clone().upcast()),
+            (T::ReadUnread, widgets.tb_read.clone().upcast()),
+            (T::Tags, self.reader_tag_btn.clone().upcast()),
+            (T::MoveTo, self.reader_move_btn.clone().upcast()),
+            (T::Find, widgets.tb_find.clone().upcast()),
+            (T::Print, widgets.tb_print.clone().upcast()),
+        ]
     }
 
     /// Tooltip for the toolbar's trash button: says when it will delete the
@@ -773,7 +780,7 @@ impl AppModel {
         let full = header.measure(gtk::Orientation::Horizontal, -1).1;
         let mut controls = 0;
         measure_controls(&header, &mut controls);
-        let buttons = toolbar_buttons(widgets);
+        let buttons = self.toolbar_buttons(widgets);
         let (packed_sum, button_w) = button_widths(&buttons);
         let base = if full <= 0 {
             0
@@ -791,23 +798,14 @@ impl AppModel {
         widgets.reader_bin.add_breakpoint(compact_bp.clone());
         let remeasure = remeasure_soon(self.self_sender.clone());
         for (_, w) in &buttons {
-            if let Some(r) = w.downcast_ref::<gtk::Revealer>() {
-                follow_button(r, &remeasure);
-            }
-        }
-        for r in [
-            &widgets.tb_outbox_edit,
-            &widgets.tb_outbox_send,
-            &widgets.tb_outbox_send_all,
-        ] {
-            follow_button(r, &remeasure);
+            remeasure_on_visible(w, &remeasure);
         }
         let _ = self.reader_toolbar_widgets.set(ReaderToolbarWidgets {
             buttons,
             outbox: vec![
-                widgets.tb_outbox_edit.clone(),
-                widgets.tb_outbox_send.clone(),
-                widgets.tb_outbox_send_all.clone(),
+                widgets.tb_outbox_edit.clone().upcast(),
+                widgets.tb_outbox_send.clone().upcast(),
+                widgets.tb_outbox_send_all.clone().upcast(),
             ],
             spinner: widgets.tb_spinner.clone().upcast(),
             list_header: widgets.list_header.clone(),
@@ -892,51 +890,16 @@ fn measure_controls(w: &gtk::Widget, sum: &mut i32) {
     }
 }
 
-/// The reader toolbar's buttons, each with the item it stands for.
-fn toolbar_buttons(widgets: &AppModelWidgets) -> Vec<(config::ToolbarItem, gtk::Widget)> {
-    use config::ToolbarItem as T;
-    vec![
-        (T::Reply, widgets.tb_reply.clone().upcast()),
-        (T::ReplyAll, widgets.tb_reply_all.clone().upcast()),
-        (T::Forward, widgets.tb_forward.clone().upcast()),
-        (T::Star, widgets.tb_star.clone().upcast()),
-        (T::Archive, widgets.tb_archive.clone().upcast()),
-        (T::Snooze, widgets.tb_snooze.clone().upcast()),
-        (T::Delete, widgets.tb_delete.clone().upcast()),
-        (T::Spam, widgets.tb_spam.clone().upcast()),
-        (T::ReadUnread, widgets.tb_read.clone().upcast()),
-        (T::Tags, widgets.tb_tags.clone().upcast()),
-        (T::MoveTo, widgets.tb_move.clone().upcast()),
-        (T::Find, widgets.tb_find.clone().upcast()),
-        (T::Print, widgets.tb_print.clone().upcast()),
-    ]
-}
-
 /// What the row counts for the buttons now, and one button's cost, from
-/// the buttons themselves (a hidden one — Tags before any tag exists —
+/// the buttons themselves (a hidden one — Find while the reader is off —
 /// measures 0 and is skipped); what is left of the row after them and the
 /// controls is the base.
-///
-/// Two different widths, and the difference is load-bearing. Each
-/// button sits in a Focus Mode revealer, and a revealer that has
-/// not been revealed yet measures 0 however wide its child is —
-/// which is exactly the state this runs in, before
-/// `sync_focus_chrome` opens them. So a button's own cost comes
-/// from the button inside the revealer, while what is taken off
-/// `full` is what the row counted for it *just now*: the revealer.
-/// Subtracting the buttons from a row that never included them is
-/// how the base went negative (and the fold stopped happening) the
-/// moment Focus Mode wrapped the row in revealers.
 fn button_widths(buttons: &[(config::ToolbarItem, gtk::Widget)]) -> (i32, i32) {
     let mut packed_sum = 0;
     let mut button_w = 0;
     for (_, w) in buttons {
-        packed_sum += w.measure(gtk::Orientation::Horizontal, -1).1;
-        let inner = w
-            .downcast_ref::<gtk::Revealer>()
-            .and_then(|r| r.child())
-            .unwrap_or_else(|| w.clone());
-        let nat = inner.measure(gtk::Orientation::Horizontal, -1).1;
+        let nat = w.measure(gtk::Orientation::Horizontal, -1).1;
+        packed_sum += nat;
         if nat > 0 {
             button_w = button_w.max(nat);
         }
@@ -944,31 +907,11 @@ fn button_widths(buttons: &[(config::ToolbarItem, gtk::Widget)]) -> (i32, i32) {
     (packed_sum, button_w)
 }
 
-/// Show a button's Focus Mode revealer only while the button shows: an
-/// empty revealer still takes the headerbar's spacing, and a folded right
-/// group left enough of it to push the window controls off a narrow pane.
-/// The row is measured again whenever a button comes or goes (a first tag
-/// brings Tags), once per burst of them.
-fn follow_button(revealer: &gtk::Revealer, remeasure: &std::rc::Rc<dyn Fn()>) {
-    let Some(child) = revealer.child() else {
-        return;
-    };
-    // Tags, Move To and Snooze sit in a box of their own.
-    let button = match child.downcast_ref::<gtk::Box>() {
-        Some(b) => b.first_child().unwrap_or(child.clone()),
-        None => child,
-    };
-    // The button's own flag: `is_visible` asks its ancestors too, and
-    // the revealer is one of them.
-    revealer.set_visible(button.get_visible());
-    let r = revealer.downgrade();
+/// The row is measured again whenever a button comes or goes (a first
+/// tag brings Tags), once per burst of them.
+fn remeasure_on_visible(button: &gtk::Widget, remeasure: &std::rc::Rc<dyn Fn()>) {
     let remeasure = remeasure.clone();
-    button.connect_visible_notify(move |b| {
-        if let Some(r) = r.upgrade() {
-            r.set_visible(b.get_visible());
-        }
-        remeasure();
-    });
+    button.connect_visible_notify(move |_| remeasure());
 }
 
 /// A measurement of the toolbar row in the next idle, however many ask.

@@ -2299,18 +2299,6 @@ textview.console-view text selection {
   background: alpha(currentColor, 0.12);
 }
 
-/* ---- Focus Mode ---- */
-
-/* The parts Focus Mode strips sit in revealers that slide away; the `away`
-   class fades them over the same stretch so they dissolve rather than get
-   clipped, and lifts them back in when the mode ends. */
-.focus-fade {
-  transition: opacity 260ms ease-out;
-}
-.focus-fade.away {
-  opacity: 0;
-}
-
 /* Message zoom chip on the reader header's account line: shown only away
    from the default, and a click goes back there, so it answers the pointer
    like a button. */

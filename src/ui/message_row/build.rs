@@ -51,17 +51,9 @@ pub(super) fn build_widgets() -> RowWidgets {
     content.set_overflow(gtk::Overflow::Hidden);
     overlay.set_child(Some(&content));
 
-    // The circle sits in a revealer so Focus Mode can slide it away (and
-    // back). SlideRight: folding, the circle moves off past the left edge.
-    let avatar_revealer = gtk::Revealer::new();
-    avatar_revealer.set_transition_type(gtk::RevealerTransitionType::SlideRight);
-    avatar_revealer.set_transition_duration(crate::ui::FOCUS_ANIM_MS);
-    avatar_revealer.add_css_class("focus-fade");
-    avatar_revealer.set_reveal_child(true);
     let avatar = adw::Avatar::new(38, None, true);
     avatar.set_valign(gtk::Align::Center);
-    avatar_revealer.set_child(Some(&avatar));
-    content.append(&avatar_revealer);
+    content.append(&avatar);
 
     let dot = gtk::Box::new(gtk::Orientation::Horizontal, 0);
     dot.add_css_class("unread-dot");
@@ -125,7 +117,7 @@ pub(super) fn build_widgets() -> RowWidgets {
     text.append(&top);
 
     // The subject and the tag chips at its end, where a long subject gives
-    // way before the sender's name would. Hidden whole by Focus Mode.
+    // way before the sender's name would.
     let subject_line = gtk::Box::new(gtk::Orientation::Horizontal, 6);
     let subject = gtk::Label::new(None);
     subject.set_halign(gtk::Align::Start);
@@ -294,7 +286,6 @@ pub(super) fn build_widgets() -> RowWidgets {
         name_col,
         subject_col,
         date_col,
-        avatar_revealer,
         avatar,
         dot,
         text,

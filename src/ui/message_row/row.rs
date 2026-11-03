@@ -32,7 +32,6 @@ pub(super) struct RowWidgets {
     pub(super) palette_spacer: gtk::Box,
     pub(super) palette_inner: gtk::Box,
     pub(super) content: gtk::Box,
-    pub(super) avatar_revealer: gtk::Revealer,
     pub(super) avatar: adw::Avatar,
     pub(super) dot: gtk::Box,
     pub(super) text: gtk::Box,
@@ -110,7 +109,6 @@ pub(super) struct RowState {
     pub(super) face_for: Option<(String, u64)>,
     /// The keywords, Gmail labels and tag generation the chips were built for.
     pub(super) tags_for: Option<TagsKey>,
-    pub(super) avatar_shown: bool,
     pub(super) hovered: bool,
     /// The columns the widgets are laid out in on one line, or `None` for
     /// the card (#334).
@@ -160,7 +158,6 @@ impl Row {
             shared: Rc::downgrade(shared),
             w,
             st: RefCell::new(RowState {
-                avatar_shown: true,
                 ..Default::default()
             }),
             list_item: RefCell::new(glib::WeakRef::new()),
@@ -438,7 +435,6 @@ impl Row {
             st.palette_target = 0;
             st.hovered = false;
             st.dragging = false;
-            st.avatar_shown = true;
             st.swipe_progress = 0.0;
             st.swipe_side = 0;
             st.swipe_dragging = false;
@@ -474,16 +470,9 @@ impl Row {
         self.w.revealer.set_transition_duration(0);
         self.w.revealer.set_reveal_child(true);
         self.w.revealer.set_transition_duration(200);
-        self.w.avatar_revealer.set_transition_duration(0);
-        self.w.avatar_revealer.set_reveal_child(true);
-        self.w
-            .avatar_revealer
-            .set_transition_duration(crate::ui::FOCUS_ANIM_MS);
     }
 
     // ── Names and faces ──
-
-    // ── Focus Mode ──
 
     // ── The palette ──
 

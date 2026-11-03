@@ -1,5 +1,4 @@
-//! The message list's header: its Focus Mode fold, the sort and filter
-//! popover, and the wide/narrow switch.
+//! The message list's header: the sort and filter popover, and the wide/narrow switch.
 
 use adw::prelude::*;
 use relm4::prelude::*;
@@ -508,8 +507,6 @@ impl AppModel {
         self.message_list.emit(MessageListInput::SetSingleLine(on));
     }
 
-    /// Hand the list its look; `animate` slides the avatars away or back
-    /// (a Focus Mode toggle) rather than rebuilding the rows outright.
     /// The sort menu's Show checks, as the settings are now.
     pub(super) fn sync_show_checks(&self) {
         if let Some(lh) = self.list_header_widgets.get() {

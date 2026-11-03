@@ -1,5 +1,5 @@
 //! Which sections, rows and tree nodes are open, and the unread counts the
-//! rows show; the rail's and Focus Mode's open state is temporary.
+//! rows show; the rail's open state is temporary.
 
 use super::tree::hidden_by_collapse;
 use super::types::{chevron_icon, UnifiedRow};
