@@ -78,6 +78,12 @@ sessions cloud) :
   (`src/app/showcase*`, `TEGAMI_SHOWCASE_REPLY=3 TEGAMI_SHOWCASE_TOP=1`
   pour le composeur, `TEGAMI_SHOWCASE_ATTACH=…`, `TEGAMI_SHOWCASE_TAGS=panel|new`).
   Les captures sont en 2x.
+- Comparaison aux maquettes : `docker exec tgu bash /mockup-shots.sh`
+  (Adwaita Sans, captures plein écran avec dialogues et popovers, clics
+  xdotool), puis `docker cp tgu:/shots/grab /tmp/grab` et
+  `tools/dev/mockup-crop.py /tmp/grab DOSSIER` : une image par maquette,
+  en 1x (dimensions des maquettes) et en 2x. Sans compositeur, les popovers
+  n'ont ni coins arrondis ni ombre.
 - `WEBKIT_DISABLE_SANDBOX_THIS_IS_DANGEROUS=1` n'est utilisé que pour ces
   captures locales (le propriétaire l'a accepté) ; jamais dans le code.
 - Instantanés HTML du lecteur : `TEGAMI_BLESS_GOLDEN=1` régénère

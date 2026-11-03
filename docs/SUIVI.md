@@ -93,6 +93,7 @@ Dernière mise à jour : 2026-11-02, après `40a6c7e`.
 | `13ac3a4` | Tables `attachment_meta`/`attachment_scan` supprimées (schéma v22, migration `DROP`), leurs écritures (workers, `strip.rs`, démo) et le préchargement des dossiers « galerie » ; le préchargement des pièces jointes récentes reste |
 | `80e9d01` | Restes du mode Concentration : boutons des en-têtes et avatars de la liste sortis de leurs révélateurs, mesure du repli simplifiée (plus d'attente d'ouverture, remesure quand un bouton apparaît), `FOCUS_ANIM_MS` et CSS `.focus-fade` retirés ; vérifié par captures à 1430, 1090 et 820 px |
 | `d0c271f` | Relecture de la doc : Undo Send (plus de réponse dans le volet), README des docs et deux phrases du CHANGELOG (Markdown/HTML, réglage du composeur dans le volet) ; FEATURES, DOCUMENTATION et KEYBOARD_SHORTCUTS déjà à jour par ailleurs |
+| (ce commit) | Outillage de comparaison aux maquettes : `tools/dev/grab.sh`, `popgrab.sh`, `mockup-shots.sh`, `mockup-crop.py` ; Adwaita Sans et outils X dans le conteneur, proxy apt rafraîchi à chaque démarrage. Série de 17 captures envoyée au propriétaire (2026-11-03) pour une analyse de design |
 
 ## Décisions prises
 
