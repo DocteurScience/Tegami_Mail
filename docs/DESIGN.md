@@ -153,10 +153,9 @@ Screens: `02-conversation.png`, `03-conversation-expanded.png`.
 
 ## Replying and composing
 
-Reply, Reply to all and Forward open the **composer window**. The existing
-setting that places the composer in the reading pane stays until a decision is
-taken on removing it; the default is the window, and the inline composer is not
-redesigned.
+Reply, Reply to all, Forward and New message open the **composer window**,
+the only place a message is written: the reading pane holds no composer
+(owner's decision, 2026-11-03).
 
 The composer window:
 
@@ -355,7 +354,6 @@ Test each screen with the checklist from the HIG:
 
 ## Open questions
 
-- Whether to remove the setting that puts the composer in the reading pane.
 - Whether a dark version of every screen is needed before the first release
   (the colours are named, so it should follow without drawing).
 - A tag's server keyword when two accented names collapse to the same atom.
