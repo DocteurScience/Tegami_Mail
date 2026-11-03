@@ -549,6 +549,18 @@ fn date_groups_default_reaches_existing_installs_once() {
     assert!(!fresh.list_group_by_date);
 }
 
+/// A new install opens a lone message flat (mockup 10), the old card
+/// default (#153) reaching only a file written before it.
+#[test]
+fn lone_messages_are_flat_on_a_new_install() {
+    let mut fresh = PrivacyFile::default();
+    apply_new_defaults(&mut fresh);
+    assert!(!fresh.single_message_card);
+    let mut old: PrivacyFile = toml::from_str("single_message_card = false\n").unwrap();
+    apply_new_defaults(&mut old);
+    assert!(old.single_message_card);
+}
+
 /// An account from before #445 has one `signature`, which reads as a
 /// list of one that new messages start with; a list written now keeps
 /// `signature` on its default for an older Tegami Mail, and no default

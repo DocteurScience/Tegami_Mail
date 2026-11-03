@@ -273,6 +273,15 @@ Comparaison maquettes 10 à 17 (2026-11-03) :
 - 17 grand texte : tient à 150 %.
 - 16 contraste élevé : à vérifier par le propriétaire.
 
+Décisions du propriétaire (2026-11-03, soir) : colonne d'icônes gardée
+à 1024 px ; pas de version téléphone (application de bureau) ; message
+seul à plat par défaut sur une nouvelle installation (`single_message_card`
+à faux), **point à revoir quand le propriétaire utilisera l'application**
+(son installation garde sa valeur : Réglages → Lecture). Écart restant
+avec la maquette 10 : l'en-tête d'un message seul montre la puce
+« n destinataires » et la date à droite, la maquette « À : moi · date »
+sous le nom.
+
 ## Reste à faire (connu)
 
 - Les boutons des en-têtes et l'avatar des lignes restent dans des

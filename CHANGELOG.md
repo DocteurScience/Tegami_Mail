@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- **Changed: a lone message is flat on a new install** (mockups 01 and
+  10), the reader's ground under it rather than a card. **Settings →
+  Reading → single messages as cards** still brings the card back, and an
+  install that has the setting keeps it.
+
 - **Changed: files in the composer as the redesign draws them** (mockups 11
   and 12): attached files are cards with a border, the name in bold; files
   dragged over the composer bring up compact cards stacked at its top, the

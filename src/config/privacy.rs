@@ -127,7 +127,7 @@ pub(crate) struct PrivacyFile {
     #[serde(default)]
     pub(crate) reader_find_bottom: bool,
     /// Whether a lone message renders as an inset card like a conversation's
-    /// messages (#57); off keeps the full-bleed view.
+    /// messages (#57); off, the default, keeps the full-bleed view.
     #[serde(default = "default_single_message_card")]
     pub(crate) single_message_card: bool,
     /// Whether the chip naming the message's account is shown above the
@@ -553,11 +553,12 @@ fn default_thread_expansion() -> bool {
 }
 
 fn default_single_message_card() -> bool {
-    // On for new installs (Jason, 2026-08-31): lone messages get the same
-    // inset card as conversations. Only a privacy.toml MISSING this key sees
-    // the default — every save writes all fields, so an existing install's
+    // Off for new installs: a lone message sits flat on the reader's
+    // ground, as the redesign draws it (mockups 01 and 10; owner's
+    // decision, 2026-11-03). Only a privacy.toml MISSING this key sees the
+    // default — every save writes all fields, so an existing install's
     // choice is pinned.
-    true
+    false
 }
 
 fn default_palette_collapse() -> u64 {
@@ -654,7 +655,8 @@ impl Default for PrivacyFile {
             swipe_reversed: false,
             swipe_sensitivity: default_swipe_sensitivity(),
             compose_default_from: String::new(),
-            single_card_default_applied: false,
+            // A new install takes today's default, not the 2026-08-31 one.
+            single_card_default_applied: true,
             paste_plain: true,
             return_paragraph: false,
             toolbar_expanded: false,
