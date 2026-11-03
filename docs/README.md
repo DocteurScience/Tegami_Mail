@@ -2,8 +2,8 @@
 
 - **[FEATURES.md](FEATURES.md):** everything the app does.
 - **[DOCUMENTATION.md](DOCUMENTATION.md):** setting up accounts and OAuth,
-  cloud attachments, writing in Markdown or HTML, OpenPGP, the GNOME Files
-  entry, and what Tegami Mail keeps on disk.
+  cloud attachments, OpenPGP, the GNOME Files entry, and what Tegami Mail
+  keeps on disk.
 - **[KEYBOARD_SHORTCUTS.md](KEYBOARD_SHORTCUTS.md):** the single-key scheme.
 - **[DESIGN.md](DESIGN.md):** how the interface should look and behave, with
   the screens it refers to; [DESIGN_STRINGS.md](DESIGN_STRINGS.md) lists the

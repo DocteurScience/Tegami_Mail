@@ -90,6 +90,9 @@ Dernière mise à jour : 2026-11-02, après `40a6c7e`.
 | `8e38bf6` | Vue Contacts supprimée : page, ligne et arbre de la barre latérale, pied de barre, raccourci g c, réglages d'emplacement et de recherche, code d'édition des contacts. Gardés : carnets et Réglages → Contacts (import/export/tout supprimer), « Ajouter aux contacts », suggestions et groupes du composeur, noms et photos |
 | `40a6c7e` | Section Filtres de la barre latérale supprimée (ligne unifiée, vue fusionnée, réglage d'emplacement, repli du rail). Gardés : règles de filtre, marque sur le dossier où une règle range, « Appliquer les filtres » |
 | `bb5953c` | Vue Lecteur supprimée : interrupteur de l'en-tête, réglages (Lecture), partie « Vue Lecteur » du mode Focus, bascule de la fenêtre de message, clés `reader_mode` / `reader_switch` / `reader_default`. La feuille `crate::mail::reader` reste : elle affiche les traductions de messages en texte brut. Paramètre `reader` de `conversation_document` retiré ; instantané `three_cards.html` régénéré |
+| `13ac3a4` | Tables `attachment_meta`/`attachment_scan` supprimées (schéma v22, migration `DROP`), leurs écritures (workers, `strip.rs`, démo) et le préchargement des dossiers « galerie » ; le préchargement des pièces jointes récentes reste |
+| `80e9d01` | Restes du mode Concentration : boutons des en-têtes et avatars de la liste sortis de leurs révélateurs, mesure du repli simplifiée (plus d'attente d'ouverture, remesure quand un bouton apparaît), `FOCUS_ANIM_MS` et CSS `.focus-fade` retirés ; vérifié par captures à 1430, 1090 et 820 px |
+| (ce commit) | Relecture de la doc : Undo Send (plus de réponse dans le volet), README des docs et deux phrases du CHANGELOG (Markdown/HTML, réglage du composeur dans le volet) ; FEATURES, DOCUMENTATION et KEYBOARD_SHORTCUTS déjà à jour par ailleurs |
 
 ## Décisions prises
 

@@ -194,8 +194,7 @@
   LanguageTool starts when a composer opens and stops after 15 idle minutes.
   The quote and the signature are not checked. Each paragraph is checked in
   its own language, recognised offline from among the spelling languages,
-  and misspelled words are left to the spell checker. Rich text and plain
-  text are checked, Markdown and HTML are not. The settings are in
+  and misspelled words are left to the spell checker. The settings are in
   `grammar.toml`, the Premium key in the keyring.
 
 - **Added: the reading pane can sit below the list, or be switched off**
@@ -204,8 +203,7 @@
   **Ctrl+Alt+1**, **Ctrl+Alt+2** and **Ctrl+Alt+3**. Below or off, the list
   shows single lines, whatever **Settings → Message list → Layout** says, the
   window controls move to the list's header, and a reply, a forward or a new
-  message opens in a window of its own, whatever **Settings → Composing** says
-  about the reading pane. Below, the toolbar stays at the top of the reader,
+  message opens in a window of its own. Below, the toolbar stays at the top of the reader,
   the list's height is remembered apart from its width, and the attachments
   start folded. Off, the list takes the whole window and the toolbar moves to
   its header, between the filter button and the window controls, folding into

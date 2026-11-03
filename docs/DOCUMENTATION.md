@@ -946,10 +946,8 @@ say, is tried again at the next one, without a message about it.
 ### Undo Send
 
 A message sent waits five seconds before it goes, with **Undo** on offer
-in a notice at the foot of the window. Undo brings it back to the composer
-it was written in: a reply to the split beside its conversation, if that
-conversation is still open, anything else to a window. If it cannot be
-sent, the status bar says why. **Settings →
+in a notice at the foot of the window. Undo reopens it in a composer
+window. If it cannot be sent, the status bar says why. **Settings →
 Composing → Undo Send** sets the wait to 3, 5, 10, 20 or 30 seconds, or
 **Off** to send at once.
 
