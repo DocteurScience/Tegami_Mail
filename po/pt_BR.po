@@ -3125,6 +3125,9 @@ msgstr ""
 msgid "Not found"
 msgstr "Não encontrado"
 
+msgid "Remove {name}"
+msgstr "Remover {name}"
+
 msgid "Large: some servers will refuse it."
 msgstr ""
 
@@ -3154,9 +3157,6 @@ msgstr "Enviando…"
 
 msgid "Attach {name}"
 msgstr "Anexar {name}"
-
-msgid "Remove {name}"
-msgstr "Remover {name}"
 
 msgid "Upload {n} file and put its share link in the message."
 msgid_plural "Upload {n} files and put their share links in the message."

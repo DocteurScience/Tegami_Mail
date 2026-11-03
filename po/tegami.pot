@@ -2848,6 +2848,9 @@ msgstr ""
 msgid "Not found"
 msgstr ""
 
+msgid "Remove {name}"
+msgstr ""
+
 msgid "Large: some servers will refuse it."
 msgstr ""
 
@@ -2872,9 +2875,6 @@ msgid "Uploading…"
 msgstr ""
 
 msgid "Attach {name}"
-msgstr ""
-
-msgid "Remove {name}"
 msgstr ""
 
 msgid "Upload {n} file and put its share link in the message."

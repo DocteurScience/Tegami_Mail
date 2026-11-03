@@ -327,16 +327,22 @@ levelbar block.quota-full {
 }
 
 /* Compose attachment chips. */
+/* A file being sent: a card with a hairline border, its name in bold over
+   its type and size (mockup 11). */
 .attach-chip {
-  padding: 3px 4px 3px 6px;
-  border-radius: 14px;
-  background: alpha(currentColor, 0.08);
+  padding: 6px 4px 6px 8px;
+  border-radius: 12px;
+  background: @card_bg_color;
+  box-shadow: inset 0 0 0 1px alpha(currentColor, 0.15);
 }
 .attach-chip:dir(rtl) {
-  padding: 3px 6px 3px 4px;
+  padding: 6px 8px 6px 4px;
 }
 .attach-chip:hover {
-  background: alpha(currentColor, 0.12);
+  background: alpha(currentColor, 0.05);
+}
+.attach-chip-name {
+  font-weight: bold;
 }
 /* A file moved or deleted since it was attached (#340). */
 .attach-chip.missing {

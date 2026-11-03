@@ -3271,6 +3271,9 @@ msgstr ""
 msgid "Not found"
 msgstr "Не найдено"
 
+msgid "Remove {name}"
+msgstr "Удалить {name}?"
+
 msgid "Large: some servers will refuse it."
 msgstr ""
 
@@ -3301,9 +3304,6 @@ msgstr "Загрузка…"
 
 msgid "Attach {name}"
 msgstr "Прикрепить {name}"
-
-msgid "Remove {name}"
-msgstr "Удалить {name}?"
 
 msgid "Upload {n} file and put its share link in the message."
 msgid_plural "Upload {n} files and put their share links in the message."

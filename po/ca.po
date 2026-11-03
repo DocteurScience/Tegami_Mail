@@ -3118,6 +3118,9 @@ msgstr "El fitxer es va moure o suprimir. Torna a adjuntar-lo des d'on és ara."
 msgid "Not found"
 msgstr "No trobat"
 
+msgid "Remove {name}"
+msgstr "Elimina {name}"
+
 msgid "Large: some servers will refuse it."
 msgstr ""
 
@@ -3147,9 +3150,6 @@ msgstr "S'està pujant…"
 
 msgid "Attach {name}"
 msgstr "Adjunta {name}"
-
-msgid "Remove {name}"
-msgstr "Elimina {name}"
 
 msgid "Upload {n} file and put its share link in the message."
 msgid_plural "Upload {n} files and put their share links in the message."

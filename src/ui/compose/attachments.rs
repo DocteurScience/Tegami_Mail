@@ -104,6 +104,7 @@ fn attachment_chip(
     text.set_hexpand(true);
     text.set_valign(gtk::Align::Center);
     let lbl = FadeLabel::new(&name, CHIP_NAME_NATURAL);
+    lbl.add_css_class("attach-chip-name");
     text.append(&lbl);
     let size_text = match size {
         Some(n) => i18n_f(
@@ -124,7 +125,7 @@ fn attachment_chip(
     };
     let size_lbl = gtk::Label::new(Some(&size_text));
     size_lbl.set_xalign(0.0);
-    size_lbl.add_css_class("dim-label");
+    size_lbl.add_css_class("secondary-text");
     size_lbl.add_css_class("caption");
     text.append(&size_lbl);
     chip.append(&text);
@@ -133,6 +134,10 @@ fn attachment_chip(
     rm.add_css_class("flat");
     rm.set_valign(gtk::Align::Center);
     rm.set_tooltip_text(Some(&i18n("Remove")));
+    rm.update_property(&[gtk::accessible::Property::Label(&i18n_f(
+        "Remove {name}",
+        &[("name", &name)],
+    ))]);
     let s = sender.input_sender().clone();
     rm.connect_clicked(move |_| {
         let _ = s.send(ComposeInput::RemoveAttachment(index));

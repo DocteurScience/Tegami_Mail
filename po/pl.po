@@ -3292,6 +3292,9 @@ msgstr ""
 msgid "Not found"
 msgstr "Niewyświetlane"
 
+msgid "Remove {name}"
+msgstr "Usuń {name}"
+
 msgid "Large: some servers will refuse it."
 msgstr ""
 
@@ -3322,9 +3325,6 @@ msgstr "Przesyłanie…"
 
 msgid "Attach {name}"
 msgstr "Załącz {name}"
-
-msgid "Remove {name}"
-msgstr "Usuń {name}"
 
 msgid "Upload {n} file and put its share link in the message."
 msgid_plural "Upload {n} files and put their share links in the message."
