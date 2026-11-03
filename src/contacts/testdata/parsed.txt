@@ -11,27 +11,22 @@ Some(
         note: "Line one\nline two",
         emails: [
             Labeled {
-                label: "Work",
                 value: "pat@work.example",
             },
             Labeled {
-                label: "Home",
                 value: "pat@home.example",
             },
         ],
         phones: [
             Labeled {
-                label: "Mobile",
                 value: "+1 555 0100",
             },
             Labeled {
-                label: "Fax",
                 value: "+1 555 0101",
             },
         ],
         addresses: [
             Labeled {
-                label: "Home",
                 value: "PO 7, Flat 2, 1 Main St, Rear, Springfield, IL, 62701, USA",
             },
         ],
@@ -51,10 +46,7 @@ Some(
         urls: [
             "https://pat.example",
         ],
-        photo: None,
-        photo_key: 0,
         book_uid: "",
-        book_name: "",
         eds_uid: "p1",
         raw_vcard: "",
         group: None,
@@ -77,13 +69,11 @@ Some(
         note: "",
         emails: [
             Labeled {
-                label: "",
                 value: "g@x.example",
             },
         ],
         phones: [
             Labeled {
-                label: "",
                 value: "+44 20 7946 0000",
             },
         ],
@@ -91,10 +81,7 @@ Some(
         postal: [],
         birthday_raw: "",
         urls: [],
-        photo: None,
-        photo_key: 0,
         book_uid: "",
-        book_name: "",
         eds_uid: "",
         raw_vcard: "",
         group: None,
@@ -117,7 +104,6 @@ Some(
         note: "",
         emails: [
             Labeled {
-                label: "Work",
                 value: "q@x.example",
             },
         ],
@@ -126,10 +112,7 @@ Some(
         postal: [],
         birthday_raw: "",
         urls: [],
-        photo: None,
-        photo_key: 0,
         book_uid: "",
-        book_name: "",
         eds_uid: "",
         raw_vcard: "",
         group: None,
@@ -152,7 +135,6 @@ Some(
         note: "",
         emails: [
             Labeled {
-                label: "",
                 value: "fold@x.example",
             },
         ],
@@ -161,10 +143,7 @@ Some(
         postal: [],
         birthday_raw: "--04-12",
         urls: [],
-        photo: None,
-        photo_key: 0,
         book_uid: "",
-        book_name: "",
         eds_uid: "",
         raw_vcard: "",
         group: None,
@@ -191,10 +170,7 @@ Some(
         postal: [],
         birthday_raw: "",
         urls: [],
-        photo: None,
-        photo_key: 0,
         book_uid: "",
-        book_name: "",
         eds_uid: "l1",
         raw_vcard: "",
         group: Some(
@@ -248,10 +224,7 @@ Some(
         postal: [],
         birthday_raw: "",
         urls: [],
-        photo: None,
-        photo_key: 0,
         book_uid: "",
-        book_name: "",
         eds_uid: "g1",
         raw_vcard: "",
         group: Some(
@@ -289,10 +262,7 @@ Some(
         postal: [],
         birthday_raw: "",
         urls: [],
-        photo: None,
-        photo_key: 0,
         book_uid: "",
-        book_name: "",
         eds_uid: "k1",
         raw_vcard: "",
         group: Some(
@@ -332,7 +302,6 @@ Some(
         emails: [],
         phones: [
             Labeled {
-                label: "",
                 value: "+1 555 0199",
             },
         ],
@@ -340,10 +309,7 @@ Some(
         postal: [],
         birthday_raw: "",
         urls: [],
-        photo: None,
-        photo_key: 0,
         book_uid: "",
-        book_name: "",
         eds_uid: "",
         raw_vcard: "",
         group: None,
