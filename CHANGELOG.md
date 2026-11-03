@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+- **Changed: a reply names the people it goes to.** Reply and Reply All
+  fill To and Cc with "Name <address>", as the original had them, and a
+  click on an address in a message starts a message to its name and
+  address (the contact's name, or the one the conversation gives). A
+  quoted name with a comma in it is no longer cut in two by Reply All.
+
 - **Changed: an open message's More actions** (⋯ on its card) holds
   **Reply**, **Reply All** and **Forward** alone, as the redesign has it.
   The card's right-click menu keeps every action.

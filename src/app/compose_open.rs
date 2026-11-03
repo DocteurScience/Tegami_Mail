@@ -547,6 +547,7 @@ impl AppModel {
             }
 
             AppMsg::ComposeTo(to) => {
+                let to = self.with_known_name(&to);
                 self.compose_addressed(
                     ComposePrefill {
                         to,
@@ -568,6 +569,32 @@ impl AppModel {
             }
             _ => unreachable!("not routed to on_compose_open"),
         }
+    }
+
+    /// An address clicked in the reader, as "Name <address>" when a name is
+    /// known: the saved contact's, else the one the conversation on screen
+    /// gives it (a sender's, or a recipient's).
+    fn with_known_name(&self, to: &str) -> String {
+        let parsed = crate::worker::parse_recipients(to);
+        let [(name, addr)] = parsed.as_slice() else {
+            return to.to_string();
+        };
+        if !name.is_empty() {
+            return crate::worker::format_recipient(name, addr);
+        }
+        let same = |a: &str| a.eq_ignore_ascii_case(addr);
+        let name = crate::contacts::contact_name(addr).or_else(|| {
+            self.current_thread.iter().find_map(|m| {
+                if same(&m.from_addr) && !m.from_name.is_empty() {
+                    return Some(m.from_name.clone());
+                }
+                crate::worker::parse_recipients(&format!("{}, {}", m.to, m.cc))
+                    .into_iter()
+                    .find(|(n, a)| same(a) && !n.is_empty())
+                    .map(|(n, _)| n)
+            })
+        });
+        crate::worker::format_recipient(&name.unwrap_or_default(), addr)
     }
 
     /// A `mailto:` link handed to the app: a composer with what it carries.

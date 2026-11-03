@@ -26,10 +26,11 @@ pub(super) fn reply_prefill(m: &Message, header: &str) -> ComposePrefill {
         // A Reply-To header is the sender saying "answer me here instead" —
         // a mailing list, a no-reply address with a monitored counterpart. It
         // wins over the From address whenever it is present.
+        // Named, as the person is everywhere else ("Name <address>").
         to: if m.reply_to.is_empty() {
-            m.from_addr.clone()
+            crate::worker::format_recipient(&m.from_name, &m.from_addr)
         } else {
-            m.reply_to.clone()
+            recipients(&m.reply_to).join(", ")
         },
         cc: String::new(),
         subject,
@@ -58,13 +59,7 @@ pub(super) fn reply_prefill(m: &Message, header: &str) -> ComposePrefill {
 /// programs do: answering yourself is never what Reply All means.
 pub(super) fn reply_all_prefill(m: &Message, own: &[String], header: &str) -> ComposePrefill {
     let mut prefill = reply_prefill(m, header);
-    let split = |list: &str| -> Vec<String> {
-        list.split(',')
-            .map(str::trim)
-            .filter(|a| !a.is_empty())
-            .map(str::to_string)
-            .collect()
-    };
+    let split = recipients;
     let mut to: Vec<String> = Vec::new();
     let mut cc: Vec<String> = Vec::new();
     let push = |list: &mut Vec<String>, a: &str, taken: &[String]| {
@@ -130,6 +125,17 @@ fn thread_chain(m: &Message) -> String {
 
 /// The address in a recipient as written ("Ana <ana@x.org>" or the bare
 /// address), lowercased.
+/// The recipients of an address list, each as "Name <address>" (or the
+/// address alone): read whole, so a quoted name with a comma in it stays
+/// one recipient.
+fn recipients(list: &str) -> Vec<String> {
+    crate::worker::parse_recipients(list)
+        .into_iter()
+        .filter(|(_, addr)| !addr.is_empty())
+        .map(|(name, addr)| crate::worker::format_recipient(&name, &addr))
+        .collect()
+}
+
 fn bare_address(recipient: &str) -> String {
     let r = recipient.trim();
     let addr = match (r.rfind('<'), r.rfind('>')) {
@@ -376,6 +382,20 @@ mod tests {
             (ra.to.as_str(), ra.cc.as_str()),
             ("bob@example.com", "carol@example.com")
         );
+    }
+
+    /// A reply names the people it goes to, as "Name <address>", and a
+    /// quoted name with a comma in it stays one recipient.
+    #[test]
+    fn replies_keep_the_names() {
+        let mut m = msg(1, 1, 10);
+        m.from_name = "Ada Lovelace".into();
+        m.from_addr = "ada@example.com".into();
+        m.to = "me@example.com, \"Martin, Jason\" <jason@example.com>".into();
+        assert_eq!(reply_prefill(&m, "").to, "Ada Lovelace <ada@example.com>");
+        let ra = reply_all_prefill(&m, &["me@example.com".to_string()], "");
+        assert_eq!(ra.to, "Ada Lovelace <ada@example.com>");
+        assert_eq!(ra.cc, "\"Martin, Jason\" <jason@example.com>");
     }
 
     /// Without a Reply-To the sender's own address is still the reply target.
