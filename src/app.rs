@@ -454,6 +454,7 @@ impl SimpleComponent for AppModel {
                                     set_transition_type: gtk::RevealerTransitionType::SlideLeft,
                                     set_transition_duration: FOCUS_ANIM_MS,
                                     add_css_class: "focus-fade",
+                                    set_reveal_child: true,
                                     gtk::Button {
                                         set_icon_name: "system-search-symbolic",
                                         set_tooltip_text: Some(i18n("Search messages (Ctrl+F)").as_str()),
@@ -471,6 +472,7 @@ impl SimpleComponent for AppModel {
                                     set_transition_type: gtk::RevealerTransitionType::SlideLeft,
                                     set_transition_duration: FOCUS_ANIM_MS,
                                     add_css_class: "focus-fade",
+                                    set_reveal_child: true,
                                     #[name = "list_filter_btn"]
                                     gtk::MenuButton {
                                         set_icon_name: "filter-symbolic",
@@ -485,6 +487,7 @@ impl SimpleComponent for AppModel {
                                     set_transition_type: gtk::RevealerTransitionType::SlideLeft,
                                     set_transition_duration: FOCUS_ANIM_MS,
                                     add_css_class: "focus-fade",
+                                    set_reveal_child: true,
                                     gtk::Label {
                                         #[watch]
                                         set_label: &model.list_count,
@@ -549,6 +552,7 @@ impl SimpleComponent for AppModel {
                                     set_transition_type: gtk::RevealerTransitionType::SlideRight,
                                     set_transition_duration: FOCUS_ANIM_MS,
                                     add_css_class: "focus-fade",
+                                    set_reveal_child: true,
                                     gtk::Button {
                                         set_icon_name: "document-edit-symbolic",
                                         set_tooltip_text: Some(i18n("Edit this message").as_str()),
@@ -566,6 +570,7 @@ impl SimpleComponent for AppModel {
                                     set_transition_type: gtk::RevealerTransitionType::SlideRight,
                                     set_transition_duration: FOCUS_ANIM_MS,
                                     add_css_class: "focus-fade",
+                                    set_reveal_child: true,
                                     gtk::Button {
                                         set_icon_name: "mail-send-symbolic",
                                         set_tooltip_text: Some(i18n("Try to send this message now").as_str()),
@@ -583,6 +588,7 @@ impl SimpleComponent for AppModel {
                                     set_transition_type: gtk::RevealerTransitionType::SlideRight,
                                     set_transition_duration: FOCUS_ANIM_MS,
                                     add_css_class: "focus-fade",
+                                    set_reveal_child: true,
                                     gtk::Button {
                                         set_label: &i18n("Send all"),
                                         add_css_class: "flat",
@@ -605,6 +611,7 @@ impl SimpleComponent for AppModel {
                                     set_transition_type: gtk::RevealerTransitionType::SlideRight,
                                     set_transition_duration: FOCUS_ANIM_MS,
                                     add_css_class: "focus-fade",
+                                    set_reveal_child: true,
                                     gtk::Button {
                                         // Icon and word: the one label the
                                         // header has, on the action most taken
@@ -633,6 +640,7 @@ impl SimpleComponent for AppModel {
                                     set_transition_type: gtk::RevealerTransitionType::SlideRight,
                                     set_transition_duration: FOCUS_ANIM_MS,
                                     add_css_class: "focus-fade",
+                                    set_reveal_child: true,
                                     gtk::Button {
                                         set_icon_name: "mail-reply-all-symbolic",
                                         set_tooltip_text: Some(i18n("Reply all").as_str()),
@@ -649,6 +657,7 @@ impl SimpleComponent for AppModel {
                                     set_transition_type: gtk::RevealerTransitionType::SlideRight,
                                     set_transition_duration: FOCUS_ANIM_MS,
                                     add_css_class: "focus-fade",
+                                    set_reveal_child: true,
                                     gtk::Button {
                                         set_icon_name: "mail-forward-symbolic",
                                         set_tooltip_text: Some(i18n("Forward").as_str()),
@@ -665,6 +674,7 @@ impl SimpleComponent for AppModel {
                                     set_transition_type: gtk::RevealerTransitionType::SlideRight,
                                     set_transition_duration: FOCUS_ANIM_MS,
                                     add_css_class: "focus-fade",
+                                    set_reveal_child: true,
                                     gtk::Button {
                                         #[watch]
                                         set_tooltip_text: Some(if model.toolbar_star_lit() { i18n("Remove star") } else { i18n("Star") }.as_str()),
@@ -689,6 +699,7 @@ impl SimpleComponent for AppModel {
                                     set_transition_type: gtk::RevealerTransitionType::SlideRight,
                                     set_transition_duration: FOCUS_ANIM_MS,
                                     add_css_class: "focus-fade",
+                                    set_reveal_child: true,
                                     gtk::Button {
                                         set_icon_name: "mail-archive-symbolic",
                                         set_tooltip_text: Some(i18n("Archive").as_str()),
@@ -705,6 +716,7 @@ impl SimpleComponent for AppModel {
                                     set_transition_type: gtk::RevealerTransitionType::SlideRight,
                                     set_transition_duration: FOCUS_ANIM_MS,
                                     add_css_class: "focus-fade",
+                                    set_reveal_child: true,
                                     gtk::Button {
                                         set_icon_name: "user-trash-symbolic",
                                         #[watch]
@@ -731,6 +743,7 @@ impl SimpleComponent for AppModel {
                                     set_transition_type: gtk::RevealerTransitionType::SlideLeft,
                                     set_transition_duration: FOCUS_ANIM_MS,
                                     add_css_class: "focus-fade",
+                                    set_reveal_child: true,
                                     gtk::Button {
                                         set_icon_name: "printer-symbolic",
                                         set_tooltip_text: Some(i18n("Print preview (Ctrl+Shift+P)").as_str()),
@@ -751,6 +764,7 @@ impl SimpleComponent for AppModel {
                                     set_transition_type: gtk::RevealerTransitionType::SlideLeft,
                                     set_transition_duration: FOCUS_ANIM_MS,
                                     add_css_class: "focus-fade",
+                                    set_reveal_child: true,
                                     gtk::Button {
                                         set_icon_name: "loupe-with-arrow-symbolic",
                                         set_tooltip_text: Some(i18n("Find in message (Ctrl+F)").as_str()),
@@ -773,6 +787,7 @@ impl SimpleComponent for AppModel {
                                     set_transition_type: gtk::RevealerTransitionType::SlideLeft,
                                     set_transition_duration: FOCUS_ANIM_MS,
                                     add_css_class: "focus-fade",
+                                    set_reveal_child: true,
                                     gtk::Box {
                                         #[local_ref]
                                         reader_move_btn -> gtk::Button {
@@ -791,6 +806,7 @@ impl SimpleComponent for AppModel {
                                     set_transition_type: gtk::RevealerTransitionType::SlideLeft,
                                     set_transition_duration: FOCUS_ANIM_MS,
                                     add_css_class: "focus-fade",
+                                    set_reveal_child: true,
                                     gtk::Box {
                                         #[local_ref]
                                         reader_snooze_btn -> gtk::Button {
@@ -806,6 +822,7 @@ impl SimpleComponent for AppModel {
                                     set_transition_type: gtk::RevealerTransitionType::SlideLeft,
                                     set_transition_duration: FOCUS_ANIM_MS,
                                     add_css_class: "focus-fade",
+                                    set_reveal_child: true,
                                     gtk::Button {
                                         #[watch]
                                         set_icon_name: if model.target_in_junk() {
@@ -828,6 +845,7 @@ impl SimpleComponent for AppModel {
                                     set_transition_type: gtk::RevealerTransitionType::SlideLeft,
                                     set_transition_duration: FOCUS_ANIM_MS,
                                     add_css_class: "focus-fade",
+                                    set_reveal_child: true,
                                     gtk::Button {
                                         add_css_class: "flat",
                                         #[watch]
@@ -854,6 +872,7 @@ impl SimpleComponent for AppModel {
                                     set_transition_type: gtk::RevealerTransitionType::SlideLeft,
                                     set_transition_duration: FOCUS_ANIM_MS,
                                     add_css_class: "focus-fade",
+                                    set_reveal_child: true,
                                     gtk::Box {
                                         #[local_ref]
                                         reader_tag_btn -> gtk::Button {
