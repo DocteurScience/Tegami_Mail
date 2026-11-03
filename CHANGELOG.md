@@ -2,6 +2,15 @@
 
 ## Unreleased
 
+- **Fixed: sending an edited draft could stop an IMAP account** when the
+  connection dropped while the Sent copy was filed: the account's mail
+  stopped syncing until a restart. The draft is now left in place instead,
+  and the reads that need a connection log in again.
+
+- **Fixed: the attachment drawer's Download and Open buttons show for the
+  keyboard too.** Reached with Tab, they took the focus while staying
+  invisible; they only appeared under the pointer.
+
 - **Changed: a lone message is flat on a new install** (mockups 01 and
   10), the reader's ground under it rather than a card. **Settings →
   Reading → single messages as cards** still brings the card back, and an
