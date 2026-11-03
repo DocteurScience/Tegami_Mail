@@ -10,7 +10,7 @@ use mail_parser::{MessageParser, MessagePart, MimeHeaders};
 
 use crate::cache::Cache;
 use crate::encoding::{base64_encode, base64_lines};
-use crate::worker::render::attachments::{attachment_parts, extract_attachments, guess_mime};
+use crate::worker::render::attachments::{attachment_parts, extract_attachments};
 use crate::worker::WorkerEvent;
 
 /// Whether a part is the note left where an attachment was removed.
@@ -185,18 +185,6 @@ pub(in crate::worker) fn cache_rewritten(
     c.save_attachments(account_id, path, uid, &items);
     c.mark_attachments_checked(account_id, path, uid);
     c.set_has_attachment(account_id, path, uid, !items.is_empty());
-    let metas: Vec<crate::models::AttachmentMeta> = items
-        .iter()
-        .enumerate()
-        .map(|(i, a)| crate::models::AttachmentMeta {
-            idx: i as u32,
-            name: a.name.clone(),
-            mime: guess_mime(&a.name),
-            size: a.data.len() as u64,
-            section: String::new(),
-        })
-        .collect();
-    c.save_attachment_meta(account_id, path, uid, &metas);
 }
 
 /// An attachment removal that did not happen (#289): the error, and word

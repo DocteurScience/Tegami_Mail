@@ -174,12 +174,9 @@ conteneur (locale `fr_FR.UTF-8` installée, catalogue compilé dans
 l'en-tête du lecteur sur une conversation (planche 10), dates longues dans
 la liste.
 
-À faire plus tard (nettoyage moteur de la galerie) : supprimer la table
-`attachment_meta`/`attachment_scan` par une migration de schéma (et ses
-écritures : `strip.rs`, `graph/handle_write.rs`, `cache/messages.rs`,
-`open.rs` seed, `demo_cache.rs`) ; le préchargement en arrière-plan des
-pièces jointes des dossiers « galerie » (`backfill.rs` `job.gallery`,
-`prefetch.rs` `gallery_folder`) qui n'a plus de raison d'être.
+Nettoyage moteur de la galerie fait (schéma v22) : tables
+`attachment_meta`/`attachment_scan` supprimées par migration, leurs
+écritures et le préchargement des dossiers « galerie » retirés.
 
 Conséquence à signaler au propriétaire : les contacts du carnet Tegami Mail
 ne peuvent plus être modifiés ni supprimés un par un dans l'application

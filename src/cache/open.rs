@@ -204,34 +204,18 @@ impl Cache {
         if (LAYOUT_VERSION..21).contains(&version) {
             Self::recheck_suspicious_senders(conn);
         }
-        // `attachment_meta` is the gallery's record of every attachment that
-        // *exists*; `attachments` holds the few whose bytes were downloaded.
-        // Seed the first from the second so files already in hand keep showing
-        // while the scan works back through the archive.
-        if version < 14 {
-            Self::seed_attachment_meta(conn);
-        }
-        // Re-queue the messages a batched parse failure wrote off. Messages
-        // that really do hold nothing are simply asked about once more and
-        // marked again, so this costs a rescan and settles.
         // A message's `text/calendar` part is an attachment from v19 on, so
-        // every list drawn up before that is one part short and every
-        // "nothing to see here" mark was made under the old rule. Forget the
-        // marks rather than the lists: the scan re-describes each message
-        // from its BODYSTRUCTURE (no bytes downloaded) and replaces the list
-        // it finds, so nothing is lost while it works back.
+        // every "nothing to see here" mark made before that was made under
+        // the old rule: forget them, and each message is asked again.
         if version < 19 {
-            let _ =
-                conn.execute_batch("DELETE FROM attachment_scan; DELETE FROM attachments_checked;");
+            let _ = conn.execute_batch("DELETE FROM attachments_checked;");
         }
-        if (14..15).contains(&version) {
-            let _ = conn.execute(
-                "DELETE FROM attachment_scan WHERE NOT EXISTS (\
-                     SELECT 1 FROM attachment_meta am \
-                     WHERE am.account_id = attachment_scan.account_id \
-                       AND am.folder_path = attachment_scan.folder_path \
-                       AND am.uid = attachment_scan.uid)",
-                [],
+        // The attachments gallery's tables (v14 to v21), read by nothing now.
+        if version < 22 {
+            let _ = conn.execute_batch(
+                "DROP INDEX IF EXISTS attachment_meta_by_folder; \
+                 DROP TABLE IF EXISTS attachment_meta; \
+                 DROP TABLE IF EXISTS attachment_scan;",
             );
         }
     }
@@ -324,51 +308,6 @@ impl Cache {
                     params![clean, email],
                 );
             }
-        }
-    }
-
-    /// Give every already-downloaded attachment a `attachment_meta` row, and
-    /// mark its message scanned: the bytes are in hand, so there is nothing the
-    /// server could tell us about it. Runs once, on the upgrade to schema v14.
-    fn seed_attachment_meta(conn: &Connection) {
-        let rows: Vec<(u32, String, u32, u32, String, i64)> = {
-            let Ok(mut stmt) = conn.prepare(
-                "SELECT account_id, folder_path, uid, idx, name, LENGTH(data) FROM attachments",
-            ) else {
-                return;
-            };
-            let Ok(mapped) = stmt.query_map([], |r| {
-                Ok((
-                    r.get(0)?,
-                    r.get(1)?,
-                    r.get(2)?,
-                    r.get(3)?,
-                    r.get(4)?,
-                    r.get(5)?,
-                ))
-            }) else {
-                return;
-            };
-            mapped.filter_map(|r| r.ok()).collect()
-        };
-        for (account_id, folder_path, uid, idx, name, size) in rows {
-            let _ = conn.execute(
-                "INSERT OR IGNORE INTO attachment_meta                  (account_id, folder_path, uid, idx, name, mime, size, section, bucket, keywords)                  VALUES (?1, ?2, ?3, ?4, ?5, '', ?6, '', ?7, ?8)",
-                params![
-                    account_id,
-                    &folder_path,
-                    uid,
-                    idx,
-                    &name,
-                    size,
-                    crate::models::type_bucket(&name),
-                    crate::models::type_keywords(&name),
-                ],
-            );
-            let _ = conn.execute(
-                "INSERT OR IGNORE INTO attachment_scan (account_id, folder_path, uid)                  VALUES (?1, ?2, ?3)",
-                params![account_id, &folder_path, uid],
-            );
         }
     }
 }

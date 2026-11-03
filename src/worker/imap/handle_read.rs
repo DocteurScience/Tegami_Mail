@@ -14,7 +14,7 @@ use crate::worker::imap::flag_sync::refresh_flags;
 use crate::worker::imap::folders::{cached_folder_kind, imap_storage_quota, list_folders};
 use crate::worker::imap::keywords::refresh_keywords;
 use crate::worker::imap::prefetch::{
-    folder_is_gallery, prefetch_status, queue_attachment_prefetch, queue_body_prefetch,
+    prefetch_status, queue_attachment_prefetch, queue_body_prefetch,
 };
 use crate::worker::imap::retry::{
     load_bodies_retry, load_body_retry, load_messages_retry, load_raw_retry, load_source_retry,
@@ -167,7 +167,6 @@ impl<E: Emit> ImapWorker<E> {
         if self.backfill_seen.insert(path.to_string()) {
             self.backfill.push_back(Backfill {
                 folder_id,
-                gallery: folder_is_gallery(cache.as_ref(), account_id, path),
                 path: path.to_string(),
                 remaining: None,
                 failures: 0,

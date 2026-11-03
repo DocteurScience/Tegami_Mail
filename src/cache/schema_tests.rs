@@ -141,6 +141,8 @@ fn an_older_layout_gains_the_new_columns() {
 /// One row or more in every table, chosen so each version gate has
 /// something to drop or rewrite.
 const FIXTURE: &str = r#"
+CREATE TABLE attachment_meta (account_id INTEGER, folder_path TEXT, uid INTEGER, idx INTEGER, name TEXT);
+CREATE TABLE attachment_scan (account_id INTEGER, folder_path TEXT, uid INTEGER);
 INSERT INTO folders VALUES (1, 'INBOX', 'Inbox', 0, 0, 0);
 INSERT INTO msgid_case VALUES ('a@x', 'A@X');
 INSERT INTO refs_repair VALUES (1, 'INBOX', 5, 0);
@@ -183,8 +185,6 @@ fn contents(conn: &Connection) -> String {
         "addresses",
         "outbox",
         "attachments_checked",
-        "attachment_meta",
-        "attachment_scan",
         "account_owner",
     ] {
         let n: i64 = conn
@@ -210,8 +210,8 @@ fn contents(conn: &Connection) -> String {
     lines("SELECT uid FROM bodies ORDER BY uid");
     lines("SELECT uid, trust FROM sender_checks ORDER BY uid");
     lines("SELECT uid FROM attachments_checked ORDER BY uid");
-    lines("SELECT uid, idx, name, size, bucket FROM attachment_meta ORDER BY uid, idx");
-    lines("SELECT uid FROM attachment_scan ORDER BY uid");
+    // The attachments gallery's tables, written by v14 to v21 (gone in v22).
+    lines("SELECT name FROM sqlite_master WHERE name IN ('attachment_meta', 'attachment_scan') ORDER BY name");
     lines("SELECT email, name FROM addresses ORDER BY email");
     out
 }
@@ -221,7 +221,7 @@ fn contents(conn: &Connection) -> String {
 #[test]
 fn every_version_gate_drops_and_rewrites_what_it_should() {
     let mut report = String::new();
-    for version in [0, 5, 6, 12, 13, 14, 15, 18, 19, 20, 21] {
+    for version in [0, 5, 6, 12, 13, 14, 15, 18, 19, 20, 21, 22] {
         let db = TempDb::new(&format!("v{version}"));
         {
             let conn = Connection::open(&db.0).unwrap();

@@ -591,8 +591,6 @@ impl Cache {
             "sender_checks",
             "attachments",
             "attachments_checked",
-            "attachment_meta",
-            "attachment_scan",
         ] {
             let _ = self.conn.execute(
                 &format!(
@@ -615,8 +613,6 @@ impl Cache {
             "sender_checks",
             "attachments",
             "attachments_checked",
-            "attachment_meta",
-            "attachment_scan",
         ] {
             let _ = self.conn.execute(
                 &format!(

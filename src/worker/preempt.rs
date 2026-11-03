@@ -329,7 +329,6 @@ mod reader_preemption_tests {
             folder_id: 1,
             path: "INBOX".into(),
             remaining: Some(vec![3, 2, 1]),
-            gallery: false,
             failures: 0,
         };
         let mut queue = std::collections::VecDeque::from([job.clone()]);

@@ -14,7 +14,6 @@ use crate::worker::imap::fetch_mode::{
     compact_parse_error, is_parse_error, readable_error, step_fetch_mode,
 };
 use crate::worker::imap::gmail::read_gmail_labels;
-use crate::worker::imap::prefetch::queue_attachment_prefetch;
 use crate::worker::imap::summary::{build_summary, references_of, summary_from_headers};
 use crate::worker::imap::wire::{fetch_uids, search_uids, sel, uid_set};
 use crate::worker::imap::{ImapSession, BACKFILL_CHUNK, REFS_FETCH_ITEM};
@@ -110,9 +109,6 @@ pub(in crate::worker) struct Backfill {
     pub(in crate::worker) folder_id: u32,
     pub(in crate::worker) path: String,
     pub(in crate::worker) remaining: Option<Vec<u32>>,
-    /// Whether this folder feeds the attachments gallery (not Trash/Junk/Drafts);
-    /// if so, its backfilled messages' attachments are prefetched too.
-    pub(in crate::worker) gallery: bool,
     /// Steps that failed in a row while connected; at [`BACKFILL_TRIES`] the
     /// folder is left out of the index for the session.
     pub(in crate::worker) failures: u32,
@@ -262,7 +258,6 @@ pub(super) async fn run_one_backfill(
     account: &AccountConfig,
     account_id: u32,
     cache: Option<&Cache>,
-    prefetch: &mut std::collections::VecDeque<(String, u32)>,
     use_envelope: &mut bool,
     emit: &impl Fn(WorkerEvent),
 ) {
@@ -335,11 +330,6 @@ pub(super) async fn run_one_backfill(
             job.failures = 0;
             if let Some(c) = cache {
                 c.upsert_messages(account_id, &job.path, &msgs);
-            }
-            // Gallery folders: queue this chunk's attachments for background
-            // download so they appear in the attachments gallery.
-            if job.gallery {
-                queue_attachment_prefetch(prefetch, &job.path, &msgs, cache, account_id);
             }
             emit(WorkerEvent::MessagesAppend {
                 folder_id: job.folder_id,
@@ -420,7 +410,6 @@ mod tests {
             folder_id,
             path: "dovecot.sieve".into(),
             remaining: None,
-            gallery: false,
             failures: 0,
         };
         let events = std::cell::RefCell::new(Vec::new());

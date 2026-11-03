@@ -582,7 +582,6 @@ impl<E: Fn(WorkerEvent)> JmapWorker<E> {
                     }
                 }
                 if let Some(c) = cache.as_ref() {
-                    c.save_attachment_meta(account_id, &path, uid, &[]);
                     cache_rewritten(c, account_id, &path, new_uid, &raw);
                 }
                 emit(WorkerEvent::AttachmentDeleted {

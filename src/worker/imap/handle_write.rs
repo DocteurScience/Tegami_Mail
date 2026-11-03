@@ -337,7 +337,6 @@ impl<E: Emit> ImapWorker<E> {
                     }
                 }
                 if let Some(c) = cache.as_ref() {
-                    c.save_attachment_meta(account_id, &path, uid, &[]);
                     if let Some(new_uid) = new_uid {
                         cache_rewritten(c, account_id, &path, new_uid, &raw);
                     }

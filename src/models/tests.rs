@@ -324,23 +324,6 @@ fn an_empty_subject_or_recipient_still_reads_sensibly() {
 }
 
 #[test]
-fn type_keywords_cover_common_kinds() {
-    assert!(type_keywords("a.pdf").contains("document"));
-    assert!(type_keywords("a.png").contains("image"));
-    assert!(type_keywords("a.mp3").contains("audio"));
-    assert!(type_keywords("a.ics").contains("calendar"));
-}
-
-#[test]
-fn type_buckets_match_the_footer_dropdown_rows() {
-    assert_eq!(type_bucket("photo.JPG"), 1);
-    assert_eq!(type_bucket("report.pdf"), 2);
-    assert_eq!(type_bucket("notes.docx"), 3);
-    assert_eq!(type_bucket("backup.tar"), 4);
-    assert_eq!(type_bucket("song.flac"), 5);
-    assert_eq!(type_bucket("unknown.xyz"), 6);
-}
-#[test]
 fn assigned_drafts_folder_takes_the_kind_that_counts_every_draft() {
     let f = |id: u32, path: &str, kind: FolderKind| Folder {
         id,

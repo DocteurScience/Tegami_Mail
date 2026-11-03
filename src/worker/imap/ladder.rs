@@ -254,7 +254,6 @@ impl<E: Emit> ImapWorker<E> {
                 &self.account,
                 self.account_id,
                 self.cache.as_ref(),
-                &mut self.prefetch,
                 &mut self.use_envelope,
                 &self.emit,
             ),

@@ -127,28 +127,6 @@ CREATE TABLE IF NOT EXISTS attachments_checked (
     uid         INTEGER NOT NULL,
     PRIMARY KEY (account_id, folder_path, uid)
 );
-CREATE TABLE IF NOT EXISTS attachment_meta (
-    account_id  INTEGER NOT NULL,
-    folder_path TEXT NOT NULL,
-    uid         INTEGER NOT NULL,
-    idx         INTEGER NOT NULL,
-    name        TEXT    NOT NULL,
-    mime        TEXT    NOT NULL DEFAULT '',
-    size        INTEGER NOT NULL DEFAULT 0,
-    section     TEXT    NOT NULL DEFAULT '',
-    ext         TEXT    NOT NULL DEFAULT '',
-    bucket      INTEGER NOT NULL DEFAULT 6,
-    keywords    TEXT    NOT NULL DEFAULT '',
-    PRIMARY KEY (account_id, folder_path, uid, idx)
-);
-CREATE TABLE IF NOT EXISTS attachment_scan (
-    account_id  INTEGER NOT NULL,
-    folder_path TEXT NOT NULL,
-    uid         INTEGER NOT NULL,
-    PRIMARY KEY (account_id, folder_path, uid)
-);
-CREATE INDEX IF NOT EXISTS attachment_meta_by_folder
-    ON attachment_meta (account_id, folder_path);
 CREATE TABLE IF NOT EXISTS account_owner (
     account_id INTEGER PRIMARY KEY,
     email      TEXT    NOT NULL
@@ -176,7 +154,7 @@ CREATE TABLE IF NOT EXISTS local_copies (
 /// Every table whose rows belong to one account, by `account_id`. An account's
 /// id is its place in the account list, so `Cache::claim_accounts` moves
 /// these rows when the places change.
-pub(super) const ACCOUNT_TABLES: [&str; 12] = [
+pub(super) const ACCOUNT_TABLES: [&str; 10] = [
     "folders",
     "refs_repair",
     "messages",
@@ -186,8 +164,6 @@ pub(super) const ACCOUNT_TABLES: [&str; 12] = [
     "attachments",
     "outbox",
     "attachments_checked",
-    "attachment_meta",
-    "attachment_scan",
     "local_copies",
 ];
 
@@ -240,7 +216,10 @@ pub(super) const DOWNLOADED_TABLES: [&str; 3] = ["bodies", "attachments", "attac
 /// answered on email.a1.net was flagged). Suspicious verdicts stored earlier,
 /// and the bodies served with them, are dropped once so those messages are
 /// checked again when next opened; every other cached body stays.
-pub(super) const SCHEMA_VERSION: i64 = 21;
+/// v22: `attachment_meta`/`attachment_scan` are dropped: the attachments
+/// gallery that read them is gone (owner's decision, 2026-11-02), and
+/// nothing else did.
+pub(super) const SCHEMA_VERSION: i64 = 22;
 
 /// The newest version whose change altered how bodies are *rendered* or how
 /// senders are checked. Opening a database older than this drops `bodies` and

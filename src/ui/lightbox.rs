@@ -3,7 +3,8 @@
 //!
 //! A component of its own so that a message's own window can have one as
 //! well as the main window. Each lays the lightbox over its content with a
-//! `gtk::Overlay`; it looks like the gallery's own lightbox (same CSS).
+//! `gtk::Overlay`. (The `gallery-lightbox` classes are named after the
+//! attachments gallery that first drew it.)
 
 use std::cell::Cell;
 use std::rc::Rc;

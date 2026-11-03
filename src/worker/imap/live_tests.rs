@@ -619,7 +619,6 @@ fn live_backfill_leaves_refused_folder() {
             folder_id: 7,
             path,
             remaining: None,
-            gallery: false,
             failures: 0,
         }]);
         let done = std::cell::Cell::new(false);
@@ -635,7 +634,6 @@ fn live_backfill_leaves_refused_folder() {
             &account,
             1,
             None,
-            &mut std::collections::VecDeque::new(),
             &mut use_envelope,
             &emit,
         )

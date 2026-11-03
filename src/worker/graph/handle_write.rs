@@ -550,7 +550,6 @@ impl<E: Fn(WorkerEvent)> GraphWorker<E> {
                         // Fetched again at the next open.
                         Err(_) => {
                             c.save_attachments(account_id, &path, uid, &[]);
-                            c.save_attachment_meta(account_id, &path, uid, &[]);
                         }
                     }
                 }

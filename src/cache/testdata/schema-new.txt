@@ -1,4 +1,4 @@
-user_version 21
+user_version 22
 
 table account_owner
 CREATE TABLE account_owner (
@@ -11,34 +11,6 @@ CREATE TABLE addresses (
     email TEXT PRIMARY KEY,
     name  TEXT NOT NULL DEFAULT '',
     count INTEGER NOT NULL DEFAULT 0
-)
-
-table attachment_meta
-CREATE TABLE attachment_meta (
-    account_id  INTEGER NOT NULL,
-    folder_path TEXT NOT NULL,
-    uid         INTEGER NOT NULL,
-    idx         INTEGER NOT NULL,
-    name        TEXT    NOT NULL,
-    mime        TEXT    NOT NULL DEFAULT '',
-    size        INTEGER NOT NULL DEFAULT 0,
-    section     TEXT    NOT NULL DEFAULT '',
-    ext         TEXT    NOT NULL DEFAULT '',
-    bucket      INTEGER NOT NULL DEFAULT 6,
-    keywords    TEXT    NOT NULL DEFAULT '',
-    PRIMARY KEY (account_id, folder_path, uid, idx)
-)
-
-index attachment_meta_by_folder
-CREATE INDEX attachment_meta_by_folder
-    ON attachment_meta (account_id, folder_path)
-
-table attachment_scan
-CREATE TABLE attachment_scan (
-    account_id  INTEGER NOT NULL,
-    folder_path TEXT NOT NULL,
-    uid         INTEGER NOT NULL,
-    PRIMARY KEY (account_id, folder_path, uid)
 )
 
 table attachments
@@ -216,12 +188,6 @@ CREATE TABLE sender_checks (
 )
 
 index sqlite_autoindex_addresses_1
-
-
-index sqlite_autoindex_attachment_meta_1
-
-
-index sqlite_autoindex_attachment_scan_1
 
 
 index sqlite_autoindex_attachments_1

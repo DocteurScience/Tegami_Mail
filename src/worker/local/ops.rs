@@ -353,7 +353,6 @@ impl<E: Fn(WorkerEvent)> LocalWorker<E> {
             let mut m = summary_from_raw(account_id, self.folder_id(&path), new_uid, &raw);
             super::apply_entry(&mut m, &entry);
             c.delete_message(account_id, &path, uid);
-            c.save_attachment_meta(account_id, &path, uid, &[]);
             c.upsert_messages(account_id, &path, &[m]);
             cache_rewritten(c, account_id, &path, new_uid, &raw);
         }

@@ -12,7 +12,6 @@ use rusqlite::Connection;
 use crate::models::Message;
 
 mod addresses;
-mod attachment_meta;
 mod bodies;
 mod flags;
 mod local_copies;

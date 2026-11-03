@@ -129,27 +129,6 @@ pub(super) fn queue_body_prefetch(
     }
 }
 
-/// Whether a folder's attachments feed the gallery (so its mail is worth
-/// prefetching): everything except Trash, Junk and Drafts.
-pub(super) fn gallery_folder(kind: crate::models::FolderKind) -> bool {
-    use crate::models::FolderKind::*;
-    !matches!(kind, Trash | Junk | Drafts)
-}
-
-/// Gallery eligibility of a folder by path, looked up from the cached folder list.
-/// Unknown folders default to eligible.
-pub(super) fn folder_is_gallery(cache: Option<&Cache>, account_id: u32, path: &str) -> bool {
-    cache
-        .map(|c| {
-            c.load_folders(account_id)
-                .iter()
-                .find(|f| f.path == path)
-                .map(|f| gallery_folder(f.kind))
-                .unwrap_or(true)
-        })
-        .unwrap_or(true)
-}
-
 /// Queue the newest messages that have attachments (not already cached) for
 /// background attachment pre-download, so new mail's attachments are ready too.
 pub(super) fn queue_attachment_prefetch(

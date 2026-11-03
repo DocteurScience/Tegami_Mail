@@ -9,7 +9,6 @@ use super::backfill::Backfill;
 use super::connect::connect_and_list;
 use super::fetch_mode::seed_fetch_mode;
 use super::gmail::{gmail_labels_wanted, note_gmail_account};
-use super::prefetch::gallery_folder;
 use super::{Emit, ImapWorker};
 use crate::cache::Cache;
 use crate::config::AccountConfig;
@@ -127,7 +126,6 @@ impl<E: Emit> ImapWorker<E> {
                 }
                 self.backfill.push_back(Backfill {
                     folder_id: f.id,
-                    gallery: gallery_folder(f.kind),
                     path: f.path,
                     remaining: None,
                     failures: 0,
