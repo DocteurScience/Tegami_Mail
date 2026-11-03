@@ -141,7 +141,6 @@ pub(crate) struct PrefInit {
     /// A notification when a read receipt comes back (#520).
     pub(crate) notify_receipts: bool,
     pub(crate) notification_buttons: crate::config::NotificationButtons,
-    pub(crate) show_accounts: bool,
     pub(crate) section_style: crate::config::SectionStyle,
     pub(crate) tags_placement: crate::config::SectionPlacement,
     pub(crate) favorites_placement: crate::config::SectionPlacement,
@@ -267,13 +266,10 @@ pub(crate) enum PrefInput {
     TogglePrintPageNumbers(bool),
     TogglePrintDate(bool),
     TogglePrintPunchMargin(bool),
-    ToggleShowAccounts(bool),
     /// One of Focus Mode's switches.
     ToggleFocus(crate::config::FocusPart, bool),
     /// The app's Focus Mode changed elsewhere (menu, shortcut): follow.
     SetFocusMode(crate::config::FocusMode),
-    /// The main menu flipped "Show Accounts": the switch follows.
-    SetShowAccounts(bool),
     ChangeChevronSide(u32),
     ChangeStartView(u32),
     ChangeFolderSort(u32),
@@ -444,7 +440,6 @@ pub(crate) enum PrefOutput {
     SetNotifyReceipts(bool),
     SetNotificationButtons(crate::config::NotificationButtons),
     SetPrintOptions(crate::config::PrintOptions),
-    SetShowAccounts(bool),
     SetChevronsLeft(bool),
     SetAccountClickFolds(bool),
     SetStartView(crate::config::StartView),

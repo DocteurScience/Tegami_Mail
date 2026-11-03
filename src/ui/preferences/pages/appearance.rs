@@ -24,7 +24,6 @@ pub(in crate::ui::preferences) struct AppearancePage {
     pub(in crate::ui::preferences) focus_toolbar_row: adw::SwitchRow,
     pub(in crate::ui::preferences) focus_list_header_row: adw::SwitchRow,
     pub(in crate::ui::preferences) focus_accounts_row: adw::SwitchRow,
-    pub(in crate::ui::preferences) focus_unified_row: adw::SwitchRow,
     pub(in crate::ui::preferences) focus_avatars_row: adw::SwitchRow,
     pub(in crate::ui::preferences) focus_hide_preview_row: adw::SwitchRow,
     pub(in crate::ui::preferences) focus_preview_row: adw::SwitchRow,
@@ -184,18 +183,9 @@ impl AppearancePage {
                         // Kept current by update_view.
                         set_active: model.focus.hide_accounts,
                         set_title: &i18n("Hide the accounts in the sidebar"),
-                        set_subtitle: &i18n("Only the unified section stays."),
+                        set_subtitle: &i18n("Only Favorites, Tags and Smart Folders stay."),
                         connect_active_notify[sender] => move |row| {
                             sender.input(PrefInput::ToggleFocus(crate::config::FocusPart::HideAccounts, row.is_active()));
-                        },
-                    },
-                    #[name = "focus_unified_row"]
-                    adw::SwitchRow {
-                        // Kept current by update_view.
-                        set_active: model.focus.fold_unified,
-                        set_title: &i18n("Fold up the unified rows"),
-                        connect_active_notify[sender] => move |row| {
-                            sender.input(PrefInput::ToggleFocus(crate::config::FocusPart::FoldUnified, row.is_active()));
                         },
                     },
                     #[name = "focus_avatars_row"]
@@ -268,7 +258,6 @@ impl AppearancePage {
             focus_toolbar_row,
             focus_list_header_row,
             focus_accounts_row,
-            focus_unified_row,
             focus_avatars_row,
             focus_hide_preview_row,
             focus_preview_row,
@@ -288,7 +277,6 @@ impl AppearancePage {
             .set_active(model.focus.list_header);
         self.focus_accounts_row
             .set_active(model.focus.hide_accounts);
-        self.focus_unified_row.set_active(model.focus.fold_unified);
         self.focus_avatars_row.set_active(model.focus.hide_avatars);
         self.focus_hide_preview_row
             .set_active(model.focus.hide_preview);

@@ -111,9 +111,6 @@ msgstr "Konta online GNOME"
 msgid "Settings"
 msgstr "Ustawienia"
 
-msgid "Show Accounts"
-msgstr "Wyświetlanie kont"
-
 msgid "Print Preview…"
 msgstr "Podgląd wydruku…"
 
@@ -5757,14 +5754,6 @@ msgstr ""
 msgid "Open at startup"
 msgstr "Widok po uruchomieniu"
 
-msgid "Accounts in the sidebar"
-msgstr "Konta w panelu bocznym"
-
-msgid ""
-"Off leaves only the unified section. Toggle with Ctrl+Shift+A or the main "
-"menu."
-msgstr ""
-
 msgid "Folder order"
 msgstr "Kolejność katalogów"
 
@@ -7320,11 +7309,8 @@ msgstr "Wszystkie przyciski trafiają do menu ⋯."
 msgid "Hide the accounts in the sidebar"
 msgstr "Ukrywanie kont w panelu bocznym"
 
-msgid "Only the unified section stays."
-msgstr "Pozostaje tylko sekcja zbiorcza."
-
-msgid "Fold up the unified rows"
-msgstr "Zwijanie widoków zbiorczych"
+msgid "Only Favorites, Tags and Smart Folders stay."
+msgstr ""
 
 msgid "Hide sender avatars"
 msgstr "Ukrywanie awatarów nadawców"
@@ -7893,6 +7879,18 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Show Accounts"
+#~ msgstr "Wyświetlanie kont"
+
+#~ msgid "Accounts in the sidebar"
+#~ msgstr "Konta w panelu bocznym"
+
+#~ msgid "Only the unified section stays."
+#~ msgstr "Pozostaje tylko sekcja zbiorcza."
+
+#~ msgid "Fold up the unified rows"
+#~ msgstr "Zwijanie widoków zbiorczych"
 
 #~ msgid "Rename Folder…"
 #~ msgstr "Zmień nazwę katalogu…"

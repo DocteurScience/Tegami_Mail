@@ -159,8 +159,6 @@ pub(crate) struct Sidebar {
     rail_open_accounts: HashMap<u32, bool>,
     /// The Favorites, Tags and Smart Folders rows' widgets.
     kind_widgets: HashMap<UnifiedRow, KindWidgets>,
-    /// Whether the account sections are shown at all.
-    show_accounts: bool,
     /// Where the Tags and Favorites sections sit
     /// (Settings → Sidebar), and whether they are drawn as unified rows or
     /// as a tree.
@@ -169,10 +167,6 @@ pub(crate) struct Sidebar {
     favorites_placement: crate::config::SectionPlacement,
     /// Focus Mode: the account sections are hidden.
     focus_hide_accounts: bool,
-    /// Focus Mode: the unified rows show folded, whatever their saved
-    /// state; a click opens one for the mode alone (`rail_open`), the way
-    /// the icon rail does.
-    focus_fold_unified: bool,
     /// The revealer holding every account section, so Focus Mode can slide
     /// them away as one and bring them back the same way.
     accounts_revealer: Option<gtk::Revealer>,
@@ -300,12 +294,10 @@ impl Component for Sidebar {
             kind_widgets: HashMap::new(),
             rail_open: HashMap::new(),
             rail_open_accounts: HashMap::new(),
-            show_accounts: true,
             section_style: crate::config::SectionStyle::default(),
             tags_placement: crate::config::SectionPlacement::AboveAccounts,
             favorites_placement: crate::config::SectionPlacement::AboveAccounts,
             focus_hide_accounts: false,
-            focus_fold_unified: false,
             accounts_revealer: None,
             reveal_accounts_late: false,
         };
@@ -384,9 +376,8 @@ impl Sidebar {
             SidebarInput::SetOffline(offline) => self.on_set_offline(offline),
             SidebarInput::SetFocus {
                 hide_accounts,
-                fold_unified,
                 animate,
-            } => self.on_set_focus(hide_accounts, fold_unified, animate, widgets, sender),
+            } => self.on_set_focus(hide_accounts, animate, widgets, sender),
             SidebarInput::FocusSettled => self.on_focus_settled(widgets, sender),
             SidebarInput::SetCollapsed(collapsed) => {
                 self.on_set_collapsed(collapsed, widgets, sender)

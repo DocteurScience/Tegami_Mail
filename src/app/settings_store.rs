@@ -130,7 +130,6 @@ impl AppModel {
             app_theme: self.app_theme,
             text_scale: self.text_scale,
             theme: self.theme.clone(),
-            show_accounts: self.show_accounts,
             section_style: self.section_style,
             tags_placement: self.tags_placement,
             favorites_placement: self.favorites_placement,
@@ -185,7 +184,6 @@ impl AppModel {
         ));
         self.sidebars_emit(SidebarInput::SetFocus {
             hide_accounts: self.focus.active(config::FocusPart::HideAccounts),
-            fold_unified: self.focus.active(config::FocusPart::FoldUnified),
             animate: false,
         });
         self.message_list

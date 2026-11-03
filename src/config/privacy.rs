@@ -486,10 +486,6 @@ pub(crate) struct PrivacyFile {
     /// still shows the verdict, and a failed check always gets the banner.
     #[serde(default = "default_on")]
     pub(crate) show_spoof_banner: bool,
-    /// Whether the account sections are shown at all. Off leaves the unified
-    /// section alone, for those who only ever work from it.
-    #[serde(default = "default_on")]
-    pub(crate) show_accounts: bool,
     /// How Filters, Tags, Favorites and Contacts are drawn wherever they sit.
     #[serde(default)]
     pub(crate) section_style: SectionStyle,
@@ -608,7 +604,6 @@ impl Default for PrivacyFile {
             remote_ahead: false,
             show_remote_banner: true,
             show_spoof_banner: true,
-            show_accounts: true,
             section_style: SectionStyle::default(),
             tags_placement: SectionPlacement::AboveAccounts,
             favorites_placement: SectionPlacement::AboveAccounts,

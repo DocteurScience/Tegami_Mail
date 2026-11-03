@@ -110,7 +110,6 @@ impl AppModel {
             notification_content: self.notification_content,
             notify_receipts: self.notify_receipts,
             notification_buttons: self.notification_buttons,
-            show_accounts: self.show_accounts,
             section_style: self.section_style,
             tags_placement: self.tags_placement,
             favorites_placement: self.favorites_placement,

@@ -1,9 +1,6 @@
 //! Applying sidebar settings.
 
-use adw::prelude::*;
-use relm4::prelude::*;
-
-use crate::ui::preferences::{PrefInput, PrefOutput};
+use crate::ui::preferences::PrefOutput;
 
 use super::model::AppModel;
 
@@ -49,24 +46,6 @@ impl AppModel {
                     // The sidebar folds (or reopens) the sections concerned
                     // itself if the rail is up.
                     self.rebuild_sidebar();
-                }
-            }
-
-            PrefOutput::SetShowAccounts(show) => {
-                if pref!(self.show_accounts = show) {
-                    self.rebuild_sidebar();
-                }
-                // Both places that offer the switch stay in step.
-                if self
-                    .show_accounts_action
-                    .state()
-                    .and_then(|v| v.get::<bool>())
-                    != Some(show)
-                {
-                    self.show_accounts_action.set_state(&show.to_variant());
-                }
-                if let Some(p) = &self.prefs {
-                    p.emit(PrefInput::SetShowAccounts(show));
                 }
             }
 

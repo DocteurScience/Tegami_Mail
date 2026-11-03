@@ -5,13 +5,6 @@ use super::choices::{section_style_at, start_view_at};
 use super::*;
 
 impl Preferences {
-    pub(super) fn on_toggle_show_accounts(&mut self, on: bool, sender: ComponentSender<Self>) {
-        if self.show_accounts != on {
-            self.show_accounts = on;
-            let _ = sender.output(PrefOutput::SetShowAccounts(on));
-        }
-    }
-
     pub(super) fn on_toggle_focus(
         &mut self,
         part: crate::config::FocusPart,

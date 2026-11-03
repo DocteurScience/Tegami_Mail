@@ -935,12 +935,7 @@ impl SimpleComponent for AppModel {
     ) -> ComponentParts<Self> {
         let boot = Boot::read(&root);
         let children = Children::launch(&boot, &sender);
-        let main_menu = build_main_menu(
-            boot.prefs.show_accounts,
-            boot.prefs.reading_pane,
-            &boot.focus,
-            &sender,
-        );
+        let main_menu = build_main_menu(boot.prefs.reading_pane, &boot.focus, &sender);
         let mut model = AppModel::new(&root, &sender, boot, children, main_menu);
         model.prime_and_connect(&sender);
         schedule_download_prune();

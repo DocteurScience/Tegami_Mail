@@ -11,7 +11,6 @@ use crate::i18n::i18n;
 pub(in crate::ui::preferences) struct SidebarPage {
     pub(in crate::ui::preferences) page: adw::PreferencesPage,
     pub(in crate::ui::preferences) start_view_row: adw::ComboRow,
-    pub(in crate::ui::preferences) show_accounts_row: adw::SwitchRow,
     pub(in crate::ui::preferences) folder_sort_row: adw::ComboRow,
     pub(in crate::ui::preferences) chevron_side_row: adw::ComboRow,
     pub(in crate::ui::preferences) account_click_row: adw::SwitchRow,
@@ -29,7 +28,7 @@ pub(in crate::ui::preferences) struct SidebarPage {
 }
 
 impl SidebarPage {
-    pub(in crate::ui::preferences) fn build(model: &Preferences, sender: &ViewSender) -> Self {
+    pub(in crate::ui::preferences) fn build(_model: &Preferences, sender: &ViewSender) -> Self {
         relm4::view! {
             page = adw::PreferencesPage {
                 add = &adw::PreferencesGroup {
@@ -40,17 +39,6 @@ impl SidebarPage {
                         set_title: &i18n("Open at startup"),
                         connect_selected_notify[sender] => move |row| {
                             sender.input(PrefInput::ChangeStartView(row.selected()));
-                        },
-                    },
-
-                    #[name = "show_accounts_row"]
-                    adw::SwitchRow {
-                        // Kept current by update_view.
-                        set_active: model.show_accounts,
-                        set_title: &i18n("Accounts in the sidebar"),
-                        set_subtitle: &i18n("Off leaves only the unified section. Toggle with Ctrl+Shift+A or the main menu."),
-                        connect_active_notify[sender] => move |row| {
-                            sender.input(PrefInput::ToggleShowAccounts(row.is_active()));
                         },
                     },
 
@@ -188,7 +176,6 @@ impl SidebarPage {
         Self {
             page,
             start_view_row,
-            show_accounts_row,
             folder_sort_row,
             chevron_side_row,
             account_click_row,
@@ -204,11 +191,5 @@ impl SidebarPage {
             rail_fold_accounts_row,
             rail_fold_tags_row,
         }
-    }
-
-    /// The view's `#[watch]` setters for this page, in the order the
-    /// view had them (see the module comment of `pages`).
-    pub(in crate::ui::preferences) fn update_view(&self, model: &Preferences) {
-        self.show_accounts_row.set_active(model.show_accounts);
     }
 }

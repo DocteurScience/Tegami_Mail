@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+- **Removed: Show Accounts** (the main menu item, **Ctrl+Shift+A** and
+  **Settings → Sidebar → Accounts in the sidebar**) and Focus Mode's
+  **Fold up the unified rows**: without the unified section they only
+  emptied the sidebar. Focus Mode still hides the accounts if asked.
+  Ctrl+Shift+A still attaches files in a composer.
+
 - **Changed: a reply names the people it goes to.** Reply and Reply All
   fill To and Cc with "Name <address>", as the original had them, and a
   click on an address in a message starts a message to its name and

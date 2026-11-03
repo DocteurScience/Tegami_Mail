@@ -99,19 +99,17 @@ impl Sidebar {
     /// the sidebar is the icon rail and the row's switch is on. Such a row
     /// keeps its own rail-only open state (`rail_open`).
     fn locked_row(&self, row: UnifiedRow) -> bool {
-        // Focus Mode folds every unified row the same way.
-        self.focus_fold_unified
-            || self.collapsed
-                && match row {
-                    UnifiedRow::Favorites | UnifiedRow::Smart => false,
-                    UnifiedRow::Tags => self.rail_fold.folds_tags(),
-                }
+        self.collapsed
+            && match row {
+                UnifiedRow::Favorites | UnifiedRow::Smart => false,
+                UnifiedRow::Tags => self.rail_fold.folds_tags(),
+            }
     }
 
-    /// Whether the unified rows' open states are the temporary kind: the
-    /// icon rail's, or Focus Mode's. Either keeps the saved state untouched.
+    /// Whether the merged rows' open states are the temporary kind: the
+    /// icon rail's, which keeps the saved state untouched.
     fn rows_temporary(&self) -> bool {
-        self.collapsed || self.focus_fold_unified
+        self.collapsed
     }
 
     /// Whether "Fold up expanded items" holds the accounts folded.
@@ -149,18 +147,6 @@ impl Sidebar {
             UnifiedRow::Favorites => self.favorites_expanded = open,
             UnifiedRow::Tags => self.tags_expanded = open,
             UnifiedRow::Smart => self.smart_expanded = open,
-        }
-    }
-
-    /// Focus Mode is folding the unified rows: shut every open one on
-    /// screen, animated, with its chevron turned. The rebuild that follows
-    /// draws them folded for good (see `locked_row`).
-    pub(super) fn fold_unified_rows_now(&self) {
-        for w in self.kind_widgets.values() {
-            w.revealer.set_reveal_child(false);
-            if let Some(ch) = &w.chevron {
-                ch.set_icon_name(Some(chevron_icon(false)));
-            }
         }
     }
 

@@ -8,7 +8,6 @@ pub(crate) enum SidebarInput {
     SetContents {
         sections: Vec<SectionData>,
         /// Whether the account sections are shown at all.
-        show_accounts: bool,
         chevrons_left: bool,
         /// A click anywhere on an account's header folds it.
         account_click_folds: bool,
@@ -26,12 +25,10 @@ pub(crate) enum SidebarInput {
         /// The smart folders (#417) as (id, name).
         smart_folders: Vec<(String, String)>,
     },
-    /// Focus Mode's sidebar parts: hide the accounts, fold the unified
-    /// rows. `animate` slides what goes (or comes back) and rebuilds once it
+    /// Focus Mode's sidebar part: hide the accounts. `animate` slides what goes (or comes back) and rebuilds once it
     /// has gone; off, the rebuild is immediate (launch).
     SetFocus {
         hide_accounts: bool,
-        fold_unified: bool,
         animate: bool,
     },
     /// The Focus Mode slide finished: draw the sidebar as it now is.

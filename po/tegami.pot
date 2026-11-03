@@ -98,9 +98,6 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-msgid "Show Accounts"
-msgstr ""
-
 msgid "Print Preview…"
 msgstr ""
 
@@ -5025,14 +5022,6 @@ msgstr ""
 msgid "Open at startup"
 msgstr ""
 
-msgid "Accounts in the sidebar"
-msgstr ""
-
-msgid ""
-"Off leaves only the unified section. Toggle with Ctrl+Shift+A or the main "
-"menu."
-msgstr ""
-
 msgid "Folder order"
 msgstr ""
 
@@ -6419,10 +6408,7 @@ msgstr ""
 msgid "Hide the accounts in the sidebar"
 msgstr ""
 
-msgid "Only the unified section stays."
-msgstr ""
-
-msgid "Fold up the unified rows"
+msgid "Only Favorites, Tags and Smart Folders stay."
 msgstr ""
 
 msgid "Hide sender avatars"

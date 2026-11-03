@@ -172,7 +172,7 @@ impl Sidebar {
             .iter()
             .find(|s| !s.folders.is_empty())
             .map(|s| s.account.id)
-            .filter(|_| self.show_accounts && !self.focus_hide_accounts)
+            .filter(|_| !self.focus_hide_accounts)
         {
             self.select_folder_index(acc, 0);
         }
@@ -240,7 +240,7 @@ impl Sidebar {
             .filter(|p| section.folders.iter().any(|f| &f.path == *p))
             .cloned()
             .or_else(|| inbox.clone())?;
-        let accounts_shown = self.show_accounts && !self.focus_hide_accounts;
+        let accounts_shown = !self.focus_hide_accounts;
         if accounts_shown && section.folders.iter().any(|f| f.path == path) {
             return Some(Sel::Folder(acc, path));
         }

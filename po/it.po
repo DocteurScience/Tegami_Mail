@@ -109,9 +109,6 @@ msgstr "GNOME Account online"
 msgid "Settings"
 msgstr "Impostazioni"
 
-msgid "Show Accounts"
-msgstr "Mostra account"
-
 msgid "Print Preview…"
 msgstr "Anteprima di stampa…"
 
@@ -5601,14 +5598,6 @@ msgstr ""
 msgid "Open at startup"
 msgstr "Apri all'avvio"
 
-msgid "Accounts in the sidebar"
-msgstr "Account nella barra laterale"
-
-msgid ""
-"Off leaves only the unified section. Toggle with Ctrl+Shift+A or the main "
-"menu."
-msgstr ""
-
 msgid "Folder order"
 msgstr "Ordine cartelle"
 
@@ -7146,11 +7135,8 @@ msgstr "Ogni pulsante va nel suo menu ⋯."
 msgid "Hide the accounts in the sidebar"
 msgstr "Nascondi gli account nella barra laterale"
 
-msgid "Only the unified section stays."
-msgstr "Rimane solo la sezione unificata."
-
-msgid "Fold up the unified rows"
-msgstr "Comprimi le righe unificate"
+msgid "Only Favorites, Tags and Smart Folders stay."
+msgstr ""
 
 msgid "Hide sender avatars"
 msgstr "Nascondi gli avatar dei mittenti"
@@ -7711,6 +7697,18 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Show Accounts"
+#~ msgstr "Mostra account"
+
+#~ msgid "Accounts in the sidebar"
+#~ msgstr "Account nella barra laterale"
+
+#~ msgid "Only the unified section stays."
+#~ msgstr "Rimane solo la sezione unificata."
+
+#~ msgid "Fold up the unified rows"
+#~ msgstr "Comprimi le righe unificate"
 
 #~ msgid "Rename Folder…"
 #~ msgstr "Rinomina cartella…"

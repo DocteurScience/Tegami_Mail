@@ -392,7 +392,6 @@ impl AppModel {
             | PrefOutput::SetSeenCounts(..)
             | PrefOutput::SetRailDots(..)
             | PrefOutput::SetRailFold(..)
-            | PrefOutput::SetShowAccounts(..)
             | PrefOutput::SetSectionStyle(..)
             | PrefOutput::SetTagsPlacement(..)
             | PrefOutput::SetFavoritesPlacement(..)

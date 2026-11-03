@@ -113,7 +113,6 @@ tray_mail = true
 launcher_count = true
 show_remote_banner = true
 show_spoof_banner = true
-show_accounts = true
 section_style = "unified"
 tags_placement = "above_accounts"
 favorites_placement = "above_accounts"

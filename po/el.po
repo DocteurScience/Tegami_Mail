@@ -113,9 +113,6 @@ msgstr "Διαδικτυακοί λογαριασμοί GNOME"
 msgid "Settings"
 msgstr "Ρυθμίσεις"
 
-msgid "Show Accounts"
-msgstr "Εμφάνιση λογαριασμών"
-
 msgid "Print Preview…"
 msgstr "Προεπισκόπηση εκτύπωσης…"
 
@@ -5545,16 +5542,6 @@ msgstr ""
 msgid "Open at startup"
 msgstr "Άνοιγμα κατά την εκκίνηση"
 
-msgid "Accounts in the sidebar"
-msgstr "Λογαριασμοί στην πλευρική στήλη"
-
-msgid ""
-"Off leaves only the unified section. Toggle with Ctrl+Shift+A or the main "
-"menu."
-msgstr ""
-"Ανενεργό: εμφανίζεται μόνο η ενοποιημένη ενότητα. Εναλλαγή με Ctrl+Shift+A ή "
-"από το κύριο μενού."
-
 msgid "Folder order"
 msgstr "Σειρά φακέλων"
 
@@ -7102,11 +7089,8 @@ msgstr "Όλα εκτός από το κουμπί της πλευρικής σ�
 msgid "Hide the accounts in the sidebar"
 msgstr "Απόκρυψη των λογαριασμών στην πλευρική στήλη"
 
-msgid "Only the unified section stays."
-msgstr "Παραμένει μόνο η ενοποιημένη ενότητα."
-
-msgid "Fold up the unified rows"
-msgstr "Σύμπτυξη των ενοποιημένων γραμμών"
+msgid "Only Favorites, Tags and Smart Folders stay."
+msgstr ""
 
 msgid "Hide sender avatars"
 msgstr "Απόκρυψη των avatar των αποστολέων"
@@ -7668,6 +7652,25 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Show Accounts"
+#~ msgstr "Εμφάνιση λογαριασμών"
+
+#~ msgid "Accounts in the sidebar"
+#~ msgstr "Λογαριασμοί στην πλευρική στήλη"
+
+#~ msgid ""
+#~ "Off leaves only the unified section. Toggle with Ctrl+Shift+A or the main "
+#~ "menu."
+#~ msgstr ""
+#~ "Ανενεργό: εμφανίζεται μόνο η ενοποιημένη ενότητα. Εναλλαγή με "
+#~ "Ctrl+Shift+A ή από το κύριο μενού."
+
+#~ msgid "Only the unified section stays."
+#~ msgstr "Παραμένει μόνο η ενοποιημένη ενότητα."
+
+#~ msgid "Fold up the unified rows"
+#~ msgstr "Σύμπτυξη των ενοποιημένων γραμμών"
 
 #~ msgid "Rename Folder…"
 #~ msgstr "Μετονομασία φακέλου…"

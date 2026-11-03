@@ -111,9 +111,6 @@ msgstr "Сетевые учётные записи GNOME"
 msgid "Settings"
 msgstr "Настройки"
 
-msgid "Show Accounts"
-msgstr "Показывать учётные записи"
-
 msgid "Print Preview…"
 msgstr "Предпросмотр печати…"
 
@@ -5701,14 +5698,6 @@ msgstr ""
 msgid "Open at startup"
 msgstr "Открывать при запуске"
 
-msgid "Accounts in the sidebar"
-msgstr "Учётные записи на боковой панели"
-
-msgid ""
-"Off leaves only the unified section. Toggle with Ctrl+Shift+A or the main "
-"menu."
-msgstr ""
-
 msgid "Folder order"
 msgstr "Порядок папок"
 
@@ -7250,11 +7239,8 @@ msgstr "Все кнопки убираются в меню «⋯»."
 msgid "Hide the accounts in the sidebar"
 msgstr "Скрывать учётные записи на боковой панели"
 
-msgid "Only the unified section stays."
-msgstr "Остаётся только общий раздел."
-
-msgid "Fold up the unified rows"
-msgstr "Сворачивать строки общего раздела"
+msgid "Only Favorites, Tags and Smart Folders stay."
+msgstr ""
 
 msgid "Hide sender avatars"
 msgstr "Скрывать аватары отправителей"
@@ -7815,6 +7801,18 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Show Accounts"
+#~ msgstr "Показывать учётные записи"
+
+#~ msgid "Accounts in the sidebar"
+#~ msgstr "Учётные записи на боковой панели"
+
+#~ msgid "Only the unified section stays."
+#~ msgstr "Остаётся только общий раздел."
+
+#~ msgid "Fold up the unified rows"
+#~ msgstr "Сворачивать строки общего раздела"
 
 #~ msgid "Rename Folder…"
 #~ msgstr "Переименовать папку…"

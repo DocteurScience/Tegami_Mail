@@ -113,9 +113,6 @@ msgstr "GNOME Internetes Fiókok"
 msgid "Settings"
 msgstr "Beállítások"
 
-msgid "Show Accounts"
-msgstr "Fiókok megjelenítése"
-
 msgid "Print Preview…"
 msgstr "Nyomtatási előnézet…"
 
@@ -5695,14 +5692,6 @@ msgstr ""
 msgid "Open at startup"
 msgstr "Automatikus indítás rendszerindításkor"
 
-msgid "Accounts in the sidebar"
-msgstr "Fiókok az oldalsávban"
-
-msgid ""
-"Off leaves only the unified section. Toggle with Ctrl+Shift+A or the main "
-"menu."
-msgstr ""
-
 msgid "Folder order"
 msgstr "Mappák sorrendje"
 
@@ -7262,11 +7251,8 @@ msgstr "Minden gomb megnyitja a saját ⋯ menüjét."
 msgid "Hide the accounts in the sidebar"
 msgstr "A fiókok elrejtése az oldalsávban"
 
-msgid "Only the unified section stays."
-msgstr "Csak az összevont szakasz marad meg."
-
-msgid "Fold up the unified rows"
-msgstr "Hajtsd össze az összevont sorokat"
+msgid "Only Favorites, Tags and Smart Folders stay."
+msgstr ""
 
 msgid "Hide sender avatars"
 msgstr "A feladók avatárjainak elrejtése"
@@ -7836,6 +7822,18 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Show Accounts"
+#~ msgstr "Fiókok megjelenítése"
+
+#~ msgid "Accounts in the sidebar"
+#~ msgstr "Fiókok az oldalsávban"
+
+#~ msgid "Only the unified section stays."
+#~ msgstr "Csak az összevont szakasz marad meg."
+
+#~ msgid "Fold up the unified rows"
+#~ msgstr "Hajtsd össze az összevont sorokat"
 
 #~ msgid "Rename Folder…"
 #~ msgstr "Mappa átnevezése…"

@@ -186,14 +186,12 @@ pub(super) struct MainMenu {
     pub(super) menu: gtk::gio::Menu,
     pub(super) help: gtk::gio::Menu,
     pub(super) undo: gtk::gio::Menu,
-    pub(super) show_accounts_action: gtk::gio::SimpleAction,
     pub(super) focus_action: gtk::gio::SimpleAction,
     pub(super) reading_pane_action: gtk::gio::SimpleAction,
 }
 
 /// Sectioned: sync / accounts / settings / printing / help / quit.
 pub(super) fn build_main_menu(
-    show_accounts: bool,
     reading_pane: config::ReadingPane,
     focus: &config::FocusMode,
     sender: &ComponentSender<AppModel>,
@@ -222,14 +220,6 @@ pub(super) fn build_main_menu(
 
         let settings = gtk::gio::Menu::new();
         settings.append(Some(i18n("Settings").as_str()), Some("win.accounts"));
-        // The sidebar's account sections, for those who work from the
-        // unified section alone (also Settings → Sidebar). Not in the
-        // mockup, and not among the entries the owner took out.
-        settings.append_item(&keyed_item(
-            &i18n("Show Accounts"),
-            "app.show-accounts",
-            "<Ctrl><Shift>a",
-        ));
         menu.append_section(None, &settings);
 
         let printing = gtk::gio::Menu::new();
@@ -251,7 +241,6 @@ pub(super) fn build_main_menu(
         menu,
         help: help_menu,
         undo: model_undo_menu,
-        show_accounts_action: show_accounts_action(show_accounts, sender),
         focus_action: focus_mode_action(focus, sender),
         reading_pane_action: reading_pane_action(reading_pane, sender),
     }
@@ -278,26 +267,6 @@ fn reading_pane_action(
         }
     });
     action
-}
-
-/// The "show-accounts" check item's action; flipping it is the Settings
-/// switch's message.
-fn show_accounts_action(
-    show_accounts: bool,
-    sender: &ComponentSender<AppModel>,
-) -> gtk::gio::SimpleAction {
-    let show_accounts_action =
-        gtk::gio::SimpleAction::new_stateful("show-accounts", None, &show_accounts.to_variant());
-    {
-        let s = sender.clone();
-        show_accounts_action.connect_change_state(move |action, value| {
-            if let Some(on) = value.and_then(|v| v.get::<bool>()) {
-                action.set_state(&on.to_variant());
-                s.input(AppMsg::Pref(PrefOutput::SetShowAccounts(on)));
-            }
-        });
-    }
-    show_accounts_action
 }
 
 /// The "focus-mode" check item's action: turns Focus Mode on or off with

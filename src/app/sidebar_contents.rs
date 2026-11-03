@@ -70,7 +70,6 @@ impl AppModel {
         let favorite_folders = self.favorite_folder_refs();
         self.sidebars_emit(SidebarInput::SetContents {
             sections,
-            show_accounts: self.show_accounts,
             chevrons_left: self.chevrons_left,
             account_click_folds: self.account_click_folds,
             rail_dots: self.rail_dots_now(),

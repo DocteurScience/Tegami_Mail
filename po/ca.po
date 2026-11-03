@@ -110,9 +110,6 @@ msgstr "Comptes en línia del GNOME"
 msgid "Settings"
 msgstr "Paràmetres"
 
-msgid "Show Accounts"
-msgstr "Mostra els comptes"
-
 msgid "Print Preview…"
 msgstr "Previsualització d'impressió…"
 
@@ -5466,16 +5463,6 @@ msgstr ""
 msgid "Open at startup"
 msgstr "Obre en iniciar"
 
-msgid "Accounts in the sidebar"
-msgstr "Comptes a la barra lateral"
-
-msgid ""
-"Off leaves only the unified section. Toggle with Ctrl+Shift+A or the main "
-"menu."
-msgstr ""
-"Desactivat només deixa la secció unificada. Alterna amb Ctrl+Maj+A o el menú "
-"principal."
-
 msgid "Folder order"
 msgstr "Ordre de carpetes"
 
@@ -6990,11 +6977,8 @@ msgstr "Tot menys l'alternador de la barra lateral va a ⋯."
 msgid "Hide the accounts in the sidebar"
 msgstr "Amaga els comptes a la barra lateral"
 
-msgid "Only the unified section stays."
-msgstr "Només queda la secció unificada."
-
-msgid "Fold up the unified rows"
-msgstr "Replega les files unificades"
+msgid "Only Favorites, Tags and Smart Folders stay."
+msgstr ""
 
 msgid "Hide sender avatars"
 msgstr "Amaga els avatars dels remitents"
@@ -7545,6 +7529,25 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Show Accounts"
+#~ msgstr "Mostra els comptes"
+
+#~ msgid "Accounts in the sidebar"
+#~ msgstr "Comptes a la barra lateral"
+
+#~ msgid ""
+#~ "Off leaves only the unified section. Toggle with Ctrl+Shift+A or the main "
+#~ "menu."
+#~ msgstr ""
+#~ "Desactivat només deixa la secció unificada. Alterna amb Ctrl+Maj+A o el "
+#~ "menú principal."
+
+#~ msgid "Only the unified section stays."
+#~ msgstr "Només queda la secció unificada."
+
+#~ msgid "Fold up the unified rows"
+#~ msgstr "Replega les files unificades"
 
 #~ msgid "Rename Folder…"
 #~ msgstr "Canvia el nom de la carpeta…"

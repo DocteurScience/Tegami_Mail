@@ -484,10 +484,8 @@ impl AppModel {
                     gtk::gdk::ModifierType::CONTROL_MASK | gtk::gdk::ModifierType::SHIFT_MASK;
                 match compose.zip(crate::ui::compose::composer_key(keyval, shift_ctrl)) {
                     Some((r, input)) => r.controller.emit(input),
-                    // Activated without a value, the stateful action toggles.
-                    None if keyval == gtk::gdk::Key::a => {
-                        relm4::main_application().activate_action("show-accounts", None)
-                    }
+                    // Ctrl+Shift+A means nothing outside a composer.
+                    None if keyval == gtk::gdk::Key::a => {}
                     None => sender.input(AppMsg::OpenConsole),
                 }
             }

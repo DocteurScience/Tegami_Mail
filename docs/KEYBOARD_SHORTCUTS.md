@@ -142,8 +142,7 @@ no recipient is not sent.
 <kbd>Ctrl+Shift+A</kbd> attaches files, and <kbd>Ctrl+Shift+T</kbd>,
 <kbd>Ctrl+Shift+C</kbd> and <kbd>Ctrl+Shift+B</kbd> put the cursor in To, Cc
 and Bcc, showing the row if it is hidden, as in Thunderbird. Outside the
-composer, <kbd>Ctrl+Shift+A</kbd> and <kbd>Ctrl+Shift+C</kbd> keep the
-meanings below.
+composer, <kbd>Ctrl+Shift+C</kbd> keeps the meaning below.
 
 In To, Cc and Bcc, a space after an address, <kbd>Return</kbd> or a comma
 makes it a pill, and <kbd>Backspace</kbd> on an empty field turns the last
@@ -182,7 +181,6 @@ These work with or without single-key shortcuts too:
 | <kbd>Ctrl+Z</kbd> | Undo the last action (a move, a delete, a star) |
 | <kbd>Ctrl+Shift+Z</kbd> <kbd>Ctrl+Y</kbd> | Redo it |
 | <kbd>Ctrl+Shift+S</kbd> | Reveal the status bar (also: long-press Refresh) |
-| <kbd>Ctrl+Shift+A</kbd> | Show or hide the accounts in the sidebar |
 | <kbd>Ctrl+Shift+C</kbd> | Console mode, when it is enabled in Settings |
 | <kbd>F11</kbd> | Fullscreen on or off |
 | <kbd>Ctrl+Alt+1</kbd> <kbd>Ctrl+Alt+2</kbd> <kbd>Ctrl+Alt+3</kbd> | Reading pane right of the list, below it, or off |

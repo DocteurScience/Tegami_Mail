@@ -47,8 +47,7 @@ impl Sidebar {
 
         // The account sections — unless Settings (or the main menu) has
         // them off, for those who work from the unified section alone.
-        let account_sections: Vec<&SectionData> = if self.show_accounts && !self.focus_hide_accounts
-        {
+        let account_sections: Vec<&SectionData> = if !self.focus_hide_accounts {
             sections.iter().collect()
         } else {
             Vec::new()

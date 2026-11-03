@@ -69,9 +69,6 @@ pub(crate) struct Preferences {
     /// The Printing switches, kept whole so each toggle can hand the app
     /// the full set (#359).
     print_options: crate::config::PrintOptions,
-    /// Mirrors the "Accounts in the sidebar" switch, which the main menu
-    /// can flip too.
-    show_accounts: bool,
     /// The icon rail's fold-up switches, kept whole so each toggle can hand
     /// the app the full set.
     rail_fold: crate::config::RailFold,
@@ -396,7 +393,6 @@ impl Component for Preferences {
             columns_group: None,
             list_single_possible: init.list_layout != crate::config::ListLayout::Cards,
             print_options: init.print_options,
-            show_accounts: init.show_accounts,
             rail_fold: init.rail_fold,
             swipe_enabled: init.swipe_enabled,
             threading: init.threading,
@@ -514,7 +510,6 @@ impl Component for Preferences {
     fn pre_view() {
         general.update_view(model);
         appearance.update_view(model);
-        sidebar.update_view(model);
         list.update_view(model);
         conversations.update_view(model);
         reading.update_view(model);
@@ -586,13 +581,9 @@ impl Component for Preferences {
                 panel,
                 sender: accounts,
             } => self.on_set_accounts_panel(panel, accounts),
-            PrefInput::ToggleShowAccounts(on) => self.on_toggle_show_accounts(on, sender),
             PrefInput::ToggleFocus(part, on) => self.on_toggle_focus(part, on, sender),
             PrefInput::SetFocusMode(focus) => {
                 self.focus = focus;
-            }
-            PrefInput::SetShowAccounts(on) => {
-                self.show_accounts = on;
             }
             PrefInput::ChangeSectionStyle(idx) => self.on_change_section_style(idx, sender),
             PrefInput::ChangeTagsPlacement(idx) => {

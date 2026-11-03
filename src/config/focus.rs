@@ -33,9 +33,6 @@ pub(crate) struct FocusMode {
     /// The sidebar's account sections are hidden.
     #[serde(default = "default_on")]
     pub(crate) hide_accounts: bool,
-    /// The sidebar's unified rows (Inboxes, Starred, …) fold up.
-    #[serde(default = "default_on")]
-    pub(crate) fold_unified: bool,
     /// The message list's sender avatars are hidden.
     #[serde(default = "default_on")]
     pub(crate) hide_avatars: bool,
@@ -67,7 +64,6 @@ impl Default for FocusMode {
             reader_toolbar: true,
             list_header: true,
             hide_accounts: true,
-            fold_unified: true,
             hide_avatars: true,
             one_preview_line: true,
             hide_preview: true,
@@ -88,7 +84,6 @@ pub(crate) enum FocusPart {
     ReaderToolbar,
     ListHeader,
     HideAccounts,
-    FoldUnified,
     HideAvatars,
     OnePreviewLine,
     HidePreview,
@@ -104,7 +99,6 @@ impl FocusMode {
             FocusPart::ReaderToolbar => self.reader_toolbar,
             FocusPart::ListHeader => self.list_header,
             FocusPart::HideAccounts => self.hide_accounts,
-            FocusPart::FoldUnified => self.fold_unified,
             FocusPart::HideAvatars => self.hide_avatars,
             FocusPart::OnePreviewLine => self.one_preview_line,
             FocusPart::HidePreview => self.hide_preview,
@@ -120,7 +114,6 @@ impl FocusMode {
             FocusPart::ReaderToolbar => self.reader_toolbar = on,
             FocusPart::ListHeader => self.list_header = on,
             FocusPart::HideAccounts => self.hide_accounts = on,
-            FocusPart::FoldUnified => self.fold_unified = on,
             FocusPart::HideAvatars => self.hide_avatars = on,
             FocusPart::OnePreviewLine => self.one_preview_line = on,
             FocusPart::HidePreview => self.hide_preview = on,
@@ -158,7 +151,7 @@ mod focus_tests {
         assert!(!f.enabled);
         // The app opens out of the mode until it is asked to do otherwise.
         assert!(!f.start_focused);
-        assert!(f.reader_toolbar && f.list_header && f.hide_accounts && f.fold_unified);
+        assert!(f.reader_toolbar && f.list_header && f.hide_accounts);
         assert!(f.hide_avatars && f.one_preview_line);
         assert!(f.hide_preview && f.rail_sidebar);
         // The exception: the subject stays until it is asked for.
@@ -181,7 +174,7 @@ mod focus_tests {
         // preview and rail parts included, so an upgrade gets the whole
         // mode without anyone going looking for the new switches.
         let partial: FocusMode = toml::from_str("enabled = true").unwrap();
-        assert!(partial.enabled && partial.fold_unified);
+        assert!(partial.enabled && partial.hide_accounts);
         assert!(partial.hide_preview && partial.rail_sidebar);
         // Except the subject, which is off wherever it comes from.
         assert!(!partial.hide_subject);

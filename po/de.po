@@ -113,9 +113,6 @@ msgstr "GNOME Online Accounts"
 msgid "Settings"
 msgstr "Einstellungen"
 
-msgid "Show Accounts"
-msgstr "Konten anzeigen"
-
 msgid "Print Preview…"
 msgstr "Druckvorschau…"
 
@@ -5502,16 +5499,6 @@ msgstr ""
 msgid "Open at startup"
 msgstr "Beim Start öffnen"
 
-msgid "Accounts in the sidebar"
-msgstr "Konten in der Seitenleiste"
-
-msgid ""
-"Off leaves only the unified section. Toggle with Ctrl+Shift+A or the main "
-"menu."
-msgstr ""
-"Bei Deaktivierung bleibt nur der vereinheitlichte Bereich sichtbar. "
-"Aktivierung/Deaktivierung mittels Strg+Umschalt+A oder über das Hauptmenü."
-
 msgid "Folder order"
 msgstr "Ordnerreihenfolge"
 
@@ -7046,11 +7033,8 @@ msgstr ""
 msgid "Hide the accounts in the sidebar"
 msgstr "Konten in der Seitenleiste ausblenden"
 
-msgid "Only the unified section stays."
-msgstr "Nur der einheitliche Abschnitt bleibt bestehen."
-
-msgid "Fold up the unified rows"
-msgstr "Gemeinsame Zeilen einklappen"
+msgid "Only Favorites, Tags and Smart Folders stay."
+msgstr ""
 
 msgid "Hide sender avatars"
 msgstr "Absender-Avatare ausblenden"
@@ -7626,6 +7610,25 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Show Accounts"
+#~ msgstr "Konten anzeigen"
+
+#~ msgid "Accounts in the sidebar"
+#~ msgstr "Konten in der Seitenleiste"
+
+#~ msgid ""
+#~ "Off leaves only the unified section. Toggle with Ctrl+Shift+A or the main "
+#~ "menu."
+#~ msgstr ""
+#~ "Bei Deaktivierung bleibt nur der vereinheitlichte Bereich sichtbar. "
+#~ "Aktivierung/Deaktivierung mittels Strg+Umschalt+A oder über das Hauptmenü."
+
+#~ msgid "Only the unified section stays."
+#~ msgstr "Nur der einheitliche Abschnitt bleibt bestehen."
+
+#~ msgid "Fold up the unified rows"
+#~ msgstr "Gemeinsame Zeilen einklappen"
 
 #~ msgid "Rename Folder…"
 #~ msgstr "Ordner umbenennen…"

@@ -66,7 +66,6 @@ impl AppModel {
             menu,
             help: help_menu,
             undo: model_undo_menu,
-            show_accounts_action,
             focus_action,
             reading_pane_action,
         } = main_menu;
@@ -75,7 +74,6 @@ impl AppModel {
         let remember_sidebar = prefs.remember_sidebar;
         let remember_rail = prefs.remember_rail;
         let start_view = prefs.start_view;
-        let show_accounts = prefs.show_accounts;
         let reader_override = config::load_reader_override();
         let plain_style = config::load_plain_style();
         AppModel {
@@ -387,8 +385,6 @@ impl AppModel {
             section_style: prefs.section_style,
             tags_placement: prefs.tags_placement,
             favorites_placement: prefs.favorites_placement,
-            show_accounts,
-            show_accounts_action,
             focus,
             focus_action,
             reading_pane_action,

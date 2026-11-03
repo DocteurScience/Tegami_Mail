@@ -43,10 +43,9 @@ impl AppModel {
                         .set_visible(self.reader_overflow_wanted());
                 }
             }
-            if changed(F::HideAccounts) || changed(F::FoldUnified) {
+            if changed(F::HideAccounts) {
                 self.sidebars_emit(SidebarInput::SetFocus {
                     hide_accounts: focus.active(F::HideAccounts),
-                    fold_unified: focus.active(F::FoldUnified),
                     animate: true,
                 });
             }

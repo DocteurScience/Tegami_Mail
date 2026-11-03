@@ -7,37 +7,30 @@ impl Sidebar {
     pub(super) fn on_set_focus(
         &mut self,
         hide_accounts: bool,
-        fold_unified: bool,
         animate: bool,
         widgets: &SidebarWidgets,
         sender: ComponentSender<Self>,
     ) {
         let hiding = hide_accounts && !self.focus_hide_accounts;
         let showing = !hide_accounts && self.focus_hide_accounts;
-        let folding = fold_unified && !self.focus_fold_unified;
-        if !hiding && !showing && fold_unified == self.focus_fold_unified {
+        if !hiding && !showing {
             return;
         }
         self.focus_hide_accounts = hide_accounts;
-        self.focus_fold_unified = fold_unified;
         // Whatever was opened for the mode alone goes with it.
         self.rail_open.clear();
         self.rail_open_accounts.clear();
-        if animate && (hiding || folding) {
-            // Slide what goes: the accounts up and away, every open
-            // unified row shut. The rebuild that draws the sidebar
-            // without them follows once they have gone — the pixels
-            // it replaces are then the ones it draws.
-            if hiding {
+        if animate && hiding {
+            // Slide the accounts up and away. The rebuild that draws the
+            // sidebar without them follows once they have gone — the
+            // pixels it replaces are then the ones it draws.
+            {
                 // SlideDown folding: the block slides up under the
                 // unified section, the way a folder list folds.
                 if let Some(r) = &self.accounts_revealer {
                     r.set_transition_duration(crate::ui::FOCUS_ANIM_MS);
                     r.set_reveal_child(false);
                 }
-            }
-            if folding {
-                self.fold_unified_rows_now();
             }
             let s = sender.clone();
             gtk::glib::timeout_add_local_once(

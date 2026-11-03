@@ -560,11 +560,6 @@ pub(crate) struct AppModel {
     pub(super) section_style: config::SectionStyle,
     pub(super) tags_placement: config::SectionPlacement,
     pub(super) favorites_placement: config::SectionPlacement,
-    /// Whether the account sections are shown at all.
-    pub(super) show_accounts: bool,
-    /// The main menu's "Show Accounts" check item, kept in step with the
-    /// setting wherever it is changed.
-    pub(super) show_accounts_action: gtk::gio::SimpleAction,
     /// Focus Mode (main menu, Ctrl+Shift+F, Settings → Appearance): the
     /// master switch and the parts it strips. Applied on top of the ordinary
     /// settings, which it never changes — off, everything comes back.

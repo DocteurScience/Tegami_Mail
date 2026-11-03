@@ -112,7 +112,6 @@ impl AppModel {
         sender: &ComponentSender<Self>,
     ) {
         let app = relm4::main_application();
-        app.add_action(&self.show_accounts_action);
         app.add_action(&self.focus_action);
         app.add_action(&self.reading_pane_action);
         let window = root.clone();
@@ -127,9 +126,8 @@ impl AppModel {
         });
         app.add_action(&quit);
         gtk::prelude::GtkApplicationExt::set_accels_for_action(&app, "app.quit", &["<Ctrl>q"]);
-        // Ctrl+Shift+A shows or hides the sidebar's account sections and
-        // Ctrl+Shift+C opens the console, but in a composer they are
-        // Thunderbird's Attach and Cc (#490, #491). An application key
+        // Ctrl+Shift+C opens the console, but in a composer it is
+        // Thunderbird's Cc, as Ctrl+Shift+A is Attach (#490, #491). An application key
         // reaches the main window before the composer in it, so the two
         // belong to actions of their own that ask where the focus is
         // (AppMsg::ComposerKey). The menus keep the real actions, with

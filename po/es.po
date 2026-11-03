@@ -110,9 +110,6 @@ msgstr "Cuentas en línea de GNOME"
 msgid "Settings"
 msgstr "Ajustes"
 
-msgid "Show Accounts"
-msgstr "Mostrar cuentas"
-
 msgid "Print Preview…"
 msgstr "Vista previa de impresión…"
 
@@ -5501,16 +5498,6 @@ msgstr ""
 msgid "Open at startup"
 msgstr "Abrir al iniciar"
 
-msgid "Accounts in the sidebar"
-msgstr "Cuentas en la barra lateral"
-
-msgid ""
-"Off leaves only the unified section. Toggle with Ctrl+Shift+A or the main "
-"menu."
-msgstr ""
-"Al desactivarlo, solo queda la sección unificada. Alterna con Ctrl+Shift+A o "
-"desde el menú principal."
-
 msgid "Folder order"
 msgstr "Orden de las carpetas"
 
@@ -7033,11 +7020,8 @@ msgstr "Todo se agrupa en ⋯ excepto el botón de la barra lateral."
 msgid "Hide the accounts in the sidebar"
 msgstr "Ocultar las cuentas en la barra lateral"
 
-msgid "Only the unified section stays."
-msgstr "Solo permanece la sección unificada."
-
-msgid "Fold up the unified rows"
-msgstr "Contraer las filas unificadas"
+msgid "Only Favorites, Tags and Smart Folders stay."
+msgstr ""
 
 msgid "Hide sender avatars"
 msgstr "Ocultar avatares de remitentes"
@@ -7595,6 +7579,25 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Show Accounts"
+#~ msgstr "Mostrar cuentas"
+
+#~ msgid "Accounts in the sidebar"
+#~ msgstr "Cuentas en la barra lateral"
+
+#~ msgid ""
+#~ "Off leaves only the unified section. Toggle with Ctrl+Shift+A or the main "
+#~ "menu."
+#~ msgstr ""
+#~ "Al desactivarlo, solo queda la sección unificada. Alterna con "
+#~ "Ctrl+Shift+A o desde el menú principal."
+
+#~ msgid "Only the unified section stays."
+#~ msgstr "Solo permanece la sección unificada."
+
+#~ msgid "Fold up the unified rows"
+#~ msgstr "Contraer las filas unificadas"
 
 #~ msgid "Rename Folder…"
 #~ msgstr "Renombrar carpeta…"

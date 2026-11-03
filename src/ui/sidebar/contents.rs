@@ -14,7 +14,6 @@ impl Sidebar {
     ) {
         let SidebarInput::SetContents {
             mut sections,
-            show_accounts,
             chevrons_left,
             account_click_folds,
             rail_dots,
@@ -62,7 +61,6 @@ impl Sidebar {
         self.tags_placement = tags_placement;
         self.favorites_placement = favorites_placement;
         self.smart_folders = smart_folders;
-        self.show_accounts = show_accounts;
         self.settle_selection();
         self.rebuild(widgets, &sender);
     }
