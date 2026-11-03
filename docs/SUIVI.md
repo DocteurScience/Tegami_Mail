@@ -94,6 +94,7 @@ Dernière mise à jour : 2026-11-02, après `40a6c7e`.
 | `80e9d01` | Restes du mode Concentration : boutons des en-têtes et avatars de la liste sortis de leurs révélateurs, mesure du repli simplifiée (plus d'attente d'ouverture, remesure quand un bouton apparaît), `FOCUS_ANIM_MS` et CSS `.focus-fade` retirés ; vérifié par captures à 1430, 1090 et 820 px |
 | `d0c271f` | Relecture de la doc : Undo Send (plus de réponse dans le volet), README des docs et deux phrases du CHANGELOG (Markdown/HTML, réglage du composeur dans le volet) ; FEATURES, DOCUMENTATION et KEYBOARD_SHORTCUTS déjà à jour par ailleurs |
 | `29259e7` | Outillage de comparaison aux maquettes : `tools/dev/grab.sh`, `popgrab.sh`, `mockup-shots.sh`, `mockup-crop.py` ; Adwaita Sans et outils X dans le conteneur, proxy apt rafraîchi à chaque démarrage. Série de 17 captures envoyée au propriétaire (2026-11-03) pour une analyse de design |
+| `83df670`, `5631585`, `ce58a5c`, `6a7d4cb`, `39b63ef` | Audit du code (2026-11-03) : clippy `--all-targets` à zéro ; entrées obsolètes des catalogues purgées (`update-pot.sh` les retire désormais) ; 27 règles CSS et 5 icônes mortes retirées ; actions rapides du tiroir visibles au focus clavier ; Ctrl+Maj+A mort et relais `ZoomKey`/`ComposerKey` retirés ; ~40 commentaires périmés (All Inboxes, réponse dans le volet, galerie) ; panique IMAP corrigée (lecture sans session après un envoi de brouillon). Restent, à décider : la mécanique des vues unifiées ne sert plus qu'aux Favoris (simplification possible) ; la touche `d` double `c` |
 
 ## Décisions prises
 
