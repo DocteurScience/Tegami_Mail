@@ -3724,11 +3724,6 @@ msgid_plural "{n} files · {size}"
 msgstr[0] "{n} fitxer · {size}"
 msgstr[1] "{n} fitxers · {size}"
 
-msgid "Send as a normal attachment"
-msgid_plural "Send as normal attachments"
-msgstr[0] "Envia com un adjunt normal"
-msgstr[1] "Envia com a adjunts normals"
-
 msgid "Place the picture where the cursor is"
 msgid_plural "Place the pictures where the cursor is"
 msgstr[0] "Col·loca la imatge on és el cursor"
@@ -7320,6 +7315,11 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Send as a normal attachment"
+#~ msgid_plural "Send as normal attachments"
+#~ msgstr[0] "Envia com un adjunt normal"
+#~ msgstr[1] "Envia com a adjunts normals"
 
 #~ msgid "Show From, To and Subject"
 #~ msgstr "Mostra De, A i Assumpte"

@@ -3385,11 +3385,6 @@ msgid_plural "{n} files · {size}"
 msgstr[0] ""
 msgstr[1] ""
 
-msgid "Send as a normal attachment"
-msgid_plural "Send as normal attachments"
-msgstr[0] ""
-msgstr[1] ""
-
 msgid "Place the picture where the cursor is"
 msgid_plural "Place the pictures where the cursor is"
 msgstr[0] ""

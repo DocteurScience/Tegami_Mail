@@ -310,7 +310,7 @@ impl DropZones {
         let size = crate::models::human_size(size);
         let names = self.cloud_names.borrow();
 
-        self.summary.set_label(&if n == 1 {
+        let summary = if n == 1 {
             let name = paths[0]
                 .file_name()
                 .map(|s| s.to_string_lossy().into_owned())
@@ -323,18 +323,19 @@ impl DropZones {
                 n,
                 &[("n", &n.to_string()), ("size", &size)],
             )
-        });
+        };
+        // In a composer the files' count and size are the attach card's
+        // line (mockup 12); the main window keeps them above its cards.
+        self.summary.set_label(&summary);
+        self.summary
+            .set_visible(self.context == DropContext::NewMessage);
 
         let inline = self.allow_inline.get() && pictures > 0;
         self.inline.widget.set_visible(inline);
         self.cloud.widget.set_visible(!names.is_empty());
         match self.context {
             DropContext::Composer => {
-                self.attach.subtitle.set_label(&ni18n(
-                    "Send as a normal attachment",
-                    "Send as normal attachments",
-                    n,
-                ));
+                self.attach.subtitle.set_label(&summary);
                 self.inline.subtitle.set_label(&if pictures == n {
                     ni18n(
                         "Place the picture where the cursor is",
@@ -392,26 +393,21 @@ impl DropZones {
             self.layer.set_visible(true);
         }
 
-        // A composer stacks them as rows, which the tall reading pane has
-        // room for, and puts them side by side only where it is too short
-        // to stack them (a split reply dragged small). The main window puts
-        // them side by side, stacking them only in a window too narrow for
-        // that. Measured, since the words wrap to the room there is.
-        let rows = match self.context {
-            DropContext::Composer => {
-                self.lay_out(true);
-                let (need, _, _, _) = self.layer.measure(gtk::Orientation::Vertical, width);
-                need <= height
-            }
+        // A composer stacks compact cards at its top, each with its icon
+        // over its words (mockup 12). The main window puts them side by
+        // side, stacking them only in a window too narrow for that.
+        // Measured, since the words wrap to the room there is.
+        match self.context {
+            DropContext::Composer => self.lay_out_composer(),
             DropContext::NewMessage => {
                 self.lay_out(false);
                 let (need, _, _, _) = self.layer.measure(gtk::Orientation::Horizontal, height);
-                need > width
+                let rows = need > width;
+                self.lay_out(rows);
+                if rows {
+                    self.align_rows(width - 2 * LAYER_PADDING);
+                }
             }
-        };
-        self.lay_out(rows);
-        if rows {
-            self.align_rows(width - 2 * LAYER_PADDING);
         }
 
         if !self.shown.replace(true) {
@@ -435,6 +431,22 @@ impl DropZones {
             .min(room - 2 * CARD_PADDING);
         for zone in visible {
             zone.inner.set_size_request(widest, -1);
+        }
+    }
+
+    /// A composer's cards: stacked at the top, as tall as their words,
+    /// each with its icon over them (mockup 12).
+    fn lay_out_composer(&self) {
+        self.zones.set_orientation(gtk::Orientation::Vertical);
+        self.zones.set_vexpand(false);
+        self.zones.set_valign(gtk::Align::Start);
+        self.layer.add_css_class("rows");
+        self.layer.add_css_class("compact");
+        for zone in [&self.attach, &self.inline, &self.cloud] {
+            zone.inner.set_size_request(-1, -1);
+            zone.widget.set_vexpand(false);
+            zone.inner.set_vexpand(false);
+            zone.lay_out(false);
         }
     }
 
@@ -512,10 +524,9 @@ impl Zone {
 
         let subtitle = gtk::Label::new(None);
         subtitle.add_css_class("drop-subtitle");
+        // Wrapped, never cut: what a card does is only said here.
         subtitle.set_wrap(true);
-        subtitle.set_max_width_chars(30);
-        subtitle.set_lines(3);
-        subtitle.set_ellipsize(gtk::pango::EllipsizeMode::End);
+        subtitle.set_max_width_chars(40);
         subtitle.set_valign(gtk::Align::Start);
         words.append(&subtitle);
         inner.append(&words);

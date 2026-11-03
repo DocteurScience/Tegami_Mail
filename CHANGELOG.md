@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+- **Changed: files in the composer as the redesign draws them** (mockups 11
+  and 12): attached files are cards with a border, the name in bold; files
+  dragged over the composer bring up compact cards stacked at its top, the
+  icon over the words, the files' count and size under "Attach to
+  message", and every card's line written out in full.
+
 - **Removed: writing in the main window.** Replies, forwards and new
   messages open in the composer window only, the one the redesign draws
   (mockups 04 and 05). Gone with the reading pane's composer: **Settings →

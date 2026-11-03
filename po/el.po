@@ -3789,11 +3789,6 @@ msgid_plural "{n} files · {size}"
 msgstr[0] "{n} αρχείο · {size}"
 msgstr[1] "{n} αρχεία · {size}"
 
-msgid "Send as a normal attachment"
-msgid_plural "Send as normal attachments"
-msgstr[0] "Αποστολή ως κανονικό συνημμένο"
-msgstr[1] "Αποστολή ως κανονικά συνημμένα"
-
 msgid "Place the picture where the cursor is"
 msgid_plural "Place the pictures where the cursor is"
 msgstr[0] "Τοποθέτηση της εικόνας στη θέση του δρομέα"
@@ -7443,6 +7438,11 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Send as a normal attachment"
+#~ msgid_plural "Send as normal attachments"
+#~ msgstr[0] "Αποστολή ως κανονικό συνημμένο"
+#~ msgstr[1] "Αποστολή ως κανονικά συνημμένα"
 
 #~ msgid "Show From, To and Subject"
 #~ msgstr "Εμφάνιση Από, Προς και Θέμα"

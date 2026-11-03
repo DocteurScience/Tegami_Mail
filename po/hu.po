@@ -3879,11 +3879,6 @@ msgid_plural "{n} files · {size}"
 msgstr[0] "{n} fájl · {méret}"
 msgstr[1] "{n} fájlok · {méret}"
 
-msgid "Send as a normal attachment"
-msgid_plural "Send as normal attachments"
-msgstr[0] "Küldés normál mellékletként"
-msgstr[1] "Küldés normál mellékletként"
-
 msgid "Place the picture where the cursor is"
 msgid_plural "Place the pictures where the cursor is"
 msgstr[0] "Helyezd el a képet a kurzor helyére"
@@ -7600,6 +7595,11 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Send as a normal attachment"
+#~ msgid_plural "Send as normal attachments"
+#~ msgstr[0] "Küldés normál mellékletként"
+#~ msgstr[1] "Küldés normál mellékletként"
 
 #~ msgid "Show From, To and Subject"
 #~ msgstr "Feladó, címzett és tárgy megjelenítése"

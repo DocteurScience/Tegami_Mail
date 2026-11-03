@@ -3749,11 +3749,6 @@ msgid_plural "{n} files · {size}"
 msgstr[0] "{n} Datei · {size}"
 msgstr[1] "{n} Dateien · {size}"
 
-msgid "Send as a normal attachment"
-msgid_plural "Send as normal attachments"
-msgstr[0] "Als normalen Anhang senden"
-msgstr[1] "Als normale Anhänge senden"
-
 msgid "Place the picture where the cursor is"
 msgid_plural "Place the pictures where the cursor is"
 msgstr[0] "Bild an der Cursorposition einfügen"
@@ -7393,6 +7388,11 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Send as a normal attachment"
+#~ msgid_plural "Send as normal attachments"
+#~ msgstr[0] "Als normalen Anhang senden"
+#~ msgstr[1] "Als normale Anhänge senden"
 
 #~ msgid "Show From, To and Subject"
 #~ msgstr "Von, An und Betreff anzeigen"

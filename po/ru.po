@@ -3893,12 +3893,6 @@ msgstr[0] "{n} файл · {size}"
 msgstr[1] "{n} файла · {size}"
 msgstr[2] "{n} файлов · {size}"
 
-msgid "Send as a normal attachment"
-msgid_plural "Send as normal attachments"
-msgstr[0] "Отправить как обычное вложение"
-msgstr[1] "Отправить как обычные вложения"
-msgstr[2] "Отправить как обычные вложения"
-
 msgid "Place the picture where the cursor is"
 msgid_plural "Place the pictures where the cursor is"
 msgstr[0] "Поместить изображение в место указателя"
@@ -7580,6 +7574,12 @@ msgstr ""
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
+
+#~ msgid "Send as a normal attachment"
+#~ msgid_plural "Send as normal attachments"
+#~ msgstr[0] "Отправить как обычное вложение"
+#~ msgstr[1] "Отправить как обычные вложения"
+#~ msgstr[2] "Отправить как обычные вложения"
 
 #~ msgid "Show From, To and Subject"
 #~ msgstr "Показать поля «От», «Кому» и «Тема»"
