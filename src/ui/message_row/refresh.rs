@@ -2,7 +2,7 @@
 //! classes its host widget wears. Runs on every bind; kept cheap.
 
 use super::faces::recipient_names;
-use super::headings::{due_label, pill_label};
+use super::headings::{due_label, pill_chip, pill_name};
 use super::row::Row;
 use super::shared::{RowLook, RowShared};
 use super::{column_width, RowData, LINE_ICON_PX};
@@ -523,19 +523,14 @@ impl Row {
         let pills = msg.pills(&tags);
         let (shown, hidden) = split_chips(pills.len());
         for pill in &pills[..shown] {
-            let chip = pill_label(pill);
+            let chip = pill_chip(pill, 14);
             chip.set_valign(gtk::Align::Center);
-            chip.set_ellipsize(gtk::pango::EllipsizeMode::End);
-            chip.set_max_width_chars(14);
             tags_box.append(&chip);
         }
         if hidden > 0 {
             // The tags left out are named in the tooltip and the accessible
             // label, so "+2" is never the only way to learn what they are.
-            let names: Vec<String> = pills[shown..]
-                .iter()
-                .map(|p| pill_label(p).label().to_string())
-                .collect();
+            let names: Vec<String> = pills[shown..].iter().map(pill_name).collect();
             let n = hidden.to_string();
             let more = ni18n_f(
                 "{n} more tag: {names}",

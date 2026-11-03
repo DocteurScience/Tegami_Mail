@@ -84,7 +84,8 @@ pub(crate) fn show(
 
     let preview_label = heading(&i18n("Preview"));
     preview_label.set_margin_top(8);
-    let preview = gtk::Label::new(None);
+    // Where the preview chip goes; rebuilt as the name and colour change.
+    let preview = gtk::Box::new(gtk::Orientation::Horizontal, 0);
     preview.set_halign(gtk::Align::Start);
     let show_preview = {
         let (preview, chosen, name) = (preview.clone(), chosen.clone(), name.clone());
@@ -97,14 +98,16 @@ pub(crate) fn show(
             };
             // The list's own chip (mockup 09): the palette colours have a
             // rule each, the one a Gmail label wears (app/tags.rs).
-            preview.set_label(&shown);
             let hue = TAG_COLORS
                 .iter()
-                .position(|hex| hex.eq_ignore_ascii_case(&chosen.borrow()));
-            let mut classes = vec!["tag-chip".to_string(), "label-chip".to_string()];
-            classes.extend(hue.map(|i| format!("label-hue-{i}")));
-            let classes: Vec<&str> = classes.iter().map(String::as_str).collect();
-            preview.set_css_classes(&classes);
+                .position(|hex| hex.eq_ignore_ascii_case(&chosen.borrow()))
+                .map(|i| format!("label-hue-{i}"));
+            let mut classes = vec!["label-chip"];
+            classes.extend(hue.as_deref());
+            while let Some(child) = preview.first_child() {
+                preview.remove(&child);
+            }
+            preview.append(&crate::ui::message_row::chip_box(&shown, &classes, 30));
         }
     };
 

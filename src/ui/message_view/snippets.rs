@@ -140,28 +140,41 @@ pub(super) fn att_chips_html(key: (u32, u32), atts: &[CardAttachment]) -> String
 }
 
 /// The tag chips of a card header (#71): one pill per keyword naming a tag,
-/// colored inline (the document has no access to the app's stylesheet).
+/// colored inline (the document has no access to the app's stylesheet), in
+/// the list's colours: the dot in the tag's colour, the name in its dark
+/// shade on its tint (mockups 02 and 07).
 pub(super) fn tag_chips_html(
     tags: &[crate::config::Tag],
     keywords: &[String],
     labels: &[String],
 ) -> String {
+    let chip = |color: &str, name: &str, extra: &str| -> String {
+        let (bg, fg) = match crate::config::chip_colors(color) {
+            Some((fill, text)) => (fill.to_string(), text.to_string()),
+            None => (
+                color.to_string(),
+                crate::color::readable_text(color).to_string(),
+            ),
+        };
+        let color = gtk::glib::markup_escape_text(color);
+        let name = gtk::glib::markup_escape_text(name);
+        format!(
+            "<span class=\"tegami-tag{extra}\" style=\"background:{bg};color:{fg}\"{title}>\
+             <span class=\"tegami-tagdot\" style=\"background:{color}\"></span>{name}</span>",
+            title = if extra.is_empty() {
+                String::new()
+            } else {
+                format!(" title=\"{name}\"")
+            },
+        )
+    };
     let mut out = String::new();
     for pill in crate::models::pills(keywords, labels, tags) {
         match pill {
-            crate::models::Pill::Tag(t) => out.push_str(&format!(
-                "<span class=\"tegami-tag\" style=\"background:{bg};color:{fg}\">{name}</span>",
-                bg = gtk::glib::markup_escape_text(&t.color),
-                fg = crate::color::readable_text(&t.color),
-                name = gtk::glib::markup_escape_text(&t.name),
-            )),
+            crate::models::Pill::Tag(t) => out.push_str(&chip(&t.color, &t.name, "")),
             crate::models::Pill::Label(name) => {
                 let color = crate::config::TAG_COLORS[crate::models::label_hue(&name)];
-                out.push_str(&format!(
-                    "<span class=\"tegami-tag tegami-label\" style=\"background:{color};color:{fg}\" title=\"{name}\">{name}</span>",
-                    fg = crate::color::readable_text(color),
-                    name = gtk::glib::markup_escape_text(&name),
-                ))
+                out.push_str(&chip(color, &name, " tegami-label"));
             }
         }
     }

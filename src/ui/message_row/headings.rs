@@ -257,24 +257,47 @@ pub(super) fn due_label(due: i64) -> String {
     }
 }
 
-/// A pill as a GTK label: a tag in its color class, a Gmail label in the
-/// palette color its name picks (both from the app's tag stylesheet).
-pub(crate) fn pill_label(pill: &crate::models::Pill) -> gtk::Label {
+/// A chip: the dot of its colour, then the name, on a tint of the colour
+/// (mockups 01, 07 and 09). The dot says "a tag" before the name is read;
+/// the classes give both their colours (app/tags.rs). `max_chars` caps the
+/// name, which ellipsizes beyond it.
+pub(crate) fn chip_box(name: &str, classes: &[&str], max_chars: i32) -> gtk::Box {
+    let chip = gtk::Box::new(gtk::Orientation::Horizontal, 0);
+    chip.add_css_class("tag-chip");
+    for c in classes {
+        chip.add_css_class(c);
+    }
+    let dot = gtk::Box::new(gtk::Orientation::Horizontal, 0);
+    dot.add_css_class("tag-dot");
+    dot.set_valign(gtk::Align::Center);
+    dot.set_accessible_role(gtk::AccessibleRole::Presentation);
+    chip.append(&dot);
+    let label = gtk::Label::new(Some(name));
+    label.set_ellipsize(gtk::pango::EllipsizeMode::End);
+    label.set_max_width_chars(max_chars);
+    chip.append(&label);
+    chip.update_property(&[gtk::accessible::Property::Label(name)]);
+    chip
+}
+
+/// The chip of a tag, or of a Gmail label no tag stands for (#374).
+pub(crate) fn pill_chip(pill: &crate::models::Pill, max_chars: i32) -> gtk::Box {
     match pill {
-        crate::models::Pill::Tag(t) => {
-            let chip = gtk::Label::new(Some(&t.name));
-            chip.add_css_class("tag-chip");
-            chip.add_css_class(&t.css_class());
-            chip
-        }
+        crate::models::Pill::Tag(t) => chip_box(&t.name, &[&t.css_class()], max_chars),
         crate::models::Pill::Label(name) => {
-            let chip = gtk::Label::new(Some(name));
-            chip.add_css_class("tag-chip");
-            chip.add_css_class("label-chip");
-            chip.add_css_class(&format!("label-hue-{}", crate::models::label_hue(name)));
+            let hue = format!("label-hue-{}", crate::models::label_hue(name));
+            let chip = chip_box(name, &["label-chip", &hue], max_chars);
             chip.set_tooltip_text(Some(name));
             chip
         }
+    }
+}
+
+/// The name a pill shows.
+pub(crate) fn pill_name(pill: &crate::models::Pill) -> String {
+    match pill {
+        crate::models::Pill::Tag(t) => t.name.clone(),
+        crate::models::Pill::Label(name) => name.clone(),
     }
 }
 

@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+- **Changed: a tag chip starts with a dot of its colour** (mockups 01, 07
+  and 09), in the list, the reader and the New tag preview. The reader's
+  chips now use the list's tint and dark text too. Only one Tags section
+  is left in the sidebar, for every account.
+- **Fixed: secondary text in the reader at 70 % opacity or more**: the
+  sender's address, the dates, the invitation kind, the quote button and
+  "Loading" were fainter, under the 4.5:1 contrast the design asks for.
+
 - **Changed: tags as the redesign draws them** (mockup 07). The tags
   panel sets Favorite apart from the tags and writes its last two
   entries as menu entries. On a new install the Tags section sits under

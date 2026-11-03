@@ -25,7 +25,7 @@ mod shared;
 mod swipe;
 
 pub(crate) use faces::recipient_names;
-pub(crate) use headings::{fill_headings, pill_label, tag_menu_entries};
+pub(crate) use headings::{chip_box, fill_headings, pill_chip, tag_menu_entries};
 pub(crate) use model::{MessageModel, RowItem};
 pub(crate) use shared::{
     factory, header_factory, make_spare_rows, RowLook, RowShared, SnoozedRows,

@@ -141,7 +141,7 @@ pub(super) fn wrapper_css(
          .tegami-inv-title{{font-weight:700;font-size:1.05em;}}\
          .tegami-inv-title.off{{text-decoration:line-through;opacity:0.7;}}\
          .tegami-inv-kind{{font-size:0.85em;text-transform:uppercase;\
-         letter-spacing:0.04em;opacity:0.6;}}\
+         letter-spacing:0.04em;opacity:0.7;}}\
          .tegami-inv-row{{opacity:0.8;margin-top:2px;}}\
          .tegami-inv-note{{margin-top:4px;opacity:0.8;font-style:italic;}}\
          .tegami-inv-acts{{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;}}\
@@ -208,9 +208,11 @@ pub(super) fn wrapper_css(
          100%{{box-shadow:0 0 0 3px rgba(53,132,228,0);}}}}\
          .tegami-tag{{font-size:0.72em;font-weight:700;line-height:1.4;padding:1px 7px;\
          border-radius:9999px;white-space:nowrap;}}\
+         .tegami-tagdot{{display:inline-block;width:6px;height:6px;border-radius:50%;\
+         margin-inline-end:4px;vertical-align:middle;}}\
          .tegami-label{{max-width:16em;\
          overflow:hidden;text-overflow:ellipsis;}}\
-         .tegami-addr{{opacity:0.55;font-size:0.9em;flex:1 1 0;max-width:max-content;\
+         .tegami-addr{{opacity:0.7;font-size:0.9em;flex:1 1 0;max-width:max-content;\
          min-width:0;white-space:nowrap;overflow:hidden;text-overflow:clip;\
          position:relative;}}\
          /* The fade exists only while something actually collides with\
@@ -303,7 +305,7 @@ pub(super) fn wrapper_css(
          white-space:nowrap;text-decoration:underline;}}\
          body:not(.tegami-conv) .tegami-addr.clipped:hover::after{{\
          background:{chrome};}}\
-         .tegami-date{{opacity:0.55;font-size:0.85em;flex:none;white-space:nowrap;}}\
+         .tegami-date{{opacity:0.7;font-size:0.85em;flex:none;white-space:nowrap;}}\
          .tegami-read{{display:none;flex:none;align-self:center;margin-inline-end:-3px;}}\
          .tegami-read.asked,.tegami-read.read{{display:inline-flex;}}\
          .tegami-read svg{{width:1.05em;height:1.05em;display:block;}}\
@@ -315,7 +317,7 @@ pub(super) fn wrapper_css(
          .tegami-end{{height:1px;}}\
          .tegami-quote{{display:block;margin:0 16px 12px;padding:0 7px;\
          font:inherit;font-size:0.7em;line-height:1.45;letter-spacing:0.06em;\
-         color:inherit;opacity:0.6;background:rgba(128,128,128,0.16);\
+         color:inherit;opacity:0.7;background:rgba(128,128,128,0.16);\
          border:0;border-radius:999px;cursor:pointer;}}\
          .tegami-quote:hover{{opacity:0.95;background:rgba(128,128,128,0.28);}}\
          .tegami-quote.open{{opacity:0.95;position:absolute;inset-inline-start:0;z-index:2;}}\
@@ -364,7 +366,7 @@ pub(super) fn wrapper_css(
          position:absolute;inset-inline-end:0;top:13px;transform:translateY(-50%);\
          color:{toggle_color};background:none;border:none;border-radius:6px;\
          padding:4px 8px;margin:0;cursor:pointer;\
-         opacity:0.65;transition:opacity 120ms ease,background 120ms ease;}}\
+         opacity:0.7;transition:opacity 120ms ease,background 120ms ease;}}\
          /* `svg *` too: the embedded symbolic paths carry their own fill\
          attribute, which a rule on the svg element alone can't beat. */\
          .tegami-acts-toggle svg{{width:14px;height:14px;display:block;}}\
@@ -390,7 +392,7 @@ pub(super) fn wrapper_css(
          .tegami-rcpt{{font-size:0.85em;opacity:0.75;\
          user-select:text;overflow-wrap:anywhere;margin:2px 0 0;margin-inline-start:34px;}}\
          .tegami-rcpt div{{margin-top:2px;}}\
-         .tegami-loading{{opacity:0.5;padding:16px;}}\
+         .tegami-loading{{opacity:0.7;padding:16px;}}\
          /* The Copied pill after Ctrl+C: a toast the page draws itself,\
          since the reader has no toast overlay of its own. */\
          .tegami-copied{{position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(8px);\

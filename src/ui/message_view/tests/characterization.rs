@@ -317,7 +317,7 @@ fn tag_and_attachment_chips_are_stable() {
     }];
     assert_eq!(
         tag_chips_html(&tags, &["ab".into()], &["Inbox <x>".into()]),
-        "<span class=\"tegami-tag\" style=\"background:#ffffff;color:rgba(0,0,0,0.85)\">A&amp;B</span><span class=\"tegami-tag tegami-label\" style=\"background:#2ec27e;color:#ffffff\" title=\"Inbox &lt;x&gt;\">Inbox &lt;x&gt;</span>"
+        "<span class=\"tegami-tag\" style=\"background:#ffffff;color:rgba(0,0,0,0.85)\"><span class=\"tegami-tagdot\" style=\"background:#ffffff\"></span>A&amp;B</span><span class=\"tegami-tag tegami-label\" style=\"background:#d5f3e4;color:#0e5233\" title=\"Inbox &lt;x&gt;\"><span class=\"tegami-tagdot\" style=\"background:#2ec27e\"></span>Inbox &lt;x&gt;</span>"
     );
     assert_eq!(tag_chips_html(&[], &[], &[]), "");
     let atts = [CardAttachment {

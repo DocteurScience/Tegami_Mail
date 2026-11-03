@@ -981,6 +981,20 @@ flowbox.attach-flow > flowboxchild {
   font-weight: 700;
 }
 
+/* A chip's dot, in the tag's own colour (app/tags.rs). */
+.tag-chip > .tag-dot {
+  min-width: 6px;
+  min-height: 6px;
+  border-radius: 9999px;
+  margin-right: 4px;
+  background-color: currentColor;
+}
+
+.tag-chip > .tag-dot:dir(rtl) {
+  margin-right: 0;
+  margin-left: 4px;
+}
+
 /* A Gmail label no tag stands for (#374): the tag pill's shape in a tint of
    the text's own color until the tag stylesheet gives it its palette color
    (.label-hue-N). */

@@ -210,6 +210,7 @@ impl AppModel {
             css.push_str(&format!(
                 ".{class} {{ background-color: {fill}; color: {text}; }} \
                  .{class} label {{ color: {text}; }} \
+                 .tag-chip.{class} > .tag-dot {{ background-color: {color}; }} \
                  .tag-tint.{class} {{ color: {color}; background-color: transparent; }}\n",
                 color = t.color,
             ));
@@ -229,7 +230,8 @@ impl AppModel {
         for (hue, color) in crate::config::TAG_COLORS.iter().enumerate() {
             let (fill, text) = chip_fill(color);
             css.push_str(&format!(
-                ".tag-chip.label-chip.label-hue-{hue} {{ background-color: {fill}; color: {text}; }}\n"
+                ".tag-chip.label-chip.label-hue-{hue} {{ background-color: {fill}; color: {text}; }} \
+                 .tag-chip.label-chip.label-hue-{hue} > .tag-dot {{ background-color: {color}; }}\n"
             ));
         }
         // High contrast: a chip is white with a black border and its name,
@@ -239,7 +241,8 @@ impl AppModel {
         css.push_str(
             "@media (prefers-contrast: more) { \
                .tag-chip { background-color: white; color: black; border: 1px solid black; } \
-               .tag-chip label { color: black; } }\n",
+               .tag-chip label { color: black; } \
+               .tag-chip > .tag-dot { background-color: black; } }\n",
         );
         self.tag_provider.load(css);
     }

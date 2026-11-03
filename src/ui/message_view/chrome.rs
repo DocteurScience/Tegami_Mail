@@ -106,9 +106,7 @@ impl MessageView {
             header_tags.remove(&child);
         }
         for pill in crate::models::pills(&shown.0, &shown.1, &self.tags) {
-            let chip = crate::ui::message_row::pill_label(&pill);
-            chip.set_ellipsize(gtk::pango::EllipsizeMode::End);
-            chip.set_max_width_chars(20);
+            let chip = crate::ui::message_row::pill_chip(&pill, 20);
             header_tags.append(&chip);
         }
         *self.header_tags_rendered.borrow_mut() = Some(shown);
