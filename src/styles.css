@@ -353,8 +353,11 @@ flowbox.attach-flow > flowboxchild {
   padding: 20px 16px;
   border-radius: 20px;
   /* The accent at full strength, as the design draws it: a pale dash
-     on the veil read as disabled. */
-  border: 2px dashed @accent_color;
+     on the veil read as disabled. The accent's ground colour, the one
+     the card under the pointer takes, not its text colour: with a red-ish
+     accent that one read as an error (design feedback P2-5, 2026-11-04).
+     A border needs 3:1, which the ground colour keeps. */
+  border: 2px dashed @accent_bg_color;
   /* Opaque, unlike the veil around it: the message beneath shows through
      only at the margins, never behind a card's words. */
   background-color: mix(@window_bg_color, @accent_bg_color, 0.05);
