@@ -527,11 +527,10 @@ flowbox.attach-flow > flowboxchild {
 .folders-toggle image {
   opacity: 0.6;
 }
-/* The Filtered Folders header's folded-up unread chip: a real chip, not a
-   dimmed heading label. */
+/* The Folders header's folded-up count reads like any other count, not
+   like the dimmed heading it sits in. */
 .folders-toggle label.unread-badge {
-  opacity: 1;
-  font-weight: 700;
+  opacity: 0.7;
 }
 
 /* Icon rail, "Unread dots instead of counts": every mini chip becomes a dot
@@ -552,8 +551,6 @@ flowbox.attach-flow > flowboxchild {
   margin-left: -4px;
 }
 
-/* Unread count: a perfect circle for a single digit that grows horizontally
-   into a pill for larger numbers, but never taller. */
 /* The small filter glyph on a main folder's icon corner (a filter files
    into it): a sidebar-colored halo keeps it legible over the icon. */
 .filter-mark {
@@ -568,23 +565,26 @@ flowbox.attach-flow > flowboxchild {
   margin-left: -6px;
 }
 
+/* Unread count beside a row's name (mockups 01 and 07): plain secondary
+   text at the right end, 70 % for 4.5:1, with tabular digits so a column
+   of counts lines up. An accent chip of white digits was about 3:1
+   (design feedback P1-4, 2026-11-04). */
 .unread-badge {
-  background: @accent_bg_color;
-  color: @accent_fg_color;
-  border-radius: 9999px;
-  min-width: 18px;
-  /* At the default font size the count's 15px line sits high in the 18px
-     chip, its digits 1.5px above the center. A pixel of top padding, taken
-     from min-height so the chip stays 18px, brings them down to within half
-     a pixel, the closest a 9px digit gets in an 18px chip. */
-  min-height: 17px;
-  padding: 1px 5px 0;
-  font-size: 0.8em;
-  font-weight: 700;
+  opacity: 0.7;
+  font-feature-settings: "tnum";
 }
 
-/* "Highlight only new unread mail" (#343): a count already looked at. */
-.unread-badge.seen {
+/* "Highlight only new unread mail" (#343): a count with mail new since it
+   was looked at stands out, bold and in the accent, never by colour
+   alone; the counts already looked at stay as above. */
+.unread-badge.fresh:not(.unread-badge-mini) {
+  opacity: 1;
+  font-weight: 700;
+  color: @accent_color;
+}
+
+/* A corner chip's look for a count already looked at (#343). */
+.unread-badge-mini.seen {
   background: alpha(currentColor, 0.14);
   color: inherit;
 }
@@ -593,6 +593,11 @@ flowbox.attach-flow > flowboxchild {
    overlay, so unread counts stay visible when the sidebar is icon-only. The
    ring in the sidebar's background color separates it from the icon beneath. */
 .unread-badge-mini {
+  opacity: 1;
+  background: @accent_bg_color;
+  color: @accent_fg_color;
+  border-radius: 9999px;
+  font-weight: 700;
   min-width: 14px;
   min-height: 14px;
   padding: 0 3px;

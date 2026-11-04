@@ -402,9 +402,10 @@ impl Sidebar {
         }
     }
 
-    /// Grey the unread counts of mail already looked at (#343): a chip is
-    /// "seen" unless one of the folders it counts has mail new since. With
-    /// the setting off, none is.
+    /// Tell the unread counts with new mail from those already looked at
+    /// (#343): a count is "seen" unless one of the folders it counts has
+    /// mail new since, and "fresh" otherwise. With the setting off, none is
+    /// either, and every count looks alike.
     pub(super) fn restyle_seen(&self) {
         let seen = |keys: &mut dyn Iterator<Item = &(u32, u32)>| match &self.fresh {
             None => false,
@@ -417,11 +418,17 @@ impl Sidebar {
                 true
             }
         };
-        let mark = |label: &gtk::Label, on: bool| {
-            if on {
+        let highlighting = self.fresh.is_some();
+        let mark = |label: &gtk::Label, seen: bool| {
+            if seen {
                 label.add_css_class("seen");
             } else {
                 label.remove_css_class("seen");
+            }
+            if highlighting && !seen {
+                label.add_css_class("fresh");
+            } else {
+                label.remove_css_class("fresh");
             }
         };
         for (key, label) in self

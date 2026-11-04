@@ -264,6 +264,7 @@ pub(super) fn filtered_folder_icon(folder: &Folder, account_id: u32) -> gtk::Ima
 pub(super) fn style_badge(badge: &gtk::Label, max_chars: i32) {
     badge.add_css_class("unread-badge");
     badge.set_valign(gtk::Align::Center);
+    badge.set_xalign(1.0);
     badge.set_ellipsize(gtk::pango::EllipsizeMode::End);
     badge.set_max_width_chars(max_chars);
 }

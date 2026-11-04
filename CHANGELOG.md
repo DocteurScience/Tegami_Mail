@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+- **Changed: unread counts in the sidebar are plain text** (mockups 01
+  and 07): grey digits at the row's right end rather than white digits on
+  an accent chip, which read at about 3:1. With **Highlight only new
+  unread mail** on, a count with new mail is bold and in the accent. The
+  icon rail keeps its corner chips.
+
 - **Fixed: high contrast as the design draws it** (mockup 16). The
   accent becomes the text colour, so the selection, outlines and unread
   dots are black (white on dark) whatever the system accent; the
