@@ -13,7 +13,7 @@ use crate::ui::sidebar::{SidebarInit, StartTarget};
 use super::accounts::{forget_account_secrets, reconcile_goa, GoaReconcile};
 use super::demo::demo_mode;
 use super::palette::keyed_item;
-use super::theme::install_scheme_css;
+use super::theme::{install_high_contrast_css, install_scheme_css};
 use super::{AppModel, AppMsg};
 use crate::desktop::icon_theme::register_icons;
 
@@ -67,6 +67,7 @@ fn install_globals(root: &adw::ApplicationWindow) -> config::PrivacyFile {
     // connection order, so the palette has to be in place first.
     crate::desktop::theme::install(&config::load_theme());
     install_scheme_css(root);
+    install_high_contrast_css();
     // Before any web view loads: a font fallback WebKit needed under
     // this runtime has to be in place for its first web process (#296).
     crate::desktop::web_fonts::startup(root);

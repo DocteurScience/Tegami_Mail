@@ -234,16 +234,9 @@ impl AppModel {
                  .tag-chip.label-chip.label-hue-{hue} > .tag-dot {{ background-color: {color}; }}\n"
             ));
         }
-        // High contrast: a chip is white with a black border and its name,
-        // so a tag is told by its name alone, never by a tint (docs/DESIGN.md,
-        // "Tags and favourite"). Last, so it wins over the colours above:
-        // GTK's CSS has no !important.
-        css.push_str(
-            "@media (prefers-contrast: more) { \
-               .tag-chip { background-color: white; color: black; border: 1px solid black; } \
-               .tag-chip label { color: black; } \
-               .tag-chip > .tag-dot { background-color: black; } }\n",
-        );
+        // High contrast draws a chip in the text colour on the window's,
+        // its name alone telling the tag (docs/DESIGN.md, "Tags and
+        // favourite"): app/theme.rs's HIGH_CONTRAST_CSS, above this.
         self.tag_provider.load(css);
     }
 

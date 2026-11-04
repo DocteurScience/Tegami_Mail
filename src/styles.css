@@ -770,18 +770,7 @@ flowbox.attach-flow > flowboxchild {
   outline-offset: 2px;
 }
 
-/* High contrast: a black frame, thicker than the border, and no reliance on
-   the accent, which the system may have set to a light colour. */
-@media (prefers-contrast: more) {
-  .message-row {
-    border-color: @window_fg_color;
-  }
-
-  .message-list > row:selected > .message-item:not(.swiping) .message-row {
-    border-color: @window_fg_color;
-    box-shadow: 0 0 0 2px @window_fg_color;
-  }
-}
+/* High contrast is app/theme.rs's HIGH_CONTRAST_CSS. */
 
 /* Avatars off (#29, #99): read rows collapse the dot's slot entirely (see
    the row template), so the text block starts at the card's own padding.

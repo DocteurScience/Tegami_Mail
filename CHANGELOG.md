@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+- **Fixed: high contrast as the design draws it** (mockup 16). The
+  accent becomes the text colour, so the selection, outlines and unread
+  dots are black (white on dark) whatever the system accent; the
+  sidebar's and the Show switch's selection is inverted; circles are
+  white with a black ring and black initials; tags have no tint. It
+  follows libadwaita's own high-contrast setting, which some GTK versions
+  did not pass to the stylesheet's media query.
+
 - **Changed: the reader names the account as plain text, and only where
   the list mixes accounts** (Favorites, a tag or a smart folder across
   accounts, a search). The coloured chip above the subject read as one of

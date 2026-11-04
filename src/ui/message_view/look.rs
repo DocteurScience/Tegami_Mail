@@ -13,11 +13,19 @@ impl MessageView {
     /// The desktop accent color, as the document can use it. Read from the
     /// widget's style so it follows the user's choice; GNOME's own blue is the
     /// fallback when the theme doesn't define it.
+    /// Under high contrast it is the text colour, as the app's own accent
+    /// is (app/theme.rs, `HIGH_CONTRAST_CSS`): the selected card's outline
+    /// is black (white on dark), never a tint.
     pub(super) fn accent_hex(&self) -> String {
+        let name = if adw::StyleManager::default().is_high_contrast() {
+            "window_fg_color"
+        } else {
+            "accent_bg_color"
+        };
         #[allow(deprecated)]
         self.webview
             .style_context()
-            .lookup_color("accent_bg_color")
+            .lookup_color(name)
             .map(|c| crate::color::to_hex(&c))
             .unwrap_or_else(|| "#3584e4".to_string())
     }

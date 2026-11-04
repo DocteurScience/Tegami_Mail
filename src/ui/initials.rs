@@ -102,8 +102,16 @@ mod imp {
             let Some(snapshot) = snapshot.downcast_ref::<gtk::Snapshot>() else {
                 return;
             };
-            // The circle's ground: the avatar clips this to its disc.
-            if let Some((top, bottom)) = *self.ground.borrow() {
+            // High contrast (mockup 16): the window's ground, the text
+            // colour for the letters and a ring, never a tint.
+            if let Some((ground, ink)) = high_contrast_pair() {
+                let r = (width.min(height) / 2.0) as f32;
+                let rect = graphene::Rect::new(0.0, 0.0, width as f32, height as f32);
+                snapshot.append_color(&ground, &rect);
+                let circle = gsk::RoundedRect::from_rect(rect, r);
+                snapshot.append_border(&circle, &[1.5; 4], &[ink; 4]);
+            } else if let Some((top, bottom)) = *self.ground.borrow() {
+                // The circle's ground: the avatar clips this to its disc.
                 snapshot.append_linear_gradient(
                     &graphene::Rect::new(0.0, 0.0, width as f32, height as f32),
                     &graphene::Point::new(0.0, 0.0),
@@ -119,7 +127,9 @@ mod imp {
             if initials.is_empty() {
                 return;
             }
-            let fg = self.fg.borrow().unwrap_or(gdk::RGBA::WHITE);
+            let fg = high_contrast_pair()
+                .map(|(_, ink)| ink)
+                .unwrap_or_else(|| self.fg.borrow().unwrap_or(gdk::RGBA::WHITE));
             // Bold, at a size that lets a pair sit comfortably inside the
             // disc: the same weight of presence the avatar's own label has.
             let size = width.min(height);
@@ -192,6 +202,23 @@ impl InitialsPaintable {
         this.imp().ground.replace(Some((bg, bg)));
         this
     }
+}
+
+/// The ground and ink every circle takes under high contrast: white and
+/// black, or the other way round on dark. `None` otherwise, and where there
+/// is no display (tests).
+fn high_contrast_pair() -> Option<(gdk::RGBA, gdk::RGBA)> {
+    if !gtk::is_initialized_main_thread() {
+        return None;
+    }
+    let style = adw::StyleManager::default();
+    style.is_high_contrast().then(|| {
+        if style.is_dark() {
+            (gdk::RGBA::BLACK, gdk::RGBA::WHITE)
+        } else {
+            (gdk::RGBA::WHITE, gdk::RGBA::BLACK)
+        }
+    })
 }
 
 /// A sidebar circle's glyph: `text` ink-centred in the color that reads
@@ -326,7 +353,12 @@ pub(crate) fn cache_stats() -> (usize, u64, usize, usize) {
 /// document's own text. Drawn through the window's renderer; `None` before
 /// a window exists.
 pub(super) fn png_data_uri(text: &str, bg: gdk::RGBA, size: i32) -> Option<String> {
-    let key = (text.to_string(), bg.to_string(), size);
+    // High contrast draws another circle for the same name.
+    let key = (
+        text.to_string(),
+        format!("{bg}{:?}", high_contrast_pair()),
+        size,
+    );
     if let Some(hit) = PNG_CACHE.with(|c| c.borrow().get(&key).cloned()) {
         return Some(hit);
     }

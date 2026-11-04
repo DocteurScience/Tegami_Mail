@@ -17,8 +17,8 @@ M="TEGAMI_SHOWCASE_STAGE=0"
 g fresh 8
 F=/shots/grab/fresh.privacy.toml
 sed 's/^fold_messages = .*/fold_messages = "never"/' $F > /fresh-never.toml
-# GNOME's Large Text is 125 %; Settings' nearest step is 120.
-sed 's/^text_scale = .*/text_scale = 120/' $F > /fresh-large.toml
+# docs/DESIGN.md, "Accessibility": large text at 150 %.
+sed 's/^text_scale = .*/text_scale = 150/' $F > /fresh-large.toml
 F1=/src/data/repo/design/01-list.png; F2=/src/README.md
 (
 g 01 14 WINDOW="$W12" TEGAMI_SHOWCASE_ROW=4 $M &

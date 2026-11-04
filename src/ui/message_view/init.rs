@@ -309,6 +309,23 @@ impl MessageView {
             });
             handler.set(Some(id));
         }
+        // And for high contrast, which redraws the cards' outline and
+        // circles (look.rs, initials.rs).
+        {
+            let s = sender.input_sender().clone();
+            let handler = std::rc::Rc::new(std::cell::Cell::new(None));
+            let id = adw::StyleManager::default().connect_high_contrast_notify({
+                let handler = handler.clone();
+                move |manager| {
+                    if s.send(MessageViewInput::ThemeChanged).is_err() {
+                        if let Some(id) = handler.take() {
+                            manager.disconnect(id);
+                        }
+                    }
+                }
+            });
+            handler.set(Some(id));
+        }
         // The same for an appearance theme, which moves the colors without
         // touching the light/dark preference. A closed message window's
         // reader drops its watcher the next time the theme changes.

@@ -91,6 +91,55 @@ pub(super) fn install_scheme_css(window: &impl IsA<gtk::Widget>) {
     });
 }
 
+/// High contrast (docs/DESIGN.md, "Accessibility"; mockup 16): borders in
+/// the text colour, selection inverted, no tint standing for anything. The
+/// accent becomes the text colour, so every outline, dot and suggested
+/// button that wears it turns black (white on dark) without a rule each,
+/// whatever light colour the system accent is.
+///
+/// Loaded from libadwaita's own high-contrast flag rather than a
+/// `prefers-contrast` media query: the flag follows GNOME's setting and
+/// `ADW_DEBUG_HIGH_CONTRAST` alike, which the media query does not on
+/// every GTK the app runs on. Above the appearance theme's provider, so a
+/// theme's accent never wins over it.
+pub(crate) const HIGH_CONTRAST_CSS: &str = "\
+@define-color accent_bg_color @window_fg_color;\
+@define-color accent_color @window_fg_color;\
+@define-color accent_fg_color @window_bg_color;\
+:root { --accent-bg-color: var(--window-fg-color); --accent-color: var(--window-fg-color);\
+  --accent-fg-color: var(--window-bg-color); }\
+.message-row { border-color: @window_fg_color; }\
+.message-list > row:selected > .message-item:not(.swiping) .message-row {\
+  border-color: @window_fg_color; box-shadow: 0 0 0 2px @window_fg_color; }\
+.navigation-sidebar > row:selected, .navigation-sidebar > row:selected:hover {\
+  background-color: @window_fg_color; color: @window_bg_color; }\
+toggle-group > toggle:checked { background-color: @window_fg_color; color: @window_bg_color; }\
+.tag-chip { background-color: @window_bg_color; color: @window_fg_color;\
+  border: 1px solid @window_fg_color; }\
+.tag-chip label { color: @window_fg_color; }\
+.tag-chip > .tag-dot { background-color: @window_fg_color; }\
+.account-circle { background-color: @window_bg_color; color: @window_fg_color;\
+  box-shadow: inset 0 0 0 1.5px @window_fg_color; }\
+.account-circle, avatar { outline-color: @window_fg_color; }\
+";
+
+/// Load [`HIGH_CONTRAST_CSS`] while libadwaita draws high contrast, and
+/// follow the setting as it changes.
+pub(super) fn install_high_contrast_css() {
+    let provider = gtk::CssProvider::new();
+    if let Some(display) = gtk::gdk::Display::default() {
+        gtk::style_context_add_provider_for_display(
+            &display,
+            &provider,
+            gtk::STYLE_PROVIDER_PRIORITY_APPLICATION + 4,
+        );
+    }
+    let apply = move |on: bool| provider.load_from_string(if on { HIGH_CONTRAST_CSS } else { "" });
+    let style = adw::StyleManager::default();
+    apply(style.is_high_contrast());
+    style.connect_high_contrast_notify(move |sm| apply(sm.is_high_contrast()));
+}
+
 /// Re-read the theme's colors into the scheme-dependent CSS, for a change
 /// that moves them without flipping the color scheme.
 pub(super) fn refresh_scheme_css() {
