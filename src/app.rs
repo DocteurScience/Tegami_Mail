@@ -565,12 +565,15 @@ impl SimpleComponent for AppModel {
                                 pack_start = &gtk::Button {
                                     // Icon and word: the one label the
                                     // header has, on the action most taken
-                                    // (docs/DESIGN.md, "Header bars").
+                                    // (docs/DESIGN.md, "Header bars"). The
+                                    // word never shrinks to "Rep…": where
+                                    // the row is too tight the compact
+                                    // breakpoint takes it off instead
+                                    // (SetReaderCompact).
                                     #[wrap(Some)]
                                     set_child = &adw::ButtonContent {
                                         set_icon_name: "mail-reply-sender-symbolic",
                                         set_label: &i18n("Reply"),
-                                        set_can_shrink: true,
                                     },
                                     set_tooltip_text: Some(i18n("Reply (Ctrl+R)").as_str()),
                                     add_css_class: "flat",

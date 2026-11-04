@@ -636,6 +636,29 @@ impl AppModel {
         ]
     }
 
+    /// Reply's word beside its icon, or the icon alone where the header is
+    /// compact (design feedback P2-6, 2026-11-04: "Rép…" at 904 px). The
+    /// name stays for a screen reader either way, and the tooltip says it.
+    fn reply_label_shown(&self, shown: bool) {
+        let Some(tb) = self.reader_toolbar_widgets.get() else {
+            return;
+        };
+        let Some(content) = tb
+            .buttons
+            .iter()
+            .find(|(item, _)| *item == config::ToolbarItem::Reply)
+            .and_then(|(_, w)| w.downcast_ref::<gtk::Button>())
+            .and_then(|b| b.child())
+            .and_downcast::<adw::ButtonContent>()
+        else {
+            return;
+        };
+        content.set_label(&if shown { i18n("Reply") } else { String::new() });
+        if let Some(button) = content.parent() {
+            button.update_property(&[gtk::accessible::Property::Label(&i18n("Reply"))]);
+        }
+    }
+
     /// Tooltip for the toolbar's trash button: says when it will delete the
     /// whole multi-selection rather than just the open message.
     pub(super) fn delete_tooltip(&self) -> String {
@@ -660,6 +683,7 @@ impl AppModel {
 
             AppMsg::SetReaderCompact(on) => {
                 self.reader_compact = on;
+                self.reply_label_shown(!on);
                 self.reader_overflow_btn
                     .set_visible(self.reader_overflow_wanted());
                 if let Some(header) = self.reader_header.get() {

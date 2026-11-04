@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- **Fixed: "Reply" no longer shrinks to "Rep…" in a narrow reader**: where
+  the header is too tight for the word, Reply is its icon alone, its name
+  in the tooltip and for screen readers.
+
 - **Changed: the composer's formatting buttons read B, I, U and S**
   (mockup 04), drawn from Adwaita Sans: Adwaita's icons for them are a
   stylised "a" each. Insert Link is a chain, right after the lists.
