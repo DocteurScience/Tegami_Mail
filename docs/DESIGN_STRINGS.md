@@ -71,7 +71,7 @@ Keyboard shortcuts are not translated.
 | View source | Afficher la source du message | yes, French: Afficher le code source |
 | Print… | Imprimer… | yes, French: Imprimer… |
 | Save as… | Enregistrer sous… | new |
-| Star | Ajouter aux favoris | yes, French: Ajouter une étoile |
+| Star | Ajouter aux favoris | yes |
 
 ### Sort and view menu
 

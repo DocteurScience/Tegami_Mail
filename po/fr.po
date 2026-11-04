@@ -138,10 +138,10 @@ msgid "Edit as new message"
 msgstr "Modifier en tant que nouveau message"
 
 msgid "Remove star"
-msgstr "Retirer l’étoile"
+msgstr "Retirer des favoris"
 
 msgid "Star"
-msgstr "Ajouter une étoile"
+msgstr "Ajouter aux favoris"
 
 msgid "Mark as read"
 msgstr "Marquer comme lu"
@@ -477,7 +477,7 @@ msgid "Close"
 msgstr "Fermer"
 
 msgid "Unstar"
-msgstr "Retirer l’étoile"
+msgstr "Retirer des favoris"
 
 msgid "New folder"
 msgstr "Nouveau dossier"
@@ -793,7 +793,7 @@ msgid "Delete permanently, without going to Trash"
 msgstr "Supprimer définitivement, sans passer par la Corbeille"
 
 msgid "Star or unstar"
-msgstr "Ajouter ou retirer l’étoile"
+msgstr "Ajouter aux favoris ou en retirer"
 
 msgid "Mark read or unread"
 msgstr "Marquer comme lu ou non lu"
@@ -1005,7 +1005,7 @@ msgid "Delete permanently"
 msgstr "Supprimer définitivement"
 
 msgid "Star or remove star"
-msgstr "Ajouter ou retirer l’étoile"
+msgstr "Ajouter aux favoris ou en retirer"
 
 msgid "Mark as read or unread"
 msgstr "Marquer comme lu ou non lu"
@@ -3860,10 +3860,10 @@ msgid "Customize columns…"
 msgstr "Personnaliser les colonnes…"
 
 msgid "Remove stars"
-msgstr "Retirer les étoiles"
+msgstr "Retirer des favoris"
 
 msgid "Star conversation"
-msgstr "Ajouter une étoile à la conversation"
+msgstr "Ajouter aux favoris"
 
 msgid "Mark all as read"
 msgstr "Marquer tout comme lu"
