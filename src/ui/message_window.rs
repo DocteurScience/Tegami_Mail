@@ -31,7 +31,6 @@ pub(crate) struct MessageWindow {
     thread: Vec<Message>,
     view: Controller<MessageView>,
     account_name: Option<String>,
-    account_color: Option<String>,
     allow_remote: bool,
     loading: bool,
     /// Each member's files, in the order they arrived.

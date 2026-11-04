@@ -16,7 +16,6 @@ impl MessageView {
         thread: Vec<Message>,
         allow_remote: bool,
         account_name: Option<String>,
-        account_color: Option<String>,
         loading: bool,
         primary: Option<Box<Message>>,
         folder_labels: std::collections::HashMap<(u32, u32), String>,
@@ -76,10 +75,6 @@ impl MessageView {
         self.account_name = account_name;
         self.loading = loading;
         self.instant = instant;
-        if account_color.is_some() {
-            self.account_color = account_color;
-            self.paint_account_chip();
-        }
         self.remote_allowed = allow_remote;
         let has_remote = self.thread.iter().any(|m| has_remote_resources(&m.body));
         self.blocked = has_remote && !allow_remote;
@@ -141,7 +136,6 @@ impl MessageView {
     }
 
     pub(super) fn on_theme_changed(&mut self) {
-        self.paint_account_chip();
         let dark = self.theme_dark();
         self.apply_webview_bg(dark);
         if self.current.is_some() && !self.loading {

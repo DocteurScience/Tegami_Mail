@@ -295,6 +295,7 @@ impl AppModel {
             list_group_by_date: prefs.list_group_by_date,
             list_pills_below: prefs.list_pills_below,
             list_search_open: prefs.list_search_open,
+            search_active: false,
             contact_names: prefs.contact_names,
             list_search_bottom: prefs.list_search_bottom,
             list_bulk_bar_bottom: prefs.list_bulk_bar_bottom,

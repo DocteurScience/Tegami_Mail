@@ -239,12 +239,34 @@ impl AppModel {
 
     /// Display name for an account (name, else email).
     pub(super) fn account_name(&self, account_id: u32) -> String {
-        // The account's UI label (its sidebar header, the reader chip).
+        // The account's UI label (its sidebar header, the reader's account line).
         self.accounts
             .iter()
             .find(|a| a.id == account_id)
             .map(|a| a.label.clone())
             .unwrap_or_default()
+    }
+
+    /// Whether the list on show mixes accounts: Favorites, a tag or a smart
+    /// folder across every account, or a search's results.
+    pub(super) fn view_spans_accounts(&self) -> bool {
+        self.accounts.len() > 1
+            && (self.unified
+                || self.smart_view.is_some()
+                || self.search_active
+                || self
+                    .tag_view
+                    .as_ref()
+                    .is_some_and(|(scope, _)| scope.is_none()))
+    }
+
+    /// The account the reader names above the subject, as plain text: only
+    /// where the list mixes accounts (docs/DESIGN.md, "Reading pane and
+    /// conversations"), since in one account's folder it says nothing the
+    /// sidebar does not.
+    pub(super) fn reader_account_name(&self, account_id: u32) -> Option<String> {
+        self.view_spans_accounts()
+            .then(|| self.account_name(account_id))
     }
 
     /// The account email for an id, if known.

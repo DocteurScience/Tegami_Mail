@@ -59,7 +59,7 @@ impl ReadingPage {
                     #[name = "account_chip_row"]
                     adw::SwitchRow {
                         set_title: &i18n("Show account in message header"),
-                        set_subtitle: &i18n("The account a message is in, above its subject."),
+                        set_subtitle: &i18n("Where the list mixes accounts, the account a message is in, above its subject."),
                         connect_active_notify[sender] => move |row| {
                             let _ = sender.output(PrefOutput::SetAccountChip(row.is_active()));
                         },

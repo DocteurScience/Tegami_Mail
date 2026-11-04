@@ -190,7 +190,13 @@ impl MessageView {
                 bg.clone()
             };
         let page = if carded { deep } else { single_ground };
-        let body_class = if carded { " class=\"tegami-conv\"" } else { "" };
+        // A conversation of several messages shows its tags once, under
+        // the subject (mockup 08): `tegami-thread` keeps them off its cards.
+        let body_class = match (carded, thread.len() > 1) {
+            (true, true) => " class=\"tegami-conv tegami-thread\"",
+            (true, false) => " class=\"tegami-conv\"",
+            _ => "",
+        };
         let (csp, sizer) = wrapper_scripts();
         // A single message that paints no background of its own (plain mail,
         // and much styled mail too — Apple Mail styles fonts and wrapping but

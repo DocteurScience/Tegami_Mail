@@ -6980,7 +6980,9 @@ msgstr "Aspeto das mensagens"
 msgid "Show account in message header"
 msgstr "Mostrar o botão da Vista de leitura no cabeçalho da mensagem"
 
-msgid "The account a message is in, above its subject."
+msgid ""
+"Where the list mixes accounts, the account a message is in, above its "
+"subject."
 msgstr ""
 
 msgid "Ctrl+0 returns to the default."

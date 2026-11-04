@@ -344,8 +344,9 @@ impl AppModel {
         MessageWindowInit {
             message: display,
             thread,
-            account_name: Some(self.account_name(account_id)),
-            account_color: Some(self.account_color(account_id)),
+            // A window of its own has no list around it to say whose
+            // mail it is: named whenever there is more than one account.
+            account_name: (self.accounts.len() > 1).then(|| self.account_name(account_id)),
             allow_remote,
             loading: needs_body,
             attachments: atts,

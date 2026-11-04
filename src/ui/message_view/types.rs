@@ -109,9 +109,9 @@ pub(crate) enum MessageViewInput {
         thread: Vec<Message>,
         /// The sender is trusted, so remote content may auto-load.
         allow_remote: bool,
-        /// Owning account's display name and color, for the header chip.
+        /// The owning account's name, written above the subject; `None`
+        /// where the list holds one account's mail.
         account_name: Option<String>,
-        account_color: Option<String>,
         /// The body is still being fetched — show a spinner.
         loading: bool,
         /// The message the user actually selected, which drives the header,

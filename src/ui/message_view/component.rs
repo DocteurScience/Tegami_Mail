@@ -204,22 +204,27 @@ impl Component for MessageView {
                         #[watch]
                         set_visible: model.account_line_shown(),
 
-                        // Stays when the chip is hidden in Settings: it is
-                        // what pushes the switches to the line's right end.
+                        // Whose mail it is, as plain secondary text, where
+                        // the list mixes accounts (the app sends no name
+                        // elsewhere). Not a pill: a pill above the subject
+                        // read as one of the message's tags (design
+                        // feedback, 2026-11-04). The box stays when the line
+                        // is hidden in Settings: it pushes the zoom to the
+                        // line's right end.
                         gtk::Box {
                             set_halign: gtk::Align::Start,
                             set_hexpand: true,
                             set_valign: gtk::Align::Center,
                             #[watch]
                             set_visible: model.account_name.is_some(),
-                            #[name = "account_chip"]
                             gtk::Label {
                                 #[watch]
                                 set_visible: model.account_chip_shown,
                                 #[watch]
                                 set_label: model.account_name.as_deref().unwrap_or_default(),
-                                add_css_class: "account-chip",
-                                add_css_class: "tegami-account-chip",
+                                set_ellipsize: gtk::pango::EllipsizeMode::End,
+                                add_css_class: "caption",
+                                add_css_class: "reader-account",
                             },
                         },
 
@@ -355,7 +360,6 @@ impl Component for MessageView {
             widgets.remote_alert.clone().upcast(),
         ));
         model.loading_page = Some(widgets.loading_page.clone());
-        model.account_chip = Some(widgets.account_chip.clone());
         model.cover = Some(widgets.body_stack.clone());
         model.apply_webview_bg(model.theme_dark());
         let body_overlay = gtk::Overlay::new();
@@ -385,7 +389,6 @@ impl Component for MessageView {
                 thread,
                 allow_remote,
                 account_name,
-                account_color,
                 loading,
                 primary,
                 folder_labels,
@@ -395,7 +398,6 @@ impl Component for MessageView {
                 thread,
                 allow_remote,
                 account_name,
-                account_color,
                 loading,
                 primary,
                 folder_labels,

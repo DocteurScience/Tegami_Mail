@@ -6887,8 +6887,10 @@ msgstr "Apparence du message"
 msgid "Show account in message header"
 msgstr "Afficher le compte dans l’en-tête du message"
 
-msgid "The account a message is in, above its subject."
-msgstr "Le compte du message, au-dessus de son objet."
+msgid ""
+"Where the list mixes accounts, the account a message is in, above its "
+"subject."
+msgstr "Quand la liste mêle plusieurs comptes, le compte du message, au-dessus de son objet."
 
 msgid "Ctrl+0 returns to the default."
 msgstr "Ctrl+0 revient à la valeur par défaut."

@@ -7057,7 +7057,9 @@ msgstr "Εμφάνιση μηνυμάτων"
 msgid "Show account in message header"
 msgstr "Εμφάνιση διακόπτη Προβολής ανάγνωσης στην κεφαλίδα μηνύματος"
 
-msgid "The account a message is in, above its subject."
+msgid ""
+"Where the list mixes accounts, the account a message is in, above its "
+"subject."
 msgstr ""
 
 msgid "Ctrl+0 returns to the default."

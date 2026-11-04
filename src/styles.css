@@ -454,12 +454,10 @@ flowbox.attach-flow > flowboxchild {
   color: @accent_color;
 }
 
-/* Account chip in the reader header (colors set at runtime). */
-.account-chip {
-  border-radius: 8px;
-  padding: 1px 9px;
-  font-size: 0.78em;
-  font-weight: 700;
+/* The reader's account line, where the list mixes accounts: secondary
+   text, at the 70 % CLAUDE.md asks of it. */
+.reader-account {
+  opacity: 0.7;
 }
 
 .account-email {

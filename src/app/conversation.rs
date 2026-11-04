@@ -171,13 +171,9 @@ impl AppModel {
             return;
         }
         let allow_remote = message.as_ref().is_some_and(|m| self.remote_allowed(m));
-        let (account_name, account_color) = match message.as_ref() {
-            Some(m) => (
-                Some(self.account_name(m.account_id)),
-                Some(self.account_color(m.account_id)),
-            ),
-            None => (None, None),
-        };
+        let account_name = message
+            .as_ref()
+            .and_then(|m| self.reader_account_name(m.account_id));
         let stored_check = message
             .as_ref()
             .and_then(|m| self.sender_cache.get(&body_key(m)))
@@ -191,7 +187,6 @@ impl AppModel {
             thread: message.into_iter().collect(),
             allow_remote,
             account_name,
-            account_color,
             loading,
             primary: None, // a single message is its own primary
             folder_labels: HashMap::new(),
@@ -265,8 +260,7 @@ impl AppModel {
         self.message_view.emit(MessageViewInput::Show {
             thread,
             allow_remote,
-            account_name: Some(self.account_name(account_id)),
-            account_color: Some(self.account_color(account_id)),
+            account_name: self.reader_account_name(account_id),
             loading,
             folder_labels: self.thread_folder_labels(),
             sent: self.thread_sent(),

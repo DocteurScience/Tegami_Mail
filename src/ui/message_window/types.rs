@@ -14,7 +14,6 @@ pub(crate) struct MessageWindowInit {
     /// one; empty for a plain single message.
     pub(crate) thread: Vec<Message>,
     pub(crate) account_name: Option<String>,
-    pub(crate) account_color: Option<String>,
     pub(crate) allow_remote: bool,
     /// The body is still being fetched — show a spinner.
     pub(crate) loading: bool,

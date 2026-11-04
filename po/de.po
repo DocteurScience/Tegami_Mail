@@ -6999,7 +6999,10 @@ msgstr "Darstellung der Nachricht"
 msgid "Show account in message header"
 msgstr "Konto im Nachrichtenkopf anzeigen"
 
-msgid "The account a message is in, above its subject."
+#, fuzzy
+msgid ""
+"Where the list mixes accounts, the account a message is in, above its "
+"subject."
 msgstr "Das Konto einer Nachricht, oberhalb ihres Betreffs"
 
 msgid "Ctrl+0 returns to the default."

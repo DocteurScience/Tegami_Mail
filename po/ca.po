@@ -6941,7 +6941,9 @@ msgid "Show account in message header"
 msgstr ""
 "Mostra l'interruptor de la vista de lector a l'encapçalament del missatge"
 
-msgid "The account a message is in, above its subject."
+msgid ""
+"Where the list mixes accounts, the account a message is in, above its "
+"subject."
 msgstr ""
 
 msgid "Ctrl+0 returns to the default."

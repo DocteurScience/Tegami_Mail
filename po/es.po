@@ -6987,7 +6987,9 @@ msgstr "Apariencia de los mensajes"
 msgid "Show account in message header"
 msgstr "Mostrar el interruptor de vista de lectura en la cabecera del mensaje"
 
-msgid "The account a message is in, above its subject."
+msgid ""
+"Where the list mixes accounts, the account a message is in, above its "
+"subject."
 msgstr ""
 
 msgid "Ctrl+0 returns to the default."

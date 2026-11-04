@@ -204,6 +204,7 @@ impl AppModel {
             }
             AppMsg::SearchActive(active) => {
                 self.search_gen += 1;
+                self.search_active = active;
                 if active {
                     // Every folder's indexed messages, so the search can span
                     // the whole mailbox: the folders opened this run and the

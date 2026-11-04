@@ -104,7 +104,7 @@ pub(super) fn wrapper_css(
          .tegami-from{{font-weight:700;flex:99 1 0;max-width:max-content;min-width:0;\
          white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}}\
          .tegami-tags{{display:inline-flex;gap:4px;align-items:center;flex:0 0 auto;}}\
-         .tegami-tags:empty{{display:none;}}\
+         .tegami-tags:empty,.tegami-thread .tegami-tags{{display:none;}}\
          /* A card's own attachments (#213): chips beneath the body. */\
          .tegami-atts{{padding:4px 16px 16px;}}\
          .tegami-atts:empty{{display:none;}}\

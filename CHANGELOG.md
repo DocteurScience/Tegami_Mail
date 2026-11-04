@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+- **Changed: the reader names the account as plain text, and only where
+  the list mixes accounts** (Favorites, a tag or a smart folder across
+  accounts, a search). The coloured chip above the subject read as one of
+  the message's tags. A conversation's tags now show once under its
+  subject, gathered from all its messages (mockup 08), and its cards no
+  longer repeat them.
+
 - **Fixed: sending an edited draft could stop an IMAP account** when the
   connection dropped while the Sent copy was filed: the account's mail
   stopped syncing until a restart. The draft is now left in place instead,

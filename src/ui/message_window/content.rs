@@ -22,7 +22,6 @@ impl MessageWindow {
             thread: self.thread.clone(),
             allow_remote: self.allow_remote,
             account_name: self.account_name.clone(),
-            account_color: self.account_color.clone(),
             primary: None,
             folder_labels: std::collections::HashMap::new(),
             sent: Default::default(),

@@ -37,8 +37,8 @@ fn a_conversation_renders_one_card_per_message_in_order() {
     let grace = doc.find("Grace Hopper").expect("second sender present");
     assert!(ada < grace, "cards must keep the order they were handed");
     assert!(
-        doc.contains("<body class=\"tegami-conv\">"),
-        "conversation padding"
+        doc.contains("<body class=\"tegami-conv tegami-thread\">"),
+        "conversation padding, and its tags kept off the cards"
     );
     // The cards sit on the deeper page — the same color the spinner and the
     // cover behind the WebView are painted, so the handover is invisible.

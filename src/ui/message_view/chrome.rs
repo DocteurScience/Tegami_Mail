@@ -80,25 +80,33 @@ impl MessageView {
         }
     }
 
-    /// Whether the GTK header carries tag chips: a lone message shown
-    /// full-bleed (not as a card) that has a tag or a Gmail label to show.
+    /// Whether the GTK header carries tag chips, under the subject (mockups
+    /// 07 and 08): a conversation's, gathered from all its messages, or a
+    /// lone message's shown full-bleed. A lone message drawn as a card
+    /// carries its own in the document.
     pub(super) fn header_tags_shown(&self) -> bool {
-        self.thread.len() == 1
-            && !self.single_message_card
-            && self
-                .current
-                .as_ref()
-                .is_some_and(|c| !c.pills(&self.tags).is_empty())
+        (self.thread.len() > 1 || !self.single_message_card) && {
+            let (keywords, labels) = self.header_tag_sets();
+            !crate::models::pills(&keywords, &labels, &self.tags).is_empty()
+        }
     }
 
-    /// Rebuild the GTK header's chips when the shown message's keywords or
-    /// labels (or the tags) changed since they were last built.
+    /// The keywords and labels the header's chips are drawn from.
+    fn header_tag_sets(&self) -> (Vec<String>, Vec<String>) {
+        if self.thread.len() > 1 {
+            thread_tag_sets(&self.thread)
+        } else {
+            self.current
+                .as_ref()
+                .map(|c| (c.keywords.clone(), c.labels.clone()))
+                .unwrap_or_default()
+        }
+    }
+
+    /// Rebuild the GTK header's chips when the keywords or labels they show
+    /// (or the tags) changed since they were last built.
     pub(super) fn sync_header_tags(&self, header_tags: &gtk::Box) {
-        let shown = self
-            .current
-            .as_ref()
-            .map(|c| (c.keywords.clone(), c.labels.clone()))
-            .unwrap_or_default();
+        let shown = self.header_tag_sets();
         if self.header_tags_rendered.borrow().as_ref() == Some(&shown) {
             return;
         }
@@ -110,5 +118,46 @@ impl MessageView {
             header_tags.append(&chip);
         }
         *self.header_tags_rendered.borrow_mut() = Some(shown);
+    }
+}
+
+/// Every keyword and label a conversation's messages carry, each once, in
+/// the order they first appear: the conversation's tags, as the list's row
+/// for it shows them.
+pub(super) fn thread_tag_sets(thread: &[crate::models::Message]) -> (Vec<String>, Vec<String>) {
+    let mut keywords: Vec<String> = Vec::new();
+    let mut labels: Vec<String> = Vec::new();
+    for m in thread {
+        for k in &m.keywords {
+            if !keywords.iter().any(|x| x.eq_ignore_ascii_case(k)) {
+                keywords.push(k.clone());
+            }
+        }
+        for l in &m.labels {
+            if !labels.contains(l) {
+                labels.push(l.clone());
+            }
+        }
+    }
+    (keywords, labels)
+}
+
+#[cfg(test)]
+mod thread_tag_tests {
+    use super::thread_tag_sets;
+    use crate::models::test_util::msg;
+
+    #[test]
+    fn a_conversations_tags_are_gathered_once_in_order() {
+        let mut a = msg(1, 1, 10);
+        a.keywords = vec!["work".into(), "$label1".into()];
+        let mut b = msg(1, 1, 11);
+        b.keywords = vec!["Work".into(), "todo".into()];
+        b.labels = vec!["Receipts".into()];
+        let mut c = msg(1, 1, 12);
+        c.labels = vec!["Receipts".into(), "Travel".into()];
+        let (keywords, labels) = thread_tag_sets(&[a, b, c]);
+        assert_eq!(keywords, ["work", "$label1", "todo"]);
+        assert_eq!(labels, ["Receipts", "Travel"]);
     }
 }

@@ -103,7 +103,6 @@ impl Component for MessageWindow {
             thread,
             view,
             account_name: init.account_name,
-            account_color: init.account_color,
             allow_remote: init.allow_remote,
             loading: init.loading,
             attachments: init.attachments,

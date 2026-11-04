@@ -137,18 +137,14 @@ pub(crate) struct MessageView {
     /// Stripping and the CSP key off *this*, so a detector miss costs a banner
     /// rather than the protection itself.
     remote_allowed: bool,
-    /// Owning account's display name (header chip).
+    /// The owning account's name, written above the subject where the list
+    /// mixes accounts (`None` elsewhere: the app decides).
     account_name: Option<String>,
-    /// The owning account's color, which the header chip is painted in.
-    account_color: Option<String>,
-    /// The header chip's per-account colors.
-    chip_rules: ClassRules,
     /// Paints the reader's spinner and its inter-document cover in the *message*
     /// theme rather than the app's. Reading a light message in a dark app used
     /// to mean a dark spinner giving way to a white page.
     cover_rules: ClassRules,
     /// The widgets those rules are applied to, by class.
-    account_chip: Option<gtk::Label>,
     cover: Option<gtk::Stack>,
     /// Fingerprint of what the WebView is currently showing. Re-selecting a
     /// message that renders to the same document skips the load entirely —

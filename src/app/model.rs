@@ -410,6 +410,8 @@ pub(crate) struct AppModel {
     pub(super) list_pills_below: bool,
     /// The list's search field stays open (#446).
     pub(super) list_search_open: bool,
+    /// A search is showing its results, which span every account.
+    pub(super) search_active: bool,
     /// Saved contacts go by their address-book names (#541).
     pub(super) contact_names: bool,
     /// The list's search field and bulk bar open under the rows (#496).
