@@ -4,7 +4,9 @@
 # with xdotool, device pixels: GDK_SCALE=2). Unlike shot.sh, a dialog or a
 # tooltip shows; popovers, in windows of their own, go through popgrab.sh.
 #   grab.sh NAME AT [VAR=VALUE ...]
-# Options: WINDOW, PRIVACY (as in shot.sh), PRIVACY_FILE, FONT, SCREEN.
+# Options, as environment before the command (not as arguments: those are
+# read after the settings files are written): WINDOW, PRIVACY (as in
+# shot.sh), PRIVACY_FILE, FONT, SCREEN.
 name=$1; at=$2; shift 2
 mkdir -p /shots/grab; export HOME=$(mktemp -d /tmp/home-XXXX)
 mkdir -p $HOME/.config/tegami $HOME/.config/gtk-4.0 $HOME/.config/fontconfig
@@ -34,4 +36,6 @@ timeout $((at+25)) dbus-run-session -- xvfb-run -a -s "-screen 0 ${SCR}x24" bash
   xwininfo -root -children | grep -E "^ +0x" | grep -v "has no name" > /shots/grab/$NAME.windows
   xwd -root -silent | convert xwd:- /shots/grab/$NAME.png
   kill %1' 
+# The settings as the app left them, to start another capture from.
+cp $HOME/.config/tegami/privacy.toml /shots/grab/$name.privacy.toml 2>/dev/null
 ls -la /shots/grab/$name.png | tail -1

@@ -90,6 +90,12 @@ pub(super) fn wrapper_css(
          /* With the meta group gone from the first line, the palette\
          pins itself to the corner (the \u{22ef} is already absolute). */\
          body:not([data-tegami-acts=\"toggle\"]) .tegami-acts{{margin-inline-start:auto;}}\
+         /* A folded card stays one line, narrow or not: its first words\
+         give way to the date. Large text makes a wide pane narrow here\
+         (design feedback P1-2, 2026-11-04). */\
+         .tegami-msg.tegami-folded .tegami-hdr-line{{flex-wrap:nowrap;}}\
+         .tegami-msg.tegami-folded .tegami-hdr-meta{{order:0;flex-basis:auto;\
+         margin-inline-start:auto;}}\
          }}\
          body:not(.tegami-conv) .tegami-msg-hdr{{background-color:{chrome};}}\
          {plain_css}\
