@@ -50,7 +50,12 @@ NAMES = {
 COMPOSER = ("04", "05", "11", "12", "13")
 out = {}
 for k, nm in NAMES.items():
-    out[nm] = shot(k, "Nouveau message" if k in COMPOSER else "Tegami Mail")
+    if k in COMPOSER:
+        title = next(t for t, w, h, x, y in wins(k)
+                     if t not in ("Tegami Mail", "Paramètres") and w > 1 and x < 2880)
+    else:
+        title = "Tegami Mail"
+    out[nm] = shot(k, title)
 
 MENUS = [
     ("06a", "Menu principal", "Bouton ☰ de la barre latérale"),

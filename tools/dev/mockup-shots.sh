@@ -6,7 +6,9 @@
 # Clicks are in device pixels (GDK_SCALE=2) for a 1280x800 window at 0,0.
 set -u
 W12='width = 1280\nheight = 800\n'
-COMP='w=$(xdotool search --name "^Nouveau message$" | head -1); for i in $(xdotool search --name "^Tegami Mail$"); do xdotool windowmove $i 2900 0; done; xdotool windowsize $w $CW $CH; sleep 1.5'
+# The composer: whichever window of the app is neither the main one nor
+# Settings ("Nouveau message", "Répondre à …").
+COMP='w=$(for i in $(xdotool search --onlyvisible --class TegamiMail); do case "$(xdotool getwindowname $i)" in "Tegami Mail"|"Paramètres"|"") ;; *) echo $i;; esac; done | head -1); for i in $(xdotool search --name "^Tegami Mail$"); do xdotool windowmove $i 2900 0; done; xdotool windowsize $w $CW $CH; sleep 1.5'
 FILL='xdotool mousemove 1000 240 click 1; sleep .5; xdotool type --delay 20 "marcus@studio.dev"; xdotool key Return; sleep .5; xdotool mousemove 1000 334 click 1; sleep .3; xdotool type --delay 20 "Retours sur les maquettes"; xdotool mousemove 1000 800 click 1; sleep .5; xdotool type --delay 20 "Bonjour,"; xdotool key Return Return; xdotool type --delay 20 "$BODY"; xdotool key Return Return; xdotool type --delay 20 "Cordialement,"; xdotool key shift+Return; xdotool type --delay 20 "Jason"; sleep 1'
 # No staging (TEGAMI_SHOWCASE_STAGE=0): the demo's own staging clicks a
 # folded card and opens a row's Actions Palette, which no mockup shows; the
@@ -29,12 +31,12 @@ g 02 14 WINDOW="$W12" &
 g 03 14 WINDOW="$W12" PRIVACY_FILE=/fresh-never.toml &
 g 10 14 WINDOW="$W12" TEGAMI_SHOWCASE_ROW=2 $M &
 wait
-g 04 14 WINDOW="$W12" CW=2000 CH=1560 BODY="Voici mes retours sur les maquettes." ACT="$COMP; $FILL" TEGAMI_SHOWCASE_NEW=3 TEGAMI_SHOWCASE_TOP=1 &
-g 05 14 WINDOW="$W12" CW=2000 CH=1840 ACT="$COMP" TEGAMI_SHOWCASE_REPLY=3 TEGAMI_SHOWCASE_TOP=1 &
-g 11 14 WINDOW="$W12" CW=2000 CH=1560 BODY="Voici les fichiers." ACT="$COMP; $FILL" TEGAMI_SHOWCASE_NEW=3 TEGAMI_SHOWCASE_TOP=1 TEGAMI_SHOWCASE_ATTACH=$F1:$F2 &
-g 12 14 WINDOW="$W12" CW=2000 CH=1560 ACT="$COMP" TEGAMI_SHOWCASE_NEW=3 TEGAMI_SHOWCASE_TOP=1 TEGAMI_SHOWCASE_DROP_ZONES=attach:$F1 &
+g 04 14 WINDOW="$W12" CW=2000 CH=1560 BODY="Voici mes retours sur les maquettes." ACT="$COMP; $FILL" TEGAMI_SHOWCASE_NEW=5 TEGAMI_SHOWCASE_TOP=1 &
+g 05 14 WINDOW="$W12" CW=2000 CH=1840 ACT="$COMP" TEGAMI_SHOWCASE_REPLY=5 TEGAMI_SHOWCASE_TOP=1 &
+g 11 14 WINDOW="$W12" CW=2000 CH=1560 BODY="Voici les fichiers." ACT="$COMP; $FILL" TEGAMI_SHOWCASE_NEW=5 TEGAMI_SHOWCASE_TOP=1 TEGAMI_SHOWCASE_ATTACH=$F1:$F2 &
+g 12 14 WINDOW="$W12" CW=2000 CH=1560 ACT="$COMP" TEGAMI_SHOWCASE_NEW=5 TEGAMI_SHOWCASE_TOP=1 TEGAMI_SHOWCASE_DROP_ZONES=attach:$F1 &
 wait
-g 13 14 WINDOW="$W12" CW=2000 CH=1560 BODY="Je vous envoie ci-joint les maquettes." ACT="$COMP; $FILL; xdotool key ctrl+Return; sleep 2" TEGAMI_SHOWCASE_NEW=3 TEGAMI_SHOWCASE_TOP=1 &
+g 13 14 WINDOW="$W12" CW=2000 CH=1560 BODY="Je vous envoie ci-joint les maquettes." ACT="$COMP; $FILL; xdotool key ctrl+Return; sleep 2" TEGAMI_SHOWCASE_NEW=5 TEGAMI_SHOWCASE_TOP=1 &
 g 07 14 WINDOW="$W12" TEGAMI_SHOWCASE_TAGS=panel &
 g 09 14 WINDOW="$W12" TEGAMI_SHOWCASE_TAGS=new &
 g 08 12 WINDOW="$W12" ACT='xdotool mousemove 200 1000; for i in $(seq 20); do xdotool click 5; sleep .05; done; sleep 1; xdotool mousemove 194 1358 click 1; sleep 2; xdotool mousemove 860 368 click 1; sleep 3' &
@@ -51,8 +53,8 @@ g 06c 12 WINDOW="$W12" ACT='xdotool mousemove 860 368 click 3; sleep 2' &
 g 06d 12 WINDOW="$W12" ACT='xdotool mousemove 1092 56 click 1; sleep 2' &
 wait
 g 06e 12 WINDOW="$W12" ACT='xdotool mousemove 236 266 click 3; sleep 2' &
-g 06f 14 WINDOW="$W12" CW=2000 CH=1560 ACT="$COMP; xdotool mousemove 1728 56 click 1; sleep 2" TEGAMI_SHOWCASE_NEW=3 TEGAMI_SHOWCASE_TOP=1 &
-g 06g 14 WINDOW="$W12" CW=2000 CH=1560 ACT="$COMP; xdotool mousemove 786 148 click 1; sleep 2" TEGAMI_SHOWCASE_NEW=3 TEGAMI_SHOWCASE_TOP=1 &
+g 06f 14 WINDOW="$W12" CW=2000 CH=1560 ACT="$COMP; xdotool mousemove 1728 56 click 1; sleep 2" TEGAMI_SHOWCASE_NEW=5 TEGAMI_SHOWCASE_TOP=1 &
+g 06g 14 WINDOW="$W12" CW=2000 CH=1560 ACT="$COMP; xdotool mousemove 786 148 click 1; sleep 2" TEGAMI_SHOWCASE_NEW=5 TEGAMI_SHOWCASE_TOP=1 &
 g 06h 14 WINDOW="$W12" TEGAMI_SHOWCASE_ROW=4 $M ACT='xdotool mousemove 2044 1126 click 1; sleep 2' &
 wait
 )

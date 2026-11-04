@@ -162,10 +162,23 @@ pub(super) fn document(
              blockquote blockquote blockquote{{display:none;}}\
            html[data-history-levels=\"1\"]:not(.tegami-deep) body>div[data-tegami-ui=fold]+\
              .tegami-quote-attr+blockquote blockquote{{display:none;}}\
-           html body>div[data-tegami-ui=deep]{{display:table;margin:8px 0;\
-             padding:4px 8px;border-radius:6px;cursor:pointer;font:{EDITOR_FONT};\
+           html body>div[data-tegami-ui=deep]{{display:table;margin:0;\
+             padding:10px 12px;cursor:pointer;font:{EDITOR_FONT};\
              -webkit-user-select:none;user-select:none;}}\
-           html body>div[data-tegami-ui=deep]:hover{{background:rgba(128,128,128,0.2);}}\
+           html body>div[data-tegami-ui=deep]:hover{{text-decoration:underline;}}\
+           /* The history's ground runs the composer's whole width and down\
+              to its foot (mockup 05), rather than stopping at the text's\
+              margins and the last quote. An outer shadow of the same tint,\
+              clipped to the sides, carries it past the margins without\
+              moving or growing anything; the quote's runs down as well,\
+              under Show Previous Message, which has no ground of its own\
+              so that no two tints overlap. */\
+           html body>div[data-tegami-ui=fold]+.tegami-quote-attr,\
+           html body>div[data-tegami-ui=fold]+.tegami-quote-attr+blockquote{{\
+             box-shadow:0 0 0 100vmax rgba(128,128,128,0.08);\
+             clip-path:inset(0 -100vmax);}}\
+           html body>div[data-tegami-ui=fold]+.tegami-quote-attr+blockquote{{\
+             clip-path:inset(0 -100vmax -100vmax);}}\
            a{{color:#3584e4;}}\
            {plain_css}\
          </style>{script}\
