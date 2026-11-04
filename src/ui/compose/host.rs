@@ -346,6 +346,7 @@ impl Compose {
             // left it to guesswork. Reply-To comes with them.
             let more = gtk::Button::with_label(&i18n("Cc / Bcc"));
             more.add_css_class("flat");
+            more.add_css_class("plain-label");
             more.set_valign(gtk::Align::Center);
             more.set_tooltip_text(Some(i18n("Show Cc, Bcc and Reply-To").as_str()));
             let cc = widgets.cc_row.clone();

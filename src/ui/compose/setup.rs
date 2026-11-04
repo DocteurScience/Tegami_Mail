@@ -63,6 +63,7 @@ pub(super) fn add_toolbar_end_buttons(
         .build();
     attach_btn.set_tooltip_text(Some(i18n("Attach files").as_str()));
     attach_btn.add_css_class("flat");
+    attach_btn.add_css_class("plain-label");
     attach_btn.set_can_focus(false);
     {
         let s = sender.input_sender().clone();

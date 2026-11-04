@@ -190,28 +190,31 @@ pub(super) fn build_toolbar(
     let end = gtk::Box::new(gtk::Orientation::Horizontal, 2);
     let (styles, style, font, size) = style_menus(webview);
 
+    // B, I, U and S drawn from Adwaita Sans (mockup 04): Adwaita's own
+    // icons for these are a stylised "a" each, which read as one letter
+    // four times (design feedback P2-4, 2026-11-04).
     let chars = cluster();
     simple_buttons(
         webview,
         &chars,
         &[
             (
-                "format-text-bold-symbolic",
+                "tegami-text-bold-symbolic",
                 i18n_noop("Bold"),
                 "document.execCommand('bold')",
             ),
             (
-                "format-text-italic-symbolic",
+                "tegami-text-italic-symbolic",
                 i18n_noop("Italic"),
                 "document.execCommand('italic')",
             ),
             (
-                "format-text-underline-symbolic",
+                "tegami-text-underline-symbolic",
                 i18n_noop("Underline"),
                 "document.execCommand('underline')",
             ),
             (
-                "format-text-strikethrough-symbolic",
+                "tegami-text-strikethrough-symbolic",
                 i18n_noop("Strikethrough"),
                 "document.execCommand('strikeThrough')",
             ),
@@ -245,6 +248,19 @@ pub(super) fn build_toolbar(
         'o',
         &mut toggles,
     ));
+    // The link right after the lists, as mockup 04 has it, in a chain of
+    // our own: Adwaita's insert-link is an arrow into a box, which read as
+    // no link button at all (design feedback P2-4, 2026-11-04).
+    let link = bar_button("tegami-link-symbolic", i18n_noop("Insert link"));
+    {
+        let weak = webview.downgrade();
+        link.connect_clicked(move |b| {
+            if let Some(wv) = weak.upgrade() {
+                prompt_link(&wv, b);
+            }
+        });
+    }
+    lists.append(&link);
     group.append(&lists);
     // Inside a list, indenting nests the items under the one above.
     let indents = cluster();
@@ -276,16 +292,6 @@ pub(super) fn build_toolbar(
         'q',
         &mut toggles,
     ));
-    let link = bar_button("insert-link-symbolic", i18n_noop("Insert link"));
-    {
-        let weak = webview.downgrade();
-        link.connect_clicked(move |b| {
-            if let Some(wv) = weak.upgrade() {
-                prompt_link(&wv, b);
-            }
-        });
-    }
-    inserts.append(&link);
     group.append(&inserts);
     let media = cluster();
     let emoji = bar_button("face-smile-symbolic", i18n_noop("Insert emoji"));

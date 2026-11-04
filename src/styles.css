@@ -2227,3 +2227,11 @@ toast-countdown {
   margin-top: 6px;
   padding-top: 6px;
 }
+
+/* A text button in the regular weight (mockup 04: the composer's Cancel
+   and Cc / Bcc). libadwaita draws a text button bold, which made them
+   weigh as much as Send (design feedback P2-4, 2026-11-04). */
+button.plain-label,
+button.plain-label label {
+  font-weight: normal;
+}

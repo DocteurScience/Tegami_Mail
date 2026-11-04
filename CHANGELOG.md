@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+- **Changed: the composer's formatting buttons read B, I, U and S**
+  (mockup 04), drawn from Adwaita Sans: Adwaita's icons for them are a
+  stylised "a" each. Insert Link is a chain, right after the lists.
+  Cancel, Cc / Bcc and Attach a File are in the regular weight, so Send
+  is the one that stands out.
+
 - **Changed: a message card says who it went to** (mockup 03). Under the
   sender, "To: me, Julien Perrin · 9 Oct, 06:53": the recipients by name,
   you as "me", and a short date, the year only when it is another one.

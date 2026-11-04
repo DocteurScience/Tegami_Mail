@@ -90,6 +90,7 @@ impl Component for Compose {
                         pack_start = &gtk::Button {
                             set_label: &i18n("Cancel"),
                             add_css_class: "flat",
+                            add_css_class: "plain-label",
                             connect_clicked => ComposeInput::Cancel,
                         },
                         // Send, the window's one suggested button, with its
