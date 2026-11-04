@@ -62,13 +62,13 @@ impl AppModel {
 
     /// Whether a tag view covers an account: its own, or for the unified
     /// Tags row every account merged into the unified section (#267).
-    fn in_tag_scope(&self, scope: Option<u32>, account_id: u32) -> bool {
+    pub(super) fn in_tag_scope(&self, scope: Option<u32>, account_id: u32) -> bool {
         scope.map_or_else(|| self.in_unified(account_id), |id| id == account_id)
     }
 
     /// The keywords a tag view answers: one, or — the unified Tags row —
     /// every configured tag.
-    fn tag_view_keywords(&self, kw: &Option<String>) -> Vec<String> {
+    pub(super) fn tag_view_keywords(&self, kw: &Option<String>) -> Vec<String> {
         match kw {
             Some(k) => vec![k.clone()],
             None => self.tags.iter().map(|t| t.keyword.clone()).collect(),
@@ -148,7 +148,7 @@ impl AppModel {
     /// but stay out; Gmail's per-label copies of one message collapse to one
     /// row, the inbox copy where there is one (its actions land where
     /// expected).
-    fn assemble_tag_view(
+    pub(super) fn assemble_tag_view(
         &self,
         key: &(Option<u32>, Option<String>),
         rows: Vec<(u32, String, Message)>,
@@ -420,6 +420,8 @@ impl AppModel {
                 // The sidebar lists the tags; a removed one that was the open
                 // view falls back to the first inbox there (SetContents).
                 self.rebuild_sidebar();
+                // A new or renamed tag counts its unread mail again.
+                self.schedule_smart_counts(&sender);
                 // Rules may name a tag that now exists: tag what already sits
                 // in the inboxes, through the same sweep the filters use.
                 self.sweep_blacklisted();

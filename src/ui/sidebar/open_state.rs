@@ -159,7 +159,7 @@ impl Sidebar {
                 .filter(|r| r.folder.kind != FolderKind::Sent)
                 .map(|r| r.folder.unread)
                 .sum(),
-            UnifiedRow::Tags => 0,
+            UnifiedRow::Tags => self.tag_unread.values().sum(),
             UnifiedRow::Smart => self.smart_unread.values().sum(),
         }
     }

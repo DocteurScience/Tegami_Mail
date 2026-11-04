@@ -268,10 +268,10 @@ impl AppModel {
         out
     }
 
-    /// Count the smart folders' unread mail a few seconds from now, once for
-    /// however many syncs land meanwhile.
+    /// Count the smart folders' and the tags' unread mail a few seconds
+    /// from now, once for however many syncs land meanwhile.
     pub(super) fn schedule_smart_counts(&mut self, sender: &ComponentSender<Self>) {
-        if self.smart_folders.is_empty() || self.smart_counts_due {
+        if (self.smart_folders.is_empty() && self.tags.is_empty()) || self.smart_counts_due {
             return;
         }
         self.smart_counts_due = true;
@@ -289,6 +289,26 @@ impl AppModel {
             return;
         }
         let demo = demo_mode() && self.config.is_empty();
+        // Each tag with its name, which a Gmail label goes by, over the
+        // accounts in the combined views: what its view reads.
+        let tag_jobs: Vec<(String, String)> = self
+            .tags
+            .iter()
+            .map(|t| (t.keyword.clone(), t.name.clone()))
+            .collect();
+        let tag_accounts: Vec<u32> = self
+            .accounts
+            .iter()
+            .map(|a| a.id)
+            .filter(|id| self.in_tag_scope(None, *id))
+            .collect();
+        if demo {
+            let rows = tag_jobs
+                .iter()
+                .map(|(k, _)| (k.clone(), Vec::new()))
+                .collect();
+            sender.input(AppMsg::TagCountRows(rows));
+        }
         let jobs: Vec<(config::SmartFolder, SmartScope, SmartContext)> = self
             .smart_folders
             .iter()
@@ -344,6 +364,19 @@ impl AppModel {
                 }
             }
             s.input(AppMsg::SmartCounts(counts));
+            let mut tag_rows = Vec::new();
+            if let Ok(cache) = crate::cache::Cache::open() {
+                for (keyword, name) in tag_jobs {
+                    let mut rows = Vec::new();
+                    for &account_id in &tag_accounts {
+                        for (path, m) in cache.messages_with_keyword(account_id, &keyword, &name) {
+                            rows.push((account_id, path, m));
+                        }
+                    }
+                    tag_rows.push((keyword, rows));
+                }
+            }
+            s.input(AppMsg::TagCountRows(tag_rows));
         });
     }
 
@@ -423,6 +456,24 @@ impl AppModel {
             AppMsg::SmartCounts(counts) => {
                 self.smart_counts_running = false;
                 self.sidebars_emit(SidebarInput::SetSmartUnread(counts));
+            }
+
+            AppMsg::TagCountRows(tag_rows) => {
+                // Counted from the view each tag opens, so the badge and
+                // the list it leads to never disagree (Trash and Junk out,
+                // one row for Gmail's per-label copies).
+                let counts = tag_rows
+                    .into_iter()
+                    .map(|(keyword, rows)| {
+                        let n = self
+                            .assemble_tag_view(&(None, Some(keyword.clone())), rows)
+                            .iter()
+                            .filter(|m| m.unread)
+                            .count() as u32;
+                        (keyword, n)
+                    })
+                    .collect();
+                self.sidebars_emit(SidebarInput::SetTagUnread(counts));
             }
 
             AppMsg::SetSmartFolders(folders) => {

@@ -334,6 +334,7 @@ impl AppModel {
             | AppMsg::FlagsSynced { .. }
             | AppMsg::CountSmartFolders
             | AppMsg::SmartCounts(..)
+            | AppMsg::TagCountRows(..)
             | AppMsg::SetSmartFolders(..)) => self.on_smart(msg, sender),
             msg @ (AppMsg::SetTag { .. }
             | AppMsg::SetTagMany { .. }

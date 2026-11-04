@@ -564,19 +564,23 @@ impl Sidebar {
 
     /// Every tag (#71).
     fn fill_tags(&mut self, sub: &gtk::ListBox, sender: &ComponentSender<Self>) {
+        self.tag_badges.clear();
         for t in &self.tags {
             let disc = crate::ui::context_menu::swatch_widget(&t.color, true);
+            // Its unread mail, as a folder's (mockup 07); the count
+            // arrives with the smart folders' (SetTagUnread).
+            let unread = self.tag_unread.get(&t.keyword).copied().unwrap_or(0);
             let (row, badge) = build_unified_sub_row(
                 &tree_indent(&disc, self.collapsed),
                 &t.name,
                 &t.name,
-                0,
+                unread,
                 self.collapsed,
                 self.chevrons_left,
                 false,
             );
-            badge.set_visible(false);
             sub.append(&row);
+            self.tag_badges.insert(t.keyword.clone(), badge);
         }
         let ss = sender.input_sender().clone();
         let quiet = self.quiet.clone();

@@ -140,6 +140,10 @@ pub(crate) struct Sidebar {
     smart_expanded: bool,
     smart_unread: HashMap<String, u32>,
     smart_badges: HashMap<String, gtk::Label>,
+    /// Each tag's unread mail across the accounts in the combined views,
+    /// by keyword, and the badge showing it.
+    tag_unread: HashMap<String, u32>,
+    tag_badges: HashMap<String, gtk::Label>,
     /// Inbox unread badge overlaid on each account's avatar circle, shown only
     /// while that account's section is collapsed (its Inbox row — and normal
     /// chip — is then hidden inside the revealer). Keyed by account_id.
@@ -279,6 +283,8 @@ impl Component for Sidebar {
             smart_expanded: init.smart_expanded,
             smart_unread: HashMap::new(),
             smart_badges: HashMap::new(),
+            tag_unread: HashMap::new(),
+            tag_badges: HashMap::new(),
             account_circle_badges: HashMap::new(),
             tags: Vec::new(),
             tags_expanded: init.tags_expanded,
@@ -349,6 +355,7 @@ impl Sidebar {
             SidebarInput::ToggleSmartExpand => self.on_toggle_smart_expand(sender),
             SidebarInput::SmartRowSelected(index) => self.on_smart_row_selected(index, sender),
             SidebarInput::SetSmartUnread(counts) => self.on_set_smart_unread(counts),
+            SidebarInput::SetTagUnread(counts) => self.on_set_tag_unread(counts),
             SidebarInput::FavoriteRowSelected(index) => {
                 self.on_favorite_row_selected(index, sender)
             }

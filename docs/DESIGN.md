@@ -212,8 +212,11 @@ keywords a server already holds. This section changes how they are shown.
   search field that also creates ("Search or create"), one check row per tag
   with its colour dot, then "New tag" and "Manage tags".
 - **Chips**: the tag's name always written out, on a tint of its colour.
-- **Sidebar**: a "Tags" section under the folders, with a colour dot, the name,
-  the count, and a button to add a tag. Selecting a tag filters the list and
+- **Sidebar**: a "Tags" section, one for every account, with a colour dot,
+  the name, the unread count, and a button to add a tag. It sits above the
+  accounts by default (owner's decision, 2026-11-04: in sight however many
+  accounts there are; mockup 07 draws a single account), and Settings →
+  Sidebar can put it below them. Selecting a tag filters the list and
   shows the tag in the list's title.
 - **Dialogs**: "New tag" (name, colour with its name under each swatch, a
   preview chip, Cancel and Create) and "Tags" (a boxed list with edit and

@@ -58,6 +58,8 @@ pub(crate) enum SidebarInput {
     SmartRowSelected(i32),
     /// Each smart folder's unread count, by id.
     SetSmartUnread(HashMap<String, u32>),
+    /// Each tag's unread count, by keyword (mockup 07).
+    SetTagUnread(HashMap<String, u32>),
     ToggleCollapseLocal(u32),
     /// Set icon-only mode outright (the app's narrow-window breakpoint) —
     /// unlike ToggleCollapsed this never reports CollapsedChanged, so it can't

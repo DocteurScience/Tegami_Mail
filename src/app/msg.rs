@@ -16,6 +16,9 @@ use crate::ui::preferences::PrefOutput;
 use crate::ui::sidebar::CtxAction;
 use crate::worker::OutgoingMessage;
 
+/// Messages read from the index, each with its account and folder path.
+pub(crate) type IndexRows = Vec<(u32, String, Message)>;
+
 use super::attachments::AttachmentTarget;
 use super::hand_off::{FileHandOff, HandOffTarget};
 use super::types::UnifiedView;
@@ -1091,6 +1094,9 @@ pub(crate) enum AppMsg {
     CountSmartFolders,
     /// The smart folders' unread counts, by id, for the sidebar.
     SmartCounts(HashMap<String, u32>),
+    /// Each tag's rows read from the index (keyword, (account, folder
+    /// path, message)), to count its unread mail as its view shows it.
+    TagCountRows(Vec<(String, IndexRows)>),
     /// The smart folders as Settings left them.
     SetSmartFolders(Vec<config::SmartFolder>),
 

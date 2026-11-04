@@ -151,6 +151,24 @@ impl Sidebar {
         }
     }
 
+    /// The tags' unread counts arrived: their badges change in place, and
+    /// the Tags row's folded total with them.
+    pub(super) fn on_set_tag_unread(&mut self, counts: HashMap<String, u32>) {
+        for (keyword, badge) in &self.tag_badges {
+            let n = counts.get(keyword).copied().unwrap_or(0);
+            badge.set_label(&n.to_string());
+            badge.set_visible(n > 0);
+        }
+        self.tag_unread = counts;
+        if let Some(w) = self.kind_widgets.get(&UnifiedRow::Tags) {
+            if let Some(b) = &w.badge {
+                let total = self.row_unread(UnifiedRow::Tags);
+                b.set_label(&total.to_string());
+                b.set_visible(total > 0 && !self.row_shown_open(UnifiedRow::Tags));
+            }
+        }
+    }
+
     pub(super) fn on_set_unread(
         &mut self,
         folders: HashMap<(u32, u32), u32>,

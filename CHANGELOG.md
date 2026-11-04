@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+- **Changed: Tags sit above the accounts on a new install, and each tag
+  shows its unread count** (mockup 07). With several accounts the
+  section was at the very bottom of the sidebar. It is one section for
+  every account; **Settings → Sidebar** can still put it below them, and
+  an install that has the setting keeps it. A tag's count is the unread
+  mail its view lists, Trash and Junk left out.
+
 - **Fixed: "Reply" no longer shrinks to "Rep…" in a narrow reader**: where
   the header is too tight for the word, Reply is its icon alone, its name
   in the tooltip and for screen readers.
