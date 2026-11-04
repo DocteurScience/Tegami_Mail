@@ -60,6 +60,10 @@ Le redesign suit [docs/DESIGN.md](docs/DESIGN.md) et
   `ci-logs` et `ci-logs-snap` (`git fetch --depth=1 origin ci-logs`).
   Suivre un run : `gh run watch <id> --repo DocteurScience/Tegami_Mail`.
   Un échec du snap à l'étape `gnome/cleanup` a déjà été passager.
+- Flatpak : workflow `.github/workflows/flatpak.yml`, à la demande
+  (`gh workflow run flatpak.yml --repo DocteurScience/Tegami_Mail`) ;
+  artefact `flatpak` (bundle `tegami-mail.flatpak`). Les artefacts ne se
+  téléchargent pas depuis la session cloud (stockage GitHub bloqué).
 
 ## Compiler, tester, capturer
 
