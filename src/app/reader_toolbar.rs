@@ -71,7 +71,6 @@ pub(super) struct ReaderToolbarWidgets {
 fn action_entry(
     sender: &ComponentSender<AppModel>,
     label: String,
-    icon: &str,
     msg: impl Fn() -> AppMsg + 'static,
     enabled: bool,
 ) -> crate::ui::context_menu::MenuEntry {
@@ -79,7 +78,6 @@ fn action_entry(
     crate::ui::context_menu::MenuEntry::new(label, move || {
         let _ = s.send(msg());
     })
-    .icon(format!("{icon}-symbolic"))
     .enabled(enabled)
 }
 
@@ -183,7 +181,6 @@ impl AppModel {
         vec![vec![action_entry(
             sender,
             i18n("View source"),
-            "code",
             || AppMsg::ViewSource,
             has_current,
         )]]
@@ -214,7 +211,6 @@ impl AppModel {
         let mut first = vec![action_entry(
             sender,
             i18n("Forward as attachment"),
-            "mail-forward",
             || AppMsg::ForwardAsAttachment,
             acts,
         )];
@@ -227,28 +223,17 @@ impl AppModel {
             second.push(self.card_remote_entry(m, sender));
         }
         second.push(
-            action_entry(
-                sender,
-                i18n("View source"),
-                "code",
-                || AppMsg::ViewSource,
-                acts,
-            )
-            .keys(MessageAction::row_keys(
-                crate::ui::message_list::RowAction::ViewSource,
-                false,
-                KeysOf::Main,
-            )),
+            action_entry(sender, i18n("View source"), || AppMsg::ViewSource, acts).keys(
+                MessageAction::row_keys(
+                    crate::ui::message_list::RowAction::ViewSource,
+                    false,
+                    KeysOf::Main,
+                ),
+            ),
         );
         second.push(
-            action_entry(
-                sender,
-                i18n("Print…"),
-                "printer",
-                || AppMsg::PrintMessage,
-                has_current,
-            )
-            .keys(Some("<Control>p")),
+            action_entry(sender, i18n("Print…"), || AppMsg::PrintMessage, has_current)
+                .keys(Some("<Control>p")),
         );
         let s = sender.input_sender().clone();
         second.push(
@@ -261,7 +246,6 @@ impl AppModel {
                     });
                 }
             })
-            .icon("document-save-symbolic")
             .enabled(acts),
         );
         sections.push(second);
@@ -288,8 +272,7 @@ impl AppModel {
                 .is_some_and(|k| matches!(k, FolderKind::Trash | FolderKind::Junk))
         });
         let item = |action: MessageAction, msg: fn() -> AppMsg, enabled: bool| {
-            action_entry(sender, action.label(), action.icon(), msg, enabled)
-                .keys(action.keys(KeysOf::Main))
+            action_entry(sender, action.label(), msg, enabled).keys(action.keys(KeysOf::Main))
         };
         let mut sections = Vec::new();
         for group in groups {
@@ -313,7 +296,6 @@ impl AppModel {
                         if self.snooze_offered() {
                             section.push(
                                 MenuEntry::submenu(A::Snooze.label(), self.snooze_sections(sender))
-                                    .icon(format!("{}-symbolic", A::Snooze.icon()))
                                     .keys(A::Snooze.keys(KeysOf::Main)),
                             );
                         }
@@ -345,7 +327,6 @@ impl AppModel {
                         if let Some(entries) = self.reader_tag_entries(sender) {
                             section.push(
                                 MenuEntry::submenu(A::Tags.label(), vec![entries])
-                                    .icon("tag-outline-symbolic")
                                     .keys(A::Tags.keys(KeysOf::Main)),
                             );
                         }
@@ -706,8 +687,7 @@ impl AppModel {
                     let s = sender.input_sender().clone();
                     let entry = MenuEntry::new(i18n("Customize toolbar…"), move || {
                         let _ = s.send(AppMsg::CustomizeToolbar);
-                    })
-                    .icon("preferences-desktop-appearance-symbolic");
+                    });
                     show_context_menu(header, x, y, vec![vec![entry]]);
                 }
             }

@@ -93,7 +93,7 @@ impl MessageView {
         use crate::ui::context_menu::{show_context_menu, MenuEntry};
         // CSS pixels → widget pixels (the page may be zoomed).
         let ratio = self.webview.width() as f64 / page_width.max(1.0);
-        let entry = |label: String, icon: &str, verb: AttVerb| {
+        let entry = |label: String, verb: AttVerb| {
             let s = sender.clone();
             MenuEntry::new(label, move || {
                 s.input(MessageViewInput::AttachmentAction {
@@ -103,7 +103,6 @@ impl MessageView {
                     verb,
                 })
             })
-            .icon(icon.to_string())
         };
         show_context_menu(
             self.webview.upcast_ref::<gtk::Widget>(),
@@ -111,24 +110,12 @@ impl MessageView {
             y * ratio,
             vec![
                 vec![
-                    entry(i18n("Open"), "document-open-symbolic", AttVerb::Open),
-                    entry(
-                        i18n("Open with\u{2026}"),
-                        "view-more-horizontal-symbolic",
-                        AttVerb::OpenWith,
-                    ),
+                    entry(i18n("Open"), AttVerb::Open),
+                    entry(i18n("Open with\u{2026}"), AttVerb::OpenWith),
                 ],
                 vec![
-                    entry(
-                        i18n("Save as\u{2026}"),
-                        "folder-download-symbolic",
-                        AttVerb::Save,
-                    ),
-                    entry(
-                        i18n("Save all\u{2026}"),
-                        "folder-download-symbolic",
-                        AttVerb::SaveAll,
-                    ),
+                    entry(i18n("Save as\u{2026}"), AttVerb::Save),
+                    entry(i18n("Save all\u{2026}"), AttVerb::SaveAll),
                 ],
             ],
         );

@@ -128,9 +128,7 @@ pub(crate) fn snooze_menu(
         vec![entry(i18n("Pick a date and time…"), SnoozeChoice::Pick)],
     ];
     if snoozed {
-        sections.push(vec![
-            entry(i18n("Unsnooze"), SnoozeChoice::Wake).icon("mail-inbox-symbolic")
-        ]);
+        sections.push(vec![entry(i18n("Unsnooze"), SnoozeChoice::Wake)]);
     }
     sections
 }

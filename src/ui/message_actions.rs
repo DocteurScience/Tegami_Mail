@@ -61,29 +61,6 @@ impl MessageAction {
             Self::PrintPreview => i18n("Print preview"),
         }
     }
-
-    /// The entry's icon, without the `-symbolic` the menus add.
-    pub(crate) fn icon(self) -> &'static str {
-        match self {
-            Self::Reply => "mail-reply-sender",
-            Self::ReplyAll => "mail-reply-all",
-            Self::Forward => "mail-forward",
-            Self::Star => "starred",
-            Self::RemoveStar => "tegami-non-starred",
-            Self::Archive => "mail-archive",
-            Self::Snooze => "alarm",
-            Self::Delete => "user-trash",
-            Self::MarkSpam => "mail-mark-junk",
-            Self::NotSpam => "mail-mark-notjunk",
-            Self::MarkRead => "tegami-mail-read",
-            Self::MarkUnread => "mail-unread",
-            Self::Tags => "tag-outline",
-            Self::MoveToInbox => "mail-inbox",
-            Self::MoveTo => "folder",
-            Self::Find => "loupe-with-arrow",
-            Self::PrintPreview => "printer",
-        }
-    }
 }
 
 impl MessageAction {

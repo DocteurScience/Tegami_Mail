@@ -622,13 +622,10 @@ fn add_open_and_menu(
                 x,
                 y,
                 vec![
-                    vec![
-                        MenuEntry::new(i18n("Open"), move || open()).icon("document-open-symbolic")
-                    ],
+                    vec![MenuEntry::new(i18n("Open"), move || open())],
                     vec![MenuEntry::new(i18n("Remove"), move || {
                         let _ = s.send(ComposeInput::RemoveAttachment(index));
-                    })
-                    .icon("window-close-symbolic")],
+                    })],
                 ],
             );
         });

@@ -9,14 +9,6 @@ use crate::ui::context_menu::MenuEntry;
 use adw::prelude::*;
 use relm4::prelude::*;
 
-/// The icon a composing format carries, in the header and in its menu.
-pub(super) fn format_icon(format: ComposeFormat) -> &'static str {
-    match format {
-        ComposeFormat::Rich => "format-text-rich-symbolic",
-        ComposeFormat::Plain => "text-x-generic-symbolic",
-    }
-}
-
 /// What a format is called where the user meets it.
 pub(super) fn format_label(format: ComposeFormat) -> String {
     match format {
@@ -101,7 +93,6 @@ impl Compose {
                 MenuEntry::new(format_label(format), move || {
                     s.input_sender().emit(ComposeInput::SetFormat(format))
                 })
-                .icon(format_icon(format))
                 .tooltip(format_hint(format))
                 .selected(format == self.format)
             });

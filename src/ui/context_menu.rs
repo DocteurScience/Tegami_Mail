@@ -1,14 +1,14 @@
 //! A shared builder for right-click context menus, styled to match GNOME HIG:
-//! a flat list of icon + label rows in a borderless `GtkPopover`, grouped into
+//! a flat list of label rows in a borderless `GtkPopover`, grouped into
 //! sections by hairline separators. Built from plain widgets (not a
 //! `Gio.Menu`/`GtkPopoverMenu`, which on GTK4 wraps everything in an internal
 //! `GtkScrolledWindow`), so the popover and its box always size to exactly
 //! what the sections need and never grow a scrollbar.
 //!
-//! Icons deliberately mirror the reader-toolbar buttons for the same actions,
-//! tying the menu entries to the buttons users already know. In a menu where
-//! any entry carries an icon, iconless entries get a blank slot of the same
-//! width so every label stays aligned.
+//! No icons before the labels (owner's decision, 2026-11-04; the HIG and
+//! mockup 06 have none): a page that offers a choice keeps a slot at the
+//! start of every row for the check of the entries that are on, or a tag's
+//! colour, so its labels stay aligned.
 //!
 //! An entry can open a submenu ([`MenuEntry::submenu`]): the popover slides
 //! to a page of its own, headed by a back row, the way `GtkPopoverMenu`
@@ -16,25 +16,24 @@
 
 use gtk::prelude::*;
 
-/// One entry in a context menu: a label, an optional leading symbolic icon,
-/// and the callback to run on activation. Use `.enabled(false)` to grey an
+/// One entry in a context menu: a label and the callback to run on activation. Use `.enabled(false)` to grey an
 /// item out rather than hiding it — HIG prefers a disabled item users can
 /// still find over one that vanishes and makes the menu shift under them.
 pub(crate) struct MenuEntry {
     label: String,
-    icon: Option<String>,
-    /// A color swatch in the icon slot instead of an icon (a tag's color,
-    /// #71): filled when the entry's state is on, a ring when off.
+    /// A color swatch in the check slot (a tag's color, #71): filled when
+    /// the entry's state is on, a ring when off.
     swatch: Option<(String, bool)>,
     enabled: bool,
-    /// The entry the menu is currently set to: drawn in the accent color,
-    /// icon and label together, rather than having its icon swapped for a
-    /// tick. A tick costs the icon that says what the entry *is*, which is
-    /// the part worth keeping in a list of alternatives.
+    /// The entry the menu is currently set to, one of several: a check in
+    /// the slot, the label in its usual colour (mockup 06). Colour was read
+    /// as the destructive red on a red-ish accent (design feedback P1-5).
     selected: bool,
-    /// A switch that is on: the row gets the grey of a pressed toggle
-    /// button, so it reads like the header button it stands in for.
+    /// A switch that is on: a check in the slot, as `selected`.
     checked: bool,
+    /// Whether the entry is one of a choice or a switch, on or off: the
+    /// page then keeps the check slot on every row.
+    choosable: bool,
     /// An entry that cannot be taken back (Delete Draft): drawn in the
     /// destructive colour, the one entry of its menu that is (HIG; docs/
     /// DESIGN.md, "Menus").
@@ -58,11 +57,11 @@ impl MenuEntry {
     pub(crate) fn new(label: impl Into<String>, activate: impl Fn() + 'static) -> Self {
         Self {
             label: label.into(),
-            icon: None,
             swatch: None,
             enabled: true,
             selected: false,
             checked: false,
+            choosable: false,
             destructive: false,
             tooltip: None,
             accel: None,
@@ -95,11 +94,11 @@ impl MenuEntry {
         let empty = sections.iter().all(|s| s.is_empty());
         Self {
             label: label.into(),
-            icon: None,
             swatch: None,
             enabled: !empty,
             selected: false,
             checked: false,
+            choosable: false,
             destructive: false,
             tooltip: None,
             accel: None,
@@ -110,17 +109,10 @@ impl MenuEntry {
         }
     }
 
-    /// A colored disc in the icon slot — `on` fills it, off draws a ring —
+    /// A colored disc in the check slot — `on` fills it, off draws a ring —
     /// for entries that toggle something with a color of its own (tags).
     pub(super) fn swatch(mut self, color: impl Into<String>, on: bool) -> Self {
         self.swatch = Some((color.into(), on));
-        self
-    }
-
-    /// Leading symbolic icon — use the same icon as the toolbar button that
-    /// performs this action, so the menu teaches the toolbar.
-    pub(crate) fn icon(mut self, name: impl Into<String>) -> Self {
-        self.icon = Some(name.into());
         self
     }
 
@@ -148,6 +140,7 @@ impl MenuEntry {
     /// Mark this entry as a switch that is on.
     pub(crate) fn checked(mut self, checked: bool) -> Self {
         self.checked = checked;
+        self.choosable = true;
         self
     }
 
@@ -160,6 +153,7 @@ impl MenuEntry {
     /// Mark this entry as the one the menu is set to.
     pub(crate) fn selected(mut self, selected: bool) -> Self {
         self.selected = selected;
+        self.choosable = true;
         self
     }
 
@@ -442,12 +436,12 @@ fn build_page(
         _ => {}
     }
 
-    // Any icon in the menu means every row reserves the icon slot, keeping
-    // the labels of iconless entries aligned with the rest.
-    let has_icons = sections
+    // A choice or a tag anywhere on the page: every row keeps the slot,
+    // so the labels stay aligned (mockup 06).
+    let has_slot = sections
         .iter()
         .flatten()
-        .any(|e| e.icon.is_some() || e.swatch.is_some());
+        .any(|e| e.choosable || e.swatch.is_some());
 
     let mut first = true;
     for entries in sections {
@@ -462,11 +456,11 @@ fn build_page(
         for entry in entries {
             let MenuEntry {
                 label,
-                icon,
                 swatch,
                 enabled,
                 selected,
                 checked,
+                choosable: _,
                 destructive,
                 tooltip,
                 accel,
@@ -489,15 +483,13 @@ fn build_page(
             }
 
             let row = gtk::Box::new(gtk::Orientation::Horizontal, 10);
-            if selected {
-                row.add_css_class("context-menu-selected");
-            }
             if let Some((color, on)) = swatch {
                 row.append(&swatch_widget(&color, on));
-            } else if has_icons {
-                let img = match &icon {
-                    Some(name) => gtk::Image::from_icon_name(name),
-                    None => gtk::Image::new(),
+            } else if has_slot {
+                let img = if selected || checked {
+                    gtk::Image::from_icon_name("object-select-symbolic")
+                } else {
+                    gtk::Image::new()
                 };
                 img.set_pixel_size(16);
                 row.append(&img);
@@ -552,10 +544,8 @@ fn build_page(
             }
             btn.set_halign(gtk::Align::Fill);
             btn.set_sensitive(enabled);
-            if checked {
-                // The checked state, not a class of our own: libadwaita
-                // then draws it exactly as it draws a toggled flat button.
-                btn.set_state_flags(gtk::StateFlags::CHECKED, false);
+            if checked || selected {
+                // Said to a screen reader too, which the check alone is not.
                 btn.update_state(&[gtk::accessible::State::Pressed(
                     gtk::AccessibleTristate::True,
                 )]);

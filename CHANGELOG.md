@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+- **Changed: menus without icons, with a check for what is chosen**
+  (mockup 06). The entry a menu is set to (the composer's format, the
+  account it sends from) and the switches that are on (Sign, Encrypt,
+  Check spelling) have a check before them, in the label's usual colour;
+  they were drawn in the accent, which a red-ish accent made look like a
+  destructive entry. Red is kept for the entries that delete.
+
 - **Changed: unread counts in the sidebar are plain text** (mockups 01
   and 07): grey digits at the row's right end rather than white digits on
   an accent chip, which read at about 3:1. With **Highlight only new

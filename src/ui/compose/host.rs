@@ -230,19 +230,14 @@ impl Compose {
         widgets: &ComposeWidgets,
         sender: &ComponentSender<Self>,
     ) {
-        let entry = |label: String, icon: &str, msg: fn() -> ComposeInput| {
+        let entry = |label: String, msg: fn() -> ComposeInput| {
             let s = sender.clone();
             MenuEntry::new(&label, move || s.input_sender().emit(msg()))
-                .icon(format!("{icon}-symbolic"))
         };
         let save = vec![if self.template {
-            entry(i18n("Save template"), "document-save", || {
-                ComposeInput::SaveDraft
-            })
+            entry(i18n("Save template"), || ComposeInput::SaveDraft)
         } else {
-            entry(i18n("Save draft"), "document-save", || {
-                ComposeInput::SaveDraft
-            })
+            entry(i18n("Save draft"), || ComposeInput::SaveDraft)
         }];
         // Checks: the OpenPGP toggles go through their buttons so the
         // toggled handlers keep the model and the buttons agreeing.
@@ -253,7 +248,6 @@ impl Compose {
                 MenuEntry::new(i18n("Sign with OpenPGP"), move || {
                     sign.set_active(!sign.is_active())
                 })
-                .icon("security-high-symbolic")
                 .checked(self.sign)
                 .tooltip(pgp_tooltip(&i18n("Sign with your OpenPGP key"), self.sign)),
             );
@@ -262,7 +256,6 @@ impl Compose {
                 MenuEntry::new(i18n("Encrypt with OpenPGP"), move || {
                     encrypt.set_active(!encrypt.is_active())
                 })
-                .icon("channel-secure-symbolic")
                 .checked(self.encrypt)
                 .tooltip(pgp_tooltip(
                     &i18n("Encrypt with OpenPGP to every recipient's key"),
@@ -278,7 +271,6 @@ impl Compose {
             MenuEntry::new(i18n("Request a read receipt"), move || {
                 s.input_sender().emit(ComposeInput::ToggleReceipt(receipt))
             })
-            .icon("tegami-read-receipt-symbolic")
             .checked(self.request_receipt)
             .tooltip(i18n("Not every mail app sends one.")),
         );
@@ -308,11 +300,9 @@ impl Compose {
         let mut delete = Vec::new();
         if self.draft_origin.is_some() && !self.template {
             delete.push(
-                entry(i18n("Delete draft"), "user-trash", || {
-                    ComposeInput::DeleteDraft
-                })
-                .tooltip(i18n("Move this draft to Trash"))
-                .destructive(),
+                entry(i18n("Delete draft"), || ComposeInput::DeleteDraft)
+                    .tooltip(i18n("Move this draft to Trash"))
+                    .destructive(),
             );
         }
         let btn = &widgets.overflow_btn;

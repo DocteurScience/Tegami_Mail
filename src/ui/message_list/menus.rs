@@ -11,7 +11,7 @@ use adw::prelude::*;
 use relm4::prelude::*;
 
 /// Makes one menu entry that sends the row's action for the clicked message.
-type MakeEntry<'a> = dyn Fn(RowAction, &str, &str) -> MenuEntry + 'a;
+type MakeEntry<'a> = dyn Fn(RowAction, &str) -> MenuEntry + 'a;
 
 impl MessageList {
     /// Build and pop up the right-click menu for `msg` at the click location.
@@ -22,10 +22,8 @@ impl MessageList {
         y: f64,
         sender: &ComponentSender<Self>,
     ) {
-        // Each entry carries the same icon as the reader-toolbar button (or
-        // row-palette button) for that action, tying the two together.
         let conversation = self.row_conversation(msg);
-        let item = |action: RowAction, label: &str, icon: &str| -> MenuEntry {
+        let item = |action: RowAction, label: &str| -> MenuEntry {
             let s = sender.clone();
             let m = msg.clone();
             let conversation = conversation.clone();
@@ -36,7 +34,6 @@ impl MessageList {
                     conversation: conversation.clone(),
                 });
             })
-            .icon(icon)
             .keys(A::row_keys(action, msg.unread, KeysOf::Main))
         };
         // The design's menu (docs/DESIGN.md, "Menus"; owner's decision of
@@ -53,11 +50,7 @@ impl MessageList {
             self.reply_section(&item),
             flag_section,
             self.move_section(move_entry, &item),
-            vec![item(
-                RowAction::Delete,
-                &i18n("Delete"),
-                "user-trash-symbolic",
-            )],
+            vec![item(RowAction::Delete, &i18n("Delete"))],
         ];
 
         self.popup_menu(x, y, None, sections);
@@ -68,34 +61,14 @@ impl MessageList {
     fn reply_section(&self, item: &MakeEntry<'_>) -> Vec<MenuEntry> {
         if self.in_templates {
             vec![
-                item(
-                    RowAction::EditAsNew,
-                    &i18n("Use template"),
-                    "mail-message-new-symbolic",
-                ),
-                item(
-                    RowAction::EditTemplate,
-                    &i18n("Edit template"),
-                    "document-edit-symbolic",
-                ),
+                item(RowAction::EditAsNew, &i18n("Use template")),
+                item(RowAction::EditTemplate, &i18n("Edit template")),
             ]
         } else {
             vec![
-                item(
-                    RowAction::Reply,
-                    &i18n("Reply"),
-                    "mail-reply-sender-symbolic",
-                ),
-                item(
-                    RowAction::ReplyAll,
-                    &i18n("Reply all"),
-                    "mail-reply-all-symbolic",
-                ),
-                item(
-                    RowAction::Forward,
-                    &i18n("Forward"),
-                    "mail-forward-symbolic",
-                ),
+                item(RowAction::Reply, &i18n("Reply")),
+                item(RowAction::ReplyAll, &i18n("Reply all")),
+                item(RowAction::Forward, &i18n("Forward")),
             ]
         }
     }
@@ -133,20 +106,11 @@ impl MessageList {
                     });
                 },
             )
-            .icon(if any {
-                "tegami-non-starred-symbolic"
-            } else {
-                "starred-symbolic"
-            })
             .keys(A::Star.keys(KeysOf::Main))
         } else if msg.starred {
-            item(
-                RowAction::ToggleStar,
-                &i18n("Remove star"),
-                "tegami-non-starred-symbolic",
-            )
+            item(RowAction::ToggleStar, &i18n("Remove star"))
         } else {
-            item(RowAction::ToggleStar, &i18n("Star"), "starred-symbolic")
+            item(RowAction::ToggleStar, &i18n("Star"))
         }
     }
 
@@ -171,7 +135,6 @@ impl MessageList {
                 y: wy,
             });
         })
-        .icon("folder-symbolic")
         .keys(A::MoveTo.keys(KeysOf::Main))
     }
 
@@ -215,11 +178,6 @@ impl MessageList {
                         });
                     },
                 )
-                .icon(if any_unread {
-                    "tegami-mail-read-symbolic"
-                } else {
-                    "mail-unread-symbolic"
-                })
                 .keys(
                     if any_unread {
                         A::MarkRead
@@ -230,17 +188,9 @@ impl MessageList {
                 ),
             )
         } else if msg.unread {
-            Some(item(
-                RowAction::ToggleRead,
-                &i18n("Mark as read"),
-                "tegami-mail-read-symbolic",
-            ))
+            Some(item(RowAction::ToggleRead, &i18n("Mark as read")))
         } else {
-            Some(item(
-                RowAction::ToggleRead,
-                &i18n("Mark as unread"),
-                "mail-unread-symbolic",
-            ))
+            Some(item(RowAction::ToggleRead, &i18n("Mark as unread")))
         }
     }
 
@@ -261,44 +211,26 @@ impl MessageList {
         if entries.is_empty() {
             Vec::new()
         } else {
-            vec![MenuEntry::submenu(i18n("Tags"), vec![entries])
-                .icon("tag-outline-symbolic")
-                .keys(A::Tags.keys(KeysOf::Main))]
+            vec![MenuEntry::submenu(i18n("Tags"), vec![entries]).keys(A::Tags.keys(KeysOf::Main))]
         }
     }
 
     /// Archive, Move to Inbox where it applies, Move To…, and Spam (or Not
     /// Spam in Junk).
     fn move_section(&self, move_entry: MenuEntry, item: &MakeEntry<'_>) -> Vec<MenuEntry> {
-        let mut section = vec![item(
-            RowAction::Archive,
-            &i18n("Archive"),
-            "mail-archive-symbolic",
-        )];
+        let mut section = vec![item(RowAction::Archive, &i18n("Archive"))];
         // In Trash and Junk, the way back to the Inbox first.
         if self.restorable && !self.in_junk {
-            section.push(item(
-                RowAction::MoveToInbox,
-                &i18n("Move to inbox"),
-                "mail-inbox-symbolic",
-            ));
+            section.push(item(RowAction::MoveToInbox, &i18n("Move to inbox")));
         }
         section.push(move_entry);
         // In Junk the way back is "Not Spam" (#168): the server is told,
         // and the message returns to the Inbox. In Trash it is a plain
         // move, with spam still on offer.
         section.push(if self.in_junk {
-            item(
-                RowAction::NotSpam,
-                &i18n("Not spam"),
-                "mail-mark-notjunk-symbolic",
-            )
+            item(RowAction::NotSpam, &i18n("Not spam"))
         } else {
-            item(
-                RowAction::Spam,
-                &i18n("Mark as spam"),
-                "mail-mark-junk-symbolic",
-            )
+            item(RowAction::Spam, &i18n("Mark as spam"))
         });
         section
     }
@@ -430,7 +362,7 @@ impl MessageList {
 
     /// Build and pop up the bulk-action menu for the current multi-selection.
     pub(super) fn show_bulk_menu(&self, x: f64, y: f64, sender: &ComponentSender<Self>) {
-        let item = |action: BulkAction, label: &str, icon: &str| -> MenuEntry {
+        let item = |action: BulkAction, label: &str| -> MenuEntry {
             let s = sender.clone();
             let hint = match action {
                 BulkAction::MarkRead => Some(A::MarkRead),
@@ -443,7 +375,6 @@ impl MessageList {
                 _ => None,
             };
             MenuEntry::new(label, move || s.input(MessageListInput::Bulk(action)))
-                .icon(icon)
                 .keys(hint.and_then(|a| a.keys(KeysOf::Main)))
         };
 
@@ -454,35 +385,22 @@ impl MessageList {
                 // One entry, the way the bar's button toggles.
                 if !self.in_drafts {
                     section.push(if self.selection_any_unread() {
-                        item(
-                            BulkAction::MarkRead,
-                            &i18n("Mark as read"),
-                            "tegami-mail-read-symbolic",
-                        )
+                        item(BulkAction::MarkRead, &i18n("Mark as read"))
                     } else {
-                        item(
-                            BulkAction::MarkUnread,
-                            &i18n("Mark as unread"),
-                            "mail-unread-symbolic",
-                        )
+                        item(BulkAction::MarkUnread, &i18n("Mark as unread"))
                     });
                 }
                 // The Bulk handler turns this into Unflag for a starred
                 // selection.
                 section.push(if self.selection_all_starred() {
-                    item(
-                        BulkAction::Flag,
-                        &i18n("Remove star"),
-                        "tegami-non-starred-symbolic",
-                    )
+                    item(BulkAction::Flag, &i18n("Remove star"))
                 } else {
-                    item(BulkAction::Flag, &i18n("Star"), "starred-symbolic")
+                    item(BulkAction::Flag, &i18n("Star"))
                 });
                 let tags = self.bulk_tag_entries(sender);
                 if !tags.is_empty() {
                     section.push(
                         MenuEntry::submenu(i18n("Tags"), vec![tags])
-                            .icon("tag-outline-symbolic")
                             .keys(A::Tags.keys(KeysOf::Main)),
                     );
                 }
@@ -491,24 +409,12 @@ impl MessageList {
             {
                 let mut section = Vec::new();
                 if self.in_junk {
-                    section.push(item(
-                        BulkAction::NotSpam,
-                        &i18n("Not spam"),
-                        "mail-mark-notjunk-symbolic",
-                    ));
+                    section.push(item(BulkAction::NotSpam, &i18n("Not spam")));
                 } else {
                     if self.restorable {
-                        section.push(item(
-                            BulkAction::MoveToInbox,
-                            &i18n("Move to inbox"),
-                            "mail-inbox-symbolic",
-                        ));
+                        section.push(item(BulkAction::MoveToInbox, &i18n("Move to inbox")));
                     }
-                    section.push(item(
-                        BulkAction::Spam,
-                        &i18n("Mark as spam"),
-                        "mail-mark-junk-symbolic",
-                    ));
+                    section.push(item(BulkAction::Spam, &i18n("Mark as spam")));
                 }
                 {
                     // Move To… for the whole selection, conversations whole.
@@ -524,15 +430,10 @@ impl MessageList {
                                 y: wy,
                             });
                         })
-                        .icon("folder-symbolic")
                         .keys(A::MoveTo.keys(KeysOf::Main)),
                     );
                 }
-                section.push(item(
-                    BulkAction::Archive,
-                    &i18n("Archive"),
-                    "mail-archive-symbolic",
-                ));
+                section.push(item(BulkAction::Archive, &i18n("Archive")));
                 if let Some(snoozed) = self.snooze_offer {
                     let messages = self.selected_conversations();
                     let s = sender.clone();
@@ -543,16 +444,10 @@ impl MessageList {
                         });
                     });
                     section.push(
-                        MenuEntry::submenu(i18n("Snooze"), menu)
-                            .icon("alarm-symbolic")
-                            .keys(A::Snooze.keys(KeysOf::Main)),
+                        MenuEntry::submenu(i18n("Snooze"), menu).keys(A::Snooze.keys(KeysOf::Main)),
                     );
                 }
-                section.push(item(
-                    BulkAction::Delete,
-                    &i18n("Delete"),
-                    "user-trash-symbolic",
-                ));
+                section.push(item(BulkAction::Delete, &i18n("Delete")));
                 section
             },
         ];

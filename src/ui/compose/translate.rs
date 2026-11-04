@@ -106,28 +106,22 @@ impl Compose {
         let mut first = Vec::new();
         let quoted = crate::services::translate::detect(&quoted);
         if let Some(lang) = &quoted {
-            first.push(
-                entry(
-                    lang.clone(),
-                    i18n_f(
-                        "{language} (the quoted message)",
-                        &[("language", &crate::services::translate::language_name(lang))],
-                    ),
-                )
-                .icon("mail-reply-sender-symbolic"),
-            );
+            first.push(entry(
+                lang.clone(),
+                i18n_f(
+                    "{language} (the quoted message)",
+                    &[("language", &crate::services::translate::language_name(lang))],
+                ),
+            ));
         }
         if let Some(last) = crate::services::translate::last_compose_target() {
             if quoted.as_deref().map(crate::services::translate::base)
                 != Some(crate::services::translate::base(&last))
             {
-                first.push(
-                    entry(
-                        last.clone(),
-                        crate::services::translate::language_name(&last),
-                    )
-                    .icon("translate-symbolic"),
-                );
+                first.push(entry(
+                    last.clone(),
+                    crate::services::translate::language_name(&last),
+                ));
             }
         }
         let all: Vec<MenuEntry> = crate::services::translate::LANGUAGES

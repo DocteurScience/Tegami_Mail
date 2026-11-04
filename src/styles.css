@@ -427,29 +427,9 @@ flowbox.attach-flow > flowboxchild {
 .context-menu-item label {
   font-weight: normal;
 }
-/* The entry a menu is currently set to. `color` is inherited, so one class
-   on the row carries both the label and the symbolic icon beside it, and
-   `@accent_color` is libadwaita's legible-on-a-normal-background accent —
-   the desktop's under the stock look, the palette's under a Tegami Mail theme. */
-.context-menu-selected,
-.context-menu-selected label {
-  color: @accent_color;
-}
-
-/* A switch the menu shows as on (Sign, Encrypt): the grey of a toggled flat
-   header button, stated here because libadwaita's own rule may not reach a
-   button inside a menu popover. */
-.context-menu-item:checked {
-  background-color: alpha(currentColor, 0.1);
-}
-.context-menu-item:checked:hover {
-  background-color: alpha(currentColor, 0.13);
-}
-/* On, the shield and the lock take the accent color (the desktop's under
-   the stock look, the palette's under a Tegami Mail theme), in the menu and in
-   the header, so a message about to go out signed or encrypted is plain to
-   see. */
-.context-menu-item:checked image,
+/* On, the composer header's shield and lock take the accent color (the
+   desktop's under the stock look, the palette's under a Tegami Mail theme),
+   so a message about to go out signed or encrypted is plain to see. */
 .pgp-toggle:checked image {
   color: @accent_color;
 }

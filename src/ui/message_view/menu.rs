@@ -61,20 +61,13 @@ pub(crate) fn hit_menu_entries(
     }
     let mut out = Vec::new();
     if let Some(text) = &hit.selection {
-        out.push(
-            MenuEntry::new(i18n("Copy"), copy(text.clone()))
-                .icon("edit-copy-symbolic")
-                .accel("<Control>c"),
-        );
+        out.push(MenuEntry::new(i18n("Copy"), copy(text.clone())).accel("<Control>c"));
     }
     if let Some(uri) = &hit.link {
         let (open, w) = (uri.clone(), window.clone());
-        out.push(
-            MenuEntry::new(i18n("Open link"), move || {
-                crate::ui::launch::open_link(&open, w.as_ref());
-            })
-            .icon("web-browser-symbolic"),
-        );
+        out.push(MenuEntry::new(i18n("Open link"), move || {
+            crate::ui::launch::open_link(&open, w.as_ref());
+        }));
         // A mail link copies as the address it writes to, not as a URI.
         let address = uri
             .split_once(':')
@@ -82,13 +75,10 @@ pub(crate) fn hit_menu_entries(
             .map(|(_, rest)| {
                 crate::encoding::percent::decode(rest.split('?').next().unwrap_or(""), false)
             });
-        out.push(
-            match address {
-                Some(a) => MenuEntry::new(i18n("Copy email address"), copy(a)),
-                None => MenuEntry::new(i18n("Copy link address"), copy(uri.clone())),
-            }
-            .icon("edit-copy-symbolic"),
-        );
+        out.push(match address {
+            Some(a) => MenuEntry::new(i18n("Copy email address"), copy(a)),
+            None => MenuEntry::new(i18n("Copy link address"), copy(uri.clone())),
+        });
     }
     if let Some(uri) = &hit.image {
         // The mail's own pictures are `data:` URIs with their bytes in hand;
@@ -97,37 +87,31 @@ pub(crate) fn hit_menu_entries(
             Some((mime, data)) => {
                 let texture = gtk::gdk::Texture::from_bytes(&gtk::glib::Bytes::from(&data)).ok();
                 let bytes = data.clone();
-                out.push(
-                    MenuEntry::new(i18n("Save image as…"), move || {
-                        let dialog = gtk::FileDialog::builder()
-                            .initial_name(default_image_name(&mime))
-                            .title(i18n("Save image"))
-                            .build();
-                        let bytes = bytes.clone();
-                        dialog.save(window.as_ref(), gtk::gio::Cancellable::NONE, move |res| {
-                            if let Some(path) = res.ok().and_then(|f| f.path()) {
-                                let _ = std::fs::write(path, &bytes);
-                            }
-                        });
-                    })
-                    .icon("document-save-as-symbolic"),
-                );
+                out.push(MenuEntry::new(i18n("Save image as…"), move || {
+                    let dialog = gtk::FileDialog::builder()
+                        .initial_name(default_image_name(&mime))
+                        .title(i18n("Save image"))
+                        .build();
+                    let bytes = bytes.clone();
+                    dialog.save(window.as_ref(), gtk::gio::Cancellable::NONE, move |res| {
+                        if let Some(path) = res.ok().and_then(|f| f.path()) {
+                            let _ = std::fs::write(path, &bytes);
+                        }
+                    });
+                }));
                 if let Some(texture) = texture {
-                    out.push(
-                        MenuEntry::new(i18n("Copy image"), move || {
-                            if let Some(display) = gtk::gdk::Display::default() {
-                                display.clipboard().set_texture(&texture);
-                            }
-                        })
-                        .icon("edit-copy-symbolic"),
-                    );
+                    out.push(MenuEntry::new(i18n("Copy image"), move || {
+                        if let Some(display) = gtk::gdk::Display::default() {
+                            display.clipboard().set_texture(&texture);
+                        }
+                    }));
                 }
             }
             None if uri.starts_with("http") => {
-                out.push(
-                    MenuEntry::new(i18n("Copy image address"), copy(uri.clone()))
-                        .icon("edit-copy-symbolic"),
-                );
+                out.push(MenuEntry::new(
+                    i18n("Copy image address"),
+                    copy(uri.clone()),
+                ));
             }
             None => {}
         }

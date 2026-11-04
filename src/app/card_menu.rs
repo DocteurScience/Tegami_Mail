@@ -22,8 +22,8 @@ fn card_item<'a>(
     m: &'a Message,
     popout: Option<(u32, u32)>,
     sender: &'a ComponentSender<AppModel>,
-) -> impl Fn(RowAction, String, &str) -> MenuEntry + 'a {
-    move |action: RowAction, label: String, icon: &str| -> MenuEntry {
+) -> impl Fn(RowAction, String) -> MenuEntry + 'a {
+    move |action: RowAction, label: String| -> MenuEntry {
         let s = sender.input_sender().clone();
         let message = m.clone();
         MenuEntry::new(label, move || {
@@ -38,7 +38,6 @@ fn card_item<'a>(
                 AppMsg::CardAction { action, message }
             });
         })
-        .icon(format!("{icon}-symbolic"))
         .keys(MessageAction::row_keys(action, m.unread, keys_of(popout)))
     }
 }
@@ -54,59 +53,36 @@ fn keys_of(popout: Option<(u32, u32)>) -> KeysOf {
 /// Reply, Reply All, Forward and Edit as New; a template (#360) is used or
 /// edited, never answered.
 fn answer_entries(
-    item: &impl Fn(RowAction, String, &str) -> MenuEntry,
+    item: &impl Fn(RowAction, String) -> MenuEntry,
     kind: Option<FolderKind>,
 ) -> Vec<MenuEntry> {
     if kind == Some(FolderKind::Templates) {
         vec![
-            item(
-                RowAction::EditAsNew,
-                i18n("Use template"),
-                "mail-message-new",
-            ),
-            item(
-                RowAction::EditTemplate,
-                i18n("Edit template"),
-                "document-edit",
-            ),
+            item(RowAction::EditAsNew, i18n("Use template")),
+            item(RowAction::EditTemplate, i18n("Edit template")),
         ]
     } else {
         vec![
-            item(RowAction::Reply, i18n("Reply"), "mail-reply-sender"),
-            item(RowAction::ReplyAll, i18n("Reply all"), "mail-reply-all"),
-            item(RowAction::Forward, i18n("Forward"), "mail-forward"),
-            item(
-                RowAction::EditAsNew,
-                i18n("Edit as new message"),
-                "document-edit",
-            ),
+            item(RowAction::Reply, i18n("Reply")),
+            item(RowAction::ReplyAll, i18n("Reply all")),
+            item(RowAction::Forward, i18n("Forward")),
+            item(RowAction::EditAsNew, i18n("Edit as new message")),
         ]
     }
 }
 
 /// Star and read state, each offered the other way round from how it is.
-fn flag_entries(
-    item: &impl Fn(RowAction, String, &str) -> MenuEntry,
-    m: &Message,
-) -> Vec<MenuEntry> {
+fn flag_entries(item: &impl Fn(RowAction, String) -> MenuEntry, m: &Message) -> Vec<MenuEntry> {
     vec![
         if m.starred {
-            item(
-                RowAction::ToggleStar,
-                i18n("Remove star"),
-                "tegami-non-starred",
-            )
+            item(RowAction::ToggleStar, i18n("Remove star"))
         } else {
-            item(RowAction::ToggleStar, i18n("Star"), "starred")
+            item(RowAction::ToggleStar, i18n("Star"))
         },
         if m.unread {
-            item(
-                RowAction::ToggleRead,
-                i18n("Mark as read"),
-                "tegami-mail-read",
-            )
+            item(RowAction::ToggleRead, i18n("Mark as read"))
         } else {
-            item(RowAction::ToggleRead, i18n("Mark as unread"), "mail-unread")
+            item(RowAction::ToggleRead, i18n("Mark as unread"))
         },
     ]
 }
@@ -119,39 +95,30 @@ fn fold_entries(hit: &crate::ui::message_view::MenuHit) -> Option<Vec<MenuEntry>
         MenuEntry::new(i18n("Expand all messages"), move || {
             open.emit(crate::ui::message_view::MessageViewInput::FoldAll(false));
         })
-        .icon("pan-down-symbolic")
         .enabled(any_folded),
         MenuEntry::new(i18n("Collapse all messages"), move || {
             reader.emit(crate::ui::message_view::MessageViewInput::FoldAll(true));
         })
-        .icon("pan-up-symbolic")
         .enabled(any_open),
     ])
 }
 
 /// Translate (when the reader offers it), View Source and Save as File.
 fn source_entries(
-    item: &impl Fn(RowAction, String, &str) -> MenuEntry,
+    item: &impl Fn(RowAction, String) -> MenuEntry,
     m: &Message,
     hit: &crate::ui::message_view::MenuHit,
 ) -> Vec<MenuEntry> {
     let mut last = Vec::new();
     if let Some(t) = hit.translate.clone() {
         let (account_id, id) = (m.account_id, m.id);
-        last.push(
-            MenuEntry::new(t.label, move || {
-                t.reader
-                    .emit(crate::ui::message_view::MessageViewInput::Translate { account_id, id });
-            })
-            .icon("translate-symbolic"),
-        );
+        last.push(MenuEntry::new(t.label, move || {
+            t.reader
+                .emit(crate::ui::message_view::MessageViewInput::Translate { account_id, id });
+        }));
     }
-    last.push(item(RowAction::ViewSource, i18n("View source"), "code"));
-    last.push(item(
-        RowAction::SaveAsFile,
-        i18n("Save as file…"),
-        "document-save",
-    ));
+    last.push(item(RowAction::ViewSource, i18n("View source")));
+    last.push(item(RowAction::SaveAsFile, i18n("Save as file…")));
     last
 }
 
@@ -197,16 +164,8 @@ impl AppModel {
         }
         sections.push(self.card_place_entries(&item, &m, kind, popout, (x, y), sender));
         sections.push(vec![
-            item(
-                RowAction::AddContact,
-                i18n("Add sender to contacts"),
-                "contact-new",
-            ),
-            item(
-                RowAction::CreateFilter,
-                i18n("Create filter from message…"),
-                "filter-folder",
-            ),
+            item(RowAction::AddContact, i18n("Add sender to contacts")),
+            item(RowAction::CreateFilter, i18n("Create filter from message…")),
         ]);
         sections.push(vec![self.card_remote_entry(&m, sender)]);
         if let Some(folds) = fold_entries(&hit) {
@@ -234,7 +193,6 @@ impl AppModel {
             });
         Some(
             MenuEntry::submenu(i18n("Tags"), vec![entries])
-                .icon("tag-outline-symbolic")
                 .keys(MessageAction::Tags.keys(KeysOf::Main)),
         )
     }
@@ -244,7 +202,7 @@ impl AppModel {
     /// folder picker opens over the main window), Archive and Delete.
     fn card_place_entries(
         &self,
-        item: &impl Fn(RowAction, String, &str) -> MenuEntry,
+        item: &impl Fn(RowAction, String) -> MenuEntry,
         m: &Message,
         kind: Option<FolderKind>,
         popout: Option<(u32, u32)>,
@@ -255,24 +213,12 @@ impl AppModel {
         let restorable = matches!(kind, Some(FolderKind::Trash | FolderKind::Junk));
         let mut acts = Vec::new();
         if in_junk {
-            acts.push(item(
-                RowAction::NotSpam,
-                i18n("Not spam"),
-                "mail-mark-notjunk",
-            ));
+            acts.push(item(RowAction::NotSpam, i18n("Not spam")));
         } else {
             if restorable {
-                acts.push(item(
-                    RowAction::MoveToInbox,
-                    i18n("Move to inbox"),
-                    "mail-inbox",
-                ));
+                acts.push(item(RowAction::MoveToInbox, i18n("Move to inbox")));
             }
-            acts.push(item(
-                RowAction::Spam,
-                i18n("Mark as spam"),
-                "mail-mark-junk",
-            ));
+            acts.push(item(RowAction::Spam, i18n("Mark as spam")));
         }
         if popout.is_none() {
             let s = sender.input_sender().clone();
@@ -286,11 +232,10 @@ impl AppModel {
                         y,
                     });
                 })
-                .icon("folder-symbolic")
                 .keys(MessageAction::MoveTo.keys(KeysOf::Main)),
             );
         }
-        acts.push(item(RowAction::Archive, i18n("Archive"), "mail-archive"));
+        acts.push(item(RowAction::Archive, i18n("Archive")));
         // Snooze (#527): the card's message alone, as its other actions.
         if let Some(snoozed) = self.snooze_offer(m.account_id, kind) {
             let s = sender.input_sender().clone();
@@ -303,11 +248,10 @@ impl AppModel {
             });
             acts.push(
                 MenuEntry::submenu(i18n("Snooze"), menu)
-                    .icon("alarm-symbolic")
                     .keys(MessageAction::Snooze.keys(keys_of(popout))),
             );
         }
-        acts.push(item(RowAction::Delete, i18n("Delete"), "user-trash"));
+        acts.push(item(RowAction::Delete, i18n("Delete")));
         acts
     }
 
@@ -328,11 +272,6 @@ impl AppModel {
         } else {
             i18n("Show remote content")
         };
-        let icon = if showing {
-            "security-high"
-        } else {
-            "image-x-generic"
-        };
         MenuEntry::new(label, move || {
             let _ = s.send(AppMsg::SetRemoteContent {
                 account_id,
@@ -340,7 +279,6 @@ impl AppModel {
                 show: !showing,
             });
         })
-        .icon(format!("{icon}-symbolic"))
     }
 
     /// Printing prints what the reader shows, the whole conversation in
@@ -371,9 +309,7 @@ impl AppModel {
             })
         };
         vec![
-            print(i18n("Print preview"), true)
-                .icon("printer-symbolic")
-                .keys(Some("<Control><Shift>p")),
+            print(i18n("Print preview"), true).keys(Some("<Control><Shift>p")),
             print(i18n("Print…"), false).keys(Some("<Control>p")),
         ]
     }

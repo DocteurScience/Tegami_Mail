@@ -308,7 +308,6 @@ impl MessageWindow {
             MenuEntry::new(action.label(), move || {
                 let _ = s.send(msg());
             })
-            .icon(format!("{}-symbolic", action.icon()))
             .keys(action.keys(KeysOf::Popout))
         };
         let mut section = Vec::new();
@@ -339,7 +338,6 @@ impl MessageWindow {
                                 A::Snooze.label(),
                                 self.snooze_entries(snoozed, sender),
                             )
-                            .icon("alarm-symbolic")
                             .keys(A::Snooze.keys(KeysOf::Popout)),
                         );
                     }
@@ -367,7 +365,6 @@ impl MessageWindow {
                     if !self.tags.is_empty() {
                         section.push(
                             MenuEntry::submenu(A::Tags.label(), vec![self.tag_entries(sender)])
-                                .icon("tag-outline-symbolic")
                                 .keys(A::Tags.keys(KeysOf::Popout)),
                         );
                     }

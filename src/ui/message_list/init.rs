@@ -160,8 +160,7 @@ pub(super) fn watch_heading_menu(area: &gtk::Widget, sender: &ComponentSender<Me
         let entry =
             crate::ui::context_menu::MenuEntry::new(i18n("Customize columns…"), move || {
                 let _ = s.output(MessageListOutput::CustomizeColumns);
-            })
-            .icon("view-list-bullet-symbolic");
+            });
         crate::ui::context_menu::show_context_menu(&anchor, x, y, vec![vec![entry]]);
     });
     area.add_controller(click);

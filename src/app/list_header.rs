@@ -651,12 +651,10 @@ pub(super) fn compose_menu(
         x,
         y,
         vec![vec![
-            MenuEntry::new(i18n("New Message"), move || blank.input(AppMsg::Compose))
-                .icon("mail-message-new-symbolic"),
+            MenuEntry::new(i18n("New Message"), move || blank.input(AppMsg::Compose)),
             MenuEntry::new(i18n("New message from template…"), move || {
                 template.input(AppMsg::NewFromTemplate);
-            })
-            .icon("folder-templates-symbolic"),
+            }),
         ]],
     );
 }

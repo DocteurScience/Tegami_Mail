@@ -97,28 +97,24 @@ impl AttachmentDrawer {
         let s = sender.clone();
         let open = MenuEntry::new(i18n("Open"), move || {
             s.input_sender().emit(AttachmentDrawerInput::Open(index))
-        })
-        .icon("document-open-symbolic");
+        });
         let s = sender.clone();
         let download = MenuEntry::new(i18n("Download…"), move || {
             s.input_sender()
                 .emit(AttachmentDrawerInput::Download(index))
-        })
-        .icon("folder-download-symbolic");
+        });
         // The drawer gathers the whole conversation's files; this finds the
         // message a file came with (#213).
         let s = sender.clone();
         let show = MenuEntry::new(i18n("Show in message"), move || {
             s.input_sender()
                 .emit(AttachmentDrawerInput::ShowInMessage(index))
-        })
-        .icon("mail-unread-symbolic");
+        });
         let s = sender.clone();
         let delete = MenuEntry::new(i18n("Delete from server…"), move || {
             s.input_sender()
                 .emit(AttachmentDrawerInput::DeleteFromServer(index))
-        })
-        .icon("user-trash-symbolic");
+        });
 
         // Anchor on the clicked cell itself so the click point (already
         // relative to it) needs no coordinate translation.

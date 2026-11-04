@@ -95,19 +95,6 @@ fn pinned_attachment_labels() {
 }
 
 #[test]
-fn pinned_format_icons() {
-    use crate::config::ComposeFormat;
-    assert_eq!(
-        super::format::format_icon(ComposeFormat::Rich),
-        "format-text-rich-symbolic"
-    );
-    assert_eq!(
-        super::format::format_icon(ComposeFormat::Plain),
-        "text-x-generic-symbolic"
-    );
-}
-
-#[test]
 fn pinned_key_tables() {
     use gtk::gdk::{Key, ModifierType as M};
     let cs = M::CONTROL_MASK | M::SHIFT_MASK;
