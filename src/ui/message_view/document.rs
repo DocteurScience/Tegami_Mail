@@ -395,12 +395,15 @@ fn card_html(cards: &Cards<'_>, m: &Message, ava_html: &str, body: String) -> St
                    {ava}{dot}<span class=\"tegami-from\">{from}</span>{fbar}{verify}{addr}\
                    <span class=\"tegami-tags\" data-key=\"{aid}:{id}\">{tags}</span>\
                    <span class=\"tegami-hdr-meta\">{folder}{rcpt_toggle}{marks}{read}\
-                     <span class=\"tegami-date\">{date}</span></span>\
+                     <span class=\"tegami-date\">{date}</span>\
+                     <span class=\"tegami-chev\" aria-hidden=\"true\">{chev}</span></span>\
                    {acts_toggle}{acts}\
                  </div>{rcpt}\
                </header>{tpl}{invite}{receipt}{unsub}{tr}{body}{atts}</section>",
         aid = m.account_id,
         id = m.id,
+        // A folded card's chevron (mockup 02): it opens when activated.
+        chev = inline_icon_svg("pan-down-symbolic"),
         // The message's own attachments beneath its body (#213).
         // The row is always emitted, so files arriving after
         // the paint have somewhere to be patched into.

@@ -8,7 +8,10 @@ set -u
 W12='width = 1280\nheight = 800\n'
 COMP='w=$(xdotool search --name "^Nouveau message$" | head -1); for i in $(xdotool search --name "^Tegami Mail$"); do xdotool windowmove $i 2900 0; done; xdotool windowsize $w $CW $CH; sleep 1.5'
 FILL='xdotool mousemove 1000 240 click 1; sleep .5; xdotool type --delay 20 "marcus@studio.dev"; xdotool key Return; sleep .5; xdotool mousemove 1000 334 click 1; sleep .3; xdotool type --delay 20 "Retours sur les maquettes"; xdotool mousemove 1000 800 click 1; sleep .5; xdotool type --delay 20 "Bonjour,"; xdotool key Return Return; xdotool type --delay 20 "$BODY"; xdotool key Return Return; xdotool type --delay 20 "Cordialement,"; xdotool key shift+Return; xdotool type --delay 20 "Jason"; sleep 1'
-g() { n=$1; at=$2; shift 2; env "$@" bash /grab.sh $n $at >/dev/null 2>&1; }
+# No staging (TEGAMI_SHOWCASE_STAGE=0): the demo's own staging clicks a
+# folded card and opens a row's Actions Palette, which no mockup shows; the
+# first row is selected instead, unless a capture names another.
+g() { n=$1; at=$2; shift 2; env TEGAMI_SHOWCASE_STAGE=0 TEGAMI_SHOWCASE_ROW=0 "$@" bash /grab.sh $n $at >/dev/null 2>&1; }
 export -f g
 M="TEGAMI_SHOWCASE_STAGE=0"
 # Mockups 03 and 17 need a new install's settings with one value changed: a

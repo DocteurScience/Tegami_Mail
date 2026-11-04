@@ -198,8 +198,12 @@ impl AppModel {
                 self.list_heard = keys.clone();
                 self.list_selection = keys.clone();
                 self.selection_from_cards = false;
+                // No card is outlined for a row picked in the list: the
+                // outline marks what the reader itself picked (a click, n
+                // or p), so it never sits on a folded card while another
+                // is open (design feedback P2-1, 2026-11-04).
                 self.message_view
-                    .emit(MessageViewInput::SetSelectedCards(keys));
+                    .emit(MessageViewInput::SetSelectedCards(Vec::new()));
             }
 
             AppMsg::ListChecked(count) => {

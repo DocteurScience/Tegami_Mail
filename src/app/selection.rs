@@ -12,22 +12,20 @@ use super::model::AppModel;
 
 impl AppModel {
     /// The message the toolbar's per-message actions act on: the open message
-    /// itself, or — in a conversation — the one highlighted card, when exactly
-    /// one is highlighted. `None` greys the buttons out: with no card (or
-    /// several) selected there is no way to say which message an action would
-    /// mean.
+    /// itself; in a conversation picked in the list, its latest message
+    /// (docs/DESIGN.md, "Reading pane and conversations"); and once cards
+    /// are picked in the reader, the one picked. `None` greys the buttons
+    /// out: with several cards picked there is no way to say which message
+    /// an action would mean.
     pub(super) fn reply_target(&self) -> Option<Message> {
         if self.current_thread.len() <= 1 {
             return self.current.clone();
         }
-        match self.list_selection.as_slice() {
-            [(account_id, id)] => self
-                .current_thread
-                .iter()
-                .find(|m| m.account_id == *account_id && m.id == *id)
-                .cloned(),
-            _ => None,
-        }
+        conversation_target(
+            &self.current_thread,
+            &self.list_selection,
+            self.selection_from_cards,
+        )
     }
 
     /// Whether actions mean a selection of rows rather than the message
@@ -288,5 +286,51 @@ impl AppModel {
                 m.starred
             }
         })
+    }
+}
+
+/// [`AppModel::reply_target`] for a conversation (`thread` oldest first):
+/// the card picked in the reader when exactly one is, else, for a row
+/// picked in the list, the latest message. The list's row names one of the
+/// conversation's messages, not necessarily the one open at the bottom:
+/// acting on it replied to a folded card (design feedback P2-1,
+/// 2026-11-04).
+fn conversation_target(
+    thread: &[Message],
+    selection: &[(u32, u32)],
+    from_cards: bool,
+) -> Option<Message> {
+    if !from_cards {
+        return (selection.len() <= 1)
+            .then(|| thread.last().cloned())
+            .flatten();
+    }
+    match selection {
+        [(account_id, id)] => thread
+            .iter()
+            .find(|m| m.account_id == *account_id && m.id == *id)
+            .cloned(),
+        _ => None,
+    }
+}
+
+#[cfg(test)]
+mod target_tests {
+    use super::conversation_target;
+    use crate::models::test_util::msg;
+
+    #[test]
+    fn a_conversation_from_the_list_acts_on_its_latest_message() {
+        let thread = [msg(1, 1, 10), msg(1, 1, 11), msg(1, 1, 12)];
+        let (older, latest) = ((thread[1].account_id, thread[1].id), thread[2].id);
+        // The list's row names an older, folded message: still the latest.
+        let t = conversation_target(&thread, &[older], false).unwrap();
+        assert_eq!(t.id, latest);
+        // A card picked in the reader is what it says.
+        let t = conversation_target(&thread, &[older], true).unwrap();
+        assert_eq!(t.id, thread[1].id);
+        // Several cards picked: nothing to say which.
+        let both = [older, (thread[2].account_id, thread[2].id)];
+        assert!(conversation_target(&thread, &both, true).is_none());
     }
 }

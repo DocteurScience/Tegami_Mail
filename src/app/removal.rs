@@ -559,9 +559,8 @@ impl AppModel {
             self.list_slots = vec![(c.account_id, c.folder_id, c.id)];
             self.list_heard = self.list_selection.clone();
             self.selection_from_cards = false;
-            self.message_view.emit(MessageViewInput::SetSelectedCards(
-                self.list_selection.clone(),
-            ));
+            self.message_view
+                .emit(MessageViewInput::SetSelectedCards(Vec::new()));
         }
         if self.current_thread.len() > 1 {
             self.thread_painted = true;

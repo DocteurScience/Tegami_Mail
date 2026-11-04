@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+- **Changed: a conversation opened from the list acts on its latest
+  message** (docs/DESIGN.md). Reply and the header's other actions took
+  the message the list's row stood for, which could be a folded one;
+  picking a card in the reader still makes it the one they act on, and
+  only such a card is outlined. Folded cards end with a chevron
+  (mockup 02).
+
 - **Changed: menus without icons, with a check for what is chosen**
   (mockup 06). The entry a menu is set to (the composer's format, the
   account it sends from) and the switches that are on (Sign, Encrypt,

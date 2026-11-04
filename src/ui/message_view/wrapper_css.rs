@@ -50,6 +50,11 @@ pub(super) fn wrapper_css(
          .tegami-msg.tegami-folded .tegami-acts,\
          .tegami-msg.tegami-folded .tegami-rcpt{{display:none !important;}}\
          .tegami-msg.tegami-folded .tegami-from{{flex:0 1 auto;}}\
+         /* Folded, the chevron says the card opens (mockup 02). */\
+         .tegami-chev{{display:none;line-height:0;opacity:0.7;align-self:center;}}\
+         .tegami-chev svg{{width:16px;height:16px;}}\
+         .tegami-chev svg,.tegami-chev svg *{{fill:currentColor;}}\
+         .tegami-msg.tegami-folded .tegami-chev{{display:inline-flex;}}\
          .tegami-msg.tegami-folded>:not(.tegami-msg-hdr){{display:none;}}\
          .tegami-marks{{display:inline-flex;gap:8px;align-self:center;flex:none;}}\
          .tegami-mark{{display:inline-flex;opacity:0.55;line-height:0;}}\
