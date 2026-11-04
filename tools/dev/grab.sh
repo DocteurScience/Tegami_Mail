@@ -6,7 +6,7 @@
 #   grab.sh NAME AT [VAR=VALUE ...]
 # Options, as environment before the command (not as arguments: those are
 # read after the settings files are written): WINDOW, PRIVACY (as in
-# shot.sh), PRIVACY_FILE, FONT, SCREEN.
+# shot.sh), PRIVACY_FILE, SIDEBAR (sidebar.toml), FONT, SCREEN.
 name=$1; at=$2; shift 2
 mkdir -p /shots/grab; export HOME=$(mktemp -d /tmp/home-XXXX)
 mkdir -p $HOME/.config/tegami $HOME/.config/gtk-4.0 $HOME/.config/fontconfig
@@ -23,6 +23,7 @@ X
 [ -n "$PRIVACY" ] && printf "%b" "$PRIVACY" > $HOME/.config/tegami/privacy.toml
 [ -n "$PRIVACY_FILE" ] && cp "$PRIVACY_FILE" $HOME/.config/tegami/privacy.toml
 [ -n "$WINDOW" ] && printf "%b" "$WINDOW" > $HOME/.config/tegami/window.toml
+[ -n "${SIDEBAR:-}" ] && printf "%b" "$SIDEBAR" > $HOME/.config/tegami/sidebar.toml
 SCR=${SCREEN:-2880x1800}
 export TEGAMI_DEMO=1 TEGAMI_SHOWCASE=/tmp/$name-internal.png TEGAMI_SHOWCASE_DELAY=${DELAY:-60} \
   GSK_RENDERER=cairo GDK_SCALE=2 GDK_BACKEND=x11 LANG=${LANG_:-fr_FR.UTF-8} LANGUAGE=fr \
