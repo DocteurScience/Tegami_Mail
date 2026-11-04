@@ -1,0 +1,60 @@
+# Builds a Flatpak bundle of Tegami Mail from the manifest at the root, on
+# demand (Actions → Flatpak → Run workflow, or `gh workflow run flatpak.yml`)
+# rather than on every push: the GNOME runtime, the SDK and a release build
+# take a while, and a bundle is wanted for a release, not for each commit.
+#
+# The result is the `flatpak` artifact: tegami-mail.flatpak, installed with
+#   flatpak install --user tegami-mail.flatpak
+# (the GNOME 50 runtime comes from Flathub, which `flatpak install` asks for).
+
+name: Flatpak
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  bundle:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Flatpak and flatpak-builder
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq flatpak flatpak-builder python3-aiohttp python3-tomlkit
+          # Ubuntu 24.04 keeps unprivileged user namespaces from
+          # bubblewrap, which flatpak-builder sandboxes every step in.
+          sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
+          flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+
+      - name: Vendored crate sources
+        run: |
+          curl -sSfLo flatpak-cargo-generator.py \
+            https://raw.githubusercontent.com/flatpak/flatpak-builder-tools/master/cargo/flatpak-cargo-generator.py
+          python3 flatpak-cargo-generator.py Cargo.lock -o cargo-sources.json
+
+      - name: Build
+        run: |
+          flatpak-builder --user --install-deps-from=flathub --disable-rofiles-fuse \
+            --force-clean --repo=repo build-dir io.github.DocteurScience.TegamiMail.yml \
+            2>&1 | tee flatpak-build.log
+          test "${PIPESTATUS[0]}" -eq 0
+          flatpak build-bundle --runtime-repo=https://dl.flathub.org/repo/flathub.flatpakrepo \
+            repo tegami-mail.flatpak io.github.DocteurScience.TegamiMail
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: flatpak
+          path: tegami-mail.flatpak
+          retention-days: 30
+
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: flatpak-build-log
+          path: flatpak-build.log
+          retention-days: 7
