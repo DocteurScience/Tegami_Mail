@@ -136,9 +136,10 @@ fn a_card_from_your_own_mailbox_wears_that_mailboxs_face() {
     let _ = std::fs::remove_file(&path);
 }
 
-/// Each card names everyone the message went to, collapsed behind a chip so
-/// the header stays one line tall — and a recipient list is header text an
-/// attacker controls, so it must land escaped in the trusted wrapper.
+/// Each card names who the message went to on its "To:" line (mockup 03),
+/// which opens the collapsed To/Cc block — and a recipient list is header
+/// text an attacker controls, so it must land escaped in the trusted
+/// wrapper.
 #[test]
 fn every_card_carries_its_recipients_escaped_and_collapsed() {
     let mut first = msg_for_print();
@@ -168,19 +169,12 @@ fn every_card_carries_its_recipients_escaped_and_collapsed() {
         "each card gets a collapsed To/Cc block: {doc}"
     );
     assert_eq!(
-        doc.matches("class=\"tegami-rcpt-toggle\"").count(),
+        doc.matches("class=\"tegami-rcpt-toggle tegami-to\"")
+            .count(),
         2,
-        "each card gets a recipients chip: {doc}"
+        "each card gets a To line that opens the block: {doc}"
     );
-    // 3 addresses on the first card (2 To + 1 Cc), 1 on the second.
-    assert!(
-        doc.contains(">3 recipients<"),
-        "recipient count on the chip: {doc}"
-    );
-    assert!(
-        doc.contains(">1 recipient<"),
-        "singular for one recipient: {doc}"
-    );
+    assert!(doc.contains(">To: "), "the line says To: {doc}");
     assert!(
         !doc.contains("<script>alert(1)</script>"),
         "recipients must be escaped: {doc}"
@@ -191,9 +185,9 @@ fn every_card_carries_its_recipients_escaped_and_collapsed() {
     );
 }
 
-/// A message that names no recipients at all gets neither chip nor block.
+/// A message that names no recipients at all gets neither To line nor block.
 #[test]
-fn a_card_with_no_recipients_shows_no_chip() {
+fn a_card_with_no_recipients_shows_no_to_line() {
     let mut only = msg_for_print();
     only.to = String::new();
     only.cc = " ".into();
@@ -215,7 +209,7 @@ fn a_card_with_no_recipients_shows_no_chip() {
         100,
     );
     assert_eq!(
-        doc.matches("<button type=\"button\" class=\"tegami-rcpt-toggle\"")
+        doc.matches("<button type=\"button\" class=\"tegami-rcpt-toggle tegami-to\"")
             .count(),
         1,
         "only the second card: {doc}"

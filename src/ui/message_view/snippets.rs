@@ -235,17 +235,8 @@ pub(super) fn paints_own_background(body: &str) -> bool {
     .any(|needle| lower.contains(needle))
 }
 
-/// How many addresses a message's To, Cc and Bcc headers name.
-pub(super) fn recipient_count(m: &Message) -> usize {
-    [m.to.as_str(), m.cc.as_str(), m.bcc.as_str()]
-        .iter()
-        .flat_map(|s| s.split(','))
-        .filter(|a| !a.trim().is_empty())
-        .count()
-}
-
 /// The collapsible To/Cc/Bcc block inside a conversation card's header.
-/// Starts hidden; the header's recipients chip toggles it. Empty when the
+/// Starts hidden; the card's "To:" line toggles it. Empty when the
 /// message names no recipients at all. Bcc is there only on the sender's own
 /// copy (#476).
 pub(super) fn recipients_html(m: &Message, always_shown: bool) -> String {
@@ -290,6 +281,44 @@ pub(super) fn recipients_html(m: &Message, always_shown: bool) -> String {
     }
     let hidden = if always_shown { "" } else { " hidden" };
     format!("<div class=\"tegami-rcpt\"{hidden}>{lines}</div>")
+}
+
+/// Who a message went to, for its card's "To:" line (mockup 03): the To
+/// and Cc recipients by their saved or written names, each once, the
+/// user's own addresses as "me". A copy of one's own sent in Bcc alone
+/// names those (#476), or the line, the way to the details, would go.
+pub(super) fn to_line_names(m: &Message, is_own: impl Fn(&str) -> bool) -> String {
+    let mut seen = std::collections::HashSet::new();
+    let mut names: Vec<String> = Vec::new();
+    let lists = if m.to.trim().is_empty() && m.cc.trim().is_empty() {
+        vec![m.bcc.trim()]
+    } else {
+        vec![m.to.trim(), m.cc.trim()]
+    };
+    for list in lists {
+        for entry in split_addr_list(list) {
+            let entry = entry.trim();
+            if entry.is_empty() {
+                continue;
+            }
+            let (written, mail) = match entry.rfind('<') {
+                Some(s) => (
+                    entry[..s].trim().trim_matches('"').trim(),
+                    entry[s + 1..].trim_end_matches('>').trim(),
+                ),
+                None => ("", entry),
+            };
+            if !seen.insert(mail.to_ascii_lowercase()) {
+                continue;
+            }
+            names.push(if is_own(mail) {
+                i18n("me")
+            } else {
+                crate::contacts::shown_name_or_addr(written, mail).into_owned()
+            });
+        }
+    }
+    names.join(", ")
 }
 
 /// Split an address-list header on commas, honouring double-quoted display

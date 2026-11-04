@@ -1676,6 +1676,10 @@ msgstr "Keresés"
 msgid "{date} at {time}"
 msgstr "{date} {time} órakor"
 
+#, fuzzy
+msgid "{date}, {time}"
+msgstr "{date} {time} órakor"
+
 msgid "Default"
 msgstr "Alapértelmezett"
 
@@ -4217,10 +4221,9 @@ msgstr "Hozzáadás a névjegyekhez"
 msgid "Double-click to open in a new window"
 msgstr "Kattintson duplán az új ablakban való megnyitáshoz"
 
-msgid "{n} recipient"
-msgid_plural "{n} recipients"
-msgstr[0] "{n} címzett"
-msgstr[1] "{n} címzett"
+#, fuzzy
+msgid "To: {names}"
+msgstr "Címke hozzáadása: {name}"
 
 msgid "Hide recipients"
 msgstr "Címzettek elrejtése"

@@ -1595,6 +1595,10 @@ msgstr "Cerca"
 msgid "{date} at {time}"
 msgstr "{date} a les {time}"
 
+#, fuzzy
+msgid "{date}, {time}"
+msgstr "{date} a les {time}"
+
 msgid "Default"
 msgstr "Per defecte"
 
@@ -4047,10 +4051,9 @@ msgstr "Afegeix a contactes"
 msgid "Double-click to open in a new window"
 msgstr "Fes doble clic per obrir en una finestra nova"
 
-msgid "{n} recipient"
-msgid_plural "{n} recipients"
-msgstr[0] "{n} destinatari"
-msgstr[1] "{n} destinataris"
+#, fuzzy
+msgid "To: {names}"
+msgstr "Afegeix l'etiqueta {name}"
 
 msgid "Hide recipients"
 msgstr "Amaga els destinataris"

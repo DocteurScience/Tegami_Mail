@@ -1578,6 +1578,9 @@ msgstr "Rechercher"
 msgid "{date} at {time}"
 msgstr "{date} à {time}"
 
+msgid "{date}, {time}"
+msgstr "{date}, {time}"
+
 msgid "Default"
 msgstr "Par défaut"
 
@@ -4019,10 +4022,8 @@ msgstr "Ajouter aux contacts"
 msgid "Double-click to open in a new window"
 msgstr "Double-cliquez pour ouvrir dans une nouvelle fenêtre"
 
-msgid "{n} recipient"
-msgid_plural "{n} recipients"
-msgstr[0] "{n} destinataire"
-msgstr[1] "{n} destinataires"
+msgid "To: {names}"
+msgstr "À : {names}"
 
 msgid "Hide recipients"
 msgstr "Masquer les destinataires"
@@ -6890,7 +6891,9 @@ msgstr "Afficher le compte dans l’en-tête du message"
 msgid ""
 "Where the list mixes accounts, the account a message is in, above its "
 "subject."
-msgstr "Quand la liste mêle plusieurs comptes, le compte du message, au-dessus de son objet."
+msgstr ""
+"Quand la liste mêle plusieurs comptes, le compte du message, au-dessus de "
+"son objet."
 
 msgid "Ctrl+0 returns to the default."
 msgstr "Ctrl+0 revient à la valeur par défaut."

@@ -16,12 +16,12 @@ use super::receipt_banner::{read_mark_html, receipt_row_html};
 use super::remote::has_remote_resources;
 use super::size_script::SIZE_SCRIPT;
 use super::snippets::{
-    att_row_html, card_action_button, inline_icon_svg, paints_own_background, recipient_count,
-    recipients_html, tag_chips_html, template_row_html, unsub_row_html,
+    att_row_html, card_action_button, inline_icon_svg, paints_own_background, recipients_html,
+    tag_chips_html, template_row_html, to_line_names, unsub_row_html,
 };
 use super::MessageView;
 use crate::encoding::escape_html;
-use crate::i18n::{i18n, ni18n_f};
+use crate::i18n::{i18n, i18n_f};
 use crate::models::Message;
 use relm4::prelude::*;
 
@@ -394,11 +394,11 @@ fn card_html(cards: &Cards<'_>, m: &Message, ava_html: &str, body: String) -> St
                  <div class=\"tegami-hdr-line\">\
                    {ava}{dot}<span class=\"tegami-from\">{from}</span>{fbar}{verify}{addr}\
                    <span class=\"tegami-tags\" data-key=\"{aid}:{id}\">{tags}</span>\
-                   <span class=\"tegami-hdr-meta\">{folder}{rcpt_toggle}{marks}{read}\
-                     <span class=\"tegami-date\">{date}</span>\
+                   <span class=\"tegami-hdr-meta\">{folder}{marks}{read}\
+                     <span class=\"tegami-date\" title=\"{date_full}\">{date}</span>\
                      <span class=\"tegami-chev\" aria-hidden=\"true\">{chev}</span></span>\
                    {acts_toggle}{acts}\
-                 </div>{rcpt}\
+                 </div>{sub}{rcpt}\
                </header>{tpl}{invite}{receipt}{unsub}{tr}{body}{atts}</section>",
         aid = m.account_id,
         id = m.id,
@@ -554,31 +554,40 @@ fn card_html(cards: &Cards<'_>, m: &Message, ava_html: &str, body: String) -> St
                 escape_html(&m.from_addr).replace('"', "&quot;")
             )
         },
-        date = escape_html(&m.datetime_full()),
-        // Everyone the message went to, tucked behind a small chip so
-        // a card's header stays one line tall until asked. Escaped
-        // like the sender: recipient headers are attacker-controlled.
-        rcpt_toggle = match recipient_count(m) {
-            0 => String::new(),
-            // With the recipients line always visible, a
-            // single-recipient chip would only repeat it (#40).
-            1 if always_show_recipients => String::new(),
-            n => format!(
-                "<button type=\"button\" class=\"tegami-rcpt-toggle{open}\" \
-                     title=\"{title}\">{label}</button>",
-                label = gtk::glib::markup_escape_text(&ni18n_f(
-                    "{n} recipient",
-                    "{n} recipients",
-                    n as u32,
-                    &[("n", &n.to_string())],
-                )),
-                open = if always_show_recipients { " open" } else { "" },
-                title = if always_show_recipients {
-                    i18n("Hide recipients")
-                } else {
-                    i18n("Show recipients")
-                },
-            ),
+        // The short date (mockups 02 and 03), the full one on hover.
+        date = escape_html(&card_date(m)),
+        date_full = escape_html(&m.datetime_full()).replace('"', "&quot;"),
+        // An open card's second line: "To: me, Julien Perrin · 9 Oct,
+        // 06:53" (mockup 03), the names a button that shows every
+        // recipient and the address. It replaced a "1 recipient" chip
+        // (design feedback P2-2, 2026-11-04). Escaped like the sender:
+        // recipient headers are attacker-controlled.
+        sub = {
+            let names = to_line_names(m, |a| {
+                crate::services::avatar::account_face(a).is_some()
+            });
+            let to = if names.is_empty() {
+                String::new()
+            } else {
+                format!(
+                    "<button type=\"button\" class=\"tegami-rcpt-toggle tegami-to{open}\" \
+                         title=\"{title}\">{label}</button>\
+                     <span class=\"tegami-sub-sep\" aria-hidden=\"true\">\u{b7}</span>",
+                    label = escape_html(&i18n_f("To: {names}", &[("names", &names)])),
+                    open = if always_show_recipients { " open" } else { "" },
+                    title = if always_show_recipients {
+                        i18n("Hide recipients")
+                    } else {
+                        i18n("Show recipients")
+                    },
+                )
+            };
+            format!(
+                "<div class=\"tegami-sub\">{to}<span class=\"tegami-date2\" \
+                     title=\"{full}\">{date}</span></div>",
+                date = escape_html(&card_date(m)),
+                full = escape_html(&m.datetime_full()).replace('"', "&quot;"),
+            )
         },
         rcpt = recipients_html(m, always_show_recipients),
         // Where this message was read from, when that isn't the
@@ -752,4 +761,16 @@ fn card_actions(cards: &Cards<'_>, m: &Message) -> String {
             String::new()
         },
     )
+}
+
+/// A card's date, short (mockups 02 and 03): the written date where the
+/// timestamp is unknown, as the full one falls back too.
+fn card_date(m: &Message) -> String {
+    if m.timestamp <= 0 {
+        return m.date.clone();
+    }
+    match crate::datefmt::card_date_time(m.timestamp, crate::datefmt::now()) {
+        d if d.trim().is_empty() => m.date.clone(),
+        d => d,
+    }
 }

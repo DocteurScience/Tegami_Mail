@@ -403,6 +403,20 @@ pub(super) fn wrapper_css(
          .tegami-rcpt{{font-size:0.85em;opacity:0.75;\
          user-select:text;overflow-wrap:anywhere;margin:2px 0 0;margin-inline-start:34px;}}\
          .tegami-rcpt div{{margin-top:2px;}}\
+         /* An open card's second line (mockup 03): \"To: me, Julien\
+         Perrin · 9 Oct, 06:53\" under the name, at 70 % for 4.5:1. The\
+         names are the button that shows every recipient. Folded, the\
+         card is one line, its date at the end. */\
+         .tegami-sub{{display:flex;gap:6px;align-items:baseline;min-width:0;\
+         font-size:0.85em;opacity:0.7;margin:1px 0 0;margin-inline-start:34px;}}\
+         .tegami-rcpt-toggle.tegami-to,.tegami-rcpt-toggle.tegami-to.open,\
+         .tegami-rcpt-toggle.tegami-to:hover{{background:none;padding:0;border-radius:0;\
+         font-size:inherit;flex:0 1 auto;min-width:0;overflow:hidden;\
+         text-overflow:ellipsis;text-align:start;}}\
+         .tegami-rcpt-toggle.tegami-to:hover{{text-decoration:underline;}}\
+         .tegami-sub-sep,.tegami-date2{{flex:none;white-space:nowrap;}}\
+         .tegami-msg.tegami-folded .tegami-sub,\
+         .tegami-msg:not(.tegami-folded) .tegami-hdr-meta .tegami-date{{display:none;}}\
          .tegami-loading{{opacity:0.7;padding:16px;}}\
          /* The Copied pill after Ctrl+C: a toast the page draws itself,\
          since the reader has no toast overlay of its own. */\

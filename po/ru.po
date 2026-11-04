@@ -1702,6 +1702,10 @@ msgstr "Найти"
 msgid "{date} at {time}"
 msgstr "{date} в {time}"
 
+#, fuzzy
+msgid "{date}, {time}"
+msgstr "{date} в {time}"
+
 msgid "Default"
 msgstr "По умолчанию"
 
@@ -4238,11 +4242,9 @@ msgstr "Добавить в Контакты"
 msgid "Double-click to open in a new window"
 msgstr "Дважды щёлкните, чтобы открыть в новом окне"
 
-msgid "{n} recipient"
-msgid_plural "{n} recipients"
-msgstr[0] "{n} получатель"
-msgstr[1] "{n} получателя"
-msgstr[2] "{n} получателей"
+#, fuzzy
+msgid "To: {names}"
+msgstr "Добавить тег {name}"
 
 msgid "Hide recipients"
 msgstr "Скрыть получателей"

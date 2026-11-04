@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+- **Changed: a message card says who it went to** (mockup 03). Under the
+  sender, "To: me, Julien Perrin · 9 Oct, 06:53": the recipients by name,
+  you as "me", and a short date, the year only when it is another one.
+  The line opens the full To, Cc and Bcc list, as the "1 recipient" chip
+  it replaces did; the full date is on hover. Folded cards end with the
+  short date too.
+
 - **Changed: a conversation opened from the list acts on its latest
   message** (docs/DESIGN.md). Reply and the header's other actions took
   the message the list's row stood for, which could be a folded one;

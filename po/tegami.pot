@@ -1474,6 +1474,9 @@ msgstr ""
 msgid "{date} at {time}"
 msgstr ""
 
+msgid "{date}, {time}"
+msgstr ""
+
 msgid "Default"
 msgstr ""
 
@@ -3683,10 +3686,8 @@ msgstr ""
 msgid "Double-click to open in a new window"
 msgstr ""
 
-msgid "{n} recipient"
-msgid_plural "{n} recipients"
-msgstr[0] ""
-msgstr[1] ""
+msgid "To: {names}"
+msgstr ""
 
 msgid "Hide recipients"
 msgstr ""

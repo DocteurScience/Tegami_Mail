@@ -1609,6 +1609,10 @@ msgstr "Buscar"
 msgid "{date} at {time}"
 msgstr "{date} a las {time}"
 
+#, fuzzy
+msgid "{date}, {time}"
+msgstr "{date} a las {time}"
+
 msgid "Default"
 msgstr "Predeterminado"
 
@@ -4076,10 +4080,9 @@ msgstr "Añadir a Contactos"
 msgid "Double-click to open in a new window"
 msgstr "Haz doble clic para abrir en una ventana nueva"
 
-msgid "{n} recipient"
-msgid_plural "{n} recipients"
-msgstr[0] "{n} destinatario"
-msgstr[1] "{n} destinatarios"
+#, fuzzy
+msgid "To: {names}"
+msgstr "Añadir etiqueta {name}"
 
 msgid "Hide recipients"
 msgstr "Ocultar destinatarios"

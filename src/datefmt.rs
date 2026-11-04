@@ -289,6 +289,20 @@ pub(crate) fn date_time(ts: i64) -> String {
     )
 }
 
+/// Date and time for a message card's second line (mockups 02 and 03):
+/// "9 Oct, 06:53", the year only when it is not this one (`now`'s).
+pub(crate) fn card_date_time(ts: i64, now: i64) -> String {
+    if local(ts).is_none() {
+        return String::new();
+    }
+    let date = if year(ts) == year(now) {
+        day_month(ts)
+    } else {
+        day_month_year(ts)
+    };
+    crate::i18n::i18n_f("{date}, {time}", &[("date", &date), ("time", &time(ts))])
+}
+
 /// The day an event falls on, with its weekday: "Monday, 2 Nov 2026".
 /// An appointment is placed by its weekday more than by its date, which is
 /// why a calendar invitation names it and a message list does not.

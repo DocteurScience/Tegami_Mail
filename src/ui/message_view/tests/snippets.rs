@@ -78,8 +78,25 @@ fn the_recipients_block_lists_bcc() {
         "{html}"
     );
     assert!(html.find("<b>Cc:</b>") < html.find("<b>Bcc:</b>"));
-    assert_eq!(recipient_count(&m), 3);
     assert!(print_header_html(Some(&m)).contains("hidden@example.com"));
+}
+
+/// An open card's "To:" line (mockup 03): To and Cc by name, each once,
+/// the user's own address as "me"; Bcc alone when there is nothing else.
+#[test]
+fn the_to_line_names_each_recipient_once() {
+    let mut m = msg_for_print();
+    m.to = "\"Perrin, Julien\" <julien@example.org>, me@example.com".into();
+    m.cc = "Julien <JULIEN@example.org>, camille@example.org".into();
+    m.bcc = "hidden@example.com".into();
+    let own = |a: &str| a == "me@example.com";
+    assert_eq!(
+        to_line_names(&m, own),
+        "Perrin, Julien, me, camille@example.org"
+    );
+    m.to.clear();
+    m.cc.clear();
+    assert_eq!(to_line_names(&m, own), "hidden@example.com");
 }
 
 /// The banner's container is emitted for every card whether or not the

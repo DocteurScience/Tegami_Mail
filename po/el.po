@@ -1615,6 +1615,10 @@ msgstr "Εύρεση"
 msgid "{date} at {time}"
 msgstr "{date} στις {time}"
 
+#, fuzzy
+msgid "{date}, {time}"
+msgstr "{date} στις {time}"
+
 msgid "Default"
 msgstr "Προεπιλογή"
 
@@ -4114,10 +4118,9 @@ msgstr "Προσθήκη στις επαφές"
 msgid "Double-click to open in a new window"
 msgstr "Διπλό κλικ για άνοιγμα σε νέο παράθυρο"
 
-msgid "{n} recipient"
-msgid_plural "{n} recipients"
-msgstr[0] "{n} παραλήπτης"
-msgstr[1] "{n} παραλήπτες"
+#, fuzzy
+msgid "To: {names}"
+msgstr "Προσθήκη ετικέτας {name}"
 
 msgid "Hide recipients"
 msgstr "Απόκρυψη παραληπτών"
