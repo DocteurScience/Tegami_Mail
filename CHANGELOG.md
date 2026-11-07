@@ -2,6 +2,19 @@
 
 ## Unreleased
 
+- **Changed: sorting, display and filters are three small places** (mockups
+  18 to 21). **Sort and view**, the two-arrow button in the list's header,
+  holds the four orders and Show's three checks in one column. **Filters**,
+  beside the search field, holds Has attachments, Addressed to me, From
+  contacts and High importance, then a Period: any date, today, the last 7
+  or 30 days, this year, or **Custom…**, a dialog with a From and a To day.
+  The filters in force show as chips with a remove button, with **Clear
+  all**, a count on the Filters button and how many messages match. The All
+  / Unread / Starred switch now sits under the search field.
+- **Removed: the calendar inside the old sort and filter popover**, replaced
+  by the custom-period dialog, and the Today check, now a Period (owner's
+  decisions, 2026-11-07).
+
 - **Removed: the "Unread first" and "Starred first" sorts, and the "Tagged"
   quick filter** (owner's decisions, 2026-11-07). The Unread and Starred
   switch above the list does the first two's job, and the sidebar's tags the

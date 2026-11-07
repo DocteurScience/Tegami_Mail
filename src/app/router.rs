@@ -122,8 +122,8 @@ impl AppModel {
             | AppMsg::OpenListSearch
             | AppMsg::OpenReaderFind
             | AppMsg::SetQuickFilter(..)
-            | AppMsg::SetFilterDate(..)
-            | AppMsg::ClearFilterDates
+            | AppMsg::SetPeriod(..)
+            | AppMsg::OpenCustomPeriod
             | AppMsg::ClearQuickFilters
             | AppMsg::SetListShow(..)
             | AppMsg::DeferredMarkRead { .. }
@@ -227,6 +227,7 @@ impl AppModel {
             | AppMsg::ListCount(..)
             | AppMsg::ListColumnWidths(..)
             | AppMsg::ListSortChanged(..)) => self.on_list_header(msg),
+            AppMsg::ShowcaseListFilters(which) => self.showcase_list_filters(&which, &sender),
             msg @ AppMsg::OwnGravatarFetched { .. } => self.on_identity(msg),
             msg @ (AppMsg::SetReaderActionsCollapsed(..)
             | AppMsg::SetReaderCompact(..)

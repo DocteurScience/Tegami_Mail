@@ -688,6 +688,75 @@ msgstr "Ваш ответ отправлен: возможно."
 msgid "Your answer has been sent: declined."
 msgstr "Ваш ответ отправлен: отклонено."
 
+msgid "Messages"
+msgstr "Сообщения"
+
+msgid "Period"
+msgstr ""
+
+#, fuzzy
+msgid "Custom…"
+msgstr "Другой цвет…"
+
+#, fuzzy
+msgid "Clear filters"
+msgstr "Поиск фильтров"
+
+msgid "Filters"
+msgstr "Фильтры"
+
+msgid "Clear all"
+msgstr "Очистить всё"
+
+#, fuzzy
+msgid "Filters, {n} active"
+msgid_plural "Filters, {n} active"
+msgstr[0] "Фильтры применены"
+msgstr[1] "Фильтры применены"
+msgstr[2] "Фильтры применены"
+
+#, fuzzy
+msgid "{count} message"
+msgid_plural "{count} messages"
+msgstr[0] "{n} письмо"
+msgstr[1] "{n} письма"
+msgstr[2] "{n} писем"
+
+#, fuzzy
+msgid "Remove filter: {name}"
+msgstr "Удалить тег {name}?"
+
+msgid "All"
+msgstr ""
+
+#, fuzzy
+msgid "Unread"
+msgstr "Прочитано/Непрочитано"
+
+msgid "Starred"
+msgstr "Отмеченные"
+
+#, fuzzy
+msgid "Custom period"
+msgstr "Пользовательский порядок"
+
+#, fuzzy
+msgid "Apply"
+msgstr "Применить"
+
+#, fuzzy
+msgid "Choose a date"
+msgstr "Выбрать картинку"
+
+msgid "From"
+msgstr "От"
+
+msgid "To"
+msgstr "Кому"
+
+msgid "Both dates are included. Leave a field empty to leave that side open."
+msgstr ""
+
 msgid "Date (Newest first)"
 msgstr "Дата (сначала новые)"
 
@@ -699,26 +768,6 @@ msgstr "Отправитель (A–Я)"
 
 msgid "Subject (A–Z)"
 msgstr "Тема (А–Я)"
-
-#, fuzzy
-msgid "Clear dates"
-msgstr "Поиск фильтров"
-
-#, fuzzy
-msgid "Any date"
-msgstr "Дата"
-
-#, fuzzy
-msgid "{from} to {to}"
-msgstr "{cur} из {total}"
-
-#, fuzzy
-msgid "Since {date}"
-msgstr "срок действия истекает {date}"
-
-#, fuzzy
-msgid "Until {date}"
-msgstr "срок действия истекает {date}"
 
 msgid "Sort by"
 msgstr "Сортировать по"
@@ -738,32 +787,6 @@ msgid "Avatars"
 msgstr ""
 
 #, fuzzy
-msgid "Show only"
-msgstr "Только непрочитанные"
-
-#, fuzzy
-msgid "Clear filters"
-msgstr "Поиск фильтров"
-
-#, fuzzy
-msgid "Dates"
-msgstr "Дата"
-
-msgid "From"
-msgstr "От"
-
-msgid "To"
-msgstr "Кому"
-
-#, fuzzy
-msgid "Sort and filter messages"
-msgstr "{n} сообщений"
-
-#, fuzzy
-msgid "Filtered: {names}"
-msgstr "Отфильтрованные папки"
-
-#, fuzzy
 msgid "Tag: {name}"
 msgstr "Добавить тег {name}"
 
@@ -772,16 +795,6 @@ msgstr "Избранное"
 
 msgid "New message from template…"
 msgstr "Новое сообщение из шаблона…"
-
-msgid "All"
-msgstr ""
-
-#, fuzzy
-msgid "Unread"
-msgstr "Прочитано/Непрочитано"
-
-msgid "Starred"
-msgstr "Отмеченные"
 
 #. Rightmost, beside the window controls, as in the main window.
 msgid "Actions"
@@ -1546,6 +1559,10 @@ msgstr "Поиск сообщений (Ctrl+F)"
 
 msgid "Search messages (Ctrl+F)"
 msgstr "Поиск сообщений (Ctrl+F)"
+
+#, fuzzy
+msgid "Sort and view"
+msgstr "Дата и время"
 
 msgid "Edit this message"
 msgstr "Редактировать сообщение"
@@ -2633,13 +2650,6 @@ msgstr "Импортировать все"
 
 msgid "{n} messages"
 msgstr "{n} сообщений"
-
-#, fuzzy
-msgid "{count} message"
-msgid_plural "{count} messages"
-msgstr[0] "{n} письмо"
-msgstr[1] "{n} письма"
-msgstr[2] "{n} писем"
 
 #, fuzzy
 msgid "{count} · {color}"
@@ -3993,8 +4003,36 @@ msgstr "Нет контактов"
 msgid "High importance"
 msgstr "Высокая важность"
 
+#, fuzzy
+msgid "Any date"
+msgstr "Дата"
+
 msgid "Today"
 msgstr ""
+
+#, fuzzy
+msgid "Last 7 days"
+msgstr "Фамилия"
+
+#, fuzzy
+msgid "Last 30 days"
+msgstr "Фамилия"
+
+#, fuzzy
+msgid "This year"
+msgstr "Эта папка"
+
+#, fuzzy
+msgid "{from} to {to}"
+msgstr "{cur} из {total}"
+
+#, fuzzy
+msgid "Since {date}"
+msgstr "срок действия истекает {date}"
+
+#, fuzzy
+msgid "Until {date}"
+msgstr "срок действия истекает {date}"
 
 #, fuzzy
 msgid "Customize columns…"
@@ -4075,10 +4113,6 @@ msgid_plural "{n} more tags: {names}"
 msgstr[0] "Удалить тег {name}?"
 msgstr[1] "Удалить тег {name}?"
 msgstr[2] "Удалить тег {name}?"
-
-#, fuzzy
-msgid "Last 7 days"
-msgstr "Фамилия"
 
 msgid "Last 14 days"
 msgstr ""
@@ -4537,9 +4571,6 @@ msgstr "Отписаться…"
 
 msgid "Opens the list's unsubscribe page in your browser"
 msgstr "Открывает страницу отписки от рассылки в браузере"
-
-msgid "Clear all"
-msgstr "Очистить всё"
 
 msgid "Collapse status bar"
 msgstr "Свернуть строку состояния"
@@ -5152,9 +5183,6 @@ msgstr "Через две секунды"
 msgid "{percent}%"
 msgstr "{percent}%"
 
-msgid "Filters"
-msgstr "Фильтры"
-
 msgid "Senders"
 msgstr "Отправители"
 
@@ -5658,10 +5686,6 @@ msgid "Edit"
 msgstr "Редактировать"
 
 #, fuzzy
-msgid "Custom…"
-msgstr "Другой цвет…"
-
-#, fuzzy
 msgid "{n} quoted message"
 msgid_plural "{n} quoted messages"
 msgstr[0] "{n} непрочитанное сообщение"
@@ -5980,9 +6004,6 @@ msgstr "Регион (оставьте пустым для глобальног�
 #, fuzzy
 msgid "Translates a greeting to test the service."
 msgstr "Переводит приветствие для проверки ответа сервиса."
-
-msgid "Messages"
-msgstr "Сообщения"
 
 msgid "Tegami Mail's language ({language})"
 msgstr "Язык Tegami Mail ({language})"

@@ -3,8 +3,6 @@
 
 use crate::i18n::i18n;
 use crate::models::Message;
-use gtk::glib;
-use relm4::prelude::*;
 
 /// One of the message list's quick filters (#97, #441): with it on, the
 /// list shows only the mail that has the property. Together they narrow.
@@ -16,29 +14,28 @@ pub(crate) enum QuickFilter {
     ToMe,
     Contacts,
     Important,
-    Today,
 }
 
 impl QuickFilter {
-    pub(crate) const ALL: [QuickFilter; 7] = [
+    pub(crate) const ALL: [QuickFilter; 6] = [
         QuickFilter::Unread,
         QuickFilter::Starred,
         QuickFilter::Attachment,
         QuickFilter::ToMe,
         QuickFilter::Contacts,
         QuickFilter::Important,
-        QuickFilter::Today,
     ];
 
-    /// The filters the list header's popover offers: every one but Unread
-    /// and Starred, which have the All / Unread / Starred switch above the
-    /// list, so that each filter is set in one place.
-    pub(crate) const IN_POPOVER: [QuickFilter; 5] = [
+    /// The Filters menu's Messages section (docs/DESIGN.md, "Sorting,
+    /// display and filters"): every one but Unread and Starred, which have
+    /// the All / Unread / Starred switch above the list, so that each
+    /// filter is set in one place. High importance is the owner's choice
+    /// to keep (2026-11-07).
+    pub(crate) const IN_MENU: [QuickFilter; 4] = [
         QuickFilter::Attachment,
         QuickFilter::ToMe,
         QuickFilter::Contacts,
         QuickFilter::Important,
-        QuickFilter::Today,
     ];
 
     pub(crate) fn label(self) -> String {
@@ -50,7 +47,6 @@ impl QuickFilter {
             QuickFilter::ToMe => i18n_noop("Addressed to me"),
             QuickFilter::Contacts => i18n_noop("From contacts"),
             QuickFilter::Important => i18n_noop("High importance"),
-            QuickFilter::Today => i18n_noop("Today"),
         })
     }
 
@@ -59,21 +55,104 @@ impl QuickFilter {
     }
 }
 
-/// Which end of the quick filters' date range a day is for.
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
-pub(crate) enum DateBound {
-    From,
-    To,
+/// The Filters menu's Period: one choice, each counted back from today on
+/// this computer's clock, or a custom range of days (the custom-period
+/// dialog), mail from the start of `from` to the end of `to`, either end
+/// left open. It replaced the old popover's Today check and its calendar
+/// (owner's decision, 2026-11-07).
+#[derive(Debug, Clone, Copy, Default, PartialEq, Eq)]
+pub(crate) enum Period {
+    #[default]
+    Any,
+    Today,
+    Last7Days,
+    Last30Days,
+    ThisYear,
+    Custom {
+        from: Option<chrono::NaiveDate>,
+        to: Option<chrono::NaiveDate>,
+    },
 }
 
-/// The quick filters that are on, and the days the list is narrowed to:
-/// mail from the start of `from` to the end of `to`, both on this
-/// computer's clock, either end left open.
+impl Period {
+    /// The menu's radio choices, in order; Custom is set by its dialog.
+    pub(crate) const PRESETS: [Period; 5] = [
+        Period::Any,
+        Period::Today,
+        Period::Last7Days,
+        Period::Last30Days,
+        Period::ThisYear,
+    ];
+
+    /// The name a preset goes by in the menu and on its chip; a custom
+    /// range is named by its days ([`Period::range_label`]).
+    pub(crate) fn label(self) -> String {
+        use crate::i18n::i18n_noop;
+        i18n(match self {
+            Period::Any => i18n_noop("Any date"),
+            Period::Today => i18n_noop("Today"),
+            Period::Last7Days => i18n_noop("Last 7 days"),
+            Period::Last30Days => i18n_noop("Last 30 days"),
+            Period::ThisYear => i18n_noop("This year"),
+            Period::Custom { .. } => return self.range_label(),
+        })
+    }
+
+    /// A custom range in words: "2 Nov 2026 – 7 Nov 2026", "Since …",
+    /// "Until …"; days as the list writes dates.
+    fn range_label(self) -> String {
+        let Period::Custom { from, to } = self else {
+            return String::new();
+        };
+        let (from, to) = (from.map(day_label), to.map(day_label));
+        match (from, to) {
+            (Some(from), Some(to)) => {
+                crate::i18n::i18n_f("{from} to {to}", &[("from", &from), ("to", &to)])
+            }
+            (Some(date), None) => crate::i18n::i18n_f("Since {date}", &[("date", &date)]),
+            (None, Some(date)) => crate::i18n::i18n_f("Until {date}", &[("date", &date)]),
+            (None, None) => Period::Any.label(),
+        }
+    }
+
+    /// The days the period covers, counted from `today`: the first and the
+    /// last, either open. A custom range given the wrong way round is read
+    /// in order rather than matching nothing.
+    pub(crate) fn days(
+        self,
+        today: chrono::NaiveDate,
+    ) -> (Option<chrono::NaiveDate>, Option<chrono::NaiveDate>) {
+        use chrono::Datelike;
+        let back = |n: u64| today.checked_sub_days(chrono::Days::new(n));
+        match self {
+            Period::Any => (None, None),
+            Period::Today => (Some(today), None),
+            Period::Last7Days => (back(6), None),
+            Period::Last30Days => (back(29), None),
+            Period::ThisYear => (chrono::NaiveDate::from_ymd_opt(today.year(), 1, 1), None),
+            Period::Custom {
+                from: Some(a),
+                to: Some(b),
+            } if a > b => (Some(b), Some(a)),
+            Period::Custom { from, to } => (from, to),
+        }
+    }
+}
+
+/// A day as the list writes dates, at its noon so no clock change moves it.
+pub(crate) fn day_label(day: chrono::NaiveDate) -> String {
+    use chrono::TimeZone;
+    day.and_hms_opt(12, 0, 0)
+        .and_then(|t| chrono::Local.from_local_datetime(&t).earliest())
+        .map(|t| crate::datefmt::day_month_year(t.timestamp()))
+        .unwrap_or_default()
+}
+
+/// The quick filters that are on, and the period the list is narrowed to.
 #[derive(Debug, Clone, Copy, Default, PartialEq, Eq)]
 pub(crate) struct QuickFilters {
     bits: u16,
-    from: Option<chrono::NaiveDate>,
-    to: Option<chrono::NaiveDate>,
+    period: Period,
 }
 
 impl QuickFilters {
@@ -92,31 +171,25 @@ impl QuickFilters {
         }
     }
 
-    pub(crate) fn date(self, end: DateBound) -> Option<chrono::NaiveDate> {
-        match end {
-            DateBound::From => self.from,
-            DateBound::To => self.to,
-        }
+    pub(crate) fn period(self) -> Period {
+        self.period
     }
 
-    pub(crate) fn with_date(self, end: DateBound, day: Option<chrono::NaiveDate>) -> Self {
-        match end {
-            DateBound::From => Self { from: day, ..self },
-            DateBound::To => Self { to: day, ..self },
-        }
-    }
-
-    pub(crate) fn has_dates(self) -> bool {
-        self.from.is_some() || self.to.is_some()
-    }
-
-    /// The range as Unix seconds, the end excluded. Days given the wrong
-    /// way round are read in order rather than matching nothing.
-    pub(super) fn span(self) -> (i64, i64) {
-        let (from, to) = match (self.from, self.to) {
-            (Some(a), Some(b)) if a > b => (Some(b), Some(a)),
-            other => other,
+    pub(crate) fn with_period(self, period: Period) -> Self {
+        // A custom range with both ends open is no range.
+        let period = match period {
+            Period::Custom {
+                from: None,
+                to: None,
+            } => Period::Any,
+            p => p,
         };
+        Self { period, ..self }
+    }
+
+    /// The period as Unix seconds counted from `today`, the end excluded.
+    pub(super) fn span(self, today: chrono::NaiveDate) -> (i64, i64) {
+        let (from, to) = self.period.days(today);
         (
             from.map_or(i64::MIN, start_of_day),
             to.and_then(|d| d.succ_opt()).map_or(i64::MAX, start_of_day),
@@ -124,7 +197,25 @@ impl QuickFilters {
     }
 
     pub(crate) fn is_empty(self) -> bool {
-        self.bits == 0 && !self.has_dates()
+        self.bits == 0 && self.period == Period::Any
+    }
+
+    /// How many filters the Filters menu has on: its checks and a period.
+    /// Unread and Starred, on the switch above the list, are not counted.
+    pub(crate) fn menu_count(self) -> usize {
+        QuickFilter::IN_MENU
+            .iter()
+            .filter(|f| self.has(**f))
+            .count()
+            + usize::from(self.period != Period::Any)
+    }
+
+    /// The filters with Unread and Starred kept and the menu's cleared.
+    pub(crate) fn menu_cleared(self) -> Self {
+        Self {
+            bits: self.bits & (QuickFilter::Unread.bit() | QuickFilter::Starred.bit()),
+            period: Period::Any,
+        }
     }
 }
 
@@ -146,9 +237,7 @@ pub(super) struct QuickFilterContext {
     pub(super) own: std::collections::HashSet<String>,
     /// Your contacts' addresses; none read yet lets nothing through.
     pub(super) contacts: Option<std::sync::Arc<std::collections::HashSet<String>>>,
-    /// Local midnight, Unix seconds ("Today").
-    pub(super) today: i64,
-    /// The date range as Unix seconds, the end excluded.
+    /// The period as Unix seconds, the end excluded.
     pub(super) span: (i64, i64),
 }
 
@@ -174,7 +263,6 @@ impl QuickFilterContext {
                     .as_ref()
                     .is_some_and(|c| c.contains(&m.from_addr.trim().to_lowercase())),
                 QuickFilter::Important => m.importance == crate::models::Importance::High,
-                QuickFilter::Today => m.timestamp >= self.today,
             })
     }
 }
@@ -189,22 +277,14 @@ pub(super) fn bare_address(part: &str) -> String {
     addr.trim().to_lowercase()
 }
 
-/// The start of today in local time, Unix seconds.
-pub(super) fn start_of_today() -> i64 {
-    let Ok(now) = glib::DateTime::now_local() else {
-        return 0;
-    };
-    glib::DateTime::new(
-        &now.timezone(),
-        now.year(),
-        now.month(),
-        now.day_of_month(),
-        0,
-        0,
-        0.0,
-    )
-    .map(|d| d.to_unix())
-    .unwrap_or(0)
+/// Today on this computer's clock (the demo's, in the demo: its mail is
+/// dated in October 2025).
+pub(crate) fn local_today() -> chrono::NaiveDate {
+    use chrono::TimeZone;
+    chrono::Local
+        .timestamp_opt(crate::datefmt::now(), 0)
+        .single()
+        .map_or_else(|| chrono::Local::now().date_naive(), |t| t.date_naive())
 }
 
 /// Which conversations Gmail's * r, * u, * s and * t select (#392).

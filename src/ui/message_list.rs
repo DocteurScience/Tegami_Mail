@@ -37,7 +37,14 @@ mod threading;
 mod types;
 mod views;
 
-pub(crate) use filters::{CheckFilter, DateBound, QuickFilter, QuickFilters};
+pub(crate) use filters::{CheckFilter, Period, QuickFilter, QuickFilters};
+
+/// The names of the boxes the app fills with its filter widgets
+/// (docs/DESIGN.md, "Sorting, display and filters"): the Filters button
+/// beside the search field, and the chips, switch and count under the
+/// bars.
+pub(crate) const FILTERS_SLOT: &str = "tegami-filters-slot";
+pub(crate) const FILTER_AREA_SLOT: &str = "tegami-filter-area-slot";
 pub(crate) use layout::after_next_paint;
 pub(crate) use search::search_text_of;
 pub(crate) use search::{load_address_names, HitSet, PoolFolder, SearchScope, ServerScope};

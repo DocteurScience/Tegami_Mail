@@ -644,6 +644,70 @@ msgstr "La teva resposta s'ha enviat: potser."
 msgid "Your answer has been sent: declined."
 msgstr "La teva resposta s'ha enviat: rebutjat."
 
+msgid "Messages"
+msgstr "Missatges"
+
+msgid "Period"
+msgstr ""
+
+msgid "Custom…"
+msgstr "Personalitzada…"
+
+msgid "Clear filters"
+msgstr "Esborra els filtres"
+
+msgid "Filters"
+msgstr "Filtres"
+
+msgid "Clear all"
+msgstr "Neteja-ho tot"
+
+#, fuzzy
+msgid "Filters, {n} active"
+msgid_plural "Filters, {n} active"
+msgstr[0] "Filtres aplicats"
+msgstr[1] "Filtres aplicats"
+
+#, fuzzy
+msgid "{count} message"
+msgid_plural "{count} messages"
+msgstr[0] "{n} missatge"
+msgstr[1] "{n} missatges"
+
+#, fuzzy
+msgid "Remove filter: {name}"
+msgstr "Treu l'etiqueta {name}"
+
+msgid "All"
+msgstr ""
+
+msgid "Unread"
+msgstr "No llegit"
+
+msgid "Starred"
+msgstr "Destacats"
+
+#, fuzzy
+msgid "Custom period"
+msgstr "Ordre personalitzat"
+
+#, fuzzy
+msgid "Apply"
+msgstr "Aplica ara"
+
+#, fuzzy
+msgid "Choose a date"
+msgstr "Tria una imatge"
+
+msgid "From"
+msgstr "De"
+
+msgid "To"
+msgstr "A"
+
+msgid "Both dates are included. Leave a field empty to leave that side open."
+msgstr ""
+
 msgid "Date (Newest first)"
 msgstr "Data (més recents primer)"
 
@@ -655,26 +719,6 @@ msgstr "Remitent (A–Z)"
 
 msgid "Subject (A–Z)"
 msgstr "Assumpte (A–Z)"
-
-#, fuzzy
-msgid "Clear dates"
-msgstr "Esborra els filtres"
-
-#, fuzzy
-msgid "Any date"
-msgstr "Data"
-
-#, fuzzy
-msgid "{from} to {to}"
-msgstr "{cur} de {total}"
-
-#, fuzzy
-msgid "Since {date}"
-msgstr "caduca el {date}"
-
-#, fuzzy
-msgid "Until {date}"
-msgstr "caduca el {date}"
 
 msgid "Sort by"
 msgstr "Ordena per"
@@ -692,28 +736,6 @@ msgstr "Previsualització del missatge"
 msgid "Avatars"
 msgstr ""
 
-msgid "Show only"
-msgstr "Mostra només"
-
-msgid "Clear filters"
-msgstr "Esborra els filtres"
-
-#, fuzzy
-msgid "Dates"
-msgstr "Data"
-
-msgid "From"
-msgstr "De"
-
-msgid "To"
-msgstr "A"
-
-msgid "Sort and filter messages"
-msgstr "Ordena i filtra missatges"
-
-msgid "Filtered: {names}"
-msgstr "Filtrat: {names}"
-
 #, fuzzy
 msgid "Tag: {name}"
 msgstr "Afegeix l'etiqueta {name}"
@@ -723,15 +745,6 @@ msgstr "Preferits"
 
 msgid "New message from template…"
 msgstr "Missatge nou a partir d'una plantilla…"
-
-msgid "All"
-msgstr ""
-
-msgid "Unread"
-msgstr "No llegit"
-
-msgid "Starred"
-msgstr "Destacats"
 
 #. Rightmost, beside the window controls, as in the main window.
 msgid "Actions"
@@ -1442,6 +1455,10 @@ msgstr "Cerca missatges (Ctrl+F)"
 
 msgid "Search messages (Ctrl+F)"
 msgstr "Cerca missatges (Ctrl+F)"
+
+#, fuzzy
+msgid "Sort and view"
+msgstr "Data i hora"
 
 msgid "Edit this message"
 msgstr "Edita aquest missatge"
@@ -2513,12 +2530,6 @@ msgstr "Importa-ho tot"
 
 msgid "{n} messages"
 msgstr "{n} missatges"
-
-#, fuzzy
-msgid "{count} message"
-msgid_plural "{count} messages"
-msgstr[0] "{n} missatge"
-msgstr[1] "{n} missatges"
 
 #, fuzzy
 msgid "{count} · {color}"
@@ -3815,8 +3826,35 @@ msgstr "De contactes"
 msgid "High importance"
 msgstr "Importància alta"
 
+#, fuzzy
+msgid "Any date"
+msgstr "Data"
+
 msgid "Today"
 msgstr "Avui"
+
+msgid "Last 7 days"
+msgstr "Últims 7 dies"
+
+#, fuzzy
+msgid "Last 30 days"
+msgstr "Últims 7 dies"
+
+#, fuzzy
+msgid "This year"
+msgstr "Aquesta carpeta"
+
+#, fuzzy
+msgid "{from} to {to}"
+msgstr "{cur} de {total}"
+
+#, fuzzy
+msgid "Since {date}"
+msgstr "caduca el {date}"
+
+#, fuzzy
+msgid "Until {date}"
+msgstr "caduca el {date}"
 
 msgid "Customize columns…"
 msgstr "Personalitza les columnes…"
@@ -3891,9 +3929,6 @@ msgid "{n} more tag: {names}"
 msgid_plural "{n} more tags: {names}"
 msgstr[0] "Treu l'etiqueta {name}"
 msgstr[1] "Treu l'etiqueta {name}"
-
-msgid "Last 7 days"
-msgstr "Últims 7 dies"
 
 msgid "Last 14 days"
 msgstr "Últims 14 dies"
@@ -4341,9 +4376,6 @@ msgstr "Dona'm de baixa…"
 
 msgid "Opens the list's unsubscribe page in your browser"
 msgstr "Obre la pàgina de baixa de la llista al navegador"
-
-msgid "Clear all"
-msgstr "Neteja-ho tot"
 
 msgid "Collapse status bar"
 msgstr "Replega la barra d'estat"
@@ -4941,9 +4973,6 @@ msgstr "Després de dos segons"
 msgid "{percent}%"
 msgstr "{percent}%"
 
-msgid "Filters"
-msgstr "Filtres"
-
 msgid "Senders"
 msgstr "Remitents"
 
@@ -5442,9 +5471,6 @@ msgstr "No s'ha pogut desar el PDF: {error}"
 msgid "Edit"
 msgstr "Edita"
 
-msgid "Custom…"
-msgstr "Personalitzada…"
-
 #, fuzzy
 msgid "{n} quoted message"
 msgid_plural "{n} quoted messages"
@@ -5757,9 +5783,6 @@ msgstr "Regió (buit per a un recurs global)"
 
 msgid "Translates a greeting to test the service."
 msgstr "Tradueix una salutació per provar el servei."
-
-msgid "Messages"
-msgstr "Missatges"
 
 msgid "Tegami Mail's language ({language})"
 msgstr "Idioma de l'Tegami Mail ({language})"

@@ -1,7 +1,7 @@
 //! The list's tests: row diffs, threading, conversation heads, swipes,
 //! day sections, quick filters and search text.
 
-use super::filters::{QuickFilter, QuickFilterContext, QuickFilters};
+use super::filters::{Period, QuickFilter, QuickFilterContext, QuickFilters};
 use super::sort::{column_sort, correspondents, message_cmp, text_key_cmp, SortOrder};
 use super::threading::{
     compute_thread_keys, heads_its_row, latest_elsewhere, reader_conversation, row_for_reader_key,
@@ -632,23 +632,24 @@ fn sections_are_the_runs_of_one_heading() {
 /// both To and Cc in either address form.
 #[test]
 fn quick_filters_narrow_together() {
+    let today = chrono::NaiveDate::from_ymd_opt(2026, 3, 10).unwrap();
     let ctx = |filters: QuickFilters| QuickFilterContext {
         filters,
         own: ["me@example.com".to_string()].into_iter().collect(),
         contacts: Some(std::sync::Arc::new(
             ["x@example.com".to_string()].into_iter().collect(),
         )),
-        today: 900,
-        span: filters.span(),
+        span: filters.span(today),
     };
     let mut m = msg(1, "a", "");
+    m.timestamp = super::filters::start_of_day(today) + 60;
     m.cc = "\"Doe, Jo\" <jo@example.com>, Me <ME@example.com>".into();
     let all = QuickFilters::default();
     assert!(ctx(all).passes(&m));
     assert!(ctx(all.with(QuickFilter::ToMe, true)).passes(&m));
     assert!(ctx(all
         .with(QuickFilter::Contacts, true)
-        .with(QuickFilter::Today, true))
+        .with_period(Period::Today))
     .passes(&m));
     assert!(!ctx(all
         .with(QuickFilter::ToMe, true)
@@ -664,15 +665,17 @@ fn quick_filters_narrow_together() {
         .with(QuickFilter::Unread, false)
         .with(QuickFilter::Attachment, true))
     .passes(&m));
-    m.timestamp = 800;
-    assert!(!ctx(all.with(QuickFilter::Today, true)).passes(&m));
+    m.timestamp -= 120;
+    assert!(!ctx(all.with_period(Period::Today)).passes(&m));
+    assert!(ctx(all.with_period(Period::Last7Days)).passes(&m));
 }
 
-/// The date range takes in the whole of both days it names, on this
-/// computer's clock, whichever way round they were picked.
+/// A custom period takes in the whole of both days it names, on this
+/// computer's clock, whichever way round they were picked; the presets
+/// count back from today.
 #[test]
-fn date_range_spans_whole_days() {
-    use super::filters::{start_of_day, DateBound};
+fn periods_span_whole_days() {
+    use super::filters::start_of_day;
     let day = chrono::NaiveDate::from_ymd_opt(2026, 3, 10).unwrap();
     let before = day.pred_opt().unwrap();
     let after = day.succ_opt().unwrap();
@@ -680,14 +683,9 @@ fn date_range_spans_whole_days() {
         filters,
         own: Default::default(),
         contacts: None,
-        today: 0,
-        span: filters.span(),
+        span: filters.span(day),
     };
-    let range = |from, to| {
-        QuickFilters::default()
-            .with_date(DateBound::From, from)
-            .with_date(DateBound::To, to)
-    };
+    let range = |from, to| QuickFilters::default().with_period(Period::Custom { from, to });
     let mut m = msg(1, "a", "");
     for at in [start_of_day(day), start_of_day(after) - 1] {
         m.timestamp = at;
@@ -700,8 +698,24 @@ fn date_range_spans_whole_days() {
     }
     m.timestamp = start_of_day(after);
     assert!(!ctx(range(Some(day), Some(day))).passes(&m));
-    assert!(!range(None, None).has_dates());
+    // Both ends open is no period at all.
+    assert!(range(None, None).is_empty());
     assert!(!range(Some(day), None).is_empty());
+    // The presets, from 10 March 2026.
+    let d = |m, d| chrono::NaiveDate::from_ymd_opt(2026, m, d);
+    assert_eq!(Period::Last7Days.days(day), (d(3, 4), None));
+    assert_eq!(Period::Last30Days.days(day), (d(2, 9), None));
+    assert_eq!(Period::ThisYear.days(day), (d(1, 1), None));
+    assert_eq!(Period::Today.days(day), (Some(day), None));
+    // The menu counts its own filters, not the switch's.
+    let f = QuickFilters::default()
+        .with(QuickFilter::Unread, true)
+        .with(QuickFilter::Attachment, true)
+        .with_period(Period::Today);
+    assert_eq!(f.menu_count(), 2);
+    let cleared = f.menu_cleared();
+    assert!(cleared.has(QuickFilter::Unread));
+    assert_eq!(cleared.menu_count(), 0);
 }
 
 /// #515: what a search looks in is made once, lowercased, and a query

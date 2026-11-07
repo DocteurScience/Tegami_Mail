@@ -687,6 +687,76 @@ msgstr "Wysłano odpowiedź: może."
 msgid "Your answer has been sent: declined."
 msgstr "Wysłano odpowiedź: odrzucono."
 
+#, fuzzy
+msgid "Messages"
+msgstr "Brak wiadomości"
+
+msgid "Period"
+msgstr ""
+
+#, fuzzy
+msgid "Custom…"
+msgstr "Własny kolor…"
+
+#, fuzzy
+msgid "Clear filters"
+msgstr "Wyszukaj filtry"
+
+msgid "Filters"
+msgstr "Filtry"
+
+msgid "Clear all"
+msgstr "Wyczyść wszystko"
+
+#, fuzzy
+msgid "Filters, {n} active"
+msgid_plural "Filters, {n} active"
+msgstr[0] "Zastosowano filtry"
+msgstr[1] "Zastosowano filtry"
+msgstr[2] "Zastosowano filtry"
+
+#, fuzzy
+msgid "{count} message"
+msgid_plural "{count} messages"
+msgstr[0] "{n} wiadomość"
+msgstr[1] "{n} wiadomości"
+msgstr[2] "{n} wiadomości"
+
+#, fuzzy
+msgid "Remove filter: {name}"
+msgstr "Usuń etykietę {name}"
+
+msgid "All"
+msgstr ""
+
+#, fuzzy
+msgid "Unread"
+msgstr "Przeczytane/nieprzeczytane"
+
+msgid "Starred"
+msgstr "Oznaczone gwiazdką"
+
+#, fuzzy
+msgid "Custom period"
+msgstr "Własna kolejność"
+
+#, fuzzy
+msgid "Apply"
+msgstr "Zastosuj teraz"
+
+#, fuzzy
+msgid "Choose a date"
+msgstr "Wybierz obraz"
+
+msgid "From"
+msgstr "Od"
+
+msgid "To"
+msgstr "Do"
+
+msgid "Both dates are included. Leave a field empty to leave that side open."
+msgstr ""
+
 msgid "Date (Newest first)"
 msgstr "Data (od najnowszych)"
 
@@ -698,25 +768,6 @@ msgstr "Nadawca (A–Z)"
 
 msgid "Subject (A–Z)"
 msgstr "Temat (A–Z)"
-
-#, fuzzy
-msgid "Clear dates"
-msgstr "Wyszukaj filtry"
-
-msgid "Any date"
-msgstr ""
-
-#, fuzzy
-msgid "{from} to {to}"
-msgstr "{cur} z {total}"
-
-#, fuzzy
-msgid "Since {date}"
-msgstr "wygasa {date}"
-
-#, fuzzy
-msgid "Until {date}"
-msgstr "wygasa {date}"
 
 msgid "Sort by"
 msgstr "Sortowanie według"
@@ -736,31 +787,6 @@ msgid "Avatars"
 msgstr ""
 
 #, fuzzy
-msgid "Show only"
-msgstr "Wyświetl tylko nieprzeczytane"
-
-#, fuzzy
-msgid "Clear filters"
-msgstr "Wyszukaj filtry"
-
-msgid "Dates"
-msgstr ""
-
-msgid "From"
-msgstr "Od"
-
-msgid "To"
-msgstr "Do"
-
-#, fuzzy
-msgid "Sort and filter messages"
-msgstr "wiadomości: {n}"
-
-#, fuzzy
-msgid "Filtered: {names}"
-msgstr "Usunięto konto {name}"
-
-#, fuzzy
 msgid "Tag: {name}"
 msgstr "Dodaj etykietę {name}"
 
@@ -769,16 +795,6 @@ msgstr ""
 
 msgid "New message from template…"
 msgstr ""
-
-msgid "All"
-msgstr ""
-
-#, fuzzy
-msgid "Unread"
-msgstr "Przeczytane/nieprzeczytane"
-
-msgid "Starred"
-msgstr "Oznaczone gwiazdką"
 
 #. Rightmost, beside the window controls, as in the main window.
 msgid "Actions"
@@ -1544,6 +1560,10 @@ msgstr "Przeszukaj wiadomości (Ctrl+F)"
 
 msgid "Search messages (Ctrl+F)"
 msgstr "Przeszukaj wiadomości (Ctrl+F)"
+
+#, fuzzy
+msgid "Sort and view"
+msgstr "Data i czas"
 
 msgid "Edit this message"
 msgstr "Modyfikuj tę wiadomość"
@@ -2654,13 +2674,6 @@ msgstr "Importuj wszystkie"
 
 msgid "{n} messages"
 msgstr "wiadomości: {n}"
-
-#, fuzzy
-msgid "{count} message"
-msgid_plural "{count} messages"
-msgstr[0] "{n} wiadomość"
-msgstr[1] "{n} wiadomości"
-msgstr[2] "{n} wiadomości"
 
 #, fuzzy
 msgid "{count} · {color}"
@@ -4019,8 +4032,35 @@ msgstr "Brak kontaktów"
 msgid "High importance"
 msgstr ""
 
+msgid "Any date"
+msgstr ""
+
 msgid "Today"
 msgstr ""
+
+#, fuzzy
+msgid "Last 7 days"
+msgstr "Nazwisko"
+
+#, fuzzy
+msgid "Last 30 days"
+msgstr "Nazwisko"
+
+#, fuzzy
+msgid "This year"
+msgstr "Ten katalog"
+
+#, fuzzy
+msgid "{from} to {to}"
+msgstr "{cur} z {total}"
+
+#, fuzzy
+msgid "Since {date}"
+msgstr "wygasa {date}"
+
+#, fuzzy
+msgid "Until {date}"
+msgstr "wygasa {date}"
 
 #, fuzzy
 msgid "Customize columns…"
@@ -4101,10 +4141,6 @@ msgid_plural "{n} more tags: {names}"
 msgstr[0] "Usuń etykietę {name}"
 msgstr[1] "Usuń etykietę {name}"
 msgstr[2] "Usuń etykietę {name}"
-
-#, fuzzy
-msgid "Last 7 days"
-msgstr "Nazwisko"
 
 msgid "Last 14 days"
 msgstr ""
@@ -4582,9 +4618,6 @@ msgstr "Wypisz się…"
 
 msgid "Opens the list's unsubscribe page in your browser"
 msgstr "Otwórz w przeglądarce stronę wypisania z listy"
-
-msgid "Clear all"
-msgstr "Wyczyść wszystko"
 
 msgid "Collapse status bar"
 msgstr "Zwiń pasek stanu"
@@ -5205,9 +5238,6 @@ msgstr "Po dwóch sekundach"
 msgid "{percent}%"
 msgstr "{percent}%"
 
-msgid "Filters"
-msgstr "Filtry"
-
 msgid "Senders"
 msgstr "Nadawcy"
 
@@ -5711,10 +5741,6 @@ msgid "Edit"
 msgstr "Modyfikuj"
 
 #, fuzzy
-msgid "Custom…"
-msgstr "Własny kolor…"
-
-#, fuzzy
 msgid "{n} quoted message"
 msgid_plural "{n} quoted messages"
 msgstr[0] "{n} nieprzeczytana wiadomość"
@@ -6045,10 +6071,6 @@ msgstr ""
 
 msgid "Translates a greeting to test the service."
 msgstr ""
-
-#, fuzzy
-msgid "Messages"
-msgstr "Brak wiadomości"
 
 #, fuzzy
 msgid "Tegami Mail's language ({language})"

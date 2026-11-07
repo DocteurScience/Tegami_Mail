@@ -56,9 +56,10 @@ The full list. The [README](../README.md) carries a shorter one.
 - **Tags:** IMAP keywords, Graph categories, or a local fallback where the
   server has neither; eight named colours, and number-key shortcuts for
   the first nine. Gmail's labels show beside them.
-- **Quick filters:** unread, starred, attachments, addressed to you, from
-  your contacts, high importance, today and a range of dates,
-  combined, in one popover above the list with the sort orders. See [Message list layout](DOCUMENTATION.md#message-list-layout).
+- **Quick filters:** unread and starred in a switch above the list;
+  attachments, addressed to you, from your contacts, high importance and a
+  period (today, the last 7 or 30 days, this year or a custom range) in a
+  Filters menu beside the search field, each shown as a removable chip. See [Message list layout](DOCUMENTATION.md#message-list-layout).
 - **Browse by the year:** the list's scrollbar spans the whole folder, and
   dragging it names the month and year it is passing.
 - **Smart folders:** saved searches across accounts and folders, on

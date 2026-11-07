@@ -1,5 +1,5 @@
 #!/bin/bash
-# The captures for the 17 mockups (data/repo/design/), four at a time, in
+# The captures for the 21 mockups (data/repo/design/), four at a time, in
 # Adwaita Sans: inside the container, after a debug build. Each lands in
 # /shots/grab as NAME.png (the whole screen), NAME.windows and the popovers
 # as NAME-popN.png with NAME.pops; tools/dev/mockup-crop.py crops them.
@@ -56,5 +56,11 @@ g 06e 12 WINDOW="$W12" ACT='xdotool mousemove 236 266 click 3; sleep 2' &
 g 06f 14 WINDOW="$W12" CW=2000 CH=1560 ACT="$COMP; xdotool mousemove 1728 56 click 1; sleep 2" TEGAMI_SHOWCASE_NEW=5 TEGAMI_SHOWCASE_TOP=1 &
 g 06g 14 WINDOW="$W12" CW=2000 CH=1560 ACT="$COMP; xdotool mousemove 786 148 click 1; sleep 2" TEGAMI_SHOWCASE_NEW=5 TEGAMI_SHOWCASE_TOP=1 &
 g 06h 14 WINDOW="$W12" TEGAMI_SHOWCASE_ROW=4 $M ACT='xdotool mousemove 2044 1126 click 1; sleep 2' &
+wait
+# Sorting, display and filters (mockups 18 to 21).
+g 18 14 WINDOW="$W12" TEGAMI_SHOWCASE_LIST=sort &
+g 19 14 WINDOW="$W12" TEGAMI_SHOWCASE_LIST=filters &
+g 20 14 WINDOW="$W12" TEGAMI_SHOWCASE_LIST=active &
+g 21 14 WINDOW="$W12" TEGAMI_SHOWCASE_LIST=period &
 wait
 )

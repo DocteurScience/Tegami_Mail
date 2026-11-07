@@ -654,6 +654,70 @@ msgstr "Η απάντησή σας στάλθηκε: ίσως."
 msgid "Your answer has been sent: declined."
 msgstr "Η απάντησή σας στάλθηκε: απόρριψη."
 
+msgid "Messages"
+msgstr "Μηνύματα"
+
+msgid "Period"
+msgstr ""
+
+msgid "Custom…"
+msgstr "Προσαρμοσμένο…"
+
+msgid "Clear filters"
+msgstr "Εκκαθάριση φίλτρων"
+
+msgid "Filters"
+msgstr "Φίλτρα"
+
+msgid "Clear all"
+msgstr "Εκκαθάριση όλων"
+
+#, fuzzy
+msgid "Filters, {n} active"
+msgid_plural "Filters, {n} active"
+msgstr[0] "Τα φίλτρα εφαρμόστηκαν"
+msgstr[1] "Τα φίλτρα εφαρμόστηκαν"
+
+#, fuzzy
+msgid "{count} message"
+msgid_plural "{count} messages"
+msgstr[0] "{n} μήνυμα"
+msgstr[1] "{n} μηνύματα"
+
+#, fuzzy
+msgid "Remove filter: {name}"
+msgstr "Αφαίρεση ετικέτας {name}"
+
+msgid "All"
+msgstr ""
+
+msgid "Unread"
+msgstr "Μη αναγνωσμένα"
+
+msgid "Starred"
+msgstr "Με αστέρι"
+
+#, fuzzy
+msgid "Custom period"
+msgstr "Προσαρμοσμένη σειρά"
+
+#, fuzzy
+msgid "Apply"
+msgstr "Εφαρμογή τώρα"
+
+#, fuzzy
+msgid "Choose a date"
+msgstr "Επιλογή εικόνας"
+
+msgid "From"
+msgstr "Από"
+
+msgid "To"
+msgstr "Προς"
+
+msgid "Both dates are included. Leave a field empty to leave that side open."
+msgstr ""
+
 msgid "Date (Newest first)"
 msgstr "Ημερομηνία (νεότερα πρώτα)"
 
@@ -665,26 +729,6 @@ msgstr "Αποστολέας (Α–Ω)"
 
 msgid "Subject (A–Z)"
 msgstr "Θέμα (Α–Ω)"
-
-#, fuzzy
-msgid "Clear dates"
-msgstr "Εκκαθάριση φίλτρων"
-
-#, fuzzy
-msgid "Any date"
-msgstr "Ημερομηνία"
-
-#, fuzzy
-msgid "{from} to {to}"
-msgstr "{cur} από {total}"
-
-#, fuzzy
-msgid "Since {date}"
-msgstr "λήγει στις {date}"
-
-#, fuzzy
-msgid "Until {date}"
-msgstr "λήγει στις {date}"
 
 msgid "Sort by"
 msgstr "Ταξινόμηση κατά"
@@ -702,28 +746,6 @@ msgstr "Προεπισκόπηση μηνύματος"
 msgid "Avatars"
 msgstr ""
 
-msgid "Show only"
-msgstr "Εμφάνιση μόνο"
-
-msgid "Clear filters"
-msgstr "Εκκαθάριση φίλτρων"
-
-#, fuzzy
-msgid "Dates"
-msgstr "Ημερομηνία"
-
-msgid "From"
-msgstr "Από"
-
-msgid "To"
-msgstr "Προς"
-
-msgid "Sort and filter messages"
-msgstr "Ταξινόμηση και φιλτράρισμα μηνυμάτων"
-
-msgid "Filtered: {names}"
-msgstr "Φιλτραρισμένα: {names}"
-
 #, fuzzy
 msgid "Tag: {name}"
 msgstr "Προσθήκη ετικέτας {name}"
@@ -733,15 +755,6 @@ msgstr "Αγαπημένα"
 
 msgid "New message from template…"
 msgstr "Νέο μήνυμα από πρότυπο…"
-
-msgid "All"
-msgstr ""
-
-msgid "Unread"
-msgstr "Μη αναγνωσμένα"
-
-msgid "Starred"
-msgstr "Με αστέρι"
 
 #. Rightmost, beside the window controls, as in the main window.
 msgid "Actions"
@@ -1462,6 +1475,10 @@ msgstr "Αναζήτηση μηνυμάτων (Ctrl+F)"
 
 msgid "Search messages (Ctrl+F)"
 msgstr "Αναζήτηση μηνυμάτων (Ctrl+F)"
+
+#, fuzzy
+msgid "Sort and view"
+msgstr "Ημερομηνία και ώρα"
 
 msgid "Edit this message"
 msgstr "Επεξεργασία αυτού του μηνύματος"
@@ -2552,12 +2569,6 @@ msgstr "Εισαγωγή όλων"
 
 msgid "{n} messages"
 msgstr "{n} μηνύματα"
-
-#, fuzzy
-msgid "{count} message"
-msgid_plural "{count} messages"
-msgstr[0] "{n} μήνυμα"
-msgstr[1] "{n} μηνύματα"
 
 #, fuzzy
 msgid "{count} · {color}"
@@ -3880,8 +3891,35 @@ msgstr "Από τις επαφές"
 msgid "High importance"
 msgstr "Υψηλή σημασία"
 
+#, fuzzy
+msgid "Any date"
+msgstr "Ημερομηνία"
+
 msgid "Today"
 msgstr "Σήμερα"
+
+msgid "Last 7 days"
+msgstr "Τελευταίες 7 ημέρες"
+
+#, fuzzy
+msgid "Last 30 days"
+msgstr "Τελευταίες 7 ημέρες"
+
+#, fuzzy
+msgid "This year"
+msgstr "Αυτός ο φάκελος"
+
+#, fuzzy
+msgid "{from} to {to}"
+msgstr "{cur} από {total}"
+
+#, fuzzy
+msgid "Since {date}"
+msgstr "λήγει στις {date}"
+
+#, fuzzy
+msgid "Until {date}"
+msgstr "λήγει στις {date}"
 
 msgid "Customize columns…"
 msgstr "Προσαρμογή στηλών…"
@@ -3958,9 +3996,6 @@ msgid "{n} more tag: {names}"
 msgid_plural "{n} more tags: {names}"
 msgstr[0] "Αφαίρεση ετικέτας {name}"
 msgstr[1] "Αφαίρεση ετικέτας {name}"
-
-msgid "Last 7 days"
-msgstr "Τελευταίες 7 ημέρες"
 
 msgid "Last 14 days"
 msgstr "Τελευταίες 14 ημέρες"
@@ -4409,9 +4444,6 @@ msgstr "Κατάργηση εγγραφής…"
 
 msgid "Opens the list's unsubscribe page in your browser"
 msgstr "Ανοίγει τη σελίδα διαγραφής από τη λίστα στο πρόγραμμα περιήγησής σας"
-
-msgid "Clear all"
-msgstr "Εκκαθάριση όλων"
 
 msgid "Collapse status bar"
 msgstr "Σύμπτυξη γραμμής κατάστασης"
@@ -5010,9 +5042,6 @@ msgstr "Μετά από δύο δευτερόλεπτα"
 msgid "{percent}%"
 msgstr "{percent}%"
 
-msgid "Filters"
-msgstr "Φίλτρα"
-
 msgid "Senders"
 msgstr "Αποστολείς"
 
@@ -5524,9 +5553,6 @@ msgstr "Δεν ήταν δυνατή η αποθήκευση του PDF: {error}
 msgid "Edit"
 msgstr "Επεξεργασία"
 
-msgid "Custom…"
-msgstr "Προσαρμοσμένο…"
-
 #, fuzzy
 msgid "{n} quoted message"
 msgid_plural "{n} quoted messages"
@@ -5839,9 +5865,6 @@ msgstr "Περιοχή (κενό για καθολικό πόρο)"
 
 msgid "Translates a greeting to test the service."
 msgstr "Μεταφράζει έναν χαιρετισμό για να δοκιμάσει την υπηρεσία."
-
-msgid "Messages"
-msgstr "Μηνύματα"
 
 msgid "Tegami Mail's language ({language})"
 msgstr "Γλώσσα του Tegami Mail ({language})"

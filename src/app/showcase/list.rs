@@ -318,6 +318,19 @@ pub(super) fn stage_tags(sender: &ComponentSender<AppModel>) {
     }
 }
 
+/// TEGAMI_SHOWCASE_LIST=sort opens the Sort and display popover at 5s
+/// (mockup 18), =filters the search field and its Filters menu (19),
+/// =active the search field with two filters set (20), =period the
+/// custom-period dialog on a range (21).
+pub(super) fn stage_list_filters(sender: &ComponentSender<AppModel>) {
+    if let Ok(which) = std::env::var("TEGAMI_SHOWCASE_LIST") {
+        let s = sender.input_sender().clone();
+        gtk::glib::timeout_add_seconds_local_once(5, move || {
+            let _ = s.send(AppMsg::ShowcaseListFilters(which));
+        });
+    }
+}
+
 /// TEGAMI_SHOWCASE_PRINT=1 opens the print preview of the open
 /// message at 6s (#359); TEGAMI_SHOWCASE_TOP captures it.
 pub(super) fn stage_print(sender: &ComponentSender<AppModel>) {

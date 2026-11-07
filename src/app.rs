@@ -68,6 +68,7 @@ mod hand_off;
 mod identity;
 mod invites;
 mod keymap;
+mod list_filters;
 mod list_header;
 mod model;
 mod model_new;
@@ -454,13 +455,13 @@ impl SimpleComponent for AppModel {
                                         sender.input(AppMsg::OpenListSearch);
                                     },
                                 },
-                                // The sort orders and every quick filter share
-                                // one popover (#441): a button each would crowd
-                                // the header.
+                                // Sort and display (mockup 18): the orders and
+                                // the list's look; the filters have their own
+                                // menu beside the search field.
                                 #[name = "list_filter_btn"]
                                 pack_end = &gtk::MenuButton {
-                                    set_icon_name: "filter-symbolic",
-                                    set_tooltip_text: Some(i18n("Sort and filter messages").as_str()),
+                                    set_icon_name: "tegami-sort-symbolic",
+                                    set_tooltip_text: Some(i18n("Sort and view").as_str()),
                                     set_valign: gtk::Align::Center,
                                     add_css_class: "flat",
                                 },
@@ -471,12 +472,6 @@ impl SimpleComponent for AppModel {
                                     set_valign: gtk::Align::Center,
                                     add_css_class: "list-count",
                                 },
-                            },
-                            // The All / Unread / Starred switch, under the
-                            // header bar; filled by init_list_sort_menu.
-                            #[name = "list_show_bar"]
-                            add_top_bar = &gtk::Box {
-                                add_css_class: "list-show-bar",
                             },
                             #[wrap(Some)]
                             set_content = model.message_list.widget(),

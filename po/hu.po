@@ -665,6 +665,74 @@ msgstr "Válasza elküldve: talán."
 msgid "Your answer has been sent: declined."
 msgstr "Válasza elküldve: elutasítva."
 
+#, fuzzy
+msgid "Messages"
+msgstr "Nincsenek üzenetek"
+
+msgid "Period"
+msgstr ""
+
+#, fuzzy
+msgid "Custom…"
+msgstr "Egyéni szín…"
+
+#, fuzzy
+msgid "Clear filters"
+msgstr "Keresési szűrők"
+
+msgid "Filters"
+msgstr "Szűrők"
+
+msgid "Clear all"
+msgstr "Összes törlése"
+
+#, fuzzy
+msgid "Filters, {n} active"
+msgid_plural "Filters, {n} active"
+msgstr[0] "Alkalmazott szűrők"
+msgstr[1] "Alkalmazott szűrők"
+
+#, fuzzy
+msgid "{count} message"
+msgid_plural "{count} messages"
+msgstr[0] "{n} üzenet"
+msgstr[1] "{n} üzenet"
+
+#, fuzzy
+msgid "Remove filter: {name}"
+msgstr "Címke eltávolítása: {name}"
+
+msgid "All"
+msgstr ""
+
+#, fuzzy
+msgid "Unread"
+msgstr "Olvasott/olvasatlan"
+
+msgid "Starred"
+msgstr "Csillakerülzott"
+
+#, fuzzy
+msgid "Custom period"
+msgstr "Egyedi sorrend"
+
+#, fuzzy
+msgid "Apply"
+msgstr "Alkalmazás most"
+
+#, fuzzy
+msgid "Choose a date"
+msgstr "Kép választása"
+
+msgid "From"
+msgstr "Feladó"
+
+msgid "To"
+msgstr "Címzett"
+
+msgid "Both dates are included. Leave a field empty to leave that side open."
+msgstr ""
+
 msgid "Date (Newest first)"
 msgstr "Dátum (legújabb elöl)"
 
@@ -676,25 +744,6 @@ msgstr "Feladó (A–Z)"
 
 msgid "Subject (A–Z)"
 msgstr "Tárgy (A–Z)"
-
-#, fuzzy
-msgid "Clear dates"
-msgstr "Keresési szűrők"
-
-msgid "Any date"
-msgstr ""
-
-#, fuzzy
-msgid "{from} to {to}"
-msgstr "{cur} / {total}"
-
-#, fuzzy
-msgid "Since {date}"
-msgstr "lejár: {date}"
-
-#, fuzzy
-msgid "Until {date}"
-msgstr "lejár: {date}"
 
 msgid "Sort by"
 msgstr "Rendezés"
@@ -714,31 +763,6 @@ msgid "Avatars"
 msgstr ""
 
 #, fuzzy
-msgid "Show only"
-msgstr "Csak olvasatlanok megjelenítése"
-
-#, fuzzy
-msgid "Clear filters"
-msgstr "Keresési szűrők"
-
-msgid "Dates"
-msgstr ""
-
-msgid "From"
-msgstr "Feladó"
-
-msgid "To"
-msgstr "Címzett"
-
-#, fuzzy
-msgid "Sort and filter messages"
-msgstr "{n} db üzenet"
-
-#, fuzzy
-msgid "Filtered: {names}"
-msgstr "Szűrt mappák"
-
-#, fuzzy
 msgid "Tag: {name}"
 msgstr "Címke hozzáadása: {name}"
 
@@ -747,16 +771,6 @@ msgstr ""
 
 msgid "New message from template…"
 msgstr ""
-
-msgid "All"
-msgstr ""
-
-#, fuzzy
-msgid "Unread"
-msgstr "Olvasott/olvasatlan"
-
-msgid "Starred"
-msgstr "Csillakerülzott"
 
 #. Rightmost, beside the window controls, as in the main window.
 msgid "Actions"
@@ -1517,6 +1531,10 @@ msgstr "Üzenetek keresése (Ctrl+F)"
 
 msgid "Search messages (Ctrl+F)"
 msgstr "Üzenetek keresése (Ctrl+F)"
+
+#, fuzzy
+msgid "Sort and view"
+msgstr "Dátum és idő"
 
 msgid "Edit this message"
 msgstr "Üzenet szerkesztése"
@@ -2611,12 +2629,6 @@ msgstr "Összes importálása"
 
 msgid "{n} messages"
 msgstr "{n} db üzenet"
-
-#, fuzzy
-msgid "{count} message"
-msgid_plural "{count} messages"
-msgstr[0] "{n} üzenet"
-msgstr[1] "{n} üzenet"
 
 #, fuzzy
 msgid "{count} · {color}"
@@ -3973,8 +3985,35 @@ msgstr "Nincsenek névjegyek"
 msgid "High importance"
 msgstr ""
 
+msgid "Any date"
+msgstr ""
+
 msgid "Today"
 msgstr ""
+
+#, fuzzy
+msgid "Last 7 days"
+msgstr "Vezetéknév"
+
+#, fuzzy
+msgid "Last 30 days"
+msgstr "Vezetéknév"
+
+#, fuzzy
+msgid "This year"
+msgstr "Ez a mappa"
+
+#, fuzzy
+msgid "{from} to {to}"
+msgstr "{cur} / {total}"
+
+#, fuzzy
+msgid "Since {date}"
+msgstr "lejár: {date}"
+
+#, fuzzy
+msgid "Until {date}"
+msgstr "lejár: {date}"
 
 #, fuzzy
 msgid "Customize columns…"
@@ -4054,10 +4093,6 @@ msgid "{n} more tag: {names}"
 msgid_plural "{n} more tags: {names}"
 msgstr[0] "Címke eltávolítása: {name}"
 msgstr[1] "Címke eltávolítása: {name}"
-
-#, fuzzy
-msgid "Last 7 days"
-msgstr "Vezetéknév"
 
 msgid "Last 14 days"
 msgstr ""
@@ -4525,9 +4560,6 @@ msgstr "Unsubscribe…"
 
 msgid "Opens the list's unsubscribe page in your browser"
 msgstr "Megnyitja a lista leiratkozási oldalát a böngészőben"
-
-msgid "Clear all"
-msgstr "Összes törlése"
 
 msgid "Collapse status bar"
 msgstr "Állapotsáv összecsukása"
@@ -5144,9 +5176,6 @@ msgstr "Két másodperc után"
 msgid "{percent}%"
 msgstr "{percent}%"
 
-msgid "Filters"
-msgstr "Szűrők"
-
 msgid "Senders"
 msgstr "Feladók"
 
@@ -5657,10 +5686,6 @@ msgid "Edit"
 msgstr "Szerkesztés"
 
 #, fuzzy
-msgid "Custom…"
-msgstr "Egyéni szín…"
-
-#, fuzzy
 msgid "{n} quoted message"
 msgid_plural "{n} quoted messages"
 msgstr[0] "{n} olvasatlan üzenet"
@@ -5990,10 +6015,6 @@ msgstr ""
 
 msgid "Translates a greeting to test the service."
 msgstr ""
-
-#, fuzzy
-msgid "Messages"
-msgstr "Nincsenek üzenetek"
 
 #, fuzzy
 msgid "Tegami Mail's language ({language})"

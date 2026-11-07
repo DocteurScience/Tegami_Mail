@@ -167,11 +167,8 @@ Removed from the old popover, as proposed to the owner on 2026-11-07:
 - The inline calendar: replaced by the custom-period dialog.
 - The separate "Today" entry in the dates area: it is now in Period.
 
-Each of these is a feature the app has today. The owner approved the layout,
-not yet each removal: ask before deleting one (CLAUDE.md), and keep a saved
-"Unread first" or "Starred first" sort working until he has answered.
-Undecided: "High importance". If kept, it is a fourth check box in
-Messages, still within twelve items.
+The owner approved each removal on 2026-11-07, and kept "High importance"
+as a fourth check box in Messages.
 
 ## Reading pane and conversations
 

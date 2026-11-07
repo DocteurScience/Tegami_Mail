@@ -34,6 +34,14 @@ impl SimpleComponent for MessageList {
                 set_orientation: gtk::Orientation::Vertical,
             },
 
+            // The app's filter area (`FILTER_AREA_SLOT`): chips, the All /
+            // Unread / Starred switch and the match count, under the
+            // search field as mockup 20 has them.
+            gtk::Box {
+                set_widget_name: super::FILTER_AREA_SLOT,
+                set_orientation: gtk::Orientation::Vertical,
+            },
+
             // The single line's column headings (#334), filled by
             // `sync_headings`; a click on one sorts by its column.
             #[name = "headings_area"]
@@ -309,6 +317,14 @@ impl SimpleComponent for MessageList {
                         set_valign: gtk::Align::Center,
                         set_tooltip_text: Some(i18n("Choose which folders to search").as_str()),
                     },
+
+                    // The app's Filters button, found by its name
+                    // (`FILTERS_SLOT`): the list's input crosses threads,
+                    // so it cannot carry widgets.
+                    gtk::Box {
+                        set_widget_name: super::FILTERS_SLOT,
+                        set_valign: gtk::Align::Center,
+                    },
                 },
                 },
             },
@@ -349,6 +365,7 @@ impl SimpleComponent for MessageList {
         super::scrub::watch_scrollbar(&widgets.scroller, &model.shared, &sender);
         model.sync_look();
         model.search_entry = Some(widgets.search_entry.clone());
+
         model.bars = Some(BarSlots {
             top: widgets.bars_top.clone(),
             bottom: widgets.bars_bottom.clone(),
@@ -488,6 +505,7 @@ impl SimpleComponent for MessageList {
                 self.on_showcase_search(text, scope, &sender)
             }
             MessageListInput::FocusSearch => self.on_focus_search(&sender),
+
             MessageListInput::CloseSearch => self.on_close_search(&sender),
             MessageListInput::BulkToggleRead => self.on_bulk_toggle_read(&sender),
             MessageListInput::BulkTagMenu => self.on_bulk_tag_menu(&sender),

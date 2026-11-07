@@ -11,7 +11,7 @@ use crate::config::{self, AccountConfig};
 use crate::models::{
     Account, Attachment, Folder, FolderKind, KeywordFinding, Message, ThreadSummary,
 };
-use crate::ui::message_list::{BulkAction, DateBound, QuickFilter, RowAction};
+use crate::ui::message_list::{BulkAction, Period, QuickFilter, RowAction};
 use crate::ui::preferences::PrefOutput;
 use crate::ui::sidebar::CtxAction;
 use crate::worker::OutgoingMessage;
@@ -323,11 +323,12 @@ pub(crate) enum AppMsg {
     OpenReaderFind,
     /// Turn one of the list header's quick filters on or off (#97, #441).
     SetQuickFilter(QuickFilter, bool),
-    /// Set or clear one end of the quick filters' date range.
-    SetFilterDate(DateBound, Option<chrono::NaiveDate>),
-    /// Open both ends of the quick filters' date range.
-    ClearFilterDates,
-    /// Turn every quick filter off.
+    /// The Filters menu's Period (docs/DESIGN.md, "Sorting, display and
+    /// filters").
+    SetPeriod(Period),
+    /// Open the custom-period dialog (mockup 21).
+    OpenCustomPeriod,
+    /// Turn the Filters menu's filters off, the switch's kept.
     ClearQuickFilters,
     /// The list's All / Unread / Starred switch: show everything, or only
     /// the mail that has this property (docs/DESIGN.md, "Header bars").
@@ -440,6 +441,9 @@ pub(crate) enum AppMsg {
     // ---- on_showcase (showcase/messages.rs) ----
     /// TEGAMI_SHOWCASE_POPOUT: open the open message in a window of its own.
     ShowcasePopout,
+    /// Demo only: open the list's sort or filter screens for a capture
+    /// (TEGAMI_SHOWCASE_LIST).
+    ShowcaseListFilters(String),
     /// Showcase only (TEGAMI_SHOWCASE_FOLDER): switch to the first account's
     /// folder of this kind, so a capture can start from Drafts, Sent, etc.
     ShowcaseFolder {

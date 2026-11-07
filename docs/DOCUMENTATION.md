@@ -1623,7 +1623,8 @@ Clicking a heading sorts the list by that column, and clicking it again
 reverses the order (the star column excepted: the **Starred** quick filter
 shows starred mail); the sorted heading is in the accent color, with an
 arrow. Correspondents sorts by the names the column shows, and Tags by tag
-name with untagged mail last. The sort menu follows the headings.
+name with untagged mail last. The Sort and view popover follows the
+headings.
 
 The name, tags and date columns are resized by dragging a heading's edge,
 where a line shows under the pointer: the right edge of a column left of
@@ -1723,33 +1724,34 @@ with each other and with plain words:
 A value with spaces goes in quotes: `from:"mario rossi"`. A colon in any other
 word, such as `10:30` or `re:`, is searched for as written.
 
-The sort and filter button in the list's header opens a popover of three
-columns. **Sort by** orders the list by date, newest or oldest first, by
-sender or subject. **Show only** holds
-the quick filters:
+The **Sort and view** button in the list's header (two arrows) opens a
+popover of one column. **Sort by** orders the list by date, newest or oldest
+first, or by sender or subject, A to Z. **Show** groups the list into
+conversations, and shows or hides the message preview and the avatars.
 
-- **Unread** and **Starred**
-- **Has attachments**
-- **Addressed to me**: one of your addresses or aliases is in To or Cc
-- **From contacts**: the sender is in your Contacts, as for filter rules
-- **High importance**
-- **Today**: it arrived since midnight on this computer's clock
+Under the search field, the switch **All**, **Unread**, **Starred** shows
+everything, or only unread or only starred mail.
 
-In **Dates**, the list shows only the mail that arrived from the start of
-the **From** day to the end of the **To** day, on this computer's clock.
-Choosing **From** or **To** sets it to the day in blue on the calendar below
-them, or moves the calendar to the day it already has; a click on a day then
-sets it. A click on a day with neither chosen sets **From**. An end left at
-**Any date** is open, to show everything since, or up to, a day. **Clear
-Dates** opens both ends again. Older mail is there as soon as the folder's
-index has reached it.
+Beside the search field, **Filters** opens a menu:
 
-A click turns a filter on or off and leaves the popover open, so an order
-and several filters can be set at once; together the filters show only the
-mail that matches all of them. While any is on the button is in the accent
-color and its tooltip names them, with the dates. **Clear filters** turns
-them all off. They apply to whichever folder or search is shown, and last
-until Tegami Mail is closed.
+- **Messages**: **Has attachments**; **Addressed to me** (one of your
+  addresses or aliases is in To or Cc); **From contacts** (the sender is in
+  your Contacts, as for filter rules); **High importance**. Any number can
+  be on.
+- **Period**: **Any date**, **Today**, **Last 7 days**, **Last 30 days** or
+  **This year**, counted on this computer's clock; or **Custom…**, a dialog
+  with a **From** and a **To** day, typed as your language writes dates or
+  picked on a calendar. Both days are included, and a field left empty
+  leaves that side open. Older mail is there as soon as the folder's index
+  has reached it.
+- **Clear filters** turns the menu's filters off.
+
+Each filter that is on shows as a chip under the search field, with a
+button that takes it off; **Clear all** takes them all off. The Filters
+button shows how many are on, and a line above the list says how many
+messages match. Together the filters show only the mail that matches all
+of them. They apply to whichever folder or search is shown, and last until
+Tegami Mail is closed.
 
 Clicking the unread dot on a row marks that message read without selecting
 or opening it. A conversation's dot that is lit only for an unread reply

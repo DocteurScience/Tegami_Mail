@@ -5,7 +5,7 @@ use relm4::prelude::*;
 
 use crate::config;
 use crate::models::{thread_ids, Message, ThreadSummary};
-use crate::ui::message_list::{DateBound, MessageListInput, QuickFilter, QuickFilters};
+use crate::ui::message_list::{MessageListInput, QuickFilter};
 use crate::ui::message_view::MessageViewInput;
 use crate::worker::MailRequest;
 
@@ -164,17 +164,15 @@ impl AppModel {
 
             AppMsg::SetQuickFilter(f, on) => self.set_quick_filters(self.quick_filters.with(f, on)),
 
-            AppMsg::SetFilterDate(end, day) => {
-                self.set_quick_filters(self.quick_filters.with_date(end, day))
+            AppMsg::SetPeriod(period) => {
+                self.set_quick_filters(self.quick_filters.with_period(period))
             }
 
-            AppMsg::ClearFilterDates => self.set_quick_filters(
-                self.quick_filters
-                    .with_date(DateBound::From, None)
-                    .with_date(DateBound::To, None),
-            ),
+            AppMsg::OpenCustomPeriod => self.open_custom_period(&sender),
 
-            AppMsg::ClearQuickFilters => self.set_quick_filters(QuickFilters::default()),
+            // The Filters menu's Clear filters and the chips' Clear all:
+            // the menu's filters, not the All / Unread / Starred switch.
+            AppMsg::ClearQuickFilters => self.set_quick_filters(self.quick_filters.menu_cleared()),
 
             AppMsg::SetListShow(only) => self.set_quick_filters(
                 self.quick_filters

@@ -276,6 +276,7 @@ pub(crate) enum MessageListInput {
     ReclaimFocus,
     /// Put the cursor in the search field.
     FocusSearch,
+
     /// Showcase captures (#374): open the search, pick the scope by its
     /// place in the dropdown and type the text.
     ShowcaseSearch(String, u32),

@@ -1,7 +1,7 @@
 //! Search: the scope picker, the text each message is searched by, and
 //! matching (off the main thread for big folders).
 
-use super::filters::{start_of_today, QuickFilter, QuickFilterContext};
+use super::filters::{local_today, QuickFilter, QuickFilterContext};
 use super::query::Query;
 use super::types::{MessageListInput, MessageListOutput};
 use super::MessageList;
@@ -446,12 +446,7 @@ impl MessageList {
                 .contact_addresses
                 .clone()
                 .filter(|_| self.quick.has(QuickFilter::Contacts)),
-            today: if self.quick.has(QuickFilter::Today) {
-                start_of_today()
-            } else {
-                0
-            },
-            span: self.quick.span(),
+            span: self.quick.span(local_today()),
         };
         // An "All folders" search leaves Trash and Junk out, but for the
         // folder the list is showing (#374), or one `in:` names.

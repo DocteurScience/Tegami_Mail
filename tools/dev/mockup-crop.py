@@ -46,6 +46,8 @@ NAMES = {
     "11": "11-attachments-sending", "12": "12-attachments-drop",
     "13": "13-attachment-forgotten", "14": "14-narrow-1024x600",
     "15": "15-phone-width", "16": "16-high-contrast", "17": "17-large-text",
+    "18": "18-sort-display", "19": "19-filters-menu", "20": "20-filters-active",
+    "21": "21-custom-period",
 }
 COMPOSER = ("04", "05", "11", "12", "13")
 out = {}
