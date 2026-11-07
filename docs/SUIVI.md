@@ -103,7 +103,7 @@ Dernière mise à jour : 2026-11-02, après `40a6c7e`.
 | `d73057c` | Pastilles d'initiales en aplat pastel, lettres foncées de la même teinte (maquette 01), mêmes couleurs et initiales dans la liste et le lecteur ; contour de sélection intérieur, de largeur égale (`01008df`) |
 | `a48ae10` | Fond du volet de liste teinté comme la maquette 01 (mélange à 50 % fond de fenêtre / barre latérale, #f3f3f4 mesuré pour #f2f2f4) ; barres de recherche et de sélection gardent le fond de la fenêtre |
 | `620ffdf` | Plus de trait entre deux bascules inactives du sélecteur Tous / Non lus / Favoris (absent de la maquette 01) |
-| `88685c4` | Réglages → Étiquettes comme la maquette 09 (pastille, « n messages · Couleur », crayon, corbeille, « Nouvelle étiquette… », « Importer les étiquettes des serveurs… ») ; ajout et modification par la boîte « Nouvelle étiquette » (mode édition) ; mot-clé, couleur personnalisée et réordonnancement supprimés (décision du propriétaire, 2026-11-07). Sélecteur : seul le choix en gras, « Non lus ». `grab.sh` recompile le catalogue à chaque capture |
+| `a0c11c9` | Réglages → Étiquettes comme la maquette 09 (pastille, « n messages · Couleur », crayon, corbeille, « Nouvelle étiquette… », « Importer les étiquettes des serveurs… ») ; ajout et modification par la boîte « Nouvelle étiquette » (mode édition) ; mot-clé, couleur personnalisée et réordonnancement supprimés (décision du propriétaire, 2026-11-07). Sélecteur : seul le choix en gras, « Non lus ». `grab.sh` recompile le catalogue à chaque capture |
 
 ## Décisions prises
 
