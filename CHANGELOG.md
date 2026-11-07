@@ -4,7 +4,8 @@
 
 - **Changed: the message list has a ground of its own** under its cards
   (mockup 01), halfway between the window's and the sidebar's, so the
-  cards stand out from it.
+  cards stand out from it. The All / Unread / Starred switch above it
+  loses the hairline it drew between two toggles that are off.
 
 - **Changed: initials circles are flat pastel with dark letters** (mockup
   01), in place of libadwaita's lit gradient under white letters. A sender

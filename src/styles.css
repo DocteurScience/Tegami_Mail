@@ -659,6 +659,13 @@ flowbox.attach-flow > flowboxchild {
   padding: 6px 12px 10px 12px;
 }
 
+/* No hairline between two toggles that are both off: mockup 01 parts them
+   by their labels' spacing alone. */
+.list-show-bar toggle-group > separator {
+  background: none;
+  opacity: 0;
+}
+
 .bulk-count {
   font-weight: 700;
 }
