@@ -29,7 +29,7 @@ if ! docker ps -a --format '{{.Names}}' | grep -qx tgu; then
       build-essential pkg-config libgtk-4-dev libadwaita-1-dev libwebkitgtk-6.0-dev \
       libpoppler-glib-dev libssl-dev gettext libwayland-dev librsvg2-common \
       ca-certificates git xvfb xauth dbus fonts-adwaita-sans fonts-cantarell fonts-noto-core \
-      fonts-noto-color-emoji x11-apps x11-utils xdotool imagemagick appstream >/dev/null
+      fonts-noto-color-emoji x11-apps x11-utils xdotool xcompmgr imagemagick appstream >/dev/null
     command -v xtr >/dev/null || cargo install xtr --locked -q'
 else
   docker start tgu >/dev/null
@@ -39,7 +39,7 @@ fi
 # 48, without which captures are not comparable with the mockups).
 docker exec -e HTTPS_PROXY="${HTTPS_PROXY:-}" tgu bash -c '
   [ -n "$HTTPS_PROXY" ] && printf "Acquire::https::Proxy \"%s\";\nAcquire::https::CaInfo \"/ca.crt\";\n" "$HTTPS_PROXY" > /etc/apt/apt.conf.d/99proxy
-  command -v xdotool >/dev/null && fc-list | grep -q "Adwaita Sans" || { apt-get update -qq && DEBIAN_FRONTEND=noninteractive apt-get install -y -qq --no-install-recommends fonts-adwaita-sans fonts-noto-color-emoji x11-apps x11-utils xdotool imagemagick >/dev/null; }' || true
+  command -v xcompmgr >/dev/null && fc-list | grep -q "Adwaita Sans" || { apt-get update -qq && DEBIAN_FRONTEND=noninteractive apt-get install -y -qq --no-install-recommends fonts-adwaita-sans fonts-noto-color-emoji x11-apps x11-utils xdotool xcompmgr imagemagick >/dev/null; }' || true
 docker cp "$repo/tools/dev/run.sh" tgu:/run.sh
 docker cp "$repo/tools/dev/shot.sh" tgu:/shot.sh
 for f in grab popgrab mockup-shots; do docker cp "$repo/tools/dev/$f.sh" tgu:/$f.sh; done

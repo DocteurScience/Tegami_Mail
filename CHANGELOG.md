@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- **Changed: menus and popovers stand off the window more**, with a firmer
+  outline and a deeper shadow, as the mockups draw them.
+
 - **Changed: sorting, display and filters are three small places** (mockups
   18 to 21). **Sort and view**, the two-arrow button in the list's header,
   holds the four orders and Show's three checks in one column. **Filters**,

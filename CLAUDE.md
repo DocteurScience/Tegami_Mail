@@ -87,8 +87,9 @@ sessions cloud) :
   (Adwaita Sans, captures plein écran avec dialogues et popovers, clics
   xdotool), puis `docker cp tgu:/shots/grab /tmp/grab` et
   `tools/dev/mockup-crop.py /tmp/grab DOSSIER` : une image par maquette,
-  en 1x (dimensions des maquettes) et en 2x. Sans compositeur, les popovers
-  n'ont ni coins arrondis ni ombre.
+  en 1x (dimensions des maquettes) et en 2x. `grab.sh` lance xcompmgr :
+  GTK dessine alors coins arrondis et ombres des popovers, que
+  `popgrab.sh` garde avec leur alpha (`.xwd`) pour `mockup-crop.py`.
 - `WEBKIT_DISABLE_SANDBOX_THIS_IS_DANGEROUS=1` n'est utilisé que pour ces
   captures locales (le propriétaire l'a accepté) ; jamais dans le code.
 - Instantanés HTML du lecteur : `TEGAMI_BLESS_GOLDEN=1` régénère

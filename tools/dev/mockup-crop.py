@@ -30,10 +30,37 @@ def pops(n):
     return [(l.split()[0], *map(int, l.split()[1:])) for l in open(p)]
 
 
+def xwd_rgba(path):
+    """A 32-bit window grab with its alpha, which ImageMagick drops: GTK
+    draws a popover's rounded corners and shadow in it when a compositor
+    runs. Pixels are premultiplied, in the byte order the header gives."""
+    import struct
+    import numpy as np
+    data = open(path, "rb").read()
+    h = struct.unpack(">25I", data[:100])
+    size, depth, w, ht = h[0], h[3], h[4], h[5]
+    order, bpp, bpl, ncolors = h[7], h[11], h[12], h[19]
+    if depth != 32 or bpp != 32:
+        return None
+    px = np.frombuffer(data, np.uint8, offset=size + 12 * ncolors, count=bpl * ht)
+    px = px.reshape(ht, bpl)[:, : w * 4].reshape(ht, w, 4).astype(np.float32)
+    b, g, r, a = (px[..., i] for i in ((0, 1, 2, 3) if order == 0 else (3, 2, 1, 0)))
+    alpha = np.maximum(a, 1) / 255.0
+    rgb = np.stack([r, g, b], -1) / alpha[..., None]
+    rgba = np.dstack([np.clip(rgb, 0, 255), a]).astype(np.uint8)
+    return Image.fromarray(rgba, "RGBA")
+
+
 def shot(n, title):
-    im = Image.open(f"{D}/{n}.png").convert("RGB")
+    im = Image.open(f"{D}/{n}.png").convert("RGBA")
     for f, x, y, w, h in pops(n):
-        im.paste(Image.open(f"{D}/{f}").convert("RGB"), (x, y))
+        xwd = f"{D}/{f[:-4]}.xwd"
+        pop = xwd_rgba(xwd) if os.path.exists(xwd) else None
+        if pop is None:
+            im.paste(Image.open(f"{D}/{f}").convert("RGBA"), (x, y))
+        else:
+            im.alpha_composite(pop, (x, y))
+    im = im.convert("RGB")
     c = [g for g in wins(n) if g[0] == title and g[1] > 1 and g[3] < im.width]
     _, w, h, x, y = max(c, key=lambda g: g[1] * g[2])
     return im.crop((x, y, x + w, y + h))
@@ -69,7 +96,18 @@ MENUS = [
     ("06g", "Compte d’envoi", "Champ « De » de la fenêtre de rédaction"),
     ("06h", "Pièce jointe", "Bouton ⋯ d’un fichier joint"),
 ]
-crops = [(Image.open(f"{D}/{k}-pop1.png").convert("RGB"), t, s) for k, t, s in MENUS]
+def pop_on_sheet(k):
+    """The menu's popover, its shadow laid on the sheet's ground."""
+    xwd = f"{D}/{k}-pop1.xwd"
+    pop = xwd_rgba(xwd) if os.path.exists(xwd) else None
+    if pop is None:
+        return Image.open(f"{D}/{k}-pop1.png").convert("RGB")
+    ground = Image.new("RGBA", pop.size, (250, 250, 250, 255))
+    ground.alpha_composite(pop)
+    return ground.convert("RGB")
+
+
+crops = [(pop_on_sheet(k), t, s) for k, t, s in MENUS]
 cols = [max(c[0].width for c in crops[i::4]) for i in range(4)]
 row1 = max(c[0].height for c in crops[:4])
 row2 = max(c[0].height for c in crops[4:])

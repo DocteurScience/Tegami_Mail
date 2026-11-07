@@ -7,6 +7,10 @@
 # Options, as environment before the command (not as arguments: those are
 # read after the settings files are written): WINDOW, PRIVACY (as in
 # shot.sh), PRIVACY_FILE, SIDEBAR (sidebar.toml), FONT, SCREEN.
+# A compositor (xcompmgr) runs under the app, so GTK draws popovers with
+# their rounded corners and shadows as on a desktop; popgrab.sh keeps
+# their alpha for mockup-crop.py to lay them over the screen. NOCOMP=1
+# leaves it out (popovers then come square).
 name=$1; at=$2; shift 2
 mkdir -p /shots/grab; export HOME=$(mktemp -d /tmp/home-XXXX)
 mkdir -p $HOME/.config/tegami $HOME/.config/gtk-4.0 $HOME/.config/fontconfig
@@ -30,15 +34,16 @@ SCR=${SCREEN:-2880x1800}
 export TEGAMI_DEMO=1 TEGAMI_SHOWCASE=/tmp/$name-internal.png TEGAMI_SHOWCASE_DELAY=${DELAY:-60} \
   GSK_RENDERER=cairo GDK_SCALE=2 GDK_BACKEND=x11 LANG=${LANG_:-fr_FR.UTF-8} LANGUAGE=fr \
   TEGAMI_LOCALEDIR=/tmp/loc WEBKIT_DISABLE_SANDBOX_THIS_IS_DANGEROUS=1 TEGAMI_DEMO_NOW=${NOW:-1761730920} "$@"
-export NAME=$name AT=$at ACT="${ACT:-}"
+export NAME=$name AT=$at ACT="${ACT:-}" NOCOMP="${NOCOMP:-}"
 timeout $((at+25)) dbus-run-session -- xvfb-run -a -s "-screen 0 ${SCR}x24" bash -c '
+  [ -z "$NOCOMP" ] && command -v xcompmgr >/dev/null && { xcompmgr -n & sleep 0.5; }
   /src/target-ubu/debug/tegami > /shots/grab/$NAME.log 2>&1 &
   sleep $AT
   eval "$ACT"
   . /popgrab.sh
   xwininfo -root -children | grep -E "^ +0x" | grep -v "has no name" > /shots/grab/$NAME.windows
   xwd -root -silent | convert xwd:- /shots/grab/$NAME.png
-  kill %1' 
+  kill $(jobs -p)' 
 # The settings as the app left them, to start another capture from.
 cp $HOME/.config/tegami/privacy.toml /shots/grab/$name.privacy.toml 2>/dev/null
 ls -la /shots/grab/$name.png | tail -1

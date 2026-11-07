@@ -108,6 +108,7 @@ Dernière mise à jour : 2026-11-02, après `40a6c7e`.
 | `131e215` | Galerie d'icônes supprimée (décision du 2026-11-07) : Réglages → Apparence → Icône, étape de l'assistant, redémarrage proposé, `data/icons/alt`, sources `classic`/`square*`, champs `app_icon*` de state.toml ; au démarrage, une icône choisie avant est retirée du lanceur |
 | `06fab39` | Tri, affichage et filtres, étape 1 : « Non lus en premier », « Favoris en premier » (aussi le clic sur l'en-tête étoile) et le filtre « Étiquetés » supprimés (décisions du 2026-11-07). Le tri n'est pas enregistré : aucune migration ; une clé ancienne se lit « récents en premier » |
 | `c756286` | Tri, affichage et filtres, étape 2 (maquettes 18 à 21) : popover « Trier et afficher » à une colonne (icône `tegami-sort-symbolic`), menu « Filtres » à côté du champ de recherche (Messages : 4 cases dont Importance haute ; Période : Toutes, Aujourd'hui, 7 j, 30 j, Cette année, Personnalisée…), pastilles retirables, « Tout effacer », badge et décompte, sélecteur Tous/Non lus/Favoris sous la recherche (`src/app/list_filters.rs`). Calendrier intégré remplacé par la boîte « Période personnalisée » ; `QuickFilter::Today` devient `Period::Today`. Crochet `TEGAMI_SHOWCASE_LIST=sort|filters|active|period`, captures 18–21 ajoutées à `mockup-shots.sh` |
+| (ce commit) | Popovers : ombre plus profonde et liseré plus net, comme les maquettes (coins de 12 px déjà identiques). Les captures passent par un compositeur (xcompmgr) et gardent l'alpha des popovers : coins et ombres visibles |
 
 ## Décisions prises
 
