@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+<defs>
+  <clipPath id="env"><path d="M17 26 L111 26 Q116 26 116 31 L116 99 Q116 104 111 104 L17 104 Q12 104 12 99 L12 31 Q12 26 17 26 Z"/></clipPath>
+  <filter id="wash" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="1.5"/></filter>
+  <filter id="soft"><feGaussianBlur stdDeviation=".45"/></filter>
+  <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff"/><stop offset=".55" stop-color="#fff"/><stop offset="1" stop-color="#000"/></linearGradient>
+  <mask id="mfade" maskUnits="userSpaceOnUse" x="12" y="26" width="104" height="78"><rect x="12" y="26" width="104" height="78" fill="url(#fade)"/></mask>
+  <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fdfcf8"/><stop offset="1" stop-color="#eeebe1"/></linearGradient>
+</defs>
+<g clip-path="url(#env)">
+  <rect x="12" y="26" width="104" height="78" fill="url(#paper)"/>
+  <!-- montagnes en lavis, fondues dans le papier vers le bas -->
+  <g mask="url(#mfade)"><g filter="url(#wash)">
+    <path d="M60 104 L74 60 L82 70 L96 46 L116 80 L116 104 Z" fill="#c4c9cf"/>
+    <path d="M52 104 L68 78 L80 90 L98 66 L116 92 L116 104 Z" fill="#8d939b"/>
+  </g></g>
+  <ellipse cx="86" cy="72" rx="26" ry="3.6" fill="#fbfaf5" opacity=".85" filter="url(#wash)"/>
+  <!-- rabat : voile de papier et pli -->
+  <path d="M12 26 L116 26 L64 62 Z" fill="#f3f1ea" opacity=".55"/>
+  <path d="M12 26 L64 62 L116 26" fill="none" stroke="#23242a" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round" opacity=".92"/>
+  <!-- rocher -->
+  <g filter="url(#soft)">
+    <path d="M12 104 L12 94 C20 88 30 90 38 86 C44 84 50 90 54 104 Z" fill="#6f757d" opacity=".92"/>
+    <!-- pin : tronc effilé, branches, éventails d'aiguilles -->
+    <path d="M24 98 C28 90 38 86 40 76 C42 68 38 64 42 54 L45 55 C42 64 46 70 45 78 C44 88 38 92 38 98 Z" fill="#23242a"/>
+    <path d="M42 68 C46 66 49 64 51 60 M41 74 C34 72 30 70 26 65 M42 58 C42 54 43 50 45 46" fill="none" stroke="#23242a" stroke-width="2" stroke-linecap="round"/>
+    <g stroke="#23242a" stroke-linecap="round" fill="none" opacity="0.92"><path d="M51 59 L41.5 57.3" stroke-width="1.9"/><path d="M51 59 L44.0 55.3" stroke-width="1.9"/><path d="M51 59 L46.9 54.8" stroke-width="1.9"/><path d="M51 59 L46.7 50.4" stroke-width="1.9"/><path d="M51 59 L49.8 51.2" stroke-width="1.9"/><path d="M51 59 L51.9 53.2" stroke-width="1.9"/><path d="M51 59 L55.3 50.3" stroke-width="1.9"/><path d="M51 59 L56.5 53.4" stroke-width="1.9"/><path d="M51 59 L56.2 56.3" stroke-width="1.9"/><path d="M51 59 L60.6 57.3" stroke-width="1.9"/></g><circle cx="51" cy="59" r="2.8" fill="#23242a" opacity="0.92"/><g stroke="#23242a" stroke-linecap="round" fill="none" opacity="0.92"><path d="M26 64 L16.4 63.2" stroke-width="1.8"/><path d="M26 64 L18.8 60.8" stroke-width="1.8"/><path d="M26 64 L21.7 60.0" stroke-width="1.8"/><path d="M26 64 L21.3 55.5" stroke-width="1.8"/><path d="M26 64 L24.6 56.3" stroke-width="1.8"/><path d="M26 64 L26.9 58.2" stroke-width="1.8"/><path d="M26 64 L30.5 55.4" stroke-width="1.8"/><path d="M26 64 L31.6 58.6" stroke-width="1.8"/><path d="M26 64 L31.3 61.5" stroke-width="1.8"/></g><circle cx="26" cy="64" r="2.7" fill="#23242a" opacity="0.92"/><g stroke="#23242a" stroke-linecap="round" fill="none" opacity="0.92"><path d="M45 45 L34.7 42.3" stroke-width="1.9"/><path d="M45 45 L37.6 40.4" stroke-width="1.9"/><path d="M45 45 L40.7 40.2" stroke-width="1.9"/><path d="M45 45 L40.5 35.4" stroke-width="1.9"/><path d="M45 45 L43.7 36.5" stroke-width="1.9"/><path d="M45 45 L45.9 38.6" stroke-width="1.9"/><path d="M45 45 L49.5 35.3" stroke-width="1.9"/><path d="M45 45 L50.7 38.6" stroke-width="1.9"/><path d="M45 45 L50.5 41.6" stroke-width="1.9"/><path d="M45 45 L55.3 42.2" stroke-width="1.9"/></g><circle cx="45" cy="45" r="2.8" fill="#23242a" opacity="0.92"/>
+  </g>
+</g>
+<path d="M17 26 L111 26 Q116 26 116 31 L116 99 Q116 104 111 104 L17 104 Q12 104 12 99 L12 31 Q12 26 17 26 Z" fill="none" stroke="#23242a" stroke-width="1.25" stroke-linejoin="round" opacity=".92"/>
+<!-- sceau -->
+<g transform="rotate(-4 64 62)">
+  <rect x="55" y="53" width="18" height="18" rx="2.5" fill="#c8362b"/>
+  <rect x="57" y="55" width="14" height="14" rx="1.5" fill="none" stroke="#fbeee4" stroke-width="1" opacity=".8"/>
+  <path d="M60.5 59 H67.5 M64 59 V66 M60.5 66 C62 65 63 64.5 64 64 M67.5 66 C66 65 65 64.5 64 64" fill="none" stroke="#fbeee4" stroke-width="1.5" stroke-linecap="round"/>
+</g>
+</svg>

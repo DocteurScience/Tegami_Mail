@@ -8,6 +8,8 @@
 - **[DESIGN.md](DESIGN.md):** how the interface should look and behave, with
   the screens it refers to; [DESIGN_STRINGS.md](DESIGN_STRINGS.md) lists the
   text it needs and its French translation.
+- **[ICON.md](ICON.md):** the new application icon: idea, construction and
+  what is left to do before it ships.
 - **[BUILDING.md](BUILDING.md):** building from source.
 - **[CONTRIBUTING.md](CONTRIBUTING.md):** how to help.
 - **[CREDITS.md](CREDITS.md):** who has.
