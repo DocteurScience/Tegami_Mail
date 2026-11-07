@@ -138,6 +138,41 @@ the installed libadwaita:
 }
 ```
 
+## Sorting, display and filters
+
+The old sort popover held about twenty controls of three types, with a full
+calendar, and covered over half of the window. The HIG asks for the opposite:
+popovers "should always be small" (about a third of the window at most) and
+"low in complexity", should not mix many control types, and menus hold
+three to twelve items, without nested submenus, with actions, check boxes
+and radio buttons kept apart. The job is therefore split into three small
+places, one purpose each (screens 18 to 21).
+
+| Place | What it holds |
+| --- | --- |
+| Quick filter, under the search field | The toggle group All, Unread, Starred. It replaces the sorts "Unread first" and "Starred first". |
+| Sort and display, the list's end (18) | A single-column popover, about 290 px wide, 7 items. Sort by (radio): date newest first, date oldest first, sender A–Z, subject A–Z. Show (check): group into conversations, message preview, avatars. |
+| Filters, a button beside the search field (19) | A menu about 300 px wide. Messages (check): has attachments, addressed to me, from contacts. Period (radio): any date, today, last 7 days, last 30 days, this year. "Custom…" opens a small dialog (21) with two date fields, each with a calendar button. "Clear filters" is disabled when no filter is set. |
+
+Active filters (20): each one is a removable chip under the search field
+(its remove button has an accessible name: "Remove filter: …"), "Clear all"
+removes them together, the Filters button shows the count, and a status line
+under the chips says how many messages match. Nothing relies on colour
+alone: radios are circles, check boxes are rounded squares.
+
+Removed from the old popover, as proposed to the owner on 2026-11-07:
+
+- "Unread first" and "Starred first": the quick filter does the job.
+- "Tagged": the sidebar already filters by tag.
+- The inline calendar: replaced by the custom-period dialog.
+- The separate "Today" entry in the dates area: it is now in Period.
+
+Each of these is a feature the app has today. The owner approved the layout,
+not yet each removal: ask before deleting one (CLAUDE.md), and keep a saved
+"Unread first" or "Starred first" sort working until he has answered.
+Undecided: "High importance". If kept, it is a fourth check box in
+Messages, still within twelve items.
+
 ## Reading pane and conversations
 
 - A single message: subject (`title-2`), sender with avatar (`AdwAvatar`), date
@@ -190,7 +225,7 @@ keys in the mockups are placeholders.
 | Main menu | the sidebar's menu button | Sync now. Add account, GNOME Online Accounts. Preferences, Keyboard shortcuts, Help, About. |
 | More actions, message | the reading pane's end | Forward as attachment, Mark as unread, Mark as spam, Move to (submenu). Show remote images, View source, Print, Save as. |
 | Message context menu | a right click on a card | Reply, Reply to all, Forward. Mark as read, Star, Tags (submenu). Archive, Move to (submenu), Mark as spam. Delete. |
-| Sort and view | the list's end | Sort by: date newest first, date oldest first, sender, subject, size (radio). Show: group into conversations, message preview, avatars (check). |
+| Sort and display | the list's end | Sort by: date newest first, date oldest first, sender, subject (radio). Show: group into conversations, message preview, avatars (check). See [Sorting, display and filters](#sorting-display-and-filters). |
 | Folder context menu | a right click on a folder | Mark all as read, Sync this folder. New subfolder, Rename. Delete folder (destructive style). |
 | More actions, composer | the composer's end | Save draft. Format: rich text, plain text (radio). Sign with OpenPGP, Encrypt with OpenPGP, Request a read receipt (check). Check spelling (check), Spelling language (submenu). Delete draft (destructive style). |
 | Sending account | the From field | Send from: one row per account with its address, the current one checked. Manage accounts. |
@@ -374,4 +409,6 @@ All in [`data/repo/design/`](../data/repo/design/): `01-list.png`,
 `08-tags-filter.png`, `09-tags-dialogs.png`, `10-attachments-received.png`,
 `11-attachments-sending.png`, `12-attachments-drop.png`,
 `13-attachment-forgotten.png`, `14-narrow-1024x600.png`,
-`15-phone-width.png`, `16-high-contrast.png`, `17-large-text.png`.
+`15-phone-width.png`, `16-high-contrast.png`, `17-large-text.png`,
+`18-sort-display.png`, `19-filters-menu.png`, `20-filters-active.png`,
+`21-custom-period.png`.

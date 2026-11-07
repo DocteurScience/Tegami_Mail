@@ -73,20 +73,50 @@ Keyboard shortcuts are not translated.
 | Save as… | Enregistrer sous… | new |
 | Star | Ajouter aux favoris | yes |
 
-### Sort and view menu
+### Sort, display and filters
+
+Screens 18 to 21. Most of these strings are in the catalogue already: reuse
+the catalogue's wording where the mockup differs ("Has attachments" for
+"Avec pièce jointe", "Addressed to me" for "Adressés à moi", "From" and "To"
+for "Du" and "Au").
 
 | Source string (English) | Proposed French | In the catalogue |
 | --- | --- | --- |
 | Sort by | Trier par | yes, French: Trier par |
-| Date, newest first | Date, du plus récent | new |
-| Date, oldest first | Date, du plus ancien | new |
-| Sender | Expéditeur | yes, French: Expéditeur |
-| Subject | Objet | yes, French: Objet |
-| Size | Taille | yes, French: Taille |
+| Date (Newest first) | Date (récents en premier) | yes, French: Date (récents en premier) |
+| Date (Oldest first) | Date (anciens en premier) | yes, French: Date (anciens en premier) |
+| Sender (A–Z) | Expéditeur (A–Z) | yes, French: Expéditeur (A–Z) |
+| Subject (A–Z) | Objet (A–Z) | yes, French: Objet (A–Z) |
 | Show | Afficher | yes, French: Afficher |
-| Group into conversations | Regrouper en conversations | new |
+| Group into conversations | Regrouper en conversations | yes, French: Regrouper en conversations |
 | Message preview | Aperçu du message | yes, French: Aperçu du message |
-| Avatars | Avatars | new |
+| Avatars | Avatars | yes, French: Avatars |
+| Filters | Filtres | yes, French: Filtres |
+| Messages | Messages | yes, French: Messages |
+| Has attachments | Contient des pièces jointes | yes, French: Contient des pièces jointes |
+| Addressed to me | Adressé à moi | yes, French: Adressé à moi |
+| From contacts | De mes contacts | yes, French: De mes contacts |
+| Period | Période | new |
+| Any date | N’importe quelle date | yes, French: N’importe quelle date |
+| Today | Aujourd’hui | yes, French: Aujourd’hui |
+| Last 7 days | 7 derniers jours | yes, French: 7 derniers jours |
+| Last 30 days | 30 derniers jours | new |
+| This year | Cette année | new |
+| Custom… | Personnalisé… | yes, French: Personnalisé… |
+| Clear filters | Effacer les filtres | yes, French: Effacer les filtres |
+| Clear all | Tout effacer | yes, French: Tout effacer |
+| Remove filter: {name} | Retirer le filtre : {name} | new |
+| Filters, {n} active | Filtres, {n} actifs | new, plural (`ni18n_f`) |
+| Custom period | Période personnalisée | new |
+| Apply | Appliquer | new |
+| Cancel | Annuler | yes, French: Annuler |
+| From | De | yes, French: De |
+| To | À | yes, French: À |
+| Choose a date | Choisir une date | new |
+| Both dates are included. Leave a field empty to leave that side open. | Les deux dates sont comprises. Laissez un champ vide pour ne pas limiter ce côté. | new |
+
+The result count under the filter chips ("4 messages") is a plural: check
+whether the catalogue has a "{n} messages" pair before adding one.
 
 ### Folder menu
 
