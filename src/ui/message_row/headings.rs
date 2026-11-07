@@ -128,11 +128,15 @@ pub(crate) fn fill_headings(
         if arrow.is_some() {
             cell.add_css_class("sorted");
         }
-        cell.set_cursor_from_name(Some("pointer"));
-        let click = click.clone();
-        let gesture = gtk::GestureClick::new();
-        gesture.connect_released(move |_, _, _, _| click(column));
-        cell.add_controller(gesture);
+        // The star column sorts by nothing since Starred first went
+        // (2026-11-07), so it takes no click.
+        if column != ListColumn::Star {
+            cell.set_cursor_from_name(Some("pointer"));
+            let click = click.clone();
+            let gesture = gtk::GestureClick::new();
+            gesture.connect_released(move |_, _, _, _| click(column));
+            cell.add_controller(gesture);
+        }
         line.append(&cell);
     }
     bins

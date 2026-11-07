@@ -260,7 +260,9 @@ impl MessageList {
         column: crate::config::ListColumn,
         sender: &ComponentSender<Self>,
     ) {
-        let order = column_sort(column, self.show_recipient);
+        let Some(order) = column_sort(column, self.show_recipient) else {
+            return;
+        };
         match (order, self.sort) {
             // Date has an order each way of its own.
             (SortOrder::DateNewest, SortOrder::DateNewest) => self.sort = SortOrder::DateOldest,

@@ -1620,7 +1620,8 @@ and date.
 
 **Column headings**, in the same group, names the columns above the list.
 Clicking a heading sorts the list by that column, and clicking it again
-reverses the order; the sorted heading is in the accent color, with an
+reverses the order (the star column excepted: the **Starred** quick filter
+shows starred mail); the sorted heading is in the accent color, with an
 arrow. Correspondents sorts by the names the column shows, and Tags by tag
 name with untagged mail last. The sort menu follows the headings.
 
@@ -1724,7 +1725,7 @@ word, such as `10:30` or `re:`, is searched for as written.
 
 The sort and filter button in the list's header opens a popover of three
 columns. **Sort by** orders the list by date, newest or oldest first, by
-sender or subject, or puts unread or starred mail first. **Show only** holds
+sender or subject. **Show only** holds
 the quick filters:
 
 - **Unread** and **Starred**
@@ -1732,7 +1733,6 @@ the quick filters:
 - **Addressed to me**: one of your addresses or aliases is in To or Cc
 - **From contacts**: the sender is in your Contacts, as for filter rules
 - **High importance**
-- **Tagged**: the message has a tag or a Gmail label
 - **Today**: it arrived since midnight on this computer's clock
 
 In **Dates**, the list shows only the mail that arrived from the start of

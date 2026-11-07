@@ -656,12 +656,6 @@ msgstr "Remitent (A–Z)"
 msgid "Subject (A–Z)"
 msgstr "Assumpte (A–Z)"
 
-msgid "Unread first"
-msgstr "No llegits primer"
-
-msgid "Starred first"
-msgstr "Destacats primer"
-
 #, fuzzy
 msgid "Clear dates"
 msgstr "Esborra els filtres"

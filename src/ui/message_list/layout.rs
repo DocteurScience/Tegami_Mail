@@ -346,8 +346,8 @@ impl MessageList {
             .iter()
             .copied()
             .find(|c| match (column_sort(*c, show_recipient), self.sort) {
-                (SortOrder::DateNewest, SortOrder::DateOldest) => true,
-                (order, current) => order == current,
+                (Some(SortOrder::DateNewest), SortOrder::DateOldest) => true,
+                (order, current) => order == Some(current),
             })
             .map(|c| (c, self.sort.downwards() != self.sort_reversed));
         let input = self.shared.input.clone();

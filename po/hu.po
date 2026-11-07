@@ -677,13 +677,6 @@ msgstr "Feladó (A–Z)"
 msgid "Subject (A–Z)"
 msgstr "Tárgy (A–Z)"
 
-msgid "Unread first"
-msgstr "Olvasatlanok elöl"
-
-#, fuzzy
-msgid "Starred first"
-msgstr "Olvasatlanok elöl"
-
 #, fuzzy
 msgid "Clear dates"
 msgstr "Keresési szűrők"

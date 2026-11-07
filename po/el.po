@@ -666,12 +666,6 @@ msgstr "Αποστολέας (Α–Ω)"
 msgid "Subject (A–Z)"
 msgstr "Θέμα (Α–Ω)"
 
-msgid "Unread first"
-msgstr "Μη αναγνωσμένα πρώτα"
-
-msgid "Starred first"
-msgstr "Με τα μηνύματα με αστέρι πρώτα"
-
 #, fuzzy
 msgid "Clear dates"
 msgstr "Εκκαθάριση φίλτρων"

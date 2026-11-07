@@ -446,11 +446,6 @@ impl MessageList {
                 .contact_addresses
                 .clone()
                 .filter(|_| self.quick.has(QuickFilter::Contacts)),
-            tags: if self.quick.has(QuickFilter::Tagged) {
-                self.shared.tags.borrow().clone()
-            } else {
-                Vec::new()
-            },
             today: if self.quick.has(QuickFilter::Today) {
                 start_of_today()
             } else {

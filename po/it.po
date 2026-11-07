@@ -669,12 +669,6 @@ msgstr "Mittente (A–Z)"
 msgid "Subject (A–Z)"
 msgstr "Oggetto (A–Z)"
 
-msgid "Unread first"
-msgstr "Non letti prima"
-
-msgid "Starred first"
-msgstr "Contrassegnati prima"
-
 #, fuzzy
 msgid "Clear dates"
 msgstr "Filtri di ricerca"

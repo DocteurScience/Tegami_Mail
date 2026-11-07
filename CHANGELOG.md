@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- **Removed: the "Unread first" and "Starred first" sorts, and the "Tagged"
+  quick filter** (owner's decisions, 2026-11-07). The Unread and Starred
+  switch above the list does the first two's job, and the sidebar's tags the
+  third's. The star column's heading no longer sorts.
+
 - **Changed: the application icon** (docs/ICON.md): a paper envelope drawn
   in ink wash, with misty mountains, a pine and a red seal. The beta build
   wears GNOME's development stripe across its foot.

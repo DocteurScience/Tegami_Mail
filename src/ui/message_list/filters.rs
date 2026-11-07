@@ -16,31 +16,28 @@ pub(crate) enum QuickFilter {
     ToMe,
     Contacts,
     Important,
-    Tagged,
     Today,
 }
 
 impl QuickFilter {
-    pub(crate) const ALL: [QuickFilter; 8] = [
+    pub(crate) const ALL: [QuickFilter; 7] = [
         QuickFilter::Unread,
         QuickFilter::Starred,
         QuickFilter::Attachment,
         QuickFilter::ToMe,
         QuickFilter::Contacts,
         QuickFilter::Important,
-        QuickFilter::Tagged,
         QuickFilter::Today,
     ];
 
     /// The filters the list header's popover offers: every one but Unread
     /// and Starred, which have the All / Unread / Starred switch above the
     /// list, so that each filter is set in one place.
-    pub(crate) const IN_POPOVER: [QuickFilter; 6] = [
+    pub(crate) const IN_POPOVER: [QuickFilter; 5] = [
         QuickFilter::Attachment,
         QuickFilter::ToMe,
         QuickFilter::Contacts,
         QuickFilter::Important,
-        QuickFilter::Tagged,
         QuickFilter::Today,
     ];
 
@@ -53,7 +50,6 @@ impl QuickFilter {
             QuickFilter::ToMe => i18n_noop("Addressed to me"),
             QuickFilter::Contacts => i18n_noop("From contacts"),
             QuickFilter::Important => i18n_noop("High importance"),
-            QuickFilter::Tagged => i18n_noop("Tagged"),
             QuickFilter::Today => i18n_noop("Today"),
         })
     }
@@ -150,7 +146,6 @@ pub(super) struct QuickFilterContext {
     pub(super) own: std::collections::HashSet<String>,
     /// Your contacts' addresses; none read yet lets nothing through.
     pub(super) contacts: Option<std::sync::Arc<std::collections::HashSet<String>>>,
-    pub(super) tags: Vec<crate::config::Tag>,
     /// Local midnight, Unix seconds ("Today").
     pub(super) today: i64,
     /// The date range as Unix seconds, the end excluded.
@@ -179,7 +174,6 @@ impl QuickFilterContext {
                     .as_ref()
                     .is_some_and(|c| c.contains(&m.from_addr.trim().to_lowercase())),
                 QuickFilter::Important => m.importance == crate::models::Importance::High,
-                QuickFilter::Tagged => !m.pills(&self.tags).is_empty(),
                 QuickFilter::Today => m.timestamp >= self.today,
             })
     }

@@ -661,12 +661,6 @@ msgstr "Absender (A–Z)"
 msgid "Subject (A–Z)"
 msgstr "Betreff (A–Z)"
 
-msgid "Unread first"
-msgstr "Ungelesen zuerst"
-
-msgid "Starred first"
-msgstr "Markierte zuerst"
-
 msgid "Clear dates"
 msgstr "Datumsangaben zurücksetzen"
 

@@ -663,12 +663,6 @@ msgstr "Remetente (A–Z)"
 msgid "Subject (A–Z)"
 msgstr "Assunto (A–Z)"
 
-msgid "Unread first"
-msgstr "Não lidas primeiro"
-
-msgid "Starred first"
-msgstr "Com estrela primeiro"
-
 #, fuzzy
 msgid "Clear dates"
 msgstr "Limpar filtros"

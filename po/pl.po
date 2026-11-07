@@ -699,13 +699,6 @@ msgstr "Nadawca (A–Z)"
 msgid "Subject (A–Z)"
 msgstr "Temat (A–Z)"
 
-msgid "Unread first"
-msgstr "Najpierw nieprzeczytane"
-
-#, fuzzy
-msgid "Starred first"
-msgstr "Najpierw nieprzeczytane"
-
 #, fuzzy
 msgid "Clear dates"
 msgstr "Wyszukaj filtry"

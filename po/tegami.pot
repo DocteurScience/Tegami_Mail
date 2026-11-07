@@ -608,12 +608,6 @@ msgstr ""
 msgid "Subject (A–Z)"
 msgstr ""
 
-msgid "Unread first"
-msgstr ""
-
-msgid "Starred first"
-msgstr ""
-
 msgid "Clear dates"
 msgstr ""
 

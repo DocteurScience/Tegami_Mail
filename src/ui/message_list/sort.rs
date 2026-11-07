@@ -19,12 +19,6 @@ pub(super) fn message_cmp(a: &Message, b: &Message, order: SortOrder) -> std::cm
         SortOrder::Subject => normalize_subject(&a.subject)
             .cmp(&normalize_subject(&b.subject))
             .then(b.timestamp.cmp(&a.timestamp)),
-        // `true` sorts after `false`, so compare b-vs-a to put unread/flagged first.
-        SortOrder::UnreadFirst => b.unread.cmp(&a.unread).then(b.timestamp.cmp(&a.timestamp)),
-        SortOrder::FlaggedFirst => b
-            .starred
-            .cmp(&a.starred)
-            .then(b.timestamp.cmp(&a.timestamp)),
         // The single line's other columns (#334).
         SortOrder::Recipients => {
             let to = |m: &Message| crate::ui::message_row::recipient_names(&m.to).to_lowercase();
@@ -83,11 +77,16 @@ pub(super) fn text_key_cmp(a: &str, b: &str) -> std::cmp::Ordering {
 }
 
 /// The order a click on a column's heading sorts by (#334). In Sent the
-/// sender column names the recipients, and sorts by them.
-pub(super) fn column_sort(column: crate::config::ListColumn, show_recipient: bool) -> SortOrder {
+/// sender column names the recipients, and sorts by them. The star column
+/// sorts by nothing since "Starred first" went (owner's decision,
+/// 2026-11-07): the Starred quick filter does that job.
+pub(super) fn column_sort(
+    column: crate::config::ListColumn,
+    show_recipient: bool,
+) -> Option<SortOrder> {
     use crate::config::ListColumn as C;
-    match column {
-        C::Star => SortOrder::FlaggedFirst,
+    Some(match column {
+        C::Star => return None,
         C::Sender if show_recipient => SortOrder::Recipients,
         C::Sender => SortOrder::Sender,
         C::Recipients => SortOrder::Recipients,
@@ -100,7 +99,7 @@ pub(super) fn column_sort(column: crate::config::ListColumn, show_recipient: boo
         C::Date => SortOrder::DateNewest,
         C::Correspondents => SortOrder::Correspondents,
         C::Tags => SortOrder::Tags,
-    }
+    })
 }
 
 /// Lower-case the subject and strip any leading run of reply/forward prefixes
@@ -172,8 +171,6 @@ pub(crate) enum SortOrder {
     DateOldest,
     Sender,
     Subject,
-    UnreadFirst,
-    FlaggedFirst,
     Recipients,
     Account,
     Attachment,
@@ -185,13 +182,14 @@ pub(crate) enum SortOrder {
 }
 
 impl SortOrder {
-    pub(super) const KEYS: [(SortOrder, &'static str); 14] = [
+    /// "unread" and "flagged" (Unread first, Starred first) were removed
+    /// on 2026-11-07; the list's order is not saved, so nothing carries
+    /// them, and an unknown key reads as newest first.
+    pub(super) const KEYS: [(SortOrder, &'static str); 12] = [
         (SortOrder::DateNewest, "date_newest"),
         (SortOrder::DateOldest, "date_oldest"),
         (SortOrder::Sender, "sender"),
         (SortOrder::Subject, "subject"),
-        (SortOrder::UnreadFirst, "unread"),
-        (SortOrder::FlaggedFirst, "flagged"),
         (SortOrder::Recipients, "recipients"),
         (SortOrder::Account, "account"),
         (SortOrder::Attachment, "attachment"),
@@ -219,13 +217,11 @@ impl SortOrder {
     }
 
     /// Whether the order runs from the most to the least: newest first,
-    /// starred first and so on, against A to Z.
+    /// attachments first and so on, against A to Z.
     pub(super) fn downwards(self) -> bool {
         matches!(
             self,
             SortOrder::DateNewest
-                | SortOrder::UnreadFirst
-                | SortOrder::FlaggedFirst
                 | SortOrder::Attachment
                 | SortOrder::Importance
                 | SortOrder::Replied

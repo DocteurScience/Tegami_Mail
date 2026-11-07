@@ -204,11 +204,20 @@ fn msg(id: u32, message_id: &str, references: &str) -> Message {
 fn headings_sort_by_their_columns() {
     use crate::config::ListColumn;
     for c in ListColumn::ALL {
-        let order = column_sort(c, false);
-        assert_eq!(SortOrder::from_key(order.key()), order);
+        if let Some(order) = column_sort(c, false) {
+            assert_eq!(SortOrder::from_key(order.key()), order);
+        }
     }
-    assert_eq!(column_sort(ListColumn::Sender, true), SortOrder::Recipients);
-    assert_eq!(column_sort(ListColumn::Tags, false), SortOrder::Tags);
+    assert_eq!(
+        column_sort(ListColumn::Sender, true),
+        Some(SortOrder::Recipients)
+    );
+    assert_eq!(column_sort(ListColumn::Tags, false), Some(SortOrder::Tags));
+    // Starred first is gone; the star column sorts by nothing, and a key
+    // from before reads as newest first.
+    assert_eq!(column_sort(ListColumn::Star, false), None);
+    assert_eq!(SortOrder::from_key("flagged"), SortOrder::DateNewest);
+    assert_eq!(SortOrder::from_key("unread"), SortOrder::DateNewest);
     assert_eq!(text_key_cmp("", "a"), std::cmp::Ordering::Greater);
     assert_eq!(text_key_cmp("ann", "bob"), std::cmp::Ordering::Less);
     let due = |id, due| Message {
@@ -629,7 +638,6 @@ fn quick_filters_narrow_together() {
         contacts: Some(std::sync::Arc::new(
             ["x@example.com".to_string()].into_iter().collect(),
         )),
-        tags: Vec::new(),
         today: 900,
         span: filters.span(),
     };
@@ -672,7 +680,6 @@ fn date_range_spans_whole_days() {
         filters,
         own: Default::default(),
         contacts: None,
-        tags: Vec::new(),
         today: 0,
         span: filters.span(),
     };

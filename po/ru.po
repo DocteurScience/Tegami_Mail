@@ -700,12 +700,6 @@ msgstr "Отправитель (A–Я)"
 msgid "Subject (A–Z)"
 msgstr "Тема (А–Я)"
 
-msgid "Unread first"
-msgstr "Сначала непрочитанные"
-
-msgid "Starred first"
-msgstr "Сначала отмеченные"
-
 #, fuzzy
 msgid "Clear dates"
 msgstr "Поиск фильтров"

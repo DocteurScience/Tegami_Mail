@@ -657,12 +657,6 @@ msgstr "Expéditeur (A–Z)"
 msgid "Subject (A–Z)"
 msgstr "Objet (A–Z)"
 
-msgid "Unread first"
-msgstr "Non lus en premier"
-
-msgid "Starred first"
-msgstr "Favoris en premier"
-
 msgid "Clear dates"
 msgstr "Effacer les dates"
 

@@ -91,14 +91,7 @@ fn sort_orders_round_trip_through_their_keys() {
         .collect();
     assert_eq!(
         downwards,
-        [
-            "date_newest",
-            "unread",
-            "flagged",
-            "attachment",
-            "importance",
-            "replied"
-        ]
+        ["date_newest", "attachment", "importance", "replied"]
     );
 }
 
