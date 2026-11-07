@@ -1,0 +1,45 @@
+# Builds the AppImage (#235) with tools/build-appimage.sh, on demand
+# (Actions → AppImage → Run workflow, or `gh workflow run appimage.yml`):
+# a release bundle is wanted for a release, not for every push.
+#
+# The script builds inside Arch for current libraries; here the job runs in
+# the image it would have started itself, so it takes its container side
+# directly. quick-sharun starts the app under strace on Xvfb to find the
+# libraries loaded with dlopen, hence the ptrace capability.
+#
+# The result is the `appimage` artifact: Tegami Mail-x86_64.AppImage.
+
+name: AppImage
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  bundle:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    container:
+      image: ghcr.io/pkgforge-dev/archlinux:latest
+      options: --cap-add SYS_PTRACE --security-opt seccomp=unconfined
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build
+        run: tools/build-appimage.sh 2>&1 | tee appimage-build.log; test "${PIPESTATUS[0]}" -eq 0
+        shell: bash
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: appimage
+          path: packaging/out/*.AppImage
+          retention-days: 30
+
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: appimage-build-log
+          path: appimage-build.log
+          retention-days: 7
