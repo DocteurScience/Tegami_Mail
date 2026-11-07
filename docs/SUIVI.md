@@ -106,7 +106,7 @@ Dernière mise à jour : 2026-11-02, après `40a6c7e`.
 | `a0c11c9` | Réglages → Étiquettes comme la maquette 09 (pastille, « n messages · Couleur », crayon, corbeille, « Nouvelle étiquette… », « Importer les étiquettes des serveurs… ») ; ajout et modification par la boîte « Nouvelle étiquette » (mode édition) ; mot-clé, couleur personnalisée et réordonnancement supprimés (décision du propriétaire, 2026-11-07). Sélecteur : seul le choix en gras, « Non lus ». `grab.sh` recompile le catalogue à chaque capture |
 | `6d42417` | Nouvelle icône (docs/ICON.md) : rendu librsvg vérifié (masque, dégradés, flous corrects ; pin un peu plus net qu'avec Chromium), rien à simplifier ; `default.svg` remplacée, `default.Devel.svg` avec la bande de développement GNOME, `hicolor/` régénéré. Licence : AGPL-3.0-or-later (décision du 2026-11-07) |
 | `131e215` | Galerie d'icônes supprimée (décision du 2026-11-07) : Réglages → Apparence → Icône, étape de l'assistant, redémarrage proposé, `data/icons/alt`, sources `classic`/`square*`, champs `app_icon*` de state.toml ; au démarrage, une icône choisie avant est retirée du lanceur |
-| (ce commit) | Tri, affichage et filtres, étape 1 : « Non lus en premier », « Favoris en premier » (aussi le clic sur l'en-tête étoile) et le filtre « Étiquetés » supprimés (décisions du 2026-11-07). Le tri n'est pas enregistré : aucune migration ; une clé ancienne se lit « récents en premier » |
+| `06fab39` | Tri, affichage et filtres, étape 1 : « Non lus en premier », « Favoris en premier » (aussi le clic sur l'en-tête étoile) et le filtre « Étiquetés » supprimés (décisions du 2026-11-07). Le tri n'est pas enregistré : aucune migration ; une clé ancienne se lit « récents en premier » |
 
 ## Décisions prises
 
