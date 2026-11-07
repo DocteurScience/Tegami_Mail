@@ -353,9 +353,6 @@ impl AppModel {
                 sender.input(AppMsg::Pref(PrefOutput::SetPreviewLines(p.preview_lines)));
                 sender.input(AppMsg::Pref(PrefOutput::SetAvatars(p.avatars)));
                 sender.input(AppMsg::Pref(PrefOutput::SetThreading(p.threading)));
-                if !p.app_icon.is_empty() {
-                    sender.input(AppMsg::Pref(PrefOutput::SetAppIcon(p.app_icon)));
-                }
                 self.welcome = None;
             }
 

@@ -92,8 +92,6 @@ pub(crate) struct WelcomeWidgets {
     preview_row: adw::ComboRow,
     sw_avatars: adw::SwitchRow,
     sw_threading: adw::SwitchRow,
-    /// The gallery's latest pick, read when the wizard finishes.
-    icon_choice: std::rc::Rc<std::cell::RefCell<String>>,
 }
 
 /// Extra space above the Online Accounts page's list (or its empty note)
@@ -276,7 +274,6 @@ impl Component for Welcome {
             preview_row,
             avatars: sw_avatars,
             threading: sw_threading,
-            icon_choice,
         } = build_personalize_page(&carousel);
         build_done_page(&carousel);
 
@@ -376,7 +373,6 @@ impl Component for Welcome {
             preview_row,
             sw_avatars,
             sw_threading,
-            icon_choice,
         };
         rebuild_goa_rows(&widgets.goa_list, &model.goa, &sender);
         bind_wordmark_to_position(

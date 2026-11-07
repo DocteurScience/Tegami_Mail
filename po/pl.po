@@ -1447,35 +1447,6 @@ msgstr[0] "{n} nieprzeczytana w skrzynkach odbiorczych"
 msgstr[1] "{n} nieprzeczytane w skrzynkach odbiorczych"
 msgstr[2] "{n} nieprzeczytanych w skrzynkach odbiorczych"
 
-msgid "Restarting Tegami Mail"
-msgstr "Ponowne uruchamianie aplikacji Tegami Mail"
-
-msgid ""
-"Applying your new app icon. Tegami Mail will close and reopen in a moment."
-msgstr ""
-"Stosowanie nowej ikony aplikacji. Za chwilę aplikacja Tegami Mail zostanie "
-"zamknięta i ponownie otwarta."
-
-msgid "Restart to finish switching icons?"
-msgstr "Czy uruchomić ponownie, aby dokończyć zmianę ikony?"
-
-msgid ""
-"The dock and Tegami Mail's own windows keep the old icon until Tegami Mail "
-"restarts."
-msgstr ""
-"Dok i okna aplikacji Tegami Mail zachowają starą ikonę do czasu ponownego "
-"uruchomienia aplikacji."
-
-msgid "Restart now"
-msgstr "Uruchom ponownie teraz"
-
-msgid ""
-"Couldn't restart automatically — quit and reopen Tegami Mail to finish "
-"switching the icon."
-msgstr ""
-"Nie udało się automatycznie uruchomić ponownie aplikacji Tegami Mail – "
-"zakończ jej działanie i otwórz ją ponownie, aby dokończyć zmianę ikony."
-
 msgid "Move to {name}"
 msgstr "Przenieś do katalogu {name}"
 
@@ -1704,21 +1675,6 @@ msgstr "{date} o {time}"
 #, fuzzy
 msgid "{date}, {time}"
 msgstr "{date} o {time}"
-
-msgid "Default"
-msgstr "Domyślne"
-
-msgid "Blue square"
-msgstr "Niebieski kwadrat"
-
-msgid "Navy square"
-msgstr "Granatowy kwadrat"
-
-msgid "Yellow square"
-msgstr "Żółty kwadrat"
-
-msgid "Classic"
-msgstr "Klasyczna"
 
 msgid ""
 "Tegami Mail checks for new mail and shows notifications while its window is "
@@ -5133,6 +5089,9 @@ msgstr "Domyślna systemowa"
 msgid "Account of the current folder"
 msgstr "Konto bieżącego katalogu"
 
+msgid "Default"
+msgstr "Domyślne"
+
 #, fuzzy
 msgid "Same as reading pane zoom"
 msgstr "Zwijanie paska narzędzi panelu czytania"
@@ -5221,12 +5180,6 @@ msgstr "Pisanie w oknie głównym"
 
 msgid "Theme"
 msgstr "Motyw"
-
-#, fuzzy
-msgid "The launcher shows an icon set elsewhere. Picking one here replaces it."
-msgstr ""
-"Program uruchamiający wyświetla ikonę ustawioną poza aplikacją Tegami Mail. "
-"Wybranie ikony w tym miejscu ją zastąpi."
 
 #, fuzzy
 msgid "Always"
@@ -6266,11 +6219,6 @@ msgstr "Widok rozmów"
 
 msgid "Group messages into threads"
 msgstr "Grupuje wiadomości w wątki"
-
-#. The app icon: the whole set as one sideways-scrolling row on its
-#. own card, the default ringed.
-msgid "Pick your app icon"
-msgstr "Wybierz ikonę aplikacji"
 
 msgid "You're all set"
 msgstr "Wszystko gotowe"

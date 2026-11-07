@@ -350,8 +350,6 @@ about_height = 500
 wizard_completed = true
 web_font_fallback = "org.gnome.Platform//49"
 last_account = "a@x"
-app_icon_generation = 4
-app_icon = "blue"
 recent_fonts = [{ name = "Cantarell" }, { name = "Source Code Pro", mono = true }]
 
 [fetch_modes]

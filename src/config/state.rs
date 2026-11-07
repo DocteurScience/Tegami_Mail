@@ -65,17 +65,6 @@ pub(super) struct StateFile {
     /// Inboxes so "the last account's inbox" still has an account to mean.
     #[serde(default, skip_serializing_if = "String::is_empty")]
     last_account: String,
-    /// The icon generation whose default has been asserted over the stored
-    /// choice (see `app_icon::ICON_GENERATION`): a release that brings a new
-    /// authoritative icon bumps the constant, and the first start on it puts
-    /// that icon on every install once, whatever was chosen before.
-    #[serde(default)]
-    app_icon_generation: u32,
-    /// The chosen app icon (an id from `app_icon::catalog`). Absent until
-    /// the first start of a build that offers the choice settles it — see
-    /// `app_icon::init_on_startup`.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    app_icon: Option<String>,
     /// Each folder's unread count as of the last time it was looked at
     /// (#343), keyed "address␟folder path".
     #[serde(default, skip_serializing_if = "std::collections::BTreeMap::is_empty")]
@@ -224,23 +213,6 @@ pub(crate) fn save_web_font_fallback(runtime: Option<&str>) {
         s.web_font_fallback = runtime;
         save_state(&s);
     }
-}
-
-/// The chosen app icon id, if one has been settled.
-pub(crate) fn load_app_icon() -> Option<String> {
-    load_state().app_icon.filter(|s| !s.is_empty())
-}
-
-pub(crate) fn load_app_icon_generation() -> u32 {
-    load_state().app_icon_generation
-}
-
-pub(crate) fn save_app_icon_generation(generation: u32) {
-    update_state(|s| s.app_icon_generation = generation);
-}
-
-pub(crate) fn save_app_icon(id: &str) {
-    update_state(|s| s.app_icon = Some(id.to_string()));
 }
 
 /// Whether the one-time Mint keyring setup tip has already been dismissed.

@@ -10,37 +10,6 @@ use super::{host_data_home, icon_is_ours};
 /// removed or regenerated.
 const LAUNCHER_MARK: &str = "X-Tegami Mail-Icon-Launcher";
 
-/// When the launcher was last written by this process.
-static LAST_LAUNCHER_WRITE: std::sync::Mutex<Option<std::time::Instant>> =
-    std::sync::Mutex::new(None);
-
-/// How long the desktop takes to act on a rewritten launcher. GNOME Shell
-/// rate-limits its watch on the applications directory and then waits a
-/// further five seconds before reloading; only then does it replace the
-/// app object a new window will be bound to. A restart that lands inside
-/// that window binds the new window to the old object — and the dock
-/// shows the old icon.
-const LAUNCHER_SETTLE: std::time::Duration = std::time::Duration::from_secs(9);
-
-fn note_launcher_written() {
-    *LAST_LAUNCHER_WRITE
-        .lock()
-        .unwrap_or_else(|e| e.into_inner()) = Some(std::time::Instant::now());
-}
-
-/// How much longer to keep running before a restart, so the desktop has
-/// acted on the launcher written for the current choice. Zero when it has
-/// had the time, or nothing was written.
-pub(crate) fn launcher_settle_remaining() -> std::time::Duration {
-    let last = *LAST_LAUNCHER_WRITE
-        .lock()
-        .unwrap_or_else(|e| e.into_inner());
-    match last {
-        Some(t) => LAUNCHER_SETTLE.saturating_sub(t.elapsed()),
-        None => std::time::Duration::ZERO,
-    }
-}
-
 /// How the app's launcher can be pointed at an icon. The desktop resolves
 /// an app's icon through its `.desktop` entry, and a per-user copy of that
 /// entry in `~/.local/share/applications` takes precedence over the
@@ -249,7 +218,6 @@ fn write_shadow(
             match std::fs::remove_file(user_path) {
                 Ok(()) => {
                     tracing::info!("removed {}", user_path.display());
-                    note_launcher_written();
                 }
                 Err(e) => tracing::warn!("could not remove {}: {e}", user_path.display()),
             }
@@ -273,7 +241,6 @@ fn write_shadow(
     match std::fs::write(user_path, out) {
         Ok(()) => {
             tracing::info!("wrote {}", user_path.display());
-            note_launcher_written();
             true
         }
         Err(e) => {
@@ -485,9 +452,8 @@ fn edit_icon_line(path: &std::path::Path, icon: &str) {
     if !seen || out == text {
         return;
     }
-    match std::fs::write(path, out) {
-        Ok(()) => note_launcher_written(),
-        Err(e) => tracing::warn!("could not update {}: {e}", path.display()),
+    if let Err(e) = std::fs::write(path, out) {
+        tracing::warn!("could not update {}: {e}", path.display());
     }
 }
 

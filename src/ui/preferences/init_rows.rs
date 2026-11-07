@@ -408,58 +408,6 @@ impl Preferences {
             body.append(&gallery);
             widgets.appearance.theme_row.set_child(Some(&body));
         }
-
-        // App icon: title in the row's own voice, the gallery beneath.
-        // Picks go straight out; the app applies and offers the restart.
-        {
-            let body = gtk::Box::new(gtk::Orientation::Vertical, 4);
-            body.set_margin_top(12);
-            body.set_margin_bottom(8);
-            body.set_margin_start(12);
-            body.set_margin_end(12);
-            let title = gtk::Label::new(Some(i18n("App icon").as_str()));
-            title.set_halign(gtk::Align::Start);
-            title.set_xalign(0.0);
-            body.append(&title);
-            // An icon set outside Tegami Mail stays until a pick here (#252): say
-            // so, and ring no tile, since none of them is what shows.
-            let custom = crate::desktop::app_icon::custom_icon().is_some();
-            let note = gtk::Label::new(Some(
-                i18n("The launcher shows an icon set elsewhere. Picking one here replaces it.")
-                    .as_str(),
-            ));
-            note.add_css_class("dim-label");
-            note.add_css_class("caption");
-            note.set_halign(gtk::Align::Start);
-            note.set_xalign(0.0);
-            note.set_wrap(true);
-            note.set_visible(custom);
-            body.append(&note);
-            widgets.appearance.app_icon_row.set_child(Some(&body));
-            // The icon gallery decodes the whole catalogue; it fills in a
-            // moment after the window is up rather than holding it back.
-            let s = sender.clone();
-            let app_icon = if custom {
-                String::new()
-            } else {
-                init.app_icon.clone()
-            };
-            gtk::glib::idle_add_local_full(gtk::glib::Priority::LOW, move || {
-                let s = s.clone();
-                let note = note.clone();
-                let strip = crate::ui::icon_picker::strip(
-                    &app_icon,
-                    56,
-                    std::rc::Rc::new(move |id: &str| {
-                        note.set_visible(false);
-                        let _ = s.output(PrefOutput::SetAppIcon(id.to_string()));
-                    }),
-                );
-                strip.set_margin_top(6);
-                body.append(&strip);
-                gtk::glib::ControlFlow::Break
-            });
-        }
     }
 
     /// The tray icon and the launcher badge.

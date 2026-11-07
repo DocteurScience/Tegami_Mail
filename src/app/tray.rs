@@ -6,7 +6,6 @@ use adw::prelude::*;
 use relm4::prelude::*;
 
 use crate::config;
-use crate::i18n::i18n;
 use crate::models::{Account, Message};
 use crate::ui::sidebar::SidebarInput;
 
@@ -144,75 +143,10 @@ impl AppModel {
         self.tray = indicator::TrayHandle::start(
             sender.input_sender().clone(),
             self.tray_icon,
-            &crate::desktop::app_icon::tray_image(&self.app_icon),
+            &crate::desktop::app_icon::tray_image(),
             unified,
             mail,
         );
-    }
-
-    /// The window a dialog about the icon change belongs over: Settings
-    /// while it is open, else the main window.
-    fn icon_dialog_parent(&self) -> gtk::Window {
-        match self.prefs.as_ref().filter(|p| p.widget().is_visible()) {
-            Some(p) => p.widget().clone().upcast(),
-            None => self.window.clone().upcast(),
-        }
-    }
-
-    /// While a restart waits for the desktop to take the launcher in: a
-    /// modal with a spinner, so the pause reads as progress rather than a
-    /// stuck app. It has no way to close — the app quits from under it.
-    #[allow(deprecated)] // adw::MessageDialog: AlertDialog would change how it looks
-    fn show_restarting_dialog(&self) {
-        let dialog = adw::MessageDialog::new(
-            Some(&self.icon_dialog_parent()),
-            Some(i18n("Restarting Tegami Mail").as_str()),
-            Some(
-                i18n("Applying your new app icon. Tegami Mail will close and reopen in a moment.")
-                    .as_str(),
-            ),
-        );
-        let spinner = gtk::Spinner::new();
-        spinner.set_size_request(32, 32);
-        spinner.set_halign(gtk::Align::Center);
-        spinner.set_margin_top(6);
-        spinner.start();
-        dialog.set_extra_child(Some(&spinner));
-        dialog.present();
-    }
-
-    /// The heads-up after an icon change. The launcher already carries the
-    /// new icon, so the app grid shows it — but GNOME Shell keeps a running
-    /// app's windows bound to the app object it created for the old
-    /// launcher (a changed launcher only replaces the object, it never
-    /// re-tracks the windows), so the dock's running entry, like Tegami Mail's
-    /// own window icon, only switches once every window has closed: a
-    /// restart. Offered, never forced, over whichever window the change
-    /// came from.
-    #[allow(deprecated)] // adw::MessageDialog: AlertDialog would change how it looks
-    pub(super) fn offer_restart_for_icon(&self, sender: &ComponentSender<Self>) {
-        let dialog = adw::MessageDialog::new(
-            Some(&self.icon_dialog_parent()),
-            Some(i18n("Restart to finish switching icons?").as_str()),
-            Some(
-                i18n("The dock and Tegami Mail's own windows keep the old icon until Tegami Mail restarts.")
-                    .as_str(),
-            ),
-        );
-        dialog.add_responses(&[
-            ("later", i18n("Later").as_str()),
-            ("restart", i18n("Restart now").as_str()),
-        ]);
-        dialog.set_response_appearance("restart", adw::ResponseAppearance::Suggested);
-        dialog.set_default_response(Some("later"));
-        dialog.set_close_response("later");
-        let s = sender.clone();
-        dialog.connect_response(None, move |_, resp| {
-            if resp == "restart" {
-                s.input(AppMsg::RestartApp);
-            }
-        });
-        dialog.present();
     }
 
     /// Send the tray menu its mail list when it has changed.
@@ -323,37 +257,6 @@ impl AppModel {
                     }
                 }
             }
-
-            AppMsg::RestartApp => {
-                if self.restart_pending {
-                    return;
-                }
-                self.restart_pending = true;
-                // GNOME Shell only replaces a launcher's app object some
-                // seconds after the launcher changed; quitting before that
-                // brings the new window up under the old one, old icon and
-                // all. Wait it out with the window still up.
-                let wait = crate::desktop::app_icon::launcher_settle_remaining();
-                self.show_restarting_dialog();
-                if wait.is_zero() {
-                    sender.input(AppMsg::RestartNow);
-                } else {
-                    let s = sender.clone();
-                    gtk::glib::timeout_add_local_once(wait, move || s.input(AppMsg::RestartNow));
-                }
-            }
-
-            AppMsg::RestartNow => match crate::desktop::app_icon::launch_restart_helper() {
-                Ok(()) => relm4::main_application().activate_action("quit", None),
-                Err(e) => {
-                    tracing::warn!("restart helper failed: {e}");
-                    self.restart_pending = false;
-                    self.notice_error(i18n(
-                        "Couldn't restart automatically — quit and reopen Tegami Mail \
-                               to finish switching the icon.",
-                    ));
-                }
-            },
 
             AppMsg::QuitFromTray => {
                 // The same teardown as Ctrl+Q: geometry saved, then exit.

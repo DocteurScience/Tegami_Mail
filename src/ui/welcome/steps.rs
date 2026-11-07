@@ -46,7 +46,6 @@ impl Welcome {
             preview_lines: widgets.preview_row.selected(),
             avatars: widgets.sw_avatars.is_active(),
             threading: widgets.sw_threading.is_active(),
-            app_icon: widgets.icon_choice.borrow().clone(),
         };
         let _ = sender.output(WelcomeOutput::Prefs(prefs));
         let _ = sender.output(WelcomeOutput::Done);

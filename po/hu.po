@@ -1421,33 +1421,6 @@ msgid_plural "{n} unread in Inboxes"
 msgstr[0] "{n} olvasatlan üzenet a Beérkező levelekben"
 msgstr[1] "{n} olvasatlan üzenet a Beérkező levelekben"
 
-msgid "Restarting Tegami Mail"
-msgstr "A Tegami Mail újraindítása"
-
-msgid ""
-"Applying your new app icon. Tegami Mail will close and reopen in a moment."
-msgstr "Az új ikon alkalmazása. A Tegami Mail most automatikusan újraindul."
-
-msgid "Restart to finish switching icons?"
-msgstr "Újraindítja az ikonváltás befejezéséhez?"
-
-msgid ""
-"The dock and Tegami Mail's own windows keep the old icon until Tegami Mail "
-"restarts."
-msgstr ""
-"A dokk és a Tegami Mail saját ablakai a régi ikont használják a Tegami Mail "
-"újraindításáig."
-
-msgid "Restart now"
-msgstr "Újraindítás most"
-
-msgid ""
-"Couldn't restart automatically — quit and reopen Tegami Mail to finish "
-"switching the icon."
-msgstr ""
-"Nem sikerült automatikusan újraindítani — lépjen ki a Tegamiből, majd nyissa "
-"meg újra az ikonváltás befejezéséhez."
-
 msgid "Move to {name}"
 msgstr "Áthelyzés ide: {name}"
 
@@ -1675,21 +1648,6 @@ msgstr "{date} {time} órakor"
 #, fuzzy
 msgid "{date}, {time}"
 msgstr "{date} {time} órakor"
-
-msgid "Default"
-msgstr "Alapértelmezett"
-
-msgid "Blue square"
-msgstr "Kék négyzet"
-
-msgid "Navy square"
-msgstr "Sötétkék négyzet"
-
-msgid "Yellow square"
-msgstr "Sárga négyzet"
-
-msgid "Classic"
-msgstr "Klasszikus"
 
 msgid ""
 "Tegami Mail checks for new mail and shows notifications while its window is "
@@ -5071,6 +5029,9 @@ msgstr "Rendszer alapértelmezés"
 msgid "Account of the current folder"
 msgstr "A jelenlegi mappa fiókja"
 
+msgid "Default"
+msgstr "Alapértelmezett"
+
 #, fuzzy
 msgid "Same as reading pane zoom"
 msgstr "Az olvasópanel eszköztárának összecsukása"
@@ -5158,12 +5119,6 @@ msgstr "Levélírás a főablakban"
 
 msgid "Theme"
 msgstr "Téma"
-
-#, fuzzy
-msgid "The launcher shows an icon set elsewhere. Picking one here replaces it."
-msgstr ""
-"Az indítóprogram egy, a Tegami Mail-n kívüli ikonkészletet jelenít meg. Ha "
-"itt kiválasztasz egyet, az felváltja a jelenlegit."
 
 #, fuzzy
 msgid "Always"
@@ -6212,11 +6167,6 @@ msgstr "Beszélgetés nézet"
 
 msgid "Group messages into threads"
 msgstr "Üzenetek csoportosítása szálakba"
-
-#. The app icon: the whole set as one sideways-scrolling row on its
-#. own card, the default ringed.
-msgid "Pick your app icon"
-msgstr "Válassza ki az alkalmazás ikonját"
 
 msgid "You're all set"
 msgstr "Minden készen áll"

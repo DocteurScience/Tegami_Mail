@@ -13,7 +13,6 @@ pub(in crate::ui::preferences) struct AppearancePage {
     pub(in crate::ui::preferences) app_theme_row: adw::ComboRow,
     pub(in crate::ui::preferences) text_scale_row: adw::ComboRow,
     pub(in crate::ui::preferences) theme_row: adw::PreferencesRow,
-    pub(in crate::ui::preferences) app_icon_row: adw::PreferencesRow,
     pub(in crate::ui::preferences) desktop_icons_row: adw::SwitchRow,
     pub(in crate::ui::preferences) settings_open_row: adw::ComboRow,
     pub(in crate::ui::preferences) toolbar_editor_box: gtk::Box,
@@ -53,15 +52,6 @@ impl AppearancePage {
                     #[name = "theme_row"]
                     adw::PreferencesRow {
                         set_title: &i18n("Theme"),
-                        set_activatable: false,
-                        set_focusable: false,
-                    },
-
-                    // The app-icon gallery; its content is built in init
-                    // (a grid of textures the view! macro can't declare).
-                    #[name = "app_icon_row"]
-                    adw::PreferencesRow {
-                        set_title: &i18n("App icon"),
                         set_activatable: false,
                         set_focusable: false,
                     },
@@ -128,7 +118,6 @@ impl AppearancePage {
             app_theme_row,
             text_scale_row,
             theme_row,
-            app_icon_row,
             desktop_icons_row,
             settings_open_row,
             toolbar_editor_box,

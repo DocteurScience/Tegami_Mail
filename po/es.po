@@ -1363,35 +1363,6 @@ msgid_plural "{n} unread in Inboxes"
 msgstr[0] "{n} mensaje sin leer en las bandejas de entrada"
 msgstr[1] "{n} mensajes sin leer en las bandejas de entrada"
 
-msgid "Restarting Tegami Mail"
-msgstr "Reiniciando Tegami Mail"
-
-msgid ""
-"Applying your new app icon. Tegami Mail will close and reopen in a moment."
-msgstr ""
-"Aplicando el nuevo icono de la aplicación. Tegami Mail se cerrará y volverá "
-"a abrirse en unos instantes."
-
-msgid "Restart to finish switching icons?"
-msgstr "¿Reiniciar para terminar de cambiar los iconos?"
-
-msgid ""
-"The dock and Tegami Mail's own windows keep the old icon until Tegami Mail "
-"restarts."
-msgstr ""
-"El dock y las propias ventanas de Tegami Mail mantendrán el icono anterior "
-"hasta que Tegami Mail se reinicie."
-
-msgid "Restart now"
-msgstr "Reiniciar ahora"
-
-msgid ""
-"Couldn't restart automatically — quit and reopen Tegami Mail to finish "
-"switching the icon."
-msgstr ""
-"No se pudo reiniciar automáticamente. Cierra y vuelve a abrir Tegami Mail "
-"para terminar de cambiar el icono."
-
 msgid "Move to {name}"
 msgstr "Mover a {name}"
 
@@ -1608,21 +1579,6 @@ msgstr "{date} a las {time}"
 #, fuzzy
 msgid "{date}, {time}"
 msgstr "{date} a las {time}"
-
-msgid "Default"
-msgstr "Predeterminado"
-
-msgid "Blue square"
-msgstr "Cuadrado azul"
-
-msgid "Navy square"
-msgstr "Cuadrado azul marino"
-
-msgid "Yellow square"
-msgstr "Cuadrado amarillo"
-
-msgid "Classic"
-msgstr "Clásico"
 
 msgid ""
 "Tegami Mail checks for new mail and shows notifications while its window is "
@@ -4907,6 +4863,9 @@ msgstr "Predeterminado del sistema"
 msgid "Account of the current folder"
 msgstr "Cuenta de la carpeta actual"
 
+msgid "Default"
+msgstr "Predeterminado"
+
 #, fuzzy
 msgid "Same as reading pane zoom"
 msgstr "En el panel de lectura."
@@ -4989,11 +4948,6 @@ msgstr "Parte inferior de la lista"
 
 msgid "Theme"
 msgstr "Tema"
-
-msgid "The launcher shows an icon set elsewhere. Picking one here replaces it."
-msgstr ""
-"El lanzador muestra un icono configurado en otro lugar. Elegir uno aquí lo "
-"sustituye."
 
 msgid "Always"
 msgstr "Siempre"
@@ -6012,11 +5966,6 @@ msgstr "Vista de conversación"
 
 msgid "Group messages into threads"
 msgstr "Agrupar mensajes en hilos"
-
-#. The app icon: the whole set as one sideways-scrolling row on its
-#. own card, the default ringed.
-msgid "Pick your app icon"
-msgstr "Elige el icono de la aplicación"
 
 msgid "You're all set"
 msgstr "Todo está listo"

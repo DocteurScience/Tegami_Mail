@@ -1361,35 +1361,6 @@ msgid_plural "{n} unread in Inboxes"
 msgstr[0] "{n} mensagem não lida nas Caixas de entrada"
 msgstr[1] "{n} mensagens não lidas nas Caixas de entrada"
 
-msgid "Restarting Tegami Mail"
-msgstr "Reiniciando o Tegami Mail"
-
-msgid ""
-"Applying your new app icon. Tegami Mail will close and reopen in a moment."
-msgstr ""
-"Aplicando o novo ícone do aplicativo. O Tegami Mail fechará e reabrirá em "
-"instantes."
-
-msgid "Restart to finish switching icons?"
-msgstr "Reiniciar para concluir a mudança de ícones?"
-
-msgid ""
-"The dock and Tegami Mail's own windows keep the old icon until Tegami Mail "
-"restarts."
-msgstr ""
-"O dock e as janelas do Tegami Mail mantêm o ícone antigo até o Tegami Mail "
-"ser reiniciado."
-
-msgid "Restart now"
-msgstr "Reiniciar agora"
-
-msgid ""
-"Couldn't restart automatically — quit and reopen Tegami Mail to finish "
-"switching the icon."
-msgstr ""
-"Não foi possível reiniciar automaticamente — saia e volte a abrir o Tegami "
-"Mail para concluir a mudança de ícone."
-
 msgid "Move to {name}"
 msgstr "Mover para {name}"
 
@@ -1605,21 +1576,6 @@ msgstr "{date} às {time}"
 #, fuzzy
 msgid "{date}, {time}"
 msgstr "{date} às {time}"
-
-msgid "Default"
-msgstr "Padrão"
-
-msgid "Blue square"
-msgstr "Quadrado azul"
-
-msgid "Navy square"
-msgstr "Quadrado azul-marinho"
-
-msgid "Yellow square"
-msgstr "Quadrado amarelo"
-
-msgid "Classic"
-msgstr "Clássico"
 
 msgid ""
 "Tegami Mail checks for new mail and shows notifications while its window is "
@@ -4880,6 +4836,9 @@ msgstr "Padrão do sistema"
 msgid "Account of the current folder"
 msgstr "Conta da pasta atual"
 
+msgid "Default"
+msgstr "Padrão"
+
 #, fuzzy
 msgid "Same as reading pane zoom"
 msgstr "No painel de leitura."
@@ -4962,11 +4921,6 @@ msgstr "Abaixo da lista"
 
 msgid "Theme"
 msgstr "Tema"
-
-msgid "The launcher shows an icon set elsewhere. Picking one here replaces it."
-msgstr ""
-"O lançador mostra um ícone definido em outro local. Escolher um aqui o "
-"substitui."
 
 msgid "Always"
 msgstr "Sempre"
@@ -5981,11 +5935,6 @@ msgstr "Visualização de conversas"
 
 msgid "Group messages into threads"
 msgstr "Agrupar mensagens em tópicos"
-
-#. The app icon: the whole set as one sideways-scrolling row on its
-#. own card, the default ringed.
-msgid "Pick your app icon"
-msgstr "Escolha o ícone do aplicativo"
 
 msgid "You're all set"
 msgstr "Está tudo pronto"

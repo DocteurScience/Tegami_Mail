@@ -1351,35 +1351,6 @@ msgid_plural "{n} unread in Inboxes"
 msgstr[0] "{n} ungelesene Nachricht in den Posteingängen"
 msgstr[1] "{n} ungelesene Nachrichten in den Posteingängen"
 
-msgid "Restarting Tegami Mail"
-msgstr "Neustart von Tegami Mail"
-
-msgid ""
-"Applying your new app icon. Tegami Mail will close and reopen in a moment."
-msgstr ""
-"Eigenes neues App-Symbol wird angewendet. Tegami Mail wird gleich neu "
-"gestartet."
-
-msgid "Restart to finish switching icons?"
-msgstr "Neu starten, um den Symbolwechsel abzuschließen?"
-
-msgid ""
-"The dock and Tegami Mail's own windows keep the old icon until Tegami Mail "
-"restarts."
-msgstr ""
-"Das Dock und Tegamis eigene Fenster behalten das alte Symbol, bis Tegami "
-"Mail neu gestartet wurde."
-
-msgid "Restart now"
-msgstr "Jetzt neu starten"
-
-msgid ""
-"Couldn't restart automatically — quit and reopen Tegami Mail to finish "
-"switching the icon."
-msgstr ""
-"Automatischer Neustart fehlgeschlagen – Tegami Mail beenden und erneut "
-"öffnen, um das Ändern des Symbols abzuschließen."
-
 msgid "Move to {name}"
 msgstr "Nach {name} verschieben"
 
@@ -1589,21 +1560,6 @@ msgstr "{date} um {time}"
 #, fuzzy
 msgid "{date}, {time}"
 msgstr "{date} um {time}"
-
-msgid "Default"
-msgstr "Standard"
-
-msgid "Blue square"
-msgstr "Blaues Quadrat"
-
-msgid "Navy square"
-msgstr "Marineblaues Quadrat"
-
-msgid "Yellow square"
-msgstr "Gelbes Quadrat"
-
-msgid "Classic"
-msgstr "Klassisch"
 
 msgid ""
 "Tegami Mail checks for new mail and shows notifications while its window is "
@@ -4897,6 +4853,9 @@ msgstr "Systemstandard"
 msgid "Account of the current folder"
 msgstr "Konto des aktuellen Ordners"
 
+msgid "Default"
+msgstr "Standard"
+
 msgid "Same as reading pane zoom"
 msgstr "Identisch mit der Zoomstufe des Lesebereichs"
 
@@ -4978,11 +4937,6 @@ msgstr "Unterstes Element der Liste"
 
 msgid "Theme"
 msgstr "Erscheinungsbild"
-
-msgid "The launcher shows an icon set elsewhere. Picking one here replaces it."
-msgstr ""
-"Der Anwendungsstarter zeigt ein Symbol an, das außerhalb von Tegami Mail "
-"festgelegt wurde. Die Auswahl an dieser Stelle ersetzt es."
 
 msgid "Always"
 msgstr "Immer"
@@ -6019,11 +5973,6 @@ msgstr "Gesprächsansicht"
 
 msgid "Group messages into threads"
 msgstr "Nachrichten in Threads gruppieren"
-
-#. The app icon: the whole set as one sideways-scrolling row on its
-#. own card, the default ringed.
-msgid "Pick your app icon"
-msgstr "App-Symbol auswählen"
 
 msgid "You're all set"
 msgstr "Alles eingerichtet"

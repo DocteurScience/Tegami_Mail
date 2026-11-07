@@ -21,7 +21,6 @@ pub(crate) mod emoji;
 mod fade_label;
 pub(crate) mod folder_picker;
 pub(crate) mod grab_pill;
-mod icon_picker;
 pub(crate) mod initials;
 pub(crate) mod keymap;
 pub(crate) mod later;

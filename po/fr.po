@@ -1341,35 +1341,6 @@ msgid_plural "{n} unread in Inboxes"
 msgstr[0] "{n} non lu dans les boîtes de réception"
 msgstr[1] "{n} non lu dans les boîtes de réception"
 
-msgid "Restarting Tegami Mail"
-msgstr "Redémarrage de Tegami Mail"
-
-msgid ""
-"Applying your new app icon. Tegami Mail will close and reopen in a moment."
-msgstr ""
-"Application de votre nouvelle icône. Tegami Mail va se fermer et rouvrir "
-"dans un instant."
-
-msgid "Restart to finish switching icons?"
-msgstr "Redémarrer pour terminer le changement d’icône ?"
-
-msgid ""
-"The dock and Tegami Mail's own windows keep the old icon until Tegami Mail "
-"restarts."
-msgstr ""
-"Le dock et les fenêtres de Tegami Mail conserveront l’ancienne icône "
-"jusqu’au redémarrage de Tegami Mail."
-
-msgid "Restart now"
-msgstr "Redémarrer maintenant"
-
-msgid ""
-"Couldn't restart automatically — quit and reopen Tegami Mail to finish "
-"switching the icon."
-msgstr ""
-"Redémarrage automatique impossible — quittez et rouvrez Tegami Mail pour "
-"terminer le changement d’icône."
-
 msgid "Move to {name}"
 msgstr "Déplacer vers {name}"
 
@@ -1577,21 +1548,6 @@ msgstr "{date} à {time}"
 
 msgid "{date}, {time}"
 msgstr "{date}, {time}"
-
-msgid "Default"
-msgstr "Par défaut"
-
-msgid "Blue square"
-msgstr "Carré bleu"
-
-msgid "Navy square"
-msgstr "Carré bleu marine"
-
-msgid "Yellow square"
-msgstr "Carré jaune"
-
-msgid "Classic"
-msgstr "Classique"
 
 msgid ""
 "Tegami Mail checks for new mail and shows notifications while its window is "
@@ -4830,6 +4786,9 @@ msgstr "Système par défaut"
 msgid "Account of the current folder"
 msgstr "Compte du dossier actuel"
 
+msgid "Default"
+msgstr "Par défaut"
+
 msgid "Same as reading pane zoom"
 msgstr "Comme le zoom du volet de lecture"
 
@@ -4910,11 +4869,6 @@ msgstr "Bas de la liste"
 
 msgid "Theme"
 msgstr "Thème"
-
-msgid "The launcher shows an icon set elsewhere. Picking one here replaces it."
-msgstr ""
-"Le lanceur affiche une icône définie ailleurs. En choisir une ici la "
-"remplace."
 
 msgid "Always"
 msgstr "Toujours"
@@ -5914,11 +5868,6 @@ msgstr "Vue conversation"
 
 msgid "Group messages into threads"
 msgstr "Grouper les messages en fils de discussion"
-
-#. The app icon: the whole set as one sideways-scrolling row on its
-#. own card, the default ringed.
-msgid "Pick your app icon"
-msgstr "Choisissez l’icône de votre application"
 
 msgid "You're all set"
 msgstr "Tout est prêt"

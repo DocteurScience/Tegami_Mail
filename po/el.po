@@ -1369,35 +1369,6 @@ msgid_plural "{n} unread in Inboxes"
 msgstr[0] "{n} μη αναγνωσμένο στα Εισερχόμενα"
 msgstr[1] "{n} μη αναγνωσμένα στα Εισερχόμενα"
 
-msgid "Restarting Tegami Mail"
-msgstr "Επανεκκίνηση Tegami Mail"
-
-msgid ""
-"Applying your new app icon. Tegami Mail will close and reopen in a moment."
-msgstr ""
-"Εφαρμογή του νέου εικονιδίου εφαρμογής. Το Tegami Mail θα κλείσει και θα "
-"ανοίξει ξανά σε λίγο."
-
-msgid "Restart to finish switching icons?"
-msgstr "Επανεκκίνηση για ολοκλήρωση της αλλαγής εικονιδίων;"
-
-msgid ""
-"The dock and Tegami Mail's own windows keep the old icon until Tegami Mail "
-"restarts."
-msgstr ""
-"Το dock και τα παράθυρα του Tegami Mail διατηρούν το παλιό εικονίδιο μέχρι "
-"να επανεκκινηθεί το Tegami Mail."
-
-msgid "Restart now"
-msgstr "Επανεκκίνηση τώρα"
-
-msgid ""
-"Couldn't restart automatically — quit and reopen Tegami Mail to finish "
-"switching the icon."
-msgstr ""
-"Δεν ήταν δυνατή η αυτόματη επανεκκίνηση — κλείστε και ανοίξτε ξανά το Tegami "
-"Mail για να ολοκληρωθεί η αλλαγή εικονιδίου."
-
 msgid "Move to {name}"
 msgstr "Μετακίνηση στο {name}"
 
@@ -1614,21 +1585,6 @@ msgstr "{date} στις {time}"
 #, fuzzy
 msgid "{date}, {time}"
 msgstr "{date} στις {time}"
-
-msgid "Default"
-msgstr "Προεπιλογή"
-
-msgid "Blue square"
-msgstr "Μπλε τετράγωνο"
-
-msgid "Navy square"
-msgstr "Σκούρο μπλε τετράγωνο"
-
-msgid "Yellow square"
-msgstr "Κίτρινο τετράγωνο"
-
-msgid "Classic"
-msgstr "Κλασικό"
 
 msgid ""
 "Tegami Mail checks for new mail and shows notifications while its window is "
@@ -4947,6 +4903,9 @@ msgstr "Προεπιλογή συστήματος"
 msgid "Account of the current folder"
 msgstr "Λογαριασμός του τρέχοντος φακέλου"
 
+msgid "Default"
+msgstr "Προεπιλογή"
+
 #, fuzzy
 msgid "Same as reading pane zoom"
 msgstr "Στο παράθυρο ανάγνωσης."
@@ -5029,11 +4988,6 @@ msgstr "Στο κάτω μέρος της λίστας"
 
 msgid "Theme"
 msgstr "Θέμα"
-
-msgid "The launcher shows an icon set elsewhere. Picking one here replaces it."
-msgstr ""
-"Ο εκκινητής εμφανίζει ένα σύνολο εικονιδίων που ορίζεται αλλού. Αν επιλέξετε "
-"ένα εδώ, το αντικαθιστά."
 
 msgid "Always"
 msgstr "Πάντα"
@@ -6064,11 +6018,6 @@ msgstr "Προβολή συζητήσεων"
 
 msgid "Group messages into threads"
 msgstr "Ομαδοποίηση μηνυμάτων σε νήματα"
-
-#. The app icon: the whole set as one sideways-scrolling row on its
-#. own card, the default ringed.
-msgid "Pick your app icon"
-msgstr "Επιλέξτε το εικονίδιο της εφαρμογής σας"
 
 msgid "You're all set"
 msgstr "Είστε έτοιμοι"

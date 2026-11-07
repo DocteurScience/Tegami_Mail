@@ -5,6 +5,10 @@
 - **Changed: the application icon** (docs/ICON.md): a paper envelope drawn
   in ink wash, with misty mountains, a pine and a red seal. The beta build
   wears GNOME's development stripe across its foot.
+- **Removed: the gallery of app icons** (owner's decision, 2026-11-07):
+  **Settings → Appearance → App icon**, the wizard's "Pick your app icon" and
+  the restart they offered. An icon picked there earlier is taken off the
+  launcher at the next start; one set with a menu editor stays.
 
 - **Changed: Settings → Tags as mockup 09 draws it.** Each tag shows its
   colour, how many messages carry it and the colour's name, with Edit and

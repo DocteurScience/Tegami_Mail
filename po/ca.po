@@ -1351,35 +1351,6 @@ msgid_plural "{n} unread in Inboxes"
 msgstr[0] "{n} no llegit a les bústies d'entrada"
 msgstr[1] "{n} no llegits a les bústies d'entrada"
 
-msgid "Restarting Tegami Mail"
-msgstr "S'està reiniciant l'Tegami Mail"
-
-msgid ""
-"Applying your new app icon. Tegami Mail will close and reopen in a moment."
-msgstr ""
-"S'està aplicant la nova icona de l'aplicació. L'Tegami Mail es tancarà i "
-"tornarà a obrir-se d'aquí a un moment."
-
-msgid "Restart to finish switching icons?"
-msgstr "Vols reiniciar per acabar de canviar les icones?"
-
-msgid ""
-"The dock and Tegami Mail's own windows keep the old icon until Tegami Mail "
-"restarts."
-msgstr ""
-"El dock i les finestres de l'Tegami Mail mantindran la icona antiga fins que "
-"es reiniciï l'Tegami Mail."
-
-msgid "Restart now"
-msgstr "Reinicia ara"
-
-msgid ""
-"Couldn't restart automatically — quit and reopen Tegami Mail to finish "
-"switching the icon."
-msgstr ""
-"No s'ha pogut reiniciar automàticament — surt i torna a obrir l'Tegami Mail "
-"per acabar de canviar la icona."
-
 msgid "Move to {name}"
 msgstr "Mou a {name}"
 
@@ -1594,21 +1565,6 @@ msgstr "{date} a les {time}"
 #, fuzzy
 msgid "{date}, {time}"
 msgstr "{date} a les {time}"
-
-msgid "Default"
-msgstr "Per defecte"
-
-msgid "Blue square"
-msgstr "Quadrat blau"
-
-msgid "Navy square"
-msgstr "Quadrat blau marí"
-
-msgid "Yellow square"
-msgstr "Quadrat groc"
-
-msgid "Classic"
-msgstr "Clàssic"
 
 msgid ""
 "Tegami Mail checks for new mail and shows notifications while its window is "
@@ -4878,6 +4834,9 @@ msgstr "Per defecte del sistema"
 msgid "Account of the current folder"
 msgstr "Compte de la carpeta actual"
 
+msgid "Default"
+msgstr "Per defecte"
+
 #, fuzzy
 msgid "Same as reading pane zoom"
 msgstr "Al panell de lectura."
@@ -4960,11 +4919,6 @@ msgstr "A la part inferior de la llista"
 
 msgid "Theme"
 msgstr "Tema"
-
-msgid "The launcher shows an icon set elsewhere. Picking one here replaces it."
-msgstr ""
-"El llançador mostra un conjunt d'icones en un altre lloc. Triar-ne un aquí "
-"el substitueix."
 
 msgid "Always"
 msgstr "Sempre"
@@ -5977,11 +5931,6 @@ msgstr "Vista de conversa"
 
 msgid "Group messages into threads"
 msgstr "Agrupa els missatges en fils"
-
-#. The app icon: the whole set as one sideways-scrolling row on its
-#. own card, the default ringed.
-msgid "Pick your app icon"
-msgstr "Tria la icona de l'aplicació"
 
 msgid "You're all set"
 msgstr "Tot a punt"

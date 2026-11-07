@@ -87,11 +87,9 @@ first make sure it draws the same there.
    If any of them renders wrongly, replace it with something librsvg draws
    correctly (for the mist: a gradient instead of a blur) and keep the look.
 2. Done: see Status above.
-3. The gallery of alternative icons (`classic`, `square`, `square-dark`,
-   `square-yellow`, in `data/icons/alt/`) holds the temporary envelopes
-   that replaced Hylki's (commit a6bba70), not Hylki's own.
-   Ask the owner whether to keep it, replace it or drop it. Do not remove it
-   without his agreement.
+3. Done: the gallery of alternative icons is removed (owner's decision,
+   2026-11-07), with its Settings row, its wizard step and the restart it
+   offered; at start an earlier pick is cleared from the launcher.
 4. Draw the symbolic (16 px, single colour) icon:
    `data/icons/hicolor/symbolic/apps/io.github.DocteurScience.TegamiMail-symbolic.svg`.
    Designer's brief: the envelope outline with the V flap, nothing else.
@@ -102,8 +100,7 @@ first make sure it draws the same there.
 6. Capture the icon in a GNOME shell (app grid, dock at 48 px, About
    dialog) in light and dark, and compare with `preview-sheet.png`.
 
-## Open question for the owner
+## Licence
 
-- **Licence of the artwork.** It is new work, so the licence is the owner's
-  call. Default if he says nothing: the same as the project
-  (AGPL-3.0-or-later). Many GNOME icons use CC-BY-SA 4.0 or CC0 instead.
+The artwork is under the project's licence, AGPL-3.0-or-later (owner's
+decision, 2026-11-07).

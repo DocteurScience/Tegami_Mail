@@ -747,11 +747,6 @@ pub(crate) enum AppMsg {
     /// The welcome wizard's first page picked a language: save it and
     /// come back in it.
     WizardLanguage(String),
-    /// "Restart Now" from the app-icon heads-up: quit into the restart
-    /// helper once the desktop has taken the new launcher in.
-    RestartApp,
-    /// The settle time is up: hand off to the restart helper and quit.
-    RestartNow,
     /// Quit was chosen from the tray icon's menu.
     QuitFromTray,
     /// "View all unread" was chosen from the tray icon's menu: go to the

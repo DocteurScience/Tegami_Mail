@@ -1448,35 +1448,6 @@ msgstr[0] "{n} непрочитанное во «Входящих»"
 msgstr[1] "{n} непрочитанных во «Входящих»"
 msgstr[2] "{n} непрочитанных во «Входящих»"
 
-msgid "Restarting Tegami Mail"
-msgstr "Перезапуск Tegami Mail"
-
-msgid ""
-"Applying your new app icon. Tegami Mail will close and reopen in a moment."
-msgstr ""
-"Применяем новый значок приложения. Tegami Mail закроется и снова откроется "
-"через мгновение."
-
-msgid "Restart to finish switching icons?"
-msgstr "Перезапустить, чтобы завершить изменение иконки?"
-
-msgid ""
-"The dock and Tegami Mail's own windows keep the old icon until Tegami Mail "
-"restarts."
-msgstr ""
-"В доке и окнах Tegami Mail будет отображаться старая иконка до перезапуска "
-"программы."
-
-msgid "Restart now"
-msgstr "Перезапустить сейчас"
-
-msgid ""
-"Couldn't restart automatically — quit and reopen Tegami Mail to finish "
-"switching the icon."
-msgstr ""
-"Не удалось перезапустить автоматически — закройте и снова откройте Tegami "
-"Mail, чтобы завершить смену иконки."
-
 msgid "Move to {name}"
 msgstr "Переместить в {name}"
 
@@ -1701,21 +1672,6 @@ msgstr "{date} в {time}"
 #, fuzzy
 msgid "{date}, {time}"
 msgstr "{date} в {time}"
-
-msgid "Default"
-msgstr "По умолчанию"
-
-msgid "Blue square"
-msgstr "Синий квадрат"
-
-msgid "Navy square"
-msgstr "Тёмно-синий квадрат"
-
-msgid "Yellow square"
-msgstr "Жёлтый квадрат"
-
-msgid "Classic"
-msgstr "Классический"
 
 msgid ""
 "Tegami Mail checks for new mail and shows notifications while its window is "
@@ -5081,6 +5037,9 @@ msgstr "Системное по умолчанию"
 msgid "Account of the current folder"
 msgstr "Учётная запись текущей папки"
 
+msgid "Default"
+msgstr "По умолчанию"
+
 #, fuzzy
 msgid "Same as reading pane zoom"
 msgstr "Сворачивать панель инструментов области чтения"
@@ -5167,12 +5126,6 @@ msgstr "Создание писем в основном окне"
 
 msgid "Theme"
 msgstr "Тема"
-
-#, fuzzy
-msgid "The launcher shows an icon set elsewhere. Picking one here replaces it."
-msgstr ""
-"Ярлык использует значок, заданный вне Tegami Mail. Выбор значка здесь "
-"заменит его."
 
 #, fuzzy
 msgid "Always"
@@ -6199,11 +6152,6 @@ msgstr "Режим обсуждения"
 
 msgid "Group messages into threads"
 msgstr "Группировать сообщения в цепочки"
-
-#. The app icon: the whole set as one sideways-scrolling row on its
-#. own card, the default ringed.
-msgid "Pick your app icon"
-msgstr "Выберите значок приложения"
 
 msgid "You're all set"
 msgstr "Всё готово"

@@ -171,8 +171,6 @@ pub(crate) struct PrefInit {
     pub(crate) tray_icon: TrayIcon,
     pub(crate) tray_mail: bool,
     pub(crate) launcher_badge: LauncherBadge,
-    /// The chosen app icon (an `app_icon::catalog` id).
-    pub(crate) app_icon: String,
     /// The accounts panel (built by the AccountsWindow component), shown
     /// behind the window's "Accounts" tab.
     pub(crate) accounts_panel: gtk::Widget,
@@ -477,7 +475,6 @@ pub(crate) enum PrefOutput {
     SetTrayIcon(TrayIcon),
     SetTrayMail(bool),
     SetLauncherBadge(LauncherBadge),
-    SetAppIcon(String),
     SetPaletteCollapse(u64),
     SetCardPaletteCollapse(u64),
     SetMessageTheme(MessageTheme),

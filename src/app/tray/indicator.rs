@@ -137,18 +137,6 @@ impl TrayHandle {
         self.handle.update(|t| t.unread = unread);
     }
 
-    /// Swap the icon set.
-    pub(crate) fn set_icon(&self, icon: TrayIcon, app_png: AppIconPng) {
-        let plain = render_set(icon, app_png, false);
-        let dotted = render_set(icon, app_png, true);
-        let symbolic = symbolic_theme(icon);
-        self.handle.update(move |t| {
-            t.plain = plain;
-            t.dotted = dotted;
-            t.symbolic = symbolic;
-        });
-    }
-
     /// Replace the menu's message list; `None` drops the section.
     pub(super) fn set_mail(&self, mail: Option<TrayMailList>) {
         self.handle.update(move |t| t.mail = mail);
@@ -695,11 +683,7 @@ mod tests {
     fn every_icon_renders_at_every_size() {
         for icon in [TrayIcon::Tegami, TrayIcon::Symbolic] {
             for dotted in [false, true] {
-                let set = render_set(
-                    icon,
-                    crate::desktop::app_icon::png_for(crate::desktop::app_icon::DEFAULT_ID),
-                    dotted,
-                );
+                let set = render_set(icon, crate::desktop::app_icon::png(), dotted);
                 assert_eq!(set.len(), SIZES.len(), "{icon:?} dotted={dotted}");
                 for (i, size) in SIZES.iter().enumerate() {
                     assert_eq!(set[i].width, *size);
@@ -763,7 +747,7 @@ mod tests {
         let size = 32usize;
         let plain = render(
             TrayIcon::Symbolic,
-            crate::desktop::app_icon::png_for(crate::desktop::app_icon::DEFAULT_ID),
+            crate::desktop::app_icon::png(),
             false,
             size as i32,
             1.0,
@@ -771,7 +755,7 @@ mod tests {
         .unwrap();
         let dotted = render(
             TrayIcon::Symbolic,
-            crate::desktop::app_icon::png_for(crate::desktop::app_icon::DEFAULT_ID),
+            crate::desktop::app_icon::png(),
             true,
             size as i32,
             1.0,
@@ -801,7 +785,7 @@ mod tests {
         let size = 32usize;
         let icon = render(
             TrayIcon::Tegami,
-            crate::desktop::app_icon::png_for(crate::desktop::app_icon::DEFAULT_ID),
+            crate::desktop::app_icon::png(),
             true,
             size as i32,
             0.5,

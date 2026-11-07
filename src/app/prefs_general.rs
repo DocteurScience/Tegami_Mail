@@ -213,23 +213,6 @@ impl AppModel {
                 }
             }
 
-            PrefOutput::SetAppIcon(id) => {
-                // Picking the stored choice again still changes the desktop
-                // when it replaces an icon set outside Tegami Mail (#252).
-                let replaces_custom = crate::desktop::app_icon::custom_icon().is_some();
-                let id = crate::desktop::app_icon::set(&id);
-                if self.app_icon != id || replaces_custom {
-                    self.app_icon = id;
-                    if let Some(tray) = &self.tray {
-                        tray.set_icon(
-                            self.tray_icon,
-                            &crate::desktop::app_icon::tray_image(&self.app_icon),
-                        );
-                    }
-                    self.offer_restart_for_icon(&sender);
-                }
-            }
-
             PrefOutput::SetTrayMail(on) => {
                 if pref!(self.tray_mail = on) {
                     // A sentinel no real list equals, so the change is sent

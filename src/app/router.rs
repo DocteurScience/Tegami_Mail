@@ -237,8 +237,6 @@ impl AppModel {
             | AppMsg::CustomizeToolbar
             | AppMsg::CustomizeColumns) => self.on_reader_toolbar(msg, sender),
             msg @ (AppMsg::WizardLanguage(..)
-            | AppMsg::RestartApp
-            | AppMsg::RestartNow
             | AppMsg::QuitFromTray
             | AppMsg::TrayViewUnread
             | AppMsg::PresentWindow) => self.on_tray(msg, sender),
@@ -415,7 +413,6 @@ impl AppModel {
             | PrefOutput::SetAutostart(..)
             | PrefOutput::SetTray(..)
             | PrefOutput::SetTrayIcon(..)
-            | PrefOutput::SetAppIcon(..)
             | PrefOutput::SetTrayMail(..)
             | PrefOutput::SetLauncherBadge(..)
             | PrefOutput::SetSingleKey(..)

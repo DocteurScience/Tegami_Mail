@@ -1,11 +1,9 @@
 #!/usr/bin/env python3
 """Regenerate the app icons from their sources in data/icons/src.
 
-Every gallery entry is a 512² PNG in data/icons/alt/<id>.png, embedded into
-the binary by src/desktop/app_icon.rs. `default.svg` (and its
-`default.Devel.svg` twin for the beta) becomes the hicolor icon each build installs under its
-app ID (512 and 256 PNG, plus the SVG itself as the scalable icon), and
-refreshes data/repo/logo.png (the README artwork).
+`default.svg` (and its `default.Devel.svg` twin for the beta) becomes the
+hicolor icon each build installs under its app ID (512 and 256 PNG, plus the
+SVG itself as the scalable icon). The app embeds the 512 PNG.
 
 Sources are either an SVG (rendered with librsvg, the same renderer GNOME
 uses, so what ships matches what the desktop would draw) or a PNG master
@@ -22,12 +20,11 @@ from gi.repository import Rsvg
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SRC = ROOT / "data/icons/src"
-ALT = ROOT / "data/icons/alt"
 HICOLOR = ROOT / "data/icons/hicolor"
 # The icon each build installs under its app ID: the stable app ships
 # `default`, the beta its `.Devel` twin (GNOME's development-build styling:
-# the hazard stripe). These two are the gallery's "Default" entry, so they
-# get no alt/ PNG of their own; every other source is one gallery entry.
+# the hazard stripe). There is no other source since the gallery of
+# alternative icons went (2026-11-07).
 SHIPPED = {"default": "io.github.DocteurScience.TegamiMail", "default.Devel": "io.github.DocteurScience.TegamiMail.Beta"}
 
 
@@ -57,13 +54,11 @@ def make(src: pathlib.Path, png: pathlib.Path, size: int) -> None:
 # Outputs are rebuilt from scratch, so a removed source leaves nothing behind.
 # The symbolic app icon (hicolor/symbolic/apps) is drawn by hand, not
 # generated, so it is left alone.
-for stale in list(ALT.glob("*.png")) + list(HICOLOR.glob("[0-9s][0-9c]*/apps/*")):
+for stale in HICOLOR.glob("[0-9s][0-9c]*/apps/*"):
     stale.unlink()
 for src in sorted(SRC.iterdir()):
     # `<id>.Devel.svg` has two suffixes; keep ".Devel" as part of the id.
     name = src.name[: -len(src.suffix)]
-    if name not in SHIPPED:
-        make(src, ALT / f"{name}.png", 512)
     if name in SHIPPED:
         app_id = SHIPPED[name]
         for size in (512, 256):
@@ -72,6 +67,4 @@ for src in sorted(SRC.iterdir()):
             scalable = HICOLOR / f"scalable/apps/{app_id}.svg"
             scalable.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(src, scalable)
-        if app_id == "io.github.DocteurScience.TegamiMail":
-            shutil.copyfile(HICOLOR / "512x512/apps/io.github.DocteurScience.TegamiMail.png", ROOT / "data/repo/logo.png")
     print(f"{name:<28} <- {src.name}")

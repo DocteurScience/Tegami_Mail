@@ -104,7 +104,8 @@ Dernière mise à jour : 2026-11-02, après `40a6c7e`.
 | `a48ae10` | Fond du volet de liste teinté comme la maquette 01 (mélange à 50 % fond de fenêtre / barre latérale, #f3f3f4 mesuré pour #f2f2f4) ; barres de recherche et de sélection gardent le fond de la fenêtre |
 | `620ffdf` | Plus de trait entre deux bascules inactives du sélecteur Tous / Non lus / Favoris (absent de la maquette 01) |
 | `a0c11c9` | Réglages → Étiquettes comme la maquette 09 (pastille, « n messages · Couleur », crayon, corbeille, « Nouvelle étiquette… », « Importer les étiquettes des serveurs… ») ; ajout et modification par la boîte « Nouvelle étiquette » (mode édition) ; mot-clé, couleur personnalisée et réordonnancement supprimés (décision du propriétaire, 2026-11-07). Sélecteur : seul le choix en gras, « Non lus ». `grab.sh` recompile le catalogue à chaque capture |
-| `6d42417` | Nouvelle icône (docs/ICON.md) : rendu librsvg vérifié (masque, dégradés, flous corrects ; pin un peu plus net qu'avec Chromium), rien à simplifier ; `default.svg` remplacée, `default.Devel.svg` avec la bande de développement GNOME, `hicolor/` régénéré. Questions ouvertes : galerie `alt/`, licence de l'illustration |
+| `6d42417` | Nouvelle icône (docs/ICON.md) : rendu librsvg vérifié (masque, dégradés, flous corrects ; pin un peu plus net qu'avec Chromium), rien à simplifier ; `default.svg` remplacée, `default.Devel.svg` avec la bande de développement GNOME, `hicolor/` régénéré. Licence : AGPL-3.0-or-later (décision du 2026-11-07) |
+| (ce commit) | Galerie d'icônes supprimée (décision du 2026-11-07) : Réglages → Apparence → Icône, étape de l'assistant, redémarrage proposé, `data/icons/alt`, sources `classic`/`square*`, champs `app_icon*` de state.toml ; au démarrage, une icône choisie avant est retirée du lanceur |
 
 ## Décisions prises
 

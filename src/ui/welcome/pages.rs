@@ -338,7 +338,6 @@ pub(super) struct PersonalizePage {
     pub(super) preview_row: adw::ComboRow,
     pub(super) avatars: adw::SwitchRow,
     pub(super) threading: adw::SwitchRow,
-    pub(super) icon_choice: std::rc::Rc<std::cell::RefCell<String>>,
 }
 
 /// Page 5: personalize.
@@ -371,47 +370,11 @@ pub(super) fn build_personalize_page(carousel: &adw::Carousel) -> PersonalizePag
     pers_card.append(&sw_threading);
     pers.append(&pers_card);
 
-    // The app icon: the whole set as one sideways-scrolling row on its
-    // own card, the default ringed.
-    let icon_hdr = gtk::Label::new(Some(i18n("Pick your app icon").as_str()));
-    icon_hdr.add_css_class("welcome-section");
-    icon_hdr.set_halign(gtk::Align::Start);
-    icon_hdr.set_margin_top(6);
-    pers.append(&icon_hdr);
-    // With an icon set outside Tegami Mail on the launcher (#252), nothing is
-    // preselected, and only an actual pick replaces it.
-    let icon_choice = std::rc::Rc::new(std::cell::RefCell::new(
-        if crate::desktop::app_icon::custom_icon().is_some() {
-            String::new()
-        } else {
-            crate::config::load_app_icon()
-                .unwrap_or_else(|| crate::desktop::app_icon::DEFAULT_ID.to_string())
-        },
-    ));
-    let icon_card = card();
-    let icon_row = gtk::ListBoxRow::new();
-    icon_row.set_activatable(false);
-    icon_row.set_focusable(false);
-    let strip = {
-        let choice = icon_choice.clone();
-        crate::ui::icon_picker::strip(
-            &icon_choice.borrow(),
-            52,
-            std::rc::Rc::new(move |id: &str| *choice.borrow_mut() = id.to_string()),
-        )
-    };
-    strip.set_margin_top(8);
-    strip.set_margin_start(6);
-    strip.set_margin_end(6);
-    icon_row.set_child(Some(&strip));
-    icon_card.append(&icon_row);
-    pers.append(&icon_card);
     carousel.append(&scrolled(&page(&pers)));
     PersonalizePage {
         preview_row,
         avatars: sw_avatars,
         threading: sw_threading,
-        icon_choice,
     }
 }
 

@@ -1770,11 +1770,11 @@ the desktop's own text scaling. Stored as `text_scale` in `privacy.toml`.
 
 ### App icon
 
-**Settings → Appearance → App icon** puts one of five icons on the app's
-launcher: the default, the same envelope on a blue, navy or yellow square,
-or the classic icon. An icon set on the launcher some other way, with a menu
-editor or by editing its `.desktop` file, is left alone when Tegami Mail starts;
-Settings says so above the gallery, and picking an icon there replaces it.
+Tegami Mail has one icon, the ink-wash envelope (the beta adds GNOME's
+development stripe). The gallery of other icons is gone: at start, an icon
+picked there earlier is taken off the launcher and the shipped one shows
+again. An icon set on the launcher some other way, with a menu editor or by
+editing its `.desktop` file, is left alone.
 
 ### Icons
 

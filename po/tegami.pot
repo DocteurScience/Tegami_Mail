@@ -1252,29 +1252,6 @@ msgid_plural "{n} unread in Inboxes"
 msgstr[0] ""
 msgstr[1] ""
 
-msgid "Restarting Tegami Mail"
-msgstr ""
-
-msgid ""
-"Applying your new app icon. Tegami Mail will close and reopen in a moment."
-msgstr ""
-
-msgid "Restart to finish switching icons?"
-msgstr ""
-
-msgid ""
-"The dock and Tegami Mail's own windows keep the old icon until Tegami Mail "
-"restarts."
-msgstr ""
-
-msgid "Restart now"
-msgstr ""
-
-msgid ""
-"Couldn't restart automatically — quit and reopen Tegami Mail to finish "
-"switching the icon."
-msgstr ""
-
 msgid "Move to {name}"
 msgstr ""
 
@@ -1472,21 +1449,6 @@ msgid "{date} at {time}"
 msgstr ""
 
 msgid "{date}, {time}"
-msgstr ""
-
-msgid "Default"
-msgstr ""
-
-msgid "Blue square"
-msgstr ""
-
-msgid "Navy square"
-msgstr ""
-
-msgid "Yellow square"
-msgstr ""
-
-msgid "Classic"
 msgstr ""
 
 msgid ""
@@ -4460,6 +4422,9 @@ msgstr ""
 msgid "Account of the current folder"
 msgstr ""
 
+msgid "Default"
+msgstr ""
+
 msgid "Same as reading pane zoom"
 msgstr ""
 
@@ -4537,9 +4502,6 @@ msgid "Bottom of the list"
 msgstr ""
 
 msgid "Theme"
-msgstr ""
-
-msgid "The launcher shows an icon set elsewhere. Picking one here replaces it."
 msgstr ""
 
 msgid "Always"
@@ -5485,11 +5447,6 @@ msgid "Conversation view"
 msgstr ""
 
 msgid "Group messages into threads"
-msgstr ""
-
-#. The app icon: the whole set as one sideways-scrolling row on its
-#. own card, the default ringed.
-msgid "Pick your app icon"
 msgstr ""
 
 msgid "You're all set"

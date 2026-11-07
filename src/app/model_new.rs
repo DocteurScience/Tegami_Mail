@@ -74,6 +74,9 @@ impl AppModel {
         let start_view = prefs.start_view;
         let reader_override = config::load_reader_override();
         let plain_style = config::load_plain_style();
+        // Clear what an icon picked from the former gallery left on the
+        // desktop, and put the shipped icon back.
+        crate::desktop::app_icon::init_on_startup();
         AppModel {
             workers: HashMap::new(),
             mid_searches: HashMap::new(),
@@ -312,8 +315,6 @@ impl AppModel {
             tray_mail: prefs.tray_mail,
             launcher_badge,
             arrivals: Default::default(),
-            app_icon: crate::desktop::app_icon::init_on_startup(),
-            restart_pending: false,
             tray: None,
             tray_mail_key: std::cell::RefCell::new(None),
             single_key: std::rc::Rc::new(std::cell::Cell::new(prefs.single_key_shortcuts)),

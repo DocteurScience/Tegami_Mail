@@ -443,10 +443,6 @@ pub(crate) struct AppModel {
     pub(super) launcher_badge: config::LauncherBadge,
     /// Inbox mail that arrived while the window was not in front (#431).
     pub(super) arrivals: crate::desktop::launcher_badge::Arrivals,
-    /// The chosen app icon (an `app_icon::catalog` id); the tray draws it.
-    pub(super) app_icon: String,
-    /// A restart is on its way (Restart Now clicked, settle timer running).
-    pub(super) restart_pending: bool,
     pub(super) tray: Option<super::tray::TrayHandle>,
     /// What the tray menu last listed (account, id, sender, subject; `None`
     /// for no section), so an unchanged list isn't re-sent over D-Bus on
