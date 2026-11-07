@@ -1,14 +1,10 @@
-# Snap packaging for Tegami Mail (first draft, never built yet).
+# Snap packaging for Tegami Mail. The CI builds it on every push to main
+# (.github/workflows/ci.yml, artifact `snap`).
 #
-# Build on Ubuntu 26.04 with:
+# Build by hand on Ubuntu 26.04 with:
 #   sudo snap install snapcraft --classic
-#   snapcraft            # uses LXD or Multipass; first run asks to set it up
+#   snapcraft pack --use-lxd
 #   sudo snap install --dangerous ./tegami-mail_*.snap
-#
-# Things to check on the first build (they could not be tested when this file
-# was written): that core26 and its `gnome` extension exist under these names,
-# that the stage-packages names below match the archive, and that the
-# interfaces named in `plugs` are the ones this version of snapd offers.
 name: tegami-mail
 title: Tegami Mail
 base: core26
@@ -32,12 +28,25 @@ website: https://github.com/DocteurScience/Tegami_Mail
 contact: https://github.com/DocteurScience/Tegami_Mail/issues
 compression: lzo
 
+# The app's name on the session bus. GTK registers the application under
+# its id at startup (single instance, activation, notifications' actions),
+# and strict confinement lets a snap own only the names it declares:
+# without this slot, AppArmor refused it and the app quit at launch
+# ("not allowed to own the service ... due to AppArmor policy").
+slots:
+  tegami-mail-dbus:
+    interface: dbus
+    bus: session
+    name: io.github.DocteurScience.TegamiMail
+
 apps:
   tegami-mail:
     command: usr/bin/tegami
     extensions: [gnome]
     desktop: usr/share/applications/io.github.DocteurScience.TegamiMail.desktop
     common-id: io.github.DocteurScience.TegamiMail
+    slots:
+      - tegami-mail-dbus
     plugs:
       - network                     # IMAP, SMTP, JMAP, OAuth
       - network-bind                # OAuth sign-in listens on a loopback port

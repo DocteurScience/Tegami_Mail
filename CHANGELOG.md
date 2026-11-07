@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- **Fixed: the snap would not start** ("not allowed to own the service …
+  due to AppArmor policy"): it now declares the app's name on the session
+  bus, which strict confinement requires.
+
 - **Changed: Tags sit above the accounts on a new install, and each tag
   shows its unread count** (mockup 07). With several accounts the
   section was at the very bottom of the sidebar. It is one section for
