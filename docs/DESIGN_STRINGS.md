@@ -212,6 +212,211 @@ whether the catalogue has a "{n} messages" pair before adding one.
 | Attach a File… | Joindre un fichier… | new |
 | The server refused the message because it is too large. | Le serveur a refusé le message : il est trop volumineux. | new |
 
+### Preferences
+
+Screens 22 to 48. Many of these are already in the catalogue under the same or
+a close wording: look each one up first and reuse its translation. Labels are
+in sentence case (CLAUDE.md). Rows that explain a default keep the subtitle
+short. The French is a proposal.
+
+| Source string (English) | Proposed French |
+| --- | --- |
+| Preferences | Préférences |
+| Accounts | Comptes |
+| Messages | Messages |
+| Notifications | Notifications |
+| Privacy | Confidentialité |
+| Application | Application |
+| Search preferences | Rechercher dans les préférences |
+| Reading | Lecture |
+| Mark as read | Marquer comme lu |
+| When a message is opened. | Quand un message est ouvert. |
+| Newest message first | Message le plus récent en premier |
+| In a conversation. | Dans une conversation. |
+| Confirm deleting a conversation | Confirmer la suppression d’une conversation |
+| Swipe to archive or delete | Balayer pour archiver ou supprimer |
+| For touch screens and touchpads. | Pour les écrans tactiles et les pavés tactiles. |
+| Composing | Rédaction |
+| Send new messages from | Envoyer les nouveaux messages depuis |
+| Replies are sent from the address that received the message. | Les réponses partent de l’adresse qui a reçu le message. |
+| Last used account | Dernier compte utilisé |
+| Format of new messages | Format des nouveaux messages |
+| Rich text | Texte enrichi |
+| Plain text | Texte brut |
+| Undo send | Annuler l’envoi |
+| How long a message can still be recalled. | Délai pendant lequel l’envoi peut être annulé. |
+| Check spelling | Vérifier l’orthographe |
+| Languages follow the system. | Les langues sont celles du système. |
+| New messages | Nouveaux messages |
+| Desktop notifications | Notifications de bureau |
+| While the window is in the background. | Quand la fenêtre est en arrière-plan. |
+| Show sender and subject | Afficher l’expéditeur et l’objet |
+| Off, the notification only says “New message”. | Désactivé, la notification dit seulement « Nouveau message ». |
+| Check for new messages | Vérifier les nouveaux messages |
+| Automatically | Automatiquement |
+| Sound and banners | Son et bannières |
+| Open the system notification settings | Ouvrir les paramètres de notifications du système |
+| Sound, banners and Do Not Disturb are set there. | Le son, les bannières et le mode Ne pas déranger se règlent là. |
+| Remote content | Contenu distant |
+| Images and remote content | Images et contenu distant |
+| Remote content can tell the sender when and from where you read. | Un contenu distant peut indiquer à l’expéditeur quand et d’où vous lisez. |
+| Never | Jamais |
+| Ask | Demander |
+| Always | Toujours |
+| Sender photos and logos | Photos et logos des expéditeurs |
+| Gravatar and website logos: the sender’s address is sent to these services. | Gravatar et logos de sites : l’adresse de l’expéditeur est envoyée à ces services. |
+| Read receipts | Accusés de réception |
+| Answer read-receipt requests | Répondre aux demandes d’accusé de réception |
+| A receipt tells the sender you opened the message. | Un accusé indique à l’expéditeur que vous avez ouvert le message. |
+| Appearance | Apparence |
+| Style | Style |
+| Follows the system by default. The accent colour also comes from the system. | Suit le système par défaut. L’accent vient aussi du système. |
+| Follow the system | Suivre le système |
+| Light | Clair |
+| Dark | Sombre |
+| Background | Arrière-plan |
+| Keep running in the background | Continuer en arrière-plan |
+| Closing the window keeps Tegami Mail running for notifications. | Fermer la fenêtre garde Tegami Mail actif pour les notifications. |
+| Start at login | Lancer à l’ouverture de session |
+| Keyboard and storage | Clavier et stockage |
+| Single-key shortcuts | Raccourcis à une touche |
+| Ctrl+? shows them all. | Ctrl+? les affiche tous. |
+| Keep downloaded mail | Conserver le courrier téléchargé |
+| On this computer, for reading offline. | Sur cet ordinateur, pour la lecture hors ligne. |
+| Large attachments | Pièces jointes volumineuses |
+| Mail accounts | Comptes de messagerie |
+| Drag an account to change its order in the sidebar. | Glissez un compte pour changer son ordre dans la barre latérale. |
+| On this computer | Sur cet ordinateur |
+| Mail saved in local folders | Courrier enregistré dans des dossiers locaux |
+| Add account… | Ajouter un compte… |
+| E-mail account… | Compte e-mail… |
+| GNOME Online Account… | Compte en ligne GNOME… |
+| Local mail on this computer | Courrier local sur cet ordinateur |
+| Import from Thunderbird or Evolution… | Importer depuis Thunderbird ou Evolution… |
+| Organize mail | Organiser le courrier |
+| Services | Services |
+| Smart folders | Dossiers intelligents |
+| Senders | Expéditeurs |
+| Allowed and blocked | Autorisés et bloqués |
+| OpenPGP keys | Clés OpenPGP |
+| Cloud storage | Stockage en ligne |
+| Translation | Traduction |
+| Address books | Carnets d’adresses |
+| Backup and restore | Sauvegarde et restauration |
+| Display name | Nom affiché |
+| Email address | Adresse e-mail |
+| Account colour | Couleur du compte |
+| Accent of this account’s badges and outlines. | Accent des pastilles et des contours de ce compte. |
+| Show in combined views | Afficher dans les vues combinées |
+| Favorites, tags and smart folders from all accounts. | Favoris, étiquettes et dossiers intelligents de tous les comptes. |
+| Servers and connection | Serveurs et connexion |
+| Synchronisation | Synchronisation |
+| Folders | Dossiers |
+| Send-as aliases | Alias d’envoi |
+| Signatures | Signatures |
+| OpenPGP encryption | Chiffrement OpenPGP |
+| Remove account | Supprimer le compte |
+| Also removes its saved password. Mail on the server is not touched. | Supprime aussi son mot de passe enregistré. Le courrier sur le serveur n’est pas touché. |
+| Incoming | Réception |
+| Protocol | Protocole |
+| Server | Serveur |
+| Port | Port |
+| User name | Nom d’utilisateur |
+| Password | Mot de passe |
+| The password is kept in the system keyring, never in plain text. | Le mot de passe est conservé dans le trousseau du système, jamais en clair. |
+| Outgoing (SMTP) | Envoi (SMTP) |
+| Use other credentials | Utiliser d’autres identifiants |
+| Off: the incoming credentials are used. | Désactivé : ceux de la réception sont utilisés. |
+| Advanced | Avancé |
+| API token, custom OAuth app, certificate for another name | Jeton d’API, application OAuth personnalisée, certificat d’un autre nom |
+| Test connection | Tester la connexion |
+| Connected: receiving and sending work. | Connecté : réception et envoi fonctionnent. |
+| Instant new mail (push) | Courrier instantané (push) |
+| Turn off for servers that block push connections. | Désactivez-le pour les serveurs qui bloquent les connexions push. |
+| Automatic cleanup | Nettoyage automatique |
+| Empty Junk | Vider les indésirables |
+| Empty Trash | Vider la corbeille |
+| After 30 days | Après 30 jours |
+| As the application | Comme l’application |
+| Leaves out Trash, Junk and Drafts. | Hors corbeille, indésirables et brouillons. |
+| Special folders | Dossiers spéciaux |
+| Sent | Envoyés |
+| Drafts | Brouillons |
+| Archive | Archives |
+| Trash | Corbeille |
+| Junk | Indésirables |
+| Automatic | Automatique |
+| Follows the server’s own markings unless you pick a folder. Nothing already on the server moves. | Suit les repères du serveur, sauf si vous choisissez un dossier. Rien de ce qui est déjà sur le serveur ne bouge. |
+| Folder order | Ordre des dossiers |
+| Hidden folders | Dossiers masqués |
+| No hidden folders. | Aucun dossier masqué. |
+| Add alias… | Ajouter un alias… |
+| Sends through this account | Envoi via ce compte |
+| Add signature | Ajouter une signature |
+| Import file… | Importer un fichier… |
+| Start new messages with this signature | Commencer les nouveaux messages avec cette signature |
+| Edit HTML | Modifier le HTML |
+| Delete signature | Supprimer la signature |
+| Key | Clé |
+| Sign messages by default | Signer les messages par défaut |
+| Hide the subject of encrypted mail | Masquer l’objet des messages chiffrés |
+| Manage keys | Gérer les clés |
+| Add tag… | Ajouter une étiquette… |
+| Find tags in other clients | Chercher les étiquettes d’autres clients |
+| Edit tag | Modifier l’étiquette |
+| Name | Nom |
+| Colour | Couleur |
+| Custom colour… | Couleur personnalisée… |
+| IMAP keyword | Mot-clé IMAP |
+| Delete tag | Supprimer l’étiquette |
+| Add filter… | Ajouter un filtre… |
+| Apply now | Appliquer maintenant |
+| Edit filter | Modifier le filtre |
+| Name (optional) | Nom (facultatif) |
+| If | Si |
+| Conditions | Critères |
+| All must match | Tous doivent correspondre |
+| Add condition | Ajouter un critère |
+| Then | Alors |
+| Add action | Ajouter une action |
+| Delete filter | Supprimer le filtre |
+| Add smart folder… | Ajouter un dossier intelligent… |
+| Edit smart folder | Modifier le dossier intelligent |
+| Criteria | Critères |
+| Delete smart folder | Supprimer le dossier intelligent |
+| Search senders | Rechercher un expéditeur |
+| Allowed senders | Expéditeurs autorisés |
+| Blocked senders | Expéditeurs bloqués |
+| Your keys | Vos clés |
+| Correspondents’ keys | Clés des correspondants |
+| Import key… | Importer une clé… |
+| Generate key… | Générer une clé… |
+| Fetch by address… | Chercher par adresse… |
+| Trust… | Approuver… |
+| Trusted | Approuvée |
+| Cloud account | Compte de stockage |
+| Service | Service |
+| Upload folder | Dossier d’envoi |
+| Links | Liens |
+| Links expire after | Les liens expirent après |
+| Protect links with a password | Protéger les liens par un mot de passe |
+| Offer this account in the composer | Proposer ce compte dans le composeur |
+| Check connection | Vérifier la connexion |
+| Translate into | Traduire vers |
+| Check the service | Vérifier le service |
+| Address book | Carnet d’adresses |
+| New contacts | Nouveaux contacts |
+| Save new contacts in | Enregistrer les nouveaux contacts dans |
+| Add address book… | Ajouter un carnet d’adresses… |
+| Open Contacts | Ouvrir Contacts |
+| Open Online Accounts | Ouvrir Comptes en ligne |
+| Export settings | Exporter les réglages |
+| Import settings… | Importer des réglages… |
+| Replaces your settings. Keep your accounts in place: removing them first deletes their passwords. | Remplace vos réglages. Gardez vos comptes en place : les retirer avant supprime leurs mots de passe. |
+
+Plurals for the list subtitles: "{n} tags", "{n} filters", "{n} smart folders",
+"{n} address books", "{n} signatures", "{n} addresses" (alias count).
+
 ### Plurals to add
 
 | Singular (English) | Plural (English) | French singular | French plural |

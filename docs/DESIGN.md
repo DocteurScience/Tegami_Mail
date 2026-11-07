@@ -170,6 +170,124 @@ Removed from the old popover, as proposed to the owner on 2026-11-07:
 The owner approved each removal on 2026-11-07, and kept "High importance"
 as a fourth check box in Messages.
 
+## Preferences
+
+The window held about 450 settings on 20 pages: roughly 260 for the
+application on 11 pages and 190 for accounts, filters, tags and services.
+The GNOME HIG has no page on what preferences hold, and the libadwaita
+documentation for `AdwPreferencesDialog` only describes its structure (pages,
+groups, search, sub-pages). The rules below come from the way GNOME
+applications are built, not from a written rule:
+
+1. A setting exists only if people really differ and no default serves both.
+2. Follow the system rather than copy it: style, accent, fonts, text size,
+   language, date and time, sounds, browser, icons.
+3. No layout settings: this document decides the layout.
+4. Troubleshooting tools are not preferences.
+5. One action in one place: nothing repeats a control that a menu of the
+   list or the reader already has.
+
+The window is an `AdwPreferencesDialog` with the search button on (the
+header's search icon), five pages in a view switcher, groups with a title,
+rows with a short sentence-case subtitle, and sub-pages for anything longer
+than one screen. Screens 22 to 48. The owner decided every removal below on
+2026-11-07 and 2026-11-08.
+
+| Page | What it holds | Screens |
+| --- | --- | --- |
+| Accounts | The accounts, then Organize mail (tags, filters, smart folders, senders) and Services (OpenPGP keys, cloud storage, translation, address books, backup and restore). | 26 to 48 |
+| Messages | Reading (mark as read, newest first, confirm deleting a conversation, swipe), composing (send from, format, undo send, spell check). | 22 |
+| Notifications | Desktop notifications, show sender and subject, how often to check, a link to the system's notification settings. | 23 |
+| Privacy | Remote content (never, ask, always), sender photos and logos, answering read-receipt requests. | 24 |
+| Application | Style (follow the system, light, dark), keep running in the background, start at login, single-key shortcuts (with the Gmail variant as an option of this row), keep downloaded mail, large attachments. | 25 |
+
+### Accounts
+
+- The list shows each account with its address, a chevron, and "Add account…"
+  that opens a small menu (27): e-mail account, GNOME Online Account, local
+  mail on this computer, import from Thunderbird or Evolution (Maildir and
+  mbox, moved here from the account page).
+- An account page (28) is short: display name, address, colour, show in
+  combined views, then one row per sub-page (servers and connection,
+  synchronisation, folders, send-as aliases, signatures, OpenPGP), and a
+  destructive "Remove account" row at the end. The account's circle in the
+  list is always computed from its initials and colour; the picture, emoji and
+  Gravatar choices are gone.
+- "Servers and connection" (29): receiving, sending, test connection. The
+  rare fields (API token, custom OAuth app registration, certificate for
+  another name, separate SMTP sign-in) sit under "Advanced". A connection
+  test reports its result with an icon and a sentence.
+- Synchronisation (30): push, automatic emptying of Junk and Trash, and how long
+  downloaded mail is kept ("As the application" by default, set in
+  Application). "Include attachments" and "Move list mail to Trash" are gone.
+- Folders (31): the five special folders by default on "Automatic"; templates,
+  snoozed, reply copies and "server saves its own copy" under "Advanced";
+  folder order; hidden folders.
+- Aliases (32), signatures (33), OpenPGP key for this account (34): as drawn.
+- "Copy mail to On This Computer" and the Maildir/mbox import rows leave the
+  account page.
+- Microsoft 365: keep "Search the organization directory", only for a Microsoft
+  account. "Show sensitivity label names" is removed.
+
+### Organize mail and services
+
+- Tags (35, 36): name, colour, order; the first nine have the keys 1 to 9. The
+  IMAP keyword and a custom colour are under "Advanced" in the editor.
+- Filters (37, 38) stay in full: they are the user's own rules, not preferences.
+  The editor moves the rare conditions (body, Reply-To) and "Count unread mail"
+  under "Advanced". "Apply now" stays here only.
+- Smart folders (39, 40): the sidebar gets one collapsible section "Smart
+  folders" right after the unified rows and before the tags, shown only when at
+  least one exists. The preview text and the From-without-Reply-To option are
+  under "Advanced" in the editor.
+- Senders (41): allowed (their remote content loads) and blocked (to Trash).
+- OpenPGP keys (42): your keys, correspondents' keys, the GnuPG engine as a
+  note at the bottom. The account's key choice is on the account page (34).
+- Cloud storage (43, 44): Dropbox stays. Two-factor code and "behind
+  Cloudflare" are under "Advanced". Expiry and password for links are set per
+  account; the composer reuses them.
+- Translation (45): service, key, language to translate into. Server and
+  region are under "Advanced". The "Offer to translate" switch is gone: the
+  button shows whenever a service is set.
+- Address books (46, 47): the books GNOME provides (Evolution Data Server,
+  GNOME Online Accounts, CardDAV, LDAP). The Tegami Mail address book is gone,
+  with its import, export and "delete all contacts": the application reads
+  GNOME Contacts and the provider's contacts. "Show names from Contacts" is
+  always on, and has no setting.
+- Backup and restore (48): export, and import with a confirmation first. The
+  import row says: "Replaces your settings. Keep your accounts in place:
+  removing them first deletes their passwords."
+- Grammar (in Messages, under spell check, only when a checker exists): one
+  switch for the local checker; LanguageTool (server, user name, API key)
+  under "Advanced".
+
+### Removed or moved
+
+All of these are features the app has today; the owner agreed to each.
+
+- Appearance: coloured themes (only light, dark, follow the system), the icon
+  gallery, the customizable toolbar, "This window opens to", text size and
+  icon set (they follow the system).
+- Reading: own font and colours (the system's document font, text size and high
+  contrast apply), message cards and header options, find bar position,
+  printing options, the actions palette in the cards.
+- Message list: columns, layout, preview lines, grouping by date, search and
+  selection bar positions, swipe direction and sensitivity, the actions palette
+  on hover (it hid actions behind hover).
+- Sidebar: the whole page. The design fixes order, sections, chevron, icon rail,
+  and the tags above the accounts.
+- Conversations and Date and time: the pages. Defaults, or the system.
+- System: language (GNOME has none per application), renderer, start
+  fullscreen, tray icon, GNOME Files integration, "Send with" default, size
+  limit, link opener. Status bar, console mode and "Export log" move to a
+  "Troubleshooting" entry of the main menu.
+- High importance, in the Filters menu of the list.
+- Existing values: a removed setting keeps its stored value and is simply no
+  longer shown, unless the code below it is also removed.
+
+Open point: the Tegami Mail address book may hold contacts for some users.
+Before deleting it, offer once to export them as a vCard file.
+
 ## Reading pane and conversations
 
 - A single message: subject (`title-2`), sender with avatar (`AdwAvatar`), date
@@ -408,4 +526,6 @@ All in [`data/repo/design/`](../data/repo/design/): `01-list.png`,
 `13-attachment-forgotten.png`, `14-narrow-1024x600.png`,
 `15-phone-width.png`, `16-high-contrast.png`, `17-large-text.png`,
 `18-sort-display.png`, `19-filters-menu.png`, `20-filters-active.png`,
-`21-custom-period.png`.
+`21-custom-period.png`, then the preferences, `22-prefs-messages.png` to
+`48-prefs-backup.png`: the five pages and every sub-page and editor of Accounts
+(see Preferences above for what each one is).
