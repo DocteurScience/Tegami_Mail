@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- **Changed: initials circles are flat pastel with dark letters** (mockup
+  01), in place of libadwaita's lit gradient under white letters. A sender
+  keeps their hue, and the reader's card now shows the same circle as the
+  list (two initials, same color) where it had a tint of its own.
+
 - **Changed: the selected card in the message list is drawn as in mockup
   01**: a 2 px outline in the system accent on a ground tinted with the
   accent. When the keyboard is elsewhere (the composer, the search entry),

@@ -556,8 +556,10 @@ fn lone_messages_are_cards_on_a_new_install() {
     let mut fresh = PrivacyFile::default();
     apply_new_defaults(&mut fresh);
     assert!(fresh.single_message_card);
-    let mut chosen = PrivacyFile::default();
-    chosen.single_message_card = false;
+    let mut chosen = PrivacyFile {
+        single_message_card: false,
+        ..PrivacyFile::default()
+    };
     apply_new_defaults(&mut chosen);
     assert!(!chosen.single_message_card);
     let mut old: PrivacyFile = toml::from_str("single_message_card = false\n").unwrap();

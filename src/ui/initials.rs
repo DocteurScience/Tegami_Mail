@@ -4,9 +4,10 @@
 //! that box evenly — a lone "J" or "T" drifts, and pairs lean — which is
 //! what this paintable corrects, at every size it is drawn at.
 //!
-//! Colors are libadwaita's own avatar palette (the same fourteen gradients
-//! `adw::Avatar` picks from, chosen by the same hash of the name), so a
-//! sender keeps the color they have always had.
+//! Colors follow libadwaita's avatar palette (its fourteen hues, chosen
+//! by the same hash of the name, so a sender keeps their hue), drawn as
+//! mockup 01 does: a flat pastel ground and dark letters of the same hue,
+//! not libadwaita's lit gradient under white letters.
 //!
 //! The same drawing serves the sidebar's account circles (a glyph alone
 //! over the circle's own color — see [`glyph_picture`]) and the reader's
@@ -18,23 +19,26 @@ use std::collections::HashMap;
 
 use gtk::{gdk, glib, graphene, gsk, pango, prelude::*, subclass::prelude::*};
 
-/// libadwaita's `avatar.color1`…`color14`: gradient top, gradient bottom,
-/// text (from its stylesheet; one palette for both themes).
-const PALETTE: [(&str, &str, &str); 14] = [
-    ("#83b6ec", "#337fdc", "#cfe1f5"),
-    ("#7ad9f1", "#0f9ac8", "#caeaf2"),
-    ("#8de6b1", "#29ae74", "#cef8d8"),
-    ("#b5e98a", "#6ab85b", "#e6f9d7"),
-    ("#f8e359", "#d29d09", "#f9f4e1"),
-    ("#ffcb62", "#d68400", "#ffead1"),
-    ("#ffa95a", "#ed5b00", "#ffe5c5"),
-    ("#f78773", "#e62d42", "#f8d2ce"),
-    ("#e973ab", "#e33b6a", "#fac7de"),
-    ("#cb78d4", "#9945b5", "#e7c2e8"),
-    ("#9e91e8", "#7a59ca", "#d5d2f5"),
-    ("#e3cf9c", "#b08952", "#f2eade"),
-    ("#be916d", "#785336", "#e5d6ca"),
-    ("#c0bfbc", "#6e6d71", "#d8d7d3"),
+/// Ground and ink for each of libadwaita's `avatar.color1`…`color14`:
+/// the hue of its gradient's lower stop, at 86 % lightness for the ground
+/// and 24 % for the letters (mockup 01's blue is `#c1d8f7` on `#0f3a78`).
+/// Every pair is above 5.5:1, past the 4.5:1 text needs; one table for
+/// both themes, as libadwaita has.
+const PALETTE: [(&str, &str); 14] = [
+    ("#c2d9f5", "#123968"),
+    ("#c1e9f6", "#095771"),
+    ("#c5f1de", "#176342"),
+    ("#d2e9cd", "#2d5525"),
+    ("#f6e8c1", "#715609"),
+    ("#f6e2c1", "#714909"),
+    ("#f6d5c1", "#713109"),
+    ("#f6c1c7", "#6d0d18"),
+    ("#f6c1d0", "#6b0f29"),
+    ("#e3cbeb", "#4b2259"),
+    ("#d4c9ee", "#301e5d"),
+    ("#e9dece", "#544126"),
+    ("#e9dace", "#543a26"),
+    ("#dbdbdc", "#3d3c3e"),
 ];
 
 /// The palette entry `adw::Avatar` gives `text`: GLib's `g_str_hash`
@@ -75,9 +79,8 @@ mod imp {
     #[derive(Default)]
     pub(crate) struct InitialsPaintable {
         pub(super) initials: RefCell<String>,
-        /// The ground: a gradient top and bottom, or nothing (the widget
-        /// beneath paints its own).
-        pub(super) ground: RefCell<Option<(gdk::RGBA, gdk::RGBA)>>,
+        /// The flat ground, or nothing (the widget beneath paints its own).
+        pub(super) ground: RefCell<Option<gdk::RGBA>>,
         pub(super) fg: RefCell<Option<gdk::RGBA>>,
         /// Text height as a share of the shorter side; 0 = by the count
         /// of letters, as the avatar sizes its label.
@@ -110,16 +113,11 @@ mod imp {
                 snapshot.append_color(&ground, &rect);
                 let circle = gsk::RoundedRect::from_rect(rect, r);
                 snapshot.append_border(&circle, &[1.5; 4], &[ink; 4]);
-            } else if let Some((top, bottom)) = *self.ground.borrow() {
+            } else if let Some(ground) = *self.ground.borrow() {
                 // The circle's ground: the avatar clips this to its disc.
-                snapshot.append_linear_gradient(
+                snapshot.append_color(
+                    &ground,
                     &graphene::Rect::new(0.0, 0.0, width as f32, height as f32),
-                    &graphene::Point::new(0.0, 0.0),
-                    &graphene::Point::new(0.0, height as f32),
-                    &[
-                        gsk::ColorStop::new(0.0, top),
-                        gsk::ColorStop::new(1.0, bottom),
-                    ],
                 );
             }
 
@@ -176,13 +174,8 @@ impl InitialsPaintable {
         if initials.is_empty() {
             return None;
         }
-        let (top, bottom, fg) = PALETTE[palette_index(name)];
-        let rgba = |s: &str| gdk::RGBA::parse(s).unwrap_or(gdk::RGBA::BLACK);
-        let this: Self = glib::Object::new();
-        this.imp().initials.replace(initials);
-        this.imp().ground.replace(Some((rgba(top), rgba(bottom))));
-        this.imp().fg.replace(Some(rgba(fg)));
-        Some(this)
+        let (ground, ink) = sender_colors(name);
+        Some(Self::solid(&initials, ground, ink, 0.0))
     }
 
     /// `text` alone (initials, or an emoji) in `fg`, over nothing: for a
@@ -199,9 +192,23 @@ impl InitialsPaintable {
     /// `text` in `fg` on a flat `bg`.
     pub(crate) fn solid(text: &str, bg: gdk::RGBA, fg: gdk::RGBA, scale: f64) -> Self {
         let this = Self::glyph(text, fg, scale);
-        this.imp().ground.replace(Some((bg, bg)));
+        this.imp().ground.replace(Some(bg));
         this
     }
+}
+
+/// The ground and the letters' color of `name`'s initials circle, the same
+/// in the message list and the reader.
+pub(crate) fn sender_colors(name: &str) -> (gdk::RGBA, gdk::RGBA) {
+    let (ground, ink) = PALETTE[palette_index(name)];
+    let rgba = |s: &str| gdk::RGBA::parse(s).unwrap_or(gdk::RGBA::BLACK);
+    (rgba(ground), rgba(ink))
+}
+
+/// The initials `adw::Avatar` would show for `name`, for a circle drawn
+/// elsewhere (the reader's cards).
+pub(crate) fn initials(name: &str) -> String {
+    initials_of(name)
 }
 
 /// The ground and ink every circle takes under high contrast: white and
@@ -348,15 +355,15 @@ pub(crate) fn cache_stats() -> (usize, u64, usize, usize) {
     (pictures, picture_bytes, uris + pngs, uri_bytes + png_bytes)
 }
 
-/// `text` on a flat `bg`, as a `data:` PNG for an `<img>` of `size` CSS
+/// `text` in `fg` on a flat `bg`, as a `data:` PNG for an `<img>` of `size` CSS
 /// pixels — rendered at the screen's scale, so it is as crisp as the
 /// document's own text. Drawn through the window's renderer; `None` before
 /// a window exists.
-pub(super) fn png_data_uri(text: &str, bg: gdk::RGBA, size: i32) -> Option<String> {
+pub(super) fn png_data_uri(text: &str, bg: gdk::RGBA, fg: gdk::RGBA, size: i32) -> Option<String> {
     // High contrast draws another circle for the same name.
     let key = (
         text.to_string(),
-        format!("{bg}{:?}", high_contrast_pair()),
+        format!("{bg}{fg}{:?}", high_contrast_pair()),
         size,
     );
     if let Some(hit) = PNG_CACHE.with(|c| c.borrow().get(&key).cloned()) {
@@ -374,7 +381,7 @@ pub(super) fn png_data_uri(text: &str, bg: gdk::RGBA, size: i32) -> Option<Strin
     let renderer = window.renderer()?;
     let scale = window.scale_factor().max(1);
     let px = size * scale;
-    let paintable = InitialsPaintable::solid(text, bg, gdk::RGBA::WHITE, 0.0);
+    let paintable = InitialsPaintable::solid(text, bg, fg, 0.0);
     let snapshot = gtk::Snapshot::new();
     paintable.snapshot(&snapshot, f64::from(px), f64::from(px));
     let node = snapshot.to_node()?;
@@ -390,24 +397,6 @@ pub(super) fn png_data_uri(text: &str, bg: gdk::RGBA, size: i32) -> Option<Strin
         c.borrow_mut().insert(key, uri.clone());
     });
     Some(uri)
-}
-
-/// `hsl()` as CSS means it (hue in degrees, the rest as fractions), for the
-/// reader's per-sender tints.
-pub(super) fn hsl(h: f64, s: f64, l: f64) -> gdk::RGBA {
-    let c = (1.0 - (2.0 * l - 1.0).abs()) * s;
-    let hp = (h.rem_euclid(360.0)) / 60.0;
-    let x = c * (1.0 - (hp % 2.0 - 1.0).abs());
-    let (r, g, b) = match hp {
-        v if v < 1.0 => (c, x, 0.0),
-        v if v < 2.0 => (x, c, 0.0),
-        v if v < 3.0 => (0.0, c, x),
-        v if v < 4.0 => (0.0, x, c),
-        v if v < 5.0 => (x, 0.0, c),
-        _ => (c, 0.0, x),
-    };
-    let m = l - c / 2.0;
-    gdk::RGBA::new((r + m) as f32, (g + m) as f32, (b + m) as f32, 1.0)
 }
 
 #[cfg(test)]
@@ -427,13 +416,24 @@ mod tests {
         assert!(palette_index("Marcus Chen") < PALETTE.len());
     }
 
+    /// The letters stay readable on every ground (WCAG 4.5:1).
     #[test]
-    fn hsl_matches_css() {
-        let c = hsl(0.0, 1.0, 0.5);
-        assert!((c.red() - 1.0).abs() < 0.01 && c.green().abs() < 0.01 && c.blue().abs() < 0.01);
-        let c = hsl(120.0, 0.52, 0.45);
-        assert!((c.green() - 0.684).abs() < 0.01 && (c.red() - 0.216).abs() < 0.01);
-        let c = hsl(240.0, 0.52, 0.38);
-        assert!((c.blue() - 0.5776).abs() < 0.01);
+    fn every_palette_pair_reads() {
+        fn lum(hex: &str) -> f64 {
+            let c = gdk::RGBA::parse(hex).unwrap();
+            let f = |v: f32| {
+                let v = f64::from(v);
+                if v <= 0.03928 {
+                    v / 12.92
+                } else {
+                    ((v + 0.055) / 1.055).powf(2.4)
+                }
+            };
+            0.2126 * f(c.red()) + 0.7152 * f(c.green()) + 0.0722 * f(c.blue())
+        }
+        for (ground, ink) in PALETTE {
+            let ratio = (lum(ground) + 0.05) / (lum(ink) + 0.05);
+            assert!(ratio >= 4.5, "{ink} on {ground}: {ratio:.1}");
+        }
     }
 }

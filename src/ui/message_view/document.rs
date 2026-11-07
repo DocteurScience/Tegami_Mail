@@ -166,7 +166,7 @@ impl MessageView {
         for m in thread {
             let body = card_body(&cards, m);
             if conversation {
-                let ava_html = card_avatar(m, dark);
+                let ava_html = card_avatar(m);
                 sections.push_str(&card_html(&cards, m, &ava_html, body));
             } else {
                 sections.push_str(&body);
@@ -285,8 +285,8 @@ fn card_body(cards: &Cards<'_>, m: &Message) -> String {
 }
 
 /// The face on a card's header: a mailbox of your own wears the one it was
-/// given (#189), anyone else tinted initials.
-fn card_avatar(m: &Message, dark: bool) -> String {
+/// given (#189), anyone else the initials circle the list shows.
+fn card_avatar(m: &Message) -> String {
     // One of your own mailboxes wrote this card (#189):
     // show what its account chose — the sidebar's picture,
     // or its emoji on the account color — so your own
@@ -307,9 +307,11 @@ fn card_avatar(m: &Message, dark: bool) -> String {
             (Some(path), _) => crate::ui::initials::picture_data_uri(path, 26)
                 .map(|uri| format!("<img class=\"tegami-ava\" src=\"{uri}\" alt=\"\">")),
             (None, Some(emoji)) => {
-                let png = gtk::gdk::RGBA::parse(&face.color)
-                    .ok()
-                    .and_then(|bg| crate::ui::initials::png_data_uri(emoji, bg, 26));
+                let png = gtk::gdk::RGBA::parse(&face.color).ok().and_then(|bg| {
+                    let fg = gtk::gdk::RGBA::parse(crate::color::readable_text(&face.color))
+                        .unwrap_or(gtk::gdk::RGBA::WHITE);
+                    crate::ui::initials::png_data_uri(emoji, bg, fg, 26)
+                });
                 Some(match png {
                     Some(uri) => {
                         format!("<img class=\"tegami-ava\" src=\"{uri}\" alt=\"\">")
@@ -325,30 +327,27 @@ fn card_avatar(m: &Message, dark: bool) -> String {
         }
     });
     own.unwrap_or_else(|| {
-        let initial = m
-            .shown_from_name()
-            .trim()
-            .chars()
-            .next()
-            .or_else(|| m.from_addr.trim().chars().next())
-            .map(|c| c.to_uppercase().to_string())
+        // The list's circle for the same sender (mockup 01): its initials
+        // on the same pastel ground, keyed by the name shown.
+        let name = m.shown_from_name();
+        let name = if name.trim().is_empty() {
+            std::borrow::Cow::Borrowed(m.from_addr.as_str())
+        } else {
+            name
+        };
+        let initials = Some(crate::ui::initials::initials(&name))
+            .filter(|i| !i.is_empty())
             .unwrap_or_else(|| "?".to_string());
-        let hue = m
-            .from_addr
-            .to_ascii_lowercase()
-            .bytes()
-            .fold(0u32, |h, b| h.wrapping_mul(31).wrapping_add(b as u32))
-            % 360;
-        let l = if dark { 38 } else { 45 };
-        // Drawn ink-centred by ui::initials and embedded as
-        // a PNG (the same tint); the markup span stands in
-        // only before a window exists to render with.
-        let bg = crate::ui::initials::hsl(f64::from(hue), 0.52, f64::from(l) / 100.0);
-        match crate::ui::initials::png_data_uri(&initial, bg, 26) {
+        let (bg, fg) = crate::ui::initials::sender_colors(&name);
+        // Drawn ink-centred by ui::initials and embedded as a PNG; the
+        // markup span stands in only before a window exists to render with.
+        match crate::ui::initials::png_data_uri(&initials, bg, fg, 26) {
             Some(uri) => format!("<img class=\"tegami-ava\" src=\"{uri}\" alt=\"\">"),
             None => format!(
-                "<span class=\"tegami-ava\" style=\"background:hsl({hue},52%,{l}%)\">{}</span>",
-                escape_html(&initial),
+                "<span class=\"tegami-ava\" style=\"background:{};color:{}\">{}</span>",
+                crate::color::to_hex(&bg),
+                crate::color::to_hex(&fg),
+                escape_html(&initials),
             ),
         }
     })
