@@ -101,7 +101,7 @@ Dernière mise à jour : 2026-11-02, après `40a6c7e`.
 | `faf4529` | Développement des conversations dans la liste supprimé (réglages, lignes imbriquées, flèches) |
 | `cb84d46` | Carte sélectionnée comme la maquette 01 : contour d'accent 2 px sur un fond teinté à 10 % ; liste sans le clavier : contour 1 px toujours en accent (plus de gris, #274). Message seul en carte par défaut (décision du 2026-11-07) ; les installations existantes gardent leur valeur (Réglages → Lecture) |
 | `d73057c` | Pastilles d'initiales en aplat pastel, lettres foncées de la même teinte (maquette 01), mêmes couleurs et initiales dans la liste et le lecteur ; contour de sélection intérieur, de largeur égale (`01008df`) |
-| (ce commit) | Fond du volet de liste teinté comme la maquette 01 (mélange à 50 % fond de fenêtre / barre latérale, #f3f3f4 mesuré pour #f2f2f4) ; barres de recherche et de sélection gardent le fond de la fenêtre |
+| `a48ae10` | Fond du volet de liste teinté comme la maquette 01 (mélange à 50 % fond de fenêtre / barre latérale, #f3f3f4 mesuré pour #f2f2f4) ; barres de recherche et de sélection gardent le fond de la fenêtre |
 
 ## Décisions prises
 
