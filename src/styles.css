@@ -601,9 +601,23 @@ flowbox.attach-flow > flowboxchild {
    hide by default (#102), and dead padding here floated the first row
    ~32px low. Each revealed bar carries its own inset instead; the negative
    margin buys the rows two more pixels. */
+/* The list's ground under its cards (mockup 01, #f2f2f4 on light): halfway
+   from the window's to the sidebar's, so the white cards stand out and the
+   pane sits between the two in the theme's own shades, dark included. The
+   search and bulk bars above the rows keep the window's ground, as the
+   header bar does. */
+.message-list-pane,
+.list-show-bar {
+  background-color: mix(@window_bg_color, @sidebar_bg_color, 0.5);
+}
+
 .list-toolbar {
   padding: 0;
   margin-bottom: 2px;
+}
+
+.list-toolbar:not(:empty) {
+  background-color: @window_bg_color;
 }
 
 .list-footer {
