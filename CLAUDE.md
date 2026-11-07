@@ -62,7 +62,8 @@ Le redesign suit [docs/DESIGN.md](docs/DESIGN.md) et
   Un échec du snap à l'étape `gnome/cleanup` a déjà été passager.
 - Flatpak : workflow `.github/workflows/flatpak.yml`, à la demande
   (`gh workflow run flatpak.yml --repo DocteurScience/Tegami_Mail`) ;
-  artefact `flatpak` (bundle `tegami-mail.flatpak`). Les artefacts ne se
+  artefact `flatpak` (bundle `tegami-mail.flatpak`). AppImage : de même avec
+  `appimage.yml` (artefact `appimage`, script `tools/build-appimage.sh`). Les artefacts ne se
   téléchargent pas depuis la session cloud (stockage GitHub bloqué).
 
 ## Compiler, tester, capturer
