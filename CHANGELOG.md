@@ -2,6 +2,20 @@
 
 ## Unreleased
 
+- **Changed: Settings → Tags as mockup 09 draws it.** Each tag shows its
+  colour, how many messages carry it and the colour's name, with Edit and
+  Remove buttons; **New tag…** ends the list, and **Import tags from the
+  servers…** (the former Find Tags) sits on a row below. Adding and editing
+  go through the New Tag dialog the tags panel opens: a name, eight named
+  colours and a preview.
+- **Removed: a tag's keyword field, custom tag colours and reordering
+  tags** (owner's decision, 2026-11-07). The keyword is made from the name
+  when the tag is made and kept after that; a colour from outside the eight
+  stays until another is picked; tags keep the order they were made in,
+  which is the order of the 1–9 keys.
+- **Changed: the All / Unread / Starred switch shows only the chosen one in
+  bold** (mockup 01), and reads « Non lus » in French.
+
 - **Changed: the message list has a ground of its own** under its cards
   (mockup 01), halfway between the window's and the sidebar's, so the
   cards stand out from it. The All / Unread / Starred switch above it

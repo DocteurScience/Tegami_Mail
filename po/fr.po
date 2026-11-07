@@ -727,7 +727,7 @@ msgid "All"
 msgstr "Tous"
 
 msgid "Unread"
-msgstr "Non lu"
+msgstr "Non lus"
 
 msgid "Starred"
 msgstr "Favoris"
@@ -2506,8 +2506,8 @@ msgstr "Ajouter un dossier intelligent…"
 msgid "Searching…"
 msgstr "Recherche…"
 
-msgid "Find tags…"
-msgstr "Rechercher des étiquettes…"
+msgid "Import tags from the servers…"
+msgstr "Importer les étiquettes des serveurs…"
 
 msgid "No new tags"
 msgstr "Aucune nouvelle étiquette"
@@ -2536,41 +2536,22 @@ msgstr "Tout importer"
 msgid "{n} messages"
 msgstr "{n} messages"
 
-msgid "Toggles the tag on a message (with single-key shortcuts on)"
-msgstr ""
-"Ajoute ou retire l’étiquette d’un message (avec les raccourcis à touche "
-"unique activés)"
+msgid "{count} message"
+msgid_plural "{count} messages"
+msgstr[0] "{count} message"
+msgstr[1] "{count} messages"
 
-msgid "Remove tag"
-msgstr "Retirer l’étiquette"
+msgid "{count} · {color}"
+msgstr "{count} · {color}"
 
 msgid "Edit tag"
 msgstr "Modifier l’étiquette"
 
-msgid "Add tag"
-msgstr "Ajouter une étiquette"
+msgid "Remove tag"
+msgstr "Retirer l’étiquette"
 
-msgid "Name"
-msgstr "Nom"
-
-msgid "Keyword"
-msgstr "Mot-clé"
-
-msgid ""
-"How the server stores the tag, without spaces. Thunderbird's built-in tags "
-"are $label1 to $label5."
-msgstr ""
-"Façon dont le serveur stocke l’étiquette, sans espaces. Les étiquettes "
-"intégrées de Thunderbird vont de $label1 à $label5."
-
-msgid "Color"
-msgstr "Couleur"
-
-msgid "Custom color…"
-msgstr "Couleur personnalisée…"
-
-msgid "Tag color"
-msgstr "Couleur de l’étiquette"
+msgid "New tag…"
+msgstr "Nouvelle étiquette…"
 
 msgid "Needs an app password, not your login password."
 msgstr ""
@@ -2710,6 +2691,9 @@ msgstr "Modifier le dossier intelligent"
 
 msgid "Add smart folder"
 msgstr "Ajouter un dossier intelligent"
+
+msgid "Name"
+msgstr "Nom"
 
 msgid "Those in the unified section."
 msgstr "Ceux de la section unifiée."
@@ -5684,9 +5668,6 @@ msgstr "Afficher chaque dossier intelligent"
 msgid "Long-press to expand or collapse"
 msgstr "Appui long pour déplier ou replier"
 
-msgid "New tag…"
-msgstr "Nouvelle étiquette…"
-
 msgid "Show or hide tags"
 msgstr "Afficher ou masquer les étiquettes"
 
@@ -5725,6 +5706,9 @@ msgstr "Nouvelle étiquette"
 
 msgid "Tag name"
 msgstr "Nom de l’étiquette"
+
+msgid "Color"
+msgstr "Couleur"
 
 msgid "Search or create…"
 msgstr "Rechercher ou créer…"
@@ -6689,18 +6673,11 @@ msgstr "Bloquer cet expéditeur"
 
 msgid ""
 "Tags are stored on the server as IMAP keywords, so Thunderbird and other "
-"clients show them too.\n"
-"\n"
-"Drag to reorder. The first nine are mapped to the 1–9 keys."
+"clients show them too. The first nine are mapped to the 1–9 keys."
 msgstr ""
-"Les étiquettes sont stockées sur le serveur sous forme de mots-clés IMAP ; "
-"Thunderbird et les autres clients les affichent donc aussi.\n"
-"\n"
-"Faites glisser pour réorganiser. Les neuf premières sont associées aux "
-"touches 1 à 9."
-
-msgid "Add tag…"
-msgstr "Ajouter une étiquette…"
+"Les étiquettes sont enregistrées sur le serveur comme mots-clés IMAP : "
+"Thunderbird et les autres clients les affichent aussi. Les neuf premières "
+"répondent aux touches 1 à 9."
 
 msgid "Look through every mailbox for tags other clients have set"
 msgstr ""

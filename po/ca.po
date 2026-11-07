@@ -2535,8 +2535,9 @@ msgstr "Afegeix una carpeta intel·ligent…"
 msgid "Searching…"
 msgstr "S'està cercant…"
 
-msgid "Find tags…"
-msgstr "Troba etiquetes…"
+#, fuzzy
+msgid "Import tags from the servers…"
+msgstr "Suprimeix del servidor…"
 
 msgid "No new tags"
 msgstr "No hi ha etiquetes noves"
@@ -2563,41 +2564,25 @@ msgstr "Importa-ho tot"
 msgid "{n} messages"
 msgstr "{n} missatges"
 
-msgid "Toggles the tag on a message (with single-key shortcuts on)"
-msgstr ""
-"Activa o desactiva l'etiqueta en un missatge (amb les dreceres d'una sola "
-"tecla activades)"
+#, fuzzy
+msgid "{count} message"
+msgid_plural "{count} messages"
+msgstr[0] "{n} missatge"
+msgstr[1] "{n} missatges"
 
-msgid "Remove tag"
-msgstr "Treu l'etiqueta"
+#, fuzzy
+msgid "{count} · {color}"
+msgstr "Color d'accent del compte"
 
 msgid "Edit tag"
 msgstr "Edita l'etiqueta"
 
-msgid "Add tag"
-msgstr "Afegeix una etiqueta"
+msgid "Remove tag"
+msgstr "Treu l'etiqueta"
 
-msgid "Name"
-msgstr "Nom"
-
-msgid "Keyword"
-msgstr "Paraula clau"
-
-msgid ""
-"How the server stores the tag, without spaces. Thunderbird's built-in tags "
-"are $label1 to $label5."
-msgstr ""
-"Com emmagatzema l'etiqueta el servidor, sense espais. Les etiquetes "
-"integrades del Thunderbird són $label1 a $label5."
-
-msgid "Color"
-msgstr "Color"
-
-msgid "Custom color…"
-msgstr "Color personalitzat…"
-
-msgid "Tag color"
-msgstr "Color de l'etiqueta"
+#, fuzzy
+msgid "New tag…"
+msgstr "Afegeix una etiqueta…"
 
 msgid "Needs an app password, not your login password."
 msgstr ""
@@ -2735,6 +2720,9 @@ msgstr "Edita la carpeta intel·ligent"
 
 msgid "Add smart folder"
 msgstr "Afegeix una carpeta intel·ligent"
+
+msgid "Name"
+msgstr "Nom"
 
 msgid "Those in the unified section."
 msgstr "Els de la secció unificada."
@@ -5735,10 +5723,6 @@ msgstr "Mostra cada carpeta intel·ligent"
 msgid "Long-press to expand or collapse"
 msgstr "Mantén premut per expandir o replegar"
 
-#, fuzzy
-msgid "New tag…"
-msgstr "Afegeix una etiqueta…"
-
 msgid "Show or hide tags"
 msgstr "Mostra o amaga les etiquetes"
 
@@ -5781,6 +5765,9 @@ msgstr "No hi ha etiquetes noves"
 #, fuzzy
 msgid "Tag name"
 msgstr "Afegeix l'etiqueta {name}"
+
+msgid "Color"
+msgstr "Color"
 
 #, fuzzy
 msgid "Search or create…"
@@ -6743,19 +6730,15 @@ msgstr "Adreça o domini"
 msgid "Block this sender"
 msgstr "Bloca aquest remitent"
 
+#, fuzzy
 msgid ""
 "Tags are stored on the server as IMAP keywords, so Thunderbird and other "
-"clients show them too.\n"
-"\n"
-"Drag to reorder. The first nine are mapped to the 1–9 keys."
+"clients show them too. The first nine are mapped to the 1–9 keys."
 msgstr ""
 "Les etiquetes s'emmagatzemen al servidor com a paraules clau IMAP, així que "
 "el Thunderbird i altres clients també les mostren.\n"
 "\n"
 "Arrossega per reordenar-les. Les nou primeres s'assignen a les tecles 1–9."
-
-msgid "Add tag…"
-msgstr "Afegeix una etiqueta…"
 
 msgid "Look through every mailbox for tags other clients have set"
 msgstr ""

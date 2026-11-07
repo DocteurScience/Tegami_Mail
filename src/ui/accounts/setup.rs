@@ -88,7 +88,8 @@ impl AccountsWindow {
             apply_filters_spinner: None,
             apply_filters_label: None,
             filters_applying: false,
-            find_tags_label: None,
+            find_tags_row: None,
+            tag_totals: Default::default(),
             tag_scanning: false,
         };
         {
@@ -135,7 +136,7 @@ impl AccountsWindow {
         self.find_tags_spinner = Some(widgets.tags.find_tags_spinner.clone());
         self.apply_filters_spinner = Some(widgets.filters.apply_filters_spinner.clone());
         self.apply_filters_label = Some(widgets.filters.apply_filters_label.clone());
-        self.find_tags_label = Some(widgets.tags.find_tags_label.clone());
+        self.find_tags_row = Some(widgets.tags.find_tags_row.clone());
         self.rebuild_tag_rows(sender);
         self.smart_list = Some(widgets.smart.smart_list.clone());
         self.rebuild_smart_rows(sender);
@@ -369,11 +370,10 @@ pub(super) fn connect_editor_open(
             let editor = match tag.as_deref() {
                 Some("editor") => Some("accounts"),
                 Some("filter") => Some("filters"),
-                Some("tag") => Some("tags"),
                 Some("smart") => Some("smart"),
                 _ => None,
             };
-            if !matches!(editor, Some("filters") | Some("tags") | Some("smart")) {
+            if !matches!(editor, Some("filters") | Some("smart")) {
                 form_save.borrow_mut().take();
             }
             let _ = s.send(AccountsOutput::EditorOpen(editor));

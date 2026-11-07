@@ -54,8 +54,8 @@ The full list. The [README](../README.md) carries a shorter one.
   collected from mail); they tag mail, file it away, or both, and can be run
   over mail that is already in a folder.
 - **Tags:** IMAP keywords, Graph categories, or a local fallback where the
-  server has neither; custom colours, drag to reorder, and number-key
-  shortcuts. Gmail's labels show beside them.
+  server has neither; eight named colours, and number-key shortcuts for
+  the first nine. Gmail's labels show beside them.
 - **Quick filters:** unread, starred, attachments, addressed to you, from
   your contacts, high importance, tagged, today and a range of dates,
   combined, in one popover above the list with the sort orders. See [Message list layout](DOCUMENTATION.md#message-list-layout).

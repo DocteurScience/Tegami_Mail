@@ -176,12 +176,9 @@ pub(crate) enum AccountsInput {
     AddTag,
     EditTag(usize),
     RemoveTag(usize),
-    /// A tag row was dragged onto another: reorder (#157). The order is the
-    /// sidebar's, and the 1–9 shortcuts'.
-    MoveTag {
-        from: usize,
-        to: usize,
-    },
+    /// How many messages carry each tag, by keyword (the app counts them
+    /// with the sidebar's unread counts).
+    SetTagTotals(std::collections::HashMap<String, u32>),
     TagAdded(crate::config::Tag),
     TagEdited(usize, crate::config::Tag),
     /// Smart folders (#417): the editor, what it hands back, and the list

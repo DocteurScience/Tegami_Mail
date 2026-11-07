@@ -9,7 +9,7 @@ impl AccountsWindow {
             .nav
             .visible_page()
             .and_then(|p| p.tag())
-            .is_some_and(|t| t == "editor" || t == "filter" || t == "tag")
+            .is_some_and(|t| t == "editor" || t == "filter")
         {
             widgets.nav.pop();
         }
@@ -40,14 +40,12 @@ impl AccountsWindow {
                     });
                 }
             }
-            // Nothing records what a filter or a tag was opened with,
-            // so those are always worth asking about.
-            Some("filter") | Some("tag") => {
-                sender.input_sender().emit(AccountsInput::LeaveVerdict {
-                    page,
-                    touched: true,
-                })
-            }
+            // Nothing records what a filter was opened with, so it is
+            // always worth asking about.
+            Some("filter") => sender.input_sender().emit(AccountsInput::LeaveVerdict {
+                page,
+                touched: true,
+            }),
             _ => sender.input_sender().emit(AccountsInput::LeaveVerdict {
                 page,
                 touched: false,
@@ -77,7 +75,7 @@ impl AccountsWindow {
     ) {
         match widgets.nav.visible_page().and_then(|p| p.tag()).as_deref() {
             Some("editor") => sender.input_sender().emit(AccountsInput::Save),
-            Some("filter") | Some("tag") => {
+            Some("filter") => {
                 let saved = self.form_save.borrow().as_ref().is_some_and(|f| f());
                 if saved {
                     widgets.nav.pop();

@@ -2627,8 +2627,9 @@ msgstr "Mappa hozzáadása"
 msgid "Searching…"
 msgstr "Keresés…"
 
-msgid "Find tags…"
-msgstr "Címkék keresése…"
+#, fuzzy
+msgid "Import tags from the servers…"
+msgstr "Törlés a kiszolgálóról…"
 
 msgid "No new tags"
 msgstr "Nincs új címke"
@@ -2661,42 +2662,24 @@ msgid "{n} messages"
 msgstr "{n} db üzenet"
 
 #, fuzzy
-msgid "Toggles the tag on a message (with single-key shortcuts on)"
-msgstr ""
-"Nyomd meg ezt a gombot egy üzenetnél a címke hozzáadásához vagy "
-"eltávolításához (ha az egy gombos gyorsbillentyű be vannak kapcsolva)"
+msgid "{count} message"
+msgid_plural "{count} messages"
+msgstr[0] "{n} üzenet"
+msgstr[1] "{n} üzenet"
 
-msgid "Remove tag"
-msgstr "Címke eltávolítása"
+#, fuzzy
+msgid "{count} · {color}"
+msgstr "Fiók kiemelőszíne"
 
 msgid "Edit tag"
 msgstr "Címke szerkesztése"
 
-msgid "Add tag"
-msgstr "Címke hozzáadása"
-
-msgid "Name"
-msgstr "Név"
-
-msgid "Keyword"
-msgstr "Kulcsszó"
+msgid "Remove tag"
+msgstr "Címke eltávolítása"
 
 #, fuzzy
-msgid ""
-"How the server stores the tag, without spaces. Thunderbird's built-in tags "
-"are $label1 to $label5."
-msgstr ""
-"A címke tárolása a kiszolgálón: betűk, számjegyek és a legtöbb írásjel, "
-"szóközök nélkül. A Thunderbird beépített címkéi a $label1–$label5."
-
-msgid "Color"
-msgstr "Szín"
-
-msgid "Custom color…"
-msgstr "Egyéni szín…"
-
-msgid "Tag color"
-msgstr "Címke színe"
+msgid "New tag…"
+msgstr "Címke hozzáadása…"
 
 #, fuzzy
 msgid "Needs an app password, not your login password."
@@ -2845,6 +2828,9 @@ msgstr "Mappák rendezése"
 #, fuzzy
 msgid "Add smart folder"
 msgstr "Mappa hozzáadása"
+
+msgid "Name"
+msgstr "Név"
 
 #, fuzzy
 msgid "Those in the unified section."
@@ -5970,10 +5956,6 @@ msgstr "Minden mappa megjelenítése"
 msgid "Long-press to expand or collapse"
 msgstr "Hosszú gombnyomással kibontható vagy összecsukható"
 
-#, fuzzy
-msgid "New tag…"
-msgstr "Címke hozzáadása…"
-
 msgid "Show or hide tags"
 msgstr "Címkék megjelenítése vagy elrejtése"
 
@@ -6018,6 +6000,9 @@ msgstr "Nincs új címke"
 #, fuzzy
 msgid "Tag name"
 msgstr "Címke hozzáadása: {name}"
+
+msgid "Color"
+msgstr "Szín"
 
 #, fuzzy
 msgid "Search or create…"
@@ -7004,9 +6989,7 @@ msgstr "Feladó blokkolása"
 #, fuzzy
 msgid ""
 "Tags are stored on the server as IMAP keywords, so Thunderbird and other "
-"clients show them too.\n"
-"\n"
-"Drag to reorder. The first nine are mapped to the 1–9 keys."
+"clients show them too. The first nine are mapped to the 1–9 keys."
 msgstr ""
 "Címkézze az üzeneteket egy vagy több színes címkével. A címkék IMAP "
 "kulcsszavakként a levelezőkiszolgálón tárolódnak, ezért a Thunderbird és más "
@@ -7014,9 +6997,6 @@ msgstr ""
 "\n"
 "Húzza a címkét az átrendezéshez: az itt látható sorrend az oldalsáv "
 "sorrendje, és az első kilenc címke válaszol az 1–9 billentyűkre."
-
-msgid "Add tag…"
-msgstr "Címke hozzáadása…"
 
 msgid "Look through every mailbox for tags other clients have set"
 msgstr ""

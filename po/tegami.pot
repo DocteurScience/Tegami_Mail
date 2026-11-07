@@ -2330,7 +2330,7 @@ msgstr ""
 msgid "Searching…"
 msgstr ""
 
-msgid "Find tags…"
+msgid "Import tags from the servers…"
 msgstr ""
 
 msgid "No new tags"
@@ -2357,36 +2357,21 @@ msgstr ""
 msgid "{n} messages"
 msgstr ""
 
-msgid "Toggles the tag on a message (with single-key shortcuts on)"
-msgstr ""
+msgid "{count} message"
+msgid_plural "{count} messages"
+msgstr[0] ""
+msgstr[1] ""
 
-msgid "Remove tag"
+msgid "{count} · {color}"
 msgstr ""
 
 msgid "Edit tag"
 msgstr ""
 
-msgid "Add tag"
+msgid "Remove tag"
 msgstr ""
 
-msgid "Name"
-msgstr ""
-
-msgid "Keyword"
-msgstr ""
-
-msgid ""
-"How the server stores the tag, without spaces. Thunderbird's built-in tags "
-"are $label1 to $label5."
-msgstr ""
-
-msgid "Color"
-msgstr ""
-
-msgid "Custom color…"
-msgstr ""
-
-msgid "Tag color"
+msgid "New tag…"
 msgstr ""
 
 msgid "Needs an app password, not your login password."
@@ -2517,6 +2502,9 @@ msgid "Edit smart folder"
 msgstr ""
 
 msgid "Add smart folder"
+msgstr ""
+
+msgid "Name"
 msgstr ""
 
 msgid "Those in the unified section."
@@ -5270,9 +5258,6 @@ msgstr ""
 msgid "Long-press to expand or collapse"
 msgstr ""
 
-msgid "New tag…"
-msgstr ""
-
 msgid "Show or hide tags"
 msgstr ""
 
@@ -5310,6 +5295,9 @@ msgid "New tag"
 msgstr ""
 
 msgid "Tag name"
+msgstr ""
+
+msgid "Color"
 msgstr ""
 
 msgid "Search or create…"
@@ -6185,12 +6173,7 @@ msgstr ""
 
 msgid ""
 "Tags are stored on the server as IMAP keywords, so Thunderbird and other "
-"clients show them too.\n"
-"\n"
-"Drag to reorder. The first nine are mapped to the 1–9 keys."
-msgstr ""
-
-msgid "Add tag…"
+"clients show them too. The first nine are mapped to the 1–9 keys."
 msgstr ""
 
 msgid "Look through every mailbox for tags other clients have set"

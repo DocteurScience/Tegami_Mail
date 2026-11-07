@@ -462,18 +462,24 @@ impl AppModel {
                 // Counted from the view each tag opens, so the badge and
                 // the list it leads to never disagree (Trash and Junk out,
                 // one row for Gmail's per-label copies).
+                // The totals go to Settings → Tags (mockup 09).
+                let mut totals = HashMap::new();
                 let counts = tag_rows
                     .into_iter()
                     .map(|(keyword, rows)| {
-                        let n = self
-                            .assemble_tag_view(&(None, Some(keyword.clone())), rows)
-                            .iter()
-                            .filter(|m| m.unread)
-                            .count() as u32;
+                        let view = self.assemble_tag_view(&(None, Some(keyword.clone())), rows);
+                        totals.insert(keyword.clone(), view.len() as u32);
+                        let n = view.iter().filter(|m| m.unread).count() as u32;
                         (keyword, n)
                     })
                     .collect();
                 self.sidebars_emit(SidebarInput::SetTagUnread(counts));
+                if let Some(acc) = &self.accounts_win {
+                    acc.emit(crate::ui::accounts::AccountsInput::SetTagTotals(
+                        totals.clone(),
+                    ));
+                }
+                self.tag_totals = totals;
             }
 
             AppMsg::SetSmartFolders(folders) => {

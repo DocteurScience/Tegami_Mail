@@ -2550,8 +2550,9 @@ msgstr "Añadir carpeta inteligente…"
 msgid "Searching…"
 msgstr "Buscando…"
 
-msgid "Find tags…"
-msgstr "Buscar etiquetas…"
+#, fuzzy
+msgid "Import tags from the servers…"
+msgstr "Eliminar del servidor…"
 
 msgid "No new tags"
 msgstr "No hay etiquetas nuevas"
@@ -2579,41 +2580,25 @@ msgstr "Importar todas"
 msgid "{n} messages"
 msgstr "{n} mensajes"
 
-msgid "Toggles the tag on a message (with single-key shortcuts on)"
-msgstr ""
-"Añade o quita la etiqueta de un mensaje (con los atajos de una sola tecla "
-"activados)."
+#, fuzzy
+msgid "{count} message"
+msgid_plural "{count} messages"
+msgstr[0] "{n} mensaje"
+msgstr[1] "{n} mensajes"
 
-msgid "Remove tag"
-msgstr "Eliminar etiqueta"
+#, fuzzy
+msgid "{count} · {color}"
+msgstr "Color de acento de la cuenta"
 
 msgid "Edit tag"
 msgstr "Editar etiqueta"
 
-msgid "Add tag"
-msgstr "Añadir etiqueta"
+msgid "Remove tag"
+msgstr "Eliminar etiqueta"
 
-msgid "Name"
-msgstr "Nombre"
-
-msgid "Keyword"
-msgstr "Palabra clave"
-
-msgid ""
-"How the server stores the tag, without spaces. Thunderbird's built-in tags "
-"are $label1 to $label5."
-msgstr ""
-"Forma en la que el servidor almacena la etiqueta, sin espacios. Las "
-"etiquetas integradas de Thunderbird son $label1 a $label5."
-
-msgid "Color"
-msgstr "Color"
-
-msgid "Custom color…"
-msgstr "Color personalizado…"
-
-msgid "Tag color"
-msgstr "Color de la etiqueta"
+#, fuzzy
+msgid "New tag…"
+msgstr "Añadir etiqueta…"
 
 msgid "Needs an app password, not your login password."
 msgstr "Necesita una contraseña de aplicación, no tu contraseña habitual."
@@ -2749,6 +2734,9 @@ msgstr "Editar carpeta inteligente"
 
 msgid "Add smart folder"
 msgstr "Añadir carpeta inteligente"
+
+msgid "Name"
+msgstr "Nombre"
 
 msgid "Those in the unified section."
 msgstr "Las de la sección unificada."
@@ -5771,10 +5759,6 @@ msgstr "Mostrar cada carpeta inteligente"
 msgid "Long-press to expand or collapse"
 msgstr "Mantén pulsado para expandir o contraer"
 
-#, fuzzy
-msgid "New tag…"
-msgstr "Añadir etiqueta…"
-
 msgid "Show or hide tags"
 msgstr "Mostrar u ocultar etiquetas"
 
@@ -5817,6 +5801,9 @@ msgstr "No hay etiquetas nuevas"
 #, fuzzy
 msgid "Tag name"
 msgstr "Añadir etiqueta {name}"
+
+msgid "Color"
+msgstr "Color"
 
 #, fuzzy
 msgid "Search or create…"
@@ -6787,19 +6774,15 @@ msgstr "Dirección o dominio"
 msgid "Block this sender"
 msgstr "Bloquear este remitente"
 
+#, fuzzy
 msgid ""
 "Tags are stored on the server as IMAP keywords, so Thunderbird and other "
-"clients show them too.\n"
-"\n"
-"Drag to reorder. The first nine are mapped to the 1–9 keys."
+"clients show them too. The first nine are mapped to the 1–9 keys."
 msgstr ""
 "Las etiquetas se almacenan en el servidor como palabras clave IMAP, por lo "
 "que Thunderbird y otros clientes también las muestran.\n"
 "\n"
 "Arrastra para reordenarlas. Las nueve primeras se asignan a las teclas 1–9."
-
-msgid "Add tag…"
-msgstr "Añadir etiqueta…"
 
 msgid "Look through every mailbox for tags other clients have set"
 msgstr "Buscar en todos los buzones etiquetas creadas por otros clientes"

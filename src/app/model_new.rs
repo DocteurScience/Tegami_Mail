@@ -378,6 +378,7 @@ impl AppModel {
             smart_view_dirty: false,
             smart_counts_due: false,
             smart_counts_running: false,
+            tag_totals: Default::default(),
             keyword_sync_at: HashMap::new(),
             flag_sync_at: HashMap::new(),
             tag_provider: crate::ui::DisplayCss::new(),

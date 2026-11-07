@@ -2652,8 +2652,9 @@ msgstr "Добавить папку"
 msgid "Searching…"
 msgstr "Поиск…"
 
-msgid "Find tags…"
-msgstr "Найти теги…"
+#, fuzzy
+msgid "Import tags from the servers…"
+msgstr "Удалить с сервера…"
 
 msgid "No new tags"
 msgstr "Новых меток нет"
@@ -2684,42 +2685,25 @@ msgid "{n} messages"
 msgstr "{n} сообщений"
 
 #, fuzzy
-msgid "Toggles the tag on a message (with single-key shortcuts on)"
-msgstr ""
-"Нажмите эту клавишу на сообщении, чтобы добавить или снять тег (при "
-"включенных одноклавишных комбинациях)"
+msgid "{count} message"
+msgid_plural "{count} messages"
+msgstr[0] "{n} письмо"
+msgstr[1] "{n} письма"
+msgstr[2] "{n} писем"
 
-msgid "Remove tag"
-msgstr "Удалить тег"
+#, fuzzy
+msgid "{count} · {color}"
+msgstr "Цвет учётной записи"
 
 msgid "Edit tag"
 msgstr "Редактировать тег"
 
-msgid "Add tag"
-msgstr "Добавить тег"
-
-msgid "Name"
-msgstr "Имя"
-
-msgid "Keyword"
-msgstr "Ключевое слово"
+msgid "Remove tag"
+msgstr "Удалить тег"
 
 #, fuzzy
-msgid ""
-"How the server stores the tag, without spaces. Thunderbird's built-in tags "
-"are $label1 to $label5."
-msgstr ""
-"Как метка хранится на сервере: буквы, цифры и большинство знаков препинания, "
-"без пробелов. Встроенные теги Thunderbird — от $label1 до $label5."
-
-msgid "Color"
-msgstr "Цвет"
-
-msgid "Custom color…"
-msgstr "Другой цвет…"
-
-msgid "Tag color"
-msgstr "Цвет тега"
+msgid "New tag…"
+msgstr "Добавить тег…"
 
 #, fuzzy
 msgid "Needs an app password, not your login password."
@@ -2870,6 +2854,9 @@ msgstr "Сортировать папки"
 #, fuzzy
 msgid "Add smart folder"
 msgstr "Добавить папку"
+
+msgid "Name"
+msgstr "Имя"
 
 #, fuzzy
 msgid "Those in the unified section."
@@ -5959,10 +5946,6 @@ msgstr "Показывать каждую папку"
 msgid "Long-press to expand or collapse"
 msgstr "Долгое нажатие — развернуть или свернуть"
 
-#, fuzzy
-msgid "New tag…"
-msgstr "Добавить тег…"
-
 msgid "Show or hide tags"
 msgstr "Показать или скрыть метки"
 
@@ -6007,6 +5990,9 @@ msgstr "Новых меток нет"
 #, fuzzy
 msgid "Tag name"
 msgstr "Добавить тег {name}"
+
+msgid "Color"
+msgstr "Цвет"
 
 #, fuzzy
 msgid "Search or create…"
@@ -6993,9 +6979,7 @@ msgstr "Заблокировать этого отправителя"
 #, fuzzy
 msgid ""
 "Tags are stored on the server as IMAP keywords, so Thunderbird and other "
-"clients show them too.\n"
-"\n"
-"Drag to reorder. The first nine are mapped to the 1–9 keys."
+"clients show them too. The first nine are mapped to the 1–9 keys."
 msgstr ""
 "Отмечайте сообщения одной или несколькими цветными тегами. Теги хранятся на "
 "почтовом сервере как ключевые слова IMAP, поэтому Thunderbird и другие "
@@ -7003,9 +6987,6 @@ msgstr ""
 "\n"
 "Перетащите тег, чтобы изменить порядок: порядок здесь соответствует боковой "
 "панели, а первые девять вызываются клавишами 1–9."
-
-msgid "Add tag…"
-msgstr "Добавить тег…"
 
 msgid "Look through every mailbox for tags other clients have set"
 msgstr ""

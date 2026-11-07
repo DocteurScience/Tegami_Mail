@@ -659,6 +659,12 @@ flowbox.attach-flow > flowboxchild {
   padding: 6px 12px 10px 12px;
 }
 
+/* Only the chosen toggle in bold, as mockup 01 draws it: the weight
+   doubles the raised ground, so the choice does not rest on a shade. */
+.list-show-bar toggle-group > toggle:not(:checked) {
+  font-weight: normal;
+}
+
 /* No hairline between two toggles that are both off: mockup 01 parts them
    by their labels' spacing alone. */
 .list-show-bar toggle-group > separator {

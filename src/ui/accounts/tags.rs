@@ -1,47 +1,7 @@
-//! Tags (#71): the list, the tag editor and the tag finder.
+//! Tags (#71): the list (mockup 09), the New and Edit Tag dialogs
+//! (`ui::tag_dialog`) and the tag finder.
 
 use super::*;
-
-/// The tag dialog's "any color" disc (#147): a hue wheel while no custom
-/// color is chosen, the chosen color as a filled disc once one is.
-fn custom_swatch_widget(color: Option<&str>) -> gtk::DrawingArea {
-    if let Some(c) = color {
-        return crate::ui::context_menu::swatch_widget(c, true);
-    }
-    let area = gtk::DrawingArea::new();
-    area.set_content_width(16);
-    area.set_content_height(16);
-    area.set_valign(gtk::Align::Center);
-    area.set_draw_func(|_, cr, w, h| {
-        let (cx, cy) = (w as f64 / 2.0, h as f64 / 2.0);
-        let steps = 12;
-        for i in 0..steps {
-            let a0 = i as f64 / steps as f64 * std::f64::consts::TAU;
-            let a1 = (i + 1) as f64 / steps as f64 * std::f64::consts::TAU;
-            let (r, g, b) = hue_rgb(i as f64 / steps as f64);
-            cr.set_source_rgb(r, g, b);
-            cr.move_to(cx, cy);
-            cr.arc(cx, cy, 6.0, a0 - 0.02, a1 + 0.02);
-            cr.close_path();
-            let _ = cr.fill();
-        }
-    });
-    area
-}
-
-/// A fully saturated color at hue `h` (0..1) as RGB in 0..1.
-fn hue_rgb(h: f64) -> (f64, f64, f64) {
-    let h6 = h * 6.0;
-    let x = 1.0 - ((h6 % 2.0) - 1.0).abs();
-    match h6 as u32 {
-        0 => (1.0, x, 0.0),
-        1 => (x, 1.0, 0.0),
-        2 => (0.0, 1.0, x),
-        3 => (0.0, x, 1.0),
-        4 => (x, 0.0, 1.0),
-        _ => (1.0, 0.0, x),
-    }
-}
 
 impl AccountsWindow {
     /// The tag finder's button while a scan runs: a turning spinner beside
@@ -52,11 +12,11 @@ impl AccountsWindow {
             spinner.set_visible(on);
             spinner.set_spinning(on);
         }
-        if let Some(label) = &self.find_tags_label {
-            label.set_label(&if on {
+        if let Some(row) = &self.find_tags_row {
+            row.set_title(&if on {
                 i18n("Searching…")
             } else {
-                i18n("Find tags…")
+                i18n("Import tags from the servers…")
             });
         }
     }
@@ -163,314 +123,110 @@ impl AccountsWindow {
         dialog.present();
     }
 
-    /// The Tags list (#71): a row per tag — its color as a disc, its name,
-    /// its keyword — activating to edit, with a remove button.
+    /// The Tags list (#71), as mockup 09 draws it: a row per tag — its
+    /// colour as a dot, its name, how many messages carry it and the
+    /// colour's name — with Edit and Remove buttons, then a row that makes
+    /// a new one. The order is the order made in: the sidebar's, and the
+    /// 1–9 keys' (#157).
     pub(super) fn rebuild_tag_rows(&self, sender: &ComponentSender<Self>) {
         let Some(list) = &self.tags_list else { return };
         while let Some(row) = list.first_child() {
             list.remove(&row);
         }
-        list.set_visible(!self.tags.is_empty());
         for (i, t) in self.tags.iter().enumerate() {
             let row = adw::ActionRow::new();
-            row.set_activatable(true);
-            let s = sender.clone();
-            row.connect_activated(move |_| s.input_sender().emit(AccountsInput::EditTag(i)));
             row.set_title(&gtk::glib::markup_escape_text(&t.name));
-            row.set_subtitle(&gtk::glib::markup_escape_text(&t.keyword));
-            let handle = gtk::Image::from_icon_name("list-drag-handle-symbolic");
-            handle.add_css_class("dim-label");
-            row.add_prefix(&handle);
-            row.add_prefix(&crate::ui::context_menu::swatch_widget(&t.color, true));
-            // The number that toggles it from the keyboard (#157), for the
-            // first nine.
-            if i < 9 {
-                let key = gtk::Label::new(Some(&(i + 1).to_string()));
-                key.add_css_class("shortcut-key");
-                key.set_valign(gtk::Align::Center);
-                key.set_tooltip_text(Some(
-                    i18n("Toggles the tag on a message (with single-key shortcuts on)").as_str(),
-                ));
-                row.add_suffix(&key);
-            }
-            // Drag to reorder, as the accounts list does.
-            let drag = gtk::DragSource::new();
-            drag.set_actions(gtk::gdk::DragAction::MOVE);
-            let from = i as u32;
-            drag.connect_prepare(move |_, _, _| {
-                Some(gtk::gdk::ContentProvider::for_value(&from.to_value()))
+            let count = self.tag_totals.get(&t.keyword).map(|&n| {
+                ni18n_f(
+                    "{count} message",
+                    "{count} messages",
+                    n,
+                    &[("count", &n.to_string())],
+                )
             });
-            row.add_controller(drag);
-            let drop = gtk::DropTarget::new(gtk::glib::Type::U32, gtk::gdk::DragAction::MOVE);
-            let to = i;
-            let input = sender.input_sender().clone();
-            drop.connect_drop(move |_, value, _, _| {
-                if let Ok(from) = value.get::<u32>() {
-                    let _ = input.send(AccountsInput::MoveTag {
-                        from: from as usize,
-                        to,
-                    });
-                    true
-                } else {
-                    false
+            let color = crate::ui::tag_dialog::color_name(&t.color);
+            let subtitle = match (count, color) {
+                (Some(count), Some(color)) => {
+                    i18n_f("{count} · {color}", &[("count", &count), ("color", &color)])
                 }
-            });
-            row.add_controller(drop);
-            let rm = gtk::Button::from_icon_name("user-trash-symbolic");
-            rm.add_css_class("flat");
-            rm.set_valign(gtk::Align::Center);
-            rm.set_tooltip_text(Some(i18n("Remove tag").as_str()));
+                (Some(only), None) | (None, Some(only)) => only,
+                (None, None) => String::new(),
+            };
+            row.set_subtitle(&gtk::glib::markup_escape_text(&subtitle));
+            let dot = crate::ui::context_menu::swatch_widget(&t.color, true);
+            dot.set_content_width(12);
+            dot.set_content_height(12);
+            dot.set_margin_start(4);
+            dot.set_margin_end(4);
+            row.add_prefix(&dot);
+            let edit = gtk::Button::from_icon_name("document-edit-symbolic");
             let s = sender.clone();
-            rm.connect_clicked(move |_| s.input_sender().emit(AccountsInput::RemoveTag(i)));
-            row.add_suffix(&rm);
-            // A chevron says the row opens the tag's editor, as the
-            // account and cloud rows do.
-            let next = gtk::Image::from_icon_name("go-next-symbolic");
-            next.add_css_class("dim-label");
-            row.add_suffix(&next);
+            edit.connect_clicked(move |_| s.input_sender().emit(AccountsInput::EditTag(i)));
+            let remove = gtk::Button::from_icon_name("user-trash-symbolic");
+            let s = sender.clone();
+            remove.connect_clicked(move |_| s.input_sender().emit(AccountsInput::RemoveTag(i)));
+            for (button, label) in [(edit, i18n("Edit tag")), (remove, i18n("Remove tag"))] {
+                button.add_css_class("flat");
+                button.set_valign(gtk::Align::Center);
+                button.set_tooltip_text(Some(&label));
+                button.update_property(&[gtk::accessible::Property::Label(&label)]);
+                row.add_suffix(&button);
+            }
             list.append(&row);
         }
-    }
-
-    /// The tag dialog (#71): name, color, keyword. The keyword follows the
-    /// name until the user edits it; editing an existing tag keeps its
-    /// keyword unless changed, since the messages carry the keyword, not
-    /// the name.
-    pub(super) fn open_tag_page(
-        &self,
-        nav: &adw::NavigationView,
-        sender: &ComponentSender<Self>,
-        edit: Option<(usize, crate::config::Tag)>,
-    ) {
-        use crate::config::{Tag, TAG_COLORS};
-        let parent = relm4::main_application().active_window();
-        let (title, verb) = if edit.is_some() {
-            (i18n("Edit tag"), i18n("Save"))
-        } else {
-            (i18n("Add tag"), i18n("Add tag"))
-        };
-
-        let form = gtk::ListBox::new();
-        form.add_css_class("boxed-list");
-        form.set_selection_mode(gtk::SelectionMode::None);
-
-        let name_row = adw::EntryRow::new();
-        name_row.set_title(&i18n("Name"));
-
-        let keyword_row = adw::EntryRow::new();
-        keyword_row.set_title(&i18n("Keyword"));
-        keyword_row.set_tooltip_text(Some(
-            i18n("How the server stores the tag, without spaces. Thunderbird's built-in tags are $label1 to $label5.")
-                .as_str(),
-        ));
-
-        // The keyword follows the name until it is typed into by hand. The
-        // follow is done under a guard: set_text empties the field before
-        // refilling it, and each step fires `changed`, so without the guard
-        // the empty step read as hand-editing after the second letter.
-        let keyword_touched = std::rc::Rc::new(std::cell::Cell::new(edit.is_some()));
-        let syncing = std::rc::Rc::new(std::cell::Cell::new(false));
-        {
-            let keyword_row = keyword_row.clone();
-            let touched = keyword_touched.clone();
-            let syncing = syncing.clone();
-            name_row.connect_changed(move |row| {
-                if !touched.get() {
-                    syncing.set(true);
-                    keyword_row.set_text(&Tag::keyword_for(&row.text()));
-                    syncing.set(false);
-                }
-            });
-        }
-        {
-            let touched = keyword_touched.clone();
-            let syncing = syncing.clone();
-            keyword_row.connect_changed(move |_| {
-                if !syncing.get() {
-                    touched.set(true);
-                }
-            });
-        }
-
-        // The color: one disc per palette entry on a line of its own under
-        // a caption (beside a title, eight discs left the title wrapping one
-        // letter per line in the dialog's width). Toggle buttons in one
-        // group behave as radios; the pressed one is the choice.
-        let color_row = gtk::ListBoxRow::new();
-        color_row.set_activatable(false);
-        color_row.set_selectable(false);
-        let color_box = gtk::Box::new(gtk::Orientation::Vertical, 6);
-        color_box.set_margin_top(10);
-        color_box.set_margin_bottom(10);
-        color_box.set_margin_start(12);
-        color_box.set_margin_end(12);
-        let color_label = gtk::Label::new(Some(i18n("Color").as_str()));
-        color_label.set_halign(gtk::Align::Start);
-        color_label.add_css_class("caption");
-        color_label.add_css_class("dim-label");
-        color_box.append(&color_label);
-        let swatches = gtk::FlowBox::new();
-        swatches.set_selection_mode(gtk::SelectionMode::None);
-        swatches.set_homogeneous(true);
-        // Nine discs (the palette and the custom one) as two even rows.
-        swatches.set_min_children_per_line(5);
-        swatches.set_max_children_per_line(5);
-        swatches.set_column_spacing(4);
-        swatches.set_row_spacing(4);
-        swatches.set_halign(gtk::Align::Start);
-        let chosen = std::rc::Rc::new(std::cell::RefCell::new(
-            edit.as_ref()
-                .map(|(_, t)| t.color.clone())
-                .unwrap_or_else(|| TAG_COLORS[0].to_string()),
-        ));
-        let mut first: Option<gtk::ToggleButton> = None;
-        for color in TAG_COLORS {
-            let toggle = gtk::ToggleButton::new();
-            toggle.add_css_class("flat");
-            toggle.add_css_class("circular");
-            toggle.set_child(Some(&crate::ui::context_menu::swatch_widget(color, true)));
-            toggle.set_tooltip_text(Some(color));
-            if let Some(f) = &first {
-                toggle.set_group(Some(f));
-            } else {
-                first = Some(toggle.clone());
-            }
-            toggle.set_active(chosen.borrow().eq_ignore_ascii_case(color));
-            let chosen = chosen.clone();
-            let color = color.to_string();
-            toggle.connect_toggled(move |t| {
-                if t.is_active() {
-                    *chosen.borrow_mut() = color.clone();
-                }
-            });
-            swatches.insert(&toggle, -1);
-        }
-        // A ninth disc for any color (#147): a hue wheel until one is picked,
-        // then the picked color. Pressing it opens the GTK color chooser;
-        // it stays a member of the toggle group so a palette pick clears it.
-        // A tag edited with a color outside the palette opens on this disc.
-        {
-            let custom: Option<String> = edit
-                .as_ref()
-                .map(|(_, t)| t.color.clone())
-                .filter(|c| !TAG_COLORS.iter().any(|p| p.eq_ignore_ascii_case(c)));
-            let toggle = gtk::ToggleButton::new();
-            toggle.add_css_class("flat");
-            toggle.add_css_class("circular");
-            toggle.set_child(Some(&custom_swatch_widget(custom.as_deref())));
-            toggle.set_tooltip_text(Some(i18n("Custom color…").as_str()));
-            if let Some(f) = &first {
-                toggle.set_group(Some(f));
-            }
-            toggle.set_active(custom.is_some());
-            let custom = std::rc::Rc::new(std::cell::RefCell::new(custom));
-            let chosen = chosen.clone();
-            let parent = parent.clone();
-            toggle.connect_clicked(move |t| {
-                let picker = gtk::ColorDialog::new();
-                picker.set_with_alpha(false);
-                picker.set_title(&i18n("Tag color"));
-                let initial = gtk::gdk::RGBA::parse(chosen.borrow().as_str())
-                    .unwrap_or(gtk::gdk::RGBA::new(0.5, 0.5, 0.5, 1.0));
-                let t = t.clone();
-                let chosen = chosen.clone();
-                let custom = custom.clone();
-                picker.choose_rgba(
-                    parent.as_ref(),
-                    Some(&initial),
-                    None::<&gtk::gio::Cancellable>,
-                    move |res| match res {
-                        Ok(rgba) => {
-                            let hex = crate::color::to_hex(&rgba);
-                            t.set_child(Some(&custom_swatch_widget(Some(&hex))));
-                            *custom.borrow_mut() = Some(hex.clone());
-                            *chosen.borrow_mut() = hex;
-                            t.set_active(true);
-                        }
-                        Err(_) => {
-                            // Cancelled: back to whatever the choice was. A
-                            // palette color lives in its own disc; a custom
-                            // one picked earlier stays on this disc.
-                            if custom.borrow().is_none() {
-                                let back = chosen.borrow().clone();
-                                let mut child = t
-                                    .parent()
-                                    .and_then(|p| p.parent())
-                                    .and_then(|b| b.first_child());
-                                while let Some(c) = child {
-                                    if let Some(tb) =
-                                        c.first_child().and_downcast::<gtk::ToggleButton>()
-                                    {
-                                        if tb
-                                            .tooltip_text()
-                                            .is_some_and(|tip| tip.eq_ignore_ascii_case(&back))
-                                        {
-                                            tb.set_active(true);
-                                            break;
-                                        }
-                                    }
-                                    child = c.next_sibling();
-                                }
-                            }
-                        }
-                    },
-                );
-            });
-            swatches.insert(&toggle, -1);
-        }
-        color_box.append(&swatches);
-        color_row.set_child(Some(&color_box));
-
-        let edit_index = edit.as_ref().map(|(i, _)| *i);
-        if let Some((_, tag)) = &edit {
-            name_row.set_text(&tag.name);
-            keyword_row.set_text(&tag.keyword);
-        }
-
-        form.append(&name_row);
-        form.append(&color_row);
-        form.append(&keyword_row);
-
+        // The last row makes a tag, as the mockup's "+ New tag…".
+        let add = adw::ButtonRow::new();
+        add.set_title(&i18n("New tag…"));
+        add.set_start_icon_name(Some("list-add-symbolic"));
         let s = sender.clone();
-        self.push_form_page(nav, "tag", &title, &verb, &form, move || {
-            let name = name_row.text().trim().to_string();
-            if name.is_empty() {
-                return false;
-            }
-            // A keyword the server would refuse falls back to the derived one.
-            let typed = keyword_row.text().trim().to_string();
-            let mut keyword = if Tag::valid_keyword(&typed) {
-                typed
-            } else {
-                Tag::keyword_for(&name)
-            };
-            if keyword.is_empty() {
-                keyword = "Tag".to_string();
-            }
-            let tag = Tag {
-                name,
-                keyword,
-                color: chosen.borrow().clone(),
-            };
-            s.input_sender().emit(match edit_index {
-                Some(i) => AccountsInput::TagEdited(i, tag),
-                None => AccountsInput::TagAdded(tag),
-            });
-            true
-        });
+        add.connect_activated(move |_| s.input_sender().emit(AccountsInput::AddTag));
+        list.append(&add);
     }
 }
 
 impl AccountsWindow {
+    /// The New Tag dialog (mockup 09), on the first colour the tags
+    /// leave free.
+    pub(super) fn on_add_tag(
+        &mut self,
+        widgets: &AccountsWindowWidgets,
+        sender: ComponentSender<Self>,
+    ) {
+        let taken: Vec<String> = self.tags.iter().map(|t| t.color.clone()).collect();
+        let color = crate::config::Tag::color_for_keyword("", &taken);
+        let s = sender.clone();
+        crate::ui::tag_dialog::show(&widgets.nav, &color, move |name, color| {
+            s.input_sender()
+                .emit(AccountsInput::TagAdded(crate::config::Tag {
+                    name,
+                    keyword: String::new(),
+                    color,
+                }));
+        });
+    }
+
+    /// The same dialog on tag `i`, with Save. The keyword stays: messages
+    /// carry it, not the name.
     pub(super) fn on_edit_tag(
         &mut self,
         i: usize,
         widgets: &AccountsWindowWidgets,
         sender: ComponentSender<Self>,
     ) {
-        if let Some(tag) = self.tags.get(i).cloned() {
-            self.open_tag_page(&widgets.nav, &sender, Some((i, tag)));
-        }
+        let Some(tag) = self.tags.get(i).cloned() else {
+            return;
+        };
+        let s = sender.clone();
+        crate::ui::tag_dialog::edit(&widgets.nav, &tag.name, &tag.color, move |name, color| {
+            s.input_sender().emit(AccountsInput::TagEdited(
+                i,
+                crate::config::Tag {
+                    name,
+                    keyword: tag.keyword.clone(),
+                    color,
+                },
+            ));
+        });
     }
 
     pub(super) fn on_remove_tag(&mut self, i: usize, sender: ComponentSender<Self>) {
@@ -484,17 +240,16 @@ impl AccountsWindow {
         }
     }
 
-    pub(super) fn on_move_tag(&mut self, from: usize, to: usize, sender: ComponentSender<Self>) {
-        if from < self.tags.len() && from != to {
-            let tag = self.tags.remove(from);
-            let to = to.min(self.tags.len());
-            self.tags.insert(to, tag);
-            self.rebuild_tag_rows(&sender);
-            let _ = sender.output(AccountsOutput::SetTags(self.tags.clone()));
+    /// A tag from the New Tag dialog, its keyword made from its name and
+    /// kept apart from the other tags'.
+    pub(super) fn on_tag_added(
+        &mut self,
+        mut tag: crate::config::Tag,
+        sender: ComponentSender<Self>,
+    ) {
+        if tag.keyword.is_empty() {
+            tag.keyword = crate::config::Tag::unique_keyword(&tag.name, &self.tags);
         }
-    }
-
-    pub(super) fn on_tag_added(&mut self, tag: crate::config::Tag, sender: ComponentSender<Self>) {
         self.tags.push(tag);
         self.rebuild_tag_rows(&sender);
         let _ = sender.output(AccountsOutput::SetTags(self.tags.clone()));
@@ -555,18 +310,5 @@ impl AccountsWindow {
             self.rebuild_filter_rows(&sender);
             let _ = sender.output(AccountsOutput::SetTags(self.tags.clone()));
         }
-    }
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn hue_rgb_walks_the_colour_wheel() {
-        assert_eq!(hue_rgb(0.0), (1.0, 0.0, 0.0));
-        assert_eq!(hue_rgb(0.25), (0.5, 1.0, 0.0));
-        assert_eq!(hue_rgb(0.5), (0.0, 1.0, 1.0));
-        assert_eq!(hue_rgb(1.0), (1.0, 0.0, 0.0));
     }
 }

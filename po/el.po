@@ -2573,8 +2573,9 @@ msgstr "Προσθήκη έξυπνου φακέλου…"
 msgid "Searching…"
 msgstr "Αναζήτηση…"
 
-msgid "Find tags…"
-msgstr "Εύρεση ετικετών…"
+#, fuzzy
+msgid "Import tags from the servers…"
+msgstr "Διαγραφή από τον διακομιστή…"
 
 msgid "No new tags"
 msgstr "Δεν υπάρχουν νέες ετικέτες"
@@ -2602,41 +2603,25 @@ msgstr "Εισαγωγή όλων"
 msgid "{n} messages"
 msgstr "{n} μηνύματα"
 
-msgid "Toggles the tag on a message (with single-key shortcuts on)"
-msgstr ""
-"Ενεργοποιεί ή απενεργοποιεί την ετικέτα σε ένα μήνυμα (με ενεργές τις "
-"συντομεύσεις ενός πλήκτρου)"
+#, fuzzy
+msgid "{count} message"
+msgid_plural "{count} messages"
+msgstr[0] "{n} μήνυμα"
+msgstr[1] "{n} μηνύματα"
 
-msgid "Remove tag"
-msgstr "Αφαίρεση ετικέτας"
+#, fuzzy
+msgid "{count} · {color}"
+msgstr "Χρώμα έμφασης λογαριασμού"
 
 msgid "Edit tag"
 msgstr "Επεξεργασία ετικέτας"
 
-msgid "Add tag"
-msgstr "Προσθήκη ετικέτας"
+msgid "Remove tag"
+msgstr "Αφαίρεση ετικέτας"
 
-msgid "Name"
-msgstr "Όνομα"
-
-msgid "Keyword"
-msgstr "Λέξη-κλειδί"
-
-msgid ""
-"How the server stores the tag, without spaces. Thunderbird's built-in tags "
-"are $label1 to $label5."
-msgstr ""
-"Πώς αποθηκεύει ο διακομιστής την ετικέτα, χωρίς κενά. Οι ενσωματωμένες "
-"ετικέτες του Thunderbird είναι $label1 έως $label5."
-
-msgid "Color"
-msgstr "Χρώμα"
-
-msgid "Custom color…"
-msgstr "Προσαρμοσμένο χρώμα…"
-
-msgid "Tag color"
-msgstr "Χρώμα ετικέτας"
+#, fuzzy
+msgid "New tag…"
+msgstr "Προσθήκη ετικέτας…"
 
 msgid "Needs an app password, not your login password."
 msgstr "Απαιτείται κωδικός πρόσβασης εφαρμογής, όχι ο κωδικός σύνδεσής σας."
@@ -2774,6 +2759,9 @@ msgstr "Επεξεργασία έξυπνου φακέλου"
 
 msgid "Add smart folder"
 msgstr "Προσθήκη έξυπνου φακέλου"
+
+msgid "Name"
+msgstr "Όνομα"
 
 msgid "Those in the unified section."
 msgstr "Αυτά που βρίσκονται στην ενοποιημένη ενότητα."
@@ -5817,10 +5805,6 @@ msgstr "Εμφάνιση κάθε έξυπνου φακέλου"
 msgid "Long-press to expand or collapse"
 msgstr "Παρατεταμένο πάτημα για ανάπτυξη ή σύμπτυξη"
 
-#, fuzzy
-msgid "New tag…"
-msgstr "Προσθήκη ετικέτας…"
-
 msgid "Show or hide tags"
 msgstr "Εμφάνιση ή απόκρυψη ετικετών"
 
@@ -5863,6 +5847,9 @@ msgstr "Δεν υπάρχουν νέες ετικέτες"
 #, fuzzy
 msgid "Tag name"
 msgstr "Προσθήκη ετικέτας {name}"
+
+msgid "Color"
+msgstr "Χρώμα"
 
 #, fuzzy
 msgid "Search or create…"
@@ -6850,11 +6837,10 @@ msgstr "Διεύθυνση ή τομέας"
 msgid "Block this sender"
 msgstr "Αποκλεισμός αυτού του αποστολέα"
 
+#, fuzzy
 msgid ""
 "Tags are stored on the server as IMAP keywords, so Thunderbird and other "
-"clients show them too.\n"
-"\n"
-"Drag to reorder. The first nine are mapped to the 1–9 keys."
+"clients show them too. The first nine are mapped to the 1–9 keys."
 msgstr ""
 "Προσθέστε μία ή περισσότερες έγχρωμες ετικέτες στα μηνύματα. Οι ετικέτες "
 "αποθηκεύονται στον διακομιστή αλληλογραφίας ως λέξεις-κλειδιά IMAP, ώστε το "
@@ -6862,9 +6848,6 @@ msgstr ""
 "\n"
 "Σύρετε μια ετικέτα για αλλαγή σειράς: εδώ ορίζεται η σειρά στην πλευρική "
 "στήλη και οι πρώτες εννέα αντιστοιχούν στα πλήκτρα 1–9."
-
-msgid "Add tag…"
-msgstr "Προσθήκη ετικέτας…"
 
 msgid "Look through every mailbox for tags other clients have set"
 msgstr ""

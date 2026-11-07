@@ -24,6 +24,8 @@ X
 [ -n "$PRIVACY_FILE" ] && cp "$PRIVACY_FILE" $HOME/.config/tegami/privacy.toml
 [ -n "$WINDOW" ] && printf "%b" "$WINDOW" > $HOME/.config/tegami/window.toml
 [ -n "${SIDEBAR:-}" ] && printf "%b" "$SIDEBAR" > $HOME/.config/tegami/sidebar.toml
+# The catalogue as it stands, not as it was when the container was made.
+mkdir -p /tmp/loc/fr/LC_MESSAGES && msgfmt /src/po/fr.po -o /tmp/loc/fr/LC_MESSAGES/tegami.mo
 SCR=${SCREEN:-2880x1800}
 export TEGAMI_DEMO=1 TEGAMI_SHOWCASE=/tmp/$name-internal.png TEGAMI_SHOWCASE_DELAY=${DELAY:-60} \
   GSK_RENDERER=cairo GDK_SCALE=2 GDK_BACKEND=x11 LANG=${LANG_:-fr_FR.UTF-8} LANGUAGE=fr \

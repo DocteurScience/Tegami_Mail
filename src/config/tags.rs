@@ -111,6 +111,7 @@ impl Tag {
     }
 
     /// Whether `s` can be sent to a server as a keyword.
+    #[cfg(test)]
     pub(crate) fn valid_keyword(s: &str) -> bool {
         !s.is_empty() && s.chars().all(Self::is_keyword_char)
     }

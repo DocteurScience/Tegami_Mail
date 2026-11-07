@@ -47,6 +47,9 @@ impl AppModel {
         accounts.emit(crate::ui::accounts::AccountsInput::SetFolderChoices(
             self.folder_choice_map(),
         ));
+        accounts.emit(crate::ui::accounts::AccountsInput::SetTagTotals(
+            self.tag_totals.clone(),
+        ));
         self.arm_settings_showcase(&accounts, sender);
         self.accounts_win = Some(accounts);
         tracing::debug!("settings window: built in {:?}", t_open.elapsed());

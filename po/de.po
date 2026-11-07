@@ -2536,8 +2536,9 @@ msgstr "Smart Folder hinzufügen…"
 msgid "Searching…"
 msgstr "Wird gesucht…"
 
-msgid "Find tags…"
-msgstr "Tags suchen…"
+#, fuzzy
+msgid "Import tags from the servers…"
+msgstr "Vom Server löschen…"
 
 msgid "No new tags"
 msgstr "Keine neuen Tags"
@@ -2567,40 +2568,25 @@ msgstr "Alle importieren"
 msgid "{n} messages"
 msgstr "{n} Nachrichten"
 
-msgid "Toggles the tag on a message (with single-key shortcuts on)"
-msgstr ""
-"Tag für eine Nachricht aktivieren/deaktivieren (mit Ein-Tasten-Tastenkürzeln)"
+#, fuzzy
+msgid "{count} message"
+msgid_plural "{count} messages"
+msgstr[0] "{n} Nachricht"
+msgstr[1] "{n} Nachrichten"
 
-msgid "Remove tag"
-msgstr "Tag entfernen"
+#, fuzzy
+msgid "{count} · {color}"
+msgstr "Akzentfarbe des Kontos"
 
 msgid "Edit tag"
 msgstr "Tag bearbeiten"
 
-msgid "Add tag"
-msgstr "Tag hinzufügen"
+msgid "Remove tag"
+msgstr "Tag entfernen"
 
-msgid "Name"
-msgstr "Name"
-
-msgid "Keyword"
-msgstr "Stichwort"
-
-msgid ""
-"How the server stores the tag, without spaces. Thunderbird's built-in tags "
-"are $label1 to $label5."
-msgstr ""
-"Wie das Tag auf dem Server gespeichert wird (ohne Leerzeichen). Thunderbirds "
-"eingebaute Tags sind $label1 bis $label5."
-
-msgid "Color"
-msgstr "Farbe"
-
-msgid "Custom color…"
-msgstr "Benutzerdefinierte Farbe…"
-
-msgid "Tag color"
-msgstr "Tagfarbe"
+#, fuzzy
+msgid "New tag…"
+msgstr "Tag hinzufügen…"
 
 msgid "Needs an app password, not your login password."
 msgstr "Benötigt ein App-Passwort anstelle des Anmeldepassworts."
@@ -2737,6 +2723,9 @@ msgstr "Bearbeite Smart Folder"
 
 msgid "Add smart folder"
 msgstr "Erstelle Smart Folder"
+
+msgid "Name"
+msgstr "Name"
 
 msgid "Those in the unified section."
 msgstr "Im gemeinsamen Bereich"
@@ -5775,10 +5764,6 @@ msgstr "Jeden Smart Folder anzeigen"
 msgid "Long-press to expand or collapse"
 msgstr "Lange drücken, um aus- oder einzuklappen"
 
-#, fuzzy
-msgid "New tag…"
-msgstr "Tag hinzufügen…"
-
 msgid "Show or hide tags"
 msgstr "Tags ein- oder ausblenden"
 
@@ -5821,6 +5806,9 @@ msgstr "Keine neuen Tags"
 #, fuzzy
 msgid "Tag name"
 msgstr "Tag {name} hinzufügen"
+
+msgid "Color"
+msgstr "Farbe"
 
 #, fuzzy
 msgid "Search or create…"
@@ -6794,19 +6782,15 @@ msgstr "Adresse oder Domäne"
 msgid "Block this sender"
 msgstr "Diesen Absender sperren"
 
+#, fuzzy
 msgid ""
 "Tags are stored on the server as IMAP keywords, so Thunderbird and other "
-"clients show them too.\n"
-"\n"
-"Drag to reorder. The first nine are mapped to the 1–9 keys."
+"clients show them too. The first nine are mapped to the 1–9 keys."
 msgstr ""
 "Tags werden als IMAP-Schlüsselwörter auf dem Mailserver gespeichert, sodass "
 "Thunderbird und andere Clients dieselben Tags anzeigen.\n"
 "\n"
 "Tag zum Sortieren ziehen: Die ersten neun reagieren auf die Tasten 1–9."
-
-msgid "Add tag…"
-msgstr "Tag hinzufügen…"
 
 msgid "Look through every mailbox for tags other clients have set"
 msgstr ""

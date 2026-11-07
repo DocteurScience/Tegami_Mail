@@ -11,7 +11,7 @@ use relm4::prelude::*;
 use crate::config::{
     split_identity, AccountConfig, AliasConfig, NamedSignature, OAuthSettings, Protocol,
 };
-use crate::i18n::{i18n, i18n_f, i18n_noop};
+use crate::i18n::{i18n, i18n_f, i18n_noop, ni18n_f};
 use crate::ui::rich_editor::{self, RichEditor};
 use crate::ui::sender_row::{SenderRow, SenderRowOutput};
 use crate::worker::{self, ConnTest};
@@ -99,7 +99,10 @@ pub(crate) struct AccountsWindow {
     apply_filters_label: Option<gtk::Label>,
     /// Whether a manual filter run is under way; a second press does nothing.
     filters_applying: bool,
-    find_tags_label: Option<gtk::Label>,
+    find_tags_row: Option<adw::ActionRow>,
+    /// How many messages carry each tag, by keyword, as the app last
+    /// counted them; shown under each tag's name.
+    tag_totals: std::collections::HashMap<String, u32>,
     tag_scanning: bool,
     /// Paths behind the currently-open editor's folder combos (index 0 in the
     /// combo is "Automatic"; entry N here is combo index N + 1).
@@ -450,10 +453,15 @@ impl Component for AccountsWindow {
                 self.on_smart_folder_saved(at, folder, sender)
             }
             AccountsInput::SetSmartFolders(folders) => self.on_set_smart_folders(folders, sender),
-            AccountsInput::AddTag => self.open_tag_page(&widgets.nav, &sender, None),
+            AccountsInput::AddTag => self.on_add_tag(widgets, sender),
             AccountsInput::EditTag(i) => self.on_edit_tag(i, widgets, sender),
             AccountsInput::RemoveTag(i) => self.on_remove_tag(i, sender),
-            AccountsInput::MoveTag { from, to } => self.on_move_tag(from, to, sender),
+            AccountsInput::SetTagTotals(totals) => {
+                if totals != self.tag_totals {
+                    self.tag_totals = totals;
+                    self.rebuild_tag_rows(&sender);
+                }
+            }
             AccountsInput::TagAdded(tag) => self.on_tag_added(tag, sender),
             AccountsInput::TagEdited(i, tag) => self.on_tag_edited(i, tag, sender),
             AccountsInput::FindTags => self.on_find_tags(sender),

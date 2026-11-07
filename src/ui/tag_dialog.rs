@@ -2,10 +2,10 @@
 //! name, one of the palette's eight colours, each with its name under it so
 //! the choice never rests on colour alone, and a preview of the chip. Cancel
 //! and Create in the header bar, Create the suggested one and only once
-//! there is a name.
+//! there is a name. The same dialog edits a tag, with Save.
 //!
-//! It only asks: the app makes the tag (its keyword, saving it) from what
-//! `on_create` is given.
+//! It only asks: the caller makes the tag (its keyword, saving it) from
+//! what it is handed.
 
 use std::cell::RefCell;
 use std::rc::Rc;
@@ -14,6 +14,15 @@ use adw::prelude::*;
 
 use crate::config::TAG_COLORS;
 use crate::i18n::i18n;
+
+/// The palette colour `hex` is, by name; `None` for a colour from outside
+/// the palette (one set by an older Tegami Mail).
+pub(crate) fn color_name(hex: &str) -> Option<String> {
+    TAG_COLORS
+        .iter()
+        .position(|c| c.eq_ignore_ascii_case(hex))
+        .map(|i| color_names()[i].clone())
+}
 
 /// The palette colours' names, in `TAG_COLORS` order.
 fn color_names() -> [String; 8] {
@@ -37,17 +46,54 @@ pub(crate) fn show(
     color: &str,
     on_create: impl Fn(String, String) + 'static,
 ) {
+    open(
+        parent,
+        &i18n("New tag"),
+        &i18n("Create"),
+        "",
+        color,
+        on_create,
+    );
+}
+
+/// Edit a tag named `name` in `color` over `parent`; `on_save` gets the
+/// name and colour as the dialog leaves them. A colour from outside the
+/// palette stays until a swatch is picked.
+pub(crate) fn edit(
+    parent: &impl IsA<gtk::Widget>,
+    name: &str,
+    color: &str,
+    on_save: impl Fn(String, String) + 'static,
+) {
+    open(
+        parent,
+        &i18n("Edit tag"),
+        &i18n("Save"),
+        name,
+        color,
+        on_save,
+    );
+}
+
+fn open(
+    parent: &impl IsA<gtk::Widget>,
+    title: &str,
+    verb: &str,
+    initial_name: &str,
+    color: &str,
+    on_create: impl Fn(String, String) + 'static,
+) {
     let dialog = adw::Dialog::new();
-    dialog.set_title(&i18n("New tag"));
+    dialog.set_title(title);
     dialog.set_content_width(420);
 
     let header = adw::HeaderBar::new();
     header.set_show_start_title_buttons(false);
     header.set_show_end_title_buttons(false);
     let cancel = gtk::Button::with_label(&i18n("Cancel"));
-    let create = gtk::Button::with_label(&i18n("Create"));
+    let create = gtk::Button::with_label(verb);
     create.add_css_class("suggested-action");
-    create.set_sensitive(false);
+    create.set_sensitive(!initial_name.trim().is_empty());
     header.pack_start(&cancel);
     header.pack_end(&create);
 
@@ -61,6 +107,7 @@ pub(crate) fn show(
     body.append(&name_label);
     let name = gtk::Entry::new();
     name.set_placeholder_text(Some(&i18n("Tag name")));
+    name.set_text(initial_name);
     name.update_relation(&[gtk::accessible::Relation::LabelledBy(&[
         name_label.upcast_ref()
     ])]);
@@ -73,13 +120,15 @@ pub(crate) fn show(
     grid.set_column_homogeneous(true);
     grid.set_row_spacing(8);
     grid.set_column_spacing(8);
+    // A new tag starts on a palette colour; an edited one keeps its own,
+    // even one from outside the palette, until a swatch is picked.
     let chosen = Rc::new(RefCell::new(
-        TAG_COLORS
-            .iter()
-            .find(|c| c.eq_ignore_ascii_case(color))
-            .copied()
-            .unwrap_or(TAG_COLORS[0])
-            .to_string(),
+        if color.is_empty() {
+            TAG_COLORS[0]
+        } else {
+            color
+        }
+        .to_string(),
     ));
 
     let preview_label = heading(&i18n("Preview"));
