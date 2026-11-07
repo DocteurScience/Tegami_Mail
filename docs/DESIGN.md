@@ -362,6 +362,7 @@ Test each screen with the checklist from the HIG:
 - A tag's server keyword when two accented names collapse to the same atom.
 - The icons: the mockups use simple stroke icons. The application should use
   libadwaita's symbolic icons of the same meaning.
+- The application icon is a separate piece of work: see [ICON.md](ICON.md).
 
 ## Screens
 
