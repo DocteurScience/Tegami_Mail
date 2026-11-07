@@ -402,10 +402,8 @@ impl SimpleComponent for MessageList {
             MessageListInput::SetThreadRowNewest(on) => self.on_set_thread_row_newest(on),
             MessageListInput::SetOwnAddresses(addresses) => self.on_set_own_addresses(addresses),
             MessageListInput::SetThreading(on) => self.on_set_threading(on),
-            MessageListInput::SetThreadExpansion(on) => self.on_set_thread_expansion(on),
             MessageListInput::SetListPalette(on) => self.on_set_list_palette(on),
             MessageListInput::ResolveDelete => self.on_resolve_delete(&sender),
-            MessageListInput::SetThreadsExpanded(on) => self.on_set_threads_expanded(on),
             // Every row's date, and a conversation's latest, is worked out
             // by the rebuild.
             MessageListInput::RefreshDates => self.rebuild(),
@@ -516,15 +514,6 @@ impl SimpleComponent for MessageList {
             MessageListInput::SetGroupByDate(on) => self.on_set_group_by_date(on),
             MessageListInput::SetPillsBelow(on) => self.on_set_pills_below(on),
             MessageListInput::SortByColumn(column) => self.on_sort_by_column(column, &sender),
-            MessageListInput::ToggleThread(key) => self.on_toggle_thread(key, &sender),
-            MessageListInput::FoldByKey { key, head } => {
-                if let Some(head) = head {
-                    self.select_positions(&[head]);
-                    self.focus_row(head);
-                }
-                self.on_toggle_thread(key, &sender);
-            }
-            MessageListInput::FinishCollapseThread(key) => self.on_finish_collapse_thread(key),
             MessageListInput::RowActivated(index) => self.on_row_activated(index, &sender),
             MessageListInput::MarkRead(slot) => {
                 self.update_message(|m| thread_slot(m) == slot, |m| m.unread = false);

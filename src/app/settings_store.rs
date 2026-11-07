@@ -30,8 +30,6 @@ impl AppModel {
             palette_collapse_secs: self.palette_collapse_secs,
             card_palette_collapse_secs: self.card_palette_collapse_secs,
             threading: self.threading,
-            threads_expanded: self.threads_expanded,
-            thread_expansion: self.thread_expansion,
             thread_row_newest: self.thread_row_newest,
             thread_newest_first: self.thread_newest_first,
             fold_messages: self.fold_messages,
@@ -178,13 +176,9 @@ impl AppModel {
         self.message_list
             .emit(MessageListInput::SetThreading(self.threading));
         self.message_list
-            .emit(MessageListInput::SetThreadExpansion(self.thread_expansion));
-        self.message_list
             .emit(MessageListInput::SetThreadRowNewest(self.thread_row_newest));
         self.message_list
             .emit(MessageListInput::SetListPalette(self.list_palette));
-        self.message_list
-            .emit(MessageListInput::SetThreadsExpanded(self.threads_expanded));
         self.message_list.emit(MessageListInput::SetPaletteCollapse(
             self.palette_collapse_secs,
         ));

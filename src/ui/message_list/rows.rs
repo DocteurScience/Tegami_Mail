@@ -4,7 +4,7 @@
 
 use super::layout::after_next_paint;
 use super::sort::{correspondents, message_cmp, tag_sort_key, text_key_cmp, SortOrder};
-use super::threading::{compute_thread_keys, latest_elsewhere, nested_members, thread_slot};
+use super::threading::{compute_thread_keys, latest_elsewhere, thread_slot};
 use super::types::{BulkAction, MessageListInput};
 use super::views::{later_drop, Built};
 use super::MessageList;
@@ -156,7 +156,6 @@ impl MessageList {
         if !rows.iter().any(|r| r.meta.pending.is_some()) {
             return;
         }
-        let passes = self.filter();
         for row in rows.iter_mut() {
             let Some(key) = row.meta.pending.clone() else {
                 continue;
@@ -166,7 +165,7 @@ impl MessageList {
                 .get(&key)
                 .cloned()
                 .unwrap_or_else(|| vec![row.msg.clone()]);
-            let (meta, _) = self.describe_group(&key, &own, &passes, true);
+            let (meta, _) = self.describe_group(&key, &own, true);
             let mut data = RowData::clone(row);
             data.meta = RowMeta {
                 appear: data.meta.appear,
@@ -256,50 +255,28 @@ impl MessageList {
         &mut self,
         key: &(u32, String),
         own: &[Rc<Message>],
-        passes: &impl Fn(&Message) -> bool,
         full: bool,
     ) -> (RowMeta, Vec<Rc<Message>>) {
-        let mut msgs = own.to_vec();
+        let msgs = own.to_vec();
         let summary = self
             .threading
             .then(|| self.thread_summaries.get(key))
             .flatten();
-        // The parts of the conversation filed elsewhere, which the row opens
-        // out into along with this folder's own (#309). What you sent comes
-        // with them only when "Show your own replies in the message list" is
-        // on: off, an Inbox row opened out into nothing but your answers
-        // from Sent (#388). Gmail's All Mail copy of them goes too.
-        let own = (!self.thread_row_newest).then_some(&self.own_addresses);
-        let extras: Vec<Rc<Message>> = match summary {
-            Some(s) if self.thread_expansion => {
-                nested_members(&s.members, &msgs, &self.listed_folders, passes)
-                    .into_iter()
-                    .filter(|m| !own.is_some_and(|own| own.contains(&m.from_addr.to_lowercase())))
-                    .map(Rc::new)
-                    .collect()
-            }
-            _ => Vec::new(),
-        };
-        let count = msgs.len() + extras.len();
-        // What the badge says. `count` is what the row holds and goes on
-        // steering it (whether it nests and what expands) but the number on
-        // the chip is the size of the *conversation*, drafts included (#222).
-        // Never less than what is on screen: a stale or partial answer from
-        // the cache must not make the badge contradict the rows under it.
+        let count = msgs.len();
+        // What the badge says. `count` is what the row holds, this folder's
+        // part of the conversation, but the number on the chip is the size
+        // of the *conversation*, drafts included (#222). Never less than
+        // what is on screen: a stale or partial answer from the cache must
+        // not make the badge contradict the list.
         let total = if self.threading {
             summary.map(|s| s.count).unwrap_or(0).max(count)
         } else {
             count
         };
-        let expanded = count > 1
-            && self.thread_expansion
-            && (self.expanded_threads.contains(key) != self.default_expanded);
         if !full {
-            self.join_members(key, &mut msgs, extras, count);
+            self.join_members(key, &msgs, count);
             let meta = RowMeta {
                 count: total,
-                expandable: count > 1,
-                expanded,
                 key: (count > 1).then(|| key.clone()),
                 revealed: true,
                 group: self.threading.then(|| key.clone()),
@@ -322,9 +299,6 @@ impl MessageList {
             .columns
             .contains(&crate::config::ListColumn::Correspondents)
             .then(|| self.people_of(key, &msgs));
-        // `expanded_threads` stores toggles away from the default state. With
-        // expansion disabled no thread ever opens in the list; the stored
-        // toggles survive for when it is re-enabled.
         // The head stays marked unread while ANY message in its conversation
         // is unread, hidden replies included, but only this folder's own: an
         // archived message still unread is not new mail here.
@@ -348,14 +322,9 @@ impl MessageList {
             count > 1 && newest_here.answered,
             count > 1 && newest_here.forwarded,
         );
-        self.join_members(key, &mut msgs, extras, count);
+        self.join_members(key, &msgs, count);
         let meta = RowMeta {
             count: total,
-            // The parts filed in other folders open out too (#309); a
-            // conversation with nothing to show beyond its row, all of it in
-            // Trash, say, wears a bare count and no caret.
-            expandable: count > 1,
-            expanded,
             key: (count > 1).then(|| key.clone()),
             from,
             preview,
@@ -373,26 +342,8 @@ impl MessageList {
         (meta, msgs)
     }
 
-    /// Put a group's members in row order and remember them. The row stays
-    /// this folder's oldest message, whatever the other folders hold that
-    /// is older (`extras`), so what is done to the row is done to mail in
-    /// this folder; the rest follow in time order.
-    fn join_members(
-        &mut self,
-        key: &(u32, String),
-        msgs: &mut Vec<Rc<Message>>,
-        extras: Vec<Rc<Message>>,
-        count: usize,
-    ) {
-        if !extras.is_empty() {
-            for m in &extras {
-                self.nested.insert((m.account_id, m.id), m.clone());
-            }
-            let head = msgs.remove(0);
-            msgs.extend(extras);
-            msgs.sort_by(|a, b| a.timestamp.cmp(&b.timestamp).then(a.uid.cmp(&b.uid)));
-            msgs.insert(0, head);
-        }
+    /// Remember a group's members, for the actions on a whole conversation.
+    fn join_members(&mut self, key: &(u32, String), msgs: &[Rc<Message>], count: usize) {
         if count > 1 {
             let members: Vec<(u32, u32)> = msgs.iter().map(|m| (m.account_id, m.id)).collect();
             for k in &members {
@@ -419,10 +370,8 @@ impl MessageList {
     }
 
     /// Fresh sizes for these conversations (#222): their head rows say so in
-    /// place. A conversation opened out in the list may gain or lose rows,
-    /// and that takes a rebuild.
+    /// place.
     pub(super) fn apply_summaries(&mut self, keys: Vec<(u32, String)>) {
-        let passes = self.filter();
         for key in keys {
             let Some(own) = self.groups.get(&key).cloned() else {
                 continue;
@@ -431,18 +380,10 @@ impl MessageList {
             let Some(pos) = self.shown.iter().position(|m| (m.account_id, m.id) == head) else {
                 continue;
             };
-            let Some(row) = self.shared.model.row(pos) else {
+            if self.shared.model.row(pos).is_none() {
                 continue;
-            };
-            if row.meta.expanded {
-                self.queue_rebuild(true);
-                return;
             }
-            let (meta, _) = self.describe_group(&key, &own, &passes, true);
-            if meta.expanded {
-                self.queue_rebuild(true);
-                return;
-            }
+            let (meta, _) = self.describe_group(&key, &own, true);
             self.shared.model.update_row(pos, |d| d.meta = meta);
         }
     }
@@ -464,11 +405,7 @@ impl MessageList {
 
     fn rebuild_rows(&mut self) {
         let t_rebuild = std::time::Instant::now();
-        let Built {
-            rows,
-            by_date,
-            any_expanded,
-        } = self.compute_rows();
+        let Built { rows, by_date } = self.compute_rows();
         // Only what changed reaches the view: rows that show the same message
         // stay where they are, with whatever they were doing (#323).
         let t_rows = std::time::Instant::now();
@@ -478,7 +415,6 @@ impl MessageList {
         }
         self.show_headings(by_date);
         self.select_current();
-        self.fit_expanded(any_expanded);
         tracing::debug!(
             "list: rebuild {} rows (+{} to come) of {} — sort+group {:?}, model {:?}",
             self.shown.len(),
@@ -492,7 +428,6 @@ impl MessageList {
     /// Sort, group and describe `all` into the rows of the window, leaving
     /// the rest in `tail` and the conversation maps filled.
     pub(super) fn compute_rows(&mut self) -> Built {
-        let passes = self.filter();
         let source_len = self.active_source().len();
         let mut matches = self.source_matches();
         if self.searching() {
@@ -554,13 +489,6 @@ impl MessageList {
             grouped = self.sort_by_correspondents(grouped);
         }
 
-        // A reply that is sliding open, or shut, keeps doing so.
-        let appearing: std::collections::HashSet<(u32, u32, u32)> = (0..self.shared.model.len())
-            .filter_map(|i| self.shared.model.row(i))
-            .filter(|r| r.meta.appear)
-            .map(|r| r.slot())
-            .collect();
-
         // Under which date heading each conversation goes (#435): by the
         // message that put it where it is in the sort, the newest for
         // Newest First and the oldest for Oldest First, so a heading's rows
@@ -569,8 +497,7 @@ impl MessageList {
             self.group_by_date && matches!(sort, SortOrder::DateNewest | SortOrder::DateOldest);
         let day_starts = by_date.then(|| crate::datefmt::day_starts(crate::datefmt::now()));
 
-        let (mut shown, mut rows, any_expanded) =
-            self.flatten_groups(grouped, &passes, day_starts.as_ref(), &appearing);
+        let (mut shown, mut rows) = self.flatten_groups(grouped, day_starts.as_ref());
 
         self.follow_renumbered_selection(&shown);
         // On screen, the window: as many rows as were before (so a rebuild
@@ -592,23 +519,16 @@ impl MessageList {
         shown.truncate(limit);
         self.window = limit.max(LIST_WINDOW);
         self.shown = shown;
-        Built {
-            rows,
-            by_date,
-            any_expanded,
-        }
+        Built { rows, by_date }
     }
 
     /// Flatten the conversations back into display order, recording each
-    /// row's thread metadata: the rows, the messages they show, and whether
-    /// any conversation is open.
+    /// row's thread metadata: the rows and the messages they show.
     fn flatten_groups(
         &mut self,
         grouped: Vec<Group>,
-        passes: &impl Fn(&Message) -> bool,
         day_starts: Option<&[i64; 4]>,
-        appearing: &std::collections::HashSet<(u32, u32, u32)>,
-    ) -> (Vec<Rc<Message>>, Vec<Rc<RowData>>, bool) {
+    ) -> (Vec<Rc<Message>>, Vec<Rc<RowData>>) {
         let mut shown: Vec<Rc<Message>> = Vec::with_capacity(grouped.len());
         let mut rows: Vec<Rc<RowData>> = Vec::with_capacity(grouped.len());
         let mut thread_drag = crate::ui::message_row::ThreadDragKeys::new();
@@ -617,13 +537,11 @@ impl MessageList {
         later_drop((
             std::mem::take(&mut self.msg_thread),
             std::mem::take(&mut self.thread_members),
-            std::mem::take(&mut self.nested),
             std::mem::take(&mut self.groups),
         ));
         if self.threading {
             self.groups.reserve(grouped.len());
         }
-        let mut any_expanded = false;
         let full_rows = self.window.clamp(LIST_WINDOW, FULL_ROWS_AT_MOST);
         // Rows on screen are described in full wherever they are, so a
         // rebuild never shows them half done.
@@ -664,7 +582,7 @@ impl MessageList {
                     && msgs
                         .iter()
                         .any(|m| bound.contains(&(m.account_id, m.folder_id, m.id))));
-            let (meta, members) = self.describe_group(key, &msgs, &passes, full);
+            let (meta, members) = self.describe_group(key, &msgs, full);
             if !unseen.is_empty() {
                 for m in &members {
                     unseen.remove(&(m.account_id, m.id));
@@ -673,39 +591,19 @@ impl MessageList {
             if self.threading {
                 self.groups.insert(key.clone(), msgs);
             }
-            let expanded = meta.expanded;
-            let mut it = members.into_iter();
-            let head = it.next().expect("a group holds at least one message");
+            let head = members
+                .into_iter()
+                .next()
+                .expect("a group holds at least one message");
             shown.push(head.clone());
             rows.push(Rc::new(RowData {
                 msg: head,
                 meta,
                 section,
             }));
-            if expanded {
-                any_expanded = true;
-                let closing = self.collapsing_threads.contains_key(key);
-                let rest: Vec<Rc<Message>> = it.collect();
-                let n = rest.len();
-                for (j, child) in rest.into_iter().enumerate() {
-                    let slot = thread_slot(&child);
-                    shown.push(child.clone());
-                    rows.push(Rc::new(RowData {
-                        msg: child,
-                        meta: RowMeta {
-                            is_child: true,
-                            is_last: j + 1 == n,
-                            revealed: !closing,
-                            appear: appearing.contains(&slot),
-                            ..Default::default()
-                        },
-                        section,
-                    }));
-                }
-            }
         }
         *self.shared.thread_drag.borrow_mut() = thread_drag;
-        (shown, rows, any_expanded)
+        (shown, rows)
     }
 
     /// Sort the matches by the list's order: by tag name (each message's
@@ -810,11 +708,8 @@ impl MessageList {
         // Delete / Backspace on a focused row deletes the selection (single or
         // multi). Scoped to the list, so typing in the search box is unaffected.
         // Shift+Delete erases it instead, as in Thunderbird (#471).
-        // Right and Left open out and fold conversations, as in a tree
-        // (#540).
         let key = gtk::EventControllerKey::new();
         let s = input.clone();
-        let shared = shared.clone();
         key.connect_key_pressed(move |_, keyval, _, state| {
             let shift = state.contains(gtk::gdk::ModifierType::SHIFT_MASK);
             if shift && matches!(keyval, gtk::gdk::Key::Delete | gtk::gdk::Key::KP_Delete) {
@@ -827,9 +722,6 @@ impl MessageList {
                 // ResolveDelete, not a straight Bulk: a lone thread-head row
                 // stands for its whole conversation (confirmed by the app).
                 let _ = s.send(MessageListInput::ResolveDelete);
-                gtk::glib::Propagation::Stop
-            } else if let Some(fold) = fold_key(&shared, keyval, state) {
-                let _ = s.send(fold);
                 gtk::glib::Propagation::Stop
             } else {
                 gtk::glib::Propagation::Proceed
@@ -885,51 +777,4 @@ impl MessageList {
         // never laid out one more time for nothing before they go.
         run();
     }
-}
-
-/// What Right or Left does on the row the keyboard is on (#540): Right opens
-/// a folded conversation out in the list, Left folds an open one, from its
-/// head or any of its replies. `None` leaves the key to the window's own
-/// shortcuts: the row stands alone, is already as asked, or conversations
-/// do not open out in the list.
-fn fold_key(
-    shared: &RowShared,
-    keyval: gtk::gdk::Key,
-    state: gtk::gdk::ModifierType,
-) -> Option<MessageListInput> {
-    use gtk::gdk::{Key, ModifierType};
-    if state
-        .intersects(ModifierType::CONTROL_MASK | ModifierType::SHIFT_MASK | ModifierType::ALT_MASK)
-    {
-        return None;
-    }
-    let forward = match keyval {
-        Key::Right | Key::KP_Right => true,
-        Key::Left | Key::KP_Left => false,
-        _ => return None,
-    };
-    if !shared.look.borrow().thread_expansion {
-        return None;
-    }
-    let view = shared.view.upgrade()?;
-    // Right to left the tree opens the other way, as GTK's own do.
-    let open = forward != (view.direction() == gtk::TextDirection::Rtl);
-    let pos = shared
-        .bound_rows()
-        .into_iter()
-        .find(|r| r.has_focus_within())
-        .and_then(|r| r.position())?;
-    let mut head = pos;
-    while head > 0 && shared.model.row(head).is_some_and(|r| r.meta.is_child) {
-        head -= 1;
-    }
-    let row = shared.model.row(head)?;
-    let key = row.meta.key.clone()?;
-    if row.meta.expanded == open {
-        return None;
-    }
-    Some(MessageListInput::FoldByKey {
-        key,
-        head: (head != pos).then_some(head),
-    })
 }

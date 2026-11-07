@@ -94,15 +94,6 @@ pub(crate) struct PrivacyFile {
     /// Group messages into conversation threads in the list.
     #[serde(default = "default_on")]
     pub(crate) threading: bool,
-    /// Whether conversation threads start expanded in the message list
-    /// (collapsed to their newest message by default).
-    #[serde(default)]
-    pub(crate) threads_expanded: bool,
-    /// Whether a conversation row can expand into its member rows in the
-    /// message list. Off: the row keeps its count chip and chevron, but the
-    /// thread itself opens only in the reading pane's cards.
-    #[serde(default = "default_thread_expansion")]
-    pub(crate) thread_expansion: bool,
     /// Whether a conversation's row in the message list speaks for the newest
     /// message anywhere in the account rather than the newest one the folder
     /// itself holds: the reply you sent, which is filed in Sent (#236). Off by
@@ -544,14 +535,6 @@ fn default_fetch_interval() -> u64 {
     300
 }
 
-fn default_thread_expansion() -> bool {
-    // Off for new installs (2026-08-30): conversations expand in the reading
-    // pane's cards; the list keeps its count chip without in-list expansion.
-    // Only a privacy.toml MISSING this key sees the default — every save
-    // writes all fields, so an existing install's choice is pinned.
-    false
-}
-
 fn default_single_message_card() -> bool {
     // Off for new installs: a lone message sits flat on the reader's
     // ground, as the redesign draws it (mockups 01 and 10; owner's
@@ -623,8 +606,6 @@ impl Default for PrivacyFile {
             palette_collapse_secs: default_palette_collapse(),
             card_palette_collapse_secs: default_palette_collapse(),
             threading: true,
-            threads_expanded: false,
-            thread_expansion: default_thread_expansion(),
             thread_row_newest: false,
             thread_newest_first: false,
             fold_messages: FoldMessages::Read,

@@ -14,11 +14,6 @@ impl Preferences {
         let _ = sender.output(PrefOutput::SetThreading(on));
     }
 
-    pub(super) fn on_toggle_thread_expansion(&mut self, on: bool, sender: ComponentSender<Self>) {
-        self.thread_expansion = on;
-        let _ = sender.output(PrefOutput::SetThreadExpansion(on));
-    }
-
     pub(super) fn on_change_reader_zoom(&mut self, idx: u32, sender: ComponentSender<Self>) {
         if let Some(&z) = crate::config::READER_ZOOM_STEPS.get(idx as usize) {
             let _ = sender.output(PrefOutput::SetReaderZoom(z));

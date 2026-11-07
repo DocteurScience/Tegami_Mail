@@ -50,8 +50,6 @@ pub(crate) struct RowLook {
     pub(crate) show_recipient: bool,
     /// The accounts whose avatars wear their color as a ring (merged views).
     pub(crate) ringed: std::collections::HashSet<u32>,
-    /// Whether conversations open out in the list at all.
-    pub(crate) thread_expansion: bool,
     /// Bumped whenever the circles must be looked up again (contact photos
     /// changed, Gravatar or logos switched).
     pub(crate) face_gen: u64,
@@ -77,7 +75,6 @@ impl Default for RowLook {
             in_drafts: false,
             show_recipient: false,
             ringed: Default::default(),
-            thread_expansion: true,
             face_gen: 0,
             tags_gen: 0,
         }

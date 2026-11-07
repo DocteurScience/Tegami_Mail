@@ -789,10 +789,6 @@ msgstr "Άνοιγμα επιλεγμένου μηνύματος"
 msgid "Back to the message list"
 msgstr "Επιστροφή στη λίστα μηνυμάτων"
 
-#, fuzzy
-msgid "Open or fold a conversation in the list"
-msgstr "Κλείσιμο συζήτησης και επιστροφή στη λίστα"
-
 msgid "Next message in the conversation"
 msgstr "Επόμενο μήνυμα στη συνομιλία"
 
@@ -3997,9 +3993,6 @@ msgstr "Τι αναζητά αυτή η επιλογή"
 msgid "me"
 msgstr "εγώ"
 
-msgid "Show conversation"
-msgstr "Εμφάνιση συζήτησης"
-
 msgid "Due"
 msgstr "Λήξη"
 
@@ -5156,17 +5149,6 @@ msgstr ""
 msgid "Group messages by conversation"
 msgstr "Ομαδοποίηση μηνυμάτων κατά συζήτηση"
 
-msgid "Expandable conversations"
-msgstr "Αναπτυσσόμενες συζητήσεις"
-
-msgid "Off, a conversation's messages show only in the reading pane."
-msgstr ""
-"Ανενεργό: τα μηνύματα μιας συζήτησης εμφανίζονται μόνο στο παράθυρο "
-"ανάγνωσης."
-
-msgid "Expand conversations by default"
-msgstr "Ανάπτυξη συζητήσεων από προεπιλογή"
-
 msgid "Newest message first"
 msgstr "Νεότερο μήνυμα πρώτο"
 
@@ -5679,6 +5661,9 @@ msgstr "Λίστα με κουκκίδες"
 msgid "Numbered list"
 msgstr "Αριθμημένη λίστα"
 
+msgid "Insert link"
+msgstr "Εισαγωγή συνδέσμου"
+
 msgid "Decrease indent"
 msgstr "Μείωση εσοχής"
 
@@ -5687,9 +5672,6 @@ msgstr "Αύξηση εσοχής"
 
 msgid "Quote"
 msgstr "Παράθεση"
-
-msgid "Insert link"
-msgstr "Εισαγωγή συνδέσμου"
 
 msgid "Insert emoji"
 msgstr "Εισαγωγή emoji"

@@ -89,11 +89,6 @@ impl Query {
         q
     }
 
-    /// Whether the query asks for nothing at all.
-    pub(crate) fn is_empty(&self) -> bool {
-        *self == Query::default()
-    }
-
     /// The bit of a message's match that every term found sets.
     pub(crate) fn all_terms(&self) -> u64 {
         (1u64 << self.terms.len()) - 1
@@ -161,7 +156,7 @@ mod tests {
         assert_eq!(q.folder, ["archive"]);
         assert!(q.attachment);
         assert_eq!(q.unread, Some(true));
-        assert!(Query::parse("  ").is_empty());
+        assert_eq!(Query::parse("  "), Query::default());
         assert!(Query::parse("from:").terms == ["from:"]);
     }
 

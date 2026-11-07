@@ -4,8 +4,8 @@
 use super::filters::{QuickFilter, QuickFilterContext, QuickFilters};
 use super::sort::{column_sort, correspondents, message_cmp, text_key_cmp, SortOrder};
 use super::threading::{
-    compute_thread_keys, heads_its_row, latest_elsewhere, nested_members, reader_conversation,
-    row_for_reader_key, thread_slot, unasked_threads,
+    compute_thread_keys, heads_its_row, latest_elsewhere, reader_conversation, row_for_reader_key,
+    thread_slot, unasked_threads,
 };
 use crate::models::Message;
 use crate::ui::message_row::{
@@ -240,40 +240,6 @@ fn correspondents_name_each_writer_once() {
     assert_eq!(correspondents(&[&a, &b]), "b@example.com, Ann");
     assert_eq!(correspondents(&[&a]), "Ann");
     assert_eq!(correspondents(&[]), "");
-}
-
-/// #309: a conversation opens out into its parts in other folders, but
-/// not into what the list already shows, a second label's copy of the
-/// same mail, or what the list's filters leave out.
-#[test]
-fn a_row_nests_only_the_conversation_filed_elsewhere() {
-    let in_folder = |id, mid: &str, folder| Message {
-        folder_id: folder,
-        ..msg(id, mid, "")
-    };
-    let own = vec![in_folder(1, "a@x", 1)];
-    let found = vec![
-        in_folder(1, "a@x", 1),  // the inbox message itself
-        in_folder(90, "a@x", 9), // its copy under All Mail
-        in_folder(91, "b@x", 3), // your reply in Sent
-        in_folder(92, "b@x", 9), // the reply's All Mail copy
-        in_folder(93, "c@x", 2), // in another listed folder
-        Message {
-            unread: true,
-            ..in_folder(94, "d@x", 5)
-        },
-        in_folder(95, "", 5), // no Message-ID to tell copies by
-    ];
-    let listed = [(1u32, 1u32), (1, 2)].into_iter().collect();
-    let ids = |v: Vec<Message>| v.iter().map(|m| m.id).collect::<Vec<_>>();
-    assert_eq!(
-        ids(nested_members(&found, &own, &listed, &|_| true)),
-        vec![91, 94]
-    );
-    assert_eq!(
-        ids(nested_members(&found, &own, &listed, &|m| m.unread)),
-        vec![94]
-    );
 }
 
 /// Two replies in an Inbox each answer a different message in Sent, and

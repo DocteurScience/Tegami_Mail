@@ -778,9 +778,6 @@ msgstr "Ausgewählte Nachricht öffnen"
 msgid "Back to the message list"
 msgstr "Zurück zur Nachrichtenliste"
 
-msgid "Open or fold a conversation in the list"
-msgstr "Unterhaltung in der Liste öffnen oder einklappen"
-
 msgid "Next message in the conversation"
 msgstr "Nächste Nachricht in der Unterhaltung"
 
@@ -3951,9 +3948,6 @@ msgstr "Durchsuchte Ordner"
 msgid "me"
 msgstr "ich"
 
-msgid "Show conversation"
-msgstr "Unterhaltung anzeigen"
-
 msgid "Due"
 msgstr "Fälligkeitsdatum"
 
@@ -5103,17 +5097,6 @@ msgstr ""
 msgid "Group messages by conversation"
 msgstr "Nachrichten nach Unterhaltungen gruppieren"
 
-msgid "Expandable conversations"
-msgstr "Ausklappbare Unterhaltungen"
-
-msgid "Off, a conversation's messages show only in the reading pane."
-msgstr ""
-"Bei Deaktivierung sind Nachrichten eines Gesprächsfadens nur im "
-"Vorschaufenster sichtbar."
-
-msgid "Expand conversations by default"
-msgstr "Unterhaltungen standardmäßig ausklappen"
-
 msgid "Newest message first"
 msgstr "Neueste Nachricht zuerst"
 
@@ -5636,6 +5619,9 @@ msgstr "Aufzählungsliste"
 msgid "Numbered list"
 msgstr "Nummerierte Liste"
 
+msgid "Insert link"
+msgstr "Link einfügen"
+
 msgid "Decrease indent"
 msgstr "Einzug verkleinern"
 
@@ -5644,9 +5630,6 @@ msgstr "Einzug vergrößern"
 
 msgid "Quote"
 msgstr "Zitat"
-
-msgid "Insert link"
-msgstr "Link einfügen"
 
 msgid "Insert emoji"
 msgstr "Emoji einfügen"

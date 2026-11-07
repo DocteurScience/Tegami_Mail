@@ -444,11 +444,9 @@ impl AppModel {
             | PrefOutput::SetAutoRemoteContent(..)
             | PrefOutput::SetRemoteAhead(..)
             | PrefOutput::SetThreading(..)
-            | PrefOutput::SetThreadExpansion(..)
             | PrefOutput::SetThreadRowNewest(..)
             | PrefOutput::SetConfirmThreadDelete(..)
             | PrefOutput::SetCardActionsMode { .. }
-            | PrefOutput::SetThreadsExpanded(..)
             | PrefOutput::SetThreadNewestFirst(..)
             | PrefOutput::SetFoldMessages(..)
             | PrefOutput::SetAlwaysShowRecipients(..)

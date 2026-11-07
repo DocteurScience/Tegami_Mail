@@ -320,8 +320,7 @@ impl MessageList {
             .filter_map(|&p| self.shown.get(p))
             .any(|m| {
                 let key = (m.account_id, m.id);
-                !self.nested.contains_key(&key)
-                    && heads_its_row(key, &self.msg_thread, &self.thread_members)
+                heads_its_row(key, &self.msg_thread, &self.thread_members)
                     && threads
                         .keys
                         .get(&thread_slot(m))

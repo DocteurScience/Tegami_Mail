@@ -94,7 +94,6 @@ pub(crate) struct Preferences {
     threading: bool,
     /// Mirrors the expandable-conversations switch — "expand by default" only
     /// means anything while conversations can expand in the list at all.
-    thread_expansion: bool,
     /// Mirrors the list-palette switch, so the hover row under it can grey
     /// out when there is no palette to open.
     list_palette: bool,
@@ -392,7 +391,6 @@ impl Component for Preferences {
             rail_fold: init.rail_fold,
             swipe_enabled: init.swipe_enabled,
             threading: init.threading,
-            thread_expansion: init.thread_expansion,
             list_palette: init.list_palette,
             card_actions_hover: init.card_actions_hover,
             avatars: init.avatars,
@@ -540,7 +538,6 @@ impl Component for Preferences {
             }
             PrefInput::ToggleAvatars(on) => self.on_toggle_avatars(on, sender),
             PrefInput::ToggleThreading(on) => self.on_toggle_threading(on, sender),
-            PrefInput::ToggleThreadExpansion(on) => self.on_toggle_thread_expansion(on, sender),
             PrefInput::ChangeReaderZoom(idx) => self.on_change_reader_zoom(idx, sender),
             PrefInput::ChangeCardActionsMode(index) => {
                 self.on_change_card_actions_mode(index, sender)

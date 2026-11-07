@@ -158,15 +158,7 @@ pub(crate) type Slot = (u32, u32, u32);
 pub(crate) struct RowMeta {
     /// Size of the conversation (thread heads only; 1 or 0 otherwise).
     pub(super) count: usize,
-    /// Whether the chip can open anything: the folder holds more of it.
-    pub(super) expandable: bool,
-    /// A reply nested under a thread head — indented on the rail.
-    pub(super) is_child: bool,
-    /// The last reply of its thread: the dotted rail stops at its node.
-    pub(super) is_last: bool,
-    /// The head's conversation is opened out in the list.
-    pub(super) expanded: bool,
-    /// The conversation key, on a head that can toggle.
+    /// The conversation key, on a row that stands for several messages.
     pub(super) key: Option<(u32, String)>,
     /// The newest member's sender, preview and time (thread heads only):
     /// the row speaks for the conversation's latest message.

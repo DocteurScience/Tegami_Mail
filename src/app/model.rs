@@ -496,8 +496,6 @@ pub(crate) struct AppModel {
     pub(super) thread_cache_order: Vec<BodyKey>,
     /// Which conversation `current_thread` is, for storing it back.
     pub(super) thread_key: Option<BodyKey>,
-    /// Whether conversation threads start expanded in the message list.
-    pub(super) threads_expanded: bool,
     /// Reading pane shows conversations newest-message-first.
     pub(super) thread_newest_first: bool,
     /// Which messages of a conversation open folded (#326).
@@ -618,9 +616,6 @@ pub(crate) struct AppModel {
     pub(super) card_attachments: bool,
     /// The attachment drawer beneath the reader is shown at all (#213).
     pub(super) drawer_enabled: bool,
-    /// Whether conversation rows may expand into their members in the list
-    /// (the row keeps its chip and chevron either way).
-    pub(super) thread_expansion: bool,
     /// Whether a conversation's row speaks for the newest message anywhere in
     /// the account, the replies you sent included (#236). Off by default.
     pub(super) thread_row_newest: bool,

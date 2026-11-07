@@ -140,13 +140,6 @@ impl AppModel {
                 self.sync_show_checks();
             }
 
-            PrefOutput::SetThreadExpansion(on) => {
-                if pref!(self.thread_expansion = on) {
-                    self.message_list
-                        .emit(MessageListInput::SetThreadExpansion(on));
-                }
-            }
-
             PrefOutput::SetThreadRowNewest(on) => {
                 if pref!(self.thread_row_newest = on) {
                     self.message_list
@@ -167,13 +160,6 @@ impl AppModel {
                     self.card_actions_auto = hover_auto;
                     self.save_settings();
                     self.push_card_actions_mode();
-                }
-            }
-
-            PrefOutput::SetThreadsExpanded(on) => {
-                if pref!(self.threads_expanded = on) {
-                    self.message_list
-                        .emit(MessageListInput::SetThreadsExpanded(on));
                 }
             }
 

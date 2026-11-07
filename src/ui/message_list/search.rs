@@ -432,23 +432,6 @@ impl MessageList {
         }
     }
 
-    /// What the search field and the quick filters let through.
-    pub(super) fn filter(&self) -> impl Fn(&Message) -> bool {
-        let query = self.parsed.clone();
-        let hits = self.text_hits.clone();
-        let besides = self.filter_besides_text();
-        move |m: &Message| {
-            besides(m)
-                && (query.is_empty()
-                    || decide(
-                        &query,
-                        text_match(&query, &search_text_of(m)),
-                        m,
-                        hits.as_deref(),
-                    ))
-        }
-    }
-
     /// What the quick filters and the search's scope let through, the
     /// search's text aside.
     fn filter_besides_text(&self) -> impl Fn(&Message) -> bool {

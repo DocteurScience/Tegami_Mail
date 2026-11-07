@@ -33,7 +33,6 @@ pub(crate) struct PrefInit {
     /// the message list's.
     pub(crate) card_palette_collapse_secs: u64,
     pub(crate) threading: bool,
-    pub(crate) threads_expanded: bool,
     /// Reading pane shows conversations newest-message-first.
     pub(crate) thread_newest_first: bool,
     /// Which messages of a conversation open folded (#326).
@@ -56,8 +55,6 @@ pub(crate) struct PrefInit {
     pub(crate) card_attachments: bool,
     /// The attachment drawer beneath the reader is shown (#213).
     pub(crate) attachment_drawer: bool,
-    /// Conversation rows may expand into their members in the message list.
-    pub(crate) thread_expansion: bool,
     /// A conversation's row speaks for the newest message anywhere in the
     /// account, the replies you sent included (#236).
     pub(crate) thread_row_newest: bool,
@@ -236,7 +233,6 @@ pub(crate) enum PrefInput {
     ChangeKeepDownloads(u32),
     ToggleThreading(bool),
     ChangeReaderZoom(u32),
-    ToggleThreadExpansion(bool),
     ChangeCardActionsMode(u32),
     ToggleListPalette(bool),
     ToggleSwipeEnabled(bool),
@@ -377,7 +373,6 @@ pub(crate) enum PrefOutput {
     /// A `GSK_RENDERER` value, or empty for GTK's own choice (#403).
     SetRenderer(String),
     SetThreading(bool),
-    SetThreadsExpanded(bool),
     SetThreadNewestFirst(bool),
     SetFoldMessages(crate::config::FoldMessages),
     SetAlwaysShowRecipients(bool),
@@ -389,7 +384,6 @@ pub(crate) enum PrefOutput {
     SetReaderZoom(u32),
     SetCardAttachments(bool),
     SetAttachmentDrawer(bool),
-    SetThreadExpansion(bool),
     SetThreadRowNewest(bool),
     SetConfirmThreadDelete(bool),
     SetCardActionsMode {

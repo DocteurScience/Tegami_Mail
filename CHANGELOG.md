@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+- **Removed: opening conversations out in the message list.** A
+  conversation is one card in the list and opens in the reading pane, as
+  the redesign draws it. Gone with it: **Settings → Conversations →
+  Expandable conversations** and **Expand conversations by default**, the
+  Right and Left keys that opened and folded a conversation in the list
+  (Right opens the selected message, as before), and the click on a
+  card's count, which is now a plain count.
+
 - **Fixed: the snap would not start** ("not allowed to own the service …
   due to AppArmor policy"): it now declares the app's name on the session
   bus, which strict confinement requires.

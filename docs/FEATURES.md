@@ -38,9 +38,10 @@ The full list. The [README](../README.md) carries a shorter one.
   server, with `from:`, `to:`, `in:` and `has:attachment` to narrow it.
 - **Two-way sync:** deletions, moves and flag changes from your phone or
   another client sync back automatically (IMAP IDLE plus reconciliation).
-- **Conversation threading** across folders: the count covers the whole
-  conversation, and an expanded conversation shows your replies from Sent
-  and its archived messages alongside the folder's own.
+- **Conversation threading** across folders: a conversation is one card in
+  the list, whose count covers the whole conversation, and opens in the
+  reading pane with your replies from Sent and its archived messages
+  alongside the folder's own.
 - **Moving mail between accounts:** Move To lists every account's folders,
   and mail dragged onto another account's folder goes there too.
 - **Full folder management:** create, rename, move, reorder and delete

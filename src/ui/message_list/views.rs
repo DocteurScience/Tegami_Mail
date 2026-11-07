@@ -11,12 +11,11 @@ use gtk::glib;
 use relm4::prelude::*;
 use std::rc::Rc;
 
-/// What `compute_rows` hands the view: the window's rows, whether they go
-/// under date headings, and whether a conversation is opened out.
+/// What `compute_rows` hands the view: the window's rows and whether they
+/// go under date headings.
 pub(super) struct Built {
     pub(super) rows: Vec<Rc<RowData>>,
     pub(super) by_date: bool,
-    pub(super) any_expanded: bool,
 }
 
 /// A list as a rebuild left it (see `MessageList::keep_view`).
@@ -32,7 +31,6 @@ pub(super) struct ViewSnapshot {
     groups: std::collections::HashMap<(u32, String), Vec<Rc<Message>>>,
     msg_thread: std::collections::HashMap<(u32, u32), (u32, String)>,
     thread_members: std::collections::HashMap<(u32, String), Vec<(u32, u32)>>,
-    nested: std::collections::HashMap<(u32, u32), Rc<Message>>,
     listed_folders: std::collections::HashSet<(u32, u32)>,
     total_matches: usize,
     thread_drag: crate::ui::message_row::ThreadDragKeys,
@@ -126,24 +124,19 @@ impl MessageList {
     fn rows_signature(&self) -> u64 {
         use std::hash::{Hash, Hasher};
         let mut h = std::collections::hash_map::DefaultHasher::new();
-        let mut expanded: Vec<&(u32, String)> = self.expanded_threads.iter().collect();
-        expanded.sort();
         let mut own: Vec<&String> = self.own_addresses.iter().collect();
         own.sort();
         let mut graph: Vec<&u32> = self.graph_accounts.iter().collect();
         graph.sort();
         format!(
-            "{:?}{}{}{}{}{}{:?}{:?}{}{:?}{:?}{:?}{}",
+            "{:?}{}{}{}{:?}{:?}{}{:?}{:?}{}",
             self.sort,
             self.sort_reversed,
             self.threading,
-            self.thread_expansion,
-            self.default_expanded,
             self.group_by_date,
             self.columns,
             self.quick,
             self.thread_row_newest,
-            expanded,
             own,
             graph,
             self.contact_addresses.as_ref().map_or(0, |c| c.len()),
@@ -188,7 +181,6 @@ impl MessageList {
             groups: std::mem::take(&mut self.groups),
             msg_thread: std::mem::take(&mut self.msg_thread),
             thread_members: std::mem::take(&mut self.thread_members),
-            nested: std::mem::take(&mut self.nested),
             listed_folders: std::mem::take(&mut self.listed_folders),
             total_matches: self.total_matches,
             thread_drag: std::mem::take(&mut *self.shared.thread_drag.borrow_mut()),
@@ -251,7 +243,6 @@ impl MessageList {
             std::mem::replace(&mut self.groups, snap.groups),
             std::mem::replace(&mut self.msg_thread, snap.msg_thread),
             std::mem::replace(&mut self.thread_members, snap.thread_members),
-            std::mem::replace(&mut self.nested, snap.nested),
             std::mem::replace(&mut self.tail, snap.tail),
         ));
         self.drop_threads();
@@ -278,14 +269,6 @@ impl MessageList {
             && matches!(self.sort, SortOrder::DateNewest | SortOrder::DateOldest);
         self.show_headings(by_date);
         self.select_current();
-        let any_expanded = self
-            .shared
-            .model
-            .rows()
-            .iter()
-            .chain(&self.tail)
-            .any(|r| r.meta.expanded);
-        self.fit_expanded(any_expanded);
         tracing::debug!(
             "list: kept view shown, {} rows of {}, in {:?}",
             self.shown.len(),

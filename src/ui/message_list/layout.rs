@@ -17,12 +17,6 @@ use std::rc::Rc;
 /// dot (8px), three 8px gaps, and the 234px actions-line reservation.
 pub(super) const LIST_MIN_WIDTH: i32 = 348;
 
-/// What an expanded conversation needs beyond [`LIST_MIN_WIDTH`]: the member
-/// cards' 10px rail indent plus their card margin/padding beyond a plain
-/// pill's. The pane's floor grows by this while any thread is open, so the
-/// cards' (and the head pill's) right inset is never clipped off the pane.
-const THREAD_EXPANDED_EXTRA: i32 = 12;
-
 /// Fire `DayChanged` shortly after the next local midnight (re-armed each time).
 pub(super) fn schedule_midnight_refresh(sender: &ComponentSender<MessageList>) {
     use chrono::Timelike;
@@ -233,7 +227,6 @@ impl MessageList {
             look.in_junk = self.in_junk;
             look.in_drafts = self.in_drafts;
             look.show_recipient = self.show_recipient;
-            look.thread_expansion = self.thread_expansion;
             look.ringed = if self.colorize {
                 self.account_colors.keys().copied().collect()
             } else {
@@ -385,21 +378,6 @@ impl MessageList {
             self.list_view.set_header_factory(factory.as_ref());
         } else if by_date {
             self.shared.refresh_headers();
-        }
-    }
-
-    /// Expanded conversations indent their member cards; give the pane the
-    /// extra floor that needs while any thread is open, so nothing is
-    /// clipped at the right edge (see THREAD_EXPANDED_EXTRA).
-    pub(super) fn fit_expanded(&self, any_expanded: bool) {
-        if let Some(s) = &self.scroller {
-            let floor = LIST_MIN_WIDTH
-                + if any_expanded {
-                    THREAD_EXPANDED_EXTRA
-                } else {
-                    0
-                };
-            s.set_size_request(floor, -1);
         }
     }
 

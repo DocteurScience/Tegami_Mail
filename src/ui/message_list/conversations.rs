@@ -8,7 +8,6 @@ use super::threading::{
 use super::types::{MessageListInput, MessageListOutput};
 use super::MessageList;
 use crate::models::Message;
-use crate::ui::message_row::{RowData, RowMeta};
 use relm4::prelude::*;
 use std::rc::Rc;
 
@@ -95,148 +94,6 @@ impl MessageList {
             d.meta.answered = answered;
             d.meta.forwarded = forwarded;
         });
-    }
-
-    /// Begin collapsing a thread: slide its replies shut (they stay where
-    /// they are in the list — only their own Revealer closes), then drop them
-    /// once that animation has finished. Dropping right away — before the
-    /// replies have shrunk — would just make them disappear outright. (PR #79)
-    pub(super) fn start_collapse_thread(
-        &mut self,
-        key: (u32, String),
-        sender: &ComponentSender<Self>,
-    ) {
-        if let Some(members) = self.thread_members.get(&key).cloned() {
-            // The head survives the toggle (only its replies are removed),
-            // so its own chevron can rotate shut in place, in step with the
-            // replies sliding closed beneath it.
-            if let Some(&head_key) = members.first() {
-                if let Some(idx) = self
-                    .shown
-                    .iter()
-                    .position(|m| (m.account_id, m.id) == head_key)
-                {
-                    self.shared
-                        .model
-                        .update_row(idx, |d| d.meta.expanded = false);
-                }
-            }
-            // `members` is head-first (see `rebuild`); only the replies
-            // beneath it animate closed.
-            for child_key in members.iter().skip(1) {
-                if let Some(idx) = self
-                    .shown
-                    .iter()
-                    .position(|m| (m.account_id, m.id) == *child_key)
-                {
-                    self.shared
-                        .model
-                        .update_row(idx, |d| d.meta.revealed = false);
-                }
-            }
-        }
-        if let Some(old) = self.collapsing_threads.remove(&key) {
-            old.remove();
-        }
-        let s = sender.clone();
-        let timer_key = key.clone();
-        // Matches the Revealer's own transition duration, so the rows are
-        // fully closed by the time they're actually dropped from the list.
-        let timer =
-            gtk::glib::timeout_add_local_once(std::time::Duration::from_millis(200), move || {
-                s.input(MessageListInput::FinishCollapseThread(timer_key));
-            });
-        self.collapsing_threads.insert(key, timer);
-    }
-
-    /// Put a thread's replies in right after its head, without touching any
-    /// other row — the counterpart to `collapse_thread_rows`. Each new row
-    /// slides open the first time it is shown (see `RowMeta::appear`).
-    /// (PR #79)
-    pub(super) fn expand_thread(&mut self, key: &(u32, String)) {
-        let Some(members) = self.thread_members.get(key).cloned() else {
-            return;
-        };
-        let Some(&head_key) = members.first() else {
-            return;
-        };
-        let Some(head_pos) = self
-            .shown
-            .iter()
-            .position(|m| (m.account_id, m.id) == head_key)
-        else {
-            return;
-        };
-        // `members` is already oldest-first (see `rebuild`).
-        let children: Vec<Rc<Message>> = {
-            let source = self.active_source();
-            members
-                .iter()
-                .skip(1)
-                .filter_map(|k| {
-                    source
-                        .iter()
-                        .find(|m| (m.account_id, m.id) == *k)
-                        .or_else(|| self.nested.get(k))
-                        .cloned()
-                })
-                .collect()
-        };
-        if children.is_empty() {
-            return;
-        }
-        // The head survives the toggle (only its replies are put in), so its
-        // own chevron can rotate open in place.
-        self.shared
-            .model
-            .update_row(head_pos, |d| d.meta.expanded = true);
-        let section = self
-            .shared
-            .model
-            .row(head_pos)
-            .map(|r| r.section)
-            .unwrap_or_default();
-        let n = children.len();
-        let rows: Vec<Rc<RowData>> = children
-            .iter()
-            .enumerate()
-            .map(|(i, m)| {
-                Rc::new(RowData {
-                    msg: m.clone(),
-                    meta: RowMeta {
-                        is_child: true,
-                        is_last: i + 1 == n,
-                        revealed: true,
-                        appear: true,
-                        ..Default::default()
-                    },
-                    section,
-                })
-            })
-            .collect();
-        self.shared.model.splice(head_pos + 1, 0, rows);
-        self.shown.splice(head_pos + 1..head_pos + 1, children);
-    }
-
-    /// Drop a thread's reply rows (already slid shut by `start_collapse_thread`)
-    /// without touching any other row — the counterpart to `expand_thread`.
-    /// (PR #79)
-    pub(super) fn collapse_thread_rows(&mut self, key: &(u32, String)) {
-        let Some(members) = self.thread_members.get(key).cloned() else {
-            return;
-        };
-        let mut indices: Vec<usize> = members
-            .iter()
-            .skip(1)
-            .filter_map(|k| self.shown.iter().position(|m| (m.account_id, m.id) == *k))
-            .collect();
-        indices.sort_unstable();
-        // Back to front, so earlier removals don't shift the indices still
-        // to come.
-        for &idx in indices.iter().rev() {
-            self.shown.remove(idx);
-            self.shared.model.splice(idx, 1, Vec::new());
-        }
     }
 
     /// The source changed: its conversations are to be worked out again,
@@ -341,16 +198,7 @@ impl MessageList {
         {
             return Vec::new();
         }
-        let expanded = self.thread_expansion
-            && self
-                .msg_thread
-                .get(&(m.account_id, m.id))
-                .is_some_and(|key| self.expanded_threads.contains(key) != self.default_expanded);
-        if expanded {
-            Vec::new()
-        } else {
-            members
-        }
+        members
     }
 
     /// Every on-screen member of `m`'s conversation (oldest first) — from any
@@ -392,11 +240,6 @@ impl MessageList {
     pub(super) fn conversation_for(&self, m: &Message) -> (Vec<Message>, bool) {
         if !self.threading {
             return (vec![m.clone()], false);
-        }
-        // A part of the conversation from another folder, picked out of the
-        // opened-out row: shown by itself, like any reply picked out (#309).
-        if self.nested.contains_key(&(m.account_id, m.id)) {
-            return (vec![m.clone()], true);
         }
         // Thread within whatever set is on screen (the search pool while searching,
         // otherwise the current folder) so the conversation matches the rows shown.

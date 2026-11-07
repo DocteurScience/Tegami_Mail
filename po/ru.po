@@ -832,10 +832,6 @@ msgstr "Открыть выбранное сообщение"
 msgid "Back to the message list"
 msgstr "Вернуться к списку сообщений"
 
-#, fuzzy
-msgid "Open or fold a conversation in the list"
-msgstr "Всё обсуждение"
-
 msgid "Next message in the conversation"
 msgstr "Следующее сообщение в беседе"
 
@@ -4110,9 +4106,6 @@ msgstr ""
 msgid "me"
 msgstr "я"
 
-msgid "Show conversation"
-msgstr "Показать обсуждение"
-
 msgid "Due"
 msgstr "Срок"
 
@@ -5302,15 +5295,6 @@ msgstr ""
 msgid "Group messages by conversation"
 msgstr "Группировать сообщения по обсуждениям"
 
-msgid "Expandable conversations"
-msgstr "Раскрываемые обсуждения"
-
-msgid "Off, a conversation's messages show only in the reading pane."
-msgstr ""
-
-msgid "Expand conversations by default"
-msgstr "Раскрывать обсуждения по умолчанию"
-
 msgid "Newest message first"
 msgstr "Сначала новые сообщения"
 
@@ -5814,6 +5798,9 @@ msgstr "Маркированный список"
 msgid "Numbered list"
 msgstr "Нумерованный список"
 
+msgid "Insert link"
+msgstr "Вставить ссылку"
+
 msgid "Decrease indent"
 msgstr "Уменьшить отступ"
 
@@ -5822,9 +5809,6 @@ msgstr "Увеличить отступ"
 
 msgid "Quote"
 msgstr "Цитата"
-
-msgid "Insert link"
-msgstr "Вставить ссылку"
 
 msgid "Insert emoji"
 msgstr "Вставить эмодзи"

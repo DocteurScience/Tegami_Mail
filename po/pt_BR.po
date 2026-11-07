@@ -786,10 +786,6 @@ msgstr "Abrir a mensagem selecionada"
 msgid "Back to the message list"
 msgstr "Voltar à lista de mensagens"
 
-#, fuzzy
-msgid "Open or fold a conversation in the list"
-msgstr "Fechar a conversa e voltar à lista"
-
 msgid "Next message in the conversation"
 msgstr "Próxima mensagem na conversa"
 
@@ -3933,9 +3929,6 @@ msgstr "Escopo desta pesquisa"
 msgid "me"
 msgstr "eu"
 
-msgid "Show conversation"
-msgstr "Mostrar conversa"
-
 msgid "Due"
 msgstr "Prazo"
 
@@ -5089,17 +5082,6 @@ msgstr ""
 msgid "Group messages by conversation"
 msgstr "Agrupar mensagens por conversa"
 
-msgid "Expandable conversations"
-msgstr "Conversas expansíveis"
-
-msgid "Off, a conversation's messages show only in the reading pane."
-msgstr ""
-"Desativado, as mensagens de uma conversa aparecem apenas no painel de "
-"leitura."
-
-msgid "Expand conversations by default"
-msgstr "Expandir conversas por padrão"
-
 msgid "Newest message first"
 msgstr "Mensagem mais recente primeiro"
 
@@ -5602,6 +5584,9 @@ msgstr "Lista com marcas"
 msgid "Numbered list"
 msgstr "Lista numerada"
 
+msgid "Insert link"
+msgstr "Inserir link"
+
 msgid "Decrease indent"
 msgstr "Diminuir recuo"
 
@@ -5610,9 +5595,6 @@ msgstr "Aumentar recuo"
 
 msgid "Quote"
 msgstr "Citar"
-
-msgid "Insert link"
-msgstr "Inserir link"
 
 msgid "Insert emoji"
 msgstr "Inserir emoji"

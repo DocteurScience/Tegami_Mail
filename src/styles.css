@@ -935,96 +935,6 @@ flowbox.attach-flow > flowboxchild {
   opacity: 0.7;
 }
 
-.thread-chip:hover {
-  background: alpha(currentColor, 0.18);
-  opacity: 1;
-}
-
-.thread-chip image {
-  -gtk-icon-size: 11px;
-}
-
-/* Expanded conversation members: inset rounded cards hung off a dotted rail,
-   instead of full-width rectangles crossing the list separators (issue #62).
-   The rail is the row's left border (pushed inward by the margin); all the
-   state colors — hover, unread, selected — move off the row and onto the
-   inner .message-row box, so the highlight is a padded pill that never
-   touches the list edges. */
-.message-item.thread-child {
-  margin-left: 10px;
-  /* @window_fg_color, not currentColor: a selected row's currentColor is the
-     white selection foreground, which made the rail vanish under selection. */
-  border-left: 2px dotted alpha(@window_fg_color, 0.3);
-}
-.message-item.thread-child:dir(rtl) {
-  margin-left: 0;
-  margin-right: 10px;
-  border-left: none;
-  border-right: 2px dotted alpha(@window_fg_color, 0.3);
-}
-
-/* The LAST reply: its rail stops at the node dot (row centre) instead of
-   running on below it. The row's own border goes transparent (keeping its
-   2px of geometry) and a half-height in-row widget draws the same dotted
-   border for the top half only (see the rail-stub overlay in the row view). */
-.message-item.thread-child.thread-last {
-  border-left-color: transparent;
-}
-.message-item.thread-child.thread-last:dir(rtl) {
-  border-right-color: transparent;
-}
-
-/* Identical stroke to the sibling rows' rails; the negative margin moves it
-   from the row's content box back onto the border's own axis. */
-.thread-rail-stub {
-  border-left: 2px dotted alpha(@window_fg_color, 0.3);
-  margin-left: -2px;
-}
-.thread-rail-stub:dir(rtl) {
-  border-left: none;
-  margin-left: 0;
-  border-right: 2px dotted alpha(@window_fg_color, 0.3);
-  margin-right: -2px;
-}
-
-/* A reply in an expanded thread is a card like any other, indented 10px
-   further onto the thread rail. The end margin is the list's, so an
-   expanded thread never opens a gap along the pane's edge. */
-.message-item.thread-child .message-row {
-  margin: 0 12px 8px 22px;
-}
-.message-item.thread-child .message-row:dir(rtl) {
-  margin: 0 22px 8px 12px;
-}
-
-/* A reply on one line (#334) keeps the single-line pill's height, indented
-   onto the rail like any reply. */
-.message-item.thread-child .message-row.single-line {
-  margin: 0 12px 4px 22px;
-}
-.message-item.thread-child .message-row.single-line:dir(rtl) {
-  margin: 0 22px 4px 12px;
-}
-
-/* Node dot where each member meets the rail: an 8px circle whose negative
-   margin pulls it out of the row's content box to sit centred on the
-   border-drawn rail line. The window-colored ring masks the rail where it
-   passes behind the dot, so the dot reads as a node punched into the line. */
-.thread-node {
-  min-width: 8px;
-  min-height: 8px;
-  border-radius: 4px;
-  margin-left: -5px;
-  /* Opaque: the same 50% grey, but mixed over the window ground instead of
-     alpha — a translucent dot let the rail line strike through it. */
-  background-color: mix(@window_bg_color, currentColor, 0.5);
-  box-shadow: 0 0 0 2px @window_bg_color;
-}
-.thread-node:dir(rtl) {
-  margin-left: 0;
-  margin-right: -5px;
-}
-
 /* The Actions Palette: quick-action buttons that expand rightward out of the
    ⋯. The whole line floats in an overlay over the pill's bottom-left corner,
    taking no room in the row. Open, the container itself is the card — the ⋯
@@ -1825,15 +1735,6 @@ button.sidebar-heading-button {
 .attachment-drawer-flow flowboxchild:selected {
   background-color: alpha(@accent_bg_color, 0.18);
   border-radius: 10px;
-}
-
-/* The thread chip's caret spins between closed (pointing end) and open
-   (pointing down), same as the folder-tree expander. (PR #79) */
-.thread-toggle-icon {
-  transition: -gtk-icon-transform 200ms ease;
-}
-.thread-toggle-icon.open {
-  -gtk-icon-transform: rotate(90deg);
 }
 
 /* ---- First-run welcome wizard (welcome.rs) ---- */

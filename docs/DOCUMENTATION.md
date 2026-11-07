@@ -1646,7 +1646,7 @@ days** and **Older**, counted in calendar days on this computer's clock. The hea
 show only while the list is sorted by date, newest or oldest first, and move
 on at midnight. A conversation goes under the heading of the message that
 places it in the sort, the newest for newest first and the oldest for oldest
-first, and its replies stay with it when it is opened out. The headings work
+first. The headings work
 in both layouts and in search results, and are not rows: the keyboard,
 selection and swipes pass them by. It is off unless switched on.
 

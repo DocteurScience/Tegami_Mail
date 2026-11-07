@@ -25,26 +25,6 @@ impl MessageList {
         } else {
             keys
         };
-        // The list shows only a thread's head while it is collapsed, so
-        // selecting a reply has to open the thread first — otherwise
-        // there is no row to select and only the head would ever answer.
-        let hidden: Vec<(u32, String)> = keys
-            .iter()
-            .filter(|k| !self.shown.iter().any(|m| (m.account_id, m.id) == **k))
-            .filter_map(|k| self.msg_thread.get(k).cloned())
-            .collect();
-        if !hidden.is_empty() && self.thread_expansion {
-            for thread_key in hidden {
-                // `expanded_threads` records the departure from the
-                // default, so which way to move it depends on that.
-                if self.default_expanded {
-                    self.expanded_threads.remove(&thread_key);
-                } else {
-                    self.expanded_threads.insert(thread_key);
-                }
-            }
-            self.rebuild();
-        }
         // The conversation as the reader shows it: what this list
         // handed over plus what the app merged in from other folders
         // since (#220). Either way it was opened from the viewed row.
@@ -284,10 +264,9 @@ impl MessageList {
     }
 
     pub(super) fn on_select_where(&mut self, filter: CheckFilter, sender: &ComponentSender<Self>) {
-        let is_child = |p: usize| self.shared.model.row(p).is_some_and(|r| r.meta.is_child);
         let picked = gtk::Bitset::new_empty();
         for (pos, m) in self.shown.iter().enumerate() {
-            if !is_child(pos) && filter.matches(&self.conversation_for(m).0) {
+            if filter.matches(&self.conversation_for(m).0) {
                 picked.add(pos as u32);
             }
         }

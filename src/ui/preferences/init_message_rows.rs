@@ -24,10 +24,6 @@ impl Preferences {
             .set_active(init.threading);
         widgets
             .conversations
-            .threads_expanded_row
-            .set_active(init.threads_expanded);
-        widgets
-            .conversations
             .thread_newest_first_row
             .set_active(init.thread_newest_first);
         widgets
@@ -107,10 +103,6 @@ impl Preferences {
             .conversations
             .attachment_drawer_row
             .set_active(init.attachment_drawer);
-        widgets
-            .conversations
-            .thread_expansion_row
-            .set_active(init.thread_expansion);
         widgets
             .conversations
             .thread_row_newest_row

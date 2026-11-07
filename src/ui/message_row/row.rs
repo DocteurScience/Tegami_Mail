@@ -24,8 +24,6 @@ pub(super) struct RowWidgets {
     pub(super) swipe_icon: gtk::Image,
     pub(super) swipe_label: gtk::Label,
     pub(super) overlay: gtk::Overlay,
-    pub(super) rail_stub: gtk::Box,
-    pub(super) node: gtk::Box,
     pub(super) actions_line: gtk::Box,
     pub(super) chevron: gtk::Button,
     pub(super) palette_clip: gtk::Overlay,
@@ -67,9 +65,8 @@ pub(super) struct RowWidgets {
     /// Sent mail's read receipt checkmarks (#520).
     pub(super) receipt: gtk::Image,
     pub(super) date: gtk::Label,
-    pub(super) chip: gtk::Button,
+    pub(super) chip: gtk::Box,
     pub(super) chip_count: gtk::Label,
-    pub(super) chip_caret: gtk::Image,
     pub(super) subject_line: gtk::Box,
     /// The card's line for its pills under the text, when they go there.
     pub(super) pills_line: gtk::Box,
@@ -322,16 +319,6 @@ impl Row {
         self.w
             .palette_clip
             .set_clip_overlay(&self.w.palette_inner, true);
-
-        // The conversation chip.
-        {
-            let toggle = on(|r| {
-                if let Some(key) = r.data().and_then(|d| d.meta.key.clone()) {
-                    r.send(MessageListInput::ToggleThread(key));
-                }
-            });
-            self.w.chip.connect_clicked(move |_| toggle());
-        }
 
         self.wire_swipe();
     }

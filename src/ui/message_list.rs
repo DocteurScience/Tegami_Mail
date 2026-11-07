@@ -226,11 +226,6 @@ pub(crate) struct MessageList {
     /// Updated only by the user's own selection movement — the programmatic
     /// post-delete advance keeps its index and never flips it.
     nav_direction: i32,
-    /// Conversation keys the user has toggled away from the default state
-    /// (expanded when the default is collapsed, and vice versa).
-    expanded_threads: std::collections::HashSet<(u32, String)>,
-    /// Whether conversations start expanded (user preference; collapsed default).
-    default_expanded: bool,
     /// The open folder is Sent: rows name recipients instead of senders (#27).
     show_recipient: bool,
     /// The list shows Trash or Junk, where menus offer "Move to Inbox" (#138).
@@ -250,12 +245,6 @@ pub(crate) struct MessageList {
     msg_thread: std::collections::HashMap<(u32, u32), (u32, String)>,
     /// Conversation key → member message keys (multi-message threads only).
     thread_members: std::collections::HashMap<(u32, String), Vec<(u32, u32)>>,
-    /// Members of the conversations on the list that live in other folders
-    /// (your replies in Sent, the archived parts), by message key: rows a
-    /// conversation opens out into without being part of this folder (#309).
-    /// Whole-conversation actions look members up in the folder's own index,
-    /// so they never reach these.
-    nested: std::collections::HashMap<(u32, u32), Rc<Message>>,
     /// Whether the folder's background index is fully loaded. When false, more
     /// rows may still stream in, so reaching the bottom shows a spinner.
     index_complete: bool,
@@ -277,10 +266,6 @@ pub(crate) struct MessageList {
     /// worked out from; and the generation a job is running for.
     threads_gen: std::cell::Cell<u64>,
     threads_job: std::cell::Cell<Option<u64>>,
-    /// Threads whose replies are sliding shut. The rows stay in the list until
-    /// the paired timer fires and drops them — otherwise they'd simply vanish
-    /// rather than animate away. (PR #79)
-    collapsing_threads: std::collections::HashMap<(u32, String), gtk::glib::SourceId>,
     /// The list's scroller.
     scroller: Option<gtk::ScrolledWindow>,
     /// Current sort order for the list.
@@ -293,10 +278,6 @@ pub(crate) struct MessageList {
     last_count: String,
     /// Group messages into conversation threads (user preference).
     threading: bool,
-    /// Whether a conversation row may expand into its member rows. Off: the
-    /// row keeps its count chip and chevron, but never opens — the thread is
-    /// read through the reader's cards instead.
-    thread_expansion: bool,
     /// Whether rows carry the actions palette line at all (preference).
     list_palette: bool,
     /// One line per message (#334): set by the Layout setting, or by the

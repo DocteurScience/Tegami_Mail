@@ -95,24 +95,15 @@ pub(super) fn build_widgets() -> RowWidgets {
     date.set_ellipsize(gtk::pango::EllipsizeMode::End);
     date.add_css_class("message-date");
     top.append(&date);
-    // The conversation chip (thread heads only): the count and the
-    // expand/collapse caret merged into one grey pill.
-    let chip = gtk::Button::new();
-    chip.set_tooltip_text(Some(i18n("Show conversation").as_str()));
-    chip.add_css_class("flat");
+    // The conversation's size (thread heads only), a grey pill: a count,
+    // not a control. The conversation opens in the reader, never in the
+    // list (owner's decision, 2026-11-07).
+    let chip = gtk::Box::new(gtk::Orientation::Horizontal, 0);
     chip.add_css_class("thread-chip");
     chip.set_valign(gtk::Align::Center);
-    let chip_box = gtk::Box::new(gtk::Orientation::Horizontal, 2);
-    // Centred: with the caret hidden the bare count must not sit against
-    // the chip's left edge.
-    chip_box.set_halign(gtk::Align::Center);
     let chip_count = gtk::Label::new(None);
-    chip_box.append(&chip_count);
-    // One caret; the "open" class rotates it via a CSS transition. (PR #79)
-    let chip_caret = gtk::Image::from_icon_name("pan-end-symbolic");
-    chip_caret.add_css_class("thread-toggle-icon");
-    chip_box.append(&chip_caret);
-    chip.set_child(Some(&chip_box));
+    chip_count.set_hexpand(true);
+    chip.append(&chip_count);
     top.append(&chip);
     text.append(&top);
 
@@ -198,25 +189,6 @@ pub(super) fn build_widgets() -> RowWidgets {
     importance.set_visible(false);
     line.append(&importance);
 
-    // The last reply's rail: a real dotted border on a widget spanning
-    // exactly the row's top half, so it ends at the node dot. Added before
-    // the node so the dot draws over where they meet.
-    let rail_stub = gtk::Box::new(gtk::Orientation::Vertical, 0);
-    rail_stub.set_halign(gtk::Align::Start);
-    rail_stub.set_homogeneous(true);
-    let stub = gtk::Box::new(gtk::Orientation::Horizontal, 0);
-    stub.add_css_class("thread-rail-stub");
-    rail_stub.append(&stub);
-    rail_stub.append(&gtk::Box::new(gtk::Orientation::Horizontal, 0));
-    overlay.add_overlay(&rail_stub);
-
-    // The node dot where a reply meets the conversation's rail.
-    let node = gtk::Box::new(gtk::Orientation::Horizontal, 0);
-    node.add_css_class("thread-node");
-    node.set_halign(gtk::Align::Start);
-    node.set_valign(gtk::Align::Center);
-    overlay.add_overlay(&node);
-
     // The actions palette floats over the pill's bottom-left corner, opening
     // rightward from the ⋯ (#81). The holder has a FIXED width: overlay
     // children are re-allocated lazily, so one that grew with the slide
@@ -265,8 +237,6 @@ pub(super) fn build_widgets() -> RowWidgets {
         swipe_icon,
         swipe_label,
         overlay,
-        rail_stub,
-        node,
         actions_line,
         chevron,
         palette_clip,
@@ -301,7 +271,6 @@ pub(super) fn build_widgets() -> RowWidgets {
         date,
         chip,
         chip_count,
-        chip_caret,
         subject_line,
         pills_line,
         subject,

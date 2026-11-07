@@ -63,9 +63,6 @@ pub(crate) enum MessageListInput {
     },
     SetLoading,
     SetThreading(bool),
-    /// Whether conversation rows may expand into their members in the list
-    /// (the row keeps its chip and chevron either way).
-    SetThreadExpansion(bool),
     /// Whether rows carry the actions palette line at all.
     SetListPalette(bool),
     /// Resolve what deleting the current selection means: a lone selected row
@@ -130,8 +127,6 @@ pub(crate) enum MessageListInput {
     /// The addresses you send from, for leaving your own replies out of a
     /// conversation's nested rows (#388).
     SetOwnAddresses(std::collections::HashSet<String>),
-    /// Whether conversations start expanded (true) or collapsed (false).
-    SetThreadsExpanded(bool),
     SetGravatar(bool),
     /// The GNOME Contacts photo index changed (EDS sync, or the first load
     /// finished) — refresh visible circles without losing the scroll position.
@@ -299,18 +294,6 @@ pub(crate) enum MessageListInput {
     },
     /// Showcase only (TEGAMI_SHOWCASE_ROW_MENU): the first row's menu.
     DebugRowMenu,
-    /// Expand/collapse a conversation thread.
-    ToggleThread((u32, String)),
-    /// Right or Left on a conversation in the list (#540): open it out or
-    /// fold it. `head` is where its row is when the key was pressed on one
-    /// of its replies, which go with the fold, so the keyboard moves there.
-    FoldByKey {
-        key: (u32, String),
-        head: Option<usize>,
-    },
-    /// A collapsing thread's replies have finished sliding shut — drop them
-    /// from the list for real (see `start_collapse_thread`).
-    FinishCollapseThread((u32, String)),
     /// Change the list sort order.
     SetSort(SortOrder),
     /// A message was read. Messages are named by their slot (account,

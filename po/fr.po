@@ -771,9 +771,6 @@ msgstr "Ouvrir le message sélectionné"
 msgid "Back to the message list"
 msgstr "Retour à la liste des messages"
 
-msgid "Open or fold a conversation in the list"
-msgstr "Ouvrir ou replier une conversation dans la liste"
-
 msgid "Next message in the conversation"
 msgstr "Message suivant dans la conversation"
 
@@ -3904,9 +3901,6 @@ msgstr "Ce qui est recherché"
 msgid "me"
 msgstr "moi"
 
-msgid "Show conversation"
-msgstr "Afficher la conversation"
-
 msgid "Due"
 msgstr "Échéance"
 
@@ -5040,17 +5034,6 @@ msgstr ""
 msgid "Group messages by conversation"
 msgstr "Grouper les messages par conversation"
 
-msgid "Expandable conversations"
-msgstr "Conversations à développer"
-
-msgid "Off, a conversation's messages show only in the reading pane."
-msgstr ""
-"Désactivé, les messages d’une conversation ne s’affichent que dans le volet "
-"de lecture."
-
-msgid "Expand conversations by default"
-msgstr "Déplier les conversations par défaut"
-
 msgid "Newest message first"
 msgstr "Message le plus récent en premier"
 
@@ -5548,6 +5531,9 @@ msgstr "Liste à puces"
 msgid "Numbered list"
 msgstr "Liste numérotée"
 
+msgid "Insert link"
+msgstr "Insérer un lien"
+
 msgid "Decrease indent"
 msgstr "Diminuer le retrait"
 
@@ -5556,9 +5542,6 @@ msgstr "Augmenter le retrait"
 
 msgid "Quote"
 msgstr "Citation"
-
-msgid "Insert link"
-msgstr "Insérer un lien"
 
 msgid "Insert emoji"
 msgstr "Insérer un émoji"

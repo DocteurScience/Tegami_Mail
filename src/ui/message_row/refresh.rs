@@ -50,21 +50,11 @@ impl Row {
                 .set_reveal_child(meta.revealed && !st.swipe_committing && !meta.appear);
         }
 
-        // The thread rail and node.
-        w.rail_stub.set_visible(meta.is_last);
-        w.node.set_visible(meta.is_child);
-
         // The actions line: centred under the avatar with circles on (circle
-        // centre minus half the button, plus a reply card's 10px indent),
-        // hugging the pill's edge without.
+        // centre minus half the button), hugging the pill's edge without.
         w.actions_line.set_visible(look.show_palette);
         w.actions_line
-            .set_margin_start(match (look.avatars, meta.is_child) {
-                (true, true) => 32,
-                (true, false) => 22,
-                (false, true) => 20,
-                (false, false) => 10,
-            });
+            .set_margin_start(if look.avatars { 22 } else { 10 });
         w.actions_line
             .set_margin_bottom(if look.avatars { 3 } else { 4 });
         self.sync_palette_classes();
@@ -256,13 +246,6 @@ impl Row {
             .set_tooltip_text(mark.as_ref().map(|m| m.tooltip.as_str()));
         w.chip.set_visible(meta.count > 1);
         w.chip_count.set_label(&meta.count.to_string());
-        w.chip_caret
-            .set_visible(look.thread_expansion && meta.expandable);
-        w.chip_caret.set_css_classes(if meta.expanded {
-            &["thread-toggle-icon", "open"]
-        } else {
-            &["thread-toggle-icon"]
-        });
     }
 
     /// The subject (with its text on one line) and where the tag pills sit.
@@ -458,12 +441,6 @@ impl Row {
         }
         if data.meta.unread {
             v.push("thread-unread");
-        }
-        if data.meta.is_child {
-            v.push("thread-child");
-        }
-        if data.meta.is_last {
-            v.push("thread-last");
         }
         if st.swipe_active {
             v.push("swiping");

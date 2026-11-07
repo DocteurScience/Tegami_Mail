@@ -117,46 +117,16 @@ impl MessageList {
         }
     }
 
-    /// The row `delta` conversations away from `from`, clamped to the list:
-    /// the replies of a conversation opened out in the list are stepped
-    /// over, as Gmail's j and k move between conversations (#392). From no
-    /// row, the first step lands on the top or the bottom one.
+    /// The row `delta` conversations away from `from`, clamped to the list,
+    /// as Gmail's j and k move between conversations (#392): every row is
+    /// one. From no row, the first step lands on the top or the bottom one.
     pub(super) fn conversation_step(&self, from: Option<usize>, delta: i32) -> usize {
-        let last = self.shown.len().saturating_sub(1);
-        let is_child = |p: usize| self.shared.model.row(p).is_some_and(|r| r.meta.is_child);
-        let Some(mut pos) = from.filter(|&p| p <= last) else {
-            let mut p = if delta > 0 { 0 } else { last };
-            while p > 0 && is_child(p) {
-                p -= 1;
-            }
-            return p;
-        };
-        for _ in 0..delta.unsigned_abs() {
-            let mut p = pos;
-            loop {
-                if delta > 0 {
-                    if p == last {
-                        break;
-                    }
-                    p += 1;
-                } else {
-                    if p == 0 {
-                        break;
-                    }
-                    p -= 1;
-                }
-                if !is_child(p) {
-                    break;
-                }
-            }
-            if is_child(p) {
-                // Only replies past here: stay on the conversation already
-                // reached.
-                break;
-            }
-            pos = p;
+        let last = self.shown.len().saturating_sub(1) as i64;
+        match from.filter(|&p| p as i64 <= last) {
+            None if delta > 0 => 0,
+            None => last as usize,
+            Some(pos) => (pos as i64 + i64::from(delta)).clamp(0, last) as usize,
         }
-        pos
     }
 
     /// Where deletion advances to, once the row at `idx` is gone: the row now

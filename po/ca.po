@@ -779,10 +779,6 @@ msgstr "Obre el missatge seleccionat"
 msgid "Back to the message list"
 msgstr "Torna a la llista de missatges"
 
-#, fuzzy
-msgid "Open or fold a conversation in the list"
-msgstr "Tanca la conversa i torna a la llista"
-
 msgid "Next message in the conversation"
 msgstr "Missatge següent de la conversa"
 
@@ -3930,9 +3926,6 @@ msgstr "Què cerca això"
 msgid "me"
 msgstr "jo"
 
-msgid "Show conversation"
-msgstr "Mostra la conversa"
-
 msgid "Due"
 msgstr "Venciment"
 
@@ -5087,17 +5080,6 @@ msgstr ""
 msgid "Group messages by conversation"
 msgstr "Agrupa els missatges per conversa"
 
-msgid "Expandable conversations"
-msgstr "Converses expandibles"
-
-msgid "Off, a conversation's messages show only in the reading pane."
-msgstr ""
-"Desactivat, els missatges d'una conversa només es mostren al panell de "
-"lectura."
-
-msgid "Expand conversations by default"
-msgstr "Expandeix les converses per defecte"
-
 msgid "Newest message first"
 msgstr "Missatge més nou primer"
 
@@ -5597,6 +5579,9 @@ msgstr "Llista amb pics"
 msgid "Numbered list"
 msgstr "Llista numerada"
 
+msgid "Insert link"
+msgstr "Insereix un enllaç"
+
 msgid "Decrease indent"
 msgstr "Redueix la sagnia"
 
@@ -5605,9 +5590,6 @@ msgstr "Augmenta la sagnia"
 
 msgid "Quote"
 msgstr "Cita"
-
-msgid "Insert link"
-msgstr "Insereix un enllaç"
 
 msgid "Insert emoji"
 msgstr "Insereix un emoji"

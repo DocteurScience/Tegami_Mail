@@ -829,10 +829,6 @@ msgstr "Otwórz zaznaczoną wiadomość"
 msgid "Back to the message list"
 msgstr "Powrót do listy wiadomości"
 
-#, fuzzy
-msgid "Open or fold a conversation in the list"
-msgstr "Cała rozmowa"
-
 msgid "Next message in the conversation"
 msgstr "Następna wiadomość w rozmowie"
 
@@ -4139,9 +4135,6 @@ msgstr ""
 msgid "me"
 msgstr "Nazwa"
 
-msgid "Show conversation"
-msgstr "Wyświetl rozmowę"
-
 msgid "Due"
 msgstr ""
 
@@ -5358,15 +5351,6 @@ msgstr ""
 msgid "Group messages by conversation"
 msgstr "Grupowanie wiadomości w rozmowy"
 
-msgid "Expandable conversations"
-msgstr "Rozwijane rozmowy"
-
-msgid "Off, a conversation's messages show only in the reading pane."
-msgstr ""
-
-msgid "Expand conversations by default"
-msgstr "Domyślne rozwijanie rozmów"
-
 msgid "Newest message first"
 msgstr "Najnowsza wiadomość na początku"
 
@@ -5874,6 +5858,9 @@ msgstr "Lista wypunktowana"
 msgid "Numbered list"
 msgstr "Lista numerowana"
 
+msgid "Insert link"
+msgstr "Wstaw odnośnik"
+
 msgid "Decrease indent"
 msgstr ""
 
@@ -5882,9 +5869,6 @@ msgstr ""
 
 msgid "Quote"
 msgstr "Cytat"
-
-msgid "Insert link"
-msgstr "Wstaw odnośnik"
 
 #, fuzzy
 msgid "Insert emoji"

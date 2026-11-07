@@ -807,10 +807,6 @@ msgstr "Kijelölt üzenet megnyitása"
 msgid "Back to the message list"
 msgstr "Vissza az üzenetlistához"
 
-#, fuzzy
-msgid "Open or fold a conversation in the list"
-msgstr "A teljes beszélgetés"
-
 msgid "Next message in the conversation"
 msgstr "A beszélgetés következő üzenete"
 
@@ -4091,9 +4087,6 @@ msgstr ""
 msgid "me"
 msgstr "Név"
 
-msgid "Show conversation"
-msgstr "Beszélgetés megjelenítése"
-
 msgid "Due"
 msgstr ""
 
@@ -5298,15 +5291,6 @@ msgstr ""
 msgid "Group messages by conversation"
 msgstr "Üzenetek csoportosítása beszélgetés szerint"
 
-msgid "Expandable conversations"
-msgstr "Kibontható beszélgetések"
-
-msgid "Off, a conversation's messages show only in the reading pane."
-msgstr ""
-
-msgid "Expand conversations by default"
-msgstr "Beszélgetések kibontása alapértelmezés szerint"
-
 msgid "Newest message first"
 msgstr "Legújabb üzenet elöl"
 
@@ -5817,6 +5801,9 @@ msgstr "Felsorolás"
 msgid "Numbered list"
 msgstr "Számozott lista"
 
+msgid "Insert link"
+msgstr "Hivatkozás beszúrása"
+
 msgid "Decrease indent"
 msgstr ""
 
@@ -5825,9 +5812,6 @@ msgstr ""
 
 msgid "Quote"
 msgstr "Idézet"
-
-msgid "Insert link"
-msgstr "Hivatkozás beszúrása"
 
 #, fuzzy
 msgid "Insert emoji"

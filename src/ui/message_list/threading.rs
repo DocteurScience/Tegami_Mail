@@ -90,36 +90,6 @@ pub(super) fn heads_its_row(
     }
 }
 
-/// Which of a conversation's `found` members, from anywhere in the account,
-/// a row nests under the folder's `own` (#309): not the ones in a folder on
-/// the list, which are rows of their own, nor a copy of mail already there
-/// (Gmail files one message under every label it has), and only those the
-/// list's filters let through. A message with no Message-ID cannot be told
-/// apart from its copies, so it is left out.
-pub(super) fn nested_members<M: std::borrow::Borrow<Message>>(
-    found: &[Message],
-    own: &[M],
-    listed_folders: &std::collections::HashSet<(u32, u32)>,
-    passes: &impl Fn(&Message) -> bool,
-) -> Vec<Message> {
-    let mut out: Vec<Message> = Vec::new();
-    for m in found {
-        if m.message_id.is_empty()
-            || listed_folders.contains(&(m.account_id, m.folder_id))
-            || !passes(m)
-            || own
-                .iter()
-                .map(|o| o.borrow())
-                .chain(&out)
-                .any(|o| o.message_id == m.message_id)
-        {
-            continue;
-        }
-        out.push(m.clone());
-    }
-    out
-}
-
 /// The message a conversation's row should speak for when it is not one this
 /// folder holds: the cache's newest member, if it is later than anything on
 /// screen (#236).

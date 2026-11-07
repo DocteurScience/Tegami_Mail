@@ -127,12 +127,7 @@ impl MessageList {
     }
 
     pub(super) fn on_set_own_addresses(&mut self, addresses: std::collections::HashSet<String>) {
-        if self.own_addresses != addresses {
-            self.own_addresses = addresses;
-            if self.threading && self.thread_expansion && !self.thread_row_newest {
-                self.queue_rebuild(true);
-            }
-        }
+        self.own_addresses = addresses;
     }
 
     pub(super) fn on_set_threading(&mut self, on: bool) {
@@ -141,61 +136,5 @@ impl MessageList {
             self.rebuild();
             self.scroll_top();
         }
-    }
-
-    pub(super) fn on_set_thread_expansion(&mut self, on: bool) {
-        if self.thread_expansion != on {
-            self.thread_expansion = on;
-            // Turning expansion off folds every open thread (the
-            // `expanded` computation ignores the stored toggles while
-            // off); turning it on restores them.
-            self.sync_look();
-            self.rebuild();
-        }
-    }
-
-    pub(super) fn on_set_threads_expanded(&mut self, on: bool) {
-        if self.default_expanded != on {
-            self.default_expanded = on;
-            // Per-thread toggles were exceptions to the old default;
-            // drop them so everything follows the new one.
-            self.expanded_threads.clear();
-            self.rebuild();
-            self.scroll_top();
-        }
-    }
-
-    pub(super) fn on_toggle_thread(&mut self, key: (u32, String), sender: &ComponentSender<Self>) {
-        // Expansion disabled: the chevron stays but does nothing — the
-        // conversation is read through the reader's cards.
-        if !self.thread_expansion {
-            return;
-        }
-        let was_expanded = self.expanded_threads.contains(&key) != self.default_expanded;
-        if was_expanded {
-            // Slide the replies shut in place; the list only drops
-            // them once that animation has actually finished (see
-            // `start_collapse_thread`) — dropping them right away
-            // would just make them vanish instead of collapsing.
-            self.start_collapse_thread(key, sender);
-        } else {
-            if !self.expanded_threads.remove(&key) {
-                self.expanded_threads.insert(key.clone());
-            }
-            // Insert just this thread's replies rather than rebuilding
-            // the whole list — on a long list a full rebuild tears
-            // down and recreates every row (up to RENDER_CAP), which
-            // stutters right as the reveal animation is trying to run.
-            self.expand_thread(&key);
-        }
-    }
-
-    pub(super) fn on_finish_collapse_thread(&mut self, key: (u32, String)) {
-        self.collapsing_threads.remove(&key);
-        if !self.expanded_threads.remove(&key) {
-            self.expanded_threads.insert(key.clone());
-        }
-        // Same reasoning as `expand_thread`: drop just these rows.
-        self.collapse_thread_rows(&key);
     }
 }
