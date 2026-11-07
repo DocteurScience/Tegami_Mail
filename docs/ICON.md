@@ -61,6 +61,22 @@ An earlier crane-and-envelope and several coloured, folded-paper envelopes
 look. A folded top-right corner was tried and removed (too busy). Keep the
 icon simple: do not add detail that disappears at 32 px.
 
+## Status (2026-11-07)
+
+- Checked with librsvg 2.61 (`rsvg-convert`, the renderer
+  `tools/gen-app-icons.py` uses): the clip path, the mask, the gradients and
+  both blurs draw as intended at 512, 256, 64 and 32 px. The only visible
+  difference with the Chromium exports is the pine, a little crisper:
+  librsvg applies the 0.45 blur at its true scale. Nothing needed
+  simplifying.
+- `data/icons/src/default.svg` is now `tegami-mail.svg`, and
+  `default.Devel.svg` adds GNOME's development stripe (yellow and dark
+  diagonal bands) across the foot of the envelope. `hicolor/` is
+  regenerated; the app embeds the 512 px PNG, so the build uses the new icon
+  with no other change. `data/repo/logo.png` is no longer tracked (nothing
+  links it since the Hylki files were removed); the script still writes it.
+- The symbolic icon already is the envelope outline with the V flap.
+
 ## To do before it ships
 
 The SVG was checked in Chromium only. GNOME renders icons with librsvg, so
@@ -70,12 +86,10 @@ first make sure it draws the same there.
    file uses `clipPath`, `mask`, linear gradients and `feGaussianBlur`.
    If any of them renders wrongly, replace it with something librsvg draws
    correctly (for the mist: a gradient instead of a blur) and keep the look.
-2. Replace `data/icons/src/default.svg` with `tegami-mail.svg`, and rebuild
-   `default.Devel.svg` (the beta) from it with GNOME's development stripe, as
-   the current pair does. Then run `tools/gen-app-icons.py` to regenerate
-   `hicolor/` (512, 256, scalable) and `data/repo/logo.png`.
+2. Done: see Status above.
 3. The gallery of alternative icons (`classic`, `square`, `square-dark`,
-   `square-yellow`, in `data/icons/alt/`) is made of Hylki's envelopes.
+   `square-yellow`, in `data/icons/alt/`) holds the temporary envelopes
+   that replaced Hylki's (commit a6bba70), not Hylki's own.
    Ask the owner whether to keep it, replace it or drop it. Do not remove it
    without his agreement.
 4. Draw the symbolic (16 px, single colour) icon:

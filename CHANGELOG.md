@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- **Changed: the application icon** (docs/ICON.md): a paper envelope drawn
+  in ink wash, with misty mountains, a pine and a red seal. The beta build
+  wears GNOME's development stripe across its foot.
+
 - **Changed: Settings → Tags as mockup 09 draws it.** Each tag shows its
   colour, how many messages carry it and the colour's name, with Edit and
   Remove buttons; **New tag…** ends the list, and **Import tags from the
