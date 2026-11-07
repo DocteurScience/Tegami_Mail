@@ -733,14 +733,15 @@ flowbox.attach-flow > flowboxchild {
 }
 
 /* Selected, as mockup 01 draws it: a 2 px outline in the system accent
-   (the 1 px border and a 1 px ring) on a ground tinted with 10 % of the
-   accent. The text keeps its own colours, so contrast stays near the card's
+   (the 1 px border and a 1 px ring inside it) on a ground tinted with 10 %
+   of the accent. The ring is inset: drawn outside, it fell beyond the
+   card's top edge, which has no margin, and was clipped there. The text keeps its own colours, so contrast stays near the card's
    and is never white-on-accent, which fails 4.5:1 on the blue, teal and
    green accents; the outline, not the tint, carries the state. */
 .message-list > row:selected > .message-item:not(.swiping) .message-row {
   background-color: mix(@card_bg_color, @accent_bg_color, 0.1);
   border-color: @accent_bg_color;
-  box-shadow: 0 0 0 1px @accent_bg_color;
+  box-shadow: inset 0 0 0 1px @accent_bg_color;
 }
 
 /* When something other than the list holds the keyboard (the composer, a
@@ -755,10 +756,12 @@ flowbox.attach-flow > flowboxchild {
 
 /* Gmail's j/k cursor (#392): the list sets it for j and k and takes it off
    at a click, so a click never draws it. Dashed, because a solid accent line
-   is already the selection and the two must not be confused. */
+   is already the selection and the two must not be confused. Inside the
+   card, clear of the selection's 2 px: outside, the card's top edge (no
+   margin) clipped it. */
 .message-list:focus-within > row > .message-item.kbd-cursor:not(.swiping) .message-row {
   outline: 2px dashed @accent_color;
-  outline-offset: 2px;
+  outline-offset: -6px;
 }
 
 /* High contrast is app/theme.rs's HIGH_CONTRAST_CSS. */
