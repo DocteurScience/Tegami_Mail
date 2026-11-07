@@ -110,7 +110,8 @@ pub(crate) const HIGH_CONTRAST_CSS: &str = "\
   --accent-fg-color: var(--window-bg-color); }\
 .message-row { border-color: @window_fg_color; }\
 .message-list > row:selected > .message-item:not(.swiping) .message-row {\
-  border-color: @window_fg_color; box-shadow: 0 0 0 2px @window_fg_color; }\
+  background-color: @card_bg_color; border-color: @window_fg_color;\
+  box-shadow: 0 0 0 2px @window_fg_color; }\
 .navigation-sidebar > row:selected, .navigation-sidebar > row:selected:hover {\
   background-color: @window_fg_color; color: @window_bg_color; }\
 toggle-group > toggle:checked { background-color: @window_fg_color; color: @window_bg_color; }\

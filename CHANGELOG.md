@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+- **Changed: the selected card in the message list is drawn as in mockup
+  01**: a 2 px outline in the system accent on a ground tinted with the
+  accent. When the keyboard is elsewhere (the composer, the search entry),
+  the outline thins to 1 px and keeps its colour, where it used to turn
+  grey (#274).
+
 - **Removed: opening conversations out in the message list.** A
   conversation is one card in the list and opens in the reading pane, as
   the redesign draws it. Gone with it: **Settings → Conversations →
@@ -82,10 +88,10 @@
   keyboard too.** Reached with Tab, they took the focus while staying
   invisible; they only appeared under the pointer.
 
-- **Changed: a lone message is flat on a new install** (mockups 01 and
-  10), the reader's ground under it rather than a card. **Settings →
-  Reading → single messages as cards** still brings the card back, and an
-  install that has the setting keeps it.
+- **Unchanged: a lone message stays in a card on a new install**, like
+  every message of a conversation; the flat page tried for a few days is
+  back to being the choice of **Settings → Reading → single messages as
+  cards**, and an install that has the setting keeps it.
 
 - **Changed: files in the composer as the redesign draws them** (mockups 11
   and 12): attached files are cards with a border, the name in bold; files

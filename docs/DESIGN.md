@@ -105,8 +105,9 @@ One card per message or conversation, in a `GtkListView`.
 - Tags as chips below the preview: two at most, then a `+n` chip.
 - A conversation shows the participants' names, a messages icon with the
   count, and the same card layout.
-- The selected card has a 2 px outline in the accent colour. Under high
-  contrast, a 3 px black outline.
+- The selected card has a 2 px outline in the accent colour on a ground
+  tinted with 10 % of the accent (mockup 01). Under high contrast, a 3 px
+  black outline on the card's own ground.
 - The unread state is carried by bold text and the dot, not by colour.
 
 Custom CSS for this view is limited to the card (radius 12 px, 1 px border,
@@ -124,8 +125,9 @@ the installed libadwaita:
   margin: 0 12px 8px 12px;
 }
 
-/* Selected: an outline in the system accent, not a different fill. */
+/* Selected: an outline in the system accent on a lightly tinted ground. */
 .message-card:selected {
+  background-color: mix(@card_bg_color, @accent_bg_color, 0.1);
   box-shadow: 0 0 0 2px @accent_bg_color;
 }
 

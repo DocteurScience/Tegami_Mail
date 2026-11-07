@@ -536,12 +536,12 @@ fn default_fetch_interval() -> u64 {
 }
 
 fn default_single_message_card() -> bool {
-    // Off for new installs: a lone message sits flat on the reader's
-    // ground, as the redesign draws it (mockups 01 and 10; owner's
-    // decision, 2026-11-03). Only a privacy.toml MISSING this key sees the
-    // default — every save writes all fields, so an existing install's
-    // choice is pinned.
-    false
+    // On: a lone message sits in a card like every message of a
+    // conversation, so the reader looks the same whatever it opens (owner's
+    // decision, 2026-11-07, reversing the flat default of 2026-11-03). Only
+    // a privacy.toml MISSING this key sees the default — every save writes
+    // all fields, so an existing install's choice is pinned.
+    true
 }
 
 fn default_palette_collapse() -> u64 {

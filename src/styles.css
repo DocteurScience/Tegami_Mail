@@ -732,22 +732,25 @@ flowbox.attach-flow > flowboxchild {
   border-color: alpha(currentColor, 0.32);
 }
 
-/* Selected: an outline in the system accent, not a different fill. The text
-   keeps its own colours, so contrast is the card's (12.6:1) and not
-   white-on-accent, which fails 4.5:1 on the blue, teal and green accents. */
+/* Selected, as mockup 01 draws it: a 2 px outline in the system accent
+   (the 1 px border and a 1 px ring) on a ground tinted with 10 % of the
+   accent. The text keeps its own colours, so contrast stays near the card's
+   and is never white-on-accent, which fails 4.5:1 on the blue, teal and
+   green accents; the outline, not the tint, carries the state. */
 .message-list > row:selected > .message-item:not(.swiping) .message-row {
+  background-color: mix(@card_bg_color, @accent_bg_color, 0.1);
   border-color: @accent_bg_color;
   box-shadow: 0 0 0 1px @accent_bg_color;
 }
 
 /* When something other than the list holds the keyboard (the composer, a
-   search entry, focus lost in a rebuild), the outline turns from the accent
-   to the text colour, as a sidebar's selection does, so it is plain that
-   the list's keys will not reach it (#274). An inactive window keeps the
-   accent: focus is not lost there, the window is only behind another. */
+   search entry, focus lost in a rebuild), the ring drops and the outline
+   thins to the 1 px border, so it is plain that the list's keys will not
+   reach it (#274); the selection keeps its colour, which a grey outline
+   lost. An inactive window keeps the full outline: focus is not lost
+   there, the window is only behind another. */
 .message-list:not(:focus-within):not(:backdrop) > row:selected > .message-item:not(.swiping) .message-row {
-  border-color: alpha(@window_fg_color, 0.55);
-  box-shadow: 0 0 0 1px alpha(@window_fg_color, 0.55);
+  box-shadow: none;
 }
 
 /* Gmail's j/k cursor (#392): the list sets it for j and k and takes it off

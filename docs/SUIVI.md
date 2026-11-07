@@ -98,6 +98,8 @@ Dernière mise à jour : 2026-11-02, après `40a6c7e`.
 | `2b3839e` … `6d1b973` | Retour de design du 2026-11-04 (Claude design). P1 : compte en texte neutre seulement si la vue mêle des comptes, étiquettes de la conversation sous le titre ; grand texte (le lecteur suivait déjà, la capture était fausse ; lignes repliées sur une ligne) ; contraste élevé par fournisseur CSS suivant libadwaita ; compteurs de la barre latérale en texte ; menus sans icônes, coche pour les choix. P2 : la barre agit sur le dernier message, contour seulement pour une carte choisie, chevrons ; ligne « À : moi · 9 oct., 06:53 » ; icônes B/I/U/S et lien, boutons texte en graisse normale ; zones de dépôt en couleur d'accent de fond ; Répondre en icône seule en mode compact. P3 : « Ajouter aux favoris » ; historique du composeur sur toute la largeur. Décisions du propriétaire (2026-11-04) : compte en texte neutre multi-comptes ; bureau seulement (pas de mise en page téléphone) ; ligne À : maintenant ; plus d'icônes dans les menus. P2-3 tranché ensuite (option D) : Étiquettes au-dessus des comptes par défaut, compteurs de non-lus par étiquette |
 | (flatpak.yml) | Workflow Flatpak à la demande ; premier bundle construit le 2026-11-04 (run 41892816974, 21,8 Mo). Snap de la même version : run 41862330599 |
 | `ea980a2`, `1b5901a` | Snap : slot D-Bus pour le nom de l'application (AppArmor refusait le lancement) ; run 42397087858 vert, à vérifier par le propriétaire. Workflow AppImage à la demande ; premier bundle le 2026-11-07 (run 42397467139, 126 Mo) |
+| `faf4529` | Développement des conversations dans la liste supprimé (réglages, lignes imbriquées, flèches) |
+| (ce commit) | Carte sélectionnée comme la maquette 01 : contour d'accent 2 px sur un fond teinté à 10 % ; liste sans le clavier : contour 1 px toujours en accent (plus de gris, #274). Message seul en carte par défaut (décision du 2026-11-07) ; les installations existantes gardent leur valeur (Réglages → Lecture) |
 
 ## Décisions prises
 
@@ -280,9 +282,9 @@ Comparaison maquettes 10 à 17 (2026-11-03) :
 
 Décisions du propriétaire (2026-11-03, soir) : colonne d'icônes gardée
 à 1024 px ; pas de version téléphone (application de bureau) ; message
-seul à plat par défaut sur une nouvelle installation (`single_message_card`
-à faux), **point à revoir quand le propriétaire utilisera l'application**
-(son installation garde sa valeur : Réglages → Lecture). Écart restant
+seul à plat par défaut sur une nouvelle installation, revu le 2026-11-07 :
+en carte par défaut (`single_message_card` à vrai ; une installation
+existante garde sa valeur : Réglages → Lecture). Écart restant
 avec la maquette 10 : l'en-tête d'un message seul montre la puce
 « n destinataires » et la date à droite, la maquette « À : moi · date »
 sous le nom.
