@@ -99,7 +99,7 @@ Dernière mise à jour : 2026-11-02, après `40a6c7e`.
 | (flatpak.yml) | Workflow Flatpak à la demande ; premier bundle construit le 2026-11-04 (run 41892816974, 21,8 Mo). Snap de la même version : run 41862330599 |
 | `ea980a2`, `1b5901a` | Snap : slot D-Bus pour le nom de l'application (AppArmor refusait le lancement) ; run 42397087858 vert, à vérifier par le propriétaire. Workflow AppImage à la demande ; premier bundle le 2026-11-07 (run 42397467139, 126 Mo) |
 | `faf4529` | Développement des conversations dans la liste supprimé (réglages, lignes imbriquées, flèches) |
-| (ce commit) | Carte sélectionnée comme la maquette 01 : contour d'accent 2 px sur un fond teinté à 10 % ; liste sans le clavier : contour 1 px toujours en accent (plus de gris, #274). Message seul en carte par défaut (décision du 2026-11-07) ; les installations existantes gardent leur valeur (Réglages → Lecture) |
+| `cb84d46` | Carte sélectionnée comme la maquette 01 : contour d'accent 2 px sur un fond teinté à 10 % ; liste sans le clavier : contour 1 px toujours en accent (plus de gris, #274). Message seul en carte par défaut (décision du 2026-11-07) ; les installations existantes gardent leur valeur (Réglages → Lecture) |
 
 ## Décisions prises
 
