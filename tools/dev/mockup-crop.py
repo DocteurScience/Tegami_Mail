@@ -101,7 +101,15 @@ def pop_on_sheet(k):
     xwd = f"{D}/{k}-pop1.xwd"
     pop = xwd_rgba(xwd) if os.path.exists(xwd) else None
     if pop is None:
-        return Image.open(f"{D}/{k}-pop1.png").convert("RGB")
+        # A popover grabbed without alpha (a few come at 24 bits even with
+        # the compositor): its shadow margin is black, so the black
+        # reachable from the edges is taken for the sheet's ground.
+        im = Image.open(f"{D}/{k}-pop1.png").convert("RGB")
+        for corner in ((0, 0), (im.width - 1, 0), (0, im.height - 1),
+                       (im.width - 1, im.height - 1)):
+            if im.getpixel(corner) == (0, 0, 0):
+                ImageDraw.floodfill(im, corner, (250, 250, 250), thresh=8)
+        return im
     ground = Image.new("RGBA", pop.size, (250, 250, 250, 255))
     ground.alpha_composite(pop)
     return ground.convert("RGB")

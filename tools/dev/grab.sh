@@ -36,7 +36,7 @@ export TEGAMI_DEMO=1 TEGAMI_SHOWCASE=/tmp/$name-internal.png TEGAMI_SHOWCASE_DEL
   TEGAMI_LOCALEDIR=/tmp/loc WEBKIT_DISABLE_SANDBOX_THIS_IS_DANGEROUS=1 TEGAMI_DEMO_NOW=${NOW:-1761730920} "$@"
 export NAME=$name AT=$at ACT="${ACT:-}" NOCOMP="${NOCOMP:-}"
 timeout $((at+25)) dbus-run-session -- xvfb-run -a -s "-screen 0 ${SCR}x24" bash -c '
-  [ -z "$NOCOMP" ] && command -v xcompmgr >/dev/null && { xcompmgr -n & sleep 0.5; }
+  [ -z "$NOCOMP" ] && command -v xcompmgr >/dev/null && { xcompmgr -n & sleep 2; }
   /src/target-ubu/debug/tegami > /shots/grab/$NAME.log 2>&1 &
   sleep $AT
   eval "$ACT"
