@@ -2476,8 +2476,9 @@ msgstr " i "
 msgid ", tagged {tag}"
 msgstr ", etykieta: {tag}"
 
-msgid "Remove filter"
-msgstr "Usuń filtr"
+#. Last, the way to add one (screen 37).
+msgid "Add filter…"
+msgstr "Dodaj filtr…"
 
 msgid "Applying…"
 msgstr "Stosowanie…"
@@ -2515,6 +2516,17 @@ msgstr "Liczenie nieprzeczytanej poczty"
 msgid "Include the folder's unread mail in the tray icon's unread count"
 msgstr ""
 "Uwzględnia nieprzeczytaną pocztę z katalogu w liczniku ikony w zasobniku"
+
+msgid "Advanced"
+msgstr ""
+
+#, fuzzy
+msgid "Tag, count unread mail"
+msgstr "Liczenie nieprzeczytanej poczty"
+
+#, fuzzy
+msgid "Delete filter"
+msgstr "Usuń katalog…"
 
 msgid "Never"
 msgstr "Nigdy"
@@ -2653,21 +2665,11 @@ msgstr "Konta online GNOME"
 msgid "Open Online Accounts"
 msgstr "Otwórz konta online…"
 
-#, fuzzy
-msgid "Smart folders"
-msgstr "Sortuj katalogi"
-
-#, fuzzy
 msgid ""
-"Lists the messages that match its conditions. Shown in the sidebar under the "
-"unified rows."
+"Shows the messages that match its criteria. In the sidebar, a collapsible "
+"“Smart folders” section follows the unified inboxes; it appears only when "
+"there is at least one."
 msgstr ""
-"Sposób wyświetlania tego konta w panelu bocznym i w widoku „Skrzynki "
-"odbiorcze”."
-
-#, fuzzy
-msgid "Add smart folder…"
-msgstr "Dodaj katalog"
 
 msgid "Searching…"
 msgstr "Wyszukiwanie…"
@@ -2801,8 +2803,8 @@ msgid "All but trash and junk"
 msgstr ""
 
 #, fuzzy
-msgid "Remove smart folder"
-msgstr "Usuń filtr"
+msgid "Add smart folder…"
+msgstr "Dodaj katalog"
 
 msgid "Inbox"
 msgstr "Skrzynka odbiorcza"
@@ -2857,6 +2859,10 @@ msgstr ""
 
 msgid "The preview each message has in the list"
 msgstr ""
+
+#, fuzzy
+msgid "Delete smart folder"
+msgstr "Usuń katalog…"
 
 msgid "Open"
 msgstr "Otwórz"
@@ -3023,11 +3029,12 @@ msgstr "Ochrona odnośników hasłem"
 msgid "Each file gets its own password, shown to you to pass on."
 msgstr ""
 
-msgid "Link defaults"
-msgstr "Domyślne ustawienia odnośników"
-
-msgid "Used unless you change them in the upload dialog for one email."
+msgid "Links"
 msgstr ""
+
+#, fuzzy
+msgid "Two-step code, server behind Cloudflare"
+msgstr "Serwer działa za pośrednikiem Cloudflare"
 
 msgid "Check connection"
 msgstr "Sprawdź połączenie"
@@ -3125,6 +3132,13 @@ msgstr ""
 msgid "Connected as {who}."
 msgstr "Połączono jako {who}."
 
+#, fuzzy
+msgid "Remove account"
+msgstr "Usuń konto…"
+
+msgid "Files already uploaded and shared links stay active at the provider."
+msgstr ""
+
 msgid "Choose an online account first."
 msgstr "Najpierw wybierz konto online."
 
@@ -3184,10 +3198,9 @@ msgstr "Przechowywanie w chmurze"
 
 #, fuzzy
 msgid ""
-"Upload large files and send a link instead of attaching them.\n"
-"\n"
-"Supported providers: Nextcloud, ownCloud, OpenCloud, OneDrive, Dropbox and "
-"Seafile."
+"Upload large files to your online storage and send a link instead of the "
+"attachment. Supported services: Nextcloud, ownCloud, OpenCloud, OneDrive, "
+"Dropbox and Seafile."
 msgstr ""
 "Po połączeniu z dostawcą przechowywania w chmurze można przesyłać i "
 "udostępniać duże pliki zamiast załączników. Po dodaniu dostawcy na pasku "
@@ -3195,9 +3208,6 @@ msgstr ""
 "\n"
 "Obsługiwani dostawcy: Nextcloud, ownCloud, OpenCloud, OneDrive, Dropbox i "
 "Seafile."
-
-msgid "No cloud accounts yet."
-msgstr "Nie dodano jeszcze kont przechowywania w chmurze."
 
 msgid "Cloud account"
 msgstr "Konto w chmurze"
@@ -4679,16 +4689,6 @@ msgstr "1 rok"
 msgid "5 years"
 msgstr "5 lat"
 
-msgid "GnuPG"
-msgstr "GnuPG"
-
-#, fuzzy
-msgid "The same keyring the gpg command and other mail apps use."
-msgstr ""
-"Odnaleziono program GnuPG {version}. Aplikacja Tegami Mail odczytuje i "
-"zapisuje jego bazę kluczy – tę samą, której używa polecenie gpg i inne "
-"programy pocztowe."
-
 msgid "Your keys"
 msgstr "Własne klucze"
 
@@ -4701,26 +4701,15 @@ msgstr ""
 "dla jego właściciela. Część publiczną klucza należy przekazać osobom, które "
 "mają wysyłać zaszyfrowane wiadomości."
 
-msgid "Import…"
-msgstr "Importuj…"
-
-msgid "Generate…"
-msgstr "Wygeneruj…"
-
-msgid "Other people's keys"
-msgstr "Klucze innych osób"
+msgid "Correspondents’ keys"
+msgstr ""
 
 #, fuzzy
-msgid ""
-"Keys you encrypt to and check signatures with. Check a fingerprint with its "
-"owner before trusting it."
+msgid "Check the fingerprint with its owner before trusting a key."
 msgstr ""
 "Klucze służące do szyfrowania dla innych osób i sprawdzania ich podpisów. "
 "Klucz staje się zaufany po poświadczeniu go; najpierw należy potwierdzić "
 "odcisk klucza u właściciela."
-
-msgid "Fetch by address…"
-msgstr "Pobierz według adresu…"
 
 msgid "Search by name, address or key ID"
 msgstr ""
@@ -4728,8 +4717,14 @@ msgstr ""
 msgid "No keys from other people yet."
 msgstr "Brak kluczy innych osób."
 
-msgid "GnuPG {version} found."
+#, fuzzy
+msgid ""
+"Uses the GnuPG {version} keyring, the same as the gpg command and other "
+"applications."
 msgstr ""
+"Odnaleziono program GnuPG {version}. Aplikacja Tegami Mail odczytuje i "
+"zapisuje jego bazę kluczy – tę samą, której używa polecenie gpg i inne "
+"programy pocztowe."
 
 #, fuzzy
 msgid ""
@@ -4739,9 +4734,6 @@ msgstr ""
 "Nie odnaleziono programu GnuPG. Aby czytać zaszyfrowaną pocztę i sprawdzać "
 "podpisy, zainstaluj pakiet gnupg; wersja z Flatpaka zawiera go w zestawie."
 
-msgid "No key of your own yet. Generate one for your address."
-msgstr "Brak własnego klucza. Wygeneruj klucz dla własnego adresu."
-
 msgid "Your key is ready."
 msgstr "Klucz jest gotowy."
 
@@ -4750,6 +4742,17 @@ msgstr "Nie udało się wygenerować klucza: {e}"
 
 msgid "No key found: {e}"
 msgstr "Nie odnaleziono klucza: {e}"
+
+#, fuzzy
+msgid "Import a key…"
+msgstr "Importuj klucz"
+
+#, fuzzy
+msgid "Generate a key…"
+msgstr "Wygeneruj klucz"
+
+msgid "Fetch by address…"
+msgstr "Pobierz według adresu…"
 
 msgid "Generate a key"
 msgstr "Wygeneruj klucz"
@@ -5456,6 +5459,10 @@ msgstr "Dodaj pierwsze konto"
 msgid "No accounts yet"
 msgstr "Brak kont"
 
+#, fuzzy
+msgid "Smart folders"
+msgstr "Sortuj katalogi"
+
 msgid "Show each folder"
 msgstr "Wyświetl poszczególne katalogi"
 
@@ -5542,10 +5549,6 @@ msgstr ""
 msgid "Script"
 msgstr ""
 
-#, fuzzy
-msgid "Translation"
-msgstr "Tłumacze"
-
 msgid ""
 "Uses a translation service under your own key. A message's text is sent only "
 "when you translate it."
@@ -5554,23 +5557,28 @@ msgstr ""
 msgid "Key"
 msgstr "Klucz"
 
+#, fuzzy
+msgid "Server, region"
+msgstr "Dane serwera"
+
 msgid "Region (empty for a global resource)"
 msgstr ""
 
+#, fuzzy
+msgid "Check the service"
+msgstr "Wyszukaj ustawienia"
+
 msgid "Translates a greeting to test the service."
+msgstr ""
+
+msgid ""
+"A “Translate” button shows on messages in another language. The language is "
+"detected on this computer."
 msgstr ""
 
 #, fuzzy
 msgid "Tegami Mail's language ({language})"
 msgstr "Język systemu – {language}"
-
-msgid "Offer to translate"
-msgstr ""
-
-msgid ""
-"Messages in another language show a Translate button. The language is "
-"detected on this computer."
-msgstr ""
 
 msgid "Key (if the server asks for one)"
 msgstr ""
@@ -6134,15 +6142,11 @@ msgstr "Duże pliki"
 msgid "Search filters"
 msgstr "Wyszukaj filtry"
 
-msgid ""
-"File or tag incoming mail automatically. Filters run on each Inbox as it "
-"syncs; Apply Now runs them over the mail already there."
+msgid "File or tag mail as it arrives. Filters run on each Inbox as it syncs."
 msgstr ""
 
-msgid "Add filter…"
-msgstr "Dodaj filtr…"
-
-msgid "Run every rule over the mail already in your inboxes"
+#, fuzzy
+msgid "Runs every rule over the mail already in your inboxes."
 msgstr ""
 "Zastosuj wszystkie reguły do poczty, która jest już w skrzynkach odbiorczych"
 
@@ -6220,10 +6224,6 @@ msgstr "Podpis"
 msgid "OpenPGP encryption"
 msgstr "Klucze OpenPGP"
 
-#, fuzzy
-msgid "Remove account"
-msgstr "Usuń konto…"
-
 msgid "Also removes its saved password. Mail on the server is not touched."
 msgstr ""
 
@@ -6259,9 +6259,6 @@ msgid "Use other credentials"
 msgstr "Osobne dane logowania SMTP"
 
 msgid "Off: the incoming credentials are used."
-msgstr ""
-
-msgid "Advanced"
 msgstr ""
 
 #, fuzzy
@@ -6530,6 +6527,10 @@ msgstr ""
 #, fuzzy
 msgid "Senders"
 msgstr "Nadawcy"
+
+#, fuzzy
+msgid "Translation"
+msgstr "Tłumacze"
 
 msgid "Backup and restore"
 msgstr ""

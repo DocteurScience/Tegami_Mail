@@ -54,7 +54,8 @@ pub(super) const REPLY_COPIES_HINT: &str =
 /// Whether a list row survives the page's search text (#141): matched
 /// against the row's title and, for an action row, its subtitle.
 pub(super) fn row_matches(row: &gtk::ListBoxRow, query: &str) -> bool {
-    if query.is_empty() {
+    // "Add…" stays whatever is searched for.
+    if query.is_empty() || row.has_css_class("add-row") {
         return true;
     }
     let title = row

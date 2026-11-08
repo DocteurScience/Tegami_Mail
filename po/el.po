@@ -2379,8 +2379,9 @@ msgstr " και "
 msgid ", tagged {tag}"
 msgstr ", με ετικέτα {tag}"
 
-msgid "Remove filter"
-msgstr "Αφαίρεση φίλτρου"
+#. Last, the way to add one (screen 37).
+msgid "Add filter…"
+msgstr "Προσθήκη φίλτρου…"
 
 msgid "Applying…"
 msgstr "Εφαρμογή…"
@@ -2420,6 +2421,17 @@ msgid "Include the folder's unread mail in the tray icon's unread count"
 msgstr ""
 "Συμπερίληψη της μη αναγνωσμένης αλληλογραφίας του φακέλου στον αριθμό μη "
 "αναγνωσμένων του εικονιδίου στην περιοχή ειδοποιήσεων"
+
+msgid "Advanced"
+msgstr "Για προχωρημένους"
+
+#, fuzzy
+msgid "Tag, count unread mail"
+msgstr "Καταμέτρηση μη αναγνωσμένων μηνυμάτων"
+
+#, fuzzy
+msgid "Delete filter"
+msgstr "Διαγραφή φακέλου…"
 
 msgid "Never"
 msgstr "Ποτέ"
@@ -2550,18 +2562,11 @@ msgstr "Προστέθηκε στους Διαδικτυακούς λογαρι�
 msgid "Open Online Accounts"
 msgstr "Άνοιγμα Διαδικτυακών λογαριασμών"
 
-msgid "Smart folders"
-msgstr "Έξυπνοι φάκελοι"
-
 msgid ""
-"Lists the messages that match its conditions. Shown in the sidebar under the "
-"unified rows."
+"Shows the messages that match its criteria. In the sidebar, a collapsible "
+"“Smart folders” section follows the unified inboxes; it appears only when "
+"there is at least one."
 msgstr ""
-"Εμφανίζει τα μηνύματα που πληρούν τις συνθήκες του. Βρίσκεται στην πλευρική "
-"στήλη, κάτω από τις ενοποιημένες γραμμές."
-
-msgid "Add smart folder…"
-msgstr "Προσθήκη έξυπνου φακέλου…"
 
 msgid "Searching…"
 msgstr "Αναζήτηση…"
@@ -2686,8 +2691,8 @@ msgstr "Όλοι οι λογαριασμοί"
 msgid "All but trash and junk"
 msgstr "Όλοι εκτός από τον Κάδο και τα Ανεπιθύμητα"
 
-msgid "Remove smart folder"
-msgstr "Αφαίρεση έξυπνου φακέλου"
+msgid "Add smart folder…"
+msgstr "Προσθήκη έξυπνου φακέλου…"
 
 msgid "Inbox"
 msgstr "Εισερχόμενα"
@@ -2736,6 +2741,10 @@ msgstr "Οποιαδήποτε ετικέτα"
 
 msgid "The preview each message has in the list"
 msgstr "Η προεπισκόπηση κάθε μηνύματος στη λίστα"
+
+#, fuzzy
+msgid "Delete smart folder"
+msgstr "Διαγραφή έξυπνου φακέλου…"
 
 msgid "Open"
 msgstr "Άνοιγμα"
@@ -2900,13 +2909,12 @@ msgstr ""
 "Κάθε αρχείο αποκτά δικό του κωδικό πρόσβασης, τον οποίο μπορείτε να "
 "κοινοποιήσετε στον παραλήπτη."
 
-msgid "Link defaults"
-msgstr "Προεπιλογές συνδέσμων"
-
-msgid "Used unless you change them in the upload dialog for one email."
+msgid "Links"
 msgstr ""
-"Χρησιμοποιούνται εκτός αν τα αλλάξετε στο παράθυρο μεταφόρτωσης για ένα "
-"μήνυμα."
+
+#, fuzzy
+msgid "Two-step code, server behind Cloudflare"
+msgstr "Ο διακομιστής βρίσκεται πίσω από το Cloudflare"
 
 msgid "Check connection"
 msgstr "Έλεγχος σύνδεσης"
@@ -3008,6 +3016,16 @@ msgstr ""
 msgid "Connected as {who}."
 msgstr "Συνδέθηκε ως {who}."
 
+#, fuzzy
+msgid "Remove account"
+msgstr "Αφαίρεση λογαριασμού…"
+
+#, fuzzy
+msgid "Files already uploaded and shared links stay active at the provider."
+msgstr ""
+"Τα αρχεία που έχουν ήδη μεταφορτωθεί και οι σύνδεσμοι που έχουν σταλεί "
+"παραμένουν ενεργά στην υπηρεσία του παρόχου."
+
 msgid "Choose an online account first."
 msgstr "Επιλέξτε πρώτα έναν διαδικτυακό λογαριασμό."
 
@@ -3061,19 +3079,16 @@ msgstr "Συνδεθήκατε ως {who}. {terms}"
 msgid "Cloud storage"
 msgstr "Αποθήκευση στο cloud"
 
+#, fuzzy
 msgid ""
-"Upload large files and send a link instead of attaching them.\n"
-"\n"
-"Supported providers: Nextcloud, ownCloud, OpenCloud, OneDrive, Dropbox and "
-"Seafile."
+"Upload large files to your online storage and send a link instead of the "
+"attachment. Supported services: Nextcloud, ownCloud, OpenCloud, OneDrive, "
+"Dropbox and Seafile."
 msgstr ""
 "Μεταφορτώστε μεγάλα αρχεία και στείλτε σύνδεσμο αντί να τα επισυνάψετε.\n"
 "\n"
 "Υποστηρίζονται οι Nextcloud, ownCloud, OpenCloud, OneDrive, Dropbox και "
 "Seafile."
-
-msgid "No cloud accounts yet."
-msgstr "Δεν υπάρχουν ακόμη λογαριασμοί cloud."
 
 msgid "Cloud account"
 msgstr "Λογαριασμός cloud"
@@ -4505,14 +4520,6 @@ msgstr "1 έτος"
 msgid "5 years"
 msgstr "5 έτη"
 
-msgid "GnuPG"
-msgstr "GnuPG"
-
-msgid "The same keyring the gpg command and other mail apps use."
-msgstr ""
-"Η ίδια κλειδοθήκη που χρησιμοποιούν η εντολή gpg και άλλες εφαρμογές "
-"αλληλογραφίας."
-
 msgid "Your keys"
 msgstr "Τα κλειδιά σας"
 
@@ -4523,24 +4530,15 @@ msgstr ""
 "Το κλειδί σας υπογράφει όσα στέλνετε και ανοίγει όσα είναι κρυπτογραφημένα "
 "για εσάς. Μοιραστείτε το δημόσιο μέρος του με όσους σας γράφουν."
 
-msgid "Import…"
-msgstr "Εισαγωγή…"
+#, fuzzy
+msgid "Correspondents’ keys"
+msgstr "Αλληλογραφούντες"
 
-msgid "Generate…"
-msgstr "Δημιουργία…"
-
-msgid "Other people's keys"
-msgstr "Κλειδιά άλλων ατόμων"
-
-msgid ""
-"Keys you encrypt to and check signatures with. Check a fingerprint with its "
-"owner before trusting it."
+#, fuzzy
+msgid "Check the fingerprint with its owner before trusting a key."
 msgstr ""
 "Κλειδιά για κρυπτογράφηση και επαλήθευση υπογραφών. Ελέγξτε το αποτύπωμα με "
 "τον κάτοχό τους πριν τα εμπιστευτείτε."
-
-msgid "Fetch by address…"
-msgstr "Ανάκτηση κατά διεύθυνση…"
 
 msgid "Search by name, address or key ID"
 msgstr ""
@@ -4548,8 +4546,13 @@ msgstr ""
 msgid "No keys from other people yet."
 msgstr "Δεν υπάρχουν ακόμη κλειδιά άλλων ατόμων."
 
-msgid "GnuPG {version} found."
-msgstr "Βρέθηκε το GnuPG {version}."
+#, fuzzy
+msgid ""
+"Uses the GnuPG {version} keyring, the same as the gpg command and other "
+"applications."
+msgstr ""
+"Η ίδια κλειδοθήκη που χρησιμοποιούν η εντολή gpg και άλλες εφαρμογές "
+"αλληλογραφίας."
 
 msgid ""
 "GnuPG was not found. Install the gnupg package to read encrypted mail and "
@@ -4557,10 +4560,6 @@ msgid ""
 msgstr ""
 "Δεν βρέθηκε το GnuPG. Εγκαταστήστε το πακέτο gnupg για ανάγνωση "
 "κρυπτογραφημένης αλληλογραφίας και έλεγχο υπογραφών."
-
-msgid "No key of your own yet. Generate one for your address."
-msgstr ""
-"Δεν έχετε ακόμη δικό σας κλειδί. Δημιουργήστε ένα για τη διεύθυνσή σας."
 
 msgid "Your key is ready."
 msgstr "Το κλειδί σας είναι έτοιμο."
@@ -4570,6 +4569,17 @@ msgstr "Δεν ήταν δυνατή η δημιουργία του κλειδι
 
 msgid "No key found: {e}"
 msgstr "Δεν βρέθηκε κλειδί: {e}"
+
+#, fuzzy
+msgid "Import a key…"
+msgstr "Εισαγωγή κλειδιού"
+
+#, fuzzy
+msgid "Generate a key…"
+msgstr "Δημιουργία κλειδιού"
+
+msgid "Fetch by address…"
+msgstr "Ανάκτηση κατά διεύθυνση…"
 
 msgid "Generate a key"
 msgstr "Δημιουργία κλειδιού"
@@ -5252,6 +5262,9 @@ msgstr "Προσθήκη πρώτου λογαριασμού"
 msgid "No accounts yet"
 msgstr "Δεν υπάρχουν ακόμη λογαριασμοί"
 
+msgid "Smart folders"
+msgstr "Έξυπνοι φάκελοι"
+
 msgid "Show each folder"
 msgstr "Εμφάνιση κάθε φακέλου"
 
@@ -5335,9 +5348,6 @@ msgstr "Αρχείο"
 msgid "Script"
 msgstr ""
 
-msgid "Translation"
-msgstr "Μετάφραση"
-
 msgid ""
 "Uses a translation service under your own key. A message's text is sent only "
 "when you translate it."
@@ -5348,24 +5358,30 @@ msgstr ""
 msgid "Key"
 msgstr "Κλειδί"
 
+#, fuzzy
+msgid "Server, region"
+msgstr "Στοιχεία διακομιστή"
+
 msgid "Region (empty for a global resource)"
 msgstr "Περιοχή (κενό για καθολικό πόρο)"
+
+#, fuzzy
+msgid "Check the service"
+msgstr "Ελέγξτε τις ρυθμίσεις"
 
 msgid "Translates a greeting to test the service."
 msgstr "Μεταφράζει έναν χαιρετισμό για να δοκιμάσει την υπηρεσία."
 
-msgid "Tegami Mail's language ({language})"
-msgstr "Γλώσσα του Tegami Mail ({language})"
-
-msgid "Offer to translate"
-msgstr "Προσφορά μετάφρασης"
-
+#, fuzzy
 msgid ""
-"Messages in another language show a Translate button. The language is "
+"A “Translate” button shows on messages in another language. The language is "
 "detected on this computer."
 msgstr ""
 "Τα μηνύματα σε άλλη γλώσσα εμφανίζουν κουμπί Μετάφραση. Η γλώσσα εντοπίζεται "
 "σε αυτόν τον υπολογιστή."
+
+msgid "Tegami Mail's language ({language})"
+msgstr "Γλώσσα του Tegami Mail ({language})"
 
 msgid "Key (if the server asks for one)"
 msgstr "Κλειδί (αν το ζητά ο διακομιστής)"
@@ -5939,18 +5955,15 @@ msgstr "Αρχεία vCard"
 msgid "Search filters"
 msgstr "Αναζήτηση φίλτρων"
 
-msgid ""
-"File or tag incoming mail automatically. Filters run on each Inbox as it "
-"syncs; Apply Now runs them over the mail already there."
+#, fuzzy
+msgid "File or tag mail as it arrives. Filters run on each Inbox as it syncs."
 msgstr ""
 "Αυτόματη αρχειοθέτηση ή επισήμανση εισερχόμενης αλληλογραφίας. Τα φίλτρα "
 "εκτελούνται στα Εισερχόμενα κατά τον συγχρονισμό· η επιλογή «Εφαρμογή τώρα» "
 "τα εκτελεί και στα υπάρχοντα μηνύματα."
 
-msgid "Add filter…"
-msgstr "Προσθήκη φίλτρου…"
-
-msgid "Run every rule over the mail already in your inboxes"
+#, fuzzy
+msgid "Runs every rule over the mail already in your inboxes."
 msgstr ""
 "Εφαρμογή κάθε κανόνα στην αλληλογραφία που βρίσκεται ήδη στα εισερχόμενά σας"
 
@@ -6026,10 +6039,6 @@ msgstr "Υπογραφές"
 msgid "OpenPGP encryption"
 msgstr "Κλειδιά OpenPGP"
 
-#, fuzzy
-msgid "Remove account"
-msgstr "Αφαίρεση λογαριασμού…"
-
 msgid "Also removes its saved password. Mail on the server is not touched."
 msgstr ""
 
@@ -6063,9 +6072,6 @@ msgstr "Ανενεργό: χρησιμοποιούνται τα παραπάνω
 #, fuzzy
 msgid "Off: the incoming credentials are used."
 msgstr "Ανενεργό: χρησιμοποιούνται τα παραπάνω διαπιστευτήρια."
-
-msgid "Advanced"
-msgstr "Για προχωρημένους"
 
 #, fuzzy
 msgid "API token, custom OAuth app, certificate for another name"
@@ -6334,6 +6340,9 @@ msgstr ""
 #, fuzzy
 msgid "Senders"
 msgstr "Αποστολέας"
+
+msgid "Translation"
+msgstr "Μετάφραση"
 
 msgid "Backup and restore"
 msgstr ""

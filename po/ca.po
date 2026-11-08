@@ -2349,8 +2349,9 @@ msgstr " i "
 msgid ", tagged {tag}"
 msgstr ", etiquetat amb {tag}"
 
-msgid "Remove filter"
-msgstr "Elimina el filtre"
+#. Last, the way to add one (screen 37).
+msgid "Add filter…"
+msgstr "Afegeix un filtre…"
 
 msgid "Applying…"
 msgstr "S'està aplicant…"
@@ -2390,6 +2391,17 @@ msgid "Include the folder's unread mail in the tray icon's unread count"
 msgstr ""
 "Inclou el correu no llegit de la carpeta al recompte de no llegits de la "
 "icona de la safata"
+
+msgid "Advanced"
+msgstr "Avançat"
+
+#, fuzzy
+msgid "Tag, count unread mail"
+msgstr "Compta el correu no llegit"
+
+#, fuzzy
+msgid "Delete filter"
+msgstr "Suprimeix la carpeta…"
 
 msgid "Never"
 msgstr "Mai"
@@ -2515,18 +2527,11 @@ msgstr "Afegida als comptes en línia del GNOME"
 msgid "Open Online Accounts"
 msgstr "Obre els comptes en línia"
 
-msgid "Smart folders"
-msgstr "Carpetes intel·ligents"
-
 msgid ""
-"Lists the messages that match its conditions. Shown in the sidebar under the "
-"unified rows."
+"Shows the messages that match its criteria. In the sidebar, a collapsible "
+"“Smart folders” section follows the unified inboxes; it appears only when "
+"there is at least one."
 msgstr ""
-"Llista els missatges que compleixen les seves condicions. Es mostra a la "
-"barra lateral sota les files unificades."
-
-msgid "Add smart folder…"
-msgstr "Afegeix una carpeta intel·ligent…"
 
 msgid "Searching…"
 msgstr "S'està cercant…"
@@ -2650,8 +2655,8 @@ msgstr "Tots els comptes"
 msgid "All but trash and junk"
 msgstr "Totes menys la paperera i la brossa"
 
-msgid "Remove smart folder"
-msgstr "Elimina la carpeta intel·ligent"
+msgid "Add smart folder…"
+msgstr "Afegeix una carpeta intel·ligent…"
 
 msgid "Inbox"
 msgstr "Bústia d'entrada"
@@ -2700,6 +2705,10 @@ msgstr "Qualsevol etiqueta"
 
 msgid "The preview each message has in the list"
 msgstr "La previsualització que cada missatge té a la llista"
+
+#, fuzzy
+msgid "Delete smart folder"
+msgstr "Suprimeix la carpeta intel·ligent…"
 
 msgid "Open"
 msgstr "Obre"
@@ -2862,11 +2871,12 @@ msgstr ""
 "Cada fitxer té la seva pròpia contrasenya, que se't mostra per fer-la "
 "arribar."
 
-msgid "Link defaults"
-msgstr "Valors per defecte dels enllaços"
+msgid "Links"
+msgstr ""
 
-msgid "Used unless you change them in the upload dialog for one email."
-msgstr "S'utilitzen tret que els canviïs al diàleg de pujada per a un correu."
+#, fuzzy
+msgid "Two-step code, server behind Cloudflare"
+msgstr "El servidor és darrere de Cloudflare"
 
 msgid "Check connection"
 msgstr "Comprova la connexió"
@@ -2958,6 +2968,16 @@ msgstr ""
 msgid "Connected as {who}."
 msgstr "Connectat com a {who}."
 
+#, fuzzy
+msgid "Remove account"
+msgstr "Elimina el compte…"
+
+#, fuzzy
+msgid "Files already uploaded and shared links stay active at the provider."
+msgstr ""
+"Els fitxers ja pujats i els enllaços enviats continuen actius al servei del "
+"proveïdor."
+
 msgid "Choose an online account first."
 msgstr "Tria primer un compte en línia."
 
@@ -3010,19 +3030,16 @@ msgstr "Sessió iniciada com a {who}. {terms}"
 msgid "Cloud storage"
 msgstr "Emmagatzematge al núvol"
 
+#, fuzzy
 msgid ""
-"Upload large files and send a link instead of attaching them.\n"
-"\n"
-"Supported providers: Nextcloud, ownCloud, OpenCloud, OneDrive, Dropbox and "
-"Seafile."
+"Upload large files to your online storage and send a link instead of the "
+"attachment. Supported services: Nextcloud, ownCloud, OpenCloud, OneDrive, "
+"Dropbox and Seafile."
 msgstr ""
 "Puja fitxers grans i envia un enllaç en lloc d'adjuntar-los.\n"
 "\n"
 "Proveïdors compatibles: Nextcloud, ownCloud, OpenCloud, OneDrive, Dropbox i "
 "Seafile."
-
-msgid "No cloud accounts yet."
-msgstr "Encara no hi ha comptes al núvol."
 
 msgid "Cloud account"
 msgstr "Compte al núvol"
@@ -4440,14 +4457,6 @@ msgstr "1 any"
 msgid "5 years"
 msgstr "5 anys"
 
-msgid "GnuPG"
-msgstr "GnuPG"
-
-msgid "The same keyring the gpg command and other mail apps use."
-msgstr ""
-"El mateix anell de claus que utilitzen l'ordre gpg i altres aplicacions de "
-"correu."
-
 msgid "Your keys"
 msgstr "Les teves claus"
 
@@ -4458,24 +4467,15 @@ msgstr ""
 "La teva clau signa el que envies i obre el que s'xifra per a tu. Comparteix "
 "la seva meitat pública amb les persones que t'escriuen."
 
-msgid "Import…"
-msgstr "Importa…"
+#, fuzzy
+msgid "Correspondents’ keys"
+msgstr "Corresponsals"
 
-msgid "Generate…"
-msgstr "Genera…"
-
-msgid "Other people's keys"
-msgstr "Les claus d'altres persones"
-
-msgid ""
-"Keys you encrypt to and check signatures with. Check a fingerprint with its "
-"owner before trusting it."
+#, fuzzy
+msgid "Check the fingerprint with its owner before trusting a key."
 msgstr ""
 "Les claus amb què xifres i comproves signatures. Comprova l'empremta amb el "
 "seu propietari abans de confiar-hi."
-
-msgid "Fetch by address…"
-msgstr "Obtén per adreça…"
 
 msgid "Search by name, address or key ID"
 msgstr ""
@@ -4483,8 +4483,13 @@ msgstr ""
 msgid "No keys from other people yet."
 msgstr "Encara no hi ha claus d'altres persones."
 
-msgid "GnuPG {version} found."
-msgstr "S'ha trobat el GnuPG {version}."
+#, fuzzy
+msgid ""
+"Uses the GnuPG {version} keyring, the same as the gpg command and other "
+"applications."
+msgstr ""
+"El mateix anell de claus que utilitzen l'ordre gpg i altres aplicacions de "
+"correu."
 
 msgid ""
 "GnuPG was not found. Install the gnupg package to read encrypted mail and "
@@ -4492,9 +4497,6 @@ msgid ""
 msgstr ""
 "No s'ha trobat el GnuPG. Instal·la el paquet gnupg per llegir correu xifrat "
 "i comprovar signatures."
-
-msgid "No key of your own yet. Generate one for your address."
-msgstr "Encara no tens cap clau pròpia. Genera'n una per a la teva adreça."
 
 msgid "Your key is ready."
 msgstr "La teva clau està a punt."
@@ -4504,6 +4506,17 @@ msgstr "No s'ha pogut generar la clau: {e}"
 
 msgid "No key found: {e}"
 msgstr "No s'ha trobat cap clau: {e}"
+
+#, fuzzy
+msgid "Import a key…"
+msgstr "Importa una clau"
+
+#, fuzzy
+msgid "Generate a key…"
+msgstr "Genera una clau"
+
+msgid "Fetch by address…"
+msgstr "Obtén per adreça…"
 
 msgid "Generate a key"
 msgstr "Genera una clau"
@@ -5182,6 +5195,9 @@ msgstr "Afegeix el primer compte"
 msgid "No accounts yet"
 msgstr "Encara no hi ha comptes"
 
+msgid "Smart folders"
+msgstr "Carpetes intel·ligents"
+
 msgid "Show each folder"
 msgstr "Mostra cada carpeta"
 
@@ -5265,9 +5281,6 @@ msgstr "Fitxer"
 msgid "Script"
 msgstr ""
 
-msgid "Translation"
-msgstr "Traducció"
-
 msgid ""
 "Uses a translation service under your own key. A message's text is sent only "
 "when you translate it."
@@ -5278,24 +5291,30 @@ msgstr ""
 msgid "Key"
 msgstr "Clau"
 
+#, fuzzy
+msgid "Server, region"
+msgstr "Dades del servidor"
+
 msgid "Region (empty for a global resource)"
 msgstr "Regió (buit per a un recurs global)"
+
+#, fuzzy
+msgid "Check the service"
+msgstr "Comprova els paràmetres"
 
 msgid "Translates a greeting to test the service."
 msgstr "Tradueix una salutació per provar el servei."
 
-msgid "Tegami Mail's language ({language})"
-msgstr "Idioma de l'Tegami Mail ({language})"
-
-msgid "Offer to translate"
-msgstr "Ofereix traduir"
-
+#, fuzzy
 msgid ""
-"Messages in another language show a Translate button. The language is "
+"A “Translate” button shows on messages in another language. The language is "
 "detected on this computer."
 msgstr ""
 "Els missatges en un altre idioma mostren un botó «Tradueix». L'idioma es "
 "detecta en aquest ordinador."
+
+msgid "Tegami Mail's language ({language})"
+msgstr "Idioma de l'Tegami Mail ({language})"
 
 msgid "Key (if the server asks for one)"
 msgstr "Clau (si el servidor en demana una)"
@@ -5855,18 +5874,15 @@ msgstr "Fitxers vCard"
 msgid "Search filters"
 msgstr "Cerca filtres"
 
-msgid ""
-"File or tag incoming mail automatically. Filters run on each Inbox as it "
-"syncs; Apply Now runs them over the mail already there."
+#, fuzzy
+msgid "File or tag mail as it arrives. Filters run on each Inbox as it syncs."
 msgstr ""
 "Arxiva o etiqueta el correu entrant automàticament. Els filtres s'executen a "
 "cada bústia d'entrada a mesura que es sincronitza; «Aplica ara» els executa "
 "sobre el correu que ja hi ha."
 
-msgid "Add filter…"
-msgstr "Afegeix un filtre…"
-
-msgid "Run every rule over the mail already in your inboxes"
+#, fuzzy
+msgid "Runs every rule over the mail already in your inboxes."
 msgstr ""
 "Executa totes les regles sobre el correu que ja hi ha a les bústies d'entrada"
 
@@ -5941,10 +5957,6 @@ msgstr "Signatures"
 msgid "OpenPGP encryption"
 msgstr "Claus OpenPGP"
 
-#, fuzzy
-msgid "Remove account"
-msgstr "Elimina el compte…"
-
 msgid "Also removes its saved password. Mail on the server is not touched."
 msgstr ""
 
@@ -5978,9 +5990,6 @@ msgstr "Desactivat utilitza les credencials de dalt."
 #, fuzzy
 msgid "Off: the incoming credentials are used."
 msgstr "Desactivat utilitza les credencials de dalt."
-
-msgid "Advanced"
-msgstr "Avançat"
 
 #, fuzzy
 msgid "API token, custom OAuth app, certificate for another name"
@@ -6242,6 +6251,9 @@ msgstr ""
 #, fuzzy
 msgid "Senders"
 msgstr "Remitent"
+
+msgid "Translation"
+msgstr "Traducció"
 
 msgid "Backup and restore"
 msgstr ""

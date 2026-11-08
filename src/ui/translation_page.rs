@@ -1,6 +1,7 @@
-//! Settings → Translation (#327): which service translates messages, the
-//! key for it, the language to translate into, and whether the reader
-//! offers a translation on its own. Saved as it is changed, like the other
+//! Settings → Translation (#327; screen 45): which service translates
+//! messages, the key for it, and the language to translate into; the
+//! server and region under Advanced. The reader offers a translation
+//! whenever a service is set. Saved as it is changed, like the other
 //! settings pages; the key goes to the keyring when it is applied.
 
 use std::cell::RefCell;
@@ -17,7 +18,7 @@ pub(super) fn build() -> adw::PreferencesPage {
     let page = adw::PreferencesPage::new();
 
     let service_group = adw::PreferencesGroup::new();
-    service_group.set_title(&i18n("Translation"));
+    service_group.set_title(&i18n("Service"));
     service_group.set_description(Some(&i18n(
         "Uses a translation service under your own key. A message's text is sent only when you translate it.",
     )));
@@ -35,28 +36,33 @@ pub(super) fn build() -> adw::PreferencesPage {
     key_row.set_show_apply_button(true);
     service_group.add(&key_row);
 
+    // The rare fields, under Advanced (docs/DESIGN.md, "Organize mail and
+    // services").
+    let advanced = adw::ExpanderRow::new();
+    advanced.set_title(&i18n("Advanced"));
+    advanced.set_subtitle(&i18n("Server, region"));
     let url_row = adw::EntryRow::new();
     url_row.set_title(&i18n("Server"));
     url_row.set_text(&settings.borrow().url);
-    service_group.add(&url_row);
+    advanced.add_row(&url_row);
 
     let region_row = adw::EntryRow::new();
     region_row.set_title(&i18n("Region (empty for a global resource)"));
     region_row.set_text(&settings.borrow().region);
-    service_group.add(&region_row);
+    advanced.add_row(&region_row);
+    service_group.add(&advanced);
 
-    let check_row = adw::ActionRow::new();
-    check_row.set_title(&i18n("Check the settings"));
+    let check_row = crate::ui::accounts::action_row(&i18n("Check the service"), None, "add-row");
     check_row.set_subtitle(&i18n("Translates a greeting to test the service."));
     check_row.set_subtitle_lines(3);
-    let check = gtk::Button::with_label(&i18n("Check"));
-    check.set_valign(gtk::Align::Center);
-    check_row.add_suffix(&check);
     service_group.add(&check_row);
     page.add(&service_group);
 
     let reading_group = adw::PreferencesGroup::new();
     reading_group.set_title(&i18n("Messages"));
+    reading_group.set_description(Some(&i18n(
+        "A “Translate” button shows on messages in another language. The language is detected on this computer.",
+    )));
     let mut targets = vec![i18n_f(
         "Tegami Mail's language ({language})",
         &[(
@@ -76,15 +82,10 @@ pub(super) fn build() -> adw::PreferencesPage {
             .position(|c| *c == settings.borrow().target)
             .map_or(0, |i| i as u32 + 1),
     );
+    // The chosen language whole: "Tegami Mail's language (French)" cut
+    // short says nothing.
+    target_row.set_factory(Some(&crate::ui::accounts::non_ellipsizing_factory()));
     reading_group.add(&target_row);
-
-    let offer_row = adw::SwitchRow::new();
-    offer_row.set_title(&i18n("Offer to translate"));
-    offer_row.set_subtitle(&i18n(
-        "Messages in another language show a Translate button. The language is detected on this computer.",
-    ));
-    offer_row.set_active(settings.borrow().offer);
-    reading_group.add(&offer_row);
     page.add(&reading_group);
 
     // Which rows the chosen service needs.
@@ -92,6 +93,7 @@ pub(super) fn build() -> adw::PreferencesPage {
         let key_row = key_row.clone();
         let url_row = url_row.clone();
         let region_row = region_row.clone();
+        let advanced = advanced.clone();
         let check_row = check_row.clone();
         let reading_group = reading_group.clone();
         move |service: Service| {
@@ -104,6 +106,7 @@ pub(super) fn build() -> adw::PreferencesPage {
             });
             url_row.set_visible(service == Service::Libre);
             region_row.set_visible(service == Service::Microsoft);
+            advanced.set_visible(matches!(service, Service::Libre | Service::Microsoft));
             check_row.set_visible(on);
             reading_group.set_sensitive(on);
         }
@@ -212,17 +215,10 @@ pub(super) fn build() -> adw::PreferencesPage {
         });
     }
     {
-        let save = save.clone();
-        offer_row.connect_active_notify(move |row| {
-            let on = row.is_active();
-            save(&|s| s.offer = on);
-        });
-    }
-    {
         let settings = settings.clone();
         let key_row = key_row.clone();
         let check_row = check_row.clone();
-        check.connect_clicked(move |b| {
+        check_row.clone().connect_activated(move |b| {
             let s = settings.borrow().clone();
             let key = key_row.text().to_string();
             // Checking is applying: the key that works is the one kept.

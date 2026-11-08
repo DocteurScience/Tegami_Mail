@@ -75,10 +75,9 @@ impl MessageView {
                 button(&i18n("Show translation")),
             ),
             None => {
-                if !(settings.enabled() && settings.offer)
-                    || self.encrypted(key)
-                    || m.body.trim().is_empty()
-                {
+                // Whenever a service is set: its own switch is gone
+                // (docs/DESIGN.md, "Organize mail and services").
+                if !settings.enabled() || self.encrypted(key) || m.body.trim().is_empty() {
                     return String::new();
                 }
                 match self.detected_language(m) {

@@ -29,7 +29,6 @@ pub(super) struct CloudAccounts {
     editor_page: Option<adw::NavigationPage>,
     editor_slot: Option<adw::Bin>,
     /// The editor header's Remove, shown while an existing account is up.
-    remove_btn: Option<gtk::Button>,
     /// Which account the editor shows (none for a new one).
     editing: Option<usize>,
     /// What the editor's Save does, while one is up: reads the form and
@@ -109,44 +108,21 @@ impl SimpleComponent for CloudAccounts {
                             #[wrap(Some)]
                             set_child = &adw::PreferencesPage {
                                 add = &adw::PreferencesGroup {
-                                    set_title: &i18n("Cloud storage"),
-                                    set_description: Some(&i18n("Upload large files and send a link instead of attaching them.\n\nSupported providers: Nextcloud, ownCloud, OpenCloud, OneDrive, Dropbox and Seafile.")),
-                                    // Across from the heading: the services' marks
-                                    // (picker order), with Add Account under them.
-                                    #[wrap(Some)]
-                                    set_header_suffix = &gtk::Box {
-                                        set_orientation: gtk::Orientation::Vertical,
-                                        set_spacing: 20,
-                                        set_valign: gtk::Align::Start,
-                                        set_margin_start: 24,
-                                        #[name = "brands"]
-                                        gtk::Box {
-                                            set_orientation: gtk::Orientation::Horizontal,
-                                            set_spacing: 12,
-                                            set_halign: gtk::Align::End,
-                                        },
-                                        gtk::Button {
-                                            set_label: &i18n("Add account…"),
-                                            set_halign: gtk::Align::End,
-                                            connect_clicked => CloudAccountsInput::Add,
-                                        },
-                                    },
+                                    set_description: Some(&i18n("Upload large files to your online storage and send a link instead of the attachment. Supported services: Nextcloud, ownCloud, OpenCloud, OneDrive, Dropbox and Seafile.")),
                                     #[name = "list"]
                                     gtk::ListBox {
                                         add_css_class: "boxed-list",
                                         set_selection_mode: gtk::SelectionMode::None,
-                                        set_margin_top: 16,
                                         // A row opens its editor, as the Mail
-                                        // Accounts list does.
+                                        // Accounts list does; the last one
+                                        // adds an account.
                                         connect_row_activated[sender] => move |_, row| {
-                                            sender.input(CloudAccountsInput::Edit(row.index() as usize));
+                                            if row.has_css_class("add-row") {
+                                                sender.input(CloudAccountsInput::Add);
+                                            } else {
+                                                sender.input(CloudAccountsInput::Edit(row.index() as usize));
+                                            }
                                         },
-                                    },
-                                    #[name = "empty"]
-                                    gtk::Label {
-                                        set_label: &i18n("No cloud accounts yet."),
-                                        add_css_class: "dim-label",
-                                        set_margin_top: 12,
                                     },
                                 },
                             },
@@ -170,15 +146,6 @@ impl SimpleComponent for CloudAccounts {
                                 set_label: &i18n("Save"),
                                 add_css_class: "suggested-action",
                                 connect_clicked => CloudAccountsInput::SaveClicked,
-                            },
-                            // Left of Save, only while editing an existing
-                            // account; asks before removing.
-                            #[name = "remove_btn"]
-                            pack_end = &gtk::Button {
-                                set_label: &i18n("Remove"),
-                                add_css_class: "destructive-action",
-                                set_visible: false,
-                                connect_clicked => CloudAccountsInput::RemoveCurrent,
                             },
                         },
 
@@ -206,11 +173,6 @@ impl SimpleComponent for CloudAccounts {
 
     fn init(_init: (), root: Self::Root, sender: ComponentSender<Self>) -> ComponentParts<Self> {
         let widgets = view_output!();
-        for service in cloud::SERVICES.iter() {
-            let mark = crate::desktop::brand::image(service.brand(), 22);
-            mark.set_tooltip_text(Some(service.name));
-            widgets.brands.append(&mark);
-        }
         let mut model = CloudAccounts {
             accounts: cloud::load_accounts(),
             probed: std::collections::HashSet::new(),
@@ -219,12 +181,10 @@ impl SimpleComponent for CloudAccounts {
             nav: Some(widgets.nav.clone()),
             editor_page: Some(widgets.editor_page.clone()),
             editor_slot: Some(widgets.editor_slot.clone()),
-            remove_btn: Some(widgets.remove_btn.clone()),
             editing: None,
             save_action: Rc::new(RefCell::new(None)),
         };
         model.rebuild(&sender);
-        widgets.empty.set_visible(model.accounts.is_empty());
         // Tell the settings window when the editor page is up, every way
         // in or out (Save, the back button, a swipe).
         {
@@ -425,9 +385,6 @@ impl CloudAccounts {
             i18n("Add cloud account")
         });
         self.editing = index;
-        if let Some(b) = &self.remove_btn {
-            b.set_visible(index.is_some());
-        }
         let (form, save) = build_editor(index, account, sender.input_sender().clone());
         slot.set_child(Some(&form));
         *self.save_action.borrow_mut() = Some(save);
@@ -529,9 +486,8 @@ impl CloudAccounts {
             row.set_child(Some(&hbox));
             self.list.append(&row);
         }
-        self.list.set_visible(!self.accounts.is_empty());
-        if let Some(next) = self.list.next_sibling() {
-            next.set_visible(self.accounts.is_empty());
-        }
+        // Last, the way to add one (screen 43).
+        self.list
+            .append(&crate::ui::accounts::add_row(&i18n("Add account…")));
     }
 }

@@ -217,6 +217,12 @@ impl Preferences {
         accounts.add(&mail);
         accounts.add(&organize);
         accounts.add(&services);
+        // What each service is set to, read again each time the page
+        // shows: the sub-pages change it (screen 26).
+        {
+            let rows = rows.clone();
+            accounts.connect_map(move |_| service_subtitles(&rows));
+        }
 
         // ---- Messages (screen 22).
         let messages = page("messages", &i18n("Messages"), "mail-unread-symbolic");
@@ -447,6 +453,36 @@ impl Preferences {
                 h.set_visible(visible);
             }
         }
+    }
+}
+
+/// The Services rows' subtitles: the cloud accounts by name, and the
+/// translation service when one is set.
+fn service_subtitles(rows: &[(&'static str, adw::ActionRow)]) {
+    for (id, row) in rows {
+        let text = match *id {
+            "cloud" => crate::services::cloud::load_accounts()
+                .iter()
+                .map(|a| {
+                    if a.name.trim().is_empty() {
+                        a.where_shown()
+                    } else {
+                        a.name.trim().to_string()
+                    }
+                })
+                .collect::<Vec<_>>()
+                .join(", "),
+            "translation" => {
+                let s = crate::services::translate::load();
+                if s.enabled() {
+                    s.service.name()
+                } else {
+                    String::new()
+                }
+            }
+            _ => continue,
+        };
+        row.set_subtitle(&text);
     }
 }
 

@@ -106,39 +106,14 @@ impl Component for PgpKeys {
         adw::ToastOverlay {
             #[wrap(Some)]
             set_child = &adw::PreferencesPage {
-                add = &adw::PreferencesGroup {
-                    set_title: &i18n("GnuPG"),
-                    #[name = "status_row"]
-                    adw::ActionRow {
-                        set_title: &i18n("GnuPG"),
-                        set_subtitle: &i18n("The same keyring the gpg command and other mail apps use."),
-                    },
-                },
-
+                // Screen 42: each list ends with the rows that add to it,
+                // and the keyring in use is said once, at the bottom.
                 #[name = "own_group"]
                 add = &adw::PreferencesGroup {
                     set_title: &i18n("Your keys"),
                     set_description: Some(
                         i18n("Your key signs what you send and opens what is encrypted to you. Share its public half with people who write to you.").as_str()
                     ),
-                    #[wrap(Some)]
-                    set_header_suffix = &gtk::Box {
-                        set_orientation: gtk::Orientation::Vertical,
-                        set_spacing: 12,
-                        set_valign: gtk::Align::Start,
-                        set_halign: gtk::Align::End,
-                        set_margin_start: 24,
-                        gtk::Button {
-                            set_label: &i18n("Import…"),
-                            set_size_request: (130, -1),
-                            connect_clicked => PgpKeysInput::Import,
-                        },
-                        gtk::Button {
-                            set_label: &i18n("Generate…"),
-                            set_size_request: (130, -1),
-                            connect_clicked => PgpKeysInput::Generate,
-                        },
-                    },
                     #[local_ref]
                     own_list -> gtk::ListBox {
                         add_css_class: "boxed-list",
@@ -148,28 +123,10 @@ impl Component for PgpKeys {
 
                 #[name = "others_group"]
                 add = &adw::PreferencesGroup {
-                    set_title: &i18n("Other people's keys"),
+                    set_title: &i18n("Correspondents’ keys"),
                     set_description: Some(
-                        i18n("Keys you encrypt to and check signatures with. Check a fingerprint with its owner before trusting it.").as_str()
+                        i18n("Check the fingerprint with its owner before trusting a key.").as_str()
                     ),
-                    #[wrap(Some)]
-                    set_header_suffix = &gtk::Box {
-                        set_orientation: gtk::Orientation::Vertical,
-                        set_spacing: 12,
-                        set_valign: gtk::Align::Start,
-                        set_halign: gtk::Align::End,
-                        set_margin_start: 24,
-                        gtk::Button {
-                            set_label: &i18n("Import…"),
-                            set_size_request: (130, -1),
-                            connect_clicked => PgpKeysInput::Import,
-                        },
-                        gtk::Button {
-                            set_label: &i18n("Fetch by address…"),
-                            set_size_request: (130, -1),
-                            connect_clicked => PgpKeysInput::Fetch,
-                        },
-                    },
                     gtk::Box {
                         set_spacing: 6,
                         set_margin_bottom: 12,
@@ -194,6 +151,11 @@ impl Component for PgpKeys {
                         set_selection_mode: gtk::SelectionMode::None,
                     },
                 },
+
+                // The GnuPG in use, as a note (docs/DESIGN.md, "Organize
+                // mail and services").
+                #[name = "status_group"]
+                add = &adw::PreferencesGroup {},
             },
         }
     }
@@ -225,22 +187,21 @@ impl Component for PgpKeys {
         // Probing gpg runs it; done a moment after the Settings window is
         // up rather than before it can appear.
         {
-            let status_row = widgets.status_row.clone();
+            let status_group = widgets.status_group.clone();
             let own_group = widgets.own_group.clone();
             let others_group = widgets.others_group.clone();
             let s = sender.clone();
             gtk::glib::idle_add_local_full(gtk::glib::Priority::LOW, move || {
                 let available = pgp::available();
-                if available {
+                status_group.set_description(Some(&if available {
                     let version = gpg_version().unwrap_or_default();
-                    status_row
-                        .set_subtitle(&i18n_f("GnuPG {version} found.", &[("version", &version)]));
+                    i18n_f(
+                        "Uses the GnuPG {version} keyring, the same as the gpg command and other applications.",
+                        &[("version", &version)],
+                    )
                 } else {
-                    status_row.set_subtitle(&i18n(
-                        "GnuPG was not found. Install the gnupg package to read encrypted mail and check signatures.",
-                    ));
-                    status_row.add_css_class("error");
-                }
+                    i18n("GnuPG was not found. Install the gnupg package to read encrypted mail and check signatures.")
+                }));
                 own_group.set_sensitive(available);
                 others_group.set_sensitive(available);
                 if available {
@@ -250,17 +211,12 @@ impl Component for PgpKeys {
             });
         }
 
-        let empty_own = gtk::Label::new(Some(&i18n(
-            "No key of your own yet. Generate one for your address.",
-        )));
-        empty_own.add_css_class("dim-label");
-        empty_own.set_margin_top(14);
-        empty_own.set_margin_bottom(14);
-        own_list.set_placeholder(Some(&empty_own));
         empty_others.add_css_class("dim-label");
         empty_others.set_margin_top(14);
         empty_others.set_margin_bottom(14);
+        empty_others.set_visible(false);
         others_list.set_placeholder(Some(&empty_others));
+        model.append_add_rows(&sender);
 
         ComponentParts { model, widgets }
     }
@@ -400,7 +356,30 @@ impl PgpKeys {
         for key in &self.others {
             self.others_list.append(&key_row(key, false, sender));
         }
+        self.append_add_rows(sender);
         self.filter_others();
+    }
+
+    /// The rows that add a key, last in each list (screen 42).
+    fn append_add_rows(&self, sender: &ComponentSender<Self>) {
+        let add = |list: &gtk::ListBox, title: &str, msg: fn() -> PgpKeysInput| {
+            let row = crate::ui::accounts::add_row(title);
+            let s = sender.clone();
+            row.connect_activated(move |_| s.input(msg()));
+            list.append(&row);
+        };
+        add(&self.own_list, &i18n("Import a key…"), || {
+            PgpKeysInput::Import
+        });
+        add(&self.own_list, &i18n("Generate a key…"), || {
+            PgpKeysInput::Generate
+        });
+        add(&self.others_list, &i18n("Import a key…"), || {
+            PgpKeysInput::Import
+        });
+        add(&self.others_list, &i18n("Fetch by address…"), || {
+            PgpKeysInput::Fetch
+        });
     }
 
     /// Hide the rows of other people's keys the search or the show filter
@@ -415,11 +394,15 @@ impl PgpKeys {
             row.set_visible(shown);
             i += 1;
         }
-        self.others_empty.set_label(&if self.others.is_empty() {
-            i18n("No keys from other people yet.")
-        } else {
-            i18n("No matches")
-        });
+        // The add rows stay, so "no matches" says so when the search hides
+        // every key.
+        let none_shown = !self.others.is_empty()
+            && !self
+                .others
+                .iter()
+                .any(|k| self.others_show.shows(k) && k.matches_search(&self.others_query));
+        self.others_empty.set_label(&i18n("No matches"));
+        self.others_empty.set_visible(none_shown);
     }
 
     /// The form for a new key: which identity, how long it lasts, and the

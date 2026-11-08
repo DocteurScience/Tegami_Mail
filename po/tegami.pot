@@ -2152,7 +2152,8 @@ msgstr ""
 msgid ", tagged {tag}"
 msgstr ""
 
-msgid "Remove filter"
+#. Last, the way to add one (screen 37).
+msgid "Add filter…"
 msgstr ""
 
 msgid "Applying…"
@@ -2189,6 +2190,15 @@ msgid "Count unread mail"
 msgstr ""
 
 msgid "Include the folder's unread mail in the tray icon's unread count"
+msgstr ""
+
+msgid "Advanced"
+msgstr ""
+
+msgid "Tag, count unread mail"
+msgstr ""
+
+msgid "Delete filter"
 msgstr ""
 
 msgid "Never"
@@ -2302,15 +2312,10 @@ msgstr ""
 msgid "Open Online Accounts"
 msgstr ""
 
-msgid "Smart folders"
-msgstr ""
-
 msgid ""
-"Lists the messages that match its conditions. Shown in the sidebar under the "
-"unified rows."
-msgstr ""
-
-msgid "Add smart folder…"
+"Shows the messages that match its criteria. In the sidebar, a collapsible "
+"“Smart folders” section follows the unified inboxes; it appears only when "
+"there is at least one."
 msgstr ""
 
 msgid "Searching…"
@@ -2425,7 +2430,7 @@ msgstr ""
 msgid "All but trash and junk"
 msgstr ""
 
-msgid "Remove smart folder"
+msgid "Add smart folder…"
 msgstr ""
 
 msgid "Inbox"
@@ -2474,6 +2479,9 @@ msgid "Any tag"
 msgstr ""
 
 msgid "The preview each message has in the list"
+msgstr ""
+
+msgid "Delete smart folder"
 msgstr ""
 
 msgid "Open"
@@ -2622,10 +2630,10 @@ msgstr ""
 msgid "Each file gets its own password, shown to you to pass on."
 msgstr ""
 
-msgid "Link defaults"
+msgid "Links"
 msgstr ""
 
-msgid "Used unless you change them in the upload dialog for one email."
+msgid "Two-step code, server behind Cloudflare"
 msgstr ""
 
 msgid "Check connection"
@@ -2695,6 +2703,12 @@ msgstr ""
 msgid "Connected as {who}."
 msgstr ""
 
+msgid "Remove account"
+msgstr ""
+
+msgid "Files already uploaded and shared links stay active at the provider."
+msgstr ""
+
 msgid "Choose an online account first."
 msgstr ""
 
@@ -2738,13 +2752,9 @@ msgid "Cloud storage"
 msgstr ""
 
 msgid ""
-"Upload large files and send a link instead of attaching them.\n"
-"\n"
-"Supported providers: Nextcloud, ownCloud, OpenCloud, OneDrive, Dropbox and "
-"Seafile."
-msgstr ""
-
-msgid "No cloud accounts yet."
+"Upload large files to your online storage and send a link instead of the "
+"attachment. Supported services: Nextcloud, ownCloud, OpenCloud, OneDrive, "
+"Dropbox and Seafile."
 msgstr ""
 
 msgid "Cloud account"
@@ -4043,12 +4053,6 @@ msgstr ""
 msgid "5 years"
 msgstr ""
 
-msgid "GnuPG"
-msgstr ""
-
-msgid "The same keyring the gpg command and other mail apps use."
-msgstr ""
-
 msgid "Your keys"
 msgstr ""
 
@@ -4057,21 +4061,10 @@ msgid ""
 "public half with people who write to you."
 msgstr ""
 
-msgid "Import…"
+msgid "Correspondents’ keys"
 msgstr ""
 
-msgid "Generate…"
-msgstr ""
-
-msgid "Other people's keys"
-msgstr ""
-
-msgid ""
-"Keys you encrypt to and check signatures with. Check a fingerprint with its "
-"owner before trusting it."
-msgstr ""
-
-msgid "Fetch by address…"
+msgid "Check the fingerprint with its owner before trusting a key."
 msgstr ""
 
 msgid "Search by name, address or key ID"
@@ -4080,15 +4073,14 @@ msgstr ""
 msgid "No keys from other people yet."
 msgstr ""
 
-msgid "GnuPG {version} found."
+msgid ""
+"Uses the GnuPG {version} keyring, the same as the gpg command and other "
+"applications."
 msgstr ""
 
 msgid ""
 "GnuPG was not found. Install the gnupg package to read encrypted mail and "
 "check signatures."
-msgstr ""
-
-msgid "No key of your own yet. Generate one for your address."
 msgstr ""
 
 msgid "Your key is ready."
@@ -4098,6 +4090,15 @@ msgid "Could not generate the key: {e}"
 msgstr ""
 
 msgid "No key found: {e}"
+msgstr ""
+
+msgid "Import a key…"
+msgstr ""
+
+msgid "Generate a key…"
+msgstr ""
+
+msgid "Fetch by address…"
 msgstr ""
 
 msgid "Generate a key"
@@ -4722,6 +4723,9 @@ msgstr ""
 msgid "No accounts yet"
 msgstr ""
 
+msgid "Smart folders"
+msgstr ""
+
 msgid "Show each folder"
 msgstr ""
 
@@ -4797,9 +4801,6 @@ msgstr ""
 msgid "Script"
 msgstr ""
 
-msgid "Translation"
-msgstr ""
-
 msgid ""
 "Uses a translation service under your own key. A message's text is sent only "
 "when you translate it."
@@ -4808,21 +4809,24 @@ msgstr ""
 msgid "Key"
 msgstr ""
 
+msgid "Server, region"
+msgstr ""
+
 msgid "Region (empty for a global resource)"
+msgstr ""
+
+msgid "Check the service"
 msgstr ""
 
 msgid "Translates a greeting to test the service."
 msgstr ""
 
-msgid "Tegami Mail's language ({language})"
-msgstr ""
-
-msgid "Offer to translate"
-msgstr ""
-
 msgid ""
-"Messages in another language show a Translate button. The language is "
+"A “Translate” button shows on messages in another language. The language is "
 "detected on this computer."
+msgstr ""
+
+msgid "Tegami Mail's language ({language})"
 msgstr ""
 
 msgid "Key (if the server asks for one)"
@@ -5336,15 +5340,10 @@ msgstr ""
 msgid "Search filters"
 msgstr ""
 
-msgid ""
-"File or tag incoming mail automatically. Filters run on each Inbox as it "
-"syncs; Apply Now runs them over the mail already there."
+msgid "File or tag mail as it arrives. Filters run on each Inbox as it syncs."
 msgstr ""
 
-msgid "Add filter…"
-msgstr ""
-
-msgid "Run every rule over the mail already in your inboxes"
+msgid "Runs every rule over the mail already in your inboxes."
 msgstr ""
 
 #. GNOME Online Accounts owns this account's servers and
@@ -5408,9 +5407,6 @@ msgstr ""
 msgid "OpenPGP encryption"
 msgstr ""
 
-msgid "Remove account"
-msgstr ""
-
 msgid "Also removes its saved password. Mail on the server is not touched."
 msgstr ""
 
@@ -5436,9 +5432,6 @@ msgid "Use other credentials"
 msgstr ""
 
 msgid "Off: the incoming credentials are used."
-msgstr ""
-
-msgid "Advanced"
 msgstr ""
 
 msgid "API token, custom OAuth app, certificate for another name"
@@ -5662,6 +5655,9 @@ msgid "Look through every mailbox for tags other clients have set"
 msgstr ""
 
 msgid "Senders"
+msgstr ""
+
+msgid "Translation"
 msgstr ""
 
 msgid "Backup and restore"

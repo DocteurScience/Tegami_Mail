@@ -28,7 +28,9 @@ struct EditorRows {
     expire: adw::SpinRow,
     protect: adw::SwitchRow,
     /// Check Connection, and what it found.
-    check: gtk::Button,
+    check: adw::ActionRow,
+    /// The rare fields: the two-step code and the Cloudflare switch.
+    advanced: adw::ExpanderRow,
     status: gtk::Label,
     /// The whole form, ready for the editor page.
     page: gtk::Box,
@@ -165,34 +167,43 @@ impl EditorRows {
         group.add(&url);
         group.add(&user);
         group.add(&pass);
-        group.add(&code);
         group.add(&goa_row);
         group.add(&app_key);
         group.add(&library);
-        group.add(&folder);
-        group.add(&cloudflare);
-        // The link terms: the defaults for this account, changeable for each
-        // upload in the composer's upload dialog.
+        // The links (screen 44): where files go and the terms they are
+        // shared on, the defaults for this account that the composer's
+        // upload dialog can change for one e-mail.
         let defaults = adw::PreferencesGroup::new();
-        defaults.set_title(&i18n("Link defaults"));
-        defaults.set_description(Some(&i18n(
-            "Used unless you change them in the upload dialog for one email.",
-        )));
-        defaults.set_margin_top(28);
+        defaults.set_title(&i18n("Links"));
+        defaults.set_margin_top(24);
+        defaults.add(&folder);
         defaults.add(&expire);
         defaults.add(&protect);
+        // The rare fields, under Advanced (docs/DESIGN.md, "Organize mail
+        // and services").
+        let advanced_group = adw::PreferencesGroup::new();
+        advanced_group.set_margin_top(24);
+        let advanced = adw::ExpanderRow::new();
+        advanced.set_title(&i18n("Advanced"));
+        advanced.set_subtitle(&i18n("Two-step code, server behind Cloudflare"));
+        advanced.add_row(&code);
+        advanced.add_row(&cloudflare);
+        advanced.set_expanded(account.cloudflare);
+        advanced_group.add(&advanced);
 
-        let check_box = gtk::Box::new(gtk::Orientation::Horizontal, 8);
-        check_box.set_margin_top(8);
-        let check = gtk::Button::with_label(&i18n("Check connection"));
-        check.set_valign(gtk::Align::Start);
+        // The check signs in with what is typed; what it found is said
+        // under it.
+        let check_group = adw::PreferencesGroup::new();
+        check_group.set_margin_top(24);
+        let check = crate::ui::accounts::action_row(&i18n("Check connection"), None, "add-row");
+        check_group.add(&check);
         let status = gtk::Label::new(None);
         status.set_wrap(true);
         status.set_xalign(0.0);
         status.set_hexpand(true);
+        status.set_margin_top(8);
         status.add_css_class("dim-label");
-        check_box.append(&check);
-        check_box.append(&status);
+        check_group.add(&status);
 
         let bx = gtk::Box::new(gtk::Orientation::Vertical, 0);
         bx.append(&header_mark);
@@ -200,8 +211,9 @@ impl EditorRows {
         bx.append(&app_key_hint);
         bx.append(&goa_hint);
         bx.append(&seafile_hint);
-        bx.append(&check_box);
         bx.append(&defaults);
+        bx.append(&advanced_group);
+        bx.append(&check_group);
         EditorRows {
             kind,
             header_mark,
@@ -222,6 +234,7 @@ impl EditorRows {
             expire,
             protect,
             check,
+            advanced,
             status,
             page: bx,
         }
@@ -257,6 +270,7 @@ pub(super) fn build_editor(
         expire,
         protect,
         check,
+        advanced,
         status,
         page: bx,
     } = EditorRows::new(&account, index);
@@ -413,9 +427,10 @@ pub(super) fn build_editor(
             // Self-hosted kinds only: Dropbox and OneDrive are not behind
             // anyone's proxy.
             cloudflare.set_visible(!dropbox && !goa);
+            advanced.set_visible(!dropbox && !goa);
             if goa {
                 fill_goa(k);
-                check.set_label(&i18n("Check connection"));
+                check.set_title(&i18n("Check connection"));
                 expire.set_subtitle(&i18n(
                     "Days. 0 keeps links forever. Needs Microsoft 365 or OneDrive for Business.",
                 ));
@@ -444,7 +459,7 @@ pub(super) fn build_editor(
                     protect.set_subtitle(&i18n(
                         "Each file gets its own password, shown to you to pass on.",
                     ));
-                    check.set_label(&i18n("Check connection"));
+                    check.set_title(&i18n("Check connection"));
                 }
                 CloudKind::Seafile => {
                     user.set_title(&i18n("E-mail"));
@@ -456,13 +471,13 @@ pub(super) fn build_editor(
                     protect.set_subtitle(&i18n(
                         "Each file gets its own password, shown to you to pass on.",
                     ));
-                    check.set_label(&i18n("Check connection"));
+                    check.set_title(&i18n("Check connection"));
                 }
                 // Handled above, before the return.
                 CloudKind::OneDrive => {}
                 CloudKind::Dropbox => {
                     protect.set_subtitle(&i18n("Each file gets its own password, shown to you to pass on. Paid Dropbox plans only."));
-                    check.set_label(&i18n("Connect with Dropbox…"));
+                    check.set_title(&i18n("Connect with Dropbox…"));
                     app_key_hint.set_label(&i18n_f(
                         "Dropbox needs an app registered to you:\n1. At dropbox.com/developers/apps, press Create app.\n2. Choose Scoped access, then App folder or Full Dropbox.\n3. Give it a name no one else has used and press Create app.\n4. On Permissions, tick account_info.read, files.content.write and sharing.write, then press Submit.\n5. On Settings, under OAuth 2, add the redirect URI {uri} and press Add.\n6. Copy the App key into the field above.\nDevelopment status is enough. Leave the field empty to use this build's own key, if it has one.",
                         &[("uri", &format!("http://localhost:{}/", crate::services::oauth::DROPBOX_REDIRECT_PORT))],
@@ -582,6 +597,7 @@ pub(super) fn build_editor(
     );
 
     let link_terms = link_terms.clone();
+    let remove_sender = sender.clone();
     let save: Rc<dyn Fn() -> bool> = Rc::new(move || {
         let a = read();
         let secret = if a.kind.via_goa() {
@@ -649,6 +665,25 @@ pub(super) fn build_editor(
         });
         true
     });
+    // Removing is done here, last (screen 44).
+    if index.is_some() {
+        let group = adw::PreferencesGroup::new();
+        group.set_margin_top(24);
+        let remove = crate::ui::accounts::action_row(
+            &i18n("Remove account"),
+            Some("user-trash-symbolic"),
+            "error",
+        );
+        remove.set_subtitle(&i18n(
+            "Files already uploaded and shared links stay active at the provider.",
+        ));
+        let s = remove_sender;
+        remove.connect_activated(move |_| {
+            let _ = s.send(CloudAccountsInput::RemoveCurrent);
+        });
+        group.add(&remove);
+        bx.append(&group);
+    }
     (bx.upcast(), save)
 }
 
@@ -660,7 +695,7 @@ pub(super) fn build_editor(
 // as the closure that held them captured them.
 #[allow(clippy::too_many_arguments)]
 fn connect_check(
-    check: &gtk::Button,
+    check: &adw::ActionRow,
     read: impl Fn() -> CloudAccount + Clone + 'static,
     pass: &adw::PasswordEntryRow,
     status: &gtk::Label,
@@ -673,7 +708,7 @@ fn connect_check(
     apply_terms: impl Fn(&CloudAccount) + Clone + 'static,
 ) {
     let (pass, status, name, code) = (pass.clone(), status.clone(), name.clone(), code.clone());
-    check.connect_clicked(move |b| {
+    check.connect_activated(move |b| {
         let a = read();
         /// A typed password, or else the saved one, read on the sign-in's
         /// thread: the keyring may wait on its user (#466).

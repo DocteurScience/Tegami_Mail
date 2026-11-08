@@ -77,7 +77,8 @@ impl AccountsWindow {
             smart_list: None,
             find_tags_spinner: None,
             apply_filters_spinner: None,
-            apply_filters_label: None,
+            apply_filters_row: None,
+            filters_search: None,
             filters_applying: false,
             find_tags_row: None,
             tag_totals: Default::default(),
@@ -126,7 +127,8 @@ impl AccountsWindow {
         self.tags_list = Some(widgets.tags.tags_list.clone());
         self.find_tags_spinner = Some(widgets.tags.find_tags_spinner.clone());
         self.apply_filters_spinner = Some(widgets.filters.apply_filters_spinner.clone());
-        self.apply_filters_label = Some(widgets.filters.apply_filters_label.clone());
+        self.apply_filters_row = Some(widgets.filters.apply_filters_row.clone());
+        self.filters_search = Some(widgets.filters.search_group.clone());
         self.find_tags_row = Some(widgets.tags.find_tags_row.clone());
         self.rebuild_tag_rows(sender);
         self.smart_list = Some(widgets.smart.smart_list.clone());

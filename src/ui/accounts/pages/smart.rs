@@ -1,9 +1,8 @@
-//! Settings → Smart Folders: the list of saved searches.
+//! Settings → Smart folders (#417; screen 39): the saved searches, each
+//! opening its editor, and "Add smart folder…" at the end of the list.
 
 use adw::prelude::*;
-use relm4::prelude::*;
 
-use super::super::{AccountsInput, AccountsWindow};
 use crate::i18n::i18n;
 
 /// The page, and the widgets on it that the panel reaches later.
@@ -14,31 +13,17 @@ pub(in crate::ui::accounts) struct SmartPage {
 }
 
 impl SmartPage {
-    pub(in crate::ui::accounts) fn build(sender: &ComponentSender<AccountsWindow>) -> Self {
-        relm4::view! {
-            page = adw::PreferencesPage {
-                // Smart folders (#417): saved searches.
-                add = &adw::PreferencesGroup {
-                    set_title: &i18n("Smart folders"),
-                    set_description: Some(
-                        i18n("Lists the messages that match its conditions. Shown in the sidebar under the unified rows.").as_str()
-                    ),
-                    #[wrap(Some)]
-                    set_header_suffix = &gtk::Button {
-                        set_label: &i18n("Add smart folder…"),
-                        set_valign: gtk::Align::Start,
-                        set_margin_start: 24,
-                        connect_clicked => AccountsInput::AddSmartFolder,
-                    },
-
-                    #[name = "smart_list"]
-                    gtk::ListBox {
-                        add_css_class: "boxed-list",
-                        set_selection_mode: gtk::SelectionMode::None,
-                    },
-                },
-            }
-        }
+    pub(in crate::ui::accounts) fn build() -> Self {
+        let page = adw::PreferencesPage::new();
+        let group = adw::PreferencesGroup::new();
+        group.set_description(Some(&i18n(
+            "Shows the messages that match its criteria. In the sidebar, a collapsible “Smart folders” section follows the unified inboxes; it appears only when there is at least one.",
+        )));
+        let smart_list = gtk::ListBox::new();
+        smart_list.add_css_class("boxed-list");
+        smart_list.set_selection_mode(gtk::SelectionMode::None);
+        group.add(&smart_list);
+        page.add(&group);
         Self { page, smart_list }
     }
 }

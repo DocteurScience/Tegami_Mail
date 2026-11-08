@@ -2433,8 +2433,9 @@ msgstr " és "
 msgid ", tagged {tag}"
 msgstr ", {tag} címkével"
 
-msgid "Remove filter"
-msgstr "Szűrő eltávolítása"
+#. Last, the way to add one (screen 37).
+msgid "Add filter…"
+msgstr "Szűrő hozzáadása…"
 
 msgid "Applying…"
 msgstr "Alkalmazás…"
@@ -2473,6 +2474,17 @@ msgid "Include the folder's unread mail in the tray icon's unread count"
 msgstr ""
 "A mappa olvasatlan leveleit is vegye figyelembe a tálcaikonon megjelenő "
 "olvasatlan levelek számának kiszámításakor"
+
+msgid "Advanced"
+msgstr ""
+
+#, fuzzy
+msgid "Tag, count unread mail"
+msgstr "Olvasatlan levelek számolása"
+
+#, fuzzy
+msgid "Delete filter"
+msgstr "Mappa törlése…"
 
 msgid "Never"
 msgstr "Soha"
@@ -2607,19 +2619,11 @@ msgstr "Megtalálható a GNOME Online-fiókok között"
 msgid "Open Online Accounts"
 msgstr "Internetes Fiókok megnyitása…"
 
-#, fuzzy
-msgid "Smart folders"
-msgstr "Mappák rendezése"
-
-#, fuzzy
 msgid ""
-"Lists the messages that match its conditions. Shown in the sidebar under the "
-"unified rows."
-msgstr "A fiók megjelenése az oldalsávban és a Beérkezett üzenetek nézetben."
-
-#, fuzzy
-msgid "Add smart folder…"
-msgstr "Mappa hozzáadása"
+"Shows the messages that match its criteria. In the sidebar, a collapsible "
+"“Smart folders” section follows the unified inboxes; it appears only when "
+"there is at least one."
+msgstr ""
 
 msgid "Searching…"
 msgstr "Keresés…"
@@ -2754,8 +2758,8 @@ msgid "All but trash and junk"
 msgstr ""
 
 #, fuzzy
-msgid "Remove smart folder"
-msgstr "Szűrő eltávolítása"
+msgid "Add smart folder…"
+msgstr "Mappa hozzáadása"
 
 msgid "Inbox"
 msgstr "Beérkezett üzenetek"
@@ -2810,6 +2814,10 @@ msgstr ""
 
 msgid "The preview each message has in the list"
 msgstr ""
+
+#, fuzzy
+msgid "Delete smart folder"
+msgstr "Mappa törlése…"
 
 msgid "Open"
 msgstr "Megnyitás"
@@ -2975,11 +2983,12 @@ msgstr "Hivatkozások védelme jelszóval"
 msgid "Each file gets its own password, shown to you to pass on."
 msgstr ""
 
-msgid "Link defaults"
-msgstr "Alapértelmezett hivatkozások"
-
-msgid "Used unless you change them in the upload dialog for one email."
+msgid "Links"
 msgstr ""
+
+#, fuzzy
+msgid "Two-step code, server behind Cloudflare"
+msgstr "Kiszolgáló a Cloudflare mögött"
 
 msgid "Check connection"
 msgstr "Internetkapcsolat ellenőrzése"
@@ -3076,6 +3085,13 @@ msgstr ""
 msgid "Connected as {who}."
 msgstr "Kapcsolódva mint: {who}."
 
+#, fuzzy
+msgid "Remove account"
+msgstr "Fiók eltávolítása…"
+
+msgid "Files already uploaded and shared links stay active at the provider."
+msgstr ""
+
 msgid "Choose an online account first."
 msgstr "Először válasszon egy Internetes Fiókot."
 
@@ -3136,10 +3152,9 @@ msgstr "Felhőtárhely"
 
 #, fuzzy
 msgid ""
-"Upload large files and send a link instead of attaching them.\n"
-"\n"
-"Supported providers: Nextcloud, ownCloud, OpenCloud, OneDrive, Dropbox and "
-"Seafile."
+"Upload large files to your online storage and send a link instead of the "
+"attachment. Supported services: Nextcloud, ownCloud, OpenCloud, OneDrive, "
+"Dropbox and Seafile."
 msgstr ""
 "Csatlakoztassa felhőjét, hogy melléklet helyett nagy fájlokat tölthessen fel "
 "és oszthasson meg. A szolgáltató hozzáadása után felhőikon jelenik meg a "
@@ -3147,9 +3162,6 @@ msgstr ""
 "\n"
 "Támogatott szolgáltatók: Nextcloud, ownCloud, OpenCloud, OneDrive, Dropbox "
 "és Seafile."
-
-msgid "No cloud accounts yet."
-msgstr "Még nincsenek felhőfiókok."
 
 msgid "Cloud account"
 msgstr "Felhőfiók"
@@ -4618,15 +4630,6 @@ msgstr "1 év"
 msgid "5 years"
 msgstr "5 év"
 
-msgid "GnuPG"
-msgstr "GnuPG"
-
-#, fuzzy
-msgid "The same keyring the gpg command and other mail apps use."
-msgstr ""
-"A GnuPG {version} megtalálva. A Tegami Mail olvassa és írja a "
-"kulcskészletét, amelyet a gpg parancs és más e-mail programok is használnak."
-
 msgid "Your keys"
 msgstr "Saját kulcsok"
 
@@ -4639,26 +4642,15 @@ msgstr ""
 "üzeneteket. A nyilvános kulcsfeledet küldd el azoknak, akik titkosított "
 "üzeneteket szeretnének neked írni."
 
-msgid "Import…"
-msgstr "Importálás…"
-
-msgid "Generate…"
-msgstr "Létrehozás…"
-
-msgid "Other people's keys"
-msgstr "Mások kulcsai"
+msgid "Correspondents’ keys"
+msgstr ""
 
 #, fuzzy
-msgid ""
-"Keys you encrypt to and check signatures with. Check a fingerprint with its "
-"owner before trusting it."
+msgid "Check the fingerprint with its owner before trusting a key."
 msgstr ""
 "Azok a kulcsok, amelyekkel titkosítasz és amelyekkel az aláírásokat "
 "ellenőrzöd. Egy kulcs akkor minősül megbízhatónak, ha már igazoltad; először "
 "ellenőrizd az ujjlenyomatát a tulajdonosával."
-
-msgid "Fetch by address…"
-msgstr "Lekérés cím alapján…"
 
 msgid "Search by name, address or key ID"
 msgstr ""
@@ -4666,8 +4658,13 @@ msgstr ""
 msgid "No keys from other people yet."
 msgstr "Még nincsenek másoktól származó kulcsok."
 
-msgid "GnuPG {version} found."
+#, fuzzy
+msgid ""
+"Uses the GnuPG {version} keyring, the same as the gpg command and other "
+"applications."
 msgstr ""
+"A GnuPG {version} megtalálva. A Tegami Mail olvassa és írja a "
+"kulcskészletét, amelyet a gpg parancs és más e-mail programok is használnak."
 
 #, fuzzy
 msgid ""
@@ -4677,9 +4674,6 @@ msgstr ""
 "A GnuPG nem található. A titkosított e-mailek olvasásához és az aláírások "
 "ellenőrzéséhez telepítse a gnupg csomagot; a Flatpak-verzió már tartalmazza."
 
-msgid "No key of your own yet. Generate one for your address."
-msgstr "Még nincs saját kulcsa. Hozzon létre egyet a címéhez."
-
 msgid "Your key is ready."
 msgstr "A kulcsa elkészült."
 
@@ -4688,6 +4682,17 @@ msgstr "A kulcs nem hozható létre: {e}"
 
 msgid "No key found: {e}"
 msgstr "Nem található kulcs: {e}"
+
+#, fuzzy
+msgid "Import a key…"
+msgstr "Kulcs importálása"
+
+#, fuzzy
+msgid "Generate a key…"
+msgstr "Kulcs létrehozása"
+
+msgid "Fetch by address…"
+msgstr "Lekérés cím alapján…"
 
 msgid "Generate a key"
 msgstr "Kulcs létrehozása"
@@ -5394,6 +5399,10 @@ msgstr "Első fiók hozzáadása"
 msgid "No accounts yet"
 msgstr "Még nincsenek fiókok"
 
+#, fuzzy
+msgid "Smart folders"
+msgstr "Mappák rendezése"
+
 msgid "Show each folder"
 msgstr "Minden mappa megjelenítése"
 
@@ -5480,10 +5489,6 @@ msgstr ""
 msgid "Script"
 msgstr ""
 
-#, fuzzy
-msgid "Translation"
-msgstr "Fordította"
-
 msgid ""
 "Uses a translation service under your own key. A message's text is sent only "
 "when you translate it."
@@ -5492,23 +5497,28 @@ msgstr ""
 msgid "Key"
 msgstr "Kulcs"
 
+#, fuzzy
+msgid "Server, region"
+msgstr "Kiszolgáló adatai"
+
 msgid "Region (empty for a global resource)"
 msgstr ""
 
+#, fuzzy
+msgid "Check the service"
+msgstr "Keresési beállítások"
+
 msgid "Translates a greeting to test the service."
+msgstr ""
+
+msgid ""
+"A “Translate” button shows on messages in another language. The language is "
+"detected on this computer."
 msgstr ""
 
 #, fuzzy
 msgid "Tegami Mail's language ({language})"
 msgstr "Rendszer nyelve — {language}"
-
-msgid "Offer to translate"
-msgstr ""
-
-msgid ""
-"Messages in another language show a Translate button. The language is "
-"detected on this computer."
-msgstr ""
 
 msgid "Key (if the server asks for one)"
 msgstr ""
@@ -6075,15 +6085,11 @@ msgstr "Nagy fájlok"
 msgid "Search filters"
 msgstr "Keresési szűrők"
 
-msgid ""
-"File or tag incoming mail automatically. Filters run on each Inbox as it "
-"syncs; Apply Now runs them over the mail already there."
+msgid "File or tag mail as it arrives. Filters run on each Inbox as it syncs."
 msgstr ""
 
-msgid "Add filter…"
-msgstr "Szűrő hozzáadása…"
-
-msgid "Run every rule over the mail already in your inboxes"
+#, fuzzy
+msgid "Runs every rule over the mail already in your inboxes."
 msgstr "Futtasson minden szabályt a beérkező levelekben már meglévő leveleken"
 
 #. GNOME Online Accounts owns this account's servers and
@@ -6159,10 +6165,6 @@ msgstr "Aláírás"
 msgid "OpenPGP encryption"
 msgstr "OpenPGP-kulcsok"
 
-#, fuzzy
-msgid "Remove account"
-msgstr "Fiók eltávolítása…"
-
 msgid "Also removes its saved password. Mail on the server is not touched."
 msgstr ""
 
@@ -6198,9 +6200,6 @@ msgid "Use other credentials"
 msgstr "Külön SMTP hitelesítő adatok"
 
 msgid "Off: the incoming credentials are used."
-msgstr ""
-
-msgid "Advanced"
 msgstr ""
 
 #, fuzzy
@@ -6469,6 +6468,10 @@ msgstr ""
 #, fuzzy
 msgid "Senders"
 msgstr "Feladók"
+
+#, fuzzy
+msgid "Translation"
+msgstr "Fordította"
 
 msgid "Backup and restore"
 msgstr ""

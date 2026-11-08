@@ -103,7 +103,9 @@ pub(crate) struct Settings {
     /// LibreTranslate: the server, e.g. `https://translate.example.org`.
     #[serde(default)]
     pub(crate) url: String,
-    /// Offer a translation on messages in another language.
+    /// Offer a translation on messages in another language. No longer
+    /// read: the offer shows whenever a service is set. Kept so a saved
+    /// file round-trips unchanged.
     #[serde(default)]
     pub(crate) offer: bool,
 }

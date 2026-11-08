@@ -16,8 +16,9 @@ mod tags;
 
 pub(super) use accounts::AccountsPage;
 pub(crate) use accounts::ACCOUNTS_LIST_NAME;
-pub(super) use filters::FiltersPage;
-pub(super) use form::{add_row, EditorForm};
+pub(super) use filters::{FiltersPage, SEARCH_FROM as FILTERS_SEARCH_FROM};
+pub(super) use form::EditorForm;
+pub(crate) use form::{action_row, add_row};
 pub(super) use senders::SendersPage;
 pub(super) use smart::SmartPage;
 pub(super) use tags::TagsPage;

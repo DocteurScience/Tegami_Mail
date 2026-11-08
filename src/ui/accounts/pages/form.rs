@@ -188,11 +188,7 @@ fn sub_page(title: &str, page: &adw::PreferencesPage) -> adw::NavigationPage {
 /// its title in the accent colour (`add-row`), or the destructive one
 /// (`error`), with an icon before it when one is given. Left-aligned,
 /// where an `AdwButtonRow` centres its title.
-pub(in crate::ui::accounts) fn action_row(
-    title: &str,
-    icon: Option<&str>,
-    class: &str,
-) -> adw::ActionRow {
+pub(crate) fn action_row(title: &str, icon: Option<&str>, class: &str) -> adw::ActionRow {
     let row = adw::ActionRow::new();
     row.set_title(title);
     row.set_activatable(true);
@@ -206,7 +202,7 @@ pub(in crate::ui::accounts) fn action_row(
 }
 
 /// A row that adds something: "+" and its title in the accent colour.
-pub(in crate::ui::accounts) fn add_row(title: &str) -> adw::ActionRow {
+pub(crate) fn add_row(title: &str) -> adw::ActionRow {
     action_row(title, Some("list-add-symbolic"), "add-row")
 }
 

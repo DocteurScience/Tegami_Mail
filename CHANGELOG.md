@@ -2,6 +2,20 @@
 
 ## Unreleased
 
+- **Changed: the filter, smart folder, OpenPGP, cloud storage and
+  translation pages** (docs/DESIGN.md, "Organize mail and services";
+  screens 37 to 45). Each list ends with the row that adds to it; a filter
+  or a smart folder is deleted from its editor, a cloud account removed from
+  its page; **Apply now** is a row under the filters, whose search box shows
+  once there are eight or more. The filter editor keeps the tag and the
+  unread count under **Advanced**; the cloud account editor groups the link
+  terms under **Links** and keeps the two-step code and Cloudflare under
+  **Advanced**; translation keeps the server and region under **Advanced**.
+  The OpenPGP page names the GnuPG keyring in a note at the bottom. The
+  Accounts page says which cloud accounts and translation service are set.
+- **Removed (approved in docs/DESIGN.md, "Removed or moved"): "Offer to
+  translate"**: the reader offers a translation whenever a service is set.
+
 - **Changed: the Accounts page and the account page** (docs/DESIGN.md,
   "Accounts"; screens 26 to 34). The accounts are listed at the top of
   Preferences → Accounts, each with its name and address, and end with

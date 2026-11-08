@@ -60,7 +60,9 @@ impl AccountsWindow {
         while let Some(row) = list.first_child() {
             list.remove(&row);
         }
-        list.set_visible(!self.filter_rules.is_empty());
+        if let Some(search) = &self.filters_search {
+            search.set_visible(self.filter_rules.len() >= super::pages::FILTERS_SEARCH_FROM);
+        }
         for (i, r) in self.filter_rules.iter().enumerate() {
             let row = adw::ActionRow::new();
             // Roomier than a stock row: the stacked switches and the two-line
@@ -117,21 +119,18 @@ impl AccountsWindow {
             // A named rule's subtitle runs to two lines (the conditions,
             // then where the mail goes); an unnamed one keeps the one it had.
             row.set_subtitle_lines(if named { 0 } else { 1 });
-            // The trash button removes; a chevron says the row opens the
-            // rule's editor, as the account and cloud rows do. The rule's
-            // "count unread" switch lives in the editor.
-            let rm = gtk::Button::from_icon_name("user-trash-symbolic");
-            rm.add_css_class("flat");
-            rm.set_valign(gtk::Align::Center);
-            rm.set_tooltip_text(Some(i18n("Remove filter").as_str()));
-            let s = sender.clone();
-            rm.connect_clicked(move |_| s.input_sender().emit(AccountsInput::RemoveFilter(i)));
-            row.add_suffix(&rm);
+            // A chevron says the row opens the rule's editor, where it is
+            // deleted too (screens 37, 38).
             let next = gtk::Image::from_icon_name("go-next-symbolic");
             next.add_css_class("dim-label");
             row.add_suffix(&next);
             list.append(&row);
         }
+        // Last, the way to add one (screen 37).
+        let add = super::pages::add_row(&i18n("Add filter…"));
+        let s = sender.clone();
+        add.connect_activated(move |_| s.input_sender().emit(AccountsInput::AddFilter));
+        list.append(&add);
     }
 
     /// The Apply Now button while a filter run is under way (#198): a turning
@@ -142,8 +141,8 @@ impl AccountsWindow {
             spinner.set_visible(on);
             spinner.set_spinning(on);
         }
-        if let Some(label) = &self.apply_filters_label {
-            label.set_label(&if on {
+        if let Some(row) = &self.apply_filters_row {
+            row.set_title(&if on {
                 i18n("Applying…")
             } else {
                 i18n("Apply now")
@@ -347,8 +346,14 @@ impl AccountsWindow {
             "Include the folder's unread mail in the tray icon's unread count",
         ));
         count_row.set_active(true);
-        action_group.add(&tag_row);
-        action_group.add(&count_row);
+        // The rare parts of a rule, under Advanced (docs/DESIGN.md,
+        // "Organize mail and services").
+        let advanced = adw::ExpanderRow::new();
+        advanced.set_title(&i18n("Advanced"));
+        advanced.set_subtitle(&i18n("Tag, count unread mail"));
+        advanced.add_row(&tag_row);
+        advanced.add_row(&count_row);
+        action_group.add(&advanced);
 
         // Editing: every field starts from the rule as it stands. A new
         // rule started from a message starts from its draft the same way,
@@ -373,6 +378,7 @@ impl AccountsWindow {
                 tag_row.set_selected(idx as u32 + 1);
             }
             count_row.set_active(rule.count_unread);
+            advanced.set_expanded(tag_row.selected() != 0 || !rule.count_unread);
         }
 
         page_box.append(&account_group);
@@ -381,6 +387,23 @@ impl AccountsWindow {
         page_box.append(&actions.group);
         page_box.append(&actions.add_group);
         page_box.append(&action_group);
+        // Deleting a rule is done here, the one place it is edited.
+        if let Some(i) = edit_index {
+            let group = adw::PreferencesGroup::new();
+            let delete = super::pages::action_row(
+                &i18n("Delete filter"),
+                Some("user-trash-symbolic"),
+                "error",
+            );
+            let s = sender.clone();
+            let nav = nav.clone();
+            delete.connect_activated(move |_| {
+                s.input_sender().emit(AccountsInput::RemoveFilter(i));
+                nav.pop();
+            });
+            group.add(&delete);
+            page_box.append(&group);
+        }
         // The condition groups slot in above Add Condition: the rule's own
         // when editing, one blank one otherwise.
         match source {

@@ -51,7 +51,7 @@ use form::{
 };
 pub(crate) use messages::{AccountsCmd, AccountsInit, AccountsInput, AccountsOutput, TagProposal};
 pub(crate) use oauth::open_online_accounts;
-pub(crate) use pages::ACCOUNTS_LIST_NAME;
+pub(crate) use pages::{action_row, add_row, ACCOUNTS_LIST_NAME};
 use pages::{AccountsPage, EditorForm, FiltersPage, SendersPage, SmartPage, TagsPage};
 use providers::provider_at;
 pub(crate) use providers::{brand_for_goa, provider_factory, Provider, PROVIDERS};
@@ -96,7 +96,9 @@ pub(crate) struct AccountsWindow {
     /// The Apply Now button's spinner and label, turned on while a manual
     /// filter run is under way (#198).
     apply_filters_spinner: Option<gtk::Spinner>,
-    apply_filters_label: Option<gtk::Label>,
+    apply_filters_row: Option<adw::ActionRow>,
+    /// The filters page's search box, shown once the list is long.
+    filters_search: Option<adw::PreferencesGroup>,
     /// Whether a manual filter run is under way; a second press does nothing.
     filters_applying: bool,
     find_tags_row: Option<adw::ActionRow>,
@@ -265,7 +267,7 @@ impl Component for AccountsWindow {
         let accounts = AccountsPage::build(&sender);
         let tags = TagsPage::build(&sender);
         let tags_page = &tags.page;
-        let smart = SmartPage::build(&sender);
+        let smart = SmartPage::build();
         let smart_page = &smart.page;
         let filters = FiltersPage::build(&sender);
         let filters_page = &filters.page;

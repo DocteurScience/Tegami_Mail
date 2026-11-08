@@ -2350,8 +2350,9 @@ msgstr " e "
 msgid ", tagged {tag}"
 msgstr ", com a etiqueta {tag}"
 
-msgid "Remove filter"
-msgstr "Remover filtro"
+#. Last, the way to add one (screen 37).
+msgid "Add filter…"
+msgstr "Adicionar filtro…"
 
 msgid "Applying…"
 msgstr "Aplicando…"
@@ -2391,6 +2392,17 @@ msgid "Include the folder's unread mail in the tray icon's unread count"
 msgstr ""
 "Incluir o email não lido da pasta na contagem de mensagens não lidas do "
 "ícone da área de notificação"
+
+msgid "Advanced"
+msgstr "Avançado"
+
+#, fuzzy
+msgid "Tag, count unread mail"
+msgstr "Contar email não lido"
+
+#, fuzzy
+msgid "Delete filter"
+msgstr "Excluir pasta…"
 
 msgid "Never"
 msgstr "Nunca"
@@ -2515,18 +2527,11 @@ msgstr "Adicionado nas Contas online do GNOME"
 msgid "Open Online Accounts"
 msgstr "Abrir Contas online"
 
-msgid "Smart folders"
-msgstr "Pastas de pesquisa"
-
 msgid ""
-"Lists the messages that match its conditions. Shown in the sidebar under the "
-"unified rows."
+"Shows the messages that match its criteria. In the sidebar, a collapsible "
+"“Smart folders” section follows the unified inboxes; it appears only when "
+"there is at least one."
 msgstr ""
-"Lista as mensagens que correspondem às suas condições. Aparece na barra "
-"lateral, sob as linhas unificadas."
-
-msgid "Add smart folder…"
-msgstr "Adicionar pasta de pesquisa…"
 
 msgid "Searching…"
 msgstr "Pesquisando…"
@@ -2651,8 +2656,8 @@ msgstr "Todas as contas"
 msgid "All but trash and junk"
 msgstr "Todas exceto Lixeira e Spam"
 
-msgid "Remove smart folder"
-msgstr "Remover pasta de pesquisa"
+msgid "Add smart folder…"
+msgstr "Adicionar pasta de pesquisa…"
 
 msgid "Inbox"
 msgstr "Caixa de entrada"
@@ -2701,6 +2706,10 @@ msgstr "Qualquer etiqueta"
 
 msgid "The preview each message has in the list"
 msgstr "A visualização de cada mensagem na lista"
+
+#, fuzzy
+msgid "Delete smart folder"
+msgstr "Excluir pasta de pesquisa…"
 
 msgid "Open"
 msgstr "Abrir"
@@ -2863,11 +2872,12 @@ msgstr ""
 "Cada arquivo recebe sua própria senha, que é mostrada a você para "
 "compartilhar com outras pessoas."
 
-msgid "Link defaults"
-msgstr "Padrões dos links"
+msgid "Links"
+msgstr ""
 
-msgid "Used unless you change them in the upload dialog for one email."
-msgstr "Usadas a menos que você as altere na janela de envio de uma mensagem."
+#, fuzzy
+msgid "Two-step code, server behind Cloudflare"
+msgstr "O servidor usa o proxy da Cloudflare"
 
 msgid "Check connection"
 msgstr "Verificar conexão"
@@ -2959,6 +2969,16 @@ msgstr ""
 msgid "Connected as {who}."
 msgstr "Conexão estabelecida como {who}."
 
+#, fuzzy
+msgid "Remove account"
+msgstr "Remover conta…"
+
+#, fuzzy
+msgid "Files already uploaded and shared links stay active at the provider."
+msgstr ""
+"Os arquivos já enviados para a nuvem e os links já enviados permanecem "
+"ativos no serviço do provedor."
+
 msgid "Choose an online account first."
 msgstr "Escolha primeiro uma conta online."
 
@@ -3010,20 +3030,17 @@ msgstr "Sessão iniciada como {who}. {terms}"
 msgid "Cloud storage"
 msgstr "Armazenamento na nuvem"
 
+#, fuzzy
 msgid ""
-"Upload large files and send a link instead of attaching them.\n"
-"\n"
-"Supported providers: Nextcloud, ownCloud, OpenCloud, OneDrive, Dropbox and "
-"Seafile."
+"Upload large files to your online storage and send a link instead of the "
+"attachment. Supported services: Nextcloud, ownCloud, OpenCloud, OneDrive, "
+"Dropbox and Seafile."
 msgstr ""
 "Envie arquivos grandes para a nuvem e compartilhe um link em vez de anexá-"
 "los.\n"
 "\n"
 "Provedores compatíveis: Nextcloud, ownCloud, OpenCloud, OneDrive, Dropbox e "
 "Seafile."
-
-msgid "No cloud accounts yet."
-msgstr "Ainda não existem contas de armazenamento na nuvem."
 
 msgid "Cloud account"
 msgstr "Conta de armazenamento na nuvem"
@@ -4441,13 +4458,6 @@ msgstr "1 ano"
 msgid "5 years"
 msgstr "5 anos"
 
-msgid "GnuPG"
-msgstr "GnuPG"
-
-msgid "The same keyring the gpg command and other mail apps use."
-msgstr ""
-"O mesmo chaveiro usado pelo comando gpg e por outros aplicativos de email."
-
 msgid "Your keys"
 msgstr "Suas chaves"
 
@@ -4458,24 +4468,15 @@ msgstr ""
 "Sua chave assina o que você envia e abre o que é enviado criptografado para "
 "você. Compartilhe a parte pública com as pessoas que escrevem para você."
 
-msgid "Import…"
-msgstr "Importar…"
+#, fuzzy
+msgid "Correspondents’ keys"
+msgstr "Correspondentes"
 
-msgid "Generate…"
-msgstr "Gerar…"
-
-msgid "Other people's keys"
-msgstr "Chaves de outras pessoas"
-
-msgid ""
-"Keys you encrypt to and check signatures with. Check a fingerprint with its "
-"owner before trusting it."
+#, fuzzy
+msgid "Check the fingerprint with its owner before trusting a key."
 msgstr ""
 "Chaves usadas para criptografar e verificar assinaturas. Confira a impressão "
 "digital com o proprietário antes de confiar em uma chave."
-
-msgid "Fetch by address…"
-msgstr "Obter por endereço…"
 
 msgid "Search by name, address or key ID"
 msgstr ""
@@ -4483,8 +4484,12 @@ msgstr ""
 msgid "No keys from other people yet."
 msgstr "Ainda não existem chaves de outras pessoas."
 
-msgid "GnuPG {version} found."
-msgstr "GnuPG {version} encontrado."
+#, fuzzy
+msgid ""
+"Uses the GnuPG {version} keyring, the same as the gpg command and other "
+"applications."
+msgstr ""
+"O mesmo chaveiro usado pelo comando gpg e por outros aplicativos de email."
 
 msgid ""
 "GnuPG was not found. Install the gnupg package to read encrypted mail and "
@@ -4492,9 +4497,6 @@ msgid ""
 msgstr ""
 "O GnuPG não foi encontrado. Instale o pacote gnupg para ler mensagens "
 "criptografadas e verificar assinaturas."
-
-msgid "No key of your own yet. Generate one for your address."
-msgstr "Ainda não possui uma chave própria. Gere uma para seu endereço."
 
 msgid "Your key is ready."
 msgstr "Sua chave está pronta."
@@ -4504,6 +4506,17 @@ msgstr "Não foi possível gerar a chave: {e}"
 
 msgid "No key found: {e}"
 msgstr "Nenhuma chave encontrada: {e}"
+
+#, fuzzy
+msgid "Import a key…"
+msgstr "Importar chave"
+
+#, fuzzy
+msgid "Generate a key…"
+msgstr "Gerar uma chave"
+
+msgid "Fetch by address…"
+msgstr "Obter por endereço…"
 
 msgid "Generate a key"
 msgstr "Gerar uma chave"
@@ -5185,6 +5198,9 @@ msgstr "Adicionar a primeira conta"
 msgid "No accounts yet"
 msgstr "Ainda não existem contas"
 
+msgid "Smart folders"
+msgstr "Pastas de pesquisa"
+
 msgid "Show each folder"
 msgstr "Mostrar cada pasta"
 
@@ -5268,9 +5284,6 @@ msgstr "Arquivo"
 msgid "Script"
 msgstr ""
 
-msgid "Translation"
-msgstr "Tradução"
-
 msgid ""
 "Uses a translation service under your own key. A message's text is sent only "
 "when you translate it."
@@ -5281,24 +5294,30 @@ msgstr ""
 msgid "Key"
 msgstr "Chave"
 
+#, fuzzy
+msgid "Server, region"
+msgstr "Dados do servidor"
+
 msgid "Region (empty for a global resource)"
 msgstr "Região (em branco para um recurso global)"
+
+#, fuzzy
+msgid "Check the service"
+msgstr "Verificar as configurações"
 
 msgid "Translates a greeting to test the service."
 msgstr "Traduz uma saudação para testar o serviço."
 
-msgid "Tegami Mail's language ({language})"
-msgstr "Idioma do Tegami Mail ({language})"
-
-msgid "Offer to translate"
-msgstr "Oferecer tradução"
-
+#, fuzzy
 msgid ""
-"Messages in another language show a Translate button. The language is "
+"A “Translate” button shows on messages in another language. The language is "
 "detected on this computer."
 msgstr ""
 "As mensagens em outro idioma mostram um botão Traduzir. O idioma é "
 "identificado neste computador."
+
+msgid "Tegami Mail's language ({language})"
+msgstr "Idioma do Tegami Mail ({language})"
 
 msgid "Key (if the server asks for one)"
 msgstr "Chave (se o servidor a solicitar)"
@@ -5861,18 +5880,15 @@ msgstr "Arquivos vCard"
 msgid "Search filters"
 msgstr "Pesquisar filtros"
 
-msgid ""
-"File or tag incoming mail automatically. Filters run on each Inbox as it "
-"syncs; Apply Now runs them over the mail already there."
+#, fuzzy
+msgid "File or tag mail as it arrives. Filters run on each Inbox as it syncs."
 msgstr ""
 "Arquive ou etiquete automaticamente as mensagens recebidas. Os filtros são "
 "executados em cada Caixa de entrada durante a sincronização; Aplicar agora "
 "os executa nas mensagens já existentes."
 
-msgid "Add filter…"
-msgstr "Adicionar filtro…"
-
-msgid "Run every rule over the mail already in your inboxes"
+#, fuzzy
+msgid "Runs every rule over the mail already in your inboxes."
 msgstr ""
 "Executar todas as regras nas mensagens que já estão nas caixas de entrada"
 
@@ -5947,10 +5963,6 @@ msgstr "Assinaturas"
 msgid "OpenPGP encryption"
 msgstr "Chaves OpenPGP"
 
-#, fuzzy
-msgid "Remove account"
-msgstr "Remover conta…"
-
 msgid "Also removes its saved password. Mail on the server is not touched."
 msgstr ""
 
@@ -5983,9 +5995,6 @@ msgstr "Desativado, usa as credenciais acima."
 #, fuzzy
 msgid "Off: the incoming credentials are used."
 msgstr "Desativado, usa as credenciais acima."
-
-msgid "Advanced"
-msgstr "Avançado"
 
 #, fuzzy
 msgid "API token, custom OAuth app, certificate for another name"
@@ -6247,6 +6256,9 @@ msgstr ""
 #, fuzzy
 msgid "Senders"
 msgstr "Remetente"
+
+msgid "Translation"
+msgstr "Tradução"
 
 msgid "Backup and restore"
 msgstr ""

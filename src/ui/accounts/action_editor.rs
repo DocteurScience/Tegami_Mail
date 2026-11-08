@@ -99,10 +99,7 @@ impl ActionList {
         let group = adw::PreferencesGroup::new();
         group.set_title(&i18n("Then"));
         let add_group = adw::PreferencesGroup::new();
-        let add_row = adw::ActionRow::new();
-        add_row.set_title(&i18n("Add action"));
-        add_row.set_activatable(true);
-        add_row.add_prefix(&gtk::Image::from_icon_name("list-add-symbolic"));
+        let add_row = super::pages::add_row(&i18n("Add action"));
         add_group.add(&add_row);
         let list = ActionList {
             group,

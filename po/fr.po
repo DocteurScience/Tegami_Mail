@@ -2182,7 +2182,7 @@ msgid "Text to match"
 msgstr "Texte à rechercher"
 
 msgid "Add condition"
-msgstr "Ajouter une condition"
+msgstr "Ajouter un critère"
 
 msgid "Condition matching"
 msgstr "Correspondance des conditions"
@@ -2241,7 +2241,9 @@ msgstr "Nouveau compte"
 msgid ""
 "Paused: Mail is switched off for this account in GNOME Settings → Online "
 "Accounts."
-msgstr "En pause : le courrier est désactivé pour ce compte dans Paramètres GNOME → Comptes en ligne."
+msgstr ""
+"En pause : le courrier est désactivé pour ce compte dans Paramètres GNOME → "
+"Comptes en ligne."
 
 msgid "Off returns it to the import list. It stays in GNOME Online Accounts."
 msgstr ""
@@ -2249,12 +2251,16 @@ msgstr ""
 "Comptes en ligne de GNOME."
 
 msgid "The password is kept in the system keyring, never in plain text."
-msgstr "Le mot de passe est conservé dans le trousseau du système, jamais en clair."
+msgstr ""
+"Le mot de passe est conservé dans le trousseau du système, jamais en clair."
 
 msgid ""
 "The certificate is for another name. If this server is the right one, turn "
 "on “Accept a certificate for another name” under Advanced and test again."
-msgstr "Le certificat est établi pour un autre nom. Si ce serveur est le bon, activez « Accepter un certificat pour un autre nom » sous Avancé et testez à nouveau."
+msgstr ""
+"Le certificat est établi pour un autre nom. Si ce serveur est le bon, "
+"activez « Accepter un certificat pour un autre nom » sous Avancé et testez à "
+"nouveau."
 
 msgid "Connected: receiving and sending work."
 msgstr "Connecté : réception et envoi fonctionnent."
@@ -2306,8 +2312,9 @@ msgstr " et "
 msgid ", tagged {tag}"
 msgstr ", étiquette {tag}"
 
-msgid "Remove filter"
-msgstr "Supprimer le filtre"
+#. Last, the way to add one (screen 37).
+msgid "Add filter…"
+msgstr "Ajouter un filtre…"
 
 msgid "Applying…"
 msgstr "Application…"
@@ -2348,6 +2355,15 @@ msgid "Include the folder's unread mail in the tray icon's unread count"
 msgstr ""
 "Inclure le courrier non lu de ce dossier dans le compteur de non-lus de "
 "l’icône de la zone de notification"
+
+msgid "Advanced"
+msgstr "Avancé"
+
+msgid "Tag, count unread mail"
+msgstr "Étiquette, compter les non lus"
+
+msgid "Delete filter"
+msgstr "Supprimer le filtre"
 
 msgid "Never"
 msgstr "Jamais"
@@ -2459,23 +2475,18 @@ msgid "Check GNOME Online Accounts for new accounts"
 msgstr "Rechercher de nouveaux comptes dans les Comptes en ligne de GNOME"
 
 msgid "Accounts added in GNOME Settings → Online Accounts appear here."
-msgstr "Les comptes ajoutés dans Paramètres GNOME → Comptes en ligne apparaissent ici."
+msgstr ""
+"Les comptes ajoutés dans Paramètres GNOME → Comptes en ligne apparaissent "
+"ici."
 
 msgid "Open Online Accounts"
 msgstr "Ouvrir Comptes en ligne"
 
-msgid "Smart folders"
-msgstr "Dossiers intelligents"
-
 msgid ""
-"Lists the messages that match its conditions. Shown in the sidebar under the "
-"unified rows."
-msgstr ""
-"Liste les messages qui répondent à ses conditions. Affiché dans la barre "
-"latérale, sous les lignes unifiées."
-
-msgid "Add smart folder…"
-msgstr "Ajouter un dossier intelligent…"
+"Shows the messages that match its criteria. In the sidebar, a collapsible "
+"“Smart folders” section follows the unified inboxes; it appears only when "
+"there is at least one."
+msgstr "Affiche les messages qui correspondent à ses critères. Dans la barre latérale, une section repliable « Dossiers intelligents » suit les boîtes unifiées ; elle n’apparaît que s’il y en a au moins un."
 
 msgid "Searching…"
 msgstr "Recherche…"
@@ -2601,8 +2612,8 @@ msgstr "Tous les comptes"
 msgid "All but trash and junk"
 msgstr "Tous sauf la Corbeille et les Indésirables"
 
-msgid "Remove smart folder"
-msgstr "Supprimer le dossier intelligent"
+msgid "Add smart folder…"
+msgstr "Ajouter un dossier intelligent…"
 
 msgid "Inbox"
 msgstr "Boîte de réception"
@@ -2651,6 +2662,9 @@ msgstr "N’importe quelle étiquette"
 
 msgid "The preview each message has in the list"
 msgstr "L’aperçu de chaque message dans la liste"
+
+msgid "Delete smart folder"
+msgstr "Supprimer le dossier intelligent"
 
 msgid "Open"
 msgstr "Ouvrir"
@@ -2789,7 +2803,7 @@ msgid "Library"
 msgstr "Bibliothèque"
 
 msgid "Upload folder"
-msgstr "Dossier de téléversement"
+msgstr "Dossier d’envoi"
 
 msgid "Server is behind Cloudflare"
 msgstr "Le serveur est derrière Cloudflare"
@@ -2815,13 +2829,11 @@ msgstr ""
 "Chaque fichier reçoit son propre mot de passe, qui vous est affiché pour que "
 "vous le transmettiez."
 
-msgid "Link defaults"
-msgstr "Valeurs par défaut des liens"
+msgid "Links"
+msgstr "Liens"
 
-msgid "Used unless you change them in the upload dialog for one email."
-msgstr ""
-"Utilisés, sauf si vous les modifiez dans la boîte de dialogue de "
-"téléversement pour un e-mail."
+msgid "Two-step code, server behind Cloudflare"
+msgstr "Code à deux facteurs, serveur derrière Cloudflare"
 
 msgid "Check connection"
 msgstr "Vérifier la connexion"
@@ -2915,6 +2927,12 @@ msgstr ""
 msgid "Connected as {who}."
 msgstr "Connecté en tant que {who}."
 
+msgid "Remove account"
+msgstr "Supprimer le compte"
+
+msgid "Files already uploaded and shared links stay active at the provider."
+msgstr "Les fichiers déjà envoyés et les liens partagés restent actifs chez le fournisseur."
+
 msgid "Choose an online account first."
 msgstr "Choisissez d’abord un compte en ligne."
 
@@ -2969,18 +2987,10 @@ msgid "Cloud storage"
 msgstr "Stockage en ligne"
 
 msgid ""
-"Upload large files and send a link instead of attaching them.\n"
-"\n"
-"Supported providers: Nextcloud, ownCloud, OpenCloud, OneDrive, Dropbox and "
-"Seafile."
-msgstr ""
-"Téléversez de gros fichiers et envoyez un lien au lieu de les joindre.\n"
-"\n"
-"Services pris en charge : Nextcloud, ownCloud, OpenCloud, OneDrive, Dropbox "
-"et Seafile."
-
-msgid "No cloud accounts yet."
-msgstr "Aucun compte cloud pour le moment."
+"Upload large files to your online storage and send a link instead of the "
+"attachment. Supported services: Nextcloud, ownCloud, OpenCloud, OneDrive, "
+"Dropbox and Seafile."
+msgstr "Envoyez les gros fichiers vers votre service en ligne et envoyez un lien à la place de la pièce jointe. Services pris en charge : Nextcloud, ownCloud, OpenCloud, OneDrive, Dropbox et Seafile."
 
 msgid "Cloud account"
 msgstr "Compte cloud"
@@ -3309,7 +3319,7 @@ msgid "Other languages"
 msgstr "Autres langues"
 
 msgid "Translate into"
-msgstr "Traduire en"
+msgstr "Traduire vers"
 
 msgid "Not translated"
 msgstr "Non traduit"
@@ -4376,14 +4386,6 @@ msgstr "1 an"
 msgid "5 years"
 msgstr "5 ans"
 
-msgid "GnuPG"
-msgstr "GnuPG"
-
-msgid "The same keyring the gpg command and other mail apps use."
-msgstr ""
-"Le même trousseau de clés que celui qu’utilisent la commande gpg et d’autres "
-"applications de messagerie."
-
 msgid "Your keys"
 msgstr "Vos clés"
 
@@ -4394,24 +4396,11 @@ msgstr ""
 "Votre clé signe ce que vous envoyez et déchiffre ce qui vous est chiffré. "
 "Partagez sa moitié publique avec les personnes qui vous écrivent."
 
-msgid "Import…"
-msgstr "Importer…"
+msgid "Correspondents’ keys"
+msgstr "Clés des correspondants"
 
-msgid "Generate…"
-msgstr "Générer…"
-
-msgid "Other people's keys"
-msgstr "Les clés des autres"
-
-msgid ""
-"Keys you encrypt to and check signatures with. Check a fingerprint with its "
-"owner before trusting it."
-msgstr ""
-"Clés avec lesquelles vous chiffrez et vérifiez les signatures. Vérifiez une "
-"empreinte auprès de son propriétaire avant de lui faire confiance."
-
-msgid "Fetch by address…"
-msgstr "Récupérer par adresse…"
+msgid "Check the fingerprint with its owner before trusting a key."
+msgstr "Vérifiez l’empreinte avec son propriétaire avant d’approuver une clé."
 
 msgid "Search by name, address or key ID"
 msgstr "Rechercher par nom, adresse ou identifiant de clé"
@@ -4419,8 +4408,10 @@ msgstr "Rechercher par nom, adresse ou identifiant de clé"
 msgid "No keys from other people yet."
 msgstr "Aucune clé provenant d’autres personnes pour le moment."
 
-msgid "GnuPG {version} found."
-msgstr "GnuPG {version} détecté."
+msgid ""
+"Uses the GnuPG {version} keyring, the same as the gpg command and other "
+"applications."
+msgstr "Utilise le trousseau GnuPG {version}, le même que la commande gpg et les autres applications."
 
 msgid ""
 "GnuPG was not found. Install the gnupg package to read encrypted mail and "
@@ -4428,9 +4419,6 @@ msgid ""
 msgstr ""
 "GnuPG est introuvable. Installez le paquet gnupg pour lire les e-mails "
 "chiffrés et vérifier les signatures."
-
-msgid "No key of your own yet. Generate one for your address."
-msgstr "Vous n’avez pas encore de clé. Générez-en une pour votre adresse."
 
 msgid "Your key is ready."
 msgstr "Votre clé est prête."
@@ -4440,6 +4428,15 @@ msgstr "Impossible de générer la clé : {e}"
 
 msgid "No key found: {e}"
 msgstr "Clé introuvable : {e}"
+
+msgid "Import a key…"
+msgstr "Importer une clé…"
+
+msgid "Generate a key…"
+msgstr "Générer une clé…"
+
+msgid "Fetch by address…"
+msgstr "Chercher par adresse…"
 
 msgid "Generate a key"
 msgstr "Générer une clé"
@@ -5090,6 +5087,9 @@ msgstr "Ajouter un premier compte"
 msgid "No accounts yet"
 msgstr "Aucun compte pour le moment"
 
+msgid "Smart folders"
+msgstr "Dossiers intelligents"
+
 msgid "Show each folder"
 msgstr "Afficher chaque dossier"
 
@@ -5165,9 +5165,6 @@ msgstr "Fichier"
 msgid "Script"
 msgstr "Script"
 
-msgid "Translation"
-msgstr "Traduction"
-
 msgid ""
 "Uses a translation service under your own key. A message's text is sent only "
 "when you translate it."
@@ -5178,24 +5175,25 @@ msgstr ""
 msgid "Key"
 msgstr "Clé"
 
+msgid "Server, region"
+msgstr "Serveur, région"
+
 msgid "Region (empty for a global resource)"
 msgstr "Région (vide pour une ressource globale)"
+
+msgid "Check the service"
+msgstr "Vérifier le service"
 
 msgid "Translates a greeting to test the service."
 msgstr "Traduit une formule de salutation pour tester le service."
 
+msgid ""
+"A “Translate” button shows on messages in another language. The language is "
+"detected on this computer."
+msgstr "Un bouton « Traduire » apparaît sur les messages dans une autre langue. La langue est détectée sur cet ordinateur."
+
 msgid "Tegami Mail's language ({language})"
 msgstr "Langue de Tegami Mail ({language})"
-
-msgid "Offer to translate"
-msgstr "Proposer de traduire"
-
-msgid ""
-"Messages in another language show a Translate button. The language is "
-"detected on this computer."
-msgstr ""
-"Les messages dans une autre langue affichent un bouton Traduire. La langue "
-"est détectée sur cet ordinateur."
 
 msgid "Key (if the server asks for one)"
 msgstr "Clé (si le serveur en demande une)"
@@ -5755,21 +5753,11 @@ msgstr "Fichiers vCard"
 msgid "Search filters"
 msgstr "Filtres de recherche"
 
-msgid ""
-"File or tag incoming mail automatically. Filters run on each Inbox as it "
-"syncs; Apply Now runs them over the mail already there."
-msgstr ""
-"Classez ou étiquetez automatiquement le courrier entrant. Les filtres "
-"s’exécutent sur chaque boîte de réception à la synchronisation ; « Appliquer "
-"maintenant » les exécute sur le courrier déjà présent."
+msgid "File or tag mail as it arrives. Filters run on each Inbox as it syncs."
+msgstr "Classez ou étiquetez le courrier à son arrivée. Les filtres s’appliquent à chaque boîte de réception à la synchronisation."
 
-msgid "Add filter…"
-msgstr "Ajouter un filtre…"
-
-msgid "Run every rule over the mail already in your inboxes"
-msgstr ""
-"Exécutez toutes les règles sur le courrier déjà présent dans vos boîtes de "
-"réception"
+msgid "Runs every rule over the mail already in your inboxes."
+msgstr "Passe toutes les règles sur le courrier déjà présent dans vos boîtes de réception."
 
 #. GNOME Online Accounts owns this account's servers and
 #. credentials; Tegami Mail only mirrors them, and can hide it
@@ -5786,7 +5774,9 @@ msgstr "Géré par Comptes en ligne GNOME"
 
 msgid ""
 "Its address, servers and password are changed in Settings → Online Accounts."
-msgstr "Son adresse, ses serveurs et son mot de passe se modifient dans Paramètres → Comptes en ligne."
+msgstr ""
+"Son adresse, ses serveurs et son mot de passe se modifient dans Paramètres → "
+"Comptes en ligne."
 
 msgid "Display name"
 msgstr "Nom affiché"
@@ -5832,11 +5822,10 @@ msgstr "Signatures"
 msgid "OpenPGP encryption"
 msgstr "Chiffrement OpenPGP"
 
-msgid "Remove account"
-msgstr "Supprimer le compte"
-
 msgid "Also removes its saved password. Mail on the server is not touched."
-msgstr "Supprime aussi son mot de passe enregistré. Le courrier sur le serveur n’est pas touché."
+msgstr ""
+"Supprime aussi son mot de passe enregistré. Le courrier sur le serveur n’est "
+"pas touché."
 
 msgid "Incoming"
 msgstr "Réception"
@@ -5865,11 +5854,9 @@ msgstr "Utiliser d’autres identifiants"
 msgid "Off: the incoming credentials are used."
 msgstr "Désactivé : ceux de la réception sont utilisés."
 
-msgid "Advanced"
-msgstr "Avancé"
-
 msgid "API token, custom OAuth app, certificate for another name"
-msgstr "Jeton d’API, application OAuth personnalisée, certificat d’un autre nom"
+msgstr ""
+"Jeton d’API, application OAuth personnalisée, certificat d’un autre nom"
 
 msgid "Sign in with an API token"
 msgstr "Se connecter avec un jeton d’API"
@@ -5972,7 +5959,9 @@ msgstr "Dossiers spéciaux"
 msgid ""
 "Follows the server’s own markings unless you pick a folder. Nothing already "
 "on the server moves."
-msgstr "Suit les repères du serveur, sauf si vous choisissez un dossier. Rien de ce qui est déjà sur le serveur ne bouge."
+msgstr ""
+"Suit les repères du serveur, sauf si vous choisissez un dossier. Rien de ce "
+"qui est déjà sur le serveur ne bouge."
 
 msgid "Templates, snoozed, reply copies, server copy"
 msgstr "Modèles, différés, copie des réponses, copie du serveur"
@@ -6024,7 +6013,9 @@ msgstr "Aucun dossier masqué."
 msgid ""
 "Extra addresses this account can send as. They appear in the composer’s From "
 "field."
-msgstr "Adresses supplémentaires depuis lesquelles ce compte peut envoyer. Elles apparaissent dans le champ « De » du composeur."
+msgstr ""
+"Adresses supplémentaires depuis lesquelles ce compte peut envoyer. Elles "
+"apparaissent dans le champ « De » du composeur."
 
 msgid "Start new messages with this signature"
 msgstr "Commencer les nouveaux messages avec cette signature"
@@ -6033,7 +6024,8 @@ msgid "Delete signature"
 msgstr "Supprimer la signature"
 
 msgid "With several signatures, the composer offers a button to choose."
-msgstr "Avec plusieurs signatures, le composeur propose un bouton pour choisir."
+msgstr ""
+"Avec plusieurs signatures, le composeur propose un bouton pour choisir."
 
 msgid "Add signature"
 msgstr "Ajouter une signature"
@@ -6110,6 +6102,9 @@ msgstr ""
 
 msgid "Senders"
 msgstr "Expéditeurs"
+
+msgid "Translation"
+msgstr "Traduction"
 
 msgid "Backup and restore"
 msgstr "Sauvegarde et restauration"

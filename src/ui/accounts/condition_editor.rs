@@ -97,10 +97,7 @@ pub(super) struct CondControls {
 impl CondControls {
     pub(super) fn new() -> Self {
         let add_group = adw::PreferencesGroup::new();
-        let add_row = adw::ActionRow::new();
-        add_row.set_title(&i18n("Add condition"));
-        add_row.set_activatable(true);
-        add_row.add_prefix(&gtk::Image::from_icon_name("list-add-symbolic"));
+        let add_row = super::pages::add_row(&i18n("Add condition"));
         add_group.add(&add_row);
         let combine_row = adw::ComboRow::new();
         combine_row.set_title(&i18n("Condition matching"));

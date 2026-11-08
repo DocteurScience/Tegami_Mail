@@ -18,14 +18,13 @@ impl AsRef<CondRows> for SmartCondRows {
 
 impl AccountsWindow {
     /// The Smart Folders list (#417): a row per folder, saying where it
-    /// looks, activating to edit, with a remove button.
+    /// looks, activating to edit.
     pub(super) fn rebuild_smart_rows(&self, sender: &ComponentSender<Self>) {
         self.send_counts(sender);
         let Some(list) = &self.smart_list else { return };
         while let Some(row) = list.first_child() {
             list.remove(&row);
         }
-        list.set_visible(!self.smart_folders.is_empty());
         for (i, f) in self.smart_folders.iter().enumerate() {
             let row = adw::ActionRow::new();
             row.set_activatable(true);
@@ -45,16 +44,17 @@ impl AccountsWindow {
             row.set_subtitle(&gtk::glib::markup_escape_text(&format!(
                 "{account} · {folder}"
             )));
-            row.add_prefix(&gtk::Image::from_icon_name("folder-saved-search-symbolic"));
-            let rm = gtk::Button::from_icon_name("user-trash-symbolic");
-            rm.add_css_class("flat");
-            rm.set_valign(gtk::Align::Center);
-            rm.set_tooltip_text(Some(i18n("Remove smart folder").as_str()));
-            let s = sender.clone();
-            rm.connect_clicked(move |_| s.input_sender().emit(AccountsInput::RemoveSmartFolder(i)));
-            row.add_suffix(&rm);
+            // Opens the editor, where it is deleted too (screens 39, 40).
+            let next = gtk::Image::from_icon_name("go-next-symbolic");
+            next.add_css_class("dim-label");
+            next.set_accessible_role(gtk::AccessibleRole::Presentation);
+            row.add_suffix(&next);
             list.append(&row);
         }
+        let add = super::pages::add_row(&i18n("Add smart folder…"));
+        let s = sender.clone();
+        add.connect_activated(move |_| s.input_sender().emit(AccountsInput::AddSmartFolder));
+        list.append(&add);
     }
 
     fn smart_kind_label(k: crate::config::SmartFolderKind) -> String {
@@ -269,6 +269,24 @@ impl AccountsWindow {
                 }
             }
             _ => add_cond(None),
+        }
+
+        // Deleting is done here, the one place a smart folder is edited.
+        if let Some(i) = edit_index {
+            let group = adw::PreferencesGroup::new();
+            let delete = super::pages::action_row(
+                &i18n("Delete smart folder"),
+                Some("user-trash-symbolic"),
+                "error",
+            );
+            let s = sender.clone();
+            let nav = nav.clone();
+            delete.connect_activated(move |_| {
+                s.input_sender().emit(AccountsInput::RemoveSmartFolder(i));
+                nav.pop();
+            });
+            group.add(&delete);
+            page_box.append(&group);
         }
 
         let s = sender.clone();
