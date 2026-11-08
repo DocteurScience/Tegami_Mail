@@ -110,8 +110,8 @@ msgstr "Konto hinzufügen…"
 msgid "GNOME Online Accounts…"
 msgstr "GNOME Online Accounts"
 
-msgid "Settings"
-msgstr "Einstellungen"
+msgid "Preferences"
+msgstr ""
 
 msgid "Print preview…"
 msgstr "Druckvorschau…"
@@ -318,8 +318,8 @@ msgid_plural "{n} people"
 msgstr[0] "{n} Person"
 msgstr[1] "{n} Personen"
 
-msgid "Enable Console mode in Settings → System & Appearance"
-msgstr "Konsolenmodus unter \"Einstellungen → System\" aktivieren"
+msgid "Turn on Console mode in Troubleshooting, in the main menu"
+msgstr ""
 
 msgid "New message from template"
 msgstr "Aus Vorlage erstellen"
@@ -625,6 +625,47 @@ msgstr "Antwort wurde gesendet: Vorbehaltlich."
 msgid "Your answer has been sent: declined."
 msgstr "Antwort wurde gesendet: Abgelehnt."
 
+#, fuzzy
+msgid "Status bar"
+msgstr "Statusleiste ({n})"
+
+msgid "It shows what Tegami Mail is doing, and opens by itself for errors."
+msgstr ""
+
+#, fuzzy
+msgid "Show the status bar"
+msgstr "Statusleiste ausblenden"
+
+msgid "At the top of the window"
+msgstr ""
+
+msgid "Diagnostics"
+msgstr ""
+
+#, fuzzy
+msgid "Console mode"
+msgstr "Konsole"
+
+msgid "Offers a detailed activity console in the status bar."
+msgstr ""
+
+#, fuzzy
+msgid "Open the console"
+msgstr "Online-Konten öffnen"
+
+msgid "Ctrl+Shift+C"
+msgstr ""
+
+#, fuzzy
+msgid "Export the log…"
+msgstr "Protokoll exportieren"
+
+msgid "Saves recent activity in a file, to attach to a bug report."
+msgstr ""
+
+msgid "Troubleshooting"
+msgstr ""
+
 msgid ""
 "{n} contact exported to {file}. Open the file in GNOME Contacts to keep it."
 msgid_plural ""
@@ -915,6 +956,9 @@ msgstr "Nachrichtenansicht vergrößern oder verkleinern"
 msgid "Message zoom back to the default"
 msgstr "Nachrichtenansicht auf Standardgröße zurücksetzen"
 
+msgid "Settings"
+msgstr "Einstellungen"
+
 msgid "Search the Settings window, when it is open"
 msgstr "Geöffnetes Einstellungsfenster durchsuchen"
 
@@ -1108,17 +1152,12 @@ msgstr ""
 msgid "Your tags"
 msgstr "Eigene Tags"
 
-msgid "Hide status bar"
-msgstr "Statusleiste ausblenden"
-
-msgid "Reveal status bar"
-msgstr "Statusleiste anzeigen"
-
-msgid "Console"
-msgstr "Konsole"
-
 msgid "Help"
 msgstr ""
+
+#, fuzzy
+msgid "Troubleshooting…"
+msgstr "Wird getestet…"
 
 msgid "New message instead"
 msgstr "Stattdessen neue Nachricht verfassen"
@@ -4375,6 +4414,9 @@ msgstr "Abmelden…"
 msgid "Opens the list's unsubscribe page in your browser"
 msgstr "Öffnet die Abmeldeseite der Liste im Browser"
 
+msgid "Console"
+msgstr "Konsole"
+
 msgid "Collapse status bar"
 msgstr "Statusleiste einklappen"
 
@@ -4946,9 +4988,6 @@ msgstr "Systemsprache — {language}"
 
 msgid "Forget this word"
 msgstr "Dieses Wort vergessen"
-
-msgid "Preferences"
-msgstr ""
 
 msgid "Print message"
 msgstr "Nachricht drucken"

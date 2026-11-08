@@ -117,6 +117,7 @@ mod text_search;
 mod theme;
 mod transfer;
 mod tray;
+mod troubleshooting;
 mod types;
 mod undo;
 mod unified;
@@ -147,6 +148,7 @@ use workers::watch_system_events;
 
 relm4::new_stateless_action!(StatusBarAction, WindowActionGroup, "status-bar");
 relm4::new_stateless_action!(ConsoleAction, WindowActionGroup, "console");
+relm4::new_stateless_action!(TroubleshootingAction, WindowActionGroup, "troubleshooting");
 relm4::new_stateless_action!(FindAction, WindowActionGroup, "find");
 relm4::new_stateless_action!(UndoAction, WindowActionGroup, "undo");
 relm4::new_stateless_action!(RedoAction, WindowActionGroup, "redo");

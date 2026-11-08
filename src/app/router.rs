@@ -209,6 +209,7 @@ impl AppModel {
             | AppMsg::ContactsLoaded
             | AppMsg::ContactNamesRead(..)) => self.on_contacts(msg, sender),
             msg @ AppMsg::OpenAbout => self.on_about(msg, sender),
+            AppMsg::OpenTroubleshooting => self.open_troubleshooting(&sender),
             msg @ (AppMsg::LegacyBook(..) | AppMsg::LegacyBookExported(..)) => {
                 self.on_legacy_book(msg, sender)
             }

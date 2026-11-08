@@ -513,27 +513,19 @@ impl AppModel {
     /// (Re)build the burger menu's help section: the Console entry appears
     /// only while Console mode is enabled in Settings.
     pub(super) fn rebuild_help_menu(&self) {
+        // The status bar and the console are in Troubleshooting now
+        // (docs/DESIGN.md, "Removed or moved"); their keys still work.
         self.help_menu.remove_all();
-        let status_bar = if self.status_bar_shown {
-            i18n("Hide status bar")
-        } else {
-            i18n("Reveal status bar")
-        };
-        self.help_menu
-            .append(Some(status_bar.as_str()), Some("win.status-bar"));
-        if self.console_mode {
-            self.help_menu.append_item(&keyed_item(
-                &i18n("Console"),
-                "win.console",
-                "<Ctrl><Shift>c",
-            ));
-        }
         self.help_menu.append(
             Some(i18n("Keyboard shortcuts").as_str()),
             Some("win.shortcuts"),
         );
         self.help_menu
             .append(Some(i18n("Help").as_str()), Some("win.help"));
+        self.help_menu.append(
+            Some(i18n("Troubleshooting…").as_str()),
+            Some("win.troubleshooting"),
+        );
         self.help_menu.append(
             Some(format!("{} {}", i18n("About"), crate::APP_NAME).as_str()),
             Some("win.about"),

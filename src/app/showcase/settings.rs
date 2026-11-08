@@ -73,6 +73,10 @@ pub(super) fn stage_account_sub(sender: &ComponentSender<AppModel>) {
     if let Ok(sub) = std::env::var("TEGAMI_SHOWCASE_ACCOUNT_SUB") {
         input_after(sender, 7, AppMsg::ShowcaseAccountSub(sub));
     }
+    // TEGAMI_SHOWCASE_TROUBLESHOOTING=1 opens Troubleshooting at 5s.
+    if std::env::var("TEGAMI_SHOWCASE_TROUBLESHOOTING").is_ok() {
+        input_after(sender, 5, AppMsg::OpenTroubleshooting);
+    }
     if std::env::var("TEGAMI_SHOWCASE_ADD_MENU").is_ok() {
         input_after(sender, 6, AppMsg::ShowcaseAddMenu);
     }

@@ -107,8 +107,8 @@ msgstr "Ajouter un compte…"
 msgid "GNOME Online Accounts…"
 msgstr "Comptes en ligne GNOME…"
 
-msgid "Settings"
-msgstr "Paramètres"
+msgid "Preferences"
+msgstr "Préférences"
 
 msgid "Print preview…"
 msgstr "Aperçu avant impression…"
@@ -314,8 +314,8 @@ msgid_plural "{n} people"
 msgstr[0] "{n} personne"
 msgstr[1] "{n} personnes"
 
-msgid "Enable Console mode in Settings → System & Appearance"
-msgstr "Activez le mode Console dans Paramètres → Système et apparence"
+msgid "Turn on Console mode in Troubleshooting, in the main menu"
+msgstr "Activez le mode console dans Dépannage, dans le menu principal"
 
 msgid "New message from template"
 msgstr "Nouveau message à partir d’un modèle"
@@ -621,13 +621,53 @@ msgstr "Votre réponse a été envoyée : peut-être."
 msgid "Your answer has been sent: declined."
 msgstr "Votre réponse a été envoyée : refusé."
 
+msgid "Status bar"
+msgstr "Barre d’état"
+
+msgid "It shows what Tegami Mail is doing, and opens by itself for errors."
+msgstr "Elle montre ce que fait Tegami Mail et s’ouvre d’elle-même en cas d’erreur."
+
+msgid "Show the status bar"
+msgstr "Afficher la barre d’état"
+
+msgid "At the top of the window"
+msgstr "En haut de la fenêtre"
+
+msgid "Diagnostics"
+msgstr "Diagnostic"
+
+msgid "Console mode"
+msgstr "Mode console"
+
+msgid "Offers a detailed activity console in the status bar."
+msgstr "Propose une console d’activité détaillée dans la barre d’état."
+
+msgid "Open the console"
+msgstr "Ouvrir la console"
+
+msgid "Ctrl+Shift+C"
+msgstr "Ctrl+Maj+C"
+
+msgid "Export the log…"
+msgstr "Exporter le journal…"
+
+msgid "Saves recent activity in a file, to attach to a bug report."
+msgstr "Enregistre l’activité récente dans un fichier, à joindre à un rapport de bogue."
+
+msgid "Troubleshooting"
+msgstr "Dépannage"
+
 msgid ""
 "{n} contact exported to {file}. Open the file in GNOME Contacts to keep it."
 msgid_plural ""
 "{n} contacts exported to {file}. Open the file in GNOME Contacts to keep "
 "them."
-msgstr[0] "{n} contact exporté dans {file}. Ouvrez le fichier dans Contacts GNOME pour le garder."
-msgstr[1] "{n} contacts exportés dans {file}. Ouvrez le fichier dans Contacts GNOME pour les garder."
+msgstr[0] ""
+"{n} contact exporté dans {file}. Ouvrez le fichier dans Contacts GNOME pour "
+"le garder."
+msgstr[1] ""
+"{n} contacts exportés dans {file}. Ouvrez le fichier dans Contacts GNOME "
+"pour les garder."
 
 msgid "Could not export the contacts: {e}"
 msgstr "Impossible d’exporter les contacts : {e}"
@@ -643,8 +683,14 @@ msgid_plural ""
 "The Tegami Mail address book holds {n} contacts. Tegami Mail now uses the "
 "address books GNOME provides: export them as a vCard file, then open the "
 "file in GNOME Contacts."
-msgstr[0] "Le carnet d’adresses Tegami Mail contient {n} contact. Tegami Mail utilise désormais les carnets d’adresses fournis par GNOME : exportez-le en fichier vCard, puis ouvrez ce fichier dans Contacts GNOME."
-msgstr[1] "Le carnet d’adresses Tegami Mail contient {n} contacts. Tegami Mail utilise désormais les carnets d’adresses fournis par GNOME : exportez-les en fichier vCard, puis ouvrez ce fichier dans Contacts GNOME."
+msgstr[0] ""
+"Le carnet d’adresses Tegami Mail contient {n} contact. Tegami Mail utilise "
+"désormais les carnets d’adresses fournis par GNOME : exportez-le en fichier "
+"vCard, puis ouvrez ce fichier dans Contacts GNOME."
+msgstr[1] ""
+"Le carnet d’adresses Tegami Mail contient {n} contacts. Tegami Mail utilise "
+"désormais les carnets d’adresses fournis par GNOME : exportez-les en fichier "
+"vCard, puis ouvrez ce fichier dans Contacts GNOME."
 
 msgid "Later"
 msgstr "Plus tard"
@@ -901,6 +947,9 @@ msgstr "Zoom avant ou arrière sur le message"
 msgid "Message zoom back to the default"
 msgstr "Rétablir le zoom du message par défaut"
 
+msgid "Settings"
+msgstr "Paramètres"
+
 msgid "Search the Settings window, when it is open"
 msgstr "Rechercher dans la fenêtre des Paramètres, lorsqu’elle est ouverte"
 
@@ -1093,17 +1142,11 @@ msgstr ""
 msgid "Your tags"
 msgstr "Vos étiquettes"
 
-msgid "Hide status bar"
-msgstr "Masquer la barre d’état"
-
-msgid "Reveal status bar"
-msgstr "Afficher la barre d’état"
-
-msgid "Console"
-msgstr "Console"
-
 msgid "Help"
 msgstr "Aide"
+
+msgid "Troubleshooting…"
+msgstr "Dépannage…"
 
 msgid "New message instead"
 msgstr "Nouveau message à la place"
@@ -1153,7 +1196,9 @@ msgstr "Remplacer vos réglages ?"
 msgid ""
 "The settings in {file} replace yours. Keep your accounts in place: removing "
 "them first deletes their passwords."
-msgstr "Les réglages de {file} remplacent les vôtres. Gardez vos comptes en place : les retirer avant supprime leurs mots de passe."
+msgstr ""
+"Les réglages de {file} remplacent les vôtres. Gardez vos comptes en place : "
+"les retirer avant supprime leurs mots de passe."
 
 msgid "Replace"
 msgstr "Remplacer"
@@ -3540,7 +3585,9 @@ msgstr "Carnets"
 msgid ""
 "Where contacts come from for suggestions, sender pictures and filters. A "
 "book switched off is ignored by Tegami Mail."
-msgstr "D’où viennent les contacts pour les suggestions, les photos des expéditeurs et les filtres. Un carnet désactivé est ignoré par Tegami Mail."
+msgstr ""
+"D’où viennent les contacts pour les suggestions, les photos des expéditeurs "
+"et les filtres. Un carnet désactivé est ignoré par Tegami Mail."
 
 msgid "Look again for address books"
 msgstr "Rechercher à nouveau des carnets d’adresses"
@@ -4283,6 +4330,9 @@ msgstr "Se désabonner…"
 msgid "Opens the list's unsubscribe page in your browser"
 msgstr "Ouvre la page de désabonnement de la liste dans votre navigateur"
 
+msgid "Console"
+msgstr "Console"
+
 msgid "Collapse status bar"
 msgstr "Réduire la barre d’état"
 
@@ -4664,7 +4714,9 @@ msgstr "Importer des réglages…"
 msgid ""
 "Replaces your settings. Keep your accounts in place: removing them first "
 "deletes their passwords."
-msgstr "Remplace vos réglages. Gardez vos comptes en place : les retirer avant supprime leurs mots de passe."
+msgstr ""
+"Remplace vos réglages. Gardez vos comptes en place : les retirer avant "
+"supprime leurs mots de passe."
 
 msgid "When a message is opened."
 msgstr "Quand un message est ouvert."
@@ -4812,9 +4864,6 @@ msgstr "Langue du système — {language}"
 
 msgid "Forget this word"
 msgstr "Oublier ce mot"
-
-msgid "Preferences"
-msgstr "Préférences"
 
 msgid "Print message"
 msgstr "Imprimer le message"

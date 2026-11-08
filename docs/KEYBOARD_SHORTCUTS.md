@@ -175,8 +175,8 @@ These work with or without single-key shortcuts too:
 | <kbd>Ctrl+Shift+P</kbd> | Preview it as a PDF first |
 | <kbd>Ctrl+Z</kbd> | Undo the last action (a move, a delete, a star) |
 | <kbd>Ctrl+Shift+Z</kbd> <kbd>Ctrl+Y</kbd> | Redo it |
-| <kbd>Ctrl+Shift+S</kbd> | Reveal the status bar (also: long-press Refresh) |
-| <kbd>Ctrl+Shift+C</kbd> | Console mode, when it is enabled in Settings |
+| <kbd>Ctrl+Shift+S</kbd> | Show or hide the status bar (also in Troubleshooting, main menu) |
+| <kbd>Ctrl+Shift+C</kbd> | The console, when console mode is on in Troubleshooting (main menu) |
 | <kbd>F11</kbd> | Fullscreen on or off |
 | <kbd>Ctrl+Alt+1</kbd> <kbd>Ctrl+Alt+2</kbd> <kbd>Ctrl+Alt+3</kbd> | Reading pane right of the list, below it, or off |
 | <kbd>Ctrl+,</kbd> | Open Settings |

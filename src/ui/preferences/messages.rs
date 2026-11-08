@@ -174,9 +174,7 @@ pub(crate) enum PrefOutput {
     SetNotifyReceipts(bool),
     /// Console mode and the status bar's place, which the main menu's
     /// Troubleshooting entry sets (docs/DESIGN.md, "Removed or moved").
-    #[allow(dead_code)] // Constructed by the Troubleshooting menu, next.
     SetConsoleMode(bool),
-    #[allow(dead_code)]
     SetStatusBarTop(bool),
     SetReadMark(crate::config::ReadMark),
     ExportSettings,

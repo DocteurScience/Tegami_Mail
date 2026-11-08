@@ -107,8 +107,8 @@ msgstr "Afegeix un compte…"
 msgid "GNOME Online Accounts…"
 msgstr "Comptes en línia del GNOME"
 
-msgid "Settings"
-msgstr "Paràmetres"
+msgid "Preferences"
+msgstr ""
 
 msgid "Print preview…"
 msgstr "Previsualització d'impressió…"
@@ -317,8 +317,8 @@ msgid_plural "{n} people"
 msgstr[0] "{n} persona"
 msgstr[1] "{n} persones"
 
-msgid "Enable Console mode in Settings → System & Appearance"
-msgstr "Activa el mode de consola a Paràmetres → Sistema i aparença"
+msgid "Turn on Console mode in Troubleshooting, in the main menu"
+msgstr ""
 
 msgid "New message from template"
 msgstr "Missatge nou a partir d'una plantilla"
@@ -620,6 +620,47 @@ msgstr "La teva resposta s'ha enviat: potser."
 msgid "Your answer has been sent: declined."
 msgstr "La teva resposta s'ha enviat: rebutjat."
 
+#, fuzzy
+msgid "Status bar"
+msgstr "Barra d'estat ({n})"
+
+msgid "It shows what Tegami Mail is doing, and opens by itself for errors."
+msgstr ""
+
+#, fuzzy
+msgid "Show the status bar"
+msgstr "Amaga la barra d'estat"
+
+msgid "At the top of the window"
+msgstr ""
+
+msgid "Diagnostics"
+msgstr ""
+
+#, fuzzy
+msgid "Console mode"
+msgstr "Consola"
+
+msgid "Offers a detailed activity console in the status bar."
+msgstr ""
+
+#, fuzzy
+msgid "Open the console"
+msgstr "Obre els comptes en línia"
+
+msgid "Ctrl+Shift+C"
+msgstr ""
+
+#, fuzzy
+msgid "Export the log…"
+msgstr "Exporta el registre"
+
+msgid "Saves recent activity in a file, to attach to a bug report."
+msgstr ""
+
+msgid "Troubleshooting"
+msgstr ""
+
 msgid ""
 "{n} contact exported to {file}. Open the file in GNOME Contacts to keep it."
 msgid_plural ""
@@ -910,6 +951,9 @@ msgstr "Amplia o redueix el missatge"
 msgid "Message zoom back to the default"
 msgstr "Torna a la mida de missatge per defecte"
 
+msgid "Settings"
+msgstr "Paràmetres"
+
 msgid "Search the Settings window, when it is open"
 msgstr "Cerca a la finestra de paràmetres, quan és oberta"
 
@@ -1104,17 +1148,12 @@ msgstr ""
 msgid "Your tags"
 msgstr "Les teves etiquetes"
 
-msgid "Hide status bar"
-msgstr "Amaga la barra d'estat"
-
-msgid "Reveal status bar"
-msgstr "Mostra la barra d'estat"
-
-msgid "Console"
-msgstr "Consola"
-
 msgid "Help"
 msgstr ""
+
+#, fuzzy
+msgid "Troubleshooting…"
+msgstr "S'està provant…"
 
 msgid "New message instead"
 msgstr "Millor un missatge nou"
@@ -4356,6 +4395,9 @@ msgstr "Dona'm de baixa…"
 msgid "Opens the list's unsubscribe page in your browser"
 msgstr "Obre la pàgina de baixa de la llista al navegador"
 
+msgid "Console"
+msgstr "Consola"
+
 msgid "Collapse status bar"
 msgstr "Replega la barra d'estat"
 
@@ -4922,9 +4964,6 @@ msgstr "Idioma del sistema — {language}"
 
 msgid "Forget this word"
 msgstr "Oblida aquesta paraula"
-
-msgid "Preferences"
-msgstr ""
 
 msgid "Print message"
 msgstr "Imprimeix el missatge"

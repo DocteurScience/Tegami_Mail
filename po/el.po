@@ -110,8 +110,8 @@ msgstr "Προσθήκη λογαριασμού…"
 msgid "GNOME Online Accounts…"
 msgstr "Διαδικτυακοί λογαριασμοί GNOME"
 
-msgid "Settings"
-msgstr "Ρυθμίσεις"
+msgid "Preferences"
+msgstr ""
 
 msgid "Print preview…"
 msgstr "Προεπισκόπηση εκτύπωσης…"
@@ -324,9 +324,8 @@ msgid_plural "{n} people"
 msgstr[0] "{n} άτομο"
 msgstr[1] "{n} άτομα"
 
-msgid "Enable Console mode in Settings → System & Appearance"
+msgid "Turn on Console mode in Troubleshooting, in the main menu"
 msgstr ""
-"Ενεργοποίηση της λειτουργίας κονσόλας στις Ρυθμίσεις → Σύστημα & εμφάνιση"
 
 msgid "New message from template"
 msgstr "Νέο μήνυμα από πρότυπο"
@@ -631,6 +630,47 @@ msgstr "Η απάντησή σας στάλθηκε: ίσως."
 msgid "Your answer has been sent: declined."
 msgstr "Η απάντησή σας στάλθηκε: απόρριψη."
 
+#, fuzzy
+msgid "Status bar"
+msgstr "Γραμμή κατάστασης ({n})"
+
+msgid "It shows what Tegami Mail is doing, and opens by itself for errors."
+msgstr ""
+
+#, fuzzy
+msgid "Show the status bar"
+msgstr "Απόκρυψη γραμμής κατάστασης"
+
+msgid "At the top of the window"
+msgstr ""
+
+msgid "Diagnostics"
+msgstr ""
+
+#, fuzzy
+msgid "Console mode"
+msgstr "Κονσόλα"
+
+msgid "Offers a detailed activity console in the status bar."
+msgstr ""
+
+#, fuzzy
+msgid "Open the console"
+msgstr "Άνοιγμα Διαδικτυακών λογαριασμών"
+
+msgid "Ctrl+Shift+C"
+msgstr ""
+
+#, fuzzy
+msgid "Export the log…"
+msgstr "Εξαγωγή αρχείου καταγραφής"
+
+msgid "Saves recent activity in a file, to attach to a bug report."
+msgstr ""
+
+msgid "Troubleshooting"
+msgstr ""
+
 msgid ""
 "{n} contact exported to {file}. Open the file in GNOME Contacts to keep it."
 msgid_plural ""
@@ -924,6 +964,9 @@ msgstr "Μεγέθυνση ή σμίκρυνση του μηνύματος"
 msgid "Message zoom back to the default"
 msgstr "Επαναφορά της μεγέθυνσης του μηνύματος στην προεπιλογή"
 
+msgid "Settings"
+msgstr "Ρυθμίσεις"
+
 msgid "Search the Settings window, when it is open"
 msgstr "Αναζήτηση στο παράθυρο Ρυθμίσεων, όταν είναι ανοιχτό"
 
@@ -1118,17 +1161,12 @@ msgstr ""
 msgid "Your tags"
 msgstr "Οι ετικέτες σας"
 
-msgid "Hide status bar"
-msgstr "Απόκρυψη γραμμής κατάστασης"
-
-msgid "Reveal status bar"
-msgstr "Εμφάνιση γραμμής κατάστασης"
-
-msgid "Console"
-msgstr "Κονσόλα"
-
 msgid "Help"
 msgstr ""
+
+#, fuzzy
+msgid "Troubleshooting…"
+msgstr "Δοκιμή…"
 
 msgid "New message instead"
 msgstr "Νέο μήνυμα αντί αυτού"
@@ -4419,6 +4457,9 @@ msgstr "Κατάργηση εγγραφής…"
 msgid "Opens the list's unsubscribe page in your browser"
 msgstr "Ανοίγει τη σελίδα διαγραφής από τη λίστα στο πρόγραμμα περιήγησής σας"
 
+msgid "Console"
+msgstr "Κονσόλα"
+
 msgid "Collapse status bar"
 msgstr "Σύμπτυξη γραμμής κατάστασης"
 
@@ -4988,9 +5029,6 @@ msgstr "Γλώσσα συστήματος — {language}"
 
 msgid "Forget this word"
 msgstr "Να ξεχαστεί αυτή η λέξη"
-
-msgid "Preferences"
-msgstr ""
 
 msgid "Print message"
 msgstr "Εκτύπωση μηνύματος"

@@ -108,8 +108,8 @@ msgstr "Добавить учётную запись…"
 msgid "GNOME Online Accounts…"
 msgstr "Сетевые учётные записи GNOME"
 
-msgid "Settings"
-msgstr "Настройки"
+msgid "Preferences"
+msgstr ""
 
 msgid "Print preview…"
 msgstr "Предпросмотр печати…"
@@ -330,8 +330,8 @@ msgstr[0] "{n} получатель"
 msgstr[1] "{n} получателя"
 msgstr[2] "{n} получателей"
 
-msgid "Enable Console mode in Settings → System & Appearance"
-msgstr "Включите режим консоли в Настройки → Система и внешний вид"
+msgid "Turn on Console mode in Troubleshooting, in the main menu"
+msgstr ""
 
 msgid "New message from template"
 msgstr "Новое сообщение из шаблона"
@@ -661,6 +661,47 @@ msgstr "Ваш ответ отправлен: возможно."
 msgid "Your answer has been sent: declined."
 msgstr "Ваш ответ отправлен: отклонено."
 
+#, fuzzy
+msgid "Status bar"
+msgstr "Строка состояния ({n})"
+
+msgid "It shows what Tegami Mail is doing, and opens by itself for errors."
+msgstr ""
+
+#, fuzzy
+msgid "Show the status bar"
+msgstr "Скрыть строку состояния"
+
+msgid "At the top of the window"
+msgstr ""
+
+msgid "Diagnostics"
+msgstr ""
+
+#, fuzzy
+msgid "Console mode"
+msgstr "Консоль"
+
+msgid "Offers a detailed activity console in the status bar."
+msgstr ""
+
+#, fuzzy
+msgid "Open the console"
+msgstr "Открыть «Сетевые учётные записи»…"
+
+msgid "Ctrl+Shift+C"
+msgstr ""
+
+#, fuzzy
+msgid "Export the log…"
+msgstr "Экспортировать журнал"
+
+msgid "Saves recent activity in a file, to attach to a bug report."
+msgstr ""
+
+msgid "Troubleshooting"
+msgstr ""
+
 msgid ""
 "{n} contact exported to {file}. Open the file in GNOME Contacts to keep it."
 msgid_plural ""
@@ -963,6 +1004,9 @@ msgstr "Увеличить или уменьшить масштаб сообще
 msgid "Message zoom back to the default"
 msgstr "Сбросить масштаб сообщения к исходному"
 
+msgid "Settings"
+msgstr "Настройки"
+
 msgid "Search the Settings window, when it is open"
 msgstr "Поиск в окне «Параметры», когда оно открыто"
 
@@ -1191,17 +1235,12 @@ msgstr ""
 msgid "Your tags"
 msgstr "Ваши теги"
 
-msgid "Hide status bar"
-msgstr "Скрыть строку состояния"
-
-msgid "Reveal status bar"
-msgstr "Показать строку состояния"
-
-msgid "Console"
-msgstr "Консоль"
-
 msgid "Help"
 msgstr ""
+
+#, fuzzy
+msgid "Troubleshooting…"
+msgstr "Проверка…"
 
 msgid "New message instead"
 msgstr "Написать новое письмо"
@@ -4546,6 +4585,9 @@ msgstr "Отписаться…"
 msgid "Opens the list's unsubscribe page in your browser"
 msgstr "Открывает страницу отписки от рассылки в браузере"
 
+msgid "Console"
+msgstr "Консоль"
+
 msgid "Collapse status bar"
 msgstr "Свернуть строку состояния"
 
@@ -5117,9 +5159,6 @@ msgstr "Системный язык — {language}"
 
 msgid "Forget this word"
 msgstr "Удалить это слово"
-
-msgid "Preferences"
-msgstr ""
 
 msgid "Print message"
 msgstr "Печать сообщения"

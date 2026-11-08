@@ -1304,4 +1304,6 @@ pub(crate) enum AppMsg {
     // ---- Settings: route_pref (router.rs) ----
     /// A setting changed in Preferences (or its equivalent elsewhere).
     Pref(PrefOutput),
+    /// The main menu's Troubleshooting entry.
+    OpenTroubleshooting,
 }

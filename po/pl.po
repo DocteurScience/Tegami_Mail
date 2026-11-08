@@ -108,8 +108,8 @@ msgstr "Dodaj konto…"
 msgid "GNOME Online Accounts…"
 msgstr "Konta online GNOME"
 
-msgid "Settings"
-msgstr "Ustawienia"
+msgid "Preferences"
+msgstr ""
 
 msgid "Print preview…"
 msgstr "Podgląd wydruku…"
@@ -326,8 +326,8 @@ msgstr[0] "{n} odbiorca"
 msgstr[1] "{n} odbiorców"
 msgstr[2] "{n} odbiorców"
 
-msgid "Enable Console mode in Settings → System & Appearance"
-msgstr "Włącz tryb konsoli w oknie Ustawienia → System"
+msgid "Turn on Console mode in Troubleshooting, in the main menu"
+msgstr ""
 
 #, fuzzy
 msgid "New message from template"
@@ -660,6 +660,47 @@ msgstr "Wysłano odpowiedź: może."
 msgid "Your answer has been sent: declined."
 msgstr "Wysłano odpowiedź: odrzucono."
 
+#, fuzzy
+msgid "Status bar"
+msgstr "Pasek stanu ({n})"
+
+msgid "It shows what Tegami Mail is doing, and opens by itself for errors."
+msgstr ""
+
+#, fuzzy
+msgid "Show the status bar"
+msgstr "Ukryj pasek stanu"
+
+msgid "At the top of the window"
+msgstr ""
+
+msgid "Diagnostics"
+msgstr ""
+
+#, fuzzy
+msgid "Console mode"
+msgstr "Konsola"
+
+msgid "Offers a detailed activity console in the status bar."
+msgstr ""
+
+#, fuzzy
+msgid "Open the console"
+msgstr "Otwórz konta online…"
+
+msgid "Ctrl+Shift+C"
+msgstr ""
+
+#, fuzzy
+msgid "Export the log…"
+msgstr "Eksportuj dziennik"
+
+msgid "Saves recent activity in a file, to attach to a bug report."
+msgstr ""
+
+msgid "Troubleshooting"
+msgstr ""
+
 msgid ""
 "{n} contact exported to {file}. Open the file in GNOME Contacts to keep it."
 msgid_plural ""
@@ -961,6 +1002,9 @@ msgstr "Powiększ lub pomniejsz wiadomość"
 msgid "Message zoom back to the default"
 msgstr "Przywróć domyślne powiększenie wiadomości"
 
+msgid "Settings"
+msgstr "Ustawienia"
+
 msgid "Search the Settings window, when it is open"
 msgstr ""
 
@@ -1187,17 +1231,12 @@ msgstr ""
 msgid "Your tags"
 msgstr "Własne etykiety"
 
-msgid "Hide status bar"
-msgstr "Ukryj pasek stanu"
-
-msgid "Reveal status bar"
-msgstr "Wyświetl pasek stanu"
-
-msgid "Console"
-msgstr "Konsola"
-
 msgid "Help"
 msgstr ""
+
+#, fuzzy
+msgid "Troubleshooting…"
+msgstr "Sprawdzanie…"
 
 msgid "New message instead"
 msgstr "Nowa wiadomość"
@@ -4590,6 +4629,9 @@ msgstr "Wypisz się…"
 msgid "Opens the list's unsubscribe page in your browser"
 msgstr "Otwórz w przeglądarce stronę wypisania z listy"
 
+msgid "Console"
+msgstr "Konsola"
+
 msgid "Collapse status bar"
 msgstr "Zwiń pasek stanu"
 
@@ -5162,9 +5204,6 @@ msgstr "Język systemu – {language}"
 
 msgid "Forget this word"
 msgstr "Usuń to słowo ze słownika"
-
-msgid "Preferences"
-msgstr ""
 
 msgid "Print message"
 msgstr "Drukuj wiadomość"

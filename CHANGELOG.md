@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+- **Changed: Troubleshooting in the main menu** (docs/DESIGN.md,
+  "Preferences": troubleshooting tools are not preferences). It holds the
+  status bar (shown or not, at the top or the foot), console mode, the
+  console, and exporting the log. The menu's "Reveal status bar" and
+  "Console" entries move there; their keys are unchanged. "Settings" in the
+  main menu is now **Preferences**.
+
 - **Removed (approved in docs/DESIGN.md, "Removed or moved"): the Tegami
   Mail address book**, with its import, export and "Delete all contacts",
   and the "Show names from Contacts" switch, now always on. Tegami Mail

@@ -200,7 +200,7 @@ pub(super) fn build_main_menu(
         menu.append_section(None, &accounts);
 
         let settings = gtk::gio::Menu::new();
-        settings.append(Some(i18n("Settings").as_str()), Some("win.accounts"));
+        settings.append(Some(i18n("Preferences").as_str()), Some("win.accounts"));
         menu.append_section(None, &settings);
 
         let printing = gtk::gio::Menu::new();

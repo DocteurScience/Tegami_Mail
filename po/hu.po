@@ -110,8 +110,8 @@ msgstr "Fiók hozzáadása…"
 msgid "GNOME Online Accounts…"
 msgstr "GNOME Internetes Fiókok"
 
-msgid "Settings"
-msgstr "Beállítások"
+msgid "Preferences"
+msgstr ""
 
 msgid "Print preview…"
 msgstr "Nyomtatási előnézet…"
@@ -331,9 +331,8 @@ msgid_plural "{n} people"
 msgstr[0] "{n} címzett"
 msgstr[1] "{n} címzett"
 
-msgid "Enable Console mode in Settings → System & Appearance"
+msgid "Turn on Console mode in Troubleshooting, in the main menu"
 msgstr ""
-"Engedélyezze a konzol módot a Beállítások → Rendszer és megjelenés menüben"
 
 #, fuzzy
 msgid "New message from template"
@@ -639,6 +638,47 @@ msgstr "Válasza elküldve: talán."
 msgid "Your answer has been sent: declined."
 msgstr "Válasza elküldve: elutasítva."
 
+#, fuzzy
+msgid "Status bar"
+msgstr "Állapotsáv ({n})"
+
+msgid "It shows what Tegami Mail is doing, and opens by itself for errors."
+msgstr ""
+
+#, fuzzy
+msgid "Show the status bar"
+msgstr "Állapotsáv elrejtése"
+
+msgid "At the top of the window"
+msgstr ""
+
+msgid "Diagnostics"
+msgstr ""
+
+#, fuzzy
+msgid "Console mode"
+msgstr "Konzol"
+
+msgid "Offers a detailed activity console in the status bar."
+msgstr ""
+
+#, fuzzy
+msgid "Open the console"
+msgstr "Internetes Fiókok megnyitása…"
+
+msgid "Ctrl+Shift+C"
+msgstr ""
+
+#, fuzzy
+msgid "Export the log…"
+msgstr "Napló exportálása"
+
+msgid "Saves recent activity in a file, to attach to a bug report."
+msgstr ""
+
+msgid "Troubleshooting"
+msgstr ""
+
 msgid ""
 "{n} contact exported to {file}. Open the file in GNOME Contacts to keep it."
 msgid_plural ""
@@ -940,6 +980,9 @@ msgstr "Üzenet nagyítása vagy kicsinyítése"
 msgid "Message zoom back to the default"
 msgstr "Az üzenet nagyítását visszaállítani az alapértelmezett értékre"
 
+msgid "Settings"
+msgstr "Beállítások"
+
 msgid "Search the Settings window, when it is open"
 msgstr ""
 
@@ -1169,17 +1212,12 @@ msgstr ""
 msgid "Your tags"
 msgstr "Saját címkék"
 
-msgid "Hide status bar"
-msgstr "Állapotsáv elrejtése"
-
-msgid "Reveal status bar"
-msgstr "Állapotsáv megjelenítése"
-
-msgid "Console"
-msgstr "Konzol"
-
 msgid "Help"
 msgstr ""
+
+#, fuzzy
+msgid "Troubleshooting…"
+msgstr "Tesztelés folyamatban…"
 
 msgid "New message instead"
 msgstr "Inkább új üzenet"
@@ -4533,6 +4571,9 @@ msgstr "Unsubscribe…"
 msgid "Opens the list's unsubscribe page in your browser"
 msgstr "Megnyitja a lista leiratkozási oldalát a böngészőben"
 
+msgid "Console"
+msgstr "Konzol"
+
 msgid "Collapse status bar"
 msgstr "Állapotsáv összecsukása"
 
@@ -5104,9 +5145,6 @@ msgstr "Rendszer nyelve — {language}"
 
 msgid "Forget this word"
 msgstr "Szó elfelejtése"
-
-msgid "Preferences"
-msgstr ""
 
 msgid "Print message"
 msgstr "Üzenet nyomtatása"

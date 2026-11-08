@@ -231,7 +231,7 @@ impl AppModel {
                     self.notifications.emit(NotifyInput::ShowConsole);
                 } else {
                     self.notice(i18n(
-                        "Enable Console mode in Settings → System & Appearance",
+                        "Turn on Console mode in Troubleshooting, in the main menu",
                     ));
                 }
             }

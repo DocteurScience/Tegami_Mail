@@ -95,7 +95,7 @@ msgstr ""
 msgid "GNOME Online Accounts…"
 msgstr ""
 
-msgid "Settings"
+msgid "Preferences"
 msgstr ""
 
 msgid "Print preview…"
@@ -293,7 +293,7 @@ msgid_plural "{n} people"
 msgstr[0] ""
 msgstr[1] ""
 
-msgid "Enable Console mode in Settings → System & Appearance"
+msgid "Turn on Console mode in Troubleshooting, in the main menu"
 msgstr ""
 
 msgid "New message from template"
@@ -573,6 +573,42 @@ msgstr ""
 msgid "Your answer has been sent: declined."
 msgstr ""
 
+msgid "Status bar"
+msgstr ""
+
+msgid "It shows what Tegami Mail is doing, and opens by itself for errors."
+msgstr ""
+
+msgid "Show the status bar"
+msgstr ""
+
+msgid "At the top of the window"
+msgstr ""
+
+msgid "Diagnostics"
+msgstr ""
+
+msgid "Console mode"
+msgstr ""
+
+msgid "Offers a detailed activity console in the status bar."
+msgstr ""
+
+msgid "Open the console"
+msgstr ""
+
+msgid "Ctrl+Shift+C"
+msgstr ""
+
+msgid "Export the log…"
+msgstr ""
+
+msgid "Saves recent activity in a file, to attach to a bug report."
+msgstr ""
+
+msgid "Troubleshooting"
+msgstr ""
+
 msgid ""
 "{n} contact exported to {file}. Open the file in GNOME Contacts to keep it."
 msgid_plural ""
@@ -845,6 +881,9 @@ msgstr ""
 msgid "Message zoom back to the default"
 msgstr ""
 
+msgid "Settings"
+msgstr ""
+
 msgid "Search the Settings window, when it is open"
 msgstr ""
 
@@ -1030,16 +1069,10 @@ msgstr ""
 msgid "Your tags"
 msgstr ""
 
-msgid "Hide status bar"
-msgstr ""
-
-msgid "Reveal status bar"
-msgstr ""
-
-msgid "Console"
-msgstr ""
-
 msgid "Help"
+msgstr ""
+
+msgid "Troubleshooting…"
 msgstr ""
 
 msgid "New message instead"
@@ -3960,6 +3993,9 @@ msgstr ""
 msgid "Opens the list's unsubscribe page in your browser"
 msgstr ""
 
+msgid "Console"
+msgstr ""
+
 msgid "Collapse status bar"
 msgstr ""
 
@@ -4454,9 +4490,6 @@ msgid "System language — {language}"
 msgstr ""
 
 msgid "Forget this word"
-msgstr ""
-
-msgid "Preferences"
 msgstr ""
 
 msgid "Print message"

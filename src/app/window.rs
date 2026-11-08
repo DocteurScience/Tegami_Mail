@@ -12,8 +12,8 @@ use super::msg::AppMsg;
 use super::{
     AboutAction, AccountsAction, AddAccountAction, AppModelWidgets, ConsoleAction, FindAction,
     FullscreenAction, HelpAction, OnlineAccountsAction, PreferencesAction, PrintAction,
-    PrintPreviewAction, RedoAction, ShortcutsAction, StatusBarAction, SyncNowAction, UndoAction,
-    WindowActionGroup,
+    PrintPreviewAction, RedoAction, ShortcutsAction, StatusBarAction, SyncNowAction,
+    TroubleshootingAction, UndoAction, WindowActionGroup,
 };
 
 /// Saves the window's size and maximized state. Only the geometry: on
@@ -266,6 +266,12 @@ pub(super) fn install_window_actions(
         group.add_action(RelmAction::<ConsoleAction>::new_stateless(move |_| {
             s.input(AppMsg::OpenConsole);
         }));
+    }
+    {
+        let s = sender.clone();
+        group.add_action(RelmAction::<TroubleshootingAction>::new_stateless(
+            move |_| s.input(AppMsg::OpenTroubleshooting),
+        ));
     }
     {
         let s = sender.clone();
