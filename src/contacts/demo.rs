@@ -1,9 +1,9 @@
 //! The address books and contacts of the offline demo.
 
 use super::details::GroupFormat;
-use super::read::{local_book, Book};
+use super::read::Book;
 
-/// The books demo mode offers new contacts, the Tegami Mail book among them.
+/// The books demo mode offers new contacts.
 pub(crate) fn demo_books() -> Vec<Book> {
     vec![
         Book {
@@ -16,6 +16,5 @@ pub(crate) fn demo_books() -> Vec<Book> {
             name: "CardDAV — jason@example.org".into(),
             groups: Some(GroupFormat::Apple),
         },
-        local_book(),
     ]
 }

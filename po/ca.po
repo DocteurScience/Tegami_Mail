@@ -207,9 +207,6 @@ msgstr "Missatge nou"
 msgid "Could not forward the message: {e}"
 msgstr "No s'ha pogut desar el missatge: {e}"
 
-msgid "Tegami Mail address book"
-msgstr "Llibreta d'adreces de l'Tegami Mail"
-
 msgid "On this computer"
 msgstr "En aquest ordinador"
 
@@ -244,11 +241,6 @@ msgid "{n} address book"
 msgid_plural "{n} address books"
 msgstr[0] "{n} llibreta d'adreces"
 msgstr[1] "{n} llibretes d'adreces"
-
-msgid "{n} contact, kept by Tegami Mail"
-msgid_plural "{n} contacts, kept by Tegami Mail"
-msgstr[0] "{n} contacte, conservat per l'Tegami Mail"
-msgstr[1] "{n} contactes, conservats per l'Tegami Mail"
 
 msgid "{books} · kept by GNOME Contacts and Evolution"
 msgstr "{books} · mantinguda pels contactes del GNOME i l'Evolution"
@@ -314,22 +306,6 @@ msgstr ""
 
 msgid "{name} did not answer: {error}"
 msgstr "{name} no ha respost: {error}"
-
-msgid "A contact needs a name, an email address or a phone number"
-msgstr ""
-"Un contacte necessita un nom, una adreça de correu o un número de telèfon"
-
-msgid "The contact is too large"
-msgstr "El contacte és massa gran"
-
-msgid "UTF-16 files are not supported"
-msgstr "Els fitxers UTF-16 no són compatibles"
-
-msgid "The file is not a text file"
-msgstr "El fitxer no és un fitxer de text"
-
-msgid "The file is larger than {size} MB"
-msgstr "El fitxer és més gran de {size} MB"
 
 msgid "{n} person, in Bcc"
 msgid_plural "{n} people, in Bcc"
@@ -643,6 +619,43 @@ msgstr "La teva resposta s'ha enviat: potser."
 
 msgid "Your answer has been sent: declined."
 msgstr "La teva resposta s'ha enviat: rebutjat."
+
+msgid ""
+"{n} contact exported to {file}. Open the file in GNOME Contacts to keep it."
+msgid_plural ""
+"{n} contacts exported to {file}. Open the file in GNOME Contacts to keep "
+"them."
+msgstr[0] ""
+msgstr[1] ""
+
+#, fuzzy
+msgid "Could not export the contacts: {e}"
+msgstr "No s'han pogut exportar els contactes: {e}"
+
+#, fuzzy
+msgid "Export your Tegami Mail contacts"
+msgstr "Exporta els contactes"
+
+msgid ""
+"The Tegami Mail address book holds {n} contact. Tegami Mail now uses the "
+"address books GNOME provides: export it as a vCard file, then open the file "
+"in GNOME Contacts."
+msgid_plural ""
+"The Tegami Mail address book holds {n} contacts. Tegami Mail now uses the "
+"address books GNOME provides: export them as a vCard file, then open the "
+"file in GNOME Contacts."
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Later"
+msgstr "Més tard"
+
+#, fuzzy
+msgid "Export…"
+msgstr "Exporta el registre"
+
+msgid "Export contacts"
+msgstr "Exporta els contactes"
 
 msgid "Messages"
 msgstr "Missatges"
@@ -1133,36 +1146,6 @@ msgstr "Acceptat: {subject}"
 msgid "Export failed: {e}"
 msgstr "L'exportació ha fallat: {e}"
 
-msgid "Export contacts"
-msgstr "Exporta els contactes"
-
-msgid "{n} contact exported to {path}"
-msgid_plural "{n} contacts exported to {path}"
-msgstr[0] "{n} contacte exportat a {path}"
-msgstr[1] "{n} contactes exportats a {path}"
-
-msgid "Could not export contacts: {e}"
-msgstr "No s'han pogut exportar els contactes: {e}"
-
-msgid "Delete All Contacts?"
-msgstr "Vols eliminar tots els contactes?"
-
-msgid ""
-"The {n} contact in the Tegami Mail address book is deleted. This cannot be "
-"undone; export the book first to keep a copy."
-msgid_plural ""
-"The {n} contacts in the Tegami Mail address book are deleted. This cannot be "
-"undone; export the book first to keep a copy."
-msgstr[0] ""
-"El contacte {n} de la llibreta d'adreces de l'Tegami Mail se suprimirà. Això "
-"no es pot desfer; exporta primer la llibreta per conservar-ne una còpia."
-msgstr[1] ""
-"Els {n} contactes de la llibreta d'adreces de l'Tegami Mail se suprimiran. "
-"Això no es pot desfer; exporta primer la llibreta per conservar-ne una còpia."
-
-msgid "Delete all"
-msgstr "Elimina-ho tot"
-
 msgid "Export settings"
 msgstr "Exporta els paràmetres"
 
@@ -1178,6 +1161,22 @@ msgstr "Registre exportat a {display}"
 msgid "Import settings"
 msgstr "Importa els paràmetres"
 
+#, fuzzy
+msgid "Replace your settings?"
+msgstr "Exporta els paràmetres"
+
+#, fuzzy
+msgid ""
+"The settings in {file} replace yours. Keep your accounts in place: removing "
+"them first deletes their passwords."
+msgstr ""
+"Substitueix-ho tot al seu lloc. No eliminis primer els comptes: això "
+"suprimeix les seves contrasenyes."
+
+#, fuzzy
+msgid "Replace"
+msgstr "Respost"
+
 msgid "Settings imported"
 msgstr "Paràmetres importats"
 
@@ -1191,13 +1190,11 @@ msgstr ""
 "contrasenyes i els inicis de sessió no formen part de la còpia de seguretat; "
 "torna a introduir-los al primer ús si aquesta és una màquina nova."
 
-msgid "Later"
-msgstr "Més tard"
-
 msgid "Restart Tegami Mail"
 msgstr "Reinicia l'Tegami Mail"
 
-msgid "Import failed: {e}"
+#, fuzzy
+msgid "Import failed"
 msgstr "La importació ha fallat: {e}"
 
 #, fuzzy
@@ -2374,9 +2371,9 @@ msgstr "Es cerca al servidor; no es baixa res"
 msgid "From address when no Reply-To is set"
 msgstr "Adreça del remitent quan no s'ha definit cap Reply-To"
 
-msgid "Looks in the system address books and the Tegami Mail book"
-msgstr ""
-"Cerca a les llibretes d'adreces del sistema i a la llibreta de l'Tegami Mail"
+#, fuzzy
+msgid "Looks in your address books"
+msgstr "Torna a cercar llibretes d'adreces"
 
 msgid "Tag with"
 msgstr "Etiqueta amb"
@@ -3405,9 +3402,6 @@ msgstr "Accions de lliscament"
 msgid "Download password for {name}: {password}"
 msgstr "Contrasenya de descàrrega per a {name}: {password}"
 
-msgid "The name used here and in Contacts. Left blank, it is {own}."
-msgstr "El nom utilitzat aquí i a Contactes. Si es deixa buit, és {own}."
-
 msgid ""
 "The name used here and in Contacts; GNOME Contacts keeps its own. Left "
 "blank, it is {own}."
@@ -3508,38 +3502,6 @@ msgstr ""
 "Google i Microsoft 365 inicien sessió a través dels comptes en línia del "
 "GNOME. Afegeix-hi el compte amb els contactes activats, i es llistarà aquí."
 
-msgid "Kept in Tegami Mail's own data folder. Works without GNOME."
-msgstr ""
-"Es conserven a la carpeta de dades pròpia de l'Tegami Mail. Funcionen sense "
-"el GNOME."
-
-msgid "Contacts in the Tegami Mail book"
-msgstr "Contactes a la llibreta de l'Tegami Mail"
-
-msgid "Import vCard files"
-msgstr "Importa fitxers vCard"
-
-msgid ""
-"Adds contacts from .vcf files. Importing a file again updates existing "
-"entries."
-msgstr ""
-"Afegeix contactes dels fitxers .vcf. Tornar a importar un fitxer "
-"n'actualitza les entrades existents."
-
-msgid "Export as a vCard file"
-msgstr "Exporta com a fitxer vCard"
-
-msgid "Saves every contact in the Tegami Mail book in one .vcf file."
-msgstr ""
-"Desa tots els contactes de la llibreta de l'Tegami Mail en un sol "
-"fitxer .vcf."
-
-msgid "Delete all contacts"
-msgstr "Suprimeix tots els contactes"
-
-msgid "Other address books are not touched."
-msgstr "Les altres llibretes d'adreces no es toquen."
-
 msgid "Tegami Mail"
 msgstr "Tegami Mail"
 
@@ -3559,6 +3521,11 @@ msgid "Kept by Evolution Data Server, set up in Evolution or GNOME Contacts"
 msgstr ""
 "Mantinguda per l'Evolution Data Server, configurada a l'Evolution o als "
 "contactes del GNOME"
+
+#. Last, the way to add one (screen 46): every kind is kept by
+#. Evolution Data Server, so without it there is nothing to add to.
+msgid "Add address book…"
+msgstr "Afegeix una llibreta d'adreces…"
 
 msgid ""
 "Evolution and other apps stop seeing it too. Nothing on the server changes."
@@ -3620,9 +3587,13 @@ msgstr "Directori LDAP"
 msgid "Contacts"
 msgstr "Contactes"
 
+msgid "Books"
+msgstr ""
+
+#, fuzzy
 msgid ""
-"Where contacts come from for Contacts, suggestions, sender pictures and "
-"filters. Switching one off leaves it out of Tegami Mail."
+"Where contacts come from for suggestions, sender pictures and filters. A "
+"book switched off is ignored by Tegami Mail."
 msgstr ""
 "D'on surten els contactes per a Contactes, els suggeriments, les imatges "
 "dels remitents i els filtres. Desactivar-ne una la deixa fora de l'Tegami "
@@ -3630,9 +3601,6 @@ msgstr ""
 
 msgid "Look again for address books"
 msgstr "Torna a cercar llibretes d'adreces"
-
-msgid "Add address book…"
-msgstr "Afegeix una llibreta d'adreces…"
 
 msgid ""
 "Address books need Evolution Data Server, which is not installed. Install "
@@ -3653,14 +3621,10 @@ msgid "Unless another is picked when the contact is made."
 msgstr "Tret que se n'esculli una altra en crear el contacte."
 
 #, fuzzy
-msgid "In mail"
-msgstr "Correu"
+msgid "Open Contacts"
+msgstr "Obre els contactes del GNOME"
 
-#, fuzzy
-msgid "Show names from Contacts"
-msgstr "De contactes"
-
-msgid "Saved addresses show the contact's name, not the mail's."
+msgid "To add Google or Microsoft 365."
 msgstr ""
 
 msgid "Looking for address books on {name}…"
@@ -4776,9 +4740,6 @@ msgstr ""
 msgid "Add a word"
 msgstr "Afegeix una paraula"
 
-msgid "Backup"
-msgstr "Còpia de seguretat"
-
 msgid ""
 "Accounts, preferences, filters, tags and layout, in one file. Passwords and "
 "OpenPGP keys are not included."
@@ -4786,9 +4747,20 @@ msgstr ""
 "Comptes, preferències, filtres, etiquetes i disposició, en un sol fitxer. "
 "Les contrasenyes i les claus OpenPGP no s'inclouen."
 
+#, fuzzy
+msgid "Saves everything in one file."
+msgstr ""
+"Desa tots els contactes de la llibreta de l'Tegami Mail en un sol "
+"fitxer .vcf."
+
+#, fuzzy
+msgid "Import settings…"
+msgstr "Importa els paràmetres"
+
+#, fuzzy
 msgid ""
-"Replaces everything in place. Don't remove accounts first: that deletes "
-"their passwords."
+"Replaces your settings. Keep your accounts in place: removing them first "
+"deletes their passwords."
 msgstr ""
 "Substitueix-ho tot al seu lloc. No eliminis primer els comptes: això "
 "suprimeix les seves contrasenyes."
@@ -5825,19 +5797,6 @@ msgstr "no hi ha connexió de xarxa"
 msgid "runtime error: {e}"
 msgstr "error en temps d'execució: {e}"
 
-msgid "No contacts were found in the selected files"
-msgstr "No s'ha trobat cap contacte als fitxers seleccionats"
-
-msgid ""
-"Contacts imported: {added} new, {updated} updated, {skipped} skipped, "
-"{errors} damaged"
-msgstr ""
-"Contactes importats: {added} nous, {updated} actualitzats, {skipped} "
-"ommesos, {errors} malmesos"
-
-msgid "Contacts imported: {added} new, {updated} updated"
-msgstr "Contactes importats: {added} nous, {updated} actualitzats"
-
 msgid "No address book available to add contacts"
 msgstr "No hi ha cap llibreta d'adreces disponible per afegir contactes"
 
@@ -5855,21 +5814,6 @@ msgstr "Ja és a contactes ({name})"
 
 msgid "Could not add contact: {e}"
 msgstr "No s'ha pogut afegir el contacte: {e}"
-
-msgid "Could not update contact: {e}"
-msgstr "No s'ha pogut actualitzar el contacte: {e}"
-
-msgid "Could not import contacts: {e}"
-msgstr "No s'han pogut importar els contactes: {e}"
-
-msgid "Could not read: {files}"
-msgstr "No s'ha pogut llegir: {files}"
-
-msgid "Import contacts"
-msgstr "Importa contactes"
-
-msgid "vCard files"
-msgstr "Fitxers vCard"
 
 msgid "Search filters"
 msgstr "Cerca filtres"

@@ -1,9 +1,9 @@
 //! Settings → Contacts: every place Tegami Mail finds contacts, laid out as Mail
-//! Accounts is. One row per source (the Tegami Mail book, this computer's books,
+//! Accounts is. One row per source (this computer's books,
 //! each GNOME Online Account that keeps contacts, CardDAV accounts and LDAP
 //! directories), each with a switch that uses it in Tegami Mail or not, and a
-//! page of its own: its address books, its sign-in, or the Tegami Mail book's
-//! import and export. **Add Address Book…** sets up CardDAV accounts and
+//! page of its own: its address books or its sign-in. **Add address book…**,
+//! last in the list, sets up CardDAV accounts and
 //! LDAP directories, and says where Google and Microsoft 365 are added.
 
 use std::cell::RefCell;
@@ -97,9 +97,9 @@ pub(super) struct ContactSources {
     sources: Vec<Source>,
     /// The books new contacts can go to, the chosen default first.
     books: Vec<crate::contacts::Book>,
-    local_count: usize,
     list: gtk::ListBox,
-    add_btn: gtk::Button,
+    /// Evolution Data Server answered: books can be added.
+    eds: bool,
     no_eds: gtk::Label,
     book_row: adw::ComboRow,
     /// Set while the book row's model is replaced, which fires its notify.
@@ -125,10 +125,8 @@ pub(super) enum ContactSourcesInput {
         sources: Vec<Source>,
         eds: bool,
     },
-    /// The books new contacts can go to, and the Tegami Mail book's size, from
-    /// the app.
+    /// The books new contacts can go to, from the app.
     SetBooks(Vec<crate::contacts::Book>),
-    SetLocalCount(usize),
     ChangeBook(u32),
     Open(usize),
     Add,
@@ -168,9 +166,6 @@ pub(super) enum ContactSourcesInput {
         found: Option<(Account, Status)>,
         checked: Option<(String, Result<(), String>)>,
     },
-    ImportLocal,
-    ExportLocal,
-    DeleteAllLocal,
 }
 
 #[derive(Debug)]
@@ -183,20 +178,12 @@ pub(crate) enum ContactSourcesOutput {
     },
     /// What Tegami Mail reads contacts from changed: read them again.
     Changed,
-    ImportLocal,
-    ExportLocal,
-    DeleteAllLocal,
     SetContactBook(String),
     /// The page is showing: read the books new contacts can go to.
     LoadBooks,
-    /// Saved contacts go by their address-book names in mail (#541).
-    SetContactNames(bool),
 }
 
-pub(super) struct ContactSourcesInit {
-    /// Whether saved contacts go by their address-book names in mail.
-    pub(super) contact_names: bool,
-}
+pub(super) struct ContactSourcesInit;
 
 #[relm4::component(pub(crate))]
 impl SimpleComponent for ContactSources {
@@ -221,8 +208,8 @@ impl SimpleComponent for ContactSources {
                             #[wrap(Some)]
                             set_child = &adw::PreferencesPage {
                                 add = &adw::PreferencesGroup {
-                                    set_title: &i18n("Address books"),
-                                    set_description: Some(&i18n("Where contacts come from for Contacts, suggestions, sender pictures and filters. Switching one off leaves it out of Tegami Mail.")),
+                                    set_title: &i18n("Books"),
+                                    set_description: Some(&i18n("Where contacts come from for suggestions, sender pictures and filters. A book switched off is ignored by Tegami Mail.")),
                                     #[wrap(Some)]
                                     set_header_suffix = &gtk::Box {
                                         set_orientation: gtk::Orientation::Horizontal,
@@ -234,21 +221,22 @@ impl SimpleComponent for ContactSources {
                                         // without leaving the page.
                                         gtk::Button {
                                             set_icon_name: "view-refresh-symbolic",
+                                            add_css_class: "flat",
                                             set_tooltip_text: Some(&i18n("Look again for address books")),
                                             connect_clicked => ContactSourcesInput::Load,
-                                        },
-                                        #[name = "add_btn"]
-                                        gtk::Button {
-                                            set_label: &i18n("Add address book…"),
-                                            connect_clicked => ContactSourcesInput::Add,
                                         },
                                     },
                                     #[name = "list"]
                                     gtk::ListBox {
                                         add_css_class: "boxed-list",
                                         set_selection_mode: gtk::SelectionMode::None,
+                                        // The last row adds a book (screen 46).
                                         connect_row_activated[sender] => move |_, row| {
-                                            sender.input(ContactSourcesInput::Open(row.index() as usize));
+                                            if row.has_css_class("add-row") {
+                                                sender.input(ContactSourcesInput::Add);
+                                            } else {
+                                                sender.input(ContactSourcesInput::Open(row.index() as usize));
+                                            }
                                         },
                                     },
                                     #[name = "no_eds"]
@@ -272,17 +260,21 @@ impl SimpleComponent for ContactSources {
                                         },
                                     },
                                 },
+                                // GNOME's own places for contacts and
+                                // accounts (screen 46).
                                 add = &adw::PreferencesGroup {
-                                    set_title: &i18n("In mail"),
-                                    // Thunderbird's "Show only the display
-                                    // name for people in my address book".
-                                    adw::SwitchRow {
-                                        set_title: &i18n("Show names from Contacts"),
-                                        set_subtitle: &i18n("Saved addresses show the contact's name, not the mail's."),
-                                        set_active: init.contact_names,
-                                        connect_active_notify[sender] => move |row| {
-                                            let _ = sender.output(ContactSourcesOutput::SetContactNames(row.is_active()));
-                                        },
+                                    adw::ActionRow {
+                                        set_title: &i18n("Open Contacts"),
+                                        set_activatable: true,
+                                        add_suffix = &gtk::Image::from_icon_name("adw-external-link-symbolic"),
+                                        connect_activated => |_| crate::ui::contacts_browser::launch_gnome_contacts(),
+                                    },
+                                    adw::ActionRow {
+                                        set_title: &i18n("Open Online Accounts"),
+                                        set_subtitle: &i18n("To add Google or Microsoft 365."),
+                                        set_activatable: true,
+                                        add_suffix = &gtk::Image::from_icon_name("adw-external-link-symbolic"),
+                                        connect_activated => |_| crate::ui::accounts::open_online_accounts(),
                                     },
                                 },
                             },
@@ -337,7 +329,7 @@ impl SimpleComponent for ContactSources {
     }
 
     fn init(
-        init: ContactSourcesInit,
+        _init: ContactSourcesInit,
         root: Self::Root,
         sender: ComponentSender<Self>,
     ) -> ComponentParts<Self> {
@@ -345,10 +337,9 @@ impl SimpleComponent for ContactSources {
         let model = ContactSources {
             sources: Vec::new(),
             books: Vec::new(),
-            local_count: 0,
             list: widgets.list.clone(),
-            add_btn: widgets.add_btn.clone(),
             no_eds: widgets.no_eds.clone(),
+            eds: true,
             book_row: widgets.book_row.clone(),
             book_guard: Rc::new(std::cell::Cell::new(false)),
             toasts: widgets.toasts.clone(),
@@ -422,7 +413,7 @@ impl SimpleComponent for ContactSources {
             ContactSourcesInput::Loaded { sources, eds } => {
                 self.sources = sources;
                 // Every kind that can be added is kept by EDS.
-                self.add_btn.set_sensitive(eds);
+                self.eds = eds;
                 self.no_eds.set_visible(!eds);
                 self.rebuild(&sender);
                 // An open page about a source follows it, wherever it is
@@ -446,7 +437,6 @@ impl SimpleComponent for ContactSources {
                 self.book_row.set_sensitive(self.books.len() > 1);
                 self.book_guard.set(false);
             }
-            ContactSourcesInput::SetLocalCount(n) => self.local_count = n,
             ContactSourcesInput::ChangeBook(i) => {
                 if self.book_guard.get() {
                     return;
@@ -536,15 +526,6 @@ impl SimpleComponent for ContactSources {
                 found,
                 checked,
             } => self.report_done(error, found, checked, &sender),
-            ContactSourcesInput::ImportLocal => {
-                let _ = sender.output(ContactSourcesOutput::ImportLocal);
-            }
-            ContactSourcesInput::ExportLocal => {
-                let _ = sender.output(ContactSourcesOutput::ExportLocal);
-            }
-            ContactSourcesInput::DeleteAllLocal => {
-                let _ = sender.output(ContactSourcesOutput::DeleteAllLocal);
-            }
         }
     }
 }

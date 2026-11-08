@@ -1,4 +1,5 @@
-//! Settings → Backup: export and import of the settings.
+//! Settings → Backup and restore (screen 48): export and import of the
+//! settings.
 
 use adw::prelude::*;
 
@@ -15,14 +16,16 @@ impl BackupPage {
     pub(in crate::ui::preferences) fn build(sender: &ViewSender) -> Self {
         relm4::view! {
             page = adw::PreferencesPage {
+                // Screen 48: the two rows, the import asking before it
+                // replaces anything (`app::prefs_data`).
                 add = &adw::PreferencesGroup {
-                    set_title: &i18n("Backup"),
                     set_description: Some(
                         i18n("Accounts, preferences, filters, tags and layout, in one file. Passwords and OpenPGP keys are not included.").as_str()
                     ),
 
                     adw::ActionRow {
                         set_title: &i18n("Export settings"),
+                        set_subtitle: &i18n("Saves everything in one file."),
                         set_activatable: true,
                         connect_activated => PrefInput::ExportSettings,
                         add_suffix = &gtk::Image {
@@ -31,8 +34,8 @@ impl BackupPage {
                     },
 
                     adw::ActionRow {
-                        set_title: &i18n("Import settings"),
-                        set_subtitle: &i18n("Replaces everything in place. Don't remove accounts first: that deletes their passwords."),
+                        set_title: &i18n("Import settings…"),
+                        set_subtitle: &i18n("Replaces your settings. Keep your accounts in place: removing them first deletes their passwords."),
                         set_activatable: true,
                         connect_activated => PrefInput::ImportSettings,
                         add_suffix = &gtk::Image {

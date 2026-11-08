@@ -28,7 +28,7 @@ pub(super) fn sync_contact_books(sender: &ComponentSender<AppModel>, force: bool
 }
 
 /// Tell what depends on the contacts to read them again, and read the books
-/// new ones can go to and the Tegami Mail book's size, off the main thread, after `delay_ms` (EDS takes a moment to flush
+/// new ones can go to, off the main thread, after `delay_ms` (EDS takes a moment to flush
 /// a write to the cache the read goes through).
 pub(super) fn reload_contacts(sender: &ComponentSender<AppModel>, delay_ms: u64) {
     let s = sender.clone();
@@ -36,51 +36,21 @@ pub(super) fn reload_contacts(sender: &ComponentSender<AppModel>, delay_ms: u64)
         std::thread::sleep(std::time::Duration::from_millis(delay_ms));
         if demo_mode() {
             s.input(AppMsg::ContactsLoaded);
-            s.input(AppMsg::ContactBooksLoaded {
-                books: crate::contacts::demo_books(),
-                local_count: 1,
-            });
+            s.input(AppMsg::ContactBooksLoaded(crate::contacts::demo_books()));
             return;
         }
         s.input(AppMsg::ContactsLoaded);
-        s.input(AppMsg::ContactBooksLoaded {
-            books: crate::contacts::writable_books(),
-            local_count: crate::contacts::local::count(),
-        });
+        s.input(AppMsg::ContactBooksLoaded(crate::contacts::writable_books()));
     });
-}
-
-/// The notification text for a finished contacts import, and whether it is an error.
-fn import_summary(o: &crate::contacts::local::ImportOutcome) -> (String, bool) {
-    if o.added + o.updated == 0 {
-        return (
-            i18n("No contacts were found in the selected files"),
-            o.errors > 0,
-        );
-    }
-    let counts = [
-        ("added", o.added.to_string()),
-        ("updated", o.updated.to_string()),
-        ("skipped", o.skipped.to_string()),
-        ("errors", o.errors.to_string()),
-    ];
-    let args: Vec<(&str, &str)> = counts.iter().map(|(k, v)| (*k, v.as_str())).collect();
-    let text = if o.skipped + o.errors > 0 {
-        i18n_f(
-            "Contacts imported: {added} new, {updated} updated, {skipped} skipped, {errors} damaged",
-            &args,
-        )
-    } else {
-        i18n_f("Contacts imported: {added} new, {updated} updated", &args)
-    };
-    (text, false)
 }
 
 impl AppModel {
     /// Read the names "Show names from Contacts" puts on mail (#541) off
     /// the main thread, or let them go when the switch is off.
     pub(super) fn read_contact_names(&self, sender: &ComponentSender<Self>) {
-        if !self.contact_names || demo_mode() {
+        // Saved contacts always go by their names (docs/DESIGN.md,
+        // "Organize mail and services"): the switch is gone.
+        if demo_mode() {
             sender.input(AppMsg::ContactNamesRead(Default::default()));
             return;
         }
@@ -88,12 +58,6 @@ impl AppModel {
         std::thread::spawn(move || {
             s.input(AppMsg::ContactNamesRead(crate::contacts::read_saved_names()));
         });
-    }
-
-    /// The window a dialog opened from Preferences belongs to: the main
-    /// window, which the preferences dialog itself sits in.
-    pub(super) fn dialog_parent(&self) -> Option<gtk::Window> {
-        Some(self.window.clone().upcast())
     }
 
     /// Dialog to add an email to GNOME Contacts (choosing the address book).
@@ -218,9 +182,7 @@ impl AppModel {
                 // reader's cards draw initials only, so it has nothing to do.
                 self.message_list
                     .emit(MessageListInput::ContactPhotosChanged);
-                if self.contact_names {
-                    self.read_contact_names(&sender);
-                }
+                self.read_contact_names(&sender);
             }
 
             AppMsg::ContactBooksSynced => {
@@ -232,10 +194,9 @@ impl AppModel {
                 }
             }
 
-            AppMsg::ContactBooksLoaded { books, local_count } => {
+            AppMsg::ContactBooksLoaded(books) => {
                 if let Some(p) = &self.prefs {
-                    p.emit(PrefInput::SetContactBooks(books.clone()));
-                    p.emit(PrefInput::SetLocalContactCount(local_count));
+                    p.emit(PrefInput::SetContactBooks(books));
                 }
             }
 
@@ -245,18 +206,10 @@ impl AppModel {
                 if self.filters.iter().any(|r| r.needs_contacts()) {
                     self.saved_addresses.refresh();
                 }
-                if self.contact_names {
-                    self.read_contact_names(&sender);
-                }
+                self.read_contact_names(&sender);
             }
 
             AppMsg::ContactNamesRead(names) => {
-                // A late read must not bring back names switched off since.
-                let names = if self.contact_names {
-                    names
-                } else {
-                    Default::default()
-                };
                 if crate::contacts::set_contact_names(names) {
                     self.message_list
                         .emit(MessageListInput::ContactNamesChanged);
@@ -265,91 +218,9 @@ impl AppModel {
                 }
             }
 
-            AppMsg::ContactWriteDone(err) => {
-                if let Some(e) = err {
-                    self.notice_error(i18n_f(
-                        "Could not update contact: {e}",
-                        &[("e", &(e).to_string())],
-                    ));
-                }
-                // A short pause lets EDS flush the write to its SQLite cache
-                // (that is what the read goes through).
-                reload_contacts(&sender, 500);
-            }
-
-            AppMsg::ImportContacts(paths) => {
-                let s = sender.clone();
-                std::thread::spawn(move || {
-                    s.input(AppMsg::ContactsImported(crate::contacts::import_vcf_files(
-                        &paths,
-                    )));
-                });
-            }
-
-            AppMsg::ContactsImported(result) => {
-                let (text, error) = match &result {
-                    Err(e) => (i18n_f("Could not import contacts: {e}", &[("e", e)]), true),
-                    Ok(o) => import_summary(o),
-                };
-                // The bar opens for errors only; a good import shows in the
-                // list, and its counts wait in the bar for whoever opens it.
-                if error {
-                    self.notifications.emit(NotifyInput::Push {
-                        text,
-                        error,
-                        connectivity: false,
-                    });
-                } else {
-                    self.notifications.emit(NotifyInput::SetStatus(text));
-                }
-                if let Ok(o) = &result {
-                    if !o.failed_files.is_empty() {
-                        self.notice_error(i18n_f(
-                            "Could not read: {files}",
-                            &[("files", &o.failed_files.join("; "))],
-                        ));
-                    }
-                }
-                reload_contacts(&sender, 0);
-            }
             _ => unreachable!("not routed to on_contacts"),
         }
     }
-}
-
-/// Ask for `.vcf` files to import into the Tegami Mail book, and hand their paths
-/// to `done` (never called for a cancelled dialog or no files).
-pub(super) fn choose_vcf_files(
-    parent: Option<&gtk::Window>,
-    done: impl Fn(Vec<std::path::PathBuf>) + 'static,
-) {
-    let dialog = gtk::FileDialog::builder()
-        .title(i18n("Import contacts"))
-        .build();
-    let filter = gtk::FileFilter::new();
-    filter.set_name(Some(&i18n("vCard files")));
-    filter.add_pattern("*.vcf");
-    filter.add_pattern("*.vcard");
-    filter.add_mime_type("text/vcard");
-    filter.add_mime_type("text/x-vcard");
-    let filters = gtk::gio::ListStore::new::<gtk::FileFilter>();
-    filters.append(&filter);
-    let any = gtk::FileFilter::new();
-    any.set_name(Some(&i18n("All files")));
-    any.add_pattern("*");
-    filters.append(&any);
-    dialog.set_filters(Some(&filters));
-    dialog.open_multiple(parent, gtk::gio::Cancellable::NONE, move |res| {
-        let Ok(files) = res else { return };
-        let paths: Vec<std::path::PathBuf> = files
-            .iter::<gtk::gio::File>()
-            .flatten()
-            .filter_map(|f| f.path())
-            .collect();
-        if !paths.is_empty() {
-            done(paths);
-        }
-    });
 }
 
 /// Nothing keeps a CardDAV or Online Accounts address book in step
@@ -370,43 +241,4 @@ pub(super) fn start_contacts_sync(sender: &ComponentSender<AppModel>) {
             let _ = input.send(AppMsg::ContactPhotosChanged);
         }
     });
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn contact_import_summary_counts() {
-        use crate::contacts::local::ImportOutcome;
-        let none = ImportOutcome {
-            errors: 1,
-            ..Default::default()
-        };
-        assert_eq!(
-            import_summary(&none),
-            (
-                "No contacts were found in the selected files".to_string(),
-                true
-            )
-        );
-        let ok = ImportOutcome {
-            added: 2,
-            updated: 1,
-            ..Default::default()
-        };
-        assert_eq!(
-            import_summary(&ok),
-            ("Contacts imported: 2 new, 1 updated".to_string(), false)
-        );
-        let mixed = ImportOutcome {
-            added: 1,
-            skipped: 3,
-            ..Default::default()
-        };
-        assert_eq!(
-            import_summary(&mixed).0,
-            "Contacts imported: 1 new, 0 updated, 3 skipped, 0 damaged"
-        );
-    }
 }

@@ -7,7 +7,7 @@ use adw::prelude::*;
 use relm4::prelude::*;
 
 use crate::contacts::carddav::{self, Account};
-use crate::contacts::contact_sources::{Kind, Source};
+use crate::contacts::contact_sources::Source;
 use crate::contacts::directory::{self, Directory, Security};
 use crate::i18n::{i18n, i18n_f};
 
@@ -61,13 +61,10 @@ pub(super) fn name_group(
 ) -> adw::PreferencesGroup {
     let group = adw::PreferencesGroup::new();
     let own = [("own", source.own_title.as_str())];
-    group.set_description(Some(&match source.kind {
-        Kind::Tegami => i18n_f("The name used here and in Contacts. Left blank, it is {own}.", &own),
-        _ => i18n_f(
-            "The name used here and in Contacts; GNOME Contacts keeps its own. Left blank, it is {own}.",
-            &own,
-        ),
-    }));
+    group.set_description(Some(&i18n_f(
+        "The name used here and in Contacts; GNOME Contacts keeps its own. Left blank, it is {own}.",
+        &own,
+    )));
     let row = adw::EntryRow::new();
     row.set_title(&i18n("Name"));
     row.set_text(&source.title);

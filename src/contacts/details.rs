@@ -66,8 +66,6 @@ pub(crate) struct ContactDetails {
     /// `birthday` is it in words.
     pub(crate) birthday_raw: String,
     pub(crate) urls: Vec<String>,
-    /// EDS source UID of the book this contact came from — where edits go.
-    pub(crate) book_uid: String,
     /// The contact's own EDS UID (for deletion and deep links).
     pub(crate) eds_uid: String,
     /// The stored vCard, verbatim; edits patch this so unknown properties

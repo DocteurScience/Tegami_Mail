@@ -56,7 +56,6 @@ pub(crate) struct PrefInit {
     /// A notification when a read receipt comes back (#520).
     pub(crate) notify_receipts: bool,
     pub(crate) read_mark: crate::config::ReadMark,
-    pub(crate) contact_names: bool,
     pub(crate) single_key_shortcuts: bool,
     pub(crate) gmail_keys: bool,
     pub(crate) keep_downloads_days: u32,
@@ -81,8 +80,6 @@ pub(crate) struct PrefInit {
 pub(crate) enum PrefInput {
     /// The Contacts page: the books new contacts can go to, freshly read.
     SetContactBooks(Vec<crate::contacts::Book>),
-    /// The Tegami Mail book's size changed (an import, a deletion).
-    SetLocalContactCount(usize),
     /// The large-attachment policy row moved.
     ChangeFilesLarge(u32),
     /// The app changed the Files preferences (a dialog's "always do this").
@@ -139,11 +136,6 @@ pub(crate) enum PrefInput {
 
 #[derive(Debug)]
 pub(crate) enum PrefOutput {
-    /// The Contacts page's buttons: the app opens the file dialogs and the
-    /// confirmation, and does the work off the main thread.
-    ImportLocalContacts,
-    ExportLocalContacts,
-    DeleteAllLocalContacts,
     SetContactBook(String),
     /// The Contacts page is showing: read the books new contacts can go to
     /// (D-Bus, so off the main thread) and send them back.
@@ -194,9 +186,6 @@ pub(crate) enum PrefOutput {
     /// A theme was picked in the gallery (its id, or "system").
     SetTheme(String),
     SetPreviewLines(u32),
-    /// Keep Contacts' search field open.
-    /// Saved contacts go by their address-book names (#541).
-    SetContactNames(bool),
     SetSingleKey(bool),
     SetGmailKeys(bool),
     /// How many days downloaded mail is kept; 0 keeps it (#394).

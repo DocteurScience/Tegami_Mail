@@ -206,9 +206,6 @@ msgstr "Nouveau message"
 msgid "Could not forward the message: {e}"
 msgstr "Impossible de transférer le message : {e}"
 
-msgid "Tegami Mail address book"
-msgstr "Carnet d’adresses Tegami Mail"
-
 msgid "On this computer"
 msgstr "Sur cet ordinateur"
 
@@ -243,11 +240,6 @@ msgid "{n} address book"
 msgid_plural "{n} address books"
 msgstr[0] "{n} carnet d’adresses"
 msgstr[1] "{n} carnets d’adresses"
-
-msgid "{n} contact, kept by Tegami Mail"
-msgid_plural "{n} contacts, kept by Tegami Mail"
-msgstr[0] "{n} contact, conservé par Tegami Mail"
-msgstr[1] "{n} contacts, conservés par Tegami Mail"
 
 msgid "{books} · kept by GNOME Contacts and Evolution"
 msgstr "{books} · conservés par Contacts GNOME et Evolution"
@@ -311,22 +303,6 @@ msgstr ""
 
 msgid "{name} did not answer: {error}"
 msgstr "{name} n’a pas répondu : {error}"
-
-msgid "A contact needs a name, an email address or a phone number"
-msgstr ""
-"Un contact doit avoir un nom, une adresse e-mail ou un numéro de téléphone"
-
-msgid "The contact is too large"
-msgstr "Le contact est trop volumineux"
-
-msgid "UTF-16 files are not supported"
-msgstr "Les fichiers UTF-16 ne sont pas pris en charge"
-
-msgid "The file is not a text file"
-msgstr "Le fichier n’est pas un fichier texte"
-
-msgid "The file is larger than {size} MB"
-msgstr "Le fichier dépasse {size} Mo"
 
 msgid "{n} person, in Bcc"
 msgid_plural "{n} people, in Bcc"
@@ -644,6 +620,40 @@ msgstr "Votre réponse a été envoyée : peut-être."
 
 msgid "Your answer has been sent: declined."
 msgstr "Votre réponse a été envoyée : refusé."
+
+msgid ""
+"{n} contact exported to {file}. Open the file in GNOME Contacts to keep it."
+msgid_plural ""
+"{n} contacts exported to {file}. Open the file in GNOME Contacts to keep "
+"them."
+msgstr[0] "{n} contact exporté dans {file}. Ouvrez le fichier dans Contacts GNOME pour le garder."
+msgstr[1] "{n} contacts exportés dans {file}. Ouvrez le fichier dans Contacts GNOME pour les garder."
+
+msgid "Could not export the contacts: {e}"
+msgstr "Impossible d’exporter les contacts : {e}"
+
+msgid "Export your Tegami Mail contacts"
+msgstr "Exporter vos contacts Tegami Mail"
+
+msgid ""
+"The Tegami Mail address book holds {n} contact. Tegami Mail now uses the "
+"address books GNOME provides: export it as a vCard file, then open the file "
+"in GNOME Contacts."
+msgid_plural ""
+"The Tegami Mail address book holds {n} contacts. Tegami Mail now uses the "
+"address books GNOME provides: export them as a vCard file, then open the "
+"file in GNOME Contacts."
+msgstr[0] "Le carnet d’adresses Tegami Mail contient {n} contact. Tegami Mail utilise désormais les carnets d’adresses fournis par GNOME : exportez-le en fichier vCard, puis ouvrez ce fichier dans Contacts GNOME."
+msgstr[1] "Le carnet d’adresses Tegami Mail contient {n} contacts. Tegami Mail utilise désormais les carnets d’adresses fournis par GNOME : exportez-les en fichier vCard, puis ouvrez ce fichier dans Contacts GNOME."
+
+msgid "Later"
+msgstr "Plus tard"
+
+msgid "Export…"
+msgstr "Exporter…"
+
+msgid "Export contacts"
+msgstr "Exporter les contacts"
 
 msgid "Messages"
 msgstr "Messages"
@@ -1122,38 +1132,8 @@ msgstr "Objet : {subject}"
 msgid "Export failed: {e}"
 msgstr "Échec de l’exportation : {e}"
 
-msgid "Export contacts"
-msgstr "Exporter les contacts"
-
-msgid "{n} contact exported to {path}"
-msgid_plural "{n} contacts exported to {path}"
-msgstr[0] "{n} contact exporté vers {path}"
-msgstr[1] "{n} contacts exportés vers {path}"
-
-msgid "Could not export contacts: {e}"
-msgstr "Impossible d’exporter les contacts : {e}"
-
-msgid "Delete All Contacts?"
-msgstr "Supprimer tous les contacts ?"
-
-msgid ""
-"The {n} contact in the Tegami Mail address book is deleted. This cannot be "
-"undone; export the book first to keep a copy."
-msgid_plural ""
-"The {n} contacts in the Tegami Mail address book are deleted. This cannot be "
-"undone; export the book first to keep a copy."
-msgstr[0] ""
-"{n} contact du carnet d’adresses Tegami Mail sera supprimé. Cette action est "
-"irréversible ; exportez d’abord le carnet pour en conserver une copie."
-msgstr[1] ""
-"{n} contacts du carnet d’adresses Tegami Mail seront supprimés. Cette action "
-"est irréversible ; exportez d’abord le carnet pour en conserver une copie."
-
-msgid "Delete all"
-msgstr "Tout supprimer"
-
 msgid "Export settings"
-msgstr "Exporter les paramètres"
+msgstr "Exporter les réglages"
 
 msgid "Settings exported to {display}"
 msgstr "Paramètres exportés vers {display}"
@@ -1166,6 +1146,17 @@ msgstr "Journal exporté vers {display}"
 
 msgid "Import settings"
 msgstr "Importer les paramètres"
+
+msgid "Replace your settings?"
+msgstr "Remplacer vos réglages ?"
+
+msgid ""
+"The settings in {file} replace yours. Keep your accounts in place: removing "
+"them first deletes their passwords."
+msgstr "Les réglages de {file} remplacent les vôtres. Gardez vos comptes en place : les retirer avant supprime leurs mots de passe."
+
+msgid "Replace"
+msgstr "Remplacer"
 
 msgid "Settings imported"
 msgstr "Paramètres importés"
@@ -1181,14 +1172,11 @@ msgstr ""
 "sauvegarde ; vous devrez les saisir à nouveau lors de la première "
 "utilisation s’il s’agit d’un nouvel ordinateur."
 
-msgid "Later"
-msgstr "Plus tard"
-
 msgid "Restart Tegami Mail"
 msgstr "Redémarrer Tegami Mail"
 
-msgid "Import failed: {e}"
-msgstr "Échec de l’importation : {e}"
+msgid "Import failed"
+msgstr "Échec de l’importation"
 
 msgid "Forward as attachment"
 msgstr "Transférer en pièce jointe"
@@ -2337,10 +2325,8 @@ msgstr "Recherché sur le serveur ; rien n’est téléchargé"
 msgid "From address when no Reply-To is set"
 msgstr "Adresse d’expéditeur utilisée en l’absence de Reply-To"
 
-msgid "Looks in the system address books and the Tegami Mail book"
-msgstr ""
-"Recherche dans les carnets d’adresses du système et dans le carnet Tegami "
-"Mail"
+msgid "Looks in your address books"
+msgstr "Cherche dans vos carnets d’adresses"
 
 msgid "Tag with"
 msgstr "Étiqueter avec"
@@ -2486,7 +2472,10 @@ msgid ""
 "Shows the messages that match its criteria. In the sidebar, a collapsible "
 "“Smart folders” section follows the unified inboxes; it appears only when "
 "there is at least one."
-msgstr "Affiche les messages qui correspondent à ses critères. Dans la barre latérale, une section repliable « Dossiers intelligents » suit les boîtes unifiées ; elle n’apparaît que s’il y en a au moins un."
+msgstr ""
+"Affiche les messages qui correspondent à ses critères. Dans la barre "
+"latérale, une section repliable « Dossiers intelligents » suit les boîtes "
+"unifiées ; elle n’apparaît que s’il y en a au moins un."
 
 msgid "Searching…"
 msgstr "Recherche…"
@@ -2931,7 +2920,9 @@ msgid "Remove account"
 msgstr "Supprimer le compte"
 
 msgid "Files already uploaded and shared links stay active at the provider."
-msgstr "Les fichiers déjà envoyés et les liens partagés restent actifs chez le fournisseur."
+msgstr ""
+"Les fichiers déjà envoyés et les liens partagés restent actifs chez le "
+"fournisseur."
 
 msgid "Choose an online account first."
 msgstr "Choisissez d’abord un compte en ligne."
@@ -2990,7 +2981,10 @@ msgid ""
 "Upload large files to your online storage and send a link instead of the "
 "attachment. Supported services: Nextcloud, ownCloud, OpenCloud, OneDrive, "
 "Dropbox and Seafile."
-msgstr "Envoyez les gros fichiers vers votre service en ligne et envoyez un lien à la place de la pièce jointe. Services pris en charge : Nextcloud, ownCloud, OpenCloud, OneDrive, Dropbox et Seafile."
+msgstr ""
+"Envoyez les gros fichiers vers votre service en ligne et envoyez un lien à "
+"la place de la pièce jointe. Services pris en charge : Nextcloud, ownCloud, "
+"OpenCloud, OneDrive, Dropbox et Seafile."
 
 msgid "Cloud account"
 msgstr "Compte cloud"
@@ -3354,9 +3348,6 @@ msgstr "Plus d’actions"
 msgid "Download password for {name}: {password}"
 msgstr "Mot de passe de téléchargement pour {name} : {password}"
 
-msgid "The name used here and in Contacts. Left blank, it is {own}."
-msgstr "Le nom utilisé ici et dans Contacts. Laissé vide, il s’agit de {own}."
-
 msgid ""
 "The name used here and in Contacts; GNOME Contacts keeps its own. Left "
 "blank, it is {own}."
@@ -3457,37 +3448,6 @@ msgstr ""
 "Google et Microsoft 365 se connectent via les Comptes en ligne de GNOME. "
 "Ajoutez-y le compte avec l’option Contacts activée, et il apparaîtra ici."
 
-msgid "Kept in Tegami Mail's own data folder. Works without GNOME."
-msgstr ""
-"Conservés dans le propre dossier de données de Tegami Mail. Fonctionne sans "
-"GNOME."
-
-msgid "Contacts in the Tegami Mail book"
-msgstr "Contacts du carnet Tegami Mail"
-
-msgid "Import vCard files"
-msgstr "Importer des fichiers vCard"
-
-msgid ""
-"Adds contacts from .vcf files. Importing a file again updates existing "
-"entries."
-msgstr ""
-"Ajoute des contacts depuis des fichiers .vcf. Réimporter un fichier met à "
-"jour les entrées existantes."
-
-msgid "Export as a vCard file"
-msgstr "Exporter en fichier vCard"
-
-msgid "Saves every contact in the Tegami Mail book in one .vcf file."
-msgstr ""
-"Enregistre tous les contacts du carnet Tegami Mail dans un seul fichier .vcf."
-
-msgid "Delete all contacts"
-msgstr "Supprimer tous les contacts"
-
-msgid "Other address books are not touched."
-msgstr "Les autres carnets d’adresses ne sont pas modifiés."
-
 msgid "Tegami Mail"
 msgstr "Tegami Mail"
 
@@ -3507,6 +3467,11 @@ msgid "Kept by Evolution Data Server, set up in Evolution or GNOME Contacts"
 msgstr ""
 "Conservé par Evolution Data Server, configuré dans Evolution ou Contacts "
 "GNOME"
+
+#. Last, the way to add one (screen 46): every kind is kept by
+#. Evolution Data Server, so without it there is nothing to add to.
+msgid "Add address book…"
+msgstr "Ajouter un carnet d’adresses…"
 
 msgid ""
 "Evolution and other apps stop seeing it too. Nothing on the server changes."
@@ -3569,18 +3534,16 @@ msgstr "Annuaire LDAP"
 msgid "Contacts"
 msgstr "Contacts"
 
+msgid "Books"
+msgstr "Carnets"
+
 msgid ""
-"Where contacts come from for Contacts, suggestions, sender pictures and "
-"filters. Switching one off leaves it out of Tegami Mail."
-msgstr ""
-"Source des contacts pour Contacts, les suggestions, les photos d’expéditeur "
-"et les filtres. En désactiver une l’exclut de Tegami Mail."
+"Where contacts come from for suggestions, sender pictures and filters. A "
+"book switched off is ignored by Tegami Mail."
+msgstr "D’où viennent les contacts pour les suggestions, les photos des expéditeurs et les filtres. Un carnet désactivé est ignoré par Tegami Mail."
 
 msgid "Look again for address books"
 msgstr "Rechercher à nouveau des carnets d’adresses"
-
-msgid "Add address book…"
-msgstr "Ajouter un carnet d’adresses…"
 
 msgid ""
 "Address books need Evolution Data Server, which is not installed. Install "
@@ -3600,15 +3563,11 @@ msgstr "Enregistrer les nouveaux contacts dans"
 msgid "Unless another is picked when the contact is made."
 msgstr "Sauf si un autre est choisi lors de la création du contact."
 
-msgid "In mail"
-msgstr "Dans les messages"
+msgid "Open Contacts"
+msgstr "Ouvrir Contacts"
 
-msgid "Show names from Contacts"
-msgstr "Afficher les noms des contacts"
-
-msgid "Saved addresses show the contact's name, not the mail's."
-msgstr ""
-"Les adresses enregistrées affichent le nom du contact, pas celui du message."
+msgid "To add Google or Microsoft 365."
+msgstr "Pour ajouter Google ou Microsoft 365."
 
 msgid "Looking for address books on {name}…"
 msgstr "Recherche de carnets d’adresses sur {name}…"
@@ -4411,7 +4370,9 @@ msgstr "Aucune clé provenant d’autres personnes pour le moment."
 msgid ""
 "Uses the GnuPG {version} keyring, the same as the gpg command and other "
 "applications."
-msgstr "Utilise le trousseau GnuPG {version}, le même que la commande gpg et les autres applications."
+msgstr ""
+"Utilise le trousseau GnuPG {version}, le même que la commande gpg et les "
+"autres applications."
 
 msgid ""
 "GnuPG was not found. Install the gnupg package to read encrypted mail and "
@@ -4687,9 +4648,6 @@ msgstr ""
 msgid "Add a word"
 msgstr "Ajouter un mot"
 
-msgid "Backup"
-msgstr "Sauvegarde"
-
 msgid ""
 "Accounts, preferences, filters, tags and layout, in one file. Passwords and "
 "OpenPGP keys are not included."
@@ -4697,12 +4655,16 @@ msgstr ""
 "Comptes, préférences, filtres, étiquettes et mise en page, dans un seul "
 "fichier. Les mots de passe et les clés OpenPGP ne sont pas inclus."
 
+msgid "Saves everything in one file."
+msgstr "Enregistre tout dans un fichier."
+
+msgid "Import settings…"
+msgstr "Importer des réglages…"
+
 msgid ""
-"Replaces everything in place. Don't remove accounts first: that deletes "
-"their passwords."
-msgstr ""
-"Remplace tout sur place. Ne supprimez pas d’abord les comptes : cela "
-"supprime leurs mots de passe."
+"Replaces your settings. Keep your accounts in place: removing them first "
+"deletes their passwords."
+msgstr "Remplace vos réglages. Gardez vos comptes en place : les retirer avant supprime leurs mots de passe."
 
 msgid "When a message is opened."
 msgstr "Quand un message est ouvert."
@@ -5190,7 +5152,9 @@ msgstr "Traduit une formule de salutation pour tester le service."
 msgid ""
 "A “Translate” button shows on messages in another language. The language is "
 "detected on this computer."
-msgstr "Un bouton « Traduire » apparaît sur les messages dans une autre langue. La langue est détectée sur cet ordinateur."
+msgstr ""
+"Un bouton « Traduire » apparaît sur les messages dans une autre langue. La "
+"langue est détectée sur cet ordinateur."
 
 msgid "Tegami Mail's language ({language})"
 msgstr "Langue de Tegami Mail ({language})"
@@ -5704,19 +5668,6 @@ msgstr "aucune connexion réseau"
 msgid "runtime error: {e}"
 msgstr "erreur d’exécution : {e}"
 
-msgid "No contacts were found in the selected files"
-msgstr "Aucun contact trouvé dans les fichiers sélectionnés"
-
-msgid ""
-"Contacts imported: {added} new, {updated} updated, {skipped} skipped, "
-"{errors} damaged"
-msgstr ""
-"Contacts importés : {added} nouveaux, {updated} mis à jour, {skipped} "
-"ignorés, {errors} endommagés"
-
-msgid "Contacts imported: {added} new, {updated} updated"
-msgstr "Contacts importés : {added} nouveaux, {updated} mis à jour"
-
 msgid "No address book available to add contacts"
 msgstr "Aucun carnet d’adresses disponible pour ajouter des contacts"
 
@@ -5735,29 +5686,18 @@ msgstr "Déjà dans les contacts ({name})"
 msgid "Could not add contact: {e}"
 msgstr "Impossible d’ajouter le contact : {e}"
 
-msgid "Could not update contact: {e}"
-msgstr "Impossible de mettre à jour le contact : {e}"
-
-msgid "Could not import contacts: {e}"
-msgstr "Impossible d’importer les contacts : {e}"
-
-msgid "Could not read: {files}"
-msgstr "Impossible de lire : {files}"
-
-msgid "Import contacts"
-msgstr "Importer des contacts"
-
-msgid "vCard files"
-msgstr "Fichiers vCard"
-
 msgid "Search filters"
 msgstr "Filtres de recherche"
 
 msgid "File or tag mail as it arrives. Filters run on each Inbox as it syncs."
-msgstr "Classez ou étiquetez le courrier à son arrivée. Les filtres s’appliquent à chaque boîte de réception à la synchronisation."
+msgstr ""
+"Classez ou étiquetez le courrier à son arrivée. Les filtres s’appliquent à "
+"chaque boîte de réception à la synchronisation."
 
 msgid "Runs every rule over the mail already in your inboxes."
-msgstr "Passe toutes les règles sur le courrier déjà présent dans vos boîtes de réception."
+msgstr ""
+"Passe toutes les règles sur le courrier déjà présent dans vos boîtes de "
+"réception."
 
 #. GNOME Online Accounts owns this account's servers and
 #. credentials; Tegami Mail only mirrors them, and can hide it

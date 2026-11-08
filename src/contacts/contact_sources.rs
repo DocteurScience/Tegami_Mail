@@ -1,4 +1,4 @@
-//! Where Tegami Mail finds contacts, for Settings → Contacts: the Tegami Mail book, the
+//! Where Tegami Mail finds contacts, for Settings → Address books: the
 //! Evolution Data Server books on this computer, the GNOME Online Accounts
 //! that keep contacts, CardDAV accounts and LDAP directories, each one row,
 //! grouped by the account its books belong to.
@@ -17,8 +17,6 @@ use serde::{Deserialize, Serialize};
 
 use crate::i18n::{i18n, i18n_f, ni18n_f};
 
-/// The ID of the Tegami Mail book in the switches, and its book UID.
-const TEGAMI: &str = crate::contacts::local::LOCAL_BOOK_UID;
 /// The ID that stands for the EDS books on this computer, which no source
 /// of their own groups.
 const THIS_COMPUTER: &str = "eds-local";
@@ -76,7 +74,7 @@ fn switch_path() -> Option<PathBuf> {
 }
 
 /// The IDs switched off for Tegami Mail: sources (an account, a directory, the
-/// Tegami Mail book, [`THIS_COMPUTER`]) and single books.
+/// [`THIS_COMPUTER`]) and single books.
 pub(crate) fn off() -> HashSet<String> {
     read_file().off.into_iter().collect()
 }
@@ -94,11 +92,6 @@ pub(crate) fn set_off(id: &str, is_off: bool) -> Result<(), String> {
     let mut file = read_file();
     file.off = list;
     write_file(&file)
-}
-
-/// Whether the Tegami Mail book is used.
-pub(crate) fn tegami_used() -> bool {
-    !off().contains(TEGAMI)
 }
 
 /// The source an EDS book is grouped under: the collection (account) it
@@ -148,7 +141,6 @@ pub(crate) fn book_used(
 /// What kind of source a row is.
 #[derive(Debug, Clone)]
 pub(crate) enum Kind {
-    Tegami,
     ThisComputer,
     /// An account in GNOME Online Accounts: changed in GNOME Settings.
     Online,
@@ -253,10 +245,9 @@ fn books_line(books: &[Book]) -> String {
     }
 }
 
-/// Every source Tegami Mail can read contacts from, the Tegami Mail book first, then
-/// this computer's books, then the accounts by name, and whether Evolution
+/// Every source Tegami Mail can read contacts from: this computer's books, then the accounts by name, and whether Evolution
 /// Data Server answered. Blocking: it asks EDS, GNOME Online Accounts and
-/// the keyring. Without EDS, only the Tegami Mail book.
+/// the keyring. Without EDS there is none to list.
 pub(crate) fn list_with_eds() -> (Vec<Source>, bool) {
     let sources = list();
     let eds = crate::contacts::registry_sources().is_some();
@@ -292,11 +283,11 @@ pub(crate) fn list() -> Vec<Source> {
     sources
 }
 
-/// The sources as EDS and GNOME Online Accounts name them: the Tegami Mail book
-/// first, then every account, book group and directory by name.
+/// The sources as EDS and GNOME Online Accounts name them: every account,
+/// book group and directory by name.
 fn list_own() -> Vec<Source> {
     let off = off();
-    let mut out = vec![tegami_source(&off)];
+    let mut out = Vec::new();
     let Some(registry) = crate::contacts::registry_sources() else {
         return out;
     };
@@ -355,30 +346,6 @@ fn list_own() -> Vec<Source> {
     });
     out.extend(accounts);
     out
-}
-
-/// The Tegami Mail book's row.
-fn tegami_source(off: &HashSet<String>) -> Source {
-    let count = crate::contacts::local::count();
-    Source {
-        own_title: String::new(),
-        given: None,
-        id: TEGAMI.to_string(),
-        kind: Kind::Tegami,
-        title: i18n("Tegami Mail address book"),
-        detail: ni18n_f(
-            "{n} contact, kept by Tegami Mail",
-            "{n} contacts, kept by Tegami Mail",
-            count as u32,
-            &[("n", &count.to_string())],
-        ),
-        mark: "x-office-address-book-symbolic",
-        origin: Origin::Tegami,
-        books: Vec::new(),
-        on: !off.contains(TEGAMI),
-        paused: None,
-        status: None,
-    }
 }
 
 /// The address books by the source they are grouped under, LDAP aside,

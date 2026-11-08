@@ -11,12 +11,6 @@ impl Preferences {
         }
     }
 
-    pub(super) fn on_set_local_contact_count(&mut self, n: usize) {
-        if let Some(c) = &self.contacts {
-            c.emit(crate::ui::contact_sources::ContactSourcesInput::SetLocalCount(n));
-        }
-    }
-
     pub(super) fn on_contacts(
         &mut self,
         out: crate::ui::contact_sources::ContactSourcesOutput,
@@ -32,18 +26,6 @@ impl Preferences {
             }
             Out::Changed => {
                 let _ = sender.output(PrefOutput::ContactSourcesChanged);
-            }
-            Out::ImportLocal => {
-                let _ = sender.output(PrefOutput::ImportLocalContacts);
-            }
-            Out::ExportLocal => {
-                let _ = sender.output(PrefOutput::ExportLocalContacts);
-            }
-            Out::DeleteAllLocal => {
-                let _ = sender.output(PrefOutput::DeleteAllLocalContacts);
-            }
-            Out::SetContactNames(on) => {
-                let _ = sender.output(PrefOutput::SetContactNames(on));
             }
             Out::SetContactBook(uid) => {
                 let _ = sender.output(PrefOutput::SetContactBook(uid));

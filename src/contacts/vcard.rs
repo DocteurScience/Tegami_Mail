@@ -76,9 +76,8 @@ pub(super) fn vcard_photo(vcard: &str) -> Option<Vec<u8>> {
     vcard_photo_with(vcard, true)
 }
 
-/// [`vcard_photo`], optionally refusing `file://` photos. The local Tegami Mail book
-/// holds vCards from arbitrary `.vcf` files, which must not be able to point
-/// at files EDS keeps.
+/// [`vcard_photo`], optionally refusing `file://` photos. A vCard from an arbitrary
+/// `.vcf` file must not be able to point at files EDS keeps.
 pub(crate) fn vcard_photo_with(vcard: &str, allow_files: bool) -> Option<Vec<u8>> {
     use base64::Engine as _;
 

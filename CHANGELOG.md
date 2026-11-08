@@ -2,6 +2,18 @@
 
 ## Unreleased
 
+- **Removed (approved in docs/DESIGN.md, "Removed or moved"): the Tegami
+  Mail address book**, with its import, export and "Delete all contacts",
+  and the "Show names from Contacts" switch, now always on. Tegami Mail
+  reads the books GNOME provides. A book that still holds contacts stays on
+  disk: at start the app offers to export it as one vCard file, to open in
+  GNOME Contacts, and stops asking once it is exported ("Later" asks again
+  next time).
+- **Changed: Address books and Backup and restore** (screens 46 to 48). The
+  books end with **Add address book…**, followed by "Save new contacts in"
+  and rows that open Contacts and Online Accounts. **Import settings…** asks
+  before it replaces anything.
+
 - **Changed: the filter, smart folder, OpenPGP, cloud storage and
   translation pages** (docs/DESIGN.md, "Organize mail and services";
   screens 37 to 45). Each list ends with the row that adds to it; a filter

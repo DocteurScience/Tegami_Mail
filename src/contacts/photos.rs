@@ -8,7 +8,7 @@ use std::time::{Duration, SystemTime};
 
 use super::read::{open_book_db, CACHED_BOOKS, EDS_LAYOUTS, LOCAL_BOOKS};
 use super::registry::registry_books;
-use super::vcard::{vcard_photo, vcard_photo_with};
+use super::vcard::vcard_photo;
 
 /// Photo bytes and the EDS database state they came from. The inexpensive
 /// fingerprint check lets a long-running Tegami Mail notice CardDAV synchronizations
@@ -18,8 +18,6 @@ struct PhotoLocation {
     db: PathBuf,
     uid: String,
     cached_book: bool,
-    /// The photo lives in the local Tegami Mail book (`db` is unused).
-    local: bool,
 }
 
 /// (path, size, mtime-nanos) per EDS database file — the cheap change signal.
@@ -182,7 +180,6 @@ fn photo_db_fingerprint() -> DbFingerprint {
             files.push(PathBuf::from(format!("{}{suffix}", db.to_string_lossy())));
         }
     }
-    files.extend(crate::contacts::local::db_paths());
     files.sort();
     files
         .into_iter()
@@ -222,51 +219,8 @@ fn load_contact_photo_index() -> HashMap<String, Vec<PhotoLocation>> {
             read_photo_locations(&db, &sql, layout.cached, &mut photos);
         }
     }
-    add_local_photo_locations(&mut photos);
     tracing::debug!(count = photos.len(), "indexed EDS contact photos");
     photos
-}
-
-/// Index the local Tegami Mail book's contacts that carry a photo.
-fn add_local_photo_locations(photos: &mut HashMap<String, Vec<PhotoLocation>>) {
-    if !crate::contacts::local::exists() || !crate::contacts::contact_sources::tegami_used() {
-        return;
-    }
-    let entries = match crate::contacts::local::photo_entries() {
-        Ok(entries) => entries,
-        Err(e) => {
-            tracing::warn!("contacts: cannot index local photos: {e}");
-            return;
-        }
-    };
-    for (email, uid) in entries {
-        let location = PhotoLocation {
-            db: PathBuf::new(),
-            uid,
-            cached_book: false,
-            local: true,
-        };
-        photos.entry(email).or_default().push(location);
-    }
-}
-
-/// A local write happened: re-index the photos now (rather than at the next
-/// 30 second check) so avatars and the Contacts list follow at once.
-pub(crate) fn local_changed() {
-    start_photo_load();
-    start_photo_watcher();
-    let index = CONTACT_PHOTOS.get_or_init(new_photo_index).clone();
-    let _ = std::thread::Builder::new()
-        .name("local-photo-reload".into())
-        .spawn(move || {
-            let (photos, fingerprint) = load_stable_photo_index();
-            let mut current = index.lock().unwrap_or_else(|p| p.into_inner());
-            current.photos = photos;
-            current.fingerprint = fingerprint;
-            current.generation = current.generation.wrapping_add(1).max(1);
-            drop(current);
-            notify_photo_change();
-        });
 }
 
 fn read_photo_locations(
@@ -305,7 +259,6 @@ fn read_photo_locations(
                 db: path.to_path_buf(),
                 uid,
                 cached_book,
-                local: false,
             };
             photos.entry(key).or_default().push(location);
         }
@@ -313,10 +266,6 @@ fn read_photo_locations(
 }
 
 fn read_photo_at(location: &PhotoLocation) -> Option<Vec<u8>> {
-    if location.local {
-        let vcard = crate::contacts::local::vcard_by_uid(&location.uid).ok()??;
-        return vcard_photo_with(&vcard, false);
-    }
     let conn = open_book_db(&location.db).ok()?;
     let layout = if location.cached_book {
         &CACHED_BOOKS

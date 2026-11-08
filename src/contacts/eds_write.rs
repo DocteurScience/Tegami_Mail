@@ -1,9 +1,7 @@
 //! Writing through Evolution Data Server over D-Bus: finding the address
 //! book factory, opening a book, and adding an address.
 
-use super::details::parse_vcard_fields;
-use super::photos::local_changed;
-use super::read::{is_local_book, read_contacts};
+use super::read::read_contacts;
 use super::vcard::is_group_vcard;
 
 // ---------------------------------------------------------------------------
@@ -162,10 +160,6 @@ pub(crate) fn add_or_merge(book_uid: &str, name: &str, email: &str) -> Result<Ad
         return Ok(AddOutcome::AlreadyPresent(existing.name));
     }
 
-    if is_local_book(book_uid) {
-        return add_or_merge_local(name, email);
-    }
-
     let dest = factory_dest().ok_or("Evolution Data Server is not available")?;
     let conn = zbus::blocking::Connection::session().map_err(|e| e.to_string())?;
     let (bus, path) = open_book(&conn, &dest, book_uid)?;
@@ -195,43 +189,6 @@ pub(crate) fn add_or_merge(book_uid: &str, name: &str, email: &str) -> Result<Ad
         &(vec![vcard_for(name, email)], 0u32),
     )?;
     Ok(AddOutcome::Created)
-}
-
-/// [`add_or_merge`] for the local book: merge into the contact with the same
-/// name, else create one.
-fn add_or_merge_local(name: &str, email: &str) -> Result<AddOutcome, String> {
-    let vcards = if crate::contacts::local::exists() {
-        crate::contacts::local::list_vcards()?
-    } else {
-        Vec::new()
-    };
-    let result = match merge_target(&vcards, name) {
-        Some(vcard) => {
-            crate::contacts::local::modify(&add_email_to_vcard(&vcard, email.trim()))?;
-            AddOutcome::Merged(name.trim().to_string())
-        }
-        None => {
-            crate::contacts::local::create(&vcard_for(name, email))?;
-            AddOutcome::Created
-        }
-    };
-    local_changed();
-    Ok(result)
-}
-
-/// The stored vCard whose display name equals `name` (case-insensitive).
-pub(super) fn merge_target(vcards: &[String], name: &str) -> Option<String> {
-    let name = name.trim();
-    if name.is_empty() {
-        return None;
-    }
-    vcards
-        .iter()
-        .find(|v| {
-            parse_vcard_fields(v)
-                .is_some_and(|d| !d.is_group() && d.name.trim().eq_ignore_ascii_case(name))
-        })
-        .cloned()
 }
 
 pub(super) fn book_call<B>(

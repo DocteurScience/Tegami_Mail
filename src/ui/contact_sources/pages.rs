@@ -167,10 +167,6 @@ impl ContactSources {
             page.append(&note);
         }
         let form: Option<(gtk::Widget, Rc<dyn Fn() -> bool>)> = match &source.kind {
-            Kind::Tegami => {
-                page.append(&self.tegami_group(sender));
-                None
-            }
             Kind::CardDav(a) => Some(carddav_form(
                 a.clone(),
                 None,
@@ -268,56 +264,6 @@ impl ContactSources {
         self.editor_slot.set_child(Some(&page));
     }
 
-    /// The Tegami Mail book's own rows: its size, import, export, emptying.
-    fn tegami_group(&self, sender: &ComponentSender<Self>) -> adw::PreferencesGroup {
-        let group = adw::PreferencesGroup::new();
-        group.set_title(&i18n("Tegami Mail address book"));
-        group.set_description(Some(&i18n(
-            "Kept in Tegami Mail's own data folder. Works without GNOME.",
-        )));
-        let count = adw::ActionRow::new();
-        count.set_title(&i18n("Contacts in the Tegami Mail book"));
-        let n = gtk::Label::new(Some(&self.local_count.to_string()));
-        n.add_css_class("dim-label");
-        count.add_suffix(&n);
-        group.add(&count);
-        let action =
-            |title: String, subtitle: String, msg: fn() -> ContactSourcesInput, enabled: bool| {
-                let row = adw::ActionRow::new();
-                row.set_title(&title);
-                row.set_subtitle(&subtitle);
-                row.set_activatable(true);
-                row.set_sensitive(enabled);
-                row.add_suffix(&gtk::Image::from_icon_name("go-next-symbolic"));
-                let s = sender.input_sender().clone();
-                row.connect_activated(move |_| {
-                    let _ = s.send(msg());
-                });
-                row
-            };
-        group.add(&action(
-            i18n("Import vCard files"),
-            i18n("Adds contacts from .vcf files. Importing a file again updates existing entries."),
-            || ContactSourcesInput::ImportLocal,
-            true,
-        ));
-        group.add(&action(
-            i18n("Export as a vCard file"),
-            i18n("Saves every contact in the Tegami Mail book in one .vcf file."),
-            || ContactSourcesInput::ExportLocal,
-            self.local_count > 0,
-        ));
-        let delete = action(
-            i18n("Delete all contacts"),
-            i18n("Other address books are not touched."),
-            || ContactSourcesInput::DeleteAllLocal,
-            self.local_count > 0,
-        );
-        delete.add_css_class("error");
-        group.add(&delete);
-        group
-    }
-
     pub(super) fn rebuild(&mut self, sender: &ComponentSender<Self>) {
         while let Some(child) = self.list.first_child() {
             self.list.remove(&child);
@@ -392,6 +338,11 @@ impl ContactSources {
             row.set_child(Some(&hbox));
             self.list.append(&row);
         }
+        // Last, the way to add one (screen 46): every kind is kept by
+        // Evolution Data Server, so without it there is nothing to add to.
+        let add = crate::ui::accounts::add_row(&i18n("Add address book…"));
+        add.set_sensitive(self.eds);
+        self.list.append(&add);
     }
 
     /// Ask before removing source `i`; Remove does it.

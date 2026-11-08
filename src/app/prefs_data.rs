@@ -4,7 +4,7 @@
 use adw::prelude::*;
 use relm4::prelude::*;
 
-use crate::i18n::{i18n, i18n_f, ni18n_f};
+use crate::i18n::{i18n, i18n_f};
 use crate::ui::notifications::NotifyInput;
 use crate::ui::preferences::PrefOutput;
 
@@ -12,7 +12,6 @@ use super::contacts::{reload_contacts, sync_contact_books};
 use super::demo::demo_mode;
 use super::model::AppModel;
 use super::msg::AppMsg;
-use crate::ui::dialog::confirm_destructive;
 
 impl AppModel {
     /// Asks where to save, writes the file there with `write` and says in
@@ -58,79 +57,13 @@ impl AppModel {
             }
             PrefOutput::LoadContactBooks => {
                 if demo_mode() {
-                    sender.input(AppMsg::ContactBooksLoaded {
-                        books: crate::contacts::demo_books(),
-                        local_count: 1,
-                    });
+                    sender.input(AppMsg::ContactBooksLoaded(crate::contacts::demo_books()));
                     return;
                 }
                 let s = sender.clone();
                 std::thread::spawn(move || {
-                    s.input(AppMsg::ContactBooksLoaded {
-                        books: crate::contacts::writable_books(),
-                        local_count: crate::contacts::local::count(),
-                    });
+                    s.input(AppMsg::ContactBooksLoaded(crate::contacts::writable_books()));
                 });
-            }
-            PrefOutput::ImportLocalContacts => {
-                let s = sender.clone();
-                super::contacts::choose_vcf_files(self.dialog_parent().as_ref(), move |paths| {
-                    s.input(AppMsg::ImportContacts(paths));
-                });
-            }
-            PrefOutput::ExportLocalContacts => {
-                let dialog = gtk::FileDialog::builder()
-                    .title(i18n("Export contacts"))
-                    .initial_name("tegami-contacts.vcf")
-                    .build();
-                let notif = self.notifications.sender().clone();
-                dialog.save(
-                    self.dialog_parent().as_ref(),
-                    gtk::gio::Cancellable::NONE,
-                    move |res| {
-                        let Ok(file) = res else { return };
-                        let Some(path) = file.path() else { return };
-                        let notif = notif.clone();
-                        std::thread::spawn(move || {
-                            let _ = notif.send(match crate::contacts::local::export_to(&path) {
-                                Ok(n) => NotifyInput::SetStatus(ni18n_f(
-                                    "{n} contact exported to {path}",
-                                    "{n} contacts exported to {path}",
-                                    n as u32,
-                                    &[("n", &n.to_string()), ("path", &path.display().to_string())],
-                                )),
-                                Err(e) => NotifyInput::Push {
-                                    text: i18n_f("Could not export contacts: {e}", &[("e", &e)]),
-                                    error: true,
-                                    connectivity: false,
-                                },
-                            });
-                        });
-                    },
-                );
-            }
-            PrefOutput::DeleteAllLocalContacts => {
-                let n = crate::contacts::local::count();
-                let s = sender.clone();
-                confirm_destructive(
-                    self.dialog_parent().as_ref(),
-                    &i18n("Delete All Contacts?"),
-                    &ni18n_f(
-                        "The {n} contact in the Tegami Mail address book is deleted. This cannot be undone; export the book first to keep a copy.",
-                        "The {n} contacts in the Tegami Mail address book are deleted. This cannot be undone; export the book first to keep a copy.",
-                        n as u32,
-                        &[("n", &n.to_string())],
-                    ),
-                    "delete",
-                    &i18n("Delete all"),
-                    move || {
-                        std::thread::spawn(move || {
-                            let err = crate::contacts::local::delete_all().err();
-                            crate::contacts::local_changed();
-                            s.input(AppMsg::ContactWriteDone(err));
-                        });
-                    },
-                );
             }
 
             PrefOutput::ExportSettings => self.export_to_chosen_file(
@@ -213,12 +146,44 @@ impl AppModel {
         }
     }
 
-    /// Second stage of ImportSettings: the chosen file, applied on a clean
-    /// main-loop turn (working inside the chooser's completion callback froze
-    /// the app when the confirmation dialog presented there).
-    #[allow(deprecated)] // adw::MessageDialog: AlertDialog would change how it looks
+    /// Second stage of ImportSettings: the chosen file, on a clean main-loop
+    /// turn (working inside the chooser's completion callback froze the app
+    /// when a dialog presented there). Nothing is replaced before the user
+    /// says so (docs/DESIGN.md, "Organize mail and services"; screen 48).
     fn import_settings_from(&self, path: std::path::PathBuf) {
-        let outcome = std::fs::read_to_string(&path)
+        let parent = relm4::main_application()
+            .active_window()
+            .unwrap_or_else(|| self.window.clone().upcast());
+        let file = path
+            .file_name()
+            .map(|n| n.to_string_lossy().to_string())
+            .unwrap_or_default();
+        let confirm = adw::AlertDialog::new(
+            Some(&i18n("Replace your settings?")),
+            Some(&i18n_f(
+                "The settings in {file} replace yours. Keep your accounts in place: removing them first deletes their passwords.",
+                &[("file", &file)],
+            )),
+        );
+        confirm.add_response("cancel", &i18n("Cancel"));
+        confirm.add_response("replace", &i18n("Replace"));
+        confirm.set_response_appearance("replace", adw::ResponseAppearance::Destructive);
+        confirm.set_default_response(Some("cancel"));
+        confirm.set_close_response("cancel");
+        let window = self.window.clone();
+        confirm.connect_response(Some("replace"), move |_, _| {
+            import_settings_confirmed(&window, &path);
+        });
+        confirm.present(Some(&parent));
+    }
+}
+
+/// The import itself, once confirmed: the file's settings on disk, then
+/// the offer to restart, which applies them.
+#[allow(deprecated)] // adw::MessageDialog: AlertDialog would change how it looks
+fn import_settings_confirmed(window: &adw::ApplicationWindow, path: &std::path::Path) {
+    {
+        let outcome = std::fs::read_to_string(path)
             .map_err(|e| e.to_string())
             .and_then(|t| crate::config::import_bundle(&t));
         match outcome {
@@ -231,7 +196,7 @@ impl AppModel {
                 // as a freeze.
                 let parent = relm4::main_application()
                     .active_window()
-                    .unwrap_or_else(|| self.window.clone().upcast());
+                    .unwrap_or_else(|| window.clone().upcast());
                 let alert = adw::MessageDialog::new(
                     Some(&parent),
                     Some(i18n("Settings imported").as_str()),
@@ -265,7 +230,12 @@ impl AppModel {
                 alert.present();
             }
             Err(e) => {
-                self.notice_error(i18n_f("Import failed: {e}", &[("e", &(e).to_string())]));
+                // Said where the user is looking: the confirmation that
+                // led here has just closed.
+                let alert =
+                    adw::AlertDialog::new(Some(&i18n("Import failed")), Some(&e.to_string()));
+                alert.add_response("close", &i18n("Close"));
+                alert.present(Some(window));
             }
         }
     }

@@ -57,7 +57,8 @@ pub(crate) struct PrivacyFile {
     #[serde(default)]
     pub(crate) tag_row_tint: bool,
     /// The address book new contacts go to: an EDS source UID, or the
-    /// Tegami Mail book's. Empty picks the first writable EDS book, else Tegami Mail.
+    /// former Tegami Mail book's, which is no longer offered. Empty picks the
+    /// first writable EDS book.
     #[serde(default)]
     pub(crate) contact_book: String,
     /// How dates are written (#32).

@@ -23,10 +23,7 @@ fn registry_reply_keeps_sources_and_skips_unrelated_objects() {
     assert!(super::sources_from_reply(&"wrong reply type".to_variant()).is_none());
 }
 
-use super::{
-    is_local_book, merge_target, prefer_book, vcard_display_name, vcard_photo, vcard_photo_with,
-    Book,
-};
+use super::{prefer_book, vcard_display_name, vcard_photo, vcard_photo_with, Book};
 
 pub(super) const ONE_PIXEL_PNG: &str =
     "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=";
@@ -245,12 +242,6 @@ fn eds_sources_are_read_as_key_files() {
     );
 }
 
-fn card(name: &str, email: &str) -> String {
-    format!(
-        "BEGIN:VCARD\r\nVERSION:3.0\r\nUID:{name}\r\nFN:{name}\r\nEMAIL:{email}\r\nEND:VCARD\r\n"
-    )
-}
-
 #[test]
 fn books_that_fill_themselves_from_mail_are_spotted() {
     assert!(super::is_auto_collected("contact-collected", ""));
@@ -280,37 +271,21 @@ fn the_chosen_book_comes_first() {
         name: uid.into(),
         groups: None,
     };
-    let mut books = vec![book("a"), book("b"), book("tegami-local")];
-    prefer_book(&mut books, "tegami-local");
+    let mut books = vec![book("a"), book("b"), book("c")];
+    prefer_book(&mut books, "c");
     assert_eq!(
         books.iter().map(|b| b.uid.as_str()).collect::<Vec<_>>(),
-        ["tegami-local", "a", "b"]
+        ["c", "a", "b"]
     );
     prefer_book(&mut books, "gone");
     prefer_book(&mut books, "");
-    assert_eq!(books[0].uid, "tegami-local");
-}
-
-#[test]
-fn only_the_reserved_uid_is_local() {
-    assert!(is_local_book("tegami-local"));
-    assert!(!is_local_book("system-address-book"));
+    assert_eq!(books[0].uid, "c");
 }
 
 #[test]
 fn local_vcards_never_read_file_photos() {
     let v = "BEGIN:VCARD\r\nFN:Ann\r\nPHOTO;VALUE=uri:file:///etc/hostname\r\nEND:VCARD\r\n";
     assert!(vcard_photo_with(v, false).is_none());
-}
-
-#[test]
-fn merge_target_matches_the_name_ignoring_case() {
-    let vcards = vec![card("Ann Lee", "ann@x.org"), card("Bob", "bob@x.org")];
-    assert!(merge_target(&vcards, " ann lee ")
-        .unwrap()
-        .contains("ann@x.org"));
-    assert!(merge_target(&vcards, "Carl").is_none());
-    assert!(merge_target(&vcards, "  ").is_none());
 }
 
 #[test]

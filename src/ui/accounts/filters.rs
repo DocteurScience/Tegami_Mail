@@ -248,9 +248,7 @@ impl AccountsWindow {
                             Some(FilterField::ReplyTo) => {
                                 i18n("From address when no Reply-To is set")
                             }
-                            Some(f) if f.is_contact_check() => {
-                                i18n("Looks in the system address books and the Tegami Mail book")
-                            }
+                            Some(f) if f.is_contact_check() => i18n("Looks in your address books"),
                             _ => String::new(),
                         });
                     }

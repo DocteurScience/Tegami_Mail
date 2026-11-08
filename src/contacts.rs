@@ -5,8 +5,8 @@
 //! Writing goes through the EDS D-Bus API so changes are tracked by EDS and
 //! synced back to CardDAV servers.
 //!
-//! It is also the parent of the other places contacts come from: Tegami Mail's own
-//! address book, LDAP directories, CardDAV accounts, the Microsoft 365
+//! It is also the parent of the other places contacts come from: LDAP
+//! directories, CardDAV accounts, the Microsoft 365
 //! directory, and the list of sources the settings show.
 
 use std::collections::HashSet;
@@ -17,7 +17,6 @@ use crate::i18n::ni18n_f;
 mod demo;
 mod details;
 mod eds_write;
-mod import;
 mod names;
 mod photos;
 mod read;
@@ -33,7 +32,6 @@ pub(crate) mod local;
 pub(crate) use demo::*;
 pub(crate) use details::*;
 pub(crate) use eds_write::*;
-pub(crate) use import::*;
 pub(crate) use names::*;
 pub(crate) use photos::*;
 pub(crate) use read::*;

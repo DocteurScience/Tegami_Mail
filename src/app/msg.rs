@@ -638,23 +638,18 @@ pub(crate) enum AppMsg {
     /// (#408): read the contacts again.
     ContactBooksSynced,
     /// Read with the contacts: the books new contacts can go to, chosen one
-    /// first, and how many contacts the Tegami Mail book holds.
-    ContactBooksLoaded {
-        books: Vec<crate::contacts::Book>,
-        local_count: usize,
-    },
+    /// first.
+    ContactBooksLoaded(Vec<crate::contacts::Book>),
     /// The contacts were read again: what depends on them follows.
     ContactsLoaded,
-    /// The saved contacts' names by address, read for "Show names from
-    /// Contacts" (#541); empty with the switch off.
+    /// The former Tegami Mail address book still holds this many contacts:
+    /// offer to export them.
+    LegacyBook(usize),
+    /// The former book's export finished: how many, and the file; or why not.
+    LegacyBookExported(Result<(usize, String), String>),
+    /// The saved contacts' names by address (#541), which mail shows for
+    /// them.
     ContactNamesRead(std::collections::HashMap<String, String>),
-    /// A write to the address books finished (`Some` = the error to show):
-    /// Settings' Delete All Contacts.
-    ContactWriteDone(Option<String>),
-    /// `.vcf` files chosen in Settings, to import into the Tegami Mail book.
-    ImportContacts(Vec<std::path::PathBuf>),
-    /// The import finished.
-    ContactsImported(Result<crate::contacts::local::ImportOutcome, String>),
 
     // ---- on_about (about.rs) ----
     /// Open the About window.

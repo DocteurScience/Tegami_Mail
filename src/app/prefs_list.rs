@@ -12,11 +12,6 @@ impl AppModel {
     /// The settings changes the router sends here (see `AppModel::route`).
     pub(super) fn on_prefs_list_pref(&mut self, pref: PrefOutput, sender: ComponentSender<Self>) {
         match pref {
-            PrefOutput::SetContactNames(on) => {
-                if pref!(self.contact_names = on) {
-                    self.read_contact_names(&sender);
-                }
-            }
             PrefOutput::SetPreviewLines(lines) => {
                 if self.preview_lines != lines {
                     let was_off = self.preview_lines == 0;

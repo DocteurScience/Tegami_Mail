@@ -203,7 +203,6 @@ impl Component for Preferences {
             }
             PrefInput::ChangeReadMark(idx) => self.on_change_read_mark(idx, sender),
             PrefInput::SetContactBooks(books) => self.on_set_contact_books(books),
-            PrefInput::SetLocalContactCount(n) => self.on_set_local_contact_count(n),
             PrefInput::ExportSettings => {
                 let _ = sender.output(PrefOutput::ExportSettings);
             }

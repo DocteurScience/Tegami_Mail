@@ -46,7 +46,6 @@ Some(
         urls: [
             "https://pat.example",
         ],
-        book_uid: "",
         eds_uid: "p1",
         raw_vcard: "",
         group: None,
@@ -81,7 +80,6 @@ Some(
         postal: [],
         birthday_raw: "",
         urls: [],
-        book_uid: "",
         eds_uid: "",
         raw_vcard: "",
         group: None,
@@ -112,7 +110,6 @@ Some(
         postal: [],
         birthday_raw: "",
         urls: [],
-        book_uid: "",
         eds_uid: "",
         raw_vcard: "",
         group: None,
@@ -143,7 +140,6 @@ Some(
         postal: [],
         birthday_raw: "--04-12",
         urls: [],
-        book_uid: "",
         eds_uid: "",
         raw_vcard: "",
         group: None,
@@ -170,7 +166,6 @@ Some(
         postal: [],
         birthday_raw: "",
         urls: [],
-        book_uid: "",
         eds_uid: "l1",
         raw_vcard: "",
         group: Some(
@@ -224,7 +219,6 @@ Some(
         postal: [],
         birthday_raw: "",
         urls: [],
-        book_uid: "",
         eds_uid: "g1",
         raw_vcard: "",
         group: Some(
@@ -262,7 +256,6 @@ Some(
         postal: [],
         birthday_raw: "",
         urls: [],
-        book_uid: "",
         eds_uid: "k1",
         raw_vcard: "",
         group: Some(
@@ -309,7 +302,6 @@ Some(
         postal: [],
         birthday_raw: "",
         urls: [],
-        book_uid: "",
         eds_uid: "",
         raw_vcard: "",
         group: None,

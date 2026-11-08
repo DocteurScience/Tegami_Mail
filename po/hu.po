@@ -215,10 +215,6 @@ msgstr "Új üzenet"
 msgid "Could not forward the message: {e}"
 msgstr "Az üzenet nem frissíthető: {e}"
 
-#, fuzzy
-msgid "Tegami Mail address book"
-msgstr "Címjegyzék"
-
 msgid "On this computer"
 msgstr "Ezen a számítógépen"
 
@@ -259,12 +255,6 @@ msgid "{n} address book"
 msgid_plural "{n} address books"
 msgstr[0] "Címjegyzék"
 msgstr[1] "Címjegyzék"
-
-#, fuzzy
-msgid "{n} contact, kept by Tegami Mail"
-msgid_plural "{n} contacts, kept by Tegami Mail"
-msgstr[0] "A napló exportálva ide: {display}"
-msgstr[1] "A napló exportálva ide: {display}"
 
 msgid "{books} · kept by GNOME Contacts and Evolution"
 msgstr ""
@@ -329,22 +319,6 @@ msgstr ""
 
 msgid "{name} did not answer: {error}"
 msgstr "{name} nem válaszolt: {error}"
-
-msgid "A contact needs a name, an email address or a phone number"
-msgstr ""
-
-msgid "The contact is too large"
-msgstr ""
-
-msgid "UTF-16 files are not supported"
-msgstr ""
-
-#, fuzzy
-msgid "The file is not a text file"
-msgstr "A mappa nincs a kiszolgálón"
-
-msgid "The file is larger than {size} MB"
-msgstr ""
 
 msgid "{n} person, in Bcc"
 msgid_plural "{n} people, in Bcc"
@@ -664,6 +638,44 @@ msgstr "Válasza elküldve: talán."
 
 msgid "Your answer has been sent: declined."
 msgstr "Válasza elküldve: elutasítva."
+
+msgid ""
+"{n} contact exported to {file}. Open the file in GNOME Contacts to keep it."
+msgid_plural ""
+"{n} contacts exported to {file}. Open the file in GNOME Contacts to keep "
+"them."
+msgstr[0] ""
+msgstr[1] ""
+
+#, fuzzy
+msgid "Could not export the contacts: {e}"
+msgstr "A fiók nem importálható: {e}"
+
+#, fuzzy
+msgid "Export your Tegami Mail contacts"
+msgstr "Névjegyek rendezése"
+
+msgid ""
+"The Tegami Mail address book holds {n} contact. Tegami Mail now uses the "
+"address books GNOME provides: export it as a vCard file, then open the file "
+"in GNOME Contacts."
+msgid_plural ""
+"The Tegami Mail address book holds {n} contacts. Tegami Mail now uses the "
+"address books GNOME provides: export them as a vCard file, then open the "
+"file in GNOME Contacts."
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Later"
+msgstr "Később"
+
+#, fuzzy
+msgid "Export…"
+msgstr "Napló exportálása"
+
+#, fuzzy
+msgid "Export contacts"
+msgstr "Névjegyek rendezése"
 
 #, fuzzy
 msgid "Messages"
@@ -1199,37 +1211,6 @@ msgstr "Elfogadva: {subject}"
 msgid "Export failed: {e}"
 msgstr "Az exportálás sikertelen: {e}"
 
-#, fuzzy
-msgid "Export contacts"
-msgstr "Névjegyek rendezése"
-
-#, fuzzy
-msgid "{n} contact exported to {path}"
-msgid_plural "{n} contacts exported to {path}"
-msgstr[0] "A napló exportálva ide: {display}"
-msgstr[1] "A napló exportálva ide: {display}"
-
-#, fuzzy
-msgid "Could not export contacts: {e}"
-msgstr "A fiók nem importálható: {e}"
-
-#, fuzzy
-msgid "Delete All Contacts?"
-msgstr "Törli a névjegyet?"
-
-msgid ""
-"The {n} contact in the Tegami Mail address book is deleted. This cannot be "
-"undone; export the book first to keep a copy."
-msgid_plural ""
-"The {n} contacts in the Tegami Mail address book are deleted. This cannot be "
-"undone; export the book first to keep a copy."
-msgstr[0] ""
-msgstr[1] ""
-
-#, fuzzy
-msgid "Delete all"
-msgstr "Törlés"
-
 msgid "Export settings"
 msgstr "Beállítások exportálása"
 
@@ -1245,6 +1226,23 @@ msgstr "A napló exportálva ide: {display}"
 msgid "Import settings"
 msgstr "Beállítások importálása"
 
+#, fuzzy
+msgid "Replace your settings?"
+msgstr "Beállítások exportálása"
+
+#, fuzzy
+msgid ""
+"The settings in {file} replace yours. Keep your accounts in place: removing "
+"them first deletes their passwords."
+msgstr ""
+"Felülírja a jelenlegi fiókokat és beállításokat. Ne távolítsa el előbb a "
+"fiókokat: az eltávolítás során a kulcstartó jelszavai is törlődnek, "
+"amelyekről nincs biztonsági másolat."
+
+#, fuzzy
+msgid "Replace"
+msgstr "Válasz"
+
 msgid "Settings imported"
 msgstr "Beállítások importálva"
 
@@ -1257,13 +1255,11 @@ msgstr ""
 "újra a Tegamit az alkalmazásukhoz. A jelszavak és bejelentkezések nem részei "
 "a biztonsági mentésnek; új gépen az első használatkor adja meg őket újra."
 
-msgid "Later"
-msgstr "Később"
-
 msgid "Restart Tegami Mail"
 msgstr "A Tegami Mail újraindítása"
 
-msgid "Import failed: {e}"
+#, fuzzy
+msgid "Import failed"
 msgstr "Az importálás sikertelen: {e}"
 
 #, fuzzy
@@ -2458,8 +2454,9 @@ msgstr "Keresés a kiszolgálón; semmi sem töltődött le"
 msgid "From address when no Reply-To is set"
 msgstr "Feladó cím, ha nincs megadva „Válaszcím” mező"
 
-msgid "Looks in the system address books and the Tegami Mail book"
-msgstr ""
+#, fuzzy
+msgid "Looks in your address books"
+msgstr "Kulcs keresése ehhez: {addr}…"
 
 msgid "Tag with"
 msgstr "Címkézés ezzel"
@@ -3548,9 +3545,6 @@ msgstr "Csúsztatási műveletek"
 msgid "Download password for {name}: {password}"
 msgstr "Letöltési jelszó ehhez: {name}: {password}"
 
-msgid "The name used here and in Contacts. Left blank, it is {own}."
-msgstr ""
-
 msgid ""
 "The name used here and in Contacts; GNOME Contacts keeps its own. Left "
 "blank, it is {own}."
@@ -3657,36 +3651,6 @@ msgstr ""
 "egyet a Beállítások → Internetes Fiókok alatt; a OneDrive ezután azon "
 "keresztül jelentkezik be, és itt nincs több teendő."
 
-msgid "Kept in Tegami Mail's own data folder. Works without GNOME."
-msgstr ""
-
-#, fuzzy
-msgid "Contacts in the Tegami Mail book"
-msgstr "Névjegyek az oldalsávban"
-
-#, fuzzy
-msgid "Import vCard files"
-msgstr "Nagy fájlok"
-
-msgid ""
-"Adds contacts from .vcf files. Importing a file again updates existing "
-"entries."
-msgstr ""
-
-#, fuzzy
-msgid "Export as a vCard file"
-msgstr "Nagy fájlok"
-
-msgid "Saves every contact in the Tegami Mail book in one .vcf file."
-msgstr ""
-
-#, fuzzy
-msgid "Delete all contacts"
-msgstr "Törli a névjegyet?"
-
-msgid "Other address books are not touched."
-msgstr ""
-
 msgid "Tegami Mail"
 msgstr "Tegami Mail"
 
@@ -3706,6 +3670,12 @@ msgstr ""
 
 msgid "Kept by Evolution Data Server, set up in Evolution or GNOME Contacts"
 msgstr ""
+
+#. Last, the way to add one (screen 46): every kind is kept by
+#. Evolution Data Server, so without it there is nothing to add to.
+#, fuzzy
+msgid "Add address book…"
+msgstr "Címjegyzék"
 
 #, fuzzy
 msgid ""
@@ -3768,18 +3738,17 @@ msgstr "LDAP Mappa"
 msgid "Contacts"
 msgstr "Névjegyek"
 
+msgid "Books"
+msgstr ""
+
 msgid ""
-"Where contacts come from for Contacts, suggestions, sender pictures and "
-"filters. Switching one off leaves it out of Tegami Mail."
+"Where contacts come from for suggestions, sender pictures and filters. A "
+"book switched off is ignored by Tegami Mail."
 msgstr ""
 
 #, fuzzy
 msgid "Look again for address books"
 msgstr "Kulcs keresése ehhez: {addr}…"
-
-#, fuzzy
-msgid "Add address book…"
-msgstr "Címjegyzék"
 
 msgid ""
 "Address books need Evolution Data Server, which is not installed. Install "
@@ -3799,14 +3768,10 @@ msgid "Unless another is picked when the contact is made."
 msgstr ""
 
 #, fuzzy
-msgid "In mail"
-msgstr "Proton Mail"
+msgid "Open Contacts"
+msgstr "GNOME Névjegyek megnyitása"
 
-#, fuzzy
-msgid "Show names from Contacts"
-msgstr "Nincsenek névjegyek"
-
-msgid "Saved addresses show the contact's name, not the mail's."
+msgid "To add Google or Microsoft 365."
 msgstr ""
 
 #, fuzzy
@@ -4955,9 +4920,6 @@ msgstr ""
 msgid "Add a word"
 msgstr "Szó hozzáadása"
 
-msgid "Backup"
-msgstr "Biztonsági mentés"
-
 #, fuzzy
 msgid ""
 "Accounts, preferences, filters, tags and layout, in one file. Passwords and "
@@ -4967,9 +4929,17 @@ msgstr ""
 "maradnak, és soha nem kerülnek exportálásra."
 
 #, fuzzy
+msgid "Saves everything in one file."
+msgstr "Minden melléklet mentése egy mappába"
+
+#, fuzzy
+msgid "Import settings…"
+msgstr "Beállítások importálása"
+
+#, fuzzy
 msgid ""
-"Replaces everything in place. Don't remove accounts first: that deletes "
-"their passwords."
+"Replaces your settings. Keep your accounts in place: removing them first "
+"deletes their passwords."
 msgstr ""
 "Felülírja a jelenlegi fiókokat és beállításokat. Ne távolítsa el előbb a "
 "fiókokat: az eltávolítás során a kulcstartó jelszavai is törlődnek, "
@@ -6033,18 +6003,6 @@ msgstr "Kapcsolat tesztelése"
 msgid "runtime error: {e}"
 msgstr "futásidejű hiba: {e}"
 
-#, fuzzy
-msgid "No contacts were found in the selected files"
-msgstr "A fájlban nem található kulcs."
-
-msgid ""
-"Contacts imported: {added} new, {updated} updated, {skipped} skipped, "
-"{errors} damaged"
-msgstr ""
-
-msgid "Contacts imported: {added} new, {updated} updated"
-msgstr ""
-
 msgid "No address book available to add contacts"
 msgstr "Névjegyek hozzáadásához nem érhető el címjegyzék"
 
@@ -6062,25 +6020,6 @@ msgstr "Már a névjegyek között van ({name})"
 
 msgid "Could not add contact: {e}"
 msgstr "A névjegy nem adható hozzá: {e}"
-
-msgid "Could not update contact: {e}"
-msgstr "A névjegy nem frissíthető: {e}"
-
-#, fuzzy
-msgid "Could not import contacts: {e}"
-msgstr "A fiók nem importálható: {e}"
-
-#, fuzzy
-msgid "Could not read: {files}"
-msgstr "A alkalmazás újraindítása nem sikerült"
-
-#, fuzzy
-msgid "Import contacts"
-msgstr "Névjegyek rendezése"
-
-#, fuzzy
-msgid "vCard files"
-msgstr "Nagy fájlok"
 
 msgid "Search filters"
 msgstr "Keresési szűrők"

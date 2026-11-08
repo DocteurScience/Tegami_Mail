@@ -210,9 +210,6 @@ msgstr "Νέο μήνυμα"
 msgid "Could not forward the message: {e}"
 msgstr "Δεν ήταν δυνατή η αποθήκευση του μηνύματος: {e}"
 
-msgid "Tegami Mail address book"
-msgstr "Βιβλίο διευθύνσεων Tegami Mail"
-
 msgid "On this computer"
 msgstr "Σε αυτόν τον υπολογιστή"
 
@@ -248,11 +245,6 @@ msgid "{n} address book"
 msgid_plural "{n} address books"
 msgstr[0] "{n} κατάλογος διευθύνσεων"
 msgstr[1] "{n} κατάλογοι διευθύνσεων"
-
-msgid "{n} contact, kept by Tegami Mail"
-msgid_plural "{n} contacts, kept by Tegami Mail"
-msgstr[0] "{n} επαφή που διατηρείται από το Tegami Mail"
-msgstr[1] "{n} επαφές που διατηρούνται από το Tegami Mail"
 
 msgid "{books} · kept by GNOME Contacts and Evolution"
 msgstr "{books} · διατηρείται από τις Επαφές GNOME και το Evolution"
@@ -321,21 +313,6 @@ msgstr ""
 
 msgid "{name} did not answer: {error}"
 msgstr "Το {name} δεν αποκρίθηκε: {error}"
-
-msgid "A contact needs a name, an email address or a phone number"
-msgstr "Μια επαφή χρειάζεται όνομα, διεύθυνση email ή αριθμό τηλεφώνου"
-
-msgid "The contact is too large"
-msgstr "Η επαφή είναι υπερβολικά μεγάλη"
-
-msgid "UTF-16 files are not supported"
-msgstr "Δεν υποστηρίζονται αρχεία UTF-16"
-
-msgid "The file is not a text file"
-msgstr "Το αρχείο δεν είναι αρχείο κειμένου"
-
-msgid "The file is larger than {size} MB"
-msgstr "Το αρχείο είναι μεγαλύτερο από {size} MB"
 
 msgid "{n} person, in Bcc"
 msgid_plural "{n} people, in Bcc"
@@ -653,6 +630,43 @@ msgstr "Η απάντησή σας στάλθηκε: ίσως."
 
 msgid "Your answer has been sent: declined."
 msgstr "Η απάντησή σας στάλθηκε: απόρριψη."
+
+msgid ""
+"{n} contact exported to {file}. Open the file in GNOME Contacts to keep it."
+msgid_plural ""
+"{n} contacts exported to {file}. Open the file in GNOME Contacts to keep "
+"them."
+msgstr[0] ""
+msgstr[1] ""
+
+#, fuzzy
+msgid "Could not export the contacts: {e}"
+msgstr "Δεν ήταν δυνατή η εξαγωγή επαφών: {e}"
+
+#, fuzzy
+msgid "Export your Tegami Mail contacts"
+msgstr "Εξαγωγή επαφών"
+
+msgid ""
+"The Tegami Mail address book holds {n} contact. Tegami Mail now uses the "
+"address books GNOME provides: export it as a vCard file, then open the file "
+"in GNOME Contacts."
+msgid_plural ""
+"The Tegami Mail address book holds {n} contacts. Tegami Mail now uses the "
+"address books GNOME provides: export them as a vCard file, then open the "
+"file in GNOME Contacts."
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Later"
+msgstr "Αργότερα"
+
+#, fuzzy
+msgid "Export…"
+msgstr "Εξαγωγή αρχείου καταγραφής"
+
+msgid "Export contacts"
+msgstr "Εξαγωγή επαφών"
 
 msgid "Messages"
 msgstr "Μηνύματα"
@@ -1146,36 +1160,6 @@ msgstr "Αποδεκτή: {subject}"
 msgid "Export failed: {e}"
 msgstr "Η εξαγωγή απέτυχε: {e}"
 
-msgid "Export contacts"
-msgstr "Εξαγωγή επαφών"
-
-msgid "{n} contact exported to {path}"
-msgid_plural "{n} contacts exported to {path}"
-msgstr[0] "Εξήχθη {n} επαφή στο {path}"
-msgstr[1] "Εξήχθησαν {n} επαφές στο {path}"
-
-msgid "Could not export contacts: {e}"
-msgstr "Δεν ήταν δυνατή η εξαγωγή επαφών: {e}"
-
-msgid "Delete All Contacts?"
-msgstr "Διαγραφή όλων των επαφών;"
-
-msgid ""
-"The {n} contact in the Tegami Mail address book is deleted. This cannot be "
-"undone; export the book first to keep a copy."
-msgid_plural ""
-"The {n} contacts in the Tegami Mail address book are deleted. This cannot be "
-"undone; export the book first to keep a copy."
-msgstr[0] ""
-"Η {n} επαφή στο βιβλίο διευθύνσεων του Tegami Mail θα διαγραφεί. Αυτό δεν "
-"μπορεί να αναιρεθεί· εξαγάγετε πρώτα το βιβλίο για να κρατήσετε αντίγραφο."
-msgstr[1] ""
-"Οι {n} επαφές στο βιβλίο διευθύνσεων του Tegami Mail θα διαγραφούν. Αυτό δεν "
-"μπορεί να αναιρεθεί· εξαγάγετε πρώτα το βιβλίο για να κρατήσετε αντίγραφο."
-
-msgid "Delete all"
-msgstr "Διαγραφή όλων"
-
 msgid "Export settings"
 msgstr "Εξαγωγή ρυθμίσεων"
 
@@ -1191,6 +1175,22 @@ msgstr "Το αρχείο καταγραφής εξήχθη στο {display}"
 msgid "Import settings"
 msgstr "Εισαγωγή ρυθμίσεων"
 
+#, fuzzy
+msgid "Replace your settings?"
+msgstr "Εξαγωγή ρυθμίσεων"
+
+#, fuzzy
+msgid ""
+"The settings in {file} replace yours. Keep your accounts in place: removing "
+"them first deletes their passwords."
+msgstr ""
+"Αντικαθιστά τα πάντα επιτόπου. Μην αφαιρέσετε πρώτα τους λογαριασμούς: έτσι "
+"διαγράφονται οι κωδικοί πρόσβασής τους."
+
+#, fuzzy
+msgid "Replace"
+msgstr "Απαντήθηκε"
+
 msgid "Settings imported"
 msgstr "Οι ρυθμίσεις εισήχθησαν"
 
@@ -1205,13 +1205,11 @@ msgstr ""
 "αντίγραφο ασφαλείας· αν πρόκειται για νέο υπολογιστή, εισαγάγετέ τους ξανά "
 "κατά την πρώτη χρήση."
 
-msgid "Later"
-msgstr "Αργότερα"
-
 msgid "Restart Tegami Mail"
 msgstr "Επανεκκίνηση Tegami Mail"
 
-msgid "Import failed: {e}"
+#, fuzzy
+msgid "Import failed"
 msgstr "Η εισαγωγή απέτυχε: {e}"
 
 #, fuzzy
@@ -2404,9 +2402,9 @@ msgstr "Η αναζήτηση γίνεται στον διακομιστή· δ�
 msgid "From address when no Reply-To is set"
 msgstr "Διεύθυνση αποστολέα όταν δεν έχει οριστεί Reply-To"
 
-msgid "Looks in the system address books and the Tegami Mail book"
-msgstr ""
-"Αναζητά στα βιβλία διευθύνσεων του συστήματος και στο βιβλίο του Tegami Mail"
+#, fuzzy
+msgid "Looks in your address books"
+msgstr "Νέα αναζήτηση καταλόγων διευθύνσεων"
 
 msgid "Tag with"
 msgstr "Προσθήκη ετικέτας"
@@ -3465,11 +3463,6 @@ msgstr "Ενέργειες σάρωσης"
 msgid "Download password for {name}: {password}"
 msgstr "Κωδικός λήψης για {name}: {password}"
 
-msgid "The name used here and in Contacts. Left blank, it is {own}."
-msgstr ""
-"Το όνομα που χρησιμοποιείται εδώ και στις Επαφές. Αν μείνει κενό, είναι "
-"{own}."
-
 msgid ""
 "The name used here and in Contacts; GNOME Contacts keeps its own. Left "
 "blank, it is {own}."
@@ -3570,37 +3563,6 @@ msgstr ""
 "GNOME. Προσθέστε εκεί τον λογαριασμό με ενεργές τις Επαφές και θα εμφανιστεί "
 "εδώ."
 
-msgid "Kept in Tegami Mail's own data folder. Works without GNOME."
-msgstr ""
-"Διατηρείται στον φάκελο δεδομένων του Tegami Mail. Λειτουργεί και χωρίς "
-"GNOME."
-
-msgid "Contacts in the Tegami Mail book"
-msgstr "Επαφές στο βιβλίο του Tegami Mail"
-
-msgid "Import vCard files"
-msgstr "Εισαγωγή αρχείων vCard"
-
-msgid ""
-"Adds contacts from .vcf files. Importing a file again updates existing "
-"entries."
-msgstr ""
-"Προσθέτει επαφές από αρχεία .vcf. Η επανεισαγωγή ενός αρχείου ενημερώνει τις "
-"υπάρχουσες εγγραφές."
-
-msgid "Export as a vCard file"
-msgstr "Εξαγωγή ως αρχείο vCard"
-
-msgid "Saves every contact in the Tegami Mail book in one .vcf file."
-msgstr ""
-"Αποθηκεύει όλες τις επαφές του καταλόγου Tegami Mail σε ένα αρχείο .vcf."
-
-msgid "Delete all contacts"
-msgstr "Διαγραφή όλων των επαφών"
-
-msgid "Other address books are not touched."
-msgstr "Οι άλλοι κατάλογοι διευθύνσεων δεν επηρεάζονται."
-
 msgid "Tegami Mail"
 msgstr "Tegami Mail"
 
@@ -3620,6 +3582,11 @@ msgid "Kept by Evolution Data Server, set up in Evolution or GNOME Contacts"
 msgstr ""
 "Διατηρείται από το Evolution Data Server και ρυθμίζεται στο Evolution ή στις "
 "Επαφές GNOME"
+
+#. Last, the way to add one (screen 46): every kind is kept by
+#. Evolution Data Server, so without it there is nothing to add to.
+msgid "Add address book…"
+msgstr "Προσθήκη καταλόγου διευθύνσεων…"
 
 msgid ""
 "Evolution and other apps stop seeing it too. Nothing on the server changes."
@@ -3680,9 +3647,13 @@ msgstr "Κατάλογος LDAP"
 msgid "Contacts"
 msgstr "Επαφές"
 
+msgid "Books"
+msgstr ""
+
+#, fuzzy
 msgid ""
-"Where contacts come from for Contacts, suggestions, sender pictures and "
-"filters. Switching one off leaves it out of Tegami Mail."
+"Where contacts come from for suggestions, sender pictures and filters. A "
+"book switched off is ignored by Tegami Mail."
 msgstr ""
 "Από εδώ προέρχονται οι επαφές για την προβολή Επαφές, τις προτάσεις, τις "
 "φωτογραφίες αποστολέων και τα φίλτρα. Αν απενεργοποιήσετε έναν κατάλογο, δεν "
@@ -3690,9 +3661,6 @@ msgstr ""
 
 msgid "Look again for address books"
 msgstr "Νέα αναζήτηση καταλόγων διευθύνσεων"
-
-msgid "Add address book…"
-msgstr "Προσθήκη καταλόγου διευθύνσεων…"
 
 msgid ""
 "Address books need Evolution Data Server, which is not installed. Install "
@@ -3713,14 +3681,10 @@ msgid "Unless another is picked when the contact is made."
 msgstr "Εκτός αν επιλεγεί άλλος κατά τη δημιουργία της επαφής."
 
 #, fuzzy
-msgid "In mail"
-msgstr "Αλληλογραφία"
+msgid "Open Contacts"
+msgstr "Άνοιγμα Επαφών GNOME"
 
-#, fuzzy
-msgid "Show names from Contacts"
-msgstr "Από τις επαφές"
-
-msgid "Saved addresses show the contact's name, not the mail's."
+msgid "To add Google or Microsoft 365."
 msgstr ""
 
 msgid "Looking for address books on {name}…"
@@ -4839,9 +4803,6 @@ msgstr ""
 msgid "Add a word"
 msgstr "Προσθήκη λέξης"
 
-msgid "Backup"
-msgstr "Αντίγραφο ασφαλείας"
-
 msgid ""
 "Accounts, preferences, filters, tags and layout, in one file. Passwords and "
 "OpenPGP keys are not included."
@@ -4849,9 +4810,19 @@ msgstr ""
 "Λογαριασμοί, προτιμήσεις, φίλτρα, ετικέτες και διάταξη σε ένα αρχείο. Δεν "
 "περιλαμβάνονται κωδικοί πρόσβασης και κλειδιά OpenPGP."
 
+#, fuzzy
+msgid "Saves everything in one file."
+msgstr ""
+"Αποθηκεύει όλες τις επαφές του καταλόγου Tegami Mail σε ένα αρχείο .vcf."
+
+#, fuzzy
+msgid "Import settings…"
+msgstr "Εισαγωγή ρυθμίσεων"
+
+#, fuzzy
 msgid ""
-"Replaces everything in place. Don't remove accounts first: that deletes "
-"their passwords."
+"Replaces your settings. Keep your accounts in place: removing them first "
+"deletes their passwords."
 msgstr ""
 "Αντικαθιστά τα πάντα επιτόπου. Μην αφαιρέσετε πρώτα τους λογαριασμούς: έτσι "
 "διαγράφονται οι κωδικοί πρόσβασής τους."
@@ -5906,19 +5877,6 @@ msgstr "δεν υπάρχει σύνδεση δικτύου"
 msgid "runtime error: {e}"
 msgstr "σφάλμα χρόνου εκτέλεσης: {e}"
 
-msgid "No contacts were found in the selected files"
-msgstr "Δεν βρέθηκαν επαφές στα επιλεγμένα αρχεία"
-
-msgid ""
-"Contacts imported: {added} new, {updated} updated, {skipped} skipped, "
-"{errors} damaged"
-msgstr ""
-"Εισαγωγή επαφών: {added} νέες, {updated} ενημερωμένες, {skipped} "
-"παραλείφθηκαν, {errors} με σφάλματα"
-
-msgid "Contacts imported: {added} new, {updated} updated"
-msgstr "Εισαγωγή επαφών: {added} νέες, {updated} ενημερωμένες"
-
 msgid "No address book available to add contacts"
 msgstr "Δεν υπάρχει διαθέσιμο βιβλίο διευθύνσεων για προσθήκη επαφών"
 
@@ -5936,21 +5894,6 @@ msgstr "Υπάρχει ήδη στις επαφές ({name})"
 
 msgid "Could not add contact: {e}"
 msgstr "Αδυναμία προσθήκης επαφής: {e}"
-
-msgid "Could not update contact: {e}"
-msgstr "Αδυναμία ενημέρωσης επαφής: {e}"
-
-msgid "Could not import contacts: {e}"
-msgstr "Δεν ήταν δυνατή η εισαγωγή επαφών: {e}"
-
-msgid "Could not read: {files}"
-msgstr "Δεν ήταν δυνατή η ανάγνωση: {files}"
-
-msgid "Import contacts"
-msgstr "Εισαγωγή επαφών"
-
-msgid "vCard files"
-msgstr "Αρχεία vCard"
 
 msgid "Search filters"
 msgstr "Αναζήτηση φίλτρων"

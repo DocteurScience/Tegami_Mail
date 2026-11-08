@@ -68,6 +68,7 @@ mod hand_off;
 mod identity;
 mod invites;
 mod keymap;
+mod legacy_book;
 mod list_filters;
 mod list_header;
 mod model;
@@ -806,9 +807,8 @@ impl SimpleComponent for AppModel {
             model.start_tray(&sender);
         }
         start_contacts_sync(&sender);
-        if model.contact_names {
-            model.read_contact_names(&sender);
-        }
+        legacy_book::check_legacy_book(&sender);
+        model.read_contact_names(&sender);
         watch_system_events(&sender);
         model.open_wizard_if_needed(&sender);
         model.push_settings_to_children();

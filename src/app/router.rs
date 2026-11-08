@@ -205,13 +205,13 @@ impl AppModel {
             | AppMsg::ContactAdded(..)
             | AppMsg::ContactPhotosChanged
             | AppMsg::ContactBooksSynced
-            | AppMsg::ContactBooksLoaded { .. }
+            | AppMsg::ContactBooksLoaded(..)
             | AppMsg::ContactsLoaded
-            | AppMsg::ContactNamesRead(..)
-            | AppMsg::ContactWriteDone(..)
-            | AppMsg::ImportContacts(..)
-            | AppMsg::ContactsImported(..)) => self.on_contacts(msg, sender),
+            | AppMsg::ContactNamesRead(..)) => self.on_contacts(msg, sender),
             msg @ AppMsg::OpenAbout => self.on_about(msg, sender),
+            msg @ (AppMsg::LegacyBook(..) | AppMsg::LegacyBookExported(..)) => {
+                self.on_legacy_book(msg, sender)
+            }
             msg @ (AppMsg::AllowSender(..)
             | AppMsg::AddSender(..)
             | AppMsg::RemoveSender(..)
@@ -396,9 +396,6 @@ impl AppModel {
             | PrefOutput::SetConsoleMode(..)) => self.on_prefs_general_pref(pref, sender),
             pref @ (PrefOutput::SetContactBook(..)
             | PrefOutput::LoadContactBooks
-            | PrefOutput::ImportLocalContacts
-            | PrefOutput::ExportLocalContacts
-            | PrefOutput::DeleteAllLocalContacts
             | PrefOutput::ExportSettings
             | PrefOutput::ExportLog
             | PrefOutput::ImportSettings
@@ -409,9 +406,9 @@ impl AppModel {
             | PrefOutput::SetThreading(..)
             | PrefOutput::SetConfirmThreadDelete(..)
             | PrefOutput::SetThreadNewestFirst(..)) => self.on_prefs_reader_pref(pref),
-            pref @ (PrefOutput::SetContactNames(..)
-            | PrefOutput::SetPreviewLines(..)
-            | PrefOutput::SetSwipeEnabled(..)) => self.on_prefs_list_pref(pref, sender),
+            pref @ (PrefOutput::SetPreviewLines(..) | PrefOutput::SetSwipeEnabled(..)) => {
+                self.on_prefs_list_pref(pref, sender)
+            }
             pref @ (PrefOutput::SetFilesPrefs(..)
             | PrefOutput::SetComposeDefaultFrom(..)
             | PrefOutput::SetPastePlain(..)

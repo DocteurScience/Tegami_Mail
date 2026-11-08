@@ -45,9 +45,7 @@ impl Preferences {
             .set_child(Some(&crate::ui::translation_page::build()));
         self.cloud = Some(cloud);
         let contacts = crate::ui::contact_sources::ContactSources::builder()
-            .launch(crate::ui::contact_sources::ContactSourcesInit {
-                contact_names: init.contact_names,
-            })
+            .launch(crate::ui::contact_sources::ContactSourcesInit)
             .forward(sender.input_sender(), PrefInput::Contacts);
         slots.contacts.set_child(Some(contacts.widget()));
         self.contacts = Some(contacts);
