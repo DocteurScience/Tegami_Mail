@@ -50,8 +50,8 @@ The full list. The [README](../README.md) carries a shorter one.
   and task folders are hidden from the start.
 - **Filters:** multi-condition rules on sender, recipient, subject, body and
   Reply-To, with comma-separated alternatives, or on whether the sender is in
-  your Contacts (the system address books and the Tegami Mail book, not addresses
-  collected from mail); they tag mail, file it away, or both, and can be run
+  your Contacts (the system address books, not addresses collected from
+  mail); they tag mail, file it away, or both, and can be run
   over mail that is already in a folder.
 - **Tags:** IMAP keywords, Graph categories, or a local fallback where the
   server has neither; eight named colours, and number-key shortcuts for
@@ -59,7 +59,7 @@ The full list. The [README](../README.md) carries a shorter one.
 - **Quick filters:** unread and starred in a switch above the list;
   attachments, addressed to you, from your contacts, high importance and a
   period (today, the last 7 or 30 days, this year or a custom range) in a
-  Filters menu beside the search field, each shown as a removable chip. See [Message list layout](DOCUMENTATION.md#message-list-layout).
+  Filters menu beside the search field, each shown as a removable chip.
 - **Browse by the year:** the list's scrollbar spans the whole folder, and
   dragging it names the month and year it is passing.
 - **Smart folders:** saved searches across accounts and folders, on
@@ -67,13 +67,11 @@ The full list. The [README](../README.md) carries a shorter one.
   counts. See [Smart folders](DOCUMENTATION.md#smart-folders).
 - **Favorites:** any folders, from any account, listed together and merged
   in one view.
-- **Empty Trash and Junk**, by hand or automatically after a number of days,
-  and move old newsletter and mailing-list mail out of the Inbox the same way.
+- **Empty Trash and Junk**, by hand or automatically after a number of days.
 - **Delete an attachment from the server:** take a large file out of a
   message and keep the rest of it, on IMAP, JMAP and Microsoft 365.
-- **Printing:** a message with its sender, recipients and date, page
-  numbers and an optional wider margin for hole punching, with an in-app
-  preview that also saves straight to PDF.
+- **Printing:** a message with its sender, recipients and date, and page
+  numbers, with an in-app preview that also saves straight to PDF.
 - **Undo Send:** a sent message waits three to thirty seconds, five by
   default, with Undo on offer.
 - **Outbox:** a send that fails is kept and retried when the connection
@@ -106,7 +104,7 @@ The full list. The [README](../README.md) carries a shorter one.
 - **Spell check** in one language or several at once, through the system
   dictionaries.
 - **Grammar and style checking** with Harper or LanguageTool, downloaded
-  from Settings in one click and run on this computer, or a LanguageTool
+  from Preferences in one click and run on this computer, or a LanguageTool
   server or account, each paragraph in its own language.
 - **Undo and redo** across the whole message.
 - **Quote folding:** a long quoted original folds away, interleaved replies
@@ -125,21 +123,20 @@ The full list. The [README](../README.md) carries a shorter one.
 
 ## Reading
 
-- **Privacy-first reading:** remote content blocked by default, per-sender
-  allow and block lists, and a light/dark content theme.
-- **Your own font and colours** for message bodies, overriding the sender's.
+- **Privacy-first reading:** remote content blocked by default (Never, Ask
+  or Always), and per-sender allow and block lists.
 - **Message zoom:** Ctrl++ and Ctrl+- scale the message alone, with the
-  percentage shown in the message header while it is away from the default. Settings → Reading sets the zoom every
-  launch starts at; Ctrl+0, or a click on the chip, returns to it.
+  percentage shown in the message header while it is away from the default;
+  Ctrl+0, or a click on the chip, returns to it.
 - **Meeting invitations:** what the meeting is, when it runs in your own
   clock and time zone, where it is and who organised it, with Accept, Maybe,
   Decline and Add to Calendar.
 - **Folding conversations:** a click on a message's header folds it to its
-  sender and first lines, and earlier messages can start folded, so
-  a long conversation opens on what is new.
+  sender and first lines, and messages already read start folded, so a long
+  conversation opens on what is new.
 - **Translation:** with a DeepL, Google, Microsoft or LibreTranslate key of
   your own, a message is translated in place, and switched back to the
-  original with a click. A message in another language can offer it; the
+  original with a click. A message in another language offers it; the
   language is recognised offline. In the composer, what you write goes into
   the language of the message you are answering. See
   [Translating messages](DOCUMENTATION.md#translating-messages).
@@ -152,40 +149,32 @@ The full list. The [README](../README.md) carries a shorter one.
   back, with the receipt itself filed away. See
   [Read receipts](DOCUMENTATION.md#read-receipts).
 - **OpenPGP:** read encrypted and signed mail, sign and encrypt what you
-  send, and manage keys from Settings, through the GnuPG already on your
+  send, and manage keys from Preferences, through the GnuPG already on your
   computer. See [OpenPGP](DOCUMENTATION.md#openpgp-encrypted-and-signed-mail).
 - **Sender identity:** DKIM, SPF and DMARC checked on arrival, with BIMI
   logos where a domain publishes one.
-- **Message previews:** the first one to three lines of each message under
-  its subject in the list, or off.
+- **Message previews:** the start of each message under its subject in the
+  list, or off, from the list's Sort and display menu.
 - **mid: links:** a link to another message opens it (RFC 2392).
 
 ## The app
 
-- **GNOME-native:** adaptive three-pane layout, per-account colours and
-  emoji, picture or Gravatar avatars, light and dark following the system.
-- **Appearance themes:** five palettes (Rose, Forest, Tidal, Earth and
-  Midnight), each with its own light and dark version, or the stock GNOME
-  colours.
-- **A customizable reader toolbar:** reorder its buttons, or drag them in and
-  out, in Settings → Appearance.
-- **A single-line message list:** sender, subject and the start of the
-  text on one line per message, always, or whenever the list pane is
-  dragged wide.
-- **Swipe actions** on message rows, with an adjustable sensitivity.
+- **GNOME-native:** adaptive three-pane layout, per-account colours with
+  the account's initials, light and dark following the system or chosen.
+- **Five preference pages:** Accounts, Messages, Notifications, Privacy and
+  Application, with search, and Troubleshooting in the main menu for the
+  status bar, the console and the log.
+- **Swipe actions** on message rows, on touch screens and touchpads.
 - **Single-key shortcuts:** Gmail-style `j`/`k`, `r`, `a`, `d` and friends,
   without a modifier. See [Keyboard shortcuts](KEYBOARD_SHORTCUTS.md).
 - **Runs in the background** (optional): closing the window keeps mail
   arriving; Tegami Mail appears under *Background Apps* in the GNOME system menu,
   and can start at login without opening a window.
-- **Tray icon** (optional): a StatusNotifierItem with a count of the folders
-  you choose.
-- **Notifications** that open the message they are about, with up to three
-  buttons of your choice: Mark as Read, Archive, Delete, Reply, Forward or
-  Mark as Spam, and a sound if you want one: built in, or a file of your own.
-- **GNOME Contacts:** names and photos from your address book, optional.
-- **Tegami Mail address book:** a book of your own, beside the ones Evolution Data
-  Server keeps, with vCard (`.vcf`) import. It works without GNOME.
+- **Notifications** that open the message they are about, with or without
+  the sender and subject; sound and banners are GNOME's own settings.
+- **GNOME Contacts:** names and photos from your address books, through
+  Evolution Data Server. A former Tegami Mail address book is offered for
+  export as a vCard file.
 - **CardDAV accounts:** the address books of Nextcloud, iCloud, Fastmail or
   any CardDAV server, set up in Tegami Mail, through Evolution Data Server. See
   [CardDAV accounts](DOCUMENTATION.md#carddav-accounts).
@@ -195,5 +184,5 @@ The full list. The [README](../README.md) carries a shorter one.
 - **LDAP directories:** recipients looked up in a company directory as you
   type, through Evolution Data Server, and in a Microsoft 365
   organization's directory.
-- **Your language:** the desktop's, or one you pick; a 12- or 24-hour clock
-  following the desktop setting.
+- **Your language:** the desktop's; a 12- or 24-hour clock following the
+  desktop setting.

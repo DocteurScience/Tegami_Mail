@@ -24,7 +24,7 @@ keyboard.
 
 ## Configuration
 
-Add accounts from **Settings → Accounts** in the app. For a plain IMAP/SMTP
+Add accounts from **Preferences → Accounts → Add account…** in the app. For a plain IMAP/SMTP
 account you only need the server and an app-specific password. See
 [`accounts.toml.example`](../accounts.toml.example) for the on-disk format:
 passwords you enter there are migrated into the system keyring on first run and
@@ -35,8 +35,8 @@ removed from the file.
 Shared hosting often serves mail for many domains under one certificate in
 the host's own name, so `mail.example.org` answers with a certificate for
 `server12.hostingcompany.net` and the connection test reports that the names
-differ. **Settings → Accounts → the account → Accept a certificate for
-another name** waives that one check for the account's IMAP, POP3 and SMTP
+differ. **Preferences → Accounts → the account → Servers and connection →
+Advanced → Accept a certificate for another name** waives that one check for the account's IMAP, POP3 and SMTP
 connections; the certificate must still be valid and signed by a trusted
 authority. Leave it off unless the test names this problem, and prefer
 entering the host the certificate is actually for when you know it. Stored
@@ -48,10 +48,11 @@ connection test's text can be selected and copied.
 Any mail account set up in *GNOME Settings → Online Accounts* can be
 imported: Google, Microsoft 365 and plain **IMAP and SMTP** accounts alike.
 They are listed on the first-run wizard's first account page, which can be
-skipped, and under **Settings → Accounts → GNOME Online Accounts**, where a
-switch brings one into Tegami Mail. An account added in GNOME Settings while Tegami Mail
-is open joins the list as soon as GNOME announces it; the refresh button
-beside **Add account…** looks again at once.
+skipped, and under **Preferences → Accounts → Add account… → GNOME Online
+Account…**, where a switch brings one into Tegami Mail. An account added in
+GNOME Settings while Tegami Mail is open joins the list as soon as GNOME
+announces it; the refresh button at the top of that page looks again at
+once.
 
 GNOME keeps such an account's address, servers and password, and Tegami Mail
 follows it. The password is read from GNOME Online Accounts each time the
@@ -121,9 +122,8 @@ are listed under the Inbox row, with an arrow on it to fold them away, when
 the account has folders outside the Inbox too, as Roundcube and Apple Mail
 show them. A server that keeps every folder inside the Inbox (an `INBOX.`
 prefix, as on Courier and some Dovecot setups) has them under **Folders**
-instead, without the prefix. How
-the custom folders are sorted is chosen in **Settings → Sidebar → Folder
-order**, for every account:
+instead, without the prefix. The custom folders are sorted in one of these
+orders:
 
 - **Custom order** (the default): by the name shown, with any folder you
   dragged kept where you put it. A folder that was never dragged, such as
@@ -135,10 +135,11 @@ order**, for every account:
 - **Full path**: by the whole path on the server, the way Gmail on the web
   lists labels.
 
-An account can have its own: **Folder order → Sort by** in the account's
-settings (Settings → Mail Accounts → the account), or the right-click menu
-of the account's **Folders** heading in the sidebar. **Follow settings** goes back
-to the choice in Settings → Sidebar.
+Each account has its own: **Folder order** in **Preferences → Accounts →
+the account → Folders**, or the right-click menu of the account's
+**Folders** heading in the sidebar. **Follow settings** keeps the order
+every account shares, Custom order unless an earlier version of Tegami Mail
+stored another.
 
 A folder's right-click menu has **Mark all as read** and **Sync This
 Folder**; **New Subfolder…**, which makes a folder inside it, and
@@ -181,8 +182,7 @@ opens the combined list without opening the list under it, and
 double-clicking it opens or closes that list as its chevron does. An
 account's header works the same way: its chevron, or a double click on the
 header, opens or closes its folders, and a single click elsewhere on it
-does nothing. **Settings → Sidebar → Fold accounts with one click** brings
-back the single click anywhere on the header. In the icon rail, which has
+does nothing. In the icon rail, which has
 no chevrons, a click on a section's icon opens or closes it, and a long
 press or a double click opens or closes the combined rows.
 
@@ -190,18 +190,13 @@ There is no view merging the inboxes, or any other folder, of every
 account: each account's folders are its own. Favorites, Tags and Smart
 Folders are the rows that gather mail across accounts.
 
-**Settings → Sidebar → Sections** places Tags and Favorites
-**Above the accounts**, **Below the accounts** or **Off**, which leaves it
-out of the sidebar. Wherever they are, they are rows with a chevron that opens their list. **Section style**
-set to **Tree style** draws both as a tree instead: the caret that
-opens and closes the list stands where the icon was, and the row has no
-chevron at its end. Clicking the name opens the combined view either way.
+Tags and Favorites are rows above the accounts, each with a chevron that
+opens its list. Clicking the name opens the combined view.
 
 ### Favorites
 
 Right-click any folder in the sidebar and choose **Add to favorites** to list
-it in a Favorites row above the accounts (**Settings → Sidebar → Sections**
-can move it). Favorites can come from any account, keep the order they were
+it in a Favorites row above the accounts. Favorites can come from any account, keep the order they were
 added in, and show their unread counts; the folder's glyph takes its
 account's color. Clicking Favorites lists the mail of every favorite folder
 together; its chevron, or a double click, opens or closes the list. **Remove from favorites**, in the same
@@ -217,8 +212,8 @@ leaves the list.
 
 A smart folder is a saved search. It lists the messages that match its
 conditions and sits in a Smart Folders row with Favorites and Tags,
-each with its unread count. **Settings → Smart Folders → Add Smart
-Folder…** makes one; so do **New Smart Folder…** in the row's right-click
+each with its unread count, shown once there is one. **Preferences →
+Accounts → Smart folders → Add smart folder…** makes one; so do **New Smart Folder…** in the row's right-click
 menu and in the command palette. Right-clicking a smart folder edits or
 deletes it. Deleting one takes only the search away, never the mail.
 
@@ -264,8 +259,9 @@ plain folders can be hidden; the folders holding a role (Sent, Drafts,
 Trash, Junk, Archive) stay, since mail is filed into them. Hiding a folder
 hides its sub-folders with it.
 
-The hidden folders are listed under **Settings → Accounts → the account →
-Hidden Folders**, each with a **Show** button that brings it back on Save.
+The hidden folders are listed under **Preferences → Accounts → the account →
+Folders → Hidden folders**, each with a **Show** button that brings it back
+on Save.
 They are stored on the account as `hidden_folders` in `accounts.toml`.
 
 An Exchange server lists its calendar, contacts, tasks, notes and journal
@@ -279,15 +275,14 @@ stays back.
 
 ### Keeping an account out of the combined views
 
-**Settings → Accounts → the account → Show in combined views** decides
+**Preferences → Accounts → the account → Show in combined views** decides
 whether the account's mail is merged into Tags and Smart Folders set to all
 accounts. Switched off, the account's tagged mail and its matches are left
 out of those rows and their unread counts. The account keeps its own section
 in the sidebar, its folders can still be favorites, and a search still
 covers its mail.
 
-The tray icon's count and new-mail notifications still include the
-account. Stored on the account as `in_unified = false` in `accounts.toml`;
+New-mail notifications still include the account. Stored on the account as `in_unified = false` in `accounts.toml`;
 without the key an account is included.
 
 ### Moving mail to another account
@@ -312,7 +307,8 @@ as a draft, and POP3 has only an inbox.
 
 ### On This Computer
 
-**Settings → Accounts → On this computer → Add** adds folders kept on this
+**Preferences → Accounts → Add account… → Local mail on this computer** adds
+folders kept on this
 computer rather than on a server, as Evolution's account of the same name
 does. It starts with a Trash, and an Inbox that is shown only while it
 holds mail, as mail copied from an account goes to a folder named after
@@ -329,18 +325,17 @@ to, or from the first account in the sidebar. Read receipts, invitation
 answers and unsubscribe mail for its messages go out the same way.
 
 Every message is rendered into the cache in the background, so a search
-covers the whole archive, and clearing downloaded mail in **Settings →
-System** leaves it alone. It is not in the combined views until
-**Show in combined views** is switched on. **Empty Junk automatically** and
-**Empty Trash automatically** count the days from when a message was moved
+covers the whole archive. It is not in the combined views until
+**Show in combined views** is switched on. **Empty Junk** and
+**Empty Trash** (in the account's Synchronisation) count the days from when a message was moved
 into the folder.
 
 #### Copying an account's mail automatically
 
-**Settings → Accounts → the account → Syncing → Copy mail to On This
-Computer** copies every message of the account into a folder named after it,
+**Preferences → Accounts → the account → Synchronisation → Copy mail to On
+This Computer** copies every message of the account into a folder named after it,
 with the account's folders inside: Inbox, Sent and the rest. The account
-downloads its mail in the background to do it, as **Keep mail cached**
+downloads its mail in the background to do it, as **Keep downloaded mail**
 does, and leaves out Trash, Junk and Drafts. New mail is copied within about
 a minute of the account receiving it. While messages are being copied the
 refresh button turns, and the status bar, when opened, says how many are
@@ -352,8 +347,9 @@ listed in `tegami-copied/` beside the folders.
 
 #### Importing from another program
 
-**Settings → Accounts → On this computer → Import** takes mail from
-another program's folders:
+**Preferences → Accounts → Add account… → Import from Thunderbird or
+Evolution…** takes mail from another program's folders, into On This
+Computer (added first when there is none):
 
 - **Maildir folders**: a Maildir tree, such as Evolution's own On This
   Computer folders in `~/.local/share/evolution/mail/local/` (where the
@@ -411,7 +407,8 @@ It is refused where it would not save space or would break the message:
 
 **Microsoft** signs in with Tegami Mail's own app, with or without GNOME Online
 Accounts: pick *Microsoft 365 / Outlook* in the first-run wizard or in
-Settings → Mail Accounts, and sign in in the browser. The account's name and
+Preferences → Accounts → Add account… → E-mail account…, and sign in in the
+browser. The account's name and
 address are filled in from the sign-in, and its mail is read and sent through
 Microsoft Graph. This also works where GNOME Online Accounts cannot add the
 account, as with personal accounts on GNOME 46 (Ubuntu 24.04, Linux Mint 22).
@@ -423,8 +420,8 @@ Accounts. A work or school account may need its organization's administrator
 to approve that registration once for everyone.
 
 An organization that has approved another mail app's registration can sign
-in with that one instead. The **Advanced** row on the
-account's page takes its **Client ID**, a **Tenant** (`common`,
+in with that one instead. The **Advanced** row of the
+account's **Servers and connection** page takes its **Client ID**, a **Tenant** (`common`,
 `organizations`, `consumers`, or the organization's directory ID or
 domain), the **Scopes** it was approved for and its **Redirect URI**. Empty
 rows keep Tegami Mail's own. Scopes are Graph's short names, space-separated,
@@ -481,7 +478,8 @@ TEGAMI_GOOGLE_CLIENT_ID=... TEGAMI_GOOGLE_CLIENT_SECRET=... cargo build --releas
 
 ### Cloud attachments (Nextcloud, OneDrive, Dropbox, Seafile)
 
-Settings → Cloud Storage holds the accounts the composer can put files on:
+Preferences → Accounts → Cloud storage holds the accounts the composer can
+put files on:
 a file dropped on **Upload to Cloud**, or a large attachment's **Send a
 Link**. A file goes to the account's upload folder and a share link,
 with the size and any expiry, is placed in the message above your signature.
@@ -493,7 +491,7 @@ the password turned on or off, and a password of your own typed in place
 of the generated one.
 
 - **OneDrive:** through GNOME Online Accounts: add your Microsoft 365
-  account under Settings → Online Accounts, then pick it in the cloud
+  account under GNOME Settings → Online Accounts, then pick it in the cloud
   account's editor. GOA holds the sign-in and refreshes the token, so Tegami Mail
   stores no password or key. Uploads go into the upload folder (made when
   missing) and are shared with "anyone with the link". **Link expiry and
@@ -512,7 +510,7 @@ of the generated one.
 - **Behind Cloudflare** (Nextcloud-kind and Seafile accounts): a
   self-hosted server reached through a Cloudflare domain or tunnel cannot
   take a request over 100 MB, Cloudflare's proxy limit. Switch on *Server
-  is behind Cloudflare* in the account's editor and files bigger than 90 MB
+  is behind Cloudflare*, under **Advanced** in the account's editor, and files bigger than 90 MB
   go up in 90 MB pieces the server stitches back together (Nextcloud's
   chunked-upload endpoint, Seafile's resumable upload); smaller files go
   as one request as before.
@@ -540,7 +538,8 @@ of the generated one.
      Dropbox matches redirect URIs exactly.
   6. Copy the **App key** from the top of the Settings tab.
 
-  In Tegami Mail, add a Dropbox account under Settings → Cloud Storage, paste the
+  In Tegami Mail, add a Dropbox account under Preferences → Accounts → Cloud
+  storage, paste the
   app key and press **Connect with Dropbox**; the browser opens, you approve
   the app, and the account's e-mail appears in the dialog. The app can stay
   in *Development* status, which allows your own account (Dropbox asks for a
@@ -552,9 +551,8 @@ of the generated one.
 
 ### Address books
 
-**Settings → Contacts** lists every address book Tegami Mail reads contacts from,
-one row each, as Mail Accounts lists mail accounts: the Tegami Mail book, the books
-on this computer that GNOME Contacts and Evolution keep, each GNOME Online
+**Preferences → Accounts → Address books** lists every address book Tegami
+Mail reads contacts from, one row each: the books on this computer that GNOME Contacts and Evolution keep, each GNOME Online
 Accounts account that keeps contacts (Google, Microsoft 365, Nextcloud,
 iCloud), each [CardDAV account](#carddav-accounts) and each
 [LDAP directory](#ldap-directories). A row names the account, what it holds,
@@ -573,20 +571,19 @@ while GNOME Contacts and Evolution keep the account's. An account's page
 lists its address books, each with a name that can be changed the same way,
 and a switch of its own, under the
 account's switch. A name left blank, applied, is the account's or the
-book's own again. The Tegami Mail book's page holds its import and export. A
-GNOME Online Accounts account's page has **Open Online Accounts**, where its
+book's own again. A GNOME Online Accounts account's page has **Open Online Accounts**, where its
 sign-in is changed; a CardDAV account's and a directory's page is their form,
 with **Remove**.
 
-**Add address book…** offers a CardDAV server, iCloud, Nextcloud, Fastmail,
+**Add address book…**, the last row of the list, offers a CardDAV server, iCloud, Nextcloud, Fastmail,
 Yahoo and an LDAP directory, set up in Tegami Mail, and Google and Microsoft 365,
-which are added in GNOME Online Accounts and then listed here; the refresh
-button beside it looks again for one just added there. Every kind but the
-Tegami Mail book is kept by Evolution Data Server; without it, the page says so.
-**Save new contacts in**, at the foot of the page, sets the book a contact
-made in Tegami Mail goes to.
+which are added in GNOME Online Accounts (**Open Online Accounts**, at the
+foot of the page) and then listed here; the refresh button at the top looks
+again for one just added there. Every kind is kept by Evolution Data Server;
+without it, the page says so. **Save new contacts in** sets the book a
+contact made in Tegami Mail goes to.
 
-**Show names from Contacts**, on the same page, names a sender or recipient
+Tegami Mail always names a sender or recipient
 whose address is in an address book by the name saved there, not the one
 the message gives: in the message list, the reader and the new-mail
 notification. A contact then reads the same on all their mail, and mail
@@ -595,31 +592,16 @@ which gives it away. Address books that fill themselves from mail
 (Collected Addresses, Recently Contacted, Other Contacts) are not used for
 this, and a contact saved without a name keeps the message's.
 
-### The Tegami Mail address book
+### The former Tegami Mail address book
 
-Tegami Mail keeps an address book of its own, the **Tegami Mail address book**, beside
-the address books of GNOME Contacts, which Evolution Data Server (EDS)
-holds. It is there whether EDS is installed or not. Its addresses and photos
-are used for suggestions and avatars. **Add sender to contacts**, in a
-message's menus, puts an address in it, or in the book chosen under **Save
-new contacts in**. Tegami Mail has no contacts view of its own: contacts in a
-GNOME Contacts or online book are edited there.
-
-**Settings → Contacts → Tegami Mail address book** imports `.vcf` files into
-it, exports it, and deletes all of it. A file can hold many contacts, in
-vCard 2.1, 3.0 or 4.0. A contact with the same ID as one already in the book
-updates it, and one without an ID is matched by its content, so importing a
-file twice adds nothing new. A contact list in the file becomes a group (see
-[Contact groups](#contact-groups)). Entries with neither a name nor an
-address are skipped; truncated or oversized entries (over 5 MB) are counted
-as damaged; a second card with the same ID in one file is skipped, so the
-first is kept. Files over 50 MB are refused, and photos are used only when
-they are inside the file: nothing is fetched from the web. A person who is
-in both an EDS book and the Tegami Mail book is offered once in the
-composer's suggestions.
-
-The book is the file `local_contacts.db` in Tegami Mail's data folder, kept apart
-from the mail cache, so clearing the cache leaves it alone.
+Tegami Mail used to keep an address book of its own. It is gone: Tegami Mail
+reads the address books GNOME provides, and **Add sender to contacts** puts
+an address in the book chosen under **Save new contacts in**, which needs
+Evolution Data Server. A former book that still holds contacts is left on
+disk (`local_contacts.db` in Tegami Mail's data folder): at start Tegami Mail
+offers to export it as one vCard file, to open in GNOME Contacts. Once it is
+exported the file is renamed `local_contacts-exported.db` and the offer
+stops; **Later** asks again at the next start.
 
 ### Contact groups
 
@@ -628,7 +610,7 @@ composer offers like a contact. Typing part of its name in To, Cc or Bcc
 lists it among the suggestions with the number of people in it, and picking
 it adds a pill for each of them. People already in that field are not added
 twice. Groups come from the address books: those GNOME Contacts or a
-CardDAV server keep, and the contact lists of an imported `.vcf` file.
+CardDAV server keep.
 
 A group set to **Send as Bcc** puts its people in Bcc whichever field it is
 picked in, and opens the Bcc row, so they do not see each other's addresses.
@@ -637,9 +619,9 @@ To still needs at least one address, your own for example.
 ### Filtering on Contacts
 
 A filter condition can be **Sender is in Contacts** or **Sender is not in
-Contacts**, under **Settings → Filters**. They take no text. The sender's
-address is looked up in the address books Evolution Data Server keeps and
-in the Tegami Mail book. Books that fill themselves from mail you exchange are
+Contacts**, under **Preferences → Accounts → Filters**. They take no text.
+The sender's address is looked up in the address books Evolution Data Server
+keeps. Books that fill themselves from mail you exchange are
 left out, so writing to someone once does not make them a contact: they are
 recognised by an English name such as "Collected Addresses", "Recently
 contacted" or "Other contacts", and a book named in another language may
@@ -653,7 +635,7 @@ address condition with no text, which matches nothing.
 
 ### CardDAV accounts
 
-**Add address book…** in Settings → Contacts adds the address books on a
+**Add address book…** in Preferences → Accounts → Address books adds the address books on a
 CardDAV server, such as Nextcloud, iCloud, Fastmail, Radicale or a mail
 provider's, without GNOME Online Accounts or Evolution. Their contacts are listed in Contacts,
 in the book list above them, and suggested in the composer; a contact added
@@ -697,8 +679,8 @@ GNOME. Without it, the page says so.
 
 ### LDAP directories
 
-The directories the composer looks recipients up in are added in Settings →
-Contacts, with **Add address book…** → **LDAP directory**, and listed there
+The directories the composer looks recipients up in are added in Preferences
+→ Accounts → Address books, with **Add address book…** → **LDAP directory**, and listed there
 with the other address books. Once three characters of a name or address are typed in
 To, Cc or Bcc, each directory that is switched on is asked for people whose
 name, surname or address starts with them, and the answers join the
@@ -742,9 +724,9 @@ why not (a password it refused, a server it could not reach or find, TLS
 that could not start). The check gives up after 30 seconds. A directory
 that fails during a search, such as one that needs a password neither
 Tegami Mail nor Evolution has, says why under **In Directories** in Contacts, once
-in the status bar of each composer, and in its row in Settings → Contacts. It is left alone for 30 seconds before it is asked again. The
-console ([the status bar](#the-status-bar) with **Settings → System → Console
-mode** on) records each directory's answer to a search: how many entries it
+in the status bar of each composer, and in its row in Preferences → Accounts → Address books. It is left alone for 30 seconds before it is asked again. The
+console ([the status bar](#the-status-bar) with **Console mode** on in
+**Troubleshooting**, in the main menu) records each directory's answer to a search: how many entries it
 found and how many of them have an address, and **Export log** saves it. The Flatpak
 reaches the desktop's Evolution Data Server, which has to be installed on
 the system, as it is with GNOME.
@@ -754,8 +736,7 @@ the system, as it is with GNOME.
 A Microsoft 365 account signed in within Tegami Mail can suggest people from the
 organization's directory as a recipient is typed, alongside LDAP
 directories. Turn on **Search the organization directory** under Microsoft
-365 in the account's settings, where the account's other Microsoft Graph
-switches are too. Microsoft then asks to approve access to the directory (the
+365 in the account's **Servers and connection** page. Microsoft then asks to approve access to the directory (the
 People.Read and User.ReadBasic.All permissions). Where an organization lets
 only administrators approve apps, an administrator approves Tegami Mail once, at
 the link shown. Accounts added through GNOME Online Accounts cannot use it,
@@ -770,8 +751,9 @@ left out, so a work account does not offer personal addresses.
 
 ### Translating messages
 
-Settings → Translation sets up a translation service you have an account
-with, under your own key:
+Preferences → Accounts → Translation sets up a translation service you have
+an account with, under your own key (a LibreTranslate server and a Microsoft
+region are under **Advanced**):
 
 | Service | What it needs | Notes |
 | --- | --- | --- |
@@ -780,7 +762,7 @@ with, under your own key:
 | Microsoft Translator | a key, and the resource's region | Leave the region empty for a global resource. |
 | LibreTranslate | the server's address, and a key if it asks for one | Can run on your own computer or network, so messages never leave it. |
 
-**Check the settings** translates a greeting to show that the service
+**Check the service** translates a greeting to show that the service
 answers. **Translate into** is Tegami Mail's own language unless another is chosen.
 
 A message is translated from the A文 button in its card's actions, or from
@@ -798,7 +780,7 @@ alone, in one plain sheet that follows the app's theme. Long messages go in piec
 characters to send is not sent.
 Messages that arrived encrypted are never sent.
 
-With **Offer to translate** on, a message in a language other than the one
+Whenever a service is set, a message in a language other than the one
 translations go into shows a Translate button above it. Which language a
 message is in is worked out on this computer; nothing is sent until the
 button is pressed.
@@ -820,8 +802,8 @@ The settings are in `translation.toml`; the key is in the keyring.
 
 ### Signatures
 
-An account's signature is written in the **Signatures** group of its
-settings, in the same editor as a message; **Import file…** loads one from
+An account's signature is written on its **Signatures** page (Preferences →
+Accounts → the account → Signatures), in the same editor as a message; **Import file…** loads one from
 an HTML or text file. **Edit HTML**, at the end of the editor's toolbar,
 shows the signature as its HTML source to edit in place, and **Preview**
 turns it back into the formatted signature. Scripts and style sheets are
@@ -845,12 +827,11 @@ picked.
 
 In a reply or forward the account's signature is placed above the quoted
 message, so it closes what you wrote rather than what the other person did.
-**Settings → Composing → Signature in replies** moves it below the quoted
+**Preferences → Messages → Composing → Advanced → Signature in replies** moves it below the quoted
 message instead, the placement Tegami Mail had before 1.38. The setting applies
 when a composer opens; a draft keeps its signature wherever it was saved.
 
-The signature follows a blank line and nothing else. **Settings → Composing →
-Separator line above the signature** puts the traditional `-- ` line (two
+The signature follows a blank line and nothing else. **Preferences → Messages → Composing → Advanced → Separator line above the signature** puts the traditional `-- ` line (two
 dashes and a space) between them, as Tegami Mail did before 1.42. Thunderbird,
 Evolution and Mutt use that line to show the signature dimmed and to leave it
 out when they quote your message; Gmail, Apple Mail and Outlook ignore it.
@@ -872,11 +853,11 @@ A reply, a forward and a new message each open in a window of their own
 history under a reply.
 
 A reply opens with a line above the quoted message, "On Oct 25, 2026 at
-14:03, Ada wrote:" in the app's language. **Settings → Composing → Reply
+14:03, Ada wrote:" in the app's language. **Preferences → Messages → Composing → Advanced → Reply
 Header** changes it: `{name}`, `{address}`, `{date}` and `{time}` are
 filled in from the original, so `{name} <{address}> wrote on {date}:` gives
-"Ada <ada@example.org> wrote on Oct 25, 2026:". The date and time follow
-**Date format** and **Clock** in **Settings → Date and time**. The button at
+"Ada <ada@example.org> wrote on Oct 25, 2026:". The date and time are written as everywhere else in Tegami Mail. The button
+at
 the end of the row restores the default, which follows the language of the
 app. A forward opens with the original's From, Date and Subject, in the
 app's language too.
@@ -893,8 +874,8 @@ The quoted message opens folded behind a ••• button, since the reading pan
 shows it already. A click shows it, with the button
 moved above it to fold it again. It is sent either way. A delete that would
 reach the folded quote, such as Select All and Delete, opens it instead of
-removing text that cannot be seen; the next one removes it. **Settings → Composing → Fold quoted
-text**, on by default, switched off, opens every quote in full.
+removing text that cannot be seen; the next one removes it. **Preferences → Messages → Composing → Advanced → Hide conversation
+history**, on by default, switched off, opens every quote in full.
 
 A message that was replied to shows a reply arrow in the message list, one
 that was forwarded a forward arrow, and one that was both shows both. A
@@ -911,8 +892,8 @@ Mail already downloaded shows its arrows once it is fetched again.
 ### Replies filed beside the original
 
 A copy of a sent reply goes with the rest of sent mail unless the account
-says otherwise. In **Mail accounts → Edit → Special folders**, **Save a copy
-of replies in** has two other choices:
+says otherwise. In **Preferences → Accounts → the account → Folders → Advanced**, **Save a
+copy of replies in** has two other choices:
 
 - **Folder of the original** files the copy of a reply in the folder of the
   message it answers, so a conversation kept in a project folder keeps your
@@ -947,8 +928,7 @@ say, is tried again at the next one, without a message about it.
 
 A message sent waits five seconds before it goes, with **Undo** on offer
 in a notice at the foot of the window. Undo reopens it in a composer
-window. If it cannot be sent, the status bar says why. **Settings →
-Composing → Undo Send** sets the wait to 3, 5, 10, 20 or 30 seconds, or
+window. If it cannot be sent, the status bar says why. **Preferences → Messages → Composing → Undo send** sets the wait to 3, 5, 10, 20 or 30 seconds, or
 **Off** to send at once.
 
 While it waits and while it is being sent, the message is listed in the
@@ -1009,7 +989,7 @@ templates there, Thunderbird among them, sees the same ones.
 A folder called Templates is taken for the role, at the top of the account
 or directly under the Inbox. Nothing on a server marks one otherwise, so a
 folder by another name, "Vorlagen" say, is chosen in the account's
-**Special folders**, under **Templates**.
+**Folders → Advanced → Templates**.
 
 ### Addresses as pills
 
@@ -1052,7 +1032,7 @@ the next field.
 The **From** row names the address the message goes from. A click on it
 opens **Send from**: each account's address and the aliases set up for it,
 the one in use marked, then **Manage accounts…**, which opens the accounts
-in Settings. A reply to mail sent to a `+tag` address of one of your
+in Preferences. A reply to mail sent to a `+tag` address of one of your
 addresses starts from that address, and a draft saved from an address that
 is none of yours opens with it; picking an address in **Send from** replaces
 it. Whether the server accepts mail from an address it does not know is up
@@ -1062,15 +1042,14 @@ A JMAP account lists the identities the server keeps for it as well, so an
 alias made in the webmail is in **Send from** without setting it up again.
 The message is sent as the identity with its address, or as a catch-all
 identity for its domain (`*@example.org`) when there is one. The account's
-page in Settings shows them under Send-as aliases, read-only: they are
+Send-as aliases page in Preferences shows them, read-only: they are
 changed where the server keeps them.
 
 ### Return and Shift+Return
 
 In the rich text editor <kbd>Return</kbd> starts a new line in the same
 paragraph, and <kbd>Shift+Return</kbd> ends the paragraph with a hard
-return, which leaves a space before the next one. **Settings → Composing →
-Return starts a new paragraph** swaps the two. In a list <kbd>Return</kbd>
+return, which leaves a space before the next one. **Preferences → Messages → Composing → Advanced → Return starts a new paragraph** swaps the two. In a list <kbd>Return</kbd>
 still starts the next item, and pressed twice in a quote it still leaves the
 quote. The setting applies when a composer opens. In plain text
 <kbd>Return</kbd> is always a new line.
@@ -1102,28 +1081,28 @@ rest of what a mail can carry:
   pictures in the message at the cursor, as dropping or pasting them does.
 
 Colors, fonts and sizes go out as inline styles, which every mail client keeps.
-Switching such a message to plain text leaves them out. **Settings → Composing → Formatting toolbar**
+Switching such a message to plain text leaves them out. **Preferences → Messages → Composing → Advanced → Formatting toolbar**
 says whether a new message starts with these tools shown (Always expanded)
 or hidden behind the chevron (Always collapsed, the default); the chevron
-changes it for the message at hand. **Settings → Composing → Font** and
+changes it for the message at hand. **Preferences → Messages → Composing → Advanced → Font** and
 **Font size** set the font and size a rich-text message starts in, and they
 are sent with it, so the recipient sees them too. They cover what you
 write: the signature and the message quoted in a reply or forward keep their
 own look, and text given its own font or size in the message keeps it. **Other font…** in the Font list picks any
 installed font. Default, for both, leaves the recipient's own font and size
-in charge. **Settings → Composing → Default zoom** is the size the
+in charge. **Preferences → Messages → Composing → Advanced → Default zoom** is the size the
 composer shows a new message at, on screen only: Same as reading pane zoom, the
-default, follows **Settings → Reading → Default zoom**. When the composer is narrow, the
+default, follows the reader's zoom. When the composer is narrow, the
 toolbar wraps onto a second row, the chevron staying beside the tools it
 shows wherever the row has room for it.
 
 ### Spell checking
 
-**Settings → Composing → Check spelling as you type** underlines misspelled
+**Preferences → Messages → Composing → Check spelling** underlines misspelled
 words in the subject and the message body. Right-clicking a word in the body
 offers corrections.
 
-**Settings → Composing → Languages** has a switch for the system language
+**Preferences → Messages → Composing → Advanced → Languages** has a switch for the system language
 and one for each dictionary the app can see, and any number of them can be
 on. A word is underlined only when none of the chosen dictionaries knows it,
 so a message can mix languages. Switching a dictionary on switches the
@@ -1140,7 +1119,7 @@ restart.
 
 ### Grammar checking
 
-**Settings → Composing → Check grammar and style** marks what the checker
+**Preferences → Messages → Composing → Advanced → Check grammar and style** marks what the checker
 finds in what you write: a mistake with a wavy blue line, a matter of style
 with a dotted one. Right-clicking a mark shows what is wrong at the top of
 the menu, with the suggestions to put in its place and **Ignore**, which
@@ -1188,7 +1167,7 @@ answered. When checking fails while you write, right-clicking the body says
 why.
 
 Each paragraph is checked in its own language, one of those chosen for
-spelling in **Settings → Composing → Languages**, recognised on this
+spelling in **Preferences → Messages → Composing → Advanced → Languages**, recognised on this
 computer, so a message in French and English is checked as both. A
 paragraph too short to tell goes with the one before it. Harper leaves the
 paragraphs that are not in English alone. Misspelled words are left to the
@@ -1198,8 +1177,7 @@ The settings are in `grammar.toml`; the API key is in the keyring.
 
 ### Rich text or plain text
 
-A message is written in rich text or in plain text, chosen in **Settings →
-Composing → Write messages in** for new messages and switched for any single
+A message is written in rich text or in plain text, chosen in **Preferences → Messages → Composing → Format of new messages** for new messages and switched for any single
 message under **Format** in the composer's **More actions** (⋯) menu, the
 current one in your accent colour:
 
@@ -1207,7 +1185,7 @@ current one in your accent colour:
   It is sent as HTML with a plain-text alternative, not as RTF.
 - **Plain text:** no formatting at all, sent as `text/plain` only.
 
-**Settings → Composing → Reply in the original's format**, off by default,
+**Preferences → Messages → Composing → Advanced → Reply in the original's format**, off by default,
 answers plain text in kind. A reply, a reply to all or a forward of a message
 that came as plain text only, the way mailing lists and many of the people on
 them send it, opens in plain text, the original quoted as `>` lines that keep
@@ -1233,15 +1211,15 @@ here needs a terminal.
 
 **1. Make a key for your address**
 
-Open *Settings → OpenPGP*. The top row says whether GnuPG was found. Under
-*Your keys*, click **Generate…**, pick the address the key is for, choose how
+Open *Preferences → Accounts → OpenPGP keys*. The note at the bottom says
+whether GnuPG was found. Under *Your keys*, click **Generate a key…**, pick the address the key is for, choose how
 long it lasts, and enter a passphrase twice. Tegami Mail hands the passphrase to gpg
 over a pipe and does not keep it; from then on gpg asks for it when the key is
 used, and remembers it for a while (ten minutes by default, the normal
 gpg-agent behaviour). The key is a signing key with an encryption subkey, so it
 does both jobs.
 
-If you already have a key, click **Import…** instead and pick the key file.
+If you already have a key, click **Import a key…** instead and pick the key file.
 
 **2. Give people your public key**
 
@@ -1261,13 +1239,14 @@ signature. There are four ways to get one, none of which need a terminal:
   Autocrypt header), then asks the sender's provider (WKD), then the keyservers.
 - A message with a key file attached shows an **Import OpenPGP key** button on
   that attachment.
-- Under *Settings → OpenPGP → Other people's keys*, **Fetch by address…**
-  looks a key up by email address, and **Import…** reads a key file.
+- Under *Preferences → Accounts → OpenPGP keys → Correspondents' keys*,
+  **Fetch by address…** looks a key up by email address, and **Import a
+  key…** reads a key file.
 - A key someone sends you by any other route can be imported the same way.
 
 Other people's keys are listed by name. The search field above the list finds
 a key by name, address, key ID or fingerprint, and the menu beside it shows only the trusted keys, the ones not trusted yet, or
-the expired and revoked ones. These keys are left out of the Settings search.
+the expired and revoked ones. These keys are left out of the Preferences search.
 
 **4. Trust a key**
 
@@ -1300,11 +1279,11 @@ mail, because nothing decrypted is kept between visits; the reader, a message
 window and a printout show the subject inside.
 
 Each account uses the key whose address matches. To use another key for an
-account, open the account in *Settings → Mail Accounts* and choose it under
-*OpenPGP*.
+account, open *Preferences → Accounts → the account → OpenPGP encryption*
+and choose it under *Key*.
 
 To sign everything an account sends, turn on **Sign messages by default**
-under the same *OpenPGP* group. New messages, replies and forwards from that
+on the same page. New messages, replies and forwards from that
 account then open with Sign on, and a reopened draft does too. Changing From
 in the composer moves Sign to the new account's setting until you press Sign
 yourself; after that the composer leaves it as you set it. Stored on the
@@ -1317,11 +1296,6 @@ means it was signed. Green: everything checks out against a trusted key.
 Amber: a doubt, such as an unknown or untrusted key, or an expired one. Red:
 a failure, such as a signature that does not match or a message that could not
 be decrypted. Click the icon for the details.
-
-To have the result in words as well, switch on *Settings → Reading → Name the
-OpenPGP result*. The icons then sit in a label that reads **Signed**,
-**Encrypted**, **Encrypted and signed**, or what is wrong, such as **Bad
-signature** or **Signed, unknown key**.
 
 **If something goes wrong**
 
@@ -1355,8 +1329,7 @@ Dragged over the main window with no message being written in it, files
 bring up the same cards side by side, each starting a new message: **Attach
 to New Message**, **Insert in New Message** and **Share Link in New
 Message**, offered on the same terms (Insert in New Message when new
-messages start as rich text, in **Settings → Composing → Write messages
-in**). Attach to New
+messages start as rich text, in **Preferences → Messages → Composing → Format of new messages**). Attach to New
 Message asks about files over the size limit the way *Send with Tegami Mail* does
 (below). Folders are skipped.
 
@@ -1376,19 +1349,8 @@ Files loads, so it has to live outside the app, in your home folder.
 
 **Installing it**
 
-Open **Settings → System → GNOME Files** and click **Install**. Tegami Mail writes
-the extension to `~/.local/share/nautilus-python/extensions/tegami-nautilus.py`
-and shows whether the installed copy is this version's. Then click
-**Restart** (or run `nautilus -q`): Files closes its windows, and the next one
-opens with the entry. Once Files has loaded the extension the row says so; if
-it still says "not loaded" after a restart, the `nautilus-python` package is
-the usual reason (a native install of Tegami Mail checks for it and tells you; the
-Flatpak cannot see the host's packages). Until Files has loaded the extension,
-the group also shows the install command for your distribution, with a copy
-button. **Remove** takes it out again the same way.
-
-Without the app, the same file is in the repository at
-`data/nautilus/tegami-nautilus.py`:
+The extension is the file `data/nautilus/tegami-nautilus.py` in the repository.
+Copy it into Files' extension folder and restart Files:
 
 ```sh
 mkdir -p ~/.local/share/nautilus-python/extensions
@@ -1413,10 +1375,9 @@ message you pick (the one you are reading comes first; a search box narrows
 the list by sender, subject or account). Files that together exceed the size
 limit (20 MB by default) bring a second question when a cloud storage account
 is set up: attach them anyway, or upload them and put download links in the
-message instead. Each dialog has an *Always do this* box, and **Settings →
-System → GNOME Files** holds the same choices, so the questions can be
-skipped: what the files go into, what happens over the limit, and the limit
-itself.
+message instead. Each dialog has an *Always do this* box, so the questions can be skipped;
+**Large attachments**, in Preferences → Application, holds the choice made
+over the limit.
 
 ### Quoted text
 
@@ -1433,8 +1394,7 @@ quoted lines, so an answer written inline always shows in full.
 A click on a message's header in a conversation folds it to a short card: a
 line with the sender's circle and name, then a star, a paper plane or an
 inbox for sent or received, a paperclip when it has files, and the day.
-Under it comes the start of the message, in as many lines as **Settings →
-Message List → Preview lines** asks for; the subject is the conversation's,
+Under it comes the start of the message, in as many lines as the message list's preview shows; the subject is the conversation's,
 in the heading above. A click on the card opens it again; a double-click on
 the header still opens the message in a window of its own. A click anywhere
 else on a message, its text included, selects it, and the action keys act
@@ -1452,10 +1412,9 @@ A message's header, or its folded card, drags it to a folder in the sidebar,
 as its row in the message list does; with several selected, the drag carries
 all of them. A drag across the message's text selects the text.
 
-**Settings → Conversations → Fold earlier messages** decides how a
-conversation opens: **Never** shows every message, **Messages already read**
-folds what you have read, and **All but the newest** folds every message
-except the newest, read or not. The newest always opens, and so does a
+A conversation opens with the messages you have already read folded. (A
+choice made in an earlier version, every message open or all but the newest
+folded, is kept.) The newest always opens, and so does a
 message you move to with `w` or `b`. Right-clicking anywhere in a
 conversation offers **Expand all messages** and **Collapse all messages**.
 What you fold or open stays that way while the conversation is on screen,
@@ -1466,9 +1425,7 @@ Printing shows every message in full.
 
 The buttons above the message are in two groups. The left group, up to seven
 buttons, stays on the bar at every width: Reply, Reply All, Forward,
-Archive and Delete by default. The right group folds away: always while
-**Settings → Appearance → Always fold the right group into ⋯** is on, as it
-is on a new install, and otherwise only when the pane is too narrow for it.
+Archive and Delete. The right group folds into ⋯.
 Tags keeps its button while there is room.
 
 **More actions** (⋯), at the end, holds **Forward as attachment**, **Mark as
@@ -1477,17 +1434,14 @@ Unread**, **Mark as Spam** and **Move To…**, then **Show Remote Content**,
 button on the bar is left out. Forward as Attachment opens a composer with
 the message attached whole, as an `.eml` file. Star, Snooze and Find in
 Message are in a message's right-click menu and on their keys (**s**,
-**z**, **Ctrl+F**) when not on the bar.
-**Settings → Appearance → Toolbar** moves buttons between the groups, or out
-of the toolbar, by dragging them; right-clicking an empty part of the
-toolbar opens it there.
+**z**, **Ctrl+F**) when not on the bar. (A toolbar arranged in an earlier
+version keeps its arrangement.)
 
 ### A message in its own window
 
 Double-clicking a message in the list, or a message's header in a
 conversation, opens it in a window of its own. Its toolbar is the reader's:
-the same buttons in the order **Settings → Appearance → Toolbar** gives
-them, and the right-hand group folds into a ⋯ menu as it does in the main
+the same buttons in the same order, and the right-hand group folds into a ⋯ menu as it does in the main
 window. Its files are in the attachment drawer under the
 message, and on each message's card when those are switched on, and images
 and PDFs open in the same full-window preview. A conversation's window
@@ -1514,17 +1468,10 @@ Its HTML or plain text, its attachments and the pictures in its text all
 come through. A message whose text Outlook kept only as RTF shows no text,
 and a message attached to it is left out.
 
-### Message appearance
-
-**Settings → Reading → Message appearance** draws every message light, dark
-or as the system is.
-
 ### The account in the message header
 
 Above the subject, the message header names the account the message is in,
-in the account's color. **Settings → Reading → Show account in message
-header** hides it, in the main window and in a message's own window. It is
-stored as `account_chip` in `privacy.toml`.
+in the main window and in a message's own window.
 
 ### Finding in a message
 
@@ -1533,9 +1480,8 @@ toolbar, opens a find bar for the message or conversation shown.
 <kbd>Enter</kbd> and the arrows step through the matches. <kbd>Esc</kbd>,
 <kbd>Ctrl+F</kbd> again or the close button puts the bar away and hands the
 keyboard back to the message, so the next <kbd>Ctrl+F</kbd> finds in it
-again. **Settings → Reading → Find bar position** opens the bar at the top
-of the message, the default, or at the bottom, where it leaves the message
-where it is. A message in its own window follows the same setting.
+again. The bar opens at the top of the message, in a message's own window
+too.
 
 ### Printing
 
@@ -1547,13 +1493,9 @@ saves a PDF from **Save as PDF…**. A message opened in a window of its own
 has the same printer button, menu entries and keys.
 
 The printed page starts with the subject, sender, recipients and date, and
-has a 15 mm margin on every side. **Settings → Reading → Printing** adds to
-it:
-
-- **Page numbers**, on by default: "Page 2 of 5" at the foot of every page.
-- **Date printed**: the date and time of printing at the foot of every
-  page, at the left.
-- **Wider left margin**: 25 mm at the left, so punched holes miss the text.
+has a 15 mm margin on every side, with "Page 2 of 5" at the foot of every
+page. (A date printed or a wider margin chosen in an earlier version is
+kept.)
 
 The preview is laid out on the paper chosen the last time you printed, or
 your language's default paper size before that.
@@ -1577,103 +1519,21 @@ whole conversation. Clicking a row selects it and nothing more: the keys, the
 right-click menu and the selection bar act on it, but it stays unread. A
 double-click, **Enter** or, with Gmail's keys, **o** opens it in a window of
 its own (see [A message in its own window](#a-message-in-its-own-window)),
-which marks it read as **Settings → Reading → Mark as read** says. A
+which marks it read as **Preferences → Messages → Mark as read** says. A
 conversation opens whole, each message marked as its window scrolls through
 it. Tegami Mail remembers the choice.
 
-**Settings → Message list → Layout** sets how the list shows a message.
-**Cards** gives the sender, the subject and the start of the text lines of
-their own. **Single line** puts them on one line in columns: the sender's
-circle and name, the subject with the text dimmed after it, then tags, a
-paperclip, the conversation's size and a short date. **Automatic** uses one
-line while the list pane is dragged wider than about 600 pixels and cards
-when it is narrower. On one line the actions palette is not shown and a
-row does not swipe, as sideways is how the list scrolls to its columns;
-the right-click menu and keyboard shortcuts do the same things.
+The list shows one card per message or conversation: the sender's circle
+and name, the subject, the start of the text, tags, and a paperclip when
+files are attached (docs/DESIGN.md, "Message list"). **Sort and display**,
+the two-arrow button in the list's header, sorts the list and chooses
+whether it groups messages into conversations, shows the start of the text
+and shows the circles. A layout, columns, date headings or a tint chosen in
+an earlier version keep their stored values.
 
-**Settings → Message list → Columns** chooses what a single line shows and
-in what order: drag a column between **Shown** and **Not shown**, or along
-the row. Any number of columns can be shown. The subject always stays, and
-the conversation's size rides at its end. The columns are:
-
-| Column | What it shows |
-| --- | --- |
-| Star | The star, lit when the message is starred |
-| Replied | An arrow when the message was replied to, another when it was forwarded |
-| Sender | Who it is from; in Sent, who it went to |
-| Recipients | Who it went to |
-| Correspondents | Everyone who wrote in the conversation, newest first, you as "me" |
-| Subject | The subject, with the start of the text dimmed after it |
-| Tags | The message's tags |
-| Attachment | A paperclip when there are files attached |
-| Importance | A red mark for high importance, a grey arrow for low |
-| Account | The account the message is in |
-| Due Date | When a Microsoft 365 follow-up flag falls due, red once it has passed |
-| Date | When it arrived |
-
-Importance comes from the `X-Priority`, `Importance` and `Priority`
-headers, or from Microsoft 365. Mail already downloaded shows as normal
-until it is fetched again. Only Microsoft 365 has a due date, so Due Date
-takes room only in a list that holds Microsoft 365 mail. **Restore
-Defaults** goes back to star, replied, sender, subject, tags, attachment
-and date.
-
-**Column headings**, in the same group, names the columns above the list.
-Clicking a heading sorts the list by that column, and clicking it again
-reverses the order (the star column excepted: the **Starred** quick filter
-shows starred mail); the sorted heading is in the accent color, with an
-arrow. Correspondents sorts by the names the column shows, and Tags by tag
-name with untagged mail last. The Sort and view popover follows the
-headings.
-
-The name, tags and date columns are resized by dragging a heading's edge,
-where a line shows under the pointer: the right edge of a column left of
-the subject, the left edge of one right of it. A double click there puts
-the column back to its usual width, and **Restore defaults** puts every
-column back.
-
-**Fit columns to the list**, in the same group and on until it is switched
-off, narrows the name and tag columns in proportion when the list is too
-narrow for the widths set; the dates keep theirs. Switched off, every
-column keeps its width, the subject takes the room they leave, and a list
-too narrow for them all scrolls sideways to the columns past its edge, the
-headings with it.
-
-A right-click on the headings offers **Customize columns…**, which opens
-Settings at **Message list → Columns**.
-
-**Settings → Message list → Group by date**, on by default, divides the
-list under headings: **Today**, **Yesterday**, **Last 7 days**, **Last 14
-days** and **Older**, counted in calendar days on this computer's clock. The headings
-show only while the list is sorted by date, newest or oldest first, and move
-on at midnight. A conversation goes under the heading of the message that
-places it in the sort, the newest for newest first and the oldest for oldest
-first. The headings work
-in both layouts and in search results, and are not rows: the keyboard,
-selection and swipes pass them by. It is off unless switched on.
-
-**Settings → Message list → Tint tagged messages** washes the row of a
-tagged message with its tag's color, in both layouts. A message with more
-than one tag takes the color of the one listed first in **Settings → Tags**.
-A selected row keeps the selection color. It is on unless switched off.
-
-**Settings → Message list → Tags and labels under the text** puts a card's
-tags, Gmail labels and folder pill on a line of their own under the
-message's text, so the subject keeps the row's full width. It is off unless
-switched on; a single-line list keeps them in its Tags column.
-
-**Settings → Message list → Keep the search field open** shows the search
-field with the list all the time, instead of only after the search button,
-<kbd>Ctrl+F</kbd> or <kbd>/</kbd>. One click in it starts a search.
-<kbd>Esc</kbd> clears it and returns to the list, and it stays where it is.
-It is off unless switched on.
-
-**Settings → Message list → Search field position** and **Selection bar
-position** set where the search field and the bar for several selected
-messages open: at the top of the list, the default, or at the bottom. At the top, each one pushes the
-messages down when it opens; at the bottom, the list gets shorter from its
-foot and the messages stay where they are. When both are on the same side,
-the search field is the outer one, so selecting messages never moves it.
+The search field opens at the top of the list, from the search button,
+<kbd>Ctrl+F</kbd> or <kbd>/</kbd>; <kbd>Esc</kbd> clears it and returns to
+the list. The bar for several selected messages opens at the top too.
 
 The button beside the search field sets where a search looks, and the info
 button beside each choice in its popover says what that choice searches.
@@ -1763,13 +1623,6 @@ the bar spans all of it, back to the oldest message. While the bar is
 dragged in a list sorted by date, a label beside it names the month and year
 of the rows in the middle of the view.
 
-### Text size
-
-**Settings → Appearance → Text size** makes Tegami Mail's text smaller or larger
-than the desktop's, from 90% to 150%: the sidebar, the message list,
-Settings and the text of messages. Icons keep their size. Default follows
-the desktop's own text scaling. Stored as `text_scale` in `privacy.toml`.
-
 ### App icon
 
 Tegami Mail has one icon, the ink-wash envelope (the beta adds GNOME's
@@ -1778,67 +1631,21 @@ picked there earlier is taken off the launcher and the shipped one shows
 again. An icon set on the launcher some other way, with a menu editor or by
 editing its `.desktop` file, is left alone.
 
-### Icons
-
-Tegami Mail draws its icons, and those of the buttons, arrows and checkmarks GTK
-draws for it, from copies built into the app, so it looks the same on every
-desktop whatever icon theme is set. **Settings → Appearance → Use the
-desktop's icons** draws them from the desktop's icon theme instead, with
-Tegami Mail's copies standing in for any icon the theme lacks. It applies at once
-and is stored as `desktop_icons` in `privacy.toml`.
-
-### New and seen unread mail
-
-A folder's unread count is in the accent color. With **Settings → Sidebar →
-Highlight only new unread mail** on, it is only while mail has come into the
-folder since you last looked at it; once you have opened the folder, the
-count turns grey, however much is still unread, until more arrives. A folder
-on screen counts as looked at. Reading mail elsewhere lowers the mark with the count. What was
-unread when the setting was turned on counts as seen. The marks are kept in
-`state.toml`, and the setting is `seen_counts` in `privacy.toml`.
-
-### Unread count on the app icon
-
-Tegami Mail puts a number on its icon in the dock or task manager. KDE Plasma's
-task manager shows it, and so do the Dash to Dock and Dash to Panel
-extensions for GNOME; GNOME's own dash has no badges. **Settings → System →
-Unread count on the app icon** chooses what it counts:
-
-- **All unread inbox mail**, the default: every unread message in every
-  account's inbox, the same count as the tray icon's dot.
-- **New since last in front**: only the inbox mail that arrived while the
-  main window was not the active window, and is still unread. It is the mail
-  a new-mail notification is raised for, less what a filter filed out of the
-  inbox, whether or not notifications are on. Reading or deleting one of those messages, from a
-  notification's buttons or on another device, takes it off the count, and
-  the count goes back to none as soon as the main window is in front. It
-  starts from none each time Tegami Mail starts. The tray icon's dot still counts
-  every unread inbox message.
-- **Off**: no number.
-
-Stored as `launcher_badge` (`off`, `all_unread` or `new_since_front`) in
-`privacy.toml`; `launcher_count`, the on/off switch it replaced, is still
-written for older versions and read when `launcher_badge` is absent.
-
 ### Renderer
 
-**Settings → System → Renderer** chooses how the windows are drawn:
-**Automatic** (GTK's own choice, Vulkan where it works), **Vulkan**,
-**OpenGL** or **Software**. On older graphics hardware where Vulkan support
-is incomplete (Intel HD 4000 and its generation, for instance), OpenGL or
-Software can draw more reliably. The choice applies the next time Tegami Mail
-starts. A `GSK_RENDERER` set for the session wins over it, so this still
-works:
+GTK picks how the windows are drawn, Vulkan where it works. On older
+graphics hardware where Vulkan support is incomplete (Intel HD 4000 and its
+generation, for instance), `GSK_RENDERER` set for the session chooses
+another:
 
 ```sh
 flatpak override --user --env=GSK_RENDERER=gl io.github.DocteurScience.TegamiMail
 ```
 
-Left on **Automatic** on X11, Tegami Mail checks before GTK starts that the X
-server can attach its shared memory, which Mesa's software driver needs on
-a display without a GPU, such as Xvnc. When it cannot, Tegami Mail draws with
-Software, and the log says `renderer: cairo, the X server cannot attach
-shared memory`.
+On X11, Tegami Mail checks before GTK starts that the X server can attach its
+shared memory, which Mesa's software driver needs on a display without a
+GPU, such as Xvnc. When it cannot, Tegami Mail draws with Software, and the log
+says `renderer: cairo, the X server cannot attach shared memory`.
 
 ### Sensitivity labels
 
@@ -1850,15 +1657,11 @@ leaves the label's name out of the message shows the pill as **Labeled**.
 Outlook's older Sensitivity setting (Personal, Private, Confidential) shows
 the same way.
 
-For a Microsoft 365 account signed in within Tegami Mail, **Show sensitivity label
-names**, under Microsoft 365 in the account's settings, names those labels from the
-organization's own list, with the label's color on the tag icon and the
-organization's description of the label in the pill's tooltip. Turning it
-on asks Microsoft to approve reading the labels (the
-InformationProtectionPolicy.Read permission). The list is read once a
-session and again after an hour. It holds the labels published to you, so a
-label from another organization stays **Labeled**. As with the directory,
-an account added through GNOME Online Accounts cannot use it.
+A Microsoft 365 account signed in within Tegami Mail that had **Show
+sensitivity label names** switched on in an earlier version keeps naming
+those labels from the organization's own list, with the label's color on the
+tag icon and its description in the pill's tooltip. The switch is gone
+(docs/DESIGN.md, "Accounts").
 
 Tegami Mail only shows the label: it does not apply the rules the organization
 attached to it, and it cannot set a label on a message you write. A message
@@ -1872,12 +1675,8 @@ The Unsubscribe banner on mail from a list asks before it leaves the list, and
 can take the mail already received from that address to the Trash with it:
 tick **Also delete the messages from …** in that dialog.
 
-For the rest, each account's settings have **Move list mail to Trash**, under
-Syncing: Inbox mail with an unsubscribe link (a List-Unsubscribe header) that
-is older than 30, 60, 90 or 180 days goes to the Trash, checked at each sync
-and at most every six hours. Starred mail stays, and so does anything without
-the header, however old. It works for IMAP and JMAP accounts; Microsoft 365
-offers no way to search for the header, so the choice is not shown there.
+The automatic move of old list mail to the Trash is gone (docs/DESIGN.md,
+"Removed or moved"): nothing is moved unless you ask.
 
 ### Read receipts
 
@@ -1889,8 +1688,8 @@ Mail mark it, so other mail apps do not ask again. Your own mail, and mail in
 Sent, Drafts, Templates, Junk and Trash, never asks. Neither does mail
 downloaded before Tegami Mail read the request.
 
-**Settings → Privacy → Send read receipts** chooses **Ask each time**,
-**Always** or **Never**. **Always** sends the receipt when the message is
+**Preferences → Privacy → Answer read-receipt requests** chooses **Ask each
+time**, **Always** or **Never**. **Always** sends the receipt when the message is
 shown, except when it would go to an address other than the one the mail came
 from (its Return-Path), or the message was not addressed to you in To or Cc:
 those still ask, as RFC 8098 requires. **Never** sends none and shows no
@@ -1901,7 +1700,7 @@ Sent, as the `multipart/report` RFC 8098 describes: a sentence for the
 person, and a report their mail app reads.
 
 To ask for a receipt on a message you write, tick **Request a read receipt**
-in the menu beside **Send**. **Settings → Composing → Request read receipts**
+in the menu beside **Send**. **Preferences → Messages → Composing → Advanced → Request read receipts**
 ticks it for every new message. Many mail apps send none, or only when the
 person agrees.
 
@@ -1913,7 +1712,7 @@ when it reads the copy in Sent, so mail sent from another app shows the marks
 once its Sent copy has been opened or fetched ahead.
 
 A receipt that comes back is a message of its own. Once Tegami Mail has read it, it
-is marked read and moved out of the Inbox: **Settings → Composing → Returned
+is marked read and moved out of the Inbox: **Preferences → Messages → Composing → Advanced → Returned
 receipts** chooses **Move to Trash**, **Archive** or **Keep in Inbox**. A
 receipt that is open in the reader is left where it is. Who read what is kept
 on this computer, in `read_by.toml`, so another computer shows the marks only
@@ -1921,8 +1720,8 @@ for the receipts it reads itself. A receipt that says the message was deleted
 unread does not turn the marks green, and stays in the Inbox.
 
 A receipt that comes back also posts a desktop notification, "Read by" the
-person, with the message's subject; clicking it opens the message. **Settings →
-General → Read receipts** turns it off. With **Show sender and subject** off it
+person, with the message's subject; clicking it opens the message. **Preferences →
+Notifications → Read receipts** turns it off. With **Show sender and subject** off it
 says only that a receipt came back, and receipts more than a day old, read for
 the first time, post nothing.
 
@@ -1930,14 +1729,13 @@ the first time, post nothing.
 
 Messages and attachments that have been opened, or fetched ahead for the
 newest mail in each folder, are kept on the computer so they open at once and
-offline. **Settings → System → Storage** shows what they take up.
-**Remove…** clears them all; **Keep downloaded mail** (Always, a year, 90 days
-or 30 days) removes older ones a couple of minutes after Tegami Mail starts and
+offline. **Keep downloaded mail**, in Preferences → Application (Always, a
+year, 90 days or 30 days), removes older ones a couple of minutes after Tegami Mail starts and
 every six hours after. Either way the list of every message stays, so the
 message list and search are unchanged, and a removed message is fetched again
 when it is opened. Nothing on the server changes.
 
-**Keep mail cached**, in an account's Syncing settings, downloads every
+**Keep downloaded mail**, in an account's Synchronisation page, downloads every
 message of a period ahead of being opened: the last week, month or year, or all
 mail. It works on IMAP, JMAP, Microsoft 365 and POP3 accounts, including ones
 from GNOME Online Accounts. The default, Newest messages, is the fetch ahead
@@ -1947,11 +1745,9 @@ too; a POP3 account always downloads a message whole, so it has no such
 switch, and with a period chosen it downloads older mail than the newest 200
 its sync lists, back to the period's start. The download runs
 in the background once the account's index is complete, newest first, gives way
-whenever a message is opened, and waits on a metered connection when Settings
-asks to save data there. A server that refuses it, as Gmail does past its daily
-limit, is asked again later, after an hour at most. **Keep downloaded mail**
-does not remove mail inside an account's period, and **Remove…** clears it,
-after which it is downloaded again. Stored as `offline_mail` and
+whenever a message is opened, and waits on a metered connection. A server that refuses it, as Gmail does past its daily
+limit, is asked again later, after an hour at most. The application's **Keep downloaded mail** does not remove mail inside an
+account's period. Stored as `offline_mail` and
 `offline_attachments` in `accounts.toml`.
 
 ### Offline and metered connections
@@ -1966,49 +1762,31 @@ Mail Bridge on `127.0.0.1`, is still reached. A desktop can report no
 network when there is one (a network without a default route); clicking
 Refresh then tries the servers anyway for a minute.
 
-**Settings → General → Save data on metered connections**, on by default,
-holds back the work done ahead of you while the connection is metered:
+While the connection is metered, Tegami Mail holds back the work done ahead
+of you:
 downloading the newest messages and attachments, indexing older mail for
 search, watching folders other than the Inbox, and fetching sender logos and
 Gravatar pictures. New mail still arrives, and whatever you open is
-fetched. It all resumes once the connection is no longer metered. Stored as
-`metered_save_data` in `privacy.toml`.
+fetched. It all resumes once the connection is no longer metered. (A choice
+made in an earlier version to work as usual on a metered connection is
+kept, as `metered_save_data` in `privacy.toml`.)
 
 ### Notifications
 
-A new-mail notification opens the message when clicked. When it is about a
-single message it also carries up to three buttons. **Mark as read**,
-**Archive**, **Delete** (to Trash, with the usual undo in the window) and
-**Mark as spam** act on the message without raising the window; **Reply**
-and **Forward** open the message with the composer started. Settings →
-General → Notification Buttons picks any three of the six (Mark as Read,
-Archive and Delete to begin with); a notification that sums up several new
-messages carries none. Stored as `notification_buttons` in `privacy.toml`.
-
-**Settings → General → Sound for new mail** plays a sound with each new-mail
-notification. It is off until switched on. **Sound** picks one of GNOME's four
-alert sounds (Click, Hum, String and Swing, built into Tegami Mail) or **Custom
-File**, which adds a **Choose…** button for a file of your own (any format
-GStreamer can play, such as WAV, MP3, OGG or FLAC). Picking a sound plays it,
-and so does the play button. A custom file is copied to
-`~/.local/share/tegami/notification-sound/`, so the original can be moved or
-deleted; the choice is stored in `sound.toml`. The desktop's own sound theme
-is not offered: the Flatpak cannot read the host's sounds. Several accounts
-receiving mail at once play the sound once. Like the notification, the sound
-comes only while the window is in the background or closed: GNOME shows no
-notification for the app in front. **Also play while Tegami Mail is in front**
-plays it then as well, without a notification. GNOME's own Alert Sound
-setting has no say over it, None included. In a native install it is not
-played while Do Not Disturb is on; the Flatpak cannot see Do Not Disturb, which the
-desktop does not share with sandboxed apps. The desktop may play a sound of
-its own for the notification as well; GNOME Settings → Notifications → Tegami Mail →
-Sound Alerts turns that one off.
+A new-mail notification opens the message when clicked. **Preferences →
+Notifications** turns notifications on, chooses whether they show the sender
+and subject, and whether a returned read receipt posts one. Sound, banners
+and Do Not Disturb are set in GNOME Settings → Notifications → Tegami Mail,
+which **Open the system notification settings** opens. (Buttons on a
+notification and a sound of Tegami Mail's own, set in an earlier version,
+are no longer offered.)
 
 ### The status bar
 
-Errors, and the console when **Settings → System → Console mode** is on, open
-in a bar at the bottom of the window. **Settings → System → Status bar** puts
-it at the top instead. <kbd>Ctrl+Shift+S</kbd>, or a long press on Refresh,
+Errors, and the console when **Console mode** is on, open in a bar at the
+bottom of the window. **Troubleshooting**, in the main menu, shows or hides
+the bar, puts it at the top instead, turns console mode on, and exports the
+log. <kbd>Ctrl+Shift+S</kbd>, or a long press on Refresh,
 shows or hides it. Its buttons are, from the left, **Export log** (while the
 console is open), the console, and the bar's own toggle. Stored as
 `status_bar_top` in `privacy.toml`.
@@ -2032,25 +1810,23 @@ through the Secret Service. Decrypted OpenPGP messages are never cached at all.
 
 **Remote content**, once allowed for a message, is fetched by Tegami Mail itself, with
 no cookies and no Referer, and kept in `~/.cache/tegami/remote/` for a week, up
-to 2 GB, so a message shown again does not fetch it again. **Settings →
-Privacy → Pre-load remote content for the next messages** fetches it for the next
-three rows in the list, and the one before, while a message is read: only
-for mail whose remote content would load anyway, and not on a metered
-connection when Settings asks to save data there. It is off by default,
-because a sender's tracking pixel then reports a message as opened before you
-open it. Stored as `remote_ahead` in `privacy.toml`.
+to 2 GB, so a message shown again does not fetch it again. Pre-loading
+it for the next rows of the list, a setting of earlier versions, is no
+longer offered; a choice made then is kept, as `remote_ahead` in
+`privacy.toml`.
 
 **Read receipts** are sent only when you press **Send receipt**, unless
-**Settings → Privacy → Send read receipts** is **Always**. See
+**Preferences → Privacy → Answer read-receipt requests** is **Always**. See
 [Read receipts](#read-receipts).
 
-**Grammar checking** is off until switched on in Settings → Composing.
+**Grammar checking** is off until switched on in Preferences → Messages → Composing → Advanced.
 Harper and LanguageTool, once downloaded there, check on this computer and
 send nothing. With a LanguageTool server chosen instead, what you write in
 the composer goes to that server as you type, without the quote or the
 signature. See [Grammar checking](#grammar-checking).
 
-**Translation** is off until a service is chosen in Settings → Translation.
+**Translation** is off until a service is chosen in Preferences → Accounts →
+Translation.
 After that, a message's text goes to that service only when you press
 Translate on it, and encrypted messages never do. See
 [Translating messages](#translating-messages).
