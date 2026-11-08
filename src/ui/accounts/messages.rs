@@ -15,8 +15,6 @@ pub(crate) enum AccountsInput {
         email: String,
         sort: Option<crate::config::FolderSort>,
     },
-    /// The editor's "Use my Gravatar" switch moved (#189).
-    SetOwnGravatar(bool),
     /// The "Server saves its own copy of sent mail" switch: with it on there is
     /// no copy of Tegami Mail's to file, so the folder row above has nothing to say.
     SetServerSavesSent(bool),
@@ -26,6 +24,10 @@ pub(crate) enum AccountsInput {
     /// Showcase only (TEGAMI_SHOWCASE_ACCOUNT=new:<label>): pick the provider
     /// with that label in the open editor.
     DebugProvider(String),
+    /// Showcase only (TEGAMI_SHOWCASE_ACCOUNT_SUB): open that sub-page of
+    /// the open account page, by its position in the list of them
+    /// ("servers", "sync", "folders", "aliases", "signatures", "openpgp").
+    DebugSubpage(String),
     /// The settings sidebar chose one of this component's pages (#141):
     /// "accounts", "tags", "filters" or "senders".
     ShowPage(String),
@@ -47,6 +49,14 @@ pub(crate) enum AccountsInput {
     AddLocal,
     /// Pick a Maildir tree, or with `true` mbox files, to import into it.
     ImportLocal(bool),
+    /// "Import from Thunderbird or Evolution…" in the Add account menu
+    /// (screen 27): ask which kind of folders, then pick them.
+    PickImport,
+    /// "GNOME Online Account…" in the Add account menu: the accounts GNOME
+    /// has that are not here yet, on a page of their own.
+    ShowGoa,
+    /// "Add account…" on the Accounts page: its menu (screen 27).
+    AddMenu,
     EditAccount(usize),
     /// Open the editor for the account with this address (the sidebar's
     /// "Account Settings…"), leaving another account's editor if one is up.
@@ -74,22 +84,8 @@ pub(crate) enum AccountsInput {
     OAuthSignIn,
     /// The "Search the organization directory" switch moved (#410).
     SetGraphDirectory(bool),
-    /// The "Show sensitivity label names" switch moved (#411).
-    SetGraphLabels(bool),
     /// Open GNOME Settings → Online Accounts (the Google path).
     OpenOnlineAccounts,
-    SetEmoji(String),
-    /// Choose an avatar picture from disk (#162).
-    PickAvatar,
-    /// A picture was imported under this file name.
-    SetAvatar(String),
-    /// Clear what the circle shows in the current mode: the emoji, or
-    /// the picture.
-    ClearGlyph,
-    /// The "Circle shows" toggle: picture (true) or initials/emoji.
-    SetPictureMode(bool),
-    /// Redraw the preview circle from the editor's current values.
-    RefreshPreview,
     TestConnection,
     Save,
     /// Second phase of Save, once the signature HTML has been read from the editor.
@@ -240,6 +236,16 @@ pub(crate) enum AccountsOutput {
     /// filters or tags) or closed (`None`) — the combined settings window
     /// hides its shared header while one is open.
     EditorOpen(Option<&'static str>),
+    /// Open a page of the preferences dialog over the one shown ("Manage
+    /// keys" on the account's OpenPGP page opens "openpgp").
+    OpenSettingsPage(&'static str),
+    /// How many tags, filters and smart folders there are, for the rows
+    /// that open their pages (screen 26).
+    Counts {
+        tags: usize,
+        filters: usize,
+        smart: usize,
+    },
     /// Mail-hygiene changes, routed to the same app handlers Settings used.
     AddSender(String),
     RemoveSender(String),
@@ -273,8 +279,6 @@ pub(crate) enum AccountsCmd {
     /// The sign-in that asked for the directory's scopes (#410) finished,
     /// as [`AccountsCmd::OAuth`].
     DirectoryConsent(SignInResult),
-    /// The one that asked for the label scope (#411).
-    LabelsConsent(SignInResult),
     /// Alias SMTP test result (#34).
     AliasTested(Result<(), String>),
     /// GNOME Online Accounts read again: its mail accounts, for the import
@@ -282,11 +286,6 @@ pub(crate) enum AccountsCmd {
     GoaListed(Vec<crate::services::goa::GoaMailAccount>),
     /// An account's secrets, read from the keyring for its editor.
     Secrets(u64, AccountSecrets),
-    /// The Gravatar looked up for the address in the editor (#189).
-    OwnGravatar {
-        email: String,
-        outcome: crate::services::avatar::FetchOutcome,
-    },
 }
 
 /// Everything the Accounts panel needs at launch: the accounts themselves

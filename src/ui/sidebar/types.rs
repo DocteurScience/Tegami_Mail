@@ -115,10 +115,6 @@ pub(crate) struct SectionData {
     pub(crate) custom_expanded: bool,
     /// Resolved avatar background color ("#rrggbb").
     pub(crate) color: String,
-    /// Avatar emoji; when absent, account-name initials are shown.
-    pub(crate) emoji: Option<String>,
-    /// Avatar picture (#162), shown before the emoji and the initials.
-    pub(crate) avatar: Option<std::path::PathBuf>,
     /// Custom-folder paths whose tree node is collapsed (#51).
     pub(crate) tree_collapsed: Vec<String>,
     /// The user's own folder order (paths): a folder sorts among its

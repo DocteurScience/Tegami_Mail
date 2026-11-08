@@ -65,7 +65,6 @@ struct JmapWorker<E> {
     cache: Option<Cache>,
     state: JmapState,
     last_auto_empty: Option<std::time::Instant>,
-    last_list_clean: Option<std::time::Instant>,
     /// The push thread's wake-ups: one `()` per change the server announced.
     push_tx: mpsc::UnboundedSender<()>,
     push_rx: mpsc::UnboundedReceiver<()>,
@@ -127,7 +126,6 @@ impl<E: Fn(WorkerEvent)> JmapWorker<E> {
             cache,
             state,
             last_auto_empty: None,
-            last_list_clean: None,
             push_tx,
             push_rx,
             push_enabled,

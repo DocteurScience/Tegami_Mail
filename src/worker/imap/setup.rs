@@ -79,7 +79,6 @@ impl<E: Emit> ImapWorker<E> {
             idle_folder: None,
             last_unread_sweep: None,
             last_auto_empty: None,
-            last_list_clean: None,
             inbox_watch_spawned: !push_enabled,
             watchers: HashMap::new(),
             sweep_baseline: HashMap::new(),

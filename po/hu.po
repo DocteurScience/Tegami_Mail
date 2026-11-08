@@ -1405,6 +1405,9 @@ msgid "View all {n} unread in Inboxes…"
 msgstr ""
 "Az összes {n} olvasatlan üzenet megtekintése a Beérkező levelek mappában…"
 
+#. ---- Accounts (screen 26): the accounts themselves, listed by
+#. the accounts panel, then the rows to what organizes mail and to
+#. the services.
 msgid "Accounts"
 msgstr "Fiókok"
 
@@ -2157,17 +2160,12 @@ msgstr "Ez az üzenet nem tartalmaz megnyitható naptárfájlt."
 msgid "Use this account in Tegami Mail"
 msgstr "Fiók használata a Tegami Mail-ben"
 
-msgid "GOA"
-msgstr "GOA"
+#, fuzzy
+msgid "Mail saved in local folders"
+msgstr "Minden mappa"
 
-msgid "Tegami Mail"
-msgstr "Tegami Mail"
-
-msgid "Imported GNOME Online Account"
-msgstr "Importált GNOME Internetes Fiók"
-
-msgid "Added directly in Tegami Mail"
-msgstr "Közvetlenül a Tegami Mail-ben hozzáadva"
+msgid "GNOME Online Accounts"
+msgstr "GNOME Internetes Fiókok"
 
 msgid "Paused: Mail is switched off for this account in GNOME Settings"
 msgstr ""
@@ -2227,6 +2225,10 @@ msgstr "Álnév (alias) eltávolítása"
 
 msgid "Kept on the server; change it in your provider's webmail."
 msgstr ""
+
+#. Last, the way to add one (screen 32).
+msgid "Add alias…"
+msgstr "Álnév (alias) hozzáadása…"
 
 #, fuzzy
 msgid "Edit alias"
@@ -2344,18 +2346,42 @@ msgid ""
 "approve it."
 msgstr ""
 
-msgid "Choose a picture"
-msgstr "Kép választása"
+#, fuzzy
+msgid "New account"
+msgstr "Fiók hozzáadása"
 
-msgid "Images"
-msgstr "Képek"
+#, fuzzy
+msgid ""
+"Paused: Mail is switched off for this account in GNOME Settings → Online "
+"Accounts."
+msgstr "Bejelentkezés a GNOME Internetes Fiókok keresztül."
 
+#, fuzzy
+msgid "Off returns it to the import list. It stays in GNOME Online Accounts."
+msgstr ""
+"Kikapcsolva a fiók visszakerül az importálási listára — a GNOME Internetes "
+"Fiókok között marad."
+
+#, fuzzy
+msgid "The password is kept in the system keyring, never in plain text."
+msgstr ""
+"A jelszava a rendszer kulcstartóján (secret-service) tárolódik, soha sem "
+"egyszerű szövegként a lemezen."
+
+#, fuzzy
 msgid ""
 "The certificate is for another name. If this server is the right one, turn "
-"on “Accept a certificate for another name” above and test again."
+"on “Accept a certificate for another name” under Advanced and test again."
 msgstr ""
 "A tanúsítvány egy másik névre szól. Ha ez a szerver a megfelelő, jelölje be "
 "a fenti „Tanúsítvány elfogadása más névre” opciót, majd próbálja meg újra."
+
+msgid "Connected: receiving and sending work."
+msgstr ""
+
+#, fuzzy
+msgid "The connection failed."
+msgstr "A kapcsolat sikertelen: {e}"
 
 #, fuzzy
 msgid "From address"
@@ -2468,11 +2494,25 @@ msgstr "Kiszolgáló (kiszolgáló név vagy URL)"
 msgid "Port (default 443)"
 msgstr "Végpont (alapértelmezett: 443)"
 
-msgid "Incoming server"
-msgstr "Bejövő kiszolgáló"
+msgid "Server"
+msgstr "Kiszolgáló"
 
-msgid "Port (IMAP 993 / POP3 995)"
-msgstr "Végpont (IMAP 993 / POP3 995)"
+msgid "Port"
+msgstr "Végpont (port)"
+
+#, fuzzy
+msgid "Import mail"
+msgstr "Összes importálása"
+
+msgid "Mail already here is not imported again."
+msgstr ""
+
+#, fuzzy
+msgid "Evolution (Maildir)"
+msgstr "Proton Mail"
+
+msgid "Thunderbird (mbox)"
+msgstr ""
 
 #, fuzzy
 msgid "Import mbox files"
@@ -2481,6 +2521,36 @@ msgstr "Fájl importálása…"
 #, fuzzy
 msgid "Import maildir folders"
 msgstr "Az importálás sikertelen: {e}"
+
+#, fuzzy
+msgid "{n} address"
+msgid_plural "{n} addresses"
+msgstr[0] "Címjegyzék"
+msgstr[1] "Címjegyzék"
+
+#, fuzzy
+msgid "{n} signature"
+msgid_plural "{n} signatures"
+msgstr[0] "Aláírás"
+msgstr[1] "Aláírás"
+
+msgid "Key: {key}"
+msgstr ""
+
+#, fuzzy
+msgid "Local mail on this computer"
+msgstr "Ezen a számítógépen"
+
+msgid "Import from Thunderbird or Evolution…"
+msgstr ""
+
+#, fuzzy
+msgid "E-mail account…"
+msgstr "E-mail fiók"
+
+#, fuzzy
+msgid "GNOME Online Account…"
+msgstr "GNOME Internetes Fiókok"
 
 #, fuzzy
 msgid "Signed in as {address}, not {email}."
@@ -2507,14 +2577,6 @@ msgid "Approve access to the directory in the window that opened."
 msgstr "A bejelentkezés nem tárolható a kulcstartón: {e}"
 
 #, fuzzy
-msgid "Opening browser… approve access to the sensitivity labels there."
-msgstr "Böngésző megnyitása… ott fejezze be a bejelentkezést."
-
-#, fuzzy
-msgid "Approve access to the sensitivity labels in the window that opened."
-msgstr "A bejelentkezés nem tárolható a kulcstartón: {e}"
-
-#, fuzzy
 msgid "✓ Signed in. Save the account to finish."
 msgstr "✓ Bejelentkezve — a befejezéshez mentse a fiókot"
 
@@ -2527,36 +2589,23 @@ msgstr ""
 msgid "Access to the directory was not approved: {e}"
 msgstr ""
 
-msgid "Access to the sensitivity labels approved. Save the account to finish."
-msgstr ""
-
-msgid "Access to the sensitivity labels was not approved: {e}"
-msgstr ""
-
-#, fuzzy
-msgid "Drag to reorder them in the sidebar."
-msgstr "Húzással állítsa be az oldalsávban való megjelenési sorrendet."
-
-#, fuzzy
-msgid "Check GNOME Online Accounts for new accounts"
-msgstr "GNOME Internetes Fiókok"
-
-msgid ""
-"Store mail in folders that live on this computer. Move or copy mail from any "
-"account to here."
-msgstr ""
-
-msgid "Add"
-msgstr "Hozzáadás"
-
-msgid "GNOME Online Accounts"
-msgstr "GNOME Internetes Fiókok"
-
 #, fuzzy
 msgid "Mail accounts from GNOME Settings. Switch one on to use it."
 msgstr ""
 "A GNOME Beállításaiból származó fiókok. Kapcsoljon be egyet a Tegamiben való "
 "használatához."
+
+#, fuzzy
+msgid "Check GNOME Online Accounts for new accounts"
+msgstr "GNOME Internetes Fiókok"
+
+#, fuzzy
+msgid "Accounts added in GNOME Settings → Online Accounts appear here."
+msgstr "Megtalálható a GNOME Online-fiókok között"
+
+#, fuzzy
+msgid "Open Online Accounts"
+msgstr "Internetes Fiókok megnyitása…"
 
 #, fuzzy
 msgid "Smart folders"
@@ -2659,31 +2708,6 @@ msgstr ""
 
 msgid "Enable POP/IMAP access in GMX settings first."
 msgstr "Először engedélyezze a POP/IMAP hozzáférést a GMX beállításaiban."
-
-msgid "Google (Gmail)"
-msgstr "Google (Gmail)"
-
-msgid "Microsoft 365 / Outlook"
-msgstr "Microsoft 365 / Outlook"
-
-msgid "Proton Mail"
-msgstr "Proton Mail"
-
-msgid "Custom OAuth"
-msgstr "Egyedi OAuth"
-
-#, fuzzy
-msgid "Folders on this computer"
-msgstr "Ezen a számítógépen"
-
-msgid "IMAP/POP3 account"
-msgstr "IMAP/POP3 fiók"
-
-msgid "IMAP/POP3 account on {host}"
-msgstr "IMAP/POP3 fiók: {host}"
-
-msgid "Mail account"
-msgstr "E-mail fiók"
 
 msgid "Enter a client ID and sign in before saving"
 msgstr ""
@@ -3534,9 +3558,6 @@ msgstr "Tegami Mail megnyitása"
 msgid "Address book"
 msgstr "Címjegyzék"
 
-msgid "Server"
-msgstr "Kiszolgáló"
-
 msgid "Sign-in"
 msgstr "Bejelentkezés"
 
@@ -3563,9 +3584,6 @@ msgstr "StartTLS"
 
 msgid "TLS (LDAPS)"
 msgstr "TLS (LDAPS)"
-
-msgid "Port"
-msgstr "Végpont (port)"
 
 msgid "Search base, such as dc=example,dc=com"
 msgstr "Keresési alap, például dc=example,dc=com"
@@ -3609,10 +3627,6 @@ msgstr "Megtalálható a GNOME Online-fiókok között"
 
 msgid "Its sign-in and its Contacts switch are in GNOME Settings."
 msgstr ""
-
-#, fuzzy
-msgid "Open Online Accounts"
-msgstr "Internetes Fiókok megnyitása…"
 
 #, fuzzy
 msgid "Add address book"
@@ -3661,9 +3675,15 @@ msgstr "Törli a névjegyet?"
 msgid "Other address books are not touched."
 msgstr ""
 
+msgid "Tegami Mail"
+msgstr "Tegami Mail"
+
 #, fuzzy
 msgid "Set up in Tegami Mail"
 msgstr "Megjelenítés a Tegamiben"
+
+msgid "GOA"
+msgstr "GOA"
 
 #, fuzzy
 msgid "From GNOME Online Accounts"
@@ -5503,6 +5523,9 @@ msgstr "Bejelentkezés"
 msgid "The sign-in window was closed."
 msgstr ""
 
+msgid "Add"
+msgstr "Hozzáadás"
+
 msgid "✓ {email} — added"
 msgstr "✓ {email} — hozzáadva"
 
@@ -6063,6 +6086,10 @@ msgstr "Szűrő hozzáadása…"
 msgid "Run every rule over the mail already in your inboxes"
 msgstr "Futtasson minden szabályt a beérkező levelekben már meglévő leveleken"
 
+#. GNOME Online Accounts owns this account's servers and
+#. credentials; Tegami Mail only mirrors them, and can hide it
+#. locally. Both facts belong together, above the fields they
+#. explain.
 msgid "GNOME Online Account"
 msgstr "GNOME Internetes Fiók"
 
@@ -6070,63 +6097,82 @@ msgid "Show in Tegami Mail"
 msgstr "Megjelenítés a Tegamiben"
 
 #, fuzzy
-msgid "Off returns it to the import list. It stays in GNOME Online Accounts."
-msgstr ""
-"Kikapcsolva a fiók visszakerül az importálási listára — a GNOME Internetes "
-"Fiókok között marad."
+msgid "Managed by GNOME Online Accounts"
+msgstr "Megtalálható a GNOME Online-fiókok között"
 
 #, fuzzy
 msgid ""
-"Managed by GNOME Online Accounts. Its address, servers and password are "
-"changed in Settings → Online Accounts."
+"Its address, servers and password are changed in Settings → Online Accounts."
 msgstr ""
 "Ezt a fiókot a GNOME Internetes Fiókok kezelik.\n"
 "A címe, kiszolgálói és jelszava a Beállítások → Online-fiókok menüben "
 "módosítható."
 
-msgid "Storage"
-msgstr "Tárhely"
-
-msgid "Nickname"
-msgstr ""
-
 msgid "Display name"
 msgstr "Megjelenítési név"
 
-msgid "Incoming protocol"
-msgstr "Bejövő protokoll"
-
-msgid "SMTP Server (optional)"
-msgstr "SMTP kiszolgáló (nem kötelező)"
-
-msgid "SMTP Port (default 587)"
-msgstr "SMTP végpont (alapértelmezett: 587)"
-
-msgid "Username"
-msgstr "Felhasználónév"
-
-#, fuzzy
-msgid "Sign in with an API token"
-msgstr "Bejelentkezés böngészővel"
-
-msgid "For servers, like Fastmail, that take a token instead of a password."
-msgstr ""
-
-msgid "Advanced"
-msgstr ""
-
-msgid "Sign in with another app registration"
+#. The nickname names the account in the sidebar and lists, the
+#. address standing in while there is none (owner, 2026-11-08).
+msgid "Nickname"
 msgstr ""
 
 #, fuzzy
-msgid "Client ID"
-msgstr "OAuth ügyfélazonosító (Client ID)"
+msgid "Account colour"
+msgstr "Fiók kiemelőszíne"
 
-msgid "Tenant (common, organizations, consumers or an ID)"
+msgid "Accent of this account’s badges and outlines."
 msgstr ""
 
-msgid "Redirect URI"
+#, fuzzy
+msgid "Show in combined views"
+msgstr "Beszélgetés megjelenítése"
+
+#, fuzzy
+msgid "Favorites, tags and smart folders from all accounts."
+msgstr "Új mappa létrehozása ehhez a fiókhoz."
+
+msgid "Storage"
+msgstr "Tárhely"
+
+#, fuzzy
+msgid "Servers and connection"
+msgstr "Kapcsolat tesztelése"
+
+#, fuzzy
+msgid "Synchronisation"
+msgstr "Beszélgetés megjelenítése"
+
+msgid "Instant mail, automatic cleanup"
 msgstr ""
+
+msgid "Sent, drafts, trash, archive"
+msgstr ""
+
+msgid "Send-as aliases"
+msgstr "Álnevek és címek (alias)"
+
+#, fuzzy
+msgid "Signatures"
+msgstr "Aláírás"
+
+#, fuzzy
+msgid "OpenPGP encryption"
+msgstr "OpenPGP-kulcsok"
+
+#, fuzzy
+msgid "Remove account"
+msgstr "Fiók eltávolítása…"
+
+msgid "Also removes its saved password. Mail on the server is not touched."
+msgstr ""
+
+#, fuzzy
+msgid "Incoming"
+msgstr "Bejövő kiszolgáló"
+
+#, fuzzy
+msgid "Protocol"
+msgstr "Proton Mail"
 
 msgid "Sign in with browser"
 msgstr "Bejelentkezés böngészővel"
@@ -6144,10 +6190,45 @@ msgstr ""
 "ekkor az ablak tetején, a „GNOME Internetes Fiókok” alatt jelenik meg. Ott "
 "engedélyezze."
 
-msgid "Separate SMTP credentials"
+msgid "Outgoing (SMTP)"
+msgstr ""
+
+#, fuzzy
+msgid "Use other credentials"
 msgstr "Külön SMTP hitelesítő adatok"
 
-msgid "Off uses the credentials above."
+msgid "Off: the incoming credentials are used."
+msgstr ""
+
+msgid "Advanced"
+msgstr ""
+
+#, fuzzy
+msgid "API token, custom OAuth app, certificate for another name"
+msgstr "Tanúsítvány elfogadása másik névhez"
+
+#, fuzzy
+msgid "Sign in with an API token"
+msgstr "Bejelentkezés böngészővel"
+
+msgid "For servers, like Fastmail, that take a token instead of a password."
+msgstr ""
+
+#, fuzzy
+msgid "OAuth client secret (optional)"
+msgstr "OAuth ügyféltitok (Client Secret, nem kötelező)"
+
+#. Microsoft's own sign-in, made with another app registration
+#. (#329): one an organization has approved, say. Empty rows keep
+#. Tegami Mail's.
+#, fuzzy
+msgid "Client ID"
+msgstr "OAuth ügyfélazonosító (Client ID)"
+
+msgid "Tenant (common, organizations, consumers or an ID)"
+msgstr ""
+
+msgid "Redirect URI"
 msgstr ""
 
 msgid "Accept a certificate for another name"
@@ -6158,106 +6239,52 @@ msgid ""
 "differ."
 msgstr ""
 
+#. A Microsoft 365 account's organization directory (#410): its
+#. suggestions, asking for their own access when turned on.
 #, fuzzy
-msgid "Show in combined views"
-msgstr "Beszélgetés megjelenítése"
+msgid "Microsoft 365"
+msgstr "Microsoft 365 / Outlook"
 
-msgid "Favorites, Tags and Smart Folders across accounts."
+#, fuzzy
+msgid "Search the organization directory"
+msgstr "El akarod menteni a könyvtárat?"
+
+msgid "Suggests people from your organization as you type."
+msgstr ""
+
+#, fuzzy
+msgid "Suggest only from this account"
+msgstr "Csak ezt a fiókot mutasd"
+
+msgid "Suggestions come from the directory and this account's mail only."
 msgstr ""
 
 msgid "Test connection"
 msgstr "Kapcsolat tesztelése"
 
-msgid "Appearance"
-msgstr "Megjelenés"
-
-msgid "Account accent color"
-msgstr "Fiók kiemelőszíne"
-
-msgid "Use my Gravatar"
-msgstr "Gravatarom használata"
+#, fuzzy
+msgid "New messages"
+msgstr "Új üzenet"
 
 #, fuzzy
-msgid "Sends gravatar.com a hash of the address."
-msgstr "A gravatar.com-tól lekérdezi az egyes feladók címét"
-
-msgid "Circle shows"
-msgstr "A kör megjelenítése"
-
-msgid "Initials or emoji"
-msgstr "Kezdőbetűk vagy hangulatjelek"
-
-msgid "Picture"
-msgstr "Kép"
-
-msgid "Emoji"
-msgstr "Hangulatjelek"
-
-#, fuzzy
-msgid "Instead of initials."
-msgstr "Használj kezdőbetűket"
-
-msgid "Choose…"
-msgstr "Választás…"
-
-msgid "Use initials"
-msgstr "Használj kezdőbetűket"
-
-msgid "Send-as aliases"
-msgstr "Álnevek és címek (alias)"
-
-msgid "Extra addresses this account can send as."
-msgstr ""
-
-msgid "Add alias…"
-msgstr "Álnév (alias) hozzáadása…"
-
-#, fuzzy
-msgid "Signatures"
-msgstr "Aláírás"
-
-msgid ""
-"With more than one, the composer's signature button allows you to pick "
-"between them."
-msgstr ""
-
-#, fuzzy
-msgid "Add signature"
-msgstr "Aláírás"
-
-msgid "Import file…"
-msgstr "Fájl importálása…"
-
-#, fuzzy
-msgid "Delete signature"
-msgstr "Aláírás importálása"
-
-#, fuzzy
-msgid "Start messages with this signature"
-msgstr "Üzenet indítása a melléklet csatolásával"
-
-msgid "Syncing"
-msgstr "Szinkronizálás"
-
-msgid "Turn off for servers that stall on push connections."
+msgid "Turn off for servers that block push connections."
 msgstr "Kapcsolja ki a push-kapcsolatoknál akadozó kiszolgálók esetén."
 
-msgid "Empty Junk automatically"
-msgstr "Levélszemét automatikus kiürítése"
-
-msgid "Empty Trash automatically"
-msgstr "Kuka automatikus kiürítése"
+#. Auto-empty (#140): mail past the chosen age in Junk / Trash is
+#. deleted for good at each sync.
+#, fuzzy
+msgid "Automatic cleanup"
+msgstr "Automatikus"
 
 #, fuzzy
-msgid "Move list mail to Trash"
-msgstr "Piszkozat áthelyezése a Kukába"
+msgid "Empty Junk"
+msgstr "Levélszemét kiürítése…"
 
-msgid ""
-"Inbox mail with an unsubscribe link older than this gets trashed unless it's "
-"starred."
-msgstr ""
+#, fuzzy
+msgid "Empty Trash"
+msgstr "Kuka kiürítése…"
 
-msgid "Keep mail cached"
+msgid "The general setting is in Application."
 msgstr ""
 
 msgid "Leaves out Trash, Junk and Drafts."
@@ -6279,74 +6306,31 @@ msgid ""
 "computer (except Trash, Junk and Drafts) and stores them in On This Computer."
 msgstr ""
 
-#, fuzzy
-msgid "Import"
-msgstr "Importálás…"
-
-msgid "Mail already here is not imported again."
-msgstr ""
-
-#, fuzzy
-msgid "Maildir folders"
-msgstr "Minden mappa"
-
-msgid "Evolution's On This Computer, Dovecot and other Maildir trees."
-msgstr ""
-
-#, fuzzy
-msgid "Mbox files"
-msgstr "Minden fájl"
-
-#, fuzzy
-msgid "Thunderbird's folders and other mbox files."
-msgstr "A „Szűrők” sor alatt található mappák."
-
-#, fuzzy
-msgid "Microsoft 365"
-msgstr "Microsoft 365 / Outlook"
-
-#, fuzzy
-msgid "Search the organization directory"
-msgstr "El akarod menteni a könyvtárat?"
-
-msgid "Suggests people from your organization as you type."
-msgstr ""
-
-#, fuzzy
-msgid "Suggest only from this account"
-msgstr "Csak ezt a fiókot mutasd"
-
-msgid "Suggestions come from the directory and this account's mail only."
-msgstr ""
-
-msgid "Show sensitivity label names"
-msgstr ""
-
-msgid "Shows a label's name when a message gives only its ID."
-msgstr ""
-
-msgid "Folder order"
-msgstr "Mappák sorrendje"
-
-#, fuzzy
-msgid "Also in the right-click menu of its Folders heading."
-msgstr ""
-"A fiók mappáinak rendezése az oldalsávban. A Mappák fejléc jobb gombos "
-"menüjében is elérhető."
-
 msgid "Special folders"
 msgstr "Speciális mappák"
 
 msgid ""
-"Follows the server's own markings unless you pick a folder. Nothing already "
+"Follows the server’s own markings unless you pick a folder. Nothing already "
 "on the server moves."
 msgstr ""
 
-msgid "Save a copy of sent mail in"
-msgstr "Elküldött levelek másolatának mentése ide"
+msgid "Templates, snoozed, reply copies, server copy"
+msgstr ""
 
+#. Nothing on a server marks a Templates folder (#360), nor the one
+#. snoozed mail waits in (#527): found by name, or pointed at here.
+msgid "Templates"
+msgstr ""
+
+msgid "Snoozed"
+msgstr ""
+
+#. Replies beside what they answer (#468), for IMAP and JMAP.
 #, fuzzy
 msgid "Save a copy of replies in"
+msgstr "Elküldött levelek másolatának mentése ide"
+
+msgid "Save a copy of sent mail in"
 msgstr "Elküldött levelek másolatának mentése ide"
 
 msgid "Server saves its own copy of sent mail"
@@ -6358,11 +6342,16 @@ msgstr ""
 "A Gmail és más olyan szolgáltatások esetében, amelyek maguk mentik el a "
 "kiküldött leveleket. Letiltja a fenti „Másolat mentése” opciót."
 
-msgid "Templates"
+#. Its own folder order, or the application's.
+msgid "Order"
 msgstr ""
 
-msgid "Snoozed"
-msgstr ""
+msgid "Folder order"
+msgstr "Mappák sorrendje"
+
+#, fuzzy
+msgid "Otherwise, drag them in the sidebar."
+msgstr "Húzással állítsa be az oldalsávban való megjelenési sorrendet."
 
 msgid "Hidden folders"
 msgstr "Rejtett mappák"
@@ -6375,12 +6364,40 @@ msgstr ""
 msgid "No hidden folders."
 msgstr "Nincsenek rejtett mappák."
 
-msgid "Keys are managed under OpenPGP in the sidebar."
+msgid ""
+"Extra addresses this account can send as. They appear in the composer’s From "
+"field."
 msgstr ""
 
-msgid "Automatic uses the key whose address matches."
+#, fuzzy
+msgid "Start new messages with this signature"
+msgstr "Üzenet indítása a melléklet csatolásával"
+
+#, fuzzy
+msgid "Delete signature"
+msgstr "Aláírás importálása"
+
+msgid "With several signatures, the composer offers a button to choose."
+msgstr ""
+
+#, fuzzy
+msgid "Add signature"
+msgstr "Aláírás"
+
+#. A designed signature usually exists as HTML already (#120).
+msgid "Import file…"
+msgstr "Fájl importálása…"
+
+#, fuzzy
+msgid "HTML or text"
+msgstr "HTML- és szövegfájlok"
+
+#, fuzzy
+msgid "Automatic: the key whose address matches."
 msgstr "Az automatikus beállítás a megfelelő címhez tartozó kulcsot használja."
 
+#. For an account whose mail is always signed (#267): the composer's
+#. toggle starts on, and still turns it off for one message.
 msgid "Sign messages by default"
 msgstr "Üzenetek aláírása alapértelmezetten"
 
@@ -6388,14 +6405,16 @@ msgstr "Üzenetek aláírása alapértelmezetten"
 msgid "Hide the subject of encrypted mail"
 msgstr "A tárgy elrejtése"
 
-msgid "Only the recipients see the subject. Others see \"...\"."
+msgid "Only the recipients see the subject."
 msgstr ""
 
 #, fuzzy
-msgid "Your password is kept in the system keyring, never in plain text."
-msgstr ""
-"A jelszava a rendszer kulcstartóján (secret-service) tárolódik, soha sem "
-"egyszerű szövegként a lemezen."
+msgid "Manage keys"
+msgstr "Címkék keresése…"
+
+#, fuzzy
+msgid "Import, generate, trust."
+msgstr "Aláírás importálása"
 
 msgid "Search senders"
 msgstr "Feladók keresése"
@@ -6455,6 +6474,10 @@ msgid "Backup and restore"
 msgstr ""
 
 #, fuzzy
+msgid "Drag an account to change its order in the sidebar."
+msgstr "Húzással állítsa be az oldalsávban való megjelenési sorrendet."
+
+#, fuzzy
 msgid "Organize mail"
 msgstr "Proton Mail"
 
@@ -6485,13 +6508,8 @@ msgstr "Levélírás a főablakban"
 msgid "How long a message can still be recalled."
 msgstr ""
 
-#. ---- Notifications (screen 23).
 msgid "Notifications"
 msgstr "Értesítések"
-
-#, fuzzy
-msgid "New messages"
-msgstr "Új üzenet"
 
 msgid "Sound and banners"
 msgstr ""
@@ -6505,10 +6523,12 @@ msgstr ""
 msgid "Privacy"
 msgstr "Adatvédelem"
 
-#. ---- Application (screen 25).
 #, fuzzy
 msgid "Application"
 msgstr "Műveletek"
+
+msgid "Appearance"
+msgstr "Megjelenés"
 
 #, fuzzy
 msgid "Background"
@@ -6517,6 +6537,24 @@ msgstr "Háttérben futtatás"
 #, fuzzy
 msgid "Keyboard and storage"
 msgstr "Billentyűparancsok"
+
+#, fuzzy
+msgid "{n} tag"
+msgid_plural "{n} tags"
+msgstr[0] "{n} üzenet"
+msgstr[1] "{n} üzenet"
+
+#, fuzzy
+msgid "{n} filter"
+msgid_plural "{n} filters"
+msgstr[0] "Hangfájl"
+msgstr[1] "Hangfájl"
+
+#, fuzzy
+msgid "{n} smart folder"
+msgid_plural "{n} smart folders"
+msgstr[0] "Mappa hozzáadása"
+msgstr[1] "Mappa hozzáadása"
 
 msgid "Send new messages from"
 msgstr "Új üzenetek küldése a következő helyről:"

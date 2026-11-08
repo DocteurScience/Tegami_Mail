@@ -6,8 +6,8 @@ use super::menus::{attach_folder_context_menu, folder_sort_menu, show_sidebar_me
 use super::tree::{hidden_by_collapse, is_main_row, nests_in_inbox, path_is_under};
 use super::types::chevron_icon;
 use super::widgets::{
-    account_gravatar, build_folder_row, filter_icon, heading_chevron, section_heading,
-    with_unread_overlay, wrap_row_in_revealer, ROW_LEFT_INSET,
+    build_folder_row, filter_icon, heading_chevron, section_heading, with_unread_overlay,
+    wrap_row_in_revealer, ROW_LEFT_INSET,
 };
 use super::*;
 
@@ -665,34 +665,17 @@ fn account_circle(section: &SectionData, name_str: &str) -> gtk::Box {
     circle.set_halign(gtk::Align::Center);
     circle.set_hexpand(false);
     circle.set_size_request(30, 30);
-    // Drawn ink-centred (see `ui::initials`), not a label: a lone
-    // letter or an emoji sits exactly in the middle of the disc.
-    // The account's own Gravatar leads when it asked for one and the
-    // address has one (#189); the picture and the emoji are what it
-    // falls back to.
-    let gravatar = account_gravatar(&section.account.email);
-    let glyph: gtk::Widget = match (&gravatar, &section.avatar, &section.emoji) {
-        (Some(texture), ..) => {
-            circle.set_overflow(gtk::Overflow::Hidden);
-            crate::ui::initials::picture_from_texture(texture, 30).upcast()
-        }
-        (None, Some(path), _) => {
-            // A picture fills the disc; the disc's rounded corners
-            // clip it into a circle.
-            circle.set_overflow(gtk::Overflow::Hidden);
-            crate::ui::initials::avatar_picture(path, 30).upcast()
-        }
-        (None, None, Some(em)) if !em.is_empty() => {
-            crate::ui::initials::glyph_picture(em, &section.color, 0.55, 30).upcast()
-        }
-        _ => crate::ui::initials::glyph_picture(
-            &account_initials(name_str, &section.account.email),
-            &section.color,
-            0.47,
-            30,
-        )
-        .upcast(),
-    };
+    // Drawn ink-centred (see `ui::initials`), not a label: a pair of
+    // letters sits exactly in the middle of the disc. Always the initials
+    // on the account colour (docs/DESIGN.md, "Preferences": the picture,
+    // emoji and Gravatar choices are gone).
+    let glyph: gtk::Widget = crate::ui::initials::glyph_picture(
+        &account_initials(name_str, &section.account.email),
+        &section.color,
+        0.47,
+        30,
+    )
+    .upcast();
     circle.append(&glyph);
     circle
 }

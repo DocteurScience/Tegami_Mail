@@ -1,7 +1,7 @@
 //! The account editor: opening it, its live preview, its folder and push
 //! rows, and the secrets read from the keyring while it is open.
 
-use super::form::{apply_protocol, form_protocol, read_account, trimmed, SENT_COPY_HINT};
+use super::form::{apply_protocol, form_protocol, read_account, SENT_COPY_HINT};
 use super::providers::{brand_for_account, manual_brand, provider_at, ProviderKind};
 use super::*;
 
@@ -253,13 +253,7 @@ impl AccountsWindow {
         };
         widgets
             .form
-            .push_row
-            .set_visible(matches!(protocol, Protocol::Imap | Protocol::Jmap));
-        // The list-mail search is a server search for a header, which
-        // Microsoft 365 does not offer and POP3 has no folders for.
-        widgets
-            .form
-            .clean_lists_row
+            .push_group
             .set_visible(matches!(protocol, Protocol::Imap | Protocol::Jmap));
         // Every backend keeps a period offline (#536), but a POP3 message
         // only ever comes down whole, attachments and all.
@@ -282,7 +276,6 @@ impl AccountsWindow {
             .graph_group
             .set_visible(protocol == Protocol::Graph);
         widgets.form.graph_directory_row.set_sensitive(!from_goa);
-        widgets.form.graph_labels_row.set_sensitive(!from_goa);
         widgets.form.graph_group.set_description(Some(&if from_goa {
             i18n("Only for an account added in Tegami Mail with Microsoft 365 / Outlook as the provider, not from GNOME Online Accounts.")
         } else {
@@ -367,7 +360,7 @@ impl AccountsWindow {
         widgets.form.pass_row.set_visible(is_password);
         widgets.form.smtp_separate_row.set_visible(is_password);
         widgets.form.tls_mismatch_row.set_visible(is_password);
-        widgets.form.test_btn.set_visible(is_password);
+        widgets.form.test_group.set_visible(is_password);
         if is_oauth {
             widgets.form.smtp_separate_row.set_active(false);
         }
@@ -386,10 +379,14 @@ impl AccountsWindow {
         widgets.form.oauth_auth_url_row.set_visible(is_custom);
         widgets.form.oauth_token_url_row.set_visible(is_custom);
         widgets.form.oauth_scope_row.set_visible(is_custom);
-        widgets
-            .form
-            .ms_advanced
-            .set_visible(p.kind == ProviderKind::Microsoft && !needs_goa);
+        for row in [
+            &widgets.form.ms_client_row,
+            &widgets.form.ms_tenant_row,
+            &widgets.form.ms_scopes_row,
+            &widgets.form.ms_redirect_row,
+        ] {
+            row.set_visible(p.kind == ProviderKind::Microsoft && !needs_goa);
+        }
         if !is_oauth || needs_goa {
             widgets.form.oauth_status.set_visible(false);
         }
@@ -430,35 +427,11 @@ impl AccountsWindow {
         apply_protocol(widgets);
     }
 
-    /// The emoji to save: the editor's, unless the circle is set to show a
-    /// picture.
-    pub(super) fn saved_emoji(&self) -> Option<String> {
-        if self.picture_mode {
-            None
-        } else {
-            self.emoji.clone().filter(|e| !e.is_empty())
-        }
-    }
-
-    /// The picture to save: the editor's, when the circle is set to show
-    /// one.
-    pub(super) fn saved_avatar(&self) -> Option<String> {
-        if self.picture_mode {
-            self.avatar.clone()
-        } else {
-            None
-        }
-    }
-
-    /// Redraw the editor's preview circle and show the rows of the chosen
-    /// mode: the accent color, and the picture, emoji or initials the
-    /// sidebar would show — the initials from the label, else the name,
-    /// else the email, as the sidebar derives them.
     /// Everything an account editor holds, as one comparable string: what
     /// Save would write, less the signature — that lives in a WebView and
     /// answers only asynchronously (`RichEditor::is_dirty` covers it).
     fn editor_fingerprint(&self, widgets: &AccountsWindowWidgets) -> String {
-        let account = read_account(widgets, self.saved_emoji(), self.saved_avatar());
+        let account = read_account(widgets);
         format!(
             "{account:?}|{:?}|{:?}|{:?}|{:?}|{}|{}|{}",
             self.alias_edits,
@@ -482,60 +455,6 @@ impl AccountsWindow {
                 .as_ref()
                 .is_none_or(|seed| *seed != self.editor_fingerprint(widgets))
     }
-
-    pub(super) fn refresh_preview(&self, widgets: &AccountsWindowWidgets) {
-        let color = crate::color::to_hex(&widgets.form.color_btn.rgba());
-        self.preview_css.load_from_string(&format!(
-            ".account-preview-disc {{ background-color: {color}; outline: 3px solid {color}; outline-offset: 2px; }}"
-        ));
-        let disc = &widgets.form.preview_disc;
-        while let Some(child) = disc.first_child() {
-            disc.remove(&child);
-        }
-        let initials = || {
-            let label = trimmed(&widgets.form.label_row);
-            let name = trimmed(&widgets.form.name_row);
-            let email = trimmed(&widgets.form.email_row);
-            let shown = if !label.is_empty() && label != email {
-                label
-            } else if name.is_empty() {
-                email.clone()
-            } else {
-                name
-            };
-            crate::ui::initials::glyph_picture(
-                &crate::ui::sidebar::account_initials(&shown, &email),
-                &color,
-                0.47,
-                72,
-            )
-        };
-        let picture = self
-            .saved_avatar()
-            .and_then(|n| crate::config::avatar_path(&n));
-        let emoji = self.saved_emoji();
-        // The Gravatar this address has, when it was asked for and found
-        // (#189) — the same order the sidebar circle and the cards use.
-        let gravatar = widgets
-            .form
-            .gravatar_row
-            .is_active()
-            .then(|| crate::services::avatar::own_gravatar(&trimmed(&widgets.form.email_row)))
-            .flatten();
-        let glyph: gtk::Widget = match (&gravatar, &picture, &emoji) {
-            (Some(texture), ..) => crate::ui::initials::picture_from_texture(texture, 72).upcast(),
-            (None, Some(path), _) => crate::ui::initials::avatar_picture(path, 72).upcast(),
-            (None, None, Some(em)) => {
-                crate::ui::initials::glyph_picture(em, &color, 0.55, 72).upcast()
-            }
-            _ => initials().upcast(),
-        };
-        disc.append(&glyph);
-        widgets.form.emoji_row.set_visible(!self.picture_mode);
-        widgets.form.picture_row.set_visible(self.picture_mode);
-        widgets.form.emoji_clear_btn.set_visible(emoji.is_some());
-        widgets.form.avatar_clear_btn.set_visible(picture.is_some());
-    }
 }
 
 impl AccountsWindow {
@@ -546,17 +465,11 @@ impl AccountsWindow {
     ) {
         self.editing = None;
         self.new_editor_session();
-        self.emoji = None;
-        self.avatar = None;
-        widgets.form.gravatar_row.set_active(false);
-        self.picture_mode = false;
-        widgets.form.mode_glyph_btn.set_active(true);
         self.label_synced = String::new();
         self.pending_oauth_refresh = None;
         self.directory_granted = false;
         self.directory_on = false;
         self.labels_granted = false;
-        self.labels_on = false;
         self.close_alias_dialog();
         self.alias_edits.clear();
         self.server_identities.clear();
@@ -566,18 +479,19 @@ impl AccountsWindow {
         self.populate_folder_combos(widgets, None);
         set_connection_editable(widgets, true);
         widgets.form.goa_banner.set_visible(false);
-        widgets.form.keyring_note.set_visible(true);
+        show_keyring_note(widgets, true);
         self.apply_provider(widgets);
         self.load_signatures(widgets, Vec::new(), None);
         widgets.form.color_btn.set_rgba(&parse_color(DEFAULT_COLOR));
-        self.refresh_preview(widgets);
-        widgets.remove_btn.set_visible(false);
+        widgets.form.remove_group.set_visible(false);
         // A prior GOA edit may have hidden the provider picker.
         widgets.form.provider_row.set_visible(true);
+        place_provider(widgets, true);
         super::local::show_local_state(widgets, false);
+        self.refresh_links(widgets);
+        widgets.form.editor_page.set_title(&i18n("New account"));
         self.editor_seed = Some(self.editor_fingerprint(widgets));
-        mount_editor(widgets);
-        widgets.nav.push_by_tag("editor");
+        self.push_editor(widgets);
     }
 
     pub(super) fn on_edit_account_by_email(
@@ -589,18 +503,13 @@ impl AccountsWindow {
         let Some(i) = self.accounts.iter().position(|a| a.email == email) else {
             return;
         };
-        let editor_up = widgets
-            .nav
-            .visible_page()
-            .and_then(|p| p.tag())
-            .is_some_and(|tag| tag == "editor");
-        if editor_up {
+        if editor_up(widgets) {
             if self.editing == Some(i) {
                 return;
             }
             // Another account's editor is up: back to the list first,
             // since a page can't be pushed while it is in the stack.
-            widgets.nav.pop();
+            self.pop_editor(widgets);
         }
         sender.input_sender().emit(AccountsInput::EditAccount(i));
     }
@@ -643,12 +552,20 @@ impl AccountsWindow {
         self.label_synced = acc.email.clone();
         let (signatures, default) = acc.signature_set();
         self.load_signatures(widgets, signatures, default);
-        self.fill_face(widgets, &acc);
+        widgets
+            .form
+            .color_btn
+            .set_rgba(&parse_color(acc.color.as_deref().unwrap_or(DEFAULT_COLOR)));
+        place_provider(widgets, false);
         show_goa_state(widgets, &acc);
         super::local::show_local_state(widgets, acc.is_local());
+        self.refresh_links(widgets);
+        widgets
+            .form
+            .editor_page
+            .set_title(&super::account_list::list_title(&acc));
         self.editor_seed = Some(self.editor_fingerprint(widgets));
-        mount_editor(widgets);
-        widgets.nav.push_by_tag("editor");
+        self.push_editor(widgets);
     }
 
     /// The Microsoft directory and label switches, on only when the
@@ -678,26 +595,6 @@ impl AccountsWindow {
                     &crate::services::oauth::MICROSOFT_LABEL_SCOPES,
                 )
             });
-        self.labels_on = acc.graph_label_names && self.labels_granted;
-        widgets.form.graph_labels_row.set_active(self.labels_on);
-    }
-
-    /// The account's face: its color, emoji or picture, and Gravatar.
-    fn fill_face(&mut self, widgets: &AccountsWindowWidgets, acc: &AccountConfig) {
-        widgets
-            .form
-            .color_btn
-            .set_rgba(&parse_color(acc.color.as_deref().unwrap_or(DEFAULT_COLOR)));
-        self.emoji = acc.emoji.clone();
-        self.avatar = acc.avatar.clone();
-        widgets.form.gravatar_row.set_active(acc.gravatar);
-        self.picture_mode = acc.avatar.is_some();
-        if self.picture_mode {
-            widgets.form.mode_picture_btn.set_active(true);
-        } else {
-            widgets.form.mode_glyph_btn.set_active(true);
-        }
-        self.refresh_preview(widgets);
     }
 
     pub(super) fn on_secrets_read(
@@ -712,13 +609,8 @@ impl AccountsWindow {
         }
         self.secrets_reading = false;
         self.editor_secrets = Some(secrets.clone());
-        let editor_up = widgets
-            .nav
-            .visible_page()
-            .and_then(|p| p.tag())
-            .is_some_and(|tag| tag == "editor");
         // Queued, so it runs once the fields below are filled.
-        if std::mem::take(&mut self.save_waiting) && editor_up {
+        if std::mem::take(&mut self.save_waiting) && editor_up(widgets) {
             sender.input_sender().emit(AccountsInput::Save);
         }
         // Still editing that account: fill in what the user hasn't
@@ -765,10 +657,10 @@ fn show_goa_state(widgets: &AccountsWindowWidgets, acc: &AccountConfig) {
     let is_goa = acc.goa_id.is_some();
     set_connection_editable(widgets, !is_goa);
     widgets.form.goa_banner.set_visible(is_goa);
-    widgets.form.keyring_note.set_visible(!is_goa);
+    show_keyring_note(widgets, !is_goa);
     // GOA accounts get the same Remove flow — it removes the account
     // from Tegami Mail only (back to the import list); GNOME keeps it.
-    widgets.remove_btn.set_visible(true);
+    widgets.form.remove_group.set_visible(true);
     // GNOME owns a GOA account's connection outright, so the server
     // and credential section isn't shown at all — only what Tegami Mail
     // owns (name, label, color, signature, aliases) plus the email
@@ -788,7 +680,7 @@ fn show_goa_state(widgets: &AccountsWindowWidgets, acc: &AccountConfig) {
             widgets.form.tls_mismatch_row.upcast_ref(),
             widgets.form.smtp_user_row.upcast_ref(),
             widgets.form.smtp_pass_row.upcast_ref(),
-            widgets.form.test_btn.upcast_ref(),
+            widgets.form.test_group.upcast_ref(),
             widgets.form.oauth_signin_btn.upcast_ref(),
             widgets.form.oauth_status.upcast_ref(),
             widgets.form.goa_hint.upcast_ref(),
@@ -807,12 +699,48 @@ fn show_goa_state(widgets: &AccountsWindowWidgets, acc: &AccountConfig) {
         .form
         .goa_enabled_row
         .set_sensitive(!acc.goa_mail_disabled);
-    widgets.form.goa_enabled_row.set_subtitle(if acc.goa_mail_disabled {
-        "Paused: Mail is switched off for this account in GNOME Settings \u{2192} Online Accounts."
+    widgets
+        .form
+        .goa_enabled_row
+        .set_subtitle(&if acc.goa_mail_disabled {
+            i18n("Paused: Mail is switched off for this account in GNOME Settings \u{2192} Online Accounts.")
+        } else {
+            i18n("Off returns it to the import list. It stays in GNOME Online Accounts.")
+        });
+}
+
+/// The keyring line under Incoming, for an account whose password Tegami
+/// Mail keeps (not one GNOME holds).
+fn show_keyring_note(widgets: &AccountsWindowWidgets, shown: bool) {
+    let note =
+        shown.then(|| i18n("The password is kept in the system keyring, never in plain text."));
+    widgets.form.incoming_group.set_description(note.as_deref());
+}
+
+/// The provider picker: over Incoming while an account is being added, as
+/// what decides the rest of the page; under Advanced once it exists, a
+/// rare change (owner, 2026-11-08).
+fn place_provider(widgets: &AccountsWindowWidgets, adding: bool) {
+    let f = &widgets.form;
+    let row = f.provider_row.upcast_ref::<gtk::Widget>();
+    if row.is_ancestor(&f.advanced_row) {
+        f.advanced_row.remove(row);
+    } else if row.is_ancestor(&f.provider_group) {
+        f.provider_group.remove(row);
+    }
+    if adding {
+        f.provider_group.add(row);
     } else {
-        "Switching this off returns the account to the import list — it \
-         stays in GNOME Online Accounts."
-    });
+        f.advanced_row.add_row(row);
+    }
+    // Its mark goes with it: an account that exists is known by its page
+    // (screen 29 has no mark).
+    f.provider_group.set_visible(adding);
+}
+
+/// Whether the account editor is on screen, or one of its sub-pages.
+pub(super) fn editor_up(widgets: &AccountsWindowWidgets) -> bool {
+    widgets.form.editor_page.parent().is_some()
 }
 
 #[cfg(test)]

@@ -1344,6 +1344,9 @@ msgstr "Tegami Mail öffnen"
 msgid "View all {n} unread in Inboxes…"
 msgstr "Alle {n} ungelesenen Nachrichten im Posteingang anzeigen…"
 
+#. ---- Accounts (screen 26): the accounts themselves, listed by
+#. the accounts panel, then the rows to what organizes mail and to
+#. the services.
 msgid "Accounts"
 msgstr "Konten"
 
@@ -2091,17 +2094,12 @@ msgstr "Zu lang für die Übersetzung"
 msgid "Use this account in Tegami Mail"
 msgstr "Verwende dieses Konto in Tegami Mail"
 
-msgid "GOA"
-msgstr "GOA"
+#, fuzzy
+msgid "Mail saved in local folders"
+msgstr "Alle Ordner"
 
-msgid "Tegami Mail"
-msgstr "Tegami Mail"
-
-msgid "Imported GNOME Online Account"
-msgstr "Importiertes GNOME Online Konto"
-
-msgid "Added directly in Tegami Mail"
-msgstr "Direkt hinzugefügt in Tegami Mail"
+msgid "GNOME Online Accounts"
+msgstr "GNOME Online Accounts"
 
 msgid "Paused: Mail is switched off for this account in GNOME Settings"
 msgstr ""
@@ -2159,6 +2157,10 @@ msgid "Kept on the server; change it in your provider's webmail."
 msgstr ""
 "Wird auf dem Server aufbewahrt; Änderung über die Webmail-Oberfläche des "
 "Anbieters."
+
+#. Last, the way to add one (screen 32).
+msgid "Add alias…"
+msgstr "Alias hinzufügen…"
 
 msgid "Edit alias"
 msgstr "Alias bearbeiten"
@@ -2273,19 +2275,43 @@ msgstr ""
 "Fordert Zugriff bei Microsoft an. In einigen Organisationen ist hierfür die "
 "Genehmigung eines Administratiors erforderlich."
 
-msgid "Choose a picture"
-msgstr "Bild auswählen"
+#, fuzzy
+msgid "New account"
+msgstr "Konto hinzufügen"
 
-msgid "Images"
-msgstr "Bilder"
+#, fuzzy
+msgid ""
+"Paused: Mail is switched off for this account in GNOME Settings → Online "
+"Accounts."
+msgstr ""
+"Pausiert: E-Mail ist für dieses Konto in den GNOME-Einstellungen deaktiviert"
 
+msgid "Off returns it to the import list. It stays in GNOME Online Accounts."
+msgstr ""
+"Beim Deaktivieren wird das Konto wieder in die Importliste verschoben – es "
+"verbleibt in GNOME-Online-Konten."
+
+#, fuzzy
+msgid "The password is kept in the system keyring, never in plain text."
+msgstr ""
+"Ihr Passwort wird im System-Schlüsselbund gespeichert, niemals im Klartext "
+"auf der Festplatte."
+
+#, fuzzy
 msgid ""
 "The certificate is for another name. If this server is the right one, turn "
-"on “Accept a certificate for another name” above and test again."
+"on “Accept a certificate for another name” under Advanced and test again."
 msgstr ""
 "Das Zertifikat wurde für einen abweichenden Namen ausgestellt. Handelt es "
 "sich um den richtigen Server, oben „Zertifikat für abweichenden Namen "
 "akzeptieren“ aktivieren und erneut testen."
+
+msgid "Connected: receiving and sending work."
+msgstr ""
+
+#, fuzzy
+msgid "The connection failed."
+msgstr "Verbindung fehlgeschlagen: {e}"
 
 msgid "From address"
 msgstr "E-Mail-Adresse des Absenders"
@@ -2392,11 +2418,25 @@ msgstr "Server (Hostname oder URL)"
 msgid "Port (default 443)"
 msgstr "Port (Standard 443)"
 
-msgid "Incoming server"
-msgstr "Posteingangsserver"
+msgid "Server"
+msgstr "Server"
 
-msgid "Port (IMAP 993 / POP3 995)"
-msgstr "Port (IMAP 993 / POP3 995)"
+msgid "Port"
+msgstr "Port"
+
+#, fuzzy
+msgid "Import mail"
+msgstr "Alle importieren"
+
+msgid "Mail already here is not imported again."
+msgstr ""
+
+#, fuzzy
+msgid "Evolution (Maildir)"
+msgstr "Evolution"
+
+msgid "Thunderbird (mbox)"
+msgstr ""
 
 #, fuzzy
 msgid "Import mbox files"
@@ -2405,6 +2445,36 @@ msgstr "Datei importieren…"
 #, fuzzy
 msgid "Import maildir folders"
 msgstr "Import fehlgeschlagen: {e}"
+
+#, fuzzy
+msgid "{n} address"
+msgid_plural "{n} addresses"
+msgstr[0] "{n} Adressbuch"
+msgstr[1] "{n} Adressbücher"
+
+#, fuzzy
+msgid "{n} signature"
+msgid_plural "{n} signatures"
+msgstr[0] "Keine Signatur"
+msgstr[1] "Keine Signatur"
+
+msgid "Key: {key}"
+msgstr ""
+
+#, fuzzy
+msgid "Local mail on this computer"
+msgstr "Auf diesem Computer"
+
+msgid "Import from Thunderbird or Evolution…"
+msgstr ""
+
+#, fuzzy
+msgid "E-mail account…"
+msgstr "E-Mail-Konto"
+
+#, fuzzy
+msgid "GNOME Online Account…"
+msgstr "GNOME Online Accounts"
 
 msgid "Signed in as {address}, not {email}."
 msgstr "Angemeldet als {address}, nicht als {email}."
@@ -2425,15 +2495,6 @@ msgstr "Browser wird geöffnet… Zugriff auf das Verzeichnis dort bestätigen."
 msgid "Approve access to the directory in the window that opened."
 msgstr "Zugriff auf das Verzeichnis im geöffneten Fenster bestätigen."
 
-msgid "Opening browser… approve access to the sensitivity labels there."
-msgstr ""
-"Browser wird geöffnet… Zugriff auf Vertraulichkeitsbezeichnungen dort "
-"bestätigen."
-
-msgid "Approve access to the sensitivity labels in the window that opened."
-msgstr ""
-"Zugriff auf Vertraulichkeitsbezeichnungen im geöffneten Fenster bestätigen."
-
 msgid "✓ Signed in. Save the account to finish."
 msgstr "✓ Angemeldet – Konto speichern zum Abschließen"
 
@@ -2447,33 +2508,18 @@ msgstr ""
 msgid "Access to the directory was not approved: {e}"
 msgstr "Zugriff auf das Verzeichnis nicht genehmigt: {e}"
 
-msgid "Access to the sensitivity labels approved. Save the account to finish."
-msgstr ""
-"Zugriff auf Vertraulichkeitsbezeichnungen genehmigt. Konto zum Abschließen "
-"speichern."
-
-msgid "Access to the sensitivity labels was not approved: {e}"
-msgstr "Zugriff auf Vertraulichkeitsbezeichnungen nicht genehmigt: {e}"
-
-msgid "Drag to reorder them in the sidebar."
-msgstr "Ziehen, um die Reihenfolge in der Seitenleiste festzulegen."
+msgid "Mail accounts from GNOME Settings. Switch one on to use it."
+msgstr "E-Mail-Konten aus GNOME-Einstellungen. Zum Verwenden aktivieren."
 
 msgid "Check GNOME Online Accounts for new accounts"
 msgstr "GNOME Online Accounts auf neue Konten prüfen"
 
-msgid ""
-"Store mail in folders that live on this computer. Move or copy mail from any "
-"account to here."
-msgstr ""
+#, fuzzy
+msgid "Accounts added in GNOME Settings → Online Accounts appear here."
+msgstr "In GNOME Online-Konten hinzugefügt"
 
-msgid "Add"
-msgstr "Hinzufügen"
-
-msgid "GNOME Online Accounts"
-msgstr "GNOME Online Accounts"
-
-msgid "Mail accounts from GNOME Settings. Switch one on to use it."
-msgstr "E-Mail-Konten aus GNOME-Einstellungen. Zum Verwenden aktivieren."
+msgid "Open Online Accounts"
+msgstr "Online-Konten öffnen"
 
 msgid "Smart folders"
 msgstr "Smart Folders"
@@ -2570,31 +2616,6 @@ msgstr "Stalwart-Serveradresse angeben. Keine SMTP Einstellunge erforderlich."
 msgid "Enable POP/IMAP access in GMX settings first."
 msgstr ""
 "Aktivierung des POP/IMAP-Zugriff in den GMX-Einstellungen ist erforderlich."
-
-msgid "Google (Gmail)"
-msgstr "Google (Gmail)"
-
-msgid "Microsoft 365 / Outlook"
-msgstr "Microsoft 365 / Outlook"
-
-msgid "Proton Mail"
-msgstr "Proton Mail"
-
-msgid "Custom OAuth"
-msgstr "Benutzerdefiniertes OAuth"
-
-#, fuzzy
-msgid "Folders on this computer"
-msgstr "Tegami Mail, auf diesem Computer"
-
-msgid "IMAP/POP3 account"
-msgstr "IMAP/POP3-Konto"
-
-msgid "IMAP/POP3 account on {host}"
-msgstr "IMAP / POP3-Konto auf {host}"
-
-msgid "Mail account"
-msgstr "E-Mail-Konto"
 
 msgid "Enter a client ID and sign in before saving"
 msgstr "Client-ID eingeben und vor dem Speichern anmelden"
@@ -3422,9 +3443,6 @@ msgstr "In Tegami Mail verwenden"
 msgid "Address book"
 msgstr "Adressbuch"
 
-msgid "Server"
-msgstr "Server"
-
 msgid "Sign-in"
 msgstr "Anmelden"
 
@@ -3451,9 +3469,6 @@ msgstr "StartTLS"
 
 msgid "TLS (LDAPS)"
 msgstr "TLS (LDAPS)"
-
-msgid "Port"
-msgstr "Port"
 
 msgid "Search base, such as dc=example,dc=com"
 msgstr "Suchbasis, z. B. dc=example,dc=com"
@@ -3495,9 +3510,6 @@ msgid "Its sign-in and its Contacts switch are in GNOME Settings."
 msgstr ""
 "Die Anmeldung des Kontos sowie dessen Kontaktsynchronisierung werden in den "
 "GNOME-Einstellungen geändert."
-
-msgid "Open Online Accounts"
-msgstr "Online-Konten öffnen"
 
 msgid "Add address book"
 msgstr "Adressbuch hinzufügen"
@@ -3543,8 +3555,14 @@ msgstr "Alle Kontakte löschen"
 msgid "Other address books are not touched."
 msgstr "Die Adressbücher von GNOME Kontakte bleiben unverändert."
 
+msgid "Tegami Mail"
+msgstr "Tegami Mail"
+
 msgid "Set up in Tegami Mail"
 msgstr "In Tegami Mail einrichten"
+
+msgid "GOA"
+msgstr "GOA"
 
 msgid "From GNOME Online Accounts"
 msgstr "Aus GNOME Online-Konten"
@@ -5323,6 +5341,9 @@ msgstr "Anmelden"
 msgid "The sign-in window was closed."
 msgstr "Anmeldefenster wurde geschlossen"
 
+msgid "Add"
+msgstr "Hinzufügen"
+
 msgid "✓ {email} — added"
 msgstr "✓ {email} - hinzugefügt"
 
@@ -5885,67 +5906,91 @@ msgstr "Filter hinzufügen…"
 msgid "Run every rule over the mail already in your inboxes"
 msgstr "Alle Regeln auf vorhandene Nachrichten in den Posteingängen anwenden"
 
+#. GNOME Online Accounts owns this account's servers and
+#. credentials; Tegami Mail only mirrors them, and can hide it
+#. locally. Both facts belong together, above the fields they
+#. explain.
 msgid "GNOME Online Account"
 msgstr "GNOME Online-Konto"
 
 msgid "Show in Tegami Mail"
 msgstr "In Tegami Mail anzeigen"
 
-msgid "Off returns it to the import list. It stays in GNOME Online Accounts."
-msgstr ""
-"Beim Deaktivieren wird das Konto wieder in die Importliste verschoben – es "
-"verbleibt in GNOME-Online-Konten."
+#, fuzzy
+msgid "Managed by GNOME Online Accounts"
+msgstr "In GNOME Online-Konten hinzugefügt"
 
+#, fuzzy
 msgid ""
-"Managed by GNOME Online Accounts. Its address, servers and password are "
-"changed in Settings → Online Accounts."
+"Its address, servers and password are changed in Settings → Online Accounts."
 msgstr ""
 "Konto wird von GNOME Online Accounts verwaltet. Adresse, Server und Passwort "
 "werden in Einstellungen → Online-Konten geändert."
 
-msgid "Storage"
-msgstr "Speicher"
-
-msgid "Nickname"
-msgstr "Spitzname"
-
 msgid "Display name"
 msgstr "Anzeigename"
 
-msgid "Incoming protocol"
-msgstr "Eingangsprotokoll"
+#. The nickname names the account in the sidebar and lists, the
+#. address standing in while there is none (owner, 2026-11-08).
+msgid "Nickname"
+msgstr "Spitzname"
 
-msgid "SMTP Server (optional)"
-msgstr "SMTP-Server (optional)"
+#, fuzzy
+msgid "Account colour"
+msgstr "Akzentfarbe des Kontos"
 
-msgid "SMTP Port (default 587)"
-msgstr "SMTP-Port (Standard 587)"
-
-msgid "Username"
-msgstr "Benutzername"
-
-msgid "Sign in with an API token"
-msgstr "Anmeldung mit API token"
-
-msgid "For servers, like Fastmail, that take a token instead of a password."
+msgid "Accent of this account’s badges and outlines."
 msgstr ""
-"Für Server, die anstelle eines Passworts ein Token verwenden (z. B. "
-"Fastmail)."
 
-msgid "Advanced"
-msgstr "Erweitert"
+#, fuzzy
+msgid "Show in combined views"
+msgstr "Spaltentitel anzeigen"
 
-msgid "Sign in with another app registration"
-msgstr "Mit anderer App-Registrierung anmelden"
+#, fuzzy
+msgid "Favorites, tags and smart folders from all accounts."
+msgstr "Neuen Ordner für dieses Konto erstellen."
 
-msgid "Client ID"
-msgstr "OAuth-Client-ID"
+msgid "Storage"
+msgstr "Speicher"
 
-msgid "Tenant (common, organizations, consumers or an ID)"
-msgstr "Tenant (common, organizations, consumers oder eine ID)"
+#, fuzzy
+msgid "Servers and connection"
+msgstr "Verbindung testen"
 
-msgid "Redirect URI"
-msgstr "Weiterleitungs URI"
+#, fuzzy
+msgid "Synchronisation"
+msgstr "Übersetzung anzeigen"
+
+msgid "Instant mail, automatic cleanup"
+msgstr ""
+
+msgid "Sent, drafts, trash, archive"
+msgstr ""
+
+msgid "Send-as aliases"
+msgstr "Absender-Aliasse"
+
+msgid "Signatures"
+msgstr "Signaturen"
+
+#, fuzzy
+msgid "OpenPGP encryption"
+msgstr "OpenPGP-Schlüssel"
+
+#, fuzzy
+msgid "Remove account"
+msgstr "Konto entfernen…"
+
+msgid "Also removes its saved password. Mail on the server is not touched."
+msgstr ""
+
+#, fuzzy
+msgid "Incoming"
+msgstr "Posteingangsserver"
+
+#, fuzzy
+msgid "Protocol"
+msgstr "Proton Mail"
 
 msgid "Sign in with browser"
 msgstr "Im Browser anmelden"
@@ -5959,11 +6004,47 @@ msgstr ""
 "Nach der Anmeldung dort dieses Fenster erneut öffnen und das Konto unter "
 "„GNOME Online-Konten“ aktivieren."
 
-msgid "Separate SMTP credentials"
-msgstr "Separate SMTP-Zugangsdaten"
+msgid "Outgoing (SMTP)"
+msgstr ""
 
-msgid "Off uses the credentials above."
+#, fuzzy
+msgid "Use other credentials"
 msgstr "Bei Deaktivierung werden die obigen Anmeldedaten genutzt."
+
+#, fuzzy
+msgid "Off: the incoming credentials are used."
+msgstr "Bei Deaktivierung werden die obigen Anmeldedaten genutzt."
+
+msgid "Advanced"
+msgstr "Erweitert"
+
+#, fuzzy
+msgid "API token, custom OAuth app, certificate for another name"
+msgstr "Zertifikat für abweichenden Namen akzeptieren"
+
+msgid "Sign in with an API token"
+msgstr "Anmeldung mit API token"
+
+msgid "For servers, like Fastmail, that take a token instead of a password."
+msgstr ""
+"Für Server, die anstelle eines Passworts ein Token verwenden (z. B. "
+"Fastmail)."
+
+#, fuzzy
+msgid "OAuth client secret (optional)"
+msgstr "OAuth-Client-Geheimnis (optional)"
+
+#. Microsoft's own sign-in, made with another app registration
+#. (#329): one an organization has approved, say. Empty rows keep
+#. Tegami Mail's.
+msgid "Client ID"
+msgstr "OAuth-Client-ID"
+
+msgid "Tenant (common, organizations, consumers or an ID)"
+msgstr "Tenant (common, organizations, consumers oder eine ID)"
+
+msgid "Redirect URI"
+msgstr "Weiterleitungs URI"
 
 msgid "Accept a certificate for another name"
 msgstr "Zertifikat für abweichenden Namen akzeptieren"
@@ -5975,105 +6056,52 @@ msgstr ""
 "Für Shared-Hosting. Nur aktivieren, wenn der Verbindungstest abweichende "
 "Namen meldet."
 
-#, fuzzy
-msgid "Show in combined views"
-msgstr "Spaltentitel anzeigen"
+#. A Microsoft 365 account's organization directory (#410): its
+#. suggestions, asking for their own access when turned on.
+msgid "Microsoft 365"
+msgstr "Microsoft 365"
 
-msgid "Favorites, Tags and Smart Folders across accounts."
+msgid "Search the organization directory"
+msgstr "Organisationverzeichnis durchsuchen"
+
+msgid "Suggests people from your organization as you type."
+msgstr "Schlägt Personen aus der eigenen Organisation beim Eingeben vor."
+
+msgid "Suggest only from this account"
+msgstr "Nur von diesem Konto vorschlagen"
+
+msgid "Suggestions come from the directory and this account's mail only."
 msgstr ""
+"Vorschläge stammen ausschließlich aus dem Adressbuch und den E-Mails dieses "
+"Kontos."
 
 msgid "Test connection"
 msgstr "Verbindung testen"
 
-msgid "Appearance"
-msgstr "Aussehen"
-
-msgid "Account accent color"
-msgstr "Akzentfarbe des Kontos"
-
-msgid "Use my Gravatar"
-msgstr "Meinen Gravatar verwenden"
-
-msgid "Sends gravatar.com a hash of the address."
-msgstr "Sendet eine Anonymisierung (Hash) der Adresse an gravatar.com."
-
-msgid "Circle shows"
-msgstr "Im Kreis anzeigen"
-
-msgid "Initials or emoji"
-msgstr "Initialen oder Emoji"
-
-msgid "Picture"
-msgstr "Bild"
-
-msgid "Emoji"
-msgstr "Emoji"
-
-msgid "Instead of initials."
-msgstr "Anstelle von Initialen"
-
-msgid "Choose…"
-msgstr "Auswählen…"
-
-msgid "Use initials"
-msgstr "Initialen verwenden"
-
-msgid "Send-as aliases"
-msgstr "Absender-Aliasse"
-
-msgid "Extra addresses this account can send as."
-msgstr "Zusätzliche Absenderadressen für dieses Konto."
-
-msgid "Add alias…"
-msgstr "Alias hinzufügen…"
-
-msgid "Signatures"
-msgstr "Signaturen"
-
-msgid ""
-"With more than one, the composer's signature button allows you to pick "
-"between them."
-msgstr ""
-"Bei mehreren Einträgen ermöglicht die Signatur-Schaltfläche im Verfassen-"
-"Fenster die Auswahl."
-
-msgid "Add signature"
-msgstr "Signatur hinzufügen"
-
-msgid "Import file…"
-msgstr "Datei importieren…"
-
-msgid "Delete signature"
-msgstr "Signatur entfernen"
-
-msgid "Start messages with this signature"
-msgstr "Neue Nachricht mit dieser Signatur"
-
-msgid "Syncing"
-msgstr "Synchronisierung"
-
-msgid "Turn off for servers that stall on push connections."
-msgstr "Für Server deaktivieren, bei denen Push-Verbindungen hängen bleiben."
-
-msgid "Empty Junk automatically"
-msgstr "Spam automatisch leeren"
-
-msgid "Empty Trash automatically"
-msgstr "Papierkorb automatisch leeren"
-
-msgid "Move list mail to Trash"
-msgstr "Mailinglisten-E-Mails in den Papierkorb verschieben"
-
-msgid ""
-"Inbox mail with an unsubscribe link older than this gets trashed unless it's "
-"starred."
-msgstr ""
-"E-Mails im Posteingang mit Abmelde-Link, die älter als dieser Wert sind, "
-"werden in den Papierkorb verschoben, sofern sie nicht sternmarkiert sind."
+#, fuzzy
+msgid "New messages"
+msgstr "Neue Nachricht"
 
 #, fuzzy
-msgid "Keep mail cached"
-msgstr "Offline-Speicherung für E-Mails"
+msgid "Turn off for servers that block push connections."
+msgstr "Für Server deaktivieren, bei denen Push-Verbindungen hängen bleiben."
+
+#. Auto-empty (#140): mail past the chosen age in Junk / Trash is
+#. deleted for good at each sync.
+#, fuzzy
+msgid "Automatic cleanup"
+msgstr "Automatisch"
+
+#, fuzzy
+msgid "Empty Junk"
+msgstr "Spam-Ordner leeren…"
+
+#, fuzzy
+msgid "Empty Trash"
+msgstr "Papierkorb leeren…"
+
+msgid "The general setting is in Application."
+msgstr ""
 
 msgid "Leaves out Trash, Junk and Drafts."
 msgstr "Ohne Papierkorb, Spam und Entwürfe"
@@ -6093,74 +6121,34 @@ msgid ""
 "computer (except Trash, Junk and Drafts) and stores them in On This Computer."
 msgstr ""
 
-#, fuzzy
-msgid "Import"
-msgstr "Importieren…"
-
-msgid "Mail already here is not imported again."
-msgstr ""
-
-#, fuzzy
-msgid "Maildir folders"
-msgstr "Alle Ordner"
-
-msgid "Evolution's On This Computer, Dovecot and other Maildir trees."
-msgstr ""
-
-#, fuzzy
-msgid "Mbox files"
-msgstr "Alle Dateien"
-
-#, fuzzy
-msgid "Thunderbird's folders and other mbox files."
-msgstr "Die Ordner unter der Zeile Filter."
-
-msgid "Microsoft 365"
-msgstr "Microsoft 365"
-
-msgid "Search the organization directory"
-msgstr "Organisationverzeichnis durchsuchen"
-
-msgid "Suggests people from your organization as you type."
-msgstr "Schlägt Personen aus der eigenen Organisation beim Eingeben vor."
-
-msgid "Suggest only from this account"
-msgstr "Nur von diesem Konto vorschlagen"
-
-msgid "Suggestions come from the directory and this account's mail only."
-msgstr ""
-"Vorschläge stammen ausschließlich aus dem Adressbuch und den E-Mails dieses "
-"Kontos."
-
-msgid "Show sensitivity label names"
-msgstr "Namen der Vertraulichkeitsbezeichnungen anzeigen"
-
-msgid "Shows a label's name when a message gives only its ID."
-msgstr ""
-"Zeigt den Namen eines Tags an, wenn eine Nachricht nur dessen Kennung "
-"enthält."
-
-msgid "Folder order"
-msgstr "Ordnerreihenfolge"
-
-msgid "Also in the right-click menu of its Folders heading."
-msgstr "Auch über das Kontextmenü der Überschrift „Ordner“"
-
 msgid "Special folders"
 msgstr "Spezielle Ordner"
 
+#, fuzzy
 msgid ""
-"Follows the server's own markings unless you pick a folder. Nothing already "
+"Follows the server’s own markings unless you pick a folder. Nothing already "
 "on the server moves."
 msgstr ""
 "Folgt den Markierungen des Servers, sofern kein Ordner ausgewählt wird. Auf "
 "dem Server vorhandene Elemente werden nicht verschoben."
 
-msgid "Save a copy of sent mail in"
-msgstr "Kopie gesendeter Nachrichten speichern in"
+msgid "Templates, snoozed, reply copies, server copy"
+msgstr ""
 
+#. Nothing on a server marks a Templates folder (#360), nor the one
+#. snoozed mail waits in (#527): found by name, or pointed at here.
+msgid "Templates"
+msgstr "Vorlagen"
+
+msgid "Snoozed"
+msgstr "Zurückgestellt"
+
+#. Replies beside what they answer (#468), for IMAP and JMAP.
 msgid "Save a copy of replies in"
 msgstr "Kopie von Antworten speichern in"
+
+msgid "Save a copy of sent mail in"
+msgstr "Kopie gesendeter Nachrichten speichern in"
 
 msgid "Server saves its own copy of sent mail"
 msgstr "Server speichert selbst eine Kopie gesendeter Nachrichten"
@@ -6169,11 +6157,16 @@ msgid "For Gmail and others that file sent mail themselves."
 msgstr ""
 "Für Gmail und andere Anbieter, die gesendete Nachrichten selbst ablegen."
 
-msgid "Templates"
-msgstr "Vorlagen"
+#. Its own folder order, or the application's.
+msgid "Order"
+msgstr ""
 
-msgid "Snoozed"
-msgstr "Zurückgestellt"
+msgid "Folder order"
+msgstr "Ordnerreihenfolge"
+
+#, fuzzy
+msgid "Otherwise, drag them in the sidebar."
+msgstr "Ziehen, um die Reihenfolge in der Seitenleiste festzulegen."
 
 msgid "Hidden folders"
 msgstr "Ausgeblendete Ordner"
@@ -6188,25 +6181,56 @@ msgstr ""
 msgid "No hidden folders."
 msgstr "Keine versteckten Ordner."
 
-msgid "Keys are managed under OpenPGP in the sidebar."
-msgstr "Schlüssel werden unter „OpenPGP“ in der Seitenleiste verwaltet."
+#, fuzzy
+msgid ""
+"Extra addresses this account can send as. They appear in the composer’s From "
+"field."
+msgstr "Zusätzliche Absenderadressen für dieses Konto."
 
-msgid "Automatic uses the key whose address matches."
+#, fuzzy
+msgid "Start new messages with this signature"
+msgstr "Neue Nachricht mit dieser Signatur"
+
+msgid "Delete signature"
+msgstr "Signatur entfernen"
+
+msgid "With several signatures, the composer offers a button to choose."
+msgstr ""
+
+msgid "Add signature"
+msgstr "Signatur hinzufügen"
+
+#. A designed signature usually exists as HTML already (#120).
+msgid "Import file…"
+msgstr "Datei importieren…"
+
+#, fuzzy
+msgid "HTML or text"
+msgstr "HTML und Textdateien"
+
+#, fuzzy
+msgid "Automatic: the key whose address matches."
 msgstr "„Automatisch“ verwendet den Schlüssel mit der passenden Adresse."
 
+#. For an account whose mail is always signed (#267): the composer's
+#. toggle starts on, and still turns it off for one message.
 msgid "Sign messages by default"
 msgstr "Nachrichten standardmäßig unterschreiben"
 
 msgid "Hide the subject of encrypted mail"
 msgstr "Betreff verschlüsselter E-Mails ausblenden"
 
-msgid "Only the recipients see the subject. Others see \"...\"."
+#, fuzzy
+msgid "Only the recipients see the subject."
 msgstr "Nur für Empfänger sichtbar. Für alle anderen wird \"...\" angezeigt."
 
-msgid "Your password is kept in the system keyring, never in plain text."
-msgstr ""
-"Ihr Passwort wird im System-Schlüsselbund gespeichert, niemals im Klartext "
-"auf der Festplatte."
+#, fuzzy
+msgid "Manage keys"
+msgstr "Tags suchen…"
+
+#, fuzzy
+msgid "Import, generate, trust."
+msgstr "Signatur importieren"
 
 msgid "Search senders"
 msgstr "Absender suchen"
@@ -6259,6 +6283,10 @@ msgid "Backup and restore"
 msgstr ""
 
 #, fuzzy
+msgid "Drag an account to change its order in the sidebar."
+msgstr "Ziehen, um die Reihenfolge in der Seitenleiste festzulegen."
+
+#, fuzzy
 msgid "Organize mail"
 msgstr "In E-Mail"
 
@@ -6289,13 +6317,8 @@ msgstr "Anfang der Nachricht"
 msgid "How long a message can still be recalled."
 msgstr ""
 
-#. ---- Notifications (screen 23).
 msgid "Notifications"
 msgstr "Benachrichtigungen"
-
-#, fuzzy
-msgid "New messages"
-msgstr "Neue Nachricht"
 
 msgid "Sound and banners"
 msgstr ""
@@ -6309,10 +6332,12 @@ msgstr ""
 msgid "Privacy"
 msgstr "Datenschutz"
 
-#. ---- Application (screen 25).
 #, fuzzy
 msgid "Application"
 msgstr "Aktion"
+
+msgid "Appearance"
+msgstr "Aussehen"
 
 #, fuzzy
 msgid "Background"
@@ -6321,6 +6346,24 @@ msgstr "Im Hintergrund ausführen"
 #, fuzzy
 msgid "Keyboard and storage"
 msgstr "Tastenkombinationen"
+
+#, fuzzy
+msgid "{n} tag"
+msgid_plural "{n} tags"
+msgstr[0] "Beliebiger Tag"
+msgstr[1] "Beliebiger Tag"
+
+#, fuzzy
+msgid "{n} filter"
+msgid_plural "{n} filters"
+msgstr[0] "Tondatei"
+msgstr[1] "Tondatei"
+
+#, fuzzy
+msgid "{n} smart folder"
+msgid_plural "{n} smart folders"
+msgstr[0] "Erstelle Smart Folder"
+msgstr[1] "Erstelle Smart Folder"
 
 msgid "Send new messages from"
 msgstr "Neue Nachrichten senden von"

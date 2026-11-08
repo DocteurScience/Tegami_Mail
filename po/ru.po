@@ -1433,6 +1433,9 @@ msgstr "Открыть Tegami Mail"
 msgid "View all {n} unread in Inboxes…"
 msgstr "Посмотреть все непрочитанные: {n}…"
 
+#. ---- Accounts (screen 26): the accounts themselves, listed by
+#. the accounts panel, then the rows to what organizes mail and to
+#. the services.
 msgid "Accounts"
 msgstr "Учётные записи"
 
@@ -2183,17 +2186,12 @@ msgstr "Этот текст слишком длинный для отправк�
 msgid "Use this account in Tegami Mail"
 msgstr "Использовать эту учётную запись в Tegami Mail"
 
-msgid "GOA"
-msgstr "GOA"
+#, fuzzy
+msgid "Mail saved in local folders"
+msgstr "Все папки"
 
-msgid "Tegami Mail"
-msgstr "Tegami Mail"
-
-msgid "Imported GNOME Online Account"
-msgstr "Импортировано из «Сетевых учётных записей GNOME»"
-
-msgid "Added directly in Tegami Mail"
-msgstr "Добавлено непосредственно в Tegami Mail"
+msgid "GNOME Online Accounts"
+msgstr "Сетевые учётные записи GNOME"
 
 msgid "Paused: Mail is switched off for this account in GNOME Settings"
 msgstr ""
@@ -2255,6 +2253,10 @@ msgstr "Удалить этот псевдоним"
 msgid "Kept on the server; change it in your provider's webmail."
 msgstr ""
 "Хранится на сервере; измените через веб-интерфейс почтового провайдера."
+
+#. Last, the way to add one (screen 32).
+msgid "Add alias…"
+msgstr "Добавить псевдоним…"
 
 #, fuzzy
 msgid "Edit alias"
@@ -2368,18 +2370,42 @@ msgid ""
 "approve it."
 msgstr ""
 
-msgid "Choose a picture"
-msgstr "Выбрать картинку"
+#, fuzzy
+msgid "New account"
+msgstr "Добавить учётную запись"
 
-msgid "Images"
-msgstr "Изображения"
+#, fuzzy
+msgid ""
+"Paused: Mail is switched off for this account in GNOME Settings → Online "
+"Accounts."
+msgstr "Войдите через «Сетевые учётные записи GNOME»."
 
+#, fuzzy
+msgid "Off returns it to the import list. It stays in GNOME Online Accounts."
+msgstr ""
+"Отключение этого параметра вернёт учётную запись в список импорта — она "
+"останется в «Сетевых учётных записях GNOME»."
+
+#, fuzzy
+msgid "The password is kept in the system keyring, never in plain text."
+msgstr ""
+"Ваш пароль хранится в системной связке ключей (secret-service), а не в "
+"открытом виде на диске."
+
+#, fuzzy
 msgid ""
 "The certificate is for another name. If this server is the right one, turn "
-"on “Accept a certificate for another name” above and test again."
+"on “Accept a certificate for another name” under Advanced and test again."
 msgstr ""
 "Сертификат выдан для другого имени. Если сервер указан верно, включите "
 "параметр «Принимать сертификат для другого имени» выше и повторите проверку."
+
+msgid "Connected: receiving and sending work."
+msgstr ""
+
+#, fuzzy
+msgid "The connection failed."
+msgstr "Ошибка подключения: {e}"
 
 #, fuzzy
 msgid "From address"
@@ -2493,11 +2519,25 @@ msgstr "Сервер (имя узла или URL)"
 msgid "Port (default 443)"
 msgstr "Порт (по умолчанию 443)"
 
-msgid "Incoming server"
-msgstr "Сервер входящей почты"
+msgid "Server"
+msgstr "Сервер"
 
-msgid "Port (IMAP 993 / POP3 995)"
-msgstr "Порт (IMAP 993 / POP3 995)"
+msgid "Port"
+msgstr "Порт"
+
+#, fuzzy
+msgid "Import mail"
+msgstr "Импортировать все"
+
+msgid "Mail already here is not imported again."
+msgstr ""
+
+#, fuzzy
+msgid "Evolution (Maildir)"
+msgstr "Proton Mail"
+
+msgid "Thunderbird (mbox)"
+msgstr ""
 
 #, fuzzy
 msgid "Import mbox files"
@@ -2506,6 +2546,38 @@ msgstr "Импортировать файл…"
 #, fuzzy
 msgid "Import maildir folders"
 msgstr "Ошибка импорта: {e}"
+
+#, fuzzy
+msgid "{n} address"
+msgid_plural "{n} addresses"
+msgstr[0] "Адресная книга"
+msgstr[1] "Адресная книга"
+msgstr[2] "Адресная книга"
+
+#, fuzzy
+msgid "{n} signature"
+msgid_plural "{n} signatures"
+msgstr[0] "Подпись"
+msgstr[1] "Подпись"
+msgstr[2] "Подпись"
+
+msgid "Key: {key}"
+msgstr ""
+
+#, fuzzy
+msgid "Local mail on this computer"
+msgstr "На этом компьютере"
+
+msgid "Import from Thunderbird or Evolution…"
+msgstr ""
+
+#, fuzzy
+msgid "E-mail account…"
+msgstr "Почтовая учётная запись"
+
+#, fuzzy
+msgid "GNOME Online Account…"
+msgstr "Сетевые учётные записи GNOME"
 
 #, fuzzy
 msgid "Signed in as {address}, not {email}."
@@ -2531,14 +2603,6 @@ msgid "Approve access to the directory in the window that opened."
 msgstr "Завершите вход в открывшемся окне."
 
 #, fuzzy
-msgid "Opening browser… approve access to the sensitivity labels there."
-msgstr "Открытие браузера… завершите вход в нём."
-
-#, fuzzy
-msgid "Approve access to the sensitivity labels in the window that opened."
-msgstr "Завершите вход в открывшемся окне."
-
-#, fuzzy
 msgid "✓ Signed in. Save the account to finish."
 msgstr "✓ Вход выполнен — сохраните учётную запись для завершения"
 
@@ -2551,36 +2615,23 @@ msgstr ""
 msgid "Access to the directory was not approved: {e}"
 msgstr ""
 
-msgid "Access to the sensitivity labels approved. Save the account to finish."
-msgstr ""
-
-msgid "Access to the sensitivity labels was not approved: {e}"
-msgstr ""
-
-#, fuzzy
-msgid "Drag to reorder them in the sidebar."
-msgstr "Перетащите, чтобы изменить порядок отображения на боковой панели."
-
-#, fuzzy
-msgid "Check GNOME Online Accounts for new accounts"
-msgstr "Сетевые учётные записи GNOME"
-
-msgid ""
-"Store mail in folders that live on this computer. Move or copy mail from any "
-"account to here."
-msgstr ""
-
-msgid "Add"
-msgstr "Добавить"
-
-msgid "GNOME Online Accounts"
-msgstr "Сетевые учётные записи GNOME"
-
 #, fuzzy
 msgid "Mail accounts from GNOME Settings. Switch one on to use it."
 msgstr ""
 "Учётные записи почты из настроек GNOME. Включите нужную, чтобы использовать "
 "её в Tegami Mail."
+
+#, fuzzy
+msgid "Check GNOME Online Accounts for new accounts"
+msgstr "Сетевые учётные записи GNOME"
+
+#, fuzzy
+msgid "Accounts added in GNOME Settings → Online Accounts appear here."
+msgstr "Найдено в «Сетевых учётных записях GNOME»"
+
+#, fuzzy
+msgid "Open Online Accounts"
+msgstr "Открыть «Сетевые учётные записи»…"
 
 #, fuzzy
 msgid "Smart folders"
@@ -2686,31 +2737,6 @@ msgstr ""
 
 msgid "Enable POP/IMAP access in GMX settings first."
 msgstr "Сначала включите доступ по POP/IMAP в настройках GMX."
-
-msgid "Google (Gmail)"
-msgstr "Google (Gmail)"
-
-msgid "Microsoft 365 / Outlook"
-msgstr "Microsoft 365 / Outlook"
-
-msgid "Proton Mail"
-msgstr "Proton Mail"
-
-msgid "Custom OAuth"
-msgstr "Собственный OAuth"
-
-#, fuzzy
-msgid "Folders on this computer"
-msgstr "На этом компьютере"
-
-msgid "IMAP/POP3 account"
-msgstr "Учётная запись IMAP/POP3"
-
-msgid "IMAP/POP3 account on {host}"
-msgstr "Учётная запись IMAP/POP3 на {host}"
-
-msgid "Mail account"
-msgstr "Почтовая учётная запись"
 
 msgid "Enter a client ID and sign in before saving"
 msgstr "Введите идентификатор клиента и войдите перед сохранением"
@@ -3548,9 +3574,6 @@ msgstr "Открыть Tegami Mail"
 msgid "Address book"
 msgstr "Адресная книга"
 
-msgid "Server"
-msgstr "Сервер"
-
 msgid "Sign-in"
 msgstr "Авторизация"
 
@@ -3577,9 +3600,6 @@ msgstr "StartTLS"
 
 msgid "TLS (LDAPS)"
 msgstr "TLS (LDAPS)"
-
-msgid "Port"
-msgstr "Порт"
 
 msgid "Search base, such as dc=example,dc=com"
 msgstr "База поиска, например dc=example,dc=com"
@@ -3621,10 +3641,6 @@ msgstr "Найдено в «Сетевых учётных записях GNOME»
 
 msgid "Its sign-in and its Contacts switch are in GNOME Settings."
 msgstr ""
-
-#, fuzzy
-msgid "Open Online Accounts"
-msgstr "Открыть «Сетевые учётные записи»…"
 
 #, fuzzy
 msgid "Add address book"
@@ -3673,9 +3689,15 @@ msgstr "Удалить контакт?"
 msgid "Other address books are not touched."
 msgstr ""
 
+msgid "Tegami Mail"
+msgstr "Tegami Mail"
+
 #, fuzzy
 msgid "Set up in Tegami Mail"
 msgstr "Отображать в Tegami Mail"
+
+msgid "GOA"
+msgstr "GOA"
 
 #, fuzzy
 msgid "From GNOME Online Accounts"
@@ -5501,6 +5523,9 @@ msgstr "Войти"
 msgid "The sign-in window was closed."
 msgstr "Окно входа было закрыто."
 
+msgid "Add"
+msgstr "Добавить"
+
 msgid "✓ {email} — added"
 msgstr "✓ {email} — добавлено"
 
@@ -6060,6 +6085,10 @@ msgstr "Добавить фильтр…"
 msgid "Run every rule over the mail already in your inboxes"
 msgstr "Применить все правила к почте, уже находящейся в папках «Входящие»"
 
+#. GNOME Online Accounts owns this account's servers and
+#. credentials; Tegami Mail only mirrors them, and can hide it
+#. locally. Both facts belong together, above the fields they
+#. explain.
 msgid "GNOME Online Account"
 msgstr "Сетевая учётная запись GNOME"
 
@@ -6067,63 +6096,82 @@ msgid "Show in Tegami Mail"
 msgstr "Отображать в Tegami Mail"
 
 #, fuzzy
-msgid "Off returns it to the import list. It stays in GNOME Online Accounts."
-msgstr ""
-"Отключение этого параметра вернёт учётную запись в список импорта — она "
-"останется в «Сетевых учётных записях GNOME»."
+msgid "Managed by GNOME Online Accounts"
+msgstr "Найдено в «Сетевых учётных записях GNOME»"
 
 #, fuzzy
 msgid ""
-"Managed by GNOME Online Accounts. Its address, servers and password are "
-"changed in Settings → Online Accounts."
+"Its address, servers and password are changed in Settings → Online Accounts."
 msgstr ""
 "Эта учётная запись управляется сервисом «Сетевые учётные записи GNOME».\n"
 "Её адрес, сервера и пароль можно изменить в меню «Настройки» → «Сетевые "
 "учётные записи»."
 
-msgid "Storage"
-msgstr "Хранилище"
-
-msgid "Nickname"
-msgstr ""
-
 msgid "Display name"
 msgstr "Отображаемое имя"
 
-msgid "Incoming protocol"
-msgstr "Протокол входящей почты"
-
-msgid "SMTP Server (optional)"
-msgstr "Сервер SMTP (необязательно)"
-
-msgid "SMTP Port (default 587)"
-msgstr "Порт SMTP (по умолчанию 587)"
-
-msgid "Username"
-msgstr "Имя пользователя"
-
-msgid "Sign in with an API token"
-msgstr "Войти с помощью токена API"
+#. The nickname names the account in the sidebar and lists, the
+#. address standing in while there is none (owner, 2026-11-08).
+msgid "Nickname"
+msgstr ""
 
 #, fuzzy
-msgid "For servers, like Fastmail, that take a token instead of a password."
+msgid "Account colour"
+msgstr "Цвет учётной записи"
+
+msgid "Accent of this account’s badges and outlines."
 msgstr ""
-"Для серверов, использующих токен вместо пароля, например, для Fastmail."
 
-msgid "Advanced"
-msgstr "Дополнительно"
+#, fuzzy
+msgid "Show in combined views"
+msgstr "Заголовки столбцов"
 
-msgid "Sign in with another app registration"
-msgstr "Войти с помощью другой регистрации приложения"
+#, fuzzy
+msgid "Favorites, tags and smart folders from all accounts."
+msgstr "Создать новую папку для этого аккаунта."
 
-msgid "Client ID"
-msgstr "Идентификатор клиента (Client ID)"
+msgid "Storage"
+msgstr "Хранилище"
 
-msgid "Tenant (common, organizations, consumers or an ID)"
-msgstr "Тенант (common, organizations, consumers или ID)"
+#, fuzzy
+msgid "Servers and connection"
+msgstr "Проверить соединение"
 
-msgid "Redirect URI"
-msgstr "URI перенаправления"
+#, fuzzy
+msgid "Synchronisation"
+msgstr "Показать перевод"
+
+msgid "Instant mail, automatic cleanup"
+msgstr ""
+
+msgid "Sent, drafts, trash, archive"
+msgstr ""
+
+msgid "Send-as aliases"
+msgstr "Псевдонимы для отправки"
+
+#, fuzzy
+msgid "Signatures"
+msgstr "Подпись"
+
+#, fuzzy
+msgid "OpenPGP encryption"
+msgstr "Ключи OpenPGP"
+
+#, fuzzy
+msgid "Remove account"
+msgstr "Удалить учётную запись…"
+
+msgid "Also removes its saved password. Mail on the server is not touched."
+msgstr ""
+
+#, fuzzy
+msgid "Incoming"
+msgstr "Сервер входящей почты"
+
+#, fuzzy
+msgid "Protocol"
+msgstr "Proton Mail"
 
 msgid "Sign in with browser"
 msgstr "Войти через браузер"
@@ -6142,11 +6190,46 @@ msgstr ""
 "появится в разделе «Сетевые учётные записи GNOME» вверху этого окна. "
 "Включите её там."
 
-msgid "Separate SMTP credentials"
+msgid "Outgoing (SMTP)"
+msgstr ""
+
+#, fuzzy
+msgid "Use other credentials"
 msgstr "Отдельные учётные данные SMTP"
 
-msgid "Off uses the credentials above."
+msgid "Off: the incoming credentials are used."
 msgstr ""
+
+msgid "Advanced"
+msgstr "Дополнительно"
+
+#, fuzzy
+msgid "API token, custom OAuth app, certificate for another name"
+msgstr "Принимать сертификат для другого имени"
+
+msgid "Sign in with an API token"
+msgstr "Войти с помощью токена API"
+
+#, fuzzy
+msgid "For servers, like Fastmail, that take a token instead of a password."
+msgstr ""
+"Для серверов, использующих токен вместо пароля, например, для Fastmail."
+
+#, fuzzy
+msgid "OAuth client secret (optional)"
+msgstr "Секретный ключ клиента OAuth (Client Secret, необязательно)"
+
+#. Microsoft's own sign-in, made with another app registration
+#. (#329): one an organization has approved, say. Empty rows keep
+#. Tegami Mail's.
+msgid "Client ID"
+msgstr "Идентификатор клиента (Client ID)"
+
+msgid "Tenant (common, organizations, consumers or an ID)"
+msgstr "Тенант (common, organizations, consumers или ID)"
+
+msgid "Redirect URI"
+msgstr "URI перенаправления"
 
 msgid "Accept a certificate for another name"
 msgstr "Принимать сертификат для другого имени"
@@ -6156,106 +6239,52 @@ msgid ""
 "differ."
 msgstr ""
 
+#. A Microsoft 365 account's organization directory (#410): its
+#. suggestions, asking for their own access when turned on.
 #, fuzzy
-msgid "Show in combined views"
-msgstr "Заголовки столбцов"
+msgid "Microsoft 365"
+msgstr "Microsoft 365 / Outlook"
 
-msgid "Favorites, Tags and Smart Folders across accounts."
+#, fuzzy
+msgid "Search the organization directory"
+msgstr "Сохранить каталог?"
+
+msgid "Suggests people from your organization as you type."
+msgstr ""
+
+#, fuzzy
+msgid "Suggest only from this account"
+msgstr "Показывать только эту учётную запись"
+
+msgid "Suggestions come from the directory and this account's mail only."
 msgstr ""
 
 msgid "Test connection"
 msgstr "Проверить соединение"
 
-msgid "Appearance"
-msgstr "Внешний вид"
-
-msgid "Account accent color"
-msgstr "Цвет учётной записи"
-
-msgid "Use my Gravatar"
-msgstr "Использовать мой Gravatar"
+#, fuzzy
+msgid "New messages"
+msgstr "Новое сообщение"
 
 #, fuzzy
-msgid "Sends gravatar.com a hash of the address."
-msgstr "Запрашивает информацию у gravatar.com для каждого адреса отправителя"
-
-msgid "Circle shows"
-msgstr "Что показывает кружок"
-
-msgid "Initials or emoji"
-msgstr "Инициалы или эмодзи"
-
-msgid "Picture"
-msgstr "Картинка"
-
-msgid "Emoji"
-msgstr "Эмодзи"
-
-#, fuzzy
-msgid "Instead of initials."
-msgstr "Использовать инициалы"
-
-msgid "Choose…"
-msgstr "Выбрать…"
-
-msgid "Use initials"
-msgstr "Использовать инициалы"
-
-msgid "Send-as aliases"
-msgstr "Псевдонимы для отправки"
-
-msgid "Extra addresses this account can send as."
-msgstr ""
-
-msgid "Add alias…"
-msgstr "Добавить псевдоним…"
-
-#, fuzzy
-msgid "Signatures"
-msgstr "Подпись"
-
-msgid ""
-"With more than one, the composer's signature button allows you to pick "
-"between them."
-msgstr ""
-
-#, fuzzy
-msgid "Add signature"
-msgstr "Подпись"
-
-msgid "Import file…"
-msgstr "Импортировать файл…"
-
-#, fuzzy
-msgid "Delete signature"
-msgstr "Импортировать подпись"
-
-#, fuzzy
-msgid "Start messages with this signature"
-msgstr "Написать письмо с прикреплённым файлом"
-
-msgid "Syncing"
-msgstr "Синхронизация"
-
-msgid "Turn off for servers that stall on push connections."
+msgid "Turn off for servers that block push connections."
 msgstr "Отключите для серверов, которые зависают при push-подключениях."
 
-msgid "Empty Junk automatically"
-msgstr "Автоматически очищать «Спам»"
-
-msgid "Empty Trash automatically"
-msgstr "Автоматически очищать «Корзину»"
+#. Auto-empty (#140): mail past the chosen age in Junk / Trash is
+#. deleted for good at each sync.
+#, fuzzy
+msgid "Automatic cleanup"
+msgstr "Автоматически"
 
 #, fuzzy
-msgid "Move list mail to Trash"
-msgstr "Переместить этот черновик в «Корзину»"
+msgid "Empty Junk"
+msgstr "Очистить спам…"
 
-msgid ""
-"Inbox mail with an unsubscribe link older than this gets trashed unless it's "
-"starred."
-msgstr ""
+#, fuzzy
+msgid "Empty Trash"
+msgstr "Очистить корзину…"
 
-msgid "Keep mail cached"
+msgid "The general setting is in Application."
 msgstr ""
 
 msgid "Leaves out Trash, Junk and Drafts."
@@ -6277,74 +6306,31 @@ msgid ""
 "computer (except Trash, Junk and Drafts) and stores them in On This Computer."
 msgstr ""
 
-#, fuzzy
-msgid "Import"
-msgstr "Импортировать…"
-
-msgid "Mail already here is not imported again."
-msgstr ""
-
-#, fuzzy
-msgid "Maildir folders"
-msgstr "Все папки"
-
-msgid "Evolution's On This Computer, Dovecot and other Maildir trees."
-msgstr ""
-
-#, fuzzy
-msgid "Mbox files"
-msgstr "Все файлы"
-
-#, fuzzy
-msgid "Thunderbird's folders and other mbox files."
-msgstr "Папки под строкой «Фильтры»."
-
-#, fuzzy
-msgid "Microsoft 365"
-msgstr "Microsoft 365 / Outlook"
-
-#, fuzzy
-msgid "Search the organization directory"
-msgstr "Сохранить каталог?"
-
-msgid "Suggests people from your organization as you type."
-msgstr ""
-
-#, fuzzy
-msgid "Suggest only from this account"
-msgstr "Показывать только эту учётную запись"
-
-msgid "Suggestions come from the directory and this account's mail only."
-msgstr ""
-
-msgid "Show sensitivity label names"
-msgstr ""
-
-msgid "Shows a label's name when a message gives only its ID."
-msgstr ""
-
-msgid "Folder order"
-msgstr "Порядок папок"
-
-#, fuzzy
-msgid "Also in the right-click menu of its Folders heading."
-msgstr ""
-"Способ сортировки папок этой учётной записи на боковой панели. Настраивается "
-"также в контекстном меню заголовка «Папки»."
-
 msgid "Special folders"
 msgstr "Специальные папки"
 
 msgid ""
-"Follows the server's own markings unless you pick a folder. Nothing already "
+"Follows the server’s own markings unless you pick a folder. Nothing already "
 "on the server moves."
 msgstr ""
 
-msgid "Save a copy of sent mail in"
-msgstr "Сохранять копию отправленных писем в"
+msgid "Templates, snoozed, reply copies, server copy"
+msgstr ""
 
+#. Nothing on a server marks a Templates folder (#360), nor the one
+#. snoozed mail waits in (#527): found by name, or pointed at here.
+msgid "Templates"
+msgstr "Шаблоны"
+
+msgid "Snoozed"
+msgstr ""
+
+#. Replies beside what they answer (#468), for IMAP and JMAP.
 #, fuzzy
 msgid "Save a copy of replies in"
+msgstr "Сохранять копию отправленных писем в"
+
+msgid "Save a copy of sent mail in"
 msgstr "Сохранять копию отправленных писем в"
 
 msgid "Server saves its own copy of sent mail"
@@ -6356,11 +6342,16 @@ msgstr ""
 "Для Gmail и других сервисов, сохраняющих отправленные письма автоматически. "
 "Отключает параметр «Сохранять копию» выше."
 
-msgid "Templates"
-msgstr "Шаблоны"
-
-msgid "Snoozed"
+#. Its own folder order, or the application's.
+msgid "Order"
 msgstr ""
+
+msgid "Folder order"
+msgstr "Порядок папок"
+
+#, fuzzy
+msgid "Otherwise, drag them in the sidebar."
+msgstr "Перетащите, чтобы изменить порядок отображения на боковой панели."
 
 msgid "Hidden folders"
 msgstr "Скрытые папки"
@@ -6373,12 +6364,40 @@ msgstr ""
 msgid "No hidden folders."
 msgstr "Скрытых папок нет."
 
-msgid "Keys are managed under OpenPGP in the sidebar."
+msgid ""
+"Extra addresses this account can send as. They appear in the composer’s From "
+"field."
 msgstr ""
 
-msgid "Automatic uses the key whose address matches."
+#, fuzzy
+msgid "Start new messages with this signature"
+msgstr "Написать письмо с прикреплённым файлом"
+
+#, fuzzy
+msgid "Delete signature"
+msgstr "Импортировать подпись"
+
+msgid "With several signatures, the composer offers a button to choose."
+msgstr ""
+
+#, fuzzy
+msgid "Add signature"
+msgstr "Подпись"
+
+#. A designed signature usually exists as HTML already (#120).
+msgid "Import file…"
+msgstr "Импортировать файл…"
+
+#, fuzzy
+msgid "HTML or text"
+msgstr "Файлы HTML и текстовые файлы"
+
+#, fuzzy
+msgid "Automatic: the key whose address matches."
 msgstr "В автоматическом режиме используется ключ с совпадающим адресом."
 
+#. For an account whose mail is always signed (#267): the composer's
+#. toggle starts on, and still turns it off for one message.
 msgid "Sign messages by default"
 msgstr "Подписывать сообщения по умолчанию"
 
@@ -6386,14 +6405,16 @@ msgstr "Подписывать сообщения по умолчанию"
 msgid "Hide the subject of encrypted mail"
 msgstr "Скрывать тему"
 
-msgid "Only the recipients see the subject. Others see \"...\"."
+msgid "Only the recipients see the subject."
 msgstr ""
 
 #, fuzzy
-msgid "Your password is kept in the system keyring, never in plain text."
-msgstr ""
-"Ваш пароль хранится в системной связке ключей (secret-service), а не в "
-"открытом виде на диске."
+msgid "Manage keys"
+msgstr "Найти теги…"
+
+#, fuzzy
+msgid "Import, generate, trust."
+msgstr "Импортировать подпись"
 
 msgid "Search senders"
 msgstr "Поиск отправителей"
@@ -6451,6 +6472,10 @@ msgid "Backup and restore"
 msgstr ""
 
 #, fuzzy
+msgid "Drag an account to change its order in the sidebar."
+msgstr "Перетащите, чтобы изменить порядок отображения на боковой панели."
+
+#, fuzzy
 msgid "Organize mail"
 msgstr "Proton Mail"
 
@@ -6481,13 +6506,8 @@ msgstr "Создание писем в основном окне"
 msgid "How long a message can still be recalled."
 msgstr ""
 
-#. ---- Notifications (screen 23).
 msgid "Notifications"
 msgstr "Уведомления"
-
-#, fuzzy
-msgid "New messages"
-msgstr "Новое сообщение"
 
 msgid "Sound and banners"
 msgstr ""
@@ -6501,10 +6521,12 @@ msgstr ""
 msgid "Privacy"
 msgstr "Конфиденциальность"
 
-#. ---- Application (screen 25).
 #, fuzzy
 msgid "Application"
 msgstr "Действия"
+
+msgid "Appearance"
+msgstr "Внешний вид"
 
 #, fuzzy
 msgid "Background"
@@ -6513,6 +6535,27 @@ msgstr "Продолжать работу в фоновом режиме"
 #, fuzzy
 msgid "Keyboard and storage"
 msgstr "Сочетания клавиш"
+
+#, fuzzy
+msgid "{n} tag"
+msgid_plural "{n} tags"
+msgstr[0] "{n} письмо"
+msgstr[1] "{n} письма"
+msgstr[2] "{n} писем"
+
+#, fuzzy
+msgid "{n} filter"
+msgid_plural "{n} filters"
+msgstr[0] "Звуковой файл"
+msgstr[1] "Звуковой файл"
+msgstr[2] "Звуковой файл"
+
+#, fuzzy
+msgid "{n} smart folder"
+msgid_plural "{n} smart folders"
+msgstr[0] "Добавить папку"
+msgstr[1] "Добавить папку"
+msgstr[2] "Добавить папку"
 
 msgid "Send new messages from"
 msgstr "Отправлять новые сообщения с адреса"

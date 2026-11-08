@@ -129,6 +129,7 @@ impl AccountsWindow {
     /// a new one. The order is the order made in: the sidebar's, and the
     /// 1–9 keys' (#157).
     pub(super) fn rebuild_tag_rows(&self, sender: &ComponentSender<Self>) {
+        self.send_counts(sender);
         let Some(list) = &self.tags_list else { return };
         while let Some(row) = list.first_child() {
             list.remove(&row);

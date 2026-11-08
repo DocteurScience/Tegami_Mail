@@ -305,7 +305,6 @@ impl AppModel {
         sender.input(AppMsg::Refresh);
         // A Gravatar lookup that failed while the network was down gets
         // another go now that it is back (#189).
-        self.warm_own_gravatars(sender);
     }
 
     /// The Refresh buttons and the status bar follow the network (#442).
@@ -742,7 +741,6 @@ impl AppModel {
         // cached message is painted: the sidebar refreshes this whenever the
         // accounts change, but nothing has rebuilt it yet at this point.
         self.refresh_own_faces();
-        self.warm_own_gravatars(sender);
         self.spawn_workers(sender);
     }
 }

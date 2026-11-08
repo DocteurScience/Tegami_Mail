@@ -115,6 +115,18 @@ pub(crate) enum PrefInput {
     },
     /// Show a page or a sub-page by id (`dialog::place_of`).
     ShowPageById(String),
+    /// Show that page, then hand the accounts panel this input (an account
+    /// page to open, a filter to add), so what it pushes stays up.
+    ShowPageThen(String, crate::ui::accounts::AccountsInput),
+    /// Push a service's sub-page over whatever is shown, without leaving
+    /// it (an account's OpenPGP page opens the keys).
+    PushPage(&'static str),
+    /// How many tags, filters and smart folders there are (screen 26).
+    SetCounts {
+        tags: usize,
+        filters: usize,
+        smart: usize,
+    },
     /// An accounts-panel editor subpage (account, filter or tag) opened on
     /// the named page, or closed — hide/show the sub-page's header so the
     /// editor's own header takes over.

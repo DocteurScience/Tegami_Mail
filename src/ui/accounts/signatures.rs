@@ -130,7 +130,14 @@ impl AccountsWindow {
             .set_active(self.sig_default == Some(i));
         let several = self.sig_edits.len() > 1;
         widgets.form.sig_choice_row.set_visible(several);
-        widgets.form.sig_name_row.set_visible(several);
+        // Named from the first one (screen 33), deleted once there is
+        // another to fall back on.
+        widgets
+            .form
+            .sig_name_row
+            .set_visible(!self.sig_edits.is_empty());
+        widgets.form.sig_delete_row.set_visible(several);
+        self.refresh_links(widgets);
     }
 
     /// Read the shown signature's text back out of the editor before

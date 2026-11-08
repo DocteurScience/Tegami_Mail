@@ -1,5 +1,5 @@
 //! Signing an account in: the browser or in-app OAuth flow, the extra
-//! consents for the directory and labels, and the Online Accounts panel.
+//! consent for the directory, and the Online Accounts panel.
 
 use super::form::trimmed;
 use super::messages::SignInResult;
@@ -276,53 +276,6 @@ impl AccountsWindow {
         );
     }
 
-    pub(super) fn on_set_graph_labels(
-        &mut self,
-        on: bool,
-        widgets: &AccountsWindowWidgets,
-        sender: ComponentSender<Self>,
-        root: &adw::Bin,
-    ) {
-        if on == self.labels_on {
-            return;
-        }
-        self.labels_on = on;
-        widgets.form.graph_status.set_visible(false);
-        // Off keeps the scope, as the directory's does.
-        if !on || self.labels_granted {
-            return;
-        }
-        let mut settings = self.oauth_settings_from_form(widgets);
-        if settings.client_id.trim().is_empty() || !settings.token_url.contains("microsoftonline") {
-            return;
-        }
-        settings.scopes = crate::services::oauth::with_scopes(
-            &settings.scopes,
-            &crate::services::oauth::MICROSOFT_LABEL_SCOPES,
-        );
-        widgets.form.graph_labels_row.set_sensitive(false);
-        widgets.form.oauth_signin_btn.set_sensitive(false);
-        widgets.form.graph_status.set_visible(true);
-        widgets.form.graph_status.set_css_classes(&["dim-label"]);
-        widgets
-            .form
-            .graph_status
-            .set_label(&if settings.redirect_uri.trim().is_empty() {
-                i18n("Opening browser… approve access to the sensitivity labels there.")
-            } else {
-                i18n("Approve access to the sensitivity labels in the window that opened.")
-            });
-        let user = Some(widgets.form.email_row.text().trim().to_string()).filter(|u| !u.is_empty());
-        sign_in(
-            root,
-            &sender,
-            settings,
-            user,
-            true,
-            AccountsCmd::LabelsConsent,
-        );
-    }
-
     pub(super) fn on_signed_in(&mut self, result: SignInResult, widgets: &AccountsWindowWidgets) {
         widgets.form.oauth_signin_btn.set_sensitive(true);
         widgets.form.oauth_status.set_visible(true);
@@ -375,34 +328,6 @@ impl AccountsWindow {
                 widgets.form.graph_status.set_css_classes(&["error"]);
                 widgets.form.graph_status.set_label(&i18n_f(
                     "Access to the directory was not approved: {e}",
-                    &[("e", &e)],
-                ));
-            }
-        }
-    }
-
-    pub(super) fn on_labels_consent(
-        &mut self,
-        result: SignInResult,
-        widgets: &AccountsWindowWidgets,
-    ) {
-        widgets.form.graph_labels_row.set_sensitive(true);
-        widgets.form.oauth_signin_btn.set_sensitive(true);
-        widgets.form.graph_status.set_visible(true);
-        match self.take_consent(widgets, result) {
-            Ok(()) => {
-                self.labels_granted = true;
-                widgets.form.graph_status.set_css_classes(&["success"]);
-                widgets.form.graph_status.set_label(&i18n(
-                    "Access to the sensitivity labels approved. Save the account to finish.",
-                ));
-            }
-            Err(e) => {
-                self.labels_on = false;
-                widgets.form.graph_labels_row.set_active(false);
-                widgets.form.graph_status.set_css_classes(&["error"]);
-                widgets.form.graph_status.set_label(&i18n_f(
-                    "Access to the sensitivity labels was not approved: {e}",
                     &[("e", &e)],
                 ));
             }

@@ -65,6 +65,19 @@ pub(super) fn stage_account_settings(sender: &ComponentSender<AppModel>) {
     }
 }
 
+/// TEGAMI_SHOWCASE_ACCOUNT_SUB=<servers|sync|folders|aliases|signatures|
+/// openpgp> opens that sub-page of the account page at 7s (with
+/// TEGAMI_SHOWCASE_ACCOUNT); TEGAMI_SHOWCASE_ADD_MENU=1 opens the Add
+/// account menu at 6s (screens 27 to 34).
+pub(super) fn stage_account_sub(sender: &ComponentSender<AppModel>) {
+    if let Ok(sub) = std::env::var("TEGAMI_SHOWCASE_ACCOUNT_SUB") {
+        input_after(sender, 7, AppMsg::ShowcaseAccountSub(sub));
+    }
+    if std::env::var("TEGAMI_SHOWCASE_ADD_MENU").is_ok() {
+        input_after(sender, 6, AppMsg::ShowcaseAddMenu);
+    }
+}
+
 /// TEGAMI_SHOWCASE_EDITOR_DIRTY=1 types into the open account
 /// editor's Label field at 7s, so leaving an edited editor can
 /// be exercised without a keyboard.

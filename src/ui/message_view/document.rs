@@ -10,7 +10,7 @@ use super::frame::{
     LIVE_MARKS, LIVE_READ, LIVE_RECEIPT, LIVE_TAGS, LIVE_TEMPLATES, LIVE_TRANSLATE,
     LIVE_TRANSLATE_ON, LIVE_UNSUB, PAGE,
 };
-use super::html::attr_escape;
+
 use super::invite::invite_row_html;
 use super::receipt_banner::{read_mark_html, receipt_row_html};
 use super::remote::has_remote_resources;
@@ -284,49 +284,10 @@ fn card_body(cards: &Cards<'_>, m: &Message) -> String {
     body
 }
 
-/// The face on a card's header: a mailbox of your own wears the one it was
-/// given (#189), anyone else the initials circle the list shows.
+/// The face on a card's header: the initials circle the list shows for the
+/// same sender (mockup 01), your own mail included.
 fn card_avatar(m: &Message) -> String {
-    // One of your own mailboxes wrote this card (#189):
-    // show what its account chose — the sidebar's picture,
-    // or its emoji on the account color — so your own
-    // replies in a conversation wear the face you gave
-    // that mailbox rather than plain initials.
-    let own = crate::services::avatar::own_face(&m.from_addr).and_then(|face| {
-        // The account's own Gravatar leads when it asked
-        // for one and the address has one; the picture and
-        // the emoji are what it falls back to.
-        let gravatar = face
-            .gravatar
-            .then(|| crate::services::avatar::own_gravatar_data_uri(&m.from_addr, 26))
-            .flatten();
-        if let Some(uri) = gravatar {
-            return Some(format!("<img class=\"tegami-ava\" src=\"{uri}\" alt=\"\">"));
-        }
-        match (&face.picture, &face.emoji) {
-            (Some(path), _) => crate::ui::initials::picture_data_uri(path, 26)
-                .map(|uri| format!("<img class=\"tegami-ava\" src=\"{uri}\" alt=\"\">")),
-            (None, Some(emoji)) => {
-                let png = gtk::gdk::RGBA::parse(&face.color).ok().and_then(|bg| {
-                    let fg = gtk::gdk::RGBA::parse(crate::color::readable_text(&face.color))
-                        .unwrap_or(gtk::gdk::RGBA::WHITE);
-                    crate::ui::initials::png_data_uri(emoji, bg, fg, 26)
-                });
-                Some(match png {
-                    Some(uri) => {
-                        format!("<img class=\"tegami-ava\" src=\"{uri}\" alt=\"\">")
-                    }
-                    None => format!(
-                        "<span class=\"tegami-ava\" style=\"background:{bg}\">{glyph}</span>",
-                        bg = attr_escape(&face.color),
-                        glyph = escape_html(emoji),
-                    ),
-                })
-            }
-            (None, None) => None,
-        }
-    });
-    own.unwrap_or_else(|| {
+    {
         // The list's circle for the same sender (mockup 01): its initials
         // on the same pastel ground, keyed by the name shown.
         let name = m.shown_from_name();
@@ -350,7 +311,7 @@ fn card_avatar(m: &Message) -> String {
                 escape_html(&initials),
             ),
         }
-    })
+    }
 }
 
 /// One conversation card: header, banners, the message and its attachments.
@@ -562,9 +523,7 @@ fn card_html(cards: &Cards<'_>, m: &Message, ava_html: &str, body: String) -> St
         // (design feedback P2-2, 2026-11-04). Escaped like the sender:
         // recipient headers are attacker-controlled.
         sub = {
-            let names = to_line_names(m, |a| {
-                crate::services::avatar::account_face(a).is_some()
-            });
+            let names = to_line_names(m, crate::services::avatar::is_own_address);
             let to = if names.is_empty() {
                 String::new()
             } else {

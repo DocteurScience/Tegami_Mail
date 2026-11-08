@@ -2,8 +2,10 @@
 //!
 //! Not a window of its own: the panel is embedded behind the "Accounts" tab
 //! of the combined Accounts & Preferences window (see `ui/preferences.rs`).
-//! It uses an `AdwNavigationView` with two pages: a list of accounts (drag rows
-//! to set the sidebar order) and a reusable editor form pushed on top.
+//! Its account list goes on the dialog's Accounts page (screen 26); the
+//! account page and its sub-pages (28 to 34) are pushed over the dialog.
+//! Its own `AdwNavigationView` holds the tags, filters, smart folders and
+//! senders pages, and the editors pushed over them.
 
 use adw::prelude::*;
 use relm4::prelude::*;
@@ -44,11 +46,12 @@ use aliases::AliasDialog;
 pub(crate) use editor::AccountSecrets;
 pub(crate) use form::non_ellipsizing_factory;
 use form::{
-    apply_protocol, clear_editor, fill_editor, form_protocol, import_avatar_file, mount_editor,
-    parse_color, read_account, set_connection_editable, show_quota, trimmed,
+    apply_protocol, clear_editor, fill_editor, form_protocol, parse_color, read_account,
+    set_connection_editable, show_quota, trimmed,
 };
 pub(crate) use messages::{AccountsCmd, AccountsInit, AccountsInput, AccountsOutput, TagProposal};
 pub(crate) use oauth::open_online_accounts;
+pub(crate) use pages::ACCOUNTS_LIST_NAME;
 use pages::{AccountsPage, EditorForm, FiltersPage, SendersPage, SmartPage, TagsPage};
 use providers::provider_at;
 pub(crate) use providers::{brand_for_goa, provider_factory, Provider, PROVIDERS};
@@ -73,9 +76,6 @@ pub(crate) struct AccountsWindow {
     /// Filter rules (#47), managed on this tab.
     filter_rules: Vec<crate::config::FilterRule>,
     filters_list: Option<gtk::ListBox>,
-    /// The On This Computer group (#552), shown while there is no such
-    /// account to add it as.
-    local_group: Option<adw::PreferencesGroup>,
     /// The filters page's search text, read by the list's filter function.
     filters_query: std::rc::Rc<std::cell::RefCell<String>>,
     /// The open filter or tag page's Save: reads the form and hands the
@@ -114,20 +114,9 @@ pub(crate) struct AccountsWindow {
     sent_copy_paths: Vec<String>,
     /// Index being edited; `None` while adding a new account.
     editing: Option<usize>,
-    /// Emoji currently chosen in the editor (`None` → use initials).
-    emoji: Option<String>,
-    /// Avatar picture chosen in the editor (#162): its file name under the
-    /// avatars directory.
-    avatar: Option<String>,
-    /// The preview circle's color, as a stylesheet on the display.
-    preview_css: gtk::CssProvider,
     /// The account list's per-row disc colors (`.acct-list-color-N`),
     /// rewritten on every rebuild.
     list_css: gtk::CssProvider,
-    /// The "Circle shows" toggle: a picture, or initials/emoji. Only the
-    /// chosen side is saved; the other side's choice stays in the editor
-    /// so flipping back and forth loses nothing.
-    picture_mode: bool,
     /// What the account editor held when it opened, so leaving an untouched
     /// one asks nothing. `None` while no editor is open — or when something
     /// filled the form without recording it, where the safe answer is that
@@ -179,9 +168,10 @@ pub(crate) struct AccountsWindow {
     /// What the directory switch is known to show, so the notify that
     /// filling the editor sets off is not taken for the user turning it on.
     directory_on: bool,
-    /// The same two for the sensitivity label names (#411).
+    /// The same for the sensitivity label names (#411), whose switch is
+    /// gone (docs/DESIGN.md, "Accounts"): an account that has them keeps
+    /// them on Save.
     labels_granted: bool,
-    labels_on: bool,
     /// The send-as aliases being edited for the account in the editor (#34).
     /// Committed to the account on Save.
     alias_edits: Vec<AliasConfig>,
@@ -241,9 +231,6 @@ impl Component for AccountsWindow {
                             set_vhomogeneous: false,
 
                             #[local_ref]
-                            add_named[Some("accounts")] = accounts_page -> adw::PreferencesPage {},
-
-                            #[local_ref]
                             add_named[Some("tags")] = tags_page -> adw::PreferencesPage {},
 
                             #[local_ref]
@@ -255,42 +242,6 @@ impl Component for AccountsWindow {
                             #[local_ref]
                             add_named[Some("senders")] = senders_page -> adw::PreferencesPage {},
                         },
-                    },
-                },
-
-                // ---- editor page ---- (taken out of the view until an
-                // editor opens: see `mount_editor`)
-                #[name = "editor_page"]
-                add = &adw::NavigationPage {
-                    set_title: &i18n("Account"),
-                    set_tag: Some("editor"),
-
-                    #[wrap(Some)]
-                    set_child = &adw::ToolbarView {
-                        add_top_bar = &adw::HeaderBar {
-                            // The window's close button lives here while the
-                            // editor is up (the shared header hides), so it
-                            // is never out of reach.
-                            set_show_end_title_buttons: true,
-                            pack_end = &gtk::Button {
-                                set_label: &i18n("Save"),
-                                add_css_class: "suggested-action",
-                                connect_clicked => AccountsInput::Save,
-                            },
-                            // Left of Save, only while editing an existing
-                            // account; asks before removing.
-                            #[name = "remove_btn"]
-                            pack_end = &gtk::Button {
-                                set_label: &i18n("Remove"),
-                                add_css_class: "destructive-action",
-                                set_visible: false,
-                                connect_clicked => AccountsInput::RemoveCurrent,
-                            },
-                        },
-
-                        #[wrap(Some)]
-                        #[local_ref]
-                        set_content = editor_form -> adw::PreferencesPage {},
                     },
                 },
             },
@@ -312,7 +263,6 @@ impl Component for AccountsWindow {
         senders_box.set_visible(!model.sender_addrs.is_empty());
         blacklist_box.set_visible(!model.blacklist_addrs.is_empty());
         let accounts = AccountsPage::build(&sender);
-        let accounts_page = &accounts.page;
         let tags = TagsPage::build(&sender);
         let tags_page = &tags.page;
         let smart = SmartPage::build(&sender);
@@ -322,8 +272,13 @@ impl Component for AccountsWindow {
         let senders = SendersPage::build(&sender, senders_box, blacklist_box);
         let senders_page = &senders.page;
         let form = EditorForm::build(&sender);
-        let editor_form = &form.page;
         let widgets = view_output!();
+        // Held by the panel only until the preferences dialog moves it onto
+        // its Accounts page (`ui::preferences::dialog::mount_accounts_list`),
+        // where it finds it by name.
+        widgets
+            .list_stack
+            .add_named(&widgets.accounts.accounts_list, Some("accounts"));
         prepare_editor_page(&widgets, &sender);
         tracing::debug!(
             "settings window: accounts view built in {:?}",
@@ -350,17 +305,24 @@ impl Component for AccountsWindow {
     ) {
         match message {
             AccountsInput::ShowPage(id) => {
-                widgets.list_stack.set_visible_child_name(&id);
+                // The account list itself is on the dialog's Accounts page.
+                if widgets.list_stack.child_by_name(&id).is_some() {
+                    widgets.list_stack.set_visible_child_name(&id);
+                }
             }
             AccountsInput::RefreshGoa => self.on_refresh_goa(widgets, sender),
             AccountsInput::CloseEditor => self.on_close_editor(widgets),
             AccountsInput::ReleaseSignatureEditor => self.on_release_signature_editor(widgets),
             AccountsInput::DebugEditLabel(text) => widgets.form.label_row.set_text(&text),
             AccountsInput::DebugProvider(label) => self.on_debug_provider(label, widgets),
+            AccountsInput::DebugSubpage(sub) => self.on_debug_subpage(&sub, widgets),
             AccountsInput::SearchFilters(text) => self.on_search_filters(text, widgets),
             AccountsInput::SearchSenders(text) => self.on_search_senders(text),
             AccountsInput::AddAccount => self.on_add_account(widgets, sender),
             AccountsInput::AddLocal => self.on_add_local(widgets, sender),
+            AccountsInput::AddMenu => self.on_add_menu(widgets, &sender),
+            AccountsInput::ShowGoa => self.on_show_goa(widgets, sender),
+            AccountsInput::PickImport => self.on_pick_import(widgets, sender, root),
             AccountsInput::ImportLocal(mbox) => {
                 super::accounts::local::pick_import(mbox, &sender, root)
             }
@@ -377,26 +339,16 @@ impl Component for AccountsWindow {
                 self.on_toggle_current_enabled(enabled, widgets, sender)
             }
             AccountsInput::ImportGoa(index) => self.on_import_goa(index, widgets, sender),
-            AccountsInput::SetEmoji(text) => self.on_set_emoji(text, widgets),
-            AccountsInput::ClearGlyph => self.on_clear_glyph(widgets),
             AccountsInput::SetServerSavesSent(on) => self.on_set_server_saves_sent(on, widgets),
             AccountsInput::SetFolderSort { email, sort } => {
                 self.on_set_folder_sort(email, sort, widgets)
             }
-            AccountsInput::SetOwnGravatar(on) => self.on_set_own_gravatar(on, widgets, sender),
-            AccountsInput::SetPictureMode(on) => self.on_set_picture_mode(on, widgets),
-            AccountsInput::RefreshPreview => self.refresh_preview(widgets),
-            AccountsInput::PickAvatar => self.on_pick_avatar(sender, root),
-            AccountsInput::SetAvatar(name) => self.on_set_avatar(name, widgets),
             AccountsInput::TestConnection => self.on_test_connection(widgets, sender),
             AccountsInput::ProtocolChanged => self.on_protocol_changed(widgets),
             AccountsInput::ProviderChanged => self.on_provider_changed(widgets),
             AccountsInput::OAuthSignIn => self.on_oauth_sign_in(widgets, sender, root),
             AccountsInput::SetGraphDirectory(on) => {
                 self.on_set_graph_directory(on, widgets, sender, root)
-            }
-            AccountsInput::SetGraphLabels(on) => {
-                self.on_set_graph_labels(on, widgets, sender, root)
             }
             AccountsInput::OpenOnlineAccounts => open_online_accounts(),
             AccountsInput::Save => self.on_save(widgets, sender),
@@ -478,9 +430,6 @@ impl Component for AccountsWindow {
         _root: &Self::Root,
     ) {
         match result {
-            AccountsCmd::OwnGravatar { email, outcome } => {
-                self.on_own_gravatar_fetched(email, outcome, widgets, sender)
-            }
             AccountsCmd::GoaListed(listed) => self.on_goa_listed(listed, widgets, sender),
             AccountsCmd::Secrets(session, secrets) => {
                 self.on_secrets_read(session, secrets, widgets, sender)
@@ -488,7 +437,6 @@ impl Component for AccountsWindow {
             AccountsCmd::Test(result) => self.on_connection_tested(result, widgets),
             AccountsCmd::OAuth(result) => self.on_signed_in(result, widgets),
             AccountsCmd::DirectoryConsent(result) => self.on_directory_consent(result, widgets),
-            AccountsCmd::LabelsConsent(result) => self.on_labels_consent(result, widgets),
             AccountsCmd::AliasTested(result) => self.on_alias_tested(result),
         }
     }

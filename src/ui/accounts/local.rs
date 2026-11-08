@@ -1,5 +1,6 @@
-//! The On This Computer account (#552) in Settings → Accounts: added with
-//! one button, and edited for what it has, its name, look and folders.
+//! The On This Computer account (#552) in Settings → Accounts: added from
+//! the Add account menu, and edited for what it has, its name, look and
+//! folders; and the mail imported into it from another program.
 
 use super::*;
 
@@ -43,23 +44,19 @@ impl AccountsWindow {
 /// the provider and protocol decide on are left to them.
 pub(super) fn show_local_state(widgets: &AccountsWindowWidgets, local: bool) {
     let f = &widgets.form;
-    for group in [&f.aliases_group, &f.signatures_group, &f.openpgp_group] {
-        group.set_visible(!local);
-    }
-    f.import_group.set_visible(local);
-    // Of Syncing, only the emptying of Junk and Trash applies.
-    f.syncing_group.set_visible(true);
     for row in [
-        f.offline_mail_row.upcast_ref::<gtk::Widget>(),
-        f.copy_local_row.upcast_ref(),
+        &f.servers_link,
+        &f.aliases_link,
+        &f.signatures_link,
+        &f.openpgp_link,
     ] {
         row.set_visible(!local);
     }
-    // Sent, Drafts and Templates are for mail written here, and none is;
-    // a Gravatar is looked up by an address, and there is none.
+    // Of Synchronisation, only the emptying of Junk and Trash applies.
+    f.offline_group.set_visible(!local);
+    // Sent, Drafts and Templates are for mail written here, and none is.
     for row in [
-        f.gravatar_row.upcast_ref::<gtk::Widget>(),
-        f.folder_sent_row.upcast_ref(),
+        f.folder_sent_row.upcast_ref::<gtk::Widget>(),
         f.folder_sent_copy_row.upcast_ref(),
         f.server_saves_row.upcast_ref(),
         f.folder_drafts_row.upcast_ref(),
@@ -87,7 +84,6 @@ pub(super) fn show_local_state(widgets: &AccountsWindowWidgets, local: bool) {
         f.oauth_auth_url_row.upcast_ref(),
         f.oauth_token_url_row.upcast_ref(),
         f.oauth_scope_row.upcast_ref(),
-        f.ms_advanced.upcast_ref(),
         f.oauth_signin_btn.upcast_ref(),
         f.oauth_status.upcast_ref(),
         f.goa_hint.upcast_ref(),
@@ -95,16 +91,17 @@ pub(super) fn show_local_state(widgets: &AccountsWindowWidgets, local: bool) {
         f.smtp_user_row.upcast_ref(),
         f.smtp_pass_row.upcast_ref(),
         f.tls_mismatch_row.upcast_ref(),
-        f.test_btn.upcast_ref(),
-        f.test_result.upcast_ref(),
+        f.test_group.upcast_ref(),
+        f.ms_client_row.upcast_ref(),
+        f.ms_tenant_row.upcast_ref(),
+        f.ms_scopes_row.upcast_ref(),
+        f.ms_redirect_row.upcast_ref(),
         f.reply_copies_row.upcast_ref(),
-        f.push_row.upcast_ref(),
-        f.clean_lists_row.upcast_ref(),
+        f.push_group.upcast_ref(),
         f.offline_attachments_row.upcast_ref(),
         f.goa_banner.upcast_ref(),
         f.quota_group.upcast_ref(),
         f.graph_group.upcast_ref(),
-        f.keyring_note.upcast_ref(),
     ] {
         w.set_visible(false);
     }
@@ -114,6 +111,38 @@ pub(super) fn show_local_state(widgets: &AccountsWindowWidgets, local: bool) {
     let icon = gtk::Image::from_icon_name(LOCAL_ICON);
     icon.set_pixel_size(56);
     f.provider_mark.append(&icon);
+}
+
+impl AccountsWindow {
+    /// "Import from Thunderbird or Evolution…" (screen 27): which kind of
+    /// folders, then the folders. The mail lands in On This Computer,
+    /// added first when there is none.
+    pub(super) fn on_pick_import(
+        &mut self,
+        widgets: &AccountsWindowWidgets,
+        sender: ComponentSender<Self>,
+        root: &adw::Bin,
+    ) {
+        if !self.accounts.iter().any(AccountConfig::is_local) {
+            self.on_add_local(widgets, sender.clone());
+        }
+        let dialog = adw::AlertDialog::new(
+            Some(&i18n("Import mail")),
+            Some(&i18n("Mail already here is not imported again.")),
+        );
+        dialog.add_response("cancel", &i18n("Cancel"));
+        dialog.add_response("maildir", &i18n("Evolution (Maildir)"));
+        dialog.add_response("mbox", &i18n("Thunderbird (mbox)"));
+        dialog.set_default_response(Some("mbox"));
+        dialog.set_close_response("cancel");
+        let s = sender.input_sender().clone();
+        dialog.connect_response(None, move |_, response| match response {
+            "maildir" => s.emit(AccountsInput::ImportLocal(false)),
+            "mbox" => s.emit(AccountsInput::ImportLocal(true)),
+            _ => {}
+        });
+        dialog.present(Some(root));
+    }
 }
 
 /// Pick what to import (#552): a Maildir tree, opening on Evolution's own

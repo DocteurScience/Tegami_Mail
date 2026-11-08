@@ -522,7 +522,6 @@ impl AppModel {
                 self.rebuild_sidebar();
                 // A picture, an emoji or the Gravatar switch may have
                 // changed with this edit (#189).
-                self.warm_own_gravatars(&sender);
                 self.refresh_faces();
                 if !display_only {
                     self.reconnect_all(&sender);
@@ -558,7 +557,6 @@ impl AppModel {
             tracing::warn!("could not save the demo accounts: {e}");
         }
         self.rebuild_sidebar();
-        self.warm_own_gravatars(sender);
         self.refresh_faces();
         if unified_changed {
             self.reload_unified_views(self.unified.then_some(self.unified_view), sender);

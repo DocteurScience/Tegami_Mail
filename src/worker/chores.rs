@@ -70,29 +70,6 @@ pub(super) fn graph_before_date(days: u32) -> String {
     cutoff.format("%Y-%m-%dT%H:%M:%SZ").to_string()
 }
 
-/// Whether moving old list mail (#407) is due, on the same terms as
-/// [`auto_empty_due`]: set for the account, and not run in the last
-/// [`AUTO_EMPTY_MIN`] on this connection.
-pub(super) fn clean_lists_due(
-    account: &AccountConfig,
-    last: &mut Option<std::time::Instant>,
-) -> bool {
-    if account.clean_lists_days == 0 || last.is_some_and(|t| t.elapsed() < AUTO_EMPTY_MIN) {
-        return false;
-    }
-    *last = Some(std::time::Instant::now());
-    true
-}
-
-/// The candidates for the list clean-up (#407), as an IMAP search: older
-/// than the cut-off and not starred. Which of them are list mail is read
-/// from their headers: a `HEADER List-Unsubscribe ""` search would be one
-/// round trip, but not every server answers it (Stalwart searches only the
-/// headers it indexes, and finds nothing).
-pub(super) fn clean_lists_query(days: u32) -> String {
-    format!("UNFLAGGED BEFORE {}", imap_before_date(days))
-}
-
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -153,20 +130,6 @@ mod tests {
         assert!(!auto_empty_due(&acc, &mut last), "just ran");
         last = Some(std::time::Instant::now() - AUTO_EMPTY_MIN - Duration::from_secs(1));
         assert!(auto_empty_due(&acc, &mut last));
-    }
-
-    /// Moving list mail (#407) runs on the same terms: set, and not twice
-    /// within the interval. Its search leaves starred mail out.
-    #[test]
-    fn list_clean_up_is_throttled_and_spares_starred_mail() {
-        let mut acc = sample_account();
-        let mut last = None;
-        assert!(!clean_lists_due(&acc, &mut last), "not set");
-        acc.clean_lists_days = 90;
-        assert!(clean_lists_due(&acc, &mut last));
-        assert!(!clean_lists_due(&acc, &mut last), "just ran");
-        let q = clean_lists_query(90);
-        assert!(q.starts_with("UNFLAGGED BEFORE "), "{q}");
     }
 
     /// IMAP wants "1-Aug-2026" (no zero padding); Graph an RFC 3339 instant.

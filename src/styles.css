@@ -73,12 +73,16 @@ headerbar.rail-header {
   border-radius: 15px;
 }
 
-/* The account editor's preview circle: a 72px disc whose color comes
-   from a stylesheet the editor rewrites as the color button changes. */
-.account-preview-disc {
-  min-width: 72px;
-  min-height: 72px;
-  border-radius: 36px;
+/* On This Computer's circle in the account list: a folder on a neutral
+   disc (screen 26). */
+.account-local-circle {
+  background-color: alpha(currentColor, 0.1);
+}
+
+/* A row that acts rather than sets ("Add account…", "Test connection",
+   screens 26 and 29 to 33): its title and icon in the accent colour. */
+row.add-row {
+  color: @accent_color;
 }
 
 /* Inbox rows nested under "All Inboxes": no indent so their account pills
@@ -207,16 +211,6 @@ headerbar.rail-header {
   padding: 14px 12px;
 }
 
-/* Badge marking where an account comes from (GNOME Online Accounts vs Tegami Mail). */
-.account-source-badge {
-  font-size: 0.72em;
-  font-weight: 700;
-  padding: 1px 8px;
-  border-radius: 9999px;
-  background: alpha(currentColor, 0.1);
-  opacity: 0.6;
-}
-
 /* The tile that marks an account by protocol when it has no provider's
    logo (brand::mark). Fixed colors, as a provider's logo has: the IMAP blue,
    the POP3 red and the deeper JMAP red take white text, the OAuth yellow
@@ -252,12 +246,6 @@ headerbar.rail-header {
 .protocol-pill.oauth {
   background-color: #fec11e;
   color: #241f31;
-}
-
-.account-source-badge.goa {
-  background-color: alpha(@accent_bg_color, 0.18);
-  color: @accent_color;
-  opacity: 1;
 }
 
 /* Recipient autocomplete: highlight the keyboard-selected suggestion. */
@@ -2132,3 +2120,12 @@ dialog.preferences viewswitcher button image {
   padding: 0;
 }
 
+
+/* The icons before the Accounts page's rows, each on a neutral disc
+   (screen 26). */
+image.pref-row-icon {
+  min-width: 32px;
+  min-height: 32px;
+  border-radius: 16px;
+  background-color: alpha(currentColor, 0.08);
+}

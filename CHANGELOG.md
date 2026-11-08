@@ -2,6 +2,23 @@
 
 ## Unreleased
 
+- **Changed: the Accounts page and the account page** (docs/DESIGN.md,
+  "Accounts"; screens 26 to 34). The accounts are listed at the top of
+  Preferences → Accounts, each with its name and address, and end with
+  **Add account…**: an e-mail account, a GNOME Online Account (on a page of
+  its own), local mail on this computer, or mail imported from Thunderbird
+  or Evolution. An account's page holds its name, address, nickname, colour,
+  combined views and storage, then one row each for **Servers and
+  connection**, **Synchronisation**, **Folders**, **Send-as aliases**,
+  **Signatures** and **OpenPGP encryption**, and **Remove account** last.
+  The rare fields are under **Advanced** on their page; the connection test
+  answers with an icon and a sentence; "Manage keys" opens the OpenPGP keys.
+- **Removed (approved in docs/DESIGN.md, "Removed or moved"): the account
+  circle's picture, emoji and Gravatar**, now always its initials on its
+  colour; **moving list mail to the Trash**, which no longer runs; and
+  **"Show sensitivity label names"** for Microsoft 365. Each keeps the value
+  it had.
+
 - **Changed: Privacy holds three settings** (screen 24). **Images and
   remote content** is Never, Ask or Always, read from the former "Always
   load remote content" and "Warn when remote content is blocked"; **Sender

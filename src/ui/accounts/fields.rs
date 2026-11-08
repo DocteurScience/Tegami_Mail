@@ -1,4 +1,4 @@
-//! The account editor's fields as they change: the circle, the provider
+//! The account editor's fields as they change: the provider
 //! and protocol, the connection test, and what the app reports about the
 //! account (folders, quota, server identities).
 
@@ -20,20 +20,6 @@ impl AccountsWindow {
             widgets.form.label_row.set_text(&email);
         }
         self.label_synced = email;
-    }
-
-    pub(super) fn on_set_emoji(&mut self, text: String, widgets: &AccountsWindowWidgets) {
-        self.emoji = Some(text);
-        self.refresh_preview(widgets);
-    }
-
-    pub(super) fn on_clear_glyph(&mut self, widgets: &AccountsWindowWidgets) {
-        if self.picture_mode {
-            self.avatar = None;
-        } else {
-            self.emoji = None;
-        }
-        self.refresh_preview(widgets);
     }
 
     pub(super) fn on_set_server_saves_sent(&mut self, on: bool, widgets: &AccountsWindowWidgets) {
@@ -58,79 +44,14 @@ impl AccountsWindow {
         }
     }
 
-    pub(super) fn on_set_own_gravatar(
-        &mut self,
-        on: bool,
-        widgets: &AccountsWindowWidgets,
-        sender: ComponentSender<Self>,
-    ) {
-        // Look it up as soon as it is asked for, so the preview can
-        // answer rather than waiting for the account to be saved.
-        let address = trimmed(&widgets.form.email_row);
-        if on && !address.is_empty() && crate::services::avatar::wants_own_gravatar(&address) {
-            sender.oneshot_command(async move {
-                let outcome = tokio::task::spawn_blocking({
-                    let address = address.clone();
-                    move || crate::services::avatar::fetch_own_gravatar(&address)
-                })
-                .await
-                .unwrap_or(crate::services::avatar::FetchOutcome::Retry);
-                AccountsCmd::OwnGravatar {
-                    email: address,
-                    outcome,
-                }
-            });
-        }
-        self.refresh_preview(widgets);
-    }
-
-    pub(super) fn on_set_picture_mode(&mut self, on: bool, widgets: &AccountsWindowWidgets) {
-        if self.picture_mode != on {
-            self.picture_mode = on;
-            self.refresh_preview(widgets);
-        }
-    }
-
-    pub(super) fn on_pick_avatar(&mut self, sender: ComponentSender<Self>, root: &adw::Bin) {
-        let dialog = gtk::FileDialog::builder()
-            .title(i18n("Choose a picture"))
-            .build();
-        let filter = gtk::FileFilter::new();
-        filter.set_name(Some(&i18n("Images")));
-        filter.add_pixbuf_formats();
-        let filters = gtk::gio::ListStore::new::<gtk::FileFilter>();
-        filters.append(&filter);
-        dialog.set_filters(Some(&filters));
-        dialog.set_default_filter(Some(&filter));
-        // The panel is a Bin inside the Settings window; the
-        // dialog wants that window.
-        let parent = root.root().and_then(|r| r.downcast::<gtk::Window>().ok());
-        let s = sender.clone();
-        dialog.open(parent.as_ref(), gtk::gio::Cancellable::NONE, move |res| {
-            let Ok(file) = res else { return };
-            let Some(path) = file.path() else { return };
-            match import_avatar_file(&path) {
-                Ok(name) => s.input_sender().emit(AccountsInput::SetAvatar(name)),
-                Err(e) => tracing::warn!("could not import avatar {}: {e}", path.display()),
-            }
-        });
-    }
-
-    pub(super) fn on_set_avatar(&mut self, name: String, widgets: &AccountsWindowWidgets) {
-        self.avatar = Some(name);
-        self.refresh_preview(widgets);
-    }
-
     pub(super) fn on_test_connection(
         &mut self,
         widgets: &AccountsWindowWidgets,
         sender: ComponentSender<Self>,
     ) {
-        let account = read_account(widgets, self.saved_emoji(), self.saved_avatar());
+        let account = read_account(widgets);
         widgets.form.test_btn.set_sensitive(false);
-        widgets.form.test_result.set_visible(true);
-        widgets.form.test_result.set_css_classes(&["dim-label"]);
-        widgets.form.test_result.set_label(&i18n("Testing…"));
+        show_test_result(widgets, None, &i18n("Testing…"), "");
         sender.oneshot_command(async move {
             let r = tokio::task::spawn_blocking(move || worker::test_connection_blocking(account))
                 .await
@@ -203,39 +124,20 @@ impl AccountsWindow {
         }
     }
 
-    pub(super) fn on_own_gravatar_fetched(
-        &mut self,
-        email: String,
-        outcome: crate::services::avatar::FetchOutcome,
-        widgets: &AccountsWindowWidgets,
-        sender: ComponentSender<Self>,
-    ) {
-        // Cached for every other circle in the app as well; the
-        // preview only redraws while that address is still in the
-        // editor, and the accounts list redraws its circles so one
-        // that landed after the list was built shows there too.
-        let found = crate::services::avatar::cache_own_gravatar(&email, outcome);
-        if found && trimmed(&widgets.form.email_row).eq_ignore_ascii_case(&email) {
-            self.refresh_preview(widgets);
-        }
-        if found {
-            self.rebuild_account_list(&widgets.accounts.accounts_list, &sender);
-        }
-    }
-
     pub(super) fn on_connection_tested(
         &mut self,
         result: ConnTest,
         widgets: &AccountsWindowWidgets,
     ) {
+        // One line per side that failed, with what the server said.
         let line = |label: &str, r: &Result<(), String>| {
             match r {
-            Ok(()) => format!("✓ {label}: connected"),
-            Err(e) if crate::worker::is_hostname_mismatch(e) => format!(
-                "✗ {label}: {e}\n   {}",
-                i18n("The certificate is for another name. If this server is the right one, turn on “Accept a certificate for another name” above and test again.")
-            ),
-            Err(e) => format!("✗ {label}: {e}"),
+            Ok(()) => None,
+            Err(e) if crate::worker::is_hostname_mismatch(e) => Some(format!(
+                "{label}: {e}\n{}",
+                i18n("The certificate is for another name. If this server is the right one, turn on “Accept a certificate for another name” under Advanced and test again.")
+            )),
+            Err(e) => Some(format!("{label}: {e}")),
         }
         };
         let protocol = form_protocol(widgets);
@@ -244,23 +146,59 @@ impl AccountsWindow {
             Protocol::Jmap => "JMAP",
             _ => "IMAP",
         };
-        // A JMAP account sends through the server: no SMTP line.
-        let text = if protocol == Protocol::Jmap {
-            line(incoming_label, &result.incoming)
+        let mut failures = vec![line(incoming_label, &result.incoming)];
+        // A JMAP account sends through the server: no SMTP side.
+        if protocol != Protocol::Jmap {
+            failures.push(line("SMTP", &result.smtp));
+        }
+        let failures: Vec<String> = failures.into_iter().flatten().collect();
+        if failures.is_empty() {
+            show_test_result(
+                widgets,
+                Some(true),
+                &i18n("Connected: receiving and sending work."),
+                "",
+            );
         } else {
-            format!(
-                "{}\n{}",
-                line(incoming_label, &result.incoming),
-                line("SMTP", &result.smtp),
-            )
-        };
-        let class = if result.incoming.is_ok() && result.smtp.is_ok() {
-            "success"
-        } else {
-            "error"
-        };
-        widgets.form.test_result.set_label(&text);
-        widgets.form.test_result.set_css_classes(&[class]);
+            show_test_result(
+                widgets,
+                Some(false),
+                &i18n("The connection failed."),
+                &failures.join("\n"),
+            );
+        }
         widgets.form.test_btn.set_sensitive(true);
     }
+}
+
+/// The connection test's row (screen 29): an icon — a check, or an error
+/// sign, none while it runs — and a sentence, the server's own words
+/// under it. Both can be copied out (#246).
+pub(super) fn show_test_result(
+    widgets: &AccountsWindowWidgets,
+    ok: Option<bool>,
+    title: &str,
+    detail: &str,
+) {
+    let row = &widgets.form.test_result;
+    let icon = &widgets.form.test_icon;
+    row.set_visible(true);
+    row.set_title(title);
+    row.set_subtitle(detail);
+    row.set_subtitle_selectable(!detail.is_empty());
+    for class in ["success", "error"] {
+        icon.remove_css_class(class);
+    }
+    match ok {
+        Some(true) => {
+            icon.set_icon_name(Some("object-select-symbolic"));
+            icon.add_css_class("success");
+        }
+        Some(false) => {
+            icon.set_icon_name(Some("dialog-error-symbolic"));
+            icon.add_css_class("error");
+        }
+        None => icon.set_icon_name(None),
+    }
+    icon.set_visible(ok.is_some());
 }

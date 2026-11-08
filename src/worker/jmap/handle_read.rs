@@ -8,7 +8,7 @@ use crate::i18n::{i18n, i18n_f};
 use crate::models::KeywordFinding;
 use crate::worker::ids::hash_uid;
 use crate::worker::index_queue::IndexQueue;
-use crate::worker::jmap::chores::{auto_empty_jmap, clean_lists_jmap, emit_jmap_body_hits};
+use crate::worker::jmap::chores::{auto_empty_jmap, emit_jmap_body_hits};
 use crate::worker::jmap::folders::{jmap_refresh_unread, refresh_jmap_folders};
 use crate::worker::jmap::index::{jmap_load_folder, jmap_sync_folder};
 use crate::worker::jmap::messages::{jmap_get_messages, jmap_query_ids};
@@ -370,7 +370,6 @@ impl<E: Fn(WorkerEvent)> JmapWorker<E> {
         let cache = &self.cache;
         let state = &mut self.state;
         let last_auto_empty = &mut self.last_auto_empty;
-        let last_list_clean = &mut self.last_list_clean;
         let emit = &self.emit;
         if let Some(s) = jmap_session(account, state, &|_| {}).await {
             jmap_refresh_unread(&s, account_id, cache.as_ref(), state, emit).await;
@@ -381,16 +380,6 @@ impl<E: Fn(WorkerEvent)> JmapWorker<E> {
                 cache.as_ref(),
                 state,
                 last_auto_empty,
-                emit,
-            )
-            .await;
-            clean_lists_jmap(
-                &s,
-                account_id,
-                account,
-                cache.as_ref(),
-                state,
-                last_list_clean,
                 emit,
             )
             .await;

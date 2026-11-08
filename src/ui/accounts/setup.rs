@@ -3,10 +3,7 @@
 //! `init` runs it.
 
 use super::account_list::importable_goa_accounts;
-use super::form::{
-    age_labels, auto_empty_labels, left_justify_wrapping_labels, row_matches, wrap_subtitle,
-    CLEAN_LISTS_DAYS,
-};
+use super::form::{auto_empty_labels, left_justify_wrapping_labels, row_matches, wrap_subtitle};
 use super::*;
 
 impl AccountsWindow {
@@ -38,11 +35,7 @@ impl AccountsWindow {
         let mut model = AccountsWindow {
             accounts: init.accounts,
             editing: None,
-            emoji: None,
-            avatar: None,
-            preview_css: gtk::CssProvider::new(),
             list_css: gtk::CssProvider::new(),
-            picture_mode: false,
             editor_seed: None,
             sig_editor: None,
             sig_source_btn,
@@ -61,7 +54,6 @@ impl AccountsWindow {
             directory_granted: false,
             directory_on: false,
             labels_granted: false,
-            labels_on: false,
             alias_edits: Vec::new(),
             server_identities: Vec::new(),
             hidden_edits: Vec::new(),
@@ -76,7 +68,6 @@ impl AccountsWindow {
             blacklist_addrs: Vec::new(),
             filter_rules: init.filters,
             filters_list: None,
-            local_group: None,
             filters_query: Default::default(),
             form_save: Default::default(),
             senders_query: Default::default(),
@@ -140,7 +131,6 @@ impl AccountsWindow {
         self.rebuild_tag_rows(sender);
         self.smart_list = Some(widgets.smart.smart_list.clone());
         self.rebuild_smart_rows(sender);
-        self.local_group = Some(widgets.accounts.local_group.clone());
         let t_list = std::time::Instant::now();
         self.rebuild_account_list(&widgets.accounts.accounts_list, sender);
         tracing::debug!(
@@ -178,27 +168,13 @@ impl AccountsWindow {
             .email_row
             .connect_changed(move |_| es.input_sender().emit(AccountsInput::EmailChanged));
 
-        // The preview circle follows the name, label and email (its
-        // initials) as they are typed; its color is a stylesheet.
+        // The list's circles take their colours from a stylesheet.
         if let Some(display) = gtk::gdk::Display::default() {
-            gtk::style_context_add_provider_for_display(
-                &display,
-                &self.preview_css,
-                gtk::STYLE_PROVIDER_PRIORITY_APPLICATION,
-            );
             gtk::style_context_add_provider_for_display(
                 &display,
                 &self.list_css,
                 gtk::STYLE_PROVIDER_PRIORITY_APPLICATION,
             );
-        }
-        for row in [
-            &widgets.form.name_row,
-            &widgets.form.label_row,
-            &widgets.form.email_row,
-        ] {
-            let s = sender.clone();
-            row.connect_changed(move |_| s.input_sender().emit(AccountsInput::RefreshPreview));
         }
     }
 }
@@ -225,18 +201,25 @@ pub(super) fn prepare_editor_page(
     // text does not naturally fill the label's width, stretching the word
     // gaps (most visible on Special Folders, whose description spans the
     // full width). Single-line row labels are untouched.
-    left_justify_wrapping_labels(&widgets.editor_page.clone().upcast());
-    // The editor's sixty-odd rows stay out of the widget tree until an
-    // editor opens, so the Settings window's first layout skips them.
-    widgets.nav.remove(&widgets.editor_page);
+    left_justify_wrapping_labels(&widgets.form.editor_page.clone().upcast());
+    for page in &widgets.form.sub_pages {
+        left_justify_wrapping_labels(page.upcast_ref());
+    }
     {
-        // Leaving the editor page (however it was left) lets its
-        // signature view go; see ReleaseSignatureEditor.
+        // Leaving the account page (however it was left: Save, Back, a
+        // swipe) lets its signature view go; see ReleaseSignatureEditor.
+        // The page is taken out of the dialog once its slide is over,
+        // just after it says it is hidden; covered by a sub-page, it
+        // stays.
         let s = sender.clone();
-        widgets.nav.connect_popped(move |_, page| {
-            if page.tag().is_some_and(|t| t == "editor") {
-                s.input_sender().emit(AccountsInput::ReleaseSignatureEditor);
-            }
+        widgets.form.editor_page.connect_hidden(move |page| {
+            let page = page.clone();
+            let s = s.clone();
+            gtk::glib::idle_add_local_once(move || {
+                if page.parent().is_none() {
+                    s.input_sender().emit(AccountsInput::ReleaseSignatureEditor);
+                }
+            });
         });
     }
 }
@@ -276,6 +259,12 @@ pub(super) fn fill_editor_choices(widgets: &AccountsWindowWidgets) {
         .form
         .push_row
         .set_list_factory(Some(&non_ellipsizing_factory()));
+    // The chosen value whole, its hint wrapping beside it.
+    widgets
+        .form
+        .push_row
+        .set_factory(Some(&non_ellipsizing_factory()));
+    wrap_subtitle(&widgets.form.push_row, 30);
     let sort_labels: Vec<String> = std::iter::once(i18n("Follow settings"))
         .chain(crate::config::FolderSort::ALL.iter().map(|s| s.label()))
         .collect();
@@ -299,16 +288,6 @@ pub(super) fn fill_editor_choices(widgets: &AccountsWindowWidgets) {
         row.set_model(Some(&gtk::StringList::new(&empty_labels)));
         row.set_list_factory(Some(&non_ellipsizing_factory()));
     }
-    let list_labels = age_labels(CLEAN_LISTS_DAYS);
-    let list_labels: Vec<&str> = list_labels.iter().map(String::as_str).collect();
-    widgets
-        .form
-        .clean_lists_row
-        .set_model(Some(&gtk::StringList::new(&list_labels)));
-    widgets
-        .form
-        .clean_lists_row
-        .set_list_factory(Some(&non_ellipsizing_factory()));
     let offline_labels: Vec<String> = crate::config::OfflineMail::ALL
         .iter()
         .map(|o| o.label())

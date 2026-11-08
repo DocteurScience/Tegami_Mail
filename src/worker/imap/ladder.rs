@@ -11,7 +11,7 @@ use super::prefetch::{
     queue_attachment_prefetch, queue_body_prefetch, run_one_body_prefetch, run_one_prefetch,
 };
 use super::retry::load_messages_retry;
-use super::sweep::{auto_empty_imap, clean_lists_imap, emit_body_hits, refresh_unread_counts};
+use super::sweep::{auto_empty_imap, emit_body_hits, refresh_unread_counts};
 use super::watch::watch_changed_folders;
 use super::{Emit, ImapWorker, UNREAD_SWEEP_MIN};
 use crate::worker::preempt::interrupt_read_for_reader;
@@ -193,15 +193,6 @@ impl<E: Emit> ImapWorker<E> {
                 sess,
                 self.cache.as_ref(),
                 &mut self.last_auto_empty,
-                &self.emit,
-            )
-            .await;
-            clean_lists_imap(
-                account_id,
-                &self.account,
-                sess,
-                self.cache.as_ref(),
-                &mut self.last_list_clean,
                 &self.emit,
             )
             .await;

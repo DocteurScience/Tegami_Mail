@@ -80,8 +80,6 @@ impl AccountsWindow {
                     .any(|a| split_identity(&a.identity).1.eq_ignore_ascii_case(addr))
             })
             .collect();
-        // An empty boxed-list draws as a bare frame; hide it until there is a row.
-        list.set_visible(!self.alias_edits.is_empty() || !server.is_empty());
 
         for (i, alias) in self.alias_edits.iter().enumerate() {
             let row = adw::ActionRow::new();
@@ -124,6 +122,8 @@ impl AccountsWindow {
             ));
             list.append(&row);
         }
+        // Last, the way to add one (screen 32).
+        list.append(&super::pages::add_row(&i18n("Add alias…")));
     }
 
     /// Close the alias dialog, if one is open.
@@ -342,6 +342,7 @@ impl AccountsWindow {
             // dropped on Save, when the removal actually takes effect.
             self.alias_edits.remove(i);
             self.rebuild_alias_list(&widgets.form.aliases_list, &sender);
+            self.refresh_links(widgets);
         }
     }
 
@@ -416,6 +417,7 @@ impl AccountsWindow {
         self.alias_editing = None;
         self.close_alias_dialog();
         self.rebuild_alias_list(&widgets.form.aliases_list, &sender);
+        self.refresh_links(widgets);
     }
 
     pub(super) fn on_alias_dialog_test(

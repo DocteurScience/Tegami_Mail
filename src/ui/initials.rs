@@ -244,115 +244,19 @@ pub(super) fn glyph_picture(text: &str, bg_hex: &str, scale: f64, size: i32) -> 
 }
 
 thread_local! {
-    /// Account avatar pictures already loaded, by path and modification
-    /// time: the sidebar rebuilds often and must not read the file each
-    /// time.
-    static AVATAR_TEXTURES: RefCell<HashMap<(std::path::PathBuf, Option<std::time::SystemTime>), gdk::Texture>> =
-        RefCell::new(HashMap::new());
-}
-
-/// The texture behind an account's avatar picture, by path and modification
-/// time: the sidebar rebuilds often and must not read the file each time.
-pub(super) fn avatar_texture(path: &std::path::Path) -> Option<gdk::Texture> {
-    let mtime = std::fs::metadata(path).and_then(|m| m.modified()).ok();
-    let key = (path.to_path_buf(), mtime);
-    AVATAR_TEXTURES.with(|c| {
-        if let Some(t) = c.borrow().get(&key) {
-            return Some(t.clone());
-        }
-        let t = gdk::Texture::from_filename(path).ok()?;
-        c.borrow_mut().insert(key, t.clone());
-        Some(t)
-    })
-}
-
-/// An account's avatar picture (#162) for a disc of `size` px: the stored
-/// copy is square already, so it fills the disc and the disc clips it. An
-/// image at a fixed pixel size, not a picture: a picture's natural size is
-/// the texture's, and the disc (a box, whose size request is only a floor)
-/// would grow to it.
-pub(super) fn avatar_picture(path: &std::path::Path, size: i32) -> gtk::Image {
-    match avatar_texture(path) {
-        Some(texture) => picture_from_texture(&texture, size),
-        None => {
-            let image = gtk::Image::new();
-            image.set_pixel_size(size);
-            image
-        }
-    }
-}
-
-/// The same, for a picture already in hand rather than on disk — an
-/// account's Gravatar (#189), fetched and decoded elsewhere.
-pub(super) fn picture_from_texture(texture: &gdk::Texture, size: i32) -> gtk::Image {
-    let image = gtk::Image::from_paintable(Some(texture));
-    image.set_pixel_size(size);
-    image.set_halign(gtk::Align::Center);
-    image.set_valign(gtk::Align::Center);
-    image
-}
-
-/// One scaled copy of a picture: which file, as it was when read, at how
-/// many pixels.
-type PictureKey = (std::path::PathBuf, Option<std::time::SystemTime>, i32);
-
-thread_local! {
-    /// Account pictures already scaled for a document, by that key.
-    static PICTURE_URIS: RefCell<HashMap<PictureKey, String>> = RefCell::new(HashMap::new());
-}
-
-/// An account's avatar picture as a `data:` PNG for a reader card's circle
-/// (#189), `size` CSS pixels across. Scaled on the way in: the stored copy is
-/// 256px square, a conversation embeds one copy per card of yours, and none
-/// of that detail survives a 26px circle. Read through gdk-pixbuf rather than
-/// the window's renderer, so the document builder still needs no display.
-pub(super) fn picture_data_uri(path: &std::path::Path, size: i32) -> Option<String> {
-    // Twice the CSS size is what a HiDPI screen wants; a 300% screen would
-    // want three, which is not worth the bytes on every other screen.
-    let px = (size * 2).max(1);
-    let mtime = std::fs::metadata(path).and_then(|m| m.modified()).ok();
-    let key = (path.to_path_buf(), mtime, px);
-    if let Some(hit) = PICTURE_URIS.with(|c| c.borrow().get(&key).cloned()) {
-        return Some(hit);
-    }
-    let pixbuf = gtk::gdk_pixbuf::Pixbuf::from_file_at_scale(path, px, px, false).ok()?;
-    let png = pixbuf.save_to_bufferv("png", &[]).ok()?;
-    let uri = format!("data:image/png;base64,{}", glib::base64_encode(&png));
-    PICTURE_URIS.with(|c| {
-        c.borrow_mut().insert(key, uri.clone());
-    });
-    Some(uri)
-}
-
-thread_local! {
     /// Reader-card circles already rendered this session, by what they
     /// show: a conversation repeats its senders, and every render of the
     /// document would otherwise draw them again.
     static PNG_CACHE: RefCell<HashMap<(String, String, i32), String>> = RefCell::new(HashMap::new());
 }
 
-/// The session's circle caches, for the memory section of an export: account
-/// pictures as textures and their pixel bytes, then the rendered `data:` URIs
-/// (account pictures and initials circles together) and their bytes.
-pub(crate) fn cache_stats() -> (usize, u64, usize, usize) {
-    let (pictures, picture_bytes) = AVATAR_TEXTURES.with(|c| {
-        let c = c.borrow();
-        (
-            c.len(),
-            c.values()
-                .map(crate::desktop::memory_report::texture_bytes)
-                .sum(),
-        )
-    });
-    let (uris, uri_bytes) = PICTURE_URIS.with(|c| {
+/// The session's rendered reader-card circles, for the memory section of
+/// an export: how many, and their `data:` URIs' bytes.
+pub(crate) fn cache_stats() -> (usize, usize) {
+    PNG_CACHE.with(|c| {
         let c = c.borrow();
         (c.len(), c.values().map(String::len).sum::<usize>())
-    });
-    let (pngs, png_bytes) = PNG_CACHE.with(|c| {
-        let c = c.borrow();
-        (c.len(), c.values().map(String::len).sum::<usize>())
-    });
-    (pictures, picture_bytes, uris + pngs, uri_bytes + png_bytes)
+    })
 }
 
 /// `text` in `fg` on a flat `bg`, as a `data:` PNG for an `<img>` of `size` CSS

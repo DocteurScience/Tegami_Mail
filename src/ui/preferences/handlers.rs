@@ -60,6 +60,9 @@ impl Preferences {
         accounts: relm4::Sender<crate::ui::accounts::AccountsInput>,
     ) {
         self.accounts_sender = accounts;
+        if let Some(slot) = &self.accounts_list_slot {
+            super::dialog::mount_accounts_list(slot, &panel);
+        }
         if let Some(slot) = &self.accounts_slot {
             slot.set_child(Some(&panel));
         }

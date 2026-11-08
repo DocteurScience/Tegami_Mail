@@ -14,7 +14,7 @@ impl AccountsWindow {
             // page closes since its account is no longer in Tegami Mail.
             if !enabled && self.accounts.get(i).is_some_and(|a| a.goa_id.is_some()) {
                 self.unimport_goa(i, widgets, &sender);
-                widgets.nav.pop();
+                self.pop_editor(widgets);
                 return;
             }
             if let Some(acc) = self.accounts.get_mut(i) {
@@ -48,7 +48,7 @@ impl AccountsWindow {
         sender: ComponentSender<Self>,
     ) {
         widgets.form.host_row.remove_css_class("error");
-        let mut account = read_account(widgets, self.saved_emoji(), self.saved_avatar());
+        let mut account = read_account(widgets);
         account.aliases = self.alias_edits.clone();
         account.hidden_folders = self.hidden_edits.clone();
         account.folder_roles = self.read_folder_roles(widgets);
@@ -70,7 +70,10 @@ impl AccountsWindow {
         // Only once Microsoft has approved the scopes; an account from
         // GNOME Online Accounts cannot have them.
         account.graph_directory &= account.goa_id.is_none() && self.directory_granted;
-        account.graph_label_names &= account.goa_id.is_none() && self.labels_granted;
+        // Its switch is gone (DESIGN.md, "Accounts"): what was stored stays.
+        account.graph_label_names = editing_orig.as_ref().is_some_and(|o| o.graph_label_names)
+            && account.goa_id.is_none()
+            && self.labels_granted;
 
         self.apply_form_auth(&mut account, widgets);
 
@@ -129,7 +132,7 @@ impl AccountsWindow {
         if wants_local {
             self.on_add_local(widgets, sender.clone());
         }
-        widgets.nav.pop();
+        self.pop_editor(widgets);
     }
 
     /// Native account: authentication comes from the provider dropdown.
@@ -243,7 +246,7 @@ impl AccountsWindow {
                 widgets.accounts.goa_group.set_visible(!self.goa.is_empty());
             }
         }
-        widgets.nav.pop();
+        self.pop_editor(widgets);
     }
 }
 
@@ -259,12 +262,19 @@ fn keep_from_original(account: &mut AccountConfig, orig: &AccountConfig) {
     account.goa_id = orig.goa_id.clone();
     account.goa_mail_disabled = orig.goa_mail_disabled;
     account.goa_enabled_before_mail_disabled = orig.goa_enabled_before_mail_disabled;
+    // Settings the account page no longer offers (docs/DESIGN.md,
+    // "Accounts") keep what was stored: the circle's emoji, picture and
+    // Gravatar, and the list-mail cleanup, which nothing acts on now.
+    account.emoji = orig.emoji.clone();
+    account.avatar = orig.avatar.clone();
+    account.gravatar = orig.gravatar;
+    account.clean_lists_days = orig.clean_lists_days;
     if orig.goa_id.is_some() {
         account.oauth = orig.oauth;
         account.oauth_settings = orig.oauth_settings.clone();
         // GNOME Online Accounts is the source of truth for these;
         // Tegami Mail keeps only what it owns (display name, signature,
-        // color, emoji, label).
+        // colour, nickname).
         account.email = orig.email.clone();
         account.protocol = orig.protocol;
         account.imap_host = orig.imap_host.clone();
@@ -285,9 +295,6 @@ fn keep_from_original(account: &mut AccountConfig, orig: &AccountConfig) {
         kept.name = account.name.clone();
         kept.label = account.label.clone();
         kept.color = account.color.clone();
-        kept.emoji = account.emoji.clone();
-        kept.avatar = account.avatar.clone();
-        kept.gravatar = account.gravatar;
         kept.in_unified = account.in_unified;
         kept.empty_junk_days = account.empty_junk_days;
         kept.empty_trash_days = account.empty_trash_days;

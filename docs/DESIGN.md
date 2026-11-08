@@ -219,13 +219,18 @@ than one screen. Screens 22 to 48. The owner decided every removal below on
   test reports its result with an icon and a sentence.
 - Synchronisation (30): push, automatic emptying of Junk and Trash, and how long
   downloaded mail is kept ("As the application" by default, set in
-  Application). "Include attachments" and "Move list mail to Trash" are gone.
+  Application). "Move list mail to Trash" is gone. "Include attachments" and
+  "Copy mail to On This Computer" stay here (owner, 2026-11-08).
 - Folders (31): the five special folders by default on "Automatic"; templates,
   snoozed, reply copies and "server saves its own copy" under "Advanced";
   folder order; hidden folders.
 - Aliases (32), signatures (33), OpenPGP key for this account (34): as drawn.
-- "Copy mail to On This Computer" and the Maildir/mbox import rows leave the
-  account page.
+- The Maildir/mbox import rows leave the account page for the Add account
+  menu.
+- Kept on the account page by the owner (2026-11-08): the nickname, the
+  storage in use, the Save button in the header (sub-pages have Back only);
+  the provider is under "Advanced" in Servers and connection, over Incoming
+  while an account is being added.
 - Microsoft 365: keep "Search the organization directory", only for a Microsoft
   account. "Show sensitivity label names" is removed.
 

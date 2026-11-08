@@ -10,7 +10,6 @@ use crate::ui::message_window::MessageWindowInput;
 
 use super::demo::demo_mode;
 use super::model::AppModel;
-use super::msg::AppMsg;
 
 impl AppModel {
     /// The account to act on by default: the selected folder's account,
@@ -121,55 +120,14 @@ impl AppModel {
         self.config.get(account_id.saturating_sub(1) as usize)
     }
 
-    /// An account's avatar picture (#162), when one is set and its file is
-    /// still there.
-    pub(super) fn account_avatar(&self, account_id: u32) -> Option<std::path::PathBuf> {
-        self.account_config(account_id)
-            .and_then(|c| c.avatar.as_deref())
-            .and_then(config::avatar_path)
-    }
-
-    /// Custom avatar emoji for an account, if set.
-    pub(super) fn account_emoji(&self, account_id: u32) -> Option<String> {
-        // In demo mode the sample accounts' emoji come from the stand-in
-        // configs, which the Accounts panel can edit.
-        self.account_config(account_id)
-            .and_then(|c| c.emoji.clone())
-    }
-
-    /// Tell the face chain which addresses are the user's own, and what their
-    /// accounts show for them (#189): a mailbox given a picture wears it on
-    /// the mail it sent too — in a conversation's cards and in the list — and
-    /// not only in the sidebar. Refreshed with the sidebar, which is rebuilt
-    /// whenever the accounts change.
+    /// Tell the views which addresses are the user's own, every account's
+    /// and alias's, so the list's correspondents and the reader's To line
+    /// say "me" for them. Refreshed with the sidebar, which is rebuilt
+    /// whenever the accounts change. (An account's circle is always drawn
+    /// from its initials and colour: the picture, emoji and Gravatar
+    /// choices went with docs/DESIGN.md, "Preferences".)
     pub(super) fn refresh_own_faces(&self) {
-        crate::services::avatar::set_faces_on_own_mail(self.own_mailbox_face);
-        let mut faces: Vec<(String, crate::services::avatar::OwnFace)> = Vec::new();
-        for (i, cfg) in self.effective_config().iter().enumerate() {
-            let face = crate::services::avatar::OwnFace {
-                gravatar: cfg.gravatar,
-                picture: cfg.avatar.as_deref().and_then(config::avatar_path),
-                emoji: cfg.emoji.clone().filter(|e| !e.trim().is_empty()),
-                color: self.account_color(i as u32 + 1),
-            };
-            // An account showing its initials has nothing to add: the circle
-            // its own messages already get is drawn from the same letters.
-            if !face.is_set() {
-                continue;
-            }
-            // Mail sent as a send-as alias (#34) is still from this mailbox.
-            let addresses = std::iter::once(cfg.email.clone()).chain(
-                cfg.aliases
-                    .iter()
-                    .map(|al| config::split_identity(&al.identity).1),
-            );
-            faces.extend(
-                addresses
-                    .filter(|address| !address.trim().is_empty())
-                    .map(|address| (address, face.clone())),
-            );
-        }
-        crate::services::avatar::set_own_faces(faces);
+        crate::services::avatar::set_own_addresses(self.own_addresses());
     }
 
     /// Redraw the faces on screen after what a mailbox shows has changed
@@ -180,38 +138,6 @@ impl AppModel {
             .emit(MessageListInput::ContactPhotosChanged);
         self.message_view.emit(MessageViewInput::FacesChanged);
         self.popouts_emit(|| MessageWindowInput::FacesChanged);
-    }
-
-    /// Look up the Gravatars the accounts asked for (#189), one request per
-    /// address per session, off the main thread. Done here rather than where
-    /// a circle is drawn so every view — the sidebar, the list, an open
-    /// conversation — is holding the same answer.
-    pub(super) fn warm_own_gravatars(&self, sender: &ComponentSender<Self>) {
-        for cfg in self.effective_config() {
-            if !cfg.gravatar {
-                continue;
-            }
-            // An alias is an address of its own, and may have a Gravatar of
-            // its own; each is asked about separately.
-            let addresses = std::iter::once(cfg.email.clone()).chain(
-                cfg.aliases
-                    .iter()
-                    .map(|al| config::split_identity(&al.identity).1),
-            );
-            for address in addresses.filter(|a| !a.trim().is_empty()) {
-                if !crate::services::avatar::wants_own_gravatar(&address) {
-                    continue;
-                }
-                let back = sender.input_sender().clone();
-                std::thread::spawn(move || {
-                    let outcome = crate::services::avatar::fetch_own_gravatar(&address);
-                    let _ = back.send(AppMsg::OwnGravatarFetched {
-                        email: address,
-                        outcome,
-                    });
-                });
-            }
-        }
     }
 
     /// A label for an account in messages (name, else email, else "Account N").
@@ -291,19 +217,5 @@ impl AppModel {
             )
             .filter(|a| !a.trim().is_empty())
             .collect()
-    }
-
-    /// The messages the router sends here (see `AppModel::route`).
-    pub(super) fn on_identity(&self, msg: AppMsg) {
-        match msg {
-            AppMsg::OwnGravatarFetched { email, outcome } => {
-                // Nothing to redraw unless the address turned out to have one.
-                if crate::services::avatar::cache_own_gravatar(&email, outcome) {
-                    self.rebuild_sidebar();
-                    self.refresh_faces();
-                }
-            }
-            _ => unreachable!("not routed to on_identity"),
-        }
     }
 }

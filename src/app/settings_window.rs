@@ -270,6 +270,16 @@ impl AppModel {
                 }
                 AccountsOutput::ImportGoa(account) => AppMsg::ImportGoaAccount(account),
                 AccountsOutput::EditorOpen(open) => AppMsg::SettingsEditorOpen(open),
+                AccountsOutput::OpenSettingsPage(page) => AppMsg::SettingsPushPage(page),
+                AccountsOutput::Counts {
+                    tags,
+                    filters,
+                    smart,
+                } => AppMsg::SettingsCounts {
+                    tags,
+                    filters,
+                    smart,
+                },
                 AccountsOutput::AddSender(addr) => AppMsg::AddSender(addr),
                 AccountsOutput::RemoveSender(addr) => AppMsg::RemoveSender(addr),
                 AccountsOutput::AddBlacklist(addr) => AppMsg::AddBlacklist(addr),
@@ -298,11 +308,11 @@ impl AppModel {
         input: crate::ui::accounts::AccountsInput,
     ) {
         self.open_settings_window(sender, true, false);
+        // The dialog hands `input` on once the page is up: the account
+        // page it may open is pushed over the dialog, and would be popped
+        // again by a page change that came after it.
         if let Some(p) = &self.prefs {
-            p.emit(PrefInput::ShowPageById(page_id.to_string()));
-        }
-        if let Some(acc) = &self.accounts_win {
-            acc.emit(input);
+            p.emit(PrefInput::ShowPageThen(page_id.to_string(), input));
         }
     }
 
@@ -472,6 +482,26 @@ impl AppModel {
             AppMsg::SettingsEditorOpen(open) => {
                 if let Some(p) = &self.prefs {
                     p.emit(PrefInput::EditorOpen(open));
+                }
+            }
+
+            AppMsg::SettingsCounts {
+                tags,
+                filters,
+                smart,
+            } => {
+                if let Some(p) = &self.prefs {
+                    p.emit(PrefInput::SetCounts {
+                        tags,
+                        filters,
+                        smart,
+                    });
+                }
+            }
+
+            AppMsg::SettingsPushPage(page) => {
+                if let Some(p) = &self.prefs {
+                    p.emit(PrefInput::PushPage(page));
                 }
             }
 

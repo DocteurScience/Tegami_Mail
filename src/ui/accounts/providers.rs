@@ -371,32 +371,6 @@ pub(super) fn manual_brand(protocol: Protocol) -> &'static str {
     }
 }
 
-/// What the account list's provider mark says on hover: the provider's
-/// name as the picker lists it, without the picker's own hints ("sign in",
-/// "Bridge"); a plain IMAP/POP3 account names its server instead.
-pub(super) fn provider_name(brand: &str, acc: &AccountConfig) -> String {
-    match brand {
-        "gmail" => i18n("Google (Gmail)"),
-        "outlook" => i18n("Microsoft 365 / Outlook"),
-        "proton" => i18n("Proton Mail"),
-        "mail-oauth" => i18n("Custom OAuth"),
-        "local" => i18n("Folders on this computer"),
-        "mail" | "mail-pop3" => {
-            let host = acc.imap_host.trim();
-            if host.is_empty() {
-                i18n("IMAP/POP3 account")
-            } else {
-                i18n_f("IMAP/POP3 account on {host}", &[("host", host)])
-            }
-        }
-        other => PROVIDERS
-            .iter()
-            .find(|p| p.brand == other)
-            .map(|p| i18n(p.label))
-            .unwrap_or_else(|| i18n("Mail account")),
-    }
-}
-
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -577,26 +551,6 @@ mod tests {
         assert_eq!(brand_for_goa("Microsoft 365"), "outlook");
         assert_eq!(brand_for_goa("Outlook.com"), "outlook");
         assert_eq!(brand_for_goa("IMAP and SMTP"), "mail");
-    }
-
-    #[test]
-    fn provider_names_for_the_account_list() {
-        let blank = crate::config::blank_account();
-        assert_eq!(provider_name("gmail", &blank), "Google (Gmail)");
-        assert_eq!(provider_name("mail", &blank), "IMAP/POP3 account");
-        let hosted = AccountConfig {
-            imap_host: " mail.example.org ".into(),
-            ..blank.clone()
-        };
-        assert_eq!(
-            provider_name("mail-pop3", &hosted),
-            "IMAP/POP3 account on mail.example.org"
-        );
-        assert_eq!(provider_name("icloud", &blank), "iCloud");
-        // The first entry with the brand wins, so a JMAP Fastmail account is
-        // named after the IMAP entry (see Suspected bugs).
-        assert_eq!(provider_name("fastmail", &blank), "Fastmail");
-        assert_eq!(provider_name("nope", &blank), "Mail account");
     }
 
     #[test]

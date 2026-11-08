@@ -97,6 +97,7 @@ impl AppModel {
                 settings::stage_shortcuts(sender);
                 settings::stage_new_account(sender);
                 settings::stage_account_settings(sender);
+                settings::stage_account_sub(sender);
                 settings::stage_editor_dirty(sender);
                 settings::stage_settings_go(sender);
                 settings::stage_add_contact(sender);

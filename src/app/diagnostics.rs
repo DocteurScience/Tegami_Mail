@@ -209,11 +209,9 @@ impl AppModel {
             human_count(gravatars),
             human_bytes(gravatar_bytes)
         ));
-        let (pictures, picture_bytes, circles, circle_bytes) = crate::ui::initials::cache_stats();
+        let (circles, circle_bytes) = crate::ui::initials::cache_stats();
         out.push_str(&format!(
-            "  account pictures: {} ({} of pixels); rendered circles: {} ({}) (unbounded)\n",
-            human_count(pictures),
-            human_bytes(picture_bytes),
+            "  rendered circles: {} ({}) (unbounded)\n",
             human_count(circles),
             human_bytes(circle_bytes as u64)
         ));

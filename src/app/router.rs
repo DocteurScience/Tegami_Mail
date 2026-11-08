@@ -165,6 +165,8 @@ impl AppModel {
             | AppMsg::ShowcaseComposeClose
             | AppMsg::ShowcaseNewAccount(..)
             | AppMsg::ShowcaseDirtyEditor
+            | AppMsg::ShowcaseAccountSub(..)
+            | AppMsg::ShowcaseAddMenu
             | AppMsg::ShowcaseEditFilter(..)) => self.on_showcase(msg, sender),
             msg @ (AppMsg::ToggleStar
             | AppMsg::Archive
@@ -227,7 +229,6 @@ impl AppModel {
             | AppMsg::ListColumnWidths(..)
             | AppMsg::ListSortChanged(..)) => self.on_list_header(msg),
             AppMsg::ShowcaseListFilters(which) => self.showcase_list_filters(&which, &sender),
-            msg @ AppMsg::OwnGravatarFetched { .. } => self.on_identity(msg),
             msg @ (AppMsg::SetReaderActionsCollapsed(..)
             | AppMsg::SetReaderCompact(..)
             | AppMsg::MeasureReaderFold
@@ -273,6 +274,8 @@ impl AppModel {
             | AppMsg::DebugCloseSettings
             | AppMsg::PrewarmSettings
             | AppMsg::SettingsEditorOpen(..)
+            | AppMsg::SettingsPushPage(..)
+            | AppMsg::SettingsCounts { .. }
             | AppMsg::ServerIdentities { .. }
             | AppMsg::WantIdentities(..)) => self.on_settings_window(msg, sender),
             msg @ (AppMsg::OpenMessageFile(..)

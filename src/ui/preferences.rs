@@ -45,6 +45,9 @@ pub(crate) struct Preferences {
     dialog_pages: Option<Rc<dialog::DialogPages>>,
     /// The accounts panel's slot, for the fresh panel each open brings.
     accounts_slot: Option<adw::Bin>,
+    /// Where the accounts panel's list of accounts shows, at the top of the
+    /// Accounts page.
+    accounts_list_slot: Option<adw::Bin>,
     /// The accounts component, told which of its pages to show.
     accounts_sender: relm4::Sender<crate::ui::accounts::AccountsInput>,
     /// The accounts sub-page's header; hidden while an editor of the panel
@@ -141,6 +144,7 @@ impl Component for Preferences {
             dialog: None,
             dialog_pages: None,
             accounts_slot: None,
+            accounts_list_slot: None,
             accounts_sender: init.accounts_sender.clone(),
             host_header: None,
             pgp_keys: None,
@@ -221,6 +225,16 @@ impl Component for Preferences {
                 sender: accounts,
             } => self.on_set_accounts_panel(panel, accounts),
             PrefInput::ShowPageById(id) => self.show_by_id(&id, &sender),
+            PrefInput::ShowPageThen(id, input) => {
+                self.show_by_id(&id, &sender);
+                let _ = self.accounts_sender.send(input);
+            }
+            PrefInput::PushPage(id) => self.push_page(id),
+            PrefInput::SetCounts {
+                tags,
+                filters,
+                smart,
+            } => self.set_counts(tags, filters, smart),
             PrefInput::EditorOpen(page) => self.on_editor_open(page),
             PrefInput::CloudEditorOpen(open) => self.on_cloud_editor_open(open),
             PrefInput::Contacts(out) => self.on_contacts(out, sender),

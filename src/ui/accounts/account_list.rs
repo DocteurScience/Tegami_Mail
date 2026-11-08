@@ -2,7 +2,6 @@
 //! that can still be imported.
 
 use super::form::display_name;
-use super::providers::{brand_for_account, provider_name};
 use super::*;
 
 /// GNOME Online Accounts mail accounts not (properly) configured in Tegami Mail.
@@ -42,60 +41,41 @@ impl AccountsWindow {
         }
 
         let mut css = String::new();
-        // The provider mark and the source badge each get a column of their
-        // own, held to one width down the whole list. Both vary: the marks
-        // are logos of different aspect (Gmail's M is wider than an envelope),
-        // and "GOA" is narrower than "Tegami Mail" (and the pair differs again in
-        // each language). Left to themselves they pushed each other sideways
-        // and neither read as a column.
-        let mark_widths = gtk::SizeGroup::new(gtk::SizeGroupMode::Horizontal);
-        let badge_widths = gtk::SizeGroup::new(gtk::SizeGroupMode::Horizontal);
+        // As screen 26 draws them: the circle, the name over the address
+        // (and where the account comes from), the switch that pauses it,
+        // and the chevron to its page. Dragged to reorder.
         for (pos, acc) in self.accounts.iter().enumerate() {
             let row = gtk::ListBoxRow::new();
             row.set_activatable(true);
 
             let hbox = gtk::Box::new(gtk::Orientation::Horizontal, 12);
             hbox.add_css_class("account-list-row");
-
-            let handle = gtk::Image::from_icon_name("list-drag-handle-symbolic");
-            handle.add_css_class("dim-label");
-            hbox.append(&handle);
-
-            hbox.append(&account_circle(acc, pos as u32 + 1, &mut css));
-
-            hbox.append(&account_titles(acc));
-
-            // The provider's mark, right of the name and address, named on
-            // hover.
-            let brand = brand_for_account(acc);
-            let fallback = if acc.is_local() {
-                super::local::LOCAL_ICON
+            if acc.is_local() {
+                hbox.append(&local_circle());
             } else {
-                crate::desktop::brand::GENERIC_MAIL
-            };
-            let mark = crate::desktop::brand::mark(brand, 24, fallback);
-            mark.set_tooltip_text(Some(&provider_name(brand, acc)));
-            hbox.append(&size_slot(mark.upcast_ref(), &mark_widths));
-
-            let badge = source_badge(acc);
-            hbox.append(&size_slot(badge.upcast_ref(), &badge_widths));
-
-            hbox.append(&enable_switch(acc, pos, sender));
-
+                hbox.append(&account_circle(acc, pos as u32 + 1, &mut css));
+            }
+            hbox.append(&account_titles(acc));
+            if !acc.is_local() {
+                hbox.append(&enable_switch(acc, pos, sender));
+            }
             let next = gtk::Image::from_icon_name("go-next-symbolic");
             next.add_css_class("dim-label");
+            next.set_accessible_role(gtk::AccessibleRole::Presentation);
             hbox.append(&next);
 
             row.set_child(Some(&hbox));
-
+            row.update_property(&[gtk::accessible::Property::Label(&acc.display_label())]);
             add_reorder(&row, pos, sender);
-
             list.append(&row);
         }
         self.list_css.load_from_string(&css);
-        if let Some(group) = &self.local_group {
-            group.set_visible(!self.accounts.iter().any(AccountConfig::is_local));
-        }
+
+        // Last, the way to add one (screen 27).
+        let add = super::pages::add_row(&i18n("Add account…"));
+        let s = sender.input_sender().clone();
+        add.connect_activated(move |_| s.emit(AccountsInput::AddMenu));
+        list.append(&add);
     }
 
     /// Un-import a GNOME Online Account: drop it from Tegami Mail (the app removes
@@ -266,28 +246,24 @@ impl AccountsWindow {
     }
 }
 
-/// A slot keeps its child at its natural size and centred; the size group
-/// holds the slot, not the child, so a logo is never stretched and a
-/// badge's pill still hugs its text.
-fn size_slot(child: &gtk::Widget, group: &gtk::SizeGroup) -> gtk::Box {
-    let slot = gtk::Box::new(gtk::Orientation::Horizontal, 0);
-    slot.set_valign(gtk::Align::Center);
-    child.set_halign(gtk::Align::Center);
-    child.set_hexpand(true);
-    slot.append(child);
-    // The child expands to fill the slot so it lands centred — but an
-    // expanding child makes its parent expand too, and an expanding
-    // slot would take a share of the row's spare width and defeat the
-    // whole point. Pin the slot's own answer to "no".
-    slot.set_hexpand(false);
-    group.add_widget(&slot);
-    slot
+/// On This Computer's circle: a folder on the neutral disc (screen 26).
+fn local_circle() -> gtk::Box {
+    let circle = gtk::Box::new(gtk::Orientation::Horizontal, 0);
+    circle.add_css_class("account-circle");
+    circle.add_css_class("account-local-circle");
+    circle.set_valign(gtk::Align::Center);
+    circle.set_size_request(30, 30);
+    let icon = gtk::Image::from_icon_name("folder-symbolic");
+    icon.set_hexpand(true);
+    icon.set_halign(gtk::Align::Center);
+    icon.set_accessible_role(gtk::AccessibleRole::Presentation);
+    circle.append(&icon);
+    circle
 }
 
 /// The account's circle, as the sidebar draws it: its color (or the
-/// palette accent it would get), and its picture, emoji or initials — the
-/// label first, then the name, then the address. Its color rule goes into
-/// `css`.
+/// palette accent it would get) and its initials — of the label first, then
+/// the name, then the address. Its color rule goes into `css`.
 fn account_circle(acc: &AccountConfig, account_id: u32, css: &mut String) -> gtk::Box {
     let color = acc
         .color
@@ -309,92 +285,64 @@ fn account_circle(acc: &AccountConfig, account_id: u32, css: &mut String) -> gtk
         Some(l) if !l.is_empty() && l != acc.email => l.to_string(),
         _ => display_name(acc),
     };
-    let picture = acc
-        .avatar
-        .as_deref()
-        .and_then(crate::config::avatar_path)
-        .filter(|p| p.exists());
-    // The Gravatar this address asked for and has (#189) comes first,
-    // as in the sidebar circle and the editor preview.
-    let gravatar = acc
-        .gravatar
-        .then(|| crate::services::avatar::own_gravatar(&acc.email))
-        .flatten();
-    let glyph: gtk::Widget = match (&gravatar, &picture, acc.emoji.as_deref()) {
-        (Some(texture), ..) => {
-            circle.set_overflow(gtk::Overflow::Hidden);
-            crate::ui::initials::picture_from_texture(texture, 30).upcast()
-        }
-        (None, Some(path), _) => {
-            circle.set_overflow(gtk::Overflow::Hidden);
-            crate::ui::initials::avatar_picture(path, 30).upcast()
-        }
-        (None, None, Some(em)) if !em.is_empty() => {
-            crate::ui::initials::glyph_picture(em, &color, 0.55, 30).upcast()
-        }
-        _ => crate::ui::initials::glyph_picture(
-            &crate::ui::sidebar::account_initials(&shown, &acc.email),
-            &color,
-            0.47,
-            30,
-        )
-        .upcast(),
-    };
+    // Always the initials on the account colour (docs/DESIGN.md,
+    // "Preferences"), as the sidebar draws it.
+    let glyph: gtk::Widget = crate::ui::initials::glyph_picture(
+        &crate::ui::sidebar::account_initials(&shown, &acc.email),
+        &color,
+        0.47,
+        30,
+    )
+    .upcast();
     circle.append(&glyph);
     circle
 }
 
-/// The nickname, as the sidebar names the account, over the address. With
-/// no nickname the address is the first line, and the second carries the
-/// sender name instead of repeating it, or nothing when there is no name
-/// either.
+/// What the account goes by in the list and on its page's header: its
+/// nickname, else its sender name, else its address (screens 26, 28).
+pub(super) fn list_title(acc: &AccountConfig) -> String {
+    match acc.label.as_deref().map(str::trim) {
+        Some(l) if !l.is_empty() && l != acc.email => l.to_string(),
+        _ if !acc.name.trim().is_empty() => acc.name.trim().to_string(),
+        _ => acc.email.clone(),
+    }
+}
+
+/// The account's name over its address, as screen 26 draws them, and
+/// "GNOME Online Accounts" after the address when GNOME holds it.
 fn account_titles(acc: &AccountConfig) -> gtk::Box {
     let vbox = gtk::Box::new(gtk::Orientation::Vertical, 0);
     vbox.set_hexpand(true);
     vbox.set_valign(gtk::Align::Center);
-    let title = acc.display_label();
-    let second = if acc.is_local() {
-        super::local::shown_dir()
+    let title = list_title(acc);
+    let mut second = if acc.is_local() {
+        i18n("Mail saved in local folders")
     } else if title == acc.email {
-        acc.name.trim().to_string()
+        String::new()
     } else {
         acc.email.clone()
     };
+    // Where it comes from, when GNOME holds it (screen 26).
+    if acc.goa_id.is_some() {
+        let goa = i18n("GNOME Online Accounts");
+        second = if second.is_empty() {
+            goa
+        } else {
+            format!("{second} \u{b7} {goa}")
+        };
+    }
     let name = gtk::Label::new(Some(&title));
     name.set_halign(gtk::Align::Start);
     name.set_ellipsize(gtk::pango::EllipsizeMode::End);
-    name.add_css_class("account-name");
     let email = gtk::Label::new(Some(&second));
     email.set_halign(gtk::Align::Start);
     email.set_ellipsize(gtk::pango::EllipsizeMode::End);
-    email.add_css_class("account-email");
+    email.add_css_class("caption");
+    email.add_css_class("dim-label");
     email.set_visible(!second.is_empty());
     vbox.append(&name);
     vbox.append(&email);
     vbox
-}
-
-/// Source badge: is this account from GNOME Online Accounts, or added
-/// directly in Tegami Mail?
-fn source_badge(acc: &AccountConfig) -> gtk::Label {
-    let from_goa = acc.goa_id.is_some();
-    let badge = gtk::Label::new(Some(
-        if from_goa {
-            i18n("GOA")
-        } else {
-            i18n("Tegami Mail")
-        }
-        .as_str(),
-    ));
-    badge.set_valign(gtk::Align::Center);
-    badge.add_css_class("account-source-badge");
-    if from_goa {
-        badge.add_css_class("goa");
-        badge.set_tooltip_text(Some(i18n("Imported GNOME Online Account").as_str()));
-    } else {
-        badge.set_tooltip_text(Some(i18n("Added directly in Tegami Mail").as_str()));
-    }
-    badge
 }
 
 /// Enable/disable toggle. Disabled accounts stay configured but don't sync
@@ -457,6 +405,22 @@ fn add_reorder(row: &gtk::ListBoxRow, pos: usize, sender: &ComponentSender<Accou
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    /// The list names an account by its nickname, else its sender name,
+    /// else its address (screens 26, 28); a nickname that is only the
+    /// address does not count as one.
+    #[test]
+    fn accounts_are_listed_by_nickname_then_name_then_address() {
+        let mut acc = crate::config::blank_account();
+        acc.email = "jason@example.org".into();
+        assert_eq!(list_title(&acc), "jason@example.org");
+        acc.name = " Jason M. ".into();
+        assert_eq!(list_title(&acc), "Jason M.");
+        acc.label = Some("jason@example.org".into());
+        assert_eq!(list_title(&acc), "Jason M.");
+        acc.label = Some("Work".into());
+        assert_eq!(list_title(&acc), "Work");
+    }
 
     fn goa(
         email: &str,

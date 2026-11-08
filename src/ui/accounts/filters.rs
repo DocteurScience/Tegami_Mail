@@ -53,6 +53,7 @@ impl AccountsWindow {
 
     /// Re-render the Filters group's rule rows.
     pub(super) fn rebuild_filter_rows(&self, sender: &ComponentSender<Self>) {
+        self.send_counts(sender);
         let Some(list) = &self.filters_list else {
             return;
         };

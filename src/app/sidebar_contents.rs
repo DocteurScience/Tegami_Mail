@@ -110,8 +110,6 @@ impl AppModel {
             })
             .collect();
         let color = self.account_color(account.id);
-        let emoji = self.account_emoji(account.id);
-        let avatar = self.account_avatar(account.id);
         // This account's collapsed tree nodes, keyed "email\tpath".
         let prefix = format!("{email}\t");
         let tree_collapsed = self
@@ -143,8 +141,6 @@ impl AppModel {
             custom_expanded: self.folders_expanded.iter().any(|e| e == email),
             tags_expanded: self.tags_expanded_accounts.iter().any(|e| e == email),
             color,
-            emoji,
-            avatar,
             account,
             folders,
             filtered,

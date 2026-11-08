@@ -485,6 +485,11 @@ pub(crate) enum AppMsg {
     /// Showcase only (TEGAMI_SHOWCASE_EDITOR_DIRTY): change the open account
     /// editor, so leaving an edited one can be captured.
     ShowcaseDirtyEditor,
+    /// Showcase only (TEGAMI_SHOWCASE_ACCOUNT_SUB): open that sub-page of
+    /// the account page.
+    ShowcaseAccountSub(String),
+    /// Showcase only (TEGAMI_SHOWCASE_ADD_MENU): open the Add account menu.
+    ShowcaseAddMenu,
     /// Showcase: open filter rule `i` in the current Accounts panel.
     ShowcaseEditFilter(usize),
 
@@ -718,11 +723,6 @@ pub(crate) enum AppMsg {
     ListSortChanged(&'static str),
 
     // ---- on_identity (identity.rs) ----
-    /// A Gravatar one of the accounts asked for came back (#189).
-    OwnGravatarFetched {
-        email: String,
-        outcome: crate::services::avatar::FetchOutcome,
-    },
 
     // ---- on_reader_toolbar (reader_toolbar.rs) ----
     /// The reader pane crossed the actions breakpoint (true = collapse the
@@ -887,6 +887,15 @@ pub(crate) enum AppMsg {
     PrewarmSettings,
     /// The accounts editor subpage opened/closed in the settings window.
     SettingsEditorOpen(Option<&'static str>),
+    /// The accounts panel asked for a page of the settings window over the
+    /// one shown ("Manage keys" opens the OpenPGP keys).
+    SettingsPushPage(&'static str),
+    /// The accounts panel's counts of tags, filters and smart folders.
+    SettingsCounts {
+        tags: usize,
+        filters: usize,
+        smart: usize,
+    },
     /// A JMAP server's sending identities for an account (#346).
     ServerIdentities {
         account_id: u32,

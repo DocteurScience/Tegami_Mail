@@ -18,15 +18,11 @@ use super::secrets::{
 use super::sections::FolderSort;
 use super::{config_file, data_base, default_on, is_false, is_true, is_zero, write_private};
 
-/// Where the accounts' avatar pictures live (#162).
-pub(crate) fn avatars_dir() -> Option<PathBuf> {
+/// Where the accounts' avatar pictures live (#162). No longer shown (the
+/// circle is computed, docs/DESIGN.md "Accounts"), but kept with the
+/// account that refers to one.
+fn avatars_dir() -> Option<PathBuf> {
     data_base().map(|d| d.join("avatars"))
-}
-
-/// The picture behind an account's `avatar` name, if the file is there.
-pub(crate) fn avatar_path(name: &str) -> Option<PathBuf> {
-    let p = avatars_dir()?.join(name);
-    p.is_file().then_some(p)
 }
 
 /// Drop avatar pictures no account refers to any more. A file younger than

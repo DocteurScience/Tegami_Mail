@@ -240,7 +240,6 @@ struct ImapWorker<E> {
     last_unread_sweep: Option<Instant>,
     /// When the Junk / Trash auto-empty (#140) last ran for this connection.
     last_auto_empty: Option<Instant>,
-    last_list_clean: Option<Instant>,
     /// Whether the Inbox's permanent IDLE watcher has been spawned. It waits
     /// for the main session to be up first (its connection must win the
     /// first slot on servers with a per-user cap) and needs the folder list

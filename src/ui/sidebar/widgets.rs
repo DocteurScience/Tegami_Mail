@@ -55,15 +55,6 @@ pub(super) fn section_heading(
     heading
 }
 
-/// The Gravatar an account asked for (#189), once the app has looked it up.
-/// `None` when it asked for none, when the address has none, or before the
-/// answer is back — in every case the picture, emoji or initials stand.
-pub(super) fn account_gravatar(email: &str) -> Option<gtk::gdk::Texture> {
-    crate::services::avatar::account_face(email)
-        .filter(|face| face.gravatar)
-        .and_then(|_| crate::services::avatar::own_gravatar(email))
-}
-
 pub(crate) fn account_initials(name: &str, email: &str) -> String {
     let mut it = name.split_whitespace();
     let a = it.next().and_then(|w| w.chars().next());

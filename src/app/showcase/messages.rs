@@ -138,6 +138,16 @@ impl AppModel {
                     }
                 }
             }
+            AppMsg::ShowcaseAccountSub(sub) => {
+                if let Some(acc) = &self.accounts_win {
+                    acc.emit(crate::ui::accounts::AccountsInput::DebugSubpage(sub));
+                }
+            }
+            AppMsg::ShowcaseAddMenu => {
+                if let Some(acc) = &self.accounts_win {
+                    acc.emit(crate::ui::accounts::AccountsInput::AddMenu);
+                }
+            }
             AppMsg::ShowcaseDirtyEditor => {
                 if let Some(acc) = &self.accounts_win {
                     acc.emit(crate::ui::accounts::AccountsInput::DebugEditLabel(

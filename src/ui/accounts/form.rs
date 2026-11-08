@@ -106,55 +106,8 @@ pub(super) fn display_name(acc: &AccountConfig) -> String {
     }
 }
 
-/// The side of the square copy an avatar is stored as: sharp in a 30px
-/// disc on a 2x display, small on disk.
-const AVATAR_PX: i32 = 256;
-
-/// Copy a chosen image in as an account avatar (#162): oriented by its
-/// EXIF tag, scaled to cover a square, centre-cropped and saved as PNG
-/// under the avatars directory with a fresh name, which is returned.
-pub(super) fn import_avatar_file(src: &std::path::Path) -> Result<String, String> {
-    use gtk::gdk_pixbuf::{InterpType, Pixbuf};
-    let dir = crate::config::avatars_dir().ok_or("no data directory")?;
-    std::fs::create_dir_all(&dir).map_err(|e| e.to_string())?;
-    let pb = Pixbuf::from_file(src).map_err(|e| e.to_string())?;
-    let pb = pb.apply_embedded_orientation().unwrap_or(pb);
-    let (w, h) = (pb.width().max(1), pb.height().max(1));
-    // Scale so the shorter side is AVATAR_PX (an image smaller than that
-    // is left at its size), then cut the longer side down to a square.
-    let side = AVATAR_PX.min(w.min(h));
-    let (sw, sh) = if w <= h {
-        (
-            side,
-            (h as f64 * side as f64 / w as f64).round().max(side as f64) as i32,
-        )
-    } else {
-        (
-            (w as f64 * side as f64 / h as f64).round().max(side as f64) as i32,
-            side,
-        )
-    };
-    let scaled = pb
-        .scale_simple(sw, sh, InterpType::Bilinear)
-        .ok_or("could not scale the image")?;
-    let square = scaled.new_subpixbuf((sw - side) / 2, (sh - side) / 2, side, side);
-    let stamp = std::time::SystemTime::now()
-        .duration_since(std::time::UNIX_EPOCH)
-        .map(|d| d.as_millis())
-        .unwrap_or(0);
-    let name = format!("avatar-{stamp}.png");
-    square
-        .savev(dir.join(&name), "png", &[])
-        .map_err(|e| e.to_string())?;
-    Ok(name)
-}
-
 /// Build an `AccountConfig` from the current editor form values.
-pub(super) fn read_account(
-    widgets: &AccountsWindowWidgets,
-    emoji: Option<String>,
-    avatar: Option<String>,
-) -> AccountConfig {
+pub(super) fn read_account(widgets: &AccountsWindowWidgets) -> AccountConfig {
     let protocol = form_protocol(widgets);
     let default_port = match protocol {
         Protocol::Pop3 => 995,
@@ -189,9 +142,10 @@ pub(super) fn read_account(
         smtp_username: trimmed(&widgets.form.smtp_user_row),
         smtp_password: widgets.form.smtp_pass_row.text().to_string(),
         color: Some(crate::color::to_hex(&widgets.form.color_btn.rgba())),
-        emoji,
-        avatar,
-        gravatar: widgets.form.gravatar_row.is_active(),
+        // No longer chosen here: kept from the account edited.
+        emoji: None,
+        avatar: None,
+        gravatar: false,
         // Filled in by SaveWithSig from the rich-text editor.
         signature: None,
         signature_html: true,
@@ -242,10 +196,7 @@ pub(super) fn read_account(
             .get(widgets.form.empty_trash_row.selected() as usize)
             .copied()
             .unwrap_or(0),
-        clean_lists_days: CLEAN_LISTS_DAYS
-            .get(widgets.form.clean_lists_row.selected() as usize)
-            .copied()
-            .unwrap_or(0),
+        clean_lists_days: 0,
         offline_mail: crate::config::OfflineMail::ALL
             .get(widgets.form.offline_mail_row.selected() as usize)
             .copied()
@@ -277,7 +228,8 @@ pub(super) fn read_account(
             && widgets.form.graph_directory_row.is_active(),
         graph_directory_only: protocol == Protocol::Graph
             && widgets.form.directory_only_row.is_active(),
-        graph_label_names: protocol == Protocol::Graph && widgets.form.graph_labels_row.is_active(),
+        // Kept from the account edited by SaveWithSig.
+        graph_label_names: false,
     }
 }
 
@@ -378,16 +330,13 @@ fn auto_empty_index(days: u32) -> u32 {
     AUTO_EMPTY_DAYS.iter().position(|d| *d == days).unwrap_or(0) as u32
 }
 
-/// Moving list mail to the Trash (#407): never, then the ages.
-pub(super) const CLEAN_LISTS_DAYS: &[u32] = &[0, 30, 60, 90, 180];
-
 /// The combo's labels, translated.
 pub(super) fn auto_empty_labels() -> Vec<String> {
     age_labels(AUTO_EMPTY_DAYS)
 }
 
 /// "Never", then "After N days" for each age.
-pub(super) fn age_labels(days: &[u32]) -> Vec<String> {
+fn age_labels(days: &[u32]) -> Vec<String> {
     days.iter()
         .map(|d| {
             if *d == 0 {
@@ -418,14 +367,6 @@ pub(super) fn left_justify_wrapping_labels(root: &gtk::Widget) {
     while let Some(c) = child {
         left_justify_wrapping_labels(&c);
         child = c.next_sibling();
-    }
-}
-
-/// Put the editor page into the navigation view if it isn't there (it is
-/// left out until first needed — see the panel's init).
-pub(super) fn mount_editor(widgets: &AccountsWindowWidgets) {
-    if widgets.editor_page.parent().is_none() {
-        widgets.nav.add(&widgets.editor_page);
     }
 }
 
@@ -505,12 +446,6 @@ pub(super) fn fill_editor(widgets: &AccountsWindowWidgets, acc: &AccountConfig) 
         .form
         .empty_trash_row
         .set_selected(auto_empty_index(acc.empty_trash_days));
-    widgets.form.clean_lists_row.set_selected(
-        CLEAN_LISTS_DAYS
-            .iter()
-            .position(|d| *d == acc.clean_lists_days)
-            .unwrap_or(0) as u32,
-    );
     widgets
         .form
         .offline_mail_row
@@ -575,8 +510,12 @@ pub(super) fn fill_editor(widgets: &AccountsWindowWidgets, acc: &AccountConfig) 
     widgets.form.ms_tenant_row.set_text(&adv.1);
     widgets.form.ms_scopes_row.set_text(&adv.2);
     widgets.form.ms_redirect_row.set_text(&adv.3);
-    widgets.form.ms_advanced.set_expanded(
-        !(adv.0.is_empty() && adv.1.is_empty() && adv.2.is_empty() && adv.3.is_empty()),
+    // Advanced opens by itself when something in it was set.
+    widgets.form.advanced_row.set_expanded(
+        !(adv.0.is_empty() && adv.1.is_empty() && adv.2.is_empty() && adv.3.is_empty())
+            || acc.tls_accept_hostname_mismatch
+            || acc.jmap_token
+            || s.is_some_and(|s| !s.client_id.is_empty()),
     );
     widgets.form.oauth_status.set_visible(false);
     widgets.form.oauth_signin_btn.set_sensitive(true);
@@ -592,7 +531,7 @@ pub(super) fn fill_editor(widgets: &AccountsWindowWidgets, acc: &AccountConfig) 
 /// credentials from the system; editing them here would either be overwritten
 /// the next time GOA is read, or quietly disagree with what the rest of the
 /// desktop uses. What stays editable is what Tegami Mail owns: the sender's display
-/// name, signature, color, emoji and label.
+/// name, signature, colour and nickname.
 pub(super) fn set_connection_editable(widgets: &AccountsWindowWidgets, editable: bool) {
     for row in [
         widgets.form.email_row.upcast_ref::<gtk::Widget>(),
@@ -619,7 +558,10 @@ pub(super) fn set_connection_editable(widgets: &AccountsWindowWidgets, editable:
         widgets.form.oauth_auth_url_row.upcast_ref(),
         widgets.form.oauth_token_url_row.upcast_ref(),
         widgets.form.oauth_scope_row.upcast_ref(),
-        widgets.form.ms_advanced.upcast_ref(),
+        widgets.form.ms_client_row.upcast_ref(),
+        widgets.form.ms_tenant_row.upcast_ref(),
+        widgets.form.ms_scopes_row.upcast_ref(),
+        widgets.form.ms_redirect_row.upcast_ref(),
     ] {
         row.set_sensitive(editable);
     }
@@ -645,7 +587,6 @@ pub(super) fn clear_editor(widgets: &AccountsWindowWidgets) {
     widgets.form.push_row.set_selected(0);
     widgets.form.empty_junk_row.set_selected(0);
     widgets.form.empty_trash_row.set_selected(0);
-    widgets.form.clean_lists_row.set_selected(0);
     widgets.form.offline_mail_row.set_selected(0);
     widgets.form.offline_attachments_row.set_active(false);
     widgets.form.copy_local_row.set_active(false);
@@ -658,7 +599,6 @@ pub(super) fn clear_editor(widgets: &AccountsWindowWidgets) {
     widgets.form.graph_directory_row.set_active(false);
     widgets.form.directory_only_row.set_active(false);
     widgets.form.graph_status.set_visible(false);
-    widgets.form.graph_labels_row.set_active(false);
     widgets.form.smtp_user_row.set_text("");
     widgets.form.smtp_pass_row.set_text("");
     widgets.form.label_row.set_text("");
@@ -675,7 +615,7 @@ pub(super) fn clear_editor(widgets: &AccountsWindowWidgets) {
     ] {
         row.set_text("");
     }
-    widgets.form.ms_advanced.set_expanded(false);
+    widgets.form.advanced_row.set_expanded(false);
     widgets.form.oauth_status.set_visible(false);
     widgets.form.test_result.set_visible(false);
     widgets.form.test_btn.set_sensitive(true);
@@ -741,11 +681,9 @@ pub(super) fn apply_protocol(widgets: &AccountsWindowWidgets) {
             .set_title(&i18n("Server (host name or URL)"));
         widgets.form.port_row.set_title(&i18n("Port (default 443)"));
     } else {
-        widgets.form.host_row.set_title(&i18n("Incoming server"));
-        widgets
-            .form
-            .port_row
-            .set_title(&i18n("Port (IMAP 993 / POP3 995)"));
+        // Under "Incoming" (screen 29): no need to say so again.
+        widgets.form.host_row.set_title(&i18n("Server"));
+        widgets.form.port_row.set_title(&i18n("Port"));
     }
 }
 
@@ -768,6 +706,5 @@ mod tests {
             ["Never", "After 1 day", "After 30 days"]
         );
         assert_eq!(auto_empty_labels().len(), AUTO_EMPTY_DAYS.len());
-        assert_eq!(CLEAN_LISTS_DAYS, [0, 30, 60, 90, 180]);
     }
 }

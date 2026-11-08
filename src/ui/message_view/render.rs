@@ -127,9 +127,6 @@ impl MessageView {
         // Whether cards list their attachments (#213); the lists themselves
         // are patched in live rather than rendered for.
         self.chips_shown().hash(&mut h);
-        // The picture a mailbox of your own shows can change while a
-        // conversation is open (#189) — the cards must be built again.
-        crate::services::avatar::own_faces_generation().hash(&mut h);
         // Names from Contacts came in, or the switch for them moved (#541).
         crate::contacts::contact_names_generation().hash(&mut h);
         self.thread.len().hash(&mut h);

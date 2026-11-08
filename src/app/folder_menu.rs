@@ -359,11 +359,12 @@ impl AppModel {
                     .iter()
                     .find(|a| a.id == account_id)
                     .map(|a| a.email.clone());
-                self.open_settings_window(&sender, true, false);
-                if let (Some(email), Some(acc)) = (email, &self.accounts_win) {
-                    acc.emit(crate::ui::accounts::AccountsInput::EditAccountByEmail(
-                        email,
-                    ));
+                if let Some(email) = email {
+                    self.open_settings_at(
+                        &sender,
+                        "accounts",
+                        crate::ui::accounts::AccountsInput::EditAccountByEmail(email),
+                    );
                 }
             }
             CtxAction::RemoveAccount(account_id) => {

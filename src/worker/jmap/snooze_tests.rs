@@ -58,7 +58,6 @@ fn live_snoozed_mail_comes_back_unread() {
         cache: None,
         state: JmapState::new(&account),
         last_auto_empty: None,
-        last_list_clean: None,
         push_tx,
         push_rx,
         push_enabled: false,

@@ -10,7 +10,7 @@
 use super::*;
 
 /// The sub-pages the accounts component shows, by its page id.
-const ACCOUNT_PANELS: [&str; 5] = ["accounts", "tags", "filters", "smart", "senders"];
+const ACCOUNT_PANELS: [&str; 4] = ["tags", "filters", "smart", "senders"];
 
 /// The sub-pages hosted by components of their own.
 const SERVICES: [&str; 5] = ["openpgp", "cloud", "translation", "contacts", "backup"];
@@ -26,6 +26,7 @@ pub(super) fn place_of(id: &str) -> (&'static str, Option<&'static str>) {
         return ("accounts", Some(service));
     }
     match id {
+        "accounts" => ("accounts", None),
         "messages" | "composing" | "reading" | "conversations" | "list" => ("messages", None),
         "notifications" | "general" => ("notifications", None),
         "privacy" => ("privacy", None),
@@ -36,7 +37,6 @@ pub(super) fn place_of(id: &str) -> (&'static str, Option<&'static str>) {
 /// The title a sub-page goes by, in its header.
 fn subpage_title(id: &str) -> String {
     i18n(match id {
-        "accounts" => i18n_noop("Mail accounts"),
         "tags" => i18n_noop("Tags"),
         "filters" => i18n_noop("Filters"),
         "smart" => i18n_noop("Smart folders"),
@@ -90,8 +90,48 @@ fn link_row(title: &str, subtitle: Option<&str>) -> adw::ActionRow {
         row.set_subtitle(s);
     }
     row.set_activatable(true);
-    row.add_suffix(&gtk::Image::from_icon_name("go-next-symbolic"));
+    let next = gtk::Image::from_icon_name("go-next-symbolic");
+    next.set_accessible_role(gtk::AccessibleRole::Presentation);
+    row.add_suffix(&next);
     row
+}
+
+/// The icon of a row on the Accounts page, on a disc (screen 26).
+fn row_icon(row: &adw::ActionRow, icon: &str) {
+    let image = gtk::Image::from_icon_name(icon);
+    image.add_css_class("pref-row-icon");
+    image.set_valign(gtk::Align::Center);
+    image.set_accessible_role(gtk::AccessibleRole::Presentation);
+    row.add_prefix(&image);
+}
+
+/// Move the accounts panel's list of accounts onto the Accounts page
+/// (screen 26): the panel builds and fills it, the dialog shows it. A
+/// fresh panel brings a fresh list, which takes the old one's place.
+pub(super) fn mount_accounts_list(slot: &adw::Bin, panel: &gtk::Widget) {
+    let Some(list) = named_descendant(panel, crate::ui::accounts::ACCOUNTS_LIST_NAME) else {
+        return;
+    };
+    // The panel keeps it in its stack until the dialog takes it.
+    if let Some(stack) = list.parent().and_downcast::<gtk::Stack>() {
+        stack.remove(&list);
+    }
+    slot.set_child(Some(&list));
+}
+
+/// The widget named `name` under `root`, depth first.
+fn named_descendant(root: &gtk::Widget, name: &str) -> Option<gtk::Widget> {
+    if root.widget_name() == name {
+        return Some(root.clone());
+    }
+    let mut child = root.first_child();
+    while let Some(c) = child {
+        if let Some(found) = named_descendant(&c, name) {
+            return Some(found);
+        }
+        child = c.next_sibling();
+    }
+    None
 }
 
 /// The pages the dialog shows and the sub-pages it pushes, kept to move
@@ -102,6 +142,8 @@ pub(super) struct DialogPages {
     /// panel it shows.
     accounts_sub: adw::NavigationPage,
     services: Vec<(&'static str, adw::NavigationPage)>,
+    /// The Accounts page's rows, by the page they open, for their counts.
+    links: Vec<(&'static str, adw::ActionRow)>,
     /// Each service sub-page's header, hidden while an editor of the
     /// service shows its own.
     headers: Vec<(&'static str, adw::HeaderBar)>,
@@ -130,27 +172,48 @@ impl Preferences {
             p
         };
 
+        // ---- Accounts (screen 26): the accounts themselves, listed by
+        // the accounts panel, then the rows to what organizes mail and to
+        // the services.
         let accounts = page("accounts", &i18n("Accounts"), "avatar-default-symbolic");
-        let mail = group(&i18n("Accounts"));
+        let mail = group(&i18n("Mail accounts"));
+        mail.set_description(Some(&i18n(
+            "Drag an account to change its order in the sidebar.",
+        )));
+        let list_slot = adw::Bin::new();
+        mount_accounts_list(&list_slot, &init.accounts_panel);
+        mail.add(&list_slot);
+        self.accounts_list_slot = Some(list_slot);
         let organize = group(&i18n("Organize mail"));
         let services = group(&i18n("Services"));
         let mut rows: Vec<(&'static str, adw::ActionRow)> = Vec::new();
-        for (id, g, subtitle) in [
-            ("accounts", &mail, None),
-            ("tags", &organize, None),
-            ("filters", &organize, None),
-            ("smart", &organize, None),
-            ("senders", &organize, Some(i18n("Allowed and blocked"))),
-            ("openpgp", &services, None),
-            ("cloud", &services, None),
-            ("translation", &services, None),
-            ("contacts", &services, None),
-            ("backup", &services, None),
+        for (id, g, icon, subtitle) in [
+            ("tags", &organize, "tag-outline-symbolic", None),
+            ("filters", &organize, "filter-symbolic", None),
+            ("smart", &organize, "folder-saved-search-symbolic", None),
+            (
+                "senders",
+                &organize,
+                "system-users-symbolic",
+                Some(i18n("Allowed and blocked")),
+            ),
+            ("openpgp", &services, "dialog-password-symbolic", None),
+            ("cloud", &services, "cloud-symbolic", None),
+            ("translation", &services, "translate-symbolic", None),
+            (
+                "contacts",
+                &services,
+                "x-office-address-book-symbolic",
+                None,
+            ),
+            ("backup", &services, "folder-download-symbolic", None),
         ] {
             let row = link_row(&subpage_title(id), subtitle.as_deref());
+            row_icon(&row, icon);
             g.add(&row);
             rows.push((id, row));
         }
+        let links = rows.clone();
         accounts.add(&mail);
         accounts.add(&organize);
         accounts.add(&services);
@@ -287,6 +350,7 @@ impl Preferences {
             ],
             accounts_sub,
             services: subs,
+            links,
             headers,
             advanced,
         }));
@@ -330,6 +394,52 @@ impl Preferences {
 }
 
 impl Preferences {
+    /// Push a service's sub-page over what is shown ("Manage keys" on an
+    /// account's OpenPGP page): the account page stays under it.
+    pub(super) fn push_page(&self, id: &str) {
+        let (Some(dialog), Some(pages)) = (&self.dialog, &self.dialog_pages) else {
+            return;
+        };
+        if let Some((_, p)) = pages.services.iter().find(|(n, _)| *n == id) {
+            if p.parent().is_none() {
+                dialog.push_subpage(p);
+            }
+        }
+    }
+
+    /// The counts under Tags, Filters and Smart folders (screen 26).
+    pub(super) fn set_counts(&self, tags: usize, filters: usize, smart: usize) {
+        let Some(pages) = &self.dialog_pages else {
+            return;
+        };
+        let line = |id: &str| match id {
+            "tags" => Some(ni18n_f(
+                "{n} tag",
+                "{n} tags",
+                tags as u32,
+                &[("n", &tags.to_string())],
+            )),
+            "filters" => Some(ni18n_f(
+                "{n} filter",
+                "{n} filters",
+                filters as u32,
+                &[("n", &filters.to_string())],
+            )),
+            "smart" => Some(ni18n_f(
+                "{n} smart folder",
+                "{n} smart folders",
+                smart as u32,
+                &[("n", &smart.to_string())],
+            )),
+            _ => None,
+        };
+        for (id, row) in &pages.links {
+            if let Some(text) = line(id) {
+                row.set_subtitle(&text);
+            }
+        }
+    }
+
     /// Show or hide a service sub-page's header (its editor brings its own).
     pub(super) fn show_sub_header(&self, id: &str, visible: bool) {
         if let Some(pages) = &self.dialog_pages {

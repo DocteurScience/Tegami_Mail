@@ -168,23 +168,6 @@ impl Row {
         if let Some(tex) = &st.avatar_texture {
             return Some(tex.clone().upcast());
         }
-        // A message from one of your own mailboxes wears that mailbox's emoji
-        // on its color (#189), the same face the sidebar circle shows. It
-        // shares the slot with the initials, keyed by what it draws.
-        if let Some((emoji, color)) =
-            crate::services::avatar::own_face(&self.face_email(data, look))
-                .and_then(|face| face.emoji.map(|emoji| (emoji, face.color)))
-        {
-            let key = format!("{emoji}\u{1}{color}");
-            if st.initials.as_ref().is_none_or(|(n, _)| *n != key) {
-                let bg = gtk::gdk::RGBA::parse(&color).unwrap_or(gtk::gdk::RGBA::BLACK);
-                let fg = gtk::gdk::RGBA::parse(crate::color::readable_text(&color))
-                    .unwrap_or(gtk::gdk::RGBA::WHITE);
-                let face = crate::ui::initials::InitialsPaintable::solid(&emoji, bg, fg, 0.55);
-                st.initials = Some((key, face));
-            }
-            return st.initials.as_ref().map(|(_, p)| p.clone().upcast());
-        }
         let name = self.face_name(data, look);
         if st.initials.as_ref().is_none_or(|(n, _)| *n != name) {
             st.initials =
@@ -194,24 +177,10 @@ impl Row {
     }
 
     /// Fill the circle: a cached face if one is known, otherwise go and
-    /// look. The chain is your own mailbox's picture (#189) → contact photo
-    /// → Gravatar → domain icon → initials, each tier consulted only while
-    /// its switch is on.
+    /// look. The chain is contact photo → Gravatar → domain icon →
+    /// initials, each tier consulted only while its switch is on.
     pub(super) fn load_face(&self, email: &str, look: &RowLook) {
         if email.is_empty() {
-            return;
-        }
-        if let Some(face) = crate::services::avatar::own_face(email) {
-            let tex = face
-                .gravatar
-                .then(|| crate::services::avatar::own_gravatar(email))
-                .flatten()
-                .or_else(|| {
-                    face.picture
-                        .as_deref()
-                        .and_then(crate::ui::initials::avatar_texture)
-                });
-            self.st.borrow_mut().avatar_texture = tex;
             return;
         }
         match crate::services::avatar::lookup(email, look.gravatar) {

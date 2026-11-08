@@ -20,6 +20,7 @@ impl AccountsWindow {
     /// The Smart Folders list (#417): a row per folder, saying where it
     /// looks, activating to edit, with a remove button.
     pub(super) fn rebuild_smart_rows(&self, sender: &ComponentSender<Self>) {
+        self.send_counts(sender);
         let Some(list) = &self.smart_list else { return };
         while let Some(row) = list.first_child() {
             list.remove(&row);

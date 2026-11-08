@@ -2,21 +2,15 @@
 //! folder, auto-empty (#140), list clean-up (#407), and body search hits
 //! for filters (#191).
 
-use async_imap::types::Fetch;
-use futures::TryStreamExt;
 use tokio::sync::mpsc;
 
 use crate::cache::Cache;
 use crate::config::AccountConfig;
 use crate::models::{FolderKind, Message};
-use crate::worker::chores::{
-    auto_empty_due, auto_empty_roles, clean_lists_due, clean_lists_query, imap_before_date,
-    role_folder_path,
-};
+use crate::worker::chores::{auto_empty_due, auto_empty_roles, imap_before_date, role_folder_path};
 use crate::worker::imap::folders::{is_inbox_path, refresh_folders};
-use crate::worker::imap::mutate::{move_messages, purge_messages};
-use crate::worker::imap::summary::fetched_fields;
-use crate::worker::imap::wire::{exam, fetch_uids, search_uids, sel, uid_set};
+use crate::worker::imap::mutate::purge_messages;
+use crate::worker::imap::wire::{exam, search_uids, sel, uid_set};
 use crate::worker::imap::ImapSession;
 use crate::worker::{chip_counts_all, MailRequest, WorkerEvent};
 
@@ -83,109 +77,6 @@ pub(super) async fn auto_empty_imap(
     }
     if purged_any {
         refresh_folders(account_id, account, session, cache, emit).await;
-    }
-}
-
-/// Which of `uids` (in the selected folder) carry a List-Unsubscribe
-/// header, read 500 at a time.
-async fn with_list_header(
-    session: &mut ImapSession,
-    uids: &[u32],
-) -> Result<Vec<u32>, async_imap::error::Error> {
-    let mut out = Vec::new();
-    for chunk in uids.chunks(500) {
-        let fetches: Vec<Fetch> = fetch_uids(
-            session,
-            uid_set(chunk),
-            "(UID BODY.PEEK[HEADER.FIELDS (LIST-UNSUBSCRIBE)])",
-        )
-        .await?
-        .try_collect()
-        .await?;
-        out.extend(fetches.iter().filter_map(|f| {
-            let listed = fetched_fields(f).iter().any(|(name, value)| {
-                name.eq_ignore_ascii_case("list-unsubscribe") && !value.is_empty()
-            });
-            listed.then_some(f.uid?)
-        }));
-    }
-    Ok(out)
-}
-
-/// Move the Inbox's list mail older than the account's chosen age to the
-/// Trash (#407), searched for on the server, so mail never opened counts
-/// too. It rides the unread sweep like auto-empty, and a failure is logged
-/// and tried again next time. The Inbox list is redrawn from the cache.
-pub(super) async fn clean_lists_imap(
-    account_id: u32,
-    account: &AccountConfig,
-    session: &mut ImapSession,
-    cache: Option<&Cache>,
-    last: &mut Option<std::time::Instant>,
-    emit: &impl Fn(WorkerEvent),
-) {
-    if !clean_lists_due(account, last) {
-        return;
-    }
-    let days = account.clean_lists_days;
-    let folders = cache
-        .map(|c| c.load_folders(account_id))
-        .unwrap_or_default();
-    let Some(inbox) = folders
-        .iter()
-        .find(|f| f.kind == FolderKind::Inbox)
-        .cloned()
-    else {
-        return;
-    };
-    let Some(trash) = role_folder_path(account, &folders, FolderKind::Trash, "trash") else {
-        tracing::info!("list clean-up: account {account_id} has no Trash folder");
-        return;
-    };
-    let found = match sel(session, &inbox.path).await {
-        Ok(_) => search_uids(session, clean_lists_query(days)).await,
-        Err(e) => Err(e),
-    };
-    let found = match found {
-        Ok(set) => {
-            let mut candidates: Vec<u32> = set.into_iter().collect();
-            candidates.sort_unstable();
-            with_list_header(session, &candidates).await
-        }
-        Err(e) => Err(e),
-    };
-    let uids: Vec<u32> = match found {
-        Ok(uids) => uids,
-        Err(e) => {
-            tracing::warn!(
-                "list clean-up: could not search {} on account {account_id}: {e}",
-                inbox.path
-            );
-            return;
-        }
-    };
-    if uids.is_empty() {
-        return;
-    }
-    match move_messages(session, &inbox.path, &uids, &trash).await {
-        Ok(_) => {
-            tracing::info!(
-                "list clean-up: moved {} list message(s) older than {days} days to {trash} on account {account_id}",
-                uids.len()
-            );
-            if let Some(c) = cache {
-                for uid in &uids {
-                    c.delete_message(account_id, &inbox.path, *uid);
-                }
-                emit(WorkerEvent::Messages {
-                    folder_id: inbox.id,
-                    messages: c.load_messages(account_id, &inbox.path, inbox.id),
-                });
-            }
-        }
-        Err(e) => {
-            tracing::warn!("list clean-up: could not move list mail on account {account_id}: {e}")
-        }
     }
 }
 
