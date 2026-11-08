@@ -630,47 +630,6 @@ msgstr "Η απάντησή σας στάλθηκε: ίσως."
 msgid "Your answer has been sent: declined."
 msgstr "Η απάντησή σας στάλθηκε: απόρριψη."
 
-#, fuzzy
-msgid "Status bar"
-msgstr "Γραμμή κατάστασης ({n})"
-
-msgid "It shows what Tegami Mail is doing, and opens by itself for errors."
-msgstr ""
-
-#, fuzzy
-msgid "Show the status bar"
-msgstr "Απόκρυψη γραμμής κατάστασης"
-
-msgid "At the top of the window"
-msgstr ""
-
-msgid "Diagnostics"
-msgstr ""
-
-#, fuzzy
-msgid "Console mode"
-msgstr "Κονσόλα"
-
-msgid "Offers a detailed activity console in the status bar."
-msgstr ""
-
-#, fuzzy
-msgid "Open the console"
-msgstr "Άνοιγμα Διαδικτυακών λογαριασμών"
-
-msgid "Ctrl+Shift+C"
-msgstr ""
-
-#, fuzzy
-msgid "Export the log…"
-msgstr "Εξαγωγή αρχείου καταγραφής"
-
-msgid "Saves recent activity in a file, to attach to a bug report."
-msgstr ""
-
-msgid "Troubleshooting"
-msgstr ""
-
 msgid ""
 "{n} contact exported to {file}. Open the file in GNOME Contacts to keep it."
 msgid_plural ""
@@ -1402,6 +1361,47 @@ msgid "{n} unread in Inboxes"
 msgid_plural "{n} unread in Inboxes"
 msgstr[0] "{n} μη αναγνωσμένο στα Εισερχόμενα"
 msgstr[1] "{n} μη αναγνωσμένα στα Εισερχόμενα"
+
+#, fuzzy
+msgid "Status bar"
+msgstr "Γραμμή κατάστασης ({n})"
+
+msgid "It shows what Tegami Mail is doing, and opens by itself for errors."
+msgstr ""
+
+#, fuzzy
+msgid "Show the status bar"
+msgstr "Απόκρυψη γραμμής κατάστασης"
+
+msgid "At the top of the window"
+msgstr ""
+
+msgid "Diagnostics"
+msgstr ""
+
+#, fuzzy
+msgid "Console mode"
+msgstr "Κονσόλα"
+
+msgid "Offers a detailed activity console in the status bar."
+msgstr ""
+
+#, fuzzy
+msgid "Open the console"
+msgstr "Άνοιγμα Διαδικτυακών λογαριασμών"
+
+msgid "Ctrl+Shift+C"
+msgstr ""
+
+#, fuzzy
+msgid "Export the log…"
+msgstr "Εξαγωγή αρχείου καταγραφής"
+
+msgid "Saves recent activity in a file, to attach to a bug report."
+msgstr ""
+
+msgid "Troubleshooting"
+msgstr ""
 
 msgid "Move to {name}"
 msgstr "Μετακίνηση στο {name}"
@@ -3557,6 +3557,9 @@ msgstr "Ολόκληρο το δέντρο"
 
 msgid "First level"
 msgstr "Πρώτο επίπεδο"
+
+msgid "Encryption, port, search base and scope"
+msgstr ""
 
 msgid "Leave empty for a directory that needs no sign-in."
 msgstr "Αφήστε το κενό για κατάλογο που δεν απαιτεί σύνδεση."

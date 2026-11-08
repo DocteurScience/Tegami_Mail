@@ -661,47 +661,6 @@ msgstr "Ваш ответ отправлен: возможно."
 msgid "Your answer has been sent: declined."
 msgstr "Ваш ответ отправлен: отклонено."
 
-#, fuzzy
-msgid "Status bar"
-msgstr "Строка состояния ({n})"
-
-msgid "It shows what Tegami Mail is doing, and opens by itself for errors."
-msgstr ""
-
-#, fuzzy
-msgid "Show the status bar"
-msgstr "Скрыть строку состояния"
-
-msgid "At the top of the window"
-msgstr ""
-
-msgid "Diagnostics"
-msgstr ""
-
-#, fuzzy
-msgid "Console mode"
-msgstr "Консоль"
-
-msgid "Offers a detailed activity console in the status bar."
-msgstr ""
-
-#, fuzzy
-msgid "Open the console"
-msgstr "Открыть «Сетевые учётные записи»…"
-
-msgid "Ctrl+Shift+C"
-msgstr ""
-
-#, fuzzy
-msgid "Export the log…"
-msgstr "Экспортировать журнал"
-
-msgid "Saves recent activity in a file, to attach to a bug report."
-msgstr ""
-
-msgid "Troubleshooting"
-msgstr ""
-
 msgid ""
 "{n} contact exported to {file}. Open the file in GNOME Contacts to keep it."
 msgid_plural ""
@@ -1481,6 +1440,47 @@ msgid_plural "{n} unread in Inboxes"
 msgstr[0] "{n} непрочитанное во «Входящих»"
 msgstr[1] "{n} непрочитанных во «Входящих»"
 msgstr[2] "{n} непрочитанных во «Входящих»"
+
+#, fuzzy
+msgid "Status bar"
+msgstr "Строка состояния ({n})"
+
+msgid "It shows what Tegami Mail is doing, and opens by itself for errors."
+msgstr ""
+
+#, fuzzy
+msgid "Show the status bar"
+msgstr "Скрыть строку состояния"
+
+msgid "At the top of the window"
+msgstr ""
+
+msgid "Diagnostics"
+msgstr ""
+
+#, fuzzy
+msgid "Console mode"
+msgstr "Консоль"
+
+msgid "Offers a detailed activity console in the status bar."
+msgstr ""
+
+#, fuzzy
+msgid "Open the console"
+msgstr "Открыть «Сетевые учётные записи»…"
+
+msgid "Ctrl+Shift+C"
+msgstr ""
+
+#, fuzzy
+msgid "Export the log…"
+msgstr "Экспортировать журнал"
+
+msgid "Saves recent activity in a file, to attach to a bug report."
+msgstr ""
+
+msgid "Troubleshooting"
+msgstr ""
 
 msgid "Move to {name}"
 msgstr "Переместить в {name}"
@@ -3652,6 +3652,9 @@ msgstr "Всё дерево"
 
 msgid "First level"
 msgstr "Первый уровень"
+
+msgid "Encryption, port, search base and scope"
+msgstr ""
 
 #, fuzzy
 msgid "Leave empty for a directory that needs no sign-in."

@@ -630,47 +630,6 @@ msgstr "A sua resposta foi enviada: talvez."
 msgid "Your answer has been sent: declined."
 msgstr "A sua resposta foi enviada: recusado."
 
-#, fuzzy
-msgid "Status bar"
-msgstr "Barra de estado ({n})"
-
-msgid "It shows what Tegami Mail is doing, and opens by itself for errors."
-msgstr ""
-
-#, fuzzy
-msgid "Show the status bar"
-msgstr "Ocultar a barra de estado"
-
-msgid "At the top of the window"
-msgstr ""
-
-msgid "Diagnostics"
-msgstr ""
-
-#, fuzzy
-msgid "Console mode"
-msgstr "Consola"
-
-msgid "Offers a detailed activity console in the status bar."
-msgstr ""
-
-#, fuzzy
-msgid "Open the console"
-msgstr "Abrir Contas online"
-
-msgid "Ctrl+Shift+C"
-msgstr ""
-
-#, fuzzy
-msgid "Export the log…"
-msgstr "Exportar registo"
-
-msgid "Saves recent activity in a file, to attach to a bug report."
-msgstr ""
-
-msgid "Troubleshooting"
-msgstr ""
-
 msgid ""
 "{n} contact exported to {file}. Open the file in GNOME Contacts to keep it."
 msgid_plural ""
@@ -1398,6 +1357,47 @@ msgid "{n} unread in Inboxes"
 msgid_plural "{n} unread in Inboxes"
 msgstr[0] "{n} mensagem não lida nas Caixas de entrada"
 msgstr[1] "{n} mensagens não lidas nas Caixas de entrada"
+
+#, fuzzy
+msgid "Status bar"
+msgstr "Barra de estado ({n})"
+
+msgid "It shows what Tegami Mail is doing, and opens by itself for errors."
+msgstr ""
+
+#, fuzzy
+msgid "Show the status bar"
+msgstr "Ocultar a barra de estado"
+
+msgid "At the top of the window"
+msgstr ""
+
+msgid "Diagnostics"
+msgstr ""
+
+#, fuzzy
+msgid "Console mode"
+msgstr "Consola"
+
+msgid "Offers a detailed activity console in the status bar."
+msgstr ""
+
+#, fuzzy
+msgid "Open the console"
+msgstr "Abrir Contas online"
+
+msgid "Ctrl+Shift+C"
+msgstr ""
+
+#, fuzzy
+msgid "Export the log…"
+msgstr "Exportar registo"
+
+msgid "Saves recent activity in a file, to attach to a bug report."
+msgstr ""
+
+msgid "Troubleshooting"
+msgstr ""
 
 msgid "Move to {name}"
 msgstr "Mover para {name}"
@@ -3519,6 +3519,9 @@ msgstr "Toda a árvore"
 
 msgid "First level"
 msgstr "Primeiro nível"
+
+msgid "Encryption, port, search base and scope"
+msgstr ""
 
 msgid "Leave empty for a directory that needs no sign-in."
 msgstr "Deixe em branco se o diretório não exigir início de sessão."

@@ -620,47 +620,6 @@ msgstr "La teva resposta s'ha enviat: potser."
 msgid "Your answer has been sent: declined."
 msgstr "La teva resposta s'ha enviat: rebutjat."
 
-#, fuzzy
-msgid "Status bar"
-msgstr "Barra d'estat ({n})"
-
-msgid "It shows what Tegami Mail is doing, and opens by itself for errors."
-msgstr ""
-
-#, fuzzy
-msgid "Show the status bar"
-msgstr "Amaga la barra d'estat"
-
-msgid "At the top of the window"
-msgstr ""
-
-msgid "Diagnostics"
-msgstr ""
-
-#, fuzzy
-msgid "Console mode"
-msgstr "Consola"
-
-msgid "Offers a detailed activity console in the status bar."
-msgstr ""
-
-#, fuzzy
-msgid "Open the console"
-msgstr "Obre els comptes en línia"
-
-msgid "Ctrl+Shift+C"
-msgstr ""
-
-#, fuzzy
-msgid "Export the log…"
-msgstr "Exporta el registre"
-
-msgid "Saves recent activity in a file, to attach to a bug report."
-msgstr ""
-
-msgid "Troubleshooting"
-msgstr ""
-
 msgid ""
 "{n} contact exported to {file}. Open the file in GNOME Contacts to keep it."
 msgid_plural ""
@@ -1386,6 +1345,47 @@ msgid "{n} unread in Inboxes"
 msgid_plural "{n} unread in Inboxes"
 msgstr[0] "{n} no llegit a les bústies d'entrada"
 msgstr[1] "{n} no llegits a les bústies d'entrada"
+
+#, fuzzy
+msgid "Status bar"
+msgstr "Barra d'estat ({n})"
+
+msgid "It shows what Tegami Mail is doing, and opens by itself for errors."
+msgstr ""
+
+#, fuzzy
+msgid "Show the status bar"
+msgstr "Amaga la barra d'estat"
+
+msgid "At the top of the window"
+msgstr ""
+
+msgid "Diagnostics"
+msgstr ""
+
+#, fuzzy
+msgid "Console mode"
+msgstr "Consola"
+
+msgid "Offers a detailed activity console in the status bar."
+msgstr ""
+
+#, fuzzy
+msgid "Open the console"
+msgstr "Obre els comptes en línia"
+
+msgid "Ctrl+Shift+C"
+msgstr ""
+
+#, fuzzy
+msgid "Export the log…"
+msgstr "Exporta el registre"
+
+msgid "Saves recent activity in a file, to attach to a bug report."
+msgstr ""
+
+msgid "Troubleshooting"
+msgstr ""
 
 msgid "Move to {name}"
 msgstr "Mou a {name}"
@@ -3496,6 +3496,9 @@ msgstr "Arbre sencer"
 
 msgid "First level"
 msgstr "Primer nivell"
+
+msgid "Encryption, port, search base and scope"
+msgstr ""
 
 msgid "Leave empty for a directory that needs no sign-in."
 msgstr "Deixa-ho buit per a un directori que no necessita inici de sessió."

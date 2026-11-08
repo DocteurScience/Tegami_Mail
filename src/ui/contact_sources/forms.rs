@@ -324,16 +324,24 @@ pub(super) fn ldap_form(
         &i18n("First level"),
     ])));
     scope.set_selected(if dir.subtree { 0 } else { 1 });
+    server.add(&name);
+    server.add(&host);
+    // The rare fields, under Advanced (screen 47): open by themselves when
+    // the directory already has a search base.
+    let advanced_group = adw::PreferencesGroup::new();
+    let advanced = adw::ExpanderRow::new();
+    advanced.set_title(&i18n("Advanced"));
+    advanced.set_subtitle(&i18n("Encryption, port, search base and scope"));
     for w in [
-        name.upcast_ref::<gtk::Widget>(),
-        host.upcast_ref(),
-        security.upcast_ref(),
+        security.upcast_ref::<gtk::Widget>(),
         port.upcast_ref(),
         base.upcast_ref(),
         scope.upcast_ref(),
     ] {
-        server.add(w);
+        advanced.add_row(w);
     }
+    advanced.set_expanded(!dir.base_dn.trim().is_empty());
+    advanced_group.add(&advanced);
 
     let signin = adw::PreferencesGroup::new();
     signin.set_title(&i18n("Sign-in"));
@@ -370,6 +378,7 @@ pub(super) fn ldap_form(
     let form = gtk::Box::new(gtk::Orientation::Vertical, 24);
     form.append(&server);
     form.append(&signin);
+    form.append(&advanced_group);
     form.append(&error);
 
     let save: Rc<dyn Fn() -> bool> = Rc::new(move || {

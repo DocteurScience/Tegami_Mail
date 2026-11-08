@@ -660,47 +660,6 @@ msgstr "Wysłano odpowiedź: może."
 msgid "Your answer has been sent: declined."
 msgstr "Wysłano odpowiedź: odrzucono."
 
-#, fuzzy
-msgid "Status bar"
-msgstr "Pasek stanu ({n})"
-
-msgid "It shows what Tegami Mail is doing, and opens by itself for errors."
-msgstr ""
-
-#, fuzzy
-msgid "Show the status bar"
-msgstr "Ukryj pasek stanu"
-
-msgid "At the top of the window"
-msgstr ""
-
-msgid "Diagnostics"
-msgstr ""
-
-#, fuzzy
-msgid "Console mode"
-msgstr "Konsola"
-
-msgid "Offers a detailed activity console in the status bar."
-msgstr ""
-
-#, fuzzy
-msgid "Open the console"
-msgstr "Otwórz konta online…"
-
-msgid "Ctrl+Shift+C"
-msgstr ""
-
-#, fuzzy
-msgid "Export the log…"
-msgstr "Eksportuj dziennik"
-
-msgid "Saves recent activity in a file, to attach to a bug report."
-msgstr ""
-
-msgid "Troubleshooting"
-msgstr ""
-
 msgid ""
 "{n} contact exported to {file}. Open the file in GNOME Contacts to keep it."
 msgid_plural ""
@@ -1480,6 +1439,47 @@ msgid_plural "{n} unread in Inboxes"
 msgstr[0] "{n} nieprzeczytana w skrzynkach odbiorczych"
 msgstr[1] "{n} nieprzeczytane w skrzynkach odbiorczych"
 msgstr[2] "{n} nieprzeczytanych w skrzynkach odbiorczych"
+
+#, fuzzy
+msgid "Status bar"
+msgstr "Pasek stanu ({n})"
+
+msgid "It shows what Tegami Mail is doing, and opens by itself for errors."
+msgstr ""
+
+#, fuzzy
+msgid "Show the status bar"
+msgstr "Ukryj pasek stanu"
+
+msgid "At the top of the window"
+msgstr ""
+
+msgid "Diagnostics"
+msgstr ""
+
+#, fuzzy
+msgid "Console mode"
+msgstr "Konsola"
+
+msgid "Offers a detailed activity console in the status bar."
+msgstr ""
+
+#, fuzzy
+msgid "Open the console"
+msgstr "Otwórz konta online…"
+
+msgid "Ctrl+Shift+C"
+msgstr ""
+
+#, fuzzy
+msgid "Export the log…"
+msgstr "Eksportuj dziennik"
+
+msgid "Saves recent activity in a file, to attach to a bug report."
+msgstr ""
+
+msgid "Troubleshooting"
+msgstr ""
 
 msgid "Move to {name}"
 msgstr "Przenieś do katalogu {name}"
@@ -3689,6 +3689,9 @@ msgstr ""
 #, fuzzy
 msgid "First level"
 msgstr "Imię"
+
+msgid "Encryption, port, search base and scope"
+msgstr ""
 
 msgid "Leave empty for a directory that needs no sign-in."
 msgstr ""

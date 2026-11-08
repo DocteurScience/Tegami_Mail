@@ -638,47 +638,6 @@ msgstr "Válasza elküldve: talán."
 msgid "Your answer has been sent: declined."
 msgstr "Válasza elküldve: elutasítva."
 
-#, fuzzy
-msgid "Status bar"
-msgstr "Állapotsáv ({n})"
-
-msgid "It shows what Tegami Mail is doing, and opens by itself for errors."
-msgstr ""
-
-#, fuzzy
-msgid "Show the status bar"
-msgstr "Állapotsáv elrejtése"
-
-msgid "At the top of the window"
-msgstr ""
-
-msgid "Diagnostics"
-msgstr ""
-
-#, fuzzy
-msgid "Console mode"
-msgstr "Konzol"
-
-msgid "Offers a detailed activity console in the status bar."
-msgstr ""
-
-#, fuzzy
-msgid "Open the console"
-msgstr "Internetes Fiókok megnyitása…"
-
-msgid "Ctrl+Shift+C"
-msgstr ""
-
-#, fuzzy
-msgid "Export the log…"
-msgstr "Napló exportálása"
-
-msgid "Saves recent activity in a file, to attach to a bug report."
-msgstr ""
-
-msgid "Troubleshooting"
-msgstr ""
-
 msgid ""
 "{n} contact exported to {file}. Open the file in GNOME Contacts to keep it."
 msgid_plural ""
@@ -1452,6 +1411,47 @@ msgid "{n} unread in Inboxes"
 msgid_plural "{n} unread in Inboxes"
 msgstr[0] "{n} olvasatlan üzenet a Beérkező levelekben"
 msgstr[1] "{n} olvasatlan üzenet a Beérkező levelekben"
+
+#, fuzzy
+msgid "Status bar"
+msgstr "Állapotsáv ({n})"
+
+msgid "It shows what Tegami Mail is doing, and opens by itself for errors."
+msgstr ""
+
+#, fuzzy
+msgid "Show the status bar"
+msgstr "Állapotsáv elrejtése"
+
+msgid "At the top of the window"
+msgstr ""
+
+msgid "Diagnostics"
+msgstr ""
+
+#, fuzzy
+msgid "Console mode"
+msgstr "Konzol"
+
+msgid "Offers a detailed activity console in the status bar."
+msgstr ""
+
+#, fuzzy
+msgid "Open the console"
+msgstr "Internetes Fiókok megnyitása…"
+
+msgid "Ctrl+Shift+C"
+msgstr ""
+
+#, fuzzy
+msgid "Export the log…"
+msgstr "Napló exportálása"
+
+msgid "Saves recent activity in a file, to attach to a bug report."
+msgstr ""
+
+msgid "Troubleshooting"
+msgstr ""
 
 msgid "Move to {name}"
 msgstr "Áthelyzés ide: {name}"
@@ -3637,6 +3637,9 @@ msgstr "Teljes fa"
 
 msgid "First level"
 msgstr "Első szint"
+
+msgid "Encryption, port, search base and scope"
+msgstr ""
 
 #, fuzzy
 msgid "Leave empty for a directory that needs no sign-in."

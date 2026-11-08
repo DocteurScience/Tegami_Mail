@@ -573,42 +573,6 @@ msgstr ""
 msgid "Your answer has been sent: declined."
 msgstr ""
 
-msgid "Status bar"
-msgstr ""
-
-msgid "It shows what Tegami Mail is doing, and opens by itself for errors."
-msgstr ""
-
-msgid "Show the status bar"
-msgstr ""
-
-msgid "At the top of the window"
-msgstr ""
-
-msgid "Diagnostics"
-msgstr ""
-
-msgid "Console mode"
-msgstr ""
-
-msgid "Offers a detailed activity console in the status bar."
-msgstr ""
-
-msgid "Open the console"
-msgstr ""
-
-msgid "Ctrl+Shift+C"
-msgstr ""
-
-msgid "Export the log…"
-msgstr ""
-
-msgid "Saves recent activity in a file, to attach to a bug report."
-msgstr ""
-
-msgid "Troubleshooting"
-msgstr ""
-
 msgid ""
 "{n} contact exported to {file}. Open the file in GNOME Contacts to keep it."
 msgid_plural ""
@@ -1278,6 +1242,42 @@ msgid "{n} unread in Inboxes"
 msgid_plural "{n} unread in Inboxes"
 msgstr[0] ""
 msgstr[1] ""
+
+msgid "Status bar"
+msgstr ""
+
+msgid "It shows what Tegami Mail is doing, and opens by itself for errors."
+msgstr ""
+
+msgid "Show the status bar"
+msgstr ""
+
+msgid "At the top of the window"
+msgstr ""
+
+msgid "Diagnostics"
+msgstr ""
+
+msgid "Console mode"
+msgstr ""
+
+msgid "Offers a detailed activity console in the status bar."
+msgstr ""
+
+msgid "Open the console"
+msgstr ""
+
+msgid "Ctrl+Shift+C"
+msgstr ""
+
+msgid "Export the log…"
+msgstr ""
+
+msgid "Saves recent activity in a file, to attach to a bug report."
+msgstr ""
+
+msgid "Troubleshooting"
+msgstr ""
 
 msgid "Move to {name}"
 msgstr ""
@@ -3164,6 +3164,9 @@ msgid "Whole tree"
 msgstr ""
 
 msgid "First level"
+msgstr ""
+
+msgid "Encryption, port, search base and scope"
 msgstr ""
 
 msgid "Leave empty for a directory that needs no sign-in."

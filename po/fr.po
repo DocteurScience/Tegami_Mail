@@ -621,42 +621,6 @@ msgstr "Votre réponse a été envoyée : peut-être."
 msgid "Your answer has been sent: declined."
 msgstr "Votre réponse a été envoyée : refusé."
 
-msgid "Status bar"
-msgstr "Barre d’état"
-
-msgid "It shows what Tegami Mail is doing, and opens by itself for errors."
-msgstr "Elle montre ce que fait Tegami Mail et s’ouvre d’elle-même en cas d’erreur."
-
-msgid "Show the status bar"
-msgstr "Afficher la barre d’état"
-
-msgid "At the top of the window"
-msgstr "En haut de la fenêtre"
-
-msgid "Diagnostics"
-msgstr "Diagnostic"
-
-msgid "Console mode"
-msgstr "Mode console"
-
-msgid "Offers a detailed activity console in the status bar."
-msgstr "Propose une console d’activité détaillée dans la barre d’état."
-
-msgid "Open the console"
-msgstr "Ouvrir la console"
-
-msgid "Ctrl+Shift+C"
-msgstr "Ctrl+Maj+C"
-
-msgid "Export the log…"
-msgstr "Exporter le journal…"
-
-msgid "Saves recent activity in a file, to attach to a bug report."
-msgstr "Enregistre l’activité récente dans un fichier, à joindre à un rapport de bogue."
-
-msgid "Troubleshooting"
-msgstr "Dépannage"
-
 msgid ""
 "{n} contact exported to {file}. Open the file in GNOME Contacts to keep it."
 msgid_plural ""
@@ -1376,6 +1340,45 @@ msgid "{n} unread in Inboxes"
 msgid_plural "{n} unread in Inboxes"
 msgstr[0] "{n} non lu dans les boîtes de réception"
 msgstr[1] "{n} non lu dans les boîtes de réception"
+
+msgid "Status bar"
+msgstr "Barre d’état"
+
+msgid "It shows what Tegami Mail is doing, and opens by itself for errors."
+msgstr ""
+"Elle montre ce que fait Tegami Mail et s’ouvre d’elle-même en cas d’erreur."
+
+msgid "Show the status bar"
+msgstr "Afficher la barre d’état"
+
+msgid "At the top of the window"
+msgstr "En haut de la fenêtre"
+
+msgid "Diagnostics"
+msgstr "Diagnostic"
+
+msgid "Console mode"
+msgstr "Mode console"
+
+msgid "Offers a detailed activity console in the status bar."
+msgstr "Propose une console d’activité détaillée dans la barre d’état."
+
+msgid "Open the console"
+msgstr "Ouvrir la console"
+
+msgid "Ctrl+Shift+C"
+msgstr "Ctrl+Maj+C"
+
+msgid "Export the log…"
+msgstr "Exporter le journal…"
+
+msgid "Saves recent activity in a file, to attach to a bug report."
+msgstr ""
+"Enregistre l’activité récente dans un fichier, à joindre à un rapport de "
+"bogue."
+
+msgid "Troubleshooting"
+msgstr "Dépannage"
 
 msgid "Move to {name}"
 msgstr "Déplacer vers {name}"
@@ -3447,6 +3450,9 @@ msgstr "Arborescence complète"
 
 msgid "First level"
 msgstr "Premier niveau"
+
+msgid "Encryption, port, search base and scope"
+msgstr "Chiffrement, port, base et portée de recherche"
 
 msgid "Leave empty for a directory that needs no sign-in."
 msgstr "Laissez vide pour un annuaire qui ne nécessite pas de connexion."
