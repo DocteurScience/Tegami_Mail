@@ -4910,63 +4910,37 @@ msgstr "Adjuntarlos de todos modos"
 msgid "Upload to cloud storage and link them"
 msgstr "Subirlos al almacenamiento en la nube y enlazarlos"
 
-msgid "Privacy"
-msgstr "Privacidad"
+#, fuzzy
+msgid "Remote content"
+msgstr "Mostrar contenido remoto"
 
-msgid "Tegami Mail collects no telemetry and sends no analytics."
-msgstr "Tegami Mail no recopila telemetría ni envía datos analíticos."
-
-msgid "Always load remote content"
+#, fuzzy
+msgid "Images and remote content"
 msgstr "Cargar siempre contenido remoto"
 
-msgid "Remote content can tell a sender when and where you read."
+#, fuzzy
+msgid "Remote content can tell the sender when and from where you read."
 msgstr ""
 "El contenido remoto puede revelar al remitente cuándo y desde dónde lees."
 
-msgid "Pre-load remote content for the next messages"
+msgid "Ask"
 msgstr ""
-
-msgid "Their senders can tell they were opened."
-msgstr ""
-
-msgid "Warn when remote content is blocked"
-msgstr "Avisar cuando se bloquee contenido remoto"
-
-msgid "Off hides the banner. Remote content stays blocked."
-msgstr ""
-"Al desactivarlo, se oculta el aviso. El contenido remoto permanece bloqueado."
-
-msgid "Warn when the addressing doesn't match"
-msgstr "Avisar cuando las direcciones no coincidan"
-
-msgid ""
-"The badge beside the sender stays. A possible forgery always shows the "
-"banner."
-msgstr ""
-"Se mantiene el indicador junto al remitente. Un posible intento de "
-"suplantación siempre muestra el aviso."
-
-msgid "Use Gravatar when a contact has no photo"
-msgstr "Usar Gravatar cuando un contacto no tenga foto"
-
-msgid "Sends a hash of the sender's address to Gravatar."
-msgstr "Envía a Gravatar un hash de la dirección del remitente."
-
-msgid "Show sender logos"
-msgstr "Mostrar logotipos de remitentes"
-
-msgid ""
-"Most are fetched from the sender's domain, which learns your IP address."
-msgstr ""
-"La mayoría se descarga desde el dominio del remitente, que puede conocer tu "
-"dirección IP."
 
 #, fuzzy
-msgid "Send read receipts"
+msgid "Sender photos and logos"
+msgstr "Mostrar las fuentes y colores del remitente"
+
+msgid ""
+"Gravatar and website logos: the sender’s address is sent to these services."
+msgstr ""
+
+#, fuzzy
+msgid "Answer read-receipt requests"
 msgstr "Ocultar destinatarios"
 
-msgid "A receipt tells the sender when you opened the message."
-msgstr ""
+#, fuzzy
+msgid "A receipt tells the sender you opened the message."
+msgstr "Responder a todos en este mensaje"
 
 msgid "Other font…"
 msgstr "Otra fuente…"
@@ -6310,6 +6284,7 @@ msgstr "Parte superior de la lista"
 msgid "How long a message can still be recalled."
 msgstr ""
 
+#. ---- Notifications (screen 23).
 msgid "Notifications"
 msgstr "Notificaciones"
 
@@ -6326,6 +6301,10 @@ msgstr ""
 msgid "Sound, banners and Do Not Disturb are set there."
 msgstr ""
 
+msgid "Privacy"
+msgstr "Privacidad"
+
+#. ---- Application (screen 25).
 #, fuzzy
 msgid "Application"
 msgstr "Acción"

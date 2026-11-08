@@ -110,6 +110,34 @@ pub(super) fn read_mark_at(idx: u32) -> crate::config::ReadMark {
     }
 }
 
+/// The remote-content row (Never, Ask, Always) for the two stored
+/// switches it stands for: loading it always, and warning when it is
+/// blocked. Blocked without a warning is Never; blocked with one is Ask.
+pub(super) fn remote_content_index(auto_load: bool, warn_blocked: bool) -> u32 {
+    match (auto_load, warn_blocked) {
+        (true, _) => 2,
+        (false, true) => 1,
+        (false, false) => 0,
+    }
+}
+
+/// The two switches a remote-content row stands for: (load always, warn
+/// when blocked). Always leaves the warning on, for the day it is turned
+/// back to Ask.
+pub(super) fn remote_content_at(idx: u32) -> (bool, bool) {
+    match idx {
+        0 => (false, false),
+        2 => (true, true),
+        _ => (false, true),
+    }
+}
+
+/// Whether the photos-and-logos switch shows on: either service in use
+/// sends something out, so it reads on until both are off.
+pub(super) fn photos_on(gravatar: bool, logos: bool) -> bool {
+    gravatar || logos
+}
+
 /// The row of the read receipts combo that shows `value` (#520).
 pub(super) fn receipts_index(value: crate::config::ReceiptPolicy) -> u32 {
     use crate::config::ReceiptPolicy;
@@ -227,6 +255,23 @@ mod tests {
             assert_eq!(files_large_index(v), i as u32);
             assert_eq!(files_large_at(i as u32), v);
         }
+    }
+
+    /// Screen 24 merges the remote-content switches without losing what
+    /// was stored: each stored pair reads as one choice, and each choice
+    /// writes a pair that reads back as itself.
+    #[test]
+    fn remote_content_choices_round_trip() {
+        assert_eq!(remote_content_index(true, false), 2);
+        assert_eq!(remote_content_index(true, true), 2);
+        assert_eq!(remote_content_index(false, true), 1);
+        assert_eq!(remote_content_index(false, false), 0);
+        for idx in 0..3 {
+            let (auto, warn) = remote_content_at(idx);
+            assert_eq!(remote_content_index(auto, warn), idx);
+        }
+        assert!(photos_on(true, false) && photos_on(false, true));
+        assert!(!photos_on(false, false));
     }
 
     #[test]

@@ -5083,58 +5083,35 @@ msgstr "Всё равно прикрепить"
 msgid "Upload to cloud storage and link them"
 msgstr "Загрузить в облачное хранилище и добавить ссылки"
 
-msgid "Privacy"
-msgstr "Конфиденциальность"
+#, fuzzy
+msgid "Remote content"
+msgstr "Показать удалённое содержимое"
 
-msgid "Tegami Mail collects no telemetry and sends no analytics."
-msgstr ""
-
-msgid "Always load remote content"
+#, fuzzy
+msgid "Images and remote content"
 msgstr "Всегда загружать удалённое содержимое"
 
-msgid "Remote content can tell a sender when and where you read."
+msgid "Remote content can tell the sender when and from where you read."
 msgstr ""
 
-msgid "Pre-load remote content for the next messages"
-msgstr ""
-
-msgid "Their senders can tell they were opened."
-msgstr ""
-
-msgid "Warn when remote content is blocked"
-msgstr "Предупреждать о блокировке удалённого содержимого"
-
-#, fuzzy
-msgid "Off hides the banner. Remote content stays blocked."
-msgstr "Предупреждать о блокировке удалённого содержимого"
-
-msgid "Warn when the addressing doesn't match"
-msgstr "Предупреждать при несоответствии адресов"
-
-msgid ""
-"The badge beside the sender stays. A possible forgery always shows the "
-"banner."
-msgstr ""
-
-msgid "Use Gravatar when a contact has no photo"
-msgstr "Использовать Gravatar, если у контакта нет фото"
-
-msgid "Sends a hash of the sender's address to Gravatar."
-msgstr ""
-
-msgid "Show sender logos"
-msgstr "Показывать логотипы отправителей"
-
-msgid ""
-"Most are fetched from the sender's domain, which learns your IP address."
+msgid "Ask"
 msgstr ""
 
 #, fuzzy
-msgid "Send read receipts"
+msgid "Sender photos and logos"
+msgstr "Показывать шрифты и цвета отправителя"
+
+msgid ""
+"Gravatar and website logos: the sender’s address is sent to these services."
+msgstr ""
+
+#, fuzzy
+msgid "Answer read-receipt requests"
 msgstr "Скрыть получателей"
 
-msgid "A receipt tells the sender when you opened the message."
-msgstr ""
+#, fuzzy
+msgid "A receipt tells the sender you opened the message."
+msgstr "Ответить всем участникам этого сообщения"
 
 msgid "Other font…"
 msgstr ""
@@ -6504,6 +6481,7 @@ msgstr "Создание писем в основном окне"
 msgid "How long a message can still be recalled."
 msgstr ""
 
+#. ---- Notifications (screen 23).
 msgid "Notifications"
 msgstr "Уведомления"
 
@@ -6520,6 +6498,10 @@ msgstr ""
 msgid "Sound, banners and Do Not Disturb are set there."
 msgstr ""
 
+msgid "Privacy"
+msgstr "Конфиденциальность"
+
+#. ---- Application (screen 25).
 #, fuzzy
 msgid "Application"
 msgstr "Действия"

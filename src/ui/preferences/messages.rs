@@ -7,9 +7,7 @@ use super::*;
 #[derive(Debug)]
 pub(crate) struct PrefInit {
     pub(crate) auto_remote_content: bool,
-    pub(crate) remote_ahead: bool,
     pub(crate) show_remote_banner: bool,
-    pub(crate) show_spoof_banner: bool,
     /// Answering requests for read receipts, and asking for them (#520).
     pub(crate) receipts: crate::config::ReceiptPolicy,
     pub(crate) request_receipts: bool,
@@ -105,6 +103,8 @@ pub(crate) enum PrefInput {
     ChangeSignaturePosition(u32),
     ChangeUndoSend(u32),
     ChangeAppTheme(u32),
+    /// Privacy → Images and remote content: Never, Ask or Always.
+    ChangeRemoteContent(u32),
     /// Show the Accounts page (true) or Messages (false).
     ShowAccounts(bool),
     /// A fresh accounts panel for this open (the dialog is kept between
@@ -142,9 +142,7 @@ pub(crate) enum PrefOutput {
     /// A category was shown, so the app can reopen the window on it.
     PageShown(String),
     SetAutoRemoteContent(bool),
-    SetRemoteAhead(bool),
     SetShowRemoteBanner(bool),
-    SetShowSpoofBanner(bool),
     SetReceipts(crate::config::ReceiptPolicy),
     SetRequestReceipts(bool),
     SetReturnedReceipts(crate::config::ReturnedReceipts),

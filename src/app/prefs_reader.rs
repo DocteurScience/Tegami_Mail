@@ -63,20 +63,6 @@ impl AppModel {
                 }
             }
 
-            PrefOutput::SetShowSpoofBanner(on) => {
-                if pref!(self.show_spoof_banner = on) {
-                    self.message_view
-                        .emit(MessageViewInput::SetSpoofBannerShown(on));
-                    self.popouts_emit(|| MessageWindowInput::SetSpoofBannerShown(on));
-                }
-            }
-
-            PrefOutput::SetRemoteAhead(on) => {
-                if pref!(self.remote_ahead = on) && !on {
-                    crate::services::remote_content::fetch_ahead([]);
-                }
-            }
-
             PrefOutput::SetAutoRemoteContent(on) => {
                 if pref!(self.auto_remote_content = on) {
                     // Re-render what is open so the change takes effect there too:

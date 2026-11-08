@@ -401,10 +401,8 @@ impl AppModel {
             | PrefOutput::ImportSettings
             | PrefOutput::ContactSourcesChanged) => self.on_prefs_data_pref(pref, sender),
             pref @ (PrefOutput::SetShowRemoteBanner(..)
-            | PrefOutput::SetShowSpoofBanner(..)
             | PrefOutput::SetReceipts(..)
             | PrefOutput::SetAutoRemoteContent(..)
-            | PrefOutput::SetRemoteAhead(..)
             | PrefOutput::SetThreading(..)
             | PrefOutput::SetConfirmThreadDelete(..)
             | PrefOutput::SetThreadNewestFirst(..)) => self.on_prefs_reader_pref(pref),

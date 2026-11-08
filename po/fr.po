@@ -4820,63 +4820,30 @@ msgstr "Les joindre quand même"
 msgid "Upload to cloud storage and link them"
 msgstr "Les téléverser vers le stockage en ligne et partager un lien"
 
-msgid "Privacy"
-msgstr "Confidentialité"
+msgid "Remote content"
+msgstr "Contenu distant"
 
-msgid "Tegami Mail collects no telemetry and sends no analytics."
-msgstr ""
-"Tegami Mail ne collecte aucune télémétrie et n’envoie aucune donnée "
-"d’analyse."
+msgid "Images and remote content"
+msgstr "Images et contenu distant"
 
-msgid "Always load remote content"
-msgstr "Toujours charger le contenu distant"
+msgid "Remote content can tell the sender when and from where you read."
+msgstr "Un contenu distant peut indiquer à l’expéditeur quand et d’où vous lisez."
 
-msgid "Remote content can tell a sender when and where you read."
-msgstr ""
-"Le contenu distant peut indiquer à un expéditeur quand et où vous lisez."
+msgid "Ask"
+msgstr "Demander"
 
-msgid "Pre-load remote content for the next messages"
-msgstr "Précharger le contenu distant des messages suivants"
-
-msgid "Their senders can tell they were opened."
-msgstr "Leurs expéditeurs peuvent savoir qu’ils ont été ouverts."
-
-msgid "Warn when remote content is blocked"
-msgstr "Avertir lorsque le contenu distant est bloqué"
-
-msgid "Off hides the banner. Remote content stays blocked."
-msgstr "Désactivé, masque le bandeau. Le contenu distant reste bloqué."
-
-msgid "Warn when the addressing doesn't match"
-msgstr "Avertir lorsque l’adressage ne correspond pas"
+msgid "Sender photos and logos"
+msgstr "Photos et logos des expéditeurs"
 
 msgid ""
-"The badge beside the sender stays. A possible forgery always shows the "
-"banner."
-msgstr ""
-"Le badge à côté de l’expéditeur reste. Une falsification possible affiche "
-"toujours le bandeau."
+"Gravatar and website logos: the sender’s address is sent to these services."
+msgstr "Gravatar et logos de sites : l’adresse de l’expéditeur est envoyée à ces services."
 
-msgid "Use Gravatar when a contact has no photo"
-msgstr "Utiliser Gravatar quand un contact n’a pas de photo"
+msgid "Answer read-receipt requests"
+msgstr "Répondre aux demandes d’accusé de réception"
 
-msgid "Sends a hash of the sender's address to Gravatar."
-msgstr "Envoie à Gravatar un hachage de l’adresse de l’expéditeur."
-
-msgid "Show sender logos"
-msgstr "Afficher les logos de l’expéditeur"
-
-msgid ""
-"Most are fetched from the sender's domain, which learns your IP address."
-msgstr ""
-"La plupart sont récupérés depuis le domaine de l’expéditeur, qui apprend "
-"ainsi votre adresse IP."
-
-msgid "Send read receipts"
-msgstr "Envoyer des accusés de réception"
-
-msgid "A receipt tells the sender when you opened the message."
-msgstr "Un accusé indique à l’expéditeur quand vous avez ouvert le message."
+msgid "A receipt tells the sender you opened the message."
+msgstr "Un accusé indique à l’expéditeur que vous avez ouvert le message."
 
 msgid "Other font…"
 msgstr "Autre police…"
@@ -6194,6 +6161,7 @@ msgstr "Format des nouveaux messages"
 msgid "How long a message can still be recalled."
 msgstr "Délai pendant lequel l’envoi peut être annulé."
 
+#. ---- Notifications (screen 23).
 msgid "Notifications"
 msgstr "Notifications"
 
@@ -6209,6 +6177,10 @@ msgstr "Ouvrir les paramètres de notifications du système"
 msgid "Sound, banners and Do Not Disturb are set there."
 msgstr "Le son, les bannières et le mode Ne pas déranger se règlent là."
 
+msgid "Privacy"
+msgstr "Confidentialité"
+
+#. ---- Application (screen 25).
 msgid "Application"
 msgstr "Application"
 

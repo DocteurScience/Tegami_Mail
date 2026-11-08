@@ -80,8 +80,6 @@ pub(crate) enum MessageWindowInput {
     },
     /// The sender-authentication verdict for this message.
     SetSenderCheck(Box<crate::models::SenderCheck>),
-    /// The Settings switch for the "Check this sender" banner changed.
-    SetSpoofBannerShown(bool),
     /// Reflect a star toggle that happened elsewhere (or came back from the app).
     SetStarred(bool),
     /// The message's keywords changed (#71).

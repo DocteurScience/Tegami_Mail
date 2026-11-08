@@ -1,115 +1,84 @@
-//! Settings → Privacy.
+//! Preferences → Privacy (screen 24): three settings where there were
+//! seven switches. Remote content is one choice — never, ask, always —
+//! that stands for the former "Always load remote content" and "Warn when
+//! remote content is blocked"; sender photos and logos are one switch for
+//! Gravatar and website logos. Pre-loading remote content ahead and the
+//! addressing warning keep their stored values without a row (owner,
+//! 2026-11-08: the page merges into three).
 
 use adw::prelude::*;
 
-use super::super::{PrefOutput, ViewSender};
+use super::super::choices::{photos_on, receipts_at, remote_content_index};
+use super::super::rows::no_truncate;
+use super::super::{PrefInit, PrefInput, PrefOutput, ViewSender};
 use crate::i18n::i18n;
 
-/// The page, and the rows on it that the window reaches later.
+/// The page, and the rows on it that the dialog reaches later.
 #[derive(Debug)]
 pub(in crate::ui::preferences) struct PrivacyPage {
     pub(in crate::ui::preferences) page: adw::PreferencesPage,
-    pub(in crate::ui::preferences) auto_remote_content_row: adw::SwitchRow,
-    pub(in crate::ui::preferences) remote_ahead_row: adw::SwitchRow,
-    pub(in crate::ui::preferences) show_remote_banner_row: adw::SwitchRow,
-    pub(in crate::ui::preferences) show_spoof_banner_row: adw::SwitchRow,
-    pub(in crate::ui::preferences) gravatar_row: adw::SwitchRow,
-    pub(in crate::ui::preferences) sender_logos_row: adw::SwitchRow,
-    pub(in crate::ui::preferences) receipts_row: adw::ComboRow,
 }
 
 impl PrivacyPage {
-    pub(in crate::ui::preferences) fn build(sender: &ViewSender) -> Self {
-        relm4::view! {
-            page = adw::PreferencesPage {
-                add = &adw::PreferencesGroup {
-                    set_title: &i18n("Privacy"),
-                    set_description: Some(
-                        i18n("Tegami Mail collects no telemetry and sends no analytics.").as_str()
-                    ),
+    pub(in crate::ui::preferences) fn build(init: &PrefInit, sender: &ViewSender) -> Self {
+        let page = adw::PreferencesPage::new();
 
-                    #[name = "auto_remote_content_row"]
-                    adw::SwitchRow {
-                        set_title: &i18n("Always load remote content"),
-                        set_subtitle: &i18n("Remote content can tell a sender when and where you read."),
-                        connect_active_notify[sender] => move |row| {
-                            let _ = sender.output(PrefOutput::SetAutoRemoteContent(row.is_active()));
-                        },
-                    },
+        let remote = adw::PreferencesGroup::new();
+        remote.set_title(&i18n("Remote content"));
+        let content = adw::ComboRow::new();
+        content.set_title(&i18n("Images and remote content"));
+        content.set_subtitle(&i18n(
+            "Remote content can tell the sender when and from where you read.",
+        ));
+        content.set_model(Some(&gtk::StringList::new(&[
+            &i18n("Never"),
+            &i18n("Ask"),
+            &i18n("Always"),
+        ])));
+        no_truncate(&content);
+        content.set_selected(remote_content_index(
+            init.auto_remote_content,
+            init.show_remote_banner,
+        ));
+        let s = sender.clone();
+        content.connect_selected_notify(move |r| {
+            s.input(PrefInput::ChangeRemoteContent(r.selected()));
+        });
+        remote.add(&content);
 
-                    #[name = "remote_ahead_row"]
-                    adw::SwitchRow {
-                        set_title: &i18n("Pre-load remote content for the next messages"),
-                        set_subtitle: &i18n("Their senders can tell they were opened."),
-                        connect_active_notify[sender] => move |row| {
-                            let _ = sender.output(PrefOutput::SetRemoteAhead(row.is_active()));
-                        },
-                    },
+        let photos = adw::SwitchRow::new();
+        photos.set_title(&i18n("Sender photos and logos"));
+        photos.set_subtitle(&i18n(
+            "Gravatar and website logos: the sender’s address is sent to these services.",
+        ));
+        photos.set_active(photos_on(init.gravatar, init.sender_logos));
+        let s = sender.clone();
+        photos.connect_active_notify(move |r| {
+            let _ = s.output(PrefOutput::SetGravatar(r.is_active()));
+            let _ = s.output(PrefOutput::SetSenderLogos(r.is_active()));
+        });
+        remote.add(&photos);
+        page.add(&remote);
 
-                    #[name = "show_remote_banner_row"]
-                    adw::SwitchRow {
-                        set_title: &i18n("Warn when remote content is blocked"),
-                        set_subtitle: &i18n("Off hides the banner. Remote content stays blocked."),
-                        connect_active_notify[sender] => move |row| {
-                            let _ = sender.output(PrefOutput::SetShowRemoteBanner(row.is_active()));
-                        },
-                    },
+        let receipts = adw::PreferencesGroup::new();
+        receipts.set_title(&i18n("Read receipts"));
+        let answer = adw::ComboRow::new();
+        answer.set_title(&i18n("Answer read-receipt requests"));
+        answer.set_subtitle(&i18n("A receipt tells the sender you opened the message."));
+        answer.set_model(Some(&gtk::StringList::new(&[
+            &i18n("Ask"),
+            &i18n("Always"),
+            &i18n("Never"),
+        ])));
+        no_truncate(&answer);
+        answer.set_selected(super::super::choices::receipts_index(init.receipts));
+        let s = sender.clone();
+        answer.connect_selected_notify(move |r| {
+            let _ = s.output(PrefOutput::SetReceipts(receipts_at(r.selected())));
+        });
+        receipts.add(&answer);
+        page.add(&receipts);
 
-                    #[name = "show_spoof_banner_row"]
-                    adw::SwitchRow {
-                        set_title: &i18n("Warn when the addressing doesn't match"),
-                        set_subtitle: &i18n("The badge beside the sender stays. A possible forgery always shows the banner."),
-                        connect_active_notify[sender] => move |row| {
-                            let _ = sender.output(PrefOutput::SetShowSpoofBanner(row.is_active()));
-                        },
-                    },
-
-                    #[name = "gravatar_row"]
-                    adw::SwitchRow {
-                        set_title: &i18n("Use Gravatar when a contact has no photo"),
-                        set_subtitle: &i18n("Sends a hash of the sender's address to Gravatar."),
-                        connect_active_notify[sender] => move |row| {
-                            let _ = sender.output(PrefOutput::SetGravatar(row.is_active()));
-                        },
-                    },
-
-                    #[name = "sender_logos_row"]
-                    adw::SwitchRow {
-                        set_title: &i18n("Show sender logos"),
-                        set_subtitle: &i18n("Most are fetched from the sender's domain, which learns your IP address."),
-                        connect_active_notify[sender] => move |row| {
-                            let _ = sender.output(PrefOutput::SetSenderLogos(row.is_active()));
-                        },
-                    },
-
-                    #[name = "receipts_row"]
-                    adw::ComboRow {
-                        set_title: &i18n("Send read receipts"),
-                        set_subtitle: &i18n("A receipt tells the sender when you opened the message."),
-                        set_model: Some(&gtk::StringList::new(&[
-                            &i18n("Ask each time"),
-                            &i18n("Always"),
-                            &i18n("Never"),
-                        ])),
-                        connect_selected_notify[sender] => move |row| {
-                            let _ = sender.output(PrefOutput::SetReceipts(
-                                crate::ui::preferences::choices::receipts_at(row.selected()),
-                            ));
-                        },
-                    },
-
-                },
-            }
-        }
-        Self {
-            page,
-            auto_remote_content_row,
-            remote_ahead_row,
-            show_remote_banner_row,
-            show_spoof_banner_row,
-            gravatar_row,
-            sender_logos_row,
-            receipts_row,
-        }
+        Self { page }
     }
 }

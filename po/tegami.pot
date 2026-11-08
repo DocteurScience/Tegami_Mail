@@ -4447,55 +4447,29 @@ msgstr ""
 msgid "Upload to cloud storage and link them"
 msgstr ""
 
-msgid "Privacy"
+msgid "Remote content"
 msgstr ""
 
-msgid "Tegami Mail collects no telemetry and sends no analytics."
+msgid "Images and remote content"
 msgstr ""
 
-msgid "Always load remote content"
+msgid "Remote content can tell the sender when and from where you read."
 msgstr ""
 
-msgid "Remote content can tell a sender when and where you read."
+msgid "Ask"
 msgstr ""
 
-msgid "Pre-load remote content for the next messages"
-msgstr ""
-
-msgid "Their senders can tell they were opened."
-msgstr ""
-
-msgid "Warn when remote content is blocked"
-msgstr ""
-
-msgid "Off hides the banner. Remote content stays blocked."
-msgstr ""
-
-msgid "Warn when the addressing doesn't match"
+msgid "Sender photos and logos"
 msgstr ""
 
 msgid ""
-"The badge beside the sender stays. A possible forgery always shows the "
-"banner."
+"Gravatar and website logos: the sender’s address is sent to these services."
 msgstr ""
 
-msgid "Use Gravatar when a contact has no photo"
+msgid "Answer read-receipt requests"
 msgstr ""
 
-msgid "Sends a hash of the sender's address to Gravatar."
-msgstr ""
-
-msgid "Show sender logos"
-msgstr ""
-
-msgid ""
-"Most are fetched from the sender's domain, which learns your IP address."
-msgstr ""
-
-msgid "Send read receipts"
-msgstr ""
-
-msgid "A receipt tells the sender when you opened the message."
+msgid "A receipt tells the sender you opened the message."
 msgstr ""
 
 msgid "Other font…"
@@ -5719,6 +5693,7 @@ msgstr ""
 msgid "How long a message can still be recalled."
 msgstr ""
 
+#. ---- Notifications (screen 23).
 msgid "Notifications"
 msgstr ""
 
@@ -5734,6 +5709,10 @@ msgstr ""
 msgid "Sound, banners and Do Not Disturb are set there."
 msgstr ""
 
+msgid "Privacy"
+msgstr ""
+
+#. ---- Application (screen 25).
 msgid "Application"
 msgstr ""
 

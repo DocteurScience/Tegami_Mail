@@ -207,9 +207,6 @@ impl Component for MessageWindow {
             MessageWindowInput::FacesChanged => {
                 self.view.emit(MessageViewInput::FacesChanged);
             }
-            MessageWindowInput::SetSpoofBannerShown(show) => {
-                self.view.emit(MessageViewInput::SetSpoofBannerShown(show));
-            }
             MessageWindowInput::SetSenderCheck(check) => self.on_set_sender_check(check, root),
             MessageWindowInput::SetBody {
                 account_id,

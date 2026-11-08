@@ -4906,66 +4906,37 @@ msgstr "Trotzdem anhängen"
 msgid "Upload to cloud storage and link them"
 msgstr "In Cloud-Speicher hochladen und verlinken"
 
-msgid "Privacy"
-msgstr "Datenschutz"
+#, fuzzy
+msgid "Remote content"
+msgstr "Externe Inhalte anzeigen"
 
-msgid "Tegami Mail collects no telemetry and sends no analytics."
-msgstr ""
-"Tegami Mail erfasst keine Telemetriedaten und übermittelt keine Analysen."
-
-msgid "Always load remote content"
+#, fuzzy
+msgid "Images and remote content"
 msgstr "Externe Inhalte immer laden"
 
-msgid "Remote content can tell a sender when and where you read."
+#, fuzzy
+msgid "Remote content can tell the sender when and from where you read."
 msgstr ""
 "Externe Inhalte können dem Absender verraten, wann und wo eine Nachricht "
 "gelesen wird."
 
-msgid "Pre-load remote content for the next messages"
-msgstr "Externe Inhalte für die nächsten Nachrichten vorab laden"
-
-msgid "Their senders can tell they were opened."
+msgid "Ask"
 msgstr ""
-"Das Öffnen dieser Nachrichten ist für die jeweiligen Absender sichtbar."
 
-msgid "Warn when remote content is blocked"
-msgstr "Warnen, wenn externe Inhalte blockiert sind"
-
-msgid "Off hides the banner. Remote content stays blocked."
-msgstr ""
-"Bei Deaktivierung wird der Hinweisbanner verborgen. Nachgeladene Inhalte "
-"bleiben blockiert."
-
-msgid "Warn when the addressing doesn't match"
-msgstr "Bei abweichenden Adressangaben warnen"
+#, fuzzy
+msgid "Sender photos and logos"
+msgstr "Schriftarten und Farben des Absenders anzeigen"
 
 msgid ""
-"The badge beside the sender stays. A possible forgery always shows the "
-"banner."
+"Gravatar and website logos: the sender’s address is sent to these services."
 msgstr ""
-"Das Kennzeichen neben dem Absender bleibt bestehen. Bei möglicher Fälschung "
-"wird das Banner stets angezeigt."
 
-msgid "Use Gravatar when a contact has no photo"
-msgstr "Verwende Gravatar, wenn ein Kontakt kein Foto hat"
+#, fuzzy
+msgid "Answer read-receipt requests"
+msgstr "Lesebestätigung steht noch aus"
 
-msgid "Sends a hash of the sender's address to Gravatar."
-msgstr ""
-"Überträgt einen anonymisierten Hash-Wert der Absenderadresse an Gravatar."
-
-msgid "Show sender logos"
-msgstr "Absender-Logos anzeigen"
-
-msgid ""
-"Most are fetched from the sender's domain, which learns your IP address."
-msgstr ""
-"Der Abruf erfolgt überwiegend von der Absender-Domain, wodurch die eigene IP-"
-"Adresse offengelegt wird."
-
-msgid "Send read receipts"
-msgstr "Lesebestätigungen senden"
-
-msgid "A receipt tells the sender when you opened the message."
+#, fuzzy
+msgid "A receipt tells the sender you opened the message."
 msgstr ""
 "Eine Lesebestätigung informiert die absendende Person darüber, wann die "
 "Nachricht geöffnet wurde."
@@ -6318,6 +6289,7 @@ msgstr "Anfang der Nachricht"
 msgid "How long a message can still be recalled."
 msgstr ""
 
+#. ---- Notifications (screen 23).
 msgid "Notifications"
 msgstr "Benachrichtigungen"
 
@@ -6334,6 +6306,10 @@ msgstr ""
 msgid "Sound, banners and Do Not Disturb are set there."
 msgstr ""
 
+msgid "Privacy"
+msgstr "Datenschutz"
+
+#. ---- Application (screen 25).
 #, fuzzy
 msgid "Application"
 msgstr "Aktion"

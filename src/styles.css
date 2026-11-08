@@ -2121,3 +2121,14 @@ popover > contents {
               0 8px 24px 2px alpha(black, 0.12);
 }
 
+/* The preferences dialog's page switcher shows its pages' titles alone,
+   as screens 22 to 25 draw it (docs/DESIGN.md, "Preferences"): with the
+   icons libadwaita adds, the longer names were cut short. */
+dialog.preferences viewswitcher button image {
+  -gtk-icon-size: 0;
+  min-width: 0;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+}
+

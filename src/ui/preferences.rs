@@ -162,7 +162,7 @@ impl Component for Preferences {
         };
         let kept = KeptRows::build(&init, &sender);
         let composing = ComposingPage::build(&sender);
-        let privacy = PrivacyPage::build(&sender);
+        let privacy = PrivacyPage::build(&init, &sender);
         let backup = BackupPage::build(&sender);
         let widgets = view_output!();
         let ready = sender.ready.clone();
@@ -207,6 +207,12 @@ impl Component for Preferences {
                 let _ = sender.output(PrefOutput::ImportSettings);
             }
             PrefInput::ChangeAppTheme(index) => self.on_change_app_theme(index, sender),
+            PrefInput::ChangeRemoteContent(index) => {
+                // The two stored switches the choice stands for (screen 24).
+                let (auto, warn) = choices::remote_content_at(index);
+                let _ = sender.output(PrefOutput::SetAutoRemoteContent(auto));
+                let _ = sender.output(PrefOutput::SetShowRemoteBanner(warn));
+            }
             PrefInput::ShowAccounts(accounts) => {
                 self.show_by_id(if accounts { "accounts" } else { "messages" }, &sender);
             }

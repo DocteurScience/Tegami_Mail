@@ -4947,66 +4947,38 @@ msgstr "Επισύναψή τους ούτως ή άλλως"
 msgid "Upload to cloud storage and link them"
 msgstr "Μεταφόρτωση στην αποθήκευση cloud και προσθήκη συνδέσμων"
 
-msgid "Privacy"
-msgstr "Απόρρητο"
+#, fuzzy
+msgid "Remote content"
+msgstr "Εμφάνιση απομακρυσμένου περιεχομένου"
 
-msgid "Tegami Mail collects no telemetry and sends no analytics."
-msgstr ""
-"Το Tegami Mail δεν συλλέγει τηλεμετρία ούτε στέλνει αναλυτικά δεδομένα."
-
-msgid "Always load remote content"
+#, fuzzy
+msgid "Images and remote content"
 msgstr "Να φορτώνεται πάντα το απομακρυσμένο περιεχόμενο"
 
-msgid "Remote content can tell a sender when and where you read."
+#, fuzzy
+msgid "Remote content can tell the sender when and from where you read."
 msgstr ""
 "Το απομακρυσμένο περιεχόμενο μπορεί να ενημερώσει τον αποστολέα για το πότε "
 "και πού διαβάσατε το μήνυμα."
 
-msgid "Pre-load remote content for the next messages"
+msgid "Ask"
 msgstr ""
-
-msgid "Their senders can tell they were opened."
-msgstr ""
-
-msgid "Warn when remote content is blocked"
-msgstr "Προειδοποίηση όταν αποκλείεται απομακρυσμένο περιεχόμενο"
-
-msgid "Off hides the banner. Remote content stays blocked."
-msgstr ""
-"Ανενεργό: κρύβει το πλαίσιο. Το απομακρυσμένο περιεχόμενο παραμένει "
-"αποκλεισμένο."
-
-msgid "Warn when the addressing doesn't match"
-msgstr "Προειδοποίηση όταν οι διευθύνσεις δεν ταιριάζουν"
-
-msgid ""
-"The badge beside the sender stays. A possible forgery always shows the "
-"banner."
-msgstr ""
-"Το σήμα δίπλα στον αποστολέα παραμένει. Αν υπάρχει πιθανότητα "
-"πλαστογράφησης, το πλαίσιο προειδοποίησης εμφανίζεται πάντα."
-
-msgid "Use Gravatar when a contact has no photo"
-msgstr "Χρήση Gravatar όταν μια επαφή δεν έχει φωτογραφία"
-
-msgid "Sends a hash of the sender's address to Gravatar."
-msgstr "Στέλνει στο Gravatar ένα hash της διεύθυνσης του αποστολέα."
-
-msgid "Show sender logos"
-msgstr "Εμφάνιση λογοτύπων αποστολέων"
-
-msgid ""
-"Most are fetched from the sender's domain, which learns your IP address."
-msgstr ""
-"Τα περισσότερα λαμβάνονται από τον τομέα του αποστολέα, ο οποίος μαθαίνει τη "
-"διεύθυνση IP σας."
 
 #, fuzzy
-msgid "Send read receipts"
+msgid "Sender photos and logos"
+msgstr "Εμφάνιση των γραμματοσειρών και των χρωμάτων του αποστολέα"
+
+msgid ""
+"Gravatar and website logos: the sender’s address is sent to these services."
+msgstr ""
+
+#, fuzzy
+msgid "Answer read-receipt requests"
 msgstr "Απόκρυψη παραληπτών"
 
-msgid "A receipt tells the sender when you opened the message."
-msgstr ""
+#, fuzzy
+msgid "A receipt tells the sender you opened the message."
+msgstr "Απάντηση σε όλους σε αυτό το μήνυμα"
 
 msgid "Other font…"
 msgstr "Άλλη γραμματοσειρά…"
@@ -6371,6 +6343,7 @@ msgstr "Στην κορυφή της λίστας"
 msgid "How long a message can still be recalled."
 msgstr ""
 
+#. ---- Notifications (screen 23).
 msgid "Notifications"
 msgstr "Ειδοποιήσεις"
 
@@ -6387,6 +6360,10 @@ msgstr ""
 msgid "Sound, banners and Do Not Disturb are set there."
 msgstr ""
 
+msgid "Privacy"
+msgstr "Απόρρητο"
+
+#. ---- Application (screen 25).
 #, fuzzy
 msgid "Application"
 msgstr "Ενέργεια"

@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+- **Changed: Privacy holds three settings** (screen 24). **Images and
+  remote content** is Never, Ask or Always, read from the former "Always
+  load remote content" and "Warn when remote content is blocked"; **Sender
+  photos and logos** is one switch for Gravatar and website logos; **Answer
+  read-receipt requests** is unchanged. Pre-loading remote content ahead
+  and the addressing warning keep their values without a row. The
+  preferences' page switcher shows titles alone, as drawn.
+
 - **Changed: Settings become Preferences, a dialog of five pages**
   (docs/DESIGN.md, "Preferences"; screens 22 to 25): Accounts, Messages,
   Notifications, Privacy and Application, with libadwaita's search. Messages

@@ -35,7 +35,6 @@ pub(crate) enum MessageViewInput {
     /// Whether the blocked-remote-content banner is shown. It doesn't change
     /// what is blocked — only what the reader says about it.
     SetBannerShown(bool),
-    SetSpoofBannerShown(bool),
     /// The "always show recipients" preference changed (re-render follows).
     SetAlwaysShowRecipients(bool),
     /// The "single messages as cards" preference changed (re-render follows).

@@ -119,18 +119,18 @@ impl Preferences {
         root: &adw::PreferencesDialog,
         sender: &ComponentSender<Self>,
     ) {
-        // Titles only in the switcher, as screens 22 to 25 draw it: with
-        // icons too, the longer French names were cut short.
-        let page = |id: &str, title: &str| {
+        // Titles only in the switcher, as screens 22 to 25 draw it: the
+        // icons, which libadwaita requires, are hidden by styles.css, as
+        // with them the longer French names were cut short.
+        let page = |id: &str, title: &str, icon: &str| {
             let p = adw::PreferencesPage::new();
             p.set_name(Some(id));
             p.set_title(title);
+            p.set_icon_name(Some(icon));
             p
         };
 
-        // ---- Accounts (screen 26 comes in a later step): the panels and
-        // services behind rows.
-        let accounts = page("accounts", &i18n("Accounts"));
+        let accounts = page("accounts", &i18n("Accounts"), "avatar-default-symbolic");
         let mail = group(&i18n("Accounts"));
         let organize = group(&i18n("Organize mail"));
         let services = group(&i18n("Services"));
@@ -156,7 +156,7 @@ impl Preferences {
         accounts.add(&services);
 
         // ---- Messages (screen 22).
-        let messages = page("messages", &i18n("Messages"));
+        let messages = page("messages", &i18n("Messages"), "mail-unread-symbolic");
         let reading = group(&i18n("Reading"));
         let k = &widgets.kept;
         for row in [
@@ -190,7 +190,11 @@ impl Preferences {
         let (advanced, _) = subpage(&i18n("Advanced"), &widgets.composing.page);
 
         // ---- Notifications (screen 23).
-        let notifications = page("notifications", &i18n("Notifications"));
+        let notifications = page(
+            "notifications",
+            &i18n("Notifications"),
+            "preferences-system-notifications-symbolic",
+        );
         let new_mail = group(&i18n("New messages"));
         for row in [
             k.notifications_row.upcast_ref::<gtk::Widget>(),
@@ -216,9 +220,14 @@ impl Preferences {
         let privacy = &widgets.privacy.page;
         privacy.set_name(Some("privacy"));
         privacy.set_title(&i18n("Privacy"));
+        privacy.set_icon_name(Some("security-high-symbolic"));
 
         // ---- Application (screen 25).
-        let application = page("application", &i18n("Application"));
+        let application = page(
+            "application",
+            &i18n("Application"),
+            "applications-system-symbolic",
+        );
         let look = group(&i18n("Appearance"));
         look.add(&k.app_theme_row);
         application.add(&look);
