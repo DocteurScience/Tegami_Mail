@@ -150,10 +150,6 @@ pub(crate) enum MessageListInput {
     SetColumns(Vec<crate::config::ListColumn>),
     /// Show the column headings over a single-line list, or not (#334).
     SetHeadings(bool),
-    /// Divide a list sorted by date under Today, Yesterday and so on (#435).
-    SetGroupByDate(bool),
-    /// Put a card's tags and labels on a line under its text (#374).
-    SetPillsBelow(bool),
     /// A column's heading was clicked: sort by it, or the other way (#334).
     SortByColumn(crate::config::ListColumn),
     /// A heading's edge was dragged to `width`, or double-clicked (`None`:
@@ -193,9 +189,6 @@ pub(crate) enum MessageListInput {
     SetReceiptMarks(crate::models::ReceiptMarks),
     /// Fill them with senders' own site icons, or stop (#30).
     SetSenderLogos(bool),
-    /// The date or clock preference changed: every row's date is built with the
-    /// row, so they are built again (#32).
-    RefreshDates,
     SetColorize(bool),
     /// The local day rolled over — re-render rows so "Today" stays accurate.
     DayChanged,
@@ -366,15 +359,8 @@ pub(crate) enum MessageListInput {
     AskThreads,
     /// Set the actions palette auto-collapse delay (seconds).
     SetPaletteCollapse(u64),
-    /// Open the actions palette on row hover, without the ⋯ click.
-    SetPaletteHover(bool),
-    /// A row's ⋯, in menu mode: the row's menu at the button's corner.
-    /// Swap the swipe-gesture sides (#swipe).
-    SetSwipeReversed(bool),
     /// Turn the swipe gesture on or off (#92).
     SetSwipeEnabled(bool),
-    /// How far a trackpad two-finger swipe has to travel to fire the action.
-    SetSwipeSensitivity(f64),
     /// The list shows Trash or Junk: menus offer "Move to Inbox" (#138).
     SetRestorable(bool),
     /// The list shows Junk: "Not Spam" replaces "Mark as Spam" (#168).
@@ -543,8 +529,6 @@ pub(crate) enum MessageListOutput {
     SortChanged(&'static str),
     /// A column was resized by its heading (#334): the widths to keep.
     ColumnWidths(std::collections::HashMap<crate::config::ListColumn, i32>),
-    /// Customize Columns… from the headings' right-click menu (#443).
-    CustomizeColumns,
 }
 
 /// The rows GTK has selected right now, read without a trip through the

@@ -6,7 +6,6 @@ use relm4::prelude::*;
 
 use crate::app::model::AppModel;
 use crate::app::msg::AppMsg;
-use crate::app::AppModelWidgets;
 use crate::ui::message_list::MessageListInput;
 use crate::ui::message_view::MessageViewInput;
 use crate::ui::showcase::showcase_capture;
@@ -253,39 +252,6 @@ pub(super) fn stage_apply_filters(sender: &ComponentSender<AppModel>) {
                 .and_then(|(a, f)| Some(vec![(a.parse().ok()?, f.parse().ok()?)]))
                 .unwrap_or_default();
             s.input(AppMsg::ApplyFilters(targets));
-        });
-    }
-}
-
-/// TEGAMI_SHOWCASE_TOOLBAR_GAP=<zone>:<index> opens a drop gap
-/// in the Settings toolbar editor at 6s (pair with
-/// TEGAMI_SHOWCASE_SETTINGS=appearance), as a hovering drag
-/// would.
-pub(super) fn stage_toolbar_gap(sender: &ComponentSender<AppModel>) {
-    if let Ok(spec) = std::env::var("TEGAMI_SHOWCASE_TOOLBAR_GAP") {
-        if let Some((z, i)) = spec.split_once(':') {
-            if let (Ok(zone), Ok(index)) = (z.parse::<usize>(), i.parse::<usize>()) {
-                let s = sender.input_sender().clone();
-                gtk::glib::timeout_add_seconds_local_once(6, move || {
-                    let _ = s.send(AppMsg::ShowcaseToolbarGap { zone, index });
-                });
-            }
-        }
-    }
-}
-
-/// TEGAMI_SHOWCASE_TOOLBAR_MENU=1 opens the header's right-click
-/// menu (Customize Toolbar…) at 5s, as a click on its empty
-/// middle would.
-pub(super) fn stage_toolbar_menu(widgets: &AppModelWidgets, sender: &ComponentSender<AppModel>) {
-    if std::env::var("TEGAMI_SHOWCASE_TOOLBAR_MENU").is_ok() {
-        let s = sender.input_sender().clone();
-        let header: gtk::Widget = widgets.reader_header.clone().upcast();
-        gtk::glib::timeout_add_seconds_local_once(5, move || {
-            let _ = s.send(AppMsg::ReaderToolbarMenu {
-                x: header.width() as f64 / 2.0,
-                y: header.height() as f64 / 2.0,
-            });
         });
     }
 }

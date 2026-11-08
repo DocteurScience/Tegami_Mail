@@ -1,7 +1,7 @@
 //! The message list as a relm4 component: its widget tree (view!), building
 //! it, and `update`, which routes each input to its `on_*` method.
 
-use super::init::{link_heading_scroll, watch_bottom, watch_heading_menu, watch_pane_width};
+use super::init::{link_heading_scroll, watch_bottom, watch_pane_width};
 
 use super::layout::{schedule_midnight_refresh, BarSlots, LIST_MIN_WIDTH};
 use super::rows::LIST_WINDOW;
@@ -359,7 +359,6 @@ impl SimpleComponent for MessageList {
         let widgets = view_output!();
         model.scroller = Some(widgets.scroller.clone());
         link_heading_scroll(&widgets.scroller, &widgets.headings_scroller);
-        watch_heading_menu(widgets.headings_area.upcast_ref(), &sender);
         watch_pane_width(&widgets.scroller, &sender);
         watch_bottom(&widgets.scroller, &sender);
         super::scrub::watch_scrollbar(&widgets.scroller, &model.shared, &sender);
@@ -421,9 +420,6 @@ impl SimpleComponent for MessageList {
             MessageListInput::SetThreading(on) => self.on_set_threading(on),
             MessageListInput::SetListPalette(on) => self.on_set_list_palette(on),
             MessageListInput::ResolveDelete => self.on_resolve_delete(&sender),
-            // Every row's date, and a conversation's latest, is worked out
-            // by the rebuild.
-            MessageListInput::RefreshDates => self.rebuild(),
             MessageListInput::SetSenderLogos(on) => self.on_set_sender_logos(on),
             // The rows on screen are filled again in place: a rebuild
             // here undid the selection a snooze's removal had just moved on.
@@ -529,8 +525,6 @@ impl SimpleComponent for MessageList {
                 self.headings = on;
                 self.sync_headings();
             }
-            MessageListInput::SetGroupByDate(on) => self.on_set_group_by_date(on),
-            MessageListInput::SetPillsBelow(on) => self.on_set_pills_below(on),
             MessageListInput::SortByColumn(column) => self.on_sort_by_column(column, &sender),
             MessageListInput::RowActivated(index) => self.on_row_activated(index, &sender),
             MessageListInput::MarkRead(slot) => {
@@ -578,13 +572,7 @@ impl SimpleComponent for MessageList {
             MessageListInput::SetPaletteCollapse(secs) => {
                 self.shared.palette_collapse_secs.set(secs)
             }
-            MessageListInput::SetPaletteHover(on) => self.shared.palette_hover.set(on),
-            MessageListInput::SetSwipeReversed(on) => self.shared.swipe_reversed.set(on),
             MessageListInput::SetSwipeEnabled(on) => self.on_set_swipe_enabled(on),
-            MessageListInput::SetSwipeSensitivity(factor) => {
-                self.shared.swipe_sensitivity.set(factor);
-                self.shared.refresh_all();
-            }
             MessageListInput::SetSelected(id) => self.on_set_selected(id),
             MessageListInput::DebugOpenPalette(idx) => self.on_debug_open_palette(idx),
             MessageListInput::DebugSwipe { index, left } => self.on_debug_swipe(index, left),

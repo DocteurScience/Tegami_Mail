@@ -178,13 +178,7 @@ impl AppModel {
     fn build_filter_run_dialog(&self, sender: &ComponentSender<Self>) -> FilterRunDialog {
         // Parented on Settings when the run was started there, so the dialog
         // is not stranded behind it.
-        let parent: Option<gtk::Window> = self
-            .prefs
-            .as_ref()
-            .map(|p| p.widget().clone())
-            .filter(|w| w.is_visible())
-            .map(|w| w.upcast())
-            .or_else(|| Some(self.window.clone().upcast()));
+        let parent: Option<gtk::Window> = Some(self.window.clone().upcast());
         let dialog =
             adw::MessageDialog::new(parent.as_ref(), Some(&i18n("Applying filters")), None);
         dialog.set_body_use_markup(false);

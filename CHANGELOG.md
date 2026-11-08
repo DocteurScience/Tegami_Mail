@@ -2,6 +2,29 @@
 
 ## Unreleased
 
+- **Changed: Settings become Preferences, a dialog of five pages**
+  (docs/DESIGN.md, "Preferences"; screens 22 to 25): Accounts, Messages,
+  Notifications, Privacy and Application, with libadwaita's search. Messages
+  holds reading (mark as read, newest first, confirm deleting a
+  conversation, swipe) and composing (send from, format, undo send, check
+  spelling); the rest of Composing is under **Advanced**. Notifications
+  links to the system's settings for sound and banners. Accounts opens the
+  account, tag, filter, smart-folder and sender panels and the services on
+  sub-pages.
+- **Removed (owner's decisions, 2026-11-07 and 2026-11-08): the Sidebar,
+  Conversations, Date and time, Message list, Reading, System and
+  Appearance pages**, except the settings above: coloured themes, the
+  customizable toolbar, text size, icon set, "This window opens to", own
+  fonts and colours, message cards and header options, find bar position,
+  printing options, the actions palettes, list columns, layout, preview
+  lines, grouping by date, bar positions, swipe direction and sensitivity,
+  language, renderer, start fullscreen, the tray icon, the unread count on
+  the app icon, GNOME Files integration, the link opener, downloaded-mail
+  storage, the new-mail sound, notification buttons and saving data on
+  metered connections. Each keeps the value it had. The reader header's
+  "Customize toolbar…" and the list headings' "Customize columns…" go with
+  them.
+
 - **Changed: menus and popovers stand off the window more**, with a firmer
   outline and a deeper shadow, as the mockups draw them.
 

@@ -593,12 +593,6 @@ impl Component for MessageView {
                 y,
                 page_width,
             } => self.on_card_move_at(account_id, id, x, y, page_width, &sender),
-            MessageViewInput::SetCardActionsMode {
-                hover_toggle,
-                hover_auto,
-            } => self.on_set_card_actions_mode(hover_toggle, hover_auto),
-            MessageViewInput::SetPaletteCollapse(secs) => self.on_set_palette_collapse(secs),
-            MessageViewInput::SetCardPaletteMenu(on) => self.on_set_card_palette_menu(on),
             MessageViewInput::ClearDot { account_id, id } => self.on_clear_dot(account_id, id),
             MessageViewInput::SetReadMark(policy) => self.on_set_read_mark(policy),
             MessageViewInput::OpenFind => self.on_open_find(&sender),

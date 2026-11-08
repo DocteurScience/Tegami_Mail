@@ -90,16 +90,10 @@ impl AppModel {
         });
     }
 
-    /// The window a dialog opened from Settings belongs to: Settings while
-    /// it is open, else the main window.
+    /// The window a dialog opened from Preferences belongs to: the main
+    /// window, which the preferences dialog itself sits in.
     pub(super) fn dialog_parent(&self) -> Option<gtk::Window> {
-        let prefs = self
-            .prefs
-            .as_ref()
-            .map(|p| p.widget().clone().upcast::<gtk::Window>());
-        prefs
-            .filter(|w| w.is_visible())
-            .or_else(|| Some(self.window.clone().upcast()))
+        Some(self.window.clone().upcast())
     }
 
     /// Dialog to add an email to GNOME Contacts (choosing the address book).

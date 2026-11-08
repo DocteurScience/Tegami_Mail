@@ -174,12 +174,6 @@ pub(crate) fn metered() -> bool {
     METERED.load(Ordering::Relaxed)
 }
 
-/// Settings: hold back the work done ahead of the user on a metered
-/// connection.
-pub(crate) fn set_save_data(on: bool) {
-    SAVE_DATA.store(on, Ordering::Relaxed);
-}
-
 /// Whether the work done ahead of the user (prefetching bodies and
 /// attachments, indexing old mail, watching extra folders, fetching logos)
 /// waits: the connection is metered and Settings asks to save data there.

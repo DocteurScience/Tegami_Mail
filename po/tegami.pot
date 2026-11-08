@@ -1117,19 +1117,10 @@ msgstr ""
 msgid "Import failed: {e}"
 msgstr ""
 
-msgid "The renderer applies the next time Tegami Mail starts."
-msgstr ""
-
-msgid "The language applies the next time Tegami Mail starts."
-msgstr ""
-
 msgid "Forward as attachment"
 msgstr ""
 
 msgid "Delete {n} messages"
-msgstr ""
-
-msgid "Customize toolbar…"
 msgstr ""
 
 msgid "Read receipt"
@@ -1441,18 +1432,6 @@ msgid "Name (Z to A)"
 msgstr ""
 
 msgid "Full path"
-msgstr ""
-
-msgid "Spam"
-msgstr ""
-
-msgid "Read/Unread"
-msgstr ""
-
-msgid "Move to"
-msgstr ""
-
-msgid "Find"
 msgstr ""
 
 msgid "{date} at {time}"
@@ -1949,6 +1928,9 @@ msgid "Enable this account"
 msgstr ""
 
 msgid "Forward to"
+msgstr ""
+
+msgid "Move to"
 msgstr ""
 
 msgid "forwards to {to}"
@@ -3502,9 +3484,6 @@ msgstr ""
 msgid "Until {date}"
 msgstr ""
 
-msgid "Customize columns…"
-msgstr ""
-
 msgid "Remove stars"
 msgstr ""
 
@@ -4216,55 +4195,7 @@ msgstr[1] ""
 msgid "That key was already in your keyring."
 msgstr ""
 
-msgid "Choose a sound"
-msgstr ""
-
-msgid "Sounds"
-msgstr ""
-
-msgid "Drag to move"
-msgstr ""
-
-msgid "Left group"
-msgstr ""
-
-msgid "Always shown · up to {n}"
-msgstr ""
-
-msgid "Right group"
-msgstr ""
-
-msgid "Folds into ⋯ when narrow"
-msgstr ""
-
-msgid "Not shown"
-msgstr ""
-
-msgid "Drop a button here to hide it"
-msgstr ""
-
-msgid "Shown"
-msgstr ""
-
-msgid "Left to right"
-msgstr ""
-
-msgid "Drop a column here to hide it"
-msgstr ""
-
-msgid "App icon"
-msgstr ""
-
-msgid "Symbolic"
-msgstr ""
-
-msgid "All unread inbox mail"
-msgstr ""
-
-msgid "New since the window was last in front"
-msgstr ""
-
-msgid "Follow system"
+msgid "Follow the system"
 msgstr ""
 
 msgid "Light"
@@ -4273,22 +4204,7 @@ msgstr ""
 msgid "Dark"
 msgstr ""
 
-msgid "Aug 23, 2026"
-msgstr ""
-
-msgid "23 Aug 2026"
-msgstr ""
-
-msgid "2026 Aug 23"
-msgstr ""
-
 msgid "System"
-msgstr ""
-
-msgid "12-hour (5:40 PM)"
-msgstr ""
-
-msgid "24-hour (17:40)"
 msgstr ""
 
 msgid "Manually"
@@ -4304,25 +4220,6 @@ msgid "Every 15 minutes"
 msgstr ""
 
 msgid "Every 30 minutes"
-msgstr ""
-
-#. GNOME Settings' own names for its alert sounds.
-msgid "Click"
-msgstr ""
-
-#. GNOME Settings' own names for its alert sounds.
-msgid "Hum"
-msgstr ""
-
-#. GNOME Settings' own names for its alert sounds.
-msgid "String"
-msgstr ""
-
-#. GNOME Settings' own names for its alert sounds.
-msgid "Swing"
-msgstr ""
-
-msgid "Custom file"
 msgstr ""
 
 msgid "Downloading: {done} of {total}"
@@ -4397,48 +4294,6 @@ msgstr ""
 msgid "It works: {server} answered."
 msgstr ""
 
-msgid "Messages already read"
-msgstr ""
-
-msgid "All but the newest"
-msgstr ""
-
-msgid "Top of the message"
-msgstr ""
-
-msgid "Bottom of the message"
-msgstr ""
-
-msgid "Hidden behind a toggle"
-msgstr ""
-
-msgid "Shown while hovering"
-msgstr ""
-
-msgid "Always visible"
-msgstr ""
-
-msgid "Ask each time"
-msgstr ""
-
-msgid "A new message"
-msgstr ""
-
-msgid "A draft you pick"
-msgstr ""
-
-msgid "A reply to a message you pick"
-msgstr ""
-
-msgid "Attach them anyway"
-msgstr ""
-
-msgid "Upload to cloud storage and link them"
-msgstr ""
-
-msgid "System default"
-msgstr ""
-
 msgid "Account of the current folder"
 msgstr ""
 
@@ -4470,58 +4325,102 @@ msgstr ""
 msgid "Add a word"
 msgstr ""
 
-msgid "Software"
+msgid "Backup"
 msgstr ""
 
-msgid "Unified style"
+msgid ""
+"Accounts, preferences, filters, tags and layout, in one file. Passwords and "
+"OpenPGP keys are not included."
 msgstr ""
 
-msgid "Tree style"
+msgid ""
+"Replaces everything in place. Don't remove accounts first: that deletes "
+"their passwords."
 msgstr ""
 
-msgid "Above the accounts"
+msgid "When a message is opened."
 msgstr ""
 
-msgid "Below the accounts"
+msgid "When displayed"
 msgstr ""
 
-msgid "The first account's inbox"
+msgid "After two seconds"
 msgstr ""
 
-msgid "The last account's inbox"
+msgid "Newest message first"
 msgstr ""
 
-msgid "The last folder"
+msgid "In a conversation."
 msgstr ""
 
-msgid "Left"
+msgid "Confirm deleting a conversation"
 msgstr ""
 
-msgid "Right"
+msgid "Swipe to archive or delete"
 msgstr ""
 
-msgid "1 line"
+msgid "For touch screens and touchpads."
 msgstr ""
 
-msgid "2 lines"
+msgid "Desktop notifications"
 msgstr ""
 
-msgid "3 lines"
+msgid "While the window is in the background."
 msgstr ""
 
-msgid "Cards"
+msgid "Show sender and subject"
 msgstr ""
 
-msgid "Single line"
+msgid "Off, the notification only says “New message”."
 msgstr ""
 
-msgid "Top of the list"
+msgid "Read receipts"
 msgstr ""
 
-msgid "Bottom of the list"
+msgid "When someone opens mail you asked a receipt for."
 msgstr ""
 
-msgid "Theme"
+msgid "Check for new messages"
+msgstr ""
+
+msgid "Instant new mail (push)"
+msgstr ""
+
+msgid "Microsoft 365 accounts check at the interval above."
+msgstr ""
+
+msgid "Style"
+msgstr ""
+
+msgid ""
+"Follows the system by default. The accent colour also comes from the system."
+msgstr ""
+
+msgid "Keep running in the background"
+msgstr ""
+
+msgid "Closing the window keeps Tegami Mail running for notifications."
+msgstr ""
+
+msgid "Start at login"
+msgstr ""
+
+msgid "Single-key shortcuts"
+msgstr ""
+
+msgid "Ctrl+? shows them all."
+msgstr ""
+
+msgid "Gmail keys"
+msgstr ""
+
+msgid "Swaps the single-key shortcuts for Gmail equivalents."
+msgstr ""
+
+msgid "Keep downloaded mail"
+msgstr ""
+
+msgid "On this computer, for reading offline."
 msgstr ""
 
 msgid "Always"
@@ -4536,273 +4435,19 @@ msgstr ""
 msgid "30 days"
 msgstr ""
 
-msgid "Bottom of the window"
+msgid "Large attachments"
 msgstr ""
 
-msgid "Top of the window"
+msgid "Ask each time"
 msgstr ""
 
-msgid "When displayed"
+msgid "Attach them anyway"
 msgstr ""
 
-msgid "After two seconds"
-msgstr ""
-
-msgid "{percent}%"
-msgstr ""
-
-msgid "Senders"
-msgstr ""
-
-msgid "Translation"
-msgstr ""
-
-msgid "General"
-msgstr ""
-
-#. Rendered as Pango markup — a bare "&" breaks it.
-msgid "Appearance"
-msgstr ""
-
-msgid "Sidebar"
-msgstr ""
-
-msgid "Message list"
-msgstr ""
-
-msgid "Conversations"
-msgstr ""
-
-msgid "Reading"
-msgstr ""
-
-msgid "Composing"
+msgid "Upload to cloud storage and link them"
 msgstr ""
 
 msgid "Privacy"
-msgstr ""
-
-msgid "Date and time"
-msgstr ""
-
-msgid "Backup"
-msgstr ""
-
-msgid "Save the filter?"
-msgstr ""
-
-msgid "Your changes are lost if you discard them."
-msgstr ""
-
-msgid "Save the smart folder?"
-msgstr ""
-
-msgid "Save the tag?"
-msgstr ""
-
-msgid "Save the address book?"
-msgstr ""
-
-msgid "Save the account?"
-msgstr ""
-
-msgid ""
-"Accounts, preferences, filters, tags and layout, in one file. Passwords and "
-"OpenPGP keys are not included."
-msgstr ""
-
-msgid ""
-"Replaces everything in place. Don't remove accounts first: that deletes "
-"their passwords."
-msgstr ""
-
-msgid "Group messages by conversation"
-msgstr ""
-
-msgid "Newest message first"
-msgstr ""
-
-msgid "In the reading pane."
-msgstr ""
-
-msgid "Fold earlier messages"
-msgstr ""
-
-msgid "The newest always opens."
-msgstr ""
-
-msgid "Show your own replies in the message list"
-msgstr ""
-
-msgid "Off shows the last message that arrived."
-msgstr ""
-
-msgid "Attachments on each message"
-msgstr ""
-
-msgid "Attachment drawer"
-msgstr ""
-
-msgid "Confirm conversation deletion"
-msgstr ""
-
-msgid "Dates follow the system unless a format is chosen here."
-msgstr ""
-
-msgid "Date format"
-msgstr ""
-
-msgid "Clock"
-msgstr ""
-
-msgid "Instant new mail (push)"
-msgstr ""
-
-msgid "Microsoft 365 accounts check at the interval above."
-msgstr ""
-
-msgid "Save data on metered connections"
-msgstr ""
-
-msgid "New mail still arrives. Nothing else is fetched ahead."
-msgstr ""
-
-msgid "Notifications"
-msgstr ""
-
-msgid "Desktop notifications"
-msgstr ""
-
-msgid "For new mail and errors, while the window is in the background."
-msgstr ""
-
-msgid "Show sender and subject"
-msgstr ""
-
-msgid "Read receipts"
-msgstr ""
-
-msgid "When someone opens mail you asked a receipt for."
-msgstr ""
-
-msgid "Sound for new mail"
-msgstr ""
-
-msgid "Sound"
-msgstr ""
-
-msgid "Play"
-msgstr ""
-
-msgid "Sound file"
-msgstr ""
-
-msgid "Choose…"
-msgstr ""
-
-msgid "Also play while Tegami Mail is in front"
-msgstr ""
-
-msgid "Notification buttons"
-msgstr ""
-
-msgid "Up to three buttons on a notification about one message."
-msgstr ""
-
-msgid "Show sender avatars"
-msgstr ""
-
-msgid "Sent mail uses your account circle"
-msgstr ""
-
-msgid "The account's picture or emoji, as in the sidebar."
-msgstr ""
-
-msgid "Layout"
-msgstr ""
-
-msgid "Automatic uses single lines in wide windows."
-msgstr ""
-
-msgid "Preview lines"
-msgstr ""
-
-msgid "Off also stops downloading previews."
-msgstr ""
-
-msgid "Group by date"
-msgstr ""
-
-msgid "Tags and labels under the text"
-msgstr ""
-
-msgid "Gives the subject its full width."
-msgstr ""
-
-msgid "Keep the search field open"
-msgstr ""
-
-msgid "Search field position"
-msgstr ""
-
-msgid "Selection bar position"
-msgstr ""
-
-msgid "Tint tagged messages"
-msgstr ""
-
-msgid "In the color of its first tag."
-msgstr ""
-
-msgid "Actions palette in the message list"
-msgstr ""
-
-msgid "The ⋯ row under each message."
-msgstr ""
-
-msgid "Open the actions palette on hover"
-msgstr ""
-
-msgid "Swipe actions"
-msgstr ""
-
-msgid ""
-"Left deletes, right archives. Drag with the mouse or swipe with two fingers."
-msgstr ""
-
-msgid "Reverse swipe directions"
-msgstr ""
-
-msgid "Trackpad swipe sensitivity"
-msgstr ""
-
-msgid "Raise it if swipes stop short. Mouse drags are unaffected."
-msgstr ""
-
-msgid "Actions palette timeout"
-msgstr ""
-
-msgid "Seconds it stays open after the pointer leaves."
-msgstr ""
-
-msgid "Columns"
-msgstr ""
-
-msgid ""
-"For the single-line layout. Drag columns to reorder them or out to remove "
-"them. Due Date shows only for Microsoft 365 mail."
-msgstr ""
-
-msgid "Show column headings"
-msgstr ""
-
-msgid "Fit columns to the list"
-msgstr ""
-
-msgid "Off, a narrow list scrolls sideways."
-msgstr ""
-
-msgid "Restore defaults"
 msgstr ""
 
 msgid "Tegami Mail collects no telemetry and sends no analytics."
@@ -4853,140 +4498,16 @@ msgstr ""
 msgid "A receipt tells the sender when you opened the message."
 msgstr ""
 
-msgid "Open at startup"
-msgstr ""
-
-msgid "Folder order"
-msgstr ""
-
-msgid "Dragging a folder switches to Custom Order."
-msgstr ""
-
-msgid "Chevron placement"
-msgstr ""
-
-msgid "Fold accounts with one click"
-msgstr ""
-
-msgid "When off, only its chevron or a double click activates the fold."
-msgstr ""
-
-msgid "Expand the sidebar on hover"
-msgstr ""
-
-msgid "Hovering the icon rail floats the full sidebar out."
-msgstr ""
-
-msgid "Remember the sidebar layout"
-msgstr ""
-
-msgid "Off starts every launch folded up."
-msgstr ""
-
-msgid "Remember icon rail state"
-msgstr ""
-
-msgid "Highlight only new unread mail"
-msgstr ""
-
-msgid "A count turns grey once you have looked at the folder."
-msgstr ""
-
-msgid "Sections"
-msgstr ""
-
-msgid "Section style"
-msgstr ""
-
-msgid "Tags placement"
-msgstr ""
-
-msgid "Favorites placement"
-msgstr ""
-
-msgid "Icon rail"
-msgstr ""
-
-msgid "Unread dots instead of counts"
-msgstr ""
-
-msgid "The count stays in the tooltip."
-msgstr ""
-
-msgid "Fold up expanded items"
-msgstr ""
-
-msgid "The items below start folded up in the rail. Long-press to open one."
-msgstr ""
-
-msgid ""
-"Inside the Flatpak sandbox, links open through the desktop's chooser. \"Ask "
-"each time\" picks the browser per link with the option to remember it."
-msgstr ""
-
-msgid "\"Ask each time\" lets the desktop ask before each link."
-msgstr ""
-
-msgid "Not installed"
-msgstr ""
-
-msgid "Installed and loaded by Files"
-msgstr ""
-
-msgid "Installed, but nautilus-python is missing"
-msgstr ""
-
-msgid "Installed. Restart Files to load it; it needs nautilus-python"
-msgstr ""
-
-msgid "Installed, but from another version"
-msgstr ""
-
-msgid "Measuring…"
-msgstr ""
-
-msgid ""
-"Messages {bodies}, attachments {files}. {total} in all, with the message "
-"list."
-msgstr ""
-
-msgid "Could not install the extension"
-msgstr ""
-
-msgid "Remove downloaded mail?"
-msgstr ""
-
-msgid ""
-"Mail and attachments on this computer are removed and fetched again when "
-"opened. Nothing on the server changes."
-msgstr ""
-
-msgid "Could not remove the extension"
-msgstr ""
-
-msgid "Could not restart Files"
-msgstr ""
-
 msgid "Other font…"
-msgstr ""
-
-msgid "Search settings"
-msgstr ""
-
-msgid "No results"
-msgstr ""
-
-#. Translators: words the settings search finds the Contacts page by,
-#. separated by spaces; keep "CardDAV" and "LDAP".
-msgid ""
-"address books CardDAV LDAP directory directories Online Accounts Nextcloud "
-"iCloud Google Microsoft vCard"
 msgstr ""
 
 msgid "System language — {language}"
 msgstr ""
 
 msgid "Forget this word"
+msgstr ""
+
+msgid "Preferences"
 msgstr ""
 
 msgid "Print message"
@@ -5297,6 +4818,9 @@ msgstr ""
 msgid "Script"
 msgstr ""
 
+msgid "Translation"
+msgstr ""
+
 msgid ""
 "Uses a translation service under your own key. A message's text is sent only "
 "when you translate it."
@@ -5445,7 +4969,16 @@ msgstr ""
 msgid "A few popular choices — everything can be changed later in Settings."
 msgstr ""
 
+msgid "Preview lines"
+msgstr ""
+
 msgid "Message text shown under each subject"
+msgstr ""
+
+msgid "1 line"
+msgstr ""
+
+msgid "2 lines"
 msgstr ""
 
 msgid "Sender avatars"
@@ -5920,6 +5453,9 @@ msgstr ""
 msgid "Test connection"
 msgstr ""
 
+msgid "Appearance"
+msgstr ""
+
 msgid "Account accent color"
 msgstr ""
 
@@ -5942,6 +5478,9 @@ msgid "Emoji"
 msgstr ""
 
 msgid "Instead of initials."
+msgstr ""
+
+msgid "Choose…"
 msgstr ""
 
 msgid "Use initials"
@@ -6055,6 +5594,9 @@ msgstr ""
 msgid "Shows a label's name when a message gives only its ID."
 msgstr ""
 
+msgid "Folder order"
+msgstr ""
+
 msgid "Also in the right-click menu of its Folders heading."
 msgstr ""
 
@@ -6147,33 +5689,58 @@ msgstr ""
 msgid "Look through every mailbox for tags other clients have set"
 msgstr ""
 
-msgid "Style"
+msgid "Senders"
 msgstr ""
 
-msgid "Messages have their own setting under Reading."
+msgid "Backup and restore"
 msgstr ""
 
-msgid "Text size"
+msgid "Organize mail"
 msgstr ""
 
-msgid "Adjusts the interface and message text size."
+msgid "Services"
 msgstr ""
 
-msgid "Use your desktop environment's icon set"
+msgid "Allowed and blocked"
 msgstr ""
 
-msgid "This window opens to"
+msgid "Reading"
 msgstr ""
 
-msgid "Toolbar"
+msgid "Composing"
 msgstr ""
 
-msgid ""
-"Drag buttons between the groups. The right group folds into ⋯ when the pane "
-"is narrow."
+msgid "Replies are sent from the address that received the message."
 msgstr ""
 
-msgid "Always fold the right group into ⋯"
+msgid "Format of new messages"
+msgstr ""
+
+msgid "How long a message can still be recalled."
+msgstr ""
+
+msgid "Notifications"
+msgstr ""
+
+msgid "New messages"
+msgstr ""
+
+msgid "Sound and banners"
+msgstr ""
+
+msgid "Open the system notification settings"
+msgstr ""
+
+msgid "Sound, banners and Do Not Disturb are set there."
+msgstr ""
+
+msgid "Application"
+msgstr ""
+
+msgid "Background"
+msgstr ""
+
+msgid "Keyboard and storage"
 msgstr ""
 
 msgid "Send new messages from"
@@ -6290,229 +5857,6 @@ msgid "Added words"
 msgstr ""
 
 msgid "Changes apply after a restart."
-msgstr ""
-
-msgid "Conversations mark each message as it comes into view."
-msgstr ""
-
-msgid "Message appearance"
-msgstr ""
-
-msgid "Show account in message header"
-msgstr ""
-
-msgid ""
-"Where the list mixes accounts, the account a message is in, above its "
-"subject."
-msgstr ""
-
-msgid "Ctrl+0 returns to the default."
-msgstr ""
-
-msgid "Use my own font"
-msgstr ""
-
-msgid "The font below replaces the sender's."
-msgstr ""
-
-msgid "Message font"
-msgstr ""
-
-msgid "The interface font unless another is chosen."
-msgstr ""
-
-msgid "Use my own colors"
-msgstr ""
-
-msgid "Ignores the sender's colors. Pictures stay; links use the accent color."
-msgstr ""
-
-msgid "Plain-text messages in monospace"
-msgstr ""
-
-msgid "Formatted messages are not affected."
-msgstr ""
-
-msgid "Monospace font"
-msgstr ""
-
-msgid "The system's monospace font unless another is chosen."
-msgstr ""
-
-msgid "Message card actions palette"
-msgstr ""
-
-msgid "Message card actions palette timeout"
-msgstr ""
-
-msgid "Message card actions palette as a menu"
-msgstr ""
-
-msgid "The ⋯ opens the right-click menu instead."
-msgstr ""
-
-msgid "Single messages as cards"
-msgstr ""
-
-msgid "Off fills the pane edge to edge."
-msgstr ""
-
-msgid "Always show recipients"
-msgstr ""
-
-msgid "Name the OpenPGP result"
-msgstr ""
-
-msgid "Off shows the icons alone."
-msgstr ""
-
-msgid "Find bar position"
-msgstr ""
-
-msgid "Printing"
-msgstr ""
-
-msgid "Page numbers"
-msgstr ""
-
-msgid "Date printed"
-msgstr ""
-
-msgid "Wider left margin"
-msgstr ""
-
-msgid "25 mm, so punched holes miss the text."
-msgstr ""
-
-msgid "Applies after a restart."
-msgstr ""
-
-msgid "Renderer"
-msgstr ""
-
-msgid "Try OpenGL or Software on older graphics. Applies after a restart."
-msgstr ""
-
-msgid "Keep running in the background"
-msgstr ""
-
-msgid "Closing the window hides it. Quit from Background Apps."
-msgstr ""
-
-msgid "Start at login"
-msgstr ""
-
-msgid "Starts hidden."
-msgstr ""
-
-msgid "Start fullscreen"
-msgstr ""
-
-msgid "F11 switches fullscreen on and off."
-msgstr ""
-
-msgid "Show a tray icon"
-msgstr ""
-
-msgid "To use on GNOME, install an AppIndicator extension."
-msgstr ""
-
-msgid "Tray icon"
-msgstr ""
-
-msgid "Unread mail in the tray menu"
-msgstr ""
-
-msgid "Unread count on the app icon"
-msgstr ""
-
-msgid "To use on GNOME, install a dock extension such as Dash to Dock."
-msgstr ""
-
-msgid "Single-key shortcuts"
-msgstr ""
-
-msgid "Press Ctrl+? to list all shortcuts."
-msgstr ""
-
-msgid "Gmail keys"
-msgstr ""
-
-msgid "Swaps the single-key shortcuts for Gmail equivalents."
-msgstr ""
-
-msgid "Status bar"
-msgstr ""
-
-msgid "Console mode"
-msgstr ""
-
-msgid "Shows a console in the status bar."
-msgstr ""
-
-msgid "For bug reports. Addresses are cut to their domain for privacy."
-msgstr ""
-
-msgid "Downloaded mail"
-msgstr ""
-
-msgid "Remove…"
-msgstr ""
-
-msgid "Keep downloaded mail"
-msgstr ""
-
-msgid "Mail inside an account's offline period is kept."
-msgstr ""
-
-msgid "GNOME Files integration"
-msgstr ""
-
-msgid ""
-"Adds “Send with Tegami Mail” to the right-click menu in Files. Needs the "
-"nautilus-python package and a restart of Files."
-msgstr ""
-
-msgid "Right-click menu entry"
-msgstr ""
-
-msgid "Install nautilus-python first"
-msgstr ""
-
-msgid "Restart Files"
-msgstr ""
-
-msgid "Closes every Files window, like “nautilus -q”."
-msgstr ""
-
-msgid "Restart"
-msgstr ""
-
-msgid "Default Send with Tegami Mail behavior"
-msgstr ""
-
-msgid "Default large attachments behavior"
-msgstr ""
-
-msgid "Without a cloud storage account, files are attached."
-msgstr ""
-
-msgid "Size limit"
-msgstr ""
-
-msgid "In MB, for all the files together."
-msgstr ""
-
-msgid "Links"
-msgstr ""
-
-msgid "Open links in"
-msgstr ""
-
-msgid "Update"
-msgstr ""
-
-msgid "Install"
 msgstr ""
 
 msgid "Send as attachment instead"

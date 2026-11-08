@@ -357,11 +357,6 @@ impl Component for AccountsWindow {
             AccountsInput::ReleaseSignatureEditor => self.on_release_signature_editor(widgets),
             AccountsInput::DebugEditLabel(text) => widgets.form.label_row.set_text(&text),
             AccountsInput::DebugProvider(label) => self.on_debug_provider(label, widgets),
-            AccountsInput::LeaveRequest(page) => self.on_leave_request(page, widgets, sender),
-            AccountsInput::LeaveVerdict { page, touched } => {
-                self.on_leave_verdict(page, touched, sender)
-            }
-            AccountsInput::SaveOpenPage => self.on_save_open_page(widgets, sender),
             AccountsInput::SearchFilters(text) => self.on_search_filters(text, widgets),
             AccountsInput::SearchSenders(text) => self.on_search_senders(text),
             AccountsInput::AddAccount => self.on_add_account(widgets, sender),

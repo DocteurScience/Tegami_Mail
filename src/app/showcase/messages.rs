@@ -8,7 +8,6 @@ use crate::app::model::AppModel;
 use crate::app::msg::AppMsg;
 use crate::models::FolderKind;
 use crate::ui::compose::ComposeInput;
-use crate::ui::preferences::PrefInput;
 
 impl AppModel {
     /// The messages the router sends here (see `AppModel::route`).
@@ -60,11 +59,6 @@ impl AppModel {
                     Some(target) if confirmed => sender.input(AppMsg::DeleteAttachment(target)),
                     Some(target) => sender.input(AppMsg::AskDeleteAttachment(target)),
                     None => tracing::warn!("showcase: no attachment called {name:?} on screen"),
-                }
-            }
-            AppMsg::ShowcaseToolbarGap { zone, index } => {
-                if let Some(p) = &self.prefs {
-                    p.emit(PrefInput::ToolbarGapPreview { zone, index });
                 }
             }
             AppMsg::ShowcaseComposeMenu { from } => {

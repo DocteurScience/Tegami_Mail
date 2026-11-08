@@ -3,28 +3,6 @@
 
 use super::*;
 
-/// Set the content width of a preferences page: the clamp it lays its
-/// groups out in is not exposed, so it is found among the descendants.
-pub(super) fn widen_page(page: &gtk::Widget, max: i32) {
-    fn walk(w: &gtk::Widget, max: i32) -> bool {
-        if let Some(clamp) = w.downcast_ref::<adw::Clamp>() {
-            clamp.set_maximum_size(max);
-            return true;
-        }
-        let mut child = w.first_child();
-        while let Some(c) = child {
-            if walk(&c, max) {
-                return true;
-            }
-            child = c.next_sibling();
-        }
-        false
-    }
-    if !walk(page, max) {
-        tracing::warn!("preferences: no clamp found on the page to widen");
-    }
-}
-
 /// Depth-first search for widgets with the given name under `root`.
 pub(super) fn collect_named(root: &gtk::Widget, name: &str, out: &mut Vec<gtk::Widget>) {
     if root.widget_name() == name {
@@ -78,40 +56,6 @@ pub(super) fn middle_ellipsize(row: &adw::ComboRow) {
     }
     row.set_factory(Some(&factory(true)));
     row.set_list_factory(Some(&factory(false)));
-}
-
-/// Give a combo row's selected-value label `extra` more pixels than the
-/// ellipsized width libadwaita allows it, so a sentence-length choice
-/// ("Account of the current folder") reads whole instead of trailing off.
-/// The value label is the row's only descendant label showing the
-/// selected string; nothing else in the row is touched.
-pub(super) fn widen_combo_value(row: &adw::ComboRow, extra: i32) {
-    let Some(want) = row
-        .selected_item()
-        .and_downcast::<gtk::StringObject>()
-        .map(|s| s.string().to_string())
-    else {
-        return;
-    };
-    fn find(w: &gtk::Widget, want: &str) -> Option<gtk::Label> {
-        if let Some(label) = w.downcast_ref::<gtk::Label>() {
-            if label.label() == want {
-                return Some(label.clone());
-            }
-        }
-        let mut child = w.first_child();
-        while let Some(c) = child {
-            if let Some(hit) = find(&c, want) {
-                return Some(hit);
-            }
-            child = c.next_sibling();
-        }
-        None
-    }
-    if let Some(label) = find(row.upcast_ref::<gtk::Widget>(), &want) {
-        let (_, natural, _, _) = label.measure(gtk::Orientation::Horizontal, -1);
-        label.set_width_request(natural + extra);
-    }
 }
 
 /// Settings → Composing → Font: the default, the composer's own fonts and
@@ -221,15 +165,6 @@ pub(super) fn compose_font_setup(
             });
         });
     });
-}
-
-impl Preferences {
-    /// Whether a notification-button switch can be used: notifications are
-    /// on, and either this button is on already or there is room for it.
-    pub(super) fn button_row_sensitive(&self, button: crate::config::NotificationButton) -> bool {
-        self.notifications
-            && (self.notification_buttons.get(button) || !self.notification_buttons.full())
-    }
 }
 
 /// Settings never truncates. AdwComboRow's DEFAULT item factory builds

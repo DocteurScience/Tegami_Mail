@@ -46,7 +46,7 @@ impl AppModel {
     pub(super) fn stage_showcase(
         &self,
         root: &adw::ApplicationWindow,
-        widgets: &AppModelWidgets,
+        _widgets: &AppModelWidgets,
         sender: &ComponentSender<Self>,
     ) {
         if demo_mode() {
@@ -72,8 +72,6 @@ impl AppModel {
                 self.stage_unified();
                 self.stage_row_menu();
                 list::stage_apply_filters(sender);
-                list::stage_toolbar_gap(sender);
-                list::stage_toolbar_menu(widgets, sender);
                 list::stage_reader_menu(sender);
                 list::stage_tags(sender);
                 list::stage_list_filters(sender);

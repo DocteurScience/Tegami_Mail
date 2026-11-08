@@ -4,7 +4,7 @@
 use serde::{Deserialize, Serialize};
 use std::path::PathBuf;
 
-use super::{config_file, read_toml, save_plain_toml};
+use super::{config_file, read_toml};
 
 // ---------------------------------------------------------------------------
 // Reader toolbar layout: which buttons the reading pane's header shows, on
@@ -90,25 +90,6 @@ impl ToolbarItem {
             ToolbarItem::Print => "printer-symbolic",
         }
     }
-
-    /// The untranslated label (callers pass it through `i18n`).
-    pub(crate) fn label(self) -> &'static str {
-        match self {
-            ToolbarItem::Reply => crate::i18n::i18n_noop("Reply"),
-            ToolbarItem::ReplyAll => crate::i18n::i18n_noop("Reply all"),
-            ToolbarItem::Forward => crate::i18n::i18n_noop("Forward"),
-            ToolbarItem::Star => crate::i18n::i18n_noop("Star"),
-            ToolbarItem::Archive => crate::i18n::i18n_noop("Archive"),
-            ToolbarItem::Snooze => crate::i18n::i18n_noop("Snooze"),
-            ToolbarItem::Delete => crate::i18n::i18n_noop("Delete"),
-            ToolbarItem::Spam => crate::i18n::i18n_noop("Spam"),
-            ToolbarItem::ReadUnread => crate::i18n::i18n_noop("Read/Unread"),
-            ToolbarItem::Tags => crate::i18n::i18n_noop("Tags"),
-            ToolbarItem::MoveTo => crate::i18n::i18n_noop("Move to"),
-            ToolbarItem::Find => crate::i18n::i18n_noop("Find"),
-            ToolbarItem::Print => crate::i18n::i18n_noop("Print"),
-        }
-    }
 }
 
 /// Which side of the reader header a button sits on.
@@ -125,7 +106,9 @@ pub(crate) enum ToolbarSide {
 pub(crate) const TOOLBAR_LEFT_MAX: usize = 7;
 
 /// How far a saved layout has been brought up to the default's changes:
-/// 1 moved Spam from the right group to the left, after Archive.
+/// 1 moved Spam from the right group to the left, after Archive. Written
+/// only by the tests now that the layout is not edited.
+#[cfg(test)]
 const TOOLBAR_REVISION: u32 = 1;
 
 /// The buttons there were before toolbar.toml listed the ones it knew of:
@@ -182,6 +165,16 @@ impl Default for ReaderToolbar {
 }
 
 impl ReaderToolbar {
+    /// The items on neither side, in canonical order.
+    #[cfg(test)]
+    pub(crate) fn hidden(&self) -> Vec<ToolbarItem> {
+        ToolbarItem::ALL
+            .iter()
+            .copied()
+            .filter(|i| self.side(*i).is_none())
+            .collect()
+    }
+
     /// The side an item sits on, or None when it is hidden.
     pub(crate) fn side(&self, item: ToolbarItem) -> Option<ToolbarSide> {
         if self.left.contains(&item) {
@@ -191,15 +184,6 @@ impl ReaderToolbar {
         } else {
             None
         }
-    }
-
-    /// The items on neither side, in canonical order.
-    pub(crate) fn hidden(&self) -> Vec<ToolbarItem> {
-        ToolbarItem::ALL
-            .iter()
-            .copied()
-            .filter(|i| self.side(*i).is_none())
-            .collect()
     }
 
     /// Drop repeats (an item may sit on one side only, once), and anything
@@ -257,6 +241,7 @@ pub(super) struct ToolbarFile {
 }
 
 impl ToolbarFile {
+    #[cfg(test)]
     pub(super) fn of(layout: &ReaderToolbar) -> ToolbarFile {
         ToolbarFile {
             left: layout.left.iter().map(|i| i.key().to_string()).collect(),
@@ -341,10 +326,6 @@ pub(crate) fn load_reader_toolbar() -> ReaderToolbar {
         Some(file) => file.layout(),
         None => ReaderToolbar::default(),
     }
-}
-
-pub(crate) fn save_reader_toolbar(layout: &ReaderToolbar) {
-    save_plain_toml(toolbar_path(), &ToolbarFile::of(layout));
 }
 
 #[cfg(test)]

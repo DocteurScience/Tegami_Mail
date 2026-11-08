@@ -80,10 +80,6 @@ pub(crate) enum MessageWindowInput {
     },
     /// The sender-authentication verdict for this message.
     SetSenderCheck(Box<crate::models::SenderCheck>),
-    /// The OpenPGP chip's words on or off (#300).
-    SetPgpLabels(bool),
-    /// The find bar under the message, not above it (#392).
-    SetFindBottom(bool),
     /// The Settings switch for the "Check this sender" banner changed.
     SetSpoofBannerShown(bool),
     /// Reflect a star toggle that happened elsewhere (or came back from the app).
@@ -106,11 +102,6 @@ pub(crate) enum MessageWindowInput {
     },
     /// Reflect a read/unread change that happened elsewhere.
     SetUnread(bool),
-    /// Settings changed the reader toolbar's layout.
-    SetToolbar(ReaderToolbar),
-    SetToolbarFold(bool),
-    SetAttachmentDrawer(bool),
-    SetCardAttachmentsShown(bool),
     /// The window crossed the width the whole toolbar needs.
     SetCollapsed(bool),
     /// Hand this to the attachment drawer (a deletion's progress, #289).
@@ -131,15 +122,9 @@ pub(crate) enum MessageWindowInput {
     DeleteAttachment(Attachment),
     /// The drawer's Show in Message.
     ShowAttachment(Attachment),
-    /// Update the message-content theme (`None` follows the system).
-    SetContentTheme(Option<bool>),
-    /// The reader's own fonts and colors changed (#56).
-    SetReaderStyle(crate::config::ReaderStyle),
     SetZoom(u32),
-    SetZoomDefault(u32),
     /// A zoom step (or the chip's reset, 0) asked for in this window.
     Zoom(i8),
-    SetAccountChipShown(bool),
     /// What one of the user's own mailboxes shows changed (#189).
     FacesChanged,
     // ---- toolbar actions ----

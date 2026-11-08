@@ -459,8 +459,6 @@ pub(crate) enum AppMsg {
     /// Delete from Server for the file called `name`, asking first unless
     /// `confirmed`.
     ShowcaseDeleteAttachment { name: String, confirmed: bool },
-    /// Showcase only: open a drop gap in the Settings toolbar editor.
-    ShowcaseToolbarGap { zone: usize, index: usize },
     /// Showcase only: open the latest composer's More actions menu, or its
     /// Send from menu.
     ShowcaseComposeMenu { from: bool },
@@ -739,13 +737,6 @@ pub(crate) enum AppMsg {
     ReaderControlsChanged(i32),
     /// The collapsed header's ⋯ button was clicked — pop its menu.
     ReaderOverflowMenu,
-    /// A right-click on the reader header's empty space: the menu that
-    /// leads to the toolbar editor.
-    ReaderToolbarMenu { x: f64, y: f64 },
-    /// Open Settings on the Appearance page (its Toolbar section).
-    CustomizeToolbar,
-    /// Settings, at Message List → Columns (#443).
-    CustomizeColumns,
 
     // ---- on_tray (tray.rs) ----
     /// The welcome wizard's first page picked a language: save it and
@@ -778,8 +769,6 @@ pub(crate) enum AppMsg {
     CopyReaderSelection,
 
     // ---- on_prefs_reader (prefs_reader.rs) ----
-    /// Settings → Reading: the zoom every launch starts at.
-    SetZoomDefault(u32),
     /// Show or block remote content for one message, whatever the standing
     /// policy is — the reader menu's entry, and what the banner's Load does.
     SetRemoteContent {
@@ -898,9 +887,6 @@ pub(crate) enum AppMsg {
     PrewarmSettings,
     /// The accounts editor subpage opened/closed in the settings window.
     SettingsEditorOpen(Option<&'static str>),
-    /// A settings editor was asked whether it can be left: `ask` when it
-    /// holds unsaved changes, otherwise it has already closed itself.
-    SettingsLeaveEditor { page: String, ask: bool },
     /// A JMAP server's sending identities for an account (#346).
     ServerIdentities {
         account_id: u32,

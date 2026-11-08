@@ -89,7 +89,6 @@ mod prefs_data;
 mod prefs_general;
 mod prefs_list;
 mod prefs_reader;
-mod prefs_sidebar;
 mod reader_select;
 mod reader_toolbar;
 mod reading_pane;
@@ -826,7 +825,6 @@ impl SimpleComponent for AppModel {
         let _ = model.reader_header.set(widgets.reader_header.clone());
         let _ = model.mail_split.set(widgets.mail_split.clone());
         let _ = model.toasts.set(widgets.toasts.clone());
-        model.init_reader_header_menu(&widgets, &sender);
         model.init_reader_toolbar_fold(&widgets, &sender);
         model.place_reader();
         model.install_notification_actions(&sender);

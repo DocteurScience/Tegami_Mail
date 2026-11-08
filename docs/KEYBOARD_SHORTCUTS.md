@@ -1,8 +1,8 @@
 # Keyboard shortcuts
 
 Tegami Mail can be driven from the keyboard without holding a modifier, in the style
-of Gmail and Geary. The scheme is on for a new install, and **Settings →
-System → Single-key shortcuts** switches it off. An install that had it off
+of Gmail and Geary. The scheme is on for a new install, and **Preferences →
+Application → Single-key shortcuts** switches it off. An install that had it off
 keeps it off until it is switched on there.
 
 Press **Ctrl+?** (or F1, or *Main Menu → Keyboard Shortcuts*) at any time for
@@ -37,7 +37,7 @@ that scroll it (the arrows, Page Up and Down, Space).
 
 ## Gmail keys
 
-**Settings → System → Gmail keys** swaps in Gmail's single keys. It needs
+**Preferences → Application → Gmail keys** swaps in Gmail's single keys. It needs
 **Single-key shortcuts** on as well, and stays greyed out until they are. The
 list moves under a cursor without opening anything until you ask, and a key
 followed by another goes somewhere.
@@ -91,8 +91,7 @@ same. <kbd>]</kbd> and <kbd>[</kbd> archive the same way, then open the
 conversation below or above in the list.
 
 <kbd>Shift+R</kbd>, <kbd>Shift+A</kbd>, <kbd>Shift+F</kbd> and <kbd>d</kbd>
-open the composer in a window of its own even when **Settings → Composing**
-puts replies or new messages in the reading pane.
+open the composer in a window of its own.
 
 <kbd>x</kbd> selects the row the cursor is on without opening it, and closes
 the conversation that was open. While rows are selected this way, the
@@ -155,7 +154,7 @@ selection, <kbd>Return</kbd> edits the pill, and <kbd>Menu</kbd> or
 field. See [Addresses as pills](DOCUMENTATION.md#addresses-as-pills).
 
 In the body, <kbd>Return</kbd> starts a new line and <kbd>Shift+Return</kbd>
-a new paragraph; **Settings → Composing → Return starts a new paragraph**
+a new paragraph; **Preferences → Messages → Advanced → Return starts a new paragraph**
 swaps them. See [Return and Shift+Return](DOCUMENTATION.md#return-and-shiftreturn).
 
 <kbd>Ctrl+.</kbd> or <kbd>Ctrl+;</kbd> opens the emoji chooser at the cursor,
@@ -204,16 +203,15 @@ the default. Only the message scales, not the header or the toolbar; a chip
 in the message header shows the percentage while it is away from
 the default, and a click on it goes back there.
 The zoom stays as set from message to message until Tegami Mail is next started,
-which begins at the default from **Settings → Reading → Default zoom**.
+which begins at 100%.
 
 The same keys, and <kbd>Ctrl</kbd> with the scroll wheel over the body, zoom
 the composer's text in every format; <kbd>Ctrl+0</kbd> puts it back to 100%.
 Only the screen changes, not the message that is sent: the font sizes in
 rich text keep their values, and a chip at the start of the format bar shows
 the percentage while it is not 100%. A click on the chip goes back to 100%.
-The first composer opens at **Settings → Composing → Default zoom**, which
-by default is the same as **Settings → Reading → Default zoom**, so text is
-written at the size it is read at. The next one opens at the size the last
+The first composer opens at **Preferences → Messages → Advanced → Default
+zoom**, by default the size messages are read at. The next one opens at the size the last
 was left at until Tegami Mail is next started or the setting is changed.
 
 Keys never fire while you are typing: whatever has focus gets first refusal, so

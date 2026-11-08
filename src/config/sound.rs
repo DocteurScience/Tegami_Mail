@@ -4,7 +4,7 @@
 use serde::{Deserialize, Serialize};
 use std::path::{Path, PathBuf};
 
-use super::{config_file, data_base, read_toml, save_plain_toml};
+use super::{config_file, data_base, read_toml};
 
 /// Where the custom new-mail sound is kept (#292). It is a copy, so the
 /// original can be moved or deleted, and inside the Flatpak it stays readable
@@ -26,29 +26,6 @@ pub(crate) fn custom_sound() -> Option<PathBuf> {
                     .file_name()
                     .is_some_and(|n| n.to_string_lossy().starts_with('.'))
         })
-}
-
-/// Make a copy of `src` the custom new-mail sound, in place of any earlier one.
-pub(crate) fn set_custom_sound(src: &Path) -> std::io::Result<PathBuf> {
-    let dir = custom_sound_dir()
-        .ok_or_else(|| std::io::Error::new(std::io::ErrorKind::NotFound, "no data directory"))?;
-    let name = src
-        .file_name()
-        .ok_or_else(|| std::io::Error::new(std::io::ErrorKind::InvalidInput, "not a file"))?;
-    // Copied beside the old one first, so a failed copy leaves the old
-    // sound playing rather than none.
-    std::fs::create_dir_all(&dir)?;
-    let part = dir.join(".incoming");
-    let bytes = std::fs::read(src)?;
-    std::fs::write(&part, without_id3v2(&bytes))?;
-    for entry in std::fs::read_dir(&dir)?.flatten() {
-        if entry.file_name() != ".incoming" {
-            let _ = std::fs::remove_file(entry.path());
-        }
-    }
-    let dest = dir.join(name);
-    std::fs::rename(&part, &dest)?;
-    Ok(dest)
 }
 
 /// `bytes` without the ID3v2 tags in front. An MP3 that starts with one
@@ -172,10 +149,6 @@ pub(crate) fn load_new_mail_sound() -> NewMailSound {
         .to_string(),
         when_focused: false,
     }
-}
-
-pub(crate) fn save_new_mail_sound(sound: &NewMailSound) {
-    save_plain_toml(sound_path(), sound);
 }
 
 /// What to play for new mail, if anything.

@@ -1,34 +1,17 @@
-//! The settings window's category pages, one builder each.
+//! The rows the preferences dialog is assembled from (`dialog`), one
+//! builder each: the Composing rows (Messages and its Advanced sub-page),
+//! Privacy, Backup, and the rows kept from the former pages.
 //!
-//! Each page is a standalone `relm4::view!` run from `Preferences::init`
-//! before the window's own view, which places the page in its stack with
-//! `#[local_ref]`; the rows the window reaches later are kept in the page's
-//! struct (`widgets.general.fetch_row`). A standalone view has no update
-//! step, so a property the window's view once marked `#[watch]` is set here
-//! when the page is built and again by the page's `update_view`, which the
-//! component's `pre_view` calls on every update, in the order the single
-//! view had them.
+//! Each builder is a standalone `relm4::view!` or plain code run from
+//! `Preferences::init` before the dialog's own view; the rows the dialog
+//! reaches later are kept in the builder's struct (`widgets.kept.fetch_row`).
 
-mod appearance;
 mod backup;
 mod composing;
-mod conversations;
-mod datetime;
-mod general;
-mod list;
+mod kept;
 mod privacy;
-mod reading;
-mod sidebar;
-mod system;
 
-pub(super) use appearance::AppearancePage;
 pub(super) use backup::BackupPage;
 pub(super) use composing::ComposingPage;
-pub(super) use conversations::ConversationsPage;
-pub(super) use datetime::DateTimePage;
-pub(super) use general::GeneralPage;
-pub(super) use list::ListPage;
+pub(super) use kept::KeptRows;
 pub(super) use privacy::PrivacyPage;
-pub(super) use reading::ReadingPage;
-pub(super) use sidebar::SidebarPage;
-pub(super) use system::SystemPage;

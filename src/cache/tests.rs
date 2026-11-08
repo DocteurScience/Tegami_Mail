@@ -90,32 +90,6 @@ fn account_addresses_are_one_accounts() {
     assert!(c.account_addresses(3).is_empty());
 }
 
-/// Removing downloaded mail keeps the index, and an age limit only takes
-/// what is older than it (#394).
-#[test]
-fn downloaded_mail_goes_and_the_index_stays() {
-    let c = Cache::in_memory().unwrap();
-    for (uid, ts) in [(1u32, 100i64), (2, 500)] {
-        c.conn.execute(
-            "INSERT INTO messages (account_id, folder_path, uid, from_name, from_addr, subject, date, ts, unread, starred, has_attachment, recipients, cc, message_id, references_) \
-             VALUES (1, 'INBOX', ?1, '', '', '', '', ?2, 0, 0, 1, '', '', '', '')",
-            params![uid, ts],
-        ).unwrap();
-        c.conn.execute("INSERT INTO bodies (account_id, folder_path, uid, body) VALUES (1, 'INBOX', ?1, 'hello')", [uid]).unwrap();
-        c.conn.execute("INSERT INTO attachments (account_id, folder_path, uid, idx, name, data) VALUES (1, 'INBOX', ?1, 0, 'a', x'0102')", [uid]).unwrap();
-    }
-    assert_eq!(c.downloaded_size(), (10, 4));
-    assert_eq!(c.remove_downloaded(Some(300)).unwrap(), 1);
-    assert_eq!(c.downloaded_size(), (5, 2));
-    assert_eq!(c.remove_downloaded(None).unwrap(), 1);
-    assert_eq!(c.downloaded_size(), (0, 0));
-    let left: i64 = c
-        .conn
-        .query_row("SELECT COUNT(*) FROM messages", [], |r| r.get(0))
-        .unwrap();
-    assert_eq!(left, 2);
-}
-
 /// Removing an account moves the ones after it up a place; their cached
 /// rows move with them, and the removed account's go.
 #[test]

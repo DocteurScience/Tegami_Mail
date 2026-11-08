@@ -358,18 +358,6 @@ pub(crate) enum MessageViewInput {
         y: f64,
         page_width: f64,
     },
-    /// Preferences: how card actions show — behind the ⋯ toggle, automatically
-    /// on hover, or always.
-    SetCardActionsMode {
-        hover_toggle: bool,
-        hover_auto: bool,
-    },
-    /// Preferences: seconds an opened card palette lingers after the pointer
-    /// leaves. The cards' own timeout; the list keeps a separate one.
-    SetPaletteCollapse(u64),
-    /// Preferences: the card's ⋯ opens the card menu instead of sliding its
-    /// actions palette out.
-    SetCardPaletteMenu(bool),
     /// A conversation message was read: clear its card's unread dot in place,
     /// without reloading the document.
     ClearDot {

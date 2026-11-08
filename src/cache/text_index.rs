@@ -244,8 +244,6 @@ mod tests {
         c.save_body(1, "INBOX", 1, "<p>Paid</p>");
         assert!(found("invoice").is_empty());
         assert_eq!(found("paid"), [1]);
-        c.remove_downloaded(None).unwrap();
-        assert!(found("paid").is_empty());
     }
 
     #[test]

@@ -60,9 +60,6 @@ pub(super) enum CloudAccountsInput {
     Remove(usize),
     /// The editor page's Save button.
     SaveClicked,
-    /// Leave the editor without saving (the settings window asks to, when
-    /// the user moves on).
-    CloseEditor,
     /// The editor's Save: `index` is the row being replaced, or none for a
     /// new account. The password is stored only when given. Boxed: an
     /// account is far larger than any other message.
@@ -341,7 +338,6 @@ impl SimpleComponent for CloudAccounts {
                     }
                 }
             }
-            CloudAccountsInput::CloseEditor => self.close_editor(),
             CloudAccountsInput::Failed(e) => self.toast(&e),
             CloudAccountsInput::ProductDetected { key, product } => {
                 let mut changed = false;

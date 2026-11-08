@@ -1291,21 +1291,11 @@ msgid "Import failed: {e}"
 msgstr "Ошибка импорта: {e}"
 
 #, fuzzy
-msgid "The renderer applies the next time Tegami Mail starts."
-msgstr "Язык изменится при следующем запуске Tegami Mail."
-
-msgid "The language applies the next time Tegami Mail starts."
-msgstr "Язык изменится при следующем запуске Tegami Mail."
-
-#, fuzzy
 msgid "Forward as attachment"
 msgstr "Есть вложения"
 
 msgid "Delete {n} messages"
 msgstr "Удалить {n} сообщений"
-
-msgid "Customize toolbar…"
-msgstr "Настроить панель инструментов…"
 
 msgid "Read receipt"
 msgstr ""
@@ -1664,18 +1654,6 @@ msgstr "По имени (Я–А)"
 
 msgid "Full path"
 msgstr "Полный путь"
-
-msgid "Spam"
-msgstr "Спам"
-
-msgid "Read/Unread"
-msgstr "Прочитано/Непрочитано"
-
-msgid "Move to"
-msgstr "Переместить в"
-
-msgid "Find"
-msgstr "Найти"
 
 msgid "{date} at {time}"
 msgstr "{date} в {time}"
@@ -2226,6 +2204,9 @@ msgstr "Включить эту учётную запись"
 #, fuzzy
 msgid "Forward to"
 msgstr "Переслать"
+
+msgid "Move to"
+msgstr "Переместить в"
 
 msgid "forwards to {to}"
 msgstr ""
@@ -4034,10 +4015,6 @@ msgstr "срок действия истекает {date}"
 msgid "Until {date}"
 msgstr "срок действия истекает {date}"
 
-#, fuzzy
-msgid "Customize columns…"
-msgstr "Настроить панель инструментов…"
-
 msgid "Remove stars"
 msgstr "Снять отметки"
 
@@ -4823,57 +4800,8 @@ msgstr[2] "Импортировано {n} ключей."
 msgid "That key was already in your keyring."
 msgstr "Этот ключ уже находился в вашей связке ключей."
 
-msgid "Choose a sound"
-msgstr "Выберите звук"
-
-msgid "Sounds"
-msgstr "Звуки"
-
-msgid "Drag to move"
-msgstr "Перетащите для перемещения"
-
-msgid "Left group"
-msgstr "Левая группа"
-
-msgid "Always shown · up to {n}"
-msgstr "Отображаются всегда · до {n}"
-
-msgid "Right group"
-msgstr "Правая группа"
-
 #, fuzzy
-msgid "Folds into ⋯ when narrow"
-msgstr "Сворачиваются в ⋯ при узком окне · до 6"
-
-msgid "Not shown"
-msgstr "Скрыты"
-
-msgid "Drop a button here to hide it"
-msgstr "Перетащите кнопку сюда, чтобы скрыть её"
-
-msgid "Shown"
-msgstr "Отображается"
-
-msgid "Left to right"
-msgstr "Слева направо"
-
-msgid "Drop a column here to hide it"
-msgstr "Перетащите столбец сюда, чтобы скрыть его"
-
-msgid "App icon"
-msgstr "Иконка приложения"
-
-msgid "Symbolic"
-msgstr "Символическая"
-
-#, fuzzy
-msgid "All unread inbox mail"
-msgstr "Учитывать непрочитанную почту"
-
-msgid "New since the window was last in front"
-msgstr ""
-
-msgid "Follow system"
+msgid "Follow the system"
 msgstr "Как в системе"
 
 msgid "Light"
@@ -4882,23 +4810,8 @@ msgstr "Светлая"
 msgid "Dark"
 msgstr "Тёмная"
 
-msgid "Aug 23, 2026"
-msgstr "23 авг. 2026 г."
-
-msgid "23 Aug 2026"
-msgstr "23 авг 2026"
-
-msgid "2026 Aug 23"
-msgstr "2026 авг 23"
-
 msgid "System"
 msgstr "Система"
-
-msgid "12-hour (5:40 PM)"
-msgstr "12-часовой формат (5:40 PM)"
-
-msgid "24-hour (17:40)"
-msgstr "24-часовой формат (17:40)"
 
 msgid "Manually"
 msgstr "Вручную"
@@ -4914,25 +4827,6 @@ msgstr "Каждые 15 минут"
 
 msgid "Every 30 minutes"
 msgstr "Каждые 30 минут"
-
-#. GNOME Settings' own names for its alert sounds.
-msgid "Click"
-msgstr "Клик"
-
-#. GNOME Settings' own names for its alert sounds.
-msgid "Hum"
-msgstr "Гудение"
-
-#. GNOME Settings' own names for its alert sounds.
-msgid "String"
-msgstr "Струна"
-
-#. GNOME Settings' own names for its alert sounds.
-msgid "Swing"
-msgstr "Свинг"
-
-msgid "Custom file"
-msgstr "Другой файл"
 
 #, fuzzy
 msgid "Downloading: {done} of {total}"
@@ -5015,50 +4909,6 @@ msgstr ""
 msgid "It works: {server} answered."
 msgstr ""
 
-msgid "Messages already read"
-msgstr "Уже прочитанные сообщения"
-
-msgid "All but the newest"
-msgstr "Все, кроме последнего"
-
-#, fuzzy
-msgid "Top of the message"
-msgstr "Создание писем в основном окне"
-
-#, fuzzy
-msgid "Bottom of the message"
-msgstr "Создание писем в основном окне"
-
-msgid "Hidden behind a toggle"
-msgstr "Скрыто за переключателем"
-
-msgid "Shown while hovering"
-msgstr "Показывать при наведении"
-
-msgid "Always visible"
-msgstr "Всегда показывать"
-
-msgid "Ask each time"
-msgstr "Спрашивать каждый раз"
-
-msgid "A new message"
-msgstr "Новое сообщение"
-
-msgid "A draft you pick"
-msgstr "Выбранный черновик"
-
-msgid "A reply to a message you pick"
-msgstr "Ответ на выбранное сообщение"
-
-msgid "Attach them anyway"
-msgstr "Всё равно прикрепить"
-
-msgid "Upload to cloud storage and link them"
-msgstr "Загрузить в облачное хранилище и добавить ссылки"
-
-msgid "System default"
-msgstr "Системное по умолчанию"
-
 msgid "Account of the current folder"
 msgstr "Учётная запись текущей папки"
 
@@ -5093,64 +4943,118 @@ msgstr ""
 msgid "Add a word"
 msgstr "Добавить слово"
 
-msgid "Software"
+msgid "Backup"
+msgstr "Резервное копирование"
+
+msgid ""
+"Accounts, preferences, filters, tags and layout, in one file. Passwords and "
+"OpenPGP keys are not included."
 msgstr ""
 
 #, fuzzy
-msgid "Unified style"
-msgstr "Общие"
+msgid ""
+"Replaces everything in place. Don't remove accounts first: that deletes "
+"their passwords."
+msgstr ""
+"Заменяет текущие учётные записи и параметры. Не удаляйте учётные записи "
+"предварительно: удаление также стирает их пароли из связки ключей, которые "
+"не содержатся в резервной копии."
 
 #, fuzzy
-msgid "Tree style"
-msgstr "Действия"
+msgid "When a message is opened."
+msgstr "Написать новое письмо"
 
-msgid "Above the accounts"
-msgstr "Над учётными записями"
+msgid "When displayed"
+msgstr "При отображении"
 
-msgid "Below the accounts"
-msgstr "Под учётными записями"
+msgid "After two seconds"
+msgstr "Через две секунды"
 
-#, fuzzy
-msgid "The first account's inbox"
-msgstr "Папка «Входящие» последней учётной записи"
-
-msgid "The last account's inbox"
-msgstr "Папка «Входящие» последней учётной записи"
-
-msgid "The last folder"
-msgstr "Последняя открытая папка"
-
-msgid "Left"
-msgstr "Слева"
-
-msgid "Right"
-msgstr "Справа"
-
-msgid "1 line"
-msgstr "1 строка"
-
-msgid "2 lines"
-msgstr "2 строки"
-
-msgid "3 lines"
-msgstr "3 строки"
-
-msgid "Cards"
-msgstr "Карточки"
-
-msgid "Single line"
-msgstr "Одна строка"
+msgid "Newest message first"
+msgstr "Сначала новые сообщения"
 
 #, fuzzy
-msgid "Top of the list"
-msgstr "Создание писем в основном окне"
+msgid "In a conversation."
+msgstr "Отметить обсуждение"
 
 #, fuzzy
-msgid "Bottom of the list"
-msgstr "Создание писем в основном окне"
+msgid "Confirm deleting a conversation"
+msgstr "Удалить переписку"
 
-msgid "Theme"
-msgstr "Тема"
+msgid "Swipe to archive or delete"
+msgstr ""
+
+msgid "For touch screens and touchpads."
+msgstr ""
+
+msgid "Desktop notifications"
+msgstr "Уведомления на рабочем столе"
+
+#, fuzzy
+msgid "While the window is in the background."
+msgstr "Продолжать работу в фоновом режиме"
+
+msgid "Show sender and subject"
+msgstr "Показывать отправителя и тему"
+
+msgid "Off, the notification only says “New message”."
+msgstr ""
+
+#, fuzzy
+msgid "Read receipts"
+msgstr "Скрыть получателей"
+
+msgid "When someone opens mail you asked a receipt for."
+msgstr ""
+
+#, fuzzy
+msgid "Check for new messages"
+msgstr "Проверка новой почты"
+
+msgid "Instant new mail (push)"
+msgstr "Мгновенное получение почты (push)"
+
+#, fuzzy
+msgid "Microsoft 365 accounts check at the interval above."
+msgstr ""
+"Сообщения поступают сразу после их отправки. Учётные записи Microsoft 365 "
+"проверяются с интервалом, указанным выше."
+
+msgid "Style"
+msgstr "Стиль оформления"
+
+msgid ""
+"Follows the system by default. The accent colour also comes from the system."
+msgstr ""
+
+msgid "Keep running in the background"
+msgstr "Продолжать работу в фоновом режиме"
+
+msgid "Closing the window keeps Tegami Mail running for notifications."
+msgstr ""
+
+msgid "Start at login"
+msgstr "Запускать при входе в систему"
+
+msgid "Single-key shortcuts"
+msgstr "Одноклавишные сочетания"
+
+msgid "Ctrl+? shows them all."
+msgstr ""
+
+#, fuzzy
+msgid "Gmail keys"
+msgstr "Адрес электронной почты"
+
+msgid "Swaps the single-key shortcuts for Gmail equivalents."
+msgstr ""
+
+msgid "Keep downloaded mail"
+msgstr ""
+
+#, fuzzy
+msgid "On this computer, for reading offline."
+msgstr "На этом компьютере"
 
 #, fuzzy
 msgid "Always"
@@ -5167,300 +5071,20 @@ msgid "30 days"
 msgstr ""
 
 #, fuzzy
-msgid "Bottom of the window"
-msgstr "Создание писем в основном окне"
+msgid "Large attachments"
+msgstr "Есть вложения"
 
-#, fuzzy
-msgid "Top of the window"
-msgstr "Создание писем в основном окне"
+msgid "Ask each time"
+msgstr "Спрашивать каждый раз"
 
-msgid "When displayed"
-msgstr "При отображении"
+msgid "Attach them anyway"
+msgstr "Всё равно прикрепить"
 
-msgid "After two seconds"
-msgstr "Через две секунды"
-
-msgid "{percent}%"
-msgstr "{percent}%"
-
-msgid "Senders"
-msgstr "Отправители"
-
-msgid "Translation"
-msgstr "Перевод"
-
-msgid "General"
-msgstr "Основные"
-
-#. Rendered as Pango markup — a bare "&" breaks it.
-msgid "Appearance"
-msgstr "Внешний вид"
-
-msgid "Sidebar"
-msgstr "Боковая панель"
-
-msgid "Message list"
-msgstr "Список сообщений"
-
-msgid "Conversations"
-msgstr "Обсуждения"
-
-msgid "Reading"
-msgstr "Чтение"
-
-msgid "Composing"
-msgstr "Создание писем"
+msgid "Upload to cloud storage and link them"
+msgstr "Загрузить в облачное хранилище и добавить ссылки"
 
 msgid "Privacy"
 msgstr "Конфиденциальность"
-
-msgid "Date and time"
-msgstr "Дата и время"
-
-msgid "Backup"
-msgstr "Резервное копирование"
-
-msgid "Save the filter?"
-msgstr "Сохранить фильтр?"
-
-msgid "Your changes are lost if you discard them."
-msgstr ""
-
-#, fuzzy
-msgid "Save the smart folder?"
-msgstr "Сохранить фильтр?"
-
-msgid "Save the tag?"
-msgstr "Сохранить метку?"
-
-#, fuzzy
-msgid "Save the address book?"
-msgstr "Сохранить каталог?"
-
-msgid "Save the account?"
-msgstr "Сохранить учётную запись?"
-
-msgid ""
-"Accounts, preferences, filters, tags and layout, in one file. Passwords and "
-"OpenPGP keys are not included."
-msgstr ""
-
-#, fuzzy
-msgid ""
-"Replaces everything in place. Don't remove accounts first: that deletes "
-"their passwords."
-msgstr ""
-"Заменяет текущие учётные записи и параметры. Не удаляйте учётные записи "
-"предварительно: удаление также стирает их пароли из связки ключей, которые "
-"не содержатся в резервной копии."
-
-msgid "Group messages by conversation"
-msgstr "Группировать сообщения по обсуждениям"
-
-msgid "Newest message first"
-msgstr "Сначала новые сообщения"
-
-#, fuzzy
-msgid "In the reading pane."
-msgstr "Сворачивать панель инструментов области чтения"
-
-msgid "Fold earlier messages"
-msgstr "Сворачивать предыдущие сообщения"
-
-msgid "The newest always opens."
-msgstr ""
-
-msgid "Show your own replies in the message list"
-msgstr "Отображать ваши ответы в списке сообщений"
-
-msgid "Off shows the last message that arrived."
-msgstr "Если отключено, отображается последнее полученное сообщение."
-
-msgid "Attachments on each message"
-msgstr "Вложения в каждом сообщении"
-
-msgid "Attachment drawer"
-msgstr "Панель вложений"
-
-msgid "Confirm conversation deletion"
-msgstr "Подтверждать удаление обсуждения"
-
-msgid "Dates follow the system unless a format is chosen here."
-msgstr ""
-
-msgid "Date format"
-msgstr "Формат даты"
-
-msgid "Clock"
-msgstr "Часы"
-
-msgid "Instant new mail (push)"
-msgstr "Мгновенное получение почты (push)"
-
-#, fuzzy
-msgid "Microsoft 365 accounts check at the interval above."
-msgstr ""
-"Сообщения поступают сразу после их отправки. Учётные записи Microsoft 365 "
-"проверяются с интервалом, указанным выше."
-
-#, fuzzy
-msgid "Save data on metered connections"
-msgstr "Удалить переписку"
-
-msgid "New mail still arrives. Nothing else is fetched ahead."
-msgstr ""
-
-msgid "Notifications"
-msgstr "Уведомления"
-
-msgid "Desktop notifications"
-msgstr "Уведомления на рабочем столе"
-
-msgid "For new mail and errors, while the window is in the background."
-msgstr ""
-
-msgid "Show sender and subject"
-msgstr "Показывать отправителя и тему"
-
-#, fuzzy
-msgid "Read receipts"
-msgstr "Скрыть получателей"
-
-msgid "When someone opens mail you asked a receipt for."
-msgstr ""
-
-msgid "Sound for new mail"
-msgstr "Звук нового письма"
-
-msgid "Sound"
-msgstr "Звук"
-
-msgid "Play"
-msgstr "Воспроизвести"
-
-msgid "Sound file"
-msgstr "Звуковой файл"
-
-msgid "Choose…"
-msgstr "Выбрать…"
-
-msgid "Also play while Tegami Mail is in front"
-msgstr ""
-
-msgid "Notification buttons"
-msgstr "Кнопки в уведомлениях"
-
-msgid "Up to three buttons on a notification about one message."
-msgstr "До трёх кнопок в уведомлении об одном сообщении."
-
-#, fuzzy
-msgid "Show sender avatars"
-msgstr "Аватары отправителей"
-
-msgid "Sent mail uses your account circle"
-msgstr "В отправленных письмах используется значок вашей учётной записи"
-
-#, fuzzy
-msgid "The account's picture or emoji, as in the sidebar."
-msgstr ""
-"Отправленные вами письма содержат Gravatar, изображение или эмодзи учётной "
-"записи — так же, как и её значок на боковой панели."
-
-msgid "Layout"
-msgstr "Разметка"
-
-msgid "Automatic uses single lines in wide windows."
-msgstr ""
-
-msgid "Preview lines"
-msgstr "Строки предпросмотра"
-
-msgid "Off also stops downloading previews."
-msgstr ""
-
-msgid "Group by date"
-msgstr ""
-
-msgid "Tags and labels under the text"
-msgstr ""
-
-msgid "Gives the subject its full width."
-msgstr ""
-
-msgid "Keep the search field open"
-msgstr ""
-
-#, fuzzy
-msgid "Search field position"
-msgstr "Поиск фильтров"
-
-#, fuzzy
-msgid "Selection bar position"
-msgstr "Действия"
-
-#, fuzzy
-msgid "Tint tagged messages"
-msgstr "Метка добавлена к {n} письму"
-
-msgid "In the color of its first tag."
-msgstr ""
-
-msgid "Actions palette in the message list"
-msgstr "Палитра действий в списке сообщений"
-
-#, fuzzy
-msgid "The ⋯ row under each message."
-msgstr "Вложения в каждом сообщении"
-
-msgid "Open the actions palette on hover"
-msgstr "Открывать палитру действий при наведении"
-
-msgid "Swipe actions"
-msgstr "Действия свайпом"
-
-msgid ""
-"Left deletes, right archives. Drag with the mouse or swipe with two fingers."
-msgstr ""
-
-msgid "Reverse swipe directions"
-msgstr "Инвертировать направление свайпа"
-
-msgid "Trackpad swipe sensitivity"
-msgstr "Чувствительность смахивания на трекпаде"
-
-msgid "Raise it if swipes stop short. Mouse drags are unaffected."
-msgstr ""
-
-msgid "Actions palette timeout"
-msgstr "Задержка палитры действий"
-
-#, fuzzy
-msgid "Seconds it stays open after the pointer leaves."
-msgstr ""
-"Время в секундах, в течение которого палитра действий карточки остаётся "
-"открытой после того, как курсор покинул её."
-
-msgid "Columns"
-msgstr "Столбцы"
-
-msgid ""
-"For the single-line layout. Drag columns to reorder them or out to remove "
-"them. Due Date shows only for Microsoft 365 mail."
-msgstr ""
-
-#, fuzzy
-msgid "Show column headings"
-msgstr "Заголовки столбцов"
-
-#, fuzzy
-msgid "Fit columns to the list"
-msgstr "Перетащите столбец сюда, чтобы скрыть его"
-
-msgid "Off, a narrow list scrolls sideways."
-msgstr ""
-
-msgid "Restore defaults"
-msgstr "Восстановить по умолчанию"
 
 msgid "Tegami Mail collects no telemetry and sends no analytics."
 msgstr ""
@@ -5512,144 +5136,7 @@ msgstr "Скрыть получателей"
 msgid "A receipt tells the sender when you opened the message."
 msgstr ""
 
-msgid "Open at startup"
-msgstr "Открывать при запуске"
-
-msgid "Folder order"
-msgstr "Порядок папок"
-
-msgid "Dragging a folder switches to Custom Order."
-msgstr ""
-
-msgid "Chevron placement"
-msgstr "Расположение стрелок сворачивания"
-
-msgid "Fold accounts with one click"
-msgstr ""
-
-msgid "When off, only its chevron or a double click activates the fold."
-msgstr ""
-
-msgid "Expand the sidebar on hover"
-msgstr "Раскрывать боковую панель при наведении"
-
-msgid "Hovering the icon rail floats the full sidebar out."
-msgstr ""
-
-msgid "Remember the sidebar layout"
-msgstr "Запоминать состояние боковой панели"
-
-msgid "Off starts every launch folded up."
-msgstr ""
-
-msgid "Remember icon rail state"
-msgstr "Запоминать состояние панели с иконками"
-
-msgid "Highlight only new unread mail"
-msgstr "Выделять только новые непрочитанные письма"
-
-msgid "A count turns grey once you have looked at the folder."
-msgstr ""
-
-#, fuzzy
-msgid "Sections"
-msgstr "Действия"
-
-#, fuzzy
-msgid "Section style"
-msgstr "Действия"
-
-msgid "Tags placement"
-msgstr "Расположение тегов"
-
-#, fuzzy
-msgid "Favorites placement"
-msgstr "Расположение фильтров"
-
-msgid "Icon rail"
-msgstr "Полоса с иконками"
-
-msgid "Unread dots instead of counts"
-msgstr "Точки непрочитанного вместо счётчиков"
-
-msgid "The count stays in the tooltip."
-msgstr ""
-
-msgid "Fold up expanded items"
-msgstr "Сворачивать раскрытые элементы"
-
-msgid "The items below start folded up in the rail. Long-press to open one."
-msgstr ""
-
-msgid ""
-"Inside the Flatpak sandbox, links open through the desktop's chooser. \"Ask "
-"each time\" picks the browser per link with the option to remember it."
-msgstr ""
-
-msgid "\"Ask each time\" lets the desktop ask before each link."
-msgstr ""
-
-msgid "Not installed"
-msgstr "Не установлено"
-
-msgid "Installed and loaded by Files"
-msgstr "Установлено и загружено приложением «Файлы»"
-
-#, fuzzy
-msgid "Installed, but nautilus-python is missing"
-msgstr "Сначала установите пакет nautilus-python: вставьте это в терминал"
-
-msgid "Installed. Restart Files to load it; it needs nautilus-python"
-msgstr ""
-
-#, fuzzy
-msgid "Installed, but from another version"
-msgstr "Установлено, но используется копия от другой версии"
-
-#, fuzzy
-msgid "Measuring…"
-msgstr "Поиск…"
-
-msgid ""
-"Messages {bodies}, attachments {files}. {total} in all, with the message "
-"list."
-msgstr ""
-
-msgid "Could not install the extension"
-msgstr "Не удалось установить расширение"
-
-msgid "Remove downloaded mail?"
-msgstr ""
-
-#, fuzzy
-msgid ""
-"Mail and attachments on this computer are removed and fetched again when "
-"opened. Nothing on the server changes."
-msgstr ""
-"Каталог будет удалён из Evolution Data Server, поэтому Evolution и другие "
-"использующие его приложения также перестанут его видеть. На самом сервере "
-"ничего не изменится."
-
-msgid "Could not remove the extension"
-msgstr "Не удалось удалить расширение"
-
-msgid "Could not restart Files"
-msgstr "Не удалось перезапустить «Файлы»"
-
 msgid "Other font…"
-msgstr ""
-
-msgid "Search settings"
-msgstr "Поиск по параметрам"
-
-msgid "No results"
-msgstr "Ничего не найдено"
-
-#. Translators: words the settings search finds the Contacts page by,
-#. separated by spaces; keep "CardDAV" and "LDAP".
-msgid ""
-"address books CardDAV LDAP directory directories Online Accounts Nextcloud "
-"iCloud Google Microsoft vCard"
 msgstr ""
 
 msgid "System language — {language}"
@@ -5657,6 +5144,9 @@ msgstr "Системный язык — {language}"
 
 msgid "Forget this word"
 msgstr "Удалить это слово"
+
+msgid "Preferences"
+msgstr ""
 
 msgid "Print message"
 msgstr "Печать сообщения"
@@ -5990,6 +5480,9 @@ msgstr ""
 msgid "Script"
 msgstr ""
 
+msgid "Translation"
+msgstr "Перевод"
+
 msgid ""
 "Uses a translation service under your own key. A message's text is sent only "
 "when you translate it."
@@ -6153,8 +5646,17 @@ msgstr "Персонализация"
 msgid "A few popular choices — everything can be changed later in Settings."
 msgstr "Популярные параметры — всё это можно изменить позже в Параметрах."
 
+msgid "Preview lines"
+msgstr "Строки предпросмотра"
+
 msgid "Message text shown under each subject"
 msgstr "Текст письма, отображаемый под его темой"
+
+msgid "1 line"
+msgstr "1 строка"
+
+msgid "2 lines"
+msgstr "2 строки"
 
 msgid "Sender avatars"
 msgstr "Аватары отправителей"
@@ -6687,6 +6189,9 @@ msgstr ""
 msgid "Test connection"
 msgstr "Проверить соединение"
 
+msgid "Appearance"
+msgstr "Внешний вид"
+
 msgid "Account accent color"
 msgstr "Цвет учётной записи"
 
@@ -6712,6 +6217,9 @@ msgstr "Эмодзи"
 #, fuzzy
 msgid "Instead of initials."
 msgstr "Использовать инициалы"
+
+msgid "Choose…"
+msgstr "Выбрать…"
 
 msgid "Use initials"
 msgstr "Использовать инициалы"
@@ -6838,6 +6346,9 @@ msgstr ""
 msgid "Shows a label's name when a message gives only its ID."
 msgstr ""
 
+msgid "Folder order"
+msgstr "Порядок папок"
+
 #, fuzzy
 msgid "Also in the right-click menu of its Folders heading."
 msgstr ""
@@ -6955,37 +6466,71 @@ msgid "Look through every mailbox for tags other clients have set"
 msgstr ""
 "Просмотреть все почтовые ящики на предмет меток, заданных другими клиентами"
 
-msgid "Style"
-msgstr "Стиль оформления"
+#, fuzzy
+msgid "Senders"
+msgstr "Отправитель"
+
+msgid "Backup and restore"
+msgstr ""
 
 #, fuzzy
-msgid "Messages have their own setting under Reading."
+msgid "Organize mail"
+msgstr "Proton Mail"
+
+#, fuzzy
+msgid "Services"
+msgstr "Сервис"
+
+#, fuzzy
+msgid "Allowed and blocked"
+msgstr "Разрешённые отправители"
+
+msgid "Reading"
+msgstr "Чтение"
+
+msgid "Composing"
+msgstr "Создание писем"
+
+#, fuzzy
+msgid "Replies are sent from the address that received the message."
 msgstr ""
-"Сам интерфейс приложения. У содержимого сообщений свои настройки в разделе "
-"«Чтение»."
+"Ответы по-прежнему отправляются с того адреса, на который пришло исходное "
+"письмо."
 
-msgid "Text size"
-msgstr "Размер текста"
+#, fuzzy
+msgid "Format of new messages"
+msgstr "Создание писем в основном окне"
 
-msgid "Adjusts the interface and message text size."
+msgid "How long a message can still be recalled."
 msgstr ""
 
-msgid "Use your desktop environment's icon set"
+msgid "Notifications"
+msgstr "Уведомления"
+
+#, fuzzy
+msgid "New messages"
+msgstr "Новое сообщение"
+
+msgid "Sound and banners"
 msgstr ""
 
-msgid "This window opens to"
-msgstr "При открытии окна показывать"
-
-msgid "Toolbar"
-msgstr "Панель инструментов"
-
-msgid ""
-"Drag buttons between the groups. The right group folds into ⋯ when the pane "
-"is narrow."
+msgid "Open the system notification settings"
 msgstr ""
 
-msgid "Always fold the right group into ⋯"
+msgid "Sound, banners and Do Not Disturb are set there."
 msgstr ""
+
+#, fuzzy
+msgid "Application"
+msgstr "Действия"
+
+#, fuzzy
+msgid "Background"
+msgstr "Продолжать работу в фоновом режиме"
+
+#, fuzzy
+msgid "Keyboard and storage"
+msgstr "Сочетания клавиш"
 
 msgid "Send new messages from"
 msgstr "Отправлять новые сообщения с адреса"
@@ -7115,243 +6660,6 @@ msgstr "Добавленные слова"
 
 msgid "Changes apply after a restart."
 msgstr ""
-
-#, fuzzy
-msgid "Conversations mark each message as it comes into view."
-msgstr ""
-"Условие, при котором открытое письмо считается прочитанным. В обсуждениях "
-"каждое сообщение отмечается прочитанным по мере появления на экране."
-
-msgid "Message appearance"
-msgstr "Оформление сообщений"
-
-#, fuzzy
-msgid "Show account in message header"
-msgstr "Переключатель режима чтения"
-
-msgid ""
-"Where the list mixes accounts, the account a message is in, above its "
-"subject."
-msgstr ""
-
-msgid "Ctrl+0 returns to the default."
-msgstr ""
-
-msgid "Use my own font"
-msgstr "Использовать свой шрифт"
-
-msgid "The font below replaces the sender's."
-msgstr ""
-
-msgid "Message font"
-msgstr "Шрифт сообщений"
-
-msgid "The interface font unless another is chosen."
-msgstr "Шрифт интерфейса, если не выбран другой."
-
-msgid "Use my own colors"
-msgstr "Использовать свои цвета"
-
-msgid "Ignores the sender's colors. Pictures stay; links use the accent color."
-msgstr ""
-
-msgid "Plain-text messages in monospace"
-msgstr "Моноширинный шрифт для обычного текста"
-
-msgid "Formatted messages are not affected."
-msgstr ""
-
-msgid "Monospace font"
-msgstr "Моноширинный шрифт"
-
-msgid "The system's monospace font unless another is chosen."
-msgstr "Системный моноширинный шрифт, если не выбран другой."
-
-msgid "Message card actions palette"
-msgstr "Палитра действий на карточке сообщения"
-
-msgid "Message card actions palette timeout"
-msgstr "Задержка палитры действий на карточке сообщения"
-
-msgid "Message card actions palette as a menu"
-msgstr "Палитра действий карточки сообщения в виде меню"
-
-msgid "The ⋯ opens the right-click menu instead."
-msgstr ""
-
-msgid "Single messages as cards"
-msgstr "Одиночные сообщения в виде карточек"
-
-msgid "Off fills the pane edge to edge."
-msgstr ""
-
-msgid "Always show recipients"
-msgstr "Всегда показывать получателей"
-
-msgid "Name the OpenPGP result"
-msgstr "Подписывать статус OpenPGP текстом"
-
-msgid "Off shows the icons alone."
-msgstr ""
-
-#, fuzzy
-msgid "Find bar position"
-msgstr "Действия"
-
-msgid "Printing"
-msgstr "Печать"
-
-msgid "Page numbers"
-msgstr "Номера страниц"
-
-msgid "Date printed"
-msgstr "Дата печати"
-
-msgid "Wider left margin"
-msgstr "Увеличенное левое поле"
-
-#, fuzzy
-msgid "25 mm, so punched holes miss the text."
-msgstr ""
-"Оставлять отступ 25 мм слева на каждой странице, чтобы отверстия дырокола не "
-"заслоняли текст."
-
-msgid "Applies after a restart."
-msgstr ""
-
-#, fuzzy
-msgid "Renderer"
-msgstr "Отправитель"
-
-msgid "Try OpenGL or Software on older graphics. Applies after a restart."
-msgstr ""
-
-msgid "Keep running in the background"
-msgstr "Продолжать работу в фоновом режиме"
-
-msgid "Closing the window hides it. Quit from Background Apps."
-msgstr ""
-
-msgid "Start at login"
-msgstr "Запускать при входе в систему"
-
-msgid "Starts hidden."
-msgstr ""
-
-msgid "Start fullscreen"
-msgstr ""
-
-msgid "F11 switches fullscreen on and off."
-msgstr ""
-
-msgid "Show a tray icon"
-msgstr "Показывать значок в трее"
-
-msgid "To use on GNOME, install an AppIndicator extension."
-msgstr ""
-
-msgid "Tray icon"
-msgstr "Значок в трее"
-
-msgid "Unread mail in the tray menu"
-msgstr "Непрочитанная почта в меню трея"
-
-msgid "Unread count on the app icon"
-msgstr "Счётчик непрочитанных на значке приложения"
-
-msgid "To use on GNOME, install a dock extension such as Dash to Dock."
-msgstr ""
-
-msgid "Single-key shortcuts"
-msgstr "Одноклавишные сочетания"
-
-msgid "Press Ctrl+? to list all shortcuts."
-msgstr ""
-
-#, fuzzy
-msgid "Gmail keys"
-msgstr "Адрес электронной почты"
-
-msgid "Swaps the single-key shortcuts for Gmail equivalents."
-msgstr ""
-
-#, fuzzy
-msgid "Status bar"
-msgstr "Строка состояния ({n})"
-
-msgid "Console mode"
-msgstr "Режим консоли"
-
-msgid "Shows a console in the status bar."
-msgstr ""
-
-msgid "For bug reports. Addresses are cut to their domain for privacy."
-msgstr ""
-
-#, fuzzy
-msgid "Downloaded mail"
-msgstr "Скачать…"
-
-#, fuzzy
-msgid "Remove…"
-msgstr "Удалить"
-
-msgid "Keep downloaded mail"
-msgstr ""
-
-msgid "Mail inside an account's offline period is kept."
-msgstr ""
-
-msgid "GNOME Files integration"
-msgstr "Интеграция с «Файлами» GNOME"
-
-msgid ""
-"Adds “Send with Tegami Mail” to the right-click menu in Files. Needs the "
-"nautilus-python package and a restart of Files."
-msgstr ""
-
-msgid "Right-click menu entry"
-msgstr "Пункт контекстного меню"
-
-#, fuzzy
-msgid "Install nautilus-python first"
-msgstr "Сначала установите пакет nautilus-python: вставьте это в терминал"
-
-msgid "Restart Files"
-msgstr "Перезапустить «Файлы»"
-
-msgid "Closes every Files window, like “nautilus -q”."
-msgstr ""
-
-msgid "Restart"
-msgstr "Перезапустить"
-
-msgid "Default Send with Tegami Mail behavior"
-msgstr "Действие по умолчанию для «Отправить через Tegami Mail»"
-
-msgid "Default large attachments behavior"
-msgstr "Действие по умолчанию для крупных вложений"
-
-msgid "Without a cloud storage account, files are attached."
-msgstr ""
-
-msgid "Size limit"
-msgstr "Ограничение по размеру"
-
-msgid "In MB, for all the files together."
-msgstr "В МБ, суммарно для всех файлов."
-
-msgid "Links"
-msgstr "Ссылки"
-
-msgid "Open links in"
-msgstr "Открывать ссылки в"
-
-msgid "Update"
-msgstr "Обновить"
-
-msgid "Install"
-msgstr "Установить"
 
 msgid "Send as attachment instead"
 msgstr "Отправить вложением"

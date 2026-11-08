@@ -47,42 +47,6 @@ pub(crate) fn set_browser(choice: &str) {
     BROWSER.with(|b| *b.borrow_mut() = choice.to_string());
 }
 
-/// One browser the user can send links to: the desktop entry that launches
-/// it, and the name to show.
-#[derive(Debug, Clone)]
-pub(super) struct Browser {
-    pub(super) id: String,
-    pub(super) name: String,
-}
-
-/// The browsers this process can actually launch — the desktop entries
-/// registered for `https`, minus Tegami Mail itself.
-///
-/// Inside the Flatpak sandbox this is empty: the host's desktop entries are
-/// not visible there, and nothing in them could be run from inside anyway.
-/// Links then go out through the portal, which is what the "Ask each time"
-/// choice is for.
-pub(super) fn browsers() -> Vec<Browser> {
-    let mut found: Vec<Browser> = Vec::new();
-    for info in gio::AppInfo::all_for_type("x-scheme-handler/https") {
-        let Some(id) = info.id().map(|s| s.to_string()) else {
-            continue;
-        };
-        if id.starts_with(crate::APP_ID) || !info.should_show() {
-            continue;
-        }
-        if found.iter().any(|b| b.id == id) {
-            continue;
-        }
-        found.push(Browser {
-            id,
-            name: info.display_name().to_string(),
-        });
-    }
-    found.sort_by_key(|b| b.name.to_lowercase());
-    found
-}
-
 /// Open a web or mail link in the app the desktop has for it — or, when one
 /// was chosen in Settings, in that browser (#232).
 pub(crate) fn open_link(uri: &str, parent: Option<&gtk::Window>) {

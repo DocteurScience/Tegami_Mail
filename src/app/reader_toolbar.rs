@@ -9,7 +9,6 @@ use crate::i18n::{i18n, i18n_f};
 use crate::models::{FolderKind, Message};
 use crate::ui::context_menu::{show_context_menu, MenuEntry};
 use crate::ui::message_actions::{KeysOf, MessageAction};
-use crate::ui::preferences::PrefInput;
 
 use super::model::AppModel;
 use super::msg::AppMsg;
@@ -705,64 +704,8 @@ impl AppModel {
             }
 
             AppMsg::ReaderOverflowMenu => self.show_reader_overflow_menu(&sender),
-            AppMsg::ReaderToolbarMenu { x, y } => {
-                use crate::ui::context_menu::{show_context_menu, MenuEntry};
-                if let Some(header) = self.reader_header.get() {
-                    let s = sender.input_sender().clone();
-                    let entry = MenuEntry::new(i18n("Customize toolbar…"), move || {
-                        let _ = s.send(AppMsg::CustomizeToolbar);
-                    });
-                    show_context_menu(header, x, y, vec![vec![entry]]);
-                }
-            }
-            AppMsg::CustomizeToolbar => {
-                self.open_settings_window(&sender, false, false);
-                if let Some(p) = &self.prefs {
-                    p.emit(PrefInput::ShowPageById("appearance".to_string()));
-                }
-            }
-            AppMsg::CustomizeColumns => {
-                self.open_settings_window(&sender, false, false);
-                if let Some(p) = &self.prefs {
-                    p.emit(PrefInput::RevealColumns);
-                }
-            }
             _ => unreachable!("not routed to on_reader_toolbar"),
         }
-    }
-
-    /// Right-click on the header's empty space (not a button) offers
-    /// the way to the toolbar editor.
-    pub(super) fn init_reader_header_menu(
-        &self,
-        widgets: &AppModelWidgets,
-        sender: &ComponentSender<Self>,
-    ) {
-        let click = gtk::GestureClick::new();
-        click.set_button(3);
-        // Capture phase: the header's own window handle (a child, so
-        // earlier in the bubble phase) would otherwise take the click
-        // for the compositor's window menu and never let it through.
-        click.set_propagation_phase(gtk::PropagationPhase::Capture);
-        let header: gtk::Widget = widgets.reader_header.clone().upcast();
-        let s = sender.input_sender().clone();
-        click.connect_pressed(move |g, _, x, y| {
-            // Anything clickable under the pointer keeps its own
-            // right-click (or lack of one).
-            let mut w = header.pick(x, y, gtk::PickFlags::DEFAULT);
-            while let Some(cur) = w {
-                if cur == header {
-                    break;
-                }
-                if cur.is::<gtk::Button>() || cur.is::<gtk::WindowControls>() {
-                    return;
-                }
-                w = cur.parent();
-            }
-            g.set_state(gtk::EventSequenceState::Claimed);
-            let _ = s.send(AppMsg::ReaderToolbarMenu { x, y });
-        });
-        widgets.reader_header.add_controller(click);
     }
 
     /// Collapse the reader header's actions into the overflow menu when the

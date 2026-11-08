@@ -2,10 +2,7 @@
 //! `init` hangs on the widgets the view made.
 
 use super::rows::LIST_WINDOW;
-use super::{
-    MessageList, MessageListInput, MessageListOutput, QuickFilters, SearchScope, SortOrder,
-};
-use crate::i18n::i18n;
+use super::{MessageList, MessageListInput, QuickFilters, SearchScope, SortOrder};
 use crate::ui::message_row::RowShared;
 use adw::prelude::*;
 use relm4::prelude::*;
@@ -139,26 +136,6 @@ pub(super) fn link_heading_scroll(
     // may have scrolled: put them back in step then.
     let r = rows.clone();
     heads.connect_changed(move |a| a.set_value(r.value()));
-}
-
-/// The headings' right-click menu.
-pub(super) fn watch_heading_menu(area: &gtk::Widget, sender: &ComponentSender<MessageList>) {
-    // A right-click on the headings offers the way to the columns'
-    // settings (#443).
-    let click = gtk::GestureClick::new();
-    click.set_button(3);
-    let anchor = area.clone();
-    let s = sender.clone();
-    click.connect_pressed(move |g, _, x, y| {
-        g.set_state(gtk::EventSequenceState::Claimed);
-        let s = s.clone();
-        let entry =
-            crate::ui::context_menu::MenuEntry::new(i18n("Customize columns…"), move || {
-                let _ = s.output(MessageListOutput::CustomizeColumns);
-            });
-        crate::ui::context_menu::show_context_menu(&anchor, x, y, vec![vec![entry]]);
-    });
-    area.add_controller(click);
 }
 
 /// Report the rows' width as the view is allocated.

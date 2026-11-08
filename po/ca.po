@@ -1200,22 +1200,12 @@ msgstr "Reinicia l'Tegami Mail"
 msgid "Import failed: {e}"
 msgstr "La importació ha fallat: {e}"
 
-msgid "The renderer applies the next time Tegami Mail starts."
-msgstr ""
-"El renderitzador s'aplicarà la propera vegada que s'iniciï l'Tegami Mail."
-
-msgid "The language applies the next time Tegami Mail starts."
-msgstr "L'idioma s'aplicarà la propera vegada que s'iniciï l'Tegami Mail."
-
 #, fuzzy
 msgid "Forward as attachment"
 msgstr "Té adjunts"
 
 msgid "Delete {n} messages"
 msgstr "Suprimeix {n} missatges"
-
-msgid "Customize toolbar…"
-msgstr "Personalitza la barra d'eines…"
 
 msgid "Read receipt"
 msgstr ""
@@ -1557,18 +1547,6 @@ msgstr "Nom (Z a A)"
 
 msgid "Full path"
 msgstr "Camí complet"
-
-msgid "Spam"
-msgstr "Brossa"
-
-msgid "Read/Unread"
-msgstr "Llegit/No llegit"
-
-msgid "Move to"
-msgstr "Mou a"
-
-msgid "Find"
-msgstr "Cerca"
 
 msgid "{date} at {time}"
 msgstr "{date} a les {time}"
@@ -2124,6 +2102,9 @@ msgstr "Activa aquest compte"
 #, fuzzy
 msgid "Forward to"
 msgstr "Reenvia"
+
+msgid "Move to"
+msgstr "Mou a"
 
 msgid "forwards to {to}"
 msgstr ""
@@ -3856,9 +3837,6 @@ msgstr "caduca el {date}"
 msgid "Until {date}"
 msgstr "caduca el {date}"
 
-msgid "Customize columns…"
-msgstr "Personalitza les columnes…"
-
 msgid "Remove stars"
 msgstr "Treu les destacats"
 
@@ -4621,56 +4599,8 @@ msgstr[1] "S'han importat {n} claus."
 msgid "That key was already in your keyring."
 msgstr "Aquesta clau ja era al teu anell de claus."
 
-msgid "Choose a sound"
-msgstr "Tria un so"
-
-msgid "Sounds"
-msgstr "Sons"
-
-msgid "Drag to move"
-msgstr "Arrossega per moure"
-
-msgid "Left group"
-msgstr "Grup esquerre"
-
-msgid "Always shown · up to {n}"
-msgstr "Sempre visible · fins a {n}"
-
-msgid "Right group"
-msgstr "Grup dret"
-
 #, fuzzy
-msgid "Folds into ⋯ when narrow"
-msgstr "Es replega a ⋯ quan és estret · fins a 6"
-
-msgid "Not shown"
-msgstr "No mostrat"
-
-msgid "Drop a button here to hide it"
-msgstr "Deixa anar un botó aquí per amagar-lo"
-
-msgid "Shown"
-msgstr "Mostrat"
-
-msgid "Left to right"
-msgstr "D'esquerra a dreta"
-
-msgid "Drop a column here to hide it"
-msgstr "Deixa anar una columna aquí per amagar-la"
-
-msgid "App icon"
-msgstr "Icona de l'aplicació"
-
-msgid "Symbolic"
-msgstr "Simbòlica"
-
-msgid "All unread inbox mail"
-msgstr "Tot el correu no llegit de les bústies d'entrada"
-
-msgid "New since the window was last in front"
-msgstr "Nou des que la finestra era al davant per última vegada"
-
-msgid "Follow system"
+msgid "Follow the system"
 msgstr "Segueix el sistema"
 
 msgid "Light"
@@ -4679,23 +4609,8 @@ msgstr "Clar"
 msgid "Dark"
 msgstr "Fosc"
 
-msgid "Aug 23, 2026"
-msgstr "23 d'agost de 2026"
-
-msgid "23 Aug 2026"
-msgstr "23 ago. 2026"
-
-msgid "2026 Aug 23"
-msgstr "2026 ago. 23"
-
 msgid "System"
 msgstr "Sistema"
-
-msgid "12-hour (5:40 PM)"
-msgstr "12 hores (5:40 PM)"
-
-msgid "24-hour (17:40)"
-msgstr "24 hores (17:40)"
 
 msgid "Manually"
 msgstr "Manualment"
@@ -4711,25 +4626,6 @@ msgstr "Cada 15 minuts"
 
 msgid "Every 30 minutes"
 msgstr "Cada 30 minuts"
-
-#. GNOME Settings' own names for its alert sounds.
-msgid "Click"
-msgstr "Clic"
-
-#. GNOME Settings' own names for its alert sounds.
-msgid "Hum"
-msgstr "Brunzit"
-
-#. GNOME Settings' own names for its alert sounds.
-msgid "String"
-msgstr "Corda"
-
-#. GNOME Settings' own names for its alert sounds.
-msgid "Swing"
-msgstr "Balanceig"
-
-msgid "Custom file"
-msgstr "Fitxer personalitzat"
 
 #, fuzzy
 msgid "Downloading: {done} of {total}"
@@ -4813,50 +4709,6 @@ msgstr ""
 msgid "It works: {server} answered."
 msgstr ""
 
-msgid "Messages already read"
-msgstr "Missatges ja llegits"
-
-msgid "All but the newest"
-msgstr "Tots menys el més nou"
-
-#, fuzzy
-msgid "Top of the message"
-msgstr "A la part superior de la llista"
-
-#, fuzzy
-msgid "Bottom of the message"
-msgstr "A la part inferior de la llista"
-
-msgid "Hidden behind a toggle"
-msgstr "Amagat darrere un commutador"
-
-msgid "Shown while hovering"
-msgstr "Mostrat mentre es passa per sobre"
-
-msgid "Always visible"
-msgstr "Sempre visible"
-
-msgid "Ask each time"
-msgstr "Pregunta cada vegada"
-
-msgid "A new message"
-msgstr "Un missatge nou"
-
-msgid "A draft you pick"
-msgstr "Un esborrany que triïs"
-
-msgid "A reply to a message you pick"
-msgstr "Una resposta a un missatge que triïs"
-
-msgid "Attach them anyway"
-msgstr "Adjunta'ls igualment"
-
-msgid "Upload to cloud storage and link them"
-msgstr "Puja'ls a l'emmagatzematge al núvol i enllaça'ls"
-
-msgid "System default"
-msgstr "Per defecte del sistema"
-
 msgid "Account of the current folder"
 msgstr "Compte de la carpeta actual"
 
@@ -4891,142 +4743,8 @@ msgstr ""
 msgid "Add a word"
 msgstr "Afegeix una paraula"
 
-msgid "Software"
-msgstr "Programari"
-
-msgid "Unified style"
-msgstr "Estil unificat"
-
-msgid "Tree style"
-msgstr "Estil d'arbre"
-
-msgid "Above the accounts"
-msgstr "A sobre dels comptes"
-
-msgid "Below the accounts"
-msgstr "A sota dels comptes"
-
-#, fuzzy
-msgid "The first account's inbox"
-msgstr "La bústia d'entrada de l'últim compte"
-
-msgid "The last account's inbox"
-msgstr "La bústia d'entrada de l'últim compte"
-
-msgid "The last folder"
-msgstr "L'última carpeta"
-
-msgid "Left"
-msgstr "Esquerra"
-
-msgid "Right"
-msgstr "Dreta"
-
-msgid "1 line"
-msgstr "1 línia"
-
-msgid "2 lines"
-msgstr "2 línies"
-
-msgid "3 lines"
-msgstr "3 línies"
-
-msgid "Cards"
-msgstr "Targetes"
-
-msgid "Single line"
-msgstr "Línia individual"
-
-msgid "Top of the list"
-msgstr "A la part superior de la llista"
-
-msgid "Bottom of the list"
-msgstr "A la part inferior de la llista"
-
-msgid "Theme"
-msgstr "Tema"
-
-msgid "Always"
-msgstr "Sempre"
-
-msgid "A year"
-msgstr "Un any"
-
-msgid "90 days"
-msgstr "90 dies"
-
-msgid "30 days"
-msgstr "30 dies"
-
-msgid "Bottom of the window"
-msgstr "A la part inferior de la finestra"
-
-msgid "Top of the window"
-msgstr "A la part superior de la finestra"
-
-msgid "When displayed"
-msgstr "Quan es mostra"
-
-msgid "After two seconds"
-msgstr "Després de dos segons"
-
-msgid "{percent}%"
-msgstr "{percent}%"
-
-msgid "Senders"
-msgstr "Remitents"
-
-msgid "Translation"
-msgstr "Traducció"
-
-msgid "General"
-msgstr "General"
-
-#. Rendered as Pango markup — a bare "&" breaks it.
-msgid "Appearance"
-msgstr "Aparença"
-
-msgid "Sidebar"
-msgstr "Barra lateral"
-
-msgid "Message list"
-msgstr "Llista de missatges"
-
-msgid "Conversations"
-msgstr "Converses"
-
-msgid "Reading"
-msgstr "Lectura"
-
-msgid "Composing"
-msgstr "Redacció"
-
-msgid "Privacy"
-msgstr "Privacitat"
-
-msgid "Date and time"
-msgstr "Data i hora"
-
 msgid "Backup"
 msgstr "Còpia de seguretat"
-
-msgid "Save the filter?"
-msgstr "Vols desar el filtre?"
-
-msgid "Your changes are lost if you discard them."
-msgstr "Els teus canvis es perden si els descartes."
-
-msgid "Save the smart folder?"
-msgstr "Vols desar la carpeta intel·ligent?"
-
-msgid "Save the tag?"
-msgstr "Vols desar l'etiqueta?"
-
-msgid "Save the address book?"
-msgstr "Vols desar la llibreta d'adreces?"
-
-msgid "Save the account?"
-msgstr "Vols desar el compte?"
 
 msgid ""
 "Accounts, preferences, filters, tags and layout, in one file. Passwords and "
@@ -5042,68 +4760,45 @@ msgstr ""
 "Substitueix-ho tot al seu lloc. No eliminis primer els comptes: això "
 "suprimeix les seves contrasenyes."
 
-msgid "Group messages by conversation"
-msgstr "Agrupa els missatges per conversa"
+#, fuzzy
+msgid "When a message is opened."
+msgstr "Millor un missatge nou"
+
+msgid "When displayed"
+msgstr "Quan es mostra"
+
+msgid "After two seconds"
+msgstr "Després de dos segons"
 
 msgid "Newest message first"
 msgstr "Missatge més nou primer"
 
-msgid "In the reading pane."
-msgstr "Al panell de lectura."
+#, fuzzy
+msgid "In a conversation."
+msgstr "Destaca la conversa"
 
-msgid "Fold earlier messages"
-msgstr "Replega els missatges anteriors"
+#, fuzzy
+msgid "Confirm deleting a conversation"
+msgstr "Suprimeix la conversa"
 
-msgid "The newest always opens."
-msgstr "El més nou sempre s'obre."
+msgid "Swipe to archive or delete"
+msgstr ""
 
-msgid "Show your own replies in the message list"
-msgstr "Mostra les teves pròpies respostes a la llista de missatges"
-
-msgid "Off shows the last message that arrived."
-msgstr "Desactivat mostra l'últim missatge que ha arribat."
-
-msgid "Attachments on each message"
-msgstr "Adjunts a cada missatge"
-
-msgid "Attachment drawer"
-msgstr "Calaix d'adjunts"
-
-msgid "Confirm conversation deletion"
-msgstr "Confirma la supressió de converses"
-
-msgid "Dates follow the system unless a format is chosen here."
-msgstr "Les dates segueixen el sistema tret que es triï un format aquí."
-
-msgid "Date format"
-msgstr "Format de data"
-
-msgid "Clock"
-msgstr "Rellotge"
-
-msgid "Instant new mail (push)"
-msgstr "Correu nou instantani (push)"
-
-msgid "Microsoft 365 accounts check at the interval above."
-msgstr "Els comptes de Microsoft 365 comproven a l'interval de dalt."
-
-msgid "Save data on metered connections"
-msgstr "Estalvia dades en connexions amb límit"
-
-msgid "New mail still arrives. Nothing else is fetched ahead."
-msgstr "El correu nou encara arriba. No es baixa res més per endavant."
-
-msgid "Notifications"
-msgstr "Notificacions"
+msgid "For touch screens and touchpads."
+msgstr ""
 
 msgid "Desktop notifications"
 msgstr "Notificacions d'escriptori"
 
-msgid "For new mail and errors, while the window is in the background."
+#, fuzzy
+msgid "While the window is in the background."
 msgstr "Per a correu nou i errors, mentre la finestra és en segon pla."
 
 msgid "Show sender and subject"
 msgstr "Mostra el remitent i l'assumpte"
+
+msgid "Off, the notification only says “New message”."
+msgstr ""
 
 #, fuzzy
 msgid "Read receipts"
@@ -5112,132 +4807,79 @@ msgstr "Amaga els destinataris"
 msgid "When someone opens mail you asked a receipt for."
 msgstr ""
 
-msgid "Sound for new mail"
-msgstr "So per a correu nou"
+#, fuzzy
+msgid "Check for new messages"
+msgstr "Comprova si hi ha correu nou"
 
-msgid "Sound"
-msgstr "So"
+msgid "Instant new mail (push)"
+msgstr "Correu nou instantani (push)"
 
-msgid "Play"
-msgstr "Reprodueix"
+msgid "Microsoft 365 accounts check at the interval above."
+msgstr "Els comptes de Microsoft 365 comproven a l'interval de dalt."
 
-msgid "Sound file"
-msgstr "Fitxer de so"
-
-msgid "Choose…"
-msgstr "Tria…"
-
-msgid "Also play while Tegami Mail is in front"
-msgstr "Reprodueix també quan l'Tegami Mail és al davant"
-
-msgid "Notification buttons"
-msgstr "Botons de notificació"
-
-msgid "Up to three buttons on a notification about one message."
-msgstr "Fins a tres botons en una notificació sobre un missatge."
-
-msgid "Show sender avatars"
-msgstr "Mostra els avatars dels remitents"
-
-msgid "Sent mail uses your account circle"
-msgstr "El correu enviat utilitza el cercle del teu compte"
-
-msgid "The account's picture or emoji, as in the sidebar."
-msgstr "La imatge o l'emoji del compte, com a la barra lateral."
-
-msgid "Layout"
-msgstr "Disposició"
-
-msgid "Automatic uses single lines in wide windows."
-msgstr "Automàtic utilitza línies individuals en finestres amples."
-
-msgid "Preview lines"
-msgstr "Línies de previsualització"
-
-msgid "Off also stops downloading previews."
-msgstr "Desactivat també atura la baixada de previsualitzacions."
-
-msgid "Group by date"
-msgstr "Agrupa per data"
-
-msgid "Tags and labels under the text"
-msgstr "Etiquetes i etiquetes del servidor sota el text"
-
-msgid "Gives the subject its full width."
-msgstr "Dona a l'assumpte tota l'amplada."
-
-msgid "Keep the search field open"
-msgstr "Mantén obert el camp de cerca"
-
-msgid "Search field position"
-msgstr "Posició del camp de cerca"
-
-msgid "Selection bar position"
-msgstr "Posició de la barra de selecció"
-
-msgid "Tint tagged messages"
-msgstr "Acoloreix els missatges etiquetats"
-
-msgid "In the color of its first tag."
-msgstr "Amb el color de la seva primera etiqueta."
-
-msgid "Actions palette in the message list"
-msgstr "Paleta d'accions a la llista de missatges"
-
-msgid "The ⋯ row under each message."
-msgstr "La fila ⋯ sota cada missatge."
-
-msgid "Open the actions palette on hover"
-msgstr "Obre la paleta d'accions en passar-hi per sobre"
-
-msgid "Swipe actions"
-msgstr "Accions de lliscament"
+msgid "Style"
+msgstr "Estil"
 
 msgid ""
-"Left deletes, right archives. Drag with the mouse or swipe with two fingers."
+"Follows the system by default. The accent colour also comes from the system."
 msgstr ""
-"Esquerra suprimeix, dreta arxiva. Arrossega amb el ratolí o llisca amb dos "
-"dits."
 
-msgid "Reverse swipe directions"
-msgstr "Inverteix les direccions de lliscament"
+msgid "Keep running in the background"
+msgstr "Continua executant-se en segon pla"
 
-msgid "Trackpad swipe sensitivity"
-msgstr "Sensibilitat del lliscament del trackpad"
-
-msgid "Raise it if swipes stop short. Mouse drags are unaffected."
+msgid "Closing the window keeps Tegami Mail running for notifications."
 msgstr ""
-"Augmenta-la si els lliscaments queden curts. Els arrossegaments del ratolí "
-"no es veuen afectats."
 
-msgid "Actions palette timeout"
-msgstr "Temps d'espera de la paleta d'accions"
+msgid "Start at login"
+msgstr "Inicia en iniciar sessió"
 
-msgid "Seconds it stays open after the pointer leaves."
-msgstr "Segons que es manté oberta després que el punter en surti."
+msgid "Single-key shortcuts"
+msgstr "Dreceres d'una sola tecla"
 
-msgid "Columns"
-msgstr "Columnes"
+#, fuzzy
+msgid "Ctrl+? shows them all."
+msgstr "Ctrl+0 torna al valor per defecte."
 
-msgid ""
-"For the single-line layout. Drag columns to reorder them or out to remove "
-"them. Due Date shows only for Microsoft 365 mail."
-msgstr ""
-"Per a la disposició d'una sola línia. Arrossega les columnes per reordenar-"
-"les o fora per treure-les. La data de venciment només es mostra per al "
-"correu de Microsoft 365."
+msgid "Gmail keys"
+msgstr "Tecles del Gmail"
 
-msgid "Show column headings"
-msgstr "Mostra els encapçalaments de columna"
+msgid "Swaps the single-key shortcuts for Gmail equivalents."
+msgstr "Canvia les dreceres d'una sola tecla per les equivalents del Gmail."
 
-msgid "Fit columns to the list"
-msgstr "Ajusta les columnes a la llista"
+msgid "Keep downloaded mail"
+msgstr "Conserva el correu baixat"
 
-msgid "Off, a narrow list scrolls sideways."
-msgstr "Desactivat, una llista estreta es desplaça lateralment."
+#, fuzzy
+msgid "On this computer, for reading offline."
+msgstr "En aquest ordinador"
 
-msgid "Restore defaults"
-msgstr "Restaura els valors per defecte"
+msgid "Always"
+msgstr "Sempre"
+
+msgid "A year"
+msgstr "Un any"
+
+msgid "90 days"
+msgstr "90 dies"
+
+msgid "30 days"
+msgstr "30 dies"
+
+#, fuzzy
+msgid "Large attachments"
+msgstr "Té adjunts"
+
+msgid "Ask each time"
+msgstr "Pregunta cada vegada"
+
+msgid "Attach them anyway"
+msgstr "Adjunta'ls igualment"
+
+msgid "Upload to cloud storage and link them"
+msgstr "Puja'ls a l'emmagatzematge al núvol i enllaça'ls"
+
+msgid "Privacy"
+msgstr "Privacitat"
 
 msgid "Tegami Mail collects no telemetry and sends no analytics."
 msgstr "L'Tegami Mail no recull cap telemetria ni envia analítiques."
@@ -5292,157 +4934,17 @@ msgstr "Amaga els destinataris"
 msgid "A receipt tells the sender when you opened the message."
 msgstr ""
 
-msgid "Open at startup"
-msgstr "Obre en iniciar"
-
-msgid "Folder order"
-msgstr "Ordre de carpetes"
-
-msgid "Dragging a folder switches to Custom Order."
-msgstr "Arrossegar una carpeta canvia a «Ordre personalitzat»."
-
-msgid "Chevron placement"
-msgstr "Col·locació del xevró"
-
-msgid "Fold accounts with one click"
-msgstr "Replega els comptes amb un clic"
-
-msgid "When off, only its chevron or a double click activates the fold."
-msgstr ""
-"Quan està desactivat, només el seu xevró o un doble clic activen el replegat."
-
-msgid "Expand the sidebar on hover"
-msgstr "Expandeix la barra lateral en passar-hi per sobre"
-
-msgid "Hovering the icon rail floats the full sidebar out."
-msgstr ""
-"Passar per sobre de la barra d'icones fa surar la barra lateral sencera."
-
-msgid "Remember the sidebar layout"
-msgstr "Recorda la disposició de la barra lateral"
-
-msgid "Off starts every launch folded up."
-msgstr "Desactivat comença cada iniciada amb tot replegat."
-
-msgid "Remember icon rail state"
-msgstr "Recorda l'estat de la barra d'icones"
-
-msgid "Highlight only new unread mail"
-msgstr "Ressalta només el correu no llegit nou"
-
-msgid "A count turns grey once you have looked at the folder."
-msgstr "El recompte es torna gris un cop has mirat la carpeta."
-
-msgid "Sections"
-msgstr "Seccions"
-
-msgid "Section style"
-msgstr "Estil de secció"
-
-msgid "Tags placement"
-msgstr "Col·locació de les etiquetes"
-
-msgid "Favorites placement"
-msgstr "Col·locació dels preferits"
-
-msgid "Icon rail"
-msgstr "Barra d'icones"
-
-msgid "Unread dots instead of counts"
-msgstr "Punts de no llegit en lloc de recomptes"
-
-msgid "The count stays in the tooltip."
-msgstr "El recompte es manté a l'informació emergent."
-
-msgid "Fold up expanded items"
-msgstr "Replega els elements expandits"
-
-msgid "The items below start folded up in the rail. Long-press to open one."
-msgstr ""
-"Els elements de sota comencen replegats a la barra. Mantén premut per obrir-"
-"ne un."
-
-msgid ""
-"Inside the Flatpak sandbox, links open through the desktop's chooser. \"Ask "
-"each time\" picks the browser per link with the option to remember it."
-msgstr ""
-"Dins de la sandbox Flatpak, els enllaços s'obren a través del selector de "
-"l'escriptori. «Pregunta cada vegada» tria el navegador per a cada enllaç amb "
-"l'opció de recordar-ho."
-
-msgid "\"Ask each time\" lets the desktop ask before each link."
-msgstr ""
-"«Pregunta cada vegada» deixa que l'escriptori pregunti abans de cada enllaç."
-
-msgid "Not installed"
-msgstr "No instal·lat"
-
-msgid "Installed and loaded by Files"
-msgstr "Instal·lat i carregat pels Fitxers"
-
-msgid "Installed, but nautilus-python is missing"
-msgstr "Instal·lat, però falta el nautilus-python"
-
-msgid "Installed. Restart Files to load it; it needs nautilus-python"
-msgstr ""
-"Instal·lat. Reinicia els Fitxers per carregar-lo; necessita el nautilus-"
-"python"
-
-msgid "Installed, but from another version"
-msgstr "Instal·lat, però d'una altra versió"
-
-msgid "Measuring…"
-msgstr "S'està mesurant…"
-
-msgid ""
-"Messages {bodies}, attachments {files}. {total} in all, with the message "
-"list."
-msgstr ""
-"Missatges {bodies}, adjunts {files}. {total} en total, amb la llista de "
-"missatges."
-
-msgid "Could not install the extension"
-msgstr "No s'ha pogut instal·lar l'extensió"
-
-msgid "Remove downloaded mail?"
-msgstr "Vols eliminar el correu baixat?"
-
-msgid ""
-"Mail and attachments on this computer are removed and fetched again when "
-"opened. Nothing on the server changes."
-msgstr ""
-"El correu i els adjunts d'aquest ordinador s'eliminen i es tornen a obtenir "
-"quan s'obren. Res canvia al servidor."
-
-msgid "Could not remove the extension"
-msgstr "No s'ha pogut eliminar l'extensió"
-
-msgid "Could not restart Files"
-msgstr "No s'han pogut reiniciar els Fitxers"
-
 msgid "Other font…"
 msgstr "Una altra font…"
-
-msgid "Search settings"
-msgstr "Cerca als paràmetres"
-
-msgid "No results"
-msgstr "No hi ha resultats"
-
-#. Translators: words the settings search finds the Contacts page by,
-#. separated by spaces; keep "CardDAV" and "LDAP".
-msgid ""
-"address books CardDAV LDAP directory directories Online Accounts Nextcloud "
-"iCloud Google Microsoft vCard"
-msgstr ""
-"llibretes d'adreces CardDAV LDAP directori directoris comptes en línia "
-"Nextcloud iCloud Google Microsoft vCard"
 
 msgid "System language — {language}"
 msgstr "Idioma del sistema — {language}"
 
 msgid "Forget this word"
 msgstr "Oblida aquesta paraula"
+
+msgid "Preferences"
+msgstr ""
 
 msgid "Print message"
 msgstr "Imprimeix el missatge"
@@ -5768,6 +5270,9 @@ msgstr "Fitxer"
 msgid "Script"
 msgstr ""
 
+msgid "Translation"
+msgstr "Traducció"
+
 msgid ""
 "Uses a translation service under your own key. A message's text is sent only "
 "when you translate it."
@@ -5934,8 +5439,17 @@ msgid "A few popular choices — everything can be changed later in Settings."
 msgstr ""
 "Unes quantes opcions populars — tot es pot canviar després als paràmetres."
 
+msgid "Preview lines"
+msgstr "Línies de previsualització"
+
 msgid "Message text shown under each subject"
 msgstr "Text del missatge mostrat sota cada assumpte"
+
+msgid "1 line"
+msgstr "1 línia"
+
+msgid "2 lines"
+msgstr "2 línies"
 
 msgid "Sender avatars"
 msgstr "Avatars dels remitents"
@@ -6458,6 +5972,9 @@ msgstr ""
 msgid "Test connection"
 msgstr "Prova la connexió"
 
+msgid "Appearance"
+msgstr "Aparença"
+
 msgid "Account accent color"
 msgstr "Color d'accent del compte"
 
@@ -6481,6 +5998,9 @@ msgstr "Emoji"
 
 msgid "Instead of initials."
 msgstr "En lloc de les inicials."
+
+msgid "Choose…"
+msgstr "Tria…"
 
 msgid "Use initials"
 msgstr "Utilitza les inicials"
@@ -6602,6 +6122,9 @@ msgstr "Mostra els noms de les etiquetes de sensibilitat"
 msgid "Shows a label's name when a message gives only its ID."
 msgstr "Mostra el nom d'una etiqueta quan un missatge només en dona l'ID."
 
+msgid "Folder order"
+msgstr "Ordre de carpetes"
+
 msgid "Also in the right-click menu of its Folders heading."
 msgstr "També al menú contextual del seu encapçalament de carpetes."
 
@@ -6710,36 +6233,69 @@ msgid "Look through every mailbox for tags other clients have set"
 msgstr ""
 "Repassa totes les bústies per trobar etiquetes que altres clients hagin posat"
 
-msgid "Style"
-msgstr "Estil"
+#, fuzzy
+msgid "Senders"
+msgstr "Remitent"
 
-msgid "Messages have their own setting under Reading."
-msgstr "Els missatges tenen la seva pròpia configuració a Lectura."
-
-msgid "Text size"
-msgstr "Mida del text"
-
-msgid "Adjusts the interface and message text size."
-msgstr "Ajusta la mida del text de la interfície i dels missatges."
-
-msgid "Use your desktop environment's icon set"
-msgstr "Utilitza el conjunt d'icones del teu entorn d'escriptori"
-
-msgid "This window opens to"
-msgstr "Aquesta finestra s'obre a"
-
-msgid "Toolbar"
-msgstr "Barra d'eines"
-
-msgid ""
-"Drag buttons between the groups. The right group folds into ⋯ when the pane "
-"is narrow."
+msgid "Backup and restore"
 msgstr ""
-"Arrossega els botons entre els grups. El grup dret es replega a ⋯ quan el "
-"panell és estret."
 
-msgid "Always fold the right group into ⋯"
+#, fuzzy
+msgid "Organize mail"
+msgstr "Correu"
+
+#, fuzzy
+msgid "Services"
+msgstr "Servei"
+
+#, fuzzy
+msgid "Allowed and blocked"
+msgstr "Remitents permesos"
+
+msgid "Reading"
+msgstr "Lectura"
+
+msgid "Composing"
+msgstr "Redacció"
+
+#, fuzzy
+msgid "Replies are sent from the address that received the message."
+msgstr "Les respostes responen des de l'adreça a la qual es van enviar."
+
+#, fuzzy
+msgid "Format of new messages"
+msgstr "A la part superior de la llista"
+
+msgid "How long a message can still be recalled."
 msgstr ""
+
+msgid "Notifications"
+msgstr "Notificacions"
+
+#, fuzzy
+msgid "New messages"
+msgstr "Missatge nou"
+
+msgid "Sound and banners"
+msgstr ""
+
+msgid "Open the system notification settings"
+msgstr ""
+
+msgid "Sound, banners and Do Not Disturb are set there."
+msgstr ""
+
+#, fuzzy
+msgid "Application"
+msgstr "Acció"
+
+#, fuzzy
+msgid "Background"
+msgstr "Executa en segon pla"
+
+#, fuzzy
+msgid "Keyboard and storage"
+msgstr "Dreceres de teclat"
 
 msgid "Send new messages from"
 msgstr "Envia missatges nous des de"
@@ -6863,240 +6419,6 @@ msgstr "Paraules afegides"
 
 msgid "Changes apply after a restart."
 msgstr "Els canvis s'apliquen després d'un reinici."
-
-msgid "Conversations mark each message as it comes into view."
-msgstr "Les converses marquen cada missatge a mesura que apareix a la vista."
-
-msgid "Message appearance"
-msgstr "Aparença dels missatges"
-
-#, fuzzy
-msgid "Show account in message header"
-msgstr ""
-"Mostra l'interruptor de la vista de lector a l'encapçalament del missatge"
-
-msgid ""
-"Where the list mixes accounts, the account a message is in, above its "
-"subject."
-msgstr ""
-
-msgid "Ctrl+0 returns to the default."
-msgstr "Ctrl+0 torna al valor per defecte."
-
-msgid "Use my own font"
-msgstr "Utilitza la meva pròpia font"
-
-msgid "The font below replaces the sender's."
-msgstr "La font de sota substitueix la del remitent."
-
-msgid "Message font"
-msgstr "Font dels missatges"
-
-msgid "The interface font unless another is chosen."
-msgstr "La font de la interfície tret que se n'esculli una altra."
-
-msgid "Use my own colors"
-msgstr "Utilitza els meus propis colors"
-
-msgid "Ignores the sender's colors. Pictures stay; links use the accent color."
-msgstr ""
-"Ignora els colors del remitent. Les imatges es conserven; els enllaços usen "
-"el color d'accent."
-
-msgid "Plain-text messages in monospace"
-msgstr "Missatges de text pla en monoespaiat"
-
-msgid "Formatted messages are not affected."
-msgstr "Els missatges formatats no es veuen afectats."
-
-msgid "Monospace font"
-msgstr "Font monoespaiada"
-
-msgid "The system's monospace font unless another is chosen."
-msgstr "La font monoespaiada del sistema tret que se n'esculli una altra."
-
-msgid "Message card actions palette"
-msgstr "Paleta d'accions de la targeta de missatge"
-
-msgid "Message card actions palette timeout"
-msgstr "Temps d'espera de la paleta d'accions de la targeta de missatge"
-
-msgid "Message card actions palette as a menu"
-msgstr "Paleta d'accions de la targeta de missatge com a menú"
-
-msgid "The ⋯ opens the right-click menu instead."
-msgstr "El ⋯ obre el menú contextual en lloc d'això."
-
-msgid "Single messages as cards"
-msgstr "Missatges individuals com a targetes"
-
-msgid "Off fills the pane edge to edge."
-msgstr "Desactivat omple el panell d'extrem a extrem."
-
-msgid "Always show recipients"
-msgstr "Mostra sempre els destinataris"
-
-msgid "Name the OpenPGP result"
-msgstr "Anomena el resultat OpenPGP"
-
-msgid "Off shows the icons alone."
-msgstr "Desactivat mostra només les icones."
-
-#, fuzzy
-msgid "Find bar position"
-msgstr "Posició de la barra de selecció"
-
-msgid "Printing"
-msgstr "Impressió"
-
-msgid "Page numbers"
-msgstr "Números de pàgina"
-
-msgid "Date printed"
-msgstr "Data d'impressió"
-
-msgid "Wider left margin"
-msgstr "Marge esquerre més ample"
-
-msgid "25 mm, so punched holes miss the text."
-msgstr "25 mm, perquè els forats perforats no toquin el text."
-
-msgid "Applies after a restart."
-msgstr "S'aplica després d'un reinici."
-
-msgid "Renderer"
-msgstr "Renderitzador"
-
-msgid "Try OpenGL or Software on older graphics. Applies after a restart."
-msgstr ""
-"Prova OpenGL o Programari en gràfics antics. S'aplica després d'un reinici."
-
-msgid "Keep running in the background"
-msgstr "Continua executant-se en segon pla"
-
-msgid "Closing the window hides it. Quit from Background Apps."
-msgstr "Tancar la finestra l'amaga. Surt des d'Aplicacions en segon pla."
-
-msgid "Start at login"
-msgstr "Inicia en iniciar sessió"
-
-msgid "Starts hidden."
-msgstr "S'inicia amagat."
-
-msgid "Start fullscreen"
-msgstr ""
-
-msgid "F11 switches fullscreen on and off."
-msgstr ""
-
-msgid "Show a tray icon"
-msgstr "Mostra una icona a la safata"
-
-msgid "To use on GNOME, install an AppIndicator extension."
-msgstr "Per utilitzar-ho al GNOME, instal·la una extensió AppIndicator."
-
-msgid "Tray icon"
-msgstr "Icona de la safata"
-
-msgid "Unread mail in the tray menu"
-msgstr "Correu no llegit al menú de la safata"
-
-msgid "Unread count on the app icon"
-msgstr "Recompte de no llegits a la icona de l'aplicació"
-
-msgid "To use on GNOME, install a dock extension such as Dash to Dock."
-msgstr ""
-"Per utilitzar-ho al GNOME, instal·la una extensió de dock com ara Dash to "
-"Dock."
-
-msgid "Single-key shortcuts"
-msgstr "Dreceres d'una sola tecla"
-
-msgid "Press Ctrl+? to list all shortcuts."
-msgstr "Prem Ctrl+? per llistar totes les dreceres."
-
-msgid "Gmail keys"
-msgstr "Tecles del Gmail"
-
-msgid "Swaps the single-key shortcuts for Gmail equivalents."
-msgstr "Canvia les dreceres d'una sola tecla per les equivalents del Gmail."
-
-msgid "Status bar"
-msgstr "Barra d'estat"
-
-msgid "Console mode"
-msgstr "Mode de consola"
-
-msgid "Shows a console in the status bar."
-msgstr "Mostra una consola a la barra d'estat."
-
-msgid "For bug reports. Addresses are cut to their domain for privacy."
-msgstr ""
-"Per a informes d'error. Les adreces es retallen al seu domini per privacitat."
-
-msgid "Downloaded mail"
-msgstr "Correu baixat"
-
-msgid "Remove…"
-msgstr "Elimina…"
-
-msgid "Keep downloaded mail"
-msgstr "Conserva el correu baixat"
-
-msgid "Mail inside an account's offline period is kept."
-msgstr ""
-
-msgid "GNOME Files integration"
-msgstr "Integració amb els Fitxers del GNOME"
-
-msgid ""
-"Adds “Send with Tegami Mail” to the right-click menu in Files. Needs the "
-"nautilus-python package and a restart of Files."
-msgstr ""
-"Afegeix «Envia amb l'Tegami Mail» al menú contextual dels Fitxers. Necessita "
-"el paquet nautilus-python i reiniciar els Fitxers."
-
-msgid "Right-click menu entry"
-msgstr "Entrada al menú contextual"
-
-msgid "Install nautilus-python first"
-msgstr "Instal·la primer el nautilus-python"
-
-msgid "Restart Files"
-msgstr "Reinicia els Fitxers"
-
-msgid "Closes every Files window, like “nautilus -q”."
-msgstr "Tanca totes les finestres dels Fitxers, com «nautilus -q»."
-
-msgid "Restart"
-msgstr "Reinicia"
-
-msgid "Default Send with Tegami Mail behavior"
-msgstr "Comportament per defecte d'«Envia amb l'Tegami Mail»"
-
-msgid "Default large attachments behavior"
-msgstr "Comportament per defecte dels adjunts grans"
-
-msgid "Without a cloud storage account, files are attached."
-msgstr "Sense un compte d'emmagatzematge al núvol, els fitxers s'adjunten."
-
-msgid "Size limit"
-msgstr "Límit de mida"
-
-msgid "In MB, for all the files together."
-msgstr "En MB, per a tots els fitxers junts."
-
-msgid "Links"
-msgstr "Enllaços"
-
-msgid "Open links in"
-msgstr "Obre els enllaços a"
-
-msgid "Update"
-msgstr "Actualitza"
-
-msgid "Install"
-msgstr "Instal·la"
 
 msgid "Send as attachment instead"
 msgstr "Envia com a adjunt en lloc d'això"

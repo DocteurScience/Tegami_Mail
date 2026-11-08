@@ -3,7 +3,7 @@
 use adw::prelude::*;
 use relm4::prelude::*;
 
-use crate::config::{self, AccountConfig};
+use crate::config::AccountConfig;
 use crate::i18n::i18n;
 use crate::ui::accounts::{AccountsOutput, AccountsWindow};
 use crate::ui::preferences::{PrefInit, PrefInput, PrefOutput, Preferences};
@@ -16,7 +16,6 @@ use crate::ui::dialog::confirm_destructive;
 /// What the Settings window reports, as the message it means here.
 fn prefs_output_msg(out: PrefOutput) -> AppMsg {
     match out {
-        PrefOutput::SetReaderZoom(z) => AppMsg::SetZoomDefault(z),
         PrefOutput::PageShown(id) => AppMsg::SettingsPageShown(id),
         PrefOutput::Closed => AppMsg::ClosePreferences,
         // Every other output is a setting, which AppMsg::Pref applies.
@@ -41,7 +40,6 @@ impl AppModel {
         let accounts = Self::launch_accounts_panel(init, sender);
         let init = self.pref_init(&accounts, on_accounts);
         let prefs = Preferences::builder()
-            .transient_for(&self.window)
             .launch(init)
             .forward(sender.input_sender(), prefs_output_msg);
         accounts.emit(crate::ui::accounts::AccountsInput::SetFolderChoices(
@@ -67,38 +65,11 @@ impl AppModel {
             request_receipts: self.request_receipts,
             returned_receipts: self.returned_receipts,
             gravatar: self.gravatar,
-            avatars: self.avatars,
-            own_mailbox_face: self.own_mailbox_face,
-            tag_row_tint: self.tag_row_tint,
             sender_logos: self.sender_logos,
-            date_style: self.date_style,
-            clock_style: self.clock_style,
-            language: config::load_language(),
             fetch_interval_secs: self.fetch_interval_secs,
             push: self.push,
-            metered_save_data: self.metered_save_data,
-            palette_collapse_secs: self.palette_collapse_secs,
-            card_palette_collapse_secs: self.card_palette_collapse_secs,
-            threading: self.threading,
             thread_newest_first: self.thread_newest_first,
-            fold_messages: self.fold_messages,
-            always_show_recipients: self.always_show_recipients,
-            pgp_labels: self.pgp_labels,
-            reader_find_bottom: self.reader_find_bottom,
-            single_message_card: self.single_message_card,
-            account_chip: self.account_chip,
-            desktop_icons: self.desktop_icons,
-            reader_zoom: self.zoom_default,
-            card_attachments: self.card_attachments,
-            attachment_drawer: self.drawer_enabled,
-            thread_row_newest: self.thread_row_newest,
             confirm_thread_delete: self.confirm_thread_delete,
-            message_theme: self.message_theme,
-            override_fonts: self.override_fonts,
-            reader_font: self.reader_font.clone(),
-            override_colors: self.override_colors,
-            plain_monospace: self.plain_monospace,
-            plain_font: self.plain_font.clone(),
             compose_format: self.compose_format,
             follow_plain: self.follow_plain,
             signature_position: self.signature_position,
@@ -109,35 +80,9 @@ impl AppModel {
             notifications: self.notifications_enabled,
             notification_content: self.notification_content,
             notify_receipts: self.notify_receipts,
-            notification_buttons: self.notification_buttons,
-            section_style: self.section_style,
-            tags_placement: self.tags_placement,
-            favorites_placement: self.favorites_placement,
-            chevrons_left: self.chevrons_left,
-            account_click_folds: self.account_click_folds,
-            start_view: self.start_view,
-            folder_sort: self.folder_sort,
-            console_mode: self.console_mode,
-            status_bar_top: self.status_bar_top,
             read_mark: self.read_mark,
-            settings_open_accounts: self.settings_open_accounts,
-            sidebar_hover_expand: self.sidebar_hover_expand,
-            remember_sidebar: self.remember_sidebar,
-            remember_rail: self.remember_rail,
-            rail_dots: self.rail_dots,
-            seen_counts: self.seen_counts,
-            rail_fold: self.rail_fold,
-            reader_toolbar: self.reader_toolbar.clone(),
-            card_actions_hover: self.card_actions_hover,
-            card_actions_auto: self.card_actions_auto,
-            list_palette: self.list_palette,
-            list_palette_hover: self.list_palette_hover,
-            card_palette_menu: self.card_palette_menu,
             swipe_enabled: self.swipe_enabled,
-            swipe_reversed: self.swipe_reversed,
-            swipe_sensitivity: self.swipe_sensitivity,
             files: self.files_prefs,
-            link_browser: self.link_browser.clone(),
             compose_default_from: self.compose_default_from.clone(),
             paste_plain: self.paste_plain,
             return_paragraph: self.return_paragraph,
@@ -145,34 +90,15 @@ impl AppModel {
             compose_font: self.compose_font.clone(),
             compose_font_size: self.compose_font_size,
             compose_zoom: self.compose_zoom,
-            print_options: self.print_options,
             spellcheck: self.spellcheck,
             spellcheck_langs: self.spellcheck_langs.clone(),
             app_theme: self.app_theme,
-            text_scale: self.text_scale,
-            theme: self.theme.clone(),
-            preview_lines: self.preview_lines,
-            list_layout: self.list_layout,
-            list_columns: self.list_columns.clone(),
-            list_headings: self.list_headings,
-            list_column_scroll: self.list_column_scroll,
-            list_group_by_date: self.list_group_by_date,
-            list_pills_below: self.list_pills_below,
-            list_search_open: self.list_search_open,
             contact_names: self.contact_names,
-            list_search_bottom: self.list_search_bottom,
-            list_bulk_bar_bottom: self.list_bulk_bar_bottom,
-            toolbar_fold_right: self.toolbar_fold_right,
             single_key_shortcuts: self.single_key.get(),
             gmail_keys: self.gmail_keys.get(),
             keep_downloads_days: self.keep_downloads_days,
             run_in_background: self.run_in_background.get(),
             autostart: self.autostart,
-            start_fullscreen: self.start_fullscreen,
-            tray: self.tray_enabled,
-            tray_icon: self.tray_icon,
-            tray_mail: self.tray_mail,
-            launcher_badge: self.launcher_badge,
             accounts_panel: accounts.widget().clone().upcast::<gtk::Widget>(),
             accounts_sender: accounts.sender().clone(),
             // Sidebar order, so the list reads like the accounts do (#261).
@@ -357,12 +283,6 @@ impl AppModel {
                 AccountsOutput::FindTags => AppMsg::FindTags,
                 AccountsOutput::WantQuota(email) => AppMsg::WantQuota(email),
                 AccountsOutput::WantIdentities(email) => AppMsg::WantIdentities(email),
-                AccountsOutput::LeftEditor(page) => {
-                    AppMsg::SettingsLeaveEditor { page, ask: false }
-                }
-                AccountsOutput::LeaveNeedsPrompt(page) => {
-                    AppMsg::SettingsLeaveEditor { page, ask: true }
-                }
             },
         );
 
@@ -401,10 +321,11 @@ impl AppModel {
         add_new: bool,
     ) {
         let t_open = std::time::Instant::now();
+        // A closed dialog has no parent until it is presented again.
         let hidden = self
             .prefs
             .as_ref()
-            .is_some_and(|p| !p.widget().is_visible());
+            .is_some_and(|p| p.widget().parent().is_none());
         if self.prefs.is_none() {
             self.build_settings_window(sender, on_accounts);
         } else if hidden {
@@ -453,7 +374,9 @@ impl AppModel {
             }
         }
         if let Some(p) = &self.prefs {
-            p.widget().present();
+            if p.widget().parent().is_none() {
+                p.widget().present(Some(&self.window));
+            }
         }
         if add_new {
             if let Some(a) = &self.accounts_win {
@@ -543,30 +466,14 @@ impl AppModel {
             AppMsg::PrewarmSettings => {
                 if self.prefs.is_none() {
                     self.build_settings_window(&sender, self.settings_open_accounts);
-                    if let Some(p) = &self.prefs {
-                        let w = p.widget();
-                        WidgetExt::realize(w);
-                        // Measuring runs the first CSS pass and Pango layouts
-                        // now, so the first frame after present has less to do.
-                        let _ = w.measure(gtk::Orientation::Horizontal, -1);
-                        let _ = w.measure(gtk::Orientation::Vertical, 920);
-                    }
+                    // A dialog cannot be realized before it is presented:
+                    // building it is what is done ahead.
                 }
             }
 
             AppMsg::SettingsEditorOpen(open) => {
                 if let Some(p) = &self.prefs {
                     p.emit(PrefInput::EditorOpen(open));
-                }
-            }
-
-            AppMsg::SettingsLeaveEditor { page, ask } => {
-                if let Some(p) = &self.prefs {
-                    p.emit(if ask {
-                        PrefInput::LeaveEditorPrompt(page)
-                    } else {
-                        PrefInput::LeaveEditorTo(page)
-                    });
                 }
             }
 

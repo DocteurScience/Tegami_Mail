@@ -277,24 +277,6 @@ impl ListColumn {
         ListColumn::ALL.iter().copied().find(|c| c.key() == key)
     }
 
-    /// The icon on the column's chip in Settings.
-    pub(crate) fn icon(self) -> &'static str {
-        match self {
-            ListColumn::Star => "starred-symbolic",
-            ListColumn::Replied => "mail-reply-sender-symbolic",
-            ListColumn::Sender => "avatar-default-symbolic",
-            ListColumn::Recipients => "mail-send-symbolic",
-            ListColumn::Correspondents => "chat-bubbles-text-symbolic",
-            ListColumn::Subject => "text-x-generic-symbolic",
-            ListColumn::Tags => "tag-outline-symbolic",
-            ListColumn::Attachment => "mail-attachment-symbolic",
-            ListColumn::Importance => "emblem-important-symbolic",
-            ListColumn::Account => "mail-inbox-symbolic",
-            ListColumn::Due => "alarm-symbolic",
-            ListColumn::Date => "x-office-calendar-symbolic",
-        }
-    }
-
     /// The untranslated label (callers pass it through `i18n`).
     pub(crate) fn label(self) -> &'static str {
         match self {

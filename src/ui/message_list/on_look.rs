@@ -241,20 +241,6 @@ impl MessageList {
         }
     }
 
-    pub(super) fn on_set_group_by_date(&mut self, on: bool) {
-        if self.group_by_date != on {
-            self.group_by_date = on;
-            self.queue_rebuild(true);
-        }
-    }
-
-    pub(super) fn on_set_pills_below(&mut self, on: bool) {
-        if self.pills_below != on {
-            self.pills_below = on;
-            self.sync_look();
-        }
-    }
-
     pub(super) fn on_sort_by_column(
         &mut self,
         column: crate::config::ListColumn,

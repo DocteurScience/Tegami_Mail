@@ -84,7 +84,6 @@ pub(crate) struct Palette {
 /// A theme: a name and its two palettes.
 pub(crate) struct Theme {
     pub(crate) id: &'static str,
-    pub(crate) label: &'static str,
     pub(crate) light: Palette,
     pub(crate) dark: Palette,
 }
@@ -98,12 +97,6 @@ impl Theme {
             &self.light
         }
     }
-}
-
-/// Every bundled theme, in picker order. The stock look is not in here: it
-/// is the absence of a theme, and the picker lists it first itself.
-pub(crate) fn catalog() -> &'static [Theme] {
-    THEMES
 }
 
 /// The theme with this id, or `None` for the stock look (and for an id from

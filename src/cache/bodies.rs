@@ -5,30 +5,16 @@ use rusqlite::params;
 
 use crate::models::Attachment;
 
+#[cfg(test)]
 use super::schema::DOWNLOADED_TABLES;
 use super::Cache;
 
 impl Cache {
-    /// What downloaded mail takes up (#394), in bytes: the message bodies
-    /// and the attachment files. The index of every message, which the list
-    /// and search read, is not counted: it stays whatever is removed.
-    pub(crate) fn downloaded_size(&self) -> (u64, u64) {
-        let sum = |sql: &str| -> u64 {
-            self.conn
-                .query_row(sql, [], |r| r.get::<_, i64>(0))
-                .unwrap_or(0)
-                .max(0) as u64
-        };
-        (
-            sum("SELECT COALESCE(SUM(length(body)), 0) FROM bodies"),
-            sum("SELECT COALESCE(SUM(length(data)), 0) FROM attachments"),
-        )
-    }
-
     /// Remove downloaded mail (#394): the bodies and attachment files of
     /// messages older than `before` (a Unix time), or of every message with
     /// `None`. Opening one fetches it again. The message index stays, so the
     /// list and search are as they were. Returns how many bodies went.
+    #[cfg(test)]
     pub(crate) fn remove_downloaded(&self, before: Option<i64>) -> rusqlite::Result<usize> {
         let tx = self.conn.unchecked_transaction()?;
         let mut removed = 0;
@@ -50,24 +36,6 @@ impl Cache {
         }
         tx.commit()?;
         Ok(removed)
-    }
-
-    /// How big the cache is on disk, with its write-ahead log, in bytes.
-    pub(crate) fn file_size() -> u64 {
-        let Some(dir) = crate::config::data_base().map(|d| d.join("tegami")) else {
-            return 0;
-        };
-        ["cache.db", "cache.db-wal"]
-            .iter()
-            .filter_map(|f| std::fs::metadata(dir.join(f)).ok())
-            .map(|m| m.len())
-            .sum()
-    }
-
-    /// Give the space freed by `remove_downloaded` back to the disk. Fails
-    /// harmlessly while a worker is writing; the space is then reused.
-    pub(crate) fn compact(&self) -> rusqlite::Result<()> {
-        self.conn.execute_batch("VACUUM")
     }
 
     pub(crate) fn load_body(&self, account_id: u32, folder_path: &str, uid: u32) -> Option<String> {

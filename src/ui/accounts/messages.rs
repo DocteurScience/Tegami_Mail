@@ -26,14 +26,6 @@ pub(crate) enum AccountsInput {
     /// Showcase only (TEGAMI_SHOWCASE_ACCOUNT=new:<label>): pick the provider
     /// with that label in the open editor.
     DebugProvider(String),
-    /// The settings sidebar wants to show another category while an editor
-    /// is open. The answer (below) says whether anything would be lost.
-    LeaveRequest(String),
-    /// What the open editor answered: leave quietly, or ask the user first.
-    LeaveVerdict {
-        page: String,
-        touched: bool,
-    },
     /// The settings sidebar chose one of this component's pages (#141):
     /// "accounts", "tags", "filters" or "senders".
     ShowPage(String),
@@ -163,9 +155,6 @@ pub(crate) enum AccountsInput {
     /// The app says whether that run is still going (#198).
     FiltersApplying(bool),
     RemoveFilter(usize),
-    /// Save whichever editor page is up (account, filter or tag): the
-    /// settings window's leave-editor prompt.
-    SaveOpenPage,
     /// Open the filter page on an existing rule.
     EditFilter(usize),
     /// The dialog saved changes to the rule at this index.
@@ -267,12 +256,6 @@ pub(crate) enum AccountsOutput {
     WantQuota(String),
     /// An account's page opened: the identities its server keeps (#346).
     WantIdentities(String),
-    /// The editor was left with nothing changed in it: it is already closed,
-    /// and the settings window can show `page` without asking anything.
-    LeftEditor(String),
-    /// The editor holds unsaved changes: the settings window should ask
-    /// before showing `page`.
-    LeaveNeedsPrompt(String),
 }
 
 /// How a sign-in ended: the refresh token and, when the provider says

@@ -102,7 +102,6 @@ fn message_list_output_msg(out: MessageListOutput) -> AppMsg {
         MessageListOutput::FindOnServers { terms, scope } => AppMsg::FindOnServers { terms, scope },
         MessageListOutput::SortChanged(key) => AppMsg::ListSortChanged(key),
         MessageListOutput::ColumnWidths(widths) => AppMsg::ListColumnWidths(widths),
-        MessageListOutput::CustomizeColumns => AppMsg::CustomizeColumns,
     }
 }
 

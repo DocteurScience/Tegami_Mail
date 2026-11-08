@@ -24,10 +24,6 @@ pub(crate) fn load_renderer() -> String {
     read_line_file(renderer_path())
 }
 
-pub(crate) fn save_renderer(renderer: &str) {
-    write_line_file(renderer_path(), renderer);
-}
-
 fn renderer_path() -> Option<PathBuf> {
     config_file("renderer")
 }

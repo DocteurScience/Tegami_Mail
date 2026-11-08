@@ -1,4 +1,4 @@
-//! Settings → Contacts (#408), hosted in the window's stack.
+//! Settings → Address books (#408), on a sub-page of Accounts.
 
 use super::*;
 
@@ -28,9 +28,7 @@ impl Preferences {
                 self.contacts_open = open;
                 self.editor_open = form;
                 self.editor_page = "contacts";
-                if let Some(header) = &self.host_header {
-                    header.set_visible(!open);
-                }
+                self.show_sub_header("contacts", !open);
             }
             Out::Changed => {
                 let _ = sender.output(PrefOutput::ContactSourcesChanged);

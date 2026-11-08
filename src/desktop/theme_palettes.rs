@@ -9,7 +9,6 @@ use crate::desktop::theme::{Palette, Theme};
 
 const ROSE: Theme = Theme {
     id: "rose",
-    label: "Rose",
     light: Palette {
         canvas: "#fdf7fd",
         chrome: "#fdf7fd",
@@ -102,7 +101,6 @@ const ROSE: Theme = Theme {
 
 const FOREST: Theme = Theme {
     id: "forest",
-    label: "Forest",
     light: Palette {
         canvas: "#f3f7f4",
         chrome: "#f3f7f4",
@@ -195,7 +193,6 @@ const FOREST: Theme = Theme {
 
 const TIDAL: Theme = Theme {
     id: "tidal",
-    label: "Tidal",
     light: Palette {
         canvas: "#f5f7f8",
         chrome: "#f5f7f8",
@@ -288,7 +285,6 @@ const TIDAL: Theme = Theme {
 
 const EARTH: Theme = Theme {
     id: "earth",
-    label: "Earth",
     light: Palette {
         canvas: "#f9f7f5",
         chrome: "#f9f7f5",
@@ -381,7 +377,6 @@ const EARTH: Theme = Theme {
 
 const MIDNIGHT: Theme = Theme {
     id: "midnight",
-    label: "Midnight",
     light: Palette {
         canvas: "#f8f7f9",
         chrome: "#f8f7f9",

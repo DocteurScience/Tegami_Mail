@@ -1800,18 +1800,6 @@ window.welcome-window,
   color: #ffffff;
 }
 
-.welcome-section {
-  font-weight: 700;
-  font-size: 0.9em;
-  color: alpha(#ffffff, 0.8);
-}
-.welcome-section:dir(ltr) {
-  margin-left: 6px;
-}
-.welcome-section:dir(rtl) {
-  margin-right: 6px;
-}
-
 /* Content cards: the theme's card surface, lifted off the blue. */
 .welcome-card {
   border-radius: 14px;
@@ -1889,61 +1877,6 @@ window.welcome-window,
   color: #ffffff;
 }
 
-/* ---- App icon gallery (icon_picker.rs): Settings + wizard ---- */
-
-.icon-gallery {
-  background: transparent;
-}
-.icon-gallery flowboxchild {
-  border-radius: 14px;
-  padding: 8px 6px 6px;
-  transition: background-color 0.15s ease, box-shadow 0.15s ease;
-}
-.icon-gallery flowboxchild:hover {
-  background-color: alpha(currentColor, 0.06);
-}
-.icon-gallery flowboxchild:selected {
-  background-color: alpha(@accent_bg_color, 0.14);
-  box-shadow: inset 0 0 0 2px @accent_bg_color;
-}
-.icon-gallery flowboxchild:focus-visible {
-  outline: none;
-}
-.icon-gallery-label {
-  font-size: 0.78em;
-  opacity: 0.7;
-}
-.icon-gallery flowboxchild:selected .icon-gallery-label {
-  opacity: 1;
-  font-weight: 700;
-}
-/* The strip's edges melt into the card where more icons lie beyond. Two
-   layers, because the dark card color is a translucent white over the
-   window ground: a gradient of it alone reads as a pale haze there. The
-   card gradient over a window-ground gradient composites to the row's own
-   color at the edge, in both schemes. */
-.icon-strip-fade.left {
-  background:
-    linear-gradient(to right, @card_bg_color, alpha(@card_bg_color, 0)),
-    linear-gradient(to right, @window_bg_color, alpha(@window_bg_color, 0));
-}
-.icon-strip-fade.right {
-  background:
-    linear-gradient(to left, @card_bg_color, alpha(@card_bg_color, 0)),
-    linear-gradient(to left, @window_bg_color, alpha(@window_bg_color, 0));
-}
-/* In the wizard the selection ring wears the wordmark blue. */
-.welcome-window .icon-gallery flowboxchild:hover {
-  background-color: alpha(@window_fg_color, 0.06);
-}
-.welcome-window .icon-gallery flowboxchild:selected {
-  background-color: alpha(@window_fg_color, 0.08);
-  box-shadow: inset 0 0 0 2px #006dff;
-}
-.welcome-window .icon-gallery-label {
-  color: alpha(@window_fg_color, 0.75);
-}
-
 /* ---- Console mode (notifications.rs): dracula on an old tube ---- */
 
 /* The bar fades between its normal colors and the terminal's. */
@@ -2012,44 +1945,6 @@ textview.console-view text selection {
    duration) fades to half strength while the envelope travels. */
 .message-item.dragging .message-row {
   opacity: 0.5;
-}
-
-/* Settings window sidebar (#141): section headings between the category
-   rows, set off like the sidebar's own section labels. */
-.settings-side-heading {
-  padding: 14px 12px 4px 12px;
-}
-.settings-side-heading:first-child {
-  padding-top: 6px;
-}
-.settings-side > row {
-  min-height: 36px;
-}
-/* A row or group a settings search jumped to (#260), marked for a moment. */
-.settings-search-hit {
-  background-color: alpha(@accent_bg_color, 0.18);
-  border-radius: 12px;
-  transition: background-color 400ms ease-out;
-}
-
-/* Settings → Appearance → Toolbar: the drag-and-drop editor. */
-.toolbar-zone {
-  border: 1px dashed alpha(currentColor, 0.25);
-  border-radius: 10px;
-  padding: 6px;
-}
-.toolbar-zone.drop-active {
-  border-color: @accent_color;
-  background: alpha(@accent_bg_color, 0.08);
-}
-.toolbar-chip {
-  padding: 6px 10px;
-  border-radius: 8px;
-  background: alpha(currentColor, 0.06);
-  min-width: 48px;
-}
-.toolbar-chip:hover {
-  background: alpha(currentColor, 0.12);
 }
 
 /* Message zoom chip on the reader header's account line: shown only away

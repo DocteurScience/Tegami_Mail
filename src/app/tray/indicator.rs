@@ -141,11 +141,6 @@ impl TrayHandle {
     pub(super) fn set_mail(&self, mail: Option<TrayMailList>) {
         self.handle.update(move |t| t.mail = mail);
     }
-
-    /// Take the item down.
-    pub(crate) fn stop(self) {
-        let _ = self.handle.shutdown();
-    }
 }
 
 struct TegamiTray {

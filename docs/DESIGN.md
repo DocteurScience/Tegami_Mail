@@ -281,9 +281,11 @@ All of these are features the app has today; the owner agreed to each.
   fullscreen, tray icon, GNOME Files integration, "Send with" default, size
   limit, link opener. Status bar, console mode and "Export log" move to a
   "Troubleshooting" entry of the main menu.
-- High importance, in the Filters menu of the list.
 - Existing values: a removed setting keeps its stored value and is simply no
   longer shown, unless the code below it is also removed.
+
+High importance stays in the Filters menu of the list (owner, 2026-11-08,
+reversing this list's earlier line).
 
 Open point: the Tegami Mail address book may hold contacts for some users.
 Before deleting it, offer once to export them as a vCard file.

@@ -1202,21 +1202,12 @@ msgstr "Tegami Mail neu starten"
 msgid "Import failed: {e}"
 msgstr "Import fehlgeschlagen: {e}"
 
-msgid "The renderer applies the next time Tegami Mail starts."
-msgstr "Der Renderer wird beim nächsten Start von Tegami Mail übernommen."
-
-msgid "The language applies the next time Tegami Mail starts."
-msgstr "Die Sprache wird beim nächsten Start von Tegami Mail übernommen."
-
 #, fuzzy
 msgid "Forward as attachment"
 msgstr "Hat Anhänge"
 
 msgid "Delete {n} messages"
 msgstr "{n} Nachrichten löschen"
-
-msgid "Customize toolbar…"
-msgstr "Symbolleiste anpassen…"
 
 msgid "Read receipt"
 msgstr "Lesebestätigung"
@@ -1558,18 +1549,6 @@ msgstr "Name (Z–A)"
 
 msgid "Full path"
 msgstr "Vollständiger Pfad"
-
-msgid "Spam"
-msgstr "Spam"
-
-msgid "Read/Unread"
-msgstr "Gelesen/Ungelesen"
-
-msgid "Move to"
-msgstr "Verschieben nach"
-
-msgid "Find"
-msgstr "Suchen"
 
 msgid "{date} at {time}"
 msgstr "{date} um {time}"
@@ -2133,6 +2112,9 @@ msgstr "Konto aktivieren"
 
 msgid "Forward to"
 msgstr "Weiterleiten an"
+
+msgid "Move to"
+msgstr "Verschieben nach"
 
 msgid "forwards to {to}"
 msgstr "Weiterleitung an {to}"
@@ -3881,9 +3863,6 @@ msgstr "Seit {date}"
 msgid "Until {date}"
 msgstr "Bis zum {date}"
 
-msgid "Customize columns…"
-msgstr "Spalten anpassen…"
-
 msgid "Remove stars"
 msgstr "Sterne entfernen"
 
@@ -4645,55 +4624,8 @@ msgstr[1] "{n} Schlüssel importiert."
 msgid "That key was already in your keyring."
 msgstr "Dieser Schlüssel war bereits in deinem Schlüsselring."
 
-msgid "Choose a sound"
-msgstr "Ton auswählen"
-
-msgid "Sounds"
-msgstr "Töne"
-
-msgid "Drag to move"
-msgstr "Zum Verschieben ziehen"
-
-msgid "Left group"
-msgstr "Linke Gruppe"
-
-msgid "Always shown · up to {n}"
-msgstr "Immer angezeigt · bis zu {n}"
-
-msgid "Right group"
-msgstr "Rechte Gruppe"
-
-msgid "Folds into ⋯ when narrow"
-msgstr "Einklappen zu ⋯ bei schmalem Fenster"
-
-msgid "Not shown"
-msgstr "Nicht angezeigt"
-
-msgid "Drop a button here to hide it"
-msgstr "Eine Schaltfläche hier ablegen, um sie auszublenden."
-
-msgid "Shown"
-msgstr "Sichtbar"
-
-msgid "Left to right"
-msgstr "Von links nach rechts"
-
-msgid "Drop a column here to hide it"
-msgstr "Eine Spalte hier ablegen, um sie auszublenden."
-
-msgid "App icon"
-msgstr "App-Symbol"
-
-msgid "Symbolic"
-msgstr "Symbolisch"
-
-msgid "All unread inbox mail"
-msgstr "Alle ungelesenen E-Mails im Posteingang"
-
-msgid "New since the window was last in front"
-msgstr "Neu seit dem letzten Öffnen"
-
-msgid "Follow system"
+#, fuzzy
+msgid "Follow the system"
 msgstr "Systemeinstellung verwenden"
 
 msgid "Light"
@@ -4702,23 +4634,8 @@ msgstr "Hell"
 msgid "Dark"
 msgstr "Dunkel"
 
-msgid "Aug 23, 2026"
-msgstr "23. August 2026"
-
-msgid "23 Aug 2026"
-msgstr "23 August 2026"
-
-msgid "2026 Aug 23"
-msgstr "2026 Aug 23"
-
 msgid "System"
 msgstr "System"
-
-msgid "12-hour (5:40 PM)"
-msgstr "12-Stunden (5:40 Uhr)"
-
-msgid "24-hour (17:40)"
-msgstr "24 Stunden (17:40 Uhr)"
 
 msgid "Manually"
 msgstr "Manuell"
@@ -4734,25 +4651,6 @@ msgstr "Alle 15 Minuten"
 
 msgid "Every 30 minutes"
 msgstr "Alle 30 Minuten"
-
-#. GNOME Settings' own names for its alert sounds.
-msgid "Click"
-msgstr "Klick"
-
-#. GNOME Settings' own names for its alert sounds.
-msgid "Hum"
-msgstr "Summen"
-
-#. GNOME Settings' own names for its alert sounds.
-msgid "String"
-msgstr "Saite"
-
-#. GNOME Settings' own names for its alert sounds.
-msgid "Swing"
-msgstr "Schwung"
-
-msgid "Custom file"
-msgstr "Eigene Datei"
 
 #, fuzzy
 msgid "Downloading: {done} of {total}"
@@ -4836,48 +4734,6 @@ msgstr ""
 msgid "It works: {server} answered."
 msgstr ""
 
-msgid "Messages already read"
-msgstr "Gelesene Nachrichten"
-
-msgid "All but the newest"
-msgstr "Alle außer der neuesten"
-
-msgid "Top of the message"
-msgstr "Anfang der Nachricht"
-
-msgid "Bottom of the message"
-msgstr "Ende der Nachricht"
-
-msgid "Hidden behind a toggle"
-msgstr "Hinter einem Schalter verborgen"
-
-msgid "Shown while hovering"
-msgstr "Beim Darüberfahren sichtbar"
-
-msgid "Always visible"
-msgstr "Immer sichtbar"
-
-msgid "Ask each time"
-msgstr "Jedes Mal fragen"
-
-msgid "A new message"
-msgstr "Eine neue Nachricht"
-
-msgid "A draft you pick"
-msgstr "Ein ausgewählter Entwurf"
-
-msgid "A reply to a message you pick"
-msgstr "Eine Antwort auf eine ausgewählte Nachricht"
-
-msgid "Attach them anyway"
-msgstr "Trotzdem anhängen"
-
-msgid "Upload to cloud storage and link them"
-msgstr "In Cloud-Speicher hochladen und verlinken"
-
-msgid "System default"
-msgstr "Systemstandard"
-
 msgid "Account of the current folder"
 msgstr "Konto des aktuellen Ordners"
 
@@ -4911,142 +4767,8 @@ msgstr ""
 msgid "Add a word"
 msgstr "Wort hinzufügen"
 
-msgid "Software"
-msgstr "Software"
-
-msgid "Unified style"
-msgstr "Vereinte Ansicht"
-
-msgid "Tree style"
-msgstr "Baumstruktur-Stil"
-
-msgid "Above the accounts"
-msgstr "Über den Konten"
-
-msgid "Below the accounts"
-msgstr "Unterhalb der Konten"
-
-#, fuzzy
-msgid "The first account's inbox"
-msgstr "Posteingang des zuletzt verwendeten Kontos"
-
-msgid "The last account's inbox"
-msgstr "Posteingang des zuletzt verwendeten Kontos"
-
-msgid "The last folder"
-msgstr "Zuletzt verwendeter Ordner"
-
-msgid "Left"
-msgstr "Links"
-
-msgid "Right"
-msgstr "Rechts"
-
-msgid "1 line"
-msgstr "1 Zeile"
-
-msgid "2 lines"
-msgstr "2 Zeilen"
-
-msgid "3 lines"
-msgstr "3 Zeilen"
-
-msgid "Cards"
-msgstr "Karten"
-
-msgid "Single line"
-msgstr "Eine Zeile"
-
-msgid "Top of the list"
-msgstr "Oberstes Element der Liste"
-
-msgid "Bottom of the list"
-msgstr "Unterstes Element der Liste"
-
-msgid "Theme"
-msgstr "Erscheinungsbild"
-
-msgid "Always"
-msgstr "Immer"
-
-msgid "A year"
-msgstr "1 Jahr"
-
-msgid "90 days"
-msgstr "90 Tage"
-
-msgid "30 days"
-msgstr "30 Tage"
-
-msgid "Bottom of the window"
-msgstr "Am unteren Fensterrand"
-
-msgid "Top of the window"
-msgstr "Am oberen Fensterrand"
-
-msgid "When displayed"
-msgstr "Wenn angezeigt"
-
-msgid "After two seconds"
-msgstr "Nach zwei Sekunden"
-
-msgid "{percent}%"
-msgstr "{percent} %"
-
-msgid "Senders"
-msgstr "Absender"
-
-msgid "Translation"
-msgstr "Übersetzung"
-
-msgid "General"
-msgstr "Allgemein"
-
-#. Rendered as Pango markup — a bare "&" breaks it.
-msgid "Appearance"
-msgstr "Aussehen"
-
-msgid "Sidebar"
-msgstr "Seitenleiste"
-
-msgid "Message list"
-msgstr "Nachrichtenliste"
-
-msgid "Conversations"
-msgstr "Unterhaltungen"
-
-msgid "Reading"
-msgstr "Lesen"
-
-msgid "Composing"
-msgstr "Verfassen"
-
-msgid "Privacy"
-msgstr "Datenschutz"
-
-msgid "Date and time"
-msgstr "Datum und Uhrzeit"
-
 msgid "Backup"
 msgstr "Sicherung"
-
-msgid "Save the filter?"
-msgstr "Filter speichern?"
-
-msgid "Your changes are lost if you discard them."
-msgstr "Nicht gespeicherte Änderungen gehen beim Verwerfen verloren."
-
-msgid "Save the smart folder?"
-msgstr "Smart Folder speichern?"
-
-msgid "Save the tag?"
-msgstr "Tag speichern?"
-
-msgid "Save the address book?"
-msgstr "Adressbuch speichern?"
-
-msgid "Save the account?"
-msgstr "Konto speichern?"
 
 msgid ""
 "Accounts, preferences, filters, tags and layout, in one file. Passwords and "
@@ -5062,73 +4784,45 @@ msgstr ""
 "Ersetzt die aktuellen Konten und Einstellungen direkt. Konten vorher nicht "
 "löschen: Beim Entfernen werden auch deren Passwörter gelöscht."
 
-msgid "Group messages by conversation"
-msgstr "Nachrichten nach Unterhaltungen gruppieren"
+#, fuzzy
+msgid "When a message is opened."
+msgstr "Stattdessen neue Nachricht verfassen"
+
+msgid "When displayed"
+msgstr "Wenn angezeigt"
+
+msgid "After two seconds"
+msgstr "Nach zwei Sekunden"
 
 msgid "Newest message first"
 msgstr "Neueste Nachricht zuerst"
 
-msgid "In the reading pane."
-msgstr "Im Lesebereich"
+#, fuzzy
+msgid "In a conversation."
+msgstr "Unterhaltung mit Stern markieren"
 
-msgid "Fold earlier messages"
-msgstr "Ältere Nachrichten einklappen"
+#, fuzzy
+msgid "Confirm deleting a conversation"
+msgstr "Unterhaltung löschen"
 
-msgid "The newest always opens."
-msgstr "Automatisches Öffnen des neuesten Elementes."
-
-msgid "Show your own replies in the message list"
-msgstr "Eigene Antworten in der Nachrichtenliste anzeigen"
-
-msgid "Off shows the last message that arrived."
-msgstr "Wenn deaktiviert, wird die zuletzt eingegangene Nachricht angezeigt."
-
-msgid "Attachments on each message"
-msgstr "Anhänge jeder Nachricht"
-
-msgid "Attachment drawer"
-msgstr "Anhangbereich"
-
-msgid "Confirm conversation deletion"
-msgstr "Löschen von Unterhaltungen bestätigen"
-
-msgid "Dates follow the system unless a format is chosen here."
+msgid "Swipe to archive or delete"
 msgstr ""
-"Datumsformate richten sich nach dem System, falls hier kein spezifisches "
-"Format festgelegt wird."
 
-msgid "Date format"
-msgstr "Datumsformat"
-
-msgid "Clock"
-msgstr "Uhr"
-
-msgid "Instant new mail (push)"
-msgstr "Neue Nachrichten sofort empfangen (Push)"
-
-msgid "Microsoft 365 accounts check at the interval above."
+msgid "For touch screens and touchpads."
 msgstr ""
-"Bei Microsoft 365-Konten erfolgt die Prüfung im oben festgelegten Intervall."
-
-msgid "Save data on metered connections"
-msgstr "Daten bei getakteten Verbindungen sparen"
-
-msgid "New mail still arrives. Nothing else is fetched ahead."
-msgstr ""
-"Der Empfang neuer E-Mails bleibt aktiv. Ein Vorab-Abruf weiterer Daten "
-"findet nicht statt."
-
-msgid "Notifications"
-msgstr "Benachrichtigungen"
 
 msgid "Desktop notifications"
 msgstr "Desktop-Benachrichtigungen"
 
-msgid "For new mail and errors, while the window is in the background."
+#, fuzzy
+msgid "While the window is in the background."
 msgstr "Für neue E-Mails und Fehler, während das Fenster im Hintergrund läuft"
 
 msgid "Show sender and subject"
 msgstr "Absender und Betreff anzeigen"
+
+msgid "Off, the notification only says “New message”."
+msgstr ""
 
 msgid "Read receipts"
 msgstr "Lesebestätigungen"
@@ -5138,136 +4832,82 @@ msgstr ""
 "Wenn eine E-Mail geöffnet wird, für die eine Lesebestätigung angefordert "
 "wurde"
 
-msgid "Sound for new mail"
-msgstr "Ton bei neuen E-Mails"
+#, fuzzy
+msgid "Check for new messages"
+msgstr "Auf neue Nachrichten prüfen"
 
-msgid "Sound"
-msgstr "Ton"
+msgid "Instant new mail (push)"
+msgstr "Neue Nachrichten sofort empfangen (Push)"
 
-msgid "Play"
-msgstr "Abspielen"
-
-msgid "Sound file"
-msgstr "Tondatei"
-
-msgid "Choose…"
-msgstr "Auswählen…"
-
-msgid "Also play while Tegami Mail is in front"
-msgstr "Auch abspielen wenn Tegami Mail im Vordergrund ist"
-
-msgid "Notification buttons"
-msgstr "Schaltflächen in Benachrichtigungen"
-
-msgid "Up to three buttons on a notification about one message."
+msgid "Microsoft 365 accounts check at the interval above."
 msgstr ""
-"Bis zu drei Schaltflächen bei einer Benachrichtigung über eine Nachricht."
+"Bei Microsoft 365-Konten erfolgt die Prüfung im oben festgelegten Intervall."
 
-msgid "Show sender avatars"
-msgstr "Absender-Avatare anzeigen"
-
-msgid "Sent mail uses your account circle"
-msgstr "Gesendete E-Mails nutzen das Konto-Profilbild"
-
-msgid "The account's picture or emoji, as in the sidebar."
-msgstr ""
-"Das Profilbild oder das Emoji des Kontos, analog zum Symbol in der "
-"Seitenleiste."
-
-msgid "Layout"
-msgstr "Layout"
-
-msgid "Automatic uses single lines in wide windows."
-msgstr ""
-"„Automatisch“ verwendet in breiten Fenstern die einzeilige Darstellung."
-
-msgid "Preview lines"
-msgstr "Vorschauzeilen"
-
-msgid "Off also stops downloading previews."
-msgstr "Bei Deaktivierung werden keine Vorschauen mehr heruntergeladen."
-
-msgid "Group by date"
-msgstr "Nach Datum gruppieren"
-
-msgid "Tags and labels under the text"
-msgstr "Tags und Labels unter dem Text"
-
-msgid "Gives the subject its full width."
-msgstr "Zeigt den Betreff in voller Breite an."
-
-msgid "Keep the search field open"
-msgstr "Suchfeld geöffnet lassen"
-
-msgid "Search field position"
-msgstr "Position des Suchfelds"
-
-msgid "Selection bar position"
-msgstr "Position der Auswahlleiste"
-
-msgid "Tint tagged messages"
-msgstr "Nachrichten mit Tags einfärben"
-
-msgid "In the color of its first tag."
-msgstr "Färbung anhand des ersten Tags"
-
-msgid "Actions palette in the message list"
-msgstr "Aktionspalette in der Nachrichtenliste"
-
-msgid "The ⋯ row under each message."
-msgstr "Die ⋯ Zeile unter jeder Nachricht"
-
-msgid "Open the actions palette on hover"
-msgstr "Aktionspalette beim Darüberfahren öffnen"
-
-msgid "Swipe actions"
-msgstr "Wischaktionen"
+msgid "Style"
+msgstr "Stil"
 
 msgid ""
-"Left deletes, right archives. Drag with the mouse or swipe with two fingers."
+"Follows the system by default. The accent colour also comes from the system."
 msgstr ""
-"Wischen nach links zum Löschen, nach rechts zum Archivieren. Ausführbar per "
-"Mauszug oder Zwei-Finger-Geste."
 
-msgid "Reverse swipe directions"
-msgstr "Wischrichtungen umkehren"
+msgid "Keep running in the background"
+msgstr "Im Hintergrund weiterlaufen"
 
-msgid "Trackpad swipe sensitivity"
-msgstr "Empfindlichkeit für Wischen auf dem Touchpad"
-
-msgid "Raise it if swipes stop short. Mouse drags are unaffected."
+msgid "Closing the window keeps Tegami Mail running for notifications."
 msgstr ""
-"Den Wert erhöhen, falls Wischgesten vorzeitig abbrechen. Mauszug-Aktionen "
-"bleiben unbeeinflusst."
 
-msgid "Actions palette timeout"
-msgstr "Zeitlimit der Aktionspalette"
+msgid "Start at login"
+msgstr "Bei Anmeldung starten"
 
-msgid "Seconds it stays open after the pointer leaves."
-msgstr "Zeitverzögerung in Sekunden nach dem Verlassen mit dem Zeiger."
+msgid "Single-key shortcuts"
+msgstr "Einzeltasten-Kürzel"
 
-msgid "Columns"
-msgstr "Spalten"
+#, fuzzy
+msgid "Ctrl+? shows them all."
+msgstr "Strg+0 setzt auf den Standardwert zurück."
 
-msgid ""
-"For the single-line layout. Drag columns to reorder them or out to remove "
-"them. Due Date shows only for Microsoft 365 mail."
+msgid "Gmail keys"
+msgstr "Gmail-Tastenkürzel"
+
+msgid "Swaps the single-key shortcuts for Gmail equivalents."
 msgstr ""
-"Betrifft die einzeilige Ansicht. Neuanordnung von Spalten per Drag-and-Drop, "
-"Entfernen durch Herausziehen. Fälligkeitsdatum ist ausschließlich für "
-"Microsoft 365 E-Mails verfügbar."
+"Wechsel der Einzeltastenkürzel zu den entsprechenden Gmail-"
+"Tastenkombinationen."
 
-msgid "Show column headings"
-msgstr "Spaltentitel anzeigen"
+msgid "Keep downloaded mail"
+msgstr "Behalte heruntergeladene Nachricht"
 
-msgid "Fit columns to the list"
-msgstr "Spaltenbreite an die Liste anpassen"
+#, fuzzy
+msgid "On this computer, for reading offline."
+msgstr "Auf diesem Computer"
 
-msgid "Off, a narrow list scrolls sideways."
-msgstr "Bei Deaktivierung lässt sich eine schmale Liste horizontal scrollen."
+msgid "Always"
+msgstr "Immer"
 
-msgid "Restore defaults"
-msgstr "Standardeinstellungen wiederherstellen"
+msgid "A year"
+msgstr "1 Jahr"
+
+msgid "90 days"
+msgstr "90 Tage"
+
+msgid "30 days"
+msgstr "30 Tage"
+
+#, fuzzy
+msgid "Large attachments"
+msgstr "Hat Anhänge"
+
+msgid "Ask each time"
+msgstr "Jedes Mal fragen"
+
+msgid "Attach them anyway"
+msgstr "Trotzdem anhängen"
+
+msgid "Upload to cloud storage and link them"
+msgstr "In Cloud-Speicher hochladen und verlinken"
+
+msgid "Privacy"
+msgstr "Datenschutz"
 
 msgid "Tegami Mail collects no telemetry and sends no analytics."
 msgstr ""
@@ -5330,162 +4970,17 @@ msgstr ""
 "Eine Lesebestätigung informiert die absendende Person darüber, wann die "
 "Nachricht geöffnet wurde."
 
-msgid "Open at startup"
-msgstr "Beim Start öffnen"
-
-msgid "Folder order"
-msgstr "Ordnerreihenfolge"
-
-msgid "Dragging a folder switches to Custom Order."
-msgstr ""
-"Das Verschieben eines Ordners aktiviert die benutzerdefinierte Sortierung."
-
-msgid "Chevron placement"
-msgstr "Position der Ausklapp-Pfeile"
-
-msgid "Fold accounts with one click"
-msgstr "Konten mit einem Klick zuklappen"
-
-msgid "When off, only its chevron or a double click activates the fold."
-msgstr ""
-"Wenn ausgeschaltet, klappt der Bereich nur durch Klick auf den Pfeil oder "
-"per Doppelklick ein."
-
-msgid "Expand the sidebar on hover"
-msgstr "Seitenleiste beim Darüberfahren ausklappen"
-
-msgid "Hovering the icon rail floats the full sidebar out."
-msgstr ""
-"Beim Überfahren der Symbolleiste mit dem Mauszeiger wird die vollständige "
-"Seitenleiste schwebend eingeblendet."
-
-msgid "Remember the sidebar layout"
-msgstr "Layout der Seitenleiste merken"
-
-msgid "Off starts every launch folded up."
-msgstr ""
-"Bei Deaktivierung startet die Seitenleiste bei jedem Programmaufruf "
-"eingeklappt."
-
-msgid "Remember icon rail state"
-msgstr "Zustand der Symbolleiste merken"
-
-msgid "Highlight only new unread mail"
-msgstr "Nur neue, ungelesene E-Mails hervorheben"
-
-msgid "A count turns grey once you have looked at the folder."
-msgstr "Sobald ein Ordner betrachtet wurde, wechselt der Zähler zu Grau."
-
-msgid "Sections"
-msgstr "Abschnitte"
-
-msgid "Section style"
-msgstr "Abschnittsstil"
-
-msgid "Tags placement"
-msgstr "Position der Tags"
-
-msgid "Favorites placement"
-msgstr "Platzierung der Favoriten"
-
-msgid "Icon rail"
-msgstr "Symbolleiste"
-
-msgid "Unread dots instead of counts"
-msgstr "Punkte statt Zahlen für ungelesene Nachrichten"
-
-msgid "The count stays in the tooltip."
-msgstr "Die Zähleranzeige bleibt im Tooltip erhalten."
-
-msgid "Fold up expanded items"
-msgstr "Ausgeklappte Elemente einklappen"
-
-msgid "The items below start folded up in the rail. Long-press to open one."
-msgstr ""
-"Die folgenden Einträge sind in der Leiste zu Beginn eingeklappt. Langes "
-"Drücken zum Öffnen."
-
-msgid ""
-"Inside the Flatpak sandbox, links open through the desktop's chooser. \"Ask "
-"each time\" picks the browser per link with the option to remember it."
-msgstr ""
-"Innerhalb der Flatpak-Sandbox werden Links über die Auswahl des Desktops "
-"geöffnet. Die Option „Jedes Mal nachfragen“ ermöglicht die Auswahl des "
-"Browsers pro Link mit der Möglichkeit, die Entscheidung zu speichern."
-
-msgid "\"Ask each time\" lets the desktop ask before each link."
-msgstr "„Jedes Mal nachfragen“ erfolgt vor jedem Link-Aufruf eine Abfrage."
-
-msgid "Not installed"
-msgstr "Nicht installiert"
-
-msgid "Installed and loaded by Files"
-msgstr "Installiert und geladen durch Dateien"
-
-msgid "Installed, but nautilus-python is missing"
-msgstr "Installiert, aber \"nautilus-python\" fehlt"
-
-msgid "Installed. Restart Files to load it; it needs nautilus-python"
-msgstr ""
-"Installiert. Ein Neustart von Dateien (Nautilus) ist zum Laden erforderlich; "
-"nautilus-python wird benötigt."
-
-msgid "Installed, but from another version"
-msgstr "Installiert, aber nicht in dieser Version"
-
-msgid "Measuring…"
-msgstr "wird ermittelt…"
-
-msgid ""
-"Messages {bodies}, attachments {files}. {total} in all, with the message "
-"list."
-msgstr ""
-"Nachrichten {bodies}, Anhänge {files}. {total} einschließlich "
-"Nachrichtenliste."
-
-msgid "Could not install the extension"
-msgstr "Konnte die Erweiterung nicht installieren"
-
-msgid "Remove downloaded mail?"
-msgstr "Heruntergeladene Nachrichten löschen?"
-
-msgid ""
-"Mail and attachments on this computer are removed and fetched again when "
-"opened. Nothing on the server changes."
-msgstr ""
-"Alle auf diesem Computer gespeicherten Nachrichten und Anhänge werden "
-"entfernt und beim Öffnen erneut vom Server geladen. Auf dem Server wird "
-"nichts verändert."
-
-msgid "Could not remove the extension"
-msgstr "Erweiterung konnte nicht entfernt werden"
-
-msgid "Could not restart Files"
-msgstr "Dateimanager konnte nicht neu gestartet werden"
-
 msgid "Other font…"
 msgstr "Andere Schriftart…"
-
-msgid "Search settings"
-msgstr "Einstellungen durchsuchen"
-
-msgid "No results"
-msgstr "Keine Ergebnisse"
-
-#. Translators: words the settings search finds the Contacts page by,
-#. separated by spaces; keep "CardDAV" and "LDAP".
-msgid ""
-"address books CardDAV LDAP directory directories Online Accounts Nextcloud "
-"iCloud Google Microsoft vCard"
-msgstr ""
-"Adressbücher CardDAV LDAP-Verzeichnis Verzeichnisse Online-Konten Nextcloud "
-"iCloud Google Microsoft vCard"
 
 msgid "System language — {language}"
 msgstr "Systemsprache — {language}"
 
 msgid "Forget this word"
 msgstr "Dieses Wort vergessen"
+
+msgid "Preferences"
+msgstr ""
 
 msgid "Print message"
 msgstr "Nachricht drucken"
@@ -5811,6 +5306,9 @@ msgstr "Datei"
 msgid "Script"
 msgstr ""
 
+msgid "Translation"
+msgstr "Übersetzung"
+
 msgid ""
 "Uses a translation service under your own key. A message's text is sent only "
 "when you translate it."
@@ -5978,8 +5476,17 @@ msgid "A few popular choices — everything can be changed later in Settings."
 msgstr ""
 "Einige beliebte Optionen – alle Einstellungen können später angepasst werden."
 
+msgid "Preview lines"
+msgstr "Vorschauzeilen"
+
 msgid "Message text shown under each subject"
 msgstr "Nachrichtentext unter jedem Betreff anzeigen"
+
+msgid "1 line"
+msgstr "1 Zeile"
+
+msgid "2 lines"
+msgstr "2 Zeilen"
 
 msgid "Sender avatars"
 msgstr "Absender-Avatare"
@@ -6507,6 +6014,9 @@ msgstr ""
 msgid "Test connection"
 msgstr "Verbindung testen"
 
+msgid "Appearance"
+msgstr "Aussehen"
+
 msgid "Account accent color"
 msgstr "Akzentfarbe des Kontos"
 
@@ -6530,6 +6040,9 @@ msgstr "Emoji"
 
 msgid "Instead of initials."
 msgstr "Anstelle von Initialen"
+
+msgid "Choose…"
+msgstr "Auswählen…"
 
 msgid "Use initials"
 msgstr "Initialen verwenden"
@@ -6656,6 +6169,9 @@ msgstr ""
 "Zeigt den Namen eines Tags an, wenn eine Nachricht nur dessen Kennung "
 "enthält."
 
+msgid "Folder order"
+msgstr "Ordnerreihenfolge"
+
 msgid "Also in the right-click menu of its Folders heading."
 msgstr "Auch über das Kontextmenü der Überschrift „Ordner“"
 
@@ -6764,37 +6280,71 @@ msgid "Look through every mailbox for tags other clients have set"
 msgstr ""
 "Alle Postfächer nach Tags durchsuchen, die andere Programme gesetzt haben"
 
-msgid "Style"
-msgstr "Stil"
+#, fuzzy
+msgid "Senders"
+msgstr "Absender"
 
-msgid "Messages have their own setting under Reading."
-msgstr "Einstellungen für Nachrichten befinden sich unter Lesen."
-
-msgid "Text size"
-msgstr "Textgröße"
-
-msgid "Adjusts the interface and message text size."
+msgid "Backup and restore"
 msgstr ""
-"Passt die Schriftgröße der Benutzeroberfläche und der Nachrichtentexte an."
 
-msgid "Use your desktop environment's icon set"
-msgstr "Symbolthema der Arbeitsfläche"
+#, fuzzy
+msgid "Organize mail"
+msgstr "In E-Mail"
 
-msgid "This window opens to"
-msgstr "Dieses Fenster öffnet sich für"
+#, fuzzy
+msgid "Services"
+msgstr "Dienst"
 
-msgid "Toolbar"
-msgstr "Symbolleiste"
+#, fuzzy
+msgid "Allowed and blocked"
+msgstr "Zugelassene Absender"
 
-msgid ""
-"Drag buttons between the groups. The right group folds into ⋯ when the pane "
-"is narrow."
+msgid "Reading"
+msgstr "Lesen"
+
+msgid "Composing"
+msgstr "Verfassen"
+
+#, fuzzy
+msgid "Replies are sent from the address that received the message."
 msgstr ""
-"Schaltflächen zwischen den Gruppen verschieben. Die rechte Gruppe wird bei "
-"schmaler Anzeigeleiste unter ⋯ zusammengefasst."
+"Antworten verwenden die Adresse als Absender, an die die ursprüngliche "
+"Nachricht gesendet wurde."
 
-msgid "Always fold the right group into ⋯"
-msgstr "Die rechte Gruppe immer zu ⋯ einklappen"
+#, fuzzy
+msgid "Format of new messages"
+msgstr "Anfang der Nachricht"
+
+msgid "How long a message can still be recalled."
+msgstr ""
+
+msgid "Notifications"
+msgstr "Benachrichtigungen"
+
+#, fuzzy
+msgid "New messages"
+msgstr "Neue Nachricht"
+
+msgid "Sound and banners"
+msgstr ""
+
+msgid "Open the system notification settings"
+msgstr ""
+
+msgid "Sound, banners and Do Not Disturb are set there."
+msgstr ""
+
+#, fuzzy
+msgid "Application"
+msgstr "Aktion"
+
+#, fuzzy
+msgid "Background"
+msgstr "Im Hintergrund ausführen"
+
+#, fuzzy
+msgid "Keyboard and storage"
+msgstr "Tastenkombinationen"
 
 msgid "Send new messages from"
 msgstr "Neue Nachrichten senden von"
@@ -6925,256 +6475,6 @@ msgstr "Hinzugefügte Wörter"
 
 msgid "Changes apply after a restart."
 msgstr "Änderungen werden nach einem Neustart wirksam."
-
-msgid "Conversations mark each message as it comes into view."
-msgstr ""
-"Gespräche markieren jede Nachricht als gelesen, sobald sie im Sichtbereich "
-"erscheint."
-
-msgid "Message appearance"
-msgstr "Darstellung der Nachricht"
-
-msgid "Show account in message header"
-msgstr "Konto im Nachrichtenkopf anzeigen"
-
-#, fuzzy
-msgid ""
-"Where the list mixes accounts, the account a message is in, above its "
-"subject."
-msgstr "Das Konto einer Nachricht, oberhalb ihres Betreffs"
-
-msgid "Ctrl+0 returns to the default."
-msgstr "Strg+0 setzt auf den Standardwert zurück."
-
-msgid "Use my own font"
-msgstr "Eigene Schriftart verwenden"
-
-msgid "The font below replaces the sender's."
-msgstr ""
-"Ersetzung der ursprünglichen Absenderschriftart durch die unten gewählte."
-
-msgid "Message font"
-msgstr "Schriftart der Nachricht"
-
-msgid "The interface font unless another is chosen."
-msgstr ""
-"Die Standard-Schriftart der Benutzeroberfläche, sofern keine andere "
-"ausgewählt ist."
-
-msgid "Use my own colors"
-msgstr "Eigene Farben verwenden"
-
-msgid "Ignores the sender's colors. Pictures stay; links use the accent color."
-msgstr ""
-"Ignorieren von Absenderfarben. Bilder bleiben bestehen; Links nutzen die "
-"Akzentfarbe."
-
-msgid "Plain-text messages in monospace"
-msgstr "Reinen Text in Festbreitenschrift anzeigen"
-
-msgid "Formatted messages are not affected."
-msgstr "Formatierte Nachrichten sind davon nicht betroffen."
-
-msgid "Monospace font"
-msgstr "Monospace-Schrift"
-
-msgid "The system's monospace font unless another is chosen."
-msgstr ""
-"Die Monospace-Schriftart des Systems, es sei denn, es wird eine andere "
-"gewählt."
-
-msgid "Message card actions palette"
-msgstr "Aktionspalette für Nachrichtenkarten"
-
-msgid "Message card actions palette timeout"
-msgstr "Zeitlimit der Aktionspalette für Nachrichtenkarten"
-
-msgid "Message card actions palette as a menu"
-msgstr "Nachrichtenkarten-Aktionspalette als Menü"
-
-msgid "The ⋯ opens the right-click menu instead."
-msgstr "Das Symbol ⋯ öffnet stattdessen das Kontextmenü."
-
-msgid "Single messages as cards"
-msgstr "Einzelne Nachrichten als Karten"
-
-msgid "Off fills the pane edge to edge."
-msgstr ""
-"Bei Deaktivierung erfolgt die Darstellung randlos über die gesamte Fläche."
-
-msgid "Always show recipients"
-msgstr "Empfänger immer anzeigen"
-
-msgid "Name the OpenPGP result"
-msgstr "OpenPGP-Ergebnis in Worten anzeigen"
-
-msgid "Off shows the icons alone."
-msgstr "Bei Deaktivierung werden nur Symbole angezeigt."
-
-msgid "Find bar position"
-msgstr "Position der Suchleiste"
-
-msgid "Printing"
-msgstr "Drucken"
-
-msgid "Page numbers"
-msgstr "Seitennummern"
-
-msgid "Date printed"
-msgstr "Gedrucktes Datum"
-
-msgid "Wider left margin"
-msgstr "Linken Rand vergrößern"
-
-msgid "25 mm, so punched holes miss the text."
-msgstr "25 mm, um Ausstanzungen außerhalb des Textbereichs zu halten."
-
-msgid "Applies after a restart."
-msgstr "Änderungen werden nach einem Neustart angewendet."
-
-msgid "Renderer"
-msgstr "Renderer"
-
-msgid "Try OpenGL or Software on older graphics. Applies after a restart."
-msgstr ""
-"Bei älteren Grafikkarten OpenGL oder Software versuchen. Änderungen werden "
-"nach einem Neustart angewendet."
-
-msgid "Keep running in the background"
-msgstr "Im Hintergrund weiterlaufen"
-
-msgid "Closing the window hides it. Quit from Background Apps."
-msgstr ""
-"Schließen des Fensters blendet dieses aus. Beenden über "
-"Hintergrundanwendungen."
-
-msgid "Start at login"
-msgstr "Bei Anmeldung starten"
-
-msgid "Starts hidden."
-msgstr "Startet im Hintergrund."
-
-msgid "Start fullscreen"
-msgstr "Start fullscreen"
-
-msgid "F11 switches fullscreen on and off."
-msgstr "F11 wechselt in den Vollbildmodus und zurück."
-
-msgid "Show a tray icon"
-msgstr "Symbol im Infobereich anzeigen"
-
-msgid "To use on GNOME, install an AppIndicator extension."
-msgstr ""
-"Für die Verwendung unter GNOME wird eine AppIndicator-Erweiterung benötigt."
-
-msgid "Tray icon"
-msgstr "Symbol im Infobereich"
-
-msgid "Unread mail in the tray menu"
-msgstr "Ungelesene Nachrichten im Menü des Infobereichs"
-
-msgid "Unread count on the app icon"
-msgstr "Anzahl ungelesener Nachrichten auf dem App-Symbol"
-
-msgid "To use on GNOME, install a dock extension such as Dash to Dock."
-msgstr ""
-"Für die Verwendung unter GNOME wird eine Dock-Erweiterung (z. B. Dash to "
-"Dock) benötigt."
-
-msgid "Single-key shortcuts"
-msgstr "Einzeltasten-Kürzel"
-
-msgid "Press Ctrl+? to list all shortcuts."
-msgstr "Strg+? drücken, um alle Tastenkombinationen aufzulisten."
-
-msgid "Gmail keys"
-msgstr "Gmail-Tastenkürzel"
-
-msgid "Swaps the single-key shortcuts for Gmail equivalents."
-msgstr ""
-"Wechsel der Einzeltastenkürzel zu den entsprechenden Gmail-"
-"Tastenkombinationen."
-
-msgid "Status bar"
-msgstr "Statusleiste"
-
-msgid "Console mode"
-msgstr "Konsolenmodus"
-
-msgid "Shows a console in the status bar."
-msgstr "Konsole in der Statusleiste anzeigen."
-
-msgid "For bug reports. Addresses are cut to their domain for privacy."
-msgstr ""
-"Für Problemberichte. Zum Schutz der Privatsphäre werden Adressen auf den "
-"Domainnamen reduziert."
-
-msgid "Downloaded mail"
-msgstr "Nachricht herunterladen"
-
-msgid "Remove…"
-msgstr "Entfernen…"
-
-msgid "Keep downloaded mail"
-msgstr "Behalte heruntergeladene Nachricht"
-
-msgid "Mail inside an account's offline period is kept."
-msgstr ""
-"Nachrichten aus dem definierten Offline-Zeitraum des Kontos werden lokal "
-"gespeichert."
-
-msgid "GNOME Files integration"
-msgstr "GNOME-Dateiintegration"
-
-msgid ""
-"Adds “Send with Tegami Mail” to the right-click menu in Files. Needs the "
-"nautilus-python package and a restart of Files."
-msgstr ""
-"Fügt dem Kontextmenü \"Mit Tegami Mail senden\" in \"Files\" hinzu. "
-"Erfordert das Paket \"nautilus-python\" und einen Neustart der "
-"Dateiverwaltung."
-
-msgid "Right-click menu entry"
-msgstr "Eintrag im Kontextmenü"
-
-msgid "Install nautilus-python first"
-msgstr "Zuerst muss nautilus-python installiert werden"
-
-msgid "Restart Files"
-msgstr "Dateimanager „Files“ neu starten"
-
-msgid "Closes every Files window, like “nautilus -q”."
-msgstr "Schließt alle Fenster von \"Files\" (entspricht \"nautilus -q\")."
-
-msgid "Restart"
-msgstr "Neu starten"
-
-msgid "Default Send with Tegami Mail behavior"
-msgstr "Standardverhalten von „Mit Tegami Mail senden“"
-
-msgid "Default large attachments behavior"
-msgstr "Standardverhalten für große Anhänge"
-
-msgid "Without a cloud storage account, files are attached."
-msgstr "Ohne verknüpftes Cloud-Konto erfolgt der Versand als Dateianhang."
-
-msgid "Size limit"
-msgstr "Größenbegrenzung"
-
-msgid "In MB, for all the files together."
-msgstr "In MB, für alle Dateien insgesamt."
-
-msgid "Links"
-msgstr "Links"
-
-msgid "Open links in"
-msgstr "Links öffnen mit"
-
-msgid "Update"
-msgstr "Aktualisieren"
-
-msgid "Install"
-msgstr "Installieren"
 
 msgid "Send as attachment instead"
 msgstr "Stattdessen als Anhang senden"

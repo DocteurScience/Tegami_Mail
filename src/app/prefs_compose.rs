@@ -14,14 +14,6 @@ impl AppModel {
                 pref!(self.files_prefs = prefs);
             }
 
-            PrefOutput::SetLinkBrowser(choice) => {
-                if self.link_browser != choice {
-                    self.link_browser = choice;
-                    crate::ui::launch::set_browser(&self.link_browser);
-                    self.save_settings();
-                }
-            }
-
             PrefOutput::SetComposeDefaultFrom(addr) => {
                 pref!(self.compose_default_from = addr);
             }
@@ -51,12 +43,6 @@ impl AppModel {
                     // The next composer opens at the new default, not at
                     // the size the last one was left at.
                     crate::ui::compose::forget_zoom();
-                }
-            }
-
-            PrefOutput::SetPrintOptions(options) => {
-                if pref!(self.print_options = options) {
-                    crate::ui::print_preview::set_options(options);
                 }
             }
 

@@ -1214,24 +1214,12 @@ msgstr "Επανεκκίνηση Tegami Mail"
 msgid "Import failed: {e}"
 msgstr "Η εισαγωγή απέτυχε: {e}"
 
-msgid "The renderer applies the next time Tegami Mail starts."
-msgstr ""
-"Η αλλαγή στην απόδοση θα εφαρμοστεί την επόμενη φορά που θα εκκινηθεί το "
-"Tegami Mail."
-
-msgid "The language applies the next time Tegami Mail starts."
-msgstr ""
-"Η γλώσσα θα εφαρμοστεί την επόμενη φορά που θα εκκινηθεί το Tegami Mail."
-
 #, fuzzy
 msgid "Forward as attachment"
 msgstr "Έχει συνημμένα"
 
 msgid "Delete {n} messages"
 msgstr "Διαγραφή {n} μηνυμάτων"
-
-msgid "Customize toolbar…"
-msgstr "Προσαρμογή γραμμής εργαλείων…"
 
 msgid "Read receipt"
 msgstr ""
@@ -1577,18 +1565,6 @@ msgstr "Όνομα (Ω έως Α)"
 
 msgid "Full path"
 msgstr "Πλήρης διαδρομή"
-
-msgid "Spam"
-msgstr "Ανεπιθύμητα"
-
-msgid "Read/Unread"
-msgstr "Αναγνωσμένο/Μη αναγνωσμένο"
-
-msgid "Move to"
-msgstr "Μετακίνηση στο"
-
-msgid "Find"
-msgstr "Εύρεση"
 
 msgid "{date} at {time}"
 msgstr "{date} στις {time}"
@@ -2153,6 +2129,9 @@ msgstr "Ενεργοποίηση αυτού του λογαριασμού"
 #, fuzzy
 msgid "Forward to"
 msgstr "Προώθηση"
+
+msgid "Move to"
+msgstr "Μετακίνηση στο"
 
 msgid "forwards to {to}"
 msgstr ""
@@ -3921,9 +3900,6 @@ msgstr "λήγει στις {date}"
 msgid "Until {date}"
 msgstr "λήγει στις {date}"
 
-msgid "Customize columns…"
-msgstr "Προσαρμογή στηλών…"
-
 msgid "Remove stars"
 msgstr "Αφαίρεση αστεριών"
 
@@ -4690,56 +4666,8 @@ msgstr[1] "Εισήχθησαν {n} κλειδιά."
 msgid "That key was already in your keyring."
 msgstr "Αυτό το κλειδί υπήρχε ήδη στην κλειδοθήκη σας."
 
-msgid "Choose a sound"
-msgstr "Επιλογή ήχου"
-
-msgid "Sounds"
-msgstr "Ήχοι"
-
-msgid "Drag to move"
-msgstr "Σύρετε για μετακίνηση"
-
-msgid "Left group"
-msgstr "Αριστερή ομάδα"
-
-msgid "Always shown · up to {n}"
-msgstr "Πάντα ορατή · έως {n}"
-
-msgid "Right group"
-msgstr "Δεξιά ομάδα"
-
 #, fuzzy
-msgid "Folds into ⋯ when narrow"
-msgstr "Συμπτύσσεται στο ⋯ όταν είναι στενή · έως 6"
-
-msgid "Not shown"
-msgstr "Δεν εμφανίζεται"
-
-msgid "Drop a button here to hide it"
-msgstr "Αποθέστε ένα κουμπί εδώ για να το αποκρύψετε"
-
-msgid "Shown"
-msgstr "Εμφανίζεται"
-
-msgid "Left to right"
-msgstr "Από αριστερά προς τα δεξιά"
-
-msgid "Drop a column here to hide it"
-msgstr "Αποθέστε μια στήλη εδώ για να την αποκρύψετε"
-
-msgid "App icon"
-msgstr "Εικονίδιο εφαρμογής"
-
-msgid "Symbolic"
-msgstr "Συμβολικό"
-
-msgid "All unread inbox mail"
-msgstr "Όλα τα μη αναγνωσμένα μηνύματα των Εισερχομένων"
-
-msgid "New since the window was last in front"
-msgstr "Νέα από την τελευταία φορά που το παράθυρο ήταν στο προσκήνιο"
-
-msgid "Follow system"
+msgid "Follow the system"
 msgstr "Ακολούθηση συστήματος"
 
 msgid "Light"
@@ -4748,23 +4676,8 @@ msgstr "Φωτεινό"
 msgid "Dark"
 msgstr "Σκοτεινό"
 
-msgid "Aug 23, 2026"
-msgstr "23 Αυγ 2026"
-
-msgid "23 Aug 2026"
-msgstr "23 Αυγ 2026"
-
-msgid "2026 Aug 23"
-msgstr "2026 Αυγ 23"
-
 msgid "System"
 msgstr "Σύστημα"
-
-msgid "12-hour (5:40 PM)"
-msgstr "12ωρη (5:40 μ.μ.)"
-
-msgid "24-hour (17:40)"
-msgstr "24ωρη (17:40)"
 
 msgid "Manually"
 msgstr "Χειροκίνητα"
@@ -4780,25 +4693,6 @@ msgstr "Κάθε 15 λεπτά"
 
 msgid "Every 30 minutes"
 msgstr "Κάθε 30 λεπτά"
-
-#. GNOME Settings' own names for its alert sounds.
-msgid "Click"
-msgstr "Κλικ"
-
-#. GNOME Settings' own names for its alert sounds.
-msgid "Hum"
-msgstr "Βόμβος"
-
-#. GNOME Settings' own names for its alert sounds.
-msgid "String"
-msgstr "Χορδή"
-
-#. GNOME Settings' own names for its alert sounds.
-msgid "Swing"
-msgstr "Αιώρα"
-
-msgid "Custom file"
-msgstr "Προσαρμοσμένο αρχείο"
 
 #, fuzzy
 msgid "Downloading: {done} of {total}"
@@ -4882,50 +4776,6 @@ msgstr ""
 msgid "It works: {server} answered."
 msgstr ""
 
-msgid "Messages already read"
-msgstr "Μηνύματα που έχουν ήδη αναγνωστεί"
-
-msgid "All but the newest"
-msgstr "Όλα εκτός από το νεότερο"
-
-#, fuzzy
-msgid "Top of the message"
-msgstr "Στην κορυφή της λίστας"
-
-#, fuzzy
-msgid "Bottom of the message"
-msgstr "Στο κάτω μέρος της λίστας"
-
-msgid "Hidden behind a toggle"
-msgstr "Κρυμμένη πίσω από διακόπτη"
-
-msgid "Shown while hovering"
-msgstr "Εμφάνιση κατά την αιώρηση"
-
-msgid "Always visible"
-msgstr "Πάντα ορατή"
-
-msgid "Ask each time"
-msgstr "Ερώτηση κάθε φορά"
-
-msgid "A new message"
-msgstr "Νέο μήνυμα"
-
-msgid "A draft you pick"
-msgstr "Πρόχειρο που επιλέγετε"
-
-msgid "A reply to a message you pick"
-msgstr "Απάντηση σε μήνυμα που επιλέγετε"
-
-msgid "Attach them anyway"
-msgstr "Επισύναψή τους ούτως ή άλλως"
-
-msgid "Upload to cloud storage and link them"
-msgstr "Μεταφόρτωση στην αποθήκευση cloud και προσθήκη συνδέσμων"
-
-msgid "System default"
-msgstr "Προεπιλογή συστήματος"
-
 msgid "Account of the current folder"
 msgstr "Λογαριασμός του τρέχοντος φακέλου"
 
@@ -4960,142 +4810,8 @@ msgstr ""
 msgid "Add a word"
 msgstr "Προσθήκη λέξης"
 
-msgid "Software"
-msgstr "Λογισμικό"
-
-msgid "Unified style"
-msgstr "Ενοποιημένο στυλ"
-
-msgid "Tree style"
-msgstr "Δενδρικό στυλ"
-
-msgid "Above the accounts"
-msgstr "Πάνω από τους λογαριασμούς"
-
-msgid "Below the accounts"
-msgstr "Κάτω από τους λογαριασμούς"
-
-#, fuzzy
-msgid "The first account's inbox"
-msgstr "Τα Εισερχόμενα του τελευταίου λογαριασμού"
-
-msgid "The last account's inbox"
-msgstr "Τα Εισερχόμενα του τελευταίου λογαριασμού"
-
-msgid "The last folder"
-msgstr "Ο τελευταίος φάκελος"
-
-msgid "Left"
-msgstr "Αριστερά"
-
-msgid "Right"
-msgstr "Δεξιά"
-
-msgid "1 line"
-msgstr "1 γραμμή"
-
-msgid "2 lines"
-msgstr "2 γραμμές"
-
-msgid "3 lines"
-msgstr "3 γραμμές"
-
-msgid "Cards"
-msgstr "Κάρτες"
-
-msgid "Single line"
-msgstr "Μία γραμμή"
-
-msgid "Top of the list"
-msgstr "Στην κορυφή της λίστας"
-
-msgid "Bottom of the list"
-msgstr "Στο κάτω μέρος της λίστας"
-
-msgid "Theme"
-msgstr "Θέμα"
-
-msgid "Always"
-msgstr "Πάντα"
-
-msgid "A year"
-msgstr "Ένα έτος"
-
-msgid "90 days"
-msgstr "90 ημέρες"
-
-msgid "30 days"
-msgstr "30 ημέρες"
-
-msgid "Bottom of the window"
-msgstr "Στο κάτω μέρος του παραθύρου"
-
-msgid "Top of the window"
-msgstr "Στο επάνω μέρος του παραθύρου"
-
-msgid "When displayed"
-msgstr "Κατά την εμφάνιση"
-
-msgid "After two seconds"
-msgstr "Μετά από δύο δευτερόλεπτα"
-
-msgid "{percent}%"
-msgstr "{percent}%"
-
-msgid "Senders"
-msgstr "Αποστολείς"
-
-msgid "Translation"
-msgstr "Μετάφραση"
-
-msgid "General"
-msgstr "Γενικά"
-
-#. Rendered as Pango markup — a bare "&" breaks it.
-msgid "Appearance"
-msgstr "Εμφάνιση"
-
-msgid "Sidebar"
-msgstr "Πλευρική στήλη"
-
-msgid "Message list"
-msgstr "Λίστα μηνυμάτων"
-
-msgid "Conversations"
-msgstr "Συζητήσεις"
-
-msgid "Reading"
-msgstr "Ανάγνωση"
-
-msgid "Composing"
-msgstr "Σύνταξη"
-
-msgid "Privacy"
-msgstr "Απόρρητο"
-
-msgid "Date and time"
-msgstr "Ημερομηνία και ώρα"
-
 msgid "Backup"
 msgstr "Αντίγραφο ασφαλείας"
-
-msgid "Save the filter?"
-msgstr "Αποθήκευση του φίλτρου;"
-
-msgid "Your changes are lost if you discard them."
-msgstr "Οι αλλαγές σας θα χαθούν αν τις απορρίψετε."
-
-msgid "Save the smart folder?"
-msgstr "Αποθήκευση του έξυπνου φακέλου;"
-
-msgid "Save the tag?"
-msgstr "Αποθήκευση της ετικέτας;"
-
-msgid "Save the address book?"
-msgstr "Αποθήκευση του καταλόγου διευθύνσεων;"
-
-msgid "Save the account?"
-msgstr "Αποθήκευση του λογαριασμού;"
 
 msgid ""
 "Accounts, preferences, filters, tags and layout, in one file. Passwords and "
@@ -5111,73 +4827,46 @@ msgstr ""
 "Αντικαθιστά τα πάντα επιτόπου. Μην αφαιρέσετε πρώτα τους λογαριασμούς: έτσι "
 "διαγράφονται οι κωδικοί πρόσβασής τους."
 
-msgid "Group messages by conversation"
-msgstr "Ομαδοποίηση μηνυμάτων κατά συζήτηση"
+#, fuzzy
+msgid "When a message is opened."
+msgstr "Νέο μήνυμα αντί αυτού"
+
+msgid "When displayed"
+msgstr "Κατά την εμφάνιση"
+
+msgid "After two seconds"
+msgstr "Μετά από δύο δευτερόλεπτα"
 
 msgid "Newest message first"
 msgstr "Νεότερο μήνυμα πρώτο"
 
-msgid "In the reading pane."
-msgstr "Στο παράθυρο ανάγνωσης."
+#, fuzzy
+msgid "In a conversation."
+msgstr "Προσθήκη αστεριού στη συζήτηση"
 
-msgid "Fold earlier messages"
-msgstr "Σύμπτυξη παλαιότερων μηνυμάτων"
+#, fuzzy
+msgid "Confirm deleting a conversation"
+msgstr "Διαγραφή συνομιλίας"
 
-msgid "The newest always opens."
-msgstr "Ανοίγει πάντα το νεότερο μήνυμα."
-
-msgid "Show your own replies in the message list"
-msgstr "Εμφάνιση των δικών σας απαντήσεων στη λίστα μηνυμάτων"
-
-msgid "Off shows the last message that arrived."
-msgstr "Ανενεργό: εμφανίζεται το τελευταίο μήνυμα που έφτασε."
-
-msgid "Attachments on each message"
-msgstr "Συνημμένα σε κάθε μήνυμα"
-
-msgid "Attachment drawer"
-msgstr "Συρτάρι συνημμένων"
-
-msgid "Confirm conversation deletion"
-msgstr "Επιβεβαίωση διαγραφής συζήτησης"
-
-msgid "Dates follow the system unless a format is chosen here."
+msgid "Swipe to archive or delete"
 msgstr ""
-"Οι ημερομηνίες ακολουθούν τις ρυθμίσεις συστήματος, εκτός αν επιλεγεί εδώ "
-"μορφή."
 
-msgid "Date format"
-msgstr "Μορφή ημερομηνίας"
-
-msgid "Clock"
-msgstr "Ρολόι"
-
-msgid "Instant new mail (push)"
-msgstr "Άμεσα νέα μηνύματα (push)"
-
-msgid "Microsoft 365 accounts check at the interval above."
-msgstr "Οι λογαριασμοί Microsoft 365 ελέγχονται στο παραπάνω διάστημα."
-
-msgid "Save data on metered connections"
-msgstr "Εξοικονόμηση δεδομένων σε συνδέσεις με χρέωση"
-
-msgid "New mail still arrives. Nothing else is fetched ahead."
+msgid "For touch screens and touchpads."
 msgstr ""
-"Η νέα αλληλογραφία εξακολουθεί να λαμβάνεται. Δεν γίνεται εκ των προτέρων "
-"λήψη άλλων δεδομένων."
-
-msgid "Notifications"
-msgstr "Ειδοποιήσεις"
 
 msgid "Desktop notifications"
 msgstr "Ειδοποιήσεις επιφάνειας εργασίας"
 
-msgid "For new mail and errors, while the window is in the background."
+#, fuzzy
+msgid "While the window is in the background."
 msgstr ""
 "Για νέα μηνύματα και σφάλματα όταν το παράθυρο βρίσκεται στο παρασκήνιο."
 
 msgid "Show sender and subject"
 msgstr "Εμφάνιση αποστολέα και θέματος"
+
+msgid "Off, the notification only says “New message”."
+msgstr ""
 
 #, fuzzy
 msgid "Read receipts"
@@ -5186,132 +4875,80 @@ msgstr "Απόκρυψη παραληπτών"
 msgid "When someone opens mail you asked a receipt for."
 msgstr ""
 
-msgid "Sound for new mail"
-msgstr "Ήχος για νέα αλληλογραφία"
+#, fuzzy
+msgid "Check for new messages"
+msgstr "Έλεγχος για νέα μηνύματα"
 
-msgid "Sound"
-msgstr "Ήχος"
+msgid "Instant new mail (push)"
+msgstr "Άμεσα νέα μηνύματα (push)"
 
-msgid "Play"
-msgstr "Αναπαραγωγή"
+msgid "Microsoft 365 accounts check at the interval above."
+msgstr "Οι λογαριασμοί Microsoft 365 ελέγχονται στο παραπάνω διάστημα."
 
-msgid "Sound file"
-msgstr "Αρχείο ήχου"
-
-msgid "Choose…"
-msgstr "Επιλογή…"
-
-msgid "Also play while Tegami Mail is in front"
-msgstr "Αναπαραγωγή ήχου και όταν το Tegami Mail βρίσκεται στο προσκήνιο"
-
-msgid "Notification buttons"
-msgstr "Κουμπιά ειδοποιήσεων"
-
-msgid "Up to three buttons on a notification about one message."
-msgstr "Έως τρία κουμπιά σε μια ειδοποίηση για ένα μήνυμα."
-
-msgid "Show sender avatars"
-msgstr "Εμφάνιση εικόνων αποστολέων"
-
-msgid "Sent mail uses your account circle"
-msgstr "Τα απεσταλμένα χρησιμοποιούν τον κύκλο του λογαριασμού σας"
-
-msgid "The account's picture or emoji, as in the sidebar."
-msgstr "Η εικόνα ή το emoji του λογαριασμού, όπως στην πλευρική στήλη."
-
-msgid "Layout"
-msgstr "Διάταξη"
-
-msgid "Automatic uses single lines in wide windows."
-msgstr "Η αυτόματη επιλογή χρησιμοποιεί μονές γραμμές σε πλατιά παράθυρα."
-
-msgid "Preview lines"
-msgstr "Γραμμές προεπισκόπησης"
-
-msgid "Off also stops downloading previews."
-msgstr "Ανενεργό: σταματά επίσης τη λήψη προεπισκοπήσεων."
-
-msgid "Group by date"
-msgstr "Ομαδοποίηση κατά ημερομηνία"
-
-msgid "Tags and labels under the text"
-msgstr "Ετικέτες κάτω από το κείμενο"
-
-msgid "Gives the subject its full width."
-msgstr "Δίνει στο θέμα όλο το διαθέσιμο πλάτος."
-
-msgid "Keep the search field open"
-msgstr "Διατήρηση ανοιχτού πεδίου αναζήτησης"
-
-msgid "Search field position"
-msgstr "Θέση πεδίου αναζήτησης"
-
-msgid "Selection bar position"
-msgstr "Θέση γραμμής επιλογής"
-
-msgid "Tint tagged messages"
-msgstr "Χρωματισμός μηνυμάτων με ετικέτα"
-
-msgid "In the color of its first tag."
-msgstr "Στο χρώμα της πρώτης ετικέτας του."
-
-msgid "Actions palette in the message list"
-msgstr "Παλέτα ενεργειών στη λίστα μηνυμάτων"
-
-msgid "The ⋯ row under each message."
-msgstr "Η γραμμή ⋯ κάτω από κάθε μήνυμα."
-
-msgid "Open the actions palette on hover"
-msgstr "Άνοιγμα της παλέτας ενεργειών κατά την αιώρηση"
-
-msgid "Swipe actions"
-msgstr "Ενέργειες σάρωσης"
+msgid "Style"
+msgstr "Εμφάνιση"
 
 msgid ""
-"Left deletes, right archives. Drag with the mouse or swipe with two fingers."
+"Follows the system by default. The accent colour also comes from the system."
 msgstr ""
-"Το αριστερό σύρετε διαγράφει και το δεξί αρχειοθετεί. Σύρετε με το ποντίκι ή "
-"με δύο δάχτυλα."
 
-msgid "Reverse swipe directions"
-msgstr "Αντιστροφή κατευθύνσεων σάρωσης"
+msgid "Keep running in the background"
+msgstr "Διατήρηση εκτέλεσης στο παρασκήνιο"
 
-msgid "Trackpad swipe sensitivity"
-msgstr "Ευαισθησία σάρωσης επιφάνειας αφής"
-
-msgid "Raise it if swipes stop short. Mouse drags are unaffected."
+msgid "Closing the window keeps Tegami Mail running for notifications."
 msgstr ""
-"Αυξήστε την τιμή αν οι κινήσεις σάρωσης δεν φτάνουν μέχρι το τέλος. Οι "
-"κινήσεις με το ποντίκι δεν επηρεάζονται."
 
-msgid "Actions palette timeout"
-msgstr "Χρόνος λήξης παλέτας ενεργειών"
+msgid "Start at login"
+msgstr "Εκκίνηση κατά τη σύνδεση"
 
-msgid "Seconds it stays open after the pointer leaves."
-msgstr "Δευτερόλεπτα που παραμένει ανοιχτό αφού απομακρυνθεί ο δείκτης."
+msgid "Single-key shortcuts"
+msgstr "Συντομεύσεις ενός πλήκτρου"
 
-msgid "Columns"
-msgstr "Στήλες"
+#, fuzzy
+msgid "Ctrl+? shows them all."
+msgstr "Το Ctrl+0 επαναφέρει την προεπιλογή."
 
-msgid ""
-"For the single-line layout. Drag columns to reorder them or out to remove "
-"them. Due Date shows only for Microsoft 365 mail."
+msgid "Gmail keys"
+msgstr "Πλήκτρα Gmail"
+
+msgid "Swaps the single-key shortcuts for Gmail equivalents."
 msgstr ""
-"Για τη διάταξη μίας γραμμής. Σύρετε τις στήλες για αλλαγή σειράς ή έξω από "
-"τη λίστα για αφαίρεση. Η ημερομηνία λήξης εμφανίζεται μόνο για αλληλογραφία "
-"Microsoft 365."
+"Αντικαθιστά τις συντομεύσεις ενός πλήκτρου με τις αντίστοιχες του Gmail."
 
-msgid "Show column headings"
-msgstr "Εμφάνιση επικεφαλίδων στηλών"
+msgid "Keep downloaded mail"
+msgstr "Διατήρηση ληφθέντων μηνυμάτων"
 
-msgid "Fit columns to the list"
-msgstr "Προσαρμογή στηλών στο πλάτος της λίστας"
+#, fuzzy
+msgid "On this computer, for reading offline."
+msgstr "Σε αυτόν τον υπολογιστή"
 
-msgid "Off, a narrow list scrolls sideways."
-msgstr "Ανενεργό: μια στενή λίστα μετακινείται οριζόντια."
+msgid "Always"
+msgstr "Πάντα"
 
-msgid "Restore defaults"
-msgstr "Επαναφορά προεπιλογών"
+msgid "A year"
+msgstr "Ένα έτος"
+
+msgid "90 days"
+msgstr "90 ημέρες"
+
+msgid "30 days"
+msgstr "30 ημέρες"
+
+#, fuzzy
+msgid "Large attachments"
+msgstr "Έχει συνημμένα"
+
+msgid "Ask each time"
+msgstr "Ερώτηση κάθε φορά"
+
+msgid "Attach them anyway"
+msgstr "Επισύναψή τους ούτως ή άλλως"
+
+msgid "Upload to cloud storage and link them"
+msgstr "Μεταφόρτωση στην αποθήκευση cloud και προσθήκη συνδέσμων"
+
+msgid "Privacy"
+msgstr "Απόρρητο"
 
 msgid "Tegami Mail collects no telemetry and sends no analytics."
 msgstr ""
@@ -5371,160 +5008,17 @@ msgstr "Απόκρυψη παραληπτών"
 msgid "A receipt tells the sender when you opened the message."
 msgstr ""
 
-msgid "Open at startup"
-msgstr "Άνοιγμα κατά την εκκίνηση"
-
-msgid "Folder order"
-msgstr "Σειρά φακέλων"
-
-msgid "Dragging a folder switches to Custom Order."
-msgstr "Η μεταφορά φακέλου ενεργοποιεί την προσαρμοσμένη σειρά."
-
-msgid "Chevron placement"
-msgstr "Τοποθέτηση βέλους"
-
-msgid "Fold accounts with one click"
-msgstr "Σύμπτυξη λογαριασμών με ένα κλικ"
-
-msgid "When off, only its chevron or a double click activates the fold."
-msgstr ""
-"Όταν είναι απενεργοποιημένο, η σύμπτυξη γίνεται μόνο με το βέλος ή με διπλό "
-"κλικ."
-
-msgid "Expand the sidebar on hover"
-msgstr "Ανάπτυξη πλευρικής στήλης κατά την αιώρηση"
-
-msgid "Hovering the icon rail floats the full sidebar out."
-msgstr ""
-"Με το πέρασμα πάνω από τη λωρίδα εικονιδίων, εμφανίζεται ολόκληρη η πλευρική "
-"στήλη."
-
-msgid "Remember the sidebar layout"
-msgstr "Απομνημόνευση διάταξης πλευρικής στήλης"
-
-msgid "Off starts every launch folded up."
-msgstr "Ανενεργό: κάθε εκκίνηση ξεκινά με τις ενότητες συμπτυγμένες."
-
-msgid "Remember icon rail state"
-msgstr "Απομνημόνευση κατάστασης γραμμής εικονιδίων"
-
-msgid "Highlight only new unread mail"
-msgstr "Επισήμανση μόνο νέας μη αναγνωσμένης αλληλογραφίας"
-
-msgid "A count turns grey once you have looked at the folder."
-msgstr "Ο αριθμός γίνεται γκρίζος μόλις ανοίξετε τον φάκελο."
-
-msgid "Sections"
-msgstr "Ενότητες"
-
-msgid "Section style"
-msgstr "Στυλ ενότητας"
-
-msgid "Tags placement"
-msgstr "Τοποθέτηση ετικετών"
-
-msgid "Favorites placement"
-msgstr "Θέση αγαπημένων"
-
-msgid "Icon rail"
-msgstr "Γραμμή εικονιδίων"
-
-msgid "Unread dots instead of counts"
-msgstr "Κουκκίδες αντί για πλήθος μη αναγνωσμένων"
-
-msgid "The count stays in the tooltip."
-msgstr "Ο αριθμός παραμένει στην επεξήγηση εργαλείου."
-
-msgid "Fold up expanded items"
-msgstr "Σύμπτυξη ανεπτυγμένων στοιχείων"
-
-msgid "The items below start folded up in the rail. Long-press to open one."
-msgstr ""
-"Τα παρακάτω στοιχεία ξεκινούν συμπτυγμένα στη λωρίδα. Πατήστε παρατεταμένα "
-"για να ανοίξετε ένα."
-
-msgid ""
-"Inside the Flatpak sandbox, links open through the desktop's chooser. \"Ask "
-"each time\" picks the browser per link with the option to remember it."
-msgstr ""
-"Μέσα στο περιβάλλον Flatpak, οι σύνδεσμοι ανοίγουν μέσω του επιλογέα της "
-"επιφάνειας εργασίας. Η επιλογή «Ερώτηση κάθε φορά» επιλέγει πρόγραμμα "
-"περιήγησης για κάθε σύνδεσμο και μπορεί να απομνημονεύσει την επιλογή."
-
-msgid "\"Ask each time\" lets the desktop ask before each link."
-msgstr ""
-"Η επιλογή «Ερώτηση κάθε φορά» επιτρέπει στην επιφάνεια εργασίας να ρωτά πριν "
-"από κάθε σύνδεσμο."
-
-msgid "Not installed"
-msgstr "Δεν είναι εγκατεστημένο"
-
-msgid "Installed and loaded by Files"
-msgstr "Εγκατεστημένο και φορτωμένο από τα Αρχεία"
-
-msgid "Installed, but nautilus-python is missing"
-msgstr "Εγκαταστάθηκε, αλλά λείπει το nautilus-python"
-
-msgid "Installed. Restart Files to load it; it needs nautilus-python"
-msgstr ""
-"Εγκαταστάθηκε. Επανεκκινήστε τα Αρχεία για να φορτωθεί· απαιτείται το "
-"nautilus-python"
-
-msgid "Installed, but from another version"
-msgstr "Εγκαταστάθηκε, αλλά προέρχεται από άλλη έκδοση"
-
-msgid "Measuring…"
-msgstr "Μέτρηση…"
-
-msgid ""
-"Messages {bodies}, attachments {files}. {total} in all, with the message "
-"list."
-msgstr ""
-"Μηνύματα {bodies}, συνημμένα {files}. Σύνολο {total}, μαζί με τη λίστα "
-"μηνυμάτων."
-
-msgid "Could not install the extension"
-msgstr "Δεν ήταν δυνατή η εγκατάσταση της επέκτασης"
-
-msgid "Remove downloaded mail?"
-msgstr "Αφαίρεση ληφθέντων μηνυμάτων;"
-
-msgid ""
-"Mail and attachments on this computer are removed and fetched again when "
-"opened. Nothing on the server changes."
-msgstr ""
-"Τα μηνύματα και τα συνημμένα σε αυτόν τον υπολογιστή αφαιρούνται και "
-"λαμβάνονται ξανά όταν ανοιχτούν. Τίποτα δεν αλλάζει στον διακομιστή."
-
-msgid "Could not remove the extension"
-msgstr "Δεν ήταν δυνατή η αφαίρεση της επέκτασης"
-
-msgid "Could not restart Files"
-msgstr "Δεν ήταν δυνατή η επανεκκίνηση των Αρχείων"
-
 msgid "Other font…"
 msgstr "Άλλη γραμματοσειρά…"
-
-msgid "Search settings"
-msgstr "Αναζήτηση ρυθμίσεων"
-
-msgid "No results"
-msgstr "Δεν βρέθηκαν αποτελέσματα"
-
-#. Translators: words the settings search finds the Contacts page by,
-#. separated by spaces; keep "CardDAV" and "LDAP".
-msgid ""
-"address books CardDAV LDAP directory directories Online Accounts Nextcloud "
-"iCloud Google Microsoft vCard"
-msgstr ""
-"κατάλογοι διευθύνσεων CardDAV LDAP κατάλογοι Online Accounts Nextcloud "
-"iCloud Google Microsoft vCard"
 
 msgid "System language — {language}"
 msgstr "Γλώσσα συστήματος — {language}"
 
 msgid "Forget this word"
 msgstr "Να ξεχαστεί αυτή η λέξη"
+
+msgid "Preferences"
+msgstr ""
 
 msgid "Print message"
 msgstr "Εκτύπωση μηνύματος"
@@ -5850,6 +5344,9 @@ msgstr "Αρχείο"
 msgid "Script"
 msgstr ""
 
+msgid "Translation"
+msgstr "Μετάφραση"
+
 msgid ""
 "Uses a translation service under your own key. A message's text is sent only "
 "when you translate it."
@@ -6021,8 +5518,17 @@ msgstr ""
 "Μερικές δημοφιλείς επιλογές — όλα μπορούν να αλλάξουν αργότερα στις "
 "Ρυθμίσεις."
 
+msgid "Preview lines"
+msgstr "Γραμμές προεπισκόπησης"
+
 msgid "Message text shown under each subject"
 msgstr "Κείμενο μηνύματος που εμφανίζεται κάτω από κάθε θέμα"
+
+msgid "1 line"
+msgstr "1 γραμμή"
+
+msgid "2 lines"
+msgstr "2 γραμμές"
 
 msgid "Sender avatars"
 msgstr "Εικόνες αποστολέων"
@@ -6555,6 +6061,9 @@ msgstr ""
 msgid "Test connection"
 msgstr "Δοκιμή σύνδεσης"
 
+msgid "Appearance"
+msgstr "Εμφάνιση"
+
 msgid "Account accent color"
 msgstr "Χρώμα έμφασης λογαριασμού"
 
@@ -6578,6 +6087,9 @@ msgstr "Emoji"
 
 msgid "Instead of initials."
 msgstr "Αντί για αρχικά."
+
+msgid "Choose…"
+msgstr "Επιλογή…"
 
 msgid "Use initials"
 msgstr "Χρήση αρχικών"
@@ -6705,6 +6217,9 @@ msgstr ""
 "Εμφανίζει το όνομα μιας ετικέτας όταν το μήνυμα παρέχει μόνο το "
 "αναγνωριστικό της."
 
+msgid "Folder order"
+msgstr "Σειρά φακέλων"
+
 msgid "Also in the right-click menu of its Folders heading."
 msgstr "Επίσης στο μενού δεξιού κλικ της επικεφαλίδας «Φάκελοι»."
 
@@ -6820,38 +6335,69 @@ msgstr ""
 "Έλεγχος όλων των γραμματοκιβωτίων για ετικέτες που έχουν οριστεί από άλλους "
 "πελάτες"
 
-msgid "Style"
-msgstr "Εμφάνιση"
+#, fuzzy
+msgid "Senders"
+msgstr "Αποστολέας"
 
-msgid "Messages have their own setting under Reading."
-msgstr "Τα μηνύματα έχουν τη δική τους ρύθμιση στην ενότητα Ανάγνωση."
-
-msgid "Text size"
-msgstr "Μέγεθος κειμένου"
-
-msgid "Adjusts the interface and message text size."
+msgid "Backup and restore"
 msgstr ""
-"Ρυθμίζει το μέγεθος του περιβάλλοντος εργασίας και του κειμένου των "
-"μηνυμάτων."
 
-msgid "Use your desktop environment's icon set"
-msgstr "Χρήση του συνόλου εικονιδίων του περιβάλλοντος εργασίας"
+#, fuzzy
+msgid "Organize mail"
+msgstr "Αλληλογραφία"
 
-msgid "This window opens to"
-msgstr "Αυτό το παράθυρο ανοίγει στο"
+#, fuzzy
+msgid "Services"
+msgstr "Υπηρεσία"
 
-msgid "Toolbar"
-msgstr "Γραμμή εργαλείων"
+#, fuzzy
+msgid "Allowed and blocked"
+msgstr "Επιτρεπόμενοι αποστολείς"
 
-msgid ""
-"Drag buttons between the groups. The right group folds into ⋯ when the pane "
-"is narrow."
+msgid "Reading"
+msgstr "Ανάγνωση"
+
+msgid "Composing"
+msgstr "Σύνταξη"
+
+#, fuzzy
+msgid "Replies are sent from the address that received the message."
+msgstr "Οι απαντήσεις αποστέλλονται από τη διεύθυνση στην οποία στάλθηκαν."
+
+#, fuzzy
+msgid "Format of new messages"
+msgstr "Στην κορυφή της λίστας"
+
+msgid "How long a message can still be recalled."
 msgstr ""
-"Σύρετε τα κουμπιά μεταξύ των ομάδων. Η δεξιά ομάδα συμπτύσσεται σε ⋯ όταν το "
-"πλαίσιο είναι στενό."
 
-msgid "Always fold the right group into ⋯"
+msgid "Notifications"
+msgstr "Ειδοποιήσεις"
+
+#, fuzzy
+msgid "New messages"
+msgstr "Νέο μήνυμα"
+
+msgid "Sound and banners"
 msgstr ""
+
+msgid "Open the system notification settings"
+msgstr ""
+
+msgid "Sound, banners and Do Not Disturb are set there."
+msgstr ""
+
+#, fuzzy
+msgid "Application"
+msgstr "Ενέργεια"
+
+#, fuzzy
+msgid "Background"
+msgstr "Εκτέλεση στο παρασκήνιο"
+
+#, fuzzy
+msgid "Keyboard and storage"
+msgstr "Συντομεύσεις πληκτρολογίου"
 
 msgid "Send new messages from"
 msgstr "Αποστολή νέων μηνυμάτων από"
@@ -6980,244 +6526,6 @@ msgstr "Λέξεις που προστέθηκαν"
 
 msgid "Changes apply after a restart."
 msgstr "Οι αλλαγές εφαρμόζονται μετά από επανεκκίνηση."
-
-msgid "Conversations mark each message as it comes into view."
-msgstr "Οι συζητήσεις σημειώνουν κάθε μήνυμα ως αναγνωσμένο καθώς εμφανίζεται."
-
-msgid "Message appearance"
-msgstr "Εμφάνιση μηνυμάτων"
-
-#, fuzzy
-msgid "Show account in message header"
-msgstr "Εμφάνιση διακόπτη Προβολής ανάγνωσης στην κεφαλίδα μηνύματος"
-
-msgid ""
-"Where the list mixes accounts, the account a message is in, above its "
-"subject."
-msgstr ""
-
-msgid "Ctrl+0 returns to the default."
-msgstr "Το Ctrl+0 επαναφέρει την προεπιλογή."
-
-msgid "Use my own font"
-msgstr "Χρήση δικής μου γραμματοσειράς"
-
-msgid "The font below replaces the sender's."
-msgstr "Η παρακάτω γραμματοσειρά αντικαθιστά εκείνη του αποστολέα."
-
-msgid "Message font"
-msgstr "Γραμματοσειρά μηνυμάτων"
-
-msgid "The interface font unless another is chosen."
-msgstr "Η γραμματοσειρά του περιβάλλοντος, εκτός αν επιλεγεί άλλη."
-
-msgid "Use my own colors"
-msgstr "Χρήση δικών μου χρωμάτων"
-
-msgid "Ignores the sender's colors. Pictures stay; links use the accent color."
-msgstr ""
-"Αγνοεί τα χρώματα του αποστολέα. Οι εικόνες διατηρούνται· οι σύνδεσμοι "
-"χρησιμοποιούν το χρώμα έμφασης."
-
-msgid "Plain-text messages in monospace"
-msgstr "Μηνύματα απλού κειμένου με γραμματοσειρά σταθερού πλάτους"
-
-msgid "Formatted messages are not affected."
-msgstr "Τα μορφοποιημένα μηνύματα δεν επηρεάζονται."
-
-msgid "Monospace font"
-msgstr "Γραμματοσειρά σταθερού πλάτους"
-
-msgid "The system's monospace font unless another is chosen."
-msgstr "Η γραμματοσειρά monospace του συστήματος, εκτός αν επιλεγεί άλλη."
-
-msgid "Message card actions palette"
-msgstr "Παλέτα ενεργειών κάρτας μηνύματος"
-
-msgid "Message card actions palette timeout"
-msgstr "Χρόνος λήξης παλέτας ενεργειών κάρτας μηνύματος"
-
-msgid "Message card actions palette as a menu"
-msgstr "Παλέτα ενεργειών κάρτας μηνύματος ως μενού"
-
-msgid "The ⋯ opens the right-click menu instead."
-msgstr "Το ⋯ ανοίγει αντί γι’ αυτό το μενού δεξιού κλικ."
-
-msgid "Single messages as cards"
-msgstr "Μεμονωμένα μηνύματα ως κάρτες"
-
-msgid "Off fills the pane edge to edge."
-msgstr "Ανενεργό: το περιεχόμενο καταλαμβάνει όλο το πλάτος του πλαισίου."
-
-msgid "Always show recipients"
-msgstr "Να εμφανίζονται πάντα οι παραλήπτες"
-
-msgid "Name the OpenPGP result"
-msgstr "Ονομασία του αποτελέσματος OpenPGP"
-
-msgid "Off shows the icons alone."
-msgstr "Ανενεργό: εμφανίζονται μόνο τα εικονίδια."
-
-#, fuzzy
-msgid "Find bar position"
-msgstr "Θέση γραμμής επιλογής"
-
-msgid "Printing"
-msgstr "Εκτύπωση"
-
-msgid "Page numbers"
-msgstr "Αριθμοί σελίδων"
-
-msgid "Date printed"
-msgstr "Ημερομηνία εκτύπωσης"
-
-msgid "Wider left margin"
-msgstr "Μεγαλύτερο αριστερό περιθώριο"
-
-msgid "25 mm, so punched holes miss the text."
-msgstr "25 mm, ώστε οι τρύπες διάτρησης να μην περνούν μέσα από το κείμενο."
-
-msgid "Applies after a restart."
-msgstr "Εφαρμόζεται μετά από επανεκκίνηση."
-
-msgid "Renderer"
-msgstr "Μηχανή απόδοσης"
-
-msgid "Try OpenGL or Software on older graphics. Applies after a restart."
-msgstr ""
-"Δοκιμάστε OpenGL ή Λογισμικό σε παλαιότερα γραφικά. Εφαρμόζεται μετά από "
-"επανεκκίνηση."
-
-msgid "Keep running in the background"
-msgstr "Διατήρηση εκτέλεσης στο παρασκήνιο"
-
-msgid "Closing the window hides it. Quit from Background Apps."
-msgstr ""
-"Το κλείσιμο του παραθύρου το κρύβει. Για έξοδο, χρησιμοποιήστε τις Εφαρμογές "
-"παρασκηνίου."
-
-msgid "Start at login"
-msgstr "Εκκίνηση κατά τη σύνδεση"
-
-msgid "Starts hidden."
-msgstr "Εκκινείται κρυφό."
-
-msgid "Start fullscreen"
-msgstr ""
-
-msgid "F11 switches fullscreen on and off."
-msgstr ""
-
-msgid "Show a tray icon"
-msgstr "Εμφάνιση εικονιδίου περιοχής ειδοποιήσεων"
-
-msgid "To use on GNOME, install an AppIndicator extension."
-msgstr "Για χρήση στο GNOME, εγκαταστήστε επέκταση AppIndicator."
-
-msgid "Tray icon"
-msgstr "Εικονίδιο περιοχής ειδοποιήσεων"
-
-msgid "Unread mail in the tray menu"
-msgstr "Μη αναγνωσμένα μηνύματα στο μενού περιοχής ειδοποιήσεων"
-
-msgid "Unread count on the app icon"
-msgstr "Καταμέτρηση μη αναγνωσμένων στο εικονίδιο της εφαρμογής"
-
-msgid "To use on GNOME, install a dock extension such as Dash to Dock."
-msgstr ""
-"Για χρήση στο GNOME, εγκαταστήστε επέκταση βάσης, όπως το Dash to Dock."
-
-msgid "Single-key shortcuts"
-msgstr "Συντομεύσεις ενός πλήκτρου"
-
-msgid "Press Ctrl+? to list all shortcuts."
-msgstr "Πατήστε Ctrl+? για να δείτε όλες τις συντομεύσεις."
-
-msgid "Gmail keys"
-msgstr "Πλήκτρα Gmail"
-
-msgid "Swaps the single-key shortcuts for Gmail equivalents."
-msgstr ""
-"Αντικαθιστά τις συντομεύσεις ενός πλήκτρου με τις αντίστοιχες του Gmail."
-
-msgid "Status bar"
-msgstr "Γραμμή κατάστασης"
-
-msgid "Console mode"
-msgstr "Λειτουργία κονσόλας"
-
-msgid "Shows a console in the status bar."
-msgstr "Εμφανίζει κονσόλα στη γραμμή κατάστασης."
-
-msgid "For bug reports. Addresses are cut to their domain for privacy."
-msgstr ""
-"Για αναφορές σφαλμάτων. Οι διευθύνσεις περιορίζονται στον τομέα τους για "
-"λόγους απορρήτου."
-
-msgid "Downloaded mail"
-msgstr "Ληφθέντα μηνύματα"
-
-msgid "Remove…"
-msgstr "Αφαίρεση…"
-
-msgid "Keep downloaded mail"
-msgstr "Διατήρηση ληφθέντων μηνυμάτων"
-
-msgid "Mail inside an account's offline period is kept."
-msgstr ""
-
-msgid "GNOME Files integration"
-msgstr "Ενσωμάτωση με τα Αρχεία GNOME"
-
-msgid ""
-"Adds “Send with Tegami Mail” to the right-click menu in Files. Needs the "
-"nautilus-python package and a restart of Files."
-msgstr ""
-"Προσθέτει την επιλογή «Αποστολή με Tegami Mail» στο μενού δεξιού κλικ στα "
-"Αρχεία. Απαιτεί το πακέτο nautilus-python και επανεκκίνηση των Αρχείων."
-
-msgid "Right-click menu entry"
-msgstr "Καταχώριση μενού δεξιού κλικ"
-
-msgid "Install nautilus-python first"
-msgstr "Εγκαταστήστε πρώτα το nautilus-python"
-
-msgid "Restart Files"
-msgstr "Επανεκκίνηση Αρχείων"
-
-msgid "Closes every Files window, like “nautilus -q”."
-msgstr ""
-"Κλείνει όλα τα παράθυρα της εφαρμογής Αρχεία, όπως η εντολή «nautilus -q»."
-
-msgid "Restart"
-msgstr "Επανεκκίνηση"
-
-msgid "Default Send with Tegami Mail behavior"
-msgstr "Προεπιλεγμένη συμπεριφορά Αποστολής με το Tegami Mail"
-
-msgid "Default large attachments behavior"
-msgstr "Προεπιλεγμένη συμπεριφορά μεγάλων συνημμένων"
-
-msgid "Without a cloud storage account, files are attached."
-msgstr "Χωρίς λογαριασμό αποθήκευσης στο cloud, τα αρχεία επισυνάπτονται."
-
-msgid "Size limit"
-msgstr "Όριο μεγέθους"
-
-msgid "In MB, for all the files together."
-msgstr "Σε MB, για όλα τα αρχεία μαζί."
-
-msgid "Links"
-msgstr "Σύνδεσμοι"
-
-msgid "Open links in"
-msgstr "Άνοιγμα συνδέσμων σε"
-
-msgid "Update"
-msgstr "Ενημέρωση"
-
-msgid "Install"
-msgstr "Εγκατάσταση"
 
 msgid "Send as attachment instead"
 msgstr "Αποστολή ως συνημμένο αντί για σύνδεσμο"

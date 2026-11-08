@@ -170,23 +170,11 @@ impl Component for MessageWindow {
             MessageWindowInput::Seen { account_id, id } => {
                 let _ = sender.output(MessageWindowOutput::MarkSeen { account_id, id });
             }
-            MessageWindowInput::SetContentTheme(o) => {
-                self.view.emit(MessageViewInput::SetContentTheme(o));
-            }
-            MessageWindowInput::SetReaderStyle(style) => {
-                self.view.emit(MessageViewInput::SetReaderStyle(style));
-            }
             MessageWindowInput::SetZoom(percent) => {
                 self.view.emit(MessageViewInput::SetZoom(percent));
             }
-            MessageWindowInput::SetZoomDefault(percent) => {
-                self.view.emit(MessageViewInput::SetZoomDefault(percent));
-            }
             MessageWindowInput::Zoom(step) => {
                 let _ = sender.output(MessageWindowOutput::Zoom(step));
-            }
-            MessageWindowInput::SetAccountChipShown(on) => {
-                self.view.emit(MessageViewInput::SetAccountChipShown(on));
             }
             MessageWindowInput::Unsubscribe { message, info } => {
                 let _ = sender.output(MessageWindowOutput::Unsubscribe { message, info });
@@ -222,12 +210,6 @@ impl Component for MessageWindow {
             MessageWindowInput::SetSpoofBannerShown(show) => {
                 self.view.emit(MessageViewInput::SetSpoofBannerShown(show));
             }
-            MessageWindowInput::SetPgpLabels(on) => {
-                self.view.emit(MessageViewInput::SetPgpLabels(on))
-            }
-            MessageWindowInput::SetFindBottom(on) => {
-                self.view.emit(MessageViewInput::SetFindBottom(on))
-            }
             MessageWindowInput::SetSenderCheck(check) => self.on_set_sender_check(check, root),
             MessageWindowInput::SetBody {
                 account_id,
@@ -257,26 +239,6 @@ impl Component for MessageWindow {
             } => self.on_set_attachments(account_id, id, items),
             MessageWindowInput::AttachmentsPending { account_id, id } => {
                 self.on_attachments_pending(account_id, id, &sender)
-            }
-            MessageWindowInput::SetToolbar(layout) => {
-                if self.toolbar != layout {
-                    self.toolbar = layout;
-                    self.relayout_toolbar();
-                    self.sync_toolbar();
-                }
-            }
-            MessageWindowInput::SetToolbarFold(on) => {
-                self.fold_right = on;
-                self.sync_toolbar();
-            }
-            MessageWindowInput::SetAttachmentDrawer(on) => {
-                self.drawer_enabled = on;
-                self.view.emit(MessageViewInput::SetAttachmentDrawer(on));
-                self.sync_attachments();
-            }
-            MessageWindowInput::SetCardAttachmentsShown(on) => {
-                self.view
-                    .emit(MessageViewInput::SetCardAttachmentsShown(on));
             }
             MessageWindowInput::SetCollapsed(on) => {
                 self.collapsed = on;

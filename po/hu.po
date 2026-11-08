@@ -1267,23 +1267,11 @@ msgid "Import failed: {e}"
 msgstr "Az importálás sikertelen: {e}"
 
 #, fuzzy
-msgid "The renderer applies the next time Tegami Mail starts."
-msgstr ""
-"A nyelvi módosítások a Tegami Mail következő indításakor lépnek életbe."
-
-msgid "The language applies the next time Tegami Mail starts."
-msgstr ""
-"A nyelvi módosítások a Tegami Mail következő indításakor lépnek életbe."
-
-#, fuzzy
 msgid "Forward as attachment"
 msgstr "Nincsenek mellékletek"
 
 msgid "Delete {n} messages"
 msgstr "{n} üzenet törlése"
-
-msgid "Customize toolbar…"
-msgstr "Eszköztár testreszabása…"
 
 msgid "Read receipt"
 msgstr ""
@@ -1640,18 +1628,6 @@ msgstr "Név (Z–A)"
 
 msgid "Full path"
 msgstr "Teljes elérési út"
-
-msgid "Spam"
-msgstr "Levélszemét"
-
-msgid "Read/Unread"
-msgstr "Olvasott/olvasatlan"
-
-msgid "Move to"
-msgstr "Áthelyezés"
-
-msgid "Find"
-msgstr "Keresés"
 
 msgid "{date} at {time}"
 msgstr "{date} {time} órakor"
@@ -2202,6 +2178,9 @@ msgstr "Fiók engedélyezése"
 #, fuzzy
 msgid "Forward to"
 msgstr "Továbbítás"
+
+msgid "Move to"
+msgstr "Áthelyezés"
 
 msgid "forwards to {to}"
 msgstr ""
@@ -4015,10 +3994,6 @@ msgstr "lejár: {date}"
 msgid "Until {date}"
 msgstr "lejár: {date}"
 
-#, fuzzy
-msgid "Customize columns…"
-msgstr "Eszköztár testreszabása…"
-
 msgid "Remove stars"
 msgstr "Csillagok eltávolítása"
 
@@ -4811,59 +4786,8 @@ msgstr[1] "{n} kulcs importálva."
 msgid "That key was already in your keyring."
 msgstr "Ez a kulcs már a kulcstartóján volt."
 
-msgid "Choose a sound"
-msgstr "Válasszon hangot"
-
-msgid "Sounds"
-msgstr "Hangok"
-
-msgid "Drag to move"
-msgstr "Húzás ide move"
-
-msgid "Left group"
-msgstr "Bal oldali csoport"
-
-msgid "Always shown · up to {n}"
-msgstr "Mindig megjelenítve · legfeljebb {n}"
-
-msgid "Right group"
-msgstr "Jobb oldali csoport"
-
 #, fuzzy
-msgid "Folds into ⋯ when narrow"
-msgstr "Folds -ba/-be ⋯ amikvagy narrow · up ide 6"
-
-msgid "Not shown"
-msgstr "Nem jelenik meg"
-
-msgid "Drop a button here to hide it"
-msgstr "Helyezze a kerülmb here ide hide it"
-
-#, fuzzy
-msgid "Shown"
-msgstr "Megjelenítés"
-
-msgid "Left to right"
-msgstr ""
-
-#, fuzzy
-msgid "Drop a column here to hide it"
-msgstr "Helyezze a kerülmb here ide hide it"
-
-msgid "App icon"
-msgstr "Alkalmazásikon"
-
-msgid "Symbolic"
-msgstr "Szimbolikus"
-
-#, fuzzy
-msgid "All unread inbox mail"
-msgstr "Olvasatlan levelek számolása"
-
-msgid "New since the window was last in front"
-msgstr ""
-
-msgid "Follow system"
+msgid "Follow the system"
 msgstr "Rendszer követése"
 
 msgid "Light"
@@ -4872,23 +4796,8 @@ msgstr "Világos"
 msgid "Dark"
 msgstr "Sötét"
 
-msgid "Aug 23, 2026"
-msgstr "2026. aug. 23."
-
-msgid "23 Aug 2026"
-msgstr "2026. aug. 23."
-
-msgid "2026 Aug 23"
-msgstr "2026. aug. 23."
-
 msgid "System"
 msgstr "Rendszer"
-
-msgid "12-hour (5:40 PM)"
-msgstr "12 órás (17:40)"
-
-msgid "24-hour (17:40)"
-msgstr "24 órás (17:40)"
 
 msgid "Manually"
 msgstr "Kézzel"
@@ -4904,25 +4813,6 @@ msgstr "15 percenként"
 
 msgid "Every 30 minutes"
 msgstr "30 percenként"
-
-#. GNOME Settings' own names for its alert sounds.
-msgid "Click"
-msgstr "Kattint"
-
-#. GNOME Settings' own names for its alert sounds.
-msgid "Hum"
-msgstr "Hum"
-
-#. GNOME Settings' own names for its alert sounds.
-msgid "String"
-msgstr "Karaktersorozat"
-
-#. GNOME Settings' own names for its alert sounds.
-msgid "Swing"
-msgstr "Megváltozik"
-
-msgid "Custom file"
-msgstr "Egyéni fájl"
 
 #, fuzzy
 msgid "Downloading: {done} of {total}"
@@ -5006,51 +4896,6 @@ msgstr ""
 msgid "It works: {server} answered."
 msgstr ""
 
-#, fuzzy
-msgid "Messages already read"
-msgstr "Az üzenet elküldésre kész"
-
-msgid "All but the newest"
-msgstr ""
-
-#, fuzzy
-msgid "Top of the message"
-msgstr "Levélírás a főablakban"
-
-#, fuzzy
-msgid "Bottom of the message"
-msgstr "Levélírás a főablakban"
-
-msgid "Hidden behind a toggle"
-msgstr "Egy kapcsoló mögött rejtve"
-
-msgid "Shown while hovering"
-msgstr "Megjelenítés rámutatáskor"
-
-msgid "Always visible"
-msgstr "Mindig látható"
-
-msgid "Ask each time"
-msgstr "Mindig kérdezz"
-
-msgid "A new message"
-msgstr "Új üzenet"
-
-msgid "A draft you pick"
-msgstr "Egy kiválasztható piszkozat"
-
-msgid "A reply to a message you pick"
-msgstr "Válasz egy általad kiválasztott üzenetre"
-
-msgid "Attach them anyway"
-msgstr "Mindenképpen csatold őket"
-
-msgid "Upload to cloud storage and link them"
-msgstr "Töltsd fel őket a felhőbe, és hozd létre hozzájuk a linkeket"
-
-msgid "System default"
-msgstr "Rendszer alapértelmezés"
-
 msgid "Account of the current folder"
 msgstr "A jelenlegi mappa fiókja"
 
@@ -5085,154 +4930,8 @@ msgstr ""
 msgid "Add a word"
 msgstr "Szó hozzáadása"
 
-msgid "Software"
-msgstr ""
-
-#, fuzzy
-msgid "Unified style"
-msgstr "Egységes"
-
-#, fuzzy
-msgid "Tree style"
-msgstr "Műveletek"
-
-msgid "Above the accounts"
-msgstr "A fiókok felett"
-
-msgid "Below the accounts"
-msgstr "A fiókok alatt"
-
-#, fuzzy
-msgid "The first account's inbox"
-msgstr "Az utolsó fiók beérkező levelei"
-
-msgid "The last account's inbox"
-msgstr "Az utolsó fiók beérkező levelei"
-
-msgid "The last folder"
-msgstr "Az utolsó mappa"
-
-msgid "Left"
-msgstr "Balra"
-
-msgid "Right"
-msgstr "Jobbra"
-
-msgid "1 line"
-msgstr "1 sor"
-
-msgid "2 lines"
-msgstr "2 sor"
-
-msgid "3 lines"
-msgstr "3 sor"
-
-msgid "Cards"
-msgstr ""
-
-#, fuzzy
-msgid "Single line"
-msgstr "Aláhúzott"
-
-#, fuzzy
-msgid "Top of the list"
-msgstr "Levélírás a főablakban"
-
-#, fuzzy
-msgid "Bottom of the list"
-msgstr "Levélírás a főablakban"
-
-msgid "Theme"
-msgstr "Téma"
-
-#, fuzzy
-msgid "Always"
-msgstr "Mindig látható"
-
-#, fuzzy
-msgid "A year"
-msgstr "1 év"
-
-msgid "90 days"
-msgstr ""
-
-msgid "30 days"
-msgstr ""
-
-#, fuzzy
-msgid "Bottom of the window"
-msgstr "Levélírás a főablakban"
-
-#, fuzzy
-msgid "Top of the window"
-msgstr "Levélírás a főablakban"
-
-msgid "When displayed"
-msgstr "Megjelenítés ideje"
-
-msgid "After two seconds"
-msgstr "Két másodperc után"
-
-msgid "{percent}%"
-msgstr "{percent}%"
-
-msgid "Senders"
-msgstr "Feladók"
-
-#, fuzzy
-msgid "Translation"
-msgstr "Fordította"
-
-msgid "General"
-msgstr "Általános"
-
-#. Rendered as Pango markup — a bare "&" breaks it.
-msgid "Appearance"
-msgstr "Megjelenés"
-
-msgid "Sidebar"
-msgstr "Oldalsáv"
-
-msgid "Message list"
-msgstr "Üzenetlista"
-
-msgid "Conversations"
-msgstr "Beszélgetések"
-
-msgid "Reading"
-msgstr "Olvasás"
-
-msgid "Composing"
-msgstr "Levélírás"
-
-msgid "Privacy"
-msgstr "Adatvédelem"
-
-msgid "Date and time"
-msgstr "Dátum és idő"
-
 msgid "Backup"
 msgstr "Biztonsági mentés"
-
-msgid "Save the filter?"
-msgstr "Elmented a szűrőt?"
-
-msgid "Your changes are lost if you discard them."
-msgstr ""
-
-#, fuzzy
-msgid "Save the smart folder?"
-msgstr "Elmented a szűrőt?"
-
-msgid "Save the tag?"
-msgstr "Elmented a címkét?"
-
-#, fuzzy
-msgid "Save the address book?"
-msgstr "El akarod menteni a könyvtárat?"
-
-msgid "Save the account?"
-msgstr "Elmented a fiókot?"
 
 #, fuzzy
 msgid ""
@@ -5251,72 +4950,45 @@ msgstr ""
 "fiókokat: az eltávolítás során a kulcstartó jelszavai is törlődnek, "
 "amelyekről nincs biztonsági másolat."
 
-msgid "Group messages by conversation"
-msgstr "Üzenetek csoportosítása beszélgetés szerint"
+#, fuzzy
+msgid "When a message is opened."
+msgstr "Inkább új üzenet"
+
+msgid "When displayed"
+msgstr "Megjelenítés ideje"
+
+msgid "After two seconds"
+msgstr "Két másodperc után"
 
 msgid "Newest message first"
 msgstr "Legújabb üzenet elöl"
 
 #, fuzzy
-msgid "In the reading pane."
-msgstr "Az olvasópanel eszköztárának összecsukása"
+msgid "In a conversation."
+msgstr "Beszélgetés csillagozása"
 
 #, fuzzy
-msgid "Fold earlier messages"
-msgstr "Keresés az üzenetben"
-
-msgid "The newest always opens."
-msgstr ""
-
-msgid "Show your own replies in the message list"
-msgstr "Jelenítse meg saját válaszait az üzenetlistában"
-
-msgid "Off shows the last message that arrived."
-msgstr "A legutóbb beérkezett üzenetet jeleníti meg."
-
-msgid "Attachments on each message"
-msgstr "Mellékletek az egyes üzenetekhez"
-
-msgid "Attachment drawer"
-msgstr "Csatolmány tároló"
-
-msgid "Confirm conversation deletion"
-msgstr "Beszélgetés törlésének megerősítése"
-
-msgid "Dates follow the system unless a format is chosen here."
-msgstr ""
-
-msgid "Date format"
-msgstr "Dátumformátum"
-
-msgid "Clock"
-msgstr "Óra"
-
-#, fuzzy
-msgid "Instant new mail (push)"
-msgstr "Az új levelek azonnali megjelenítése (IMAP push)"
-
-msgid "Microsoft 365 accounts check at the interval above."
-msgstr ""
-
-#, fuzzy
-msgid "Save data on metered connections"
+msgid "Confirm deleting a conversation"
 msgstr "Beszélgetés törlése"
 
-msgid "New mail still arrives. Nothing else is fetched ahead."
+msgid "Swipe to archive or delete"
 msgstr ""
 
-msgid "Notifications"
-msgstr "Értesítések"
+msgid "For touch screens and touchpads."
+msgstr ""
 
 msgid "Desktop notifications"
 msgstr "Asztali értesítések"
 
-msgid "For new mail and errors, while the window is in the background."
-msgstr ""
+#, fuzzy
+msgid "While the window is in the background."
+msgstr "Futás a háttérben"
 
 msgid "Show sender and subject"
 msgstr "Feladó és tárgy megjelenítése"
+
+msgid "Off, the notification only says “New message”."
+msgstr ""
 
 #, fuzzy
 msgid "Read receipts"
@@ -5325,138 +4997,82 @@ msgstr "Címzettek elrejtése"
 msgid "When someone opens mail you asked a receipt for."
 msgstr ""
 
-msgid "Sound for new mail"
-msgstr "Hangjelzés új e-mail érkezésekor"
-
-msgid "Sound"
-msgstr "Hang"
-
-msgid "Play"
-msgstr "Lejátszás"
-
-msgid "Sound file"
-msgstr "Hangfájl"
-
-msgid "Choose…"
-msgstr "Választás…"
-
-msgid "Also play while Tegami Mail is in front"
-msgstr ""
-
-msgid "Notification buttons"
-msgstr "Értesítési gombok"
-
-msgid "Up to three buttons on a notification about one message."
-msgstr "Egy üzenetről szóló értesítésen legfeljebb három gomb jelenhet meg."
+#, fuzzy
+msgid "Check for new messages"
+msgstr "Új levelek keresése"
 
 #, fuzzy
-msgid "Show sender avatars"
-msgstr "A feladók avatárjai"
+msgid "Instant new mail (push)"
+msgstr "Az új levelek azonnali megjelenítése (IMAP push)"
 
-msgid "Sent mail uses your account circle"
-msgstr "A kiküldött levelek a fiókod körét használják"
-
-#, fuzzy
-msgid "The account's picture or emoji, as in the sidebar."
-msgstr ""
-"Az általad elküldött üzenetek a fiók Gravatar-képét, fotóját vagy emojiját "
-"jelenítik meg, ahogyan az oldalsávban található kör is."
-
-msgid "Layout"
+msgid "Microsoft 365 accounts check at the interval above."
 msgstr ""
 
-msgid "Automatic uses single lines in wide windows."
-msgstr ""
-
-msgid "Preview lines"
-msgstr "Előnézeti sorok"
-
-msgid "Off also stops downloading previews."
-msgstr ""
-
-msgid "Group by date"
-msgstr ""
-
-msgid "Tags and labels under the text"
-msgstr ""
-
-msgid "Gives the subject its full width."
-msgstr ""
-
-msgid "Keep the search field open"
-msgstr ""
-
-#, fuzzy
-msgid "Search field position"
-msgstr "Keresési szűrők"
-
-#, fuzzy
-msgid "Selection bar position"
-msgstr "Műveletek"
-
-#, fuzzy
-msgid "Tint tagged messages"
-msgstr "{n} db üzenet címkézve"
-
-msgid "In the color of its first tag."
-msgstr ""
-
-msgid "Actions palette in the message list"
-msgstr "Műveletpaletta az üzenetlistában"
-
-#, fuzzy
-msgid "The ⋯ row under each message."
-msgstr "Mellékletek az egyes üzenetekhez"
-
-msgid "Open the actions palette on hover"
-msgstr "Műveletpaletta megnyitása, amikor a kurzor fölé van helyezve"
-
-msgid "Swipe actions"
-msgstr "Csúsztatási műveletek"
+msgid "Style"
+msgstr "Stílus"
 
 msgid ""
-"Left deletes, right archives. Drag with the mouse or swipe with two fingers."
+"Follows the system by default. The accent colour also comes from the system."
 msgstr ""
 
-msgid "Reverse swipe directions"
-msgstr "A csúsztatás irányának megfordítása"
+msgid "Keep running in the background"
+msgstr "Futás a háttérben"
 
-msgid "Trackpad swipe sensitivity"
-msgstr "Az érintőpad csúsztatási érzékenysége"
-
-msgid "Raise it if swipes stop short. Mouse drags are unaffected."
+msgid "Closing the window keeps Tegami Mail running for notifications."
 msgstr ""
 
-msgid "Actions palette timeout"
-msgstr "A műveletpaletta időtúllépése"
+msgid "Start at login"
+msgstr "Indítás bejelentkezéskor"
 
-#, fuzzy
-msgid "Seconds it stays open after the pointer leaves."
-msgstr ""
-"Hány másodpercig marad nyitva a kártya műveletpalettája, miután a kurzor "
-"elhagyja azt."
+msgid "Single-key shortcuts"
+msgstr "Egybillentyűs "
 
-msgid "Columns"
-msgstr ""
-
-msgid ""
-"For the single-line layout. Drag columns to reorder them or out to remove "
-"them. Due Date shows only for Microsoft 365 mail."
+msgid "Ctrl+? shows them all."
 msgstr ""
 
 #, fuzzy
-msgid "Show column headings"
-msgstr "Beszélgetés megjelenítése"
+msgid "Gmail keys"
+msgstr "E-mail-cím"
 
-#, fuzzy
-msgid "Fit columns to the list"
-msgstr "Helyezze a kerülmb here ide hide it"
-
-msgid "Off, a narrow list scrolls sideways."
+msgid "Swaps the single-key shortcuts for Gmail equivalents."
 msgstr ""
 
-msgid "Restore defaults"
-msgstr "Alapértelmezett beállítások visszaállítása"
+msgid "Keep downloaded mail"
+msgstr ""
+
+#, fuzzy
+msgid "On this computer, for reading offline."
+msgstr "Ezen a számítógépen"
+
+#, fuzzy
+msgid "Always"
+msgstr "Mindig látható"
+
+#, fuzzy
+msgid "A year"
+msgstr "1 év"
+
+msgid "90 days"
+msgstr ""
+
+msgid "30 days"
+msgstr ""
+
+#, fuzzy
+msgid "Large attachments"
+msgstr "Nincsenek mellékletek"
+
+msgid "Ask each time"
+msgstr "Mindig kérdezz"
+
+msgid "Attach them anyway"
+msgstr "Mindenképpen csatold őket"
+
+msgid "Upload to cloud storage and link them"
+msgstr "Töltsd fel őket a felhőbe, és hozd létre hozzájuk a linkeket"
+
+msgid "Privacy"
+msgstr "Adatvédelem"
 
 msgid "Tegami Mail collects no telemetry and sends no analytics."
 msgstr ""
@@ -5508,145 +5124,7 @@ msgstr "Címzettek elrejtése"
 msgid "A receipt tells the sender when you opened the message."
 msgstr ""
 
-msgid "Open at startup"
-msgstr "Automatikus indítás rendszerindításkor"
-
-msgid "Folder order"
-msgstr "Mappák sorrendje"
-
-msgid "Dragging a folder switches to Custom Order."
-msgstr ""
-
-msgid "Chevron placement"
-msgstr "Nyíl elhelyezése"
-
-msgid "Fold accounts with one click"
-msgstr ""
-
-msgid "When off, only its chevron or a double click activates the fold."
-msgstr ""
-
-msgid "Expand the sidebar on hover"
-msgstr "Oldalsáv kibontása rámutatáskor"
-
-msgid "Hovering the icon rail floats the full sidebar out."
-msgstr ""
-
-msgid "Remember the sidebar layout"
-msgstr "Megjegyzés a oldalsáv layout"
-
-msgid "Off starts every launch folded up."
-msgstr ""
-
-msgid "Remember icon rail state"
-msgstr "Az ikonok sávjának állapotának megjegyzése"
-
-msgid "Highlight only new unread mail"
-msgstr ""
-
-msgid "A count turns grey once you have looked at the folder."
-msgstr ""
-
-#, fuzzy
-msgid "Sections"
-msgstr "Műveletek"
-
-#, fuzzy
-msgid "Section style"
-msgstr "Műveletek"
-
-msgid "Tags placement"
-msgstr "Címkék elhelyezése"
-
-#, fuzzy
-msgid "Favorites placement"
-msgstr "A szűrők elhelyezése"
-
-msgid "Icon rail"
-msgstr "Ikonok sora"
-
-msgid "Unread dots instead of counts"
-msgstr "Olvasatlan pontok a számok helyett"
-
-msgid "The count stays in the tooltip."
-msgstr ""
-
-msgid "Fold up expanded items"
-msgstr "A kibontott elemek összecsukása"
-
-msgid "The items below start folded up in the rail. Long-press to open one."
-msgstr ""
-
-msgid ""
-"Inside the Flatpak sandbox, links open through the desktop's chooser. \"Ask "
-"each time\" picks the browser per link with the option to remember it."
-msgstr ""
-
-msgid "\"Ask each time\" lets the desktop ask before each link."
-msgstr ""
-
-msgid "Not installed"
-msgstr "Nincs telepítve"
-
-msgid "Installed and loaded by Files"
-msgstr "A Files által telepítve és betöltve"
-
-#, fuzzy
-msgid "Installed, but nautilus-python is missing"
-msgstr ""
-"Először telepítsd a nautilus-python csomagot: másold be ezt a terminálba"
-
-msgid "Installed. Restart Files to load it; it needs nautilus-python"
-msgstr ""
-
-#, fuzzy
-msgid "Installed, but from another version"
-msgstr "Telepítve van, de nem ennek a verziónak a példánya"
-
-#, fuzzy
-msgid "Measuring…"
-msgstr "Keresés…"
-
-msgid ""
-"Messages {bodies}, attachments {files}. {total} in all, with the message "
-"list."
-msgstr ""
-
-msgid "Could not install the extension"
-msgstr "A bővítmény telepítése nem sikerült"
-
-msgid "Remove downloaded mail?"
-msgstr ""
-
-#, fuzzy
-msgid ""
-"Mail and attachments on this computer are removed and fetched again when "
-"opened. Nothing on the server changes."
-msgstr ""
-"A könyvtár eltávolításra kerül az Evolution Data Server-ről, így az "
-"Evolution és az azt használó egyéb alkalmazások sem látják többé. A "
-"kiszolgálón semmi sem változik."
-
-msgid "Could not remove the extension"
-msgstr "A bővítményt nem sikerült eltávolítani"
-
-msgid "Could not restart Files"
-msgstr "A alkalmazás újraindítása nem sikerült"
-
 msgid "Other font…"
-msgstr ""
-
-msgid "Search settings"
-msgstr "Keresési beállítások"
-
-msgid "No results"
-msgstr "Nincs találat"
-
-#. Translators: words the settings search finds the Contacts page by,
-#. separated by spaces; keep "CardDAV" and "LDAP".
-msgid ""
-"address books CardDAV LDAP directory directories Online Accounts Nextcloud "
-"iCloud Google Microsoft vCard"
 msgstr ""
 
 msgid "System language — {language}"
@@ -5654,6 +5132,9 @@ msgstr "Rendszer nyelve — {language}"
 
 msgid "Forget this word"
 msgstr "Szó elfelejtése"
+
+msgid "Preferences"
+msgstr ""
 
 msgid "Print message"
 msgstr "Üzenet nyomtatása"
@@ -6002,6 +5483,10 @@ msgstr ""
 msgid "Script"
 msgstr ""
 
+#, fuzzy
+msgid "Translation"
+msgstr "Fordította"
+
 msgid ""
 "Uses a translation service under your own key. A message's text is sent only "
 "when you translate it."
@@ -6167,8 +5652,17 @@ msgstr ""
 "Néhány népszerű beállítás — mindent később a Beállítások menüben "
 "módosíthatsz."
 
+msgid "Preview lines"
+msgstr "Előnézeti sorok"
+
 msgid "Message text shown under each subject"
 msgstr "Az egyes tárgyak alatt megjelenő üzenetszöveg"
+
+msgid "1 line"
+msgstr "1 sor"
+
+msgid "2 lines"
+msgstr "2 sor"
 
 msgid "Sender avatars"
 msgstr "A feladók avatárjai"
@@ -6697,6 +6191,9 @@ msgstr ""
 msgid "Test connection"
 msgstr "Kapcsolat tesztelése"
 
+msgid "Appearance"
+msgstr "Megjelenés"
+
 msgid "Account accent color"
 msgstr "Fiók kiemelőszíne"
 
@@ -6722,6 +6219,9 @@ msgstr "Hangulatjelek"
 #, fuzzy
 msgid "Instead of initials."
 msgstr "Használj kezdőbetűket"
+
+msgid "Choose…"
+msgstr "Választás…"
 
 msgid "Use initials"
 msgstr "Használj kezdőbetűket"
@@ -6848,6 +6348,9 @@ msgstr ""
 msgid "Shows a label's name when a message gives only its ID."
 msgstr ""
 
+msgid "Folder order"
+msgstr "Mappák sorrendje"
+
 #, fuzzy
 msgid "Also in the right-click menu of its Folders heading."
 msgstr ""
@@ -6967,37 +6470,71 @@ msgstr ""
 "Keressen címkéket minden olyan postafiókban, amelyeket más kliensek "
 "állítottak be"
 
-msgid "Style"
-msgstr "Stílus"
+#, fuzzy
+msgid "Senders"
+msgstr "Feladók"
+
+msgid "Backup and restore"
+msgstr ""
 
 #, fuzzy
-msgid "Messages have their own setting under Reading."
+msgid "Organize mail"
+msgstr "Proton Mail"
+
+#, fuzzy
+msgid "Services"
+msgstr "Szolgáltatás"
+
+#, fuzzy
+msgid "Allowed and blocked"
+msgstr "Engedélyezett feladók"
+
+msgid "Reading"
+msgstr "Olvasás"
+
+msgid "Composing"
+msgstr "Levélírás"
+
+#, fuzzy
+msgid "Replies are sent from the address that received the message."
 msgstr ""
-"Maga az alkalmazás. Az üzenettartalom saját beállítással rendelkezik az "
-"Olvasás alatt."
+"A válaszok továbbra is abból a címből érkeznek, ahová az eredeti üzenetet "
+"elküldték."
 
-msgid "Text size"
-msgstr "Text méret"
+#, fuzzy
+msgid "Format of new messages"
+msgstr "Levélírás a főablakban"
 
-msgid "Adjusts the interface and message text size."
+msgid "How long a message can still be recalled."
 msgstr ""
 
-msgid "Use your desktop environment's icon set"
+msgid "Notifications"
+msgstr "Értesítések"
+
+#, fuzzy
+msgid "New messages"
+msgstr "Új üzenet"
+
+msgid "Sound and banners"
 msgstr ""
 
-msgid "This window opens to"
-msgstr "Ez az ablak megnyílik a következő oldalon:"
-
-msgid "Toolbar"
-msgstr "Eszköztár"
-
-msgid ""
-"Drag buttons between the groups. The right group folds into ⋯ when the pane "
-"is narrow."
+msgid "Open the system notification settings"
 msgstr ""
 
-msgid "Always fold the right group into ⋯"
+msgid "Sound, banners and Do Not Disturb are set there."
 msgstr ""
+
+#, fuzzy
+msgid "Application"
+msgstr "Műveletek"
+
+#, fuzzy
+msgid "Background"
+msgstr "Háttérben futtatás"
+
+#, fuzzy
+msgid "Keyboard and storage"
+msgstr "Billentyűparancsok"
 
 msgid "Send new messages from"
 msgstr "Új üzenetek küldése a következő helyről:"
@@ -7131,244 +6668,6 @@ msgstr "Hozzáadott szavak"
 
 msgid "Changes apply after a restart."
 msgstr ""
-
-#, fuzzy
-msgid "Conversations mark each message as it comes into view."
-msgstr ""
-"Amikor a megnyitott üzenet olvasottnak számít. A beszélgetésekben minden "
-"üzenet megjelölésre kerül, amint az láthatóvá válik."
-
-msgid "Message appearance"
-msgstr "Üzenet megjelenése"
-
-#, fuzzy
-msgid "Show account in message header"
-msgstr "„Olvasói nézet” kapcsoló"
-
-msgid ""
-"Where the list mixes accounts, the account a message is in, above its "
-"subject."
-msgstr ""
-
-msgid "Ctrl+0 returns to the default."
-msgstr ""
-
-msgid "Use my own font"
-msgstr "Saját betűtípus használata"
-
-msgid "The font below replaces the sender's."
-msgstr ""
-
-msgid "Message font"
-msgstr "Üzenet betűtípusa"
-
-msgid "The interface font unless another is chosen."
-msgstr "A kezelőfelület betűtípusa, hacsak nincs más kiválasztva."
-
-msgid "Use my own colors"
-msgstr "Saját színek használata"
-
-msgid "Ignores the sender's colors. Pictures stay; links use the accent color."
-msgstr ""
-
-msgid "Plain-text messages in monospace"
-msgstr "Egyszerű szöveges üzenetek monospace betűtípussal"
-
-msgid "Formatted messages are not affected."
-msgstr ""
-
-msgid "Monospace font"
-msgstr "Fix szélességű betűtípus"
-
-msgid "The system's monospace font unless another is chosen."
-msgstr ""
-"A rendszer fix szélességű betűtípusa, amennyiben nincs másik választva."
-
-msgid "Message card actions palette"
-msgstr "Üzenetkártya-műveletek palettája"
-
-msgid "Message card actions palette timeout"
-msgstr "Az üzenetkártya műveletpalettájának időtúllépése"
-
-msgid "Message card actions palette as a menu"
-msgstr "Az üzenetkártya műveleteinek palettája menüként"
-
-msgid "The ⋯ opens the right-click menu instead."
-msgstr ""
-
-msgid "Single messages as cards"
-msgstr "Önálló üzenetek kártyaként"
-
-msgid "Off fills the pane edge to edge."
-msgstr ""
-
-msgid "Always show recipients"
-msgstr "Címzettek mindig jelenjenek meg"
-
-msgid "Name the OpenPGP result"
-msgstr "Nevezze el az OpenPGP eredményt"
-
-msgid "Off shows the icons alone."
-msgstr ""
-
-#, fuzzy
-msgid "Find bar position"
-msgstr "Műveletek"
-
-#, fuzzy
-msgid "Printing"
-msgstr "Írás:"
-
-msgid "Page numbers"
-msgstr ""
-
-#, fuzzy
-msgid "Date printed"
-msgstr "Dátumformátum"
-
-msgid "Wider left margin"
-msgstr ""
-
-msgid "25 mm, so punched holes miss the text."
-msgstr ""
-
-msgid "Applies after a restart."
-msgstr ""
-
-#, fuzzy
-msgid "Renderer"
-msgstr "Feladók"
-
-msgid "Try OpenGL or Software on older graphics. Applies after a restart."
-msgstr ""
-
-msgid "Keep running in the background"
-msgstr "Futás a háttérben"
-
-msgid "Closing the window hides it. Quit from Background Apps."
-msgstr ""
-
-msgid "Start at login"
-msgstr "Indítás bejelentkezéskor"
-
-msgid "Starts hidden."
-msgstr ""
-
-msgid "Start fullscreen"
-msgstr ""
-
-msgid "F11 switches fullscreen on and off."
-msgstr ""
-
-msgid "Show a tray icon"
-msgstr "Tálcaikon megjelenítése"
-
-msgid "To use on GNOME, install an AppIndicator extension."
-msgstr ""
-
-msgid "Tray icon"
-msgstr "Tálcaikon"
-
-msgid "Unread mail in the tray menu"
-msgstr "Olvasatlan levelek a tálcamenüben"
-
-msgid "Unread count on the app icon"
-msgstr "Az alkalmazás ikonján megjelenő olvasatlan üzenetek száma"
-
-msgid "To use on GNOME, install a dock extension such as Dash to Dock."
-msgstr ""
-
-msgid "Single-key shortcuts"
-msgstr "Egybillentyűs "
-
-msgid "Press Ctrl+? to list all shortcuts."
-msgstr ""
-
-#, fuzzy
-msgid "Gmail keys"
-msgstr "E-mail-cím"
-
-msgid "Swaps the single-key shortcuts for Gmail equivalents."
-msgstr ""
-
-#, fuzzy
-msgid "Status bar"
-msgstr "Állapotsáv ({n})"
-
-msgid "Console mode"
-msgstr "Konzol mód"
-
-msgid "Shows a console in the status bar."
-msgstr ""
-
-msgid "For bug reports. Addresses are cut to their domain for privacy."
-msgstr ""
-
-#, fuzzy
-msgid "Downloaded mail"
-msgstr "Letöltés…"
-
-#, fuzzy
-msgid "Remove…"
-msgstr "Eltávolítás"
-
-msgid "Keep downloaded mail"
-msgstr ""
-
-msgid "Mail inside an account's offline period is kept."
-msgstr ""
-
-msgid "GNOME Files integration"
-msgstr "A GNOME Fájlkezelő integrációja"
-
-msgid ""
-"Adds “Send with Tegami Mail” to the right-click menu in Files. Needs the "
-"nautilus-python package and a restart of Files."
-msgstr ""
-
-msgid "Right-click menu entry"
-msgstr "Jobb egérgombbal elérhető menüpont"
-
-#, fuzzy
-msgid "Install nautilus-python first"
-msgstr ""
-"Először telepítsd a nautilus-python csomagot: másold be ezt a terminálba"
-
-msgid "Restart Files"
-msgstr "GNOME fájlkezelő újraindítása"
-
-msgid "Closes every Files window, like “nautilus -q”."
-msgstr ""
-
-msgid "Restart"
-msgstr "Újraindítás"
-
-msgid "Default Send with Tegami Mail behavior"
-msgstr "A Tegami Mail alapértelmezett „Küldés” viselkedése"
-
-msgid "Default large attachments behavior"
-msgstr "Az nagy méretű mellékletek alapértelmezett viselkedése"
-
-msgid "Without a cloud storage account, files are attached."
-msgstr ""
-
-msgid "Size limit"
-msgstr "Méretkorlátozás"
-
-msgid "In MB, for all the files together."
-msgstr "MB-ban, az összes fájl együttesen."
-
-msgid "Links"
-msgstr "Hivatkozások"
-
-msgid "Open links in"
-msgstr "Hivatkozások megnyitása"
-
-msgid "Update"
-msgstr "Frissítés"
-
-msgid "Install"
-msgstr "Telepítés"
 
 msgid "Send as attachment instead"
 msgstr "Küldés inkább mellékletként"

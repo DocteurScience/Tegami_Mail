@@ -156,7 +156,6 @@ impl AppModel {
             | AppMsg::ShowcaseFolder { .. }
             | AppMsg::ShowcaseNotify
             | AppMsg::ShowcaseDeleteAttachment { .. }
-            | AppMsg::ShowcaseToolbarGap { .. }
             | AppMsg::ShowcaseComposeMenu { .. }
             | AppMsg::ShowcaseComposeFrom(..)
             | AppMsg::ShowcaseForward { .. }
@@ -233,10 +232,7 @@ impl AppModel {
             | AppMsg::SetReaderCompact(..)
             | AppMsg::MeasureReaderFold
             | AppMsg::ReaderControlsChanged(..)
-            | AppMsg::ReaderOverflowMenu
-            | AppMsg::ReaderToolbarMenu { .. }
-            | AppMsg::CustomizeToolbar
-            | AppMsg::CustomizeColumns) => self.on_reader_toolbar(msg, sender),
+            | AppMsg::ReaderOverflowMenu) => self.on_reader_toolbar(msg, sender),
             msg @ (AppMsg::WizardLanguage(..)
             | AppMsg::QuitFromTray
             | AppMsg::TrayViewUnread
@@ -248,9 +244,9 @@ impl AppModel {
             | AppMsg::Shortcut(..)
             | AppMsg::ZoomMessage(..)
             | AppMsg::CopyReaderSelection) => self.on_shortcuts(msg, sender),
-            msg @ (AppMsg::SetZoomDefault(..)
-            | AppMsg::SetRemoteContent { .. }
-            | AppMsg::ReloadBody(..)) => self.on_prefs_reader(msg),
+            msg @ (AppMsg::SetRemoteContent { .. } | AppMsg::ReloadBody(..)) => {
+                self.on_prefs_reader(msg)
+            }
             msg @ (AppMsg::Undo | AppMsg::Redo | AppMsg::UndoRestored { .. }) => self.on_undo(msg),
             msg @ (AppMsg::HandOffAction { .. }
             | AppMsg::HandOffDraftPickNow
@@ -277,7 +273,6 @@ impl AppModel {
             | AppMsg::DebugCloseSettings
             | AppMsg::PrewarmSettings
             | AppMsg::SettingsEditorOpen(..)
-            | AppMsg::SettingsLeaveEditor { .. }
             | AppMsg::ServerIdentities { .. }
             | AppMsg::WantIdentities(..)) => self.on_settings_window(msg, sender),
             msg @ (AppMsg::OpenMessageFile(..)
@@ -378,53 +373,24 @@ impl AppModel {
     /// Hand a settings change to the module that applies it.
     fn route_pref(&mut self, pref: PrefOutput, sender: ComponentSender<Self>) {
         match pref {
-            pref @ (PrefOutput::SetFolderSort(..)
-            | PrefOutput::SetSidebarHoverExpand(..)
-            | PrefOutput::SetRememberSidebar(..)
-            | PrefOutput::SetRememberRail(..)
-            | PrefOutput::SetSeenCounts(..)
-            | PrefOutput::SetRailDots(..)
-            | PrefOutput::SetRailFold(..)
-            | PrefOutput::SetSectionStyle(..)
-            | PrefOutput::SetTagsPlacement(..)
-            | PrefOutput::SetFavoritesPlacement(..)
-            | PrefOutput::SetStartView(..)
-            | PrefOutput::SetChevronsLeft(..)
-            | PrefOutput::SetAccountClickFolds(..)) => self.on_prefs_sidebar_pref(pref),
             pref @ (PrefOutput::SetAppTheme(..)
-            | PrefOutput::SetTextScale(..)
             | PrefOutput::SetTheme(..)
             | PrefOutput::SetAvatars(..)
-            | PrefOutput::SetTagRowTint(..)
-            | PrefOutput::SetOwnMailboxFace(..)
             | PrefOutput::SetSenderLogos(..)
-            | PrefOutput::SetDateStyle(..)
-            | PrefOutput::SetRenderer(..)
-            | PrefOutput::SetLanguage(..)
-            | PrefOutput::SetClockStyle(..)
             | PrefOutput::SetGravatar(..)
             | PrefOutput::SetFetchInterval(..)
-            | PrefOutput::SetMeteredSaveData(..)
             | PrefOutput::SetPush(..)
             | PrefOutput::SetNotifications(..)
             | PrefOutput::SetNotificationContent(..)
             | PrefOutput::SetNotifyReceipts(..)
-            | PrefOutput::SetNotificationButtons(..)
             | PrefOutput::SetRunInBackground(..)
             | PrefOutput::SetAutostart(..)
-            | PrefOutput::SetTray(..)
-            | PrefOutput::SetTrayIcon(..)
-            | PrefOutput::SetTrayMail(..)
-            | PrefOutput::SetLauncherBadge(..)
             | PrefOutput::SetSingleKey(..)
-            | PrefOutput::SetStartFullscreen(..)
             | PrefOutput::SetKeepDownloads(..)
             | PrefOutput::SetGmailKeys(..)
-            | PrefOutput::SetDesktopIcons(..)
             | PrefOutput::SetReadMark(..)
             | PrefOutput::SetStatusBarTop(..)
-            | PrefOutput::SetConsoleMode(..)
-            | PrefOutput::SetSettingsOpenAccounts(..)) => self.on_prefs_general_pref(pref, sender),
+            | PrefOutput::SetConsoleMode(..)) => self.on_prefs_general_pref(pref, sender),
             pref @ (PrefOutput::SetContactBook(..)
             | PrefOutput::LoadContactBooks
             | PrefOutput::ImportLocalContacts
@@ -434,54 +400,18 @@ impl AppModel {
             | PrefOutput::ExportLog
             | PrefOutput::ImportSettings
             | PrefOutput::ContactSourcesChanged) => self.on_prefs_data_pref(pref, sender),
-            pref @ (PrefOutput::SetReaderToolbar(..)
-            | PrefOutput::SetToolbarFoldRight(..)
-            | PrefOutput::SetShowRemoteBanner(..)
+            pref @ (PrefOutput::SetShowRemoteBanner(..)
             | PrefOutput::SetShowSpoofBanner(..)
             | PrefOutput::SetReceipts(..)
             | PrefOutput::SetAutoRemoteContent(..)
             | PrefOutput::SetRemoteAhead(..)
             | PrefOutput::SetThreading(..)
-            | PrefOutput::SetThreadRowNewest(..)
             | PrefOutput::SetConfirmThreadDelete(..)
-            | PrefOutput::SetCardActionsMode { .. }
-            | PrefOutput::SetThreadNewestFirst(..)
-            | PrefOutput::SetFoldMessages(..)
-            | PrefOutput::SetAlwaysShowRecipients(..)
-            | PrefOutput::SetCardAttachments(..)
-            | PrefOutput::SetAttachmentDrawer(..)
-            | PrefOutput::SetPgpLabels(..)
-            | PrefOutput::SetAccountChip(..)
-            | PrefOutput::SetReaderFindBottom(..)
-            | PrefOutput::SetSingleMessageCard(..)
-            | PrefOutput::SetCardPaletteCollapse(..)
-            | PrefOutput::SetCardPaletteMenu(..)
-            | PrefOutput::SetMessageTheme(..)
-            | PrefOutput::SetOverrideFonts(..)
-            | PrefOutput::SetReaderFont(..)
-            | PrefOutput::SetPlainMonospace(..)
-            | PrefOutput::SetPlainFont(..)
-            | PrefOutput::SetOverrideColors(..)) => self.on_prefs_reader_pref(pref),
-            pref @ (PrefOutput::SetListLayout(..)
-            | PrefOutput::SetListHeadings(..)
-            | PrefOutput::SetListColumnScroll(..)
-            | PrefOutput::SetListSearchOpen(..)
-            | PrefOutput::SetContactNames(..)
-            | PrefOutput::SetListSearchBottom(..)
-            | PrefOutput::SetListBulkBarBottom(..)
-            | PrefOutput::SetGroupByDate(..)
-            | PrefOutput::SetPillsBelow(..)
-            | PrefOutput::SetListColumns(..)
+            | PrefOutput::SetThreadNewestFirst(..)) => self.on_prefs_reader_pref(pref),
+            pref @ (PrefOutput::SetContactNames(..)
             | PrefOutput::SetPreviewLines(..)
-            | PrefOutput::ResetColumnWidths
-            | PrefOutput::SetPaletteCollapse(..)
-            | PrefOutput::SetListPalette(..)
-            | PrefOutput::SetListPaletteHover(..)
-            | PrefOutput::SetSwipeEnabled(..)
-            | PrefOutput::SetSwipeReversed(..)
-            | PrefOutput::SetSwipeSensitivity(..)) => self.on_prefs_list_pref(pref, sender),
+            | PrefOutput::SetSwipeEnabled(..)) => self.on_prefs_list_pref(pref, sender),
             pref @ (PrefOutput::SetFilesPrefs(..)
-            | PrefOutput::SetLinkBrowser(..)
             | PrefOutput::SetComposeDefaultFrom(..)
             | PrefOutput::SetPastePlain(..)
             | PrefOutput::SetReturnParagraph(..)
@@ -489,7 +419,6 @@ impl AppModel {
             | PrefOutput::SetComposeFont(..)
             | PrefOutput::SetComposeFontSize(..)
             | PrefOutput::SetComposeZoom(..)
-            | PrefOutput::SetPrintOptions(..)
             | PrefOutput::SetSpellcheck(..)
             | PrefOutput::SetSpellcheckLangs(..)
             | PrefOutput::SetComposeFormat(..)

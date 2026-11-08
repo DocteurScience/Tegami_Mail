@@ -149,7 +149,6 @@ pub(super) enum ContactSourcesInput {
         name: Option<String>,
     },
     SaveClicked,
-    CloseEditor,
     RemoveCurrent,
     ConfirmRemove(usize),
     Remove(usize),
@@ -509,10 +508,6 @@ impl SimpleComponent for ContactSources {
                         self.close_editor();
                     }
                 }
-            }
-            ContactSourcesInput::CloseEditor => {
-                *self.save_action.borrow_mut() = None;
-                self.close_editor();
             }
             ContactSourcesInput::RemoveCurrent => {
                 if let Some(Editing::Source(id)) = &self.editing {

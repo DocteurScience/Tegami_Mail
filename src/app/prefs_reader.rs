@@ -1,6 +1,5 @@
 //! Applying reader settings: zoom, font and color overrides.
 
-use adw::prelude::*;
 use relm4::prelude::*;
 
 use crate::config;
@@ -49,51 +48,9 @@ impl AppModel {
         }
     }
 
-    /// Hand the current reader style to the reader and every popped-out window.
-    fn push_reader_style(&self) {
-        let style = self.reader_style();
-        self.message_view
-            .emit(MessageViewInput::SetReaderStyle(style.clone()));
-        self.popouts_emit(|| MessageWindowInput::SetReaderStyle(style.clone()));
-    }
-
-    /// Tell the reader how card actions should show (⋯ toggle / auto on
-    /// hover / always).
-    fn push_card_actions_mode(&self) {
-        self.message_view
-            .emit(MessageViewInput::SetCardActionsMode {
-                hover_toggle: self.card_actions_hover,
-                hover_auto: self.card_actions_auto,
-            });
-    }
-
     /// The settings changes the router sends here (see `AppModel::route`).
     pub(super) fn on_prefs_reader_pref(&mut self, pref: PrefOutput) {
         match pref {
-            PrefOutput::SetReaderToolbar(layout) => {
-                if self.reader_toolbar != layout {
-                    self.reader_toolbar = layout;
-                    config::save_reader_toolbar(&self.reader_toolbar);
-                    self.relayout_reader_toolbar();
-                    self.popouts_emit(|| {
-                        MessageWindowInput::SetToolbar(self.reader_toolbar.clone())
-                    });
-                    self.reader_overflow_btn
-                        .set_visible(self.reader_overflow_wanted());
-                }
-            }
-
-            PrefOutput::SetToolbarFoldRight(on) => {
-                if pref!(self.toolbar_fold_right = on) {
-                    // Shown again, the right group needs the fold point
-                    // measured afresh.
-                    self.refresh_reader_breakpoint();
-                    self.popouts_emit(|| MessageWindowInput::SetToolbarFold(on));
-                    self.reader_overflow_btn
-                        .set_visible(self.reader_overflow_wanted());
-                }
-            }
-
             PrefOutput::SetShowRemoteBanner(on) => {
                 if pref!(self.show_remote_banner = on) {
                     self.message_view.emit(MessageViewInput::SetBannerShown(on));
@@ -140,27 +97,8 @@ impl AppModel {
                 self.sync_show_checks();
             }
 
-            PrefOutput::SetThreadRowNewest(on) => {
-                if pref!(self.thread_row_newest = on) {
-                    self.message_list
-                        .emit(MessageListInput::SetThreadRowNewest(on));
-                }
-            }
-
             PrefOutput::SetConfirmThreadDelete(on) => {
                 pref!(self.confirm_thread_delete = on);
-            }
-
-            PrefOutput::SetCardActionsMode {
-                hover_toggle,
-                hover_auto,
-            } => {
-                if self.card_actions_hover != hover_toggle || self.card_actions_auto != hover_auto {
-                    self.card_actions_hover = hover_toggle;
-                    self.card_actions_auto = hover_auto;
-                    self.save_settings();
-                    self.push_card_actions_mode();
-                }
             }
 
             PrefOutput::SetThreadNewestFirst(on) => {
@@ -172,123 +110,6 @@ impl AppModel {
                 }
             }
 
-            PrefOutput::SetFoldMessages(fold) => {
-                if pref!(self.fold_messages = fold) {
-                    self.message_view
-                        .emit(MessageViewInput::SetFoldMessages(fold));
-                }
-            }
-
-            PrefOutput::SetAlwaysShowRecipients(on) => {
-                if pref!(self.always_show_recipients = on) {
-                    self.message_view
-                        .emit(MessageViewInput::SetAlwaysShowRecipients(on));
-                    // Re-render whatever is open so the header reflects it.
-                    if self.current_thread.len() > 1 {
-                        self.show_thread();
-                    } else if let Some(current) = self.current.clone() {
-                        let m = self.with_cached_body(current);
-                        self.show_message(Some(m), false);
-                    }
-                }
-            }
-
-            PrefOutput::SetCardAttachments(on) => {
-                if pref!(self.card_attachments = on) {
-                    self.message_view
-                        .emit(MessageViewInput::SetCardAttachmentsShown(on));
-                    self.popouts_emit(|| MessageWindowInput::SetCardAttachmentsShown(on));
-                }
-            }
-            PrefOutput::SetAttachmentDrawer(on) => {
-                if pref!(self.drawer_enabled = on) {
-                    self.sync_attachment_drawer();
-                    self.message_view
-                        .emit(MessageViewInput::SetAttachmentDrawer(on));
-                    self.popouts_emit(|| MessageWindowInput::SetAttachmentDrawer(on));
-                }
-            }
-            PrefOutput::SetPgpLabels(on) => {
-                if pref!(self.pgp_labels = on) {
-                    self.message_view.emit(MessageViewInput::SetPgpLabels(on));
-                    self.popouts_emit(|| MessageWindowInput::SetPgpLabels(on));
-                }
-            }
-            PrefOutput::SetAccountChip(on) => {
-                if pref!(self.account_chip = on) {
-                    self.message_view
-                        .emit(MessageViewInput::SetAccountChipShown(on));
-                    self.popouts_emit(|| MessageWindowInput::SetAccountChipShown(on));
-                }
-            }
-            PrefOutput::SetReaderFindBottom(on) => {
-                if pref!(self.reader_find_bottom = on) {
-                    self.message_view.emit(MessageViewInput::SetFindBottom(on));
-                    self.popouts_emit(|| MessageWindowInput::SetFindBottom(on));
-                }
-            }
-            PrefOutput::SetSingleMessageCard(on) => {
-                if pref!(self.single_message_card = on) {
-                    self.message_view
-                        .emit(MessageViewInput::SetSingleMessageCard(on));
-                    // Only lone messages change; re-render one if it's open.
-                    if self.current_thread.len() <= 1 {
-                        if let Some(current) = self.current.clone() {
-                            let m = self.with_cached_body(current);
-                            self.show_message(Some(m), false);
-                        }
-                    }
-                }
-            }
-
-            PrefOutput::SetCardPaletteCollapse(secs) => {
-                if pref!(self.card_palette_collapse_secs = secs) {
-                    self.message_view
-                        .emit(MessageViewInput::SetPaletteCollapse(secs));
-                }
-            }
-
-            PrefOutput::SetCardPaletteMenu(on) => {
-                if pref!(self.card_palette_menu = on) {
-                    self.message_view
-                        .emit(MessageViewInput::SetCardPaletteMenu(on));
-                }
-            }
-
-            PrefOutput::SetMessageTheme(theme) => {
-                if pref!(self.message_theme = theme) {
-                    let dark = theme.dark_override();
-                    // Message content only — the reader and any popped-out windows.
-                    self.message_view
-                        .emit(MessageViewInput::SetContentTheme(dark));
-                    self.popouts_emit(|| MessageWindowInput::SetContentTheme(dark));
-                }
-            }
-            PrefOutput::SetOverrideFonts(on) => {
-                if pref!(self.override_fonts = on) {
-                    self.push_reader_style();
-                }
-            }
-            PrefOutput::SetReaderFont(font) => {
-                if pref!(self.reader_font = font) {
-                    self.push_reader_style();
-                }
-            }
-            PrefOutput::SetPlainMonospace(on) => {
-                if pref!(self.plain_monospace = on) {
-                    self.push_reader_style();
-                }
-            }
-            PrefOutput::SetPlainFont(font) => {
-                if pref!(self.plain_font = font) {
-                    self.push_reader_style();
-                }
-            }
-            PrefOutput::SetOverrideColors(on) => {
-                if pref!(self.override_colors = on) {
-                    self.push_reader_style();
-                }
-            }
             _ => unreachable!("not routed to on_prefs_reader_pref"),
         }
     }
@@ -296,15 +117,6 @@ impl AppModel {
     /// The messages the router sends here (see `AppModel::route`).
     pub(super) fn on_prefs_reader(&mut self, msg: AppMsg) {
         match msg {
-            AppMsg::SetZoomDefault(zoom) => {
-                if pref!(self.zoom_default = zoom) {
-                    self.message_view
-                        .emit(MessageViewInput::SetZoomDefault(zoom));
-                    self.popouts_emit(|| MessageWindowInput::SetZoomDefault(zoom));
-                }
-                // The setting is also what the user wants to see now.
-                self.set_zoom(zoom);
-            }
             AppMsg::SetRemoteContent {
                 account_id,
                 id,
