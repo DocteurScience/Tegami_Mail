@@ -7,8 +7,6 @@ use super::*;
 pub(crate) enum SidebarInput {
     SetContents {
         sections: Vec<SectionData>,
-        /// Whether the account sections are shown at all.
-        chevrons_left: bool,
         /// The favorite folders (#367), from every account.
         favorite_folders: Vec<UnifiedFolderRef>,
         /// The tags (#71), for the Tags section.

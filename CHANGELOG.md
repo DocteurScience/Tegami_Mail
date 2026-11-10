@@ -8,8 +8,9 @@
   dot, folds the accounts and Tags while it is up and opens on a click,
   not on hover; the sidebar's layout and the rail are remembered; an
   account's header folds it from its chevron; unread counts all look
-  alike ("Highlight only new unread mail" goes, #343). Values stored by an
-  earlier version no longer apply.
+  alike ("Highlight only new unread mail" goes, #343); the chevrons sit
+  at the rows' end (the left placement goes). Values stored by an earlier
+  version no longer apply.
 
 - **Removed: the reader's hidden settings** (docs/DESIGN.md, "Removed or
   moved": message cards and header options, find bar position). A lone

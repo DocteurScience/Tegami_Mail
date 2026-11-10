@@ -10,7 +10,7 @@ use super::types::{
     UnifiedRow,
 };
 use super::widgets::{
-    heading_chevron, section_heading, style_badge, tree_indent, with_unread_overlay, ROW_LEFT_INSET,
+    heading_chevron, section_heading, style_badge, tree_indent, with_unread_overlay,
 };
 use super::*;
 
@@ -87,22 +87,8 @@ impl Sidebar {
             chev_btn.connect_clicked(move |_| {
                 let _ = cs.send(toggle_msg(row_kind));
             });
-            row.add_css_class(if self.chevrons_left {
-                "chev-left"
-            } else {
-                "chev-right"
-            });
+            row.add_css_class("chev-right");
             pin_icon_size(&img);
-            // Centers this 16px icon on the avatar circles below it (rather
-            // than matching left edges): a small icon flush with a much
-            // wider circle's left edge reads as off-centre next to it
-            // (PR #95).
-            let icon_inset = if self.chevrons_left {
-                ROW_LEFT_INSET + 9
-            } else {
-                0
-            };
-            img.set_margin_start(icon_inset);
             hbox.append(&img);
             let label = gtk::Label::new(Some(&title));
             label.set_halign(gtk::Align::Start);
@@ -111,9 +97,6 @@ impl Sidebar {
             // chevron never leave the row.
             label.set_ellipsize(gtk::pango::EllipsizeMode::End);
             label.add_css_class("account-name");
-            if self.chevrons_left {
-                label.set_margin_start(-2);
-            }
             hbox.append(&label);
             // New Tag on the Tags row, as on an account's Tags heading
             // (docs/DESIGN.md, "Tags and favourite"; mockup 08): its own
@@ -140,22 +123,7 @@ impl Sidebar {
             b.set_visible(show_chip);
             hbox.append(&b);
             badge = b;
-            if self.chevrons_left {
-                // Overlaid on the row's left edge rather than packed into
-                // the layout — the same trick as the rail's unread badges
-                // — so it reserves no space of its own: icon and label
-                // keep their normal position and the chip keeps the
-                // shared flush-right column (Isaac's PR #95 mechanism).
-                chevron.set_pixel_size(15);
-                chev_btn.add_css_class("row-disclosure-chevron");
-                chev_btn.set_halign(gtk::Align::Start);
-                let overlay = gtk::Overlay::new();
-                overlay.set_child(Some(&hbox));
-                overlay.add_overlay(&chev_btn);
-                row.set_child(Some(&overlay));
-            } else {
-                hbox.append(&chev_btn);
-            }
+            hbox.append(&chev_btn);
         }
         if row.child().is_none() {
             row.set_child(Some(&hbox));
@@ -298,9 +266,6 @@ impl Sidebar {
             hb.set_halign(gtk::Align::Center);
             hb.append(&icon);
         } else {
-            if self.chevrons_left {
-                chevron.set_margin_start(2);
-            }
             let btn = heading_chevron(&chevron);
             btn.set_tooltip_text(Some(i18n("Show or hide tags").as_str()));
             hb.append(&btn);
@@ -356,9 +321,6 @@ impl Sidebar {
                 let spacer = gtk::Box::new(gtk::Orientation::Horizontal, 0);
                 spacer.set_width_request(TREE_EXPANDER_WIDTH);
                 hbox.append(&spacer);
-                if self.chevrons_left {
-                    disc.set_margin_start(ROW_LEFT_INSET);
-                }
                 hbox.append(&disc);
                 // Regular weight, like the folder names above (the
                 // heading's bold is the section's, not its rows').
@@ -435,7 +397,6 @@ impl Sidebar {
                 &tip,
                 if counted { r.folder.unread } else { 0 },
                 self.collapsed,
-                self.chevrons_left,
                 false,
             );
             row.add_controller(folder_drop_target(
@@ -495,15 +456,8 @@ impl Sidebar {
             let icon = gtk::Image::from_icon_name("folder-saved-search-symbolic");
             pin_icon_size(&icon);
             let unread = self.smart_unread.get(id).copied().unwrap_or(0);
-            let (row, badge) = build_unified_sub_row(
-                &icon,
-                name,
-                name,
-                unread,
-                self.collapsed,
-                self.chevrons_left,
-                false,
-            );
+            let (row, badge) =
+                build_unified_sub_row(&icon, name, name, unread, self.collapsed, false);
             sub.append(&row);
             self.smart_badges.insert(id.clone(), badge);
         }
@@ -562,7 +516,6 @@ impl Sidebar {
                 &t.name,
                 unread,
                 self.collapsed,
-                self.chevrons_left,
                 false,
             );
             sub.append(&row);

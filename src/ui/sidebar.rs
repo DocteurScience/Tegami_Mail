@@ -43,9 +43,6 @@ pub(crate) use widgets::{account_initials, build_unified_sub_row, pin_icon_size}
 pub(crate) struct Sidebar {
     /// Last sections received, in display order.
     sections: Vec<SectionData>,
-    /// Whether the disclosure chevrons LEAD their rows (Settings: Chevron
-    /// placement). Off restores the classic trailing position.
-    chevrons_left: bool,
     /// Per-account widgets, rebuilt on each SetContents.
     revealers: HashMap<u32, gtk::Revealer>,
     chevrons: HashMap<u32, gtk::Image>,
@@ -224,7 +221,6 @@ impl Component for Sidebar {
 
         let mut model = Sidebar {
             sections: Vec::new(),
-            chevrons_left: false,
             revealers: HashMap::new(),
             chevrons: HashMap::new(),
             folder_lists: HashMap::new(),

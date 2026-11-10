@@ -310,7 +310,6 @@ impl AppModel {
             thread_newest_first: prefs.thread_newest_first,
             reading_pane_action,
             list_header_widgets: std::cell::OnceCell::new(),
-            chevrons_left: prefs.chevrons_left,
             start_view,
             folder_sort: prefs.folder_sort,
             console_mode: prefs.console_mode,

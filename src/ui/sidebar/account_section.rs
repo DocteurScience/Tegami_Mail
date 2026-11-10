@@ -7,7 +7,7 @@ use super::tree::{hidden_by_collapse, is_main_row, nests_in_inbox, path_is_under
 use super::types::chevron_icon;
 use super::widgets::{
     build_folder_row, filter_icon, heading_chevron, section_heading, with_unread_overlay,
-    wrap_row_in_revealer, ROW_LEFT_INSET,
+    wrap_row_in_revealer,
 };
 use super::*;
 
@@ -149,18 +149,10 @@ impl Sidebar {
         let folded = self.account_shown_folded(section);
         circle_badge.set_visible(folded && inbox_unread > 0);
         self.account_circle_badges.insert(id, circle_badge);
-        if !self.collapsed && self.chevrons_left {
-            // Leaves room for the overlaid disclosure chevron, which
-            // would otherwise sit right on top of the avatar — a bit
-            // more than the minimum, so the two aren't touching.
-            circle_overlay.set_margin_start(ROW_LEFT_INSET + 8);
-        }
 
         // Chevron is tracked even when collapsed so per-account toggles
-        // still update an icon; it's only shown in the expanded layout —
-        // leading (overlaid on the header's left edge, reserving no
-        // layout space) or classic trailing,
-        // per Settings → Chevron placement.
+        // still update an icon; it's only shown in the expanded layout,
+        // at the header's end.
         let chevron = gtk::Image::from_icon_name(chevron_icon(!folded));
         chevron.set_valign(gtk::Align::Center);
         // A button of its own, as the unified rows' chevrons are: it
@@ -203,18 +195,8 @@ impl Sidebar {
                 vbox.append(&email);
             }
             hbox.append(&vbox);
-            if self.chevrons_left {
-                chevron.set_pixel_size(15);
-                chev_btn.add_css_class("row-disclosure-chevron");
-                chev_btn.set_halign(gtk::Align::Start);
-                let overlay = gtk::Overlay::new();
-                overlay.set_child(Some(&hbox));
-                overlay.add_overlay(&chev_btn);
-                header.set_child(Some(&overlay));
-            } else {
-                chev_btn.add_css_class("account-chevron-end");
-                hbox.append(&chev_btn);
-            }
+            chev_btn.add_css_class("account-chevron-end");
+            hbox.append(&chev_btn);
         }
 
         if header.child().is_none() {
@@ -326,14 +308,7 @@ impl Sidebar {
             } else {
                 0
             };
-            let (row, badge) = build_folder_row(
-                folder,
-                self.collapsed,
-                depth,
-                lead.as_ref(),
-                self.chevrons_left,
-                icon,
-            );
+            let (row, badge) = build_folder_row(folder, self.collapsed, depth, lead.as_ref(), icon);
             if nested {
                 // Hidden while the Inbox or a parent is folded, as in
                 // the Folders section.
@@ -405,7 +380,6 @@ impl Sidebar {
                     self.collapsed,
                     depth,
                     lead.as_ref(),
-                    self.chevrons_left,
                     filter_icon(section, folder),
                 );
                 // Hidden while any ancestor is collapsed; the row still
@@ -447,13 +421,6 @@ impl Sidebar {
                 hb.set_halign(gtk::Align::Center);
                 hb.append(&gtk::Image::from_icon_name("folder-symbolic"));
             } else {
-                if self.chevrons_left {
-                    // A chevron glyph's ink sits further into its canvas
-                    // than a regular icon's, so the folder rows' full
-                    // inset would land it visually right of the icons
-                    // above — a smaller value keeps the same column.
-                    custom_chevron.set_margin_start(2);
-                }
                 let btn = heading_chevron(&custom_chevron);
                 btn.set_tooltip_text(Some(
                     if section.gmail {
@@ -537,9 +504,6 @@ impl Sidebar {
             add_box.set_halign(gtk::Align::Center);
             add_btn.set_tooltip_text(Some(i18n("Add folder").as_str()));
         } else {
-            if self.chevrons_left {
-                add_img.set_margin_start(4);
-            }
             let lbl = gtk::Label::new(Some(i18n("Add folder").as_str()));
             lbl.set_halign(gtk::Align::Start);
             lbl.set_hexpand(true);

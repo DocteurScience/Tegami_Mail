@@ -100,7 +100,6 @@ pub(crate) fn build_unified_sub_row(
     tip: &str,
     unread: u32,
     collapsed: bool,
-    inset: bool,
     pill: bool,
 ) -> (gtk::ListBoxRow, gtk::Label) {
     let row = gtk::ListBoxRow::new();
@@ -125,9 +124,6 @@ pub(crate) fn build_unified_sub_row(
         hbox.append(&overlay);
         badge
     } else {
-        if inset {
-            lead.set_margin_start(ROW_LEFT_INSET - 6);
-        }
         hbox.append(lead);
         if tip != title {
             row.set_tooltip_text(Some(tip));
@@ -180,11 +176,6 @@ pub(crate) fn pin_icon_size(icon: &gtk::Image) {
     icon.set_halign(gtk::Align::Center);
     icon.set_valign(gtk::Align::Center);
 }
-
-/// Extra left inset on every expanded row's leading icon in the leading-
-/// chevron layout, so rows don't read as shoved flush against the sidebar's
-/// edge (PR #95). The classic trailing layout keeps its original geometry.
-pub(super) const ROW_LEFT_INSET: i32 = 8;
 
 /// Wrap `child` in an overlay with a small unread chip pinned to its top-right
 /// corner — used in the compact rail, where there's no room for an inline badge.
@@ -267,7 +258,6 @@ pub(super) fn build_folder_row(
     collapsed: bool,
     depth: usize,
     lead: Option<&gtk::Widget>,
-    inset: bool,
     glyph: FolderGlyph,
 ) -> (gtk::ListBoxRow, Option<gtk::Label>) {
     let row = gtk::ListBoxRow::new();
@@ -343,9 +333,6 @@ pub(super) fn build_folder_row(
         hbox.append(&overlay);
         counted.then_some(badge)
     } else {
-        if inset {
-            visual.set_margin_start(ROW_LEFT_INSET);
-        }
         hbox.append(&visual);
         let name = gtk::Label::new(Some(&folder.name));
         name.set_hexpand(true);

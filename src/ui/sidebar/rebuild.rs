@@ -2,7 +2,7 @@
 //! restyling the unread counts in place.
 
 use super::types::UnifiedRow;
-use super::widgets::{style_badge, ROW_LEFT_INSET};
+use super::widgets::style_badge;
 use super::*;
 
 impl Sidebar {
@@ -324,9 +324,6 @@ impl Sidebar {
                 )));
                 hbox.append(&img);
             } else {
-                if self.chevrons_left {
-                    img.set_margin_start(ROW_LEFT_INSET);
-                }
                 hbox.append(&img);
                 let label = gtk::Label::new(Some(i18n("Outbox").as_str()));
                 label.set_hexpand(true);

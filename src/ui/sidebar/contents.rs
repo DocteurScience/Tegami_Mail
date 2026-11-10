@@ -14,7 +14,6 @@ impl Sidebar {
     ) {
         let SidebarInput::SetContents {
             mut sections,
-            chevrons_left,
             favorite_folders,
             tags,
             smart_folders,
@@ -41,7 +40,6 @@ impl Sidebar {
             .map(|s| (s.account.id, s.tree_collapsed.iter().cloned().collect()))
             .collect();
         self.sections = sections;
-        self.chevrons_left = chevrons_left;
         self.favorite_folders = favorite_folders;
         self.tags = tags;
         self.smart_folders = smart_folders;

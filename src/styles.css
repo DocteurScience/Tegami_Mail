@@ -114,36 +114,6 @@ row.add-row {
   padding: 0;
 }
 
-/* Chevron placement: Left (PR #95 mechanism). Header disclosure chevrons
-   ("All Inboxes", each account) are overlaid on the row's left edge (see
-   sidebar.rs) rather than packed into the row's own layout — they reserve
-   no space of their own, so the icon/avatar and label keep their normal
-   position and any pill keeps the flush-right column every other row's
-   pill has. "All Inboxes" applies this to `.chevron-btn` itself (a 24px
-   box, icon centred inside) rather than a bare icon like the account
-   headers below, so it needs a bigger pull-in to land the icon — not just
-   the button's own edge — on the same column. */
-.row-disclosure-chevron {
-  margin-left: -5px;
-  opacity: 0.6;
-}
-.row-disclosure-chevron:dir(rtl) {
-  margin-left: 0;
-  margin-right: -5px;
-}
-
-/* The account header applies its own left padding (12px, `.account-header`)
-   around the chevron's overlay, on top of the margin above — "All Inboxes"
-   has no such wrapper padding, so left as-is the two chevrons land 12px
-   apart. This pulls the header's back in to match. */
-.account-header .row-disclosure-chevron {
-  margin-left: -4px;
-}
-.account-header .row-disclosure-chevron:dir(rtl) {
-  margin-left: 0;
-  margin-right: -4px;
-}
-
 /* An account's chevron at the row's end: the unified rows' 32px target,
    its end margin sliding into the header's padding, so the two columns of
    chevrons line up. */
@@ -157,15 +127,8 @@ row.add-row {
   margin-left: -8px;
 }
 
-/* Left placement: match the account headers' height below it (avatar + two-
-   line name/email push those taller than this row's single line of text
-   would be on its own) — content stays vertically centred. */
-.unified-row.chev-left {
-  min-height: 53px;
-}
-
-/* Chevron placement: Right — the classic layout: trailing 32px target whose
-   negative end margin slides into the row padding. */
+/* The trailing 32px chevron target, its negative end margin sliding into
+   the row padding. */
 .unified-row.chev-right:dir(ltr) {
   padding-right: 0;
 }

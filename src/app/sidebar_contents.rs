@@ -70,7 +70,6 @@ impl AppModel {
         let favorite_folders = self.favorite_folder_refs();
         self.sidebars_emit(SidebarInput::SetContents {
             sections,
-            chevrons_left: self.chevrons_left,
             favorite_folders,
             tags: self.tags.clone(),
             smart_folders: self

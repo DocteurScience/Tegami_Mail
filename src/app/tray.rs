@@ -1,6 +1,5 @@
 //! The tray icon and its menu, and the launcher badge.
 
-
 use adw::prelude::*;
 use relm4::prelude::*;
 

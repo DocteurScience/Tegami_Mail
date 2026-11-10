@@ -292,10 +292,6 @@ pub(crate) struct PrivacyFile {
     /// the banner; it never changes what is blocked, only whether you're told.
     #[serde(default = "default_on")]
     pub(crate) show_remote_banner: bool,
-    /// Whether the sidebar's disclosure chevrons (merged rows, account
-    /// headers) LEAD their rows; off puts them back at the row's end.
-    #[serde(default = "default_chevrons_left")]
-    pub(crate) chevrons_left: bool,
     /// Console mode (#status-bar): the verbose activity console is offered in
     /// the status bar. Off by default.
     #[serde(default)]
@@ -344,13 +340,6 @@ pub(crate) struct PrivacyFile {
     pub(crate) print: PrintOptions,
 }
 
-fn default_chevrons_left() -> bool {
-    // Right for new installs (Jason, 2026-08-30): the classic trailing
-    // placement; Left is the opt-in. Only a privacy.toml missing the key
-    // sees this — every save writes all fields.
-    false
-}
-
 fn default_fetch_interval() -> u64 {
     300
 }
@@ -373,7 +362,6 @@ impl Default for PrivacyFile {
             // Under the accounts' folders, as the redesign has it (mockup 01).
             // Above the accounts (owner's decision, 2026-11-04): one
             // section for every account, in sight however many there are.
-            chevrons_left: default_chevrons_left(),
             console_mode: false,
             status_bar_top: false,
             read_mark: ReadMark::default(),
