@@ -62,8 +62,6 @@ impl MessageView {
             folder_labels: std::collections::HashMap::new(),
             blocked: false,
             no_autoread: std::collections::HashSet::new(),
-            reader_style: crate::config::ReaderStyle::NONE,
-            sender_style: std::collections::HashSet::new(),
             account_chip_shown: true,
             zoom: 100,
             zoom_default: 100,

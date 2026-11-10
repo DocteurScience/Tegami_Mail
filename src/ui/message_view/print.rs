@@ -3,7 +3,7 @@
 
 use super::html::body_html;
 use super::remote::{route_remote, strip_remote};
-use super::style::{inject_csp, inject_reader_style, reader_style_css};
+use super::style::inject_csp;
 use super::MessageView;
 use crate::encoding::escape_html;
 use crate::i18n::i18n;
@@ -314,27 +314,13 @@ impl MessageView {
         let messages: Vec<(String, String)> = self
             .thread
             .iter()
-            .enumerate()
-            .map(|(n, m)| {
+            .map(|m| {
                 let doc = body_html(&m.body);
                 let doc = if self.remote_allowed {
                     route_remote(&doc)
                 } else {
                     strip_remote(&doc)
                 };
-                // The reader's own fonts and colors (#56) reach paper too,
-                // scoped to this message's block; a card shown with the
-                // sender's formatting prints that way as well.
-                let style = if self.sender_style.contains(&(m.account_id, m.id)) {
-                    &crate::config::ReaderStyle::NONE
-                } else {
-                    &self.reader_style
-                };
-                let scope = format!(".{}", print_block_class(n));
-                let doc = inject_reader_style(
-                    &doc,
-                    &reader_style_css(style, false, &self.accent_hex(), &scope),
-                );
                 let head = if conversation {
                     print_message_header_html(m)
                 } else {

@@ -20,8 +20,6 @@ fn the_wrapper_only_runs_its_own_script() {
         false,
         false,
         false,
-        &crate::config::ReaderStyle::NONE,
-        &Default::default(),
         100,
     );
 
@@ -62,8 +60,6 @@ fn the_wrapper_only_runs_its_own_script() {
         false,
         false,
         false,
-        &crate::config::ReaderStyle::NONE,
-        &Default::default(),
         100,
     );
     assert!(!again.contains(nonce), "nonce was reused across renders");
@@ -135,33 +131,13 @@ fn blocking_follows_the_users_choice_not_the_detector() {
     // about, a frame built while remote content is disallowed carries the
     // restrictive policy. A detector miss costs a banner, not the blocking.
     let sneaky = r#"<img data-x="y" src="//tracker.example/p.gif">"#;
-    let frame = message_frame(
-        sneaky,
-        true,
-        false,
-        (1, 1),
-        None,
-        &crate::config::ReaderStyle::NONE,
-        "#3584e4",
-        false,
-        100,
-    );
+    let frame = message_frame(sneaky, true, false, (1, 1), None, "#3584e4", false, 100);
     assert!(frame.contains("img-src data: cid:"), "{frame}");
     assert!(!frame.contains("img-src http:"), "{frame}");
     assert!(!frame.contains("tracker.example"), "{frame}");
 
     // And once the user allows it, the same body renders untouched.
-    let allowed = message_frame(
-        sneaky,
-        false,
-        false,
-        (1, 1),
-        None,
-        &crate::config::ReaderStyle::NONE,
-        "#3584e4",
-        false,
-        100,
-    );
+    let allowed = message_frame(sneaky, false, false, (1, 1), None, "#3584e4", false, 100);
     assert!(allowed.contains("img-src http: https:"), "{allowed}");
     assert!(allowed.contains("tracker.example"), "{allowed}");
 }
@@ -228,8 +204,6 @@ fn the_wrapper_in_a_real_engine_sizes_frames_and_refuses_injected_script() {
         false,
         false,
         false,
-        &crate::config::ReaderStyle::NONE,
-        &Default::default(),
         100,
     );
 

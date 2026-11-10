@@ -657,16 +657,6 @@ pub(crate) struct AppModel {
     pub(super) spellcheck_langs: String,
     /// How email content is themed (message content only, not the app UI).
     pub(super) message_theme: config::MessageTheme,
-    /// Set every message in the reader's own font (#56).
-    pub(super) override_fonts: bool,
-    /// That font, as a Pango description; empty = the interface font.
-    pub(super) reader_font: String,
-    /// Ignore the senders' text and background colors (#56).
-    pub(super) override_colors: bool,
-    /// Plain-text messages in monospace (#181), and the font ("" = the
-    /// desktop's monospace font).
-    pub(super) plain_monospace: bool,
-    pub(super) plain_font: String,
     /// The repeating auto-fetch timer, if armed.
     pub(super) auto_fetch_source: Option<gtk::glib::SourceId>,
     /// When the last wake from sleep was handled, so the second report of

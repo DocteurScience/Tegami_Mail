@@ -51,39 +51,6 @@ impl MessageTheme {
     }
 }
 
-/// The reader's own typography and colors, laid over the sender's (#56).
-///
-/// What the reader applies: `font` is the Pango description to set mail in
-/// (`None` = the sender's fonts stand), `colors` forces the reader's own text
-/// and ground colors over the sender's. Built by the app from the three
-/// stored preferences, with the interface font filled in where none was
-/// chosen, so the reader never has to ask GTK.
-#[derive(Debug, Clone, Default, PartialEq, Eq, Hash)]
-pub(crate) struct ReaderStyle {
-    /// Pango description ("Cantarell 11") of the font every message is set
-    /// in; `None` leaves the sender's fonts and sizes alone.
-    pub(crate) font: Option<String>,
-    /// Ignore the sender's text and background colors.
-    pub(crate) colors: bool,
-    /// Pango description of the font plain-text messages are set in
-    /// (#181); `None` leaves them in the reader's default.
-    pub(crate) plain_font: Option<String>,
-}
-
-impl ReaderStyle {
-    /// The sender's formatting stands entirely.
-    pub(crate) const NONE: ReaderStyle = ReaderStyle {
-        font: None,
-        colors: false,
-        plain_font: None,
-    };
-
-    /// Whether anything of the sender's is overridden.
-    pub(crate) fn active(&self) -> bool {
-        self.font.is_some() || self.colors || self.plain_font.is_some()
-    }
-}
-
 /// How dates are written: the system's own arrangement, or one the user picked
 /// regardless of it (#32).
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Default, Deserialize, Serialize)]

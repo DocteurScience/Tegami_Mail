@@ -72,8 +72,6 @@ impl AppModel {
         let remember_sidebar = prefs.remember_sidebar;
         let remember_rail = prefs.remember_rail;
         let start_view = prefs.start_view;
-        let reader_override = config::load_reader_override();
-        let plain_style = config::load_plain_style();
         // Clear what an icon picked from the former gallery left on the
         // desktop, and put the shipped icon back.
         crate::desktop::app_icon::init_on_startup();
@@ -433,11 +431,6 @@ impl AppModel {
             spellcheck: prefs.spellcheck,
             spellcheck_langs: prefs.spellcheck_langs,
             message_theme: prefs.message_theme,
-            override_fonts: reader_override.0,
-            reader_font: reader_override.1,
-            override_colors: reader_override.2,
-            plain_monospace: plain_style.0,
-            plain_font: plain_style.1,
             auto_fetch_source: None,
             last_wake: None,
             notifications,

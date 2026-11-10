@@ -42,11 +42,6 @@ impl AppModel {
             attachment_drawer: self.drawer_enabled,
             confirm_thread_delete: self.confirm_thread_delete,
             message_theme: self.message_theme,
-            override_fonts: self.override_fonts,
-            reader_font: self.reader_font.clone(),
-            override_colors: self.override_colors,
-            plain_monospace: self.plain_monospace,
-            plain_font: self.plain_font.clone(),
             notifications: self.notifications_enabled,
             notification_content: self.notification_content,
             notification_buttons: self.notification_buttons.to_list(),
@@ -172,8 +167,6 @@ impl AppModel {
         self.message_view.emit(MessageViewInput::SetContentTheme(
             self.message_theme.dark_override(),
         ));
-        self.message_view
-            .emit(MessageViewInput::SetReaderStyle(self.reader_style()));
         self.message_view
             .emit(MessageViewInput::SetAlwaysShowRecipients(
                 self.always_show_recipients,

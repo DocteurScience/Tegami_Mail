@@ -4,7 +4,7 @@
 use super::dark::{adapt_colors_for_dark, pin_color_scheme};
 use super::html::{attr_escape, body_html};
 use super::remote::{route_remote, strip_remote};
-use super::style::{auto_direction, inject_csp, inject_reader_style, reader_style_css};
+use super::style::{auto_direction, inject_csp, inject_reader_style};
 use super::types::CardAttachment;
 use adw::prelude::*;
 use relm4::prelude::*;
@@ -136,29 +136,17 @@ pub(super) fn message_frame(
     dark: bool,
     key: (u32, u32),
     height: Option<u32>,
-    style: &crate::config::ReaderStyle,
     accent: &str,
     reader: bool,
     zoom: u32,
 ) -> String {
     // A translated plain-text message: rebuilt from its content alone, in
-    // the reader's own sheet (`crate::mail::reader`). It carries no colors of the sender's to adapt
-    // and needs none of the reader's color override over it; the reader's
-    // font choice (#56) still applies, below.
+    // the reader's own sheet (`crate::mail::reader`). It carries no colors
+    // of the sender's to adapt.
     let doc = if reader {
         crate::mail::reader::render(body, dark, accent)
     } else {
         body_html(body)
-    };
-    let own_style;
-    let style = if reader {
-        own_style = crate::config::ReaderStyle {
-            colors: false,
-            ..style.clone()
-        };
-        &own_style
-    } else {
-        style
     };
     // Allowed remote content goes through the app's cache (#474), so a
     // message shown again, or fetched ahead, paints without the network.
@@ -170,9 +158,8 @@ pub(super) fn message_frame(
     // Dark mode: adapt the message's own colors so dark-on-dark text can't
     // happen (issue #35). `color-scheme` only helps unstyled mail; anything
     // that sets explicit dark text without a background needs its colors
-    // transformed, and the sandboxed frames run no JS to do it live. Moot
-    // when the reader's own colors are laid over the message anyway.
-    let doc = if dark && !style.colors && !reader {
+    // transformed, and the sandboxed frames run no JS to do it live.
+    let doc = if dark && !reader {
         adapt_colors_for_dark(&doc)
     } else {
         doc
@@ -182,15 +169,15 @@ pub(super) fn message_frame(
     // dark adaptation so a message's hand-authored dark palette is used as-is,
     // not double-transformed.
     let doc = pin_color_scheme(&doc, dark);
-    // The reader's own fonts and colors (#56), last so they win. The zoom
-    // (Ctrl+ / Ctrl-) rides the same sheet: CSS `zoom` on the root scales
-    // the whole body, px-sized text included, which a font-size change
-    // would leave alone. Applied to the frame document only, so the card
-    // headers around it keep their size.
-    let mut css = reader_style_css(style, dark, accent, ":root");
-    if zoom != 100 {
-        css.push_str(&format!("html{{zoom:{};}}", zoom as f64 / 100.0));
-    }
+    // The zoom (Ctrl+ / Ctrl-): CSS `zoom` on the root scales the whole
+    // body, px-sized text included, which a font-size change would leave
+    // alone. Applied to the frame document only, so the card headers
+    // around it keep their size.
+    let css = if zoom != 100 {
+        format!("html{{zoom:{};}}", zoom as f64 / 100.0)
+    } else {
+        String::new()
+    };
     let doc = inject_reader_style(&doc, &css);
     let doc = auto_direction(&inject_csp(&doc, !restrict, dark));
     format!(

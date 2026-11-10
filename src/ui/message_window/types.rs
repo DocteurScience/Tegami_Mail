@@ -37,8 +37,6 @@ pub(crate) struct MessageWindowInit {
     pub(crate) snooze: Option<bool>,
     /// Message-content theme override (`None` follows the system).
     pub(crate) content_dark: Option<bool>,
-    /// The reader's own fonts and colors over the senders' (#56).
-    pub(crate) reader_style: crate::config::ReaderStyle,
     /// Message zoom in percent (Ctrl+ / Ctrl-), followed here too.
     pub(crate) zoom: u32,
     /// The zoom Settings starts at, for the chip.

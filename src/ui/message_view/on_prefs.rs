@@ -60,15 +60,6 @@ impl MessageView {
         }
     }
 
-    pub(super) fn on_set_reader_style(&mut self, style: crate::config::ReaderStyle) {
-        if self.reader_style != style {
-            self.reader_style = style;
-            if self.current.is_some() && !self.loading {
-                self.render();
-            }
-        }
-    }
-
     pub(super) fn on_set_zoom(&mut self, percent: u32) {
         if self.zoom != percent {
             self.zoom = percent;

@@ -276,18 +276,6 @@ pub(crate) fn load_reader_zoom() -> u32 {
     }
 }
 
-/// The three reader-override preferences (#56): font switch, font, color switch.
-pub(crate) fn load_reader_override() -> (bool, String, bool) {
-    let p = load_privacy();
-    (p.override_fonts, p.reader_font, p.override_colors)
-}
-
-/// Plain-text messages in monospace (#181): the switch and the font.
-pub(crate) fn load_plain_style() -> (bool, String) {
-    let p = load_privacy();
-    (p.plain_monospace, p.plain_font)
-}
-
 /// What a message is written in: rich text, the WYSIWYG editor, or plain
 /// text, which sends no HTML part at all (docs/DESIGN.md, "Menus").
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq, serde::Serialize, serde::Deserialize)]

@@ -2,7 +2,6 @@
 
 use relm4::prelude::*;
 
-use crate::config;
 use crate::ui::message_list::MessageListInput;
 use crate::ui::message_view::MessageViewInput;
 use crate::ui::message_window::MessageWindowInput;
@@ -21,31 +20,6 @@ impl AppModel {
         self.zoom = zoom;
         self.message_view.emit(MessageViewInput::SetZoom(zoom));
         self.popouts_emit(|| MessageWindowInput::SetZoom(zoom));
-    }
-
-    /// The reader's font-and-color override (#56) as the reader applies it:
-    /// the font only when the switch is on, the interface font standing in
-    /// where none was chosen.
-    pub(super) fn reader_style(&self) -> config::ReaderStyle {
-        let font = self.override_fonts.then(|| {
-            if self.reader_font.trim().is_empty() {
-                interface_font()
-            } else {
-                self.reader_font.clone()
-            }
-        });
-        let plain_font = self.plain_monospace.then(|| {
-            if self.plain_font.trim().is_empty() {
-                crate::desktop::session::monospace_font()
-            } else {
-                self.plain_font.clone()
-            }
-        });
-        config::ReaderStyle {
-            font,
-            colors: self.override_colors,
-            plain_font,
-        }
     }
 
     /// The settings changes the router sends here (see `AppModel::route`).
@@ -134,15 +108,4 @@ impl AppModel {
             _ => unreachable!("not routed to on_prefs_reader"),
         }
     }
-}
-
-/// The desktop's interface font ("Adwaita Sans 11") as a Pango description:
-/// what the reader sets mail in when the font override is on but no font
-/// was chosen (#56). Cantarell 11 when GTK has no settings (headless).
-fn interface_font() -> String {
-    gtk::Settings::default()
-        .and_then(|s| s.gtk_font_name())
-        .map(|f| f.to_string())
-        .filter(|f| !f.trim().is_empty())
-        .unwrap_or_else(|| "Cantarell 11".to_string())
 }

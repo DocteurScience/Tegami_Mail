@@ -154,8 +154,6 @@ pub(crate) enum MessageViewInput {
     /// Set the message-content theme: `None` follows the system, `Some(dark)`
     /// forces light/dark for email content only (not the app UI).
     SetContentTheme(Option<bool>),
-    /// The reader's own fonts and colors over the senders' (#56).
-    SetReaderStyle(crate::config::ReaderStyle),
     /// Message zoom in percent; the bodies on screen rescale in place.
     SetZoom(u32),
     /// The zoom Settings starts at, which the chip measures against.

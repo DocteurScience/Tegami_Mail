@@ -142,23 +142,6 @@ pub(crate) struct PrivacyFile {
     /// How email content is themed (independent of the app UI theme).
     #[serde(default)]
     pub(crate) message_theme: MessageTheme,
-    /// Set every message in the reader's own font instead of the sender's
-    /// (#56).
-    #[serde(default)]
-    pub(crate) override_fonts: bool,
-    /// That font, as a Pango description ("Cantarell 11"); empty = the
-    /// interface font.
-    #[serde(default)]
-    pub(crate) reader_font: String,
-    /// Ignore the sender's text and background colors (#56).
-    #[serde(default)]
-    pub(crate) override_colors: bool,
-    /// Show plain-text messages in a monospace font (#181).
-    #[serde(default)]
-    pub(crate) plain_monospace: bool,
-    /// That font, as a Pango description; empty = the desktop's monospace font.
-    #[serde(default)]
-    pub(crate) plain_font: String,
     /// Whether to post desktop notifications (new mail, error alerts).
     #[serde(default = "default_on")]
     pub(crate) notifications: bool,
@@ -571,11 +554,6 @@ impl Default for PrivacyFile {
             attachment_drawer: false,
             confirm_thread_delete: true,
             message_theme: MessageTheme::default(),
-            override_fonts: false,
-            reader_font: String::new(),
-            override_colors: false,
-            plain_monospace: false,
-            plain_font: String::new(),
             notifications: true,
             notification_content: true,
             notification_buttons: default_notification_buttons(),

@@ -464,7 +464,6 @@ impl Component for MessageView {
                 self.show_banner = show;
             }
             MessageViewInput::SetContentTheme(o) => self.on_set_content_theme(o),
-            MessageViewInput::SetReaderStyle(style) => self.on_set_reader_style(style),
             MessageViewInput::SetZoomDefault(percent) => {
                 self.zoom_default = percent;
             }

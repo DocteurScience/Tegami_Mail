@@ -66,7 +66,6 @@ impl Component for MessageWindow {
             .forward(sender.input_sender(), from_reader);
         // Apply the message-content theme before the first render.
         view.emit(MessageViewInput::SetContentTheme(init.content_dark));
-        view.emit(MessageViewInput::SetReaderStyle(init.reader_style.clone()));
         view.emit(MessageViewInput::SetZoomDefault(init.zoom_default));
         view.emit(MessageViewInput::SetZoom(init.zoom));
         view.emit(MessageViewInput::SetAccountChipShown(init.account_chip));

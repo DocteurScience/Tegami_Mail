@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+- **Removed: the reader's own fonts and colours** (docs/DESIGN.md, "Removed
+  or moved": the system's document font, text size and high contrast
+  apply). Their settings had gone; a font, colours or a monospace font for
+  plain text chosen in an earlier version no longer apply, and messages
+  show as their senders wrote them, as they already did by default.
+
 - **Removed: the actions palette in the reader's cards** (docs/DESIGN.md,
   "Removed or moved"). A card's ⋯ always opens its menu, as it did by
   default; the row of icons it could slide out instead, or show on hover

@@ -376,7 +376,6 @@ impl AppModel {
                 self.snooze_offer(account_id, folder_kind)
             },
             content_dark: self.message_theme.dark_override(),
-            reader_style: self.reader_style(),
             zoom: self.zoom,
             zoom_default: self.zoom_default,
             account_chip: self.account_chip,

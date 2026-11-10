@@ -102,8 +102,6 @@ fn document(
     labels.insert((7, 2), "Other <folder>".to_string());
     let mut heights = std::collections::HashMap::new();
     heights.insert((7, 2), 321);
-    let mut sender_style = std::collections::HashSet::new();
-    sender_style.insert((7, 1));
     let doc = MessageView::conversation_document(
         thread,
         &labels,
@@ -115,8 +113,6 @@ fn document(
         dark,
         always_show_recipients,
         single_message_card,
-        &crate::config::ReaderStyle::NONE,
-        &sender_style,
         zoom,
     );
     normalise_nonce(&doc)

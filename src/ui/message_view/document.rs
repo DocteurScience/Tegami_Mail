@@ -102,8 +102,6 @@ struct Cards<'a> {
     restrict: bool,
     dark: bool,
     always_show_recipients: bool,
-    style: &'a crate::config::ReaderStyle,
-    sender_style: &'a std::collections::HashSet<(u32, u32)>,
     zoom: u32,
     /// Card selection only means something between cards.
     mark_selection: bool,
@@ -132,8 +130,6 @@ impl MessageView {
         dark: bool,
         always_show_recipients: bool,
         single_message_card: bool,
-        style: &crate::config::ReaderStyle,
-        sender_style: &std::collections::HashSet<(u32, u32)>,
         zoom: u32,
     ) -> String {
         // Every message renders with the conversation chrome — a thread of one
@@ -156,8 +152,6 @@ impl MessageView {
             restrict,
             dark,
             always_show_recipients,
-            style,
-            sender_style,
             zoom,
             mark_selection,
         };
@@ -245,8 +239,6 @@ fn card_body(cards: &Cards<'_>, m: &Message) -> String {
         restrict,
         dark,
         heights,
-        style,
-        sender_style,
         accent,
         zoom,
         ..
@@ -269,12 +261,6 @@ fn card_body(cards: &Cards<'_>, m: &Message) -> String {
             dark,
             (m.account_id, m.id),
             heights.get(&(m.account_id, m.id)).copied(),
-            // The card's toggle wins over the preference.
-            if sender_style.contains(&(m.account_id, m.id)) {
-                &crate::config::ReaderStyle::NONE
-            } else {
-                style
-            },
             accent,
             translated_reader,
             zoom,

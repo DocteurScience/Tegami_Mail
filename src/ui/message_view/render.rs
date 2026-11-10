@@ -100,7 +100,6 @@ impl MessageView {
         // different GTK theme variant, say) — the document must follow.
         self.theme_grounds(dark).hash(&mut h);
         self.remote_allowed.hash(&mut h);
-        self.reader_style.hash(&mut h);
         // Translations (#327): which cards show one, and whether cards
         // offer Translate at all.
         crate::services::translate::generation().hash(&mut h);
@@ -134,7 +133,6 @@ impl MessageView {
             m.body.hash(&mut h);
             m.datetime_full().hash(&mut h);
             self.no_autoread.contains(&key).hash(&mut h);
-            self.sender_style.contains(&key).hash(&mut h);
             self.folder_labels.get(&key).hash(&mut h);
             self.sent.contains(&key).hash(&mut h);
             self.template_folders
@@ -243,8 +241,6 @@ impl MessageView {
             dark,
             self.always_show_recipients,
             self.single_message_card,
-            &self.reader_style,
-            &self.sender_style,
             self.zoom,
         )
     }

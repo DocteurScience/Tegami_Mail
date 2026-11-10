@@ -116,8 +116,6 @@ fn every_card_has_somewhere_to_put_an_invitation() {
         false,
         false,
         false,
-        &crate::config::ReaderStyle::NONE,
-        &Default::default(),
         100,
     );
     assert!(

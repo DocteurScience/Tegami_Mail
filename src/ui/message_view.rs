@@ -101,13 +101,6 @@ pub(crate) struct MessageView {
     /// having them in view can't undo the thing the user just asked for. Cleared
     /// whenever a conversation is opened afresh.
     no_autoread: std::collections::HashSet<(u32, u32)>,
-    /// The reader's own fonts and colors laid over every message (#56);
-    /// `NONE` shows each message as its sender formatted it.
-    reader_style: crate::config::ReaderStyle,
-    /// Messages the user asked to see with the sender's own formatting
-    /// despite `reader_style` (the card's "sender's formatting" toggle).
-    /// Kept for the session, so a thread reopened keeps the choice.
-    sender_style: std::collections::HashSet<(u32, u32)>,
     /// Whether the header's account chip is shown (Settings).
     account_chip_shown: bool,
     /// Message zoom in percent (Ctrl+ / Ctrl-): the bodies alone are
