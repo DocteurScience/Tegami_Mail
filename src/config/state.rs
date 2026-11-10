@@ -44,15 +44,6 @@ pub(super) struct StateFile {
     /// commit, so a runtime update gets another try with every font.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     web_font_fallback: Option<String>,
-    /// The mail view open last (#256): an account's folder; an empty
-    /// `email` (a file from when All Inboxes existed) reopens nothing. Accounts are named by address, which stays
-    /// true across launches where an account's number may not.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    last_view: Option<LastView>,
-    /// The account whose mail was open last, kept through a visit to All
-    /// Inboxes so "the last account's inbox" still has an account to mean.
-    #[serde(default, skip_serializing_if = "String::is_empty")]
-    last_account: String,
     /// The fonts last picked with the composer's Other Font… (#358), the
     /// newest first, for the font menu to offer again.
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
@@ -123,40 +114,6 @@ fn update_state(change: impl FnOnce(&mut StateFile)) {
 
 fn save_state(state: &StateFile) {
     save_plain_toml(state_path(), state);
-}
-
-/// A mail view to reopen at launch (#256).
-#[derive(Clone, Debug, Default, PartialEq, Eq, Deserialize, Serialize)]
-pub(crate) struct LastView {
-    /// The account's address; empty in files from when All Inboxes existed.
-    #[serde(default)]
-    pub(crate) email: String,
-    /// The folder's path on the server.
-    #[serde(default)]
-    pub(crate) path: String,
-}
-
-/// The view open last and the account whose mail was open last.
-pub(crate) fn load_last_view() -> (Option<LastView>, String) {
-    let s = load_state();
-    (s.last_view, s.last_account)
-}
-
-/// Record the view just opened, unless it is the one already recorded:
-/// this runs on every folder switch.
-pub(crate) fn save_last_view(view: LastView) {
-    let mut s = load_state();
-    let account = if view.email.is_empty() {
-        s.last_account.clone()
-    } else {
-        view.email.clone()
-    };
-    if s.last_view.as_ref() == Some(&view) && s.last_account == account {
-        return;
-    }
-    s.last_view = Some(view);
-    s.last_account = account;
-    save_state(&s);
 }
 
 /// Whether the welcome wizard has been completed before.

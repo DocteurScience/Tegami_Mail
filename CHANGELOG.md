@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+- **Removed: the stored start view** (owner's decision, 2026-11-10, now in
+  docs/DESIGN.md, "Removed or moved"). Its "Open at startup" row had gone
+  with the General page, yet an "account inbox" or "last folder" saved by an
+  earlier version still chose the first view, with nothing left to change
+  it. Tegami Mail now always opens on the first account's inbox, and no
+  longer records the last folder opened on every folder switch.
 - **Removed: the stored text size** (docs/DESIGN.md, "Removed or moved").
   Its row had gone with the Appearance settings, yet a `text_scale` saved by
   an earlier version still enlarged or shrank all of the app's text, with

@@ -114,10 +114,8 @@ impl Sidebar {
     }
 
     fn restore_selection_inner(&mut self) {
-        // A view has been picked and has stuck: the launch view is done
-        // with, whichever it was.
+        // A view has been picked and has stuck: nothing is waiting any more.
         if self.selected != Sel::None {
-            self.start = None;
             self.reannounce = None;
         }
         let selected = self.selected.clone();
@@ -150,21 +148,6 @@ impl Sidebar {
             self.select_sel(sel);
             self.quiet.set(quiet);
             return;
-        }
-        // The launch view (#256) is picked again on every pass until
-        // one sticks: the sections are rebuilt as each account's
-        // folders arrive, and a pick only takes once its row's
-        // selection has been handled. Until the account it names is
-        // listed with its folders, nothing else is picked, or All
-        // Inboxes would be on screen first and stay.
-        let start = self.start.clone();
-        if let Some(target) = start {
-            match self.resolve_start(&target) {
-                Some(Sel::Folder(acc, path)) => return self.select_folder(acc, &path),
-                _ if !self.start_account_ready(&target) => return,
-                // Listed, but with nowhere to land: the usual view.
-                _ => self.start = None,
-            }
         }
         // The first account's Inbox, the usual first view.
         if let Some(acc) = self
@@ -215,42 +198,6 @@ impl Sidebar {
         self.sections
             .iter()
             .any(|s| account.is_none_or(|acc| s.account.id == acc) && !s.folders.is_empty())
-    }
-
-    /// The row a launch view names, if it is on screen: the folder in its
-    /// account's section.
-    fn resolve_start(&self, target: &StartTarget) -> Option<Sel> {
-        let (email, path) = match target {
-            StartTarget::Inbox(email) => (email, None),
-            StartTarget::Folder(email, path) => (email, Some(path)),
-        };
-        let section = self
-            .sections
-            .iter()
-            .find(|s| s.account.email.eq_ignore_ascii_case(email))?;
-        let acc = section.account.id;
-        let inbox = section
-            .folders
-            .iter()
-            .find(|f| f.kind == FolderKind::Inbox)
-            .map(|f| f.path.clone());
-        // A folder since deleted or hidden: that account's inbox instead.
-        let path = path
-            .filter(|p| section.folders.iter().any(|f| &f.path == *p))
-            .cloned()
-            .or_else(|| inbox.clone())?;
-        if section.folders.iter().any(|f| f.path == path) {
-            return Some(Sel::Folder(acc, path));
-        }
-        None
-    }
-
-    /// Whether the account a launch view names is listed with its folders.
-    fn start_account_ready(&self, target: &StartTarget) -> bool {
-        let (StartTarget::Inbox(email) | StartTarget::Folder(email, _)) = target;
-        self.sections
-            .iter()
-            .any(|s| s.account.email.eq_ignore_ascii_case(email) && !s.folders.is_empty())
     }
 
     /// Unfold an account's section if it is folded, the way its chevron
@@ -333,8 +280,8 @@ impl Sidebar {
 }
 
 impl Sidebar {
-    pub(super) fn on_drop_start(&mut self) {
-        let waited = self.start.take().is_some() | self.reannounce.take().is_some();
+    pub(super) fn on_drop_reannounce(&mut self) {
+        let waited = self.reannounce.take().is_some();
         if waited && self.selected == Sel::None {
             self.restore_selection();
         }
@@ -359,7 +306,7 @@ impl Sidebar {
         // the list without a view.
         let s = sender.input_sender().clone();
         gtk::glib::timeout_add_seconds_local_once(8, move || {
-            let _ = s.send(SidebarInput::DropStart);
+            let _ = s.send(SidebarInput::DropReannounce);
         });
     }
 

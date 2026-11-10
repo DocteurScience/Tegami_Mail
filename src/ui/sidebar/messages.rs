@@ -58,9 +58,9 @@ pub(crate) enum SidebarInput {
     /// back (the docked rail and the floating peek panel are two instances
     /// of this component; the app pushes every navigation to both).
     MirrorSelection(Sel),
-    /// Stop waiting for the launch view's account (#256): its folders did
-    /// not arrive in time, so the usual first view is picked instead.
-    DropStart,
+    /// Stop waiting for a reconnecting account to list its folders again:
+    /// it did not come back in time, so the usual first view is picked.
+    DropReannounce,
     /// The accounts are reconnecting and the app has let go of the view on
     /// screen: forget the selection, and pick it again (telling the app)
     /// once its account has listed its folders.

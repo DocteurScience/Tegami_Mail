@@ -62,7 +62,6 @@ notify_receipts = true
 files_action = "ask"
 files_large = "ask"
 files_limit_mb = 20
-start_view = "all_inboxes"
 folder_sort = "custom"
 
 [list_column_widths]

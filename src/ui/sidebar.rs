@@ -37,7 +37,7 @@ pub(crate) use messages::{CtxAction, SidebarInput, SidebarOutput};
 pub(crate) use tree::Hierarchy;
 pub(crate) use tree::{folder_depth, order_folders, placed_run, TREE_EXPANDER_WIDTH};
 use types::{KindWidgets, SectionWidgets, UnifiedRow};
-pub(crate) use types::{SectionData, Sel, SidebarInit, Slot, StartTarget, UnifiedFolderRef};
+pub(crate) use types::{SectionData, Sel, SidebarInit, Slot, UnifiedFolderRef};
 pub(crate) use widgets::{account_initials, build_unified_sub_row, pin_icon_size};
 
 pub(crate) struct Sidebar {
@@ -102,9 +102,6 @@ pub(crate) struct Sidebar {
     quiet: std::rc::Rc<std::cell::Cell<bool>>,
     /// See `SidebarInit::mirror`.
     mirror: bool,
-    /// The launch view still to be picked (#256): kept until the account
-    /// it names has its folders listed, then taken by the first pick.
-    start: Option<StartTarget>,
     /// The view to pick again, and announce, once its account is listed
     /// again: the app dropped what it showed when the accounts reconnected
     /// (an account saved), while this list still showed it selected. The
@@ -248,7 +245,6 @@ impl Component for Sidebar {
             collapsed: init.collapsed,
             quiet: std::rc::Rc::new(std::cell::Cell::new(false)),
             mirror: init.mirror,
-            start: if init.mirror { None } else { init.start },
             reannounce: None,
             outbox_count: 0,
             folder_badges: HashMap::new(),
@@ -310,7 +306,7 @@ impl Sidebar {
         _root: &<Self as Component>::Root,
     ) {
         match msg {
-            SidebarInput::DropStart => self.on_drop_start(),
+            SidebarInput::DropReannounce => self.on_drop_reannounce(),
             SidebarInput::Reannounce => self.on_reannounce(sender),
             SidebarInput::MirrorSelection(sel) => self.on_mirror_selection(sel),
             msg @ SidebarInput::SetContents { .. } => self.on_set_contents(msg, widgets, sender),

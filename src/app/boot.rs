@@ -8,7 +8,7 @@ use relm4::ComponentSender;
 
 use crate::config::{self, AccountConfig};
 use crate::i18n::i18n;
-use crate::ui::sidebar::{SidebarInit, StartTarget};
+use crate::ui::sidebar::SidebarInit;
 
 use super::accounts::{forget_account_secrets, reconcile_goa, GoaReconcile};
 use super::demo::demo_mode;
@@ -114,29 +114,13 @@ fn load_accounts(sidebar_state: &mut config::SidebarState) -> Vec<AccountConfig>
     config
 }
 
-/// The view the sidebar picks first instead of the first inbox (#256), from
-/// Settings → General's start view and the last view left.
-pub(super) fn start_target(start_view: config::StartView) -> Option<StartTarget> {
-    let (last, last_account) = config::load_last_view();
-    match start_view {
-        config::StartView::AllInboxes => None,
-        config::StartView::AccountInbox => Some(last_account)
-            .filter(|e| !e.is_empty())
-            .map(StartTarget::Inbox),
-        config::StartView::LastFolder => last
-            .filter(|v| !v.email.is_empty())
-            .map(|v| StartTarget::Folder(v.email, v.path)),
-    }
-}
-
 /// The launch settings of a sidebar instance: the sections open as the
 /// saved layout left them. The main sidebar and the peek panel's mirror
-/// differ only in `collapsed`, `mirror` and `start`.
+/// differ only in `collapsed` and `mirror`.
 pub(super) fn sidebar_init(
     state: &config::SidebarState,
     collapsed: bool,
     mirror: bool,
-    start: Option<StartTarget>,
 ) -> SidebarInit {
     SidebarInit {
         collapsed,
@@ -144,7 +128,6 @@ pub(super) fn sidebar_init(
         tags_expanded: state.tags_expanded,
         favorites_expanded: state.favorites_expanded,
         smart_expanded: state.smart_expanded,
-        start,
     }
 }
 

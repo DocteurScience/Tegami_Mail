@@ -73,7 +73,6 @@ impl AppModel {
             files_action: self.files_prefs.action,
             files_large: self.files_prefs.large,
             files_limit_mb: self.files_prefs.limit_mb,
-            start_view: self.start_view,
             folder_sort: self.folder_sort,
         });
     }

@@ -2,14 +2,12 @@
 
 use relm4::prelude::*;
 
-use crate::config;
 use crate::models::{FolderKind, Message};
 use crate::ui::message_list::MessageListInput;
 use crate::ui::message_view::MessageViewInput;
 use crate::ui::sidebar::SidebarInput;
 use crate::worker::MailRequest;
 
-use super::demo::demo_mode;
 use super::model::AppModel;
 use super::msg::AppMsg;
 use super::search::default_scope;
@@ -273,13 +271,6 @@ impl AppModel {
         _name: String,
         path: String,
     ) {
-        // For "Open at startup" (#256). The demo's accounts are not real.
-        if let Some(email) = self.email_of(account_id).filter(|_| !demo_mode()) {
-            config::save_last_view(config::LastView {
-                email,
-                path: path.clone(),
-            });
-        }
         self.showing_outbox = false;
         // Mirror the selection in the sidebar. Navigation that starts in the
         // sidebar hits its already-selected guard; navigation from anywhere

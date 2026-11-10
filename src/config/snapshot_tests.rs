@@ -345,16 +345,11 @@ list_pane_width = 420
 about_height = 500
 wizard_completed = true
 web_font_fallback = "org.gnome.Platform//49"
-last_account = "a@x"
 recent_fonts = [{ name = "Cantarell" }, { name = "Source Code Pro", mono = true }]
 
 [fetch_modes]
 "a@x" = "headers"
 "b@x" = "no-previews"
-
-[last_view]
-email = "a@x"
-path = "INBOX"
 
 "#,
     );

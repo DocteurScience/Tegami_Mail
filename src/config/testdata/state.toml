@@ -4,15 +4,10 @@ list_pane_height = 320
 about_height = 500
 wizard_completed = true
 web_font_fallback = "org.gnome.Platform//49"
-last_account = "a@x"
 
 [fetch_modes]
 "a@x" = "headers"
 "b@x" = "no-previews"
-
-[last_view]
-email = "a@x"
-path = "INBOX"
 
 [[recent_fonts]]
 name = "Cantarell"

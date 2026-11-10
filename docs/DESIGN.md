@@ -290,6 +290,8 @@ All of these are features the app has today; the owner agreed to each.
   fullscreen, tray icon, GNOME Files integration, "Send with" default, size
   limit, link opener. Status bar, console mode and "Export log" move to a
   "Troubleshooting" entry of the main menu.
+- Start view: the application always opens on the first account's inbox
+  (owner, 2026-11-10).
 - Existing values: a removed setting keeps its stored value and is simply no
   longer shown, unless the code below it is also removed.
 

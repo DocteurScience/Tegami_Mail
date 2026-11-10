@@ -419,8 +419,6 @@ pub(crate) struct AppModel {
     /// The message list header's sort and filter popover and the All /
     /// Unread / Starred switch (set in init).
     pub(super) list_header_widgets: std::cell::OnceCell<ListHeaderWidgets>,
-    /// What the window shows at launch (#256).
-    pub(super) start_view: config::StartView,
     /// How accounts' folders are sorted, unless an account chooses
     /// (Settings → Sidebar).
     pub(super) folder_sort: config::FolderSort,

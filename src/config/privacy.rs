@@ -11,7 +11,7 @@ use super::prefs::{
     LauncherBadge, NotificationButtons, PrintOptions, ReadMark, ReceiptPolicy, ReturnedReceipts,
     SignaturePosition,
 };
-use super::sections::{FolderSort, StartView};
+use super::sections::FolderSort;
 use super::{config_file, default_on, is_zero, save_private_toml};
 
 /// Every preference privacy.toml holds. The name is historical: the file
@@ -249,9 +249,6 @@ pub(crate) struct PrivacyFile {
     pub(crate) files_large: FilesLarge,
     #[serde(default = "default_files_limit_mb")]
     pub(crate) files_limit_mb: u32,
-    /// What the main window shows at launch (#256).
-    #[serde(default)]
-    pub(crate) start_view: StartView,
     /// How accounts' folders are sorted, unless an account chooses.
     #[serde(default)]
     pub(crate) folder_sort: FolderSort,
@@ -291,7 +288,6 @@ impl Default for PrivacyFile {
             files_action: FilesAction::default(),
             files_large: FilesLarge::default(),
             files_limit_mb: default_files_limit_mb(),
-            start_view: StartView::default(),
             folder_sort: FolderSort::default(),
             gravatar: false,
             avatars: true,

@@ -154,16 +154,6 @@ pub(crate) struct SidebarInit {
     pub(crate) tags_expanded: bool,
     pub(crate) favorites_expanded: bool,
     pub(crate) smart_expanded: bool,
-    /// Where the first pick lands instead of the first Inbox (#256).
-    pub(crate) start: Option<StartTarget>,
-}
-
-/// A view to open at launch (#256), by account address: an account's
-/// inbox, or one of its folders by path.
-#[derive(Clone, Debug)]
-pub(crate) enum StartTarget {
-    Inbox(String),
-    Folder(String, String),
 }
 
 /// What is currently selected in the sidebar.

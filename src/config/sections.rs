@@ -1,20 +1,6 @@
 //! The sidebar's sections: where each section is placed, the start view,
 //! folder order and the icon rail's fold-ups.
 
-/// What the main window shows at launch (#256).
-#[derive(Clone, Copy, Debug, Default, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
-#[serde(rename_all = "snake_case")]
-pub(crate) enum StartView {
-    /// The first account's inbox. Named after the All Inboxes view it
-    /// opened before that view went, so saved settings still read.
-    #[default]
-    AllInboxes,
-    /// The inbox of the account whose mail was open last.
-    AccountInbox,
-    /// Whichever folder was open last.
-    LastFolder,
-}
-
 /// How an account's custom folders are ordered in the sidebar: Settings →
 /// Sidebar sets it for every account, and an account can choose its own
 /// (`AccountConfig::folder_sort`). The main folders (Inbox, Sent…) keep

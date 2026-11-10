@@ -7,9 +7,9 @@ use crate::ui::message_list::{MessageList, MessageListOutput};
 use crate::ui::message_view::{MessageView, MessageViewOutput};
 use crate::ui::notifications::{NotificationCenter, NotifyOutput};
 use crate::ui::preferences::PrefOutput;
-use crate::ui::sidebar::{Sidebar, SidebarInput, SidebarOutput};
+use crate::ui::sidebar::{Sidebar, SidebarOutput};
 
-use super::boot::{sidebar_init, start_target, Boot};
+use super::boot::{sidebar_init, Boot};
 use super::model::AppModel;
 use super::msg::AppMsg;
 use super::types::UnifiedView;
@@ -276,27 +276,12 @@ pub(super) struct Children {
 impl Children {
     /// Launches every child with its output forwarded to the root.
     pub(super) fn launch(boot: &Boot, sender: &ComponentSender<AppModel>) -> Self {
-        let start = start_target(boot.prefs.start_view);
-        let start_pending = start.is_some();
         let sidebar = Sidebar::builder()
-            .launch(sidebar_init(
-                &boot.sidebar_state,
-                boot.rail_now,
-                false,
-                start,
-            ))
+            .launch(sidebar_init(&boot.sidebar_state, boot.rail_now, false))
             .forward(sender.input_sender(), sidebar_output_msg);
-        // The sidebar waits for the launch view's account to list its
-        // folders; one that is offline with nothing cached never does.
-        if start_pending {
-            let s = sidebar.sender().clone();
-            gtk::glib::timeout_add_seconds_local_once(5, move || {
-                let _ = s.send(SidebarInput::DropStart);
-            });
-        }
         // The peek panel's rows: a second, always-expanded instance.
         let peek_sidebar = Sidebar::builder()
-            .launch(sidebar_init(&boot.sidebar_state, false, true, None))
+            .launch(sidebar_init(&boot.sidebar_state, false, true))
             .forward(sender.input_sender(), sidebar_output_msg);
 
         let message_list = MessageList::builder()
