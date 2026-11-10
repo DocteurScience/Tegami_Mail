@@ -289,60 +289,6 @@ fn new_mail_sound_names_a_builtin_or_falls_back() {
 }
 
 #[test]
-fn notification_buttons_default_to_all_and_round_trip() {
-    // An older privacy.toml with no key carries every button.
-    let p: PrivacyFile = toml::from_str("").unwrap();
-    assert_eq!(
-        super::NotificationButtons::from_list(&p.notification_buttons),
-        super::NotificationButtons::default()
-    );
-    // An empty list is no buttons at all, not the default.
-    let p: PrivacyFile = toml::from_str("notification_buttons = []").unwrap();
-    let none = super::NotificationButtons::NONE;
-    assert_eq!(
-        super::NotificationButtons::from_list(&p.notification_buttons),
-        none
-    );
-    let p: PrivacyFile =
-        toml::from_str(r#"notification_buttons = ["delete", "bogus", "mark_read"]"#).unwrap();
-    let b = super::NotificationButtons::from_list(&p.notification_buttons);
-    assert_eq!(
-        b,
-        super::NotificationButtons {
-            mark_read: true,
-            delete: true,
-            ..none
-        }
-    );
-    assert_eq!(
-        b.to_list(),
-        vec!["mark_read".to_string(), "delete".to_string()]
-    );
-}
-
-#[test]
-fn notification_buttons_stop_at_three() {
-    // A hand-edited file naming more than three keeps the first three
-    // in button order, whatever order the file lists them in.
-    let p: PrivacyFile = toml::from_str(
-        r#"notification_buttons = ["spam", "forward", "reply", "delete", "archive"]"#,
-    )
-    .unwrap();
-    let b = super::NotificationButtons::from_list(&p.notification_buttons);
-    assert_eq!(
-        b,
-        super::NotificationButtons {
-            archive: true,
-            delete: true,
-            reply: true,
-            ..super::NotificationButtons::NONE
-        }
-    );
-    assert!(b.full());
-    assert_eq!(b.count(), 3);
-}
-
-#[test]
 fn notifications_can_be_disabled() {
     let p: PrivacyFile = toml::from_str("notifications = false").unwrap();
     assert!(!p.notifications);

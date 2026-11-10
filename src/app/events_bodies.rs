@@ -11,7 +11,6 @@ use crate::worker::MailRequest;
 use super::conversation::{body_key, is_event_target, BodyKey};
 use super::model::AppModel;
 use super::msg::AppMsg;
-use super::prefill::reply_prefill;
 
 impl AppModel {
     /// The messages the router sends here (see `AppModel::route`).
@@ -358,22 +357,7 @@ impl AppModel {
             }
             self.pending_forward = Some(pending);
         }
-        // A reply from a notification's button (#244): the message
-        // is opening in the reader too, so the body goes on to be
-        // shown as usual.
-        if let Some(mut m) = self.pending_notified_reply.take() {
-            if m.account_id == account_id && m.id == message_id {
-                m.body = body.to_string();
-                self.open_compose(
-                    m.account_id,
-                    self.reply_context(&m, reply_prefill(&m, &self.reply_header)),
-                    sender,
-                );
-            } else {
-                self.pending_notified_reply = Some(m);
-            }
-        }
-        // Likewise a reply picked for handed-in files.
+        // A reply picked for handed-in files.
         if let Some((mut m, extra)) = self.pending_reply.take() {
             if m.account_id == account_id && m.id == message_id {
                 m.body = body.to_string();

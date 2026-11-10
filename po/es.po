@@ -1335,26 +1335,6 @@ msgstr ""
 msgid "Could not save the message: {e}"
 msgstr "No se pudo guardar el mensaje: {e}"
 
-msgid "Open Tegami Mail"
-msgstr "Abrir Tegami Mail"
-
-msgid "View all {n} unread in Inboxes…"
-msgstr "Ver los {n} mensajes sin leer en las bandejas de entrada…"
-
-#. ---- Accounts (screen 26): the accounts themselves, listed by
-#. the accounts panel, then the rows to what organizes mail and to
-#. the services.
-msgid "Accounts"
-msgstr "Cuentas"
-
-msgid "No unread mail in Inboxes"
-msgstr "No hay correo sin leer en las bandejas de entrada"
-
-msgid "{n} unread in Inboxes"
-msgid_plural "{n} unread in Inboxes"
-msgstr[0] "{n} mensaje sin leer en las bandejas de entrada"
-msgstr[1] "{n} mensajes sin leer en las bandejas de entrada"
-
 #, fuzzy
 msgid "Status bar"
 msgstr "Barra de estado ({n})"
@@ -2757,6 +2737,12 @@ msgstr ""
 #, fuzzy
 msgid "Delete smart folder"
 msgstr "Eliminar carpeta inteligente…"
+
+#. ---- Accounts (screen 26): the accounts themselves, listed by
+#. the accounts panel, then the rows to what organizes mail and to
+#. the services.
+msgid "Accounts"
+msgstr "Cuentas"
 
 msgid "Save attachment"
 msgstr "Guardar archivo adjunto"

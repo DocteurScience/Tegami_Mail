@@ -1342,26 +1342,6 @@ msgstr ""
 msgid "Could not save the message: {e}"
 msgstr "Δεν ήταν δυνατή η αποθήκευση του μηνύματος: {e}"
 
-msgid "Open Tegami Mail"
-msgstr "Άνοιγμα Tegami Mail"
-
-msgid "View all {n} unread in Inboxes…"
-msgstr "Προβολή και των {n} μη αναγνωσμένων στα Εισερχόμενα…"
-
-#. ---- Accounts (screen 26): the accounts themselves, listed by
-#. the accounts panel, then the rows to what organizes mail and to
-#. the services.
-msgid "Accounts"
-msgstr "Λογαριασμοί"
-
-msgid "No unread mail in Inboxes"
-msgstr "Δεν υπάρχει μη αναγνωσμένη αλληλογραφία στα Εισερχόμενα"
-
-msgid "{n} unread in Inboxes"
-msgid_plural "{n} unread in Inboxes"
-msgstr[0] "{n} μη αναγνωσμένο στα Εισερχόμενα"
-msgstr[1] "{n} μη αναγνωσμένα στα Εισερχόμενα"
-
 #, fuzzy
 msgid "Status bar"
 msgstr "Γραμμή κατάστασης ({n})"
@@ -2784,6 +2764,12 @@ msgstr ""
 #, fuzzy
 msgid "Delete smart folder"
 msgstr "Διαγραφή έξυπνου φακέλου…"
+
+#. ---- Accounts (screen 26): the accounts themselves, listed by
+#. the accounts panel, then the rows to what organizes mail and to
+#. the services.
+msgid "Accounts"
+msgstr "Λογαριασμοί"
 
 msgid "Save attachment"
 msgstr "Αποθήκευση συνημμένου"

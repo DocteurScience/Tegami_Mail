@@ -12,7 +12,6 @@ use super::demo::demo_mode;
 use super::flags::read_label;
 use super::model::AppModel;
 use super::msg::AppMsg;
-use super::prefill::reply_prefill;
 use super::undo::FlagKind;
 
 /// Resolve a notification's `(account_id, folder_id, message_id)` to the full
@@ -142,52 +141,6 @@ impl AppModel {
                     // usual undo; a message already there asks first.
                     self.delete_messages(vec![m], &sender);
                     crate::desktop::notify::withdraw_mail(account_id);
-                }
-            }
-
-            AppMsg::NotificationSpam {
-                account_id,
-                folder_id,
-                message_id,
-            } => {
-                if let Some(m) = notified_message(account_id, folder_id, message_id, &self.folders)
-                {
-                    self.mark_spam_msg(m);
-                    crate::desktop::notify::withdraw_mail(account_id);
-                }
-            }
-
-            // The message is opening in the reader (the action sent
-            // OpenMessageFromNotification first); the composer waits for
-            // the body it quotes when that is still on its way.
-            AppMsg::NotificationReply {
-                account_id,
-                folder_id,
-                message_id,
-            } => {
-                if let Some(m) = notified_message(account_id, folder_id, message_id, &self.folders)
-                {
-                    let m = self.with_cached_body(m);
-                    if m.body.is_empty() {
-                        self.pending_notified_reply = Some(m);
-                    } else {
-                        self.open_compose(
-                            m.account_id,
-                            self.reply_context(&m, reply_prefill(&m, &self.reply_header)),
-                            &sender,
-                        );
-                    }
-                }
-            }
-
-            AppMsg::NotificationForward {
-                account_id,
-                folder_id,
-                message_id,
-            } => {
-                if let Some(m) = notified_message(account_id, folder_id, message_id, &self.folders)
-                {
-                    self.forward(m, &sender);
                 }
             }
 
@@ -324,7 +277,6 @@ impl AppModel {
         let ty = &*<(u32, u32, u32)>::static_variant_type();
         self.install_open_message_action(sender, ty);
         install_quiet_message_actions(sender, ty);
-        self.install_windowed_message_actions(sender, ty);
     }
 
     /// Present (a click on an alert) and the "message ready" alerts'
@@ -386,54 +338,6 @@ impl AppModel {
         app.add_action(&open);
     }
 
-    /// The alert buttons that need the window: Reply and Forward.
-    fn install_windowed_message_actions(
-        &self,
-        sender: &ComponentSender<Self>,
-        ty: &gtk::glib::VariantTy,
-    ) {
-        let app = relm4::main_application();
-        // Reply and Forward (#244) need the window: the message opens
-        // as a click on the notification would open it, and the
-        // composer follows once its body is in.
-        for (name, mk) in [
-            (
-                crate::desktop::notify::REPLY_ACTION,
-                (&|account_id, folder_id, message_id| AppMsg::NotificationReply {
-                    account_id,
-                    folder_id,
-                    message_id,
-                }) as &dyn Fn(u32, u32, u32) -> AppMsg,
-            ),
-            (
-                crate::desktop::notify::FORWARD_ACTION,
-                &|account_id, folder_id, message_id| AppMsg::NotificationForward {
-                    account_id,
-                    folder_id,
-                    message_id,
-                },
-            ),
-        ] {
-            let act = gtk::gio::SimpleAction::new(name, Some(ty));
-            let win = self.window.clone();
-            let asender = sender.clone();
-            act.connect_activate(move |_, param| {
-                crate::desktop::session::present_window(&win);
-                if let Some((account_id, folder_id, message_id)) =
-                    param.and_then(|v| v.get::<(u32, u32, u32)>())
-                {
-                    asender.input(AppMsg::OpenMessageFromNotification {
-                        account_id,
-                        folder_id,
-                        message_id,
-                    });
-                    asender.input(mk(account_id, folder_id, message_id));
-                }
-            });
-            app.add_action(&act);
-        }
-    }
-
     /// GNOME keeps a notification after the app that posted it has quit,
     /// and a new instance knows nothing of what it pointed at, so it
     /// could only linger (#333). New mail since is notified afresh.
@@ -469,14 +373,6 @@ fn install_quiet_message_actions(sender: &ComponentSender<AppModel>, ty: &gtk::g
         (
             crate::desktop::notify::DELETE_ACTION,
             &|account_id, folder_id, message_id| AppMsg::NotificationDelete {
-                account_id,
-                folder_id,
-                message_id,
-            },
-        ),
-        (
-            crate::desktop::notify::SPAM_ACTION,
-            &|account_id, folder_id, message_id| AppMsg::NotificationSpam {
                 account_id,
                 folder_id,
                 message_id,

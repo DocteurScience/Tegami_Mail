@@ -1420,27 +1420,6 @@ msgstr ""
 msgid "Could not save the message: {e}"
 msgstr "Не удалось обновить сообщение: {e}"
 
-msgid "Open Tegami Mail"
-msgstr "Открыть Tegami Mail"
-
-msgid "View all {n} unread in Inboxes…"
-msgstr "Посмотреть все непрочитанные: {n}…"
-
-#. ---- Accounts (screen 26): the accounts themselves, listed by
-#. the accounts panel, then the rows to what organizes mail and to
-#. the services.
-msgid "Accounts"
-msgstr "Учётные записи"
-
-msgid "No unread mail in Inboxes"
-msgstr "Нет непрочитанных писем"
-
-msgid "{n} unread in Inboxes"
-msgid_plural "{n} unread in Inboxes"
-msgstr[0] "{n} непрочитанное во «Входящих»"
-msgstr[1] "{n} непрочитанных во «Входящих»"
-msgstr[2] "{n} непрочитанных во «Входящих»"
-
 #, fuzzy
 msgid "Status bar"
 msgstr "Строка состояния ({n})"
@@ -2881,6 +2860,12 @@ msgstr ""
 #, fuzzy
 msgid "Delete smart folder"
 msgstr "Удалить папку…"
+
+#. ---- Accounts (screen 26): the accounts themselves, listed by
+#. the accounts panel, then the rows to what organizes mail and to
+#. the services.
+msgid "Accounts"
+msgstr "Учётные записи"
 
 msgid "Save attachment"
 msgstr "Сохранить вложение"

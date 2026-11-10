@@ -1326,26 +1326,6 @@ msgstr ""
 msgid "Could not save the message: {e}"
 msgstr "No s'ha pogut desar el missatge: {e}"
 
-msgid "Open Tegami Mail"
-msgstr "Obre l'Tegami Mail"
-
-msgid "View all {n} unread in Inboxes…"
-msgstr "Mostra tots els {n} no llegits a les bústies d'entrada…"
-
-#. ---- Accounts (screen 26): the accounts themselves, listed by
-#. the accounts panel, then the rows to what organizes mail and to
-#. the services.
-msgid "Accounts"
-msgstr "Comptes"
-
-msgid "No unread mail in Inboxes"
-msgstr "No hi ha correu no llegit a les bústies d'entrada"
-
-msgid "{n} unread in Inboxes"
-msgid_plural "{n} unread in Inboxes"
-msgstr[0] "{n} no llegit a les bústies d'entrada"
-msgstr[1] "{n} no llegits a les bústies d'entrada"
-
 #, fuzzy
 msgid "Status bar"
 msgstr "Barra d'estat ({n})"
@@ -2748,6 +2728,12 @@ msgstr ""
 #, fuzzy
 msgid "Delete smart folder"
 msgstr "Suprimeix la carpeta intel·ligent…"
+
+#. ---- Accounts (screen 26): the accounts themselves, listed by
+#. the accounts panel, then the rows to what organizes mail and to
+#. the services.
+msgid "Accounts"
+msgstr "Comptes"
 
 msgid "Save attachment"
 msgstr "Desa l'adjunt"

@@ -8,8 +8,7 @@ use std::path::PathBuf;
 use super::look::{default_list_columns, AppTheme, ReadingPane};
 use super::prefs::{
     default_files_limit_mb, default_undo_send_secs, ComposeFormat, FilesAction, FilesLarge,
-    LauncherBadge, NotificationButtons, PrintOptions, ReadMark, ReceiptPolicy, ReturnedReceipts,
-    SignaturePosition,
+    LauncherBadge, PrintOptions, ReadMark, ReceiptPolicy, ReturnedReceipts, SignaturePosition,
 };
 use super::sections::FolderSort;
 use super::{config_file, default_on, is_zero, save_private_toml};
@@ -69,11 +68,6 @@ pub(crate) struct PrivacyFile {
     /// on the lock screen, so turning it off is worth offering.
     #[serde(default = "default_on")]
     pub(crate) notification_content: bool,
-    /// Which action buttons a new-mail notification carries (#244), by
-    /// name: `mark_read`, `archive`, `delete`, `reply`, `forward`, `spam`;
-    /// at most three count. Absent = mark_read, archive, delete.
-    #[serde(default = "default_notification_buttons")]
-    pub(crate) notification_buttons: Vec<String>,
     /// Whether message rows take a sideways swipe at all (#92, PR #135).
     #[serde(default = "default_on")]
     pub(crate) swipe_enabled: bool,
@@ -261,10 +255,6 @@ fn default_fetch_interval() -> u64 {
     300
 }
 
-fn default_notification_buttons() -> Vec<String> {
-    NotificationButtons::default().to_list()
-}
-
 fn default_preview_lines() -> u32 {
     1
 }
@@ -301,7 +291,6 @@ impl Default for PrivacyFile {
             confirm_thread_delete: true,
             notifications: true,
             notification_content: true,
-            notification_buttons: default_notification_buttons(),
             swipe_enabled: true,
             compose_default_from: String::new(),
             // A new install takes today's default, not the 2026-08-31 one.

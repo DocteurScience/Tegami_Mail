@@ -66,9 +66,6 @@ impl AppModel {
             | AppMsg::NotificationMarkRead { .. }
             | AppMsg::NotificationArchive { .. }
             | AppMsg::NotificationDelete { .. }
-            | AppMsg::NotificationSpam { .. }
-            | AppMsg::NotificationReply { .. }
-            | AppMsg::NotificationForward { .. }
             | AppMsg::Status { .. }
             | AppMsg::CopyProgress { .. }
             | AppMsg::Error { .. }

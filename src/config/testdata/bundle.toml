@@ -16,11 +16,6 @@ thread_newest_first = false
 confirm_thread_delete = true
 notifications = true
 notification_content = true
-notification_buttons = [
-    "mark_read",
-    "archive",
-    "delete",
-]
 swipe_enabled = true
 compose_default_from = ""
 paste_plain = true

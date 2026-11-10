@@ -1223,26 +1223,6 @@ msgstr ""
 msgid "Could not save the message: {e}"
 msgstr ""
 
-msgid "Open Tegami Mail"
-msgstr ""
-
-msgid "View all {n} unread in Inboxes…"
-msgstr ""
-
-#. ---- Accounts (screen 26): the accounts themselves, listed by
-#. the accounts panel, then the rows to what organizes mail and to
-#. the services.
-msgid "Accounts"
-msgstr ""
-
-msgid "No unread mail in Inboxes"
-msgstr ""
-
-msgid "{n} unread in Inboxes"
-msgid_plural "{n} unread in Inboxes"
-msgstr[0] ""
-msgstr[1] ""
-
 msgid "Status bar"
 msgstr ""
 
@@ -2505,6 +2485,12 @@ msgid "Add a criterion on the preview or Reply-To…"
 msgstr ""
 
 msgid "Delete smart folder"
+msgstr ""
+
+#. ---- Accounts (screen 26): the accounts themselves, listed by
+#. the accounts panel, then the rows to what organizes mail and to
+#. the services.
+msgid "Accounts"
 msgstr ""
 
 msgid "Save attachment"

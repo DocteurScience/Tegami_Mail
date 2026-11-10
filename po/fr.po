@@ -1321,26 +1321,6 @@ msgstr ""
 msgid "Could not save the message: {e}"
 msgstr "Impossible d’enregistrer le message : {e}"
 
-msgid "Open Tegami Mail"
-msgstr "Ouvrir Tegami Mail"
-
-msgid "View all {n} unread in Inboxes…"
-msgstr "Afficher tous les {n} non lus dans les boîtes de réception…"
-
-#. ---- Accounts (screen 26): the accounts themselves, listed by
-#. the accounts panel, then the rows to what organizes mail and to
-#. the services.
-msgid "Accounts"
-msgstr "Comptes"
-
-msgid "No unread mail in Inboxes"
-msgstr "Aucun courrier non lu dans les boîtes de réception"
-
-msgid "{n} unread in Inboxes"
-msgid_plural "{n} unread in Inboxes"
-msgstr[0] "{n} non lu dans les boîtes de réception"
-msgstr[1] "{n} non lu dans les boîtes de réception"
-
 msgid "Status bar"
 msgstr "Barre d’état"
 
@@ -2697,6 +2677,12 @@ msgstr "Ajouter un critère sur l’aperçu ou Reply-To…"
 
 msgid "Delete smart folder"
 msgstr "Supprimer le dossier intelligent"
+
+#. ---- Accounts (screen 26): the accounts themselves, listed by
+#. the accounts panel, then the rows to what organizes mail and to
+#. the services.
+msgid "Accounts"
+msgstr "Comptes"
 
 msgid "Save attachment"
 msgstr "Enregistrer la pièce jointe"

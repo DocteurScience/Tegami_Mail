@@ -335,8 +335,6 @@ pub(crate) struct AppModel {
     pub(super) notifications_enabled: bool,
     /// Whether new-mail notifications may name the sender and subject.
     pub(super) notification_content: bool,
-    /// Which action buttons a new-mail notification carries (#244).
-    pub(super) notification_buttons: config::NotificationButtons,
     /// The Settings category last shown this session, to reopen on.
     pub(super) last_settings_page: Option<String>,
     /// The list header's count text ("N" / "N of M"), from the message list.
@@ -685,9 +683,6 @@ pub(crate) struct AppModel {
     /// A forward (#240) waiting on the body, or the attachments, it is to
     /// carry.
     pub(super) pending_forward: Option<Message>,
-    /// A reply started from a notification's button (#244), waiting for
-    /// the body it quotes.
-    pub(super) pending_notified_reply: Option<Message>,
     /// Outstanding bulk MoveMessages requests awaiting a worker `BulkComplete`.
     /// Outstanding server-side bulk operations; while > 0 the refresh spinner
     /// spins and the status bar narrates.

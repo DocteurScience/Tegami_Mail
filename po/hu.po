@@ -1391,27 +1391,6 @@ msgstr ""
 msgid "Could not save the message: {e}"
 msgstr "Az üzenet nem frissíthető: {e}"
 
-msgid "Open Tegami Mail"
-msgstr "Tegami Mail megnyitása"
-
-msgid "View all {n} unread in Inboxes…"
-msgstr ""
-"Az összes {n} olvasatlan üzenet megtekintése a Beérkező levelek mappában…"
-
-#. ---- Accounts (screen 26): the accounts themselves, listed by
-#. the accounts panel, then the rows to what organizes mail and to
-#. the services.
-msgid "Accounts"
-msgstr "Fiókok"
-
-msgid "No unread mail in Inboxes"
-msgstr "A Beérkezett levelek mappában nincs olvasatlan"
-
-msgid "{n} unread in Inboxes"
-msgid_plural "{n} unread in Inboxes"
-msgstr[0] "{n} olvasatlan üzenet a Beérkező levelekben"
-msgstr[1] "{n} olvasatlan üzenet a Beérkező levelekben"
-
 #, fuzzy
 msgid "Status bar"
 msgstr "Állapotsáv ({n})"
@@ -2855,6 +2834,12 @@ msgstr ""
 #, fuzzy
 msgid "Delete smart folder"
 msgstr "Mappa törlése…"
+
+#. ---- Accounts (screen 26): the accounts themselves, listed by
+#. the accounts panel, then the rows to what organizes mail and to
+#. the services.
+msgid "Accounts"
+msgstr "Fiókok"
 
 msgid "Save attachment"
 msgstr "Melléklet mentése"

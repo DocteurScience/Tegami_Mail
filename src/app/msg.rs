@@ -77,26 +77,6 @@ pub(crate) enum AppMsg {
         folder_id: u32,
         message_id: u32,
     },
-    /// A notification's Spam button: mark the message as spam, without
-    /// raising the window.
-    NotificationSpam {
-        account_id: u32,
-        folder_id: u32,
-        message_id: u32,
-    },
-    /// A notification's Reply button (#244): the message opens as a click on
-    /// the notification opens it, and a reply follows once its body is in.
-    NotificationReply {
-        account_id: u32,
-        folder_id: u32,
-        message_id: u32,
-    },
-    /// A notification's Forward button (#244), as Reply.
-    NotificationForward {
-        account_id: u32,
-        folder_id: u32,
-        message_id: u32,
-    },
     /// A worker's status line.
     Status { account_id: u32, text: String },
     /// What is left to copy to On This Computer (#552).

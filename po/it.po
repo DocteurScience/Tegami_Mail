@@ -1366,26 +1366,6 @@ msgstr ""
 msgid "Could not save the message: {e}"
 msgstr "Impossibile salvare il messaggio: {e}"
 
-msgid "Open Tegami Mail"
-msgstr "Apri Tegami Mail"
-
-msgid "View all {n} unread in Inboxes…"
-msgstr "Visualizza tutti i {n} non letti in Posta in arrivo…"
-
-#. ---- Accounts (screen 26): the accounts themselves, listed by
-#. the accounts panel, then the rows to what organizes mail and to
-#. the services.
-msgid "Accounts"
-msgstr "Account"
-
-msgid "No unread mail in Inboxes"
-msgstr "Nessuna posta non letta nella Posta in arrivo"
-
-msgid "{n} unread in Inboxes"
-msgid_plural "{n} unread in Inboxes"
-msgstr[0] "{n} non letti nella Posta in arrivo"
-msgstr[1] "{n} non letti nella Posta in arrivo"
-
 #, fuzzy
 msgid "Status bar"
 msgstr "Barra di stato ({n})"
@@ -2816,6 +2796,12 @@ msgstr ""
 #, fuzzy
 msgid "Delete smart folder"
 msgstr "Elimina cartella smart…"
+
+#. ---- Accounts (screen 26): the accounts themselves, listed by
+#. the accounts panel, then the rows to what organizes mail and to
+#. the services.
+msgid "Accounts"
+msgstr "Account"
 
 msgid "Save attachment"
 msgstr "Salva allegato"

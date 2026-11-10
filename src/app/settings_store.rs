@@ -26,7 +26,6 @@ impl AppModel {
             confirm_thread_delete: self.confirm_thread_delete,
             notifications: self.notifications_enabled,
             notification_content: self.notification_content,
-            notification_buttons: self.notification_buttons.to_list(),
             swipe_enabled: self.swipe_enabled,
             compose_default_from: self.compose_default_from.clone(),
             paste_plain: self.paste_plain,
