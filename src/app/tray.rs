@@ -1,6 +1,5 @@
 //! The tray icon and its menu, and the launcher badge.
 
-use std::collections::HashSet;
 
 use adw::prelude::*;
 use relm4::prelude::*;
@@ -32,66 +31,12 @@ fn tray_mail_key(mail: &indicator::TrayMailList) -> Vec<(u32, u32, String, Strin
 }
 
 impl AppModel {
-    /// The folders whose unread count has grown since they were last
-    /// looked at (#343). A folder on screen is being looked at, so its mark
-    /// follows its count; elsewhere the mark only comes down, as mail is
-    /// read. A folder never seen before starts with what it has, so turning
-    /// the setting on, or a new account, marks nothing.
-    fn fresh_unread(&self) -> HashSet<(u32, u32)> {
-        let on_screen = |a: u32, f: u32| {
-            self.window.is_visible()
-                && if self.unified {
-                    self.is_unified_target(a, f)
-                } else {
-                    self.selected
-                        .as_ref()
-                        .is_some_and(|s| s.account_id == a && s.folder_id == f)
-                }
-        };
-        let mut seen = self.unread_seen.borrow_mut();
-        let mut changed = false;
-        let mut fresh = HashSet::new();
-        for (&(a, f), &n) in &self.folder_unread {
-            let (Some(email), Some(path)) = (self.email_of(a), self.folder_path(a, f)) else {
-                continue;
-            };
-            let key = format!("{email}\u{1f}{path}");
-            let mark = seen.get(&key).copied();
-            let next = match mark {
-                _ if on_screen(a, f) => n,
-                None => n,
-                Some(m) => m.min(n),
-            };
-            if mark != Some(next) {
-                seen.insert(key, next);
-                changed = true;
-            }
-            if n > next {
-                fresh.insert((a, f));
-            }
-        }
-        if changed {
-            config::save_unread_seen(&seen);
-        }
-        fresh
-    }
-
-    /// `push_unread_counts` once the view switch has been drawn: it walks
-    /// every folder, and the counts can wait a frame where the list cannot.
-    pub(super) fn push_unread_counts_later(&self, sender: &ComponentSender<Self>) {
-        let s = sender.input_sender().clone();
-        gtk::glib::idle_add_local_once(move || {
-            let _ = s.send(AppMsg::PushUnreadCounts);
-        });
-    }
-
     /// Update the sidebar's unread badges in place (no rebuild), derived from the
     /// loaded message lists. Cheap enough to call on every read/sync.
     pub(super) fn push_unread_counts(&self) {
         let folders = self.folder_unread.clone();
         let unified = self.unified_unread();
-        let fresh = self.seen_counts.then(|| self.fresh_unread());
-        self.sidebars_emit(SidebarInput::SetUnread { folders, fresh });
+        self.sidebars_emit(SidebarInput::SetUnread { folders });
         // The counted total is what GNOME shows beside Tegami Mail in Background
         // Apps, so a process with no window still says what it is there for.
         if self.run_in_background.get() {

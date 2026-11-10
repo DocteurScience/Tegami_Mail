@@ -157,15 +157,6 @@ row.add-row {
   margin-left: -8px;
 }
 
-/* The tree style's caret (Settings → Sidebar → Sections) stands in the
-   icon column: its 24px button overhangs the 16px glyph 4px a side, so the
-   glyph and the label land where an icon and its label would. */
-.tree-caret {
-  margin-left: -4px;
-  margin-right: -4px;
-  opacity: 0.6;
-}
-
 /* Left placement: match the account headers' height below it (avatar + two-
    line name/email push those taller than this row's single line of text
    would be on its own) — content stays vertically centred. */
@@ -543,21 +534,6 @@ flowbox.attach-flow > flowboxchild {
 .unread-badge {
   opacity: 0.7;
   font-feature-settings: "tnum";
-}
-
-/* "Highlight only new unread mail" (#343): a count with mail new since it
-   was looked at stands out, bold and in the accent, never by colour
-   alone; the counts already looked at stay as above. */
-.unread-badge.fresh:not(.unread-badge-mini) {
-  opacity: 1;
-  font-weight: 700;
-  color: @accent_color;
-}
-
-/* A corner chip's look for a count already looked at (#343). */
-.unread-badge-mini.seen {
-  background: alpha(currentColor, 0.14);
-  color: inherit;
 }
 
 /* Compact-rail variant: a smaller chip pinned to an icon/pill corner via an

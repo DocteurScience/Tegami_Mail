@@ -37,7 +37,7 @@ impl Boot {
     /// Runs the steps in the order they depend on each other.
     pub(super) fn read(root: &adw::ApplicationWindow) -> Self {
         let prefs = install_globals(root);
-        let (mut sidebar_state, icon_only) = load_sidebar_layout(&prefs);
+        let (mut sidebar_state, icon_only) = load_sidebar_layout();
         let rail_now = icon_only;
         let config = load_accounts(&mut sidebar_state);
         // Decided after the GOA reconcile, which can add accounts.
@@ -75,22 +75,9 @@ fn install_globals(root: &adw::ApplicationWindow) -> config::PrivacyFile {
 
 /// The saved sidebar layout, as this launch starts it: `(layout,
 /// icon_only)`.
-fn load_sidebar_layout(prefs: &config::PrivacyFile) -> (config::SidebarState, bool) {
-    let mut sidebar_state = config::load_sidebar_state();
-    // Settings → Sidebar: "Remember the icon rail" off starts every
-    // launch with the full sidebar; "Remember the sidebar layout" off
-    // starts with every section folded up — and every account, folded as
-    // it arrives (SetAccount) — keeping only the account order. The two
-    // are independent.
-    let icon_only = prefs.remember_rail && sidebar_state.icon_only;
-    if !prefs.remember_sidebar {
-        // The layout starts fresh; the order things were put in stays.
-        sidebar_state = config::SidebarState {
-            order: sidebar_state.order,
-            folder_order: sidebar_state.folder_order,
-            ..Default::default()
-        };
-    }
+fn load_sidebar_layout() -> (config::SidebarState, bool) {
+    let sidebar_state = config::load_sidebar_state();
+    let icon_only = sidebar_state.icon_only;
     (sidebar_state, icon_only)
 }
 

@@ -220,9 +220,9 @@ impl Sidebar {
         if header.child().is_none() {
             header.set_child(Some(&hbox));
         }
-        if self.collapsed || self.account_click_folds {
-            // The rail's avatar, or every header by choice: a click
-            // anywhere opens or folds the account.
+        if self.collapsed {
+            // The rail's avatar: a click anywhere opens or folds the
+            // account.
             let s = sender.input_sender().clone();
             header.connect_clicked(move |_| {
                 let _ = s.send(SidebarInput::ToggleCollapseLocal(id));

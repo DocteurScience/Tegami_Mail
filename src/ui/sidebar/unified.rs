@@ -87,14 +87,10 @@ impl Sidebar {
             chev_btn.connect_clicked(move |_| {
                 let _ = cs.send(toggle_msg(row_kind));
             });
-            // The tree style (Settings → Sidebar → Sections): the caret
-            // takes the icon's place, centred on the icon column above,
-            // and the row has no chevron at its end.
-            let tree = self.as_heading(row_kind);
-            row.add_css_class(match (self.chevrons_left, tree) {
-                (true, _) => "chev-left",
-                (false, false) => "chev-right",
-                (false, true) => "tree-head",
+            row.add_css_class(if self.chevrons_left {
+                "chev-left"
+            } else {
+                "chev-right"
             });
             pin_icon_size(&img);
             // Centers this 16px icon on the avatar circles below it (rather
@@ -106,16 +102,8 @@ impl Sidebar {
             } else {
                 0
             };
-            if tree {
-                // The 24px button around the 16px glyph overhangs it 4px a
-                // side, taken back in styles.css (`.tree-caret`).
-                chev_btn.add_css_class("tree-caret");
-                chev_btn.set_margin_start(icon_inset);
-                hbox.append(&chev_btn);
-            } else {
-                img.set_margin_start(icon_inset);
-                hbox.append(&img);
-            }
+            img.set_margin_start(icon_inset);
+            hbox.append(&img);
             let label = gtk::Label::new(Some(&title));
             label.set_halign(gtk::Align::Start);
             label.set_hexpand(true);
@@ -152,9 +140,7 @@ impl Sidebar {
             b.set_visible(show_chip);
             hbox.append(&b);
             badge = b;
-            if tree {
-                // The caret leads already.
-            } else if self.chevrons_left {
+            if self.chevrons_left {
                 // Overlaid on the row's left edge rather than packed into
                 // the layout — the same trick as the rail's unread badges
                 // — so it reserves no space of its own: icon and label

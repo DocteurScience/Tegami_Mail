@@ -360,8 +360,6 @@ recent_fonts = [{ name = "Cantarell" }, { name = "Source Code Pro", mono = true 
 email = "a@x"
 path = "INBOX"
 
-[unread_seen]
-"a@x" = 12
 "#,
     );
 }

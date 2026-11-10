@@ -1,52 +1,6 @@
 //! The sidebar's sections: where each section is placed, the start view,
 //! folder order and the icon rail's fold-ups.
 
-use super::default_on;
-
-/// Where a sidebar section (Tags, Favorites) is drawn.
-#[derive(Clone, Copy, Debug, Default, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
-#[serde(rename_all = "snake_case")]
-pub(crate) enum SectionPlacement {
-    /// In the unified section, as older files have it. Only
-    /// ever read: loading moves it (see `LegacySwitches`), and a file
-    /// missing the key reads as this so that its old switch decides.
-    #[default]
-    AllInboxes,
-    /// In the scrolling sidebar, above the first account.
-    AboveAccounts,
-    /// In the scrolling sidebar, after the last account.
-    BelowAccounts,
-    /// The pinned footer, which Contacts and Attachments had. Both are gone
-    /// and nothing offers it; kept so a file naming it still reads (an
-    /// unknown value would fail the whole settings file), drawn as
-    /// `AboveAccounts`.
-    Footer,
-    /// Not in the sidebar at all.
-    Off,
-}
-
-/// How Tags and Favorites are drawn (Settings → Sidebar → Sections).
-#[derive(Clone, Copy, Debug, Default, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
-#[serde(rename_all = "snake_case")]
-pub(crate) enum SectionStyle {
-    /// As pills: the header opens the combined view, with a chevron on the
-    /// right.
-    #[default]
-    Unified,
-    /// As a tree: the caret that opens and closes the list in the icon's
-    /// place, no chevron at the row's end; the name still opens the view.
-    #[serde(alias = "headings")]
-    Tree,
-}
-
-impl SectionPlacement {
-    /// Whether the section is in the sidebar's scrolling part, where it
-    /// lists what it holds under its row.
-    pub(crate) fn shown(self) -> bool {
-        matches!(self, Self::AboveAccounts | Self::BelowAccounts)
-    }
-}
-
 /// What the main window shows at launch (#256).
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
 #[serde(rename_all = "snake_case")]
@@ -99,44 +53,5 @@ impl FolderSort {
     /// Its place in [`FolderSort::ALL`], for combo rows.
     pub(crate) fn index(self) -> u32 {
         FolderSort::ALL.iter().position(|s| *s == self).unwrap_or(0) as u32
-    }
-}
-
-/// "Fold up expanded items" (Settings → Sidebar → Icon rail): while the
-/// sidebar is collapsed to its icon rail, the items ticked here show folded
-/// up and stay so — their saved expansion is untouched and returns when the
-/// sidebar expands. Each item has its own switch under the master; all are
-/// on until switched off.
-#[derive(Clone, Copy, Debug, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
-pub(crate) struct RailFold {
-    /// The master switch: off, nothing folds for the rail.
-    #[serde(default = "default_on")]
-    pub(crate) enabled: bool,
-    /// Every account's folder list.
-    #[serde(default = "default_on")]
-    pub(crate) accounts: bool,
-    /// The Tags section.
-    #[serde(default = "default_on")]
-    pub(crate) tags: bool,
-}
-
-impl Default for RailFold {
-    fn default() -> Self {
-        RailFold {
-            enabled: true,
-            accounts: true,
-            tags: true,
-        }
-    }
-}
-
-impl RailFold {
-    /// Whether the accounts fold for the rail.
-    pub(crate) fn folds_accounts(self) -> bool {
-        self.enabled && self.accounts
-    }
-
-    pub(crate) fn folds_tags(self) -> bool {
-        self.enabled && self.tags
     }
 }

@@ -134,12 +134,6 @@ impl AppModel {
         self.sidebar_anim = Some(anim);
     }
 
-    /// Whether the icon rail marks unread folders with a dot instead of a
-    /// count.
-    pub(super) fn rail_dots_now(&self) -> bool {
-        self.rail_dots
-    }
-
     /// The messages the router sends here (see `AppModel::route`).
     pub(super) fn on_sidebar_peek(&mut self, msg: AppMsg) {
         match msg {
@@ -205,18 +199,9 @@ impl AppModel {
                 }
             }
 
-            AppMsg::SidebarHoverEnter => {
-                // Hover-expand (preference): the icon rail floats the full
-                // sidebar out without a click — whether the rail comes from
-                // the narrow-window breakpoint or the user's own collapse.
-                // The same peek the expand button opens, dismissed the same
-                // ways (navigation, or a click outside the panel).
-                let rail_up = self.auto_rail || self.sidebar_collapsed;
-                if self.sidebar_hover_expand && rail_up && !self.sidebar_peek {
-                    self.rail_active = false;
-                    self.set_sidebar_peek(true, true);
-                }
-            }
+            // The rail opens on a click, not on hover (nothing hidden
+            // behind hover, docs/DESIGN.md).
+            AppMsg::SidebarHoverEnter => {}
             _ => unreachable!("not routed to on_sidebar_peek"),
         }
     }

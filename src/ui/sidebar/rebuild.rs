@@ -20,7 +20,6 @@ impl Sidebar {
         container: &gtk::Box,
         sender: &ComponentSender<Self>,
     ) {
-        use crate::config::SectionPlacement::{AboveAccounts, BelowAccounts};
         release_focus(pinned, container);
         let (scroller, saved_scroll) = self.freeze_over_swap(pinned, container);
         self.clear_boxes(pinned, container);
@@ -40,7 +39,7 @@ impl Sidebar {
 
         // Favorites, Filters and Tags placed above the accounts,
         // drawn like the unified rows.
-        let rows_above = self.placed_rows(AboveAccounts);
+        let rows_above = self.placed_rows();
         if !rows_above.is_empty() {
             self.build_unified_run(container, &rows_above, sender);
         }
@@ -50,16 +49,9 @@ impl Sidebar {
             self.build_account_section(section_idx, section, container, sender);
         }
 
-        // And those placed after the last account.
-        let rows_below = self.placed_rows(BelowAccounts);
-        if !rows_below.is_empty() {
-            self.build_unified_run(container, &rows_below, sender);
-        }
-
         self.load_account_css(&sections);
         self.arm_revealers();
         pin_scroll(scroller, saved_scroll);
-        self.restyle_seen();
     }
 
     /// Keep the scroll offset: rebuilding otherwise snaps the sidebar to the
@@ -161,11 +153,11 @@ impl Sidebar {
             pinned.remove_css_class("rail-collapsed");
             container.remove_css_class("rail-collapsed");
         }
-        // Unread dots in place of counts (Settings → Sidebar → Icon rail):
-        // a style on the rail's containers, so every mini chip built below
-        // shrinks to a dot without each builder knowing.
+        // Unread dots in place of counts in the icon rail: a style on the
+        // rail's containers, so every mini chip built below shrinks to a
+        // dot without each builder knowing.
         for w in [pinned, container] {
-            if self.collapsed && self.rail_dots {
+            if self.collapsed {
                 w.add_css_class("rail-dots");
             } else {
                 w.remove_css_class("rail-dots");
@@ -399,59 +391,6 @@ impl Sidebar {
                     r.set_transition_duration(200);
                 }
             });
-        }
-    }
-
-    /// Tell the unread counts with new mail from those already looked at
-    /// (#343): a count is "seen" unless one of the folders it counts has
-    /// mail new since, and "fresh" otherwise. With the setting off, none is
-    /// either, and every count looks alike.
-    pub(super) fn restyle_seen(&self) {
-        let seen = |keys: &mut dyn Iterator<Item = &(u32, u32)>| match &self.fresh {
-            None => false,
-            Some(fresh) => {
-                for k in keys {
-                    if fresh.contains(k) {
-                        return false;
-                    }
-                }
-                true
-            }
-        };
-        let highlighting = self.fresh.is_some();
-        let mark = |label: &gtk::Label, seen: bool| {
-            if seen {
-                label.add_css_class("seen");
-            } else {
-                label.remove_css_class("seen");
-            }
-            if highlighting && !seen {
-                label.add_css_class("fresh");
-            } else {
-                label.remove_css_class("fresh");
-            }
-        };
-        for (key, label) in self
-            .folder_badges
-            .iter()
-            .chain(self.kind_widgets.values().flat_map(|w| &w.row_badges))
-        {
-            mark(label, seen(&mut std::iter::once(key)));
-        }
-        for w in self.kind_widgets.values() {
-            if let Some(b) = &w.badge {
-                mark(b, seen(&mut w.row_badges.keys()));
-            }
-        }
-        for section in &self.sections {
-            if let Some(label) = self.account_circle_badges.get(&section.account.id) {
-                let inbox = section
-                    .folders
-                    .iter()
-                    .find(|f| f.kind == FolderKind::Inbox)
-                    .map(|f| (section.account.id, f.id));
-                mark(label, seen(&mut inbox.iter()));
-            }
         }
     }
 }

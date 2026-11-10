@@ -65,10 +65,6 @@ pub(super) struct StateFile {
     /// Inboxes so "the last account's inbox" still has an account to mean.
     #[serde(default, skip_serializing_if = "String::is_empty")]
     last_account: String,
-    /// Each folder's unread count as of the last time it was looked at
-    /// (#343), keyed "address␟folder path".
-    #[serde(default, skip_serializing_if = "std::collections::BTreeMap::is_empty")]
-    unread_seen: std::collections::BTreeMap<String, u32>,
     /// The fonts last picked with the composer's Other Font… (#358), the
     /// newest first, for the font menu to offer again.
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
@@ -132,15 +128,6 @@ fn load_state() -> StateFile {
     read_toml::<StateFile>(state_path())
         .or_else(|| toml::from_str::<StateFile>("").ok())
         .unwrap_or_default()
-}
-
-/// Each folder's unread count when it was last looked at (#343).
-pub(crate) fn load_unread_seen() -> std::collections::BTreeMap<String, u32> {
-    load_state().unread_seen
-}
-
-pub(crate) fn save_unread_seen(seen: &std::collections::BTreeMap<String, u32>) {
-    update_state(|s| s.unread_seen = seen.clone());
 }
 
 /// Change one thing in state.toml.

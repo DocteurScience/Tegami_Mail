@@ -253,8 +253,6 @@ impl AppModel {
 
             AppMsg::UnifiedFoldersLoaded { lists } => self.on_unified_folders_loaded(lists),
 
-            AppMsg::PushUnreadCounts => self.push_unread_counts(),
-
             AppMsg::EmitUnifiedNow => {
                 self.list_fp.set(None);
                 if self.unified {

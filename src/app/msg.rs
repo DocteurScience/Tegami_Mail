@@ -985,8 +985,6 @@ pub(crate) enum AppMsg {
     UnifiedFoldersLoaded {
         lists: Vec<((u32, u32), Vec<Message>)>,
     },
-    /// Push the sidebar's unread counts, put off from a view switch.
-    PushUnreadCounts,
     /// Merge the unified view for the list now: the list had not kept it.
     EmitUnifiedNow,
     /// Merge the unified view's slices now (see `queue_unified_emit`).

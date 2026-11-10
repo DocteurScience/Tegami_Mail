@@ -9,19 +9,10 @@ pub(crate) enum SidebarInput {
         sections: Vec<SectionData>,
         /// Whether the account sections are shown at all.
         chevrons_left: bool,
-        /// A click anywhere on an account's header folds it.
-        account_click_folds: bool,
-        rail_dots: bool,
-        rail_fold: crate::config::RailFold,
         /// The favorite folders (#367), from every account.
         favorite_folders: Vec<UnifiedFolderRef>,
         /// The tags (#71), for the Tags section.
         tags: Vec<crate::config::Tag>,
-        /// Where the Tags and Favorites sections are
-        /// drawn, and how they look.
-        section_style: crate::config::SectionStyle,
-        tags_placement: crate::config::SectionPlacement,
-        favorites_placement: crate::config::SectionPlacement,
         /// The smart folders (#417) as (id, name).
         smart_folders: Vec<(String, String)>,
     },
@@ -103,10 +94,6 @@ pub(crate) enum SidebarInput {
     /// Update unread badges in place without rebuilding the sidebar.
     SetUnread {
         folders: HashMap<(u32, u32), u32>,
-        /// With "Highlight only new unread mail" on (#343): the folders
-        /// with mail come in since they were last looked at. Every other
-        /// count is grey. `None`: every count in the accent color.
-        fresh: Option<std::collections::HashSet<(u32, u32)>>,
     },
     /// A message drag was dropped on a folder row.
     DropOnFolder {

@@ -14,8 +14,8 @@ use super::prefs::{
     LauncherBadge, NotificationButtons, PrintOptions, ReadMark, ReceiptPolicy, ReturnedReceipts,
     SignaturePosition,
 };
-use super::sections::{FolderSort, RailFold, SectionPlacement, SectionStyle, StartView};
-use super::{config_file, default_on, is_zero, save_private_toml, write_private};
+use super::sections::{FolderSort, StartView};
+use super::{config_file, default_on, is_zero, save_private_toml};
 
 /// Every preference privacy.toml holds. The name is historical: the file
 /// began as the remote-content allowlist (`allowed_senders`).
@@ -205,31 +205,6 @@ pub(crate) struct PrivacyFile {
     /// Empty = follow the session locale (WebKit's own default).
     #[serde(default)]
     pub(crate) spellcheck_langs: String,
-    /// Hovering the icon rail (narrow-window or user-collapsed) floats the
-    /// full sidebar out over the panes without needing the expand button.
-    #[serde(default)]
-    pub(crate) sidebar_hover_expand: bool,
-    /// Reopen with the accounts, folders and sections as they were left.
-    /// Off starts every launch with everything folded up.
-    #[serde(default = "default_on")]
-    pub(crate) remember_sidebar: bool,
-    /// Reopen collapsed to the icon rail if that is how it was left. Off
-    /// starts every launch with the full sidebar.
-    #[serde(default = "default_on")]
-    pub(crate) remember_rail: bool,
-    /// Icon rail: a dot for unread mail in place of the count. On by
-    /// default, as are the fold-ups below.
-    #[serde(default = "default_on")]
-    pub(crate) rail_dots: bool,
-    /// Unread counts in the accent color only for mail that arrived since
-    /// the folder was last looked at; the rest neutral (#343). Off by
-    /// default.
-    #[serde(default)]
-    pub(crate) seen_counts: bool,
-    /// Icon rail: the sections folded up by themselves when the sidebar
-    /// collapses, one switch each.
-    #[serde(default)]
-    pub(crate) rail_fold: RailFold,
     /// The app chrome's theme: follow the system, or force light/dark.
     #[serde(default)]
     pub(crate) app_theme: AppTheme,
@@ -317,23 +292,10 @@ pub(crate) struct PrivacyFile {
     /// the banner; it never changes what is blocked, only whether you're told.
     #[serde(default = "default_on")]
     pub(crate) show_remote_banner: bool,
-    /// How Filters, Tags, Favorites and Contacts are drawn wherever they sit.
-    #[serde(default)]
-    pub(crate) section_style: SectionStyle,
-    /// Where the Tags section sits, the same choices.
-    #[serde(default)]
-    pub(crate) tags_placement: SectionPlacement,
-    /// Where Favorites sit, the same choices.
-    #[serde(default)]
-    pub(crate) favorites_placement: SectionPlacement,
     /// Whether the sidebar's disclosure chevrons (merged rows, account
     /// headers) LEAD their rows; off puts them back at the row's end.
     #[serde(default = "default_chevrons_left")]
     pub(crate) chevrons_left: bool,
-    /// Whether a click anywhere on an account's header folds it, as it
-    /// once did. Off (the default): its chevron, or a double click.
-    #[serde(default)]
-    pub(crate) account_click_folds: bool,
     /// Console mode (#status-bar): the verbose activity console is offered in
     /// the status bar. Off by default.
     #[serde(default)]
@@ -408,14 +370,10 @@ impl Default for PrivacyFile {
             auto_remote_content: false,
             remote_ahead: false,
             show_remote_banner: true,
-            section_style: SectionStyle::default(),
             // Under the accounts' folders, as the redesign has it (mockup 01).
             // Above the accounts (owner's decision, 2026-11-04): one
             // section for every account, in sight however many there are.
-            tags_placement: SectionPlacement::AboveAccounts,
-            favorites_placement: SectionPlacement::AboveAccounts,
             chevrons_left: default_chevrons_left(),
-            account_click_folds: false,
             console_mode: false,
             status_bar_top: false,
             read_mark: ReadMark::default(),
@@ -470,12 +428,6 @@ impl Default for PrivacyFile {
             undo_send_secs: default_undo_send_secs(),
             spellcheck: true,
             spellcheck_langs: String::new(),
-            sidebar_hover_expand: false,
-            remember_sidebar: true,
-            remember_rail: true,
-            rail_dots: true,
-            seen_counts: false,
-            rail_fold: RailFold::default(),
             app_theme: AppTheme::default(),
             text_scale: default_text_scale(),
             preview_lines: default_preview_lines(),
@@ -513,47 +465,7 @@ pub(crate) fn load_privacy() -> PrivacyFile {
     let Ok(text) = std::fs::read_to_string(&path) else {
         return PrivacyFile::default();
     };
-    let mut file = toml::from_str::<PrivacyFile>(&text).unwrap_or_default();
-    let moved = toml::from_str::<LegacySwitches>(&text).is_ok_and(|old| old.place(&mut file));
-    if moved {
-        if let Ok(toml) = toml::to_string_pretty(&file) {
-            let _ = write_private(&path, &toml);
-        }
-    }
-    file
-}
-
-/// The switches that once kept Filters, Tags, Favorites and Contacts in
-/// the unified section. That section no longer holds them: a file from
-/// then has them placed above the accounts where their switch was on, and
-/// off where it was off.
-#[derive(serde::Deserialize)]
-pub(super) struct LegacySwitches {
-    #[serde(default = "default_on")]
-    unified_tags: bool,
-    #[serde(default = "default_on")]
-    unified_favorites: bool,
-}
-
-impl LegacySwitches {
-    /// Whether any placement moved.
-    pub(super) fn place(&self, file: &mut PrivacyFile) -> bool {
-        let mut moved = false;
-        for (at, on) in [
-            (&mut file.tags_placement, self.unified_tags),
-            (&mut file.favorites_placement, self.unified_favorites),
-        ] {
-            if *at == SectionPlacement::AllInboxes {
-                *at = if on {
-                    SectionPlacement::AboveAccounts
-                } else {
-                    SectionPlacement::Off
-                };
-                moved = true;
-            }
-        }
-        moved
-    }
+    toml::from_str::<PrivacyFile>(&text).unwrap_or_default()
 }
 
 impl PrivacyFile {

@@ -433,13 +433,6 @@ impl AppModel {
                 if let Some(existing) = self.accounts.iter_mut().find(|a| a.id == account.id) {
                     *existing = account;
                 } else {
-                    // Layout not remembered: an account starts folded up,
-                    // wherever it came from (config, GOA, the demo). Only
-                    // on arrival, so opening it by hand sticks for the
-                    // session.
-                    if !self.remember_sidebar && !self.collapsed.contains(&account.email) {
-                        self.collapsed.push(account.email.clone());
-                    }
                     self.accounts.push(account);
                     self.accounts.sort_by_key(|a| a.id);
                 }

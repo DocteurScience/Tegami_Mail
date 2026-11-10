@@ -3,22 +3,6 @@
 
 use super::{ConfigFile, ListColumn, PrivacyFile, StateFile};
 
-/// A section once kept in the unified section moves above the accounts
-/// where its switch was on, and off where it was off; one already
-/// placed stays put.
-#[test]
-fn unified_placements_move_out() {
-    use super::{LegacySwitches, SectionPlacement::*};
-    let text = "tags_placement = \"all_inboxes\"\nunified_tags = false\n\
-                favorites_placement = \"below_accounts\"\n";
-    let mut file: PrivacyFile = toml::from_str(text).unwrap();
-    let old: LegacySwitches = toml::from_str(text).unwrap();
-    assert!(old.place(&mut file));
-    assert_eq!(file.tags_placement, Off);
-    assert_eq!(file.favorites_placement, BelowAccounts);
-    assert!(!old.place(&mut file));
-}
-
 /// The keyring thread runs what is queued in order, a call made from
 /// another thread waits behind it, one made on the keyring thread itself
 /// runs at once, and the drain waits for the queue (#466).

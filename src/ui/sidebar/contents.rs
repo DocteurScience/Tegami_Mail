@@ -15,14 +15,8 @@ impl Sidebar {
         let SidebarInput::SetContents {
             mut sections,
             chevrons_left,
-            account_click_folds,
-            rail_dots,
-            rail_fold,
             favorite_folders,
             tags,
-            section_style,
-            tags_placement,
-            favorites_placement,
             smart_folders,
         } = msg
         else {
@@ -48,18 +42,8 @@ impl Sidebar {
             .collect();
         self.sections = sections;
         self.chevrons_left = chevrons_left;
-        self.account_click_folds = account_click_folds;
-        self.rail_dots = rail_dots;
-        // "Fold up expanded items" is a view of the rail, not a
-        // change to what is saved: the rebuild below draws the
-        // ticked items folded while the sidebar is collapsed and
-        // as they are once it expands (see `locked_row`).
-        self.rail_fold = rail_fold;
         self.favorite_folders = favorite_folders;
         self.tags = tags;
-        self.section_style = section_style;
-        self.tags_placement = tags_placement;
-        self.favorites_placement = favorites_placement;
         self.smart_folders = smart_folders;
         self.settle_selection();
         self.rebuild(widgets, &sender);
@@ -169,12 +153,7 @@ impl Sidebar {
         }
     }
 
-    pub(super) fn on_set_unread(
-        &mut self,
-        folders: HashMap<(u32, u32), u32>,
-        fresh: Option<std::collections::HashSet<(u32, u32)>>,
-    ) {
-        self.fresh = fresh;
+    pub(super) fn on_set_unread(&mut self, folders: HashMap<(u32, u32), u32>) {
         // Mirror the fresh counts into every row list too, so a
         // rebuild draws them right (the account folders are done
         // below).
@@ -224,7 +203,6 @@ impl Sidebar {
                 label.set_visible(self.account_shown_folded(section) && n > 0);
             }
         }
-        self.restyle_seen();
         // Persist the fresh counts into `sections` as well. Otherwise the
         // next rebuild_normal (e.g. toggling the sidebar collapse) recreates
         // every badge from the folder unread values captured at the last

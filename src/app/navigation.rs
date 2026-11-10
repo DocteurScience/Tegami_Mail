@@ -59,9 +59,7 @@ impl AppModel {
         }
         let Some(view) = open else { return };
         let listed = match view {
-            UnifiedView::Favorites => {
-                self.favorites_placement.shown() && !self.favorites.is_empty()
-            }
+            UnifiedView::Favorites => !self.favorites.is_empty(),
         };
         if listed {
             // A reconnect has emptied the account list; each account's
@@ -107,9 +105,6 @@ impl AppModel {
         self.tag_view = None;
         self.smart_view = None;
         self.selected = None;
-        if self.seen_counts {
-            self.push_unread_counts_later(sender);
-        }
         self.blank_reader();
         self.reset_list_for_unified(account);
         let reqs = self.unified_targets();
@@ -339,10 +334,6 @@ impl AppModel {
             folder_id,
             path: path.clone(),
         });
-        // Opening a folder is looking at it (#343).
-        if self.seen_counts {
-            self.push_unread_counts();
-        }
         self.current = None;
         self.current_thread.clear();
         self.show_message(None, false);

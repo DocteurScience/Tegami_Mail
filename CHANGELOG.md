@@ -2,6 +2,15 @@
 
 ## Unreleased
 
+- **Removed: the sidebar's hidden settings** (docs/DESIGN.md, "Removed or
+  moved": "Sidebar: the whole page"). Favorites and Tags sit above the
+  accounts, drawn the same way; the icon rail marks unread folders with a
+  dot, folds the accounts and Tags while it is up and opens on a click,
+  not on hover; the sidebar's layout and the rail are remembered; an
+  account's header folds it from its chevron; unread counts all look
+  alike ("Highlight only new unread mail" goes, #343). Values stored by an
+  earlier version no longer apply.
+
 - **Removed: the reader's hidden settings** (docs/DESIGN.md, "Removed or
   moved": message cards and header options, find bar position). A lone
   message is a card, read messages of a conversation open folded,

@@ -68,8 +68,6 @@ impl AppModel {
         } = main_menu;
         crate::ui::keymap::set_key_mode(prefs.single_key_shortcuts, prefs.gmail_keys);
         let launcher_badge = prefs.launcher_badge();
-        let remember_sidebar = prefs.remember_sidebar;
-        let remember_rail = prefs.remember_rail;
         let start_view = prefs.start_view;
         // Clear what an icon picked from the former gallery left on the
         // desktop, and put the shipped icon back.
@@ -237,18 +235,11 @@ impl AppModel {
                 s
             },
             peek_refresh_spinner: gtk::Spinner::new(),
-            sidebar_hover_expand: prefs.sidebar_hover_expand,
-            remember_sidebar,
-            remember_rail,
             tags_expanded,
             favorites,
             favorites_expanded,
             smart_expanded,
             tags_expanded_accounts,
-            rail_dots: prefs.rail_dots,
-            seen_counts: prefs.seen_counts,
-            unread_seen: std::cell::RefCell::new(config::load_unread_seen()),
-            rail_fold: prefs.rail_fold,
             app_theme: prefs.app_theme,
             text_scale: config::load_text_scale(),
             current: None,
@@ -317,13 +308,9 @@ impl AppModel {
             thread_cache_order: Vec::new(),
             thread_key: None,
             thread_newest_first: prefs.thread_newest_first,
-            section_style: prefs.section_style,
-            tags_placement: prefs.tags_placement,
-            favorites_placement: prefs.favorites_placement,
             reading_pane_action,
             list_header_widgets: std::cell::OnceCell::new(),
             chevrons_left: prefs.chevrons_left,
-            account_click_folds: prefs.account_click_folds,
             start_view,
             folder_sort: prefs.folder_sort,
             console_mode: prefs.console_mode,

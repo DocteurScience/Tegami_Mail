@@ -41,11 +41,6 @@ reply_header = ""
 undo_send_secs = 5
 spellcheck = true
 spellcheck_langs = ""
-sidebar_hover_expand = false
-remember_sidebar = true
-remember_rail = true
-rail_dots = true
-seen_counts = false
 app_theme = "system"
 text_scale = 100
 preview_lines = 1
@@ -74,11 +69,7 @@ tray_icon = "symbolic"
 tray_mail = true
 launcher_count = true
 show_remote_banner = true
-section_style = "unified"
-tags_placement = "all_inboxes"
-favorites_placement = "all_inboxes"
 chevrons_left = false
-account_click_folds = false
 console_mode = false
 status_bar_top = false
 read_mark = "shown"
@@ -92,11 +83,6 @@ files_limit_mb = 20
 link_browser = ""
 start_view = "all_inboxes"
 folder_sort = "custom"
-
-[rail_fold]
-enabled = true
-accounts = true
-tags = true
 
 [list_column_widths]
 

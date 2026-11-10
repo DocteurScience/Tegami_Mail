@@ -280,12 +280,6 @@ pub(crate) struct AppModel {
     /// The icon/spinner stack in the peek panel's own Refresh button.
     pub(super) peek_refresh_stack: gtk::Stack,
     pub(super) peek_refresh_spinner: gtk::Spinner,
-    /// Preference: hovering the icon rail opens the peek by itself.
-    pub(super) sidebar_hover_expand: bool,
-    /// Preference: accounts, folders and sections reopen as they were left.
-    pub(super) remember_sidebar: bool,
-    /// Preference: the sidebar reopens in the icon rail if left there.
-    pub(super) remember_rail: bool,
     /// The sections' open state, as the sidebar last reported it,
     /// persisted with the rest of the sidebar layout.
     pub(super) tags_expanded: bool,
@@ -296,17 +290,6 @@ pub(crate) struct AppModel {
     pub(super) smart_expanded: bool,
     /// Account emails whose own Tags sections are open.
     pub(super) tags_expanded_accounts: Vec<String>,
-    /// Preference: the icon rail marks unread mail with a dot, not a count.
-    pub(super) rail_dots: bool,
-    /// Preference: unread counts are accented only for mail that came in
-    /// since the folder was last looked at (#343).
-    pub(super) seen_counts: bool,
-    /// Each folder's unread count when last looked at, keyed as in
-    /// state.toml ("address␟path").
-    pub(super) unread_seen: std::cell::RefCell<std::collections::BTreeMap<String, u32>>,
-    /// Preference: the sections the icon rail folds up when the sidebar
-    /// collapses.
-    pub(super) rail_fold: config::RailFold,
     /// The app chrome's theme preference (follow system / light / dark).
     pub(super) app_theme: config::AppTheme,
     /// The app's text size in percent of the desktop's (#267).
@@ -469,11 +452,6 @@ pub(crate) struct AppModel {
     pub(super) thread_key: Option<BodyKey>,
     /// Reading pane shows conversations newest-message-first.
     pub(super) thread_newest_first: bool,
-    /// Where the Filters, Tags, Favorites and Contacts sections sit
-    /// (Settings → Sidebar), and how they are drawn.
-    pub(super) section_style: config::SectionStyle,
-    pub(super) tags_placement: config::SectionPlacement,
-    pub(super) favorites_placement: config::SectionPlacement,
     /// The main menu's "Reading Pane" check item, the setting's only switch.
     pub(super) reading_pane_action: gtk::gio::SimpleAction,
     /// The message list header's sort and filter popover and the All /
@@ -481,8 +459,6 @@ pub(crate) struct AppModel {
     pub(super) list_header_widgets: std::cell::OnceCell<ListHeaderWidgets>,
     /// Whether the sidebar's disclosure chevrons lead their rows.
     pub(super) chevrons_left: bool,
-    /// Whether a click anywhere on an account's header folds it.
-    pub(super) account_click_folds: bool,
     /// What the window shows at launch (#256).
     pub(super) start_view: config::StartView,
     /// How accounts' folders are sorted, unless an account chooses

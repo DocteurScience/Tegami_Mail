@@ -46,14 +46,6 @@ pub(crate) struct Sidebar {
     /// Whether the disclosure chevrons LEAD their rows (Settings: Chevron
     /// placement). Off restores the classic trailing position.
     chevrons_left: bool,
-    /// Whether a click anywhere on an account's header folds it (Settings →
-    /// Sidebar); off, its chevron or a double click does.
-    account_click_folds: bool,
-    /// Icon rail: a dot for unread mail in place of the count.
-    rail_dots: bool,
-    /// Icon rail: the sections that fold up by themselves when the sidebar
-    /// collapses (Settings → Sidebar → Icon rail).
-    rail_fold: crate::config::RailFold,
     /// Per-account widgets, rebuilt on each SetContents.
     revealers: HashMap<u32, gtk::Revealer>,
     chevrons: HashMap<u32, gtk::Image>,
@@ -126,9 +118,6 @@ pub(crate) struct Sidebar {
     /// only exists while this is non-zero — an empty Outbox is the normal state
     /// and does not deserve permanent furniture.
     outbox_count: u32,
-    /// The folders whose unread count is new since last looked at, while
-    /// "Highlight only new unread mail" is on (#343); `None` when it is off.
-    fresh: Option<std::collections::HashSet<(u32, u32)>>,
     /// Unread badge labels by (account_id, folder_id), updated in place.
     folder_badges: HashMap<(u32, u32), gtk::Label>,
     /// The favorite folders (#367), in the order they were added.
@@ -163,12 +152,6 @@ pub(crate) struct Sidebar {
     rail_open_accounts: HashMap<u32, bool>,
     /// The Favorites, Tags and Smart Folders rows' widgets.
     kind_widgets: HashMap<UnifiedRow, KindWidgets>,
-    /// Where the Tags and Favorites sections sit
-    /// (Settings → Sidebar), and whether they are drawn as unified rows or
-    /// as a tree.
-    section_style: crate::config::SectionStyle,
-    tags_placement: crate::config::SectionPlacement,
-    favorites_placement: crate::config::SectionPlacement,
 }
 
 #[relm4::component(pub(crate))]
@@ -242,9 +225,6 @@ impl Component for Sidebar {
         let mut model = Sidebar {
             sections: Vec::new(),
             chevrons_left: false,
-            account_click_folds: false,
-            rail_dots: false,
-            rail_fold: crate::config::RailFold::default(),
             revealers: HashMap::new(),
             chevrons: HashMap::new(),
             folder_lists: HashMap::new(),
@@ -275,7 +255,6 @@ impl Component for Sidebar {
             start: if init.mirror { None } else { init.start },
             reannounce: None,
             outbox_count: 0,
-            fresh: None,
             folder_badges: HashMap::new(),
             favorite_folders: Vec::new(),
             favorites_expanded: init.favorites_expanded,
@@ -292,9 +271,6 @@ impl Component for Sidebar {
             kind_widgets: HashMap::new(),
             rail_open: HashMap::new(),
             rail_open_accounts: HashMap::new(),
-            section_style: crate::config::SectionStyle::default(),
-            tags_placement: crate::config::SectionPlacement::AboveAccounts,
-            favorites_placement: crate::config::SectionPlacement::AboveAccounts,
         };
 
         let widgets = view_output!();
@@ -367,7 +343,7 @@ impl Sidebar {
             SidebarInput::SelectFolderRow { account_id, path } => {
                 self.on_select_folder_row(account_id, path, sender)
             }
-            SidebarInput::SetUnread { folders, fresh } => self.on_set_unread(folders, fresh),
+            SidebarInput::SetUnread { folders } => self.on_set_unread(folders),
             SidebarInput::SetBusy(busy) => self.on_set_busy(busy),
             SidebarInput::SetOffline(offline) => self.on_set_offline(offline),
             SidebarInput::SetCollapsed(collapsed) => {

@@ -18,9 +18,6 @@ last_account = "a@x"
 email = "a@x"
 path = "INBOX"
 
-[unread_seen]
-"a@x" = 12
-
 [[recent_fonts]]
 name = "Cantarell"
 mono = false

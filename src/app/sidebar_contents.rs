@@ -71,14 +71,8 @@ impl AppModel {
         self.sidebars_emit(SidebarInput::SetContents {
             sections,
             chevrons_left: self.chevrons_left,
-            account_click_folds: self.account_click_folds,
-            rail_dots: self.rail_dots_now(),
-            rail_fold: self.rail_fold,
             favorite_folders,
             tags: self.tags.clone(),
-            section_style: self.section_style,
-            tags_placement: self.tags_placement,
-            favorites_placement: self.favorites_placement,
             smart_folders: self
                 .smart_folders
                 .iter()

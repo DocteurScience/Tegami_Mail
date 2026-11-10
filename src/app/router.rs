@@ -300,7 +300,6 @@ impl AppModel {
             | AppMsg::Unsent { .. }) => self.on_send(msg, sender),
             msg @ (AppMsg::FillUnifiedSlices
             | AppMsg::UnifiedFoldersLoaded { .. }
-            | AppMsg::PushUnreadCounts
             | AppMsg::EmitUnifiedNow
             | AppMsg::EmitUnified) => self.on_unified(msg),
             msg @ (AppMsg::ComposeClosed(..) | AppMsg::ComposeCloseRequested(..)) => {

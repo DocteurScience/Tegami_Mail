@@ -102,7 +102,7 @@ impl Sidebar {
         self.collapsed
             && match row {
                 UnifiedRow::Favorites | UnifiedRow::Smart => false,
-                UnifiedRow::Tags => self.rail_fold.folds_tags(),
+                UnifiedRow::Tags => true,
             }
     }
 
@@ -114,7 +114,7 @@ impl Sidebar {
 
     /// Whether "Fold up expanded items" holds the accounts folded.
     fn locked_accounts(&self) -> bool {
-        self.collapsed && self.rail_fold.folds_accounts()
+        self.collapsed
     }
 
     /// Whether a unified row's list shows open. In the rail: what it was
@@ -190,14 +190,6 @@ impl Sidebar {
         }
     }
 
-    /// Whether `row` is drawn in the tree style: Favorites and Tags
-    /// with it chosen, out of the icon rail.
-    pub(super) fn as_heading(&self, row: UnifiedRow) -> bool {
-        self.section_style == crate::config::SectionStyle::Tree
-            && !self.collapsed
-            && matches!(row, UnifiedRow::Favorites | UnifiedRow::Tags)
-    }
-
     /// Whether a row's total-unread chip is shown. Tags never carry one.
     pub(super) fn chip_shown(&self, row: UnifiedRow) -> bool {
         match row {
@@ -208,17 +200,17 @@ impl Sidebar {
 
     /// Whether the unified Tags section has anything to show.
     pub(super) fn unified_tags_shown(&self) -> bool {
-        !self.tags.is_empty() && self.tags_placement.shown()
+        !self.tags.is_empty()
     }
 
-    /// The Favorites and Tags rows placed `at`, above or
-    /// below the accounts.
-    pub(super) fn placed_rows(&self, at: crate::config::SectionPlacement) -> Vec<UnifiedRow> {
+    /// The Favorites and Tags rows, drawn above the accounts
+    /// (docs/DESIGN.md, "Organize mail and services").
+    pub(super) fn placed_rows(&self) -> Vec<UnifiedRow> {
         let mut rows = Vec::new();
-        if self.favorites_shown() && self.favorites_placement == at {
+        if self.favorites_shown() {
             rows.push(UnifiedRow::Favorites);
         }
-        if self.unified_tags_shown() && self.tags_placement == at {
+        if self.unified_tags_shown() {
             rows.push(UnifiedRow::Tags);
         }
         rows
@@ -226,7 +218,7 @@ impl Sidebar {
 
     /// Whether Favorites are in the sidebar at all.
     pub(super) fn favorites_shown(&self) -> bool {
-        !self.favorite_folders.is_empty() && self.favorites_placement.shown()
+        !self.favorite_folders.is_empty()
     }
 
     pub(super) fn tags_open(&self, slot: Slot) -> bool {
