@@ -1036,18 +1036,6 @@ msgstr "Sposta in una cartella"
 msgid "Undo the last action"
 msgstr "Annulla l'ultima azione"
 
-#, fuzzy
-msgid "Reply, or reply to all, in a window"
-msgstr "Rispondi e inoltra nella finestra principale"
-
-#, fuzzy
-msgid "Forward in a window"
-msgstr "Rispondi e inoltra nella finestra principale"
-
-#, fuzzy
-msgid "Compose in a window"
-msgstr "Componi nella finestra principale"
-
 msgid "Check for new mail"
 msgstr "Controlla nuova posta"
 

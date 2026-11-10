@@ -57,7 +57,6 @@ impl MessageWindow {
             Shortcut::Reply
             | Shortcut::ReplyAll
             | Shortcut::Forward
-            | Shortcut::InWindow(_)
             | Shortcut::Compose
             | Shortcut::Undo
             | Shortcut::Shortcuts

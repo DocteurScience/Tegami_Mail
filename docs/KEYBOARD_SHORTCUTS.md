@@ -44,9 +44,9 @@ followed by another goes somewhere.
 
 | Move around | | Act on a message | |
 | --- | --- | --- | --- |
-| <kbd>j</kbd> <kbd>k</kbd> | Move down or up the list without opening | <kbd>r</kbd> | Reply |
-| <kbd>o</kbd> <kbd>Enter</kbd> | Open the conversation the cursor is on | <kbd>a</kbd> | Reply to all |
-| <kbd>u</kbd> <kbd>Esc</kbd> | Close the conversation, back to the list | <kbd>f</kbd> | Forward |
+| <kbd>j</kbd> <kbd>k</kbd> | Move down or up the list without opening | <kbd>r</kbd> <kbd>Shift+R</kbd> | Reply |
+| <kbd>o</kbd> <kbd>Enter</kbd> | Open the conversation the cursor is on | <kbd>a</kbd> <kbd>Shift+A</kbd> | Reply to all |
+| <kbd>u</kbd> <kbd>Esc</kbd> | Close the conversation, back to the list | <kbd>f</kbd> <kbd>Shift+F</kbd> | Forward |
 | <kbd>n</kbd> <kbd>p</kbd> | Next or previous message in the conversation | <kbd>e</kbd> | Archive the conversation |
 | <kbd>;</kbd> <kbd>:</kbd> | Expand or collapse every message of the conversation | <kbd>]</kbd> <kbd>}</kbd> | Archive the conversation and open the older one |
 | <kbd>g</kbd> <kbd>i</kbd> | Inbox | <kbd>[</kbd> <kbd>{</kbd> | Archive the conversation and open the newer one |
@@ -56,15 +56,14 @@ followed by another goes somewhere.
 | <kbd>g</kbd> <kbd>a</kbd> | Archive | <kbd>Shift+I</kbd> | Mark the conversation as read |
 | | | <kbd>Shift+U</kbd> | Mark the conversation as unread and close it |
 | <kbd>/</kbd> | Search | <kbd>_</kbd> | Mark as unread from this message on and close it |
-| <kbd>c</kbd> | Compose | <kbd>x</kbd> | Select the row the cursor is on without opening it |
-| <kbd>d</kbd> | Compose in a window | <kbd>*</kbd> <kbd>a</kbd> / <kbd>*</kbd> <kbd>n</kbd> | Select every row, or none |
+| <kbd>c</kbd> <kbd>d</kbd> | Compose | <kbd>x</kbd> | Select the row the cursor is on without opening it |
+| | | <kbd>*</kbd> <kbd>a</kbd> / <kbd>*</kbd> <kbd>n</kbd> | Select every row, or none |
 | <kbd>Shift+N</kbd> | Check for new mail | <kbd>*</kbd> <kbd>r</kbd> / <kbd>*</kbd> <kbd>u</kbd> | Select the read or the unread conversations |
 | <kbd>?</kbd> | This list | <kbd>*</kbd> <kbd>s</kbd> / <kbd>*</kbd> <kbd>t</kbd> | Select the starred or the unstarred conversations |
 | | | <kbd>v</kbd> | Move to a folder |
 | | | <kbd>b</kbd> | Snooze |
 | | | <kbd>l</kbd> | Tags |
 | | | <kbd>z</kbd> | Undo |
-| | | <kbd>Shift+R</kbd> <kbd>Shift+A</kbd> <kbd>Shift+F</kbd> | Reply, reply to all or forward in a window |
 | | | <kbd>1</kbd> … <kbd>9</kbd>, <kbd>0</kbd> | Tags by number, as above |
 
 <kbd>j</kbd> and <kbd>k</kbd> step from conversation to conversation, and
@@ -90,8 +89,10 @@ under the label, as Gmail's Archive does. The toolbar's Archive does the
 same. <kbd>]</kbd> and <kbd>[</kbd> archive the same way, then open the
 conversation below or above in the list.
 
-<kbd>Shift+R</kbd>, <kbd>Shift+A</kbd>, <kbd>Shift+F</kbd> and <kbd>d</kbd>
-open the composer in a window of its own.
+Gmail writes in a window of its own with <kbd>Shift+R</kbd>,
+<kbd>Shift+A</kbd>, <kbd>Shift+F</kbd> and <kbd>d</kbd>. Every message is
+written in its own window here, so they do what <kbd>r</kbd>, <kbd>a</kbd>,
+<kbd>f</kbd> and <kbd>c</kbd> do.
 
 <kbd>x</kbd> selects the row the cursor is on without opening it, and closes
 the conversation that was open. While rows are selected this way, the

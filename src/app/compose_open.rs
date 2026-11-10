@@ -18,7 +18,6 @@ use super::prefill::{
 };
 use super::uri_queue::parse_mailto;
 use crate::mail::quote::editable_copy_html;
-use crate::ui::keymap::WindowCompose;
 
 impl AppModel {
     /// Where a just-saved draft is, by its Message-ID, among the Drafts
@@ -476,33 +475,6 @@ impl AppModel {
                     self.forward_as_attachment(m);
                 }
             }
-
-            AppMsg::ComposeInWindow(what) => match what {
-                WindowCompose::New => {
-                    let (account, prefill) =
-                        self.new_message_from(self.active_account(), ComposePrefill::default());
-                    self.open_compose(account, prefill, &sender);
-                }
-                WindowCompose::Forward => {
-                    if let Some(m) = self.compose_target() {
-                        self.forward(m, &sender);
-                    }
-                }
-                WindowCompose::Reply | WindowCompose::ReplyAll => {
-                    if let Some(m) = self.compose_target() {
-                        let prefill = if what == WindowCompose::Reply {
-                            reply_prefill(&m, &self.reply_header)
-                        } else {
-                            reply_all_prefill(
-                                &m,
-                                &self.own_identities(m.account_id),
-                                &self.reply_header,
-                            )
-                        };
-                        self.open_compose(m.account_id, self.reply_context(&m, prefill), &sender);
-                    }
-                }
-            },
 
             AppMsg::EditAsNewCurrent => {
                 if let Some(m) = self.compose_target() {

@@ -1020,15 +1020,6 @@ msgstr "Μετακίνηση σε φάκελο"
 msgid "Undo the last action"
 msgstr "Αναίρεση της τελευταίας ενέργειας"
 
-msgid "Reply, or reply to all, in a window"
-msgstr "Απάντηση ή απάντηση σε όλους σε νέο παράθυρο"
-
-msgid "Forward in a window"
-msgstr "Προώθηση σε νέο παράθυρο"
-
-msgid "Compose in a window"
-msgstr "Σύνταξη σε νέο παράθυρο"
-
 msgid "Check for new mail"
 msgstr "Έλεγχος για νέα μηνύματα"
 

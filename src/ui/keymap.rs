@@ -67,8 +67,6 @@ pub(crate) enum Shortcut {
     /// Gmail's ] and } (1) and [ and { (-1): archive the conversation and
     /// open the older or newer one.
     ArchiveAndStep(i32),
-    /// Gmail's Shift+R, Shift+A, Shift+F and d.
-    InWindow(WindowCompose),
     /// Gmail's Shift+N.
     Refresh,
 }
@@ -94,16 +92,6 @@ impl Shortcut {
                 | Shortcut::ClearTags
         )
     }
-}
-
-/// What Gmail's window keys write (#392). Every composer is a window now,
-/// so they do what the plain keys do; kept for the keymap's own table.
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
-pub(crate) enum WindowCompose {
-    Reply,
-    ReplyAll,
-    Forward,
-    New,
 }
 
 /// Where Gmail's g sequences go (#392).
@@ -237,10 +225,12 @@ pub(crate) fn gmail_shortcut_for(key: gtk::gdk::Key, shift: bool) -> Option<Shor
         Key::l => Shortcut::Label,
         Key::bracketright | Key::braceright => Shortcut::ArchiveAndStep(1),
         Key::bracketleft | Key::braceleft => Shortcut::ArchiveAndStep(-1),
-        Key::R => Shortcut::InWindow(WindowCompose::Reply),
-        Key::A => Shortcut::InWindow(WindowCompose::ReplyAll),
-        Key::F => Shortcut::InWindow(WindowCompose::Forward),
-        Key::d => Shortcut::InWindow(WindowCompose::New),
+        // Gmail's keys for writing in a window of its own: every composer
+        // is one here, so they do what r, a, f and c do.
+        Key::R => Shortcut::Reply,
+        Key::A => Shortcut::ReplyAll,
+        Key::F => Shortcut::Forward,
+        Key::d => Shortcut::Compose,
         Key::N => Shortcut::Refresh,
         Key::Down => Shortcut::NextMessage,
         Key::Up => Shortcut::PrevMessage,
@@ -414,16 +404,10 @@ mod tests {
             gmail_shortcut_for(Key::braceleft, true),
             Some(Shortcut::ArchiveAndStep(-1))
         );
-        assert_eq!(
-            gmail_shortcut_for(Key::R, true),
-            Some(Shortcut::InWindow(WindowCompose::Reply))
-        );
+        assert_eq!(gmail_shortcut_for(Key::R, true), Some(Shortcut::Reply));
         assert_eq!(gmail_shortcut_for(Key::N, true), Some(Shortcut::Refresh));
         // d is Gmail's compose in a window, not Tegami Mail's delete.
-        assert_eq!(
-            gmail_shortcut_for(Key::d, false),
-            Some(Shortcut::InWindow(WindowCompose::New))
-        );
+        assert_eq!(gmail_shortcut_for(Key::d, false), Some(Shortcut::Compose));
         // Tegami Mail's own keys that Gmail does not have stay off.
         assert_eq!(gmail_shortcut_for(Key::w, false), None);
         assert_eq!(gmail_shortcut_for(Key::h, false), None);

@@ -1055,18 +1055,6 @@ msgstr "Mappa áthelyezése"
 msgid "Undo the last action"
 msgstr "Legutóbbi áthelyezés vagy törlés visszavonása"
 
-#, fuzzy
-msgid "Reply, or reply to all, in a window"
-msgstr "Válasz és továbbítás a főablakban"
-
-#, fuzzy
-msgid "Forward in a window"
-msgstr "Válasz és továbbítás a főablakban"
-
-#, fuzzy
-msgid "Compose in a window"
-msgstr "Levélírás a főablakban"
-
 msgid "Check for new mail"
 msgstr "Új levelek keresése"
 

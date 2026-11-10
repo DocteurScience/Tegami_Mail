@@ -20,11 +20,7 @@ impl AppModel {
             // first time in a session: the pointer turns busy, and that is
             // drawn before the build starts, so the key or click is seen to
             // have landed (#392). Another press meanwhile is dropped.
-            asked @ (AppMsg::Compose
-            | AppMsg::Reply
-            | AppMsg::ReplyAll
-            | AppMsg::Forward
-            | AppMsg::ComposeInWindow(_))
+            asked @ (AppMsg::Compose | AppMsg::Reply | AppMsg::ReplyAll | AppMsg::Forward)
                 if !self.compose_now =>
             {
                 if !std::mem::replace(&mut self.compose_waiting, true) {
@@ -189,7 +185,6 @@ impl AppModel {
             | AppMsg::ReplyAll
             | AppMsg::Forward
             | AppMsg::ForwardAsAttachment
-            | AppMsg::ComposeInWindow(..)
             | AppMsg::EditAsNewCurrent
             | AppMsg::ComposeTo(..)
             | AppMsg::OpenMailto(..)

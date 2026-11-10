@@ -1012,15 +1012,6 @@ msgstr "In einen Ordner verschieben"
 msgid "Undo the last action"
 msgstr "Die letzte Aktion rückgängig machen"
 
-msgid "Reply, or reply to all, in a window"
-msgstr "In einem eigenen Fenster antworten oder allen antworten"
-
-msgid "Forward in a window"
-msgstr "In einem eigenen Fenster weiterleiten"
-
-msgid "Compose in a window"
-msgstr "In einem eigenen Fenster verfassen"
-
 msgid "Check for new mail"
 msgstr "Auf neue Nachrichten prüfen"
 

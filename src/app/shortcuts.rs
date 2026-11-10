@@ -14,7 +14,7 @@ use crate::ui::message_view::MessageViewInput;
 use super::flags::read_label;
 use crate::ui::keymap::{
     focus_in_compose, focus_is_text, focus_takes_keys, gmail_sequence, gmail_shortcut_for,
-    reader_keeps, shortcut_for, without_caps_lock, GoTarget, Shortcut, WindowCompose,
+    reader_keeps, shortcut_for, without_caps_lock, GoTarget, Shortcut,
 };
 
 use super::keymap::ctrl_shortcut_for;
@@ -85,7 +85,6 @@ impl AppModel {
                 });
                 self.run_shortcut(Shortcut::Archive, sender);
             }
-            Shortcut::InWindow(what) => sender.input(AppMsg::ComposeInWindow(what)),
             Shortcut::Refresh => sender.input(AppMsg::Refresh),
             Shortcut::GoTo(GoTarget::Kind(kind)) => {
                 // The open account's own folder of that kind.
@@ -266,15 +265,9 @@ impl AppModel {
             conversation: thread.clone(),
         };
         match action {
-            Shortcut::Reply | Shortcut::InWindow(WindowCompose::Reply) => {
-                sender.input(row(RowAction::Reply))
-            }
-            Shortcut::ReplyAll | Shortcut::InWindow(WindowCompose::ReplyAll) => {
-                sender.input(row(RowAction::ReplyAll))
-            }
-            Shortcut::Forward | Shortcut::InWindow(WindowCompose::Forward) => {
-                sender.input(row(RowAction::Forward))
-            }
+            Shortcut::Reply => sender.input(row(RowAction::Reply)),
+            Shortcut::ReplyAll => sender.input(row(RowAction::ReplyAll)),
+            Shortcut::Forward => sender.input(row(RowAction::Forward)),
             Shortcut::Archive | Shortcut::ArchiveAndStep(_) => {
                 if whole {
                     // What the list row stands for: the members filed with
@@ -317,11 +310,9 @@ impl AppModel {
                 self.user_set_flags(read_label(false), &[newest], FlagKind::Read, false);
             }
             Shortcut::DeleteForever => self.confirm_purge(vec![m], sender),
-            Shortcut::Undo
-            | Shortcut::Compose
-            | Shortcut::InWindow(WindowCompose::New)
-            | Shortcut::Shortcuts
-            | Shortcut::Refresh => self.run_shortcut(action, sender),
+            Shortcut::Undo | Shortcut::Compose | Shortcut::Shortcuts | Shortcut::Refresh => {
+                self.run_shortcut(action, sender)
+            }
             _ => {}
         }
     }

@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- **Gmail keys:** <kbd>d</kbd>, <kbd>Shift+R</kbd>, <kbd>Shift+A</kbd> and
+  <kbd>Shift+F</kbd>, Gmail's keys for writing in a window of its own, are
+  listed as what they are here: the same as <kbd>c</kbd>, <kbd>r</kbd>,
+  <kbd>a</kbd> and <kbd>f</kbd>, every message being written in its own
+  window.
 - **Removed: the single-line list's stored columns, headings, widths and
   sideways scrolling** (docs/DESIGN.md, "Removed or moved": "Message list:
   columns"). Their settings had gone with the Message list page, yet columns,

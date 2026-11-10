@@ -1014,15 +1014,6 @@ msgstr "Mover para uma pasta"
 msgid "Undo the last action"
 msgstr "Desfazer a última ação"
 
-msgid "Reply, or reply to all, in a window"
-msgstr "Responder ou responder a todos em uma janela"
-
-msgid "Forward in a window"
-msgstr "Encaminhar em uma janela"
-
-msgid "Compose in a window"
-msgstr "Escrever em uma janela"
-
 msgid "Check for new mail"
 msgstr "Procurar novas mensagens"
 

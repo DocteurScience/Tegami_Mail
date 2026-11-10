@@ -1076,18 +1076,6 @@ msgstr "Przenieś katalog"
 msgid "Undo the last action"
 msgstr ""
 
-#, fuzzy
-msgid "Reply, or reply to all, in a window"
-msgstr "Odpowiadanie i przekazywanie w oknie głównym"
-
-#, fuzzy
-msgid "Forward in a window"
-msgstr "Odpowiadanie i przekazywanie w oknie głównym"
-
-#, fuzzy
-msgid "Compose in a window"
-msgstr "Pisanie w oknie głównym"
-
 msgid "Check for new mail"
 msgstr "Sprawdzanie nowej poczty"
 

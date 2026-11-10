@@ -21,7 +21,7 @@ pub(crate) type IndexRows = Vec<(u32, String, Message)>;
 
 use super::attachments::AttachmentTarget;
 use super::hand_off::{FileHandOff, HandOffTarget};
-use crate::ui::keymap::{Shortcut, WindowCompose};
+use crate::ui::keymap::Shortcut;
 
 #[derive(Debug)]
 pub(crate) enum AppMsg {
@@ -572,9 +572,6 @@ pub(crate) enum AppMsg {
     /// Forward the message the reader shows as an attached .eml, its
     /// bytes as the server keeps them (mockup 06).
     ForwardAsAttachment,
-    /// A reply, reply to all, forward or new message in a window of its
-    /// own, whatever Settings says (Gmail's Shift+R, Shift+A, Shift+F, d).
-    ComposeInWindow(WindowCompose),
     /// Copy the message the reader is on into a new one (#232).
     EditAsNewCurrent,
     /// Write a new message to this address (an address's menu).
