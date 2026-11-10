@@ -2161,11 +2161,8 @@ msgid "Enable this account"
 msgstr "Ενεργοποίηση αυτού του λογαριασμού"
 
 #, fuzzy
-msgid "Forward to"
+msgid "Forward to…"
 msgstr "Προώθηση"
-
-msgid "Move to"
-msgstr "Μετακίνηση στο"
 
 msgid "forwards to {to}"
 msgstr ""
@@ -2188,11 +2185,11 @@ msgstr "Προσθήκη λογαριασμού"
 msgid "Remove action"
 msgstr "Αφαίρεση συνθήκης"
 
-msgid "Addresses, separated by commas"
+msgid "Forward to (addresses, separated by commas)"
 msgstr ""
 
-msgid "Folder"
-msgstr "Φάκελος"
+msgid "Move to"
+msgstr "Μετακίνηση στο"
 
 #, fuzzy
 msgid "Permanently deletes the message"
@@ -2262,26 +2259,8 @@ msgstr "✓ SMTP: συνδέθηκε"
 msgid "✗ SMTP: {e}"
 msgstr "✗ SMTP: {e}"
 
-msgid "Remove condition"
-msgstr "Αφαίρεση συνθήκης"
-
-msgid "Where"
-msgstr "Πού"
-
-msgid "Match"
-msgstr "Αντιστοίχιση"
-
-msgid "Separate alternatives with commas."
-msgstr "Διαχωρίστε τις εναλλακτικές με κόμμα."
-
-msgid "Text to match"
-msgstr "Κείμενο προς αντιστοίχιση"
-
-msgid "Add condition"
-msgstr "Προσθήκη συνθήκης"
-
-msgid "Condition matching"
-msgstr "Αντιστοίχιση συνθηκών"
+msgid "Criteria"
+msgstr ""
 
 msgid "All must match"
 msgstr "Πρέπει να ισχύουν όλες"
@@ -2289,14 +2268,23 @@ msgstr "Πρέπει να ισχύουν όλες"
 msgid "Any one may match"
 msgstr "Μπορεί να ισχύει οποιαδήποτε"
 
-msgid "Condition {n}"
-msgstr "Συνθήκη {n}"
+#, fuzzy
+msgid "Add criterion"
+msgstr "Προσθήκη λογαριασμού"
 
-msgid "Or where"
-msgstr "Ή όπου"
+msgid "Criterion options"
+msgstr ""
 
-msgid "And where"
-msgstr "Και όπου"
+#, fuzzy
+msgid "Remove criterion"
+msgstr "Αφαίρεση συνθήκης"
+
+#, fuzzy
+msgid "{field} contains"
+msgstr "περιέχει"
+
+msgid "{field} {match}"
+msgstr ""
 
 msgid "Automatic"
 msgstr "Αυτόματα"
@@ -2434,15 +2422,21 @@ msgstr "Προσθήκη φίλτρου"
 msgid "Name (optional)"
 msgstr "Όνομα (προαιρετικό)"
 
-msgid "Searched on the server; nothing is downloaded"
-msgstr "Η αναζήτηση γίνεται στον διακομιστή· δεν γίνεται λήψη τίποτα"
+msgid "If"
+msgstr ""
 
-msgid "From address when no Reply-To is set"
-msgstr "Διεύθυνση αποστολέα όταν δεν έχει οριστεί Reply-To"
+msgid "Separate alternatives with commas."
+msgstr "Διαχωρίστε τις εναλλακτικές με κόμμα."
+
+msgid "Advanced"
+msgstr "Για προχωρημένους"
 
 #, fuzzy
-msgid "Looks in your address books"
-msgstr "Νέα αναζήτηση καταλόγων διευθύνσεων"
+msgid "Message body, Reply-To, tag, count unread mail"
+msgstr "Καταμέτρηση μη αναγνωσμένων μηνυμάτων"
+
+msgid "Add a criterion on the body or Reply-To…"
+msgstr ""
 
 msgid "Tag with"
 msgstr "Προσθήκη ετικέτας"
@@ -2453,17 +2447,11 @@ msgstr "Καμία"
 msgid "Count unread mail"
 msgstr "Καταμέτρηση μη αναγνωσμένων μηνυμάτων"
 
-msgid "Include the folder's unread mail in the tray icon's unread count"
+#, fuzzy
+msgid "Include the folder's unread mail in the unread counts"
 msgstr ""
 "Συμπερίληψη της μη αναγνωσμένης αλληλογραφίας του φακέλου στον αριθμό μη "
 "αναγνωσμένων του εικονιδίου στην περιοχή ειδοποιήσεων"
-
-msgid "Advanced"
-msgstr "Για προχωρημένους"
-
-#, fuzzy
-msgid "Tag, count unread mail"
-msgstr "Καταμέτρηση μη αναγνωσμένων μηνυμάτων"
 
 #, fuzzy
 msgid "Delete filter"
@@ -2772,11 +2760,26 @@ msgstr "Αυτά που βρίσκονται στην ενοποιημένη ε�
 msgid "Folders"
 msgstr "Φάκελοι"
 
+#, fuzzy
+msgid "Any"
+msgstr "Οποιαδήποτε ετικέτα"
+
+msgid "Reading"
+msgstr "Ανάγνωση"
+
+#, fuzzy
+msgid "With attachments"
+msgstr "Απόκρυψη συνημμένων"
+
 msgid "Any tag"
 msgstr "Οποιαδήποτε ετικέτα"
 
-msgid "The preview each message has in the list"
-msgstr "Η προεπισκόπηση κάθε μηνύματος στη λίστα"
+#, fuzzy
+msgid "Preview text, From address without Reply-To"
+msgstr "Διεύθυνση αποστολέα όταν δεν έχει οριστεί Reply-To"
+
+msgid "Add a criterion on the preview or Reply-To…"
+msgstr ""
 
 #, fuzzy
 msgid "Delete smart folder"
@@ -6346,9 +6349,6 @@ msgstr "Υπηρεσία"
 #, fuzzy
 msgid "Allowed and blocked"
 msgstr "Επιτρεπόμενοι αποστολείς"
-
-msgid "Reading"
-msgstr "Ανάγνωση"
 
 msgid "Composing"
 msgstr "Σύνταξη"

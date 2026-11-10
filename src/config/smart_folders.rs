@@ -104,24 +104,6 @@ pub(crate) enum SmartField {
 }
 
 impl SmartField {
-    /// Every field, in the order the editor lists them.
-    pub(crate) const ALL: [SmartField; 14] = [
-        SmartField::Starred,
-        SmartField::NotStarred,
-        SmartField::Unread,
-        SmartField::Read,
-        SmartField::Attachment,
-        SmartField::Tagged,
-        SmartField::FromAddress,
-        SmartField::FromName,
-        SmartField::Subject,
-        SmartField::Recipients,
-        SmartField::ReplyTo,
-        SmartField::Body,
-        SmartField::FromInContacts,
-        SmartField::FromNotInContacts,
-    ];
-
     /// The filter field the condition matches through, for the ones that
     /// look at text or the address books.
     pub(crate) fn filter_field(self) -> Option<FilterField> {

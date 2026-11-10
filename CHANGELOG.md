@@ -2,6 +2,18 @@
 
 ## Unreleased
 
+- **Changed: the filter and smart folder editors** (screens 38 and 40).
+  A filter's criteria are one list under **If**: a row per criterion that
+  says what it looks for ("Subject contains", the text in the row), with a
+  ⋯ button to change how it matches or remove it, and **Add criterion**
+  last; the message body and Reply-To are added from **Advanced**. Under
+  **Then**, each action is one row (**Move to** and its folder, **Mark as
+  read**, **Forward to**, **Delete**), and **Add action** offers only what
+  the rule does not do yet. A smart folder has fixed rows for **Reading**,
+  **Starred**, **Attachment** and **Tag**, then the same criteria on the
+  sender, subject and recipients; the preview and Reply-To are under
+  **Advanced**. Saved filters and smart folders are read as before.
+
 - **Changed: Troubleshooting in the main menu** (docs/DESIGN.md,
   "Preferences": troubleshooting tools are not preferences). It holds the
   status bar (shown or not, at the top or the foot), console mode, the

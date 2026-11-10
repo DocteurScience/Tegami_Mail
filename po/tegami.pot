@@ -1950,10 +1950,7 @@ msgstr ""
 msgid "Enable this account"
 msgstr ""
 
-msgid "Forward to"
-msgstr ""
-
-msgid "Move to"
+msgid "Forward to…"
 msgstr ""
 
 msgid "forwards to {to}"
@@ -1974,10 +1971,10 @@ msgstr ""
 msgid "Remove action"
 msgstr ""
 
-msgid "Addresses, separated by commas"
+msgid "Forward to (addresses, separated by commas)"
 msgstr ""
 
-msgid "Folder"
+msgid "Move to"
 msgstr ""
 
 msgid "Permanently deletes the message"
@@ -2047,25 +2044,7 @@ msgstr ""
 msgid "✗ SMTP: {e}"
 msgstr ""
 
-msgid "Remove condition"
-msgstr ""
-
-msgid "Where"
-msgstr ""
-
-msgid "Match"
-msgstr ""
-
-msgid "Separate alternatives with commas."
-msgstr ""
-
-msgid "Text to match"
-msgstr ""
-
-msgid "Add condition"
-msgstr ""
-
-msgid "Condition matching"
+msgid "Criteria"
 msgstr ""
 
 msgid "All must match"
@@ -2074,13 +2053,19 @@ msgstr ""
 msgid "Any one may match"
 msgstr ""
 
-msgid "Condition {n}"
+msgid "Add criterion"
 msgstr ""
 
-msgid "Or where"
+msgid "Criterion options"
 msgstr ""
 
-msgid "And where"
+msgid "Remove criterion"
+msgstr ""
+
+msgid "{field} contains"
+msgstr ""
+
+msgid "{field} {match}"
 msgstr ""
 
 msgid "Automatic"
@@ -2197,13 +2182,19 @@ msgstr ""
 msgid "Name (optional)"
 msgstr ""
 
-msgid "Searched on the server; nothing is downloaded"
+msgid "If"
 msgstr ""
 
-msgid "From address when no Reply-To is set"
+msgid "Separate alternatives with commas."
 msgstr ""
 
-msgid "Looks in your address books"
+msgid "Advanced"
+msgstr ""
+
+msgid "Message body, Reply-To, tag, count unread mail"
+msgstr ""
+
+msgid "Add a criterion on the body or Reply-To…"
 msgstr ""
 
 msgid "Tag with"
@@ -2215,13 +2206,7 @@ msgstr ""
 msgid "Count unread mail"
 msgstr ""
 
-msgid "Include the folder's unread mail in the tray icon's unread count"
-msgstr ""
-
-msgid "Advanced"
-msgstr ""
-
-msgid "Tag, count unread mail"
+msgid "Include the folder's unread mail in the unread counts"
 msgstr ""
 
 msgid "Delete filter"
@@ -2501,10 +2486,22 @@ msgstr ""
 msgid "Folders"
 msgstr ""
 
+msgid "Any"
+msgstr ""
+
+msgid "Reading"
+msgstr ""
+
+msgid "With attachments"
+msgstr ""
+
 msgid "Any tag"
 msgstr ""
 
-msgid "The preview each message has in the list"
+msgid "Preview text, From address without Reply-To"
+msgstr ""
+
+msgid "Add a criterion on the preview or Reply-To…"
 msgstr ""
 
 msgid "Delete smart folder"
@@ -5652,9 +5649,6 @@ msgid "Services"
 msgstr ""
 
 msgid "Allowed and blocked"
-msgstr ""
-
-msgid "Reading"
 msgstr ""
 
 msgid "Composing"

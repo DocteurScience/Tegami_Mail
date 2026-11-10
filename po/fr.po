@@ -2104,11 +2104,8 @@ msgstr ""
 msgid "Enable this account"
 msgstr "Activer ce compte"
 
-msgid "Forward to"
-msgstr "Transférer à"
-
-msgid "Move to"
-msgstr "Déplacer vers"
+msgid "Forward to…"
+msgstr "Transférer à…"
 
 msgid "forwards to {to}"
 msgstr "transfère à {to}"
@@ -2128,11 +2125,11 @@ msgstr "Ajouter une action"
 msgid "Remove action"
 msgstr "Supprimer l’action"
 
-msgid "Addresses, separated by commas"
-msgstr "Adresses, séparées par des virgules"
+msgid "Forward to (addresses, separated by commas)"
+msgstr "Transférer à (adresses séparées par des virgules)"
 
-msgid "Folder"
-msgstr "Dossier"
+msgid "Move to"
+msgstr "Déplacer vers"
 
 msgid "Permanently deletes the message"
 msgstr "Supprime définitivement le message"
@@ -2202,41 +2199,29 @@ msgstr "✓ SMTP : connecté"
 msgid "✗ SMTP: {e}"
 msgstr "✗ SMTP : {e}"
 
-msgid "Remove condition"
-msgstr "Supprimer la condition"
-
-msgid "Where"
-msgstr "Champ"
-
-msgid "Match"
-msgstr "Condition"
-
-msgid "Separate alternatives with commas."
-msgstr "Séparez les alternatives par des virgules."
-
-msgid "Text to match"
-msgstr "Texte à rechercher"
-
-msgid "Add condition"
-msgstr "Ajouter un critère"
-
-msgid "Condition matching"
-msgstr "Correspondance des conditions"
+msgid "Criteria"
+msgstr "Critères"
 
 msgid "All must match"
-msgstr "Toutes doivent correspondre"
+msgstr "Tous doivent correspondre"
 
 msgid "Any one may match"
-msgstr "Une seule doit correspondre"
+msgstr "Un seul suffit"
 
-msgid "Condition {n}"
-msgstr "Condition {n}"
+msgid "Add criterion"
+msgstr "Ajouter un critère"
 
-msgid "Or where"
-msgstr "Ou si"
+msgid "Criterion options"
+msgstr "Options du critère"
 
-msgid "And where"
-msgstr "Et si"
+msgid "Remove criterion"
+msgstr "Retirer le critère"
+
+msgid "{field} contains"
+msgstr "{field} contient"
+
+msgid "{field} {match}"
+msgstr "{field} {match}"
 
 msgid "Automatic"
 msgstr "Automatique"
@@ -2367,14 +2352,20 @@ msgstr "Ajouter un filtre"
 msgid "Name (optional)"
 msgstr "Nom (facultatif)"
 
-msgid "Searched on the server; nothing is downloaded"
-msgstr "Recherché sur le serveur ; rien n’est téléchargé"
+msgid "If"
+msgstr "Si"
 
-msgid "From address when no Reply-To is set"
-msgstr "Adresse d’expéditeur utilisée en l’absence de Reply-To"
+msgid "Separate alternatives with commas."
+msgstr "Séparez les alternatives par des virgules."
 
-msgid "Looks in your address books"
-msgstr "Cherche dans vos carnets d’adresses"
+msgid "Advanced"
+msgstr "Avancé"
+
+msgid "Message body, Reply-To, tag, count unread mail"
+msgstr "Corps du message, Reply-To, étiquette, compter les non lus"
+
+msgid "Add a criterion on the body or Reply-To…"
+msgstr "Ajouter un critère sur le corps ou Reply-To…"
 
 msgid "Tag with"
 msgstr "Étiqueter avec"
@@ -2385,16 +2376,8 @@ msgstr "Aucun"
 msgid "Count unread mail"
 msgstr "Compter les messages non lus"
 
-msgid "Include the folder's unread mail in the tray icon's unread count"
-msgstr ""
-"Inclure le courrier non lu de ce dossier dans le compteur de non-lus de "
-"l’icône de la zone de notification"
-
-msgid "Advanced"
-msgstr "Avancé"
-
-msgid "Tag, count unread mail"
-msgstr "Étiquette, compter les non lus"
+msgid "Include the folder's unread mail in the unread counts"
+msgstr "Compte le courrier non lu du dossier dans les totaux de non-lus"
 
 msgid "Delete filter"
 msgstr "Supprimer le filtre"
@@ -2671,7 +2654,7 @@ msgid "Not starred"
 msgstr "Sans favori"
 
 msgid "Read"
-msgstr "Lu"
+msgstr "Lus"
 
 msgid "Has attachments"
 msgstr "Contient des pièces jointes"
@@ -2694,11 +2677,23 @@ msgstr "Ceux de la section unifiée."
 msgid "Folders"
 msgstr "Dossiers"
 
+msgid "Any"
+msgstr "Indifférent"
+
+msgid "Reading"
+msgstr "Lecture"
+
+msgid "With attachments"
+msgstr "Avec"
+
 msgid "Any tag"
 msgstr "N’importe quelle étiquette"
 
-msgid "The preview each message has in the list"
-msgstr "L’aperçu de chaque message dans la liste"
+msgid "Preview text, From address without Reply-To"
+msgstr "Texte de l’aperçu, adresse De sans Reply-To"
+
+msgid "Add a criterion on the preview or Reply-To…"
+msgstr "Ajouter un critère sur l’aperçu ou Reply-To…"
 
 msgid "Delete smart folder"
 msgstr "Supprimer le dossier intelligent"
@@ -6115,9 +6110,6 @@ msgstr "Services"
 
 msgid "Allowed and blocked"
 msgstr "Autorisés et bloqués"
-
-msgid "Reading"
-msgstr "Lecture"
 
 msgid "Composing"
 msgstr "Rédaction"

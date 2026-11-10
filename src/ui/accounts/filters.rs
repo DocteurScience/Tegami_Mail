@@ -1,7 +1,7 @@
 //! Filter rules (#47): the list on the Filters page and the rule editor.
 
 use super::action_editor::{action_summary, ActionList};
-use super::condition_editor::{form_scaffold, CondAdder, CondControls, CondRows};
+use super::criteria::{form_scaffold, Criteria, FieldSpec};
 use super::*;
 
 impl AccountsWindow {
@@ -150,11 +150,12 @@ impl AccountsWindow {
         }
     }
 
-    /// The filter editor, a page of groups: the account; one group per
-    /// condition (#192), each its own Where/Match/Text set with a remove
-    /// button in its header; Add Condition and the all/any chooser; and
-    /// "Then", what a match does. With `edit`, it opens on that existing
-    /// rule (prefilled, "Save") and replaces it in place; otherwise it adds.
+    /// The filter editor (screen 38): the name and account; "If", the
+    /// criteria and whether all or any must match; "Then", the actions;
+    /// Advanced, the rare criteria (message body, Reply-To), the tag and the
+    /// unread count; and Delete filter when editing. With `edit`, it opens
+    /// on that existing rule (prefilled, "Save") and replaces it in place;
+    /// otherwise it adds.
     fn open_filter_page(
         &self,
         nav: &adw::NavigationView,
@@ -177,7 +178,7 @@ impl AccountsWindow {
 
         let account_group = adw::PreferencesGroup::new();
         // A name of your own for the rule (#197): what the filters list
-        // calls it, in place of spelling its conditions out. Optional.
+        // calls it, in place of spelling its criteria out. Optional.
         let name_row = adw::EntryRow::new();
         name_row.set_title(&i18n("Name (optional)"));
         account_group.add(&name_row);
@@ -187,116 +188,71 @@ impl AccountsWindow {
         account_row.set_model(Some(&gtk::StringList::new(&email_refs)));
         account_group.add(&account_row);
 
-        // The conditions (#192): each a titled group of Where/Match/Text
-        // rows with a remove button in its header (hidden while it is the
-        // only one). Body conditions (#191) pin the matcher to "contains",
-        // the only search a server offers, and say so.
-        let conds: std::rc::Rc<std::cell::RefCell<Vec<CondRows>>> = Default::default();
         // Save stays dimmed until the rule has something to match and
         // something to do; every row that bears on that calls `changed`.
         // The check needs the Save button, so it is filled in last.
         type Check = std::rc::Rc<std::cell::RefCell<Option<Box<dyn Fn()>>>>;
         let revalidate: Check = Default::default();
-        let changed = {
+        let changed: std::rc::Rc<dyn Fn()> = {
             let revalidate = revalidate.clone();
-            move || {
+            std::rc::Rc::new(move || {
                 if let Some(check) = revalidate.borrow().as_ref() {
                     check();
                 }
-            }
+            })
         };
-        let field_names: Vec<String> = FilterField::ALL
-            .iter()
-            .map(|f| Self::field_label(*f))
-            .collect();
-        let match_names: Vec<String> = FilterMatch::ALL
-            .iter()
-            .map(|m| Self::match_label(*m))
-            .collect();
-        let make_cond = {
-            let field_names = field_names.clone();
-            let match_names = match_names.clone();
-            move |init: Option<&crate::config::FilterCondition>| -> CondRows {
-                let rows = CondRows::new(&field_names, &match_names);
-                let (field, matcher, value) = (&rows.field, &rows.matcher, &rows.value);
-                if let Some(c) = init {
-                    if let Some(i) = FilterField::ALL.iter().position(|f| *f == c.field) {
-                        field.set_selected(i as u32);
-                    }
-                    if let Some(i) = FilterMatch::ALL.iter().position(|m| *m == c.matcher) {
-                        matcher.set_selected(i as u32);
-                    }
-                    value.set_text(&c.value);
+        // Enter in a criterion's text saves, as in every form page; the
+        // save closure is looked up when pressed.
+        let activate: std::rc::Rc<dyn Fn()> = {
+            let form_save = self.form_save.clone();
+            let nav = nav.clone();
+            std::rc::Rc::new(move || {
+                let saved = form_save.borrow().as_ref().is_some_and(|save| save());
+                if saved {
+                    nav.pop();
                 }
-                let explain = {
-                    let matcher = matcher.clone();
-                    let value = value.clone();
-                    move |field: &adw::ComboRow| {
-                        let chosen = FilterField::ALL.get(field.selected() as usize).copied();
-                        let body = chosen == Some(FilterField::Body);
-                        let contacts = chosen.is_some_and(|f| f.is_contact_check());
-                        if body {
-                            matcher.set_selected(0);
-                        }
-                        matcher.set_sensitive(!body && !contacts);
-                        matcher.set_visible(!contacts);
-                        value.set_visible(!contacts);
-                        field.set_subtitle(&match chosen {
-                            Some(FilterField::Body) => {
-                                i18n("Searched on the server; nothing is downloaded")
-                            }
-                            Some(FilterField::ReplyTo) => {
-                                i18n("From address when no Reply-To is set")
-                            }
-                            Some(f) if f.is_contact_check() => i18n("Looks in your address books"),
-                            _ => String::new(),
-                        });
-                    }
-                };
-                explain(field);
-                field.connect_selected_notify(explain);
-                rows.add_rows();
-                rows
-            }
+            })
         };
 
-        // Add Condition, and all or any (#192): the chooser is only shown
-        // once there is a second condition.
-        let controls = CondControls::new();
-        let relabel = controls.relabeller(&conds);
-        let CondControls {
-            add_group,
-            add_row,
-            combine_row,
-            combine_group,
-        } = controls;
-        let add_cond = {
-            let adder = std::rc::Rc::new(CondAdder {
-                conds: conds.clone(),
-                page_box: page_box.clone(),
-                anchor: account_group.clone().upcast(),
-                make: make_cond.clone(),
-                relabel,
-                form_save: self.form_save.clone(),
-                nav: nav.clone(),
-                changed: Some(changed.clone()),
-            });
-            move |init: Option<&crate::config::FilterCondition>| adder.add(init)
-        };
-        {
-            let add_cond = add_cond.clone();
-            add_row.connect_activated(move |_| add_cond(None));
-        }
+        // The criteria (#192): the common fields from "Add criterion", the
+        // message body (#191) and Reply-To from Advanced.
+        let specs: Vec<FieldSpec> = FilterField::ALL
+            .iter()
+            .map(|f| FieldSpec {
+                label: Self::field_label(*f),
+                text: !f.is_contact_check(),
+                contains_only: *f == FilterField::Body,
+            })
+            .collect();
+        let at = |f: FilterField| FilterField::ALL.iter().position(|x| *x == f).unwrap_or(0);
+        let common = [
+            FilterField::FromAddress,
+            FilterField::FromName,
+            FilterField::Subject,
+            FilterField::Recipients,
+            FilterField::FromInContacts,
+            FilterField::FromNotInContacts,
+        ]
+        .map(at)
+        .to_vec();
+        let rare = vec![at(FilterField::Body), at(FilterField::ReplyTo)];
+        let criteria = Criteria::new(
+            &i18n("If"),
+            Some(&i18n("Separate alternatives with commas.")),
+            specs,
+            common,
+            changed.clone(),
+            activate,
+        );
 
-        // Then: what a match does (the action rows), and below them the
-        // tag and the unread count.
+        // Then: what a match does.
         let own: Vec<(String, String)> = self
             .accounts
             .iter()
             .map(|a| (a.name.clone(), a.email.clone()))
             .collect();
-        let actions = ActionList::new(std::rc::Rc::new(changed.clone()), own);
-        // The Move rows offer the chosen account's folders.
+        let actions = ActionList::new(changed.clone(), own);
+        // The Move row offers the chosen account's folders.
         let folders = std::rc::Rc::new(self.folders_by_email.clone());
         let emails_rc = std::rc::Rc::new(emails.clone());
         let fill_dest = {
@@ -318,9 +274,14 @@ impl AccountsWindow {
             account_row.connect_selected_notify(move |row| fill_dest(row.selected() as usize));
         }
 
-        let action_group = adw::PreferencesGroup::new();
-
-        // Tag with (#71): none, or one of the tags.
+        // Advanced (docs/DESIGN.md, "Organize mail and services"): the rare
+        // criteria, the tag (#71) and the unread count (#116).
+        let advanced_group = adw::PreferencesGroup::new();
+        let advanced = adw::ExpanderRow::new();
+        advanced.set_title(&i18n("Advanced"));
+        advanced.set_subtitle(&i18n("Message body, Reply-To, tag, count unread mail"));
+        advanced
+            .add_row(&criteria.add_row(&i18n("Add a criterion on the body or Reply-To…"), rare));
         let tag_row = adw::ComboRow::new();
         tag_row.set_title(&i18n("Tag with"));
         let tags = self.tags.clone();
@@ -334,24 +295,18 @@ impl AccountsWindow {
             let changed = changed.clone();
             tag_row.connect_selected_notify(move |_| changed());
         }
-
         // Filed mail is still new mail: counted by default, so the unread
         // total stays true to what sits unread; a rule filing newsletters
         // can opt its folder out (#116).
         let count_row = adw::SwitchRow::new();
         count_row.set_title(&i18n("Count unread mail"));
         count_row.set_subtitle(&i18n(
-            "Include the folder's unread mail in the tray icon's unread count",
+            "Include the folder's unread mail in the unread counts",
         ));
         count_row.set_active(true);
-        // The rare parts of a rule, under Advanced (docs/DESIGN.md,
-        // "Organize mail and services").
-        let advanced = adw::ExpanderRow::new();
-        advanced.set_title(&i18n("Advanced"));
-        advanced.set_subtitle(&i18n("Tag, count unread mail"));
         advanced.add_row(&tag_row);
         advanced.add_row(&count_row);
-        action_group.add(&advanced);
+        advanced_group.add(&advanced);
 
         // Editing: every field starts from the rule as it stands. A new
         // rule started from a message starts from its draft the same way,
@@ -367,7 +322,10 @@ impl AccountsWindow {
                 account_row.set_selected(idx as u32);
                 fill_dest(idx);
             }
-            combine_row.set_selected(if rule.any { 1 } else { 0 });
+            criteria.set_any(rule.any);
+            for c in rule.conditions() {
+                criteria.insert(at(c.field), c.matcher, &c.value);
+            }
             actions.load(rule);
             if let Some(idx) = tags
                 .iter()
@@ -376,15 +334,23 @@ impl AccountsWindow {
                 tag_row.set_selected(idx as u32 + 1);
             }
             count_row.set_active(rule.count_unread);
-            advanced.set_expanded(tag_row.selected() != 0 || !rule.count_unread);
+            advanced.set_expanded(
+                tag_row.selected() != 0
+                    || !rule.count_unread
+                    || rule
+                        .conditions()
+                        .iter()
+                        .any(|c| matches!(c.field, FilterField::Body | FilterField::ReplyTo)),
+            );
+        } else {
+            // A new rule starts on what most rules look at.
+            criteria.insert(at(FilterField::Subject), FilterMatch::Contains, "");
         }
 
         page_box.append(&account_group);
-        page_box.append(&add_group);
-        page_box.append(&combine_group);
+        page_box.append(&criteria.group);
         page_box.append(&actions.group);
-        page_box.append(&actions.add_group);
-        page_box.append(&action_group);
+        page_box.append(&advanced_group);
         // Deleting a rule is done here, the one place it is edited.
         if let Some(i) = edit_index {
             let group = adw::PreferencesGroup::new();
@@ -402,31 +368,8 @@ impl AccountsWindow {
             group.add(&delete);
             page_box.append(&group);
         }
-        // The condition groups slot in above Add Condition: the rule's own
-        // when editing, one blank one otherwise.
-        match source {
-            Some(rule) => {
-                for c in rule.conditions() {
-                    add_cond(Some(&c));
-                }
-            }
-            None => add_cond(None),
-        }
 
-        showcase_open_row(&tag_row, &conds, &account_row);
-        // TEGAMI_SHOWCASE_ADD_CONDITION=<n> adds that many blank conditions
-        // once the page is up, for a capture of the stacked groups.
-        if let Some(Ok(n)) = std::env::var("TEGAMI_SHOWCASE_ADD_CONDITION")
-            .ok()
-            .map(|v| v.parse::<usize>())
-        {
-            let add_cond = add_cond.clone();
-            gtk::glib::timeout_add_local_once(std::time::Duration::from_secs(1), move || {
-                for _ in 0..n {
-                    add_cond(None);
-                }
-            });
-        }
+        showcase_open_row(&tag_row, &account_row);
 
         // The rule as the form stands, or None while it cannot be saved.
         let entries = vec![name_row.clone()];
@@ -436,22 +379,19 @@ impl AccountsWindow {
             .filter(|(_, r)| !r.forward_to.is_empty())
             .map(|(_, r)| (r.forward_since, r.forward_to.clone()));
         let build = move || -> Option<FilterRule> {
-            // Every condition with text; a blank extra one is dropped. The
-            // matcher of a body condition is whatever the pinned row says.
-            let conditions: Vec<crate::config::FilterCondition> = conds
-                .borrow()
-                .iter()
-                .filter_map(|c| {
-                    let field =
-                        FilterField::ALL[c.field.selected() as usize % FilterField::ALL.len()];
-                    let value = c.value.text().trim().to_string();
+            // Every criterion with text, or a contact check; one left
+            // blank is dropped.
+            let conditions: Vec<crate::config::FilterCondition> = criteria
+                .read()
+                .into_iter()
+                .filter_map(|(f, matcher, value)| {
+                    let field = *FilterField::ALL.get(f)?;
                     if value.is_empty() && !field.is_contact_check() {
                         return None;
                     }
                     Some(crate::config::FilterCondition {
                         field,
-                        matcher: FilterMatch::ALL
-                            [c.matcher.selected() as usize % FilterMatch::ALL.len()],
+                        matcher,
                         value,
                     })
                 })
@@ -472,7 +412,7 @@ impl AccountsWindow {
                 matcher: FilterMatch::Contains,
                 value: String::new(),
                 more: Vec::new(),
-                any: combine_row.selected() == 1,
+                any: criteria.any(),
                 dest_path: acts.dest_path,
                 tag,
                 count_unread: count_row.is_active(),
@@ -613,16 +553,10 @@ impl AccountsWindow {
 /// activates that combo row once the page is up and logs whether its
 /// popover opened and how many choices it holds, the way a click would
 /// (the "Move to" list was found empty this way, 2026-09-14).
-fn showcase_open_row(
-    tag_row: &adw::ComboRow,
-    conds: &std::rc::Rc<std::cell::RefCell<Vec<CondRows>>>,
-    account_row: &adw::ComboRow,
-) {
+fn showcase_open_row(tag_row: &adw::ComboRow, account_row: &adw::ComboRow) {
     if let Ok(which) = std::env::var("TEGAMI_SHOWCASE_OPEN_ROW") {
         let row: adw::ComboRow = match which.as_str() {
             "tag" => tag_row.clone(),
-            "where" => conds.borrow()[0].field.clone(),
-            "match" => conds.borrow()[0].matcher.clone(),
             _ => account_row.clone(),
         };
         gtk::glib::timeout_add_local_once(std::time::Duration::from_secs(3), move || {

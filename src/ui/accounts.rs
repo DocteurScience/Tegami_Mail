@@ -22,7 +22,7 @@ mod account_list;
 mod action_editor;
 mod address_suggest;
 mod aliases;
-mod condition_editor;
+mod criteria;
 mod editor;
 mod fields;
 mod filters;

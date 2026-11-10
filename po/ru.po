@@ -2234,11 +2234,8 @@ msgid "Enable this account"
 msgstr "Включить эту учётную запись"
 
 #, fuzzy
-msgid "Forward to"
+msgid "Forward to…"
 msgstr "Переслать"
-
-msgid "Move to"
-msgstr "Переместить в"
 
 msgid "forwards to {to}"
 msgstr ""
@@ -2261,11 +2258,11 @@ msgstr "Добавить учётную запись"
 msgid "Remove action"
 msgstr "Удалить условие"
 
-msgid "Addresses, separated by commas"
+msgid "Forward to (addresses, separated by commas)"
 msgstr ""
 
-msgid "Folder"
-msgstr "Папка"
+msgid "Move to"
+msgstr "Переместить в"
 
 #, fuzzy
 msgid "Permanently deletes the message"
@@ -2339,27 +2336,8 @@ msgstr "✓ SMTP: подключено"
 msgid "✗ SMTP: {e}"
 msgstr "✗ SMTP: {e}"
 
-msgid "Remove condition"
-msgstr "Удалить условие"
-
-msgid "Where"
-msgstr "Где искать"
-
-msgid "Match"
-msgstr "Совпадение"
-
-#, fuzzy
-msgid "Separate alternatives with commas."
-msgstr "Запятые разделяют варианты; учитывается любой из них"
-
-msgid "Text to match"
-msgstr "Текст для совпадения"
-
-msgid "Add condition"
-msgstr "Добавить условие"
-
-msgid "Condition matching"
-msgstr "Совпадение условий"
+msgid "Criteria"
+msgstr ""
 
 msgid "All must match"
 msgstr "Все условия должны совпадать"
@@ -2367,14 +2345,23 @@ msgstr "Все условия должны совпадать"
 msgid "Any one may match"
 msgstr "Любое условие может совпадать"
 
-msgid "Condition {n}"
-msgstr "Условие {n}"
+#, fuzzy
+msgid "Add criterion"
+msgstr "Добавить учётную запись"
 
-msgid "Or where"
-msgstr "Или где"
+msgid "Criterion options"
+msgstr ""
 
-msgid "And where"
-msgstr "И где"
+#, fuzzy
+msgid "Remove criterion"
+msgstr "Удалить условие"
+
+#, fuzzy
+msgid "{field} contains"
+msgstr "содержит"
+
+msgid "{field} {match}"
+msgstr ""
 
 msgid "Automatic"
 msgstr "Автоматически"
@@ -2510,15 +2497,22 @@ msgstr "Добавить фильтр"
 msgid "Name (optional)"
 msgstr "Название (необязательно)"
 
-msgid "Searched on the server; nothing is downloaded"
-msgstr "Поиск выполняется на сервере; ничего не скачивается"
-
-msgid "From address when no Reply-To is set"
-msgstr "Адрес отправителя, если не указан адрес для ответа (Reply-To)"
+msgid "If"
+msgstr ""
 
 #, fuzzy
-msgid "Looks in your address books"
-msgstr "Поиск ключа для {addr}…"
+msgid "Separate alternatives with commas."
+msgstr "Запятые разделяют варианты; учитывается любой из них"
+
+msgid "Advanced"
+msgstr "Дополнительно"
+
+#, fuzzy
+msgid "Message body, Reply-To, tag, count unread mail"
+msgstr "Учитывать непрочитанную почту"
+
+msgid "Add a criterion on the body or Reply-To…"
+msgstr ""
 
 msgid "Tag with"
 msgstr "Присвоить тег"
@@ -2529,17 +2523,11 @@ msgstr "Нет"
 msgid "Count unread mail"
 msgstr "Учитывать непрочитанную почту"
 
-msgid "Include the folder's unread mail in the tray icon's unread count"
+#, fuzzy
+msgid "Include the folder's unread mail in the unread counts"
 msgstr ""
 "Включать непрочитанные письма этой папки в счётчик непрочитанного у значка в "
 "трее"
-
-msgid "Advanced"
-msgstr "Дополнительно"
-
-#, fuzzy
-msgid "Tag, count unread mail"
-msgstr "Учитывать непрочитанную почту"
 
 #, fuzzy
 msgid "Delete filter"
@@ -2870,10 +2858,24 @@ msgstr "В общем разделе"
 msgid "Folders"
 msgstr "Папки"
 
+msgid "Any"
+msgstr ""
+
+msgid "Reading"
+msgstr "Чтение"
+
+#, fuzzy
+msgid "With attachments"
+msgstr "Скрыть вложения"
+
 msgid "Any tag"
 msgstr ""
 
-msgid "The preview each message has in the list"
+#, fuzzy
+msgid "Preview text, From address without Reply-To"
+msgstr "Адрес отправителя, если не указан адрес для ответа (Reply-To)"
+
+msgid "Add a criterion on the preview or Reply-To…"
 msgstr ""
 
 #, fuzzy
@@ -6469,9 +6471,6 @@ msgstr "Сервис"
 #, fuzzy
 msgid "Allowed and blocked"
 msgstr "Разрешённые отправители"
-
-msgid "Reading"
-msgstr "Чтение"
 
 msgid "Composing"
 msgstr "Создание писем"

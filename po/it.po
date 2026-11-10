@@ -2176,11 +2176,8 @@ msgid "Enable this account"
 msgstr "Abilita questo account"
 
 #, fuzzy
-msgid "Forward to"
+msgid "Forward to…"
 msgstr "Inoltra"
-
-msgid "Move to"
-msgstr "Sposta in"
 
 msgid "forwards to {to}"
 msgstr ""
@@ -2203,11 +2200,11 @@ msgstr "Aggiungi account"
 msgid "Remove action"
 msgstr "Rimuovi condizione"
 
-msgid "Addresses, separated by commas"
+msgid "Forward to (addresses, separated by commas)"
 msgstr ""
 
-msgid "Folder"
-msgstr "Cartella"
+msgid "Move to"
+msgstr "Sposta in"
 
 #, fuzzy
 msgid "Permanently deletes the message"
@@ -2280,27 +2277,8 @@ msgstr "✓ SMTP: connesso"
 msgid "✗ SMTP: {e}"
 msgstr "✗ SMTP: {e}"
 
-msgid "Remove condition"
-msgstr "Rimuovi condizione"
-
-msgid "Where"
-msgstr "Dove"
-
-msgid "Match"
-msgstr "Corrispondenza"
-
-#, fuzzy
-msgid "Separate alternatives with commas."
-msgstr "Le virgole separano le alternative; ognuna di esse conta"
-
-msgid "Text to match"
-msgstr "Testo da trovare"
-
-msgid "Add condition"
-msgstr "Aggiungi condizione"
-
-msgid "Condition matching"
-msgstr "Corrispondenza condizioni"
+msgid "Criteria"
+msgstr ""
 
 msgid "All must match"
 msgstr "Tutte devono corrispondere"
@@ -2308,14 +2286,23 @@ msgstr "Tutte devono corrispondere"
 msgid "Any one may match"
 msgstr "Almeno una deve corrispondere"
 
-msgid "Condition {n}"
-msgstr "Condizione {n}"
+#, fuzzy
+msgid "Add criterion"
+msgstr "Aggiungi account"
 
-msgid "Or where"
-msgstr "O dove"
+msgid "Criterion options"
+msgstr ""
 
-msgid "And where"
-msgstr "E dove"
+#, fuzzy
+msgid "Remove criterion"
+msgstr "Rimuovi condizione"
+
+#, fuzzy
+msgid "{field} contains"
+msgstr "contiene"
+
+msgid "{field} {match}"
+msgstr ""
 
 msgid "Automatic"
 msgstr "Automatico"
@@ -2454,15 +2441,22 @@ msgstr "Aggiungi filtro"
 msgid "Name (optional)"
 msgstr "Nome (opzionale)"
 
-msgid "Searched on the server; nothing is downloaded"
-msgstr "Ricercato sul server; niente viene scaricato"
-
-msgid "From address when no Reply-To is set"
-msgstr "Indirizzo mittente quando non è impostato Rispondi a"
+msgid "If"
+msgstr ""
 
 #, fuzzy
-msgid "Looks in your address books"
-msgstr "Ricerca di una chiave per {addr} in corso…"
+msgid "Separate alternatives with commas."
+msgstr "Le virgole separano le alternative; ognuna di esse conta"
+
+msgid "Advanced"
+msgstr "Avanzate"
+
+#, fuzzy
+msgid "Message body, Reply-To, tag, count unread mail"
+msgstr "Conta posta non letta"
+
+msgid "Add a criterion on the body or Reply-To…"
+msgstr ""
 
 msgid "Tag with"
 msgstr "Etichetta con"
@@ -2473,17 +2467,11 @@ msgstr "Nessuno"
 msgid "Count unread mail"
 msgstr "Conta posta non letta"
 
-msgid "Include the folder's unread mail in the tray icon's unread count"
+#, fuzzy
+msgid "Include the folder's unread mail in the unread counts"
 msgstr ""
 "Includi la posta non letta della cartella nel conteggio non letti dell'icona "
 "nella barra"
-
-msgid "Advanced"
-msgstr "Avanzate"
-
-#, fuzzy
-msgid "Tag, count unread mail"
-msgstr "Conta posta non letta"
 
 #, fuzzy
 msgid "Delete filter"
@@ -2804,11 +2792,26 @@ msgstr "Nella sezione unificata"
 msgid "Folders"
 msgstr "Cartelle"
 
+#, fuzzy
+msgid "Any"
+msgstr "Qualsiasi etichetta"
+
+msgid "Reading"
+msgstr "Lettura"
+
+#, fuzzy
+msgid "With attachments"
+msgstr "Nascondi gli allegati"
+
 msgid "Any tag"
 msgstr "Qualsiasi etichetta"
 
-msgid "The preview each message has in the list"
-msgstr "L'anteprima che ogni messaggio ha nell'elenco"
+#, fuzzy
+msgid "Preview text, From address without Reply-To"
+msgstr "Indirizzo mittente quando non è impostato Rispondi a"
+
+msgid "Add a criterion on the preview or Reply-To…"
+msgstr ""
 
 #, fuzzy
 msgid "Delete smart folder"
@@ -6358,9 +6361,6 @@ msgstr "Servizio"
 #, fuzzy
 msgid "Allowed and blocked"
 msgstr "Mittenti autorizzati"
-
-msgid "Reading"
-msgstr "Lettura"
 
 msgid "Composing"
 msgstr "Composizione"

@@ -2134,11 +2134,8 @@ msgid "Enable this account"
 msgstr "Activa aquest compte"
 
 #, fuzzy
-msgid "Forward to"
+msgid "Forward to…"
 msgstr "Reenvia"
-
-msgid "Move to"
-msgstr "Mou a"
 
 msgid "forwards to {to}"
 msgstr ""
@@ -2161,11 +2158,11 @@ msgstr "Acció"
 msgid "Remove action"
 msgstr "Elimina la condició"
 
-msgid "Addresses, separated by commas"
+msgid "Forward to (addresses, separated by commas)"
 msgstr ""
 
-msgid "Folder"
-msgstr "Carpeta"
+msgid "Move to"
+msgstr "Mou a"
 
 #, fuzzy
 msgid "Permanently deletes the message"
@@ -2235,26 +2232,8 @@ msgstr "✓ SMTP: connectat"
 msgid "✗ SMTP: {e}"
 msgstr "✗ SMTP: {e}"
 
-msgid "Remove condition"
-msgstr "Elimina la condició"
-
-msgid "Where"
-msgstr "On"
-
-msgid "Match"
-msgstr "Coincidència"
-
-msgid "Separate alternatives with commas."
-msgstr "Separa les alternatives amb comes."
-
-msgid "Text to match"
-msgstr "Text a fer coincidir"
-
-msgid "Add condition"
-msgstr "Afegeix una condició"
-
-msgid "Condition matching"
-msgstr "Coincidència de condicions"
+msgid "Criteria"
+msgstr ""
 
 msgid "All must match"
 msgstr "Totes han de coincidir"
@@ -2262,14 +2241,23 @@ msgstr "Totes han de coincidir"
 msgid "Any one may match"
 msgstr "Qualsevol pot coincidir"
 
-msgid "Condition {n}"
-msgstr "Condició {n}"
+#, fuzzy
+msgid "Add criterion"
+msgstr "Acció"
 
-msgid "Or where"
-msgstr "O bé on"
+msgid "Criterion options"
+msgstr ""
 
-msgid "And where"
-msgstr "I on"
+#, fuzzy
+msgid "Remove criterion"
+msgstr "Elimina la condició"
+
+#, fuzzy
+msgid "{field} contains"
+msgstr "conté"
+
+msgid "{field} {match}"
+msgstr ""
 
 msgid "Automatic"
 msgstr "Automàtic"
@@ -2404,15 +2392,21 @@ msgstr "Afegeix un filtre"
 msgid "Name (optional)"
 msgstr "Nom (opcional)"
 
-msgid "Searched on the server; nothing is downloaded"
-msgstr "Es cerca al servidor; no es baixa res"
+msgid "If"
+msgstr ""
 
-msgid "From address when no Reply-To is set"
-msgstr "Adreça del remitent quan no s'ha definit cap Reply-To"
+msgid "Separate alternatives with commas."
+msgstr "Separa les alternatives amb comes."
+
+msgid "Advanced"
+msgstr "Avançat"
 
 #, fuzzy
-msgid "Looks in your address books"
-msgstr "Torna a cercar llibretes d'adreces"
+msgid "Message body, Reply-To, tag, count unread mail"
+msgstr "Compta el correu no llegit"
+
+msgid "Add a criterion on the body or Reply-To…"
+msgstr ""
 
 msgid "Tag with"
 msgstr "Etiqueta amb"
@@ -2423,17 +2417,11 @@ msgstr "Cap"
 msgid "Count unread mail"
 msgstr "Compta el correu no llegit"
 
-msgid "Include the folder's unread mail in the tray icon's unread count"
+#, fuzzy
+msgid "Include the folder's unread mail in the unread counts"
 msgstr ""
 "Inclou el correu no llegit de la carpeta al recompte de no llegits de la "
 "icona de la safata"
-
-msgid "Advanced"
-msgstr "Avançat"
-
-#, fuzzy
-msgid "Tag, count unread mail"
-msgstr "Compta el correu no llegit"
 
 #, fuzzy
 msgid "Delete filter"
@@ -2736,11 +2724,26 @@ msgstr "Els de la secció unificada."
 msgid "Folders"
 msgstr "Carpetes"
 
+#, fuzzy
+msgid "Any"
+msgstr "Qualsevol etiqueta"
+
+msgid "Reading"
+msgstr "Lectura"
+
+#, fuzzy
+msgid "With attachments"
+msgstr "Amaga els adjunts"
+
 msgid "Any tag"
 msgstr "Qualsevol etiqueta"
 
-msgid "The preview each message has in the list"
-msgstr "La previsualització que cada missatge té a la llista"
+#, fuzzy
+msgid "Preview text, From address without Reply-To"
+msgstr "Adreça del remitent quan no s'ha definit cap Reply-To"
+
+msgid "Add a criterion on the preview or Reply-To…"
+msgstr ""
 
 #, fuzzy
 msgid "Delete smart folder"
@@ -6259,9 +6262,6 @@ msgstr "Servei"
 #, fuzzy
 msgid "Allowed and blocked"
 msgstr "Remitents permesos"
-
-msgid "Reading"
-msgstr "Lectura"
 
 msgid "Composing"
 msgstr "Redacció"

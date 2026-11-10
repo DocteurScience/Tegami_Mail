@@ -2208,11 +2208,8 @@ msgid "Enable this account"
 msgstr "Fiók engedélyezése"
 
 #, fuzzy
-msgid "Forward to"
+msgid "Forward to…"
 msgstr "Továbbítás"
-
-msgid "Move to"
-msgstr "Áthelyezés"
 
 msgid "forwards to {to}"
 msgstr ""
@@ -2235,11 +2232,11 @@ msgstr "Fiók hozzáadása"
 msgid "Remove action"
 msgstr "Feltétel eltávolítása"
 
-msgid "Addresses, separated by commas"
+msgid "Forward to (addresses, separated by commas)"
 msgstr ""
 
-msgid "Folder"
-msgstr "Mappa"
+msgid "Move to"
+msgstr "Áthelyezés"
 
 #, fuzzy
 msgid "Permanently deletes the message"
@@ -2311,29 +2308,8 @@ msgstr "✓ SMTP: kapcsolódva"
 msgid "✗ SMTP: {e}"
 msgstr "✗ SMTP: {e}"
 
-msgid "Remove condition"
-msgstr "Feltétel eltávolítása"
-
-msgid "Where"
-msgstr "Hol"
-
-msgid "Match"
-msgstr "Egyezés"
-
-#, fuzzy
-msgid "Separate alternatives with commas."
+msgid "Criteria"
 msgstr ""
-"A választható lehetőségeket vessző választja el egymástól; bármelyikük "
-"elfogadható"
-
-msgid "Text to match"
-msgstr "Egyeztetendő szöveg"
-
-msgid "Add condition"
-msgstr "Feltétel hozzáadása"
-
-msgid "Condition matching"
-msgstr "Feltételek összehasonlítása"
 
 msgid "All must match"
 msgstr "Mindennek egyeznie kell"
@@ -2341,14 +2317,23 @@ msgstr "Mindennek egyeznie kell"
 msgid "Any one may match"
 msgstr "Bármelyik egyezhet"
 
-msgid "Condition {n}"
-msgstr "{n} feltétel"
+#, fuzzy
+msgid "Add criterion"
+msgstr "Fiók hozzáadása"
 
-msgid "Or where"
-msgstr "Vagy ahol"
+msgid "Criterion options"
+msgstr ""
 
-msgid "And where"
-msgstr "És ahol"
+#, fuzzy
+msgid "Remove criterion"
+msgstr "Feltétel eltávolítása"
+
+#, fuzzy
+msgid "{field} contains"
+msgstr "tartalmazza"
+
+msgid "{field} {match}"
+msgstr ""
 
 msgid "Automatic"
 msgstr "Automatikus"
@@ -2486,15 +2471,24 @@ msgstr "Szűrő hozzáadása"
 msgid "Name (optional)"
 msgstr "Név (opcionális)"
 
-msgid "Searched on the server; nothing is downloaded"
-msgstr "Keresés a kiszolgálón; semmi sem töltődött le"
-
-msgid "From address when no Reply-To is set"
-msgstr "Feladó cím, ha nincs megadva „Válaszcím” mező"
+msgid "If"
+msgstr ""
 
 #, fuzzy
-msgid "Looks in your address books"
-msgstr "Kulcs keresése ehhez: {addr}…"
+msgid "Separate alternatives with commas."
+msgstr ""
+"A választható lehetőségeket vessző választja el egymástól; bármelyikük "
+"elfogadható"
+
+msgid "Advanced"
+msgstr ""
+
+#, fuzzy
+msgid "Message body, Reply-To, tag, count unread mail"
+msgstr "Olvasatlan levelek számolása"
+
+msgid "Add a criterion on the body or Reply-To…"
+msgstr ""
 
 msgid "Tag with"
 msgstr "Címkézés ezzel"
@@ -2505,17 +2499,11 @@ msgstr "Nincs"
 msgid "Count unread mail"
 msgstr "Olvasatlan levelek számolása"
 
-msgid "Include the folder's unread mail in the tray icon's unread count"
+#, fuzzy
+msgid "Include the folder's unread mail in the unread counts"
 msgstr ""
 "A mappa olvasatlan leveleit is vegye figyelembe a tálcaikonon megjelenő "
 "olvasatlan levelek számának kiszámításakor"
-
-msgid "Advanced"
-msgstr ""
-
-#, fuzzy
-msgid "Tag, count unread mail"
-msgstr "Olvasatlan levelek számolása"
 
 #, fuzzy
 msgid "Delete filter"
@@ -2844,10 +2832,24 @@ msgstr "Az összevont részben"
 msgid "Folders"
 msgstr "Mappák"
 
+msgid "Any"
+msgstr ""
+
+msgid "Reading"
+msgstr "Olvasás"
+
+#, fuzzy
+msgid "With attachments"
+msgstr "Mellékletek elrejtése"
+
 msgid "Any tag"
 msgstr ""
 
-msgid "The preview each message has in the list"
+#, fuzzy
+msgid "Preview text, From address without Reply-To"
+msgstr "Feladó cím, ha nincs megadva „Válaszcím” mező"
+
+msgid "Add a criterion on the preview or Reply-To…"
 msgstr ""
 
 #, fuzzy
@@ -6471,9 +6473,6 @@ msgstr "Szolgáltatás"
 #, fuzzy
 msgid "Allowed and blocked"
 msgstr "Engedélyezett feladók"
-
-msgid "Reading"
-msgstr "Olvasás"
 
 msgid "Composing"
 msgstr "Levélírás"
