@@ -5380,20 +5380,21 @@ msgid ""
 "each of them."
 msgstr ""
 
-msgid "Add your email account"
-msgstr "Afegeix el teu compte de correu"
+#, fuzzy
+msgid "Email account"
+msgstr "Compte de correu"
+
+msgid "Tegami Mail finds the servers of most providers from your address."
+msgstr ""
+
+msgid "Display name, servers, API token"
+msgstr ""
 
 msgid "Provider"
 msgstr "Proveïdor"
 
-msgid "Your name"
-msgstr "El teu nom"
-
-msgid "Server details"
-msgstr "Dades del servidor"
-
-msgid "Filled in for known providers"
-msgstr "Omplert per a proveïdors coneguts"
+msgid "Display name"
+msgstr "Nom visible"
 
 msgid "IMAP server"
 msgstr "Servidor IMAP"
@@ -5416,19 +5417,17 @@ msgstr "URL del token"
 msgid "Scopes (space-separated)"
 msgstr "Àmbits (separats per espais)"
 
-msgid "Test & add"
-msgstr "Prova i afegeix"
-
 #, fuzzy
-msgid "Email account"
-msgstr "Compte de correu"
+msgid "Test and add"
+msgstr "Prova i afegeix"
 
 msgid "Enter your email address, the client ID and both OAuth URLs first."
 msgstr ""
 "Introdueix primer la teva adreça de correu, l'ID de client i els dos URL "
 "d'OAuth."
 
-msgid "Sign in & add"
+#, fuzzy
+msgid "Sign in and add"
 msgstr "Inicia sessió i afegeix"
 
 msgid "Enter your email address and password first."
@@ -5437,17 +5436,11 @@ msgstr "Introdueix primer la teva adreça de correu i la contrasenya."
 msgid "Checking the connection…"
 msgstr "S'està comprovant la connexió…"
 
-msgid "✓ {email} — connected and added"
-msgstr "✓ {email} — connectat i afegit"
-
 msgid "{email} — mail server: {e}"
 msgstr "{email} — servidor de correu: {e}"
 
 msgid "{email} — sending (SMTP): {e}"
 msgstr "{email} — enviament (SMTP): {e}"
-
-msgid "✓ {email} — signed in and added"
-msgstr "✓ {email} — sessió iniciada i afegit"
 
 msgid "Welcome to Tegami Mail"
 msgstr "Benvingut a l'Tegami Mail"
@@ -5819,9 +5812,6 @@ msgid ""
 msgstr ""
 "Gestionat pels comptes en línia del GNOME. La seva adreça, servidors i "
 "contrasenya es canvien a Paràmetres → Comptes en línia."
-
-msgid "Display name"
-msgstr "Nom visible"
 
 #. The nickname names the account in the sidebar and lists, the
 #. address standing in while there is none (owner, 2026-11-08).

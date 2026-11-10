@@ -5408,20 +5408,21 @@ msgid ""
 "each of them."
 msgstr ""
 
-msgid "Add your email account"
-msgstr "E-Mail-Konto hinzufügen"
+#, fuzzy
+msgid "Email account"
+msgstr "E-Mail-Konto"
+
+msgid "Tegami Mail finds the servers of most providers from your address."
+msgstr ""
+
+msgid "Display name, servers, API token"
+msgstr ""
 
 msgid "Provider"
 msgstr "Anbieter"
 
-msgid "Your name"
-msgstr "Vollständiger Name"
-
-msgid "Server details"
-msgstr "Angaben zum Server"
-
-msgid "Filled in for known providers"
-msgstr "Ausgefüllt für bekannte Anbieter"
+msgid "Display name"
+msgstr "Anzeigename"
 
 msgid "IMAP server"
 msgstr "IMAP Server"
@@ -5444,17 +5445,15 @@ msgstr "Token-URL"
 msgid "Scopes (space-separated)"
 msgstr "Scopes (durch Leerzeichen getrennt)"
 
-msgid "Test & add"
-msgstr "Prüfen und hinzufügen"
-
 #, fuzzy
-msgid "Email account"
-msgstr "E-Mail-Konto"
+msgid "Test and add"
+msgstr "Prüfen und hinzufügen"
 
 msgid "Enter your email address, the client ID and both OAuth URLs first."
 msgstr "Zuerst E-Mail-Adresse, Client-ID und beide OAuth-URLs eingeben."
 
-msgid "Sign in & add"
+#, fuzzy
+msgid "Sign in and add"
 msgstr "Anmelden und hinzufügen"
 
 msgid "Enter your email address and password first."
@@ -5463,17 +5462,11 @@ msgstr "Zuerst E-Mail-Adresse und Passwort eingeben."
 msgid "Checking the connection…"
 msgstr "Verbindung wird geprüft…"
 
-msgid "✓ {email} — connected and added"
-msgstr "{email} - verbunden und hinzugefügt"
-
 msgid "{email} — mail server: {e}"
 msgstr "{email} — Mailserver: {e}"
 
 msgid "{email} — sending (SMTP): {e}"
 msgstr "{email} — Senden (SMTP): {e}"
-
-msgid "✓ {email} — signed in and added"
-msgstr "✓ {email} — angemeldet und hinzugefügt"
 
 msgid "Welcome to Tegami Mail"
 msgstr "Willkommen bei Tegami Mail"
@@ -5848,9 +5841,6 @@ msgid ""
 msgstr ""
 "Konto wird von GNOME Online Accounts verwaltet. Adresse, Server und Passwort "
 "werden in Einstellungen → Online-Konten geändert."
-
-msgid "Display name"
-msgstr "Anzeigename"
 
 #. The nickname names the account in the sidebar and lists, the
 #. address standing in while there is none (owner, 2026-11-08).

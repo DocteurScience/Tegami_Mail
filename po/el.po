@@ -5446,20 +5446,21 @@ msgid ""
 "each of them."
 msgstr ""
 
-msgid "Add your email account"
-msgstr "Προσθέστε τον λογαριασμό email σας"
+#, fuzzy
+msgid "Email account"
+msgstr "Λογαριασμός αλληλογραφίας"
+
+msgid "Tegami Mail finds the servers of most providers from your address."
+msgstr ""
+
+msgid "Display name, servers, API token"
+msgstr ""
 
 msgid "Provider"
 msgstr "Πάροχος"
 
-msgid "Your name"
-msgstr "Το όνομά σας"
-
-msgid "Server details"
-msgstr "Στοιχεία διακομιστή"
-
-msgid "Filled in for known providers"
-msgstr "Συμπληρώνονται για γνωστούς παρόχους"
+msgid "Display name"
+msgstr "Εμφανιζόμενο όνομα"
 
 msgid "IMAP server"
 msgstr "Διακομιστής IMAP"
@@ -5482,19 +5483,17 @@ msgstr "URL διακριτικού"
 msgid "Scopes (space-separated)"
 msgstr "Πεδία πρόσβασης (χωρισμένα με κενά)"
 
-msgid "Test & add"
-msgstr "Δοκιμή και προσθήκη"
-
 #, fuzzy
-msgid "Email account"
-msgstr "Λογαριασμός αλληλογραφίας"
+msgid "Test and add"
+msgstr "Δοκιμή και προσθήκη"
 
 msgid "Enter your email address, the client ID and both OAuth URLs first."
 msgstr ""
 "Εισαγάγετε πρώτα τη διεύθυνση email σας, το αναγνωριστικό πελάτη και τα δύο "
 "URL OAuth."
 
-msgid "Sign in & add"
+#, fuzzy
+msgid "Sign in and add"
 msgstr "Σύνδεση και προσθήκη"
 
 msgid "Enter your email address and password first."
@@ -5503,17 +5502,11 @@ msgstr "Εισαγάγετε πρώτα τη διεύθυνση email και τ�
 msgid "Checking the connection…"
 msgstr "Έλεγχος σύνδεσης…"
 
-msgid "✓ {email} — connected and added"
-msgstr "✓ {email} — συνδέθηκε και προστέθηκε"
-
 msgid "{email} — mail server: {e}"
 msgstr "{email} — διακομιστής αλληλογραφίας: {e}"
 
 msgid "{email} — sending (SMTP): {e}"
 msgstr "{email} — αποστολή (SMTP): {e}"
-
-msgid "✓ {email} — signed in and added"
-msgstr "✓ {email} — συνδέθηκε και προστέθηκε"
 
 msgid "Welcome to Tegami Mail"
 msgstr "Καλώς ορίσατε στο Tegami Mail"
@@ -5895,9 +5888,6 @@ msgstr ""
 "Διαχειρίζεται από τους Διαδικτυακούς λογαριασμούς GNOME. Η διεύθυνση, οι "
 "διακομιστές και ο κωδικός πρόσβασης αλλάζουν στις Ρυθμίσεις → Διαδικτυακοί "
 "λογαριασμοί."
-
-msgid "Display name"
-msgstr "Εμφανιζόμενο όνομα"
 
 #. The nickname names the account in the sidebar and lists, the
 #. address standing in while there is none (owner, 2026-11-08).

@@ -5641,20 +5641,21 @@ msgid ""
 "each of them."
 msgstr ""
 
-msgid "Add your email account"
-msgstr "Dodaj konto pocztowe"
+#, fuzzy
+msgid "Email account"
+msgstr "Konto pocztowe"
+
+msgid "Tegami Mail finds the servers of most providers from your address."
+msgstr ""
+
+msgid "Display name, servers, API token"
+msgstr ""
 
 msgid "Provider"
 msgstr "Dostawca"
 
-msgid "Your name"
-msgstr "Imię i nazwisko"
-
-msgid "Server details"
-msgstr "Dane serwera"
-
-msgid "Filled in for known providers"
-msgstr "Wypełniane automatycznie dla znanych dostawców"
+msgid "Display name"
+msgstr "Wyświetlana nazwa"
 
 msgid "IMAP server"
 msgstr "Serwer IMAP"
@@ -5677,18 +5678,16 @@ msgstr "Adres URL tokena"
 msgid "Scopes (space-separated)"
 msgstr "Zakresy (rozdzielone spacjami)"
 
-msgid "Test & add"
-msgstr "Sprawdź i dodaj"
-
 #, fuzzy
-msgid "Email account"
-msgstr "Konto pocztowe"
+msgid "Test and add"
+msgstr "Sprawdź i dodaj"
 
 msgid "Enter your email address, the client ID and both OAuth URLs first."
 msgstr ""
 "Najpierw wprowadź adres e-mail, identyfikator klienta i oba adresy URL OAuth."
 
-msgid "Sign in & add"
+#, fuzzy
+msgid "Sign in and add"
 msgstr "Zaloguj się i dodaj"
 
 msgid "Enter your email address and password first."
@@ -5697,17 +5696,11 @@ msgstr "Najpierw wprowadź adres e-mail i hasło."
 msgid "Checking the connection…"
 msgstr "Sprawdzanie połączenia…"
 
-msgid "✓ {email} — connected and added"
-msgstr "✓ {email} – połączono i dodano"
-
 msgid "{email} — mail server: {e}"
 msgstr "{email} – serwer poczty: {e}"
 
 msgid "{email} — sending (SMTP): {e}"
 msgstr "{email} – wysyłanie (SMTP): {e}"
-
-msgid "✓ {email} — signed in and added"
-msgstr "✓ {email} – zalogowano i dodano"
 
 msgid "Welcome to Tegami Mail"
 msgstr "Witamy w aplikacji Tegami Mail"
@@ -6078,9 +6071,6 @@ msgstr ""
 "To konto jest zarządzane przez konta online GNOME.\n"
 "Jego adres, serwery i hasło można zmienić w aplikacji Ustawienia → Konta "
 "online."
-
-msgid "Display name"
-msgstr "Wyświetlana nazwa"
 
 #. The nickname names the account in the sidebar and lists, the
 #. address standing in while there is none (owner, 2026-11-08).

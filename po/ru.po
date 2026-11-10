@@ -5582,20 +5582,21 @@ msgid ""
 "each of them."
 msgstr ""
 
-msgid "Add your email account"
-msgstr "Добавление учётной записи электронной почты"
+#, fuzzy
+msgid "Email account"
+msgstr "Почтовая учётная запись"
+
+msgid "Tegami Mail finds the servers of most providers from your address."
+msgstr ""
+
+msgid "Display name, servers, API token"
+msgstr ""
 
 msgid "Provider"
 msgstr "Провайдер"
 
-msgid "Your name"
-msgstr "Ваше имя"
-
-msgid "Server details"
-msgstr "Данные сервера"
-
-msgid "Filled in for known providers"
-msgstr "Заполняется автоматически для известных провайдеров"
+msgid "Display name"
+msgstr "Отображаемое имя"
 
 msgid "IMAP server"
 msgstr "Сервер IMAP"
@@ -5618,19 +5619,17 @@ msgstr "URL токена"
 msgid "Scopes (space-separated)"
 msgstr "Области доступа (через пробел)"
 
-msgid "Test & add"
-msgstr "Проверить и добавить"
-
 #, fuzzy
-msgid "Email account"
-msgstr "Почтовая учётная запись"
+msgid "Test and add"
+msgstr "Проверить и добавить"
 
 msgid "Enter your email address, the client ID and both OAuth URLs first."
 msgstr ""
 "Сначала введите адрес электронной почты, идентификатор клиента (Client ID) и "
 "оба URL-адреса OAuth."
 
-msgid "Sign in & add"
+#, fuzzy
+msgid "Sign in and add"
 msgstr "Войти и добавить"
 
 msgid "Enter your email address and password first."
@@ -5639,17 +5638,11 @@ msgstr "Сначала введите адрес электронной почт
 msgid "Checking the connection…"
 msgstr "Проверка соединения…"
 
-msgid "✓ {email} — connected and added"
-msgstr "✓ {email} — подключено и добавлено"
-
 msgid "{email} — mail server: {e}"
 msgstr "{email} — почтовый сервер: {e}"
 
 msgid "{email} — sending (SMTP): {e}"
 msgstr "{email} — отправка (SMTP): {e}"
-
-msgid "✓ {email} — signed in and added"
-msgstr "✓ {email} — авторизовано и добавлено"
 
 msgid "Welcome to Tegami Mail"
 msgstr "Добро пожаловать в Tegami Mail"
@@ -6021,9 +6014,6 @@ msgstr ""
 "Эта учётная запись управляется сервисом «Сетевые учётные записи GNOME».\n"
 "Её адрес, сервера и пароль можно изменить в меню «Настройки» → «Сетевые "
 "учётные записи»."
-
-msgid "Display name"
-msgstr "Отображаемое имя"
 
 #. The nickname names the account in the sidebar and lists, the
 #. address standing in while there is none (owner, 2026-11-08).

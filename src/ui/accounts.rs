@@ -54,7 +54,9 @@ pub(crate) use oauth::open_online_accounts;
 pub(crate) use pages::{action_row, add_row, ACCOUNTS_LIST_NAME};
 use pages::{AccountsPage, EditorForm, FiltersPage, SendersPage, SmartPage, TagsPage};
 use providers::provider_at;
-pub(crate) use providers::{brand_for_goa, provider_factory, Provider, PROVIDERS};
+pub(crate) use providers::{
+    brand_for_goa, provider_factory, provider_for_address, Provider, PROVIDERS,
+};
 use setup::{connect_editor_open, fill_editor_choices, prepare_editor_page};
 
 const DEFAULT_COLOR: &str = "#3584e4";

@@ -5474,20 +5474,21 @@ msgid ""
 "each of them."
 msgstr ""
 
-msgid "Add your email account"
-msgstr "Aggiungi il tuo account e-mail"
+#, fuzzy
+msgid "Email account"
+msgstr "Account e-mail"
+
+msgid "Tegami Mail finds the servers of most providers from your address."
+msgstr ""
+
+msgid "Display name, servers, API token"
+msgstr ""
 
 msgid "Provider"
 msgstr "Provider"
 
-msgid "Your name"
-msgstr "Il tuo nome"
-
-msgid "Server details"
-msgstr "Dettagli server"
-
-msgid "Filled in for known providers"
-msgstr "Compilati per i provider conosciuti"
+msgid "Display name"
+msgstr "Nome visualizzato"
 
 msgid "IMAP server"
 msgstr "Server IMAP"
@@ -5510,19 +5511,17 @@ msgstr "URL token"
 msgid "Scopes (space-separated)"
 msgstr "Ambiti (separati da spazi)"
 
-msgid "Test & add"
-msgstr "Testa e aggiungi"
-
 #, fuzzy
-msgid "Email account"
-msgstr "Account e-mail"
+msgid "Test and add"
+msgstr "Testa e aggiungi"
 
 msgid "Enter your email address, the client ID and both OAuth URLs first."
 msgstr ""
 "Inserisci prima il tuo indirizzo e-mail, l'ID client e entrambi gli URL "
 "OAuth."
 
-msgid "Sign in & add"
+#, fuzzy
+msgid "Sign in and add"
 msgstr "Accedi e aggiungi"
 
 msgid "Enter your email address and password first."
@@ -5531,17 +5530,11 @@ msgstr "Inserisci prima il tuo indirizzo e-mail e la password."
 msgid "Checking the connection…"
 msgstr "Verifica della connessione in corso…"
 
-msgid "✓ {email} — connected and added"
-msgstr "✓ {email} — connesso e aggiunto"
-
 msgid "{email} — mail server: {e}"
 msgstr "{email} — server di posta: {e}"
 
 msgid "{email} — sending (SMTP): {e}"
 msgstr "{email} — invio (SMTP): {e}"
-
-msgid "✓ {email} — signed in and added"
-msgstr "✓ {email} — accesso effettuato e aggiunto"
 
 msgid "Welcome to Tegami Mail"
 msgstr "Benvenuto in Tegami Mail"
@@ -5911,9 +5904,6 @@ msgstr ""
 "Questo account è gestito da GNOME Account online.\n"
 "Il suo indirizzo, i server e la password vengono modificati in Impostazioni "
 "→ Account online."
-
-msgid "Display name"
-msgstr "Nome visualizzato"
 
 #. The nickname names the account in the sidebar and lists, the
 #. address standing in while there is none (owner, 2026-11-08).

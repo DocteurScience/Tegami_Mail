@@ -19,6 +19,8 @@ pub(crate) enum WelcomeInput {
     RescanGoa,
     OpenOnlineAccounts,
     Finish,
+    /// The capture of screen 51 mid-test (TEGAMI_SHOWCASE_WIZARD=testing).
+    ShowcaseTesting,
 }
 
 #[derive(Debug)]

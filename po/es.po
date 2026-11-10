@@ -5406,20 +5406,21 @@ msgid ""
 "each of them."
 msgstr ""
 
-msgid "Add your email account"
-msgstr "Añade tu cuenta de correo"
+#, fuzzy
+msgid "Email account"
+msgstr "Cuenta de correo"
+
+msgid "Tegami Mail finds the servers of most providers from your address."
+msgstr ""
+
+msgid "Display name, servers, API token"
+msgstr ""
 
 msgid "Provider"
 msgstr "Proveedor"
 
-msgid "Your name"
-msgstr "Tu nombre"
-
-msgid "Server details"
-msgstr "Datos del servidor"
-
-msgid "Filled in for known providers"
-msgstr "Se completa automáticamente para proveedores conocidos"
+msgid "Display name"
+msgstr "Nombre para mostrar"
 
 msgid "IMAP server"
 msgstr "Servidor IMAP"
@@ -5442,19 +5443,17 @@ msgstr "URL del token"
 msgid "Scopes (space-separated)"
 msgstr "Ámbitos (separados por espacios)"
 
-msgid "Test & add"
-msgstr "Probar y añadir"
-
 #, fuzzy
-msgid "Email account"
-msgstr "Cuenta de correo"
+msgid "Test and add"
+msgstr "Probar y añadir"
 
 msgid "Enter your email address, the client ID and both OAuth URLs first."
 msgstr ""
 "Introduce primero tu dirección de correo electrónico, el ID de cliente y las "
 "dos URL de OAuth."
 
-msgid "Sign in & add"
+#, fuzzy
+msgid "Sign in and add"
 msgstr "Iniciar sesión y añadir"
 
 msgid "Enter your email address and password first."
@@ -5463,17 +5462,11 @@ msgstr "Introduce primero tu dirección de correo electrónico y contraseña."
 msgid "Checking the connection…"
 msgstr "Comprobando la conexión…"
 
-msgid "✓ {email} — connected and added"
-msgstr "✓ {email} — conectada y añadida"
-
 msgid "{email} — mail server: {e}"
 msgstr "{email} — servidor de correo: {e}"
 
 msgid "{email} — sending (SMTP): {e}"
 msgstr "{email} — envío (SMTP): {e}"
-
-msgid "✓ {email} — signed in and added"
-msgstr "✓ {email} — sesión iniciada y cuenta añadida"
 
 msgid "Welcome to Tegami Mail"
 msgstr "Te damos la bienvenida a Tegami Mail"
@@ -5848,9 +5841,6 @@ msgid ""
 msgstr ""
 "Gestionada por Cuentas en línea de GNOME. Su dirección, servidores y "
 "contraseña se modifican en Ajustes → Cuentas en línea."
-
-msgid "Display name"
-msgstr "Nombre para mostrar"
 
 #. The nickname names the account in the sidebar and lists, the
 #. address standing in while there is none (owner, 2026-11-08).

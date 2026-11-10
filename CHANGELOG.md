@@ -14,6 +14,12 @@
   **Added**; the accounts added by hand join the list; **Another account**
   offers an email account by hand and Online Accounts. An account added in
   GNOME Settings meanwhile appears on coming back, without "Scan again".
+  **Email account** asks for the address and the password; the provider
+  is found from the address for the known ones (iCloud, Yahoo, Outlook,
+  GMX…), and **Advanced**, folded, holds the provider, the display name,
+  the servers and what the provider needs (an OAuth client, an API token).
+  While testing, a spinner and a sentence show and the button waits; an
+  error is a sentence under the fields. A success returns to the accounts.
 
 - **Changed: the filter and smart folder editors** (screens 38 and 40).
   A filter's criteria are one list under **If**: a row per criterion that

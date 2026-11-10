@@ -24,7 +24,7 @@ mod pages;
 mod steps;
 
 use goa::{build_accounts_page, showcase_listed, AccountsPage, Listed};
-use manual::{build_form_page, FormPage};
+use manual::{build_form_page, showcase_testing, FormPage};
 pub(crate) use messages::{WelcomeCmd, WelcomeInput, WelcomeOutput};
 use pages::{build_done_page, build_welcome_page, column, heading, nav_page, pill, sentence};
 
@@ -135,6 +135,7 @@ impl Component for Welcome {
             WelcomeInput::RescanGoa => self.on_rescan_goa(widgets, sender),
             WelcomeInput::OpenOnlineAccounts => crate::ui::accounts::open_online_accounts(),
             WelcomeInput::Finish => root.close(),
+            WelcomeInput::ShowcaseTesting => showcase_testing(&widgets.form),
         }
     }
 
@@ -160,20 +161,23 @@ impl Component for Welcome {
     }
 }
 
-/// Screenshot hook: TEGAMI_SHOWCASE_WIZARD=accounts or email walks to that
-/// page (with TEGAMI_WELCOME=1 to open the wizard over the demo), and
+/// Screenshot hook: TEGAMI_SHOWCASE_WIZARD=accounts, email or testing (the
+/// form mid-test) walks to that page (with TEGAMI_WELCOME=1 to open the wizard over the demo), and
 /// TEGAMI_SHOWCASE_WIZARD_SHOT=path captures the wizard alone after a beat
 /// (TEGAMI_SHOWCASE is the main window's).
 fn showcase(root: &adw::Window, sender: &ComponentSender<Welcome>) {
     if let Some(page) = std::env::var("TEGAMI_SHOWCASE_WIZARD")
         .ok()
-        .filter(|p| p == "accounts" || p == "email")
+        .filter(|p| ["accounts", "email", "testing"].contains(&p.as_str()))
     {
         let s = sender.clone();
         gtk::glib::timeout_add_local_once(std::time::Duration::from_millis(500), move || {
             s.input(WelcomeInput::Start);
-            if page == "email" {
+            if page != "accounts" {
                 s.input(WelcomeInput::OpenForm);
+            }
+            if page == "testing" {
+                s.input(WelcomeInput::ShowcaseTesting);
             }
         });
     }

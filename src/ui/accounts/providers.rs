@@ -176,6 +176,36 @@ pub(super) fn provider_at(idx: u32) -> &'static Provider {
         .unwrap_or(&PROVIDERS[manual_index() as usize])
 }
 
+/// The entry an address belongs to, from its domain, for the wizard's
+/// form (screen 51: "the servers are found from the address for known
+/// providers"). Fastmail is its IMAP entry, which takes the app password
+/// people already have; Gmail has none here, as Google comes in through
+/// GNOME Online Accounts.
+pub(crate) fn provider_for_address(email: &str) -> Option<&'static Provider> {
+    let domain = email.rsplit_once('@')?.1.trim().to_ascii_lowercase();
+    // The first label, for the providers with a domain per country.
+    let first = domain.split('.').next().unwrap_or("");
+    let brand = match domain.as_str() {
+        "icloud.com" | "me.com" | "mac.com" => "icloud",
+        "proton.me" | "protonmail.com" | "protonmail.ch" | "pm.me" => "proton",
+        "fastmail.com" | "fastmail.fm" => "fastmail",
+        "aol.com" => "aol",
+        "zoho.com" | "zohomail.com" | "zohomail.eu" | "zoho.eu" => "zoho",
+        "mail.com" => "mailcom",
+        "outlook.com" | "msn.com" => "outlook",
+        _ => match first {
+            "yahoo" | "ymail" => "yahoo",
+            "gmx" => "gmx",
+            "yandex" => "yandex",
+            "hotmail" | "live" | "outlook" => "outlook",
+            _ => return None,
+        },
+    };
+    PROVIDERS
+        .iter()
+        .find(|p| p.brand == brand && p.kind != ProviderKind::Jmap)
+}
+
 /// The brand id for a GNOME Online Accounts provider name ("Google",
 /// "Microsoft 365"…): the two mail providers GOA offers, else the blue
 /// envelope.
@@ -373,6 +403,19 @@ pub(super) fn manual_brand(protocol: Protocol) -> &'static str {
 
 #[cfg(test)]
 mod tests {
+
+    #[test]
+    fn an_address_names_its_provider() {
+        let label = |e: &str| provider_for_address(e).map(|p| p.label);
+        assert_eq!(label("ada@icloud.com"), Some("iCloud"));
+        assert_eq!(label("ada@yahoo.fr"), Some("Yahoo Mail"));
+        assert_eq!(label("ada@GMX.de"), Some("GMX"));
+        assert_eq!(label("ada@hotmail.fr"), Some("Microsoft 365 / Outlook"));
+        assert_eq!(label("ada@fastmail.com"), Some("Fastmail"));
+        assert_eq!(label("ada@gmail.com"), None);
+        assert_eq!(label("ada@example.org"), None);
+        assert_eq!(label("ada"), None);
+    }
     use super::*;
 
     #[test]

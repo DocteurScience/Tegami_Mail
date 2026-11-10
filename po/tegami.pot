@@ -4872,19 +4872,19 @@ msgid ""
 "each of them."
 msgstr ""
 
-msgid "Add your email account"
+msgid "Email account"
+msgstr ""
+
+msgid "Tegami Mail finds the servers of most providers from your address."
+msgstr ""
+
+msgid "Display name, servers, API token"
 msgstr ""
 
 msgid "Provider"
 msgstr ""
 
-msgid "Your name"
-msgstr ""
-
-msgid "Server details"
-msgstr ""
-
-msgid "Filled in for known providers"
+msgid "Display name"
 msgstr ""
 
 msgid "IMAP server"
@@ -4908,16 +4908,13 @@ msgstr ""
 msgid "Scopes (space-separated)"
 msgstr ""
 
-msgid "Test & add"
-msgstr ""
-
-msgid "Email account"
+msgid "Test and add"
 msgstr ""
 
 msgid "Enter your email address, the client ID and both OAuth URLs first."
 msgstr ""
 
-msgid "Sign in & add"
+msgid "Sign in and add"
 msgstr ""
 
 msgid "Enter your email address and password first."
@@ -4926,16 +4923,10 @@ msgstr ""
 msgid "Checking the connection…"
 msgstr ""
 
-msgid "✓ {email} — connected and added"
-msgstr ""
-
 msgid "{email} — mail server: {e}"
 msgstr ""
 
 msgid "{email} — sending (SMTP): {e}"
-msgstr ""
-
-msgid "✓ {email} — signed in and added"
 msgstr ""
 
 msgid "Welcome to Tegami Mail"
@@ -5266,9 +5257,6 @@ msgstr ""
 
 msgid ""
 "Its address, servers and password are changed in Settings → Online Accounts."
-msgstr ""
-
-msgid "Display name"
 msgstr ""
 
 #. The nickname names the account in the sidebar and lists, the

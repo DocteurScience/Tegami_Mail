@@ -5404,20 +5404,21 @@ msgid ""
 "each of them."
 msgstr ""
 
-msgid "Add your email account"
-msgstr "Adicione a sua conta de e-mail"
+#, fuzzy
+msgid "Email account"
+msgstr "Conta de correio"
+
+msgid "Tegami Mail finds the servers of most providers from your address."
+msgstr ""
+
+msgid "Display name, servers, API token"
+msgstr ""
 
 msgid "Provider"
 msgstr "Fornecedor"
 
-msgid "Your name"
-msgstr "O seu nome"
-
-msgid "Server details"
-msgstr "Dados do servidor"
-
-msgid "Filled in for known providers"
-msgstr "Preenchidos para os fornecedores conhecidos"
+msgid "Display name"
+msgstr "Nome de apresentação"
 
 msgid "IMAP server"
 msgstr "Servidor IMAP"
@@ -5440,19 +5441,17 @@ msgstr "URL do token"
 msgid "Scopes (space-separated)"
 msgstr "Âmbitos (separados por espaços)"
 
-msgid "Test & add"
-msgstr "Testar e adicionar"
-
 #, fuzzy
-msgid "Email account"
-msgstr "Conta de correio"
+msgid "Test and add"
+msgstr "Testar e adicionar"
 
 msgid "Enter your email address, the client ID and both OAuth URLs first."
 msgstr ""
 "Introduza primeiro o seu endereço de e-mail, o ID de cliente e ambos os URL "
 "OAuth."
 
-msgid "Sign in & add"
+#, fuzzy
+msgid "Sign in and add"
 msgstr "Iniciar sessão e adicionar"
 
 msgid "Enter your email address and password first."
@@ -5461,17 +5460,11 @@ msgstr "Introduza primeiro o seu endereço de e-mail e a palavra-passe."
 msgid "Checking the connection…"
 msgstr "A verificar a ligação…"
 
-msgid "✓ {email} — connected and added"
-msgstr "✓ {email} — ligada e adicionada"
-
 msgid "{email} — mail server: {e}"
 msgstr "{email} — servidor de correio: {e}"
 
 msgid "{email} — sending (SMTP): {e}"
 msgstr "{email} — envio (SMTP): {e}"
-
-msgid "✓ {email} — signed in and added"
-msgstr "✓ {email} — sessão iniciada e conta adicionada"
 
 msgid "Welcome to Tegami Mail"
 msgstr "Bem-vindo ao Tegami Mail"
@@ -5845,9 +5838,6 @@ msgid ""
 msgstr ""
 "Gerida pelas Contas online do GNOME. O endereço, os servidores e a palavra-"
 "passe são alterados em Definições → Contas online."
-
-msgid "Display name"
-msgstr "Nome de apresentação"
 
 #. The nickname names the account in the sidebar and lists, the
 #. address standing in while there is none (owner, 2026-11-08).

@@ -5385,20 +5385,21 @@ msgid ""
 "each of them."
 msgstr ""
 
-msgid "Add your email account"
-msgstr "Adicione sua conta de email"
+#, fuzzy
+msgid "Email account"
+msgstr "Conta de email"
+
+msgid "Tegami Mail finds the servers of most providers from your address."
+msgstr ""
+
+msgid "Display name, servers, API token"
+msgstr ""
 
 msgid "Provider"
 msgstr "Provedor"
 
-msgid "Your name"
-msgstr "Seu nome"
-
-msgid "Server details"
-msgstr "Dados do servidor"
-
-msgid "Filled in for known providers"
-msgstr "Preenchidos para os provedores conhecidos"
+msgid "Display name"
+msgstr "Nome de exibição"
 
 msgid "IMAP server"
 msgstr "Servidor IMAP"
@@ -5421,18 +5422,16 @@ msgstr "URL do token"
 msgid "Scopes (space-separated)"
 msgstr "Escopos (separados por espaços)"
 
-msgid "Test & add"
-msgstr "Testar e adicionar"
-
 #, fuzzy
-msgid "Email account"
-msgstr "Conta de email"
+msgid "Test and add"
+msgstr "Testar e adicionar"
 
 msgid "Enter your email address, the client ID and both OAuth URLs first."
 msgstr ""
 "Digite primeiro seu endereço de email, o ID de cliente e ambas as URLs OAuth."
 
-msgid "Sign in & add"
+#, fuzzy
+msgid "Sign in and add"
 msgstr "Entrar e adicionar"
 
 msgid "Enter your email address and password first."
@@ -5441,17 +5440,11 @@ msgstr "Digite primeiro seu endereço de email e a senha."
 msgid "Checking the connection…"
 msgstr "Verificando a conexão…"
 
-msgid "✓ {email} — connected and added"
-msgstr "✓ {email} — conectado e adicionado"
-
 msgid "{email} — mail server: {e}"
 msgstr "{email} — servidor de email: {e}"
 
 msgid "{email} — sending (SMTP): {e}"
 msgstr "{email} — envio (SMTP): {e}"
-
-msgid "✓ {email} — signed in and added"
-msgstr "✓ {email} — acesso concluído e conta adicionada"
 
 msgid "Welcome to Tegami Mail"
 msgstr "Bem-vindo ao Tegami Mail"
@@ -5826,9 +5819,6 @@ msgid ""
 msgstr ""
 "Gerenciada pelas Contas online do GNOME. O endereço, os servidores e a senha "
 "são alterados em Configurações → Contas online."
-
-msgid "Display name"
-msgstr "Nome de exibição"
 
 #. The nickname names the account in the sidebar and lists, the
 #. address standing in while there is none (owner, 2026-11-08).

@@ -5248,22 +5248,24 @@ msgstr "Aucun compte de messagerie n’a été trouvé dans Comptes en ligne."
 msgid ""
 "Tegami Mail found these accounts in GNOME Online Accounts. One click adds "
 "each of them."
-msgstr "Tegami Mail a trouvé ces comptes dans les Comptes en ligne de GNOME. Un seul geste suffit pour les ajouter."
+msgstr ""
+"Tegami Mail a trouvé ces comptes dans les Comptes en ligne de GNOME. Un seul "
+"geste suffit pour les ajouter."
 
-msgid "Add your email account"
-msgstr "Ajoutez votre compte e-mail"
+msgid "Email account"
+msgstr "Compte e-mail"
+
+msgid "Tegami Mail finds the servers of most providers from your address."
+msgstr "Tegami Mail trouve les serveurs de la plupart des fournisseurs à partir de votre adresse."
+
+msgid "Display name, servers, API token"
+msgstr "Nom affiché, serveurs, jeton d’API"
 
 msgid "Provider"
 msgstr "Fournisseur"
 
-msgid "Your name"
-msgstr "Votre nom"
-
-msgid "Server details"
-msgstr "Détails du serveur"
-
-msgid "Filled in for known providers"
-msgstr "Renseigné pour les fournisseurs connus"
+msgid "Display name"
+msgstr "Nom affiché"
 
 msgid "IMAP server"
 msgstr "Serveur IMAP"
@@ -5286,17 +5288,14 @@ msgstr "URL du jeton"
 msgid "Scopes (space-separated)"
 msgstr "Portées (séparées par des espaces)"
 
-msgid "Test & add"
+msgid "Test and add"
 msgstr "Tester et ajouter"
-
-msgid "Email account"
-msgstr "Compte e-mail"
 
 msgid "Enter your email address, the client ID and both OAuth URLs first."
 msgstr ""
 "Saisissez d’abord votre adresse e-mail, l’ID client et les deux URL OAuth."
 
-msgid "Sign in & add"
+msgid "Sign in and add"
 msgstr "Se connecter et ajouter"
 
 msgid "Enter your email address and password first."
@@ -5305,17 +5304,11 @@ msgstr "Saisissez d’abord votre adresse e-mail et votre mot de passe."
 msgid "Checking the connection…"
 msgstr "Vérification de la connexion…"
 
-msgid "✓ {email} — connected and added"
-msgstr "✓ {email} — connecté et ajouté"
-
 msgid "{email} — mail server: {e}"
 msgstr "{email} — serveur de courrier : {e}"
 
 msgid "{email} — sending (SMTP): {e}"
 msgstr "{email} — envoi (SMTP) : {e}"
-
-msgid "✓ {email} — signed in and added"
-msgstr "✓ {email} — connecté et ajouté"
 
 msgid "Welcome to Tegami Mail"
 msgstr "Bienvenue dans Tegami Mail"
@@ -5684,9 +5677,6 @@ msgid ""
 msgstr ""
 "Son adresse, ses serveurs et son mot de passe se modifient dans Paramètres → "
 "Comptes en ligne."
-
-msgid "Display name"
-msgstr "Nom affiché"
 
 #. The nickname names the account in the sidebar and lists, the
 #. address standing in while there is none (owner, 2026-11-08).
