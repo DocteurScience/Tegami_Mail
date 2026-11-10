@@ -133,6 +133,7 @@ Dernière mise à jour : 2026-11-02, après `40a6c7e`.
 | `17555af` | Audit, lot 3 bis : `chevrons_left` retiré (chevrons à droite, comme par défaut) — 17 sites du dessin de la barre latérale, le paramètre `inset` des constructeurs de lignes, `ROW_LEFT_INSET` et le CSS de la variante gauche. Fenêtre et rail identiques au pixel |
 | `bf7fddd` | Audit, lot 4 (application) : `start_fullscreen`, `metered_save_data`, `desktop_icons`, `remote_ahead` (#474, avec la file « ahead » du téléchargement, `fetch_ahead`, `markup_url`, `remote_urls`, le champ `ahead` de la sélection), `settings_open_accounts`, `tag_row_tint`, `link_browser` (#232, choix du navigateur), `list_search_open` (#446), `own_mailbox_face`, `contact_names` retirés. Fenêtre et recherche identiques au pixel |
 | `c572cfc` | Décision du propriétaire (2026-11-10) : « Supprimer du serveur… » ajouté au menu ⋯ des pièces jointes des cartes (en rouge, même confirmation, testé par clics) ; tiroir de pièces jointes retiré (`ui/attachment_drawer/`, `grab_pill.rs`, l'état du tiroir dans state.toml, `card_attachments`, `ScrollToAttachments`, les vignettes asynchrones) ; `previewable` passe dans `thumbnails.rs`. Fenêtre par défaut et conversation à pièces jointes identiques au pixel. Jeu d'icônes : le propriétaire hésite, recommandation de garder le jeu propre et de corriger DESIGN.md |
+| (ce commit) | DESIGN.md : les icônes sont le jeu Adwaita propre à l'appli, embarqué, quel que soit le thème du bureau (décision du propriétaire, 2026-11-10) |
 
 ## Décisions prises
 

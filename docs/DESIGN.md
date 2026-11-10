@@ -181,7 +181,8 @@ applications are built, not from a written rule:
 
 1. A setting exists only if people really differ and no default serves both.
 2. Follow the system rather than copy it: style, accent, fonts, text size,
-   language, date and time, sounds, browser, icons.
+   language, date and time, sounds, browser. Icons are the exception: the
+   application ships its own Adwaita symbolic set (see "Removed or moved").
 3. No layout settings: this document decides the layout.
 4. Troubleshooting tools are not preferences.
 5. One action in one place: nothing repeats a control that a menu of the
@@ -271,8 +272,11 @@ than one screen. Screens 22 to 48. The owner decided every removal below on
 All of these are features the app has today; the owner agreed to each.
 
 - Appearance: coloured themes (only light, dark, follow the system), the icon
-  gallery, the customizable toolbar, "This window opens to", text size and
-  icon set (they follow the system).
+  gallery, the customizable toolbar, "This window opens to", text size (it
+  follows the system) and icon set. The icons are the application's own
+  Adwaita symbolic set, bundled, whatever icon theme the desktop has: they
+  match the mockups, include the application's own glyphs, and cannot be
+  mixed with a third-party theme's (owner, 2026-11-10).
 - Reading: own font and colours (the system's document font, text size and high
   contrast apply), message cards and header options, find bar position,
   printing options, the actions palette in the cards.
@@ -570,8 +574,8 @@ Test each screen with the checklist from the HIG:
 - Whether a dark version of every screen is needed before the first release
   (the colours are named, so it should follow without drawing).
 - A tag's server keyword when two accented names collapse to the same atom.
-- The icons: the mockups use simple stroke icons. The application should use
-  libadwaita's symbolic icons of the same meaning.
+- The icons: the mockups use simple stroke icons. The application uses
+  libadwaita's symbolic icons of the same meaning, from its own bundle.
 - The application icon is a separate piece of work: see [ICON.md](ICON.md).
 
 ## Screens
