@@ -10,23 +10,13 @@ use crate::config;
 /// preference — the whole chrome, not just message content, which has its own
 /// setting.
 pub(super) fn apply_app_theme(theme: config::AppTheme) {
-    let scheme = if WIZARD_HOLDS_LIGHT.load(std::sync::atomic::Ordering::Relaxed) {
-        adw::ColorScheme::ForceLight
-    } else {
-        match theme {
-            config::AppTheme::System => adw::ColorScheme::Default,
-            config::AppTheme::Light => adw::ColorScheme::ForceLight,
-            config::AppTheme::Dark => adw::ColorScheme::ForceDark,
-        }
+    let scheme = match theme {
+        config::AppTheme::System => adw::ColorScheme::Default,
+        config::AppTheme::Light => adw::ColorScheme::ForceLight,
+        config::AppTheme::Dark => adw::ColorScheme::ForceDark,
     };
     adw::StyleManager::default().set_color_scheme(scheme);
 }
-
-/// Set while the welcome wizard is open. Its blue ground is designed for the
-/// light scheme only, and libadwaita has no per-window scheme, so the whole
-/// app is held light until the wizard closes.
-pub(super) static WIZARD_HOLDS_LIGHT: std::sync::atomic::AtomicBool =
-    std::sync::atomic::AtomicBool::new(false);
 
 /// Styles that branch on the color scheme, which static CSS cannot do: a
 /// dedicated provider (above the static stylesheet's priority) carries the

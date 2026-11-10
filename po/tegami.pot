@@ -4212,9 +4212,6 @@ msgstr ""
 msgid "Dark"
 msgstr ""
 
-msgid "System"
-msgstr ""
-
 msgid "Manually"
 msgstr ""
 
@@ -4843,28 +4840,79 @@ msgstr ""
 msgid "The sign-in window was closed."
 msgstr ""
 
+msgid "Import your online accounts"
+msgstr ""
+
+msgid ""
+"Mail accounts signed in under GNOME Settings → Online Accounts can be added "
+"here in one click. Google accounts are only supported through GNOME Online "
+"Accounts."
+msgstr ""
+
+msgid "No mail accounts were found in Online Accounts."
+msgstr ""
+
+msgid "Open Online Accounts…"
+msgstr ""
+
+msgid "Email account…"
+msgstr ""
+
+msgid "Continue"
+msgstr ""
+
+msgid "Add your accounts"
+msgstr ""
+
 msgid "Add"
 msgstr ""
 
-msgid "✓ {email} — added"
+msgid "Add your email account"
 msgstr ""
 
-msgid "Add another email account"
+msgid "Provider"
 msgstr ""
 
-msgid "Enter your email address, the client ID and both OAuth URLs first."
+msgid "Your name"
 msgstr ""
 
-msgid "Sign in & add"
+msgid "Server details"
 msgstr ""
 
-msgid "Test & add"
+msgid "Filled in for known providers"
 msgstr ""
 
 msgid "IMAP server"
 msgstr ""
 
 msgid "IMAP port"
+msgstr ""
+
+msgid "OAuth client ID"
+msgstr ""
+
+msgid "OAuth Client Secret (optional)"
+msgstr ""
+
+msgid "Authorization URL"
+msgstr ""
+
+msgid "Token URL"
+msgstr ""
+
+msgid "Scopes (space-separated)"
+msgstr ""
+
+msgid "Test & add"
+msgstr ""
+
+msgid "Email account"
+msgstr ""
+
+msgid "Enter your email address, the client ID and both OAuth URLs first."
+msgstr ""
+
+msgid "Sign in & add"
 msgstr ""
 
 msgid "Enter your email address and password first."
@@ -4885,150 +4933,26 @@ msgstr ""
 msgid "✓ {email} — signed in and added"
 msgstr ""
 
-msgid ""
-"A clean, fast home for your mail.\n"
-"Let's set things up — it takes about a minute."
-msgstr ""
-
-msgid "Language"
+msgid "Welcome to Tegami Mail"
 msgstr ""
 
 msgid ""
-"Choosing another language restarts Tegami Mail: it closes for a moment and "
-"this wizard comes back in that language."
+"Your mail, in one place, simply. Let’s start by connecting your first "
+"account."
 msgstr ""
 
 msgid "Get started"
 msgstr ""
 
-msgid "Import your online accounts"
+msgid "You’re all set"
+msgstr ""
+
+msgid "Start reading"
 msgstr ""
 
 msgid ""
-"Mail accounts signed in under GNOME Settings → Online Accounts can be added "
-"here in one click. Google accounts are only supported through GNOME Online "
-"Accounts."
-msgstr ""
-
-msgid "No mail accounts were found in Online Accounts."
-msgstr ""
-
-msgid "Open Online Accounts…"
-msgstr ""
-
-msgid "Scan again"
-msgstr ""
-
-msgid "Privacy, your way"
-msgstr ""
-
-msgid ""
-"Tegami Mail sends no telemetry, ever. These control what leaves your machine "
-"while you read."
-msgstr ""
-
-msgid "Block remote images"
-msgstr ""
-
-msgid "Stops senders tracking when and where you open mail"
-msgstr ""
-
-msgid "Fetch Gravatar portraits"
-msgstr ""
-
-msgid "Asks gravatar.com about each sender's address"
-msgstr ""
-
-msgid "Fetch sender logos"
-msgstr ""
-
-msgid "Looks up company icons for the message list"
-msgstr ""
-
-msgid "Show message content in notifications"
-msgstr ""
-
-msgid "Off keeps senders and subjects off the lock screen"
-msgstr ""
-
-msgid "Make it yours"
-msgstr ""
-
-msgid "A few popular choices — everything can be changed later in Settings."
-msgstr ""
-
-msgid "Preview lines"
-msgstr ""
-
-msgid "Message text shown under each subject"
-msgstr ""
-
-msgid "1 line"
-msgstr ""
-
-msgid "2 lines"
-msgstr ""
-
-msgid "Sender avatars"
-msgstr ""
-
-msgid "Colorful initials beside each message"
-msgstr ""
-
-msgid "Conversation view"
-msgstr ""
-
-msgid "Group messages into threads"
-msgstr ""
-
-msgid "You're all set"
-msgstr ""
-
-msgid ""
-"Enjoy! If you encounter an issue or have a feature request,\n"
-"please open an issue on our <a href=\"{url}\">Github</a>."
-msgstr ""
-
-msgid "Welcome to Tegami Mail"
-msgstr ""
-
-msgid "Add your email account"
-msgstr ""
-
-msgid "Provider"
-msgstr ""
-
-msgid "Your name"
-msgstr ""
-
-msgid "Server details"
-msgstr ""
-
-msgid "Filled in for known providers"
-msgstr ""
-
-msgid "OAuth client ID"
-msgstr ""
-
-msgid "OAuth Client Secret (optional)"
-msgstr ""
-
-msgid "Authorization URL"
-msgstr ""
-
-msgid "Token URL"
-msgstr ""
-
-msgid "Scopes (space-separated)"
-msgstr ""
-
-msgid "Continue"
-msgstr ""
-
-msgid "Finish"
-msgstr ""
-
-msgid "Skip"
+"Tegami Mail is fetching the mail of {email}. It will appear in a moment. You "
+"can adjust the rest in the preferences."
 msgstr ""
 
 msgid ""

@@ -47,6 +47,7 @@ mod tool_flow;
 mod translation_page;
 mod web_signin;
 pub(crate) mod welcome;
+pub(crate) mod wordmark;
 
 /// Give a Refresh button its face for the network's state: orange, with a
 /// tooltip that says why, while the network is down (#442). The header's, the

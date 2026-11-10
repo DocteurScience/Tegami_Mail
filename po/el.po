@@ -4716,9 +4716,6 @@ msgstr "Φωτεινό"
 msgid "Dark"
 msgstr "Σκοτεινό"
 
-msgid "System"
-msgstr "Σύστημα"
-
 msgid "Manually"
 msgstr "Χειροκίνητα"
 
@@ -5410,70 +5407,6 @@ msgstr "Σύνδεση"
 msgid "The sign-in window was closed."
 msgstr "Το παράθυρο σύνδεσης έκλεισε."
 
-msgid "Add"
-msgstr "Προσθήκη"
-
-msgid "✓ {email} — added"
-msgstr "✓ {email} — προστέθηκε"
-
-msgid "Add another email account"
-msgstr "Προσθήκη άλλου λογαριασμού email"
-
-msgid "Enter your email address, the client ID and both OAuth URLs first."
-msgstr ""
-"Εισαγάγετε πρώτα τη διεύθυνση email σας, το αναγνωριστικό πελάτη και τα δύο "
-"URL OAuth."
-
-msgid "Sign in & add"
-msgstr "Σύνδεση και προσθήκη"
-
-msgid "Test & add"
-msgstr "Δοκιμή και προσθήκη"
-
-msgid "IMAP server"
-msgstr "Διακομιστής IMAP"
-
-msgid "IMAP port"
-msgstr "Θύρα IMAP"
-
-msgid "Enter your email address and password first."
-msgstr "Εισαγάγετε πρώτα τη διεύθυνση email και τον κωδικό πρόσβασής σας."
-
-msgid "Checking the connection…"
-msgstr "Έλεγχος σύνδεσης…"
-
-msgid "✓ {email} — connected and added"
-msgstr "✓ {email} — συνδέθηκε και προστέθηκε"
-
-msgid "{email} — mail server: {e}"
-msgstr "{email} — διακομιστής αλληλογραφίας: {e}"
-
-msgid "{email} — sending (SMTP): {e}"
-msgstr "{email} — αποστολή (SMTP): {e}"
-
-msgid "✓ {email} — signed in and added"
-msgstr "✓ {email} — συνδέθηκε και προστέθηκε"
-
-msgid ""
-"A clean, fast home for your mail.\n"
-"Let's set things up — it takes about a minute."
-msgstr ""
-"Ένα καθαρό, γρήγορο σπίτι για την αλληλογραφία σας.\n"
-"Ας το ρυθμίσουμε — χρειάζεται περίπου ένα λεπτό."
-
-msgid "Language"
-msgstr "Γλώσσα"
-
-msgid ""
-"Choosing another language restarts Tegami Mail: it closes for a moment and "
-"this wizard comes back in that language."
-msgstr ""
-"Η επιλογή άλλης γλώσσας επανεκκινεί το Tegami Mail: κλείνει για λίγο και "
-"αυτός ο οδηγός επιστρέφει σε εκείνη τη γλώσσα."
-
-msgid "Get started"
-msgstr "Έναρξη"
-
 msgid "Import your online accounts"
 msgstr "Εισαγωγή των διαδικτυακών λογαριασμών σας"
 
@@ -5494,91 +5427,19 @@ msgstr ""
 msgid "Open Online Accounts…"
 msgstr "Άνοιγμα Διαδικτυακών λογαριασμών…"
 
-msgid "Scan again"
-msgstr "Νέα σάρωση"
+#, fuzzy
+msgid "Email account…"
+msgstr "Λογαριασμός αλληλογραφίας"
 
-msgid "Privacy, your way"
-msgstr "Απόρρητο όπως το θέλετε"
+msgid "Continue"
+msgstr "Συνέχεια"
 
-msgid ""
-"Tegami Mail sends no telemetry, ever. These control what leaves your machine "
-"while you read."
-msgstr ""
-"Το Tegami Mail δεν στέλνει ποτέ τηλεμετρία. Αυτές οι επιλογές ελέγχουν τι "
-"φεύγει από τη συσκευή σας ενώ διαβάζετε."
+#, fuzzy
+msgid "Add your accounts"
+msgstr "Προσθήκη λογαριασμού cloud"
 
-msgid "Block remote images"
-msgstr "Αποκλεισμός απομακρυσμένων εικόνων"
-
-msgid "Stops senders tracking when and where you open mail"
-msgstr ""
-"Εμποδίζει τους αποστολείς να παρακολουθούν πότε και πού ανοίγετε την "
-"αλληλογραφία"
-
-msgid "Fetch Gravatar portraits"
-msgstr "Ανάκτηση εικόνων Gravatar"
-
-msgid "Asks gravatar.com about each sender's address"
-msgstr "Ρωτά το gravatar.com για τη διεύθυνση κάθε αποστολέα"
-
-msgid "Fetch sender logos"
-msgstr "Ανάκτηση λογοτύπων αποστολέων"
-
-msgid "Looks up company icons for the message list"
-msgstr "Αναζητά εταιρικά εικονίδια για τη λίστα μηνυμάτων"
-
-msgid "Show message content in notifications"
-msgstr "Εμφάνιση περιεχομένου μηνυμάτων στις ειδοποιήσεις"
-
-msgid "Off keeps senders and subjects off the lock screen"
-msgstr ""
-"Όταν είναι απενεργοποιημένο, οι αποστολείς και τα θέματα δεν εμφανίζονται "
-"στην οθόνη κλειδώματος"
-
-msgid "Make it yours"
-msgstr "Κάντε το δικό σας"
-
-msgid "A few popular choices — everything can be changed later in Settings."
-msgstr ""
-"Μερικές δημοφιλείς επιλογές — όλα μπορούν να αλλάξουν αργότερα στις "
-"Ρυθμίσεις."
-
-msgid "Preview lines"
-msgstr "Γραμμές προεπισκόπησης"
-
-msgid "Message text shown under each subject"
-msgstr "Κείμενο μηνύματος που εμφανίζεται κάτω από κάθε θέμα"
-
-msgid "1 line"
-msgstr "1 γραμμή"
-
-msgid "2 lines"
-msgstr "2 γραμμές"
-
-msgid "Sender avatars"
-msgstr "Εικόνες αποστολέων"
-
-msgid "Colorful initials beside each message"
-msgstr "Πολύχρωμα αρχικά δίπλα σε κάθε μήνυμα"
-
-msgid "Conversation view"
-msgstr "Προβολή συζητήσεων"
-
-msgid "Group messages into threads"
-msgstr "Ομαδοποίηση μηνυμάτων σε νήματα"
-
-msgid "You're all set"
-msgstr "Είστε έτοιμοι"
-
-msgid ""
-"Enjoy! If you encounter an issue or have a feature request,\n"
-"please open an issue on our <a href=\"{url}\">Github</a>."
-msgstr ""
-"Καλή χρήση! Αν αντιμετωπίσετε κάποιο πρόβλημα ή έχετε πρόταση λειτουργίας,\n"
-"ανοίξτε ένα ζήτημα στο <a href=\"{url}\">Github</a> μας."
-
-msgid "Welcome to Tegami Mail"
-msgstr "Καλώς ορίσατε στο Tegami Mail"
+msgid "Add"
+msgstr "Προσθήκη"
 
 msgid "Add your email account"
 msgstr "Προσθέστε τον λογαριασμό email σας"
@@ -5595,6 +5456,12 @@ msgstr "Στοιχεία διακομιστή"
 msgid "Filled in for known providers"
 msgstr "Συμπληρώνονται για γνωστούς παρόχους"
 
+msgid "IMAP server"
+msgstr "Διακομιστής IMAP"
+
+msgid "IMAP port"
+msgstr "Θύρα IMAP"
+
 msgid "OAuth client ID"
 msgstr "Αναγνωριστικό πελάτη OAuth"
 
@@ -5610,14 +5477,62 @@ msgstr "URL διακριτικού"
 msgid "Scopes (space-separated)"
 msgstr "Πεδία πρόσβασης (χωρισμένα με κενά)"
 
-msgid "Continue"
-msgstr "Συνέχεια"
+msgid "Test & add"
+msgstr "Δοκιμή και προσθήκη"
 
-msgid "Finish"
-msgstr "Ολοκλήρωση"
+#, fuzzy
+msgid "Email account"
+msgstr "Λογαριασμός αλληλογραφίας"
 
-msgid "Skip"
-msgstr "Παράλειψη"
+msgid "Enter your email address, the client ID and both OAuth URLs first."
+msgstr ""
+"Εισαγάγετε πρώτα τη διεύθυνση email σας, το αναγνωριστικό πελάτη και τα δύο "
+"URL OAuth."
+
+msgid "Sign in & add"
+msgstr "Σύνδεση και προσθήκη"
+
+msgid "Enter your email address and password first."
+msgstr "Εισαγάγετε πρώτα τη διεύθυνση email και τον κωδικό πρόσβασής σας."
+
+msgid "Checking the connection…"
+msgstr "Έλεγχος σύνδεσης…"
+
+msgid "✓ {email} — connected and added"
+msgstr "✓ {email} — συνδέθηκε και προστέθηκε"
+
+msgid "{email} — mail server: {e}"
+msgstr "{email} — διακομιστής αλληλογραφίας: {e}"
+
+msgid "{email} — sending (SMTP): {e}"
+msgstr "{email} — αποστολή (SMTP): {e}"
+
+msgid "✓ {email} — signed in and added"
+msgstr "✓ {email} — συνδέθηκε και προστέθηκε"
+
+msgid "Welcome to Tegami Mail"
+msgstr "Καλώς ορίσατε στο Tegami Mail"
+
+msgid ""
+"Your mail, in one place, simply. Let’s start by connecting your first "
+"account."
+msgstr ""
+
+msgid "Get started"
+msgstr "Έναρξη"
+
+#, fuzzy
+msgid "You’re all set"
+msgstr "Είστε έτοιμοι"
+
+#, fuzzy
+msgid "Start reading"
+msgstr "Με αστέρι"
+
+msgid ""
+"Tegami Mail is fetching the mail of {email}. It will appear in a moment. You "
+"can adjust the rest in the preferences."
+msgstr ""
 
 msgid ""
 "Offline: there is no network connection. Mail syncs again once the network "

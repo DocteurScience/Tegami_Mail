@@ -166,9 +166,6 @@ modules:
       - install -Dm644 data/icons/hicolor/512x512/apps/io.github.DocteurScience.TegamiMail.png /app/share/icons/hicolor/512x512/apps/io.github.DocteurScience.TegamiMail.png
       - install -Dm644 data/icons/hicolor/scalable/apps/io.github.DocteurScience.TegamiMail.svg /app/share/icons/hicolor/scalable/apps/io.github.DocteurScience.TegamiMail.svg
       - install -Dm644 data/icons/hicolor/symbolic/apps/io.github.DocteurScience.TegamiMail-symbolic.svg /app/share/icons/hicolor/symbolic/apps/io.github.DocteurScience.TegamiMail-symbolic.svg
-      # The restart helper's D-Bus service (Settings → App icon → Restart Now):
-      # exported by Flatpak, so the bus can start a fresh sandbox instance.
-      - install -Dm644 data/io.github.DocteurScience.TegamiMail.Restart.service /app/share/dbus-1/services/io.github.DocteurScience.TegamiMail.Restart.service
       # WebKit's fonts for a host whose own fonts hang it (#296): used only
       # once a probe page has shown the fallback is what loads.
       - install -Dm644 data/fontconfig/fallback.conf /app/share/tegami/fontconfig/fallback.conf

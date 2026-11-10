@@ -9,55 +9,6 @@ pub(super) const APP_THEMES: &[(&str, AppTheme)] = &[
     (i18n_noop("Dark"), AppTheme::Dark),
 ];
 
-/// The Language row's choices: (label, locale code). The system's own
-/// first, then English (the source language), then every catalogue in
-/// po/LINGUAS by its own name (#179).
-pub(crate) fn language_choices() -> Vec<(String, String)> {
-    let mut out = vec![
-        (i18n("System"), String::new()),
-        ("English".to_string(), "en".to_string()),
-    ];
-    for code in include_str!("../../../po/LINGUAS").lines() {
-        let code = code.trim();
-        if code.is_empty() || code.starts_with('#') || code == "en" {
-            continue;
-        }
-        out.push((native_language_name(code).to_string(), code.to_string()));
-    }
-    out
-}
-
-/// A language's name in itself, for the Language row.
-fn native_language_name(code: &str) -> &str {
-    match code {
-        "ca" => "Català",
-        "fr" => "Français",
-        "el" => "Ελληνικά",
-        "hu" => "Magyar",
-        "ru" => "Русский",
-        "de" => "Deutsch",
-        "es" => "Español",
-        "it" => "Italiano",
-        "pt" => "Português",
-        "pt_PT" => "Português (Portugal)",
-        "pt_BR" => "Português (Brasil)",
-        "nl" => "Nederlands",
-        "pl" => "Polski",
-        "cs" => "Čeština",
-        "sv" => "Svenska",
-        "da" => "Dansk",
-        "nb" | "no" => "Norsk",
-        "fi" => "Suomi",
-        "tr" => "Türkçe",
-        "uk" => "Українська",
-        "ja" => "日本語",
-        "zh_CN" => "简体中文",
-        "zh_TW" => "繁體中文",
-        "ko" => "한국어",
-        other => other,
-    }
-}
-
 /// Selectable mail-check intervals (label, seconds). 0 = manual only.
 pub(super) const FETCH_INTERVALS: &[(&str, u64)] = &[
     (i18n_noop("Manually"), 0),
@@ -218,32 +169,6 @@ pub(super) fn signature_position_at(idx: u32) -> crate::config::SignaturePositio
 #[cfg(test)]
 mod tests {
     use super::*;
-
-    #[test]
-    fn language_choices_start_with_system_and_english_then_linguas() {
-        let choices = language_choices();
-        assert_eq!(choices[0], ("System".to_string(), String::new()));
-        assert_eq!(choices[1], ("English".to_string(), "en".to_string()));
-        let codes: Vec<&str> = include_str!("../../../po/LINGUAS")
-            .lines()
-            .map(str::trim)
-            .filter(|c| !c.is_empty() && !c.starts_with('#') && *c != "en")
-            .collect();
-        let listed: Vec<&str> = choices[2..].iter().map(|(_, c)| c.as_str()).collect();
-        assert_eq!(listed, codes);
-        for (name, code) in &choices[2..] {
-            assert_eq!(name, native_language_name(code));
-        }
-    }
-
-    #[test]
-    fn languages_are_named_in_themselves() {
-        assert_eq!(native_language_name("fr"), "Français");
-        assert_eq!(native_language_name("pt_BR"), "Português (Brasil)");
-        assert_eq!(native_language_name("nb"), "Norsk");
-        assert_eq!(native_language_name("no"), "Norsk");
-        assert_eq!(native_language_name("xx"), "xx");
-    }
 
     #[test]
     fn files_choices_map_to_combo_rows() {

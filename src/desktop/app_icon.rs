@@ -8,17 +8,13 @@
 //! (`~/.local/share/icons/hicolor`) are cleared and the launcher is pointed
 //! back at the shipped icon, unless somebody set an icon on it outside
 //! Tegami Mail (#252).
-//!
-//! The restart helper lives here too: the wizard's language change uses it.
 
 use std::path::PathBuf;
 
 mod launcher;
-mod restart;
 
 pub(crate) use launcher::sync_mime_cache;
 use launcher::Launcher;
-pub(crate) use restart::{launch_restart_helper, run_restart_helper, RESTART_FLAG};
 
 /// The name the shipped icon is written under where the launcher needs a
 /// file of its own (see [`apply`]).

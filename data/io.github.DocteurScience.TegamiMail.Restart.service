@@ -1,6 +1,0 @@
-# Restart helper (src/desktop/app_icon.rs): activating this name starts a fresh
-# sandbox instance that waits for the running app to quit, then becomes the
-# new one. Flatpak rewrites Exec to `flatpak run … --command=tegami` on export.
-[D-BUS Service]
-Name=io.github.DocteurScience.TegamiMail.Restart
-Exec=/app/bin/tegami --restart-helper

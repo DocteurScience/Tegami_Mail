@@ -5,16 +5,13 @@ use std::path::PathBuf;
 
 use super::config_file;
 
-/// The interface language the user chose in Settings, as a locale code
-/// ("fr", "en"); empty = the system's own (#179). Its own small file
+/// The interface language chosen in an earlier version, as a locale code
+/// ("fr", "en"); empty = the system's own (#179). Nothing sets it any
+/// more (the language is the system's), but a stored choice still applies. Its own small file
 /// rather than a preference in privacy.toml: it is read before anything
 /// else starts, when no TOML has been parsed yet.
 pub(crate) fn load_language() -> String {
     read_line_file(language_path())
-}
-
-pub(crate) fn save_language(lang: &str) {
-    write_line_file(language_path(), lang);
 }
 
 /// How GTK draws the windows (#403): empty for GTK's own choice, else a
@@ -40,7 +37,9 @@ fn read_line_file(path: Option<PathBuf>) -> String {
 }
 
 /// Writes `value`, trimmed, as the file's one line; a blank value removes
-/// the file. Best effort: a failure leaves the file as it was.
+/// the file. Best effort: a failure leaves the file as it was. Only the
+/// tests write: the files are left from earlier versions or by hand.
+#[cfg(test)]
 fn write_line_file(path: Option<PathBuf>, value: &str) {
     let Some(path) = path else { return };
     if let Some(dir) = path.parent() {

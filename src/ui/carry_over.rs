@@ -34,9 +34,9 @@ pub(crate) fn show(parent: &impl IsA<gtk::Window>, from: &'static Predecessor) {
     dialog.set_size_request(480, -1);
 
     let content = gtk::Box::new(gtk::Orientation::Vertical, 10);
-    let wm_pic = crate::ui::welcome::wordmark_picture(120);
+    let wm_pic = crate::ui::wordmark::wordmark_picture(120);
     let wm_frame = gtk::Box::new(gtk::Orientation::Vertical, 0);
-    wm_frame.set_size_request(120, crate::ui::welcome::wordmark_height(120.0));
+    wm_frame.set_size_request(120, crate::ui::wordmark::wordmark_height(120.0));
     let wm = gtk::Overlay::new();
     wm.set_child(Some(&wm_frame));
     wm.add_overlay(&wm_pic);

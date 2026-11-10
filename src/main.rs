@@ -54,10 +54,6 @@ static ALLOCATOR: desktop::memory_report::CountingAllocator =
 /// Command-line flag for starting without a window (used by the autostart entry
 /// the background portal writes).
 const HIDDEN_FLAG: &str = "--hidden";
-/// Set in the environment before the restart the welcome wizard's language
-/// pick asks for, so the instance that comes back opens the wizard again
-/// (the restart helper keeps it; app init clears it).
-const WIZARD_AGAIN_VAR: &str = "TEGAMI_WIZARD_AGAIN";
 
 /// Whether this run started hidden. Read once the UI is built, to keep the first
 /// activation from presenting the window that was deliberately not shown.
@@ -101,12 +97,6 @@ fn main() {
     // is shown, and the locale set before GTK sets its own.
     i18n::init();
     init_tracing();
-
-    // The restart helper (see app_icon.rs) never builds a UI: it waits for
-    // the running instance to leave, then becomes the new one.
-    if std::env::args().any(|a| a == desktop::app_icon::RESTART_FLAG) {
-        desktop::app_icon::run_restart_helper();
-    }
 
     desktop::legacy::migrate_dirs();
     desktop::legacy::tidy_host();

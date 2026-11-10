@@ -53,13 +53,13 @@ fn about_identity(page: &gtk::Box) {
     // Identity block: the wordmark with the app icon beside it,
     // wizard-style. Same Overlay-with-spacer cap as the wizard: a
     // Picture's texture wins over both width requests and clamps.
-    use crate::ui::welcome::Wordmark;
+    use crate::ui::wordmark::Wordmark;
     const ABOUT_WORDMARK: i32 = 180;
-    let wm_pic = crate::ui::welcome::wordmark_picture_of(Wordmark::WithIcon, ABOUT_WORDMARK);
+    let wm_pic = crate::ui::wordmark::wordmark_picture_of(Wordmark::WithIcon, ABOUT_WORDMARK);
     let wm_frame = gtk::Box::new(gtk::Orientation::Vertical, 0);
     wm_frame.set_size_request(
         ABOUT_WORDMARK,
-        crate::ui::welcome::wordmark_height_of(Wordmark::WithIcon, f64::from(ABOUT_WORDMARK)),
+        crate::ui::wordmark::wordmark_height_of(Wordmark::WithIcon, f64::from(ABOUT_WORDMARK)),
     );
     let wm = gtk::Overlay::new();
     wm.set_child(Some(&wm_frame));

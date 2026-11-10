@@ -1,54 +1,28 @@
-//! Moving through the wizard: the language, Next and Back, and finishing.
+//! Moving through the wizard: forward with its buttons, back with the
+//! header bar's, and out.
 
 use super::*;
 
 impl Welcome {
-    pub(super) fn on_language_changed(&mut self, i: u32, sender: ComponentSender<Self>) {
-        if let Some((_, code)) = crate::ui::preferences::language_choices().get(i as usize) {
-            let _ = sender.output(WelcomeOutput::Language(code.clone()));
-        }
+    pub(super) fn on_start(&mut self, widgets: &WelcomeWidgets) {
+        widgets.nav.push(&widgets.accounts.page);
     }
 
-    pub(super) fn on_next(&mut self, widgets: &WelcomeWidgets, sender: ComponentSender<Self>) {
-        // position() is fractional mid-scroll; round to the page the
-        // user sees as current, so rapid clicks don't repeat a page.
-        let pos = widgets.carousel.position().round() as u32;
-        if pos + 1 >= widgets.carousel.n_pages() {
-            // The footer button on the last page is Finish.
-            sender.input_sender().emit(WelcomeInput::Finish);
-            return;
-        }
-        let next = widgets.carousel.nth_page(pos + 1);
-        widgets.carousel.scroll_to(&next, true);
-        widgets.back_btn.set_visible(true);
+    pub(super) fn on_open_form(&mut self, widgets: &WelcomeWidgets) {
+        widgets.nav.push(&widgets.form.page);
     }
 
-    pub(super) fn on_back(&mut self, widgets: &WelcomeWidgets) {
-        let pos = widgets.carousel.position().round() as usize;
-        if pos > 0 {
-            let prev = widgets.carousel.nth_page(pos as u32 - 1);
-            widgets.carousel.scroll_to(&prev, true);
-            widgets.back_btn.set_visible(pos > 1);
+    /// "Continue": the last page names an account, so with none added the
+    /// wizard simply closes, on the main window's empty state.
+    pub(super) fn on_continue(&mut self, widgets: &WelcomeWidgets, root: &adw::Window) {
+        if self.added.is_empty() {
+            root.close();
+        } else {
+            widgets.done_text.set_text(&i18n_f(
+                "Tegami Mail is fetching the mail of {email}. It will appear in a moment. You can adjust the rest in the preferences.",
+                &[("email", &self.added[0])],
+            ));
+            widgets.nav.push(&widgets.done);
         }
-    }
-
-    pub(super) fn on_finish(
-        &mut self,
-        widgets: &WelcomeWidgets,
-        sender: ComponentSender<Self>,
-        root: &adw::Window,
-    ) {
-        let prefs = WelcomePrefs {
-            block_remote: widgets.sw_remote.is_active(),
-            gravatar: widgets.sw_gravatar.is_active(),
-            sender_logos: widgets.sw_logos.is_active(),
-            notification_content: widgets.sw_notif.is_active(),
-            preview_lines: widgets.preview_row.selected(),
-            avatars: widgets.sw_avatars.is_active(),
-            threading: widgets.sw_threading.is_active(),
-        };
-        let _ = sender.output(WelcomeOutput::Prefs(prefs));
-        let _ = sender.output(WelcomeOutput::Done);
-        root.close();
     }
 }

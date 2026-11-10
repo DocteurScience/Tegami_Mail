@@ -4848,9 +4848,6 @@ msgstr "Светлая"
 msgid "Dark"
 msgstr "Тёмная"
 
-msgid "System"
-msgstr "Система"
-
 msgid "Manually"
 msgstr "Вручную"
 
@@ -5547,14 +5544,80 @@ msgstr "Войти"
 msgid "The sign-in window was closed."
 msgstr "Окно входа было закрыто."
 
+msgid "Import your online accounts"
+msgstr "Импортировать сетевые учётные записи"
+
+msgid ""
+"Mail accounts signed in under GNOME Settings → Online Accounts can be added "
+"here in one click. Google accounts are only supported through GNOME Online "
+"Accounts."
+msgstr ""
+"Почтовые учётные записи, подключённые в меню «Параметры GNOME → Сетевые "
+"учётные записи», можно добавить отсюда в один клик. Учётные записи Google "
+"поддерживаются только через «Сетевые учётные записи GNOME»."
+
+msgid "No mail accounts were found in Online Accounts."
+msgstr "В «Сетевых учётных записях» не найдено почтовых аккаунтов."
+
+msgid "Open Online Accounts…"
+msgstr "Открыть «Сетевые учётные записи»…"
+
+#, fuzzy
+msgid "Email account…"
+msgstr "Почтовая учётная запись"
+
+msgid "Continue"
+msgstr "Продолжить"
+
+#, fuzzy
+msgid "Add your accounts"
+msgstr "Добавить облачную учётную запись"
+
 msgid "Add"
 msgstr "Добавить"
 
-msgid "✓ {email} — added"
-msgstr "✓ {email} — добавлено"
+msgid "Add your email account"
+msgstr "Добавление учётной записи электронной почты"
 
-msgid "Add another email account"
-msgstr "Добавить ещё одну учётную запись"
+msgid "Provider"
+msgstr "Провайдер"
+
+msgid "Your name"
+msgstr "Ваше имя"
+
+msgid "Server details"
+msgstr "Данные сервера"
+
+msgid "Filled in for known providers"
+msgstr "Заполняется автоматически для известных провайдеров"
+
+msgid "IMAP server"
+msgstr "Сервер IMAP"
+
+msgid "IMAP port"
+msgstr "Порт IMAP"
+
+msgid "OAuth client ID"
+msgstr "Идентификатор клиента OAuth (Client ID)"
+
+msgid "OAuth Client Secret (optional)"
+msgstr "Секретный ключ клиента OAuth (Client Secret, необязательно)"
+
+msgid "Authorization URL"
+msgstr "URL авторизации"
+
+msgid "Token URL"
+msgstr "URL токена"
+
+msgid "Scopes (space-separated)"
+msgstr "Области доступа (через пробел)"
+
+msgid "Test & add"
+msgstr "Проверить и добавить"
+
+#, fuzzy
+msgid "Email account"
+msgstr "Почтовая учётная запись"
 
 msgid "Enter your email address, the client ID and both OAuth URLs first."
 msgstr ""
@@ -5563,15 +5626,6 @@ msgstr ""
 
 msgid "Sign in & add"
 msgstr "Войти и добавить"
-
-msgid "Test & add"
-msgstr "Проверить и добавить"
-
-msgid "IMAP server"
-msgstr "Сервер IMAP"
-
-msgid "IMAP port"
-msgstr "Порт IMAP"
 
 msgid "Enter your email address and password first."
 msgstr "Сначала введите адрес электронной почты и пароль."
@@ -5591,163 +5645,29 @@ msgstr "{email} — отправка (SMTP): {e}"
 msgid "✓ {email} — signed in and added"
 msgstr "✓ {email} — авторизовано и добавлено"
 
-msgid ""
-"A clean, fast home for your mail.\n"
-"Let's set things up — it takes about a minute."
-msgstr ""
-"Простой и быстрый почтовый клиент.\n"
-"Давайте всё настроим — это займёт около минуты."
-
-msgid "Language"
-msgstr "Язык"
+msgid "Welcome to Tegami Mail"
+msgstr "Добро пожаловать в Tegami Mail"
 
 msgid ""
-"Choosing another language restarts Tegami Mail: it closes for a moment and "
-"this wizard comes back in that language."
+"Your mail, in one place, simply. Let’s start by connecting your first "
+"account."
 msgstr ""
-"При выборе другого языка Tegami Mail перезапустится: приложение закроется на "
-"секунду и этот мастер настройки откроется на выбранном языке."
 
 msgid "Get started"
 msgstr "Перейти к почте"
 
-msgid "Import your online accounts"
-msgstr "Импортировать сетевые учётные записи"
-
-msgid ""
-"Mail accounts signed in under GNOME Settings → Online Accounts can be added "
-"here in one click. Google accounts are only supported through GNOME Online "
-"Accounts."
-msgstr ""
-"Почтовые учётные записи, подключённые в меню «Параметры GNOME → Сетевые "
-"учётные записи», можно добавить отсюда в один клик. Учётные записи Google "
-"поддерживаются только через «Сетевые учётные записи GNOME»."
-
-msgid "No mail accounts were found in Online Accounts."
-msgstr "В «Сетевых учётных записях» не найдено почтовых аккаунтов."
-
-msgid "Open Online Accounts…"
-msgstr "Открыть «Сетевые учётные записи»…"
-
-msgid "Scan again"
-msgstr "Повторить поиск"
-
-msgid "Privacy, your way"
-msgstr "Конфиденциальность под вашим контролем"
-
-msgid ""
-"Tegami Mail sends no telemetry, ever. These control what leaves your machine "
-"while you read."
-msgstr ""
-"Tegami Mail никогда не отправляет телеметрию. Эти параметры определяют, "
-"какие данные передаются с вашего устройства при чтении."
-
-msgid "Block remote images"
-msgstr "Блокировать удалённые изображения"
-
-msgid "Stops senders tracking when and where you open mail"
-msgstr "Запрещает отправителям отслеживать время и место открытия писем"
-
-msgid "Fetch Gravatar portraits"
-msgstr "Загружать аватары Gravatar"
-
-msgid "Asks gravatar.com about each sender's address"
-msgstr "Запрашивает информацию у gravatar.com для каждого адреса отправителя"
-
-msgid "Fetch sender logos"
-msgstr "Загружать логотипы отправителей"
-
-msgid "Looks up company icons for the message list"
-msgstr "Ищет иконки компаний для отображения в списке сообщений"
-
-msgid "Show message content in notifications"
-msgstr "Показывать содержимое писем в уведомлениях"
-
-msgid "Off keeps senders and subjects off the lock screen"
-msgstr "При отключении скрывает имена отправителей и темы на экране блокировки"
-
-msgid "Make it yours"
-msgstr "Персонализация"
-
-msgid "A few popular choices — everything can be changed later in Settings."
-msgstr "Популярные параметры — всё это можно изменить позже в Параметрах."
-
-msgid "Preview lines"
-msgstr "Строки предпросмотра"
-
-msgid "Message text shown under each subject"
-msgstr "Текст письма, отображаемый под его темой"
-
-msgid "1 line"
-msgstr "1 строка"
-
-msgid "2 lines"
-msgstr "2 строки"
-
-msgid "Sender avatars"
-msgstr "Аватары отправителей"
-
-msgid "Colorful initials beside each message"
-msgstr "Цветные инициалы рядом с каждым сообщением"
-
-msgid "Conversation view"
-msgstr "Режим обсуждения"
-
-msgid "Group messages into threads"
-msgstr "Группировать сообщения в цепочки"
-
-msgid "You're all set"
+#, fuzzy
+msgid "You’re all set"
 msgstr "Всё готово"
 
+#, fuzzy
+msgid "Start reading"
+msgstr "Отмеченные"
+
 msgid ""
-"Enjoy! If you encounter an issue or have a feature request,\n"
-"please open an issue on our <a href=\"{url}\">Github</a>."
+"Tegami Mail is fetching the mail of {email}. It will appear in a moment. You "
+"can adjust the rest in the preferences."
 msgstr ""
-"Приятного использования! Если вы столкнётесь с проблемой или захотите "
-"предложить новую функцию,\n"
-"пожалуйста, создайте обращение на нашем <a href=\"{url}\">GitHub</a>."
-
-msgid "Welcome to Tegami Mail"
-msgstr "Добро пожаловать в Tegami Mail"
-
-msgid "Add your email account"
-msgstr "Добавление учётной записи электронной почты"
-
-msgid "Provider"
-msgstr "Провайдер"
-
-msgid "Your name"
-msgstr "Ваше имя"
-
-msgid "Server details"
-msgstr "Данные сервера"
-
-msgid "Filled in for known providers"
-msgstr "Заполняется автоматически для известных провайдеров"
-
-msgid "OAuth client ID"
-msgstr "Идентификатор клиента OAuth (Client ID)"
-
-msgid "OAuth Client Secret (optional)"
-msgstr "Секретный ключ клиента OAuth (Client Secret, необязательно)"
-
-msgid "Authorization URL"
-msgstr "URL авторизации"
-
-msgid "Token URL"
-msgstr "URL токена"
-
-msgid "Scopes (space-separated)"
-msgstr "Области доступа (через пробел)"
-
-msgid "Continue"
-msgstr "Продолжить"
-
-msgid "Finish"
-msgstr "Завершить"
-
-msgid "Skip"
-msgstr "Пропустить"
 
 msgid ""
 "Offline: there is no network connection. Mail syncs again once the network "

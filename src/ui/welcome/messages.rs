@@ -3,33 +3,22 @@
 
 use super::*;
 
-/// The settings chosen on the privacy + personalize pages, applied by the app
-/// through its normal Set* handlers when the wizard finishes.
-#[derive(Debug, Clone)]
-pub(crate) struct WelcomePrefs {
-    pub(crate) block_remote: bool,
-    pub(crate) gravatar: bool,
-    pub(crate) sender_logos: bool,
-    pub(crate) notification_content: bool,
-    pub(crate) preview_lines: u32,
-    pub(crate) avatars: bool,
-    pub(crate) threading: bool,
-}
-
 #[derive(Debug)]
 pub(crate) enum WelcomeInput {
-    Next,
-    Back,
+    /// "Get started": on to the accounts.
+    Start,
+    /// "Email account…": the form.
+    OpenForm,
+    /// "Continue" on the accounts: the last page, or out when nothing was
+    /// added.
+    Continue,
     ProviderChanged,
     TestAndAdd,
     ImportGoa(usize),
+    /// The window came back to the front: Online Accounts may hold more now.
     RescanGoa,
     OpenOnlineAccounts,
-    /// The page or the manual form changed: relabel the footer button.
-    RefreshFooter,
     Finish,
-    /// The hero page's language drop-down moved to choice `n`.
-    LanguageChanged(u32),
 }
 
 #[derive(Debug)]
@@ -39,13 +28,6 @@ pub(crate) enum WelcomeOutput {
     AddAccount(Box<AccountConfig>),
     /// A GNOME Online Accounts import was chosen.
     ImportGoa(Box<AccountConfig>),
-    /// The chosen privacy/personalize settings (sent once, on finish).
-    Prefs(WelcomePrefs),
-    /// The wizard is done (window already closing).
-    Done,
-    /// A language was picked on the first page: its locale code, "" for
-    /// the system's. The app saves it and comes back in that language.
-    Language(String),
 }
 
 #[derive(Debug)]

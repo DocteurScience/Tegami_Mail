@@ -1,6 +1,61 @@
-//! The GNOME Online Accounts page: the accounts there to import.
+//! The accounts page: the GNOME Online Accounts mail accounts to add, and
+//! the other ways in.
 
 use super::*;
+
+/// The accounts page's widgets the wizard updates.
+pub(super) struct AccountsPage {
+    pub(super) page: adw::NavigationPage,
+    pub(super) list: gtk::ListBox,
+    pub(super) empty: gtk::Label,
+}
+
+pub(super) fn build_accounts_page(
+    model: &Welcome,
+    sender: &ComponentSender<Welcome>,
+) -> AccountsPage {
+    let col = column();
+    col.append(&heading(&i18n("Import your online accounts")));
+    col.append(&sentence(&i18n(
+        "Mail accounts signed in under GNOME Settings → Online Accounts can be added here in one click. Google accounts are only supported through GNOME Online Accounts.",
+    )));
+    let list = gtk::ListBox::new();
+    list.add_css_class("boxed-list");
+    list.set_selection_mode(gtk::SelectionMode::None);
+    list.set_margin_top(12);
+    list.set_visible(!model.goa.is_empty());
+    col.append(&list);
+    let empty = sentence(&i18n("No mail accounts were found in Online Accounts."));
+    empty.set_visible(model.goa.is_empty());
+    col.append(&empty);
+    let links = gtk::Box::new(gtk::Orientation::Horizontal, 12);
+    links.set_halign(gtk::Align::Center);
+    let open_goa = gtk::Button::with_label(&i18n("Open Online Accounts…"));
+    let manual = gtk::Button::with_label(&i18n("Email account…"));
+    for b in [&open_goa, &manual] {
+        b.add_css_class("pill");
+    }
+    {
+        let s = sender.clone();
+        open_goa.connect_clicked(move |_| s.input(WelcomeInput::OpenOnlineAccounts));
+        let s = sender.clone();
+        manual.connect_clicked(move |_| s.input(WelcomeInput::OpenForm));
+    }
+    links.append(&manual);
+    links.append(&open_goa);
+    col.append(&links);
+    let next = pill(&i18n("Continue"));
+    {
+        let s = sender.clone();
+        next.connect_clicked(move |_| s.input(WelcomeInput::Continue));
+    }
+    col.append(&next);
+    AccountsPage {
+        page: nav_page("accounts", &i18n("Add your accounts"), &col),
+        list,
+        empty,
+    }
+}
 
 pub(super) fn rebuild_goa_rows(
     list: &gtk::ListBox,
@@ -14,16 +69,11 @@ pub(super) fn rebuild_goa_rows(
         let row = adw::ActionRow::new();
         row.set_title(&g.email);
         row.set_subtitle(&g.provider);
-        row.add_prefix(&crate::desktop::brand::mark(
-            crate::ui::accounts::brand_for_goa(&g.provider),
-            24,
-            crate::desktop::brand::GENERIC_MAIL,
-        ));
         let btn = gtk::Button::with_label(&i18n("Add"));
         btn.add_css_class("suggested-action");
         btn.set_valign(gtk::Align::Center);
         let s = sender.clone();
-        btn.connect_clicked(move |_| s.input_sender().emit(WelcomeInput::ImportGoa(i)));
+        btn.connect_clicked(move |_| s.input(WelcomeInput::ImportGoa(i)));
         row.add_suffix(&btn);
         list.append(&row);
     }
@@ -50,22 +100,9 @@ impl Welcome {
             let account = g.to_config(password, oauth);
             self.added.push(account.email.clone());
             self.goa.remove(index);
-            widgets.goa_status.set_visible(true);
-            widgets
-                .goa_status
-                .set_css_classes(&["welcome-hint", "success"]);
-            widgets.goa_status.set_text(&i18n_f(
-                "✓ {email} — added",
-                &[("email", &(account.email).to_string())],
-            ));
             let _ = sender.output(WelcomeOutput::ImportGoa(Box::new(account)));
-            rebuild_goa_rows(&widgets.goa_list, &self.goa, &sender);
-            widgets.goa_list.set_visible(!self.goa.is_empty());
-            self.goa_imported = true;
-            self.refresh_footer(widgets);
-            widgets
-                .acct_title
-                .set_text(&i18n("Add another email account"));
+            rebuild_goa_rows(&widgets.accounts.list, &self.goa, &sender);
+            widgets.accounts.list.set_visible(!self.goa.is_empty());
         }
     }
 
@@ -77,11 +114,11 @@ impl Welcome {
         self.goa = crate::services::goa::list_mail_accounts();
         self.goa
             .retain(|g| g.can_connect() && !self.added.contains(&g.email));
-        rebuild_goa_rows(&widgets.goa_list, &self.goa, &sender);
-        widgets.goa_list.set_visible(!self.goa.is_empty());
-        // Everything found was added already: say so, not "none found".
+        rebuild_goa_rows(&widgets.accounts.list, &self.goa, &sender);
+        widgets.accounts.list.set_visible(!self.goa.is_empty());
         widgets
-            .goa_empty
+            .accounts
+            .empty
             .set_visible(self.goa.is_empty() && self.added.is_empty());
     }
 }

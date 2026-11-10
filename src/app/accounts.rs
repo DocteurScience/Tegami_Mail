@@ -6,13 +6,11 @@ use relm4::prelude::*;
 
 use crate::config::{self, AccountConfig};
 use crate::i18n::{i18n, i18n_f};
-use crate::ui::preferences::PrefOutput;
 
 use super::demo::demo_mode;
 use super::folders::apply_folder_roles;
 use super::model::AppModel;
 use super::msg::AppMsg;
-use super::theme::{apply_app_theme, WIZARD_HOLDS_LIGHT};
 
 /// Whether saving `new` over `old` changes only what the app itself draws
 /// or puts in the composer: the signature, the color, emoji or picture, the
@@ -205,26 +203,16 @@ impl AppModel {
                         account,
                     },
                     WelcomeOutput::ImportGoa(account) => AppMsg::ImportGoaAccount(account),
-                    WelcomeOutput::Prefs(p) => AppMsg::ApplyWelcomePrefs(p),
-                    WelcomeOutput::Done => AppMsg::PresentWindow,
-                    WelcomeOutput::Language(code) => AppMsg::WizardLanguage(code),
                 });
         welcome.widget().set_transient_for(Some(&self.window));
         welcome.widget().set_modal(true);
-        // Light only while it is up; the preference returns when it goes,
-        // however it goes (finished, closed, or replaced on a restart).
-        WIZARD_HOLDS_LIGHT.store(true, std::sync::atomic::Ordering::Relaxed);
-        apply_app_theme(self.app_theme);
-        welcome.widget().connect_unmap(|_| {
-            WIZARD_HOLDS_LIGHT.store(false, std::sync::atomic::Ordering::Relaxed);
-            apply_app_theme(config::load_privacy().app_theme);
-        });
         // On a true first run the main window stays hidden (see main.rs)
-        // until the wizard finishes — or is dismissed.
+        // until the wizard finishes or is dismissed, which are the same:
+        // either way it never opens again by itself.
         {
             let s = sender.clone();
             welcome.widget().connect_close_request(move |_| {
-                s.input(AppMsg::PresentWindow);
+                s.input(AppMsg::WelcomeDone);
                 gtk::glib::Propagation::Proceed
             });
         }
@@ -338,21 +326,9 @@ impl AppModel {
                 }
             }
 
-            AppMsg::ApplyWelcomePrefs(p) => {
+            AppMsg::WelcomeDone => {
                 config::mark_wizard_completed();
-                // Route every choice through its normal handler (each saves and
-                // updates the live UI); drop the wizard controller afterwards.
-                sender.input(AppMsg::Pref(PrefOutput::SetAutoRemoteContent(
-                    !p.block_remote,
-                )));
-                sender.input(AppMsg::Pref(PrefOutput::SetGravatar(p.gravatar)));
-                sender.input(AppMsg::Pref(PrefOutput::SetSenderLogos(p.sender_logos)));
-                sender.input(AppMsg::Pref(PrefOutput::SetNotificationContent(
-                    p.notification_content,
-                )));
-                sender.input(AppMsg::Pref(PrefOutput::SetPreviewLines(p.preview_lines)));
-                sender.input(AppMsg::Pref(PrefOutput::SetAvatars(p.avatars)));
-                sender.input(AppMsg::Pref(PrefOutput::SetThreading(p.threading)));
+                sender.input(AppMsg::PresentWindow);
                 self.welcome = None;
             }
 
@@ -687,21 +663,13 @@ impl AppModel {
     /// its empty state (the "Add first account" prompt) up front — and greet
     /// a first run with the welcome wizard (src/ui/welcome.rs).
     pub(super) fn open_wizard_if_needed(&mut self, sender: &ComponentSender<Self>) {
-        // A restart the wizard's language pick asked for: the wizard comes
-        // back once, whatever mode this is; the flag must not reach a
-        // later restart (the icon change's), so it is cleared here.
-        let wizard_again = std::env::var_os(crate::WIZARD_AGAIN_VAR).is_some();
-        if wizard_again {
-            std::env::remove_var(crate::WIZARD_AGAIN_VAR);
-        }
-        if self.config.is_empty() || std::env::var("TEGAMI_WELCOME").is_ok() || wizard_again {
+        if self.config.is_empty() || std::env::var("TEGAMI_WELCOME").is_ok() {
             self.rebuild_sidebar();
             // TEGAMI_WELCOME=1 forces the wizard over an existing config, for
             // design review and screenshots. A wizard already completed once
             // (Start Reading pressed, even with no account added) doesn't
             // come back on its own — a restart right after it must not loop.
             if std::env::var("TEGAMI_WELCOME").is_ok()
-                || wizard_again
                 || (!demo_mode() && !config::wizard_completed())
             {
                 self.open_wizard(sender);

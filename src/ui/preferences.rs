@@ -24,7 +24,6 @@ mod pages;
 mod rows;
 mod spelling;
 
-pub(crate) use choices::language_choices;
 use choices::{APP_THEMES, FETCH_INTERVALS, KEEP_DOWNLOADS_DAYS};
 pub(crate) use messages::{PrefInit, PrefInput, PrefOutput};
 use pages::{BackupPage, ComposingPage, KeptRows, PrivacyPage};

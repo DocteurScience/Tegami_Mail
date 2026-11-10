@@ -11,7 +11,6 @@ use crate::ui::sidebar::SidebarInput;
 
 use super::model::AppModel;
 use super::msg::AppMsg;
-use super::window::exit_now;
 
 mod indicator;
 
@@ -218,46 +217,8 @@ impl AppModel {
     }
 
     /// The messages the router sends here (see `AppModel::route`).
-    pub(super) fn on_tray(&mut self, msg: AppMsg, sender: ComponentSender<Self>) {
+    pub(super) fn on_tray(&mut self, msg: AppMsg, _sender: ComponentSender<Self>) {
         match msg {
-            AppMsg::WizardLanguage(code) => {
-                // The drop-down also notifies as it is set up; only a real
-                // change counts. Saved, then Tegami Mail restarts through the same
-                // helper the icon change uses, so every window — the wizard
-                // first, since it is not completed yet — comes up in the
-                // chosen language. Should the helper fail, the wizard alone
-                // is rebuilt in it (gettext reads LANGUAGE on every lookup).
-                if config::load_language() == code {
-                    return;
-                }
-                config::save_language(&code);
-                tracing::info!("wizard: language {code:?} saved, restarting");
-                // The instance that comes back must open the wizard again,
-                // review mode or not: the helper drops the review switch on
-                // purpose, so a one-shot flag of its own goes along (init
-                // takes it and clears it, so it never outlives that start).
-                std::env::set_var(crate::WIZARD_AGAIN_VAR, "1");
-                match crate::desktop::app_icon::launch_restart_helper() {
-                    Ok(()) => {
-                        // The quit action's own teardown, inline: nothing to
-                        // look up, nothing to wait for.
-                        tracing::info!("wizard: restart helper up, exiting");
-                        let (w, h, maximized) = crate::config::load_window_state();
-                        crate::config::save_window_state(w, h, maximized);
-                        exit_now(&self.outgoing);
-                    }
-                    Err(e) => {
-                        std::env::remove_var(crate::WIZARD_AGAIN_VAR);
-                        tracing::warn!("restart for the wizard's language failed: {e}");
-                        crate::i18n::apply_language(&code);
-                        if let Some(old) = self.welcome.take() {
-                            old.widget().set_visible(false);
-                        }
-                        self.open_wizard(&sender);
-                    }
-                }
-            }
-
             AppMsg::QuitFromTray => {
                 // The same teardown as Ctrl+Q: geometry saved, then exit.
                 relm4::main_application().activate_action("quit", None);

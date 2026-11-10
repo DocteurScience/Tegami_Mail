@@ -2,6 +2,15 @@
 
 ## Unreleased
 
+- **Changed: the first-run wizard** (docs/DESIGN.md, "First run"; screens
+  49 to 52). Its pages follow one another, with back and close in the
+  header bar, in the system's colours, light, dark or high contrast,
+  instead of a carousel with dots on a fixed blue. The language page goes
+  (the language is the system's; a language chosen before still applies),
+  and so do the privacy and "Make it yours" pages: their defaults are those
+  of Preferences. Closing the wizard counts as finishing it: it does not
+  open again by itself.
+
 - **Changed: the filter and smart folder editors** (screens 38 and 40).
   A filter's criteria are one list under **If**: a row per criterion that
   says what it looks for ("Subject contains", the text in the row), with a

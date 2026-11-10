@@ -235,10 +235,9 @@ impl AppModel {
             | AppMsg::MeasureReaderFold
             | AppMsg::ReaderControlsChanged(..)
             | AppMsg::ReaderOverflowMenu) => self.on_reader_toolbar(msg, sender),
-            msg @ (AppMsg::WizardLanguage(..)
-            | AppMsg::QuitFromTray
-            | AppMsg::TrayViewUnread
-            | AppMsg::PresentWindow) => self.on_tray(msg, sender),
+            msg @ (AppMsg::QuitFromTray | AppMsg::TrayViewUnread | AppMsg::PresentWindow) => {
+                self.on_tray(msg, sender)
+            }
             msg @ (AppMsg::ShowShortcuts
             | AppMsg::CommandPalette(..)
             | AppMsg::PrintPreview
@@ -316,7 +315,7 @@ impl AppModel {
             | AppMsg::ReconnectAccounts
             | AppMsg::ShowCarryOverNotice(..)
             | AppMsg::AccountEnabledChanged { .. }
-            | AppMsg::ApplyWelcomePrefs(..)
+            | AppMsg::WelcomeDone
             | AppMsg::ImportGoaAccount(..)
             | AppMsg::AccountRemoved { .. }
             | AppMsg::ImportLocalMail { .. }

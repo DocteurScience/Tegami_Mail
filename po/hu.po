@@ -4832,9 +4832,6 @@ msgstr "Világos"
 msgid "Dark"
 msgstr "Sötét"
 
-msgid "System"
-msgstr "Rendszer"
-
 msgid "Manually"
 msgstr "Kézzel"
 
@@ -5546,14 +5543,80 @@ msgstr "Bejelentkezés"
 msgid "The sign-in window was closed."
 msgstr ""
 
+msgid "Import your online accounts"
+msgstr "Internetes Fiók importálása"
+
+msgid ""
+"Mail accounts signed in under GNOME Settings → Online Accounts can be added "
+"here in one click. Google accounts are only supported through GNOME Online "
+"Accounts."
+msgstr ""
+"A GNOME Beállítások → Internetes Fiókok menüpont alatt bejelentkezett e-mail-"
+"fiókokat itt egy kattintással hozzáadhatja. A Google-fiókok kizárólag a "
+"GNOME Internetes Fiókok menüpontból támogatottak."
+
+msgid "No mail accounts were found in Online Accounts."
+msgstr "Nincs még levélfiók az Internetes Fiókokban beállítva."
+
+msgid "Open Online Accounts…"
+msgstr "Internetes Fiókok megnyitása…"
+
+#, fuzzy
+msgid "Email account…"
+msgstr "E-mail fiók"
+
+msgid "Continue"
+msgstr "Folytatás"
+
+#, fuzzy
+msgid "Add your accounts"
+msgstr "Felhőfiók hozzáadása"
+
 msgid "Add"
 msgstr "Hozzáadás"
 
-msgid "✓ {email} — added"
-msgstr "✓ {email} — hozzáadva"
+msgid "Add your email account"
+msgstr "E-mail-fiók hozzáadása"
 
-msgid "Add another email account"
-msgstr "Új e-mail-fiók hozzáadása"
+msgid "Provider"
+msgstr "Szolgáltató"
+
+msgid "Your name"
+msgstr "Az Ön neve"
+
+msgid "Server details"
+msgstr "Kiszolgáló adatai"
+
+msgid "Filled in for known providers"
+msgstr "Ismert szolgáltatókhoz kitöltve"
+
+msgid "IMAP server"
+msgstr "IMAP kiszolgáló"
+
+msgid "IMAP port"
+msgstr "IMAP-port"
+
+msgid "OAuth client ID"
+msgstr "OAuth ügyfélazonosító (Client ID)"
+
+msgid "OAuth Client Secret (optional)"
+msgstr "OAuth ügyféltitok (Client Secret, nem kötelező)"
+
+msgid "Authorization URL"
+msgstr "Engedélyezési URL (Authorization URL)"
+
+msgid "Token URL"
+msgstr "Token URL"
+
+msgid "Scopes (space-separated)"
+msgstr "Hatókörök (szóközzel elválasztva)"
+
+msgid "Test & add"
+msgstr "Tesztelés és hozzáadás"
+
+#, fuzzy
+msgid "Email account"
+msgstr "E-mail fiók"
 
 msgid "Enter your email address, the client ID and both OAuth URLs first."
 msgstr ""
@@ -5561,15 +5624,6 @@ msgstr ""
 
 msgid "Sign in & add"
 msgstr "bejelentkezés és Hozzáadás"
-
-msgid "Test & add"
-msgstr "Tesztelés és hozzáadás"
-
-msgid "IMAP server"
-msgstr "IMAP kiszolgáló"
-
-msgid "IMAP port"
-msgstr "IMAP-port"
 
 msgid "Enter your email address and password first."
 msgstr "Először adja meg az e-mail-címét és a jelszavát."
@@ -5589,168 +5643,29 @@ msgstr "{email} — küldés (SMTP): {e}"
 msgid "✓ {email} — signed in and added"
 msgstr "✓ {email} — bejelentkezett és hozzáadva"
 
-msgid ""
-"A clean, fast home for your mail.\n"
-"Let's set things up — it takes about a minute."
-msgstr ""
-"Tiszta, gyors otthon levelei számára.\n"
-"Állítsa be — körülbelül egy percet vesz igénybe."
-
-msgid "Language"
-msgstr "Nyelv"
+msgid "Welcome to Tegami Mail"
+msgstr "Üdvözli a Tegami Mail"
 
 msgid ""
-"Choosing another language restarts Tegami Mail: it closes for a moment and "
-"this wizard comes back in that language."
+"Your mail, in one place, simply. Let’s start by connecting your first "
+"account."
 msgstr ""
-"Ha másik nyelvet választasz, a Tegami Mail újraindul: egy pillanatra "
-"bezárul, majd a varázsló az adott nyelven jelenik meg újra."
 
 msgid "Get started"
 msgstr "Kezdés"
 
-msgid "Import your online accounts"
-msgstr "Internetes Fiók importálása"
-
-msgid ""
-"Mail accounts signed in under GNOME Settings → Online Accounts can be added "
-"here in one click. Google accounts are only supported through GNOME Online "
-"Accounts."
-msgstr ""
-"A GNOME Beállítások → Internetes Fiókok menüpont alatt bejelentkezett e-mail-"
-"fiókokat itt egy kattintással hozzáadhatja. A Google-fiókok kizárólag a "
-"GNOME Internetes Fiókok menüpontból támogatottak."
-
-msgid "No mail accounts were found in Online Accounts."
-msgstr "Nincs még levélfiók az Internetes Fiókokban beállítva."
-
-msgid "Open Online Accounts…"
-msgstr "Internetes Fiókok megnyitása…"
-
-msgid "Scan again"
-msgstr "Újraellenőrzés"
-
-msgid "Privacy, your way"
-msgstr "Adatvédelem az Ön módján"
-
-msgid ""
-"Tegami Mail sends no telemetry, ever. These control what leaves your machine "
-"while you read."
-msgstr ""
-"A Tegami Mail soha nem küld telemetriai adatokat. Ezekkel szabályozhatod, "
-"hogy mi kerüljön ki a készülékedről olvasás közben."
-
-msgid "Block remote images"
-msgstr "Távoli képek blokkolása"
-
-msgid "Stops senders tracking when and where you open mail"
-msgstr ""
-"A Tegami Mail soha nem küld telemetriai adatokat. Ezekkel szabályozhatod, "
-"hogy mi kerüljön ki a készülékedről olvasás közben."
-
-msgid "Fetch Gravatar portraits"
-msgstr "Gravatar lekérése"
-
-msgid "Asks gravatar.com about each sender's address"
-msgstr "A gravatar.com-tól lekérdezi az egyes feladók címét"
-
-msgid "Fetch sender logos"
-msgstr "A feladók logóinak letöltése"
-
-msgid "Looks up company icons for the message list"
-msgstr "Cégikonok keresése az üzenetlistához"
-
-msgid "Show message content in notifications"
-msgstr "Üzenettartalom megjelenítése az értesítésekben"
-
-msgid "Off keeps senders and subjects off the lock screen"
-msgstr ""
-"Az „Off” beállítás elrejti a feladókat és a tárgyakat a zárolási képernyőről"
-
-msgid "Make it yours"
-msgstr "Tegye személyessé"
-
-msgid "A few popular choices — everything can be changed later in Settings."
-msgstr ""
-"Néhány népszerű beállítás — mindent később a Beállítások menüben "
-"módosíthatsz."
-
-msgid "Preview lines"
-msgstr "Előnézeti sorok"
-
-msgid "Message text shown under each subject"
-msgstr "Az egyes tárgyak alatt megjelenő üzenetszöveg"
-
-msgid "1 line"
-msgstr "1 sor"
-
-msgid "2 lines"
-msgstr "2 sor"
-
-msgid "Sender avatars"
-msgstr "A feladók avatárjai"
-
-msgid "Colorful initials beside each message"
-msgstr "Színes monogramok minden üzenet mellett"
-
-msgid "Conversation view"
-msgstr "Beszélgetés nézet"
-
-msgid "Group messages into threads"
-msgstr "Üzenetek csoportosítása szálakba"
-
-msgid "You're all set"
+#, fuzzy
+msgid "You’re all set"
 msgstr "Minden készen áll"
 
+#, fuzzy
+msgid "Start reading"
+msgstr "Csillakerülzott"
+
 msgid ""
-"Enjoy! If you encounter an issue or have a feature request,\n"
-"please open an issue on our <a href=\"{url}\">Github</a>."
+"Tegami Mail is fetching the mail of {email}. It will appear in a moment. You "
+"can adjust the rest in the preferences."
 msgstr ""
-"Jó szórakozást! Ha bármilyen problémát tapasztalsz, vagy új funkciót "
-"szeretnél javasolni,\n"
-"kérjük, nyiss egy hibajelentést a <a href=\"{url}\">Github</a> oldalunkon."
-
-msgid "Welcome to Tegami Mail"
-msgstr "Üdvözli a Tegami Mail"
-
-msgid "Add your email account"
-msgstr "E-mail-fiók hozzáadása"
-
-msgid "Provider"
-msgstr "Szolgáltató"
-
-msgid "Your name"
-msgstr "Az Ön neve"
-
-msgid "Server details"
-msgstr "Kiszolgáló adatai"
-
-msgid "Filled in for known providers"
-msgstr "Ismert szolgáltatókhoz kitöltve"
-
-msgid "OAuth client ID"
-msgstr "OAuth ügyfélazonosító (Client ID)"
-
-msgid "OAuth Client Secret (optional)"
-msgstr "OAuth ügyféltitok (Client Secret, nem kötelező)"
-
-msgid "Authorization URL"
-msgstr "Engedélyezési URL (Authorization URL)"
-
-msgid "Token URL"
-msgstr "Token URL"
-
-msgid "Scopes (space-separated)"
-msgstr "Hatókörök (szóközzel elválasztva)"
-
-msgid "Continue"
-msgstr "Folytatás"
-
-msgid "Finish"
-msgstr "Befejezés"
-
-msgid "Skip"
-msgstr "Kihagyás"
 
 msgid ""
 "Offline: there is no network connection. Mail syncs again once the network "

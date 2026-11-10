@@ -4676,9 +4676,6 @@ msgstr "Claro"
 msgid "Dark"
 msgstr "Oscuro"
 
-msgid "System"
-msgstr "Sistema"
-
 msgid "Manually"
 msgstr "Manualmente"
 
@@ -5371,14 +5368,80 @@ msgstr "Iniciar sesión"
 msgid "The sign-in window was closed."
 msgstr "Se ha cerrado la ventana de inicio de sesión."
 
+msgid "Import your online accounts"
+msgstr "Importa tus cuentas en línea"
+
+msgid ""
+"Mail accounts signed in under GNOME Settings → Online Accounts can be added "
+"here in one click. Google accounts are only supported through GNOME Online "
+"Accounts."
+msgstr ""
+"Las cuentas de correo con sesión iniciada en Ajustes de GNOME → Cuentas en "
+"línea se pueden añadir aquí con un solo clic. Las cuentas de Google solo son "
+"compatibles mediante Cuentas en línea de GNOME."
+
+msgid "No mail accounts were found in Online Accounts."
+msgstr "No se encontraron cuentas de correo en Cuentas en línea."
+
+msgid "Open Online Accounts…"
+msgstr "Abrir Cuentas en línea…"
+
+#, fuzzy
+msgid "Email account…"
+msgstr "Cuenta de correo"
+
+msgid "Continue"
+msgstr "Continuar"
+
+#, fuzzy
+msgid "Add your accounts"
+msgstr "Añadir cuenta en la nube"
+
 msgid "Add"
 msgstr "Añadir"
 
-msgid "✓ {email} — added"
-msgstr "✓ {email} — añadida"
+msgid "Add your email account"
+msgstr "Añade tu cuenta de correo"
 
-msgid "Add another email account"
-msgstr "Añade otra cuenta de correo"
+msgid "Provider"
+msgstr "Proveedor"
+
+msgid "Your name"
+msgstr "Tu nombre"
+
+msgid "Server details"
+msgstr "Datos del servidor"
+
+msgid "Filled in for known providers"
+msgstr "Se completa automáticamente para proveedores conocidos"
+
+msgid "IMAP server"
+msgstr "Servidor IMAP"
+
+msgid "IMAP port"
+msgstr "Puerto IMAP"
+
+msgid "OAuth client ID"
+msgstr "ID de cliente OAuth"
+
+msgid "OAuth Client Secret (optional)"
+msgstr "Secreto de cliente OAuth (opcional)"
+
+msgid "Authorization URL"
+msgstr "URL de autorización"
+
+msgid "Token URL"
+msgstr "URL del token"
+
+msgid "Scopes (space-separated)"
+msgstr "Ámbitos (separados por espacios)"
+
+msgid "Test & add"
+msgstr "Probar y añadir"
+
+#, fuzzy
+msgid "Email account"
+msgstr "Cuenta de correo"
 
 msgid "Enter your email address, the client ID and both OAuth URLs first."
 msgstr ""
@@ -5387,15 +5450,6 @@ msgstr ""
 
 msgid "Sign in & add"
 msgstr "Iniciar sesión y añadir"
-
-msgid "Test & add"
-msgstr "Probar y añadir"
-
-msgid "IMAP server"
-msgstr "Servidor IMAP"
-
-msgid "IMAP port"
-msgstr "Puerto IMAP"
 
 msgid "Enter your email address and password first."
 msgstr "Introduce primero tu dirección de correo electrónico y contraseña."
@@ -5415,164 +5469,29 @@ msgstr "{email} — envío (SMTP): {e}"
 msgid "✓ {email} — signed in and added"
 msgstr "✓ {email} — sesión iniciada y cuenta añadida"
 
-msgid ""
-"A clean, fast home for your mail.\n"
-"Let's set things up — it takes about a minute."
-msgstr ""
-"Un hogar limpio y rápido para tu correo.\n"
-"Vamos a configurarlo; solo llevará aproximadamente un minuto."
-
-msgid "Language"
-msgstr "Idioma"
+msgid "Welcome to Tegami Mail"
+msgstr "Te damos la bienvenida a Tegami Mail"
 
 msgid ""
-"Choosing another language restarts Tegami Mail: it closes for a moment and "
-"this wizard comes back in that language."
+"Your mail, in one place, simply. Let’s start by connecting your first "
+"account."
 msgstr ""
-"Al elegir otro idioma, Tegami Mail se reinicia: se cerrará durante un "
-"momento y este asistente volverá a aparecer en ese idioma."
 
 msgid "Get started"
 msgstr "Comenzar"
 
-msgid "Import your online accounts"
-msgstr "Importa tus cuentas en línea"
-
-msgid ""
-"Mail accounts signed in under GNOME Settings → Online Accounts can be added "
-"here in one click. Google accounts are only supported through GNOME Online "
-"Accounts."
-msgstr ""
-"Las cuentas de correo con sesión iniciada en Ajustes de GNOME → Cuentas en "
-"línea se pueden añadir aquí con un solo clic. Las cuentas de Google solo son "
-"compatibles mediante Cuentas en línea de GNOME."
-
-msgid "No mail accounts were found in Online Accounts."
-msgstr "No se encontraron cuentas de correo en Cuentas en línea."
-
-msgid "Open Online Accounts…"
-msgstr "Abrir Cuentas en línea…"
-
-msgid "Scan again"
-msgstr "Buscar de nuevo"
-
-msgid "Privacy, your way"
-msgstr "Privacidad a tu manera"
-
-msgid ""
-"Tegami Mail sends no telemetry, ever. These control what leaves your machine "
-"while you read."
-msgstr ""
-"Tegami Mail nunca envía telemetría. Estas opciones controlan qué datos salen "
-"de tu equipo mientras lees."
-
-msgid "Block remote images"
-msgstr "Bloquear imágenes remotas"
-
-msgid "Stops senders tracking when and where you open mail"
-msgstr "Evita que los remitentes rastreen cuándo y dónde abres el correo"
-
-msgid "Fetch Gravatar portraits"
-msgstr "Obtener imágenes de Gravatar"
-
-msgid "Asks gravatar.com about each sender's address"
-msgstr "Consulta en gravatar.com la dirección de cada remitente"
-
-msgid "Fetch sender logos"
-msgstr "Obtener logotipos de remitentes"
-
-msgid "Looks up company icons for the message list"
-msgstr "Busca iconos de empresas para la lista de mensajes"
-
-msgid "Show message content in notifications"
-msgstr "Mostrar el contenido del mensaje en las notificaciones"
-
-msgid "Off keeps senders and subjects off the lock screen"
-msgstr ""
-"Desactivado evita mostrar remitentes y asuntos en la pantalla de bloqueo"
-
-msgid "Make it yours"
-msgstr "Hazlo tuyo"
-
-msgid "A few popular choices — everything can be changed later in Settings."
-msgstr ""
-"Algunas opciones populares; todo puede cambiarse más adelante en Ajustes."
-
-msgid "Preview lines"
-msgstr "Líneas de vista previa"
-
-msgid "Message text shown under each subject"
-msgstr "Texto del mensaje mostrado bajo cada asunto"
-
-msgid "1 line"
-msgstr "1 línea"
-
-msgid "2 lines"
-msgstr "2 líneas"
-
-msgid "Sender avatars"
-msgstr "Avatares de remitentes"
-
-msgid "Colorful initials beside each message"
-msgstr "Iniciales de colores junto a cada mensaje"
-
-msgid "Conversation view"
-msgstr "Vista de conversación"
-
-msgid "Group messages into threads"
-msgstr "Agrupar mensajes en hilos"
-
-msgid "You're all set"
+#, fuzzy
+msgid "You’re all set"
 msgstr "Todo está listo"
 
+#, fuzzy
+msgid "Start reading"
+msgstr "Destacados"
+
 msgid ""
-"Enjoy! If you encounter an issue or have a feature request,\n"
-"please open an issue on our <a href=\"{url}\">Github</a>."
+"Tegami Mail is fetching the mail of {email}. It will appear in a moment. You "
+"can adjust the rest in the preferences."
 msgstr ""
-"¡Disfruta! Si encuentras algún problema o quieres solicitar una función,\n"
-"abre una incidencia en nuestro <a href=\"{url}\">GitHub</a>."
-
-msgid "Welcome to Tegami Mail"
-msgstr "Te damos la bienvenida a Tegami Mail"
-
-msgid "Add your email account"
-msgstr "Añade tu cuenta de correo"
-
-msgid "Provider"
-msgstr "Proveedor"
-
-msgid "Your name"
-msgstr "Tu nombre"
-
-msgid "Server details"
-msgstr "Datos del servidor"
-
-msgid "Filled in for known providers"
-msgstr "Se completa automáticamente para proveedores conocidos"
-
-msgid "OAuth client ID"
-msgstr "ID de cliente OAuth"
-
-msgid "OAuth Client Secret (optional)"
-msgstr "Secreto de cliente OAuth (opcional)"
-
-msgid "Authorization URL"
-msgstr "URL de autorización"
-
-msgid "Token URL"
-msgstr "URL del token"
-
-msgid "Scopes (space-separated)"
-msgstr "Ámbitos (separados por espacios)"
-
-msgid "Continue"
-msgstr "Continuar"
-
-msgid "Finish"
-msgstr "Finalizar"
-
-msgid "Skip"
-msgstr "Omitir"
 
 msgid ""
 "Offline: there is no network connection. Mail syncs again once the network "

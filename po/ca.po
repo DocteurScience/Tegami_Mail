@@ -4654,9 +4654,6 @@ msgstr "Clar"
 msgid "Dark"
 msgstr "Fosc"
 
-msgid "System"
-msgstr "Sistema"
-
 msgid "Manually"
 msgstr "Manualment"
 
@@ -5345,14 +5342,80 @@ msgstr "Inicia sessió"
 msgid "The sign-in window was closed."
 msgstr "La finestra d'inici de sessió s'ha tancat."
 
+msgid "Import your online accounts"
+msgstr "Importa els teus comptes en línia"
+
+msgid ""
+"Mail accounts signed in under GNOME Settings → Online Accounts can be added "
+"here in one click. Google accounts are only supported through GNOME Online "
+"Accounts."
+msgstr ""
+"Els comptes de correu amb sessió iniciada a Paràmetres del GNOME → Comptes "
+"en línia es poden afegir aquí amb un clic. Els comptes de Google només són "
+"compatibles a través dels comptes en línia del GNOME."
+
+msgid "No mail accounts were found in Online Accounts."
+msgstr "No s'ha trobat cap compte de correu als comptes en línia."
+
+msgid "Open Online Accounts…"
+msgstr "Obre els comptes en línia…"
+
+#, fuzzy
+msgid "Email account…"
+msgstr "Compte de correu"
+
+msgid "Continue"
+msgstr "Continua"
+
+#, fuzzy
+msgid "Add your accounts"
+msgstr "Afegeix un compte al núvol"
+
 msgid "Add"
 msgstr "Afegeix"
 
-msgid "✓ {email} — added"
-msgstr "✓ {email} — afegit"
+msgid "Add your email account"
+msgstr "Afegeix el teu compte de correu"
 
-msgid "Add another email account"
-msgstr "Afegeix un altre compte de correu"
+msgid "Provider"
+msgstr "Proveïdor"
+
+msgid "Your name"
+msgstr "El teu nom"
+
+msgid "Server details"
+msgstr "Dades del servidor"
+
+msgid "Filled in for known providers"
+msgstr "Omplert per a proveïdors coneguts"
+
+msgid "IMAP server"
+msgstr "Servidor IMAP"
+
+msgid "IMAP port"
+msgstr "Port IMAP"
+
+msgid "OAuth client ID"
+msgstr "ID de client OAuth"
+
+msgid "OAuth Client Secret (optional)"
+msgstr "Secret de client OAuth (opcional)"
+
+msgid "Authorization URL"
+msgstr "URL d'autorització"
+
+msgid "Token URL"
+msgstr "URL del token"
+
+msgid "Scopes (space-separated)"
+msgstr "Àmbits (separats per espais)"
+
+msgid "Test & add"
+msgstr "Prova i afegeix"
+
+#, fuzzy
+msgid "Email account"
+msgstr "Compte de correu"
 
 msgid "Enter your email address, the client ID and both OAuth URLs first."
 msgstr ""
@@ -5361,15 +5424,6 @@ msgstr ""
 
 msgid "Sign in & add"
 msgstr "Inicia sessió i afegeix"
-
-msgid "Test & add"
-msgstr "Prova i afegeix"
-
-msgid "IMAP server"
-msgstr "Servidor IMAP"
-
-msgid "IMAP port"
-msgstr "Port IMAP"
 
 msgid "Enter your email address and password first."
 msgstr "Introdueix primer la teva adreça de correu i la contrasenya."
@@ -5389,165 +5443,29 @@ msgstr "{email} — enviament (SMTP): {e}"
 msgid "✓ {email} — signed in and added"
 msgstr "✓ {email} — sessió iniciada i afegit"
 
-msgid ""
-"A clean, fast home for your mail.\n"
-"Let's set things up — it takes about a minute."
-msgstr ""
-"Una llar neta i ràpida per al teu correu.\n"
-"Configurem-ho — triga aproximadament un minut."
-
-msgid "Language"
-msgstr "Idioma"
+msgid "Welcome to Tegami Mail"
+msgstr "Benvingut a l'Tegami Mail"
 
 msgid ""
-"Choosing another language restarts Tegami Mail: it closes for a moment and "
-"this wizard comes back in that language."
+"Your mail, in one place, simply. Let’s start by connecting your first "
+"account."
 msgstr ""
-"Triar un altre idioma reinicia l'Tegami Mail: es tanca un moment i aquest "
-"auxiliar torna en aquest idioma."
 
 msgid "Get started"
 msgstr "Comença"
 
-msgid "Import your online accounts"
-msgstr "Importa els teus comptes en línia"
-
-msgid ""
-"Mail accounts signed in under GNOME Settings → Online Accounts can be added "
-"here in one click. Google accounts are only supported through GNOME Online "
-"Accounts."
-msgstr ""
-"Els comptes de correu amb sessió iniciada a Paràmetres del GNOME → Comptes "
-"en línia es poden afegir aquí amb un clic. Els comptes de Google només són "
-"compatibles a través dels comptes en línia del GNOME."
-
-msgid "No mail accounts were found in Online Accounts."
-msgstr "No s'ha trobat cap compte de correu als comptes en línia."
-
-msgid "Open Online Accounts…"
-msgstr "Obre els comptes en línia…"
-
-msgid "Scan again"
-msgstr "Torna a escanejar"
-
-msgid "Privacy, your way"
-msgstr "Privacitat, a la teva manera"
-
-msgid ""
-"Tegami Mail sends no telemetry, ever. These control what leaves your machine "
-"while you read."
-msgstr ""
-"L'Tegami Mail no envia mai cap telemetria. Aquests controlen què surt de la "
-"teva màquina mentre llegeixes."
-
-msgid "Block remote images"
-msgstr "Bloca les imatges remotes"
-
-msgid "Stops senders tracking when and where you open mail"
-msgstr "Atura que els remitents rastregin quan i on obres el correu"
-
-msgid "Fetch Gravatar portraits"
-msgstr "Obtén els retrats del Gravatar"
-
-msgid "Asks gravatar.com about each sender's address"
-msgstr "Pregunta a gravatar.com per l'adreça de cada remitent"
-
-msgid "Fetch sender logos"
-msgstr "Obtén els logotips dels remitents"
-
-msgid "Looks up company icons for the message list"
-msgstr "Cerca icones d'empreses per a la llista de missatges"
-
-msgid "Show message content in notifications"
-msgstr "Mostra el contingut del missatge a les notificacions"
-
-msgid "Off keeps senders and subjects off the lock screen"
-msgstr ""
-"Desactivat manté els remitents i els assumptes fora de la pantalla de "
-"bloqueig"
-
-msgid "Make it yours"
-msgstr "Fes-lo teu"
-
-msgid "A few popular choices — everything can be changed later in Settings."
-msgstr ""
-"Unes quantes opcions populars — tot es pot canviar després als paràmetres."
-
-msgid "Preview lines"
-msgstr "Línies de previsualització"
-
-msgid "Message text shown under each subject"
-msgstr "Text del missatge mostrat sota cada assumpte"
-
-msgid "1 line"
-msgstr "1 línia"
-
-msgid "2 lines"
-msgstr "2 línies"
-
-msgid "Sender avatars"
-msgstr "Avatars dels remitents"
-
-msgid "Colorful initials beside each message"
-msgstr "Inicials de colors al costat de cada missatge"
-
-msgid "Conversation view"
-msgstr "Vista de conversa"
-
-msgid "Group messages into threads"
-msgstr "Agrupa els missatges en fils"
-
-msgid "You're all set"
+#, fuzzy
+msgid "You’re all set"
 msgstr "Tot a punt"
 
+#, fuzzy
+msgid "Start reading"
+msgstr "Destacats"
+
 msgid ""
-"Enjoy! If you encounter an issue or have a feature request,\n"
-"please open an issue on our <a href=\"{url}\">Github</a>."
+"Tegami Mail is fetching the mail of {email}. It will appear in a moment. You "
+"can adjust the rest in the preferences."
 msgstr ""
-"Gaudeix-ne! Si trobes un problema o tens una petició de funcionalitat,\n"
-"obre una incidència al nostre <a href=\"{url}\">Github</a>."
-
-msgid "Welcome to Tegami Mail"
-msgstr "Benvingut a l'Tegami Mail"
-
-msgid "Add your email account"
-msgstr "Afegeix el teu compte de correu"
-
-msgid "Provider"
-msgstr "Proveïdor"
-
-msgid "Your name"
-msgstr "El teu nom"
-
-msgid "Server details"
-msgstr "Dades del servidor"
-
-msgid "Filled in for known providers"
-msgstr "Omplert per a proveïdors coneguts"
-
-msgid "OAuth client ID"
-msgstr "ID de client OAuth"
-
-msgid "OAuth Client Secret (optional)"
-msgstr "Secret de client OAuth (opcional)"
-
-msgid "Authorization URL"
-msgstr "URL d'autorització"
-
-msgid "Token URL"
-msgstr "URL del token"
-
-msgid "Scopes (space-separated)"
-msgstr "Àmbits (separats per espais)"
-
-msgid "Continue"
-msgstr "Continua"
-
-msgid "Finish"
-msgstr "Acaba"
-
-msgid "Skip"
-msgstr "Omet"
 
 msgid ""
 "Offline: there is no network connection. Mail syncs again once the network "

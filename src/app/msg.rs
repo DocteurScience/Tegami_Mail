@@ -734,9 +734,6 @@ pub(crate) enum AppMsg {
     ReaderOverflowMenu,
 
     // ---- on_tray (tray.rs) ----
-    /// The welcome wizard's first page picked a language: save it and
-    /// come back in it.
-    WizardLanguage(String),
     /// Quit was chosen from the tray icon's menu.
     QuitFromTray,
     /// "View all unread" was chosen from the tray icon's menu: go to the
@@ -1027,9 +1024,9 @@ pub(crate) enum AppMsg {
     ShowCarryOverNotice(&'static crate::desktop::legacy::Predecessor),
     /// An account was switched on or off in Settings.
     AccountEnabledChanged { email: String, enabled: bool },
-    /// The welcome wizard's privacy/personalize choices: fan out through the
-    /// existing Set* handlers so every side effect stays in one place.
-    ApplyWelcomePrefs(crate::ui::welcome::WelcomePrefs),
+    /// The welcome wizard closed, finished or not: it never opens again by
+    /// itself, and the main window shows.
+    WelcomeDone,
     /// Use a GNOME Online Accounts account in Tegami Mail, or switch it back on.
     ImportGoaAccount(Box<AccountConfig>),
     /// An account was removed in Settings: its secrets and its config go.
