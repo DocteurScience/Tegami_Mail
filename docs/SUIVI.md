@@ -136,7 +136,7 @@ Dernière mise à jour : 2026-11-02, après `40a6c7e`.
 | `be9425c` | DESIGN.md : les icônes sont le jeu Adwaita propre à l'appli, embarqué, quel que soit le thème du bureau (décision du propriétaire, 2026-11-10) |
 | `6a08c40` | Audit, lot 5 : icône de la zone de notification retirée (`app/tray/indicator.rs`, réglages `tray`, `tray_icon`, `tray_mail`, messages `QuitFromTray`, `TrayViewUnread`, dépendance `ksni`, permission Flatpak `StatusNotifierWatcher`, `tray_image`, `custom_icon`, `desktop_icon_theme`) ; `tray.rs` ne garde que les compteurs (barre latérale, Applications en arrière-plan, pastille du lanceur). Session : disque plein, cache incrémental vidé |
 | `c9bf711` | Audit, lot 6 : styles de date et d'heure retirés (`date_style`, `clock_style`, `DateStyle`, `ClockStyle`, `set_style` et ses atomiques dans `datefmt.rs`). Les dates suivent toujours la langue du système et le format d'heure du bureau GNOME (décision du propriétaire, 2026-11-10). Vérifié : avec les anciennes valeurs `yearfirst` / `twelve` enregistrées, la fenêtre est identique au pixel à celle par défaut |
-| (ce commit) | Audit, lot 7 : taille du texte propre à l'appli retirée (`text_scale`, `desktop/text_scale.rs`, `load_text_scale`). Le texte suit toujours la taille du bureau (décision du propriétaire, 2026-11-10). Vérifié : avec `text_scale = 150` enregistré, la fenêtre est identique au pixel à celle par défaut |
+| `fd1b76d` | Audit, lot 7 : taille du texte propre à l'appli retirée (`text_scale`, `desktop/text_scale.rs`, `load_text_scale`). Le texte suit toujours la taille du bureau (décision du propriétaire, 2026-11-10). Vérifié : avec `text_scale = 150` enregistré, la fenêtre est identique au pixel à celle par défaut |
 
 ## Décisions prises
 
