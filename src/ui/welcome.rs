@@ -23,13 +23,15 @@ mod messages;
 mod pages;
 mod steps;
 
-use goa::{build_accounts_page, rebuild_goa_rows, AccountsPage};
+use goa::{build_accounts_page, showcase_listed, AccountsPage, Listed};
 use manual::{build_form_page, FormPage};
 pub(crate) use messages::{WelcomeCmd, WelcomeInput, WelcomeOutput};
 use pages::{build_done_page, build_welcome_page, column, heading, nav_page, pill, sentence};
 
 pub(crate) struct Welcome {
-    goa: Vec<crate::services::goa::GoaMailAccount>,
+    /// The accounts page's list: Online Accounts' accounts, and those
+    /// added by hand.
+    listed: Vec<Listed>,
     /// Emails added so far, either way, in order: the last page names the
     /// first.
     added: Vec<String>,
@@ -72,17 +74,24 @@ impl Component for Welcome {
             .into_iter()
             .map(|a| a.email.to_ascii_lowercase())
             .collect();
-        let mut goa = crate::services::goa::list_mail_accounts();
-        goa.retain(|g| g.can_connect() && !existing.contains(&g.email.to_ascii_lowercase()));
+        let listed = if std::env::var_os("TEGAMI_SHOWCASE_WIZARD").is_some() {
+            showcase_listed()
+        } else {
+            crate::services::goa::list_mail_accounts()
+                .into_iter()
+                .filter(|g| g.can_connect() && !existing.contains(&g.email.to_ascii_lowercase()))
+                .map(Listed::found)
+                .collect()
+        };
         let model = Welcome {
-            goa,
+            listed,
             added: Vec::new(),
             test_seq: 0,
         };
 
         let nav = adw::NavigationView::new();
         nav.add(&build_welcome_page(&sender));
-        let accounts = build_accounts_page(&model, &sender);
+        let accounts = build_accounts_page(&sender);
         let form = build_form_page(&sender);
         let (done, done_text) = build_done_page(&sender);
         root.set_content(Some(&nav));
@@ -104,7 +113,7 @@ impl Component for Welcome {
             done,
             done_text,
         };
-        rebuild_goa_rows(&widgets.accounts.list, &model.goa, &sender);
+        model.rebuild_accounts(&widgets.accounts, &sender);
         showcase(&root, &sender);
         ComponentParts { model, widgets }
     }

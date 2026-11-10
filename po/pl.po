@@ -5603,37 +5603,43 @@ msgstr "Podpis"
 msgid "The sign-in window was closed."
 msgstr ""
 
-msgid "Import your online accounts"
-msgstr "Zaimportuj konta online"
+#, fuzzy
+msgid "Add your accounts"
+msgstr "Dodaj konto w chmurze"
 
-msgid ""
-"Mail accounts signed in under GNOME Settings → Online Accounts can be added "
-"here in one click. Google accounts are only supported through GNOME Online "
-"Accounts."
-msgstr ""
-"Konta pocztowe zalogowane w aplikacji Ustawienia → Konta online można dodać "
-"tutaj jednym kliknięciem. Konta Google są obsługiwane tylko za pomocą kont "
-"online GNOME."
-
-msgid "No mail accounts were found in Online Accounts."
-msgstr "Nie odnaleziono kont pocztowych w kontach online."
-
-msgid "Open Online Accounts…"
-msgstr "Otwórz konta online…"
+#, fuzzy
+msgid "Another account"
+msgstr "Dodaj konto"
 
 #, fuzzy
 msgid "Email account…"
 msgstr "Konto pocztowe"
 
+#, fuzzy
+msgid "With an address and a password (IMAP)"
+msgstr "Najpierw wprowadź adres e-mail i hasło."
+
+#, fuzzy
+msgid "For Google or Microsoft 365"
+msgstr "Microsoft 365 / Outlook"
+
 msgid "Continue"
 msgstr "Kontynuuj"
 
 #, fuzzy
-msgid "Add your accounts"
-msgstr "Dodaj konto w chmurze"
+msgid "Added"
+msgstr "Dodane słowa"
 
 msgid "Add"
 msgstr "Dodaj"
+
+msgid "No mail accounts were found in Online Accounts."
+msgstr "Nie odnaleziono kont pocztowych w kontach online."
+
+msgid ""
+"Tegami Mail found these accounts in GNOME Online Accounts. One click adds "
+"each of them."
+msgstr ""
 
 msgid "Add your email account"
 msgstr "Dodaj konto pocztowe"
@@ -6151,6 +6157,9 @@ msgstr ""
 "1. Otwórz konta online i tam się zaloguj.\n"
 "2. Wróć do aplikacji Tegami Mail i ponownie otwórz to okno – konto pojawi "
 "się w sekcji „Konta online GNOME” u góry tego okna. Tam je włącz."
+
+msgid "Open Online Accounts…"
+msgstr "Otwórz konta online…"
 
 msgid "Outgoing (SMTP)"
 msgstr ""

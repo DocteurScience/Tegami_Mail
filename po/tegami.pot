@@ -4840,31 +4840,36 @@ msgstr ""
 msgid "The sign-in window was closed."
 msgstr ""
 
-msgid "Import your online accounts"
+msgid "Add your accounts"
 msgstr ""
 
-msgid ""
-"Mail accounts signed in under GNOME Settings → Online Accounts can be added "
-"here in one click. Google accounts are only supported through GNOME Online "
-"Accounts."
-msgstr ""
-
-msgid "No mail accounts were found in Online Accounts."
-msgstr ""
-
-msgid "Open Online Accounts…"
+msgid "Another account"
 msgstr ""
 
 msgid "Email account…"
 msgstr ""
 
+msgid "With an address and a password (IMAP)"
+msgstr ""
+
+msgid "For Google or Microsoft 365"
+msgstr ""
+
 msgid "Continue"
 msgstr ""
 
-msgid "Add your accounts"
+msgid "Added"
 msgstr ""
 
 msgid "Add"
+msgstr ""
+
+msgid "No mail accounts were found in Online Accounts."
+msgstr ""
+
+msgid ""
+"Tegami Mail found these accounts in GNOME Online Accounts. One click adds "
+"each of them."
 msgstr ""
 
 msgid "Add your email account"
@@ -5323,6 +5328,9 @@ msgid ""
 "Google and Microsoft sign in through GNOME Online Accounts. Sign in there, "
 "then reopen this window and switch the account on under GNOME Online "
 "Accounts."
+msgstr ""
+
+msgid "Open Online Accounts…"
 msgstr ""
 
 msgid "Outgoing (SMTP)"

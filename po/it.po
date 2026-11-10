@@ -5436,37 +5436,43 @@ msgstr "Accedi"
 msgid "The sign-in window was closed."
 msgstr "La finestra di accesso è stata chiusa."
 
-msgid "Import your online accounts"
-msgstr "Importa i tuoi account online"
+#, fuzzy
+msgid "Add your accounts"
+msgstr "Aggiungi account cloud"
 
-msgid ""
-"Mail accounts signed in under GNOME Settings → Online Accounts can be added "
-"here in one click. Google accounts are only supported through GNOME Online "
-"Accounts."
-msgstr ""
-"Gli account e-mail con accesso effettuato in GNOME Impostazioni → Account "
-"online possono essere aggiunti qui con un clic. Gli account Google sono "
-"supportati solo tramite Account online di GNOME."
-
-msgid "No mail accounts were found in Online Accounts."
-msgstr "Nessun account e-mail trovato in Account online."
-
-msgid "Open Online Accounts…"
-msgstr "Apri Account online…"
+#, fuzzy
+msgid "Another account"
+msgstr "Aggiungi account"
 
 #, fuzzy
 msgid "Email account…"
 msgstr "Account e-mail"
 
+#, fuzzy
+msgid "With an address and a password (IMAP)"
+msgstr "Inserisci prima il tuo indirizzo e-mail e la password."
+
+#, fuzzy
+msgid "For Google or Microsoft 365"
+msgstr "Microsoft 365 / Outlook"
+
 msgid "Continue"
 msgstr "Continua"
 
 #, fuzzy
-msgid "Add your accounts"
-msgstr "Aggiungi account cloud"
+msgid "Added"
+msgstr "Parole aggiunte"
 
 msgid "Add"
 msgstr "Aggiungi"
+
+msgid "No mail accounts were found in Online Accounts."
+msgstr "Nessun account e-mail trovato in Account online."
+
+msgid ""
+"Tegami Mail found these accounts in GNOME Online Accounts. One click adds "
+"each of them."
+msgstr ""
 
 msgid "Add your email account"
 msgstr "Aggiungi il tuo account e-mail"
@@ -5983,6 +5989,9 @@ msgstr ""
 "2. Torna a Tegami Mail e riapri questa finestra — l'account apparirà quindi "
 "sotto“GNOME Account online” nella parte superiore di questa finestra. "
 "Abilitalo lì."
+
+msgid "Open Online Accounts…"
+msgstr "Apri Account online…"
 
 msgid "Outgoing (SMTP)"
 msgstr ""

@@ -5407,39 +5407,44 @@ msgstr "Σύνδεση"
 msgid "The sign-in window was closed."
 msgstr "Το παράθυρο σύνδεσης έκλεισε."
 
-msgid "Import your online accounts"
-msgstr "Εισαγωγή των διαδικτυακών λογαριασμών σας"
+#, fuzzy
+msgid "Add your accounts"
+msgstr "Προσθήκη λογαριασμού cloud"
 
-msgid ""
-"Mail accounts signed in under GNOME Settings → Online Accounts can be added "
-"here in one click. Google accounts are only supported through GNOME Online "
-"Accounts."
-msgstr ""
-"Οι λογαριασμοί αλληλογραφίας στους οποίους έχετε συνδεθεί μέσω Ρυθμίσεις "
-"GNOME → Διαδικτυακοί λογαριασμοί μπορούν να προστεθούν εδώ με ένα κλικ. Οι "
-"λογαριασμοί Google υποστηρίζονται μόνο μέσω των Διαδικτυακών λογαριασμών του "
-"GNOME."
-
-msgid "No mail accounts were found in Online Accounts."
-msgstr ""
-"Δεν βρέθηκαν λογαριασμοί αλληλογραφίας στους Διαδικτυακούς λογαριασμούς."
-
-msgid "Open Online Accounts…"
-msgstr "Άνοιγμα Διαδικτυακών λογαριασμών…"
+#, fuzzy
+msgid "Another account"
+msgstr "Προσθήκη λογαριασμού"
 
 #, fuzzy
 msgid "Email account…"
 msgstr "Λογαριασμός αλληλογραφίας"
 
+#, fuzzy
+msgid "With an address and a password (IMAP)"
+msgstr "Εισαγάγετε πρώτα τη διεύθυνση email και τον κωδικό πρόσβασής σας."
+
+#, fuzzy
+msgid "For Google or Microsoft 365"
+msgstr "Microsoft 365"
+
 msgid "Continue"
 msgstr "Συνέχεια"
 
 #, fuzzy
-msgid "Add your accounts"
-msgstr "Προσθήκη λογαριασμού cloud"
+msgid "Added"
+msgstr "Λέξεις που προστέθηκαν"
 
 msgid "Add"
 msgstr "Προσθήκη"
+
+msgid "No mail accounts were found in Online Accounts."
+msgstr ""
+"Δεν βρέθηκαν λογαριασμοί αλληλογραφίας στους Διαδικτυακούς λογαριασμούς."
+
+msgid ""
+"Tegami Mail found these accounts in GNOME Online Accounts. One click adds "
+"each of them."
+msgstr ""
 
 msgid "Add your email account"
 msgstr "Προσθέστε τον λογαριασμό email σας"
@@ -5963,6 +5968,9 @@ msgstr ""
 "Η σύνδεση στο Google και στη Microsoft γίνεται μέσω των Διαδικτυακών "
 "λογαριασμών GNOME. Συνδεθείτε εκεί, ανοίξτε ξανά αυτό το παράθυρο και "
 "ενεργοποιήστε τον λογαριασμό στην αντίστοιχη ενότητα."
+
+msgid "Open Online Accounts…"
+msgstr "Άνοιγμα Διαδικτυακών λογαριασμών…"
 
 msgid "Outgoing (SMTP)"
 msgstr ""

@@ -5218,35 +5218,37 @@ msgstr "Se connecter"
 msgid "The sign-in window was closed."
 msgstr "La fenêtre de connexion a été fermée."
 
-msgid "Import your online accounts"
-msgstr "Importer vos comptes en ligne"
+msgid "Add your accounts"
+msgstr "Ajoutez vos comptes"
 
-msgid ""
-"Mail accounts signed in under GNOME Settings → Online Accounts can be added "
-"here in one click. Google accounts are only supported through GNOME Online "
-"Accounts."
-msgstr ""
-"Les comptes de messagerie connectés dans Paramètres GNOME → Comptes en ligne "
-"peuvent être ajoutés ici en un clic. Les comptes Google ne sont pris en "
-"charge que via Comptes en ligne de GNOME."
-
-msgid "No mail accounts were found in Online Accounts."
-msgstr "Aucun compte de messagerie n’a été trouvé dans Comptes en ligne."
-
-msgid "Open Online Accounts…"
-msgstr "Ouvrir Comptes en ligne…"
+msgid "Another account"
+msgstr "Un autre compte"
 
 msgid "Email account…"
 msgstr "Compte e-mail…"
 
+msgid "With an address and a password (IMAP)"
+msgstr "Avec une adresse et un mot de passe (IMAP)"
+
+msgid "For Google or Microsoft 365"
+msgstr "Pour ajouter Google ou Microsoft 365"
+
 msgid "Continue"
 msgstr "Continuer"
 
-msgid "Add your accounts"
-msgstr "Ajoutez vos comptes"
+msgid "Added"
+msgstr "Ajouté"
 
 msgid "Add"
 msgstr "Ajouter"
+
+msgid "No mail accounts were found in Online Accounts."
+msgstr "Aucun compte de messagerie n’a été trouvé dans Comptes en ligne."
+
+msgid ""
+"Tegami Mail found these accounts in GNOME Online Accounts. One click adds "
+"each of them."
+msgstr "Tegami Mail a trouvé ces comptes dans les Comptes en ligne de GNOME. Un seul geste suffit pour les ajouter."
 
 msgid "Add your email account"
 msgstr "Ajoutez votre compte e-mail"
@@ -5321,7 +5323,9 @@ msgstr "Bienvenue dans Tegami Mail"
 msgid ""
 "Your mail, in one place, simply. Let’s start by connecting your first "
 "account."
-msgstr "Votre courrier, au même endroit, simplement. Commençons par connecter votre premier compte."
+msgstr ""
+"Votre courrier, au même endroit, simplement. Commençons par connecter votre "
+"premier compte."
 
 msgid "Get started"
 msgstr "Commencer"
@@ -5335,7 +5339,9 @@ msgstr "Lire mon courrier"
 msgid ""
 "Tegami Mail is fetching the mail of {email}. It will appear in a moment. You "
 "can adjust the rest in the preferences."
-msgstr "Tegami Mail récupère le courrier de {email}. Il apparaîtra dans quelques instants. Vous pourrez ajuster le reste dans les préférences."
+msgstr ""
+"Tegami Mail récupère le courrier de {email}. Il apparaîtra dans quelques "
+"instants. Vous pourrez ajuster le reste dans les préférences."
 
 msgid ""
 "Offline: there is no network connection. Mail syncs again once the network "
@@ -5745,6 +5751,9 @@ msgstr ""
 "Google et Microsoft se connectent via les Comptes en ligne de GNOME. "
 "Connectez-vous-y, puis rouvrez cette fenêtre et activez le compte sous "
 "Comptes en ligne de GNOME."
+
+msgid "Open Online Accounts…"
+msgstr "Ouvrir Comptes en ligne…"
 
 msgid "Outgoing (SMTP)"
 msgstr "Envoi (SMTP)"

@@ -441,7 +441,7 @@ impl Welcome {
         let email = account.email.clone();
         match (&result.incoming, &result.smtp) {
             (Ok(_), Ok(_)) => {
-                self.added.push(account.email.clone());
+                self.listed_added(&account.email, &account.imap_host, widgets, &sender);
                 widgets.form.status_lbl.set_css_classes(&["success"]);
                 widgets.form.status_lbl.set_text(&i18n_f(
                     "✓ {email} — connected and added",
@@ -497,7 +497,12 @@ impl Welcome {
                 }
                 let email = account.email.clone();
                 account.oauth_refresh = refresh;
-                self.added.push(email.clone());
+                let host = if account.protocol == Protocol::Graph {
+                    String::from("Microsoft 365")
+                } else {
+                    account.imap_host.clone()
+                };
+                self.listed_added(&email, &host, widgets, &sender);
                 widgets.form.status_lbl.set_css_classes(&["success"]);
                 widgets.form.status_lbl.set_text(&i18n_f(
                     "✓ {email} — signed in and added",

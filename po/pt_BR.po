@@ -5347,37 +5347,43 @@ msgstr "Entrar"
 msgid "The sign-in window was closed."
 msgstr "A janela de acesso foi fechada."
 
-msgid "Import your online accounts"
-msgstr "Importar suas contas online"
+#, fuzzy
+msgid "Add your accounts"
+msgstr "Adicionar conta de armazenamento na nuvem"
 
-msgid ""
-"Mail accounts signed in under GNOME Settings → Online Accounts can be added "
-"here in one click. Google accounts are only supported through GNOME Online "
-"Accounts."
-msgstr ""
-"As contas de email conectadas em Configurações do GNOME → Contas online "
-"podem ser adicionadas aqui com um clique. As contas Google só são "
-"compatíveis por meio das Contas online do GNOME."
-
-msgid "No mail accounts were found in Online Accounts."
-msgstr "Não foram encontradas contas de email nas Contas online."
-
-msgid "Open Online Accounts…"
-msgstr "Abrir Contas online…"
+#, fuzzy
+msgid "Another account"
+msgstr "Adicionar conta"
 
 #, fuzzy
 msgid "Email account…"
 msgstr "Conta de email"
 
+#, fuzzy
+msgid "With an address and a password (IMAP)"
+msgstr "Digite primeiro seu endereço de email e a senha."
+
+#, fuzzy
+msgid "For Google or Microsoft 365"
+msgstr "Microsoft 365"
+
 msgid "Continue"
 msgstr "Continuar"
 
 #, fuzzy
-msgid "Add your accounts"
-msgstr "Adicionar conta de armazenamento na nuvem"
+msgid "Added"
+msgstr "Palavras adicionadas"
 
 msgid "Add"
 msgstr "Adicionar"
+
+msgid "No mail accounts were found in Online Accounts."
+msgstr "Não foram encontradas contas de email nas Contas online."
+
+msgid ""
+"Tegami Mail found these accounts in GNOME Online Accounts. One click adds "
+"each of them."
+msgstr ""
 
 msgid "Add your email account"
 msgstr "Adicione sua conta de email"
@@ -5892,6 +5898,9 @@ msgid ""
 msgstr ""
 "O Google e a Microsoft entram pelas Contas online do GNOME. Entre por lá, "
 "reabra esta janela e ative a conta em Contas online do GNOME."
+
+msgid "Open Online Accounts…"
+msgstr "Abrir Contas online…"
 
 msgid "Outgoing (SMTP)"
 msgstr ""

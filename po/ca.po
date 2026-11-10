@@ -5342,37 +5342,43 @@ msgstr "Inicia sessió"
 msgid "The sign-in window was closed."
 msgstr "La finestra d'inici de sessió s'ha tancat."
 
-msgid "Import your online accounts"
-msgstr "Importa els teus comptes en línia"
+#, fuzzy
+msgid "Add your accounts"
+msgstr "Afegeix un compte al núvol"
 
-msgid ""
-"Mail accounts signed in under GNOME Settings → Online Accounts can be added "
-"here in one click. Google accounts are only supported through GNOME Online "
-"Accounts."
-msgstr ""
-"Els comptes de correu amb sessió iniciada a Paràmetres del GNOME → Comptes "
-"en línia es poden afegir aquí amb un clic. Els comptes de Google només són "
-"compatibles a través dels comptes en línia del GNOME."
-
-msgid "No mail accounts were found in Online Accounts."
-msgstr "No s'ha trobat cap compte de correu als comptes en línia."
-
-msgid "Open Online Accounts…"
-msgstr "Obre els comptes en línia…"
+#, fuzzy
+msgid "Another account"
+msgstr "Afegeix un compte"
 
 #, fuzzy
 msgid "Email account…"
 msgstr "Compte de correu"
 
+#, fuzzy
+msgid "With an address and a password (IMAP)"
+msgstr "Introdueix primer la teva adreça de correu i la contrasenya."
+
+#, fuzzy
+msgid "For Google or Microsoft 365"
+msgstr "Microsoft 365"
+
 msgid "Continue"
 msgstr "Continua"
 
 #, fuzzy
-msgid "Add your accounts"
-msgstr "Afegeix un compte al núvol"
+msgid "Added"
+msgstr "Paraules afegides"
 
 msgid "Add"
 msgstr "Afegeix"
+
+msgid "No mail accounts were found in Online Accounts."
+msgstr "No s'ha trobat cap compte de correu als comptes en línia."
+
+msgid ""
+"Tegami Mail found these accounts in GNOME Online Accounts. One click adds "
+"each of them."
+msgstr ""
 
 msgid "Add your email account"
 msgstr "Afegeix el teu compte de correu"
@@ -5886,6 +5892,9 @@ msgstr ""
 "Google i Microsoft inicien sessió a través dels comptes en línia del GNOME. "
 "Inicia sessió allà, després reobre aquesta finestra i activa el compte a "
 "«Comptes en línia del GNOME»."
+
+msgid "Open Online Accounts…"
+msgstr "Obre els comptes en línia…"
 
 msgid "Outgoing (SMTP)"
 msgstr ""

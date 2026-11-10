@@ -5543,37 +5543,43 @@ msgstr "Bejelentkezés"
 msgid "The sign-in window was closed."
 msgstr ""
 
-msgid "Import your online accounts"
-msgstr "Internetes Fiók importálása"
+#, fuzzy
+msgid "Add your accounts"
+msgstr "Felhőfiók hozzáadása"
 
-msgid ""
-"Mail accounts signed in under GNOME Settings → Online Accounts can be added "
-"here in one click. Google accounts are only supported through GNOME Online "
-"Accounts."
-msgstr ""
-"A GNOME Beállítások → Internetes Fiókok menüpont alatt bejelentkezett e-mail-"
-"fiókokat itt egy kattintással hozzáadhatja. A Google-fiókok kizárólag a "
-"GNOME Internetes Fiókok menüpontból támogatottak."
-
-msgid "No mail accounts were found in Online Accounts."
-msgstr "Nincs még levélfiók az Internetes Fiókokban beállítva."
-
-msgid "Open Online Accounts…"
-msgstr "Internetes Fiókok megnyitása…"
+#, fuzzy
+msgid "Another account"
+msgstr "Fiók hozzáadása"
 
 #, fuzzy
 msgid "Email account…"
 msgstr "E-mail fiók"
 
+#, fuzzy
+msgid "With an address and a password (IMAP)"
+msgstr "Először adja meg az e-mail-címét és a jelszavát."
+
+#, fuzzy
+msgid "For Google or Microsoft 365"
+msgstr "Microsoft 365 / Outlook"
+
 msgid "Continue"
 msgstr "Folytatás"
 
 #, fuzzy
-msgid "Add your accounts"
-msgstr "Felhőfiók hozzáadása"
+msgid "Added"
+msgstr "Hozzáadott szavak"
 
 msgid "Add"
 msgstr "Hozzáadás"
+
+msgid "No mail accounts were found in Online Accounts."
+msgstr "Nincs még levélfiók az Internetes Fiókokban beállítva."
+
+msgid ""
+"Tegami Mail found these accounts in GNOME Online Accounts. One click adds "
+"each of them."
+msgstr ""
 
 msgid "Add your email account"
 msgstr "E-mail-fiók hozzáadása"
@@ -6088,6 +6094,9 @@ msgstr ""
 "2. Térjen vissza a Tegamihez, és nyissa meg újra ezt az ablakot — a fiók "
 "ekkor az ablak tetején, a „GNOME Internetes Fiókok” alatt jelenik meg. Ott "
 "engedélyezze."
+
+msgid "Open Online Accounts…"
+msgstr "Internetes Fiókok megnyitása…"
 
 msgid "Outgoing (SMTP)"
 msgstr ""

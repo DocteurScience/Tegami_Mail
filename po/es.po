@@ -5368,37 +5368,43 @@ msgstr "Iniciar sesión"
 msgid "The sign-in window was closed."
 msgstr "Se ha cerrado la ventana de inicio de sesión."
 
-msgid "Import your online accounts"
-msgstr "Importa tus cuentas en línea"
+#, fuzzy
+msgid "Add your accounts"
+msgstr "Añadir cuenta en la nube"
 
-msgid ""
-"Mail accounts signed in under GNOME Settings → Online Accounts can be added "
-"here in one click. Google accounts are only supported through GNOME Online "
-"Accounts."
-msgstr ""
-"Las cuentas de correo con sesión iniciada en Ajustes de GNOME → Cuentas en "
-"línea se pueden añadir aquí con un solo clic. Las cuentas de Google solo son "
-"compatibles mediante Cuentas en línea de GNOME."
-
-msgid "No mail accounts were found in Online Accounts."
-msgstr "No se encontraron cuentas de correo en Cuentas en línea."
-
-msgid "Open Online Accounts…"
-msgstr "Abrir Cuentas en línea…"
+#, fuzzy
+msgid "Another account"
+msgstr "Añadir cuenta"
 
 #, fuzzy
 msgid "Email account…"
 msgstr "Cuenta de correo"
 
+#, fuzzy
+msgid "With an address and a password (IMAP)"
+msgstr "Introduce primero tu dirección de correo electrónico y contraseña."
+
+#, fuzzy
+msgid "For Google or Microsoft 365"
+msgstr "Microsoft 365"
+
 msgid "Continue"
 msgstr "Continuar"
 
 #, fuzzy
-msgid "Add your accounts"
-msgstr "Añadir cuenta en la nube"
+msgid "Added"
+msgstr "Palabras añadidas"
 
 msgid "Add"
 msgstr "Añadir"
+
+msgid "No mail accounts were found in Online Accounts."
+msgstr "No se encontraron cuentas de correo en Cuentas en línea."
+
+msgid ""
+"Tegami Mail found these accounts in GNOME Online Accounts. One click adds "
+"each of them."
+msgstr ""
 
 msgid "Add your email account"
 msgstr "Añade tu cuenta de correo"
@@ -5915,6 +5921,9 @@ msgstr ""
 "Google y Microsoft inician sesión mediante Cuentas en línea de GNOME. Inicia "
 "sesión allí, vuelve a abrir esta ventana y activa la cuenta en Cuentas en "
 "línea de GNOME."
+
+msgid "Open Online Accounts…"
+msgstr "Abrir Cuentas en línea…"
 
 msgid "Outgoing (SMTP)"
 msgstr ""

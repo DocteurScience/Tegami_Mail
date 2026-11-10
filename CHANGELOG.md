@@ -9,7 +9,11 @@
   (the language is the system's; a language chosen before still applies),
   and so do the privacy and "Make it yours" pages: their defaults are those
   of Preferences. Closing the wizard counts as finishing it: it does not
-  open again by itself.
+  open again by itself. **Add your accounts** lists the GNOME Online
+  Accounts mail accounts, each with **Add**, which becomes a check and
+  **Added**; the accounts added by hand join the list; **Another account**
+  offers an email account by hand and Online Accounts. An account added in
+  GNOME Settings meanwhile appears on coming back, without "Scan again".
 
 - **Changed: the filter and smart folder editors** (screens 38 and 40).
   A filter's criteria are one list under **If**: a row per criterion that

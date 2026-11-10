@@ -47,8 +47,9 @@ connection test's text can be selected and copied.
 
 Any mail account set up in *GNOME Settings → Online Accounts* can be
 imported: Google, Microsoft 365 and plain **IMAP and SMTP** accounts alike.
-They are listed on the first-run wizard's first account page, which can be
-skipped, and under **Preferences → Accounts → Add account… → GNOME Online
+They are listed on the first-run wizard's accounts page, where **Add**
+brings each one in (and an account added in GNOME Settings meanwhile shows
+up when you come back), and under **Preferences → Accounts → Add account… → GNOME Online
 Account…**, where a switch brings one into Tegami Mail. An account added in
 GNOME Settings while Tegami Mail is open joins the list as soon as GNOME
 announces it; the refresh button at the top of that page looks again at

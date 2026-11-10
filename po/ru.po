@@ -5544,37 +5544,43 @@ msgstr "Войти"
 msgid "The sign-in window was closed."
 msgstr "Окно входа было закрыто."
 
-msgid "Import your online accounts"
-msgstr "Импортировать сетевые учётные записи"
+#, fuzzy
+msgid "Add your accounts"
+msgstr "Добавить облачную учётную запись"
 
-msgid ""
-"Mail accounts signed in under GNOME Settings → Online Accounts can be added "
-"here in one click. Google accounts are only supported through GNOME Online "
-"Accounts."
-msgstr ""
-"Почтовые учётные записи, подключённые в меню «Параметры GNOME → Сетевые "
-"учётные записи», можно добавить отсюда в один клик. Учётные записи Google "
-"поддерживаются только через «Сетевые учётные записи GNOME»."
-
-msgid "No mail accounts were found in Online Accounts."
-msgstr "В «Сетевых учётных записях» не найдено почтовых аккаунтов."
-
-msgid "Open Online Accounts…"
-msgstr "Открыть «Сетевые учётные записи»…"
+#, fuzzy
+msgid "Another account"
+msgstr "Добавить учётную запись"
 
 #, fuzzy
 msgid "Email account…"
 msgstr "Почтовая учётная запись"
 
+#, fuzzy
+msgid "With an address and a password (IMAP)"
+msgstr "Сначала введите адрес электронной почты и пароль."
+
+#, fuzzy
+msgid "For Google or Microsoft 365"
+msgstr "Microsoft 365 / Outlook"
+
 msgid "Continue"
 msgstr "Продолжить"
 
 #, fuzzy
-msgid "Add your accounts"
-msgstr "Добавить облачную учётную запись"
+msgid "Added"
+msgstr "Добавленные слова"
 
 msgid "Add"
 msgstr "Добавить"
+
+msgid "No mail accounts were found in Online Accounts."
+msgstr "В «Сетевых учётных записях» не найдено почтовых аккаунтов."
+
+msgid ""
+"Tegami Mail found these accounts in GNOME Online Accounts. One click adds "
+"each of them."
+msgstr ""
 
 msgid "Add your email account"
 msgstr "Добавление учётной записи электронной почты"
@@ -6094,6 +6100,9 @@ msgstr ""
 "2. Вернитесь в Tegami Mail и снова откройте это окно — учётная запись "
 "появится в разделе «Сетевые учётные записи GNOME» вверху этого окна. "
 "Включите её там."
+
+msgid "Open Online Accounts…"
+msgstr "Открыть «Сетевые учётные записи»…"
 
 msgid "Outgoing (SMTP)"
 msgstr ""
