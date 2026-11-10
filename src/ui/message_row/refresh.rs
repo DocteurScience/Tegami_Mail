@@ -270,20 +270,15 @@ impl Row {
         w.tags_col.set_visible(single && col(ListColumn::Tags));
         self.render_tags(msg, shared, look);
         if !single {
-            let below = look.pills_below;
-            let home = if below {
-                &w.pills_line
-            } else {
-                &w.subject_line
-            };
-            if w.tags_box.parent().as_ref() != Some(home.upcast_ref()) {
+            // The chips go on a line of their own under the preview
+            // (docs/DESIGN.md, "Message list").
+            if w.tags_box.parent().as_ref() != Some(w.pills_line.upcast_ref()) {
                 if let Some(from) = w.tags_box.parent().and_downcast::<gtk::Box>() {
                     from.remove(&w.tags_box);
                 }
-                home.append(&w.tags_box);
+                w.pills_line.append(&w.tags_box);
             }
-            w.pills_line
-                .set_visible(below && w.tags_box.first_child().is_some());
+            w.pills_line.set_visible(w.tags_box.first_child().is_some());
         }
     }
 
@@ -312,7 +307,7 @@ impl Row {
     /// Whether the row takes swipes now.
     fn refresh_swipe_state(&self, shared: &RowShared, look: &RowLook) {
         let w = &self.w;
-        w.surface.set_sensitivity(shared.swipe_sensitivity.get());
+        w.surface.set_sensitivity(crate::config::SWIPE_SENSITIVITY);
         if let Some(t) = self.tracker.borrow().as_ref() {
             // A committing row takes no new gestures — it is on its way out.
             // A single line swipes not at all: sideways is how a list wider

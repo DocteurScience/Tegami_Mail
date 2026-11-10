@@ -292,21 +292,11 @@ impl Row {
     }
 
     fn swipe_left_action(&self) -> RowAction {
-        let reversed = self.shared().is_some_and(|s| s.swipe_reversed.get());
-        if reversed {
-            RowAction::Archive
-        } else {
-            RowAction::Delete
-        }
+        RowAction::Delete
     }
 
     fn swipe_right_action(&self) -> RowAction {
-        let reversed = self.shared().is_some_and(|s| s.swipe_reversed.get());
-        if reversed {
-            RowAction::Delete
-        } else {
-            RowAction::Archive
-        }
+        RowAction::Archive
     }
 
     /// The action the strip is showing — the last side it grew from, so it

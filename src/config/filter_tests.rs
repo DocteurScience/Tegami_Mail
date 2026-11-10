@@ -531,24 +531,6 @@ dest_path = "Lists"
     assert!(!text.contains("any"), "{text}");
 }
 
-/// Grouping by date is on for a new install and for one whose file
-/// predates it, once; switched off afterwards, it stays off.
-#[test]
-fn date_groups_default_reaches_existing_installs_once() {
-    let mut old: PrivacyFile = toml::from_str("list_group_by_date = false\n").unwrap();
-    assert!(apply_new_defaults(&mut old));
-    assert!(old.list_group_by_date);
-    old.list_group_by_date = false;
-    let mut again: PrivacyFile = toml::from_str(&toml::to_string_pretty(&old).unwrap()).unwrap();
-    assert!(!apply_new_defaults(&mut again));
-    assert!(!again.list_group_by_date);
-    let mut fresh = PrivacyFile::default();
-    assert!(fresh.list_group_by_date);
-    fresh.list_group_by_date = false;
-    apply_new_defaults(&mut fresh);
-    assert!(!fresh.list_group_by_date);
-}
-
 /// A new install opens a lone message in a card (2026-11-07), and a file
 /// from before the card default of #153 is brought up to it once.
 #[test]

@@ -75,11 +75,10 @@ pub(super) fn hold_top(adj: &gtk::Adjustment, shared: &Rc<RowShared>) {
     });
 }
 
-/// The search field's and the bulk bar's revealers, and the boxes above
-/// and below the rows that hold them (#496).
+/// The search field's and the bulk bar's revealers, and the box above the
+/// rows that holds them.
 pub(super) struct BarSlots {
     pub(super) top: gtk::Box,
-    pub(super) bottom: gtk::Box,
     pub(super) search: gtk::Revealer,
     pub(super) bulk: gtk::Revealer,
 }
@@ -108,48 +107,17 @@ impl MessageList {
         !self.index_complete && (self.at_bottom || self.shown.is_empty())
     }
 
-    /// Put the search field and the bulk bar above or under the rows, as
-    /// set (#496). Sharing a side, the search field is the outer one, so
-    /// a selection coming and going never moves it.
+    /// Put the search field and then the bulk bar above the rows: the
+    /// search field is the outer one, so a selection coming and going never
+    /// moves it.
     pub(super) fn place_bars(&self) {
         let Some(bars) = &self.bars else { return };
         for revealer in [&bars.search, &bars.bulk] {
             if let Some(parent) = revealer.parent().and_downcast::<gtk::Box>() {
                 parent.remove(revealer);
             }
-        }
-        let slide = |bottom: bool| {
-            if bottom {
-                gtk::RevealerTransitionType::SlideUp
-            } else {
-                gtk::RevealerTransitionType::SlideDown
-            }
-        };
-        bars.search.set_transition_type(slide(self.search_bottom));
-        bars.bulk.set_transition_type(slide(self.bulk_bottom));
-        if !self.search_bottom {
-            bars.top.append(&bars.search);
-        }
-        if self.bulk_bottom {
-            bars.bottom.append(&bars.bulk);
-        } else {
-            bars.top.append(&bars.bulk);
-        }
-        if self.search_bottom {
-            bars.bottom.append(&bars.search);
-        }
-        if let Some(picker) = &self.scope_picker {
-            // The scope menu opens toward the rows.
-            picker.button.set_direction(if self.search_bottom {
-                gtk::ArrowType::Up
-            } else {
-                gtk::ArrowType::Down
-            });
-            picker.arrow.set_icon_name(Some(if self.search_bottom {
-                "pan-up-symbolic"
-            } else {
-                "pan-down-symbolic"
-            }));
+            revealer.set_transition_type(gtk::RevealerTransitionType::SlideDown);
+            bars.top.append(revealer);
         }
     }
 
@@ -213,7 +181,6 @@ impl MessageList {
             look.avatars = self.avatars;
             look.sender_logos = self.sender_logos;
             look.preview_lines = self.preview_lines;
-            look.pills_below = self.pills_below;
             look.single_line = self.single_line;
             look.columns = self
                 .columns

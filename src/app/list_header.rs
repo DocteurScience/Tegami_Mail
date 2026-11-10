@@ -17,12 +17,6 @@ use super::model::AppModel;
 use super::msg::AppMsg;
 use super::AppModelWidgets;
 
-/// How wide the list pane has to be dragged before Automatic lays the list
-/// out on one line, and how far back before it returns to cards (#334).
-pub(super) const LIST_WIDE_ON: i32 = 600;
-
-const LIST_WIDE_OFF: i32 = 560;
-
 /// The message list header's Sort and display popover, its sort action,
 /// and the filter widgets, kept to be set from elsewhere.
 pub(super) struct ListHeaderWidgets {
@@ -185,24 +179,11 @@ impl AppModel {
         }
     }
 
-    /// Where the list's search field and bulk bar open (#496).
-    pub(super) fn push_list_bars(&self) {
-        self.message_list.emit(MessageListInput::SetBarsPlacement {
-            search_bottom: self.list_search_bottom,
-            bulk_bottom: self.list_bulk_bar_bottom,
-        });
-    }
-
-    /// Tell the list whether to lay messages out on one line (#334): the
-    /// Layout setting, or for Automatic, the width of the pane.
+    /// Tell the list whether to lay messages out on one line (#334): with
+    /// the reader beside it the list is cards, with the reader below or off
+    /// it is a table (#475).
     pub(super) fn push_single_line(&self) {
-        // With the reader below or off the list is a table (#475).
-        let on = match self.list_layout {
-            _ if self.reading_pane != config::ReadingPane::Right => true,
-            config::ListLayout::Cards => false,
-            config::ListLayout::SingleLine => true,
-            config::ListLayout::Automatic => self.list_wide,
-        };
+        let on = self.reading_pane != config::ReadingPane::Right;
         self.message_list.emit(MessageListInput::SetSingleLine(on));
     }
 
@@ -266,22 +247,6 @@ impl AppModel {
     /// The messages the router sends here (see `AppModel::route`).
     pub(super) fn on_list_header(&mut self, msg: AppMsg) {
         match msg {
-            AppMsg::ListPaneWidth(width) => {
-                // A margin each way, so a drag that rests near the line does
-                // not flick the rows back and forth.
-                let wide = if self.list_wide {
-                    width >= LIST_WIDE_OFF
-                } else {
-                    width >= LIST_WIDE_ON
-                };
-                if wide != self.list_wide {
-                    self.list_wide = wide;
-                    if self.list_layout == config::ListLayout::Automatic {
-                        self.push_single_line();
-                    }
-                }
-            }
-
             AppMsg::ListCount(text) => {
                 // The match count under the filter chips follows the
                 // header's.

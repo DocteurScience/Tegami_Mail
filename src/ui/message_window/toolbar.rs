@@ -168,10 +168,10 @@ impl MessageWindow {
             )));
     }
 
-    /// Whether the right group is in the ⋯ menu: by choice, or for want of
-    /// room.
+    /// The right group is in the ⋯ menu at every width (docs/DESIGN.md,
+    /// "Header bars").
     fn right_folded(&self) -> bool {
-        self.fold_right || self.collapsed
+        true
     }
 
     /// The buttons' state: which show (the right group only while the row

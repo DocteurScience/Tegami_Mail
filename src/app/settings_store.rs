@@ -47,8 +47,6 @@ impl AppModel {
             notification_buttons: self.notification_buttons.to_list(),
             settings_open_accounts: self.settings_open_accounts,
             swipe_enabled: self.swipe_enabled,
-            swipe_reversed: self.swipe_reversed,
-            swipe_sensitivity: self.swipe_sensitivity,
             compose_default_from: self.compose_default_from.clone(),
             paste_plain: self.paste_plain,
             return_paragraph: self.return_paragraph,
@@ -71,18 +69,11 @@ impl AppModel {
             single_card_default_applied: true,
             spellcheck_langs: self.spellcheck_langs.clone(),
             preview_lines: self.preview_lines,
-            list_layout: self.list_layout,
             list_columns: config::ListColumn::to_keys(&self.list_columns),
             list_headings: self.list_headings,
             list_column_scroll: self.list_column_scroll,
-            list_group_by_date: self.list_group_by_date,
-            list_pills_below: self.list_pills_below,
-            date_groups_default_applied: true,
             list_search_open: self.list_search_open,
             contact_names: self.contact_names,
-            list_search_bottom: self.list_search_bottom,
-            list_bulk_bar_bottom: self.list_bulk_bar_bottom,
-            toolbar_fold_right: self.toolbar_fold_right,
             list_column_widths: config::list_column_widths_to(&self.list_column_widths),
             single_key_shortcuts: self.single_key.get(),
             gmail_keys: self.gmail_keys.get(),
@@ -156,7 +147,6 @@ impl AppModel {
             .emit(MessageListInput::SetColumnScroll(self.list_column_scroll));
         self.message_list
             .emit(MessageListInput::SetSearchPinned(self.list_search_open));
-        self.push_list_bars();
         self.message_list.emit(MessageListInput::SetColumnWidths(
             self.list_column_widths.clone(),
         ));

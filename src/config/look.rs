@@ -147,23 +147,6 @@ impl ReadingPane {
     }
 }
 
-/// How the message list lays out a message (#334).
-#[derive(Clone, Copy, Debug, Default, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
-#[serde(rename_all = "snake_case")]
-pub(crate) enum ListLayout {
-    /// Sender, subject and preview on lines of their own.
-    #[default]
-    Cards,
-    /// One line per message, in columns.
-    SingleLine,
-    /// One line when the list pane is wide, cards when it is narrow.
-    Automatic,
-}
-
-pub(crate) fn load_list_layout() -> ListLayout {
-    load_privacy().list_layout
-}
-
 /// One column of the single-line message list (#334).
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub(crate) enum ListColumn {

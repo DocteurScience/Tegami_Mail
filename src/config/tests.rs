@@ -144,8 +144,8 @@ fn list_columns_keep_their_order_and_the_subject() {
         super::list_column_widths_to(&widths).get("sender"),
         Some(&240)
     );
-    // A settings file from before the columns has the old layout.
-    let old: PrivacyFile = toml::from_str("list_layout = \"single_line\"").unwrap();
+    // A settings file from before the columns gets the default ones.
+    let old: PrivacyFile = toml::from_str("").unwrap();
     assert_eq!(
         ListColumn::from_keys(&old.list_columns),
         ListColumn::DEFAULT.to_vec()

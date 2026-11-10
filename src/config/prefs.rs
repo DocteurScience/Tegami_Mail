@@ -504,26 +504,17 @@ pub(crate) fn load_notification_buttons() -> NotificationButtons {
     NotificationButtons::from_list(&load_privacy().notification_buttons)
 }
 
-/// The narrowest and widest trackpad swipe sensitivity the setting offers,
-/// also the clamp a hand-edited file is held to (0 would divide by zero).
+/// The narrowest and widest trackpad swipe sensitivity a row takes (0 would
+/// divide by zero).
 pub(crate) const SWIPE_SENSITIVITY_MIN: f64 = 1.0;
 pub(crate) const SWIPE_SENSITIVITY_MAX: f64 = 10.0;
 
-pub(super) fn default_swipe_sensitivity() -> f64 {
-    // libadwaita spends a fixed 400px of scroll on a full swipe whatever the
-    // row asks for, so at 1.0 a trackpad needs 240px of two-finger travel to
-    // reach the commit distance — more than most touchpads can give in one
-    // go. 3.5 puts the row roughly under the fingers instead.
-    3.5
-}
-
 /// How far a trackpad's two-finger swipe has to travel to fire the action
-/// (higher = shorter swipe).
-pub(crate) fn load_swipe_sensitivity() -> f64 {
-    load_privacy()
-        .swipe_sensitivity
-        .clamp(SWIPE_SENSITIVITY_MIN, SWIPE_SENSITIVITY_MAX)
-}
+/// (higher = shorter swipe). libadwaita spends a fixed 400px of scroll on a
+/// full swipe whatever the row asks for, so at 1.0 a trackpad needs 240px of
+/// two-finger travel to reach the commit distance, more than most touchpads
+/// give in one go; 3.5 puts the row roughly under the fingers instead.
+pub(crate) const SWIPE_SENSITIVITY: f64 = 3.5;
 
 /// The delays Settings → Composing offers for Undo Send (#434), in seconds.
 pub(crate) const UNDO_SEND_CHOICES: [u32; 6] = [0, 3, 5, 10, 20, 30];

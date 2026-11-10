@@ -317,7 +317,6 @@ impl SimpleComponent for AppModel {
                         // position-notify fires per pixel of a drag (and when the
                         // window squeezes the pane), one write once it settles.
                         connect_position_notify[
-                            sender,
                             pending = std::rc::Rc::new(std::cell::RefCell::new(
                                 None::<gtk::glib::SourceId>,
                             ))
@@ -325,11 +324,6 @@ impl SimpleComponent for AppModel {
                             let pos = p.position();
                             // With the reader below, the list's height (#475).
                             let below = p.orientation() == gtk::Orientation::Vertical;
-                            // Automatic layout follows the width as it is
-                            // dragged, not once the drag has settled (#334).
-                            if !below {
-                                sender.input(AppMsg::ListPaneWidth(pos));
-                            }
                             if let Some(id) = pending.borrow_mut().take() {
                                 id.remove();
                             }

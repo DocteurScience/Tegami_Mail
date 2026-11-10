@@ -37,8 +37,6 @@ notification_buttons = [
 ]
 settings_open_accounts = false
 swipe_enabled = true
-swipe_reversed = false
-swipe_sensitivity = 3.5
 compose_default_from = ""
 single_card_default_applied = false
 paste_plain = true
@@ -61,7 +59,6 @@ seen_counts = false
 app_theme = "system"
 text_scale = 100
 preview_lines = 1
-list_layout = "cards"
 list_columns = [
     "star",
     "replied",
@@ -73,14 +70,8 @@ list_columns = [
 ]
 list_headings = false
 list_column_scroll = false
-list_group_by_date = true
-list_pills_below = true
-date_groups_default_applied = false
 list_search_open = false
 contact_names = false
-list_search_bottom = false
-list_bulk_bar_bottom = false
-toolbar_fold_right = false
 single_key_shortcuts = false
 gmail_keys = false
 keep_downloads_days = 0

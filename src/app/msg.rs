@@ -706,8 +706,6 @@ pub(crate) enum AppMsg {
     },
 
     // ---- on_list_header (list_header.rs) ----
-    /// The list pane is this wide now (a drag of the divider, #334).
-    ListPaneWidth(i32),
     /// The message list's visible-count text changed.
     ListCount(String),
     /// A column heading was dragged to a new width (#334): keep it.

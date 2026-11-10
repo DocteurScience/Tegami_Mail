@@ -200,14 +200,6 @@ impl MessageList {
         }
     }
 
-    pub(super) fn on_set_bars_placement(&mut self, search_bottom: bool, bulk_bottom: bool) {
-        if (self.search_bottom, self.bulk_bottom) != (search_bottom, bulk_bottom) {
-            self.search_bottom = search_bottom;
-            self.bulk_bottom = bulk_bottom;
-            self.place_bars();
-        }
-    }
-
     pub(super) fn on_set_search_pinned(&mut self, on: bool) {
         self.search_pinned = on;
         // Unpinned, it stays only while it holds a search.

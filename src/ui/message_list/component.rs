@@ -137,11 +137,8 @@ impl SimpleComponent for MessageList {
                 },
             },
 
-            // The bars set to open below the rows (#496): one coming up
-            // shrinks the list from its foot and never moves the rows being
-            // read or clicked, as the status bar does (#433). The view
-            // builds both bars here; `place_bars` puts them where the
-            // settings say.
+            // The view builds both bars here; `place_bars` moves them above
+            // the rows.
             #[name = "bars_bottom"]
             gtk::Box {
                 add_css_class: "list-footer",
@@ -367,7 +364,6 @@ impl SimpleComponent for MessageList {
 
         model.bars = Some(BarSlots {
             top: widgets.bars_top.clone(),
-            bottom: widgets.bars_bottom.clone(),
             search: widgets.search_revealer.clone(),
             bulk: widgets.bulk_revealer.clone(),
         });
@@ -513,10 +509,6 @@ impl SimpleComponent for MessageList {
             } => self.on_resize_column(column, width, done, &sender),
             MessageListInput::SetColumnWidths(widths) => self.on_set_column_widths(widths),
             MessageListInput::RefreshHeadings => self.sync_headings(),
-            MessageListInput::SetBarsPlacement {
-                search_bottom,
-                bulk_bottom,
-            } => self.on_set_bars_placement(search_bottom, bulk_bottom),
             MessageListInput::SetSearchPinned(on) => self.on_set_search_pinned(on),
             MessageListInput::SetColumnScroll(on) => self.on_set_column_scroll(on),
             MessageListInput::PaneWidth(width) => self.on_pane_width(width),

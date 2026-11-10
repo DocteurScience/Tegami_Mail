@@ -129,11 +129,10 @@ impl MessageList {
         let mut graph: Vec<&u32> = self.graph_accounts.iter().collect();
         graph.sort();
         format!(
-            "{:?}{}{}{}{:?}{:?}{}{:?}{:?}{}",
+            "{:?}{}{}{:?}{:?}{}{:?}{:?}{}",
             self.sort,
             self.sort_reversed,
             self.threading,
-            self.group_by_date,
             self.columns,
             self.quick,
             self.thread_row_newest,
@@ -265,8 +264,7 @@ impl MessageList {
         if !self.shared.model.replace(snap.rows, stale) && stale {
             self.shared.refresh_all();
         }
-        let by_date = self.group_by_date
-            && matches!(self.sort, SortOrder::DateNewest | SortOrder::DateOldest);
+        let by_date = matches!(self.sort, SortOrder::DateNewest | SortOrder::DateOldest);
         self.show_headings(by_date);
         self.select_current();
         tracing::debug!(

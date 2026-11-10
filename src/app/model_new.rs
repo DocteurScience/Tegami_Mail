@@ -14,7 +14,6 @@ use super::boot::{Boot, MainMenu};
 use super::children::Children;
 use super::consts::{ATTACHMENT_CACHE_BUDGET, BODY_CACHE_BUDGET};
 use super::demo::{demo_account_configs_saved, demo_filters, demo_mode, demo_tags};
-use super::list_header::LIST_WIDE_ON;
 use super::model::AppModel;
 use super::transfer::TransferTally;
 use super::types::UnifiedView;
@@ -286,20 +285,13 @@ impl AppModel {
             last_settings_page: None,
             list_count: String::new(),
             preview_lines: config::load_preview_lines(),
-            list_layout: config::load_list_layout(),
             list_columns: config::load_list_columns(),
             list_headings: prefs.list_headings,
             list_column_scroll: prefs.list_column_scroll,
-            list_group_by_date: prefs.list_group_by_date,
-            list_pills_below: prefs.list_pills_below,
             list_search_open: prefs.list_search_open,
             search_active: false,
             contact_names: prefs.contact_names,
-            list_search_bottom: prefs.list_search_bottom,
-            list_bulk_bar_bottom: prefs.list_bulk_bar_bottom,
-            toolbar_fold_right: prefs.toolbar_fold_right,
             list_column_widths: config::load_list_column_widths(),
-            list_wide: config::load_list_pane_width() >= LIST_WIDE_ON,
             shortcuts_win: None,
             run_in_background: std::rc::Rc::new(std::cell::Cell::new(prefs.run_in_background)),
             autostart: config::load_autostart(),
@@ -411,8 +403,6 @@ impl AppModel {
             confirm_thread_delete: prefs.confirm_thread_delete,
             selection_from_cards: false,
             swipe_enabled: prefs.swipe_enabled,
-            swipe_reversed: prefs.swipe_reversed,
-            swipe_sensitivity: config::load_swipe_sensitivity(),
             compose_default_from: prefs.compose_default_from,
             paste_plain: prefs.paste_plain,
             return_paragraph: prefs.return_paragraph,

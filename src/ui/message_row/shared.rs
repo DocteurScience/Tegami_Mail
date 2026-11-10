@@ -34,8 +34,6 @@ pub(crate) struct RowLook {
     pub(crate) min_width: i32,
     /// How many lines of the message's text a row shows (0–3).
     pub(crate) preview_lines: u32,
-    /// A card's pills go on a line of their own under its text (#374).
-    pub(crate) pills_below: bool,
     /// The folder each result of a search across folders is in, by
     /// `(account_id, folder_id)`, worn as its first pill (#374). Empty
     /// otherwise.
@@ -66,7 +64,6 @@ impl Default for RowLook {
             widths: HashMap::new(),
             min_width: -1,
             preview_lines: 1,
-            pills_below: false,
             folder_pills: Default::default(),
             in_junk: false,
             in_drafts: false,
@@ -111,12 +108,8 @@ pub(crate) struct RowShared {
     pub(crate) snoozed: RefCell<SnoozedRows>,
     /// Sent mail's read receipts (#520).
     pub(crate) receipt_marks: RefCell<crate::models::ReceiptMarks>,
-    /// Swap which side a swipe archives or deletes on.
-    pub(crate) swipe_reversed: Cell<bool>,
     /// Whether the swipe gesture is on at all (#92).
     pub(crate) swipe_enabled: Cell<bool>,
-    /// How sensitive a trackpad's two-finger swipe is.
-    pub(crate) swipe_sensitivity: Cell<f64>,
     pub(crate) input: relm4::Sender<MessageListInput>,
     pub(crate) model: MessageModel,
     pub(crate) selection: gtk::MultiSelection,
@@ -156,9 +149,7 @@ impl RowShared {
             account_names: RefCell::new(HashMap::new()),
             snoozed: RefCell::new(SnoozedRows::default()),
             receipt_marks: RefCell::new(Default::default()),
-            swipe_reversed: Cell::new(privacy.swipe_reversed),
             swipe_enabled: Cell::new(privacy.swipe_enabled),
-            swipe_sensitivity: Cell::new(crate::config::load_swipe_sensitivity()),
             input,
             model,
             selection,

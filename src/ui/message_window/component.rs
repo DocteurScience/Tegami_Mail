@@ -115,7 +115,6 @@ impl Component for MessageWindow {
             restorable: init.restorable,
             snooze: init.snooze,
             collapsed: false,
-            fold_right: init.toolbar_fold_right,
             window: root.clone(),
             content: gtk::Overlay::new(),
             bar: Toolbar {

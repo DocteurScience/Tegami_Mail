@@ -126,8 +126,6 @@ pub(crate) struct AppModel {
     pub(super) mail_split: std::cell::OnceCell<gtk::Paned>,
     /// A print with the reading pane off, waiting for its bodies.
     pub(super) pending_print: Option<super::reading_pane::PendingPrint>,
-    /// The right group stays in the ⋯ menu at every width.
-    pub(super) toolbar_fold_right: bool,
     /// The collapsed header's ⋯ button — the anchor its menu pops from.
     pub(super) reader_overflow_btn: gtk::Button,
     /// The reader header's layout: which buttons, which side, what order
@@ -387,8 +385,6 @@ pub(crate) struct AppModel {
     pub(super) list_count: String,
     /// Lines of preview text per message-list row (1–3).
     pub(super) preview_lines: u32,
-    /// The message list's layout setting (#334).
-    pub(super) list_layout: config::ListLayout,
     /// The columns of a single-line list, in order (#334).
     pub(super) list_columns: Vec<config::ListColumn>,
     /// Headings over them, which sort the list when clicked (#334).
@@ -396,24 +392,14 @@ pub(crate) struct AppModel {
     /// A single line too wide for the pane scrolls rather than fitting its
     /// columns (#443).
     pub(super) list_column_scroll: bool,
-    /// Date headings over a list sorted by date (#435).
-    pub(super) list_group_by_date: bool,
-    /// A card's pills on a line under its text (#374).
-    pub(super) list_pills_below: bool,
     /// The list's search field stays open (#446).
     pub(super) list_search_open: bool,
     /// A search is showing its results, which span every account.
     pub(super) search_active: bool,
     /// Saved contacts go by their address-book names (#541).
     pub(super) contact_names: bool,
-    /// The list's search field and bulk bar open under the rows (#496).
-    pub(super) list_search_bottom: bool,
-    pub(super) list_bulk_bar_bottom: bool,
     /// The widths columns were dragged to by their headings (#334).
     pub(super) list_column_widths: std::collections::HashMap<config::ListColumn, i32>,
-    /// The list pane is wide enough for one line per message, which
-    /// Automatic follows.
-    pub(super) list_wide: bool,
     /// The keyboard-shortcut reference, while it is open — so the shortcut that
     /// opens it closes it again.
     pub(super) shortcuts_win: Option<adw::Window>,
@@ -619,11 +605,6 @@ pub(crate) struct AppModel {
     pub(super) selection_from_cards: bool,
     /// Message rows take a sideways swipe to archive / delete (#92).
     pub(super) swipe_enabled: bool,
-    /// The message list's swipe-gesture sides are swapped (#swipe).
-    pub(super) swipe_reversed: bool,
-    /// How far a trackpad two-finger swipe has to travel to fire the action
-    /// (higher = shorter swipe); mouse and touch drags are unaffected.
-    pub(super) swipe_sensitivity: f64,
     /// The identity new messages are sent from (#157); empty = the open
     /// folder's account.
     pub(super) compose_default_from: String,

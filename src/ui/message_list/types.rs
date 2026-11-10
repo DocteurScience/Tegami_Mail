@@ -165,12 +165,6 @@ pub(crate) enum MessageListInput {
     SetColumnScroll(bool),
     /// Keep the search toolbar open (#446).
     SetSearchPinned(bool),
-    /// Where the search field and the bulk bar open: under the rows when
-    /// true, above them when false (#496).
-    SetBarsPlacement {
-        search_bottom: bool,
-        bulk_bottom: bool,
-    },
     /// The rows are this wide now.
     PaneWidth(i32),
     /// Each account's name for the Account column, and which accounts are

@@ -367,7 +367,6 @@ impl AppModel {
             } else {
                 self.reader_toolbar.clone()
             },
-            toolbar_fold_right: self.toolbar_fold_right,
             in_junk: folder_kind == Some(FolderKind::Junk),
             restorable: matches!(folder_kind, Some(FolderKind::Trash | FolderKind::Junk)),
             snooze: if init_from_file {

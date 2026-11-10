@@ -224,8 +224,7 @@ impl AppModel {
             | AppMsg::UnsubscribeDone { .. }) => self.on_unsubscribe(msg, sender),
             msg @ AppMsg::InviteAction { .. } => self.on_invites(msg),
             AppMsg::ReceiptAnswer { message, send } => self.answer_receipt(&message, send),
-            msg @ (AppMsg::ListPaneWidth(..)
-            | AppMsg::ListCount(..)
+            msg @ (AppMsg::ListCount(..)
             | AppMsg::ListColumnWidths(..)
             | AppMsg::ListSortChanged(..)) => self.on_list_header(msg),
             AppMsg::ShowcaseListFilters(which) => self.showcase_list_filters(&which, &sender),

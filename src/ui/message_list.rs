@@ -128,10 +128,6 @@ pub(crate) struct MessageList {
     search_closed_at: Option<std::time::Instant>,
     /// The search toolbar never hides (#446): closing only clears it.
     search_pinned: bool,
-    /// The search field and the bulk bar open under the rows instead of
-    /// above them (#496).
-    search_bottom: bool,
-    bulk_bottom: bool,
     /// The two bars and the boxes above and below the rows they move
     /// between.
     bars: Option<BarSlots>,
@@ -297,13 +293,7 @@ pub(crate) struct MessageList {
     graph_in_view: bool,
     /// The sort runs the other way: a heading clicked twice (#334).
     sort_reversed: bool,
-    /// Headings divide a list sorted by date into Today, Yesterday and so
-    /// on (#435), and whether the view draws them now: only a date sort
-    /// has them.
-    group_by_date: bool,
     day_headings: bool,
-    /// A card's pills on a line under its text (#374).
-    pills_below: bool,
     /// Show the column headings over a single-line list (#334).
     headings: bool,
     headings_bar: gtk::Box,

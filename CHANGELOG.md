@@ -2,6 +2,15 @@
 
 ## Unreleased
 
+- **Removed: the message list's hidden settings** (docs/DESIGN.md,
+  "Removed or moved": layout, grouping by date, search and selection bar
+  positions, swipe direction and sensitivity), and the reader toolbar's
+  "keep the right group folded". Their rows had gone; values stored by an
+  earlier version no longer apply. Beside the reader the list is cards,
+  below it or with the reader off it is a table, as before; it is grouped
+  by date, the search field and the selection bar open above it, a swipe
+  to the left deletes and to the right archives.
+
 - **Removed: the reader's own fonts and colours** (docs/DESIGN.md, "Removed
   or moved": the system's document font, text size and high contrast
   apply). Their settings had gone; a font, colours or a monospace font for

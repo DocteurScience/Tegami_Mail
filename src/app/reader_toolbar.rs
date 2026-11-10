@@ -387,19 +387,17 @@ impl AppModel {
     /// Whether the right group is in the ⋯ menu: by choice, or for want of
     /// room.
     /// Whether the Tags button stays in the header while the rest of the
-    /// right group is folded into ⋯: when only the setting folds it, not a
-    /// pane too narrow for the buttons.
+    /// right group is folded into ⋯ (docs/DESIGN.md, "Header bars"): until
+    /// the pane is too narrow for one more button.
     fn tags_button_kept(&self) -> bool {
-        let (collapsed, compact) = self.toolbar_fold();
-        // With the setting folding the group, `collapsed` only says the
-        // whole group would not fit, which no longer matters: the pane is
-        // too narrow for one more button when it is compact.
-        !compact && (self.toolbar_fold_right || !collapsed)
+        let (_, compact) = self.toolbar_fold();
+        !compact
     }
 
+    /// The right group lives in ⋯ at every width (docs/DESIGN.md, "Header
+    /// bars").
     fn right_group_folded(&self) -> bool {
-        let (collapsed, compact) = self.toolbar_fold();
-        self.toolbar_fold_right || collapsed || compact
+        true
     }
 
     /// Pack the header's action buttons in the saved order: the left group
@@ -520,7 +518,7 @@ impl AppModel {
         } else {
             &tb.list_header
         };
-        let (collapsed, compact) = self.toolbar_fold();
+        let (_, compact) = self.toolbar_fold();
         // Hidden in the list header, the row would measure too short.
         if compact || (self.toolbar_in_list() && self.many_selected()) || self.showing_outbox {
             return;
@@ -550,7 +548,7 @@ impl AppModel {
                 need
             })
         };
-        if collapsed || self.toolbar_fold_right {
+        {
             if let Some(need) = widest(min + gap, &tb.compact_need, &tb.compact_measured) {
                 tracing::info!("reader toolbar: compact below {need}px");
                 tb.compact_breakpoint
@@ -569,10 +567,6 @@ impl AppModel {
                 tb.breakpoint
                     .set_condition(Some(&max_width(f64::from(need))));
             }
-        } else if let Some(need) = widest(min + gap, &tb.full_need, &tb.full_measured) {
-            tracing::info!("reader toolbar: the right group folds below {need}px");
-            tb.breakpoint
-                .set_condition(Some(&max_width(f64::from(need))));
         }
         self.list_fold
             .set_needs(tb.full_need.get(), tb.compact_need.get(), &self.self_sender);

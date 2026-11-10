@@ -6,13 +6,13 @@ use serde::{Deserialize, Serialize};
 use std::path::PathBuf;
 
 use super::look::{
-    default_list_columns, default_text_scale, AppTheme, ClockStyle, DateStyle, ListLayout,
-    MessageTheme, ReadingPane, TrayIcon,
+    default_list_columns, default_text_scale, AppTheme, ClockStyle, DateStyle, MessageTheme,
+    ReadingPane, TrayIcon,
 };
 use super::prefs::{
-    default_files_limit_mb, default_reader_zoom, default_swipe_sensitivity, default_undo_send_secs,
-    ComposeFormat, FilesAction, FilesLarge, FoldMessages, LauncherBadge, NotificationButtons,
-    PrintOptions, ReadMark, ReceiptPolicy, ReturnedReceipts, SignaturePosition,
+    default_files_limit_mb, default_reader_zoom, default_undo_send_secs, ComposeFormat,
+    FilesAction, FilesLarge, FoldMessages, LauncherBadge, NotificationButtons, PrintOptions,
+    ReadMark, ReceiptPolicy, ReturnedReceipts, SignaturePosition,
 };
 use super::sections::{FolderSort, RailFold, SectionPlacement, SectionStyle, StartView};
 use super::{config_file, default_on, is_zero, save_private_toml, write_private};
@@ -162,16 +162,6 @@ pub(crate) struct PrivacyFile {
     /// Whether message rows take a sideways swipe at all (#92, PR #135).
     #[serde(default = "default_on")]
     pub(crate) swipe_enabled: bool,
-    /// Swap the message list's swipe-gesture sides: off (default) swipes
-    /// left to delete and right to archive, on reverses them.
-    #[serde(default)]
-    pub(crate) swipe_reversed: bool,
-    /// How far a trackpad's two-finger swipe has to travel before a row
-    /// commits (higher = shorter swipe). Trackpads differ enough that one
-    /// fixed figure suits nobody, hence the knob; mouse and touchscreen
-    /// drags follow the finger 1:1 and ignore this.
-    #[serde(default = "default_swipe_sensitivity")]
-    pub(crate) swipe_sensitivity: f64,
     /// The identity new messages are sent from (#157): an account's or
     /// alias's address, or empty for the account of the open folder (the
     /// original behaviour). Replies keep answering from the address the
@@ -291,10 +281,6 @@ pub(crate) struct PrivacyFile {
     /// preview off entirely, and stops it being fetched.
     #[serde(default = "default_preview_lines")]
     pub(crate) preview_lines: u32,
-    /// How the message list lays out a message: as a card, on one line, or
-    /// whichever the pane's width suits (#334).
-    #[serde(default)]
-    pub(crate) list_layout: ListLayout,
     /// The columns a single-line list shows, in order, by name (#334).
     /// Names, not the enum, so a column a later version adds does not make
     /// an older one throw the whole file away.
@@ -308,23 +294,6 @@ pub(crate) struct PrivacyFile {
     /// name columns narrow to fit.
     #[serde(default)]
     pub(crate) list_column_scroll: bool,
-    /// A list sorted by date is divided under Today, Yesterday, Last 7 days,
-    /// Last 14 days and Older (#435). On by default since 1.44, for
-    /// existing installs too (see `date_groups_default_applied`).
-    #[serde(default = "default_on")]
-    pub(crate) list_group_by_date: bool,
-    /// A card's tags and Gmail labels go on a line of their own under its
-    /// text, instead of at the end of the subject (#374). On by default:
-    /// the design puts them below the preview, where a long subject does
-    /// not push them off the card (docs/DESIGN.md, "Message list").
-    #[serde(default = "default_on")]
-    pub(crate) list_pills_below: bool,
-    /// Grouping by date was turned on once for an install from before it
-    /// became the default: every save writes every key, so those files
-    /// carry the old `false` without anyone having chosen it. A new
-    /// install starts with this set, so switching grouping off sticks.
-    #[serde(default)]
-    pub(crate) date_groups_default_applied: bool,
     /// The search field stays above the list instead of hiding behind the
     /// search button (#446). Off by default.
     #[serde(default)]
@@ -333,17 +302,6 @@ pub(crate) struct PrivacyFile {
     /// its mail gives (#541). Off by default.
     #[serde(default)]
     pub(crate) contact_names: bool,
-    /// The search field and the bulk bar open under the list instead of
-    /// above it (#496). Off by default.
-    #[serde(default)]
-    pub(crate) list_search_bottom: bool,
-    #[serde(default)]
-    pub(crate) list_bulk_bar_bottom: bool,
-    /// The reader toolbar's right group stays in the ⋯ menu at every
-    /// width. On for a new install; a file from before the key keeps the
-    /// group on the bar while it fits.
-    #[serde(default)]
-    pub(crate) toolbar_fold_right: bool,
     /// The widths columns were dragged to, in pixels, by column name.
     #[serde(default)]
     pub(crate) list_column_widths: std::collections::BTreeMap<String, i32>,
@@ -559,8 +517,6 @@ impl Default for PrivacyFile {
             notification_buttons: default_notification_buttons(),
             settings_open_accounts: false,
             swipe_enabled: true,
-            swipe_reversed: false,
-            swipe_sensitivity: default_swipe_sensitivity(),
             compose_default_from: String::new(),
             // A new install takes today's default, not the 2026-08-31 one.
             single_card_default_applied: true,
@@ -589,18 +545,11 @@ impl Default for PrivacyFile {
             app_theme: AppTheme::default(),
             text_scale: default_text_scale(),
             preview_lines: default_preview_lines(),
-            list_layout: ListLayout::Cards,
             list_columns: default_list_columns(),
             list_headings: false,
             list_column_scroll: false,
-            list_group_by_date: true,
-            list_pills_below: true,
-            date_groups_default_applied: true,
             list_search_open: false,
             contact_names: false,
-            list_search_bottom: false,
-            list_bulk_bar_bottom: false,
-            toolbar_fold_right: true,
             list_column_widths: Default::default(),
             single_key_shortcuts: true,
             gmail_keys: false,
@@ -683,12 +632,6 @@ pub(super) fn apply_new_defaults(file: &mut PrivacyFile) -> bool {
     if !file.single_card_default_applied {
         file.single_card_default_applied = true;
         file.single_message_card = true;
-        changed = true;
-    }
-    // Grouping the list by date, the default since 1.44 (#435).
-    if !file.date_groups_default_applied {
-        file.date_groups_default_applied = true;
-        file.list_group_by_date = true;
         changed = true;
     }
     changed

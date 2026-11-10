@@ -493,8 +493,7 @@ impl MessageList {
         // message that put it where it is in the sort, the newest for
         // Newest First and the oldest for Oldest First, so a heading's rows
         // always run together.
-        let by_date =
-            self.group_by_date && matches!(sort, SortOrder::DateNewest | SortOrder::DateOldest);
+        let by_date = matches!(sort, SortOrder::DateNewest | SortOrder::DateOldest);
         let day_starts = by_date.then(|| crate::datefmt::day_starts(crate::datefmt::now()));
 
         let (mut shown, mut rows) = self.flatten_groups(grouped, day_starts.as_ref());

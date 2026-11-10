@@ -287,8 +287,6 @@ impl SearchScope {
 pub(super) struct ScopePicker {
     pub(super) button: gtk::MenuButton,
     label: gtk::Label,
-    /// Follows the way the popover opens (#496).
-    pub(super) arrow: gtk::Image,
     radios: Vec<(SearchScope, gtk::CheckButton)>,
     /// Each scope's info button, in the same order.
     pub(super) infos: Vec<gtk::MenuButton>,
@@ -354,7 +352,6 @@ impl ScopePicker {
         Self {
             button: button.clone(),
             label,
-            arrow,
             radios,
             infos,
         }
