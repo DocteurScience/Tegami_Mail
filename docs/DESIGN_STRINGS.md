@@ -417,6 +417,38 @@ short. The French is a proposal.
 Plurals for the list subtitles: "{n} tags", "{n} filters", "{n} smart folders",
 "{n} address books", "{n} signatures", "{n} addresses" (alias count).
 
+### First run
+
+Screens 49 to 52. "Continue", "Password", "Email address" and "Advanced" are
+already in the catalogue: reuse their translations. Sentence case (CLAUDE.md).
+
+| Source string (English) | Proposed French |
+| --- | --- |
+| Welcome to Tegami Mail | Bienvenue dans Tegami Mail |
+| Your mail, in one place, simply. Let’s start by connecting your first account. | Votre courrier, au même endroit, simplement. Commençons par connecter votre premier compte. |
+| Get started | Commencer |
+| Add your accounts | Ajoutez vos comptes |
+| Tegami Mail found these accounts in GNOME Online Accounts. One click adds each of them. | Tegami Mail a trouvé ces comptes dans les Comptes en ligne de GNOME. Un seul geste suffit pour les ajouter. |
+| Add | Ajouter |
+| Added | Ajouté |
+| Another account | Un autre compte |
+| Email account… | Compte e-mail… |
+| With an address and a password (IMAP) | Avec une adresse et un mot de passe (IMAP) |
+| Open Online Accounts | Ouvrir Comptes en ligne |
+| For Google or Microsoft 365 | Pour ajouter Google ou Microsoft 365 |
+| Continue | Continuer |
+| Email account | Compte e-mail |
+| Tegami Mail finds the servers of most providers from your address. | Tegami Mail trouve les serveurs de la plupart des fournisseurs à partir de votre adresse. |
+| Email address | Adresse e-mail |
+| Password | Mot de passe |
+| Advanced | Avancé |
+| Display name, servers, API token | Nom affiché, serveurs, jeton d’API |
+| Checking the connection… | Vérification de la connexion… |
+| Test and add | Tester et ajouter |
+| You’re all set | Tout est prêt |
+| Tegami Mail is fetching the mail of {email}. It will appear in a moment. You can adjust the rest in the preferences. | Tegami Mail récupère le courrier de {email}. Il apparaîtra dans quelques instants. Vous pourrez ajuster le reste dans les préférences. |
+| Start reading | Lire mon courrier |
+
 ### Plurals to add
 
 | Singular (English) | Plural (English) | French singular | French plural |

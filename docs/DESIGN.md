@@ -295,6 +295,57 @@ reversing this list's earlier line).
 Open point: the Tegami Mail address book may hold contacts for some users.
 Before deleting it, offer once to export them as a vCard file.
 
+## First run
+
+The first-run wizard has six pages in a carousel on a flat saturated blue
+(`.welcome-window` in `src/styles.css`): welcome with a language picker, Online
+Accounts, e-mail account, privacy, "Make it yours" (preview lines, avatars,
+conversation view, icon gallery), done. The blue and the white text on it are
+hard to read and ignore the system's colours, light or dark, and accent. Three
+of the pages ask for settings that the preferences no longer have, or that
+Preferences > Privacy already holds. The owner asked on 2026-11-10 for a new
+design: four screens, 49 to 52.
+
+The HIG has no page on first run. Its placeholder pages allow an illustration,
+a heading, an optional line of text and a suggested button, with a positive tone
+that speaks to the person. The wizard follows that, in the system's colours:
+
+1. **Welcome** (49): the app icon at 128 px, "Welcome to Tegami Mail", one
+   sentence, a pill "Get started" (suggested). No language picker: the language
+   is the system's.
+2. **Add your accounts** (50): a list of the GNOME Online Accounts mail accounts
+   found, each with an "Add" button that becomes a check and "Added" once done
+   (icon and text, not colour alone). Then "Another account": "Email account…"
+   (opens 3) and "Open Online Accounts" (external). One suggested "Continue"
+   button. With no account added yet it reads the same; the main window then
+   shows its empty state.
+3. **Email account** (51): address, password, "Advanced" folded (display name,
+   servers, API token, and what the provider needs). The servers are found from
+   the address for known providers. While testing, the row shows a status line
+   with a spinner and the sentence, and the button is disabled. An error is a
+   sentence under the fields, never only a red colour. "Test and add" returns to
+   2 on success.
+4. **You're all set** (52): the app icon at 96 px, a sentence naming the account
+   being synchronised, "Start reading". The issue-tracker link moves to About.
+
+Rules for the build:
+
+- Use `AdwNavigationView` with a back button and a close button in the header
+  bar instead of the carousel and its dots. The pages are a sequence, not
+  something to browse.
+- Use the system colours (`@window_bg_color`, `@card_bg_color`, the accent for the
+  suggested button) and delete the `.welcome-*` CSS: nothing in this wizard is
+  drawn by hand except the pill shape (`.pill`). The dialog works in light, dark
+  and high contrast.
+- Remove the language page content, the privacy page and the personalize page.
+  The defaults they set (remote content "Ask", no Gravatar or sender logos) are
+  those of Preferences > Privacy; Gravatar and sender logos stay off until the
+  person turns them on there.
+- The wizard opens only when the application has no account, as today, and
+  never again after the first account is added or the dialog is closed.
+- The text is in the system language only; keep the plural and parameter rules
+  of `src/i18n.rs`.
+
 ## Reading pane and conversations
 
 - A single message: subject (`title-2`), sender with avatar (`AdwAvatar`), date
@@ -535,4 +586,5 @@ All in [`data/repo/design/`](../data/repo/design/): `01-list.png`,
 `18-sort-display.png`, `19-filters-menu.png`, `20-filters-active.png`,
 `21-custom-period.png`, then the preferences, `22-prefs-messages.png` to
 `48-prefs-backup.png`: the five pages and every sub-page and editor of Accounts
-(see Preferences above for what each one is).
+(see Preferences above for what each one is); then the first-run wizard,
+`49-welcome.png` to `52-welcome-done.png` (see First run).

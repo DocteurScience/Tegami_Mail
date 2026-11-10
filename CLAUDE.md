@@ -12,7 +12,7 @@ répondre en français.
 
 Le redesign suit [docs/DESIGN.md](docs/DESIGN.md) et
 [docs/DESIGN_STRINGS.md](docs/DESIGN_STRINGS.md), avec les maquettes dans
-`data/repo/design/` (01 à 48). Les lire avant de toucher l'interface.
+`data/repo/design/` (01 à 52). Les lire avant de toucher l'interface.
 
 ## Règles de code
 
