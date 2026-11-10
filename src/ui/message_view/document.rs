@@ -101,7 +101,6 @@ struct Cards<'a> {
     accent: &'a str,
     restrict: bool,
     dark: bool,
-    always_show_recipients: bool,
     zoom: u32,
     /// Card selection only means something between cards.
     mark_selection: bool,
@@ -128,8 +127,6 @@ impl MessageView {
         accent: &str,
         restrict: bool,
         dark: bool,
-        always_show_recipients: bool,
-        single_message_card: bool,
         zoom: u32,
     ) -> String {
         // Every message renders with the conversation chrome — a thread of one
@@ -138,9 +135,9 @@ impl MessageView {
         // goes full-bleed — no gutter, no radius, its ground filling the whole
         // view — so it reads as a message rather than a card in a margin.
         let conversation = !thread.is_empty();
-        // A lone message cards up too when the preference asks (#57);
-        // otherwise it keeps the full-bleed treatment below.
-        let carded = thread.len() > 1 || (conversation && single_message_card);
+        // A lone message is a card too (owner, 2026-11-07), so the reader
+        // looks the same whatever it opens.
+        let carded = conversation;
         // A full-bleed message is no card to outline.
         let mark_selection = carded;
         let cards = Cards {
@@ -151,7 +148,6 @@ impl MessageView {
             accent,
             restrict,
             dark,
-            always_show_recipients,
             zoom,
             mark_selection,
         };
@@ -305,7 +301,6 @@ fn card_html(cards: &Cards<'_>, m: &Message, ava_html: &str, body: String) -> St
         thread,
         mark_selection,
         selected,
-        always_show_recipients,
         folder_labels,
         ..
     } = *cards;
@@ -502,16 +497,11 @@ fn card_html(cards: &Cards<'_>, m: &Message, ava_html: &str, body: String) -> St
                 String::new()
             } else {
                 format!(
-                    "<button type=\"button\" class=\"tegami-rcpt-toggle tegami-to{open}\" \
+                    "<button type=\"button\" class=\"tegami-rcpt-toggle tegami-to\" \
                          title=\"{title}\">{label}</button>\
                      <span class=\"tegami-sub-sep\" aria-hidden=\"true\">\u{b7}</span>",
                     label = escape_html(&i18n_f("To: {names}", &[("names", &names)])),
-                    open = if always_show_recipients { " open" } else { "" },
-                    title = if always_show_recipients {
-                        i18n("Hide recipients")
-                    } else {
-                        i18n("Show recipients")
-                    },
+                    title = i18n("Show recipients"),
                 )
             };
             format!(
@@ -521,7 +511,7 @@ fn card_html(cards: &Cards<'_>, m: &Message, ava_html: &str, body: String) -> St
                 full = escape_html(&m.datetime_full()).replace('"', "&quot;"),
             )
         },
-        rcpt = recipients_html(m, always_show_recipients),
+        rcpt = recipients_html(m),
         // Where this message was read from, when that isn't the
         // folder on screen — the reply you sent, pulled in from Sent.
         folder = match folder_labels.get(&(m.account_id, m.id)) {

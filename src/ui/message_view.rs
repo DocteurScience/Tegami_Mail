@@ -62,12 +62,6 @@ pub(crate) use webview::{keep_tab_out_of_key_translator, new_preview_webview, sh
 type DetectedLanguages = std::collections::HashMap<(u32, u32), (usize, Option<String>)>;
 
 pub(crate) struct MessageView {
-    /// Render a lone message as an inset card, same as a conversation's
-    /// messages (#57, preference; off keeps the full-bleed view).
-    single_message_card: bool,
-    /// The OpenPGP chip says its verdict in words (#300); off keeps the
-    /// icons alone.
-    pgp_labels: bool,
     /// What each message on screen has attached (#213): names and sizes,
     /// handed over by the app as the files arrive. Listed beneath the card.
     card_atts: std::collections::HashMap<(u32, u32), Vec<CardAttachment>>,
@@ -76,9 +70,6 @@ pub(crate) struct MessageView {
     /// Preference: the attachment drawer is in use. A lone message's files
     /// are listed on its card only when the drawer is not there to show them.
     drawer_on: bool,
-    /// Always show the recipients line under the sender (preference) — the
-    /// chip then only appears for multi-recipient mail, as a collapse toggle.
-    always_show_recipients: bool,
     /// The newest message in the thread — drives the header, avatar and actions.
     current: Option<Message>,
     /// The whole conversation, newest first. One entry = a single message (shown
@@ -101,15 +92,9 @@ pub(crate) struct MessageView {
     /// having them in view can't undo the thing the user just asked for. Cleared
     /// whenever a conversation is opened afresh.
     no_autoread: std::collections::HashSet<(u32, u32)>,
-    /// Whether the header's account chip is shown (Settings).
-    account_chip_shown: bool,
     /// Message zoom in percent (Ctrl+ / Ctrl-): the bodies alone are
     /// scaled; the chrome keeps its size.
     zoom: u32,
-    /// The zoom Settings starts every launch at. The header's chip only
-    /// speaks up away from it: someone who chose 125% has nothing to be
-    /// told at 125%.
-    zoom_default: u32,
     /// Read-marking policy (#100), stamped on the document for the
     /// viewport observer.
     read_mark: crate::config::ReadMark,
@@ -119,9 +104,6 @@ pub(crate) struct MessageView {
     /// Whether the blocked-content banner is shown at all. It gates only the notice: `blocked`
     /// still governs what is withheld, so hiding it never loads anything.
     show_banner: bool,
-    /// Whether a "Check this sender" verdict gets the red banner. A failed
-    /// check gets it regardless: that one says the From: line is forged.
-    show_spoof_banner: bool,
     /// Whether the user has actually permitted remote content for what is on
     /// screen (settings, "Load once", or "Always allow sender").
     ///
@@ -189,9 +171,6 @@ pub(crate) struct MessageView {
     /// left to GTK, it fell to the message list, where the next Ctrl+F
     /// searched the list instead of the message (#392).
     find_return: Option<gtk::glib::WeakRef<gtk::Widget>>,
-    /// The find bar opens under the message instead of above it (#392), and
-    /// the bar and the alert it follows when it is at the top.
-    find_bottom: bool,
     find_bar: Option<(gtk::Revealer, gtk::Widget)>,
     /// The primary button's press over the reader: a click that selects a
     /// card, or a drag that carries one to a folder.
@@ -216,9 +195,6 @@ pub(crate) struct MessageView {
     pending_load: std::rc::Rc<std::cell::RefCell<PendingLoad>>,
     /// The outgoing page's still, faded out over the incoming one.
     page_fade: PageFade,
-    /// Forced dark flag for message content, or `None` to follow the system UI.
-    /// This themes email content only, not the app chrome.
-    content_dark: Option<bool>,
     /// Whether the current message's From: address survived its provider's
     /// authentication checks. `None` until the verdict arrives with the body.
     sender_check: Option<crate::models::SenderCheck>,
@@ -233,8 +209,6 @@ pub(crate) struct MessageView {
     receipt_marks: crate::models::ReceiptMarks,
     /// Cards whose unsubscribe request is under way or has just failed.
     unsub_state: std::collections::HashMap<(u32, u32), UnsubState>,
-    /// Which messages of a conversation open folded (#326).
-    fold_messages: crate::config::FoldMessages,
     /// How many lines of preview a folded card shows under the sender, as
     /// the message list does (#326).
     fold_preview_lines: u32,

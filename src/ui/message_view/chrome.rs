@@ -85,7 +85,7 @@ impl MessageView {
     /// lone message's shown full-bleed. A lone message drawn as a card
     /// carries its own in the document.
     pub(super) fn header_tags_shown(&self) -> bool {
-        (self.thread.len() > 1 || !self.single_message_card) && {
+        self.thread.len() > 1 && {
             let (keywords, labels) = self.header_tag_sets();
             !crate::models::pills(&keywords, &labels, &self.tags).is_empty()
         }

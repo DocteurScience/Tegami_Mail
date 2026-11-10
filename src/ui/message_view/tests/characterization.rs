@@ -88,14 +88,11 @@ fn message(id: u32) -> Message {
     }
 }
 
-#[allow(clippy::too_many_arguments)]
 fn document(
     thread: &[Message],
     selected: &[(u32, u32)],
     restrict: bool,
     dark: bool,
-    always_show_recipients: bool,
-    single_message_card: bool,
     zoom: u32,
 ) -> String {
     let mut labels = std::collections::HashMap::new();
@@ -111,18 +108,16 @@ fn document(
         "#3584e4",
         restrict,
         dark,
-        always_show_recipients,
-        single_message_card,
         zoom,
     );
     normalise_nonce(&doc)
 }
 
 #[test]
-fn golden_single_message_full_bleed() {
+fn golden_single_message() {
     golden(
         "single.html",
-        &document(&[message(1)], &[], true, false, false, false, 100),
+        &document(&[message(1)], &[], true, false, 100),
     );
 }
 
@@ -133,7 +128,7 @@ fn golden_single_message_carded_dark() {
     m.cc = "carol@golden.example".into();
     golden(
         "single_carded_dark.html",
-        &document(&[m], &[], false, true, true, true, 120),
+        &document(&[m], &[], false, true, 120),
     );
 }
 
@@ -145,15 +140,7 @@ fn golden_two_card_conversation() {
     second.starred = true;
     golden(
         "two_cards.html",
-        &document(
-            &[message(1), second],
-            &[(7, 2)],
-            true,
-            false,
-            false,
-            false,
-            100,
-        ),
+        &document(&[message(1), second], &[(7, 2)], true, false, 100),
     );
 }
 
@@ -216,15 +203,7 @@ fn golden_three_cards_with_side_channels() {
     let mut third = message(3);
     third.forwarded = true;
     third.bcc = "hidden@golden.example".into();
-    let doc = document(
-        &[first, second, third],
-        &[(7, 1), (7, 3)],
-        false,
-        true,
-        true,
-        false,
-        90,
-    );
+    let doc = document(&[first, second, third], &[(7, 1), (7, 3)], false, true, 90);
     golden("three_cards.html", &doc);
 }
 

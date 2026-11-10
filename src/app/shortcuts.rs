@@ -462,7 +462,7 @@ impl AppModel {
                 use config::READER_ZOOM_STEPS as STEPS;
                 let at = STEPS.iter().position(|&z| z == self.zoom).unwrap_or(5) as i32;
                 let zoom = match step {
-                    0 => self.zoom_default,
+                    0 => 100,
                     s => {
                         STEPS
                             [(at + i32::from(s.signum())).clamp(0, STEPS.len() as i32 - 1) as usize]

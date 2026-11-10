@@ -33,20 +33,10 @@ pub(crate) struct MessageWindowInit {
     pub(crate) restorable: bool,
     /// Whether Snooze is offered (#527), and Unsnooze (`Some(true)`).
     pub(crate) snooze: Option<bool>,
-    /// Message-content theme override (`None` follows the system).
-    pub(crate) content_dark: Option<bool>,
     /// Message zoom in percent (Ctrl+ / Ctrl-), followed here too.
     pub(crate) zoom: u32,
-    /// The zoom Settings starts at, for the chip.
-    pub(crate) zoom_default: u32,
-    /// Whether the account chip is shown.
-    pub(crate) account_chip: bool,
     /// The tags (#71), for the cards' chips.
     pub(crate) tags: Vec<crate::config::Tag>,
-    /// The OpenPGP chip says its verdict in words (#300).
-    pub(crate) pgp_labels: bool,
-    /// The find bar opens under the message (#392).
-    pub(crate) find_bottom: bool,
     /// The main window's single-key and Gmail switches, shared so a change
     /// in Settings reaches an open window too (#392).
     pub(crate) single_key: std::rc::Rc<std::cell::Cell<bool>>,

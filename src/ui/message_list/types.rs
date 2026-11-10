@@ -84,9 +84,6 @@ pub(crate) enum MessageListInput {
         id: u32,
         size: usize,
     },
-    /// Whether a conversation's row speaks for the newest message anywhere in
-    /// the account, the replies you sent included (#236).
-    SetThreadRowNewest(bool),
     /// Gmail's keys (#392): Enter on a row the cursor is on opens it in the
     /// reader rather than a window of its own.
     SetGmailKeys(bool),

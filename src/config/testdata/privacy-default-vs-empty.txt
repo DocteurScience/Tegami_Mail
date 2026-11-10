@@ -1,4 +1,3 @@
 favorites_placement: default "above_accounts", empty file "all_inboxes"
-single_card_default_applied: default true, empty file false
 single_key_shortcuts: default true, empty file false
 tags_placement: default "above_accounts", empty file "all_inboxes"

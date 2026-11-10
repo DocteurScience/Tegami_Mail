@@ -90,27 +90,6 @@ pub(super) fn heads_its_row(
     }
 }
 
-/// The message a conversation's row should speak for when it is not one this
-/// folder holds: the cache's newest member, if it is later than anything on
-/// screen (#236).
-///
-/// A mail you answered is a single row in the Inbox, with the answer filed in
-/// Sent. The row goes on showing the other side's last word and its time, so
-/// nothing short of opening the conversation says you have replied. `None`
-/// keeps the row exactly as the folder describes it: the cache knows of
-/// nothing newer, or knows of nothing at all yet. Whether it is asked at all
-/// is the "Show your own replies in the message list" setting, off by
-/// default.
-pub(super) fn latest_elsewhere(
-    summary: Option<&crate::models::ThreadSummary>,
-    newest_here: i64,
-) -> Option<crate::models::ThreadLatest> {
-    summary
-        .and_then(|s| s.latest.as_ref())
-        .filter(|l| l.timestamp > newest_here)
-        .cloned()
-}
-
 /// Which of the page's conversations still need their real size looked up
 /// (#222): the ones nobody has asked the cache about yet.
 ///

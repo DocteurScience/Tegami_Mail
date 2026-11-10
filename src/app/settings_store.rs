@@ -28,20 +28,11 @@ impl AppModel {
             metered_save_data: self.metered_save_data,
             blacklist: self.blacklist.clone(),
             threading: self.threading,
-            thread_row_newest: self.thread_row_newest,
             thread_newest_first: self.thread_newest_first,
-            fold_messages: self.fold_messages,
-            always_show_recipients: self.always_show_recipients,
-            pgp_labels: self.pgp_labels,
-            reader_find_bottom: self.reader_find_bottom,
-            single_message_card: self.single_message_card,
-            account_chip: self.account_chip,
             desktop_icons: self.desktop_icons,
-            reader_zoom: self.zoom_default,
             card_attachments: self.card_attachments,
             attachment_drawer: self.drawer_enabled,
             confirm_thread_delete: self.confirm_thread_delete,
-            message_theme: self.message_theme,
             notifications: self.notifications_enabled,
             notification_content: self.notification_content,
             notification_buttons: self.notification_buttons.to_list(),
@@ -66,7 +57,6 @@ impl AppModel {
             undo_send_secs: self.undo_send_secs,
             spellcheck: self.spellcheck,
             // Every save is after the first load, which applied it.
-            single_card_default_applied: true,
             spellcheck_langs: self.spellcheck_langs.clone(),
             preview_lines: self.preview_lines,
             list_columns: config::ListColumn::to_keys(&self.list_columns),
@@ -88,7 +78,6 @@ impl AppModel {
             launcher_count: self.launcher_badge != config::LauncherBadge::Off,
             launcher_badge: Some(self.launcher_badge),
             show_remote_banner: self.show_remote_banner,
-            show_spoof_banner: self.show_spoof_banner,
             receipts: self.receipts,
             request_receipts: self.request_receipts,
             returned_receipts: self.returned_receipts,
@@ -152,30 +141,7 @@ impl AppModel {
         ));
         self.message_list
             .emit(MessageListInput::SetThreading(self.threading));
-        self.message_list
-            .emit(MessageListInput::SetThreadRowNewest(self.thread_row_newest));
-        self.message_view.emit(MessageViewInput::SetContentTheme(
-            self.message_theme.dark_override(),
-        ));
-        self.message_view
-            .emit(MessageViewInput::SetAlwaysShowRecipients(
-                self.always_show_recipients,
-            ));
-        self.message_view
-            .emit(MessageViewInput::SetPgpLabels(self.pgp_labels));
-        self.message_view
-            .emit(MessageViewInput::SetFindBottom(self.reader_find_bottom));
-        self.message_view
-            .emit(MessageViewInput::SetSingleMessageCard(
-                self.single_message_card,
-            ));
-        self.message_view
-            .emit(MessageViewInput::SetFoldMessages(self.fold_messages));
-        self.message_view
-            .emit(MessageViewInput::SetZoomDefault(self.zoom_default));
         self.message_view.emit(MessageViewInput::SetZoom(self.zoom));
-        self.message_view
-            .emit(MessageViewInput::SetAccountChipShown(self.account_chip));
         self.message_view
             .emit(MessageViewInput::SetCardAttachmentsShown(
                 self.card_attachments,

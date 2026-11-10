@@ -176,13 +176,8 @@ pub(crate) struct MessageList {
     /// and a row that never mentions your answer. Keyed by thread key, as
     /// `rebuild` groups them.
     thread_summaries: std::collections::HashMap<(u32, String), ThreadSummary>,
-    /// Whether a row may speak for a message in another folder at all (#236).
-    /// Off by default: the row describes the newest message this folder holds,
-    /// as it always has. The sizes on the badges are not affected either way.
-    thread_row_newest: bool,
-    /// Every address you send from, lower case: with `thread_row_newest`
-    /// off, the mail you sent is not nested under a conversation's row
-    /// either (#388).
+    /// Every address you send from, lower case: the mail you sent is not
+    /// nested under a conversation's row (#388).
     own_addresses: std::collections::HashSet<String>,
     /// Gmail's keys are on (#392): Enter opens a row in the reader.
     gmail_keys: bool,

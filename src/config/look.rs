@@ -29,28 +29,6 @@ pub(crate) enum TrayIcon {
     Symbolic,
 }
 
-/// How email message content is themed, independent of the app UI theme.
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Default, Deserialize, Serialize)]
-#[serde(rename_all = "lowercase")]
-pub(crate) enum MessageTheme {
-    /// Follow the system / app light-dark preference.
-    #[default]
-    System,
-    Light,
-    Dark,
-}
-
-impl MessageTheme {
-    /// Forced dark flag for message content, or `None` to follow the system.
-    pub(crate) fn dark_override(self) -> Option<bool> {
-        match self {
-            MessageTheme::System => None,
-            MessageTheme::Light => Some(false),
-            MessageTheme::Dark => Some(true),
-        }
-    }
-}
-
 /// How dates are written: the system's own arrangement, or one the user picked
 /// regardless of it (#32).
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Default, Deserialize, Serialize)]

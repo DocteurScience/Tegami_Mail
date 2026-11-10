@@ -67,7 +67,6 @@ impl MessageList {
             thread_links: Vec::new(),
             source_threads: std::cell::RefCell::new(None),
             thread_summaries: std::collections::HashMap::new(),
-            thread_row_newest: false,
             own_addresses: Default::default(),
             gmail_keys: crate::config::load_privacy().gmail_keys,
             groups: std::collections::HashMap::new(),

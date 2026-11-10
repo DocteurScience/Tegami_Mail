@@ -4,7 +4,7 @@
 
 use super::layout::after_next_paint;
 use super::sort::{correspondents, message_cmp, tag_sort_key, text_key_cmp, SortOrder};
-use super::threading::{compute_thread_keys, latest_elsewhere, thread_slot};
+use super::threading::{compute_thread_keys, thread_slot};
 use super::types::{BulkAction, MessageListInput};
 use super::views::{later_drop, Built};
 use super::MessageList;
@@ -31,10 +31,9 @@ const PREVIEW_ROWS: usize = 2000;
 /// One conversation while the rows are built: its key and its messages.
 type Group = ((u32, String), Vec<Rc<Message>>);
 
-/// What a conversation's row says of its newest message: when it came, who
-/// sent it, its preview and its time. The newer one in another folder
-/// (`elsewhere`) when there is one, else this folder's newest, and nothing
-/// for a row of one message.
+/// What a conversation's row says of its newest message in this folder:
+/// when it came, who sent it, its preview and its time; nothing for a row of
+/// one message.
 type NewestLine = (
     Option<String>,
     Option<(String, String)>,
@@ -42,19 +41,8 @@ type NewestLine = (
     Option<(i64, String)>,
 );
 
-fn newest_line(
-    elsewhere: Option<&crate::models::ThreadLatest>,
-    newest_here: &Message,
-    count: usize,
-) -> NewestLine {
-    if let Some(l) = elsewhere {
-        (
-            Some(crate::models::datetime_list_at(l.timestamp, &l.date)),
-            Some((l.from_name.clone(), l.from_addr.clone())),
-            Some(l.preview.clone()),
-            Some((l.timestamp, l.date.clone())),
-        )
-    } else if count > 1 {
+fn newest_line(newest_here: &Message, count: usize) -> NewestLine {
+    if count > 1 {
         (
             Some(newest_here.datetime_list()),
             Some((newest_here.from_name.clone(), newest_here.from_addr.clone())),
@@ -285,16 +273,11 @@ impl MessageList {
             };
             return (meta, msgs);
         }
-        // The newest member this folder holds, and the newer one the cache
-        // found in another folder — the reply you sent, filed in Sent (#236).
+        // The newest member this folder holds.
         let newest_here = msgs
             .last()
             .expect("a group holds at least one message")
             .clone();
-        let elsewhere = self
-            .thread_row_newest
-            .then(|| latest_elsewhere(summary, newest_here.timestamp))
-            .flatten();
         let people = self
             .columns
             .contains(&crate::config::ListColumn::Correspondents)
@@ -308,15 +291,9 @@ impl MessageList {
         // it landed, rather than the opener re-shown every time a reply
         // arrives.
         //
-        // Which message that is can depend on more than this folder. A mail
-        // you answered is one row in the Inbox and the answer is in Sent, so
-        // the row quotes the other side however recently you wrote back. With
-        // "Show your own replies in the message list" turned on, the cache's
-        // newest wins whenever it is later than anything on screen (#236);
-        // off, which is how Tegami Mail has always behaved, the folder has the last
-        // word.
-        let (latest, from, preview, latest_at) =
-            newest_line(elsewhere.as_ref(), &newest_here, count);
+        // This folder's newest: a mail you answered is one row in the Inbox
+        // and quotes the other side, the answer being in Sent.
+        let (latest, from, preview, latest_at) = newest_line(&newest_here, count);
         let any_starred = count > 1 && msgs.iter().any(|m| m.starred);
         let (answered, forwarded) = (
             count > 1 && newest_here.answered,

@@ -215,7 +215,7 @@ pub(super) fn paints_own_background(body: &str) -> bool {
 /// Starts hidden; the card's "To:" line toggles it. Empty when the
 /// message names no recipients at all. Bcc is there only on the sender's own
 /// copy (#476).
-pub(super) fn recipients_html(m: &Message, always_shown: bool) -> String {
+pub(super) fn recipients_html(m: &Message) -> String {
     let mut lines = String::new();
     for (label, list) in [
         ("To", m.to.trim()),
@@ -255,8 +255,8 @@ pub(super) fn recipients_html(m: &Message, always_shown: bool) -> String {
     if lines.is_empty() {
         return String::new();
     }
-    let hidden = if always_shown { "" } else { " hidden" };
-    format!("<div class=\"tegami-rcpt\"{hidden}>{lines}</div>")
+    // Folded away until the card's To: toggle opens it.
+    format!("<div class=\"tegami-rcpt\" hidden>{lines}</div>")
 }
 
 /// Who a message went to, for its card's "To:" line (mockup 03): the To

@@ -49,9 +49,6 @@ impl MessageView {
     /// The reader before anything is shown.
     pub(super) fn initial(webview: webkit6::WebView, link_preview: &gtk::Label) -> Self {
         MessageView {
-            always_show_recipients: false,
-            single_message_card: false,
-            pgp_labels: false,
             card_atts: std::collections::HashMap::new(),
             card_atts_shown: true,
             drawer_on: true,
@@ -62,13 +59,10 @@ impl MessageView {
             folder_labels: std::collections::HashMap::new(),
             blocked: false,
             no_autoread: std::collections::HashSet::new(),
-            account_chip_shown: true,
             zoom: 100,
-            zoom_default: 100,
             read_mark: crate::config::ReadMark::default(),
             checked: (0, false),
             show_banner: crate::config::load_privacy().show_remote_banner,
-            show_spoof_banner: crate::config::load_privacy().show_spoof_banner,
             remote_allowed: false,
             account_name: None,
             cover_rules: ClassRules::new(),
@@ -90,7 +84,6 @@ impl MessageView {
             find_matches: None,
             find_entry: None,
             find_return: None,
-            find_bottom: false,
             find_bar: None,
             pointer: Default::default(),
             loading_page: None,
@@ -102,7 +95,6 @@ impl MessageView {
             unsubscribed: std::collections::HashMap::new(),
             receipt_marks: Default::default(),
             unsub_state: std::collections::HashMap::new(),
-            fold_messages: crate::config::FoldMessages::Never,
             fold_preview_lines: 1,
             painted_hidden: false,
             scroll_owed: false,
@@ -116,7 +108,6 @@ impl MessageView {
             seq: std::cell::Cell::new(0),
             pending_load: Default::default(),
             page_fade: PageFade::new(),
-            content_dark: None,
         }
     }
 

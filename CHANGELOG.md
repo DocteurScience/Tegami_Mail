@@ -2,6 +2,16 @@
 
 ## Unreleased
 
+- **Removed: the reader's hidden settings** (docs/DESIGN.md, "Removed or
+  moved": message cards and header options, find bar position). A lone
+  message is a card, read messages of a conversation open folded,
+  recipients fold under "To:", the account and OpenPGP chips show as
+  drawn, the find bar opens above the message, messages follow the
+  system's light or dark, the zoom starts at 100 %, the "Check this
+  sender" banner always shows, and a conversation's row speaks for the
+  newest message of its folder. Values stored by an earlier version no
+  longer apply.
+
 - **Removed: the message list's hidden settings** (docs/DESIGN.md,
   "Removed or moved": layout, grouping by date, search and selection bar
   positions, swipe direction and sensitivity), and the reader toolbar's

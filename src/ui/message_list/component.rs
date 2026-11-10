@@ -411,7 +411,6 @@ impl SimpleComponent for MessageList {
                 id,
                 size,
             } => self.on_conversation_size(account_id, id, size),
-            MessageListInput::SetThreadRowNewest(on) => self.on_set_thread_row_newest(on),
             MessageListInput::SetOwnAddresses(addresses) => self.on_set_own_addresses(addresses),
             MessageListInput::SetThreading(on) => self.on_set_threading(on),
             MessageListInput::ResolveDelete => self.on_resolve_delete(&sender),

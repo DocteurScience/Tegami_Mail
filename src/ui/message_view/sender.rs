@@ -262,15 +262,12 @@ impl MessageView {
             .unwrap_or(crate::models::SenderTrust::Unverified)
     }
 
-    /// Whether the red banner is over the message. Settings can quiet it for
-    /// "Check this sender", which a newsletter replying from its mailing
-    /// service earns routinely; a failed check keeps it, since that verdict
-    /// says the From: line is forged.
+    /// Whether the red banner is over the message: for a failed check (the
+    /// From: line is forged) and for "Check this sender".
     pub(super) fn spoof_alert_shown(&self) -> bool {
-        match self.trust() {
-            crate::models::SenderTrust::Fail => true,
-            crate::models::SenderTrust::Suspicious => self.show_spoof_banner,
-            _ => false,
-        }
+        matches!(
+            self.trust(),
+            crate::models::SenderTrust::Fail | crate::models::SenderTrust::Suspicious
+        )
     }
 }

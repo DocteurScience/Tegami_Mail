@@ -330,9 +330,6 @@ pub(crate) struct AppModel {
     /// Whether the blocked-remote-content banner is shown at all. Hiding it changes nothing about what
     /// is blocked — only whether the reader says so.
     pub(super) show_remote_banner: bool,
-    /// Whether a "Check this sender" verdict gets the red banner over the
-    /// message. A failed check gets it regardless.
-    pub(super) show_spoof_banner: bool,
     /// Answering requests for read receipts (#520), and the requests
     /// already answered or ignored here (receipts.toml).
     pub(super) receipts: config::ReceiptPolicy,
@@ -472,14 +469,6 @@ pub(crate) struct AppModel {
     pub(super) thread_key: Option<BodyKey>,
     /// Reading pane shows conversations newest-message-first.
     pub(super) thread_newest_first: bool,
-    /// Which messages of a conversation open folded (#326).
-    pub(super) fold_messages: config::FoldMessages,
-    /// Reader always shows the recipients line under the sender.
-    pub(super) always_show_recipients: bool,
-    /// The OpenPGP chip says its verdict in words (#300).
-    pub(super) pgp_labels: bool,
-    /// The reader's find bar opens under the message (#392).
-    pub(super) reader_find_bottom: bool,
     /// Where the Filters, Tags, Favorites and Contacts sections sit
     /// (Settings → Sidebar), and how they are drawn.
     pub(super) section_style: config::SectionStyle,
@@ -578,24 +567,15 @@ pub(crate) struct AppModel {
     /// [`apply_filters`] consults for "Message body" conditions.
     pub(super) body_hits:
         std::collections::HashMap<(u32, u32), std::collections::HashMap<u32, Vec<String>>>,
-    /// Lone messages render as inset cards (#57).
-    pub(super) single_message_card: bool,
-    /// The message zoom this session is at (Ctrl+ / Ctrl-). Starts at
-    /// `zoom_default` and is not saved: a launch begins at the setting.
+    /// The message zoom this session is at (Ctrl+ / Ctrl-). Starts at 100
+    /// and is not saved.
     pub(super) zoom: u32,
-    /// Settings → Reading: the zoom every launch starts at, in percent.
-    pub(super) zoom_default: u32,
-    /// The account chip is shown in the reader header (Settings).
-    pub(super) account_chip: bool,
     /// Icons come from the desktop's icon theme, not Tegami Mail's own (Settings).
     pub(super) desktop_icons: bool,
     /// Each conversation message lists its own attachments (#213).
     pub(super) card_attachments: bool,
     /// The attachment drawer beneath the reader is shown at all (#213).
     pub(super) drawer_enabled: bool,
-    /// Whether a conversation's row speaks for the newest message anywhere in
-    /// the account, the replies you sent included (#236). Off by default.
-    pub(super) thread_row_newest: bool,
     /// Whether deleting a whole selected conversation asks for confirmation.
     pub(super) confirm_thread_delete: bool,
     /// Whether the current `list_selection` came from card clicks in the
@@ -636,8 +616,6 @@ pub(crate) struct AppModel {
     pub(super) undo_send_secs: u32,
     pub(super) spellcheck: bool,
     pub(super) spellcheck_langs: String,
-    /// How email content is themed (message content only, not the app UI).
-    pub(super) message_theme: config::MessageTheme,
     /// The repeating auto-fetch timer, if armed.
     pub(super) auto_fetch_source: Option<gtk::glib::SourceId>,
     /// When the last wake from sleep was handled, so the second report of

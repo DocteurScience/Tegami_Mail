@@ -64,13 +64,7 @@ impl Component for MessageWindow {
         let view = MessageView::builder()
             .launch(())
             .forward(sender.input_sender(), from_reader);
-        // Apply the message-content theme before the first render.
-        view.emit(MessageViewInput::SetContentTheme(init.content_dark));
-        view.emit(MessageViewInput::SetZoomDefault(init.zoom_default));
         view.emit(MessageViewInput::SetZoom(init.zoom));
-        view.emit(MessageViewInput::SetAccountChipShown(init.account_chip));
-        view.emit(MessageViewInput::SetPgpLabels(init.pgp_labels));
-        view.emit(MessageViewInput::SetFindBottom(init.find_bottom));
         view.emit(MessageViewInput::SetTags(init.tags.clone()));
         view.emit(MessageViewInput::SetAttachmentDrawer(init.drawer_enabled));
         view.emit(MessageViewInput::SetCardAttachmentsShown(

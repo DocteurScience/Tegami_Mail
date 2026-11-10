@@ -18,8 +18,6 @@ fn the_wrapper_only_runs_its_own_script() {
         "#3584e4",
         true,
         false,
-        false,
-        false,
         100,
     );
 
@@ -57,8 +55,6 @@ fn the_wrapper_only_runs_its_own_script() {
         &[],
         "#3584e4",
         true,
-        false,
-        false,
         false,
         100,
     );
@@ -201,8 +197,6 @@ fn the_wrapper_in_a_real_engine_sizes_frames_and_refuses_injected_script() {
         &[],
         "#3584e4",
         true,
-        false,
-        false,
         false,
         100,
     );

@@ -65,24 +65,6 @@ impl MessageView {
         }
     }
 
-    pub(super) fn on_set_find_bottom(&mut self, on: bool) {
-        self.find_bottom = on;
-        let Some((bar, top_anchor)) = &self.find_bar else {
-            return;
-        };
-        let Some(pane) = bar.parent().and_downcast::<gtk::Box>() else {
-            return;
-        };
-        let after = if on {
-            pane.last_child()
-        } else {
-            Some(top_anchor.clone())
-        };
-        if after.as_ref() != Some(bar.upcast_ref()) {
-            pane.reorder_child_after(bar, after.as_ref());
-        }
-    }
-
     pub(super) fn on_find_changed(&mut self, text: String) {
         let text = text.trim();
         if text.is_empty() {

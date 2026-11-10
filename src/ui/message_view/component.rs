@@ -113,19 +113,12 @@ impl Component for MessageView {
                 // matching and highlighting; this bar just drives it.
                 #[name = "find_bar"]
                 gtk::Revealer {
-                    #[watch]
-                    set_transition_type: if model.find_bottom {
-                        gtk::RevealerTransitionType::SlideUp
-                    } else {
-                        gtk::RevealerTransitionType::SlideDown
-                    },
+                    set_transition_type: gtk::RevealerTransitionType::SlideDown,
                     #[watch]
                     set_reveal_child: model.find_open,
 
                     gtk::Box {
                         add_css_class: "reader-find",
-                        #[watch]
-                        set_class_active: ("bottom", model.find_bottom),
                         set_spacing: 6,
 
                         #[name = "find_entry"]
@@ -193,7 +186,7 @@ impl Component for MessageView {
                         "under-bar",
                         model.spoof_alert_shown()
                             || (model.blocked && model.show_banner)
-                            || (model.find_open && !model.find_bottom),
+                            || model.find_open,
                     ),
                     set_orientation: gtk::Orientation::Vertical,
                     set_spacing: 12,
@@ -219,8 +212,6 @@ impl Component for MessageView {
                             set_visible: model.account_name.is_some(),
                             gtk::Label {
                                 #[watch]
-                                set_visible: model.account_chip_shown,
-                                #[watch]
                                 set_label: model.account_name.as_deref().unwrap_or_default(),
                                 set_ellipsize: gtk::pango::EllipsizeMode::End,
                                 add_css_class: "caption",
@@ -229,14 +220,13 @@ impl Component for MessageView {
                         },
 
                         // Message zoom (Ctrl+ / Ctrl-): the percentage, shown
-                        // only while it is away from the default Settings
-                        // starts at, so a chosen size says nothing about
-                        // itself. A click goes back to that default.
+                        // only while it is away from 100 %, so the usual size
+                        // says nothing about itself. A click goes back to it.
                         gtk::Label {
                             #[watch]
                             set_label: &format!("{}%", model.zoom),
                             #[watch]
-                            set_visible: model.current.is_some() && model.zoom != model.zoom_default,
+                            set_visible: model.current.is_some() && model.zoom != 100,
                             set_valign: gtk::Align::Center,
                             add_css_class: "caption",
                             add_css_class: "tegami-zoom-chip",
@@ -417,10 +407,6 @@ impl Component for MessageView {
             MessageViewInput::FacesChanged => self.render(),
 
             MessageViewInput::ThemeChanged => self.on_theme_changed(),
-            MessageViewInput::SetAlwaysShowRecipients(on) => {
-                self.always_show_recipients = on;
-            }
-            MessageViewInput::SetFoldMessages(fold) => self.on_set_fold_messages(fold),
             MessageViewInput::SetFoldLook { preview_lines } => self.on_set_fold_look(preview_lines),
             MessageViewInput::Folded {
                 account_id,
@@ -433,10 +419,6 @@ impl Component for MessageView {
                 conversations,
             } => self.checked = (count, conversations),
             MessageViewInput::FoldAll(folded) => self.on_fold_all(folded),
-            MessageViewInput::SetSingleMessageCard(on) => {
-                self.single_message_card = on;
-            }
-            MessageViewInput::SetPgpLabels(on) => self.on_set_pgp_labels(on),
             MessageViewInput::SetCardAttachments(map) => self.on_set_card_attachments(map),
             MessageViewInput::SetCardAttachmentsShown(on) => self.on_set_card_attachments_shown(on),
             MessageViewInput::SetAttachmentDrawer(on) => self.on_set_attachment_drawer(on),
@@ -463,14 +445,7 @@ impl Component for MessageView {
             MessageViewInput::SetBannerShown(show) => {
                 self.show_banner = show;
             }
-            MessageViewInput::SetContentTheme(o) => self.on_set_content_theme(o),
-            MessageViewInput::SetZoomDefault(percent) => {
-                self.zoom_default = percent;
-            }
             MessageViewInput::SetZoom(percent) => self.on_set_zoom(percent),
-            MessageViewInput::SetAccountChipShown(on) => {
-                self.account_chip_shown = on;
-            }
             MessageViewInput::SetSenderCheck(check) => {
                 self.sender_check = Some(*check);
             }
@@ -580,7 +555,6 @@ impl Component for MessageView {
             MessageViewInput::SetReadMark(policy) => self.on_set_read_mark(policy),
             MessageViewInput::OpenFind => self.on_open_find(&sender),
             MessageViewInput::CloseFind => self.on_close_find(),
-            MessageViewInput::SetFindBottom(on) => self.on_set_find_bottom(on),
             MessageViewInput::DragCard(key) => self.on_drag_card(key),
             MessageViewInput::FindChanged(text) => self.on_find_changed(text),
             MessageViewInput::FindNext => self.eval_find("tegamiFindStep(1)"),

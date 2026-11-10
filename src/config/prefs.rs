@@ -249,26 +249,10 @@ pub(crate) fn load_files_prefs() -> FilesPrefs {
 pub(crate) const READER_ZOOM_STEPS: [u32; 12] =
     [50, 60, 70, 80, 90, 100, 110, 125, 150, 175, 200, 250];
 
-pub(super) fn default_reader_zoom() -> u32 {
-    100
-}
-
-/// The zoom a new message opens at: Settings → Composing's, or the
-/// reader's default while that says "Same as reading pane zoom" (0) or anything off
-/// the step list.
+/// The zoom a new message opens at: Settings → Composing's, or 100 while
+/// that says "Same as reading pane zoom" (0) or anything off the step list.
 pub(crate) fn load_compose_zoom() -> u32 {
     let z = load_privacy().compose_zoom;
-    if READER_ZOOM_STEPS.contains(&z) {
-        z
-    } else {
-        load_reader_zoom()
-    }
-}
-
-/// The message zoom a launch starts at; anything off the step list reads
-/// as 100.
-pub(crate) fn load_reader_zoom() -> u32 {
-    let z = load_privacy().reader_zoom;
     if READER_ZOOM_STEPS.contains(&z) {
         z
     } else {
@@ -311,24 +295,6 @@ mod compose_format_tests {
             assert_eq!(h.f, want, "{value}");
         }
     }
-}
-
-/// Which messages of a conversation open folded to one line (#326). The
-/// newest always opens; a folded one opens with a click.
-#[derive(
-    Clone, Copy, Debug, Default, PartialEq, Eq, Hash, serde::Serialize, serde::Deserialize,
-)]
-#[serde(rename_all = "snake_case")]
-pub(crate) enum FoldMessages {
-    /// Every message opens.
-    Never,
-    /// The messages already read. The default: a conversation opens on
-    /// what is new in it, with the older messages one line each
-    /// (docs/DESIGN.md, "Reading pane and conversations").
-    #[default]
-    Read,
-    /// Every message but the newest, read or not.
-    AllButNewest,
 }
 
 /// Where the signature goes in a reply or forward (#237). Above the quoted

@@ -29,12 +29,9 @@ impl MessageView {
             .filter(|&(aid, id, unread)| match self.folds.get(&(aid, id)) {
                 Some(folded) => *folded,
                 None => {
-                    Some((aid, id)) != newest
-                        && match self.fold_messages {
-                            crate::config::FoldMessages::Never => false,
-                            crate::config::FoldMessages::Read => !unread,
-                            crate::config::FoldMessages::AllButNewest => true,
-                        }
+                    // Read messages open folded, all but the newest
+                    // (docs/DESIGN.md, "Reading pane and conversations").
+                    Some((aid, id)) != newest && !unread
                 }
             })
             .map(|(aid, id, _)| (aid, id))

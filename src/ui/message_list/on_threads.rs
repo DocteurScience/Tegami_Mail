@@ -117,15 +117,6 @@ impl MessageList {
         }
     }
 
-    pub(super) fn on_set_thread_row_newest(&mut self, on: bool) {
-        if self.thread_row_newest != on {
-            self.thread_row_newest = on;
-            if self.threading {
-                self.queue_rebuild(true);
-            }
-        }
-    }
-
     pub(super) fn on_set_own_addresses(&mut self, addresses: std::collections::HashSet<String>) {
         self.own_addresses = addresses;
     }

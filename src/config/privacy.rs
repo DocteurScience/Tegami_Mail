@@ -6,13 +6,13 @@ use serde::{Deserialize, Serialize};
 use std::path::PathBuf;
 
 use super::look::{
-    default_list_columns, default_text_scale, AppTheme, ClockStyle, DateStyle, MessageTheme,
-    ReadingPane, TrayIcon,
+    default_list_columns, default_text_scale, AppTheme, ClockStyle, DateStyle, ReadingPane,
+    TrayIcon,
 };
 use super::prefs::{
-    default_files_limit_mb, default_reader_zoom, default_undo_send_secs, ComposeFormat,
-    FilesAction, FilesLarge, FoldMessages, LauncherBadge, NotificationButtons, PrintOptions,
-    ReadMark, ReceiptPolicy, ReturnedReceipts, SignaturePosition,
+    default_files_limit_mb, default_undo_send_secs, ComposeFormat, FilesAction, FilesLarge,
+    LauncherBadge, NotificationButtons, PrintOptions, ReadMark, ReceiptPolicy, ReturnedReceipts,
+    SignaturePosition,
 };
 use super::sections::{FolderSort, RailFold, SectionPlacement, SectionStyle, StartView};
 use super::{config_file, default_on, is_zero, save_private_toml, write_private};
@@ -85,46 +85,13 @@ pub(crate) struct PrivacyFile {
     /// Group messages into conversation threads in the list.
     #[serde(default = "default_on")]
     pub(crate) threading: bool,
-    /// Whether a conversation's row in the message list speaks for the newest
-    /// message anywhere in the account rather than the newest one the folder
-    /// itself holds: the reply you sent, which is filed in Sent (#236). Off by
-    /// default, so the row goes on describing the last mail that arrived.
-    #[serde(default)]
-    pub(crate) thread_row_newest: bool,
     /// Whether the reading pane shows a conversation newest-message-first.
     #[serde(default)]
     pub(crate) thread_newest_first: bool,
-    /// Which messages of a conversation open folded to one line (#326).
-    #[serde(default)]
-    pub(crate) fold_messages: FoldMessages,
-    /// Whether the reader always shows the recipients line under the sender.
-    #[serde(default)]
-    pub(crate) always_show_recipients: bool,
-    /// Whether the OpenPGP chip beside a sender's name says its verdict in
-    /// words (#300); off, the default, shows the lock and shield icons alone.
-    #[serde(default)]
-    pub(crate) pgp_labels: bool,
-    /// The reader's find bar opens under the message instead of above it
-    /// (#392). Off by default.
-    #[serde(default)]
-    pub(crate) reader_find_bottom: bool,
-    /// Whether a lone message renders as an inset card like a conversation's
-    /// messages (#57); off, the default, keeps the full-bleed view.
-    #[serde(default = "default_single_message_card")]
-    pub(crate) single_message_card: bool,
-    /// Whether the chip naming the message's account is shown above the
-    /// subject in the reader header. On by default.
-    #[serde(default = "default_on")]
-    pub(crate) account_chip: bool,
     /// Draw icons from the desktop's icon theme instead of Tegami Mail's own
     /// (Settings → Appearance). Off: the app looks the same everywhere.
     #[serde(default)]
     pub(crate) desktop_icons: bool,
-    /// The message zoom every launch starts at, in percent (Settings →
-    /// Reading). Ctrl+ and Ctrl- move away from it for the session; the
-    /// next launch is back here.
-    #[serde(default = "default_reader_zoom")]
-    pub(crate) reader_zoom: u32,
     /// Each conversation message lists its own attachments beneath its body
     /// (#213), so which file came with which message is never in doubt.
     #[serde(default = "default_on")]
@@ -139,9 +106,6 @@ pub(crate) struct PrivacyFile {
     /// first.
     #[serde(default = "default_on")]
     pub(crate) confirm_thread_delete: bool,
-    /// How email content is themed (independent of the app UI theme).
-    #[serde(default)]
-    pub(crate) message_theme: MessageTheme,
     /// Whether to post desktop notifications (new mail, error alerts).
     #[serde(default = "default_on")]
     pub(crate) notifications: bool,
@@ -168,10 +132,6 @@ pub(crate) struct PrivacyFile {
     /// original was sent to, whatever this says.
     #[serde(default)]
     pub(crate) compose_default_from: String,
-    /// The inset-card default for lone messages (#57, #153) was applied
-    /// once to installs that predate it. Set on the first load that did so.
-    #[serde(default)]
-    pub(crate) single_card_default_applied: bool,
     /// Whether pasting into the composer strips the clipboard's formatting
     /// (the default). Off, a paste keeps its formatting. The editor's context
     /// menu always offers both, whichever way this is set.
@@ -195,8 +155,7 @@ pub(crate) struct PrivacyFile {
     /// Their text size in points; 0 leaves it to the recipient.
     #[serde(default, skip_serializing_if = "is_zero")]
     pub(crate) compose_font_size: u32,
-    /// The zoom a new message opens at, in percent; 0 follows the
-    /// reader's `reader_zoom` (#535).
+    /// The zoom a new message opens at, in percent; 0 is 100 (#535).
     #[serde(default, skip_serializing_if = "is_zero")]
     pub(crate) compose_zoom: u32,
     /// New messages start as plain text, without formatting (#180). Kept
@@ -358,11 +317,6 @@ pub(crate) struct PrivacyFile {
     /// the banner; it never changes what is blocked, only whether you're told.
     #[serde(default = "default_on")]
     pub(crate) show_remote_banner: bool,
-    /// Whether a "Check this sender" verdict (the addressing points somewhere
-    /// the From: line doesn't) puts the red banner over the message. The badge
-    /// still shows the verdict, and a failed check always gets the banner.
-    #[serde(default = "default_on")]
-    pub(crate) show_spoof_banner: bool,
     /// How Filters, Tags, Favorites and Contacts are drawn wherever they sit.
     #[serde(default)]
     pub(crate) section_style: SectionStyle,
@@ -439,15 +393,6 @@ fn default_fetch_interval() -> u64 {
     300
 }
 
-fn default_single_message_card() -> bool {
-    // On: a lone message sits in a card like every message of a
-    // conversation, so the reader looks the same whatever it opens (owner's
-    // decision, 2026-11-07, reversing the flat default of 2026-11-03). Only
-    // a privacy.toml MISSING this key sees the default — every save writes
-    // all fields, so an existing install's choice is pinned.
-    true
-}
-
 fn default_notification_buttons() -> Vec<String> {
     NotificationButtons::default().to_list()
 }
@@ -463,7 +408,6 @@ impl Default for PrivacyFile {
             auto_remote_content: false,
             remote_ahead: false,
             show_remote_banner: true,
-            show_spoof_banner: true,
             section_style: SectionStyle::default(),
             // Under the accounts' folders, as the redesign has it (mockup 01).
             // Above the accounts (owner's decision, 2026-11-04): one
@@ -498,20 +442,11 @@ impl Default for PrivacyFile {
             metered_save_data: true,
             blacklist: Vec::new(),
             threading: true,
-            thread_row_newest: false,
             thread_newest_first: false,
-            fold_messages: FoldMessages::Read,
-            always_show_recipients: false,
-            pgp_labels: false,
-            reader_find_bottom: false,
-            single_message_card: default_single_message_card(),
-            account_chip: true,
             desktop_icons: false,
-            reader_zoom: default_reader_zoom(),
             card_attachments: true,
             attachment_drawer: false,
             confirm_thread_delete: true,
-            message_theme: MessageTheme::default(),
             notifications: true,
             notification_content: true,
             notification_buttons: default_notification_buttons(),
@@ -519,7 +454,6 @@ impl Default for PrivacyFile {
             swipe_enabled: true,
             compose_default_from: String::new(),
             // A new install takes today's default, not the 2026-08-31 one.
-            single_card_default_applied: true,
             paste_plain: true,
             return_paragraph: false,
             toolbar_expanded: false,
@@ -581,7 +515,7 @@ pub(crate) fn load_privacy() -> PrivacyFile {
     };
     let mut file = toml::from_str::<PrivacyFile>(&text).unwrap_or_default();
     let moved = toml::from_str::<LegacySwitches>(&text).is_ok_and(|old| old.place(&mut file));
-    if apply_new_defaults(&mut file) || moved {
+    if moved {
         if let Ok(toml) = toml::to_string_pretty(&file) {
             let _ = write_private(&path, &toml);
         }
@@ -620,21 +554,6 @@ impl LegacySwitches {
         }
         moved
     }
-}
-
-/// Bring a file from before a default changed up to it, once: every save
-/// writes every key, so an older install carries the old value without
-/// anyone having chosen it. Whether anything changed.
-pub(super) fn apply_new_defaults(file: &mut PrivacyFile) -> bool {
-    let mut changed = false;
-    // The inset card for a lone message became the default on 2026-08-31
-    // (#153).
-    if !file.single_card_default_applied {
-        file.single_card_default_applied = true;
-        file.single_message_card = true;
-        changed = true;
-    }
-    changed
 }
 
 impl PrivacyFile {

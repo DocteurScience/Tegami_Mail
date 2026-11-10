@@ -22,8 +22,6 @@ fn a_conversation_renders_one_card_per_message_in_order() {
         "#3584e4",
         true,
         false,
-        false,
-        false,
         100,
     );
     assert_eq!(
@@ -67,8 +65,6 @@ fn every_card_carries_its_recipients_escaped_and_collapsed() {
         "#3584e4",
         true,
         false,
-        false,
-        false,
         100,
     );
     assert_eq!(
@@ -110,8 +106,6 @@ fn a_card_with_no_recipients_shows_no_to_line() {
         "#3584e4",
         true,
         false,
-        false,
-        false,
         100,
     );
     assert_eq!(
@@ -137,8 +131,6 @@ fn every_card_carries_its_own_menu_button_keyed_to_that_message() {
         &[],
         "#3584e4",
         true,
-        false,
-        false,
         false,
         100,
     );
@@ -171,8 +163,6 @@ fn only_unread_conversation_messages_are_marked() {
         &[],
         "#3584e4",
         true,
-        false,
-        false,
         false,
         100,
     );
@@ -213,8 +203,6 @@ fn a_deliberately_unread_message_keeps_its_mark() {
         "#3584e4",
         true,
         false,
-        false,
-        false,
         100,
     );
     assert_eq!(
@@ -246,8 +234,6 @@ fn a_known_frame_height_is_used_on_reopen() {
         &[],
         "#3584e4",
         true,
-        false,
-        false,
         false,
         100,
     );
@@ -282,8 +268,6 @@ fn a_selected_card_is_outlined_in_the_accent() {
         "#ff8800",
         true,
         false,
-        false,
-        false,
         100,
     );
     assert!(
@@ -301,12 +285,10 @@ fn a_selected_card_is_outlined_in_the_accent() {
     );
 }
 
-/// A lone message gets the same in-document header a conversation card
-/// does — its own action icons included, since the toolbar carries no
-/// per-message actions — but goes full-bleed: no card gutter, so it reads
-/// as a message, not a card.
+/// A lone message renders exactly like a one-message conversation (#57,
+/// owner 2026-11-07): carded, on the deeper page ground.
 #[test]
-fn a_single_message_keeps_the_header_but_goes_full_bleed() {
+fn a_single_message_is_a_card() {
     let doc = MessageView::conversation_document(
         &[msg_for_print()],
         &std::collections::HashMap::new(),
@@ -316,49 +298,6 @@ fn a_single_message_keeps_the_header_but_goes_full_bleed() {
         "#3584e4",
         true,
         false,
-        false,
-        false,
-        100,
-    );
-    assert!(
-        doc.contains("<section class=\"tegami-msg\""),
-        "message chrome: {doc}"
-    );
-    assert!(
-        doc.contains("class=\"tegami-msg-hdr\""),
-        "in-document header: {doc}"
-    );
-    assert!(
-        !doc.contains("<body class=\"tegami-conv\">"),
-        "no card gutter: {doc}"
-    );
-    assert!(
-        doc.contains("class=\"tegami-acts-toggle\""),
-        "the card's menu button: {doc}"
-    );
-    // Full-bleed also means the plain ground, not the cards' deeper page.
-    assert!(
-        doc.contains(&format!("background:{}", GROUND.0)),
-        "plain ground: {doc}"
-    );
-}
-
-/// With the "single messages as cards" preference on (#57), a lone
-/// message renders exactly like a one-message conversation: carded, on
-/// the deeper page ground.
-#[test]
-fn a_single_message_cards_up_when_asked() {
-    let doc = MessageView::conversation_document(
-        &[msg_for_print()],
-        &std::collections::HashMap::new(),
-        &Default::default(),
-        &Default::default(),
-        &[],
-        "#3584e4",
-        true,
-        false,
-        false,
-        true,
         100,
     );
     assert!(
@@ -386,8 +325,6 @@ fn a_message_from_another_folder_is_labelled_with_it() {
         &[],
         "#3584e4",
         true,
-        false,
-        false,
         false,
         100,
     );
@@ -422,8 +359,6 @@ fn a_folder_label_cannot_smuggle_markup_into_the_header() {
         "#3584e4",
         true,
         false,
-        false,
-        false,
         100,
     );
     assert!(
@@ -454,8 +389,6 @@ fn a_sender_cannot_put_markup_in_the_conversation_header() {
         &[],
         "#3584e4",
         true,
-        false,
-        false,
         false,
         100,
     );

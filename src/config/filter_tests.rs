@@ -531,24 +531,6 @@ dest_path = "Lists"
     assert!(!text.contains("any"), "{text}");
 }
 
-/// A new install opens a lone message in a card (2026-11-07), and a file
-/// from before the card default of #153 is brought up to it once.
-#[test]
-fn lone_messages_are_cards_on_a_new_install() {
-    let mut fresh = PrivacyFile::default();
-    apply_new_defaults(&mut fresh);
-    assert!(fresh.single_message_card);
-    let mut chosen = PrivacyFile {
-        single_message_card: false,
-        ..PrivacyFile::default()
-    };
-    apply_new_defaults(&mut chosen);
-    assert!(!chosen.single_message_card);
-    let mut old: PrivacyFile = toml::from_str("single_message_card = false\n").unwrap();
-    apply_new_defaults(&mut old);
-    assert!(old.single_message_card);
-}
-
 /// An account from before #445 has one `signature`, which reads as a
 /// list of one that new messages start with; a list written now keeps
 /// `signature` on its default for an older Tegami Mail, and no default

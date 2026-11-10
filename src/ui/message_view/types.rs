@@ -35,12 +35,6 @@ pub(crate) enum MessageViewInput {
     /// Whether the blocked-remote-content banner is shown. It doesn't change
     /// what is blocked — only what the reader says about it.
     SetBannerShown(bool),
-    /// The "always show recipients" preference changed (re-render follows).
-    SetAlwaysShowRecipients(bool),
-    /// The "single messages as cards" preference changed (re-render follows).
-    SetSingleMessageCard(bool),
-    /// Which messages of a conversation open folded (#326).
-    SetFoldMessages(crate::config::FoldMessages),
     /// What a folded card shows, from the message list's look (#326).
     SetFoldLook {
         preview_lines: u32,
@@ -62,9 +56,6 @@ pub(crate) enum MessageViewInput {
     },
     /// The view came on screen (#332).
     Mapped,
-    /// The OpenPGP chip's words on or off (#300), applied to the open
-    /// document at once.
-    SetPgpLabels(bool),
     /// What each message on screen has attached (#213), patched into the
     /// cards live when the document is up.
     SetCardAttachments(std::collections::HashMap<(u32, u32), Vec<CardAttachment>>),
@@ -151,15 +142,8 @@ pub(crate) enum MessageViewInput {
         allow_remote: bool,
         preview: bool,
     },
-    /// Set the message-content theme: `None` follows the system, `Some(dark)`
-    /// forces light/dark for email content only (not the app UI).
-    SetContentTheme(Option<bool>),
     /// Message zoom in percent; the bodies on screen rescale in place.
     SetZoom(u32),
-    /// The zoom Settings starts at, which the chip measures against.
-    SetZoomDefault(u32),
-    /// Whether the header's account chip is shown (Settings).
-    SetAccountChipShown(bool),
     /// The popover's "Fetch the sender's key" (#133): the Autocrypt key in
     /// the message first, then WKD and the keyservers.
     PgpFetchKey {
@@ -357,8 +341,6 @@ pub(crate) enum MessageViewInput {
     /// In-message find (#103): open/close the bar, run/step the search.
     OpenFind,
     CloseFind,
-    /// The find bar under the message, not above it (#392).
-    SetFindBottom(bool),
     /// A drag began on this card's header: carry it, or the selected cards
     /// it is one of, to a folder.
     DragCard((u32, u32)),

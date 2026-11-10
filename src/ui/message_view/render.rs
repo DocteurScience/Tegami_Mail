@@ -71,7 +71,6 @@ impl MessageView {
             noscroll: self.did_autoscroll,
             anchor: self.saved_anchor,
             anchor_gutter: self.anchor_gutter,
-            pgp_labels: self.pgp_labels,
             // The newest member, for the open-scroll fallback (#101).
             newest: self
                 .thread
@@ -103,7 +102,6 @@ impl MessageView {
         // Translations (#327): which cards show one, and whether cards
         // offer Translate at all.
         crate::services::translate::generation().hash(&mut h);
-        self.fold_messages.hash(&mut h);
         self.fold_preview_lines.hash(&mut h);
         let mut shown: Vec<(u32, u32, usize)> = self
             .translations
@@ -239,8 +237,6 @@ impl MessageView {
             &self.accent_hex(),
             !self.remote_allowed,
             dark,
-            self.always_show_recipients,
-            self.single_message_card,
             self.zoom,
         )
     }
@@ -257,7 +253,6 @@ struct BodyStamps {
     anchor: Option<(u32, u32, u32)>,
     /// The saved place was in the gutter between cards.
     anchor_gutter: bool,
-    pgp_labels: bool,
     /// The newest member of a conversation (none for a single message).
     newest: Option<(u32, u32)>,
     pub(super) read_mark: crate::config::ReadMark,
@@ -281,11 +276,7 @@ fn body_stamps(s: &BodyStamps) -> String {
         String::new()
     };
     // The OpenPGP chip as its icons alone, without the words (#300).
-    let pgp_icons = if s.pgp_labels {
-        ""
-    } else {
-        " data-tegami-pgpicons"
-    };
+    let pgp_icons = " data-tegami-pgpicons";
     // The newest member, for the open-scroll fallback (#101): with no
     // unread mail the reader lands on the newest message rather than
     // wherever the document happens to start.
@@ -317,7 +308,6 @@ mod tests {
             noscroll: false,
             anchor: None,
             anchor_gutter: false,
-            pgp_labels: true,
             newest: None,
             read_mark: ReadMark::Manual,
         }
@@ -325,7 +315,10 @@ mod tests {
 
     #[test]
     fn a_first_render_stamps_little() {
-        assert_eq!(body_stamps(&stamps()), " data-tegami-copied=\"Copied\"");
+        assert_eq!(
+            body_stamps(&stamps()),
+            " data-tegami-pgpicons data-tegami-copied=\"Copied\""
+        );
     }
 
     #[test]
@@ -334,7 +327,6 @@ mod tests {
             noscroll: true,
             anchor: Some((1, 2, 30)),
             anchor_gutter: true,
-            pgp_labels: false,
             newest: Some((1, 9)),
             read_mark: ReadMark::Delay,
         };
@@ -357,7 +349,8 @@ mod tests {
         assert_eq!(
             body_stamps(&s),
             " data-tegami-noscroll=\"1\" data-tegami-anchor=\"3:4:0\" \
-             data-tegami-readmark=\"250\" data-tegami-copied=\"Copied\""
+             data-tegami-pgpicons data-tegami-readmark=\"250\" \
+             data-tegami-copied=\"Copied\""
         );
         // Without the open scroll done, a saved anchor is not stamped.
         let s = BodyStamps {

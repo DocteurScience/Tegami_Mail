@@ -70,9 +70,9 @@ fn a_right_click_names_its_card() {
 #[test]
 fn the_recipients_block_lists_bcc() {
     let mut m = msg_for_print();
-    assert!(!recipients_html(&m, true).contains("Bcc:"));
+    assert!(!recipients_html(&m).contains("Bcc:"));
     m.bcc = "hidden@example.com".into();
-    let html = recipients_html(&m, true);
+    let html = recipients_html(&m);
     assert!(
         html.contains("<b>Bcc:</b> <span class=\"tegami-mail\" data-mail=\"hidden@example.com\">"),
         "{html}"
@@ -113,8 +113,6 @@ fn every_card_has_somewhere_to_put_an_invitation() {
         &[],
         "#3584e4",
         true,
-        false,
-        false,
         false,
         100,
     );

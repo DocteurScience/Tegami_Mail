@@ -4,8 +4,8 @@
 use super::filters::{Period, QuickFilter, QuickFilterContext, QuickFilters};
 use super::sort::{column_sort, correspondents, message_cmp, text_key_cmp, SortOrder};
 use super::threading::{
-    compute_thread_keys, heads_its_row, latest_elsewhere, reader_conversation, row_for_reader_key,
-    thread_slot, unasked_threads,
+    compute_thread_keys, heads_its_row, reader_conversation, row_for_reader_key, thread_slot,
+    unasked_threads,
 };
 use crate::models::Message;
 use crate::ui::message_row::{
@@ -125,46 +125,6 @@ fn a_row_heads_its_conversation_within_the_rendered_window() {
     // reader is still free to look for the rest of it in the cache.
     assert!(heads_its_row((1, 10), &msg_thread, &thread_members));
     assert!(heads_its_row((2, 7), &msg_thread, &thread_members));
-}
-
-/// #236 again, the second half: the row for a mail you have answered says
-/// so, because the cache hands down a reply this folder does not hold.
-#[test]
-fn a_row_speaks_for_the_reply_filed_in_sent() {
-    use crate::models::{ThreadLatest, ThreadSummary};
-    let reply = ThreadLatest {
-        from_name: "Me".into(),
-        from_addr: "me@example.com".into(),
-        preview: "Looked, all good".into(),
-        timestamp: 600,
-        date: String::new(),
-    };
-    let summary = ThreadSummary {
-        count: 2,
-        latest: Some(reply.clone()),
-        ..Default::default()
-    };
-
-    // The Inbox holds the message that came in at 500; the answer is later.
-    assert_eq!(latest_elsewhere(Some(&summary), 500), Some(reply));
-    // Once the folder itself holds something at least as new — the reply
-    // is in this folder too, or a newer mail has arrived — the row keeps
-    // describing what it can see.
-    assert_eq!(latest_elsewhere(Some(&summary), 600), None);
-    assert_eq!(latest_elsewhere(Some(&summary), 900), None);
-    // A conversation the cache has said nothing about, or nothing but a
-    // size, leaves the row alone.
-    assert_eq!(latest_elsewhere(None, 500), None);
-    assert_eq!(
-        latest_elsewhere(
-            Some(&ThreadSummary {
-                count: 3,
-                ..Default::default()
-            }),
-            500
-        ),
-        None
-    );
 }
 
 fn msg(id: u32, message_id: &str, references: &str) -> Message {

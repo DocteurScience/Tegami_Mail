@@ -6,29 +6,12 @@ use relm4::prelude::*;
 use webkit6::prelude::WebViewExt;
 
 impl MessageView {
-    pub(super) fn on_set_fold_messages(&mut self, fold: crate::config::FoldMessages) {
-        if self.fold_messages != fold {
-            self.fold_messages = fold;
-            self.folds.clear();
-            self.render();
-        }
-    }
-
     pub(super) fn on_set_fold_look(&mut self, preview_lines: u32) {
         let preview_lines = preview_lines.min(3);
         if self.fold_preview_lines != preview_lines {
             self.fold_preview_lines = preview_lines;
             self.render();
         }
-    }
-
-    pub(super) fn on_set_pgp_labels(&mut self, on: bool) {
-        self.pgp_labels = on;
-        let js = format!(
-            "document.body&&document.body.toggleAttribute('data-tegami-pgpicons',{})",
-            !on
-        );
-        self.run_js(&js);
     }
 
     pub(super) fn on_set_card_attachments_shown(&mut self, on: bool) {
@@ -43,17 +26,6 @@ impl MessageView {
     pub(super) fn on_set_attachment_drawer(&mut self, on: bool) {
         if self.drawer_on != on {
             self.drawer_on = on;
-            if self.current.is_some() && !self.loading {
-                self.render();
-            }
-        }
-    }
-
-    pub(super) fn on_set_content_theme(&mut self, o: Option<bool>) {
-        if self.content_dark != o {
-            self.content_dark = o;
-            let dark = self.theme_dark();
-            self.apply_webview_bg(dark);
             if self.current.is_some() && !self.loading {
                 self.render();
             }

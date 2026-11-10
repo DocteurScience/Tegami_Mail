@@ -374,13 +374,8 @@ impl AppModel {
             } else {
                 self.snooze_offer(account_id, folder_kind)
             },
-            content_dark: self.message_theme.dark_override(),
             zoom: self.zoom,
-            zoom_default: self.zoom_default,
-            account_chip: self.account_chip,
             tags: self.tags.clone(),
-            pgp_labels: self.pgp_labels,
-            find_bottom: self.reader_find_bottom,
             single_key: self.single_key.clone(),
             gmail_keys: self.gmail_keys.clone(),
         }

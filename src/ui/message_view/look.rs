@@ -30,11 +30,9 @@ impl MessageView {
             .unwrap_or_else(|| "#3584e4".to_string())
     }
 
-    /// Whether the theme draws messages dark: the message theme, or the
-    /// system's when it follows the system.
+    /// Whether messages are drawn dark: as the system is.
     pub(super) fn theme_dark(&self) -> bool {
-        self.content_dark
-            .unwrap_or_else(|| adw::StyleManager::default().is_dark())
+        adw::StyleManager::default().is_dark()
     }
 
     /// Whether cards list their own attachments (#213): by preference, and
@@ -48,8 +46,8 @@ impl MessageView {
     /// account chip and both switches hidden in Settings it would be an
     /// empty row adding its spacing above the subject.
     pub(super) fn account_line_shown(&self) -> bool {
-        let chip = self.account_name.is_some() && self.account_chip_shown;
-        let controls = self.current.is_some() && self.zoom != self.zoom_default;
+        let chip = self.account_name.is_some();
+        let controls = self.current.is_some() && self.zoom != 100;
         chip || controls
     }
 

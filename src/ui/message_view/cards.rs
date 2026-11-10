@@ -8,7 +8,7 @@ impl MessageView {
     /// message when Settings shows single messages as cards (#57). A card
     /// is selected and folded the same way whether or not it has replies.
     pub(super) fn carded(&self) -> bool {
-        self.thread.len() > 1 || (self.thread.len() == 1 && self.single_message_card)
+        !self.thread.is_empty()
     }
 
     /// Outline the selected cards in the document already on screen. Rendering
