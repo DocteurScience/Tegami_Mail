@@ -18,8 +18,6 @@ impl AppModel {
             avatars: self.avatars,
             contact_book: self.contact_book.clone(),
             sender_logos: self.sender_logos,
-            date_style: self.date_style,
-            clock_style: self.clock_style,
             fetch_interval_secs: self.fetch_interval_secs,
             push: self.push,
             blacklist: self.blacklist.clone(),
@@ -88,11 +86,8 @@ impl AppModel {
             .emit(MessageListInput::SetGravatar(self.gravatar));
         self.message_list
             .emit(MessageListInput::SetAvatars(self.avatars));
-        // The formatter is a free function, so the preference has to be handed to
-        // it before anything draws a date.
         self.message_list
             .emit(MessageListInput::SetSenderLogos(self.sender_logos));
-        crate::datefmt::set_style(self.date_style, self.clock_style);
         crate::ui::print_preview::set_options(self.print_options);
         self.message_list.emit(MessageListInput::SetLook {
             avatars: self.avatars,

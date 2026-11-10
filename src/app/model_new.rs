@@ -252,8 +252,6 @@ impl AppModel {
             avatars: prefs.avatars,
             contact_book: prefs.contact_book.clone(),
             sender_logos: prefs.sender_logos,
-            date_style: config::load_date_format().0,
-            clock_style: config::load_date_format().1,
             fetch_interval_secs: prefs.fetch_interval_secs,
             push: prefs.push,
             notifications_enabled: prefs.notifications,

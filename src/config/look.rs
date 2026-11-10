@@ -1,5 +1,4 @@
-//! How the app looks: theme, tray icon, message and date styles, text
-//! size, and the message list's layout and columns.
+//! How the app looks: theme, text size, and the message list's layout and columns.
 
 use serde::{Deserialize, Serialize};
 
@@ -13,40 +12,6 @@ pub(crate) enum AppTheme {
     System,
     Light,
     Dark,
-}
-
-/// How dates are written: the system's own arrangement, or one the user picked
-/// regardless of it (#32).
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Default, Deserialize, Serialize)]
-#[serde(rename_all = "lowercase")]
-pub(crate) enum DateStyle {
-    /// Follow the locale: its field order, month names and separators.
-    #[default]
-    System,
-    /// Aug 23, 2026
-    MonthFirst,
-    /// 23 Aug 2026
-    DayFirst,
-    /// 2026 Aug 23
-    YearFirst,
-}
-
-/// Whether the clock runs to 12 or 24, or follows the system.
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Default, Deserialize, Serialize)]
-#[serde(rename_all = "lowercase")]
-pub(crate) enum ClockStyle {
-    #[default]
-    System,
-    /// 5:40 PM
-    Twelve,
-    /// 17:40
-    TwentyFour,
-}
-
-/// How dates are written, and on what clock.
-pub(crate) fn load_date_format() -> (DateStyle, ClockStyle) {
-    let p = load_privacy();
-    (p.date_style, p.clock_style)
 }
 
 pub(super) fn default_text_scale() -> u32 {

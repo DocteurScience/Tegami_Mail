@@ -329,9 +329,6 @@ pub(crate) struct AppModel {
     pub(super) contact_book: String,
     /// Whether a sender's site icon may fill their circle (#30).
     pub(super) sender_logos: bool,
-    /// How dates are written, and on what clock (#32).
-    pub(super) date_style: crate::config::DateStyle,
-    pub(super) clock_style: crate::config::ClockStyle,
     /// Seconds between automatic mail checks (0 = manual only).
     pub(super) fetch_interval_secs: u64,
     /// Whether IMAP IDLE push is enabled.

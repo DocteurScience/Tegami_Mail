@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+- **Removed: the stored date and clock styles** (docs/DESIGN.md, "Removed
+  or moved": "Conversations and Date and time: the pages. Defaults, or the
+  system"). Their page was gone, yet a `date_style` or `clock_style` saved
+  by an earlier version still rewrote every date in the list and the
+  reader, with nothing left to undo it. Dates now always follow the
+  system's language for the order and month names, and the desktop's 12- or
+  24-hour setting for the clock.
 - **Removed: the tray icon** (docs/DESIGN.md, "Removed or moved": "System:
   … tray icon"). It was off by default, and its setting had gone with the
   System page; GNOME has no tray without an extension, and running in the

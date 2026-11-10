@@ -61,9 +61,6 @@ const CORPUS: &[(&str, &str)] = &[
 
 #[test]
 fn the_corpus_parses_as_it_did() {
-    let _style = crate::datefmt::TEST_STYLE_LOCK
-        .lock()
-        .unwrap_or_else(|e| e.into_inner());
     let mut out = String::new();
     for (name, card) in CORPUS {
         out += &format!(

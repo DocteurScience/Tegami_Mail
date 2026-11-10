@@ -14,42 +14,8 @@
 //! The locale is read once. It cannot change under a running process without the
 //! environment changing, which does not happen while the app is up.
 
-use crate::config::{ClockStyle, DateStyle};
 use gtk::glib;
-use std::sync::atomic::{AtomicU8, Ordering};
 use std::sync::{Mutex, OnceLock};
-
-/// The user's choice, when they have made one: dates and the clock can each be
-/// pinned regardless of the locale (#32). Held as plain atomics so formatting
-/// stays a free function that any thread can call.
-static DATE_STYLE: AtomicU8 = AtomicU8::new(0);
-static CLOCK_STYLE: AtomicU8 = AtomicU8::new(0);
-
-/// Held by a test that changes the style and by a test that pins a formatted
-/// date, so the one never formats under the other's passing style.
-#[cfg(test)]
-pub(crate) static TEST_STYLE_LOCK: Mutex<()> = Mutex::new(());
-
-/// Apply the user's preference. Called at startup and whenever it changes.
-pub(crate) fn set_style(date: DateStyle, clock: ClockStyle) {
-    DATE_STYLE.store(
-        match date {
-            DateStyle::System => 0,
-            DateStyle::MonthFirst => 1,
-            DateStyle::DayFirst => 2,
-            DateStyle::YearFirst => 3,
-        },
-        Ordering::Relaxed,
-    );
-    CLOCK_STYLE.store(
-        match clock {
-            ClockStyle::System => 0,
-            ClockStyle::Twelve => 1,
-            ClockStyle::TwentyFour => 2,
-        },
-        Ordering::Relaxed,
-    );
-}
 
 /// A local `glib::DateTime`, or `None` for a timestamp outside its range.
 fn local(ts: i64) -> Option<glib::DateTime> {
@@ -68,15 +34,6 @@ fn fmt(dt: &glib::DateTime, pattern: &str) -> String {
 
 /// Whether the day is written before the month (23.08. rather than 08/23).
 fn day_first() -> bool {
-    match DATE_STYLE.load(Ordering::Relaxed) {
-        1 | 3 => return false,
-        2 => return true,
-        _ => {}
-    }
-    system_day_first()
-}
-
-fn system_day_first() -> bool {
     static DAY_FIRST: OnceLock<bool> = OnceLock::new();
     *DAY_FIRST.get_or_init(|| {
         // A date whose day and month can't be confused for one another: whichever
@@ -95,15 +52,6 @@ fn day_first_from_probe(probe: &str) -> bool {
 
 /// Whether the year is written first, as Japanese and Chinese locales do.
 fn year_first() -> bool {
-    match DATE_STYLE.load(Ordering::Relaxed) {
-        1 | 2 => return false,
-        3 => return true,
-        _ => {}
-    }
-    system_year_first()
-}
-
-fn system_year_first() -> bool {
     static YEAR_FIRST: OnceLock<bool> = OnceLock::new();
     *YEAR_FIRST.get_or_init(|| year_first_from_probe(&order_probe()))
 }
@@ -141,21 +89,11 @@ fn order_probe() -> String {
         .clone()
 }
 
-/// Whether the clock runs on a 12-hour dial.
-fn ampm() -> bool {
-    match CLOCK_STYLE.load(Ordering::Relaxed) {
-        1 => return true,
-        2 => return false,
-        _ => {}
-    }
-    system_ampm()
-}
-
-/// The system's clock: the desktop's own setting first (GNOME's Time
+/// Whether the clock runs on a 12-hour dial: the desktop's own setting first (GNOME's Time
 /// Format, which the locale knows nothing about, #173), then what the
 /// locale writes. Re-read now and then so a change in Settings shows up
 /// without a restart.
-fn system_ampm() -> bool {
+fn ampm() -> bool {
     static CACHE: Mutex<Option<(std::time::Instant, bool)>> = Mutex::new(None);
     let mut cache = CACHE.lock().unwrap_or_else(|e| e.into_inner());
     if let Some((at, v)) = *cache {
@@ -472,43 +410,6 @@ mod tests {
         // Nothing recognisable: keep Tegami Mail's own arrangement rather than guess.
         assert!(!day_first_from_probe(""));
         assert!(!day_first_from_probe("Freitag"));
-    }
-
-    #[test]
-    fn a_chosen_format_overrides_the_locale() {
-        let _style = TEST_STYLE_LOCK.lock().unwrap_or_else(|e| e.into_inner());
-        // The C locale this test runs under writes month-first on a 24-hour clock;
-        // each choice has to hold regardless of that.
-        let ts = 1787478020; // 2026-08-23, 09:40 UTC
-        set_style(DateStyle::DayFirst, ClockStyle::Twelve);
-        assert!(
-            day_month_year(ts).starts_with("23"),
-            "{}",
-            day_month_year(ts)
-        );
-        assert!(time(ts).contains(':') && time(ts).len() > 5, "{}", time(ts));
-
-        set_style(DateStyle::YearFirst, ClockStyle::TwentyFour);
-        assert!(
-            day_month_year(ts).starts_with("2026"),
-            "{}",
-            day_month_year(ts)
-        );
-        assert!(
-            !time(ts).contains("AM") && !time(ts).contains("PM"),
-            "{}",
-            time(ts)
-        );
-
-        set_style(DateStyle::MonthFirst, ClockStyle::System);
-        assert!(
-            day_month_year(ts).starts_with("Aug"),
-            "{}",
-            day_month_year(ts)
-        );
-
-        // Back to following the locale, so the other tests see it as they found it.
-        set_style(DateStyle::System, ClockStyle::System);
     }
 
     #[test]

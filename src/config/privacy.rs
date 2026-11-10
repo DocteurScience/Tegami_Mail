@@ -5,9 +5,7 @@
 use serde::{Deserialize, Serialize};
 use std::path::PathBuf;
 
-use super::look::{
-    default_list_columns, default_text_scale, AppTheme, ClockStyle, DateStyle, ReadingPane,
-};
+use super::look::{default_list_columns, default_text_scale, AppTheme, ReadingPane};
 use super::prefs::{
     default_files_limit_mb, default_undo_send_secs, ComposeFormat, FilesAction, FilesLarge,
     LauncherBadge, NotificationButtons, PrintOptions, ReadMark, ReceiptPolicy, ReturnedReceipts,
@@ -43,12 +41,6 @@ pub(crate) struct PrivacyFile {
     /// first writable EDS book.
     #[serde(default)]
     pub(crate) contact_book: String,
-    /// How dates are written (#32).
-    #[serde(default)]
-    pub(crate) date_style: DateStyle,
-    /// Whether the clock runs to 12 or 24 (#32).
-    #[serde(default)]
-    pub(crate) clock_style: ClockStyle,
     /// Seconds between automatic mail checks; 0 = manual only.
     #[serde(default = "default_fetch_interval")]
     pub(crate) fetch_interval_secs: u64,
@@ -308,8 +300,6 @@ impl Default for PrivacyFile {
             avatars: true,
             contact_book: String::new(),
             sender_logos: false,
-            date_style: DateStyle::default(),
-            clock_style: ClockStyle::default(),
             fetch_interval_secs: default_fetch_interval(),
             push: true,
             blacklist: Vec::new(),
