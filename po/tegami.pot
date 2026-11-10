@@ -3545,9 +3545,6 @@ msgstr ""
 msgid "Drag to resize, double-click for the usual width"
 msgstr ""
 
-msgid "Add sender to Contacts"
-msgstr ""
-
 msgid "Forwarded"
 msgstr ""
 
@@ -3677,6 +3674,9 @@ msgid "Archive this message"
 msgstr ""
 
 msgid "Delete this message"
+msgstr ""
+
+msgid "Add sender to Contacts"
 msgstr ""
 
 msgid "Back to my fonts and colors"

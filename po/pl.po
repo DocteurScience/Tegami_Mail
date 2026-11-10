@@ -4131,9 +4131,6 @@ msgstr ""
 msgid "Drag to resize, double-click for the usual width"
 msgstr ""
 
-msgid "Add sender to Contacts"
-msgstr "Dodaj nadawcę do kontaktów"
-
 #, fuzzy
 msgid "Forwarded"
 msgstr "Przekaż dalej"
@@ -4286,6 +4283,9 @@ msgstr "Archiwizuj tę wiadomość"
 
 msgid "Delete this message"
 msgstr "Usuń tę wiadomość"
+
+msgid "Add sender to Contacts"
+msgstr "Dodaj nadawcę do kontaktów"
 
 msgid "Back to my fonts and colors"
 msgstr "Przywróć własne czcionki i kolory"

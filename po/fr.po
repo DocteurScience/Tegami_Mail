@@ -3869,9 +3869,6 @@ msgid "Drag to resize, double-click for the usual width"
 msgstr ""
 "Faites glisser pour redimensionner, double-cliquez pour la largeur habituelle"
 
-msgid "Add sender to Contacts"
-msgstr "Ajouter l’expéditeur aux contacts"
-
 msgid "Forwarded"
 msgstr "Transféré"
 
@@ -4006,6 +4003,9 @@ msgstr "Archiver ce message"
 
 msgid "Delete this message"
 msgstr "Supprimer ce message"
+
+msgid "Add sender to Contacts"
+msgstr "Ajouter l’expéditeur aux contacts"
 
 msgid "Back to my fonts and colors"
 msgstr "Retour à mes polices et couleurs"
@@ -5256,7 +5256,9 @@ msgid "Email account"
 msgstr "Compte e-mail"
 
 msgid "Tegami Mail finds the servers of most providers from your address."
-msgstr "Tegami Mail trouve les serveurs de la plupart des fournisseurs à partir de votre adresse."
+msgstr ""
+"Tegami Mail trouve les serveurs de la plupart des fournisseurs à partir de "
+"votre adresse."
 
 msgid "Display name, servers, API token"
 msgstr "Nom affiché, serveurs, jeton d’API"

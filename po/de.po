@@ -3955,9 +3955,6 @@ msgstr "Fälligkeitsdatum"
 msgid "Drag to resize, double-click for the usual width"
 msgstr "Ziehen zum Anpassen der Größe, Doppelklick für die Standardbreite"
 
-msgid "Add sender to Contacts"
-msgstr "Absender zu Kontakten hinzufügen"
-
 msgid "Forwarded"
 msgstr "Weitergeleitet"
 
@@ -4095,6 +4092,9 @@ msgstr "Nachricht archivieren"
 
 msgid "Delete this message"
 msgstr "Nachricht löschen"
+
+msgid "Add sender to Contacts"
+msgstr "Absender zu Kontakten hinzufügen"
 
 msgid "Back to my fonts and colors"
 msgstr "Eigene Schriftarten und Farben verwenden"

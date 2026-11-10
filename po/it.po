@@ -4017,9 +4017,6 @@ msgstr "Scadenza"
 msgid "Drag to resize, double-click for the usual width"
 msgstr "Trascina per ridimensionare, doppio clic per la larghezza normale"
 
-msgid "Add sender to Contacts"
-msgstr "Aggiungi mittente ai contatti"
-
 #, fuzzy
 msgid "Forwarded"
 msgstr "Inoltra"
@@ -4164,6 +4161,9 @@ msgstr "Archivia questo messaggio"
 
 msgid "Delete this message"
 msgstr "Elimina questo messaggio"
+
+msgid "Add sender to Contacts"
+msgstr "Aggiungi mittente ai contatti"
 
 msgid "Back to my fonts and colors"
 msgstr "Torna ai miei caratteri e colori"

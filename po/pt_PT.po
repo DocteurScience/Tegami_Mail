@@ -3955,9 +3955,6 @@ msgid "Drag to resize, double-click for the usual width"
 msgstr ""
 "Arraste para redimensionar; clique duas vezes para repor a largura habitual"
 
-msgid "Add sender to Contacts"
-msgstr "Adicionar remetente aos contactos"
-
 msgid "Forwarded"
 msgstr "Reencaminhada"
 
@@ -4096,6 +4093,9 @@ msgstr "Arquivar esta mensagem"
 
 msgid "Delete this message"
 msgstr "Eliminar esta mensagem"
+
+msgid "Add sender to Contacts"
+msgstr "Adicionar remetente aos contactos"
 
 msgid "Back to my fonts and colors"
 msgstr "Voltar aos meus tipos de letra e cores"

@@ -3993,9 +3993,6 @@ msgstr "Λήξη"
 msgid "Drag to resize, double-click for the usual width"
 msgstr "Σύρετε για αλλαγή μεγέθους, κάντε διπλό κλικ για το συνηθισμένο πλάτος"
 
-msgid "Add sender to Contacts"
-msgstr "Προσθήκη αποστολέα στις Επαφές"
-
 msgid "Forwarded"
 msgstr "Προωθήθηκε"
 
@@ -4135,6 +4132,9 @@ msgstr "Αρχειοθέτηση αυτού του μηνύματος"
 
 msgid "Delete this message"
 msgstr "Διαγραφή αυτού του μηνύματος"
+
+msgid "Add sender to Contacts"
+msgstr "Προσθήκη αποστολέα στις Επαφές"
 
 msgid "Back to my fonts and colors"
 msgstr "Επιστροφή στις γραμματοσειρές και τα χρώματά μου"

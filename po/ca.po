@@ -3932,9 +3932,6 @@ msgstr "Venciment"
 msgid "Drag to resize, double-click for the usual width"
 msgstr "Arrossega per redimensionar, doble clic per a l'amplada habitual"
 
-msgid "Add sender to Contacts"
-msgstr "Afegeix el remitent a contactes"
-
 msgid "Forwarded"
 msgstr "Reenviat"
 
@@ -4074,6 +4071,9 @@ msgstr "Arxiva aquest missatge"
 
 msgid "Delete this message"
 msgstr "Suprimeix aquest missatge"
+
+msgid "Add sender to Contacts"
+msgstr "Afegeix el remitent a contactes"
 
 msgid "Back to my fonts and colors"
 msgstr "Torna a les meves fonts i colors"

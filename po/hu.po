@@ -4084,9 +4084,6 @@ msgstr ""
 msgid "Drag to resize, double-click for the usual width"
 msgstr ""
 
-msgid "Add sender to Contacts"
-msgstr "Feladó hozzáadása a névjegyekhez"
-
 #, fuzzy
 msgid "Forwarded"
 msgstr "Továbbítás"
@@ -4235,6 +4232,9 @@ msgstr "Üzenet archiválása"
 
 msgid "Delete this message"
 msgstr "Üzenet törlése"
+
+msgid "Add sender to Contacts"
+msgstr "Feladó hozzáadása a névjegyekhez"
 
 msgid "Back to my fonts and colors"
 msgstr "Vissza a saját betűtípusaimhoz és színeimhez"

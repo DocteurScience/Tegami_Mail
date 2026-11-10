@@ -4107,9 +4107,6 @@ msgstr ""
 "Потяните, чтобы изменить размер, или дважды нажмите для восстановления "
 "обычной ширины"
 
-msgid "Add sender to Contacts"
-msgstr "Добавить отправителя в «Контакты»"
-
 #, fuzzy
 msgid "Forwarded"
 msgstr "Переслать"
@@ -4257,6 +4254,9 @@ msgstr "Архивировать это сообщение"
 
 msgid "Delete this message"
 msgstr "Удалить это сообщение"
+
+msgid "Add sender to Contacts"
+msgstr "Добавить отправителя в «Контакты»"
 
 msgid "Back to my fonts and colors"
 msgstr "Вернуться к моим шрифтам и цветам"
