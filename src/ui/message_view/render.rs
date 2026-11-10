@@ -113,9 +113,6 @@ impl MessageView {
             .collect();
         shown.sort_unstable();
         shown.hash(&mut h);
-        // Whether cards list their attachments (#213); the lists themselves
-        // are patched in live rather than rendered for.
-        self.chips_shown().hash(&mut h);
         // Names from Contacts came in, or the switch for them moved (#541).
         crate::contacts::contact_names_generation().hash(&mut h);
         self.thread.len().hash(&mut h);
@@ -149,13 +146,7 @@ impl MessageView {
         // builder without widening its signature — see LIVE_GROUNDS.
         LIVE_GROUNDS.with(|g| *g.borrow_mut() = Some(self.theme_grounds(dark)));
         LIVE_TAGS.with(|t| *t.borrow_mut() = self.tags.clone());
-        LIVE_ATTS.with(|a| {
-            *a.borrow_mut() = if self.chips_shown() {
-                self.card_atts.clone()
-            } else {
-                Default::default()
-            }
-        });
+        LIVE_ATTS.with(|a| *a.borrow_mut() = self.card_atts.clone());
         LIVE_UNSUB.with(|u| {
             *u.borrow_mut() = self
                 .thread

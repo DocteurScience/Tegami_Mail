@@ -28,6 +28,8 @@ pub(crate) enum AttVerb {
     Save,
     /// Every attachment of the message, into one folder.
     SaveAll,
+    /// Out of the message on the server, the rest of it kept (#289).
+    Delete,
 }
 
 #[derive(Debug)]
@@ -59,15 +61,6 @@ pub(crate) enum MessageViewInput {
     /// What each message on screen has attached (#213), patched into the
     /// cards live when the document is up.
     SetCardAttachments(std::collections::HashMap<(u32, u32), Vec<CardAttachment>>),
-    /// Preference: cards list their own attachments (#213).
-    SetCardAttachmentsShown(bool),
-    /// Preference: the attachment drawer is in use (#213).
-    SetAttachmentDrawer(bool),
-    /// Scroll a card's attachment row into view and flash it (#213).
-    ScrollToAttachments {
-        account_id: u32,
-        id: u32,
-    },
     /// A card's attachment (#213): its icon or name was clicked (open), or
     /// one of its buttons or its menu's entries.
     AttachmentAction {

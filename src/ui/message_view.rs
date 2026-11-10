@@ -49,7 +49,6 @@ use crate::models::Message;
 pub(crate) use frame::theme_grounds_for;
 pub(crate) use menu::MenuHit;
 pub(crate) use menu::{hit_menu_entries, strip_navigation_items};
-pub(crate) use page_fade::{on_next_page_fade, PAGE_FADE_MS};
 pub(crate) use types::{
     AttVerb, CardAttachment, InviteAction, MessageViewInput, MessageViewOutput, SelectMode,
     TrState, UnsubState,
@@ -64,11 +63,6 @@ pub(crate) struct MessageView {
     /// What each message on screen has attached (#213): names and sizes,
     /// handed over by the app as the files arrive. Listed beneath the card.
     card_atts: std::collections::HashMap<(u32, u32), Vec<CardAttachment>>,
-    /// Preference: cards list their own attachments (#213).
-    card_atts_shown: bool,
-    /// Preference: the attachment drawer is in use. A lone message's files
-    /// are listed on its card only when the drawer is not there to show them.
-    drawer_on: bool,
     /// The newest message in the thread — drives the header, avatar and actions.
     current: Option<Message>,
     /// The whole conversation, newest first. One entry = a single message (shown

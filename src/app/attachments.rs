@@ -8,11 +8,9 @@ use relm4::prelude::*;
 use crate::config;
 use crate::i18n::{i18n, i18n_f};
 use crate::models::Attachment;
-use crate::ui::attachment_drawer::AttachmentDrawerInput;
 use crate::ui::attachment_io::save_attachment_as;
 use crate::ui::message_list::MessageListInput;
 use crate::ui::message_view::MessageViewInput;
-use crate::ui::message_window::MessageWindowInput;
 use crate::worker::MailRequest;
 
 use super::conversation::{body_key, BodyKey};
@@ -66,16 +64,8 @@ pub(crate) struct AttachmentTarget {
 }
 
 impl AppModel {
+    /// The open message's files, to its cards (#213).
     pub(super) fn sync_attachment_drawer(&self) {
-        // Switched off (#213), the drawer is simply never given anything:
-        // empty hides it, seam and all.
-        let items = if self.drawer_enabled {
-            self.attachments.clone()
-        } else {
-            Vec::new()
-        };
-        self.attachment_drawer
-            .emit(AttachmentDrawerInput::SetItems(items));
         self.push_card_attachments();
     }
 
@@ -363,7 +353,13 @@ impl AppModel {
                     return;
                 };
                 let parent: &gtk::Window = self.window.upcast_ref();
-                if verb == AttVerb::Save {
+                if verb == AttVerb::Delete {
+                    // Asked first: it cannot be undone (#289).
+                    match self.attachment_target(&att.name, Some(att.data.len())) {
+                        Some(target) => sender.input(AppMsg::AskDeleteAttachment(target)),
+                        None => tracing::warn!("attachment: no server copy found to delete"),
+                    }
+                } else if verb == AttVerb::Save {
                     // A card's Save As (#213); a failed write is dropped.
                     save_attachment_as(&att.name, att.data, Some(parent), |_| {});
                 } else if verb == AttVerb::SaveAll {
@@ -374,18 +370,18 @@ impl AppModel {
                         &att.data,
                         Some(parent),
                     );
-                } else if crate::ui::attachment_drawer::previewable(&att) {
+                } else if crate::ui::thumbnails::previewable(&att) {
                     // The lightbox pages through this message's previewable
                     // files, starting at the one clicked.
                     let previewable: Vec<Attachment> = items
                         .iter()
-                        .filter(|a| crate::ui::attachment_drawer::previewable(a))
+                        .filter(|a| crate::ui::thumbnails::previewable(a))
                         .cloned()
                         .collect();
                     let start = items
                         .iter()
                         .take(index + 1)
-                        .filter(|a| crate::ui::attachment_drawer::previewable(a))
+                        .filter(|a| crate::ui::thumbnails::previewable(a))
                         .count()
                         .saturating_sub(1);
                     sender.input(AppMsg::ShowLightbox {
@@ -400,42 +396,10 @@ impl AppModel {
                     );
                 }
             }
-            AppMsg::ShowAttachmentInMessage(att) => {
-                // The drawer shows identical (name, size) pairs once, so the
-                // first message carrying this one is the one to find.
-                let owner = self.conversation_members().into_iter().find(|key| {
-                    self.member_key(*key)
-                        .and_then(|k| self.attachment_cache.get(&k))
-                        .is_some_and(|items| {
-                            items
-                                .iter()
-                                .any(|a| a.name == att.name && a.data.len() == att.data.len())
-                        })
-                });
-                if let Some((account_id, id)) = owner {
-                    self.message_view
-                        .emit(MessageViewInput::ScrollToAttachments { account_id, id });
-                }
-            }
-            AppMsg::DeleteDrawerAttachment(att) => {
-                if let Some(target) = self.attachment_target(&att.name, Some(att.data.len())) {
-                    sender.input(AppMsg::AskDeleteAttachment(target));
-                }
-            }
             AppMsg::AskDeleteAttachment(target) => {
                 self.confirm_delete_attachment(target, self.window.upcast_ref(), &sender)
             }
             AppMsg::DeleteAttachment(t) => {
-                self.attachment_drawer
-                    .emit(AttachmentDrawerInput::MarkDeleting(
-                        t.name.clone(),
-                        t.size as usize,
-                    ));
-                if let Some(p) = self.popouts.get(&(t.account_id, t.message_id)) {
-                    p.controller.emit(MessageWindowInput::Drawer(
-                        AttachmentDrawerInput::MarkDeleting(t.name.clone(), t.size as usize),
-                    ));
-                }
                 self.deleting_attachments.push(t.clone());
                 // TEGAMI_SHOWCASE_DELETE_HOLD=<seconds> holds the request back,
                 // so the file can be captured while it is being deleted.
@@ -469,14 +433,9 @@ impl AppModel {
                 name,
                 size,
             } => {
+                // The worker has said why already.
+                let _ = size;
                 self.take_deleting(account_id, message_id, &name);
-                if let Some(p) = self.popouts.get(&(account_id, message_id)) {
-                    p.controller.emit(MessageWindowInput::Drawer(
-                        AttachmentDrawerInput::NotDeleted(name.clone(), size as usize),
-                    ));
-                }
-                self.attachment_drawer
-                    .emit(AttachmentDrawerInput::NotDeleted(name, size as usize));
             }
             msg @ AppMsg::AttachmentDeleted { .. } => self.on_attachment_deleted(msg, sender),
             _ => unreachable!("not routed to on_attachments"),
@@ -498,19 +457,7 @@ impl AppModel {
         else {
             unreachable!("only AttachmentDeleted comes here")
         };
-        // The file fades out where it is shown; the lists that
-        // follow wait for it.
-        let t = self.take_deleting(account_id, message_id, &name);
-        let shown = t.map_or(size, |t| t.size) as usize;
-        self.attachment_drawer
-            .emit(AttachmentDrawerInput::Deleted(name.clone(), shown));
-        if let Some(p) = self.popouts.get(&(account_id, message_id)) {
-            p.controller
-                .emit(MessageWindowInput::Drawer(AttachmentDrawerInput::Deleted(
-                    name.clone(),
-                    shown,
-                )));
-        }
+        let _ = (self.take_deleting(account_id, message_id, &name), size);
         let key = (account_id, message_id);
         let members = self.conversation_members();
         self.thread_cache

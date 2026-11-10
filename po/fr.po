@@ -2698,79 +2698,6 @@ msgstr "Ajouter un critère sur l’aperçu ou Reply-To…"
 msgid "Delete smart folder"
 msgstr "Supprimer le dossier intelligent"
 
-msgid "Open"
-msgstr "Ouvrir"
-
-msgid "Download…"
-msgstr "Télécharger…"
-
-msgid "Show in message"
-msgstr "Afficher dans le message"
-
-msgid "Delete from server…"
-msgstr "Supprimer du serveur…"
-
-msgid "Key imported"
-msgstr "Clé importée"
-
-msgid ""
-"The key is in your keyring now. Trust it under Settings, OpenPGP, once you "
-"have checked its fingerprint with its owner."
-msgstr ""
-"La clé se trouve désormais dans votre trousseau de clés. Accordez-lui votre "
-"confiance dans « Paramètres », puis « OpenPGP », après avoir vérifié son "
-"empreinte auprès de son propriétaire."
-
-msgid "Already in your keyring"
-msgstr "Déjà dans votre trousseau de clés"
-
-msgid "That key was imported before."
-msgstr "Cette clé avait déjà été importée."
-
-msgid "Could not import the key"
-msgstr "Impossible d’importer la clé"
-
-msgid "Download"
-msgstr "Télécharger"
-
-msgid "Import OpenPGP key"
-msgstr "Importer une clé OpenPGP"
-
-msgid "Deleting…"
-msgstr "Suppression…"
-
-msgid "Show the attachments"
-msgstr "Afficher les pièces jointes"
-
-msgid "Hide the attachments"
-msgstr "Masquer les pièces jointes"
-
-msgid "{n} attachment"
-msgid_plural "{n} attachments"
-msgstr[0] "{n} pièce jointe"
-msgstr[1] "{n} pièces jointes"
-
-msgid "Thumbnail size"
-msgstr "Taille des vignettes"
-
-msgid "Sorted Z to A — switch to A to Z"
-msgstr "Trié de Z à A — basculer vers A à Z"
-
-msgid "Sorted A to Z — switch to Z to A"
-msgstr "Trié de A à Z — basculer vers Z à A"
-
-msgid "Show as thumbnails"
-msgstr "Afficher sous forme de vignettes"
-
-msgid "Show as a list"
-msgstr "Afficher sous forme de liste"
-
-msgid "Save all…"
-msgstr "Tout enregistrer…"
-
-msgid "Save every attachment to a folder"
-msgstr "Enregistrer chaque pièce jointe dans un dossier"
-
 msgid "Save attachment"
 msgstr "Enregistrer la pièce jointe"
 
@@ -3101,6 +3028,11 @@ msgid_plural "{n} files"
 msgstr[0] "{n} fichier"
 msgstr[1] "{n} fichiers"
 
+msgid "{n} attachment"
+msgid_plural "{n} attachments"
+msgstr[0] "{n} pièce jointe"
+msgstr[1] "{n} pièces jointes"
+
 msgid "{name} (link)"
 msgstr "{name} (lien)"
 
@@ -3109,6 +3041,9 @@ msgstr "Téléversement…"
 
 msgid "Attach {name}"
 msgstr "Joindre {name}"
+
+msgid "Open"
+msgstr "Ouvrir"
 
 msgid "Upload {n} file and put its share link in the message."
 msgid_plural "Upload {n} files and put their share links in the message."
@@ -3753,6 +3688,9 @@ msgstr "Précédent"
 msgid "Next"
 msgstr "Suivant"
 
+msgid "Download…"
+msgstr "Télécharger…"
+
 msgid "{name} · {current} of {total}"
 msgstr "{name} · {current} sur {total}"
 
@@ -3974,9 +3912,6 @@ msgstr "Double-cliquez pour ouvrir dans une nouvelle fenêtre"
 msgid "To: {names}"
 msgstr "À : {names}"
 
-msgid "Hide recipients"
-msgstr "Masquer les destinataires"
-
 msgid "Show recipients"
 msgstr "Afficher les destinataires"
 
@@ -4126,6 +4061,12 @@ msgstr "Ouvrir avec…"
 
 msgid "Save as…"
 msgstr "Enregistrer sous…"
+
+msgid "Save all…"
+msgstr "Tout enregistrer…"
+
+msgid "Delete from server…"
+msgstr "Supprimer du serveur…"
 
 msgid "Encrypted messages are not sent for translation."
 msgstr "Les messages chiffrés ne sont pas envoyés à la traduction."
@@ -4566,6 +4507,9 @@ msgstr "Version {version}, sur cet ordinateur."
 
 msgid "Not downloaded yet. The download is {size}."
 msgstr "Pas encore téléchargé. Le téléchargement fait {size}."
+
+msgid "Download"
+msgstr "Télécharger"
 
 msgid "The files could not be removed."
 msgstr "Les fichiers n’ont pas pu être supprimés."

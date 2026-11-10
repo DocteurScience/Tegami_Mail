@@ -3,7 +3,6 @@
 //! and the small widgets they share.
 
 pub(crate) mod accounts;
-pub(crate) mod attachment_drawer;
 pub(crate) mod attachment_io;
 pub(crate) mod carry_over;
 mod cloud_accounts;
@@ -19,7 +18,6 @@ pub(crate) mod drop_zones;
 pub(crate) mod emoji;
 mod fade_label;
 pub(crate) mod folder_picker;
-pub(crate) mod grab_pill;
 pub(crate) mod initials;
 pub(crate) mod keymap;
 pub(crate) mod later;

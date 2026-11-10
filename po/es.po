@@ -2758,78 +2758,6 @@ msgstr ""
 msgid "Delete smart folder"
 msgstr "Eliminar carpeta inteligente…"
 
-msgid "Open"
-msgstr "Abrir"
-
-msgid "Download…"
-msgstr "Descargar…"
-
-msgid "Show in message"
-msgstr "Mostrar en el mensaje"
-
-msgid "Delete from server…"
-msgstr "Eliminar del servidor…"
-
-msgid "Key imported"
-msgstr "Clave importada"
-
-msgid ""
-"The key is in your keyring now. Trust it under Settings, OpenPGP, once you "
-"have checked its fingerprint with its owner."
-msgstr ""
-"La clave ya está en tu llavero. Márcala como fiable en Ajustes → OpenPGP "
-"cuando hayas comprobado su huella con su propietario."
-
-msgid "Already in your keyring"
-msgstr "Ya está en tu llavero"
-
-msgid "That key was imported before."
-msgstr "Esa clave ya se había importado."
-
-msgid "Could not import the key"
-msgstr "No se pudo importar la clave"
-
-msgid "Download"
-msgstr "Descargar"
-
-msgid "Import OpenPGP key"
-msgstr "Importar clave OpenPGP"
-
-msgid "Deleting…"
-msgstr "Eliminando…"
-
-msgid "Show the attachments"
-msgstr "Mostrar los archivos adjuntos"
-
-msgid "Hide the attachments"
-msgstr "Ocultar los archivos adjuntos"
-
-msgid "{n} attachment"
-msgid_plural "{n} attachments"
-msgstr[0] "{n} archivo adjunto"
-msgstr[1] "{n} archivos adjuntos"
-
-msgid "Thumbnail size"
-msgstr "Tamaño de miniatura"
-
-msgid "Sorted Z to A — switch to A to Z"
-msgstr "Ordenado de Z a A — cambiar a A a Z"
-
-msgid "Sorted A to Z — switch to Z to A"
-msgstr "Ordenado de A a Z — cambiar a Z a A"
-
-msgid "Show as thumbnails"
-msgstr "Mostrar como miniaturas"
-
-msgid "Show as a list"
-msgstr "Mostrar como lista"
-
-msgid "Save all…"
-msgstr "Guardar todo…"
-
-msgid "Save every attachment to a folder"
-msgstr "Guardar todos los archivos adjuntos en una carpeta"
-
 msgid "Save attachment"
 msgstr "Guardar archivo adjunto"
 
@@ -3169,6 +3097,11 @@ msgid_plural "{n} files"
 msgstr[0] "Archivo de sonido"
 msgstr[1] "Archivo de sonido"
 
+msgid "{n} attachment"
+msgid_plural "{n} attachments"
+msgstr[0] "{n} archivo adjunto"
+msgstr[1] "{n} archivos adjuntos"
+
 msgid "{name} (link)"
 msgstr "{name} (enlace)"
 
@@ -3177,6 +3110,9 @@ msgstr "Subiendo…"
 
 msgid "Attach {name}"
 msgstr "Adjuntar {name}"
+
+msgid "Open"
+msgstr "Abrir"
 
 msgid "Upload {n} file and put its share link in the message."
 msgid_plural "Upload {n} files and put their share links in the message."
@@ -3829,6 +3765,9 @@ msgstr "Anterior"
 msgid "Next"
 msgstr "Siguiente"
 
+msgid "Download…"
+msgstr "Descargar…"
+
 msgid "{name} · {current} of {total}"
 msgstr "{name} · {current} de {total}"
 
@@ -4064,9 +4003,6 @@ msgstr "Haz doble clic para abrir en una ventana nueva"
 msgid "To: {names}"
 msgstr "Añadir etiqueta {name}"
 
-msgid "Hide recipients"
-msgstr "Ocultar destinatarios"
-
 msgid "Show recipients"
 msgstr "Mostrar destinatarios"
 
@@ -4218,6 +4154,12 @@ msgstr ""
 #, fuzzy
 msgid "Save as…"
 msgstr "Guardar todo…"
+
+msgid "Save all…"
+msgstr "Guardar todo…"
+
+msgid "Delete from server…"
+msgstr "Eliminar del servidor…"
 
 msgid "Encrypted messages are not sent for translation."
 msgstr "Los mensajes cifrados no se envían a traducir."
@@ -4672,6 +4614,9 @@ msgstr "Tegami Mail, en este equipo"
 
 msgid "Not downloaded yet. The download is {size}."
 msgstr ""
+
+msgid "Download"
+msgstr "Descargar"
 
 #, fuzzy
 msgid "The files could not be removed."

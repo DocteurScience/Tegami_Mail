@@ -35,13 +35,6 @@ impl MessageView {
         adw::StyleManager::default().is_dark()
     }
 
-    /// Whether cards list their own attachments (#213): by preference, and
-    /// only where the drawer is not already that list — a lone message's
-    /// drawer holds exactly its files, so its card repeats nothing.
-    pub(super) fn chips_shown(&self) -> bool {
-        self.card_atts_shown && (self.thread.len() > 1 || !self.drawer_on)
-    }
-
     /// Whether the reader header's first line has anything on it. With the
     /// account chip and both switches hidden in Settings it would be an
     /// empty row adding its spacing above the subject.

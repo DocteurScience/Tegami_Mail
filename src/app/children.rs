@@ -1,11 +1,8 @@
 //! The child components: their launch, and their outputs turned into the
 //! messages they mean to the root component.
 
-use adw::prelude::*;
 use relm4::prelude::*;
 
-use crate::config;
-use crate::ui::attachment_drawer::AttachmentDrawer;
 use crate::ui::message_list::{MessageList, MessageListOutput};
 use crate::ui::message_view::{MessageView, MessageViewOutput};
 use crate::ui::notifications::{NotificationCenter, NotifyOutput};
@@ -164,21 +161,6 @@ fn message_view_output_msg(out: MessageViewOutput) -> AppMsg {
     }
 }
 
-/// What the attachment drawer reports, as the message it means here.
-fn attachment_drawer_output_msg(out: crate::ui::attachment_drawer::DrawerOutput) -> AppMsg {
-    match out {
-        crate::ui::attachment_drawer::DrawerOutput::ShowLightbox { items, start } => {
-            AppMsg::ShowLightbox { items, start }
-        }
-        crate::ui::attachment_drawer::DrawerOutput::ShowInMessage(att) => {
-            AppMsg::ShowAttachmentInMessage(att)
-        }
-        crate::ui::attachment_drawer::DrawerOutput::DeleteFromServer(att) => {
-            AppMsg::DeleteDrawerAttachment(att)
-        }
-    }
-}
-
 /// What the notifications reports, as the message it means here.
 fn notifications_output_msg(out: NotifyOutput) -> AppMsg {
     match out {
@@ -287,7 +269,6 @@ pub(super) struct Children {
     pub(super) peek_sidebar: Controller<Sidebar>,
     pub(super) message_list: Controller<MessageList>,
     pub(super) message_view: Controller<MessageView>,
-    pub(super) attachment_drawer: Controller<AttachmentDrawer>,
     pub(super) lightbox: Controller<crate::ui::lightbox::Lightbox>,
     pub(super) notifications: Controller<NotificationCenter>,
 }
@@ -326,15 +307,6 @@ impl Children {
             .launch(())
             .forward(sender.input_sender(), message_view_output_msg);
 
-        // The drawer owns a Paned whose top pane is the reader body, so hand it
-        // the message-view widget to dock beneath.
-        let attachment_drawer = AttachmentDrawer::builder()
-            .launch(crate::ui::attachment_drawer::DrawerInit {
-                state: config::load_drawer_state(),
-                reader: message_view.widget().clone().upcast(),
-            })
-            .forward(sender.input_sender(), attachment_drawer_output_msg);
-
         let lightbox = crate::ui::lightbox::Lightbox::builder().launch(()).detach();
 
         let notifications = NotificationCenter::builder()
@@ -345,7 +317,6 @@ impl Children {
             peek_sidebar,
             message_list,
             message_view,
-            attachment_drawer,
             lightbox,
             notifications,
         }

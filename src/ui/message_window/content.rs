@@ -4,7 +4,6 @@
 use super::types::MessageWindowOutput;
 use super::MessageWindow;
 use crate::models::{Attachment, Message};
-use crate::ui::attachment_drawer::AttachmentDrawerInput;
 use crate::ui::message_list::RowAction;
 use crate::ui::message_view::MessageViewInput;
 use relm4::prelude::*;
@@ -49,19 +48,9 @@ impl MessageWindow {
         self.member(key.0, key.1)
     }
 
-    /// The files on the drawer and on each card. The drawer spans the whole
-    /// conversation, as the main window's does; a reply pulled in from Sent
-    /// can repeat what it was sent with, so a (name, size) pair shows once.
+    /// The files on each card (#213).
     pub(super) fn sync_attachments(&self) {
-        let (merged, rows) = merge_attachments(&self.thread, &self.attachments);
-        // Switched off (#213), the drawer is simply never given anything:
-        // empty hides it, seam and all.
-        self.drawer
-            .emit(AttachmentDrawerInput::SetItems(if self.drawer_enabled {
-                merged
-            } else {
-                Vec::new()
-            }));
+        let rows = card_rows(&self.thread, &self.attachments);
         self.view.emit(MessageViewInput::SetCardAttachments(rows));
         // The previews the cards still lack, made off the main thread.
         let wanted: Vec<_> = self
@@ -94,26 +83,15 @@ pub(super) fn title_text(m: &Message) -> String {
 /// Each card's own attachment row, by message key.
 type CardRows = std::collections::HashMap<(u32, u32), Vec<crate::ui::message_view::CardAttachment>>;
 
-/// The drawer's files and each card's row (#213), from each member's files.
-/// The drawer lists a file once however many members carry it (same name
-/// and size); a card lists its own, and a member without files gets no row.
-fn merge_attachments(
-    thread: &[Message],
-    attachments: &[((u32, u32), Vec<Attachment>)],
-) -> (Vec<Attachment>, CardRows) {
-    let mut seen = std::collections::HashSet::new();
-    let mut merged = Vec::new();
+/// Each card's row of files (#213), from each member's files; a member
+/// without files gets no row.
+fn card_rows(thread: &[Message], attachments: &[((u32, u32), Vec<Attachment>)]) -> CardRows {
     let mut rows = std::collections::HashMap::new();
     for m in thread {
         let key = (m.account_id, m.id);
         let Some((_, files)) = attachments.iter().find(|(k, _)| *k == key) else {
             continue;
         };
-        for a in files {
-            if seen.insert((a.name.clone(), a.data.len())) {
-                merged.push(a.clone());
-            }
-        }
         if !files.is_empty() {
             let row = files
                 .iter()
@@ -126,12 +104,12 @@ fn merge_attachments(
             rows.insert(key, row);
         }
     }
-    (merged, rows)
+    rows
 }
 
 #[cfg(test)]
 mod tests {
-    use super::{merge_attachments, title_text};
+    use super::{card_rows, title_text};
     use crate::models::{Attachment, Message};
 
     fn member(id: u32, subject: &str) -> Message {
@@ -173,7 +151,7 @@ mod tests {
     }
 
     #[test]
-    fn the_drawer_lists_a_file_once_and_each_card_its_own() {
+    fn each_card_lists_its_own_files() {
         let thread = [member(1, ""), member(2, ""), member(3, "")];
         let attachments = vec![
             // Not in thread order: the thread decides the order.
@@ -182,12 +160,7 @@ mod tests {
             ((1, 3), vec![]),
             ((1, 9), vec![file("stranger.txt", 1)]),
         ];
-        let (merged, rows) = merge_attachments(&thread, &attachments);
-        let names: Vec<(&str, usize)> = merged
-            .iter()
-            .map(|a| (a.name.as_str(), a.data.len()))
-            .collect();
-        assert_eq!(names, [("a.pdf", 3), ("a.pdf", 4), ("b.png", 5)]);
+        let rows = card_rows(&thread, &attachments);
         assert_eq!(rows.len(), 2, "no row for a member without files");
         let row = |k| {
             rows[&k]

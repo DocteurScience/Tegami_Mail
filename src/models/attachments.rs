@@ -7,13 +7,6 @@ pub(crate) struct Attachment {
     pub(crate) data: Vec<u8>,
 }
 
-impl Attachment {
-    /// Human-readable size, e.g. "12.3 KB".
-    pub(crate) fn human_size(&self) -> String {
-        human_size(self.data.len() as u64)
-    }
-}
-
 /// Human-readable byte size, e.g. "12.3 KB".
 pub(crate) fn human_size(bytes: u64) -> String {
     gtk::glib::format_size(bytes).into()

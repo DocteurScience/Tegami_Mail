@@ -14,24 +14,6 @@ impl MessageView {
         }
     }
 
-    pub(super) fn on_set_card_attachments_shown(&mut self, on: bool) {
-        if self.card_atts_shown != on {
-            self.card_atts_shown = on;
-            if self.current.is_some() && !self.loading {
-                self.render();
-            }
-        }
-    }
-
-    pub(super) fn on_set_attachment_drawer(&mut self, on: bool) {
-        if self.drawer_on != on {
-            self.drawer_on = on;
-            if self.current.is_some() && !self.loading {
-                self.render();
-            }
-        }
-    }
-
     pub(super) fn on_set_zoom(&mut self, percent: u32) {
         if self.zoom != percent {
             self.zoom = percent;

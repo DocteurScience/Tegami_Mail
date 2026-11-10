@@ -45,21 +45,6 @@ impl MessageView {
         self.patch_card_atts(&[key]);
     }
 
-    pub(super) fn on_scroll_to_attachments(&mut self, account_id: u32, id: u32) {
-        // The row when it has chips, else the card itself; centred,
-        // with the row flashed so the eye lands on it.
-        let js = format!(
-            "(function(){{\
-             var d=document.querySelector('.tegami-atts[data-key=\"{account_id}:{id}\"]');\
-             var s=document.querySelector('.tegami-msg[data-key=\"{account_id}:{id}\"]');\
-             var t=(d&&d.children.length)?d:s;if(!t)return;\
-             t.scrollIntoView({{behavior:'smooth',block:'center'}});\
-             if(d){{d.classList.remove('flash');void d.offsetWidth;d.classList.add('flash');\
-             setTimeout(function(){{d.classList.remove('flash');}},1300);}}}})()"
-        );
-        self.run_js(&js);
-    }
-
     pub(super) fn on_attachment_action(
         &mut self,
         account_id: u32,
@@ -77,7 +62,8 @@ impl MessageView {
     }
 
     /// A card attachment's More actions menu (docs/DESIGN.md, "Menus"),
-    /// under its button: Open, Open With…, then Save As… and Save All….
+    /// under its button: Open, Open With…, then Save As… and Save All…, and
+    /// Delete from Server… (#289) apart, in red.
     #[allow(clippy::too_many_arguments)]
     pub(super) fn on_attachment_menu_from(
         &mut self,
@@ -117,6 +103,7 @@ impl MessageView {
                     entry(i18n("Save as\u{2026}"), AttVerb::Save),
                     entry(i18n("Save all\u{2026}"), AttVerb::SaveAll),
                 ],
+                vec![entry(i18n("Delete from server\u{2026}"), AttVerb::Delete).destructive()],
             ],
         );
     }

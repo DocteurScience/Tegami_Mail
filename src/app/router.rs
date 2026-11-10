@@ -145,8 +145,6 @@ impl AppModel {
             | AppMsg::DeletePopoutAttachment { .. }
             | AppMsg::ShowLightbox { .. }
             | AppMsg::CardAttachment { .. }
-            | AppMsg::ShowAttachmentInMessage(..)
-            | AppMsg::DeleteDrawerAttachment(..)
             | AppMsg::AskDeleteAttachment(..)
             | AppMsg::DeleteAttachment(..)
             | AppMsg::SendDeleteAttachment(..)

@@ -2817,78 +2817,6 @@ msgstr ""
 msgid "Delete smart folder"
 msgstr "Elimina cartella smart…"
 
-msgid "Open"
-msgstr "Apri"
-
-msgid "Download…"
-msgstr "Scarica…"
-
-msgid "Show in message"
-msgstr "Mostra nel messaggio"
-
-msgid "Delete from server…"
-msgstr "Elimina dal server…"
-
-msgid "Key imported"
-msgstr "Chiave importata"
-
-msgid ""
-"The key is in your keyring now. Trust it under Settings, OpenPGP, once you "
-"have checked its fingerprint with its owner."
-msgstr ""
-"La chiave è ora nel tuo portachiavi. Rendila attendibile in Impostazioni, "
-"OpenPGP, una volta verificata la sua impronta digitale con il proprietario."
-
-msgid "Already in your keyring"
-msgstr "Già nel tuo portachiavi"
-
-msgid "That key was imported before."
-msgstr "Quella chiave era già stata importata."
-
-msgid "Could not import the key"
-msgstr "Impossibile importare la chiave"
-
-msgid "Download"
-msgstr "Scarica"
-
-msgid "Import OpenPGP key"
-msgstr "Importa chiave OpenPGP"
-
-msgid "Deleting…"
-msgstr "Eliminazione in corso…"
-
-msgid "Show the attachments"
-msgstr "Mostra gli allegati"
-
-msgid "Hide the attachments"
-msgstr "Nascondi gli allegati"
-
-msgid "{n} attachment"
-msgid_plural "{n} attachments"
-msgstr[0] "{n} allegato"
-msgstr[1] "{n} allegati"
-
-msgid "Thumbnail size"
-msgstr "Dimensione miniatura"
-
-msgid "Sorted Z to A — switch to A to Z"
-msgstr "Ordinato da Z a A — passa ad A a Z"
-
-msgid "Sorted A to Z — switch to Z to A"
-msgstr "Ordinato da A a Z — passa da Z a A"
-
-msgid "Show as thumbnails"
-msgstr "Mostra come miniature"
-
-msgid "Show as a list"
-msgstr "Mostra come elenco"
-
-msgid "Save all…"
-msgstr "Salva tutto…"
-
-msgid "Save every attachment to a folder"
-msgstr "Salva tutti gli allegati in una cartella"
-
 msgid "Save attachment"
 msgstr "Salva allegato"
 
@@ -3229,6 +3157,11 @@ msgid_plural "{n} files"
 msgstr[0] "File audio"
 msgstr[1] "File audio"
 
+msgid "{n} attachment"
+msgid_plural "{n} attachments"
+msgstr[0] "{n} allegato"
+msgstr[1] "{n} allegati"
+
 msgid "{name} (link)"
 msgstr "{name} (link)"
 
@@ -3237,6 +3170,9 @@ msgstr "Caricamento in corso…"
 
 msgid "Attach {name}"
 msgstr "Allega {name}"
+
+msgid "Open"
+msgstr "Apri"
 
 msgid "Upload {n} file and put its share link in the message."
 msgid_plural "Upload {n} files and put their share links in the message."
@@ -3891,6 +3827,9 @@ msgstr "Precedente"
 msgid "Next"
 msgstr "Successivo"
 
+msgid "Download…"
+msgstr "Scarica…"
+
 msgid "{name} · {current} of {total}"
 msgstr "{name} · {current} di {total}"
 
@@ -4132,9 +4071,6 @@ msgstr "Doppio clic per aprire in una nuova finestra"
 msgid "To: {names}"
 msgstr "Aggiungi etichetta {name}"
 
-msgid "Hide recipients"
-msgstr "Nascondi destinatari"
-
 msgid "Show recipients"
 msgstr "Mostra destinatari"
 
@@ -4286,6 +4222,12 @@ msgstr ""
 #, fuzzy
 msgid "Save as…"
 msgstr "Salva tutto…"
+
+msgid "Save all…"
+msgstr "Salva tutto…"
+
+msgid "Delete from server…"
+msgstr "Elimina dal server…"
 
 msgid "Encrypted messages are not sent for translation."
 msgstr "I messaggi crittografati non vengono inviati per la traduzione."
@@ -4746,6 +4688,9 @@ msgstr "Su questo computer"
 
 msgid "Not downloaded yet. The download is {size}."
 msgstr ""
+
+msgid "Download"
+msgstr "Scarica"
 
 #, fuzzy
 msgid "The files could not be removed."

@@ -420,11 +420,6 @@ impl Component for MessageView {
             } => self.checked = (count, conversations),
             MessageViewInput::FoldAll(folded) => self.on_fold_all(folded),
             MessageViewInput::SetCardAttachments(map) => self.on_set_card_attachments(map),
-            MessageViewInput::SetCardAttachmentsShown(on) => self.on_set_card_attachments_shown(on),
-            MessageViewInput::SetAttachmentDrawer(on) => self.on_set_attachment_drawer(on),
-            MessageViewInput::ScrollToAttachments { account_id, id } => {
-                self.on_scroll_to_attachments(account_id, id)
-            }
             MessageViewInput::AttachmentAction {
                 account_id,
                 id,

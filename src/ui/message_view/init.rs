@@ -50,8 +50,6 @@ impl MessageView {
     pub(super) fn initial(webview: webkit6::WebView, link_preview: &gtk::Label) -> Self {
         MessageView {
             card_atts: std::collections::HashMap::new(),
-            card_atts_shown: true,
-            drawer_on: true,
             current: None,
             thread: Vec::new(),
             tags: Vec::new(),

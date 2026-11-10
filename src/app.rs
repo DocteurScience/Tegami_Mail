@@ -757,12 +757,10 @@ impl SimpleComponent for AppModel {
                                     set_visible: model.attachments_loading,
                                 },
                             },
-                            // Reader content: the drawer's widget is a Paned
-                            // that holds the reader body + attachment footer.
                             #[wrap(Some)]
                             set_content = &gtk::Box {
                                 set_orientation: gtk::Orientation::Vertical,
-                                append: model.attachment_drawer.widget(),
+                                append: model.message_view.widget(),
                             },
                             },
                         },

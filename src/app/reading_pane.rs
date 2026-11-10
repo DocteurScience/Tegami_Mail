@@ -8,7 +8,6 @@ use relm4::prelude::*;
 
 use crate::config;
 use crate::models::Message;
-use crate::ui::attachment_drawer::AttachmentDrawerInput;
 use crate::ui::message_list::MessageListInput;
 use crate::ui::message_view::MessageViewInput;
 
@@ -165,9 +164,6 @@ impl AppModel {
         if split.orientation() != orientation {
             split.set_orientation(orientation);
             split.set_position(position);
-        }
-        if below {
-            self.attachment_drawer.emit(AttachmentDrawerInput::Fold);
         }
     }
 

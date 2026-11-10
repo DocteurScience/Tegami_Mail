@@ -2,7 +2,6 @@
 
 use crate::config::ReaderToolbar;
 use crate::models::{Attachment, Message};
-use crate::ui::attachment_drawer::AttachmentDrawerInput;
 use crate::ui::keymap::Shortcut;
 use crate::ui::message_list::RowAction;
 
@@ -21,10 +20,6 @@ pub(crate) struct MessageWindowInit {
     pub(crate) attachments: Vec<((u32, u32), Vec<Attachment>)>,
     /// The members whose files are on their way.
     pub(crate) attachments_loading: Vec<(u32, u32)>,
-    /// The attachment drawer is on (Settings, #213); off, the files show on
-    /// the message's card instead, when that is on.
-    pub(crate) drawer_enabled: bool,
-    pub(crate) card_attachments: bool,
     /// The reader toolbar's layout, as the main window has it.
     pub(crate) toolbar: ReaderToolbar,
     /// The message is in Junk (Spam reads Not Spam), or in Junk or Trash
@@ -88,13 +83,6 @@ pub(crate) enum MessageWindowInput {
     SetUnread(bool),
     /// The window crossed the width the whole toolbar needs.
     SetCollapsed(bool),
-    /// Hand this to the attachment drawer (a deletion's progress, #289).
-    Drawer(AttachmentDrawerInput),
-    /// Show the lightbox over these previewable attachments.
-    Lightbox {
-        items: Vec<Attachment>,
-        start: usize,
-    },
     /// A card's attachment: do `verb` to that member's file at `index`.
     CardAttachment {
         account_id: u32,
@@ -102,10 +90,6 @@ pub(crate) enum MessageWindowInput {
         index: usize,
         verb: crate::ui::message_view::AttVerb,
     },
-    /// The drawer's Delete from Server.
-    DeleteAttachment(Attachment),
-    /// The drawer's Show in Message.
-    ShowAttachment(Attachment),
     SetZoom(u32),
     /// A zoom step (or the chip's reset, 0) asked for in this window.
     Zoom(i8),

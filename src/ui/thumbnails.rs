@@ -14,19 +14,6 @@ pub(super) fn texture_from(data: &[u8]) -> Option<gdk::Texture> {
     gdk::Texture::from_bytes(&glib::Bytes::from(data)).ok()
 }
 
-/// What a grid cell can show for an attachment right now.
-pub(super) enum Thumbnail {
-    /// A texture is available immediately: a decoded image, or a PDF page
-    /// already in the render cache.
-    Ready(gdk::Texture),
-    /// An image or PDF not decoded/rendered yet. Show a spinner and call
-    /// [`spawn_thumbnail_render`] — decoding on the main thread while cells
-    /// were being built froze the whole window (the "Force Quit" dialog).
-    Pending,
-    /// No thumbnail for this type (or it wouldn't decode): type icon.
-    Fallback,
-}
-
 /// Rendered textures by content hash, under a pixel-byte budget: the oldest
 /// go when a new one would exceed it. Failures (`None`) cost nothing and
 /// stay, so an attachment that would not decode is not tried again. A
@@ -109,6 +96,13 @@ pub(crate) fn cache_stats() -> ((usize, usize, u64), (usize, usize, u64)) {
         THUMB_CACHE.with(|c| c.borrow().stats()),
         PDF_PREVIEWS.with(|c| c.borrow().stats()),
     )
+}
+
+/// Whether an attachment can be shown in the lightbox: a decodable image, or
+/// a PDF (whose first page renders on demand).
+pub(crate) fn previewable(att: &crate::models::Attachment) -> bool {
+    (crate::models::is_image_name(&att.name) && texture_from(&att.data).is_some())
+        || is_pdf_name(&att.name)
 }
 
 #[cfg(test)]
@@ -203,64 +197,6 @@ pub(super) fn thumb_cache_key(data: &[u8]) -> u64 {
     h.finish()
 }
 
-/// A grid-cell thumbnail for any attachment type that has one — a decoded
-/// image or a PDF's first page — answered from the render cache, or `Pending`
-/// until a worker produces it.
-pub(super) fn thumbnail_texture(name: &str, data: &[u8]) -> Thumbnail {
-    if !is_image_name(name) && !is_pdf_name(name) {
-        return Thumbnail::Fallback;
-    }
-    match THUMB_CACHE.with(|c| c.borrow().get(&thumb_cache_key(data)).cloned()) {
-        Some(Some(tex)) => Thumbnail::Ready(tex),
-        Some(None) => Thumbnail::Fallback,
-        None => Thumbnail::Pending,
-    }
-}
-
-/// Decode an image, or render a PDF's first page, off the main thread; hand
-/// the result to `on_done` back on it and record it in the cache either way.
-/// The GTK loop keeps running — cells show their spinner instead of the
-/// window freezing.
-pub(super) fn spawn_thumbnail_render(
-    name: &str,
-    data: Vec<u8>,
-    on_done: impl FnOnce(Option<gdk::Texture>) + 'static,
-) {
-    let key = thumb_cache_key(&data);
-    let image = is_image_name(name);
-    glib::spawn_future_local(async move {
-        let tex = gtk::gio::spawn_blocking(move || {
-            if image {
-                texture_from(&data)
-            } else {
-                pdf_page_texture(&data, THUMB_RENDER_WIDTH)
-            }
-        })
-        .await
-        .ok()
-        .flatten();
-        THUMB_CACHE.with(|c| {
-            c.borrow_mut().insert(key, tex.clone());
-        });
-        on_done(tex);
-    });
-}
-
-/// The centred spinner a cell shows while its PDF page renders.
-pub(super) fn thumbnail_spinner() -> gtk::Spinner {
-    let spinner = gtk::Spinner::new();
-    spinner.set_spinning(true);
-    spinner.set_width_request(28);
-    spinner.set_height_request(28);
-    spinner.set_halign(gtk::Align::Center);
-    spinner.set_valign(gtk::Align::Center);
-    spinner.set_hexpand(true);
-    spinner.set_vexpand(true);
-    spinner
-}
-
-/// Width thumbnails render at — soft would do, but sharp is cheap at 360px.
-const THUMB_RENDER_WIDTH: f64 = 360.0;
 /// Width the lightbox renders a PDF page at: sharp on a large window without
 /// tripping the decoder's pixel ceiling (A4 portrait at 1600 ≈ 3.6M pixels).
 const PREVIEW_RENDER_WIDTH: f64 = 1600.0;
@@ -643,20 +579,6 @@ mod tests {
         let tex = pdf_page_texture(&minimal_pdf(), 360.0).expect("should render a page");
         assert!(tex.width() > 0 && tex.height() > 0);
         assert!(pdf_page_texture(b"not a real pdf", 360.0).is_none());
-    }
-
-    #[test]
-    fn thumbnail_texture_classifies_attachment_types() {
-        // No thumbnail for a type without one; an uncached PDF is rendered
-        // asynchronously, so the immediate answer is Pending.
-        assert!(matches!(
-            thumbnail_texture("archive.zip", b"not a real zip"),
-            Thumbnail::Fallback
-        ));
-        assert!(matches!(
-            thumbnail_texture("notes.pdf", &minimal_pdf()),
-            Thumbnail::Pending
-        ));
     }
 
     #[test]

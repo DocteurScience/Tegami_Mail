@@ -2,6 +2,15 @@
 
 ## Unreleased
 
+- **Changed: deleting an attachment from the server** (#289) is in the ⋯
+  menu of each file on a message's card, under Save as… and Save all…, in
+  red. It was only in the attachment drawer, which had been switched off
+  with no way to turn it back on.
+- **Removed: the attachment drawer** under the reader and the message
+  window (docs/DESIGN.md, "Attachments": the files are on each message's
+  card, mockup 10). It had been off since the preferences were redrawn; its
+  stored size and view go too.
+
 - **Removed: the application's hidden settings** (docs/DESIGN.md, "Removed
   or moved": start fullscreen, link opener, icon set, Settings' first page).
   Tegami Mail opens windowed, links open in the desktop's default

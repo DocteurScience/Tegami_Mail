@@ -66,16 +66,6 @@ pub(crate) struct PrivacyFile {
     /// Whether the reading pane shows a conversation newest-message-first.
     #[serde(default)]
     pub(crate) thread_newest_first: bool,
-    /// Each conversation message lists its own attachments beneath its body
-    /// (#213), so which file came with which message is never in doubt.
-    #[serde(default = "default_on")]
-    pub(crate) card_attachments: bool,
-    /// The attachment drawer beneath the reader, gathering every attachment
-    /// in the open conversation (#213). Off by default: each message shows
-    /// its own files in a section under its body (docs/DESIGN.md,
-    /// "Attachments"), and the drawer would show them a second time.
-    #[serde(default)]
-    pub(crate) attachment_drawer: bool,
     /// Whether deleting a whole selected conversation asks for confirmation
     /// first.
     #[serde(default = "default_on")]
@@ -337,8 +327,6 @@ impl Default for PrivacyFile {
             blacklist: Vec::new(),
             threading: true,
             thread_newest_first: false,
-            card_attachments: true,
-            attachment_drawer: false,
             confirm_thread_delete: true,
             notifications: true,
             notification_content: true,

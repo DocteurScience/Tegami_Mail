@@ -187,8 +187,7 @@ In the composer, <kbd>Ctrl+Z</kbd> and <kbd>Ctrl+Shift+Z</kbd> undo and redo
 your typing instead, and <kbd>Ctrl+B</kbd>, <kbd>Ctrl+I</kbd> and
 <kbd>Ctrl+U</kbd> set bold, italic and underline.
 
-In the attachment drawer, <kbd>Space</kbd> or <kbd>Enter</kbd> previews the
-highlighted attachment. In the full-window preview, <kbd>←</kbd> and
+In the full-window preview of an attachment, <kbd>←</kbd> and
 <kbd>→</kbd> step to the previous and next one, and <kbd>Esc</kbd> closes it.
 
 <kbd>Ctrl+F</kbd> in the Settings window opens its search, and closes it

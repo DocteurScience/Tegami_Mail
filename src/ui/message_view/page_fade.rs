@@ -26,13 +26,6 @@ thread_local! {
         const { std::cell::RefCell::new(Vec::new()) };
 }
 
-/// Run `f` when the reader's next page change starts to show, so something
-/// leaving with the old message (the attachment drawer) dissolves with it
-/// rather than ahead of it.
-pub(crate) fn on_next_page_fade(f: impl FnOnce() + 'static) {
-    ON_PAGE_FADE.with(|waiting| waiting.borrow_mut().push(Box::new(f)));
-}
-
 fn page_fade_started() {
     for f in ON_PAGE_FADE.with(|waiting| std::mem::take(&mut *waiting.borrow_mut())) {
         f();
@@ -41,7 +34,7 @@ fn page_fade_started() {
 
 /// How long the outgoing page takes to fade out over the incoming one. The
 /// attachment drawer comes and goes on the same beat.
-pub(crate) const PAGE_FADE_MS: u32 = 80;
+const PAGE_FADE_MS: u32 = 80;
 
 /// A still of the outgoing page, laid over the WebView while the next page
 /// loads and faded out once that page has painted: one message dissolves

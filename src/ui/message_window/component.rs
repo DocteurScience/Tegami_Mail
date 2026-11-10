@@ -6,8 +6,7 @@ use super::keys::key_controller;
 use super::toolbar::{build_toolbar, Toolbar};
 use super::types::{MessageWindowInit, MessageWindowInput, MessageWindowOutput};
 use super::MessageWindow;
-use crate::ui::attachment_drawer::{AttachmentDrawer, DrawerInit, DrawerOutput};
-use crate::ui::lightbox::{Lightbox, LightboxInput};
+use crate::ui::lightbox::Lightbox;
 use crate::ui::message_list::RowAction;
 use crate::ui::message_view::{MessageView, MessageViewInput, MessageViewOutput};
 use adw::prelude::*;
@@ -44,12 +43,11 @@ impl Component for MessageWindow {
                         set_label: "",
                     },
                 },
-                // The drawer holds the reader above its own footer; the
-                // lightbox covers both.
+                // The lightbox covers the reader.
                 #[wrap(Some)]
                 #[name = "content"]
                 set_content = &gtk::Overlay {
-                    set_child: Some(model.drawer.widget()),
+                    set_child: Some(model.view.widget()),
                     add_overlay: model.lightbox.widget(),
                 },
             },
@@ -66,24 +64,6 @@ impl Component for MessageWindow {
             .forward(sender.input_sender(), from_reader);
         view.emit(MessageViewInput::SetZoom(init.zoom));
         view.emit(MessageViewInput::SetTags(init.tags.clone()));
-        view.emit(MessageViewInput::SetAttachmentDrawer(init.drawer_enabled));
-        view.emit(MessageViewInput::SetCardAttachmentsShown(
-            init.card_attachments,
-        ));
-
-        // The drawer docks beneath the reader, as in the main window.
-        let drawer = AttachmentDrawer::builder()
-            .launch(DrawerInit {
-                state: crate::config::load_drawer_state(),
-                reader: view.widget().clone().upcast(),
-            })
-            .forward(sender.input_sender(), |out| match out {
-                DrawerOutput::ShowLightbox { items, start } => {
-                    MessageWindowInput::Lightbox { items, start }
-                }
-                DrawerOutput::ShowInMessage(att) => MessageWindowInput::ShowAttachment(att),
-                DrawerOutput::DeleteFromServer(att) => MessageWindowInput::DeleteAttachment(att),
-            });
         let lightbox = Lightbox::builder().launch(()).detach();
 
         let thread = if init.thread.is_empty() {
@@ -100,8 +80,6 @@ impl Component for MessageWindow {
             loading: init.loading,
             attachments: init.attachments,
             attachments_loading: init.attachments_loading.into_iter().collect(),
-            drawer_enabled: init.drawer_enabled,
-            drawer,
             lightbox,
             tags: init.tags,
             toolbar: init.toolbar,
@@ -233,25 +211,12 @@ impl Component for MessageWindow {
                 self.collapsed = on;
                 self.sync_toolbar();
             }
-            MessageWindowInput::Drawer(input) => self.drawer.emit(input),
-            MessageWindowInput::Lightbox { items, start } => {
-                self.lightbox.emit(LightboxInput::Show { items, start });
-            }
             MessageWindowInput::CardAttachment {
                 account_id,
                 id,
                 index,
                 verb,
-            } => self.on_card_attachment(account_id, id, index, verb, root),
-            MessageWindowInput::DeleteAttachment(att) => self.on_delete_attachment(att, &sender),
-            MessageWindowInput::ShowAttachment(att) => {
-                if let Some(m) = self.owner(&att) {
-                    self.view.emit(MessageViewInput::ScrollToAttachments {
-                        account_id: m.account_id,
-                        id: m.id,
-                    });
-                }
-            }
+            } => self.on_card_attachment(account_id, id, index, verb, root, &sender),
             MessageWindowInput::Reply => self.emit_action(RowAction::Reply, &sender),
             MessageWindowInput::ReplyAll => self.emit_action(RowAction::ReplyAll, &sender),
             MessageWindowInput::Forward => self.emit_action(RowAction::Forward, &sender),

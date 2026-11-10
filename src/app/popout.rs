@@ -351,8 +351,6 @@ impl AppModel {
             loading: needs_body,
             attachments: atts,
             attachments_loading: atts_loading,
-            drawer_enabled: self.drawer_enabled,
-            card_attachments: self.card_attachments,
             // A message from a file is in no folder: there is nothing to
             // star, file or delete on a server.
             toolbar: if init_from_file {

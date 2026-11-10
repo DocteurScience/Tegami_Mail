@@ -9,7 +9,6 @@ use tokio::sync::mpsc::UnboundedSender;
 use crate::config::{self, AccountConfig};
 use crate::models::{Account, Attachment, Folder, Message};
 use crate::ui::accounts::AccountsWindow;
-use crate::ui::attachment_drawer::AttachmentDrawer;
 use crate::ui::message_list::{MessageList, QuickFilters};
 use crate::ui::message_view::MessageView;
 use crate::ui::notifications::NotificationCenter;
@@ -526,10 +525,6 @@ pub(crate) struct AppModel {
     /// The message zoom this session is at (Ctrl+ / Ctrl-). Starts at 100
     /// and is not saved.
     pub(super) zoom: u32,
-    /// Each conversation message lists its own attachments (#213).
-    pub(super) card_attachments: bool,
-    /// The attachment drawer beneath the reader is shown at all (#213).
-    pub(super) drawer_enabled: bool,
     /// Whether deleting a whole selected conversation asks for confirmation.
     pub(super) confirm_thread_delete: bool,
     /// Whether the current `list_selection` came from card clicks in the
@@ -591,8 +586,6 @@ pub(crate) struct AppModel {
     pub(super) peek_sidebar: Controller<Sidebar>,
     pub(super) message_list: Controller<MessageList>,
     pub(super) message_view: Controller<MessageView>,
-    /// In-message attachment thumbnail drawer, docked below the reader body.
-    pub(super) attachment_drawer: Controller<AttachmentDrawer>,
     /// Whether the Outbox is showing instead of the mail panes.
     pub(super) showing_outbox: bool,
     /// Messages waiting to be sent, per account, as last reported by its worker.

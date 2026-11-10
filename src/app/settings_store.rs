@@ -25,8 +25,6 @@ impl AppModel {
             blacklist: self.blacklist.clone(),
             threading: self.threading,
             thread_newest_first: self.thread_newest_first,
-            card_attachments: self.card_attachments,
-            attachment_drawer: self.drawer_enabled,
             confirm_thread_delete: self.confirm_thread_delete,
             notifications: self.notifications_enabled,
             notification_content: self.notification_content,
@@ -119,12 +117,6 @@ impl AppModel {
         self.message_list
             .emit(MessageListInput::SetThreading(self.threading));
         self.message_view.emit(MessageViewInput::SetZoom(self.zoom));
-        self.message_view
-            .emit(MessageViewInput::SetCardAttachmentsShown(
-                self.card_attachments,
-            ));
-        self.message_view
-            .emit(MessageViewInput::SetAttachmentDrawer(self.drawer_enabled));
         self.message_view
             .emit(MessageViewInput::SetUnsubscribed(self.unsubscribed_map()));
         self.message_view

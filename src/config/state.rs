@@ -1,5 +1,5 @@
 //! state.toml: what the app remembers between runs that is not a
-//! preference (pane sizes, the drawer, the last view, fetch
+//! preference (pane sizes, the last view, fetch
 //! modes, recent fonts, one-time flags).
 
 use serde::{Deserialize, Serialize};
@@ -16,9 +16,6 @@ pub(super) struct StateFile {
     /// Set once the user dismisses the Linux Mint keyring setup tip.
     #[serde(default)]
     mint_keyring_help_dismissed: bool,
-    /// In-message attachment drawer: collapsed (showing only its header).
-    #[serde(default)]
-    drawer_collapsed: bool,
     /// The way of asking for message summaries that worked for an account
     /// whose server rejects the default (#226), by email: "headers",
     /// "no-previews" or "headers-no-previews". Absent = the default. Written
@@ -26,15 +23,6 @@ pub(super) struct StateFile {
     /// launch starts there instead of failing its way down the ladder.
     #[serde(default, skip_serializing_if = "std::collections::BTreeMap::is_empty")]
     fetch_modes: std::collections::BTreeMap<String, String>,
-    /// Expanded attachment-drawer height in px (the dragged split).
-    #[serde(default = "default_drawer_height")]
-    drawer_height: i32,
-    /// Attachment drawer shows an alphabetical list instead of the thumbnail grid.
-    #[serde(default)]
-    drawer_list_view: bool,
-    /// The drawer's list view sorts Z→A instead of A→Z.
-    #[serde(default)]
-    drawer_sort_desc: bool,
     /// Message-list pane width in px (#28 — it reset every launch).
     #[serde(default = "default_list_pane_width")]
     pub(super) list_pane_width: i32,
@@ -108,10 +96,6 @@ pub(super) fn default_list_pane_width() -> i32 {
 
 fn default_list_pane_height() -> i32 {
     320
-}
-
-fn default_drawer_height() -> i32 {
-    160
 }
 
 pub(super) fn state_path() -> Option<PathBuf> {
@@ -214,47 +198,6 @@ pub(crate) fn dismiss_mint_keyring_help() {
     save_state(&state);
 }
 
-/// Persisted state of the in-message attachment drawer.
-#[derive(Debug, Clone, Copy)]
-pub(crate) struct DrawerState {
-    /// Expanded content height in px.
-    pub(crate) height: i32,
-    /// Whether the drawer is collapsed to just its header.
-    pub(crate) collapsed: bool,
-    /// Thumbnail edge in px.
-    pub(crate) thumb: i32,
-    /// Show an alphabetical list instead of the thumbnail grid.
-    pub(crate) list_view: bool,
-    /// Sort the list Z→A instead of A→Z.
-    pub(crate) sort_desc: bool,
-}
-
-impl Default for DrawerState {
-    fn default() -> Self {
-        Self {
-            height: 160,
-            collapsed: false,
-            thumb: 56,
-            list_view: false,
-            sort_desc: false,
-        }
-    }
-}
-
-/// Load the attachment drawer's remembered state. The collapsed flag, view
-/// settings and dragged height are persisted; thumbnail size always starts at
-/// its default.
-pub(crate) fn load_drawer_state() -> DrawerState {
-    let s = load_state();
-    DrawerState {
-        collapsed: s.drawer_collapsed,
-        list_view: s.drawer_list_view,
-        sort_desc: s.drawer_sort_desc,
-        height: s.drawer_height.clamp(96, 4000),
-        ..DrawerState::default()
-    }
-}
-
 /// The remembered summary-fetch mode for an account (#226), as
 /// (use ENVELOPE, preview items rejected). The default when nothing is known.
 pub(crate) fn load_fetch_mode(email: &str) -> (bool, bool) {
@@ -307,26 +250,6 @@ pub(crate) fn save_fetch_mode(email: &str, use_envelope: bool, previews_rejected
         }
     }
     save_state(&s);
-}
-
-/// Persist whether the attachment drawer is collapsed.
-pub(crate) fn save_drawer_collapsed(collapsed: bool) {
-    update_state(|s| s.drawer_collapsed = collapsed);
-}
-
-/// Persist the attachment drawer's expanded (dragged) height.
-pub(crate) fn save_drawer_height(height: i32) {
-    update_state(|s| s.drawer_height = height.clamp(96, 4000));
-}
-
-/// Persist the attachment drawer's view mode (list vs. thumbnail grid).
-pub(crate) fn save_drawer_list_view(list_view: bool) {
-    update_state(|s| s.drawer_list_view = list_view);
-}
-
-/// Persist the attachment drawer's list sort direction.
-pub(crate) fn save_drawer_sort_desc(desc: bool) {
-    update_state(|s| s.drawer_sort_desc = desc);
 }
 
 /// The About window's height: tall by default, remembering the user's own

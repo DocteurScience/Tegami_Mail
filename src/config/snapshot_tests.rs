@@ -341,10 +341,6 @@ fn state_toml() {
         "state.toml",
         r#"
 mint_keyring_help_dismissed = true
-drawer_collapsed = true
-drawer_height = 300
-drawer_list_view = true
-drawer_sort_desc = true
 list_pane_width = 420
 about_height = 500
 wizard_completed = true

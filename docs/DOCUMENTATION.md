@@ -379,14 +379,13 @@ the folders where they are, and adding it again finds them.
 
 ### Deleting an attachment from the server
 
-**Delete from server…** in the right-click menu of a file in the attachment
-drawer takes that one file out of the message
-on the server, to save space there. The rest of the message stays: its text,
+**Delete from server…** in the ⋯ menu of a file on a message's card takes
+that one file out of the message on the server, to save space there. The rest of the message stays: its text,
 its other files, where it is filed, its read, starred and tag state, and its
 date. Tegami Mail asks first, as the change reaches every device that reads the
 account and cannot be undone. Save the file first if you want to keep a copy.
-While the server works, the file shows pale red with "Deleting…" in place of
-its buttons, then fades out; if the server refuses, it comes back as it was.
+Once the server has done it the message shows without the file; if the
+server refuses, a message says why and the file stays.
 
 An IMAP or JMAP server cannot edit a message, so Tegami Mail stores a copy without
 the file and then deletes the original; the copy stands where the original
@@ -1443,10 +1442,8 @@ version keeps its arrangement.)
 Double-clicking a message in the list, or a message's header in a
 conversation, opens it in a window of its own. Its toolbar is the reader's:
 the same buttons in the same order, and the right-hand group folds into a ⋯ menu as it does in the main
-window. Its files are in the attachment drawer under the
-message, and on each message's card when those are switched on, and images
-and PDFs open in the same full-window preview. A conversation's window
-gathers the files of every message in it. **Ctrl+F** finds in the message and **Ctrl+P** prints it.
+window. Its files are on each message's card, and images and PDFs open in
+the same full-window preview. **Ctrl+F** finds in the message and **Ctrl+P** prints it.
 
 ### Message files (.eml and .msg)
 
@@ -1455,7 +1452,7 @@ window of its own:
 double-click it in GNOME Files (Tegami Mail is offered for email files), pass it to
 `tegami` on the command line, or pick **Open message file…** in the command
 palette (**Ctrl+K**). It is drawn as mail from a server is, with its
-attachments in the drawer, and **Reply**, **Reply all** and **Forward**
+attachments on its card, and **Reply**, **Reply all** and **Forward**
 write from the account in view. It belongs to no folder, so there is nothing
 to star, move or delete.
 

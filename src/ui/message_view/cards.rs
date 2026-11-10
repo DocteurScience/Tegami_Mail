@@ -37,17 +37,12 @@ impl MessageView {
         if !self.webview_ready || self.current.is_none() || keys.is_empty() {
             return;
         }
-        let shown = self.chips_shown();
         let mut js = String::from("(function(){");
         for key in keys {
-            let html = if shown {
-                att_chips_html(
-                    *key,
-                    self.card_atts.get(key).map(|v| v.as_slice()).unwrap_or(&[]),
-                )
-            } else {
-                String::new()
-            };
+            let html = att_chips_html(
+                *key,
+                self.card_atts.get(key).map(|v| v.as_slice()).unwrap_or(&[]),
+            );
             js.push_str(&format!(
                 "var d=document.querySelector('.tegami-atts[data-key=\"{}:{}\"]');if(d)d.innerHTML={};",
                 key.0,

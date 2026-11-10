@@ -127,6 +127,7 @@ impl MessageWindow {
         index: usize,
         verb: crate::ui::message_view::AttVerb,
         root: &adw::Window,
+        sender: &ComponentSender<Self>,
     ) {
         use crate::ui::message_view::AttVerb;
         let Some(files) = self
@@ -141,17 +142,19 @@ impl MessageWindow {
             return;
         };
         let parent: &gtk::Window = root.upcast_ref();
-        if verb == AttVerb::Save {
+        if verb == AttVerb::Delete {
+            self.on_delete_attachment(att, sender);
+        } else if verb == AttVerb::Save {
             // A failed write is dropped.
             save_attachment_as(&att.name, att.data, Some(parent), |_| {});
         } else if verb == AttVerb::SaveAll {
             crate::ui::attachment_io::save_all_attachments(files.clone(), Some(parent));
         } else if verb == AttVerb::OpenWith {
             crate::ui::attachment_io::open_bytes_choosing(&att.name, &att.data, Some(parent));
-        } else if crate::ui::attachment_drawer::previewable(&att) {
+        } else if crate::ui::thumbnails::previewable(&att) {
             // The lightbox pages through this message's previewable
             // files, starting at the one clicked.
-            let previewable = |a: &&Attachment| crate::ui::attachment_drawer::previewable(a);
+            let previewable = |a: &&Attachment| crate::ui::thumbnails::previewable(a);
             let items: Vec<Attachment> = files.iter().filter(previewable).cloned().collect();
             let start = files[..=index]
                 .iter()

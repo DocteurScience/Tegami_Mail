@@ -1,6 +1,6 @@
 //! A message popped out into its own top-level window: a standalone reader with
 //! the main window's reader toolbar, in the layout Settings gives it, and the
-//! same attachment drawer and lightbox.
+//! same lightbox.
 //!
 //! The window owns its own [`MessageView`] and attachment state, but defers the
 //! real work (reply, move, load attachments, …) back to the app via outputs so
@@ -12,7 +12,6 @@ use relm4::prelude::*;
 
 use crate::config::{ReaderToolbar, Tag};
 use crate::models::{Attachment, Message};
-use crate::ui::attachment_drawer::AttachmentDrawer;
 use crate::ui::lightbox::Lightbox;
 use crate::ui::message_view::MessageView;
 
@@ -37,8 +36,6 @@ pub(crate) struct MessageWindow {
     attachments: Vec<((u32, u32), Vec<Attachment>)>,
     /// The members whose files are on their way.
     attachments_loading: std::collections::HashSet<(u32, u32)>,
-    drawer_enabled: bool,
-    drawer: Controller<AttachmentDrawer>,
     lightbox: Controller<Lightbox>,
     tags: Vec<Tag>,
     toolbar: ReaderToolbar,

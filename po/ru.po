@@ -2882,81 +2882,6 @@ msgstr ""
 msgid "Delete smart folder"
 msgstr "Удалить папку…"
 
-msgid "Open"
-msgstr "Открыть"
-
-msgid "Download…"
-msgstr "Скачать…"
-
-msgid "Show in message"
-msgstr "Показать в сообщении"
-
-msgid "Delete from server…"
-msgstr "Удалить с сервера…"
-
-msgid "Key imported"
-msgstr "Ключ импортирован"
-
-msgid ""
-"The key is in your keyring now. Trust it under Settings, OpenPGP, once you "
-"have checked its fingerprint with its owner."
-msgstr ""
-"Ключ теперь находится в вашей связке ключей. Отметьте его как доверенный в "
-"разделе «Настройки» → «OpenPGP» после того, как сверите его отпечаток с "
-"владельцем."
-
-msgid "Already in your keyring"
-msgstr "Уже в вашей связке ключей"
-
-msgid "That key was imported before."
-msgstr "Этот ключ был импортирован ранее."
-
-msgid "Could not import the key"
-msgstr "Не удалось импортировать ключ"
-
-#, fuzzy
-msgid "Download"
-msgstr "Скачать…"
-
-msgid "Import OpenPGP key"
-msgstr "Импортировать ключ OpenPGP"
-
-msgid "Deleting…"
-msgstr "Удаление…"
-
-msgid "Show the attachments"
-msgstr "Показать вложения"
-
-msgid "Hide the attachments"
-msgstr "Скрыть вложения"
-
-msgid "{n} attachment"
-msgid_plural "{n} attachments"
-msgstr[0] "{n} вложение"
-msgstr[1] "{n} вложения"
-msgstr[2] "{n} вложений"
-
-msgid "Thumbnail size"
-msgstr "Размер миниатюр"
-
-msgid "Sorted Z to A — switch to A to Z"
-msgstr "Сортировка от Я до А — переключить на от А до Я"
-
-msgid "Sorted A to Z — switch to Z to A"
-msgstr "Сортировка от А до Я — переключить на от Я до А"
-
-msgid "Show as thumbnails"
-msgstr "Показывать значками"
-
-msgid "Show as a list"
-msgstr "Показывать списком"
-
-msgid "Save all…"
-msgstr "Сохранить все…"
-
-msgid "Save every attachment to a folder"
-msgstr "Сохранить все вложения в папку"
-
 msgid "Save attachment"
 msgstr "Сохранить вложение"
 
@@ -3300,6 +3225,12 @@ msgstr[0] "Звуковой файл"
 msgstr[1] "Звуковой файл"
 msgstr[2] "Звуковой файл"
 
+msgid "{n} attachment"
+msgid_plural "{n} attachments"
+msgstr[0] "{n} вложение"
+msgstr[1] "{n} вложения"
+msgstr[2] "{n} вложений"
+
 msgid "{name} (link)"
 msgstr "{name} (ссылка)"
 
@@ -3308,6 +3239,9 @@ msgstr "Загрузка…"
 
 msgid "Attach {name}"
 msgstr "Прикрепить {name}"
+
+msgid "Open"
+msgstr "Открыть"
 
 msgid "Upload {n} file and put its share link in the message."
 msgid_plural "Upload {n} files and put their share links in the message."
@@ -3979,6 +3913,9 @@ msgstr "Назад"
 msgid "Next"
 msgstr "Вперёд"
 
+msgid "Download…"
+msgstr "Скачать…"
+
 msgid "{name} · {current} of {total}"
 msgstr "{name} · {current} из {total}"
 
@@ -4225,9 +4162,6 @@ msgstr "Дважды щёлкните, чтобы открыть в новом �
 msgid "To: {names}"
 msgstr "Добавить тег {name}"
 
-msgid "Hide recipients"
-msgstr "Скрыть получателей"
-
 msgid "Show recipients"
 msgstr "Показать получателей"
 
@@ -4381,6 +4315,12 @@ msgstr ""
 #, fuzzy
 msgid "Save as…"
 msgstr "Сохранить все…"
+
+msgid "Save all…"
+msgstr "Сохранить все…"
+
+msgid "Delete from server…"
+msgstr "Удалить с сервера…"
 
 msgid "Encrypted messages are not sent for translation."
 msgstr "Зашифрованные сообщения не отправляются на перевод."
@@ -4844,6 +4784,10 @@ msgstr "На этом компьютере"
 
 msgid "Not downloaded yet. The download is {size}."
 msgstr ""
+
+#, fuzzy
+msgid "Download"
+msgstr "Скачать…"
 
 #, fuzzy
 msgid "The files could not be removed."

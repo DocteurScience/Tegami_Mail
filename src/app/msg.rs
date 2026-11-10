@@ -404,12 +404,6 @@ pub(crate) enum AppMsg {
         index: usize,
         verb: crate::ui::message_view::AttVerb,
     },
-    /// The drawer's "Show in Message": scroll the reader to the message this
-    /// attachment came with (#213).
-    ShowAttachmentInMessage(Attachment),
-    /// The drawer's "Delete from Server…" (#289): find the message the file
-    /// came with, then ask.
-    DeleteDrawerAttachment(Attachment),
     /// Ask before an attachment is taken out of its message on the server.
     AskDeleteAttachment(AttachmentTarget),
     /// The user said yes: have the account's worker do it.

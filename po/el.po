@@ -2785,79 +2785,6 @@ msgstr ""
 msgid "Delete smart folder"
 msgstr "Διαγραφή έξυπνου φακέλου…"
 
-msgid "Open"
-msgstr "Άνοιγμα"
-
-msgid "Download…"
-msgstr "Λήψη…"
-
-msgid "Show in message"
-msgstr "Εμφάνιση στο μήνυμα"
-
-msgid "Delete from server…"
-msgstr "Διαγραφή από τον διακομιστή…"
-
-msgid "Key imported"
-msgstr "Το κλειδί εισήχθη"
-
-msgid ""
-"The key is in your keyring now. Trust it under Settings, OpenPGP, once you "
-"have checked its fingerprint with its owner."
-msgstr ""
-"Το κλειδί βρίσκεται πλέον στην κλειδοθήκη σας. Αφού επαληθεύσετε το "
-"αποτύπωμά του με τον κάτοχό του, ορίστε το ως έμπιστο στις Ρυθμίσεις, στην "
-"ενότητα OpenPGP."
-
-msgid "Already in your keyring"
-msgstr "Υπάρχει ήδη στην κλειδοθήκη σας"
-
-msgid "That key was imported before."
-msgstr "Αυτό το κλειδί είχε εισαχθεί προηγουμένως."
-
-msgid "Could not import the key"
-msgstr "Δεν ήταν δυνατή η εισαγωγή του κλειδιού"
-
-msgid "Download"
-msgstr "Λήψη"
-
-msgid "Import OpenPGP key"
-msgstr "Εισαγωγή κλειδιού OpenPGP"
-
-msgid "Deleting…"
-msgstr "Διαγραφή…"
-
-msgid "Show the attachments"
-msgstr "Εμφάνιση συνημμένων"
-
-msgid "Hide the attachments"
-msgstr "Απόκρυψη συνημμένων"
-
-msgid "{n} attachment"
-msgid_plural "{n} attachments"
-msgstr[0] "{n} συνημμένο"
-msgstr[1] "{n} συνημμένα"
-
-msgid "Thumbnail size"
-msgstr "Μέγεθος μικρογραφιών"
-
-msgid "Sorted Z to A — switch to A to Z"
-msgstr "Ταξινόμηση από Ω προς Α — αλλαγή σε Α προς Ω"
-
-msgid "Sorted A to Z — switch to Z to A"
-msgstr "Ταξινόμηση από Α προς Ω — αλλαγή σε Ω προς Α"
-
-msgid "Show as thumbnails"
-msgstr "Εμφάνιση ως μικρογραφίες"
-
-msgid "Show as a list"
-msgstr "Εμφάνιση ως λίστα"
-
-msgid "Save all…"
-msgstr "Αποθήκευση όλων…"
-
-msgid "Save every attachment to a folder"
-msgstr "Αποθήκευση κάθε συνημμένου σε φάκελο"
-
 msgid "Save attachment"
 msgstr "Αποθήκευση συνημμένου"
 
@@ -3205,6 +3132,11 @@ msgid_plural "{n} files"
 msgstr[0] "Αρχείο ήχου"
 msgstr[1] "Αρχείο ήχου"
 
+msgid "{n} attachment"
+msgid_plural "{n} attachments"
+msgstr[0] "{n} συνημμένο"
+msgstr[1] "{n} συνημμένα"
+
 msgid "{name} (link)"
 msgstr "{name} (σύνδεσμος)"
 
@@ -3213,6 +3145,9 @@ msgstr "Μεταφόρτωση…"
 
 msgid "Attach {name}"
 msgstr "Επισύναψη του {name}"
+
+msgid "Open"
+msgstr "Άνοιγμα"
 
 msgid "Upload {n} file and put its share link in the message."
 msgid_plural "Upload {n} files and put their share links in the message."
@@ -3870,6 +3805,9 @@ msgstr "Προηγούμενο"
 msgid "Next"
 msgstr "Επόμενο"
 
+msgid "Download…"
+msgstr "Λήψη…"
+
 msgid "{name} · {current} of {total}"
 msgstr "{name} · {current} από {total}"
 
@@ -4103,9 +4041,6 @@ msgstr "Διπλό κλικ για άνοιγμα σε νέο παράθυρο"
 msgid "To: {names}"
 msgstr "Προσθήκη ετικέτας {name}"
 
-msgid "Hide recipients"
-msgstr "Απόκρυψη παραληπτών"
-
 msgid "Show recipients"
 msgstr "Εμφάνιση παραληπτών"
 
@@ -4257,6 +4192,12 @@ msgstr ""
 #, fuzzy
 msgid "Save as…"
 msgstr "Αποθήκευση όλων…"
+
+msgid "Save all…"
+msgstr "Αποθήκευση όλων…"
+
+msgid "Delete from server…"
+msgstr "Διαγραφή από τον διακομιστή…"
 
 msgid "Encrypted messages are not sent for translation."
 msgstr "Τα κρυπτογραφημένα μηνύματα δεν αποστέλλονται για μετάφραση."
@@ -4712,6 +4653,9 @@ msgstr "Tegami Mail, σε αυτόν τον υπολογιστή"
 
 msgid "Not downloaded yet. The download is {size}."
 msgstr ""
+
+msgid "Download"
+msgstr "Λήψη"
 
 #, fuzzy
 msgid "The files could not be removed."

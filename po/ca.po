@@ -2749,78 +2749,6 @@ msgstr ""
 msgid "Delete smart folder"
 msgstr "Suprimeix la carpeta intel·ligent…"
 
-msgid "Open"
-msgstr "Obre"
-
-msgid "Download…"
-msgstr "Baixa…"
-
-msgid "Show in message"
-msgstr "Mostra al missatge"
-
-msgid "Delete from server…"
-msgstr "Suprimeix del servidor…"
-
-msgid "Key imported"
-msgstr "Clau importada"
-
-msgid ""
-"The key is in your keyring now. Trust it under Settings, OpenPGP, once you "
-"have checked its fingerprint with its owner."
-msgstr ""
-"Ara la clau és al teu anell de claus. Confia-hi a Paràmetres, OpenPGP, un "
-"cop hagis comprovat la seva empremta amb el seu propietari."
-
-msgid "Already in your keyring"
-msgstr "Ja és al teu anell de claus"
-
-msgid "That key was imported before."
-msgstr "Aquesta clau ja s'havia importat abans."
-
-msgid "Could not import the key"
-msgstr "No s'ha pogut importar la clau"
-
-msgid "Download"
-msgstr "Baixa"
-
-msgid "Import OpenPGP key"
-msgstr "Importa una clau OpenPGP"
-
-msgid "Deleting…"
-msgstr "S'està suprimint…"
-
-msgid "Show the attachments"
-msgstr "Mostra els adjunts"
-
-msgid "Hide the attachments"
-msgstr "Amaga els adjunts"
-
-msgid "{n} attachment"
-msgid_plural "{n} attachments"
-msgstr[0] "{n} adjunt"
-msgstr[1] "{n} adjunts"
-
-msgid "Thumbnail size"
-msgstr "Mida de la miniatura"
-
-msgid "Sorted Z to A — switch to A to Z"
-msgstr "Ordenat de la Z a la A — canvia a A a Z"
-
-msgid "Sorted A to Z — switch to Z to A"
-msgstr "Ordenat de la A a la Z — canvia a Z a A"
-
-msgid "Show as thumbnails"
-msgstr "Mostra com a miniatures"
-
-msgid "Show as a list"
-msgstr "Mostra com a llista"
-
-msgid "Save all…"
-msgstr "Desa-ho tot…"
-
-msgid "Save every attachment to a folder"
-msgstr "Desa tots els adjunts en una carpeta"
-
 msgid "Save attachment"
 msgstr "Desa l'adjunt"
 
@@ -3153,6 +3081,11 @@ msgid_plural "{n} files"
 msgstr[0] "Fitxer de so"
 msgstr[1] "Fitxer de so"
 
+msgid "{n} attachment"
+msgid_plural "{n} attachments"
+msgstr[0] "{n} adjunt"
+msgstr[1] "{n} adjunts"
+
 msgid "{name} (link)"
 msgstr "{name} (enllaç)"
 
@@ -3161,6 +3094,9 @@ msgstr "S'està pujant…"
 
 msgid "Attach {name}"
 msgstr "Adjunta {name}"
+
+msgid "Open"
+msgstr "Obre"
 
 msgid "Upload {n} file and put its share link in the message."
 msgid_plural "Upload {n} files and put their share links in the message."
@@ -3811,6 +3747,9 @@ msgstr "Anterior"
 msgid "Next"
 msgstr "Següent"
 
+msgid "Download…"
+msgstr "Baixa…"
+
 msgid "{name} · {current} of {total}"
 msgstr "{name} · {current} de {total}"
 
@@ -4042,9 +3981,6 @@ msgstr "Fes doble clic per obrir en una finestra nova"
 msgid "To: {names}"
 msgstr "Afegeix l'etiqueta {name}"
 
-msgid "Hide recipients"
-msgstr "Amaga els destinataris"
-
 msgid "Show recipients"
 msgstr "Mostra els destinataris"
 
@@ -4196,6 +4132,12 @@ msgstr ""
 #, fuzzy
 msgid "Save as…"
 msgstr "Desa-ho tot…"
+
+msgid "Save all…"
+msgstr "Desa-ho tot…"
+
+msgid "Delete from server…"
+msgstr "Suprimeix del servidor…"
 
 msgid "Encrypted messages are not sent for translation."
 msgstr "Els missatges xifrats no s'envien per traduir."
@@ -4650,6 +4592,9 @@ msgstr "Tegami Mail, en aquest ordinador"
 
 msgid "Not downloaded yet. The download is {size}."
 msgstr ""
+
+msgid "Download"
+msgstr "Baixa"
 
 #, fuzzy
 msgid "The files could not be removed."
