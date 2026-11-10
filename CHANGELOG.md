@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+- **Removed: the stored choice of notification buttons** (owner's decision,
+  2026-11-10, now in docs/DESIGN.md, "Removed or moved"). Its row had gone
+  with the General page, yet a choice saved by an earlier version still
+  decided which buttons a new-mail notification carried. A notification about
+  one message now always offers Mark as read, Archive and Delete; the Reply,
+  Forward and Mark as spam buttons, which only that choice could add, are
+  gone with it.
 - **Removed: the stored start view** (owner's decision, 2026-11-10, now in
   docs/DESIGN.md, "Removed or moved"). Its "Open at startup" row had gone
   with the General page, yet an "account inbox" or "last folder" saved by an

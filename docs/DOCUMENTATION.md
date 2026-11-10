@@ -1769,13 +1769,15 @@ fetched. It all resumes once the connection is no longer metered.
 
 ### Notifications
 
-A new-mail notification opens the message when clicked. **Preferences →
+A new-mail notification opens the message when clicked; one about a single
+message also carries **Mark as read**, **Archive** and **Delete**, which act
+without bringing the window up. **Preferences →
 Notifications** turns notifications on, chooses whether they show the sender
 and subject, and whether a returned read receipt posts one. Sound, banners
 and Do Not Disturb are set in GNOME Settings → Notifications → Tegami Mail,
-which **Open the system notification settings** opens. (Buttons on a
-notification and a sound of Tegami Mail's own, set in an earlier version,
-are no longer offered.)
+which **Open the system notification settings** opens. (A choice of other
+buttons and a sound of Tegami Mail's own, set in an earlier version, are no
+longer offered.)
 
 ### The status bar
 
