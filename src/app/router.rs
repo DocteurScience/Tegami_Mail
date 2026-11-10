@@ -231,9 +231,7 @@ impl AppModel {
             | AppMsg::MeasureReaderFold
             | AppMsg::ReaderControlsChanged(..)
             | AppMsg::ReaderOverflowMenu) => self.on_reader_toolbar(msg, sender),
-            msg @ (AppMsg::QuitFromTray | AppMsg::TrayViewUnread | AppMsg::PresentWindow) => {
-                self.on_tray(msg, sender)
-            }
+            msg @ AppMsg::PresentWindow => self.on_tray(msg, sender),
             msg @ (AppMsg::ShowShortcuts
             | AppMsg::CommandPalette(..)
             | AppMsg::PrintPreview

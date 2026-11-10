@@ -722,11 +722,6 @@ pub(crate) enum AppMsg {
     ReaderOverflowMenu,
 
     // ---- on_tray (tray.rs) ----
-    /// Quit was chosen from the tray icon's menu.
-    QuitFromTray,
-    /// "View all unread" was chosen from the tray icon's menu: go to the
-    /// first inbox holding unread mail.
-    TrayViewUnread,
     /// Raise and focus the main window (welcome wizard hand-off).
     PresentWindow,
 

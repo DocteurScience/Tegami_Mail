@@ -18,7 +18,6 @@ use gtk::prelude::*;
 pub(crate) fn register_icons() {
     if let Some(display) = gtk::gdk::Display::default() {
         let theme = gtk::IconTheme::for_display(&display);
-        DESKTOP_ICON_PATH.get_or_init(|| theme.search_path());
         // Ahead of GTK's and libadwaita's own copies, so their widgets take
         // the bundle's: those copies come with whatever GTK the system has.
         let mut paths = vec![ICON_RESOURCE.to_string()];
@@ -71,20 +70,6 @@ pub(crate) fn apply_icon_theme() {
     theme.set_search_path(&paths);
     let theme = theme.clone();
     gtk::glib::idle_add_local_once(move || check_icon_sources(&theme));
-}
-
-/// An icon theme over the desktop's own icon folders, for the icons that are
-/// the desktop's business rather than Tegami Mail's: a launcher icon set outside
-/// the app (#252).
-pub(crate) fn desktop_icon_theme() -> gtk::IconTheme {
-    let theme = gtk::IconTheme::new();
-    let mut paths = DESKTOP_ICON_PATH.get().cloned().unwrap_or_default();
-    if let Some(home) = std::env::var_os("HOME") {
-        paths.push(std::path::Path::new(&home).join(".local/share/icons"));
-    }
-    let paths: Vec<&std::path::Path> = paths.iter().map(|p| p.as_path()).collect();
-    theme.set_search_path(&paths);
-    theme
 }
 
 /// Whether every bundled icon is drawn from the bundle: any that resolves
@@ -141,10 +126,6 @@ const ICON_THEME: &str = "Tegami Mail";
 
 /// Where the bundled icons sit in the app's GResource (registered in `main`).
 const ICON_RESOURCE: &str = "/io/github/DocteurScience/TegamiMail/icons";
-
-/// The icon folders GTK searched before Tegami Mail narrowed them: what "Use the
-/// desktop's icons" gives back.
-static DESKTOP_ICON_PATH: std::sync::OnceLock<Vec<std::path::PathBuf>> = std::sync::OnceLock::new();
 
 #[cfg(test)]
 mod tests {

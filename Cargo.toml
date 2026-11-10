@@ -85,8 +85,6 @@ serde_json = "1"
 # GNOME Contacts integration via Evolution Data Server (D-Bus)
 zbus = "4"
 ammonia = "4.1.4"
-# Tray icon (StatusNotifierItem / AppIndicator) for desktops that have a tray
-ksni = { version = "0.3.6", default-features = false, features = ["tokio", "blocking"] }
 gettext-rs = { version = "0.8.0", features = ["gettext-system"] }
 markup5ever_rcdom = "0.39.0"
 html5ever = "0.39"

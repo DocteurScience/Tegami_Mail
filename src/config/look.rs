@@ -15,20 +15,6 @@ pub(crate) enum AppTheme {
     Dark,
 }
 
-/// Which icon the tray item wears (issue #116).
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Default, Deserialize, Serialize)]
-#[serde(rename_all = "kebab-case")]
-pub(crate) enum TrayIcon {
-    /// The app icon.
-    Tegami,
-    /// The app's symbolic icon, which the panel draws in its own color, as
-    /// it does the icons beside it (#258). It replaced a white and a black
-    /// envelope, which read as it.
-    #[default]
-    #[serde(alias = "envelope-light", alias = "envelope-dark")]
-    Symbolic,
-}
-
 /// How dates are written: the system's own arrangement, or one the user picked
 /// regardless of it (#32).
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Default, Deserialize, Serialize)]

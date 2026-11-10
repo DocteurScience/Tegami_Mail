@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+- **Removed: the tray icon** (docs/DESIGN.md, "Removed or moved": "System:
+  … tray icon"). It was off by default, and its setting had gone with the
+  System page; GNOME has no tray without an extension, and running in the
+  background shows Tegami Mail under Background Apps instead. Its menu of
+  unread mail, the ksni dependency and the Flatpak permission to talk to
+  the StatusNotifierWatcher go with it.
+
 - **Changed: deleting an attachment from the server** (#289) is in the ⋯
   menu of each file on a message's card, under Save as… and Save all…, in
   red. It was only in the attachment drawer, which had been switched off

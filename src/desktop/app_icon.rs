@@ -33,37 +33,6 @@ pub(crate) fn png() -> &'static [u8] {
     DEFAULT_PNG
 }
 
-/// The image the tray's App icon option draws: the icon the dock shows.
-/// That is the launcher's own icon when somebody set one outside Tegami Mail
-/// (#252), a file or a name in the icon theme, and otherwise the shipped
-/// one. An icon that cannot be read falls back to the shipped one.
-pub(crate) fn tray_image() -> std::borrow::Cow<'static, [u8]> {
-    use std::borrow::Cow;
-    let Some(icon) = custom_icon() else {
-        return Cow::Borrowed(png());
-    };
-    let path = if std::path::Path::new(&icon).is_absolute() {
-        Some(std::path::PathBuf::from(&icon))
-    } else {
-        // In the desktop's icon folders: Tegami Mail's own search leaves them out.
-        crate::desktop::icon_theme::desktop_icon_theme()
-            .lookup_icon(
-                &icon,
-                &[],
-                256,
-                1,
-                gtk::TextDirection::None,
-                gtk::IconLookupFlags::empty(),
-            )
-            .file()
-            .and_then(|f| gtk::gio::prelude::FileExt::path(&f))
-    };
-    match path.and_then(|p| std::fs::read(p).ok()) {
-        Some(bytes) => Cow::Owned(bytes),
-        None => Cow::Borrowed(png()),
-    }
-}
-
 /// Bring the desktop in line with the shipped icon at start: the files
 /// of an icon picked from the former gallery go, and the launcher points
 /// at the shipped icon again, unless it carries an icon set outside Tegami
@@ -73,17 +42,6 @@ pub(crate) fn init_on_startup() {
         return;
     }
     apply();
-}
-
-/// The icon the app's launcher names when somebody other than Tegami Mail put it
-/// there: a menu editor, a hand edit, an icon theme's name (#252). Tegami Mail
-/// only ever writes the app's own icon name or a file of its own (one per
-/// former gallery choice), so anything else was the user's doing.
-pub(crate) fn custom_icon() -> Option<String> {
-    if std::env::var("TEGAMI_DEMO").is_ok() {
-        return None;
-    }
-    Launcher::find().custom_icon()
 }
 
 /// Whether a launcher's `Icon=` value is one Tegami Mail puts there: the name the

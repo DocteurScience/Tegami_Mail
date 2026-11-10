@@ -797,9 +797,6 @@ impl SimpleComponent for AppModel {
         schedule_download_prune();
         text_search::prepare_text_search();
         model.withdraw_stale_notifications();
-        if model.tray_enabled {
-            model.start_tray(&sender);
-        }
         start_contacts_sync(&sender);
         legacy_book::check_legacy_book(&sender);
         model.read_contact_names(&sender);

@@ -7,7 +7,6 @@ use std::path::PathBuf;
 
 use super::look::{
     default_list_columns, default_text_scale, AppTheme, ClockStyle, DateStyle, ReadingPane,
-    TrayIcon,
 };
 use super::prefs::{
     default_files_limit_mb, default_undo_send_secs, ComposeFormat, FilesAction, FilesLarge,
@@ -217,17 +216,6 @@ pub(crate) struct PrivacyFile {
     /// their own windows.
     #[serde(default)]
     pub(crate) reading_pane: ReadingPane,
-    /// Publish a tray icon (StatusNotifierItem) for desktops that draw one
-    /// (issue #116). Off by default: GNOME has no tray without an extension.
-    #[serde(default)]
-    pub(crate) tray: bool,
-    /// Which icon the tray item shows.
-    #[serde(default)]
-    pub(crate) tray_icon: TrayIcon,
-    /// Whether the tray menu lists unread inbox mail, each a row that opens
-    /// the message.
-    #[serde(default = "default_on")]
-    pub(crate) tray_mail: bool,
     /// Whether the launcher icon in a dock or task manager shows the unread
     /// count (#271). Kept written so a version that predates
     /// `launcher_badge` still shows a badge when this one does.
@@ -363,9 +351,6 @@ impl Default for PrivacyFile {
             run_in_background: false,
             autostart: false,
             reading_pane: ReadingPane::Right,
-            tray: false,
-            tray_icon: TrayIcon::default(),
-            tray_mail: true,
             launcher_count: true,
             launcher_badge: None,
             print: PrintOptions::default(),

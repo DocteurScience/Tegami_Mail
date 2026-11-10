@@ -34,10 +34,6 @@ use super::{RedoAction, UndoAction};
 /// A pending tag change: (account, folder path, uid, lower-cased keyword).
 type PendingTagKey = (u32, String, u32, String);
 
-/// One row of the tray's mail section: (account, message id, sender,
-/// subject).
-type TrayMailRow = (u32, u32, String, String);
-
 /// The root component's state: the accounts and their workers, what the
 /// list and the reader show, the session caches, every setting the app
 /// applies, and the child components.
@@ -373,20 +369,10 @@ pub(crate) struct AppModel {
     pub(super) autostart: bool,
     /// The reader beside the list (#475); off, messages open in windows.
     pub(super) reading_pane: config::ReadingPane,
-    /// Tray icon (issue #116): the setting, the icon choice, and the running
-    /// item while the setting is on.
-    pub(super) tray_enabled: bool,
-    pub(super) tray_icon: config::TrayIcon,
-    pub(super) tray_mail: bool,
     /// What the launcher icon's badge counts (#271, #431).
     pub(super) launcher_badge: config::LauncherBadge,
     /// Inbox mail that arrived while the window was not in front (#431).
     pub(super) arrivals: crate::desktop::launcher_badge::Arrivals,
-    pub(super) tray: Option<super::tray::TrayHandle>,
-    /// What the tray menu last listed (account, id, sender, subject; `None`
-    /// for no section), so an unchanged list isn't re-sent over D-Bus on
-    /// every unread-count push.
-    pub(super) tray_mail_key: std::cell::RefCell<Option<Vec<TrayMailRow>>>,
     /// Whether single-key (modifier-free) shortcuts are enabled. The window's key
     /// controller needs to read this without the model, so it is shared: with the
     /// feature off, keystrokes must pass straight through rather than be consumed
