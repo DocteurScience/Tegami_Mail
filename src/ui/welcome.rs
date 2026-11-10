@@ -74,7 +74,8 @@ impl Component for Welcome {
             .into_iter()
             .map(|a| a.email.to_ascii_lowercase())
             .collect();
-        let listed = if std::env::var_os("TEGAMI_SHOWCASE_WIZARD").is_some() {
+        let showing = std::env::var_os("TEGAMI_SHOWCASE_WIZARD").is_some();
+        let listed = if showing {
             showcase_listed()
         } else {
             crate::services::goa::list_mail_accounts()
@@ -85,7 +86,12 @@ impl Component for Welcome {
         };
         let model = Welcome {
             listed,
-            added: Vec::new(),
+            // The capture's account added already, as screen 52 names it.
+            added: if showing {
+                vec!["jason@gmail.com".into()]
+            } else {
+                Vec::new()
+            },
             test_seq: 0,
         };
 
@@ -161,19 +167,21 @@ impl Component for Welcome {
     }
 }
 
-/// Screenshot hook: TEGAMI_SHOWCASE_WIZARD=accounts, email or testing (the
-/// form mid-test) walks to that page (with TEGAMI_WELCOME=1 to open the wizard over the demo), and
+/// Screenshot hook: TEGAMI_SHOWCASE_WIZARD=accounts, email, testing (the
+/// form mid-test) or done walks to that page (with TEGAMI_WELCOME=1 to open the wizard over the demo), and
 /// TEGAMI_SHOWCASE_WIZARD_SHOT=path captures the wizard alone after a beat
 /// (TEGAMI_SHOWCASE is the main window's).
 fn showcase(root: &adw::Window, sender: &ComponentSender<Welcome>) {
     if let Some(page) = std::env::var("TEGAMI_SHOWCASE_WIZARD")
         .ok()
-        .filter(|p| ["accounts", "email", "testing"].contains(&p.as_str()))
+        .filter(|p| ["accounts", "email", "testing", "done"].contains(&p.as_str()))
     {
         let s = sender.clone();
         gtk::glib::timeout_add_local_once(std::time::Duration::from_millis(500), move || {
             s.input(WelcomeInput::Start);
-            if page != "accounts" {
+            if page == "done" {
+                s.input(WelcomeInput::Continue);
+            } else if page != "accounts" {
                 s.input(WelcomeInput::OpenForm);
             }
             if page == "testing" {

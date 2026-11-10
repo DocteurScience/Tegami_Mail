@@ -20,6 +20,9 @@
   the servers and what the provider needs (an OAuth client, an API token).
   While testing, a spinner and a sentence show and the button waits; an
   error is a sentence under the fields. A success returns to the accounts.
+  **You’re all set** names the account being synchronised and offers
+  **Start reading**; with no account added, **Continue** simply closes the
+  wizard. The issue tracker is linked from About, no longer from here.
 
 - **Changed: the filter and smart folder editors** (screens 38 and 40).
   A filter's criteria are one list under **If**: a row per criterion that
