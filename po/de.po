@@ -1501,36 +1501,6 @@ msgstr "Anhänge werden heruntergeladen…"
 msgid "Signature"
 msgstr "Signatur"
 
-msgid "Replied"
-msgstr "Replied"
-
-msgid "Sender"
-msgstr "Absender"
-
-msgid "Recipients"
-msgstr "Empfänger"
-
-msgid "Correspondents"
-msgstr "Beteiligte"
-
-msgid "Subject"
-msgstr "Betreff"
-
-msgid "Attachment"
-msgstr "Anhang"
-
-msgid "Importance"
-msgstr "Wichtigkeit"
-
-msgid "Account"
-msgstr "Konto"
-
-msgid "Due date"
-msgstr "Fälligkeitsdatum"
-
-msgid "Date"
-msgstr "Datum"
-
 msgid "Newest messages"
 msgstr "Neueste Nachrichten"
 
@@ -2323,6 +2293,9 @@ msgstr "E-Mail-Adresse des Absenders"
 msgid "From name"
 msgstr "Name des Absenders"
 
+msgid "Subject"
+msgstr "Betreff"
+
 msgid "To or Cc"
 msgstr "An oder Cc"
 
@@ -2379,6 +2352,9 @@ msgstr "Filter hinzufügen"
 
 msgid "Name (optional)"
 msgstr "Name (optional)"
+
+msgid "Account"
+msgstr "Konto"
 
 msgid "If"
 msgstr ""
@@ -2719,6 +2695,9 @@ msgstr "Beliebiger Tag"
 
 msgid "Reading"
 msgstr "Lesen"
+
+msgid "Attachment"
+msgstr "Anhang"
 
 #, fuzzy
 msgid "With attachments"
@@ -3873,11 +3852,8 @@ msgstr "Durchsuchte Ordner"
 msgid "me"
 msgstr "ich"
 
-msgid "Due"
-msgstr "Fälligkeitsdatum"
-
-msgid "Drag to resize, double-click for the usual width"
-msgstr "Ziehen zum Anpassen der Größe, Doppelklick für die Standardbreite"
+msgid "Replied"
+msgstr "Replied"
 
 msgid "Forwarded"
 msgstr "Weitergeleitet"

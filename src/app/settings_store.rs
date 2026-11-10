@@ -48,10 +48,6 @@ impl AppModel {
             // Every save is after the first load, which applied it.
             spellcheck_langs: self.spellcheck_langs.clone(),
             preview_lines: self.preview_lines,
-            list_columns: config::ListColumn::to_keys(&self.list_columns),
-            list_headings: self.list_headings,
-            list_column_scroll: self.list_column_scroll,
-            list_column_widths: config::list_column_widths_to(&self.list_column_widths),
             single_key_shortcuts: self.single_key.get(),
             gmail_keys: self.gmail_keys.get(),
             keep_downloads_days: self.keep_downloads_days,
@@ -92,15 +88,6 @@ impl AppModel {
             preview_lines: self.preview_lines,
         });
         self.push_single_line();
-        self.message_list
-            .emit(MessageListInput::SetColumns(self.list_columns.clone()));
-        self.message_list
-            .emit(MessageListInput::SetHeadings(self.list_headings));
-        self.message_list
-            .emit(MessageListInput::SetColumnScroll(self.list_column_scroll));
-        self.message_list.emit(MessageListInput::SetColumnWidths(
-            self.list_column_widths.clone(),
-        ));
         self.message_list
             .emit(MessageListInput::SetThreading(self.threading));
         self.message_view.emit(MessageViewInput::SetZoom(self.zoom));

@@ -27,11 +27,9 @@ pub(crate) struct RowLook {
     /// Those columns, in order, the Due column left out of a list without
     /// Microsoft 365 mail in it.
     pub(crate) columns: Vec<ListColumn>,
-    /// The widths columns were dragged to; the rest keep their own.
+    /// The widths the columns were narrowed to so they fit the pane; the
+    /// rest keep their own.
     pub(crate) widths: HashMap<ListColumn, i32>,
-    /// The narrowest a single line goes before the list scrolls sideways
-    /// (#443); -1 for none.
-    pub(crate) min_width: i32,
     /// How many lines of the message's text a row shows (0–3).
     pub(crate) preview_lines: u32,
     /// The folder each result of a search across folders is in, by
@@ -62,7 +60,6 @@ impl Default for RowLook {
             single_line: false,
             columns: ListColumn::DEFAULT.to_vec(),
             widths: HashMap::new(),
-            min_width: -1,
             preview_lines: 1,
             folder_pills: Default::default(),
             in_junk: false,

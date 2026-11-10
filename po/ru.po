@@ -1598,37 +1598,6 @@ msgid "Signature"
 msgstr "Подпись"
 
 #, fuzzy
-msgid "Replied"
-msgstr "Ответить"
-
-msgid "Sender"
-msgstr "Отправитель"
-
-msgid "Recipients"
-msgstr "Получатели"
-
-msgid "Correspondents"
-msgstr "Корреспонденты"
-
-msgid "Subject"
-msgstr "Тема"
-
-msgid "Attachment"
-msgstr "Вложение"
-
-msgid "Importance"
-msgstr "Важность"
-
-msgid "Account"
-msgstr "Учётная запись"
-
-msgid "Due date"
-msgstr "Срок исполнения"
-
-msgid "Date"
-msgstr "Дата"
-
-#, fuzzy
 msgid "Newest messages"
 msgstr "Сначала новые сообщения"
 
@@ -2414,6 +2383,9 @@ msgstr "Введите адрес отправителя"
 msgid "From name"
 msgstr "Имя отправителя"
 
+msgid "Subject"
+msgstr "Тема"
+
 #, fuzzy
 msgid "To or Cc"
 msgstr " или "
@@ -2475,6 +2447,9 @@ msgstr "Добавить фильтр"
 
 msgid "Name (optional)"
 msgstr "Название (необязательно)"
+
+msgid "Account"
+msgstr "Учётная запись"
 
 msgid "If"
 msgstr ""
@@ -2842,6 +2817,9 @@ msgstr ""
 
 msgid "Reading"
 msgstr "Чтение"
+
+msgid "Attachment"
+msgstr "Вложение"
 
 #, fuzzy
 msgid "With attachments"
@@ -4021,13 +3999,9 @@ msgstr ""
 msgid "me"
 msgstr "я"
 
-msgid "Due"
-msgstr "Срок"
-
-msgid "Drag to resize, double-click for the usual width"
-msgstr ""
-"Потяните, чтобы изменить размер, или дважды нажмите для восстановления "
-"обычной ширины"
+#, fuzzy
+msgid "Replied"
+msgstr "Ответить"
 
 #, fuzzy
 msgid "Forwarded"

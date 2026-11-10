@@ -141,25 +141,6 @@ pub(crate) enum MessageListInput {
     },
     /// Lay the rows out on one line, or as cards (#334).
     SetSingleLine(bool),
-    /// The single-line columns, in order (#334).
-    SetColumns(Vec<crate::config::ListColumn>),
-    /// Show the column headings over a single-line list, or not (#334).
-    SetHeadings(bool),
-    /// A column's heading was clicked: sort by it, or the other way (#334).
-    SortByColumn(crate::config::ListColumn),
-    /// A heading's edge was dragged to `width`, or double-clicked (`None`:
-    /// the column's own width). `done` once the drag is over (#334).
-    ResizeColumn {
-        column: crate::config::ListColumn,
-        width: Option<i32>,
-        done: bool,
-    },
-    /// The saved column widths (#334).
-    SetColumnWidths(std::collections::HashMap<crate::config::ListColumn, i32>),
-    /// Fill the headings again, once a handler that set them going is over.
-    RefreshHeadings,
-    /// Scroll a single line wider than the pane, or fit its columns (#443).
-    SetColumnScroll(bool),
     /// The rows are this wide now.
     PaneWidth(i32),
     /// Each account's name for the Account column, and which accounts are
@@ -490,11 +471,6 @@ pub(crate) enum MessageListOutput {
         terms: Vec<String>,
         scope: ServerScope,
     },
-    /// A column heading changed the sort (#334), by its key: the sort
-    /// menus follow.
-    SortChanged(&'static str),
-    /// A column was resized by its heading (#334): the widths to keep.
-    ColumnWidths(std::collections::HashMap<crate::config::ListColumn, i32>),
 }
 
 /// The rows GTK has selected right now, read without a trip through the

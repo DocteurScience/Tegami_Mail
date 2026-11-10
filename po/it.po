@@ -1537,37 +1537,6 @@ msgid "Signature"
 msgstr "Firma"
 
 #, fuzzy
-msgid "Replied"
-msgstr "Rispondi"
-
-msgid "Sender"
-msgstr "Mittente"
-
-msgid "Recipients"
-msgstr "Destinatari"
-
-msgid "Correspondents"
-msgstr "Corrispondenti"
-
-msgid "Subject"
-msgstr "Oggetto"
-
-msgid "Attachment"
-msgstr "Allegato"
-
-msgid "Importance"
-msgstr "Importanza"
-
-msgid "Account"
-msgstr "Account"
-
-msgid "Due date"
-msgstr "Data di scadenza"
-
-msgid "Date"
-msgstr "Data"
-
-#, fuzzy
 msgid "Newest messages"
 msgstr "Messaggio più recente prima"
 
@@ -2364,6 +2333,9 @@ msgstr "Indirizzo mittente"
 msgid "From name"
 msgstr "Nome mittente"
 
+msgid "Subject"
+msgstr "Oggetto"
+
 msgid "To or Cc"
 msgstr "A o Cc"
 
@@ -2420,6 +2392,9 @@ msgstr "Aggiungi filtro"
 
 msgid "Name (optional)"
 msgstr "Nome (opzionale)"
+
+msgid "Account"
+msgstr "Account"
 
 msgid "If"
 msgstr ""
@@ -2778,6 +2753,9 @@ msgstr "Qualsiasi etichetta"
 
 msgid "Reading"
 msgstr "Lettura"
+
+msgid "Attachment"
+msgstr "Allegato"
 
 #, fuzzy
 msgid "With attachments"
@@ -3936,11 +3914,9 @@ msgstr ""
 msgid "me"
 msgstr "io"
 
-msgid "Due"
-msgstr "Scadenza"
-
-msgid "Drag to resize, double-click for the usual width"
-msgstr "Trascina per ridimensionare, doppio clic per la larghezza normale"
+#, fuzzy
+msgid "Replied"
+msgstr "Rispondi"
 
 #, fuzzy
 msgid "Forwarded"

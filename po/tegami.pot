@@ -1377,36 +1377,6 @@ msgstr ""
 msgid "Signature"
 msgstr ""
 
-msgid "Replied"
-msgstr ""
-
-msgid "Sender"
-msgstr ""
-
-msgid "Recipients"
-msgstr ""
-
-msgid "Correspondents"
-msgstr ""
-
-msgid "Subject"
-msgstr ""
-
-msgid "Attachment"
-msgstr ""
-
-msgid "Importance"
-msgstr ""
-
-msgid "Account"
-msgstr ""
-
-msgid "Due date"
-msgstr ""
-
-msgid "Date"
-msgstr ""
-
 msgid "Newest messages"
 msgstr ""
 
@@ -2105,6 +2075,9 @@ msgstr ""
 msgid "From name"
 msgstr ""
 
+msgid "Subject"
+msgstr ""
+
 msgid "To or Cc"
 msgstr ""
 
@@ -2160,6 +2133,9 @@ msgid "Add filter"
 msgstr ""
 
 msgid "Name (optional)"
+msgstr ""
+
+msgid "Account"
 msgstr ""
 
 msgid "If"
@@ -2470,6 +2446,9 @@ msgid "Any"
 msgstr ""
 
 msgid "Reading"
+msgstr ""
+
+msgid "Attachment"
 msgstr ""
 
 msgid "With attachments"
@@ -3466,10 +3445,7 @@ msgstr ""
 msgid "me"
 msgstr ""
 
-msgid "Due"
-msgstr ""
-
-msgid "Drag to resize, double-click for the usual width"
+msgid "Replied"
 msgstr ""
 
 msgid "Forwarded"

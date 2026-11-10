@@ -1496,36 +1496,6 @@ msgstr "S'estan baixant els adjunts…"
 msgid "Signature"
 msgstr "Signatura"
 
-msgid "Replied"
-msgstr "Respost"
-
-msgid "Sender"
-msgstr "Remitent"
-
-msgid "Recipients"
-msgstr "Destinataris"
-
-msgid "Correspondents"
-msgstr "Corresponsals"
-
-msgid "Subject"
-msgstr "Assumpte"
-
-msgid "Attachment"
-msgstr "Adjunt"
-
-msgid "Importance"
-msgstr "Importància"
-
-msgid "Account"
-msgstr "Compte"
-
-msgid "Due date"
-msgstr "Data de venciment"
-
-msgid "Date"
-msgstr "Data"
-
 #, fuzzy
 msgid "Newest messages"
 msgstr "Missatge més nou primer"
@@ -2315,6 +2285,9 @@ msgstr "Adreça del remitent"
 msgid "From name"
 msgstr "Nom del remitent"
 
+msgid "Subject"
+msgstr "Assumpte"
+
 msgid "To or Cc"
 msgstr "A o Cc"
 
@@ -2371,6 +2344,9 @@ msgstr "Afegeix un filtre"
 
 msgid "Name (optional)"
 msgstr "Nom (opcional)"
+
+msgid "Account"
+msgstr "Compte"
 
 msgid "If"
 msgstr ""
@@ -2710,6 +2686,9 @@ msgstr "Qualsevol etiqueta"
 
 msgid "Reading"
 msgstr "Lectura"
+
+msgid "Attachment"
+msgstr "Adjunt"
 
 #, fuzzy
 msgid "With attachments"
@@ -3851,11 +3830,8 @@ msgstr "Què cerca això"
 msgid "me"
 msgstr "jo"
 
-msgid "Due"
-msgstr "Venciment"
-
-msgid "Drag to resize, double-click for the usual width"
-msgstr "Arrossega per redimensionar, doble clic per a l'amplada habitual"
+msgid "Replied"
+msgstr "Respost"
 
 msgid "Forwarded"
 msgstr "Reenviat"

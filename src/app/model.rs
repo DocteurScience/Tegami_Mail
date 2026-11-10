@@ -341,17 +341,8 @@ pub(crate) struct AppModel {
     pub(super) list_count: String,
     /// Lines of preview text per message-list row (1–3).
     pub(super) preview_lines: u32,
-    /// The columns of a single-line list, in order (#334).
-    pub(super) list_columns: Vec<config::ListColumn>,
-    /// Headings over them, which sort the list when clicked (#334).
-    pub(super) list_headings: bool,
-    /// A single line too wide for the pane scrolls rather than fitting its
-    /// columns (#443).
-    pub(super) list_column_scroll: bool,
     /// A search is showing its results, which span every account.
     pub(super) search_active: bool,
-    /// The widths columns were dragged to by their headings (#334).
-    pub(super) list_column_widths: std::collections::HashMap<config::ListColumn, i32>,
     /// The keyboard-shortcut reference, while it is open — so the shortcut that
     /// opens it closes it again.
     pub(super) shortcuts_win: Option<adw::Window>,

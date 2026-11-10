@@ -1504,36 +1504,6 @@ msgstr "Baixando anexos…"
 msgid "Signature"
 msgstr "Assinatura"
 
-msgid "Replied"
-msgstr "Respondida"
-
-msgid "Sender"
-msgstr "Remetente"
-
-msgid "Recipients"
-msgstr "Destinatários"
-
-msgid "Correspondents"
-msgstr "Correspondentes"
-
-msgid "Subject"
-msgstr "Assunto"
-
-msgid "Attachment"
-msgstr "Anexo"
-
-msgid "Importance"
-msgstr "Importância"
-
-msgid "Account"
-msgstr "Conta"
-
-msgid "Due date"
-msgstr "Data de vencimento"
-
-msgid "Date"
-msgstr "Data"
-
 #, fuzzy
 msgid "Newest messages"
 msgstr "Mensagem mais recente primeiro"
@@ -2316,6 +2286,9 @@ msgstr "Endereço do remetente"
 msgid "From name"
 msgstr "Nome do remetente"
 
+msgid "Subject"
+msgstr "Assunto"
+
 msgid "To or Cc"
 msgstr "Para ou Cc"
 
@@ -2372,6 +2345,9 @@ msgstr "Adicionar filtro"
 
 msgid "Name (optional)"
 msgstr "Nome (opcional)"
+
+msgid "Account"
+msgstr "Conta"
 
 msgid "If"
 msgstr ""
@@ -2711,6 +2687,9 @@ msgstr "Qualquer etiqueta"
 
 msgid "Reading"
 msgstr "Leitura"
+
+msgid "Attachment"
+msgstr "Anexo"
 
 #, fuzzy
 msgid "With attachments"
@@ -3853,13 +3832,8 @@ msgstr "Escopo desta pesquisa"
 msgid "me"
 msgstr "eu"
 
-msgid "Due"
-msgstr "Prazo"
-
-msgid "Drag to resize, double-click for the usual width"
-msgstr ""
-"Arraste para redimensionar; clique duas vezes para restaurar a largura "
-"habitual"
+msgid "Replied"
+msgstr "Respondida"
 
 msgid "Forwarded"
 msgstr "Encaminhada"

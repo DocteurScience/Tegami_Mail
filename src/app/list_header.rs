@@ -22,12 +22,11 @@ use super::AppModelWidgets;
 pub(super) struct ListHeaderWidgets {
     sort_display: SortDisplayPopover,
     sort_button: gtk::MenuButton,
-    sort: gtk::gio::SimpleAction,
     pub(super) filters: FiltersUi,
 }
 
-/// The orders the list header offers, by their keys in `SortOrder`. The
-/// column headings can set more (#443); none of these is ticked then.
+/// The orders the list header offers, by their keys in `SortOrder`. A sort
+/// saved by an earlier version may be none of these: none is ticked then.
 const SORT_ORDERS: [(&str, &str); 4] = [
     (i18n_noop("Date (Newest first)"), "date_newest"),
     (i18n_noop("Date (Oldest first)"), "date_oldest"),
@@ -87,8 +86,8 @@ impl SortDisplayPopover {
             column.append(&radio);
             radios.push((key, radio));
         }
-        // The headings sort through the same action, so the radios follow
-        // its state wherever the change came from.
+        // The radios follow the action's state wherever the change came
+        // from.
         let show_sort = move |key: Option<String>| {
             let key = key.unwrap_or_default();
             match radios.iter().find(|(k, _)| *k == key) {
@@ -255,14 +254,6 @@ impl AppModel {
                 }
                 self.list_count = text;
             }
-            AppMsg::ListColumnWidths(widths) => {
-                pref!(self.list_column_widths = widths);
-            }
-            AppMsg::ListSortChanged(key) => {
-                if let Some(lh) = self.list_header_widgets.get() {
-                    lh.sort.set_state(&key.to_variant());
-                }
-            }
             _ => unreachable!("not routed to on_list_header"),
         }
     }
@@ -354,7 +345,6 @@ impl AppModel {
                 sender.input_sender(),
             ),
             sort_button: widgets.list_filter_btn.clone(),
-            sort: sort_action,
             filters,
         });
         self.sync_show_checks();

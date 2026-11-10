@@ -2,7 +2,7 @@
 //! classes its host widget wears. Runs on every bind; kept cheap.
 
 use super::faces::recipient_names;
-use super::headings::{due_label, pill_chip, pill_name};
+use super::labels::{due_label, pill_chip, pill_name};
 use super::row::Row;
 use super::shared::{RowLook, RowShared};
 use super::{column_width, RowData, LINE_ICON_PX};
@@ -58,8 +58,6 @@ impl Row {
             content.push("single-line");
         }
         w.content.set_css_classes(&content);
-        w.content
-            .set_size_request(if single { look.min_width } else { -1 }, -1);
     }
 
     /// The circle: its visibility, the account ring, and the face.

@@ -277,30 +277,16 @@ pub(crate) struct MessageList {
     /// One line per message (#334): set by the Layout setting, or by the
     /// pane's width when it is Automatic.
     single_line: bool,
-    /// The single-line columns, in order, as the setting has them (#334).
+    /// The single-line columns, in order (#334): the default ones.
     columns: Vec<crate::config::ListColumn>,
     /// The Microsoft 365 accounts: only their mail has a due date, so the
     /// Due column takes room only while the list holds some of it.
     graph_accounts: std::collections::HashSet<u32>,
     /// The list holds mail of one of `graph_accounts`.
     graph_in_view: bool,
-    /// The sort runs the other way: a heading clicked twice (#334).
-    sort_reversed: bool,
     day_headings: bool,
-    /// Show the column headings over a single-line list (#334).
-    headings: bool,
-    headings_bar: gtk::Box,
-    /// The widths columns were dragged to by their headings (#334).
-    widths: std::collections::HashMap<crate::config::ListColumn, i32>,
-    /// Columns keep their widths and a list too narrow for them scrolls
-    /// sideways; off, the name columns narrow to fit the pane (#443).
-    column_scroll: bool,
     /// How wide the rows are, for fitting the columns into it.
     pane_width: i32,
-    /// The headings' sized cells, which a drag resizes in place.
-    heading_bins: std::cell::RefCell<
-        std::collections::HashMap<crate::config::ListColumn, crate::ui::column_bin::ColumnBin>,
-    >,
 }
 
 #[cfg(test)]

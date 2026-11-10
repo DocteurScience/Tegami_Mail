@@ -1,7 +1,7 @@
 //! Characterization tests for the row's pure helpers, quirks included.
 
 use super::faces::{first_recipient_addr, recipient_names};
-use super::headings::due_label;
+use super::labels::due_label;
 use super::{default_width, resizable};
 use crate::config::ListColumn;
 
@@ -29,17 +29,16 @@ fn the_first_recipient_address_is_the_first_entry() {
 }
 
 #[test]
-fn column_widths_and_resizing() {
-    let widths: Vec<(ListColumn, i32, bool)> = ListColumn::ALL
+fn column_widths() {
+    let widths: Vec<(ListColumn, i32, bool)> = ListColumn::DEFAULT
         .iter()
         .map(|&c| (c, default_width(c), resizable(c)))
         .collect();
     assert_eq!(
         format!("{widths:?}"),
         "[(Star, -1, false), (Replied, -1, false), (Sender, 160, true), \
-         (Recipients, 160, true), (Correspondents, 200, true), (Subject, -1, false), \
-         (Tags, 90, true), (Attachment, -1, false), (Importance, -1, false), \
-         (Account, 110, true), (Due, -1, true), (Date, -1, true)]"
+         (Subject, -1, false), (Tags, 90, true), (Attachment, -1, false), \
+         (Date, -1, true)]"
     );
 }
 

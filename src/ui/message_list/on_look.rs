@@ -1,12 +1,10 @@
-//! How the list looks: the row look, columns and headings, sorting, the
-//! bars, swipes and the palette.
+//! How the list looks: the row look, columns, sorting, the bars, swipes
+//! and the palette.
 
 use super::layout::schedule_midnight_refresh;
-use super::sort::{column_sort, SortOrder};
-use super::types::{MessageListInput, MessageListOutput};
+use super::sort::SortOrder;
 use super::MessageList;
 use adw::prelude::*;
-use gtk::glib;
 use relm4::prelude::*;
 
 impl MessageList {
@@ -28,21 +26,6 @@ impl MessageList {
                 self.list_view.remove_css_class("single-line");
             }
             self.sync_look();
-        }
-    }
-
-    pub(super) fn on_set_columns(&mut self, columns: Vec<crate::config::ListColumn>) {
-        if self.columns != columns {
-            // The Correspondents column is worked out by the rebuild.
-            let people = |c: &[crate::config::ListColumn]| {
-                c.contains(&crate::config::ListColumn::Correspondents)
-            };
-            let rebuild = people(&columns) != people(&self.columns);
-            self.columns = columns;
-            self.sync_look();
-            if rebuild {
-                self.queue_rebuild(true);
-            }
         }
     }
 
@@ -141,105 +124,21 @@ impl MessageList {
     }
 
     pub(super) fn on_set_sort(&mut self, order: SortOrder) {
-        if self.sort != order || self.sort_reversed {
+        if self.sort != order {
             self.sort = order;
-            self.sort_reversed = false;
             self.rebuild();
             self.scroll_top();
-            self.sync_headings();
-        }
-    }
-
-    pub(super) fn on_resize_column(
-        &mut self,
-        column: crate::config::ListColumn,
-        width: Option<i32>,
-        done: bool,
-        sender: &ComponentSender<Self>,
-    ) {
-        match width {
-            Some(px) => self.widths.insert(column, px),
-            None => self.widths.remove(&column),
-        };
-        // The rows follow every step; the headings are left alone
-        // while their handle is held, as rebuilding them would drop
-        // it mid-drag. It has moved its own heading already.
-        let min_width = self.row_min_width();
-        let fitted = self.fitted_widths();
-        for (c, bin) in self.heading_bins.borrow().iter() {
-            bin.set_width(
-                fitted
-                    .get(c)
-                    .copied()
-                    .unwrap_or_else(|| crate::ui::message_row::default_width(*c)),
-            );
-        }
-        self.headings_bar.set_size_request(min_width, -1);
-        {
-            let mut look = self.shared.look.borrow_mut();
-            look.widths = fitted;
-            look.min_width = min_width;
-        }
-        self.shared.refresh_all();
-        if done {
-            let input = self.shared.input.clone();
-            glib::idle_add_local_once(move || {
-                let _ = input.send(MessageListInput::RefreshHeadings);
-            });
-            let _ = sender.output(MessageListOutput::ColumnWidths(self.widths.clone()));
-        }
-    }
-
-    pub(super) fn on_set_column_widths(
-        &mut self,
-        widths: std::collections::HashMap<crate::config::ListColumn, i32>,
-    ) {
-        if self.widths != widths {
-            self.widths = widths;
-            self.sync_look();
-        }
-    }
-
-    pub(super) fn on_set_column_scroll(&mut self, on: bool) {
-        if self.column_scroll != on {
-            self.column_scroll = on;
-            self.sync_look();
         }
     }
 
     pub(super) fn on_pane_width(&mut self, width: i32) {
         if self.pane_width != width {
-            let fits = self.single_line && !self.column_scroll;
-            let before = fits.then(|| self.fitted_widths());
+            let before = self.single_line.then(|| self.fitted_widths());
             self.pane_width = width;
             if before.is_some_and(|b| b != self.fitted_widths()) {
                 self.sync_look();
             }
         }
-    }
-
-    pub(super) fn on_sort_by_column(
-        &mut self,
-        column: crate::config::ListColumn,
-        sender: &ComponentSender<Self>,
-    ) {
-        let Some(order) = column_sort(column, self.show_recipient) else {
-            return;
-        };
-        match (order, self.sort) {
-            // Date has an order each way of its own.
-            (SortOrder::DateNewest, SortOrder::DateNewest) => self.sort = SortOrder::DateOldest,
-            (SortOrder::DateNewest, SortOrder::DateOldest) => self.sort = SortOrder::DateNewest,
-            (order, current) if order == current => self.sort_reversed = !self.sort_reversed,
-            (order, _) => {
-                self.sort = order;
-                self.sort_reversed = false;
-            }
-        }
-        self.rebuild();
-        self.scroll_top();
-        self.sync_headings();
-        let _ = sender.output(MessageListOutput::SortChanged(self.sort.key()));
     }
 
     pub(super) fn on_set_swipe_enabled(&mut self, on: bool) {

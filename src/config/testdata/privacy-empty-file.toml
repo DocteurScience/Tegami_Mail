@@ -28,17 +28,6 @@ spellcheck = true
 spellcheck_langs = ""
 app_theme = "system"
 preview_lines = 1
-list_columns = [
-    "star",
-    "replied",
-    "sender",
-    "subject",
-    "tags",
-    "attachment",
-    "date",
-]
-list_headings = false
-list_column_scroll = false
 single_key_shortcuts = false
 gmail_keys = false
 keep_downloads_days = 0
@@ -57,8 +46,6 @@ files_action = "ask"
 files_large = "ask"
 files_limit_mb = 20
 folder_sort = "custom"
-
-[list_column_widths]
 
 [print]
 page_numbers = true

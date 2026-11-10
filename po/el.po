@@ -1514,36 +1514,6 @@ msgstr "Λήψη συνημμένων…"
 msgid "Signature"
 msgstr "Υπογραφή"
 
-msgid "Replied"
-msgstr "Απαντήθηκε"
-
-msgid "Sender"
-msgstr "Αποστολέας"
-
-msgid "Recipients"
-msgstr "Παραλήπτες"
-
-msgid "Correspondents"
-msgstr "Αλληλογραφούντες"
-
-msgid "Subject"
-msgstr "Θέμα"
-
-msgid "Attachment"
-msgstr "Συνημμένο"
-
-msgid "Importance"
-msgstr "Σπουδαιότητα"
-
-msgid "Account"
-msgstr "Λογαριασμός"
-
-msgid "Due date"
-msgstr "Ημερομηνία λήξης"
-
-msgid "Date"
-msgstr "Ημερομηνία"
-
 #, fuzzy
 msgid "Newest messages"
 msgstr "Νεότερο μήνυμα πρώτο"
@@ -2345,6 +2315,9 @@ msgstr "Διεύθυνση αποστολέα"
 msgid "From name"
 msgstr "Όνομα αποστολέα"
 
+msgid "Subject"
+msgstr "Θέμα"
+
 msgid "To or Cc"
 msgstr "Προς ή Κοιν."
 
@@ -2401,6 +2374,9 @@ msgstr "Προσθήκη φίλτρου"
 
 msgid "Name (optional)"
 msgstr "Όνομα (προαιρετικό)"
+
+msgid "Account"
+msgstr "Λογαριασμός"
 
 msgid "If"
 msgstr ""
@@ -2746,6 +2722,9 @@ msgstr "Οποιαδήποτε ετικέτα"
 
 msgid "Reading"
 msgstr "Ανάγνωση"
+
+msgid "Attachment"
+msgstr "Συνημμένο"
 
 #, fuzzy
 msgid "With attachments"
@@ -3911,11 +3890,8 @@ msgstr "Τι αναζητά αυτή η επιλογή"
 msgid "me"
 msgstr "εγώ"
 
-msgid "Due"
-msgstr "Λήξη"
-
-msgid "Drag to resize, double-click for the usual width"
-msgstr "Σύρετε για αλλαγή μεγέθους, κάντε διπλό κλικ για το συνηθισμένο πλάτος"
+msgid "Replied"
+msgstr "Απαντήθηκε"
 
 msgid "Forwarded"
 msgstr "Προωθήθηκε"

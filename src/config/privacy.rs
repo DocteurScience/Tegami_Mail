@@ -5,7 +5,7 @@
 use serde::{Deserialize, Serialize};
 use std::path::PathBuf;
 
-use super::look::{default_list_columns, AppTheme, ReadingPane};
+use super::look::{AppTheme, ReadingPane};
 use super::prefs::{
     default_files_limit_mb, default_undo_send_secs, ComposeFormat, FilesAction, FilesLarge,
     PrintOptions, ReadMark, ReceiptPolicy, ReturnedReceipts, SignaturePosition,
@@ -157,22 +157,6 @@ pub(crate) struct PrivacyFile {
     /// preview off entirely, and stops it being fetched.
     #[serde(default = "default_preview_lines")]
     pub(crate) preview_lines: u32,
-    /// The columns a single-line list shows, in order, by name (#334).
-    /// Names, not the enum, so a column a later version adds does not make
-    /// an older one throw the whole file away.
-    #[serde(default = "default_list_columns")]
-    pub(crate) list_columns: Vec<String>,
-    /// Headings over those columns, which sort the list when clicked.
-    #[serde(default)]
-    pub(crate) list_headings: bool,
-    /// Columns keep their widths and a single line too wide for the pane
-    /// scrolls sideways (#443). Off, the default and the way it was, the
-    /// name columns narrow to fit.
-    #[serde(default)]
-    pub(crate) list_column_scroll: bool,
-    /// The widths columns were dragged to, in pixels, by column name.
-    #[serde(default)]
-    pub(crate) list_column_widths: std::collections::BTreeMap<String, i32>,
     /// Single-key shortcuts (j/k, r, a, d…) without a modifier. On for a new
     /// install, so the menus' key hints name keys that work; a file from
     /// before the default changed keeps its own choice.
@@ -303,10 +287,6 @@ impl Default for PrivacyFile {
             spellcheck_langs: String::new(),
             app_theme: AppTheme::default(),
             preview_lines: default_preview_lines(),
-            list_columns: default_list_columns(),
-            list_headings: false,
-            list_column_scroll: false,
-            list_column_widths: Default::default(),
             single_key_shortcuts: true,
             gmail_keys: false,
             keep_downloads_days: 0,

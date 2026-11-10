@@ -1487,36 +1487,6 @@ msgstr "Téléchargement des pièces jointes…"
 msgid "Signature"
 msgstr "Signature"
 
-msgid "Replied"
-msgstr "Répondu"
-
-msgid "Sender"
-msgstr "Expéditeur"
-
-msgid "Recipients"
-msgstr "Destinataires"
-
-msgid "Correspondents"
-msgstr "Correspondants"
-
-msgid "Subject"
-msgstr "Objet"
-
-msgid "Attachment"
-msgstr "Pièce jointe"
-
-msgid "Importance"
-msgstr "Importance"
-
-msgid "Account"
-msgstr "Compte"
-
-msgid "Due date"
-msgstr "Date d’échéance"
-
-msgid "Date"
-msgstr "Date"
-
 msgid "Newest messages"
 msgstr "Messages les plus récents"
 
@@ -2275,6 +2245,9 @@ msgstr "Adresse de l’expéditeur"
 msgid "From name"
 msgstr "Nom de l’expéditeur"
 
+msgid "Subject"
+msgstr "Objet"
+
 msgid "To or Cc"
 msgstr "À ou Cc"
 
@@ -2331,6 +2304,9 @@ msgstr "Ajouter un filtre"
 
 msgid "Name (optional)"
 msgstr "Nom (facultatif)"
+
+msgid "Account"
+msgstr "Compte"
 
 msgid "If"
 msgstr "Si"
@@ -2662,6 +2638,9 @@ msgstr "Indifférent"
 
 msgid "Reading"
 msgstr "Lecture"
+
+msgid "Attachment"
+msgstr "Pièce jointe"
 
 msgid "With attachments"
 msgstr "Avec"
@@ -3786,12 +3765,8 @@ msgstr "Ce qui est recherché"
 msgid "me"
 msgstr "moi"
 
-msgid "Due"
-msgstr "Échéance"
-
-msgid "Drag to resize, double-click for the usual width"
-msgstr ""
-"Faites glisser pour redimensionner, double-cliquez pour la largeur habituelle"
+msgid "Replied"
+msgstr "Répondu"
 
 msgid "Forwarded"
 msgstr "Transféré"

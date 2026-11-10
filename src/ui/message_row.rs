@@ -16,7 +16,7 @@ use crate::models::Message;
 
 mod build;
 mod faces;
-mod headings;
+mod labels;
 mod model;
 mod palette;
 mod refresh;
@@ -25,7 +25,7 @@ mod shared;
 mod swipe;
 
 pub(crate) use faces::recipient_names;
-pub(crate) use headings::{chip_box, fill_headings, pill_chip, tag_menu_entries};
+pub(crate) use labels::{chip_box, pill_chip, tag_menu_entries};
 pub(crate) use model::{MessageModel, RowItem};
 pub(crate) use shared::{
     factory, header_factory, make_spare_rows, RowLook, RowShared, SnoozedRows,

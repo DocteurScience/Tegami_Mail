@@ -1568,41 +1568,6 @@ msgid "Signature"
 msgstr "Aláírás"
 
 #, fuzzy
-msgid "Replied"
-msgstr "Válasz"
-
-#, fuzzy
-msgid "Sender"
-msgstr "Feladók"
-
-#, fuzzy
-msgid "Recipients"
-msgstr "Címzettek elrejtése"
-
-msgid "Correspondents"
-msgstr ""
-
-msgid "Subject"
-msgstr "Tárgy"
-
-#, fuzzy
-msgid "Attachment"
-msgstr "Mellékletek"
-
-#, fuzzy
-msgid "Importance"
-msgstr "Kulcs importálása"
-
-msgid "Account"
-msgstr "Fiók"
-
-msgid "Due date"
-msgstr ""
-
-msgid "Date"
-msgstr ""
-
-#, fuzzy
 msgid "Newest messages"
 msgstr "Legújabb üzenet elöl"
 
@@ -2388,6 +2353,9 @@ msgstr "Feladó címe"
 msgid "From name"
 msgstr "Feladó neve"
 
+msgid "Subject"
+msgstr "Tárgy"
+
 #, fuzzy
 msgid "To or Cc"
 msgstr " vagy "
@@ -2449,6 +2417,9 @@ msgstr "Szűrő hozzáadása"
 
 msgid "Name (optional)"
 msgstr "Név (opcionális)"
+
+msgid "Account"
+msgstr "Fiók"
 
 msgid "If"
 msgstr ""
@@ -2816,6 +2787,10 @@ msgstr ""
 
 msgid "Reading"
 msgstr "Olvasás"
+
+#, fuzzy
+msgid "Attachment"
+msgstr "Mellékletek"
 
 #, fuzzy
 msgid "With attachments"
@@ -4001,11 +3976,9 @@ msgstr ""
 msgid "me"
 msgstr "Név"
 
-msgid "Due"
-msgstr ""
-
-msgid "Drag to resize, double-click for the usual width"
-msgstr ""
+#, fuzzy
+msgid "Replied"
+msgstr "Válasz"
 
 #, fuzzy
 msgid "Forwarded"

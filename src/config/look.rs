@@ -82,23 +82,9 @@ pub(crate) enum ListColumn {
 }
 
 impl ListColumn {
-    pub(crate) const ALL: [ListColumn; 12] = [
-        ListColumn::Star,
-        ListColumn::Replied,
-        ListColumn::Sender,
-        ListColumn::Recipients,
-        ListColumn::Correspondents,
-        ListColumn::Subject,
-        ListColumn::Tags,
-        ListColumn::Attachment,
-        ListColumn::Importance,
-        ListColumn::Account,
-        ListColumn::Due,
-        ListColumn::Date,
-    ];
-
-    /// The columns a single line shows until they are changed: the ones it
-    /// had before they could be, and the replied arrows (#454).
+    /// The columns a single line shows: the ones it had before they could
+    /// be chosen, and the replied arrows (#454). The choice went with the
+    /// list's settings (docs/DESIGN.md, "Removed or moved").
     pub(crate) const DEFAULT: [ListColumn; 7] = [
         ListColumn::Star,
         ListColumn::Replied,
@@ -108,103 +94,6 @@ impl ListColumn {
         ListColumn::Attachment,
         ListColumn::Date,
     ];
-
-    /// The stable name written to `privacy.toml`.
-    pub(crate) fn key(self) -> &'static str {
-        match self {
-            ListColumn::Star => "star",
-            ListColumn::Replied => "replied",
-            ListColumn::Sender => "sender",
-            ListColumn::Recipients => "recipients",
-            ListColumn::Correspondents => "correspondents",
-            ListColumn::Subject => "subject",
-            ListColumn::Tags => "tags",
-            ListColumn::Attachment => "attachment",
-            ListColumn::Importance => "importance",
-            ListColumn::Account => "account",
-            ListColumn::Due => "due",
-            ListColumn::Date => "date",
-        }
-    }
-
-    pub(crate) fn from_key(key: &str) -> Option<ListColumn> {
-        ListColumn::ALL.iter().copied().find(|c| c.key() == key)
-    }
-
-    /// The untranslated label (callers pass it through `i18n`).
-    pub(crate) fn label(self) -> &'static str {
-        match self {
-            ListColumn::Star => crate::i18n::i18n_noop("Star"),
-            ListColumn::Replied => crate::i18n::i18n_noop("Replied"),
-            ListColumn::Sender => crate::i18n::i18n_noop("Sender"),
-            ListColumn::Recipients => crate::i18n::i18n_noop("Recipients"),
-            ListColumn::Correspondents => crate::i18n::i18n_noop("Correspondents"),
-            ListColumn::Subject => crate::i18n::i18n_noop("Subject"),
-            ListColumn::Tags => crate::i18n::i18n_noop("Tags"),
-            ListColumn::Attachment => crate::i18n::i18n_noop("Attachment"),
-            ListColumn::Importance => crate::i18n::i18n_noop("Importance"),
-            ListColumn::Account => crate::i18n::i18n_noop("Account"),
-            ListColumn::Due => crate::i18n::i18n_noop("Due date"),
-            ListColumn::Date => crate::i18n::i18n_noop("Date"),
-        }
-    }
-
-    /// The shown columns, in order, from their saved names. Names this
-    /// version does not know are skipped, and the subject is always there:
-    /// it is the column that takes the room the others leave.
-    pub(crate) fn from_keys(keys: &[String]) -> Vec<ListColumn> {
-        let mut out: Vec<ListColumn> = Vec::new();
-        for c in keys.iter().filter_map(|k| ListColumn::from_key(k)) {
-            if !out.contains(&c) {
-                out.push(c);
-            }
-        }
-        if !out.contains(&ListColumn::Subject) {
-            let at = out
-                .iter()
-                .position(|c| *c == ListColumn::Sender)
-                .map(|i| i + 1)
-                .unwrap_or(0);
-            out.insert(at, ListColumn::Subject);
-        }
-        out
-    }
-
-    pub(crate) fn to_keys(columns: &[ListColumn]) -> Vec<String> {
-        columns.iter().map(|c| c.key().to_string()).collect()
-    }
-}
-
-pub(super) fn default_list_columns() -> Vec<String> {
-    ListColumn::to_keys(&ListColumn::DEFAULT)
-}
-
-/// The widths single-line columns were dragged to (#334), by column.
-pub(crate) fn load_list_column_widths() -> std::collections::HashMap<ListColumn, i32> {
-    list_column_widths_from(&load_privacy().list_column_widths)
-}
-
-pub(super) fn list_column_widths_from(
-    saved: &std::collections::BTreeMap<String, i32>,
-) -> std::collections::HashMap<ListColumn, i32> {
-    saved
-        .iter()
-        .filter_map(|(k, px)| Some((ListColumn::from_key(k)?, (*px).clamp(32, 800))))
-        .collect()
-}
-
-pub(crate) fn list_column_widths_to(
-    widths: &std::collections::HashMap<ListColumn, i32>,
-) -> std::collections::BTreeMap<String, i32> {
-    widths
-        .iter()
-        .map(|(c, px)| (c.key().to_string(), *px))
-        .collect()
-}
-
-/// The single-line list's columns, in order (#334).
-pub(crate) fn load_list_columns() -> Vec<ListColumn> {
-    ListColumn::from_keys(&load_privacy().list_columns)
 }
 
 /// Lines of message text shown under the subject in the list; 0 means previews

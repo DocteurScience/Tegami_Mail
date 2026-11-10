@@ -584,11 +584,9 @@ impl MessageList {
 
     /// Sort the matches by the list's order: by tag name (each message's
     /// tag names worked out once, not at every comparison) or by
-    /// `message_cmp`, reversed when the sort is.
+    /// `message_cmp`.
     fn sort_matches(&self, matches: &mut Vec<Rc<Message>>) {
         let sort = self.sort;
-        let reversed = self.sort_reversed;
-        let flip = |order: std::cmp::Ordering| if reversed { order.reverse() } else { order };
         if sort == SortOrder::Tags {
             let tags = self.shared.tags.borrow();
             let mut keyed: Vec<(String, Rc<Message>)> = matches
@@ -596,11 +594,11 @@ impl MessageList {
                 .map(|m| (tag_sort_key(&m, &tags), m))
                 .collect();
             keyed.sort_by(|(ka, a), (kb, b)| {
-                flip(text_key_cmp(ka, kb).then(b.timestamp.cmp(&a.timestamp)))
+                text_key_cmp(ka, kb).then(b.timestamp.cmp(&a.timestamp))
             });
             *matches = keyed.into_iter().map(|(_, m)| m).collect();
         } else {
-            matches.sort_by(|a, b| flip(message_cmp(a, b, sort)));
+            matches.sort_by(|a, b| message_cmp(a, b, sort));
         }
     }
 
@@ -609,14 +607,12 @@ impl MessageList {
     /// conversations are in date order beneath, newest first, from the
     /// sort before grouping.
     fn sort_by_correspondents(&self, grouped: Vec<Group>) -> Vec<Group> {
-        let reversed = self.sort_reversed;
-        let flip = |order: std::cmp::Ordering| if reversed { order.reverse() } else { order };
         let people: Vec<String> = grouped
             .iter()
             .map(|(k, msgs)| self.people_of(k, msgs).to_lowercase())
             .collect();
         let mut by: Vec<usize> = (0..grouped.len()).collect();
-        by.sort_by(|a, b| flip(text_key_cmp(&people[*a], &people[*b])));
+        by.sort_by(|a, b| text_key_cmp(&people[*a], &people[*b]));
         let mut slots: Vec<Option<Group>> = grouped.into_iter().map(Some).collect();
         by.into_iter().filter_map(|i| slots[i].take()).collect()
     }

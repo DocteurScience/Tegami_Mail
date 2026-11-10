@@ -129,9 +129,8 @@ impl MessageList {
         let mut graph: Vec<&u32> = self.graph_accounts.iter().collect();
         graph.sort();
         format!(
-            "{:?}{}{}{:?}{:?}{:?}{:?}{}",
+            "{:?}{}{:?}{:?}{:?}{:?}{}",
             self.sort,
-            self.sort_reversed,
             self.threading,
             self.columns,
             self.quick,

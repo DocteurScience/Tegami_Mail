@@ -1597,41 +1597,6 @@ msgid "Signature"
 msgstr "Podpis"
 
 #, fuzzy
-msgid "Replied"
-msgstr "Odpowiedz"
-
-#, fuzzy
-msgid "Sender"
-msgstr "Nadawcy"
-
-#, fuzzy
-msgid "Recipients"
-msgstr "Ukryj odbiorców"
-
-msgid "Correspondents"
-msgstr ""
-
-msgid "Subject"
-msgstr "Temat"
-
-#, fuzzy
-msgid "Attachment"
-msgstr "Załączniki"
-
-#, fuzzy
-msgid "Importance"
-msgstr "Importuj klucz"
-
-msgid "Account"
-msgstr "Konto"
-
-msgid "Due date"
-msgstr ""
-
-msgid "Date"
-msgstr ""
-
-#, fuzzy
 msgid "Newest messages"
 msgstr "Najnowsza wiadomość na początku"
 
@@ -2431,6 +2396,9 @@ msgstr "Adres e-mail"
 msgid "From name"
 msgstr "Imię"
 
+msgid "Subject"
+msgstr "Temat"
+
 #, fuzzy
 msgid "To or Cc"
 msgstr " lub "
@@ -2494,6 +2462,9 @@ msgstr "Dodaj filtr"
 
 msgid "Name (optional)"
 msgstr "Nazwa (opcjonalnie)"
+
+msgid "Account"
+msgstr "Konto"
 
 msgid "If"
 msgstr ""
@@ -2861,6 +2832,10 @@ msgstr ""
 
 msgid "Reading"
 msgstr "Czytanie"
+
+#, fuzzy
+msgid "Attachment"
+msgstr "Załączniki"
 
 #, fuzzy
 msgid "With attachments"
@@ -4048,11 +4023,9 @@ msgstr ""
 msgid "me"
 msgstr "Nazwa"
 
-msgid "Due"
-msgstr ""
-
-msgid "Drag to resize, double-click for the usual width"
-msgstr ""
+#, fuzzy
+msgid "Replied"
+msgstr "Odpowiedz"
 
 #, fuzzy
 msgid "Forwarded"

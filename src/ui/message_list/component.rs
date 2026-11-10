@@ -1,7 +1,7 @@
 //! The message list as a relm4 component: its widget tree (view!), building
 //! it, and `update`, which routes each input to its `on_*` method.
 
-use super::init::{link_heading_scroll, watch_bottom, watch_pane_width};
+use super::init::{watch_bottom, watch_pane_width};
 
 use super::layout::{schedule_midnight_refresh, BarSlots, LIST_MIN_WIDTH};
 use super::rows::LIST_WINDOW;
@@ -42,28 +42,6 @@ impl SimpleComponent for MessageList {
                 set_orientation: gtk::Orientation::Vertical,
             },
 
-            // The single line's column headings (#334), filled by
-            // `sync_headings`; a click on one sorts by its column.
-            #[name = "headings_area"]
-            gtk::Box {
-                add_css_class: "list-headings-bar",
-                #[watch]
-                set_visible: model.single_line && model.headings,
-                // Scrolled sideways with the rows, never by itself: no bar
-                // of its own, its place set from the list's (#443).
-                #[name = "headings_scroller"]
-                gtk::ScrolledWindow {
-                    set_hexpand: true,
-                    set_hscrollbar_policy: gtk::PolicyType::External,
-                    set_vscrollbar_policy: gtk::PolicyType::Never,
-                    set_propagate_natural_height: true,
-                    #[local_ref]
-                    headings_bar -> gtk::Box {
-                        set_hexpand: true,
-                    },
-                },
-            },
-
             gtk::Overlay {
                 #[wrap(Some)]
                 #[name = "scroller"]
@@ -75,11 +53,7 @@ impl SimpleComponent for MessageList {
                     // which pushed it past half of a 1920px screen — at which point
                     // GNOME refuses to tile the window to the left/right edge. Rows
                     // ellipsize, so a narrow pane clips gracefully instead.
-                    // Automatic does not propagate it either: a single line
-                    // too wide for the pane scrolls to its columns past the
-                    // edge (#443), with a bar that says so.
-                    #[watch]
-                    set_hscrollbar_policy: if model.single_line && model.column_scroll { gtk::PolicyType::Automatic } else { gtk::PolicyType::External },
+                    set_hscrollbar_policy: gtk::PolicyType::External,
                     // The pane's own floor, now that rows no longer set one: room
                     // for a row's full actions palette (avatar + dot + the reserved
                     // actions line), so opening the palette never needs to clip —
@@ -352,10 +326,8 @@ impl SimpleComponent for MessageList {
         );
 
         let bulk_tag_btn = model.bulk_tag_btn.clone();
-        let headings_bar = model.headings_bar.clone();
         let widgets = view_output!();
         model.scroller = Some(widgets.scroller.clone());
-        link_heading_scroll(&widgets.scroller, &widgets.headings_scroller);
         watch_pane_width(&widgets.scroller, &sender);
         watch_bottom(&widgets.scroller, &sender);
         super::scrub::watch_scrollbar(&widgets.scroller, &model.shared, &sender);
@@ -430,7 +402,6 @@ impl SimpleComponent for MessageList {
                 }
             }
             MessageListInput::SetSingleLine(on) => self.on_set_single_line(on),
-            MessageListInput::SetColumns(columns) => self.on_set_columns(columns),
             MessageListInput::SetAccountNames { names, graph } => {
                 self.on_set_account_names(names, graph)
             }
@@ -501,20 +472,7 @@ impl SimpleComponent for MessageList {
             MessageListInput::BulkTagMenu => self.on_bulk_tag_menu(&sender),
             MessageListInput::ClearSelection => self.on_clear_selection(),
             MessageListInput::SetSort(order) => self.on_set_sort(order),
-            MessageListInput::ResizeColumn {
-                column,
-                width,
-                done,
-            } => self.on_resize_column(column, width, done, &sender),
-            MessageListInput::SetColumnWidths(widths) => self.on_set_column_widths(widths),
-            MessageListInput::RefreshHeadings => self.sync_headings(),
-            MessageListInput::SetColumnScroll(on) => self.on_set_column_scroll(on),
             MessageListInput::PaneWidth(width) => self.on_pane_width(width),
-            MessageListInput::SetHeadings(on) => {
-                self.headings = on;
-                self.sync_headings();
-            }
-            MessageListInput::SortByColumn(column) => self.on_sort_by_column(column, &sender),
             MessageListInput::RowActivated(index) => self.on_row_activated(index, &sender),
             MessageListInput::MarkRead(slot) => {
                 self.update_message(|m| thread_slot(m) == slot, |m| m.unread = false);

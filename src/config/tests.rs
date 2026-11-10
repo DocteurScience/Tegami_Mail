@@ -1,7 +1,7 @@
 //! Tests of privacy.toml's migrations, the keyring thread, accounts.toml
 //! and state.toml.
 
-use super::{ConfigFile, ListColumn, PrivacyFile, StateFile};
+use super::{ConfigFile, PrivacyFile, StateFile};
 
 /// The keyring thread runs what is queued in order, a call made from
 /// another thread waits behind it, one made on the keyring thread itself
@@ -60,53 +60,6 @@ fn favorites_load_in_order() {
     assert_eq!(
         new.favorites,
         vec!["b@x\tWork".to_string(), "a@x\tINBOX".to_string()]
-    );
-}
-
-/// #334: the saved columns come back in order; a name this version does
-/// not know, or a repeat, is dropped, and the subject is never missing.
-#[test]
-fn list_columns_keep_their_order_and_the_subject() {
-    let keys = |k: &[&str]| k.iter().map(|s| s.to_string()).collect::<Vec<_>>();
-    assert_eq!(
-        ListColumn::from_keys(&keys(&["date", "subject", "star", "date", "colour"])),
-        vec![ListColumn::Date, ListColumn::Subject, ListColumn::Star]
-    );
-    assert_eq!(
-        ListColumn::from_keys(&keys(&["star", "sender", "date"])),
-        vec![
-            ListColumn::Star,
-            ListColumn::Sender,
-            ListColumn::Subject,
-            ListColumn::Date
-        ]
-    );
-    assert_eq!(
-        ListColumn::from_keys(&ListColumn::to_keys(&ListColumn::DEFAULT)),
-        ListColumn::DEFAULT.to_vec()
-    );
-    // Dragged widths keep their column, within reason; an unknown
-    // column's is dropped.
-    let saved: std::collections::BTreeMap<String, i32> = [
-        ("sender".into(), 240),
-        ("date".into(), 5),
-        ("colour".into(), 90),
-    ]
-    .into_iter()
-    .collect();
-    let widths = super::list_column_widths_from(&saved);
-    assert_eq!(widths.len(), 2);
-    assert_eq!(widths[&ListColumn::Sender], 240);
-    assert_eq!(widths[&ListColumn::Date], 32);
-    assert_eq!(
-        super::list_column_widths_to(&widths).get("sender"),
-        Some(&240)
-    );
-    // A settings file from before the columns gets the default ones.
-    let old: PrivacyFile = toml::from_str("").unwrap();
-    assert_eq!(
-        ListColumn::from_keys(&old.list_columns),
-        ListColumn::DEFAULT.to_vec()
     );
 }
 

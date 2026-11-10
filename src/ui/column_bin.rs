@@ -86,11 +86,6 @@ impl ColumnBin {
         }
     }
 
-    /// The width asked for, as set (not the width given).
-    pub(super) fn asked_width(&self) -> i32 {
-        self.imp().width.get()
-    }
-
     /// Hold `child`, or nothing.
     pub(crate) fn set_child(&self, child: Option<&impl IsA<gtk::Widget>>) {
         while let Some(old) = self.first_child() {

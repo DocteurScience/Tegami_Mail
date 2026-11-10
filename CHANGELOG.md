@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+- **Removed: the single-line list's stored columns, headings, widths and
+  sideways scrolling** (docs/DESIGN.md, "Removed or moved": "Message list:
+  columns"). Their settings had gone with the Message list page, yet columns,
+  headings or widths saved by an earlier version still shaped the list with
+  the reader below or off. It now always shows the default columns, fitted to
+  the pane, without headings; the list is sorted from Sort and display.
 - **Removed: the stored choice of launcher badge** (owner's decision,
   2026-11-10, now in docs/DESIGN.md, "Removed or moved"). Its row had gone
   with the General page, yet a choice saved by an earlier version (no badge,

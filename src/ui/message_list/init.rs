@@ -98,37 +98,11 @@ impl MessageList {
             columns: crate::config::ListColumn::DEFAULT.to_vec(),
             graph_accounts: std::collections::HashSet::new(),
             graph_in_view: false,
-            sort_reversed: false,
             day_headings: false,
-            headings: false,
-            headings_bar: gtk::Box::new(gtk::Orientation::Horizontal, 8),
-            widths: std::collections::HashMap::new(),
-            column_scroll: false,
             pane_width: 0,
-            heading_bins: Default::default(),
             bulk_tag_btn: gtk::Button::new(),
         }
     }
-}
-
-/// Keep the headings and the rows scrolled sideways together.
-pub(super) fn link_heading_scroll(
-    rows_scroller: &gtk::ScrolledWindow,
-    headings: &gtk::ScrolledWindow,
-) {
-    // The headings follow the rows sideways, and a scroll over the
-    // headings moves the rows. Setting the value it already has
-    // emits nothing, so the two do not chase each other.
-    let rows = rows_scroller.hadjustment();
-    let heads = headings.hadjustment();
-    let h = heads.clone();
-    rows.connect_value_changed(move |a| h.set_value(a.value()));
-    let r = rows.clone();
-    heads.connect_value_changed(move |a| r.set_value(a.value()));
-    // The headings take their full width a frame after the rows
-    // may have scrolled: put them back in step then.
-    let r = rows.clone();
-    heads.connect_changed(move |a| a.set_value(r.value()));
 }
 
 /// Report the rows' width as the view is allocated.

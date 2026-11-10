@@ -77,22 +77,12 @@ fn check_filters_select_by_any_member() {
 }
 
 #[test]
-fn sort_orders_round_trip_through_their_keys() {
+fn sort_orders_are_read_from_their_keys() {
     for (order, key) in SortOrder::KEYS {
-        assert_eq!(order.key(), key);
         assert_eq!(SortOrder::from_key(key), order);
     }
     assert_eq!(SortOrder::from_key("nonsense"), SortOrder::DateNewest);
     assert_eq!(SortOrder::from_key("DATE_OLDEST"), SortOrder::DateNewest);
-    let downwards: Vec<_> = SortOrder::KEYS
-        .iter()
-        .filter(|(o, _)| o.downwards())
-        .map(|(_, k)| *k)
-        .collect();
-    assert_eq!(
-        downwards,
-        ["date_newest", "attachment", "importance", "replied"]
-    );
 }
 
 #[test]

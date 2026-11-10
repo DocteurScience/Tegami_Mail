@@ -76,32 +76,6 @@ pub(super) fn text_key_cmp(a: &str, b: &str) -> std::cmp::Ordering {
     (a.is_empty(), a).cmp(&(b.is_empty(), b))
 }
 
-/// The order a click on a column's heading sorts by (#334). In Sent the
-/// sender column names the recipients, and sorts by them. The star column
-/// sorts by nothing since "Starred first" went (owner's decision,
-/// 2026-11-07): the Starred quick filter does that job.
-pub(super) fn column_sort(
-    column: crate::config::ListColumn,
-    show_recipient: bool,
-) -> Option<SortOrder> {
-    use crate::config::ListColumn as C;
-    Some(match column {
-        C::Star => return None,
-        C::Sender if show_recipient => SortOrder::Recipients,
-        C::Sender => SortOrder::Sender,
-        C::Recipients => SortOrder::Recipients,
-        C::Subject => SortOrder::Subject,
-        C::Attachment => SortOrder::Attachment,
-        C::Replied => SortOrder::Replied,
-        C::Importance => SortOrder::Importance,
-        C::Account => SortOrder::Account,
-        C::Due => SortOrder::Due,
-        C::Date => SortOrder::DateNewest,
-        C::Correspondents => SortOrder::Correspondents,
-        C::Tags => SortOrder::Tags,
-    })
-}
-
 /// Lower-case the subject and strip any leading run of reply/forward prefixes
 /// (`Re:`, `Fwd:`, …) so subject-sorting keeps a topic and its replies adjacent.
 pub(super) fn normalize_subject(subject: &str) -> String {
@@ -206,25 +180,5 @@ impl SortOrder {
             .find(|(_, k)| *k == key)
             .map(|(o, _)| *o)
             .unwrap_or(SortOrder::DateNewest)
-    }
-
-    pub(crate) fn key(self) -> &'static str {
-        SortOrder::KEYS
-            .iter()
-            .find(|(o, _)| *o == self)
-            .map(|(_, k)| *k)
-            .unwrap_or("date_newest")
-    }
-
-    /// Whether the order runs from the most to the least: newest first,
-    /// attachments first and so on, against A to Z.
-    pub(super) fn downwards(self) -> bool {
-        matches!(
-            self,
-            SortOrder::DateNewest
-                | SortOrder::Attachment
-                | SortOrder::Importance
-                | SortOrder::Replied
-        )
     }
 }

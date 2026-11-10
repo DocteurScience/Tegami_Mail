@@ -781,37 +781,6 @@ flowbox.attach-flow > flowboxchild {
   opacity: 0.5;
 }
 
-/* The column headings over a single-line list (#334): laid out as a row
-   is, in the date's size and grey, the sorted column in the accent color,
-   over a hairline that parts them from the rows. */
-.list-headings-bar {
-  border-bottom: 1px solid alpha(currentColor, 0.08);
-}
-
-.message-row.single-line.list-headings {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-.list-headings .list-heading {
-  font-size: 0.82em;
-  opacity: 0.6;
-}
-
-/* A heading's resize handle: an accent line on the edge it drags, shown
-   only under the pointer. A divider at rest on every column's edge read as
-   marks on the headings' names (#443). */
-.column-resize-handle:hover {
-  background: linear-gradient(to right, transparent 2px, @accent_color 2px,
-                              @accent_color 5px, transparent 5px);
-}
-
-.list-headings .sorted .list-heading,
-.list-headings .list-heading.sorted {
-  color: @accent_color;
-  opacity: 1;
-}
-
 /* Conversation threading: count chip + compact expand/collapse chevron on the
    thread head, and an indented, accent-edged look for nested replies. */
 /* Thread heads: the conversation's message count and its expand/collapse

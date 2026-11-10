@@ -2,7 +2,7 @@
 //! day sections, quick filters and search text.
 
 use super::filters::{Period, QuickFilter, QuickFilterContext, QuickFilters};
-use super::sort::{column_sort, correspondents, message_cmp, text_key_cmp, SortOrder};
+use super::sort::{correspondents, message_cmp, text_key_cmp, SortOrder};
 use super::threading::{
     compute_thread_keys, heads_its_row, reader_conversation, row_for_reader_key, thread_slot,
     unasked_threads,
@@ -158,24 +158,10 @@ fn msg(id: u32, message_id: &str, references: &str) -> Message {
     }
 }
 
-/// #334: every sort keeps its key, a heading sorts by its column (the
-/// recipients in Sent), and due dates sort soonest first, undated last.
+/// #334: a sort key from before reads as newest first, and due dates
+/// sort soonest first, undated last.
 #[test]
-fn headings_sort_by_their_columns() {
-    use crate::config::ListColumn;
-    for c in ListColumn::ALL {
-        if let Some(order) = column_sort(c, false) {
-            assert_eq!(SortOrder::from_key(order.key()), order);
-        }
-    }
-    assert_eq!(
-        column_sort(ListColumn::Sender, true),
-        Some(SortOrder::Recipients)
-    );
-    assert_eq!(column_sort(ListColumn::Tags, false), Some(SortOrder::Tags));
-    // Starred first is gone; the star column sorts by nothing, and a key
-    // from before reads as newest first.
-    assert_eq!(column_sort(ListColumn::Star, false), None);
+fn old_sort_keys_and_due_dates() {
     assert_eq!(SortOrder::from_key("flagged"), SortOrder::DateNewest);
     assert_eq!(SortOrder::from_key("unread"), SortOrder::DateNewest);
     assert_eq!(text_key_cmp("", "a"), std::cmp::Ordering::Greater);

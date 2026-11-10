@@ -1,7 +1,6 @@
-//! The list's layout: the bars over and under it, columns and headings,
-//! the look of a row, scroll keeping, and the per-account tint.
+//! The list's layout: the bars over and under it, the columns, the date
+//! headings, the look of a row, scroll keeping, and the per-account tint.
 
-use super::sort::{column_sort, SortOrder};
 use super::types::MessageListInput;
 use super::MessageList;
 use crate::ui::message_row::RowShared;
@@ -207,7 +206,6 @@ impl MessageList {
                 Default::default()
             });
             look.widths = self.fitted_widths();
-            look.min_width = self.row_min_width();
         }
         // The rows on screen are about to be another view's, filled anyway.
         if self.switched {
@@ -215,13 +213,11 @@ impl MessageList {
         } else {
             self.shared.refresh_all();
         }
-        self.sync_headings();
     }
 
     /// What a single line's columns take, apart from the subject's room:
     /// the room the fixed ones need (with the pill's own and the spacing),
-    /// and each column whose width can change, at its own or the one it
-    /// was dragged to.
+    /// and each column whose width can change, at its own.
     fn column_room(&self) -> (i32, Vec<(crate::config::ListColumn, i32)>) {
         use crate::config::ListColumn as C;
         use crate::ui::message_row::{default_width, resizable};
@@ -242,11 +238,7 @@ impl MessageList {
         }
         let mut names = Vec::new();
         for c in &columns {
-            let px = self
-                .widths
-                .get(c)
-                .copied()
-                .unwrap_or_else(|| default_width(*c));
+            let px = default_width(*c);
             match c {
                 C::Star | C::Attachment => fixed += 12,
                 C::Replied => fixed += crate::ui::message_row::REPLIED_PX,
@@ -261,29 +253,17 @@ impl MessageList {
         (fixed, names)
     }
 
-    /// The narrowest a scrolling single line goes (#443): every column at
-    /// its width and the subject at a little room. A pane narrower than
-    /// that scrolls sideways to the columns past its edge. -1 when the
-    /// columns fit the pane instead.
-    pub(super) fn row_min_width(&self) -> i32 {
-        if !(self.single_line && self.column_scroll) {
-            return -1;
-        }
-        let (fixed, names) = self.column_room();
-        fixed + names.iter().map(|(_, px)| px).sum::<i32>()
-    }
-
-    /// The columns' widths as the rows and the headings draw them (#334):
-    /// as set, unless the columns fit the pane and together leave the
-    /// subject too little room, when the name and tag columns give way in
-    /// proportion (the dates keep theirs). Fitted here rather than left to
-    /// each row's box, which shares out a shortage by what that row holds,
-    /// so a heading and its column would part.
+    /// The columns' widths as the rows draw them (#334): their own, unless
+    /// together they leave the subject too little room, when the name and
+    /// tag columns give way in proportion (the dates keep theirs). Fitted
+    /// here rather than left to each row's box, which shares out a
+    /// shortage by what that row holds, so the columns would not line up
+    /// from one row to the next.
     pub(super) fn fitted_widths(
         &self,
     ) -> std::collections::HashMap<crate::config::ListColumn, i32> {
-        let mut widths = self.widths.clone();
-        if self.column_scroll || !self.single_line || self.pane_width <= 0 {
+        let mut widths = std::collections::HashMap::new();
+        if !self.single_line || self.pane_width <= 0 {
             return widths;
         }
         let (fixed, names) = self.column_room();
@@ -295,42 +275,6 @@ impl MessageList {
             }
         }
         widths
-    }
-
-    /// Fill the column headings from the look and the sort (#334). Only
-    /// while they are shown: they follow the next change once they are.
-    pub(super) fn sync_headings(&self) {
-        if !(self.single_line && self.headings) {
-            return;
-        }
-        let look = self.shared.look.borrow().clone();
-        let show_recipient = self.show_recipient;
-        let sorted = look
-            .columns
-            .iter()
-            .copied()
-            .find(|c| match (column_sort(*c, show_recipient), self.sort) {
-                (Some(SortOrder::DateNewest), SortOrder::DateOldest) => true,
-                (order, current) => order == Some(current),
-            })
-            .map(|c| (c, self.sort.downwards() != self.sort_reversed));
-        let input = self.shared.input.clone();
-        let resized = self.shared.input.clone();
-        *self.heading_bins.borrow_mut() = crate::ui::message_row::fill_headings(
-            &self.headings_bar,
-            &look,
-            sorted,
-            Rc::new(move |c| {
-                let _ = input.send(MessageListInput::SortByColumn(c));
-            }),
-            Rc::new(move |column, width, done| {
-                let _ = resized.send(MessageListInput::ResizeColumn {
-                    column,
-                    width,
-                    done,
-                });
-            }),
-        );
     }
 
     /// The date headings, on or off with the rows already in their sections,

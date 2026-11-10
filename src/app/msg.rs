@@ -680,11 +680,6 @@ pub(crate) enum AppMsg {
     // ---- on_list_header (list_header.rs) ----
     /// The message list's visible-count text changed.
     ListCount(String),
-    /// A column heading was dragged to a new width (#334): keep it.
-    ListColumnWidths(std::collections::HashMap<config::ListColumn, i32>),
-    /// A column heading sorted the list (#334): the sort menus follow.
-    ListSortChanged(&'static str),
-
     // ---- on_identity (identity.rs) ----
 
     // ---- on_reader_toolbar (reader_toolbar.rs) ----
