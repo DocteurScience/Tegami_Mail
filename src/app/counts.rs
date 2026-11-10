@@ -169,7 +169,7 @@ impl AppModel {
     /// was next opened: the tray menu said "No unread mail" under a count
     /// that said otherwise, and mail arriving in the inbox raised no
     /// notification, since both read the list. Ask for a quiet resync so
-    /// the list follows the count. An open inbox (alone or as All Inboxes)
+    /// the list follows the count. An open inbox (alone or in Favorites)
     /// or an open folder is the IDLE folder, whose own resync covers it.
     pub(super) fn sync_background_folder(&self, account_id: u32, folder_id: u32) {
         let Some(folder) = self
@@ -179,7 +179,7 @@ impl AppModel {
         else {
             return;
         };
-        // A folder that is open — on its own or as part of a unified view —
+        // A folder that is open — on its own or as part of Favorites —
         // is not skipped (#170). It used to be, on the assumption that the
         // worker's IDLE on it would deliver the new list; but only push
         // accounts IDLE, and a polled account's Inboxes slice then waited a

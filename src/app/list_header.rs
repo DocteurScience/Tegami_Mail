@@ -231,10 +231,8 @@ impl AppModel {
                 .map(|f| f.name.clone())
                 .unwrap_or_default();
         }
-        if self.unified {
-            return match self.unified_view {
-                super::types::UnifiedView::Favorites => i18n("Favorites"),
-            };
+        if self.favorites_open {
+            return i18n("Favorites");
         }
         self.selected
             .as_ref()

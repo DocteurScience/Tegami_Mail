@@ -16,7 +16,6 @@ use super::consts::{ATTACHMENT_CACHE_BUDGET, BODY_CACHE_BUDGET};
 use super::demo::{demo_account_configs_saved, demo_filters, demo_mode, demo_tags};
 use super::model::AppModel;
 use super::transfer::TransferTally;
-use super::types::UnifiedView;
 
 impl AppModel {
     /// Builds the model. Several fields read their own settings file here,
@@ -142,11 +141,9 @@ impl AppModel {
                 b
             },
             attachment_cache: crate::ram_cache::RamCache::new(ATTACHMENT_CACHE_BUDGET),
-            unified: false,
-            unified_view: UnifiedView::Favorites,
-            unified_account: None,
-            unified_slices: HashMap::new(),
-            unified_boot_requested: HashSet::new(),
+            favorites_open: false,
+            favorites_slices: HashMap::new(),
+            favorites_boot_requested: HashSet::new(),
             sent_index_requested: HashSet::new(),
             message_cache: HashMap::new(),
             search_gen: 0,
@@ -378,12 +375,12 @@ impl AppModel {
             snooze_undone: HashMap::new(),
             snooze_until: None,
             server_identities: HashMap::new(),
-            unified_emit_queued: std::cell::Cell::new(false),
-            unified_dirty: std::cell::Cell::new(false),
+            favorites_emit_queued: std::cell::Cell::new(false),
+            favorites_dirty: std::cell::Cell::new(false),
             thread_links_due: std::cell::Cell::new(false),
-            unified_emitted_at: std::cell::Cell::new(std::time::Instant::now()),
+            favorites_emitted_at: std::cell::Cell::new(std::time::Instant::now()),
             list_fp: std::cell::Cell::new(None),
-            unified_unfilled: std::collections::HashSet::new(),
+            favorites_unfilled: std::collections::HashSet::new(),
         }
     }
 }

@@ -21,7 +21,6 @@ pub(crate) type IndexRows = Vec<(u32, String, Message)>;
 
 use super::attachments::AttachmentTarget;
 use super::hand_off::{FileHandOff, HandOffTarget};
-use super::types::UnifiedView;
 use crate::ui::keymap::{Shortcut, WindowCompose};
 
 #[derive(Debug)]
@@ -107,10 +106,9 @@ pub(crate) enum AppMsg {
     },
 
     // ---- on_navigation (navigation.rs) ----
-    /// A unified row was chosen: All Inboxes, the unified section's Starred
-    /// / Sent / Drafts row (every account's folder of that kind), or its
-    /// Filtered Folders row (every rule's folder).
-    UnifiedSelected(UnifiedView),
+    /// The Favorites row was chosen: the favorite folders of every
+    /// account, merged into one list (#367).
+    FavoritesSelected,
     /// A folder row was chosen (the sidebar, the command palette): list it.
     FolderSelected {
         account_id: u32,
@@ -939,18 +937,18 @@ pub(crate) enum AppMsg {
         message: Box<crate::worker::OutgoingMessage>,
     },
 
-    // ---- on_unified (unified.rs) ----
-    /// Copy the unified view's folders into its slices (`unified_unfilled`).
-    FillUnifiedSlices,
+    // ---- on_favorites_view (favorites_view.rs) ----
+    /// Copy Favorites' folders into its slices (`favorites_unfilled`).
+    FillFavoritesSlices,
     /// Folders not in memory yet, read whole from the index off the main
-    /// thread: for the unified view being opened.
-    UnifiedFoldersLoaded {
+    /// thread: for Favorites being opened.
+    FavoritesFoldersLoaded {
         lists: Vec<((u32, u32), Vec<Message>)>,
     },
-    /// Merge the unified view for the list now: the list had not kept it.
-    EmitUnifiedNow,
-    /// Merge the unified view's slices now (see `queue_unified_emit`).
-    EmitUnified,
+    /// Merge Favorites for the list now: the list had not kept it.
+    EmitFavoritesNow,
+    /// Merge Favorites' slices now (see `queue_favorites_emit`).
+    EmitFavorites,
 
     // ---- on_compose_host (compose_host.rs) ----
     /// A composer (id) finished — tear down its host (window or inline revealer).

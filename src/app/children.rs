@@ -12,7 +12,6 @@ use crate::ui::sidebar::{Sidebar, SidebarOutput};
 use super::boot::{sidebar_init, Boot};
 use super::model::AppModel;
 use super::msg::AppMsg;
-use super::types::UnifiedView;
 
 /// What the message list reports, as the message it means here.
 fn message_list_output_msg(out: MessageListOutput) -> AppMsg {
@@ -28,7 +27,7 @@ fn message_list_output_msg(out: MessageListOutput) -> AppMsg {
         },
         MessageListOutput::SelectionKeys(keys) => AppMsg::SelectionKeys(keys),
         MessageListOutput::Checked(count) => AppMsg::ListChecked(count),
-        MessageListOutput::ViewMissed => AppMsg::EmitUnifiedNow,
+        MessageListOutput::ViewMissed => AppMsg::EmitFavoritesNow,
         MessageListOutput::MoveMessages {
             account_id,
             dest,
@@ -172,7 +171,7 @@ fn notifications_output_msg(out: NotifyOutput) -> AppMsg {
 /// floating peek panel are two instances, driven alike.
 pub(super) fn sidebar_output_msg(out: SidebarOutput) -> AppMsg {
     match out {
-        SidebarOutput::UnifiedFavoritesSelected => AppMsg::UnifiedSelected(UnifiedView::Favorites),
+        SidebarOutput::UnifiedFavoritesSelected => AppMsg::FavoritesSelected,
         SidebarOutput::UnifiedTagsSelected => AppMsg::TagSelected {
             keyword: None,
             account: None,

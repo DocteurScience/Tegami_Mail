@@ -177,7 +177,7 @@ impl AppModel {
     /// folder across every account, or a search's results.
     pub(super) fn view_spans_accounts(&self) -> bool {
         self.accounts.len() > 1
-            && (self.unified
+            && (self.favorites_open
                 || self.smart_view.is_some()
                 || self.search_active
                 || self

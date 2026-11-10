@@ -600,7 +600,7 @@ impl AppModel {
                 }
             }
         }
-        self.unified_slices
+        self.favorites_slices
             .iter()
             .filter(|((a, _), _)| *a == account_id)
             .flat_map(|(_, msgs)| msgs.iter())

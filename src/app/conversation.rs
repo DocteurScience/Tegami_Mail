@@ -565,11 +565,11 @@ impl AppModel {
         }
     }
 
-    /// Re-emit the currently-visible folder/unified list from the caches, so
+    /// Re-emit the folder or Favorites list on show from the caches, so
     /// in-place changes (e.g. mark-all-read) show without a server round-trip.
     pub(super) fn refresh_list_display(&self) {
-        if self.unified {
-            self.emit_unified();
+        if self.favorites_open {
+            self.emit_favorites();
         } else if self.tag_view.is_some() {
             self.show_tag_view();
         } else if self.smart_view.is_some() {

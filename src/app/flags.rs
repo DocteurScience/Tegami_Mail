@@ -127,7 +127,7 @@ impl AppModel {
         if let Some(msgs) = self.message_cache.get_mut(&(aid, fid)) {
             msgs.iter_mut().filter(|c| same(c)).for_each(patch);
         }
-        if let Some(msgs) = self.unified_slices.get_mut(&(aid, fid)) {
+        if let Some(msgs) = self.favorites_slices.get_mut(&(aid, fid)) {
             msgs.iter_mut().filter(|c| same(c)).for_each(patch);
         }
         self.current_thread
@@ -323,7 +323,7 @@ impl AppModel {
     }
 
     /// Set a cached message's unread flag in every list that holds it: its
-    /// own folder's, and the unified view's slice of it. Only that folder:
+    /// own folder's, and Favorites' slice of it. Only that folder:
     /// a UID names a different message in each folder, and marking every
     /// folder's message with this UID read set the wrong mail read (#333).
     fn set_cached_unread(
@@ -337,7 +337,7 @@ impl AppModel {
             self.message_cache
                 .get_mut(&(account_id, folder_id))
                 .map(|c| &mut **c),
-            self.unified_slices.get_mut(&(account_id, folder_id)),
+            self.favorites_slices.get_mut(&(account_id, folder_id)),
         ];
         for msgs in lists.into_iter().flatten() {
             if let Some(m) = msgs.iter_mut().find(|m| m.id == message_id) {

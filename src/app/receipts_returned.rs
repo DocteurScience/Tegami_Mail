@@ -203,7 +203,7 @@ impl AppModel {
             self.message_cache
                 .values()
                 .flat_map(|ms| ms.iter())
-                .chain(self.unified_slices.values().flatten())
+                .chain(self.favorites_slices.values().flatten())
                 .filter(|m| m.message_id.eq_ignore_ascii_case(message_id))
         };
         held()

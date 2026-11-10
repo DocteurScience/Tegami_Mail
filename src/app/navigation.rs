@@ -8,11 +8,11 @@ use crate::ui::message_view::MessageViewInput;
 use crate::ui::sidebar::SidebarInput;
 use crate::worker::MailRequest;
 
+use super::favorites_view::LIST_NEWEST;
 use super::model::AppModel;
 use super::msg::AppMsg;
 use super::search::default_scope;
-use super::types::{SelectedFolder, UnifiedView};
-use super::unified::LIST_NEWEST;
+use super::types::SelectedFolder;
 
 /// Reads folders not seen since launch whole from the on-disk index, off
 /// the main thread: an Archive is tens of thousands of rows.
@@ -28,23 +28,21 @@ fn read_unseen_folders(unseen: Vec<(u32, u32, String)>, sender: &ComponentSender
             Err(_) => Vec::new(),
         };
         tracing::debug!(
-            "unified: {} folders read from the index in {:?}",
+            "favorites: {} folders read from the index in {:?}",
             lists.len(),
             t.elapsed()
         );
-        let _ = s.send(AppMsg::UnifiedFoldersLoaded { lists });
+        let _ = s.send(AppMsg::FavoritesFoldersLoaded { lists });
     });
 }
 
 impl AppModel {
     /// An account joined or left the combined views (#267): the merged
-    /// Tags lists are read again, and the unified view that was open
-    /// (`open`) is loaded afresh over the accounts now in it. When its row
-    /// went with the change (one account or none left in the section), the
-    /// sidebar has already moved to the first inbox instead.
-    pub(super) fn reload_unified_views(
+    /// Tags lists are read again, and Favorites, when it was open
+    /// (`favorites_open`), is loaded afresh over the accounts now in it.
+    pub(super) fn reload_combined_views(
         &mut self,
-        open: Option<UnifiedView>,
+        favorites_open: bool,
         sender: &ComponentSender<Self>,
     ) {
         self.tag_view_cache.retain(|(scope, _), _| scope.is_some());
@@ -55,71 +53,42 @@ impl AppModel {
         {
             self.refresh_tag_view(sender);
         }
-        let Some(view) = open else { return };
-        let listed = match view {
-            UnifiedView::Favorites => !self.favorites.is_empty(),
-        };
-        if listed {
+        if favorites_open && !self.favorites.is_empty() {
             // A reconnect has emptied the account list; each account's
             // folders asks for its slice again as they arrive.
-            self.unified_boot_requested.clear();
-            let account = self.unified_account.filter(|a| self.in_unified(*a));
-            self.open_unified_in(view, account, sender);
+            self.favorites_boot_requested.clear();
+            self.open_favorites(sender);
         }
     }
 
-    /// Open a merged view: the favorite folders of every account in one
-    /// list. What clicking the sidebar row does.
-    pub(super) fn open_unified(&mut self, view: UnifiedView, sender: &ComponentSender<Self>) {
-        self.open_unified_in(view, None, sender);
-    }
-
-    /// Open a unified view, narrowed to one account when `account` names one.
-    fn open_unified_in(
-        &mut self,
-        view: UnifiedView,
-        account: Option<u32>,
-        sender: &ComponentSender<Self>,
-    ) {
+    /// Open Favorites: the favorite folders of every account in one list.
+    /// What clicking the sidebar row does.
+    pub(super) fn open_favorites(&mut self, sender: &ComponentSender<Self>) {
         let t_open = std::time::Instant::now();
         self.close_sidebar_peek();
-        self.mirror_selection(match view {
-            UnifiedView::Favorites => crate::ui::sidebar::Sel::UnifiedFavorites,
-        });
+        self.mirror_selection(crate::ui::sidebar::Sel::UnifiedFavorites);
         self.showing_outbox = false;
-        // Another view's slices are another view's: start afresh
-        // (the loads below refill them).
-        if self.unified_view != view || self.unified_account != account {
-            // Freed after the switch is drawn: an Archive's slices are tens
-            // of thousands of messages.
-            let mut old = Some(std::mem::take(&mut self.unified_slices));
-            gtk::glib::idle_add_local_once(move || drop(old.take()));
-            self.unified_boot_requested.clear();
-        }
-        self.unified_unfilled.clear();
-        self.unified_view = view;
-        self.unified_account = account;
-        self.unified = true;
+        self.favorites_unfilled.clear();
+        self.favorites_open = true;
         self.tag_view = None;
         self.smart_view = None;
         self.selected = None;
         self.blank_reader();
-        self.reset_list_for_unified(account);
-        let reqs = self.unified_targets();
-        let unseen = self.seed_unified_slices(&reqs);
-        // No account has the folder (Snoozed is made by the first snooze,
-        // #542): nothing will answer, so the list is empty now rather than
-        // loading. Starred reads flags instead, and an account whose
+        self.reset_list_for_favorites();
+        let reqs = self.favorites_targets();
+        let unseen = self.seed_favorites_slices(&reqs);
+        // No favorite folder to ask for: nothing will answer, so the list
+        // is empty now rather than loading, unless an account whose
         // folders are not listed yet may still have one.
         let unlisted = self
             .accounts
             .iter()
-            .filter(|a| self.in_unified(a.id) && account.is_none_or(|x| x == a.id))
+            .filter(|a| self.in_unified(a.id))
             .any(|a| self.folders.get(&a.id).is_none_or(|fs| fs.is_empty()));
         let waiting = !reqs.is_empty() || unlisted;
-        self.show_unified_view(waiting, sender);
-        // Request every account's inbox; each result replaces that
-        // account's slice as it arrives.
+        self.show_favorites_view(waiting, sender);
+        // Request every favorite folder; each result replaces that
+        // folder's slice as it arrives.
         for (account_id, folder_id, path) in reqs {
             self.send_to(account_id, MailRequest::LoadMessages { folder_id, path });
         }
@@ -129,22 +98,21 @@ impl AppModel {
         self.push_index_complete();
         self.shed_large_folders();
         tracing::info!(
-            "unified {view:?}: opened in {:?} with {} cached messages",
+            "favorites: opened in {:?} with {} cached messages",
             t_open.elapsed(),
-            self.unified_slices.values().map(Vec::len).sum::<usize>()
+            self.favorites_slices.values().map(Vec::len).sum::<usize>()
         );
     }
 
     /// The list and the reader set up for a merged view: nothing selected,
     /// the scope, colors, recipient names and what rows can do as that
     /// kind of folder has them.
-    fn reset_list_for_unified(&self, account: Option<u32>) {
+    fn reset_list_for_favorites(&self) {
         self.message_list.emit(MessageListInput::SetSelected(None));
         self.message_list.emit(MessageListInput::ResetPaging);
         self.message_list
             .emit(MessageListInput::SetScope(default_scope(false)));
-        self.message_list
-            .emit(MessageListInput::SetColorize(account.is_none()));
+        self.message_list.emit(MessageListInput::SetColorize(true));
         // The favorite folders mix kinds: rows act as in an ordinary
         // folder (#367).
         self.message_list
@@ -172,7 +140,7 @@ impl AppModel {
     ///
     /// Returns the folders not seen since launch, read whole off the main
     /// thread afterwards.
-    fn seed_unified_slices(&mut self, reqs: &[(u32, u32, String)]) -> Vec<(u32, u32, String)> {
+    fn seed_favorites_slices(&mut self, reqs: &[(u32, u32, String)]) -> Vec<(u32, u32, String)> {
         let mut unseen: Vec<(u32, u32, String)> = Vec::new();
         for (account_id, folder_id, path) in reqs {
             // A folder not seen since launch (only inboxes are primed
@@ -196,29 +164,29 @@ impl AppModel {
                 // Nothing newest is nothing at all.
                 if !newest.is_empty() {
                     let newest = self.overlay_local_state(*account_id, *folder_id, newest);
-                    self.unified_slices
+                    self.favorites_slices
                         .insert((*account_id, *folder_id), newest);
                     unseen.push((*account_id, *folder_id, path.clone()));
                 }
             }
             // Copied from the folder's cache below, or after the frame when
             // the list has the view kept.
-            self.unified_unfilled.insert((*account_id, *folder_id));
+            self.favorites_unfilled.insert((*account_id, *folder_id));
         }
         // Forget folders that no longer contribute (an account
         // removed or disabled, a rule gone, since the last visit).
         let live: std::collections::HashSet<(u32, u32)> =
             reqs.iter().map(|(a, f, _)| (*a, *f)).collect();
-        self.unified_slices.retain(|k, _| live.contains(k));
-        self.unified_unfilled
+        self.favorites_slices.retain(|k, _| live.contains(k));
+        self.favorites_unfilled
             .retain(|k| self.message_cache.get(k).is_some_and(|c| !c.is_empty()));
         unseen
     }
 
     /// The list keeps the views it showed as built: one whose content is
     /// the same as then comes back at once, without a merge or a regroup.
-    fn show_unified_view(&mut self, waiting: bool, sender: &ComponentSender<Self>) {
-        let key = self.unified_view_key();
+    fn show_favorites_view(&mut self, waiting: bool, sender: &ComponentSender<Self>) {
+        let key = self.favorites_view_key();
         self.list_fp.set(None);
         if !waiting {
             self.message_list.emit(MessageListInput::SetView {
@@ -226,8 +194,8 @@ impl AppModel {
                 fp: 0,
                 restore: false,
             });
-            self.emit_unified();
-        } else if self.unified_slices.is_empty() && self.unified_unfilled.is_empty() {
+            self.emit_favorites();
+        } else if self.favorites_slices.is_empty() && self.favorites_unfilled.is_empty() {
             self.message_list.emit(MessageListInput::SetView {
                 key: Some(key),
                 fp: 0,
@@ -235,11 +203,11 @@ impl AppModel {
             });
             self.message_list.emit(MessageListInput::SetLoading);
         } else {
-            let fp = self.unified_fp();
+            let fp = self.favorites_fp();
             let kept = self.message_list.model().has_view(key, fp);
             if !kept {
                 tracing::debug!(
-                    "unified: not kept by the list ({})",
+                    "favorites: not kept by the list ({})",
                     self.message_list.model().view_miss(key, fp)
                 );
             }
@@ -252,11 +220,11 @@ impl AppModel {
                 self.list_fp.set(Some(fp));
                 let s = sender.input_sender().clone();
                 gtk::glib::idle_add_local_once(move || {
-                    let _ = s.send(AppMsg::FillUnifiedSlices);
+                    let _ = s.send(AppMsg::FillFavoritesSlices);
                 });
             } else {
-                self.fill_unified_slices();
-                self.emit_unified();
+                self.fill_favorites_slices();
+                self.emit_favorites();
             }
         }
     }
@@ -280,7 +248,7 @@ impl AppModel {
             account_id,
             path: path.clone(),
         });
-        self.unified = false;
+        self.favorites_open = false;
         self.tag_view = None;
         self.smart_view = None;
         self.attachments.clear();
@@ -357,9 +325,7 @@ impl AppModel {
     /// The messages the router sends here (see `AppModel::route`).
     pub(super) fn on_navigation(&mut self, msg: AppMsg, sender: ComponentSender<Self>) {
         match msg {
-            AppMsg::UnifiedSelected(view) => {
-                self.open_unified(view, &sender);
-            }
+            AppMsg::FavoritesSelected => self.open_favorites(&sender),
 
             AppMsg::FolderSelected {
                 account_id,

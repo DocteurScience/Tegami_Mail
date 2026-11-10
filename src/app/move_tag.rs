@@ -185,7 +185,7 @@ impl AppModel {
                     // The whole conversation, the way a dragged selection
                     // moves: grouped by source folder, undoable, and any
                     // member from another account (a conversation merged
-                    // across accounts in a unified view) reported.
+                    // across accounts in Favorites) reported.
                     let items: Vec<(u32, u32, u32, u32)> = self
                         .current_thread
                         .iter()

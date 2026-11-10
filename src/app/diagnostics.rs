@@ -106,11 +106,11 @@ impl AppModel {
             human_count(folders),
             count(index)
         ));
-        let unified = messages_bytes(self.unified_slices.values().flatten());
+        let favorites = messages_bytes(self.favorites_slices.values().flatten());
         out.push_str(&format!(
-            "  unified slices ({} folders): {}\n",
-            human_count(self.unified_slices.len()),
-            count(unified)
+            "  favorites slices ({} folders): {}\n",
+            human_count(self.favorites_slices.len()),
+            count(favorites)
         ));
         let tags = messages_bytes(self.tag_view_cache.values().flatten());
         out.push_str(&format!(

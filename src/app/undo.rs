@@ -417,8 +417,8 @@ impl AppModel {
                     .entry((account_id, folder_id))
                     .or_default() += 1;
             }
-            if self.is_unified_target(account_id, folder_id) {
-                self.unified_slices
+            if self.is_favorites_target(account_id, folder_id) {
+                self.favorites_slices
                     .entry((account_id, folder_id))
                     .or_default()
                     .push(m.clone());
@@ -437,7 +437,7 @@ impl AppModel {
         if let Some(ms) = self.message_cache.get_mut(&key) {
             ms.sort_by_key(|m| std::cmp::Reverse(m.timestamp));
         }
-        if let Some(ms) = self.unified_slices.get_mut(&key) {
+        if let Some(ms) = self.favorites_slices.get_mut(&key) {
             ms.sort_by_key(|m| std::cmp::Reverse(m.timestamp));
         }
         self.forget_threads(account_id);

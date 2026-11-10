@@ -254,7 +254,7 @@ impl AppModel {
                 m.unread = false;
             }
         }
-        if let Some(msgs) = self.unified_slices.get_mut(&(account_id, folder_id)) {
+        if let Some(msgs) = self.favorites_slices.get_mut(&(account_id, folder_id)) {
             for m in msgs {
                 m.unread = false;
             }
@@ -420,7 +420,7 @@ impl AppModel {
             .get(&key)
             .map(|c| &**c)
             .into_iter()
-            .chain(self.unified_slices.get(&key))
+            .chain(self.favorites_slices.get(&key))
             .flatten()
             .find(|x| x.message_id == m.message_id)
             .cloned()
@@ -436,7 +436,7 @@ impl AppModel {
         if let Some(p) = self.popouts.get(&(m.account_id, m.id)) {
             p.window.close();
         }
-        if let Some(msgs) = self.unified_slices.get_mut(&(m.account_id, m.folder_id)) {
+        if let Some(msgs) = self.favorites_slices.get_mut(&(m.account_id, m.folder_id)) {
             msgs.retain(|x| x.uid != m.uid);
         }
         if let Some(msgs) = self.message_cache.get_mut(&(m.account_id, m.folder_id)) {

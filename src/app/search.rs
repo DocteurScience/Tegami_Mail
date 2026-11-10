@@ -223,7 +223,7 @@ impl AppModel {
                     ));
                     // Restore the tint state the underlying view wants.
                     self.message_list
-                        .emit(MessageListInput::SetColorize(self.unified));
+                        .emit(MessageListInput::SetColorize(self.favorites_open));
                 }
             }
             _ => unreachable!("not routed to on_search"),

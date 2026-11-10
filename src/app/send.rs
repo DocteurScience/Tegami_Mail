@@ -203,7 +203,7 @@ impl AppModel {
             self.message_cache
                 .get_mut(&(account_id, fid))
                 .map(|c| &mut **c),
-            self.unified_slices.get_mut(&(account_id, fid)),
+            self.favorites_slices.get_mut(&(account_id, fid)),
         ]
         .into_iter()
         .flatten()

@@ -226,9 +226,9 @@ impl AppModel {
         } else {
             self.rebuild_sidebar();
         }
-        self.request_unified_boot(account_id);
+        self.request_favorites_boot(account_id);
         self.index_sent_folders(account_id);
-        // A unified view merges one folder per account, and this
+        // Favorites merges folders of every account, and this
         // account's folders may only now have arrived — so the set the
         // completeness flag is measured over just changed. It is
         // otherwise recomputed on `BackfillDone` alone, which meant an
@@ -331,17 +331,16 @@ impl AppModel {
         }
     }
 
-    /// Launch with "All Inboxes" already selected: UnifiedSelected
-    /// fired before any folder list existed, so its inbox requests
-    /// went nowhere and the list sat empty until the user visited a
-    /// folder by hand. The first time an account's folders arrive
-    /// while the unified view is up, ask for its inbox — the cache
-    /// priming already painted its slice, and this is what brings
+    /// Favorites opened before an account's folder list existed: its
+    /// requests went nowhere, and the list would sit on the cached
+    /// slices. The first time an account's folders arrive while
+    /// Favorites is up, ask for its favorite folders — the cache
+    /// priming already painted their slices, and this is what brings
     /// in whatever changed since the app last ran.
-    fn request_unified_boot(&mut self, account_id: u32) {
-        if self.unified && self.unified_boot_requested.insert(account_id) {
+    fn request_favorites_boot(&mut self, account_id: u32) {
+        if self.favorites_open && self.favorites_boot_requested.insert(account_id) {
             let mine: Vec<(u32, u32, String)> = self
-                .unified_targets()
+                .favorites_targets()
                 .into_iter()
                 .filter(|(a, _, _)| *a == account_id)
                 .collect();

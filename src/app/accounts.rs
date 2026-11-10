@@ -464,7 +464,7 @@ impl AppModel {
             );
             return;
         }
-        let open_unified = self.unified.then_some(self.unified_view);
+        let favorites_open = self.favorites_open;
         let new_email = account.email.clone();
         let display_only = self.look_only_edit(original_email.as_deref(), &account, &sender);
         // Remember the secret we expect to persist, so we can verify the
@@ -496,7 +496,7 @@ impl AppModel {
                     self.reconnect_all(&sender);
                 }
                 if unified_changed {
-                    self.reload_unified_views(open_unified, &sender);
+                    self.reload_combined_views(favorites_open, &sender);
                 }
             }
             Err(e) => self.notice_error(i18n_f(
@@ -528,7 +528,7 @@ impl AppModel {
         self.rebuild_sidebar();
         self.refresh_faces();
         if unified_changed {
-            self.reload_unified_views(self.unified.then_some(self.unified_view), sender);
+            self.reload_combined_views(self.favorites_open, sender);
         }
     }
 

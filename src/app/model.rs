@@ -27,7 +27,7 @@ use super::popout::PopOut;
 use super::reader_toolbar::ReaderToolbarWidgets;
 use super::tags::TagScan;
 use super::transfer::{Transfer, TransferTally};
-use super::types::{FolderMessages, SelectedFolder, UnifiedView};
+use super::types::{FolderMessages, SelectedFolder};
 use super::undo::UndoEntry;
 use super::{RedoAction, UndoAction};
 
@@ -144,21 +144,17 @@ pub(crate) struct AppModel {
     /// The attachment lightbox over the whole window (drawer previews and
     /// card attachment rows).
     pub(super) lightbox: Controller<crate::ui::lightbox::Lightbox>,
-    /// True when a merged view is active (no single folder): the folders
-    /// `unified_view` names, merged into one list.
-    pub(super) unified: bool,
-    /// Which folders the merged view merges: the favorite folders, the only
-    /// such view left once All Inboxes, Starred, Sent, Drafts and Filtered
-    /// Folders went (owner's decision, 2026-11-02).
-    pub(super) unified_view: UnifiedView,
-    /// The one account the merged view is narrowed to, if any.
-    pub(super) unified_account: Option<u32>,
+    /// True while Favorites is open: the favorite folders of every
+    /// account merged into one list (#367), the only merged view left once
+    /// All Inboxes, Starred, Sent, Drafts and Filtered Folders went
+    /// (owner's decision, 2026-11-02).
+    pub(super) favorites_open: bool,
     /// (account, folder) → that folder's latest messages, for the merged
     /// view's merge.
-    pub(super) unified_slices: HashMap<(u32, u32), Vec<Message>>,
+    pub(super) favorites_slices: HashMap<(u32, u32), Vec<Message>>,
     /// Accounts whose inbox has been requested for a merged view since
     /// launch (the cache-primed slices still need their catch-up sync).
-    pub(super) unified_boot_requested: HashSet<u32>,
+    pub(super) favorites_boot_requested: HashSet<u32>,
     /// Accounts whose sent mail has been asked for this run (#236).
     pub(super) sent_index_requested: HashSet<u32>,
     /// (account_id, folder_id) → last-seen message list, shown instantly on
@@ -422,7 +418,7 @@ pub(crate) struct AppModel {
     pub(super) quick_filters: QuickFilters,
     /// Tags (#71): a name and color per keyword.
     pub(super) tags: Vec<config::Tag>,
-    /// The tag view, if that is the view — alongside `unified` and
+    /// The tag view, if that is the view — alongside `favorites_open` and
     /// `selected`, never with: the account it is scoped to (`None` spans
     /// every account) and the keyword (`None` for every tag at once).
     pub(super) tag_view: Option<(Option<u32>, Option<String>)>,
@@ -571,20 +567,20 @@ pub(crate) struct AppModel {
     /// The sending identities a JMAP server keeps, per account (#346):
     /// offered as From addresses beside the account's own aliases.
     pub(super) server_identities: HashMap<u32, Vec<(String, String)>>,
-    /// A merge of the unified view is on its way (`queue_unified_emit`),
+    /// A merge of Favorites is on its way (`queue_favorites_emit`),
     /// with new slices to merge, and new thread links to hand the list.
-    pub(super) unified_emit_queued: std::cell::Cell<bool>,
-    pub(super) unified_dirty: std::cell::Cell<bool>,
+    pub(super) favorites_emit_queued: std::cell::Cell<bool>,
+    pub(super) favorites_dirty: std::cell::Cell<bool>,
     pub(super) thread_links_due: std::cell::Cell<bool>,
-    pub(super) unified_emitted_at: std::cell::Cell<std::time::Instant>,
-    /// The fingerprint of the unified view's content the list has, when it
+    pub(super) favorites_emitted_at: std::cell::Cell<std::time::Instant>,
+    /// The fingerprint of Favorites' content the list has, when it
     /// has the open view's: a merge that would hand it the same is skipped.
     pub(super) list_fp: std::cell::Cell<Option<u64>>,
-    /// The open unified view's folders whose slice is not copied from the
-    /// folder's cache yet: a view the list kept is shown first, and the
-    /// copies (tens of thousands of messages for an Archive) made after.
+    /// The favorite folders whose slice is not copied from the folder's
+    /// cache yet: a view the list kept is shown first, and the copies
+    /// (tens of thousands of messages for a large folder) made after.
     /// Until then the folder's cache stands for the slice.
-    pub(super) unified_unfilled: std::collections::HashSet<(u32, u32)>,
+    pub(super) favorites_unfilled: std::collections::HashSet<(u32, u32)>,
     /// Messages popped out into their own windows, keyed by (account, message).
     pub(super) popouts: HashMap<(u32, u32), PopOut>,
     /// The conversation currently shown in the reader (newest first), with bodies

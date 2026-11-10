@@ -100,7 +100,7 @@ impl AppModel {
                     .get(&(account_id, folder_id))
                     .map(|c| &**c)
                     .into_iter()
-                    .chain(self.unified_slices.get(&(account_id, folder_id)))
+                    .chain(self.favorites_slices.get(&(account_id, folder_id)))
                     .flatten()
                     .find(same)
             })

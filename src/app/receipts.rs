@@ -29,7 +29,7 @@ impl AppModel {
                     .and_then(|ms| ms.iter().find(hit))
             })
             .or_else(|| {
-                self.unified_slices
+                self.favorites_slices
                     .get(&(key.0, key.1))
                     .and_then(|ms| ms.iter().find(hit))
             })

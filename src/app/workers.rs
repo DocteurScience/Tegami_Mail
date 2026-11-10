@@ -280,8 +280,8 @@ impl AppModel {
     }
 
     fn current_index_complete(&self) -> bool {
-        if self.unified {
-            self.unified_targets()
+        if self.favorites_open {
+            self.favorites_targets()
                 .iter()
                 .all(|(a, f, _)| self.indexed_folders.contains(&(*a, *f)))
         } else if let Some(sel) = &self.selected {
@@ -429,7 +429,8 @@ impl AppModel {
                 if !messages.is_empty() {
                     self.message_cache
                         .insert((account_id, inbox.id), messages.clone().into());
-                    self.unified_slices.insert((account_id, inbox.id), messages);
+                    self.favorites_slices
+                        .insert((account_id, inbox.id), messages);
                 }
             }
             // The folders counting filters file into (#116) as well, so the
@@ -515,10 +516,10 @@ impl AppModel {
         self.accounts.clear();
         self.folders.clear();
         self.selected = None;
-        self.unified = false;
+        self.favorites_open = false;
         self.tag_view = None;
         self.smart_view = None;
-        self.unified_slices.clear();
+        self.favorites_slices.clear();
         self.message_cache.clear();
         self.body_cache.clear();
         self.attachments.clear();
@@ -573,8 +574,8 @@ impl AppModel {
                 if !crate::desktop::power::online() {
                     crate::desktop::power::try_anyway();
                 }
-                if self.unified {
-                    let reqs = self.unified_targets();
+                if self.favorites_open {
+                    let reqs = self.favorites_targets();
                     for (account_id, folder_id, path) in reqs {
                         self.send_to(account_id, MailRequest::LoadMessages { folder_id, path });
                     }
@@ -792,7 +793,6 @@ pub(super) fn watch_system_events(sender: &ComponentSender<AppModel>) {
 mod tests {
     use super::*;
     use crate::app::children::sidebar_output_msg;
-    use crate::app::types::UnifiedView;
     use crate::ui::sidebar::SidebarOutput;
 
     #[test]
@@ -800,7 +800,7 @@ mod tests {
         let dbg = |m: AppMsg| format!("{m:?}");
         assert_eq!(
             dbg(sidebar_output_msg(SidebarOutput::UnifiedFavoritesSelected)),
-            dbg(AppMsg::UnifiedSelected(UnifiedView::Favorites))
+            dbg(AppMsg::FavoritesSelected)
         );
         assert_eq!(
             dbg(sidebar_output_msg(SidebarOutput::UnifiedTagsSelected)),

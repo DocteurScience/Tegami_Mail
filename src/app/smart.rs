@@ -84,7 +84,7 @@ impl AppModel {
         self.close_sidebar_peek();
         self.mirror_selection(sel);
         self.showing_outbox = false;
-        self.unified = false;
+        self.favorites_open = false;
         self.selected = None;
         self.tag_view = tag_view;
         self.smart_view = smart_view;

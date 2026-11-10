@@ -60,7 +60,7 @@ impl AppModel {
                     .selected
                     .as_ref()
                     .is_some_and(|sel| sel.account_id == account_id && sel.folder_id == folder_id);
-                if showing || self.unified {
+                if showing || self.favorites_open {
                     if let Some(path) = self.folder_path(account_id, folder_id) {
                         self.send_to(account_id, MailRequest::LoadMessages { folder_id, path });
                     }
@@ -79,7 +79,7 @@ impl AppModel {
         let messages = self.apply_blacklist(account_id, folder_id, messages);
         // Only onto a folder listed whole already. An entry started
         // here would hold just the newest arrivals, and a search or
-        // a unified view would take it for the folder (#472); one
+        // Favorites would take it for the folder (#472); one
         // not open has its rows on disk, where the worker put them.
         let Some(entry) = self.message_cache.get_mut(&(account_id, folder_id)) else {
             return;
@@ -94,11 +94,11 @@ impl AppModel {
         }
         entry.extend(fresh.iter().cloned());
         // Feed the visible list so search covers the new messages live.
-        if self.unified {
-            if self.is_unified_target(account_id, folder_id) {
+        if self.favorites_open {
+            if self.is_favorites_target(account_id, folder_id) {
                 // A folder read where it is has them already.
-                if !self.unified_unfilled.contains(&(account_id, folder_id)) {
-                    self.unified_slices
+                if !self.favorites_unfilled.contains(&(account_id, folder_id)) {
+                    self.favorites_slices
                         .entry((account_id, folder_id))
                         .or_default()
                         .extend(fresh.iter().cloned());
@@ -442,12 +442,12 @@ impl AppModel {
     /// the conversation.
     fn after_list_changed(&mut self, account_id: u32, sender: &ComponentSender<Self>) {
         self.forget_threads(account_id);
-        // In a unified view, with the next merge, once for a run
+        // In Favorites, with the next merge, once for a run
         // of answers; a folder's own list takes them now, in the
         // same pass as its messages.
-        if self.unified {
+        if self.favorites_open {
             self.thread_links_due.set(true);
-            self.queue_unified_emit(sender);
+            self.queue_favorites_emit(sender);
         } else {
             self.push_thread_links();
         }
@@ -490,7 +490,7 @@ impl AppModel {
         }
     }
 
-    /// Hands the list to the view on show: a unified view merges it, the
+    /// Hands the list to the view on show: Favorites merges it, the
     /// open folder lists it, a tag or smart view reads the index again.
     fn show_listed(
         &mut self,
@@ -500,23 +500,23 @@ impl AppModel {
         unchanged: bool,
         sender: &ComponentSender<Self>,
     ) {
-        if self.unified {
+        if self.favorites_open {
             // Accept only the folders the view merges, by recency.
-            if self.is_unified_target(account_id, folder_id) {
+            if self.is_favorites_target(account_id, folder_id) {
                 let key = (account_id, folder_id);
                 let same_slice = unchanged
                     && self
-                        .unified_slices
+                        .favorites_slices
                         .get(&key)
                         .is_some_and(|s| *s == messages);
                 if !same_slice {
-                    self.unified_unfilled.remove(&key);
-                    self.unified_slices.insert(key, messages);
+                    self.favorites_unfilled.remove(&key);
+                    self.favorites_slices.insert(key, messages);
                     // Accounts answer one after another, a large or
                     // slow one in several goes: one merge for the lot
                     // that lands together, not one each.
-                    self.unified_dirty.set(true);
-                    self.queue_unified_emit(sender);
+                    self.favorites_dirty.set(true);
+                    self.queue_favorites_emit(sender);
                 }
             }
         } else if let Some(sel) = self.selected.as_ref() {

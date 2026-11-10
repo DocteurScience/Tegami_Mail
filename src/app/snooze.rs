@@ -178,14 +178,13 @@ impl AppModel {
     }
 
     /// Whether what the reader's actions act on is snoozed already: the
-    /// message being read, or a selection made in a Snoozed folder or the
-    /// unified Snoozed (#542).
+    /// message being read, or a selection made in a Snoozed folder (#542).
     pub(super) fn target_snoozed(&self) -> bool {
         let snoozed = |account_id, folder_id| {
             self.folder_kind(account_id, folder_id) == Some(FolderKind::Snoozed)
         };
         if self.many_selected() {
-            if self.unified {
+            if self.favorites_open {
                 // The Favorites view: each message's own folder decides.
                 return false;
             }
@@ -311,8 +310,7 @@ impl AppModel {
 
     /// Undo and Redo of a Snooze (#542): mail an undo takes out of its
     /// Snoozed folder takes its record along, kept for a redo to bring
-    /// back. A record left behind would wake nothing, but would keep the
-    /// unified Snoozed row up with nothing in it.
+    /// back. A record left behind would wake nothing.
     pub(super) fn follow_undo_move(
         &mut self,
         account_id: u32,

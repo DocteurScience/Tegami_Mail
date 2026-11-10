@@ -78,7 +78,7 @@ impl AppModel {
                 folder_path,
                 uid,
             } => self.open_message_at(account_id, &folder_path, uid),
-            msg @ (AppMsg::UnifiedSelected(..) | AppMsg::FolderSelected { .. }) => {
+            msg @ (AppMsg::FavoritesSelected | AppMsg::FolderSelected { .. }) => {
                 self.on_navigation(msg, sender)
             }
             msg @ (AppMsg::AccountFolded { .. }
@@ -289,10 +289,10 @@ impl AppModel {
             | AppMsg::SendDone { .. }
             | AppMsg::Sent { .. }
             | AppMsg::Unsent { .. }) => self.on_send(msg, sender),
-            msg @ (AppMsg::FillUnifiedSlices
-            | AppMsg::UnifiedFoldersLoaded { .. }
-            | AppMsg::EmitUnifiedNow
-            | AppMsg::EmitUnified) => self.on_unified(msg),
+            msg @ (AppMsg::FillFavoritesSlices
+            | AppMsg::FavoritesFoldersLoaded { .. }
+            | AppMsg::EmitFavoritesNow
+            | AppMsg::EmitFavorites) => self.on_favorites_view(msg),
             msg @ (AppMsg::ComposeClosed(..) | AppMsg::ComposeCloseRequested(..)) => {
                 self.on_compose_host(msg)
             }
