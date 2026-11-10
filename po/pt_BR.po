@@ -4051,39 +4051,6 @@ msgstr "Ocultar destinatários"
 msgid "Show recipients"
 msgstr "Mostrar destinatários"
 
-msgid "Star this message"
-msgstr "Marcar esta mensagem com estrela"
-
-msgid "Translate this message"
-msgstr "Traduzir esta mensagem"
-
-msgid "Reply to this message"
-msgstr "Responder a esta mensagem"
-
-msgid "Reply to everyone on this message"
-msgstr "Responder a todos nesta mensagem"
-
-msgid "Forward this message"
-msgstr "Encaminhar esta mensagem"
-
-msgid "Move this message to a folder"
-msgstr "Mover esta mensagem para uma pasta"
-
-msgid "Archive this message"
-msgstr "Arquivar esta mensagem"
-
-msgid "Delete this message"
-msgstr "Excluir esta mensagem"
-
-msgid "Add sender to Contacts"
-msgstr "Adicionar remetente aos contatos"
-
-msgid "Back to my fonts and colors"
-msgstr "Voltar às minhas fontes e cores"
-
-msgid "Show the sender's fonts and colors"
-msgstr "Mostrar as fontes e as cores do remetente"
-
 msgid "Click to open this message"
 msgstr "Clique para abrir esta mensagem"
 

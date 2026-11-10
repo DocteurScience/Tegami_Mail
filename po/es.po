@@ -4070,39 +4070,6 @@ msgstr "Ocultar destinatarios"
 msgid "Show recipients"
 msgstr "Mostrar destinatarios"
 
-msgid "Star this message"
-msgstr "Destacar este mensaje"
-
-msgid "Translate this message"
-msgstr "Traducir este mensaje"
-
-msgid "Reply to this message"
-msgstr "Responder a este mensaje"
-
-msgid "Reply to everyone on this message"
-msgstr "Responder a todos en este mensaje"
-
-msgid "Forward this message"
-msgstr "Reenviar este mensaje"
-
-msgid "Move this message to a folder"
-msgstr "Mover este mensaje a una carpeta"
-
-msgid "Archive this message"
-msgstr "Archivar este mensaje"
-
-msgid "Delete this message"
-msgstr "Eliminar este mensaje"
-
-msgid "Add sender to Contacts"
-msgstr "Añadir remitente a Contactos"
-
-msgid "Back to my fonts and colors"
-msgstr "Volver a mis fuentes y colores"
-
-msgid "Show the sender's fonts and colors"
-msgstr "Mostrar las fuentes y colores del remitente"
-
 msgid "Click to open this message"
 msgstr "Haz clic para abrir este mensaje"
 

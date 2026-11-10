@@ -4069,39 +4069,6 @@ msgstr "Empfänger ausblenden"
 msgid "Show recipients"
 msgstr "Empfänger anzeigen"
 
-msgid "Star this message"
-msgstr "Nachricht mit Stern markieren"
-
-msgid "Translate this message"
-msgstr "Diese Nachricht übersetzen"
-
-msgid "Reply to this message"
-msgstr "Antwort auf diese Nachricht"
-
-msgid "Reply to everyone on this message"
-msgstr "Allen antworten auf diese Nachricht"
-
-msgid "Forward this message"
-msgstr "Nachricht weiterleiten"
-
-msgid "Move this message to a folder"
-msgstr "Nachricht in einen Ordner verschieben"
-
-msgid "Archive this message"
-msgstr "Nachricht archivieren"
-
-msgid "Delete this message"
-msgstr "Nachricht löschen"
-
-msgid "Add sender to Contacts"
-msgstr "Absender zu Kontakten hinzufügen"
-
-msgid "Back to my fonts and colors"
-msgstr "Eigene Schriftarten und Farben verwenden"
-
-msgid "Show the sender's fonts and colors"
-msgstr "Schriftarten und Farben des Absenders anzeigen"
-
 msgid "Click to open this message"
 msgstr "Klicken zum Öffnen der Nachricht"
 

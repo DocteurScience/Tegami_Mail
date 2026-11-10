@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+- **Removed: the actions palette in the reader's cards** (docs/DESIGN.md,
+  "Removed or moved"). A card's ⋯ always opens its menu, as it did by
+  default; the row of icons it could slide out instead, or show on hover
+  or all the time, goes with its four settings. Every action it held is in
+  the card's right-click menu and the reader's header.
+
 - **Removed: the leftovers of two removed features** (docs/DESIGN.md,
   "Removed or moved"). The appearance themes (Rose, Forest, Tidal, Earth,
   Midnight) had lost their setting but their engine still ran at every

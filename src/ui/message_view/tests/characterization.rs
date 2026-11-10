@@ -209,7 +209,6 @@ fn golden_three_cards_with_side_channels() {
     LIVE_TEMPLATES.with(|t| {
         t.borrow_mut().insert((7, 3));
     });
-    LIVE_TRANSLATE_ON.with(|t| t.set(true));
 
     let mut first = message(1);
     first.keywords = vec!["work".into()];

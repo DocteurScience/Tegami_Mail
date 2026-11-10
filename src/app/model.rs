@@ -350,9 +350,6 @@ pub(crate) struct AppModel {
     pub(super) receipts_filed: HashSet<BodyKey>,
     /// Addresses/domains whose incoming inbox mail is auto-deleted (lowercased).
     pub(super) blacklist: Vec<String>,
-    /// Seconds a message card's actions palette stays open — the cards' own,
-    /// separate from the list's above.
-    pub(super) card_palette_collapse_secs: u64,
     /// Whether to load sender avatars from Gravatar.
     pub(super) gravatar: bool,
     /// Whether the colored avatars are drawn at all (#29).
@@ -620,13 +617,6 @@ pub(crate) struct AppModel {
     /// selection over an open conversation stands for the whole thread when
     /// deleting; a lone picked card never does.
     pub(super) selection_from_cards: bool,
-    /// Conversation card actions hide until hovered (preference).
-    pub(super) card_actions_hover: bool,
-    /// With the ⋯ toggle off: card actions appear automatically on hover.
-    pub(super) card_actions_auto: bool,
-    /// A message card's ⋯ opens the card menu instead of sliding its
-    /// actions palette out.
-    pub(super) card_palette_menu: bool,
     /// Message rows take a sideways swipe to archive / delete (#92).
     pub(super) swipe_enabled: bool,
     /// The message list's swipe-gesture sides are swapped (#swipe).

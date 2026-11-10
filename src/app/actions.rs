@@ -158,10 +158,6 @@ impl AppModel {
                 }
             }
 
-            AppMsg::CardContact(message) => {
-                self.show_add_contact_dialog(&message.from_name, &message.from_addr, &sender);
-            }
-
             AppMsg::RowAction {
                 action,
                 message,

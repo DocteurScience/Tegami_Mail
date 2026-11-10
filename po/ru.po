@@ -4231,39 +4231,6 @@ msgstr "Скрыть получателей"
 msgid "Show recipients"
 msgstr "Показать получателей"
 
-msgid "Star this message"
-msgstr "Отметить это сообщение"
-
-msgid "Translate this message"
-msgstr "Перевести это сообщение"
-
-msgid "Reply to this message"
-msgstr "Ответить на это сообщение"
-
-msgid "Reply to everyone on this message"
-msgstr "Ответить всем участникам этого сообщения"
-
-msgid "Forward this message"
-msgstr "Переслать это сообщение"
-
-msgid "Move this message to a folder"
-msgstr "Переместить это сообщение в папку"
-
-msgid "Archive this message"
-msgstr "Архивировать это сообщение"
-
-msgid "Delete this message"
-msgstr "Удалить это сообщение"
-
-msgid "Add sender to Contacts"
-msgstr "Добавить отправителя в «Контакты»"
-
-msgid "Back to my fonts and colors"
-msgstr "Вернуться к моим шрифтам и цветам"
-
-msgid "Show the sender's fonts and colors"
-msgstr "Показывать шрифты и цвета отправителя"
-
 msgid "Click to open this message"
 msgstr "Нажмите, чтобы открыть это сообщение"
 

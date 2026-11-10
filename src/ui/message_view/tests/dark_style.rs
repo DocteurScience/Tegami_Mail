@@ -311,9 +311,8 @@ fn css_font_reads_pango_descriptions() {
     );
 }
 
-/// The card's "sender's formatting" toggle: offered on every card while
-/// an override is on, lit on the card it was used on, and that card's
-/// frame goes out without the reader's sheet.
+/// A card shown as its sender formatted it goes out without the reader's
+/// sheet; the others keep it.
 #[test]
 fn sender_style_toggle_escapes_one_card() {
     let mut a = msg_for_print();
@@ -343,20 +342,13 @@ fn sender_style_toggle_escapes_one_card() {
         &escaped,
         100,
     );
-    assert_eq!(doc.matches("data-act=\"senderfmt\"").count(), 2, "{doc}");
-    assert_eq!(
-        doc.matches("class=\"tegami-act on\" data-act=\"senderfmt\"")
-            .count(),
-        1,
-        "{doc}"
-    );
     assert_eq!(
         doc.matches(":root :not(#tegami-a)").count(),
         1,
         "only the other card is styled: {doc}"
     );
 
-    // No override: no toggle, nothing injected.
+    // No override: nothing injected.
     let plain = MessageView::conversation_document(
         &[a, b],
         &Default::default(),
@@ -372,7 +364,6 @@ fn sender_style_toggle_escapes_one_card() {
         &escaped,
         100,
     );
-    assert!(!plain.contains("senderfmt"), "{plain}");
     assert!(!plain.contains(":not(#tegami-a)"), "{plain}");
 }
 

@@ -4048,39 +4048,6 @@ msgstr "Amaga els destinataris"
 msgid "Show recipients"
 msgstr "Mostra els destinataris"
 
-msgid "Star this message"
-msgstr "Destaca aquest missatge"
-
-msgid "Translate this message"
-msgstr "Tradueix aquest missatge"
-
-msgid "Reply to this message"
-msgstr "Respon a aquest missatge"
-
-msgid "Reply to everyone on this message"
-msgstr "Respon a tots d'aquest missatge"
-
-msgid "Forward this message"
-msgstr "Reenvia aquest missatge"
-
-msgid "Move this message to a folder"
-msgstr "Mou aquest missatge a una carpeta"
-
-msgid "Archive this message"
-msgstr "Arxiva aquest missatge"
-
-msgid "Delete this message"
-msgstr "Suprimeix aquest missatge"
-
-msgid "Add sender to Contacts"
-msgstr "Afegeix el remitent a contactes"
-
-msgid "Back to my fonts and colors"
-msgstr "Torna a les meves fonts i colors"
-
-msgid "Show the sender's fonts and colors"
-msgstr "Mostra les fonts i colors del remitent"
-
 msgid "Click to open this message"
 msgstr "Fes clic per obrir aquest missatge"
 

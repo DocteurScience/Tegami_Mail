@@ -4259,41 +4259,6 @@ msgid "Show recipients"
 msgstr "Wyświetl odbiorców"
 
 #, fuzzy
-msgid "Star this message"
-msgstr "Modyfikuj tę wiadomość"
-
-#, fuzzy
-msgid "Translate this message"
-msgstr "Usuń tę wiadomość"
-
-msgid "Reply to this message"
-msgstr "Odpowiedz na tę wiadomość"
-
-msgid "Reply to everyone on this message"
-msgstr "Odpowiedz wszystkim adresatom tej wiadomości"
-
-msgid "Forward this message"
-msgstr "Przekaż dalej tę wiadomość"
-
-msgid "Move this message to a folder"
-msgstr "Przenieś tę wiadomość do katalogu"
-
-msgid "Archive this message"
-msgstr "Archiwizuj tę wiadomość"
-
-msgid "Delete this message"
-msgstr "Usuń tę wiadomość"
-
-msgid "Add sender to Contacts"
-msgstr "Dodaj nadawcę do kontaktów"
-
-msgid "Back to my fonts and colors"
-msgstr "Przywróć własne czcionki i kolory"
-
-msgid "Show the sender's fonts and colors"
-msgstr "Wyświetl czcionki i kolory nadawcy"
-
-#, fuzzy
 msgid "Click to open this message"
 msgstr "Odpowiedz na tę wiadomość"
 

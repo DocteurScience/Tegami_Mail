@@ -3652,39 +3652,6 @@ msgstr ""
 msgid "Show recipients"
 msgstr ""
 
-msgid "Star this message"
-msgstr ""
-
-msgid "Translate this message"
-msgstr ""
-
-msgid "Reply to this message"
-msgstr ""
-
-msgid "Reply to everyone on this message"
-msgstr ""
-
-msgid "Forward this message"
-msgstr ""
-
-msgid "Move this message to a folder"
-msgstr ""
-
-msgid "Archive this message"
-msgstr ""
-
-msgid "Delete this message"
-msgstr ""
-
-msgid "Add sender to Contacts"
-msgstr ""
-
-msgid "Back to my fonts and colors"
-msgstr ""
-
-msgid "Show the sender's fonts and colors"
-msgstr ""
-
 msgid "Click to open this message"
 msgstr ""
 

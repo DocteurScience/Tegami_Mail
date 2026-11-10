@@ -82,11 +82,6 @@ pub(crate) struct PrivacyFile {
     /// Stored lowercased; a bare domain like "spam.com" matches any sender there.
     #[serde(default)]
     pub(crate) blacklist: Vec<String>,
-    /// Seconds a message card's actions palette stays open after the cursor
-    /// leaves it. Separate from the list's: cards are read at a different
-    /// pace from a list being skimmed.
-    #[serde(default = "default_palette_collapse")]
-    pub(crate) card_palette_collapse_secs: u64,
     /// Group messages into conversation threads in the list.
     #[serde(default = "default_on")]
     pub(crate) threading: bool,
@@ -181,21 +176,6 @@ pub(crate) struct PrivacyFile {
     /// Accounts view instead of Preferences (the default).
     #[serde(default)]
     pub(crate) settings_open_accounts: bool,
-    /// Whether a conversation card's action icons stay hidden until the card
-    /// is hovered (expanded via their ⋯ toggle). Off = always shown, unless
-    /// `card_actions_auto` shows them automatically on hover.
-    #[serde(default = "default_on")]
-    pub(crate) card_actions_hover: bool,
-    /// With the ⋯ toggle off: show the action icons automatically while the
-    /// card is hovered (rather than always).
-    #[serde(default = "default_card_actions_auto")]
-    pub(crate) card_actions_auto: bool,
-    /// Whether the ⋯ on a message card opens the card's menu in place of
-    /// sliding its actions palette out. On for new installs (2026-10-06);
-    /// an install that saved its settings before then keeps its own value,
-    /// since every save writes every key.
-    #[serde(default = "default_on")]
-    pub(crate) card_palette_menu: bool,
     /// Whether message rows take a sideways swipe at all (#92, PR #135).
     #[serde(default = "default_on")]
     pub(crate) swipe_enabled: bool,
@@ -527,18 +507,8 @@ fn default_single_message_card() -> bool {
     true
 }
 
-fn default_palette_collapse() -> u64 {
-    5
-}
-
 fn default_notification_buttons() -> Vec<String> {
     NotificationButtons::default().to_list()
-}
-
-fn default_card_actions_auto() -> bool {
-    // Off for new installs (2026-08-30): card actions wait behind the ⋯
-    // toggle (card_actions_hover) rather than appearing on hover.
-    false
 }
 
 fn default_preview_lines() -> u32 {
@@ -586,7 +556,6 @@ impl Default for PrivacyFile {
             push: true,
             metered_save_data: true,
             blacklist: Vec::new(),
-            card_palette_collapse_secs: default_palette_collapse(),
             threading: true,
             thread_row_newest: false,
             thread_newest_first: false,
@@ -611,9 +580,6 @@ impl Default for PrivacyFile {
             notification_content: true,
             notification_buttons: default_notification_buttons(),
             settings_open_accounts: false,
-            card_actions_hover: true,
-            card_actions_auto: default_card_actions_auto(),
-            card_palette_menu: true,
             swipe_enabled: true,
             swipe_reversed: false,
             swipe_sensitivity: default_swipe_sensitivity(),

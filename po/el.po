@@ -4109,39 +4109,6 @@ msgstr "Απόκρυψη παραληπτών"
 msgid "Show recipients"
 msgstr "Εμφάνιση παραληπτών"
 
-msgid "Star this message"
-msgstr "Προσθήκη αστεριού σε αυτό το μήνυμα"
-
-msgid "Translate this message"
-msgstr "Μετάφραση αυτού του μηνύματος"
-
-msgid "Reply to this message"
-msgstr "Απάντηση σε αυτό το μήνυμα"
-
-msgid "Reply to everyone on this message"
-msgstr "Απάντηση σε όλους σε αυτό το μήνυμα"
-
-msgid "Forward this message"
-msgstr "Προώθηση αυτού του μηνύματος"
-
-msgid "Move this message to a folder"
-msgstr "Μετακίνηση αυτού του μηνύματος σε φάκελο"
-
-msgid "Archive this message"
-msgstr "Αρχειοθέτηση αυτού του μηνύματος"
-
-msgid "Delete this message"
-msgstr "Διαγραφή αυτού του μηνύματος"
-
-msgid "Add sender to Contacts"
-msgstr "Προσθήκη αποστολέα στις Επαφές"
-
-msgid "Back to my fonts and colors"
-msgstr "Επιστροφή στις γραμματοσειρές και τα χρώματά μου"
-
-msgid "Show the sender's fonts and colors"
-msgstr "Εμφάνιση των γραμματοσειρών και των χρωμάτων του αποστολέα"
-
 msgid "Click to open this message"
 msgstr "Κάντε κλικ για να ανοίξετε αυτό το μήνυμα"
 

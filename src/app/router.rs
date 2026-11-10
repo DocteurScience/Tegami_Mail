@@ -175,7 +175,6 @@ impl AppModel {
             | AppMsg::PurgeMessages(..)
             | AppMsg::CardAction { .. }
             | AppMsg::ToggleReadCurrent
-            | AppMsg::CardContact(..)
             | AppMsg::RowAction { .. }
             | AppMsg::Bulk { .. }
             | AppMsg::BulkComplete

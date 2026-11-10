@@ -193,7 +193,7 @@ if(document.body.classList.contains('tegami-conv')){document.body.classList.add(
 for(var j=0;j<hs.length;j++){(function(h){var tm=null;\
 h.addEventListener('click',function(e){\
 if(e.ctrlKey||e.metaKey||e.shiftKey||e.altKey)return;\
-if(e.target.closest&&e.target.closest('button,a,.tegami-addr,.tegami-acts,.tegami-tags,.tegami-verify,.tegami-rcpt'))return;\
+if(e.target.closest&&e.target.closest('button,a,.tegami-addr,.tegami-tags,.tegami-verify,.tegami-rcpt'))return;\
 if(tm){clearTimeout(tm);tm=null;return;}\
 tm=setTimeout(function(){tm=null;foldCard(h.closest('.tegami-msg'));},260);});})(hs[j]);}}\
 var rbd=document.body.dataset;\
@@ -284,34 +284,12 @@ try{window.webkit.messageHandlers.tegami.postMessage(verb+':'+t.dataset.key+':'+
 var ms=document.querySelectorAll('.tegami-msg');\
 for(var q=0;q<ms.length;q++){ms[q].addEventListener('click',function(e){\
 var k=this.dataset.key;if(k)pick(k,e);});}\
-var actsDelay=parseInt(document.body.dataset.tegamiActsdelay||'0',10)||1200;\
-document.documentElement.style.setProperty('--acts-delay',actsDelay+'ms');\
-var actsMenu=document.body.dataset.tegamiActsmenu==='1';\
 var ts=document.querySelectorAll('.tegami-acts-toggle');\
 for(var t=0;t<ts.length;t++){ts[t].addEventListener('click',function(e){\
-e.stopPropagation();e.preventDefault();\
-if(actsMenu){var br=this.getBoundingClientRect();\
+e.stopPropagation();e.preventDefault();var br=this.getBoundingClientRect();\
 try{window.webkit.messageHandlers.tegami.postMessage('cardmenu:'+this.dataset.key+':'\
-+br.left+','+br.bottom+','+window.innerWidth);}catch(_){}return;}\
-var h=this.closest('.tegami-msg-hdr');var ac=h?h.querySelector('.tegami-acts'):null;if(!ac)return;\
-var on=!ac.classList.contains('open');\
-ac.classList.toggle('open',on);this.classList.toggle('open',on);});\
++br.left+','+br.bottom+','+window.innerWidth);}catch(_){}});\
 ts[t].addEventListener('dblclick',function(e){e.stopPropagation();});}\
-for(var q2=0;q2<ms.length;q2++){(function(card){var timer=null;\
-card.addEventListener('mouseleave',function(){\
-var ac=card.querySelector('.tegami-acts.open');if(!ac)return;\
-timer=setTimeout(function(){ac.classList.remove('open');\
-var tg=card.querySelector('.tegami-acts-toggle');if(tg)tg.classList.remove('open');},actsDelay);});\
-card.addEventListener('mouseenter',function(){if(timer){clearTimeout(timer);timer=null;}});})(ms[q2]);}\
-var as=document.querySelectorAll('.tegami-act');\
-for(var k=0;k<as.length;k++){as[k].addEventListener('click',function(e){\
-e.stopPropagation();e.preventDefault();reportPos();\
-if(this.dataset.act==='star'){var on=this.classList.toggle('on');\
-var sm=this.closest('.tegami-msg');if(sm)sm.classList.toggle('starred',on);}\
-var extra='';if(this.dataset.act==='moveto'){var br=this.getBoundingClientRect();\
-extra=':'+(br.left+br.width/2)+','+br.bottom+','+window.innerWidth;}\
-try{window.webkit.messageHandlers.tegami.postMessage(this.dataset.act+':'+this.dataset.key+extra);}catch(_){}});\
-as[k].addEventListener('dblclick',function(e){e.stopPropagation();});}\
 document.addEventListener('click',function(e){var b=e.target&&e.target.closest?e.target.closest('.tegami-unsub-btn'):null;\
 if(!b)return;e.stopPropagation();e.preventDefault();\
 var v=b.dataset.tpl?'tpl:'+b.dataset.key+':'+b.dataset.tpl:b.dataset.mdn?'mdn:'+b.dataset.key+':'+b.dataset.mdn:'unsub:'+b.dataset.key;\
@@ -373,7 +351,7 @@ return JSON.stringify({key:(m.dataset&&m.dataset.key)||'',sel:sel});};\
    Its key, or nothing. */\
 window.__tegamiDragAt=function(x,y,w){var r=window.innerWidth/w;x*=r;y*=r;\
 var el=document.elementFromPoint(x,y);if(!el||!el.closest)return '';\
-if(el.closest('button,a,input,.tegami-addr,.tegami-acts,.tegami-tags,.tegami-verify,.tegami-rcpt'))return '';\
+if(el.closest('button,a,input,.tegami-addr,.tegami-tags,.tegami-verify,.tegami-rcpt'))return '';\
 var h=el.closest('.tegami-msg-hdr,.tegami-fbar');if(!h)return '';\
 var m=h.closest('.tegami-msg');return (m&&m.dataset.key)||h.dataset.key||'';};\
 /* The reader drags a card by its header itself; WebKit's own drag of the\

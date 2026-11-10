@@ -60,16 +60,6 @@ impl MessageView {
         self.remote_allowed = remote;
     }
 
-    pub(super) fn on_toggle_sender_style(&mut self, account_id: u32, id: u32) {
-        let key = (account_id, id);
-        if !self.sender_style.remove(&key) {
-            self.sender_style.insert(key);
-        }
-        if self.current.is_some() && !self.loading {
-            self.render();
-        }
-    }
-
     pub(super) fn on_sender_check_for(
         &mut self,
         account_id: u32,

@@ -133,12 +133,6 @@ pub(crate) enum MessageViewInput {
     },
     LoadRemoteOnce,
     AllowSenderAlways,
-    /// A card's remote-content button: show what is blocked, or put the block
-    /// back. The banner does the first half and can be switched off entirely.
-    ToggleRemote {
-        account_id: u32,
-        id: u32,
-    },
     /// The system/app light-dark preference changed; re-render to match.
     ThemeChanged,
     /// What one of the user's own mailboxes shows has changed — a Gravatar
@@ -162,12 +156,6 @@ pub(crate) enum MessageViewInput {
     SetContentTheme(Option<bool>),
     /// The reader's own fonts and colors over the senders' (#56).
     SetReaderStyle(crate::config::ReaderStyle),
-    /// The card's "sender's formatting" toggle: show that one message as its
-    /// sender formatted it, or back under the reader's style.
-    ToggleSenderStyle {
-        account_id: u32,
-        id: u32,
-    },
     /// Message zoom in percent; the bodies on screen rescale in place.
     SetZoom(u32),
     /// The zoom Settings starts at, which the chip measures against.
@@ -324,11 +312,6 @@ pub(crate) enum MessageViewInput {
         account_id: u32,
         id: u32,
     },
-    /// The card's "Add sender to Contacts" button.
-    CardContact {
-        account_id: u32,
-        id: u32,
-    },
     /// A right-click at webview point (x, y), on the card `key` names (the
     /// nearest one when it landed between cards; `None` when the page could
     /// not say): the app shows that message's menu, led by what `hit` offers.
@@ -337,15 +320,6 @@ pub(crate) enum MessageViewInput {
         x: f64,
         y: f64,
         hit: MenuHit,
-    },
-    /// A card's Move to… button, at page point (x, y) in CSS pixels of a
-    /// page `page_width` wide: the app opens the folder picker there.
-    CardMoveAt {
-        account_id: u32,
-        id: u32,
-        x: f64,
-        y: f64,
-        page_width: f64,
     },
     /// The card's ⋯, acting as a menu, was clicked at page point (x, y) in
     /// CSS pixels of a page `page_width` wide: the app shows that message's
@@ -465,8 +439,6 @@ pub(crate) enum MessageViewOutput {
         id: u32,
         show: bool,
     },
-    /// A card's "Add sender to Contacts" button — add this message's sender.
-    ContactSender(Box<Message>),
     /// A card's attachment (#213): do `verb` to the file at `index` of that
     /// message's attachments.
     AttachmentAction {
@@ -482,13 +454,6 @@ pub(crate) enum MessageViewOutput {
         x: f64,
         y: f64,
         hit: MenuHit,
-    },
-    /// A card's Move to… button: the folder picker for that message, at
-    /// window point (x, y).
-    CardMoveTo {
-        message: Box<Message>,
-        x: f64,
-        y: f64,
     },
     /// An email address in a card header was clicked — open a composer to it.
     ComposeTo(String),

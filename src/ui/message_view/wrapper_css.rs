@@ -47,7 +47,6 @@ pub(super) fn wrapper_css(
          .tegami-msg.tegami-folded .tegami-rcpt-toggle,\
          .tegami-msg.tegami-folded .tegami-folder,\
          .tegami-msg.tegami-folded .tegami-acts-toggle,\
-         .tegami-msg.tegami-folded .tegami-acts,\
          .tegami-msg.tegami-folded .tegami-rcpt{{display:none !important;}}\
          .tegami-msg.tegami-folded .tegami-from{{flex:0 1 auto;}}\
          /* Folded, the chevron says the card opens (mockup 02). */\
@@ -92,9 +91,6 @@ pub(super) fn wrapper_css(
          /* Below the wrapped meta line the recipients need a touch\
          more air than the wide layout's 2px. */\
          .tegami-rcpt{{margin-top:6px;}}\
-         /* With the meta group gone from the first line, the palette\
-         pins itself to the corner (the \u{22ef} is already absolute). */\
-         body:not([data-tegami-acts=\"toggle\"]) .tegami-acts{{margin-inline-start:auto;}}\
          /* A folded card stays one line, narrow or not: its first words\
          give way to the date. Large text makes a wide pane narrow here\
          (design feedback P1-2, 2026-11-04). */\
@@ -332,48 +328,15 @@ pub(super) fn wrapper_css(
          border:0;border-radius:999px;cursor:pointer;}}\
          .tegami-quote:hover{{opacity:0.95;background:rgba(128,128,128,0.28);}}\
          .tegami-quote.open{{opacity:0.95;position:absolute;inset-inline-start:0;z-index:2;}}\
-         .tegami-acts{{display:flex;gap:2px;flex:none;align-self:center;margin-inline-start:4px;}}\
-         /* Read-toggle: the icon showing is the ACTION (read envelope\
-         means mark-as-read); the section's unread class decides. */\
-         .tegami-act .tr-when-unread,.tegami-act .tr-when-read{{display:none;line-height:0;}}\
-         .tegami-msg.unread .tegami-act[data-act=\"toggleread\"] .tr-when-unread{{display:inline-flex;}}\
-         .tegami-msg:not(.unread) .tegami-act[data-act=\"toggleread\"] .tr-when-read{{display:inline-flex;}}\
-         .tegami-act{{color:inherit;background:none;border:none;border-radius:6px;\
-         padding:5px 8px;cursor:pointer;opacity:0.7;\
-         display:inline-flex;align-items:center;justify-content:center;\
-         vertical-align:middle;line-height:0;\
-         transition:opacity 120ms ease,background 120ms ease;}}\
-         .tegami-act:hover{{opacity:1;background:rgba(128,128,128,0.18);}}\
-         .tegami-act:active{{background:rgba(128,128,128,0.3);}}\
-         .tegami-act svg{{width:14px;height:14px;display:block;}}\
-         .tegami-act svg,.tegami-act svg *{{fill:currentColor;}}\
-         /* A set star: the one state that carries color. */\
-         .tegami-act.on{{color:#e5a50a;opacity:1;}}\
-         .tegami-acts-toggle{{display:none;}}\
-         /* Behind-the-\u{22ef} mode: the palette overlays the header line as an\
-         absolute strip anchored at the toggle, expanding leftward over\
-         the text beneath (never pushing it), its left edge fading in\
-         from transparent. The \u{22ef} itself never moves. */\
-         body[data-tegami-acts=\"toggle\"] .tegami-acts{{position:absolute;\
-         inset-inline-end:34px;top:13px;transform:translateY(-50%) scaleX(0.6);\
-         transform-origin:right center;margin:0;\
-         padding-block:2px;padding-inline:30px 6px;border-radius:8px;\
-         background:linear-gradient(to right,transparent,{bg} 26px);\
-         opacity:0;pointer-events:none;\
-         transition:opacity 140ms ease,transform 180ms ease;}}\
-         body[data-tegami-acts=\"toggle\"] .tegami-acts.open{{opacity:1;\
-         pointer-events:auto;transform:translateY(-50%) scaleX(1);}}\
-         body:not(.tegami-conv)[data-tegami-acts=\"toggle\"] .tegami-acts{{\
-         background:linear-gradient(to right,transparent,{chrome} 26px);}}\
          /* Always visible (not just on card hover), and OUT OF FLOW:\
          absolutely pinned to the header's right edge, so no amount of\
          header content can push or wrap it. The line reserves the\
          button's footprint as fixed right padding instead. */\
-         body[data-tegami-acts=\"toggle\"] .tegami-hdr-line{{padding-inline-end:38px;}}\
+         .tegami-hdr-line{{padding-inline-end:38px;}}\
          /* Anchored to the FIRST row's centre (the 26px avatar/sender\
          line), not the line box's — when the meta row wraps beneath,\
          the box grows downward but the button must not move. */\
-         body[data-tegami-acts=\"toggle\"] .tegami-acts-toggle{{display:block;\
+         .tegami-acts-toggle{{display:block;\
          position:absolute;inset-inline-end:0;top:13px;transform:translateY(-50%);\
          color:{toggle_color};background:none;border:none;border-radius:6px;\
          padding:4px 8px;margin:0;cursor:pointer;\
@@ -382,13 +345,8 @@ pub(super) fn wrapper_css(
          attribute, which a rule on the svg element alone can't beat. */\
          .tegami-acts-toggle svg{{width:14px;height:14px;display:block;}}\
          .tegami-acts-toggle svg,.tegami-acts-toggle svg *{{fill:currentColor;}}\
-         body[data-tegami-acts=\"toggle\"] .tegami-acts-toggle:hover{{opacity:1;\
+         .tegami-acts-toggle:hover{{opacity:1;\
          background:rgba(128,128,128,0.18);}}\
-         body[data-tegami-acts=\"toggle\"] .tegami-acts-toggle.open{{opacity:1;}}\
-         body[data-tegami-acts=\"hover\"] .tegami-acts{{opacity:0;pointer-events:none;\
-         transition:opacity 300ms ease var(--acts-delay,0ms);}}\
-         body[data-tegami-acts=\"hover\"] .tegami-msg:hover .tegami-acts{{opacity:1;\
-         pointer-events:auto;transition:opacity 300ms ease 0ms;}}\
          .tegami-folder{{padding:0.05em 0.45em;border-radius:0.7em;\
          font-size:0.78em;opacity:0.75;border:1px solid currentColor;\
          white-space:nowrap;flex:none;}}\
@@ -430,11 +388,6 @@ pub(super) fn wrapper_css(
          -webkit-mask-image:linear-gradient(to left,#000 calc(100% - 18px),transparent);\
          mask-image:linear-gradient(to left,#000 calc(100% - 18px),transparent);}}\
          html[dir=rtl] .tegami-addr.clipped:hover{{-webkit-mask-image:none;mask-image:none;}}\
-         html[dir=rtl] body[data-tegami-acts=\"toggle\"] .tegami-acts{{\
-         transform-origin:left center;\
-         background:linear-gradient(to left,transparent,{bg} 26px);}}\
-         html[dir=rtl] body:not(.tegami-conv)[data-tegami-acts=\"toggle\"] .tegami-acts{{\
-         background:linear-gradient(to left,transparent,{chrome} 26px);}}\
          /* Each chip's words in their own direction, as a GTK label\
          has them: an English 1 recipient in a right-to-left line\
          otherwise reads recipient 1. */\

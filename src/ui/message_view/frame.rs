@@ -116,8 +116,6 @@ thread_local! {
     /// tests.
     pub(super) static LIVE_TEMPLATES: std::cell::RefCell<std::collections::HashSet<(u32, u32)>> =
         std::cell::RefCell::new(std::collections::HashSet::new());
-    /// Whether a translation service is set up, so cards offer Translate.
-    pub(super) static LIVE_TRANSLATE_ON: std::cell::Cell<bool> = const { std::cell::Cell::new(false) };
 }
 
 /// That ground as a color the WebView itself can be painted with.

@@ -4208,40 +4208,6 @@ msgstr "Címzettek elrejtése"
 msgid "Show recipients"
 msgstr "Címzettek megjelenítése"
 
-msgid "Star this message"
-msgstr "Üzenet csillagozása"
-
-#, fuzzy
-msgid "Translate this message"
-msgstr "Üzenet törlése"
-
-msgid "Reply to this message"
-msgstr "Válasz erre az üzenetre"
-
-msgid "Reply to everyone on this message"
-msgstr "Válasz az üzenet minden címzettjének"
-
-msgid "Forward this message"
-msgstr "Üzenet továbbítása"
-
-msgid "Move this message to a folder"
-msgstr "Üzenet mappába helyezése"
-
-msgid "Archive this message"
-msgstr "Üzenet archiválása"
-
-msgid "Delete this message"
-msgstr "Üzenet törlése"
-
-msgid "Add sender to Contacts"
-msgstr "Feladó hozzáadása a névjegyekhez"
-
-msgid "Back to my fonts and colors"
-msgstr "Vissza a saját betűtípusaimhoz és színeimhez"
-
-msgid "Show the sender's fonts and colors"
-msgstr "Feladó betűtípusainak és színeinek megjelenítése"
-
 #, fuzzy
 msgid "Click to open this message"
 msgstr "Válasz erre az üzenetre"

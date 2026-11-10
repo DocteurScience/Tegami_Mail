@@ -123,7 +123,6 @@ fn message_view_output_msg(out: MessageViewOutput) -> AppMsg {
             thread: Vec::new(),
         },
         MessageViewOutput::CardAction { action, message } => AppMsg::CardAction { action, message },
-        MessageViewOutput::ContactSender(m) => AppMsg::CardContact(m),
         MessageViewOutput::AttachmentAction {
             account_id,
             id,
@@ -141,12 +140,6 @@ fn message_view_output_msg(out: MessageViewOutput) -> AppMsg {
             y,
             hit,
             popout: None,
-        },
-        MessageViewOutput::CardMoveTo { message, x, y } => AppMsg::ListMoveTo {
-            messages: vec![*message],
-            offer_whole: false,
-            x,
-            y,
         },
         MessageViewOutput::MarkSeen { account_id, id } => {
             AppMsg::ThreadMessageSeen { account_id, id }
