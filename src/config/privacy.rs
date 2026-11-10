@@ -5,7 +5,7 @@
 use serde::{Deserialize, Serialize};
 use std::path::PathBuf;
 
-use super::look::{default_list_columns, default_text_scale, AppTheme, ReadingPane};
+use super::look::{default_list_columns, AppTheme, ReadingPane};
 use super::prefs::{
     default_files_limit_mb, default_undo_send_secs, ComposeFormat, FilesAction, FilesLarge,
     LauncherBadge, NotificationButtons, PrintOptions, ReadMark, ReceiptPolicy, ReturnedReceipts,
@@ -159,9 +159,6 @@ pub(crate) struct PrivacyFile {
     /// The app chrome's theme: follow the system, or force light/dark.
     #[serde(default)]
     pub(crate) app_theme: AppTheme,
-    /// The app's text size, in percent of the desktop's (#267).
-    #[serde(default = "default_text_scale")]
-    pub(crate) text_scale: u32,
     /// Lines of message text shown under the subject in the list: 0 turns the
     /// preview off entirely, and stops it being fetched.
     #[serde(default = "default_preview_lines")]
@@ -329,7 +326,6 @@ impl Default for PrivacyFile {
             spellcheck: true,
             spellcheck_langs: String::new(),
             app_theme: AppTheme::default(),
-            text_scale: default_text_scale(),
             preview_lines: default_preview_lines(),
             list_columns: default_list_columns(),
             list_headings: false,

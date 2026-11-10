@@ -287,8 +287,6 @@ pub(crate) struct AppModel {
     pub(super) tags_expanded_accounts: Vec<String>,
     /// The app chrome's theme preference (follow system / light / dark).
     pub(super) app_theme: config::AppTheme,
-    /// The app's text size in percent of the desktop's (#267).
-    pub(super) text_scale: u32,
     /// Held so the in-flight collapse/expand width animation isn't dropped.
     pub(super) sidebar_anim: Option<adw::TimedAnimation>,
     pub(super) current: Option<Message>,

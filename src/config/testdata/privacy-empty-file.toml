@@ -32,7 +32,6 @@ undo_send_secs = 5
 spellcheck = true
 spellcheck_langs = ""
 app_theme = "system"
-text_scale = 100
 preview_lines = 1
 list_columns = [
     "star",

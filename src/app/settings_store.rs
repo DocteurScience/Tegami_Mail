@@ -67,7 +67,6 @@ impl AppModel {
             returned_receipts: self.returned_receipts,
             notify_receipts: self.notify_receipts,
             app_theme: self.app_theme,
-            text_scale: self.text_scale,
             console_mode: self.console_mode,
             status_bar_top: self.status_bar_top,
             read_mark: self.read_mark,

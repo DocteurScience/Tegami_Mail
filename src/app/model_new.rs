@@ -233,7 +233,6 @@ impl AppModel {
             smart_expanded,
             tags_expanded_accounts,
             app_theme: prefs.app_theme,
-            text_scale: config::load_text_scale(),
             current: None,
             allowed_senders: prefs.allowed_senders,
             unsubscribed: config::load_unsubscribed(),

@@ -14,21 +14,6 @@ pub(crate) enum AppTheme {
     Dark,
 }
 
-pub(super) fn default_text_scale() -> u32 {
-    100
-}
-
-/// The app's text size in percent; anything Settings does not offer reads
-/// as the desktop's own size.
-pub(crate) fn load_text_scale() -> u32 {
-    let percent = load_privacy().text_scale;
-    if crate::desktop::text_scale::STEPS.contains(&percent) {
-        percent
-    } else {
-        100
-    }
-}
-
 /// Where the reader sits (#475): beside the list, below it, or nowhere,
 /// messages then opening in windows of their own.
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq, serde::Serialize, serde::Deserialize)]

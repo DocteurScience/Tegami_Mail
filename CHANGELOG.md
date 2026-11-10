@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- **Removed: the stored text size** (docs/DESIGN.md, "Removed or moved").
+  Its row had gone with the Appearance settings, yet a `text_scale` saved by
+  an earlier version still enlarged or shrank all of the app's text, with
+  nothing left to undo it. The app's text now always follows the desktop's
+  text size (GNOME's Large Text and text scaling factor).
 - **Removed: the stored date and clock styles** (docs/DESIGN.md, "Removed
   or moved": "Conversations and Date and time: the pages. Defaults, or the
   system"). Their page was gone, yet a `date_style` or `clock_style` saved
