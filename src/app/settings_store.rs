@@ -27,7 +27,6 @@ impl AppModel {
             push: self.push,
             metered_save_data: self.metered_save_data,
             blacklist: self.blacklist.clone(),
-            palette_collapse_secs: self.palette_collapse_secs,
             card_palette_collapse_secs: self.card_palette_collapse_secs,
             threading: self.threading,
             thread_row_newest: self.thread_row_newest,
@@ -55,8 +54,6 @@ impl AppModel {
             settings_open_accounts: self.settings_open_accounts,
             card_actions_hover: self.card_actions_hover,
             card_actions_auto: self.card_actions_auto,
-            list_palette: self.list_palette,
-            list_palette_hover: self.list_palette_hover,
             card_palette_menu: self.card_palette_menu,
             swipe_enabled: self.swipe_enabled,
             swipe_reversed: self.swipe_reversed,
@@ -122,7 +119,6 @@ impl AppModel {
             rail_fold: self.rail_fold,
             app_theme: self.app_theme,
             text_scale: self.text_scale,
-            theme: self.theme.clone(),
             section_style: self.section_style,
             tags_placement: self.tags_placement,
             favorites_placement: self.favorites_placement,
@@ -177,11 +173,6 @@ impl AppModel {
             .emit(MessageListInput::SetThreading(self.threading));
         self.message_list
             .emit(MessageListInput::SetThreadRowNewest(self.thread_row_newest));
-        self.message_list
-            .emit(MessageListInput::SetListPalette(self.list_palette));
-        self.message_list.emit(MessageListInput::SetPaletteCollapse(
-            self.palette_collapse_secs,
-        ));
         self.message_view.emit(MessageViewInput::SetContentTheme(
             self.message_theme.dark_override(),
         ));

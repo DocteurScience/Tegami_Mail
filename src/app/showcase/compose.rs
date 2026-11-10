@@ -235,12 +235,3 @@ pub(super) fn stage_flip(sender: &ComponentSender<AppModel>) {
         );
     }
 }
-
-/// TEGAMI_SHOWCASE_THEME=<id> picks that appearance theme at
-/// 6 s, exactly as the Settings gallery does, so the live
-/// repaint (chrome, reader and composer) can be captured.
-pub(super) fn stage_theme(sender: &ComponentSender<AppModel>) {
-    if let Ok(id) = std::env::var("TEGAMI_SHOWCASE_THEME") {
-        input_after(sender, 6, AppMsg::Pref(PrefOutput::SetTheme(id)));
-    }
-}

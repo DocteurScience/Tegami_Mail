@@ -285,8 +285,6 @@ pub(crate) struct MessageList {
     last_count: String,
     /// Group messages into conversation threads (user preference).
     threading: bool,
-    /// Whether rows carry the actions palette line at all (preference).
-    list_palette: bool,
     /// One line per message (#334): set by the Layout setting, or by the
     /// pane's width when it is Automatic.
     single_line: bool,

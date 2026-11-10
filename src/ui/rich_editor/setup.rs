@@ -276,22 +276,10 @@ fn follow_theme(webview: &webkit6::WebView) -> gtk::glib::SignalHandlerId {
     // this the editor stays in the scheme it was opened in. Deferred to
     // the next main-loop pass — the theme's named colors are only
     // re-resolved after the signal fires.
-    let handler = {
-        let weak = webview.downgrade();
-        adw::StyleManager::default().connect_dark_notify(move |sm| {
-            reground(&weak, sm.is_dark());
-        })
-    };
-    // An appearance theme moves the same colors with no scheme flip, so
-    // the editor re-grounds for that too — and drops out of the list
-    // once its view is gone.
-    {
-        let weak = webview.downgrade();
-        crate::desktop::theme::connect_changed(move || {
-            reground(&weak, adw::StyleManager::default().is_dark())
-        });
-    }
-    handler
+    let weak = webview.downgrade();
+    adw::StyleManager::default().connect_dark_notify(move |sm| {
+        reground(&weak, sm.is_dark());
+    })
 }
 
 /// Mirror WebKit's undo and redo availability into `history` and tell

@@ -9,7 +9,7 @@ use crate::ui::preferences::PrefOutput;
 
 use super::attachments::prune_downloads;
 use super::model::AppModel;
-use super::theme::{apply_app_theme, refresh_scheme_css};
+use super::theme::apply_app_theme;
 
 impl AppModel {
     /// The settings changes the router sends here (see `AppModel::route`).
@@ -23,20 +23,6 @@ impl AppModel {
                 if self.app_theme != theme {
                     self.app_theme = theme;
                     apply_app_theme(theme);
-                    self.save_settings();
-                }
-            }
-
-            PrefOutput::SetTheme(id) => {
-                if self.theme != id {
-                    self.theme = id.clone();
-                    // Repaints the chrome and tells the reader and any open
-                    // composer to re-ground their documents. The colors the
-                    // scheme-dependent CSS reads back are taken a main-loop
-                    // pass later, as they are on a light/dark flip, so the
-                    // lookups answer for the palette that just landed.
-                    crate::desktop::theme::set(&id);
-                    gtk::glib::idle_add_local_once(refresh_scheme_css);
                     self.save_settings();
                 }
             }

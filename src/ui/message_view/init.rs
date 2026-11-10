@@ -326,14 +326,5 @@ impl MessageView {
             });
             handler.set(Some(id));
         }
-        // The same for an appearance theme, which moves the colors without
-        // touching the light/dark preference. A closed message window's
-        // reader drops its watcher the next time the theme changes.
-        {
-            let s = sender.input_sender().clone();
-            crate::desktop::theme::connect_changed(move || {
-                s.send(MessageViewInput::ThemeChanged).is_ok()
-            });
-        }
     }
 }

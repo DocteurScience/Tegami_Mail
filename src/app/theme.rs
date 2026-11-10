@@ -60,15 +60,6 @@ pub(super) fn install_scheme_css(window: &impl IsA<gtk::Widget>) {
     };
     let style = adw::StyleManager::default();
     apply(&provider, style.is_dark());
-    // A theme change moves the same colors without any scheme flip, so the
-    // provider has to be reloadable on demand as well (AppMsg::Pref(PrefOutput::SetTheme)).
-    SCHEME_REFRESH.with(|slot| {
-        let provider = provider.clone();
-        let apply = apply.clone();
-        *slot.borrow_mut() = Some(Box::new(move || {
-            apply(&provider, adw::StyleManager::default().is_dark());
-        }));
-    });
     style.connect_dark_notify(move |sm| {
         // The theme's named colors are re-resolved after this signal, not
         // before it: read them now and the lookup answers for the scheme
@@ -129,23 +120,6 @@ pub(super) fn install_high_contrast_css() {
     let style = adw::StyleManager::default();
     apply(style.is_high_contrast());
     style.connect_high_contrast_notify(move |sm| apply(sm.is_high_contrast()));
-}
-
-/// Re-read the theme's colors into the scheme-dependent CSS, for a change
-/// that moves them without flipping the color scheme.
-pub(super) fn refresh_scheme_css() {
-    SCHEME_REFRESH.with(|slot| {
-        if let Some(refresh) = slot.borrow().as_ref() {
-            refresh();
-        }
-    });
-}
-
-thread_local! {
-    /// Reloads the scheme-dependent provider with the colors the live theme
-    /// answers with now (see [`install_scheme_css`]).
-    static SCHEME_REFRESH: std::cell::RefCell<Option<Box<dyn Fn()>>> =
-        const { std::cell::RefCell::new(None) };
 }
 
 /// GNOME Shell turns animations off in every app while a remote desktop

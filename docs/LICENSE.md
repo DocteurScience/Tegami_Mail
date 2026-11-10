@@ -26,14 +26,6 @@ sounds from [GNOME Settings](https://gitlab.gnome.org/GNOME/gnome-control-center
 (GPL-2.0-or-later), unmodified; see
 [data/sounds/README.md](../data/sounds/README.md).
 
-## Appearance themes
-
-The appearance themes (Rose, Forest, Tidal, Earth and Midnight) are the theme
-library from [T3 Code](https://github.com/pingdotgg/t3code) (MIT, © 2026 T3
-Tools Inc.), converted to sRGB, renamed, and mapped onto libadwaita's colour
-roles by `tools/gen-themes.py`. Tegami Mail is not affiliated with or endorsed by
-T3 Tools.
-
 ## Grammar checkers
 
 Tegami Mail does not ship a grammar checker. When asked to in Settings, it

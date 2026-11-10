@@ -181,8 +181,6 @@ pub(crate) enum PrefOutput {
     ExportLog,
     ImportSettings,
     SetAppTheme(AppTheme),
-    /// A theme was picked in the gallery (its id, or "system").
-    SetTheme(String),
     SetPreviewLines(u32),
     SetSingleKey(bool),
     SetGmailKeys(bool),

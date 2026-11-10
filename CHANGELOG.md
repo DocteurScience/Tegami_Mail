@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+- **Removed: the leftovers of two removed features** (docs/DESIGN.md,
+  "Removed or moved"). The appearance themes (Rose, Forest, Tidal, Earth,
+  Midnight) had lost their setting but their engine still ran at every
+  start; it goes, and a theme chosen before gives way to the system's
+  colours. The ⋯ actions palette that appeared on a list row under the
+  pointer goes too: the row's actions are in its right-click menu, its
+  swipes and the keys. Five icons nothing draws any more leave the bundle.
+
 - **Changed: the first-run wizard** (docs/DESIGN.md, "First run"; screens
   49 to 52). Its pages follow one another, with back and close in the
   header bar, in the system's colours, light, dark or high contrast,

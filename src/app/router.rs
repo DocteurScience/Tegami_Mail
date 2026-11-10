@@ -377,7 +377,6 @@ impl AppModel {
     fn route_pref(&mut self, pref: PrefOutput, sender: ComponentSender<Self>) {
         match pref {
             pref @ (PrefOutput::SetAppTheme(..)
-            | PrefOutput::SetTheme(..)
             | PrefOutput::SetAvatars(..)
             | PrefOutput::SetSenderLogos(..)
             | PrefOutput::SetGravatar(..)

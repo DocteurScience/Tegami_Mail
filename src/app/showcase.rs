@@ -62,7 +62,6 @@ impl AppModel {
                 self.stage_heights(delay);
                 if stage {
                     self.stage_select_first_row();
-                    self.stage_palette(root);
                     self.stage_open_card();
                 }
                 self.stage_swipe(root);
@@ -93,7 +92,6 @@ impl AppModel {
                 compose::stage_compose_undo(sender);
                 compose::stage_files(sender);
                 compose::stage_flip(sender);
-                compose::stage_theme(sender);
                 settings::stage_shortcuts(sender);
                 settings::stage_new_account(sender);
                 settings::stage_account_settings(sender);

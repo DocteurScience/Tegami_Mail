@@ -313,9 +313,6 @@ pub(crate) struct AppModel {
     pub(super) app_theme: config::AppTheme,
     /// The app's text size in percent of the desktop's (#267).
     pub(super) text_scale: u32,
-    /// The appearance theme: a bundled palette's id, or "system" for the
-    /// stock GNOME colors (see `theme.rs`).
-    pub(super) theme: String,
     /// Held so the in-flight collapse/expand width animation isn't dropped.
     pub(super) sidebar_anim: Option<adw::TimedAnimation>,
     pub(super) current: Option<Message>,
@@ -353,8 +350,6 @@ pub(crate) struct AppModel {
     pub(super) receipts_filed: HashSet<BodyKey>,
     /// Addresses/domains whose incoming inbox mail is auto-deleted (lowercased).
     pub(super) blacklist: Vec<String>,
-    /// Seconds the message-list actions palette stays open after the cursor leaves.
-    pub(super) palette_collapse_secs: u64,
     /// Seconds a message card's actions palette stays open — the cards' own,
     /// separate from the list's above.
     pub(super) card_palette_collapse_secs: u64,
@@ -629,10 +624,6 @@ pub(crate) struct AppModel {
     pub(super) card_actions_hover: bool,
     /// With the ⋯ toggle off: card actions appear automatically on hover.
     pub(super) card_actions_auto: bool,
-    /// Whether the message list rows carry an actions palette at all.
-    pub(super) list_palette: bool,
-    /// The list's actions palette opens on row hover (no ⋯ click).
-    pub(super) list_palette_hover: bool,
     /// A message card's ⋯ opens the card menu instead of sliding its
     /// actions palette out.
     pub(super) card_palette_menu: bool,

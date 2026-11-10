@@ -214,9 +214,6 @@ impl MessageList {
             look.sender_logos = self.sender_logos;
             look.preview_lines = self.preview_lines;
             look.pills_below = self.pills_below;
-            // The palette hangs under a card; a single line has no room for
-            // it, so actions come from the menu, swipes and keys there.
-            look.show_palette = self.list_palette && !self.single_line;
             look.single_line = self.single_line;
             look.columns = self
                 .columns

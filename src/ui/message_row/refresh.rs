@@ -34,7 +34,6 @@ impl Row {
         self.refresh_subject(&data, &look, &shared, unread);
         self.refresh_preview(&data, &look);
         self.refresh_swipe_state(&shared, &look);
-        self.sync_palette_buttons();
         self.sync_swipe_strip();
     }
 
@@ -50,27 +49,13 @@ impl Row {
                 .set_reveal_child(meta.revealed && !st.swipe_committing && !meta.appear);
         }
 
-        // The actions line: centred under the avatar with circles on (circle
-        // centre minus half the button), hugging the pill's edge without.
-        w.actions_line.set_visible(look.show_palette);
-        w.actions_line
-            .set_margin_start(if look.avatars { 22 } else { 10 });
-        w.actions_line
-            .set_margin_bottom(if look.avatars { 3 } else { 4 });
-        self.sync_palette_classes();
-
         // The content box.
         let mut content = vec!["message-row"];
         if !look.avatars {
             content.push("no-avatar");
         }
-        if !look.show_palette {
-            content.push("no-palette");
-        }
         if single {
             content.push("single-line");
-        } else if look.show_palette && look.avatars && look.preview_lines == 0 {
-            content.push("palette-room");
         }
         w.content.set_css_classes(&content);
         w.content
@@ -620,21 +605,6 @@ impl Row {
 
     pub(super) fn set_hover(&self, over: bool) {
         self.st.borrow_mut().hovered = over;
-        self.sync_palette_classes();
-        // Hover mode: the palette slides open by itself on the row, and arms
-        // the usual collapse timeout on leave.
-        let Some(shared) = self.shared() else { return };
-        if !shared.palette_hover.get() || self.data().is_none() {
-            return;
-        }
-        if over {
-            if !self.st.borrow().palette_open {
-                self.open_palette(true);
-            }
-            self.cancel_collapse();
-        } else if self.st.borrow().palette_open {
-            self.arm_collapse();
-        }
     }
 }
 

@@ -133,16 +133,6 @@ pub(crate) fn load_text_scale() -> u32 {
     }
 }
 
-/// The appearance theme's id; "system" (the stock look) when unset.
-pub(crate) fn load_theme() -> String {
-    let id = load_privacy().theme;
-    if id.is_empty() {
-        crate::desktop::theme::SYSTEM_ID.to_string()
-    } else {
-        id
-    }
-}
-
 /// Where the reader sits (#475): beside the list, below it, or nowhere,
 /// messages then opening in windows of their own.
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq, serde::Serialize, serde::Deserialize)]

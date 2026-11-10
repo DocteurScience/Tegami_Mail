@@ -82,11 +82,6 @@ pub(crate) struct PrivacyFile {
     /// Stored lowercased; a bare domain like "spam.com" matches any sender there.
     #[serde(default)]
     pub(crate) blacklist: Vec<String>,
-    /// Seconds the message-list actions palette stays open after the cursor
-    /// leaves it before auto-collapsing. (A prior `palette_delay_ms` setting in
-    /// milliseconds is intentionally not migrated — its meaning has changed.)
-    #[serde(default = "default_palette_collapse")]
-    pub(crate) palette_collapse_secs: u64,
     /// Seconds a message card's actions palette stays open after the cursor
     /// leaves it. Separate from the list's: cards are read at a different
     /// pace from a list being skimmed.
@@ -195,14 +190,6 @@ pub(crate) struct PrivacyFile {
     /// card is hovered (rather than always).
     #[serde(default = "default_card_actions_auto")]
     pub(crate) card_actions_auto: bool,
-    /// Whether the message list rows carry an actions palette at all. Off
-    /// removes the ⋯ line entirely, returning its space to the row.
-    #[serde(default = "default_on")]
-    pub(crate) list_palette: bool,
-    /// Whether the message list's actions palette opens on row hover, without
-    /// needing the ⋯ click.
-    #[serde(default)]
-    pub(crate) list_palette_hover: bool,
     /// Whether the ⋯ on a message card opens the card's menu in place of
     /// sliding its actions palette out. On for new installs (2026-10-06);
     /// an install that saved its settings before then keeps its own value,
@@ -337,11 +324,6 @@ pub(crate) struct PrivacyFile {
     /// The app's text size, in percent of the desktop's (#267).
     #[serde(default = "default_text_scale")]
     pub(crate) text_scale: u32,
-    /// The appearance theme's id: a bundled palette (see `theme.rs`) painted
-    /// over libadwaita's colors, or "system" for the stock GNOME look.
-    /// Empty — a file written before themes existed — means the same.
-    #[serde(default)]
-    pub(crate) theme: String,
     /// Lines of message text shown under the subject in the list: 0 turns the
     /// preview off entirely, and stops it being fetched.
     #[serde(default = "default_preview_lines")]
@@ -604,7 +586,6 @@ impl Default for PrivacyFile {
             push: true,
             metered_save_data: true,
             blacklist: Vec::new(),
-            palette_collapse_secs: default_palette_collapse(),
             card_palette_collapse_secs: default_palette_collapse(),
             threading: true,
             thread_row_newest: false,
@@ -632,8 +613,6 @@ impl Default for PrivacyFile {
             settings_open_accounts: false,
             card_actions_hover: true,
             card_actions_auto: default_card_actions_auto(),
-            list_palette: true,
-            list_palette_hover: false,
             card_palette_menu: true,
             swipe_enabled: true,
             swipe_reversed: false,
@@ -665,7 +644,6 @@ impl Default for PrivacyFile {
             rail_fold: RailFold::default(),
             app_theme: AppTheme::default(),
             text_scale: default_text_scale(),
-            theme: String::new(),
             preview_lines: default_preview_lines(),
             list_layout: ListLayout::Cards,
             list_columns: default_list_columns(),

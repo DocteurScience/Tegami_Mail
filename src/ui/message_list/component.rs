@@ -418,7 +418,6 @@ impl SimpleComponent for MessageList {
             MessageListInput::SetThreadRowNewest(on) => self.on_set_thread_row_newest(on),
             MessageListInput::SetOwnAddresses(addresses) => self.on_set_own_addresses(addresses),
             MessageListInput::SetThreading(on) => self.on_set_threading(on),
-            MessageListInput::SetListPalette(on) => self.on_set_list_palette(on),
             MessageListInput::ResolveDelete => self.on_resolve_delete(&sender),
             MessageListInput::SetSenderLogos(on) => self.on_set_sender_logos(on),
             // The rows on screen are filled again in place: a rebuild
@@ -550,11 +549,6 @@ impl SimpleComponent for MessageList {
                 labels,
             } => self.on_set_keywords(slot, keywords, labels),
             MessageListInput::SetTags(tags) => self.on_set_tags(tags),
-            MessageListInput::SetTagFor {
-                message,
-                keyword,
-                add,
-            } => self.on_set_tag_for(message, keyword, add, &sender),
             MessageListInput::SetHasAttachment {
                 account_id,
                 folder_id,
@@ -569,18 +563,11 @@ impl SimpleComponent for MessageList {
             MessageListInput::RowAction { action, message } => {
                 self.on_row_action(action, message, &sender)
             }
-            MessageListInput::SetPaletteCollapse(secs) => {
-                self.shared.palette_collapse_secs.set(secs)
-            }
             MessageListInput::SetSwipeEnabled(on) => self.on_set_swipe_enabled(on),
             MessageListInput::SetSelected(id) => self.on_set_selected(id),
-            MessageListInput::DebugOpenPalette(idx) => self.on_debug_open_palette(idx),
             MessageListInput::DebugSwipe { index, left } => self.on_debug_swipe(index, left),
             MessageListInput::DebugRowMenu => self.on_debug_row_menu(&sender),
             MessageListInput::SelectAndLoad(key) => self.on_select_and_load(key, &sender),
-            MessageListInput::RowMoveTo { message, x, y } => {
-                self.on_row_move_to(message, x, y, &sender)
-            }
             MessageListInput::ContextMenu { x, y, key } => self.on_context_menu(x, y, key, &sender),
         }
         // Whatever just happened, restate the header count if it moved — every

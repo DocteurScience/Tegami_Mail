@@ -65,7 +65,6 @@ fn install_globals(root: &adw::ApplicationWindow) -> config::PrivacyFile {
     // the theme's colors back, and both listen for the light/dark flip
     // that swaps a theme's two palettes — GTK runs those handlers in
     // connection order, so the palette has to be in place first.
-    crate::desktop::theme::install(&config::load_theme());
     install_scheme_css(root);
     install_high_contrast_css();
     // Before any web view loads: a font fallback WebKit needed under

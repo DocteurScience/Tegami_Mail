@@ -10,13 +10,6 @@ use gtk::glib;
 use relm4::prelude::*;
 
 impl MessageList {
-    pub(super) fn on_set_list_palette(&mut self, on: bool) {
-        if self.list_palette != on {
-            self.list_palette = on;
-            self.sync_look();
-        }
-    }
-
     pub(super) fn on_set_sender_logos(&mut self, on: bool) {
         if self.sender_logos != on {
             self.sender_logos = on;

@@ -782,17 +782,9 @@ flowbox.attach-flow > flowboxchild {
    Unread rows lead with the dot. */
 .message-row.no-avatar {
   /* Text anchors to the card's top (#99): a tighter top inset reads as
-     top-aligned, and the freed room stays at the bottom where the floating
-     Actions Palette rides. */
+     top-aligned. */
   padding-top: 6px;
 }
-/* With the palette on, the no-avatar pill grows at the bottom so the
-   floating ⋯ clears the text; palette off, the room isn't needed
-   (.no-palette rows keep the plain padding). */
-.message-row.no-avatar:not(.no-palette) {
-  padding-bottom: 18px;
-}
-
 .message-row.no-avatar .unread-dot {
   margin-left: 1px;
   margin-right: -2px;
@@ -803,15 +795,6 @@ flowbox.attach-flow > flowboxchild {
 .message-row.no-avatar .unread-dot:dir(rtl) {
   margin-left: -2px;
   margin-right: 1px;
-}
-
-/* Palette + avatars + previews off: a two-line row is too short for
-   the floating ⋯ to clear the circle, so the pill reserves exactly the height
-   the pair needs — centred 38px circle, 2px air, the ⋯ riding 1px off the
-   pill's bottom edge — and not a pixel more. Rows with a preview are already
-   tall enough and keep their natural height. */
-.message-row.palette-room {
-  min-height: 54px;
 }
 
 /* One line per message (#334): a short card, everything centred on the
@@ -950,77 +933,6 @@ flowbox.attach-flow > flowboxchild {
   font-size: 0.72em;
   font-weight: 700;
   opacity: 0.7;
-}
-
-/* The Actions Palette: quick-action buttons that expand rightward out of the
-   ⋯. The whole line floats in an overlay over the pill's bottom-left corner,
-   taking no room in the row. Open, the container itself is the card — the ⋯
-   is its left cap and the icons continue on the same surface, no seam. */
-.actions-line {
-  border-radius: 8px;
-}
-
-.actions-line.open {
-  background: @view_bg_color;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
-}
-
-/* On the shared card the toggle drops its own wash and dimming. */
-.actions-line.open .palette-toggle,
-.actions-line.open .palette-toggle.revealed,
-.actions-line.open .palette-toggle.revealed:hover {
-  background: none;
-  opacity: 1;
-}
-
-.actions-palette {
-  padding: 1px 4px 1px 0;
-}
-.actions-palette:dir(rtl) {
-  padding: 1px 0 1px 4px;
-}
-
-.actions-palette button {
-  min-width: 22px;
-  min-height: 0;
-  padding: 0 2px;
-}
-
-.actions-palette button image {
-  -gtk-icon-size: 14px;
-}
-
-/* The chevron that slides the Actions Palette open. Hidden until the row is
-   hovered (or the palette is open), then faded in over 200ms. Its slot is always
-   reserved, so revealing it doesn't shift the preview text. */
-.palette-toggle {
-  min-width: 20px;
-  min-height: 0;
-  /* A hair inside the row pill's edge, so the hover wash never touches it. */
-  padding: 1px 3px;
-  opacity: 0;
-  transition: opacity 200ms ease-in-out;
-}
-
-/* Revealed (row hovered) but collapsed: the bare ⋯ — no ground of its own.
-   The semi-opaque wash appears only under the pointer itself, and the full
-   card surface only while open (the .actions-line.open rules above). */
-.palette-toggle.revealed {
-  opacity: 0.85;
-  border-radius: 8px;
-}
-
-.palette-toggle.revealed:hover {
-  opacity: 1;
-  background: alpha(@view_bg_color, 0.55);
-}
-
-.palette-toggle.revealed:hover {
-  opacity: 1;
-}
-
-.palette-toggle image {
-  -gtk-icon-size: 14px;
 }
 
 /* Mid-swipe (.swiping, held from the first drag until the snap-back lands):

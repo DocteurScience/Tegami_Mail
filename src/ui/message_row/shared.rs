@@ -11,7 +11,7 @@ use gtk::subclass::prelude::ObjectSubclassIsExt;
 use relm4::prelude::*;
 use std::cell::{Cell, RefCell};
 use std::collections::HashMap;
-use std::rc::{Rc, Weak};
+use std::rc::Rc;
 
 /// How every row looks: the list's settings, read on each bind.
 #[derive(Clone, Debug)]
@@ -40,8 +40,6 @@ pub(crate) struct RowLook {
     /// `(account_id, folder_id)`, worn as its first pill (#374). Empty
     /// otherwise.
     pub(crate) folder_pills: Rc<HashMap<(u32, u32), String>>,
-    /// Whether rows carry the actions palette at all.
-    pub(crate) show_palette: bool,
     /// The list shows Junk: the palette's spam button reads "Not Spam".
     pub(crate) in_junk: bool,
     /// The list shows Drafts: no read/unread toggle, a draft is neither.
@@ -70,7 +68,6 @@ impl Default for RowLook {
             preview_lines: 1,
             pills_below: false,
             folder_pills: Default::default(),
-            show_palette: true,
             in_junk: false,
             in_drafts: false,
             show_recipient: false,
@@ -114,10 +111,6 @@ pub(crate) struct RowShared {
     pub(crate) snoozed: RefCell<SnoozedRows>,
     /// Sent mail's read receipts (#520).
     pub(crate) receipt_marks: RefCell<crate::models::ReceiptMarks>,
-    /// How long an actions palette stays open after the pointer leaves it.
-    pub(crate) palette_collapse_secs: Cell<u64>,
-    /// Open the palette on row hover.
-    pub(crate) palette_hover: Cell<bool>,
     /// Swap which side a swipe archives or deletes on.
     pub(crate) swipe_reversed: Cell<bool>,
     /// Whether the swipe gesture is on at all (#92).
@@ -138,8 +131,6 @@ pub(crate) struct RowShared {
     spare: RefCell<Vec<Rc<Row>>>,
     /// The row Gmail's j/k cursor is on (#392), drawn with its own outline.
     pub(super) cursor: Cell<Option<(u32, u32)>>,
-    /// The row whose palette is open: one at a time.
-    pub(super) open_palette: RefCell<Weak<Row>>,
     /// Conversations shown on rows whose size nobody has asked about yet.
     wanted: RefCell<Vec<(u32, String)>>,
     wanted_queued: Cell<bool>,
@@ -165,8 +156,6 @@ impl RowShared {
             account_names: RefCell::new(HashMap::new()),
             snoozed: RefCell::new(SnoozedRows::default()),
             receipt_marks: RefCell::new(Default::default()),
-            palette_collapse_secs: Cell::new(5),
-            palette_hover: Cell::new(privacy.list_palette_hover),
             swipe_reversed: Cell::new(privacy.swipe_reversed),
             swipe_enabled: Cell::new(privacy.swipe_enabled),
             swipe_sensitivity: Cell::new(crate::config::load_swipe_sensitivity()),
@@ -178,7 +167,6 @@ impl RowShared {
             rows: RefCell::new(HashMap::new()),
             spare: RefCell::new(Vec::new()),
             cursor: Cell::new(None),
-            open_palette: RefCell::new(Weak::new()),
             wanted: RefCell::new(Vec::new()),
             wanted_queued: Cell::new(false),
             unfinished: RefCell::new(Vec::new()),

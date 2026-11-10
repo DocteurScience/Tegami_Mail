@@ -98,7 +98,6 @@ impl MessageList {
             contact_addresses: None,
             last_count: String::new(),
             threading: true,
-            list_palette: true,
             single_line: false,
             columns: crate::config::ListColumn::DEFAULT.to_vec(),
             graph_accounts: std::collections::HashSet::new(),

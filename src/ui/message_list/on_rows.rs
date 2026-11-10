@@ -132,20 +132,6 @@ impl MessageList {
         }
     }
 
-    pub(super) fn on_set_tag_for(
-        &mut self,
-        message: Box<Message>,
-        keyword: String,
-        add: bool,
-        sender: &ComponentSender<Self>,
-    ) {
-        let _ = sender.output(MessageListOutput::SetTag {
-            message,
-            keyword,
-            add,
-        });
-    }
-
     pub(super) fn on_set_has_attachment(
         &mut self,
         account_id: u32,
@@ -198,12 +184,6 @@ impl MessageList {
         });
     }
 
-    pub(super) fn on_debug_open_palette(&mut self, idx: usize) {
-        if let Some(row) = self.shared.row_at(idx) {
-            row.toggle_palette();
-        }
-    }
-
     pub(super) fn on_debug_swipe(&mut self, index: usize, left: bool) {
         if let Some(row) = self.shared.row_at(index) {
             row.debug_swipe(left);
@@ -214,22 +194,6 @@ impl MessageList {
         if let Some(m) = self.shown.first().map(|m| Message::clone(m)) {
             self.show_context_menu(&m, 120.0, 40.0, sender);
         }
-    }
-
-    pub(super) fn on_row_move_to(
-        &mut self,
-        message: Box<Message>,
-        x: f64,
-        y: f64,
-        sender: &ComponentSender<Self>,
-    ) {
-        let (messages, offer_whole) = self.move_to_messages(&message);
-        let _ = sender.output(MessageListOutput::MoveTo {
-            messages,
-            offer_whole,
-            x,
-            y,
-        });
     }
 
     pub(super) fn on_context_menu(
