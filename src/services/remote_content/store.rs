@@ -47,11 +47,6 @@ pub(super) fn read(url: &str) -> Option<Entry> {
     read_in(&dir()?, url, SystemTime::now())
 }
 
-/// Whether a fresh entry for `url` is on disk. Blocking.
-pub(super) fn has(url: &str) -> bool {
-    dir().is_some_and(|d| fresh(&d.join(file_name(url)), SystemTime::now()))
-}
-
 fn fresh(path: &Path, now: SystemTime) -> bool {
     std::fs::metadata(path)
         .and_then(|m| m.modified())

@@ -160,8 +160,6 @@ pub(crate) enum MessageListInput {
     RefreshHeadings,
     /// Scroll a single line wider than the pane, or fit its columns (#443).
     SetColumnScroll(bool),
-    /// Keep the search toolbar open (#446).
-    SetSearchPinned(bool),
     /// The rows are this wide now.
     PaneWidth(i32),
     /// Each account's name for the Account column, and which accounts are
@@ -391,9 +389,6 @@ pub(crate) enum MessageListOutput {
         message: Message,
         thread: Vec<Message>,
         solo: bool,
-        /// The rows the user is likely to open next, for fetching their
-        /// remote content ahead (#474).
-        ahead: Vec<Message>,
     },
     /// Every selected message, whenever that changes — the reader outlines the
     /// matching cards. Each comes with its folder: a view of several folders

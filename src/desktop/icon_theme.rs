@@ -15,7 +15,7 @@ use gtk::prelude::*;
 /// different from one distribution to the next, so by default none of them
 /// do. `desktop` (Settings → Appearance) gives the desktop's theme back, the
 /// bundle filling in what it lacks.
-pub(crate) fn register_icons(desktop: bool) {
+pub(crate) fn register_icons() {
     if let Some(display) = gtk::gdk::Display::default() {
         let theme = gtk::IconTheme::for_display(&display);
         DESKTOP_ICON_PATH.get_or_init(|| theme.search_path());
@@ -32,45 +32,32 @@ pub(crate) fn register_icons(desktop: bool) {
         let paths: Vec<&str> = paths.iter().map(String::as_str).collect();
         theme.set_resource_path(&paths);
     }
-    apply_icon_theme(desktop);
+    apply_icon_theme();
     gtk::Window::set_default_icon_name(crate::APP_ID);
 }
 
-/// Draw icons from Tegami Mail's own theme, or from the desktop's. Applies at once:
-/// GTK redraws every icon when the name changes.
+/// Draw icons from Tegami Mail's own theme. Applies at once: GTK redraws
+/// every icon when the name changes.
 ///
-/// Tegami Mail's own way, the folders on disk leave the search altogether but for
+/// The folders on disk leave the search altogether but for
 /// the ones only Tegami Mail writes to. Naming a theme that does not exist is not
 /// enough by itself: GTK looks through hicolor's folders before the bundle,
 /// and an icon of the same name there, from an icon theme installed in the
 /// home folder or another program, drew a gear for the main menu on one
 /// system. With nothing foreign left to search, the bundle answers for every
 /// name.
-pub(crate) fn apply_icon_theme(desktop: bool) {
+pub(crate) fn apply_icon_theme() {
     let Some(settings) = gtk::Settings::default() else {
         return;
     };
-    if desktop {
-        // Back to whatever the desktop says, now and when it changes.
-        settings.reset_property("gtk-icon-theme-name");
-    } else {
-        // Set by the app, the name outranks the desktop's setting, now and
-        // whenever it changes: GTK would otherwise switch the theme back to it.
-        settings.set_gtk_icon_theme_name(Some(ICON_THEME));
-    }
+    // Set by the app, the name outranks the desktop's setting, now and
+    // whenever it changes: GTK would otherwise switch the theme back to it.
+    settings.set_gtk_icon_theme_name(Some(ICON_THEME));
     let Some(display) = gtk::gdk::Display::default() else {
         return;
     };
     let theme = gtk::IconTheme::for_display(&display);
     let mut paths: Vec<std::path::PathBuf> = Vec::new();
-    if desktop {
-        paths.extend(DESKTOP_ICON_PATH.get().cloned().unwrap_or_default());
-        // The user's icon directory: inside Flatpak XDG_DATA_HOME is the
-        // sandbox's, so GTK wouldn't look there on its own.
-        if let Some(home) = std::env::var_os("HOME") {
-            paths.push(std::path::Path::new(&home).join(".local/share/icons"));
-        }
-    }
     // The app icon chosen in Settings, for the window's own icon.
     if let Some(own) = crate::desktop::app_icon::private_icons_root() {
         paths.push(own);
@@ -82,10 +69,8 @@ pub(crate) fn apply_icon_theme(desktop: bool) {
     }
     let paths: Vec<&std::path::Path> = paths.iter().map(|p| p.as_path()).collect();
     theme.set_search_path(&paths);
-    if !desktop {
-        let theme = theme.clone();
-        gtk::glib::idle_add_local_once(move || check_icon_sources(&theme));
-    }
+    let theme = theme.clone();
+    gtk::glib::idle_add_local_once(move || check_icon_sources(&theme));
 }
 
 /// An icon theme over the desktop's own icon folders, for the icons that are

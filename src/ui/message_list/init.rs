@@ -43,7 +43,6 @@ impl MessageList {
             scope_picker: None,
             search_open: false,
             search_closed_at: None,
-            search_pinned: false,
             bars: None,
             shown: Vec::new(),
             total_matches: 0,

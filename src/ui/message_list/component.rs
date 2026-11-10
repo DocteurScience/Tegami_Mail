@@ -267,7 +267,7 @@ impl SimpleComponent for MessageList {
                 #[name = "search_revealer"]
                 gtk::Revealer {
                     #[watch]
-                    set_reveal_child: model.search_open || model.search_pinned,
+                    set_reveal_child: model.search_open,
 
                 gtk::Box {
                     set_spacing: 6,
@@ -508,7 +508,6 @@ impl SimpleComponent for MessageList {
             } => self.on_resize_column(column, width, done, &sender),
             MessageListInput::SetColumnWidths(widths) => self.on_set_column_widths(widths),
             MessageListInput::RefreshHeadings => self.sync_headings(),
-            MessageListInput::SetSearchPinned(on) => self.on_set_search_pinned(on),
             MessageListInput::SetColumnScroll(on) => self.on_set_column_scroll(on),
             MessageListInput::PaneWidth(width) => self.on_pane_width(width),
             MessageListInput::SetHeadings(on) => {

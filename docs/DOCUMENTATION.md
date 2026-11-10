@@ -1768,9 +1768,7 @@ of you:
 downloading the newest messages and attachments, indexing older mail for
 search, watching folders other than the Inbox, and fetching sender logos and
 Gravatar pictures. New mail still arrives, and whatever you open is
-fetched. It all resumes once the connection is no longer metered. (A choice
-made in an earlier version to work as usual on a metered connection is
-kept, as `metered_save_data` in `privacy.toml`.)
+fetched. It all resumes once the connection is no longer metered.
 
 ### Notifications
 

@@ -200,14 +200,6 @@ impl MessageList {
         }
     }
 
-    pub(super) fn on_set_search_pinned(&mut self, on: bool) {
-        self.search_pinned = on;
-        // Unpinned, it stays only while it holds a search.
-        if !on {
-            self.search_open = !self.query.is_empty();
-        }
-    }
-
     pub(super) fn on_set_column_scroll(&mut self, on: bool) {
         if self.column_scroll != on {
             self.column_scroll = on;

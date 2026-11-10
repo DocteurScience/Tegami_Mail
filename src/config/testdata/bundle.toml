@@ -4,22 +4,17 @@ filters = []
 [privacy]
 allowed_senders = []
 auto_remote_content = false
-remote_ahead = false
 gravatar = false
 avatars = true
 sender_logos = false
-own_mailbox_face = true
-tag_row_tint = false
 contact_book = ""
 date_style = "system"
 clock_style = "system"
 fetch_interval_secs = 300
 push = true
-metered_save_data = true
 blacklist = []
 threading = true
 thread_newest_first = false
-desktop_icons = false
 card_attachments = true
 attachment_drawer = false
 confirm_thread_delete = true
@@ -30,7 +25,6 @@ notification_buttons = [
     "archive",
     "delete",
 ]
-settings_open_accounts = false
 swipe_enabled = true
 compose_default_from = ""
 paste_plain = true
@@ -59,14 +53,11 @@ list_columns = [
 ]
 list_headings = false
 list_column_scroll = false
-list_search_open = false
-contact_names = false
 single_key_shortcuts = true
 gmail_keys = false
 keep_downloads_days = 0
 run_in_background = false
 autostart = false
-start_fullscreen = false
 reading_pane = "right"
 tray = false
 tray_icon = "symbolic"
@@ -83,7 +74,6 @@ notify_receipts = true
 files_action = "ask"
 files_large = "ask"
 files_limit_mb = 20
-link_browser = ""
 start_view = "all_inboxes"
 folder_sort = "custom"
 

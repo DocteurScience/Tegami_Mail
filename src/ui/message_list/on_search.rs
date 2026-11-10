@@ -281,13 +281,6 @@ impl MessageList {
     }
 
     pub(super) fn on_focus_search(&mut self, sender: &ComponentSender<Self>) {
-        // A field that is always there has nothing to open or close.
-        if self.search_pinned {
-            if let Some(entry) = &self.search_entry {
-                entry.grab_focus();
-            }
-            return;
-        }
         // Toggle (#102): the header button closes an open search too.
         if self.search_open {
             sender.input(MessageListInput::CloseSearch);
@@ -314,25 +307,6 @@ impl MessageList {
     }
 
     pub(super) fn on_close_search(&mut self, sender: &ComponentSender<Self>) {
-        if self.search_pinned {
-            // Esc in the field hands the keyboard back to the list;
-            // an empty field losing focus has gone somewhere already.
-            let had_focus = self
-                .search_entry
-                .as_ref()
-                .is_some_and(|e| e.has_focus() || e.focus_child().is_some());
-            if !self.query.is_empty() {
-                self.clear_search(sender);
-                self.rebuild();
-                self.scroll_top();
-            }
-            if had_focus {
-                self.preserving_scroll(|this| {
-                    this.list_view.grab_focus();
-                });
-            }
-            return;
-        }
         self.search_open = false;
         self.search_closed_at = Some(std::time::Instant::now());
         self.clear_search(sender);

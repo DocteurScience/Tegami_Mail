@@ -28,11 +28,6 @@ pub(crate) struct PrivacyFile {
     /// remote content can be used to track when and where a message is read.
     #[serde(default)]
     pub(crate) auto_remote_content: bool,
-    /// Whether the remote content of the next messages in the list is
-    /// fetched while one is read (#474), where remote content is allowed.
-    /// Off by default: a sender's tracking learns of a message never opened.
-    #[serde(default)]
-    pub(crate) remote_ahead: bool,
     /// Whether to load sender avatars from Gravatar (off by default — it sends
     /// a hash of each sender's email to a third party).
     #[serde(default)]
@@ -44,18 +39,6 @@ pub(crate) struct PrivacyFile {
     /// Whether a sender's site icon may be fetched to fill their circle (#30).
     #[serde(default)]
     pub(crate) sender_logos: bool,
-    /// Whether the mail you sent wears its mailbox's face — the account's
-    /// Gravatar, picture or emoji (#189) — instead of the circle any other
-    /// sender would get.
-    #[serde(default = "default_on")]
-    pub(crate) own_mailbox_face: bool,
-    /// Whether a tagged message's row in the list is washed with its first
-    /// tag's color (PR #383). Off unless switched on: the design's cards
-    /// keep the card's own ground and show a tag as a named chip, so that
-    /// the tag is never told by colour alone (docs/DESIGN.md, "Message
-    /// list").
-    #[serde(default)]
-    pub(crate) tag_row_tint: bool,
     /// The address book new contacts go to: an EDS source UID, or the
     /// former Tegami Mail book's, which is no longer offered. Empty picks the
     /// first writable EDS book.
@@ -73,11 +56,6 @@ pub(crate) struct PrivacyFile {
     /// Whether to use IMAP IDLE push for instant new-mail delivery.
     #[serde(default = "default_on")]
     pub(crate) push: bool,
-    /// On a metered connection, hold back the work done ahead of the user:
-    /// prefetching bodies and attachments, indexing old mail, watching
-    /// folders other than the Inbox, fetching sender logos (#442).
-    #[serde(default = "default_on")]
-    pub(crate) metered_save_data: bool,
     /// Addresses or whole domains whose incoming mail is auto-deleted (to Trash).
     /// Stored lowercased; a bare domain like "spam.com" matches any sender there.
     #[serde(default)]
@@ -88,10 +66,6 @@ pub(crate) struct PrivacyFile {
     /// Whether the reading pane shows a conversation newest-message-first.
     #[serde(default)]
     pub(crate) thread_newest_first: bool,
-    /// Draw icons from the desktop's icon theme instead of Tegami Mail's own
-    /// (Settings → Appearance). Off: the app looks the same everywhere.
-    #[serde(default)]
-    pub(crate) desktop_icons: bool,
     /// Each conversation message lists its own attachments beneath its body
     /// (#213), so which file came with which message is never in doubt.
     #[serde(default = "default_on")]
@@ -119,10 +93,6 @@ pub(crate) struct PrivacyFile {
     /// at most three count. Absent = mark_read, archive, delete.
     #[serde(default = "default_notification_buttons")]
     pub(crate) notification_buttons: Vec<String>,
-    /// Whether the combined Accounts & Preferences window opens showing the
-    /// Accounts view instead of Preferences (the default).
-    #[serde(default)]
-    pub(crate) settings_open_accounts: bool,
     /// Whether message rows take a sideways swipe at all (#92, PR #135).
     #[serde(default = "default_on")]
     pub(crate) swipe_enabled: bool,
@@ -228,14 +198,6 @@ pub(crate) struct PrivacyFile {
     /// name columns narrow to fit.
     #[serde(default)]
     pub(crate) list_column_scroll: bool,
-    /// The search field stays above the list instead of hiding behind the
-    /// search button (#446). Off by default.
-    #[serde(default)]
-    pub(crate) list_search_open: bool,
-    /// A saved contact goes by the name in the address book, not the one
-    /// its mail gives (#541). Off by default.
-    #[serde(default)]
-    pub(crate) contact_names: bool,
     /// The widths columns were dragged to, in pixels, by column name.
     #[serde(default)]
     pub(crate) list_column_widths: std::collections::BTreeMap<String, i32>,
@@ -260,9 +222,6 @@ pub(crate) struct PrivacyFile {
     /// Start at login (only meaningful with `run_in_background`).
     #[serde(default)]
     pub(crate) autostart: bool,
-    /// The main window opens fullscreen (#511).
-    #[serde(default)]
-    pub(crate) start_fullscreen: bool,
     /// Where the reader sits (#475): beside the list, below it, or off,
     /// the list then taking the whole window and messages opening in
     /// their own windows.
@@ -323,12 +282,6 @@ pub(crate) struct PrivacyFile {
     pub(crate) files_large: FilesLarge,
     #[serde(default = "default_files_limit_mb")]
     pub(crate) files_limit_mb: u32,
-    /// Which browser a link in a message opens in (#232). Empty = whatever
-    /// the desktop opens links with; `"ask"` = the system's app chooser,
-    /// every time; anything else is a desktop entry id
-    /// ("brave-browser.desktop") launched directly.
-    #[serde(default)]
-    pub(crate) link_browser: String,
     /// What the main window shows at launch (#256).
     #[serde(default)]
     pub(crate) start_view: StartView,
@@ -357,7 +310,6 @@ impl Default for PrivacyFile {
         Self {
             allowed_senders: Vec::new(),
             auto_remote_content: false,
-            remote_ahead: false,
             show_remote_banner: true,
             // Under the accounts' folders, as the redesign has it (mockup 01).
             // Above the accounts (owner's decision, 2026-11-04): one
@@ -372,31 +324,25 @@ impl Default for PrivacyFile {
             files_action: FilesAction::default(),
             files_large: FilesLarge::default(),
             files_limit_mb: default_files_limit_mb(),
-            link_browser: String::new(),
             start_view: StartView::default(),
             folder_sort: FolderSort::default(),
             gravatar: false,
             avatars: true,
-            own_mailbox_face: true,
-            tag_row_tint: false,
             contact_book: String::new(),
             sender_logos: false,
             date_style: DateStyle::default(),
             clock_style: ClockStyle::default(),
             fetch_interval_secs: default_fetch_interval(),
             push: true,
-            metered_save_data: true,
             blacklist: Vec::new(),
             threading: true,
             thread_newest_first: false,
-            desktop_icons: false,
             card_attachments: true,
             attachment_drawer: false,
             confirm_thread_delete: true,
             notifications: true,
             notification_content: true,
             notification_buttons: default_notification_buttons(),
-            settings_open_accounts: false,
             swipe_enabled: true,
             compose_default_from: String::new(),
             // A new install takes today's default, not the 2026-08-31 one.
@@ -422,15 +368,12 @@ impl Default for PrivacyFile {
             list_columns: default_list_columns(),
             list_headings: false,
             list_column_scroll: false,
-            list_search_open: false,
-            contact_names: false,
             list_column_widths: Default::default(),
             single_key_shortcuts: true,
             gmail_keys: false,
             keep_downloads_days: 0,
             run_in_background: false,
             autostart: false,
-            start_fullscreen: false,
             reading_pane: ReadingPane::Right,
             tray: false,
             tray_icon: TrayIcon::default(),

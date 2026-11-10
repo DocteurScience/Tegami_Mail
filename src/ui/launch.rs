@@ -24,63 +24,18 @@
 
 use crate::i18n::{i18n, i18n_f};
 use gtk::gio;
-use gtk::gio::prelude::AppInfoExt;
 use gtk::glib;
 use gtk::glib::prelude::*;
 use std::cell::RefCell;
 use std::rc::Rc;
 
-/// The stored choice that means "let the desktop's app chooser ask, every
-/// time" rather than naming one browser (#232).
-pub(super) const ASK: &str = "ask";
-
-thread_local! {
-    /// Settings → System → Links: empty for the desktop's default handler,
-    /// [`ASK`] for the chooser, otherwise the desktop entry id of the browser
-    /// links open in. Kept here rather than read from disk per click, and
-    /// updated by the app whenever the setting changes.
-    static BROWSER: RefCell<String> = const { RefCell::new(String::new()) };
-}
-
-/// Point every following link at `choice` (see [`BROWSER`]).
-pub(crate) fn set_browser(choice: &str) {
-    BROWSER.with(|b| *b.borrow_mut() = choice.to_string());
-}
-
-/// Open a web or mail link in the app the desktop has for it — or, when one
-/// was chosen in Settings, in that browser (#232).
+/// Open a web or mail link in the app the desktop has for it.
 pub(crate) fn open_link(uri: &str, parent: Option<&gtk::Window>) {
     tracing::info!("link: opening {}", describe(uri));
-    let choice = BROWSER.with(|b| b.borrow().clone());
-    // A mailto: link is not a browser's business: it goes to whatever the
-    // desktop opens mail with, whichever browser was chosen for the web.
-    let web = !uri
-        .split(':')
-        .next()
-        .unwrap_or("")
-        .eq_ignore_ascii_case("mailto");
-    if web && choice == ASK {
-        portal_open_uri(uri.to_string(), true, parent.cloned());
-        return;
-    }
-    if web && !choice.is_empty() {
-        match gio::DesktopAppInfo::new(&choice) {
-            Some(info) => match info.launch_uris(&[uri], gio::AppLaunchContext::NONE) {
-                Ok(()) => return,
-                Err(e) => tracing::warn!(
-                    "link: {choice} could not be launched ({e}); falling back to the default"
-                ),
-            },
-            // The chosen browser is not here: a sandbox that cannot see the
-            // host's applications, or an entry that has since been removed.
-            None => tracing::warn!("link: {choice} is not available here; using the default"),
-        }
-    }
     default_open(uri, parent.cloned());
 }
 
-/// The road out when no browser was chosen: the desktop's own default
-/// handler, GIO first outside the sandbox and the portal within it.
+/// The desktop's own default handler, GIO first outside the sandbox and the portal within it.
 fn default_open(uri: &str, parent: Option<gtk::Window>) {
     if crate::desktop::platform::is_flatpak() {
         portal_open_uri(uri.to_string(), false, parent);

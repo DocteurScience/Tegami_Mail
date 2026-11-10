@@ -2,6 +2,16 @@
 
 ## Unreleased
 
+- **Removed: the application's hidden settings** (docs/DESIGN.md, "Removed
+  or moved": start fullscreen, link opener, icon set, Settings' first page).
+  Tegami Mail opens windowed, links open in the desktop's default
+  application, icons come from its own set, and Preferences opens on its
+  first page. Also gone, all without a row since the preferences were
+  redrawn: working as usual on a metered connection (it now always holds
+  back the work done ahead), fetching the next messages' remote content
+  ahead (#474), the list search kept open (#446) and rows tinted by their
+  tag. Values stored by an earlier version no longer apply.
+
 - **Removed: the sidebar's hidden settings** (docs/DESIGN.md, "Removed or
   moved": "Sidebar: the whole page"). Favorites and Tags sit above the
   accounts, drawn the same way; the icon rail marks unread folders with a

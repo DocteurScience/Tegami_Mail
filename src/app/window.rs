@@ -60,9 +60,6 @@ impl AppModel {
         if win_max {
             root.maximize();
         }
-        if self.start_fullscreen {
-            root.fullscreen();
-        }
         // Below this width the expanded sidebar and a full-width Actions
         // Palette can't both fit (280 sidebar + 324 list + 492 reader), so the
         // sidebar drops to its icon rail automatically — this is what keeps the

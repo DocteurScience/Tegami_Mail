@@ -106,9 +106,6 @@ pub(crate) enum NetworkChange {
 /// delivers its changes on the main thread only (#442).
 static ONLINE: AtomicBool = AtomicBool::new(true);
 static METERED: AtomicBool = AtomicBool::new(false);
-/// Settings: whether a metered connection holds back the work done ahead of
-/// the user (on by default).
-static SAVE_DATA: AtomicBool = AtomicBool::new(true);
 /// Until when a Refresh clicked while offline may try the servers anyway,
 /// in case the monitor is wrong about the network (milliseconds since the
 /// process started, 0 for no grace).
@@ -124,12 +121,11 @@ fn since_start() -> u64 {
 /// Read the monitor's current state into [`online`] and [`metered`]. Called
 /// before the workers start, so their first connection already knows it.
 /// Must be called on the GTK main thread.
-pub(crate) fn read_network(save_data: bool) {
+pub(crate) fn read_network() {
     use gtk::gio::prelude::*;
     let monitor = gtk::gio::NetworkMonitor::default();
     ONLINE.store(monitor.is_network_available(), Ordering::Relaxed);
     METERED.store(monitor.is_network_metered(), Ordering::Relaxed);
-    SAVE_DATA.store(save_data, Ordering::Relaxed);
     since_start();
 }
 
@@ -178,7 +174,7 @@ pub(crate) fn metered() -> bool {
 /// attachments, indexing old mail, watching extra folders, fetching logos)
 /// waits: the connection is metered and Settings asks to save data there.
 pub(crate) fn saving_data() -> bool {
-    metered() && SAVE_DATA.load(Ordering::Relaxed)
+    metered()
 }
 
 /// Whether pictures nobody asked for yet (sender logos, Gravatars) may be

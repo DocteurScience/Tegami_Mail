@@ -308,12 +308,3 @@ pub(super) fn route_remote(html: &str) -> String {
     out.push_str(&html[at..]);
     out
 }
-
-/// The remote URLs in `html` as written in the markup, entities and all: what
-/// the prefetch fetches ahead of the reader (#474).
-pub(crate) fn remote_urls(html: &str) -> Vec<&str> {
-    remote_url_spans(html)
-        .into_iter()
-        .map(|(s, e)| &html[s..e])
-        .collect()
-}

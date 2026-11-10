@@ -665,7 +665,7 @@ impl AppModel {
             AppMsg::MeteredChanged => {
                 // The flag has already flipped, so before it the connection
                 // was the other way.
-                let was = self.metered_save_data && !crate::desktop::power::metered();
+                let was = !crate::desktop::power::metered();
                 self.saving_data_changed(was);
             }
 

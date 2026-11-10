@@ -14,29 +14,23 @@ impl AppModel {
         config::save_privacy(config::PrivacyFile {
             allowed_senders: self.allowed_senders.clone(),
             auto_remote_content: self.auto_remote_content,
-            remote_ahead: self.remote_ahead,
             gravatar: self.gravatar,
             avatars: self.avatars,
-            own_mailbox_face: self.own_mailbox_face,
             contact_book: self.contact_book.clone(),
-            tag_row_tint: self.tag_row_tint,
             sender_logos: self.sender_logos,
             date_style: self.date_style,
             clock_style: self.clock_style,
             fetch_interval_secs: self.fetch_interval_secs,
             push: self.push,
-            metered_save_data: self.metered_save_data,
             blacklist: self.blacklist.clone(),
             threading: self.threading,
             thread_newest_first: self.thread_newest_first,
-            desktop_icons: self.desktop_icons,
             card_attachments: self.card_attachments,
             attachment_drawer: self.drawer_enabled,
             confirm_thread_delete: self.confirm_thread_delete,
             notifications: self.notifications_enabled,
             notification_content: self.notification_content,
             notification_buttons: self.notification_buttons.to_list(),
-            settings_open_accounts: self.settings_open_accounts,
             swipe_enabled: self.swipe_enabled,
             compose_default_from: self.compose_default_from.clone(),
             paste_plain: self.paste_plain,
@@ -62,15 +56,12 @@ impl AppModel {
             list_columns: config::ListColumn::to_keys(&self.list_columns),
             list_headings: self.list_headings,
             list_column_scroll: self.list_column_scroll,
-            list_search_open: self.list_search_open,
-            contact_names: self.contact_names,
             list_column_widths: config::list_column_widths_to(&self.list_column_widths),
             single_key_shortcuts: self.single_key.get(),
             gmail_keys: self.gmail_keys.get(),
             keep_downloads_days: self.keep_downloads_days,
             run_in_background: self.run_in_background.get(),
             autostart: self.autostart,
-            start_fullscreen: self.start_fullscreen,
             reading_pane: self.reading_pane,
             tray: self.tray_enabled,
             tray_icon: self.tray_icon,
@@ -90,7 +81,6 @@ impl AppModel {
             files_action: self.files_prefs.action,
             files_large: self.files_prefs.large,
             files_limit_mb: self.files_prefs.limit_mb,
-            link_browser: self.link_browser.clone(),
             start_view: self.start_view,
             folder_sort: self.folder_sort,
         });
@@ -123,8 +113,6 @@ impl AppModel {
             .emit(MessageListInput::SetHeadings(self.list_headings));
         self.message_list
             .emit(MessageListInput::SetColumnScroll(self.list_column_scroll));
-        self.message_list
-            .emit(MessageListInput::SetSearchPinned(self.list_search_open));
         self.message_list.emit(MessageListInput::SetColumnWidths(
             self.list_column_widths.clone(),
         ));

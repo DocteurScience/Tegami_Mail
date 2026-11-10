@@ -5,10 +5,7 @@
 //! which turns the HTTP cache off, so a message shown a second time fetched all
 //! of its pictures again. Allowed remote URLs are now rewritten to
 //! `tegami-http(s)://` (see `route`), and the handler registered for those
-//! schemes answers from `~/.cache/tegami/remote`, fetching on a miss. That also
-//! makes fetching ahead possible: with the Privacy switch on, the next
-//! messages in the list have their remote content fetched while the current
-//! one is read.
+//! schemes answers from `~/.cache/tegami/remote`, fetching on a miss.
 //!
 //! The fetches send no cookies and no Referer, which is less than WebKit sent.
 
@@ -25,11 +22,6 @@ pub(crate) use store::Entry;
 
 /// The schemes the reader's markup is rewritten to.
 const SCHEMES: [&str; 2] = ["tegami-http", "tegami-https"];
-
-/// At most this many URLs are fetched ahead for one message, and for one
-/// selection: a newsletter can carry hundreds of spacer images.
-const AHEAD_PER_MESSAGE: usize = 60;
-const AHEAD_TOTAL: usize = 200;
 
 /// `url`, as written in the markup, rewritten to the cached scheme. `None` for
 /// anything but `http`, `https` and protocol-relative URLs.
@@ -88,19 +80,6 @@ fn canonical(url: &str) -> String {
         }
     }
     out
-}
-
-/// A URL as the markup writes it, made absolute and canonical. Entities
-/// decoded first: the HTML parser decodes `&amp;` before WebKit asks.
-fn markup_url(raw: &str) -> Option<String> {
-    let decoded = crate::encoding::unescape_html(raw.trim());
-    let absolute = if decoded.starts_with("//") {
-        format!("https:{decoded}")
-    } else {
-        decoded
-    };
-    let lower = absolute.get(..6).unwrap_or(&absolute).to_ascii_lowercase();
-    (lower.starts_with("https:") || lower.starts_with("http:")).then(|| canonical(&absolute))
 }
 
 thread_local! {
@@ -178,7 +157,7 @@ async fn load(url: String) -> Option<Arc<Entry>> {
         return Some(Arc::new(hit));
     }
     let (tx, rx) = futures::channel::oneshot::channel();
-    fetch::submit(url, fetch::Priority::Now, Some(tx));
+    fetch::submit(url, Some(tx));
     rx.await.ok().flatten()
 }
 
@@ -214,34 +193,9 @@ fn respond(request: &webkit6::URISchemeRequest, entry: Option<&Arc<Entry>>) {
     request.finish_with_response(&response);
 }
 
-/// Fetch the remote content of these message bodies ahead of the reader,
-/// in place of whatever was queued for the last selection. Only bodies whose
-/// remote content is allowed belong here; the caller decides that, and
-/// whether fetching ahead is on at all.
-pub(crate) fn fetch_ahead<'a>(bodies: impl IntoIterator<Item = &'a str>) {
-    let mut urls: Vec<String> = Vec::new();
-    if crate::desktop::power::fetches_ahead() {
-        for body in bodies {
-            let mut n = 0;
-            for raw in crate::ui::message_view::remote_urls(body) {
-                if n == AHEAD_PER_MESSAGE || urls.len() == AHEAD_TOTAL {
-                    break;
-                }
-                if let Some(url) = markup_url(raw) {
-                    if !urls.contains(&url) {
-                        urls.push(url);
-                        n += 1;
-                    }
-                }
-            }
-        }
-    }
-    fetch::replace_ahead(urls);
-}
-
 #[cfg(test)]
 mod tests {
-    use super::{canonical, markup_url, origin_url, route};
+    use super::{canonical, origin_url, route};
 
     #[test]
     fn routes_web_urls_and_keeps_the_rest() {
@@ -272,26 +226,6 @@ mod tests {
             assert_eq!(origin_url(&routed).as_deref(), Some(url));
         }
         assert_eq!(origin_url("https://a.example/"), None);
-    }
-
-    #[test]
-    fn markup_and_webkit_spellings_meet() {
-        // What WebKit asks for after parsing the markup.
-        let asked = origin_url("tegami-https://img.example/a/b.png?x=1&y=%C3%A9").unwrap();
-        assert_eq!(
-            markup_url("https://IMG.example/a/b.png?x=1&amp;y=é#top").as_deref(),
-            Some(asked.as_str())
-        );
-        assert_eq!(
-            markup_url("//img.example").as_deref(),
-            Some("https://img.example/")
-        );
-        assert_eq!(markup_url("cid:part1"), None);
-        // WebKit's spelling of a non-ASCII host on a scheme it doesn't know.
-        assert_eq!(
-            origin_url("tegami-https://%C3%A9x.example/a.png").as_deref(),
-            markup_url("https://éx.example/a.png").as_deref()
-        );
     }
 
     #[test]

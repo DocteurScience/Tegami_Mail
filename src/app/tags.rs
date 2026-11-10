@@ -199,9 +199,8 @@ impl AppModel {
         out
     }
 
-    /// The tag colors as CSS: `.tag-<keyword>` fills (chips), the same
-    /// class on a `.tag-tint` widget colors its glyph instead, and with the
-    /// setting on, `.rowtint-tag-<keyword>` washes a message row.
+    /// The tag colors as CSS: `.tag-<keyword>` fills (chips), and the same
+    /// class on a `.tag-tint` widget colors its glyph instead.
     pub(super) fn refresh_tag_css(&self) {
         let mut css = String::new();
         for t in &self.tags {
@@ -214,17 +213,6 @@ impl AppModel {
                  .tag-tint.{class} {{ color: {color}; background-color: transparent; }}\n",
                 color = t.color,
             ));
-            // Rows carry their `rowtint-` class whatever the setting; only
-            // the rules come and go, so switching it restyles no row by hand.
-            if self.tag_row_tint {
-                css.push_str(&format!(
-                    ".message-list > row:not(:selected) > .message-item.rowtint-{class}:not(.swiping) .message-row {{ \
-                       background-color: alpha({color}, 0.18); }} \
-                     .message-list > row:hover:not(:selected) > .message-item.rowtint-{class}:not(.swiping) .message-row {{ \
-                       background-color: alpha({color}, 0.28); }}\n",
-                    color = t.color,
-                ));
-            }
         }
         // The colors a Gmail label no tag stands for can wear (#374).
         for (hue, color) in crate::config::TAG_COLORS.iter().enumerate() {

@@ -438,10 +438,9 @@ impl AppModel {
             }
 
             AppMsg::OpenSettings => {
-                // The "opens to" preference decides the first open of the
-                // session; after that the window returns to where it was.
-                let on_accounts = self.settings_open_accounts && self.last_settings_page.is_none();
-                self.open_settings_window(&sender, on_accounts, false);
+                // After the first open of the session the window returns
+                // to where it was.
+                self.open_settings_window(&sender, false, false);
             }
 
             AppMsg::SettingsPageShown(id) => {
@@ -472,7 +471,7 @@ impl AppModel {
 
             AppMsg::PrewarmSettings => {
                 if self.prefs.is_none() {
-                    self.build_settings_window(&sender, self.settings_open_accounts);
+                    self.build_settings_window(&sender, false);
                     // A dialog cannot be realized before it is presented:
                     // building it is what is done ahead.
                 }

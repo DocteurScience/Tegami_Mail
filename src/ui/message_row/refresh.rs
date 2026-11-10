@@ -403,19 +403,8 @@ impl Row {
         let cursor = self
             .shared()
             .is_some_and(|shared| shared.cursor.get() == Some((data.msg.account_id, data.msg.id)));
-        let tint = self.shared().and_then(|shared| {
-            let tags = shared.tags.borrow();
-            let tag = data.msg.pills(&tags).into_iter().find_map(|p| match p {
-                crate::models::Pill::Tag(t) => Some(t.css_class()),
-                crate::models::Pill::Label(_) => None,
-            })?;
-            Some(format!("rowtint-{tag}"))
-        });
         let st = self.st.borrow();
         let mut v = vec!["message-item"];
-        if let Some(class) = tint.as_deref() {
-            v.push(class);
-        }
         if data.msg.unread {
             v.push("message-unread");
         }

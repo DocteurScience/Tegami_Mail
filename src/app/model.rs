@@ -308,8 +308,6 @@ pub(crate) struct AppModel {
     pub(super) invite_answers: Vec<config::InviteAnswer>,
     /// Whether remote content is auto-loaded for every new message.
     pub(super) auto_remote_content: bool,
-    /// Whether the next messages' remote content is fetched ahead (#474).
-    pub(super) remote_ahead: bool,
     /// Whether the blocked-remote-content banner is shown at all. Hiding it changes nothing about what
     /// is blocked — only whether the reader says so.
     pub(super) show_remote_banner: bool,
@@ -332,13 +330,8 @@ pub(crate) struct AppModel {
     pub(super) gravatar: bool,
     /// Whether the colored avatars are drawn at all (#29).
     pub(super) avatars: bool,
-    /// Whether tagged rows wear their tag's color (PR #383).
-    pub(super) tag_row_tint: bool,
     /// The address book new contacts go to (empty: automatic).
     pub(super) contact_book: String,
-    /// Whether the mail you sent wears its mailbox's face rather than the
-    /// circle any other sender would get (#189).
-    pub(super) own_mailbox_face: bool,
     /// Whether a sender's site icon may fill their circle (#30).
     pub(super) sender_logos: bool,
     /// How dates are written, and on what clock (#32).
@@ -348,17 +341,12 @@ pub(crate) struct AppModel {
     pub(super) fetch_interval_secs: u64,
     /// Whether IMAP IDLE push is enabled.
     pub(super) push: bool,
-    /// Whether a metered connection holds back the work done ahead of the
-    /// user (#442).
-    pub(super) metered_save_data: bool,
     /// Whether desktop notifications (new mail, error alerts) are posted.
     pub(super) notifications_enabled: bool,
     /// Whether new-mail notifications may name the sender and subject.
     pub(super) notification_content: bool,
     /// Which action buttons a new-mail notification carries (#244).
     pub(super) notification_buttons: config::NotificationButtons,
-    /// Whether the settings window opens on Accounts (vs Preferences).
-    pub(super) settings_open_accounts: bool,
     /// The Settings category last shown this session, to reopen on.
     pub(super) last_settings_page: Option<String>,
     /// The list header's count text ("N" / "N of M"), from the message list.
@@ -372,12 +360,8 @@ pub(crate) struct AppModel {
     /// A single line too wide for the pane scrolls rather than fitting its
     /// columns (#443).
     pub(super) list_column_scroll: bool,
-    /// The list's search field stays open (#446).
-    pub(super) list_search_open: bool,
     /// A search is showing its results, which span every account.
     pub(super) search_active: bool,
-    /// Saved contacts go by their address-book names (#541).
-    pub(super) contact_names: bool,
     /// The widths columns were dragged to by their headings (#334).
     pub(super) list_column_widths: std::collections::HashMap<config::ListColumn, i32>,
     /// The keyboard-shortcut reference, while it is open — so the shortcut that
@@ -388,8 +372,6 @@ pub(crate) struct AppModel {
     pub(super) run_in_background: std::rc::Rc<std::cell::Cell<bool>>,
     /// Whether Tegami Mail starts at login (background running only).
     pub(super) autostart: bool,
-    /// The window opens fullscreen (#511).
-    pub(super) start_fullscreen: bool,
     /// The reader beside the list (#475); off, messages open in windows.
     pub(super) reading_pane: config::ReadingPane,
     /// Tray icon (issue #116): the setting, the icon choice, and the running
@@ -544,8 +526,6 @@ pub(crate) struct AppModel {
     /// The message zoom this session is at (Ctrl+ / Ctrl-). Starts at 100
     /// and is not saved.
     pub(super) zoom: u32,
-    /// Icons come from the desktop's icon theme, not Tegami Mail's own (Settings).
-    pub(super) desktop_icons: bool,
     /// Each conversation message lists its own attachments (#213).
     pub(super) card_attachments: bool,
     /// The attachment drawer beneath the reader is shown at all (#213).
@@ -736,10 +716,6 @@ pub(crate) struct AppModel {
     /// A reply started from a notification's button (#244), waiting for
     /// the body it quotes.
     pub(super) pending_notified_reply: Option<Message>,
-    /// Settings → System → Links: which browser a link in a message opens in
-    /// (#232). Empty = the desktop's default, "ask" = its app chooser,
-    /// otherwise a desktop entry id.
-    pub(super) link_browser: String,
     /// Outstanding bulk MoveMessages requests awaiting a worker `BulkComplete`.
     /// Outstanding server-side bulk operations; while > 0 the refresh spinner
     /// spins and the status bar narrates.

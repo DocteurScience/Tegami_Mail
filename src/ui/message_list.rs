@@ -126,8 +126,6 @@ pub(crate) struct MessageList {
     /// When the search closed itself (empty entry losing focus): the button
     /// click that caused that blur arrives right after and must not reopen.
     search_closed_at: Option<std::time::Instant>,
-    /// The search toolbar never hides (#446): closing only clears it.
-    search_pinned: bool,
     /// The two bars and the boxes above and below the rows they move
     /// between.
     bars: Option<BarSlots>,
