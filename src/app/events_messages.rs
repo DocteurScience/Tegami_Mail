@@ -1,7 +1,7 @@
 //! Worker events about message lists: a folder's messages, more of them,
 //! and messages gone.
 
-use std::collections::{HashMap, HashSet};
+use std::collections::HashMap;
 
 use adw::prelude::*;
 use relm4::prelude::*;
@@ -191,7 +191,6 @@ impl AppModel {
             .get(&(account_id, folder_id))
             .map(|c| &**c)
             == Some(&messages);
-        self.note_inbox_arrivals(account_id, folder_id, &messages);
         // The notified mail was read somewhere else, on the phone or
         // in another client: the notification goes too (#333).
         if let Some((f, mid)) = crate::desktop::notify::posted_for(account_id) {
@@ -403,26 +402,6 @@ impl AppModel {
                     _ => {}
                 }
             }
-        }
-    }
-
-    /// What the badge counts when it counts arrivals (#431): the
-    /// same new inbox mail as the notification above, whatever
-    /// the notification settings, and only what is still in the
-    /// inbox, as the badge's other choice counts.
-    fn note_inbox_arrivals(&mut self, account_id: u32, folder_id: u32, messages: &[Message]) {
-        if !self.window.is_active() && self.inbox_of(account_id).is_some_and(|f| f.id == folder_id)
-        {
-            let old: Option<HashSet<u32>> = self
-                .message_cache
-                .get(&(account_id, folder_id))
-                .map(|old| old.iter().map(|m| m.uid).collect());
-            self.arrivals.note(
-                account_id,
-                folder_id,
-                old.as_ref(),
-                messages.iter().map(|m| (m.uid, m.unread)),
-            );
         }
     }
 

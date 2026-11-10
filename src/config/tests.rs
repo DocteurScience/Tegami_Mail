@@ -49,32 +49,6 @@ fn an_unknown_protocol_keeps_the_file_readable() {
     assert_eq!(cfg.accounts[1].protocol, super::Protocol::Jmap);
 }
 
-/// #431: a file from before the badge choice keeps what its switch
-/// said, and the choice, once made, wins over the switch.
-#[test]
-fn launcher_badge_follows_the_old_switch() {
-    use super::LauncherBadge::*;
-    let read = |text: &str| {
-        toml::from_str::<PrivacyFile>(text)
-            .unwrap()
-            .launcher_badge()
-    };
-    assert_eq!(read(""), AllUnread);
-    assert_eq!(read("launcher_count = true"), AllUnread);
-    assert_eq!(read("launcher_count = false"), Off);
-    assert_eq!(
-        read("launcher_count = true\nlauncher_badge = \"new_since_front\""),
-        NewSinceFront
-    );
-    assert_eq!(read("launcher_count = true\nlauncher_badge = \"off\""), Off);
-    let saved = PrivacyFile {
-        launcher_count: true,
-        launcher_badge: Some(NewSinceFront),
-        ..Default::default()
-    };
-    assert_eq!(read(&toml::to_string(&saved).unwrap()), NewSinceFront);
-}
-
 /// #367: a sidebar file from before Favorites has none, and the list
 /// starts open; the entries come back in the order they were added.
 #[test]

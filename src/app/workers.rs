@@ -671,10 +671,7 @@ impl AppModel {
 
             AppMsg::LauncherCountLost => self.resend_launcher_count(),
 
-            AppMsg::WindowInFront => {
-                self.arrivals.clear();
-                self.resend_launcher_count();
-            }
+            AppMsg::WindowInFront => self.resend_launcher_count(),
             _ => unreachable!("not routed to on_workers"),
         }
     }

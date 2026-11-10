@@ -1779,6 +1779,11 @@ which **Open the system notification settings** opens. (A choice of other
 buttons and a sound of Tegami Mail's own, set in an earlier version, are no
 longer offered.)
 
+A dock that shows counts on its icons (Ubuntu Dock, Dash to Dock, KDE
+Plasma's task manager) shows the number of unread messages in the inboxes on
+Tegami Mail's; plain GNOME Shell shows none. To hide it, use the dock's own
+settings where it has one.
+
 ### The status bar
 
 Errors, and the console when **Console mode** is on, open in a bar at the

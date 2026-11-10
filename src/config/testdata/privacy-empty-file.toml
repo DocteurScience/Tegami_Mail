@@ -45,7 +45,6 @@ keep_downloads_days = 0
 run_in_background = false
 autostart = false
 reading_pane = "right"
-launcher_count = true
 show_remote_banner = true
 console_mode = false
 status_bar_top = false

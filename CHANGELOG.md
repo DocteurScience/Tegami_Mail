@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+- **Removed: the stored choice of launcher badge** (owner's decision,
+  2026-11-10, now in docs/DESIGN.md, "Removed or moved"). Its row had gone
+  with the General page, yet a choice saved by an earlier version (no badge,
+  or only mail that came in while the window was behind) still applied. The
+  badge, where a dock shows one, now always counts the unread messages in
+  the inboxes.
 - **Removed: the stored choice of notification buttons** (owner's decision,
   2026-11-10, now in docs/DESIGN.md, "Removed or moved"). Its row had gone
   with the General page, yet a choice saved by an earlier version still

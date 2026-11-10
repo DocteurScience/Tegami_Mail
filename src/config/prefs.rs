@@ -309,20 +309,6 @@ pub(crate) enum SignaturePosition {
     BelowQuote,
 }
 
-/// What the number on the launcher icon counts (#431).
-#[derive(Clone, Copy, Debug, Default, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
-#[serde(rename_all = "snake_case")]
-pub(crate) enum LauncherBadge {
-    /// No badge.
-    Off,
-    /// Every unread message in the inboxes, as the tray icon's dot.
-    #[default]
-    AllUnread,
-    /// Inbox mail that arrived while the main window was not in front and
-    /// is still unread; back to none each time the window comes forward.
-    NewSinceFront,
-}
-
 /// What new messages start out as, falling back to the plain-text
 /// switch this setting replaced (#180).
 pub(crate) fn load_compose_format() -> ComposeFormat {

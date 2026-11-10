@@ -3,7 +3,6 @@
 
 use relm4::prelude::*;
 
-use crate::config;
 use crate::ui::sidebar::SidebarInput;
 
 use super::model::AppModel;
@@ -26,22 +25,10 @@ impl AppModel {
         self.push_launcher_count();
     }
 
-    /// The launcher icon's badge (#271): the inboxes total, only the inbox mail that came in while the window was
-    /// behind (#431), or nothing, as Settings has it.
+    /// The launcher icon's badge (#271): every unread message in the
+    /// inboxes, the count other mail apps show there.
     pub(super) fn push_launcher_count(&self) {
-        let count = match self.launcher_badge {
-            config::LauncherBadge::Off => 0,
-            config::LauncherBadge::AllUnread => self.inboxes_unread(),
-            config::LauncherBadge::NewSinceFront => self.arrivals.count(|a, f| {
-                self.message_cache
-                    .get(&(a, f))
-                    .into_iter()
-                    .flatten()
-                    .filter(|m| m.unread)
-                    .map(|m| m.uid)
-            }),
-        };
-        crate::desktop::launcher_badge::set_count(count);
+        crate::desktop::launcher_badge::set_count(self.inboxes_unread());
     }
 
     /// Send the launcher badge again even though the count is unchanged, for

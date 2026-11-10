@@ -305,8 +305,7 @@ impl AppModel {
             if w.is_active() {
                 crate::desktop::notify::withdraw_compose_ready();
                 // Focus comes back after an unlock, when the dock has
-                // just been rebuilt without the badge; and the mail
-                // that arrived meanwhile has now been seen (#431).
+                // just been rebuilt without the badge.
                 fsender.input(AppMsg::WindowInFront);
             }
         });

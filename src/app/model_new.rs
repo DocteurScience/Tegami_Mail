@@ -66,7 +66,6 @@ impl AppModel {
             reading_pane_action,
         } = main_menu;
         crate::ui::keymap::set_key_mode(prefs.single_key_shortcuts, prefs.gmail_keys);
-        let launcher_badge = prefs.launcher_badge();
         // Clear what an icon picked from the former gallery left on the
         // desktop, and put the shipped icon back.
         crate::desktop::app_icon::init_on_startup();
@@ -265,8 +264,6 @@ impl AppModel {
             run_in_background: std::rc::Rc::new(std::cell::Cell::new(prefs.run_in_background)),
             autostart: config::load_autostart(),
             reading_pane: prefs.reading_pane,
-            launcher_badge,
-            arrivals: Default::default(),
             single_key: std::rc::Rc::new(std::cell::Cell::new(prefs.single_key_shortcuts)),
             gmail_keys: std::rc::Rc::new(std::cell::Cell::new(prefs.gmail_keys)),
             keep_downloads_days: prefs.keep_downloads_days,

@@ -58,8 +58,6 @@ impl AppModel {
             run_in_background: self.run_in_background.get(),
             autostart: self.autostart,
             reading_pane: self.reading_pane,
-            launcher_count: self.launcher_badge != config::LauncherBadge::Off,
-            launcher_badge: Some(self.launcher_badge),
             show_remote_banner: self.show_remote_banner,
             receipts: self.receipts,
             request_receipts: self.request_receipts,

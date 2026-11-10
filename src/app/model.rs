@@ -362,10 +362,6 @@ pub(crate) struct AppModel {
     pub(super) autostart: bool,
     /// The reader beside the list (#475); off, messages open in windows.
     pub(super) reading_pane: config::ReadingPane,
-    /// What the launcher icon's badge counts (#271, #431).
-    pub(super) launcher_badge: config::LauncherBadge,
-    /// Inbox mail that arrived while the window was not in front (#431).
-    pub(super) arrivals: crate::desktop::launcher_badge::Arrivals,
     /// Whether single-key (modifier-free) shortcuts are enabled. The window's key
     /// controller needs to read this without the model, so it is shared: with the
     /// feature off, keystrokes must pass straight through rather than be consumed

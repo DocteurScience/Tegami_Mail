@@ -8,7 +8,7 @@ use std::path::PathBuf;
 use super::look::{default_list_columns, AppTheme, ReadingPane};
 use super::prefs::{
     default_files_limit_mb, default_undo_send_secs, ComposeFormat, FilesAction, FilesLarge,
-    LauncherBadge, PrintOptions, ReadMark, ReceiptPolicy, ReturnedReceipts, SignaturePosition,
+    PrintOptions, ReadMark, ReceiptPolicy, ReturnedReceipts, SignaturePosition,
 };
 use super::sections::FolderSort;
 use super::{config_file, default_on, is_zero, save_private_toml};
@@ -199,15 +199,6 @@ pub(crate) struct PrivacyFile {
     /// their own windows.
     #[serde(default)]
     pub(crate) reading_pane: ReadingPane,
-    /// Whether the launcher icon in a dock or task manager shows the unread
-    /// count (#271). Kept written so a version that predates
-    /// `launcher_badge` still shows a badge when this one does.
-    #[serde(default = "default_on")]
-    pub(crate) launcher_count: bool,
-    /// What that count counts (#431). Absent on installs that predate the
-    /// choice, where `launcher_count` above says whether there is one.
-    #[serde(default)]
-    pub(crate) launcher_badge: Option<LauncherBadge>,
     /// Whether to say anything at all when remote content is blocked. Off hides
     /// the banner; it never changes what is blocked, only whether you're told.
     #[serde(default = "default_on")]
@@ -322,8 +313,6 @@ impl Default for PrivacyFile {
             run_in_background: false,
             autostart: false,
             reading_pane: ReadingPane::Right,
-            launcher_count: true,
-            launcher_badge: None,
             print: PrintOptions::default(),
         }
     }
@@ -341,18 +330,6 @@ pub(crate) fn load_privacy() -> PrivacyFile {
         return PrivacyFile::default();
     };
     toml::from_str::<PrivacyFile>(&text).unwrap_or_default()
-}
-
-impl PrivacyFile {
-    /// The launcher badge choice, falling back to the on/off switch it
-    /// replaced.
-    pub(crate) fn launcher_badge(&self) -> LauncherBadge {
-        self.launcher_badge.unwrap_or(if self.launcher_count {
-            LauncherBadge::AllUnread
-        } else {
-            LauncherBadge::Off
-        })
-    }
 }
 
 /// Persist all app settings together (so no field is clobbered).
