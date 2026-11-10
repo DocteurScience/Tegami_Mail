@@ -37,7 +37,7 @@ pub(crate) struct Predecessor {
 }
 
 /// Newest first, so the most recent data wins when more than one is found.
-pub(crate) const PREDECESSORS: &[Predecessor] = &[
+pub(crate) static PREDECESSORS: &[Predecessor] = &[
     Predecessor {
         app_id: "co.hyprlab.Vireo",
         dir: "vireo",

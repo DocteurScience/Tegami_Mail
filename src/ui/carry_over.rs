@@ -19,7 +19,9 @@ pub(crate) fn show(parent: &impl IsA<gtk::Window>, from: &'static Predecessor) {
          removed. Once everything is here, you can remove {old}.",
         &[("old", from.name)],
     );
-    if crate::desktop::legacy::default_mailer().is_some_and(|p| std::ptr::eq(p, from)) {
+    // By name: an address comparison holds only while PREDECESSORS stays
+    // a static (a const's uses need not share one copy).
+    if crate::desktop::legacy::default_mailer().is_some_and(|p| p.name == from.name) {
         body.push_str("\n\n");
         body.push_str(&i18n_f(
             "{old} is still the app your desktop opens email links with. To hand \

@@ -142,7 +142,7 @@ const APP_PW: &str = i18n_noop("Needs an app password, not your login password."
 /// generic entries together, then the OAuth providers and the major app-password IMAP
 /// providers. IMAP uses SSL/TLS on 993; SMTP uses
 /// implicit TLS on 465 or STARTTLS on 587.
-pub(crate) const PROVIDERS: &[Provider] = &[
+pub(crate) static PROVIDERS: &[Provider] = &[
     Provider { label: "IMAP/POP3 Account", brand: "mail", kind: ProviderKind::Manual, imap_host: "", imap_port: 0, smtp_host: "", smtp_port: 0, hint: i18n_noop("Enter your server details manually.") },
     Provider { label: "Custom (OAuth)…", brand: "mail-oauth", kind: ProviderKind::CustomOAuth, imap_host: "", imap_port: 0, smtp_host: "", smtp_port: 0, hint: i18n_noop("Enter your provider's OAuth endpoints, then sign in.") },
     Provider { label: "JMAP Server", brand: "mail-jmap", kind: ProviderKind::Jmap, imap_host: "", imap_port: 443, smtp_host: "", smtp_port: 0, hint: i18n_noop("Your JMAP server's address or session URL. No SMTP settings needed.") },

@@ -604,10 +604,6 @@ flowbox.attach-flow > flowboxchild {
   margin-bottom: 2px;
 }
 
-.list-toolbar:not(:empty) {
-  background-color: @window_bg_color;
-}
-
 .list-footer {
   padding: 0;
 }
@@ -2006,7 +2002,9 @@ popover > contents {
    as screens 22 to 25 draw it (docs/DESIGN.md, "Preferences"): with the
    icons libadwaita adds, the longer names were cut short. */
 dialog.preferences viewswitcher button image {
-  -gtk-icon-size: 0;
+  /* 1 px, not 0: GTK cannot look an icon up at size 0, and says so. */
+  -gtk-icon-size: 1px;
+  opacity: 0;
   min-width: 0;
   min-height: 0;
   margin: 0;

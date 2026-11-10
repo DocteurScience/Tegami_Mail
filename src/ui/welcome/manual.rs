@@ -30,7 +30,9 @@ fn manual_index() -> u32 {
 /// the plain entry when the domain is not a known one.
 fn index_for_address(email: &str) -> u32 {
     crate::ui::accounts::provider_for_address(email)
-        .and_then(|found| wizard_providers().position(|p| std::ptr::eq(p, found)))
+        // By label: an address comparison held only while PROVIDERS was a
+        // static, and it once was a const, whose uses need not share a copy.
+        .and_then(|found| wizard_providers().position(|p| p.wizard_label() == found.wizard_label()))
         .map_or(manual_index(), |i| i as u32)
 }
 
