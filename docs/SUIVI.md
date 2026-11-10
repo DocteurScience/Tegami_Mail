@@ -118,6 +118,7 @@ Dernière mise à jour : 2026-11-02, après `40a6c7e`.
 | `7c23e1c` | Relecture de DOCUMENTATION.md et FEATURES.md pour les nouvelles préférences : chemins « Préférences → … » pour les réglages gardés ; passages sur les réglages retirés supprimés ou réécrits (comportement par défaut, « une valeur d'une version précédente est gardée ») : barre latérale, barre d'outils, disposition et colonnes de la liste, taille du texte, icônes, compteur sur l'icône, moteur de rendu, Fichiers GNOME (installation manuelle seulement), son et boutons des notifications, connexions limitées, carnet Tegami Mail, nettoyage des listes, libellés de sensibilité |
 | `3192415` | Formulaire LDAP (écran 47) : chiffrement, port, base et portée de recherche sous « Avancé » (ouvert quand l'annuaire a déjà une base) |
 | `8884588` | Éditeurs de filtres et de dossiers intelligents refaits (écrans 38 et 40) : `accounts/criteria.rs` (liste de critères partagée : « Critères : tous / un seul », une ligne par critère titrée « champ + opérateur », bouton ⋯ pour l'opérateur ou retirer, « Ajouter un critère », critères rares ajoutés depuis « Avancé ») remplace `condition_editor.rs` ; `action_editor.rs` : une ligne par action, menu « Ajouter une action » limité à ce qui manque ; dossier intelligent : lignes fixes Lecture / Favoris / Pièce jointe / Étiquette, critères de texte gardés. Format enregistré inchangé. Limite connue : un dossier intelligent qui aurait deux états du même groupe (Lus et Non lus) n'en montre qu'un |
+| (ce commit) | Evolution Data Server noté comme dépendance d'exécution pour les contacts (BUILDING.md, CHANGELOG). Note périmée retirée de « Reste à faire » : les revealers du mode Concentration ont été retirés par `80e9d01` |
 
 ## Décisions prises
 
@@ -309,11 +310,9 @@ sous le nom.
 
 ## Reste à faire (connu)
 
-- Les boutons des en-têtes et l'avatar des lignes restent dans des
-  revealers (`focus-fade`) hérités du mode Concentration : la mesure du
-  repli de la barre du lecteur s'appuie dessus (`follow_button`,
-  `MeasureReaderFold`) ; les retirer demande de reprendre cette mesure.
-
 - Vérifier contraste élevé et mode sombre sur une vraie session GNOME.
 - Questions ouvertes de DESIGN.md (icônes symboliques, version sombre des
   écrans).
+- Étiquettes (écrans 35, 36) : laissées telles que `a0c11c9` par décision
+  du propriétaire (pas de réordonnancement, de mot-clé ni de couleur
+  personnalisée) ; à rouvrir seulement s'il le demande.

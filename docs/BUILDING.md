@@ -3,7 +3,10 @@
 Tegami Mail needs the Rust toolchain ([rustup](https://rustup.rs)), a C compiler,
 and the GTK 4 / libadwaita / WebKitGTK 6 development libraries, plus
 OpenSSL, gettext and Wayland headers. At runtime it needs a Secret Service
-provider (e.g. gnome-keyring).
+provider (e.g. gnome-keyring), and Evolution Data Server
+(`evolution-data-server`) for address books: saving a contact, CardDAV
+accounts and LDAP directories all go through it. It runs without GNOME;
+without it, suggestions still come from your mail.
 
 ## Dependencies
 

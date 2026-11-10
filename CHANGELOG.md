@@ -27,7 +27,9 @@
   reads the books GNOME provides. A book that still holds contacts stays on
   disk: at start the app offers to export it as one vCard file, to open in
   GNOME Contacts, and stops asking once it is exported ("Later" asks again
-  next time).
+  next time). Saving a contact now needs Evolution Data Server
+  (`evolution-data-server`), which also keeps CardDAV accounts and LDAP
+  directories.
 - **Changed: Address books and Backup and restore** (screens 46 to 48). The
   books end with **Add address book…**, followed by "Save new contacts in"
   and rows that open Contacts and Online Accounts. **Import settings…** asks
