@@ -3996,9 +3996,6 @@ msgstr ""
 msgid "What this searches"
 msgstr ""
 
-msgid "me"
-msgstr "я"
-
 #, fuzzy
 msgid "Replied"
 msgstr "Ответить"
@@ -4010,9 +4007,6 @@ msgstr "Переслать"
 #, fuzzy
 msgid "Snoozed until {when}"
 msgstr "Запланировано на {when}"
-
-msgid "Low importance"
-msgstr "Низкая важность"
 
 #, fuzzy
 msgid "In {folder}"
@@ -4398,6 +4392,9 @@ msgstr "{shown} из {total}"
 
 msgid "Executable file: open it only if you trust it."
 msgstr ""
+
+msgid "me"
+msgstr "я"
 
 msgid "Translating…"
 msgstr "Перевод…"

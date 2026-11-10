@@ -1,7 +1,7 @@
 //! Building one row's widgets, once, for the factory to bind over and over.
 
 use super::row::RowWidgets;
-use super::{SwipeSurface, ACCOUNT_COLUMN_PX, PEOPLE_COLUMN_PX, SENDER_COLUMN_PX, TAGS_COLUMN_PX};
+use super::{SwipeSurface, SENDER_COLUMN_PX, TAGS_COLUMN_PX};
 use crate::ui::column_bin::ColumnBin;
 use adw::prelude::*;
 use relm4::prelude::*;
@@ -151,21 +151,6 @@ pub(super) fn build_widgets() -> RowWidgets {
     line.set_hexpand(true);
     line.set_visible(false);
     content.append(&line);
-    // The columns a card has no place for, which live on that line, each in
-    // a bin that keeps it the same width on every row.
-    let column_label = |px: i32| {
-        let label = gtk::Label::new(None);
-        label.set_xalign(0.0);
-        label.set_ellipsize(gtk::pango::EllipsizeMode::End);
-        let bin = ColumnBin::new(px);
-        bin.set_child(Some(&label));
-        bin.set_visible(false);
-        line.append(&bin);
-        (label, bin)
-    };
-    let (recipients, recipients_col) = column_label(SENDER_COLUMN_PX);
-    let (people, people_col) = column_label(PEOPLE_COLUMN_PX);
-    let (account, account_col) = column_label(ACCOUNT_COLUMN_PX);
     let name_col = ColumnBin::new(SENDER_COLUMN_PX);
     let subject_col = ColumnBin::new(0);
     let date_col = ColumnBin::new(-1);
@@ -173,19 +158,6 @@ pub(super) fn build_widgets() -> RowWidgets {
     tags_col.set_visible(false);
     // The subject takes whatever room the other columns leave.
     subject_col.set_hexpand(true);
-    account.add_css_class("message-account");
-    let due = gtk::Label::new(None);
-    due.set_width_chars(9);
-    due.set_xalign(1.0);
-    due.set_ellipsize(gtk::pango::EllipsizeMode::End);
-    let due_col = ColumnBin::new(-1);
-    due_col.set_child(Some(&due));
-    due_col.set_visible(false);
-    line.append(&due_col);
-    let importance = gtk::Image::from_icon_name("emblem-important-symbolic");
-    importance.set_visible(false);
-    line.append(&importance);
-
     RowWidgets {
         host,
         revealer,
@@ -196,16 +168,7 @@ pub(super) fn build_widgets() -> RowWidgets {
         swipe_label,
         overlay,
         content,
-        recipients,
-        recipients_col,
-        people,
-        people_col,
-        importance,
-        account,
-        account_col,
         tags_col,
-        due,
-        due_col,
         name_col,
         subject_col,
         date_col,

@@ -181,12 +181,7 @@ impl MessageList {
             look.sender_logos = self.sender_logos;
             look.preview_lines = self.preview_lines;
             look.single_line = self.single_line;
-            look.columns = self
-                .columns
-                .iter()
-                .copied()
-                .filter(|c| *c != crate::config::ListColumn::Due || self.graph_in_view)
-                .collect();
+            look.columns = self.columns.clone();
             look.in_junk = self.in_junk;
             look.in_drafts = self.in_drafts;
             look.show_recipient = self.show_recipient;
@@ -225,27 +220,21 @@ impl MessageList {
         const DATE_PX: i32 = 64;
         /// Room kept for the subject.
         const SUBJECT_PX: i32 = 100;
-        let columns: Vec<C> = self
-            .columns
-            .iter()
-            .copied()
-            .filter(|c| *c != C::Due || self.graph_in_view)
-            .collect();
+        let columns = &self.columns;
         // The pill's margins and padding, the unread dot and the spacing.
         let mut fixed = 12 + 18 + 18 + 8 * columns.len().saturating_sub(1) as i32;
         if self.avatars {
             fixed += 16 + 8;
         }
         let mut names = Vec::new();
-        for c in &columns {
+        for c in columns {
             let px = default_width(*c);
             match c {
                 C::Star | C::Attachment => fixed += 12,
                 C::Replied => fixed += crate::ui::message_row::REPLIED_PX,
-                C::Importance => fixed += 16,
                 C::Subject => fixed += SUBJECT_PX,
                 // A date cut short says nothing: it keeps its width.
-                C::Due | C::Date => fixed += if px > 0 { px } else { DATE_PX },
+                C::Date => fixed += if px > 0 { px } else { DATE_PX },
                 c if resizable(*c) => names.push((*c, px.max(1))),
                 _ => {}
             }

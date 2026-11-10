@@ -2,7 +2,7 @@
 //! behaviour, quirks included, before the module is split.
 
 use super::filters::{bare_address, CheckFilter};
-use super::sort::{normalize_subject, tag_sort_key, SortOrder};
+use super::sort::{normalize_subject, SortOrder};
 use crate::models::Message;
 
 fn blank() -> Message {
@@ -95,26 +95,4 @@ fn bare_addresses_take_the_last_angle_bracket() {
     // Quotes are not trimmed.
     assert_eq!(bare_address("\"q@x\""), "\"q@x\"");
     assert_eq!(bare_address(""), "");
-}
-
-#[test]
-fn tag_sort_keys_name_the_tags_in_row_order() {
-    let tags = vec![
-        crate::config::Tag {
-            name: "Zeta".into(),
-            keyword: "z".into(),
-            color: "#000000".into(),
-        },
-        crate::config::Tag {
-            name: "Alpha".into(),
-            keyword: "a".into(),
-            color: "#000000".into(),
-        },
-    ];
-    let mut m = blank();
-    assert_eq!(tag_sort_key(&m, &tags), "");
-    m.keywords = vec!["a".into(), "z".into(), "unknown".into()];
-    m.labels = vec!["Label".into()];
-    // In the order of the tag list, then the labels; unknown keywords drop.
-    assert_eq!(tag_sort_key(&m, &tags), "zeta, alpha, label");
 }

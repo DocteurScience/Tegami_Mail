@@ -402,9 +402,6 @@ impl SimpleComponent for MessageList {
                 }
             }
             MessageListInput::SetSingleLine(on) => self.on_set_single_line(on),
-            MessageListInput::SetAccountNames { names, graph } => {
-                self.on_set_account_names(names, graph)
-            }
             MessageListInput::SetLook {
                 avatars,
                 preview_lines,

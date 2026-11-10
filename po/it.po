@@ -3911,9 +3911,6 @@ msgstr ""
 msgid "What this searches"
 msgstr ""
 
-msgid "me"
-msgstr "io"
-
 #, fuzzy
 msgid "Replied"
 msgstr "Rispondi"
@@ -3925,9 +3922,6 @@ msgstr "Inoltra"
 #, fuzzy
 msgid "Snoozed until {when}"
 msgstr "Programmato per {when}"
-
-msgid "Low importance"
-msgstr "Bassa importanza"
 
 #, fuzzy
 msgid "In {folder}"
@@ -4304,6 +4298,9 @@ msgstr "{shown} di {total}"
 
 msgid "Executable file: open it only if you trust it."
 msgstr ""
+
+msgid "me"
+msgstr "io"
 
 msgid "Translating…"
 msgstr "Traduzione in corso…"

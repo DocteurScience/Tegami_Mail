@@ -3762,9 +3762,6 @@ msgstr "Uniquement le dossier ou la vue affichés dans la liste."
 msgid "What this searches"
 msgstr "Ce qui est recherché"
 
-msgid "me"
-msgstr "moi"
-
 msgid "Replied"
 msgstr "Répondu"
 
@@ -3773,9 +3770,6 @@ msgstr "Transféré"
 
 msgid "Snoozed until {when}"
 msgstr "Reporté jusqu’à {when}"
-
-msgid "Low importance"
-msgstr "Importance basse"
 
 msgid "In {folder}"
 msgstr "Dans {folder}"
@@ -4140,6 +4134,9 @@ msgstr "{size} au total"
 
 msgid "Executable file: open it only if you trust it."
 msgstr "Fichier exécutable : ne l’ouvrez que s’il est de confiance."
+
+msgid "me"
+msgstr "moi"
 
 msgid "Translating…"
 msgstr "Traduction en cours…"

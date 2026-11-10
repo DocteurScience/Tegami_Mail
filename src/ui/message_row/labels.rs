@@ -1,21 +1,9 @@
-//! The small labels a row draws: due dates, tag pills, the tag menu.
+//! The small labels a row draws: tag pills and the tag menu.
 
 use crate::models::Message;
 use crate::ui::context_menu::MenuEntry;
 use adw::prelude::*;
 use relm4::prelude::*;
-
-/// A follow-up flag's due date for the Due column (#334): the day alone,
-/// the year too when it is not this one. Empty when there is none.
-pub(super) fn due_label(due: i64) -> String {
-    if due <= 0 {
-        String::new()
-    } else if crate::datefmt::year(due) == crate::datefmt::year(crate::datefmt::now()) {
-        crate::datefmt::day_month(due)
-    } else {
-        crate::datefmt::day_month_year(due)
-    }
-}
 
 /// A chip: the dot of its colour, then the name, on a tint of the colour
 /// (mockups 01, 07 and 09). The dot says "a tag" before the name is read;

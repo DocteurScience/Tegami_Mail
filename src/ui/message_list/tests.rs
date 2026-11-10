@@ -2,7 +2,7 @@
 //! day sections, quick filters and search text.
 
 use super::filters::{Period, QuickFilter, QuickFilterContext, QuickFilters};
-use super::sort::{correspondents, message_cmp, text_key_cmp, SortOrder};
+use super::sort::SortOrder;
 use super::threading::{
     compute_thread_keys, heads_its_row, reader_conversation, row_for_reader_key, thread_slot,
     unasked_threads,
@@ -158,43 +158,13 @@ fn msg(id: u32, message_id: &str, references: &str) -> Message {
     }
 }
 
-/// #334: a sort key from before reads as newest first, and due dates
-/// sort soonest first, undated last.
+/// A sort key from before, or one only the column headings set, reads
+/// as newest first.
 #[test]
-fn old_sort_keys_and_due_dates() {
-    assert_eq!(SortOrder::from_key("flagged"), SortOrder::DateNewest);
-    assert_eq!(SortOrder::from_key("unread"), SortOrder::DateNewest);
-    assert_eq!(text_key_cmp("", "a"), std::cmp::Ordering::Greater);
-    assert_eq!(text_key_cmp("ann", "bob"), std::cmp::Ordering::Less);
-    let due = |id, due| Message {
-        due,
-        ..msg(id, "", "")
-    };
-    let mut list = [due(1, 0), due(2, 300), due(3, 100)];
-    list.sort_by(|a, b| message_cmp(a, b, SortOrder::Due));
-    assert_eq!(list.iter().map(|m| m.id).collect::<Vec<_>>(), vec![3, 2, 1]);
-}
-
-/// #334: who wrote, each once; who it went to when nobody else has
-/// written. #443: the newest writer first.
-#[test]
-fn correspondents_name_each_writer_once() {
-    let from = |id, name: &str, addr: &str, ts| Message {
-        from_name: name.into(),
-        from_addr: addr.into(),
-        timestamp: ts,
-        to: "Zoe <z@example.com>".into(),
-        ..msg(id, "", "")
-    };
-    let (a, b, a2) = (
-        from(1, "Ann", "a@example.com", 10),
-        from(2, "", "b@example.com", 20),
-        from(3, "Ann", "A@example.com", 30),
-    );
-    assert_eq!(correspondents(&[&a, &b, &a2]), "Ann, b@example.com");
-    assert_eq!(correspondents(&[&a, &b]), "b@example.com, Ann");
-    assert_eq!(correspondents(&[&a]), "Ann");
-    assert_eq!(correspondents(&[]), "");
+fn old_sort_keys_read_as_newest_first() {
+    for key in ["flagged", "unread", "importance", "correspondents", "due"] {
+        assert_eq!(SortOrder::from_key(key), SortOrder::DateNewest);
+    }
 }
 
 /// Two replies in an Inbox each answer a different message in Sent, and

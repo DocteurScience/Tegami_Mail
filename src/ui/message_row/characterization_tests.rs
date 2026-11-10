@@ -1,7 +1,6 @@
 //! Characterization tests for the row's pure helpers, quirks included.
 
 use super::faces::{first_recipient_addr, recipient_names};
-use super::labels::due_label;
 use super::{default_width, resizable};
 use crate::config::ListColumn;
 
@@ -40,10 +39,4 @@ fn column_widths() {
          (Subject, -1, false), (Tags, 90, true), (Attachment, -1, false), \
          (Date, -1, true)]"
     );
-}
-
-#[test]
-fn no_due_date_has_no_label() {
-    assert_eq!(due_label(0), "");
-    assert_eq!(due_label(-1), "");
 }

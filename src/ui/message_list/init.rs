@@ -96,8 +96,6 @@ impl MessageList {
             threading: true,
             single_line: false,
             columns: crate::config::ListColumn::DEFAULT.to_vec(),
-            graph_accounts: std::collections::HashSet::new(),
-            graph_in_view: false,
             day_headings: false,
             pane_width: 0,
             bulk_tag_btn: gtk::Button::new(),

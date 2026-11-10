@@ -3849,9 +3849,6 @@ msgstr "Nur der aktuell angezeigte Ordner oder die aktuelle Ansicht"
 msgid "What this searches"
 msgstr "Durchsuchte Ordner"
 
-msgid "me"
-msgstr "ich"
-
 msgid "Replied"
 msgstr "Replied"
 
@@ -3860,9 +3857,6 @@ msgstr "Weitergeleitet"
 
 msgid "Snoozed until {when}"
 msgstr "Zurückgestellt bis {when}"
-
-msgid "Low importance"
-msgstr "Wichtigkeit: niedrig"
 
 msgid "In {folder}"
 msgstr "In {folder}"
@@ -4232,6 +4226,9 @@ msgstr "{shown} von {total}"
 
 msgid "Executable file: open it only if you trust it."
 msgstr ""
+
+msgid "me"
+msgstr "ich"
 
 msgid "Translating…"
 msgstr "übersetze…"

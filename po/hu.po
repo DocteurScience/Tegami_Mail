@@ -3973,10 +3973,6 @@ msgid "What this searches"
 msgstr ""
 
 #, fuzzy
-msgid "me"
-msgstr "Név"
-
-#, fuzzy
 msgid "Replied"
 msgstr "Válasz"
 
@@ -3987,10 +3983,6 @@ msgstr "Továbbítás"
 #, fuzzy
 msgid "Snoozed until {when}"
 msgstr "Ütemezve ekkorra: {when}"
-
-#, fuzzy
-msgid "Low importance"
-msgstr "Kulcs importálva"
 
 #, fuzzy
 msgid "In {folder}"
@@ -4377,6 +4369,10 @@ msgstr "{shown} / {total}"
 
 msgid "Executable file: open it only if you trust it."
 msgstr ""
+
+#, fuzzy
+msgid "me"
+msgstr "Név"
 
 #, fuzzy
 msgid "Translating…"

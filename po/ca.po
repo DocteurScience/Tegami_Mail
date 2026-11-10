@@ -3827,9 +3827,6 @@ msgstr "Només la carpeta o vista que mostra la llista."
 msgid "What this searches"
 msgstr "Què cerca això"
 
-msgid "me"
-msgstr "jo"
-
 msgid "Replied"
 msgstr "Respost"
 
@@ -3839,9 +3836,6 @@ msgstr "Reenviat"
 #, fuzzy
 msgid "Snoozed until {when}"
 msgstr "Programat per a {when}"
-
-msgid "Low importance"
-msgstr "Importància baixa"
 
 msgid "In {folder}"
 msgstr "A {folder}"
@@ -4213,6 +4207,9 @@ msgstr "{shown} de {total}"
 
 msgid "Executable file: open it only if you trust it."
 msgstr ""
+
+msgid "me"
+msgstr "jo"
 
 msgid "Translating…"
 msgstr "S'està traduint…"

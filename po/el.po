@@ -3887,9 +3887,6 @@ msgstr "Μόνο ο φάκελος ή η προβολή που εμφανίζε�
 msgid "What this searches"
 msgstr "Τι αναζητά αυτή η επιλογή"
 
-msgid "me"
-msgstr "εγώ"
-
 msgid "Replied"
 msgstr "Απαντήθηκε"
 
@@ -3899,9 +3896,6 @@ msgstr "Προωθήθηκε"
 #, fuzzy
 msgid "Snoozed until {when}"
 msgstr "Προγραμματισμένο για {when}"
-
-msgid "Low importance"
-msgstr "Χαμηλή σπουδαιότητα"
 
 msgid "In {folder}"
 msgstr "Στον φάκελο {folder}"
@@ -4273,6 +4267,9 @@ msgstr "{shown} από {total}"
 
 msgid "Executable file: open it only if you trust it."
 msgstr ""
+
+msgid "me"
+msgstr "εγώ"
 
 msgid "Translating…"
 msgstr "Μετάφραση…"

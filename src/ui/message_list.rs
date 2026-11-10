@@ -279,11 +279,6 @@ pub(crate) struct MessageList {
     single_line: bool,
     /// The single-line columns, in order (#334): the default ones.
     columns: Vec<crate::config::ListColumn>,
-    /// The Microsoft 365 accounts: only their mail has a due date, so the
-    /// Due column takes room only while the list holds some of it.
-    graph_accounts: std::collections::HashSet<u32>,
-    /// The list holds mail of one of `graph_accounts`.
-    graph_in_view: bool,
     day_headings: bool,
     /// How wide the rows are, for fitting the columns into it.
     pane_width: i32,

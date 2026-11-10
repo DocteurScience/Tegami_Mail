@@ -1,8 +1,5 @@
-//! The list's orders: comparing two messages by the chosen sort, the keys
-//! the Tags and Correspondents columns sort by, and the sort a column
-//! heading picks.
+//! The list's orders: comparing two messages by the chosen sort.
 
-use crate::i18n::i18n;
 use crate::models::Message;
 
 /// Order two messages by the chosen sort (ties fall back to date).
@@ -19,61 +16,7 @@ pub(super) fn message_cmp(a: &Message, b: &Message, order: SortOrder) -> std::cm
         SortOrder::Subject => normalize_subject(&a.subject)
             .cmp(&normalize_subject(&b.subject))
             .then(b.timestamp.cmp(&a.timestamp)),
-        // The single line's other columns (#334).
-        SortOrder::Recipients => {
-            let to = |m: &Message| crate::ui::message_row::recipient_names(&m.to).to_lowercase();
-            to(a).cmp(&to(b)).then(b.timestamp.cmp(&a.timestamp))
-        }
-        SortOrder::Account => a
-            .account_id
-            .cmp(&b.account_id)
-            .then(b.timestamp.cmp(&a.timestamp)),
-        SortOrder::Attachment => b
-            .has_attachment
-            .cmp(&a.has_attachment)
-            .then(b.timestamp.cmp(&a.timestamp)),
-        SortOrder::Replied => (b.answered, b.forwarded)
-            .cmp(&(a.answered, a.forwarded))
-            .then(b.timestamp.cmp(&a.timestamp)),
-        SortOrder::Importance => b
-            .importance
-            .to_i64()
-            .cmp(&a.importance.to_i64())
-            .then(b.timestamp.cmp(&a.timestamp)),
-        // Soonest due first; mail with no due date after all that has one.
-        SortOrder::Due => (a.due == 0, a.due)
-            .cmp(&(b.due == 0, b.due))
-            .then(b.timestamp.cmp(&a.timestamp)),
-        // Both are put in order by the rebuild, which knows a conversation's
-        // writers and the tags' names (#443); one message alone goes by its
-        // sender and its keywords.
-        SortOrder::Correspondents => name_of(a)
-            .cmp(&name_of(b))
-            .then(b.timestamp.cmp(&a.timestamp)),
-        SortOrder::Tags => {
-            let tags = |m: &Message| m.keywords.join(",").to_lowercase();
-            tags(a).cmp(&tags(b)).then(b.timestamp.cmp(&a.timestamp))
-        }
     }
-}
-
-/// What the Tags column sorts by (#443): the names of the tags a message
-/// wears, as its row shows them. Empty for a message without any.
-pub(super) fn tag_sort_key(m: &Message, tags: &[crate::config::Tag]) -> String {
-    let names: Vec<String> = m
-        .pills(tags)
-        .iter()
-        .map(|p| match p {
-            crate::models::Pill::Tag(t) => t.name.to_lowercase(),
-            crate::models::Pill::Label(name) => name.to_lowercase(),
-        })
-        .collect();
-    names.join(", ")
-}
-
-/// Order two sort keys of text, A to Z, an empty key after every other.
-pub(super) fn text_key_cmp(a: &str, b: &str) -> std::cmp::Ordering {
-    (a.is_empty(), a).cmp(&(b.is_empty(), b))
 }
 
 /// Lower-case the subject and strip any leading run of reply/forward prefixes
@@ -98,46 +41,6 @@ pub(super) fn normalize_subject(subject: &str) -> String {
     s.trim().to_ascii_lowercase()
 }
 
-/// The Correspondents column (#334): who wrote in a conversation, newest
-/// first and each once, you as "me". The newest leads because it is who the
-/// conversation waits on, as the row's sender does (#443). A conversation
-/// only you have written in, a message in Sent say, names who it went to
-/// instead.
-pub(super) fn correspondents(msgs: &[&Message]) -> String {
-    let mut sorted = msgs.to_vec();
-    sorted.sort_by_key(|m| std::cmp::Reverse(m.timestamp));
-    let mut seen = std::collections::HashSet::new();
-    let mut names: Vec<String> = Vec::new();
-    let mut others = false;
-    for m in &sorted {
-        let own = crate::services::avatar::is_own_address(&m.from_addr);
-        let key = if own {
-            String::new()
-        } else {
-            m.from_addr.to_ascii_lowercase()
-        };
-        if !seen.insert(key) {
-            continue;
-        }
-        if own {
-            names.push(i18n("me"));
-        } else {
-            others = true;
-            names
-                .push(crate::contacts::shown_name_or_addr(&m.from_name, &m.from_addr).into_owned());
-        }
-    }
-    if !others {
-        if let Some(newest) = sorted.first() {
-            let to = crate::ui::message_row::recipient_names(&newest.to);
-            if !to.is_empty() {
-                return format!("To: {to}");
-            }
-        }
-    }
-    names.join(", ")
-}
-
 /// How the message list is ordered.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub(crate) enum SortOrder {
@@ -145,33 +48,17 @@ pub(crate) enum SortOrder {
     DateOldest,
     Sender,
     Subject,
-    Recipients,
-    Account,
-    Attachment,
-    Importance,
-    Due,
-    Correspondents,
-    Tags,
-    Replied,
 }
 
 impl SortOrder {
     /// "unread" and "flagged" (Unread first, Starred first) were removed
     /// on 2026-11-07; the list's order is not saved, so nothing carries
     /// them, and an unknown key reads as newest first.
-    pub(super) const KEYS: [(SortOrder, &'static str); 12] = [
+    pub(super) const KEYS: [(SortOrder, &'static str); 4] = [
         (SortOrder::DateNewest, "date_newest"),
         (SortOrder::DateOldest, "date_oldest"),
         (SortOrder::Sender, "sender"),
         (SortOrder::Subject, "subject"),
-        (SortOrder::Recipients, "recipients"),
-        (SortOrder::Account, "account"),
-        (SortOrder::Attachment, "attachment"),
-        (SortOrder::Importance, "importance"),
-        (SortOrder::Due, "due"),
-        (SortOrder::Correspondents, "correspondents"),
-        (SortOrder::Tags, "tags"),
-        (SortOrder::Replied, "replied"),
     ];
 
     pub(crate) fn from_key(key: &str) -> Self {

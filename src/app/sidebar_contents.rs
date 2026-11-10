@@ -3,7 +3,7 @@
 
 use relm4::prelude::*;
 
-use crate::config::{self, AccountConfig};
+use crate::config::AccountConfig;
 use crate::models::Folder;
 use crate::ui::message_list::MessageListInput;
 use crate::ui::sidebar::{SectionData, SidebarInput};
@@ -146,8 +146,7 @@ impl AppModel {
         })
     }
 
-    /// Keep the list's per-account tint colors in sync, and what its
-    /// Account and Due columns need to know (#334).
+    /// Keep the list's per-account tint colors in sync.
     fn sync_list_accounts(&self) {
         let colors: std::collections::HashMap<u32, String> = self
             .accounts
@@ -156,21 +155,5 @@ impl AppModel {
             .collect();
         self.message_list
             .emit(MessageListInput::SetAccountColors(colors));
-        let names: std::collections::HashMap<u32, String> = self
-            .accounts
-            .iter()
-            .map(|a| (a.id, self.account_label(a.id)))
-            .collect();
-        let graph: std::collections::HashSet<u32> = self
-            .accounts
-            .iter()
-            .filter(|a| {
-                self.saved_account_config(a.id)
-                    .is_some_and(|c| c.protocol == config::Protocol::Graph)
-            })
-            .map(|a| a.id)
-            .collect();
-        self.message_list
-            .emit(MessageListInput::SetAccountNames { names, graph });
     }
 }

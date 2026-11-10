@@ -99,8 +99,6 @@ pub(crate) struct RowShared {
     /// The tags (#71): the chips a row shows are the message's keywords that
     /// name one of these.
     pub(crate) tags: RefCell<Vec<crate::config::Tag>>,
-    /// Each account's name, for the Account column (#334).
-    pub(crate) account_names: RefCell<HashMap<u32, String>>,
     /// When snoozed mail comes back (#527).
     pub(crate) snoozed: RefCell<SnoozedRows>,
     /// Sent mail's read receipts (#520).
@@ -143,7 +141,6 @@ impl RowShared {
         Rc::new(RowShared {
             look: RefCell::new(RowLook::default()),
             tags: RefCell::new(Vec::new()),
-            account_names: RefCell::new(HashMap::new()),
             snoozed: RefCell::new(SnoozedRows::default()),
             receipt_marks: RefCell::new(Default::default()),
             swipe_enabled: Cell::new(privacy.swipe_enabled),

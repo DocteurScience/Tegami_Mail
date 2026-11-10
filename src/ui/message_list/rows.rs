@@ -3,7 +3,7 @@
 //! the algorithms here are tuned and kept as they are.
 
 use super::layout::after_next_paint;
-use super::sort::{correspondents, message_cmp, tag_sort_key, text_key_cmp, SortOrder};
+use super::sort::{message_cmp, SortOrder};
 use super::threading::{compute_thread_keys, thread_slot};
 use super::types::{BulkAction, MessageListInput};
 use super::views::{later_drop, Built};
@@ -221,18 +221,6 @@ impl MessageList {
         );
     }
 
-    /// Who took part in a conversation (#334), for its Correspondents
-    /// column: `msgs` and the replies filed in other folders.
-    fn people_of(&self, key: &(u32, String), msgs: &[Rc<Message>]) -> String {
-        let summary = self
-            .threading
-            .then(|| self.thread_summaries.get(key))
-            .flatten();
-        let mut all: Vec<&Message> = msgs.iter().map(|m| &**m).collect();
-        all.extend(summary.iter().flat_map(|s| s.members.iter()));
-        correspondents(&all)
-    }
-
     /// One conversation's row: what its head says about it, and its members
     /// head first, the parts filed in other folders included (#309). `own`
     /// is the folder's own members, oldest first. Records the conversation's
@@ -278,10 +266,6 @@ impl MessageList {
             .last()
             .expect("a group holds at least one message")
             .clone();
-        let people = self
-            .columns
-            .contains(&crate::config::ListColumn::Correspondents)
-            .then(|| self.people_of(key, &msgs));
         // The head stays marked unread while ANY message in its conversation
         // is unread, hidden replies included, but only this folder's own: an
         // archived message still unread is not new mail here.
@@ -311,7 +295,6 @@ impl MessageList {
             starred: any_starred,
             answered,
             forwarded,
-            people,
             revealed: true,
             group: self.threading.then(|| key.clone()),
             ..Default::default()
@@ -424,14 +407,6 @@ impl MessageList {
             .iter()
             .map(|m| (m.account_id, m.folder_id))
             .collect();
-        let graph_in_view = self
-            .listed_folders
-            .iter()
-            .any(|(a, _)| self.graph_accounts.contains(a));
-        if graph_in_view != self.graph_in_view {
-            self.graph_in_view = graph_in_view;
-            self.sync_look();
-        }
         let sort = self.sort;
         self.shared.by_date.set(matches!(
             sort,
@@ -461,10 +436,7 @@ impl MessageList {
             own_keys = compute_thread_keys(&matches, &self.thread_links);
             &own_keys
         };
-        let mut grouped = group_conversations(matches, keys);
-        if sort == SortOrder::Correspondents {
-            grouped = self.sort_by_correspondents(grouped);
-        }
+        let grouped = group_conversations(matches, keys);
 
         // Under which date heading each conversation goes (#435): by the
         // message that put it where it is in the sort, the newest for
@@ -582,39 +554,10 @@ impl MessageList {
         (shown, rows)
     }
 
-    /// Sort the matches by the list's order: by tag name (each message's
-    /// tag names worked out once, not at every comparison) or by
-    /// `message_cmp`.
-    fn sort_matches(&self, matches: &mut Vec<Rc<Message>>) {
+    /// Sort the matches by the list's order.
+    fn sort_matches(&self, matches: &mut [Rc<Message>]) {
         let sort = self.sort;
-        if sort == SortOrder::Tags {
-            let tags = self.shared.tags.borrow();
-            let mut keyed: Vec<(String, Rc<Message>)> = matches
-                .drain(..)
-                .map(|m| (tag_sort_key(&m, &tags), m))
-                .collect();
-            keyed.sort_by(|(ka, a), (kb, b)| {
-                text_key_cmp(ka, kb).then(b.timestamp.cmp(&a.timestamp))
-            });
-            *matches = keyed.into_iter().map(|(_, m)| m).collect();
-        } else {
-            matches.sort_by(|a, b| message_cmp(a, b, sort));
-        }
-    }
-
-    /// Correspondents sort by the whole conversation's writers, as the
-    /// column names them, which no single message knows (#443). The
-    /// conversations are in date order beneath, newest first, from the
-    /// sort before grouping.
-    fn sort_by_correspondents(&self, grouped: Vec<Group>) -> Vec<Group> {
-        let people: Vec<String> = grouped
-            .iter()
-            .map(|(k, msgs)| self.people_of(k, msgs).to_lowercase())
-            .collect();
-        let mut by: Vec<usize> = (0..grouped.len()).collect();
-        by.sort_by(|a, b| text_key_cmp(&people[*a], &people[*b]));
-        let mut slots: Vec<Option<Group>> = grouped.into_iter().map(Some).collect();
-        by.into_iter().filter_map(|i| slots[i].take()).collect()
+        matches.sort_by(|a, b| message_cmp(a, b, sort));
     }
 
     /// A message that was moved away and brought back comes home under a

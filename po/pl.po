@@ -4020,10 +4020,6 @@ msgid "What this searches"
 msgstr ""
 
 #, fuzzy
-msgid "me"
-msgstr "Nazwa"
-
-#, fuzzy
 msgid "Replied"
 msgstr "Odpowiedz"
 
@@ -4034,10 +4030,6 @@ msgstr "Przekaż dalej"
 #, fuzzy
 msgid "Snoozed until {when}"
 msgstr "Zaplanowano na {when}"
-
-#, fuzzy
-msgid "Low importance"
-msgstr "Zaimportowano klucz"
 
 #, fuzzy
 msgid "In {folder}"
@@ -4435,6 +4427,10 @@ msgstr "{shown} z {total}"
 
 msgid "Executable file: open it only if you trust it."
 msgstr ""
+
+#, fuzzy
+msgid "me"
+msgstr "Nazwa"
 
 #, fuzzy
 msgid "Translating…"

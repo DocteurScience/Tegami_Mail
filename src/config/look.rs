@@ -68,16 +68,9 @@ pub(crate) enum ListColumn {
     /// Replied to, forwarded, or both (#454).
     Replied,
     Sender,
-    Recipients,
-    Correspondents,
     Subject,
     Tags,
     Attachment,
-    Importance,
-    Account,
-    /// A Microsoft 365 follow-up flag's due date, the one kind of mail
-    /// that has one: the column takes no room in a list without any.
-    Due,
     Date,
 }
 

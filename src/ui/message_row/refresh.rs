@@ -1,14 +1,13 @@
 //! Filling a bound row from its data: text, columns, flags, tags and the
 //! classes its host widget wears. Runs on every bind; kept cheap.
 
-use super::faces::recipient_names;
-use super::labels::{due_label, pill_chip, pill_name};
+use super::labels::{pill_chip, pill_name};
 use super::row::Row;
 use super::shared::{RowLook, RowShared};
 use super::{column_width, RowData, LINE_ICON_PX};
 use crate::config::ListColumn;
 use crate::i18n::{i18n, i18n_f, ni18n_f};
-use crate::models::{Importance, Message};
+use crate::models::Message;
 use crate::ui::column_bin::ColumnBin;
 use adw::prelude::*;
 use relm4::prelude::*;
@@ -27,9 +26,6 @@ impl Row {
         self.refresh_avatar(&data, &look);
         let unread = msg.unread || meta.unread;
         self.refresh_marks(&data, &look, unread);
-        if look.single_line {
-            self.fill_columns(&data, &look, &shared, unread);
-        }
         self.refresh_date(&data, &look, &shared);
         self.refresh_subject(&data, &look, &shared, unread);
         self.refresh_preview(&data, &look);
@@ -179,11 +175,7 @@ impl Row {
         if single {
             for (c, bin) in [
                 (ListColumn::Sender, &w.name_col),
-                (ListColumn::Recipients, &w.recipients_col),
-                (ListColumn::Correspondents, &w.people_col),
-                (ListColumn::Account, &w.account_col),
                 (ListColumn::Tags, &w.tags_col),
-                (ListColumn::Due, &w.due_col),
                 (ListColumn::Date, &w.date_col),
             ] {
                 bin.set_width(column_width(look, c));
@@ -315,82 +307,6 @@ impl Row {
                     && !look.single_line
                     && !self.st.borrow().swipe_committing,
             );
-        }
-    }
-
-    /// The columns only a single line has (#334): each shown or not as the
-    /// setting says, and filled from the message when it is.
-    fn fill_columns(&self, data: &RowData, look: &RowLook, shared: &RowShared, unread: bool) {
-        let w = &self.w;
-        let msg = &data.msg;
-        let on = |c: ListColumn| look.columns.contains(&c);
-        let weight: &[&str] = if unread {
-            &["message-sender", "unread"]
-        } else {
-            &["message-sender"]
-        };
-
-        w.recipients_col.set_visible(on(ListColumn::Recipients));
-        if on(ListColumn::Recipients) {
-            w.recipients.set_label(&recipient_names(&msg.to));
-            w.recipients.set_css_classes(weight);
-        }
-
-        w.people_col.set_visible(on(ListColumn::Correspondents));
-        if on(ListColumn::Correspondents) {
-            let people = data
-                .meta
-                .people
-                .clone()
-                .unwrap_or_else(|| msg.shown_from_name().into_owned());
-            w.people.set_tooltip_text(Some(&people));
-            w.people.set_label(&people);
-            w.people.set_css_classes(weight);
-        }
-
-        w.importance.set_visible(on(ListColumn::Importance));
-        let (icon, class, tip) = match msg.importance {
-            Importance::High => (
-                "emblem-important-symbolic",
-                "importance-high",
-                Some(i18n("High importance")),
-            ),
-            Importance::Low => (
-                "tegami-importance-low-symbolic",
-                "importance-low",
-                Some(i18n("Low importance")),
-            ),
-            Importance::Normal => ("emblem-important-symbolic", "importance-high", None),
-        };
-        w.importance.set_icon_name(Some(icon));
-        w.importance.set_css_classes(&[class]);
-        w.importance
-            .set_opacity(if tip.is_some() { 1.0 } else { 0.0 });
-        w.importance.set_tooltip_text(tip.as_deref());
-
-        w.account_col.set_visible(on(ListColumn::Account));
-        if on(ListColumn::Account) {
-            let name = shared
-                .account_names
-                .borrow()
-                .get(&msg.account_id)
-                .cloned()
-                .unwrap_or_default();
-            w.account.set_tooltip_text(Some(&name));
-            w.account.set_label(&name);
-        }
-
-        w.due_col.set_visible(on(ListColumn::Due));
-        if on(ListColumn::Due) {
-            w.due.set_label(&due_label(msg.due));
-            let overdue = msg.due > 0
-                && crate::datefmt::day_key(msg.due)
-                    < crate::datefmt::day_key(crate::datefmt::now());
-            w.due.set_css_classes(if overdue {
-                &["message-date", "overdue"]
-            } else {
-                &["message-date"]
-            });
         }
     }
 
@@ -531,8 +447,6 @@ impl Row {
                         w.name_col.set_child(Some(name));
                         into(&w.line, &[w.name_col.upcast_ref()]);
                     }
-                    ListColumn::Recipients => into(&w.line, &[w.recipients_col.upcast_ref()]),
-                    ListColumn::Correspondents => into(&w.line, &[w.people_col.upcast_ref()]),
                     ListColumn::Subject => {
                         detach(subject);
                         w.subject_col.set_child(Some(subject));
@@ -544,9 +458,6 @@ impl Row {
                         into(&w.line, &[w.tags_col.upcast_ref()]);
                     }
                     ListColumn::Attachment => into(&w.line, &[clip]),
-                    ListColumn::Importance => into(&w.line, &[w.importance.upcast_ref()]),
-                    ListColumn::Account => into(&w.line, &[w.account_col.upcast_ref()]),
-                    ListColumn::Due => into(&w.line, &[w.due_col.upcast_ref()]),
                     ListColumn::Date => {
                         detach(date);
                         w.date_col.set_child(Some(date));

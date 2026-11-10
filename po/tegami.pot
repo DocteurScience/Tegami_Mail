@@ -3442,9 +3442,6 @@ msgstr ""
 msgid "What this searches"
 msgstr ""
 
-msgid "me"
-msgstr ""
-
 msgid "Replied"
 msgstr ""
 
@@ -3452,9 +3449,6 @@ msgid "Forwarded"
 msgstr ""
 
 msgid "Snoozed until {when}"
-msgstr ""
-
-msgid "Low importance"
 msgstr ""
 
 msgid "In {folder}"
@@ -3807,6 +3801,9 @@ msgid "{size} in total"
 msgstr ""
 
 msgid "Executable file: open it only if you trust it."
+msgstr ""
+
+msgid "me"
 msgstr ""
 
 msgid "Translating…"

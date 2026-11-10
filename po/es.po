@@ -3848,9 +3848,6 @@ msgstr "Solo en la carpeta o vista que se muestra en la lista."
 msgid "What this searches"
 msgstr "Ámbito de búsqueda"
 
-msgid "me"
-msgstr "yo"
-
 msgid "Replied"
 msgstr "Respondido"
 
@@ -3860,9 +3857,6 @@ msgstr "Reenviado"
 #, fuzzy
 msgid "Snoozed until {when}"
 msgstr "Programado para {when}"
-
-msgid "Low importance"
-msgstr "Importancia baja"
 
 msgid "In {folder}"
 msgstr "En {folder}"
@@ -4233,6 +4227,9 @@ msgstr "{shown} de {total}"
 
 msgid "Executable file: open it only if you trust it."
 msgstr ""
+
+msgid "me"
+msgstr "yo"
 
 msgid "Translating…"
 msgstr "Traduciendo…"

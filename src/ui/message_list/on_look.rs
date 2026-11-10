@@ -29,23 +29,6 @@ impl MessageList {
         }
     }
 
-    pub(super) fn on_set_account_names(
-        &mut self,
-        names: std::collections::HashMap<u32, String>,
-        graph: std::collections::HashSet<u32>,
-    ) {
-        let changed = *self.shared.account_names.borrow() != names || self.graph_accounts != graph;
-        if changed {
-            *self.shared.account_names.borrow_mut() = names;
-            self.graph_accounts = graph;
-            self.graph_in_view = self
-                .listed_folders
-                .iter()
-                .any(|(a, _)| self.graph_accounts.contains(a));
-            self.sync_look();
-        }
-    }
-
     pub(super) fn on_set_look(&mut self, avatars: bool, preview_lines: u32) {
         let preview_lines = preview_lines.min(3);
         if self.avatars != avatars || self.preview_lines != preview_lines {

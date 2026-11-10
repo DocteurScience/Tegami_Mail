@@ -3848,9 +3848,6 @@ msgstr "Apenas a pasta ou vista apresentada na lista."
 msgid "What this searches"
 msgstr "Âmbito desta pesquisa"
 
-msgid "me"
-msgstr "eu"
-
 msgid "Replied"
 msgstr "Respondida"
 
@@ -3860,9 +3857,6 @@ msgstr "Reencaminhada"
 #, fuzzy
 msgid "Snoozed until {when}"
 msgstr "Agendada para {when}"
-
-msgid "Low importance"
-msgstr "Importância baixa"
 
 msgid "In {folder}"
 msgstr "Em {folder}"
@@ -4233,6 +4227,9 @@ msgstr "{shown} de {total}"
 
 msgid "Executable file: open it only if you trust it."
 msgstr ""
+
+msgid "me"
+msgstr "eu"
 
 msgid "Translating…"
 msgstr "A traduzir…"

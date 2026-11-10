@@ -72,7 +72,7 @@ async fn find_logo(email: String) -> FaceCmd {
 
 /// Display names from a raw To header: "Ann <a@x>, b@y" -> "Ann, b@y".
 /// A saved contact goes by its saved name when Settings asks (#541).
-pub(crate) fn recipient_names(to: &str) -> String {
+pub(super) fn recipient_names(to: &str) -> String {
     let mut names: Vec<String> = Vec::new();
     for part in to.split(',') {
         let part = part.trim();

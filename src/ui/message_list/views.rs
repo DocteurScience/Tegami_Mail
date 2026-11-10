@@ -126,16 +126,13 @@ impl MessageList {
         let mut h = std::collections::hash_map::DefaultHasher::new();
         let mut own: Vec<&String> = self.own_addresses.iter().collect();
         own.sort();
-        let mut graph: Vec<&u32> = self.graph_accounts.iter().collect();
-        graph.sort();
         format!(
-            "{:?}{}{:?}{:?}{:?}{:?}{}",
+            "{:?}{}{:?}{:?}{:?}{}",
             self.sort,
             self.threading,
             self.columns,
             self.quick,
             own,
-            graph,
             self.contact_addresses.as_ref().map_or(0, |c| c.len()),
         )
         .hash(&mut h);
@@ -246,14 +243,6 @@ impl MessageList {
         *self.source_threads.borrow_mut() = snap.threads;
         self.loaded = true;
         self.listed_folders = snap.listed_folders;
-        let graph_in_view = self
-            .listed_folders
-            .iter()
-            .any(|(a, _)| self.graph_accounts.contains(a));
-        if graph_in_view != self.graph_in_view {
-            self.graph_in_view = graph_in_view;
-            self.sync_look();
-        }
         self.total_matches = snap.total_matches;
         *self.shared.thread_drag.borrow_mut() = snap.thread_drag;
         self.shown = snap.shown;

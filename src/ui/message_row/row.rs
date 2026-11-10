@@ -33,18 +33,9 @@ pub(super) struct RowWidgets {
     pub(super) top: gtk::Box,
     /// The single-line layout's one line (#334).
     pub(super) line: gtk::Box,
-    /// The single-line layout's own columns, which a card has no place for,
-    /// each in the bin that sizes its column.
-    pub(super) recipients: gtk::Label,
-    pub(super) recipients_col: ColumnBin,
-    pub(super) people: gtk::Label,
-    pub(super) people_col: ColumnBin,
-    pub(super) importance: gtk::Image,
-    pub(super) account: gtk::Label,
-    pub(super) account_col: ColumnBin,
+    /// The bin the tags move into on one line, which keeps their column
+    /// the same width on every row.
     pub(super) tags_col: ColumnBin,
-    pub(super) due: gtk::Label,
-    pub(super) due_col: ColumnBin,
     /// The bins the sender, the subject and the date move into on one line.
     pub(super) name_col: ColumnBin,
     pub(super) subject_col: ColumnBin,

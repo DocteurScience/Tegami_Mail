@@ -24,7 +24,6 @@ mod row;
 mod shared;
 mod swipe;
 
-pub(crate) use faces::recipient_names;
 pub(crate) use labels::{chip_box, pill_chip, tag_menu_entries};
 pub(crate) use model::{MessageModel, RowItem};
 pub(crate) use shared::{
@@ -83,8 +82,6 @@ const THREAD_NODE_REACH: f32 = 8.0;
 /// The single line's name columns, in pixels (#334): wide enough for most
 /// names, and fixed so the columns after them line up.
 const SENDER_COLUMN_PX: i32 = 160;
-const PEOPLE_COLUMN_PX: i32 = 200;
-const ACCOUNT_COLUMN_PX: i32 = 110;
 /// The tags' column on one line (#443): fixed like the names, so a row
 /// without tags puts the columns after it where a row with them does.
 const TAGS_COLUMN_PX: i32 = 90;
@@ -93,30 +90,22 @@ const LINE_ICON_PX: i32 = 12;
 /// The replied column's width: its two arrows and the gap between them.
 pub(super) const REPLIED_PX: i32 = 2 * LINE_ICON_PX + 2;
 
-/// The width a single-line column takes until it is dragged to another
-/// (#334): negative for a date, which is as wide as its text.
+/// The width a single-line column takes (#334) unless it narrows to fit:
+/// negative for a date, which is as wide as its text.
 pub(super) fn default_width(column: ListColumn) -> i32 {
     match column {
-        ListColumn::Sender | ListColumn::Recipients => SENDER_COLUMN_PX,
-        ListColumn::Correspondents => PEOPLE_COLUMN_PX,
-        ListColumn::Account => ACCOUNT_COLUMN_PX,
+        ListColumn::Sender => SENDER_COLUMN_PX,
         ListColumn::Tags => TAGS_COLUMN_PX,
         _ => -1,
     }
 }
 
-/// Whether a column's width can be dragged: the ones of text and the tags,
-/// but not the subject, which takes the rest.
+/// Whether a column has a width of its own to fit: the sender, the tags
+/// and the date, but not the subject, which takes the rest.
 pub(super) fn resizable(column: ListColumn) -> bool {
     matches!(
         column,
-        ListColumn::Sender
-            | ListColumn::Recipients
-            | ListColumn::Correspondents
-            | ListColumn::Account
-            | ListColumn::Tags
-            | ListColumn::Due
-            | ListColumn::Date
+        ListColumn::Sender | ListColumn::Tags | ListColumn::Date
     )
 }
 
@@ -175,9 +164,6 @@ pub(crate) struct RowMeta {
     /// row speaks for it, and the arrow says whether it has been answered.
     pub(super) answered: bool,
     pub(super) forwarded: bool,
-    /// Who took part in the conversation, for the Correspondents column
-    /// (#334); worked out only while that column is shown.
-    pub(super) people: Option<String>,
     /// The row's height is open. False only while a reply slides shut
     /// before it is taken out of the list.
     pub(super) revealed: bool,

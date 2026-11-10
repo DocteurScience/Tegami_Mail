@@ -143,12 +143,6 @@ pub(crate) enum MessageListInput {
     SetSingleLine(bool),
     /// The rows are this wide now.
     PaneWidth(i32),
-    /// Each account's name for the Account column, and which accounts are
-    /// Microsoft 365 ones, for the Due column (#334).
-    SetAccountNames {
-        names: std::collections::HashMap<u32, String>,
-        graph: std::collections::HashSet<u32>,
-    },
     /// When each snoozed message comes back (#527): its row in the Snoozed
     /// folder shows that in place of its date.
     SetSnoozed(crate::ui::message_row::SnoozedRows),
