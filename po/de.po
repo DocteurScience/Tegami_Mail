@@ -3206,7 +3206,7 @@ msgid "Bcc"
 msgstr "Bcc"
 
 msgid "Reply to {name}"
-msgstr "{name} antworten"
+msgstr "Antwort an {name}"
 
 msgid ""
 "There is no OpenPGP key of your own for {addr}. Generate one under Settings, "
