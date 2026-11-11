@@ -10,7 +10,7 @@
 
   <description>
     <p>
-      Tegami Mail is a desktop email client for GNOME on Wayland, written in Rust with
+      Tegami Mail is a desktop email client for GNOME, written in Rust with
       libadwaita. Your mail and credentials stay on your machine, remote content
       is blocked until you allow it, and there is no telemetry. It works with
       IMAP, POP3, JMAP and Microsoft 365, and with any server from iCloud to
@@ -18,28 +18,29 @@
     </p>
     <p>Accounts and mail:</p>
     <ul>
-      <li>Multiple accounts with a unified Inboxes view; Google, Microsoft and custom OAuth sign-in, or an account imported from GNOME Online Accounts</li>
-      <li>Whole-mailbox sync and search, conversation threading, and changes made on other devices synced back</li>
-      <li>Folder management, filters, tags, unified and filtered folders, and Trash and Junk emptied by hand or on a schedule</li>
-      <li>An attachment gallery, an Outbox for sends that fail, and Send Later</li>
+      <li>Several accounts, with Microsoft sign-in built in, Google through GNOME Online Accounts, or any account already set up in GNOME</li>
+      <li>Whole-mailbox sync and search, conversations across folders, and changes made on other devices synced back</li>
+      <li>Folders, filters, tags, smart folders and favorites, with Trash and Junk emptied by hand or on a schedule</li>
+      <li>Snooze, Undo Send, an Outbox for sends that fail, and printing</li>
     </ul>
     <p>Writing:</p>
     <ul>
-      <li>Rich text, Markdown, HTML or plain text, with HTML signatures, inline images, spell check and undo</li>
-      <li>Drafts, quote folding, split replies, and forwarding that keeps the attachments</li>
-      <li>Large files uploaded to your own Nextcloud, OneDrive, Dropbox or Seafile; a Send with Tegami Mail entry in GNOME Files</li>
+      <li>Rich or plain text, HTML signatures, templates, inline images, spell and grammar checking, and undo</li>
+      <li>Drafts, quote folding, and forwarding that keeps the attachments</li>
+      <li>Large files shared from your own Nextcloud, ownCloud, OpenCloud or Seafile server, OneDrive or Dropbox; a Send with Tegami Mail entry in GNOME Files</li>
     </ul>
     <p>Reading:</p>
     <ul>
-      <li>Reader View, your own font and colors, and per-message light or dark rendering</li>
+      <li>Each conversation as a column of cards, with message zoom and translation</li>
       <li>OpenPGP signing, encryption and reading; DKIM, SPF and DMARC checked on arrival</li>
-      <li>Meeting invitations answered in place, and one-click unsubscribe from list mail</li>
+      <li>Meeting invitations answered in place, read receipts, and one-click unsubscribe from list mail</li>
     </ul>
     <p>The app:</p>
     <ul>
-      <li>Adaptive three-pane layout, five appearance themes, Focus Mode, a customizable toolbar and swipe actions</li>
-      <li>Gmail-style single-key shortcuts, notifications with actions, an optional tray icon and background running</li>
-      <li>GNOME Contacts integration, your choice of language and clock, and passwords kept in the system keyring</li>
+      <li>An adaptive layout that follows the system's style, text size, language and clock</li>
+      <li>Swipe actions and single-key shortcuts, with a Gmail variant</li>
+      <li>Notifications with actions, and mail that keeps arriving with the window closed</li>
+      <li>GNOME Contacts, CardDAV address books and LDAP directories; passwords kept in the system keyring</li>
     </ul>
   </description>
 
