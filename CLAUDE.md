@@ -65,7 +65,8 @@ Le redesign suit [docs/DESIGN.md](docs/DESIGN.md) et
   artefact `flatpak` (bundle `tegami-mail.flatpak`). AppImage : de même avec
   `appimage.yml` (artefact `appimage`, script `tools/build-appimage.sh`). Les artefacts ne se
   téléchargent pas depuis la session cloud (stockage GitHub bloqué).
-- Publier une version : pousser l'étiquette (`git tag vX.Y.Z && git push origin vX.Y.Z`) ;
+- Publier une version : `gh workflow run release.yml --repo DocteurScience/Tegami_Mail -f tag=vX.Y.Z`
+  (la session ne peut pousser ni étiquette ni version : proxy en 403) ;
   `.github/workflows/release.yml` construit Flatpak, AppImage et snap, crée la
   version GitHub avec la section « What's new in X.Y.Z » de
   `docs/RELEASE_NOTES.md` et y joint les paquets. La session ne peut pas créer
