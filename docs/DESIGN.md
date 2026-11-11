@@ -579,9 +579,6 @@ Test each screen with the checklist from the HIG:
 
 - Whether a dark version of every screen is needed before the first release
   (the colours are named, so it should follow without drawing).
-- A tag's server keyword when two accented names collapse to the same atom.
-- The icons: the mockups use simple stroke icons. The application uses
-  libadwaita's symbolic icons of the same meaning, from its own bundle.
 - The application icon is a separate piece of work: see [ICON.md](ICON.md).
 
 ## Screens

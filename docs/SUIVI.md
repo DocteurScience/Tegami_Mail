@@ -346,8 +346,10 @@ sous le nom.
 ## Reste à faire (connu)
 
 - Vérifier contraste élevé et mode sombre sur une vraie session GNOME.
-- Questions ouvertes de DESIGN.md (icônes symboliques, version sombre des
-  écrans).
+- Question ouverte de DESIGN.md : version sombre des écrans (au
+  propriétaire). Réglées : les icônes (jeu propre à l'appli, 2026-11-10) et
+  les étiquettes aux noms accentués (`Tag::unique_keyword` donne « Ete_2 »
+  à « Ete » quand « Été » existe, testé dans `config/filter_tests.rs`).
 - Étiquettes (écrans 35, 36) : laissées telles que `a0c11c9` par décision
   du propriétaire (pas de réordonnancement, de mot-clé ni de couleur
   personnalisée) ; à rouvrir seulement s'il le demande.
