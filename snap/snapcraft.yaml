@@ -8,7 +8,7 @@
 name: tegami-mail
 title: Tegami Mail
 base: core26
-version: '1.46.0'
+version: '1.0.0'
 summary: A fast, GNOME-native email client
 description: |
   Tegami Mail is a desktop email client for GNOME, written in Rust with GTK 4

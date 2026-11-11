@@ -1,6 +1,53 @@
-# Hylki
+# Tegami Mail
 
-Hylki (formerly Vireo) is a clean, fast, GNOME-native email client built with Rust and libadwaita for Wayland desktops. Privacy-first: no telemetry, remote content blocked by default, and credentials kept in the system keyring.
+Tegami Mail is an email client for GNOME, written in Rust with GTK 4 and libadwaita. It is a redesign of Hylki 1.46: the same engine, with a calmer, simpler interface. Privacy-first: no telemetry, remote content blocked by default, and credentials kept in the system keyring.
+
+## What's new in 1.0.0
+
+The first release of Tegami Mail. The version numbering starts again; the notes below 1.0.0 are Hylki's.
+
+### A new look:
+
+- Each conversation is a column of cards, oldest first, the newest open
+- The message list shows cards with short dates, the sender, the subject and a line of preview; tags are chips with a dot of their colour
+- A message card says who it went to; a reply names the people it goes to
+- Initials circles are flat pastel with dark letters; unread counts are plain text
+- Menus without icons, with a check for what is chosen
+- Sorting, display and filters are three small places above the list, with chips for the filters on
+- The composer: a From button, recipients with their avatar, files as cards, B, I, U and S for formatting, the conversation history folded away
+- A new application icon, and the icon shown in About
+
+### New features:
+
+- The reading pane beside the list, below it, or switched off, the list then taking the whole window
+- On This Computer: folders kept on this computer, with mail copied from an account or imported from Thunderbird or Evolution
+- Grammar and style checking with Harper or LanguageTool, on this computer or on a server
+- A new first-run assistant that finds the accounts set up in GNOME
+- Preferences in five short pages: Accounts, Messages, Notifications, Privacy and Application
+- Troubleshooting in the main menu: the status bar, the console and the log
+- Delete an attachment from the server from its card's menu
+
+### Follows the system:
+
+- Light and dark style, accent colour, text size, language and clock all come from GNOME
+- High contrast as the design draws it, and secondary text kept readable
+
+### Simpler:
+
+- Removed: the unified views (Favorites stays), Focus Mode, Reader View, the reader's own fonts and colours, the actions palette, the attachment drawer and browser, the Contacts view, writing in Markdown or HTML source, Send Later in the composer, the tray icon and the gallery of app icons
+- Settings that no longer had a place in Preferences are gone; values saved by Hylki for them are ignored
+
+### Translations:
+
+- Catalan, French, German, Greek, Hungarian, Italian, Polish, Portuguese (Brazil and Portugal), Russian and Spanish cover the whole interface
+
+### Fixes:
+
+- Sending an edited draft no longer stops an IMAP account
+- The snap starts again
+- "Reply" no longer shrinks in a narrow reader
+- The Archive folder is named with a noun in every language
+- A message opened in its own window no longer opens with its subject selected
 
 ## What's new in 1.46.0
 

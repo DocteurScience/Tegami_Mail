@@ -11,9 +11,10 @@ Dernière mise à jour : 2026-11-02, après `40a6c7e`.
 
 - Base : import de Hylki 1.46.0, renommé Tegami Mail (commits du
   2026-10-31 et du 2026-11-01 jusqu'à `fd0ccce`).
-- CI : verte sur tous les commits jusqu'à `b53002e` (build, tests, snap ;
-  Flatpak construit à la demande sur ce commit) ; les suivants à vérifier
-  (`gh run list --repo DocteurScience/Tegami_Mail`).
+- Version : 1.0.0 (2026-11-11), première de Tegami Mail.
+- CI : compilation et tests verts jusqu'au dernier commit ; le snap échoue
+  depuis `c31a9e4` faute d'atteindre le magasin Snap (api.snapcraft.io,
+  panne réseau côté GitHub, pas le code) : relancer quand il répond.
 - Tests : 1078 réussis, 40 ignorés (la baisse suit les fonctions retirées
   par l'audit).
 - Référence du design : `docs/DESIGN.md`, `docs/DESIGN_STRINGS.md`,
@@ -158,6 +159,7 @@ Dernière mise à jour : 2026-11-02, après `40a6c7e`.
 | `86522a7` | Fiche AppStream (propriétaire, 2026-11-11) : développeur DocteurScience (`io.github.docteurscience`), contact tirr.mohma@gmail.com ; quatre captures en anglais dans `data/screenshots/` (liste, sombre, composeur, préférences, en 2x), citées par URL raw GitHub, légendes traduites dans les 11 langues ; `appstreamcli validate` propre, fiche traduite générée par `msgfmt --xml`. Les comptes de démo des captures portent encore le nom Hyprlab (données du mode démo) |
 | `7c8eb89` | Compte de démo « Hyprlab » (hello@hyprlab.dev) renommé « Pinecone Lab » (hello@pinecone.dev), avec ses messages ; PRODID des réponses d'invitation → `-//DocteurScience//Tegami Mail//EN`. Les quatre captures de la fiche refaites |
 | `90529c7` | Batterie de 69 scénarios en mode démo (préférences et sous-pages, menus, composeur, assistant, Favoris, lecteur dessous/masqué, touches Gmail, sombre, contraste élevé, de/ru, anciennes valeurs des réglages retirés) : aucune erreur critique, panique, erreur CSS ni avertissement. Un défaut vu sur les captures : un message ouvert dans sa fenêtre s'ouvrait le sujet sélectionné (le libellé sélectionnable prenait le focus initial) ; le sujet sort de la chaîne de focus, sélection à la souris et copie par clic droit gardées. Fenêtre principale identique au pixel |
+| (ce commit) | Version 1.0.0 (propriétaire, 2026-11-11 : on repart de 1.0.0) : `Cargo.toml`, `Cargo.lock`, snap ; fiche AppStream réduite à une version 1.0.0 (l'historique de Hylki reste dans CHANGELOG et RELEASE_NOTES) ; notes « What's new in 1.0.0 » rédigées d'après le CHANGELOG (affichées dans À propos) ; « Unreleased » du CHANGELOG devient 1.0.0. Aucun code ne compare de versions (seule une clé de cache des polices de l'AppImage, par égalité) |
 
 ## Décisions prises
 

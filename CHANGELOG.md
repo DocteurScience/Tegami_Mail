@@ -1,6 +1,9 @@
 # Changelog
 
-## Unreleased
+## 1.0.0 — 2026-11-11
+
+The first release of Tegami Mail, a redesign of Hylki 1.46 (the entries
+below 1.0.0 are Hylki's own history). The version numbering starts again.
 
 - **Software centre listing:** screenshots, and DocteurScience as the
   developer.
