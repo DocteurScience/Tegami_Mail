@@ -5778,5 +5778,14 @@ msgid ""
 "in the system keyring"
 msgstr ""
 
-msgid "Hyprlab"
+msgid "Conversations as cards, beside the list"
+msgstr ""
+
+msgid "Follows the system’s dark style"
+msgstr ""
+
+msgid "Replying, with the conversation history folded away"
+msgstr ""
+
+msgid "Five short preference pages"
 msgstr ""

@@ -6269,5 +6269,14 @@ msgstr ""
 "Contacts de GNOME, carnets d’adresses CardDAV et annuaires LDAP ; mots de "
 "passe conservés dans le trousseau du système"
 
-msgid "Hyprlab"
-msgstr "Hyprlab"
+msgid "Conversations as cards, beside the list"
+msgstr "Les conversations en cartes, à côté de la liste"
+
+msgid "Follows the system’s dark style"
+msgstr "Suit le style sombre du système"
+
+msgid "Replying, with the conversation history folded away"
+msgstr "Une réponse, avec l’historique de la conversation replié"
+
+msgid "Five short preference pages"
+msgstr "Cinq pages de préférences courtes"

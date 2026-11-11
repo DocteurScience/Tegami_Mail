@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- **Software centre listing:** screenshots, and DocteurScience as the
+  developer.
 - **Folder names:** the Archive folder is named with a noun in every
   language ("Archives" in French, "Archiv" in German) rather than with the
   verb of the Archive button.

@@ -577,8 +577,8 @@ Test each screen with the checklist from the HIG:
 
 ## Open questions
 
-- Whether a dark version of every screen is needed before the first release
-  (the colours are named, so it should follow without drawing).
+- A dark version of the screens is not needed (owner, 2026-11-11): the
+  colours are named, so dark follows without drawing.
 - The application icon is a separate piece of work: see [ICON.md](ICON.md).
 
 ## Screens

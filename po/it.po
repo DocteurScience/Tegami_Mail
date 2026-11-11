@@ -6189,5 +6189,14 @@ msgstr ""
 "Contatti di GNOME, rubriche CardDAV e directory LDAP; password custodite nel "
 "portachiavi di sistema"
 
-msgid "Hyprlab"
-msgstr "Hyprlab"
+msgid "Conversations as cards, beside the list"
+msgstr "Conversazioni come schede, accanto all'elenco"
+
+msgid "Follows the system’s dark style"
+msgstr "Segue lo stile scuro del sistema"
+
+msgid "Replying, with the conversation history folded away"
+msgstr "Una risposta, con la cronologia della conversazione ripiegata"
+
+msgid "Five short preference pages"
+msgstr "Cinque brevi pagine di preferenze"

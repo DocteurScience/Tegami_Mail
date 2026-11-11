@@ -6224,5 +6224,14 @@ msgstr ""
 "Kontakty GNOME, książki adresowe CardDAV i katalogi LDAP; hasła "
 "przechowywane w bazie kluczy systemu"
 
-msgid "Hyprlab"
-msgstr "Hyprlab"
+msgid "Conversations as cards, beside the list"
+msgstr "Wątki jako karty obok listy"
+
+msgid "Follows the system’s dark style"
+msgstr "Podąża za ciemnym stylem systemu"
+
+msgid "Replying, with the conversation history folded away"
+msgstr "Odpowiedź ze zwiniętą historią wątku"
+
+msgid "Five short preference pages"
+msgstr "Pięć krótkich stron preferencji"

@@ -6201,5 +6201,14 @@ msgstr ""
 "Contactes del GNOME, llibretes d'adreces CardDAV i directoris LDAP; "
 "contrasenyes desades a l'anell de claus del sistema"
 
-msgid "Hyprlab"
-msgstr "Hyprlab"
+msgid "Conversations as cards, beside the list"
+msgstr "Converses en targetes, al costat de la llista"
+
+msgid "Follows the system’s dark style"
+msgstr "Segueix l'estil fosc del sistema"
+
+msgid "Replying, with the conversation history folded away"
+msgstr "Una resposta, amb l'historial de la conversa plegat"
+
+msgid "Five short preference pages"
+msgstr "Cinc pàgines de preferències breus"

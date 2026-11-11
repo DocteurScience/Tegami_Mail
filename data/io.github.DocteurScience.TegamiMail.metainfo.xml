@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright 2026 Hyprlab -->
+<!-- Copyright 2026 Hyprlab, 2026 DocteurScience -->
 <component type="desktop-application">
   <id>io.github.DocteurScience.TegamiMail</id>
   <metadata_license>CC0-1.0</metadata_license>
@@ -52,14 +52,33 @@
   </branding>
 
 
+  <screenshots>
+    <screenshot type="default">
+      <caption>Conversations as cards, beside the list</caption>
+      <image type="source" width="2560" height="1600">https://raw.githubusercontent.com/DocteurScience/Tegami_Mail/main/data/screenshots/main.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Follows the system’s dark style</caption>
+      <image type="source" width="2560" height="1600">https://raw.githubusercontent.com/DocteurScience/Tegami_Mail/main/data/screenshots/dark.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Replying, with the conversation history folded away</caption>
+      <image type="source" width="1440" height="1520">https://raw.githubusercontent.com/DocteurScience/Tegami_Mail/main/data/screenshots/composer.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Five short preference pages</caption>
+      <image type="source" width="2560" height="1600">https://raw.githubusercontent.com/DocteurScience/Tegami_Mail/main/data/screenshots/preferences.png</image>
+    </screenshot>
+  </screenshots>
+
   <url type="homepage">https://github.com/DocteurScience/Tegami_Mail</url>
   <url type="bugtracker">https://github.com/DocteurScience/Tegami_Mail/issues</url>
   <url type="vcs-browser">https://github.com/DocteurScience/Tegami_Mail</url>
 
-  <developer id="co.hyprlab">
-    <name>Hyprlab</name>
+  <developer id="io.github.docteurscience">
+    <name translate="no">DocteurScience</name>
   </developer>
-  <update_contact>hyprlab@proton.me</update_contact>
+  <update_contact>tirr.mohma@gmail.com</update_contact>
 
   <content_rating type="oars-1.1"/>
 

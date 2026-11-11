@@ -155,6 +155,7 @@ Dernière mise à jour : 2026-11-02, après `40a6c7e`.
 | `328013a` | Préférences vérifiées en allemand et en russe (captures) : les onglets, de largeur égale, coupaient « Benachrichtigungen », « Учётные записи », « Уведомления », « Конфиденциальность ». Termes plus courts et courants : de « Mitteilungen », ru « Аккаунты », « Оповещения », « Приватность ». Les autres langues restent sous la longueur du français, qui tient. Composeur et assistant non capturés dans ces langues (les crochets de capture ne les montrent pas sous `grab.sh`) |
 | `e66bd6b` | Composeur et assistant (accueil, formulaire, fin) capturés en allemand et en russe (`TEGAMI_WELCOME=1 TEGAMI_SHOWCASE_WIZARD=… TEGAMI_SHOWCASE_WIZARD_SHOT=…`, et `DELAY` court pour le composeur) : rien ne déborde. Titre du composeur allemand « Marcus Chen antworten » → « Antwort an Marcus Chen ». Constat : en russe, l'onglet dit « Аккаунты » (pour tenir) quand le reste dit « учётные записи » |
 | `4347a6f` | Libellés accessibles : balayage des boutons à icône (construits en code et dans les vues relm4). Seul manque réel : la croix des notifications dans l'appli, qui reçoit « Dismiss » (traduit dans les 11 langues). Les deux boutons OpenPGP du composeur sans libellé ne sont jamais affichés (ils gardent l'état). Questions closes dans DESIGN.md : étiquettes accentuées (`unique_keyword`, testé) et icônes |
+| (ce commit) | Fiche AppStream (propriétaire, 2026-11-11) : développeur DocteurScience (`io.github.docteurscience`), contact tirr.mohma@gmail.com ; quatre captures en anglais dans `data/screenshots/` (liste, sombre, composeur, préférences, en 2x), citées par URL raw GitHub, légendes traduites dans les 11 langues ; `appstreamcli validate` propre, fiche traduite générée par `msgfmt --xml`. Les comptes de démo des captures portent encore le nom Hyprlab (données du mode démo) |
 
 ## Décisions prises
 
@@ -347,8 +348,8 @@ sous le nom.
 ## Reste à faire (connu)
 
 - Vérifier contraste élevé et mode sombre sur une vraie session GNOME.
-- Question ouverte de DESIGN.md : version sombre des écrans (au
-  propriétaire). Réglées : les icônes (jeu propre à l'appli, 2026-11-10) et
+- Plus de question ouverte dans DESIGN.md : les maquettes sombres ne sont
+  pas nécessaires (propriétaire, 2026-11-11). Réglées : les icônes (jeu propre à l'appli, 2026-11-10) et
   les étiquettes aux noms accentués (`Tag::unique_keyword` donne « Ete_2 »
   à « Ete » quand « Été » existe, testé dans `config/filter_tests.rs`).
 - Étiquettes (écrans 35, 36) : laissées telles que `a0c11c9` par décision

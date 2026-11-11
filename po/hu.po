@@ -6197,5 +6197,14 @@ msgstr ""
 "GNOME Névjegyek, CardDAV-címjegyzékek és LDAP-címtárak; a jelszavak a "
 "rendszer kulcstartójában"
 
-msgid "Hyprlab"
-msgstr "Hyprlab"
+msgid "Conversations as cards, beside the list"
+msgstr "Beszélgetések kártyákként, a lista mellett"
+
+msgid "Follows the system’s dark style"
+msgstr "Követi a rendszer sötét stílusát"
+
+msgid "Replying, with the conversation history folded away"
+msgstr "Válasz összecsukott beszélgetés-előzményekkel"
+
+msgid "Five short preference pages"
+msgstr "Öt rövid beállítási oldal"

@@ -6294,5 +6294,14 @@ msgstr ""
 "Επαφές GNOME, βιβλία διευθύνσεων CardDAV και κατάλογοι LDAP· κωδικοί "
 "πρόσβασης στη θήκη κλειδιών του συστήματος"
 
-msgid "Hyprlab"
-msgstr "Hyprlab"
+msgid "Conversations as cards, beside the list"
+msgstr "Οι συνομιλίες ως κάρτες, δίπλα στη λίστα"
+
+msgid "Follows the system’s dark style"
+msgstr "Ακολουθεί το σκούρο στιλ του συστήματος"
+
+msgid "Replying, with the conversation history folded away"
+msgstr "Απάντηση, με το ιστορικό της συνομιλίας διπλωμένο"
+
+msgid "Five short preference pages"
+msgstr "Πέντε σύντομες σελίδες προτιμήσεων"
