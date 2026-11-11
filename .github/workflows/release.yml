@@ -1,0 +1,95 @@
+# Publishes a release when a version tag is pushed (git tag v1.0.0 &&
+# git push origin v1.0.0), or on demand for a tag that exists already
+# (Actions → Release → Run workflow): builds the Flatpak, the AppImage and
+# the snap, then creates the GitHub release, its notes taken from the
+# "What's new in <version>" section of docs/RELEASE_NOTES.md, with every
+# package that built attached. A package that failed (the Snap Store has
+# been unreachable from the runners at times) leaves the release without
+# it rather than unpublished; run the workflow again to add it.
+
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: The version tag to release, such as v1.0.0
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  flatpak:
+    uses: ./.github/workflows/flatpak.yml
+
+  appimage:
+    uses: ./.github/workflows/appimage.yml
+
+  snap:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.tag || github.ref }}
+
+      - name: Snapcraft and LXD
+        run: |
+          sudo snap install snapcraft --classic
+          sudo snap install lxd || sudo snap refresh lxd
+          sudo lxd init --auto
+          # Docker on the runner sets the FORWARD policy to DROP, which cuts
+          # LXD containers off the network.
+          sudo iptables -P FORWARD ACCEPT
+          sudo ip6tables -P FORWARD ACCEPT || true
+
+      - name: Build the snap
+        run: sudo snapcraft pack --use-lxd
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: snap
+          path: "*.snap"
+          retention-days: 30
+
+  publish:
+    needs: [flatpak, appimage, snap]
+    # Publish with whatever built.
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.tag || github.ref }}
+
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: '{flatpak,appimage,snap}'
+          path: packages
+          merge-multiple: true
+
+      - name: Create or update the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ inputs.tag || github.ref_name }}
+        run: |
+          set -eu
+          version="${TAG#v}"
+          awk -v head="## What's new in $version" '
+            $0 == head { on = 1; next }
+            on && /^## / { exit }
+            on { print }
+          ' docs/RELEASE_NOTES.md > notes.md
+          test -s notes.md || { echo "No notes for $version in docs/RELEASE_NOTES.md"; exit 1; }
+          ls -la packages || true
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release edit "$TAG" --title "Tegami Mail $version" --notes-file notes.md
+          else
+            gh release create "$TAG" --title "Tegami Mail $version" --notes-file notes.md --verify-tag
+          fi
+          if ls packages/* >/dev/null 2>&1; then
+            gh release upload "$TAG" packages/* --clobber
+          fi
