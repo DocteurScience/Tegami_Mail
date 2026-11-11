@@ -1742,6 +1742,42 @@ msgstr "{used} di {limit} utilizzati"
 msgid "{free} free ({pct}%)"
 msgstr "{free} liberi ({pct}%)"
 
+msgctxt "folder name"
+msgid "Inbox"
+msgstr "Posta in arrivo"
+
+msgctxt "folder name"
+msgid "Sent"
+msgstr "Inviati"
+
+msgctxt "folder name"
+msgid "Drafts"
+msgstr "Bozze"
+
+msgctxt "folder name"
+msgid "Templates"
+msgstr "Modelli"
+
+msgctxt "folder name"
+msgid "Snoozed"
+msgstr "Posticipati"
+
+msgctxt "folder name"
+msgid "Trash"
+msgstr "Cestino"
+
+msgctxt "folder name"
+msgid "Junk"
+msgstr "Posta indesiderata"
+
+msgctxt "folder name"
+msgid "Archive"
+msgstr "Archivio"
+
+msgctxt "folder name"
+msgid "Starred"
+msgstr "Contrassegnati"
+
 msgid "Encrypted message"
 msgstr "Messaggio crittografato"
 

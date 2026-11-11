@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- **Folder names:** the Archive folder is named with a noun in every
+  language ("Archives" in French, "Archiv" in German) rather than with the
+  verb of the Archive button.
 - **Translations complete:** Catalan, German, Greek, Hungarian, Italian,
   Polish, Portuguese (Brazil and Portugal), Russian and Spanish now cover
   every string, the ones added by the redesign included. They were written

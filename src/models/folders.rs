@@ -2,7 +2,7 @@
 //! roles, and the folders kept out of the sidebar.
 
 use super::attachments::human_size;
-use crate::i18n::{i18n, i18n_f};
+use crate::i18n::{i18n_c, i18n_f};
 
 /// The well-known role of a folder, used to pick an icon and ordering.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -151,10 +151,28 @@ pub(crate) fn localize_special_folder_names(folders: &mut [Folder]) {
         if !english.iter().any(|e| f.name.eq_ignore_ascii_case(e)) {
             continue;
         }
-        let translated = i18n(label);
+        let translated = special_folder_label(f.kind);
         if translated != label {
             f.name = translated;
         }
+    }
+}
+
+/// A special folder's name in the app's language. Its own context, apart
+/// from the actions some of these words also name: "Archive" is a folder
+/// here and a button elsewhere.
+fn special_folder_label(kind: FolderKind) -> String {
+    match kind {
+        FolderKind::Inbox => i18n_c("folder name", "Inbox"),
+        FolderKind::Sent => i18n_c("folder name", "Sent"),
+        FolderKind::Drafts => i18n_c("folder name", "Drafts"),
+        FolderKind::Templates => i18n_c("folder name", "Templates"),
+        FolderKind::Snoozed => i18n_c("folder name", "Snoozed"),
+        FolderKind::Trash => i18n_c("folder name", "Trash"),
+        FolderKind::Junk => i18n_c("folder name", "Junk"),
+        FolderKind::Archive => i18n_c("folder name", "Archive"),
+        FolderKind::Starred => i18n_c("folder name", "Starred"),
+        FolderKind::Custom => String::new(),
     }
 }
 

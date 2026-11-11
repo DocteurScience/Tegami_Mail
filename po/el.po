@@ -1766,6 +1766,42 @@ msgstr "Χρησιμοποιούνται {used} από {limit}"
 msgid "{free} free ({pct}%)"
 msgstr "{free} ελεύθερα ({pct}%)"
 
+msgctxt "folder name"
+msgid "Inbox"
+msgstr "Εισερχόμενα"
+
+msgctxt "folder name"
+msgid "Sent"
+msgstr "Απεσταλμένα"
+
+msgctxt "folder name"
+msgid "Drafts"
+msgstr "Πρόχειρα"
+
+msgctxt "folder name"
+msgid "Templates"
+msgstr "Πρότυπα"
+
+msgctxt "folder name"
+msgid "Snoozed"
+msgstr "Σε αναβολή"
+
+msgctxt "folder name"
+msgid "Trash"
+msgstr "Κάδος"
+
+msgctxt "folder name"
+msgid "Junk"
+msgstr "Ανεπιθύμητα"
+
+msgctxt "folder name"
+msgid "Archive"
+msgstr "Αρχείο"
+
+msgctxt "folder name"
+msgid "Starred"
+msgstr "Με αστέρι"
+
 msgid "Encrypted message"
 msgstr "Κρυπτογραφημένο μήνυμα"
 

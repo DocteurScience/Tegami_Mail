@@ -1773,6 +1773,42 @@ msgstr "Использовано {used} из {limit}"
 msgid "{free} free ({pct}%)"
 msgstr "Свободно {free} ({pct}%)"
 
+msgctxt "folder name"
+msgid "Inbox"
+msgstr "Входящие"
+
+msgctxt "folder name"
+msgid "Sent"
+msgstr "Отправленные"
+
+msgctxt "folder name"
+msgid "Drafts"
+msgstr "Черновики"
+
+msgctxt "folder name"
+msgid "Templates"
+msgstr "Шаблоны"
+
+msgctxt "folder name"
+msgid "Snoozed"
+msgstr "Отложенные"
+
+msgctxt "folder name"
+msgid "Trash"
+msgstr "Корзина"
+
+msgctxt "folder name"
+msgid "Junk"
+msgstr "Спам"
+
+msgctxt "folder name"
+msgid "Archive"
+msgstr "Архив"
+
+msgctxt "folder name"
+msgid "Starred"
+msgstr "Отмеченные"
+
 msgid "Encrypted message"
 msgstr "Зашифрованное сообщение"
 

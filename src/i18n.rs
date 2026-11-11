@@ -145,6 +145,13 @@ pub(crate) fn i18n(s: &str) -> String {
     gettextrs::gettext(s)
 }
 
+/// The translation of `s` as `context` uses it, for a word English writes
+/// the same way in two roles: "Archive" names a folder and an action, which
+/// German, say, writes as "Archiv" and "Archivieren".
+pub(crate) fn i18n_c(context: &str, s: &str) -> String {
+    gettextrs::pgettext(context, s)
+}
+
 /// The plural-aware translation: `singular` or `plural` in English, the
 /// language's own form for `n` elsewhere.
 pub(crate) fn ni18n(singular: &str, plural: &str, n: u32) -> String {

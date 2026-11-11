@@ -30,7 +30,7 @@ HDR
 # its parent file before looking in the parent's folder, so a child named like
 # one of its parent's siblings (app/contacts.rs beside src/contacts.rs) would be
 # read from the wrong file and its strings lost. main.rs first keeps the order.
-xtr -k i18n -k ni18n:1,2 -k i18n_f -k ni18n_f:1,2 -k i18n_noop \
+xtr -k i18n -k i18n_c:1c,2 -k ni18n:1,2 -k i18n_f -k ni18n_f:1,2 -k i18n_noop \
     -o "$tmp/src.pot" src/main.rs $(find src -name '*.rs' | sort)
 xgettext --from-code=UTF-8 --language=Desktop \
     -k --keyword=Name --keyword=GenericName --keyword=Comment --keyword=Keywords \

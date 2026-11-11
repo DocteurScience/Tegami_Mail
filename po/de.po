@@ -1757,6 +1757,42 @@ msgstr "{used} von {limit} verwendet"
 msgid "{free} free ({pct}%)"
 msgstr "{free} frei ({pct} %)"
 
+msgctxt "folder name"
+msgid "Inbox"
+msgstr "Posteingang"
+
+msgctxt "folder name"
+msgid "Sent"
+msgstr "Gesendet"
+
+msgctxt "folder name"
+msgid "Drafts"
+msgstr "Entwürfe"
+
+msgctxt "folder name"
+msgid "Templates"
+msgstr "Vorlagen"
+
+msgctxt "folder name"
+msgid "Snoozed"
+msgstr "Zurückgestellt"
+
+msgctxt "folder name"
+msgid "Trash"
+msgstr "Papierkorb"
+
+msgctxt "folder name"
+msgid "Junk"
+msgstr "Spam"
+
+msgctxt "folder name"
+msgid "Archive"
+msgstr "Archiv"
+
+msgctxt "folder name"
+msgid "Starred"
+msgstr "Mit Stern markiert"
+
 msgid "Encrypted message"
 msgstr "Verschlüsselte Nachricht"
 
