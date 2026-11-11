@@ -9,6 +9,7 @@ use std::cell::Cell;
 use std::rc::Rc;
 
 use crate::i18n::{i18n, i18n_f, ni18n_f};
+use crate::ui::context_menu::focus_follows_pointer;
 use crate::ui::message_list::{Period, QuickFilter, QuickFilters};
 
 use super::list_header::popover_heading;
@@ -56,6 +57,7 @@ impl FiltersUi {
                     s.emit(AppMsg::SetQuickFilter(f, c.is_active()));
                 }
             });
+            focus_follows_pointer(&check);
             column.append(&check);
             checks.push((f, check));
         }
@@ -73,6 +75,7 @@ impl FiltersUi {
                     s.emit(AppMsg::SetPeriod(p));
                 }
             });
+            focus_follows_pointer(&radio);
             column.append(&radio);
             periods.push((p, radio));
         }
@@ -90,6 +93,7 @@ impl FiltersUi {
                 s.emit(AppMsg::OpenCustomPeriod);
             });
         }
+        focus_follows_pointer(&custom);
         column.append(&custom);
         column.append(&gtk::Separator::new(gtk::Orientation::Horizontal));
         let clear = gtk::Button::with_label(&i18n("Clear filters"));
@@ -101,6 +105,7 @@ impl FiltersUi {
         clear.set_sensitive(false);
         let s = sender.clone();
         clear.connect_clicked(move |_| s.emit(AppMsg::ClearQuickFilters));
+        focus_follows_pointer(&clear);
         column.append(&clear);
         popover.set_child(Some(&column));
 

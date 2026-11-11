@@ -9,6 +9,7 @@ use std::rc::Rc;
 
 use crate::config;
 use crate::i18n::{i18n, i18n_f, i18n_noop};
+use crate::ui::context_menu::focus_follows_pointer;
 use crate::ui::message_list::{MessageListInput, QuickFilter, QuickFilters};
 use crate::ui::message_view::MessageViewInput;
 
@@ -83,6 +84,7 @@ impl SortDisplayPopover {
                     action.activate(Some(&key.to_variant()));
                 }
             });
+            focus_follows_pointer(&radio);
             column.append(&radio);
             radios.push((key, radio));
         }
@@ -105,6 +107,7 @@ impl SortDisplayPopover {
         let preview_lines = Rc::new(Cell::new(config::load_privacy().preview_lines.max(1)));
         let check = |label: String| {
             let c = gtk::CheckButton::with_label(&label);
+            focus_follows_pointer(&c);
             column.append(&c);
             c
         };

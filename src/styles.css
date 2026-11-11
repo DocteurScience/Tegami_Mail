@@ -127,6 +127,26 @@ row.add-row {
   margin-left: -8px;
 }
 
+/* A chevron inside a row that is itself highlighted under the pointer: no
+   disc of its own on hover, which sat over the row's highlight and ran
+   past its rounded end (owner's feedback, 2026-11-11). The icon goes from
+   dim to full instead; the keyboard focus ring stays. */
+.account-header .chevron-btn,
+.unified-row .chevron-btn {
+  background: none;
+  box-shadow: none;
+}
+.account-header .chevron-btn > image,
+.unified-row .chevron-btn > image {
+  opacity: 0.7;
+}
+.account-header .chevron-btn:hover > image,
+.unified-row .chevron-btn:hover > image,
+.account-header .chevron-btn:focus-visible > image,
+.unified-row .chevron-btn:focus-visible > image {
+  opacity: 1;
+}
+
 /* The trailing 32px chevron target, its negative end margin sliding into
    the row padding. */
 .unified-row.chev-right:dir(ltr) {
@@ -367,6 +387,12 @@ flowbox.attach-flow > flowboxchild {
 .context-menu-item {
   padding: 8px 10px;
   border-radius: 6px;
+}
+/* The focused entry is the one under the pointer (focus_follows_pointer):
+   lit as hovered, the way GTK's menus mark it, not ringed. */
+.context-menu-item:focus-visible {
+  outline-color: transparent;
+  background-color: alpha(currentColor, 0.07);
 }
 .context-menu-item,
 .context-menu-item label {
@@ -1664,8 +1690,26 @@ textview.console-view text selection {
   padding: 6px 12px;
   border-radius: 6px;
 }
-.header-popover > checkbutton:hover {
+/* The row under the pointer and the row with the keyboard focus are the
+   same row (focus_follows_pointer), drawn the same way, as GTK's menus
+   draw theirs: the whole row lit, no ring round the box or the dot (which
+   read as a second, lighter mark on the current choice). The indicator's
+   margins are set here so the boxes and the dots line up with each other
+   and with the headings whatever the theme gives them. */
+.header-popover > checkbutton:hover,
+.header-popover > checkbutton:focus-visible,
+.header-popover > button.header-popover-item:focus-visible {
   background-color: alpha(currentColor, 0.07);
+}
+.header-popover > checkbutton:focus-visible,
+.header-popover > checkbutton:focus-visible > check,
+.header-popover > checkbutton:focus-visible > radio,
+.header-popover > button.header-popover-item:focus-visible {
+  outline-color: transparent;
+}
+.header-popover > checkbutton > check,
+.header-popover > checkbutton > radio {
+  margin: 0;
 }
 .header-popover > separator {
   margin: 6px 0;

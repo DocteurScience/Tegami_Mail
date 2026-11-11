@@ -344,6 +344,23 @@ fn popup_after_release(popover: &gtk::Popover, parent: &gtk::Widget) {
     root.upcast_ref::<gtk::Widget>().add_controller(watch);
 }
 
+/// Move the keyboard focus to `item` when the pointer enters it, as
+/// `GtkPopoverMenu` does.
+///
+/// A menu opens with the focus on its first or current entry. With the
+/// focus left there, the pointer's highlight was a second one: two rows
+/// marked at once, the current one and the one about to be picked (owner's
+/// feedback, 2026-11-11). Following the pointer, the focus is that one row.
+pub(crate) fn focus_follows_pointer(item: &impl IsA<gtk::Widget>) {
+    let motion = gtk::EventControllerMotion::new();
+    motion.connect_enter(|motion, _, _| {
+        if let Some(item) = motion.widget().filter(|w| w.is_sensitive()) {
+            item.grab_focus();
+        }
+    });
+    item.add_controller(motion);
+}
+
 /// The most of an entry's label a menu shows before cutting it short.
 const MAX_LABEL_CHARS: i32 = 40;
 
@@ -417,6 +434,7 @@ fn build_page(
             btn.add_css_class("flat");
             btn.add_css_class("context-menu-item");
             btn.set_halign(gtk::Align::Fill);
+            focus_follows_pointer(&btn);
             let stack = stack.clone();
             let parent_page = parent_page.to_string();
             btn.connect_clicked(move |_| stack.set_visible_child_name(&parent_page));
@@ -544,6 +562,7 @@ fn build_page(
             }
             btn.set_halign(gtk::Align::Fill);
             btn.set_sensitive(enabled);
+            focus_follows_pointer(&btn);
             if checked || selected {
                 // Said to a screen reader too, which the check alone is not.
                 btn.update_state(&[gtk::accessible::State::Pressed(
