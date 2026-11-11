@@ -253,6 +253,13 @@ impl Component for MessageView {
                         set_wrap_mode: gtk::pango::WrapMode::WordChar,
                         set_xalign: 0.0,
                         set_selectable: true,
+                        // Selectable for copying with the mouse, but out of
+                        // the focus chain: as a window's first focusable
+                        // widget it took a new window's focus, and focusing
+                        // a selectable label selects all of it, so a message
+                        // opened in its own window had its subject
+                        // highlighted.
+                        set_focusable: false,
                         add_css_class: "reader-subject",
                     },
 
