@@ -2695,7 +2695,7 @@ msgstr "Удалить умную папку"
 #. the accounts panel, then the rows to what organizes mail and to
 #. the services.
 msgid "Accounts"
-msgstr "Учётные записи"
+msgstr "Аккаунты"
 
 msgid "Save attachment"
 msgstr "Сохранить вложение"
@@ -5899,7 +5899,7 @@ msgid "How long a message can still be recalled."
 msgstr "Сколько времени отправку ещё можно отменить."
 
 msgid "Notifications"
-msgstr "Уведомления"
+msgstr "Оповещения"
 
 msgid "Sound and banners"
 msgstr "Звук и баннеры"
@@ -5911,7 +5911,7 @@ msgid "Sound, banners and Do Not Disturb are set there."
 msgstr "Звук, баннеры и режим «Не беспокоить» настраиваются там."
 
 msgid "Privacy"
-msgstr "Конфиденциальность"
+msgstr "Приватность"
 
 msgid "Application"
 msgstr "Приложение"

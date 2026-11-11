@@ -5957,7 +5957,7 @@ msgid "How long a message can still be recalled."
 msgstr "Wie lange eine Nachricht noch zurückgerufen werden kann."
 
 msgid "Notifications"
-msgstr "Benachrichtigungen"
+msgstr "Mitteilungen"
 
 msgid "Sound and banners"
 msgstr "Ton und Banner"
