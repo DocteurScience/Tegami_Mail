@@ -36,7 +36,7 @@ impl AppModel {
         map
     }
 
-    /// [`folder_choice_map`], but with `account_id`'s list taken from `fresh`
+    /// `folder_choice_map`, but with `account_id`'s list taken from `fresh`
     /// (a SetFolders payload not yet stored on self).
     pub(super) fn folder_choice_map_with(
         &self,

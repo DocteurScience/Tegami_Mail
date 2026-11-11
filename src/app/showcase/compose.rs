@@ -10,7 +10,7 @@ use crate::ui::preferences::PrefOutput;
 
 use super::{input_after, showcase_at, showcase_log_focus};
 
-/// TEGAMI_SHOWCASE_FOLDER=drafts|templates|sent|archive|junk|trash|outbox[@<s>]
+/// `TEGAMI_SHOWCASE_FOLDER=drafts|templates|sent|archive|junk|trash|outbox[@<s>]`
 /// switches to that folder at 2 s, before the staging's 3 s
 /// selection moves onto its first row, or at the time given.
 pub(super) fn stage_folder(sender: &ComponentSender<AppModel>) {
@@ -40,7 +40,7 @@ pub(super) fn stage_folder(sender: &ComponentSender<AppModel>) {
     }
 }
 
-/// TEGAMI_SHOWCASE_UNDO=<seconds> presses Undo on the first
+/// `TEGAMI_SHOWCASE_UNDO=<seconds>` presses Undo on the first
 /// message sent, to check it comes back where it was (#434).
 pub(super) fn stage_undo(sender: &ComponentSender<AppModel>) {
     if let Some(at) = std::env::var("TEGAMI_SHOWCASE_UNDO")
@@ -74,7 +74,7 @@ pub(super) fn stage_reply(root: &adw::ApplicationWindow, sender: &ComponentSende
     }
 }
 
-/// TEGAMI_SHOWCASE_NEW=<seconds>[:<address>] opens a new message
+/// `TEGAMI_SHOWCASE_NEW=<seconds>[:<address>]` opens a new message
 /// at that moment (4 s unless it parses), addressed when an
 /// address follows, and, a second later, logs
 /// where keyboard focus landed: the field row's title, or the
@@ -97,10 +97,10 @@ pub(super) fn stage_new(root: &adw::ApplicationWindow, sender: &ComponentSender<
     }
 }
 
-/// TEGAMI_SHOWCASE_FORWARD=<seconds> does the same with
+/// `TEGAMI_SHOWCASE_FORWARD=<seconds>` does the same with
 /// Forward at that moment (4 s unless it parses), to check
 /// the original's attachments come along (#240). As
-/// <seconds>:<account>:<id> it forwards that message of the
+/// `<seconds>:<account>:<id>` it forwards that message of the
 /// open conversation, the way its card's button would, so a
 /// message that is not the conversation's newest can be
 /// picked.

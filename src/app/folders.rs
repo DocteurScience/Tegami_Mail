@@ -538,7 +538,7 @@ impl AppModel {
         '/'
     }
 
-    /// The mailbox namespace prefix for an account: "INBOX<delim>" on servers
+    /// The mailbox namespace prefix for an account: `"INBOX<delim>"` on servers
     /// that nest everything under INBOX (Dovecot-style), otherwise "". Only
     /// the INBOX root counts — deriving it from any nested folder's parent
     /// (as this once did) made "top level" mean "under whichever sub-folder

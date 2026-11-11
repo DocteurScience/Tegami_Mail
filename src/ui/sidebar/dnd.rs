@@ -82,7 +82,7 @@ pub(super) fn dragged_folder(payload: &str) -> Option<(u32, &str, bool)> {
 /// or bottom third of a custom folder goes in the gap there, at that
 /// folder's level: among its siblings if they are its own, moved on the
 /// server to that level if not. The middle third moves it inside. A gap
-/// under a parent the account doesn't list (Gmail's "[Gmail]") takes only
+/// under a parent the account doesn't list (Gmail's `"[Gmail]"`) takes only
 /// the folders already there. `custom` is the account's custom folders.
 pub(super) fn folder_drop_zone(
     payload: &str,

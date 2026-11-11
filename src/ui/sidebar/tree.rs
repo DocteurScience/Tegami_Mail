@@ -36,8 +36,8 @@ pub(crate) struct Hierarchy {
 
 impl Hierarchy {
     /// A folder's parent on the server, "" for the top level. Not the parent
-    /// the sidebar draws it under: Gmail's "[Gmail]/Important" is drawn at
-    /// the top, "[Gmail]" not being a folder, but its parent is "[Gmail]".
+    /// the sidebar draws it under: Gmail's `"[Gmail]/Important"` is drawn at
+    /// the top, `"[Gmail]"` not being a folder, but its parent is `"[Gmail]"`.
     pub(crate) fn parent(&self, path: &str) -> String {
         let head = path
             .rsplit_once(self.delimiter)
@@ -96,7 +96,7 @@ pub(super) fn custom_parent<'a>(
 /// An account's folders as the sidebar lists them: the main folders first,
 /// in the server's order by kind, then the custom folders as a tree, each
 /// parent's children sorted by `sort`. By name means the name shown (so
-/// Gmail's "[Gmail]/Important" sorts as "Important", as Thunderbird has it).
+/// Gmail's `"[Gmail]/Important"` sorts as "Important", as Thunderbird has it).
 /// Custom Order keeps the folders named in `order` in the order the user
 /// dragged them into (see [`arrange`] for where the others go); the main
 /// folders keep theirs whatever the sort.

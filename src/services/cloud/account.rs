@@ -147,7 +147,7 @@ pub(crate) const SERVICES: [Service; 6] = [
 ];
 
 /// What a service lets a public link carry, as found by
-/// [`probe_link_terms`].
+/// `probe_link_terms`.
 #[derive(Clone, Debug, PartialEq)]
 pub(crate) struct LinkTerms {
     pub(super) expiry: bool,

@@ -36,7 +36,7 @@ pub(super) async fn graph_send_message(
     Ok(())
 }
 
-/// [`super::mark_answered`] for Microsoft 365 (#454): the last verb, and
+/// `super::mark_answered` for Microsoft 365 (#454): the last verb, and
 /// the icon Outlook draws from it.
 pub(super) async fn graph_mark_answered(
     account: &AccountConfig,
@@ -63,7 +63,7 @@ pub(super) async fn graph_mark_answered(
 }
 
 /// The Outbox retry loop for Graph accounts: same queue and bookkeeping as
-/// [`flush_outbox`], with `sendMail` as the transport (Sent copy automatic).
+/// `flush_outbox`, with `sendMail` as the transport (Sent copy automatic).
 pub(super) async fn graph_flush_outbox(
     cache: Option<&Cache>,
     account_id: u32,

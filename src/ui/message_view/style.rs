@@ -80,7 +80,7 @@ pub(super) fn auto_direction(doc: &str) -> String {
 /// content is disallowed only inline styles and `data:` URIs are permitted.
 ///
 /// `allow_remote` is the user's own choice, never the output of
-/// [`has_remote_resources`]. That is what makes this an independent second line
+/// `has_remote_resources`. That is what makes this an independent second line
 /// of defence: if the detector fails to spot a reference, the engine still
 /// refuses the fetch.
 pub(super) fn inject_csp(html: &str, allow_remote: bool, dark: bool) -> String {

@@ -230,8 +230,7 @@ fn definition_list(e: &Elem) -> String {
     out
 }
 
-/// A GFM pipe table. Alignment comes from the cells' own `text-align`, which
-/// is what [`to_html`] wrote there in the first place.
+/// A GFM pipe table. Alignment comes from the cells' own `text-align`.
 fn table(e: &Elem) -> String {
     let mut rows: Vec<Vec<String>> = Vec::new();
     let mut aligns: Vec<&'static str> = Vec::new();

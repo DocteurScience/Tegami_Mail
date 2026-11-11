@@ -65,11 +65,11 @@ pub(crate) struct ComposePrefill {
     /// alias the mail was addressed to (#34). Empty otherwise.
     pub(crate) reply_addressed_to: String,
     /// For a reply: the display name of the person replied to, for the
-    /// window's "Reply to <name>". To holds only an address, and a Reply-To
+    /// window's `"Reply to <name>"`. To holds only an address, and a Reply-To
     /// header can make it another one than the sender's. Empty otherwise.
     pub(crate) reply_name: String,
     /// A From of the user's own making (#347): a draft saved from an address
-    /// that is no identity, or a reply to a `+tag` address. "Name <addr>"
+    /// that is no identity, or a reply to a `+tag` address. `"Name <addr>"`
     /// or a bare address; the composer opens its From as text when this is
     /// not the identity it selects.
     pub(crate) custom_from: String,

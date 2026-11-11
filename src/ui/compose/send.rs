@@ -19,7 +19,7 @@ use relm4::prelude::*;
 /// How often an edited message is saved to Drafts on its own (#340).
 const AUTOSAVE_SECS: u32 = 30;
 
-/// An identity's From as the composer writes it out: "Name <address>".
+/// An identity's From as the composer writes it out: `"Name <address>"`.
 fn identity_display(a: &ComposeAccount) -> String {
     a.alias_from
         .clone()

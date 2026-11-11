@@ -13,7 +13,7 @@ use crate::worker::jmap::wire::{
 };
 use crate::worker::{blocking, strip};
 
-/// How [`jmap_submit`] says the copy was refused before anything was sent,
+/// How `jmap_submit` says the copy was refused before anything was sent,
 /// so a reply filed beside its original (#468) can go to Sent instead.
 pub(super) const IMPORT_REFUSED: &str = "the server would not take the message";
 

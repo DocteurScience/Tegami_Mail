@@ -229,7 +229,7 @@ impl AppModel {
         }
     }
 
-    /// [`apply_pending_seen`] for the marks of a send still on its way: a
+    /// `apply_pending_seen` for the marks of a send still on its way: a
     /// list fetched before it went keeps them.
     pub(super) fn apply_pending_answers(
         &self,

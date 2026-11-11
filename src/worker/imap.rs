@@ -221,12 +221,12 @@ struct ImapWorker<E> {
     /// A search of the server's text under way (#509).
     text_search: Option<text_search::TextSearch>,
     /// Folders queued for the one-time References repair (see
-    /// [`run_one_refs_repair`]). Every folder gets one: a message indexed by
+    /// `run_one_refs_repair`). Every folder gets one: a message indexed by
     /// an older build carries only its In-Reply-To, and threading reads
     /// References.
     refs_repair: VecDeque<(u32, String)>,
     /// Folders queued for the one-time Gmail label fill (see
-    /// [`run_one_label_fill`]).
+    /// `run_one_label_fill`).
     label_fill: VecDeque<(u32, String)>,
     /// Requests already queued when one was taken, reordered so the reader's
     /// loads come before list syncs (see `reorder_reader_loads`).

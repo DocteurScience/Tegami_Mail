@@ -12,7 +12,7 @@ use crate::worker::preview::{
     charset_param, finish_preview, mime_header, preview_from_part, text_in_multipart, text_like,
 };
 
-/// What the BODY[TEXT] retry found for a row, as (account, folder id, uid) →
+/// What the `BODY[TEXT]` retry found for a row, as (account, folder id, uid) →
 /// preview, kept for the session. The summary fetch comes back empty for
 /// the same rows on every sync (iCloud's re-appended messages, file-first
 /// messages), so without this the retry ran again each time — three rows
@@ -96,7 +96,7 @@ const PREVIEW_FETCH_BYTES: usize = 2048;
 /// `<head>` — and the repair read is worth the round trip.
 const PREVIEW_MIN_CHARS: usize = 30;
 
-/// The bigger slice for the preview *repair* fetch (the BODY[TEXT] retry for
+/// The bigger slice for the preview *repair* fetch (the `BODY[TEXT]` retry for
 /// messages whose summary fetch produced no preview). An HTML-only message can
 /// spend several KB on `<head>` boilerplate before its first visible text —
 /// which is exactly how a message ends up on the repair list — so the retry
@@ -172,7 +172,7 @@ pub(super) async fn redecode_garbled_previews(session: &mut ImapSession, message
 
 /// Fill in previews for `uids`, rows whose first-part read came back empty.
 ///
-/// iCloud answers BODY[1] with nothing on a message it re-appended (a move-back
+/// iCloud answers `BODY[1]` with nothing on a message it re-appended (a move-back
 /// from an undo, for one) — and keeps doing so on every later sync, so the row
 /// would wear a blank summary for good — and a message whose first part is a
 /// file has its text further in. The TEXT section survives (the full-body
@@ -230,7 +230,7 @@ pub(super) async fn retry_missing_previews(
     }
 }
 
-/// The BODY[TEXT] retry itself, for `uids` (non-empty).
+/// The `BODY[TEXT]` retry itself, for `uids` (non-empty).
 async fn retry_missing_previews_now(
     session: &mut ImapSession,
     messages: &mut [Message],

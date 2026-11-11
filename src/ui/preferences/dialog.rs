@@ -15,7 +15,7 @@ const ACCOUNT_PANELS: [&str; 4] = ["tags", "filters", "smart", "senders"];
 /// The sub-pages hosted by components of their own.
 const SERVICES: [&str; 5] = ["openpgp", "cloud", "translation", "contacts", "backup"];
 
-/// Where a page id of the former sidebar now lives: one of [`PAGES`], and
+/// Where a page id of the former sidebar now lives: one of the five pages, and
 /// the sub-page to open over it, if any. Ids of removed pages land on the
 /// page that took their kept settings.
 pub(super) fn place_of(id: &str) -> (&'static str, Option<&'static str>) {

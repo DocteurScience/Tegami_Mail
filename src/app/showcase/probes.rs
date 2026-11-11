@@ -54,7 +54,7 @@ pub(super) fn probe_zoom(sender: &ComponentSender<AppModel>) {
     }
 }
 
-/// TEGAMI_SHOWCASE_DELETE_ATTACHMENT=<name>[:yes] chooses Delete from
+/// `TEGAMI_SHOWCASE_DELETE_ATTACHMENT=<name>[:yes]` chooses Delete from
 /// Server for that file of the message on screen at 10 s
 /// (TEGAMI_SHOWCASE_DELETE_AT overrides the seconds); `:yes` answers
 /// the question as well (#289).
@@ -78,13 +78,13 @@ pub(super) fn probe_delete_attachment(sender: &ComponentSender<AppModel>) {
 }
 
 impl AppModel {
-    /// TEGAMI_SHOWCASE_SELECT=<account>:<id> opens that message at 5 s
+    /// `TEGAMI_SHOWCASE_SELECT=<account>:<id>` opens that message at 5 s
     /// (TEGAMI_SHOWCASE_SELECT_AT overrides the seconds) through its row,
     /// or the head of its conversation, real accounts included: a way to
     /// open a conversation the reader assembles from the cache without a
     /// pointer, so its log can be read (#236).
     /// Several may be given, comma-separated, each with its own
-    /// @<seconds>, to open one message and then another.
+    /// `@<seconds>`, to open one message and then another.
     pub(super) fn probe_select(&self) {
         if let Ok(v) = std::env::var("TEGAMI_SHOWCASE_SELECT") {
             let default_at: u32 = std::env::var("TEGAMI_SHOWCASE_SELECT_AT")
@@ -107,7 +107,7 @@ impl AppModel {
         }
     }
 
-    /// TEGAMI_SHOWCASE_TRANSLATE=<account>:<id>[@<seconds>] translates
+    /// `TEGAMI_SHOWCASE_TRANSLATE=<account>:<id>[@<seconds>]` translates
     /// that message (open by then) at 8 s, as its A文 button would, so a
     /// translation can be captured (#327).
     pub(super) fn probe_translate(&self) {
@@ -125,7 +125,7 @@ impl AppModel {
         }
     }
 
-    /// TEGAMI_SHOWCASE_CARD_DELETE=<account>:<id>[@<seconds>] deletes that
+    /// `TEGAMI_SHOWCASE_CARD_DELETE=<account>:<id>[@<seconds>]` deletes that
     /// card of the open conversation at 8 s, as its Delete would. Several
     /// may be given, comma-separated.
     pub(super) fn probe_card_delete(&self) {
@@ -151,7 +151,7 @@ impl AppModel {
     }
 }
 
-/// TEGAMI_SHOWCASE_INBOX=<account>[@<seconds>] switches to that
+/// `TEGAMI_SHOWCASE_INBOX=<account>[@<seconds>]` switches to that
 /// account's Inbox at 3 s or the time given (the first account's when
 /// it is not a number), real accounts included, for the same probe
 /// from a folder view.
@@ -170,7 +170,7 @@ pub(super) fn probe_inbox(sender: &ComponentSender<AppModel>) {
 }
 
 impl AppModel {
-    /// TEGAMI_SHOWCASE_LIST_SEARCH=<text>[:<scope>][@<seconds>] searches
+    /// `TEGAMI_SHOWCASE_LIST_SEARCH=<text>[:<scope>][@<seconds>]` searches
     /// the list at 4 s or the time given, the scope by its place in the
     /// dropdown, real accounts included (#472).
     pub(super) fn probe_list_search(&self) {
@@ -188,7 +188,7 @@ impl AppModel {
     }
 }
 
-/// TEGAMI_SHOWCASE_NOTIFY[=<seconds>[,<seconds>...]] posts the new-mail
+/// `TEGAMI_SHOWCASE_NOTIFY[=<seconds>[,<seconds>...]]` posts the new-mail
 /// notification at 5 s or at each time given (the same second twice
 /// exercises the sound's hold-off), real accounts included.
 pub(super) fn probe_notify(sender: &ComponentSender<AppModel>) {

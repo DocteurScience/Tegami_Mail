@@ -143,11 +143,11 @@ pub(crate) struct Compose {
     /// is taken off the message once its link is in, and stays if the
     /// upload fails or is called off.
     pub(super) link_instead: Vec<std::path::PathBuf>,
-    /// The header bar's title: "New Message", "Reply to <name>" or
+    /// The header bar's title: "New Message", `"Reply to <name>"` or
     /// "Forward" (docs/DESIGN.md, "Replying and composing").
     pub(super) heading: String,
     /// When the draft was last saved on its own, for the header bar's
-    /// "Draft saved at <time>": the save happens unseen, and the line is
+    /// `"Draft saved at <time>"`: the save happens unseen, and the line is
     /// how the person knows it did.
     pub(super) saved_at: Option<i64>,
     /// The subject as written and as translated with the body, so Show

@@ -169,7 +169,7 @@ pub(crate) struct AppModel {
     /// (account_id, folder_id) whose background backfill has fully finished, so the
     /// message list knows no more rows will stream in for them.
     pub(super) indexed_folders: HashSet<(u32, u32)>,
-    /// Fetched bodies by (account, folder, UID) (see [`body_key`]), so
+    /// Fetched bodies by (account, folder, UID) (see `body_key`), so
     /// reopening a message renders instantly with no loading spinner. The
     /// folder is part of the key because a UID is unique only within its
     /// folder: keyed by account and UID alone, a Sent message's body filed by
@@ -367,7 +367,7 @@ pub(crate) struct AppModel {
     /// When the conversation on screen was opened. Its bodies arrive one at a
     /// time, and painting each arrival meant a stack of half-built renders
     /// flashing past; the reader holds its spinner until they are all in, or
-    /// until this has been waiting [`THREAD_BODY_WAIT`].
+    /// until this has been waiting `THREAD_BODY_WAIT`.
     pub(super) thread_opened_at: Option<std::time::Instant>,
     /// A cross-folder conversation lookup is still outstanding. Its answer can
     /// add messages (and bodies) to what is on screen, so the reader waits for
@@ -479,7 +479,7 @@ pub(crate) struct AppModel {
     pub(super) filter_followups: std::collections::HashSet<(u32, u32)>,
     /// Per (account, folder): the body-search hits of the last sync (#191),
     /// uid → lowercased alternatives the server found in the message. What
-    /// [`apply_filters`] consults for "Message body" conditions.
+    /// `apply_filters` consults for "Message body" conditions.
     pub(super) body_hits:
         std::collections::HashMap<(u32, u32), std::collections::HashMap<u32, Vec<String>>>,
     /// The message zoom this session is at (Ctrl+ / Ctrl-). Starts at 100
@@ -620,14 +620,14 @@ pub(crate) struct AppModel {
     /// branch it belonged to no longer exists.
     pub(super) redo_stack: Vec<UndoEntry>,
     /// Conversations belonging to messages a move is bringing back (#200),
-    /// keyed and re-filed exactly like [`carried_bodies`]. The reader paints
+    /// keyed and re-filed exactly like `carried_bodies`. The reader paints
     /// an assembled conversation with no lookup and no spinner; without this
     /// a restored message rebuilt its thread from scratch, which means a
     /// round trip, which means the spinner.
     pub(super) carried_threads: HashMap<(u32, String), Vec<Message>>,
     /// Bodies belonging to messages a move is bringing back (#200), by
     /// Message-ID. A move gives a message a new UID, which orphans its body in
-    /// [`body_cache`] — that is keyed by the folder and UID it had. These are
+    /// `body_cache` — that is keyed by the folder and UID it had. These are
     /// re-keyed onto the new ids as the folder's reload arrives, so the
     /// restored message renders from what is already here instead of blanking
     /// to a spinner while the server sends it over again. Drained on use.

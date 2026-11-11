@@ -270,7 +270,7 @@ pub(super) async fn graph_load_folder(
 }
 
 /// [`graph_load_folder`], saying too whether the listing was the whole
-/// folder (it fitted in [`GRAPH_FIRST_PAGE`]).
+/// folder (it fitted in `GRAPH_FIRST_PAGE`).
 pub(super) async fn graph_sync_folder(
     token: &str,
     account_id: u32,

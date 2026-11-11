@@ -40,7 +40,7 @@ pub(crate) struct FilterRule {
     /// is (a rule that only tags, #71).
     #[serde(default)]
     pub(crate) dest_path: String,
-    /// The keyword of a [`Tag`] to put on matching mail (#71); empty tags
+    /// The keyword of a `Tag` to put on matching mail (#71); empty tags
     /// nothing. Tagging and filing combine: the tag goes on first, and the
     /// move carries it along.
     #[serde(default)]

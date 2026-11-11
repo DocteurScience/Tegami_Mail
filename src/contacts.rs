@@ -97,7 +97,7 @@ pub(crate) struct SuggestedGroup {
 }
 
 impl Suggestion {
-    /// "Name <email>" for inserting into a recipient field (email alone if no name).
+    /// `"Name <email>"` for inserting into a recipient field (email alone if no name).
     pub(crate) fn display(&self) -> String {
         crate::worker::format_recipient(&self.name, &self.email)
     }

@@ -118,7 +118,7 @@ impl AppModel {
 
     /// Start a manual filter run over `targets`: re-load each folder so the
     /// rules meet the mail already in it. The load's `Messages` event is what
-    /// actually runs them, through [`apply_filters`]; the folder counts as
+    /// actually runs them, through `apply_filters`; the folder counts as
     /// done once its load has been to the server and back
     /// (`AppMsg::FolderSynced`), not when the cache answers first.
     pub(super) fn start_filter_run(

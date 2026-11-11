@@ -138,7 +138,7 @@ impl Cache {
             .map_or(0, |n| n.max(0) as usize)
     }
 
-    /// [`Cache::remove_downloaded`] before `before` (a Unix time), but an
+    /// `Cache::remove_downloaded` before `before` (a Unix time), but an
     /// account in `keep` keeps its downloads back to its own date: a period
     /// kept offline is not removed for being old, only to be downloaded
     /// again. Returns how many bodies went.

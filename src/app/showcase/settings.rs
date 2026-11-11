@@ -12,7 +12,7 @@ use crate::ui::sidebar::CtxAction;
 
 use super::capture::input_after;
 
-/// TEGAMI_SHOWCASE_SHORTCUTS=<height> opens the shortcut list at
+/// `TEGAMI_SHOWCASE_SHORTCUTS=<height>` opens the shortcut list at
 /// 4 s, that tall, so all of it fits a capture (with
 /// TEGAMI_SHOWCASE_TOP).
 pub(super) fn stage_shortcuts(sender: &ComponentSender<AppModel>) {
@@ -36,7 +36,7 @@ pub(super) fn stage_shortcuts(sender: &ComponentSender<AppModel>) {
     }
 }
 
-/// TEGAMI_SHOWCASE_ACCOUNT=new[:<provider label>] opens a blank account
+/// `TEGAMI_SHOWCASE_ACCOUNT=new[:<provider` label>] opens a blank account
 /// editor a beat after the Settings window (with
 /// TEGAMI_SHOWCASE_SETTINGS), so the editor itself can be captured.
 pub(super) fn stage_new_account(sender: &ComponentSender<AppModel>) {
@@ -91,7 +91,7 @@ pub(super) fn stage_editor_dirty(sender: &ComponentSender<AppModel>) {
     }
 }
 
-/// TEGAMI_SHOWCASE_SETTINGS_GO=<category> picks that sidebar
+/// `TEGAMI_SHOWCASE_SETTINGS_GO=<category>` picks that sidebar
 /// category at 8s, exactly as a click on its row does.
 pub(super) fn stage_settings_go(sender: &ComponentSender<AppModel>) {
     if let Ok(page) = std::env::var("TEGAMI_SHOWCASE_SETTINGS_GO") {
@@ -99,7 +99,7 @@ pub(super) fn stage_settings_go(sender: &ComponentSender<AppModel>) {
     }
 }
 
-/// TEGAMI_SHOWCASE_ADD_CONTACT=<address> opens Add to Contacts
+/// `TEGAMI_SHOWCASE_ADD_CONTACT=<address>` opens Add to Contacts
 /// for it at 6s and captures the dialog at 10s, beside the
 /// TEGAMI_SHOWCASE file, so the books it offers can be checked.
 #[allow(deprecated)] // adw::MessageDialog: AlertDialog would change how it looks

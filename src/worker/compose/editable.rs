@@ -30,7 +30,7 @@ pub(in crate::worker) fn addr_list(header: Option<&mail_parser::Address>) -> Str
 /// A queued message taken apart for editing: the fields a composer needs, plus
 /// its attachments as bytes.
 pub(crate) struct EditableMessage {
-    /// The From as written: "Name <address>", or the bare address.
+    /// The From as written: `"Name <address>"`, or the bare address.
     pub(crate) from: String,
     pub(crate) to: String,
     pub(crate) cc: String,

@@ -250,7 +250,7 @@ pub(crate) struct AccountConfig {
     #[serde(default)]
     pub(crate) label: Option<String>,
     /// Send-as aliases: extra From identities offered in the composer (#34).
-    /// Older configs stored these as plain "Name <address>" strings; both forms
+    /// Older configs stored these as plain `"Name <address>"` strings; both forms
     /// are accepted on load, and saved back as tables.
     #[serde(default, deserialize_with = "deserialize_aliases")]
     pub(crate) aliases: Vec<AliasConfig>,
@@ -406,7 +406,7 @@ pub(crate) struct NamedSignature {
 /// setup where e.g. Gmail would otherwise rewrite the sender.
 #[derive(Debug, Clone, Deserialize, Serialize)]
 pub(crate) struct AliasConfig {
-    /// The From identity: "Name <address>" or a bare address.
+    /// The From identity: `"Name <address>"` or a bare address.
     pub(crate) identity: String,
     /// The alias's own SMTP server; empty = send through the account's SMTP.
     #[serde(default, skip_serializing_if = "String::is_empty")]
@@ -454,7 +454,7 @@ fn is_default_smtp_port(port: &u16) -> bool {
     *port == default_smtp_port()
 }
 
-/// "Name <addr>" or a bare address → (name, addr).
+/// `"Name <addr>"` or a bare address → (name, addr).
 pub(crate) fn split_identity(s: &str) -> (String, String) {
     match s.split_once('<') {
         Some((n, rest)) => (

@@ -134,15 +134,13 @@ pub(crate) struct Member {
     /// group, which names its members by it. Empty when not known yet.
     pub(crate) uid: String,
     /// The card of a contact of another book, copied into an Apple group's
-    /// book when they join it ([`moved_vcard`]); empty for someone added by
+    /// book when they join it; empty for someone added by
     /// address, who gets a card with their name and address.
     pub(crate) card: String,
     /// The contact, by book and UID, a member was picked as in the group's
     /// form; the save finds their card by it.
     pub(crate) source: Option<(String, String)>,
 }
-
-impl Member {}
 
 /// The human label for a property's TYPE parameters ("" when none applies).
 fn vcard_type_label(params: &[&str]) -> String {
@@ -188,8 +186,8 @@ pub(super) fn pretty_birthday(raw: &str) -> String {
     }
 }
 
-/// [`parse_vcard_details`] without the photo, which costs a base64 decode or
-/// a file read: for imports and lookups that never show it.
+/// A contact's card read into its fields, without the photo, which costs a
+/// base64 decode or a file read: for imports and lookups that never show it.
 pub(crate) fn parse_vcard_fields(vcard: &str) -> Option<ContactDetails> {
     let mut c = ContactDetails::default();
     // A list's EMAIL lines are its members, and the line saying so may come

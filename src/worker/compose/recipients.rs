@@ -140,7 +140,7 @@ fn unquote_name(raw: &str) -> String {
     out.trim().to_string()
 }
 
-/// "Name <addr>" for a recipient field (the address alone when there is no
+/// `"Name <addr>"` for a recipient field (the address alone when there is no
 /// name), quoting a name that has a comma or another character RFC 5322 keeps
 /// out of a bare name, so [`parse_recipients`] reads it back whole.
 pub(crate) fn format_recipient(name: &str, email: &str) -> String {

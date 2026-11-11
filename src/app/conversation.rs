@@ -345,7 +345,7 @@ impl AppModel {
     }
 
     /// Ask the cache again for the rest of the conversation on screen, when
-    /// it belongs to `account_id`. The answer goes through [`merge_related`],
+    /// it belongs to `account_id`. The answer goes through `merge_related`,
     /// which adds only what the conversation lacks.
     pub(super) fn reload_related(&mut self, account_id: u32) {
         let Some(current) = self.current.clone() else {

@@ -669,7 +669,7 @@ fn chevron_tools(
     more
 }
 
-/// TEGAMI_SHOWCASE_TOOLBAR_TOGGLE=<ms>: press the chevron that long after
+/// `TEGAMI_SHOWCASE_TOOLBAR_TOGGLE=<ms>:` press the chevron that long after
 /// the bar is built, so frames of the slide can be captured.
 fn showcase_toolbar_toggle(more: &gtk::ToggleButton) {
     if let Some(ms) = std::env::var("TEGAMI_SHOWCASE_TOOLBAR_TOGGLE")

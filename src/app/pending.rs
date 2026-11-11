@@ -108,7 +108,7 @@ impl AppModel {
         messages
     }
 
-    /// [`apply_pending_seen`] for tags: a list fetched before a tag reached
+    /// `apply_pending_seen` for tags: a list fetched before a tag reached
     /// the server keeps the tag as the user just set it.
     pub(super) fn apply_pending_tags(
         &mut self,

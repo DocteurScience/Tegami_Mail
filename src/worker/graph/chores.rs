@@ -118,7 +118,7 @@ pub(super) async fn auto_empty_graph(
     }
 }
 
-/// Microsoft Graph's side of [`emit_body_hits`]: one `$search="body:…"`
+/// Microsoft Graph's side of `emit_body_hits`: one `$search="body:…"`
 /// listing per alternative over the inbox, intersected with the listed
 /// messages (Graph ids hash to the uids the app knows).
 pub(super) async fn emit_graph_body_hits(

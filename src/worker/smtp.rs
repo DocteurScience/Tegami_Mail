@@ -48,7 +48,7 @@ impl SmtpTls {
     }
 }
 
-/// TLS settings for an SMTP connection, matching [`tls_connector`]: a local
+/// TLS settings for an SMTP connection, matching `tls_connector`: a local
 /// bridge's self-signed certificate is accepted, and one the user accepted
 /// in GNOME Settings (#254), a certificate in another name where the
 /// account asks for it (#246), every other host is verified.

@@ -471,7 +471,7 @@ pub(crate) enum WorkerEvent {
         folder_id: u32,
         unread: u32,
     },
-    /// The same, from a per-folder IDLE watcher ([`watch_folder`]), which knows
+    /// The same, from a per-folder IDLE watcher (`watch_folder`), which knows
     /// its folder only by path: folder ids are positional and shift when the
     /// list changes, but a path stays true for as long as the folder exists.
     /// The app resolves it against whatever list it currently holds.

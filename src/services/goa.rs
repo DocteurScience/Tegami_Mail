@@ -188,7 +188,7 @@ fn get_bool(map: &HashMap<String, OwnedValue>, key: &str) -> bool {
 
 /// Split a GOA `ImapHost`/`SmtpHost` value into host and port. GOA stores a
 /// custom port inside the host string ("mail.example.com:1143", or
-/// "[2001:db8::1]:1993" for IPv6); with no port present, `default_port` applies.
+/// `"[2001:db8::1]:1993"` for IPv6); with no port present, `default_port` applies.
 fn host_and_port(value: String, default_port: u16) -> (String, u16) {
     if let Some(rest) = value.strip_prefix('[') {
         if let Some((host, suffix)) = rest.split_once(']') {

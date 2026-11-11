@@ -289,7 +289,7 @@ async fn jmap_index_sent_copy(
     }
 }
 
-/// [`super::mark_answered`] for JMAP: `$answered` or `$forwarded` (#454).
+/// `super::mark_answered` for JMAP: `$answered` or `$forwarded` (#454).
 pub(super) async fn jmap_mark_answered(
     s: &JmapSession,
     state: &mut JmapState,
@@ -311,7 +311,7 @@ pub(super) async fn jmap_mark_answered(
 }
 
 /// The Outbox retry loop for JMAP accounts: same queue and bookkeeping as
-/// [`flush_outbox`], with `EmailSubmission` as the transport.
+/// `flush_outbox`, with `EmailSubmission` as the transport.
 pub(super) async fn jmap_flush_outbox(
     s: &JmapSession,
     cache: Option<&Cache>,

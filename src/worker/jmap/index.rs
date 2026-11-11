@@ -228,7 +228,7 @@ pub(super) async fn jmap_load_folder(
 }
 
 /// [`jmap_load_folder`], saying too whether the listing was the whole
-/// folder (it fitted in [`JMAP_FIRST_PAGE`]).
+/// folder (it fitted in `JMAP_FIRST_PAGE`).
 pub(super) async fn jmap_sync_folder(
     s: &JmapSession,
     account_id: u32,

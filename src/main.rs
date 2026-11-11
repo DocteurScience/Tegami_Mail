@@ -165,7 +165,7 @@ fn init_tracing() {
         .init();
 }
 
-/// TEGAMI_LOGO_PROBE=<address>[,<address>…] logs which source answers for a sender's
+/// `TEGAMI_LOGO_PROBE=<address>[,<address>…]` logs which source answers for a sender's
 /// logo (BIMI, bundled, the site, or none), for checking one by hand.
 fn start_logo_probe() {
     if let Ok(list) = std::env::var("TEGAMI_LOGO_PROBE") {

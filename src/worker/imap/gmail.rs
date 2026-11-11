@@ -1,5 +1,5 @@
 //! Gmail over IMAP: labels (X-GM-LABELS) read for the list and written for
-//! tags (#374), and deleting for good through [Gmail]/Trash (X-GM-MSGID).
+//! tags (#374), and deleting for good through `[Gmail]/Trash` (X-GM-MSGID).
 
 use async_imap::types::Fetch;
 use async_imap::Session;
@@ -408,7 +408,7 @@ const LABEL_FILL_CHUNK: usize = 1_000;
 /// Labels come down with the summaries, and a sync asks again only about its
 /// recent window, so mail indexed before Tegami Mail read labels would never get
 /// any. This asks about the rest of each folder once, newest first, resuming
-/// from a watermark like [`run_one_refs_repair`].
+/// from a watermark like `run_one_refs_repair`.
 pub(super) async fn run_one_label_fill(
     queue: &mut std::collections::VecDeque<(u32, String)>,
     session: &mut Option<ImapSession>,

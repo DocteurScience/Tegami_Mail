@@ -52,5 +52,3 @@ pub(crate) struct MessageWindow {
     bar: Toolbar,
     gmail_keys: std::rc::Rc<std::cell::Cell<bool>>,
 }
-
-impl MessageWindow {}

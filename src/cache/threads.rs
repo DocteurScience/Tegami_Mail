@@ -142,7 +142,7 @@ impl Cache {
     /// shows a badge of 2 when the conversation is 2 inbox messages and the
     /// three replies you sent, because Sent is a different folder and often
     /// isn't even loaded. For the same reason the row reads as though the
-    /// other side spoke last, whatever you answered. [`messages_by_thread_ids`]
+    /// other side spoke last, whatever you answered. `messages_by_thread_ids`
     /// is what the reader uses to fill that gap when a conversation is
     /// *opened*; this answers the same question for a whole page of threads at
     /// once, without hydrating a single `Message`.

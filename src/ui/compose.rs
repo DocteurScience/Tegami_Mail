@@ -745,5 +745,3 @@ impl Component for Compose {
         self.update_view(widgets, sender);
     }
 }
-
-impl Compose {}

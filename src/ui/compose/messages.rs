@@ -136,7 +136,7 @@ pub(crate) enum ComposeInput {
     Discard,
     /// Put keyboard focus where writing starts, once the composer is on
     /// screen (opened, or moved between inline and window): see
-    /// [`Compose::focus_initial`].
+    /// `Compose::focus_initial`.
     FocusInitial,
     /// A recipient/subject field changed — mark dirty.
     MarkFieldsDirty,
@@ -200,7 +200,7 @@ pub(crate) enum ComposeInput {
     /// flag is whether it now has anything to take back.
     BodyHistory(bool),
     /// Showcase only (TEGAMI_SHOWCASE_COMPOSE_UNDO): one step of the scripted
-    /// history check. See [`Compose::showcase_history`].
+    /// history check. See `Compose::showcase_history`.
     ShowcaseHistory(u8),
     /// Showcase only (TEGAMI_SHOWCASE_COMPOSE_FROM): pick the From row's
     /// entry `n`, as a click would, so the signature swap can be captured.

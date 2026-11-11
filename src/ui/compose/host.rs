@@ -498,7 +498,7 @@ pub(super) fn fold_on_first_map(
 }
 
 /// The composer's title (docs/DESIGN.md, "Replying and composing"):
-/// "Forward" for a forward, "Reply to <name>" for a reply, and "New
+/// "Forward" for a forward, `"Reply to <name>"` for a reply, and "New
 /// Message" otherwise. A reply is named after `reply_name`, the sender of
 /// the message replied to; without one (a reply to a draft reopened, say),
 /// after the first recipient as written in To.

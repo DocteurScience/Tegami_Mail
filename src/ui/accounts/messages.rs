@@ -21,7 +21,7 @@ pub(crate) enum AccountsInput {
     /// Showcase only (TEGAMI_SHOWCASE_EDITOR_DIRTY): type into the open
     /// editor's Label field, the way a capture cannot.
     DebugEditLabel(String),
-    /// Showcase only (TEGAMI_SHOWCASE_ACCOUNT=new:<label>): pick the provider
+    /// Showcase only (`TEGAMI_SHOWCASE_ACCOUNT=new:<label>`): pick the provider
     /// with that label in the open editor.
     DebugProvider(String),
     /// Showcase only (TEGAMI_SHOWCASE_ACCOUNT_SUB): open that sub-page of

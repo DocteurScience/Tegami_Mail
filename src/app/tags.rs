@@ -76,7 +76,7 @@ impl AppModel {
     }
 
     /// Show the open tag view from its last result at once (an empty
-    /// loading list if it never ran); [`refresh_tag_view`] brings it up to
+    /// loading list if it never ran); `refresh_tag_view` brings it up to
     /// date behind.
     pub(super) fn show_tag_view(&self) {
         let Some(key) = self.tag_view.as_ref() else {

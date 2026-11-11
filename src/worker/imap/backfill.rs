@@ -123,7 +123,7 @@ const BACKFILL_TRIES: u32 = 3;
 /// Whether the server turned the command down on a sound connection (NO or
 /// BAD): the folder, not the link, is the problem, and a fresh login gets
 /// the same answer. Dovecot lists a Sieve script's symlink as a folder and
-/// answers every SELECT of it with NO [SERVERBUG] (#512).
+/// answers every SELECT of it with NO `[SERVERBUG]` (#512).
 fn refused(e: &async_imap::error::Error) -> bool {
     matches!(
         e,

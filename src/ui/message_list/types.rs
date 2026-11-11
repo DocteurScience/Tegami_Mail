@@ -160,14 +160,14 @@ pub(crate) enum MessageListInput {
     SetScope(SearchScope),
     /// Replace the cross-folder search pool (all folders, all accounts). Sent by
     /// the app when a search begins; cleared to empty when it ends. The
-    /// pool's [`search_text_of`], worked out where the pool was put together,
+    /// pool's `search_text_of`, worked out where the pool was put together,
     /// comes with it.
     SetSearchPool(
         Vec<Message>,
         std::collections::HashMap<(u32, u32), PoolFolder>,
         Vec<Box<str>>,
     ),
-    /// What a search matched on another thread ([`MessageList::start_search`]).
+    /// What a search matched on another thread (`MessageList::start_search`).
     SearchMatched {
         gen: u64,
         query: String,
@@ -327,7 +327,7 @@ pub(crate) enum MessageListInput {
     ResetPaging,
     /// Whether the current folder's background index is fully loaded.
     SetIndexComplete(bool),
-    /// Run the rebuild queued by [`MessageList::queue_rebuild`].
+    /// Run the rebuild queued by `MessageList::queue_rebuild`.
     RunQueuedRebuild,
     /// The list was scrolled to (or away from) its bottom.
     AtBottom(bool),

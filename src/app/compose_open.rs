@@ -507,7 +507,7 @@ impl AppModel {
         }
     }
 
-    /// An address clicked in the reader, as "Name <address>" when a name is
+    /// An address clicked in the reader, as `"Name <address>"` when a name is
     /// known: the saved contact's, else the one the conversation on screen
     /// gives it (a sender's, or a recipient's).
     fn with_known_name(&self, to: &str) -> String {

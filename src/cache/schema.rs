@@ -210,7 +210,7 @@ pub(super) const DOWNLOADED_TABLES: [&str; 3] = ["bodies", "attachments", "attac
 /// v20: sender names and subjects were stored with the backslash escapes of
 /// the server's quoted string, and a name with the header's own quotes
 /// around it (#312). The rows are cleaned in place, see
-/// [`Cache::clean_quoted_names`].
+/// `Cache::clean_quoted_names`.
 /// v21: a Reply-To on another domain no longer marks a verified sender
 /// suspicious unless replies go to a mailbox host (A1 mail from a1.at
 /// answered on email.a1.net was flagged). Suspicious verdicts stored earlier,

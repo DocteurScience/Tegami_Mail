@@ -223,7 +223,7 @@ pub(crate) enum AppMsg {
         gen: u64,
         lists: Vec<((u32, u32), Vec<Message>)>,
     },
-    /// The pool [`AppModel::build_search_pool`] put together.
+    /// The pool `AppModel::build_search_pool` put together.
     SearchPoolBuilt {
         gen: u64,
         pool: Vec<Message>,
@@ -449,7 +449,7 @@ pub(crate) enum AppMsg {
     /// Showcase only (TEGAMI_SHOWCASE_COMPOSE_CLOSE): cancel the latest
     /// composer, to check its web process goes with it.
     ShowcaseComposeClose,
-    /// Showcase only (TEGAMI_SHOWCASE_ACCOUNT=new[:<provider>]): open a blank
+    /// Showcase only (`TEGAMI_SHOWCASE_ACCOUNT=new[:<provider>]`): open a blank
     /// account editor, on that provider when one is named.
     ShowcaseNewAccount(Option<String>),
     /// Showcase only (TEGAMI_SHOWCASE_EDITOR_DIRTY): change the open account

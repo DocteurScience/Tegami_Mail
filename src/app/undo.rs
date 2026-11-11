@@ -161,7 +161,7 @@ impl AppModel {
         self.push_undo_move_as(account_id, what, moved_to, restore_to, rows);
     }
 
-    /// [`push_undo_move`], for the moves whose destination doesn't name them:
+    /// `push_undo_move`, for the moves whose destination doesn't name them:
     /// Not Spam puts mail back in the Inbox, which is not "Move to Inbox".
     pub(super) fn push_undo_move_as(
         &mut self,

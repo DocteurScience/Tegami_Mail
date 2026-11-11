@@ -441,7 +441,7 @@ impl AppModel {
     }
 
     /// Re-sync every inbox so a newly-blacklisted sender's existing mail is
-    /// caught and deleted by [`apply_blacklist`].
+    /// caught and deleted by `apply_blacklist`.
     pub(super) fn sweep_blacklisted(&self) {
         let reqs: Vec<(u32, u32, String)> = self
             .accounts

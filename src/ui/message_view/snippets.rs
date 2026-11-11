@@ -38,7 +38,7 @@ pub(super) fn template_row_html(key: (u32, u32)) -> String {
 
 /// A card's Unsubscribe banner: the container, always emitted so a verdict
 /// arriving later can be patched into it (empty, it is hidden by the
-/// stylesheet). `inner` is what [`MessageView::unsub_inner_html`] rendered.
+/// stylesheet). `inner` is what `MessageView::unsub_inner_html` rendered.
 pub(super) fn unsub_row_html(key: (u32, u32), inner: &str) -> String {
     format!(
         "<div class=\"tegami-unsub\" data-key=\"{}:{}\">{inner}</div>",

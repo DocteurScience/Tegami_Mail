@@ -71,7 +71,7 @@ impl AppModel {
     }
 
     /// TEGAMI_SHOWCASE_SWIPE=N[:left|right] swipes row N fully and
-    /// releases it at 7s, with TEGAMI_SHOWCASE_BURST=<path> writing
+    /// releases it at 7s, with `TEGAMI_SHOWCASE_BURST=<path>` writing
     /// stills through the commit exit — the only way to see the
     /// gesture's animation here (no input injection).
     pub(super) fn stage_swipe(&self, root: &adw::ApplicationWindow) {
@@ -163,7 +163,7 @@ impl AppModel {
 
     /// TEGAMI_SHOWCASE_UNIFIED=favorites|tags|smart opens that merged
     /// row at 3s and again at 9s, so the timing logs show a cold and a
-    /// warm open. TEGAMI_SHOWCASE_UNIFIED_AT=<s> starts that at s seconds
+    /// warm open. `TEGAMI_SHOWCASE_UNIFIED_AT=<s>` starts that at s seconds
     /// rather than 3, once a real profile's accounts have loaded.
     pub(super) fn stage_unified(&self) {
         if let Ok(which) = std::env::var("TEGAMI_SHOWCASE_UNIFIED") {
@@ -200,7 +200,7 @@ impl AppModel {
     }
 }
 
-/// TEGAMI_SHOWCASE_APPLY_FILTERS=inboxes|<account>:<folder>
+/// `TEGAMI_SHOWCASE_APPLY_FILTERS=inboxes|<account>:<folder>`
 /// starts a manual filter run at 5s (#198), the way Apply Now
 /// and the folder menu's Apply Filters do, and the run's
 /// report lands in the status bar a beat later.
@@ -315,7 +315,7 @@ impl AppModel {
     }
 }
 
-/// TEGAMI_SHOWCASE_PEEK=<seconds>[,<seconds>…] works the header's
+/// `TEGAMI_SHOWCASE_PEEK=<seconds>[,<seconds>…]` works the header's
 /// sidebar toggle at each of those moments (1 or anything
 /// unparseable means 8 s), with the window raised first so the
 /// slide really animates; TEGAMI_SHOWCASE_BURST writes stills

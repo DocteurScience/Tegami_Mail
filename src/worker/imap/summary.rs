@@ -248,7 +248,7 @@ fn header_fields(raw: &[u8]) -> Vec<(String, String)> {
     out
 }
 
-/// The headers a fetch that asked for [`REFS_FETCH_ITEM`] brought back.
+/// The headers a fetch that asked for `REFS_FETCH_ITEM` brought back.
 pub(super) fn fetched_fields(fetch: &Fetch) -> Vec<(String, String)> {
     use async_imap::imap_proto::types::{MessageSection, SectionPath};
     fetch
@@ -257,7 +257,7 @@ pub(super) fn fetched_fields(fetch: &Fetch) -> Vec<(String, String)> {
         .unwrap_or_default()
 }
 
-/// The `References:` value from a fetch that asked for [`REFS_FETCH_ITEM`],
+/// The `References:` value from a fetch that asked for `REFS_FETCH_ITEM`,
 /// normalized into the same space-separated form as the ENVELOPE ids.
 pub(super) fn references_of(fetch: &Fetch) -> String {
     fetched_fields(fetch)
@@ -267,7 +267,7 @@ pub(super) fn references_of(fetch: &Fetch) -> String {
         .unwrap_or_default()
 }
 
-/// The importance the priority headers of a [`REFS_FETCH_ITEM`] fetch give.
+/// The importance the priority headers of a `REFS_FETCH_ITEM` fetch give.
 fn importance_of(fetch: &Fetch) -> crate::models::Importance {
     let fields = fetched_fields(fetch);
     crate::models::Importance::from_headers(|name| {

@@ -50,7 +50,7 @@ mod imp {
         pub(super) edit_icon: gtk::Image,
         pub(super) suffixes: gtk::Box,
         /// The pills in order, each with the recipient it stands for as it
-        /// goes into the field ("Name <address>").
+        /// goes into the field (`"Name <address>"`).
         pub(super) pills: RefCell<Vec<(gtk::Widget, String)>>,
         /// Set while the row rewrites its own text, so that is not taken
         /// for typing.

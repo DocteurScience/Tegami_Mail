@@ -84,7 +84,7 @@ fn data_uri_to_temp_file(uri: &str) -> Option<std::path::PathBuf> {
 /// One paste in an explicit mode: arm the document's one-shot flag, then run
 /// the editing command once the flag is in place (the callback orders the two,
 /// since both travel to the web process asynchronously). The DOM paste handler
-/// consumes the flag — see [`PASTE_SCRIPT`].
+/// consumes the flag — see `PASTE_SCRIPT`.
 ///
 /// A file copied in a file manager is taken first, for the same reason the
 /// drop target exists: the clipboard offers `GdkFileList`, but by the time

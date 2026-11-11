@@ -164,7 +164,7 @@ impl AppModel {
     }
 
     /// Show the open smart folder from its last result at once (a loading
-    /// list if it never ran); [`refresh_smart_view`] brings it up to date.
+    /// list if it never ran); `refresh_smart_view` brings it up to date.
     pub(super) fn show_smart_view(&self) {
         let Some(id) = self.smart_view.as_ref() else {
             return;

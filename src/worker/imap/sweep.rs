@@ -16,7 +16,7 @@ use crate::worker::{chip_counts_all, MailRequest, WorkerEvent};
 
 /// Auto-empty (#140) for an IMAP account: delete for good whatever in the
 /// Junk / Trash folder is older than the account's chosen age. Rides the
-/// unread sweep, at most every [`AUTO_EMPTY_MIN`]. Age is the message's
+/// unread sweep, at most every `AUTO_EMPTY_MIN`. Age is the message's
 /// internal date, the day it reached the server, which is how the other
 /// clients count too. A failure is logged and tried again next time; the
 /// sweep never surfaces an error for a chore nobody is waiting on.
@@ -97,7 +97,7 @@ pub(super) async fn auto_empty_imap(
 ///
 /// EXAMINE + UID SEARCH, not STATUS: STATUS answers from a cache that lags
 /// minutes behind on some servers (iCloud, see the inbox refinement in
-/// [`list_folders`]) — stale numbers left chips unmoved and, worse, blinded
+/// `list_folders`) — stale numbers left chips unmoved and, worse, blinded
 /// the change detection below. The read-only EXAMINE walk costs a second
 /// round trip per folder and leaves the session's selection wherever it ends;
 /// subsequent reads check that selection and mutations re-select explicitly.

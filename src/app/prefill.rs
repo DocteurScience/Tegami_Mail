@@ -125,7 +125,7 @@ fn thread_chain(m: &Message) -> String {
 
 /// The address in a recipient as written ("Ana <ana@x.org>" or the bare
 /// address), lowercased.
-/// The recipients of an address list, each as "Name <address>" (or the
+/// The recipients of an address list, each as `"Name <address>"` (or the
 /// address alone): read whole, so a quoted name with a comma in it stays
 /// one recipient.
 fn recipients(list: &str) -> Vec<String> {

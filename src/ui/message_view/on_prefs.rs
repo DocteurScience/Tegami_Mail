@@ -108,5 +108,3 @@ impl MessageView {
         }
     }
 }
-
-impl MessageView {}

@@ -2,7 +2,7 @@
 
 use crate::models::Message;
 
-/// A folder's messages as [`AppModel::message_cache`] keeps them: shared,
+/// A folder's messages as `AppModel::message_cache` keeps them: shared,
 /// not copied, with a search pool being put together on another thread
 /// (#515). A change copies the folder only while such a pool still holds it.
 #[derive(Clone, Debug, Default, PartialEq)]
