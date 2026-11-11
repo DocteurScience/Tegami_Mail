@@ -784,6 +784,12 @@ msgstr "Esperant per enviar"
 msgid "Sending…"
 msgstr "S'està enviant…"
 
+#. TRANSLATORS: between two keys that do the same thing, in the
+#. keyboard shortcut list ("j  or  ↓"). Keep the two spaces on each
+#. side of the word: they part the keys.
+msgid "{first}  or  {second}"
+msgstr "{first}  o  {second}"
+
 msgid "Move around"
 msgstr "Mou-te"
 

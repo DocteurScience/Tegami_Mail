@@ -791,6 +791,12 @@ msgstr "Aguardando envio"
 msgid "Sending…"
 msgstr "Enviando…"
 
+#. TRANSLATORS: between two keys that do the same thing, in the
+#. keyboard shortcut list ("j  or  ↓"). Keep the two spaces on each
+#. side of the word: they part the keys.
+msgid "{first}  or  {second}"
+msgstr "{first}  ou  {second}"
+
 msgid "Move around"
 msgstr "Navegação"
 

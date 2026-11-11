@@ -789,6 +789,12 @@ msgstr "Wartet auf Versand"
 msgid "Sending…"
 msgstr "Wird gesendet…"
 
+#. TRANSLATORS: between two keys that do the same thing, in the
+#. keyboard shortcut list ("j  or  ↓"). Keep the two spaces on each
+#. side of the word: they part the keys.
+msgid "{first}  or  {second}"
+msgstr "{first}  oder  {second}"
+
 msgid "Move around"
 msgstr "Navigation"
 

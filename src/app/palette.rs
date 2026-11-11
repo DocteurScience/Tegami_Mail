@@ -4,7 +4,7 @@
 use adw::prelude::*;
 use relm4::prelude::*;
 
-use crate::i18n::{i18n, i18n_noop};
+use crate::i18n::{i18n, i18n_f, i18n_noop};
 use crate::ui::sidebar::CtxAction;
 
 use super::{AppModel, AppMsg};
@@ -49,6 +49,23 @@ pub(super) fn keyed_item(label: &str, action: &str, accel: &str) -> gtk::gio::Me
     let item = gtk::gio::MenuItem::new(Some(label), Some(action));
     item.set_attribute_value("accel", Some(&accel.to_variant()));
     item
+}
+
+/// A line's keys as the reference window shows them: the table writes
+/// two keys that do the same as "j  or  ↓", and the "or" between them is
+/// the language's.
+fn key_label(keys: &str) -> String {
+    let mut parts = keys.split("  or  ");
+    let first = parts.next().unwrap_or_default().to_string();
+    parts.fold(first, |shown, next| {
+        // TRANSLATORS: between two keys that do the same thing, in the
+        // keyboard shortcut list ("j  or  ↓"). Keep the two spaces on each
+        // side of the word: they part the keys.
+        i18n_f(
+            "{first}  or  {second}",
+            &[("first", &shown), ("second", next)],
+        )
+    })
 }
 
 /// Every shortcut with its key and description, for the reference window.
@@ -443,7 +460,7 @@ impl AppModel {
             list.set_selection_mode(gtk::SelectionMode::None);
             for (key, what) in *keys {
                 let row = adw::ActionRow::builder().title(i18n(what)).build();
-                let label = gtk::Label::new(Some(key));
+                let label = gtk::Label::new(Some(&key_label(key)));
                 label.add_css_class("shortcut-key");
                 label.set_valign(gtk::Align::Center);
                 row.add_suffix(&label);
@@ -567,5 +584,14 @@ mod tests {
                 assert!(!key.trim().is_empty() && !what.trim().is_empty());
             }
         }
+    }
+
+    /// The "or" between two keys is the language's; English keeps the
+    /// table's own text.
+    #[test]
+    fn alternative_keys_are_joined_by_or() {
+        assert_eq!(key_label("j  or  ↓"), "j  or  ↓");
+        assert_eq!(key_label("?  or  Ctrl+?  or  F1"), "?  or  Ctrl+?  or  F1");
+        assert_eq!(key_label("g  i"), "g  i");
     }
 }

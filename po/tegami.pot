@@ -725,6 +725,12 @@ msgstr ""
 msgid "Sending…"
 msgstr ""
 
+#. TRANSLATORS: between two keys that do the same thing, in the
+#. keyboard shortcut list ("j  or  ↓"). Keep the two spaces on each
+#. side of the word: they part the keys.
+msgid "{first}  or  {second}"
+msgstr ""
+
 msgid "Move around"
 msgstr ""
 

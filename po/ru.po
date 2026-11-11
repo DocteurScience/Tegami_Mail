@@ -837,6 +837,12 @@ msgstr "Нечего отменять"
 msgid "Sending…"
 msgstr "Отправка…"
 
+#. TRANSLATORS: between two keys that do the same thing, in the
+#. keyboard shortcut list ("j  or  ↓"). Keep the two spaces on each
+#. side of the word: they part the keys.
+msgid "{first}  or  {second}"
+msgstr "{first}  или  {second}"
+
 msgid "Move around"
 msgstr "Перемещаться"
 
