@@ -73,7 +73,7 @@ pub(super) fn demo_account_configs() -> Vec<AccountConfig> {
     };
     vec![
         mk("Jason M.", "jason@example.org", "#3584e4", Some("🚀")),
-        mk("Hyprlab", "hello@hyprlab.dev", "#f6d32d", None),
+        mk("Pinecone Lab", "hello@pinecone.dev", "#f6d32d", None),
         mk(
             "Jason (Personal)",
             "jason.m@fastmail.com",
@@ -154,7 +154,7 @@ pub(super) fn demo_filters() -> Vec<config::FilterRule> {
         ),
         mk(
             "Invoices",
-            "hello@hyprlab.dev",
+            "hello@pinecone.dev",
             FilterField::Subject,
             FilterMatch::Contains,
             "invoice",

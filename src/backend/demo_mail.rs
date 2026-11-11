@@ -197,7 +197,7 @@ pub(crate) fn demo_arrival() -> Message {
 
 pub(super) fn sample_messages() -> Vec<Message> {
     const ME: &str = "jason@example.org";
-    const LAB: &str = "hello@hyprlab.dev";
+    const LAB: &str = "hello@pinecone.dev";
     const PERSONAL: &str = "jason.m@fastmail.com";
     let specs = [
         // ---- Account 1 · Inbox · a deep conversation (ids 1–6, oldest = 6) ----
@@ -340,9 +340,9 @@ pub(super) fn sample_messages() -> Vec<Message> {
             body: "Good news!\n\nAlex bought you a coffee and left a note:\n\n  “Love Tegami Mail — the GNOME-native mail client I've wanted for years!”\n\nSay thanks from your dashboard.",
             date: "Yesterday", unread: true, starred: true, keywords: &[], has_attachment: false, in_reply_to: None },
         Spec { id: 32, account_id: 2, folder_id: 11, from_name: "GitHub", from_addr: "notifications@github.com", to: LAB,
-            subject: "[hyprlab/tegami] Star milestone: 1,000 ⭐",
-            preview: "Your repository hyprlab/tegami just reached 1,000 stars. Nice work! See who starred recently…",
-            body: "hyprlab/tegami just reached 1,000 stars 🎉\n\nRecent stargazers: @ada, @torvalds-fan, @rustacean…\n\nView on GitHub.",
+            subject: "[pinecone-lab/tegami] Star milestone: 1,000 ⭐",
+            preview: "Your repository pinecone-lab/tegami just reached 1,000 stars. Nice work! See who starred recently…",
+            body: "pinecone-lab/tegami just reached 1,000 stars 🎉\n\nRecent stargazers: @ada, @torvalds-fan, @rustacean…\n\nView on GitHub.",
             date: "Yesterday", unread: true, starred: false, keywords: &[], has_attachment: false, in_reply_to: None },
         Spec { id: 33, account_id: 2, folder_id: 11, from_name: "This Week in GNOME", from_addr: "hello@thisweek.gnome.org", to: LAB,
             subject: "This Week in GNOME #180",

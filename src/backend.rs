@@ -47,9 +47,9 @@ impl MockBackend {
             },
             Account {
                 id: 2,
-                name: "Hyprlab".into(),
-                email: "hello@hyprlab.dev".into(),
-                label: "hello@hyprlab.dev".into(),
+                name: "Pinecone Lab".into(),
+                email: "hello@pinecone.dev".into(),
+                label: "hello@pinecone.dev".into(),
                 accent: "#f6d32d".into(),
             },
             Account {
