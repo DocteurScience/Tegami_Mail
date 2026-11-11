@@ -6,7 +6,11 @@ The first release of Tegami Mail, a redesign of Hylki 1.46 (the entries
 below 1.0.0 are Hylki's own history). The version numbering starts again.
 
 - **Fixed after the 1.0.0 packages:** the first-run assistant and About
-  showed the temporary icon instead of the app's icon.
+  showed the temporary icon instead of the app's icon; the link to the
+  system notification settings did nothing in the Flatpak and the
+  AppImage; "Confidentialité" was cut short in the preference tabs; menus
+  marked two entries at once; the sidebar's chevrons drew a grey disc on
+  hover.
 
 - **Software centre listing:** screenshots, and DocteurScience as the
   developer.
