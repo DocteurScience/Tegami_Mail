@@ -83,6 +83,17 @@
   <content_rating type="oars-1.1"/>
 
   <releases>
+    <release version="1.0.1" date="2026-11-11">
+      <description>
+        <p>Fixes for the first release.</p>
+        <ul>
+          <li>The first-run assistant and About show the application icon</li>
+          <li>The link to the system notification settings works in the Flatpak and the AppImage</li>
+          <li>Preference tabs are as wide as their names</li>
+          <li>Menus mark one entry at a time</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.0.0" date="2026-11-11">
       <description>
         <p>The first release of Tegami Mail, a redesign of Hylki 1.46 that keeps its engine.</p>

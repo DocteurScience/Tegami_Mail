@@ -1,16 +1,20 @@
 # Changelog
 
+## 1.0.1 — 2026-11-11
+
+- **Application icon:** the first-run assistant and About showed the
+  temporary icon, the copy bundled in the binary having been left behind.
+- **Notification settings:** the link to the system's settings did nothing
+  in the Flatpak and the AppImage; it now asks GNOME Settings over D-Bus.
+- **Preference tabs:** sized to their names; "Confidentialité" was cut short.
+- **Menus:** the keyboard focus follows the pointer, so one entry is marked
+  at a time.
+- **Sidebar:** the chevrons no longer draw a grey disc on hover.
+
 ## 1.0.0 — 2026-11-11
 
 The first release of Tegami Mail, a redesign of Hylki 1.46 (the entries
 below 1.0.0 are Hylki's own history). The version numbering starts again.
-
-- **Fixed after the 1.0.0 packages:** the first-run assistant and About
-  showed the temporary icon instead of the app's icon; the link to the
-  system notification settings did nothing in the Flatpak and the
-  AppImage; "Confidentialité" was cut short in the preference tabs; menus
-  marked two entries at once; the sidebar's chevrons drew a grey disc on
-  hover.
 
 - **Software centre listing:** screenshots, and DocteurScience as the
   developer.

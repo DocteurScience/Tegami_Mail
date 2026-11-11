@@ -2,6 +2,18 @@
 
 Tegami Mail is an email client for GNOME, written in Rust with GTK 4 and libadwaita. It is a redesign of Hylki 1.46: the same engine, with a calmer, simpler interface. Privacy-first: no telemetry, remote content blocked by default, and credentials kept in the system keyring.
 
+## What's new in 1.0.1
+
+Fixes for the first release.
+
+### Fixed:
+
+- The first-run assistant and About show the application icon, not the temporary one
+- The link to the system notification settings works in the Flatpak and the AppImage
+- Preference tabs are as wide as their names, so none is cut short
+- Menus mark one entry at a time: the keyboard focus follows the pointer
+- The sidebar's chevrons no longer draw a grey disc on hover
+
 ## What's new in 1.0.0
 
 The first release of Tegami Mail. The version numbering starts again; the notes below 1.0.0 are Hylki's.
