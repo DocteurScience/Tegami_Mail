@@ -167,6 +167,7 @@ Dernière mise à jour : 2026-11-02, après `40a6c7e`.
 | `e947afa` | État des lieux du code : `cargo fmt`, clippy en `-D warnings`, 1081 tests, aucun TODO ; `cargo doc` passe de 127 avertissements à 0 (liens morts reformulés, syntaxes en code), 4 `impl` vides retirés, en-tête du catalogue russe complété. Snap 1.0.1 non construit : le Snap Store ne répond pas aux machines de GitHub depuis le 11 vers midi, à relancer le 12 |
 | `21d263a` | Snap et GNOME Contacts : carnets cherchés sous `SNAP_REAL_HOME` (test), plug `personal-files` en lecture (`evolution-files`) et `contacts-service` ; README : commandes `snap connect` pour un snap installé depuis un fichier. Non testé sur un vrai snap (Snap Store injoignable depuis GitHub). Le bouton « Ouvrir GNOME Contacts » passe par le lanceur de snapd sous snap (commit suivant) |
 | `e4b4cf2` | « Ouvrir GNOME Contacts » : sous snap, `OpenDesktopEntry` du lanceur de snapd (plug `desktop-launch`, à connecter) ; ailleurs, activation D-Bus d'abord (évite les bibliothèques de l'AppImage), commande en dernier recours ; ordre testé. Non vérifié sur un vrai snap |
+| `eced743` | Version 1.0.2 (snap et GNOME Contacts, bouton Contacts, documentation du code), publiée avec Flatpak et AppImage ; build snap à relancer le 12 à 7 h (panne du Snap Store chez Canonical depuis le 11 vers midi) |
 
 ## Décisions prises
 
