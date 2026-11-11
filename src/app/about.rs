@@ -51,12 +51,10 @@ fn section_heading(text: &str) -> gtk::Label {
 /// and, in a beta build, the warning that it is one.
 fn about_identity(page: &gtk::Box) {
     // The app icon large over the name, as GNOME's About windows show it;
-    // the bundled one, so it is the same whatever the icon theme.
-    let icon = gtk::Image::from_icon_name(crate::APP_ID);
-    icon.set_pixel_size(128);
+    // the bundled one, which nothing installed on the system can shadow.
+    let icon = crate::ui::wordmark::app_icon_image(128);
     icon.set_halign(gtk::Align::Center);
     icon.add_css_class("icon-dropshadow");
-    icon.set_accessible_role(gtk::AccessibleRole::Presentation);
     page.append(&icon);
 
     // The name under it. Same Overlay-with-spacer cap as the wizard: a

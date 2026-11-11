@@ -1,4 +1,5 @@
-//! The wordmark art of the About window and the carry-over notice.
+//! The wordmark art of the About window and the carry-over notice, and
+//! the app icon those and the first-run assistant show.
 
 use adw::prelude::*;
 
@@ -97,4 +98,55 @@ pub(crate) fn wordmark_height(width: f64) -> i32 {
 /// A wordmark's height for a given width.
 pub(crate) fn wordmark_height_of(art: Wordmark, width: f64) -> i32 {
     (width * art.aspect()) as i32
+}
+
+/// The app icon at `size` px, always the one bundled in the binary.
+///
+/// Looked up by name in the system's icon theme, `APP_ID` finds whatever an
+/// earlier install left in `~/.local/share/icons` or `/usr/share/icons`
+/// first, so the assistant and About showed an old icon on a machine that
+/// had one. A theme of its own that only searches the app's resources
+/// cannot be shadowed.
+pub(crate) fn app_icon_image(size: i32) -> gtk::Image {
+    let theme = gtk::IconTheme::new();
+    theme.set_search_path(&[] as &[&std::path::Path]);
+    theme.set_resource_path(&["/io/github/DocteurScience/TegamiMail/icons"]);
+    let paintable = theme.lookup_icon(
+        crate::APP_ID,
+        &[],
+        size,
+        2,
+        gtk::TextDirection::None,
+        gtk::IconLookupFlags::empty(),
+    );
+    let icon = gtk::Image::from_paintable(Some(&paintable));
+    icon.set_pixel_size(size);
+    icon.set_accessible_role(gtk::AccessibleRole::Presentation);
+    icon
+}
+
+#[cfg(test)]
+mod tests {
+    /// The icon bundled in the binary is a copy of the one installed with
+    /// the app; when the app icon changed, the copy was left behind and the
+    /// assistant and About showed the old icon.
+    #[test]
+    fn the_bundled_app_icon_is_the_installed_one() {
+        assert!(
+            include_bytes!(
+                "../../resources/icons/scalable/apps/io.github.DocteurScience.TegamiMail.svg"
+            ) == include_bytes!(
+                "../../data/icons/hicolor/scalable/apps/io.github.DocteurScience.TegamiMail.svg"
+            ),
+            "run tools/gen-icon-gresource.sh"
+        );
+        assert!(
+            include_bytes!(
+                "../../resources/icons/scalable/apps/io.github.DocteurScience.TegamiMail.Beta.svg"
+            ) == include_bytes!(
+                "../../data/icons/hicolor/scalable/apps/io.github.DocteurScience.TegamiMail.Beta.svg"
+            ),
+            "run tools/gen-icon-gresource.sh"
+        );
+    }
 }

@@ -72,10 +72,7 @@ pub(super) fn pill(label: &str) -> gtk::Button {
 
 /// The app icon, at `size` px.
 fn app_icon(size: i32) -> gtk::Image {
-    let icon = gtk::Image::from_icon_name(crate::APP_ID);
-    icon.set_pixel_size(size);
-    icon.set_accessible_role(gtk::AccessibleRole::Presentation);
-    icon
+    crate::ui::wordmark::app_icon_image(size)
 }
 
 /// Screen 49: the app icon, a greeting, one sentence and "Get started".
