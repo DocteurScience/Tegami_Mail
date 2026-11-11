@@ -51,7 +51,7 @@ Download the latest release:
   Accounts and GNOME Contacts, OpenPGP, USB drives):
 
   ```bash
-  for p in password-manager-service online-accounts-service contacts-service evolution-files gpg-keys gpg-public-keys removable-media; do sudo snap connect tegami-mail:$p; done
+  for p in password-manager-service online-accounts-service contacts-service evolution-files desktop-launch gpg-keys gpg-public-keys removable-media; do sudo snap connect tegami-mail:$p; done
   ```
 
 Every release, with its notes, is on the

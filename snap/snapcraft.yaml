@@ -69,6 +69,7 @@ apps:
       - online-accounts-service     # GNOME Online Accounts
       - contacts-service            # Evolution Data Server's address books: Add to Contacts, the books' names
       - evolution-files             # the address books' files (see plugs above)
+      - desktop-launch              # "Open GNOME Contacts": snapd opens the host's app
       - gpg-keys                    # OpenPGP signing and encryption
       - gpg-public-keys
 
