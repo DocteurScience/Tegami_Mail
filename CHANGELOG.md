@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- **Software centre listing:** a shorter summary and a description of the
+  app as it is now, translated in all eleven languages.
 - **About:** the app icon shows above the name, and "What's new in" and
   "Hylki (original project)" are translated.
 - **Translated:** the "or" between two keys in the keyboard shortcut list
