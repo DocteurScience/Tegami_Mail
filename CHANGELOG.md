@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- **About:** the app icon shows above the name, and "What's new in" and
+  "Hylki (original project)" are translated.
 - **Translated:** the "or" between two keys in the keyboard shortcut list
   ("j or ↓") is now in the app's language, in all eleven translations.
 - **Gmail keys:** <kbd>d</kbd>, <kbd>Shift+R</kbd>, <kbd>Shift+A</kbd> and

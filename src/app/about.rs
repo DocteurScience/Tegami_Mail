@@ -4,7 +4,7 @@ use adw::prelude::*;
 use relm4::prelude::*;
 
 use crate::config;
-use crate::i18n::i18n;
+use crate::i18n::{i18n, i18n_f};
 
 use super::model::AppModel;
 use super::msg::AppMsg;
@@ -47,19 +47,27 @@ fn section_heading(text: &str) -> gtk::Label {
     label
 }
 
-/// The wordmark, the version chip, the one-line description and, in a
-/// beta build, the warning that it is one.
+/// The app icon, the wordmark, the version chip, the one-line description
+/// and, in a beta build, the warning that it is one.
 fn about_identity(page: &gtk::Box) {
-    // Identity block: the wordmark with the app icon beside it,
-    // wizard-style. Same Overlay-with-spacer cap as the wizard: a
+    // The app icon large over the name, as GNOME's About windows show it;
+    // the bundled one, so it is the same whatever the icon theme.
+    let icon = gtk::Image::from_icon_name(crate::APP_ID);
+    icon.set_pixel_size(128);
+    icon.set_halign(gtk::Align::Center);
+    icon.add_css_class("icon-dropshadow");
+    icon.set_accessible_role(gtk::AccessibleRole::Presentation);
+    page.append(&icon);
+
+    // The name under it. Same Overlay-with-spacer cap as the wizard: a
     // Picture's texture wins over both width requests and clamps.
     use crate::ui::wordmark::Wordmark;
     const ABOUT_WORDMARK: i32 = 180;
-    let wm_pic = crate::ui::wordmark::wordmark_picture_of(Wordmark::WithIcon, ABOUT_WORDMARK);
+    let wm_pic = crate::ui::wordmark::wordmark_picture_of(Wordmark::Name, ABOUT_WORDMARK);
     let wm_frame = gtk::Box::new(gtk::Orientation::Vertical, 0);
     wm_frame.set_size_request(
         ABOUT_WORDMARK,
-        crate::ui::wordmark::wordmark_height_of(Wordmark::WithIcon, f64::from(ABOUT_WORDMARK)),
+        crate::ui::wordmark::wordmark_height_of(Wordmark::Name, f64::from(ABOUT_WORDMARK)),
     );
     let wm = gtk::Overlay::new();
     wm.set_child(Some(&wm_frame));
@@ -114,7 +122,10 @@ fn about_info_rows(page: &gtk::Box, nav: &adw::NavigationView, sender: &Componen
 
     let notes_row = adw::ActionRow::builder()
         .title(i18n("Release notes"))
-        .subtitle(format!("What's new in {}", crate::VERSION))
+        .subtitle(i18n_f(
+            "What's new in {version}",
+            &[("version", crate::VERSION)],
+        ))
         .activatable(true)
         .build();
     notes_row.add_suffix(&gtk::Image::from_icon_name("go-next-symbolic"));
@@ -172,7 +183,7 @@ fn about_links(page: &gtk::Box) {
     ));
     // Tegami Mail is a modified version of Hylki; its authors are credited here.
     links.append(&mk_row(
-        "Hylki (original project)",
+        &i18n("Hylki (original project)"),
         "https://github.com/hyprlab/hylki",
     ));
     links.append(&mk_row(

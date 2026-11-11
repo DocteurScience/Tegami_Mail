@@ -32,6 +32,9 @@ msgstr ""
 msgid "Release notes"
 msgstr "Informacje o wydaniu"
 
+msgid "What's new in {version}"
+msgstr "Nowości w wersji {version}"
+
 msgid "Keyring setup help"
 msgstr "Pomoc w konfiguracji bazy kluczy"
 
@@ -47,6 +50,9 @@ msgstr "Zgłoś błąd lub prośbę o nową funkcję"
 
 msgid "Source code"
 msgstr "Kod źródłowy"
+
+msgid "Hylki (original project)"
+msgstr "Hylki (pierwotny projekt)"
 
 msgid "License (GNU AGPL v3)"
 msgstr "Licencja (GNU AGPL v3)"

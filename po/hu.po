@@ -33,6 +33,9 @@ msgstr ""
 msgid "Release notes"
 msgstr "Verzióinformáció"
 
+msgid "What's new in {version}"
+msgstr "A {version} újdonságai"
+
 msgid "Keyring setup help"
 msgstr "Segítség a kulcstartó beállításához"
 
@@ -48,6 +51,9 @@ msgstr "Hiba vagy funkciókérés bejelentése"
 
 msgid "Source code"
 msgstr "Forráskód"
+
+msgid "Hylki (original project)"
+msgstr "Hylki (eredeti projekt)"
 
 msgid "License (GNU AGPL v3)"
 msgstr "Licenc (GNU AGPL v3)"

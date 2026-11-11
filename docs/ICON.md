@@ -93,7 +93,8 @@ first make sure it draws the same there.
 4. Draw the symbolic (16 px, single colour) icon:
    `data/icons/hicolor/symbolic/apps/io.github.DocteurScience.TegamiMail-symbolic.svg`.
    Designer's brief: the envelope outline with the V flap, nothing else.
-5. Update the About dialog, the AppStream file
+5. Done (2026-11-11): no Hylki artwork is left; the About window shows the
+   icon above the name. Was: update the About dialog, the AppStream file
    (`data/io.github.DocteurScience.TegamiMail.metainfo.xml`) and the README
    artwork if they show the old icon, and credit the old Hylki artwork in
    [CREDITS.md](CREDITS.md) if any of it stays.

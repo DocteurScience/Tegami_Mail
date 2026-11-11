@@ -11,9 +11,9 @@ const WORDMARK_PNG: &[u8] = include_bytes!("../../data/welcome/wordmark-black.pn
 /// The same wordmark with white lettering, for a dark ground.
 const WORDMARK_DARK_PNG: &[u8] = include_bytes!("../../data/welcome/wordmark-white.png");
 
-/// The wordmark with the app icon beside it, for the About window:
-/// "Tegami Mail" set in Cantarell, dark or white, as an SVG on a 128x42
-/// box (the pixbuf loader tells the formats apart by their bytes).
+/// The name for the About window, under the app icon: "Tegami Mail" set
+/// in Cantarell, dark or white, as an SVG on a 128x42 box (the pixbuf
+/// loader tells the formats apart by their bytes).
 const ABOUT_WORDMARK_SVG: &[u8] = include_bytes!("../../data/about/wordmark-black.svg");
 
 const ABOUT_WORDMARK_DARK_SVG: &[u8] = include_bytes!("../../data/about/wordmark-white.svg");
@@ -23,9 +23,9 @@ const ABOUT_WORDMARK_DARK_SVG: &[u8] = include_bytes!("../../data/about/wordmark
 pub(crate) enum Wordmark {
     /// The script lettering alone (the carry-over notice).
     Plain,
-    /// The Cantarell lettering with the app icon beside it, dark or white
-    /// by scheme (the About window).
-    WithIcon,
+    /// The Cantarell lettering, dark or white by scheme (the About
+    /// window, under the app icon).
+    Name,
 }
 
 impl Wordmark {
@@ -33,8 +33,8 @@ impl Wordmark {
         match (self, dark) {
             (Wordmark::Plain, false) => WORDMARK_PNG,
             (Wordmark::Plain, true) => WORDMARK_DARK_PNG,
-            (Wordmark::WithIcon, false) => ABOUT_WORDMARK_SVG,
-            (Wordmark::WithIcon, true) => ABOUT_WORDMARK_DARK_SVG,
+            (Wordmark::Name, false) => ABOUT_WORDMARK_SVG,
+            (Wordmark::Name, true) => ABOUT_WORDMARK_DARK_SVG,
         }
     }
 
@@ -42,7 +42,7 @@ impl Wordmark {
     fn aspect(self) -> f64 {
         match self {
             Wordmark::Plain => 293.0 / 1024.0,
-            Wordmark::WithIcon => 42.0 / 128.0,
+            Wordmark::Name => 42.0 / 128.0,
         }
     }
 }
