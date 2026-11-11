@@ -177,6 +177,8 @@ impl Component for Preferences {
         let slots = model.mount_hosted_pages(&init, &sender);
         model.assemble_dialog(&widgets, &init, slots, &root, &sender);
         model.init_first_page(&init, &sender, &root);
+        // The dialog's own widgets are only in its tree once shown.
+        root.connect_map(|dialog| fit_view_switchers(dialog.upcast_ref()));
 
         tracing::debug!("preferences: built in {:?}", t_init.elapsed());
         // From here on a row's signal is the user's doing.
@@ -242,5 +244,28 @@ impl Component for Preferences {
                 self.on_change_signature_position(idx, sender)
             }
         }
+    }
+}
+
+/// Let each page's tab in the dialog's view switcher be as wide as its
+/// name rather than all as wide as the widest.
+///
+/// The `AdwViewSwitcher` lays its five tabs out at equal widths, and at
+/// the dialog's width "Confidentialité" (and longer names in other
+/// languages) was cut short while "Comptes" had room to spare. The dialog
+/// does not expose its switcher, and builds it only once shown: it is
+/// looked up by type then, and nothing happens if a later libadwaita lays
+/// it out otherwise.
+fn fit_view_switchers(widget: &gtk::Widget) {
+    if widget.type_().name() == "AdwViewSwitcher" {
+        if let Some(layout) = widget.layout_manager().and_downcast::<gtk::BoxLayout>() {
+            layout.set_homogeneous(false);
+        }
+        return;
+    }
+    let mut child = widget.first_child();
+    while let Some(c) = child {
+        fit_view_switchers(&c);
+        child = c.next_sibling();
     }
 }
