@@ -83,6 +83,15 @@
   <content_rating type="oars-1.1"/>
 
   <releases>
+    <release version="1.0.2" date="2026-11-11">
+      <description>
+        <p>GNOME Contacts in the snap.</p>
+        <ul>
+          <li>The snap reads and adds contacts, once its permissions are connected</li>
+          <li>Open GNOME Contacts works from the snap and the AppImage</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.0.1" date="2026-11-11">
       <description>
         <p>Fixes for the first release.</p>

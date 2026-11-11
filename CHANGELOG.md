@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.0.2 — 2026-11-11
+
+- **Snap and GNOME Contacts:** the address books are looked for in the
+  real home, read through a `personal-files` plug, and Evolution Data
+  Server reached through `contacts-service`; Open GNOME Contacts goes
+  through snapd's desktop launcher (`desktop-launch`). The README lists the
+  plugs to connect for a snap installed from a file.
+- **Open GNOME Contacts** activates the app over D-Bus first everywhere, so
+  an AppImage no longer starts it with its own libraries.
+- **Code documentation:** `cargo doc` builds without warnings; empty impl
+  blocks removed.
+
 ## 1.0.1 — 2026-11-11
 
 - **Application icon:** the first-run assistant and About showed the

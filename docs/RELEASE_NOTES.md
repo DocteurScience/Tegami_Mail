@@ -2,6 +2,19 @@
 
 Tegami Mail is an email client for GNOME, written in Rust with GTK 4 and libadwaita. It is a redesign of Hylki 1.46: the same engine, with a calmer, simpler interface. Privacy-first: no telemetry, remote content blocked by default, and credentials kept in the system keyring.
 
+## What's new in 1.0.2
+
+GNOME Contacts in the snap.
+
+### Fixed:
+
+- The snap finds the address books of GNOME Contacts and can add to them, once its permissions are connected (see the README)
+- Open GNOME Contacts starts the app from the snap and the AppImage too
+
+### Changed:
+
+- The code's own documentation builds without warnings
+
 ## What's new in 1.0.1
 
 Fixes for the first release.
