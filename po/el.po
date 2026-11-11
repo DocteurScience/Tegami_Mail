@@ -4247,6 +4247,10 @@ msgstr "Κατάργηση εγγραφής…"
 msgid "Opens the list's unsubscribe page in your browser"
 msgstr "Ανοίγει τη σελίδα διαγραφής από τη λίστα στο πρόγραμμα περιήγησής σας"
 
+#. An icon alone says nothing to a screen reader.
+msgid "Dismiss"
+msgstr "Απόρριψη"
+
 msgid "Console"
 msgstr "Κονσόλα"
 

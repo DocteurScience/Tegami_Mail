@@ -72,6 +72,8 @@ impl FactoryComponent for NotificationCard {
 
             gtk::Button {
                 set_icon_name: "window-close-symbolic",
+                // An icon alone says nothing to a screen reader.
+                set_tooltip_text: Some(i18n("Dismiss").as_str()),
                 set_valign: gtk::Align::Start,
                 add_css_class: "flat",
                 add_css_class: "circular",

@@ -4178,6 +4178,10 @@ msgstr "Unsubscribe…"
 msgid "Opens the list's unsubscribe page in your browser"
 msgstr "Megnyitja a lista leiratkozási oldalát a böngészőben"
 
+#. An icon alone says nothing to a screen reader.
+msgid "Dismiss"
+msgstr "Elvetés"
+
 msgid "Console"
 msgstr "Konzol"
 

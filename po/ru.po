@@ -4212,6 +4212,10 @@ msgstr "Отписаться…"
 msgid "Opens the list's unsubscribe page in your browser"
 msgstr "Открывает страницу отписки от рассылки в браузере"
 
+#. An icon alone says nothing to a screen reader.
+msgid "Dismiss"
+msgstr "Скрыть"
+
 msgid "Console"
 msgstr "Консоль"
 

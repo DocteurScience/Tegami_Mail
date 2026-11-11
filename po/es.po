@@ -4207,6 +4207,10 @@ msgid "Opens the list's unsubscribe page in your browser"
 msgstr ""
 "Abre en el navegador la página para cancelar la suscripción de la lista"
 
+#. An icon alone says nothing to a screen reader.
+msgid "Dismiss"
+msgstr "Descartar"
+
 msgid "Console"
 msgstr "Consola"
 

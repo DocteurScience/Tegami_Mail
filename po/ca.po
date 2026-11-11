@@ -4183,6 +4183,10 @@ msgstr "Dona'm de baixa…"
 msgid "Opens the list's unsubscribe page in your browser"
 msgstr "Obre la pàgina de baixa de la llista al navegador"
 
+#. An icon alone says nothing to a screen reader.
+msgid "Dismiss"
+msgstr "Descarta"
+
 msgid "Console"
 msgstr "Consola"
 

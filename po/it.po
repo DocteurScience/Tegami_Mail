@@ -4172,6 +4172,10 @@ msgstr "Disiscriviti…"
 msgid "Opens the list's unsubscribe page in your browser"
 msgstr "Apre la pagina di disiscrizione della lista nel browser"
 
+#. An icon alone says nothing to a screen reader.
+msgid "Dismiss"
+msgstr "Ignora"
+
 msgid "Console"
 msgstr "Console"
 
