@@ -3740,8 +3740,8 @@ msgstr[1] "Hivatkozások megosztása új üzenetben"
 
 msgid "{n} file · {size}"
 msgid_plural "{n} files · {size}"
-msgstr[0] "{n} fájl · {méret}"
-msgstr[1] "{n} fájlok · {méret}"
+msgstr[0] "{n} fájl · {size}"
+msgstr[1] "{n} fájl · {size}"
 
 msgid "Place the picture where the cursor is"
 msgid_plural "Place the pictures where the cursor is"
