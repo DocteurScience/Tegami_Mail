@@ -28,7 +28,7 @@ sudo apt install build-essential pkg-config libgtk-4-dev libadwaita-1-dev \
 
 ```sh
 git clone https://github.com/DocteurScience/Tegami_Mail.git
-cd tegami
+cd Tegami_Mail
 cargo build --release
 ./install.sh          # installs the binary, icon and .desktop file into ~/.local
 ./uninstall.sh        # removes them again (--purge also removes settings and the mail cache)
