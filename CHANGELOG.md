@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- **Translations complete:** Catalan, German, Greek, Hungarian, Italian,
+  Polish, Portuguese (Brazil and Portugal), Russian and Spanish now cover
+  every string, the ones added by the redesign included. They were written
+  without native reviewers; corrections are welcome.
 - **Software centre listing:** a shorter summary and a description of the
   app as it is now, translated in all eleven languages.
 - **About:** the app icon shows above the name, and "What's new in" and

@@ -88,9 +88,8 @@ msgstr "Konnte kein Konto speichern: {e}"
 msgid "Could not import account: {e}"
 msgstr "Konnte kein Konto importieren: {e}"
 
-#, fuzzy
 msgid "On This Computer is switched off"
-msgstr "Auf diesem Computer"
+msgstr "„Auf diesem Computer“ ist ausgeschaltet"
 
 msgid "Delete the attachment from the server?"
 msgstr "Den Anhang vom Server löschen?"
@@ -107,17 +106,16 @@ msgid "Delete"
 msgstr "Löschen"
 
 msgid "Sync now"
-msgstr ""
+msgstr "Jetzt synchronisieren"
 
 msgid "Add account…"
 msgstr "Konto hinzufügen…"
 
-#, fuzzy
 msgid "GNOME Online Accounts…"
-msgstr "GNOME Online Accounts"
+msgstr "GNOME Online Accounts…"
 
 msgid "Preferences"
-msgstr ""
+msgstr "Einstellungen"
 
 msgid "Print preview…"
 msgstr "Druckvorschau…"
@@ -212,9 +210,8 @@ msgstr "Drucken…"
 msgid "New Message"
 msgstr "Neue Nachricht"
 
-#, fuzzy
 msgid "Could not forward the message: {e}"
-msgstr "Nachricht konnte nicht gespeichert werden: {e}"
+msgstr "Die Nachricht konnte nicht weitergeleitet werden: {e}"
 
 msgid "On this computer"
 msgstr "Auf diesem Computer"
@@ -325,7 +322,7 @@ msgstr[0] "{n} Person"
 msgstr[1] "{n} Personen"
 
 msgid "Turn on Console mode in Troubleshooting, in the main menu"
-msgstr ""
+msgstr "Schalten Sie den Konsolenmodus unter „Fehlerbehebung“ im Hauptmenü ein"
 
 msgid "New message from template"
 msgstr "Aus Vorlage erstellen"
@@ -470,13 +467,11 @@ msgstr "Neuer Ordner"
 msgid "Create a new folder for this account."
 msgstr "Neuen Ordner für dieses Konto erstellen."
 
-#, fuzzy
 msgid "New subfolder"
-msgstr "Neuer Ordner"
+msgstr "Neuer Unterordner"
 
-#, fuzzy
 msgid "Create a folder inside {folder}."
-msgstr "Neuen Ordner für dieses Konto erstellen."
+msgstr "Einen Ordner in {folder} anlegen."
 
 msgid "Cancel"
 msgstr "Abbrechen"
@@ -637,15 +632,17 @@ msgid_plural ""
 "{n} contacts exported to {file}. Open the file in GNOME Contacts to keep "
 "them."
 msgstr[0] ""
+"{n} Kontakt nach {file} exportiert. Öffnen Sie die Datei in GNOME Kontakte, "
+"um ihn zu behalten."
 msgstr[1] ""
+"{n} Kontakte nach {file} exportiert. Öffnen Sie die Datei in GNOME Kontakte, "
+"um sie zu behalten."
 
-#, fuzzy
 msgid "Could not export the contacts: {e}"
-msgstr "Konnte Kontakte nicht exportieren: {e}"
+msgstr "Die Kontakte konnten nicht exportiert werden: {e}"
 
-#, fuzzy
 msgid "Export your Tegami Mail contacts"
-msgstr "Kontakte exportieren"
+msgstr "Ihre Tegami-Mail-Kontakte exportieren"
 
 msgid ""
 "The Tegami Mail address book holds {n} contact. Tegami Mail now uses the "
@@ -656,14 +653,19 @@ msgid_plural ""
 "address books GNOME provides: export them as a vCard file, then open the "
 "file in GNOME Contacts."
 msgstr[0] ""
+"Das Tegami-Mail-Adressbuch enthält {n} Kontakt. Tegami Mail verwendet jetzt "
+"die Adressbücher von GNOME: Exportieren Sie ihn als vCard-Datei und öffnen "
+"Sie die Datei dann in GNOME Kontakte."
 msgstr[1] ""
+"Das Tegami-Mail-Adressbuch enthält {n} Kontakte. Tegami Mail verwendet jetzt "
+"die Adressbücher von GNOME: Exportieren Sie sie als vCard-Datei und öffnen "
+"Sie die Datei dann in GNOME Kontakte."
 
 msgid "Later"
 msgstr "Später"
 
-#, fuzzy
 msgid "Export…"
-msgstr "Protokoll exportieren"
+msgstr "Exportieren…"
 
 msgid "Export contacts"
 msgstr "Kontakte exportieren"
@@ -672,7 +674,7 @@ msgid "Messages"
 msgstr "Nachrichten"
 
 msgid "Period"
-msgstr ""
+msgstr "Zeitraum"
 
 msgid "Custom…"
 msgstr "Benutzerdefiniert…"
@@ -686,24 +688,21 @@ msgstr "Filter"
 msgid "Clear all"
 msgstr "Alles löschen"
 
-#, fuzzy
 msgid "Filters, {n} active"
 msgid_plural "Filters, {n} active"
-msgstr[0] "Filter angewendet"
-msgstr[1] "Filter angewendet"
+msgstr[0] "Filter, {n} aktiv"
+msgstr[1] "Filter, {n} aktiv"
 
-#, fuzzy
 msgid "{count} message"
 msgid_plural "{count} messages"
-msgstr[0] "{n} Nachricht"
-msgstr[1] "{n} Nachrichten"
+msgstr[0] "{count} Nachricht"
+msgstr[1] "{count} Nachrichten"
 
-#, fuzzy
 msgid "Remove filter: {name}"
-msgstr "Tag {name} entfernen"
+msgstr "Filter entfernen: {name}"
 
 msgid "All"
-msgstr ""
+msgstr "Alle"
 
 msgid "Unread"
 msgstr "Ungelesen"
@@ -711,17 +710,14 @@ msgstr "Ungelesen"
 msgid "Starred"
 msgstr "Mit Stern markiert"
 
-#, fuzzy
 msgid "Custom period"
-msgstr "Benutzerdefinierte Reihenfolge"
+msgstr "Benutzerdefinierter Zeitraum"
 
-#, fuzzy
 msgid "Apply"
-msgstr "Jetzt anwenden"
+msgstr "Anwenden"
 
-#, fuzzy
 msgid "Choose a date"
-msgstr "Bild auswählen"
+msgstr "Datum wählen"
 
 msgid "From"
 msgstr "Von"
@@ -731,6 +727,8 @@ msgstr "An"
 
 msgid "Both dates are included. Leave a field empty to leave that side open."
 msgstr ""
+"Beide Daten sind eingeschlossen. Lassen Sie ein Feld leer, um diese Seite "
+"offen zu lassen."
 
 msgid "Date (Newest first)"
 msgstr "Datum (neueste zuerst)"
@@ -750,19 +748,17 @@ msgstr "Sortieren nach"
 msgid "Show"
 msgstr "Anzeigen"
 
-#, fuzzy
 msgid "Group into conversations"
-msgstr "Unterhaltungen"
+msgstr "In Unterhaltungen gruppieren"
 
 msgid "Message preview"
 msgstr "Vorschau der Nachricht"
 
 msgid "Avatars"
-msgstr ""
+msgstr "Avatare"
 
-#, fuzzy
 msgid "Tag: {name}"
-msgstr "Tag {name} hinzufügen"
+msgstr "Tag: {name}"
 
 msgid "Favorites"
 msgstr "Favoriten"
@@ -777,11 +773,10 @@ msgstr "Aktionen"
 msgid "Refresh or long-press for Status Bar"
 msgstr "Aktualisieren oder lange drücken, um die Statusleiste anzuzeigen"
 
-#, fuzzy
 msgid "Copying one message to On This Computer…"
 msgid_plural "Copying {n} messages to On This Computer…"
-msgstr[0] "Eine Nachricht wird in {account} verschoben…"
-msgstr[1] "{n} Nachrichten werden in {account} verschoben…"
+msgstr[0] "Eine Nachricht wird nach „Auf diesem Computer“ kopiert…"
+msgstr[1] "{n} Nachrichten werden nach „Auf diesem Computer“ kopiert…"
 
 msgid "Sending message…"
 msgstr "Nachricht wird gesendet…"
@@ -895,13 +890,11 @@ msgstr "Anhänge"
 msgid "Preview the highlighted attachment"
 msgstr "Vorschau des hervorgehobenen Anhangs anzeigen"
 
-#, fuzzy
 msgid "Previous or next in the attachment preview"
-msgstr "Vorheriges oder nächstes Element in der Galerie-Vorschau"
+msgstr "Vorheriger oder nächster Anhang in der Vorschau"
 
-#, fuzzy
 msgid "Close the attachment preview"
-msgstr "Galerie-Vorschau schließen"
+msgstr "Anhangsvorschau schließen"
 
 msgid "Everything else"
 msgstr "Weitere Aktionen"
@@ -919,7 +912,7 @@ msgid "Fullscreen on or off"
 msgstr "Vollbildmodus ein- oder ausschalten"
 
 msgid "Reading pane right of the list, below it, or off"
-msgstr ""
+msgstr "Lesebereich rechts der Liste, darunter oder aus"
 
 msgid "Message zoom in or out"
 msgstr "Nachrichtenansicht vergrößern oder verkleinern"
@@ -1063,17 +1056,14 @@ msgstr "Nachrichten durchsuchen"
 msgid "Show or hide the sidebar"
 msgstr "Seitenleiste ein- oder ausblenden"
 
-#, fuzzy
 msgid "Reading pane right"
-msgstr "Lesen"
+msgstr "Lesebereich rechts"
 
-#, fuzzy
 msgid "Reading pane below"
-msgstr "Lesen"
+msgstr "Lesebereich unten"
 
-#, fuzzy
 msgid "Reading pane off"
-msgstr "Lesen"
+msgstr "Lesebereich aus"
 
 msgid "Mail accounts"
 msgstr "E-Mail-Konten"
@@ -1115,11 +1105,10 @@ msgid "Your tags"
 msgstr "Eigene Tags"
 
 msgid "Help"
-msgstr ""
+msgstr "Hilfe"
 
-#, fuzzy
 msgid "Troubleshooting…"
-msgstr "Wird getestet…"
+msgstr "Fehlerbehebung…"
 
 msgid "New message instead"
 msgstr "Stattdessen neue Nachricht verfassen"
@@ -1163,21 +1152,18 @@ msgstr "Protokoll wurde nach {display} exportiert"
 msgid "Import settings"
 msgstr "Einstellungen importieren"
 
-#, fuzzy
 msgid "Replace your settings?"
-msgstr "Einstellungen exportieren"
+msgstr "Ihre Einstellungen ersetzen?"
 
-#, fuzzy
 msgid ""
 "The settings in {file} replace yours. Keep your accounts in place: removing "
 "them first deletes their passwords."
 msgstr ""
-"Ersetzt die aktuellen Konten und Einstellungen direkt. Konten vorher nicht "
-"löschen: Beim Entfernen werden auch deren Passwörter gelöscht."
+"Die Einstellungen in {file} ersetzen Ihre. Lassen Sie Ihre Konten bestehen: "
+"Werden sie vorher entfernt, werden ihre Passwörter gelöscht."
 
-#, fuzzy
 msgid "Replace"
-msgstr "Replied"
+msgstr "Ersetzen"
 
 msgid "Settings imported"
 msgstr "Einstellungen wurden importiert"
@@ -1194,13 +1180,11 @@ msgstr ""
 msgid "Restart Tegami Mail"
 msgstr "Tegami Mail neu starten"
 
-#, fuzzy
 msgid "Import failed"
-msgstr "Import fehlgeschlagen: {e}"
+msgstr "Import fehlgeschlagen"
 
-#, fuzzy
 msgid "Forward as attachment"
-msgstr "Hat Anhänge"
+msgstr "Als Anhang weiterleiten"
 
 msgid "Delete {n} messages"
 msgstr "{n} Nachrichten löschen"
@@ -1334,46 +1318,45 @@ msgstr ""
 msgid "Could not save the message: {e}"
 msgstr "Nachricht konnte nicht gespeichert werden: {e}"
 
-#, fuzzy
 msgid "Status bar"
-msgstr "Statusleiste ({n})"
+msgstr "Statusleiste"
 
 msgid "It shows what Tegami Mail is doing, and opens by itself for errors."
 msgstr ""
+"Sie zeigt, was Tegami Mail gerade tut, und öffnet sich bei Fehlern von "
+"selbst."
 
-#, fuzzy
 msgid "Show the status bar"
-msgstr "Statusleiste ausblenden"
+msgstr "Statusleiste anzeigen"
 
 msgid "At the top of the window"
-msgstr ""
+msgstr "Oben im Fenster"
 
 msgid "Diagnostics"
-msgstr ""
+msgstr "Diagnose"
 
-#, fuzzy
 msgid "Console mode"
-msgstr "Konsole"
+msgstr "Konsolenmodus"
 
 msgid "Offers a detailed activity console in the status bar."
-msgstr ""
+msgstr "Bietet eine ausführliche Aktivitätskonsole in der Statusleiste."
 
-#, fuzzy
 msgid "Open the console"
-msgstr "Online-Konten öffnen"
+msgstr "Konsole öffnen"
 
 msgid "Ctrl+Shift+C"
-msgstr ""
+msgstr "Strg+Umschalt+C"
 
-#, fuzzy
 msgid "Export the log…"
-msgstr "Protokoll exportieren"
+msgstr "Protokoll exportieren…"
 
 msgid "Saves recent activity in a file, to attach to a bug report."
 msgstr ""
+"Speichert die letzten Aktivitäten in einer Datei, um sie einem Fehlerbericht "
+"anzuhängen."
 
 msgid "Troubleshooting"
-msgstr ""
+msgstr "Fehlerbehebung"
 
 msgid "Move to {name}"
 msgstr "Nach {name} verschieben"
@@ -1466,16 +1449,14 @@ msgstr "Seitenleiste ausklappen"
 msgid "Collapse sidebar"
 msgstr "Seitenleiste einklappen"
 
-#, fuzzy
 msgid "New message (Ctrl+N)"
-msgstr "Nachrichten durchsuchen (Strg+F)"
+msgstr "Neue Nachricht (Strg+N)"
 
 msgid "Search messages (Ctrl+F)"
 msgstr "Nachrichten durchsuchen (Strg+F)"
 
-#, fuzzy
 msgid "Sort and view"
-msgstr "Datum und Uhrzeit"
+msgstr "Sortieren und anzeigen"
 
 msgid "Edit this message"
 msgstr "Diese Nachricht bearbeiten"
@@ -1486,9 +1467,8 @@ msgstr "Jetzt versuchen, diese Nachricht zu senden"
 msgid "Send all"
 msgstr "Alle senden"
 
-#, fuzzy
 msgid "Reply (Ctrl+R)"
-msgstr "Allen antworten"
+msgstr "Antworten (Strg+R)"
 
 #. The preview, not the print dialog: it shows what will come
 #. out and prints from there (#359).
@@ -1543,9 +1523,8 @@ msgstr "Vollständiger Pfad"
 msgid "{date} at {time}"
 msgstr "{date} um {time}"
 
-#, fuzzy
 msgid "{date}, {time}"
-msgstr "{date} um {time}"
+msgstr "{date}, {time}"
 
 msgid ""
 "Tegami Mail checks for new mail and shows notifications while its window is "
@@ -1920,116 +1899,104 @@ msgstr "Signatur abgelaufen"
 msgid "This message hasn't been checked."
 msgstr "Diese Nachricht wurde nicht überprüft."
 
-#, fuzzy
 msgid "Harper is not available for this computer."
-msgstr "Für dieses Konto ist kein Vorlagenordner verfügbar."
+msgstr "Harper ist für diesen Computer nicht verfügbar."
 
 msgid "Harper is not downloaded. Download it in Settings → Composing."
 msgstr ""
+"Harper ist nicht heruntergeladen. Laden Sie es unter Einstellungen → "
+"Verfassen herunter."
 
-#, fuzzy
 msgid "Harper could not be started: {e}"
-msgstr "Der Dienst konnte nicht erreicht werden: {e}"
+msgstr "Harper konnte nicht gestartet werden: {e}"
 
-#, fuzzy
 msgid "Harper's answer could not be read."
-msgstr "Die Antwort des Dienstes konnte nicht verarbeitet werden."
+msgstr "Die Antwort von Harper konnte nicht gelesen werden."
 
-#, fuzzy
 msgid "There is no folder to install to."
-msgstr "Kein Text zum Übersetzen"
+msgstr "Es gibt keinen Ordner für die Installation."
 
 msgid "There is not enough free space: {size} is needed."
-msgstr ""
+msgstr "Nicht genug freier Speicherplatz: {size} werden benötigt."
 
-#, fuzzy
 msgid "The download could not start: {e}"
-msgstr "Konnte den Entwurf nicht speichern: {e}"
+msgstr "Der Download konnte nicht gestartet werden: {e}"
 
 msgid "The download was cancelled."
-msgstr ""
+msgstr "Der Download wurde abgebrochen."
 
 msgid "The download stopped: {e}"
-msgstr ""
+msgstr "Der Download wurde unterbrochen: {e}"
 
 msgid "The downloaded file is not the one expected, so it was not installed."
 msgstr ""
+"Die heruntergeladene Datei ist nicht die erwartete und wurde daher nicht "
+"installiert."
 
-#, fuzzy
 msgid "The download could not be unpacked: {e}"
-msgstr "Der Dienst konnte nicht erreicht werden: {e}"
+msgstr "Der Download konnte nicht entpackt werden: {e}"
 
-#, fuzzy
 msgid "The files could not be written: {e}"
-msgstr "Die Datei konnte nicht geöffnet werden"
+msgstr "Die Dateien konnten nicht geschrieben werden: {e}"
 
 msgid "{n} MB"
-msgstr ""
+msgstr "{n} MB"
 
-#, fuzzy
 msgid "The server's answer could not be read."
-msgstr "Die Antwort des Dienstes konnte nicht verarbeitet werden."
+msgstr "Die Antwort des Servers konnte nicht gelesen werden."
 
 msgid "Nothing answers at that address. Check that the server is running."
 msgstr ""
+"Unter dieser Adresse antwortet nichts. Prüfen Sie, ob der Server läuft."
 
-#, fuzzy
 msgid "The server's name could not be found."
-msgstr "Die Antwort des Dienstes konnte nicht verarbeitet werden."
+msgstr "Der Name des Servers wurde nicht gefunden."
 
-#, fuzzy
 msgid "The server's address is not valid."
-msgstr "Die Adresse des Servers eingeben"
+msgstr "Die Adresse des Servers ist ungültig."
 
-#, fuzzy
 msgid "The server could not be reached: {e}"
-msgstr "Der Dienst konnte nicht erreicht werden: {e}"
+msgstr "Der Server war nicht erreichbar: {e}"
 
-#, fuzzy
 msgid "The server did not accept the username and key."
-msgstr "Der Server hat den Benutzernamen oder das Passwort nicht akzeptiert."
+msgstr "Der Server hat Benutzername und Schlüssel nicht akzeptiert."
 
-#, fuzzy
 msgid "The message is too long for the server."
-msgstr "Diese Nachricht überschreitet die maximale Länge für Übersetzungen."
+msgstr "Die Nachricht ist für den Server zu lang."
 
 msgid "Too many requests: try again in a moment."
 msgstr "Zu viele Anfragen: Etwas später erneut versuchen."
 
-#, fuzzy
 msgid "The server refused the request (error {code})."
-msgstr "Der Dienst verweigerte die Anfrage (Fehler {code})."
+msgstr "Der Server hat die Anfrage abgelehnt (Fehler {code})."
 
-#, fuzzy
 msgid "LanguageTool is not available for this computer."
-msgstr "Für dieses Konto ist kein Entwurfsordner verfügbar."
+msgstr "LanguageTool ist für diesen Computer nicht verfügbar."
 
 msgid "LanguageTool stopped unexpectedly."
-msgstr ""
+msgstr "LanguageTool wurde unerwartet beendet."
 
 msgid "LanguageTool is not downloaded. Download it in Settings → Composing."
 msgstr ""
+"LanguageTool ist nicht heruntergeladen. Laden Sie es unter Einstellungen → "
+"Verfassen herunter."
 
-#, fuzzy
 msgid "LanguageTool could not be started: {e}"
-msgstr "Der Dienst konnte nicht erreicht werden: {e}"
+msgstr "LanguageTool konnte nicht gestartet werden: {e}"
 
 msgid "LanguageTool could not be started."
-msgstr ""
+msgstr "LanguageTool konnte nicht gestartet werden."
 
-#, fuzzy
 msgid "LanguageTool took too long to start."
-msgstr "Zeitüberschreitung bei der Serverantwort."
+msgstr "LanguageTool brauchte zu lange zum Starten."
 
-#, fuzzy
 msgid "Enter the LanguageTool server's address in Settings → Composing."
 msgstr ""
-"Adresse des LibreTranslate-Servers unter „Einstellungen“ → „Übersetzung“ "
-"eintragen"
+"Geben Sie die Adresse des LanguageTool-Servers unter Einstellungen → "
+"Verfassen ein."
 
-#, fuzzy
 msgid "Enter the server's address first."
-msgstr "Die Adresse des Servers eingeben"
+msgstr "Geben Sie zuerst die Adresse des Servers ein."
 
 msgid ""
 "{reason} If your organization manages your account, an administrator can "
@@ -2081,9 +2048,8 @@ msgstr "Zu lang für die Übersetzung"
 msgid "Use this account in Tegami Mail"
 msgstr "Verwende dieses Konto in Tegami Mail"
 
-#, fuzzy
 msgid "Mail saved in local folders"
-msgstr "Alle Ordner"
+msgstr "In lokalen Ordnern gespeicherte E-Mails"
 
 msgid "GNOME Online Accounts"
 msgstr "GNOME Online Accounts"
@@ -2095,9 +2061,8 @@ msgstr ""
 msgid "Enable this account"
 msgstr "Konto aktivieren"
 
-#, fuzzy
 msgid "Forward to…"
-msgstr "Weiterleiten an"
+msgstr "Weiterleiten an…"
 
 msgid "forwards to {to}"
 msgstr "Weiterleitung an {to}"
@@ -2117,9 +2082,8 @@ msgstr "Aktion hinzufügen"
 msgid "Remove action"
 msgstr "Aktion entfernen"
 
-#, fuzzy
 msgid "Forward to (addresses, separated by commas)"
-msgstr "E-Mail-Adressen, kommagetrennt"
+msgstr "Weiterleiten an (Adressen, durch Kommas getrennt)"
 
 msgid "Move to"
 msgstr "Verschieben nach"
@@ -2194,7 +2158,7 @@ msgid "✗ SMTP: {e}"
 msgstr "✗ SMTP: {e}"
 
 msgid "Criteria"
-msgstr ""
+msgstr "Kriterien"
 
 msgid "All must match"
 msgstr "alle müssen zutreffen"
@@ -2202,23 +2166,20 @@ msgstr "alle müssen zutreffen"
 msgid "Any one may match"
 msgstr "eine Übereinstimmung genügt"
 
-#, fuzzy
 msgid "Add criterion"
-msgstr "Aktion hinzufügen"
+msgstr "Kriterium hinzufügen"
 
 msgid "Criterion options"
-msgstr ""
+msgstr "Optionen des Kriteriums"
 
-#, fuzzy
 msgid "Remove criterion"
-msgstr "Aktion entfernen"
+msgstr "Kriterium entfernen"
 
-#, fuzzy
 msgid "{field} contains"
-msgstr "enthält"
+msgstr "{field} enthält"
 
 msgid "{field} {match}"
-msgstr ""
+msgstr "{field} {match}"
 
 msgid "Automatic"
 msgstr "Automatisch"
@@ -2252,43 +2213,38 @@ msgstr ""
 "Fordert Zugriff bei Microsoft an. In einigen Organisationen ist hierfür die "
 "Genehmigung eines Administratiors erforderlich."
 
-#, fuzzy
 msgid "New account"
-msgstr "Konto hinzufügen"
+msgstr "Neues Konto"
 
-#, fuzzy
 msgid ""
 "Paused: Mail is switched off for this account in GNOME Settings → Online "
 "Accounts."
 msgstr ""
-"Pausiert: E-Mail ist für dieses Konto in den GNOME-Einstellungen deaktiviert"
+"Pausiert: Mail ist für dieses Konto in den GNOME-Einstellungen → Online-"
+"Konten ausgeschaltet."
 
 msgid "Off returns it to the import list. It stays in GNOME Online Accounts."
 msgstr ""
 "Beim Deaktivieren wird das Konto wieder in die Importliste verschoben – es "
 "verbleibt in GNOME-Online-Konten."
 
-#, fuzzy
 msgid "The password is kept in the system keyring, never in plain text."
 msgstr ""
-"Ihr Passwort wird im System-Schlüsselbund gespeichert, niemals im Klartext "
-"auf der Festplatte."
+"Das Passwort wird im Schlüsselbund des Systems aufbewahrt, nie im Klartext."
 
-#, fuzzy
 msgid ""
 "The certificate is for another name. If this server is the right one, turn "
 "on “Accept a certificate for another name” under Advanced and test again."
 msgstr ""
-"Das Zertifikat wurde für einen abweichenden Namen ausgestellt. Handelt es "
-"sich um den richtigen Server, oben „Zertifikat für abweichenden Namen "
-"akzeptieren“ aktivieren und erneut testen."
+"Das Zertifikat ist für einen anderen Namen ausgestellt. Wenn dieser Server "
+"der richtige ist, schalten Sie unter „Erweitert“ „Zertifikat für einen "
+"anderen Namen akzeptieren“ ein und testen Sie erneut."
 
 msgid "Connected: receiving and sending work."
-msgstr ""
+msgstr "Verbunden: Empfangen und Senden funktionieren."
 
-#, fuzzy
 msgid "The connection failed."
-msgstr "Verbindung fehlgeschlagen: {e}"
+msgstr "Die Verbindung ist fehlgeschlagen."
 
 msgid "From address"
 msgstr "E-Mail-Adresse des Absenders"
@@ -2360,7 +2316,7 @@ msgid "Account"
 msgstr "Konto"
 
 msgid "If"
-msgstr ""
+msgstr "Wenn"
 
 msgid "Separate alternatives with commas."
 msgstr "Alternativen durch Kommas trennen."
@@ -2368,12 +2324,11 @@ msgstr "Alternativen durch Kommas trennen."
 msgid "Advanced"
 msgstr "Erweitert"
 
-#, fuzzy
 msgid "Message body, Reply-To, tag, count unread mail"
-msgstr "Ungelesene Nachrichten zählen"
+msgstr "Nachrichtentext, Reply-To, Tag, ungelesene Mails zählen"
 
 msgid "Add a criterion on the body or Reply-To…"
-msgstr ""
+msgstr "Ein Kriterium für den Text oder Reply-To hinzufügen…"
 
 msgid "Tag with"
 msgstr "Tag mit"
@@ -2384,15 +2339,11 @@ msgstr "Keine"
 msgid "Count unread mail"
 msgstr "Ungelesene Nachrichten zählen"
 
-#, fuzzy
 msgid "Include the folder's unread mail in the unread counts"
-msgstr ""
-"Ungelesene Nachrichten dieses Ordners zum Zähler im Symbol im Infobereich "
-"hinzufügen"
+msgstr "Ungelesene Mails des Ordners in die Zähler einbeziehen"
 
-#, fuzzy
 msgid "Delete filter"
-msgstr "Ordner löschen…"
+msgstr "Filter löschen"
 
 msgid "Never"
 msgstr "Nie"
@@ -2420,57 +2371,48 @@ msgstr "Server"
 msgid "Port"
 msgstr "Port"
 
-#, fuzzy
 msgid "Import mail"
-msgstr "Alle importieren"
+msgstr "E-Mails importieren"
 
 msgid "Mail already here is not imported again."
-msgstr ""
+msgstr "Bereits vorhandene E-Mails werden nicht erneut importiert."
 
-#, fuzzy
 msgid "Evolution (Maildir)"
-msgstr "Evolution"
+msgstr "Evolution (Maildir)"
 
 msgid "Thunderbird (mbox)"
-msgstr ""
+msgstr "Thunderbird (mbox)"
 
-#, fuzzy
 msgid "Import mbox files"
-msgstr "Datei importieren…"
+msgstr "mbox-Dateien importieren"
 
-#, fuzzy
 msgid "Import maildir folders"
-msgstr "Import fehlgeschlagen: {e}"
+msgstr "Maildir-Ordner importieren"
 
-#, fuzzy
 msgid "{n} address"
 msgid_plural "{n} addresses"
-msgstr[0] "{n} Adressbuch"
-msgstr[1] "{n} Adressbücher"
+msgstr[0] "{n} Adresse"
+msgstr[1] "{n} Adressen"
 
-#, fuzzy
 msgid "{n} signature"
 msgid_plural "{n} signatures"
-msgstr[0] "Keine Signatur"
-msgstr[1] "Keine Signatur"
+msgstr[0] "{n} Signatur"
+msgstr[1] "{n} Signaturen"
 
 msgid "Key: {key}"
-msgstr ""
+msgstr "Schlüssel: {key}"
 
-#, fuzzy
 msgid "Local mail on this computer"
-msgstr "Auf diesem Computer"
+msgstr "Lokale E-Mails auf diesem Computer"
 
 msgid "Import from Thunderbird or Evolution…"
-msgstr ""
+msgstr "Aus Thunderbird oder Evolution importieren…"
 
-#, fuzzy
 msgid "E-mail account…"
-msgstr "E-Mail-Konto"
+msgstr "E-Mail-Konto…"
 
-#, fuzzy
 msgid "GNOME Online Account…"
-msgstr "GNOME Online Accounts"
+msgstr "GNOME-Online-Konto…"
 
 msgid "Signed in as {address}, not {email}."
 msgstr "Angemeldet als {address}, nicht als {email}."
@@ -2510,9 +2452,10 @@ msgstr "E-Mail-Konten aus GNOME-Einstellungen. Zum Verwenden aktivieren."
 msgid "Check GNOME Online Accounts for new accounts"
 msgstr "GNOME Online Accounts auf neue Konten prüfen"
 
-#, fuzzy
 msgid "Accounts added in GNOME Settings → Online Accounts appear here."
-msgstr "In GNOME Online-Konten hinzugefügt"
+msgstr ""
+"In den GNOME-Einstellungen → Online-Konten hinzugefügte Konten erscheinen "
+"hier."
 
 msgid "Open Online Accounts"
 msgstr "Online-Konten öffnen"
@@ -2522,13 +2465,15 @@ msgid ""
 "“Smart folders” section follows the unified inboxes; it appears only when "
 "there is at least one."
 msgstr ""
+"Zeigt die Nachrichten, die seinen Kriterien entsprechen. In der Seitenleiste "
+"folgt ein einklappbarer Abschnitt „Smart Folders“ auf die vereinten "
+"Posteingänge; er erscheint nur, wenn es mindestens einen gibt."
 
 msgid "Searching…"
 msgstr "Wird gesucht…"
 
-#, fuzzy
 msgid "Import tags from the servers…"
-msgstr "Vom Server löschen…"
+msgstr "Tags von den Servern importieren…"
 
 msgid "No new tags"
 msgstr "Keine neuen Tags"
@@ -2558,9 +2503,8 @@ msgstr "Alle importieren"
 msgid "{n} messages"
 msgstr "{n} Nachrichten"
 
-#, fuzzy
 msgid "{count} · {color}"
-msgstr "Akzentfarbe des Kontos"
+msgstr "{count} · {color}"
 
 msgid "Edit tag"
 msgstr "Tag bearbeiten"
@@ -2568,9 +2512,8 @@ msgstr "Tag bearbeiten"
 msgid "Remove tag"
 msgstr "Tag entfernen"
 
-#, fuzzy
 msgid "New tag…"
-msgstr "Tag hinzufügen…"
+msgstr "Neuer Tag…"
 
 msgid "Needs an app password, not your login password."
 msgstr "Benötigt ein App-Passwort anstelle des Anmeldepassworts."
@@ -2613,6 +2556,9 @@ msgid ""
 "Remove {name} from Tegami Mail? Its folders and the mail in them stay on "
 "this computer, in {dir}, and come back if it is added again."
 msgstr ""
+"{name} aus Tegami Mail entfernen? Seine Ordner und die darin enthaltenen E-"
+"Mails bleiben auf diesem Computer in {dir} und kehren zurück, wenn es erneut "
+"hinzugefügt wird."
 
 msgid "Edit HTML"
 msgstr "HTML bearbeiten"
@@ -2692,9 +2638,8 @@ msgstr "Im gemeinsamen Bereich"
 msgid "Folders"
 msgstr "Ordner"
 
-#, fuzzy
 msgid "Any"
-msgstr "Beliebiger Tag"
+msgstr "Beliebig"
 
 msgid "Reading"
 msgstr "Lesen"
@@ -2702,23 +2647,20 @@ msgstr "Lesen"
 msgid "Attachment"
 msgstr "Anhang"
 
-#, fuzzy
 msgid "With attachments"
-msgstr "Anhänge ausblenden"
+msgstr "Mit Anhängen"
 
 msgid "Any tag"
 msgstr "Beliebiger Tag"
 
-#, fuzzy
 msgid "Preview text, From address without Reply-To"
-msgstr "Von der Adresse, wenn kein Reply-To gesetzt ist"
+msgstr "Vorschautext, Absenderadresse ohne Reply-To"
 
 msgid "Add a criterion on the preview or Reply-To…"
-msgstr ""
+msgstr "Ein Kriterium für die Vorschau oder Reply-To hinzufügen…"
 
-#, fuzzy
 msgid "Delete smart folder"
-msgstr "Lösche Smart Folder…"
+msgstr "Smart Folder löschen"
 
 #. ---- Accounts (screen 26): the accounts themselves, listed by
 #. the accounts panel, then the rows to what organizes mail and to
@@ -2817,11 +2759,10 @@ msgstr ""
 "Übermittlung angezeigt."
 
 msgid "Links"
-msgstr ""
+msgstr "Links"
 
-#, fuzzy
 msgid "Two-step code, server behind Cloudflare"
-msgstr "Server steht hinter Cloudflare"
+msgstr "Zwei-Faktor-Code, Server hinter Cloudflare"
 
 msgid "Check connection"
 msgstr "Verbindung prüfen"
@@ -2919,15 +2860,12 @@ msgstr ""
 msgid "Connected as {who}."
 msgstr "Angemeldet als {who}."
 
-#, fuzzy
 msgid "Remove account"
-msgstr "Konto entfernen…"
+msgstr "Konto entfernen"
 
-#, fuzzy
 msgid "Files already uploaded and shared links stay active at the provider."
 msgstr ""
-"Bereits hochgeladene Dateien und gesendete Links bleiben auf dem Dienst des "
-"Anbieters aktiv."
+"Bereits hochgeladene Dateien und geteilte Links bleiben beim Anbieter aktiv."
 
 msgid "Choose an online account first."
 msgstr "Zuerst ein Online-Konto auswählen"
@@ -2980,17 +2918,14 @@ msgstr "Angemeldet als {who}. {terms}"
 msgid "Cloud storage"
 msgstr "Cloud-Speicher"
 
-#, fuzzy
 msgid ""
 "Upload large files to your online storage and send a link instead of the "
 "attachment. Supported services: Nextcloud, ownCloud, OpenCloud, OneDrive, "
 "Dropbox and Seafile."
 msgstr ""
-"Cloud-Speicheranbieter verbinden, um große Dateien anstelle eines Anhangs "
-"hochzuladen und zu teilen.\n"
-"\n"
-"Unterstützte Anbieter: Nextcloud, ownCloud, OpenCloud, OneDrive, Dropbox und "
-"Seafile."
+"Laden Sie große Dateien in Ihren Online-Speicher hoch und senden Sie einen "
+"Link statt des Anhangs. Unterstützte Dienste: Nextcloud, ownCloud, "
+"OpenCloud, OneDrive, Dropbox und Seafile."
 
 msgid "Cloud account"
 msgstr "Cloud-Konto"
@@ -3031,9 +2966,8 @@ msgstr "Befehlspalette"
 msgid "Type an action, a folder or a tag, or > for actions only"
 msgstr "Aktion, Ordner oder Tag eingeben (oder > nur für Aktionen)"
 
-#, fuzzy
 msgid "{kind} · {size}"
-msgstr "{n} Datei · {size}"
+msgstr "{kind} · {size}"
 
 msgid "The file was moved or deleted. Attach it again from where it is now."
 msgstr ""
@@ -3047,25 +2981,21 @@ msgid "Remove {name}"
 msgstr "{name} entfernen"
 
 msgid "Large: some servers will refuse it."
-msgstr ""
+msgstr "Groß: Manche Server lehnen das ab."
 
-#, fuzzy
 msgid "Send a link"
-msgstr "Link öffnen"
+msgstr "Einen Link senden"
 
-#, fuzzy
 msgid "Upload it to cloud storage and send a link instead"
-msgstr "In Cloud-Speicher hochladen und Link teilen"
+msgstr "Stattdessen in den Online-Speicher hochladen und einen Link senden"
 
-#, fuzzy
 msgid "{files} · {size}"
-msgstr "{n} Datei · {size}"
+msgstr "{files} · {size}"
 
-#, fuzzy
 msgid "{n} file"
 msgid_plural "{n} files"
-msgstr[0] "Tondatei"
-msgstr[1] "Tondatei"
+msgstr[0] "{n} Datei"
+msgstr[1] "{n} Dateien"
 
 msgid "{n} attachment"
 msgid_plural "{n} attachments"
@@ -3125,7 +3055,7 @@ msgstr ""
 #. was forgotten when the message contains one of them. Keep them
 #. specific: a common word would make it ask too often.
 msgid "attached, attachment, attachments, enclosed"
-msgstr ""
+msgstr "angehängt, anhang, anhänge, anlage, beigefügt"
 
 msgid "Rich text"
 msgstr "Formatierter Text"
@@ -3146,9 +3076,8 @@ msgstr ""
 "Zoomstufe der Bildschirmanzeige (betrifft nicht die gesendete Nachricht). "
 "Ein Klick hierauf oder Strg+0 stellt die Standardgröße (100 %) wieder her."
 
-#, fuzzy
 msgid "Format"
-msgstr "Normaler Text"
+msgstr "Format"
 
 msgid "Switch to plain text?"
 msgstr "Zu reinem Text wechseln?"
@@ -3191,16 +3120,14 @@ msgstr "Weiter bearbeiten"
 msgid "Discard"
 msgstr "Verwerfen"
 
-#, fuzzy
 msgid "Sign with OpenPGP"
-msgstr "Mit eigenem OpenPGP-Schlüssel signieren"
+msgstr "Mit OpenPGP signieren"
 
 msgid "Sign with your OpenPGP key"
 msgstr "Mit eigenem OpenPGP-Schlüssel signieren"
 
-#, fuzzy
 msgid "Encrypt with OpenPGP"
-msgstr "Mit OpenPGP verschlüsselt"
+msgstr "Mit OpenPGP verschlüsseln"
 
 msgid "Encrypt with OpenPGP to every recipient's key"
 msgstr "Mit OpenPGP für jeden Empfängerschlüssel verschlüsseln"
@@ -3212,9 +3139,8 @@ msgid "Not every mail app sends one."
 msgstr ""
 "Nicht jede E-Mail-Anwendung unterstützt das Senden von Lesebestätigungen."
 
-#, fuzzy
 msgid "Check spelling"
-msgstr "Rechtschreibung"
+msgstr "Rechtschreibung prüfen"
 
 msgid "Spelling language"
 msgstr "Sprache für Rechtschreibprüfung"
@@ -3229,7 +3155,7 @@ msgstr "Diesen Entwurf in den Papierkorb verschieben"
 #. "Replying and composing"): it says what it adds where "More"
 #. left it to guesswork. Reply-To comes with them.
 msgid "Cc / Bcc"
-msgstr ""
+msgstr "Cc / Bcc"
 
 msgid "Show Cc, Bcc and Reply-To"
 msgstr "Cc, Bcc und Reply-To anzeigen"
@@ -3243,9 +3169,8 @@ msgstr "Cc"
 msgid "Bcc"
 msgstr "Bcc"
 
-#, fuzzy
 msgid "Reply to {name}"
-msgstr "Nach {name} verschieben"
+msgstr "{name} antworten"
 
 msgid ""
 "There is no OpenPGP key of your own for {addr}. Generate one under Settings, "
@@ -3265,21 +3190,20 @@ msgstr ""
 msgid "Cannot send with OpenPGP"
 msgstr "Kann nicht mit OpenPGP senden"
 
-#, fuzzy
 msgid "Send without an attachment?"
-msgstr "Als normalen Anhang senden"
+msgstr "Ohne Anhang senden?"
 
 msgid ""
 "Your message mentions an attachment (“{word}”), but no file is attached."
 msgstr ""
+"Ihre Nachricht erwähnt einen Anhang („{word}“), aber es ist keine Datei "
+"angehängt."
 
-#, fuzzy
 msgid "Send anyway"
-msgstr "Jetzt senden"
+msgstr "Trotzdem senden"
 
-#, fuzzy
 msgid "Attach a file…"
-msgstr "Dateien anhängen"
+msgstr "Datei anhängen…"
 
 msgid "An attachment is missing"
 msgstr "Ein Anhang fehlt"
@@ -3292,17 +3216,14 @@ msgstr ""
 "verschoben oder gelöscht. Die Datei entfernen oder am neuen Speicherort "
 "erneut anhängen."
 
-#, fuzzy
 msgid "Choose the sending account"
-msgstr "Zuerst ein Online-Konto auswählen"
+msgstr "Sendekonto wählen"
 
-#, fuzzy
 msgid "Manage accounts…"
-msgstr "GNOME Online Accounts"
+msgstr "Konten verwalten…"
 
-#, fuzzy
 msgid "Send from"
-msgstr "Jetzt senden"
+msgstr "Senden von"
 
 msgid "Check the address"
 msgstr "Adresse überprüfen"
@@ -3358,20 +3279,17 @@ msgstr "Zuerst Text eingeben oder den zu übersetzenden Text auswählen."
 msgid "Could not translate"
 msgstr "Übersetzung nicht möglich"
 
-#, fuzzy
 msgid "Draft saved at {time}"
-msgstr "{date} um {time}"
+msgstr "Entwurf um {time} gespeichert"
 
-#, fuzzy
 msgid "Send the message"
-msgstr "Die Nachricht speichern?"
+msgstr "Nachricht senden"
 
 msgid "Send"
 msgstr "Senden"
 
-#, fuzzy
 msgid "More actions"
-msgstr "Wischaktionen"
+msgstr "Weitere Aktionen"
 
 msgid "Download password for {name}: {password}"
 msgstr "Download-Passwort für {name}: {password}"
@@ -3433,7 +3351,7 @@ msgid "First level"
 msgstr "Oberste Ebene"
 
 msgid "Encryption, port, search base and scope"
-msgstr ""
+msgstr "Verschlüsselung, Port, Suchbasis und Bereich"
 
 msgid "Leave empty for a directory that needs no sign-in."
 msgstr ""
@@ -3568,15 +3486,14 @@ msgid "Contacts"
 msgstr "Kontakte"
 
 msgid "Books"
-msgstr ""
+msgstr "Adressbücher"
 
-#, fuzzy
 msgid ""
 "Where contacts come from for suggestions, sender pictures and filters. A "
 "book switched off is ignored by Tegami Mail."
 msgstr ""
-"Quelle für Kontakte, die Vorschläge des Editors, Absenderbilder und Filter. "
-"Beim Deaktivieren wird diese in Tegami Mail nicht mehr verwendet."
+"Woher Kontakte für Vorschläge, Absenderbilder und Filter kommen. Ein "
+"ausgeschaltetes Adressbuch wird von Tegami Mail ignoriert."
 
 msgid "Look again for address books"
 msgstr "Look again for address books"
@@ -3599,26 +3516,23 @@ msgstr "Neue Kontakte speichern in"
 msgid "Unless another is picked when the contact is made."
 msgstr "Falls bei der Kontakterstellung keine andere Auswahl getroffen wird."
 
-#, fuzzy
 msgid "Open Contacts"
-msgstr "GNOME Kontakte öffnen"
+msgstr "Kontakte öffnen"
 
 msgid "To add Google or Microsoft 365."
-msgstr ""
+msgstr "Um Google oder Microsoft 365 hinzuzufügen."
 
 msgid "Looking for address books on {name}…"
 msgstr "Nach Adressbüchern auf {name} suchen…"
 
-#, fuzzy
 msgid "Attach to message"
-msgstr "An neue Nachricht anhängen"
+msgstr "An Nachricht anhängen"
 
 msgid "Insert in text"
 msgstr "In Text einfügen"
 
-#, fuzzy
 msgid "Upload and share a link"
-msgstr "In Cloud-Speicher hochladen und Link teilen"
+msgstr "Hochladen und Link teilen"
 
 msgid "Attach to new message"
 msgstr "An neue Nachricht anhängen"
@@ -3795,13 +3709,11 @@ msgstr "Heute"
 msgid "Last 7 days"
 msgstr "Letzte 7 Tage"
 
-#, fuzzy
 msgid "Last 30 days"
-msgstr "Letzte 7 Tage"
+msgstr "Letzte 30 Tage"
 
-#, fuzzy
 msgid "This year"
-msgstr "Dieser Ordner"
+msgstr "Dieses Jahr"
 
 msgid "{from} to {to}"
 msgstr "{from} bis {to}"
@@ -3864,11 +3776,10 @@ msgstr "Zurückgestellt bis {when}"
 msgid "In {folder}"
 msgstr "In {folder}"
 
-#, fuzzy
 msgid "{n} more tag: {names}"
 msgid_plural "{n} more tags: {names}"
-msgstr[0] "Tag {name} entfernen"
-msgstr[1] "Tag {name} entfernen"
+msgstr[0] "{n} weiterer Tag: {names}"
+msgstr[1] "{n} weitere Tags: {names}"
 
 msgid "Last 14 days"
 msgstr "Letzte 14 Tage"
@@ -3956,9 +3867,8 @@ msgstr "Zu Kontakten hinzufügen"
 msgid "Double-click to open in a new window"
 msgstr "Doppelklicken, um in einem neuen Fenster zu öffnen"
 
-#, fuzzy
 msgid "To: {names}"
-msgstr "Tag {name} hinzufügen"
+msgstr "An: {names}"
 
 msgid "Show recipients"
 msgstr "Empfänger anzeigen"
@@ -3969,13 +3879,12 @@ msgstr "Klicken zum Öffnen der Nachricht"
 #. One sentence with both parts, so a language can order them as it
 #. needs; each count is its own plural.
 msgid "{messages} · {participants}"
-msgstr ""
+msgstr "{messages} · {participants}"
 
-#, fuzzy
 msgid "{n} participant"
 msgid_plural "{n} participants"
-msgstr[0] "{n} Empfänger"
-msgstr[1] "{n} Empfänger"
+msgstr[0] "{n} Teilnehmer"
+msgstr[1] "{n} Teilnehmer"
 
 msgid "Repeats daily"
 msgstr "Wiederholt sich täglich"
@@ -4106,11 +4015,10 @@ msgid "Translate"
 msgstr "Übersetzen"
 
 msgid "Open with…"
-msgstr ""
+msgstr "Öffnen mit…"
 
-#, fuzzy
 msgid "Save as…"
-msgstr "Alle speichern…"
+msgstr "Speichern unter…"
 
 msgid "Save all…"
 msgstr "Alle speichern…"
@@ -4223,12 +4131,11 @@ msgstr "Die Vorlage selbst bearbeiten"
 msgid "Start a new message from a copy of the template"
 msgstr "Kopie der Vorlage als neue Nachricht verwenden"
 
-#, fuzzy
 msgid "{size} in total"
-msgstr "{shown} von {total}"
+msgstr "{size} insgesamt"
 
 msgid "Executable file: open it only if you trust it."
-msgstr ""
+msgstr "Ausführbare Datei: Öffnen Sie sie nur, wenn Sie ihr vertrauen."
 
 msgid "me"
 msgstr "ich"
@@ -4369,15 +4276,13 @@ msgstr ""
 "Nachrichten entschlüsselt. Der öffentliche Schlüsselteil kann an Kontakte "
 "weitergegeben werden."
 
-#, fuzzy
 msgid "Correspondents’ keys"
-msgstr "Beteiligte"
+msgstr "Schlüssel der Korrespondenten"
 
-#, fuzzy
 msgid "Check the fingerprint with its owner before trusting a key."
 msgstr ""
-"Die Schlüssel zum Verschlüsseln und Verifizieren von Signaturen. Der "
-"Fingerabdruck ist zuvor mit der Person abzugleichen."
+"Prüfen Sie den Fingerabdruck mit dem Besitzer, bevor Sie einem Schlüssel "
+"vertrauen."
 
 msgid "Search by name, address or key ID"
 msgstr "Nach Name, Adresse oder ID suchen"
@@ -4385,13 +4290,12 @@ msgstr "Nach Name, Adresse oder ID suchen"
 msgid "No keys from other people yet."
 msgstr "Noch keine Schlüssel von anderen Leuten."
 
-#, fuzzy
 msgid ""
 "Uses the GnuPG {version} keyring, the same as the gpg command and other "
 "applications."
 msgstr ""
-"Derselbe Schlüsselbund, der vom gpg-Befehl und anderen E-Mail-Anwendungen "
-"verwendet wird."
+"Verwendet den Schlüsselbund von GnuPG {version}, denselben wie der Befehl "
+"gpg und andere Anwendungen."
 
 msgid ""
 "GnuPG was not found. Install the gnupg package to read encrypted mail and "
@@ -4409,13 +4313,11 @@ msgstr "Konnte den Schlüssel nicht generieren: {e}"
 msgid "No key found: {e}"
 msgstr "Kein Schlüssel gefunden: {e}"
 
-#, fuzzy
 msgid "Import a key…"
-msgstr "Schlüssel importieren"
+msgstr "Schlüssel importieren…"
 
-#, fuzzy
 msgid "Generate a key…"
-msgstr "Schlüssel erzeugen"
+msgstr "Schlüssel erzeugen…"
 
 msgid "Fetch by address…"
 msgstr "Nach Adresse abrufen…"
@@ -4534,9 +4436,8 @@ msgstr[1] "{n} Schlüssel importiert."
 msgid "That key was already in your keyring."
 msgstr "Dieser Schlüssel war bereits in deinem Schlüsselring."
 
-#, fuzzy
 msgid "Follow the system"
-msgstr "Systemeinstellung verwenden"
+msgstr "System folgen"
 
 msgid "Light"
 msgstr "Hell"
@@ -4559,78 +4460,70 @@ msgstr "Alle 15 Minuten"
 msgid "Every 30 minutes"
 msgstr "Alle 30 Minuten"
 
-#, fuzzy
 msgid "Downloading: {done} of {total}"
-msgstr "Ordner {done} von {total}"
+msgstr "Herunterladen: {done} von {total}"
 
-#, fuzzy
 msgid "Not available for this computer."
-msgstr "Für dieses Konto ist kein Entwurfsordner verfügbar."
+msgstr "Für diesen Computer nicht verfügbar."
 
-#, fuzzy
 msgid "Version {version}, on this computer."
-msgstr "Tegami Mail, auf diesem Computer"
+msgstr "Version {version}, auf diesem Computer."
 
 msgid "Not downloaded yet. The download is {size}."
-msgstr ""
+msgstr "Noch nicht heruntergeladen. Der Download ist {size} groß."
 
 msgid "Download"
 msgstr "Herunterladen"
 
-#, fuzzy
 msgid "The files could not be removed."
-msgstr "Die Datei konnte nicht geöffnet werden"
+msgstr "Die Dateien konnten nicht entfernt werden."
 
 msgid "The download stopped unexpectedly."
-msgstr ""
+msgstr "Der Download wurde unerwartet unterbrochen."
 
 msgid "Grammar"
-msgstr ""
+msgstr "Grammatik"
 
 msgid "Check grammar and style"
-msgstr ""
+msgstr "Grammatik und Stil prüfen"
 
-#, fuzzy
 msgid "Right-click a marked phrase for suggestions."
-msgstr "Korrekturvorschläge per Rechtsklick auf das jeweilige Wort anzeigen."
+msgstr ""
+"Klicken Sie mit der rechten Maustaste auf eine markierte Stelle für "
+"Vorschläge."
 
-#, fuzzy
 msgid "Checker"
-msgstr "Prüfen"
+msgstr "Prüfprogramm"
 
 msgid "Harper"
-msgstr ""
+msgstr "Harper"
 
-#, fuzzy
 msgid "LanguageTool"
-msgstr "Sprache"
+msgstr "LanguageTool"
 
-#, fuzzy
 msgid "LanguageTool server"
-msgstr "Sprachen"
+msgstr "LanguageTool-Server"
 
 msgid "English only. Nothing leaves this computer."
-msgstr ""
+msgstr "Nur Englisch. Nichts verlässt diesen Computer."
 
 msgid "Multi-language support. Nothing leaves this computer. Uses 1GB of RAM"
-msgstr ""
+msgstr "Mehrsprachig. Nichts verlässt diesen Computer. Belegt 1 GB RAM"
 
-#, fuzzy
 msgid "What you write is sent to the server as you type."
-msgstr "Dieser Ordner ist nicht auf dem Server vorhanden"
+msgstr "Was Sie schreiben, wird beim Tippen an den Server gesendet."
 
 msgid "Username (LanguageTool Premium)"
-msgstr ""
+msgstr "Benutzername (LanguageTool Premium)"
 
 msgid "API key (LanguageTool Premium)"
-msgstr ""
+msgstr "API-Schlüssel (LanguageTool Premium)"
 
 msgid "Check the settings"
 msgstr "Einstellungen prüfen"
 
-#, fuzzy
 msgid "Sends a test sentence to the server."
-msgstr "Keine Verbindung zum Server möglich."
+msgstr "Sendet einen Testsatz an den Server."
 
 msgid "Check"
 msgstr "Prüfen"
@@ -4639,10 +4532,10 @@ msgid "Checking…"
 msgstr "Wird geprüft…"
 
 msgid "The check stopped unexpectedly."
-msgstr ""
+msgstr "Die Prüfung wurde unerwartet abgebrochen."
 
 msgid "It works: {server} answered."
-msgstr ""
+msgstr "Es funktioniert: {server} hat geantwortet."
 
 msgid "Account of the current folder"
 msgstr "Konto des aktuellen Ordners"
@@ -4684,26 +4577,21 @@ msgstr ""
 "Konten, Einstellungen, Filter, Tags und Layout in einer Datei. Passwörter "
 "und OpenPGP-Schlüssel sind nicht enthalten."
 
-#, fuzzy
 msgid "Saves everything in one file."
-msgstr ""
-"Speichert alle Kontakte des Tegami Mail-Adressbuchs in einer .vcf-Datei."
+msgstr "Speichert alles in einer Datei."
 
-#, fuzzy
 msgid "Import settings…"
-msgstr "Einstellungen importieren"
+msgstr "Einstellungen importieren…"
 
-#, fuzzy
 msgid ""
 "Replaces your settings. Keep your accounts in place: removing them first "
 "deletes their passwords."
 msgstr ""
-"Ersetzt die aktuellen Konten und Einstellungen direkt. Konten vorher nicht "
-"löschen: Beim Entfernen werden auch deren Passwörter gelöscht."
+"Ersetzt Ihre Einstellungen. Lassen Sie Ihre Konten bestehen: Werden sie "
+"vorher entfernt, werden ihre Passwörter gelöscht."
 
-#, fuzzy
 msgid "When a message is opened."
-msgstr "Stattdessen neue Nachricht verfassen"
+msgstr "Wenn eine Nachricht geöffnet wird."
 
 msgid "When displayed"
 msgstr "Wenn angezeigt"
@@ -4714,32 +4602,29 @@ msgstr "Nach zwei Sekunden"
 msgid "Newest message first"
 msgstr "Neueste Nachricht zuerst"
 
-#, fuzzy
 msgid "In a conversation."
-msgstr "Unterhaltung mit Stern markieren"
+msgstr "In einer Unterhaltung."
 
-#, fuzzy
 msgid "Confirm deleting a conversation"
-msgstr "Unterhaltung löschen"
+msgstr "Löschen einer Unterhaltung bestätigen"
 
 msgid "Swipe to archive or delete"
-msgstr ""
+msgstr "Wischen zum Archivieren oder Löschen"
 
 msgid "For touch screens and touchpads."
-msgstr ""
+msgstr "Für Touchscreens und Touchpads."
 
 msgid "Desktop notifications"
 msgstr "Desktop-Benachrichtigungen"
 
-#, fuzzy
 msgid "While the window is in the background."
-msgstr "Für neue E-Mails und Fehler, während das Fenster im Hintergrund läuft"
+msgstr "Während das Fenster im Hintergrund ist."
 
 msgid "Show sender and subject"
 msgstr "Absender und Betreff anzeigen"
 
 msgid "Off, the notification only says “New message”."
-msgstr ""
+msgstr "Wenn aus, sagt die Benachrichtigung nur „Neue Nachricht“."
 
 msgid "Read receipts"
 msgstr "Lesebestätigungen"
@@ -4749,9 +4634,8 @@ msgstr ""
 "Wenn eine E-Mail geöffnet wird, für die eine Lesebestätigung angefordert "
 "wurde"
 
-#, fuzzy
 msgid "Check for new messages"
-msgstr "Auf neue Nachrichten prüfen"
+msgstr "Nach neuen Nachrichten suchen"
 
 msgid "Instant new mail (push)"
 msgstr "Neue Nachrichten sofort empfangen (Push)"
@@ -4765,13 +4649,15 @@ msgstr "Stil"
 
 msgid ""
 "Follows the system by default. The accent colour also comes from the system."
-msgstr ""
+msgstr "Folgt standardmäßig dem System. Auch die Akzentfarbe kommt vom System."
 
 msgid "Keep running in the background"
 msgstr "Im Hintergrund weiterlaufen"
 
 msgid "Closing the window keeps Tegami Mail running for notifications."
 msgstr ""
+"Nach dem Schließen des Fensters läuft Tegami Mail für Benachrichtigungen "
+"weiter."
 
 msgid "Start at login"
 msgstr "Bei Anmeldung starten"
@@ -4779,9 +4665,8 @@ msgstr "Bei Anmeldung starten"
 msgid "Single-key shortcuts"
 msgstr "Einzeltasten-Kürzel"
 
-#, fuzzy
 msgid "Ctrl+? shows them all."
-msgstr "Strg+0 setzt auf den Standardwert zurück."
+msgstr "Strg+? zeigt sie alle."
 
 msgid "Gmail keys"
 msgstr "Gmail-Tastenkürzel"
@@ -4794,9 +4679,8 @@ msgstr ""
 msgid "Keep downloaded mail"
 msgstr "Behalte heruntergeladene Nachricht"
 
-#, fuzzy
 msgid "On this computer, for reading offline."
-msgstr "Auf diesem Computer"
+msgstr "Auf diesem Computer, zum Offline-Lesen."
 
 msgid "Always"
 msgstr "Immer"
@@ -4810,9 +4694,8 @@ msgstr "90 Tage"
 msgid "30 days"
 msgstr "30 Tage"
 
-#, fuzzy
 msgid "Large attachments"
-msgstr "Hat Anhänge"
+msgstr "Große Anhänge"
 
 msgid "Ask each time"
 msgstr "Jedes Mal fragen"
@@ -4823,40 +4706,35 @@ msgstr "Trotzdem anhängen"
 msgid "Upload to cloud storage and link them"
 msgstr "In Cloud-Speicher hochladen und verlinken"
 
-#, fuzzy
 msgid "Remote content"
-msgstr "Externe Inhalte anzeigen"
+msgstr "Externe Inhalte"
 
-#, fuzzy
 msgid "Images and remote content"
-msgstr "Externe Inhalte immer laden"
+msgstr "Bilder und externe Inhalte"
 
-#, fuzzy
 msgid "Remote content can tell the sender when and from where you read."
 msgstr ""
-"Externe Inhalte können dem Absender verraten, wann und wo eine Nachricht "
-"gelesen wird."
+"Externe Inhalte können dem Absender verraten, wann und von wo Sie lesen."
 
 msgid "Ask"
-msgstr ""
+msgstr "Nachfragen"
 
-#, fuzzy
 msgid "Sender photos and logos"
-msgstr "Schriftarten und Farben des Absenders anzeigen"
+msgstr "Absenderfotos und -logos"
 
 msgid ""
 "Gravatar and website logos: the sender’s address is sent to these services."
 msgstr ""
+"Gravatar und Website-Logos: Die Adresse des Absenders wird an diese Dienste "
+"gesendet."
 
-#, fuzzy
 msgid "Answer read-receipt requests"
-msgstr "Lesebestätigung steht noch aus"
+msgstr "Anfragen nach Lesebestätigungen beantworten"
 
-#, fuzzy
 msgid "A receipt tells the sender you opened the message."
 msgstr ""
-"Eine Lesebestätigung informiert die absendende Person darüber, wann die "
-"Nachricht geöffnet wurde."
+"Eine Bestätigung teilt dem Absender mit, dass Sie die Nachricht geöffnet "
+"haben."
 
 msgid "Other font…"
 msgstr "Andere Schriftart…"
@@ -4894,27 +4772,22 @@ msgstr "PDF konnte nicht gespeichert werden: {error}"
 msgid "Edit"
 msgstr "Bearbeiten"
 
-#, fuzzy
 msgid "{n} quoted message"
 msgid_plural "{n} quoted messages"
-msgstr[0] "{n} ungelesene Nachricht"
-msgstr[1] "{n} ungelesene Nachrichten"
+msgstr[0] "{n} zitierte Nachricht"
+msgstr[1] "{n} zitierte Nachrichten"
 
-#, fuzzy
 msgid "Conversation history"
-msgstr "Unterhaltungen"
+msgstr "Verlauf der Unterhaltung"
 
-#, fuzzy
 msgid "Hide history"
-msgstr "Ordner ausblenden"
+msgstr "Verlauf ausblenden"
 
-#, fuzzy
 msgid "Show history"
-msgstr "Nur anzeigen"
+msgstr "Verlauf anzeigen"
 
-#, fuzzy
 msgid "Show previous message"
-msgstr "Vorherige Nachricht"
+msgstr "Vorherige Nachricht anzeigen"
 
 msgid "Sans serif"
 msgstr "Serifenlos"
@@ -4926,10 +4799,10 @@ msgid "Monospace"
 msgstr "Feste Breite"
 
 msgid "Grammar check failed: {error}"
-msgstr ""
+msgstr "Grammatikprüfung fehlgeschlagen: {error}"
 
 msgid "No suggestions"
-msgstr ""
+msgstr "Keine Vorschläge"
 
 msgid "Normal"
 msgstr "Normaler Text"
@@ -5060,13 +4933,11 @@ msgstr "Konto entfernen…"
 msgid "Follow settings: {sort}"
 msgstr "Einstellung übernehmen: {sort}"
 
-#, fuzzy
 msgid "Sync this folder"
-msgstr "Dieser Ordner"
+msgstr "Diesen Ordner synchronisieren"
 
-#, fuzzy
 msgid "New subfolder…"
-msgstr "Neuer Ordner…"
+msgstr "Neuer Unterordner…"
 
 msgid "Rename…"
 msgstr "Umbenennen…"
@@ -5092,9 +4963,8 @@ msgstr "Papierkorb leeren…"
 msgid "Empty junk…"
 msgstr "Spam-Ordner leeren…"
 
-#, fuzzy
 msgid "Delete folder"
-msgstr "Ordner löschen…"
+msgstr "Ordner löschen"
 
 msgid "Edit tag…"
 msgstr "Tag bearbeiten…"
@@ -5133,66 +5003,58 @@ msgid "Delete smart folder…"
 msgstr "Lösche Smart Folder…"
 
 msgid "Blue"
-msgstr ""
+msgstr "Blau"
 
 msgid "Green"
-msgstr ""
+msgstr "Grün"
 
-#, fuzzy
 msgid "Yellow"
-msgstr "Gelbes Quadrat"
+msgstr "Gelb"
 
 msgid "Orange"
-msgstr ""
+msgstr "Orange"
 
-#, fuzzy
 msgid "Red"
-msgstr "Wiederholen"
+msgstr "Rot"
 
 msgid "Purple"
-msgstr ""
+msgstr "Lila"
 
 msgid "Brown"
-msgstr ""
+msgstr "Braun"
 
 msgid "Gray"
-msgstr ""
+msgstr "Grau"
 
-#, fuzzy
 msgid "New tag"
-msgstr "Keine neuen Tags"
+msgstr "Neuer Tag"
 
-#, fuzzy
 msgid "Tag name"
-msgstr "Tag {name} hinzufügen"
+msgstr "Tag-Name"
 
 msgid "Color"
 msgstr "Farbe"
 
-#, fuzzy
 msgid "Search or create…"
-msgstr "Nachrichten durchsuchen…"
+msgstr "Suchen oder erstellen…"
 
 msgid "Search or create a tag"
-msgstr ""
+msgstr "Einen Tag suchen oder erstellen"
 
-#, fuzzy
 msgid "Favorite"
-msgstr "Favoriten"
+msgstr "Favorit"
 
-#, fuzzy
 msgid "Manage tags…"
-msgstr "Tags suchen…"
+msgstr "Tags verwalten…"
 
-#, fuzzy
 msgid "Create “{name}”"
-msgstr "Lösche „{name}“?"
+msgstr "„{name}“ erstellen"
 
 msgid "File"
 msgstr "Datei"
 
 msgid "Script"
-msgstr ""
+msgstr "Schrift"
 
 msgid ""
 "Uses a translation service under your own key. A message's text is sent only "
@@ -5205,28 +5067,25 @@ msgstr ""
 msgid "Key"
 msgstr "Schlüssel"
 
-#, fuzzy
 msgid "Server, region"
-msgstr "Angaben zum Server"
+msgstr "Server, Region"
 
 msgid "Region (empty for a global resource)"
 msgstr "Region (leer für eine globale Ressource)"
 
-#, fuzzy
 msgid "Check the service"
-msgstr "Einstellungen prüfen"
+msgstr "Dienst prüfen"
 
 msgid "Translates a greeting to test the service."
 msgstr ""
 "Eine Begrüßung übersetzen, um die Verfügbarkeit des Dienstes zu überprüfen."
 
-#, fuzzy
 msgid ""
 "A “Translate” button shows on messages in another language. The language is "
 "detected on this computer."
 msgstr ""
-"Bei Nachrichten in einer anderen Sprache wird eine Schaltfläche zum "
-"Übersetzen angezeigt. Die Sprache einer Nachricht wird lokal ermittelt."
+"Bei Nachrichten in einer anderen Sprache erscheint die Schaltfläche "
+"„Übersetzen“. Die Sprache wird auf diesem Computer erkannt."
 
 msgid "Tegami Mail's language ({language})"
 msgstr "Tegamis Sprache — {language}"
@@ -5243,32 +5102,26 @@ msgstr "Anmelden"
 msgid "The sign-in window was closed."
 msgstr "Anmeldefenster wurde geschlossen"
 
-#, fuzzy
 msgid "Add your accounts"
-msgstr "Cloud-Konto hinzufügen"
+msgstr "Ihre Konten hinzufügen"
 
-#, fuzzy
 msgid "Another account"
-msgstr "Konto hinzufügen"
+msgstr "Ein anderes Konto"
 
-#, fuzzy
 msgid "Email account…"
-msgstr "E-Mail-Konto"
+msgstr "E-Mail-Konto…"
 
-#, fuzzy
 msgid "With an address and a password (IMAP)"
-msgstr "Zuerst E-Mail-Adresse und Passwort eingeben."
+msgstr "Mit Adresse und Passwort (IMAP)"
 
-#, fuzzy
 msgid "For Google or Microsoft 365"
-msgstr "Microsoft 365"
+msgstr "Für Google oder Microsoft 365"
 
 msgid "Continue"
 msgstr "Weiter"
 
-#, fuzzy
 msgid "Added"
-msgstr "Hinzugefügte Wörter"
+msgstr "Hinzugefügt"
 
 msgid "Add"
 msgstr "Hinzufügen"
@@ -5280,16 +5133,18 @@ msgid ""
 "Tegami Mail found these accounts in GNOME Online Accounts. One click adds "
 "each of them."
 msgstr ""
+"Tegami Mail hat diese Konten in GNOME Online Accounts gefunden. Ein Klick "
+"fügt jedes davon hinzu."
 
-#, fuzzy
 msgid "Email account"
 msgstr "E-Mail-Konto"
 
 msgid "Tegami Mail finds the servers of most providers from your address."
 msgstr ""
+"Tegami Mail findet die Server der meisten Anbieter anhand Ihrer Adresse."
 
 msgid "Display name, servers, API token"
-msgstr ""
+msgstr "Anzeigename, Server, API-Token"
 
 msgid "Provider"
 msgstr "Anbieter"
@@ -5318,14 +5173,12 @@ msgstr "Token-URL"
 msgid "Scopes (space-separated)"
 msgstr "Scopes (durch Leerzeichen getrennt)"
 
-#, fuzzy
 msgid "Test and add"
-msgstr "Prüfen und hinzufügen"
+msgstr "Testen und hinzufügen"
 
 msgid "Enter your email address, the client ID and both OAuth URLs first."
 msgstr "Zuerst E-Mail-Adresse, Client-ID und beide OAuth-URLs eingeben."
 
-#, fuzzy
 msgid "Sign in and add"
 msgstr "Anmelden und hinzufügen"
 
@@ -5348,22 +5201,24 @@ msgid ""
 "Your mail, in one place, simply. Let’s start by connecting your first "
 "account."
 msgstr ""
+"Ihre E-Mails, an einem Ort, ganz einfach. Verbinden Sie zuerst Ihr erstes "
+"Konto."
 
 msgid "Get started"
 msgstr "Loslegen"
 
-#, fuzzy
 msgid "You’re all set"
-msgstr "Alles eingerichtet"
+msgstr "Alles bereit"
 
-#, fuzzy
 msgid "Start reading"
-msgstr "Mit Stern markiert"
+msgstr "Lesen beginnen"
 
 msgid ""
 "Tegami Mail is fetching the mail of {email}. It will appear in a moment. You "
 "can adjust the rest in the preferences."
 msgstr ""
+"Tegami Mail ruft die E-Mails von {email} ab. Sie erscheinen gleich. Den Rest "
+"können Sie in den Einstellungen anpassen."
 
 msgid ""
 "Offline: there is no network connection. Mail syncs again once the network "
@@ -5561,40 +5416,36 @@ msgstr "Konnte den JMAP-Server nicht erreichen: {e}"
 
 msgid "Mail on this computer is not sent, and has no drafts"
 msgstr ""
+"E-Mails auf diesem Computer werden nicht gesendet und haben keine Entwürfe"
 
 msgid "Mail is not sent from On This Computer: choose another From address"
 msgstr ""
+"Aus „Auf diesem Computer“ wird nicht gesendet: Wählen Sie eine andere "
+"Absenderadresse"
 
-#, fuzzy
 msgid "Could not import {path}: {e}"
-msgstr "Konnte nicht importieren: {e}"
+msgstr "{path} konnte nicht importiert werden: {e}"
 
-#, fuzzy
 msgid "Importing {done} of {total} messages…"
-msgstr "Ordner {done} von {total}"
+msgstr "{done} von {total} Nachrichten werden importiert…"
 
-#, fuzzy
 msgid "A folder by that name already exists"
-msgstr "Ein Ordner mit dem Namen {new_name} ist bereits vorhanden."
+msgstr "Ein Ordner mit diesem Namen existiert bereits"
 
 msgid "The folder still holds mail"
-msgstr ""
+msgstr "Der Ordner enthält noch E-Mails"
 
-#, fuzzy
 msgid "That is not a folder name"
-msgstr "Dieser Ordner"
+msgstr "Das ist kein gültiger Ordnername"
 
-#, fuzzy
 msgid "Could not store the message: {e}"
-msgstr "Nachricht konnte nicht gespeichert werden: {e}"
+msgstr "Die Nachricht konnte nicht gespeichert werden: {e}"
 
-#, fuzzy
 msgid "Could not open the folders on this computer: {e}"
-msgstr "Konnte den Ordner nicht leeren: {e}"
+msgstr "Die Ordner auf diesem Computer konnten nicht geöffnet werden: {e}"
 
-#, fuzzy
 msgid "Reading {n} messages…"
-msgstr "{n} Nachrichten werden indiziert…"
+msgstr "{n} Nachrichten werden gelesen…"
 
 #. Nothing failed: the message waits for the network, which the
 #. Refresh button already shows is down (#442).
@@ -5639,6 +5490,8 @@ msgstr ""
 msgid ""
 "The server refused the message because it is too large. It said: {reply}"
 msgstr ""
+"Der Server hat die Nachricht abgelehnt, weil sie zu groß ist. Antwort: "
+"{reply}"
 
 msgid "The message is signed or encrypted, and removing a file would break it"
 msgstr ""
@@ -5683,16 +5536,15 @@ msgstr "Konnte keinen Kontakt hinzufügen: {e}"
 msgid "Search filters"
 msgstr "Suchfilter"
 
-#, fuzzy
 msgid "File or tag mail as it arrives. Filters run on each Inbox as it syncs."
 msgstr ""
-"Automatische Ablage oder Taggen eingehender E-Mails. Filter laufen bei jeder "
-"Synchronisation des Posteingangs; „Jetzt anwenden“ wendet diese auf bereits "
-"vorhandene E-Mails an."
+"E-Mails beim Eintreffen einsortieren oder taggen. Filter laufen auf jedem "
+"Posteingang während der Synchronisierung."
 
-#, fuzzy
 msgid "Runs every rule over the mail already in your inboxes."
-msgstr "Alle Regeln auf vorhandene Nachrichten in den Posteingängen anwenden"
+msgstr ""
+"Wendet jede Regel auf die E-Mails an, die bereits in Ihren Posteingängen "
+"liegen."
 
 #. GNOME Online Accounts owns this account's servers and
 #. credentials; Tegami Mail only mirrors them, and can hide it
@@ -5704,53 +5556,46 @@ msgstr "GNOME Online-Konto"
 msgid "Show in Tegami Mail"
 msgstr "In Tegami Mail anzeigen"
 
-#, fuzzy
 msgid "Managed by GNOME Online Accounts"
-msgstr "In GNOME Online-Konten hinzugefügt"
+msgstr "Von GNOME Online Accounts verwaltet"
 
-#, fuzzy
 msgid ""
 "Its address, servers and password are changed in Settings → Online Accounts."
 msgstr ""
-"Konto wird von GNOME Online Accounts verwaltet. Adresse, Server und Passwort "
-"werden in Einstellungen → Online-Konten geändert."
+"Adresse, Server und Passwort werden in den Einstellungen → Online-Konten "
+"geändert."
 
 #. The nickname names the account in the sidebar and lists, the
 #. address standing in while there is none (owner, 2026-11-08).
 msgid "Nickname"
 msgstr "Spitzname"
 
-#, fuzzy
 msgid "Account colour"
-msgstr "Akzentfarbe des Kontos"
+msgstr "Kontofarbe"
 
 msgid "Accent of this account’s badges and outlines."
-msgstr ""
+msgstr "Akzent der Markierungen und Umrisse dieses Kontos."
 
-#, fuzzy
 msgid "Show in combined views"
-msgstr "Spaltentitel anzeigen"
+msgstr "In kombinierten Ansichten anzeigen"
 
-#, fuzzy
 msgid "Favorites, tags and smart folders from all accounts."
-msgstr "Neuen Ordner für dieses Konto erstellen."
+msgstr "Favoriten, Tags und Smart Folders aller Konten."
 
 msgid "Storage"
 msgstr "Speicher"
 
-#, fuzzy
 msgid "Servers and connection"
-msgstr "Verbindung testen"
+msgstr "Server und Verbindung"
 
-#, fuzzy
 msgid "Synchronisation"
-msgstr "Übersetzung anzeigen"
+msgstr "Synchronisierung"
 
 msgid "Instant mail, automatic cleanup"
-msgstr ""
+msgstr "Sofortige Zustellung, automatische Bereinigung"
 
 msgid "Sent, drafts, trash, archive"
-msgstr ""
+msgstr "Gesendet, Entwürfe, Papierkorb, Archiv"
 
 msgid "Send-as aliases"
 msgstr "Absender-Aliasse"
@@ -5758,20 +5603,19 @@ msgstr "Absender-Aliasse"
 msgid "Signatures"
 msgstr "Signaturen"
 
-#, fuzzy
 msgid "OpenPGP encryption"
-msgstr "OpenPGP-Schlüssel"
+msgstr "OpenPGP-Verschlüsselung"
 
 msgid "Also removes its saved password. Mail on the server is not touched."
 msgstr ""
+"Entfernt auch das gespeicherte Passwort. E-Mails auf dem Server bleiben "
+"unberührt."
 
-#, fuzzy
 msgid "Incoming"
-msgstr "Posteingangsserver"
+msgstr "Eingehend"
 
-#, fuzzy
 msgid "Protocol"
-msgstr "Proton Mail"
+msgstr "Protokoll"
 
 msgid "Sign in with browser"
 msgstr "Im Browser anmelden"
@@ -5789,19 +5633,16 @@ msgid "Open Online Accounts…"
 msgstr "Online-Konten öffnen…"
 
 msgid "Outgoing (SMTP)"
-msgstr ""
+msgstr "Ausgehend (SMTP)"
 
-#, fuzzy
 msgid "Use other credentials"
-msgstr "Bei Deaktivierung werden die obigen Anmeldedaten genutzt."
+msgstr "Andere Zugangsdaten verwenden"
 
-#, fuzzy
 msgid "Off: the incoming credentials are used."
-msgstr "Bei Deaktivierung werden die obigen Anmeldedaten genutzt."
+msgstr "Aus: Die Zugangsdaten für eingehende E-Mails werden verwendet."
 
-#, fuzzy
 msgid "API token, custom OAuth app, certificate for another name"
-msgstr "Zertifikat für abweichenden Namen akzeptieren"
+msgstr "API-Token, eigene OAuth-App, Zertifikat für einen anderen Namen"
 
 msgid "Sign in with an API token"
 msgstr "Anmeldung mit API token"
@@ -5811,7 +5652,6 @@ msgstr ""
 "Für Server, die anstelle eines Passworts ein Token verwenden (z. B. "
 "Fastmail)."
 
-#, fuzzy
 msgid "OAuth client secret (optional)"
 msgstr "OAuth-Client-Geheimnis (optional)"
 
@@ -5859,30 +5699,25 @@ msgstr ""
 msgid "Test connection"
 msgstr "Verbindung testen"
 
-#, fuzzy
 msgid "New messages"
-msgstr "Neue Nachricht"
+msgstr "Neue Nachrichten"
 
-#, fuzzy
 msgid "Turn off for servers that block push connections."
-msgstr "Für Server deaktivieren, bei denen Push-Verbindungen hängen bleiben."
+msgstr "Für Server ausschalten, die Push-Verbindungen blockieren."
 
 #. Auto-empty (#140): mail past the chosen age in Junk / Trash is
 #. deleted for good at each sync.
-#, fuzzy
 msgid "Automatic cleanup"
-msgstr "Automatisch"
+msgstr "Automatische Bereinigung"
 
-#, fuzzy
 msgid "Empty Junk"
-msgstr "Spam-Ordner leeren…"
+msgstr "Spam leeren"
 
-#, fuzzy
 msgid "Empty Trash"
-msgstr "Papierkorb leeren…"
+msgstr "Papierkorb leeren"
 
 msgid "The general setting is in Application."
-msgstr ""
+msgstr "Die allgemeine Einstellung befindet sich unter „Anwendung“."
 
 msgid "Leaves out Trash, Junk and Drafts."
 msgstr "Ohne Papierkorb, Spam und Entwürfe"
@@ -5893,28 +5728,29 @@ msgstr "Anhänge einschließen"
 msgid "Can consume a lot of hard drive space."
 msgstr "Kann sehr viel Speicherplatz auf der Festplatte belegen"
 
-#, fuzzy
 msgid "Copy mail to On This Computer"
-msgstr "Auf diesem Computer"
+msgstr "E-Mails nach „Auf diesem Computer“ kopieren"
 
 msgid ""
 "Downloads copies of every message from every folder of this account to this "
 "computer (except Trash, Junk and Drafts) and stores them in On This Computer."
 msgstr ""
+"Lädt Kopien aller Nachrichten aus allen Ordnern dieses Kontos auf diesen "
+"Computer herunter (außer Papierkorb, Spam und Entwürfe) und speichert sie "
+"unter „Auf diesem Computer“."
 
 msgid "Special folders"
 msgstr "Spezielle Ordner"
 
-#, fuzzy
 msgid ""
 "Follows the server’s own markings unless you pick a folder. Nothing already "
 "on the server moves."
 msgstr ""
-"Folgt den Markierungen des Servers, sofern kein Ordner ausgewählt wird. Auf "
-"dem Server vorhandene Elemente werden nicht verschoben."
+"Folgt den Markierungen des Servers, sofern Sie keinen Ordner wählen. Nichts, "
+"was bereits auf dem Server liegt, wird verschoben."
 
 msgid "Templates, snoozed, reply copies, server copy"
-msgstr ""
+msgstr "Vorlagen, zurückgestellt, Antwortkopien, Serverkopie"
 
 #. Nothing on a server marks a Templates folder (#360), nor the one
 #. snoozed mail waits in (#527): found by name, or pointed at here.
@@ -5940,14 +5776,13 @@ msgstr ""
 
 #. Its own folder order, or the application's.
 msgid "Order"
-msgstr ""
+msgstr "Reihenfolge"
 
 msgid "Folder order"
 msgstr "Ordnerreihenfolge"
 
-#, fuzzy
 msgid "Otherwise, drag them in the sidebar."
-msgstr "Ziehen, um die Reihenfolge in der Seitenleiste festzulegen."
+msgstr "Andernfalls ziehen Sie sie in der Seitenleiste."
 
 msgid "Hidden folders"
 msgstr "Ausgeblendete Ordner"
@@ -5962,21 +5797,22 @@ msgstr ""
 msgid "No hidden folders."
 msgstr "Keine versteckten Ordner."
 
-#, fuzzy
 msgid ""
 "Extra addresses this account can send as. They appear in the composer’s From "
 "field."
-msgstr "Zusätzliche Absenderadressen für dieses Konto."
+msgstr ""
+"Weitere Adressen, als die dieses Konto senden kann. Sie erscheinen im "
+"Absenderfeld des Editors."
 
-#, fuzzy
 msgid "Start new messages with this signature"
-msgstr "Neue Nachricht mit dieser Signatur"
+msgstr "Neue Nachrichten mit dieser Signatur beginnen"
 
 msgid "Delete signature"
 msgstr "Signatur entfernen"
 
 msgid "With several signatures, the composer offers a button to choose."
 msgstr ""
+"Bei mehreren Signaturen bietet der Editor eine Schaltfläche zur Auswahl."
 
 msgid "Add signature"
 msgstr "Signatur hinzufügen"
@@ -5985,13 +5821,11 @@ msgstr "Signatur hinzufügen"
 msgid "Import file…"
 msgstr "Datei importieren…"
 
-#, fuzzy
 msgid "HTML or text"
-msgstr "HTML und Textdateien"
+msgstr "HTML oder Text"
 
-#, fuzzy
 msgid "Automatic: the key whose address matches."
-msgstr "„Automatisch“ verwendet den Schlüssel mit der passenden Adresse."
+msgstr "Automatisch: der Schlüssel mit der passenden Adresse."
 
 #. For an account whose mail is always signed (#267): the composer's
 #. toggle starts on, and still turns it off for one message.
@@ -6001,17 +5835,14 @@ msgstr "Nachrichten standardmäßig unterschreiben"
 msgid "Hide the subject of encrypted mail"
 msgstr "Betreff verschlüsselter E-Mails ausblenden"
 
-#, fuzzy
 msgid "Only the recipients see the subject."
-msgstr "Nur für Empfänger sichtbar. Für alle anderen wird \"...\" angezeigt."
+msgstr "Nur die Empfänger sehen den Betreff."
 
-#, fuzzy
 msgid "Manage keys"
-msgstr "Tags suchen…"
+msgstr "Schlüssel verwalten"
 
-#, fuzzy
 msgid "Import, generate, trust."
-msgstr "Signatur importieren"
+msgstr "Importieren, erzeugen, vertrauen."
 
 msgid "Search senders"
 msgstr "Absender suchen"
@@ -6042,21 +5873,18 @@ msgstr "Adresse oder Domäne"
 msgid "Block this sender"
 msgstr "Diesen Absender sperren"
 
-#, fuzzy
 msgid ""
 "Tags are stored on the server as IMAP keywords, so Thunderbird and other "
 "clients show them too. The first nine are mapped to the 1–9 keys."
 msgstr ""
-"Tags werden als IMAP-Schlüsselwörter auf dem Mailserver gespeichert, sodass "
-"Thunderbird und andere Clients dieselben Tags anzeigen.\n"
-"\n"
-"Tag zum Sortieren ziehen: Die ersten neun reagieren auf die Tasten 1–9."
+"Tags werden auf dem Server als IMAP-Schlüsselwörter gespeichert, sodass auch "
+"Thunderbird und andere Programme sie anzeigen. Die ersten neun liegen auf "
+"den Tasten 1–9."
 
 msgid "Look through every mailbox for tags other clients have set"
 msgstr ""
 "Alle Postfächer nach Tags durchsuchen, die andere Programme gesetzt haben"
 
-#, fuzzy
 msgid "Senders"
 msgstr "Absender"
 
@@ -6064,87 +5892,75 @@ msgid "Translation"
 msgstr "Übersetzung"
 
 msgid "Backup and restore"
-msgstr ""
+msgstr "Sichern und wiederherstellen"
 
-#, fuzzy
 msgid "Drag an account to change its order in the sidebar."
-msgstr "Ziehen, um die Reihenfolge in der Seitenleiste festzulegen."
+msgstr ""
+"Ziehen Sie ein Konto, um seine Reihenfolge in der Seitenleiste zu ändern."
 
-#, fuzzy
 msgid "Organize mail"
-msgstr "In E-Mail"
+msgstr "E-Mails organisieren"
 
-#, fuzzy
 msgid "Services"
-msgstr "Dienst"
+msgstr "Dienste"
 
-#, fuzzy
 msgid "Allowed and blocked"
-msgstr "Zugelassene Absender"
+msgstr "Erlaubt und blockiert"
 
 msgid "Composing"
 msgstr "Verfassen"
 
-#, fuzzy
 msgid "Replies are sent from the address that received the message."
 msgstr ""
-"Antworten verwenden die Adresse als Absender, an die die ursprüngliche "
-"Nachricht gesendet wurde."
+"Antworten werden von der Adresse gesendet, die die Nachricht empfangen hat."
 
-#, fuzzy
 msgid "Format of new messages"
-msgstr "Anfang der Nachricht"
+msgstr "Format neuer Nachrichten"
 
 msgid "How long a message can still be recalled."
-msgstr ""
+msgstr "Wie lange eine Nachricht noch zurückgerufen werden kann."
 
 msgid "Notifications"
 msgstr "Benachrichtigungen"
 
 msgid "Sound and banners"
-msgstr ""
+msgstr "Ton und Banner"
 
 msgid "Open the system notification settings"
-msgstr ""
+msgstr "Benachrichtigungseinstellungen des Systems öffnen"
 
 msgid "Sound, banners and Do Not Disturb are set there."
-msgstr ""
+msgstr "Ton, Banner und „Nicht stören“ werden dort eingestellt."
 
 msgid "Privacy"
 msgstr "Datenschutz"
 
-#, fuzzy
 msgid "Application"
-msgstr "Aktion"
+msgstr "Anwendung"
 
 msgid "Appearance"
 msgstr "Aussehen"
 
-#, fuzzy
 msgid "Background"
-msgstr "Im Hintergrund ausführen"
+msgstr "Hintergrund"
 
-#, fuzzy
 msgid "Keyboard and storage"
-msgstr "Tastenkombinationen"
+msgstr "Tastatur und Speicher"
 
-#, fuzzy
 msgid "{n} tag"
 msgid_plural "{n} tags"
-msgstr[0] "Beliebiger Tag"
-msgstr[1] "Beliebiger Tag"
+msgstr[0] "{n} Tag"
+msgstr[1] "{n} Tags"
 
-#, fuzzy
 msgid "{n} filter"
 msgid_plural "{n} filters"
-msgstr[0] "Tondatei"
-msgstr[1] "Tondatei"
+msgstr[0] "{n} Filter"
+msgstr[1] "{n} Filter"
 
-#, fuzzy
 msgid "{n} smart folder"
 msgid_plural "{n} smart folders"
-msgstr[0] "Erstelle Smart Folder"
-msgstr[1] "Erstelle Smart Folder"
+msgstr[0] "{n} Smart Folder"
+msgstr[1] "{n} Smart Folders"
 
 msgid "Send new messages from"
 msgstr "Neue Nachrichten senden von"
@@ -6212,14 +6028,15 @@ msgstr ""
 "Standardmäßige Trennzeile “--” zur Kompatibilität mit anderen E-Mail-"
 "Programmen."
 
-#, fuzzy
 msgid "Hide conversation history"
-msgstr "Unterhaltung auswählen"
+msgstr "Verlauf der Unterhaltung ausblenden"
 
 msgid ""
 "Replies and forwards open with the quoted messages hidden. They are sent "
 "either way."
 msgstr ""
+"Antworten und Weiterleitungen öffnen sich mit ausgeblendeten Zitaten. "
+"Gesendet werden sie in jedem Fall."
 
 msgid "Undo send"
 msgstr "Senden widerrufen"
@@ -6322,7 +6139,13 @@ msgid ""
 "is blocked until you allow it, and there is no telemetry. It works with "
 "IMAP, POP3, JMAP and Microsoft 365, and with any server from iCloud to "
 "Proton Bridge to a Stalwart of your own."
-msgstr "Tegami Mail ist ein E-Mail-Programm für den GNOME-Desktop, geschrieben in Rust mit libadwaita. Ihre E-Mails und Zugangsdaten bleiben auf Ihrem Rechner, externe Inhalte werden blockiert, bis Sie sie erlauben, und es gibt keine Telemetrie. Es funktioniert mit IMAP, POP3, JMAP und Microsoft 365 und mit jedem Server, von iCloud über Proton Bridge bis zu Ihrem eigenen Stalwart."
+msgstr ""
+"Tegami Mail ist ein E-Mail-Programm für den GNOME-Desktop, geschrieben in "
+"Rust mit libadwaita. Ihre E-Mails und Zugangsdaten bleiben auf Ihrem "
+"Rechner, externe Inhalte werden blockiert, bis Sie sie erlauben, und es gibt "
+"keine Telemetrie. Es funktioniert mit IMAP, POP3, JMAP und Microsoft 365 und "
+"mit jedem Server, von iCloud über Proton Bridge bis zu Ihrem eigenen "
+"Stalwart."
 
 msgid "Accounts and mail:"
 msgstr "Konten und E-Mail:"
@@ -6330,20 +6153,28 @@ msgstr "Konten und E-Mail:"
 msgid ""
 "Several accounts, with Microsoft sign-in built in, Google through GNOME "
 "Online Accounts, or any account already set up in GNOME"
-msgstr "Mehrere Konten, mit eingebauter Microsoft-Anmeldung, Google über GNOME Online Accounts oder jedem bereits in GNOME eingerichteten Konto"
+msgstr ""
+"Mehrere Konten, mit eingebauter Microsoft-Anmeldung, Google über GNOME "
+"Online Accounts oder jedem bereits in GNOME eingerichteten Konto"
 
 msgid ""
 "Whole-mailbox sync and search, conversations across folders, and changes "
 "made on other devices synced back"
-msgstr "Synchronisierung und Suche im gesamten Postfach, Unterhaltungen über Ordner hinweg und Änderungen auf anderen Geräten, die zurück synchronisiert werden"
+msgstr ""
+"Synchronisierung und Suche im gesamten Postfach, Unterhaltungen über Ordner "
+"hinweg und Änderungen auf anderen Geräten, die zurück synchronisiert werden"
 
 msgid ""
 "Folders, filters, tags, smart folders and favorites, with Trash and Junk "
 "emptied by hand or on a schedule"
-msgstr "Ordner, Filter, Tags, Smart Folders und Favoriten, dazu Papierkorb und Spam, von Hand oder nach Zeitplan geleert"
+msgstr ""
+"Ordner, Filter, Tags, Smart Folders und Favoriten, dazu Papierkorb und Spam, "
+"von Hand oder nach Zeitplan geleert"
 
 msgid "Snooze, Undo Send, an Outbox for sends that fail, and printing"
-msgstr "Zurückstellen, Senden rückgängig machen, ein Postausgang für fehlgeschlagene Sendungen und Drucken"
+msgstr ""
+"Zurückstellen, Senden rückgängig machen, ein Postausgang für fehlgeschlagene "
+"Sendungen und Drucken"
 
 msgid "Writing:"
 msgstr "Verfassen:"
@@ -6351,7 +6182,9 @@ msgstr "Verfassen:"
 msgid ""
 "Rich or plain text, HTML signatures, templates, inline images, spell and "
 "grammar checking, and undo"
-msgstr "Formatierter oder reiner Text, HTML-Signaturen, Vorlagen, eingebettete Bilder, Rechtschreib- und Grammatikprüfung sowie Rückgängig"
+msgstr ""
+"Formatierter oder reiner Text, HTML-Signaturen, Vorlagen, eingebettete "
+"Bilder, Rechtschreib- und Grammatikprüfung sowie Rückgängig"
 
 msgid "Drafts, quote folding, and forwarding that keeps the attachments"
 msgstr "Entwürfe, eingeklappte Zitate und Weiterleiten mit allen Anhängen"
@@ -6359,14 +6192,18 @@ msgstr "Entwürfe, eingeklappte Zitate und Weiterleiten mit allen Anhängen"
 msgid ""
 "Large files shared from your own Nextcloud, ownCloud, OpenCloud or Seafile "
 "server, OneDrive or Dropbox; a Send with Tegami Mail entry in GNOME Files"
-msgstr "Große Dateien, geteilt über Ihren eigenen Nextcloud-, ownCloud-, OpenCloud- oder Seafile-Server, OneDrive oder Dropbox; ein Eintrag „Mit Tegami Mail senden“ in GNOME Dateien"
+msgstr ""
+"Große Dateien, geteilt über Ihren eigenen Nextcloud-, ownCloud-, OpenCloud- "
+"oder Seafile-Server, OneDrive oder Dropbox; ein Eintrag „Mit Tegami Mail "
+"senden“ in GNOME Dateien"
 
 msgid "Reading:"
 msgstr "Lesen:"
 
 msgid ""
 "Each conversation as a column of cards, with message zoom and translation"
-msgstr "Jede Unterhaltung als Spalte von Karten, mit Nachrichtenzoom und Übersetzung"
+msgstr ""
+"Jede Unterhaltung als Spalte von Karten, mit Nachrichtenzoom und Übersetzung"
 
 msgid ""
 "OpenPGP signing, encryption and reading; DKIM, SPF and DMARC checked on "
@@ -6378,7 +6215,9 @@ msgstr ""
 msgid ""
 "Meeting invitations answered in place, read receipts, and one-click "
 "unsubscribe from list mail"
-msgstr "Besprechungseinladungen direkt beantworten, Lesebestätigungen und Abmelden von Mailinglisten mit einem Klick"
+msgstr ""
+"Besprechungseinladungen direkt beantworten, Lesebestätigungen und Abmelden "
+"von Mailinglisten mit einem Klick"
 
 msgid "The app:"
 msgstr "Die App:"
@@ -6386,7 +6225,9 @@ msgstr "Die App:"
 msgid ""
 "An adaptive layout that follows the system's style, text size, language and "
 "clock"
-msgstr "Eine anpassungsfähige Oberfläche, die Stil, Textgröße, Sprache und Uhrzeitformat des Systems übernimmt"
+msgstr ""
+"Eine anpassungsfähige Oberfläche, die Stil, Textgröße, Sprache und "
+"Uhrzeitformat des Systems übernimmt"
 
 msgid "Swipe actions and single-key shortcuts, with a Gmail variant"
 msgstr "Wischgesten und Einzeltasten-Kürzel, mit einer Gmail-Variante"
@@ -6394,12 +6235,16 @@ msgstr "Wischgesten und Einzeltasten-Kürzel, mit einer Gmail-Variante"
 msgid ""
 "Notifications with actions, and mail that keeps arriving with the window "
 "closed"
-msgstr "Benachrichtigungen mit Aktionen, und E-Mails, die auch bei geschlossenem Fenster ankommen"
+msgstr ""
+"Benachrichtigungen mit Aktionen, und E-Mails, die auch bei geschlossenem "
+"Fenster ankommen"
 
 msgid ""
 "GNOME Contacts, CardDAV address books and LDAP directories; passwords kept "
 "in the system keyring"
-msgstr "GNOME Kontakte, CardDAV-Adressbücher und LDAP-Verzeichnisse; Passwörter im Schlüsselbund des Systems"
+msgstr ""
+"GNOME Kontakte, CardDAV-Adressbücher und LDAP-Verzeichnisse; Passwörter im "
+"Schlüsselbund des Systems"
 
 msgid "Hyprlab"
 msgstr "Hyprlab"

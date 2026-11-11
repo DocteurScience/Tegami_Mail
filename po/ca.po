@@ -86,9 +86,8 @@ msgstr "No s'ha pogut desar el compte: {e}"
 msgid "Could not import account: {e}"
 msgstr "No s'ha pogut importar el compte: {e}"
 
-#, fuzzy
 msgid "On This Computer is switched off"
-msgstr "En aquest ordinador"
+msgstr "«En aquest ordinador» està desactivat"
 
 msgid "Delete the attachment from the server?"
 msgstr "Vols suprimir l'adjunt del servidor?"
@@ -104,17 +103,16 @@ msgid "Delete"
 msgstr "Suprimeix"
 
 msgid "Sync now"
-msgstr ""
+msgstr "Sincronitza ara"
 
 msgid "Add account…"
 msgstr "Afegeix un compte…"
 
-#, fuzzy
 msgid "GNOME Online Accounts…"
-msgstr "Comptes en línia del GNOME"
+msgstr "Comptes en línia del GNOME…"
 
 msgid "Preferences"
-msgstr ""
+msgstr "Preferències"
 
 msgid "Print preview…"
 msgstr "Previsualització d'impressió…"
@@ -192,7 +190,7 @@ msgid "Archive"
 msgstr "Arxiva"
 
 msgid "Snooze"
-msgstr ""
+msgstr "Posposa"
 
 msgid "Block remote content"
 msgstr "Bloca el contingut remot"
@@ -209,9 +207,8 @@ msgstr "Imprimeix…"
 msgid "New Message"
 msgstr "Missatge nou"
 
-#, fuzzy
 msgid "Could not forward the message: {e}"
-msgstr "No s'ha pogut desar el missatge: {e}"
+msgstr "No s'ha pogut reenviar el missatge: {e}"
 
 msgid "On this computer"
 msgstr "En aquest ordinador"
@@ -324,7 +321,7 @@ msgstr[0] "{n} persona"
 msgstr[1] "{n} persones"
 
 msgid "Turn on Console mode in Troubleshooting, in the main menu"
-msgstr ""
+msgstr "Activeu el mode consola a Resolució de problemes, al menú principal"
 
 msgid "New message from template"
 msgstr "Missatge nou a partir d'una plantilla"
@@ -360,9 +357,11 @@ msgid ""
 "The forward of filter {rule} was refused. The message was left where it is "
 "and will be tried again"
 msgstr ""
+"S'ha rebutjat el reenviament del filtre {rule}. El missatge s'ha deixat on "
+"era i es tornarà a provar"
 
 msgid "The forward of filter {rule} is waiting in the Outbox"
-msgstr ""
+msgstr "El reenviament del filtre {rule} espera a la bústia de sortida"
 
 msgid "No filters to apply here yet"
 msgstr "Encara no hi ha filtres per aplicar aquí"
@@ -398,20 +397,18 @@ msgstr "Carpeta {done} de {total}"
 
 msgid "started {n} forward"
 msgid_plural "started {n} forwards"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "ha iniciat {n} reenviament"
+msgstr[1] "ha iniciat {n} reenviaments"
 
-#, fuzzy
 msgid "marked {n} message as read"
 msgid_plural "marked {n} messages as read"
-msgstr[0] "S'ha arxivat {n} missatge"
-msgstr[1] "S'han arxivat {n} missatges"
+msgstr[0] "ha marcat {n} missatge com a llegit"
+msgstr[1] "ha marcat {n} missatges com a llegits"
 
-#, fuzzy
 msgid "deleted {n} message"
 msgid_plural "deleted {n} messages"
-msgstr[0] "Suprimeix {n} missatges"
-msgstr[1] "Suprimeix {n} missatges"
+msgstr[0] "ha suprimit {n} missatge"
+msgstr[1] "ha suprimit {n} missatges"
 
 msgid "Filters looked at {n} message, and it matched nothing"
 msgid_plural "Filters looked at {n} messages, and none of them matched"
@@ -421,11 +418,10 @@ msgstr[1] "Els filtres han revisat {n} missatges i no n'ha coincidit cap"
 #. Matches that needed nothing: the rules had already done their
 #. work on an earlier sync (#201). Saying "none matched" here
 #. made working rules look broken.
-#, fuzzy
 msgid "Filters looked at {n} message"
 msgid_plural "Filters looked at {n} messages"
-msgstr[0] "Els filtres han etiquetat {tagged} d'{n} missatge"
-msgstr[1] "Els filtres han etiquetat {tagged} de {n} missatges"
+msgstr[0] "Els filtres han revisat {n} missatge"
+msgstr[1] "Els filtres han revisat {n} missatges"
 
 msgid ""
 "Filters matched {matched} of {n} message, and it was already tagged or filed"
@@ -470,13 +466,11 @@ msgstr "Carpeta nova"
 msgid "Create a new folder for this account."
 msgstr "Crea una carpeta nova per a aquest compte."
 
-#, fuzzy
 msgid "New subfolder"
-msgstr "Carpeta nova"
+msgstr "Subcarpeta nova"
 
-#, fuzzy
 msgid "Create a folder inside {folder}."
-msgstr "Crea una carpeta nova per a aquest compte."
+msgstr "Crea una carpeta dins de {folder}."
 
 msgid "Cancel"
 msgstr "Cancel·la"
@@ -632,15 +626,17 @@ msgid_plural ""
 "{n} contacts exported to {file}. Open the file in GNOME Contacts to keep "
 "them."
 msgstr[0] ""
+"{n} contacte exportat a {file}. Obriu el fitxer amb Contactes del GNOME per "
+"conservar-lo."
 msgstr[1] ""
+"{n} contactes exportats a {file}. Obriu el fitxer amb Contactes del GNOME "
+"per conservar-los."
 
-#, fuzzy
 msgid "Could not export the contacts: {e}"
 msgstr "No s'han pogut exportar els contactes: {e}"
 
-#, fuzzy
 msgid "Export your Tegami Mail contacts"
-msgstr "Exporta els contactes"
+msgstr "Exporteu els contactes del Tegami Mail"
 
 msgid ""
 "The Tegami Mail address book holds {n} contact. Tegami Mail now uses the "
@@ -651,14 +647,19 @@ msgid_plural ""
 "address books GNOME provides: export them as a vCard file, then open the "
 "file in GNOME Contacts."
 msgstr[0] ""
+"La llibreta d'adreces del Tegami Mail té {n} contacte. Ara el Tegami Mail fa "
+"servir les llibretes d'adreces del GNOME: exporteu-lo com a fitxer vCard i "
+"després obriu el fitxer amb Contactes del GNOME."
 msgstr[1] ""
+"La llibreta d'adreces del Tegami Mail té {n} contactes. Ara el Tegami Mail "
+"fa servir les llibretes d'adreces del GNOME: exporteu-los com a fitxer vCard "
+"i després obriu el fitxer amb Contactes del GNOME."
 
 msgid "Later"
 msgstr "Més tard"
 
-#, fuzzy
 msgid "Export…"
-msgstr "Exporta el registre"
+msgstr "Exporta…"
 
 msgid "Export contacts"
 msgstr "Exporta els contactes"
@@ -667,7 +668,7 @@ msgid "Messages"
 msgstr "Missatges"
 
 msgid "Period"
-msgstr ""
+msgstr "Període"
 
 msgid "Custom…"
 msgstr "Personalitzada…"
@@ -681,24 +682,21 @@ msgstr "Filtres"
 msgid "Clear all"
 msgstr "Neteja-ho tot"
 
-#, fuzzy
 msgid "Filters, {n} active"
 msgid_plural "Filters, {n} active"
-msgstr[0] "Filtres aplicats"
-msgstr[1] "Filtres aplicats"
+msgstr[0] "Filtres, {n} actiu"
+msgstr[1] "Filtres, {n} actius"
 
-#, fuzzy
 msgid "{count} message"
 msgid_plural "{count} messages"
-msgstr[0] "{n} missatge"
-msgstr[1] "{n} missatges"
+msgstr[0] "{count} missatge"
+msgstr[1] "{count} missatges"
 
-#, fuzzy
 msgid "Remove filter: {name}"
-msgstr "Treu l'etiqueta {name}"
+msgstr "Elimina el filtre: {name}"
 
 msgid "All"
-msgstr ""
+msgstr "Tots"
 
 msgid "Unread"
 msgstr "No llegit"
@@ -706,17 +704,14 @@ msgstr "No llegit"
 msgid "Starred"
 msgstr "Destacats"
 
-#, fuzzy
 msgid "Custom period"
-msgstr "Ordre personalitzat"
+msgstr "Període personalitzat"
 
-#, fuzzy
 msgid "Apply"
-msgstr "Aplica ara"
+msgstr "Aplica"
 
-#, fuzzy
 msgid "Choose a date"
-msgstr "Tria una imatge"
+msgstr "Trieu una data"
 
 msgid "From"
 msgstr "De"
@@ -726,6 +721,8 @@ msgstr "A"
 
 msgid "Both dates are included. Leave a field empty to leave that side open."
 msgstr ""
+"Les dues dates s'hi inclouen. Deixeu un camp buit per deixar aquell costat "
+"obert."
 
 msgid "Date (Newest first)"
 msgstr "Data (més recents primer)"
@@ -745,19 +742,17 @@ msgstr "Ordena per"
 msgid "Show"
 msgstr "Mostra"
 
-#, fuzzy
 msgid "Group into conversations"
-msgstr "Converses"
+msgstr "Agrupa en converses"
 
 msgid "Message preview"
 msgstr "Previsualització del missatge"
 
 msgid "Avatars"
-msgstr ""
+msgstr "Avatars"
 
-#, fuzzy
 msgid "Tag: {name}"
-msgstr "Afegeix l'etiqueta {name}"
+msgstr "Etiqueta: {name}"
 
 msgid "Favorites"
 msgstr "Preferits"
@@ -772,11 +767,10 @@ msgstr "Accions"
 msgid "Refresh or long-press for Status Bar"
 msgstr "Actualitza o mantén premut per a la barra d'estat"
 
-#, fuzzy
 msgid "Copying one message to On This Computer…"
 msgid_plural "Copying {n} messages to On This Computer…"
-msgstr[0] "S'està movent un missatge a {account}…"
-msgstr[1] "S'estan movent {n} missatges a {account}…"
+msgstr[0] "S'està copiant un missatge a «En aquest ordinador»…"
+msgstr[1] "S'estan copiant {n} missatges a «En aquest ordinador»…"
 
 msgid "Sending message…"
 msgstr "S'està enviant el missatge…"
@@ -889,13 +883,11 @@ msgstr "Adjunts"
 msgid "Preview the highlighted attachment"
 msgstr "Previsualitza l'adjunt ressaltat"
 
-#, fuzzy
 msgid "Previous or next in the attachment preview"
-msgstr "Anterior o següent a la previsualització de la galeria"
+msgstr "Anterior o següent a la previsualització d'adjunts"
 
-#, fuzzy
 msgid "Close the attachment preview"
-msgstr "Tanca la previsualització de la galeria"
+msgstr "Tanca la previsualització de l'adjunt"
 
 msgid "Everything else"
 msgstr "Tota la resta"
@@ -909,12 +901,11 @@ msgstr "Refés-ho (Ctrl+Y fa el mateix)"
 msgid "Reveal the status bar (also: long-press Refresh)"
 msgstr "Mostra la barra d'estat (també: mantén premut Actualitza)"
 
-#, fuzzy
 msgid "Fullscreen on or off"
-msgstr "Activa o desactiva el mode d'enfocament"
+msgstr "Activa o desactiva la pantalla completa"
 
 msgid "Reading pane right of the list, below it, or off"
-msgstr ""
+msgstr "Subfinestra de lectura a la dreta de la llista, a sota o desactivada"
 
 msgid "Message zoom in or out"
 msgstr "Amplia o redueix el missatge"
@@ -1058,17 +1049,14 @@ msgstr "Cerca missatges"
 msgid "Show or hide the sidebar"
 msgstr "Mostra o amaga la barra lateral"
 
-#, fuzzy
 msgid "Reading pane right"
-msgstr "Lectura"
+msgstr "Subfinestra de lectura a la dreta"
 
-#, fuzzy
 msgid "Reading pane below"
-msgstr "Lectura"
+msgstr "Subfinestra de lectura a sota"
 
-#, fuzzy
 msgid "Reading pane off"
-msgstr "Lectura"
+msgstr "Subfinestra de lectura desactivada"
 
 msgid "Mail accounts"
 msgstr "Comptes de correu"
@@ -1111,11 +1099,10 @@ msgid "Your tags"
 msgstr "Les teves etiquetes"
 
 msgid "Help"
-msgstr ""
+msgstr "Ajuda"
 
-#, fuzzy
 msgid "Troubleshooting…"
-msgstr "S'està provant…"
+msgstr "Resolució de problemes…"
 
 msgid "New message instead"
 msgstr "Millor un missatge nou"
@@ -1129,20 +1116,17 @@ msgstr "(sense assumpte)"
 msgid "Message source"
 msgstr "Codi font del missatge"
 
-#, fuzzy
 msgid "Forwarded message"
-msgstr "Reenvia aquest missatge"
+msgstr "Missatge reenviat"
 
 msgid "From: {from}"
 msgstr "De: {from}"
 
-#, fuzzy
 msgid "Date: {date}"
-msgstr "caduca el {date}"
+msgstr "Data: {date}"
 
-#, fuzzy
 msgid "Subject: {subject}"
-msgstr "Acceptat: {subject}"
+msgstr "Assumpte: {subject}"
 
 msgid "Export failed: {e}"
 msgstr "L'exportació ha fallat: {e}"
@@ -1162,21 +1146,18 @@ msgstr "Registre exportat a {display}"
 msgid "Import settings"
 msgstr "Importa els paràmetres"
 
-#, fuzzy
 msgid "Replace your settings?"
-msgstr "Exporta els paràmetres"
+msgstr "Voleu substituir els vostres paràmetres?"
 
-#, fuzzy
 msgid ""
 "The settings in {file} replace yours. Keep your accounts in place: removing "
 "them first deletes their passwords."
 msgstr ""
-"Substitueix-ho tot al seu lloc. No eliminis primer els comptes: això "
-"suprimeix les seves contrasenyes."
+"Els paràmetres de {file} substitueixen els vostres. Mantingueu els comptes: "
+"si els elimineu abans, se n'esborren les contrasenyes."
 
-#, fuzzy
 msgid "Replace"
-msgstr "Respost"
+msgstr "Substitueix"
 
 msgid "Settings imported"
 msgstr "Paràmetres importats"
@@ -1194,37 +1175,37 @@ msgstr ""
 msgid "Restart Tegami Mail"
 msgstr "Reinicia l'Tegami Mail"
 
-#, fuzzy
 msgid "Import failed"
-msgstr "La importació ha fallat: {e}"
+msgstr "Ha fallat la importació"
 
-#, fuzzy
 msgid "Forward as attachment"
-msgstr "Té adjunts"
+msgstr "Reenvia com a adjunt"
 
 msgid "Delete {n} messages"
 msgstr "Suprimeix {n} missatges"
 
 msgid "Read receipt"
-msgstr ""
+msgstr "Confirmació de lectura"
 
-#, fuzzy
 msgid "Read: {subject}"
-msgstr "Acceptat: {subject}"
+msgstr "Llegit: {subject}"
 
 msgid ""
 "This is a read receipt for the message sent to {to} on {date} with the "
 "subject \"{subject}\"."
 msgstr ""
+"Aquesta és una confirmació de lectura del missatge enviat a {to} el {date} "
+"amb l'assumpte \"{subject}\"."
 
 msgid ""
 "It means the message was shown on the recipient's screen, not that it was "
 "read or understood."
 msgstr ""
+"Vol dir que el missatge s'ha mostrat a la pantalla del destinatari, no que "
+"s'hagi llegit o entès."
 
-#, fuzzy
 msgid "Read by {reader}"
-msgstr "Adreça de resposta"
+msgstr "Llegit per {reader}"
 
 msgid "Full release notes on GitHub"
 msgstr "Notes completes de la versió al GitHub"
@@ -1304,7 +1285,7 @@ msgstr ""
 "mostra es queda on és."
 
 msgid "Snooze until"
-msgstr ""
+msgstr "Posposa fins a"
 
 msgid "One message could not be moved to {account}: {error}"
 msgid_plural "{n} messages could not be moved to {account}: {error}"
@@ -1329,46 +1310,42 @@ msgstr ""
 msgid "Could not save the message: {e}"
 msgstr "No s'ha pogut desar el missatge: {e}"
 
-#, fuzzy
 msgid "Status bar"
-msgstr "Barra d'estat ({n})"
+msgstr "Barra d'estat"
 
 msgid "It shows what Tegami Mail is doing, and opens by itself for errors."
-msgstr ""
+msgstr "Mostra què està fent el Tegami Mail i s'obre sola quan hi ha errors."
 
-#, fuzzy
 msgid "Show the status bar"
-msgstr "Amaga la barra d'estat"
+msgstr "Mostra la barra d'estat"
 
 msgid "At the top of the window"
-msgstr ""
+msgstr "A la part superior de la finestra"
 
 msgid "Diagnostics"
-msgstr ""
+msgstr "Diagnòstic"
 
-#, fuzzy
 msgid "Console mode"
-msgstr "Consola"
+msgstr "Mode consola"
 
 msgid "Offers a detailed activity console in the status bar."
-msgstr ""
+msgstr "Ofereix una consola d'activitat detallada a la barra d'estat."
 
-#, fuzzy
 msgid "Open the console"
-msgstr "Obre els comptes en línia"
+msgstr "Obre la consola"
 
 msgid "Ctrl+Shift+C"
-msgstr ""
+msgstr "Ctrl+Maj+C"
 
-#, fuzzy
 msgid "Export the log…"
-msgstr "Exporta el registre"
+msgstr "Exporta el registre…"
 
 msgid "Saves recent activity in a file, to attach to a bug report."
 msgstr ""
+"Desa l'activitat recent en un fitxer, per adjuntar-lo a un informe d'error."
 
 msgid "Troubleshooting"
-msgstr ""
+msgstr "Resolució de problemes"
 
 msgid "Move to {name}"
 msgstr "Mou a {name}"
@@ -1461,16 +1438,14 @@ msgstr "Expandeix la barra lateral"
 msgid "Collapse sidebar"
 msgstr "Replega la barra lateral"
 
-#, fuzzy
 msgid "New message (Ctrl+N)"
-msgstr "Cerca missatges (Ctrl+F)"
+msgstr "Missatge nou (Ctrl+N)"
 
 msgid "Search messages (Ctrl+F)"
 msgstr "Cerca missatges (Ctrl+F)"
 
-#, fuzzy
 msgid "Sort and view"
-msgstr "Data i hora"
+msgstr "Ordena i mostra"
 
 msgid "Edit this message"
 msgstr "Edita aquest missatge"
@@ -1481,9 +1456,8 @@ msgstr "Intenta enviar aquest missatge ara"
 msgid "Send all"
 msgstr "Envia-ho tot"
 
-#, fuzzy
 msgid "Reply (Ctrl+R)"
-msgstr "Respon a tots"
+msgstr "Respon (Ctrl+R)"
 
 #. The preview, not the print dialog: it shows what will come
 #. out and prints from there (#359).
@@ -1499,25 +1473,20 @@ msgstr "S'estan baixant els adjunts…"
 msgid "Signature"
 msgstr "Signatura"
 
-#, fuzzy
 msgid "Newest messages"
-msgstr "Missatge més nou primer"
+msgstr "Missatges més recents"
 
-#, fuzzy
 msgid "Last week"
-msgstr "Cognom"
+msgstr "La setmana passada"
 
-#, fuzzy
 msgid "Last month"
-msgstr "Es repeteix mensualment"
+msgstr "El mes passat"
 
-#, fuzzy
 msgid "Last year"
-msgstr "Cognom"
+msgstr "L'any passat"
 
-#, fuzzy
 msgid "All mail"
-msgstr "Afegeix un correu"
+msgstr "Tot el correu"
 
 msgid "With sent mail"
 msgstr "Amb el correu enviat"
@@ -1543,9 +1512,8 @@ msgstr "Camí complet"
 msgid "{date} at {time}"
 msgstr "{date} a les {time}"
 
-#, fuzzy
 msgid "{date}, {time}"
-msgstr "{date} a les {time}"
+msgstr "{date}, {time}"
 
 msgid ""
 "Tegami Mail checks for new mail and shows notifications while its window is "
@@ -1577,9 +1545,8 @@ msgstr[0] "Hi ha un missatge nou amb {n} fitxer adjunt obert a l'Tegami Mail."
 msgstr[1] ""
 "Hi ha un missatge nou amb {n} fitxers adjunts obert a l'Tegami Mail."
 
-#, fuzzy
 msgid "On {date} at {time}, {name} wrote:"
-msgstr "{date} a les {time}"
+msgstr "El {date} a les {time}, {name} va escriure:"
 
 msgid "GnuPG (gpg) is not installed, so this message cannot be read."
 msgstr ""
@@ -1804,16 +1771,14 @@ msgstr "Esperant des de {ago}"
 msgid "Scheduled for {when}"
 msgstr "Programat per a {when}"
 
-#, fuzzy
 msgid "No read receipt yet"
-msgstr "Amaga els destinataris"
+msgstr "Encara no hi ha confirmació de lectura"
 
 msgid "{who}, {when}"
-msgstr ""
+msgstr "{who}, {when}"
 
-#, fuzzy
 msgid "Read by {count} of {total}"
-msgstr "{name} · {current} de {total}"
+msgstr "Llegit per {count} de {total}"
 
 msgid "Verified sender"
 msgstr "Remitent verificat"
@@ -1913,115 +1878,98 @@ msgstr "Signatura caducada"
 msgid "This message hasn't been checked."
 msgstr "Aquest missatge no s'ha comprovat."
 
-#, fuzzy
 msgid "Harper is not available for this computer."
-msgstr "No hi ha cap carpeta de plantilles disponible per a aquest compte"
+msgstr "El Harper no està disponible per a aquest ordinador."
 
 msgid "Harper is not downloaded. Download it in Settings → Composing."
-msgstr ""
+msgstr "El Harper no està baixat. Baixeu-lo a Paràmetres → Redacció."
 
-#, fuzzy
 msgid "Harper could not be started: {e}"
-msgstr "No s'ha pogut contactar amb el servei: {e}"
+msgstr "No s'ha pogut iniciar el Harper: {e}"
 
-#, fuzzy
 msgid "Harper's answer could not be read."
-msgstr "No s'ha pogut llegir la resposta del servei."
+msgstr "No s'ha pogut llegir la resposta del Harper."
 
-#, fuzzy
 msgid "There is no folder to install to."
-msgstr "No hi ha text per traduir."
+msgstr "No hi ha cap carpeta on instal·lar."
 
 msgid "There is not enough free space: {size} is needed."
-msgstr ""
+msgstr "No hi ha prou espai lliure: calen {size}."
 
-#, fuzzy
 msgid "The download could not start: {e}"
-msgstr "No s'ha pogut desar l'esborrany: {e}"
+msgstr "No s'ha pogut iniciar la baixada: {e}"
 
 msgid "The download was cancelled."
-msgstr ""
+msgstr "S'ha cancel·lat la baixada."
 
 msgid "The download stopped: {e}"
-msgstr ""
+msgstr "La baixada s'ha aturat: {e}"
 
 msgid "The downloaded file is not the one expected, so it was not installed."
-msgstr ""
+msgstr "El fitxer baixat no és l'esperat, així que no s'ha instal·lat."
 
-#, fuzzy
 msgid "The download could not be unpacked: {e}"
-msgstr "No s'ha pogut contactar amb el servei: {e}"
+msgstr "No s'ha pogut desempaquetar la baixada: {e}"
 
-#, fuzzy
 msgid "The files could not be written: {e}"
-msgstr "No s'ha pogut obrir el fitxer"
+msgstr "No s'han pogut escriure els fitxers: {e}"
 
 msgid "{n} MB"
-msgstr ""
+msgstr "{n} MB"
 
-#, fuzzy
 msgid "The server's answer could not be read."
-msgstr "No s'ha pogut llegir la resposta del servei."
+msgstr "No s'ha pogut llegir la resposta del servidor."
 
 msgid "Nothing answers at that address. Check that the server is running."
 msgstr ""
+"No respon res en aquesta adreça. Comproveu que el servidor estigui en "
+"funcionament."
 
-#, fuzzy
 msgid "The server's name could not be found."
-msgstr "No s'ha pogut llegir la resposta del servei."
+msgstr "No s'ha trobat el nom del servidor."
 
-#, fuzzy
 msgid "The server's address is not valid."
-msgstr "Introdueix l'adreça del servidor."
+msgstr "L'adreça del servidor no és vàlida."
 
-#, fuzzy
 msgid "The server could not be reached: {e}"
-msgstr "No s'ha pogut contactar amb el servei: {e}"
+msgstr "No s'ha pogut contactar amb el servidor: {e}"
 
-#, fuzzy
 msgid "The server did not accept the username and key."
-msgstr "El servidor no ha acceptat el nom d'usuari o la contrasenya."
+msgstr "El servidor no ha acceptat el nom d'usuari i la clau."
 
-#, fuzzy
 msgid "The message is too long for the server."
-msgstr "Aquest missatge és massa llarg per enviar-lo a traduir."
+msgstr "El missatge és massa llarg per al servidor."
 
 msgid "Too many requests: try again in a moment."
 msgstr "Massa sol·licituds: torna-ho a provar d'aquí a un moment."
 
-#, fuzzy
 msgid "The server refused the request (error {code})."
-msgstr "El servei ha refusat la sol·licitud (error {code})."
+msgstr "El servidor ha rebutjat la petició (error {code})."
 
-#, fuzzy
 msgid "LanguageTool is not available for this computer."
-msgstr "No hi ha cap carpeta d'esborranys disponible per a aquest compte"
+msgstr "El LanguageTool no està disponible per a aquest ordinador."
 
 msgid "LanguageTool stopped unexpectedly."
-msgstr ""
+msgstr "El LanguageTool s'ha aturat inesperadament."
 
 msgid "LanguageTool is not downloaded. Download it in Settings → Composing."
-msgstr ""
+msgstr "El LanguageTool no està baixat. Baixeu-lo a Paràmetres → Redacció."
 
-#, fuzzy
 msgid "LanguageTool could not be started: {e}"
-msgstr "No s'ha pogut contactar amb el servei: {e}"
+msgstr "No s'ha pogut iniciar el LanguageTool: {e}"
 
 msgid "LanguageTool could not be started."
-msgstr ""
+msgstr "No s'ha pogut iniciar el LanguageTool."
 
-#, fuzzy
 msgid "LanguageTool took too long to start."
-msgstr "El servidor ha trigat massa a respondre."
+msgstr "El LanguageTool ha trigat massa a iniciar-se."
 
-#, fuzzy
 msgid "Enter the LanguageTool server's address in Settings → Composing."
 msgstr ""
-"Introdueix l'adreça del servidor LibreTranslate a Paràmetres → Traducció."
+"Introduïu l'adreça del servidor del LanguageTool a Paràmetres → Redacció."
 
-#, fuzzy
 msgid "Enter the server's address first."
-msgstr "Introdueix l'adreça del servidor."
+msgstr "Introduïu primer l'adreça del servidor."
 
 msgid ""
 "{reason} If your organization manages your account, an administrator can "
@@ -2071,9 +2019,8 @@ msgstr "Això és massa llarg per enviar-ho a traduir."
 msgid "Use this account in Tegami Mail"
 msgstr "Utilitza aquest compte a l'Tegami Mail"
 
-#, fuzzy
 msgid "Mail saved in local folders"
-msgstr "Totes les carpetes"
+msgstr "Correu desat en carpetes locals"
 
 msgid "GNOME Online Accounts"
 msgstr "Comptes en línia del GNOME"
@@ -2086,40 +2033,35 @@ msgstr ""
 msgid "Enable this account"
 msgstr "Activa aquest compte"
 
-#, fuzzy
 msgid "Forward to…"
-msgstr "Reenvia"
+msgstr "Reenvia a…"
 
 msgid "forwards to {to}"
-msgstr ""
+msgstr "reenvia a {to}"
 
-#, fuzzy
 msgid "marked as read"
-msgstr "Marca com a llegit"
+msgstr "marcat com a llegit"
 
 msgid "deleted for good"
-msgstr ""
+msgstr "suprimit definitivament"
 
 msgid "Then"
 msgstr "Llavors"
 
-#, fuzzy
 msgid "Add action"
-msgstr "Acció"
+msgstr "Afegeix una acció"
 
-#, fuzzy
 msgid "Remove action"
-msgstr "Elimina la condició"
+msgstr "Elimina l'acció"
 
 msgid "Forward to (addresses, separated by commas)"
-msgstr ""
+msgstr "Reenvia a (adreces separades per comes)"
 
 msgid "Move to"
 msgstr "Mou a"
 
-#, fuzzy
 msgid "Permanently deletes the message"
-msgstr "Tradueix aquest missatge"
+msgstr "Suprimeix el missatge definitivament"
 
 msgid "Bring this folder back to the sidebar"
 msgstr "Torna a portar aquesta carpeta a la barra lateral"
@@ -2186,7 +2128,7 @@ msgid "✗ SMTP: {e}"
 msgstr "✗ SMTP: {e}"
 
 msgid "Criteria"
-msgstr ""
+msgstr "Criteris"
 
 msgid "All must match"
 msgstr "Totes han de coincidir"
@@ -2194,23 +2136,20 @@ msgstr "Totes han de coincidir"
 msgid "Any one may match"
 msgstr "Qualsevol pot coincidir"
 
-#, fuzzy
 msgid "Add criterion"
-msgstr "Acció"
+msgstr "Afegeix un criteri"
 
 msgid "Criterion options"
-msgstr ""
+msgstr "Opcions del criteri"
 
-#, fuzzy
 msgid "Remove criterion"
-msgstr "Elimina la condició"
+msgstr "Elimina el criteri"
 
-#, fuzzy
 msgid "{field} contains"
-msgstr "conté"
+msgstr "{field} conté"
 
 msgid "{field} {match}"
-msgstr ""
+msgstr "{field} {match}"
 
 msgid "Automatic"
 msgstr "Automàtic"
@@ -2244,43 +2183,38 @@ msgstr ""
 "Demana accés a Microsoft. Algunes organitzacions necessiten que un "
 "administrador ho aprovi."
 
-#, fuzzy
 msgid "New account"
-msgstr "Afegeix un compte"
+msgstr "Compte nou"
 
-#, fuzzy
 msgid ""
 "Paused: Mail is switched off for this account in GNOME Settings → Online "
 "Accounts."
 msgstr ""
-"En pausa: el correu està desactivat per a aquest compte als paràmetres del "
-"GNOME"
+"En pausa: el correu està desactivat per a aquest compte a Paràmetres del "
+"GNOME → Comptes en línia."
 
 msgid "Off returns it to the import list. It stays in GNOME Online Accounts."
 msgstr ""
 "Desactivat el torna a la llista d'importació. Es manté als comptes en línia "
 "del GNOME."
 
-#, fuzzy
 msgid "The password is kept in the system keyring, never in plain text."
 msgstr ""
-"La teva contrasenya es conserva a l'anell de claus del sistema, mai en text "
-"pla."
+"La contrasenya es desa a l'anell de claus del sistema, mai en text pla."
 
-#, fuzzy
 msgid ""
 "The certificate is for another name. If this server is the right one, turn "
 "on “Accept a certificate for another name” under Advanced and test again."
 msgstr ""
 "El certificat és per a un altre nom. Si aquest servidor és el correcte, "
-"activa «Accepta un certificat per a un altre nom» de dalt i torna a provar."
+"activeu «Accepta un certificat per a un altre nom» a Avançat i torneu a "
+"provar."
 
 msgid "Connected: receiving and sending work."
-msgstr ""
+msgstr "Connectat: la recepció i l'enviament funcionen."
 
-#, fuzzy
 msgid "The connection failed."
-msgstr "La connexió ha fallat: {e}"
+msgstr "Ha fallat la connexió."
 
 msgid "From address"
 msgstr "Adreça del remitent"
@@ -2352,7 +2286,7 @@ msgid "Account"
 msgstr "Compte"
 
 msgid "If"
-msgstr ""
+msgstr "Si"
 
 msgid "Separate alternatives with commas."
 msgstr "Separa les alternatives amb comes."
@@ -2360,12 +2294,11 @@ msgstr "Separa les alternatives amb comes."
 msgid "Advanced"
 msgstr "Avançat"
 
-#, fuzzy
 msgid "Message body, Reply-To, tag, count unread mail"
-msgstr "Compta el correu no llegit"
+msgstr "Cos del missatge, Reply-To, etiqueta, comptar els no llegits"
 
 msgid "Add a criterion on the body or Reply-To…"
-msgstr ""
+msgstr "Afegeix un criteri sobre el cos o el Reply-To…"
 
 msgid "Tag with"
 msgstr "Etiqueta amb"
@@ -2376,15 +2309,11 @@ msgstr "Cap"
 msgid "Count unread mail"
 msgstr "Compta el correu no llegit"
 
-#, fuzzy
 msgid "Include the folder's unread mail in the unread counts"
-msgstr ""
-"Inclou el correu no llegit de la carpeta al recompte de no llegits de la "
-"icona de la safata"
+msgstr "Inclou els no llegits de la carpeta als comptadors"
 
-#, fuzzy
 msgid "Delete filter"
-msgstr "Suprimeix la carpeta…"
+msgstr "Suprimeix el filtre"
 
 msgid "Never"
 msgstr "Mai"
@@ -2412,57 +2341,48 @@ msgstr "Servidor"
 msgid "Port"
 msgstr "Port"
 
-#, fuzzy
 msgid "Import mail"
-msgstr "Importa-ho tot"
+msgstr "Importa correu"
 
 msgid "Mail already here is not imported again."
-msgstr ""
+msgstr "El correu que ja hi és no s'importa de nou."
 
-#, fuzzy
 msgid "Evolution (Maildir)"
-msgstr "Evolution"
+msgstr "Evolution (Maildir)"
 
 msgid "Thunderbird (mbox)"
-msgstr ""
+msgstr "Thunderbird (mbox)"
 
-#, fuzzy
 msgid "Import mbox files"
-msgstr "Importa un fitxer…"
+msgstr "Importa fitxers mbox"
 
-#, fuzzy
 msgid "Import maildir folders"
-msgstr "La importació ha fallat: {e}"
+msgstr "Importa carpetes maildir"
 
-#, fuzzy
 msgid "{n} address"
 msgid_plural "{n} addresses"
-msgstr[0] "{n} llibreta d'adreces"
-msgstr[1] "{n} llibretes d'adreces"
+msgstr[0] "{n} adreça"
+msgstr[1] "{n} adreces"
 
-#, fuzzy
 msgid "{n} signature"
 msgid_plural "{n} signatures"
-msgstr[0] "Sense signatura"
-msgstr[1] "Sense signatura"
+msgstr[0] "{n} signatura"
+msgstr[1] "{n} signatures"
 
 msgid "Key: {key}"
-msgstr ""
+msgstr "Clau: {key}"
 
-#, fuzzy
 msgid "Local mail on this computer"
-msgstr "En aquest ordinador"
+msgstr "Correu local en aquest ordinador"
 
 msgid "Import from Thunderbird or Evolution…"
-msgstr ""
+msgstr "Importa del Thunderbird o de l'Evolution…"
 
-#, fuzzy
 msgid "E-mail account…"
-msgstr "Compte de correu"
+msgstr "Compte de correu…"
 
-#, fuzzy
 msgid "GNOME Online Account…"
-msgstr "Comptes en línia del GNOME"
+msgstr "Compte en línia del GNOME…"
 
 msgid "Signed in as {address}, not {email}."
 msgstr "Sessió iniciada com a {address}, no com a {email}."
@@ -2503,9 +2423,9 @@ msgstr ""
 msgid "Check GNOME Online Accounts for new accounts"
 msgstr "Comprova si hi ha comptes nous als comptes en línia del GNOME"
 
-#, fuzzy
 msgid "Accounts added in GNOME Settings → Online Accounts appear here."
-msgstr "Afegida als comptes en línia del GNOME"
+msgstr ""
+"Els comptes afegits a Paràmetres del GNOME → Comptes en línia apareixen aquí."
 
 msgid "Open Online Accounts"
 msgstr "Obre els comptes en línia"
@@ -2515,13 +2435,15 @@ msgid ""
 "“Smart folders” section follows the unified inboxes; it appears only when "
 "there is at least one."
 msgstr ""
+"Mostra els missatges que compleixen els criteris. A la barra lateral, una "
+"secció plegable «Carpetes intel·ligents» segueix les bústies unificades; "
+"només apareix quan n'hi ha almenys una."
 
 msgid "Searching…"
 msgstr "S'està cercant…"
 
-#, fuzzy
 msgid "Import tags from the servers…"
-msgstr "Suprimeix del servidor…"
+msgstr "Importa etiquetes dels servidors…"
 
 msgid "No new tags"
 msgstr "No hi ha etiquetes noves"
@@ -2548,9 +2470,8 @@ msgstr "Importa-ho tot"
 msgid "{n} messages"
 msgstr "{n} missatges"
 
-#, fuzzy
 msgid "{count} · {color}"
-msgstr "Color d'accent del compte"
+msgstr "{count} · {color}"
 
 msgid "Edit tag"
 msgstr "Edita l'etiqueta"
@@ -2558,9 +2479,8 @@ msgstr "Edita l'etiqueta"
 msgid "Remove tag"
 msgstr "Treu l'etiqueta"
 
-#, fuzzy
 msgid "New tag…"
-msgstr "Afegeix una etiqueta…"
+msgstr "Etiqueta nova…"
 
 msgid "Needs an app password, not your login password."
 msgstr ""
@@ -2604,6 +2524,9 @@ msgid ""
 "Remove {name} from Tegami Mail? Its folders and the mail in them stay on "
 "this computer, in {dir}, and come back if it is added again."
 msgstr ""
+"Voleu eliminar {name} del Tegami Mail? Les seves carpetes i el correu que "
+"contenen es queden en aquest ordinador, a {dir}, i tornen si el torneu a "
+"afegir."
 
 msgid "Edit HTML"
 msgstr "Edita l'HTML"
@@ -2683,9 +2606,8 @@ msgstr "Els de la secció unificada."
 msgid "Folders"
 msgstr "Carpetes"
 
-#, fuzzy
 msgid "Any"
-msgstr "Qualsevol etiqueta"
+msgstr "Qualsevol"
 
 msgid "Reading"
 msgstr "Lectura"
@@ -2693,23 +2615,20 @@ msgstr "Lectura"
 msgid "Attachment"
 msgstr "Adjunt"
 
-#, fuzzy
 msgid "With attachments"
-msgstr "Amaga els adjunts"
+msgstr "Amb adjunts"
 
 msgid "Any tag"
 msgstr "Qualsevol etiqueta"
 
-#, fuzzy
 msgid "Preview text, From address without Reply-To"
-msgstr "Adreça del remitent quan no s'ha definit cap Reply-To"
+msgstr "Text de previsualització, adreça del remitent sense Reply-To"
 
 msgid "Add a criterion on the preview or Reply-To…"
-msgstr ""
+msgstr "Afegeix un criteri sobre la previsualització o el Reply-To…"
 
-#, fuzzy
 msgid "Delete smart folder"
-msgstr "Suprimeix la carpeta intel·ligent…"
+msgstr "Suprimeix la carpeta intel·ligent"
 
 #. ---- Accounts (screen 26): the accounts themselves, listed by
 #. the accounts panel, then the rows to what organizes mail and to
@@ -2807,11 +2726,10 @@ msgstr ""
 "arribar."
 
 msgid "Links"
-msgstr ""
+msgstr "Enllaços"
 
-#, fuzzy
 msgid "Two-step code, server behind Cloudflare"
-msgstr "El servidor és darrere de Cloudflare"
+msgstr "Codi de dos passos, servidor darrere de Cloudflare"
 
 msgid "Check connection"
 msgstr "Comprova la connexió"
@@ -2903,14 +2821,12 @@ msgstr ""
 msgid "Connected as {who}."
 msgstr "Connectat com a {who}."
 
-#, fuzzy
 msgid "Remove account"
-msgstr "Elimina el compte…"
+msgstr "Elimina el compte"
 
-#, fuzzy
 msgid "Files already uploaded and shared links stay active at the provider."
 msgstr ""
-"Els fitxers ja pujats i els enllaços enviats continuen actius al servei del "
+"Els fitxers ja pujats i els enllaços compartits continuen actius al "
 "proveïdor."
 
 msgid "Choose an online account first."
@@ -2965,16 +2881,14 @@ msgstr "Sessió iniciada com a {who}. {terms}"
 msgid "Cloud storage"
 msgstr "Emmagatzematge al núvol"
 
-#, fuzzy
 msgid ""
 "Upload large files to your online storage and send a link instead of the "
 "attachment. Supported services: Nextcloud, ownCloud, OpenCloud, OneDrive, "
 "Dropbox and Seafile."
 msgstr ""
-"Puja fitxers grans i envia un enllaç en lloc d'adjuntar-los.\n"
-"\n"
-"Proveïdors compatibles: Nextcloud, ownCloud, OpenCloud, OneDrive, Dropbox i "
-"Seafile."
+"Pugeu els fitxers grans a l'emmagatzematge en línia i envieu un enllaç en "
+"lloc de l'adjunt. Serveis compatibles: Nextcloud, ownCloud, OpenCloud, "
+"OneDrive, Dropbox i Seafile."
 
 msgid "Cloud account"
 msgstr "Compte al núvol"
@@ -3015,9 +2929,8 @@ msgstr "Paleta d'ordres"
 msgid "Type an action, a folder or a tag, or > for actions only"
 msgstr "Escriu una acció, una carpeta o una etiqueta, o > per a només accions"
 
-#, fuzzy
 msgid "{kind} · {size}"
-msgstr "{n} fitxer · {size}"
+msgstr "{kind} · {size}"
 
 msgid "The file was moved or deleted. Attach it again from where it is now."
 msgstr "El fitxer es va moure o suprimir. Torna a adjuntar-lo des d'on és ara."
@@ -3029,25 +2942,21 @@ msgid "Remove {name}"
 msgstr "Elimina {name}"
 
 msgid "Large: some servers will refuse it."
-msgstr ""
+msgstr "Gran: alguns servidors el rebutjaran."
 
-#, fuzzy
 msgid "Send a link"
-msgstr "Obre l'enllaç"
+msgstr "Envia un enllaç"
 
-#, fuzzy
 msgid "Upload it to cloud storage and send a link instead"
-msgstr "Puja a l'emmagatzematge al núvol i comparteix un enllaç"
+msgstr "Puja'l a l'emmagatzematge al núvol i envia un enllaç"
 
-#, fuzzy
 msgid "{files} · {size}"
-msgstr "{n} fitxer · {size}"
+msgstr "{files} · {size}"
 
-#, fuzzy
 msgid "{n} file"
 msgid_plural "{n} files"
-msgstr[0] "Fitxer de so"
-msgstr[1] "Fitxer de so"
+msgstr[0] "{n} fitxer"
+msgstr[1] "{n} fitxers"
 
 msgid "{n} attachment"
 msgid_plural "{n} attachments"
@@ -3105,7 +3014,7 @@ msgstr ""
 #. was forgotten when the message contains one of them. Keep them
 #. specific: a common word would make it ask too often.
 msgid "attached, attachment, attachments, enclosed"
-msgstr ""
+msgstr "adjunt, adjunta, adjunts, adjuntes, annex"
 
 msgid "Rich text"
 msgstr "Text enriquit"
@@ -3123,10 +3032,11 @@ msgid ""
 "Zoom of the text on screen, not of the message sent. A click here, or "
 "Ctrl+0, puts it back to 100%."
 msgstr ""
+"Zoom del text a la pantalla, no del missatge enviat. Un clic aquí, o Ctrl+0, "
+"el torna al 100%."
 
-#, fuzzy
 msgid "Format"
-msgstr "Normal"
+msgstr "Format"
 
 msgid "Switch to plain text?"
 msgstr "Vols canviar a text pla?"
@@ -3166,29 +3076,26 @@ msgstr "Continua editant"
 msgid "Discard"
 msgstr "Descarta"
 
-#, fuzzy
 msgid "Sign with OpenPGP"
-msgstr "Signa amb la teva clau OpenPGP"
+msgstr "Signa amb OpenPGP"
 
 msgid "Sign with your OpenPGP key"
 msgstr "Signa amb la teva clau OpenPGP"
 
-#, fuzzy
 msgid "Encrypt with OpenPGP"
-msgstr "Xifrat amb OpenPGP"
+msgstr "Xifra amb OpenPGP"
 
 msgid "Encrypt with OpenPGP to every recipient's key"
 msgstr "Xifra amb OpenPGP amb la clau de cada destinatari"
 
 msgid "Request a read receipt"
-msgstr ""
+msgstr "Demana confirmació de lectura"
 
 msgid "Not every mail app sends one."
-msgstr ""
+msgstr "No totes les aplicacions de correu n'envien."
 
-#, fuzzy
 msgid "Check spelling"
-msgstr "Ortografia"
+msgstr "Comprova l'ortografia"
 
 msgid "Spelling language"
 msgstr "Idioma de correcció ortogràfica"
@@ -3203,7 +3110,7 @@ msgstr "Mou aquest esborrany a la paperera"
 #. "Replying and composing"): it says what it adds where "More"
 #. left it to guesswork. Reply-To comes with them.
 msgid "Cc / Bcc"
-msgstr ""
+msgstr "A/c / C/o"
 
 msgid "Show Cc, Bcc and Reply-To"
 msgstr "Mostra Cc, Cco i Respon a"
@@ -3217,9 +3124,8 @@ msgstr "Cc"
 msgid "Bcc"
 msgstr "Cco"
 
-#, fuzzy
 msgid "Reply to {name}"
-msgstr "Mou a {name}"
+msgstr "Respon a {name}"
 
 msgid ""
 "There is no OpenPGP key of your own for {addr}. Generate one under Settings, "
@@ -3238,21 +3144,19 @@ msgstr ""
 msgid "Cannot send with OpenPGP"
 msgstr "No es pot enviar amb OpenPGP"
 
-#, fuzzy
 msgid "Send without an attachment?"
-msgstr "Envia com un adjunt normal"
+msgstr "Voleu enviar-lo sense adjunt?"
 
 msgid ""
 "Your message mentions an attachment (“{word}”), but no file is attached."
 msgstr ""
+"El missatge esmenta un adjunt («{word}»), però no hi ha cap fitxer adjunt."
 
-#, fuzzy
 msgid "Send anyway"
-msgstr "Envia ara"
+msgstr "Envia igualment"
 
-#, fuzzy
 msgid "Attach a file…"
-msgstr "Adjunta fitxers"
+msgstr "Adjunta un fitxer…"
 
 msgid "An attachment is missing"
 msgstr "Falta un adjunt"
@@ -3264,17 +3168,14 @@ msgstr ""
 "L'Tegami Mail no pot llegir {names}. Es va moure o suprimir després "
 "d'adjuntar-lo. Elimina'l, o torna a adjuntar-lo des d'on és ara."
 
-#, fuzzy
 msgid "Choose the sending account"
-msgstr "Tria primer un compte en línia."
+msgstr "Trieu el compte d'enviament"
 
-#, fuzzy
 msgid "Manage accounts…"
-msgstr "Comptes en línia del GNOME"
+msgstr "Gestiona els comptes…"
 
-#, fuzzy
 msgid "Send from"
-msgstr "Envia ara"
+msgstr "Envia des de"
 
 msgid "Check the address"
 msgstr "Comprova l'adreça"
@@ -3330,20 +3231,17 @@ msgstr "Escriu alguna cosa primer, o selecciona el text per traduir."
 msgid "Could not translate"
 msgstr "No s'ha pogut traduir"
 
-#, fuzzy
 msgid "Draft saved at {time}"
-msgstr "{date} a les {time}"
+msgstr "Esborrany desat a les {time}"
 
-#, fuzzy
 msgid "Send the message"
-msgstr "Vols desar el missatge?"
+msgstr "Envia el missatge"
 
 msgid "Send"
 msgstr "Envia"
 
-#, fuzzy
 msgid "More actions"
-msgstr "Accions de lliscament"
+msgstr "Més accions"
 
 msgid "Download password for {name}: {password}"
 msgstr "Contrasenya de descàrrega per a {name}: {password}"
@@ -3405,7 +3303,7 @@ msgid "First level"
 msgstr "Primer nivell"
 
 msgid "Encryption, port, search base and scope"
-msgstr ""
+msgstr "Xifratge, port, base i àmbit de cerca"
 
 msgid "Leave empty for a directory that needs no sign-in."
 msgstr "Deixa-ho buit per a un directori que no necessita inici de sessió."
@@ -3537,16 +3435,14 @@ msgid "Contacts"
 msgstr "Contactes"
 
 msgid "Books"
-msgstr ""
+msgstr "Llibretes"
 
-#, fuzzy
 msgid ""
 "Where contacts come from for suggestions, sender pictures and filters. A "
 "book switched off is ignored by Tegami Mail."
 msgstr ""
-"D'on surten els contactes per a Contactes, els suggeriments, les imatges "
-"dels remitents i els filtres. Desactivar-ne una la deixa fora de l'Tegami "
-"Mail."
+"D'on surten els contactes per als suggeriments, les imatges dels remitents i "
+"els filtres. El Tegami Mail ignora les llibretes desactivades."
 
 msgid "Look again for address books"
 msgstr "Torna a cercar llibretes d'adreces"
@@ -3569,26 +3465,23 @@ msgstr "Desa els contactes nous a"
 msgid "Unless another is picked when the contact is made."
 msgstr "Tret que se n'esculli una altra en crear el contacte."
 
-#, fuzzy
 msgid "Open Contacts"
-msgstr "Obre els contactes del GNOME"
+msgstr "Obre Contactes"
 
 msgid "To add Google or Microsoft 365."
-msgstr ""
+msgstr "Per afegir Google o Microsoft 365."
 
 msgid "Looking for address books on {name}…"
 msgstr "S'estan cercant llibretes d'adreces a {name}…"
 
-#, fuzzy
 msgid "Attach to message"
-msgstr "Adjunta a un missatge nou"
+msgstr "Adjunta al missatge"
 
 msgid "Insert in text"
 msgstr "Insereix al text"
 
-#, fuzzy
 msgid "Upload and share a link"
-msgstr "Puja a l'emmagatzematge al núvol i comparteix un enllaç"
+msgstr "Puja i comparteix un enllaç"
 
 msgid "Attach to new message"
 msgstr "Adjunta a un missatge nou"
@@ -3659,9 +3552,8 @@ msgid_plural "{n} messages"
 msgstr[0] "{n} missatge"
 msgstr[1] "{n} missatges"
 
-#, fuzzy
 msgid "Later today ({time})"
-msgstr "Avui, {time}"
+msgstr "Més tard avui ({time})"
 
 msgid "Tomorrow morning ({time})"
 msgstr "Demà al matí ({time})"
@@ -3669,9 +3561,8 @@ msgstr "Demà al matí ({time})"
 msgid "Tomorrow afternoon ({time})"
 msgstr "Demà a la tarda ({time})"
 
-#, fuzzy
 msgid "Saturday morning ({time})"
-msgstr "Dilluns al matí ({time})"
+msgstr "Dissabte al matí ({time})"
 
 msgid "Monday morning ({time})"
 msgstr "Dilluns al matí ({time})"
@@ -3680,7 +3571,7 @@ msgid "Pick a date and time…"
 msgstr "Tria una data i una hora…"
 
 msgid "Unsnooze"
-msgstr ""
+msgstr "Anul·la la posposició"
 
 msgid "That time has passed"
 msgstr "Aquesta hora ja ha passat"
@@ -3740,13 +3631,11 @@ msgid "Clear selection"
 msgstr "Desselecciona-ho tot"
 
 #. The scope button beside it says where it looks.
-#, fuzzy
 msgid "Search…"
-msgstr "S'està cercant…"
+msgstr "Cerca…"
 
-#, fuzzy
 msgid "Searching the server…"
-msgstr "S'està cercant…"
+msgstr "S'està cercant al servidor…"
 
 msgid "Choose which folders to search"
 msgstr "Tria quines carpetes cercar"
@@ -3760,9 +3649,8 @@ msgstr "De contactes"
 msgid "High importance"
 msgstr "Importància alta"
 
-#, fuzzy
 msgid "Any date"
-msgstr "Data"
+msgstr "Qualsevol data"
 
 msgid "Today"
 msgstr "Avui"
@@ -3770,25 +3658,20 @@ msgstr "Avui"
 msgid "Last 7 days"
 msgstr "Últims 7 dies"
 
-#, fuzzy
 msgid "Last 30 days"
-msgstr "Últims 7 dies"
+msgstr "Últims 30 dies"
 
-#, fuzzy
 msgid "This year"
-msgstr "Aquesta carpeta"
+msgstr "Aquest any"
 
-#, fuzzy
 msgid "{from} to {to}"
-msgstr "{cur} de {total}"
+msgstr "Del {from} al {to}"
 
-#, fuzzy
 msgid "Since {date}"
-msgstr "caduca el {date}"
+msgstr "Des del {date}"
 
-#, fuzzy
 msgid "Until {date}"
-msgstr "caduca el {date}"
+msgstr "Fins al {date}"
 
 msgid "Remove stars"
 msgstr "Treu les destacats"
@@ -3836,18 +3719,16 @@ msgstr "Respost"
 msgid "Forwarded"
 msgstr "Reenviat"
 
-#, fuzzy
 msgid "Snoozed until {when}"
-msgstr "Programat per a {when}"
+msgstr "Posposat fins a {when}"
 
 msgid "In {folder}"
 msgstr "A {folder}"
 
-#, fuzzy
 msgid "{n} more tag: {names}"
 msgid_plural "{n} more tags: {names}"
-msgstr[0] "Treu l'etiqueta {name}"
-msgstr[1] "Treu l'etiqueta {name}"
+msgstr[0] "{n} etiqueta més: {names}"
+msgstr[1] "{n} etiquetes més: {names}"
 
 msgid "Last 14 days"
 msgstr "Últims 14 dies"
@@ -3926,9 +3807,8 @@ msgstr "Mostra el text citat"
 msgid "Hide quoted text"
 msgstr "Amaga el text citat"
 
-#, fuzzy
 msgid "Copy address"
-msgstr "Copia l'adreça de l'enllaç"
+msgstr "Copia l'adreça"
 
 msgid "Add to contacts"
 msgstr "Afegeix a contactes"
@@ -3936,9 +3816,8 @@ msgstr "Afegeix a contactes"
 msgid "Double-click to open in a new window"
 msgstr "Fes doble clic per obrir en una finestra nova"
 
-#, fuzzy
 msgid "To: {names}"
-msgstr "Afegeix l'etiqueta {name}"
+msgstr "A: {names}"
 
 msgid "Show recipients"
 msgstr "Mostra els destinataris"
@@ -3949,13 +3828,12 @@ msgstr "Fes clic per obrir aquest missatge"
 #. One sentence with both parts, so a language can order them as it
 #. needs; each count is its own plural.
 msgid "{messages} · {participants}"
-msgstr ""
+msgstr "{messages} · {participants}"
 
-#, fuzzy
 msgid "{n} participant"
 msgid_plural "{n} participants"
-msgstr[0] "{n} destinatari"
-msgstr[1] "{n} destinataris"
+msgstr[0] "{n} participant"
+msgstr[1] "{n} participants"
 
 msgid "Repeats daily"
 msgstr "Es repeteix diàriament"
@@ -4086,11 +3964,10 @@ msgid "Translate"
 msgstr "Tradueix"
 
 msgid "Open with…"
-msgstr ""
+msgstr "Obre amb…"
 
-#, fuzzy
 msgid "Save as…"
-msgstr "Desa-ho tot…"
+msgstr "Desa com a…"
 
 msgid "Save all…"
 msgstr "Desa-ho tot…"
@@ -4136,23 +4013,22 @@ msgid "Message"
 msgstr "Missatge"
 
 msgid "{name} asked for a read receipt."
-msgstr ""
+msgstr "{name} ha demanat una confirmació de lectura."
 
 msgid "{name} asked for a read receipt, to be sent to {addr}."
-msgstr ""
+msgstr "{name} ha demanat una confirmació de lectura, que s'enviarà a {addr}."
 
 msgid "Send receipt"
-msgstr ""
+msgstr "Envia la confirmació"
 
-#, fuzzy
 msgid "Tells the sender you opened this message"
-msgstr "Respon a tots d'aquest missatge"
+msgstr "Diu al remitent que heu obert aquest missatge"
 
 msgid "Ignore"
-msgstr ""
+msgstr "Ignora"
 
 msgid "Sends nothing and stops asking"
-msgstr ""
+msgstr "No envia res i deixa de preguntar"
 
 msgid "Copied"
 msgstr "Copiat"
@@ -4204,12 +4080,11 @@ msgstr "Canvia la plantilla en si"
 msgid "Start a new message from a copy of the template"
 msgstr "Comença un missatge nou a partir d'una còpia de la plantilla"
 
-#, fuzzy
 msgid "{size} in total"
-msgstr "{shown} de {total}"
+msgstr "{size} en total"
 
 msgid "Executable file: open it only if you trust it."
-msgstr ""
+msgstr "Fitxer executable: obriu-lo només si hi confieu."
 
 msgid "me"
 msgstr "jo"
@@ -4290,17 +4165,14 @@ msgstr ""
 msgid "Status bar ({n})"
 msgstr "Barra d'estat ({n})"
 
-#, fuzzy
 msgid "All keys"
-msgstr "Tots els tipus"
+msgstr "Totes les claus"
 
-#, fuzzy
 msgid "Not trusted"
-msgstr "Encara no és de confiança"
+msgstr "No de confiança"
 
-#, fuzzy
 msgid "Expired or revoked"
-msgstr "Signat, clau revocada"
+msgstr "Caducada o revocada"
 
 msgid "expires {date}"
 msgstr "caduca el {date}"
@@ -4350,29 +4222,24 @@ msgstr ""
 "La teva clau signa el que envies i obre el que s'xifra per a tu. Comparteix "
 "la seva meitat pública amb les persones que t'escriuen."
 
-#, fuzzy
 msgid "Correspondents’ keys"
-msgstr "Corresponsals"
+msgstr "Claus dels corresponsals"
 
-#, fuzzy
 msgid "Check the fingerprint with its owner before trusting a key."
-msgstr ""
-"Les claus amb què xifres i comproves signatures. Comprova l'empremta amb el "
-"seu propietari abans de confiar-hi."
+msgstr "Comproveu l'empremta amb el propietari abans de confiar en una clau."
 
 msgid "Search by name, address or key ID"
-msgstr ""
+msgstr "Cerca per nom, adreça o ID de clau"
 
 msgid "No keys from other people yet."
 msgstr "Encara no hi ha claus d'altres persones."
 
-#, fuzzy
 msgid ""
 "Uses the GnuPG {version} keyring, the same as the gpg command and other "
 "applications."
 msgstr ""
-"El mateix anell de claus que utilitzen l'ordre gpg i altres aplicacions de "
-"correu."
+"Fa servir l'anell de claus del GnuPG {version}, el mateix que l'ordre gpg i "
+"altres aplicacions."
 
 msgid ""
 "GnuPG was not found. Install the gnupg package to read encrypted mail and "
@@ -4390,13 +4257,11 @@ msgstr "No s'ha pogut generar la clau: {e}"
 msgid "No key found: {e}"
 msgstr "No s'ha trobat cap clau: {e}"
 
-#, fuzzy
 msgid "Import a key…"
-msgstr "Importa una clau"
+msgstr "Importa una clau…"
 
-#, fuzzy
 msgid "Generate a key…"
-msgstr "Genera una clau"
+msgstr "Genera una clau…"
 
 msgid "Fetch by address…"
 msgstr "Obtén per adreça…"
@@ -4515,7 +4380,6 @@ msgstr[1] "S'han importat {n} claus."
 msgid "That key was already in your keyring."
 msgstr "Aquesta clau ja era al teu anell de claus."
 
-#, fuzzy
 msgid "Follow the system"
 msgstr "Segueix el sistema"
 
@@ -4540,78 +4404,70 @@ msgstr "Cada 15 minuts"
 msgid "Every 30 minutes"
 msgstr "Cada 30 minuts"
 
-#, fuzzy
 msgid "Downloading: {done} of {total}"
-msgstr "Carpeta {done} de {total}"
+msgstr "S'està baixant: {done} de {total}"
 
-#, fuzzy
 msgid "Not available for this computer."
-msgstr "No hi ha cap carpeta d'esborranys disponible per a aquest compte"
+msgstr "No disponible per a aquest ordinador."
 
-#, fuzzy
 msgid "Version {version}, on this computer."
-msgstr "Tegami Mail, en aquest ordinador"
+msgstr "Versió {version}, en aquest ordinador."
 
 msgid "Not downloaded yet. The download is {size}."
-msgstr ""
+msgstr "Encara no s'ha baixat. La baixada ocupa {size}."
 
 msgid "Download"
 msgstr "Baixa"
 
-#, fuzzy
 msgid "The files could not be removed."
-msgstr "No s'ha pogut obrir el fitxer"
+msgstr "No s'han pogut eliminar els fitxers."
 
 msgid "The download stopped unexpectedly."
-msgstr ""
+msgstr "La baixada s'ha aturat inesperadament."
 
 msgid "Grammar"
-msgstr ""
+msgstr "Gramàtica"
 
 msgid "Check grammar and style"
-msgstr ""
+msgstr "Comprova la gramàtica i l'estil"
 
-#, fuzzy
 msgid "Right-click a marked phrase for suggestions."
-msgstr "Fes clic dret en una paraula per veure'n correccions."
+msgstr "Feu clic amb el botó dret en una frase marcada per veure suggeriments."
 
-#, fuzzy
 msgid "Checker"
-msgstr "Comprova"
+msgstr "Corrector"
 
 msgid "Harper"
-msgstr ""
+msgstr "Harper"
 
-#, fuzzy
 msgid "LanguageTool"
-msgstr "Idioma"
+msgstr "LanguageTool"
 
-#, fuzzy
 msgid "LanguageTool server"
-msgstr "Idiomes"
+msgstr "Servidor LanguageTool"
 
 msgid "English only. Nothing leaves this computer."
-msgstr ""
+msgstr "Només en anglès. No surt res d'aquest ordinador."
 
 msgid "Multi-language support. Nothing leaves this computer. Uses 1GB of RAM"
 msgstr ""
+"Admet diverses llengües. No surt res d'aquest ordinador. Fa servir 1 GB de "
+"RAM"
 
-#, fuzzy
 msgid "What you write is sent to the server as you type."
-msgstr "Aquesta carpeta no és al servidor"
+msgstr "El que escriviu s'envia al servidor mentre escriviu."
 
 msgid "Username (LanguageTool Premium)"
-msgstr ""
+msgstr "Nom d'usuari (LanguageTool Premium)"
 
 msgid "API key (LanguageTool Premium)"
-msgstr ""
+msgstr "Clau de l'API (LanguageTool Premium)"
 
 msgid "Check the settings"
 msgstr "Comprova els paràmetres"
 
-#, fuzzy
 msgid "Sends a test sentence to the server."
-msgstr "No s'ha pogut connectar al servidor."
+msgstr "Envia una frase de prova al servidor."
 
 msgid "Check"
 msgstr "Comprova"
@@ -4620,10 +4476,10 @@ msgid "Checking…"
 msgstr "S'està comprovant…"
 
 msgid "The check stopped unexpectedly."
-msgstr ""
+msgstr "La comprovació s'ha aturat inesperadament."
 
 msgid "It works: {server} answered."
-msgstr ""
+msgstr "Funciona: {server} ha respost."
 
 msgid "Account of the current folder"
 msgstr "Compte de la carpeta actual"
@@ -4631,9 +4487,8 @@ msgstr "Compte de la carpeta actual"
 msgid "Default"
 msgstr "Per defecte"
 
-#, fuzzy
 msgid "Same as reading pane zoom"
-msgstr "Al panell de lectura."
+msgstr "Igual que el zoom de la subfinestra de lectura"
 
 msgid "Above the quoted message"
 msgstr "A sobre del missatge citat"
@@ -4666,27 +4521,21 @@ msgstr ""
 "Comptes, preferències, filtres, etiquetes i disposició, en un sol fitxer. "
 "Les contrasenyes i les claus OpenPGP no s'inclouen."
 
-#, fuzzy
 msgid "Saves everything in one file."
-msgstr ""
-"Desa tots els contactes de la llibreta de l'Tegami Mail en un sol "
-"fitxer .vcf."
+msgstr "Ho desa tot en un fitxer."
 
-#, fuzzy
 msgid "Import settings…"
-msgstr "Importa els paràmetres"
+msgstr "Importa els paràmetres…"
 
-#, fuzzy
 msgid ""
 "Replaces your settings. Keep your accounts in place: removing them first "
 "deletes their passwords."
 msgstr ""
-"Substitueix-ho tot al seu lloc. No eliminis primer els comptes: això "
-"suprimeix les seves contrasenyes."
+"Substitueix els vostres paràmetres. Mantingueu els comptes: si els elimineu "
+"abans, se n'esborren les contrasenyes."
 
-#, fuzzy
 msgid "When a message is opened."
-msgstr "Millor un missatge nou"
+msgstr "Quan s'obre un missatge."
 
 msgid "When displayed"
 msgstr "Quan es mostra"
@@ -4697,43 +4546,38 @@ msgstr "Després de dos segons"
 msgid "Newest message first"
 msgstr "Missatge més nou primer"
 
-#, fuzzy
 msgid "In a conversation."
-msgstr "Destaca la conversa"
+msgstr "En una conversa."
 
-#, fuzzy
 msgid "Confirm deleting a conversation"
-msgstr "Suprimeix la conversa"
+msgstr "Confirma la supressió d'una conversa"
 
 msgid "Swipe to archive or delete"
-msgstr ""
+msgstr "Llisca per arxivar o suprimir"
 
 msgid "For touch screens and touchpads."
-msgstr ""
+msgstr "Per a pantalles tàctils i ratolins tàctils."
 
 msgid "Desktop notifications"
 msgstr "Notificacions d'escriptori"
 
-#, fuzzy
 msgid "While the window is in the background."
-msgstr "Per a correu nou i errors, mentre la finestra és en segon pla."
+msgstr "Mentre la finestra és en segon pla."
 
 msgid "Show sender and subject"
 msgstr "Mostra el remitent i l'assumpte"
 
 msgid "Off, the notification only says “New message”."
-msgstr ""
+msgstr "Desactivat, la notificació només diu «Missatge nou»."
 
-#, fuzzy
 msgid "Read receipts"
-msgstr "Amaga els destinataris"
+msgstr "Confirmacions de lectura"
 
 msgid "When someone opens mail you asked a receipt for."
-msgstr ""
+msgstr "Quan algú obre un correu del qual heu demanat confirmació."
 
-#, fuzzy
 msgid "Check for new messages"
-msgstr "Comprova si hi ha correu nou"
+msgstr "Comprova si hi ha missatges nous"
 
 msgid "Instant new mail (push)"
 msgstr "Correu nou instantani (push)"
@@ -4747,12 +4591,15 @@ msgstr "Estil"
 msgid ""
 "Follows the system by default. The accent colour also comes from the system."
 msgstr ""
+"Segueix el sistema per defecte. El color d'èmfasi també ve del sistema."
 
 msgid "Keep running in the background"
 msgstr "Continua executant-se en segon pla"
 
 msgid "Closing the window keeps Tegami Mail running for notifications."
 msgstr ""
+"Tancar la finestra manté el Tegami Mail en funcionament per a les "
+"notificacions."
 
 msgid "Start at login"
 msgstr "Inicia en iniciar sessió"
@@ -4760,9 +4607,8 @@ msgstr "Inicia en iniciar sessió"
 msgid "Single-key shortcuts"
 msgstr "Dreceres d'una sola tecla"
 
-#, fuzzy
 msgid "Ctrl+? shows them all."
-msgstr "Ctrl+0 torna al valor per defecte."
+msgstr "Ctrl+? les mostra totes."
 
 msgid "Gmail keys"
 msgstr "Tecles del Gmail"
@@ -4773,9 +4619,8 @@ msgstr "Canvia les dreceres d'una sola tecla per les equivalents del Gmail."
 msgid "Keep downloaded mail"
 msgstr "Conserva el correu baixat"
 
-#, fuzzy
 msgid "On this computer, for reading offline."
-msgstr "En aquest ordinador"
+msgstr "En aquest ordinador, per llegir sense connexió."
 
 msgid "Always"
 msgstr "Sempre"
@@ -4789,9 +4634,8 @@ msgstr "90 dies"
 msgid "30 days"
 msgstr "30 dies"
 
-#, fuzzy
 msgid "Large attachments"
-msgstr "Té adjunts"
+msgstr "Adjunts grans"
 
 msgid "Ask each time"
 msgstr "Pregunta cada vegada"
@@ -4802,36 +4646,32 @@ msgstr "Adjunta'ls igualment"
 msgid "Upload to cloud storage and link them"
 msgstr "Puja'ls a l'emmagatzematge al núvol i enllaça'ls"
 
-#, fuzzy
 msgid "Remote content"
-msgstr "Mostra el contingut remot"
+msgstr "Contingut remot"
 
-#, fuzzy
 msgid "Images and remote content"
-msgstr "Carrega sempre el contingut remot"
+msgstr "Imatges i contingut remot"
 
-#, fuzzy
 msgid "Remote content can tell the sender when and from where you read."
-msgstr "El contingut remot pot dir a un remitent quan i on llegeixes."
+msgstr "El contingut remot pot dir al remitent quan i des d'on llegiu."
 
 msgid "Ask"
-msgstr ""
+msgstr "Pregunta"
 
-#, fuzzy
 msgid "Sender photos and logos"
-msgstr "Mostra les fonts i colors del remitent"
+msgstr "Fotos i logotips dels remitents"
 
 msgid ""
 "Gravatar and website logos: the sender’s address is sent to these services."
 msgstr ""
+"Gravatar i logotips de llocs web: l'adreça del remitent s'envia a aquests "
+"serveis."
 
-#, fuzzy
 msgid "Answer read-receipt requests"
-msgstr "Amaga els destinataris"
+msgstr "Respon les peticions de confirmació de lectura"
 
-#, fuzzy
 msgid "A receipt tells the sender you opened the message."
-msgstr "Respon a tots d'aquest missatge"
+msgstr "Una confirmació diu al remitent que heu obert el missatge."
 
 msgid "Other font…"
 msgstr "Una altra font…"
@@ -4869,27 +4709,22 @@ msgstr "No s'ha pogut desar el PDF: {error}"
 msgid "Edit"
 msgstr "Edita"
 
-#, fuzzy
 msgid "{n} quoted message"
 msgid_plural "{n} quoted messages"
-msgstr[0] "{n} missatge no llegit"
-msgstr[1] "{n} missatges no llegits"
+msgstr[0] "{n} missatge citat"
+msgstr[1] "{n} missatges citats"
 
-#, fuzzy
 msgid "Conversation history"
-msgstr "Converses"
+msgstr "Historial de la conversa"
 
-#, fuzzy
 msgid "Hide history"
-msgstr "Amaga la carpeta"
+msgstr "Amaga l'historial"
 
-#, fuzzy
 msgid "Show history"
-msgstr "Mostra només"
+msgstr "Mostra l'historial"
 
-#, fuzzy
 msgid "Show previous message"
-msgstr "Missatge anterior"
+msgstr "Mostra el missatge anterior"
 
 msgid "Sans serif"
 msgstr "Sans Serif"
@@ -4901,10 +4736,10 @@ msgid "Monospace"
 msgstr "Monoespaiada"
 
 msgid "Grammar check failed: {error}"
-msgstr ""
+msgstr "Ha fallat la comprovació gramatical: {error}"
 
 msgid "No suggestions"
-msgstr ""
+msgstr "Cap suggeriment"
 
 msgid "Normal"
 msgstr "Normal"
@@ -5035,13 +4870,11 @@ msgstr "Elimina el compte…"
 msgid "Follow settings: {sort}"
 msgstr "Segueix els paràmetres: {sort}"
 
-#, fuzzy
 msgid "Sync this folder"
-msgstr "Aquesta carpeta"
+msgstr "Sincronitza aquesta carpeta"
 
-#, fuzzy
 msgid "New subfolder…"
-msgstr "Carpeta nova…"
+msgstr "Subcarpeta nova…"
 
 msgid "Rename…"
 msgstr "Canvia el nom…"
@@ -5067,9 +4900,8 @@ msgstr "Buida la paperera…"
 msgid "Empty junk…"
 msgstr "Buida la brossa…"
 
-#, fuzzy
 msgid "Delete folder"
-msgstr "Suprimeix la carpeta…"
+msgstr "Suprimeix la carpeta"
 
 msgid "Edit tag…"
 msgstr "Edita l'etiqueta…"
@@ -5108,66 +4940,58 @@ msgid "Delete smart folder…"
 msgstr "Suprimeix la carpeta intel·ligent…"
 
 msgid "Blue"
-msgstr ""
+msgstr "Blau"
 
 msgid "Green"
-msgstr ""
+msgstr "Verd"
 
-#, fuzzy
 msgid "Yellow"
-msgstr "Quadrat groc"
+msgstr "Groc"
 
 msgid "Orange"
-msgstr ""
+msgstr "Taronja"
 
-#, fuzzy
 msgid "Red"
-msgstr "Refés"
+msgstr "Vermell"
 
 msgid "Purple"
-msgstr ""
+msgstr "Lila"
 
 msgid "Brown"
-msgstr ""
+msgstr "Marró"
 
 msgid "Gray"
-msgstr ""
+msgstr "Gris"
 
-#, fuzzy
 msgid "New tag"
-msgstr "No hi ha etiquetes noves"
+msgstr "Etiqueta nova"
 
-#, fuzzy
 msgid "Tag name"
-msgstr "Afegeix l'etiqueta {name}"
+msgstr "Nom de l'etiqueta"
 
 msgid "Color"
 msgstr "Color"
 
-#, fuzzy
 msgid "Search or create…"
-msgstr "Cerca missatges…"
+msgstr "Cerca o crea…"
 
 msgid "Search or create a tag"
-msgstr ""
+msgstr "Cerca o crea una etiqueta"
 
-#, fuzzy
 msgid "Favorite"
-msgstr "Preferits"
+msgstr "Preferit"
 
-#, fuzzy
 msgid "Manage tags…"
-msgstr "Troba etiquetes…"
+msgstr "Gestiona les etiquetes…"
 
-#, fuzzy
 msgid "Create “{name}”"
-msgstr "Vols suprimir «{name}»?"
+msgstr "Crea «{name}»"
 
 msgid "File"
 msgstr "Fitxer"
 
 msgid "Script"
-msgstr ""
+msgstr "Escriptura"
 
 msgid ""
 "Uses a translation service under your own key. A message's text is sent only "
@@ -5179,26 +5003,23 @@ msgstr ""
 msgid "Key"
 msgstr "Clau"
 
-#, fuzzy
 msgid "Server, region"
-msgstr "Dades del servidor"
+msgstr "Servidor, regió"
 
 msgid "Region (empty for a global resource)"
 msgstr "Regió (buit per a un recurs global)"
 
-#, fuzzy
 msgid "Check the service"
-msgstr "Comprova els paràmetres"
+msgstr "Comprova el servei"
 
 msgid "Translates a greeting to test the service."
 msgstr "Tradueix una salutació per provar el servei."
 
-#, fuzzy
 msgid ""
 "A “Translate” button shows on messages in another language. The language is "
 "detected on this computer."
 msgstr ""
-"Els missatges en un altre idioma mostren un botó «Tradueix». L'idioma es "
+"Un botó «Tradueix» apareix als missatges en una altra llengua. La llengua es "
 "detecta en aquest ordinador."
 
 msgid "Tegami Mail's language ({language})"
@@ -5216,32 +5037,26 @@ msgstr "Inicia sessió"
 msgid "The sign-in window was closed."
 msgstr "La finestra d'inici de sessió s'ha tancat."
 
-#, fuzzy
 msgid "Add your accounts"
-msgstr "Afegeix un compte al núvol"
+msgstr "Afegiu els comptes"
 
-#, fuzzy
 msgid "Another account"
-msgstr "Afegeix un compte"
+msgstr "Un altre compte"
 
-#, fuzzy
 msgid "Email account…"
-msgstr "Compte de correu"
+msgstr "Compte de correu…"
 
-#, fuzzy
 msgid "With an address and a password (IMAP)"
-msgstr "Introdueix primer la teva adreça de correu i la contrasenya."
+msgstr "Amb una adreça i una contrasenya (IMAP)"
 
-#, fuzzy
 msgid "For Google or Microsoft 365"
-msgstr "Microsoft 365"
+msgstr "Per a Google o Microsoft 365"
 
 msgid "Continue"
 msgstr "Continua"
 
-#, fuzzy
 msgid "Added"
-msgstr "Paraules afegides"
+msgstr "Afegit"
 
 msgid "Add"
 msgstr "Afegeix"
@@ -5253,16 +5068,19 @@ msgid ""
 "Tegami Mail found these accounts in GNOME Online Accounts. One click adds "
 "each of them."
 msgstr ""
+"El Tegami Mail ha trobat aquests comptes als Comptes en línia del GNOME. Un "
+"clic afegeix cadascun."
 
-#, fuzzy
 msgid "Email account"
 msgstr "Compte de correu"
 
 msgid "Tegami Mail finds the servers of most providers from your address."
 msgstr ""
+"El Tegami Mail troba els servidors de la majoria de proveïdors a partir de "
+"l'adreça."
 
 msgid "Display name, servers, API token"
-msgstr ""
+msgstr "Nom visible, servidors, testimoni de l'API"
 
 msgid "Provider"
 msgstr "Proveïdor"
@@ -5291,7 +5109,6 @@ msgstr "URL del token"
 msgid "Scopes (space-separated)"
 msgstr "Àmbits (separats per espais)"
 
-#, fuzzy
 msgid "Test and add"
 msgstr "Prova i afegeix"
 
@@ -5300,9 +5117,8 @@ msgstr ""
 "Introdueix primer la teva adreça de correu, l'ID de client i els dos URL "
 "d'OAuth."
 
-#, fuzzy
 msgid "Sign in and add"
-msgstr "Inicia sessió i afegeix"
+msgstr "Inicia la sessió i afegeix"
 
 msgid "Enter your email address and password first."
 msgstr "Introdueix primer la teva adreça de correu i la contrasenya."
@@ -5323,22 +5139,24 @@ msgid ""
 "Your mail, in one place, simply. Let’s start by connecting your first "
 "account."
 msgstr ""
+"El vostre correu, en un sol lloc, de manera senzilla. Comencem connectant el "
+"primer compte."
 
 msgid "Get started"
 msgstr "Comença"
 
-#, fuzzy
 msgid "You’re all set"
-msgstr "Tot a punt"
+msgstr "Ja està tot a punt"
 
-#, fuzzy
 msgid "Start reading"
-msgstr "Destacats"
+msgstr "Comença a llegir"
 
 msgid ""
 "Tegami Mail is fetching the mail of {email}. It will appear in a moment. You "
 "can adjust the rest in the preferences."
 msgstr ""
+"El Tegami Mail està recuperant el correu de {email}. Apareixerà d'aquí a un "
+"moment. Podeu ajustar la resta a les preferències."
 
 msgid ""
 "Offline: there is no network connection. Mail syncs again once the network "
@@ -5449,7 +5267,7 @@ msgid "A Microsoft account can't receive mail from another account"
 msgstr "Un compte de Microsoft no pot rebre correu d'un altre compte"
 
 msgid "“{folder}” is left out of search: {reason}"
-msgstr ""
+msgstr "«{folder}» queda fora de la cerca: {reason}"
 
 msgid "Connecting to {host}…"
 msgstr "S'està connectant a {host}…"
@@ -5534,41 +5352,36 @@ msgid "Could not reach the JMAP server: {e}"
 msgstr "No s'ha pogut contactar amb el servidor JMAP: {e}"
 
 msgid "Mail on this computer is not sent, and has no drafts"
-msgstr ""
+msgstr "El correu d'aquest ordinador no s'envia i no té esborranys"
 
 msgid "Mail is not sent from On This Computer: choose another From address"
 msgstr ""
+"No s'envia correu des d'«En aquest ordinador»: trieu una altra adreça de "
+"remitent"
 
-#, fuzzy
 msgid "Could not import {path}: {e}"
-msgstr "No s'ha pogut importar: {e}"
+msgstr "No s'ha pogut importar {path}: {e}"
 
-#, fuzzy
 msgid "Importing {done} of {total} messages…"
-msgstr "Carpeta {done} de {total}"
+msgstr "S'estan important {done} de {total} missatges…"
 
-#, fuzzy
 msgid "A folder by that name already exists"
-msgstr "Ja hi ha una carpeta anomenada {new_name}."
+msgstr "Ja existeix una carpeta amb aquest nom"
 
 msgid "The folder still holds mail"
-msgstr ""
+msgstr "La carpeta encara conté correu"
 
-#, fuzzy
 msgid "That is not a folder name"
-msgstr "Aquesta carpeta"
+msgstr "Aquest no és un nom de carpeta vàlid"
 
-#, fuzzy
 msgid "Could not store the message: {e}"
 msgstr "No s'ha pogut desar el missatge: {e}"
 
-#, fuzzy
 msgid "Could not open the folders on this computer: {e}"
-msgstr "No s'ha pogut buidar la carpeta: {e}"
+msgstr "No s'han pogut obrir les carpetes d'aquest ordinador: {e}"
 
-#, fuzzy
 msgid "Reading {n} messages…"
-msgstr "S'estan indexant {n} missatges…"
+msgstr "S'estan llegint {n} missatges…"
 
 #. Nothing failed: the message waits for the network, which the
 #. Refresh button already shows is down (#442).
@@ -5613,6 +5426,7 @@ msgstr ""
 msgid ""
 "The server refused the message because it is too large. It said: {reply}"
 msgstr ""
+"El servidor ha rebutjat el missatge perquè és massa gran. Resposta: {reply}"
 
 msgid "The message is signed or encrypted, and removing a file would break it"
 msgstr "El missatge està signat o xifrat, i eliminar un fitxer el trencaria"
@@ -5654,17 +5468,13 @@ msgstr "No s'ha pogut afegir el contacte: {e}"
 msgid "Search filters"
 msgstr "Cerca filtres"
 
-#, fuzzy
 msgid "File or tag mail as it arrives. Filters run on each Inbox as it syncs."
 msgstr ""
-"Arxiva o etiqueta el correu entrant automàticament. Els filtres s'executen a "
-"cada bústia d'entrada a mesura que es sincronitza; «Aplica ara» els executa "
-"sobre el correu que ja hi ha."
+"Arxiveu o etiqueteu el correu a mesura que arriba. Els filtres s'apliquen a "
+"cada bústia d'entrada mentre se sincronitza."
 
-#, fuzzy
 msgid "Runs every rule over the mail already in your inboxes."
-msgstr ""
-"Executa totes les regles sobre el correu que ja hi ha a les bústies d'entrada"
+msgstr "Aplica totes les regles al correu que ja és a les bústies d'entrada."
 
 #. GNOME Online Accounts owns this account's servers and
 #. credentials; Tegami Mail only mirrors them, and can hide it
@@ -5676,53 +5486,46 @@ msgstr "Compte en línia del GNOME"
 msgid "Show in Tegami Mail"
 msgstr "Mostra a l'Tegami Mail"
 
-#, fuzzy
 msgid "Managed by GNOME Online Accounts"
-msgstr "Afegida als comptes en línia del GNOME"
+msgstr "Gestionat pels Comptes en línia del GNOME"
 
-#, fuzzy
 msgid ""
 "Its address, servers and password are changed in Settings → Online Accounts."
 msgstr ""
-"Gestionat pels comptes en línia del GNOME. La seva adreça, servidors i "
-"contrasenya es canvien a Paràmetres → Comptes en línia."
+"L'adreça, els servidors i la contrasenya es canvien a Paràmetres → Comptes "
+"en línia."
 
 #. The nickname names the account in the sidebar and lists, the
 #. address standing in while there is none (owner, 2026-11-08).
 msgid "Nickname"
 msgstr "Àlies"
 
-#, fuzzy
 msgid "Account colour"
-msgstr "Color d'accent del compte"
+msgstr "Color del compte"
 
 msgid "Accent of this account’s badges and outlines."
-msgstr ""
+msgstr "Color d'èmfasi de les insígnies i els contorns d'aquest compte."
 
-#, fuzzy
 msgid "Show in combined views"
-msgstr "Mostra els encapçalaments de columna"
+msgstr "Mostra a les vistes combinades"
 
-#, fuzzy
 msgid "Favorites, tags and smart folders from all accounts."
-msgstr "Crea una carpeta nova per a aquest compte."
+msgstr "Preferits, etiquetes i carpetes intel·ligents de tots els comptes."
 
 msgid "Storage"
 msgstr "Emmagatzematge"
 
-#, fuzzy
 msgid "Servers and connection"
-msgstr "Prova la connexió"
+msgstr "Servidors i connexió"
 
-#, fuzzy
 msgid "Synchronisation"
-msgstr "Mostra la traducció"
+msgstr "Sincronització"
 
 msgid "Instant mail, automatic cleanup"
-msgstr ""
+msgstr "Correu instantani, neteja automàtica"
 
 msgid "Sent, drafts, trash, archive"
-msgstr ""
+msgstr "Enviats, esborranys, paperera, arxiu"
 
 msgid "Send-as aliases"
 msgstr "Àlies d'enviament"
@@ -5730,20 +5533,18 @@ msgstr "Àlies d'enviament"
 msgid "Signatures"
 msgstr "Signatures"
 
-#, fuzzy
 msgid "OpenPGP encryption"
-msgstr "Claus OpenPGP"
+msgstr "Xifratge OpenPGP"
 
 msgid "Also removes its saved password. Mail on the server is not touched."
 msgstr ""
+"També elimina la contrasenya desada. El correu del servidor no es toca."
 
-#, fuzzy
 msgid "Incoming"
-msgstr "Servidor entrant"
+msgstr "Entrant"
 
-#, fuzzy
 msgid "Protocol"
-msgstr "Proton Mail"
+msgstr "Protocol"
 
 msgid "Sign in with browser"
 msgstr "Inicia sessió amb el navegador"
@@ -5761,19 +5562,17 @@ msgid "Open Online Accounts…"
 msgstr "Obre els comptes en línia…"
 
 msgid "Outgoing (SMTP)"
-msgstr ""
+msgstr "Sortint (SMTP)"
 
-#, fuzzy
 msgid "Use other credentials"
-msgstr "Desactivat utilitza les credencials de dalt."
+msgstr "Fes servir altres credencials"
 
-#, fuzzy
 msgid "Off: the incoming credentials are used."
-msgstr "Desactivat utilitza les credencials de dalt."
+msgstr "Desactivat: es fan servir les credencials d'entrada."
 
-#, fuzzy
 msgid "API token, custom OAuth app, certificate for another name"
-msgstr "Accepta un certificat per a un altre nom"
+msgstr ""
+"Testimoni de l'API, aplicació OAuth pròpia, certificat per a un altre nom"
 
 msgid "Sign in with an API token"
 msgstr "Inicia sessió amb un token d'API"
@@ -5783,9 +5582,8 @@ msgstr ""
 "Per a servidors, com el Fastmail, que accepten un token en lloc d'una "
 "contrasenya."
 
-#, fuzzy
 msgid "OAuth client secret (optional)"
-msgstr "Secret de client OAuth (opcional)"
+msgstr "Secret del client OAuth (opcional)"
 
 #. Microsoft's own sign-in, made with another app registration
 #. (#329): one an organization has approved, say. Empty rows keep
@@ -5830,63 +5628,58 @@ msgstr ""
 msgid "Test connection"
 msgstr "Prova la connexió"
 
-#, fuzzy
 msgid "New messages"
-msgstr "Missatge nou"
+msgstr "Missatges nous"
 
-#, fuzzy
 msgid "Turn off for servers that block push connections."
-msgstr "Desactiva-ho per a servidors que es bloquegen amb les connexions push."
+msgstr "Desactiveu-ho per als servidors que bloquen les connexions push."
 
 #. Auto-empty (#140): mail past the chosen age in Junk / Trash is
 #. deleted for good at each sync.
-#, fuzzy
 msgid "Automatic cleanup"
-msgstr "Automàtic"
+msgstr "Neteja automàtica"
 
-#, fuzzy
 msgid "Empty Junk"
-msgstr "Buida la brossa…"
+msgstr "Buida la brossa"
 
-#, fuzzy
 msgid "Empty Trash"
-msgstr "Buida la paperera…"
+msgstr "Buida la paperera"
 
 msgid "The general setting is in Application."
-msgstr ""
+msgstr "El paràmetre general és a Aplicació."
 
 msgid "Leaves out Trash, Junk and Drafts."
-msgstr ""
+msgstr "Exclou la Paperera, la Brossa i els Esborranys."
 
-#, fuzzy
 msgid "Include attachments"
-msgstr "No hi ha adjunts"
+msgstr "Inclou els adjunts"
 
 msgid "Can consume a lot of hard drive space."
-msgstr ""
+msgstr "Pot ocupar molt d'espai al disc."
 
-#, fuzzy
 msgid "Copy mail to On This Computer"
-msgstr "En aquest ordinador"
+msgstr "Copia el correu a «En aquest ordinador»"
 
 msgid ""
 "Downloads copies of every message from every folder of this account to this "
 "computer (except Trash, Junk and Drafts) and stores them in On This Computer."
 msgstr ""
+"Baixa còpies de tots els missatges de totes les carpetes d'aquest compte a "
+"aquest ordinador (excepte Paperera, Brossa i Esborranys) i les desa a «En "
+"aquest ordinador»."
 
 msgid "Special folders"
 msgstr "Carpetes especials"
 
-#, fuzzy
 msgid ""
 "Follows the server’s own markings unless you pick a folder. Nothing already "
 "on the server moves."
 msgstr ""
-"Segueix les marques del servidor tret que triïs una carpeta. Res del que ja "
-"és al servidor es mou."
+"Segueix les marques del servidor tret que trieu una carpeta. No es mou res "
+"del que ja hi ha al servidor."
 
 msgid "Templates, snoozed, reply copies, server copy"
-msgstr ""
+msgstr "Plantilles, posposats, còpies de respostes, còpia al servidor"
 
 #. Nothing on a server marks a Templates folder (#360), nor the one
 #. snoozed mail waits in (#527): found by name, or pointed at here.
@@ -5894,7 +5687,7 @@ msgid "Templates"
 msgstr "Plantilles"
 
 msgid "Snoozed"
-msgstr ""
+msgstr "Posposats"
 
 #. Replies beside what they answer (#468), for IMAP and JMAP.
 msgid "Save a copy of replies in"
@@ -5911,14 +5704,13 @@ msgstr "Per al Gmail i altres que arxiven ells mateixos el correu enviat."
 
 #. Its own folder order, or the application's.
 msgid "Order"
-msgstr ""
+msgstr "Ordre"
 
 msgid "Folder order"
 msgstr "Ordre de carpetes"
 
-#, fuzzy
 msgid "Otherwise, drag them in the sidebar."
-msgstr "Arrossega per reordenar-les a la barra lateral."
+msgstr "Si no, arrossegueu-les a la barra lateral."
 
 msgid "Hidden folders"
 msgstr "Carpetes amagades"
@@ -5933,21 +5725,21 @@ msgstr ""
 msgid "No hidden folders."
 msgstr "No hi ha carpetes amagades."
 
-#, fuzzy
 msgid ""
 "Extra addresses this account can send as. They appear in the composer’s From "
 "field."
-msgstr "Adreces addicionals amb què aquest compte pot enviar."
+msgstr ""
+"Adreces addicionals amb què aquest compte pot enviar. Apareixen al camp De "
+"del redactor."
 
-#, fuzzy
 msgid "Start new messages with this signature"
-msgstr "Comença els missatges amb aquesta signatura"
+msgstr "Comença els missatges nous amb aquesta signatura"
 
 msgid "Delete signature"
 msgstr "Suprimeix la signatura"
 
 msgid "With several signatures, the composer offers a button to choose."
-msgstr ""
+msgstr "Amb diverses signatures, el redactor ofereix un botó per triar."
 
 msgid "Add signature"
 msgstr "Afegeix una signatura"
@@ -5956,13 +5748,11 @@ msgstr "Afegeix una signatura"
 msgid "Import file…"
 msgstr "Importa un fitxer…"
 
-#, fuzzy
 msgid "HTML or text"
-msgstr "Fitxers HTML i de text"
+msgstr "HTML o text"
 
-#, fuzzy
 msgid "Automatic: the key whose address matches."
-msgstr "Automàtic utilitza la clau l'adreça de la qual coincideix."
+msgstr "Automàtic: la clau amb l'adreça coincident."
 
 #. For an account whose mail is always signed (#267): the composer's
 #. toggle starts on, and still turns it off for one message.
@@ -5972,17 +5762,14 @@ msgstr "Signa els missatges per defecte"
 msgid "Hide the subject of encrypted mail"
 msgstr "Amaga l'assumpte del correu xifrat"
 
-#, fuzzy
 msgid "Only the recipients see the subject."
-msgstr "Només els destinataris veuen l'assumpte. Els altres veuen «...»."
+msgstr "Només els destinataris veuen l'assumpte."
 
-#, fuzzy
 msgid "Manage keys"
-msgstr "Troba etiquetes…"
+msgstr "Gestiona les claus"
 
-#, fuzzy
 msgid "Import, generate, trust."
-msgstr "Importa una signatura"
+msgstr "Importa, genera, confia."
 
 msgid "Search senders"
 msgstr "Cerca remitents"
@@ -6014,107 +5801,92 @@ msgstr "Adreça o domini"
 msgid "Block this sender"
 msgstr "Bloca aquest remitent"
 
-#, fuzzy
 msgid ""
 "Tags are stored on the server as IMAP keywords, so Thunderbird and other "
 "clients show them too. The first nine are mapped to the 1–9 keys."
 msgstr ""
-"Les etiquetes s'emmagatzemen al servidor com a paraules clau IMAP, així que "
-"el Thunderbird i altres clients també les mostren.\n"
-"\n"
-"Arrossega per reordenar-les. Les nou primeres s'assignen a les tecles 1–9."
+"Les etiquetes es desen al servidor com a paraules clau IMAP, de manera que "
+"el Thunderbird i altres clients també les mostren. Les nou primeres "
+"corresponen a les tecles 1–9."
 
 msgid "Look through every mailbox for tags other clients have set"
 msgstr ""
 "Repassa totes les bústies per trobar etiquetes que altres clients hagin posat"
 
-#, fuzzy
 msgid "Senders"
-msgstr "Remitent"
+msgstr "Remitents"
 
 msgid "Translation"
 msgstr "Traducció"
 
 msgid "Backup and restore"
-msgstr ""
+msgstr "Còpia de seguretat i restauració"
 
-#, fuzzy
 msgid "Drag an account to change its order in the sidebar."
-msgstr "Arrossega per reordenar-les a la barra lateral."
+msgstr "Arrossegueu un compte per canviar-ne l'ordre a la barra lateral."
 
-#, fuzzy
 msgid "Organize mail"
-msgstr "Correu"
+msgstr "Organitza el correu"
 
-#, fuzzy
 msgid "Services"
-msgstr "Servei"
+msgstr "Serveis"
 
-#, fuzzy
 msgid "Allowed and blocked"
-msgstr "Remitents permesos"
+msgstr "Permesos i blocats"
 
 msgid "Composing"
 msgstr "Redacció"
 
-#, fuzzy
 msgid "Replies are sent from the address that received the message."
-msgstr "Les respostes responen des de l'adreça a la qual es van enviar."
+msgstr "Les respostes s'envien des de l'adreça que ha rebut el missatge."
 
-#, fuzzy
 msgid "Format of new messages"
-msgstr "A la part superior de la llista"
+msgstr "Format dels missatges nous"
 
 msgid "How long a message can still be recalled."
-msgstr ""
+msgstr "Quant de temps encara es pot fer enrere un missatge."
 
 msgid "Notifications"
 msgstr "Notificacions"
 
 msgid "Sound and banners"
-msgstr ""
+msgstr "So i bàners"
 
 msgid "Open the system notification settings"
-msgstr ""
+msgstr "Obre els paràmetres de notificació del sistema"
 
 msgid "Sound, banners and Do Not Disturb are set there."
-msgstr ""
+msgstr "El so, els bàners i el No molesteu es configuren allà."
 
 msgid "Privacy"
 msgstr "Privacitat"
 
-#, fuzzy
 msgid "Application"
-msgstr "Acció"
+msgstr "Aplicació"
 
 msgid "Appearance"
 msgstr "Aparença"
 
-#, fuzzy
 msgid "Background"
-msgstr "Executa en segon pla"
+msgstr "Segon pla"
 
-#, fuzzy
 msgid "Keyboard and storage"
-msgstr "Dreceres de teclat"
+msgstr "Teclat i emmagatzematge"
 
-#, fuzzy
 msgid "{n} tag"
 msgid_plural "{n} tags"
-msgstr[0] "Qualsevol etiqueta"
-msgstr[1] "Qualsevol etiqueta"
+msgstr[0] "{n} etiqueta"
+msgstr[1] "{n} etiquetes"
 
-#, fuzzy
 msgid "{n} filter"
 msgid_plural "{n} filters"
-msgstr[0] "Fitxer de so"
-msgstr[1] "Fitxer de so"
+msgstr[0] "{n} filtre"
+msgstr[1] "{n} filtres"
 
-#, fuzzy
 msgid "{n} smart folder"
 msgid_plural "{n} smart folders"
-msgstr[0] "Afegeix una carpeta intel·ligent"
-msgstr[1] "Afegeix una carpeta intel·ligent"
+msgstr[0] "{n} carpeta intel·ligent"
+msgstr[1] "{n} carpetes intel·ligents"
 
 msgid "Send new messages from"
 msgstr "Envia missatges nous des de"
@@ -6173,14 +5945,15 @@ msgstr "Línia separadora a sobre de la signatura"
 msgid "The standard “-- ” line, which other mail apps recognize."
 msgstr "La línia estàndard «-- », que altres aplicacions de correu reconeixen."
 
-#, fuzzy
 msgid "Hide conversation history"
-msgstr "Selecciona primer una conversa."
+msgstr "Amaga l'historial de la conversa"
 
 msgid ""
 "Replies and forwards open with the quoted messages hidden. They are sent "
 "either way."
 msgstr ""
+"Les respostes i els reenviaments s'obren amb els missatges citats amagats. "
+"S'envien igualment."
 
 msgid "Undo send"
 msgstr "Desfés l'enviament"
@@ -6189,37 +5962,31 @@ msgid "How long Undo is offered after sending."
 msgstr "Quant de temps s'ofereix desfer després d'enviar."
 
 msgid "Request read receipts"
-msgstr ""
+msgstr "Demana confirmacions de lectura"
 
-#, fuzzy
 msgid "Returned receipts"
-msgstr "Amaga els destinataris"
+msgstr "Confirmacions rebudes"
 
 msgid "Sent mail shows who read it; the receipt goes here."
-msgstr ""
+msgstr "El correu enviat mostra qui l'ha llegit; la confirmació va aquí."
 
-#, fuzzy
 msgid "Move to trash"
-msgstr "Mou el correu de llistes a la paperera"
+msgstr "Mou a la paperera"
 
-#, fuzzy
 msgid "Keep in inbox"
-msgstr "Deixa-ho a la bústia d'entrada"
+msgstr "Conserva a la bústia d'entrada"
 
-#, fuzzy
 msgid "Reply header"
-msgstr "Adreça de resposta"
+msgstr "Capçalera de la resposta"
 
 msgid "{name}, {address}, {date} and {time} are filled in from the original."
-msgstr ""
+msgstr "{name}, {address}, {date} i {time} s'omplen a partir de l'original."
 
-#, fuzzy
 msgid "Line above the quoted message"
-msgstr "A sobre del missatge citat"
+msgstr "Línia damunt del missatge citat"
 
-#, fuzzy
 msgid "Restore default"
-msgstr "Restaura els valors per defecte"
+msgstr "Restaura el valor per defecte"
 
 msgid "Spelling"
 msgstr "Ortografia"
@@ -6285,7 +6052,12 @@ msgid ""
 "is blocked until you allow it, and there is no telemetry. It works with "
 "IMAP, POP3, JMAP and Microsoft 365, and with any server from iCloud to "
 "Proton Bridge to a Stalwart of your own."
-msgstr "Tegami Mail és un client de correu d'escriptori per al GNOME, escrit en Rust amb libadwaita. El vostre correu i les vostres credencials es queden a l'ordinador, el contingut remot es bloca fins que el permeteu i no hi ha telemetria. Funciona amb IMAP, POP3, JMAP i Microsoft 365, i amb qualsevol servidor, des d'iCloud fins a Proton Bridge o el vostre propi Stalwart."
+msgstr ""
+"Tegami Mail és un client de correu d'escriptori per al GNOME, escrit en Rust "
+"amb libadwaita. El vostre correu i les vostres credencials es queden a "
+"l'ordinador, el contingut remot es bloca fins que el permeteu i no hi ha "
+"telemetria. Funciona amb IMAP, POP3, JMAP i Microsoft 365, i amb qualsevol "
+"servidor, des d'iCloud fins a Proton Bridge o el vostre propi Stalwart."
 
 msgid "Accounts and mail:"
 msgstr "Comptes i correu:"
@@ -6293,20 +6065,29 @@ msgstr "Comptes i correu:"
 msgid ""
 "Several accounts, with Microsoft sign-in built in, Google through GNOME "
 "Online Accounts, or any account already set up in GNOME"
-msgstr "Diversos comptes, amb l'inici de sessió de Microsoft integrat, Google mitjançant els Comptes en línia del GNOME o qualsevol compte ja configurat al GNOME"
+msgstr ""
+"Diversos comptes, amb l'inici de sessió de Microsoft integrat, Google "
+"mitjançant els Comptes en línia del GNOME o qualsevol compte ja configurat "
+"al GNOME"
 
 msgid ""
 "Whole-mailbox sync and search, conversations across folders, and changes "
 "made on other devices synced back"
-msgstr "Sincronització i cerca a tota la bústia, converses entre carpetes i canvis fets en altres dispositius sincronitzats de tornada"
+msgstr ""
+"Sincronització i cerca a tota la bústia, converses entre carpetes i canvis "
+"fets en altres dispositius sincronitzats de tornada"
 
 msgid ""
 "Folders, filters, tags, smart folders and favorites, with Trash and Junk "
 "emptied by hand or on a schedule"
-msgstr "Carpetes, filtres, etiquetes, carpetes intel·ligents i preferits, amb la paperera i el correu brossa buidats a mà o de manera programada"
+msgstr ""
+"Carpetes, filtres, etiquetes, carpetes intel·ligents i preferits, amb la "
+"paperera i el correu brossa buidats a mà o de manera programada"
 
 msgid "Snooze, Undo Send, an Outbox for sends that fail, and printing"
-msgstr "Posposar, desfer l'enviament, una bústia de sortida per als enviaments fallits i impressió"
+msgstr ""
+"Posposar, desfer l'enviament, una bústia de sortida per als enviaments "
+"fallits i impressió"
 
 msgid "Writing:"
 msgstr "Escriptura:"
@@ -6314,7 +6095,9 @@ msgstr "Escriptura:"
 msgid ""
 "Rich or plain text, HTML signatures, templates, inline images, spell and "
 "grammar checking, and undo"
-msgstr "Text enriquit o pla, signatures HTML, plantilles, imatges integrades, correcció ortogràfica i gramatical, i desfer"
+msgstr ""
+"Text enriquit o pla, signatures HTML, plantilles, imatges integrades, "
+"correcció ortogràfica i gramatical, i desfer"
 
 msgid "Drafts, quote folding, and forwarding that keeps the attachments"
 msgstr "Esborranys, cites plegades i reenviaments que conserven els adjunts"
@@ -6322,14 +6105,19 @@ msgstr "Esborranys, cites plegades i reenviaments que conserven els adjunts"
 msgid ""
 "Large files shared from your own Nextcloud, ownCloud, OpenCloud or Seafile "
 "server, OneDrive or Dropbox; a Send with Tegami Mail entry in GNOME Files"
-msgstr "Fitxers grans compartits des del vostre propi servidor Nextcloud, ownCloud, OpenCloud o Seafile, OneDrive o Dropbox; una entrada «Envia amb el Tegami Mail» a Fitxers del GNOME"
+msgstr ""
+"Fitxers grans compartits des del vostre propi servidor Nextcloud, ownCloud, "
+"OpenCloud o Seafile, OneDrive o Dropbox; una entrada «Envia amb el Tegami "
+"Mail» a Fitxers del GNOME"
 
 msgid "Reading:"
 msgstr "Lectura:"
 
 msgid ""
 "Each conversation as a column of cards, with message zoom and translation"
-msgstr "Cada conversa com una columna de targetes, amb zoom dels missatges i traducció"
+msgstr ""
+"Cada conversa com una columna de targetes, amb zoom dels missatges i "
+"traducció"
 
 msgid ""
 "OpenPGP signing, encryption and reading; DKIM, SPF and DMARC checked on "
@@ -6341,7 +6129,9 @@ msgstr ""
 msgid ""
 "Meeting invitations answered in place, read receipts, and one-click "
 "unsubscribe from list mail"
-msgstr "Invitacions a reunions respostes al mateix missatge, confirmacions de lectura i baixa de llistes de correu amb un clic"
+msgstr ""
+"Invitacions a reunions respostes al mateix missatge, confirmacions de "
+"lectura i baixa de llistes de correu amb un clic"
 
 msgid "The app:"
 msgstr "L'aplicació:"
@@ -6349,20 +6139,27 @@ msgstr "L'aplicació:"
 msgid ""
 "An adaptive layout that follows the system's style, text size, language and "
 "clock"
-msgstr "Una interfície adaptable que segueix l'estil, la mida del text, la llengua i el format d'hora del sistema"
+msgstr ""
+"Una interfície adaptable que segueix l'estil, la mida del text, la llengua i "
+"el format d'hora del sistema"
 
 msgid "Swipe actions and single-key shortcuts, with a Gmail variant"
-msgstr "Accions en lliscar i dreceres d'una sola tecla, amb una variant del Gmail"
+msgstr ""
+"Accions en lliscar i dreceres d'una sola tecla, amb una variant del Gmail"
 
 msgid ""
 "Notifications with actions, and mail that keeps arriving with the window "
 "closed"
-msgstr "Notificacions amb accions, i correu que continua arribant amb la finestra tancada"
+msgstr ""
+"Notificacions amb accions, i correu que continua arribant amb la finestra "
+"tancada"
 
 msgid ""
 "GNOME Contacts, CardDAV address books and LDAP directories; passwords kept "
 "in the system keyring"
-msgstr "Contactes del GNOME, llibretes d'adreces CardDAV i directoris LDAP; contrasenyes desades a l'anell de claus del sistema"
+msgstr ""
+"Contactes del GNOME, llibretes d'adreces CardDAV i directoris LDAP; "
+"contrasenyes desades a l'anell de claus del sistema"
 
 msgid "Hyprlab"
 msgstr "Hyprlab"
