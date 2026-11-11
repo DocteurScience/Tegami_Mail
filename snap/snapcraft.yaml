@@ -33,6 +33,18 @@ compression: lzo
 # and strict confinement lets a snap own only the names it declares:
 # without this slot, AppArmor refused it and the app quit at launch
 # ("not allowed to own the service ... due to AppArmor policy").
+# The address books of GNOME Contacts, read straight from Evolution Data
+# Server's files (src/contacts/read.rs): hidden folders, which the home plug
+# leaves out. Read-only. Not connected on install: `snap connect
+# tegami-mail:evolution-files` (or the Snap Store's approval).
+plugs:
+  evolution-files:
+    interface: personal-files
+    read:
+      - $HOME/.local/share/evolution
+      - $HOME/.cache/evolution
+      - $HOME/.config/evolution
+
 slots:
   tegami-mail-dbus:
     interface: dbus
@@ -55,6 +67,8 @@ apps:
       - removable-media             # attachments on USB drives
       - password-manager-service    # the keyring: passwords and OAuth tokens
       - online-accounts-service     # GNOME Online Accounts
+      - contacts-service            # Evolution Data Server's address books: Add to Contacts, the books' names
+      - evolution-files             # the address books' files (see plugs above)
       - gpg-keys                    # OpenPGP signing and encryption
       - gpg-public-keys
 

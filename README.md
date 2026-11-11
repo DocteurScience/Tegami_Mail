@@ -44,7 +44,15 @@ Download the latest release:
 - **[AppImage](https://github.com/DocteurScience/Tegami_Mail/releases/latest/download/Tegami.Mail-x86_64.AppImage)**
   for x86_64: make it executable (`chmod +x Tegami.Mail-x86_64.AppImage`)
   and run it.
-- **Snap:** not attached to the release yet; it will be added there.
+- **Snap:** the `.snap` file of the release, once attached, installed with
+  `sudo snap install --dangerous tegami-mail_*.snap`. A snap installed this
+  way, outside the Snap Store, gets only the permissions snapd grants
+  everyone; connect the others it needs (the keyring, GNOME Online
+  Accounts and GNOME Contacts, OpenPGP, USB drives):
+
+  ```bash
+  for p in password-manager-service online-accounts-service contacts-service evolution-files gpg-keys gpg-public-keys removable-media; do sudo snap connect tegami-mail:$p; done
+  ```
 
 Every release, with its notes, is on the
 [releases page](https://github.com/DocteurScience/Tegami_Mail/releases).

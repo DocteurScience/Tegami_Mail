@@ -25,16 +25,41 @@ pub(crate) struct Book {
     pub(crate) groups: Option<GroupFormat>,
 }
 
-// Inside a Flatpak sandbox `dirs::{data,cache,config}_dir()` are redirected into
-// ~/.var/app/<app-id>/, but EDS's books live in the *host's* real XDG dirs (made
-// visible by the `--filesystem=xdg-{data,cache,config}/evolution:ro` grants). So
-// under Flatpak resolve them from the real home instead of the redirected XDG env.
+/// Where EDS keeps one kind of its files (`subdir` of the home: `.local/share`,
+/// `.cache`, `.config`), as seen from wherever Tegami Mail runs.
+///
+/// EDS's books live in the host's real XDG directories, but a sandbox moves
+/// `dirs::{data,cache,config}_dir()` elsewhere: a Flatpak into
+/// `~/.var/app/<app-id>/` (the books are made visible by the
+/// `--filesystem=xdg-*/evolution:ro` grants), a snap into
+/// `~/snap/<name>/<revision>/`, with the real home in `SNAP_REAL_HOME` (and
+/// the books made visible by the `personal-files` plug). Under either the
+/// real home is used instead.
 fn host_xdg(sandbox: fn() -> Option<PathBuf>, subdir: &str) -> Option<PathBuf> {
-    if crate::desktop::platform::is_flatpak() {
-        dirs::home_dir().map(|h| h.join(subdir))
-    } else {
-        sandbox()
+    host_xdg_from(
+        crate::desktop::platform::is_flatpak(),
+        std::env::var_os("SNAP_REAL_HOME").map(PathBuf::from),
+        dirs::home_dir(),
+        sandbox(),
+        subdir,
+    )
+}
+
+/// The decision of [`host_xdg`], from what it reads.
+fn host_xdg_from(
+    flatpak: bool,
+    snap_real_home: Option<PathBuf>,
+    home: Option<PathBuf>,
+    sandbox: Option<PathBuf>,
+    subdir: &str,
+) -> Option<PathBuf> {
+    if let Some(real) = snap_real_home.filter(|h| !h.as_os_str().is_empty()) {
+        return Some(real.join(subdir));
     }
+    if flatpak {
+        return home.map(|h| h.join(subdir));
+    }
+    sandbox
 }
 
 pub(super) fn data_dir() -> Option<PathBuf> {
@@ -473,4 +498,45 @@ pub(super) fn source_display_name(uid: &str) -> Option<String> {
         "Data Source",
         "DisplayName",
     )
+}
+
+#[cfg(test)]
+mod host_xdg_tests {
+    use super::host_xdg_from;
+    use std::path::PathBuf;
+
+    fn p(s: &str) -> Option<PathBuf> {
+        Some(PathBuf::from(s))
+    }
+
+    #[test]
+    fn a_snap_reads_the_books_from_the_real_home() {
+        assert_eq!(
+            host_xdg_from(
+                false,
+                p("/home/ana"),
+                p("/home/ana/snap/tegami-mail/12"),
+                p("/home/ana/snap/tegami-mail/12/.local/share"),
+                ".local/share",
+            ),
+            p("/home/ana/.local/share")
+        );
+    }
+
+    #[test]
+    fn a_flatpak_reads_them_from_the_home_and_a_native_build_from_xdg() {
+        assert_eq!(
+            host_xdg_from(true, None, p("/home/ana"), p("/x"), ".cache"),
+            p("/home/ana/.cache")
+        );
+        assert_eq!(
+            host_xdg_from(false, None, p("/home/ana"), p("/xdg/cache"), ".cache"),
+            p("/xdg/cache")
+        );
+        // An empty variable is no snap.
+        assert_eq!(
+            host_xdg_from(false, p(""), p("/home/ana"), p("/xdg/cache"), ".cache"),
+            p("/xdg/cache")
+        );
+    }
 }
