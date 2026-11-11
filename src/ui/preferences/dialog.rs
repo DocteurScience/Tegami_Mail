@@ -489,15 +489,7 @@ fn service_subtitles(rows: &[(&'static str, adw::ActionRow)]) {
 /// GNOME Settings on its Notifications panel, where sound, banners and Do
 /// Not Disturb are set (screen 23).
 fn open_system_notifications() {
-    let launched = gtk::gio::AppInfo::create_from_commandline(
-        "gnome-control-center notifications",
-        None,
-        gtk::gio::AppInfoCreateFlags::NONE,
-    )
-    .and_then(|app| app.launch(&[], gtk::gio::AppLaunchContext::NONE));
-    if let Err(e) = launched {
-        tracing::warn!("could not open the system notification settings: {e}");
-    }
+    crate::desktop::settings_panel::open_settings_panel("notifications");
 }
 
 #[cfg(test)]

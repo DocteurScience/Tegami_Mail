@@ -67,38 +67,9 @@ fn sign_in(
     });
 }
 
-/// Open GNOME Settings → Online Accounts. Uses D-Bus app activation so it works
-/// both natively and inside a Flatpak (with `--talk-name=org.gnome.Settings`);
-/// falls back to the CLI on non-GNOME/older setups.
+/// Open GNOME Settings → Online Accounts.
 pub(crate) fn open_online_accounts() {
-    if activate_online_accounts_panel().is_err() {
-        let _ = std::process::Command::new("gnome-control-center")
-            .arg("online-accounts")
-            .spawn();
-    }
-}
-
-fn activate_online_accounts_panel() -> Result<(), gtk::glib::Error> {
-    let conn = gtk::gio::bus_get_sync(gtk::gio::BusType::Session, gtk::gio::Cancellable::NONE)?;
-    // org.freedesktop.Application.ActivateAction(action: s, parameter: av, a{sv}).
-    // GNOME Settings' "launch-panel" action takes a (sav): (panel_id, extra_args).
-    let panel = ("online-accounts", Vec::<gtk::glib::Variant>::new()).to_variant();
-    let params: Vec<gtk::glib::Variant> = vec![panel];
-    let platform: std::collections::HashMap<String, gtk::glib::Variant> =
-        std::collections::HashMap::new();
-    let args = ("launch-panel", params, platform).to_variant();
-    conn.call_sync(
-        Some("org.gnome.Settings"),
-        "/org/gnome/Settings",
-        "org.freedesktop.Application",
-        "ActivateAction",
-        Some(&args),
-        None,
-        gtk::gio::DBusCallFlags::NONE,
-        -1,
-        gtk::gio::Cancellable::NONE,
-    )?;
-    Ok(())
+    crate::desktop::settings_panel::open_settings_panel("online-accounts");
 }
 
 impl AccountsWindow {
