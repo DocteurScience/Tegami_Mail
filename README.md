@@ -35,12 +35,20 @@ See [docs/FEATURES.md](docs/FEATURES.md) for the full list and
 
 ## Install
 
-No release has been published yet. Until then:
+Download the latest release:
 
-- **From source:** see [docs/BUILDING.md](docs/BUILDING.md).
-- **Flatpak, Snap or AppImage:** each successful run of the
-  [CI workflows](https://github.com/DocteurScience/Tegami_Mail/actions)
-  attaches the packages it built as artifacts.
+- **[Flatpak](https://github.com/DocteurScience/Tegami_Mail/releases/latest/download/tegami-mail.flatpak)**,
+  then install it with
+  `flatpak install --user tegami-mail.flatpak` (the GNOME runtime comes
+  from Flathub, which `flatpak install` asks for).
+- **[AppImage](https://github.com/DocteurScience/Tegami_Mail/releases/latest/download/Tegami.Mail-x86_64.AppImage)**
+  for x86_64: make it executable (`chmod +x Tegami.Mail-x86_64.AppImage`)
+  and run it.
+- **Snap:** not attached to the release yet; it will be added there.
+
+Every release, with its notes, is on the
+[releases page](https://github.com/DocteurScience/Tegami_Mail/releases).
+To build it yourself, see [docs/BUILDING.md](docs/BUILDING.md).
 
 ## Contributing
 
