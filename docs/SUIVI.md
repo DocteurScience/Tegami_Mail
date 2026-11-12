@@ -11,14 +11,13 @@ Dernière mise à jour : 2026-11-02, après `40a6c7e`.
 
 - Base : import de Hylki 1.46.0, renommé Tegami Mail (commits du
   2026-10-31 et du 2026-11-01 jusqu'à `fd0ccce`).
-- Version : 1.0.0 (2026-11-11), première de Tegami Mail.
-- CI : compilation et tests verts jusqu'au dernier commit ; le snap échoue
-  depuis `c31a9e4` faute d'atteindre le magasin Snap (api.snapcraft.io,
-  panne réseau côté GitHub, pas le code) : relancer quand il répond.
-- Tests : 1078 réussis, 40 ignorés (la baisse suit les fonctions retirées
-  par l'audit).
+- Version : 1.0.2 (2026-11-11), publiée avec Flatpak, AppImage et snap
+  (`release.yml`). 1.0.0 et 1.0.1 n'ont pas de snap (panne du Snap Store).
+- CI : compilation, tests et snap verts au 2026-11-12.
+- Tests : 1084 réussis, 40 ignorés ; clippy en `-D warnings` et `cargo doc`
+  sans avertissement.
 - Référence du design : `docs/DESIGN.md`, `docs/DESIGN_STRINGS.md`,
-  maquettes `data/repo/design/01` à `48`.
+  maquettes `data/repo/design/01` à `52`.
 
 ## Fait
 
@@ -360,6 +359,11 @@ sous le nom.
 
 ## Reste à faire (connu)
 
+- Sur une Ubuntu, le snap 1.0.2 après `snap connect` : contacts dans le
+  composeur, Ajouter aux contacts, bouton Ouvrir GNOME Contacts.
+- Sur la machine du propriétaire : icône de l'assistant et d'À propos,
+  lien vers les réglages de notification (1.0.1).
+- Relecture des dix catalogues traduits hors français par des locuteurs.
 - Vérifier contraste élevé et mode sombre sur une vraie session GNOME.
 - Plus de question ouverte dans DESIGN.md : les maquettes sombres ne sont
   pas nécessaires (propriétaire, 2026-11-11). Réglées : les icônes (jeu propre à l'appli, 2026-11-10) et
