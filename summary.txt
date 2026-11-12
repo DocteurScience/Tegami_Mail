@@ -1,0 +1,3 @@
+commit: 48bde00
+setup: failure
+snap: skipped
