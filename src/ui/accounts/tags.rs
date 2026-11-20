@@ -92,6 +92,11 @@ impl AccountsWindow {
         // Wider than the dialog's default column, so a row's keyword, count
         // and folders read on a line or two.
         scroller.set_size_request(520, -1);
+        // The card is the scroller's, not the list's: the list's own rounded
+        // corners and shadow were cut square by the viewport, which left
+        // corners of another shade at the scrolled edges.
+        scroller.add_css_class("card");
+        scroller.set_overflow(gtk::Overflow::Hidden);
         scroller.set_child(Some(&list));
         dialog.set_extra_child(Some(&scroller));
 
