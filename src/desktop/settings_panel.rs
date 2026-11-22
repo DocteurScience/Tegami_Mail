@@ -9,7 +9,7 @@ use gtk::glib::prelude::*;
 /// that works in a Flatpak (with `--talk-name=org.gnome.Settings`) and from
 /// an AppImage, where starting `gnome-control-center` either is not
 /// possible or runs it with the bundle's libraries and fails — the
-/// Notifications page's link did nothing in the 1.0.0 packages. The command
+/// Notifications page's link did nothing in the 0.1.0 packages. The command
 /// is the fallback for desktops whose Settings answers under no such name.
 pub(crate) fn open_settings_panel(panel: &str) {
     if let Err(e) = launch_panel(panel) {

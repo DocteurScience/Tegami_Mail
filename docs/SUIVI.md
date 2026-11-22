@@ -11,8 +11,11 @@ Dernière mise à jour : 2026-11-02, après `40a6c7e`.
 
 - Base : import de Hylki 1.46.0, renommé Tegami Mail (commits du
   2026-10-31 et du 2026-11-01 jusqu'à `fd0ccce`).
-- Version : 1.0.2 (2026-11-11), publiée avec Flatpak, AppImage et snap
-  (`release.yml`). 1.0.0 et 1.0.1 n'ont pas de snap (panne du Snap Store).
+- Version : 0.1.3, bêta (numérotation 0.x jusqu'à la première version
+  stable, 1.0.0 ; décision du propriétaire, 2026-11-22). Les versions
+  publiées en 1.0.0, 1.0.1 et 1.0.2 sont devenues 0.1.0, 0.1.1 et 0.1.2
+  dans les documents ; leurs versions GitHub sont à supprimer par le
+  propriétaire, puis 0.1.3 à publier avec `release.yml`.
 - CI : compilation, tests et snap verts au 2026-11-12.
 - Tests : 1084 réussis, 40 ignorés ; clippy en `-D warnings` et `cargo doc`
   sans avertissement.
@@ -158,16 +161,16 @@ Dernière mise à jour : 2026-11-02, après `40a6c7e`.
 | `86522a7` | Fiche AppStream (propriétaire, 2026-11-11) : développeur DocteurScience (`io.github.docteurscience`), contact tirr.mohma@gmail.com ; quatre captures en anglais dans `data/screenshots/` (liste, sombre, composeur, préférences, en 2x), citées par URL raw GitHub, légendes traduites dans les 11 langues ; `appstreamcli validate` propre, fiche traduite générée par `msgfmt --xml`. Les comptes de démo des captures portent encore le nom Hyprlab (données du mode démo) |
 | `7c8eb89` | Compte de démo « Hyprlab » (hello@hyprlab.dev) renommé « Pinecone Lab » (hello@pinecone.dev), avec ses messages ; PRODID des réponses d'invitation → `-//DocteurScience//Tegami Mail//EN`. Les quatre captures de la fiche refaites |
 | `90529c7` | Batterie de 69 scénarios en mode démo (préférences et sous-pages, menus, composeur, assistant, Favoris, lecteur dessous/masqué, touches Gmail, sombre, contraste élevé, de/ru, anciennes valeurs des réglages retirés) : aucune erreur critique, panique, erreur CSS ni avertissement. Un défaut vu sur les captures : un message ouvert dans sa fenêtre s'ouvrait le sujet sélectionné (le libellé sélectionnable prenait le focus initial) ; le sujet sort de la chaîne de focus, sélection à la souris et copie par clic droit gardées. Fenêtre principale identique au pixel |
-| `5fd9229` | Version 1.0.0 (propriétaire, 2026-11-11 : on repart de 1.0.0) : `Cargo.toml`, `Cargo.lock`, snap ; fiche AppStream réduite à une version 1.0.0 (l'historique de Hylki reste dans CHANGELOG et RELEASE_NOTES) ; notes « What's new in 1.0.0 » rédigées d'après le CHANGELOG (affichées dans À propos) ; « Unreleased » du CHANGELOG devient 1.0.0. Aucun code ne compare de versions (seule une clé de cache des polices de l'AppImage, par égalité) |
+| `5fd9229` | Version 0.1.0, publiée en 1.0.0 (propriétaire, 2026-11-11 : on repart de 1.0.0 ; renumérotée bêta le 2026-11-22) : `Cargo.toml`, `Cargo.lock`, snap ; fiche AppStream réduite à une version 0.1.0 (l'historique de Hylki reste dans CHANGELOG et RELEASE_NOTES) ; notes « What's new in 0.1.0 » rédigées d'après le CHANGELOG (affichées dans À propos) ; « Unreleased » du CHANGELOG devient 0.1.0. Aucun code ne compare de versions (seule une clé de cache des polices de l'AppImage, par égalité) |
 | `7985aca` | Trait entre deux bascules inactives du sélecteur Tous / Non lus / Favoris rétabli (décision du propriétaire, 2026-11-11 : le masquer contrevenait au HIG ; annule `620ffdf`). Le séparateur de libadwaita s'affiche de nouveau |
 | `89e166b` | Icône de l'assistant et d'À propos : la copie embarquée (`resources/icons/scalable/apps/`) était restée l'icône temporaire de `a6bba70` quand `6d42417` a changé l'icône (signalé par le propriétaire sur sa machine). Copie mise à jour, test qui compare les deux ; l'assistant et À propos chargent l'icône par un thème privé limité aux ressources (`wordmark::app_icon_image`), qu'une ancienne icône installée ne peut plus masquer. Vérifié par capture avec l'ancienne icône dans un dossier d'icônes système |
-| `e1919da`, `6731230`, `30483b6` | Retours du propriétaire sur la 1.0.0 : le lien « Ouvrir les réglages de notification du système » passe par D-Bus (`desktop::settings_panel`, partagé avec Comptes en ligne) au lieu de lancer `gnome-control-center`, impossible en Flatpak et cassé en AppImage ; onglets des Réglages à la largeur de leur nom (« Confidentialité » n'est plus tronqué, vérifié en français et en allemand) ; menus : le focus suit le pointeur, une seule ligne marquée, sans anneau sur les cases (`focus_follows_pointer`) ; plus de disque gris au survol des chevrons du volet latéral. Le composeur (arrondis) et les cases rondes vertes des captures du propriétaire ne se reproduisent ni sous Adwaita ni sous Yaru : thème installé chez lui, question posée |
-| `79ee1d4` | Version 1.0.1 : icône, lien des notifications, onglets des Réglages, menus, chevrons. Section « What's new in 1.0.1 », version AppStream, CHANGELOG ; publication lancée par `release.yml` |
-| `e947afa` | État des lieux du code : `cargo fmt`, clippy en `-D warnings`, 1081 tests, aucun TODO ; `cargo doc` passe de 127 avertissements à 0 (liens morts reformulés, syntaxes en code), 4 `impl` vides retirés, en-tête du catalogue russe complété. Snap 1.0.1 non construit : le Snap Store ne répond pas aux machines de GitHub depuis le 11 vers midi, à relancer le 12 |
+| `e1919da`, `6731230`, `30483b6` | Retours du propriétaire sur la 0.1.0 : le lien « Ouvrir les réglages de notification du système » passe par D-Bus (`desktop::settings_panel`, partagé avec Comptes en ligne) au lieu de lancer `gnome-control-center`, impossible en Flatpak et cassé en AppImage ; onglets des Réglages à la largeur de leur nom (« Confidentialité » n'est plus tronqué, vérifié en français et en allemand) ; menus : le focus suit le pointeur, une seule ligne marquée, sans anneau sur les cases (`focus_follows_pointer`) ; plus de disque gris au survol des chevrons du volet latéral. Le composeur (arrondis) et les cases rondes vertes des captures du propriétaire ne se reproduisent ni sous Adwaita ni sous Yaru : thème installé chez lui, question posée |
+| `79ee1d4` | Version 0.1.1 : icône, lien des notifications, onglets des Réglages, menus, chevrons. Section « What's new in 0.1.1 », version AppStream, CHANGELOG ; publication lancée par `release.yml` |
+| `e947afa` | État des lieux du code : `cargo fmt`, clippy en `-D warnings`, 1081 tests, aucun TODO ; `cargo doc` passe de 127 avertissements à 0 (liens morts reformulés, syntaxes en code), 4 `impl` vides retirés, en-tête du catalogue russe complété. Snap 0.1.1 non construit : le Snap Store ne répond pas aux machines de GitHub depuis le 11 vers midi, à relancer le 12 |
 | `21d263a` | Snap et GNOME Contacts : carnets cherchés sous `SNAP_REAL_HOME` (test), plug `personal-files` en lecture (`evolution-files`) et `contacts-service` ; README : commandes `snap connect` pour un snap installé depuis un fichier. Non testé sur un vrai snap (Snap Store injoignable depuis GitHub). Le bouton « Ouvrir GNOME Contacts » passe par le lanceur de snapd sous snap (commit suivant) |
 | `e4b4cf2` | « Ouvrir GNOME Contacts » : sous snap, `OpenDesktopEntry` du lanceur de snapd (plug `desktop-launch`, à connecter) ; ailleurs, activation D-Bus d'abord (évite les bibliothèques de l'AppImage), commande en dernier recours ; ordre testé. Non vérifié sur un vrai snap |
-| `eced743` | Version 1.0.2 (snap et GNOME Contacts, bouton Contacts, documentation du code), publiée avec Flatpak et AppImage ; build snap à relancer le 12 à 7 h (panne du Snap Store chez Canonical depuis le 11 vers midi) |
-| `288e1a9` | Snap 1.0.2 construit le 12 à 7 h (Snap Store de nouveau joignable) et joint à la version : `tegami-mail_1.0.2_amd64.snap`. README : lien vers la dernière version pour le snap. Reste à vérifier sur une Ubuntu : contacts, Ajouter aux contacts, bouton Contacts, après `snap connect` |
+| `eced743` | Version 0.1.2 (snap et GNOME Contacts, bouton Contacts, documentation du code), publiée avec Flatpak et AppImage ; build snap à relancer le 12 à 7 h (panne du Snap Store chez Canonical depuis le 11 vers midi) |
+| `288e1a9` | Snap 0.1.2 construit le 12 à 7 h (Snap Store de nouveau joignable) et joint à la version : `tegami-mail_0.1.2_amd64.snap`. README : lien vers la dernière version pour le snap. Reste à vérifier sur une Ubuntu : contacts, Ajouter aux contacts, bouton Contacts, après `snap connect` |
 | `e3a8683` | Import d’étiquettes : la carte passe sur la zone défilante, coins de la liste d’une seule teinte (retour du propriétaire) |
 
 ## Décisions prises
@@ -360,10 +363,10 @@ sous le nom.
 
 ## Reste à faire (connu)
 
-- Sur une Ubuntu, le snap 1.0.2 après `snap connect` : contacts dans le
+- Sur une Ubuntu, le snap après `snap connect` : contacts dans le
   composeur, Ajouter aux contacts, bouton Ouvrir GNOME Contacts.
 - Sur la machine du propriétaire : icône de l'assistant et d'À propos,
-  lien vers les réglages de notification (1.0.1).
+  lien vers les réglages de notification.
 - Relecture des dix catalogues traduits hors français par des locuteurs.
 - Vérifier contraste élevé et mode sombre sur une vraie session GNOME.
 - Plus de question ouverte dans DESIGN.md : les maquettes sombres ne sont

@@ -1,6 +1,16 @@
 # Changelog
 
-## 1.0.2 — 2026-11-11
+## 0.1.3 — 2026-11-22
+
+- **Beta numbering:** Tegami Mail is in beta, and its versions say so: the
+  releases published as 1.0.0, 1.0.1 and 1.0.2 are now 0.1.0, 0.1.1 and
+  0.1.2. Version 1.0.0 will be the first stable release. The GitHub
+  releases are titled "(beta)", and the AppStream entries are development
+  releases.
+- **Tag import:** the list of tags found keeps the same rounded corners,
+  in one shade, at every scroll position.
+
+## 0.1.2 — 2026-11-11
 
 - **Snap and GNOME Contacts:** the address books are looked for in the
   real home, read through a `personal-files` plug, and Evolution Data
@@ -12,7 +22,7 @@
 - **Code documentation:** `cargo doc` builds without warnings; empty impl
   blocks removed.
 
-## 1.0.1 — 2026-11-11
+## 0.1.1 — 2026-11-11
 
 - **Application icon:** the first-run assistant and About showed the
   temporary icon, the copy bundled in the binary having been left behind.
@@ -23,10 +33,10 @@
   at a time.
 - **Sidebar:** the chevrons no longer draw a grey disc on hover.
 
-## 1.0.0 — 2026-11-11
+## 0.1.0 — 2026-11-11
 
 The first release of Tegami Mail, a redesign of Hylki 1.46 (the entries
-below 1.0.0 are Hylki's own history). The version numbering starts again.
+below 0.1.0 are Hylki's own history). The version numbering starts again.
 
 - **Software centre listing:** screenshots, and DocteurScience as the
   developer.

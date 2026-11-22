@@ -65,6 +65,9 @@ Le redesign suit [docs/DESIGN.md](docs/DESIGN.md) et
   artefact `flatpak` (bundle `tegami-mail.flatpak`). AppImage : de même avec
   `appimage.yml` (artefact `appimage`, script `tools/build-appimage.sh`). Les artefacts ne se
   téléchargent pas depuis la session cloud (stockage GitHub bloqué).
+- Versions : bêta numérotée 0.x jusqu’à la première version stable, 1.0.0
+  (décision du propriétaire, 2026-11-22) ; le titre des versions GitHub 0.x
+  porte « (beta) ».
 - Publier une version : `gh workflow run release.yml --repo DocteurScience/Tegami_Mail -f tag=vX.Y.Z`
   (la session ne peut pousser ni étiquette ni version : proxy en 403) ;
   `.github/workflows/release.yml` construit Flatpak, AppImage et snap, crée la

@@ -1,6 +1,6 @@
-# Publishes a release when a version tag is pushed (git tag v1.0.0 &&
-# git push origin v1.0.0), or on demand (Actions → Release → Run workflow,
-# or `gh workflow run release.yml -f tag=v1.0.0` on the commit to release):
+# Publishes a release when a version tag is pushed (git tag v0.1.0 &&
+# git push origin v0.1.0), or on demand (Actions → Release → Run workflow,
+# or `gh workflow run release.yml -f tag=v0.1.0` on the commit to release):
 # builds the Flatpak, the AppImage and the snap, then creates the GitHub
 # release, and the tag on the commit built when it does not exist yet, its notes taken from the
 # "What's new in <version>" section of docs/RELEASE_NOTES.md, with every
@@ -16,7 +16,7 @@ on:
   workflow_dispatch:
     inputs:
       tag:
-        description: The version tag to release, such as v1.0.0 (made on this commit if new)
+        description: The version tag to release, such as v0.1.0 (made on this commit if new)
         required: true
 
 permissions:
@@ -82,11 +82,18 @@ jobs:
           ' docs/RELEASE_NOTES.md > notes.md
           test -s notes.md || { echo "No notes for $version in docs/RELEASE_NOTES.md"; exit 1; }
           ls -la packages || true
+          # Versions below 1.0.0 are the beta, and their title says so. They
+          # are not marked as GitHub pre-releases: releases/latest, which the
+          # README's download links use, never points at a pre-release.
+          case "$version" in
+            0.*) title="Tegami Mail $version (beta)" ;;
+            *) title="Tegami Mail $version" ;;
+          esac
           if gh release view "$TAG" >/dev/null 2>&1; then
-            gh release edit "$TAG" --title "Tegami Mail $version" --notes-file notes.md
+            gh release edit "$TAG" --title "$title" --notes-file notes.md
           else
             # Makes the tag on the commit built when it does not exist yet.
-            gh release create "$TAG" --title "Tegami Mail $version" --notes-file notes.md --target "$GITHUB_SHA"
+            gh release create "$TAG" --title "$title" --notes-file notes.md --target "$GITHUB_SHA"
           fi
           if ls packages/* >/dev/null 2>&1; then
             gh release upload "$TAG" packages/* --clobber

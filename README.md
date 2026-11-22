@@ -4,6 +4,10 @@ An email client for the GNOME desktop, written in Rust with GTK 4 and
 libadwaita. It is a redesign of [Hylki](https://github.com/hyprlab/hylki):
 the same mail engine, with a calmer, simpler interface.
 
+Tegami Mail is in beta: its versions are numbered 0.x until the first
+stable release, 1.0.0. Expect rough edges, and keep a copy of any mail
+that matters to you elsewhere too.
+
 ![Tegami Mail, with a conversation open beside the message list](data/screenshots/main.png)
 
 ## Features
