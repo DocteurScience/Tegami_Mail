@@ -14,8 +14,9 @@ Dernière mise à jour : 2026-11-02, après `40a6c7e`.
 - Version : 0.1.3, bêta (numérotation 0.x jusqu'à la première version
   stable, 1.0.0 ; décision du propriétaire, 2026-11-22). Les versions
   publiées en 1.0.0, 1.0.1 et 1.0.2 sont devenues 0.1.0, 0.1.1 et 0.1.2
-  dans les documents ; leurs versions GitHub sont à supprimer par le
-  propriétaire, puis 0.1.3 à publier avec `release.yml`.
+  dans les documents ; leurs versions GitHub ont été supprimées par le
+  propriétaire. 0.1.3 publiée le 2026-11-22 avec Flatpak, AppImage et
+  snap (`release.yml`).
 - CI : compilation, tests et snap verts au 2026-11-12.
 - Tests : 1084 réussis, 40 ignorés ; clippy en `-D warnings` et `cargo doc`
   sans avertissement.
